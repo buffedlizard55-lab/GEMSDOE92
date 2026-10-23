@@ -417,7 +417,7 @@ def main() -> int:
         "input_manifest_sha256": sha256_file(MANIFEST),
         "input_count": len(inputs),
         "variants": variants,
-        "scope_note": "No submission, leaderboard, hidden labels, or off-manifest data accessed. Both public-repository raster releases are generated locally and ignored by Git.",
+        "scope_note": "No submission, leaderboard, hidden labels, or off-manifest data accessed. The six new candidate rasters are generated locally and gitignored; inherited main-branch TIFFs remain tracked and are flagged in IRREGULARITIES.md."
     }
     RECEIPTS.parent.mkdir(parents=True, exist_ok=True)
     RECEIPTS.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
