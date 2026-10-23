@@ -124,3 +124,11 @@ Exact `(parent, axis, value)` and raster hashes were compared against accessible
 ## 2026-10-23 (new PRUNE-rung session) — local holdout PROXY is not decision-comparable
 
 The pinned `gems57-pooled-hide-v2` whole-component buffered catalogue holdout (seeds 20/30, `n=22,663` withheld known-catalogue pixels) returns R0 `0.004006 [0.003424,0.004690]`, p2.5 `0.000785 [0.000658,0.000922]`, and p3.5/p4.5 `0 [0,0]`; selected-band leakage canary max symmetric AUC is `0.55314`. Results are in `evidence/proxy_audit.json`. **Decision:** these are PROXY diagnostics only, not gates, scores, or live forecasts; investigate the large divergence from previous hide-and-recover summaries before using this instrument to rank future axes. Use human live receipts as the decision anchor.
+
+## 2026-10-23 MASS preflight — stop, preserve slots
+
+Reconfirmed exact R0 reconstruction through `scripts/build_prune_rungs.py:build_parent`; both byte hashes match. The legacy parent JSON incorrectly says no reconstruction exists and records NaN bytes as 355000 rather than 355443; the session manifest has the verified size. Use the session manifest and executed rebuild evidence, not that stale note.
+
+MASS_D10/A10/SWAP10 already exist in the ledger. Parent ranking is absent; binary H19-5 cannot supply it. Furthermore, R0 has 1,611 dots strictly below 3 px (2,171 at/below 3 px), so preserving parent positions is incompatible with the default non-PRUNE exclusion. **Decision:** no repeats, replacement ranking, or combined MASS/PRUNE edit; zero new variants and unchanged ledger.
+
+`git ls-files '*.tif'` reports 20 tracked TIFFs in this checkout despite earlier statements that none are tracked. New files remain ignored; existing public rasters are flagged for owner data-use review, not silently removed. Mirror reference: https://github.com/buffedlizard55-lab/GEMSDOE92 . Redistribution terms remain UNVERIFIED. Deadline verification is also UNVERIFIED: official page https://www.drivendata.org/competitions/306/competition-doe-gems/ was not fetched, per the explicit automated-access prohibition. Human must confirm it.

@@ -1,17 +1,12 @@
 # GEMSDOE92 — PRUNE axis session
 
 ## CURRENT STATE
-- **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots; exact rebuild matches both pinned zeros and NaN SHA-256 values. `0.2778` remains **CLAIM** (no receipt in this checkout).
-- **Best receipt**: none recorded.
-- **TOP_PUBLIC**: not supplied; human must provide value and observation date.
-- **Slots left this week**: unknown; human must check the entity's current rolling-week quota.
-- **AXIS this session**: PRUNE, chosen autonomously. New values: `p2.5px-refill`, `p3.5px-refill`, `p4.5px-refill`.
-- **Next 3 candidate slots (BUILT, not submitted)**:
-  1. `h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277` — 2,702 dots moved (7.18%); MODEL +0.003, wide range [-0.008,+0.015]; SGMC PROXY +0.00031 vs R0.
-  2. `h33-h33-2-b2-PRUNEp2.5px-refill-20261023-6d7a61ba` — 941 moved (2.50%); MODEL +0.001, range [-0.010,+0.012]; SGMC PROXY +0.00018.
-  3. `h33-h33-2-b2-PRUNEp4.5px-refill-20261023-ebace30d` — 4,848 moved (12.88%); MODEL -0.004, range [-0.018,+0.008]; SGMC PROXY -0.00360.
-
-No file was submitted. The new candidate TIFFs are locally generated and gitignored. See `docs/SUBMIT.md`; prior main-branch candidate files remain in the ledger.
+- **Parent R0:** `h33-h33-2-b2`, 37,654 dots; exact rebuild reconfirmed for both pinned SHA-256 encodings on 2026-10-23. `0.2778` remains **CLAIM**.
+- **Best receipt:** none recorded. **TOP_PUBLIC:** unknown; observation date needed.
+- **Slots left:** unknown; entity-wide rolling-week history needed.
+- **Axis:** MASS, autonomously selected; **BLOCKED**, zero new variants. Requested doses already exist, parent ranking is unavailable, and 1,611 unchanged parent dots are below the non-PRUNE 3 px exclusion.
+- **Next three slots:** HOLD pending receipt/quota; then review existing PRUNE p3.5, p2.5, p4.5 only (not newly built or revalidated this session). No recommendation to spend a slot on an unranked MASS repeat.
+- **Audit:** `evidence/mass_preflight.json`; reproduce with `python scripts/audit_mass_session.py` after `python scripts/restore_inputs.py --validation`. Ledger unchanged; no submissions. Deadline remains UNVERIFIED by this session.
 
 ## Verified facts
 - Metric: DTI with alpha 0.2, beta 0.8, triangular kernel R=300m (3px), float32 EPSG:32611 100m, per https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/

@@ -1,5 +1,7 @@
 # Candidate handoff — human review and submission only
 
+**2026-10-23 MASS preflight: BLOCKED.** No new file, submission name, form note, or format receipt was produced. The table below is historical; these candidates were not revalidated this session. Do not upload on the strength of this audit. Parent reconstruction passed both exact hashes; see `evidence/mass_preflight.json`.
+
 **Do not upload until you confirm the weekly quota and independently review the selected raster.** The agent does not submit. The parent score `0.2778` is an owner-reported **CLAIM**, not a receipt-backed score. There is no receipt-backed best score in this checkout.
 
 All candidates have 37,654 binary unit-mass dots; each changes only the PRUNE collar/reallocation rule relative to exactly rebuilt R0. The form note is at most 140 characters. The NaN-outside primary and zero-outside fallback encode the same inside-footprint raster; upload only one file for any slot.
