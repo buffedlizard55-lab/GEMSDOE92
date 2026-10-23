@@ -143,3 +143,97 @@ def test_builder_rejects_out_of_window_change():
     v = Variant("MASS", "tiny", d, len(d), 2, {})
     with pytest.raises(ValueError, match="outside the brief"):
         v.check_change()
+
+
+# ---------------------------------------------------------------------------
+# SNAP: evidence threshold, spacing invariant, count conservation
+# ---------------------------------------------------------------------------
+def _ridge_grid(n=8, step=4):
+    """Dots on a regular lattice, with a response ridge offset by +1 px."""
+    d = grid_dots(n_side=n, step=step)
+    response = np.zeros((80, 80))
+    response[:, d.xs + 1] = 1.0          # a strong column ridge, 1 px east
+    return d, response
+
+
+def test_snap_min_gain_keeps_dots_when_gain_is_small():
+    d = Dots(np.array([20, 30]), np.array([20, 30]), np.array([1.0, 1.0]))
+    response = np.zeros((60, 60))
+    response[:, 21] = 0.10               # tiny gain, west column is 0.0
+    v0 = snap(d, response, max_shift=2, min_gain=0.0)
+    v1 = snap(d, response, max_shift=2, min_gain=0.50)
+    # only the dot within 2 px of the ridge can reach it; a 0.10 gain is enough
+    # at min_gain=0 and not enough at min_gain=0.50
+    assert v0.stats["n_moved"] == 1
+    assert v1.stats["n_moved"] == 0
+    assert len(v1.dots) == 2
+
+
+def test_snap_min_gain_is_the_dose_knob():
+    d, response = _ridge_grid()
+    coarse = snap(d, response, max_shift=2, min_gain=0.9)
+    fine = snap(d, response, max_shift=2, min_gain=0.0)
+    assert fine.stats["n_moved"] >= coarse.stats["n_moved"]
+    assert len(fine.dots) == len(coarse.dots) == len(d)
+
+
+def test_snap_preserves_min_spacing_invariant():
+    # a dense lattice at 2 px spacing is UNSAFE; asking for 2.828 px must not
+    # create any pair closer than that after snapping
+    ys, xs = [], []
+    for i in range(6):
+        for j in range(6):
+            ys.append(10 + 4 * i)
+            xs.append(10 + 4 * j)
+    d = Dots(np.array(ys), np.array(xs), np.ones(len(ys)))
+    response = np.zeros((60, 60))
+    response[10:31, 10:31] = 0.5          # flat plateau, so ties dominate
+    response[12:32, 12:32] += 0.6         # diagonal ramp
+    v = snap(d, response, max_shift=2, min_gain=0.0, min_spacing_px=2.828)
+    from scipy.spatial import cKDTree
+    tree = cKDTree(np.c_[v.dots.ys, v.dots.xs])
+    nn = tree.query(np.c_[v.dots.ys, v.dots.xs], k=2)[0][:, 1]
+    assert nn.min() >= 2.828 - 1e-9
+    assert len(v.dots) == len(d)
+
+
+def test_snap_reports_displacement_and_never_duplicates():
+    d, response = _ridge_grid()
+    v = snap(d, response, max_shift=2, min_gain=0.0, min_spacing_px=2.828)
+    assert len(set(zip(v.dots.ys.tolist(), v.dots.xs.tolist()))) == len(d)
+    assert v.stats["max_displacement_px"] <= 2.0 + 1e-9
+    assert 0.0 <= v.stats["frac_moved"] <= 1.0
+    assert v.stats["mean_displacement_px"] == pytest.approx(
+        v.stats["mean_displacement_px"])
+    assert v.stats["count_preserved"] is True
+
+
+def test_snap_never_lands_on_keep_out():
+    d = Dots(np.array([20]), np.array([20]), np.array([1.0]))
+    response = np.zeros((60, 60))
+    response[:, 21] = 9.0                  # strongest, but excluded
+    keep_out = np.zeros((60, 60), bool)
+    keep_out[:, 21] = True
+    v = snap(d, response, max_shift=2, min_gain=0.0, keep_out=keep_out)
+    assert (v.dots.ys[0], v.dots.xs[0]) == (20, 20)   # stays home
+
+
+def test_snap_handles_missing_response_at_home():
+    """R0 has 16 dots on sentinel pixels of the feature stack.
+
+    A missing home value cannot show that the dot is mispositioned, so such a
+    dot never moves: the count and the position are both conserved (this is the
+    documented behaviour for R0's 16 sentinel-pixel dots).
+    """
+    d = Dots(np.array([20]), np.array([20]), np.array([1.0]))
+    response = np.full((60, 60), np.nan)
+    response[20, 21] = 0.5
+    v = snap(d, response, max_shift=2, min_gain=0.0)
+    assert len(v.dots) == 1
+    assert (v.dots.ys[0], v.dots.xs[0]) == (20, 20)
+    assert v.stats["n_dots_without_home_response"] == 1
+
+    all_nan = np.full((60, 60), np.nan)
+    v_stay = snap(d, all_nan, max_shift=2, min_gain=0.0)
+    assert len(v_stay.dots) == 1
+    assert (v_stay.dots.ys[0], v_stay.dots.xs[0]) == (20, 20)

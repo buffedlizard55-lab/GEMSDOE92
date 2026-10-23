@@ -310,14 +310,56 @@ def concentration(parent: Dots, prior: np.ndarray, block_px: int = 10,
 # --------------------------------------------------------------------------
 # SNAP: move each dot <= 2 px onto the strongest edge response in its window
 # --------------------------------------------------------------------------
-def snap(parent: Dots, response: np.ndarray, max_shift: int = 2,
-         footprint: np.ndarray | None = None,
-         keep_out: np.ndarray | None = None) -> Variant:
-    """Move each dot to the local maximum of `response` within +-max_shift px.
+def _snap_offsets(max_shift: float) -> list[tuple[int, int]]:
+    """Integer offsets within Euclidean distance `max_shift` (excluding 0,0)."""
+    r = int(np.ceil(max_shift))
+    out = []
+    for dy in range(-r, r + 1):
+        for dx in range(-r, r + 1):
+            d = float(np.hypot(dy, dx))
+            if 0.0 < d <= max_shift + 1e-9:
+                out.append((dy, dx))
+    if not out:
+        raise ValueError("max_shift admits no integer offset but zero")
+    return out
 
-    Same count, same mass. `keep_out` marks pixels a dot may NOT move onto
-    (catalogue exclusions). Mean displacement is reported; SNAP is exempt from
-    the brief's 1-50% changed window.
+
+def snap(parent: Dots, response: np.ndarray, max_shift: float = 2,
+         footprint: np.ndarray | None = None,
+         keep_out: np.ndarray | None = None,
+         min_gain: float = 0.0,
+         min_spacing_px: float = 0.0) -> Variant:
+    """Move a dot onto the strongest `response` in its window, when that says
+    the dot is mispositioned.
+
+    Rule, per dot: take the strongest legal pixel within `max_shift` px; move
+    there only if it beats the dot's own pixel by more than `min_gain` (in
+    response units) and the target is at least `min_spacing_px` from every
+    other dot. Otherwise the dot stays. Count and mass are conserved exactly
+    and no exclusion is lifted: a dot may only land on a pixel inside the
+    footprint that is outside `keep_out` (catalogue + declared collar) and not
+    already occupied, so two dots can never share a pixel (a shared pixel would
+    need a value of 2.0 and break the [0,1] range).
+
+    Why `min_gain` and `min_spacing_px` exist
+    -----------------------------------------
+    The literal rule (move every dot to the local argmax, gain > 0) moves 99%
+    of R0's dots by ~1 px: the response is continuous, so almost every dot has
+    a slightly stronger neighbour. That shuffles the whole file for
+    sub-threshold evidence and packs dots into 1 px pairs, destroying the
+    parent's 2.83 px minimum-spacing invariant (D2.8) and double-crediting the
+    same truth pixels -- a change the DTI algebra punishes for reasons that have
+    nothing to do with the SNAP hypothesis. `min_gain` makes SNAP an
+    evidence-thresholded position correction (the dose knob) and
+    `min_spacing_px` keeps the parent's spacing invariant.
+
+    Contention is resolved in a deterministic order: biggest response
+    improvement first, then (y, x). SNAP is exempt from the brief's 1-50%
+    changed window (count is preserved by construction); its statistic is mean
+    displacement.
+
+    Stats also report the two side effects the DTI algebra cares about: the
+    response change, and how many dots end up closer than 2.83 px.
     """
     if max_shift < 1:
         raise ValueError("max_shift must be >= 1")
@@ -325,42 +367,140 @@ def snap(parent: Dots, response: np.ndarray, max_shift: int = 2,
         raise ValueError("response grid does not cover the dots")
     H, W = response.shape
     res = np.where(np.isfinite(response), response, -np.inf)
+    offsets = _snap_offsets(max_shift)
 
-    occupied = parent.keys
-    new_ys, new_xs = parent.ys.copy(), parent.xs.copy()
-    disp = np.zeros(len(parent))
-    for j, (y, x) in enumerate(zip(parent.ys.tolist(), parent.xs.tolist())):
-        best_key, best_px = None, (y, x)
-        for dy in range(-max_shift, max_shift + 1):
-            for dx in range(-max_shift, max_shift + 1):
-                yy, xx = y + dy, x + dx
-                if not (0 <= yy < H and 0 <= xx < W):
-                    continue
-                if np.hypot(dy, dx) > max_shift:
-                    continue
-                if footprint is not None and not footprint[yy, xx]:
-                    continue
-                if keep_out is not None and keep_out[yy, xx]:
-                    continue
-                if (yy, xx) != (y, x) and (yy, xx) in occupied:
-                    continue
-                # strongest response; ties broken by smallest displacement
-                key = (res[yy, xx], -np.hypot(dy, dx))
-                if best_key is None or key > best_key:
-                    best_key, best_px = key, (yy, xx)
-        yy, xx = best_px
-        if (yy, xx) != (y, x):
-            occupied.discard((y, x))
-            occupied.add((yy, xx))
-        new_ys[j], new_xs[j] = yy, xx
-        disp[j] = np.hypot(yy - y, xx - x)
+    # response at every candidate pixel for every dot, shape (n, len(offsets))
+    Y = parent.ys[:, None] + np.array([o[0] for o in offsets])[None, :]
+    X = parent.xs[:, None] + np.array([o[1] for o in offsets])[None, :]
+    inb = (Y >= 0) & (Y < H) & (X >= 0) & (X < W)
+    Yc, Xc = np.clip(Y, 0, H - 1), np.clip(X, 0, W - 1)
+    VAL = np.full(Y.shape, -np.inf, dtype=np.float64)
+    VAL[inb] = res[Yc[inb], Xc[inb]]
+    if footprint is not None:
+        VAL[inb & ~footprint[Yc, Xc]] = -np.inf
+    if keep_out is not None:
+        VAL[inb & keep_out[Yc, Xc]] = -np.inf
 
-    out = Dots(new_ys, new_xs, parent.p)
-    v = Variant("SNAP", f"max{max_shift}px", out, len(parent), _changed(parent, out),
-                stats={"mean_displacement_px": float(disp.mean()),
-                       "median_displacement_px": float(np.median(disp)),
-                       "frac_moved": float((disp > 0).mean()),
-                       "max_displacement_px": float(disp.max())})
+    home_res = res[parent.ys, parent.xs]
+    best_res = np.maximum(VAL.max(axis=1), home_res)
+    with np.errstate(invalid="ignore"):
+        improvement = best_res - home_res
+    # A dot whose own pixel carries no response value (16 of R0's dots sit on
+    # sentinel pixels of the 19-band stack) cannot be shown to be mispositioned,
+    # so it never moves: it is kept exactly where the parent put it.
+    improvement = np.where(np.isfinite(improvement), improvement, -np.inf)
+    wants_move = improvement > min_gain
+    improvement = np.where(wants_move, improvement, -np.inf)
+
+    # deterministic processing order: biggest improver first
+    order = np.lexsort((parent.xs, parent.ys, -np.round(np.where(np.isfinite(improvement), improvement, 0.0), 12)))
+    order = order[np.isfinite(improvement[order])]
+    # each dot's candidate order: strongest response, then shortest hop, then (dy, dx)
+    cand_order = np.lexsort((
+        np.array([o[1] for o in offsets])[None, :] * np.ones((len(parent), 1)),
+        np.array([o[0] for o in offsets])[None, :] * np.ones((len(parent), 1)),
+        np.array([np.hypot(*o) for o in offsets])[None, :] * np.ones((len(parent), 1)),
+        -VAL,
+    ), axis=1)
+
+    occ = np.zeros((H, W), dtype=np.int32)
+    occ[parent.ys, parent.xs] = np.arange(1, len(parent) + 1, dtype=np.int32)
+    new_y = parent.ys.copy()
+    new_x = parent.xs.copy()
+
+    # forbidden neighbour offsets for a 2.83 px minimum spacing: every offset
+    # with |dy|,|dx| <= 2 except the four (2,2) corners, whose distance is 2.828.
+    spacing_offsets = [(dy, dx) for dy in range(-2, 3) for dx in range(-2, 3)
+                       if (dy, dx) != (0, 0)
+                       and np.hypot(dy, dx) < min_spacing_px - 1e-9]
+
+    def clear(yy: int, xx: int, j: int) -> bool:
+        for dy, dx in spacing_offsets:
+            y2, x2 = yy + dy, xx + dx
+            if 0 <= y2 < H and 0 <= x2 < W:
+                o = int(occ[y2, x2])
+                if o != 0 and o != j + 1:
+                    return False
+        return True
+
+    n_contested = 0
+    n_blocked_by_spacing = 0
+    for j in order:
+        home = (int(parent.ys[j]), int(parent.xs[j]))
+        target = None
+        for k in cand_order[j]:
+            val = VAL[j, k]
+            if not np.isfinite(val):
+                continue
+            yy, xx = int(Y[j, k]), int(X[j, k])
+            occupant = occ[yy, xx]
+            if occupant != 0 and occupant != j + 1:
+                n_contested += 1
+                continue
+            if min_spacing_px > 0 and not clear(yy, xx, j):
+                n_blocked_by_spacing += 1
+                continue
+            target = (yy, xx)
+            break
+        if target is None:
+            # Keep the parent pixel. It is legal by inheritance (footprint,
+            # off-catalogue) and spacing-safe by the parent's own invariant.
+            occupant = occ[home]
+            if occupant in (0, j + 1):
+                target = home
+            else:
+                raise ValueError(f"dot {j} at {home} has no legal pixel, not even its own")
+        if target != home:
+            occ[home] = 0
+            occ[target] = j + 1
+        new_y[j], new_x[j] = target
+
+    out = Dots(new_y, new_x, parent.p)
+    dy = (out.ys - parent.ys).astype(float)
+    dx = (out.xs - parent.xs).astype(float)
+    disp = np.hypot(dy, dx)
+    moved = disp > 0
+
+    from scipy.spatial import cKDTree
+    tree = cKDTree(np.c_[out.ys, out.xs])
+    d_nn, _ = tree.query(np.c_[out.ys, out.xs], k=2)
+    parent_tree = cKDTree(np.c_[parent.ys, parent.xs])
+    d_nn_parent, _ = parent_tree.query(np.c_[parent.ys, parent.xs], k=2)
+
+    new_res = res[out.ys, out.xs]
+    fin_before = np.isfinite(home_res)
+    fin_after = np.isfinite(new_res)
+    v = Variant("SNAP", f"max{max_shift:g}px_g{min_gain:.2f}", out, len(parent),
+                _changed(parent, out),
+                stats={
+                    "max_shift_px": float(max_shift),
+                    "min_gain": float(min_gain),
+                    "min_spacing_px": float(min_spacing_px),
+                    "mean_displacement_px": float(disp.mean()),
+                    "median_displacement_px": float(np.median(disp)),
+                    "p90_displacement_px": float(np.percentile(disp, 90)),
+                    "max_displacement_px": float(disp.max()),
+                    "frac_moved": float(moved.mean()),
+                    "n_moved": int(moved.sum()),
+                    "n_contested_pixels": int(n_contested),
+                    "n_blocked_by_spacing": int(n_blocked_by_spacing),
+                    "mean_response_before": float(np.mean(home_res[fin_before]))
+                    if fin_before.any() else float("nan"),
+                    "mean_response_after": float(np.mean(new_res[fin_after]))
+                    if fin_after.any() else float("nan"),
+                    "n_dots_without_home_response": int((~fin_before).sum()),
+                    "median_response_gain_moved": float(np.nanmedian(
+                        np.where(np.isfinite(new_res) & np.isfinite(home_res),
+                                 new_res - home_res, np.nan)[moved]))
+                    if moved.any() else 0.0,
+                    "n_stayed": int((~moved).sum()),
+                    "mean_dx": float(dx.mean()),
+                    "mean_dy": float(dy.mean()),
+                    "parent_min_nn_px": float(d_nn_parent[:, 1].min()),
+                    "snapped_min_nn_px": float(d_nn[:, 1].min()),
+                    "snapped_dots_under_2p83px": int((d_nn[:, 1] < 2.828 - 1e-6).sum()),
+                    "count_preserved": len(out) == len(parent),
+                })
     v.check_change(allow_out_of_bounds=True)
     return v
 
