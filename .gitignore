@@ -1,0 +1,18 @@
+# Competition data and generated rasters must not enter this public repository.
+# Keep registry manifests and text ledgers trackable; use private/local storage.
+/data/
+/inputs/
+/releases/
+/artifacts/
+*.[tT][iI][fF]
+*.[tT][iI][fF][fF]
+*.[vV][rR][tT]
+*.npy
+*.npz
+*.nc
+*.zarr/
+
+# Local Python environments and caches.
+.venv/
+__pycache__/
+.pytest_cache/
