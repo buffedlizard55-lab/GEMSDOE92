@@ -43,3 +43,30 @@ See `ledger/submissions.csv` — status BUILT, predicted_change MODEL, not a sco
 - PROXY = local holdout
 - MODEL = projection
 Never call PROXY or MODEL a score.
+
+---
+
+## PRUNE session 2026-10-23 — files ready to upload
+
+Submit in this order. One file per slot.
+
+| # | file to upload | note (<=140 chars) |
+|---|---|---|
+| 1 | `releases/h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7.tif` | `parent h33-h33-2-b2; drop dots within 3px of catalogue (2171=5.77%), refill nearest legal, count held 37654; predicted +0.002..+0.006` |
+| 2 | `releases/h33-h33-2-b2-PRUNE_B4-20261023-78e893d7.tif` | `parent h33-h33-2-b2; drop dots within 4px of catalogue (3825=10.16%), refill nearest legal, count held 37654; predicted +0.001..+0.004` |
+| 3 | `releases/h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad.tif` | `parent h33-h33-2-b2; drop dots within 5px of catalogue (5637=14.97%), refill nearest legal, count held 37654; predicted -0.002..+0.002 (negative control)` |
+
+Each has a `-zeros.tif` twin with identical in-footprint values; upload the twin
+instead only if the uploader rejects NaN.
+
+Format receipt for each (all PASS, 10 gates — CRS/shape/transform/dtype/band/
+range/no-NaN-inside/NaN-outside/zero-catalogue-mass/distance):
+
+```
+python -m gems validate releases/h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7.tif \
+  --reference data/bridge/sample_submission.tif \
+  --catalogue data/bridge/labels.tif
+```
+
+After each submission, fill `receipt_score` **and** `receipt_date` in
+`ledger/submissions.csv`. A score with no date stays a CLAIM.

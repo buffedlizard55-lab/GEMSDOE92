@@ -25,3 +25,94 @@
 - **Action**: Logged.
 
 No other irregularities that change a decision this session.
+
+---
+
+## 2026-10-23 (PRUNE session) — H19-5 is binary, so the MASS "ranking" was all ties
+
+**Observation.** `data/bridge/h19_5.tif` contains exactly two values, `{0, 1}`
+(121,131 pixels equal 1.0). At all 37,654 parent dot locations the value is
+`1.0`. The previous session's SLOT_PLAN and mechanism cards describe ranking the
+dots by "H19-5 continuous field value at dot location".
+
+**Impact — decision-changing.** There was no ranking. Every dot shared the same
+H19-5 value, so `MASS_D10` dropped an essentially arbitrary 10% (whatever the
+sort's tie order produced) and `MASS_A10`/`MASS_SWAP10` picked arbitrary
+replacements. Those three files therefore test *"does perturbing 10% of the dots
+at random help?"*, not *"does dropping the weakest 10% help?"*. Any inference
+about the mass optimum or about ranking quality drawn from their live scores
+would be unsound.
+
+**Decision.** The three MASS files are left in the ledger as BUILT (they are
+already built and cost nothing to keep) but are explicitly rescoped as a random
+10% perturbation control, not a ranking test. No PRUNE variant is affected: PRUNE
+selects on catalogue distance, never on H19-5. H19-5 is used only as a positivity
+mask for legal refill pixels, where a binary mask is exactly what is wanted.
+
+**Action.** `docs/mechanism_cards.md` carries the corrected reading. If the human
+wants a real ranking axis (MASS or CONCENTRATION), one must first be built from a
+truly continuous field (the detrended elevation or a TMI gradient band, neither of
+which is currently pinned).
+
+## 2026-10-23 (PRUNE session) — Competition rasters are committed to a PUBLIC repo
+
+**Observation.** `buffedlizard55-lab/GEMSDOE92` is public (`isPrivate: false`).
+It tracks `data/bridge/*.tif` (sample_submission, labels, existing_faults, h19_5,
+h27_4_solo, d28) and `data/parent_R0_*.tif`, plus all six MASS release rasters.
+Brief constraint 2 says to keep competition rasters out of public repos and to
+flag it if they are already there. This is that flag.
+
+**Impact.** The data-use terms of the competition have not been checked. If they
+forbid redistribution, this repo is currently redistributing study-area data and
+derived submissions, and Phase 2 requires "reproducible code" for a public
+submission — which may or may not require the data itself.
+
+**Decision.** Nothing was deleted or rewritten this session: untracking files
+does not remove them from git history, and rewriting history is the repository
+owner's call, not an agent's. PRUNE rasters follow the established convention and
+are committed like the MASS ones, so the human can actually upload them.
+
+**Human must decide.** Either confirm the terms permit redistribution (do nothing),
+or untrack `data/` and `releases/*.tif` and, if the terms require it, purge
+history. `registry/data_manifest.json` records every sha256, so the toolchain can
+re-verify inputs from whatever private location they move to.
+
+## 2026-10-23 (PRUNE session) — `labels.tif` and `existing_faults.tif` are byte-identical
+
+**Observation.** Both have sha256 `7ba308cc…e4093`. They are the same file under
+two names.
+
+**Impact.** Low, but worth stating: the "catalogue" used for the zero-mass rule
+and the distance prior is a single artefact, not two independent confirmations.
+Any error in it propagates to both. It also means the PROXY holdout and the
+exclusion mask cannot be separated into independent controls.
+
+**Decision.** Use `labels.tif` as the exclusion mask (the previous session's
+convention, and the name that matches the organizers' masking description).
+
+## 2026-10-23 (PRUNE session) — PRUNE variants satisfy the 3 px rule without an exemption
+
+The 2026-10-23 earlier item set out to "test B=3 explicitly". All three variants
+remove dots within R px and refill only at distance **strictly greater** than R,
+so every emitted dot is farther than 3 px from the catalogue regardless of R.
+Measured minimum distances: B3 → 3.16 px, B4 → 4.12 px, B5 → 5.10 px. The
+default gates pass with no `--prune-radius` exception, which is why the
+`distance_from_catalogue` gate reads `dots_within=0` on all three.
+
+## 2026-10-23 (PRUNE session) — the ledger's `sha256` column is not the same file type across sessions
+
+**Observation.** For the three MASS rows, `sha256` equals the hash of the
+`-zeros.tif` twin (e.g. `e26a6cb8…`, matching their `sha8`). For the three PRUNE
+rows it is the hash of the primary NaN-outside file. Verified by re-hashing every
+file in `releases/` against the ledger.
+
+**Impact.** A cross-session duplicate check on `sha256` alone will not notice two
+rows built from identical dots but written in different encodings, because the
+bytes differ. The brief already warns that NaN/zeros twins "shoot identically",
+so this is a slot-economy risk rather than a correctness bug.
+
+**Decision.** No hashes were rewritten — the MASS rows are a prior session's
+evidence and are left exactly as recorded. Rule for going forward: one row = one
+experiment, and a `-zeros.tif` twin is *not* a second experiment. Upload at most
+one of a pair. Dedupe remains exact-hash only, per the brief; do not add
+rank-correlation or overlap thresholds.

@@ -1,47 +1,75 @@
-# SLOT_PLAN — MASS axis session 2026-10-23
+# SLOT_PLAN — PRUNE axis session 2026-10-23
 
-Deadline: 2026-12-03 (confirm on competition page). One entity, 3 scored submissions per rolling week, one final file chosen blind.
+Deadline 2026-12-03 (confirm on the competition page). One entity, 3 scored
+submissions per rolling week, one final file chosen blind.
 
 ## Parent
-h33-h33-2-b2 (GEMSDOE32): 37,654 dots, none within 2px of catalogue, CLAIM 0.2778. sha256 c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9. Verified against mirror.
+`h33-h33-2-b2` (GEMSDOE32): 37,654 unit-mass dots, CLAIM 0.2778 (still no
+receipt). sha256 `baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd`
+— **verified byte-for-byte this session**, so the parent gate passes and
+descendants are trustworthy.
 
-## This session — AXIS=MASS
-We built 3 variants differing ONLY on mass, ranking from H19-5 continuous field (recorded recipe: H19-5 -> D2.8 (44,090) -> H27-4-SOLO (40,199) -> B2 prune (37,654)).
+## Why PRUNE
+The previous session took MASS (3 files, unsubmitted). The brief says each
+(AXIS, value) cell is built once across sessions, so MASS is spent. PRUNE is the
+next cell for a concrete reason: the parent keeps ≥2.24 px from the catalogue
+but still holds 2,171 dots (5.77%) within the 3 px physical uncertainty radius.
+That is an unexamined 5.77% of the budget sitting in the class of pixels the
+metric is least likely to reward, and the previous session explicitly deferred
+it (see IRREGULARITIES 2026-10-23, "Parent distance vs new hard constraint").
+
+## This session — 3 doses, one axis
 
 | slot | file | n_dots | % changed | predicted | mechanism |
 |---|---|---|---|---|---|
-| 1 (best bet) | h33-h33-2-b2-MASS_SWAP10-20261023-3e776063 | 37,654 | 10% | +0.001 to +0.006 MODEL | Keep budget, improve avg credit by swapping lowest 10% H19-5 with next 10% |
-| 2 | h33-h33-2-b2-MASS_D10-20261023-e26a6cb8 | 33,889 | 10% | +0.002 to +0.008 MODEL | Drop low-ranked dots if marginal credit <0.2*DTI (~0.056) |
-| 3 | h33-h33-2-b2-MASS_A10-20261023-e5613a00 | 41,419 | 10% | -0.001 to -0.005 MODEL | Test if budget saturated; if live > parent, optimum higher |
+| 1 (best bet) | `h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7` | 37,654 | 5.77% | +0.002 to +0.006 MODEL | dots within 300 m of known traces are positional scatter, not distinct faults |
+| 2 | `h33-h33-2-b2-PRUNE_B4-20261023-78e893d7` | 37,654 | 10.16% | +0.001 to +0.004 MODEL | 400 m, past survey uncertainty; pays only if dead mass is thick |
+| 3 | `h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad` | 37,654 | 14.97% | −0.002 to +0.002 MODEL | negative control; should be worst if the effect is bounded |
 
-All files: float32 EPSG:32611 100m, same transform as sample_submission.tif, values in [0,1], NaN outside (primary) and zeros outside (fallback), zero catalogue mass, re-read after write.
+All three: float32, EPSG:32611, 100 m, parent transform, values in [0,1], zero
+catalogue mass, NaN outside footprint (primary) and zeros outside (fallback),
+count and total mass held at exactly 37,654, re-read from disk after writing,
+all 10 format gates PASS. Parent-diff verified independently: the removed set is
+exactly `{distance to catalogue ≤ R}` and nothing else moved.
 
 ## What each result would change
-- If SWAP10 beats parent by >=0.01: confirms ranking carries signal beyond random, mass optimum at ~37k but quality can be improved at same budget. Next: combine with CONCENTRATION (move mass to high-prior km blocks) and SNAP (move <=2px to edge response).
-- If D10 beats parent: mass optimum lower than 37k, marginal dots are noise. Next: test MASS_D20 (30k) and combine with PRUNE B3 (35,483) to see if further pruning helps.
-- If A10 beats parent: mass optimum higher, budget not saturated, marginal credit > bar. Next: test MASS_A20 (45k) and CONCENTRATION to allocate added dots to high-prior blocks.
-- If all three underperform by >0.01: mass at 37,654 is near optimum, ranking by H19-5 insufficient, need better ranking (e.g., multi-physics consensus or tip/step-over prior).
+- **B3 beats parent by ≥0.01** → the distance prior is real and worth combining;
+  next session builds `PRUNE_B3 × CONCENTRATION`, and B3 becomes the new anchor.
+- **Monotone improvement with radius (B5 best)** → prior is stronger than the
+  survey geometry suggests; go deeper (B8, B10) before touching another axis.
+- **All three at or below parent** → the distance prior is false, and the
+  historical 0.2708→0.2778 step was false-positive removal that does not
+  generalise. Kill PRUNE and redirect to CONCENTRATION.
+- **All within ±0.01 (no evidence)** → do not conclude; the public chunks are a
+  subset of the region and a sub-0.01 move is not evidence of anything.
 
-Treat live change <0.01 as no evidence (public chunks only, private may differ).
+## Next 3 slots after this (if a PRUNE dose wins)
+1. `CONCENTRATION-blk10px` — move 15% of dots from the lowest-prior 1 km blocks
+   to the highest. Report block-density CV before/after (best files reportedly
+   0.51–0.59). Confounder: the prior comes from known geothermal systems, so it
+   misses systems absent from the inventory.
+2. `PRUNE_B3 × CONCENTRATION` — combine the two best axes at the winning dose.
+3. `SNAP-max2px` — move each dot ≤2 px onto the strongest TMI/gravity-gradient
+   edge. Only worth a slot once placement is shown to be the bottleneck.
 
-## Default plan to deadline (per brief)
-- wk1-2: MASS, CONCENTRATION, SNAP, PRUNE, RELIEF (one axis per session, 3 variants each, 3 slots/week)
-- wk3-4: combine two best axes (e.g., best MASS + best CONCENTRATION)
-- wk5-6: confirm, choose final file and fallback, re-validate format of both
+`RELIEF` and `SPACING` stay behind these; `TRACKB` is Phase 2 work.
 
-Weeks left: from 2026-10-23 to 2026-12-03 = ~6 weeks, ~18 slots max (3/week). We have used 0 slots this week, 3 built this session (BUILT, not yet submitted).
+## Not computed, on purpose
+- **Catalogue hide-and-recover PROXY**: every variant differs from the parent
+  *precisely in its relation to the catalogue*, so a catalogue-based holdout
+  cannot discriminate between them by construction. Reporting it here would be a
+  circular number dressed as evidence.
+- **Leakage canary**: no per-pixel feature enters the selection, so there is no
+  feature to test.
+- **SGMC control**: not available in the pinned manifest.
 
-## Better axes proposals (mechanism, confounder, falsifier) — do not build this session
-1. **CONCENTRATION with SGMC-calibrated prior**: Move 15% dots from lowest 1km-block density to highest. Mechanism: hidden faults cluster where SGMC faults cluster off-catalogue. Confounder: SGMC faults are mapped faults, may bias to exposed areas. Falsifier: if block-density CV of best files 0.51-0.59 not reproduced, or live drops.
-2. **SNAP to LiDAR scarp + mag gradient**: Move each dot <=2px to strongest edge response in window (TMI gradient, lidar scarp). Mechanism: GeoDAWN 400m line spacing causes ~300m positional uncertainty, snapping corrects. Confounder: scarp product contains non-fault scarps (roads, terraces). Falsifier: mean displacement >1.5px with no live gain.
-3. **RELIEF tercile shift**: Shift 10% mass from basin to range-front tercile (detrended elevation). Mechanism: range-front faults control geothermal systems (Faulds inventory). Confounder: basin faults are blind and more valuable for geothermal, but less expressed. Falsifier: if relief distribution of best files uniform, no gain.
+## Calendar to 2026-12-03
+~6 weeks, ~18 slots max. wk1-2 (now): PRUNE doses. wk3-4: CONCENTRATION, then
+the two best axes combined. wk5-6: confirm, choose the final file **and** a
+fallback, re-validate both.
 
-## Gates
-- MUST pass: format check, zero catalogue mass, sha256 not in ledger, parent-diff recorded, re-read after write — all PASS this session
-- REPORT ONLY: catalogue hide-and-recover PROXY (not computed this session — need SGMC off-catalogue truth, but we have no leakage canary >0.90 AUC), leakage canary (not computed), SGMC control (not computed)
-
-## Next human actions
-- Fill TOP_PUBLIC from leaderboard with date
-- Choose one of three MASS files for slot 1 (recommend SWAP10)
-- Submit from own registered account (do not use dropbox.com, do not scrape leaderboard)
-- Record receipt score in ledger/submissions.csv
+## Human actions
+- Fill `TOP_PUBLIC` from the leaderboard with a date. Nothing here needs it.
+- Submit **B3 first**; record the receipt date and score in
+  `ledger/submissions.csv` (`receipt_score`, `receipt_date`).
+- Confirm the 0.2778 parent CLAIM against saved receipts if any exist.
