@@ -124,3 +124,68 @@ Exact `(parent, axis, value)` and raster hashes were compared against accessible
 ## 2026-10-23 (new PRUNE-rung session) — local holdout PROXY is not decision-comparable
 
 The pinned `gems57-pooled-hide-v2` whole-component buffered catalogue holdout (seeds 20/30, `n=22,663` withheld known-catalogue pixels) returns R0 `0.004006 [0.003424,0.004690]`, p2.5 `0.000785 [0.000658,0.000922]`, and p3.5/p4.5 `0 [0,0]`; selected-band leakage canary max symmetric AUC is `0.55314`. Results are in `evidence/proxy_audit.json`. **Decision:** these are PROXY diagnostics only, not gates, scores, or live forecasts; investigate the large divergence from previous hide-and-recover summaries before using this instrument to rank future axes. Use human live receipts as the decision anchor.
+
+---
+
+## 2026-10-23 (CONCENTRATION session) — the two REPORT-ONLY instruments disagree in sign
+
+**Observation.** For all three CONCENTRATION rungs the SGMC off-catalogue control falls monotonically
+with dose (`−0.004851`, `−0.007066`, `−0.010416` vs R0's `0.096060` on 62,703 control pixels) while the
+catalogue hide-and-recover holdout rises by about `+0.0018` at every dose (R0 `0.004006`
+`[0.003424,0.004690]`, n = 22,663 withheld positives). They cannot both be pointing at the live metric.
+
+**Impact — decision-changing.** The two instruments are measuring different target classes. The
+organisers mask known catalogue pixels exactly and score only new-fault truth, so the hide-and-recover
+instrument scores recovery of the pixels that are *removed* from the live metric, whereas the SGMC
+control scores faults that are real but absent from the catalogue — the same class as the target. The
+brief's historical note that hide-and-recover correlated −0.87 to +0.54 with live scores (n = 12–14)
+therefore cannot be assumed to hold for an axis whose whole mechanism is about *unmapped* faults.
+
+**Decision.** The SGMC control is weighted more heavily in the MODEL prediction, which is why all three
+rungs carry a negative central value. But the disagreement itself is reported rather than resolved, and
+the recommendation is to spend no slot on this axis: with three scored submissions per week, an
+unresolved sign conflict at magnitudes at or under 0.01 is not worth a slot. Both numbers stay labelled
+PROXY; neither is a gate and neither is a score.
+
+## 2026-10-23 (CONCENTRATION session) — most of the concentration loss is generic, not the ordering
+
+**Observation.** A deterministic randomised-block null (same block geometry, shuffled block ordering,
+seed 20261023) loses `−0.012365` on the SGMC control at 20% moved; the parent's own evidence surface
+loses `−0.010423`; the geophysics-only, catalogue-network and catalogue-node priors lose more
+(`−0.011826`, `−0.012462`, `−0.012281`).
+
+**Impact.** Any "concentration" build is dominated by a fixed cost that has nothing to do with the
+prior: refill pixels are the H19-5 pixels that Poisson-disk thinning at 2.8 px discarded, i.e. the
+immediate neighbours of surviving dots, so they are largely redundant. The prior ordering is worth
+about +0.002 of control and +0.011 of declared model over random — real, but far short of the fixed
+cost. This should stop any future session from reading a concentration receipt as evidence about the
+prior.
+
+**Decision.** Reported in `evidence/concentration.json` under `screening`, with the randomised null
+included. `SLOT_PLAN.md` proposes `SUPPORT_EXPANSION` — refilling *off* the H19-5 support — as the axis
+that would actually attack the fixed cost, rather than re-testing priors inside it.
+
+## 2026-10-23 (CONCENTRATION session) — R0 keeps its own >2 px catalogue rule, not the brief's ≥3 px
+
+**Observation.** Hard constraint 4 requires dots ≥3 px from the catalogue unless AXIS=PRUNE. R0 itself
+has 2,171 dots within 3 px (minimum 2.2361 px). All three CONCENTRATION variants inherit that minimum
+exactly.
+
+**Impact.** Enforcing ≥3 px here would delete 5.77% of the parent, which is the already-built
+`PRUNE_B3`/`p3.5px-refill` change, and would confound CONCENTRATION with PRUNE.
+
+**Decision.** Follows the 2026-10-23 MASS-session precedent: non-PRUNE axes use R0's own >2 px rule, and
+the gates are run with `--prune-radius 2` so the deviation is declared rather than hidden. All three
+files record `min_catalogue_distance_px = 2.2361`. The ≥3 px question remains a PRUNE-axis question.
+
+## 2026-10-23 (CONCENTRATION session) — the 0.51–0.59 block-density CV reference is scale-dependent
+
+**Observation.** The brief reports that the best files sit at a block-density CV of 0.51–0.59 without
+stating a block size. Measured CV for R0 is 1.3691 at 2 km, 1.1469 at 3 km, 0.9014 at 5 km and 0.6353
+at 10 km. The CONCENTRATION variants raise the 5 km CV to 1.1192 / 1.2314 / 1.3422.
+
+**Impact.** Without the block size the reference number is not comparable, so it cannot be used either
+to justify or to reject a variant. It is recorded, not used.
+
+**Decision.** The 5 km figure is reported for all three variants; R0's CV at four block sizes is in
+`evidence/concentration.json` so the human can compare on whatever scale the 0.51–0.59 figure came from.

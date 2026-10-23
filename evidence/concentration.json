@@ -1,0 +1,575 @@
+{
+  "schema": "gemsdoe92.concentration.v1",
+  "session_date_utc": "20261023",
+  "built_utc": "2026-10-23T22:09:51Z",
+  "axis": "CONCENTRATION",
+  "parent": "h33-h33-2-b2",
+  "parent_claim": {
+    "score": 0.2778,
+    "evidence_label": "CLAIM",
+    "receipt": false
+  },
+  "exact_parent_rebuild": {
+    "n_dots": 37654,
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "matches_recorded_hashes": true
+  },
+  "block_prior": {
+    "field": "block mean of the parent's own evidence surface w",
+    "w_definition": "w = 0.30 + 0.70*phys on the H19-5 ridge support, 0.08*phys off it; phys = 0.40*percentile(TMI band 3) + 0.35*percentile(gravity band 18) + 0.25*percentile(slope band 19) -- identical to the PRUNE session",
+    "block_px": 50,
+    "block_km": 5.0,
+    "destination_rule": "top quintile of in-footprint blocks by prior, quota proportional to prior",
+    "source_rule": "lowest-prior blocks expanded upward until they hold >= 2x the demand; removal ordered by exact marginal DTI loss"
+  },
+  "r0_block_density_cv": {
+    "block_px": 50,
+    "block_km": 5.0,
+    "n_blocks_in_footprint": 2056,
+    "dots_per_block_mean": 17.949,
+    "block_density_cv": 0.9014,
+    "block_density_min": 0,
+    "block_density_max": 85
+  },
+  "screening": {
+    "evidence_label": "PROXY",
+    "script": "scripts/screen_concentration_priors.py",
+    "block_px": 50,
+    "reference_r0": {
+      "sgmc_off_catalogue_dti": 0.09606,
+      "declared_model_dti": 0.261133,
+      "n_sgmc_control_pixels": 62703
+    },
+    "runs": [
+      {
+        "prior": "w_evidence",
+        "frac": 0.05,
+        "direction": "concentrate",
+        "sgmc_delta": -0.001794,
+        "declared_model_delta": 0.001812
+      },
+      {
+        "prior": "phys_only",
+        "frac": 0.05,
+        "direction": "concentrate",
+        "sgmc_delta": -0.002297,
+        "declared_model_delta": 0.001
+      },
+      {
+        "prior": "phys_only",
+        "frac": 0.05,
+        "direction": "inverted",
+        "sgmc_delta": -0.004076,
+        "declared_model_delta": -0.007043
+      },
+      {
+        "prior": "cat_network",
+        "frac": 0.05,
+        "direction": "concentrate",
+        "sgmc_delta": -0.001615,
+        "declared_model_delta": -0.000509
+      },
+      {
+        "prior": "cat_network",
+        "frac": 0.05,
+        "direction": "inverted",
+        "sgmc_delta": -0.001665,
+        "declared_model_delta": -0.003759
+      },
+      {
+        "prior": "cat_nodes",
+        "frac": 0.05,
+        "direction": "concentrate",
+        "sgmc_delta": -0.001597,
+        "declared_model_delta": -0.001251
+      },
+      {
+        "prior": "cat_nodes",
+        "frac": 0.05,
+        "direction": "inverted",
+        "sgmc_delta": -0.001321,
+        "declared_model_delta": -0.003529
+      },
+      {
+        "prior": "w_evidence",
+        "frac": 0.1,
+        "direction": "concentrate",
+        "sgmc_delta": -0.004793,
+        "declared_model_delta": -0.000387
+      },
+      {
+        "prior": "w_evidence",
+        "frac": 0.1,
+        "block_px": 100,
+        "direction": "concentrate",
+        "sgmc_delta": -0.005461,
+        "declared_model_delta": -0.002067
+      },
+      {
+        "prior": "w_evidence",
+        "frac": 0.1,
+        "block_px": 100,
+        "direction": "inverted",
+        "sgmc_delta": -0.006963,
+        "declared_model_delta": -0.014123
+      },
+      {
+        "prior": "w_evidence",
+        "frac": 0.2,
+        "direction": "concentrate",
+        "sgmc_delta": -0.010423,
+        "declared_model_delta": -0.008693
+      },
+      {
+        "prior": "phys_only",
+        "frac": 0.2,
+        "direction": "concentrate",
+        "sgmc_delta": -0.011826,
+        "declared_model_delta": -0.010821
+      },
+      {
+        "prior": "cat_network",
+        "frac": 0.2,
+        "direction": "concentrate",
+        "sgmc_delta": -0.012462,
+        "declared_model_delta": -0.01625
+      },
+      {
+        "prior": "cat_nodes",
+        "frac": 0.2,
+        "direction": "concentrate",
+        "sgmc_delta": -0.012281,
+        "declared_model_delta": -0.0169
+      },
+      {
+        "prior": "random_null",
+        "frac": 0.2,
+        "direction": "concentrate",
+        "sgmc_delta": -0.012365,
+        "declared_model_delta": -0.019574
+      },
+      {
+        "prior": "random_null",
+        "frac": 0.2,
+        "direction": "inverted",
+        "sgmc_delta": -0.010382,
+        "declared_model_delta": -0.019623
+      }
+    ],
+    "reading": "Every prior and every dose loses against the independent-fault control, including the randomised null, so most of the loss is the generic cost of replacing a surviving dot with a thinned-away neighbour rather than a failure of the ordering. The ordering itself does carry signal: at 20% the parent's own evidence surface recovers +0.0019 of the randomised -0.0124 loss on the control and +0.0109 on the declared model, and at 10 km blocks concentrating beats the inverted direction by +0.0015 (control) and +0.0121 (declared model). The loss grows roughly linearly with dose; nothing in this grid is predicted to gain."
+  },
+  "proxy_audit_file": "evidence/proxy_audit_concentration.json",
+  "r0_sgmc_proxy_dti": 0.09606,
+  "r0_declared_model_dti": 0.26114,
+  "input_manifest_sha256": "a0d9ea4c5600329d3d42570679671d6f34d8b1614419c4de54e0707a4b82139a",
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-CONC_C10_b5km-20261023-3127dbd4",
+      "site": "GEMSDOE92",
+      "name": "h33-h33-2-b2-CONC_C10_b5km-20261023-3127dbd4.tif",
+      "file_zeros": "releases/h33-h33-2-b2-CONC_C10_b5km-20261023-3127dbd4-zeros.tif",
+      "file_nan": "releases/h33-h33-2-b2-CONC_C10_b5km-20261023-3127dbd4.tif",
+      "sha8": "3127dbd4",
+      "change_desc": "move 3765 dots (10.00%) from the lowest-prior to the highest-prior 5 km blocks of the parent's own evidence surface; removal by exact marginal DTI loss, placement by exact marginal DTI gain; count held at 37654",
+      "notes": "MODEL range [-0.021,+0.011]; SGMC-off-catalogue PROXY delta -0.004851; declared w-MODEL delta -0.000391; block-density CV 0.9014 -> 1.1192; see evidence/concentration.json",
+      "parent": "h33-h33-2-b2",
+      "axis": "CONCENTRATION",
+      "value": "C10_b5km",
+      "n_dots": 37654,
+      "pct_changed": 9.998938,
+      "sha256": "3127dbd4ca478b4bae5ec7abfeb24631ab3fb770e5e5e35db5f20bf3635c2904",
+      "sha256_zeros": "8937ba3fac4fce149d04ff3cf9c226e3766a017c65707151cf2ab37f25159a6a",
+      "primary_file": "h33-h33-2-b2-CONC_C10_b5km-20261023-3127dbd4.tif",
+      "fallback_file": "h33-h33-2-b2-CONC_C10_b5km-20261023-3127dbd4-zeros.tif",
+      "primary_encoding": "NaN outside footprint",
+      "fallback_encoding": "zero outside footprint",
+      "status": "BUILT",
+      "predicted_change": "MODEL:-0.001",
+      "predicted_range": "[-0.021,+0.011]",
+      "prediction_scope": "MODEL scenario range only; public-chunk changes under 0.01 are no evidence. PROXY instruments are diagnostics, never gates.",
+      "sgmc_control_proxy": {
+        "evidence_label": "PROXY",
+        "dti": 0.091209,
+        "delta_vs_r0": -0.004851,
+        "n_withheld_control_pixels": 62703
+      },
+      "declared_model": {
+        "evidence_label": "MODEL",
+        "dti_on_evidence_weight_w": 0.260749,
+        "delta_vs_r0": -0.000391
+      },
+      "parent_diff": {
+        "removed": 3765,
+        "added": 3765,
+        "shared": 33889,
+        "moved_pct": 9.998938,
+        "symmetric_diff_px": 7530,
+        "min_catalogue_distance_px": 2.2361,
+        "mean_link_distance_added_to_nearest_removed_px": 64.637
+      },
+      "block_stats_before": {
+        "block_px": 50,
+        "block_km": 5.0,
+        "n_blocks_in_footprint": 2056,
+        "dots_per_block_mean": 17.949,
+        "block_density_cv": 0.9014,
+        "block_density_min": 0,
+        "block_density_max": 85
+      },
+      "block_stats_after": {
+        "block_px": 50,
+        "block_km": 5.0,
+        "n_blocks_in_footprint": 2056,
+        "dots_per_block_mean": 17.949,
+        "block_density_cv": 1.1192,
+        "block_density_min": 0,
+        "block_density_max": 126
+      },
+      "concentration_stats": {
+        "frac": 0.1,
+        "n_moved": 3765,
+        "pct_of_parent_dots": 9.9989,
+        "n_source_blocks": 1035,
+        "n_destination_blocks": 397,
+        "prior_mean_source_blocks": 0.037881,
+        "prior_mean_destination_blocks": 0.087206,
+        "prior_mean_dots_removed": 0.043586,
+        "prior_mean_dots_added": 0.096494,
+        "quota_min": 1,
+        "quota_max": 41
+      },
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; CONCENTRATION move 10% of dots from lowest- to highest-prior 5 km blocks; fixed 37654; MODEL:-0.001",
+      "gate_status": "PASS (local reread; file not tracked in public Git repo)",
+      "git_sha_at_build": "9a0f47b53f13047b0421d0d3599a8d267a182641"
+    },
+    {
+      "id": "h33-h33-2-b2-CONC_C15_b5km-20261023-bb01093f",
+      "site": "GEMSDOE92",
+      "name": "h33-h33-2-b2-CONC_C15_b5km-20261023-bb01093f.tif",
+      "file_zeros": "releases/h33-h33-2-b2-CONC_C15_b5km-20261023-bb01093f-zeros.tif",
+      "file_nan": "releases/h33-h33-2-b2-CONC_C15_b5km-20261023-bb01093f.tif",
+      "sha8": "bb01093f",
+      "change_desc": "move 5648 dots (15.00%) from the lowest-prior to the highest-prior 5 km blocks of the parent's own evidence surface; removal by exact marginal DTI loss, placement by exact marginal DTI gain; count held at 37654",
+      "notes": "MODEL range [-0.023,+0.011]; SGMC-off-catalogue PROXY delta -0.007066; declared w-MODEL delta -0.004116; block-density CV 0.9014 -> 1.2314; see evidence/concentration.json",
+      "parent": "h33-h33-2-b2",
+      "axis": "CONCENTRATION",
+      "value": "C15_b5km",
+      "n_dots": 37654,
+      "pct_changed": 14.999734,
+      "sha256": "bb01093fece239dd357015872281fac2873e5044b07a9829bbacbed33f6630f9",
+      "sha256_zeros": "1229a0fe1f4f9d623ef8ae0fd5a5ba13013203c9e2760deaacb7611ad30085ed",
+      "primary_file": "h33-h33-2-b2-CONC_C15_b5km-20261023-bb01093f.tif",
+      "fallback_file": "h33-h33-2-b2-CONC_C15_b5km-20261023-bb01093f-zeros.tif",
+      "primary_encoding": "NaN outside footprint",
+      "fallback_encoding": "zero outside footprint",
+      "status": "BUILT",
+      "predicted_change": "MODEL:-0.003",
+      "predicted_range": "[-0.023,+0.011]",
+      "prediction_scope": "MODEL scenario range only; public-chunk changes under 0.01 are no evidence. PROXY instruments are diagnostics, never gates.",
+      "sgmc_control_proxy": {
+        "evidence_label": "PROXY",
+        "dti": 0.088994,
+        "delta_vs_r0": -0.007066,
+        "n_withheld_control_pixels": 62703
+      },
+      "declared_model": {
+        "evidence_label": "MODEL",
+        "dti_on_evidence_weight_w": 0.257025,
+        "delta_vs_r0": -0.004116
+      },
+      "parent_diff": {
+        "removed": 5648,
+        "added": 5648,
+        "shared": 32006,
+        "moved_pct": 14.999734,
+        "symmetric_diff_px": 11296,
+        "min_catalogue_distance_px": 2.2361,
+        "mean_link_distance_added_to_nearest_removed_px": 47.949
+      },
+      "block_stats_before": {
+        "block_px": 50,
+        "block_km": 5.0,
+        "n_blocks_in_footprint": 2056,
+        "dots_per_block_mean": 17.949,
+        "block_density_cv": 0.9014,
+        "block_density_min": 0,
+        "block_density_max": 85
+      },
+      "block_stats_after": {
+        "block_px": 50,
+        "block_km": 5.0,
+        "n_blocks_in_footprint": 2056,
+        "dots_per_block_mean": 17.949,
+        "block_density_cv": 1.2314,
+        "block_density_min": 0,
+        "block_density_max": 146
+      },
+      "concentration_stats": {
+        "frac": 0.15,
+        "n_moved": 5648,
+        "pct_of_parent_dots": 14.9997,
+        "n_source_blocks": 1251,
+        "n_destination_blocks": 400,
+        "prior_mean_source_blocks": 0.04117,
+        "prior_mean_destination_blocks": 0.087206,
+        "prior_mean_dots_removed": 0.047483,
+        "prior_mean_dots_added": 0.096478,
+        "quota_min": 1,
+        "quota_max": 61
+      },
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; CONCENTRATION move 15% of dots from lowest- to highest-prior 5 km blocks; fixed 37654; MODEL:-0.003",
+      "gate_status": "PASS (local reread; file not tracked in public Git repo)",
+      "git_sha_at_build": "9a0f47b53f13047b0421d0d3599a8d267a182641"
+    },
+    {
+      "id": "h33-h33-2-b2-CONC_C20_b5km-20261023-8c425d13",
+      "site": "GEMSDOE92",
+      "name": "h33-h33-2-b2-CONC_C20_b5km-20261023-8c425d13.tif",
+      "file_zeros": "releases/h33-h33-2-b2-CONC_C20_b5km-20261023-8c425d13-zeros.tif",
+      "file_nan": "releases/h33-h33-2-b2-CONC_C20_b5km-20261023-8c425d13.tif",
+      "sha8": "8c425d13",
+      "change_desc": "move 7531 dots (20.00%) from the lowest-prior to the highest-prior 5 km blocks of the parent's own evidence surface; removal by exact marginal DTI loss, placement by exact marginal DTI gain; count held at 37654",
+      "notes": "MODEL range [-0.026,+0.011]; SGMC-off-catalogue PROXY delta -0.010416; declared w-MODEL delta -0.008703; block-density CV 0.9014 -> 1.3422; see evidence/concentration.json",
+      "parent": "h33-h33-2-b2",
+      "axis": "CONCENTRATION",
+      "value": "C20_b5km",
+      "n_dots": 37654,
+      "pct_changed": 20.000531,
+      "sha256": "8c425d133b6d824cbd00c325f32e962413cfb26cdcb59f8c1415e32ff4f2f416",
+      "sha256_zeros": "accd73b13c395b52ad9258cdfadea1d1350bb348ca5ac50034ce7ca5acc95e1f",
+      "primary_file": "h33-h33-2-b2-CONC_C20_b5km-20261023-8c425d13.tif",
+      "fallback_file": "h33-h33-2-b2-CONC_C20_b5km-20261023-8c425d13-zeros.tif",
+      "primary_encoding": "NaN outside footprint",
+      "fallback_encoding": "zero outside footprint",
+      "status": "BUILT",
+      "predicted_change": "MODEL:-0.005",
+      "predicted_range": "[-0.026,+0.011]",
+      "prediction_scope": "MODEL scenario range only; public-chunk changes under 0.01 are no evidence. PROXY instruments are diagnostics, never gates.",
+      "sgmc_control_proxy": {
+        "evidence_label": "PROXY",
+        "dti": 0.085644,
+        "delta_vs_r0": -0.010416,
+        "n_withheld_control_pixels": 62703
+      },
+      "declared_model": {
+        "evidence_label": "MODEL",
+        "dti_on_evidence_weight_w": 0.252437,
+        "delta_vs_r0": -0.008703
+      },
+      "parent_diff": {
+        "removed": 7531,
+        "added": 7531,
+        "shared": 30123,
+        "moved_pct": 20.000531,
+        "symmetric_diff_px": 15062,
+        "min_catalogue_distance_px": 2.2361,
+        "mean_link_distance_added_to_nearest_removed_px": 40.317
+      },
+      "block_stats_before": {
+        "block_px": 50,
+        "block_km": 5.0,
+        "n_blocks_in_footprint": 2056,
+        "dots_per_block_mean": 17.949,
+        "block_density_cv": 0.9014,
+        "block_density_min": 0,
+        "block_density_max": 85
+      },
+      "block_stats_after": {
+        "block_px": 50,
+        "block_km": 5.0,
+        "n_blocks_in_footprint": 2056,
+        "dots_per_block_mean": 17.949,
+        "block_density_cv": 1.3422,
+        "block_density_min": 0,
+        "block_density_max": 167
+      },
+      "concentration_stats": {
+        "frac": 0.2,
+        "n_moved": 7531,
+        "pct_of_parent_dots": 20.0005,
+        "n_source_blocks": 1416,
+        "n_destination_blocks": 403,
+        "prior_mean_source_blocks": 0.04365,
+        "prior_mean_destination_blocks": 0.087206,
+        "prior_mean_dots_removed": 0.050752,
+        "prior_mean_dots_added": 0.096506,
+        "quota_min": 1,
+        "quota_max": 82
+      },
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; CONCENTRATION move 20% of dots from lowest- to highest-prior 5 km blocks; fixed 37654; MODEL:-0.005",
+      "gate_status": "PASS (local reread; file not tracked in public Git repo)",
+      "git_sha_at_build": "9a0f47b53f13047b0421d0d3599a8d267a182641"
+    }
+  ],
+  "scope_note": "No submission, leaderboard, hidden labels or off-manifest data accessed. Candidate rasters are generated locally and gitignored.",
+  "proxy_audit": {
+    "evidence_label": "PROXY",
+    "source": "evidence/proxy_audit_concentration.json",
+    "catalogue_hide_and_recover": {
+      "evaluator": "gems57-pooled-hide-v2",
+      "withheld_positive_pixels": 22663,
+      "ci_method": "paired 20 km spatial-block bootstrap, 1,000 draws",
+      "dti_by_arm": {
+        "R0": 0.004006,
+        "C10_b5km": 0.005813,
+        "C15_b5km": 0.005859,
+        "C20_b5km": 0.005876
+      },
+      "ci95_by_arm": {
+        "R0": [
+          0.003424,
+          0.00469
+        ],
+        "C10_b5km": [
+          0.00492,
+          0.006847
+        ],
+        "C15_b5km": [
+          0.004935,
+          0.006924
+        ],
+        "C20_b5km": [
+          0.004923,
+          0.006976
+        ]
+      },
+      "delta_vs_r0": {
+        "R0": 0.0,
+        "C10_b5km": 0.001807,
+        "C15_b5km": 0.001853,
+        "C20_b5km": 0.00187
+      },
+      "caveat": "Scores recovery of KNOWN catalogue pixels, which the organisers mask out of the live metric; it is the weaker analogue of new-fault truth."
+    },
+    "sgmc_off_catalogue_control": {
+      "evidence_label": "PROXY",
+      "truth_pixels": 62703,
+      "dti_by_arm": {
+        "R0": 0.09606,
+        "C10_b5km": 0.091209,
+        "C15_b5km": 0.088994,
+        "C20_b5km": 0.085644
+      },
+      "delta_vs_r0": {
+        "R0": 0.0,
+        "C10_b5km": -0.004851,
+        "C15_b5km": -0.007066,
+        "C20_b5km": -0.010416
+      },
+      "caveat": "Real faults absent from the competition catalogue, i.e. the same class as the new-fault target; the better of the two analogues."
+    },
+    "leakage_canaries": {
+      "max_symmetric_auc": 0.55314,
+      "stop_and_investigate": false,
+      "features": {
+        "training_band_3_tmi_hg": {
+          "auc": 0.498777,
+          "symmetric_auc": 0.501223,
+          "status": "REPORT_ONLY_PASS"
+        },
+        "training_band_18_gravity_hg": {
+          "auc": 0.481775,
+          "symmetric_auc": 0.518225,
+          "status": "REPORT_ONLY_PASS"
+        },
+        "training_band_19_detrended_elevation_slope": {
+          "auc": 0.55314,
+          "symmetric_auc": 0.55314,
+          "status": "REPORT_ONLY_PASS"
+        }
+      }
+    },
+    "instrument_disagreement": "The two instruments disagree in sign for this axis: the SGMC control falls monotonically with dose while the catalogue hide-and-recover rises by about +0.0018 at every dose. Because the live metric scores new-fault pixels only, the SGMC control is weighted more heavily in the MODEL prediction, but with 3 scored submissions a week the disagreement is itself the finding: no dose in this grid is predicted to move the live score by 0.01."
+  }
+}

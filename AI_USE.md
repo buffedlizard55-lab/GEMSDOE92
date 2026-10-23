@@ -84,3 +84,26 @@ ranking) it is blank or explicitly marked.
 ## Session 3 — controlled PRUNE collar rungs (2026-10-23)
 
 Arena.ai Agent Mode wrote the manifest-pinned restore script, exact DTI refill primitive, PRUNE rung builder, report-only proxy audit, tests, and current-session documentation. It rebuilt R0 exactly and generated three local candidate GeoTIFF pairs; it did not submit, contact competition/leaderboard pages, contact Dropbox, access credentials, or read held-out competition labels. Inputs were read only after SHA-256/byte verification. Human still chooses and submits, confirms `TOP_PUBLIC` and weekly capacity, checks data-use permissions, and transcribes receipt evidence. The SGMC/control and catalogue hide-and-recover instruments are explicitly `PROXY`, never scores.
+
+---
+
+## Session 4 — CONCENTRATION dose-response (2026-10-23)
+
+**What the AI wrote.** `scripts/concentration_axis.py` (exact per-dot removal loss, quota-respecting
+exact-greedy placement, block geometry), `scripts/build_concentration_variants.py` (the release
+builder), `scripts/screen_concentration_priors.py` (prior and dose screen against a randomised-block
+null), the merge step for the report-only proxy audit, and the current-session README, SLOT_PLAN,
+docs/SUBMIT.md and IRREGULARITIES entries. It also generalised `scripts/report_proxies.py` to take a
+receipt path so the same instrument can audit any build.
+
+**What the AI decided.** The axis (CONCENTRATION), the block size (5 km), the block prior (the parent's
+own evidence surface), the dose-response values (10/15/20%), the use of a randomised-block null, and the
+prediction numbers — all derived from measured local instruments, none supplied by the human.
+
+**What the human must decide.** Whether to spend any slot at all (the AI recommends against it), which
+file to upload if so, `TOP_PUBLIC` with its date, the remaining weekly quota, the data-use question
+about competition rasters in a public repo, and every receipt transcription.
+
+**What the AI did not do.** No submission, no leaderboard or drivendata.org access, no Dropbox, no
+credentials, no held-out competition labels, no label probing. Inputs were read only after SHA-256 and
+byte-length verification. No number was invented; where a value was unknown it is blank or labelled.

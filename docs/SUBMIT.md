@@ -1,29 +1,76 @@
 # Candidate handoff — human review and submission only
 
-**Do not upload until you confirm the weekly quota and independently review the selected raster.** The agent does not submit. The parent score `0.2778` is an owner-reported **CLAIM**, not a receipt-backed score. There is no receipt-backed best score in this checkout.
+**Do not upload until you confirm the weekly quota and independently review the selected raster.**
+The agent does not submit. The parent score `0.2778` is an owner-reported **CLAIM**, not a
+receipt-backed score; there is no receipt-backed best score in this checkout.
 
-All candidates have 37,654 binary unit-mass dots; each changes only the PRUNE collar/reallocation rule relative to exactly rebuilt R0. The form note is at most 140 characters. The NaN-outside primary and zero-outside fallback encode the same inside-footprint raster; upload only one file for any slot.
+## This session: CONCENTRATION (2026-10-23)
 
-| Suggested order | Local primary raster (NaN outside) | Fallback (`-zeros.tif`) | Submission name | Note | Count moved | NaN SHA-256 | Format receipt |
-|---|---|---|---|---|---:|---|---|
-| 1 | `releases/h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277.tif` | `releases/h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277-zeros.tif` | `h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277` | `h33-h33-2-b2; PRUNE collar 3.5px; fixed 37654; remove/refill 2702 (7.18%); pred MODEL:+0.003` | 2,702 | `a121a27751381fa2f6b9bf8629e53b1a4a57df5fcab85ed0d3bf548c33ca95ab` | Local disk reread PASS; 37,654 dots; EPSG:32611; exact sample grid; float32, 1 band; NaN outside; values [0,1]; zero catalogue mass; min catalogue distance 3.606 px. |
-| 2 | `releases/h33-h33-2-b2-PRUNEp2.5px-refill-20261023-6d7a61ba.tif` | `releases/h33-h33-2-b2-PRUNEp2.5px-refill-20261023-6d7a61ba-zeros.tif` | `h33-h33-2-b2-PRUNEp2.5px-refill-20261023-6d7a61ba` | `h33-h33-2-b2; PRUNE collar 2.5px; fixed 37654; remove/refill 941 (2.50%); pred MODEL:+0.001` | 941 | `6d7a61ba2e980808640db9e0b7b1a787243abf5f833bb7cd25c5a35af96685c8` | Local disk reread PASS; 37,654 dots; EPSG:32611; exact sample grid; float32, 1 band; NaN outside; values [0,1]; zero catalogue mass; min catalogue distance 2.828 px. |
-| 3 | `releases/h33-h33-2-b2-PRUNEp4.5px-refill-20261023-ebace30d.tif` | `releases/h33-h33-2-b2-PRUNEp4.5px-refill-20261023-ebace30d-zeros.tif` | `h33-h33-2-b2-PRUNEp4.5px-refill-20261023-ebace30d` | `h33-h33-2-b2; PRUNE collar 4.5px; fixed 37654; remove/refill 4848 (12.88%); pred MODEL:-0.004` | 4,848 | `ebace30d4386c7b979badb0d6512e79b62f822839e42c4fe2e8cf35ed9c46de4` | Local disk reread PASS; 37,654 dots; EPSG:32611; exact sample grid; float32, 1 band; NaN outside; values [0,1]; zero catalogue mass; min catalogue distance 5.000 px. |
+All candidates have 37,654 binary unit-mass dots and change only the block allocation of the budget.
+Each is a NaN-outside primary plus a zero-outside fallback encoding the same inside-footprint raster —
+**upload only one file per slot**. Form notes are 113 characters.
+
+| Order | Local primary raster (NaN outside) | Fallback (`-zeros.tif`) | Submission name | Note | Dots moved | NaN SHA-256 |
+|---|---|---|---|---:|---:|---|
+| 1 | `releases/h33-h33-2-b2-CONC_C10_b5km-20261023-3127dbd4.tif` | `…-3127dbd4-zeros.tif` | `h33-h33-2-b2-CONC_C10_b5km-20261023-3127dbd4` | `h33-h33-2-b2; CONCENTRATION move 10% of dots from lowest- to highest-prior 5 km blocks; fixed 37654; MODEL:-0.001` | 3,765 (10.00%) | `3127dbd4ca478b4bae5ec7abfeb24631ab3fb770e5e5e35db5f20bf3635c2904` |
+| 2 | `releases/h33-h33-2-b2-CONC_C15_b5km-20261023-bb01093f.tif` | `…-bb01093f-zeros.tif` | `h33-h33-2-b2-CONC_C15_b5km-20261023-bb01093f` | `h33-h33-2-b2; CONCENTRATION move 15% of dots from lowest- to highest-prior 5 km blocks; fixed 37654; MODEL:-0.003` | 5,648 (15.00%) | `bb01093fece239dd357015872281fac2873e5044b07a9829bbacbed33f6630f9` |
+| 3 | `releases/h33-h33-2-b2-CONC_C20_b5km-20261023-8c425d13.tif` | `…-8c425d13-zeros.tif` | `h33-h33-2-b2-CONC_C20_b5km-20261023-8c425d13` | `h33-h33-2-b2; CONCENTRATION move 20% of dots from lowest- to highest-prior 5 km blocks; fixed 37654; MODEL:-0.005` | 7,531 (20.00%) | `8c425d133b6d824cbd00c325f32e962413cfb26cdcb59f8c1415e32ff4f2f416` |
+
+**Format receipt (identical for all six files, from a disk re-read after writing):** PASS on 10 gates —
+CRS EPSG:32611 and transform identical to `sample_submission.tif`; shape 3730×3292; float32, 1 band;
+values in [0,1]; no NaN inside the footprint; NaN outside (zeros twin: 0 outside); zero mass on
+catalogue pixels; no dot within 2 px of the catalogue (minimum 2.2361 px, R0's own rule); 37,654 dots.
+
+### Recommendation
+
+**No slot is recommended for these three.** No dose is predicted to move the live score by 0.01, and
+the two REPORT-ONLY instruments disagree in sign. If you spend one slot anyway, take order 1.
 
 ## Mechanism and uncertainty
 
-- **Hypothesis:** increasing the catalogue collar may remove detections whose 300 m triangular-kernel support is wasted near organizer-masked mapped faults; a fixed-count refill onto H19-5 lineaments may restore useful off-collar fault coverage.
-- **Mechanism:** each variant removes the parent dots at/below its stated radius, then fills the same number of pixels using greedy exact expected-DTI marginal gain on a deterministic label-free prior from pinned H19-5, TMI horizontal gradient, gravity horizontal gradient, and detrended-elevation slope.
-- **Mimics:** lithologic contacts, caldera ring fractures, and erosional scarps can resemble fault-related lineaments.
-- **Prediction:** wide, low-confidence **MODEL** ranges are recorded in `evidence/prune_rungs.json` and the mechanism cards. Treat public live changes under 0.01 as no evidence.
-- **Report-only diagnostics (never gates):** catalogue hide-and-recover PROXY, `n=22,663` withheld positives, paired 20 km spatial-block bootstrap 95% CI: R0 `0.004006 [0.003424,0.004690]`; p2.5 `0.000785 [0.000658,0.000922]`; p3.5 and p4.5 `0.000 [0,0]`. Single-feature canary maximum symmetric AUC is `0.55314` (below the `0.90` investigate threshold). Off-catalogue SGMC control PROXY deltas versus R0 are `+0.00018`, `+0.00031`, and `-0.00360`. These figures are local PROXY diagnostics, not scores, not gates, and not evidence of live performance; p3.5/p4.5's zero recovery is a caution, not a prediction.
-- **Falsifier:** the human receipt changes the posterior. A change of magnitude below 0.01 is inconclusive; a larger opposite-sign change rejects the stated collar mechanism for that rung.
+- **Hypothesis:** the marginal fault yield per dot is higher inside 5 km blocks where the parent's own
+  geophysical evidence surface is strong, so moving budget from the weakest to the strongest blocks
+  improves distance-tolerant detection.
+- **Mechanism:** the 300 m triangular kernel rewards covering continuous, strongly expressed
+  lineaments — one dot inside a dense scarp segment converts several truth pixels at once, the regime
+  in which a dot pays for its 0.2 denominator cost. R0's Poisson-disk thinning instead spaces dots
+  evenly along every H19-5 ridge regardless of expression, so block evidence and block dot count are
+  only partly aligned (ρ = +0.82 between block evidence and block dot count, but only +0.12 for
+  catalogue-network density).
+- **Mimics:** TMI/gravity gradient highs and steep slope also mark lithologic contacts, dikes, caldera
+  ring fractures and erosional scarps, so the strongest blocks can be geophysically loud and
+  structurally barren.
+- **Prediction:** MODEL −0.001 / −0.003 / −0.005 with ranges [−0.021,+0.011] / [−0.023,+0.011] /
+  [−0.026,+0.011]. Treat public live changes under 0.01 as no evidence.
+- **Report-only diagnostics (never gates):**
+  - SGMC off-catalogue control, 62,703 pixels: R0 `0.096060`; deltas `−0.004851`, `−0.007066`,
+    `−0.010416`. This is the closer analogue of new-fault truth.
+  - Catalogue hide-and-recover, 22,663 withheld positives, paired 20 km block bootstrap: R0 `0.004006`
+    `[0.003424,0.004690]`; deltas `+0.001807`, `+0.001853`, `+0.001870`. This scores known catalogued
+    faults, which the organisers mask out of the live metric.
+  - Leakage canary: maximum symmetric AUC `0.55314` (band 19 slope), below the 0.90 investigate
+    threshold. No single feature leaks.
+  - Block dot-density CV at 5 km: R0 `0.9014` → `1.1192` / `1.2314` / `1.3422`.
+- **Falsifier:** a receipt gain ≥ +0.01 at any dose rejects "R0's block allocation is already locally
+  optimal" and vindicates the hide-and-recover instrument over the SGMC control. A loss materially
+  worse than the stated ranges shows refill pixels degrade faster than either instrument indicates.
 
-## Reproduction and format receipt
+## Reproduction
 
-1. Install dependencies from `requirements.txt`.
-2. Run `python scripts/restore_inputs.py`; every manifest item is SHA-256 and byte-length verified before use and resides in `.cache/gems_inputs/`.
-3. Run `python scripts/build_prune_rungs.py`; it rebuilds R0 and stops unless both parent hashes match exactly, then builds and rereads all six files.
-4. `evidence/prune_rungs.json` records parent hashes, input-manifest hash, full output hashes, parent diffs, notes, and validation checks. `ledger/submissions.csv` preserves the five earlier main-branch rows and appends three new `BUILT` rows.
+1. `pip install -r requirements.txt`
+2. `python scripts/restore_inputs.py` — all 12 pinned inputs SHA-256 and byte-length verified into
+   `.cache/gems_inputs/`.
+3. `python scripts/build_concentration_variants.py` — rebuilds R0, refuses to continue unless both
+   parent hashes match exactly, builds and re-reads all six rasters.
+4. `python scripts/report_proxies.py --receipt evidence/concentration.json --out evidence/proxy_audit_concentration.json`
+   then `python scripts/merge_proxy_audit.py` — REPORT-ONLY instruments, folded into the receipt.
+5. `python scripts/screen_concentration_priors.py 0.10 0.20` — the prior/dose screen that ordered this
+   build (slow; not needed to reproduce the rasters).
 
-**Public-repository safeguard:** competition/candidate TIFF files are gitignored and must remain untracked. The six local TIFFs are not included in the PR. If they are absent from your local workspace, regenerate them with the command above; do not substitute another file. Fill `receipt_score` and `receipt_date` only from the human's submission-page receipt.
+`evidence/concentration.json` carries parent hashes, the input-manifest hash, both encoding hashes,
+parent diffs, block statistics, the screening table and the merged proxy audit.
+`ledger/submissions.csv` keeps the nine earlier rows and appends three `BUILT` CONCENTRATION rows.
+
+**Public-repository safeguard:** competition and candidate TIFFs are gitignored and untracked; the six
+local TIFFs are not in the PR. Regenerate them with step 3 if absent — do not substitute another file.
+Fill `receipt_score` and `receipt_date` only from the human's submission-page receipt.

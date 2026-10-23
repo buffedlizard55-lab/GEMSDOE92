@@ -1,35 +1,35 @@
 {
-  "h33-h33-2-b2-PRUNEp2.5px-refill-20261023-6d7a61ba": {
+  "h33-h33-2-b2-CONC_C10_b5km-20261023-3127dbd4": {
     "parent": "h33-h33-2-b2",
-    "axis": "PRUNE",
-    "value": "p2.5px-refill",
-    "hypothesis": "At fixed mass, removing every R0 dot within 2.5 pixels of the known-fault catalogue and reallocating that mass to eligible un-emitted H19-5 ridge pixels improves distance-tolerant fault detection if near-catalogue kernel overlap wastes precision on mapped traces.",
-    "mechanism": "A triangular 300 m kernel gives less incremental credit when emitted mass lies close to already-known faults. Each replacement is selected by greedy exact marginal gain on the declared label-free prior; R0 count stays at 37,654. This is a controlled collar-radius change, not a mass change.",
-    "non_fault_mimic": "Magnetic/gravity edges and H19-5 lineaments can trace lithologic contacts, caldera ring fractures, or erosional scarps rather than brittle faults.",
-    "predicted_sign_and_size": "MODEL:+0.001 vs R0, with wide [-0.010,+0.012] scenario range; MODEL only, not a score.",
-    "falsifier": "A receipt change <= -0.01 for the 2.5/3.5 px rungs, or >= +0.01 gain for the 4.5 px rung, would respectively reject a beneficial inner collar or reject the predicted outer-collar turnover.",
+    "axis": "CONCENTRATION",
+    "value": "C10_b5km",
+    "hypothesis": "At fixed mass, the marginal fault yield per dot is higher inside 5 km blocks where the parent's own geophysical evidence surface is strong, so moving 10% of the budget out of the weakest blocks into the strongest blocks raises distance-tolerant fault detection.",
+    "mechanism": "The 300 m triangular kernel rewards covering continuous, strongly expressed lineaments: one dot inside a dense scarp segment converts several truth pixels at once, which is the regime in which a dot pays for its 0.2 denominator cost. R0's Poisson-disk thinning instead spaces dots evenly along every H19-5 ridge regardless of how strongly that ridge is expressed in TMI/gravity gradient and slope, so block mean evidence and block dot count are only partly aligned.",
+    "non_fault_mimic": "TMI and gravity horizontal-gradient highs and steep slope also mark lithologic contacts, dikes, caldera ring fractures and erosional scarps, so the strongest blocks can be geophysically loud and structurally barren; the destination pixels are also the thinned-away neighbours of surviving dots, which are partly redundant.",
+    "predicted_sign_and_size": "MODEL:-0.001 vs R0, scenario range [-0.021,+0.011]; MODEL only, not a score. The two local instruments disagree in sign: the SGMC off-catalogue control, which is the closer analogue of new-fault truth, falls monotonically with dose (-0.004851 here), while the catalogue hide-and-recover holdout, which scores known faults the organisers mask out, rises by about +0.0018 at every dose.",
+    "falsifier": "A receipt gain of at least +0.01 over R0 at any dose would reject the reading that R0's block allocation is already locally optimal and would vindicate the hide-and-recover instrument over the SGMC control. A loss materially worse than [-0.021,+0.011] at 10% would show the refill pixels degrade faster than either local instrument indicates, and would also rule out combining this axis with anything else.",
     "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
   },
-  "h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277": {
+  "h33-h33-2-b2-CONC_C15_b5km-20261023-bb01093f": {
     "parent": "h33-h33-2-b2",
-    "axis": "PRUNE",
-    "value": "p3.5px-refill",
-    "hypothesis": "At fixed mass, removing every R0 dot within 3.5 pixels of the known-fault catalogue and reallocating that mass to eligible un-emitted H19-5 ridge pixels improves distance-tolerant fault detection if near-catalogue kernel overlap wastes precision on mapped traces.",
-    "mechanism": "A triangular 300 m kernel gives less incremental credit when emitted mass lies close to already-known faults. Each replacement is selected by greedy exact marginal gain on the declared label-free prior; R0 count stays at 37,654. This is a controlled collar-radius change, not a mass change.",
-    "non_fault_mimic": "Magnetic/gravity edges and H19-5 lineaments can trace lithologic contacts, caldera ring fractures, or erosional scarps rather than brittle faults.",
-    "predicted_sign_and_size": "MODEL:+0.003 vs R0, with wide [-0.008,+0.015] scenario range; MODEL only, not a score.",
-    "falsifier": "A receipt change <= -0.01 for the 2.5/3.5 px rungs, or >= +0.01 gain for the 4.5 px rung, would respectively reject a beneficial inner collar or reject the predicted outer-collar turnover.",
+    "axis": "CONCENTRATION",
+    "value": "C15_b5km",
+    "hypothesis": "At fixed mass, the marginal fault yield per dot is higher inside 5 km blocks where the parent's own geophysical evidence surface is strong, so moving 15% of the budget out of the weakest blocks into the strongest blocks raises distance-tolerant fault detection.",
+    "mechanism": "The 300 m triangular kernel rewards covering continuous, strongly expressed lineaments: one dot inside a dense scarp segment converts several truth pixels at once, which is the regime in which a dot pays for its 0.2 denominator cost. R0's Poisson-disk thinning instead spaces dots evenly along every H19-5 ridge regardless of how strongly that ridge is expressed in TMI/gravity gradient and slope, so block mean evidence and block dot count are only partly aligned.",
+    "non_fault_mimic": "TMI and gravity horizontal-gradient highs and steep slope also mark lithologic contacts, dikes, caldera ring fractures and erosional scarps, so the strongest blocks can be geophysically loud and structurally barren; the destination pixels are also the thinned-away neighbours of surviving dots, which are partly redundant.",
+    "predicted_sign_and_size": "MODEL:-0.003 vs R0, scenario range [-0.023,+0.011]; MODEL only, not a score. The two local instruments disagree in sign: the SGMC off-catalogue control, which is the closer analogue of new-fault truth, falls monotonically with dose (-0.007066 here), while the catalogue hide-and-recover holdout, which scores known faults the organisers mask out, rises by about +0.0018 at every dose.",
+    "falsifier": "A receipt gain of at least +0.01 over R0 at any dose would reject the reading that R0's block allocation is already locally optimal and would vindicate the hide-and-recover instrument over the SGMC control. A loss materially worse than [-0.023,+0.011] at 15% would show the refill pixels degrade faster than either local instrument indicates, and would also rule out combining this axis with anything else.",
     "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
   },
-  "h33-h33-2-b2-PRUNEp4.5px-refill-20261023-ebace30d": {
+  "h33-h33-2-b2-CONC_C20_b5km-20261023-8c425d13": {
     "parent": "h33-h33-2-b2",
-    "axis": "PRUNE",
-    "value": "p4.5px-refill",
-    "hypothesis": "At fixed mass, removing every R0 dot within 4.5 pixels of the known-fault catalogue and reallocating that mass to eligible un-emitted H19-5 ridge pixels improves distance-tolerant fault detection if near-catalogue kernel overlap wastes precision on mapped traces.",
-    "mechanism": "A triangular 300 m kernel gives less incremental credit when emitted mass lies close to already-known faults. Each replacement is selected by greedy exact marginal gain on the declared label-free prior; R0 count stays at 37,654. This is a controlled collar-radius change, not a mass change.",
-    "non_fault_mimic": "Magnetic/gravity edges and H19-5 lineaments can trace lithologic contacts, caldera ring fractures, or erosional scarps rather than brittle faults.",
-    "predicted_sign_and_size": "MODEL:-0.004 vs R0, with wide [-0.018,+0.008] scenario range; MODEL only, not a score.",
-    "falsifier": "A receipt change <= -0.01 for the 2.5/3.5 px rungs, or >= +0.01 gain for the 4.5 px rung, would respectively reject a beneficial inner collar or reject the predicted outer-collar turnover.",
+    "axis": "CONCENTRATION",
+    "value": "C20_b5km",
+    "hypothesis": "At fixed mass, the marginal fault yield per dot is higher inside 5 km blocks where the parent's own geophysical evidence surface is strong, so moving 20% of the budget out of the weakest blocks into the strongest blocks raises distance-tolerant fault detection.",
+    "mechanism": "The 300 m triangular kernel rewards covering continuous, strongly expressed lineaments: one dot inside a dense scarp segment converts several truth pixels at once, which is the regime in which a dot pays for its 0.2 denominator cost. R0's Poisson-disk thinning instead spaces dots evenly along every H19-5 ridge regardless of how strongly that ridge is expressed in TMI/gravity gradient and slope, so block mean evidence and block dot count are only partly aligned.",
+    "non_fault_mimic": "TMI and gravity horizontal-gradient highs and steep slope also mark lithologic contacts, dikes, caldera ring fractures and erosional scarps, so the strongest blocks can be geophysically loud and structurally barren; the destination pixels are also the thinned-away neighbours of surviving dots, which are partly redundant.",
+    "predicted_sign_and_size": "MODEL:-0.005 vs R0, scenario range [-0.026,+0.011]; MODEL only, not a score. The two local instruments disagree in sign: the SGMC off-catalogue control, which is the closer analogue of new-fault truth, falls monotonically with dose (-0.010416 here), while the catalogue hide-and-recover holdout, which scores known faults the organisers mask out, rises by about +0.0018 at every dose.",
+    "falsifier": "A receipt gain of at least +0.01 over R0 at any dose would reject the reading that R0's block allocation is already locally optimal and would vindicate the hide-and-recover instrument over the SGMC control. A loss materially worse than [-0.026,+0.011] at 20% would show the refill pixels degrade faster than either local instrument indicates, and would also rule out combining this axis with anything else.",
     "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
   }
 }

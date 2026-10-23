@@ -1,17 +1,50 @@
-# GEMSDOE92 — PRUNE axis session
+# GEMSDOE92 — CONCENTRATION axis session
 
 ## CURRENT STATE
-- **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots; exact rebuild matches both pinned zeros and NaN SHA-256 values. `0.2778` remains **CLAIM** (no receipt in this checkout).
-- **Best receipt**: none recorded.
-- **TOP_PUBLIC**: not supplied; human must provide value and observation date.
-- **Slots left this week**: unknown; human must check the entity's current rolling-week quota.
-- **AXIS this session**: PRUNE, chosen autonomously. New values: `p2.5px-refill`, `p3.5px-refill`, `p4.5px-refill`.
-- **Next 3 candidate slots (BUILT, not submitted)**:
-  1. `h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277` — 2,702 dots moved (7.18%); MODEL +0.003, wide range [-0.008,+0.015]; SGMC PROXY +0.00031 vs R0.
-  2. `h33-h33-2-b2-PRUNEp2.5px-refill-20261023-6d7a61ba` — 941 moved (2.50%); MODEL +0.001, range [-0.010,+0.012]; SGMC PROXY +0.00018.
-  3. `h33-h33-2-b2-PRUNEp4.5px-refill-20261023-ebace30d` — 4,848 moved (12.88%); MODEL -0.004, range [-0.018,+0.008]; SGMC PROXY -0.00360.
+- **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots; rebuilt bit-exactly through
+  H19-5 -> D1.5 -> D2.8 -> SOLO -> R0 and matched to both pinned raster SHA-256 values this session.
+  `0.2778` remains **CLAIM** (no receipt in this checkout).
+- **Best receipt**: none recorded. 12 files are `BUILT`, 0 are receipt-scored.
+- **TOP_PUBLIC**: not supplied; human must provide the value and its observation date.
+- **Slots left this week**: unknown; human must check the entity's rolling-week quota.
+- **AXIS this session**: CONCENTRATION, chosen autonomously (MASS and PRUNE values are already in the
+  ledger; SNAP and RELIEF need bands that are not separately pinned). New values: `C10_b5km`,
+  `C15_b5km`, `C20_b5km` — a dose-response at 5 km blocks.
+- **Next 3 candidate slots**: none of these three is recommended for a slot. The two REPORT-ONLY local
+  instruments disagree in sign, and no dose is predicted to move the live score by 0.01. If the human
+  spends one slot on this axis anyway to test whether R0 is locally optimal, use
+  `h33-h33-2-b2-CONC_C10_b5km-20261023-3127dbd4` (smallest dose, 10.00% moved).
+  1. `…-CONC_C10_b5km-…3127dbd4` — 3,765 dots moved (10.00%); MODEL −0.001, range [−0.021,+0.011];
+     SGMC PROXY −0.004851; hide-and-recover PROXY +0.001807.
+  2. `…-CONC_C15_b5km-…bb01093f` — 5,648 moved (15.00%); MODEL −0.003, range [−0.023,+0.011];
+     SGMC PROXY −0.007066; hide-and-recover PROXY +0.001853.
+  3. `…-CONC_C20_b5km-…8c425d13` — 7,531 moved (20.00%); MODEL −0.005, range [−0.026,+0.011];
+     SGMC PROXY −0.010416; hide-and-recover PROXY +0.001870.
 
-No file was submitted. The new candidate TIFFs are locally generated and gitignored. See `docs/SUBMIT.md`; prior main-branch candidate files remain in the ledger.
+No file was submitted. Candidate TIFFs are generated locally and gitignored. See `docs/SUBMIT.md`.
+
+## What this session found
+- **R0's block allocation is locally near-optimal.** At 5 km blocks R0's block dot-density CV is
+  0.9014; the variants push it to 1.1192 / 1.2314 / 1.3422, further from the 0.51–0.59 band the brief
+  associates with the best files.
+- **Most of the loss is generic, not a failure of the ordering.** A randomised-block null loses
+  −0.012365 on the independent-fault control at 20%; the parent's own evidence surface loses −0.010423.
+  The ordering is worth about +0.002 of control and +0.011 of declared model, but the ceiling sits
+  below R0 because refill pixels are the neighbours that Poisson-disk thinning discarded.
+- **The two REPORT-ONLY instruments disagree in sign** (SGMC off-catalogue negative and monotone in
+  dose; catalogue hide-and-recover positive and flat in dose). Logged in IRREGULARITIES: because the
+  live metric scores new-fault pixels only, the SGMC control is the better analogue, but at three
+  scored submissions a week the disagreement is itself the finding.
+
+## What we built this session (CONCENTRATION, 2026-10-23)
+- Verified all 12 pinned manifest hashes, then rebuilt R0 and matched both parent SHA-256 values
+- Screened four candidate block priors (parent evidence surface, geophysics-only, catalogue network
+  density, catalogue interaction-node density) against a randomised-block null, in both directions
+- Built 3 dose-response variants that differ ONLY in the fraction of the budget moved between 5 km
+  blocks; removal by exact marginal DTI loss, placement by exact marginal DTI gain
+- Independent parent-diff check: count held at 37,654, zero catalogue mass, min catalogue distance
+  2.2361 px (R0's own >2 px rule) on all three
+- All files pass all 10 format gates, re-read from disk after writing
 
 ## Verified facts
 - Metric: DTI with alpha 0.2, beta 0.8, triangular kernel R=300m (3px), float32 EPSG:32611 100m, per https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/

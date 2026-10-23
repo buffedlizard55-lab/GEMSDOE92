@@ -25,12 +25,18 @@ from gems57 import evaluate_holdout, grid as grid_mod, holdout, metric  # noqa: 
 
 
 def main() -> int:
+    import argparse
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--receipt", default="evidence/prune_rungs.json",
+                    help="build receipt whose variants become the compared arms")
+    ap.add_argument("--out", default="evidence/proxy_audit.json")
+    args = ap.parse_args()
     paths = verify_inputs()
     grid = grid_mod.load_grid(ROOT / ".cache" / "gems_inputs" / "bridge")
     arms: dict[str, np.ndarray] = {"R0": np.zeros(grid.shape, dtype=bool)}
     with rasterio.open(paths["parent_r0_zeros"]) as ds:
         arms["R0"] = (ds.read(1) > 0) & grid.footprint
-    receipt = json.loads((ROOT / "evidence" / "prune_rungs.json").read_text())
+    receipt = json.loads((ROOT / args.receipt).read_text())
     for item in receipt["variants"]:
         with rasterio.open(ROOT / "releases" / item["primary_file"]) as ds:
             arms[item["value"]] = (ds.read(1) > 0) & grid.footprint
@@ -54,8 +60,9 @@ def main() -> int:
         assert all_terms is not None
         terms_by_arm[arm_name] = all_terms
 
+    candidate = next((k for k in arms if k != "R0"), "R0")
     pooled = evaluate_holdout.pooled_summary(
-        terms_by_arm, draws=1000, seed=520810, candidate="p3.5px-refill"
+        terms_by_arm, draws=1000, seed=520810, candidate=candidate
     )
 
     # Report-only single-feature leakage canary on withheld known-catalogue
@@ -131,7 +138,7 @@ def main() -> int:
         },
         "warning": "These are catalogue/SGMC PROXY diagnostics, not live public scores, not private-set scores, not evidence of win probability, and never pass/fail gates.",
     }
-    out = ROOT / "evidence" / "proxy_audit.json"
+    out = ROOT / args.out
     out.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({
         "holdout_version": evaluate_holdout.VERSION,
