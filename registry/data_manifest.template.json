@@ -1,0 +1,32 @@
+{
+  "_README": [
+    "TEMPLATE ONLY. This file is deliberately NOT named data_manifest.json,",
+    "because it contains no real hashes and the toolkit must never accept a",
+    "manifest full of placeholders. Copy it, fill every sha256 from the actual",
+    "pinned files, and delete the _README key.",
+    "Only inputs listed here may be used (brief section 2, constraint 2).",
+    "Keep competition data out of git: data/ is gitignored."
+  ],
+  "files": [
+    {
+      "path": "reference/sample_submission.tif",
+      "role": "grid reference: CRS, shape, transform, dtype, footprint",
+      "sha256": "REPLACE_ME_WITH_64_HEX"
+    },
+    {
+      "path": "catalogue/fault_catalogue.tif",
+      "role": "known USGS/INGENIOUS fault pixels; zero-mass exclusion + PROXY holdout",
+      "sha256": "REPLACE_ME_WITH_64_HEX"
+    },
+    {
+      "path": "bands/tmi_gradient.tif",
+      "role": "SNAP axis only: edge/scarp response surface",
+      "sha256": "REPLACE_ME_WITH_64_HEX"
+    },
+    {
+      "path": "bands/detrended_elevation.tif",
+      "role": "RELIEF axis only: basin / piedmont / range-front terciles",
+      "sha256": "REPLACE_ME_WITH_64_HEX"
+    }
+  ]
+}

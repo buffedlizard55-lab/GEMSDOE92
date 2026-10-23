@@ -1,0 +1,8 @@
+# Pinned to the versions this session was tested with (2026-10-23).
+# Bit-identical float output can depend on these exact versions: record any
+# bump in the parent recipe's git_sha note.
+numpy==2.4.6
+scipy==1.17.1
+rasterio==1.4.4
+pandas==3.1.0
+pytest==9.1.1

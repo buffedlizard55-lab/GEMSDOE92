@@ -1,0 +1,16 @@
+# >>> competition data and derived rasters
+# Constraint 2: keep competition rasters out of a public repo. See
+# IRREGULARITIES.md item 4 -- this is a reversible decision, one word from the
+# human. The ledger stores sha256 + full params, so every raster in releases/ is
+# rebuildable without being committed.
+data/
+releases/*.tif
+releases/*.tif.aux.xml
+# <<<
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+*.egg-info/
+.DS_Store
