@@ -125,21 +125,93 @@ Exact `(parent, axis, value)` and raster hashes were compared against accessible
 
 The pinned `gems57-pooled-hide-v2` whole-component buffered catalogue holdout (seeds 20/30, `n=22,663` withheld known-catalogue pixels) returns R0 `0.004006 [0.003424,0.004690]`, p2.5 `0.000785 [0.000658,0.000922]`, and p3.5/p4.5 `0 [0,0]`; selected-band leakage canary max symmetric AUC is `0.55314`. Results are in `evidence/proxy_audit.json`. **Decision:** these are PROXY diagnostics only, not gates, scores, or live forecasts; investigate the large divergence from previous hide-and-recover summaries before using this instrument to rank future axes. Use human live receipts as the decision anchor.
 
+## 2026-10-23 (SNAP session) — the 3 px catalogue rule cannot be satisfied by any non-PRUNE descendant of R0
+
+**Observation.** R0 itself holds **2,171 dots within 3.0 px** of the catalogue
+(941 at 2.236 px, 670 at 2.828 px, 560 at exactly 3.0 px); its own recipe is
+`dot_thin(H19-5, 2.8) & d_cat > 2.0`. Brief constraint 4 asks for ≥3 px "unless
+AXIS=PRUNE". Any SNAP/RELIEF/MASS/CONCENTRATION descendant therefore inherits the
+violation, and the repo's `distance_from_catalogue` gate fails on inherited dots
+for every such file.
+
+**Impact — decision-changing.** Deleting the 1,611 dots at 2.236-2.828 px (4.3% of
+the file) would be a PRUNE edit, so it would confound the SNAP axis rather than
+clean it. Submitting without deleting them keeps the parameter that produced the
+incumbent's CLAIM 0.2778.
+
+**Decision.** SNAP candidates keep every inherited dot exactly where the parent
+put it, and enforce the ≥3 px rule on all **moved** dots (targets must satisfy
+`d_cat > 3.0`; measured minimum among moved dots 3.16 px). Consequence: the gate
+`distance_from_catalogue` reports 2,114 / 1,999 / 1,634 in-collar dots and fails,
+which is recorded verbatim in `evidence/snap_session.json` and in
+`docs/SUBMIT.md` rather than papered over with a PRUNE-style exemption flag.
+**The human decides** whether a candidate carrying 4-5% inherited in-collar mass
+is acceptable for a slot; the brief's alternative (drop them) is a different
+experiment and needs its own parent.
+
+## 2026-10-23 (SNAP session) — the brief's block-CV reference band (0.51-0.59) does not identify a direction for R0
+
+**Observation.** R0's dot-density CV, measured the way `gems/variants.py`
+measures it (blocks containing any in-footprint pixel):
+
+| block | 1 km | 1.5 km | 2 km | 2.5 km | 5 km |
+|---|---:|---:|---:|---:|---:|
+| CV over all eligible blocks | 1.878 | 1.565 | 1.379 | 1.257 | 0.941 |
+| CV over occupied blocks | 0.619 | 0.710 | 0.748 | 0.762 | 0.724 |
+
+The quoted 0.51-0.59 band is not reproduced by either definition at any km-scale
+block size, and it sits *below* R0's occupied-block value (0.619).
+
+**Impact — decision-changing.** Read as "concentrate more", the brief's
+CONCENTRATION recipe (move dots from low-prior to high-prior blocks) would push
+the occupied-block CV further *above* 0.51-0.59, i.e. it would move away from the
+stated optimum. The reference band therefore cannot be used to pick a dose or a
+sign, and an axis built on it would be unfalsifiable this session.
+
+**Decision.** CONCENTRATION was not built this session; SNAP was chosen instead
+because its parameter (displacement onto a physical edge) is measurable without a
+reference statistic of unknown definition. If a future session wants
+CONCENTRATION, it must state which CV definition it targets and build the
+less-concentrated direction too.
+
+## 2026-10-23 (SNAP session) — the literal SNAP rule is not a usable experiment
+
+**Observation.** Applying the brief's SNAP wording literally — move every dot to
+the argmax of the edge response within its ≤2 px window — moves **99%** of R0's
+dots (37,280 at cap 1.0, 37,595 at cap 2.0, mean displacement 0.99-1.66 px) and
+packs **12,564-17,030 dots within 1 px** of a neighbour, destroying the parent's
+D2.8 spacing invariant (min 2.828 px, median 3.0 px).
+
+**Impact — decision-changing.** That file would test "shuffle the whole field and
+double-credit the same truth pixels", two known-bad mechanisms under the DTI
+algebra, not the positional hypothesis. A null or negative result would be
+uninterpretable.
+
+**Decision.** SNAP is implemented as an evidence-thresholded correction: a dot
+moves only if the window maximum beats its own pixel by more than `g` **and** the
+target keeps ≥2.828 px clearance. The dose ladder is `g` = 0.15 / 0.10 / 0.05
+(7.06% / 18.65% / 51.96% moved). `gems/variants.py::snap` documents the choice,
+and `tests/test_variants.py` asserts the spacing invariant, count conservation and
+the dose behaviour. A dot whose own pixel has no response value (16 of R0's dots
+sit on stack sentinels) never moves.
+
+## 2026-10-23 (SNAP session) — response surface provenance
+
+The edge response is `0.40·rank(tmi_hg b3) + 0.35·rank|∇ iso_grav_anom b13| +
+0.25·rank(det_elev_slope b19)`, weights taken unchanged from the repository's
+existing prior (`scripts/build_prune_rungs.py::make_prior`), **not** tuned on the
+catalogue. Band 18 (`iso_grav_anom_hg`) is a **signed directional derivative**
+(20.7% of pixels negative), so the gravity horizontal-gradient magnitude is
+computed from band 13 instead of taking |band 18|. The 419 MB stack was restored
+from the pinned commit and its sha256/byte length re-verified before use; it is
+gitignored and not redistributed. No new external data was introduced.
+
 ---
 
-## 2026-10-23 (SNAP session) — `Band 18 (iso_grav_anom_hg)` is signed E–W `dg/dx` (`corr=+0.948`), not unsigned gradient magnitude, and 3,061 in-footprint pixels carry `-3.4028235e+38` nodata
+## 2026-10-23 (SNAP break-in-slope session) — `Band 18 (iso_grav_anom_hg)` is signed E–W `dg/dx` (`corr=+0.948`), whereas `Band 5 (iso_grav_anom_slope)` (`corr=+0.962`) is the provided unsigned horizontal gradient, and 3,061 in-footprint pixels carry `-3.4028235e+38` nodata
 
 **Observation.** Direct derivative audit of `training_features.tif` shows two decision-changing properties:
-1. `Band 18 (iso_grav_anom_hg)` spans `[-15.441, +12.856]` with `corr(dg/dx, Band 18) = +0.9482` and `corr(dg/dy, Band 18) = +0.0501`: it is the **signed east-west derivative `dg/dx`**, whereas **`Band 5 (iso_grav_anom_slope)`** (`[0.001, 0.652]`, `corr(||grad g||, Band 5) = +0.9620`) is the true unsigned horizontal gravity gradient magnitude. Ranking raw `Band 18` without `abs()` assigns ~0th percentile to strong east-dipping normal faults (`dg/dx << 0`, footwall high west of graben) and ~100th percentile only to west-dipping faults (`dg/dx >> 0`). (Note: `scripts/build_prune_rungs.py` ranked raw `Band 18` in its refill prior.)
+1. `Band 18 (iso_grav_anom_hg)` spans `[-15.441, +12.856]` with `corr(dg/dx, Band 18) = +0.9482` and `corr(dg/dy, Band 18) = +0.0501`: it is the **signed east-west derivative `dg/dx`**, whereas **`Band 5 (iso_grav_anom_slope)`** (`[0.001, 0.652]`, `corr(||grad g||, Band 5) = +0.9620`) is the provided unsigned horizontal gravity gradient magnitude. Ranking raw `Band 18` without `abs()` assigns ~0th percentile to strong east-dipping normal faults (`dg/dx << 0`, footwall high west of graben).
 2. Every band in `training_features.tif` encodes `3,061` in-footprint pixels (`0.06%`; `3,073` on Band 6) with float32 sentinel `-3.4028235e+38`, which passes `np.isfinite()`. Reading without `masked=True` treats nodata pixels as extreme negative finite values.
 
-**Decision.** All `SNAP` response surfaces read `training_features.tif` with `ds.read(b, masked=True).filled(np.nan)` (plus `> -1e30` guard) and use unsigned **`Band 5 (iso_grav_anom_slope)`** instead of signed `Band 18`. Future physical priors (`MASS`, `CONCENTRATION`, `PRUNE` refills) should likewise use `Band 5` (or `|Band 18|` only when testing E–W dip polarity explicitly).
-
-## 2026-10-23 (SNAP session) — Preserving `D2.8` spacing (`min_nn >= 2.8 px`) and R0 exclusions (`d_cat > 2.0 px`) prevents kernel clumping and PRUNE confounding
-
-**Observation.** Two coupled structural issues arise when applying `SNAP` (`<=2 px`) to `R0`:
-1. *Along-strike clumping:* `R0` inherits `D2.8` Poisson-disk spacing (`min_nn = sqrt(8) = 2.828 px`). Naive independent per-dot `<=2 px` snapping collapses `8,503` dots (`22.6%`) to `min_nn = 1.0–1.4 px` around local slope maxima, duplicating `R = 3 px` triangular-kernel coverage (`max_x k(||g - x||)`) while paying full denominator mass `S` (destroying ~half the DTI gain on training-catalogue `D2.8` tests).
-2. *Catalogue exclusion conflict:* Brief §4 Constraint 4 states `keep >=3 px from them unless AXIS=PRUNE`, whereas Brief §5 defines `SNAP` as `move each dot <=2 px ... Same count, same exclusions`. In `R0`, `2,171` dots sit at `2.236 <= d_cat <= 3.0 px`, including `54` corridor dots that have **no** pixel with `d_cat > 3.0` within `<=2.0 px` (`30` have none even at `d_cat >= 3.0`). Enforcing `d_cat > 3.0` on `SNAP` is impossible without dropping dots or moving `>2 px`, and even a one-way `d_cat > 3.0` membrane depletes ~738 collar dots (mixing a 34% `PRUNE_B3` edit into `SNAP`).
-
-**Decision.** `gems.variants.snap_spaced` and `scripts/build_snap_variants.py` enforce `min_nn = 2.8 px` (`min_nn_obs = 2.8284 px`) and preserve `R0`'s exact `"Same count, same exclusions"` (`37,654` dots, zero catalogue mass, `d_cat > 2.0 px`), keeping `SNAP` 100% unconfounded with `PRUNE` and `SPACING`.
-
+**Decision.** `scripts/build_snap_scarp_variants.py` reads `training_features.tif` with `ds.read(b, masked=True).filled(np.nan)` (plus `> -1e30` guard) and uses unsigned **`Band 5 (iso_grav_anom_slope)`** paired with the piedmont break-in-slope inflection `||grad(det_elev_slope)||` (`Band 19`). Furthermore, enforcing literal `"Same count, same exclusions"` (`d_cat > 2.0 px` on both kept and moved dots, rather than a one-way `d_cat > 3.0` membrane on moved dots) prevents partial depletion of the `2.0 < d_cat <= 3.0` collar (`2,171` vs `2,175` dots, `0.01%` delta vs `-24.7%` under `g0.05`), keeping `SNAPscarp2p0px`, `SNAPscarp1p4px`, and `SNAPpot2p0px` 100% unconfounded with `PRUNE`.

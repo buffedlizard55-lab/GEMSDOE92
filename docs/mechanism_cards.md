@@ -106,7 +106,37 @@ The three doses are a dose-response curve, not three independent bets. Outcomes:
 
 ---
 
-# Mechanism Cards — SNAP axis (2026-10-23)
+# SNAP axis — thresholded gain series (2026-10-23)
+
+Parent R0 `h33-h33-2-b2`, 37,654 unit-mass dots, CLAIM 0.2778. Response surface from pinned bands 3/13/19 only; see `scripts/make_edge_response.py` and `evidence/snap_session.json`.
+
+## h33-h33-2-b2-SNAPcap2p0-g0p15-20261023-2ca4294e
+- **Hypothesis.** Within the 300 m kernel, a dot pays credit only if it lands within ~3 px of a new-fault pixel. If the parent's lineament positions carry the ~100-300 m location error expected from 400 m flight-line spacing, then sliding each poorly-positioned dot onto the local maximum of the TMI/gravity horizontal gradient and detrended-elevation slope recover(s) credit that R0 loses to position error. Dose g=0.15 = only dots whose local edge maximum is at least that much stronger than their own pixel move.
+- **Mechanism.** Potential-field horizontal-gradient maxima and slope maxima are where the physical property contrast across a fault plane projects to the surface; the same construction that makes them edge detectors makes their maxima the best local estimate of the trace position. The DTI denominator is dominated by uncovered truth (|G|), so a dot 3-4 px off-trace earns nothing while a dot on the crest earns ~2-3 units of triangular-kernel credit against the same truth.
+- **Non-fault process that could mimic it.** Lithologic contacts, intrusive margins, caldera ring fractures, palaeochannels, erosional scarps and road cuts all produce sharp gradient maxima. A magnetic gradient maximum also sits over the *edge of the magnetised body*, not over the fault plane, so the crest can be systematically offset from the trace.
+- **Predicted sign and size.** MODEL:±0.008 (MODEL, range [-0.008,+0.008]). Derivation: one converted dot (zero credit -> credit c~2.5, best-weight 0.8, newly covering c of |G|) is worth [(2.5)(1+0.8*0.278) - 0.278(-1.66)]/D ~ 1.5e-4 at D~19,900, a denominator calibrated from the lineage's own measured 2.8e-6 per zero-credit dot. With 2660 movers the sign of the live change is therefore decided by whether the net conversion rate is above or below zero. The quoted range is about +-2 sigma of a pure-relocation null, sigma(dDTI) ~ 1.22*sigma_c*sqrt(n_movers)/D with sigma_c ~ 1.5 kernel units per moved dot (=> ~0.009); the model cannot resolve a sign below 0.01, so these are two-sided ranges, not gains.
+- **Falsifier.** If g=0.05 (52% of dots relocate by ~1 px) lands more than 0.01 BELOW g=0.15 and R0, the edge maxima are worse position estimators than the parent's own lineaments and the SNAP hypothesis is rejected for this region. If g=0.15 gains >0.01 while g=0.05 loses >0.01, only the clearly-mispositioned dots are correctable and later axes must keep a strict evidence threshold. A monotone increase with dose supports composing SNAP onto the best PRUNE rung.
+- **Decision rule.** Live change under 0.01 is no evidence. Receipts only; never a PROXY.
+
+## h33-h33-2-b2-SNAPcap2p0-g0p10-20261023-f4e8c114
+- **Hypothesis.** Within the 300 m kernel, a dot pays credit only if it lands within ~3 px of a new-fault pixel. If the parent's lineament positions carry the ~100-300 m location error expected from 400 m flight-line spacing, then sliding each poorly-positioned dot onto the local maximum of the TMI/gravity horizontal gradient and detrended-elevation slope recover(s) credit that R0 loses to position error. Dose g=0.10 = only dots whose local edge maximum is at least that much stronger than their own pixel move.
+- **Mechanism.** Potential-field horizontal-gradient maxima and slope maxima are where the physical property contrast across a fault plane projects to the surface; the same construction that makes them edge detectors makes their maxima the best local estimate of the trace position. The DTI denominator is dominated by uncovered truth (|G|), so a dot 3-4 px off-trace earns nothing while a dot on the crest earns ~2-3 units of triangular-kernel credit against the same truth.
+- **Non-fault process that could mimic it.** Lithologic contacts, intrusive margins, caldera ring fractures, palaeochannels, erosional scarps and road cuts all produce sharp gradient maxima. A magnetic gradient maximum also sits over the *edge of the magnetised body*, not over the fault plane, so the crest can be systematically offset from the trace.
+- **Predicted sign and size.** MODEL:±0.015 (MODEL, range [-0.015,+0.015]). Derivation: one converted dot (zero credit -> credit c~2.5, best-weight 0.8, newly covering c of |G|) is worth [(2.5)(1+0.8*0.278) - 0.278(-1.66)]/D ~ 1.5e-4 at D~19,900, a denominator calibrated from the lineage's own measured 2.8e-6 per zero-credit dot. With 7023 movers the sign of the live change is therefore decided by whether the net conversion rate is above or below zero. The quoted range is about +-2 sigma of a pure-relocation null, sigma(dDTI) ~ 1.22*sigma_c*sqrt(n_movers)/D with sigma_c ~ 1.5 kernel units per moved dot (=> ~0.015); the model cannot resolve a sign below 0.01, so these are two-sided ranges, not gains.
+- **Falsifier.** If g=0.05 (52% of dots relocate by ~1 px) lands more than 0.01 BELOW g=0.15 and R0, the edge maxima are worse position estimators than the parent's own lineaments and the SNAP hypothesis is rejected for this region. If g=0.15 gains >0.01 while g=0.05 loses >0.01, only the clearly-mispositioned dots are correctable and later axes must keep a strict evidence threshold. A monotone increase with dose supports composing SNAP onto the best PRUNE rung.
+- **Decision rule.** Live change under 0.01 is no evidence. Receipts only; never a PROXY.
+
+## h33-h33-2-b2-SNAPcap2p0-g0p05-20261023-2c472bc5
+- **Hypothesis.** Within the 300 m kernel, a dot pays credit only if it lands within ~3 px of a new-fault pixel. If the parent's lineament positions carry the ~100-300 m location error expected from 400 m flight-line spacing, then sliding each poorly-positioned dot onto the local maximum of the TMI/gravity horizontal gradient and detrended-elevation slope recover(s) credit that R0 loses to position error. Dose g=0.05 = only dots whose local edge maximum is at least that much stronger than their own pixel move.
+- **Mechanism.** Potential-field horizontal-gradient maxima and slope maxima are where the physical property contrast across a fault plane projects to the surface; the same construction that makes them edge detectors makes their maxima the best local estimate of the trace position. The DTI denominator is dominated by uncovered truth (|G|), so a dot 3-4 px off-trace earns nothing while a dot on the crest earns ~2-3 units of triangular-kernel credit against the same truth.
+- **Non-fault process that could mimic it.** Lithologic contacts, intrusive margins, caldera ring fractures, palaeochannels, erosional scarps and road cuts all produce sharp gradient maxima. A magnetic gradient maximum also sits over the *edge of the magnetised body*, not over the fault plane, so the crest can be systematically offset from the trace.
+- **Predicted sign and size.** MODEL:±0.035 (MODEL, range [-0.035,+0.035]). Derivation: one converted dot (zero credit -> credit c~2.5, best-weight 0.8, newly covering c of |G|) is worth [(2.5)(1+0.8*0.278) - 0.278(-1.66)]/D ~ 1.5e-4 at D~19,900, a denominator calibrated from the lineage's own measured 2.8e-6 per zero-credit dot. With 19565 movers the sign of the live change is therefore decided by whether the net conversion rate is above or below zero. The quoted range is about +-2 sigma of a pure-relocation null, sigma(dDTI) ~ 1.22*sigma_c*sqrt(n_movers)/D with sigma_c ~ 1.5 kernel units per moved dot (=> ~0.026); the model cannot resolve a sign below 0.01, so these are two-sided ranges, not gains.
+- **Falsifier.** If g=0.05 (52% of dots relocate by ~1 px) lands more than 0.01 BELOW g=0.15 and R0, the edge maxima are worse position estimators than the parent's own lineaments and the SNAP hypothesis is rejected for this region. If g=0.15 gains >0.01 while g=0.05 loses >0.01, only the clearly-mispositioned dots are correctable and later axes must keep a strict evidence threshold. A monotone increase with dose supports composing SNAP onto the best PRUNE rung.
+- **Decision rule.** Live change under 0.01 is no evidence. Receipts only; never a PROXY.
+
+---
+
+# Mechanism Cards — SNAP piedmont break-in-slope & subsurface control (2026-10-23)
 
 Parent: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots, rebuilt byte-for-byte
 (`zeros` SHA-256 `c55bafc4…`, `nan` SHA-256 `baeae321…`), **CLAIM** `0.2778`.
@@ -116,18 +146,17 @@ parent `D2.8` Poisson-disk inter-dot spacing (`min_nn = 2.8284 px`), changing
 **only** the `<=2 px` local edge/scarp snap operator (`SNAP` is explicitly
 exempt from the 1–50% pixel-change bound per Brief v2 §5).
 
-### Why spacing-preserving SNAP (`min_nn >= 2.8 px`) is essential
+### Why spacing-preserving SNAP (`min_nn >= 2.8 px`) + break-in-slope is essential
 In `R0`, `dot_thin(H19-5, 2.8)` seeded from the north-west pixel of each binary
 `H19-5` component (`N=20.0%, W=15.3%` vs `S=35.9%, E=29.5%` neighbor occupancy)
 without centering on local scarp or potential-field gradient peaks; within
 `<=2 px` (`200 m`), median `det_elev_slope` (`Band 19`) is `+102.9%` higher and
-median `tmi_hg` (`Band 3`) is `+64.9%` higher than at `R0` dot centers. However,
-independent per-dot snapping collapses `8,503` dots (`22.6%` of `R0`) to
-`min_nn = 1.0–1.4 px` along strike, duplicating coverage inside the `R = 3 px`
-(`300 m`) triangular DTI kernel `T = sum_g max_x k(||g - x||)` while still paying
-`+1` denominator mass `S` per dot. Enforcing `D2.8`'s open-disc spacing
-`dy^2 + dx^2 >= 2.8^2` (`min_nn = 2.8284 px`) eliminates along-strike clumping
-and restricts displacement to genuine cross-strike centering.
+median `tmi_hg` (`Band 3`) is `+64.9%` higher than at `R0` dot centers. Enforcing
+`D2.8`'s open-disc spacing `dy^2 + dx^2 >= 2.8^2` (`min_nn = 2.8284 px`) prevents
+along-strike clumping inside the `R = 3 px` triangular DTI kernel, while pairing
+`det_elev_slope` with the piedmont break-in-slope inflection `||grad(det_elev_slope)||`
+and unsigned `Band 5 (iso_grav_anom_slope)` anchors dots on piedmont fault traces
+rather than mid-facet bedrock cliffs.
 
 ## h33-h33-2-b2-SNAPscarp2p0px-20261023-2a65fe24
 - **Value**: `scarp2p0px` — `<=2.0 px` (`200 m`) spacing-preserving snap onto
@@ -217,4 +246,3 @@ and restricts displacement to genuine cross-strike centering.
 - **Falsifier**: A live receipt gain `>= +0.01` over both `R0` and `scarp2p0px`
   falsifies surface-scarp dominance and proves hidden test faults are primarily
   concealed basement structures best centered by potential-field gradients alone.
-

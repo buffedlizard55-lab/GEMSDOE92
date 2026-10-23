@@ -87,20 +87,62 @@ Arena.ai Agent Mode wrote the manifest-pinned restore script, exact DTI refill p
 
 ---
 
-## Session 4 — controlled spacing-preserving SNAP axis (2026-10-23)
+## Session 4 — SNAP axis, 2026-10-23
 
 ### What AI wrote
-- `gems.variants.snap_spaced` — deterministic spacing-preserving (`min_nn >= 2.8 px`) `<=2 px` local edge/scarp snap operator.
-- `scripts/build_snap_variants.py` — manifest SHA-256 verification, byte-exact `R0` lineage rebuild check, nodata/unsigned-gradient physical response construction (`Band 3 tmi_hg`, `Band 5 iso_grav_anom_slope`, `Band 19 det_elev_slope` + `||grad Band 19||`), deterministic build of `SNAPscarp2p0px`, `SNAPscarp1p4px`, and `SNAPpot2p0px`, post-write disk reread format validation, ledger update, and `evidence/snap_variants.json`.
+- `scripts/make_edge_response.py` — builds the SNAP edge/scarp response surface
+  from pinned bands 3, 13 and 19 with weights fixed a priori; no labels used.
+- `gems/variants.py::snap` — rewritten as an evidence-thresholded, spacing-safe
+  positional correction (`min_gain`, `min_spacing_px`), with deterministic
+  contention resolution and explicit stats.
+- `scripts/build_snap_variants.py` — the deterministic build: verifies every pin,
+  asserts the R0 invariants, writes both encodings, re-reads them, runs the gates,
+  appends ledger rows and writes `evidence/snap_session.json`.
+- 6 new tests in `tests/test_variants.py` (50 total, no competition data needed).
+- Updated `SLOT_PLAN.md`, the `README.md` CURRENT STATE block, `docs/SUBMIT.md`,
+  `IRREGULARITIES.md`, `releases/README.md`, `docs/mechanism_cards.md`.
+
+### What the human decided or supplied
+- The parent R0 and its CLAIM score; the AI verified the parent byte-for-byte
+  from the pinned lineage but cannot verify a score without a receipt.
+- The AXIS choice (SNAP) was made autonomously, per the brief's instruction not to
+  prompt over axis selection.
+- `TOP_PUBLIC`, the slot count, all submissions and all receipts.
+- Whether a candidate that keeps 4-5% inherited in-collar mass is acceptable
+  (see IRREGULARITIES, SNAP session).
+
+### What the AI found and flagged rather than papered over
+- The literal SNAP rule moves 99% of dots and destroys the parent's 2.83 px
+  spacing invariant, so the axis was implemented as a thresholded correction and
+  the deviation is documented instead of hidden.
+- The brief's block-CV reference band (0.51-0.59) does not match R0 under either
+  CV definition (1.878 / 0.619 at 1 km), so CONCENTRATION was not built on it.
+- The 3 px catalogue rule is unsatisfiable for any non-PRUNE descendant of R0;
+  inherited dots are kept and the gate failure is recorded verbatim.
+
+### Reproducibility
+No randomness anywhere (deterministic greedy assignment, fixed seeds only where a
+random background sample is drawn for the report-only canary; `np.random.default_rng(20261023)`).
+Pinned inputs verified by sha256 **and** byte length before use; git SHA logged in
+`evidence/snap_session.json`; every file re-read from disk and gate-checked after
+writing; both encodings hashed.
+
+### What the AI did not do
+No submission, no login, no leaderboard or competition-page access, no Dropbox
+contact, no label probing, no invented numbers. Unknown values (`TOP_PUBLIC`,
+slots, receipts) are left blank.
+
+---
+
+## Session 5 — SNAP piedmont break-in-slope & subsurface control (2026-10-23)
+
+### What AI wrote
+- `gems.variants.snap_spaced` — deterministic spacing-preserving (`min_nn >= 2.8 px`) `<=2 px` local edge/scarp snap operator preserving R0 exclusions (`d_cat > 2.0 px`).
+- `scripts/build_snap_scarp_variants.py` — manifest SHA-256 verification, byte-exact `R0` lineage rebuild check, nodata/unsigned-gradient physical response construction (`Band 3 tmi_hg`, `Band 5 iso_grav_anom_slope`, `Band 19 det_elev_slope` + `||grad Band 19||`), deterministic build of `SNAPscarp2p0px`, `SNAPscarp1p4px`, and `SNAPpot2p0px`, post-write disk reread format validation, ledger update, and `evidence/snap_variants.json`.
 - `scripts/report_snap_proxies.py` — report-only buffered catalogue hide-and-recover `PROXY`, single-feature leakage canaries, and USGS SGMC off-catalogue bedrock control (`evidence/snap_proxy_audit.json`).
 - `tests/test_snap_variants.py` — unit and policy tests verifying spacing preservation, `<=2 px` displacement bounds, nodata/sign safeguards, ledger integrity, and evidence labeling.
 - Updates to `README.md` (`CURRENT STATE` block only), `SLOT_PLAN.md`, `docs/SUBMIT.md`, `docs/mechanism_cards.md`, `IRREGULARITIES.md`, and this file.
 
-### What AI discovered and logged
-- `Band 18 (iso_grav_anom_hg)` in `training_features.tif` is signed E–W `dg/dx` (`corr = +0.9482`) rather than unsigned horizontal gravity gradient (`Band 5 iso_grav_anom_slope`, `corr = +0.9620`), and 3,061 in-footprint pixels carry `-3.4028235e+38` nodata sentinels; corrected in `SNAP` and logged in `IRREGULARITIES.md`.
-- Naive `<=2 px` snapping without `min_nn >= 2.8 px` collapses 22.6% of `R0` dots onto adjacent along-strike pixels (`min_nn = 1.0 px`), wasting DTI kernel coverage; fixed via `snap_spaced`.
-
 ### What the human decides and supplies
 - Autonomous `AXIS = SNAP` selection was delegated by the human's session prompt ("Do not prompt me over choosing an Axis for the session, pick your own session").
 - The human supplies `TOP_PUBLIC` (with observation date), confirms rolling-week and remaining competition slots, chooses whether/which single encoding file to upload from their registered DrivenData account, and records official submission-page `RECEIPT` scores and dates in `ledger/submissions.csv`.
-

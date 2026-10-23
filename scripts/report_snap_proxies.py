@@ -20,7 +20,7 @@ from sklearn.metrics import roc_auc_score
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT), str(ROOT / "vendor"), str(ROOT / "scripts")]
 
-from build_snap_variants import sha256_file, verify_all_manifests  # noqa: E402
+from build_snap_scarp_variants import sha256_file, verify_all_manifests  # noqa: E402
 from gems57 import evaluate_holdout, grid as grid_mod, holdout, metric  # noqa: E402
 
 

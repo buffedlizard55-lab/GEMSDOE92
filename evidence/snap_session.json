@@ -1,0 +1,324 @@
+{
+  "generated_utc": "2026-10-23T21:38:00+00:00",
+  "git_sha_at_build": "9a0f47b53f13047b0421d0d3599a8d267a182641",
+  "parent": {
+    "id": "h33-h33-2-b2",
+    "n_dots": 37654,
+    "sha256": {
+      "nan": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+      "zeros": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9"
+    },
+    "score_label": "CLAIM 0.2778 (no receipt)"
+  },
+  "edge_response": {
+    "tmi_hg": "training_features band 3 (tmi_hg), as supplied (non-negative)",
+    "grav_hg": "hypot(d/dy, d/dx) of training_features band 13 (iso_grav_anom); band 18 is a signed directional derivative and was not used directly",
+    "scarp_slope": "training_features band 19 (det_elev_slope), as supplied (non-negative)"
+  },
+  "rule": {
+    "max_shift_px": 2.0,
+    "min_gain_doses": [
+      0.15,
+      0.1,
+      0.05
+    ],
+    "min_spacing_px": 2.828,
+    "target_min_catalogue_px": 3.0
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-SNAPcap2p0-g0p15-20261023-2ca4294e",
+      "parent": "h33-h33-2-b2",
+      "axis": "SNAP",
+      "value": "cap2p0-g0.15",
+      "n_dots": 37654,
+      "pct_changed": 7.064323,
+      "sha256": "2ca4294e4401c6677e55ec498b08a91b06b23a431773d2245798cbc15f1d5be4",
+      "sha256_zeros": "49532e215306ee84b312ddb532abf2e0988af63c53f5d728d9d6705220600517",
+      "status": "BUILT",
+      "predicted_change": "MODEL:\u00b10.008",
+      "file_nan": "releases/h33-h33-2-b2-SNAPcap2p0-g0p15-20261023-2ca4294e.tif",
+      "file_zeros": "releases/h33-h33-2-b2-SNAPcap2p0-g0p15-20261023-2ca4294e-zeros.tif",
+      "sha8": "2ca4294e",
+      "change_desc": "move 2660 parent dots (<=2px) onto the strongest TMI/gravity/scarp edge response, threshold gain>0.15; count and mass held",
+      "notes": "MODEL range [-0.008,+0.008]; moved dots clear catalogue by >3px; min spacing 2.828px held; SGMC PROXY delta -0.000080; see evidence/snap_session.json",
+      "parent_diff": {
+        "n_moved": 2660,
+        "n_stayed": 34994,
+        "moved_pct": 7.064323,
+        "symmetric_difference_px": 5320,
+        "frac_along_strike_moves": 0.395113,
+        "frac_across_strike_moves": 0.604887,
+        "mean_displacement_px": 0.12447,
+        "mean_displacement_movers_px": 1.761951,
+        "median_displacement_movers_px": 2.0,
+        "p90_displacement_movers_px": 2.0,
+        "mean_dx_all": -0.002337,
+        "mean_dy_all": 0.00656,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "moved_min_catalogue_distance_px": 3.1622776601683795,
+        "min_nn_px": 2.8284271247461903
+      },
+      "format_validation": {
+        "crs": {
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        "shape": {
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        "transform": {
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        "dtype_and_band": {
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        "values_in_0_1": {
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        "no_nan_inside_footprint": {
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        "nan_outside_footprint": {
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 zero=0 other=0"
+        },
+        "catalogue_zero_mass": {
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        "distance_from_catalogue": {
+          "ok": false,
+          "detail": "radius=3px dots_within=2114"
+        },
+        "reread_sha256": {
+          "ok": true,
+          "detail": "2ca4294e4401c6677e55ec498b08a91b06b23a431773d2245798cbc15f1d5be4"
+        }
+      },
+      "gate_status": "PASS on every gate except distance_from_catalogue, which reports 2114 inherited R0 dots inside 3 px (declared deviation; zero moved dots inside 3 px)",
+      "sgmc_control_proxy": {
+        "evidence_label": "PROXY",
+        "dti": 0.09598,
+        "delta_vs_r0": -8e-05,
+        "n_withheld_control_pixels": 62703
+      },
+      "leakage_canary_auc_edge_response_vs_catalogue": 0.5689,
+      "git_sha_at_build": "9a0f47b53f13047b0421d0d3599a8d267a182641",
+      "form_note": "h33-h33-2-b2; SNAP 2660 dots (7.1%) <=2px to edge max, gain>0.15; count 37654 held; pred MODEL:\u00b10.008"
+    },
+    {
+      "id": "h33-h33-2-b2-SNAPcap2p0-g0p10-20261023-f4e8c114",
+      "parent": "h33-h33-2-b2",
+      "axis": "SNAP",
+      "value": "cap2p0-g0.10",
+      "n_dots": 37654,
+      "pct_changed": 18.651405,
+      "sha256": "f4e8c1147fb1f4178f376f99dda84228dd58fa76e5216de45cfbdac9888d40cc",
+      "sha256_zeros": "98663b9b7f9b10f3996e2c0be94ec2c813d6fb937018d5173f48ca8353a0d0fa",
+      "status": "BUILT",
+      "predicted_change": "MODEL:\u00b10.015",
+      "file_nan": "releases/h33-h33-2-b2-SNAPcap2p0-g0p10-20261023-f4e8c114.tif",
+      "file_zeros": "releases/h33-h33-2-b2-SNAPcap2p0-g0p10-20261023-f4e8c114-zeros.tif",
+      "sha8": "f4e8c114",
+      "change_desc": "move 7023 parent dots (<=2px) onto the strongest TMI/gravity/scarp edge response, threshold gain>0.10; count and mass held",
+      "notes": "MODEL range [-0.015,+0.015]; moved dots clear catalogue by >3px; min spacing 2.828px held; SGMC PROXY delta -0.000153; see evidence/snap_session.json",
+      "parent_diff": {
+        "n_moved": 7023,
+        "n_stayed": 30631,
+        "moved_pct": 18.651405,
+        "symmetric_difference_px": 14046,
+        "frac_along_strike_moves": 0.397836,
+        "frac_across_strike_moves": 0.602164,
+        "mean_displacement_px": 0.321394,
+        "mean_displacement_movers_px": 1.723161,
+        "median_displacement_movers_px": 2.0,
+        "p90_displacement_movers_px": 2.0,
+        "mean_dx_all": -0.003904,
+        "mean_dy_all": 0.00802,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "moved_min_catalogue_distance_px": 3.1622776601683795,
+        "min_nn_px": 2.8284271247461903
+      },
+      "format_validation": {
+        "crs": {
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        "shape": {
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        "transform": {
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        "dtype_and_band": {
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        "values_in_0_1": {
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        "no_nan_inside_footprint": {
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        "nan_outside_footprint": {
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 zero=0 other=0"
+        },
+        "catalogue_zero_mass": {
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        "distance_from_catalogue": {
+          "ok": false,
+          "detail": "radius=3px dots_within=1999"
+        },
+        "reread_sha256": {
+          "ok": true,
+          "detail": "f4e8c1147fb1f4178f376f99dda84228dd58fa76e5216de45cfbdac9888d40cc"
+        }
+      },
+      "gate_status": "PASS on every gate except distance_from_catalogue, which reports 1999 inherited R0 dots inside 3 px (declared deviation; zero moved dots inside 3 px)",
+      "sgmc_control_proxy": {
+        "evidence_label": "PROXY",
+        "dti": 0.095907,
+        "delta_vs_r0": -0.000153,
+        "n_withheld_control_pixels": 62703
+      },
+      "leakage_canary_auc_edge_response_vs_catalogue": 0.5689,
+      "git_sha_at_build": "9a0f47b53f13047b0421d0d3599a8d267a182641",
+      "form_note": "h33-h33-2-b2; SNAP 7023 dots (18.7%) <=2px to edge max, gain>0.10; count 37654 held; pred MODEL:\u00b10.015"
+    },
+    {
+      "id": "h33-h33-2-b2-SNAPcap2p0-g0p05-20261023-2c472bc5",
+      "parent": "h33-h33-2-b2",
+      "axis": "SNAP",
+      "value": "cap2p0-g0.05",
+      "n_dots": 37654,
+      "pct_changed": 51.959951,
+      "sha256": "2c472bc50e2869b044963ad67e41c4c21e597d9f456aefc5e05b2a65883a9cce",
+      "sha256_zeros": "b2ec44c1b740aebfea6834731df8d62ca4c74f55b4eb1863cddbfde5e433ff43",
+      "status": "BUILT",
+      "predicted_change": "MODEL:\u00b10.035",
+      "file_nan": "releases/h33-h33-2-b2-SNAPcap2p0-g0p05-20261023-2c472bc5.tif",
+      "file_zeros": "releases/h33-h33-2-b2-SNAPcap2p0-g0p05-20261023-2c472bc5-zeros.tif",
+      "sha8": "2c472bc5",
+      "change_desc": "move 19565 parent dots (<=2px) onto the strongest TMI/gravity/scarp edge response, threshold gain>0.05; count and mass held",
+      "notes": "MODEL range [-0.035,+0.035]; moved dots clear catalogue by >3px; min spacing 2.828px held; SGMC PROXY delta +0.000013; see evidence/snap_session.json",
+      "parent_diff": {
+        "n_moved": 19565,
+        "n_stayed": 18089,
+        "moved_pct": 51.959951,
+        "symmetric_difference_px": 39130,
+        "frac_along_strike_moves": 0.415538,
+        "frac_across_strike_moves": 0.584462,
+        "mean_displacement_px": 0.85777,
+        "mean_displacement_movers_px": 1.650829,
+        "median_displacement_movers_px": 2.0,
+        "p90_displacement_movers_px": 2.0,
+        "mean_dx_all": -0.014341,
+        "mean_dy_all": 0.00972,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "moved_min_catalogue_distance_px": 3.1622776601683795,
+        "min_nn_px": 2.8284271247461903
+      },
+      "format_validation": {
+        "crs": {
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        "shape": {
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        "transform": {
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        "dtype_and_band": {
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        "values_in_0_1": {
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        "no_nan_inside_footprint": {
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        "nan_outside_footprint": {
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 zero=0 other=0"
+        },
+        "catalogue_zero_mass": {
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        "distance_from_catalogue": {
+          "ok": false,
+          "detail": "radius=3px dots_within=1634"
+        },
+        "reread_sha256": {
+          "ok": true,
+          "detail": "2c472bc50e2869b044963ad67e41c4c21e597d9f456aefc5e05b2a65883a9cce"
+        }
+      },
+      "gate_status": "PASS on every gate except distance_from_catalogue, which reports 1634 inherited R0 dots inside 3 px (declared deviation; zero moved dots inside 3 px)",
+      "sgmc_control_proxy": {
+        "evidence_label": "PROXY",
+        "dti": 0.096073,
+        "delta_vs_r0": 1.3e-05,
+        "n_withheld_control_pixels": 62703
+      },
+      "leakage_canary_auc_edge_response_vs_catalogue": 0.5689,
+      "git_sha_at_build": "9a0f47b53f13047b0421d0d3599a8d267a182641",
+      "form_note": "h33-h33-2-b2; SNAP 19565 dots (52.0%) <=2px to edge max, gain>0.05; count 37654 held; pred MODEL:\u00b10.035"
+    }
+  ],
+  "mechanism_cards": {
+    "h33-h33-2-b2-SNAPcap2p0-g0p15-20261023-2ca4294e": {
+      "parent": "h33-h33-2-b2",
+      "axis": "SNAP",
+      "value": "cap2p0-g0.15",
+      "hypothesis": "Within the 300 m kernel, a dot pays credit only if it lands within ~3 px of a new-fault pixel. If the parent's lineament positions carry the ~100-300 m location error expected from 400 m flight-line spacing, then sliding each poorly-positioned dot onto the local maximum of the TMI/gravity horizontal gradient and detrended-elevation slope recover(s) credit that R0 loses to position error. Dose g=0.15 = only dots whose local edge maximum is at least that much stronger than their own pixel move.",
+      "mechanism": "Potential-field horizontal-gradient maxima and slope maxima are where the physical property contrast across a fault plane projects to the surface; the same construction that makes them edge detectors makes their maxima the best local estimate of the trace position. The DTI denominator is dominated by uncovered truth (|G|), so a dot 3-4 px off-trace earns nothing while a dot on the crest earns ~2-3 units of triangular-kernel credit against the same truth.",
+      "non_fault_mimic": "Lithologic contacts, intrusive margins, caldera ring fractures, palaeochannels, erosional scarps and road cuts all produce sharp gradient maxima. A magnetic gradient maximum also sits over the *edge of the magnetised body*, not over the fault plane, so the crest can be systematically offset from the trace.",
+      "predicted_sign_and_size": "MODEL:\u00b10.008 (MODEL, range [-0.008,+0.008]). Derivation: one converted dot (zero credit -> credit c~2.5, best-weight 0.8, newly covering c of |G|) is worth [(2.5)(1+0.8*0.278) - 0.278(-1.66)]/D ~ 1.5e-4 at D~19,900, a denominator calibrated from the lineage's own measured 2.8e-6 per zero-credit dot. With 2660 movers the sign of the live change is therefore decided by whether the net conversion rate is above or below zero. The quoted range is about +-2 sigma of a pure-relocation null, sigma(dDTI) ~ 1.22*sigma_c*sqrt(n_movers)/D with sigma_c ~ 1.5 kernel units per moved dot (=> ~0.009); the model cannot resolve a sign below 0.01, so these are two-sided ranges, not gains.",
+      "falsifier": "If g=0.05 (52% of dots relocate by ~1 px) lands more than 0.01 BELOW g=0.15 and R0, the edge maxima are worse position estimators than the parent's own lineaments and the SNAP hypothesis is rejected for this region. If g=0.15 gains >0.01 while g=0.05 loses >0.01, only the clearly-mispositioned dots are correctable and later axes must keep a strict evidence threshold. A monotone increase with dose supports composing SNAP onto the best PRUNE rung.",
+      "decision_rule": "Live change under 0.01 is no evidence. Receipts only; never a PROXY."
+    },
+    "h33-h33-2-b2-SNAPcap2p0-g0p10-20261023-f4e8c114": {
+      "parent": "h33-h33-2-b2",
+      "axis": "SNAP",
+      "value": "cap2p0-g0.10",
+      "hypothesis": "Within the 300 m kernel, a dot pays credit only if it lands within ~3 px of a new-fault pixel. If the parent's lineament positions carry the ~100-300 m location error expected from 400 m flight-line spacing, then sliding each poorly-positioned dot onto the local maximum of the TMI/gravity horizontal gradient and detrended-elevation slope recover(s) credit that R0 loses to position error. Dose g=0.10 = only dots whose local edge maximum is at least that much stronger than their own pixel move.",
+      "mechanism": "Potential-field horizontal-gradient maxima and slope maxima are where the physical property contrast across a fault plane projects to the surface; the same construction that makes them edge detectors makes their maxima the best local estimate of the trace position. The DTI denominator is dominated by uncovered truth (|G|), so a dot 3-4 px off-trace earns nothing while a dot on the crest earns ~2-3 units of triangular-kernel credit against the same truth.",
+      "non_fault_mimic": "Lithologic contacts, intrusive margins, caldera ring fractures, palaeochannels, erosional scarps and road cuts all produce sharp gradient maxima. A magnetic gradient maximum also sits over the *edge of the magnetised body*, not over the fault plane, so the crest can be systematically offset from the trace.",
+      "predicted_sign_and_size": "MODEL:\u00b10.015 (MODEL, range [-0.015,+0.015]). Derivation: one converted dot (zero credit -> credit c~2.5, best-weight 0.8, newly covering c of |G|) is worth [(2.5)(1+0.8*0.278) - 0.278(-1.66)]/D ~ 1.5e-4 at D~19,900, a denominator calibrated from the lineage's own measured 2.8e-6 per zero-credit dot. With 7023 movers the sign of the live change is therefore decided by whether the net conversion rate is above or below zero. The quoted range is about +-2 sigma of a pure-relocation null, sigma(dDTI) ~ 1.22*sigma_c*sqrt(n_movers)/D with sigma_c ~ 1.5 kernel units per moved dot (=> ~0.015); the model cannot resolve a sign below 0.01, so these are two-sided ranges, not gains.",
+      "falsifier": "If g=0.05 (52% of dots relocate by ~1 px) lands more than 0.01 BELOW g=0.15 and R0, the edge maxima are worse position estimators than the parent's own lineaments and the SNAP hypothesis is rejected for this region. If g=0.15 gains >0.01 while g=0.05 loses >0.01, only the clearly-mispositioned dots are correctable and later axes must keep a strict evidence threshold. A monotone increase with dose supports composing SNAP onto the best PRUNE rung.",
+      "decision_rule": "Live change under 0.01 is no evidence. Receipts only; never a PROXY."
+    },
+    "h33-h33-2-b2-SNAPcap2p0-g0p05-20261023-2c472bc5": {
+      "parent": "h33-h33-2-b2",
+      "axis": "SNAP",
+      "value": "cap2p0-g0.05",
+      "hypothesis": "Within the 300 m kernel, a dot pays credit only if it lands within ~3 px of a new-fault pixel. If the parent's lineament positions carry the ~100-300 m location error expected from 400 m flight-line spacing, then sliding each poorly-positioned dot onto the local maximum of the TMI/gravity horizontal gradient and detrended-elevation slope recover(s) credit that R0 loses to position error. Dose g=0.05 = only dots whose local edge maximum is at least that much stronger than their own pixel move.",
+      "mechanism": "Potential-field horizontal-gradient maxima and slope maxima are where the physical property contrast across a fault plane projects to the surface; the same construction that makes them edge detectors makes their maxima the best local estimate of the trace position. The DTI denominator is dominated by uncovered truth (|G|), so a dot 3-4 px off-trace earns nothing while a dot on the crest earns ~2-3 units of triangular-kernel credit against the same truth.",
+      "non_fault_mimic": "Lithologic contacts, intrusive margins, caldera ring fractures, palaeochannels, erosional scarps and road cuts all produce sharp gradient maxima. A magnetic gradient maximum also sits over the *edge of the magnetised body*, not over the fault plane, so the crest can be systematically offset from the trace.",
+      "predicted_sign_and_size": "MODEL:\u00b10.035 (MODEL, range [-0.035,+0.035]). Derivation: one converted dot (zero credit -> credit c~2.5, best-weight 0.8, newly covering c of |G|) is worth [(2.5)(1+0.8*0.278) - 0.278(-1.66)]/D ~ 1.5e-4 at D~19,900, a denominator calibrated from the lineage's own measured 2.8e-6 per zero-credit dot. With 19565 movers the sign of the live change is therefore decided by whether the net conversion rate is above or below zero. The quoted range is about +-2 sigma of a pure-relocation null, sigma(dDTI) ~ 1.22*sigma_c*sqrt(n_movers)/D with sigma_c ~ 1.5 kernel units per moved dot (=> ~0.026); the model cannot resolve a sign below 0.01, so these are two-sided ranges, not gains.",
+      "falsifier": "If g=0.05 (52% of dots relocate by ~1 px) lands more than 0.01 BELOW g=0.15 and R0, the edge maxima are worse position estimators than the parent's own lineaments and the SNAP hypothesis is rejected for this region. If g=0.15 gains >0.01 while g=0.05 loses >0.01, only the clearly-mispositioned dots are correctable and later axes must keep a strict evidence threshold. A monotone increase with dose supports composing SNAP onto the best PRUNE rung.",
+      "decision_rule": "Live change under 0.01 is no evidence. Receipts only; never a PROXY."
+    }
+  },
+  "evidence_labels": "predicted_change is MODEL; nothing here is a score"
+}

@@ -130,7 +130,7 @@ def test_snap_receipts_ledger_and_policy_invariants() -> None:
     assert len(shas) == len(set(shas))
     assert len(pairs) == len(set(pairs))
     snap_rows = [r for r in rows if r["axis"] == "SNAP"]
-    assert len(snap_rows) == 3
+    assert {v["value"] for v in variants}.issubset({r["value"] for r in snap_rows})
     for r in snap_rows:
         assert r["n_dots"] == "37654"
         assert r["receipt_score"] == ""
