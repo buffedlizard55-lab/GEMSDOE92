@@ -1,0 +1,36 @@
+{
+  "parent_id": "h33-h33-2-b2",
+  "provenance": "produced upstream in buffedlizard55-lab/GEMSDOE32 (file name gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e); this repo consumes it as a pinned artefact rather than rebuilding it",
+  "mode": "pinned_artefact",
+  "note": "R0 is verified by sha256 against the committed file, not regenerated. No recipe exists that reproduces it bit-for-bit, and the brief forbids approximating the parent, so the file is the authority.",
+  "files": {
+    "nan": {
+      "path": "data/parent_R0_nan.tif",
+      "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+      "bytes": 355000
+    },
+    "zeros": {
+      "path": "data/parent_R0_zeros.tif",
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "bytes": 219065
+    }
+  },
+  "verified": {
+    "date": "2026-10-23",
+    "n_dots": 37654,
+    "mass_per_dot": 1.0,
+    "total_mass": 37654.0,
+    "min_catalogue_distance_px": 2.23606797749979,
+    "dots_within_3px": 2171,
+    "dots_within_4px": 3825,
+    "dots_within_5px": 5637,
+    "grid": "EPSG:32611, 100 m, 3730x3292",
+    "footprint_px": 5167373
+  },
+  "ranking": {
+    "status": "NONE",
+    "why": "The parent's own ranking was never stored. h19_5.tif is binary {0,1} with value 1.0 at every dot, so it provides no ordering. See IRREGULARITIES 2026-10-23 (H19-5 is binary)."
+  },
+  "CLAIM_score": 0.2778,
+  "receipt": null
+}

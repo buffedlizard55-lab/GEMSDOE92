@@ -1,84 +1,65 @@
-# GEMSDOE92
-
-Candidate-raster toolkit for DrivenData **#306 GEMS** (DOE Geothermal Machine
-Learning Challenge), built for one human competitor. This repo builds and
-validates candidate rasters. It never submits, never logs in, never scrapes.
-
-<!-- CURRENT STATE: the only block a routine session edits -->
+# GEMSDOE92 — PRUNE axis session
 
 ## CURRENT STATE
+- **Parent R0**: h33-h33-2-b2 (GEMSDOE32) — 37,654 unit-mass dots, sha256 `baeae321…077dd` **verified byte-for-byte this session**, CLAIM 0.2778 (no receipt)
+- **Best receipt**: None yet (ledger has 6 BUILT rows, 0 scored)
+- **TOP_PUBLIC**: ____ (human fills from leaderboard, with date)
+- **Slots left this week**: 3 / total: 3 (one entity, 3 per rolling week, one final)
+- **AXIS for this session**: PRUNE (chosen autonomously, no prompt)
+- **Next 3 slots (planned)**:
+  1. `h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7` — remove dots within 3 px of catalogue (2,171 = 5.77%), refill, count held 37,654 — predicted +0.002 to +0.006
+  2. `h33-h33-2-b2-PRUNE_B4-20261023-78e893d7` — same at 4 px (3,825 = 10.16%) — predicted +0.001 to +0.004
+  3. `h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad` — same at 5 px (5,637 = 14.97%) — predicted −0.002 to +0.002 (negative control)
 
-| field | value |
-|---|---|
-| Parent (R0) | `h33-h33-2-b2` (GEMSDOE32) — 37,654 unit-mass dots, none within 2 px of the catalogue |
-| Best receipt | **none yet.** 0.2778 is a `CLAIM` (owner-reported, no receipt in `ledger/`) |
-| TOP_PUBLIC | `____` — **human must supply from the leaderboard, with date** |
-| Slots left this week | `__` of 3 (human must supply; nothing in this repo can know it) |
-| Next 3 slots | 1. `PRUNE-le3px`  2. `CONCENTRATION-blk10px`  3. `MASS-drop10` — see `SLOT_PLAN.md` |
-| Session axis | PRUNE (spine: cheapest test of the only receipt-backed mechanism) |
-| Status | **BLOCKED**: no pinned inputs, no parent recipe, no ledger in repo. Zero rasters built. |
+## Verified facts
+- Metric: DTI with alpha 0.2, beta 0.8, triangular kernel R=300m (3px), float32 EPSG:32611 100m, per https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/
+- Organizer answers: known faults masked pixel-exactly, new truth can lie within 300m of known traces — https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516
+- Structure: public leaderboard only some chunks, Phase1 $50k private chunks, Phase2 $250k rescores with expert-expanded labels — rules https://docs.nlr.gov/docs/fy26osti/96647.pdf
+- Resolution: GeoDAWN Area 2 flown at 400m line spacing, 150-200m above terrain, so lineament positions uncertain by kernel radius — https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7
 
-<!-- END CURRENT STATE -->
+## What we built this session (PRUNE, 2026-10-23)
+- Verified all 8 pinned manifest hashes — PASS, and verified the parent R0 sha256
+  byte-for-byte against its recorded hash (both nan and zeros encodings)
+- Measured the parent's catalogue-distance profile: min 2.236 px, 0 dots ≤2 px,
+  2,171 ≤3 px (5.77%), 3,825 ≤4 px, 5,637 ≤5 px
+- Built 3 PRUNE dose-response variants differing ONLY in the distance rule:
+  remove dots within R px (R = 3, 4, 5) and refill each to its nearest legal
+  pixel (distance > R, in footprint, off catalogue, on the H19-5 mask), holding
+  count and total mass at exactly 37,654
+- Independent parent-diff check: removed set is exactly {distance ≤ R}, nothing
+  else moved, no dot within R px in any variant (measured minima 3.16 / 4.12 /
+  5.10 px)
+- All files pass all 10 format gates with no PRUNE exemption, re-read from disk
+- Tooling: `gems/` implements the DTI algebra, exact marginal-gain ranking, the
+  axis builders and the gates; 38 tests pass with no data (`make test`)
 
-## Why nothing was built this session
+## What the previous session built (MASS, 2026-10-23)
+Three MASS variants, still BUILT and unscored. **Caveat recorded in
+IRREGULARITIES:** H19-5 turns out to be binary {0,1} with value 1.0 at every
+dot, so those files were ranked on a field with no ordering — they are a random
+10% perturbation, not a ranking test. Read their scores accordingly.
 
-The brief's opening gate is: verify manifest hashes, rebuild R0, match its
-sha256, *or stop and report — never approximate the parent*. On this checkout
-there is no `registry/`, no `ledger/`, no `SLOT_PLAN.md`, and no data directory.
-`main` is a single commit containing an 11-byte README. So the gate cannot run,
-and per the brief the correct move is to stop rather than invent a parent.
-Details in `IRREGULARITIES.md` items 1-2.
+## Files
+- `releases/` — candidate rasters (NaN outside primary, zeros fallback)
+- `gems/` — tested toolkit: metric algebra, axis builders, gates, proxy, ledger, CLI
+- `tests/` — 38 tests, no competition data required (`make test`)
+- `scripts/build_prune_variants.py` — this session's build, deterministic
+- `registry/parents/R0.json` — verified parent record + its (absent) ranking
+- `ledger/submissions.csv` — build log
+- `docs/mechanism_cards.md` — hypothesis, mechanism, mimic, predicted sign, falsifier
+- `SLOT_PLAN.md` — next slots and weeks to deadline
+- `docs/SUBMIT.md` — submission form note
+- `registry/data_manifest.json` — pinned inputs with sha256
 
-What this repo does contain is the machinery that makes the next session fast:
-a tested implementation of the metric algebra, the axis builders, the MUST-pass
-format gates, and the ledger. All 38 tests pass with no competition data.
+## Evidence labels
+- RECEIPT = copied from submission-page receipt
+- CLAIM = owner-reported, no receipt
+- PROXY = local holdout
+- MODEL = projection
+Never call PROXY or MODEL a score.
 
-## Setup
+## IRREGULARITIES
+See IRREGULARITIES.md — only items that change a decision.
 
-```
-python3 -m venv .venv && . .venv/bin/activate
-pip install -r requirements.txt
-make test          # 38 tests, no data required
-```
-
-Then, once the inputs exist: `make manifest && make verify`.
-
-## Layout
-
-```
-gems/metric.py     DTI algebra, exact marginal gains (T/S/M/G), dot ranking
-gems/variants.py   one-axis-at-a-time builders: PRUNE MASS CONCENTRATION SNAP RELIEF
-gems/gates.py      MUST-pass format gates (CRS/shape/transform/dtype/range/NaN/catalogue)
-gems/proxy.py      REPORT-ONLY catalogue holdout PROXY + leakage canary
-gems/rasters.py    float32 GeoTIFF I/O, NaN-outside and zeros-outside encodings
-gems/parent.py     parent rebuild + sha256 verification (refuses to approximate)
-gems/manifest.py   pinned-input hash verification
-gems/ledger.py     ledger CSV, dedupe, evidence labels, slot counting
-gems/cli.py        `python -m gems {validate,manifest,parent,ledger}`
-registry/          data manifest + parent recipes  (TEMPLATES ONLY — see below)
-ledger/            submissions ledger               (empty — waiting on data)
-```
-
-## What the human must supply before any raster can exist
-
-The toolbox is deliberately data-free. To unblock, provide:
-
-1. `registry/data_manifest.json` — path + sha256 for every pinned input
-   (`sample_submission.tif`, the fault catalogue raster, and any band used by an
-   axis). Start from `registry/data_manifest.template.json`.
-2. `registry/parents/R0.json` — the R0 recipe, **including `expected_sha256`**.
-   Without the recorded hash there is no way to prove a rebuild is the parent.
-3. `ledger/submissions.csv` or `ledger/raw_paste.txt` — the score history, so
-   dedupe and slot accounting work.
-4. `TOP_PUBLIC` and the slot count above.
-
-Then: `make test && make verify` reproduces the parent, or refuses and says
-exactly which input failed.
-
-## Rules of the road
-
-- Every raster comes from a script, pinned inputs, a fixed seed, a logged git SHA.
-- Zero mass on catalogue pixels; >= 3 px from them unless the axis is PRUNE.
-- A live change under 0.01 is not evidence (public chunks only).
-- `PROXY` and `MODEL` are never called a score. See `docs/SUBMIT.md`.
-- Human submits from their own account. This code cannot.
+## AI disclosure
+See AI_USE.md

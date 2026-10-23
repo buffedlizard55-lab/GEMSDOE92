@@ -22,7 +22,8 @@ def verify(manifest_path: str | Path, data_root: str | Path) -> dict:
     root = Path(data_root)
     entries, problems = [], []
     for item in files:
-        rel = item.get("path") or item.get("name")
+        rel = item.get("dest") or item.get("path") or item.get("name")
+        src = item.get("path") or rel
         want = item.get("sha256")
         f = root / rel if rel else None
         if f is None or not f.exists():
@@ -35,7 +36,8 @@ def verify(manifest_path: str | Path, data_root: str | Path) -> dict:
             continue
         got = sha256_file(f)
         ok = got == want
-        entries.append({"path": rel, "status": "OK" if ok else "HASH_MISMATCH",
+        entries.append({"path": rel, "source": src,
+                        "status": "OK" if ok else "HASH_MISMATCH",
                         "sha256": got})
         if not ok:
             problems.append(f"{rel}: expected {want[:16]}... got {got[:16]}...")

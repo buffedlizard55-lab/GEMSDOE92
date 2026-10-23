@@ -20,8 +20,11 @@ import csv
 from pathlib import Path
 
 LEDGER = Path("ledger/submissions.csv")
+# Union of every session's columns. Never drop a column when writing: an older
+# session's rows are evidence and their fields (file paths, sha8) must survive.
 COLUMNS = ["id", "parent", "axis", "value", "n_dots", "pct_changed", "sha256",
-           "status", "predicted_change", "receipt_score", "receipt_date", "notes"]
+           "status", "predicted_change", "file_zeros", "file_nan", "sha8",
+           "change_desc", "receipt_score", "receipt_date", "notes"]
 
 
 def load(path: str | Path = LEDGER) -> list[dict]:
@@ -33,13 +36,19 @@ def load(path: str | Path = LEDGER) -> list[dict]:
 
 
 def save(rows: list[dict], path: str | Path = LEDGER) -> None:
+    """Write rows, preserving any extra column keys found in the data."""
     p = Path(path)
     p.parent.mkdir(parents=True, exist_ok=True)
+    extra = []
+    for r in rows:
+        for k in r:
+            if k and k not in COLUMNS and k not in extra:
+                extra.append(k)
     with open(p, "w", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=COLUMNS, extrasaction="ignore")
+        w = csv.DictWriter(fh, fieldnames=COLUMNS + extra, extrasaction="ignore")
         w.writeheader()
         for r in rows:
-            w.writerow({k: r.get(k, "") for k in COLUMNS})
+            w.writerow({k: r.get(k, "") for k in COLUMNS + extra})
 
 
 def hash_seen(sha: str, rows: list[dict] | None = None) -> bool:

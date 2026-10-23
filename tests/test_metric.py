@@ -98,7 +98,9 @@ def test_template_recipe_is_refused():
     """A recipe full of REPLACE_ME must never be accepted as a parent."""
     import json, tempfile, os
     from gems.parent import ParentUnavailable, Recipe
-    raw = json.load(open("registry/parents/R0.template.json"))
+    raw = {"parent_id": "R0", "builder": "gems.builders.x",
+           "inputs": {"a.tif": "REPLACE_ME"}, "expected_sha256": "REPLACE_ME",
+           "git_sha": "REPLACE_ME", "seed": 0}
     with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as fh:
         json.dump(raw, fh)
         name = fh.name

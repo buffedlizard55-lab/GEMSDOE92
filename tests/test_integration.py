@@ -112,3 +112,23 @@ def test_zeros_and_nan_twins_shoot_identically(scene, tmp_path):
     aa = rasterio.open(a).read(1)
     bb = rasterio.open(b).read(1)
     assert np.array_equal(aa[fp], bb[fp])
+
+
+def test_ledger_preserves_columns_from_other_sessions(tmp_path):
+    """Regression: a narrower schema once silently dropped older columns
+    (file_zeros/file_nan/sha8/change_desc) when appending a new row."""
+    p = tmp_path / "l.csv"
+    legacy = {"id": "old", "parent": "P", "axis": "MASS", "value": "D10",
+              "sha256": "a" * 64, "status": "BUILT",
+              "file_zeros": "releases/x-zeros.tif", "sha8": "aaaaaaaa",
+              "change_desc": "drop lowest 10%", "notes": "legacy row"}
+    ledger.append_variant(legacy, p)
+    new = {"id": "new", "parent": "P", "axis": "PRUNE", "value": "B3",
+           "sha256": "b" * 64, "status": "BUILT", "file_zeros": "releases/y-zeros.tif",
+           "sha8": "bbbbbbbb", "change_desc": "drop within 3px"}
+    ledger.append_variant(new, p)
+    rows = {r["id"]: r for r in ledger.load(p)}
+    assert rows["old"]["file_zeros"] == "releases/x-zeros.tif"
+    assert rows["old"]["sha8"] == "aaaaaaaa"
+    assert rows["old"]["change_desc"] == "drop lowest 10%"
+    assert rows["new"]["sha8"] == "bbbbbbbb"
