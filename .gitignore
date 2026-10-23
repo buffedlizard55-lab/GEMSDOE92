@@ -1,0 +1,21 @@
+# Local environments, caches, and bulk competition/external inputs (never committed)
+.venv/
+.cache/
+.scratch/
+/data/
+/work/
+/tmp/
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.mmap
+*.npz
+Unselected files/
+
+# Candidate rasters / zips stay local (hash receipts only in Git; Brief v2 s4.2, IR-92-01)
+/releases/*.tif
+/releases/*.zip
+/data

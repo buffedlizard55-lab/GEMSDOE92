@@ -1,0 +1,23 @@
+name: CI
+on:
+  push:
+    branches: [main, arena/2ec35d68-gemsdoe92]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Restore SHA-pinned lineage inputs (validation tier)
+        run: python scripts/restore_inputs.py --validation
+      - name: Byte-exact parent R0 gate
+        run: python scripts/verify_parent_r0.py
+      - run: pytest -q

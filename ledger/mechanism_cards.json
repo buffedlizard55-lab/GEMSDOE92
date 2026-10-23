@@ -1,0 +1,26 @@
+{
+  "h33-h33-2-b2-TRACKBt1p0-20261023-7bc435f2": {
+    "hypothesis": "R0 dots that cannot be chained into a >=1.0 km strike-consistent trace are mostly ridge-detector speckles and catalogue-truncated fragments; spending their mass on densifying/continuing >=1.0 km traces raises live DTI, because line-like new-fault truth pays a dot whose kernel credit exceeds ~0.2*DTI and continuous along-strike coverage collects that credit on many truth pixels.",
+    "mechanism": "Basin-and-Range normal faults are km-scale planar strands; GeoDAWN 400 m line spacing (kernel radius 300 m) blurs but does not create km-long collinear ridge chains by chance. Chaining R0 dots at <=4.5 px follows the H19-5 ridge strike, so a >=1.0 km span component is a strand, while sub-km fragments are where a 121k-px ridge support thinned at 2.8 px leaves isolated BFS artefacts. Refill within 6 px of surviving traces fills 300 m kernel gaps and short tip extensions along those strands.",
+    "non_fault_mimic": "Collinear Lake Lahontan shoreline benches, alluvial-fan distributary channels and basalt flow margins can chain into km-long lineaments with no brittle slip; they would absorb the refilled mass exactly like a fault strand.",
+    "predicted_sign_size": "Corrected shipped prediction MODEL:-0.008 live vs R0 (range [-0.022,+0.003]) after the build's weighted-coverage MODEL and blind SGMC PROXY showed trace densification is kernel-redundant at the parent's 2.8 px spacing; a-priori value preserved above.",
+    "falsifier": "Live receipt <= R0 - 0.01 for t1p0, or a monotone loss t1p0 < t1p2 < t1p5 in receipts, falsifies the speckle hypothesis and shows sub-km fragments carry net new-fault truth (tips, relays, intersections).",
+    "a_priori_predicted_sign_size": "MODEL +0.004 live vs R0 (range [-0.008,+0.016]); |delta| < 0.01 on public chunks is no evidence."
+  },
+  "h33-h33-2-b2-TRACKBt1p2-20261023-3322bd7a": {
+    "hypothesis": "Raising the trace threshold to >=1.2 km removes additional short strands that are genuine fault tips and step-over relays; the gain over R0 is therefore smaller than at 1.0 km, bracketing where fragment removal turns from cleaning to amputation.",
+    "mechanism": "Fault displacement-length scaling puts many secondary strands at 1.0-1.2 km; Faulds-style step-overs and terminations -- where geothermal systems sit on known faults and where new geometry is most likely -- live precisely in this length band, so a stricter threshold starts deleting the discovery targets.",
+    "non_fault_mimic": "Terrace risers and fan-head trenches also concentrate at 1-1.2 km lengths, so any residual gain could still be shoreline/fan lineaments rather than faults.",
+    "predicted_sign_size": "Corrected shipped prediction MODEL:-0.010 live vs R0 (range [-0.025,+0.002]) after the build's weighted-coverage MODEL and blind SGMC PROXY showed trace densification is kernel-redundant at the parent's 2.8 px spacing; a-priori value preserved above.",
+    "falsifier": "Live receipt for t1p2 exceeding t1p0 by >= +0.01 falsifies the tip/relay-loss mechanism and shows even 1.0-1.2 km strands are mostly noise.",
+    "a_priori_predicted_sign_size": "MODEL +0.002 live vs R0 (range [-0.010,+0.014]); expected between t1p0 and t1p5 if the dose-response is real."
+  },
+  "h33-h33-2-b2-TRACKBt1p5-20261023-ab92778e": {
+    "hypothesis": "At >=1.5 km the filter deletes whole secondary fault systems (sub-parallel splays, relay ramps and intersection branches under 1.5 km span); the variant loses live DTI despite cleaner traces, closing the dose-response from above.",
+    "mechanism": "Damage-zone secondary strands are commonly 0.5-1.5 km long and sit 100-400 m from master faults; they are exactly the 'newly mapped geometry of existing systems' the organizer counts as new fault (Forum #11536), so removing them spends the budget only on master-strand densification with saturating kernel credit.",
+    "non_fault_mimic": "The longest surviving traces are also the most likely to be regional shorelines or range-front fan aprons, so t1p5 could in principle win by concentrating on the range front alone; that is the competing explanation a positive receipt would support.",
+    "predicted_sign_size": "Corrected shipped prediction MODEL:-0.013 live vs R0 (range [-0.028,+0.001]) after the build's weighted-coverage MODEL and blind SGMC PROXY showed trace densification is kernel-redundant at the parent's 2.8 px spacing; a-priori value preserved above.",
+    "falsifier": "Live receipt >= R0 + 0.01 for t1p5 falsifies damage-zone splay value and proves sub-1.5 km strands are net-negative mass.",
+    "a_priori_predicted_sign_size": "MODEL -0.002 live vs R0 (range [-0.014,+0.010])."
+  }
+}
