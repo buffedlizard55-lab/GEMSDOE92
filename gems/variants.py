@@ -365,6 +365,129 @@ def snap(parent: Dots, response: np.ndarray, max_shift: int = 2,
     return v
 
 
+def snap_spaced(
+    parent: Dots,
+    response: np.ndarray,
+    value: str,
+    max_shift: float = 2.0,
+    min_nn: float = 2.8,
+    min_gain: float = 0.01,
+    footprint: np.ndarray | None = None,
+    keep_out: np.ndarray | None = None,
+) -> Variant:
+    """Move each dot <= max_shift px to strongest local response while preserving Poisson spacing.
+
+    Why `min_nn` matters for DTI:
+    Parent R0 stems from D2.8 Poisson-disk thinning (`d^2 >= 2.8^2`, min Euclidean
+    inter-dot distance sqrt(8) = 2.828 px) matched to the R = 3 px triangular DTI
+    kernel `T = sum_g max_x k(||g - x||)`. Snapping dots without an inter-dot spacing
+    floor collapses ~23% of dots onto adjacent along-strike pixels (`d = 1.0–1.4 px`),
+    duplicating kernel coverage while paying full denominator mass `S`. Enforcing
+    the open-disc exclusion `dy^2 + dx^2 < min_nn^2` prevents along-strike bunching
+    and isolates cross-strike centering onto the scarp/gradient crest.
+    """
+    if max_shift <= 0 or max_shift > 2.0 + 1e-9:
+        raise ValueError(f"max_shift={max_shift} must be in (0, 2.0] px per SNAP spec")
+    if len(parent) == 0:
+        return Variant("SNAP", value, parent, 0, 0,
+                       stats={"mean_displacement_px": 0.0, "median_displacement_px": 0.0,
+                              "frac_moved": 0.0, "max_displacement_px": 0.0, "min_nn_px": float("nan")})
+    if response.shape[0] <= parent.ys.max() or response.shape[1] <= parent.xs.max():
+        raise ValueError("response grid does not cover the dots")
+
+    H, W = response.shape
+    res = np.where(np.isfinite(response), response, -np.inf)
+
+    ir = int(np.floor(max_shift + 1e-9))
+    offs = [
+        (dy, dx, float(np.hypot(dy, dx)))
+        for dy in range(-ir, ir + 1)
+        for dx in range(-ir, ir + 1)
+        if np.hypot(dy, dx) <= max_shift + 1e-9
+    ]
+    br = int(np.ceil(min_nn)) if min_nn > 0 else 0
+    lim2 = float(min_nn) * float(min_nn)
+    b_offs = [
+        (dy, dx)
+        for dy in range(-br, br + 1)
+        for dx in range(-br, br + 1)
+        if (dy != 0 or dx != 0) and (dy * dy + dx * dx < lim2)
+    ]
+
+    ys0 = parent.ys.astype(np.int64, copy=True)
+    xs0 = parent.xs.astype(np.int64, copy=True)
+    win_max = res[ys0, xs0].copy()
+    for dy, dx, _ in offs:
+        yy = np.clip(ys0 + dy, 0, H - 1)
+        xx = np.clip(xs0 + dx, 0, W - 1)
+        win_max = np.maximum(win_max, res[yy, xx])
+    order = np.lexsort((xs0, ys0, -np.where(np.isfinite(win_max), win_max, -1e9)))
+
+    owner = np.full((H, W), -1, dtype=np.int32)
+    owner[ys0, xs0] = np.arange(len(parent), dtype=np.int32)
+    cur_y = ys0.copy()
+    cur_x = xs0.copy()
+
+    for idx in order:
+        y0, x0 = int(cur_y[idx]), int(cur_x[idx])
+        r_orig = float(res[y0, x0])
+        owner[y0, x0] = -1
+        best_key = (r_orig if np.isfinite(r_orig) else -1e9, 0.0, -y0, -x0)
+        best_pos = (y0, x0)
+        for dy, dx, dist in offs:
+            if dy == 0 and dx == 0:
+                continue
+            yy, xx = y0 + dy, x0 + dx
+            if not (0 <= yy < H and 0 <= xx < W):
+                continue
+            if footprint is not None and not footprint[yy, xx]:
+                continue
+            if keep_out is not None and keep_out[yy, xx]:
+                continue
+            if owner[yy, xx] != -1:
+                continue
+            rv = float(res[yy, xx])
+            if not np.isfinite(rv) or (rv - r_orig) <= min_gain:
+                continue
+            conflict = False
+            for bdy, bdx in b_offs:
+                ny, nx = yy + bdy, xx + bdx
+                if 0 <= ny < H and 0 <= nx < W and owner[ny, nx] != -1:
+                    conflict = True
+                    break
+            if conflict:
+                continue
+            key = (rv, -dist, -yy, -xx)
+            if key > best_key:
+                best_key = key
+                best_pos = (yy, xx)
+        cur_y[idx], cur_x[idx] = best_pos
+        owner[best_pos[0], best_pos[1]] = int(idx)
+
+    disp = np.hypot(cur_y - ys0, cur_x - xs0)
+    out = Dots(cur_y, cur_x, parent.p.copy())
+    min_nn_obs = float("nan")
+    if len(out) >= 2:
+        nn_d, _ = cKDTree(np.c_[out.ys, out.xs]).query(np.c_[out.ys, out.xs], k=2)
+        min_nn_obs = float(nn_d[:, 1].min())
+    v = Variant(
+        "SNAP",
+        value,
+        out,
+        len(parent),
+        _changed(parent, out),
+        stats={
+            "mean_displacement_px": float(disp.mean()),
+            "median_displacement_px": float(np.median(disp)),
+            "frac_moved": float((disp > 0).mean()),
+            "max_displacement_px": float(disp.max()),
+            "min_nn_px": min_nn_obs,
+        },
+    )
+    v.check_change(allow_out_of_bounds=True)
+    return v
+
+
 # --------------------------------------------------------------------------
 # RELIEF: shift 10-15% of mass between basin / piedmont / range-front terciles
 # --------------------------------------------------------------------------

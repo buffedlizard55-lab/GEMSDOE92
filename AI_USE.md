@@ -84,3 +84,23 @@ ranking) it is blank or explicitly marked.
 ## Session 3 — controlled PRUNE collar rungs (2026-10-23)
 
 Arena.ai Agent Mode wrote the manifest-pinned restore script, exact DTI refill primitive, PRUNE rung builder, report-only proxy audit, tests, and current-session documentation. It rebuilt R0 exactly and generated three local candidate GeoTIFF pairs; it did not submit, contact competition/leaderboard pages, contact Dropbox, access credentials, or read held-out competition labels. Inputs were read only after SHA-256/byte verification. Human still chooses and submits, confirms `TOP_PUBLIC` and weekly capacity, checks data-use permissions, and transcribes receipt evidence. The SGMC/control and catalogue hide-and-recover instruments are explicitly `PROXY`, never scores.
+
+---
+
+## Session 4 — controlled spacing-preserving SNAP axis (2026-10-23)
+
+### What AI wrote
+- `gems.variants.snap_spaced` — deterministic spacing-preserving (`min_nn >= 2.8 px`) `<=2 px` local edge/scarp snap operator.
+- `scripts/build_snap_variants.py` — manifest SHA-256 verification, byte-exact `R0` lineage rebuild check, nodata/unsigned-gradient physical response construction (`Band 3 tmi_hg`, `Band 5 iso_grav_anom_slope`, `Band 19 det_elev_slope` + `||grad Band 19||`), deterministic build of `SNAPscarp2p0px`, `SNAPscarp1p4px`, and `SNAPpot2p0px`, post-write disk reread format validation, ledger update, and `evidence/snap_variants.json`.
+- `scripts/report_snap_proxies.py` — report-only buffered catalogue hide-and-recover `PROXY`, single-feature leakage canaries, and USGS SGMC off-catalogue bedrock control (`evidence/snap_proxy_audit.json`).
+- `tests/test_snap_variants.py` — unit and policy tests verifying spacing preservation, `<=2 px` displacement bounds, nodata/sign safeguards, ledger integrity, and evidence labeling.
+- Updates to `README.md` (`CURRENT STATE` block only), `SLOT_PLAN.md`, `docs/SUBMIT.md`, `docs/mechanism_cards.md`, `IRREGULARITIES.md`, and this file.
+
+### What AI discovered and logged
+- `Band 18 (iso_grav_anom_hg)` in `training_features.tif` is signed E–W `dg/dx` (`corr = +0.9482`) rather than unsigned horizontal gravity gradient (`Band 5 iso_grav_anom_slope`, `corr = +0.9620`), and 3,061 in-footprint pixels carry `-3.4028235e+38` nodata sentinels; corrected in `SNAP` and logged in `IRREGULARITIES.md`.
+- Naive `<=2 px` snapping without `min_nn >= 2.8 px` collapses 22.6% of `R0` dots onto adjacent along-strike pixels (`min_nn = 1.0 px`), wasting DTI kernel coverage; fixed via `snap_spaced`.
+
+### What the human decides and supplies
+- Autonomous `AXIS = SNAP` selection was delegated by the human's session prompt ("Do not prompt me over choosing an Axis for the session, pick your own session").
+- The human supplies `TOP_PUBLIC` (with observation date), confirms rolling-week and remaining competition slots, chooses whether/which single encoding file to upload from their registered DrivenData account, and records official submission-page `RECEIPT` scores and dates in `ledger/submissions.csv`.
+

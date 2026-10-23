@@ -124,3 +124,22 @@ Exact `(parent, axis, value)` and raster hashes were compared against accessible
 ## 2026-10-23 (new PRUNE-rung session) — local holdout PROXY is not decision-comparable
 
 The pinned `gems57-pooled-hide-v2` whole-component buffered catalogue holdout (seeds 20/30, `n=22,663` withheld known-catalogue pixels) returns R0 `0.004006 [0.003424,0.004690]`, p2.5 `0.000785 [0.000658,0.000922]`, and p3.5/p4.5 `0 [0,0]`; selected-band leakage canary max symmetric AUC is `0.55314`. Results are in `evidence/proxy_audit.json`. **Decision:** these are PROXY diagnostics only, not gates, scores, or live forecasts; investigate the large divergence from previous hide-and-recover summaries before using this instrument to rank future axes. Use human live receipts as the decision anchor.
+
+---
+
+## 2026-10-23 (SNAP session) — `Band 18 (iso_grav_anom_hg)` is signed E–W `dg/dx` (`corr=+0.948`), not unsigned gradient magnitude, and 3,061 in-footprint pixels carry `-3.4028235e+38` nodata
+
+**Observation.** Direct derivative audit of `training_features.tif` shows two decision-changing properties:
+1. `Band 18 (iso_grav_anom_hg)` spans `[-15.441, +12.856]` with `corr(dg/dx, Band 18) = +0.9482` and `corr(dg/dy, Band 18) = +0.0501`: it is the **signed east-west derivative `dg/dx`**, whereas **`Band 5 (iso_grav_anom_slope)`** (`[0.001, 0.652]`, `corr(||grad g||, Band 5) = +0.9620`) is the true unsigned horizontal gravity gradient magnitude. Ranking raw `Band 18` without `abs()` assigns ~0th percentile to strong east-dipping normal faults (`dg/dx << 0`, footwall high west of graben) and ~100th percentile only to west-dipping faults (`dg/dx >> 0`). (Note: `scripts/build_prune_rungs.py` ranked raw `Band 18` in its refill prior.)
+2. Every band in `training_features.tif` encodes `3,061` in-footprint pixels (`0.06%`; `3,073` on Band 6) with float32 sentinel `-3.4028235e+38`, which passes `np.isfinite()`. Reading without `masked=True` treats nodata pixels as extreme negative finite values.
+
+**Decision.** All `SNAP` response surfaces read `training_features.tif` with `ds.read(b, masked=True).filled(np.nan)` (plus `> -1e30` guard) and use unsigned **`Band 5 (iso_grav_anom_slope)`** instead of signed `Band 18`. Future physical priors (`MASS`, `CONCENTRATION`, `PRUNE` refills) should likewise use `Band 5` (or `|Band 18|` only when testing E–W dip polarity explicitly).
+
+## 2026-10-23 (SNAP session) — Preserving `D2.8` spacing (`min_nn >= 2.8 px`) and R0 exclusions (`d_cat > 2.0 px`) prevents kernel clumping and PRUNE confounding
+
+**Observation.** Two coupled structural issues arise when applying `SNAP` (`<=2 px`) to `R0`:
+1. *Along-strike clumping:* `R0` inherits `D2.8` Poisson-disk spacing (`min_nn = sqrt(8) = 2.828 px`). Naive independent per-dot `<=2 px` snapping collapses `8,503` dots (`22.6%`) to `min_nn = 1.0–1.4 px` around local slope maxima, duplicating `R = 3 px` triangular-kernel coverage (`max_x k(||g - x||)`) while paying full denominator mass `S` (destroying ~half the DTI gain on training-catalogue `D2.8` tests).
+2. *Catalogue exclusion conflict:* Brief §4 Constraint 4 states `keep >=3 px from them unless AXIS=PRUNE`, whereas Brief §5 defines `SNAP` as `move each dot <=2 px ... Same count, same exclusions`. In `R0`, `2,171` dots sit at `2.236 <= d_cat <= 3.0 px`, including `54` corridor dots that have **no** pixel with `d_cat > 3.0` within `<=2.0 px` (`30` have none even at `d_cat >= 3.0`). Enforcing `d_cat > 3.0` on `SNAP` is impossible without dropping dots or moving `>2 px`, and even a one-way `d_cat > 3.0` membrane depletes ~738 collar dots (mixing a 34% `PRUNE_B3` edit into `SNAP`).
+
+**Decision.** `gems.variants.snap_spaced` and `scripts/build_snap_variants.py` enforce `min_nn = 2.8 px` (`min_nn_obs = 2.8284 px`) and preserve `R0`'s exact `"Same count, same exclusions"` (`37,654` dots, zero catalogue mass, `d_cat > 2.0 px`), keeping `SNAP` 100% unconfounded with `PRUNE` and `SPACING`.
+

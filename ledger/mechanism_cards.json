@@ -31,5 +31,38 @@
     "predicted_sign_and_size": "MODEL:-0.004 vs R0, with wide [-0.018,+0.008] scenario range; MODEL only, not a score.",
     "falsifier": "A receipt change <= -0.01 for the 2.5/3.5 px rungs, or >= +0.01 gain for the 4.5 px rung, would respectively reject a beneficial inner collar or reject the predicted outer-collar turnover.",
     "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+  },
+  "h33-h33-2-b2-SNAPscarp2p0px-20261023-2a65fe24": {
+    "parent": "h33-h33-2-b2",
+    "axis": "SNAP",
+    "value": "scarp2p0px",
+    "hypothesis": "GeoDAWN's 400 m line spacing, 50-60 deg normal-fault hanging-wall dip projection, and D2.8's unweighted NW-seeded BFS thinning displace R0 dots by 100-200 m cross-strike from surface fault traces. Snapping <=2.0 px (200 m) onto the joint scarp slope + piedmont break-in-slope + TMI/gravity horizontal gradient crest while preserving D2.8's >=2.8 px Poisson spacing raises triangular-kernel credit k(d)=1-d/3 without along-strike dot clumping.",
+    "mechanism": "At fixed S=37,654, DTI = T / (0.2T + 0.2(S-M) + 0.8|G|) rises ~0.26*DTI per unit fractional gain in T. Shifting dots <=200 m cross-strike onto the piedmont-to-facet slope inflection (0.35*pct(det_elev_slope) + 0.35*pct(||grad det_elev_slope||) + 0.20*pct(tmi_hg) + 0.10*pct(iso_grav_anom_slope)) increases k(d) by +0.33 per 100 m of cross-strike error removed, while open-disc spacing d^2 >= 2.8^2 prevents adjacent dots from collapsing onto redundant kernel footprints.",
+    "non_fault_mimic": "Erosional range-front facets, incised alluvial-fan terrace risers, Plio-Pleistocene pluvial lake shorelines (Lahontan/Bonneville), and resistant volcanic cliff ledges produce steep slope breaks within 200 m of concealed fault traces without hosting brittle surface rupture.",
+    "predicted_sign_and_size": "MODEL:+0.012 vs R0, with scenario range [-0.006,+0.025]; MODEL only, never a score.",
+    "falsifier": "A live receipt delta <= -0.01 vs R0 falsifies <=200 m surface-scarp localization and indicates new-fault truth is dominated by concealed intrabasinal traces or eroded facets offset from the topographic inflection; |delta| < 0.01 is no evidence.",
+    "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+  },
+  "h33-h33-2-b2-SNAPscarp1p4px-20261023-01fb4acc": {
+    "parent": "h33-h33-2-b2",
+    "axis": "SNAP",
+    "value": "scarp1p4px",
+    "hypothesis": "Restricting the identical joint scarp + break-in-slope + TMI/gravity edge snap to an 8-connected Moore window (<=sqrt(2) px = 141 m) corrects D2.8's 1-px NW ribbon-edge bias and sub-grid alignment error while preventing 2-px (200 m) upslope overshoot onto eroded footwall facets.",
+    "mechanism": "Uses the exact same response surface, exclusions (d_cat > 2.0), count (37,654), and Poisson spacing (min_nn >= 2.828 px) as scarp2p0px, changing ONLY max_shift from 2.0 px to sqrt(2) px. Comparing scarp1p4px vs scarp2p0px isolates capture radius (141 m vs 200 m) on identical physics.",
+    "non_fault_mimic": "Local 100-141 m topographic terrace edges, talus aprons, and shallow volcanic dike margins adjacent to mapped H19-5 geophysical corridors.",
+    "predicted_sign_and_size": "MODEL:+0.008 vs R0, with scenario range [-0.004,+0.018]; MODEL only, never a score.",
+    "falsifier": "If scarp1p4px beats scarp2p0px by >= +0.01 on live receipts, the 200 m window overshoots onto footwall facets; if both trail R0 by >= 0.01, geomorphic scarp snapping degrades fault localization.",
+    "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+  },
+  "h33-h33-2-b2-SNAPpot2p0px-20261023-41697f8c": {
+    "parent": "h33-h33-2-b2",
+    "axis": "SNAP",
+    "value": "pot2p0px",
+    "hypothesis": "Pure potential-field horizontal-gradient control: if unmapped test faults are predominantly concealed intrabasinal structures beneath Quaternary playa/alluvial fill with no surface scarp, snapping <=2.0 px to 0.65*pct(tmi_hg) + 0.35*pct(iso_grav_anom_slope) centers dots over subsurface susceptibility/density contacts without alluvial-channel or shoreline erosion mimics. Conversely, on dipping range-front normal faults, 63 deg magnetic inclination and hanging-wall dip projection shift potential-field gradients 150-300 m off the surface trace.",
+    "mechanism": "Identical <=2.0 px window, count (37,654), exclusions (d_cat > 2.0), and spacing (min_nn >= 2.828 px) as scarp2p0px, removing only the topographic scarp/break terms. Uses unsigned Band 5 (iso_grav_anom_slope) rather than signed E-W Band 18 (dg/dx) so east-dipping and west-dipping normal faults are weighted symmetrically.",
+    "non_fault_mimic": "Unfaulted plutonic intrusive margins, caldera ring dikes, tilted ash-flow tuff pinchouts, and hanging-wall down-dip projection offsets of moderately dipping normal faults.",
+    "predicted_sign_and_size": "MODEL:-0.002 vs R0, with scenario range [-0.014,+0.010]; MODEL only, never a score.",
+    "falsifier": "A live receipt gain >= +0.01 over both R0 and scarp2p0px falsifies our surface-scarp dominance model and proves hidden test faults are predominantly blind/concealed basement contacts best localized by potential fields alone.",
+    "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
   }
 }
