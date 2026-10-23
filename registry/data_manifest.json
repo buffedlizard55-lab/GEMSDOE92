@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "note": "Pinned hashes for GEMSDOE92 session 2026-10-23. Verified from owner mirrors, not organizer-authenticated. All files from buffedlizard55-lab mirrors via git clone (github.com allowed).",
+  "files": [
+    {
+      "id": "sample_submission",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "path": "data/bridge/sample_submission.tif",
+      "dest": "data/bridge/sample_submission.tif",
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "bytes": 1599597,
+      "group": "core"
+    },
+    {
+      "id": "existing_faults",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "path": "data/bridge/existing_faults.tif",
+      "dest": "data/bridge/existing_faults.tif",
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "bytes": 425830,
+      "group": "core"
+    },
+    {
+      "id": "labels",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "path": "data/bridge/labels.tif",
+      "dest": "data/bridge/labels.tif",
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "bytes": 425830,
+      "group": "core"
+    },
+    {
+      "id": "parent_R0_zeros",
+      "repo": "buffedlizard55-lab/GEMSDOE32",
+      "path": "docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+      "dest": "data/parent_R0_zeros.tif",
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "bytes": 219065,
+      "group": "parent"
+    },
+    {
+      "id": "parent_R0_nan",
+      "repo": "buffedlizard55-lab/GEMSDOE32",
+      "path": "docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif",
+      "dest": "data/parent_R0_nan.tif",
+      "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+      "bytes": 355000,
+      "group": "parent"
+    },
+    {
+      "id": "h19_5_continuous",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "path": "inputs/gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif",
+      "dest": "data/bridge/h19_5.tif",
+      "sha256": "ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d",
+      "bytes": 1712322,
+      "group": "scored"
+    },
+    {
+      "id": "h27_4_solo_d28",
+      "repo": "buffedlizard55-lab/GEMSDOE28",
+      "path": "docs/downloads/gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif",
+      "dest": "data/bridge/h27_4_solo.tif",
+      "sha256": "ab02300152248fdda04e988e2cd2a0c13f35eec42fcf670a15e8b76b19e24a73",
+      "bytes": 1600000,
+      "group": "scored"
+    },
+    {
+      "id": "d28_44090",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "path": "docs/downloads/gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+      "dest": "data/bridge/d28.tif",
+      "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+      "bytes": 1603424,
+      "group": "scored"
+    }
+  ]
+}
