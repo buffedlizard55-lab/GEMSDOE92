@@ -89,7 +89,7 @@
       },
       "form_note": "h33-h33-2-b2; PRUNE collar 2.5px; fixed 37654; remove/refill 941 (2.50%); pred MODEL:+0.001",
       "gate_status": "PASS (local reread; file not tracked in public Git repo)",
-      "git_sha_at_build": "d6a214d78e884a281fc3caaed5e9752305d385c2"
+      "git_sha_at_build": "7d3bc54124c7dcb549c0de59bfdee9305edf0c0c"
     },
     {
       "id": "h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277",
@@ -163,7 +163,7 @@
       },
       "form_note": "h33-h33-2-b2; PRUNE collar 3.5px; fixed 37654; remove/refill 2702 (7.18%); pred MODEL:+0.003",
       "gate_status": "PASS (local reread; file not tracked in public Git repo)",
-      "git_sha_at_build": "d6a214d78e884a281fc3caaed5e9752305d385c2"
+      "git_sha_at_build": "7d3bc54124c7dcb549c0de59bfdee9305edf0c0c"
     },
     {
       "id": "h33-h33-2-b2-PRUNEp4.5px-refill-20261023-ebace30d",
@@ -237,8 +237,8 @@
       },
       "form_note": "h33-h33-2-b2; PRUNE collar 4.5px; fixed 37654; remove/refill 4848 (12.88%); pred MODEL:-0.004",
       "gate_status": "PASS (local reread; file not tracked in public Git repo)",
-      "git_sha_at_build": "d6a214d78e884a281fc3caaed5e9752305d385c2"
+      "git_sha_at_build": "7d3bc54124c7dcb549c0de59bfdee9305edf0c0c"
     }
   ],
-  "scope_note": "No submission, leaderboard, hidden labels, or off-manifest data accessed. Both public-repository raster releases are generated locally and ignored by Git."
+  "scope_note": "No submission, leaderboard, hidden labels, or off-manifest data accessed. The six new candidate rasters are generated locally and gitignored; inherited main-branch TIFFs remain tracked and are flagged in IRREGULARITIES.md."
 }

@@ -346,7 +346,7 @@
   },
   "sgmc_control": {
     "evidence_label": "PROXY",
-    "source": "manifest-pinned USGS SGMC derived fault control; source URL and license in registry/data_manifest.json",
+    "source": "manifest-pinned USGS SGMC derived fault control; source URL and license in registry/session_manifest.json",
     "truth_pixels_after_catalogue_and_3px_exclusion": 62703,
     "dti_by_arm": {
       "R0": 0.09606,
