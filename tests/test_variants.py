@@ -129,6 +129,29 @@ def test_snap_never_stacks_two_dots_on_one_pixel():
     assert len(set(zip(v.dots.ys.tolist(), v.dots.xs.tolist()))) == 2
 
 
+def test_snap_moves_excluded_origin_even_when_it_is_strongest():
+    """The hard exclusion applies to inherited dots, not just destinations."""
+    d = Dots(np.array([10]), np.array([10]), np.array([1.0]))
+    response = np.zeros((40, 40))
+    response[10, 10] = 100.0
+    response[10, 11] = 2.0
+    keep_out = np.zeros((40, 40), bool)
+    keep_out[10, 10] = True
+    v = snap(d, response, max_shift=2, keep_out=keep_out)
+    assert (v.dots.ys[0], v.dots.xs[0]) == (10, 11)
+    assert v.stats["max_displacement_px"] == 1.0
+
+
+def test_snap_prefers_smallest_displacement_on_exact_response_tie():
+    d = Dots(np.array([10]), np.array([10]), np.array([1.0]))
+    response = np.zeros((40, 40))
+    response[10, 10] = 4.0
+    response[9, 9] = 4.0
+    v = snap(d, response, max_shift=2)
+    assert (v.dots.ys[0], v.dots.xs[0]) == (10, 10)
+    assert v.stats["mean_displacement_px"] == 0.0
+
+
 def test_variant_declares_change_fraction():
     d = grid_dots()
     v = mass_drop(d, np.arange(len(d), dtype=float), frac=0.10)
