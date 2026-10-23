@@ -84,3 +84,50 @@ ranking) it is blank or explicitly marked.
 ## Session 3 — controlled PRUNE collar rungs (2026-10-23)
 
 Arena.ai Agent Mode wrote the manifest-pinned restore script, exact DTI refill primitive, PRUNE rung builder, report-only proxy audit, tests, and current-session documentation. It rebuilt R0 exactly and generated three local candidate GeoTIFF pairs; it did not submit, contact competition/leaderboard pages, contact Dropbox, access credentials, or read held-out competition labels. Inputs were read only after SHA-256/byte verification. Human still chooses and submits, confirms `TOP_PUBLIC` and weekly capacity, checks data-use permissions, and transcribes receipt evidence. The SGMC/control and catalogue hide-and-recover instruments are explicitly `PROXY`, never scores.
+
+---
+
+## Session 4 — SNAP axis, 2026-10-23
+
+### What AI wrote
+- `scripts/make_edge_response.py` — builds the SNAP edge/scarp response surface
+  from pinned bands 3, 13 and 19 with weights fixed a priori; no labels used.
+- `gems/variants.py::snap` — rewritten as an evidence-thresholded, spacing-safe
+  positional correction (`min_gain`, `min_spacing_px`), with deterministic
+  contention resolution and explicit stats.
+- `scripts/build_snap_variants.py` — the deterministic build: verifies every pin,
+  asserts the R0 invariants, writes both encodings, re-reads them, runs the gates,
+  appends ledger rows and writes `evidence/snap_session.json`.
+- 6 new tests in `tests/test_variants.py` (50 total, no competition data needed).
+- Updated `SLOT_PLAN.md`, the `README.md` CURRENT STATE block, `docs/SUBMIT.md`,
+  `IRREGULARITIES.md`, `releases/README.md`, `docs/mechanism_cards.md`.
+
+### What the human decided or supplied
+- The parent R0 and its CLAIM score; the AI verified the parent byte-for-byte
+  from the pinned lineage but cannot verify a score without a receipt.
+- The AXIS choice (SNAP) was made autonomously, per the brief's instruction not to
+  prompt over axis selection.
+- `TOP_PUBLIC`, the slot count, all submissions and all receipts.
+- Whether a candidate that keeps 4-5% inherited in-collar mass is acceptable
+  (see IRREGULARITIES, SNAP session).
+
+### What the AI found and flagged rather than papered over
+- The literal SNAP rule moves 99% of dots and destroys the parent's 2.83 px
+  spacing invariant, so the axis was implemented as a thresholded correction and
+  the deviation is documented instead of hidden.
+- The brief's block-CV reference band (0.51-0.59) does not match R0 under either
+  CV definition (1.878 / 0.619 at 1 km), so CONCENTRATION was not built on it.
+- The 3 px catalogue rule is unsatisfiable for any non-PRUNE descendant of R0;
+  inherited dots are kept and the gate failure is recorded verbatim.
+
+### Reproducibility
+No randomness anywhere (deterministic greedy assignment, fixed seeds only where a
+random background sample is drawn for the report-only canary; `np.random.default_rng(20261023)`).
+Pinned inputs verified by sha256 **and** byte length before use; git SHA logged in
+`evidence/snap_session.json`; every file re-read from disk and gate-checked after
+writing; both encodings hashed.
+
+### What the AI did not do
+No submission, no login, no leaderboard or competition-page access, no Dropbox
+contact, no label probing, no invented numbers. Unknown values (`TOP_PUBLIC`,
+slots, receipts) are left blank.

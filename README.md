@@ -1,17 +1,17 @@
 # GEMSDOE92 — PRUNE axis session
 
 ## CURRENT STATE
-- **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots; exact rebuild matches both pinned zeros and NaN SHA-256 values. `0.2778` remains **CLAIM** (no receipt in this checkout).
+- **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots. Rebuilt this session from the pinned lineage (`dot_thin(H19-5, 2.8) & d_cat > 2.0`) and **byte-identical to both pinned encodings** (zeros `c55bafc4…`, NaN `baeae321…`). `0.2778` remains **CLAIM** (no receipt in this checkout).
 - **Best receipt**: none recorded.
-- **TOP_PUBLIC**: not supplied; human must provide value and observation date.
-- **Slots left this week**: unknown; human must check the entity's current rolling-week quota.
-- **AXIS this session**: PRUNE, chosen autonomously. New values: `p2.5px-refill`, `p3.5px-refill`, `p4.5px-refill`.
+- **TOP_PUBLIC**: not supplied; human must provide the value and its observation date.
+- **Slots left this week**: unknown; human must check the entity's rolling-week quota (3 scored submissions, 1 final file).
+- **AXIS this session**: SNAP, chosen autonomously. Values `cap2p0-g0.15`, `cap2p0-g0.10`, `cap2p0-g0.05` (2,660 / 7,023 / 19,565 dots moved; count, mass and the 2.83 px spacing invariant held).
 - **Next 3 candidate slots (BUILT, not submitted)**:
-  1. `h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277` — 2,702 dots moved (7.18%); MODEL +0.003, wide range [-0.008,+0.015]; SGMC PROXY +0.00031 vs R0.
-  2. `h33-h33-2-b2-PRUNEp2.5px-refill-20261023-6d7a61ba` — 941 moved (2.50%); MODEL +0.001, range [-0.010,+0.012]; SGMC PROXY +0.00018.
-  3. `h33-h33-2-b2-PRUNEp4.5px-refill-20261023-ebace30d` — 4,848 moved (12.88%); MODEL -0.004, range [-0.018,+0.008]; SGMC PROXY -0.00360.
+  1. `h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277` — 2,702 dots removed/refilled (7.18%); MODEL +0.003, range [-0.008,+0.015]. Extends the only mechanism whose last step moved the score up (≤2 px collar: 0.2708 → 0.2778 CLAIM, i.e. +0.007 — formally still under the 0.01 evidence bar).
+  2. `h33-h33-2-b2-SNAPcap2p0-g0p15-20261023-2ca4294e` — 2,660 dots moved ≤2 px (7.06%), mean displacement 0.124 px overall (1.76 px per mover); MODEL ±0.008, range [-0.008,+0.008]. Cheapest test of the positional hypothesis on the incumbent.
+  3. `h33-h33-2-b2-SNAPcap2p0-g0p05-20261023-2c472bc5` — 19,565 dots moved (51.96%), mean displacement 0.858 px overall (1.65 px per mover); MODEL ±0.035, range [-0.035,+0.035]. High-variance dose extreme; only worth a slot if slot 2 shows ≥+0.01, otherwise use slot 3 for PRUNE p2.5 (`…-6d7a61ba`).
 
-No file was submitted. The new candidate TIFFs are locally generated and gitignored. See `docs/SUBMIT.md`; prior main-branch candidate files remain in the ledger.
+No file was submitted. Candidate TIFFs live in `releases/` (gitignored, so not redistributed by this public repo); regenerate with the scripts in `scripts/`. See `docs/SUBMIT.md`.
 
 ## Verified facts
 - Metric: DTI with alpha 0.2, beta 0.8, triangular kernel R=300m (3px), float32 EPSG:32611 100m, per https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/
