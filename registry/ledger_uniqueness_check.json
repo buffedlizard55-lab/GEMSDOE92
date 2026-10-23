@@ -1,96 +1,43 @@
 {
   "check_utc": "2026-10-23",
-  "scope": "Accessible ledger/submissions.csv in public repositories GEMSDOE74 through GEMSDOE89 only; not a claim of complete cross-session history.",
+  "scope": "Accessible ledger/submissions.csv in public repositories GEMSDOE84 through GEMSDOE92 only; not a claim of complete cross-session history.",
+  "axis": "SNAP",
   "variants": [
     {
       "parent": "h33-h33-2-b2",
-      "axis": "PRUNE",
-      "value": "p2.5px-refill",
-      "sha256": "6d7a61ba2e980808640db9e0b7b1a787243abf5f833bb7cd25c5a35af96685c8",
-      "sha256_zeros": "15c099934edc36eb9010790555e9fadd78c6044657449a627c7ce0a627d83ec9"
+      "axis": "SNAP",
+      "value": "iso_g2g10",
+      "sha256": "6d18fe2571e60f46d9723f9b01266871e894b49d048e4c5deeb59e333d2bca59",
+      "sha256_zeros": "6fb191c53f5e822af25f62e77d880cf4f720ac677b65b96fb6b5120d57b9c6f0"
     },
     {
       "parent": "h33-h33-2-b2",
-      "axis": "PRUNE",
-      "value": "p3.5px-refill",
-      "sha256": "a121a27751381fa2f6b9bf8629e53b1a4a57df5fcab85ed0d3bf548c33ca95ab",
-      "sha256_zeros": "792eaa38bdddf2890a06c65386bcf480c4573a200b53191748ac238c94c67816"
+      "axis": "SNAP",
+      "value": "rtp_hg2g10",
+      "sha256": "e68b8ce7a245ced7ed072497dd681d1ea5fc29667e2820844c4a56fc039db506",
+      "sha256_zeros": "4edd29bd35cbc455c60dae8dbe5bc9f43ddfa465d5a6252514786d10528abdd2"
     },
     {
       "parent": "h33-h33-2-b2",
-      "axis": "PRUNE",
-      "value": "p4.5px-refill",
-      "sha256": "ebace30d4386c7b979badb0d6512e79b62f822839e42c4fe2e8cf35ed9c46de4",
-      "sha256_zeros": "8df3c4d905359caf7d2660d495f101b9ca0266a5637b6002712a72545224e1fe"
+      "axis": "SNAP",
+      "value": "iso_combo2g10",
+      "sha256": "a18f53b1272c4d4ff3d7e961c4553f4abdbe07da5a85157200f7bd56b92f2be6",
+      "sha256_zeros": "f9ab7d3d917a22427c07b4b09d66a1e098f6c7b637dd775d61e3c12db151da9e"
     }
   ],
   "checked_repositories": [
-    {
-      "repo": "GEMSDOE74",
-      "ledger_available": false
-    },
-    {
-      "repo": "GEMSDOE75",
-      "ledger_available": false
-    },
-    {
-      "repo": "GEMSDOE76",
-      "ledger_available": false
-    },
-    {
-      "repo": "GEMSDOE77",
-      "ledger_available": false
-    },
-    {
-      "repo": "GEMSDOE78",
-      "ledger_available": false
-    },
-    {
-      "repo": "GEMSDOE79",
-      "ledger_available": false
-    },
-    {
-      "repo": "GEMSDOE80",
-      "ledger_available": false
-    },
-    {
-      "repo": "GEMSDOE81",
-      "ledger_available": false
-    },
-    {
-      "repo": "GEMSDOE82",
-      "ledger_available": false
-    },
-    {
-      "repo": "GEMSDOE83",
-      "ledger_available": false
-    },
-    {
-      "repo": "GEMSDOE84",
-      "ledger_available": true
-    },
-    {
-      "repo": "GEMSDOE85",
-      "ledger_available": true
-    },
-    {
-      "repo": "GEMSDOE86",
-      "ledger_available": true
-    },
-    {
-      "repo": "GEMSDOE87",
-      "ledger_available": true
-    },
-    {
-      "repo": "GEMSDOE88",
-      "ledger_available": true
-    },
-    {
-      "repo": "GEMSDOE89",
-      "ledger_available": true
-    }
+    {"repo": "GEMSDOE84", "ledger_available": true, "snap_values_seen": ["1p4px-g0p02", "2p0px-g0p01", "2p0px-g0p02"]},
+    {"repo": "GEMSDOE85", "ledger_available": true, "snap_values_seen": ["on-ridge lidar2", "on-ridge tmi2", "free lidar2", "iso_grav_anom_hg max2 margin0.05", "tmi_hg max2 margin0.05", "det_elev_slope max2 margin0.05"]},
+    {"repo": "GEMSDOE86", "ledger_available": true, "snap_values_seen": ["1", "2", "2-grav", "hg2", "vg2", "cons2", "r1", "r2", "r2g10", "2px"]},
+    {"repo": "GEMSDOE87", "ledger_available": true, "snap_values_seen": ["tmi-hg", "scarp", "grav-argmax", "tmi2", "grav2", "comb2"]},
+    {"repo": "GEMSDOE88", "ledger_available": true, "snap_values_seen": ["w2E1", "w2S2", "w2E2", "g2f35", "d2f35", "d1f35", "ridge2px", "pot2px", "scarp2px"]},
+    {"repo": "GEMSDOE89", "ledger_available": true, "snap_values_seen": ["1p4px-g0p02", "2p0px-g0p01", "2p0px-g0p02"]},
+    {"repo": "GEMSDOE90", "ledger_available": true, "snap_values_seen": []},
+    {"repo": "GEMSDOE91", "ledger_available": true, "snap_values_seen": ["w2E1", "w2S2", "w2E2", "g2f35", "d2f35", "d1f35", "ridge2px", "pot2px", "scarp2px"]},
+    {"repo": "GEMSDOE92", "ledger_available": true, "snap_values_seen": ["iso_g2g10", "rtp_hg2g10", "iso_combo2g10"]}
   ],
   "exact_parent_axis_value_matches": [],
   "exact_raster_hash_matches": [],
+  "note": "Prior SNAP arms used band 18 (signed iso_grav_anom_hg / dg/dx) or band 03 tmi_hg. This session's values use band 05 iso_grav_anom_slope and |grad_H| of band 02 rtp with a 0.10 percentile gate. GEMSDOE86 r2g10 gated a different field (tmi+|iso_grav_anom_hg|).",
   "pass": true
 }

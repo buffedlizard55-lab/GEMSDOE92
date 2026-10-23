@@ -312,15 +312,19 @@ def concentration(parent: Dots, prior: np.ndarray, block_px: int = 10,
 # --------------------------------------------------------------------------
 def snap(parent: Dots, response: np.ndarray, max_shift: int = 2,
          footprint: np.ndarray | None = None,
-         keep_out: np.ndarray | None = None) -> Variant:
+         keep_out: np.ndarray | None = None,
+         min_gain: float = 0.0) -> Variant:
     """Move each dot to the local maximum of `response` within +-max_shift px.
 
     Same count, same mass. `keep_out` marks pixels a dot may NOT move onto
-    (catalogue exclusions). Mean displacement is reported; SNAP is exempt from
-    the brief's 1-50% changed window.
+    (catalogue exclusions). `min_gain` is a floor on (destination - origin)
+    response; 0 is brief-literal argmax. Mean displacement is reported; SNAP
+    is exempt from the brief's 1-50% changed window.
     """
     if max_shift < 1:
         raise ValueError("max_shift must be >= 1")
+    if min_gain < 0:
+        raise ValueError("min_gain must be >= 0")
     if response.shape[0] <= parent.ys.max() or response.shape[1] <= parent.xs.max():
         raise ValueError("response grid does not cover the dots")
     H, W = response.shape
@@ -330,6 +334,7 @@ def snap(parent: Dots, response: np.ndarray, max_shift: int = 2,
     new_ys, new_xs = parent.ys.copy(), parent.xs.copy()
     disp = np.zeros(len(parent))
     for j, (y, x) in enumerate(zip(parent.ys.tolist(), parent.xs.tolist())):
+        origin = res[y, x]
         best_key, best_px = None, (y, x)
         for dy in range(-max_shift, max_shift + 1):
             for dx in range(-max_shift, max_shift + 1):
@@ -349,6 +354,8 @@ def snap(parent: Dots, response: np.ndarray, max_shift: int = 2,
                 if best_key is None or key > best_key:
                     best_key, best_px = key, (yy, xx)
         yy, xx = best_px
+        if (yy, xx) != (y, x) and (res[yy, xx] - origin) < min_gain:
+            yy, xx = y, x
         if (yy, xx) != (y, x):
             occupied.discard((y, x))
             occupied.add((yy, xx))
@@ -360,7 +367,8 @@ def snap(parent: Dots, response: np.ndarray, max_shift: int = 2,
                 stats={"mean_displacement_px": float(disp.mean()),
                        "median_displacement_px": float(np.median(disp)),
                        "frac_moved": float((disp > 0).mean()),
-                       "max_displacement_px": float(disp.max())})
+                       "max_displacement_px": float(disp.max()),
+                       "min_gain": float(min_gain)})
     v.check_change(allow_out_of_bounds=True)
     return v
 

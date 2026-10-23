@@ -124,3 +124,27 @@ Exact `(parent, axis, value)` and raster hashes were compared against accessible
 ## 2026-10-23 (new PRUNE-rung session) — local holdout PROXY is not decision-comparable
 
 The pinned `gems57-pooled-hide-v2` whole-component buffered catalogue holdout (seeds 20/30, `n=22,663` withheld known-catalogue pixels) returns R0 `0.004006 [0.003424,0.004690]`, p2.5 `0.000785 [0.000658,0.000922]`, and p3.5/p4.5 `0 [0,0]`; selected-band leakage canary max symmetric AUC is `0.55314`. Results are in `evidence/proxy_audit.json`. **Decision:** these are PROXY diagnostics only, not gates, scores, or live forecasts; investigate the large divergence from previous hide-and-recover summaries before using this instrument to rank future axes. Use human live receipts as the decision anchor.
+
+## 2026-10-23 (SNAP session) — band 18 is signed ∂g/∂x; band 05 is isotropic |∇_H g|
+
+**Observation.** GeoTIFF tags plus finite-difference audit on the pinned `training_features.tif`: band 18 `iso_grav_anom_hg` is 49.1% negative and correlates r=0.95 with ∂(band 13)/∂x; band 05 `iso_grav_anom_slope` is strictly non-negative and correlates r=0.962 with |∇_H band 13|. Band 02 `rtp` is the signed reduced-to-pole anomaly (83.9% negative), not a gradient. Prior SNAP arms in GEMSDOE85–87 used band 18 / band 03.
+
+**Impact — decision-changing.** Gravity SNAP on band 18 tests a directional derivative, not a basement-step edge. This session snaps to band 05 and to |∇_H| of band 02, never to band 18.
+
+**Decision.** Values `iso_g2g10` / `rtp_hg2g10` / `iso_combo2g10`. If a later session repeats SNAP on band 18, it is a duplicate experiment.
+
+## 2026-10-23 (SNAP session) — ungated 2 px argmax is a field replacement
+
+**Observation.** Brief-literal argmax on the same three fields moved 99.79% / 98.12% / 98.56% of R0 (mean 1.74–1.94 px). That matches GEMSDOE86/87's ungated SNAP verdict.
+
+**Impact — decision-changing.** A 99% move is not a seating test. Session variants use a 0.10 footprint-percentile gain gate (726 / 13,299 / 5,694 dots moved). Ungated hashes are recorded only as a diagnostic in `evidence/snap_session.json` and are not ledger experiments.
+
+## 2026-10-23 (SNAP session) — 3 px catalogue gate is inherited from R0
+
+**Observation.** Hard constraint 4 asks for ≥3 px except AXIS=PRUNE. R0 has 2,171 dots with d_cat ≤ 3 (min 2.236). SNAP is not PRUNE, so new landings are refused at d_cat < 3; inherited collar dots may stay. Collar occupancy did not increase (2,171 → 2,164 / 1,885 / 2,064). Default `gems.gates` 3 px check still fails on the inherited dots; the parent exclusion `d_cat > 2` passes.
+
+**Decision.** Same MASS-session reading: do not mix PRUNE into SNAP. Report the 3 px inherited count; do not treat it as a SNAP-format failure.
+
+## 2026-10-23 (SNAP session) — uniqueness check is limited
+
+Exact `(parent, axis, value)` and raster hashes were compared against accessible GEMSDOE84–92 ledgers. The three new values and six new hashes had no matches. This cannot prove uniqueness in unpublished sessions. **Decision:** do not submit if the human knows an exact pair/hash was already built elsewhere.

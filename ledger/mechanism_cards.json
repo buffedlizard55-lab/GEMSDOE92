@@ -1,35 +1,35 @@
 {
-  "h33-h33-2-b2-PRUNEp2.5px-refill-20261023-6d7a61ba": {
+  "h33-h33-2-b2-SNAPiso_g2g10-20261023-6d18fe25": {
     "parent": "h33-h33-2-b2",
-    "axis": "PRUNE",
-    "value": "p2.5px-refill",
-    "hypothesis": "At fixed mass, removing every R0 dot within 2.5 pixels of the known-fault catalogue and reallocating that mass to eligible un-emitted H19-5 ridge pixels improves distance-tolerant fault detection if near-catalogue kernel overlap wastes precision on mapped traces.",
-    "mechanism": "A triangular 300 m kernel gives less incremental credit when emitted mass lies close to already-known faults. Each replacement is selected by greedy exact marginal gain on the declared label-free prior; R0 count stays at 37,654. This is a controlled collar-radius change, not a mass change.",
-    "non_fault_mimic": "Magnetic/gravity edges and H19-5 lineaments can trace lithologic contacts, caldera ring fractures, or erosional scarps rather than brittle faults.",
-    "predicted_sign_and_size": "MODEL:+0.001 vs R0, with wide [-0.010,+0.012] scenario range; MODEL only, not a score.",
-    "falsifier": "A receipt change <= -0.01 for the 2.5/3.5 px rungs, or >= +0.01 gain for the 4.5 px rung, would respectively reject a beneficial inner collar or reject the predicted outer-collar turnover.",
-    "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+    "axis": "SNAP",
+    "value": "iso_g2g10",
+    "hypothesis": "R0 dots were Poisson-thinned from a binary H19-5 mask, so they can sit up to ~200 m off the gravity-defined basement step. Band 05 is isotropic |grad_H g|, the density-contrast edge that maps Basin-and-Range normal-fault steps. Re-seating only those dots whose 2 px window holds a >=0.10-percentile stronger gravity edge should raise kernel credit T at fixed mass S without the 99% field-replacement of ungated argmax.",
+    "mechanism": "SNAP only: each of 37,654 unit-mass dots may move at most 2 px Euclidean to the strongest finite response in its 13-pixel disk, and only if that response exceeds the origin by >= 0.10 footprint percentile. Ties stay. Occupied pixels are skipped. Destinations must remain in-footprint, off catalogue, and at d_cat > 2 px. No ranking, mass, prune, or refill.",
+    "non_fault_mimic": "Isostatic gravity edges also mark pluton contacts, caldera walls, and basin-fill thickness changes that are not brittle faults.",
+    "predicted_sign_and_size": "MODEL:+0.003 vs R0, range [-0.008,+0.012]; MODEL only, not a score.",
+    "falsifier": "A receipt change of magnitude >= 0.01 against R0 decides the seating hypothesis for that field. |\u0394| < 0.01 is no evidence (public chunks). A >= 0.01 loss says clustering onto crests costs more than the kernel-credit gain.",
+    "decision_rule": "Treat absolute live change < 0.01 as no evidence; compare only human receipts."
   },
-  "h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277": {
+  "h33-h33-2-b2-SNAPrtp_hg2g10-20261023-e68b8ce7": {
     "parent": "h33-h33-2-b2",
-    "axis": "PRUNE",
-    "value": "p3.5px-refill",
-    "hypothesis": "At fixed mass, removing every R0 dot within 3.5 pixels of the known-fault catalogue and reallocating that mass to eligible un-emitted H19-5 ridge pixels improves distance-tolerant fault detection if near-catalogue kernel overlap wastes precision on mapped traces.",
-    "mechanism": "A triangular 300 m kernel gives less incremental credit when emitted mass lies close to already-known faults. Each replacement is selected by greedy exact marginal gain on the declared label-free prior; R0 count stays at 37,654. This is a controlled collar-radius change, not a mass change.",
-    "non_fault_mimic": "Magnetic/gravity edges and H19-5 lineaments can trace lithologic contacts, caldera ring fractures, or erosional scarps rather than brittle faults.",
-    "predicted_sign_and_size": "MODEL:+0.003 vs R0, with wide [-0.008,+0.015] scenario range; MODEL only, not a score.",
-    "falsifier": "A receipt change <= -0.01 for the 2.5/3.5 px rungs, or >= +0.01 gain for the 4.5 px rung, would respectively reject a beneficial inner collar or reject the predicted outer-collar turnover.",
-    "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+    "axis": "SNAP",
+    "value": "rtp_hg2g10",
+    "hypothesis": "The same gated seating test against the isotropic horizontal gradient of reduced-to-pole magnetics (derived from signed band 02). RTP edges mark susceptibility contrasts along faults; TMI-HG (band 03) was already snapped elsewhere and is not reused.",
+    "mechanism": "SNAP only: each of 37,654 unit-mass dots may move at most 2 px Euclidean to the strongest finite response in its 13-pixel disk, and only if that response exceeds the origin by >= 0.10 footprint percentile. Ties stay. Occupied pixels are skipped. Destinations must remain in-footprint, off catalogue, and at d_cat > 2 px. No ranking, mass, prune, or refill.",
+    "non_fault_mimic": "RTP edges mark lithologic contacts, alteration halos, and volcanic vents as well as faults.",
+    "predicted_sign_and_size": "MODEL:+0.000 vs R0, range [-0.010,+0.008]; MODEL only, not a score.",
+    "falsifier": "A receipt change of magnitude >= 0.01 against R0 decides the seating hypothesis for that field. |\u0394| < 0.01 is no evidence (public chunks). A >= 0.01 loss says clustering onto crests costs more than the kernel-credit gain.",
+    "decision_rule": "Treat absolute live change < 0.01 as no evidence; compare only human receipts."
   },
-  "h33-h33-2-b2-PRUNEp4.5px-refill-20261023-ebace30d": {
+  "h33-h33-2-b2-SNAPiso_combo2g10-20261023-a18f53b1": {
     "parent": "h33-h33-2-b2",
-    "axis": "PRUNE",
-    "value": "p4.5px-refill",
-    "hypothesis": "At fixed mass, removing every R0 dot within 4.5 pixels of the known-fault catalogue and reallocating that mass to eligible un-emitted H19-5 ridge pixels improves distance-tolerant fault detection if near-catalogue kernel overlap wastes precision on mapped traces.",
-    "mechanism": "A triangular 300 m kernel gives less incremental credit when emitted mass lies close to already-known faults. Each replacement is selected by greedy exact marginal gain on the declared label-free prior; R0 count stays at 37,654. This is a controlled collar-radius change, not a mass change.",
-    "non_fault_mimic": "Magnetic/gravity edges and H19-5 lineaments can trace lithologic contacts, caldera ring fractures, or erosional scarps rather than brittle faults.",
-    "predicted_sign_and_size": "MODEL:-0.004 vs R0, with wide [-0.018,+0.008] scenario range; MODEL only, not a score.",
-    "falsifier": "A receipt change <= -0.01 for the 2.5/3.5 px rungs, or >= +0.01 gain for the 4.5 px rung, would respectively reject a beneficial inner collar or reject the predicted outer-collar turnover.",
-    "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+    "axis": "SNAP",
+    "value": "iso_combo2g10",
+    "hypothesis": "A real fault step should light up both the gravity slope and the RTP edge. Equal-weight percentile combination down-weights single-sensor lithologic contacts. Same 0.10 gate, count, and catalogue exclusions as the other two arms.",
+    "mechanism": "SNAP only: each of 37,654 unit-mass dots may move at most 2 px Euclidean to the strongest finite response in its 13-pixel disk, and only if that response exceeds the origin by >= 0.10 footprint percentile. Ties stay. Occupied pixels are skipped. Destinations must remain in-footprint, off catalogue, and at d_cat > 2 px. No ranking, mass, prune, or refill.",
+    "non_fault_mimic": "Mafic dikes and caldera rings can carry both density and magnetic contrast; agreement is not proof of a Quaternary fault.",
+    "predicted_sign_and_size": "MODEL:+0.004 vs R0, range [-0.006,+0.014]; MODEL only, not a score.",
+    "falsifier": "A receipt change of magnitude >= 0.01 against R0 decides the seating hypothesis for that field. |\u0394| < 0.01 is no evidence (public chunks). A >= 0.01 loss says clustering onto crests costs more than the kernel-credit gain.",
+    "decision_rule": "Treat absolute live change < 0.01 as no evidence; compare only human receipts."
   }
 }

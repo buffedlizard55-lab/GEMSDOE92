@@ -1,17 +1,17 @@
-# GEMSDOE92 — PRUNE axis session
+# GEMSDOE92 — SNAP axis session
 
 ## CURRENT STATE
 - **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots; exact rebuild matches both pinned zeros and NaN SHA-256 values. `0.2778` remains **CLAIM** (no receipt in this checkout).
 - **Best receipt**: none recorded.
 - **TOP_PUBLIC**: not supplied; human must provide value and observation date.
 - **Slots left this week**: unknown; human must check the entity's current rolling-week quota.
-- **AXIS this session**: PRUNE, chosen autonomously. New values: `p2.5px-refill`, `p3.5px-refill`, `p4.5px-refill`.
+- **AXIS this session**: SNAP, chosen autonomously. New values: `iso_g2g10`, `rtp_hg2g10`, `iso_combo2g10` (0.10 percentile gate; band 05 isotropic gravity and |grad_H RTP|, not signed band 18).
 - **Next 3 candidate slots (BUILT, not submitted)**:
-  1. `h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277` — 2,702 dots moved (7.18%); MODEL +0.003, wide range [-0.008,+0.015]; SGMC PROXY +0.00031 vs R0.
-  2. `h33-h33-2-b2-PRUNEp2.5px-refill-20261023-6d7a61ba` — 941 moved (2.50%); MODEL +0.001, range [-0.010,+0.012]; SGMC PROXY +0.00018.
-  3. `h33-h33-2-b2-PRUNEp4.5px-refill-20261023-ebace30d` — 4,848 moved (12.88%); MODEL -0.004, range [-0.018,+0.008]; SGMC PROXY -0.00360.
+  1. `h33-h33-2-b2-SNAPiso_combo2g10-20261023-a18f53b1` — 5,694 dots moved (15.12%); MODEL +0.004, range [-0.006,+0.014]; SGMC PROXY -0.00086 vs R0.
+  2. `h33-h33-2-b2-SNAPiso_g2g10-20261023-6d18fe25` — 726 moved (1.93%); MODEL +0.003, range [-0.008,+0.012]; SGMC PROXY -0.00023.
+  3. `h33-h33-2-b2-SNAPrtp_hg2g10-20261023-e68b8ce7` — 13,299 moved (35.32%); MODEL +0.000, range [-0.010,+0.008]; SGMC PROXY -0.00243.
 
-No file was submitted. The new candidate TIFFs are locally generated and gitignored. See `docs/SUBMIT.md`; prior main-branch candidate files remain in the ledger.
+No file was submitted. New candidate TIFFs are locally generated and gitignored. See `docs/SUBMIT.md`. None of the MODEL projections reach +0.01.
 
 ## Verified facts
 - Metric: DTI with alpha 0.2, beta 0.8, triangular kernel R=300m (3px), float32 EPSG:32611 100m, per https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/

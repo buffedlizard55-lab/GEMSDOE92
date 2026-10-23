@@ -84,3 +84,27 @@ ranking) it is blank or explicitly marked.
 ## Session 3 — controlled PRUNE collar rungs (2026-10-23)
 
 Arena.ai Agent Mode wrote the manifest-pinned restore script, exact DTI refill primitive, PRUNE rung builder, report-only proxy audit, tests, and current-session documentation. It rebuilt R0 exactly and generated three local candidate GeoTIFF pairs; it did not submit, contact competition/leaderboard pages, contact Dropbox, access credentials, or read held-out competition labels. Inputs were read only after SHA-256/byte verification. Human still chooses and submits, confirms `TOP_PUBLIC` and weekly capacity, checks data-use permissions, and transcribes receipt evidence. The SGMC/control and catalogue hide-and-recover instruments are explicitly `PROXY`, never scores.
+
+---
+
+## Session 4 — SNAP isotropic gravity / RTP (2026-10-23)
+
+### What AI wrote
+- `gems/snap_fields.py` — percentile rank and isotropic |∇_H| helpers, plus a `min_gain` option on `gems.variants.snap`.
+- `scripts/build_snap_variants.py` — deterministic SNAP builder (band-05 / |∇_H RTP| / combo, 0.10 percentile gate).
+- Tests in `tests/test_snap_fields.py`.
+- Updated CURRENT STATE, SLOT_PLAN, SUBMIT.md, IRREGULARITIES, mechanism cards, uniqueness check, this file.
+- Candidate rasters generated locally and gitignored.
+
+### What the human decided or supplied
+- Parent R0 and its CLAIM 0.2778.
+- AXIS chosen autonomously: SNAP (MASS and PRUNE already in this ledger).
+- TOP_PUBLIC, slot count, submissions, and receipts remain human-only.
+
+### What the AI found rather than papered over
+- Band 18 is signed ∂g/∂x; band 05 is isotropic |∇_H g| (r=0.962 vs |∇_H band 13|). Prior SNAP gravity arms used the wrong band.
+- Band 02 is signed RTP, not a gradient; |∇_H| is derived.
+- Ungated 2 px argmax moved 98–99.8% of dots; session variants are gain-gated.
+
+### What the AI did not do
+No leaderboard access, no scraping, no submission, no login, no label probing, no dropbox.com, no drivendata.org fetch.

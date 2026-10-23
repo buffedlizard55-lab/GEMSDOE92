@@ -103,3 +103,30 @@ The three doses are a dose-response curve, not three independent bets. Outcomes:
 | monotone B5 > B4 > B3 > parent | prior is real and unbounded here | go deeper (B8, B10) |
 | all ≤ parent | distance prior is false | abandon PRUNE, the 0.2708→0.2778 step was false-positive removal |
 | B3 > parent, B4 ≈ B3 | flat optimum 3–4 px | prefer B3 (fewer deletions, less risk) |
+
+---
+
+# Mechanism Cards — SNAP axis (2026-10-23)
+
+Parent: h33-h33-2-b2 (GEMSDOE32), 37,654 unit-mass dots, SHA-256 zeros `c55bafc4…` / nan `baeae321…` verified this session. Min catalogue distance 2.236 px. Ungated 2 px argmax on these fields moved 98–99.8% of dots and is not a seating test; variants use a 0.10 footprint-percentile gain gate. Band 18 (signed ∂g/∂x) is not used.
+
+## Shared mechanism
+SNAP only. Each dot may move ≤ 2 px Euclidean to the strongest finite response in its 13-pixel disk, and only if that response exceeds the origin by ≥ 0.10 footprint percentile. Ties stay. Occupied pixels skipped. Destinations in-footprint, off catalogue, d_cat ≥ 3 px (inherited R0 collar dots may stay). Count 37,654. No ranking, mass, prune, or refill.
+
+## h33-h33-2-b2-SNAPiso_g2g10-20261023-6d18fe25
+- **Hypothesis**: R0 dots sit up to ~200 m off the gravity-defined basement step. Band 05 is isotropic |∇_H g|. Re-seating only dots with a ≥0.10-percentile stronger gravity edge in the 2 px window raises T at fixed S.
+- **Non-fault mimic**: pluton contacts, caldera walls, basin-fill thickness changes.
+- **Predicted sign and size**: **MODEL:+0.003**, range `[-0.008,+0.012]`. 726 dots (1.93%), mean disp 0.038 px.
+- **Falsifier**: receipt |Δ| ≥ 0.01 vs R0. |Δ| < 0.01 is no evidence.
+
+## h33-h33-2-b2-SNAPrtp_hg2g10-20261023-e68b8ce7
+- **Hypothesis**: same gated seating against isotropic |∇_H| of reduced-to-pole magnetics (derived from signed band 02). TMI-HG (band 03) is not reused.
+- **Non-fault mimic**: lithologic contacts, alteration, volcanic vents.
+- **Predicted sign and size**: **MODEL:+0.000**, range `[-0.010,+0.008]`. 13,299 dots (35.32%), mean disp 0.673 px.
+- **Falsifier**: receipt |Δ| ≥ 0.01 vs R0.
+
+## h33-h33-2-b2-SNAPiso_combo2g10-20261023-a18f53b1
+- **Hypothesis**: a real fault step lights up both gravity slope and RTP edge. Equal-weight percentile combo down-weights single-sensor contacts.
+- **Non-fault mimic**: mafic dikes and caldera rings with both density and magnetic contrast.
+- **Predicted sign and size**: **MODEL:+0.004**, range `[-0.006,+0.014]`. 5,694 dots (15.12%), mean disp 0.294 px. Primary SNAP bet of the session.
+- **Falsifier**: receipt |Δ| ≥ 0.01 vs R0.

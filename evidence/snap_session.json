@@ -1,0 +1,361 @@
+{
+  "schema": "gemsdoe92.snap-iso.v1",
+  "session_date_utc": "20261023",
+  "axis": "SNAP",
+  "parent": "h33-h33-2-b2",
+  "parent_claim": {
+    "score": 0.2778,
+    "evidence_label": "CLAIM",
+    "receipt": false
+  },
+  "exact_parent_rebuild": {
+    "n_dots": 37654,
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "matches_recorded_hashes": true
+  },
+  "band_audit": {
+    "band_descriptions": [
+      "mag_anom - Magnetic anomaly - deviation from expected Earth's magnetic field",
+      "rtp - Reduced to pole magnetic data - magnetic anomaly corrected for latitude effects",
+      "tmi_hg - Total magnetic intensity horizontal gradient - rate of change in horizontal direction",
+      "geod_2ndinv - Geodetic second invariant - measure of strain rate tensor magnitude",
+      "iso_grav_anom_slope - Isostatic gravity anomaly slope - gradient of gravity after isostatic correction",
+      "tc - Tilt angle or total curvature - magnetic field derivative for edge detection",
+      "geod_shearrate - Geodetic shear rate - rate of angular deformation from GPS/InSAR",
+      "geod_dilaterate - Geodetic dilatation rate - rate of volumetric strain (expansion/contraction)",
+      "tmi_vg - Total magnetic intensity vertical gradient - rate of change in vertical direction",
+      "deq_n100a15 - Distance to earthquake (n=100km radius, a=15\u00b0 azimuth parameters)",
+      "iso_grav_anom_vg - Isostatic gravity anomaly vertical gradient - vertical rate of change",
+      "det_elev - Detrended elevation - topography with regional trends removed",
+      "iso_grav_anom - Isostatic gravity anomaly - gravity after compensating for topographic mass",
+      "tmi - Total magnetic intensity - total strength of magnetic field",
+      "depth_to_base_surf - Depth to basement surface - thickness of sedimentary cover",
+      "ieq_n100a15 - Earthquake intensity or density (n=100km radius, a=15\u00b0 parameters)",
+      "cond_surf - Conductivity surface - electrical conductivity of subsurface",
+      "iso_grav_anom_hg - Isostatic gravity anomaly horizontal gradient - horizontal rate of change",
+      "det_elev_slope - Detrended elevation slope - gradient of elevation after detrending"
+    ],
+    "band02_tag": "rtp",
+    "band05_tag": "iso_grav_anom_slope",
+    "band18_tag": "iso_grav_anom_hg",
+    "band05_p_neg": 0.0,
+    "band18_p_neg": 0.4909577500352419,
+    "band02_p_neg": 0.8386820935683205,
+    "corr_band05_vs_iso_grad_band13": 0.9619521105574157,
+    "corr_band18_vs_iso_grad_band13": 0.027480973906596512,
+    "n_valid_band05": 5164312,
+    "n_valid_rtp_hg": 5149759,
+    "used_bands": {
+      "iso_g2g10": "pct(band 05 iso_grav_anom_slope); 0.10 percentile gate",
+      "rtp_hg2g10": "pct(|grad_H| of band 02 rtp); 0.10 percentile gate",
+      "iso_combo2g10": "0.5*pct(band05)+0.5*pct(|grad_H rtp|); 0.10 percentile gate"
+    },
+    "rejected_band18": "signed iso_grav_anom_hg (dg/dx); previous SNAP arms used this by mistake",
+    "ungated_argmax_diagnostic": {
+      "iso_g2": {
+        "frac_moved": 0.9979,
+        "mean_disp_px": 1.937,
+        "sha256_nan": "647b1bb7685fce66876e31309c328f5c07540284b885e41c7cf6a42acde4cc00"
+      },
+      "rtp_hg2": {
+        "frac_moved": 0.9812,
+        "mean_disp_px": 1.736,
+        "sha256_nan": "d943b2d4caff315a4fda4ddec0d52af0278c865b5df363f72e96a9f7ec9968b4"
+      },
+      "iso_combo2": {
+        "frac_moved": 0.9856,
+        "mean_disp_px": 1.761,
+        "sha256_nan": "5362c3d4481bd00b24ce9c015a1332c1833e112aeb2d8d5a6f969d2f1f570c63"
+      },
+      "decision": "not session variants; operator is a field replacement, not a seating test"
+    }
+  },
+  "input_manifest_sha256": "a0d9ea4c5600329d3d42570679671d6f34d8b1614419c4de54e0707a4b82139a",
+  "r0_sgmc_proxy": {
+    "evidence_label": "PROXY",
+    "dti": 0.09606
+  },
+  "r0_hide_recover_proxy": {
+    "evidence_label": "PROXY",
+    "n_withheld": 15247,
+    "recall_at_3px": 0.0653899127697252,
+    "ci95": [
+      0.06171377975995278,
+      0.06926608513150127
+    ]
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-SNAPiso_g2g10-20261023-6d18fe25",
+      "parent": "h33-h33-2-b2",
+      "axis": "SNAP",
+      "value": "iso_g2g10",
+      "n_dots": 37654,
+      "pct_changed": 1.928082,
+      "sha256": "6d18fe2571e60f46d9723f9b01266871e894b49d048e4c5deeb59e333d2bca59",
+      "sha256_zeros": "6fb191c53f5e822af25f62e77d880cf4f720ac677b65b96fb6b5120d57b9c6f0",
+      "status": "BUILT",
+      "predicted_change": "MODEL:+0.003",
+      "file_zeros": "releases/h33-h33-2-b2-SNAPiso_g2g10-20261023-6d18fe25-zeros.tif",
+      "file_nan": "releases/h33-h33-2-b2-SNAPiso_g2g10-20261023-6d18fe25.tif",
+      "sha8": "6d18fe25",
+      "change_desc": "SNAP each R0 dot <=2 px onto local argmax of pct(band 05 iso_grav_anom_slope); 0.10 percentile gate; count held at 37654; d_cat>2 exclusion unchanged",
+      "receipt_score": "",
+      "receipt_date": "",
+      "notes": "MODEL range [-0.008,+0.012]; mean_disp_px=0.0383; frac_moved=0.0193; SGMC PROXY delta -0.000228; see evidence/snap_session.json",
+      "predicted_range": "[-0.008,+0.012]",
+      "mean_displacement_px": 0.03834384102281892,
+      "median_displacement_px": 0.0,
+      "max_displacement_px": 2.0,
+      "frac_moved": 0.019280820098794286,
+      "n_moved": 726,
+      "min_catalogue_distance_px": 2.23606797749979,
+      "parent_diff": {
+        "removed": 726,
+        "added": 726,
+        "shared": 36928,
+        "moved_pct": 1.928082,
+        "symmetric_diff_px": 1452
+      },
+      "sgmc_control_proxy": {
+        "evidence_label": "PROXY",
+        "dti": 0.095832,
+        "delta_vs_r0": -0.000228,
+        "n_withheld_control_pixels": 62703
+      },
+      "hide_recover_proxy": {
+        "evidence_label": "PROXY",
+        "n_withheld": 15247,
+        "recall_at_3px": 0.06499639273299665,
+        "ci95": [
+          0.06125631271725585,
+          0.06906440611267789
+        ],
+        "r0_recall_at_3px": 0.0653899127697252,
+        "r0_ci95": [
+          0.06171377975995278,
+          0.06926608513150127
+        ]
+      },
+      "leakage_canary": {
+        "evidence": "PROXY",
+        "auc": 0.5330965373516101,
+        "status": "ok"
+      },
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; SNAP<=2px g+0.10 iso_grav_slope; n=37654; moved 726 (1.93%); pred MODEL:+0.003",
+      "git_sha_at_build": "9a0f47b53f13047b0421d0d3599a8d267a182641"
+    },
+    {
+      "id": "h33-h33-2-b2-SNAPrtp_hg2g10-20261023-e68b8ce7",
+      "parent": "h33-h33-2-b2",
+      "axis": "SNAP",
+      "value": "rtp_hg2g10",
+      "n_dots": 37654,
+      "pct_changed": 35.318957,
+      "sha256": "e68b8ce7a245ced7ed072497dd681d1ea5fc29667e2820844c4a56fc039db506",
+      "sha256_zeros": "4edd29bd35cbc455c60dae8dbe5bc9f43ddfa465d5a6252514786d10528abdd2",
+      "status": "BUILT",
+      "predicted_change": "MODEL:+0.000",
+      "file_zeros": "releases/h33-h33-2-b2-SNAPrtp_hg2g10-20261023-e68b8ce7-zeros.tif",
+      "file_nan": "releases/h33-h33-2-b2-SNAPrtp_hg2g10-20261023-e68b8ce7.tif",
+      "sha8": "e68b8ce7",
+      "change_desc": "SNAP each R0 dot <=2 px onto local argmax of pct(|grad_H| of band 02 rtp); 0.10 percentile gate; count held at 37654; d_cat>2 exclusion unchanged",
+      "receipt_score": "",
+      "receipt_date": "",
+      "notes": "MODEL range [-0.010,+0.008]; mean_disp_px=0.6729; frac_moved=0.3532; SGMC PROXY delta -0.002433; see evidence/snap_session.json",
+      "predicted_range": "[-0.010,+0.008]",
+      "mean_displacement_px": 0.6728684743903158,
+      "median_displacement_px": 0.0,
+      "max_displacement_px": 2.0,
+      "frac_moved": 0.35318956817336805,
+      "n_moved": 13299,
+      "min_catalogue_distance_px": 2.23606797749979,
+      "parent_diff": {
+        "removed": 13299,
+        "added": 13299,
+        "shared": 24355,
+        "moved_pct": 35.318957,
+        "symmetric_diff_px": 26598
+      },
+      "sgmc_control_proxy": {
+        "evidence_label": "PROXY",
+        "dti": 0.093627,
+        "delta_vs_r0": -0.002433,
+        "n_withheld_control_pixels": 62703
+      },
+      "hide_recover_proxy": {
+        "evidence_label": "PROXY",
+        "n_withheld": 15247,
+        "recall_at_3px": 0.055158391814783235,
+        "ci95": [
+          0.051808552502131566,
+          0.05889847183052404
+        ],
+        "r0_recall_at_3px": 0.0653899127697252,
+        "r0_ci95": [
+          0.06171377975995278,
+          0.06926608513150127
+        ]
+      },
+      "leakage_canary": {
+        "evidence": "PROXY",
+        "auc": 0.5301097057207975,
+        "status": "ok"
+      },
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; SNAP<=2px g+0.10 |grad_H RTP|; n=37654; moved 13299 (35.32%); pred MODEL:+0.000",
+      "git_sha_at_build": "9a0f47b53f13047b0421d0d3599a8d267a182641"
+    },
+    {
+      "id": "h33-h33-2-b2-SNAPiso_combo2g10-20261023-a18f53b1",
+      "parent": "h33-h33-2-b2",
+      "axis": "SNAP",
+      "value": "iso_combo2g10",
+      "n_dots": 37654,
+      "pct_changed": 15.121899,
+      "sha256": "a18f53b1272c4d4ff3d7e961c4553f4abdbe07da5a85157200f7bd56b92f2be6",
+      "sha256_zeros": "f9ab7d3d917a22427c07b4b09d66a1e098f6c7b637dd775d61e3c12db151da9e",
+      "status": "BUILT",
+      "predicted_change": "MODEL:+0.004",
+      "file_zeros": "releases/h33-h33-2-b2-SNAPiso_combo2g10-20261023-a18f53b1-zeros.tif",
+      "file_nan": "releases/h33-h33-2-b2-SNAPiso_combo2g10-20261023-a18f53b1.tif",
+      "sha8": "a18f53b1",
+      "change_desc": "SNAP each R0 dot <=2 px onto local argmax of 0.5*pct(band05)+0.5*pct(|grad_H rtp|); 0.10 percentile gate; count held at 37654; d_cat>2 exclusion unchanged",
+      "receipt_score": "",
+      "receipt_date": "",
+      "notes": "MODEL range [-0.006,+0.014]; mean_disp_px=0.2939; frac_moved=0.1512; SGMC PROXY delta -0.000858; see evidence/snap_session.json",
+      "predicted_range": "[-0.006,+0.014]",
+      "mean_displacement_px": 0.2938839371928552,
+      "median_displacement_px": 0.0,
+      "max_displacement_px": 2.0,
+      "frac_moved": 0.1512189939979816,
+      "n_moved": 5694,
+      "min_catalogue_distance_px": 2.23606797749979,
+      "parent_diff": {
+        "removed": 5694,
+        "added": 5694,
+        "shared": 31960,
+        "moved_pct": 15.121899,
+        "symmetric_diff_px": 11388
+      },
+      "sgmc_control_proxy": {
+        "evidence_label": "PROXY",
+        "dti": 0.095202,
+        "delta_vs_r0": -0.000858,
+        "n_withheld_control_pixels": 62703
+      },
+      "hide_recover_proxy": {
+        "evidence_label": "PROXY",
+        "n_withheld": 15247,
+        "recall_at_3px": 0.06243851249426117,
+        "ci95": [
+          0.05882796615727684,
+          0.06643929953433463
+        ],
+        "r0_recall_at_3px": 0.0653899127697252,
+        "r0_ci95": [
+          0.06171377975995278,
+          0.06926608513150127
+        ]
+      },
+      "leakage_canary": {
+        "evidence": "PROXY",
+        "auc": 0.5473872060077393,
+        "status": "ok"
+      },
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; SNAP<=2px g+0.10 iso_grav+|gRTP|; n=37654; moved 5694 (15.12%); pred MODEL:+0.004",
+      "git_sha_at_build": "9a0f47b53f13047b0421d0d3599a8d267a182641"
+    }
+  ],
+  "scope_note": "No submission, leaderboard, hidden labels, or off-manifest data accessed. New candidate rasters are generated locally and gitignored."
+}
