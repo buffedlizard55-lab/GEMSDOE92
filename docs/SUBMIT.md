@@ -1,29 +1,29 @@
 # Candidate handoff — human review and submission only
 
-**Do not upload until you confirm the weekly quota and independently review the selected raster.** The agent does not submit. The parent score `0.2778` is an owner-reported **CLAIM**, not a receipt-backed score. There is no receipt-backed best score in this checkout.
+**Do not upload until you confirm rolling-week quota and independently review the raster.** The agent does not submit. R0's `0.2778` is an owner-reported **CLAIM**, not a receipt. `TOP_PUBLIC` and remaining slots are unknown. Current SGMC **PROXY** evidence is negative for all three arms; this is a conditional falsification queue, not a recommendation to spend slots.
 
-All candidates have 37,654 binary unit-mass dots; each changes only the PRUNE collar/reallocation rule relative to exactly rebuilt R0. The form note is at most 140 characters. The NaN-outside primary and zero-outside fallback encode the same inside-footprint raster; upload only one file for any slot.
+Every candidate has 37,654 unit-mass dots, zero catalogue mass, minimum catalogue distance 3.162278 px, and passes all 10 local gates after re-reading both encodings from disk. Upload only one of the NaN-outside primary and zero-outside fallback for any slot. Notes are ≤140 characters.
 
-| Suggested order | Local primary raster (NaN outside) | Fallback (`-zeros.tif`) | Submission name | Note | Count moved | NaN SHA-256 | Format receipt |
+| Order | Primary raster (NaN outside) | Fallback | Submission name | Form note | Moved | NaN SHA-256 | Format receipt |
 |---|---|---|---|---|---:|---|---|
-| 1 | `releases/h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277.tif` | `releases/h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277-zeros.tif` | `h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277` | `h33-h33-2-b2; PRUNE collar 3.5px; fixed 37654; remove/refill 2702 (7.18%); pred MODEL:+0.003` | 2,702 | `a121a27751381fa2f6b9bf8629e53b1a4a57df5fcab85ed0d3bf548c33ca95ab` | Local disk reread PASS; 37,654 dots; EPSG:32611; exact sample grid; float32, 1 band; NaN outside; values [0,1]; zero catalogue mass; min catalogue distance 3.606 px. |
-| 2 | `releases/h33-h33-2-b2-PRUNEp2.5px-refill-20261023-6d7a61ba.tif` | `releases/h33-h33-2-b2-PRUNEp2.5px-refill-20261023-6d7a61ba-zeros.tif` | `h33-h33-2-b2-PRUNEp2.5px-refill-20261023-6d7a61ba` | `h33-h33-2-b2; PRUNE collar 2.5px; fixed 37654; remove/refill 941 (2.50%); pred MODEL:+0.001` | 941 | `6d7a61ba2e980808640db9e0b7b1a787243abf5f833bb7cd25c5a35af96685c8` | Local disk reread PASS; 37,654 dots; EPSG:32611; exact sample grid; float32, 1 band; NaN outside; values [0,1]; zero catalogue mass; min catalogue distance 2.828 px. |
-| 3 | `releases/h33-h33-2-b2-PRUNEp4.5px-refill-20261023-ebace30d.tif` | `releases/h33-h33-2-b2-PRUNEp4.5px-refill-20261023-ebace30d-zeros.tif` | `h33-h33-2-b2-PRUNEp4.5px-refill-20261023-ebace30d` | `h33-h33-2-b2; PRUNE collar 4.5px; fixed 37654; remove/refill 4848 (12.88%); pred MODEL:-0.004` | 4,848 | `ebace30d4386c7b979badb0d6512e79b62f822839e42c4fe2e8cf35ed9c46de4` | Local disk reread PASS; 37,654 dots; EPSG:32611; exact sample grid; float32, 1 band; NaN outside; values [0,1]; zero catalogue mass; min catalogue distance 5.000 px. |
+| 1 | `releases/h33-h33-2-b2-CONCENTRATIONblk1km-f10-20261023-af953ada.tif` | `releases/h33-h33-2-b2-CONCENTRATIONblk1km-f10-20261023-af953ada-zeros.tif` | `h33-h33-2-b2-CONCENTRATIONblk1km-f10-20261023-af953ada` | `h33-h33-2-b2; CONC 1km f10; moved 3765 (10.00%); fixed 37654; pred MODEL:+0.001` | 3,765 (9.998938%) | `af953adaee32d1f39e85e015dd0c50219fcb68cee7818725ab5a27467806f071` | PASS: EPSG:32611; 3730×3292; exact transform; float32; 1 band; finite inside; NaN outside; [0,1]; 37,654 dots; no catalogue mass; 0 dots ≤3 px. |
+| 2 | `releases/h33-h33-2-b2-CONCENTRATIONblk1km-f15-20261023-72f02044.tif` | `releases/h33-h33-2-b2-CONCENTRATIONblk1km-f15-20261023-72f02044-zeros.tif` | `h33-h33-2-b2-CONCENTRATIONblk1km-f15-20261023-72f02044` | `h33-h33-2-b2; CONC 1km f15; moved 5648 (15.00%); fixed 37654; pred MODEL:+0.002` | 5,648 (14.999734%) | `72f02044efdd2b38a29aa938cd412035c37dd96c49a5c08eed4cc0c67a927574` | Same 10-gate PASS; zero-outside fallback independently re-read and passed. |
+| 3 | `releases/h33-h33-2-b2-CONCENTRATIONblk1km-f20-20261023-22404075.tif` | `releases/h33-h33-2-b2-CONCENTRATIONblk1km-f20-20261023-22404075-zeros.tif` | `h33-h33-2-b2-CONCENTRATIONblk1km-f20-20261023-22404075` | `h33-h33-2-b2; CONC 1km f20; moved 7531 (20.00%); fixed 37654; pred MODEL:-0.001` | 7,531 (20.000531%) | `22404075800bf16d3ebe9a76126e070f132ca2226cdf918591551be718849dfa` | Same 10-gate PASS; zero-outside fallback independently re-read and passed. |
 
-## Mechanism and uncertainty
+## Mechanism and contrary evidence
 
-- **Hypothesis:** increasing the catalogue collar may remove detections whose 300 m triangular-kernel support is wasted near organizer-masked mapped faults; a fixed-count refill onto H19-5 lineaments may restore useful off-collar fault coverage.
-- **Mechanism:** each variant removes the parent dots at/below its stated radius, then fills the same number of pixels using greedy exact expected-DTI marginal gain on a deterministic label-free prior from pinned H19-5, TMI horizontal gradient, gravity horizontal gradient, and detrended-elevation slope.
-- **Mimics:** lithologic contacts, caldera ring fractures, and erosional scarps can resemble fault-related lineaments.
-- **Prediction:** wide, low-confidence **MODEL** ranges are recorded in `evidence/prune_rungs.json` and the mechanism cards. Treat public live changes under 0.01 as no evidence.
-- **Report-only diagnostics (never gates):** catalogue hide-and-recover PROXY, `n=22,663` withheld positives, paired 20 km spatial-block bootstrap 95% CI: R0 `0.004006 [0.003424,0.004690]`; p2.5 `0.000785 [0.000658,0.000922]`; p3.5 and p4.5 `0.000 [0,0]`. Single-feature canary maximum symmetric AUC is `0.55314` (below the `0.90` investigate threshold). Off-catalogue SGMC control PROXY deltas versus R0 are `+0.00018`, `+0.00031`, and `-0.00360`. These figures are local PROXY diagnostics, not scores, not gates, and not evidence of live performance; p3.5/p4.5's zero recovery is a caution, not a prediction.
-- **Falsifier:** the human receipt changes the posterior. A change of magnitude below 0.01 is inconclusive; a larger opposite-sign change rejects the stated collar mechanism for that rung.
+- **Mechanism:** relocate fixed-count dots from lower to higher mean multiphysics-response 1 km blocks, retaining H19-5 support. All arms share 2,171 mandatory catalogue-clearance movers; destination selection is nearest block centre, not SNAP or truth/DTI ranking.
+- **Mimic:** lithologic contacts, basin-fill density contrasts, intrusions, and erosional scarps can raise the block prior without new faults.
+- **Prospective MODEL predictions:** recorded before diagnostics in the ledger; they are not scores. Live changes below 0.01 are no evidence.
+- **SGMC PROXY (62,703 control pixels):** R0 `0.096060`; f10 `0.091628` (`−0.004432`); f15 `0.087697` (`−0.008363`); f20 `0.083890` (`−0.012170`). This monotone warning opposes promotion.
+- **Catalogue holdout PROXY:** `n=22,663`; R0 `0.004006 [0.003424,0.004690]`; every candidate `0 [0,0]`, structurally forced by >3 px catalogue clearance. It is not a ranker or gate.
+- **Leakage canary:** maximum symmetric AUC `0.55314`, below the 0.90 stop-and-investigate threshold.
 
-## Reproduction and format receipt
+## Reproduction and local format receipt
 
-1. Install dependencies from `requirements.txt`.
-2. Run `python scripts/restore_inputs.py`; every manifest item is SHA-256 and byte-length verified before use and resides in `.cache/gems_inputs/`.
-3. Run `python scripts/build_prune_rungs.py`; it rebuilds R0 and stops unless both parent hashes match exactly, then builds and rereads all six files.
-4. `evidence/prune_rungs.json` records parent hashes, input-manifest hash, full output hashes, parent diffs, notes, and validation checks. `ledger/submissions.csv` preserves the five earlier main-branch rows and appends three new `BUILT` rows.
+1. `python -m pip install -r requirements.txt`
+2. `python scripts/restore_inputs.py` (every pinned input is SHA-256/byte checked before use).
+3. `python scripts/build_concentration_variants.py` (rebuilds R0 and stops unless both parent hashes match exactly).
+4. `python scripts/report_proxies.py --receipt evidence/concentration_session.json --output evidence/concentration_proxy_audit.json --candidate blk1km-f15`
 
-**Public-repository safeguard:** competition/candidate TIFF files are gitignored and must remain untracked. The six local TIFFs are not included in the PR. If they are absent from your local workspace, regenerate them with the command above; do not substitute another file. Fill `receipt_score` and `receipt_date` only from the human's submission-page receipt.
+`evidence/concentration_session.json` records both encoding hashes, exact parent diffs, CV, gates, mechanism cards, builder Git SHA `3133962301df56a8b234430c300de17bae481dff`, and form notes. New TIFFs are local and gitignored; regenerate them if absent rather than substituting another file. Fill `receipt_score` and `receipt_date` only from the human's submission-page receipt.

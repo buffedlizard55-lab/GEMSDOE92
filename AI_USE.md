@@ -84,3 +84,11 @@ ranking) it is blank or explicitly marked.
 ## Session 3 — controlled PRUNE collar rungs (2026-10-23)
 
 Arena.ai Agent Mode wrote the manifest-pinned restore script, exact DTI refill primitive, PRUNE rung builder, report-only proxy audit, tests, and current-session documentation. It rebuilt R0 exactly and generated three local candidate GeoTIFF pairs; it did not submit, contact competition/leaderboard pages, contact Dropbox, access credentials, or read held-out competition labels. Inputs were read only after SHA-256/byte verification. Human still chooses and submits, confirms `TOP_PUBLIC` and weekly capacity, checks data-use permissions, and transcribes receipt evidence. The SGMC/control and catalogue hide-and-recover instruments are explicitly `PROXY`, never scores.
+
+---
+
+## Session 4 — CONCENTRATION axis (2026-10-23)
+
+Arena.ai Agent Mode autonomously considered SNAP, rejected it after a deterministic feasibility check found 54 dots with no legal ≤2 px destination under the >3 px exclusion, and selected CONCENTRATION without prompting the human. AI wrote the SNAP/CONCENTRATION builders, tests, generic proxy-report options, raster outputs, mechanism cards, predictions, and session documentation. The exact builder Git SHA is `3133962301df56a8b234430c300de17bae481dff`; input and builder hashes are in `evidence/concentration_session.json`.
+
+AI generated three candidate pairs at fixed count/unit mass, ran all on-disk gates, and reported the contrary SGMC PROXY rather than suppressing it. No new external data were introduced; only manifest-pinned inputs were used. No leaderboard access, submission, login, credentials, Dropbox contact, hidden-label access, or label probing occurred. The human supplied R0 and its CLAIM, and must supply `TOP_PUBLIC` with date, rolling-week capacity, any upload decision, and all receipt evidence. Prospective live changes are AI **MODEL** judgments, not scores or human guarantees.

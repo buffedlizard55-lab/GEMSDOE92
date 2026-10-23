@@ -124,3 +124,15 @@ Exact `(parent, axis, value)` and raster hashes were compared against accessible
 ## 2026-10-23 (new PRUNE-rung session) — local holdout PROXY is not decision-comparable
 
 The pinned `gems57-pooled-hide-v2` whole-component buffered catalogue holdout (seeds 20/30, `n=22,663` withheld known-catalogue pixels) returns R0 `0.004006 [0.003424,0.004690]`, p2.5 `0.000785 [0.000658,0.000922]`, and p3.5/p4.5 `0 [0,0]`; selected-band leakage canary max symmetric AUC is `0.55314`. Results are in `evidence/proxy_audit.json`. **Decision:** these are PROXY diagnostics only, not gates, scores, or live forecasts; investigate the large divergence from previous hide-and-recover summaries before using this instrument to rank future axes. Use human live receipts as the decision anchor.
+
+## 2026-10-23 (CONCENTRATION session) — SNAP is infeasible under both hard rules
+
+Static window enumeration found **54** inherited R0 dots for which no pixel is simultaneously ≤2 px away, inside the footprint, and >3 px from the catalogue. Relaxing either rule would silently turn SNAP into a different axis or violate the exclusion. **Decision:** build zero SNAP rasters, record the failed feasibility check, and switch to CONCENTRATION. The generic SNAP builder now raises on a forbidden origin with no legal destination instead of silently leaving it.
+
+## 2026-10-23 — Compliance movement is a shared confound against R0
+
+R0 has 2,171 dots ≤3 px from the catalogue, but non-PRUNE descendants must be >3 px away. Every CONCENTRATION arm therefore relocates those same 2,171 dots in addition to low-prior movers (1,594 / 3,477 / 5,360 additional dots at f10/f15/f20). **Decision:** dose-to-dose comparisons isolate concentration because the compliance set is common; an R0 contrast also includes mandatory compliance and must not be interpreted as pure block concentration. This is disclosed in every mechanism card and the handoff.
+
+## 2026-10-23 — SGMC control opposes the prospective CONCENTRATION predictions
+
+SGMC off-catalogue control PROXY changes from R0 are **−0.004432 / −0.008363 / −0.012170** for f10/f15/f20; see `evidence/concentration_proxy_audit.json`. The catalogue holdout is `0 [0,0]` for all candidates (`n=22,663`) by construction of the >3 px exclusion, and maximum leakage-canary symmetric AUC is 0.55314. **Decision:** do not promote a candidate or treat the prospective positive MODEL values as corroborated. Preserve slots unless the human deliberately wants a live falsification test; if proceeding, use f10 first as the least-negative/lowest-dose arm. PROXY results remain report-only, never gates or scores.

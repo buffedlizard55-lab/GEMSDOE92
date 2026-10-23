@@ -1,17 +1,17 @@
 # GEMSDOE92 — PRUNE axis session
 
 ## CURRENT STATE
-- **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots; exact rebuild matches both pinned zeros and NaN SHA-256 values. `0.2778` remains **CLAIM** (no receipt in this checkout).
+- **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots; the complete lineage rebuild matched both recorded SHA-256 values. `0.2778` remains **CLAIM** (no receipt).
 - **Best receipt**: none recorded.
 - **TOP_PUBLIC**: not supplied; human must provide value and observation date.
-- **Slots left this week**: unknown; human must check the entity's current rolling-week quota.
-- **AXIS this session**: PRUNE, chosen autonomously. New values: `p2.5px-refill`, `p3.5px-refill`, `p4.5px-refill`.
-- **Next 3 candidate slots (BUILT, not submitted)**:
-  1. `h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277` — 2,702 dots moved (7.18%); MODEL +0.003, wide range [-0.008,+0.015]; SGMC PROXY +0.00031 vs R0.
-  2. `h33-h33-2-b2-PRUNEp2.5px-refill-20261023-6d7a61ba` — 941 moved (2.50%); MODEL +0.001, range [-0.010,+0.012]; SGMC PROXY +0.00018.
-  3. `h33-h33-2-b2-PRUNEp4.5px-refill-20261023-ebace30d` — 4,848 moved (12.88%); MODEL -0.004, range [-0.018,+0.008]; SGMC PROXY -0.00360.
+- **Slots left this week**: unknown; human must check the entity's rolling-week quota.
+- **AXIS this session**: CONCENTRATION (`blk1km-f10/f15/f20`). SNAP produced no raster: 54 inherited dots cannot satisfy both ≤2 px movement and >3 px catalogue clearance.
+- **Next 3 conditional candidates (BUILT, not submitted; SGMC PROXY is negative, so preserving slots is reasonable)**:
+  1. `h33-h33-2-b2-CONCENTRATIONblk1km-f10-20261023-af953ada` — 3,765 moved (9.998938%); MODEL +0.001; SGMC PROXY −0.004432.
+  2. `h33-h33-2-b2-CONCENTRATIONblk1km-f15-20261023-72f02044` — 5,648 moved (14.999734%); MODEL +0.002; SGMC PROXY −0.008363.
+  3. `h33-h33-2-b2-CONCENTRATIONblk1km-f20-20261023-22404075` — 7,531 moved (20.000531%); MODEL −0.001; SGMC PROXY −0.012170.
 
-No file was submitted. The new candidate TIFFs are locally generated and gitignored. See `docs/SUBMIT.md`; prior main-branch candidate files remain in the ledger.
+No file was submitted. All six new TIFFs are local/gitignored and passed 10 on-disk gates. Catalogue holdout is structurally zero under >3 px clearance; leakage-canary max symmetric AUC is 0.55314. See `docs/SUBMIT.md` and `SLOT_PLAN.md`.
 
 ## Verified facts
 - Metric: DTI with alpha 0.2, beta 0.8, triangular kernel R=300m (3px), float32 EPSG:32611 100m, per https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/

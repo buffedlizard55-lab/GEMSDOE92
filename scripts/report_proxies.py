@@ -8,6 +8,7 @@ are not a gate and are never written as a competition score.
 """
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import sys
@@ -25,12 +26,21 @@ from gems57 import evaluate_holdout, grid as grid_mod, holdout, metric  # noqa: 
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--receipt", default="evidence/prune_rungs.json",
+                        help="session evidence JSON containing variants/primary_file")
+    parser.add_argument("--output", default="evidence/proxy_audit.json")
+    parser.add_argument("--candidate", default="p3.5px-refill",
+                        help="arm used for paired differences in the pooled summary")
+    args = parser.parse_args()
+
     paths = verify_inputs()
     grid = grid_mod.load_grid(ROOT / ".cache" / "gems_inputs" / "bridge")
     arms: dict[str, np.ndarray] = {"R0": np.zeros(grid.shape, dtype=bool)}
     with rasterio.open(paths["parent_r0_zeros"]) as ds:
         arms["R0"] = (ds.read(1) > 0) & grid.footprint
-    receipt = json.loads((ROOT / "evidence" / "prune_rungs.json").read_text())
+    receipt_path = ROOT / args.receipt
+    receipt = json.loads(receipt_path.read_text())
     for item in receipt["variants"]:
         with rasterio.open(ROOT / "releases" / item["primary_file"]) as ds:
             arms[item["value"]] = (ds.read(1) > 0) & grid.footprint
@@ -55,13 +65,17 @@ def main() -> int:
         terms_by_arm[arm_name] = all_terms
 
     pooled = evaluate_holdout.pooled_summary(
-        terms_by_arm, draws=1000, seed=520810, candidate="p3.5px-refill"
+        terms_by_arm, draws=1000, seed=520810, candidate=args.candidate
     )
 
     # Report-only single-feature leakage canary on withheld known-catalogue
     # components vs non-catalogue background sampled within the same fold region.
-    feature_names = {"training_band_3_tmi_hg": 3, "training_band_18_gravity_hg": 18,
-                     "training_band_19_detrended_elevation_slope": 19}
+    feature_names = {
+        "training_band_3_tmi_hg": (3, False),
+        "training_band_18_gravity_hg": (18, False),
+        "training_band_18_abs_gravity_hg": (18, True),
+        "training_band_19_detrended_elevation_slope": (19, False),
+    }
     y_parts: list[np.ndarray] = []
     sample_indices: list[np.ndarray] = []
     rng = np.random.default_rng(520810)
@@ -77,8 +91,11 @@ def main() -> int:
     flat_idx = np.concatenate(sample_indices)
     canaries = {}
     with rasterio.open(paths["training_features"]) as ds:
-        for name, band in feature_names.items():
-            vals = np.nan_to_num(ds.read(band), nan=0.0).ravel()[flat_idx]
+        for name, (band, absolute) in feature_names.items():
+            vals = np.nan_to_num(ds.read(band), nan=0.0)
+            if absolute:
+                vals = np.abs(vals)
+            vals = vals.ravel()[flat_idx]
             auc = float(roc_auc_score(y, vals))
             sym_auc = max(auc, 1.0 - auc)
             canaries[name] = {
@@ -101,6 +118,8 @@ def main() -> int:
         "evidence_label": "PROXY",
         "created_utc": "2026-10-23",
         "purpose": "Report-only catalogue hide-and-recover instrument, single-feature leakage canaries, and public-domain SGMC control; none gates the variants.",
+        "source_receipt": args.receipt,
+        "paired_difference_candidate": args.candidate,
         "inputs_verified": {k: {"sha256": sha256_file(v), "bytes": v.stat().st_size}
                             for k, v in paths.items()},
         "holdout_protocol": {
@@ -131,7 +150,8 @@ def main() -> int:
         },
         "warning": "These are catalogue/SGMC PROXY diagnostics, not live public scores, not private-set scores, not evidence of win probability, and never pass/fail gates.",
     }
-    out = ROOT / "evidence" / "proxy_audit.json"
+    out = ROOT / args.output
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({
         "holdout_version": evaluate_holdout.VERSION,

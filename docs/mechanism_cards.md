@@ -103,3 +103,32 @@ The three doses are a dose-response curve, not three independent bets. Outcomes:
 | monotone B5 > B4 > B3 > parent | prior is real and unbounded here | go deeper (B8, B10) |
 | all ≤ parent | distance prior is false | abandon PRUNE, the 0.2708→0.2778 step was false-positive removal |
 | B3 > parent, B4 ≈ B3 | flat optimum 3–4 px | prefer B3 (fewer deletions, less risk) |
+
+---
+
+# Mechanism Cards — CONCENTRATION axis (2026-10-23)
+
+Parent: exactly rebuilt R0 `h33-h33-2-b2`, 37,654 unit-mass dots. Blocks are 10 px = 1 km. The label-free prior is the block mean of equal-weight percentile-ranked TMI horizontal gradient, absolute gravity horizontal gradient, and detrended-elevation slope. Each arm holds count and mass fixed and shares the same 2,171 movers required for >3 px catalogue clearance. Additional movers are selected from the lowest-prior blocks; destinations are legal, previously un-emitted H19-5 pixels nearest high-prior block centres, not response maxima.
+
+## h33-h33-2-b2-CONCENTRATIONblk1km-f10-20261023-af953ada
+- **Hypothesis:** moving 10% of dots toward high-prior blocks should improve fault coverage while preserving most of R0's spatial distribution.
+- **Mechanism:** 3,765 dots move at fixed S; 2,171 are shared compliance movers and 1,594 are additional low-prior movers. Mean destination block prior is 0.718117 versus 0.467685 for all sources.
+- **Non-fault mimic:** lithologic contacts, basin-fill density contrasts, intrusions, or erosional scarps can dominate the 1 km response without brittle faulting.
+- **Predicted sign and size:** **MODEL +0.001**, scenario range `[-0.008,+0.009]`; not a score.
+- **Falsifier:** a receipt at least 0.01 below R0 rejects a beneficial low-dose mechanism; an absolute change below 0.01 is no evidence.
+
+## h33-h33-2-b2-CONCENTRATIONblk1km-f15-20261023-72f02044
+- **Hypothesis:** 15% is the central dose, with enough independent low-prior reallocation to test concentration without the predicted coverage loss at 20%.
+- **Mechanism:** 5,648 dots move; 3,477 are additional low-prior movers beyond the shared compliance set. Mean destination prior is 0.686153 versus 0.442336 for sources.
+- **Non-fault mimic:** block aggregation can strengthen a broad non-fault boundary while smoothing away a narrow fault tip or step-over.
+- **Predicted sign and size:** **MODEL +0.002**, scenario range `[-0.009,+0.012]`; not a score.
+- **Falsifier:** a receipt at least 0.01 below both R0 and f10 rejects the predicted middle-dose benefit; changes below 0.01 are inconclusive.
+
+## h33-h33-2-b2-CONCENTRATIONblk1km-f20-20261023-22404075
+- **Hypothesis:** 20% over-concentrates fixed mass in high-response blocks and loses useful spatial coverage, providing a turnover control.
+- **Mechanism:** 7,531 dots move, including 5,360 additional low-prior movers. Mean destination prior is 0.658414 versus 0.440390 for sources; block-density CV rises most in this arm.
+- **Non-fault mimic:** clustered magnetic/gravity/topographic highs can be intrusive or erosional boundaries, and concentrating on them can repeatedly sample the same non-fault system.
+- **Predicted sign and size:** **MODEL −0.001**, scenario range `[-0.012,+0.008]`; not a score.
+- **Falsifier:** if f20 beats both lower doses and R0 by at least 0.01, reject the turnover prediction and investigate a monotone prior.
+
+**Post-build diagnostics, never gates:** SGMC PROXY deltas versus R0 are −0.004432 / −0.008363 / −0.012170 (f10/f15/f20), opposing promotion. Catalogue holdout is structurally `0 [0,0]` for every arm (`n=22,663`) because all emitted dots are >3 px from catalogue pixels. These diagnostics do not alter the prospective predictions recorded above; human receipts are the decision anchor.
