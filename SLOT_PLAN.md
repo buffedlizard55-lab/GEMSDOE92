@@ -1,6 +1,6 @@
 # SLOT_PLAN — GEMS Prize #306
 
-**Current parent:** R0 `h33-h33-2-b2`; 37,654 dots; both raster SHA-256 values rebuilt exactly. `0.2778` is **CLAIM**, not RECEIPT. `TOP_PUBLIC` and remaining entity slots are unknown until supplied by the human. Do not submit automatically. The chosen session axis is PRUNE; its three values appear once each in the local ledger and were checked against accessible R0-ledger pairs in GEMSDOE74–89.
+**Current parent:** R0 `h33-h33-2-b2`; 37,654 dots; both raster SHA-256 values rebuilt exactly. `0.2778` is **CLAIM**, not RECEIPT. `TOP_PUBLIC` and remaining entity slots are unknown until supplied by the human. Do not submit automatically. Current session: MASS, BLOCKED; no new variants. Existing ±10% doses must not be rebuilt, ranking is missing, and 1,611 R0 dots lie below the non-PRUNE 3 px exclusion. Exact parent reconstruction reconfirmed; see `evidence/mass_preflight.json`. The PRUNE queue below is historical and conditional, not a fresh validation.
 
 ## Next three live slots, conditional on the human confirming quota
 

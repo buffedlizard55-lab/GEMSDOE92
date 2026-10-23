@@ -84,3 +84,8 @@ ranking) it is blank or explicitly marked.
 ## Session 3 — controlled PRUNE collar rungs (2026-10-23)
 
 Arena.ai Agent Mode wrote the manifest-pinned restore script, exact DTI refill primitive, PRUNE rung builder, report-only proxy audit, tests, and current-session documentation. It rebuilt R0 exactly and generated three local candidate GeoTIFF pairs; it did not submit, contact competition/leaderboard pages, contact Dropbox, access credentials, or read held-out competition labels. Inputs were read only after SHA-256/byte verification. Human still chooses and submits, confirms `TOP_PUBLIC` and weekly capacity, checks data-use permissions, and transcribes receipt evidence. The SGMC/control and catalogue hide-and-recover instruments are explicitly `PROXY`, never scores.
+
+## 2026-10-23 MASS preflight follow-up
+- AI autonomously chose MASS, verified all eight legacy manifest hashes and eleven session validation input hashes/lengths, rebuilt R0 exactly, and wrote `scripts/audit_mass_session.py`, its evidence, and status documentation.
+- AI stopped before candidate generation: repeated doses, absent ranking, and non-PRUNE exclusion conflict. No new rasters or ledger rows; no submissions or new live-change prediction.
+- Human has not chosen a new experiment or supplied receipts, leaderboard target, quota history, or deadline confirmation. Prior human-decision statements above are historical, not new approvals.

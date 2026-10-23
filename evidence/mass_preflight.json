@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-23",
+  "axis": "MASS",
+  "status": "BLOCKED",
+  "git_sha": "9a0f47b53f13047b0421d0d3599a8d267a182641",
+  "manifest_sha256": "a0d9ea4c5600329d3d42570679671d6f34d8b1614419c4de54e0707a4b82139a",
+  "verified_inputs": [
+    "sample_submission",
+    "existing_faults",
+    "parent_r0_zeros",
+    "parent_r0_nan",
+    "anc_h19_5",
+    "anc_d1_5",
+    "anc_d2_8",
+    "anc_solo_d2_8",
+    "gdr_wellspring_in_footprint",
+    "ext_geodawn_rad_u8",
+    "sgmc_faults_control"
+  ],
+  "unused_input_not_restored": "training_features",
+  "parent_rebuilt_sha256": {
+    "zeros": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "nan": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd"
+  },
+  "parent_count": 37654,
+  "parent_dots_below_3px": 1611,
+  "parent_dots_at_or_below_3px": 2171,
+  "existing_mass_values": [
+    "MASS_D10",
+    "MASS_A10",
+    "MASS_SWAP10"
+  ],
+  "blockers": [
+    "Requested MASS doses already built; do not repeat.",
+    "Parent ranking missing; binary H19-5 is not a ranking.",
+    "R0 retains dots below 3px; repairing their positions adds PRUNE to MASS."
+  ],
+  "variants_built": 0,
+  "submissions": 0
+}
