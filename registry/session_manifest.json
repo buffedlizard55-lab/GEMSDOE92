@@ -1,0 +1,186 @@
+{
+  "schema_version": 2,
+  "updated_utc": "2026-10-23T19:25:00Z",
+  "policy": "Agent Brief v2 §4.1–§4.3: Verify exact SHA-256 and byte length of every pinned input before reading. Zero contact with dropbox.com or drivendata.org. Competition rasters are staged strictly inside gitignored/snapshot-excluded .cache/gems_inputs/ and are never tracked in Git.",
+  "network_reachability_note": {
+    "sandbox_allowed_hosts": [
+      "github.com",
+      "codeload.github.com",
+      "api.github.com",
+      "registry.npmjs.org",
+      "pypi.org",
+      "files.pythonhosted.org"
+    ],
+    "upstream_non_github_urls_live_check": "UNVERIFIED from sandbox (non-GitHub hosts unreachable by network policy; byte identity verified strictly via pinned SHA-256 checksums)."
+  },
+  "public_mirror_flag": {
+    "status": "FLAGGED_DATA_USE_UNCHECKED",
+    "detail": "Sibling public GitHub repositories buffedlizard55-lab/GEMSDOE, buffedlizard55-lab/GEMSDOE24, buffedlizard55-lab/60GEMSDOE, and buffedlizard55-lab/GEMSDOE84 contain login-walled DrivenData competition rasters with redistribution terms unchecked. Logged in IRREGULARITIES.md; GEMSDOE92 enforces 0 tracked competition rasters via .gitignore and pytest."
+  },
+  "files": [
+    {
+      "id": "sample_submission",
+      "repo": "buffedlizard55-lab/60GEMSDOE",
+      "ref": "02563d07fb85d2f4d35887503d380d34d4017197",
+      "path": "data/official/sample_submission.tif",
+      "local_path": ".cache/gems_inputs/bridge/sample_submission.tif",
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "bytes": 1599597,
+      "usage": "COMPETITION_GRID_TEMPLATE",
+      "source_url": "https://github.com/buffedlizard55-lab/60GEMSDOE/blob/02563d07fb85d2f4d35887503d380d34d4017197/data/official/sample_submission.tif",
+      "upstream_origin_status": "UNVERIFIED (DrivenData competition download unreachable from sandbox; owner mirror SHA-256 verified)",
+      "license": "DrivenData Competition #306 terms (owner mirror; redistribution unchecked; strictly gitignored)"
+    },
+    {
+      "id": "existing_faults",
+      "repo": "buffedlizard55-lab/60GEMSDOE",
+      "ref": "02563d07fb85d2f4d35887503d380d34d4017197",
+      "path": "data/official/existing_faults.tif",
+      "local_path": ".cache/gems_inputs/bridge/existing_faults.tif",
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "bytes": 425830,
+      "usage": "COMPETITION_CATALOGUE_EXCLUSION_AND_PROXY_HOLDOUT",
+      "source_url": "https://github.com/buffedlizard55-lab/60GEMSDOE/blob/02563d07fb85d2f4d35887503d380d34d4017197/data/official/existing_faults.tif",
+      "upstream_origin_status": "UNVERIFIED (DrivenData competition download unreachable from sandbox; owner mirror SHA-256 verified)",
+      "license": "USGS/INGENIOUS Quaternary & Geothermal Faults via DrivenData #306 (strictly gitignored)"
+    },
+    {
+      "id": "training_features",
+      "multipart": true,
+      "parts": [
+        "data/bridge/gems-geodawn-numerical-features.tif.part-000",
+        "data/bridge/gems-geodawn-numerical-features.tif.part-001",
+        "data/bridge/gems-geodawn-numerical-features.tif.part-002",
+        "data/bridge/gems-geodawn-numerical-features.tif.part-003",
+        "data/bridge/gems-geodawn-numerical-features.tif.part-004"
+      ],
+      "repo": "buffedlizard55-lab/GEMSDOE",
+      "ref": "bb2e070a3659f4f5c16ac927e62606f1f7f495a6",
+      "path": "data/bridge/gems-geodawn-numerical-features.tif.part-000",
+      "local_path": ".cache/gems_inputs/training_features.tif",
+      "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+      "bytes": 418912844,
+      "usage": "COMPETITION_19BAND_GEOPHYSICS_TOPO_STACK",
+      "source_url": "https://github.com/buffedlizard55-lab/GEMSDOE/tree/bb2e070a3659f4f5c16ac927e62606f1f7f495a6/data/bridge",
+      "upstream_origin_status": "UNVERIFIED (USGS GeoDAWN https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7 unreachable from sandbox; owner mirror SHA-256 verified)",
+      "license": "USGS GeoDAWN / NBMG / INGENIOUS 19-band competition stack (strictly gitignored)"
+    },
+    {
+      "id": "parent_r0_zeros",
+      "repo": "buffedlizard55-lab/60GEMSDOE",
+      "ref": "02563d07fb85d2f4d35887503d380d34d4017197",
+      "path": "registry/rasters/GEMSDOE32__h33-2-b2-zeros.tif",
+      "local_path": ".cache/gems_inputs/lineage/GEMSDOE32__h33-2-b2-zeros.tif",
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "bytes": 219065,
+      "usage": "PARENT_R0_REFERENCE_ZEROS",
+      "source_url": "https://github.com/buffedlizard55-lab/60GEMSDOE/blob/02563d07fb85d2f4d35887503d380d34d4017197/registry/rasters/GEMSDOE32__h33-2-b2-zeros.tif",
+      "upstream_origin_status": "VERIFIED_GITHUB_COMMIT_PIN",
+      "license": "Competitor own build artifact (GEMSDOE32)"
+    },
+    {
+      "id": "parent_r0_nan",
+      "repo": "buffedlizard55-lab/60GEMSDOE",
+      "ref": "02563d07fb85d2f4d35887503d380d34d4017197",
+      "path": "registry/rasters/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif",
+      "local_path": ".cache/gems_inputs/lineage/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif",
+      "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+      "bytes": 355443,
+      "usage": "PARENT_R0_REFERENCE_NAN",
+      "source_url": "https://github.com/buffedlizard55-lab/60GEMSDOE/blob/02563d07fb85d2f4d35887503d380d34d4017197/registry/rasters/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif",
+      "upstream_origin_status": "VERIFIED_GITHUB_COMMIT_PIN",
+      "license": "Competitor own build artifact (GEMSDOE32)"
+    },
+    {
+      "id": "anc_h19_5",
+      "repo": "buffedlizard55-lab/60GEMSDOE",
+      "ref": "02563d07fb85d2f4d35887503d380d34d4017197",
+      "path": "registry/rasters/calib_h195_01922.tif",
+      "local_path": ".cache/gems_inputs/lineage/calib_h195_01922.tif",
+      "sha256": "ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d",
+      "bytes": 1712322,
+      "usage": "PARENT_LINEAGE_STAGE_0_H19_5",
+      "source_url": "https://github.com/buffedlizard55-lab/60GEMSDOE/blob/02563d07fb85d2f4d35887503d380d34d4017197/registry/rasters/calib_h195_01922.tif",
+      "upstream_origin_status": "VERIFIED_GITHUB_COMMIT_PIN",
+      "license": "Competitor own build artifact (19GEMSDOE)"
+    },
+    {
+      "id": "anc_d1_5",
+      "repo": "buffedlizard55-lab/60GEMSDOE",
+      "ref": "02563d07fb85d2f4d35887503d380d34d4017197",
+      "path": "registry/rasters/calib_d15_02477.tif",
+      "local_path": ".cache/gems_inputs/lineage/calib_d15_02477.tif",
+      "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+      "bytes": 1632732,
+      "usage": "PARENT_LINEAGE_STAGE_1_D1_5",
+      "source_url": "https://github.com/buffedlizard55-lab/60GEMSDOE/blob/02563d07fb85d2f4d35887503d380d34d4017197/registry/rasters/calib_d15_02477.tif",
+      "upstream_origin_status": "VERIFIED_GITHUB_COMMIT_PIN",
+      "license": "Competitor own build artifact (GEMSDOE24)"
+    },
+    {
+      "id": "anc_d2_8",
+      "repo": "buffedlizard55-lab/60GEMSDOE",
+      "ref": "02563d07fb85d2f4d35887503d380d34d4017197",
+      "path": "registry/rasters/gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+      "local_path": ".cache/gems_inputs/lineage/gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+      "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+      "bytes": 1603424,
+      "usage": "PARENT_LINEAGE_STAGE_2_D2_8",
+      "source_url": "https://github.com/buffedlizard55-lab/60GEMSDOE/blob/02563d07fb85d2f4d35887503d380d34d4017197/registry/rasters/gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+      "upstream_origin_status": "VERIFIED_GITHUB_COMMIT_PIN",
+      "license": "Competitor own build artifact (GEMSDOE25)"
+    },
+    {
+      "id": "anc_solo_d2_8",
+      "repo": "buffedlizard55-lab/60GEMSDOE",
+      "ref": "02563d07fb85d2f4d35887503d380d34d4017197",
+      "path": "registry/rasters/GEMSDOE28__h27-4-r1-solo-d2-8.tif",
+      "local_path": ".cache/gems_inputs/lineage/GEMSDOE28__h27-4-r1-solo-d2-8.tif",
+      "sha256": "2fc94a38d77f74d4f4ed1a97a83e7bb71a1ceea090515ec641e6681cc47c44c8",
+      "bytes": 830036,
+      "usage": "PARENT_LINEAGE_STAGE_3_SOLO_D2_8",
+      "source_url": "https://github.com/buffedlizard55-lab/60GEMSDOE/blob/02563d07fb85d2f4d35887503d380d34d4017197/registry/rasters/GEMSDOE28__h27-4-r1-solo-d2-8.tif",
+      "upstream_origin_status": "VERIFIED_GITHUB_COMMIT_PIN",
+      "license": "Competitor own build artifact (GEMSDOE28)"
+    },
+    {
+      "id": "gdr_wellspring_in_footprint",
+      "repo": "buffedlizard55-lab/60GEMSDOE",
+      "ref": "02563d07fb85d2f4d35887503d380d34d4017197",
+      "path": "data/external/gdr_wellspring_in_footprint.csv",
+      "local_path": ".cache/gems_inputs/external/gdr_wellspring_in_footprint.csv",
+      "sha256": "122718e65bdf55aab0ee12ad20d80062f0deb1de957225a61ad880dd5dc196ea",
+      "bytes": 2146771,
+      "usage": "EXTERNAL_CC_BY_4_GEOTHERMOMETRY_CORROBORATION",
+      "source_url": "https://gdr.openei.org/submissions/1391",
+      "upstream_origin_status": "UNVERIFIED (gdr.openei.org unreachable from sandbox; pinned SHA-256 verified)",
+      "license": "CC BY 4.0 (DOE Geothermal Data Repository #1391 INGENIOUS)"
+    },
+    {
+      "id": "ext_geodawn_rad_u8",
+      "repo": "buffedlizard55-lab/60GEMSDOE",
+      "ref": "02563d07fb85d2f4d35887503d380d34d4017197",
+      "path": "data/external/geodawn_rad_u8.tif",
+      "local_path": ".cache/gems_inputs/external/geodawn_rad_u8.tif",
+      "sha256": "c22420f75999030d7cc65c9e31e50d232ea6158423bca051613a18a8b20ba682",
+      "bytes": 26612970,
+      "usage": "EXTERNAL_PUBLIC_DOMAIN_USGS_GEODAWN_RADIOMETRICS",
+      "source_url": "https://doi.org/10.5066/P93LGLVQ",
+      "upstream_origin_status": "UNVERIFIED (doi.org / sciencebase.gov unreachable from sandbox; pinned SHA-256 verified)",
+      "license": "US Public Domain (17 U.S.C. § 105, USGS GeoDAWN radiometrics)"
+    },
+    {
+      "id": "sgmc_faults_control",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/external/derived_sgmc_faults_100m_u8.tif",
+      "local_path": ".cache/gems_inputs/external/derived_sgmc_faults_100m_u8.tif",
+      "sha256": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0",
+      "bytes": 198602,
+      "usage": "REPORT_ONLY_USGS_SGMC_BEDROCK_FAULT_CONTROL",
+      "source_url": "https://www.sciencebase.gov/catalog/item/5888bf4fe4b05ccb964bab9d",
+      "upstream_origin_status": "UNVERIFIED (sciencebase.gov unreachable from sandbox; pinned SHA-256 verified)",
+      "license": "US Public Domain (17 U.S.C. § 105, Horton et al. 2017 USGS SGMC)"
+    }
+  ]
+}

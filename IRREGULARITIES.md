@@ -74,7 +74,7 @@ are committed like the MASS ones, so the human can actually upload them.
 
 **Human must decide.** Either confirm the terms permit redistribution (do nothing),
 or untrack `data/` and `releases/*.tif` and, if the terms require it, purge
-history. `registry/data_manifest.json` records every sha256, so the toolchain can
+history. `registry/session_manifest.json` records every sha256, so the toolchain can
 re-verify inputs from whatever private location they move to.
 
 ## 2026-10-23 (PRUNE session) — `labels.tif` and `existing_faults.tif` are byte-identical
@@ -116,3 +116,11 @@ evidence and are left exactly as recorded. Rule for going forward: one row = one
 experiment, and a `-zeros.tif` twin is *not* a second experiment. Upload at most
 one of a pair. Dedupe remains exact-hash only, per the brief; do not add
 rank-correlation or overlap thresholds.
+
+## 2026-10-23 (new PRUNE-rung session) — accessible-ledger uniqueness is incomplete
+
+Exact `(parent, axis, value)` and raster hashes were compared against accessible `GEMSDOE74`–`GEMSDOE89` ledger files; the three new values and six new hashes had no matches. This cannot prove uniqueness in unpublished sessions or repositories outside that range. **Decision:** treat the check as limited, and do not submit if the human knows an exact pair/hash was already built elsewhere.
+
+## 2026-10-23 (new PRUNE-rung session) — local holdout PROXY is not decision-comparable
+
+The pinned `gems57-pooled-hide-v2` whole-component buffered catalogue holdout (seeds 20/30, `n=22,663` withheld known-catalogue pixels) returns R0 `0.004006 [0.003424,0.004690]`, p2.5 `0.000785 [0.000658,0.000922]`, and p3.5/p4.5 `0 [0,0]`; selected-band leakage canary max symmetric AUC is `0.55314`. Results are in `evidence/proxy_audit.json`. **Decision:** these are PROXY diagnostics only, not gates, scores, or live forecasts; investigate the large divergence from previous hide-and-recover summaries before using this instrument to rank future axes. Use human live receipts as the decision anchor.

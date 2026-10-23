@@ -78,3 +78,9 @@ disk and gate-checked after writing.
 No leaderboard access, no scraping, no submission, no login, no label probing.
 No number was invented: where a value was unknown (TOP_PUBLIC, receipts, R0's
 ranking) it is blank or explicitly marked.
+
+---
+
+## Session 3 — controlled PRUNE collar rungs (2026-10-23)
+
+Arena.ai Agent Mode wrote the manifest-pinned restore script, exact DTI refill primitive, PRUNE rung builder, report-only proxy audit, tests, and current-session documentation. It rebuilt R0 exactly and generated three local candidate GeoTIFF pairs; it did not submit, contact competition/leaderboard pages, contact Dropbox, access credentials, or read held-out competition labels. Inputs were read only after SHA-256/byte verification. Human still chooses and submits, confirms `TOP_PUBLIC` and weekly capacity, checks data-use permissions, and transcribes receipt evidence. The SGMC/control and catalogue hide-and-recover instruments are explicitly `PROXY`, never scores.

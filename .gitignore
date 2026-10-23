@@ -10,3 +10,9 @@ __pycache__/
 # flagged for the human in IRREGULARITIES.md (2026-10-23, "Competition rasters
 # are committed to a PUBLIC repo"). Not ignored, because every raster in
 # releases/ must be uploadable and re-verifiable.
+
+# New session inputs/candidates must not be added to this public repository.
+.cache/
+*.tif
+*.tiff
+*.zip

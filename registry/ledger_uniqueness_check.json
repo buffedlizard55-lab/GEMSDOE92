@@ -1,0 +1,96 @@
+{
+  "check_utc": "2026-10-23",
+  "scope": "Accessible ledger/submissions.csv in public repositories GEMSDOE74 through GEMSDOE89 only; not a claim of complete cross-session history.",
+  "variants": [
+    {
+      "parent": "h33-h33-2-b2",
+      "axis": "PRUNE",
+      "value": "p2.5px-refill",
+      "sha256": "6d7a61ba2e980808640db9e0b7b1a787243abf5f833bb7cd25c5a35af96685c8",
+      "sha256_zeros": "15c099934edc36eb9010790555e9fadd78c6044657449a627c7ce0a627d83ec9"
+    },
+    {
+      "parent": "h33-h33-2-b2",
+      "axis": "PRUNE",
+      "value": "p3.5px-refill",
+      "sha256": "a121a27751381fa2f6b9bf8629e53b1a4a57df5fcab85ed0d3bf548c33ca95ab",
+      "sha256_zeros": "792eaa38bdddf2890a06c65386bcf480c4573a200b53191748ac238c94c67816"
+    },
+    {
+      "parent": "h33-h33-2-b2",
+      "axis": "PRUNE",
+      "value": "p4.5px-refill",
+      "sha256": "ebace30d4386c7b979badb0d6512e79b62f822839e42c4fe2e8cf35ed9c46de4",
+      "sha256_zeros": "8df3c4d905359caf7d2660d495f101b9ca0266a5637b6002712a72545224e1fe"
+    }
+  ],
+  "checked_repositories": [
+    {
+      "repo": "GEMSDOE74",
+      "ledger_available": false
+    },
+    {
+      "repo": "GEMSDOE75",
+      "ledger_available": false
+    },
+    {
+      "repo": "GEMSDOE76",
+      "ledger_available": false
+    },
+    {
+      "repo": "GEMSDOE77",
+      "ledger_available": false
+    },
+    {
+      "repo": "GEMSDOE78",
+      "ledger_available": false
+    },
+    {
+      "repo": "GEMSDOE79",
+      "ledger_available": false
+    },
+    {
+      "repo": "GEMSDOE80",
+      "ledger_available": false
+    },
+    {
+      "repo": "GEMSDOE81",
+      "ledger_available": false
+    },
+    {
+      "repo": "GEMSDOE82",
+      "ledger_available": false
+    },
+    {
+      "repo": "GEMSDOE83",
+      "ledger_available": false
+    },
+    {
+      "repo": "GEMSDOE84",
+      "ledger_available": true
+    },
+    {
+      "repo": "GEMSDOE85",
+      "ledger_available": true
+    },
+    {
+      "repo": "GEMSDOE86",
+      "ledger_available": true
+    },
+    {
+      "repo": "GEMSDOE87",
+      "ledger_available": true
+    },
+    {
+      "repo": "GEMSDOE88",
+      "ledger_available": true
+    },
+    {
+      "repo": "GEMSDOE89",
+      "ledger_available": true
+    }
+  ],
+  "exact_parent_axis_value_matches": [],
+  "exact_raster_hash_matches": [],
+  "pass": true
+}

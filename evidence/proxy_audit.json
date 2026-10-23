@@ -1,0 +1,365 @@
+{
+  "evidence_label": "PROXY",
+  "created_utc": "2026-10-23",
+  "purpose": "Report-only catalogue hide-and-recover instrument, single-feature leakage canaries, and public-domain SGMC control; none gates the variants.",
+  "inputs_verified": {
+    "sample_submission": {
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "bytes": 1599597
+    },
+    "existing_faults": {
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "bytes": 425830
+    },
+    "training_features": {
+      "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+      "bytes": 418912844
+    },
+    "parent_r0_zeros": {
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "bytes": 219065
+    },
+    "parent_r0_nan": {
+      "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+      "bytes": 355443
+    },
+    "anc_h19_5": {
+      "sha256": "ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d",
+      "bytes": 1712322
+    },
+    "anc_d1_5": {
+      "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+      "bytes": 1632732
+    },
+    "anc_d2_8": {
+      "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+      "bytes": 1603424
+    },
+    "anc_solo_d2_8": {
+      "sha256": "2fc94a38d77f74d4f4ed1a97a83e7bb71a1ceea090515ec641e6681cc47c44c8",
+      "bytes": 830036
+    },
+    "gdr_wellspring_in_footprint": {
+      "sha256": "122718e65bdf55aab0ee12ad20d80062f0deb1de957225a61ad880dd5dc196ea",
+      "bytes": 2146771
+    },
+    "ext_geodawn_rad_u8": {
+      "sha256": "c22420f75999030d7cc65c9e31e50d232ea6158423bca051613a18a8b20ba682",
+      "bytes": 26612970
+    },
+    "sgmc_faults_control": {
+      "sha256": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0",
+      "bytes": 198602
+    }
+  },
+  "holdout_protocol": {
+    "implementation": "vendor/gems57/holdout.py buffered_component_draw",
+    "evaluator": "gems57-pooled-hide-v2",
+    "seeds": [
+      20,
+      30
+    ],
+    "whole_component_count": 1223,
+    "withheld_positive_pixels": 22663,
+    "ci_method": "paired 20 km spatial-block bootstrap, 1,000 draws",
+    "scores": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "alpha": 0.2,
+      "beta": 0.8,
+      "triangular_radius_m": 300.0,
+      "pooled": true,
+      "scores": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.004006147174684743,
+          "ci95": [
+            0.0034243961318463374,
+            0.004689525221466778
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 129.29712893913688,
+          "fpw": 70592.1164043663,
+          "fnw": 22533.70287106087
+        },
+        "p2.5px-refill": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0007850353717180486,
+          "ci95": [
+            0.0006580009827701524,
+            0.0009216825590418904
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 25.335594579145884,
+          "fpw": 70688.60721446248,
+          "fnw": 22637.66440542087
+        },
+        "p3.5px-refill": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 0.0,
+          "fpw": 70760.0,
+          "fnw": 22663.0
+        },
+        "p4.5px-refill": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 0.0,
+          "fpw": 70874.0,
+          "fnw": 22663.0
+        }
+      },
+      "best_comparable_control": "R0",
+      "paired_differences": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": -0.004006147174684743,
+          "ci95": [
+            -0.004689525221466779,
+            -0.0034243961318463374
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "p2.5px-refill": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": -0.0007850353717180486,
+          "ci95": [
+            -0.0009216825590418904,
+            -0.0006580009827701524
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "p4.5px-refill": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "withheld_positive_pixels": 22663
+        }
+      },
+      "bootstrap": {
+        "method": "paired physical spatial-cluster percentile",
+        "clusters": 157,
+        "draws": 1000,
+        "seed": 520810,
+        "confidence": 0.95,
+        "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+      },
+      "implementation_sha256": {
+        "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+        "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+        "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+        "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+      }
+    },
+    "per_fold_dti": {
+      "R0": [
+        0.0033190361096884797,
+        0.004407926168167087,
+        0.0031089001997361824,
+        0.004072828198897818,
+        0.00489997713403107,
+        0.005013980811213483,
+        0.004355576467076173,
+        0.003125934420342564
+      ],
+      "p2.5px-refill": [
+        0.0008319843523718634,
+        0.000749553845582392,
+        0.0007793530297502903,
+        0.0007541977596791827,
+        0.0008682479125290895,
+        0.0008414412462310034,
+        0.0009226888974679877,
+        0.0005252622423456942
+      ],
+      "p3.5px-refill": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "p4.5px-refill": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "split_receipts": [
+      {
+        "seed": 20,
+        "folds": [
+          {
+            "fold": "NW",
+            "seed": 20,
+            "held_components": 96,
+            "withheld_positive_pixels": 1923,
+            "eligible_components": 598,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          },
+          {
+            "fold": "NE",
+            "seed": 20,
+            "held_components": 145,
+            "withheld_positive_pixels": 2367,
+            "eligible_components": 628,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          },
+          {
+            "fold": "SW",
+            "seed": 20,
+            "held_components": 223,
+            "withheld_positive_pixels": 3781,
+            "eligible_components": 983,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          },
+          {
+            "fold": "SE",
+            "seed": 20,
+            "held_components": 142,
+            "withheld_positive_pixels": 3250,
+            "eligible_components": 648,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          }
+        ]
+      },
+      {
+        "seed": 30,
+        "folds": [
+          {
+            "fold": "NW",
+            "seed": 30,
+            "held_components": 138,
+            "withheld_positive_pixels": 1919,
+            "eligible_components": 598,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          },
+          {
+            "fold": "NE",
+            "seed": 30,
+            "held_components": 131,
+            "withheld_positive_pixels": 2356,
+            "eligible_components": 628,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          },
+          {
+            "fold": "SW",
+            "seed": 30,
+            "held_components": 203,
+            "withheld_positive_pixels": 3805,
+            "eligible_components": 983,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          },
+          {
+            "fold": "SE",
+            "seed": 30,
+            "held_components": 145,
+            "withheld_positive_pixels": 3262,
+            "eligible_components": 648,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          }
+        ]
+      }
+    ]
+  },
+  "leakage_canaries": {
+    "definition": "symmetric AUC=max(AUC,1-AUC) on hidden known-catalogue positives vs non-catalogue negatives in the same buffered fold regions",
+    "features": {
+      "training_band_3_tmi_hg": {
+        "auc": 0.498777,
+        "symmetric_auc": 0.501223,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "training_band_18_gravity_hg": {
+        "auc": 0.481775,
+        "symmetric_auc": 0.518225,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "training_band_19_detrended_elevation_slope": {
+        "auc": 0.55314,
+        "symmetric_auc": 0.55314,
+        "status": "REPORT_ONLY_PASS"
+      }
+    },
+    "max_symmetric_auc": 0.55314,
+    "stop_and_investigate_if_any_gt_0_90": false
+  },
+  "sgmc_control": {
+    "evidence_label": "PROXY",
+    "source": "manifest-pinned USGS SGMC derived fault control; source URL and license in registry/session_manifest.json",
+    "truth_pixels_after_catalogue_and_3px_exclusion": 62703,
+    "dti_by_arm": {
+      "R0": 0.09606,
+      "p2.5px-refill": 0.096239,
+      "p3.5px-refill": 0.096369,
+      "p4.5px-refill": 0.092461
+    },
+    "delta_vs_r0": {
+      "R0": 0.0,
+      "p2.5px-refill": 0.000179,
+      "p3.5px-refill": 0.000309,
+      "p4.5px-refill": -0.003599
+    }
+  },
+  "warning": "These are catalogue/SGMC PROXY diagnostics, not live public scores, not private-set scores, not evidence of win probability, and never pass/fail gates."
+}

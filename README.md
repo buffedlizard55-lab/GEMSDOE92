@@ -1,15 +1,17 @@
 # GEMSDOE92 — PRUNE axis session
 
 ## CURRENT STATE
-- **Parent R0**: h33-h33-2-b2 (GEMSDOE32) — 37,654 unit-mass dots, sha256 `baeae321…077dd` **verified byte-for-byte this session**, CLAIM 0.2778 (no receipt)
-- **Best receipt**: None yet (ledger has 6 BUILT rows, 0 scored)
-- **TOP_PUBLIC**: ____ (human fills from leaderboard, with date)
-- **Slots left this week**: 3 / total: 3 (one entity, 3 per rolling week, one final)
-- **AXIS for this session**: PRUNE (chosen autonomously, no prompt)
-- **Next 3 slots (planned)**:
-  1. `h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7` — remove dots within 3 px of catalogue (2,171 = 5.77%), refill, count held 37,654 — predicted +0.002 to +0.006
-  2. `h33-h33-2-b2-PRUNE_B4-20261023-78e893d7` — same at 4 px (3,825 = 10.16%) — predicted +0.001 to +0.004
-  3. `h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad` — same at 5 px (5,637 = 14.97%) — predicted −0.002 to +0.002 (negative control)
+- **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots; exact rebuild matches both pinned zeros and NaN SHA-256 values. `0.2778` remains **CLAIM** (no receipt in this checkout).
+- **Best receipt**: none recorded.
+- **TOP_PUBLIC**: not supplied; human must provide value and observation date.
+- **Slots left this week**: unknown; human must check the entity's current rolling-week quota.
+- **AXIS this session**: PRUNE, chosen autonomously. New values: `p2.5px-refill`, `p3.5px-refill`, `p4.5px-refill`.
+- **Next 3 candidate slots (BUILT, not submitted)**:
+  1. `h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277` — 2,702 dots moved (7.18%); MODEL +0.003, wide range [-0.008,+0.015]; SGMC PROXY +0.00031 vs R0.
+  2. `h33-h33-2-b2-PRUNEp2.5px-refill-20261023-6d7a61ba` — 941 moved (2.50%); MODEL +0.001, range [-0.010,+0.012]; SGMC PROXY +0.00018.
+  3. `h33-h33-2-b2-PRUNEp4.5px-refill-20261023-ebace30d` — 4,848 moved (12.88%); MODEL -0.004, range [-0.018,+0.008]; SGMC PROXY -0.00360.
+
+No file was submitted. The new candidate TIFFs are locally generated and gitignored. See `docs/SUBMIT.md`; prior main-branch candidate files remain in the ledger.
 
 ## Verified facts
 - Metric: DTI with alpha 0.2, beta 0.8, triangular kernel R=300m (3px), float32 EPSG:32611 100m, per https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/
@@ -49,7 +51,7 @@ dot, so those files were ranked on a field with no ordering — they are a rando
 - `docs/mechanism_cards.md` — hypothesis, mechanism, mimic, predicted sign, falsifier
 - `SLOT_PLAN.md` — next slots and weeks to deadline
 - `docs/SUBMIT.md` — submission form note
-- `registry/data_manifest.json` — pinned inputs with sha256
+- `registry/session_manifest.json` — pinned inputs with sha256
 
 ## Evidence labels
 - RECEIPT = copied from submission-page receipt
