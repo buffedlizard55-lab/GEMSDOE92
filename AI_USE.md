@@ -131,3 +131,18 @@ writing; both encodings hashed.
 No submission, no login, no leaderboard or competition-page access, no Dropbox
 contact, no label probing, no invented numbers. Unknown values (`TOP_PUBLIC`,
 slots, receipts) are left blank.
+
+---
+
+## Session 5 — SNAP piedmont break-in-slope & subsurface control (2026-10-23)
+
+### What AI wrote
+- `gems.variants.snap_spaced` — deterministic spacing-preserving (`min_nn >= 2.8 px`) `<=2 px` local edge/scarp snap operator preserving R0 exclusions (`d_cat > 2.0 px`).
+- `scripts/build_snap_scarp_variants.py` — manifest SHA-256 verification, byte-exact `R0` lineage rebuild check, nodata/unsigned-gradient physical response construction (`Band 3 tmi_hg`, `Band 5 iso_grav_anom_slope`, `Band 19 det_elev_slope` + `||grad Band 19||`), deterministic build of `SNAPscarp2p0px`, `SNAPscarp1p4px`, and `SNAPpot2p0px`, post-write disk reread format validation, ledger update, and `evidence/snap_variants.json`.
+- `scripts/report_snap_proxies.py` — report-only buffered catalogue hide-and-recover `PROXY`, single-feature leakage canaries, and USGS SGMC off-catalogue bedrock control (`evidence/snap_proxy_audit.json`).
+- `tests/test_snap_variants.py` — unit and policy tests verifying spacing preservation, `<=2 px` displacement bounds, nodata/sign safeguards, ledger integrity, and evidence labeling.
+- Updates to `README.md` (`CURRENT STATE` block only), `SLOT_PLAN.md`, `docs/SUBMIT.md`, `docs/mechanism_cards.md`, `IRREGULARITIES.md`, and this file.
+
+### What the human decides and supplies
+- Autonomous `AXIS = SNAP` selection was delegated by the human's session prompt ("Do not prompt me over choosing an Axis for the session, pick your own session").
+- The human supplies `TOP_PUBLIC` (with observation date), confirms rolling-week and remaining competition slots, chooses whether/which single encoding file to upload from their registered DrivenData account, and records official submission-page `RECEIPT` scores and dates in `ledger/submissions.csv`.

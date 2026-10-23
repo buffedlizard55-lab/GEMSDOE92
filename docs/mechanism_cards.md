@@ -104,13 +104,9 @@ The three doses are a dose-response curve, not three independent bets. Outcomes:
 | all ≤ parent | distance prior is false | abandon PRUNE, the 0.2708→0.2778 step was false-positive removal |
 | B3 > parent, B4 ≈ B3 | flat optimum 3–4 px | prefer B3 (fewer deletions, less risk) |
 
-
 ---
 
-
----
-
-# SNAP axis (2026-10-23)
+# SNAP axis — thresholded gain series (2026-10-23)
 
 Parent R0 `h33-h33-2-b2`, 37,654 unit-mass dots, CLAIM 0.2778. Response surface from pinned bands 3/13/19 only; see `scripts/make_edge_response.py` and `evidence/snap_session.json`.
 
@@ -137,3 +133,116 @@ Parent R0 `h33-h33-2-b2`, 37,654 unit-mass dots, CLAIM 0.2778. Response surface 
 - **Predicted sign and size.** MODEL:±0.035 (MODEL, range [-0.035,+0.035]). Derivation: one converted dot (zero credit -> credit c~2.5, best-weight 0.8, newly covering c of |G|) is worth [(2.5)(1+0.8*0.278) - 0.278(-1.66)]/D ~ 1.5e-4 at D~19,900, a denominator calibrated from the lineage's own measured 2.8e-6 per zero-credit dot. With 19565 movers the sign of the live change is therefore decided by whether the net conversion rate is above or below zero. The quoted range is about +-2 sigma of a pure-relocation null, sigma(dDTI) ~ 1.22*sigma_c*sqrt(n_movers)/D with sigma_c ~ 1.5 kernel units per moved dot (=> ~0.026); the model cannot resolve a sign below 0.01, so these are two-sided ranges, not gains.
 - **Falsifier.** If g=0.05 (52% of dots relocate by ~1 px) lands more than 0.01 BELOW g=0.15 and R0, the edge maxima are worse position estimators than the parent's own lineaments and the SNAP hypothesis is rejected for this region. If g=0.15 gains >0.01 while g=0.05 loses >0.01, only the clearly-mispositioned dots are correctable and later axes must keep a strict evidence threshold. A monotone increase with dose supports composing SNAP onto the best PRUNE rung.
 - **Decision rule.** Live change under 0.01 is no evidence. Receipts only; never a PROXY.
+
+---
+
+# Mechanism Cards — SNAP piedmont break-in-slope & subsurface control (2026-10-23)
+
+Parent: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots, rebuilt byte-for-byte
+(`zeros` SHA-256 `c55bafc4…`, `nan` SHA-256 `baeae321…`), **CLAIM** `0.2778`.
+All three SNAP variants hold exact dot count (`37,654`), total mass (`37,654.0`),
+parent catalogue exclusions (`d_cat > 2.0 px`, zero mass on catalogue), and
+parent `D2.8` Poisson-disk inter-dot spacing (`min_nn = 2.8284 px`), changing
+**only** the `<=2 px` local edge/scarp snap operator (`SNAP` is explicitly
+exempt from the 1–50% pixel-change bound per Brief v2 §5).
+
+### Why spacing-preserving SNAP (`min_nn >= 2.8 px`) + break-in-slope is essential
+In `R0`, `dot_thin(H19-5, 2.8)` seeded from the north-west pixel of each binary
+`H19-5` component (`N=20.0%, W=15.3%` vs `S=35.9%, E=29.5%` neighbor occupancy)
+without centering on local scarp or potential-field gradient peaks; within
+`<=2 px` (`200 m`), median `det_elev_slope` (`Band 19`) is `+102.9%` higher and
+median `tmi_hg` (`Band 3`) is `+64.9%` higher than at `R0` dot centers. Enforcing
+`D2.8`'s open-disc spacing `dy^2 + dx^2 >= 2.8^2` (`min_nn = 2.8284 px`) prevents
+along-strike clumping inside the `R = 3 px` triangular DTI kernel, while pairing
+`det_elev_slope` with the piedmont break-in-slope inflection `||grad(det_elev_slope)||`
+and unsigned `Band 5 (iso_grav_anom_slope)` anchors dots on piedmont fault traces
+rather than mid-facet bedrock cliffs.
+
+## h33-h33-2-b2-SNAPscarp2p0px-20261023-2a65fe24
+- **Value**: `scarp2p0px` — `<=2.0 px` (`200 m`) spacing-preserving snap onto
+  `0.35*pct(det_elev_slope [B19]) + 0.35*pct(||grad det_elev_slope||) + 0.20*pct(tmi_hg [B3]) + 0.10*pct(iso_grav_anom_slope [B5])`.
+  Mean displacement `1.2340 px` (`123.4 m`), median `1.4142 px`, max `2.0000 px`,
+  `82.05%` (`30,896`) pixel positions changed, `min_nn = 2.8284 px`.
+- **Hypothesis**: GeoDAWN's `400 m` flight-line spacing (`150–200 m` AGL,
+  https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7),
+  `50°–60°` normal-fault hanging-wall dip projection of basement potential
+  fields, and `D2.8`'s unweighted NW-seeded thinning displace `R0` dots by
+  `100–200 m` cross-strike from surface fault traces. Snapping `<=200 m` onto
+  the joint topographic scarp + piedmont break-in-slope inflection + TMI/gravity
+  horizontal gradient crest centers dots onto brittle fault traces without
+  climbing eroded footwall cliffs.
+- **Mechanism**: Under `DTI = T / (0.2T + 0.2(S - M) + 0.8|G|)` at fixed
+  `S = 37,654`, every `100 m` (`1 px`) reduction in cross-strike offset raises
+  triangular-kernel credit `k(d) = max(0, 1 - d/3)` by `+1/3` (`+0.333`) per
+  fault pixel, yielding `Delta DTI ≈ 0.26 * DTI * (Delta T / T)`. Including the
+  piedmont break-in-slope `||grad(det_elev_slope)||` anchors dots at the
+  alluvial-fan/bedrock-facet fault junction rather than mid-facet bedrock cliffs,
+  while in flat playas where slope variation is negligible, `tmi_hg` and
+  unsigned `iso_grav_anom_slope` steer placement over concealed contacts.
+- **Non-fault mimic**: Erosional range-front triangular facets, incised
+  alluvial-fan terrace risers, Pleistocene pluvial lake shorelines
+  (Lahontan/Bonneville), and resistant ash-flow tuff cliff ledges within `200 m`
+  of concealed faults.
+- **Predicted sign and size**: **`MODEL:+0.012`** vs `R0` (scenario range
+  `[-0.006, +0.025]`; `MODEL` projection, never a score). Report-only `PROXY`
+  diagnostics: SGMC off-catalogue bedrock control `+0.002667` (`0.098727` vs
+  `0.096060`); buffered catalogue hide-and-recover `+0.000798` (`0.004804` vs
+  `0.004006`).
+- **Falsifier**: Live receipt delta `<= -0.01` vs `R0` falsifies `<=200 m`
+  surface-scarp localization and shows new-fault truth is dominated by concealed
+  intrabasinal traces or offset from geomorphic slope breaks; `|delta| < 0.01`
+  is treated as no evidence.
+
+## h33-h33-2-b2-SNAPscarp1p4px-20261023-01fb4acc
+- **Value**: `scarp1p4px` — `<=sqrt(2) px` (`1.4142 px = 141 m`, 8-connected
+  Moore window) spacing-preserving snap onto the **identical** joint response
+  surface `R_es`. Mean displacement `0.9540 px` (`95.4 m`), median `1.0000 px`,
+  max `1.4142 px`, `78.00%` (`29,370`) pixel positions changed,
+  `min_nn = 2.8284 px`.
+- **Hypothesis**: Limiting capture radius to `141 m` (one diagonal pixel)
+  corrects `D2.8`'s 1-px NW ribbon-edge bias and sub-grid rasterization offset
+  while preventing `200 m` upslope excursion onto eroded footwall facets along
+  mature Basin-and-Range fronts where the active piedmont fault trace has
+  stepped basinward of the retreated bedrock escarpment.
+- **Mechanism**: Holds response surface, count (`37,654`), exclusions
+  (`d_cat > 2.0`), and spacing (`min_nn >= 2.828 px`) identical to `scarp2p0px`,
+  varying **only** `max_shift` (`1.414 px` vs `2.000 px`) to isolate capture
+  radius.
+- **Non-fault mimic**: Local `100–141 m` stream-cut fan scarps, talus-apron
+  margins, and shallow volcanic flow edges bordering geophysical lineaments.
+- **Predicted sign and size**: **`MODEL:+0.008`** vs `R0` (scenario range
+  `[-0.004, +0.018]`; `MODEL` only). Report-only `PROXY` diagnostics: SGMC
+  control `+0.001480` (`0.097540`); hide-and-recover `+0.000550` (`0.004556`).
+- **Falsifier**: If `scarp1p4px` beats `scarp2p0px` by `>= +0.01` on live
+  receipts, `200 m` capture overshoots onto retreated footwall facets; if both
+  trail `R0` by `>= 0.01`, topographic scarp snapping is falsified.
+
+## h33-h33-2-b2-SNAPpot2p0px-20261023-41697f8c
+- **Value**: `pot2p0px` — `<=2.0 px` (`200 m`) spacing-preserving snap onto
+  subsurface potential-field horizontal gradients **only**:
+  `0.65*pct(tmi_hg [B3]) + 0.35*pct(iso_grav_anom_slope [B5])`. Mean
+  displacement `1.3656 px` (`136.6 m`), median `1.4142 px`, max `2.0000 px`,
+  `79.07%` (`29,773`) pixel positions changed, `min_nn = 2.8284 px`.
+- **Hypothesis**: Mechanistic subsurface control. If hidden new-fault truth is
+  predominantly concealed intrabasinal faults beneath Quaternary basin fill with
+  zero surface scarp, snapping solely to unsigned magnetic and isostatic-gravity
+  horizontal gradients centers dots onto basement/volcanic offsets without
+  alluvial or shoreline erosion noise. Conversely, if new-fault truth tracks
+  surface/piedmont traces of `50°–60°` dipping normal faults, `~63°` geomagnetic
+  inclination (unreduced `TMI`) and down-dip hanging-wall density projection pull
+  potential-field gradient crests `150–300 m` basinward off the surface fault.
+- **Mechanism**: Holds capture radius (`2.0 px`), count (`37,654`), exclusions
+  (`d_cat > 2.0`), and spacing (`min_nn >= 2.828 px`) identical to `scarp2p0px`,
+  removing only the topographic scarp/break terms. Uses unsigned `Band 5`
+  (`iso_grav_anom_slope = ||grad g||`) rather than signed E-W `Band 18`
+  (`dg/dx`) so east- and west-dipping normal faults are treated symmetrically.
+- **Non-fault mimic**: Unfaulted plutonic intrusive contacts, caldera ring
+  fractures, ash-flow tuff stratigraphic pinchouts, and down-dip hanging-wall
+  gradient shifts of dipping normal faults.
+- **Predicted sign and size**: **`MODEL:-0.002`** vs `R0` (scenario range
+  `[-0.014, +0.010]`; `MODEL` only). Report-only `PROXY` diagnostics: SGMC
+  control `-0.003303` (`0.092757`, consistent with dip/inclination offset from
+  mapped bedrock traces); hide-and-recover `+0.000569` (`0.004575`).
+- **Falsifier**: A live receipt gain `>= +0.01` over both `R0` and `scarp2p0px`
+  falsifies surface-scarp dominance and proves hidden test faults are primarily
+  concealed basement structures best centered by potential-field gradients alone.

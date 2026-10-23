@@ -1,17 +1,17 @@
 # GEMSDOE92 — PRUNE axis session
 
 ## CURRENT STATE
-- **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots. Rebuilt this session from the pinned lineage (`dot_thin(H19-5, 2.8) & d_cat > 2.0`) and **byte-identical to both pinned encodings** (zeros `c55bafc4…`, NaN `baeae321…`). `0.2778` remains **CLAIM** (no receipt in this checkout).
-- **Best receipt**: none recorded.
-- **TOP_PUBLIC**: not supplied; human must provide the value and its observation date.
-- **Slots left this week**: unknown; human must check the entity's rolling-week quota (3 scored submissions, 1 final file).
-- **AXIS this session**: SNAP, chosen autonomously. Values `cap2p0-g0.15`, `cap2p0-g0.10`, `cap2p0-g0.05` (2,660 / 7,023 / 19,565 dots moved; count, mass and the 2.83 px spacing invariant held).
+- **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots; exact lineage rebuild matches both pinned SHA-256 digests (`zeros`: `c55bafc4…`, `nan`: `baeae321…`). `0.2778` remains **CLAIM** (no receipt in `ledger/`).
+- **Best receipt**: none recorded (`ledger/submissions.csv` has 15 `BUILT` rows and zero `RECEIPT` rows).
+- **TOP_PUBLIC**: `____` (not supplied; human must fill value and observation date from leaderboard).
+- **Slots left this week**: `__` / total left to 2026-12-03: `__` (human must confirm entity rolling-week quota).
+- **AXIS this session**: `SNAP`, chosen autonomously. New values: `scarp2p0px`, `scarp1p4px`, `pot2p0px` (spacing-preserving `min_nn >= 2.828 px`, exact 37,654 dots, R0 `d_cat > 2.0` exclusions, piedmont break-in-slope + unsigned `Band 5` gravity gradient).
 - **Next 3 candidate slots (BUILT, not submitted)**:
-  1. `h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277` — 2,702 dots removed/refilled (7.18%); MODEL +0.003, range [-0.008,+0.015]. Extends the only mechanism whose last step moved the score up (≤2 px collar: 0.2708 → 0.2778 CLAIM, i.e. +0.007 — formally still under the 0.01 evidence bar).
-  2. `h33-h33-2-b2-SNAPcap2p0-g0p15-20261023-2ca4294e` — 2,660 dots moved ≤2 px (7.06%), mean displacement 0.124 px overall (1.76 px per mover); MODEL ±0.008, range [-0.008,+0.008]. Cheapest test of the positional hypothesis on the incumbent.
-  3. `h33-h33-2-b2-SNAPcap2p0-g0p05-20261023-2c472bc5` — 19,565 dots moved (51.96%), mean displacement 0.858 px overall (1.65 px per mover); MODEL ±0.035, range [-0.035,+0.035]. High-variance dose extreme; only worth a slot if slot 2 shows ≥+0.01, otherwise use slot 3 for PRUNE p2.5 (`…-6d7a61ba`).
+  1. `h33-h33-2-b2-SNAPscarp2p0px-20261023-2a65fe24` — `<=2.0 px` joint scarp+break+TMI/grav edge, mean disp `1.234 px` (82.05% px changed); `MODEL:+0.012` (`[-0.006,+0.025]`); SGMC `PROXY` `+0.00267` vs R0.
+  2. `h33-h33-2-b2-SNAPscarp1p4px-20261023-01fb4acc` — `<=1.414 px` 8-neighbor joint scarp+break+TMI/grav edge, mean disp `0.954 px` (78.00% px changed); `MODEL:+0.008` (`[-0.004,+0.018]`); SGMC `PROXY` `+0.00148` vs R0.
+  3. `h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277` (`MODEL:+0.003`; orthogonal collar test to unlock `SNAP+PRUNE`), or swap in `h33-h33-2-b2-SNAPpot2p0px-20261023-41697f8c` (`MODEL:-0.002`; pure TMI+grav gradient subsurface control, mean disp `1.366 px`) if Slot 1 drops by `>=0.01`.
 
-No file was submitted. Candidate TIFFs live in `releases/` (gitignored, so not redistributed by this public repo); regenerate with the scripts in `scripts/`. See `docs/SUBMIT.md`.
+No file was submitted. Candidate GeoTIFF pairs exist locally in `releases/` and are gitignored per public-repo safeguard; regenerate anytime via `python scripts/build_snap_scarp_variants.py`. See `docs/SUBMIT.md` and `SLOT_PLAN.md`.
 
 ## Verified facts
 - Metric: DTI with alpha 0.2, beta 0.8, triangular kernel R=300m (3px), float32 EPSG:32611 100m, per https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/
