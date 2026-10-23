@@ -348,6 +348,11 @@ def snap(parent: Dots, response: np.ndarray, max_shift: int = 2,
                 key = (res[yy, xx], -np.hypot(dy, dx))
                 if best_key is None or key > best_key:
                     best_key, best_px = key, (yy, xx)
+        if best_key is None:
+            raise ValueError(
+                f"no legal SNAP destination within {max_shift}px of {(y, x)}; "
+                "refusing to leave a forbidden origin or exceed the shift bound"
+            )
         yy, xx = best_px
         if (yy, xx) != (y, x):
             occupied.discard((y, x))

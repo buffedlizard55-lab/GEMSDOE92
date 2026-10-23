@@ -152,6 +152,14 @@ def test_snap_prefers_smallest_displacement_on_exact_response_tie():
     assert v.stats["mean_displacement_px"] == 0.0
 
 
+def test_snap_refuses_forbidden_origin_with_no_legal_destination():
+    d = Dots(np.array([10]), np.array([10]), np.array([1.0]))
+    response = np.ones((40, 40))
+    keep_out = np.ones((40, 40), bool)
+    with pytest.raises(ValueError, match="no legal SNAP destination"):
+        snap(d, response, max_shift=2, keep_out=keep_out)
+
+
 def test_variant_declares_change_fraction():
     d = grid_dots()
     v = mass_drop(d, np.arange(len(d), dtype=float), frac=0.10)
