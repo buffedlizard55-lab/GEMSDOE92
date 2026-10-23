@@ -189,3 +189,25 @@ to justify or to reject a variant. It is recorded, not used.
 
 **Decision.** The 5 km figure is reported for all three variants; R0's CV at four block sizes is in
 `evidence/concentration.json` so the human can compare on whatever scale the 0.51–0.59 figure came from.
+
+## 2026-10-23 (CONCENTRATION session) — a parallel SNAP session landed on `main` mid-session
+
+**Observation.** After this branch was cut at `9a0f47b`, `main` received a SNAP session adding six rows
+(`scarp2p0px`, `scarp1p4px`, `pot2p0px`, `cap2p0-g0.15`, `cap2p0-g0.10`, `cap2p0-g0.05`) and rewriting
+README, SLOT_PLAN, docs/SUBMIT.md and the mechanism cards. Its own report-only SGMC PROXY deltas versus
+R0 are **positive** (`+0.00267`, `+0.00148`), unlike every CONCENTRATION rung here (`−0.0049` to
+`−0.0104`).
+
+**Impact — decision-changing, and it explains this session's negative result.** SNAP *relocates* dots
+inside a ≤2 px window while preserving the parent's minimum nearest-neighbour spacing of 2.828 px.
+CONCENTRATION *replaces* dots, and every replacement lands on an H19-5 pixel that Poisson-disk thinning
+at 2.8 px had already discarded — the immediate neighbour of a surviving dot. The randomised-block null
+in `evidence/concentration.json` shows that replacement cost is generic (−0.0124 at 20%) and swamps the
+prior ordering (+0.002). So the two sessions are not in conflict: they measure different moves. The
+lesson for future sessions is that any axis which must *add* pixels onto the existing H19-5 support pays
+a fixed redundancy tax, and only off-support refill or pure relocation avoids it.
+
+**Decision.** This branch's ledger was unioned with main's six SNAP rows so no evidence is lost. The
+README/SLOT_PLAN/SUBMIT conflicts are left for the human: two sessions both legitimately claim the
+"current state" block, and which one is current is a submission-priority decision, not a text merge.
+PR #11 is therefore left open with green CI rather than force-merged.

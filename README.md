@@ -4,7 +4,8 @@
 - **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots; rebuilt bit-exactly through
   H19-5 -> D1.5 -> D2.8 -> SOLO -> R0 and matched to both pinned raster SHA-256 values this session.
   `0.2778` remains **CLAIM** (no receipt in this checkout).
-- **Best receipt**: none recorded. 12 files are `BUILT`, 0 are receipt-scored.
+- **Best receipt**: none recorded. 18 files are `BUILT` across three sessions (3 MASS,
+  6 PRUNE, 6 SNAP on `main`, 3 CONCENTRATION here), 0 are receipt-scored.
 - **TOP_PUBLIC**: not supplied; human must provide the value and its observation date.
 - **Slots left this week**: unknown; human must check the entity's rolling-week quota.
 - **AXIS this session**: CONCENTRATION, chosen autonomously (MASS and PRUNE values are already in the
