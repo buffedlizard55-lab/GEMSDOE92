@@ -17,3 +17,5 @@ predicted_change, receipt_score, receipt_date, notes`.
 
 Currently empty: no receipt was available, so R0's 0.2778 remains a CLAIM and
 has not been entered as a score.
+
+This PR appends three BUILT PRUNE-rung rows to the existing ledger without removing earlier MASS or PRUNE rows. `evidence/prune_rungs.json` contains both encoding hashes; candidate rasters are local-only and gitignored. `ledger/raw_paste.txt` and `historical_climb.csv` retain the original prompt's owner-reported historical claims separately; none is receipt-backed.
