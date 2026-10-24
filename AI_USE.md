@@ -146,3 +146,13 @@ slots, receipts) are left blank.
 ### What the human decides and supplies
 - Autonomous `AXIS = SNAP` selection was delegated by the human's session prompt ("Do not prompt me over choosing an Axis for the session, pick your own session").
 - The human supplies `TOP_PUBLIC` (with observation date), confirms rolling-week and remaining competition slots, chooses whether/which single encoding file to upload from their registered DrivenData account, and records official submission-page `RECEIPT` scores and dates in `ledger/submissions.csv`.
+
+## 2026-10-24 — MASS preflight, no variants
+AI selected MASS, verified all eight local manifest hashes, wrote the deterministic
+R0 audit script and stop report, and updated planning/handoff documentation.
+Both parent encodings rebuild exactly; disk reread verified; 55 tests pass.
+AI identified absent parent ranking and incompatible inherited catalogue collar;
+no candidate, receipt, prediction, submission or external dataset was fabricated.
+Human decisions still required: resolve exclusion-policy/parent conflict, provide
+ranked-parent recipe, official deadline confirmation, receipt, leaderboard target
+and quota. No human decision is inferred. No login, scraping or submission code.

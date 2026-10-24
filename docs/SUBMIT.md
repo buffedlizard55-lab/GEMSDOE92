@@ -1,3 +1,15 @@
+# 2026-10-24 — HOLD: no new upload file
+
+MASS session blocked: parent ranking absent and 1,611 R0 dots <3 px from catalogue.
+No new file, submission name, form note, prediction, or candidate format receipt.
+R0 exact rebuild and disk reread PASS for both pinned encodings; see
+`evidence/session_20261024.json`. This is not a candidate validation receipt.
+Historical SNAP approvals below used >2 px, not the current >=3 px gate; do not
+upload on the strength of those approvals. Confirm quota and resolve exclusions first.
+
+---
+## Historical handoff (not revalidated / not upload authorization)
+
 # Candidate handoff — human review and submission only
 
 **Do not upload until you confirm the entity's rolling-week quota and independently review the selected raster.** The agent never submits and never contacts the leaderboard. Parent R0 (`h33-h33-2-b2`) score `0.2778` is an owner-reported **CLAIM**, not a `RECEIPT`. Upload **at most one** file per slot (the NaN-outside primary `.tif` and `-zeros.tif` fallback carry identical in-footprint values and score identically).

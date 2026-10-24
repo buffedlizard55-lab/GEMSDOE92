@@ -1,25 +1,38 @@
-# SLOT_PLAN — GEMS Prize #306
+# SLOT_PLAN — 2026-10-24 (MASS; blocked, no new candidates)
 
-**Incumbent / Parent R0:** `h33-h33-2-b2` (37,654 unit-mass dots; both `zeros` `c55bafc4…` and `nan` `baeae321…` SHA-256 digests rebuilt byte-for-byte). Score `0.2778` is **CLAIM** until a submission-page receipt is recorded in `ledger/submissions.csv` (15 `BUILT` candidates across `MASS`, `PRUNE`, `SNAP`; zero `RECEIPT` rows).
-**Target & Quota:** `TOP_PUBLIC = ____` (date: `____`); rolling-week slots left: `__ / 3`; total weekly slots remaining to `2026-12-03`: `__` (~18 max across ~6 weeks, plus ONE blind final file; confirm deadline on competition page). Never submit repeats or both NaN/zeros twins of a pair. Treat live public-chunk deltas with `|delta| < 0.01` as **no evidence**.
+R0: `h33-h33-2-b2`, 37,654 dots; both encodings rebuilt exactly by
+`scripts/audit_r0.py`. Incumbent 0.2778 is CLAIM, not RECEIPT.
+TOP_PUBLIC/date: unknown. Rolling-week slots left: unknown / 3; total: unknown.
+Deadline 2026-12-03 is supplied by the brief, UNVERIFIED here; human must confirm
+at https://www.drivendata.org/competitions/306/ (no automated access).
 
-## Next 3 Live Slots (in priority order, conditional on human quota check)
+## Next three slots — reservations, NOT upload authorization
+1. MASS −10%, using the parent's actual ranking only. Blocked: no ranking or
+   ranking recipe; existing MASS_D10 is a binary-field random tie perturbation.
+   A receipt gain >=0.01 would support lower mass; <=−0.01 would reject it.
+2. MASS +10%, same ranking, conditional on resolving exclusion conflict below.
+   A gain >=0.01 would support missed coverage; a loss would support saturation.
+3. CONCENTRATION, 10% relocation on a predeclared km-scale prior; not built.
+   A gain >=0.01 would motivate spatial allocation, not another physical field.
 
-1. **`h33-h33-2-b2-SNAPscarp2p0px-20261023-2a65fe24`** (`AXIS=SNAP, value=scarp2p0px`) — `<=2.0 px` (`200 m`, half GeoDAWN 400 m line spacing) spacing-preserving (`min_nn >= 2.828 px`) snap onto joint topographic scarp + piedmont break-in-slope + TMI/unsigned-gravity gradient; mean disp `1.234 px` (82.05% px changed), fixed 37,654 dots, exact R0 `d_cat > 2.0` exclusions. Prediction: **`MODEL:+0.012`** (range `[-0.006,+0.025]`); SGMC `PROXY` `+0.00267` vs R0 (vs `-0.00008..+0.00001` for `cap2p0-g*` without break-in-slope); hide-and-recover `PROXY` `+0.00080`.
-   - *Decision rule:* If receipt delta `>= +0.01` vs R0, promote `SNAPscarp2p0px` as new receipt-backed parent `R1` for Week 3 combinations. If `<= -0.01`, 200 m surface-scarp capture overshoots onto eroded facets or misses concealed faults — swap Slot 3 to `SNAPpot2p0px`.
-2. **`h33-h33-2-b2-SNAPscarp1p4px-20261023-01fb4acc`** (`AXIS=SNAP, value=scarp1p4px`) — `<=1.414 px` (8-neighbor `141 m`) snap on the identical joint surface; mean disp `0.954 px` (78.00% px changed). Prediction: **`MODEL:+0.008`** (range `[-0.004,+0.018]`); SGMC `PROXY` `+0.00148`; hide-and-recover `PROXY` `+0.00055`.
-   - *Decision rule:* Isolates capture radius (`141 m` vs `200 m`). If `scarp1p4px` beats `scarp2p0px` by `>= +0.01`, cap SNAP at `1.41 px` (confirms 200 m facet-upslope overshoot); if `scarp2p0px` leads or matches, retain `2.0 px`.
-3. **`h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277`** (`AXIS=PRUNE, value=p3.5px-refill`, `MODEL:+0.003`, SGMC `PROXY` `+0.00031`) — **OR conditional swap to `h33-h33-2-b2-SNAPpot2p0px-20261023-41697f8c`** (`AXIS=SNAP, value=pot2p0px`, pure TMI+unsigned-gravity gradient `<=2.0 px`, mean disp `1.366 px`, `MODEL:-0.002`, SGMC `PROXY` `-0.00330`, hide-and-recover `PROXY` `+0.00057`) **iff Slot 1 drops by `>= 0.01`**.
-   - *Decision rule:* If Slot 1 succeeds or is neutral, testing orthogonal `PRUNEp3.5px-refill` provides an independent axis receipt for Week 3 combination (`SNAP + PRUNE`). If Slot 1 fails (`<= -0.01`), `SNAPpot2p0px` tests whether concealed intrabasinal faults require subsurface potential-field edges without topographic scarp terms.
+No new (parent, axis, value) is reserved as BUILT. Check ledger before building.
+Resolve the non-PRUNE exclusion conflict first: 1,611 R0 dots are <3 px from the
+catalogue. Retaining them fails the brief; removing them changes a second axis.
+Do not silently grandfather prior SNAP format receipts at d_cat >2 px.
+Live |delta|<0.01 is no evidence. PROXY and MODEL never replace live receipts.
+No predicted delta is assigned to an unbuilt file.
 
-## Schedule to Deadline (2026-12-03, ~6 weeks)
+## Weeks through deadline (one entity)
+- Oct 24–Nov 6: resolve inputs/exclusions, then single-axis MASS,
+  CONCENTRATION, SNAP, PRUNE, RELIEF screening as quota permits.
+- Nov 7–20: combine only receipt-supported axes, one change per parent.
+- Nov 21–Dec 3: confirm, choose ONE blind final file and fallback, reread and
+  validate both; complete reproducibility and AI disclosure. Rolling-week quota
+  is 3, not a calendar-week reset; remaining slots cannot be inferred here.
 
-- **Weeks 1–2 (2026-10-23 to 2026-11-05 — Single-Axis Screening):** Execute Slots 1–3 above; screen remaining single axes (`CONCENTRATION`, `RELIEF`, plus corrected non-tie `MASS` ranking using unsigned `Band 5` gravity gradient + `Band 3` TMI gradient + `Band 19` scarp slope rather than binary `H19-5`). Transcribe every live receipt and date into `ledger/submissions.csv`.
-- **Weeks 3–4 (2026-11-06 to 2026-11-19 — Orthogonal Combination & Mechanism Refinement):** Combine ONLY axes with receipt-backed gains `>= +0.01` (primary candidate: `SNAPscarp2p0px + PRUNE` collar, or one of the proposed axes below), one controlled change per step from the best receipted parent.
-- **Weeks 5–6 (2026-11-20 to 2026-12-03 — Confirmation, Blind Final Selection & Audit):** Confirm the top composite on live chunks without chasing `<0.01` noise; assemble Phase-2 `TRACKB` geologist traces only if human-authorized; lock ONE blind final submission file and ONE fallback file, re-validate both from disk against `sample_submission.tif`, and finalize `AI_USE.md` + reproducible code archive.
-
-## Proposed Better Axes (Not Built This Session)
-
-- **`CROSS_STRIKE_ONLY_SNAP`:** Project `<=2 px` displacements strictly perpendicular to local `H19-5` strand tangent onto `||\nabla(\text{RTP})||` (Band 2, inclination-corrected) + piedmont break-in-slope. *Confounder:* sharp fault intersections/relay bends where tangent orientation is ill-defined. *Falsifier:* live receipt delta `< +0.01` vs isotropic `SNAPscarp2p0px`.
-- **`TIP_RELAY_EXTENSION`:** R0 already covers 99.85% of `H19-5` (`d_cat > 3 px`) within `<=2.24 px`, making interior `H19-5` refills kernel-redundant; reallocate pruned `<=3 px` collar dots exclusively onto `1–3 km` off-`H19-5` fault terminations and Faulds-type relay step-overs corroborated by `||\nabla(\text{RTP})||` and geodetic shear rate (`Band 7`). *Confounder:* volcanic dike tips or stratigraphic pinchouts where slip truly terminates. *Falsifier:* live receipt delta `< +0.01` vs `PRUNEp3.5px-refill`.
-- **`HANGING_WALL_DIP_CORRECTION`:** Shift concealed-basin `H19-5` dots `1–2 px` up the regional gravity gradient (`+\nabla g / ||\nabla g||`, Band 13) to undo `50°–60°` hanging-wall down-dip projection offset of basement faults beneath basin fill. *Confounder:* antithetic intrabasinal horst faults and subvertical Walker Lane strike-slip faults. *Falsifier:* live receipt delta `< +0.01` vs `R0`.
+## Better axes — proposals only
+- Cross-strike-only SNAP: move normal to strand tangent onto supplied edges;
+  confounder: lithologic contacts; falsifier: no >=0.01 receipt gain over SNAP.
+- Relay-tip extension: allocate dots to corroborated termination/intersection
+  zones, targeting fault pixels rather than heat; confounder: dike tips;
+  falsifier: no >=0.01 receipt gain over matched-count parent.
