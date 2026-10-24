@@ -533,3 +533,64 @@ holdout credit. Uniqueness and expected gain currently pull in opposite directio
 next session's job is not another variant: it is either (a) an arm that reallocates enough to
 clear 70 % *without* leaving the skeleton's high-credit neighbourhood, or (b) an explicit,
 recorded human decision that Reading 2 governs. See `docs/NEXT_STEPS.md`.
+
+## 2026-10-24 (BREAKLINE session) — bridge `sample_submission.tif` is the catalogue, not a template
+
+`data/bridge/sample_submission.tif` positives are pixel-identical to the mapped-fault
+catalogue (`data/bridge/labels.tif` positives), 60,988 px. It is the known-fault map in
+sample-submission geometry, not an all-zero/NaN template. Nothing in the build chain
+depends on its values (only footprint, CRS, shape and transform are read), so no artefact
+was mis-scored by it. Hazards: (a) anyone uploading it would be predicting the *masked*
+known faults and scoring ~0; (b) any code that treats it as an all-zero background is
+wrong. Gates and manifests use it as a geometry reference only, which is correct; the
+fact is now recorded so a future session cannot trip on it silently.
+
+## 2026-10-24 (BREAKLINE session) — prompt-cited launcher scripts do not exist in this checkout
+
+The session brief cites `bash scripts/download_competition_data.sh` then
+`python scripts/prepare_data.py` (with GPU training) as the data-placement path. Neither
+file exists here; the working autonomous path is `python scripts/restore_inputs.py`
+(pinned, hash-verified, no DrivenData contact), followed by the lane builders. Acting on
+the brief literally dead-ends at the first command; this session used `restore_inputs.py`
+throughout and records the discrepancy so the next session does not re-chase it.
+
+## 2026-10-24 (BREAKLINE session) — parent collar count: 2,171 is the only number to quote
+
+R0 dots at catalogue distance ≤ 3.0 px: **2,171** under float64 EDT (1,611 at < 3.0 plus
+560 at exactly 3.0). A float32 diagnostic path printed 2,183 earlier in this session;
+the 12-dot difference is rounding at the 3.0 boundary, not a raster difference. All
+documents, the run card and the builders use float64 EDT and quote 2,171.
+
+## 2026-10-24 (BREAKLINE session) — identical holdout TP_w for two doses, traced and cleared
+
+The superseded exact-greedy f33 and f38 builds returned identical pooled holdout
+TP_w = 131.0796 despite different dot sets. Traced, not a bug: f33's far set is nested
+inside f38's (12,420 of 12,426), the keep sets are nested by construction, and the
+1,889 dots that differ add no max-pooled coverage of the withheld truth under the 3-px
+triangular kernel. Raster shas and dot counts are distinct (verified from disk). Noted
+because an identical TP across doses *looks* like a stale-cache bug and will alarm the
+next reader otherwise.
+
+## 2026-10-24 (BREAKLINE session) — far-emission rule deviated from the screen; Pass-2 correction and budget accounting
+
+The first BREAKLINE builds (`f33breakline/f38breakline/f45breakline`) emitted far dots
+with the exact expected-DTI greedy over a 5×5-ridge-restricted pool — two deviations from
+the design the pre-build screen exercised (spaced top-L over the full far pool). The
+built far set was only ~45 % pixel-identical to the screened one, with far-alone
+fixed-catalogue TP 52.5 vs the screen's 126.5 and collar dots 342 vs 714: under a
+rank-percentile weight field the exact greedy spreads to cover low-rank support mass,
+while per-dot fault probability is concentrated at the top of the L ranking. Measured on
+the shared instrument with identical keep sets (`evidence/screen_vs_greedy_diagnostic.json`):
+HOLDOUT-DTI 0.004049 (exact greedy) vs 0.004750 (spaced top-L), paired
+Δ +0.000701 [+0.000321, +0.001161]. The three greedy rasters are preserved and their
+ledger rows annotated SUPERSEDED; the corrected doses are `f33Ltop/f38Ltop/f45Ltop`.
+**Budget accounting (disclosed, not hidden):** the protocol allows 3 built experiments
+per session; correcting the deviation in the review pass wrote six rasters total. Three
+are live experiments, three are retained solely as the deviation's evidence and must
+never be submitted. Sibling (Ltop vs superseded counterpart) forward overlap is
+0.816–0.860 — expected same-lane relatedness, excluded from the *binding* registry check
+whose scope is pre-session rasters; regardless, only one BREAKLINE file may ever be
+submitted. Corollary for future lanes: the fixed full-catalogue proxy-diagnostic had
+predicted the screened design at ratio 1.146 vs R0 and the (different) greedy build
+measured 0.964 — the instrument prices near-catalogue collar mass and **must never be
+labelled a holdout or a score**.

@@ -3,7 +3,33 @@
 Written 2026-10-25 after PR #21 merged. Every number here was measured in this checkout;
 nothing is projected. Where a claim is not verified it says so.
 
-## The one finding that should drive the next session
+## 2026-10-24 update (BREAKLINE session) — the blocker moved
+
+The finding below ("nothing is both unique and expected to improve") is **partly
+superseded**. BREAKLINE f45Ltop (`docs/ANALYSIS_20261024.md`) is the first arm that clears
+the literal 70 % rule (55.0 % vs R0, worst of 17 registry rasters) **and** beats R0 on
+the holdout with paired CI excluding 0 (+0.000854 [+0.000300, +0.001423]), dose-monotone,
++31 % vs R0 on the catalogue-independent SGMC control. What now blocks progress is no
+longer geometry but evidence: BREAKLINE does not beat the *duplicate* holdout best
+(RELIEF p10), so it stays **NOT_CLEARED**, and **Blocker 0 (zero receipts) is now the
+whole game** — `ledger/submissions.csv` has 36 `BUILT` rows and 0 `RECEIPT` rows.
+Priority order for the next session:
+
+1. **If any receipt exists by then:** recalibrate everything from it before building
+   anything. If BREAKLINE f45 was the uploaded file, its Δ vs the 0.2778 CLAIM decides
+   whether far-dose escalates, holds, or is retired (rules in `SLOT_PLAN.md`).
+2. **If still no receipt:** do NOT build a fourth off-skeleton dose blind. The cheapest
+   real information available locally is (a) re-validating the *keep*-stage emission
+   (exact greedy there is inherited; the far stage showed concentration beats coverage
+   spreading under rank weights — test spaced top-L keeps on the same instrument), then
+   (b) the unbuilt signed Band-18 gamma-crest lane and the strain×L / shoreline-suppressed
+   BREAKLINE refinements, ranked with falsifiers in
+   `docs/HYPOTHESES_20261024_BREAKLINE.md`. Respect the 3-experiment budget; count the
+   pass-2 re-emission precedent honestly (six rasters, three superseded).
+3. Keep the guard: literal whole-file uniqueness governs; arrival overlaps are reported,
+   never substituted. Never submit two BREAKLINE dose siblings.
+
+## The one finding that should drive the next session (2026-10-25, partly superseded above)
 
 **Under the operator's own gates, this repository currently has no submittable file.**
 

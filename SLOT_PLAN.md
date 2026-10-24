@@ -41,9 +41,9 @@ Every arm below was scored on the same instrument (`gems57-pooled-hide-v2`, 22,6
 
 ### Decision rules
 
-- **Slot 1 (RELIEF p10):** receipt Δ ≥ +0.01 vs R0 → unmapped Quaternary truth concentrates on the range-front piedmont; promote to parent for a Week-3 composite. Δ ≤ −0.01 → piedmont hypothesis rejected; concealed intrabasinal faults dominate. |Δ| < 0.01 → no evidence.
-- **Slot 2 (DILATATION p12):** Δ ≥ +0.01 → active dilatation predicts new faults; promote and compose `DILATATION + SNAP`. Δ ≤ −0.01 → rejects the kinematic prior; expect Phase-2 truth to be inactive/exhumed or compressional.
-- **Slot 3 (DILATATION p15):** only if Slot 2 is positive — it maps whether the dose response has plateaued. If Slot 2 is neutral, substitute `SNAPscarp2p0px` to test positional lineament error instead.
+- **Candidate slot (BREAKLINE f45, human-decided):** receipt Δ ≥ +0.01 vs R0's CLAIM ⇒ off-skeleton DEM scarp-breaks earn live credit; the far-dose direction is real — consider walking the dose up (next session) and protect the Final-round slot for a BREAKLINE-class file. Δ ≤ −0.01 ⇒ the skeleton's mass was load-bearing and the SGMC gain was bedrock-interior bias; retire off-skeleton far emission at these doses. |Δ| < 0.01 ⇒ no evidence; do not spend a sibling dose.
+- **Slot (RELIEF p10, hypothetical override only):** receipt Δ ≥ +0.01 vs R0 → unmapped Quaternary truth concentrates on the range-front piedmont; promote to parent for a Week-3 composite. Δ ≤ −0.01 → piedmont hypothesis rejected; concealed intrabasinal faults dominate. (Duplicate — submitting it requires a recorded human reinterpretation of the uniqueness rule.)
+- **Slot (DILATATION p12, hypothetical override only):** Δ ≥ +0.01 → active dilatation predicts new faults; promote and compose `DILATATION + SNAP`. Δ ≤ −0.01 → rejects the kinematic prior; expect Phase-2 truth to be inactive/exhumed or compressional. (Duplicate — same caveat.)
 
 ## Schedule to Deadline (2026-12-03, ~6 weeks)
 

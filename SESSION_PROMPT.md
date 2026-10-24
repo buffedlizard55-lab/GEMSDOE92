@@ -44,3 +44,29 @@ Maximize P(Win). Own the outcome end to end. Do not copy a previous submission e
 ## This session’s result (2026-10-24)
 
 TIPGAP FAR (`far18f33`) is unique vs the local registry and format-valid. HOLDOUT-DTI did not beat R0. Verdict **negative**. File still published for download with that banner.
+
+## Addendum 2026-10-24 (BREAKLINE session) — read after the protocol
+
+- State: primary = `h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif`
+  (sha256 `cd9c8a564588e6542b379cd36cbe05fc6da3be07b8edbc542bf737336907810e`).
+  Verdict **negative / NOT_CLEARED** (HOLDOUT-DTI 0.004861 < holdout best RELIEF p10
+  0.006045), but the first literal-unique (55.0 % ≤ 3 px vs R0, worst of 17 registry
+  rasters) + parent-dominating (+0.000854 [+0.000300, +0.001423]) file in this repo;
+  SGMC control +31 % vs R0. Do not relabel it "promote" without a receipt.
+- One BREAKLINE dose total may ever be submitted (siblings share keep sets;
+  0.82–0.86 mutual overlap, plus 3 SUPERSEDED exact-greedy siblings in `ledger/`).
+- Emission rule matters more than the field: spaced top-L beat the exact expected-DTI
+  greedy by +0.000701 [+0.000321, +0.001161] on the holdout with identical keeps.
+  Re-validate the keep-stage greedy before reusing it; never deviate at build time
+  from the selector the screen exercised.
+- Do not retry: BASEMENT-STEP from Band 15 (screened out, SGMC AUC 0.378), pure
+  seismicity placement (too smooth; multiplier only), radiometric K/Th gradients
+  (AUC≈0.50), TIPGAP-far, STEPOVER, MASS ranking, CONCENTRATION bookkeeping.
+- Facts to respect: R0 ⊂ SOLO ⊂ D2.8 ⊂ H19-5 exactly; bridge `sample_submission.tif`
+  *is* the catalogue (60,988 px) — geometry only; Band 18 is the only signed band;
+  collar count 2,171 (float64 EDT); data path is `scripts/restore_inputs.py`
+  (the brief's `download_competition_data.sh` / `prepare_data.py` do not exist).
+- If a receipt now exists, recalibrate from it before building anything; `ledger/`
+  had 36 BUILT / 0 RECEIPT at the end of this session. Ranked next lanes:
+  `docs/HYPOTHESES_20261024_BREAKLINE.md`; full session analysis:
+  `docs/ANALYSIS_20261024.md`; run card: `evidence/breakline_run_card.json`.

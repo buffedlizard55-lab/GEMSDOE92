@@ -88,3 +88,25 @@ All hypotheses name a **named non-fault mimic** (alluvial subsidence, paleochann
 ## What was validated before spending a weekly slot
 
 Top candidate **DILATATION** was validated on the spatially-blocked holdout (`hide-and-recover: withhold whole fault segments with buffer, derive catalogue-based features only from visible faults, mask visible faults pixel-exactly, score pooled DTI α 0.2 β 0.8 300 m triangular kernel`). Single-feature leakage canaries were run (AUC 0.525 for Band 8, 0.569 for Bands 4/7 — all << 0.90). Holdout DTI + 95 % CI, correlation/overlap vs registry (3-px dot check), raster sha256, and validator output are on the Run Card in `evidence/dilatation_variants.json` and below.
+
+## 2026-10-24 session — BREAKLINE (see docs/HYPOTHESES_20261024_BREAKLINE.md)
+
+Five lanes ranked pre-build: (1) BREAKLINE — DEM slope-break coherence
+(Bands 12/19: ||grad det_elev_slope|| x structure-tensor coherence),
+BUILT at far doses f33/f38/f45 with spaced top-L emission; (2) signed
+Band-18 gravity-HGM gamma crest with dip-offset placement, unbuilt;
+(3) BASEMENT-STEP (Band 15 depth-to-base breaks), SCREENED OUT
+(SGMC AUC 0.378) — do not build without a new basement surface;
+(4) strain-rate x BREAKLINE interaction, unbuilt; (5) shoreline/
+terrace-suppressed BREAKLINE, unbuilt. BREAKLINE results (f45 primary):
+HOLDOUT-DTI 0.004861 [0.004032, 0.005822] (pooled-hide-v2, 22,663
+withheld), delta vs R0 +0.000854 [+0.000300, +0.001423]; SGMC control
+0.12611 vs R0 0.09606 (+31%); worst forward overlap vs 17 registry
+rasters 0.550 (parent); canary max 0.6216. Verdict NEGATIVE /
+NOT_CLEARED under the beat-holdout-best rule (RELIEF p10 0.006045,
+itself a duplicate of R0) — first literal-unique file in this repo that
+beats the parent on the holdout with CI excluding 0. Pass-2 emission
+finding: spaced top-L far emission dominates the exact expected-DTI
+greedy under rank-percentile weights (paired +0.000701
+[+0.000321, +0.001161]); the greedy-emitted first builds are preserved
+as SUPERSEDED evidence. Full analysis: docs/ANALYSIS_20261024.md.

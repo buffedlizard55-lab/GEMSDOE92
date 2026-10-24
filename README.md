@@ -2,63 +2,62 @@
 
 > **Read this file at the start of every session.** Full operator contract: [`SESSION_PROMPT.md`](SESSION_PROMPT.md).
 
-**Primary download:** `DILATATION p12` — the file in this repository whose HOLDOUT-DTI is **above** parent R0 with a 95 % CI that excludes zero. **Format-valid, but NOT cleared for a weekly slot:** it fails the operator's literal uniqueness rule (99.37 % of its dots lie within 3 px of registry raster R0). See ⚠ below.
+**Primary download (2026-10-24):** `BREAKLINE f45Ltop` — the first file in this repository that is **both** literal-unique under the operator's rule (55.0 % of dots within 3 px of R0, worst of 17 registry rasters) **and** above parent R0 on the holdout with a paired 95 % CI excluding zero. **Format-valid and OK to download, but NOT cleared for a weekly slot:** it does not beat the current holdout best (RELIEF p10, 0.006045 — itself a literal duplicate of R0), so the pre-registered promotion rule returns verdict **negative / NOT_CLEARED**. See ⚠ below.
 
 | | |
 |---|---|
-| **File** | [`docs/downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif`](docs/downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif) |
-| **Zip** | [`…-8b4d248b.zip`](docs/downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b.zip) |
-| **Submission name** | `GEMSDOE92-DILATATION-p12-20261025` |
-| **Form note (84 chars)** | `h33-h33-2-b2; DILATATION shift 4518 dots (12%) low→high dilat; pred MODEL:+0.007` |
-| **SHA-256** | `25ba17a26d31df9d574fba2a2f34d03ff58f587f4ffde092dcc4bba9822f8898` |
+| **File** | [`docs/downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif`](docs/downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif) |
+| **Zip** | [`…-57fa85f0.zip`](docs/downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0.zip) |
+| **Submission name** | `GEMSDOE92-BREAKLINE-f45Ltop-20261024` |
+| **Form note (90 chars)** | `h33-h33-2-b2; BREAKLINE f45Ltop 16944 far dots on linear scarp-break ridges >3px off H19-5` |
+| **SHA-256** | `cd9c8a564588e6542b379cd36cbe05fc6da3be07b8edbc542bf737336907810e` |
 | **How to submit** | [`docs/SUBMIT.html`](docs/SUBMIT.html) · **Site:** <https://buffedlizard55-lab.github.io/GEMSDOE92/> |
 
 | Status | Meaning |
 |---|---|
 | **✅ FORMAT-VALID — OK TO DOWNLOAD** | All 10 MUST gates pass on an independent re-read of the **served** bytes. All-finite float32 in `[0, 1]`, zeros outside the footprint, `nodata=None` — so neither the training stack's `−3.4028235e+38` sentinel nor a stray NaN can trigger `Predicted values must be in range [0, 1]`. |
-| **⚠ NOT CLEARED FOR A SLOT** | 99.37 % of its dots lie within 3 px of registry raster R0, over the brief's 70 % uniqueness limit. Uploading it is a recorded **human override**, not an agent recommendation. |
-| **HOLDOUT-DTI above R0** | Δ **+0.00177 [0.00111, 0.00246]**, CI excludes 0. This is a local instrument, **not** a leaderboard score. Weekly-slot promotion is a human step (3/week cap); this agent never submits. |
+| **⚠ NOT CLEARED FOR A SLOT** | HOLDOUT-DTI 0.004861 does not beat the holdout best (RELIEF p10, 0.006045, unsubmittable duplicate). Verdict by the pre-registered rule: **negative**. Any upload is a recorded **human decision**, not an agent recommendation. |
+| **HOLDOUT-DTI above R0** | Δ **+0.000854 [+0.000300, +0.001423]**, CI excludes 0; off-catalogue SGMC control **+31 %** vs R0. Local instruments, **not** leaderboard scores. Weekly-slot promotion is a human step (3/week cap); this agent never submits. |
 
 ```bash
-python -m pytest tests -q                                  # 97 passed
+python -m pytest tests -q                                  # full suite passes (incl. tests/test_breakline_variants.py)
 make manifest && make verify                               # RESULT: OK · PARENT VERIFIED
 PYTHONPATH=vendor python scripts/check_site.py
 ```
 
-## This session's lane: DILATATION (geodetic volumetric strain)
+## This session's lane: BREAKLINE (linear DEM scarp-break coherence)
 
-- **Hypothesis.** Band 8 `geod_dilaterate` is a *kinematic* field. The catalogue maps Quaternary **scarps**; strain maps where they are currently **opening**. Faulds et al. put ~32 % of Great Basin geothermal systems in dilatational step-overs / relay ramps and ~25 % at terminations and intersections. A blind fault under 10–100 m of fan alluvium has **no scarp to map but still dilates**.
-- **Mechanism.** Count held at 37,654. Move 12 % (4,518) of the lowest-dilatation parent dots into the high tercile (≥ 7.24 nstrain/yr) on H19-5, placed by greedy exact expected-DTI (α 0.2, β 0.8, R 300 m) under `0.70·dilatation + 0.30·TMI/grav/scarp`. Zero catalogue mass; `d_cat > 2.0 px`.
-- **Non-fault mimic.** Brine-pumping / agricultural subsidence bowls, Walker Lane strain shadows, ductile thick-fill stretching without brittle faulting.
-- **HOLDOUT-DTI** `gems57-pooled-hide-v2`, 8 folds, 22,663 withheld positives, 157 spatial clusters, 1,000 paired draws: R0 `0.004006 [0.003424, 0.004690]` → p12 `0.005779 [0.004863, 0.006851]`, Δ **+0.00177 [0.00111, 0.00246]**.
-- **Leakage canary** (each band tested alone before any result was trusted): Band 8 `0.5145`, 7 `0.5128`, 4 `0.5102`, 15 `0.5149`, 17 `0.5060` — max **0.5149 ≪ 0.90**.
-- **Verdict:** **NOT CLEARED** — dose response is monotone (p10 +0.00174, p12 +0.00177, p15 +0.00181) but all three measure 99.37–99.40 % within 3 px of registry raster R0, over the brief's 70 % limit. Logged as duplicates under the operator's rule.
+- **Hypothesis.** Quaternary scarps are *linear breaks-in-slope*. A fault juxtaposing like lithologies or offsetting only alluvium has a scarp but no magnetic/gravity contrast, so the H19-5 potential-field worm skeleton — and the catalogue built from mappable scarps on older imagery — misses it, while expert mapping on high-resolution DEMs (the live label source) traces it. Lane surface: `L = pct_rank(||grad det_elev_slope||) (Band 19) × structure-tensor coherence of det_elev (Band 12)` — `gems/breakline.py`.
+- **Mechanism.** Count held at 37,654. Keep 20,710 R0 dots by exact expected-DTI greedy under `0.30 + 0.70·L_pct` (donors = coverage-redundant dots); emit 16,944 far dots (45 %) by descending L at ≥ 2.8 px spacing on pixels > 3 px from **every** H19-5 pixel and > 2 px from the catalogue. Lower doses f33/f38 built as controls; dose-monotone on all local instruments.
+- **Non-fault mimic.** Pleistocene Lake Lahontan shorelines and wave-cut terraces; alluvial-fan segment boundaries; incised channel/canyon-rim breaks.
+- **HOLDOUT-DTI** `gems57-pooled-hide-v2`, whole-segment hiding (seeds 20/30), 22,663 withheld positives, 157 spatial clusters, 1,000 paired draws: R0 `0.004006` → f33 `0.004673` → f38 `0.004761` → f45 `0.004861 [0.004032, 0.005822]`; RELIEF p10 control reproduced at `0.006045`. **SGMC control** (PROXY, 62,703 off-catalogue truth px): R0 `0.09606` → f45 `0.12611` (+31 %); RELIEF p10 `0.08725`.
+- **Leakage canary** (each feature alone, symmetric AUC vs withheld truth): L `0.6216`, Break `0.5685`, coherence `0.5521` — max **0.6216 ≪ 0.90**.
+- **Pass-2 correction on record.** The first builds emitted far dots with the exact expected-DTI greedy (ridge-restricted pool) and measured flat vs R0; review showed the screened spaced-top-L emission dominates it on every local instrument (paired **+0.000701 [+0.000321, +0.001161]**). Those three rasters are preserved as SUPERSEDED evidence (`evidence/breakline_*_exactgreedy_superseded.json`); the Ltop doses implement the screened rule.
+- **Verdict:** **negative / NOT_CLEARED** — unique and parent-dominating, but below the holdout best. Files are format-valid and served as deliverables.
 
-Rebuild: `python scripts/build_dilatation_variants.py` · proxies: `python scripts/report_dilatation_proxies.py`
+Rebuild: `python scripts/build_breakline_variants.py` · instruments: `python scripts/report_breakline_proxies.py` · run card: `python scripts/make_breakline_run_card.py` · ranked lanes: [`docs/HYPOTHESES_20261024_BREAKLINE.md`](docs/HYPOTHESES_20261024_BREAKLINE.md) · full analysis: [`docs/ANALYSIS_20261024.md`](docs/ANALYSIS_20261024.md)
 
-## ⚠ No served file is both unique and expected to improve
+### Previous session's lane: DILATATION (retained, not cleared)
 
-Measured this session, and it is the finding that should drive the next one. **Under the operator's literal rule this repository has nothing submittable.**
+Move 10–15 % of the lowest-dilatation parent dots (Band 8 `geod_dilaterate`) into the high tercile on H19-5 by exact expected-DTI greedy. HOLDOUT-DTI p12 `0.005779`, Δ +0.00177 [0.00111, 0.00246]; canary max `0.5149`. All doses measure 99.37–99.40 % within 3 px of R0 → **literal duplicates, NOT cleared**; SGMC control falls ∼ −0.015. Rebuild: `python scripts/build_dilatation_variants.py`.
 
-Applied to **whole files**, the rule "more than 70 % of your dots within 3 px of one registry raster ⇒ duplicate" flags **every** R0 descendant:
+## ⚠ Unique and parent-dominating at last — but still not cleared
+
+**Update 2026-10-24 — the long-standing blocker moved.** Earlier revisions of this README stated that under the operator's literal rule this repository had *nothing submittable*: every holdout-positive arm was a 99.37 % duplicate of R0, and the only literal-unique arm (TIPGAP) was holdout-negative. BREAKLINE breaks that coupling. Applied to **whole files**, the rule "more than 70 % of your dots within 3 px of one registry raster ⇒ duplicate" now reads:
 
 | arm | shared with R0 | whole-file % within 3 px of R0 |
 |---|---|---|
+| **BREAKLINE f45Ltop** | 20,710 (55.0 %) | **55.00 %** |
+| BREAKLINE f38Ltop / f33Ltop | 23,345 / 25,228 | 62.00 % / 67.00 % |
 | DILATATION p12 | 33,136 (88.0 %) | 99.37 % |
 | RELIEF p10 | 33,889 (90.0 %) | 99.38 % |
 | TIPGAP far18f33 | 25,228 (67.0 %) | 67.00 % |
 
-Shared-parent mass dominates the statistic, so the whole-file number mostly measures *how much of R0 you kept*, not *whether you are in someone else's lane*. On the **arrival sets** — the pixels each axis actually chose — the lanes are nearly disjoint:
+Because R0 ⊂ SOLO ⊂ D2.8 ⊂ H19-5 **exactly** (re-verified pixelwise 2026-10-24) and every far dot is > 3 px from every skeleton pixel, BREAKLINE's overlap with *any* skeleton file equals its kept fraction by construction; measured worst-case over 17 pre-session registry rasters is the parent, at 0.55001 forward / |ρ| 0.547. **Literal-unique, no reinterpretation needed.** On **arrival sets** the older lanes remain nearly disjoint from each other (DILATATION vs TIPGAP 6.91 % within 3 px, Jaccard 0.0011; DILATATION vs RELIEF 28.84 %, Jaccard 0.1593; TIPGAP vs RELIEF 2.29 %) — relevant to lane attribution, never a substitute for the literal gate.
 
-| comparison (arrivals only) | % within 3 px | exact same pixel | Jaccard |
-|---|---|---|---|
-| DILATATION vs TIPGAP | 6.91 % | 0.40 % | **0.0011** |
-| DILATATION vs RELIEF | 28.84 % | 25.19 % | 0.1593 |
-| TIPGAP vs RELIEF | 2.29 % | 0.14 % | **0.0011** |
+**Which reading governs.** The literal rule still governs — reinterpreting an operator gate in your own favour is exactly the move that lets a non-compliant file look compliant, and BREAKLINE needs no such favour. What it fails is this repository's *stricter* promotion rule (beat the holdout best). An upload is therefore still a recorded human decision, not an agent recommendation. (An earlier revision of this README carried `Verdict: promote` for DILATATION p12; superseded — see `IRREGULARITIES.md` 2026-10-25.)
 
-**Which reading governs.** Reading 2 is the better science, but it is *this repository reinterpreting an operator gate in its own favour* — exactly the move that lets a non-compliant file look compliant. So **the literal rule governs**: every positive-holdout arm above is logged as a duplicate of R0, and no slot is recommended. An upload is a recorded human override, not an agent recommendation. This supersedes an earlier revision of this README that carried `Verdict: promote` for DILATATION p12; see `IRREGULARITIES.md` 2026-10-25.
-
-**The tension this exposes.** TIPGAP clears the whole-file gate (67.00 %) *only because* it moves 33 % of the budget far off the D2.8 skeleton — and that is precisely the change that drove its HOLDOUT-DTI **below** R0 (−0.001283, verdict negative). Uniqueness and expected gain currently pull in opposite directions. Resolving that, not building another variant, is the next session's job — see [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md).
+**The tension that remains.** The holdout hides catalogue faults, so it prices *rediscovery* of catalogue-style faults — where the duplicate near-skeleton arms excel — while the live board prices *new mapping*, where the catalogue-independent SGMC control says off-skeleton structural lines carry signal every skeleton arm sacrifices. No local instrument arbitrates between those; only an organizer receipt does, and `ledger/` has none (36 BUILT rows, 0 receipts). That is now the programme's single most valuable missing datum — see [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md).
 
 ## Why h33-h33-2-b2 CLAIM 0.2778 is high
 
@@ -102,7 +101,7 @@ A separate STEPOVER lane was also built and kept as a negative deliverable; it d
 - **Lane:** 5,000 unit-mass dots at visible catalogue trace-tip step-overs, 3–10 px off catalogue (`d_cat > 3 px`), 1 px spacing. Distinct from TIPGAP (H19-5 skeleton endpoints) and from MASS/PRUNE/SNAP/CONCENTRATION/RELIEF.
 - **HOLDOUT-DTI:** 0.0000 [0.0000, 0.0000] vs R0 0.00370 [0.00301, 0.00432] (`gems57-pooled-hide-v2`, 11,321 withheld positives). This is a structural zero for gate-compliant off-catalogue dots; see `IRREGULARITIES.md`.
 - **Uniqueness / canary:** worst Spearman ρ = 0.0277, worst 3-px forward overlap = 0.2534 vs 14 locally accessible registry rasters; leakage AUC = 0.4996.
-- **Details:** [`docs/executive-summary.html`](docs/executive-summary.html) · [`docs/ANALYSIS.md`](docs/ANALYSIS.md) · [`evidence/run_card.json`](evidence/run_card.json)
+- **Details:** [`docs/ANALYSIS.md`](docs/ANALYSIS.md) · [`evidence/run_card.json`](evidence/run_card.json) (the old `docs/executive-summary.html` STEPOVER page now redirects to `docs/SUBMIT.html`)
 
 ## Limitations (what this sandbox cannot do)
 
