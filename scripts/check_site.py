@@ -20,6 +20,7 @@ sys.path[:0] = [str(ROOT), str(ROOT / "vendor")]
 
 import numpy as np  # noqa: E402
 import rasterio  # noqa: E402
+from scipy.ndimage import distance_transform_edt  # noqa: E402
 
 from gems.gates import run_gates, summarise  # noqa: E402
 from gems.rasters import sha256_file  # noqa: E402
@@ -89,6 +90,12 @@ def main() -> int:
         footprint = np.isfinite(ds.read(1))
     with rasterio.open(LABELS) as ds:
         cat = ds.read(1) > 0.5
+    # Parent R0 is itself a registry raster and must be included in the literal gate.
+    with rasterio.open(ROOT / "data" / "parent_R0_zeros.tif") as ds:
+        r0 = ds.read(1) > 0
+    r0_distance = distance_transform_edt(~r0)
+    n_footprint = int(footprint.sum())
+    r0_count = int((r0 & footprint).sum())
 
     for path in served:
         tag = path.name
@@ -104,12 +111,26 @@ def main() -> int:
                 problems.append(f"{tag}: mass outside footprint")
             if np.any(a[cat] > 0):
                 problems.append(f"{tag}: mass on catalogue")
-            actual_dots = int((a > 0).sum())
+            candidate_mask = (a > 0) & footprint
+            actual_dots = int(candidate_mask.sum())
             expected_dots = _receipt_dot_count(path)
             if expected_dots is not None and actual_dots != expected_dots:
                 problems.append(f"{tag}: n_dots {actual_dots} != receipt {expected_dots}")
             elif actual_dots == 0:
                 problems.append(f"{tag}: raster contains no positive predictions")
+
+            overlap_fraction = float(np.count_nonzero(candidate_mask & (r0_distance <= 3))) / actual_dots
+            p = actual_dots / n_footprint
+            q = r0_count / n_footprint
+            joint = int((candidate_mask & r0).sum()) / n_footprint
+            denom = np.sqrt(p * (1.0 - p) * q * (1.0 - q))
+            # For binary masks, Spearman with average ranks equals binary Pearson.
+            rho = (joint - p * q) / denom if denom > 0 else 0.0
+            print(f"  REGISTRY R0 {tag}: rho={rho:.4f}; {overlap_fraction:.2%} within 3 px")
+            if (rho > 0.90 or overlap_fraction > 0.70) and "duplicate" not in html.lower():
+                problems.append(f"{tag}: registry threshold exceeded; page must disclose duplicate stop")
+            if "OK TO DOWNLOAD AND SUBMIT" in html:
+                problems.append("index.html conflates format-valid download with submission clearance")
 
         try:
             assert_submittable(validate(path, footprint, cat))
