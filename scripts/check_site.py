@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Fail closed if the GitHub Pages download is missing, out of range, or mislabeled.
 
-Rewritten 2026-10-25 when the DILATATION lane merged with the TIPGAP lane. The
-previous version hard-coded one lane's filename, sha256 and form note, so it
-broke the moment the primary changed -- and it only ever checked that one file
-even when several were being served. This version derives the primary from the
-page itself and gates **every** served zeros-outside raster, so an orphaned or
-out-of-range download cannot ship unnoticed.
+This generalized version replaces a historical single-lane checker that
+hard-coded one filename, SHA-256 and form note. It derives the archival
+reference artifact from the page itself and gates **every** served
+zeros-outside raster, so an orphaned or out-of-range download cannot ship
+unnoticed. The earlier source header gave a future date relative to the
+2026-10-24 review; that timestamp was removed because its provenance was not
+established.
 """
 from __future__ import annotations
 
@@ -108,7 +109,7 @@ def main() -> int:
         else:
             print(f"  PASS {tag}  sha256 {sha256_file(path)[:16]}…")
 
-    # ---- the primary named on the page must match its audit receipt ----------
+    # ---- the first linked research download must match its audit receipt ----
     m = re.search(r'href="(downloads/[^"]+-zeros\.tif)"', html)
     if m:
         primary = DOCS / m.group(1)
@@ -118,13 +119,13 @@ def main() -> int:
             variant = primary.stem.removesuffix("-zeros")
             audit_path = primary.with_name(variant + "-audit.json")
             if not audit_path.is_file():
-                problems.append(f"no audit receipt beside the primary: {audit_path.name}")
+                problems.append(f"no audit receipt beside the first research download: {audit_path.name}")
             else:
                 doc = json.loads(audit_path.read_text())
                 if doc.get("overall_pass") is not True:
                     problems.append("audit receipt does not record format_pass == true")
                 if doc.get("sha256_zeros") != sha256_file(primary):
-                    problems.append("audit receipt sha256 != primary bytes on disk")
+                    problems.append("audit receipt sha256 != first research download bytes on disk")
                 bad = [g["name"] for g in doc.get("gates_zeros", []) if not g["ok"]]
                 if bad:
                     problems.append(f"audit receipt records failing format gate(s): {bad}")
@@ -138,14 +139,14 @@ def main() -> int:
             card_rel = doc.get("run_card")
             card_path = (ROOT / card_rel) if card_rel else (ROOT / "evidence" / "visible_collar_run_card.json")
             if not card_path.is_file():
-                problems.append(f"primary run card missing: {card_path}")
+                problems.append(f"first research download run card missing: {card_path}")
             else:
                 card = json.loads(card_path.read_text())
                 if card.get("raster_sha256") != sha256_file(primary):
-                    problems.append("run card SHA256 != primary bytes")
+                    problems.append("run card SHA256 != first research download bytes")
                 if card.get("verdict") != "negative":
                     problems.append("run card must record negative verdict after registry duplicate stop")
-            print(f"  PRIMARY {primary.name}")
+            print(f"  FIRST RESEARCH DOWNLOAD {primary.name}")
 
     if problems:
         print("SITE CHECK FAIL")

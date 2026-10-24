@@ -1,4 +1,6 @@
-# Three-pass review — BREAKLINE public-registry stop
+# Historical three-pass review — BREAKLINE public-registry stop
+
+> Earlier, candidate-specific review retained for audit history. Current repository-wide status and test counts are in [REPO_REVIEW_20261024.md](REPO_REVIEW_20261024.md) and [current status JSON](downloads/current_status.json). No current candidate is cleared; every served TIFF is research-only.
 
 ## Executive decision
 

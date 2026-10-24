@@ -1,10 +1,12 @@
-# GEMSDOE92 — evidence review and research decision (2026-10-24)
+# Historical GEMSDOE92 evidence review (2026-10-24)
+
+> This earlier score/evidence analysis is retained for its source reasoning. The current repository-wide status supersedes its “current disposition” wording: see [REPO_REVIEW_20261024.md](REPO_REVIEW_20261024.md) and [current status JSON](downloads/current_status.json). No current candidate is cleared; all served TIFs are research-only.
 
 ## Question: why is `h33-h33-2-b2` associated with 0.2778, and can a new candidate exceed it?
 
 ### Evidence class
 
-The supplied GEMSDOE32 listing associates `h33-h33-2-b2` with 0.2778. In this checkout that is an owner-reported **CLAIM**, not an **ORGANIZER-CONFIRMED** submission receipt: there is no receipt date/score row for this item in `ledger/submissions.csv`, and `registry/parents/R0.json` has `receipt: null`. The prompt gives 0.3195 and 0.4413 as conflicting snapshots. The [official public leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/) was checked on 2026-10-24 and displayed 0.4413 at #1; this is a dated public leaderboard observation, not a submission-page receipt for GEMSDOE32 or GEMSDOE92. The [GEMSDOE32 project page](https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html) itself distinguishes model/holdout evidence from organizer scoring and says that no organizer score exists for its artifacts.
+The supplied GEMSDOE32 listing associates `h33-h33-2-b2` with 0.2778. In this checkout that is an owner-reported **CLAIM**, not an **ORGANIZER-CONFIRMED** submission receipt: there is no receipt date/score row for this item in `ledger/submissions.csv`, and `registry/parents/R0.json` has `receipt: null`. The prompt gives 0.3195 and 0.4413 as conflicting snapshots. An earlier repository note records a 2026-10-24 public-leaderboard check that displayed 0.4413 at #1 (**LEADERBOARD-SNAPSHOT**); this current review did not independently refresh it. It is not a submission-page receipt for GEMSDOE32 or GEMSDOE92. The [GEMSDOE32 project page](https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html) itself distinguishes model/holdout evidence from organizer scoring and says that no organizer score exists for its artifacts.
 
 ### Mechanistic explanation: plausible, not causal proof
 

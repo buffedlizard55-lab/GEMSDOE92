@@ -1,4 +1,6 @@
-# Hypotheses — 2026-10-24 late session (ranked BEFORE any building)
+# Historical hypotheses — 2026-10-24 late session (GRAVCrest screen)
+
+> This page is a historical, pre-build research record. Its projections are not scores and its action language is superseded by the current registry stop. See [HYPOTHESES.md](HYPOTHESES.md) and [REPO_REVIEW_20261024.md](REPO_REVIEW_20261024.md); no current candidate is cleared.
 
 Protocol: 3–5 previously untried geological hypotheses; each names layers,
 physical signature, why it should catch a fault missing from the

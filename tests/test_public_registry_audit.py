@@ -30,7 +30,7 @@ def test_dense_witness_is_not_exempt():
     assert not result['unique_under_literal_rule']
 
 
-def test_breakline_stop_receipt_matches_served_bytes():
+def test_breakline_stop_receipt_matches_served_bytes_and_current_status():
     import hashlib
     import json
     from pathlib import Path
@@ -43,4 +43,7 @@ def test_breakline_stop_receipt_matches_served_bytes():
     assert not receipt['scan_complete_for_declared_scope']
     assert receipt['preplacement_surface']['status'].startswith('NOT_CHECKED')
     for page in ['index.html', 'SUBMIT.html']:
-        assert 'BREAKLINE: DUPLICATE — DO NOT SUBMIT' in (root / 'docs' / page).read_text()
+        html = (root / 'docs' / page).read_text()
+        assert 'DO NOT SUBMIT' in html
+        assert 'current_status.json' in html
+    assert 'BREAKLINE f45Ltop' in (root / 'docs' / 'index.html').read_text()

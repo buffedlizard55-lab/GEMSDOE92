@@ -1,0 +1,65 @@
+{
+  "schema": "gemsdoe92-session-run-card.v1",
+  "reviewed_utc": "2026-10-24T18:20:33Z",
+  "decision_status": "blocked_before_experiment",
+  "hypothesis": "Rank-1 backlog idea: use DEM-derived channel-network deflection and paired knickpoints (documented Band 12 det_elev and Band 19 det_elev_slope) as indirect evidence for an uncatalogued fault. Not implemented.",
+  "mechanism": "A fault may alter channel gradient or planform before it produces a catalogue-quality scarp. A flow-graph change-point signature differs from this checkout's local pixel-derivative BREAKLINE/SCARPPOL surfaces.",
+  "named_non_fault_process_that_could_mimic_it": "Alluvial-fan avulsion, lithologic resistance contrasts, drainage capture, base-level change, road or irrigation diversion.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "status": "NOT_RUN",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": null,
+    "ci95": null,
+    "reason": "No new candidate surface was generated. The full official feature stack is absent from the local cache, and the literal pre-placement registry gate is blocked by the full-footprint-positive witness. No experiment or submission slot was used.",
+    "saved_best_reference": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positive_pixels": 22663,
+      "value": 0.0060451323971729325,
+      "ci95": [0.005187022524132649, 0.00692683880217307],
+      "artifact": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24",
+      "status": "historical saved result; not rerun in this review; this artifact is duplicate-stopped and this is not a competition score"
+    }
+  },
+  "leakage_canary": {
+    "status": "NOT_RUN",
+    "reason": "No new feature surface was generated; do not treat prior AUC results as a canary for this untested idea."
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "candidate_surface": "NOT_GENERATED; no candidate-specific pre-placement statistic exists",
+    "candidate_final_dots": "NOT_GENERATED; no candidate-specific final-dot statistic exists",
+    "binding_witness": {
+      "source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "git_blob_sha1": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "positive_pixels_in_footprint": 5167373,
+      "footprint_pixels": 5167373,
+      "positive_fraction": 1.0,
+      "forward_overlap_stop_threshold": 0.7,
+      "consequence": "Every nonempty candidate support inside the matching footprint has forward overlap 1.0, so it fails the literal >0.70 stop rule. This is a REGISTRY-MEASUREMENT, not a score."
+    },
+    "current_review_recheck": "Witness Git blob SHA-1, byte count, SHA-256, CRS/shape/transform, and positive support were independently rechecked on 2026-10-24. The full registry was not rescanned."
+  },
+  "raster_sha256": {
+    "status": "NOT_GENERATED",
+    "value": null
+  },
+  "validator_output": {
+    "status": "NOT_RUN_FOR_NEW_CANDIDATE",
+    "no_nan_inside_footprint": null,
+    "values_in_0_1": null,
+    "crs_shape_transform_match": null,
+    "reason": "No new candidate raster exists. The repository-wide site check did re-read all 14 currently served zeros-outside GeoTIFFs and all passed local format gates; those are historical research artifacts, not a new submission."
+  },
+  "submission_name": "NOT_GENERATED",
+  "submission_note": "NOT_GENERATED",
+  "submission_note_chars": null,
+  "verdict": "negative",
+  "verdict_reason": "The mandatory literal registry stop blocks any nonempty in-footprint candidate; generating a cosmetic or empty TIFF would evade the requested scientific and uniqueness rules. No weekly slot was selected or used.",
+  "submission_eligible": false,
+  "new_tif_generated": false,
+  "weekly_slots_used": 0,
+  "official_receipt": null
+}

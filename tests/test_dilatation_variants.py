@@ -5,12 +5,13 @@ Two groups:
      (lowest-prior donor selection + high-tercile-constrained refill, count held),
      exercised on a synthetic grid so it runs without the 418 MB feature stack.
   2. Policy — historical DILATATION receipts/ledger/evidence plus the current
-     primary download audit and literal public-registry duplicate-stop contract.
+     research-download audit and literal public-registry stop/status contract.
 """
 from __future__ import annotations
 
 import csv
 import hashlib
+import html as html_lib
 import json
 from pathlib import Path
 
@@ -149,14 +150,16 @@ def test_dilatation_proxy_audit_labels_and_canary() -> None:
     assert "training_band_8_geod_dilaterate" in canaries["results"]
 
 
-def test_current_primary_download_is_tracked_and_gate_passed() -> None:
-    """The current homepage artifact exists and matches its audit receipt."""
-    primary = ROOT / "docs" / "downloads" / "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif"
-    assert primary.is_file(), "primary download missing from docs/downloads"
-    audit_path = primary.with_name("GEMSDOE92-visible-collar-r0-excluded-20261024-audit.json")
+def test_first_research_download_is_tracked_and_gate_passed() -> None:
+    """The visible archival download exists and its exact-byte receipt is negative."""
+    primary = ROOT / "docs" / "downloads" / "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif"
+    assert primary.is_file(), "historical ANASIG research download missing"
+    audit_path = primary.with_name("h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-audit.json")
     audit = json.loads(audit_path.read_text(encoding="utf-8"))
-    assert audit["overall_pass"] is True  # format gate is separate from submission eligibility
+    assert audit["overall_pass"] is True  # format gate is distinct from submission clearance
+    assert audit["format_ok_to_download"] is True
     assert audit["submission_eligible"] is False
+    assert audit["verdict"] == "negative"
     assert all(g["ok"] for g in audit["gates_zeros"])
     assert hashlib.sha256(primary.read_bytes()).hexdigest() == audit["sha256_zeros"]
     ignore = (ROOT / ".gitignore").read_text(encoding="utf-8")
@@ -164,30 +167,31 @@ def test_current_primary_download_is_tracked_and_gate_passed() -> None:
     assert "!docs/downloads/*.zip" in ignore
 
 
-def test_site_offers_primary_download_and_exact_submission_fields() -> None:
+def test_site_offers_archival_download_and_conditional_submission_fields() -> None:
     html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
-    assert "OK TO DOWNLOAD" in html
-    assert "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif" in html
-    assert "GEMSDOE92-visible-collar-r0-excluded-20261024" in html
-    note = "Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots"
-    assert note in html and len(note) <= 140
-    assert "visible_collar_run_card.json" in html
+    assert "OK TO DOWNLOAD FOR RESEARCH" in html
+    assert "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif" in html
+    assert "GEMSDOE92-ANASIG-f45Atop-20261024" in html
+    note = "h33-h33-2-b2; ANASIG f45Atop 16944 far dots on analytic-signal ridges >3px off H19-5"
+    assert note in html_lib.unescape(html) and len(note) <= 140
+    assert "anasig_run_card.json" in html
     submit = (ROOT / "docs" / "SUBMIT.html").read_text(encoding="utf-8")
     assert "DrivenData" in submit and "OK TO DOWNLOAD" in submit
+    assert "submission_eligible: true" in submit
 
 
 def test_site_discloses_literal_duplicate_stop_and_evidence_boundary() -> None:
     html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
     assert "NOT CLEARED FOR A WEEKLY SLOT" in html
     assert "DUPLICATE UNDER THE LITERAL REGISTRY RULE" in html
-    assert "131 rasters exceed the 70% stop threshold" in html
-    assert "HOLDOUT-DTI" in html and "not a competition score" in html
-    assert "No live submission slot has been used" in html
-    card = json.loads((ROOT / "evidence" / "visible_collar_run_card.json").read_text(encoding="utf-8"))
+    assert "all 5,167,373 footprint cells" in html
+    assert "HOLDOUT-DTI" in html and "not a competition score" in html.lower()
+    assert "No candidate or weekly slot was generated/used in this review" in html
+    status = json.loads((ROOT / "docs" / "downloads" / "current_status.json").read_text(encoding="utf-8"))
+    assert status["weekly_slots_used_this_review"] == 0
+    assert status["submission_eligible"] is False
+    card = json.loads((ROOT / "docs" / "downloads" / "current_review_run_card.json").read_text(encoding="utf-8"))
     assert card["verdict"] == "negative"
-    assert card["holdout_dti"]["paired_delta_vs_R0"]["ci95"][0] > 0
-    assert card["correlation_overlap_vs_registry"]["final_dots"]["unique_under_thresholds"] is True
-    public = card["correlation_overlap_vs_registry"]["public_registry_scan"]
-    assert public["candidate_hash_matches_scan"] is True
-    assert public["final_dots"]["unique_under_literal_rule"] is False
-    assert public["final_dots"]["rasters_over_70pct_overlap"] == 131
+    assert card["holdout_dti"]["status"] == "NOT_RUN"
+    assert card["correlation_overlap_vs_registry"]["candidate_surface"].startswith("NOT_GENERATED")
+    assert card["correlation_overlap_vs_registry"]["binding_witness"]["positive_fraction"] == 1.0

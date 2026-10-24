@@ -1,0 +1,68 @@
+{
+  "schema": "gemsdoe92-current-status.v1",
+  "updated_utc": "2026-10-24T18:20:33Z",
+  "status": "blocked_no_submission_cleared",
+  "headline": "No current candidate is cleared for competition submission. Existing TIF downloads are research artifacts only; DO NOT SUBMIT.",
+  "submission_eligible": false,
+  "new_tif_generated_this_review": false,
+  "weekly_slots_used_this_review": 0,
+  "reason": "The literal registry rule is blocked by a matching-grid public raster with positive support on the entire competition footprint. Any nonempty in-footprint candidate exceeds the 70% forward-overlap stop threshold. No empty raster or cosmetic mutation was used to evade the rule.",
+  "registry_blocker": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "One decisive public witness; not a fresh exhaustive public-registry scan.",
+    "source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "git_blob_sha1": "374c88b1da2b803e2ed160de467fd71ae114010d",
+    "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "bytes": 25065181,
+    "same_template_grid": true,
+    "positive_pixels_in_footprint": 5167373,
+    "footprint_pixels": 5167373,
+    "positive_fraction_of_footprint": 1.0,
+    "literal_forward_overlap_stop_threshold": 0.7,
+    "verified_again_this_review": true,
+    "measurement_note": "Because every in-footprint pixel is positive in the witness, every nonempty in-footprint candidate pixel is within 0 px of its positive support. The exact measured historical ANASIG artifact also has forward overlap 1.0 against this witness. This is not a competition score."
+  },
+  "latest_historical_candidate": {
+    "name": "GEMSDOE92-ANASIG-f45Atop-20261024",
+    "file": "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+    "sha256": "68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5",
+    "format_validated": true,
+    "submission_eligible": false,
+    "download_use": "research_only_do_not_submit",
+    "new_candidate_this_review": false
+  },
+  "saved_holdout_reference": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "value": 0.0060451323971729325,
+    "ci95": [0.005187022524132649, 0.00692683880217307],
+    "artifact": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24",
+    "receipt_status": "saved historical holdout evidence; not rerun in this review; not an organizer score",
+    "registry_status": "negative duplicate stop in its saved run card"
+  },
+  "organizer_confirmed_score": null,
+  "leaderboard_refresh": {
+    "status": "not_refreshed",
+    "reason": "DrivenData is outside this session's outbound host allowlist; prompt snapshots conflict and are not treated as current scores."
+  },
+  "data_availability": {
+    "official_19_band_training_stack_in_local_cache": false,
+    "official_data_tab_accessed_this_review": false,
+    "new_holdout_experiment_run": false,
+    "reason": "No local feature stack; no competition credentials were used or requested. Owner-mirror redistribution terms remain unchecked."
+  },
+  "repository_checks": {
+    "pytest": "136 passed, 17 existing Rasterio pending-deprecation warnings",
+    "served_zeros_outside_geotiffs": "14 passed format gates and independent reread through scripts/check_site.py",
+    "pinned_data_manifest": "PASS",
+    "parent_r0_verification": "PASS",
+    "git_diff_check": "PASS after documentation and test updates"
+  },
+  "links": {
+    "current_review": "REPO_REVIEW_20261024.md",
+    "run_card": "current_review_run_card.json",
+    "hypotheses": "../HYPOTHESES.md",
+    "submission_guide": "../SUBMIT.html"
+  }
+}

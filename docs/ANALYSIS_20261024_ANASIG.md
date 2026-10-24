@@ -1,4 +1,6 @@
-# Analysis — 2026-10-24 session (SCARPPOL → ANASIG)
+# Historical analysis — 2026-10-24 session (SCARPPOL → ANASIG)
+
+> This is an earlier method-lane record. Its “session's primary” labels and download status are historical, not current. The current repository-wide status is in [REPO_REVIEW_20261024.md](REPO_REVIEW_20261024.md) and [current status JSON](downloads/current_status.json): no current candidate is cleared; all served files are research-only; no slot is used.
 
 Machine-checkable numbers live in `evidence/scarppol_variants.json`,
 `evidence/scarppol_proxy_audit.json`, `evidence/scarppol_run_card.json`,

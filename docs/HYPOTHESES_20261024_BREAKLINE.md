@@ -1,4 +1,6 @@
-# Hypotheses — 2026-10-24 (ranked before any building)
+# Historical hypotheses — 2026-10-24 (BREAKLINE session)
+
+> This page records an earlier lane’s pre-build ranking; expected values/projections are not scores, and its “next” language is not current. Current qualitative shortlist/status: [HYPOTHESES.md](HYPOTHESES.md) and [REPO_REVIEW_20261024.md](REPO_REVIEW_20261024.md). No current candidate is cleared to submit.
 
 Protocol step: generate 3–5 geologically distinct, previously untried
 hypotheses, rank by expected HOLDOUT-DTI gain per build cost, validate

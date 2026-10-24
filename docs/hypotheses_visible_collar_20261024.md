@@ -1,4 +1,6 @@
-# Candidate geological hypotheses — 2026-10-24
+# Historical candidate hypotheses — 2026-10-24 (visible-collar session)
+
+> This is a prior session’s research register, not current candidate clearance. Treat projections as unverified, not scores; the current shortlist/status is in [HYPOTHESES.md](HYPOTHESES.md) and [REPO_REVIEW_20261024.md](REPO_REVIEW_20261024.md).
 
 Ranks are prospective priorities, not leaderboard predictions. Only candidate 1 was tested in this session; all HOLDOUT-DTI numbers are explicitly labelled and are not competition scores. The test budget used one candidate method, evaluated over eight spatial folds.
 

@@ -1,4 +1,6 @@
-# Hypotheses — 2026-10-24 (SCARPPOL session, ranked before building)
+# Historical hypotheses — 2026-10-24 (SCARPPOL session)
+
+> This page records the prior lane’s pre-build screens, not a current candidate ranking. Any projections are not scores; current status and qualitative research queue are in [HYPOTHESES.md](HYPOTHESES.md) and [REPO_REVIEW_20261024.md](REPO_REVIEW_20261024.md). No current candidate is cleared.
 
 Protocol step: generate 3–5 previously untried geological hypotheses, rank by
 expected HOLDOUT-DTI gain per build cost, validate the top one on the spatially

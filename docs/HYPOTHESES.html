@@ -3,118 +3,90 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Candidate Geological Hypotheses — GEMSDOE92 GEMS Prize">
-  <title>Candidate Geological Hypotheses — GEMSDOE92</title>
+  <meta name="description" content="Untested, evidence-labeled hypotheses for the GEMSDOE92 workbench.">
+  <title>Untested hypotheses — GEMSDOE92</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="hero">
-  <p class="kicker">Geological Hypotheses · DOE GEMS Prize #306 · Science &amp; Discovery</p>
-  <h1>Candidate Geological Hypotheses for Geothermal Vent Discovery</h1>
-  <p class="lede">Pre-registered scientific hypotheses targeting undiscovered geothermal-related faults and fluid conduits across the northwestern Great Basin, ranked by expected DTI improvement and implementation cost.</p>
-  <p><a href="index.html">← Back to Main Workbench</a> · <a href="executive-summary.html">Executive Summary</a> · <a href="SUBMIT.html">Submission Guide</a></p>
+  <p class="kicker">Research backlog · DOE GEMS Prize #306</p>
+  <h1>Four untested hypotheses — none currently viable</h1>
+  <p class="lede">These are qualitative, falsifiable ideas—not score projections. The official feature stack is absent locally, and the literal registry rule is blocked by a full-footprint-positive witness. No experiment or submission slot was used in this review.</p>
+  <p><a href="index.html">← Workbench</a> · <a href="REPO_REVIEW_20261024.md">Three-pass repo review</a> · <a href="SUBMIT.html">Submission guide</a></p>
 </header>
-
 <main>
-<section>
-  <h2>Hypothesis Generation &amp; Ranking Methodology</h2>
-  <p>To maximize the probability of winning (<strong>Maximize P(Win)</strong>), each candidate hypothesis is evaluated against strict scientific and statistical criteria prior to allocating precious weekly competition slots:</p>
-  <ul>
-    <li><strong>Specific Layer Identification:</strong> Clear attribution to sensor bands (magnetics, gravity, geodesy, topography, radiometrics).</li>
-    <li><strong>Physical Signature &amp; Transformation:</strong> Mathematical edge detection, structure tensors, directional gradients, or curvature transforms.</li>
-    <li><strong>Missing Fault Rationale:</strong> Explicit geological mechanism explaining why the feature is absent from legacy catalogues (USGS QFaults / INGENIOUS) but detectable by expert DEM mappers and geothermal explorers.</li>
-    <li><strong>Distinctness from Existing Approaches:</strong> Clear geometric and algorithmic separation from prior on-skeleton and near-catalogue methods.</li>
-    <li><strong>Falsification &amp; Non-Fault Mimic:</strong> Named non-tectonic geological or geomorphic processes (e.g. shoreline terraces, fan boundaries, lithologic contacts) that could mimic the signature.</li>
-    <li><strong>Leakage Canary &amp; Holdout Validation:</strong> Single-feature AUC &lt; 0.90 canary check followed by spatially blocked hide-and-recover holdout evaluation.</li>
-  </ul>
+<section class="download-card">
+  <h2>Stop condition applies before implementation</h2>
+  <div class="banner banner-warn"><strong>NO CANDIDATE CLEARED — DO NOT SUBMIT EXISTING DOWNLOADS.</strong> A SHA-verified 17GEMSDOE registry raster is positive on 100% of the matching footprint. Under the literal &gt;70% forward-overlap rule, every nonempty in-footprint surface/candidate is a duplicate. This is a REGISTRY-MEASUREMENT from a single binding witness, not a current competition score or exhaustive registry scan. The official 19-band feature stack is not present in the local cache.</div>
+  <p>The ranking below describes relative research priority only. No numeric DTI improvement is forecast. “Not found in this checkout” is a code-search result, not a claim of worldwide novelty across sibling GEMSDOE repositories. See the full, source-qualified register in <a href="HYPOTHESES.md">HYPOTHESES.md</a>.</p>
 </section>
-
 <section>
-  <h2>Ranked Candidate Hypotheses</h2>
-
-  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
-    <p class="kicker" style="color:#4ecb71;">Rank 1 · Highest Screen Score · Built Candidate</p>
-    <h3 style="margin-top:0.2rem;">1. BREAKLINE — Structure-Tensor Coherence on Detrended Slope Breaks</h3>
+  <h2>Ranked research queue</h2>
+  <div class="download-card">
+    <p class="kicker">Rank 1 · qualitative potential highest · unvalidated</p>
+    <h3>Drainage-network deflection and paired knickpoints</h3>
     <dl class="meta">
-      <div><dt>Layers Involved</dt><dd>Band 19 (<code>det_elev_slope</code>) &amp; Band 12 (<code>det_elev</code>) from <code>training_features.tif</code></dd></div>
-      <div><dt>Physical Signature</dt><dd><code>L = pct_rank(||grad det_elev_slope||) &times; structure_tensor_coherence(det_elev; &sigma;d=1, &sigma;t=2)</code></dd></div>
-      <div><dt>Why Missing from Catalogue</dt><dd>Faults offsetting like-lithologies in basin alluvium or young volcanic deposits create distinct, linear slope breaks on DEMs without generating potential-field (gravity/magnetic) contrasts. Potential-field worms miss them, but expert DEM mappers trace them directly.</dd></div>
-      <div><dt>Distinction from Prior Lanes</dt><dd>Sources dots from coherent DEM breaks &gt;3 px away from the potential-field worm skeleton (H19-5), breaking out of the 99.4% skeleton duplication trap.</dd></div>
-      <div><dt>Named Non-Fault Mimic</dt><dd>Pleistocene Lake Lahontan shoreline terraces, alluvial-fan segment boundaries, channel banks, and road cuts.</dd></div>
-      <div><dt>Screen &amp; Holdout Result</dt><dd>HOLDOUT-DTI: <strong>0.004861 [0.004032, 0.005822]</strong> (&Delta; vs R0 = +0.000854); SGMC off-catalogue control +31% over R0; Canary Max AUC = 0.6216. Local uniqueness: worst forward overlap 55.0% vs R0.</dd></div>
-      <div><dt>Data Source</dt><dd>In-stack (USGS 3DEP derived DEM bands); official link: <a href="https://www.usgs.gov/3d-elevation-program">USGS 3DEP</a></dd></div>
+      <div><dt>Layers</dt><dd>Documented DEM layers Band 12 <code>det_elev</code> and Band 19 <code>det_elev_slope</code>; confirm metadata before use.</dd></div>
+      <div><dt>Signature</dt><dd>Persistent channel-axis deflection or paired along-channel slope-change points across tributaries, measured on a DEM-derived flow graph.</dd></div>
+      <div><dt>Missing-fault rationale</dt><dd>A subtle structure may alter channel gradient or planform without a strong magnetic/gravity response or a catalogue line. This is an indirect geomorphic hypothesis, not proof of faulting.</dd></div>
+      <div><dt>Difference</dt><dd>Current BREAKLINE/SCARPPOL methods use local pixel derivatives; no drainage-graph or along-channel change-point detector was found in the reviewed code.</dd></div>
+      <div><dt>Expected DTI / cost</dt><dd>Unknown; highest relative research priority. Medium–high implementation cost.</dd></div>
+      <div><dt>Named mimic</dt><dd>Fan avulsion, lithologic resistance, drainage capture, base-level change, roads or irrigation diversion.</dd></div>
+      <div><dt>Official input / availability</dt><dd><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">Competition feature stack</a>; possible public terrain alternative: <a href="https://www.usgs.gov/3d-elevation-program">USGS 3DEP</a>. Neither was downloaded or availability-checked here; the local feature stack is absent.</dd></div>
     </dl>
   </div>
-
-  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
-    <p class="kicker" style="color:#d08a3c;">Rank 2 · High Priority · In-Stack Stack Analysis</p>
-    <h3 style="margin-top:0.2rem;">2. GAMMA-CREST — Signed Gravity Horizontal-Gradient Zero-Crossing / Offset Ridge</h3>
+  <div class="download-card">
+    <p class="kicker">Rank 2 · unvalidated</p>
+    <h3>Conductivity–basement-step concordance</h3>
     <dl class="meta">
-      <div><dt>Layers Involved</dt><dd>Band 18 (<code>iso_grav_anom_hg</code>, signed horizontal gradient) &amp; Band 5 (<code>iso_grav_anom_slope</code>)</dd></div>
-      <div><dt>Physical Signature</dt><dd>Zero-crossing and asymmetric peak crests of signed isostatic gravity horizontal gradient, tracking the steepest density step and dip-direction offset.</dd></div>
-      <div><dt>Why Missing from Catalogue</dt><dd>Basin-bounding normal faults with thick hanging-wall sediment fill often have buried surface traces. The density contrast boundary sits basinward of the mapped bedrock-alluvium contact.</dd></div>
-      <div><dt>Distinction from Prior Lanes</dt><dd>All prior gravity lanes used unsigned gradient magnitudes; Band 18 is the only signed band, allowing dip-directed basinward offset placement.</dd></div>
-      <div><dt>Named Non-Fault Mimic</dt><dd>Intra-basin paleotopography, paleochannels, and volcanic flow margins buried under alluvium.</dd></div>
-      <div><dt>Data Source</dt><dd>In-stack (USGS GeoDAWN gravity survey); official link: <a href="https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7">USGS GeoDAWN Catalog</a></dd></div>
+      <div><dt>Layers</dt><dd>Documented Band 17 <code>cond_surf</code> and Band 15 <code>depth_to_base_surf</code>; verify tags and units.</dd></div>
+      <div><dt>Signature</dt><dd>Offset-aware conductivity/depth cross-gradients, preferentially under low surface-break strength.</dd></div>
+      <div><dt>Missing-fault rationale</dt><dd>A covered basement structure with a fluid/clay conductivity response could be absent from a surface catalogue; both signals are ambiguous and need independent validation.</dd></div>
+      <div><dt>Difference</dt><dd>No corresponding conductivity/depth cross-gradient builder was found in the reviewed Python code.</dd></div>
+      <div><dt>Expected DTI / cost</dt><dd>Unknown; moderate relative potential. Medium implementation and QA cost.</dd></div>
+      <div><dt>Named mimic</dt><dd>Playa clays, basin-fill compaction, lithologic contacts, and non-geothermal brines.</dd></div>
+      <div><dt>Official input / availability</dt><dd><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">Competition feature stack</a>; not locally available and not freshly checked online.</dd></div>
     </dl>
   </div>
-
-  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
-    <p class="kicker" style="color:#d08a3c;">Rank 3 · Active Tectonics · Multi-Sensor Coupling</p>
-    <h3 style="margin-top:0.2rem;">3. DILATATIONAL-STEPOVER — Geodetic Strain Interaction on Structural Relay Bends</h3>
+  <div class="download-card">
+    <p class="kicker">Rank 3 · unvalidated</p>
+    <h3>Strain-regime boundary and orientation change</h3>
     <dl class="meta">
-      <div><dt>Layers Involved</dt><dd>Band 8 (<code>geod_dilaterate</code>), Band 7 (<code>geod_shearrate</code>), Band 4 (<code>geod_2ndinv</code>), combined with Band 19 DEM breaks</dd></div>
-      <div><dt>Physical Signature</dt><dd>Coupling high positive dilatation rate (volumetric crustal extension) with non-collinear DEM scarp terminations (relay ramps and pull-apart jogs).</dd></div>
-      <div><dt>Why Missing from Catalogue</dt><dd>Active geothermal fluid conduits localize in dilatational jogs where mean normal stress is lowest and hydraulic conductivity is maximized, often between mapped overlapping fault segments.</dd></div>
-      <div><dt>Distinction from Prior Lanes</dt><dd>Prior DILATATION lanes only re-ranked points along the static potential-field skeleton; this hypothesis uses strain as an interaction multiplier on off-skeleton structural breaks.</dd></div>
-      <div><dt>Named Non-Fault Mimic</dt><dd>Broad regional extensional strain gradients lacking localized fault control.</dd></div>
-      <div><dt>Data Source</dt><dd>In-stack geodetic GPS/InSAR strain inversion (UNR Nevada Geodetic Laboratory / USGS); official link: <a href="http://geodesy.unr.edu/">UNR Geodetic Lab</a></dd></div>
+      <div><dt>Layers</dt><dd>Documented Bands 4 <code>geod_2ndinv</code>, 7 <code>geod_shearrate</code>, and 8 <code>geod_dilaterate</code>; confirm tags/units.</dd></div>
+      <div><dt>Signature</dt><dd>Coherent changes in principal-strain orientation or shear–dilation regime, with terrain or geophysical corroboration—not simply a high scalar value.</dd></div>
+      <div><dt>Missing-fault rationale</dt><dd>Strain partitioning at an under-mapped structure might persist without a sharp scarp or potential-field edge.</dd></div>
+      <div><dt>Difference</dt><dd>DILATATION tested scalar dilation and STRAINBREAK used a scalar invariant interaction; no tensor-orientation/regime-boundary field was found in the reviewed code.</dd></div>
+      <div><dt>Expected DTI / cost</dt><dd>Unknown; low–moderate relative potential. Medium–high cost.</dd></div>
+      <div><dt>Named mimic</dt><dd>Groundwater or brine withdrawal, agricultural subsidence, and elastic strain near locked faults.</dd></div>
+      <div><dt>Official input / availability</dt><dd><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">Competition feature stack</a>; absent locally and not freshly checked online.</dd></div>
     </dl>
   </div>
-
-  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
-    <p class="kicker" style="color:#b7a48a;">Rank 4 · Hydrothermal Alteration · Radiometric Fusion</p>
-    <h3 style="margin-top:0.2rem;">4. HYDROTHERMAL-ALTERATION — Radiometric Potassium/Thorium Depletion/Enrichment Haloes</h3>
+  <div class="download-card">
+    <p class="kicker">Rank 4 · unvalidated</p>
+    <h3>Cross-scale, cross-survey potential-field edge persistence</h3>
     <dl class="meta">
-      <div><dt>Layers Involved</dt><dd>External GeoDAWN airborne radiometric survey (Bands: Potassium K, Thorium eTh, Total Count; <code>geodawn_rad_u8.tif</code>)</dd></div>
-      <div><dt>Physical Signature</dt><dd>Sharp gradients in K/Th ratio coupled with local magnetic destruction (low TMI anomaly) representing hydrothermal fluid alteration along permeable fault corridors.</dd></div>
-      <div><dt>Why Missing from Catalogue</dt><dd>Hydrothermal alteration halos identify permeable, fluid-transmitting fault segments that may lack significant structural throw or scarp relief.</dd></div>
-      <div><dt>Distinction from Prior Lanes</dt><dd>Directly targets geochemical fluid-rock interaction rather than purely mechanical relief or potential-field density/susceptibility steps.</dd></div>
-      <div><dt>Named Non-Fault Mimic</dt><dd>Lithologic transitions (e.g. rhyolitic tuffs vs basaltic flows) and agricultural/evaporite surface deposits in playas.</dd></div>
-      <div><dt>Data Source</dt><dd>USGS GeoDAWN Airborne Radiometric Survey; official link: <a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN Radiometrics</a></dd></div>
-    </dl>
-  </div>
-
-  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
-    <p class="kicker" style="color:#b7a48a;">Rank 5 · Geomorphic Specificity · Shoreline Filtering</p>
-    <h3 style="margin-top:0.2rem;">5. SHORELINE-FILTERED SCARP — Elevation-Band Suppressed DEM Breaklines</h3>
-    <dl class="meta">
-      <div><dt>Layers Involved</dt><dd>Band 19 (<code>det_elev_slope</code>), Band 12 (<code>det_elev</code>), and Lake Lahontan highstand contour masks (~1330 m AMSL)</dd></div>
-      <div><dt>Physical Signature</dt><dd>Suppression of breaks running strictly parallel to topographic contours at known pluvial lake stillstand elevations, isolating cross-contour tectonic scarps.</dd></div>
-      <div><dt>Why Missing from Catalogue</dt><dd>Removes the dominant non-tectonic false-positive mimic in the Great Basin (wave-cut terraces), increasing signal-to-noise for subtle fault scarps.</dd></div>
-      <div><dt>Distinction from Prior Lanes</dt><dd>Directly addresses the primary known falsifier of the BREAKLINE lane.</dd></div>
-      <div><dt>Data Source</dt><dd>USGS 3DEP Elevation + NBMG Lahontan Shoreline Database; official link: <a href="https://data.nbmg.unr.edu/">Nevada Bureau of Mines and Geology</a></dd></div>
+      <div><dt>Layers</dt><dd>Documented TMI and gravity feature families (including Bands 3/9/14 and 5/18); verify the actual band tags first.</dd></div>
+      <div><dt>Signature</dt><dd>Strike-consistent edges that persist across smoothing scales and show offset-tolerant magnetic/gravity corroboration.</dd></div>
+      <div><dt>Missing-fault rationale</dt><dd>A buried basement discontinuity may create a persistent potential-field boundary with no mapped surface trace.</dd></div>
+      <div><dt>Difference</dt><dd>ANASIG is magnetic analytic-signal amplitude/coherence and H19-5 is a prior ridge product; this would test scale persistence plus cross-survey offset consistency.</dd></div>
+      <div><dt>Expected DTI / cost</dt><dd>Unknown; lower–moderate relative potential due to existing potential-field work. Medium cost.</dd></div>
+      <div><dt>Named mimic</dt><dd>Dikes, pluton margins, magnetized lithologic contacts, and volcanic flow boundaries.</dd></div>
+      <div><dt>Official input / availability</dt><dd><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">Competition feature stack</a>; absent locally and not freshly checked online.</dd></div>
     </dl>
   </div>
 </section>
-
 <section>
-  <h2>Official Verification Sources</h2>
-  <table>
-    <thead><tr><th>Dataset / Tool</th><th>Official Source URL</th><th>Role in Research</th></tr></thead>
-    <tbody>
-      <tr><td>DrivenData DOE GEMS #306</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">drivendata.org/.../page/967/</a></td><td>Competition problem, rules, evaluation metric</td></tr>
-      <tr><td>USGS GeoDAWN Airborne Surveys</td><td><a href="https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7">data.usgs.gov/.../USGS:657e1d85d34e23d3533209f7</a></td><td>Aeromagnetic and radiometric survey data</td></tr>
-      <tr><td>DOE GDR INGENIOUS Geothermal Database</td><td><a href="https://gdr.openei.org/submissions/1391">gdr.openei.org/submissions/1391</a></td><td>Wells, springs, temperature, play fairway models</td></tr>
-      <tr><td>USGS State Geologic Map Compilation (SGMC)</td><td><a href="https://www.sciencebase.gov/catalog/item/5888bf4fe4b05ccb964bab9d">sciencebase.gov/.../5888bf4fe4b05ccb964bab9d</a></td><td>Independent off-catalogue bedrock fault control</td></tr>
-      <tr><td>USGS Quaternary Fault and Fold Database</td><td><a href="https://www.usgs.gov/programs/earthquake-hazards/faults">usgs.gov/.../faults</a></td><td>Baseline mapped Quaternary fault catalogue</td></tr>
-    </tbody>
-  </table>
+  <h2>Required next validation (not run)</h2>
+  <ol>
+    <li>Resolve the literal full-footprint registry witness stop; do not exempt a dense raster or alter the threshold silently.</li>
+    <li>Obtain authorized official input; verify provenance, band metadata, nodata mask, CRS, grid, and license.</li>
+    <li>Run the actual candidate surface through the pre-placement uniqueness gate before dots are placed.</li>
+    <li>Only if that passes, run the shared whole-segment buffered hide-and-recover evaluator, visible-only catalogue features, exact visible mask, pooled DTI α=0.2, β=0.8, 300 m kernel, 95% CI, and each feature-alone leakage canary.</li>
+    <li>Compare against the saved holdout best and recheck final dots before any separate selector step. No slot is used by local testing.</li>
+  </ol>
+  <p><strong>Source boundary:</strong> the DrivenData reference solution on GitHub was checked live. The official DrivenData/USGS/GDR non-GitHub pages were not fetched because those hosts are outside this session’s outbound allowlist. The links are supplied for manual/source-owner review, not treated as verified availability.</p>
 </section>
 </main>
-
-<footer>
-  <p>GEMSDOE92 Workbench · Maximize P(Win) · Own the Outcome · All hypotheses grounded in peer-reviewed structural geology and geophysics.</p>
-</footer>
+<footer><p>Hypotheses are not scores. Maximize P(Win) · Own the Outcome · preserve negative results.</p></footer>
 </body>
 </html>

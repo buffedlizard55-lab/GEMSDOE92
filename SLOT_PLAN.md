@@ -1,63 +1,42 @@
-# SLOT_PLAN — current selector state (2026-10-24, ANASIG session)
-
-## Current artifact: ANASIG f45 — negative, no slot used
-
-Primary download `GEMSDOE92-ANASIG-f45Atop-20261024` (file
-`h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif`, SHA-256
-`68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5`) is
-format-valid and locally lane-unique, but **not cleared**: HOLDOUT-DTI
-0.004967 does not beat the holdout best RELIEF p10 (0.006045; paired
-Δ −0.001078 [−0.002034, −0.000112]), its SGMC proxy is below R0, and the
-binding public witness (footprint-positive E-proba raster) gives 100%
-forward overlap under the literal public rule. SCARPPOL doses built this
-session are duplicates of BREAKLINE (0.900–0.913) and must never be
-submitted. A human selector may only act after the literal-rule policy
-question in `docs/NEXT_STEPS.md` is resolved. No slot used this session.
-
----
-
 # SLOT_PLAN — current selector state (2026-10-24)
 
-## Current artifact: negative duplicate; no slot used
+## Current decision: no candidate cleared; no slot used
 
-`GEMSDOE92-visible-collar-r0-excluded-20261024` is the current primary download and a negative research deliverable. It passes all file-format gates. The initial 14-file local uniqueness scan was incomplete; the expanded literal registry scan across 1,279 matching-grid rasters in 102 public owner repositories found a duplicate. **Do not submit this candidate.**
+**Do not submit any TIFF currently linked from this repository.** The homepage’s TIFFs are research archives. No exact-byte candidate currently has a positive submission verdict, no new candidate was generated in this review, and no weekly slot was selected or used.
 
-- **HOLDOUT-DTI** `gems57-pooled-hide-v2`, 8 buffered folds, 22,663 withheld positives: candidate **0.046866 [0.040216, 0.053315]**; parent R0 **0.004006 [0.003424, 0.004690]**; paired Δ **+0.042860 [+0.036122, +0.049357]**.
-- Leakage canary (visible-fault distance alone): symmetric AUC **0.745593**, below 0.90.
-- **REGISTRY-MEASUREMENT:** pre-placement and final worst forward 3-px overlap **1.000000**; 131/1,279 rasters exceed 70%. Worst |Spearman ρ|: pre-placement **0.421367**, final **0.492957** (both below 0.90). Overlap alone triggers the stop rule.
-- Format validation: 10/10 gates pass. SHA-256 `60082b75a3d8e4648a858622f71f24257c8cfef79286a1a96147c59f05377da7`.
-- **Verdict: negative — duplicate under the literal gate; stop.** No weekly slot was selected or used.
+The user's literal registry rule stops any candidate when **more than 70%** of its pixels fall within 3 pixels of one registry raster (or |Spearman rank correlation| exceeds 0.90). One independently fetched, hash-verified, matching-grid public witness has positive support on all 5,167,373 footprint cells. Consequently, every nonempty in-footprint candidate has **REGISTRY-MEASUREMENT forward overlap 1.0** against that witness and must stop under the literal rule. No empty raster or cosmetic mutation is an acceptable workaround. This single witness is decisive for rejection; it is not a fresh exhaustive inventory of every public registry asset. See [`docs/downloads/current_status.json`](docs/downloads/current_status.json) and the [three-pass review](docs/REPO_REVIEW_20261024.md).
 
-Audit: `evidence/public_registry_uniqueness.json`; run card: `evidence/visible_collar_run_card.json`; file: `docs/downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif`.
+**REGISTRY-MEASUREMENT witness:** Git blob SHA-1 `374c88b1da2b803e2ed160de467fd71ae114010d`; SHA-256 `ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be`; bytes `25,065,181`; positive cells `5,167,373 / 5,167,373`. A rank correlation with a constant all-positive mask is undefined; the overlap rule alone binds.
 
-## Scan scope and comparison boundary
+## Current evidence and limits
 
-The scan covered current default-branch TIFF paths in `docs/downloads/`, `releases/`, and submission directories across 102 public repositories whose names match GEMSDOE in the `buffedlizard55-lab` account. Trees were complete in the API scan; 1,285 unique Git blobs were downloaded and SHA/size-verified, and 1,279 single-band rasters matching the sample grid were compared. The audit is not exhaustive of historic branches, unlinked/site-hosted assets, private repositories, zip-only artifacts, or other owners. One binding duplicate witness is sufficient to stop under the literal rule, independent of scan completeness.
+- **CLAIM 0.2778:** The prompt and repository associate `h33-h33-2-b2` with this value; no organizer receipt is recorded (`receipt: null`). The prompt snapshots 0.3195 and 0.4413 conflict and were not refreshed from the official leaderboard here. None is treated as an ORGANIZER-CONFIRMED result.
+- **HOLDOUT-DTI reference, not rerun in this review:** `gems57-pooled-hide-v2`, 22,663 withheld positives, value 0.0060451323971729325, 95% CI [0.005187022524132649, 0.00692683880217307] (`evidence/run_card_20261024.json`). It is a local catalogue hide-and-recover estimate, not a competition score; its corresponding RELIEF raster has a negative registry verdict.
+- The full official 19-band feature stack is absent from this checkout's local cache. No new spatial holdout, leakage canary, candidate surface, final dots, or candidate validator was run. The shared evaluator and writer are present at `vendor/gems57/evaluate_holdout.py` and `vendor/gems57/submission_writer.py`.
+- No official submission receipt or current weekly quota was obtained. A human competitor remains responsible for any future upload and slot selection.
 
-The largest overlap is 100% against `11GEMSDOE/docs/downloads/gems-structural-area06-v1.tif`; additionally, `17GEMSDOE_E-proba-multiscale` is positive across the full footprint and is also a binding overlap witness. We do not waive those because they are dense or continuous surfaces; the requested literal rule governs.
+## Historical candidates — archives, not active selector choices
 
-HOLDOUT-DTI is a local catalogue hide-and-recover estimate, not a competition score, and cannot be compared with the prompt-reported **CLAIM 0.2778**. A prior repository record says the official public leaderboard was read on 2026-10-24 and showed 0.4413 at #1 (LEADERBOARD-SNAPSHOT, not a receipt for this candidate); the prompt's 0.3195 is an older conflicting snapshot. No ORGANIZER-CONFIRMED receipt for this candidate exists.
+The figures below are retained as historical evidence and do not override the current stop. Local uniqueness is not global uniqueness; format-valid is not slot-eligible.
 
-## Historical results retained
+- **Visible-collar R0-excluded**, file `docs/downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif`. Historical **HOLDOUT-DTI** `gems57-pooled-hide-v2`, 8 buffered folds and 22,663 withheld positives: 0.046866 [0.040216, 0.053315], R0 0.004006 [0.003424, 0.004690], paired Δ +0.042860 [+0.036122, +0.049357]. Historical expanded public scan found **REGISTRY-MEASUREMENT** overlap 1.0; negative. Its SHA-256 is `60082b75a3d8e4648a858622f71f24257c8cfef79286a1a96147c59f05377da7`.
+- **ANASIG f45Atop**, file `docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif`, SHA-256 `68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5`. Historical **HOLDOUT-DTI** 0.004967 [0.004098, 0.005940], below RELIEF p10’s saved 0.006045; **REGISTRY-MEASUREMENT** overlap 1.0 against the all-positive witness. Negative.
+- **BREAKLINE f45Ltop**, file `docs/downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif`. Historical **HOLDOUT-DTI** 0.004861 [0.004032, 0.005822]; prior local-only scan had worst 55% overlap, but the later public-witness check found **REGISTRY-MEASUREMENT** final-dot overlap 1.0. Negative.
+- **STRAINBREAK f60s2i**, file `docs/downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif`. Historical **HOLDOUT-DTI** 0.005487 [0.004522, 0.006430], below saved best; old local-only uniqueness does not clear the public witness. Negative.
+- **SCARPPOL f45** had historical same-dose overlap 0.900–0.913 with BREAKLINE and stopped. **DILATATION p10/p12/p15**, **RELIEF p10**, **TIPGAP FAR**, and **STEPOVER** remain archived with their prior results/negative cards. The three DILATATION TIFF names use `20261025`, future-dated relative to this review; their timestamp/provenance is unresolved. They remain explicitly DO NOT SUBMIT.
 
-- DILATATION p10/p12/p15 and RELIEF p10 had positive local HOLDOUT-DTI but were flagged as R0 duplicates under the literal >70%/3px rule. Do not recommend them for a slot.
-- TIPGAP FAR and STEPOVER were negative on their documented holdout instruments. Keep as negative deliverables.
-- Parent R0's 0.2778 remains **CLAIM** until a dated competition receipt is recorded in `ledger/submissions.csv`.
+Detailed previous evidence remains linked from `docs/NEXT_STEPS.md`, `docs/REVIEW_REGISTRY_STOP_20261024.md`, and the relevant per-artifact run cards. No historical artifact is selected for a competition slot.
 
-## Next steps (no more candidate experiments until selector/gates reconciled)
+## Next steps, conditional on a future authorized resolution
 
-1. Keep the current candidate as a downloadable **negative** artifact; do not submit it.
-2. Run `scripts/audit_public_registry.py` periodically to refresh the expanded scan against current public branches; it records scan date/scope. Do not confuse public default branches with all historical/site-hosted assets.
-3. Resolve the literal overlap gate with a policy decision outside this agent's authority. Until then, any candidate with >70% overlap against any single indexed raster must stop; no arrival-only or dense-surface exception.
-4. Add an off-catalogue validation instrument. The current holdout's truth is the mapped catalogue and may not rank candidates for private uncatalogued targets.
-5. Obtain the missing GeoDAWN stack from the official competition data tab when authorized; current cache is absent. Hash-verify and record terms before testing the remaining hypotheses.
-6. Have the human selector review the actual current weekly quota. No credentials or slot were requested or used here.
-7. Resolve public-repository redistribution terms for committed rasters; see `IRREGULARITIES.md`.
+1. **Do not build or place a candidate while the literal witness stop stands.** Resolve the registry-raster interpretation with the appropriate policy owner; this agent must not silently change the threshold or exclude a dense surface. If the literal rule remains, the correct result is no nonempty in-footprint submission.
+2. Obtain authorized official data only if a future research question requires it. Verify source, terms, hashes, band tags/units, CRS, transform, nodata, and grid before calling it available. Do not treat a hash-verified owner mirror as organizer-authenticated or redistribution-cleared.
+3. Before any method implementation, rank 3–5 geological hypotheses with layers, physical signature, missing-fault rationale, difference from current code, cost, named mimics, and data availability. The current untested shortlist is [`docs/HYPOTHESES.md`](docs/HYPOTHESES.md).
+4. If the blocker is explicitly changed and official data are available, declare one method lane and compare its actual pre-placement surface against each accessible registry raster. Stop on either literal threshold. Do not infer a surface statistic from another artifact.
+5. Only after surface uniqueness passes, use the shared buffered whole-segment holdout. Derive catalogue features from visible faults only, mask visible faults pixel-exactly, calculate pooled DTI α=0.2, β=0.8, 300 m triangular kernel, report withheld-positive count and 95% CI, and check each feature alone for leakage (symmetric AUC >0.90 is a leakage alarm).
+6. Compare final dots to the same registry and re-read the exact file through the automated validator. Finish a JSON run card, including explicit `NOT_RUN`/`NOT_GENERATED` where appropriate. Stop after three experiments or two hours. Do not select or spend a weekly slot.
+7. A separate human selector may review a future exact-byte `promote` audit, current quota, name/note (≤140 characters), and then upload; record only the actual organizer receipt as ORGANIZER-CONFIRMED.
 
-## Parallel-session candidate — BREAKLINE f45Ltop (2026-10-24 merge note)
+## Project values
 
-`h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0` (zeros sha256 `cd9c8a56…810e`): format-valid; **unique within the 18-raster local registry** (worst 55.0% vs R0; 3.5% vs the collar candidate); HOLDOUT-DTI 0.004861 [0.004032, 0.005822], Δ vs R0 +0.000854 [+0.000300, +0.001423]; SGMC control +31% vs R0. **Verdict: negative — NOT cleared** (below holdout-best arms; update 2026-10-24 late session: public scan run, literal duplicate stop triggers, 134 >70%). Relative standing for a future *human* selector once the overlap-gate policy (item 3 above) is resolved: BREAKLINE is the only served candidate that passes the literal rule on the local registry while beating its parent on the holdout; the collar candidate fails the expanded public scan outright. Receipt decision rules if it is ever uploaded: Δ ≥ +0.01 vs CLAIM 0.2778 ⇒ off-skeleton scarp-breaks earn live credit (walk dose up next session); Δ ≤ −0.01 ⇒ skeleton mass was load-bearing, retire far emission; |Δ| < 0.01 ⇒ no evidence, do not spend a sibling dose. Never pair BREAKLINE doses in one week; never submit a SUPERSEDED `*breakline` (greedy-emission) file.
-
-## Late-session candidate — STRAINBREAK f60s2i (2026-10-24)
-
-`h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2` (zeros sha256 `000d0bd7…5c1f`): format-valid; locally unique (worst 40.0% vs R0 over 21 rasters); HOLDOUT-DTI 0.005487 [0.004522, 0.006430] — best locally-unique holdout in repo — but SGMC 0.10516 < BREAKLINE 0.12611 and it does not beat RELIEF p10 (0.006045). **Verdict: negative — NOT cleared.** Selector framing if the literal-gate policy is ever resolved: BREAKLINE (SGMC-favoured) vs STRAINBREAK (holdout-favoured) is one receipt's worth of information either way; never submit more than one STRAINBREAK dose (f45/f60/f75 are siblings; f75=f60 on holdout), and never pair a STRAINBREAK and BREAKLINE dose in the same week — their far sets are disjoint by construction but they test overlapping questions.
+**Maximize P(Win)** by protecting the slot from unsupported guesses; **Own the Outcome** by keeping negative results, fixing shared issues once, and making the current no-go status unmistakable.

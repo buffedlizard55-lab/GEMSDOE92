@@ -1,4 +1,6 @@
-# Ranked hypothesis register — review on 2026-10-24
+# Historical ranked hypothesis register — 2026-10-24
+
+> This was an earlier candidate register. Its “current”/“next” wording and any projections are historical, not score evidence. The current, qualitative shortlist and blockers are in [HYPOTHESES.md](HYPOTHESES.md) and [REPO_REVIEW_20261024.md](REPO_REVIEW_20261024.md).
 
 This is a research queue, not a claim that any untested method improves the contest score. Local values are labelled **HOLDOUT-DTI** with evaluator, withheld positives, and confidence interval; contest values require a dated **ORGANIZER-CONFIRMED** receipt. Numeric forecasts are intentionally omitted.
 
