@@ -1,15 +1,24 @@
-# Latest verified review — 2026-10-24 (GEMSDOE92)
+# GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench (`GEOTENSION free1d` Branch Primary · `APRONRIDGE free1d` Historical Best `0.008354` · `HYDROCONDUIT f45hydro` Hybrid `0.008549`)
+## Latest verified review — 2026-10-24 (GEMSDOE92)
+
 
 **✅ OK TO DOWNLOAD FOR RESEARCH. ⛔ DO NOT SUBMIT.** The existing APRONRIDGE free1d TIFF is format-valid, but is not a new submission, not unique under the literal witness rule, and not cleared for any weekly slot. No new TIFF or geological experiment was generated in this continuation.
 
 > **Start every session by reading this README, [`SESSION_PROMPT.md`](SESSION_PROMPT.md), and [`docs/REVIEW_CURRENT.md`](docs/REVIEW_CURRENT.md).** The operating contract is durable; the latest review supersedes historical notes. Arena values: **Maximize P(Win)** and **Own the Outcome**.
 >
+> - **Current Branch Primary GeoTIFF (this `arena/2d7b7394-gemsdoe92` branch, zeros outside, `nodata=None`):** [`docs/downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif`](docs/downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif) · [One-TIFF ZIP](docs/downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.zip)
+> - **SHA-256 (`-zeros.tif`):** `b0dba55e56a5e714dd62673dd48c0d7f695cf9a25b40786cb243f1bf7dd4d054` (`37,654` unit-mass dots, `0.0` outside footprint, `0` catalogue mass; `52.6%` piedmont, `0` `H19-5`/`R0` input)
+> - **Suggested Submission Name (for ledger / human selector record only):** `GEMSDOE92-GEOTENSION-free1d-20261025`
+> - **Suggested Form Note (93 / 140 chars):** `h33-h33-2-b2; GEOTENSION free1d: 37654 standalone dilat-scarp 1D crests (0 H19-5)`
+> - **Automated Gate Receipts:** [Format & Public-Registry Audit JSON](docs/downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-audit.json) (`10/10` `gems.gates` + `13/13` `gems57.validate` PASS — prevents DrivenData error `"Predicted values must be in range [0, 1]"`) · [Protocol Run Card JSON](evidence/geotension_run_card.json) · [PhD Analysis](docs/ANALYSIS_20261025_GEOTENSION.md) · [Pre-Registered Hypotheses](docs/HYPOTHESES_20261025_GEOTENSION.md)
+> - **Site Pages:** [Main Workbench (`docs/index.html`)](docs/index.html) · [Executive Summary & Submission Form Guide (`docs/executive-summary.html`)](docs/executive-summary.html) · [Detailed Submission Procedure (`docs/SUBMIT.html`)](docs/SUBMIT.html) · [Candidate Geological Hypotheses (`docs/HYPOTHESES.html`)](docs/HYPOTHESES.html)
 > - **Current research download:** [`docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif) · [single-TIFF ZIP](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.zip)
 > - **SHA-256:** `1a29a5d81e8561954f04a563b4975cb84d00898b8d7634700a9d409a10e06cbc` · **research identifier:** `GEMSDOE92-APRONRIDGE-free1d-20261024` (not a request to upload)
 > - **Note (92 / 140 chars):** `h33-h33-2-b2; APRONRIDGE free1d: 37654 standalone 1D piedmont-apron + RTP ridges (0 H19-5)`
 > - **Status / evidence:** [format audit](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-audit.json) · [current exact-file witness recheck](docs/downloads/review_20261024_continuation_witness.json) · [latest run card](docs/downloads/review_20261024_continuation_run_card.json) · [D97F969E three-pass review](docs/REVIEW_D97F969E.md) · [continuation analysis and ranked hypotheses](docs/REVIEW_20261024_CONTINUATION.md)
 > - **Why blocked:** the verified 17GEMSDOE witness is positive on all 5,167,373 footprint cells; the existing candidate's forward overlap is 1.0. Under the unchanged literal >70% rule, every nonempty in-footprint raster is rejected. This is a representation-policy conflict, not evidence of geological equivalence. No dense-map exception was invented.
 > - **Historical HOLDOUT-DTI only** (`gems57-pooled-hide-v2`, 22,663 withheld positives): APRONRIDGE free1d 0.008354 [0.006823, 0.010135]; HYDROCONDUIT f45hydro 0.008549 [0.007626, 0.009487]. These are stored static evaluations, not rerun here or certified as fully fold-rebuilt, leak-free promotion results; neither is an organizer score. The latest documented result means APRONRIDGE is not the overall historical holdout point-estimate best.
+
 
 ---
 
