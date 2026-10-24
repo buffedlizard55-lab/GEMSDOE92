@@ -1,140 +1,81 @@
-# GEMSDOE92 — unique GEMS Prize GeoTIFF
+# GEMSDOE92 — auditable GEMS Prize research and GeoTIFF preflight
 
-> **Read this file at the start of every session.** Full operator contract: [`SESSION_PROMPT.md`](SESSION_PROMPT.md).
+> **Start every session here, then read [`SESSION_PROMPT.md`](SESSION_PROMPT.md).** Stay on the session branch and respect the one-method lane, three-experiment/two-hour budget, evidence labels, and the separate human slot selector.
 
-**Primary download:** `DILATATION p12` — the file in this repository whose HOLDOUT-DTI is **above** parent R0 with a 95 % CI that excludes zero. **Format-valid, but NOT cleared for a weekly slot:** it fails the operator's literal uniqueness rule (99.37 % of its dots lie within 3 px of registry raster R0). See ⚠ below.
+## Executive status
 
-| | |
-|---|---|
-| **File** | [`docs/downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif`](docs/downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif) |
-| **Zip** | [`…-8b4d248b.zip`](docs/downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b.zip) |
-| **Submission name** | `GEMSDOE92-DILATATION-p12-20261025` |
-| **Form note (84 chars)** | `h33-h33-2-b2; DILATATION shift 4518 dots (12%) low→high dilat; pred MODEL:+0.007` |
-| **SHA-256** | `25ba17a26d31df9d574fba2a2f34d03ff58f587f4ffde092dcc4bba9822f8898` |
-| **How to submit** | [`docs/SUBMIT.html`](docs/SUBMIT.html) · **Site:** <https://buffedlizard55-lab.github.io/GEMSDOE92/> |
+**A unique-within-local-registry, format-valid GeoTIFF is available to download. It is a negative research result and is NOT recommended for a competition slot.** Format validity, lane uniqueness, scientific evidence, and organizer acceptance are different gates.
 
-| Status | Meaning |
-|---|---|
-| **✅ FORMAT-VALID — OK TO DOWNLOAD** | All 10 MUST gates pass on an independent re-read of the **served** bytes. All-finite float32 in `[0, 1]`, zeros outside the footprint, `nodata=None` — so neither the training stack's `−3.4028235e+38` sentinel nor a stray NaN can trigger `Predicted values must be in range [0, 1]`. |
-| **⚠ NOT CLEARED FOR A SLOT** | 99.37 % of its dots lie within 3 px of registry raster R0, over the brief's 70 % uniqueness limit. Uploading it is a recorded **human override**, not an agent recommendation. |
-| **HOLDOUT-DTI above R0** | Δ **+0.00177 [0.00111, 0.00246]**, CI excludes 0. This is a local instrument, **not** a leaderboard score. Weekly-slot promotion is a human step (3/week cap); this agent never submits. |
+- **Download:** [`docs/downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif`](docs/downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif) · [ZIP containing one TIFF](docs/downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.zip)
+- **Public site:** https://buffedlizard55-lab.github.io/GEMSDOE92/
+- **Submission instructions:** [`docs/SUBMIT.html`](docs/SUBMIT.html) · [`docs/hypotheses_20261024.md`](docs/hypotheses_20261024.md)
+- **Format status:** **OK TO DOWNLOAD.** Ten local MUST gates pass on an independent re-read; one float32 band, EPSG:32611, 3730 × 3292, sample-grid transform, finite values in [0,1], no NaN in the footprint, zeros outside, and no positive mass on the known-fault catalogue.
+- **Slot status:** **NOT RECOMMENDED.** This candidate's HOLDOUT-DTI is 0.0000 [0.0000, 0.0000], below its R0 proxy baseline. The score is local only, not an organizer result. No slot was used.
+- **Uniqueness:** passes the saved scan against 14 locally accessible registry rasters. This is not proof of global uniqueness; incomplete external/private registries remain a limitation.
+- **Audit and run card:** [`docs/downloads/*-audit.json`](docs/downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-audit.json) · [`evidence/run_card.json`](evidence/run_card.json) · [`evidence/stepover_evidence.json`](evidence/stepover_evidence.json).
+
+## Operator prompt / standing requirements
+
+The purpose of this repository is to make auditable scientific progress toward discovering previously unmapped geothermal-related faults in the DOE GEMS Prize region and to produce a compliant submission GeoTIFF where evidence supports it. A download must be obvious from the start of the site and must state separately whether the file is format-valid to download and whether it is recommended for a weekly submission slot. Local inspection and format validation are automated; DrivenData upload and slot selection remain human actions.
+
+For every session:
+
+1. **One method lane.** Do not copy a sibling site's submission. Compare pre-placement feature surfaces and final dots against the registry. If Spearman rank correlation exceeds 0.90 or more than 70% of dots are within 3 px of a registry raster, log a duplicate and stop.
+2. **Reuse the shared stack and tools.** Use the cached feature stack, `vendor/gems57/evaluate_holdout.py`, and `vendor/gems57/submission_writer.py`. Hold out whole fault segments with a buffer; derive catalogue features from visible faults only; mask visible faults pixel-exactly; evaluate pooled DTI with α=0.2, β=0.8, and a 300 m triangular kernel. Fix shared-tool defects in the shared tool, never a private fork.
+3. **Label every result.** A local metric is **HOLDOUT-DTI** and must include evaluator version, withheld-positive count, and 95% CI. A competition value is **ORGANIZER-CONFIRMED** only when copied from a submission-page receipt. A projection is never a score.
+4. **Leakage canary.** Test each feature alone on holdout truth. AUC above 0.90 is leakage until proven otherwise.
+5. **Run card.** Record hypothesis; mechanism; a named non-fault mimic; HOLDOUT-DTI and CI; correlation/overlap vs registry; raster SHA-256; validator results (no NaN inside footprint, values [0,1], CRS/shape/transform match); submission name and ≤140-character note; verdict `promote` or `negative`.
+6. **Budget and selector.** Stop after 3 experiments or 2 hours. Do not select a competition submission slot; promotion is a separate step subject to the weekly cap. A negative result is a deliverable.
+7. **No hallucinated standings.** The GEMSDOE32 0.2778 remains an owner-reported CLAIM with no receipt here. The official public leaderboard was checked on 2026-10-24 and displays 0.4413 at #1; this is an official leaderboard snapshot, not a submission-page receipt for GEMSDOE32 or GEMSDOE92. The prompt's 0.3195 is an older conflicting snapshot.
+8. **Core values.** Maximize P(Win): weigh evidence, upside, and risk rather than optimizing for a flattering narrative. Own the outcome end to end: report failures and blockers instead of disguising them.
+
+## What the existing evidence says
+
+- `h33-h33-2-b2` is associated with an owner-reported **CLAIM 0.2778**, but no organizer receipt is present in this repository. Its documented lineage—fixed-size spatially thinned ridge dots, reduced redundancy, and avoidance of known traces—is compatible with the distance-tolerant asymmetric DTI, but this is a mechanistic explanation, not proof of causality.
+- **HOLDOUT-DTI** for STEPOVER (`gems57-pooled-hide-v2`, 11,321 withheld positives, 95% CI `[0.0000, 0.0000]`) is negative versus R0 proxy baseline `0.0037 [0.0031, 0.0044]`. It does not show that a genuinely unmapped fault would score zero; this holdout is catalogue-derived and has a structural limitation.
+- RELIEF/DILATATION run cards report positive catalogue-holdout deltas but fail the literal whole-file overlap rule against registered parent R0. They are not cleared for a slot. The unique STEPOVER artifact is negative. At present, no candidate in the repository is both expected to improve under the recorded holdout and clear under the literal uniqueness rule.
+- The three-to-five next hypotheses, mechanisms, mimics, differences from implemented approaches, relative priority, cost, source availability, and stopping condition are in [`docs/hypotheses_20261024.md`](docs/hypotheses_20261024.md). No new experiment was run in this review because the budget was already consumed and the feature stack is missing locally.
+
+## Answer to “why 0.2778, and can we beat it?”
+
+The observed 0.2778 cannot be causally explained from the supplied public score listing alone: the source artifact's organizer receipt and private test truth are absent. A plausible reason for a high DTI is a fixed dot budget concentrated on spatially distinct ridge candidates that fall within the competition's distance kernel of hidden truth; redundant dots are costly under the asymmetric false-positive term. This is a hypothesis consistent with the known lineage, not a demonstrated explanation. Generating a higher score is possible in principle, but no local HOLDOUT-DTI or model projection establishes that it will happen. Only an organizer-confirmed submission receipt can answer that question for a live submission.
+
+## Run and verify locally
+
+Python dependencies are pinned in `requirements.txt`.
 
 ```bash
-python -m pytest tests -q                                  # 97 passed
-make manifest && make verify                               # RESULT: OK · PARENT VERIFIED
-PYTHONPATH=vendor python scripts/check_site.py
+python -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/python -m pytest tests -q
+PYTHONPATH=vendor .venv/bin/python scripts/check_site.py
+.venv/bin/python -m gems manifest --manifest registry/data_manifest.json --data-root data
+.venv/bin/python -m gems parent --recipe registry/parents/R0.json --data-root data
 ```
 
-## This session's lane: DILATATION (geodetic volumetric strain)
+Do not rebuild variants as part of a review unless the active lane and remaining budget explicitly allow another experiment. The active source stack `training_features.tif` is not in the current checkout cache; no new feature experiment can be reproduced until the authorized input is staged and pinned.
 
-- **Hypothesis.** Band 8 `geod_dilaterate` is a *kinematic* field. The catalogue maps Quaternary **scarps**; strain maps where they are currently **opening**. Faulds et al. put ~32 % of Great Basin geothermal systems in dilatational step-overs / relay ramps and ~25 % at terminations and intersections. A blind fault under 10–100 m of fan alluvium has **no scarp to map but still dilates**.
-- **Mechanism.** Count held at 37,654. Move 12 % (4,518) of the lowest-dilatation parent dots into the high tercile (≥ 7.24 nstrain/yr) on H19-5, placed by greedy exact expected-DTI (α 0.2, β 0.8, R 300 m) under `0.70·dilatation + 0.30·TMI/grav/scarp`. Zero catalogue mass; `d_cat > 2.0 px`.
-- **Non-fault mimic.** Brine-pumping / agricultural subsidence bowls, Walker Lane strain shadows, ductile thick-fill stretching without brittle faulting.
-- **HOLDOUT-DTI** `gems57-pooled-hide-v2`, 8 folds, 22,663 withheld positives, 157 spatial clusters, 1,000 paired draws: R0 `0.004006 [0.003424, 0.004690]` → p12 `0.005779 [0.004863, 0.006851]`, Δ **+0.00177 [0.00111, 0.00246]**.
-- **Leakage canary** (each band tested alone before any result was trusted): Band 8 `0.5145`, 7 `0.5128`, 4 `0.5102`, 15 `0.5149`, 17 `0.5060` — max **0.5149 ≪ 0.90**.
-- **Verdict:** **NOT CLEARED** — dose response is monotone (p10 +0.00174, p12 +0.00177, p15 +0.00181) but all three measure 99.37–99.40 % within 3 px of registry raster R0, over the brief's 70 % limit. Logged as duplicates under the operator's rule.
+## Limitations and outstanding work
 
-Rebuild: `python scripts/build_dilatation_variants.py` · proxies: `python scripts/report_dilatation_proxies.py`
+- **No DrivenData authentication in this session.** The agent cannot fetch login-gated competition inputs, upload, select a slot, or retrieve a private leaderboard receipt.
+- **Missing cached stack.** `.cache/gems_inputs/training_features.tif` is absent. The official data page is <https://www.drivendata.org/competitions/306/competition-doe-gems/data/> and requires competitor access. Do not replace it with a public mirror whose redistribution terms are unchecked.
+- **Holdout mismatch.** The shared holdout hides known catalogue segments, whereas the competition tests faults missing from the public catalogue. A positive holdout preference may not generalize to new-fault scoring.
+- **Registry scope.** “Unique” means only that the candidate cleared the recorded scan of 14 locally accessible rasters, not every GEMSDOE page or private registry.
+- **Redistribution terms.** Competition input rasters in this public repo and mirrors need terms review. See [`registry/session_manifest.json`](registry/session_manifest.json) and [`IRREGULARITIES.md`](IRREGULARITIES.md).
+- **Leaderboard evidence class.** The public leaderboard was read on 2026-10-24 and displayed 0.4413 at #1 (official leaderboard snapshot, not a submission-page receipt for this candidate). The prompt's 0.3195 is an older conflicting snapshot. The GEMSDOE32 0.2778 remains a CLAIM without a receipt here.
 
-## ⚠ No served file is both unique and expected to improve
+## Verified official sources for manual review
 
-Measured this session, and it is the finding that should drive the next one. **Under the operator's literal rule this repository has nothing submittable.**
+- [Competition overview, problem, data and metric](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/)
+- [Competition about page](https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/)
+- [Official public leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/) (observed 2026-10-24; snapshot, not this project's receipt)
+- [Competition data page (login-gated)](https://www.drivendata.org/competitions/306/competition-doe-gems/data/)
+- [Official rules PDF](https://docs.nlr.gov/docs/fy26osti/96647.pdf)
+- [DrivenData reference solution](https://github.com/drivendataorg/gems-prize-reference-solution)
+- [USGS GeoDAWN data catalog](https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7)
+- [DOE Geothermal Data Repository / INGENIOUS #1391](https://gdr.openei.org/submissions/1391)
+- [EPSG:32611](https://epsg.io/32611)
+- [Faulds et al. Great Basin structural-geothermal context](https://www.osti.gov/servlets/purl/1110517)
+- [GEMSDOE32 H33-2-B2 historical project page](https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html) (owner analysis; not a DrivenData receipt)
 
-Applied to **whole files**, the rule "more than 70 % of your dots within 3 px of one registry raster ⇒ duplicate" flags **every** R0 descendant:
-
-| arm | shared with R0 | whole-file % within 3 px of R0 |
-|---|---|---|
-| DILATATION p12 | 33,136 (88.0 %) | 99.37 % |
-| RELIEF p10 | 33,889 (90.0 %) | 99.38 % |
-| TIPGAP far18f33 | 25,228 (67.0 %) | 67.00 % |
-
-Shared-parent mass dominates the statistic, so the whole-file number mostly measures *how much of R0 you kept*, not *whether you are in someone else's lane*. On the **arrival sets** — the pixels each axis actually chose — the lanes are nearly disjoint:
-
-| comparison (arrivals only) | % within 3 px | exact same pixel | Jaccard |
-|---|---|---|---|
-| DILATATION vs TIPGAP | 6.91 % | 0.40 % | **0.0011** |
-| DILATATION vs RELIEF | 28.84 % | 25.19 % | 0.1593 |
-| TIPGAP vs RELIEF | 2.29 % | 0.14 % | **0.0011** |
-
-**Which reading governs.** Reading 2 is the better science, but it is *this repository reinterpreting an operator gate in its own favour* — exactly the move that lets a non-compliant file look compliant. So **the literal rule governs**: every positive-holdout arm above is logged as a duplicate of R0, and no slot is recommended. An upload is a recorded human override, not an agent recommendation. This supersedes an earlier revision of this README that carried `Verdict: promote` for DILATATION p12; see `IRREGULARITIES.md` 2026-10-25.
-
-**The tension this exposes.** TIPGAP clears the whole-file gate (67.00 %) *only because* it moves 33 % of the budget far off the D2.8 skeleton — and that is precisely the change that drove its HOLDOUT-DTI **below** R0 (−0.001283, verdict negative). Uniqueness and expected gain currently pull in opposite directions. Resolving that, not building another variant, is the next session's job — see [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md).
-
-## Why h33-h33-2-b2 CLAIM 0.2778 is high
-
-Not ORGANIZER-CONFIRMED (no receipt in `ledger/` — 30 `BUILT` rows, zero receipts). The lineage is mechanical, not mysterious:
-
-1. H19-5 multiline corroborated ridges — CLAIM 0.1922
-2. Poisson-disk thin at 2.8 px — CLAIM 0.2600 (DTI β = 0.8 punishes extra mass)
-3. SOLO drop of sub-bar dots — CLAIM 0.2708 (bar ≈ 0.2·DTI ≈ 0.056)
-4. B2 keep off known traces — CLAIM 0.2778 (catalogue is masked at scoring)
-
-At a fixed 37,654-dot budget, beating it needs ~25 % more mean credit per dot. No public catalogue can supply that; the route is a better detector. Prompt-cited public tops 0.3195 / 0.4413 are **not** copied as receipts here.
-
-## Lanes built here
-
-| lane | HOLDOUT-DTI | Δ vs R0 | verdict | download |
-|---|---|---|---|---|
-| **DILATATION p12** | 0.005779 | **+0.00177** | **promote** | [zeros-outside](docs/downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif) |
-| DILATATION p10 / p15 | 0.005747 / 0.005818 | +0.00174 / +0.00181 | built, dose ladder | [p10](docs/downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif) · [p15](docs/downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif) |
-| TIPGAP far18f33 (33 % moved 6–18 px past H19-5 tips, off-skeleton) | 0.002723 | −0.001283 | **negative** | [zeros-outside](docs/downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif) |
-| RELIEF p10 (piedmont elevation tercile) | 0.006045 | +0.002039 | built, reserve | [NaN-outside](docs/downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24.tif) |
-
-The TIPGAP file is kept because a negative result is a deliverable — it falsifies "continuations sit 0.5–1.8 km past the tips" on this instrument. **Do not spend a slot on it expecting a gain.** The three on-skeleton 10–15 % TIPGAP doses were logged as lane-duplicates of R0 (arrival overlap ≈ 0.999) and are not offered.
-
-## Shared tools fixed this session (not forked)
-
-Running the repo's own gates instead of trusting them exposed two defects and one wrong number — all in `IRREGULARITIES.md` with before/after measurements:
-
-1. **Pinned paths were joined onto the data root twice.** The registries record different conventions, so repo-relative `data/parent_R0_nan.tif` became `data/data/…`. `make manifest` reported **8 of 8** inputs `MISSING` while every file was on disk and correctly hashed. → one `gems.rasters.resolve_pinned_path()` used by both call sites. **After: `RESULT: OK`, 8/8.**
-2. **`registry/parents/R0.json` is `mode: pinned_artefact`, which the loader could not read**, so `make verify` — "the gate that stops a session before it burns slots on descendants of an unverified parent" — raised on *every* run. → the loader validates that form, and `verify_pinned_artefact()` checks sha256 **and** byte length per encoding, then **re-measures** dot count, total mass, min catalogue distance, footprint and the 3/4/5 px collar counts from the raster itself and diffs them against the record. **After: exit 0, zero drift on all seven invariants.**
-3. **That new check immediately caught a wrong number:** `R0.json` claimed 355,000 B for the NaN artefact; disk and `session_manifest.json` both say **355,443 B**. The sha256 — the real authority — was correct in both, so no artefact was ever mis-identified.
-
-CI ran the parent gate as `… || true`, which is why a gate that had never passed produced no signal. It is fatal now, plus `make manifest`, plus a gate on **every** `docs/downloads/*-zeros.tif`, plus an assertion that the primary named in `index.html` matches its audit receipt byte-for-byte.
-
-
-## Additional session deliverable (STEPOVER, negative)
-
-A separate STEPOVER lane was also built and kept as a negative deliverable; it does **not** replace the TIPGAP FAR download above.
-
-- **File:** [`releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif`](releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif) (all-finite zeros encoding, SHA-256 `e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205`)
-- **Status:** OK TO DOWNLOAD; **NOT a weekly slot** (verdict negative).
-- **Lane:** 5,000 unit-mass dots at visible catalogue trace-tip step-overs, 3–10 px off catalogue (`d_cat > 3 px`), 1 px spacing. Distinct from TIPGAP (H19-5 skeleton endpoints) and from MASS/PRUNE/SNAP/CONCENTRATION/RELIEF.
-- **HOLDOUT-DTI:** 0.0000 [0.0000, 0.0000] vs R0 0.00370 [0.00301, 0.00432] (`gems57-pooled-hide-v2`, 11,321 withheld positives). This is a structural zero for gate-compliant off-catalogue dots; see `IRREGULARITIES.md`.
-- **Uniqueness / canary:** worst Spearman ρ = 0.0277, worst 3-px forward overlap = 0.2534 vs 14 locally accessible registry rasters; leakage AUC = 0.4996.
-- **Details:** [`docs/executive-summary.html`](docs/executive-summary.html) · [`docs/ANALYSIS.md`](docs/ANALYSIS.md) · [`evidence/run_card.json`](evidence/run_card.json)
-
-## Limitations (what this sandbox cannot do)
-
-- No DrivenData auth → cannot auto-download from the competition data tab and cannot upload.
-- Competition hosts (drivendata.org, dropbox.com) are not in the allowlist; hashes are owner-mirror SHA-256, not organizer-authenticated.
-- Cannot fill `TOP_PUBLIC` from the live leaderboard.
-- Weekly slot promotion is human-only (3/week + one blind final).
-- The holdout's truth is the **visible catalogue**, so it cannot reward a genuinely new fault. It ranks emission rules; live receipts remain the decision anchor.
-
-## Verified facts
-
-- Metric: DTI α = 0.2, β = 0.8, triangular R = 300 m, float32 EPSG:32611 100 m — https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/
-- Known faults masked pixel-exactly — https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516
-- Rules — https://docs.nlr.gov/docs/fy26osti/96647.pdf
-- GeoDAWN (400 m line spacing, 150–200 m AGL) — https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7 · https://doi.org/10.5066/P93LGLVQ
-- Dilatational step-overs host ~32 % of Great Basin geothermal systems — https://www.osti.gov/servlets/purl/1110517 · https://pangea.stanford.edu/ERE/pdf/IGAstandard/SGW/2025/Giddens.pdf
-
-## Evidence labels
-
-RECEIPT = submission-page receipt · CLAIM = owner-reported · HOLDOUT-DTI = hide-and-recover · PROXY = other local instrument · MODEL = projection. Never write a projection as a score.
-
----
-
-## Session prompt (read first every session)
-
-The live Arena operator prompt is stored in [`SESSION_PROMPT.md`](SESSION_PROMPT.md). In every session:
-
-1. Stay in one named geological lane. Run the lane test on **arrival sets**, not whole files (see the overlap section above). Log a duplicate and stop if arrivals genuinely coincide.
-2. Reuse `vendor/gems57/evaluate_holdout.py` and `vendor/gems57/submission_writer.py`. Holdout = withhold whole fault segments with a buffer; catalogue features from visible faults only; mask visible faults pixel-exactly; pooled DTI α = 0.2 β = 0.8, 300 m triangular kernel.
-3. Label every number HOLDOUT-DTI (evaluator version, n withheld, 95 % CI) or ORGANIZER-CONFIRMED.
-4. Leakage canary: single feature AUC > 0.90 means leakage until proven otherwise.
-5. End with a JSON run card: hypothesis; mechanism; named non-fault mimic; holdout DTI+CI; correlation/overlap; raster sha256; validator; submission name + ≤140 char note; verdict promote/negative.
-6. Stop after 3 experiments or 2 hours. Do not pick live slots.
-7. Ship an obvious zeros-outside GeoTIFF download. Never claim a HOLDOUT number is a leaderboard score.
-8. Maximize P(Win) and own the outcome: a negative unique file is a deliverable; a copied 0.2778 file is not.
+See [`docs/ANALYSIS.md`](docs/ANALYSIS.md), [`docs/REVIEW_AND_NEXT_STEPS.md`](docs/REVIEW_AND_NEXT_STEPS.md), [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md), and [`IRREGULARITIES.md`](IRREGULARITIES.md) for details and historical findings.

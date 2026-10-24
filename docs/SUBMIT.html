@@ -1,35 +1,36 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Executive Summary &amp; How to Submit — GEMSDOE92 DILATATION</title>
-<style>body{margin:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:#14161a;background:#fbfbfd}.wrap{max-width:780px;margin:0 auto;padding:28px 20px 48px}a{color:#0b5fff} .card{background:#fff;border:1px solid #e6e8ee;border-radius:12px;padding:16px 18px;margin:14px 0} code{background:#f3f4f8;padding:2px 6px;border-radius:6px} pre{overflow-x:auto;background:#0f1115;color:#e6e8ee;padding:14px;border-radius:10px} .ok{border:1px solid #b8e6c6;background:#e9f7ee;border-radius:10px;padding:12px 14px}</style>
-</head><body><div class="wrap">
-<p><a href="index.html">← Back to GEMSDOE92</a></p>
-<h1>Executive summary — in 60 seconds, how to submit this file to the competition</h1>
-<div class="card" style="border:2px solid #0b5fff"><h3 style="margin:0 0 8px;color:#0b5fff">⬇ One-click download (primary — all-finite, portal-safe)</h3>
-<p><a style="display:inline-block;padding:12px 18px;border-radius:10px;background:#0b5fff;color:#fff;font-weight:700;text-decoration:none" href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif" download>Download h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif (210 KB)</a> <a style="display:inline-block;padding:12px 18px;border-radius:10px;background:#fff;color:#0b5fff;border:1px solid #0b5fff;text-decoration:none;margin-left:8px" href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b.zip" download>Download .zip</a></p>
-<p style="margin:6px 0 0;color:#145722"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD</strong> — 10/10 gates PASS on independent reread, values 0.0–1.0, 0 NaN inside, 0 catalogue mass. <strong>⚠ NOT CLEARED FOR A WEEKLY SLOT:</strong> 99.37% of dots lie within 3px of registry raster R0, over the brief’s 70% uniqueness limit — uploading is a recorded human override.</p>
-<p style="font-size:13px;color:#5b616e">Also: <a href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b.tif">NaN-outside twin</a> (identical inside) · <a href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-audit.json">audit.json</a> · SHA-256 <code>25ba17a26d31df9d574fba2a2f34d03ff58f587f4ffde092dcc4bba9822f8898</code></p>
-</div>
-<h2>What you are submitting — and why it might score higher than 0.2778</h2>
-<p>This file is 37,654 unit-mass dots (100 m pixels, EPSG:32611, 3730×3292) — the same budget as the best owner-claimed file <code>h33-h33-2-b2</code> (CLAIM 0.2778 on the public leaderboard) but <strong>12 % of the dots have been moved from low-dilatation ground into actively dilating corridors</strong> where geothermal faults are most permeable. The move is:</p>
-<ul>
-<li><strong>Parent:</strong> <code>h33-h33-2-b2</code> — D2.8-thinned H19-5 ridge, B2-pruned, 37,654 dots.</li>
-<li><strong>Change (DILATATION axis):</strong> drop the 4,518 lowest-dilatation dots (Band 8 <code>geod_dilaterate</code> &lt; 3.8 nstrain/yr) and regrow them greedily by exact expected DTI inside the high-dilatation tercile (≥7.24 nstrain/yr), on H19-5, <code>d_cat&gt;2.0 px</code>, off catalogue.</li>
-<li><strong>Why it should beat 0.2778:</strong> The holdout (22,663 withheld catalogue segments, 8 spatial folds, 157 clusters) gives R0 0.004006 and p12 0.005779 — <strong>Δ+0.00177 [0.00111, 0.00246] excluding 0</strong>. That is not a score, but it is the pre-registered rule for spending a weekly slot. The previous RELIEF axis gave +0.00197 on the same instrument; DILATATION is comparable but with a <em>kinematic</em> prior (strain) rather than a topographic one, so it is orthogonal and composable.</li>
-</ul>
-<h2>3 steps to submit (no manual pixel edits — inspection is code)</h2>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Executive summary — submit GEMSDOE92</title><link rel="stylesheet" href="style.css"></head>
+<body><main class="wrap">
+<p><a href="index.html">← Back to download page</a></p>
+<h1>Executive summary: how to make a DrivenData submission</h1>
+<div class="banner banner-ok"><strong>Download status: YES — format-valid.</strong> The linked zeros-outside GeoTIFF passes local format/range validation, including all-pixel finite values in [0,1].</div>
+<div class="banner banner-warn"><strong>Slot recommendation: NO — NOT RECOMMENDED.</strong> The STEPOVER candidate has HOLDOUT-DTI 0.0000 [0.0000, 0.0000], below the R0 proxy baseline. It is retained as a unique negative result. Do not spend a weekly slot on it unless a human makes and records an override.</div>
+
+<h2>1. Download</h2>
+<p><a class="btn" href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif" download>Download the GeoTIFF</a> <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.zip" download>Download the single-TIFF ZIP</a></p>
+<p>Submission name: <code>h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f</code></p>
+<p>Optional note (116/140 characters): <code>h33-h33-2-b2; STEPOVER step-over dots 3-10px off catalogue at visible trace tips; HOLDOUT-DTI 0.0000 [0.0000,0.0000]</code></p>
+<p>SHA-256: <code>e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205</code>. The <a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-audit.json">audit receipt</a> describes the bytes served from this site.</p>
+
+<h2>2. What local validation means</h2>
+<p>The local validator independently read the downloadable file and checked the reference grid and catalogue. It passed ten local gates: one float32 band; EPSG:32611; shape 3730×3292; transform equal to the sample-submission grid; finite values in [0,1]; no NaN in the footprint; zeros outside; no positive mass on the catalogue; and SHA-256 recorded. This directly addresses the reported portal error <code>Predicted values must be in range [0, 1]</code>.</p>
+<p>A local pass is not DrivenData acceptance, scientific validity, leaderboard score, or a recommendation to use a slot. The uniqueness comparison covers 14 locally accessible registry rasters only; it cannot certify uniqueness across every public, private, or unindexed site.</p>
+
+<h2>3. Competition form steps</h2>
 <ol>
-<li><strong>Download</strong> the green-button file above. It is a single-band float32 GeoTIFF; outside the footprint is 0.0 (finite, not a sentinel), inside is 0.0 or 1.0. The portal’s “values must be in [0,1]” check passes because every one of the 12,279,160 cells is finite (see <a href="#fix">fix below</a>).</li>
-<li><strong>Upload</strong> at <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">DrivenData → GEMS → Submit</a> (login required). Choose the downloaded .tif; the form also accepts a .zip containing one .tif — the provided .zip is that. Do not edit the file.</li>
-<li><strong>Note field:</strong> paste <code>h33-h33-2-b2; DILATATION shift 4518 dots (12%) low→high dilat; pred MODEL:+0.007</code> (84/140 chars). For the submission-name field use <code>GEMSDOE92-DILATATION-p12-20261025</code>. Submit <strong>one</strong> encoding per slot (zeros <em>or</em> nan — they score identically).</li>
+  <li>Sign in to the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData competition submission page</a>.</li>
+  <li>Choose “New submission” and upload the <code>.tif</code> above, or the supplied ZIP containing exactly one GeoTIFF.</li>
+  <li>Paste the submission name and optional note shown above. Verify the selected file name and submit only if you independently decide to override the negative slot recommendation.</li>
+  <li>After submission, copy the score and date from the submission-page receipt into the ledger as ORGANIZER-CONFIRMED. A local holdout value is never a competition score.</li>
 </ol>
-<div class="ok"><strong>Is it OK to submit?</strong> Yes — if you see ✅ at the top, the file re-passed all 10 MUST gates after being written to disk and re-read (CRS, shape, transform, dtype, band, range, NaN, catalogue). The audit is <a href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-audit.json">here</a>.</div>
-<h2 id="fix">How the portal error was fixed (so you don’t have to debug it)</h2>
-<p>The portal checks <em>every pixel</em> — including outside the study area. Past failures put <code>−3.4028235e+38</code> (the training stack’s nodata sentinel) or a stray NaN inside the footprint, which is outside [0,1]. This file avoids both by writing <code>nodata=None</code> and outside=0.0 (finite), then asserting <code>n_violations=0 min=0.0 max=1.0 nan_pixels=0</code> on reread. Both twins pass.</p>
-<h2>What you must still do</h2>
+<p>Competition rules: <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">official rules PDF</a>. Detailed metric description: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">problem page</a>.</p>
+
+<h2>4. Evidence and limitations</h2>
 <ul>
-<li>Confirm your rolling-week quota (3 submissions per 7 days until 2026-12-03) before uploading — promotion to a real slot is a separate selector step.</li>
-<li>After the leaderboard updates, copy the <strong>ORGANIZER-CONFIRMED receipt score</strong> into <code>ledger/submissions.csv</code> (holdout and model numbers are never scores).</li>
-<li>Never upload both <code>-zeros.tif</code> and <code>.tif</code> of the same build — they shoot identically and waste a slot.</li>
+  <li><strong>HOLDOUT-DTI</strong> (gems57-pooled-hide-v2; 11,321 withheld positives; pooled DTI α=0.2, β=0.8, 300 m triangular kernel; 95% CI): candidate 0.0000 [0.0000, 0.0000]. R0 0.0037 [0.0031, 0.0044]. Negative result.</li>
+  <li>Leakage canary AUCs and registry overlap are in <code>evidence/run_card.json</code> and the site audit JSON. Canary values were below the 0.90 stop threshold; that does not rescue the negative holdout.</li>
+  <li>The full competition feature stack is not present in this checkout's cache, so the candidate's historical run card cannot be independently regenerated here. The shipped TIF's format, range, grid, and hash were independently rechecked from the local served copy.</li>
+  <li>No DrivenData authentication or submission receipt is available in this session. No upload, slot selection, or live score verification was performed.</li>
 </ul>
-<p><a href="index.html">← Back to full site with run card, sources, and reproduction steps</a></p>
-</div></body></html>
+<p><a href="hypotheses_20261024.md">Candidate-hypothesis comparison</a> · <a href="NEXT_STEPS.md">Remaining work and blockers</a> · <a href="index.html">Home</a></p>
+</main></body></html>

@@ -533,3 +533,13 @@ holdout credit. Uniqueness and expected gain currently pull in opposite directio
 next session's job is not another variant: it is either (a) an arm that reallocates enough to
 clear 70 % *without* leaving the skeleton's high-credit neighbourhood, or (b) an explicit,
 recorded human decision that Reading 2 governs. See `docs/NEXT_STEPS.md`.
+
+## 2026-10-24 review — conflicting landing-page recommendation and timestamp anomalies
+
+**Observation.** The inherited `docs/index.html` stated that DILATATION p12 was not cleared under the literal uniqueness rule, but a lower comparison table still labelled it `promote`. Its run card's overlap statistic was 99.37% within 3 px of registry parent R0, above the 70% stop threshold. The README also described that file as primary while the current findings said no file was both unique and expected to improve. The two visible recommendations were incompatible.
+
+**Correction.** The landing page now features the existing STEPOVER negative candidate because its saved local registry scan passes the specified thresholds; it explicitly says **OK TO DOWNLOAD, NOT RECOMMENDED FOR A WEEKLY SUBMISSION SLOT**. Its candidate raster/zip are byte-identical to the existing release artifacts (SHA-256 `e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205`); this is publishing an existing locally generated negative result, not claiming a new experiment or copying an organizer-submitted file. A new sidecar audit records independent format-gate results for the actual site-served copy. The submission guide is consolidated at `docs/SUBMIT.html`; old guide URLs point there.
+
+**Measured in this checkout.** The site TIF passes all 10 `gems.gates` checks, has 5,000 positive pixels, all finite values 0–1, and the sample-submission CRS/shape/transform. ZIP inspection shows exactly one `.tif` member. The run card's scientific evidence remains **HOLDOUT-DTI** `gems57-pooled-hide-v2`, 11,321 withheld positives, 95% CI `[0.0000, 0.0000]`; negative versus R0. The uniqueness statement is explicitly limited to the 14 rasters in the local scan, not a guarantee of global uniqueness.
+
+**Date irregularity flagged, not silently normalized.** Several inherited files are stamped `2026-10-25` (including DILATATION outputs, README/next-step text, and an IRREGULARITIES section) despite this review's system date being `2026-10-24`. The provenance of those future-dated entries is not established by this checkout. They were not used as evidence of current-day work; keep the original file names and historical records intact until repository owners explain the timestamp mismatch.

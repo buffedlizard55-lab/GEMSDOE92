@@ -169,46 +169,22 @@ def test_dilatation_primary_download_is_tracked_and_gate_passed() -> None:
     assert "!docs/downloads/*.zip" in ignore
 
 
-def test_dilatation_site_offers_obvious_download_and_submission_note() -> None:
+def test_site_offers_unique_negative_candidate_with_honest_slot_status() -> None:
+    """A local format pass must not be confused with a slot recommendation."""
     html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
-    # an obvious download, and the encoding that survives the portal validator
     assert "OK TO DOWNLOAD" in html
-    assert "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif" in html
-    assert "download" in html
-    # a unique submission name and a <=140 char note
-    assert "GEMSDOE92-DILATATION-p12-20261025" in html
-    note = "h33-h33-2-b2; DILATATION shift 4518 dots (12%) low→high dilat; pred MODEL:+0.007"
-    assert note in html and len(note) <= 140
-    # the run card must be present with its verdict
-    assert "run-card" in html or "Run card" in html
-    assert '"verdict"' in html
-    submit = (ROOT / "docs" / "SUBMIT.html").read_text(encoding="utf-8")
-    assert "DrivenData" in submit and "OK TO DOWNLOAD" in submit
-
-
-def test_site_must_disclose_the_uniqueness_failure() -> None:
-    """Guard the correction: no unqualified 'submit this' banner may come back.
-
-    This repository shipped a `✅ OK TO DOWNLOAD AND SUBMIT` banner and a
-    `verdict: promote` run card for a file that measures 99.37 % within 3 px of
-    registry raster R0 -- over the brief's 70 % uniqueness limit. The banner was
-    corrected; this test is what stops a later session silently reverting it.
-    """
-    html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
-
-    # the page must state the disqualification, with the measured number
-    assert "NOT CLEARED FOR A WEEKLY SLOT" in html
-    assert "99.37" in html
-    assert "70 %" in html or "70%" in html
-    # and it must not carry the withdrawn recommendation
+    assert "NOT RECOMMENDED FOR A WEEKLY SUBMISSION SLOT" in html
+    assert "STEPOVER-tip10px-N5000" in html
+    assert "unique-within-local-registry" in html
+    assert "HOLDOUT-DTI" in html and "0.0000 [0.0000, 0.0000]" in html
+    assert "99.37" in html or "99.37–99.40" in html
     assert "OK TO DOWNLOAD AND SUBMIT" not in html
-    assert "Verdict: promote" not in html
-    assert '"verdict": "promote"' not in html
-    # the run card verdict must record the disqualification, not a promotion
-    assert "NOT_CLEARED" in html
+    assert "verdict: promote" not in html
 
-    # the same disclosure must reach the submission guide and the README
-    for rel in ("docs/SUBMIT.html", "docs/SUBMIT.md", "README.md", "SLOT_PLAN.md"):
+    submit = (ROOT / "docs" / "SUBMIT.html").read_text(encoding="utf-8")
+    assert "DrivenData" in submit
+    assert "Download status: YES — format-valid" in submit
+    assert "NOT RECOMMENDED" in submit
+    for rel in ("README.md", "SESSION_PROMPT.md"):
         text = (ROOT / rel).read_text(encoding="utf-8")
-        assert "NOT CLEARED" in text or "fails uniqueness" in text, \
-            f"{rel} recommends a slot without disclosing the uniqueness failure"
+        assert "NOT RECOMMENDED" in text

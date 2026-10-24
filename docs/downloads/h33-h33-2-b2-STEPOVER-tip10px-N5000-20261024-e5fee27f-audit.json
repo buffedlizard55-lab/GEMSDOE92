@@ -1,0 +1,130 @@
+{
+  "schema": "gemsdoe92.site-audit.v1",
+  "file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+  "sha256_zeros": "e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205",
+  "bytes": 70122,
+  "overall_pass": true,
+  "validation_class": "Local format/range preflight; not organizer acceptance, uniqueness completeness, or slot approval.",
+  "n_positive_pixels": 5000,
+  "raster": {
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "positive_pixels": 5000,
+    "dtype": "float32",
+    "bands": 1,
+    "nodata": null,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ]
+  },
+  "sample_submission_grid": {
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ]
+  },
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205"
+    }
+  ],
+  "lineage": {
+    "source_artifact": "releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.json",
+    "source_sha256": "1d6791390d52b198a4946a9f13782a6685fb7379e11a5fa0813cbca86f9b5c52",
+    "artifact_copy_sha256_matches_release_tif": true
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 11321,
+    "value": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "delta_vs_R0": -0.003698680598708719,
+    "delta_ci95": [
+      -0.0043771556582928245,
+      -0.0030647746270595546
+    ]
+  },
+  "uniqueness": {
+    "scope": "14 locally accessible registry rasters; not a complete cross-site/global registry",
+    "unique_within_scope": true,
+    "worst_surface_rank_correlation": 0.027719626468556663,
+    "worst_dot_rank_correlation": 0.00823784399966051,
+    "worst_3px_overlap": 0.2534,
+    "rho_threshold": 0.9,
+    "overlap_threshold": 0.7
+  },
+  "slot_recommendation": "NOT RECOMMENDED: negative HOLDOUT-DTI; no weekly slot."
+}
