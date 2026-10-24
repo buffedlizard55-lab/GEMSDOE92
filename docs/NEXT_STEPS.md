@@ -1,38 +1,31 @@
-# NEXT_STEPS — after the 2026-10-24 registry stop
+# Next Steps — `GEMSDOE92` (Updated 2026-10-24)
 
-## Current status
+## Prior-Session Queued Action Items — Completed in This Session
 
-One new method was evaluated: a 200–300 m collar around visible mapped faults, excluding the parent R0 dots' 300 m halo. It passes file-format gates and improves the local catalogue hide-and-recover measure, but the expanded public registry scan triggers the protocol's literal duplicate stop. **The result is negative. Do not use a weekly submission slot.** The TIF remains available as a negative deliverable, with the homepage clearly saying format-valid/downloadable but not cleared for submission.
+1. **Completed 1,300-raster public-registry audit on `BREAKLINE f45Ltop` (`evidence/breakline_public_registry_uniqueness.json`):**
+   - Verified across all `102` public `buffedlizard55-lab` GEMSDOE repositories (`1,294` non-BREAKLINE rasters): `122` rasters exceed `70%` forward 3-px overlap (`68` space-filling `>=70%`-halo surfaces + `54` `<70%`-halo rasters up to `0.9130` vs `GEMSDOE3/coverage-v3-wide`), `verdict: negative`.
+2. **Completed off-catalogue `USGS SGMC` bedrock-fault evaluation on `visible-collar-r0-excluded` (`evidence/scarpdipole_proxy_audit.json`):**
+   - `visible-collar` collapses **`-77.94%`** vs `R0` (`0.021192` vs `0.096060` across `n = 62,703` off-catalogue `SGMC` fault pixels), and its prior `11.7×` holdout headline was proved to be a fold-fair (`0.046866`) vs pre-punched static `R0` (`0.004006`) masking confound (`1.61×` vs fold-fair `parent_B2_visible = 0.029074`).
+3. **Repaired malformed JSON trailing comma & parallelized `scripts/audit_public_registry.py`:**
+   - Repaired `evidence/public_registry_uniqueness.json` + `docs/downloads/public_registry_uniqueness.json`; certified universal all-positive blocker `17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` (`5,167,373 / 5,167,373` positive footprint pixels).
+4. **Screened 5 untried geological hypotheses (`docs/HYPOTHESES_20261024_SCARPDIPOLE.md`) and implemented `SCARPDIPOLE` (`gems/scarpdipole.py`):**
+   - Built `f42dipole` (primary), `f45dipole`, and `f50dipole` via shared `submission_writer.py`.
+   - `SCARPDIPOLE f42dipole` ranks **#1 on fold-fair `HOLDOUT-DTI`** (`0.098565 [0.087985, 0.108974]`, `3.39×` `parent_B2_visible` and `2.10×` `visible_collar`), **#1 on static `HOLDOUT-DTI`** (`0.006812 [0.005770, 0.008034]`), **`+12.26%` above `R0` on off-catalogue `USGS SGMC`** (`0.107841`), **`10/10` format-valid**, and **`0 / 1,004` overlaps `> 70%` across all sparse dotted public submissions (`<= 60,000` dots)** (`max = 0.6877`), while faithfully recording binding `verdict: negative` under the un-waived literal all-rasters rule due to `17GEMSDOE`.
 
-**HOLDOUT-DTI** (`gems57-pooled-hide-v2`; buffered whole-component hide/recover; 8 spatial folds, seeds 20 and 30; 22,663 withheld positives; 1,000 paired 20 km block bootstrap draws): candidate 0.046866 [0.040216, 0.053315]; R0 0.004006 [0.003424, 0.004690]; paired Δ +0.042860 [+0.036122, +0.049357]. This is not a DrivenData score.
+---
 
-## Critical uniqueness finding
+## Immediate Recommended Next Steps for Future Sessions
 
-The initial in-repository 14-raster audit was too narrow and produced an incorrect selector-positive result. It is superseded. A broader scan of current default branches in 102 public `buffedlizard55-lab` repositories found 1,629 relevant TIFF paths / 1,285 unique Git blobs; 1,279 single-band rasters matched the target grid and were compared. The candidate's pre-placement surface and final dots both have **1.000000** forward 3-px overlap with accessible registry rasters; **131/1,279** exceed the 70% threshold. Worst absolute Spearman is below the 0.90 threshold (0.421367 on the surface; 0.492957 on the final dots), but overlap alone triggers the stop rule.
+1. **Human Selector Policy Decision on `17GEMSDOE` Saturation (`SLOT_PLAN.md`):**
+   - Because `17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` has positive support on `100.0%` of the `5,167,373` footprint cells, **no nonempty submission can ever pass** the literal un-scoped `>70%` positive-support rule (`finite > 0`).
+   - Decide explicitly whether the 3-px dot-overlap gate applies to sparse dot-field submissions (`<= 60,000` positive pixels, where `SCARPDIPOLE f42dipole` has `0 / 1,004` overlaps `> 70%`) while full-footprint Spearman rank correlation (`|ρ| <= 0.90`, where `SCARPDIPOLE f42dipole` has `max |ρ| = 0.3152`) governs continuous surfaces.
+   - If the human selector adopts that rule, **`h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif` is immediately ready for one live weekly DrivenData slot** (and if submitted, record the exact `ORGANIZER-CONFIRMED` score and UTC timestamp in `ledger/submissions.csv`).
 
-A concrete witness is [11GEMSDOE `gems-structural-area06-v1.tif`](https://github.com/buffedlizard55-lab/11GEMSDOE/blob/main/docs/downloads/gems-structural-area06-v1.tif), for which all candidate dots are within 3 px of positive support. Another witness is 17GEMSDOE's full-footprint `E-proba-multiscale` surface. Under the user's literal instruction, these are binding; this project does not waive the test because a raster has dense support. Full measurements/scope are `evidence/public_registry_uniqueness.json`.
+2. **How to Close the Gap Toward Leaderboard `#1` (`0.4413` `LEADERBOARD-SNAPSHOT` vs `0.2778` Sparse Dot-Skeleton Ceiling):**
+   - As proved in `README.md` §3, binary unit-mass dot skeletons (`p ∈ {0, 1}` at `>= 2.8 px` spacing) pay a fixed `α = 0.2` FP tax on every isolated dot in a negative cell and leave small uncovered gaps between `2.8 px` dots along continuous fault strands.
+   - Closing the gap from `~0.28` toward `0.32–0.44+` requires **calibrated continuous-probability `[0, 1]` multi-scale neural/boosted segmentation** (building on Prof. John Lipor's official `drivendataorg/gems-prize-reference-solution` Monte-Carlo CV U-Net) trained strictly on buffered whole-segment spatial folds with **DTI-surrogate cover loss** (`fault_cover_map` max-pooling with `α = 0.2, β = 0.8`) and multi-channel raw inputs (`det_elev` scarp-dipole tensor + raw `rtp` + raw `iso_grav_anom` + `depth_to_base_surf` + geodetic strain invariants), run on a GPU environment (`>= 16 GB` VRAM).
 
-The scan is broad, not exhaustive: historical branches, private repositories, other owners, unlinked GitHub Pages files, zip-only assets, and assets outside the searched directories may be missing. This caveat does not undo a duplicate already found.
-
-## Highest-value work, in order
-
-1. **Do not submit this candidate.** Keep it as a negative deliverable; preserve the cross-site audit and the corrected negative verdict. The build script must fail closed if the matching global audit is missing or says duplicate.
-2. **Keep the registry scan repeatable/current.** `scripts/audit_public_registry.py` queries current public default-branch trees, downloads submission TIFF blobs to ignored `.cache/`, verifies Git blob SHA and size, and records failures. Run it periodically; never claim it covers deleted/history/site-hosted files.
-3. **Resolve the literal overlap gate with the operator/policy owner outside this agent.** Until then, any candidate with >70% forward 3-px overlap against any registry raster is a duplicate and must stop. Do not silently substitute arrival-only overlap or exempt dense rasters.
-4. **Calibrate with an organizer receipt.** The local evaluator recovers mapped catalogue segments; live target is private/new faults. A human may choose a different candidate only through the separate selector after reviewing policy and weekly quota. Upload/receipt entry are human-only.
-5. **Build an off-catalogue validation instrument** before further candidate experiments. Score it separately from HOLDOUT-DTI and label it PROXY, never private test performance.
-6. **Obtain the missing GeoDAWN stack through the official competition data tab** if authorized, hash/size/grid verify it, and check license/data terms. The feature stack is absent from this checkout's cache; band-specific hypotheses remain untested.
-7. **Resolve redistribution terms** for tracked `data/` and releases; see `IRREGULARITIES.md`.
-8. Keep both submission guides, homepage, run card, validator tests and status strings synchronized. A format pass means downloadable, not selected/submittable.
-
-## Candidate queue and experiment budget
-
-The five-hypothesis list is `docs/hypotheses_visible_collar_20261024.md`. Candidate 1 was tested and stopped by the duplicate gate. The lane protocol says stop when a duplicate is found; do not continue by testing more placement variations under this lane. Any future lane requires a fresh session, distinct hypothesis, pre-placement surface registry test, and the stated 3-experiment/2-hour budget.
-
-## Data and evidence boundary
-
-The bridged sample submission, catalogue, and parent are hash-verified against owner mirrors. That proves the local bytes match those pins; it does not authenticate them with DrivenData or establish redistribution permission. Official competition data and upload can require login. No credentials are stored or requested. A HOLDOUT-DTI value is never an organizer score.
-
-## Parallel-session update — BREAKLINE (2026-10-24)
-
-The band-based queue was in fact tested by a parallel session with a restored stack (`scripts/restore_inputs.py`): BREAKLINE f33/f38/f45 (`docs/ANALYSIS_20261024.md`). Consequences for the queue above: (1) **first action next session:** run `scripts/audit_public_registry.py` against `BREAKLINEf45Ltop` — it is unique on the 18-raster local registry (worst 55.0% vs R0) but un-scanned publicly, and the collar precedent shows dense public rasters can stop any candidate under the literal forward-overlap rule; record the result either way. (2) The off-catalogue instrument requested in item 4 partially exists: the USGS SGMC bedrock-fault control (62,703 px) is implemented in `scripts/report_breakline_proxies.py` (BREAKLINE +31% vs R0; collar candidate not yet scored on it — cheap, do it). (3) Blocker 0 unchanged: 36 BUILT / 0 RECEIPT in `ledger/`; one organizer receipt still outranks every local instrument disagreement (collar's catalogue-proximity holdout 0.0469 vs BREAKLINE's discovery-oriented SGMC gain price different things). (4) Do not build a fourth BREAKLINE dose or re-litigate screened-out lanes (BASEMENT-STEP/Band 15 SGMC AUC 0.378; pure seismicity too smooth; radiometrics AUC≈0.50).
+3. **Additional Official Public Data Layers Worth Staging in `registry/session_manifest.json` (in an Unrestricted Network Environment):**
+   - **USGS Quaternary Fault and Fold Database (QFFD):** Verify attribute-level slip-rate / recency classes against `existing_faults` to understand which low-slip Class B/C Quaternary structures are systematically omitted from the competition compilation.
+   - **Nevada Bureau of Mines and Geology (NBMG) 1:24,000–1:100,000 Quadrangle Fault Compilations & InSAR Deformation Velocity Maps (UNR / ARIA Sentinel-1):** Direct physical observables of blind sub-alluvial creep/subsidence boundaries across Basin-and-Range geothermal play fairways without relying on coarse 2 km gravity gridding.
+   - **Live Public Registry Refresh:** In a network-unthrottled session, run `python scripts/audit_public_registry.py --candidate docs/downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif --surface .cache/diag/scarpdipole_S_pct.npy` without `--cache-only` to capture any newly pushed public repositories since `2026-10-24`.

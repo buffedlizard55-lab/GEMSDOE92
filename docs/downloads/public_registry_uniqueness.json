@@ -10,7 +10,7 @@
   },
   "inventory": {
     "owner": "buffedlizard55-lab",
-    "scan_source": "GitHub API default-branch inventory captured earlier on 2026-10-24; final comparison repeated from SHA-verified local cache after API rate limiting. No fresh API refresh on the cached comparison."
+    "scan_source": "GitHub API default-branch inventory captured earlier on 2026-10-24; final comparison repeated from SHA-verified local cache after API rate limiting. No fresh API refresh on the cached comparison.",
     "matching_public_repositories": 102,
     "default_branch_trees_complete": 102,
     "tree_errors": 0,

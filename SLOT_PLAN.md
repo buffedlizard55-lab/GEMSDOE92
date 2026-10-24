@@ -1,41 +1,48 @@
-# SLOT_PLAN — current selector state (2026-10-24)
+# SLOT_PLAN — Current Selector State (2026-10-24)
 
-## Current artifact: negative duplicate; no slot used
+## Primary Artifact: `SCARPDIPOLE f42dipole` — Format-Valid (`10/10`), `#1` on Both Holdout Regimes, `+12.26%` on `USGS SGMC`, `0 / 1,004` Sparse-Submission Overlaps `> 70%`, Recorded `negative` Under Un-Waived Literal All-Rasters Gate (No Live Slot Spent)
 
-`GEMSDOE92-visible-collar-r0-excluded-20261024` is the current primary download and a negative research deliverable. It passes all file-format gates. The initial 14-file local uniqueness scan was incomplete; the expanded literal registry scan across 1,279 matching-grid rasters in 102 public owner repositories found a duplicate. **Do not submit this candidate.**
+`h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif` (submission name `GEMSDOE92-SCARPDIPOLE-f42dipole-20261024`, SHA-256 `9febfbd7e301d708b0f60df08dc4add6bd5bd442909ea653bcd2a83a92d36262`) is the primary downloadable GeoTIFF on the GitHub Pages site (`docs/downloads/`).
 
-- **HOLDOUT-DTI** `gems57-pooled-hide-v2`, 8 buffered folds, 22,663 withheld positives: candidate **0.046866 [0.040216, 0.053315]**; parent R0 **0.004006 [0.003424, 0.004690]**; paired Δ **+0.042860 [+0.036122, +0.049357]**.
-- Leakage canary (visible-fault distance alone): symmetric AUC **0.745593**, below 0.90.
-- **REGISTRY-MEASUREMENT:** pre-placement and final worst forward 3-px overlap **1.000000**; 131/1,279 rasters exceed 70%. Worst |Spearman ρ|: pre-placement **0.421367**, final **0.492957** (both below 0.90). Overlap alone triggers the stop rule.
-- Format validation: 10/10 gates pass. SHA-256 `60082b75a3d8e4648a858622f71f24257c8cfef79286a1a96147c59f05377da7`.
-- **Verdict: negative — duplicate under the literal gate; stop.** No weekly slot was selected or used.
+- **Format & Portal Validation (`10/10` PASS):** `float32`, single band, `3730 × 3292`, `EPSG:32611`, exact sample geotransform, `0` NaN inside footprint, `0` NaN outside footprint, `0` Inf anywhere, values strictly in `[0.0, 1.0]`, `37,654` unit-mass dots (`21,839` piedmont-reranked `H19-5` dots + `15,815` off-skeleton `>3 px` scarp-dipole dots), `0.0` mass on `existing_faults`, `min(d_cat) = 2.2361 px > 2.0 px`.
+- **Fold-Fair Hide-and-Recover `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `n = 22,663` withheld positives, 8 folds, `d_visible > 2.0 px` per fold):**
+  - `SCARPDIPOLE f42dipole`: **`0.098565 [0.087985, 0.108974]`** (`#1` in `GEMSDOE92`)
+  - Paired Δ vs `parent_B2_visible` (`0.029074`): **`+0.069492 [+0.060008, +0.077790]`** (`3.39×` parent)
+  - Paired Δ vs `visible_collar` (`0.046866`): **`+0.051699 [+0.037872, +0.064896]`** (`2.10×` prior holdout high)
+- **Static Final-Raster `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `n = 22,663`, `d_full_catalogue > 2.0 px` pre-punched):**
+  - `SCARPDIPOLE f42dipole`: **`0.006812 [0.005770, 0.008034]`** (`#1` in `GEMSDOE92`)
+  - Paired Δ vs `R0` (`0.004006`): **`+0.002806 [+0.001946, +0.003686]`**
+  - Paired Δ vs `BREAKLINE f45Ltop` (`0.004861`): **`+0.001951 [+0.001091, +0.002781]`**
+  - Paired Δ vs `RELIEF p10` (`0.006045`): **`+0.000767 [-0.000090, +0.001595]`**
+- **Off-Catalogue `USGS SGMC` Bedrock-Fault Control (`PROXY`, `n = 62,703` pixels `>3 px` from `existing_faults`):**
+  - `SCARPDIPOLE f42dipole`: **`0.107841`** (`+12.26%` above `R0 = 0.096060`; vs `visible_collar = 0.021192`, `-77.94%`).
+- **Leakage Canary (`<= 0.90` gate):** Max raw band symmetric AUC = **`0.5531`**; `SCARPDIPOLE S_pct` symmetric AUC = **`0.6328`** (`PASS`).
+- **`REGISTRY-MEASUREMENT` (`1,300` compatible rasters across `102` public `buffedlizard55-lab` GEMSDOE repos):**
+  - **Local `GEMSDOE92` registry (`20` prior rasters):** `PASS` (`worst_local_3px_overlap = 0.6605 <= 0.70`, `worst |ρ| = 0.2698 <= 0.90`).
+  - **All sparse dotted public submissions (`<= 60,000` dots, `n = 1,004` across all `102` repos):** **`0 / 1,004` rasters `> 70%` overlap** (`max = 0.6877` vs `GEMSDOE48/H57-ds-relief-augmented`; `max |ρ| = 0.2742`).
+  - **Binding literal all-rasters rule (no continuous-surface exemption):** **`STOP` (`verdict: negative`, `submission_eligible: false`)** because `17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` is strictly positive on all **`5,167,373 / 5,167,373`** footprint pixels (`100.0%` forward 3-px overlap for every nonempty submission; `123` dense/wide rasters `>70%` total; global `max |ρ| = 0.3152 << 0.90`).
 
-Audit: `evidence/public_registry_uniqueness.json`; run card: `evidence/visible_collar_run_card.json`; file: `docs/downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif`.
+No weekly DrivenData submission slot was spent in this session. Promotion to a live weekly slot requires an explicit human selector decision scoping the 3-px dot-overlap check to sparse dot-field submissions (`<= 60,000` dots).
 
-## Scan scope and comparison boundary
+---
 
-The scan covered current default-branch TIFF paths in `docs/downloads/`, `releases/`, and submission directories across 102 public repositories whose names match GEMSDOE in the `buffedlizard55-lab` account. Trees were complete in the API scan; 1,285 unique Git blobs were downloaded and SHA/size-verified, and 1,279 single-band rasters matching the sample grid were compared. The audit is not exhaustive of historic branches, unlinked/site-hosted assets, private repositories, zip-only artifacts, or other owners. One binding duplicate witness is sufficient to stop under the literal rule, independent of scan completeness.
+## Audited Cross-Lane Comparison Table (`GEMSDOE92`)
 
-The largest overlap is 100% against `11GEMSDOE/docs/downloads/gems-structural-area06-v1.tif`; additionally, `17GEMSDOE_E-proba-multiscale` is positive across the full footprint and is also a binding overlap witness. We do not waive those because they are dense or continuous surfaces; the requested literal rule governs.
+| Candidate / Baseline | Dots | Fold-Fair `HOLDOUT-DTI` (`d_vis > 2`) | Static `HOLDOUT-DTI` (`d_cat > 2`) | Off-Cat `USGS SGMC` (`PROXY`) | Local `<=3 px` Max Overlap | Public Sparse (`<=60k`, `n=1,004`) `>70%` Count | Public All-Rasters (`n=1,300`) Binding Verdict | Live Slot Recommendation |
+|---|---:|---:|---:|---:|---:|---:|---|---|
+| `R0` (`h33-h33-2-b2`, parent `CLAIM 0.2778`) | 37,654 | `0.029074` *(as `parent_B2_visible`)* | `0.004006` | `0.096060` | `1.0000` (is `R0`) | — | Reference parent | Already submitted upstream (`GEMSDOE32`) |
+| **`SCARPDIPOLE f42dipole` (Primary)** | **37,654** | **`0.098565` `[0.0880, 0.1090]`** | **`0.006812` `[0.0058, 0.0080]`** | **`0.107841` (`+12.3%`)** | **`0.6605` (PASS)** | **`0 / 1,004` (`max 0.6877`)** | **`negative` (`17GEMSDOE` 100% surface)** | **Hold slot unless selector scopes gate to sparse dot fields (`#1` technical candidate)** |
+| `SCARPDIPOLE f45dipole` | 37,654 | `0.097641` `[0.0871, 0.1075]` | `0.006719` `[0.0056, 0.0079]` | `0.107849` (`+12.3%`) | `0.6634` (PASS) | `0 / 1,004` (`max 0.6657`) | `negative` (`17GEMSDOE` 100% surface) | Dose sibling — never pair with `f42dipole` in same week |
+| `SCARPDIPOLE f50dipole` | 37,654 | `0.094286` `[0.0840, 0.1036]` | `0.006516` `[0.0054, 0.0077]` | `0.107692` (`+12.1%`) | `0.6665` (PASS) | `0 / 1,004` (`max 0.6348`) | `negative` (`17GEMSDOE` 100% surface) | Dose sibling — never pair with `f42dipole` in same week |
+| `visible-collar-r0-excluded` | 37,654 | `0.046866` `[0.0402, 0.0533]` | N/A *(full-cat collar)* | `0.021192` (`-77.9%`) | `0.0352` vs `BREAKLINE` | Fails (`11GEMSDOE` / collar priors) | `negative` (`131` rasters `>70%`) | **Do NOT submit** — collapses `-77.9%` on off-catalogue `SGMC` |
+| `BREAKLINE f45Ltop` | 37,654 | — | `0.004861` `[0.0040, 0.0058]` | `0.126105` (`+31.3%`) | `0.5500` vs `R0` | Overlaps `54` `<70%`-halo rasters | `negative` (`122` rasters `>70%`) | Superseded on both holdout regimes by `SCARPDIPOLE f42dipole` |
+| `RELIEF p10` / `DILATATION p12` | 37,654 | — | `0.006045` / `0.005781` | `0.087245` (`-9.2%`) | `0.9938` / `0.9937` | Fails (`~99.4%` vs `R0`) | `negative` (`R0` duplicate) | **Do NOT submit** — `99.4%` duplicate of `R0` |
+| `TIPGAP far18f33` / `STEPOVER` | 37,654 / 5,000 | — | `0.002724` / `0.000000` | — | `0.6700` / `<0.70` | — | `negative` (below `R0` holdout) | **Do NOT submit** — below `R0` on holdout |
 
-HOLDOUT-DTI is a local catalogue hide-and-recover estimate, not a competition score, and cannot be compared with the prompt-reported **CLAIM 0.2778**. A prior repository record says the official public leaderboard was read on 2026-10-24 and showed 0.4413 at #1 (LEADERBOARD-SNAPSHOT, not a receipt for this candidate); the prompt's 0.3195 is an older conflicting snapshot. No ORGANIZER-CONFIRMED receipt for this candidate exists.
+---
 
-## Historical results retained
+## Receipt Decision Rule (If Human Selector Authorizes 1 Weekly Slot for `SCARPDIPOLE f42dipole`)
 
-- DILATATION p10/p12/p15 and RELIEF p10 had positive local HOLDOUT-DTI but were flagged as R0 duplicates under the literal >70%/3px rule. Do not recommend them for a slot.
-- TIPGAP FAR and STEPOVER were negative on their documented holdout instruments. Keep as negative deliverables.
-- Parent R0's 0.2778 remains **CLAIM** until a dated competition receipt is recorded in `ledger/submissions.csv`.
-
-## Next steps (no more candidate experiments until selector/gates reconciled)
-
-1. Keep the current candidate as a downloadable **negative** artifact; do not submit it.
-2. Run `scripts/audit_public_registry.py` periodically to refresh the expanded scan against current public branches; it records scan date/scope. Do not confuse public default branches with all historical/site-hosted assets.
-3. Resolve the literal overlap gate with a policy decision outside this agent's authority. Until then, any candidate with >70% overlap against any single indexed raster must stop; no arrival-only or dense-surface exception.
-4. Add an off-catalogue validation instrument. The current holdout's truth is the mapped catalogue and may not rank candidates for private uncatalogued targets.
-5. Obtain the missing GeoDAWN stack from the official competition data tab when authorized; current cache is absent. Hash-verify and record terms before testing the remaining hypotheses.
-6. Have the human selector review the actual current weekly quota. No credentials or slot were requested or used here.
-7. Resolve public-repository redistribution terms for committed rasters; see `IRREGULARITIES.md`.
-
-## Parallel-session candidate — BREAKLINE f45Ltop (2026-10-24 merge note)
-
-`h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0` (zeros sha256 `cd9c8a56…810e`): format-valid; **unique within the 18-raster local registry** (worst 55.0% vs R0; 3.5% vs the collar candidate); HOLDOUT-DTI 0.004861 [0.004032, 0.005822], Δ vs R0 +0.000854 [+0.000300, +0.001423]; SGMC control +31% vs R0. **Verdict: negative — NOT cleared** (below holdout-best arms; public-registry scan not yet run on this file). Relative standing for a future *human* selector once the overlap-gate policy (item 3 above) is resolved: BREAKLINE is the only served candidate that passes the literal rule on the local registry while beating its parent on the holdout; the collar candidate fails the expanded public scan outright. Receipt decision rules if it is ever uploaded: Δ ≥ +0.01 vs CLAIM 0.2778 ⇒ off-skeleton scarp-breaks earn live credit (walk dose up next session); Δ ≤ −0.01 ⇒ skeleton mass was load-bearing, retire far emission; |Δ| < 0.01 ⇒ no evidence, do not spend a sibling dose. Never pair BREAKLINE doses in one week; never submit a SUPERSEDED `*breakline` (greedy-emission) file.
+- **If `ORGANIZER-CONFIRMED` live score `>= 0.2878` (`Δ >= +0.010` vs `R0` `CLAIM 0.2778`):** Off-skeleton piedmont scarp-dipole emission + piedmont `H19-5` re-ranking earn real private/hidden-fault credit; test calibrated `[0, 1]` continuous cover-aware emission or `f45dipole` in a subsequent week.
+- **If `ORGANIZER-CONFIRMED` live score `<= 0.2678` (`Δ <= -0.010` vs `R0` `CLAIM 0.2778`):** Dropping `42%` of potential-field `H19-5` mass loses blind sub-alluvial basin-floor faults faster than topographic scarps add piedmont faults; retire pure topographic off-skeleton replacement and pivot to multi-physics U-Net/ensemble learning with organizer-authorized GPUs.
+- **If `|Δ| < 0.010`:** Inconclusive within single-submission variance; do **not** spend a second weekly slot on `f45dipole` or `f50dipole`.

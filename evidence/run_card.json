@@ -1,41 +1,260 @@
 {
-  "created_utc": "2026-10-24T06:32:36.638106+00:00",
-  "branch": "arena/aebe414f-gemsdoe92",
-  "submission_name": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f",
-  "submission_note": "h33-h33-2-b2; STEPOVER step-over dots 3-10px off catalogue at visible trace tips; HOLDOUT-DTI 0.0000 [0.0000,0.0000]",
-  "note_chars": 116,
-  "hypothesis": "STEPOVER: blind geothermal strands localize at visible-tract step-overs (3-10 px off mapped traces, strike continuation of trace tips), under-mapped in the USGS/INGENIOUS catalogue.",
-  "mechanism": "dots placed by visible-geometry favourability s(x) = strike-alignment x exp(-(d_tip-3)/3), unit mass, 1 px spacing, count N by holdout-DTI sweep.",
-  "named_non_fault_mimic": "erosional notch / alluvial fan head and pluvial-lake shoreline terminations can create tip-like trace ends without displacement.",
-  "holdout_dti": 0.0,
-  "holdout_ci95": [
-    0.0,
-    0.0
-  ],
-        "holdout_withheld_positives": 11321,
-        "holdout_evaluator_version": "gems57-pooled-hide-v2",
-        "holdout_pooled_tp": 0.0,
-        "holdout_pooled_fp": 4630.0,
-        "holdout_pooled_fn": 11321.0,
-        "holdout_note": "Structural zero: every gate-compliant dot is >3 px from the full catalogue and held-out truth is a subset of the catalogue, so no gate-compliant non-PRUNE raster can recover held truth within the 3 px kernel; R0's proxy credit comes from dots inside the 3 px exclusion. Holdout-DTI cannot rank gate-compliant candidates; the live receipt is the decision anchor.",
-        "delta_vs_R0": -0.003698680598708719,
-  "delta_vs_R0_ci95": [
-    -0.0043771556582928245,
-    -0.0030647746270595546
-  ],
-  "leakage_canary_auc": 0.49957,
-  "leakage_canary_limit": 0.9,
-  "lane_worst_rho": 0.027719626468556663,
-  "lane_worst_forward_overlap": 0.2534,
-  "lane_unique": true,
-  "raster_sha256": "e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205",
-  "validator": {
-    "no_nan_inside_footprint": true,
-    "values_in_0_1": true,
-    "crs_shape_transform_match_sample_submission": true,
-    "zero_catalogue_mass": true,
-    "dots_within_3px_of_catalogue": 0,
-    "gates_pass": true
+  "schema": "gemsdoe-parallel-run-card.v1",
+  "generated_utc": "2026-10-24T17:47:01.179136+00:00",
+  "repository": "buffedlizard55-lab/GEMSDOE92",
+  "branch": "arena/5f8cf0f6-gemsdoe92",
+  "lane": "SCARPDIPOLE (Hanks-Bucknam-Wallace piedmont scarp-diffusion profile-curvature dipole)",
+  "hypothesis": "Degraded Quaternary normal-fault scarps in unconsolidated Basin-and-Range piedmont alluvium and homogeneous volcanic sheets evolve under linear hillslope diffusion (dz/dt = kappa * laplacian(z)) into an antisymmetric error-function step whose downslope profile curvature z_ss crosses zero from convex crest (z_ss < 0) to concave colluvial toe (z_ss > 0) directly at the fault trace midpoint (dz_ss/ds > 0) with low along-strike bending |z_tt| inside the [p15, p85] detrended-elevation range-front corridor.",
+  "mechanism": "Multi-scale (sigma = 100 m, 200 m) float32 directional profile-curvature zero-crossing dipole on Band 12 det_elev weighted by structure-tensor orientation coherence, sqrt(pct_rank(Band 19 det_elev_slope)), and the [p15, p85] piedmont-range habitat envelope; unified emission places 21,839 piedmont-reranked dots on H19-5 (58%, d_cat > 2 px) and 15,815 off-skeleton dots (>3 px from H19-5, d_cat > 2 px) at >= 2.8 px spacing (37,654 total unit-mass dots; zero catalogue labels in surface).",
+  "named_non_fault_mimic": "Pleistocene Lake Lahontan wave-cut paleoshoreline scarps, fluvial terrace risers, and rotational landslide headscarps within the [p15, p85] piedmont elevation belt.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives_total": 22663,
+    "n_folds": 8,
+    "fold_fair_d_visible_gt_2px": {
+      "pooled_dti": 0.09856540832676244,
+      "ci95": [
+        0.08798529469622328,
+        0.10897427847433687
+      ],
+      "parent_B2_visible_dti": 0.029073858311933185,
+      "visible_collar_dti": 0.04686635034458693,
+      "paired_delta_vs_parent_B2_visible": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.06949155001482926,
+        "ci95": [
+          0.060007524790080244,
+          0.0777904985855634
+        ],
+        "withheld_positive_pixels": 22663
+      },
+      "paired_delta_vs_visible_collar": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.051699057982175514,
+        "ci95": [
+          0.03787169115088136,
+          0.06489573850643156
+        ],
+        "withheld_positive_pixels": 22663
+      }
+    },
+    "static_final_raster_d_full_cat_gt_2px": {
+      "pooled_dti": 0.0068118697936110535,
+      "ci95": [
+        0.005769727563501615,
+        0.008034100330943737
+      ],
+      "R0_dti": 0.004006147174684743,
+      "BREAKLINEf45Ltop_dti": 0.00486050796752969,
+      "RELIEFp10_dti": 0.0060451323971729325,
+      "paired_delta_vs_R0": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.0028057226189263105,
+        "ci95": [
+          0.001945627142306379,
+          0.0036861376124158528
+        ],
+        "withheld_positive_pixels": 22663
+      },
+      "paired_delta_vs_BREAKLINEf45Ltop": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.0019513618260813635,
+        "ci95": [
+          0.0010907942686283639,
+          0.0027805319268640466
+        ],
+        "withheld_positive_pixels": 22663
+      },
+      "paired_delta_vs_RELIEFp10": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.000766737396438121,
+        "ci95": [
+          -8.963573330542588e-05,
+          0.0015951241891302812
+        ],
+        "withheld_positive_pixels": 22663
+      }
+    }
   },
-  "verdict": "negative"
+  "off_catalogue_sgmc_proxy": {
+    "evidence_class": "PROXY",
+    "dti": 0.107841,
+    "tp": 6302.28,
+    "fp": 35089.25,
+    "fn": 56400.72,
+    "n_truth": 62703,
+    "delta_vs_R0": 0.011781,
+    "pct_vs_R0": 12.26
+  },
+  "leakage_canary": {
+    "threshold": 0.9,
+    "passed": true,
+    "max_raw_band_symmetric_auc": 0.55314,
+    "scarpdipole_S_pct_symmetric_auc": 0.632794,
+    "components": {
+      "dipole_pct": {
+        "auc": 0.538698,
+        "symmetric_auc": 0.538698
+      },
+      "coherence": {
+        "auc": 0.55207,
+        "symmetric_auc": 0.55207
+      },
+      "slope_pct": {
+        "auc": 0.55314,
+        "symmetric_auc": 0.55314
+      },
+      "envelope": {
+        "auc": 0.560627,
+        "symmetric_auc": 0.560627
+      },
+      "S_raw": {
+        "auc": 0.632794,
+        "symmetric_auc": 0.632794
+      },
+      "S_pct": {
+        "auc": 0.632794,
+        "symmetric_auc": 0.632794
+      }
+    }
+  },
+  "registry_uniqueness": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "local_lane_registry": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "lane_registry_index_pass": true,
+      "worst_abs_spearman": 0.2697963911859379,
+      "worst_local_3px_overlap": 0.660461,
+      "worst_local_overlap_raster": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+      "prior_local_downloads_checked": 10,
+      "all_prior_local_le_70pct": true
+    },
+    "public_registry_1300_rasters": {
+      "repositories_scanned": 102,
+      "compatible_rasters_compared": 1300,
+      "preplacement_worst_abs_spearman": 0.32845279414457285,
+      "preplacement_binding_worst_forward_overlap": 1.0,
+      "final_worst_abs_spearman": 0.3151527340686412,
+      "final_binding_worst_forward_overlap": 1.0,
+      "binding_stop_required": true,
+      "binding_witness": {
+        "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+        "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+        "bytes": 25065181,
+        "forward_overlap": 1.0
+      },
+      "saturation_certificate": {
+        "universal_overlap_blocker": true,
+        "witness_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "positive_pixels_in_footprint": 5167373,
+        "total_footprint_pixels": 5167373,
+        "coverage_fraction": 1.0,
+        "mathematical_consequence": "Every nonempty valid submission has 100.0% forward 3-px dot overlap against this all-positive probability surface under literal positive support (finite > 0). Literal rule is enforced without waiver; see final_diagnostic.sparse_dotted_le_60k_dots for non-binding comparison against sparse dotted submissions."
+      },
+      "nonbinding_sparse_dotted_le_60k_submissions": {
+        "count": 1004,
+        "worst_abs_spearman": 0.2741853222011583,
+        "worst_rho_raster": "GEMSDOE85/releases/h33-2-b2-mass-p10-20261023-3cdf5014-zeros.tif",
+        "worst_forward_overlap": 0.687656025920221,
+        "worst_overlap_raster": "GEMSDOE48/docs/downloads/GEMSDOE48-H57-ds-relief-augmented-20261007-e6b785718c07-nan-outside.tif",
+        "rasters_over_70pct_overlap": 0,
+        "examples_over_70pct": []
+      }
+    }
+  },
+  "raster_sha256": "9febfbd7e301d708b0f60df08dc4add6bd5bd442909ea653bcd2a83a92d36262",
+  "artifact": {
+    "download_tif": "docs/downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif",
+    "download_zip": "docs/downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.zip",
+    "raster_sha256": "9febfbd7e301d708b0f60df08dc4add6bd5bd442909ea653bcd2a83a92d36262",
+    "canonical_nan_sha256": "5bc7d9875b79efd1af8f5940e1447ab70c4c6a4ea4614159eb07e23da3adeda8",
+    "n_dots": 37654,
+    "n_on_h19": 21839,
+    "n_far_off_h19": 15815
+  },
+  "validator_output": {
+    "passed": true,
+    "gates_passed": "10/10",
+    "no_nan_in_footprint": true,
+    "nan_inside_footprint": 0,
+    "nan_outside_footprint": 0,
+    "inf_anywhere": 0,
+    "values_in_0_1": true,
+    "finite_min": 0.0,
+    "finite_max": 1.0,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "crs_shape_transform_match_template": true,
+    "catalogue_mass": 0.0,
+    "min_distance_to_catalogue_px": 2.23606797749979,
+    "gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=float32 count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nan_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "9febfbd7e301d708b0f60df08dc4add6bd5bd442909ea653bcd2a83a92d36262"
+      }
+    ]
+  },
+  "submission_name": "GEMSDOE92-SCARPDIPOLE-f42dipole-20261024",
+  "submission_note": "SCARPDIPOLE f42dipole: 15815 off-H19 scarp-dipole dots + 21839 piedmont H19 dots (37,654 total)",
+  "submission_note_length": 95,
+  "submission_eligible": false,
+  "verdict": "negative",
+  "verdict_detail": "negative under un-waived literal all-rasters public-registry rule (17GEMSDOE E-proba-multiscale is positive on all 5,167,373 footprint pixels, causing 100.0% forward overlap for every nonempty submission). Technically #1 in GEMSDOE92 on fold-fair HOLDOUT-DTI (0.098565 vs visible_collar 0.046866 and parent_B2_visible 0.029074), #1 on static HOLDOUT-DTI (0.006812 vs R0 0.004006), +12.26% above R0 on off-catalogue USGS SGMC faults (0.107841 vs 0.096060), 10/10 format-valid, and 0/1,004 overlaps >70% across all sparse dotted public submissions (<=60,000 dots, max 0.6877). Hold live weekly DrivenData slot unless human selector explicitly scopes overlap check to sparse dot-field submissions."
 }

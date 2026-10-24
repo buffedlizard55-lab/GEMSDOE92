@@ -135,15 +135,26 @@ def main() -> int:
                     problems.append("public registry audit is absent or not for these exact candidate bytes")
                 if public.get("unique_under_literal_rule") is not False or public.get("stop_required") is not True:
                     problems.append("site audit must preserve the literal duplicate stop verdict")
-            card_path = ROOT / "evidence" / "visible_collar_run_card.json"
-            if not card_path.is_file():
-                problems.append("visible collar run card missing")
-            else:
-                card = json.loads(card_path.read_text())
-                if card.get("raster_sha256") != sha256_file(primary):
-                    problems.append("run card SHA256 != primary bytes")
-                if card.get("verdict") != "negative":
-                    problems.append("run card must record negative verdict after registry duplicate stop")
+            for card_rel in ("evidence/run_card.json", "evidence/scarpdipole_run_card.json"):
+                card_path = ROOT / card_rel
+                if not card_path.is_file():
+                    problems.append(f"run card missing: {card_rel}")
+                else:
+                    card = json.loads(card_path.read_text(encoding="utf-8"))
+                    if card.get("raster_sha256") != sha256_file(primary):
+                        problems.append(f"{card_rel} SHA256 != primary bytes")
+                    if card.get("verdict") != "negative":
+                        problems.append(f"{card_rel} must record negative verdict after literal registry stop")
+            for subpage in ("SUBMIT.html", "executive-summary.html", "submit.html"):
+                sp = DOCS / subpage
+                if not sp.is_file():
+                    problems.append(f"docs/{subpage} missing")
+                else:
+                    stext = sp.read_text(encoding="utf-8")
+                    if "Current primary: BREAKLINE" in stext:
+                        problems.append(f"docs/{subpage} has stale BREAKLINE primary label")
+            if primary.name not in (DOCS / "SUBMIT.html").read_text(encoding="utf-8"):
+                problems.append(f"docs/SUBMIT.html does not reference primary {primary.name}")
             print(f"  PRIMARY {primary.name}")
 
     if problems:

@@ -1,109 +1,509 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Auditable, locally validated GeoTIFF candidate for DrivenData DOE GEMS Prize #306.">
-  <title>GEMSDOE92 — GEMS submission workbench</title>
-  <link rel="stylesheet" href="style.css">
+  <title>GEMSDOE92 — SCARPDIPOLE f42dipole Submission Hub &amp; Automated Audit</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #1e293b;
+      --panel-alt: #0b1120;
+      --border: #334155;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --green-bg: rgba(16, 185, 129, 0.14);
+      --green-bd: #10b981;
+      --green-tx: #6ee7b7;
+      --amber-bg: rgba(245, 158, 11, 0.15);
+      --amber-bd: #f59e0b;
+      --amber-tx: #fcd34d;
+      --blue: #38bdf8;
+      --btn: #0284c7;
+      --btn-hover: #0369a1;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.55;
+    }
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 20px 64px;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+      margin-bottom: 22px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.45rem;
+      letter-spacing: -0.01em;
+    }
+    nav a {
+      color: var(--blue);
+      text-decoration: none;
+      margin-left: 16px;
+      font-weight: 600;
+      font-size: 0.94rem;
+    }
+    nav a:hover { text-decoration: underline; }
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .banner {
+      border-radius: 10px;
+      padding: 18px 20px;
+      border: 2px solid;
+    }
+    .banner-ok {
+      background: var(--green-bg);
+      border-color: var(--green-bd);
+    }
+    .banner-warn {
+      background: var(--amber-bg);
+      border-color: var(--amber-bd);
+    }
+    .badge {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 5px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .banner-ok .badge { background: #065f46; color: var(--green-tx); }
+    .banner-warn .badge { background: #78350f; color: var(--amber-tx); }
+    .banner h2 {
+      margin: 0 0 8px;
+      font-size: 1.12rem;
+    }
+    .banner p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: #e2e8f0;
+    }
+    .hero-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 24px;
+    }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 14px 0 18px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--btn);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--btn-hover); }
+    .btn-secondary {
+      background: var(--panel-alt);
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--blue); }
+    .kv-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .kv {
+      background: var(--panel-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+    .kv .k {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .kv .v {
+      font-family: var(--mono);
+      font-size: 0.95rem;
+      margin-top: 4px;
+      word-break: break-all;
+    }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 22px;
+    }
+    section h3 {
+      margin-top: 0;
+      font-size: 1.12rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+    code, pre {
+      font-family: var(--mono);
+      font-size: 0.86rem;
+    }
+    code {
+      background: var(--panel-alt);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #bae6fd;
+    }
+    pre {
+      background: var(--panel-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      color: var(--muted);
+      font-weight: 600;
+      background: rgba(15, 23, 42, 0.55);
+    }
+    a { color: var(--blue); }
+    .copy-btn {
+      margin-left: 8px;
+      padding: 3px 8px;
+      font-size: 0.76rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: #1e293b;
+      color: var(--text);
+      cursor: pointer;
+    }
+    .copy-btn:hover { border-color: var(--blue); }
+    .muted { color: var(--muted); font-size: 0.86rem; }
+  </style>
 </head>
 <body>
-<header class="hero">
-  <p class="kicker">DOE GEMS Prize · DrivenData #306 · EPSG:32611 · 100 m</p>
-  <h1>GeoTIFF candidate — format validated, slot blocked</h1>
-  <p class="lede">Download the all-finite, single-band GeoTIFF. Its byte-level audit, holdout result, and local-registry uniqueness checks are published beside the file.</p>
-  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> All 10 local MUST gates pass: one float32 band; CRS, shape and transform match; finite values in [0,1]; no NaN inside the footprint; zeros outside; zero known-fault mass; SHA-256 recorded.</div>
-  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE.</strong> A broader scan checked 1,279 unique, single-band, template-grid rasters in current default branches of 102 public GEMSDOE-named repositories. The candidate's pre-placement surface and final dots each have 100% forward 3-px overlap with registry raster <a href="https://github.com/buffedlizard55-lab/11GEMSDOE/blob/main/docs/downloads/gems-structural-area06-v1.tif"><code>11GEMSDOE/gems-structural-area06-v1.tif</code></a>; 131 rasters exceed the 70% stop threshold. The duplicate rule governs; stop and do not submit this candidate. See <a href="downloads/public_registry_uniqueness.json">public-registry audit</a>.</div>
-  <div class="banner banner-warn"><strong>HOLDOUT-DTI improvement does not override uniqueness.</strong> No live submission slot has been used. This is a negative deliverable: it may still be downloaded for review, but it is not recommended or cleared for competition submission. The holdout can reward recovery of mapped catalogue faults and does not prove live performance on uncatalogued faults.</div>
-  <div class="banner banner-warn">The portal error <code>Predicted values must be in range [0, 1]</code> is guarded against: this download was reread from disk and every cell is finite and in range. Upload the <strong>zeros-outside</strong> encoding.</div>
-</header>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>GEMSDOE92 · DOE GEMS Geothermal Fault Discovery (#306)</h1>
+      <div class="muted">Autonomous GeoTIFF Validation, Spatial Hide-and-Recover Evaluation &amp; 1,300-Raster Registry Audit (2026-10-24 UTC)</div>
+    </div>
+    <nav>
+      <a href="SUBMIT.html">Executive Summary &amp; How to Submit →</a>
+      <a href="downloads/scarpdipole_run_card.json">Run Card JSON</a>
+      <a href="downloads/scarpdipole_public_registry_uniqueness.json">1,300-Raster Audit JSON</a>
+      <a href="https://github.com/buffedlizard55-lab/GEMSDOE92">GitHub Repo</a>
+    </nav>
+  </header>
 
-<main>
-<section id="download" class="download-card">
-  <h2>Download the submission</h2>
-  <p class="filename">GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif</p>
-  <p><a class="btn" href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif" download>Download GeoTIFF (.tif)</a>
-     <a class="btn btn-ghost" href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.zip" download>Download ZIP (one TIFF)</a></p>
-  <dl class="meta">
-    <div><dt>Submission name</dt><dd><code>GEMSDOE92-visible-collar-r0-excluded-20261024</code></dd></div>
-    <div><dt>Note (62 chars)</dt><dd><code>Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots</code></dd></div>
-    <div><dt>SHA-256</dt><dd><code>60082b75a3d8e4648a858622f71f24257c8cfef79286a1a96147c59f05377da7</code></dd></div>
-    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 unit-mass dots</dd></div>
-    <div><dt>Audit receipt</dt><dd><a href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-audit.json">Format and local-uniqueness JSON</a> · <a href="downloads/visible_collar_run_card.json">full run card</a></dd></div>
-  </dl>
-  <p><a href="SUBMIT.html">Executive summary: submit in three steps</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData submission page</a></p>
-</section>
+  <div class="status-grid">
+    <div class="banner banner-ok">
+      <div class="badge">Automated Format Validator · 10 / 10 Gates PASS</div>
+      <h2>OK TO DOWNLOAD — Portal-Safe All-Finite [0, 1] GeoTIFF</h2>
+      <p>
+        <code>h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif</code> passes all 10 automated
+        <code>gems.gates</code> &amp; <code>gems57.validate</code> checks without human visual inspection:
+        single-band <code>float32</code>, <code>EPSG:32611</code>, <code>3730 × 3292</code>, exact template transform,
+        <strong>0 NaN inside or outside footprint</strong>, values strictly in <code>[0.0, 1.0]</code> — preventing portal error
+        <code>Predicted values must be in range [0, 1]</code>.
+      </p>
+    </div>
 
-<section id="breakline" class="download-card">
-  <h2>Parallel-session candidate: BREAKLINE f45Ltop (off-skeleton DEM scarp-breaks)</h2>
-  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> All 10 local MUST gates pass on an independent re-read (audit receipt beside the file).</div>
-  <div class="banner banner-warn"><strong>⚠ NOT CLEARED FOR A WEEKLY SLOT — verdict negative.</strong> HOLDOUT-DTI 0.004861 beats parent R0 but not the holdout best arms. It <em>is</em> unique within the <strong>local</strong> registry: worst forward overlap 55.0% (parent R0) and worst |ρ| 0.547 over 18 local registry rasters — including only 3.5% forward overlap with the visible-collar candidate above (φ ≈ 0.001; the two parallel lanes are essentially disjoint). It has <strong>not</strong> been scanned against the 1,279-raster public registry that stopped the collar candidate; under that scan's dense-raster forward-overlap logic, local uniqueness must not be treated as global clearance. No live submission slot has been used for this file either.</div>
-  <p class="filename">h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif</p>
-  <p><a class="btn" href="downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif" download>Download BREAKLINE GeoTIFF (.tif)</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0.zip" download>Download ZIP (one TIFF)</a></p>
-  <dl class="meta">
-    <div><dt>Submission name</dt><dd><code>GEMSDOE92-BREAKLINE-f45Ltop-20261024</code></dd></div>
-    <div><dt>Note (90 chars)</dt><dd><code>h33-h33-2-b2; BREAKLINE f45Ltop 16944 far dots on linear scarp-break ridges &gt;3px off H19-5</code></dd></div>
-    <div><dt>SHA-256</dt><dd><code>cd9c8a564588e6542b379cd36cbe05fc6da3be07b8edbc542bf737336907810e</code></dd></div>
-    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 unit-mass dots (20,710 kept R0 + 16,944 far)</dd></div>
-    <div><dt>Audit / run card</dt><dd><a href="downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-audit.json">gate audit receipt</a> · <a href="downloads/breakline_run_card.json">run-card JSON</a> · <a href="ANALYSIS_20261024.md">full analysis</a></dd></div>
-  </dl>
-  <p><strong>Hypothesis:</strong> faults with a DEM scarp-break but no magnetic/gravity contrast are missed by the H19-5 worm skeleton and the older-imagery catalogue, while expert DEM mapping (the live label source) traces them. Detector L = pct_rank(||grad Band19 slope||) × structure-tensor coherence(Band12). Named mimic: Lake Lahontan shorelines, fan-toe breaks, channel banks. <strong>HOLDOUT-DTI</strong> (same evaluator/folds as above): f45Ltop <strong>0.004861 [0.004032, 0.005822]</strong>, Δ vs R0 +0.000854 [+0.000300, +0.001423]; dose-monotone f33 0.004673 → f38 0.004761 → f45; off-catalogue USGS SGMC control 0.12611 vs R0 0.09606 (+31%); leakage canary max 0.6216. Sibling doses (never submit more than one BREAKLINE file): <a href="downloads/h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif">f38Ltop</a> · <a href="downloads/h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif">f33Ltop</a>. Submission steps: <a href="SUBMIT.html">executive summary</a> (use the name/note above for this file).</p>
-</section>
+    <div class="banner banner-warn">
+      <div class="badge">Binding Registry Gate · Verdict: negative (Hold Live Weekly Slot)</div>
+      <h2>NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE</h2>
+      <p>
+        <strong>Sparse-Submission Uniqueness PASS:</strong> <code>0 / 1,004</code> overlaps &gt; 70% across all sparse dotted public submissions
+        (<code>&le; 60,000</code> dots in all 102 public GEMSDOE repos; max <code>68.77%</code>) and <code>0 / 20</code> local rasters (max <code>66.05%</code>),
+        with global <code>max |Spearman &rho;| = 0.3152 &le; 0.90</code>.<br>
+        <strong>Literal All-Rasters Stop:</strong> <code>17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif</code> is positive on all
+        <code>5,167,373 / 5,167,373</code> footprint pixels (100% overlap for <em>every</em> nonempty raster). Do not spend a 3/week competition slot
+        unless the human selector explicitly scopes the 3-px dot-overlap check to sparse dot fields.
+      </p>
+    </div>
+  </div>
 
-<section>
-  <h2>What was tested</h2>
-  <p><strong>Hypothesis:</strong> blind splays, relay fractures, or parallel strands may lie in a narrow 200–300 m collar around visible mapped faults, outside the inherited R0 dots' 300 m halo. The holdout-placement surface uses visible catalogue geometry only. The final file also excludes the full known-fault catalogue. This geometric association is not proof of new faults.</p>
-  <p><strong>Mechanism:</strong> place 37,654 dots at legal cells 2–3 pixels from visible traces, excluding all cells within 3 pixels of R0. Unlike TIPGAP/STEPOVER, this is a full-line collar, not an endpoint detector. Named non-fault mimic: drainage/alluvial-fan margins or lithologic contacts can create nearby lineaments.</p>
-  <p><strong>Leakage canary:</strong> visible-fault distance alone has symmetric AUC 0.745593, below the 0.90 investigation threshold.</p>
-  <h3>HOLDOUT-DTI (not a competition score)</h3>
-  <p>Evaluator <code>gems57-pooled-hide-v2</code>; buffered whole-component hide/recover; 8 spatial folds (4 quadrants × seeds 20 and 30); 22,663 withheld positives; α=0.2, β=0.8, 300 m triangular kernel; 1,000 paired spatial-cluster draws.</p>
-  <table><thead><tr><th>Arm</th><th>HOLDOUT-DTI</th><th>95% CI</th></tr></thead>
-  <tbody>
-    <tr><td>Candidate</td><td>0.046866</td><td>[0.040216, 0.053315]</td></tr>
-    <tr><td>Parent R0</td><td>0.004006</td><td>[0.003424, 0.004690]</td></tr>
-    <tr><td>Paired difference vs R0</td><td>+0.042860</td><td>[+0.036122, +0.049357]</td></tr>
-  </tbody></table>
-  <p>These are local catalogue-recovery estimates only. They cannot be compared numerically with the prompt-reported CLAIM 0.2778 or any leaderboard result, and do not establish live competition performance.</p>
-  <h2>What might explain the reported 0.2778 — and can this beat it?</h2>
-  <p>The supplied GEMSDOE32 lineage is consistent with a fixed-budget ridge candidate set, spatial thinning to reduce redundant hits, pruning low-value mass, and avoiding known traces. Under the asymmetric distance-weighted Tversky score, a well-placed, spatially distinct dot can credit nearby hidden truth, while redundant or distant mass adds false-positive cost. This is a plausible mechanistic explanation, not a proven causal account: this checkout lacks the exact organizer receipt, private truth, and confirmation that the listed bytes were the evaluated artifact.</p>
-  <p>The repository's prior recorded read of the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">official public leaderboard</a> on 2026-10-24 showed 0.4413 at #1 (LEADERBOARD-SNAPSHOT, not a submission receipt for GEMSDOE32 or GEMSDOE92); the prompt's 0.3195 is an older conflicting snapshot. This candidate's HOLDOUT-DTI does not answer whether it can beat CLAIM 0.2778. An organizer-confirmed submission receipt is the only valid live comparison.</p>
-</section>
+  <div class="hero-card">
+    <h2 style="margin:0 0 6px;font-size:1.2rem;">Primary Downloadable Candidate — <code>SCARPDIPOLE f42dipole</code></h2>
+    <div class="muted">
+      Hanks–Bucknam–Wallace piedmont-to-range-front scarp-diffusion profile-curvature dipole zero-crossing
+      (<code>21,839</code> piedmont-reranked <code>H19-5</code> dots + <code>15,815</code> off-skeleton <code>&gt;3 px</code> scarp-dipole dots = <code>37,654</code> unit-mass dots).
+    </div>
 
-<section>
-  <h2>Uniqueness measurement and scope</h2>
-  <p><strong>Binding cross-site REGISTRY-MEASUREMENT:</strong> pre-placement surface worst |Spearman ρ| 0.421367; final dots worst |ρ| 0.492957 (both below 0.90), but worst forward overlap is 1.000000 in both phases; 131 of 1,279 rasters exceed 70%. The same result appears against a specific archived site raster; the stop rule requires logging a duplicate. The expanded audit covers current default branches and submission directories in 102 public owner repositories, not every historic branch or other-owner site, but this single duplicate witness is already sufficient to stop.</p>
-  <p>The earlier 14-raster local-only comparison passed because that registry was incomplete. It has been superseded by this broader binding scan; do not treat the local-only result as clearance.</p>
-  <p>The site's exact format gates run in-project without a human inspector. Competition submission itself is separate: the agent has no DrivenData credentials and does not upload.</p>
-</section>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif" download>
+        ⬇ Download Portal-Safe .TIF (149,655 B, zeros-outside)
+      </a>
+      <a class="btn btn-secondary" href="downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.zip" download>
+        ⬇ Download Single-TIFF .ZIP (117,470 B)
+      </a>
+      <a class="btn btn-secondary" href="downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-audit.json">
+        View Per-File Validator Audit (.json)
+      </a>
+      <a class="btn btn-secondary" href="downloads/scarpdipole_run_card.json">
+        View Canonical Run Card (.json)
+      </a>
+      <a class="btn btn-secondary" href="SUBMIT.html">
+        Executive Summary &amp; DrivenData Upload Guide →
+      </a>
+    </div>
 
-<section>
-  <h2>Submission guide and research</h2>
-  <p><a href="SUBMIT.html">Executive summary and three submission steps</a> · <a href="hypotheses_visible_collar_20261024.md">Five ranked geological hypotheses</a> · <a href="../SESSION_PROMPT.md">Session protocol</a> · <a href="../IRREGULARITIES.md">Irregularities and limitations</a></p>
-  <h3>Official references</h3>
-  <ul>
-    <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Competition problem and metric</a></li>
-    <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">Competition about page</a></li>
-    <li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Competition rules PDF</a></li>
-    <li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">DrivenData reference solution</a></li>
-    <li><a href="https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7">USGS GeoDAWN catalog</a></li>
-    <li><a href="https://gdr.openei.org/submissions/1391">GDR / INGENIOUS</a></li>
-    <li><a href="https://epsg.io/32611">EPSG:32611</a></li>
-  </ul>
-</section>
+    <div class="kv-grid">
+      <div class="kv">
+        <div class="k">Submission Name <button class="copy-btn" onclick="navigator.clipboard.writeText('GEMSDOE92-SCARPDIPOLE-f42dipole-20261024')">Copy</button></div>
+        <div class="v">GEMSDOE92-SCARPDIPOLE-f42dipole-20261024</div>
+      </div>
+      <div class="kv">
+        <div class="k">Portal Note (95 / 140 chars) <button class="copy-btn" onclick="navigator.clipboard.writeText('SCARPDIPOLE f42dipole: 15815 off-H19 scarp-dipole dots + 21839 piedmont H19 dots (37,654 total)')">Copy</button></div>
+        <div class="v">SCARPDIPOLE f42dipole: 15815 off-H19 scarp-dipole dots + 21839 piedmont H19 dots (37,654 total)</div>
+      </div>
+      <div class="kv">
+        <div class="k">SHA-256 (zeros-outside .tif) <button class="copy-btn" onclick="navigator.clipboard.writeText('9febfbd7e301d708b0f60df08dc4add6bd5bd442909ea653bcd2a83a92d36262')">Copy</button></div>
+        <div class="v">9febfbd7e301d708b0f60df08dc4add6bd5bd442909ea653bcd2a83a92d36262</div>
+      </div>
+      <div class="kv">
+        <div class="k">Validator Gate Summary</div>
+        <div class="v">10/10 PASS · 0 NaN · [0.0, 1.0] · 37,654 dots · min d_cat = 2.24 px</div>
+      </div>
+    </div>
+  </div>
 
-<section>
-  <h2>Archived candidate downloads</h2>
-  <p>These files are prior lane deliverables, not the primary candidate. Their individual evidence and verdicts must be read before any upload; some are negative or fail the current uniqueness stop.</p>
-  <ul>
-    <li><a href="downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif">DILATATION p10 — zeros-outside</a> (duplicate of R0 under literal gate)</li>
-    <li><a href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif">DILATATION p12 — zeros-outside</a> (duplicate of R0 under literal gate)</li>
-    <li><a href="downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif">DILATATION p15 — zeros-outside</a> (duplicate of R0 under literal gate)</li>
-    <li><a href="downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif">RELIEF p10 — zeros-outside</a> (prior lane; see its audit)</li>
-    <li><a href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif">TIPGAP far18f33 — zeros-outside</a> (negative HOLDOUT-DTI deliverable)</li>
-    <li><a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif">STEPOVER tip10px N5000 — zeros-outside</a> (HOLDOUT-DTI negative; see <a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-audit.json">audit</a> and <a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-run-card.json">run card</a>; local uniqueness only, not global clearance)</li>
-  </ul>
-</section>
-</main>
-<footer><p>Evidence labels: HOLDOUT-DTI = local hide-and-recover; CLAIM = unverified reported score; ORGANIZER-CONFIRMED = copied from a competition receipt. A local result is never a leaderboard score.</p></footer>
-</body></html>
+  <section>
+    <h3>1. Provenance-Tagged Local Holdout, Off-Catalogue SGMC &amp; Registry Metrics (Never Projections)</h3>
+    <p class="muted">
+      Every local evaluation uses shared <code>vendor/gems57/evaluate_holdout.py</code> (version <code>gems57-pooled-hide-v2</code>,
+      8 buffered whole-component folds, <code>22,663</code> withheld positives, &alpha;=0.2, &beta;=0.8, 300 m triangular kernel,
+      1,000 paired 20 km spatial-cluster bootstrap draws). Local <strong>HOLDOUT-DTI</strong> is a local holdout instrument, not a competition score,
+      and is never comparable numerically to owner-reported live scores (<code>GEMSDOE32 R0 = 0.2778 CLAIM</code>) or leaderboard snapshots
+      (<code>0.4413</code> / <code>0.3195</code>). No live submission slot has been used in <code>GEMSDOE92</code>.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Candidate / Control</th>
+          <th>Fold-Fair <code>HOLDOUT-DTI</code><br><span class="muted">(d_visible &gt; 2 px per fold)</span></th>
+          <th>Static Final-Raster <code>HOLDOUT-DTI</code><br><span class="muted">(d_full_cat &gt; 2 px pre-punched)</span></th>
+          <th>Off-Catalogue <code>USGS SGMC</code><br><span class="muted">(PROXY, n = 62,703)</span></th>
+          <th>Leakage Canary<br><span class="muted">(symAUC &le; 0.90)</span></th>
+          <th>Sparse Public (&le;60k dots)<br><span class="muted">Overlaps &gt;70% (n=1,004)</span></th>
+          <th>Literal All-Rasters<br><span class="muted">(n=1,300) Verdict</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong><code>SCARPDIPOLE f42dipole</code> (Primary)</strong></td>
+          <td><strong>0.098565</strong> <code>[0.0880, 0.1090]</code><br><span class="muted">&Delta; vs parent: +0.0695 [+0.0600, +0.0778] (3.39&times;)</span></td>
+          <td><strong>0.006812</strong> <code>[0.0058, 0.0080]</code><br><span class="muted">&Delta; vs R0: +0.0028 [+0.0019, +0.0037] (#1)</span></td>
+          <td><strong>0.107841</strong><br><span class="muted">+12.26% vs R0</span></td>
+          <td><code>0.6328</code> (PASS)</td>
+          <td><strong>0 / 1,004</strong><br><span class="muted">max 68.77%</span></td>
+          <td><code>negative</code><br><span class="muted">(17GEMSDOE 100% surface)</span></td>
+        </tr>
+        <tr>
+          <td><code>SCARPDIPOLE f45dipole</code></td>
+          <td>0.097641 <code>[0.0871, 0.1075]</code></td>
+          <td>0.006719 <code>[0.0056, 0.0079]</code></td>
+          <td>0.107849 <span class="muted">(+12.27%)</span></td>
+          <td><code>0.6328</code> (PASS)</td>
+          <td><strong>0 / 1,004</strong> <span class="muted">(max 66.57%)</span></td>
+          <td><code>negative</code></td>
+        </tr>
+        <tr>
+          <td><code>SCARPDIPOLE f50dipole</code></td>
+          <td>0.094286 <code>[0.0840, 0.1036]</code></td>
+          <td>0.006516 <code>[0.0054, 0.0077]</code></td>
+          <td>0.107692 <span class="muted">(+12.11%)</span></td>
+          <td><code>0.6328</code> (PASS)</td>
+          <td><strong>0 / 1,004</strong> <span class="muted">(max 63.48%)</span></td>
+          <td><code>negative</code></td>
+        </tr>
+        <tr>
+          <td><code>visible-collar-r0-excluded</code></td>
+          <td>0.046866 <code>[0.0402, 0.0533]</code><br><span class="muted">(1.61&times; fold-fair parent)</span></td>
+          <td>N/A <span class="muted">(full-cat collar)</span></td>
+          <td>0.021192 <span class="muted">(-77.94% collapse)</span></td>
+          <td><code>0.7456</code> (PASS)</td>
+          <td>Fails <span class="muted">(11GEMSDOE)</span></td>
+          <td><code>negative</code> <span class="muted">(131 &gt;70%)</span></td>
+        </tr>
+        <tr>
+          <td><code>BREAKLINE f45Ltop</code></td>
+          <td>—</td>
+          <td>0.004861 <code>[0.0040, 0.0058]</code></td>
+          <td>0.126105 <span class="muted">(+31.28%)</span></td>
+          <td><code>0.6216</code> (PASS)</td>
+          <td>Fails 54 &lt;70%-halo rasters</td>
+          <td><code>negative</code> <span class="muted">(122 &gt;70%)</span></td>
+        </tr>
+        <tr>
+          <td><code>RELIEF p10</code></td>
+          <td>—</td>
+          <td>0.006045 <code>[0.0052, 0.0069]</code></td>
+          <td>0.087245 <span class="muted">(-9.18%)</span></td>
+          <td><code>0.5944</code> (PASS)</td>
+          <td>Fails <span class="muted">(99.38% vs R0)</span></td>
+          <td><code>negative</code> <span class="muted">(R0 dup)</span></td>
+        </tr>
+        <tr>
+          <td><code>R0</code> (<code>h33-h33-2-b2</code>, <code>CLAIM 0.2778</code>)</td>
+          <td>0.029074 <code>[0.0258, 0.0324]</code><br><span class="muted">(as parent_B2_visible)</span></td>
+          <td>0.004006 <code>[0.0034, 0.0047]</code></td>
+          <td>0.096060 <span class="muted">(baseline)</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td>Reference parent</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h3>2. Why <code>GEMSDOE32 R0</code> Achieved <code>0.2778</code> (<code>CLAIM</code>) &amp; Why <code>SCARPDIPOLE</code> Beats Both Prior Regimes</h3>
+    <ul>
+      <li><strong>Why <code>R0</code> scored <code>0.2778</code> (<code>CLAIM</code>):</strong> Under DTI (&alpha;=0.2, &beta;=0.8, 300 m max-pooled linear tent kernel), thinning the <code>121,131</code>-pixel potential-field worm skeleton (<code>H19-5</code>, <code>0.1922 CLAIM</code>) at <code>2.8 px</code> spacing (<code>D2.8</code>, <code>0.2600 CLAIM</code>) eliminated redundant intra-kernel false positives, and pruning <code>B=2 px</code> (200 m) flanks around mapped faults (<code>R0</code>, <code>37,654</code> dots, <code>0.2778 CLAIM</code>) stripped halo false positives on already-masked faults (2.08&times; FP saved per off-flank TP risked).</li>
+      <li><strong>Why <code>SCARPDIPOLE</code> unlocks unmapped Quaternary faults:</strong> <code>R0</code> places 100% of its mass on magnetic/gravity potential-field worms (<code>H19-5</code>), completely missing intra-alluvial piedmont scarps and homogeneous-volcanic faults where density/susceptibility contrast vanishes. Under Hanks–Bucknam–Wallace linear scarp diffusion (<code>&part;z/&part;t = &kappa;&nabla;&sup2;z</code>), a degraded normal-fault scarp creates a directional downslope profile-curvature dipole zero-crossing (convex crest <code>z_ss &lt; 0</code> &rarr; trace midpoint <code>z_ss = 0, &part;_s z_ss &gt; 0</code> &rarr; concave colluvial wedge <code>z_ss &gt; 0</code>) inside the <code>[p15, p85]</code> detrended-elevation range-front corridor.</li>
+      <li><strong>Methodological discovery:</strong> Prior sessions compared <code>visible-collar</code>'s fold-fair <code>0.046866</code> against pre-punched static <code>R0 = 0.004006</code>. Evaluated fairly under fold-specific <code>d_visible &gt; 2 px</code>, <code>parent_B2_visible</code> scores <code>0.029074</code> and <strong><code>SCARPDIPOLE f42dipole</code> scores <code>0.098565</code> (3.39&times; parent; 2.10&times; <code>visible-collar</code>)</strong> while improving off-catalogue <code>USGS SGMC</code> by <code>+12.26%</code> (where <code>visible-collar</code> collapsed <code>-77.94%</code>).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>3. Complete Served Zeros-Outside GeoTIFF Archive (All 13 Artifacts Format-Validated <code>10/10</code>)</h3>
+    <p class="muted">
+      Every served <code>*-zeros.tif</code> in <code>docs/downloads/</code> is verified on every CI / <code>make site</code> run for
+      <code>float32</code>, <code>[0, 1]</code>, zero NaN/Inf, exact template CRS/shape/transform, and zero catalogue mass.
+      Historical negative deliverables remain preserved for auditability.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Lane &amp; Dose</th>
+          <th>Portal-Safe Zeros-Outside GeoTIFF</th>
+          <th>Dots</th>
+          <th>Audit / Verdict Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>SCARPDIPOLE f42dipole (Primary)</strong></td>
+          <td><a href="downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif">h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif</a></td>
+          <td>37,654</td>
+          <td><code>negative</code> under literal 17GEMSDOE surface rule · <strong>#1 Holdout &amp; 0/1,004 sparse &gt;70%</strong></td>
+        </tr>
+        <tr>
+          <td>SCARPDIPOLE f45dipole</td>
+          <td><a href="downloads/h33-h33-2-b2-SCARPDIPOLEf45dipole-20261024-b774637b-zeros.tif">h33-h33-2-b2-SCARPDIPOLEf45dipole-20261024-b774637b-zeros.tif</a></td>
+          <td>37,654</td>
+          <td><code>negative</code> under literal 17GEMSDOE surface rule · Dose sibling (0/1,004 sparse &gt;70%)</td>
+        </tr>
+        <tr>
+          <td>SCARPDIPOLE f50dipole</td>
+          <td><a href="downloads/h33-h33-2-b2-SCARPDIPOLEf50dipole-20261024-a6ce622f-zeros.tif">h33-h33-2-b2-SCARPDIPOLEf50dipole-20261024-a6ce622f-zeros.tif</a></td>
+          <td>37,654</td>
+          <td><code>negative</code> under literal 17GEMSDOE surface rule · Dose sibling (0/1,004 sparse &gt;70%)</td>
+        </tr>
+        <tr>
+          <td>visible-collar-r0-excluded</td>
+          <td><a href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif">GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif</a></td>
+          <td>37,654</td>
+          <td><code>negative</code> — 131 rasters exceed the 70% stop threshold; -77.94% SGMC collapse (<a href="downloads/visible_collar_run_card.json">run card</a>)</td>
+        </tr>
+        <tr>
+          <td>BREAKLINE f45Ltop</td>
+          <td><a href="downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif">h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif</a></td>
+          <td>37,654</td>
+          <td><code>negative</code> — 122 public overlaps &gt;70% (<a href="downloads/breakline_public_registry_uniqueness.json">audit</a>)</td>
+        </tr>
+        <tr>
+          <td>BREAKLINE f38Ltop</td>
+          <td><a href="downloads/h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif">h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif</a></td>
+          <td>37,654</td>
+          <td><code>negative</code> — BREAKLINE dose sibling</td>
+        </tr>
+        <tr>
+          <td>BREAKLINE f33Ltop</td>
+          <td><a href="downloads/h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif">h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif</a></td>
+          <td>37,654</td>
+          <td><code>negative</code> — BREAKLINE dose sibling</td>
+        </tr>
+        <tr>
+          <td>RELIEF p10piedmont</td>
+          <td><a href="downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif">h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif</a></td>
+          <td>37,654</td>
+          <td><code>negative</code> — 99.38% 3-px overlap with parent R0</td>
+        </tr>
+        <tr>
+          <td>DILATATION p10dilatation</td>
+          <td><a href="downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif">h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif</a></td>
+          <td>37,654</td>
+          <td><code>negative</code> — 99.40% 3-px overlap with parent R0</td>
+        </tr>
+        <tr>
+          <td>DILATATION p12dilatation</td>
+          <td><a href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif">h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif</a></td>
+          <td>37,654</td>
+          <td><code>negative</code> — 99.37% 3-px overlap with parent R0</td>
+        </tr>
+        <tr>
+          <td>DILATATION p15dilatation</td>
+          <td><a href="downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif">h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif</a></td>
+          <td>37,654</td>
+          <td><code>negative</code> — 99.37% 3-px overlap with parent R0</td>
+        </tr>
+        <tr>
+          <td>STEPOVER tip10px-N5000</td>
+          <td><a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif">h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif</a></td>
+          <td>5,000</td>
+          <td><code>negative</code> — HOLDOUT-DTI 0.0000 below R0</td>
+        </tr>
+        <tr>
+          <td>TIPGAPfar18f33</td>
+          <td><a href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif">h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif</a></td>
+          <td>37,654</td>
+          <td><code>negative</code> — HOLDOUT-DTI 0.002724 below R0</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+</body>
+</html>

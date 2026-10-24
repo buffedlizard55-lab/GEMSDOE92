@@ -75,11 +75,14 @@ def test_index_primary_has_an_audit_receipt_that_matches():
 
 
 def test_submit_page_exists():
-    for name in ("SUBMIT.html", "submit.html"):
+    for name in ("SUBMIT.html", "submit.html", "executive-summary.html"):
         p = DOCS / name
-        if p.is_file():
-            html = p.read_text(encoding="utf-8")
-            assert "zeros" in html.lower()
-            assert "DrivenData" in html
-            return
-    pytest.fail("no submission guide page in docs/")
+        assert p.is_file(), f"missing {p}"
+        html = p.read_text(encoding="utf-8")
+        assert "SCARPDIPOLE" in html
+        assert "Current primary: BREAKLINE" not in html
+    submit_html = (DOCS / "SUBMIT.html").read_text(encoding="utf-8")
+    assert "zeros" in submit_html.lower()
+    assert "DrivenData" in submit_html
+    assert "h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif" in submit_html
+

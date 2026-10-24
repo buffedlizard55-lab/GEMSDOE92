@@ -166,11 +166,13 @@ def test_current_primary_download_is_tracked_and_gate_passed() -> None:
 
 def test_site_offers_primary_download_and_exact_submission_fields() -> None:
     html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
+    rc = json.loads((ROOT / "evidence" / "run_card.json").read_text(encoding="utf-8"))
     assert "OK TO DOWNLOAD" in html
-    assert "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif" in html
-    assert "GEMSDOE92-visible-collar-r0-excluded-20261024" in html
-    note = "Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots"
+    assert Path(rc["artifact"]["download_tif"]).name in html
+    assert rc["submission_name"] in html
+    note = rc["submission_note"]
     assert note in html and len(note) <= 140
+    assert "scarpdipole_run_card.json" in html
     assert "visible_collar_run_card.json" in html
     submit = (ROOT / "docs" / "SUBMIT.html").read_text(encoding="utf-8")
     assert "DrivenData" in submit and "OK TO DOWNLOAD" in submit

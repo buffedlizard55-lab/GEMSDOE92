@@ -1,0 +1,338 @@
+{
+  "schema": "gemsdoe92-public-registry-uniqueness.v1",
+  "reviewed_utc": "2026-10-24T17:13:57.411696+00:00",
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "binding_rule": "literal: absolute Spearman >0.90 OR >70% of candidate dots within 3 px of any registry raster; no representation exemption",
+  "candidate": {
+    "name": "h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987",
+    "sha256": "9febfbd7e301d708b0f60df08dc4add6bd5bd442909ea653bcd2a83a92d36262",
+    "dots": 37654
+  },
+  "inventory": {
+    "owner": "buffedlizard55-lab",
+    "scan_source": "cached GitHub API inventory (no network refresh)",
+    "matching_public_repositories": 102,
+    "default_branch_trees_complete": 102,
+    "tree_errors": 0,
+    "truncated_trees": 0,
+    "submission_tiff_paths": 1655,
+    "unique_git_blobs": 1306,
+    "download_verified": 1306,
+    "download_failures": 0,
+    "one_band_exact_template_grid_rasters_compared": 1300,
+    "exclusions": {
+      "not_single_band_or_grid_mismatch": 5,
+      "invalid_tiff": 1,
+      "excluded_self": 0,
+      "excluded_substr": 0
+    },
+    "scope": "Current public default branches; TIFF paths under docs/downloads/, releases/, and submission directories; unique Git blobs. Does not cover history, private repositories, other owners, zip-only objects, or site-hosted objects not in those paths."
+  },
+  "preplacement_surface": {
+    "registries_checked": 1300,
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "worst_abs_spearman": 0.32845279414457285,
+    "worst_rho": 0.32845279414457285,
+    "worst_rho_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "worst_forward_overlap": 1.0,
+    "worst_overlap_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "rasters_over_70pct_overlap": 68,
+    "duplicate_examples": [
+      {
+        "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5167373,
+        "spearman": 0.32845279414457285
+      },
+      {
+        "raster": "57GEMSDOE/docs/downloads/gems57-h57g-width-normalized-b1329dc0f248-RESEARCH-DO-NOT-SUBMIT.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5106385,
+        "spearman": 0.11510866296893615
+      },
+      {
+        "raster": "57GEMSDOE/docs/downloads/h57-continuous-anatomy-20261009T201252Z-f44b207a70f0.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5106385,
+        "spearman": 0.12069051919936882
+      },
+      {
+        "raster": "5GEMSDOE/docs/downloads/gems-density-probe-20260925T184215Z-9cdae9b4.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5106385,
+        "spearman": -0.04454374241117421
+      },
+      {
+        "raster": "GEMSDOE2/data/evidence/runs/turbo-simple-20260925T041759Z/submission.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5167373,
+        "spearman": 0.12172619628272845
+      },
+      {
+        "raster": "GEMSDOE2/data/evidence/runs/turbo-simple-20260925T041907Z/submission.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5167373,
+        "spearman": 0.12172619628272845
+      },
+      {
+        "raster": "GEMSDOE2/data/evidence/runs/turbo-simple-20260925T042003Z/submission.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5167373,
+        "spearman": 0.12172619628272845
+      },
+      {
+        "raster": "GEMSDOE2/data/evidence/runs/turbo-simple-20260925T042118Z/submission.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5167373,
+        "spearman": 0.12172619628272845
+      },
+      {
+        "raster": "GEMSDOE2/data/evidence/runs/turbo-simple-20260925T043629Z/submission.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5167373,
+        "spearman": 0.12172619628272845
+      },
+      {
+        "raster": "GEMSDOE48/docs/downloads/GEMSDOE48-H53-3SRC-DS-20261007-9242c831-diag-plausibility-nan.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5167373,
+        "spearman": 0.2807461597244534
+      }
+    ]
+  },
+  "preplacement_diagnostic": {
+    "binding": false,
+    "note": "Diagnostic only; does NOT waive or override the binding literal positive-support rule. Separates sparse dot-field submissions from dense/continuous probability surfaces (such as 17GEMSDOE E-proba-multiscale, positive on all 5,167,373 footprint pixels).",
+    "sparse_dotted_le_60k_dots": {
+      "count": 1004,
+      "worst_abs_spearman": 0.08391840937399696,
+      "worst_rho_raster": "GEMSDOE70/docs/downloads/gems70e3-scarpcurv-60k-ex3-20261020-zeros.tif",
+      "worst_forward_overlap": 0.2518281722382715,
+      "worst_overlap_raster": "GEMSDOE48/docs/downloads/GEMSDOE48-H57-ds-relief-augmented-20261007-e6b785718c07-nan-outside.tif",
+      "rasters_over_70pct_overlap": 0,
+      "examples_over_70pct": []
+    },
+    "like_for_like_dot_fields_le_20pct_support": {
+      "dot_field_rasters": 1245,
+      "continuous_surface_rasters": 55,
+      "worst_forward_overlap_dot_fields": 0.9990262011718504,
+      "worst_forward_overlap_dot_field_submission": "13GEMSDOE/docs/downloads/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+      "worst_reverse_overlap": 1.0,
+      "worst_reverse_overlap_submission": "11GEMSDOE/docs/downloads/gems-structural-area06-v1.tif",
+      "worst_jaccard": 0.9994074358479638,
+      "worst_jaccard_submission": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "forward_overlap_firings": 20,
+      "duplicate": true,
+      "note": "Inherited thresholds, applied to dot fields only; rank correlation still applies to every raster including the continuous surfaces."
+    },
+    "discriminating_priors_lt_70pct_halo": {
+      "count": 1232,
+      "space_filling_priors_ge_70pct_halo": 68,
+      "worst_forward_overlap": 0.6798976668910915,
+      "worst_overlap_raster": "13GEMSDOE/docs/downloads/archive/13gems-toporef-holdoutref.tif",
+      "rasters_over_70pct_overlap": 0,
+      "examples_over_70pct": []
+    }
+  },
+  "final_dots": {
+    "registries_checked": 1300,
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "worst_abs_spearman": 0.3151527340686412,
+    "worst_rho": 0.3151527340686412,
+    "worst_rho_raster": "19GEMSDOE/docs/downloads/gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-allfinite.tif",
+    "worst_forward_overlap": 1.0,
+    "worst_overlap_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "rasters_over_70pct_overlap": 123,
+    "duplicate_examples": [
+      {
+        "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5167373,
+        "spearman": 0.052935228203736
+      },
+      {
+        "raster": "57GEMSDOE/docs/downloads/gems57-h57g-width-normalized-b1329dc0f248-RESEARCH-DO-NOT-SUBMIT.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5106385,
+        "spearman": 0.01698285788918405
+      },
+      {
+        "raster": "57GEMSDOE/docs/downloads/h57-continuous-anatomy-20261009T201252Z-f44b207a70f0.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5106385,
+        "spearman": 0.017636692209956527
+      },
+      {
+        "raster": "5GEMSDOE/docs/downloads/gems-density-probe-20260925T184215Z-9cdae9b4.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5106385,
+        "spearman": 0.009363197610913412
+      },
+      {
+        "raster": "GEMSDOE2/data/evidence/runs/turbo-simple-20260925T041759Z/submission.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5167373,
+        "spearman": 0.011167483166893557
+      },
+      {
+        "raster": "GEMSDOE2/data/evidence/runs/turbo-simple-20260925T041907Z/submission.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5167373,
+        "spearman": 0.011167483166893557
+      },
+      {
+        "raster": "GEMSDOE2/data/evidence/runs/turbo-simple-20260925T042003Z/submission.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5167373,
+        "spearman": 0.011167483166893557
+      },
+      {
+        "raster": "GEMSDOE2/data/evidence/runs/turbo-simple-20260925T042118Z/submission.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5167373,
+        "spearman": 0.011167483166893557
+      },
+      {
+        "raster": "GEMSDOE2/data/evidence/runs/turbo-simple-20260925T043629Z/submission.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5167373,
+        "spearman": 0.011167483166893557
+      },
+      {
+        "raster": "GEMSDOE48/docs/downloads/GEMSDOE48-H53-3SRC-DS-20261007-9242c831-diag-plausibility-nan.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5167373,
+        "spearman": 0.08777605225510111
+      }
+    ]
+  },
+  "final_diagnostic": {
+    "binding": false,
+    "note": "Diagnostic only; does NOT waive or override the binding literal positive-support rule. Separates sparse dot-field submissions from dense/continuous probability surfaces (such as 17GEMSDOE E-proba-multiscale, positive on all 5,167,373 footprint pixels).",
+    "sparse_dotted_le_60k_dots": {
+      "count": 1004,
+      "worst_abs_spearman": 0.2741853222011583,
+      "worst_rho_raster": "GEMSDOE85/releases/h33-2-b2-mass-p10-20261023-3cdf5014-zeros.tif",
+      "worst_forward_overlap": 0.687656025920221,
+      "worst_overlap_raster": "GEMSDOE48/docs/downloads/GEMSDOE48-H57-ds-relief-augmented-20261007-e6b785718c07-nan-outside.tif",
+      "rasters_over_70pct_overlap": 0,
+      "examples_over_70pct": []
+    },
+    "like_for_like_dot_fields_le_20pct_support": {
+      "dot_field_rasters": 1245,
+      "continuous_surface_rasters": 55,
+      "worst_forward_overlap_dot_fields": 0.9975301428799065,
+      "worst_forward_overlap_dot_field_submission": "13GEMSDOE/docs/downloads/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+      "worst_reverse_overlap": 0.770364238410596,
+      "worst_reverse_overlap_submission": "GEMSDOE48/docs/downloads/diagnostics/gemsdoe48-h59-cover-ds-belief-b2xh33d-diag-disagreement-a-only-20261008T184547Z.tif",
+      "worst_jaccard": 0.16239379060947284,
+      "worst_jaccard_submission": "GEMSDOE85/releases/h33-2-b2-mass-p10-20261023-3cdf5014-zeros.tif",
+      "forward_overlap_firings": 71,
+      "duplicate": true,
+      "note": "Inherited thresholds, applied to dot fields only; rank correlation still applies to every raster including the continuous surfaces."
+    },
+    "discriminating_priors_lt_70pct_halo": {
+      "count": 1232,
+      "space_filling_priors_ge_70pct_halo": 68,
+      "worst_forward_overlap": 0.9254528071386838,
+      "worst_overlap_raster": "GEMSDOE22/docs/downloads/gems22-h23-b-dti-optimal-emission-10pct-20261002-86176698-allfinite.tif",
+      "rasters_over_70pct_overlap": 55,
+      "examples_over_70pct": [
+        {
+          "raster": "GEMSDOE22/docs/downloads/gems22-h23-b-dti-optimal-emission-10pct-20261002-86176698-allfinite.tif",
+          "forward_overlap": 0.9254528071386838,
+          "positive_pixels": 516738,
+          "halo_coverage": 0.5343281779736048
+        },
+        {
+          "raster": "GEMSDOE22/docs/downloads/gems22-h23-b-dti-optimal-emission-10pct-20261002-86176698-nan.tif",
+          "forward_overlap": 0.9254528071386838,
+          "positive_pixels": 516738,
+          "halo_coverage": 0.5343281779736048
+        },
+        {
+          "raster": "GEMSDOE3/docs/downloads/coverage-v3-wide-20260925T054019Z-0ac095a7ed.tif",
+          "forward_overlap": 0.9059064110054709,
+          "positive_pixels": 624025,
+          "halo_coverage": 0.6136830068199064
+        },
+        {
+          "raster": "13GEMSDOE/docs/downloads/archive/13gems-r6-ensemble-20260929T182914Z.tif",
+          "forward_overlap": 0.8759228767196048,
+          "positive_pixels": 344041,
+          "halo_coverage": 0.6455732922705599
+        },
+        {
+          "raster": "13GEMSDOE/docs/downloads/archive/13gems-r6-ensemble-20260929T182914Z_allfinite.tif",
+          "forward_overlap": 0.8759228767196048,
+          "positive_pixels": 344041,
+          "halo_coverage": 0.6455732922705599
+        },
+        {
+          "raster": "13GEMSDOE/docs/downloads/archive/13gems-toporef-holdoutref.tif",
+          "forward_overlap": 0.8671854251872311,
+          "positive_pixels": 246469,
+          "halo_coverage": 0.6797862279343876
+        },
+        {
+          "raster": "13GEMSDOE/docs/downloads/archive/13gems-toporef-holdoutref_allfinite.tif",
+          "forward_overlap": 0.8671854251872311,
+          "positive_pixels": 246469,
+          "halo_coverage": 0.6797862279343876
+        },
+        {
+          "raster": "GEMSDOE48/docs/downloads/diagnostics/GEMSDOE48-H57-ds-relief-augmented-20261007-e6b785718c07-diag-conflict-k.tif",
+          "forward_overlap": 0.8653529505497424,
+          "positive_pixels": 1137564,
+          "halo_coverage": 0.4781075412980638
+        },
+        {
+          "raster": "GEMSDOE67/docs/downloads/gemsdoe67-ovtr-ml-cover-tau3p0-20261012-nan.tif",
+          "forward_overlap": 0.8621394805332767,
+          "positive_pixels": 167597,
+          "halo_coverage": 0.5481466114406682
+        },
+        {
+          "raster": "GEMSDOE67/docs/downloads/gemsdoe67-ovtr-ml-cover-tau3p0-20261012-zero.tif",
+          "forward_overlap": 0.8621394805332767,
+          "positive_pixels": 167597,
+          "halo_coverage": 0.5481466114406682
+        }
+      ]
+    }
+  },
+  "binding_witness": {
+    "worst_forward_overlap": {
+      "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "bytes": 25065181,
+      "forward_overlap": 1.0
+    },
+    "full_footprint_surface": {
+      "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "bytes": 25065181,
+      "positive_pixels_in_footprint": 5167373,
+      "forward_overlap": 1.0,
+      "spearman": 0.052935228203736
+    }
+  },
+  "saturation_certificate": {
+    "universal_overlap_blocker": true,
+    "witness_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "positive_pixels_in_footprint": 5167373,
+    "total_footprint_pixels": 5167373,
+    "coverage_fraction": 1.0,
+    "mathematical_consequence": "Every nonempty valid submission has 100.0% forward 3-px dot overlap against this all-positive probability surface under literal positive support (finite > 0). Literal rule is enforced without waiver; see final_diagnostic.sparse_dotted_le_60k_dots for non-binding comparison against sparse dotted submissions."
+  },
+  "verdict": "negative \u2014 duplicate under literal registry rule; stop and do not spend a weekly slot",
+  "scan_complete_for_declared_scope": true,
+  "candidate_file_sha256": "9febfbd7e301d708b0f60df08dc4add6bd5bd442909ea653bcd2a83a92d36262",
+  "cache_index": ".cache/gemsdoe_public_registry/registry_index.json"
+}

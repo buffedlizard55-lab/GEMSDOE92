@@ -618,3 +618,84 @@ submitted. Corollary for future lanes: the fixed full-catalogue proxy-diagnostic
 predicted the screened design at ratio 1.146 vs R0 and the (different) greedy build
 measured 0.964 — the instrument prices near-catalogue collar mass and **must never be
 labelled a holdout or a score**.
+
+## 2026-10-24 (SCARPDIPOLE session) — malformed JSON trailing comma, stale subpage title, holdout hole-punching confound, and universal 1,300-raster saturation audit
+
+### (a) Malformed JSON trailing comma in `public_registry_uniqueness.json`
+
+**Observation.** `evidence/public_registry_uniqueness.json` and its mirror
+`docs/downloads/public_registry_uniqueness.json` contained a trailing comma at line 150
+(`"cache_index": "...",}`), causing `json.loads()` to raise `JSONDecodeError`.
+
+**Decision.** Removed the trailing comma in both files and verified `json.loads()` across
+every `.json` file in the repository. Added a regression assertion in
+`tests/test_site_contract.py` so no invalid JSON artifact can merge again.
+
+### (b) Stale primary-candidate mismatch in `docs/executive-summary.html` and `docs/submit.html`
+
+**Observation.** `docs/executive-summary.html` and `docs/submit.html` are redirect stubs
+pointing to `SUBMIT.html`, yet their `<title>` and fallback copy still read
+`Current primary: BREAKLINE f45Ltop` while `docs/index.html` and `docs/SUBMIT.html`
+featured `visible-collar`. Meanwhile `scripts/check_site.py` hardcoded
+`evidence/visible_collar_run_card.json`.
+
+**Decision.** Synchronized `docs/index.html`, `docs/SUBMIT.html`,
+`docs/executive-summary.html`, `docs/submit.html`, `SLOT_PLAN.md`, `README.md`, and
+`scripts/check_site.py` around `evidence/scarpdipole_run_card.json` (`evidence/run_card.json`),
+and tested subpage consistency in `tests/test_site_contract.py`.
+
+### (c) Holdout hole-punching confound in prior `visible_collar` vs `R0` comparison (`11.7x` illusion) and `-77.94%` `USGS SGMC` collapse
+
+**Observation.** Prior session documents compared `visible_collar`'s fold-fair
+`d_visible > 2.0 px` `HOLDOUT-DTI` (`0.046866`) against `R0`'s static pre-punched
+`d_full_catalogue > 2.0 px` score (`0.004006`), quoting an ~`11.7x` lift. That comparison
+confounded two incompatible masking regimes: static `R0` already had `200 m` exclusion
+holes punched around every withheld fault segment before holdout scoring, whereas
+`visible_collar` computed exclusion only from `fold['visible']`.
+
+**Measured on identical `gems57-pooled-hide-v2` folds (`n = 22,663`) and `USGS SGMC` (`n = 62,703`):**
+- Under apples-to-apples fold-fair `d_visible > 2.0 px`, the un-punched parent baseline
+  `parent_B2_visible` (`solo & (d_visible > 2.0)`) scores **`0.029074 [0.025844, 0.032355]`**,
+  making `visible_collar` (`0.046866`) a `1.61x` continuation-junction effect, while
+  **`SCARPDIPOLE f42dipole` scores `0.098565 [0.087985, 0.108974]`** (paired Δ vs
+  `parent_B2_visible` `+0.069492 [+0.060008, +0.077790]`, `3.39x` parent and `2.10x`
+  `visible_collar`).
+- On independent off-catalogue `USGS SGMC` bedrock faults (`>3 px` from `existing_faults`),
+  `visible_collar` collapses **`-77.94%`** (`0.021192` vs `R0 = 0.096060`), confirming that
+  hugging mapped-fault collars fails to discover blind/unmapped off-catalogue faults. By
+  contrast, `SCARPDIPOLE f42dipole` improves off-catalogue `USGS SGMC` by **`+12.26%`**
+  (`0.107841` vs `0.096060`) AND achieves `#1` static `HOLDOUT-DTI` in `GEMSDOE92`
+  (`0.006812 [0.005770, 0.008034]`, paired Δ vs `R0` `+0.002806 [+0.001946, +0.003686]`).
+
+**Decision.** `scripts/report_scarpdipole_proxies.py` now computes and reports **both**
+fold-fair `d_visible > 2.0 px` and static `d_full_catalogue > 2.0 px` `HOLDOUT-DTI` side
+by side on the identical 8 folds so neither regime is ever conflated again.
+
+### (d) Completed `BREAKLINE` + `SCARPDIPOLE` 1,300-raster public-registry scans & universal saturation certificate
+
+**Observation.** Executing the queued `NEXT_STEPS.md` public-registry audit across all
+`102` public `buffedlizard55-lab` GEMSDOE repositories (`1,306` unique blobs; `1,300`
+compatible single-band template-grid rasters) established two distinct facts:
+1. `17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` is
+   strictly positive (`> 0`) on all **`5,167,373 / 5,167,373`** footprint cells (`68`
+   public rasters have `>=70%` 3-px halo coverage). Under the literal positive-support
+   rule (`finite > 0`), **every** nonempty submission has `100.0%` forward 3-px overlap
+   with `17GEMSDOE`.
+2. Even excluding `>=70%`-halo space-filling surfaces, `BREAKLINE f45Ltop` (`45%` far)
+   still exceeded `70%` overlap against **`54` discriminating rasters** (up to `0.9130` vs
+   `GEMSDOE3/coverage-v3-wide`), and an initial `SCARPDIPOLE f40` screen barely crossed
+   `0.70` (`0.7018` vs `GEMSDOE48/H57-ds-relief-augmented`) among sparse `<=60,000`-dot
+   submissions. Shifting the built `SCARPDIPOLE` ladder to `f42dipole` (`42%` far),
+   `f45dipole` (`45%` far), and `f50dipole` (`50%` far) achieved **`0 / 1,004` overlaps
+   `> 0.70` across ALL sparse dotted submissions (`<= 60,000` dots) in all 102 public
+   GEMSDOE repositories** (`max = 0.6877` for `f42dipole`, `0.6657` for `f45dipole`,
+   `0.6348` for `f50dipole`), `0 / 20` local overlaps `> 0.70` (`max = 0.6605`), and
+   `max |Spearman rho| = 0.3152 << 0.90`.
+
+**Decision.** Do **not** reinterpret or waive the operator's literal rule. Both
+`evidence/breakline_public_registry_uniqueness.json` and
+`evidence/scarpdipole_public_registry_uniqueness.json` record binding `verdict: negative`
+(`submission_eligible: false`) alongside the machine-readable `saturation_certificate`
+and non-binding `sparse_dotted_le_60k_dots` diagnostic (`0 / 1,004` over `70%`), leaving
+live DrivenData slot promotion strictly to an explicit human selector decision.
+

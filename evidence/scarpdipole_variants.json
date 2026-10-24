@@ -1,0 +1,407 @@
+{
+  "schema": "gemsdoe92.scarpdipole-variants.v1",
+  "session_date_utc": "20261024",
+  "axis": "SCARPDIPOLE",
+  "parent": "h33-h33-2-b2",
+  "parent_claim": {
+    "score": 0.2778,
+    "evidence_label": "CLAIM",
+    "receipt": false
+  },
+  "lane_surface": {
+    "definition": "S = pct_rank(mean_{sigma in {1,2}} pct_rank(max(0, dz_ss/ds) * exp(-0.5*(z_ss/s75)^2) * (dz_ss/ds / (dz_ss/ds + |z_tt| + 1e-6))) * coherence(Band12) * sqrt(pct_rank(Band19)) * piedmont_envelope(Band12 in [p15, p85] -> 1.0 else 0.45))",
+    "bands": "training_features.tif Band 12 (det_elev) and Band 19 (det_elev_slope); zero catalogue inputs",
+    "habitat_bounds_det_elev_m": [
+      -228.2113,
+      234.6803
+    ],
+    "implementation": "gems/scarpdipole.py + vendor/gems57/submission_writer.py",
+    "preplacement_local_registry": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "worst_abs_spearman": 0.0679025087932523,
+      "worst_rho_submission": "h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
+      "rasters_checked": 14
+    },
+    "candidate_pools": {
+      "on_h19_pool": 103780,
+      "far_off_h19_pool": 3974627
+    }
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-SCARPDIPOLE-f42dipole-20261024",
+      "name": "h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif",
+      "file_nan": "releases/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987.tif",
+      "sha8": "5bc7d987",
+      "change_desc": "SCARPDIPOLE f42dipole: 21839 piedmont scarp-dipole H19-5 dots + 15815 off-skeleton (>3px H19-5) scarp-dipole zero-crossing dots; 37,654 total",
+      "notes": "frac_far=0.42; n_far=15815; n_on_h19=21839; shared_with_r0=10132; within3px_of_H19_by_construction=0.5800; git=e7250147e19c",
+      "parent": "h33-h33-2-b2",
+      "axis": "SCARPDIPOLE",
+      "value": "f42dipole",
+      "n_dots": 37654,
+      "n_on_h19": 21839,
+      "n_far_off_h19": 15815,
+      "pct_changed": 73.09183619270198,
+      "frac_far": 0.42,
+      "removed": 27522,
+      "added": 27522,
+      "sha256": "5bc7d9875b79efd1af8f5940e1447ab70c4c6a4ea4614159eb07e23da3adeda8",
+      "sha256_zeros": "9febfbd7e301d708b0f60df08dc4add6bd5bd442909ea653bcd2a83a92d36262",
+      "primary_file": "h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987.tif",
+      "fallback_file": "h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unknown live delta; HOLDOUT-DTI in evidence/scarpdipole_proxy_audit.json",
+      "predicted_range": "not projected (a projection is never written as a score)",
+      "form_note": "SCARPDIPOLE f42dipole: 15815 off-H19 scarp-dipole dots + 21839 piedmont H19 dots (37,654 total)",
+      "parent_diff": {
+        "removed_from_r0": 27522,
+        "added_total": 27522,
+        "shared_exact_r0": 10132,
+        "on_h19_count": 21839,
+        "far_off_h19_count": 15815,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "far_min_distance_to_h19_px": 3.1622776601683795,
+        "collar_dots_final_dcat_le_3": 2851,
+        "mean_S_pct_on": 0.8973632454872131,
+        "mean_S_pct_far": 0.9878290891647339
+      },
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "9febfbd7e301d708b0f60df08dc4add6bd5bd442909ea653bcd2a83a92d36262"
+        }
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-SCARPDIPOLEf45dipole-20261024-b774637b",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-SCARPDIPOLE-f45dipole-20261024",
+      "name": "h33-h33-2-b2-SCARPDIPOLEf45dipole-20261024-b774637b.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-SCARPDIPOLEf45dipole-20261024-b774637b-zeros.tif",
+      "file_nan": "releases/h33-h33-2-b2-SCARPDIPOLEf45dipole-20261024-b774637b.tif",
+      "sha8": "b774637b",
+      "change_desc": "SCARPDIPOLE f45dipole: 20710 piedmont scarp-dipole H19-5 dots + 16944 off-skeleton (>3px H19-5) scarp-dipole zero-crossing dots; 37,654 total",
+      "notes": "frac_far=0.45; n_far=16944; n_on_h19=20710; shared_with_r0=9604; within3px_of_H19_by_construction=0.5500; git=e7250147e19c",
+      "parent": "h33-h33-2-b2",
+      "axis": "SCARPDIPOLE",
+      "value": "f45dipole",
+      "n_dots": 37654,
+      "n_on_h19": 20710,
+      "n_far_off_h19": 16944,
+      "pct_changed": 74.49407765443247,
+      "frac_far": 0.45,
+      "removed": 28050,
+      "added": 28050,
+      "sha256": "b774637b049634cfcbd8a7a88333aebf43d5ba6d290962c5a4eb61ceb455da62",
+      "sha256_zeros": "64719c87d27604cdf8d5254f5920d1aef7e1e10b519033fe64569714fb87376b",
+      "primary_file": "h33-h33-2-b2-SCARPDIPOLEf45dipole-20261024-b774637b.tif",
+      "fallback_file": "h33-h33-2-b2-SCARPDIPOLEf45dipole-20261024-b774637b-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unknown live delta; HOLDOUT-DTI in evidence/scarpdipole_proxy_audit.json",
+      "predicted_range": "not projected (a projection is never written as a score)",
+      "form_note": "SCARPDIPOLE f45dipole: 16944 off-H19 scarp-dipole dots + 20710 piedmont H19 dots (37,654 total)",
+      "parent_diff": {
+        "removed_from_r0": 28050,
+        "added_total": 28050,
+        "shared_exact_r0": 9604,
+        "on_h19_count": 20710,
+        "far_off_h19_count": 16944,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "far_min_distance_to_h19_px": 3.1622776601683795,
+        "collar_dots_final_dcat_le_3": 2767,
+        "mean_S_pct_on": 0.9044685363769531,
+        "mean_S_pct_far": 0.9868701100349426
+      },
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "64719c87d27604cdf8d5254f5920d1aef7e1e10b519033fe64569714fb87376b"
+        }
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-SCARPDIPOLEf50dipole-20261024-a6ce622f",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-SCARPDIPOLE-f50dipole-20261024",
+      "name": "h33-h33-2-b2-SCARPDIPOLEf50dipole-20261024-a6ce622f.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-SCARPDIPOLEf50dipole-20261024-a6ce622f-zeros.tif",
+      "file_nan": "releases/h33-h33-2-b2-SCARPDIPOLEf50dipole-20261024-a6ce622f.tif",
+      "sha8": "a6ce622f",
+      "change_desc": "SCARPDIPOLE f50dipole: 18827 piedmont scarp-dipole H19-5 dots + 18827 off-skeleton (>3px H19-5) scarp-dipole zero-crossing dots; 37,654 total",
+      "notes": "frac_far=0.50; n_far=18827; n_on_h19=18827; shared_with_r0=8695; within3px_of_H19_by_construction=0.5000; git=e7250147e19c",
+      "parent": "h33-h33-2-b2",
+      "axis": "SCARPDIPOLE",
+      "value": "f50dipole",
+      "n_dots": 37654,
+      "n_on_h19": 18827,
+      "n_far_off_h19": 18827,
+      "pct_changed": 76.90816380729802,
+      "frac_far": 0.5,
+      "removed": 28959,
+      "added": 28959,
+      "sha256": "a6ce622f86412ed9b8daf123d01d2fe6ab4303f089c87fd0c23560d7bbbd69f0",
+      "sha256_zeros": "f7c6a7bdc4b22da1acf3d9e4ada87981704bb18f98c7387159174c003b92482e",
+      "primary_file": "h33-h33-2-b2-SCARPDIPOLEf50dipole-20261024-a6ce622f.tif",
+      "fallback_file": "h33-h33-2-b2-SCARPDIPOLEf50dipole-20261024-a6ce622f-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unknown live delta; HOLDOUT-DTI in evidence/scarpdipole_proxy_audit.json",
+      "predicted_range": "not projected (a projection is never written as a score)",
+      "form_note": "SCARPDIPOLE f50dipole: 18827 off-H19 scarp-dipole dots + 18827 piedmont H19 dots (37,654 total)",
+      "parent_diff": {
+        "removed_from_r0": 28959,
+        "added_total": 28959,
+        "shared_exact_r0": 8695,
+        "on_h19_count": 18827,
+        "far_off_h19_count": 18827,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "far_min_distance_to_h19_px": 3.1622776601683795,
+        "collar_dots_final_dcat_le_3": 2672,
+        "mean_S_pct_on": 0.9158024191856384,
+        "mean_S_pct_far": 0.9852526187896729
+      },
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "f7c6a7bdc4b22da1acf3d9e4ada87981704bb18f98c7387159174c003b92482e"
+        }
+      ]
+    }
+  ]
+}
