@@ -226,3 +226,20 @@ No submission, no login, no leaderboard or competition-page access, no Dropbox c
 - Parent R0, H19-5, sample_submission, labels: already in `data/` (owner mirrors, SHA-256 pinned)
 - No new external download this session
 - No drivendata.org or dropbox.com contact
+
+---
+
+## Session 8 — STEPOVER unique TIF (2026-10-24)
+
+### What AI wrote
+- `scripts/build_stepover_submission.py` — deterministic STEPOVER build: pinned-manifest verification, visible-only trace-tip features, off-catalogue (`d_cat > 3 px`) placement, hide-and-recover evaluation, leakage canary, local-registry lane check, fail-closed GeoTIFF/ZIP/receipt packaging, format-gate re-check, evidence and run-card writing.
+- `releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif` (+ `.zip`, `.json`) — 5,000 unit-mass dots, all-finite zeros encoding, SHA-256 `e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205`.
+- `docs/executive-summary.html` — STEPOVER executive-summary subpage with the download and an explicit “OK TO DOWNLOAD: YES / OK TO SPEND A WEEKLY SLOT: NO” decision. The main `docs/index.html` TIPGAP download from the parallel session was retained at merge.
+- `docs/ANALYSIS.md`, `evidence/stepover_evidence.json`, `evidence/run_card.json`, `evidence/lane_registry_index.json`, one `ledger/submissions.csv` BUILT row, README/SLOT_PLAN notes, and an IRREGULARITIES entry for the structural-zero holdout limitation.
+
+### What the human decides
+- Whether to override the negative verdict and spend a weekly submission slot anyway (not recommended by the agent), and if so, upload from their own registered DrivenData account and transcribe the receipt score/date into `ledger/submissions.csv`.
+- `TOP_PUBLIC`, remaining weekly quota, GitHub Pages enablement/source, and whether competition data-use terms permit keeping derived rasters in the public repo.
+
+### What the AI did not do
+No DrivenData login, no leaderboard scraping, no actual competition submission, no Dropbox contact, no invented score. The file's organizer score is unknown until a submission-page receipt exists.

@@ -45,6 +45,18 @@ Beating 0.2778 on the live public chunks is possible in principle (prompt-cited 
 
 Rebuild: `PYTHONPATH=vendor python scripts/build_tipgap_far.py`
 
+
+## Additional session deliverable (STEPOVER, negative)
+
+A separate STEPOVER lane was also built and kept as a negative deliverable; it does **not** replace the TIPGAP FAR download above.
+
+- **File:** [`releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif`](releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif) (all-finite zeros encoding, SHA-256 `e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205`)
+- **Status:** OK TO DOWNLOAD; **NOT a weekly slot** (verdict negative).
+- **Lane:** 5,000 unit-mass dots at visible catalogue trace-tip step-overs, 3–10 px off catalogue (`d_cat > 3 px`), 1 px spacing. Distinct from TIPGAP (H19-5 skeleton endpoints) and from MASS/PRUNE/SNAP/CONCENTRATION/RELIEF.
+- **HOLDOUT-DTI:** 0.0000 [0.0000, 0.0000] vs R0 0.00370 [0.00301, 0.00432] (`gems57-pooled-hide-v2`, 11,321 withheld positives). This is a structural zero for gate-compliant off-catalogue dots; see `IRREGULARITIES.md`.
+- **Uniqueness / canary:** worst Spearman ρ = 0.0277, worst 3-px forward overlap = 0.2534 vs 14 locally accessible registry rasters; leakage AUC = 0.4996.
+- **Details:** [`docs/executive-summary.html`](docs/executive-summary.html) · [`docs/ANALYSIS.md`](docs/ANALYSIS.md) · [`evidence/run_card.json`](evidence/run_card.json)
+
 ## Limitations (what this sandbox cannot do)
 
 - No DrivenData auth → cannot auto-download `training_features.tif` from the competition data tab and cannot upload.
