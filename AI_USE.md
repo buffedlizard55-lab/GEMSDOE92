@@ -149,7 +149,10 @@ slots, receipts) are left blank.
 
 ---
 
-## Session 6 — RELIEF axis (2026-10-24)
+
+---
+
+## Session 7 — RELIEF axis (2026-10-24)
 
 ### What AI wrote
 - `scripts/build_relief_variants.py`: deterministic build verifying all input manifest SHA-256 digests, byte-exact parent R0 lineage rebuild check, detrended elevation (Band 12) tercile thresholding (`p33 = -142.91 m`, `p67 = +38.75 m`), physical prior calculation, selective dropping of lowest-prior basin & range dots, greedy exact expected DTI refill into the piedmont tercile, disk reread format validation, ledger appending, and generation of `evidence/relief_variants.json`.

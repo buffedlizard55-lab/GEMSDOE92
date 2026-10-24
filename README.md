@@ -2,14 +2,14 @@
 
 ## CURRENT STATE
 - **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots; exact lineage rebuild matches both pinned SHA-256 digests (`zeros`: `c55bafc4…`, `nan`: `baeae321…`). `0.2778` remains **CLAIM** (no receipt in `ledger/`).
-- **Best receipt**: none recorded (`ledger/submissions.csv` has 18 `BUILT` rows and zero `RECEIPT` rows).
+- **Best receipt**: none recorded (`ledger/submissions.csv` has 21 `BUILT` rows and zero `RECEIPT` rows).
 - **TOP_PUBLIC**: `____` (not supplied; human must fill value and observation date from leaderboard).
 - **Slots left this week**: `__` / total left to 2026-12-03: `__` (human must confirm entity rolling-week quota).
 - **AXIS this session**: `RELIEF`, chosen autonomously. New values: `p10piedmont`, `p12piedmont`, `p15piedmont` (shifting 10%, 12%, and 15% of dots from low-prior basin & range-front terciles to exact-DTI refill in the piedmont tercile; exact 37,654 dots held; `d_cat > 2.0 px`).
 - **Next 3 candidate slots (BUILT, not submitted)**:
   1. `h33-h33-2-b2-RELIEFp12piedmont-20261024-a0998ed7` — 12.0% shift (4,518 dots) into piedmont tercile (`MODEL:+0.008` `[-0.003,+0.022]`; hide-and-recover `PROXY` `+0.00197` vs R0).
   2. `h33-h33-2-b2-SNAPscarp2p0px-20261023-2a65fe24` — `<=2.0 px` joint scarp+break+TMI/grav edge snap, mean disp `1.234 px` (`MODEL:+0.012` `[-0.006,+0.025]`; SGMC `PROXY` `+0.00267` vs R0).
-  3. `h33-h33-2-b2-RELIEFp15piedmont-20261024-15254f0a` (`MODEL:+0.006`), or conditional swap to `h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277` (`MODEL:+0.003`) if Slot 1 is neutral.
+  3. `h33-h33-2-b2-RELIEFp15piedmont-20261024-15254f0a` (`MODEL:+0.006`), or conditional swap to `h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48` (`MODEL:+0.006`) if Slot 1 is neutral.
 
 No file was submitted. Candidate GeoTIFF pairs exist locally in `releases/` and are gitignored per public-repo safeguard; regenerate anytime via `python scripts/build_relief_variants.py`. See `docs/SUBMIT.md` and `SLOT_PLAN.md`.
 
@@ -44,7 +44,7 @@ dot, so those files were ranked on a field with no ordering — they are a rando
 ## Files
 - `releases/` — candidate rasters (NaN outside primary, zeros fallback)
 - `gems/` — tested toolkit: metric algebra, axis builders, gates, proxy, ledger, CLI
-- `tests/` — 38 tests, no competition data required (`make test`)
+- `tests/` — 57 tests, no competition data required (`make test`)
 - `scripts/build_prune_variants.py` — this session's build, deterministic
 - `registry/parents/R0.json` — verified parent record + its (absent) ranking
 - `ledger/submissions.csv` — build log

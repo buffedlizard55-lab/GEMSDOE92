@@ -97,5 +97,41 @@
     "predicted_sign_and_size": "MODEL:-0.002 vs R0, with scenario range [-0.014,+0.010]; MODEL only, never a score.",
     "falsifier": "A live receipt gain >= +0.01 over both R0 and scarp2p0px falsifies our surface-scarp dominance model and proves hidden test faults are predominantly blind/concealed basement contacts best localized by potential fields alone.",
     "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+  },
+  "h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48": {
+    "parent": "h33-h33-2-b2",
+    "axis": "CONCENTRATION",
+    "value": "catblk10up10",
+    "hypothesis": "At fixed count and mass, moving 10% of the dots out of the km-blocks with the least mapped-fault density into the blocks with the most re-concentrates the file onto the fault systems that the catalogue already proves are active in this crust.",
+    "mechanism": "DTI pays for a relocated dot iff it lands within ~2.5 px of truth with kernel credit above ~0.05. The catalogue proves where fault systems exist; the organizers state new fault truth includes newly mapped geometry of existing systems and may lie within 300 m of known traces, and that pixels beside mapped faults are scored normally. Blocks with mapped-fault density therefore have a higher prior probability that an H19-5 strand is a real fault.",
+    "non_fault_mimic": "Catalogue density also tracks survey attention and bedrock exposure: well-mapped corridors may simply be where USGS and INGENIOUS looked, so the prior can concentrate mass onto already-exhausted ground and away from genuine new faults in unmapped basins.",
+    "predicted_sign_and_size": "MODEL +0.006 live, scenario range [-0.008, +0.020].",
+    "falsifier": "A receipt at or below -0.01 says new-fault truth is not enriched near the catalogue; a receipt under +0.01 is no evidence either way.",
+    "decision_rule": "Treat an absolute live change < 0.01 as no evidence; compare only human-supplied receipt scores.",
+    "secondary_change": "moved dots use a 2.0 px spacing floor (parent 2.8284 px); all inherited dots unchanged"
+  },
+  "h33-h33-2-b2-CONCcatblk10up20-20261024-b6e80d73": {
+    "parent": "h33-h33-2-b2",
+    "axis": "CONCENTRATION",
+    "value": "catblk10up20",
+    "hypothesis": "Dose test, measured to be saturated: the 1 km prior can absorb only 4,054 destination dots above 0.002 prior at the 2.0 px floor, so the first ~4k movers concentrate and the rest spill to near-zero prior ground. If concentration is the mechanism, +20% should match +10%; if it is dilution, +20% should fall between +10% and R0.",
+    "mechanism": "Same as catblk10up10: the marginal value of a relocated dot is dominated by whether its destination strand is real truth, because count and mass are held fixed, so only T (credit) and |G| (newly covered truth) can move the ratio.",
+    "non_fault_mimic": "At 20% the destination blocks start to be filled on their second- and third-largest holes, i.e. the weakest strands in the best blocks, so the marginal dot quality drops even if the mechanism is right (diminishing returns / saturation).",
+    "predicted_sign_and_size": "MODEL +0.004 live, scenario range [-0.010, +0.018]: the extra 3,765 dots move to ground whose prior is ~0, so they add variance rather than concentration.",
+    "falsifier": "If +10% beats +20%, the block prior is real but the file is already at its concentration optimum; if +20% is below -0.01 while +10% is flat, the prior is anti-correlated with new-fault truth.",
+    "decision_rule": "Treat an absolute live change < 0.01 as no evidence; compare only human-supplied receipt scores.",
+    "secondary_change": "moved dots use a 2.0 px spacing floor (parent 2.8284 px); all inherited dots unchanged"
+  },
+  "h33-h33-2-b2-CONCcatblk10dn10-20261024-c671b704": {
+    "parent": "h33-h33-2-b2",
+    "axis": "CONCENTRATION",
+    "value": "catblk10dn10",
+    "hypothesis": "The inverse direction: move 10% of the dots from the most mapped-fault-dense blocks to the least, i.e. deliberately spread mass into ground the catalogue does not already cover.",
+    "mechanism": "Competition scoring masks known fault pixels exactly and scores only new-fault truth; if the new truth was drawn from structures that are absent from USGS/INGENIOUS (data gaps, concealed basin faults), then catalogue-dense blocks are the least productive ground and this variant wins.",
+    "non_fault_mimic": "Moving mass into low-density blocks also means moving it into distant basins with poor lineament corroboration; the new dots can be pure dead mass, which costs about 0.056 of denominator per dot but almost nothing per dot in T.",
+    "predicted_sign_and_size": "MODEL -0.006 live, scenario range [-0.018, +0.010]; the sign is the whole point of the file.",
+    "falsifier": "A receipt at or above +0.01 reverses the strategic bet and says the catalogue is anti-predictive for new-fault truth; between the two variants the pair brackets the sign of the block prior.",
+    "decision_rule": "Treat an absolute live change < 0.01 as no evidence; compare only human-supplied receipt scores.",
+    "secondary_change": "moved dots use a 2.0 px spacing floor (parent 2.8284 px); all inherited dots unchanged"
   }
 }
