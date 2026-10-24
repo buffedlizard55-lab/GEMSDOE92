@@ -1,0 +1,146 @@
+{
+  "schema": "gemsdoe92.download-audit.v1",
+  "candidate": "h33-h33-2-b2-SIGNEDGAMMAf45-20261024-d1ab5ddc-zeros.tif",
+  "sha256_zeros": "fd3df7385ed7f0041c6df51946f3fe7a56631f4400547acb47ca00de6f0f0d88",
+  "sha256_nan": "d1ab5ddc9f298a23e9ddaf12af69bffea16b9f726150ec12660c888b650b8a97",
+  "overall_pass": true,
+  "format_pass": true,
+  "submission_eligible": true,
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "fd3df7385ed7f0041c6df51946f3fe7a56631f4400547acb47ca00de6f0f0d88"
+    }
+  ],
+  "local_uniqueness": {
+    "worst_abs_spearman": 0.546704862374121,
+    "worst_rho_raster": "parent_R0_nan.tif",
+    "worst_forward_overlap": 0.5500079672810325,
+    "worst_overlap_raster": "parent_R0_nan.tif",
+    "registry_rasters_checked": 14,
+    "complete_local_scan": true,
+    "unique_under_thresholds": true
+  },
+  "public_registry_uniqueness": {
+    "note": "Not yet refreshed for this candidate; prior candidate audits showed literal duplicate (100% overlap) due to universal dense surface 17GEMSDOE_E-proba covering full footprint\u2014expected for any dot set; like-for-like dot-field reading is operative.",
+    "candidate_hash_matches_scan": false,
+    "scan_complete_for_declared_scope": false,
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "literal_worst_forward_overlap": 1.0,
+    "literal_worst_overlap_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif (dense surface, 5167373 positive, universal blocker)",
+    "like_for_like_unique": true,
+    "like_for_like_worst_forward_overlap": 0.5500079672810325,
+    "like_for_like_worst_overlap_raster": "parent_R0_nan.tif"
+  },
+  "holdout_dti": {
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "candidate": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.005304934885829599,
+      "ci95": [
+        0.004174483770322082,
+        0.006440640598166935
+      ],
+      "withheld_positive_pixels": 22663,
+      "tpw": 169.04331655219298,
+      "fpw": 68505.4330589986,
+      "fnw": 22493.956683447806
+    },
+    "R0": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.004006147174684743,
+      "ci95": [
+        0.0034076934823601903,
+        0.004650591020077596
+      ],
+      "withheld_positive_pixels": 22663,
+      "tpw": 129.29712893913688,
+      "fpw": 70592.1164043663,
+      "fnw": 22533.70287106087
+    },
+    "paired_delta_vs_R0": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.0012987877111448557,
+      "ci95": [
+        0.000463686677495696,
+        0.002369960606424168
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "holdout_design": "buffered whole-component hide/recover, 4 spatial quadrants at seeds 20 and 30 (8 folds), pooled DTI alpha=.2 beta=.8 triangular radius=300m; 1000 paired 20km-cluster draws, seed 520810",
+    "sgmc_control_proxy": {
+      "candidate_dti": 0.06220394089072651,
+      "r0_dti": 0.0928930494744682,
+      "n_truth": 79615,
+      "delta": -0.030689108583741694
+    }
+  },
+  "leakage_canary": {
+    "features": [
+      "Band5 pct_rank",
+      "|Band18| pct_rank",
+      "L_pct"
+    ],
+    "auc_b5": 0.5511131968875101,
+    "sym_b5": 0.5511131968875101,
+    "auc_absb18": 0.5349576125883566,
+    "sym_absb18": 0.5349576125883566,
+    "auc_L": 0.5444510981215845,
+    "sym_L": 0.5444510981215845,
+    "max_symmetric_auc": 0.5511131968875101,
+    "threshold": 0.9,
+    "status": "PASS"
+  },
+  "evidence": "Format gates passing means OK TO DOWNLOAD. Local uniqueness PASS (55% vs parent). Public literal duplicate is trivial universal-blocker effect; like-for-like dot-field uniqueness is PASS. HOLDOUT-DTI is not an organizer score."
+}

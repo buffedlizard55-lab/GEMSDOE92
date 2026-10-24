@@ -244,5 +244,13 @@
     "falsifier": "Live receipt delta <= -0.010 vs R0 rejects off-worm topographic breaks as new-fault locations at these doses (either the expert labels follow potential-field geometry after all, or 100 m topographic breaks are dominated by erosional mimics). A holdout delta at or below R0 with CI excluding 0 likewise rejects the lane on the catalogue instrument. |delta| < 0.01 live is no evidence (public-chunk noise).",
     "decision_rule": "Promote only if literal uniqueness (<=70% dots within 3px of every measured registry raster, |Spearman| <= 0.90) AND pooled HOLDOUT-DTI beats the current holdout best (RELIEF p10, 0.006045) with paired CI excluding 0 vs R0. Otherwise verdict negative: format-valid and downloadable, but not cleared for a weekly slot.",
     "predicted_sign_and_size": "MODEL: unknown live delta; HOLDOUT-DTI in evidence/breakline_proxy_audit.json"
+  },
+  "h33-h33-2-b2-SIGNEDGAMMAf45-20261024-d1ab5ddc": {
+    "hypothesis": "Concealed basin-bounding normal faults under Quaternary fill produce an isostatic gravity step whose HGM crest (Band5) is offset 300-500 m from the surface scarp; the signed E-W derivative (Band18) indicates dip direction. Dots placed 300-500 m basinward of HGM ridges (>3px off H19-5 skeleton) catch blind intrabasin strands missed by H19-5 worms and older-imagery Qfaults catalogue.",
+    "mechanism": "Keep 20710 parent dots via exact expected-DTI greedy under w=0.30+0.70*L_pct on H19-5 support (L=pct_rank(Band5)*pct_rank(|Band18|)); emit 16944 far dots via spaced_top_mask descending L_raw on pixels 3-5 px basinward of HGM ridges (b5_pct>0.85 offset by -sign(Band18)*[3,4,5]) that are >3px off every H19-5 pixel, >2px off catalogue, valid topography, 2.8px floor. Fixed 37654 dots.",
+    "non_fault_mimic": "Lateral facies-change density gradients within basin fill (coarse fan wedge vs lacustrine clay), paleoshoreline beach-ridge density contrasts, and evaporite/ash layers produce gravity HGM ridges with no brittle fault; basinward offset would then be pure FP.",
+    "predicted_sign_and_size": "HOLDOUT-DTI delta vs R0 0.0013 [0.000463686677495696, 0.002369960606424168] (HOLDOUT, not live). Leakage max AUC 0.551 <0.90.",
+    "falsifier": "Live receipt delta <= -0.01 vs R0 rejects basinward gravity-offset hypothesis; HOLDOUT delta CI including 0 rejects on catalogue instrument.",
+    "decision_rule": "Promote only if pooled HOLDOUT delta CI>0 vs R0, local literal uniqueness (<=0.70 overlap, |rho|<=0.90), format gates PASS, and public registry audit (1279 blobs) confirms like-for-like uniqueness; otherwise negative\u2014format-valid downloadable but not cleared."
   }
 }

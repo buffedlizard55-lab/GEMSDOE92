@@ -1,0 +1,184 @@
+{
+  "schema": "gemsdoe92.run-card.v1",
+  "hypothesis": "Concealed basin-bounding normal faults under Quaternary fill produce an isostatic gravity step whose HGM crest (Band5) is offset 300-500 m from the surface scarp; the signed E-W derivative (Band18) indicates dip direction. Dots placed 300-500 m basinward of HGM ridges (>3px off H19-5 skeleton) catch blind intrabasin strands missed by H19-5 worms and older-imagery Qfaults catalogue.",
+  "mechanism": "Keep 20710 parent dots via exact expected-DTI greedy under w=0.30+0.70*L_pct on H19-5 support (L=pct_rank(Band5)*pct_rank(|Band18|)); emit 16944 far dots via spaced_top_mask descending L_raw on pixels 3-5 px basinward of HGM ridges (b5_pct>0.85 offset by -sign(Band18)*[3,4,5]) that are >3px off every H19-5 pixel, >2px off catalogue, valid topography, 2.8px floor. Fixed 37654 dots.",
+  "named_non_fault_mimic": "Lateral facies-change density gradients within basin fill (coarse fan wedge vs lacustrine clay), paleoshoreline beach-ridge density contrasts, and evaporite/ash layers produce gravity HGM ridges with no brittle fault; basinward offset would then be pure FP.",
+  "holdout_dti": {
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "candidate": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.005304934885829599,
+      "ci95": [
+        0.004174483770322082,
+        0.006440640598166935
+      ],
+      "withheld_positive_pixels": 22663,
+      "tpw": 169.04331655219298,
+      "fpw": 68505.4330589986,
+      "fnw": 22493.956683447806
+    },
+    "R0": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.004006147174684743,
+      "ci95": [
+        0.0034076934823601903,
+        0.004650591020077596
+      ],
+      "withheld_positive_pixels": 22663,
+      "tpw": 129.29712893913688,
+      "fpw": 70592.1164043663,
+      "fnw": 22533.70287106087
+    },
+    "paired_delta_vs_R0": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.0012987877111448557,
+      "ci95": [
+        0.000463686677495696,
+        0.002369960606424168
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "holdout_design": "buffered whole-component hide/recover, 4 spatial quadrants at seeds 20 and 30 (8 folds), pooled DTI alpha=.2 beta=.8 triangular radius=300m; 1000 paired 20km-cluster draws, seed 520810",
+    "sgmc_control_proxy": {
+      "candidate_dti": 0.06220394089072651,
+      "r0_dti": 0.0928930494744682,
+      "n_truth": 79615,
+      "delta": -0.030689108583741694
+    }
+  },
+  "leakage_canary": {
+    "features": [
+      "Band5 pct_rank",
+      "|Band18| pct_rank",
+      "L_pct"
+    ],
+    "auc_b5": 0.5511131968875101,
+    "sym_b5": 0.5511131968875101,
+    "auc_absb18": 0.5349576125883566,
+    "sym_absb18": 0.5349576125883566,
+    "auc_L": 0.5444510981215845,
+    "sym_L": 0.5444510981215845,
+    "max_symmetric_auc": 0.5511131968875101,
+    "threshold": 0.9,
+    "status": "PASS"
+  },
+  "correlation_overlap_vs_registry": {
+    "registry_scope": "Local index: lane_registry_index.json (14 rasters); public scan: current default-branch submission TIFFs across 102 public GEMSDOE repos (1279 blobs) where available\u2014see docs/downloads/public_registry_uniqueness.json for prior-candidate audit; this candidate's public audit to be refreshed after local PASS.",
+    "local_final_dots": {
+      "worst_abs_spearman": 0.546704862374121,
+      "worst_rho_raster": "parent_R0_nan.tif",
+      "worst_forward_overlap": 0.5500079672810325,
+      "worst_overlap_raster": "parent_R0_nan.tif",
+      "registry_rasters_checked": 14,
+      "complete_local_scan": true,
+      "unique_under_thresholds": true
+    },
+    "public_registry_scan": null
+  },
+  "raster_sha256": "fd3df7385ed7f0041c6df51946f3fe7a56631f4400547acb47ca00de6f0f0d88",
+  "raster_sha256_nan": "d1ab5ddc9f298a23e9ddaf12af69bffea16b9f726150ec12660c888b650b8a97",
+  "validator": {
+    "status": "PASS",
+    "no_nan_inside_footprint": true,
+    "all_values_in_0_1": true,
+    "zeros_outside_footprint": true,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "single_band_float32": true,
+    "gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=float32 count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nan_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "fd3df7385ed7f0041c6df51946f3fe7a56631f4400547acb47ca00de6f0f0d88"
+      }
+    ],
+    "gate_report": "[PASS] crs: reference=EPSG:32611 candidate=EPSG:32611\n[PASS] shape: reference=3730x3292 candidate=3730x3292\n[PASS] transform: | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|\n[PASS] dtype_and_band: dtype=float32 count=1\n[PASS] values_in_0_1: n_violations=0 min=0.0 max=1.0\n[PASS] no_nan_inside_footprint: nan_pixels=0\n[PASS] nan_outside_footprint: outside=7111787 nan=0 zero=7111787 other=0\n[PASS] catalogue_zero_mass: dots_on_catalogue=0\n[PASS] distance_from_catalogue: radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)\n[PASS] reread_sha256: fd3df7385ed7f0041c6df51946f3fe7a56631f4400547acb47ca00de6f0f0d88\nRESULT: PASS (10 gates)"
+  },
+  "submission_name": "GEMSDOE92-SIGNEDGAMMA-f45-20261024",
+  "submission_note": "h33-h33-2-b2; SIGNED-GAMMA f45 16944 far offset on gravity HGM basinward >3px off H19-5",
+  "file": "h33-h33-2-b2-SIGNEDGAMMAf45-20261024-d1ab5ddc-zeros.tif",
+  "file_nan": "h33-h33-2-b2-SIGNEDGAMMAf45-20261024-d1ab5ddc.tif",
+  "git_sha": "e7250147e19c",
+  "parent_diff": {
+    "n_keep": 20710,
+    "n_far": 16944,
+    "pct_changed": 44.99920327189674,
+    "far_min_distance_to_h19_px": 3.1622776601683795,
+    "min_catalogue_distance_px": 2.23606797749979,
+    "mean_L_pct_far": 0.9821004867553711,
+    "mean_L_pct_kept": 0.6791176795959473
+  },
+  "far_pool": {
+    "n_candidates": 628187,
+    "ridge_pixels": 774647,
+    "offset_pool": 813305
+  },
+  "verdict": "promote",
+  "negative_reason": null,
+  "limits": [
+    "HOLDOUT-DTI is not a DrivenData score.",
+    "Registry scope caveat as above.",
+    "SGMC control is PROXY, not live truth."
+  ],
+  "evidence_class_labels": "All numbers are HOLDOUT-DTI or PROXY unless marked ORGANIZER-CONFIRMED with receipt date."
+}
