@@ -1,0 +1,164 @@
+{
+  "schema": "gemsdoe92-preplacement-screen.v1",
+  "lane": "HYDROCONDUIT",
+  "gdr_summary": {
+    "n_thermal_pixels": 2312,
+    "n_blind_geotherm_pixels": 419
+  },
+  "leakage_canaries": {
+    "max_symmetric_auc": 0.65012,
+    "all_pass_le_0_90": true,
+    "features": {
+      "band02_rtp": {
+        "auc": 0.513549,
+        "symmetric_auc": 0.513549,
+        "status": "PASS"
+      },
+      "band04_geod_2ndinv": {
+        "auc": 0.510186,
+        "symmetric_auc": 0.510186,
+        "status": "PASS"
+      },
+      "band08_geod_dilaterate": {
+        "auc": 0.514464,
+        "symmetric_auc": 0.514464,
+        "status": "PASS"
+      },
+      "band12_det_elev": {
+        "auc": 0.497553,
+        "symmetric_auc": 0.502447,
+        "status": "PASS"
+      },
+      "band15_depth_to_base_surf": {
+        "auc": 0.514862,
+        "symmetric_auc": 0.514862,
+        "status": "PASS"
+      },
+      "band17_cond_surf": {
+        "auc": 0.505983,
+        "symmetric_auc": 0.505983,
+        "status": "PASS"
+      },
+      "band19_det_elev_slope": {
+        "auc": 0.55314,
+        "symmetric_auc": 0.55314,
+        "status": "PASS"
+      },
+      "rad_k_raw": {
+        "auc": 0.441235,
+        "symmetric_auc": 0.558765,
+        "status": "PASS"
+      },
+      "rad_th_raw": {
+        "auc": 0.458128,
+        "symmetric_auc": 0.541872,
+        "status": "PASS"
+      },
+      "rel_break_pct": {
+        "auc": 0.577861,
+        "symmetric_auc": 0.577861,
+        "status": "PASS"
+      },
+      "coh_elev": {
+        "auc": 0.552077,
+        "symmetric_auc": 0.552077,
+        "status": "PASS"
+      },
+      "mu_step": {
+        "auc": 0.582023,
+        "symmetric_auc": 0.582023,
+        "status": "PASS"
+      },
+      "t_scarp": {
+        "auc": 0.622959,
+        "symmetric_auc": 0.622959,
+        "status": "PASS"
+      },
+      "p_elev": {
+        "auc": 0.575625,
+        "symmetric_auc": 0.575625,
+        "status": "PASS"
+      },
+      "p_cover": {
+        "auc": 0.54293,
+        "symmetric_auc": 0.54293,
+        "status": "PASS"
+      },
+      "kappa_strike": {
+        "auc": 0.579954,
+        "symmetric_auc": 0.579954,
+        "status": "PASS"
+      },
+      "kappa_strain": {
+        "auc": 0.518389,
+        "symmetric_auc": 0.518389,
+        "status": "PASS"
+      },
+      "m_rtp": {
+        "auc": 0.516158,
+        "symmetric_auc": 0.516158,
+        "status": "PASS"
+      },
+      "r_kth": {
+        "auc": 0.463359,
+        "symmetric_auc": 0.536641,
+        "status": "PASS"
+      },
+      "c_mt": {
+        "auc": 0.505983,
+        "symmetric_auc": 0.505983,
+        "status": "PASS"
+      },
+      "q_gdr": {
+        "auc": 0.496133,
+        "symmetric_auc": 0.503867,
+        "status": "PASS"
+      },
+      "g_hydro": {
+        "auc": 0.496209,
+        "symmetric_auc": 0.503791,
+        "status": "PASS"
+      },
+      "S_pied_pct": {
+        "auc": 0.65012,
+        "symmetric_auc": 0.65012,
+        "status": "PASS"
+      },
+      "S_hydro_pct": {
+        "auc": 0.64792,
+        "symmetric_auc": 0.64792,
+        "status": "PASS"
+      }
+    }
+  },
+  "preplacement_surface_uniqueness": {
+    "S_pied_top37654": {
+      "registry_rasters_checked": 29,
+      "worst_forward_overlap": 0.200483,
+      "worst_forward_overlap_file": "h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+      "worst_abs_spearman": 0.071901,
+      "worst_abs_spearman_file": "h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+      "duplicate": false
+    },
+    "S_hydro_top37654": {
+      "registry_rasters_checked": 29,
+      "worst_forward_overlap": 0.189249,
+      "worst_forward_overlap_file": "h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+      "worst_abs_spearman": 0.063126,
+      "worst_abs_spearman_file": "h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+      "duplicate": false
+    },
+    "continuous_sampled_spearman_300k": {
+      "worst_S_hydro": {
+        "registry_file": "h19_5.tif",
+        "spearman_S_hydro": 0.109815,
+        "spearman_S_pied": 0.114722
+      },
+      "worst_S_pied": {
+        "registry_file": "h19_5.tif",
+        "spearman_S_hydro": 0.109815,
+        "spearman_S_pied": 0.114722
+      }
+    }
+  }
+}
