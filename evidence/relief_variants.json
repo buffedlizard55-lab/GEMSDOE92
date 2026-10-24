@@ -1,0 +1,472 @@
+{
+  "schema": "gemsdoe92.relief-variants.v1",
+  "session_date_utc": "20261024",
+  "axis": "RELIEF",
+  "parent": "h33-h33-2-b2",
+  "parent_claim": {
+    "score": 0.2778,
+    "evidence_label": "CLAIM",
+    "receipt": false
+  },
+  "exact_parent_rebuild": {
+    "n_dots": 37654,
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "matches_recorded_hashes": true
+  },
+  "input_manifest_sha256": "a0d9ea4c5600329d3d42570679671d6f34d8b1614419c4de54e0707a4b82139a",
+  "input_count": 12,
+  "relief_definition": {
+    "det_elev_band": "Band 12 (det_elev)",
+    "det_elev_slope_band": "Band 19 (det_elev_slope) + ||grad(Band 19)||",
+    "tercile_cutpoints_m": {
+      "q33_basin_piedmont": -142.9087,
+      "q67_piedmont_rangefront": 38.7522
+    },
+    "in_footprint_nodata_pixels_masked": 3061,
+    "valid_footprint_pixels": 5164312,
+    "footprint_tercile_pixels": {
+      "0_basin": 1721438,
+      "1_piedmont": 1721437,
+      "2_range_front": 1721437
+    }
+  },
+  "parent_tercile_allocation": {
+    "basin": {
+      "n_dots": 7692,
+      "pct_of_total": 20.4281
+    },
+    "piedmont": {
+      "n_dots": 15742,
+      "pct_of_total": 41.807
+    },
+    "range_front": {
+      "n_dots": 14204,
+      "pct_of_total": 37.7224
+    },
+    "sentinel_nodata": {
+      "n_dots": 16,
+      "pct_of_total": 0.0425
+    }
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-RELIEFbasin11pct-20261024-2d06de50",
+      "site": "GEMSDOE92",
+      "name": "h33-h33-2-b2-RELIEFbasin11pct-20261024-2d06de50.tif",
+      "file_zeros": "releases/h33-h33-2-b2-RELIEFbasin11pct-20261024-2d06de50-zeros.tif",
+      "file_nan": "releases/h33-h33-2-b2-RELIEFbasin11pct-20261024-2d06de50.tif",
+      "sha8": "2d06de50",
+      "change_desc": "RELIEF +11% mass to Basin (4142 dots, fixed 37654); drop 2177+1965 from terciles 1,2 and add 4142 H19-5 (d_cat>3, nn>=1.41) in tercile 0",
+      "notes": "seed=0; moved=4142 (11.0002%); min_nn=1.4142px; added_min_dcat=3.1623px; MODEL range [-0.008,+0.022]; SGMC PROXY delta -0.004324; git=8c3dd43be7b5; see evidence/relief_variants.json",
+      "parent": "h33-h33-2-b2",
+      "axis": "RELIEF",
+      "value": "basin11pct",
+      "n_dots": 37654,
+      "pct_changed": 11.000159,
+      "removed": 4142,
+      "added": 4142,
+      "sha256": "2d06de502fbe0a00f958b767fe35979505f2ba9718bc2fa8e2efd9e01b7a347c",
+      "sha256_zeros": "0595c9ed6dd2e12264f7329106a5b821ff9591c5b0fcafeb64a4ad99518c1d5e",
+      "primary_file": "h33-h33-2-b2-RELIEFbasin11pct-20261024-2d06de50.tif",
+      "fallback_file": "h33-h33-2-b2-RELIEFbasin11pct-20261024-2d06de50-zeros.tif",
+      "primary_encoding": "NaN outside footprint",
+      "fallback_encoding": "zero outside footprint",
+      "status": "BUILT",
+      "predicted_change": "MODEL:+0.008",
+      "predicted_range": "[-0.008,+0.022]",
+      "prediction_scope": "MODEL scenario range only; public-chunk changes under 0.01 are no evidence. PROXY instruments are diagnostics, never gates or scores.",
+      "tercile_allocation": {
+        "destination_tercile": 0,
+        "source_terciles": [
+          1,
+          2
+        ],
+        "dropped_by_source_tercile": {
+          "1": 2177,
+          "2": 1965
+        },
+        "before": {
+          "basin": {
+            "n_dots": 7692,
+            "pct_of_total": 20.4281
+          },
+          "piedmont": {
+            "n_dots": 15742,
+            "pct_of_total": 41.807
+          },
+          "range_front": {
+            "n_dots": 14204,
+            "pct_of_total": 37.7224
+          },
+          "sentinel_nodata": {
+            "n_dots": 16,
+            "pct_of_total": 0.0425
+          }
+        },
+        "after": {
+          "basin": {
+            "n_dots": 11834,
+            "pct_of_total": 31.4283
+          },
+          "piedmont": {
+            "n_dots": 13565,
+            "pct_of_total": 36.0254
+          },
+          "range_front": {
+            "n_dots": 12239,
+            "pct_of_total": 32.5039
+          },
+          "sentinel_nodata": {
+            "n_dots": 16,
+            "pct_of_total": 0.0425
+          }
+        }
+      },
+      "spacing_and_clearance": {
+        "min_interdot_nn_px": 1.414214,
+        "median_interdot_nn_px": 3.0,
+        "added_min_catalogue_distance_px": 3.162278,
+        "all_min_catalogue_distance_px": 2.236068,
+        "inherited_dots_within_3px": 1882,
+        "added_dots_within_3px": 0
+      },
+      "sgmc_control_proxy": {
+        "evidence_label": "PROXY",
+        "dti": 0.091736,
+        "delta_vs_r0": -0.004324,
+        "n_withheld_control_pixels": 62703
+      },
+      "parent_diff": {
+        "removed": 4142,
+        "added": 4142,
+        "shared": 33512,
+        "moved_pct": 11.000159,
+        "symmetric_diff_px": 8284,
+        "min_catalogue_distance_px": 2.236068,
+        "dots_within_3px": 1882
+      },
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "added_dots_catalogue_distance_gt_3px": true,
+          "in_collar_3px_le_parent": true,
+          "count_37654": true,
+          "gems_strict_non_collar_gates_pass": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "added_dots_catalogue_distance_gt_3px": true,
+          "in_collar_3px_le_parent": true,
+          "count_37654": true,
+          "gems_strict_non_collar_gates_pass": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; RELIEF +11% mass to Basin (4142 dots, fixed 37654); pred MODEL:+0.008",
+      "gate_status": "PASS (local reread + gems.gates; 0 added dots <=3px of catalogue; candidate TIFF gitignored for public repo safety)",
+      "seed": 0,
+      "git_sha_at_build": "8c3dd43be7b5c05b6bbdeea1218a3add29d6c5ee"
+    },
+    {
+      "id": "h33-h33-2-b2-RELIEFpiedmont11pct-20261024-455a16f0",
+      "site": "GEMSDOE92",
+      "name": "h33-h33-2-b2-RELIEFpiedmont11pct-20261024-455a16f0.tif",
+      "file_zeros": "releases/h33-h33-2-b2-RELIEFpiedmont11pct-20261024-455a16f0-zeros.tif",
+      "file_nan": "releases/h33-h33-2-b2-RELIEFpiedmont11pct-20261024-455a16f0.tif",
+      "sha8": "455a16f0",
+      "change_desc": "RELIEF +11% mass to Piedmont (4142 dots, fixed 37654); drop 1455+2687 from terciles 0,2 and add 4142 H19-5 (d_cat>3, nn>=1.41) in tercile 1",
+      "notes": "seed=0; moved=4142 (11.0002%); min_nn=1.4142px; added_min_dcat=3.1623px; MODEL range [-0.009,+0.018]; SGMC PROXY delta -0.004218; git=8c3dd43be7b5; see evidence/relief_variants.json",
+      "parent": "h33-h33-2-b2",
+      "axis": "RELIEF",
+      "value": "piedmont11pct",
+      "n_dots": 37654,
+      "pct_changed": 11.000159,
+      "removed": 4142,
+      "added": 4142,
+      "sha256": "455a16f0663bd20e0745e6c54f59bff996fadc5198dad1292df3b05c26b18042",
+      "sha256_zeros": "8ed1c29fe76a2b92f11226bae7fb81b9b23a465a2b2355a47924e39ec46a172f",
+      "primary_file": "h33-h33-2-b2-RELIEFpiedmont11pct-20261024-455a16f0.tif",
+      "fallback_file": "h33-h33-2-b2-RELIEFpiedmont11pct-20261024-455a16f0-zeros.tif",
+      "primary_encoding": "NaN outside footprint",
+      "fallback_encoding": "zero outside footprint",
+      "status": "BUILT",
+      "predicted_change": "MODEL:+0.005",
+      "predicted_range": "[-0.009,+0.018]",
+      "prediction_scope": "MODEL scenario range only; public-chunk changes under 0.01 are no evidence. PROXY instruments are diagnostics, never gates or scores.",
+      "tercile_allocation": {
+        "destination_tercile": 1,
+        "source_terciles": [
+          0,
+          2
+        ],
+        "dropped_by_source_tercile": {
+          "0": 1455,
+          "2": 2687
+        },
+        "before": {
+          "basin": {
+            "n_dots": 7692,
+            "pct_of_total": 20.4281
+          },
+          "piedmont": {
+            "n_dots": 15742,
+            "pct_of_total": 41.807
+          },
+          "range_front": {
+            "n_dots": 14204,
+            "pct_of_total": 37.7224
+          },
+          "sentinel_nodata": {
+            "n_dots": 16,
+            "pct_of_total": 0.0425
+          }
+        },
+        "after": {
+          "basin": {
+            "n_dots": 6237,
+            "pct_of_total": 16.564
+          },
+          "piedmont": {
+            "n_dots": 19884,
+            "pct_of_total": 52.8071
+          },
+          "range_front": {
+            "n_dots": 11517,
+            "pct_of_total": 30.5864
+          },
+          "sentinel_nodata": {
+            "n_dots": 16,
+            "pct_of_total": 0.0425
+          }
+        }
+      },
+      "spacing_and_clearance": {
+        "min_interdot_nn_px": 1.414214,
+        "median_interdot_nn_px": 3.0,
+        "added_min_catalogue_distance_px": 3.162278,
+        "all_min_catalogue_distance_px": 2.236068,
+        "inherited_dots_within_3px": 1880,
+        "added_dots_within_3px": 0
+      },
+      "sgmc_control_proxy": {
+        "evidence_label": "PROXY",
+        "dti": 0.091842,
+        "delta_vs_r0": -0.004218,
+        "n_withheld_control_pixels": 62703
+      },
+      "parent_diff": {
+        "removed": 4142,
+        "added": 4142,
+        "shared": 33512,
+        "moved_pct": 11.000159,
+        "symmetric_diff_px": 8284,
+        "min_catalogue_distance_px": 2.236068,
+        "dots_within_3px": 1880
+      },
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "added_dots_catalogue_distance_gt_3px": true,
+          "in_collar_3px_le_parent": true,
+          "count_37654": true,
+          "gems_strict_non_collar_gates_pass": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "added_dots_catalogue_distance_gt_3px": true,
+          "in_collar_3px_le_parent": true,
+          "count_37654": true,
+          "gems_strict_non_collar_gates_pass": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; RELIEF +11% mass to Piedmont (4142 dots, fixed 37654); pred MODEL:+0.005",
+      "gate_status": "PASS (local reread + gems.gates; 0 added dots <=3px of catalogue; candidate TIFF gitignored for public repo safety)",
+      "seed": 0,
+      "git_sha_at_build": "8c3dd43be7b5c05b6bbdeea1218a3add29d6c5ee"
+    },
+    {
+      "id": "h33-h33-2-b2-RELIEFrangefront11pct-20261024-9909bb67",
+      "site": "GEMSDOE92",
+      "name": "h33-h33-2-b2-RELIEFrangefront11pct-20261024-9909bb67.tif",
+      "file_zeros": "releases/h33-h33-2-b2-RELIEFrangefront11pct-20261024-9909bb67-zeros.tif",
+      "file_nan": "releases/h33-h33-2-b2-RELIEFrangefront11pct-20261024-9909bb67.tif",
+      "sha8": "9909bb67",
+      "change_desc": "RELIEF +11% mass to Range-front (4142 dots, fixed 37654); drop 1360+2782 from terciles 0,1 and add 4142 H19-5 (d_cat>3, nn>=1.41) in tercile 2",
+      "notes": "seed=0; moved=4142 (11.0002%); min_nn=1.4142px; added_min_dcat=3.1623px; MODEL range [-0.018,+0.010]; SGMC PROXY delta -0.000408; git=8c3dd43be7b5; see evidence/relief_variants.json",
+      "parent": "h33-h33-2-b2",
+      "axis": "RELIEF",
+      "value": "rangefront11pct",
+      "n_dots": 37654,
+      "pct_changed": 11.000159,
+      "removed": 4142,
+      "added": 4142,
+      "sha256": "9909bb675e23d59fbce0c084f33f8bf7a58be22bc8c82d5e606bc0f3a6b9586e",
+      "sha256_zeros": "6d250a1a7e4dc39fe3550fffd0e48bada54b097c052fa1ec77637c77581e0696",
+      "primary_file": "h33-h33-2-b2-RELIEFrangefront11pct-20261024-9909bb67.tif",
+      "fallback_file": "h33-h33-2-b2-RELIEFrangefront11pct-20261024-9909bb67-zeros.tif",
+      "primary_encoding": "NaN outside footprint",
+      "fallback_encoding": "zero outside footprint",
+      "status": "BUILT",
+      "predicted_change": "MODEL:-0.005",
+      "predicted_range": "[-0.018,+0.010]",
+      "prediction_scope": "MODEL scenario range only; public-chunk changes under 0.01 are no evidence. PROXY instruments are diagnostics, never gates or scores.",
+      "tercile_allocation": {
+        "destination_tercile": 2,
+        "source_terciles": [
+          0,
+          1
+        ],
+        "dropped_by_source_tercile": {
+          "0": 1360,
+          "1": 2782
+        },
+        "before": {
+          "basin": {
+            "n_dots": 7692,
+            "pct_of_total": 20.4281
+          },
+          "piedmont": {
+            "n_dots": 15742,
+            "pct_of_total": 41.807
+          },
+          "range_front": {
+            "n_dots": 14204,
+            "pct_of_total": 37.7224
+          },
+          "sentinel_nodata": {
+            "n_dots": 16,
+            "pct_of_total": 0.0425
+          }
+        },
+        "after": {
+          "basin": {
+            "n_dots": 6332,
+            "pct_of_total": 16.8163
+          },
+          "piedmont": {
+            "n_dots": 12960,
+            "pct_of_total": 34.4187
+          },
+          "range_front": {
+            "n_dots": 18346,
+            "pct_of_total": 48.7226
+          },
+          "sentinel_nodata": {
+            "n_dots": 16,
+            "pct_of_total": 0.0425
+          }
+        }
+      },
+      "spacing_and_clearance": {
+        "min_interdot_nn_px": 1.414214,
+        "median_interdot_nn_px": 3.0,
+        "added_min_catalogue_distance_px": 3.162278,
+        "all_min_catalogue_distance_px": 2.236068,
+        "inherited_dots_within_3px": 1874,
+        "added_dots_within_3px": 0
+      },
+      "sgmc_control_proxy": {
+        "evidence_label": "PROXY",
+        "dti": 0.095652,
+        "delta_vs_r0": -0.000408,
+        "n_withheld_control_pixels": 62703
+      },
+      "parent_diff": {
+        "removed": 4142,
+        "added": 4142,
+        "shared": 33512,
+        "moved_pct": 11.000159,
+        "symmetric_diff_px": 8284,
+        "min_catalogue_distance_px": 2.236068,
+        "dots_within_3px": 1874
+      },
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "added_dots_catalogue_distance_gt_3px": true,
+          "in_collar_3px_le_parent": true,
+          "count_37654": true,
+          "gems_strict_non_collar_gates_pass": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "added_dots_catalogue_distance_gt_3px": true,
+          "in_collar_3px_le_parent": true,
+          "count_37654": true,
+          "gems_strict_non_collar_gates_pass": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; RELIEF +11% mass to Range-front (4142 dots, fixed 37654); pred MODEL:-0.005",
+      "gate_status": "PASS (local reread + gems.gates; 0 added dots <=3px of catalogue; candidate TIFF gitignored for public repo safety)",
+      "seed": 0,
+      "git_sha_at_build": "8c3dd43be7b5c05b6bbdeea1218a3add29d6c5ee"
+    }
+  ],
+  "scope_note": "No submission, leaderboard, hidden labels, drivendata.org, or dropbox.com accessed. Candidate TIFFs are written locally to releases/ and gitignored per public-repo safeguard."
+}

@@ -64,5 +64,38 @@
     "predicted_sign_and_size": "MODEL:-0.002 vs R0, with scenario range [-0.014,+0.010]; MODEL only, never a score.",
     "falsifier": "A live receipt gain >= +0.01 over both R0 and scarp2p0px falsifies our surface-scarp dominance model and proves hidden test faults are predominantly blind/concealed basement contacts best localized by potential fields alone.",
     "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+  },
+  "h33-h33-2-b2-RELIEFbasin11pct-20261024-2d06de50": {
+    "parent": "h33-h33-2-b2",
+    "axis": "RELIEF",
+    "value": "basin11pct",
+    "hypothesis": "R0 allocates only 20.43% (7,692) of its dots to the Basin tercile (det_elev <= -142.91 m) despite Basins occupying 33.33% of the footprint and hosting 30.28% of known USGS/INGENIOUS faults, because H19-5's topographic-slope weighting over-allocated dots to steep range-front cliffs (37.72%). Shifting 11.00% of mass (4,142 unit-mass dots) out of Piedmont + Range-front onto Basin H19-5 corridors raises Basin share to 31.43% and densifies coverage over concealed intrabasinal horst-graben and accommodation faults beneath Quaternary valley fill.",
+    "mechanism": "At fixed S=37,654, removing 4,142 lowest-marginal-DTI dots proportionally from Piedmont and Range-front cuts false-positive mass on unfaulted upland cliffs while coarsening redundant interior chain dots, and adding 4,142 spaced (min_nn >= 1.414 px, d_cat > 3.0 px) H19-5 dots in Basin raises triangular-kernel TP_w from ~0.65 toward ~0.90 along concealed intrabasinal corridors.",
+    "non_fault_mimic": "Pluvial Pleistocene lake shorelines (Lahontan/Bonneville), axial fluvial terrace edges, buried paleochannels, and flat-lying intrabasinal basalt flows/sills beneath playa fill that generate H19-5 lineaments and subtle basin slope breaks without brittle faulting.",
+    "predicted_sign_and_size": "MODEL:+0.008 vs R0, with scenario range [-0.008,+0.022]; MODEL only, never a score.",
+    "falsifier": "A live receipt delta <= -0.01 vs R0 falsifies concealed-basin fault enrichment and demonstrates that unmapped test faults are concentrated on piedmont aprons or exposed range blocks rather than beneath Quaternary valley fill; |delta| < 0.01 is no evidence.",
+    "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+  },
+  "h33-h33-2-b2-RELIEFpiedmont11pct-20261024-455a16f0": {
+    "parent": "h33-h33-2-b2",
+    "axis": "RELIEF",
+    "value": "piedmont11pct",
+    "hypothesis": "Active Quaternary Basin-and-Range master normal faults, synthetic bajada step-faults, and Faulds-type relay ramps peak in the Piedmont tercile (-142.91 m < det_elev <= +38.75 m, hosting 40.45% of known catalogue faults). Shifting 11.00% of mass (4,142 unit-mass dots) out of Basin + Range-front into Piedmont (raising Piedmont share from 41.81% to 52.81%) concentrates kernel coverage on piedmont fault aprons while shedding both upland volcanic-cliff false positives and deep-basin potential-field ambiguity.",
+    "mechanism": "Holds dot count (37,654), total mass (37,654.0), H19-5 support, and d_cat > 3.0 px addition clearance identical to basin11pct, changing ONLY the target detrended-elevation tercile to Piedmont (Tercile 1). Exact marginal-DTI infill (D2.8 -> D1.5 on strongest piedmont scarp/break H19-5 corridors) increases TP_w along semi-concealed fan-head and bajada fault traces.",
+    "non_fault_mimic": "Incised alluvial-fan channel margins, non-tectonic bajada coalescent toes, pediment-alluvium erosional contacts, and highstand pluvial beach ridges along intermediate valley margins.",
+    "predicted_sign_and_size": "MODEL:+0.005 vs R0, with scenario range [-0.009,+0.018]; MODEL only, never a score.",
+    "falsifier": "A live receipt delta <= -0.01 vs R0 falsifies piedmont fault enrichment over R0's existing 41.81% allocation and indicates expert-mapped new faults lie either deeper in concealed playas (tested by basin11pct) or higher in bedrock ranges (tested by rangefront11pct).",
+    "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+  },
+  "h33-h33-2-b2-RELIEFrangefront11pct-20261024-9909bb67": {
+    "parent": "h33-h33-2-b2",
+    "axis": "RELIEF",
+    "value": "rangefront11pct",
+    "hypothesis": "Mechanistic bedrock-exposure control. If expert-identified new faults derive predominantly from lidar, aerial-photo, and 1:24k bedrock compilation in uplifted ranges where Holocene sediment does not conceal traces (analogous to USGS SGMC, where 63.61% of off-catalogue bedrock faults sit in Tercile 2), shifting 11.00% of mass into Range-front (det_elev > +38.75 m, 37.72% -> 48.72%) will raise live DTI. Under our primary concealed/piedmont fault hypothesis, adding upland mass instead amplifies false positives on unfaulted volcanic cliff ledges.",
+    "mechanism": "Holds dot count (37,654), total mass (37,654.0), H19-5 support, and d_cat > 3.0 px addition clearance identical to basin11pct and piedmont11pct, changing ONLY the target detrended-elevation tercile to Range-front (Tercile 2). Completes the symmetric 3-domain relief simplex so two live receipts uniquely resolve the geomorphic distribution of unmapped faults.",
+    "non_fault_mimic": "Resistant Cenozoic ash-flow tuff cooling-unit cliffs, caldera ring-fracture walls, glacially/fluvially steepened ridge crests, and unfaulted Mesozoic plutonic contacts at shallow aeromagnetic terrain clearance.",
+    "predicted_sign_and_size": "MODEL:-0.005 vs R0, with scenario range [-0.018,+0.010]; MODEL only, never a score.",
+    "falsifier": "A live receipt gain >= +0.01 over both R0 and basin11pct falsifies our upland volcanic-cliff false-positive model and proves unmapped test faults are dominated by exposed bedrock range-block splays.",
+    "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
   }
 }

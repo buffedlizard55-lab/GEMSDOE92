@@ -146,3 +146,20 @@ slots, receipts) are left blank.
 ### What the human decides and supplies
 - Autonomous `AXIS = SNAP` selection was delegated by the human's session prompt ("Do not prompt me over choosing an Axis for the session, pick your own session").
 - The human supplies `TOP_PUBLIC` (with observation date), confirms rolling-week and remaining competition slots, chooses whether/which single encoding file to upload from their registered DrivenData account, and records official submission-page `RECEIPT` scores and dates in `ledger/submissions.csv`.
+
+---
+
+## Session 6 — RELIEF structural-tercile reallocation (2026-10-24)
+
+### What AI wrote
+- `scripts/exact_dti_refill.py` — added `select_exact_marginal_dti_drop` (exact greedy expected-DTI removal recomputing local 29-offset kernel loss without floating-point drift) and `select_exact_marginal_dti_add_spaced` (exact greedy expected-DTI addition enforcing `min_nn >= sqrt(2)` non-cardinal spacing).
+- `gems/variants.py` — added `compute_relief_terciles` (with float32 `-3.4028235e+38` nodata masking) and repaired `relief()` to perform constant-count, unit-mass dot reallocation across detrended-elevation terciles in `[0.10, 0.15]` dose range.
+- `scripts/build_relief_variants.py` — manifest SHA-256 verification, byte-exact `R0` rebuild verification, `Band 12 (det_elev)` + `Band 19 (det_elev_slope)` relief-surface construction, deterministic build of `RELIEFbasin11pct`, `RELIEFpiedmont11pct`, and `RELIEFrangefront11pct` (`4,142` dots = `11.0002%`, `37,654` unit-mass dots, `0` added dots `<=3.0 px` of catalogue, `min_nn = 1.4142 px`), post-write disk reread format validation, ledger/mechanism-card updates, and `evidence/relief_variants.json`.
+- `scripts/report_relief_proxies.py` — report-only buffered catalogue hide-and-recover `PROXY`, single-feature leakage canaries (`max symmetric AUC = 0.5676 < 0.90`), and USGS SGMC off-catalogue bedrock control (`evidence/relief_proxy_audit.json`).
+- `tests/test_relief_variants.py` — synthetic-data unit, brute-force DTI oracle, and policy tests (61 total passing tests in CI without competition rasters).
+- Updates to `README.md` (`CURRENT STATE` block only), `SLOT_PLAN.md`, `docs/SUBMIT.md`, `docs/mechanism_cards.md`, `releases/README.md`, `IRREGULARITIES.md`, and this file.
+
+### What the human decides and supplies
+- Autonomous `AXIS = RELIEF` selection was delegated by standing session constraint ("Do not prompt the user over choosing an Axis for the session").
+- The human supplies `TOP_PUBLIC` and observation date, confirms remaining weekly/total submission slots for their single registered entity, selects at most one encoding file per slot to upload on DrivenData, and records official submission-page `RECEIPT` scores and dates in `ledger/submissions.csv`.
+

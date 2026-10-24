@@ -631,48 +631,188 @@ def snap_spaced(
 # --------------------------------------------------------------------------
 # RELIEF: shift 10-15% of mass between basin / piedmont / range-front terciles
 # --------------------------------------------------------------------------
-def relief(parent: Dots, detrended_elev: np.ndarray, terciles: np.ndarray,
-           frac: float = 0.12, direction: str = "to_piedmont") -> Variant:
-    """Move mass (not dots) between relief terciles. Count fixed by construction.
+def compute_relief_terciles(
+    detrended_elev: np.ndarray,
+    valid: np.ndarray | None = None,
+    sentinel_floor: float = -1e30,
+) -> tuple[np.ndarray, tuple[float, float]]:
+    """Classify valid pixels into equal-area detrended-elevation terciles.
 
-    terciles: int array, 0=basin, 1=piedmont, 2=range-front (caller computes
-    from detrended elevation; this builder only uses the labels it is given).
-    `frac` is the fraction of TOTAL mass redistributed.
+    Returns (terciles, (q33, q67)) where:
+        0 = basin       (det_elev <= q33)
+        1 = piedmont    (q33 < det_elev <= q67)
+        2 = range_front (det_elev > q67)
+       -1 = invalid / outside footprint / float32 nodata sentinel
+    """
+    arr = np.asarray(detrended_elev, dtype=np.float64)
+    mask = np.isfinite(arr) & (arr > sentinel_floor)
+    if valid is not None:
+        mask &= np.asarray(valid, dtype=bool)
+    if int(mask.sum()) < 3:
+        raise ValueError("need at least 3 valid pixels to define relief terciles")
+    q33, q67 = (float(x) for x in np.quantile(arr[mask], [1.0 / 3.0, 2.0 / 3.0]))
+    terc = np.full(arr.shape, -1, dtype=np.int8)
+    terc[mask & (arr <= q33)] = 0
+    terc[mask & (arr > q33) & (arr <= q67)] = 1
+    terc[mask & (arr > q67)] = 2
+    return terc, (q33, q67)
+
+
+def relief(
+    parent: Dots,
+    detrended_elev: np.ndarray,
+    terciles: np.ndarray,
+    frac: float = 0.11,
+    direction: str = "to_piedmont",
+    candidates: np.ndarray | None = None,
+    relief_score: np.ndarray | None = None,
+    min_nn: float = 1.41421356,
+    value: str | None = None,
+) -> Variant:
+    """Shift `frac` (10-15%) of unit-mass dots between relief terciles, count fixed.
+
+    Why unit-mass dot reallocation rather than soft weight addition `p + add`:
+    Parent R0 carries unit mass `p = 1.0` on all 37,654 dots. Adding `add > 0` to
+    destination dots produces `p > 1.0` (failing the `[0, 1]` format gate) and
+    modifies 100% of dots (failing the 1-50% change bound), whereas down-scaling
+    `p < 1.0` shrinks total mass `S` and incurs a severe DTI denominator penalty
+    because `0.8 * |G|` does not scale with `p`. Moving `round(frac * N)` unit-mass
+    dots proportionally out of the two source terciles onto eligible `candidates`
+    in the destination tercile preserves exact dot count `N`, total mass `S`,
+    `[0, 1]` bounds, and `min_nn` inter-dot spacing.
     """
     if direction not in ("to_piedmont", "to_range_front", "to_basin"):
         raise ValueError(f"unknown direction {direction!r}")
-    src_of = {"to_piedmont": (0, 2), "to_range_front": (0, 1),
-              "to_basin": (1, 2)}[direction]
+    if not (0.10 - 1e-6 <= frac <= 0.15 + 1e-6):
+        raise ValueError(f"RELIEF frac={frac} must lie in [0.10, 0.15] per Brief v2 §5")
+    src_of = {
+        "to_piedmont": (0, 2),
+        "to_range_front": (0, 1),
+        "to_basin": (1, 2),
+    }[direction]
+    dst = {"to_piedmont": 1, "to_range_front": 2, "to_basin": 0}[direction]
     if terciles.shape[0] <= parent.ys.max() or terciles.shape[1] <= parent.xs.max():
         raise ValueError("tercile grid does not cover the dots")
 
+    H, W = terciles.shape
+    score_grid = (
+        np.asarray(relief_score, dtype=np.float64)
+        if relief_score is not None
+        else np.where(
+            np.isfinite(detrended_elev) & (detrended_elev > -1e30),
+            np.asarray(detrended_elev, dtype=np.float64),
+            0.0,
+        )
+    )
     lab = terciles[parent.ys, parent.xs]
-    total = parent.p.sum()
-    to_move = frac * total
-    in_src = np.isin(lab, src_of) & np.isfinite(detrended_elev[parent.ys, parent.xs])
-    if not in_src.any():
-        raise ValueError("no dots in the source terciles")
+    valid_dot = np.isfinite(detrended_elev[parent.ys, parent.xs]) & (
+        detrended_elev[parent.ys, parent.xs] > -1e30
+    )
+    in_src = np.isin(lab, src_of) & valid_dot
+    n_move = int(round(frac * len(parent)))
+    if n_move <= 0:
+        raise ValueError("frac rounds to zero dots")
+    if int(in_src.sum()) < n_move:
+        raise ValueError(
+            f"source terciles hold {int(in_src.sum())} dots, fewer than n_move={n_move}"
+        )
 
-    # take mass proportionally from source dots, spread over destination tercile
-    p = parent.p.copy()
-    avail = p[in_src].sum()
-    take = min(to_move, 0.9 * avail)
-    scale = take / avail
-    p[in_src] = p[in_src] * (1.0 - scale)
-    dst = {"to_piedmont": 1, "to_range_front": 2, "to_basin": 0}[direction]
-    in_dst = lab == dst
-    if not in_dst.any():
-        raise ValueError(f"no dots in destination tercile {dst}")
-    add = take / np.count_nonzero(in_dst)
-    p[in_dst] = p[in_dst] + add
+    # Proportional quota across the two source terciles
+    s0, s1 = src_of
+    m0 = (lab == s0) & valid_dot
+    m1 = (lab == s1) & valid_dot
+    n0_src, n1_src = int(m0.sum()), int(m1.sum())
+    k0 = min(n0_src, int(round(n_move * n0_src / (n0_src + n1_src))))
+    k1 = n_move - k0
+    if k1 > n1_src:
+        k1 = n1_src
+        k0 = n_move - k1
 
-    out = Dots(parent.ys, parent.xs, p)
-    moved = int(np.count_nonzero(np.abs(p - parent.p) > 1e-12))
-    v = Variant("RELIEF", direction, out, len(parent), moved,
-                stats={"mass_moved": float(take), "mass_total": float(total),
-                       "frac_mass_moved": float(take / total),
-                       "n_dots_touched": moved,
-                       "n_src": int(np.count_nonzero(in_src)),
-                       "n_dst": int(np.count_nonzero(in_dst))})
+    keep = np.ones(len(parent), dtype=bool)
+    for mask_s, k_s in ((m0, k0), (m1, k1)):
+        if k_s <= 0:
+            continue
+        idxs = np.flatnonzero(mask_s)
+        ord_s = np.lexsort(
+            (parent.xs[idxs], parent.ys[idxs], score_grid[parent.ys[idxs], parent.xs[idxs]])
+        )
+        keep[idxs[ord_s[:k_s]]] = False
+
+    occ = np.zeros((H, W), dtype=bool)
+    occ[parent.ys[keep], parent.xs[keep]] = True
+
+    cand_grid = (
+        np.asarray(candidates, dtype=bool)
+        if candidates is not None
+        else (terciles == dst) & np.isfinite(detrended_elev) & (detrended_elev > -1e30)
+    )
+    elig = cand_grid & (terciles == dst) & ~occ
+    cy, cx = np.nonzero(elig)
+    if len(cy) < n_move:
+        raise ValueError(
+            f"destination tercile {dst} has {len(cy)} candidates, need {n_move}"
+        )
+    cand_ord = np.lexsort((cx, cy, -score_grid[cy, cx]))
+
+    br = int(np.ceil(min_nn)) if min_nn > 0 else 0
+    lim2 = float(min_nn - 1e-9) ** 2 if min_nn > 0 else 0.0
+    b_offs = [
+        (dy, dx)
+        for dy in range(-br, br + 1)
+        for dx in range(-br, br + 1)
+        if (dy != 0 or dx != 0) and (dy * dy + dx * dx < lim2)
+    ]
+
+    add_y: list[int] = []
+    add_x: list[int] = []
+    for c_idx in cand_ord:
+        yy, xx = int(cy[c_idx]), int(cx[c_idx])
+        if occ[yy, xx]:
+            continue
+        if b_offs:
+            conflict = False
+            for dy, dx in b_offs:
+                ny, nx = yy + dy, xx + dx
+                if 0 <= ny < H and 0 <= nx < W and occ[ny, nx]:
+                    conflict = True
+                    break
+            if conflict:
+                continue
+        occ[yy, xx] = True
+        add_y.append(yy)
+        add_x.append(xx)
+        if len(add_y) == n_move:
+            break
+
+    if len(add_y) != n_move:
+        raise ValueError(
+            f"spaced destination placement placed {len(add_y)}/{n_move} dots (min_nn={min_nn:.3f})"
+        )
+
+    mean_p = float(parent.p[keep].mean()) if keep.any() else 1.0
+    ys = np.r_[parent.ys[keep], np.asarray(add_y, dtype=np.int64)]
+    xs = np.r_[parent.xs[keep], np.asarray(add_x, dtype=np.int64)]
+    ps = np.r_[parent.p[keep], np.full(n_move, mean_p, dtype=float)]
+    out = Dots(ys, xs, ps)
+
+    out_lab = terciles[out.ys, out.xs]
+    v = Variant(
+        "RELIEF",
+        value if value is not None else direction,
+        out,
+        len(parent),
+        _changed(parent, out),
+        stats={
+            "direction": direction,
+            "dst_tercile": dst,
+            "src_terciles": list(src_of),
+            "n_moved": n_move,
+            "frac_mass_moved": float(n_move / len(parent)),
+            "mass_total_before": float(parent.p.sum()),
+            "mass_total_after": float(out.p.sum()),
+            "tercile_counts_before": {int(t): int((lab == t).sum()) for t in (0, 1, 2)},
+            "tercile_counts_after": {int(t): int((out_lab == t).sum()) for t in (0, 1, 2)},
+        },
+    )
     v.check_change()
     return v

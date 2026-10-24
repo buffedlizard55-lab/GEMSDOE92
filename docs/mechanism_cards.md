@@ -246,3 +246,120 @@ rather than mid-facet bedrock cliffs.
 - **Falsifier**: A live receipt gain `>= +0.01` over both `R0` and `scarp2p0px`
   falsifies surface-scarp dominance and proves hidden test faults are primarily
   concealed basement structures best centered by potential-field gradients alone.
+
+---
+
+# Mechanism Cards — RELIEF axis (detrended-elevation terciles, 2026-10-24)
+
+Parent `R0` (`h33-h33-2-b2`, 37,654 unit-mass dots, `0.2778` `CLAIM`) allocates
+dots unevenly across equal-area `Band 12 (det_elev)` structural-relief terciles
+(`Basin <= -142.91 m`, `Piedmont (-142.91, +38.75] m`, `Range-front > +38.75 m`;
+`3,061` in-footprint `-3.4028235e+38` sentinel pixels masked):
+- **Basin (`Tercile 0`)**: `7,692` dots (`20.43%` of `R0`) vs `33.33%` of footprint area and `30.28%` of mapped catalogue pixels (`1.48x` deficit vs catalogue).
+- **Piedmont (`Tercile 1`)**: `15,742` dots (`41.81%`) vs `40.45%` of mapped catalogue pixels.
+- **Range-front (`Tercile 2`)**: `14,204` dots (`37.72%`) vs `28.95%` of mapped catalogue pixels (`1.30x` surplus vs catalogue), while hosting `63.61%` of off-catalogue USGS `SGMC` bedrock fault pixels.
+
+Because soft down-scaling `p < 1` violates constant mass `S` and strictly lowers
+`DTI` (the `0.8 * |G|` denominator term does not scale with `p`), while soft
+up-scaling `p > 1` violates `[0, 1]`, all three `RELIEF` variants hold total
+count (`37,654`), total mass (`37,654.0`), `H19-5` support, and `d_cat > 3.0 px`
+on every newly added dot fixed, reallocating **exact `11.0002%` (`4,142` unit-mass
+dots)** proportionally from the two source terciles into one destination tercile
+using exact marginal DTI over `Band 19 (det_elev_slope)` + `||grad(Band 19)||`
+(`min_nn >= sqrt(2) = 1.4142 px`).
+
+## h33-h33-2-b2-RELIEFbasin11pct-20261024-2d06de50
+- **Value**: `basin11pct` — shifts `4,142` (`11.0002%`) unit-mass dots
+  proportionally out of Piedmont (`-2,177`) and Range-front (`-1,965`) into
+  Basin (`+4,142`), raising Basin allocation from `20.43%` (`7,692`) to `31.43%`
+  (`11,834`). `0` added dots `<= 3.0 px` of catalogue (`min = 3.1623 px`);
+  `min_nn = 1.4142 px`.
+- **Hypothesis**: Concealed intrabasinal graben-axis normal faults, accommodation
+  horsts, and sub-playa geothermal step-overs (`det_elev <= -142.91 m`) are
+  systematically under-sampled in `R0` (`20.43%` vs `33.33%` area and `30.28%`
+  catalogue) because `H19-5`'s slope features overweight steep range fronts;
+  meanwhile traditional optical/field mapping missed Quaternary-buried valley-floor
+  faults that DOE/GeoDAWN specifically flew to uncover.
+- **Mechanism**: Under `DTI = T / (0.2T + 0.2(S - M) + 0.8|G|)` at fixed
+  `S = 37,654`, pruning the lowest-marginal-DTI dots from Piedmont/Range-front
+  (preferentially overlapping `<=300 m` neighbors where removal sacrifices minimal
+  coverage) and placing `4,142` `D1.5`-spaced (`>=141 m`) `H19-5` dots in Basin
+  densifies `k(d) = max(0, 1 - d/3)` from ~`0.53` (`D2.8`) toward ~`0.76` along
+  subtle intrabasinal scarps and axial ridges while trimming false-positive
+  footwall facets in high-relief ranges.
+- **Non-fault mimic**: Pleistocene pluvial lake shorelines (Lahontan/Bonneville
+  highstands), playa deflation scarps, axial fluvial terrace risers, and unfaulted
+  intrabasinal basaltic-lava margins producing low-amplitude `H19-5` corridors on
+  basin floors.
+- **Predicted sign and size**: **`MODEL:+0.008`** vs `R0` (scenario range
+  `[-0.008, +0.022]`; `MODEL` projection, never a score). Report-only `PROXY`
+  diagnostics: SGMC off-catalogue bedrock control `-0.004324` (`0.091736` vs
+  `0.096060`, expected because `63.6%` of SGMC faults sit in exposed Range-front
+  bedrock); buffered catalogue hide-and-recover `-0.000814` (`0.003192` vs
+  `0.004006`).
+- **Falsifier**: Live receipt delta `<= -0.01` vs `R0` falsifies concealed-basin
+  enrichment and demonstrates unmapped test faults sit predominantly along
+  piedmont bajadas or exposed bedrock ranges rather than beneath flat basin fill;
+  `|delta| < 0.01` is treated as no evidence.
+
+## h33-h33-2-b2-RELIEFpiedmont11pct-20261024-455a16f0
+- **Value**: `piedmont11pct` — shifts `4,142` (`11.0002%`) unit-mass dots
+  proportionally out of Basin (`-1,455`) and Range-front (`-2,687`) into Piedmont
+  (`+4,142`), raising Piedmont allocation from `41.81%` (`15,742`) to `52.81%`
+  (`19,884`). `0` added dots `<= 3.0 px` of catalogue (`min = 3.1623 px`);
+  `min_nn = 1.4142 px`.
+- **Hypothesis**: Active Basin-and-Range range-bounding normal faults, synthetic
+  hanging-wall step-faults, and relay-ramp accommodation zones concentrate in the
+  piedmont alluvial-fan / pediment transition (`-142.91 m < det_elev <= +38.75 m`),
+  outboard of eroded footwall cliffs (`Range-front`) yet upslope of flat
+  playa/evaporite depocenters (`Basin`).
+- **Mechanism**: Reallocates `4,142` unit-mass dots from high-false-positive
+  volcanic/erosional range cliffs and featureless central playas onto `H19-5`
+  corridors across the piedmont slope-break apron (`d_cat > 3.0 px`,
+  `min_nn >= 1.4142 px`), raising `TP_w` kernel capture across closely spaced
+  (`150–300 m`) synthetic bajada fault splays and relay ramps while holding `S`
+  invariant.
+- **Non-fault mimic**: Incised alluvial-fan channel levees, coalescing bajada
+  apron junctions, pediment-head erosional knicklines, and Pleistocene wave-cut
+  bajada benches mimicking piedmont fault scarps.
+- **Predicted sign and size**: **`MODEL:+0.005`** vs `R0` (scenario range
+  `[-0.009, +0.018]`; `MODEL` only). Report-only `PROXY` diagnostics: SGMC
+  bedrock control `-0.004218` (`0.091842`); buffered hide-and-recover `-0.000744`
+  (`0.003262`).
+- **Falsifier**: Live receipt delta `<= -0.01` vs `R0` falsifies piedmont-apron
+  dominance and shows either concealed valley-floor faults (`Basin`) or internal
+  footwall bedrock faults (`Range-front`) govern unmapped ground truth;
+  `|delta| < 0.01` is treated as no evidence.
+
+## h33-h33-2-b2-RELIEFrangefront11pct-20261024-9909bb67
+- **Value**: `rangefront11pct` — shifts `4,142` (`11.0002%`) unit-mass dots
+  proportionally out of Basin (`-1,360`) and Piedmont (`-2,782`) into Range-front
+  (`+4,142`), raising Range-front allocation from `37.72%` (`14,204`) to `48.72%`
+  (`18,346`). `0` added dots `<= 3.0 px` of catalogue (`min = 3.1623 px`);
+  `min_nn = 1.4142 px`.
+- **Hypothesis**: Bedrock-exposure bidirectional control: if unmapped competition
+  labels are dominated by bedrock faults mapped in outcrop across dissected horst
+  blocks, caldera margins, and tilted fault blocks (`det_elev > +38.75 m` — where
+  `63.61%` of off-catalogue USGS `SGMC` bedrock fault pixels reside) rather than
+  Quaternary-covered basins, shifting `11%` mass into `Range-front` should raise
+  live DTI; conversely, if unmapped truth is concealed in basins/piedmonts and
+  high-relief `H19-5` corridors are contaminated by non-tectonic volcanic cliffs,
+  `rangefront11pct` will drop.
+- **Mechanism**: Holds dot count (`37,654`), total mass, `H19-5` support,
+  `d_cat > 3.0 px` on added dots, and `11.0002%` dose identical to `basin11pct`
+  and `piedmont11pct`, reversing the relief gradient toward high-relief bedrock
+  scarps (`det_elev > +38.75 m`) to bracket the structural-relief axis in both
+  directions.
+- **Non-fault mimic**: Resistant Oligocene–Miocene welded ash-flow tuff cooling
+  ledges, columnar basalt flow rims, erosional triangular-facet spurs, glacial or
+  landslide headwall scars, and unfaulted intrusive ridges in high-elevation
+  ranges.
+- **Predicted sign and size**: **`MODEL:-0.005`** vs `R0` (scenario range
+  `[-0.018, +0.010]`; `MODEL` only). Report-only `PROXY` diagnostics: SGMC
+  bedrock control `-0.000408` (`0.095652`, highest of the three RELIEF arms due
+  to `63.6%` SGMC bedrock concentration in Range-front); buffered
+  hide-and-recover `-0.000749` (`0.003257`).
+- **Falsifier**: A live receipt gain `>= +0.01` over `R0` (and over `basin11pct`)
+  falsifies concealed-basin priority and proves hidden test labels are concentrated
+  in exposed high-relief bedrock horst blocks rather than sediment-filled valleys.
+

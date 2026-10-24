@@ -2,16 +2,16 @@
 
 ## CURRENT STATE
 - **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots; exact lineage rebuild matches both pinned SHA-256 digests (`zeros`: `c55bafc4…`, `nan`: `baeae321…`). `0.2778` remains **CLAIM** (no receipt in `ledger/`).
-- **Best receipt**: none recorded (`ledger/submissions.csv` has 15 `BUILT` rows and zero `RECEIPT` rows).
+- **Best receipt**: none recorded (`ledger/submissions.csv` has 18 `BUILT` rows across `MASS`, `PRUNE`, `SNAP`, `RELIEF` and zero `RECEIPT` rows).
 - **TOP_PUBLIC**: `____` (not supplied; human must fill value and observation date from leaderboard).
 - **Slots left this week**: `__` / total left to 2026-12-03: `__` (human must confirm entity rolling-week quota).
-- **AXIS this session**: `SNAP`, chosen autonomously. New values: `scarp2p0px`, `scarp1p4px`, `pot2p0px` (spacing-preserving `min_nn >= 2.828 px`, exact 37,654 dots, R0 `d_cat > 2.0` exclusions, piedmont break-in-slope + unsigned `Band 5` gravity gradient).
-- **Next 3 candidate slots (BUILT, not submitted)**:
-  1. `h33-h33-2-b2-SNAPscarp2p0px-20261023-2a65fe24` — `<=2.0 px` joint scarp+break+TMI/grav edge, mean disp `1.234 px` (82.05% px changed); `MODEL:+0.012` (`[-0.006,+0.025]`); SGMC `PROXY` `+0.00267` vs R0.
-  2. `h33-h33-2-b2-SNAPscarp1p4px-20261023-01fb4acc` — `<=1.414 px` 8-neighbor joint scarp+break+TMI/grav edge, mean disp `0.954 px` (78.00% px changed); `MODEL:+0.008` (`[-0.004,+0.018]`); SGMC `PROXY` `+0.00148` vs R0.
-  3. `h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277` (`MODEL:+0.003`; orthogonal collar test to unlock `SNAP+PRUNE`), or swap in `h33-h33-2-b2-SNAPpot2p0px-20261023-41697f8c` (`MODEL:-0.002`; pure TMI+grav gradient subsurface control, mean disp `1.366 px`) if Slot 1 drops by `>=0.01`.
+- **AXIS this session**: `RELIEF`, chosen autonomously (unbuilt in prior ledger). New values: `basin11pct`, `piedmont11pct`, `rangefront11pct` (`11.0002%` = 4,142 unit-mass dots reallocated across `Band 12 det_elev` terciles using `Band 19 det_elev_slope` + slope-break exact marginal DTI on `H19-5`, fixed 37,654 dots, 0 added dots `<=3.0 px` of catalogue, `min_nn >= 1.414 px`).
+- **Next 3 candidate slots (BUILT, not submitted — 3 orthogonal axes for one rolling week)**:
+  1. `h33-h33-2-b2-SNAPscarp2p0px-20261023-2a65fe24` (`SNAP`, `MODEL:+0.012` `[-0.006,+0.025]`) — `<=2.0 px` spacing-preserving (`min_nn >= 2.828 px`) scarp+break+TMI/grav snap, mean disp `1.234 px`.
+  2. `h33-h33-2-b2-RELIEFbasin11pct-20261024-2d06de50` (`RELIEF`, `MODEL:+0.008` `[-0.008,+0.022]`) — shifts `11.00%` (4,142 dots) from Piedmont + Range-front into Basin (`20.43% -> 31.43%`) to test concealed intrabasinal horst/graben fault deficit (conditional follow-ups: `piedmont11pct` `MODEL:+0.005`, `rangefront11pct` `MODEL:-0.005`).
+  3. `h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277` (`PRUNE`, `MODEL:+0.003` `[-0.008,+0.015]`) — `3.5 px` catalogue collar prune+refill (7.18% changed); or swap in `RELIEFpiedmont11pct` / `SNAPpot2p0px` if Slot 1 or Slot 2 drops by `>=0.01`.
 
-No file was submitted. Candidate GeoTIFF pairs exist locally in `releases/` and are gitignored per public-repo safeguard; regenerate anytime via `python scripts/build_snap_scarp_variants.py`. See `docs/SUBMIT.md` and `SLOT_PLAN.md`.
+No file was submitted. Candidate GeoTIFF pairs exist locally in `releases/` and are gitignored per public-repo safeguard; regenerate anytime via `python scripts/build_relief_variants.py`. See `docs/SUBMIT.md` and `SLOT_PLAN.md`.
 
 ## Verified facts
 - Metric: DTI with alpha 0.2, beta 0.8, triangular kernel R=300m (3px), float32 EPSG:32611 100m, per https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/
