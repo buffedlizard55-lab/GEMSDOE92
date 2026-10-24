@@ -204,6 +204,8 @@ def test_pages_validates_before_uploading_artifact():
 def test_guides_agree_with_current_primary_and_stop():
     for name in ("SUBMIT.html", "submit.html", "executive-summary.html"):
         html = (DOCS / name).read_text()
+        assert 'COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif' in html
+        assert 'coulomb_loqo_run_card.json' in html
         assert 'APRONRIDGEfree1d-20261024-d5760830-zeros.tif' in html
         assert 'public_witness_apronridge.json' in html
         assert 'SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif' in html
@@ -211,8 +213,51 @@ def test_guides_agree_with_current_primary_and_stop():
         assert 'Do not perform these steps with the current artifact' in html
         assert 'separate name field' in html
     html = _index()
+    assert 'COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif' in html
     assert 'unique GeoTIFF generated this session' not in html
     assert 'format-valid, unique download' not in html
+
+
+def test_coulomb_loqo_primary_run_card_and_no_duplicate_html_ids():
+    import hashlib
+
+    src = ROOT / "evidence" / "coulomb_loqo_run_card.json"
+    dl = DOCS / "downloads" / "coulomb_loqo_run_card.json"
+    assert src.is_file() and dl.is_file()
+    assert src.read_bytes() == dl.read_bytes()
+
+    card = json.loads(src.read_text(encoding="utf-8"))
+    for key in (
+        "hypothesis",
+        "mechanism",
+        "named_non_fault_process_that_could_mimic_it",
+        "holdout_dti",
+        "correlation_overlap_vs_registry",
+        "raster_sha256",
+        "validator_output",
+        "submission_name",
+        "note",
+        "verdict",
+    ):
+        assert key in card, f"missing run-card key: {key}"
+
+    primary = ROOT / card["primary_download"]
+    assert primary.is_file()
+    assert hashlib.sha256(primary.read_bytes()).hexdigest() == card["raster_sha256"]
+    assert len(card["note"]) <= 140
+    assert card["leakage_canary_max_symmetric_auc"] <= 0.90
+    assert card["correlation_overlap_vs_registry"]["local_duplicate"] is False
+    assert card["holdout_dti"]["dti"] > 0.008549  # beats prior repo #1 HYDROCONDUIT
+    assert card["holdout_dti"]["strict_draw_blind_dvis2_dti"] > 0.096757  # beats H19-5
+    assert card["verdict"] == "negative"
+    assert card["submission_eligible"] is False
+    assert card["weekly_slots_used"] == 0
+
+    # Ensure zero duplicate HTML element IDs across all docs/*.html pages
+    for page_path in sorted(DOCS.glob("*.html")):
+        text = page_path.read_text(encoding="utf-8")
+        ids = re.findall(r'\bid="([^"]+)"', text)
+        assert len(ids) == len(set(ids)), f"Duplicate HTML id in {page_path.name}: {ids}"
 
 
 def test_piedfront_primary_contract_across_site_and_readme():
