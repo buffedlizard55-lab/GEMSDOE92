@@ -1,32 +1,19 @@
-# Latest verified review — 2026-10-24 (d97f969e)
+# Latest verified review — 2026-10-24 (GEMSDOE92)
 
-**OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT.** [Download the existing format-valid APRONRIDGE GeoTIFF](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif). This is not a new submission. No TIFF was copied, generated, promoted, or uploaded in this review.
+**✅ OK TO DOWNLOAD FOR RESEARCH. ⛔ DO NOT SUBMIT.** The existing APRONRIDGE free1d TIFF is format-valid, but is not a new submission, not unique under the literal witness rule, and not cleared for any weekly slot. No new TIFF or geological experiment was generated in this continuation.
 
-Read [SESSION_PROMPT.md](SESSION_PROMPT.md) and this README at every session start. The durable operating contract preserves the user's mission and protocol; it is not a verbatim transcript of the complete repeated request. Maximize P(Win) and Own the Outcome mean stopping when evidence contradicts readiness, not claiming a guaranteed score.
-
-**This section supersedes conflicting historical “#1” and primary-choice statements below.** Historical HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 positives): APRONRIDGE 0.008354, 95% CI [0.006823, 0.010135]; HYDROCONDUIT 0.008549, 95% CI [0.007626, 0.009487]. These are stored static evaluations, not rerun or certified as leak-free here. They cannot establish organizer performance or causal geothermal discovery. A full-footprint positive registry witness freshly reverified in this review forces 100% forward overlap under the literal rule. Generation stops; no policy exemption was invented.
-
-[Three-pass review](docs/REVIEW_D97F969E.md) · [Fresh witness](evidence/review_d97f969e_witness.json) · [Run card](evidence/review_d97f969e_run_card.json) · [Executive summary](docs/executive-summary.html).
-
----
-
-# GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench (`APRONRIDGE` Primary + `HYDROCONDUIT` Hybrid)
-
-**Start every session with [SESSION_PROMPT.md](SESSION_PROMPT.md).** This file holds the user's complete working instructions and core values (Maximize P(Win), Own the Outcome). [2026-10-24 preflight evidence](evidence/preplacement_dense_witness.json) proves that the literal public-registry overlap rule makes **every nonempty in-footprint candidate a duplicate**: the SHA-pinned 17GEMSDOE witness is positive on every one of 5,167,373 footprint cells. [Pre-registered four hypotheses](docs/HYPOTHESES_20261024_PREFLIGHT.md) are stopped *before placement*; no new slot-ready TIF was made in this pass. [Negative run card](evidence/preflight_run_card.json). This is an explicit incompatibility between “make a unique TIF” and the literal overlap gate, not a request for manual inspection. Existing research-only downloads below remain available but **DO NOT SUBMIT**.
-
-> ### ✅ DOWNLOAD STATUS: **FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH**
-> ### ⛔ SUBMISSION / WEEKLY SLOT STATUS: **DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (`verdict: "negative"`, `submission_eligible: false`; DUPLICATE UNDER THE LITERAL REGISTRY RULE)**
+> **Start every session by reading this README, [`SESSION_PROMPT.md`](SESSION_PROMPT.md), and [`docs/REVIEW_CURRENT.md`](docs/REVIEW_CURRENT.md).** The operating contract is durable; the latest review supersedes historical notes. Arena values: **Maximize P(Win)** and **Own the Outcome**.
 >
-> - **Current Primary GeoTIFF (zeros outside, `nodata=None`):** [`docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif) · [One-TIFF ZIP](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.zip)
-> - **SHA-256 (`-zeros.tif`):** `1a29a5d81e8561954f04a563b4975cb84d00898b8d7634700a9d409a10e06cbc` (`37,654` unit-mass dots, `0.0` outside footprint, `0` catalogue mass)
-> - **Suggested Submission Name (research artifact only; do not submit):** `GEMSDOE92-APRONRIDGE-free1d-20261024`
-> - **Suggested Form Note (92 / 140 chars; research record only):** `h33-h33-2-b2; APRONRIDGE free1d: 37654 standalone 1D piedmont-apron + RTP ridges (0 H19-5)`
-> - **Automated Gate Receipts:** [Format audit](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-audit.json) (`10/10` local format gates PASS; guards against the reported `[0, 1]` range error) · [Run card](evidence/apronridge_run_card.json) · [Binding public-witness receipt](evidence/public_witness_apronridge.json)
-> - **Site & Review Pages:** [Main Workbench (`docs/index.html`)](docs/index.html) · [Executive Summary & Submission Form Guide (`docs/executive-summary.html`)](docs/executive-summary.html) · [Detailed Submission Procedure (`docs/SUBMIT.html`)](docs/SUBMIT.html) · [Candidate Geological Hypotheses (`docs/HYPOTHESES.html`)](docs/HYPOTHESES.html) · [Latest repository re-audit](docs/REVIEW_20261024_REAUDIT.md) · [Machine-readable review card](docs/downloads/review_20261024_reaudit_run_card.json)
+> - **Current research download:** [`docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif) · [single-TIFF ZIP](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.zip)
+> - **SHA-256:** `1a29a5d81e8561954f04a563b4975cb84d00898b8d7634700a9d409a10e06cbc` · **research identifier:** `GEMSDOE92-APRONRIDGE-free1d-20261024` (not a request to upload)
+> - **Note (92 / 140 chars):** `h33-h33-2-b2; APRONRIDGE free1d: 37654 standalone 1D piedmont-apron + RTP ridges (0 H19-5)`
+> - **Status / evidence:** [format audit](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-audit.json) · [current exact-file witness recheck](docs/downloads/review_20261024_continuation_witness.json) · [latest run card](docs/downloads/review_20261024_continuation_run_card.json) · [D97F969E three-pass review](docs/REVIEW_D97F969E.md) · [continuation analysis and ranked hypotheses](docs/REVIEW_20261024_CONTINUATION.md)
+> - **Why blocked:** the verified 17GEMSDOE witness is positive on all 5,167,373 footprint cells; the existing candidate's forward overlap is 1.0. Under the unchanged literal >70% rule, every nonempty in-footprint raster is rejected. This is a representation-policy conflict, not evidence of geological equivalence. No dense-map exception was invented.
+> - **Historical HOLDOUT-DTI only** (`gems57-pooled-hide-v2`, 22,663 withheld positives): APRONRIDGE free1d 0.008354 [0.006823, 0.010135]; HYDROCONDUIT f45hydro 0.008549 [0.007626, 0.009487]. These are stored static evaluations, not rerun here or certified as fully fold-rebuilt, leak-free promotion results; neither is an organizer score. The latest documented result means APRONRIDGE is not the overall historical holdout point-estimate best.
 
 ---
 
-## Prior Candidate: Why `HYDROCONDUIT f45hydro` Is Format-Valid but Not Cleared for Submission
+## Prior/parallel candidate — `HYDROCONDUIT f45hydro` (historical research artifact, not current primary)
 
 1. **Why It Is a Genuine Scientific & Holdout Breakthrough (`OK TO DOWNLOAD`):**
    - **First candidate in `GEMSDOE92` to beat BOTH `R0` and prior holdout-best `RELIEF p10`:** On the shared `gems57-pooled-hide-v2` buffered spatial holdout (`22,663` withheld catalogue fault pixels, `1,000` paired cluster-bootstrap draws), `HYDROCONDUIT f45hydro` achieves **`HOLDOUT-DTI = 0.008549 [0.007626, 0.009487]`** — **`+113.4%` over `R0` (`0.004006`)** (`Δ = +0.004543 [+0.003770, +0.005315]`) and **`+41.4%` over `RELIEF p10` (`0.006045`)** (`Δ = +0.002504 [+0.001795, +0.003222]`).
