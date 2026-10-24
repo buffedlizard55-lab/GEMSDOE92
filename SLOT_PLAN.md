@@ -1,5 +1,7 @@
 # SLOT_PLAN — GEMS Prize #306
 
+> **2026-10-24 stop notice:** This is a historical, conditional slot plan—not permission or a current recommendation to submit any listed raster. The latest literal uniqueness preflight found that public `17GEMSDOE_E-proba-multiscale` has positive support on every legal cell, forcing 1.0 forward overlap for every nonempty candidate against a 0.70 stop limit. No new file was built or uploaded and no weekly slot was used. See `evidence/registry_saturation_blocker.json` and `docs/review_passes_20261024.md`. Do not act on the slate unless the uniqueness rule is explicitly revised and the full audit is rerun.
+
 **Incumbent / Parent R0:** `h33-h33-2-b2` (37,654 unit-mass dots; both `zeros` `c55bafc4…` and `nan` `baeae321…` SHA-256 digests rebuilt byte-for-byte from the pinned lineage). Score `0.2778` is **CLAIM** until a submission-page receipt is recorded in `ledger/submissions.csv` (21 `BUILT` candidates across `MASS`, `PRUNE`, `SNAP`, `CONCENTRATION`, `RELIEF`; zero `RECEIPT` rows).
 **Target & Quota:** `TOP_PUBLIC = ____` (date: `____`); rolling-week slots left: `__ / 3`; total weekly slots remaining to `2026-12-03`: `__` (~18 max across ~6 weeks, plus ONE blind final file; confirm deadline on competition page). Never submit repeats or both NaN/zeros twins of a pair. Treat live public-chunk deltas with `|delta| < 0.01` as **no evidence**.
 

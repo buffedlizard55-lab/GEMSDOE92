@@ -1,0 +1,41 @@
+{
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "witness_file": ".cache/public_gems_tifs/17GEMSDOE_E-proba-multiscale_374c88b1da2b803e2ed160de467fd71ae114010d.tif",
+  "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+  "positive_pixels": 5167373,
+  "allowed_pixels": 5106385,
+  "uncovered_allowed_pixels": 0,
+  "covered_allowed_fraction": 1.0,
+  "universal_overlap_blocker": true,
+  "overlap_limit": 0.7,
+  "support_definition": "finite prediction > 0 (inherited literal support rule)",
+  "implication": "Every nonempty candidate dot set in the allowed domain has forward overlap 1.0 with this prior; therefore it cannot pass the 0.70 gate.",
+  "checked_at_utc": "2026-10-24T06:34:00+00:00",
+  "witness_repo": "buffedlizard55-lab/17GEMSDOE",
+  "witness_public_path": "docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+  "witness_git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+  "witness_bytes": 25065181,
+  "comparison_tool": "vendor.gems57.uniqueness.saturation_certificate",
+  "overlap_radius_px": 3.0,
+  "overlap_threshold": 0.7,
+  "grid": {
+    "shape": [
+      3730,
+      3292
+    ],
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "allowed_domain": "sample_submission finite footprint minus pixel-exact mapped catalogue"
+  },
+  "scope": "One hash-verified public candidate-like raster is sufficient to prove a universal blocker under the literal all-raster overlap rule. This is not a complete byte-level audit of all registry rasters.",
+  "decision": "STOP_BEFORE_PLACEMENT",
+  "candidate_built": false,
+  "candidate_uploaded": false
+}

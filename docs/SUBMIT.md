@@ -1,5 +1,7 @@
 # Candidate handoff — human review and submission only
 
+> **2026-10-24 STOP:** No new candidate was built. The current literal shared uniqueness gate is impossible to satisfy for any nonempty legal raster because the hash-verified public `17GEMSDOE_E-proba-multiscale` witness covers every legal pixel (forward overlap `1.0` > `0.70`). The table below is a historical list of built local candidates, not a current recommendation or an approval to submit them. See `evidence/registry_saturation_blocker.json`; do not use a slot unless the uniqueness scope is explicitly revised and the complete audit is rerun.
+
 **Do not upload until you confirm the entity's rolling-week quota and independently review the selected raster.** The agent never submits and never contacts the leaderboard. Parent R0 (`h33-h33-2-b2`) score `0.2778` is an owner-reported **CLAIM**, not a `RECEIPT`. Upload **at most one** file per slot (the NaN-outside primary `.tif` and `-zeros.tif` fallback carry identical in-footprint values and score identically).
 
 ## Current session candidates (`AXIS = RELIEF`, detrended-elevation tercile reallocation, 2026-10-24)

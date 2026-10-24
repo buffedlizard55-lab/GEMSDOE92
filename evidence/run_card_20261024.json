@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "run_id": "gemsdoe92-20261024-registry-stop",
+  "created_utc": "2026-10-24T06:34:00Z",
+  "status": "STOPPED_BEFORE_PLACEMENT",
+  "hypothesis": {
+    "rank": 1,
+    "id": "H1-MT-DEPTH-BREAK",
+    "title": "Depth-stratified USGS MT conductance discontinuities",
+    "layers": [
+      "gb_conductance_surface_tp.tif (2-12 km depth)",
+      "gb_conductance_middle_crust_tp.tif (12-20 km depth)",
+      "optional gb_conductance_lower_crust_tp.tif (20-50 km depth)",
+      "cond_surf (training band 17), shallow context only"
+    ],
+    "mechanism": "A laterally coherent conductance edge or termination that changes between depth slices may mark a buried fault/fluid pathway beneath basin fill; emit only where a depth-persistent structural break is supported, not on broad high-conductance blobs.",
+    "named_non_fault_mimic": "Saline playa/basin brine or a non-fault lithologic contact can create a conductance boundary.",
+    "expected_holdout_benefit": "Qualitative projection only: potentially small-to-moderate positive if resolved depth breaks align with withheld faults; neutral or negative if the regional fields are too smooth or lithologic/fluid mimics dominate. No numeric projection or score assigned."
+  },
+  "holdout": {
+    "evidence_class": "HOLDOUT-DTI",
+    "status": "NOT_RUN",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_count": null,
+    "dti": null,
+    "ci95": null,
+    "reason": "The shared pre-placement uniqueness certificate proves every nonempty legal prediction has >0.70 forward overlap with a full-support registry raster; the protocol requires stopping before feature construction and placement."
+  },
+  "registry": {
+    "inventory_path": "registry/public_gems_tif_inventory.json",
+    "inventory_scope": "Metadata-only candidate-like TIFF path/blob scan across 101 public owner repositories; 1,998 candidate-like paths and 1,305 unique Git blobs. It is not a complete byte-level comparison.",
+    "surface_spearman": null,
+    "surface_spearman_status": "NOT_COMPUTED — no candidate surface was constructed",
+    "dot_overlap_3px": 1.0,
+    "dot_overlap_status": "UNIVERSAL_CERTIFICATE — any nonempty candidate's positive support lies inside the witness's full footprint support; this is not a candidate-specific raster comparison",
+    "overlap_limit": 0.7,
+    "surface_rho_limit": 0.9,
+    "witness": {
+      "repository": "buffedlizard55-lab/17GEMSDOE",
+      "path": "docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "footprint_positive_pixels": 5167373,
+      "legal_candidate_pixels": 5106385,
+      "uncovered_legal_pixels": 0,
+      "covered_legal_fraction": 1.0
+    },
+    "literal_gate_result": "STOP_BEFORE_PLACEMENT",
+    "full_registry_byte_comparison": "NOT_COMPLETED — the single universal blocker is sufficient to establish that no nonempty candidate can pass the literal overlap rule"
+  },
+  "raster_sha256": null,
+  "validator_result": "NOT_RUN — no candidate raster was written",
+  "submission_name": null,
+  "submission_note": null,
+  "submission_note_character_limit": 140,
+  "submission_status": "NOT_CREATED_NOT_UPLOADED",
+  "weekly_slot_used": false,
+  "promote_verdict": "NEGATIVE",
+  "promote_reason": "The method was not tested and cannot proceed under the current literal uniqueness gate. No submission slot is eligible or recommended.",
+  "review_passes": [
+    "Evidence/receipt and source audit",
+    "Geological hypothesis, novelty, and holdout design review",
+    "Registry, grid, uniqueness, and submission-safety review"
+  ]
+}

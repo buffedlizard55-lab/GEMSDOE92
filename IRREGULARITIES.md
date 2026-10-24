@@ -114,8 +114,11 @@ so this is a slot-economy risk rather than a correctness bug.
 **Decision.** No hashes were rewritten — the MASS rows are a prior session's
 evidence and are left exactly as recorded. Rule for going forward: one row = one
 experiment, and a `-zeros.tif` twin is *not* a second experiment. Upload at most
-one of a pair. Dedupe remains exact-hash only, per the brief; do not add
-rank-correlation or overlap thresholds.
+one of a pair. Exact-hash comparison still handles byte-identical encoding pairs in the ledger.
+It is not the cross-session candidate uniqueness gate: the current protocol uses
+shared Spearman-rho and forward-overlap thresholds against the public raster
+registry (`vendor/gems57/uniqueness.py`). The 2026-10-24 full-support blocker
+below is binding under that broader gate.
 
 ## 2026-10-23 (new PRUNE-rung session) — accessible-ledger uniqueness is incomplete
 
@@ -331,3 +334,56 @@ asks a genuinely different question from the merged set.
 
 **Decision.**
 Shift 10%, 12%, and 15% of total mass (3,765, 4,518, and 5,648 dots) from the lowest-prior basin and range dots into the highest-prior unpopulated H19-5 pixels located strictly within the piedmont tercile, using greedy exact expected-DTI marginal gain on the label-free physical prior (`Band 3`, `Band 5`, `Band 19`). Dot count is held at exactly 37,654, zero mass is placed on the catalogue, and all dots maintain R0's `d_cat > 2.0 px` exclusion.
+
+---
+
+## 2026-10-24 (registry uniqueness review) — one full-support raster makes the literal overlap gate impossible for every nonempty candidate
+
+**Observation.** The public metadata inventory contains
+`17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif`
+(Git blob `374c88b1da2b803e2ed160de467fd71ae114010d`). Its fetched bytes match
+SHA-256 `ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be`; it is
+one-band float32 on the exact `3730 x 3292`, EPSG:32611, 100 m sample grid. The
+shared `vendor.gems57.uniqueness.saturation_certificate` finds positive support
+on all `5,167,373` footprint pixels. The legal domain after pixel-exact catalogue
+exclusion has `5,106,385` cells, and **zero** of them are outside the witness
+support's 3 px halo.
+
+**Impact — absolute blocker under the current literal rule.** The shared support
+definition is `finite prediction > 0`, and the forward-overlap stop threshold is
+`>0.70` against any registry raster. Every nonempty legal candidate therefore has
+forward overlap exactly `1.0` with this witness, regardless of its geology or
+placement. A zero-valued raster has no candidate dots and cannot satisfy the
+unique nonempty-prediction certificate. No nonempty GeoTIFF can be both valid and
+unique under this rule while the witness remains in scope.
+
+**Decision.** Follow the specified stop rule: `STOP_BEFORE_PLACEMENT`. Do not build
+or validate a candidate, do not produce a misleading all-zero TIF, do not call the
+submission writer, and do not use a weekly slot. The result is recorded in
+`evidence/registry_saturation_blocker.json` and
+`evidence/run_card_20261024.json`. The shared rule was not weakened or silently
+scoped around continuous surfaces. A future change to compare Spearman correlation
+on all surfaces but dot-overlap only on discrete point rasters would change the
+user-specified gate and requires explicit authorization before proceeding.
+
+**Scope note.** `registry/public_gems_tif_inventory.json` records a complete GitHub
+metadata tree scan for 101 *public* owner repositories matching the documented
+GEMSDOE name pattern, but stores only candidate-like TIFF paths after a transparent
+heuristic (2,508 TIFF paths counted; 1,998 candidate-like paths; 1,305 unique
+candidate-like Git blobs; 1,046,507,603 bytes by GitHub metadata).
+It is not a byte-level comparison of every TIFF. The single witness was downloaded
+from GitHub and hash/grid verified; the universal blocker is sufficient to stop,
+but no complete raster-correlation inventory is claimed.
+
+## 2026-10-24 — leaderboard display and H33-2-B2 score are not receipts
+
+**Observation.** The local ledger has 21 `BUILT` rows and zero `RECEIPT` rows. The
+repository labels `0.2778` as an owner-reported `CLAIM`; the public GEMSDOE32 page
+calls its H33-2-B2 artifact `UNSCORED`. The official public leaderboard page
+observed on 2026-10-24 displayed `0.4413`, `0.3916`, and `0.3904` at ranks 1–3,
+which conflicts with the user-provided `0.3195` snapshot.
+
+**Decision.** Preserve the labels exactly: `0.2778` is not
+`ORGANIZER-CONFIRMED`; the leaderboard values are observations, not submission
+receipts. No account score, private score, or reason for the claimed `0.2778` was
+inferred.
