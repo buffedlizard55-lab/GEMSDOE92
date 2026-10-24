@@ -17,5 +17,6 @@ __pycache__/
 *.tiff
 *.zip
 !docs/downloads/*.tif
+!releases/*.tif
 !docs/downloads/*.zip
 !docs/downloads/*.json
