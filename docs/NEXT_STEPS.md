@@ -1,3 +1,25 @@
+# Current next steps — automated review 2026-10-24 UTC
+
+This section supersedes historical action lists below. **Do not submit any current artifact.**
+
+1. Preserve the literal registry stop; do not build another inevitably blocked TIFF.
+   [Fresh exact-file check](downloads/review_20261024_springalign_witness_v2.json)
+   proves SPRINGALIGN fails and the witness halo covers the whole footprint.
+2. An authorized protocol resolution is required before more placement experiments.
+   Do not silently exempt dense rasters or change the >70% rule.
+3. SPRINGALIGN is already tested and negative; it is NOT an untested next idea.
+   BREAKLINE public rejection and the collar SGMC control are already done.
+4. Verify official data provenance/license, then restore permitted features and
+   pre-register one conditional hypothesis from the [current review](REVIEW_AUTOMATED_20261024.md).
+5. Run feature-alone canaries, whole-segment buffered holdout and both actual
+   registry phases before promotion. An organizer receipt and quota check remain
+   unavailable here; no weekly slot is authorized.
+6. Keep automated site/CI checks green. No manual pixel inspector is needed.
+
+---
+
+## Historical notes (superseded for action purposes)
+
 # NEXT_STEPS — after the 2026-10-24 ANASIG session
 
 ## Current status (supersedes the collar section below for action purposes)

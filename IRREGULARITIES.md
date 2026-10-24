@@ -782,3 +782,50 @@ preserves its screen as `scripts/screen_stepedge_surfaces.py` and validated
 the harness by reproducing the BREAKLINE baseline to the digit
 (sym AUC 0.621604, far SGMC 0.072325) before trusting new numbers. Keep
 that pattern: no unpreserved screen code.
+## 2026-10-25 — SPRINGALIGN dose amended pre-results
+- **Observation**: 1-px spring-pair alignment lines yield 30,547 eligible far pixels but only 4,058 dots under the 2.8 px spacing floor; the pre-registered 16,944 far dots cannot be placed without zero-vote filler.
+- **Decision**: Single dose amended to 4,000 far dots (10.6%) before any holdout result was seen. No zero-vote filling.
+
+## 2026-10-25 — SPRINGALIGN corridor dose amended pre-results
+- **Observation**: sigma=2px corridor supports 12,743 spaced far dots < 16,944 (f45).
+- **Decision**: Experiment 2 set to sigma=3px, f33 (12,426 far; 67.0% keep, the BREAKLINE f33 uniqueness geometry) before any holdout result for this variant.
+
+## 2026-10-24 automated recheck (this branch)
+
+- **Binding protocol conflict freshly confirmed, not waived:** 17GEMSDOE blob
+  `374c88b1da2b803e2ed160de467fd71ae114010d` is positive across the exact footprint.
+  The existing SPRINGALIGN artifact has forward overlap 1.0; no nonempty
+  in-footprint prediction can meet the current literal overlap rule. No new
+  TIFF/experiment/weekly slot was generated/used. See
+  `evidence/review_20261024_springalign_witness_v2.json`.
+- **Wrong-primary/freshness language:** homepage title said SPRINGALIGN while
+  its lead and submission guides said ANASIG; headline claimed a unique TIFF
+  generated “this session.” The files predate checkout and include future-dated
+  `20261025` names relative to today's 2026-10-24 UTC. Corrected the active
+  display; preserved filenames and historical receipts as evidence.
+- **Single-witness checker risk:** shape-only comparison ignored CRS/transform
+  and silently masked invalid outside-footprint mass. An empty witness could
+  fabricate EDT boundary distances; rank-only duplicates were not checked.
+  Repaired the shared project checker using template helpers, without forking
+  the evaluator. Empty/invalid candidates now fail; unknown is not “unique.”
+  Checker exits 1 for a measured stop, 2 for invalid inputs, 0 for inconclusive
+  rejection-only check. No single-witness result grants submission eligibility.
+- **Evidence robustness:** absent primary audit could cause an unbound `doc`
+  error in the site checker; malformed JSON could crash it. These cases now
+  report a failed site check. Historical witness output cannot be overwritten.
+- **Deployment gate gap:** Pages previously uploaded `docs/` without running
+  the project site check. CI and Pages now require it. This validates local
+  bytes/status, not official data provenance or organizer portal acceptance.
+- **Score provenance:** fetched GEMSDOE32 page source has no `0.2778` string
+  and explicitly says no organizer score exists in its snapshot. This does not
+  disprove a later user result, but cannot authenticate it. No organizer receipt
+  or live leaderboard/quota was accessed. Values remain CLAIM, not scores
+  confirmed by this review. Source hashes in `evidence/review_20261024_source_audit.json`.
+- **Training limitation correction:** the freshly read official reference
+  supports CPU training. A GPU is faster, not an absolute prerequisite. The
+  prompt's named downloader/preparer scripts do not exist in this checkout.
+- **Pages admin permission:** API reports legacy publishing from `main:/`.
+  Attempting `build_type=workflow` returned HTTP 403 `Resource not accessible
+  by integration`; settings remain unchanged. The added workflow gate cannot
+  be claimed to control the separate legacy publisher. Repository-admin
+  integration access is needed to reconcile settings; do not claim it succeeded.

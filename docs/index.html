@@ -4,63 +4,73 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Auditable, locally validated GeoTIFF candidate for DrivenData DOE GEMS Prize #306.">
-  <title>GEMSDOE92 — GEMS submission workbench (STEPEDGE primary)</title>
+  <title>GEMSDOE92 — GEMS submission workbench (SPRINGALIGN primary)</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="hero">
   <p class="kicker">DOE GEMS Prize · DrivenData #306 · EPSG:32611 · 100 m</p>
-  <h1>STEPEDGE GeoTIFF — unique format-valid download, automated gates say DO NOT SUBMIT</h1>
-  <p class="lede">Download the all-finite, single-band STEPEDGE GeoTIFF (aperture-persistent DEM steps off the H19-5 skeleton) for research. It is literal-unique against all 28 local dot-registry rasters and carries this repo's strongest off-catalogue SGMC signal, and still <strong>DO NOT SUBMIT</strong>: the automated holdout gates fail (read the banners — the verdict is computed by machine checks published beside the file, not human inspection).</p>
+  <h1>Research GeoTIFF download — DO NOT SUBMIT</h1>
+  <p class="lede">The existing SPRINGALIGN GeoTIFF is format-valid and easy to download for research. It is <strong>not unique under the required public-registry rule and is NOT CLEARED FOR A WEEKLY SLOT</strong>. This review generated no new TIFF: the binding duplicate-stop rule prevents compliant placement.</p>
   <nav style="margin: 0.8rem 0; font-size: 0.95rem;">
     <strong>Quick Navigation:</strong>
     <a href="executive-summary.html">Executive Summary</a> ·
     <a href="SUBMIT.html">Submission Guide</a> ·
     <a href="HYPOTHESES.html">Candidate Hypotheses</a> ·
-    <a href="ANALYSIS_20261024_STEPEDGE.md">STEPEDGE Scientific Analysis</a>
+    <a href="ANALYSIS_20261024.md">Scientific Analysis</a>
   </nav>
   <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> All 10 local MUST gates pass: one float32 band; CRS, shape and transform match; finite values in [0,1]; no NaN inside the footprint; zeros outside; zero known-fault mass; SHA-256 recorded.</div>
-  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — HOLDOUT GATE FAILS; AND DUPLICATE UNDER THE LITERAL REGISTRY RULE vs the dense public witness.</strong> Automated verdict (run card beside the file): HOLDOUT-DTI 0.003980 does not beat the holdout bars (0.005487 / 0.006045), so submission_eligible = false regardless of uniqueness. Uniqueness has two scoped verdicts, both published: PASS vs the 28-raster local <em>dot</em> registry (worst forward overlap 0.461, |ρ| 0.396; surface |ρ| 0.138); and the literal vendor rule vs the everywhere-positive 17GEMSDOE E-proba witness gives forward overlap 1.000 for <em>any</em> non-empty in-footprint candidate (rank-correlation 0.0004). See <a href="downloads/public_witness_stepedge.json">witness receipt for these exact bytes</a> and the policy note in the <a href="ANALYSIS_20261024_STEPEDGE.md">STEPEDGE analysis</a>. (Historical scope note: the earlier full public scan of the collar candidate across 1,279 rasters found 131 rasters exceed the 70% stop threshold — <a href="downloads/public_registry_uniqueness.json">public-registry audit</a>.)</div>
-  <div class="banner banner-warn"><strong>Instruments disagree; the pre-registered gate governs.</strong> The same file scores this repo's best-ever off-catalogue SGMC PROXY (0.141464 vs R0 0.096060). No live submission slot has been used. This is a negative deliverable: downloadable for review, not cleared for competition submission. Neither local instrument proves live performance on uncatalogued faults; only an organizer receipt can.</div>
-  <div class="banner banner-warn">The portal error <code>Predicted values must be in range [0, 1]</code> is guarded against: this download was reread from disk and every cell is finite and in range. Upload the <strong>zeros-outside</strong> encoding. Note: human step required for weekly competition slot promotion.</div>
+  <div class="banner banner-warn"><strong>⛔ NO CANDIDATE IS CLEARED — BINDING DENSE-RASTER WITNESS.</strong> The hash-verified 17GEMSDOE E-proba witness is positive on all 5,167,373 competition-footprint cells. For the exact ANASIG file below, measured forward 3-px overlap is 100%; more generally, every nonempty in-footprint prediction necessarily overlaps this witness, so it fails the literal &gt;70% duplicate-stop rule. This is one decisive witness, not a fresh full-registry scan. No new TIFF or experiment was produced in this review, and no weekly slot was used. See the <a href="downloads/public_witness_anasig.json">ANASIG witness receipt</a>, <a href="downloads/breakline_public_registry_witness17.json">BREAKLINE witness receipt</a>, and <a href="REVIEW_CURRENT.md">current review</a>.</div>
+  <div class="banner banner-warn"><strong>HOLDOUT-DTI improvement does not override uniqueness.</strong> No live submission slot has been used. This is a negative deliverable: it may still be downloaded for review, but it is not recommended or cleared for competition submission. The holdout can reward recovery of mapped catalogue faults and does not prove live performance on uncatalogued faults.</div>
+  <div class="banner banner-warn">The portal error <code>Predicted values must be in range [0, 1]</code> is guarded against: this download was reread from disk and every cell is finite and in range. Only a future cleared artifact should be uploaded, using its <strong>zeros-outside</strong> encoding. Note: human step required for weekly competition slot promotion.</div>
 </header>
 
 <main>
 <section class="download-card">
-<h2>Latest automated review (STEPEDGE session, 2026-10-24): unique TIFF generated, no submission cleared</h2>
-<div class="banner banner-warn"><strong>NEW UNIQUE TIFF BELOW — automated verdict negative.</strong>
-This session generated STEPEDGE f60Sraw (new bytes, literal-unique vs all 28 local dot-registry
-rasters on both the pre-placement surface and final dots), and the machine gates
-(format ✓ · leakage canary ✓ · local uniqueness ✓ · SGMC ✓ · <strong>holdout ✗</strong>) return
-<code>submission_eligible: false</code>. It also fixed a wrong DTI algebra in the shared
-<code>gems/metric.py</code> (could return DTI = 5.0; the holdout evaluator was verified
-unaffected). Every download here remains a format-valid negative research deliverable
-only. No weekly slot was used.</div>
-<p><a href="ANALYSIS_20261024_STEPEDGE.md">STEPEDGE analysis: why 0.2778, screen, results, next steps</a> ·
-<a href="downloads/stepedge_run_card.json">STEPEDGE run card</a> ·
-<a href="HYPOTHESES_20261024_STEPEDGE.md">Pre-registered hypotheses</a> ·
-<a href="REVIEW_CURRENT.md">Prior review</a></p>
+<h2>Latest automated review: no submission cleared (2026-10-24 UTC)</h2>
+<p><strong>Fresh exact-file check:</strong> SPRINGALIGN forward overlap is 100%, |Spearman| = 0.0437295 against the hash-verified witness. Grid, footprint and range were independently checked. <a href="downloads/review_20261024_springalign_witness_v2.json">New rejection receipt</a> · <a href="downloads/review_20261024_run_card.json">New run card</a> · <a href="REVIEW_AUTOMATED_20261024.md">Review, ranked hypotheses and source audit</a>. The 2026-10-25 date in inherited filenames is future-dated relative to this review; it is not a fresh generation timestamp.</p>
+<div class="banner banner-warn"><strong>Binding registry stop — all downloads are research-only.</strong>
+REGISTRY-MEASUREMENT: the hash-verified 17GEMSDOE E-proba witness is positive on every one of the 5,167,373 footprint cells. ANASIG's exact-file forward overlap was measured at 100%; for any nonempty in-footprint prediction the literal &gt;70% overlap rule is necessarily exceeded. This witness check is decisive for rejection, but is not a fresh full-registry scan. Existing TIFFs are format-valid research artifacts, not cleared submissions. No new TIFF or experiment was created in this review, and no weekly slot was used.</div>
+<p><a href="REVIEW_CURRENT.md">Current review, limitations and next steps</a> ·
+<a href="downloads/public_witness_anasig.json">ANASIG witness receipt</a> ·
+<a href="downloads/breakline_public_registry_witness17.json">BREAKLINE witness receipt</a> ·
+<a href="downloads/session_review_run_card.json">Session run card</a></p>
+</section>
+
+<section id="download-springalign" class="download-card" data-primary="true">
+  <h2>Existing research download: SPRINGALIGN f33Ctop — blocked by registry rule</h2>
+  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> Automated validation (no human inspection): 10/10 MUST gates pass on disk re-read; single float32 band; EPSG:32611, 3730×3292, template transform; finite values in [0,1] (local finite/range checks pass; portal acceptance is not verified); no NaN inside footprint; zeros outside; zero catalogue mass; 37,654 dots.</div>
+  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DO NOT SUBMIT YET.</strong> Verdict negative under the pre-registered rule: <strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives) <strong>0.004865 [0.004025, 0.005785]</strong> beats parent R0 0.004006 (paired Δ +0.000859 [+0.000263, +0.001500]) but does <em>not</em> beat the holdout best RELIEF p10 0.006045 (paired Δ −0.001180 [−0.002065, −0.000337]). Leakage canary max symmetric AUC 0.553 (&lt;0.90). SGMC PROXY 0.0802 vs R0 0.0961. Local uniqueness: surface worst |ρ| 0.009 (100k sample, 28+ rasters); final dots worst forward overlap 0.670 vs parent R0 (by construction, &lt;0.70), worst |φ| 0.668 — <strong>locally unique, byte-unique (new SHA-256)</strong>. The dense 17GEMSDOE public witness remains <strong>DUPLICATE UNDER THE LITERAL REGISTRY RULE</strong> policy-wide (its 3-px halo covers the whole footprint; reported, not waived). A human selector step, separate from this page, decides any weekly slot.</div>
+  <p class="filename">h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif</p>
+  <p><a class="btn" href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif" download>⬇ Download SPRINGALIGN GeoTIFF (.tif) — OK TO DOWNLOAD, DO NOT SUBMIT</a>
+     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.zip" download>Download ZIP (one TIFF)</a></p>
+  <dl class="meta">
+    <div><dt>Submission name</dt><dd><code>GEMSDOE92-SPRINGALIGN-f33Ctop-20261025</code></dd></div>
+    <div><dt>Note (≤140 chars)</dt><dd><code>h33-h33-2-b2; SPRINGALIGN f33Ctop 12426 far dots on spring-pair alignment lines &gt;3px off H19-5</code></dd></div>
+    <div><dt>SHA-256 (zeros)</dt><dd><code>1772ad5c62506b6b380e221d2202b583edf0a5be4f96916af655e0478eba11b1</code></dd></div>
+    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 unit-mass dots (25,228 kept R0 + 12,426 far)</dd></div>
+    <div><dt>Audit / run card</dt><dd><a href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-audit.json">gate audit receipt</a> · <a href="downloads/springalign_run_card.json">run-card JSON</a> · <a href="HYPOTHESES_20261025_SPRINGALIGN.md">ranked hypotheses</a> · <a href="SUBMIT.html">submission guide (human selector only)</a></dd></div>
+  </dl>
+  <p><strong>Hypothesis:</strong> hot springs (≥40 °C, GDR INGENIOUS table pinned in-repo) fed by one blind fault align along its strike; pair-segment strike votes (714 points, 7,919 pairs 10–60 px, 25% extension, σ=3 px corridor) place dots where the catalogue and H19-5 skeleton are silent. Named non-fault mimic: lithologic contacts, paleochannels, aqueducts, playa shorelines. <strong>Plausible explanation for the parent’s reported CLAIM 0.2778 (not causal proof or receipt):</strong> non-redundant 2.8 px spacing + pruning dots on/near known faults (organizers mask catalogue faults, so those dots earn nothing) concentrated mass on credible off-catalogue lines; beating it requires a genuinely new discovery channel priced by an organizer receipt — no local number here is a competition score, and no claim of beating 0.2778 / 0.3195 / 0.4413 is made.</p>
 </section>
 
 <section id="download-stepedge" class="download-card">
-  <h2>⬇ PRIMARY DOWNLOAD: STEPEDGE f60Sraw — unique, format-valid — ⛔ DO NOT SUBMIT</h2>
-  <div class="banner banner-ok"><strong>✅ OK TO DOWNLOAD — FORMAT-VALID + LITERAL-UNIQUE (local dot registry).</strong> All format MUST gates pass on independent disk re-read: one float32 band; EPSG:32611; 3730 × 3292; transform matches; all values finite in [0,1] (the portal error <code>Predicted values must be in range [0, 1]</code> cannot occur with these bytes); zeros outside footprint; zero known-fault mass; 37,654 dots. Uniqueness (literal thresholds, 28 local dot rasters): surface worst |ρ| 0.138; final dots worst forward overlap 0.461, worst |ρ| 0.396.</div>
-  <div class="banner banner-warn"><strong>⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (automated gates, no human inspection).</strong> HOLDOUT-DTI (<code>gems57-pooled-hide-v2</code>, 22,663 withheld px) <strong>0.003980 [0.003295, 0.004702]</strong>, paired Δ vs R0 −0.000026 [−0.000534, +0.000458] — it does not beat STRAINBREAK f60 (0.005487) or RELIEF p10 (0.006045). SGMC PROXY (off-catalogue USGS bedrock faults) is the repo's best: 0.141464 vs R0 0.096060 — instruments disagree and the pre-registered holdout gate governs. Dense-witness disclosure: DUPLICATE UNDER THE LITERAL REGISTRY RULE vs the everywhere-positive public witness (overlap 1.000 is unavoidable for any non-empty candidate; ρ = 0.0004). Sibling doses f33/f45 measured duplicate (0.760/0.711) — never submit them either.</div>
+  <h2>Parallel session: STEPEDGE f60Sraw — new TIFF, unique vs local dot registry, DO NOT SUBMIT</h2>
+  <p>A third parallel session (2026-10-24) generated a NEW TIFF in a fresh lane: aperture-persistent sustained DEM steps (training stack Band 12). It passes the literal |&rho;| &le; 0.90 / &le;70%-within-3-px rule against all 28 local dot-like rasters (surface |&rho;| 0.138; worst final-dot forward overlap 0.461) and every file-format gate, and it is <strong>easy to download below</strong>. It is still <strong>NOT OK TO SUBMIT</strong>: automated gates record <code>submission_eligible: false</code> because HOLDOUT-DTI 0.003980 [0.003295, 0.004702] does not beat STRAINBREAK f60 or RELIEF p10 — despite the repo-best SGMC PROXY 0.141464. Its literal forward overlap with the dense public witness is likewise 1.000 and is disclosed on the exact bytes (&rho; 0.0004); the uniqueness above is scoped to dot-like rasters and the dense-witness policy question stays OPEN. The automated review above (SPRINGALIGN) remains the site primary. No slot used.</p>
   <p class="filename">h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif</p>
-  <p><a class="btn" href="downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif" data-primary="true" download>Download STEPEDGE GeoTIFF (.tif) — DO NOT SUBMIT</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.zip" download>Download ZIP (one TIFF) — DO NOT SUBMIT</a></p>
-  <dl class="meta">
-    <div><dt>Submission name (for a future cleared artifact only)</dt><dd><code>GEMSDOE92-STEPEDGE-f60Sraw-20261024</code></dd></div>
+  <p><a class="btn" href="downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif" download>⬇ Download STEPEDGE GeoTIFF (.tif) — OK TO DOWNLOAD, DO NOT SUBMIT</a>
+  <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.zip" download>Download ZIP (one TIFF)</a></p>
+  <dl class="spec">
+    <div><dt>Submission name</dt><dd><code>GEMSDOE92-STEPEDGE-f60Sraw-20261024</code></dd></div>
     <div><dt>Note (93 chars)</dt><dd><code>h33-h33-2-b2; STEPEDGE f60Sraw 22592 far dots on aperture-persistent DEM steps &gt;3px off H19-5</code></dd></div>
-    <div><dt>SHA-256 (zeros)</dt><dd><code>c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4</code></dd></div>
-    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 unit-mass dots (15,062 kept R0 + 22,592 far)</dd></div>
-    <div><dt>Automated verdict</dt><dd><a href="downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-audit.json">audit receipt (submission_eligible: false)</a> · <a href="downloads/stepedge_run_card.json">run card</a> · <a href="ANALYSIS_20261024_STEPEDGE.md">analysis</a> · <a href="HYPOTHESES_20261024_STEPEDGE.md">hypotheses</a> · <a href="downloads/public_witness_stepedge.json">public witness</a></dd></div>
+    <div><dt>SHA-256</dt><dd><code>c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4</code></dd></div>
+    <div><dt>Evidence</dt><dd><a href="downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-audit.json">Gate audit</a> · <a href="downloads/stepedge_run_card.json">Run card (verdict negative)</a> · <a href="ANALYSIS_20261024_STEPEDGE.md">Analysis (why 0.2778, measured)</a> · <a href="HYPOTHESES_20261024_STEPEDGE.md">Pre-registered hypotheses</a> · <a href="downloads/public_witness_stepedge.json">Dense-witness receipt</a></dd></div>
   </dl>
-  <p><strong>Hypothesis:</strong> sustained cross-fault topographic throw (offset persists at 200–300 m <em>and</em> 400–600 m apertures on Band&nbsp;12 detrended elevation) marks faults offsetting like-against-like that potential-field worms miss. <strong>Named mimic:</strong> Lake Lahontan benches, fan/terrace edges, cuestas, rugged range interiors. The coherence-gated form was duplicate-stopped at screen (0.755 vs BREAKLINE) and never built. Leakage canary max symmetric AUC 0.6216 (built surface 0.5797). If a selector ever clears a future artifact (audit <code>submission_eligible: true</code>), the form steps are in the <a href="SUBMIT.html">submission guide</a> — this file is not cleared; human step required for weekly competition slot promotion decisions beyond the automated gates (weekly quota lives on the portal).</p>
+  <p>Why 0.2778 (measured this session): spacing converging to the 3-px kernel radius plus catalogue clearance on a fixed skeleton — deleting 69% of precursor pixels cost only 4.5 points of kernel coverage. Beating it needs new skeleton content (1&nbsp;m DEM gap), not more geometry. Sibling doses f33/f45Sraw are duplicates (0.760/0.711) — download f60 only, never submit any of them.</p>
 </section>
 
 <section id="download-anasig" class="download-card">
-  <h2>Prior candidate: ANASIG f45 generated research GeoTIFF — DO NOT SUBMIT</h2>
+  <h2>Historical: ANASIG f45 research GeoTIFF — DO NOT SUBMIT</h2>
   <p><strong>OK to download for research:</strong> ✅ format-valid. <strong>Submit into the competition:</strong> ⛔ NO — DO NOT SUBMIT. Two blockers: HOLDOUT-DTI 0.004967 [0.004098, 0.005940] beats R0 (+0.000961 [+0.000168, +0.001814]) but not the holdout best RELIEF p10 (0.006045; paired Δ −0.001078 [−0.002034, −0.000112]); and <strong>DUPLICATE UNDER THE LITERAL REGISTRY RULE</strong> via the binding public witness (17GEMSDOE E-proba, positive on 100% of the footprint; measured forward overlap 1.000 for these exact bytes — <a href="downloads/public_witness_anasig.json">witness receipt</a>). Local dot-registry uniqueness passes: worst forward overlap 0.550, worst |ρ| 0.547 (24 rasters), surface worst |ρ| 0.024. Leakage canary max 0.551113. SGMC PROXY 0.080556 vs R0 0.096060.</p>
   <p class="filename">h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif</p>
   <p><a class="btn" href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif" download>Download format-valid ANASIG GeoTIFF — DO NOT SUBMIT (.tif)</a>

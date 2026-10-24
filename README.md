@@ -18,7 +18,9 @@
 
 ---
 
-## ⬇ PRIMARY DOWNLOAD (STEPEDGE session, 2026-10-24): unique TIFF — DO NOT SUBMIT
+## STEPEDGE parallel candidate (2026-10-24): new unique-vs-dot-registry TIFF — DO NOT SUBMIT
+
+> Site primary per the newer automated review is SPRINGALIGN (blocked under the literal public rule); the STEPEDGE candidate below was built by a parallel session under a pre-registered, openly disclosed dot-like scope for the overlap arm (dense-witness overlap still printed as 1.000) and is likewise **not cleared**. Both sessions' verdicts: do not submit.
 
 **✅ FORMAT-VALID + LITERAL-UNIQUE (local dot registry) — OK TO DOWNLOAD for research.**
 **⛔ DO NOT SUBMIT — automated gates return `submission_eligible: false` (holdout bars fail). No human inspection involved; no slot used.**
@@ -38,11 +40,53 @@
 
 ## Latest Review before STEPEDGE: Literal Uniqueness Blocked Across the Footprint (dense witness)
 
+## Current automated review — 2026-10-24 UTC: DO NOT SUBMIT
 
-**OK TO DOWNLOAD for research; NOT OK TO SUBMIT.** The queued BREAKLINE public witness audit finds **REGISTRY-MEASUREMENT 100% forward overlap** with the hash-verified 17GEMSDOE dense raster. Its 3-pixel halo covers the whole footprint, so every nonempty in-footprint candidate fails the current literal rule. No new unique submission was generated, no score improvement is claimed, and no slot was used. [Review and limitations](docs/REVIEW_CURRENT.md) · [witness receipt](docs/downloads/breakline_public_witness.json) · [session JSON card](docs/downloads/session_review_run_card.json).
+**OK TO DOWNLOAD existing research files; NO artifact is cleared for a weekly slot.**
+**No new unique TIFF was generated in this review.** The requested literal registry
+rule rejects every nonempty in-footprint prediction against a hash-verified dense
+witness; generating another would violate the required stop. This is an explicit
+unfulfilled requirement, not a renamed/repackaged prior submission.
+
+- [One-click research GeoTIFF](docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif) · [Executive summary / conditional submission guide](docs/executive-summary.html)
+- [Fresh exact-file witness receipt](evidence/review_20261024_springalign_witness_v2.json): **REGISTRY-MEASUREMENT** overlap 1.0, |Spearman| 0.0437295. Reference/witness/candidate grid checked; no threshold waiver.
+- [Three-pass review, ranked hypotheses, source table and limitations](docs/REVIEW_AUTOMATED_20261024.md) · [Review run card](evidence/review_20261024_run_card.json)
+- Existing SPRINGALIGN bytes have an inherited future-dated filename (2026-10-25); today is 2026-10-24 UTC. They are not new output from this session.
+- GEMSDOE32's retrieved page source describes its method but does not verify the **CLAIM 0.2778**. Official reference code was read at a pinned commit; the live leaderboard, submission quota and non-GitHub official data were not accessed.
+- New checks reject wrong grids, invalid/out-of-footprint predictions and evidence overwrites. CI and Pages must run the automated site gate. Format-valid is not submission-eligible.
+
+The full project operating prompt is retained below and in `SESSION_PROMPT.md`;
+read both at every session start. **Maximize P(Win)** by testing falsifiable
+hypotheses, not by claiming unmeasured scores. **Own the Outcome** by reporting
+blocking evidence and unmet requirements, not bypassing them.
 
 ---
 
+## Historical SPRINGALIGN record (filename date 2026-10-25; not this review)
+
+**✅ OK TO DOWNLOAD for research — ⛔ NOT CLEARED FOR A WEEKLY SLOT (verdict negative).**
+
+| Deliverable | Link |
+|---|---|
+| **GeoTIFF (primary, zeros-outside)** | [docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif](docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif) |
+| ZIP (one TIFF) | [docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.zip](docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.zip) |
+| Submission name | `GEMSDOE92-SPRINGALIGN-f33Ctop-20261025` |
+| Note (≤140) | `h33-h33-2-b2; SPRINGALIGN f33Ctop 12426 far dots on spring-pair alignment lines >3px off H19-5` |
+| SHA-256 (zeros) | `1772ad5c62506b6b380e221d2202b583edf0a5be4f96916af655e0478eba11b1` |
+
+SPRINGALIGN: hot-spring pair strike alignments (GDR INGENIOUS, pinned).
+HOLDOUT-DTI `gems57-pooled-hide-v2` (22,663 withheld) **0.004865
+[0.004025, 0.005785]** — beats R0, below holdout best RELIEF p10, so
+**negative**: downloadable, not slot-cleared. Locally unique (surface
+|ρ|≤0.009; final forward ≤0.670). Dense public witness policy unresolved.
+Full record: [analysis](docs/ANALYSIS_20261025_SPRINGALIGN.md) ·
+[run card](evidence/springalign_run_card.json). The 0.2778 GEMSDOE32
+value remains a CLAIM (no receipt); no local score beats it by assertion.
+
+**Historical closeout (superseded by SPRINGALIGN above for downloads): OK TO DOWNLOAD for research; NOT OK TO SUBMIT.** BREAKLINE witness: REGISTRY-MEASUREMENT 100% forward overlap with 17GEMSDOE dense raster. [Review](docs/REVIEW_CURRENT.md) · [closeout](docs/REVIEW_CLOSEOUT_20261024.md)
+
+---
+## New primary (ANASIG session, 2026-10-24): locally unique, still not cleared
 ## Prior primary (ANASIG session, 2026-10-24): locally unique, still not cleared
 
 **✅ FORMAT-VALID — OK TO DOWNLOAD for research. ⛔ DO NOT SUBMIT / NOT CLEARED FOR A WEEKLY SLOT.**
@@ -76,7 +120,7 @@
 
 ## Executive Summary — Format-Validated Candidate, One-Click Download
 
-**✅ FORMAT-VALID — OK TO DOWNLOAD.** The generated submission raster is an all-finite, single-band float32 GeoTIFF, EPSG:32611, shape 3730 × 3292, matching the competition template geotransform. It contains zero NaNs inside the footprint, zeros outside, values strictly in `[0, 1]`, and passes all 10 local MUST gates on independent re-read from disk. This completely prevents the DrivenData portal error: `Predicted values must be in range [0, 1]`.
+**✅ FORMAT-VALID — OK TO DOWNLOAD.** The generated submission raster is an all-finite, single-band float32 GeoTIFF, EPSG:32611, shape 3730 × 3292, matching the competition template geotransform. It contains zero NaNs inside the footprint, zeros outside, values strictly in `[0, 1]`, and passes all 10 local MUST gates on independent re-read from disk. These local checks guard against, but do not guarantee portal acceptance or prevent all causes of, the error: `Predicted values must be in range [0, 1]`.
 
 **⛔ NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE.** An expanded scan found 100% 3-px forward overlap with public registry rasters (131 of 1,279 exceed 70%). Stop; do not submit. This file remains downloadable as a negative research deliverable. The scan covers current default branches in 102 public owner repositories, not every historic/site-hosted file.
 
@@ -111,30 +155,15 @@ A second session built **BREAKLINE f45Ltop**: keeping 20,710 parent R0 dots via 
 
 ---
 
-## In-Depth Scientific Analysis: Why did GEMSDOE32 Score 0.2778 and How to Beat It?
+## What the reported GEMSDOE32 value can support
 
-### 1. Mathematical Mechanics of the Competition Metric
-The official competition metric is the distance-weighted, asymmetric Tversky Index ($DTI$):
-$$\text{DTI} = \frac{\text{TP}_w}{\text{TP}_w + \alpha \cdot \text{FP}_w + \beta \cdot \text{FN}_w + \varepsilon}$$
-where $\alpha = 0.2$, $\beta = 0.8$, and $k(d) = \max(0, 1 - d/300\text{ m})$ with cutoff radius $R = 300\text{ m}$ (3 pixels on a 100 m grid).
+The reported value **0.2778 is a CLAIM** copied from the supplied GEMSDOE32 site history; this checkout has no submission-page receipt for that artifact. The reported lineage H19-5 → D2.8 → SOLO → B2/R0 is consistent with changes to candidate geometry, thinning, pruning, and known-catalogue clearance. The prompt-reported intermediate values 0.1922, 0.2600, and 0.2708 are also CLAIMs, not organizer-confirmed receipts here.
 
-### 2. Lineage Breakdown of Score Progression
-1. **H19-5 (0.1922):** Multiscale potential-field ridge skeleton (gravity & magnetic gradient maximums). Captured regional crustal fault zones across the Great Basin. However, raw continuous skeletons contained dense, adjacent pixels along single fault traces, creating extreme false-positive mass redundancy.
-2. **D2.8 (0.2600):** Applied Poisson-disk thinning with $r = 2.8\text{ px}$ (280 m). Because the triangular kernel width is 3 px, adjacent pixels along a line cover the exact same ground truth ($TP_w$ is max-pooled, so credit is earned once), while each pixel adds $1.0$ to emitted mass $S$ and false-positive mass $FP_w$. Spacing dots at $2.8\text{ px}$ eliminated redundancy and surged the score from 0.1922 to 0.2600.
-3. **SOLO (0.2708):** Removed sub-bar isolated dots with low expected gain and removed dots within 1 px of mapped known faults.
-4. **B2 / R0 (0.2778):** Enforced strict clearance from known mapped faults ($d_{\text{cat}} > 2.0\text{ px}$, zero mass on catalogue, 37,654 dots). Because competition organizers mask all known USGS/INGENIOUS faults pixel-exactly from live scoring, any prediction placed on or touching a mapped fault yields zero true positive credit while paying full false-positive penalty.
+A plausible mechanism is that thinning spatially redundant predictions reduces false-positive cost while maintaining coverage, and avoiding mapped catalogue pixels avoids predictions that may be masked. This is **mechanistic inference**, not causal proof: attributing score changes requires exact artifacts, identical scoring conditions, controlled ablations, and organizer receipts. Nearby predictions can have overlapping kernel support while each emitted prediction contributes to total prediction mass; that makes redundancy a sensible experiment, not proof that a specific thinning step caused the claimed increase. Local HOLDOUT-DTI is not comparable to private leaderboard scores.
 
-### 3. Why 0.2778 Hit an Asymptotic Ceiling vs the 0.4413 Leaderboard Top
-- **Target Ground Truth:** The competition target is expert-mapped *new* faults (mapped primarily from 1m LiDAR and 10m DEM high-resolution topography, active geothermal fault scarps, dilatational stepovers, and geothermal conduit permeability zones).
-- **Physical Limitation of Potential Fields:** Potential field worms (H19-5) only detect deep lithologic density and susceptibility contrasts. They completely miss active Quaternary normal fault scarps in basin alluvium (alluvium against alluvium), small-throw fault scarps, and shallow geothermal permeability networks.
-- **How Top Submissions Score 0.4413:** Fusing:
-  1. A high-confidence skeleton core (~20,000 dots) for deep crustal fault systems.
-  2. High-resolution DEM scarp-break detection (structure-tensor coherence $\times$ slope gradient) catching subtle surface ruptures.
-  3. Dilatational structural stepovers, pull-apart zones, and geothermal vent clusters (INGENIOUS / GDR wellspring concordance).
-  4. Radiometric alteration halos (K/Th radiometrics from GeoDAWN).
-  5. Exact Poisson-disk spacing discipline across all emitted dots.
+The prompt's **0.3195 and 0.4413 are conflicting leaderboard snapshots/claims**; neither was refreshed in this session. We have no authenticated winning raster or method receipt, so cannot state that the highest-scoring submission fused a skeleton, DEM scarps, stepovers, radiometrics, or vent proximity. A score alone does not reveal its feature set. The project has not established that a candidate beats the 0.2778 CLAIM.
 
----
+The concepts and previous screens are catalogued in [`docs/HYPOTHESES.html`](docs/HYPOTHESES.html), [`docs/HYPOTHESES.md`](docs/HYPOTHESES.md), and [`docs/REVIEW_CURRENT.md`](docs/REVIEW_CURRENT.md). Their rankings are research priorities, not score forecasts. BREAKLINE, SCARPPOL, ANASIG, and STRAINBREAK are already tested—not new hypotheses. The current full-footprint public-registry witness blocks all nonempty in-footprint predictions under the literal overlap rule; do not emit another submission artifact unless that policy blocker is explicitly resolved.
 
 ## Candidate Geological Hypotheses (Ranked)
 
@@ -145,6 +174,7 @@ where $\alpha = 0.2$, $\beta = 0.8$, and $k(d) = \max(0, 1 - d/300\text{ m})$ wi
 | **3** | **DILATATIONAL-STEPOVER** | Positive dilatational strain rate on structural relay bends | Bands 8, 7, 4 (geodetic strain) & Band 19 (DEM breaks) | Geothermal fluid permeability localizes in extensional stepovers and pull-apart jogs between overlapping fault strands. | **Rank 3** / Medium (in-stack) | [UNR Nevada Geodetic Lab](http://geodesy.unr.edu/) |
 | **4** | **HYDROTHERMAL-ALTERATION** | K/Th radiometric ratio gradients & magnetic destruction | External GeoDAWN Radiometrics (`geodawn_rad_u8.tif`) & Band 14 (TMI) | Hydrothermal alteration halos trace active fluid-transmitting fault corridors lacking surface scarps. | **Rank 4** / Medium (pinned cache) | [USGS GeoDAWN Radiometrics](https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and) |
 | **5** | **SHORELINE-FILTERED SCARP** | Elevation-band contour-parallel suppressed breaklines | Bands 19, 12 + Lake Lahontan highstand masks (~1330 m AMSL) | Removes wave-cut shoreline terraces (the dominant non-tectonic false-positive mimic in the Great Basin). | **Rank 5** / Medium (requires NBMG shoreline grid) | [Nevada Bureau of Mines & Geology](https://data.nbmg.unr.edu/) |
+
 
 Detailed documentation: [`docs/HYPOTHESES.html`](docs/HYPOTHESES.html) · [`docs/HYPOTHESES.md`](docs/HYPOTHESES.md).
 
@@ -166,17 +196,17 @@ We own results end to end &mdash; not just our individual slice of the work. Whe
 # 1. Restore all SHA-256 pinned inputs into .cache/gems_inputs/
 python3 scripts/restore_inputs.py
 
-# 2. Run comprehensive automated test suite (117+ tests)
-pytest -v
+# 2. Run the automated test suite in the pinned environment
+.venv/bin/python -m pytest -q
 
 # 3. Verify pinned data manifests and hashes
-python3 scripts/verify_manifest.py
+.venv/bin/python scripts/verify_manifest.py
 
 # 4. Run automated gate inspection on all served downloads
-python3 scripts/check_site.py
+.venv/bin/python scripts/check_site.py
 
-# 5. Format validation on submission candidate
-python3 scripts/validate_submission.py --candidate docs/downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif
+# 5. Format validation on a candidate (format pass is not submission clearance)
+.venv/bin/python scripts/validate_submission.py --candidate docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif
 ```
 
 ---

@@ -118,3 +118,18 @@ See [current review](docs/REVIEW_CURRENT.md). The queued public check now reject
   Leaderboard fetched 2026-10-24: #1 0.4413 (LEADERBOARD-SNAPSHOT).
 - Analysis `docs/ANALYSIS_20261024_STEPEDGE.md`; run card
   `evidence/stepedge_run_card.json`. Budget spent (3 experiments).
+
+## Current request/review addendum — 2026-10-24 UTC
+
+Read the README's current automated review before all historical run records.
+The user's repeated highest-priority request remains a genuinely unique,
+one-click downloadable TIFF with autonomous in-project validation, no copied
+submission passed off as new, explicit download/submission status, geological
+hypotheses ranked before experiments, no invented live score, maximum three
+experiments/two hours, and no weekly slot without separate selector clearance.
+The new review confirms a binding dense-witness universal overlap stop; no new
+TIFF may honestly be promoted under the unchanged rule. This is a limitation,
+not successful completion of the requested new-TIFF generation. Preserve the
+negative result and exact old bytes, and follow `docs/REVIEW_AUTOMATED_20261024.md`.
+The inherited SPRINGALIGN filenames are future-dated relative to today's UTC
+date; do not use their dates as proof that this review generated them.

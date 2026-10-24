@@ -1,6 +1,8 @@
 # SLOT_PLAN — current selector state (2026-10-24, STEPEDGE session)
 
-## Current artifact: STEPEDGE f60Sraw — unique, negative, no slot used
+## Parallel artifact: STEPEDGE f60Sraw — unique (dot scope), negative, no slot used
+
+Note: site primary is SPRINGALIGN (newer automated review holds the literal public gate unresolved); STEPEDGE is recorded here as a parallel negative candidate.
 
 Primary download `GEMSDOE92-STEPEDGE-f60Sraw-20261024` (file
 `h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif`, SHA-256
