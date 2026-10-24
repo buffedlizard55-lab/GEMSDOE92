@@ -1,4 +1,10 @@
-# GEMSDOE92 — PRUNE axis session
+# GEMSDOE92 — automated competition-submission research
+
+> **Project charter (read first on every session):** maximize the probability of a valid, scientifically defensible top-ranked GEMS submission; own validation end to end; use official/free sources with auditable links; never invent evidence; label HOLDOUT-DTI, ORGANIZER-CONFIRMED receipts, claims, and projections distinctly; run leakage and registry-uniqueness stops automatically; generate an exact-format downloadable GeoTIFF only when gates pass; and never spend a weekly slot before holdout promotion. The current protocol is encoded in `docs/hypotheses_20261024.md`, `evidence/run_card_20261024.json`, and the tested gates.
+
+## Current autonomous verdict (2026-10-24)
+
+**NEGATIVE — NOT OK TO SUBMIT.** A fresh, byte-unique RELIEF GeoTIFF was generated and format-validated, but `99.3812%` of its dots lie within 3 px of registry parent R0, exceeding the mandated `70%` duplicate-stop threshold. The generated raster is downloadable for inspection and reproducibility; it must not consume a competition slot. Open [`docs/index.html`](docs/index.html) for the executive summary and unambiguous status.
 
 ## CURRENT STATE
 - **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots; exact lineage rebuild matches both pinned SHA-256 digests (`zeros`: `c55bafc4…`, `nan`: `baeae321…`). `0.2778` remains **CLAIM** (no receipt in `ledger/`).
