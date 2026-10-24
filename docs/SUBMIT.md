@@ -1,5 +1,8 @@
 # Candidate handoff — human review and submission only
 
+> **CURRENT AUTOMATED VERDICT: NOT OK TO SUBMIT.** The 2026-10-24 RELIEF candidate passed format validation but failed the lane-overlap stop (99.3812% within 3 px of R0; maximum 70%). It is inspection-only.
+
+
 **Do not upload until you confirm the entity's rolling-week quota and independently review the selected raster.** The agent never submits and never contacts the leaderboard. Parent R0 (`h33-h33-2-b2`) score `0.2778` is an owner-reported **CLAIM**, not a `RECEIPT`. Upload **at most one** file per slot (the NaN-outside primary `.tif` and `-zeros.tif` fallback carry identical in-footprint values and score identically).
 
 ## Current session candidates (`AXIS = RELIEF`, detrended-elevation tercile reallocation, 2026-10-24)
