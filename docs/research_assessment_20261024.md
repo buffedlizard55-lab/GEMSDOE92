@@ -2,13 +2,13 @@
 
 ## Decision in one sentence
 
-**No candidate GeoTIFF was built, validated, promoted, or uploaded.** The selected future lane is a depth-stratified USGS magnetotelluric (MT) conductance-break test, but the literal shared uniqueness gate has a verified universal blocker: one public, same-grid probability raster is positive at every legal pixel, so every non-empty prediction has 100% forward dot overlap with it (`>70%` stop threshold). This blocks every geological lane before placement, not just the selected one.
+**No candidate GeoTIFF was built, validated, promoted, or uploaded for the selected MT lane.** A separate TIPGAP FAR TIFF from a parallel run already exists on `main`; its local format preflight and parent/local-registry comparison do not clear global uniqueness, and its holdout result is negative (see the existing run card and the integration note in `IRREGULARITIES.md`). The selected future lane is a depth-stratified USGS magnetotelluric (MT) conductance-break test, but the literal shared uniqueness gate has a verified universal blocker: one public, same-grid probability raster is positive at every legal pixel, so every non-empty prediction has 100% forward dot overlap with it (`>70%` stop threshold). This blocks every geological lane before placement, not just the selected one.
 
 The blocker and its reproduction are in `evidence/registry_saturation_blocker.json`; the public path inventory and scan code are in `registry/public_gems_tif_inventory.json` and `scripts/scan_public_gems_tif_registry.py`. The witness bytes are cached only under ignored `.cache/public_gems_tifs/` and are not committed.
 
 ## Evidence audit: what does `0.2778` mean?
 
-- The current checkout's `ledger/submissions.csv` contains **21 `BUILT` rows and zero `RECEIPT` rows**. The `0.2778` value attached to `h33-h33-2-b2` is therefore an owner-reported **CLAIM**, not `ORGANIZER-CONFIRMED`.
+- The post-integration `ledger/submissions.csv` contains **26 `BUILT` rows and zero `RECEIPT` rows**. The `0.2778` value attached to `h33-h33-2-b2` is therefore an owner-reported **CLAIM**, not `ORGANIZER-CONFIRMED`.
 - The parent is a catalogue-flank removal: `h33-h33-2-b2` is a 37,654-dot descendant of the H27-4/R0 line. Its B2 recipe removes points within two pixels of the published catalogue; it does not add a new geological detector. A plausible mechanism for a higher public score is reduced mass near known faults and fewer redundant/low-credit points, but this is only a mechanistic explanation—not a causal attribution or a verified score.
 - The public GEMSDOE32 project page labels its H33-2-B2 artifact **UNSCORED** and says no organizer score exists for repository artifacts. Its `0.2708` base and `0.2747` projection are project-page values, not receipts. The local H33-2 record also contains model-calibration values; those are not competition receipts.
 - At the time of the official leaderboard check on 2026-10-24, the public display showed `0.4413`, `0.3916`, and `0.3904` at ranks 1–3. This conflicts with the user-provided `0.3195` snapshot. The display is a public-leaderboard observation, not proof of any account's receipt or private score.

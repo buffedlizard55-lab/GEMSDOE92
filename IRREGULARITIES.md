@@ -114,11 +114,8 @@ so this is a slot-economy risk rather than a correctness bug.
 **Decision.** No hashes were rewritten — the MASS rows are a prior session's
 evidence and are left exactly as recorded. Rule for going forward: one row = one
 experiment, and a `-zeros.tif` twin is *not* a second experiment. Upload at most
-one of a pair. Exact-hash comparison still handles byte-identical encoding pairs in the ledger.
-It is not the cross-session candidate uniqueness gate: the current protocol uses
-shared Spearman-rho and forward-overlap thresholds against the public raster
-registry (`vendor/gems57/uniqueness.py`). The 2026-10-24 full-support blocker
-below is binding under that broader gate.
+one of a pair. Dedupe remains exact-hash only, per the brief; do not add
+rank-correlation or overlap thresholds.
 
 ## 2026-10-23 (new PRUNE-rung session) — accessible-ledger uniqueness is incomplete
 
@@ -335,6 +332,23 @@ asks a genuinely different question from the merged set.
 **Decision.**
 Shift 10%, 12%, and 15% of total mass (3,765, 4,518, and 5,648 dots) from the lowest-prior basin and range dots into the highest-prior unpopulated H19-5 pixels located strictly within the piedmont tercile, using greedy exact expected-DTI marginal gain on the label-free physical prior (`Band 3`, `Band 5`, `Band 19`). Dot count is held at exactly 37,654, zero mass is placed on the catalogue, and all dots maintain R0's `d_cat > 2.0 px` exclusion.
 
+
+---
+
+## 2026-10-24 (TIPGAP session) — on-skeleton reallocations are parent-lane duplicates
+
+**Observation.** Moving 10–15% of R0 dots onto H19-5 near-tip skeleton pixels left 85–90% of dots unmoved. Because remaining parent dots still sit along the same 1-px skeleton, **>99.9% of variant dots fell within 3 px of R0** (Spearman 0.85–0.90). Parallel-run rule 1 (overlap > 0.70 or ρ > 0.90) flags that as another lane.
+
+**Decision.** Those three files stay in `releases/` as the failed dose-response; they are **not** on the GitHub Pages download. The uniqueness-corrected operator (`far18f33`, 33% moved, destinations >3 px from every parent dot) is the only public download: overlap 0.6700, Spearman 0.6690.
+
+**Holdout.** All four TIPGAP arms scored below R0 on `gems57-pooled-hide-v2` (22,663 withheld positives). Off-skeleton tips are not where withheld catalogue continuations sit. Verdict negative. No weekly slot.
+
+## 2026-10-24 — zeros-outside is the only portal-safe encoding we will advertise
+
+**Observation.** A prior human upload of a NaN-outside GeoTIFF returned `Predicted values must be in range [0, 1]`. `vendor/gems57/grid.write_geotiff` and `submission_writer.py` already require all-finite `[0, 1]`.
+
+**Decision.** The site download is the zeros-outside file written by `submission_writer.py`. NaN twins may exist locally as diagnostics and are not linked.
+
 ---
 
 ## 2026-10-24 (registry uniqueness review) — one full-support raster makes the literal overlap gate impossible for every nonempty candidate
@@ -361,23 +375,26 @@ unique under this rule while the witness remains in scope.
 or validate a candidate, do not produce a misleading all-zero TIF, do not call the
 submission writer, and do not use a weekly slot. The result is recorded in
 `evidence/registry_saturation_blocker.json` and
-`evidence/run_card_20261024.json`. The shared rule was not weakened or silently
+`evidence/run_card_mt_registry_stop_20261024.json`. The shared rule was not weakened or silently
 scoped around continuous surfaces. A future change to compare Spearman correlation
 on all surfaces but dot-overlap only on discrete point rasters would change the
 user-specified gate and requires explicit authorization before proceeding.
 
-**Scope note.** `registry/public_gems_tif_inventory.json` records a complete GitHub
-metadata tree scan for 101 *public* owner repositories matching the documented
-GEMSDOE name pattern, but stores only candidate-like TIFF paths after a transparent
-heuristic (2,508 TIFF paths counted; 1,998 candidate-like paths; 1,305 unique
-candidate-like Git blobs; 1,046,507,603 bytes by GitHub metadata).
-It is not a byte-level comparison of every TIFF. The single witness was downloaded
-from GitHub and hash/grid verified; the universal blocker is sufficient to stop,
-but no complete raster-correlation inventory is claimed.
+**Scope note.** `registry/public_gems_tif_inventory.json` records a complete GitHub metadata
+snapshot from 2026-10-24T06:33:50Z for 101 *public* owner repositories matching
+the documented GEMSDOE name pattern. After that snapshot, the current `GEMSDOE92`
+`main` tree was supplemented from locally fetched Git metadata with the TIPGAP
+public TIFF, giving 2,509 TIFF paths, 1,999 candidate-like paths, and 1,306 unique
+candidate-like Git blobs (1,046,655,401 bytes by metadata). A full refresh at
+06:44:48Z failed due to GitHub API rate limiting; other repositories may have
+changed since the initial scan. This remains a path inventory, not a byte-level
+comparison of every TIFF. The single witness was downloaded from GitHub and
+hash/grid verified; the universal blocker is sufficient to stop, but no complete
+raster-correlation inventory is claimed.
 
 ## 2026-10-24 — leaderboard display and H33-2-B2 score are not receipts
 
-**Observation.** The local ledger has 21 `BUILT` rows and zero `RECEIPT` rows. The
+**Observation.** The local ledger has 26 `BUILT` rows and zero `RECEIPT` rows. The
 repository labels `0.2778` as an owner-reported `CLAIM`; the public GEMSDOE32 page
 calls its H33-2-B2 artifact `UNSCORED`. The official public leaderboard page
 observed on 2026-10-24 displayed `0.4413`, `0.3916`, and `0.3904` at ranks 1–3,
@@ -387,3 +404,15 @@ which conflicts with the user-provided `0.3195` snapshot.
 `ORGANIZER-CONFIRMED`; the leaderboard values are observations, not submission
 receipts. No account score, private score, or reason for the claimed `0.2778` was
 inferred.
+
+---
+
+## 2026-10-24 integration review — parallel TIPGAP local-uniqueness result is not global clearance
+
+**Observation.** `origin/main` already contains a separate TIPGAP FAR download and its local run record. The parallel run reported local parent dot overlap `0.669995` and Spearman `0.668980`, but its own card says `complete_accessible_scan: false`; those values do not represent an all-public-raster comparison. Its on-disk format preflight passed. Its **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.002722851` with 95% CI `[0.002323553, 0.003130876]`; R0 is `0.004006147` with CI `[0.003407693, 0.004650592]`. The TIPGAP arm is negative versus R0.
+
+The independent shared saturation certificate proves that every nonempty legal raster has forward overlap `1.0` with the full-support public witness under the literal all-raster rule. This is a mathematical consequence of the support certificate, not a candidate-specific recomputation of TIPGAP Spearman or a byte-level comparison of every TIFF. A full inventory refresh was attempted at 2026-10-24T06:44:48Z but `gh api` returned HTTP 403 for the GitHub API rate limit. The newly merged TIPGAP TIFF was added as a local-Git-metadata supplement to the 06:33:50Z snapshot; the remaining repositories were not re-queried.
+
+**Impact — decision-changing.** The prior public-page wording “unique” and the stored proposed form note “unique lane” overstated the scope of the local comparison. A format PASS and local-parent overlap below threshold do not clear global uniqueness. The parallel artifact is not the output of the selected MT run and is not approved for a weekly slot or upload.
+
+**Decision.** Preserve the existing parallel TIFF and its original run record for auditability; do not copy or submit it. Update the public README/site/handoff to mark it **inspection-only / DO NOT SUBMIT**, and retain this blocker until the user explicitly changes the uniqueness scope. No slot was used and no upload occurred.

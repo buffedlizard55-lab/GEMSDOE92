@@ -2,7 +2,7 @@
 
 ## Final disposition
 
-**Blocked before placement.** No new prediction TIFF or ZIP was created, no submission slot was used, and nothing was uploaded. The hard stop is reproducible with `scripts/check_registry_saturation.py`; the result is `evidence/registry_saturation_blocker.json`.
+**Blocked before placement for the selected MT lane.** This run created no prediction TIFF or ZIP, used no submission slot, and uploaded nothing. A separate TIPGAP artifact already on `main` is preserved for audit, but its local format pass does not clear the global uniqueness gate and its holdout is negative; the public site now labels it inspection-only / DO NOT SUBMIT. The hard stop is reproducible with `scripts/check_registry_saturation.py`; the result is `evidence/registry_saturation_blocker.json`.
 
 ## Pass 1 — provenance, score status, and scope
 
@@ -11,7 +11,7 @@
 - Read the current README, submission handoff, slot plan, irregularity log, parent record, candidate ledger, holdout evidence, manifests, and shared evaluator/writer/uniqueness code.
 - Read the public GEMSDOE32 hypothesis registry and relevant public GEMSDOE83 hypothesis records to avoid presenting registered or measured sibling methods as new work.
 - Re-read the official competition metric/format page and September 2026 official rules; checked the official public leaderboard on 2026-10-24.
-- Verified `ledger/submissions.csv`: 21 `BUILT`, 0 `RECEIPT` rows. The `0.2778` parent value remains `CLAIM`; no receipt was available to copy.
+- Verified the post-integration `ledger/submissions.csv`: 26 `BUILT`, 0 `RECEIPT` rows. The `0.2778` parent value remains `CLAIM`; no receipt was available to copy.
 
 **Findings**
 
@@ -45,19 +45,20 @@ The shared uniqueness gate's literal “any registry raster” dot-overlap rule 
 
 **Checks performed**
 
-- Reproduced and persisted a metadata-only scan of 101 public owner repositories matching the GEMSDOE naming pattern. It contains 2,508 TIFF paths, of which a documented path heuristic flags 1,998 candidate-like paths and 1,305 unique Git blobs (1,046,507,603 bytes by GitHub metadata). All scanned trees were reported complete and no tree-query errors/truncation were recorded.
-- The scan does **not** decode those TIFFs and is not a full content-level uniqueness clearance. It is explicitly labelled as a path inventory with possible false positives/negatives.
+- Reproduced a metadata-only scan of 101 public owner repositories matching the GEMSDOE naming pattern at 2026-10-24T06:33:50Z. It initially contained 2,508 TIFF paths; a documented path heuristic flagged 1,998 candidate-like paths and 1,305 unique Git blobs. After `main` gained the parallel TIPGAP download, its current tree metadata was supplemented locally from Git, yielding 2,509 TIFF paths, 1,999 candidate-like paths, 1,306 unique blobs, and 1,046,655,401 bytes by metadata.
+- Attempted a full inventory refresh at 06:44:48Z; `gh api` returned HTTP 403 (GitHub API rate limit). Only the `GEMSDOE92` current `main` tree was locally supplemented; changes in the other public repositories after the initial snapshot are unknown.
+- The inventory does **not** decode those TIFFs and is not a full content-level uniqueness clearance. It is explicitly labelled as a path inventory with possible false positives/negatives and the refresh limitation.
 - Downloaded only the single decisive witness via the allowed GitHub API (no DrivenData or Dropbox contact), verified SHA-256 `ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be`, and checked exact grid identity against the pinned sample grid.
 - Shared `vendor.gems57.uniqueness.saturation_certificate` result: witness support `5,167,373/5,167,373` footprint cells; legal domain after pixel-exact catalogue exclusion `5,106,385`; uncovered legal cells `0`; covered fraction `1.0`; forward-overlap limit `0.70`; verdict `STOP_BEFORE_PLACEMENT`.
 - For every nonempty candidate support inside the legal domain, the shared support definition `finite prediction > 0` therefore yields overlap `1.0` with this witness. This proof is independent of geological feature values and suffices to stop before placement; a candidate-specific Spearman value was not computed.
 
 **Artifact status**
 
-- No candidate raster exists for this run: no raster SHA-256, no writer receipt, and no format-validator result are claimed.
-- `vendor/gems57/submission_writer.py` was not called because there was no admissible candidate to write.
-- No submission name/note was assigned, and nothing was uploaded.
-- The witness TIFF is cached under ignored `.cache/public_gems_tifs/`; only its public GitHub path/blob and checksum are recorded. Competition inputs and new prediction TIFFs were not added to this branch.
-- Fresh local tests: `.venv/bin/python -m pytest tests -q` → **75 passed, 12 Rasterio `PendingDeprecationWarning`s**. These are repository tests, not a holdout evaluation or submission validation.
+- No candidate raster exists for the selected MT run: no raster SHA-256, writer receipt, or format-validator result is claimed; `vendor/gems57/submission_writer.py` was not called.
+- No submission name/note was assigned for the MT run, and nothing was uploaded.
+- A separate TIPGAP raster already present on `main` was not built or modified by this run. Its local format check passed, but post-hoc the universal certificate blocks it under the literal uniqueness rule; it is negative on holdout and is retained only as an inspection artifact. Its existing card now carries a post-hoc blocker notice.
+- The witness TIFF is cached under ignored `.cache/public_gems_tifs/`; only its public GitHub path/blob and checksum are recorded. The pinned inputs were restored under ignored cache paths; no competition input was committed.
+- Post-integration local tests: `.venv/bin/python -m pytest tests -q` → **83 passed, 12 Rasterio `PendingDeprecationWarning`s**. `.venv/bin/python scripts/check_site.py` passed 10 local format gates for the already-existing TIPGAP inspection TIFF (SHA-256 `0ca8248acace558f5cf86b153134b8fd5cc2b7d5b343d0a36f000f9fbfe4758f`). These checks do not clear global uniqueness or constitute a fresh MT candidate, a holdout result, or organizer acceptance.
 
 ## Trusted sources for manual review
 

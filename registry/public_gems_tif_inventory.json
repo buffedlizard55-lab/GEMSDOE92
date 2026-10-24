@@ -1,5 +1,5 @@
 {
-  "candidate_like_tif_paths": 1998,
+  "candidate_like_tif_paths": 1999,
   "candidate_path_filter": {
     "exclude_if_path_contains_any": [
       "/data/",
@@ -12876,13 +12876,19 @@
       "tree_truncated": false
     },
     {
-      "candidate_tif_count": 13,
+      "candidate_tif_count": 14,
       "candidate_tifs": [
         {
           "blob_api_url": "https://api.github.com/repos/buffedlizard55-lab/GEMSDOE92/git/blobs/441bdedc73db9da2a98f3096476879897b364274",
           "bytes": 353292,
           "git_blob_sha": "441bdedc73db9da2a98f3096476879897b364274",
           "path": "docs/downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24.tif"
+        },
+        {
+          "path": "docs/downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+          "git_blob_sha": "457f86ff7d36f5e2569d8f9f82efeecfbcdcdf36",
+          "bytes": 147798,
+          "blob_api_url": "https://api.github.com/repos/buffedlizard55-lab/GEMSDOE92/git/blobs/457f86ff7d36f5e2569d8f9f82efeecfbcdcdf36"
         },
         {
           "blob_api_url": "https://api.github.com/repos/buffedlizard55-lab/GEMSDOE92/git/blobs/57c07ffe74471bbe641fee62f7800b54244bfb16",
@@ -12959,9 +12965,16 @@
       ],
       "default_branch": "main",
       "repo": "GEMSDOE92",
-      "tif_count": 21,
-      "tree_sha": "1fa548ac597879c29b0f92f86bbf60d318db250f",
-      "tree_truncated": false
+      "tif_count": 22,
+      "tree_sha": "7ad0e4a6cae9fd11cad8e280c9c4eba6902877e7",
+      "tree_truncated": false,
+      "metadata_supplement": {
+        "source": "locally fetched git tree metadata; no extra raster decoding",
+        "branch": "main",
+        "commit": "524df5c1f03b5eb3105a20b2ffee9dfdd042617d",
+        "tree_sha": "7ad0e4a6cae9fd11cad8e280c9c4eba6902877e7",
+        "supplemented_at_utc": "2026-10-24T06:44:48+00:00"
+      }
     },
     {
       "candidate_tif_count": 0,
@@ -13034,11 +13047,12 @@
     "Only publicly listed repositories matching the naming pattern were scanned.",
     "Private, deleted, unlinked, external, or non-owner repositories are out of scope.",
     "Candidate-like paths are selected by a heuristic and may include diagnostics or miss outputs with other names.",
-    "Blob metadata is not a raster comparison; download, hash, open, and compare any relevant contents before claiming uniqueness."
+    "Blob metadata is not a raster comparison; download, hash, open, and compare any relevant contents before claiming uniqueness.",
+    "After the complete 2026-10-24T06:33:50Z scan, a full refresh attempt at 06:44:48Z failed because GitHub API rate limits were exceeded. The current GEMSDOE92 main tree at commit 524df5c1f03b5eb3105a20b2ffee9dfdd042617d was supplemented from locally fetched Git metadata with one newly added candidate-like TIFF; other repositories may have changed since the original snapshot."
   ],
-  "tif_paths_total": 2508,
+  "tif_paths_total": 2509,
   "truncated_repo_trees": [],
-  "unique_candidate_like_blob_bytes": 1046507603,
+  "unique_candidate_like_blob_bytes": 1046655401,
   "unique_candidate_like_blobs": [
     {
       "bytes": 827102,
@@ -17550,6 +17564,17 @@
           "branch": "main",
           "path": "docs/downloads/gemsdoe48-ds-unassigned-mass-20261006T201749Z-95897e3f8125.tif",
           "repo": "GEMSDOE48"
+        }
+      ]
+    },
+    {
+      "git_blob_sha": "457f86ff7d36f5e2569d8f9f82efeecfbcdcdf36",
+      "bytes": 147798,
+      "sources": [
+        {
+          "repo": "GEMSDOE92",
+          "branch": "main",
+          "path": "docs/downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif"
         }
       ]
     },
@@ -30861,5 +30886,11 @@
       ]
     }
   ],
-  "unique_candidate_like_git_blobs": 1305
+  "unique_candidate_like_git_blobs": 1306,
+  "refresh_attempt": {
+    "attempted_at_utc": "2026-10-24T06:44:48+00:00",
+    "status": "FAILED_GITHUB_API_RATE_LIMIT",
+    "message": "gh api returned HTTP 403: API rate limit exceeded; no repository-list refresh completed.",
+    "local_supplement": "GEMSDOE92 main tree metadata only; one new candidate-like TIFF was added to its inventory entry."
+  }
 }

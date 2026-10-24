@@ -1,0 +1,140 @@
+{
+  "file": "docs/downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+  "sha256": "0ca8248acace558f5cf86b153134b8fd5cc2b7d5b343d0a36f000f9fbfe4758f",
+  "bytes": 147798,
+  "submission_name": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a",
+  "note": "h33-h33-2-b2; TIPGAP FAR 33% along-strike >3px off parent skeleton e6-18; unique lane",
+  "note_chars": 85,
+  "validator": {
+    "file": "/home/user/GEMSDOE92/docs/downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-3ba5a231-zeros.tif",
+    "bytes": 147798,
+    "sha256": "0ca8248acace558f5cf86b153134b8fd5cc2b7d5b343d0a36f000f9fbfe4758f",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "emitted_positive_pixels": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37654,
+    "footprint_fraction": 0.007286874781441169
+  },
+  "template_report": {
+    "path": "/home/user/GEMSDOE92/docs/downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-3ba5a231-zeros.tif",
+    "bytes": 147798,
+    "sha256": "0ca8248acace558f5cf86b153134b8fd5cc2b7d5b343d0a36f000f9fbfe4758f",
+    "bands": 1,
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "width": 3292,
+    "height": 3730,
+    "bounds": [
+      243350.0,
+      4135550.0,
+      572550.0,
+      4508550.0
+    ],
+    "ref_bounds": [
+      243350.0,
+      4135550.0,
+      572550.0,
+      4508550.0
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "nodata": null,
+    "blocksize": [
+      256,
+      256
+    ],
+    "fixture_grid": false,
+    "has_validity_mask": false,
+    "nan_pixels": 0,
+    "infinity_pixels": 0,
+    "n_nan": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "n_nonzero": 37654,
+    "mass": 37654.0,
+    "mass_outside_footprint": 0,
+    "problems": [],
+    "ok": true,
+    "validation_class": "local on-disk template/range check; not organizer upload acceptance"
+  },
+  "zip_file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-3ba5a231-zeros.zip",
+  "zip_sha256": "281e33df0f2b7c475df9378b85fa302144ca0ae7691ffa3893db9e19bb2af1a4",
+  "approved_for_weekly_slot": false,
+  "promoted": false,
+  "submission_slots_used": 0,
+  "status": "LOCAL_FORMAT_PREFLIGHT_PASSED; GLOBAL_UNIQUENESS_BLOCKED; NOT ORGANIZER ACCEPTANCE OR SLOT APPROVAL",
+  "metadata": {
+    "axis": "TIPGAP",
+    "value": "far18f33",
+    "lane": "far"
+  },
+  "posthoc_registry_review": {
+    "status": "BLOCKED_BY_UNIVERSAL_CERTIFICATE",
+    "certificate": "evidence/registry_saturation_blocker.json",
+    "witness": "buffedlizard55-lab/17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "forward_dot_overlap": 1.0,
+    "overlap_limit": 0.7,
+    "basis": "The witness is positive on every legal output cell; this follows from the shared support rule and is not a candidate-specific raster correlation run.",
+    "candidate_specific_spearman": null,
+    "full_registry_byte_comparison": "NOT_COMPLETED"
+  },
+  "local_format_preflight_passed": true,
+  "format_ok_to_upload": false,
+  "upload_clearance": "BLOCKED_DO_NOT_SUBMIT",
+  "submission_name_status": "Historical proposed identifier only; no organizer receipt or upload; not cleared for use.",
+  "note_status": "Historical proposed form note only; it contains a stale uniqueness claim and must not be used."
+}
