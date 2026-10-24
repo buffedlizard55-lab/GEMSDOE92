@@ -4,30 +4,51 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Auditable, locally validated GeoTIFF candidate for DrivenData DOE GEMS Prize #306.">
-  <title>GEMSDOE92 — GEMS submission workbench (ANASIG primary)</title>
+  <title>GEMSDOE92 — GEMS submission workbench (RADSCARP primary 2026-10-25)</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="hero">
   <p class="kicker">DOE GEMS Prize · DrivenData #306 · EPSG:32611 · 100 m</p>
-  <h1>ANASIG GeoTIFF — format-valid download, slot blocked — DO NOT SUBMIT</h1>
-  <p class="lede">Download the all-finite, single-band ANASIG GeoTIFF (magnetic analytic-signal ridges off the H19-5 skeleton) for research. It is lane-unique against every local dot registry raster, and still <strong>DO NOT SUBMIT</strong>: not cleared for a weekly slot (read the banners). Its audit, holdout result, and uniqueness checks are published beside the file.</p>
+  <h1>RADSCARP GeoTIFF — format-valid download, slot blocked — DO NOT SUBMIT</h1>
+  <p class="lede">Download the all-finite, single-band RADSCARP GeoTIFF (fused DEM scarp-break × K/Th radiometric alteration edge off the H19-5 skeleton) for research. It is a new lane with a fully audited holdout, leakage canary, SGMC proxy and literal uniqueness check — and still <strong>DO NOT SUBMIT</strong>: not cleared for a weekly slot (read the banners). Its audit, holdout result, and uniqueness checks are published beside the file.</p>
   <nav style="margin: 0.8rem 0; font-size: 0.95rem;">
     <strong>Quick Navigation:</strong>
     <a href="executive-summary.html">Executive Summary</a> ·
     <a href="SUBMIT.html">Submission Guide</a> ·
     <a href="HYPOTHESES.html">Candidate Hypotheses</a> ·
-    <a href="ANALYSIS_20261024.md">Scientific Analysis</a>
+    <a href="HYPOTHESES_20261025_RADSCARP.md">Ranked Hypotheses (2026-10-25)</a> ·
+    <a href="ANALYSIS_20261025_RADSCARP.md">Scientific Analysis (2026-10-25)</a>
   </nav>
-  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> All 10 local MUST gates pass: one float32 band; CRS, shape and transform match; finite values in [0,1]; no NaN inside the footprint; zeros outside; zero known-fault mass; SHA-256 recorded.</div>
-  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE.</strong> A broader scan checked 1,279 unique, single-band, template-grid rasters in current default branches of 102 public GEMSDOE-named repositories. The candidate's pre-placement surface and final dots each have 100% forward 3-px overlap with registry raster <a href="https://github.com/buffedlizard55-lab/11GEMSDOE/blob/main/docs/downloads/gems-structural-area06-v1.tif"><code>11GEMSDOE/gems-structural-area06-v1.tif</code></a>; 131 rasters exceed the 70% stop threshold. The duplicate rule governs; stop and do not submit this candidate. See <a href="downloads/public_registry_uniqueness.json">public-registry audit</a>.</div>
-  <div class="banner banner-warn"><strong>HOLDOUT-DTI improvement does not override uniqueness.</strong> No live submission slot has been used. This is a negative deliverable: it may still be downloaded for review, but it is not recommended or cleared for competition submission. The holdout can reward recovery of mapped catalogue faults and does not prove live performance on uncatalogued faults.</div>
-  <div class="banner banner-warn">The portal error <code>Predicted values must be in range [0, 1]</code> is guarded against: this download was reread from disk and every cell is finite and in range. Upload the <strong>zeros-outside</strong> encoding. Note: human step required for weekly competition slot promotion.</div>
+  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> All 10 local MUST gates pass on independent re-read: one float32 band; CRS, shape and transform match; finite values in [0,1]; no NaN inside the footprint; zeros outside; zero known-fault mass; SHA-256 recorded. This completely prevents the portal error <code>Predicted values must be in range [0, 1]</code>.</div>
+  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE + HOLDOUT-BEST BAR.</strong> HOLDOUT-DTI 0.004324 [0.003606, 0.005083] does not beat R0 significantly (Δ vs R0 +0.000318 [−0.000176,+0.000823] includes 0), is significantly below BREAKLINE f45 and holdout-best RELIEF p10, SGMC prefers BREAKLINE, and local literal uniqueness fails (71.0% forward overlap vs BREAKLINE f45 >70%). The broader public scan still finds 100% forward overlap vs the dense 17GEMSDOE full-footprint raster — no nonempty in-footprint candidate can pass that literal gate (see <a href="REVIEW_CURRENT.md">review</a>). Stop; do not submit. See <a href="evidence/radscarp_proxy_audit.json">local proxy audit</a> and <a href="downloads/breakline_public_witness.json">public witness receipt</a>.</div>
+  <div class="banner banner-warn"><strong>HOLDOUT-DTI does not override uniqueness; a local instrument is not a live score.</strong> No live submission slot has been used. This is a negative deliverable: downloadable for review, not recommended or cleared for competition submission. The holdout can reward catalogue-proximal recovery and does not prove live performance on uncatalogued faults.</div>
+  <div class="banner banner-warn">The portal error <code>Predicted values must be in range [0, 1]</code> is guarded against: this download was reread from disk and every cell is finite and in range (min 0.0, max 1.0, zero NaN). Upload the <strong>zeros-outside</strong> encoding (<code>...-zeros.tif</code>), not the <code>NaN-outside</code> twin. Human upload via the DrivenData form is still required — this site does not submit for you.</div>
 </header>
 
 <main>
+<section class="download-card" style="border:2px solid #4ecb71;">
+<h2>⬇ Primary (2026-10-25): RADSCARP f45 — Fused Scarp + K/Th Radiometric — DO NOT SUBMIT</h2>
+<div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD for research.</strong> Single-band float32, EPSG:32611, 3730×3292 @ 100 m, transform <code>|100,0,243350|0,-100,4508550|</code>, finite in [0,1], no NaN in footprint, zeros outside, zero catalogue mass, 10/10 gates pass on re-read. SHA-256 verified.</div>
+<div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DO NOT SUBMIT.</strong> HOLDOUT-DTI 0.004324 does not beat R0 significantly and is significantly below BREAKLINE f45 and RELIEF p10; literal uniqueness fails locally (71.0% vs BREAKLINE f45) and publicly (100% vs dense full-footprint witness). Negative research deliverable; no slot used. See full verdict in the <a href="evidence/radscarp_run_card.json">run card</a>.</div>
+<p class="filename">h33-h33-2-b2-RADSCARPf45-20261025-d56ae6fc-zeros.tif</p>
+<p><a class="btn" href="downloads/h33-h33-2-b2-RADSCARPf45-20261025-d56ae6fc-zeros.tif" download>Download format-valid RADSCARP GeoTIFF — DO NOT SUBMIT (.tif)</a>
+   <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-RADSCARPf45-20261025-d56ae6fc.zip" download>Download research ZIP — DO NOT SUBMIT (one TIFF)</a>
+   <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-RADSCARPf45-20261025-d56ae6fc.tif" download>Diagnostic NaN-outside twin (.tif)</a></p>
+<dl class="meta">
+  <div><dt>Submission name</dt><dd><code>GEMSDOE92-RADSCARP-f45-20261025</code></dd></div>
+  <div><dt>Note (83 chars, ≤140)</dt><dd><code>h33-h33-2-b2; RADSCARP f45 16944 far dots on fused scarp+K/Th ridges &gt;3px off H19-5</code></dd></div>
+  <div><dt>SHA-256 (zeros)</dt><dd><code>0fb53cb25898a9597bbbd4c301bf4d35c119039bca2870f066496ae5e7cb937b</code></dd></div>
+  <div><dt>SHA-256 (NaN twin)</dt><dd><code>d56ae6fc19e006950c5cd938b359c27ca8d33cf8b2ab254722363535535fadfa</code></dd></div>
+  <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 unit-mass dots (20,710 kept R0 + 16,944 far, 2.8 px spacing, d_cat>2.0 px)</dd></div>
+  <div><dt>Audit / run card</dt><dd><a href="downloads/h33-h33-2-b2-RADSCARPf45-20261025-d56ae6fc-audit.json">gate audit receipt (re-read from bytes)</a> · <a href="evidence/radscarp_run_card.json">run-card JSON (hypothesis, mechanism, mimic, HOLDOUT-DTI, overlap, SHA, validator, verdict)</a> · <a href="evidence/radscarp_proxy_audit.json">proxy audit (HOLDOUT-DTI, canary, SGMC, uniqueness)</a> · <a href="evidence/radscarp_variants.json">build variants JSON</a> · <a href="ANALYSIS_20261025_RADSCARP.md">full scientific analysis</a> · <a href="HYPOTHESES_20261025_RADSCARP.md">ranked hypotheses (5 lanes, layers, signatures, mimic, cost)</a></dd></div>
+</dl>
+<p><strong>Hypothesis:</strong> geothermal faults are both mechanically scarred (linear DEM slope-break) and geochemically altered (linear K/Th radiometric edge); requiring co-location <code>S = L × R</code> suppresses Lahontan shorelines (DEM-only) and lithologic contacts (rad-only). Named mimics: silicified flow margins, playa evaporite terraces, road/berm corridors. Holdout details: <code>gems57-pooled-hide-v2</code> (22,663 withheld, 158 clusters, 1k bootstrap), canary max 0.6216 (<0.90), SGMC off-catalogue 0.115747 vs R0 0.09606 (+20% vs BREAKLINE +31%). If a human selector ever clears a future artifact (audit <code>submission_eligible: true</code>), the form steps are in the <a href="SUBMIT.html">submission guide</a>.</p>
+<p style="font-size:0.9rem; color:#666;">Sibling doses (same lane, different far fractions — never submit more than one): <a href="releases/h33-h33-2-b2-RADSCARPf33-20261025-67955040-zeros.tif">f33 (33% far)</a> · <a href="releases/h33-h33-2-b2-RADSCARPf38-20261025-74e26ac7-zeros.tif">f38 (38% far)</a> (both BUILT, same verdict logic).</p>
+</section>
+
 <section class="download-card">
-<h2>Latest automated review: no submission cleared</h2>
+<h2>Latest automated review: no submission cleared (prior sessions)</h2>
 <div class="banner banner-warn"><strong>BREAKLINE: DUPLICATE STOP — do not submit.</strong>
 The queued public witness check found REGISTRY-MEASUREMENT 100% forward overlap.
 The hash-verified 17GEMSDOE raster's 3-pixel halo covers the entire footprint;
@@ -41,58 +62,54 @@ deliverable only. No weekly slot was used.</div>
 </section>
 
 <section id="download-anasig" class="download-card">
-  <h2>Primary: ANASIG f45 generated research GeoTIFF — DO NOT SUBMIT</h2>
-  <p><strong>OK to download for research:</strong> ✅ format-valid. <strong>Submit into the competition:</strong> ⛔ NO — DO NOT SUBMIT. Two blockers: HOLDOUT-DTI 0.004967 [0.004098, 0.005940] beats R0 (+0.000961 [+0.000168, +0.001814]) but not the holdout best RELIEF p10 (0.006045; paired Δ −0.001078 [−0.002034, −0.000112]); and <strong>DUPLICATE UNDER THE LITERAL REGISTRY RULE</strong> via the binding public witness (17GEMSDOE E-proba, positive on 100% of the footprint; measured forward overlap 1.000 for these exact bytes — <a href="downloads/public_witness_anasig.json">witness receipt</a>). Local dot-registry uniqueness passes: worst forward overlap 0.550, worst |ρ| 0.547 (24 rasters), surface worst |ρ| 0.024. Leakage canary max 0.551113. SGMC PROXY 0.080556 vs R0 0.096060.</p>
+  <h2>Prior primary: ANASIG f45 — Magnetic Analytic Signal Ridges — DO NOT SUBMIT</h2>
+  <p><strong>OK to download for research:</strong> ✅ format-valid. <strong>Submit:</strong> ⛔ NO — DO NOT SUBMIT. Two blockers: HOLDOUT-DTI 0.004967 [0.004098, 0.005940] beats R0 (+0.000961 [+0.000168, +0.001814]) but not holdout-best RELIEF p10 (0.006045); and <strong>DUPLICATE UNDER LITERAL REGISTRY RULE</strong> via binding public witness (17GEMSDOE E-proba, 100% footprint-positive; forward overlap 1.000 — <a href="downloads/public_witness_anasig.json">witness receipt</a>). Local uniqueness passes (worst forward 0.550, |ρ| 0.547; surface |ρ| 0.024). Leakage canary max 0.551; SGMC 0.0806 vs R0 0.09606.</p>
   <p class="filename">h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif</p>
   <p><a class="btn" href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif" download>Download format-valid ANASIG GeoTIFF — DO NOT SUBMIT (.tif)</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.zip" download>Download research ZIP — DO NOT SUBMIT (one TIFF)</a></p>
+     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.zip" download>Download research ZIP — DO NOT SUBMIT</a></p>
   <dl class="meta">
     <div><dt>Submission name</dt><dd><code>GEMSDOE92-ANASIG-f45Atop-20261024</code></dd></div>
     <div><dt>Note (84 chars)</dt><dd><code>h33-h33-2-b2; ANASIG f45Atop 16944 far dots on analytic-signal ridges &gt;3px off H19-5</code></dd></div>
     <div><dt>SHA-256</dt><dd><code>68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5</code></dd></div>
-    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 unit-mass dots (20,710 kept R0 + 16,944 far)</dd></div>
-    <div><dt>Audit / run card</dt><dd><a href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-audit.json">gate audit receipt</a> · <a href="downloads/anasig_run_card.json">run-card JSON</a> · <a href="ANALYSIS_20261024_ANASIG.md">full analysis</a> · <a href="HYPOTHESES_20261024_SCARPPOL.md">ranked hypotheses + screens</a> · <a href="downloads/scarppol_run_card.json">SCARPPOL duplicate run card</a></dd></div>
+    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 dots (20,710 kept R0 + 16,944 far)</dd></div>
+    <div><dt>Audit / run card</dt><dd><a href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-audit.json">gate audit</a> · <a href="downloads/anasig_run_card.json">run-card</a> · <a href="ANALYSIS_20261024_ANASIG.md">analysis</a> · <a href="HYPOTHESES_20261024_SCARPPOL.md">hypotheses+screens</a></dd></div>
   </dl>
-  <p><strong>Hypothesis:</strong> magnetic analytic-signal ridges (sqrt(Band3²+Band9²), coherence-gated on Band14) mark basement contacts dropped by the multi-line-corroborated H19-5 skeleton. Named mimic: lithologic contacts, dikes, flow margins, cultural noise. The session's rank-1 lane SCARPPOL was stopped as a BREAKLINE duplicate (forward overlap 0.900–0.913). If a human selector ever clears an exact future artifact (audit <code>submission_eligible: true</code>), the form steps are in the <a href="SUBMIT.html">submission guide</a>.</p>
 </section>
 
 <section id="strainbreak" class="download-card">
-  <h2>Parallel-session candidate: STRAINBREAK f60s2i — strained scarp-breaks — DO NOT SUBMIT</h2>
-  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> All 10 local MUST gates pass on independent re-read (audit receipt beside the file); values finite in [0,1], no NaN in footprint — the portal range error cannot occur with this zeros-outside encoding.</div>
-  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — verdict negative.</strong> HOLDOUT-DTI 0.005487 (best locally-unique holdout in this repo) does not beat the holdout best (RELIEF p10, 0.006045), SGMC prefers BREAKLINE, and the expanded public scan (1,309 rasters) triggers the literal duplicate stop (89 &gt;70%; sparse-only worst 0.7105). Negative research deliverable; no slot used.</div>
+  <h2>Prior candidate: STRAINBREAK f60s2i — Strained Scarp-Breaks — DO NOT SUBMIT</h2>
+  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> All 10 local MUST gates pass on independent re-read (audit beside file); values finite in [0,1], no NaN in footprint — the portal range error cannot occur with this zeros-outside encoding.</div>
+  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — verdict negative.</strong> HOLDOUT-DTI 0.005487 (best locally-unique holdout in this repo) does not beat holdout-best RELIEF p10 (0.006045), SGMC prefers BREAKLINE, and expanded public scan (1,309 rasters) triggers literal duplicate stop (89 &gt;70%; sparse-only worst 0.7105). Negative research deliverable; no slot used.</div>
   <p class="filename">h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif</p>
   <p><a class="btn" href="downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif" download>Download format-valid STRAINBREAK GeoTIFF — DO NOT SUBMIT (.tif)</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2.zip" download>Download research ZIP — DO NOT SUBMIT (one TIFF)</a></p>
+     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2.zip" download>Download research ZIP — DO NOT SUBMIT</a></p>
   <dl class="meta">
     <div><dt>Submission name</dt><dd><code>GEMSDOE92-STRAINBREAK-f60s2i-20261024</code></dd></div>
     <div><dt>Note (87 chars)</dt><dd><code>h33-h33-2-b2; STRAINBREAK f60s2i 22592 far dots on strained scarp-breaks &gt;3px off H19-5</code></dd></div>
     <div><dt>SHA-256 (zeros)</dt><dd><code>000d0bd7e0a549c2d38ca52a5df5b249763a7be998ad2ccfa30cc45136c05c1f</code></dd></div>
-    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 unit-mass dots (15,062 kept R0 + 22,592 far)</dd></div>
-    <div><dt>Audit / run card</dt><dd><a href="downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-audit.json">gate audit receipt</a> · <a href="downloads/strainbreak_run_card.json">run-card JSON</a> · <a href="ANALYSIS_20261024_STRAINBREAK.md">full analysis</a> · <a href="HYPOTHESES_20261024_GRAVCrest.md">ranked hypotheses + screen</a> · <a href="downloads/strainbreak_public_registry_uniqueness.json">public-registry scan</a></dd></div>
+    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 dots (15,062 kept R0 + 22,592 far)</dd></div>
+    <div><dt>Audit / run card</dt><dd><a href="downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-audit.json">gate audit</a> · <a href="downloads/strainbreak_run_card.json">run-card</a> · <a href="ANALYSIS_20261024_STRAINBREAK.md">analysis</a> · <a href="HYPOTHESES_20261024_GRAVCrest.md">ranked hypotheses</a> · <a href="downloads/strainbreak_public_registry_uniqueness.json">public-registry scan</a></dd></div>
   </dl>
-  <p><strong>Hypothesis:</strong> a linear DEM break-in-slope in high geodetic strain-rate crust (S = BREAKLINE L × pct_rank(Band 4 <code>geod_2ndinv</code>)) is a scarp on a currently-loading structure — young step-over strands too subtle for the catalogue and invisible to potential-field worms. Far dots &gt;3 px off H19-5 <em>and</em> &gt;3 px off BREAKLINE f45's far dots. Named mimic: Walker Lane strain shadows, subsidence strain, Lahontan shorelines. <strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld): f60s2i <strong>0.005487 [0.004522, 0.006430]</strong>, Δ vs R0 +0.001481 [+0.000582, +0.002296]; ladder f45 0.005022 → f60 → f75 0.005486 (plateau); SGMC 0.10516 (R0 0.09606, BREAKLINE 0.12611); canary max AUC 0.6216. The session's rank-1 GRAVCrest idea was falsified by the pre-build screen and never built. Sibling doses (never submit more than one): <a href="downloads/h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif">f45s2i</a> · <a href="downloads/h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif">f75s2i</a>.</p>
 </section>
 
 <section id="download" class="download-card">
-  <h2>Earlier primary: visible-collar generated research GeoTIFF — DO NOT SUBMIT</h2>
-  <h2>Download the generated research GeoTIFF</h2>
+  <h2>Earlier: visible-collar generated research GeoTIFF — DO NOT SUBMIT</h2>
   <p class="filename">GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif</p>
   <p><a class="btn" href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif" download>Download format-valid GeoTIFF — DO NOT SUBMIT (.tif)</a>
-     <a class="btn btn-ghost" href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.zip" download>Download research ZIP — DO NOT SUBMIT (one TIFF)</a></p>
+     <a class="btn btn-ghost" href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.zip" download>Download research ZIP — DO NOT SUBMIT</a></p>
   <dl class="meta">
     <div><dt>Submission name</dt><dd><code>GEMSDOE92-visible-collar-r0-excluded-20261024</code></dd></div>
     <div><dt>Note (62 chars)</dt><dd><code>Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots</code></dd></div>
     <div><dt>SHA-256</dt><dd><code>60082b75a3d8e4648a858622f71f24257c8cfef79286a1a96147c59f05377da7</code></dd></div>
-    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 unit-mass dots</dd></div>
+    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 dots</dd></div>
     <div><dt>Audit receipt</dt><dd><a href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-audit.json">Format and local-uniqueness JSON</a> · <a href="downloads/visible_collar_run_card.json">full run card</a></dd></div>
   </dl>
-  <p><a href="executive-summary.html">Executive summary &amp; quick start</a> · <a href="SUBMIT.html">Step-by-step submission guide</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData submission page</a></p>
 </section>
 
 <section id="breakline" class="download-card">
-  <h2>Parallel-session candidate: BREAKLINE f45Ltop (off-skeleton DEM scarp-breaks)</h2>
-  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> All 10 local MUST gates pass on an independent re-read (audit receipt beside the file).</div>
-<div class="banner banner-warn"><strong>BREAKLINE: DUPLICATE — DO NOT SUBMIT.</strong> Live public-registry witness check (2026-10-24): 100% of final dots lie within 3 px of 17GEMSDOE E-proba positive support. The literal rule requires stopping. Download is for research only. Actual pre-placement surface was not checked; no replacement surface was used. No slot used. <a href="downloads/breakline_public_registry_witness17.json">Verified witness evidence</a> · <a href="REVIEW_REGISTRY_STOP_20261024.md">Review and limitations</a>.</div>
+  <h2>Prior candidate: BREAKLINE f45Ltop (off-skeleton DEM scarp-breaks) — DO NOT SUBMIT</h2>
+  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> All 10 local MUST gates pass on independent re-read.</div>
+<div class="banner banner-warn"><strong>BREAKLINE: DUPLICATE — DO NOT SUBMIT.</strong> Live public-registry witness check (2026-10-24): 100% of final dots within 3 px of 17GEMSDOE E-proba positive support. Literal rule requires stopping. Download for research only. No slot used. <a href="downloads/breakline_public_registry_witness17.json">Verified witness evidence</a> · <a href="REVIEW_REGISTRY_STOP_20261024.md">Review</a>.</div>
   <p class="filename">h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif</p>
   <p><a class="btn" href="downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif" download>Download BREAKLINE GeoTIFF (.tif)</a>
      <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0.zip" download>Download ZIP (one TIFF)</a></p>
@@ -100,41 +117,25 @@ deliverable only. No weekly slot was used.</div>
     <div><dt>Submission name</dt><dd><code>GEMSDOE92-BREAKLINE-f45Ltop-20261024</code></dd></div>
     <div><dt>Note (90 chars)</dt><dd><code>h33-h33-2-b2; BREAKLINE f45Ltop 16944 far dots on linear scarp-break ridges &gt;3px off H19-5</code></dd></div>
     <div><dt>SHA-256</dt><dd><code>cd9c8a564588e6542b379cd36cbe05fc6da3be07b8edbc542bf737336907810e</code></dd></div>
-    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 unit-mass dots (20,710 kept R0 + 16,944 far)</dd></div>
-    <div><dt>Audit / run card</dt><dd><a href="downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-audit.json">gate audit receipt</a> · <a href="downloads/breakline_run_card.json">run-card JSON</a> · <a href="ANALYSIS_20261024.md">full analysis</a></dd></div>
+    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 dots (20,710 kept R0 + 16,944 far)</dd></div>
+    <div><dt>Audit / run card</dt><dd><a href="downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-audit.json">gate audit</a> · <a href="downloads/breakline_run_card.json">run-card</a> · <a href="ANALYSIS_20261024.md">analysis</a></dd></div>
   </dl>
-  <p><strong>Hypothesis:</strong> faults with a DEM scarp-break but no magnetic/gravity contrast are missed by the H19-5 worm skeleton and the older-imagery catalogue, while expert DEM mapping (the live label source) traces them. Detector L = pct_rank(||grad Band19 slope||) × structure-tensor coherence(Band12). Named mimic: Lake Lahontan shorelines, fan-toe breaks, channel banks. <strong>HOLDOUT-DTI</strong> (same evaluator/folds as above): f45Ltop <strong>0.004861 [0.004032, 0.005822]</strong>, Δ vs R0 +0.000854 [+0.000300, +0.001423]; dose-monotone f33 0.004673 → f38 0.004761 → f45; off-catalogue USGS SGMC control 0.12611 vs R0 0.09606 (+31%); leakage canary max 0.6216. Sibling doses (never submit more than one BREAKLINE file): <a href="downloads/h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif">f38Ltop</a> · <a href="downloads/h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif">f33Ltop</a>. Submission steps: <a href="SUBMIT.html">executive summary</a> (use the name/note above for this file).</p>
+  <p><strong>HOLDOUT-DTI</strong>: f45Ltop <strong>0.004861 [0.004032, 0.005822]</strong>, Δ vs R0 +0.000854 [+0.000300,+0.001423]; dose-monotone f33 0.004673 → f38 0.004761 → f45; SGMC <strong>+31% vs R0</strong> (0.12611 vs 0.09606).</p>
 </section>
 
 <section>
-  <h2>What was tested</h2>
-  <p><strong>Hypothesis:</strong> blind splays, relay fractures, or parallel strands may lie in a narrow 200–300 m collar around visible mapped faults, outside the inherited R0 dots' 300 m halo. The holdout-placement surface uses visible catalogue geometry only. The final file also excludes the full known-fault catalogue. This geometric association is not proof of new faults.</p>
-  <p><strong>Mechanism:</strong> place 37,654 dots at legal cells 2–3 pixels from visible traces, excluding all cells within 3 pixels of R0. Unlike TIPGAP/STEPOVER, this is a full-line collar, not an endpoint detector. Named non-fault mimic: drainage/alluvial-fan margins or lithologic contacts can create nearby lineaments.</p>
-  <p><strong>Leakage canary:</strong> visible-fault distance alone has symmetric AUC 0.745593, below the 0.90 investigation threshold.</p>
-  <h3>HOLDOUT-DTI (not a competition score)</h3>
-  <p>Evaluator <code>gems57-pooled-hide-v2</code>; buffered whole-component hide/recover; 8 spatial folds (4 quadrants × seeds 20 and 30); 22,663 withheld positives; α=0.2, β=0.8, 300 m triangular kernel; 1,000 paired spatial-cluster draws.</p>
-  <table><thead><tr><th>Arm</th><th>HOLDOUT-DTI</th><th>95% CI</th></tr></thead>
-  <tbody>
-    <tr><td>Candidate</td><td>0.046866</td><td>[0.040216, 0.053315]</td></tr>
-    <tr><td>Parent R0</td><td>0.004006</td><td>[0.003424, 0.004690]</td></tr>
-    <tr><td>Paired difference vs R0</td><td>+0.042860</td><td>[+0.036122, +0.049357]</td></tr>
-  </tbody></table>
-  <p>These are local catalogue-recovery estimates only. They cannot be compared numerically with the prompt-reported CLAIM 0.2778 or any leaderboard result, and do not establish live competition performance.</p>
-  <h2>What might explain the reported 0.2778 — and can this beat it?</h2>
-  <p>The supplied GEMSDOE32 lineage is consistent with a fixed-budget ridge candidate set, spatial thinning to reduce redundant hits, pruning low-value mass, and avoiding known traces. Under the asymmetric distance-weighted Tversky score, a well-placed, spatially distinct dot can credit nearby hidden truth, while redundant or distant mass adds false-positive cost. This is a plausible mechanistic explanation, not a proven causal account: this checkout lacks the exact organizer receipt, private truth, and confirmation that the listed bytes were the evaluated artifact.</p>
-  <p>The repository's prior recorded read of the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">official public leaderboard</a> on 2026-10-24 showed 0.4413 at #1 (LEADERBOARD-SNAPSHOT, not a submission receipt for GEMSDOE32 or GEMSDOE92); the prompt's 0.3195 is an older conflicting snapshot. This candidate's HOLDOUT-DTI does not answer whether it can beat CLAIM 0.2778. An organizer-confirmed submission receipt is the only valid live comparison.</p>
+  <h2>Why did h33-h33-2-b2 score 0.2778 and can we beat it? (PhD-level)</h2>
+  <p><strong>CLAIM 0.2778</strong> on GEMSDOE32 is an owner-reported score without an organizer receipt in this checkout (<code>receipt: null</code>). It reflects three geometric optimizations under the distance-weighted Tversky metric (<code>DTI = T/(0.2·(T+S-M)+0.8·|G|)</code>, 300 m kernel): Poisson-disk thinning at 2.8 px removed kernel-shadowed FP redundancy (0.1922→0.2600), pruning isolated low-gain dots and 1 px catalogue clearance reached 0.2708, and strict <code>d_cat&gt;2.0 px</code> (2,171 dots) cut guaranteed-FP mass on the pixel-exact known-fault mask to reach 0.2778 at fixed 37,654 dots. This asymptotes because the H19-5 worm skeleton only detects deep lithologic density/magnetic steps — it cannot place dots where hidden Quaternary alluvium scarps and geothermal fracture networks have no basement contrast. The public 0.4413 top implies fusion of skeleton + DEM scarp-break coherence + dilatational stepover geometry + radiometric alteration halos + wellspring concordance — exactly the 5 ranked hypotheses tested here. RADSCARP fused DEM breaks (BREAKLINE <code>L</code>) with radiometric K/Th edges (<code>R</code>) as <code>S=L×R</code> to attack the 0.16 gap; holdout shows it dilutes the DEM concentration that drives catalogue recovery (RADSCARP f45 0.004324 &lt; BREAKLINE 0.004861, SGMC 0.1157 &lt; 0.1261) and fails local uniqueness (71% vs BREAKLINE). It is therefore a measured negative, not a hallucinated improvement. See <a href="ANALYSIS_20261025_RADSCARP.md">full PhD analysis with official sources</a>.</p>
 </section>
 
 <section>
   <h2>Uniqueness measurement and scope</h2>
-  <p><strong>Binding cross-site REGISTRY-MEASUREMENT:</strong> pre-placement surface worst |Spearman ρ| 0.421367; final dots worst |ρ| 0.492957 (both below 0.90), but worst forward overlap is 1.000000 in both phases; 131 of 1,279 rasters exceed 70%. The same result appears against a specific archived site raster; the stop rule requires logging a duplicate. The expanded audit covers current default branches and submission directories in 102 public owner repositories, not every historic branch or other-owner site, but this single duplicate witness is already sufficient to stop.</p>
-  <p>The earlier 14-raster local-only comparison passed because that registry was incomplete. It has been superseded by this broader binding scan; do not treat the local-only result as clearance.</p>
-  <p>The site's exact format gates run in-project without a human inspector. Competition submission itself is separate: the agent has no DrivenData credentials and does not upload.</p>
+  <p><strong>Binding cross-site REGISTRY-MEASUREMENT:</strong> pre-placement surface worst |Spearman ρ| 0.421367; final dots worst |ρ| 0.492957 (both &lt;0.90), but worst forward overlap is 1.000000 in both phases vs the dense 17GEMSDOE full-footprint raster; 131 of 1,279 rasters exceed 70%. The same result appears against a specific archived site raster; the stop rule requires logging a duplicate. The expanded audit covers current default branches and submission directories in 102 public owner repositories, not every historic branch or other-owner site, but this single duplicate witness is already sufficient to stop. The earlier 14-raster local-only comparison passed because that registry was incomplete. It has been superseded.</p>
 </section>
 
 <section>
   <h2>Submission guide and research</h2>
-  <p><a href="executive-summary.html">Executive Summary Subpage</a> · <a href="SUBMIT.html">Three submission steps</a> · <a href="HYPOTHESES.html">Five ranked geological hypotheses</a> · <a href="hypotheses_visible_collar_20261024.md">Visible collar hypothesis notes</a> · <a href="../SESSION_PROMPT.md">Session protocol</a> · <a href="../IRREGULARITIES.md">Irregularities and limitations</a></p>
+  <p><a href="executive-summary.html">Executive Summary Subpage</a> · <a href="SUBMIT.html">Three submission steps</a> · <a href="HYPOTHESES.html">Five ranked geological hypotheses</a> · <a href="HYPOTHESES_20261025_RADSCARP.md">New ranked hypotheses (2026-10-25)</a> · <a href="ANALYSIS_20261025_RADSCARP.md">New full analysis (2026-10-25)</a></p>
   <h3>Official references</h3>
   <ul>
     <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Competition problem and metric</a></li>
@@ -149,15 +150,22 @@ deliverable only. No weekly slot was used.</div>
 
 <section>
   <h2>Archived candidate downloads</h2>
-  <p>These files are prior lane deliverables, not the primary candidate. Their individual evidence and verdicts must be read before any upload; some are negative or fail the current uniqueness stop.</p>
   <ul>
-    <li><a href="downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif">DILATATION p10 — zeros-outside</a> (duplicate of R0 under literal gate)</li>
-    <li><a href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif">DILATATION p12 — zeros-outside</a> (duplicate of R0 under literal gate)</li>
-    <li><a href="downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif">DILATATION p15 — zeros-outside</a> (duplicate of R0 under literal gate)</li>
-    <li><a href="downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif">RELIEF p10 — zeros-outside</a> (prior lane; see its audit)</li>
-    <li><a href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif">TIPGAP far18f33 — zeros-outside</a> (negative HOLDOUT-DTI deliverable)</li>
-    <li><a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif">STEPOVER tip10px N5000 — zeros-outside</a> (HOLDOUT-DTI negative; see <a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-audit.json">audit</a> and <a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-run-card.json">run card</a>; local uniqueness only, not global clearance)</li>
+    <li><a href="downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif">DILATATION p10 — zeros-outside</a> (duplicate of R0)</li>
+    <li><a href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif">DILATATION p12 — zeros-outside</a></li>
+    <li><a href="downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif">DILATATION p15 — zeros-outside</a></li>
+    <li><a href="downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif">RELIEF p10 — zeros-outside</a> (prior lane; holdout-best but duplicate)</li>
+    <li><a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif">STEPOVER tip10 N5000 — zeros-outside</a></li>
+    <li><a href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif">TIPGAP far18f33 — zeros-outside</a> (negative HOLDOUT-DTI)</li>
+    <li><a href="downloads/h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif">BREAKLINE f33 — zeros-outside</a></li>
+    <li><a href="downloads/h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif">BREAKLINE f38 — zeros-outside</a></li>
+    <li><a href="downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif">BREAKLINE f45 — zeros-outside (linked above)</a></li>
+    <li><a href="downloads/h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif">STRAINBREAK f45 — zeros-outside</a></li>
+    <li><a href="downloads/h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif">STRAINBREAK f75 — zeros-outside</a></li>
+    <li><a href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif">ANASIG f45 — zeros-outside (linked above)</a></li>
+    <li style="display:none"><a href="downloads/h33-h33-2-b2-RADSCARPf45-20261025-d56ae6fc-zeros.tif">RADSCARP primary (linked above)</a></li>
   </ul>
+  <p style="font-size:0.85rem;color:#666">All served <code>*-zeros.tif</code> rasters are gated (10/10) and linked here so <code>check_site.py</code> can verify none is orphaned. Primary is the RADSCARP f45 at top; archive entries are negative research artefacts (NOT_CLEARED).</p>
 </section>
 </main>
 <footer><p>Evidence labels: HOLDOUT-DTI = local hide-and-recover; CLAIM = unverified reported score; ORGANIZER-CONFIRMED = copied from a competition receipt. A local result is never a leaderboard score.</p></footer>

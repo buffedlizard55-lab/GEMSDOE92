@@ -1,0 +1,154 @@
+{
+  "file": "h33-h33-2-b2-RADSCARPf45-20261025-d56ae6fc-zeros.tif",
+  "sha256_zeros": "0fb53cb25898a9597bbbd4c301bf4d35c119039bca2870f066496ae5e7cb937b",
+  "sha256_nan": "d56ae6fc19e006950c5cd938b359c27ca8d33cf8b2ab254722363535535fadfa",
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "0fb53cb25898a9597bbbd4c301bf4d35c119039bca2870f066496ae5e7cb937b"
+    }
+  ],
+  "gates_nan": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=7111787 zero=0 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "d56ae6fc19e006950c5cd938b359c27ca8d33cf8b2ab254722363535535fadfa"
+    }
+  ],
+  "overall_pass": true,
+  "generated_utc": "2026-10-25T18:15:00+00:00",
+  "note": "h33-h33-2-b2; RADSCARP f45 16944 far dots on fused scarp+K/Th ridges >3px off H19-5",
+  "n_dots": 37654,
+  "n_positive_pixels": 37654,
+  "submission_name": "GEMSDOE92-RADSCARP-f45-20261025",
+  "submission_eligible": false,
+  "format_ok_to_download": true,
+  "slot_recommendation": "NOT_CLEARED",
+  "run_card": "evidence/radscarp_run_card.json",
+  "local_uniqueness": {
+    "final_dots_registry_rasters_checked": 51,
+    "final_worst_forward_overlap_within_3px": 0.7103627768630159,
+    "final_worst_forward_overlap_file": "docs/downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+    "final_worst_abs_spearman": 0.5467048623741209,
+    "local_literal_duplicate": true,
+    "preplacement_surface_worst_abs_spearman": 0.03
+  },
+  "public_registry_uniqueness": {
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "candidate_hash_matches_scan": true,
+    "scope": "single binding witness (17GEMSDOE_E-proba, 100% footprint-positive) gives forward overlap 1.0; see evidence/radscarp_run_card.json and docs/downloads/breakline_public_witness.json",
+    "witness_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "witness_source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "forward_overlap": 1.0,
+    "witness_positive_fraction_of_footprint": 1.0
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.0043243713198081795,
+    "ci95": [
+      0.0036064109534834406,
+      0.005083106457369707
+    ],
+    "delta_vs_R0": 0.00031822414512343647,
+    "delta_vs_R0_ci95": [
+      -0.00017625129677573513,
+      0.0008233160197008354
+    ]
+  },
+  "verdict": "negative",
+  "note_chars": 83
+}
