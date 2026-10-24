@@ -215,3 +215,87 @@ gitignored and not redistributed. No new external data was introduced.
 2. Every band in `training_features.tif` encodes `3,061` in-footprint pixels (`0.06%`; `3,073` on Band 6) with float32 sentinel `-3.4028235e+38`, which passes `np.isfinite()`. Reading without `masked=True` treats nodata pixels as extreme negative finite values.
 
 **Decision.** `scripts/build_snap_scarp_variants.py` reads `training_features.tif` with `ds.read(b, masked=True).filled(np.nan)` (plus `> -1e30` guard) and uses unsigned **`Band 5 (iso_grav_anom_slope)`** paired with the piedmont break-in-slope inflection `||grad(det_elev_slope)||` (`Band 19`). Furthermore, enforcing literal `"Same count, same exclusions"` (`d_cat > 2.0 px` on both kept and moved dots, rather than a one-way `d_cat > 3.0` membrane on moved dots) prevents partial depletion of the `2.0 < d_cat <= 3.0` collar (`2,171` vs `2,175` dots, `0.01%` delta vs `-24.7%` under `g0.05`), keeping `SNAPscarp2p0px`, `SNAPscarp1p4px`, and `SNAPpot2p0px` 100% unconfounded with `PRUNE`.
+
+## 2026-10-24 (CONCENTRATION session) — R0 is a saturated D2.8 packing, so every "add or relocate" axis is capacity-bound
+
+**Observation.** R0 is `dot_thin(H19-5, 2.8) & d_cat > 2.0`: a maximal
+Poisson-disk packing of the H19-5 support. Measured this session on the pinned
+grid: of the 66,151 catalogue-legal H19-5 pixels that do **not** already carry a
+dot, only **794 (1.2%) are >= 2.8284 px** from the nearest parent dot, 5,383 are
+>= 2.2 px, 9,760 are >= 2.0 px, 29,114 are >= 1.414 px.
+
+**Impact — decision-changing.** The brief's CONCENTRATION recipe ("move 10-20%
+of dots from low-prior to high-prior blocks") is impossible at the parent's own
+spacing floor: 20% of the file is 7,531 dots and the whole grid offers 794 legal
+destinations. The same cap applies to MASS *additions* and to any future
+"extend coverage" idea: you cannot add mass to R0's support without either
+relaxing the spacing invariant or leaving the H19-5 evidence field.
+
+**Decision.** The three CONCENTRATION arms keep every inherited dot exactly
+where the parent put it and declare ONE secondary change, identical in all three
+arms: moved dots are placed on a `>= 2.0 px` floor (200 m — inside the 300 m
+kernel radius and half the GeoDAWN 400 m line spacing). The floor cannot create
+the up/down difference the axis tests because both directions carry it. Recorded
+in `evidence/concentration_variants.json` (`spacing_policy`), in `docs/SUBMIT.md`
+and in the mechanism cards. **Consequence for the plan:** SPACING is now the
+highest-value follow-up axis, because it is the parameter that unlocks every
+other relocation/expansion experiment.
+
+## 2026-10-24 (CONCENTRATION session) — the previous session's MASS_A10/SWAP10 quietly broke the spacing invariant
+
+**Observation.** `releases/h33-h33-2-b2-MASS_A10-20261023-e5613a00.tif` (41,419
+dots) contains 3,765 dots that are not in R0. All 3,765 sit on H19-5, but their
+distance to the nearest R0 dot is **1.0 px at the minimum and 1.0 px at the
+median**; the file's `min_nn` is `1.000 px` and 13.54% of its dot pairs are
+closer than the parent's `2.8284 px`. `MASS_SWAP10` inherits the same additions.
+
+**Impact — decision-changing.** Those files were already re-scoped (H19-5 is
+binary, so the "ranking" was a tie) as a random 10% perturbation. They are also
+a **mass + spacing** change at once, not a clean mass change: each added dot sits
+inside the DTI kernel of an existing dot, so it mostly double-credits one strand
+while adding `S`. Any receipt from them cannot be read as a mass-budget result.
+
+**Decision.** No file is rewritten or deleted (they are a prior session's
+artefact and already in the ledger). No conclusion about the mass optimum may be
+drawn from them; a clean mass test still needs a real ranking and a spacing-safe
+placement, which the saturated-packing measurement above shows is only possible
+by *removing* dots.
+
+## 2026-10-24 (CONCENTRATION session) — the block-CV reference band still gives no direction, and this axis cannot reach it
+
+**Observation.** The brief quotes "the best files reportedly sit at 0.51-0.59"
+for block-density CV. Measured with the repo's own definitions at 1 km blocks,
+R0 is `CV_all_eligible = 1.880` and `CV_occupied = 0.619`. After the moves:
+`up10 0.648`, `up20 0.655`, `dn10 0.648` (occupied-block definition). The band
+is below R0 under the occupied definition and unrelated to it under the
+all-eligible definition.
+
+**Impact — decision-changing.** The statistic cannot be used to choose a dose or
+a target, and neither direction moves the file into the quoted band — moving dots
+from dense to sparse blocks *raises* CV (it adds first dots to sparse blocks)
+just as much as the canonical direction does.
+
+**Decision.** The CV is reported as a descriptive statistic only. The axis is
+tested by its *direction* and its *prior*, not by chasing 0.51-0.59.
+
+## 2026-10-24 (CONCENTRATION session) — this session's local PROXY instruments are invalid by construction
+
+**Observation.** The prior used to place dots is a km-scale KDE of the known-fault
+catalogue, and the repo's report-only instrument withholds catalogue components
+as pseudo-truth. Its leakage canary for the design prior is symmetric AUC
+`0.9273` (the four physical bands stay at `0.5012-0.5685`).
+
+**Impact — decision-changing.** Per the brief, a canary above 0.90 means "stop and
+investigate". Investigating: the prior is *deliberately* catalogue-derived (the
+catalogue is a provided competition input and the organizer states new-fault truth
+includes newly mapped geometry of existing systems), so this is not hidden test
+label leakage — but it does mean the hide-and-recover and SGMC numbers cannot
+support or refute these three arms. They are recorded with
+`interpretable: false`.
+
+**Decision.** For these arms only, the live receipt is the only decision
+instrument. For completeness the probe returned `R0 0.004006`, `up10 0.004011`,
+`up20 0.004008`, `dn10 0.002099` (hide-and-recover) and `R0 0.096060`,
+`up10 0.092966`, `up20 0.089916`, `dn10 0.092296` (SGMC) — flat-to-worse, which
+is at least consistent with "the known-fault halo is not where the withheld
+catalogue components are".

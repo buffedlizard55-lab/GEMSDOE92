@@ -1,0 +1,146 @@
+{
+  "evidence_label": "PROXY (INVALID FOR THIS SESSION'S ARMS)",
+  "created_utc": "2026-10-24",
+  "axis": "CONCENTRATION",
+  "leak_warning": "The 1 km prior is built from the known-fault catalogue and the holdout withholds catalogue components as pseudo-truth, so holdout and SGMC deltas for these arms are contaminated by construction and must not be read as evidence for or against the variants.",
+  "holdout_protocol": {
+    "implementation": "vendor/gems57/holdout.py buffered_component_draw",
+    "evaluator": "gems57-pooled-hide-v2",
+    "seeds": [
+      20,
+      30
+    ],
+    "withheld_positive_pixels": 22663,
+    "ci_method": "paired 20 km spatial-block bootstrap, 1,000 draws",
+    "scores": {
+      "R0": {
+        "dti": 0.004006,
+        "ci95": [
+          0.003424,
+          0.00469
+        ]
+      },
+      "h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48": {
+        "dti": 0.004011,
+        "ci95": [
+          0.003436,
+          0.004677
+        ]
+      },
+      "h33-h33-2-b2-CONCcatblk10up20-20261024-b6e80d73": {
+        "dti": 0.004008,
+        "ci95": [
+          0.003432,
+          0.004656
+        ]
+      },
+      "h33-h33-2-b2-CONCcatblk10dn10-20261024-c671b704": {
+        "dti": 0.002099,
+        "ci95": [
+          0.001636,
+          0.002597
+        ]
+      }
+    },
+    "per_fold_dti": {
+      "R0": [
+        0.0033190361096884797,
+        0.004407926168167087,
+        0.0031089001997361824,
+        0.004072828198897818,
+        0.00489997713403107,
+        0.005013980811213483,
+        0.004355576467076173,
+        0.003125934420342564
+      ],
+      "h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48": [
+        0.0035095882237136684,
+        0.004674169727293827,
+        0.0029690704994264883,
+        0.003941693744457022,
+        0.005181564466303671,
+        0.005317568448606838,
+        0.004160407337396303,
+        0.0030255136211029903
+      ],
+      "h33-h33-2-b2-CONCcatblk10up20-20261024-b6e80d73": [
+        0.00337992785655065,
+        0.004410004080579431,
+        0.002991647005659517,
+        0.004226924805936607,
+        0.004989956380632182,
+        0.005016349851385039,
+        0.004191923444357042,
+        0.0032439201083742653
+      ],
+      "h33-h33-2-b2-CONCcatblk10dn10-20261024-c671b704": [
+        0.0016368617093061636,
+        0.0026320991312168774,
+        0.0011300614790529994,
+        0.0014788287479508943,
+        0.0031979565674321976,
+        0.0034960253783325795,
+        0.002661554162616205,
+        0.0007954376583310527
+      ]
+    },
+    "interpretable": false
+  },
+  "sgmc_control": {
+    "truth_pixels": 62703,
+    "dti_by_arm": {
+      "R0": 0.09606,
+      "h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48": 0.092966,
+      "h33-h33-2-b2-CONCcatblk10up20-20261024-b6e80d73": 0.089916,
+      "h33-h33-2-b2-CONCcatblk10dn10-20261024-c671b704": 0.092296
+    },
+    "delta_vs_r0": {
+      "R0": 0.0,
+      "h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48": -0.003094,
+      "h33-h33-2-b2-CONCcatblk10up20-20261024-b6e80d73": -0.006144,
+      "h33-h33-2-b2-CONCcatblk10dn10-20261024-c671b704": -0.003764
+    },
+    "interpretable": false
+  },
+  "leakage_canaries": {
+    "features": {
+      "training_band_3_tmi_hg": {
+        "auc": 0.498777,
+        "symmetric_auc": 0.501223
+      },
+      "training_band_5_iso_grav_anom_slope": {
+        "auc": 0.551113,
+        "symmetric_auc": 0.551113
+      },
+      "training_band_19_detrended_elevation_slope": {
+        "auc": 0.55314,
+        "symmetric_auc": 0.55314
+      },
+      "derived_grad_band_19_piedmont_slope_break": {
+        "auc": 0.568516,
+        "symmetric_auc": 0.568516
+      },
+      "design_prior_1km_fault_kde": {
+        "auc": 0.927288,
+        "symmetric_auc": 0.927288,
+        "status": "EXPECTED_LEAKY_BY_CONSTRUCTION"
+      }
+    },
+    "stop_and_investigate_if_any_gt_0_90": true,
+    "interpretation": "The four physical bands stay below 0.57. The design prior reads ~1.0 because it IS the catalogue: that is the intended design, not hidden-label leakage, and it is the reason the two instruments above are marked not interpretable."
+  },
+  "input_hashes": {
+    "sample_submission": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+    "existing_faults": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+    "training_features": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+    "parent_r0_zeros": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "parent_r0_nan": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "anc_h19_5": "ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d",
+    "anc_d1_5": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+    "anc_d2_8": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+    "anc_solo_d2_8": "2fc94a38d77f74d4f4ed1a97a83e7bb71a1ceea090515ec641e6681cc47c44c8",
+    "gdr_wellspring_in_footprint": "122718e65bdf55aab0ee12ad20d80062f0deb1de957225a61ad880dd5dc196ea",
+    "ext_geodawn_rad_u8": "c22420f75999030d7cc65c9e31e50d232ea6158423bca051613a18a8b20ba682",
+    "sgmc_faults_control": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0"
+  }
+}
