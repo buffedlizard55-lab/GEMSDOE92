@@ -1,0 +1,41 @@
+{
+  "created_utc": "2026-10-24T06:32:36.638106+00:00",
+  "branch": "arena/aebe414f-gemsdoe92",
+  "submission_name": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f",
+  "submission_note": "h33-h33-2-b2; STEPOVER step-over dots 3-10px off catalogue at visible trace tips; HOLDOUT-DTI 0.0000 [0.0000,0.0000]",
+  "note_chars": 116,
+  "hypothesis": "STEPOVER: blind geothermal strands localize at visible-tract step-overs (3-10 px off mapped traces, strike continuation of trace tips), under-mapped in the USGS/INGENIOUS catalogue.",
+  "mechanism": "dots placed by visible-geometry favourability s(x) = strike-alignment x exp(-(d_tip-3)/3), unit mass, 1 px spacing, count N by holdout-DTI sweep.",
+  "named_non_fault_mimic": "erosional notch / alluvial fan head and pluvial-lake shoreline terminations can create tip-like trace ends without displacement.",
+  "holdout_dti": 0.0,
+  "holdout_ci95": [
+    0.0,
+    0.0
+  ],
+        "holdout_withheld_positives": 11321,
+        "holdout_evaluator_version": "gems57-pooled-hide-v2",
+        "holdout_pooled_tp": 0.0,
+        "holdout_pooled_fp": 4630.0,
+        "holdout_pooled_fn": 11321.0,
+        "holdout_note": "Structural zero: every gate-compliant dot is >3 px from the full catalogue and held-out truth is a subset of the catalogue, so no gate-compliant non-PRUNE raster can recover held truth within the 3 px kernel; R0's proxy credit comes from dots inside the 3 px exclusion. Holdout-DTI cannot rank gate-compliant candidates; the live receipt is the decision anchor.",
+        "delta_vs_R0": -0.003698680598708719,
+  "delta_vs_R0_ci95": [
+    -0.0043771556582928245,
+    -0.0030647746270595546
+  ],
+  "leakage_canary_auc": 0.49957,
+  "leakage_canary_limit": 0.9,
+  "lane_worst_rho": 0.027719626468556663,
+  "lane_worst_forward_overlap": 0.2534,
+  "lane_unique": true,
+  "raster_sha256": "e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205",
+  "validator": {
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match_sample_submission": true,
+    "zero_catalogue_mass": true,
+    "dots_within_3px_of_catalogue": 0,
+    "gates_pass": true
+  },
+  "verdict": "negative"
+}

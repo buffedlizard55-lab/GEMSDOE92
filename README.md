@@ -59,7 +59,7 @@ Shared-parent mass dominates the statistic, so the whole-file number mostly meas
 
 ## Why h33-h33-2-b2 CLAIM 0.2778 is high
 
-Not ORGANIZER-CONFIRMED (no receipt in `ledger/` — 29 `BUILT` rows, zero receipts). The lineage is mechanical, not mysterious:
+Not ORGANIZER-CONFIRMED (no receipt in `ledger/` — 30 `BUILT` rows, zero receipts). The lineage is mechanical, not mysterious:
 
 1. H19-5 multiline corroborated ridges — CLAIM 0.1922
 2. Poisson-disk thin at 2.8 px — CLAIM 0.2600 (DTI β = 0.8 punishes extra mass)
@@ -88,6 +88,18 @@ Running the repo's own gates instead of trusting them exposed two defects and on
 3. **That new check immediately caught a wrong number:** `R0.json` claimed 355,000 B for the NaN artefact; disk and `session_manifest.json` both say **355,443 B**. The sha256 — the real authority — was correct in both, so no artefact was ever mis-identified.
 
 CI ran the parent gate as `… || true`, which is why a gate that had never passed produced no signal. It is fatal now, plus `make manifest`, plus a gate on **every** `docs/downloads/*-zeros.tif`, plus an assertion that the primary named in `index.html` matches its audit receipt byte-for-byte.
+
+
+## Additional session deliverable (STEPOVER, negative)
+
+A separate STEPOVER lane was also built and kept as a negative deliverable; it does **not** replace the TIPGAP FAR download above.
+
+- **File:** [`releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif`](releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif) (all-finite zeros encoding, SHA-256 `e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205`)
+- **Status:** OK TO DOWNLOAD; **NOT a weekly slot** (verdict negative).
+- **Lane:** 5,000 unit-mass dots at visible catalogue trace-tip step-overs, 3–10 px off catalogue (`d_cat > 3 px`), 1 px spacing. Distinct from TIPGAP (H19-5 skeleton endpoints) and from MASS/PRUNE/SNAP/CONCENTRATION/RELIEF.
+- **HOLDOUT-DTI:** 0.0000 [0.0000, 0.0000] vs R0 0.00370 [0.00301, 0.00432] (`gems57-pooled-hide-v2`, 11,321 withheld positives). This is a structural zero for gate-compliant off-catalogue dots; see `IRREGULARITIES.md`.
+- **Uniqueness / canary:** worst Spearman ρ = 0.0277, worst 3-px forward overlap = 0.2534 vs 14 locally accessible registry rasters; leakage AUC = 0.4996.
+- **Details:** [`docs/executive-summary.html`](docs/executive-summary.html) · [`docs/ANALYSIS.md`](docs/ANALYSIS.md) · [`evidence/run_card.json`](evidence/run_card.json)
 
 ## Limitations (what this sandbox cannot do)
 
