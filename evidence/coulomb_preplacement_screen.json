@@ -1,0 +1,535 @@
+{
+  "evidence_class": "PROXY-SCREEN",
+  "n_far": 16944,
+  "n_full": 37654,
+  "sgmc_truth_px": 62703,
+  "baseline_expected": {
+    "sym_auc": 0.621604,
+    "far_only_sgmc_dti": 0.072325
+  },
+  "baseline_reproduced_within_5e-4": true,
+  "surfaces": {
+    "breakline_L_baseline": {
+      "sym_auc": 0.621604,
+      "auc": 0.621604,
+      "far_only_sgmc_dti": 0.072325,
+      "far_only_fixedcat_dti": 0.002887,
+      "far_pool": 3974627,
+      "far_overlap_vs_prior_lanes": {
+        "breakline_f45": 1.0,
+        "anasig_f45": 0.134266,
+        "strainbreak_f60": 0.0,
+        "stepedge_f60": 0.0,
+        "springalign_f33": 0.012925,
+        "piedfront_f35": 0.0,
+        "apronridge_free1d_whole": 0.199422,
+        "hydroconduit_f45hydro": 0.105878
+      }
+    },
+    "coulomb_free": {
+      "sym_auc": 0.612038,
+      "auc": 0.612038,
+      "far_only_sgmc_dti": 0.019432,
+      "far_only_fixedcat_dti": 0.003927,
+      "far_pool": 3974627,
+      "far_overlap_vs_prior_lanes": {
+        "breakline_f45": 0.073536,
+        "anasig_f45": 0.182247,
+        "strainbreak_f60": 0.144712,
+        "stepedge_f60": 0.038421,
+        "springalign_f33": 0.016112,
+        "piedfront_f35": 0.249056,
+        "apronridge_free1d_whole": 0.470609,
+        "hydroconduit_f45hydro": 0.460635
+      }
+    },
+    "coulomb_open": {
+      "sym_auc": 0.56379,
+      "auc": 0.56379,
+      "far_only_sgmc_dti": 0.020076,
+      "far_only_fixedcat_dti": 0.003347,
+      "far_pool": 3974627,
+      "far_overlap_vs_prior_lanes": {
+        "breakline_f45": 0.136331,
+        "anasig_f45": 0.196294,
+        "strainbreak_f60": 0.204733,
+        "stepedge_f60": 0.096907,
+        "springalign_f33": 0.036591,
+        "piedfront_f35": 0.032047,
+        "apronridge_free1d_whole": 0.10399,
+        "hydroconduit_f45hydro": 0.149492
+      }
+    },
+    "coulomb_seismo": {
+      "sym_auc": 0.613249,
+      "auc": 0.613249,
+      "far_only_sgmc_dti": 0.021542,
+      "far_only_fixedcat_dti": 0.004304,
+      "far_pool": 3974627,
+      "far_overlap_vs_prior_lanes": {
+        "breakline_f45": 0.077254,
+        "anasig_f45": 0.181303,
+        "strainbreak_f60": 0.155748,
+        "stepedge_f60": 0.043319,
+        "springalign_f33": 0.018945,
+        "piedfront_f35": 0.225862,
+        "apronridge_free1d_whole": 0.446766,
+        "hydroconduit_f45hydro": 0.43809
+      }
+    },
+    "coulomb_O_only": {
+      "sym_auc": 0.542269,
+      "auc": 0.542269,
+      "far_only_sgmc_dti": 0.014475,
+      "far_only_fixedcat_dti": 0.003635,
+      "far_pool": 3974627,
+      "far_overlap_vs_prior_lanes": {
+        "breakline_f45": 0.096258,
+        "anasig_f45": 0.129131,
+        "strainbreak_f60": 0.323772,
+        "stepedge_f60": 0.112193,
+        "springalign_f33": 0.031043,
+        "piedfront_f35": 0.026558,
+        "apronridge_free1d_whole": 0.091832,
+        "hydroconduit_f45hydro": 0.128659
+      }
+    },
+    "seismo_prior_only": {
+      "sym_auc": 0.524925,
+      "auc": 0.524925,
+      "far_only_sgmc_dti": 0.036593,
+      "far_only_fixedcat_dti": 0.004254,
+      "far_pool": 3974627,
+      "far_overlap_vs_prior_lanes": {
+        "breakline_f45": 0.099091,
+        "anasig_f45": 0.113314,
+        "strainbreak_f60": 0.338468,
+        "stepedge_f60": 0.116974,
+        "springalign_f33": 0.035116,
+        "piedfront_f35": 0.034348,
+        "apronridge_free1d_whole": 0.100921,
+        "hydroconduit_f45hydro": 0.098088
+      }
+    },
+    "rtp_tilt_only": {
+      "sym_auc": 0.516158,
+      "auc": 0.516158,
+      "far_only_sgmc_dti": 0.028237,
+      "far_only_fixedcat_dti": 0.00284,
+      "far_pool": 3974627,
+      "far_overlap_vs_prior_lanes": {
+        "breakline_f45": 0.107177,
+        "anasig_f45": 0.277148,
+        "strainbreak_f60": 0.107885,
+        "stepedge_f60": 0.118095,
+        "springalign_f33": 0.03724,
+        "piedfront_f35": 0.046447,
+        "apronridge_free1d_whole": 0.116147,
+        "hydroconduit_f45hydro": 0.113728
+      }
+    },
+    "rel_scarp_only": {
+      "sym_auc": 0.622959,
+      "auc": 0.622959,
+      "far_only_sgmc_dti": 0.031482,
+      "far_only_fixedcat_dti": 0.002912,
+      "far_pool": 3974627,
+      "far_overlap_vs_prior_lanes": {
+        "breakline_f45": 0.357236,
+        "anasig_f45": 0.085989,
+        "strainbreak_f60": 0.169145,
+        "stepedge_f60": 0.033522,
+        "springalign_f33": 0.033581,
+        "piedfront_f35": 0.167316,
+        "apronridge_free1d_whole": 0.242387,
+        "hydroconduit_f45hydro": 0.220845
+      }
+    },
+    "magtilt_contact": {
+      "sym_auc": 0.51673,
+      "auc": 0.51673,
+      "far_only_sgmc_dti": 0.035286,
+      "far_only_fixedcat_dti": 0.002383,
+      "far_pool": 3974627,
+      "far_overlap_vs_prior_lanes": {
+        "breakline_f45": 0.115439,
+        "anasig_f45": 0.179474,
+        "strainbreak_f60": 0.111485,
+        "stepedge_f60": 0.091301,
+        "springalign_f33": 0.033876,
+        "piedfront_f35": 0.061143,
+        "apronridge_free1d_whole": 0.10936,
+        "hydroconduit_f45hydro": 0.102278
+      }
+    },
+    "mtedge_dilat": {
+      "sym_auc": 0.516638,
+      "auc": 0.516638,
+      "far_only_sgmc_dti": 0.018975,
+      "far_only_fixedcat_dti": 0.00357,
+      "far_pool": 3974627,
+      "far_overlap_vs_prior_lanes": {
+        "breakline_f45": 0.096848,
+        "anasig_f45": 0.10995,
+        "strainbreak_f60": 0.252656,
+        "stepedge_f60": 0.110659,
+        "springalign_f33": 0.025378,
+        "piedfront_f35": 0.034585,
+        "apronridge_free1d_whole": 0.098855,
+        "hydroconduit_f45hydro": 0.10399
+      }
+    }
+  },
+  "coulomb_free_top37654_uniqueness": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "rule": "literal: forward_overlap > 0.70 OR |spearman| > 0.90 => duplicate, log and stop",
+    "registry_rasters_checked": 41,
+    "worst_forward_overlap": 0.543687,
+    "worst_forward_overlap_file": "h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif",
+    "worst_abs_spearman": 0.123961,
+    "worst_abs_spearman_file": "h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif",
+    "duplicate": false,
+    "rows": [
+      {
+        "registry_file": "parent_R0_zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.299756,
+        "reverse_overlap_their_dots_within_3px": 0.242073,
+        "binary_spearman_phi": 0.011279,
+        "jaccard_exact_pixels": 0.009328
+      },
+      {
+        "registry_file": "h19_5.tif",
+        "their_dots": 121131,
+        "forward_overlap_my_dots_within_3px": 0.355102,
+        "reverse_overlap_their_dots_within_3px": 0.245635,
+        "binary_spearman_phi": 0.018066,
+        "jaccard_exact_pixels": 0.013299
+      },
+      {
+        "registry_file": "d28.tif",
+        "their_dots": 44090,
+        "forward_overlap_my_dots_within_3px": 0.317948,
+        "reverse_overlap_their_dots_within_3px": 0.233364,
+        "binary_spearman_phi": 0.00927,
+        "jaccard_exact_pixels": 0.008588
+      },
+      {
+        "registry_file": "h27_4_solo.tif",
+        "their_dots": 40199,
+        "forward_overlap_my_dots_within_3px": 0.30921,
+        "reverse_overlap_their_dots_within_3px": 0.240926,
+        "binary_spearman_phi": 0.010439,
+        "jaccard_exact_pixels": 0.009021
+      },
+      {
+        "registry_file": "sample_submission.tif",
+        "their_dots": 60988,
+        "forward_overlap_my_dots_within_3px": 0.076698,
+        "reverse_overlap_their_dots_within_3px": 0.083197,
+        "binary_spearman_phi": -0.009363,
+        "jaccard_exact_pixels": 0.0
+      },
+      {
+        "registry_file": "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.097307,
+        "reverse_overlap_their_dots_within_3px": 0.154114,
+        "binary_spearman_phi": 0.016389,
+        "jaccard_exact_pixels": 0.011919
+      },
+      {
+        "registry_file": "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.322728,
+        "reverse_overlap_their_dots_within_3px": 0.257609,
+        "binary_spearman_phi": 0.01259,
+        "jaccard_exact_pixels": 0.009992
+      },
+      {
+        "registry_file": "h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.506693,
+        "reverse_overlap_their_dots_within_3px": 0.481967,
+        "binary_spearman_phi": 0.123961,
+        "jaccard_exact_pixels": 0.069716
+      },
+      {
+        "registry_file": "h33-h33-2-b2-APRONRIDGEs50f50-20261024-2f0431ea-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.512934,
+        "reverse_overlap_their_dots_within_3px": 0.449063,
+        "binary_spearman_phi": 0.064544,
+        "jaccard_exact_pixels": 0.037
+      },
+      {
+        "registry_file": "h33-h33-2-b2-APRONRIDGEs60f40-20261024-6e7e0174-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.490413,
+        "reverse_overlap_their_dots_within_3px": 0.439608,
+        "binary_spearman_phi": 0.058444,
+        "jaccard_exact_pixels": 0.033755
+      },
+      {
+        "registry_file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.270702,
+        "reverse_overlap_their_dots_within_3px": 0.204308,
+        "binary_spearman_phi": 0.01235,
+        "jaccard_exact_pixels": 0.00987
+      },
+      {
+        "registry_file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.266107,
+        "reverse_overlap_their_dots_within_3px": 0.197828,
+        "binary_spearman_phi": 0.012483,
+        "jaccard_exact_pixels": 0.009937
+      },
+      {
+        "registry_file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.260371,
+        "reverse_overlap_their_dots_within_3px": 0.188453,
+        "binary_spearman_phi": 0.012216,
+        "jaccard_exact_pixels": 0.009802
+      },
+      {
+        "registry_file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.307882,
+        "reverse_overlap_their_dots_within_3px": 0.277846,
+        "binary_spearman_phi": 0.015078,
+        "jaccard_exact_pixels": 0.011253
+      },
+      {
+        "registry_file": "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.306714,
+        "reverse_overlap_their_dots_within_3px": 0.284113,
+        "binary_spearman_phi": 0.015667,
+        "jaccard_exact_pixels": 0.011552
+      },
+      {
+        "registry_file": "h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.306714,
+        "reverse_overlap_their_dots_within_3px": 0.296489,
+        "binary_spearman_phi": 0.017031,
+        "jaccard_exact_pixels": 0.012245
+      },
+      {
+        "registry_file": "h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.535879,
+        "reverse_overlap_their_dots_within_3px": 0.432039,
+        "binary_spearman_phi": 0.067701,
+        "jaccard_exact_pixels": 0.038688
+      },
+      {
+        "registry_file": "h33-h33-2-b2-HYDROCONDUITf45pied-20261024-3c236840-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.542545,
+        "reverse_overlap_their_dots_within_3px": 0.450178,
+        "binary_spearman_phi": 0.096888,
+        "jaccard_exact_pixels": 0.054557
+      },
+      {
+        "registry_file": "h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.543687,
+        "reverse_overlap_their_dots_within_3px": 0.438174,
+        "binary_spearman_phi": 0.071473,
+        "jaccard_exact_pixels": 0.040712
+      },
+      {
+        "registry_file": "h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.446115,
+        "reverse_overlap_their_dots_within_3px": 0.382562,
+        "binary_spearman_phi": 0.046031,
+        "jaccard_exact_pixels": 0.027212
+      },
+      {
+        "registry_file": "h33-h33-2-b2-PIEDFRONTf40Ptop-20261024-6b0cd56a-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.451585,
+        "reverse_overlap_their_dots_within_3px": 0.386041,
+        "binary_spearman_phi": 0.048465,
+        "jaccard_exact_pixels": 0.028489
+      },
+      {
+        "registry_file": "h33-h33-2-b2-PIEDFRONTf45Ptop-20261024-aad86ac9-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.455596,
+        "reverse_overlap_their_dots_within_3px": 0.386094,
+        "binary_spearman_phi": 0.050044,
+        "jaccard_exact_pixels": 0.029318
+      },
+      {
+        "registry_file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.308121,
+        "reverse_overlap_their_dots_within_3px": 0.273729,
+        "binary_spearman_phi": 0.014356,
+        "jaccard_exact_pixels": 0.010886
+      },
+      {
+        "registry_file": "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.244144,
+        "reverse_overlap_their_dots_within_3px": 0.19326,
+        "binary_spearman_phi": 0.0074,
+        "jaccard_exact_pixels": 0.007371
+      },
+      {
+        "registry_file": "h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.190577,
+        "reverse_overlap_their_dots_within_3px": 0.129043,
+        "binary_spearman_phi": 0.001943,
+        "jaccard_exact_pixels": 0.004629
+      },
+      {
+        "registry_file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+        "their_dots": 5000,
+        "forward_overlap_my_dots_within_3px": 0.032719,
+        "reverse_overlap_their_dots_within_3px": 0.1972,
+        "binary_spearman_phi": 0.001871,
+        "jaccard_exact_pixels": 0.001456
+      },
+      {
+        "registry_file": "h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.299649,
+        "reverse_overlap_their_dots_within_3px": 0.228316,
+        "binary_spearman_phi": 0.019145,
+        "jaccard_exact_pixels": 0.013321
+      },
+      {
+        "registry_file": "h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.289823,
+        "reverse_overlap_their_dots_within_3px": 0.210894,
+        "binary_spearman_phi": 0.019894,
+        "jaccard_exact_pixels": 0.013703
+      },
+      {
+        "registry_file": "h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.27025,
+        "reverse_overlap_their_dots_within_3px": 0.194242,
+        "binary_spearman_phi": 0.020563,
+        "jaccard_exact_pixels": 0.014044
+      },
+      {
+        "registry_file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.305094,
+        "reverse_overlap_their_dots_within_3px": 0.213656,
+        "binary_spearman_phi": 0.008604,
+        "jaccard_exact_pixels": 0.007977
+      },
+      {
+        "registry_file": "h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
+        "their_dots": 41419,
+        "forward_overlap_my_dots_within_3px": 0.301402,
+        "reverse_overlap_their_dots_within_3px": 0.235906,
+        "binary_spearman_phi": 0.011181,
+        "jaccard_exact_pixels": 0.009447
+      },
+      {
+        "registry_file": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif",
+        "their_dots": 33889,
+        "forward_overlap_my_dots_within_3px": 0.280608,
+        "reverse_overlap_their_dots_within_3px": 0.251616,
+        "binary_spearman_phi": 0.011277,
+        "jaccard_exact_pixels": 0.009126
+      },
+      {
+        "registry_file": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.290514,
+        "reverse_overlap_their_dots_within_3px": 0.243878,
+        "binary_spearman_phi": 0.011146,
+        "jaccard_exact_pixels": 0.009261
+      },
+      {
+        "registry_file": "h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.293754,
+        "reverse_overlap_their_dots_within_3px": 0.243188,
+        "binary_spearman_phi": 0.010637,
+        "jaccard_exact_pixels": 0.009004
+      },
+      {
+        "registry_file": "h33-h33-2-b2-PRUNE_B4-20261023-78e893d7-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.284087,
+        "reverse_overlap_their_dots_within_3px": 0.243878,
+        "binary_spearman_phi": 0.010611,
+        "jaccard_exact_pixels": 0.00899
+      },
+      {
+        "registry_file": "h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.265045,
+        "reverse_overlap_their_dots_within_3px": 0.242365,
+        "binary_spearman_phi": 0.010664,
+        "jaccard_exact_pixels": 0.009017
+      },
+      {
+        "registry_file": "h33-h33-2-b2-SCARPPOLf33Stop-20261024-7b3571a5-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.267807,
+        "reverse_overlap_their_dots_within_3px": 0.204095,
+        "binary_spearman_phi": 0.010076,
+        "jaccard_exact_pixels": 0.00872
+      },
+      {
+        "registry_file": "h33-h33-2-b2-SCARPPOLf38Stop-20261024-a259cb8c-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.263929,
+        "reverse_overlap_their_dots_within_3px": 0.198518,
+        "binary_spearman_phi": 0.009567,
+        "jaccard_exact_pixels": 0.008463
+      },
+      {
+        "registry_file": "h33-h33-2-b2-SCARPPOLf45Stop-20261024-cf4e45c0-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.257184,
+        "reverse_overlap_their_dots_within_3px": 0.18901,
+        "binary_spearman_phi": 0.009059,
+        "jaccard_exact_pixels": 0.008207
+      },
+      {
+        "registry_file": "h33-h33-2-b2-STEPEDGEf33Sraw-20261024-12f4b454-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.238062,
+        "reverse_overlap_their_dots_within_3px": 0.181468,
+        "binary_spearman_phi": 0.006089,
+        "jaccard_exact_pixels": 0.006711
+      },
+      {
+        "registry_file": "h33-h33-2-b2-STEPEDGEf45Sraw-20261024-0854307f-zeros.tif",
+        "their_dots": 37654,
+        "forward_overlap_my_dots_within_3px": 0.219127,
+        "reverse_overlap_their_dots_within_3px": 0.161045,
+        "binary_spearman_phi": 0.004217,
+        "jaccard_exact_pixels": 0.00577
+      }
+    ]
+  },
+  "coulomb_free_sampled_spearman": {
+    "worst_spearman_rho": 0.088912,
+    "worst_rho_file": "h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif",
+    "n_rasters": 43
+  },
+  "preregistered_rule": "Build Rank-1 COULOMB family iff baseline reproduces AND coulomb_free sym_auc<=0.90 AND top-37654 forward overlap<=0.70 AND |rho|<=0.90 vs every pre-session local raster; else screen Rank 2 (SEISMO-SWARM).",
+  "screen_decision": {
+    "coulomb_free_sym_auc": 0.612038,
+    "coulomb_free_worst_forward_overlap": 0.543687,
+    "coulomb_free_worst_abs_rho": 0.088912,
+    "build_rank1_coulomb": true
+  }
+}

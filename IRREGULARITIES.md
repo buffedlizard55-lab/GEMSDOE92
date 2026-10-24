@@ -881,3 +881,22 @@ that pattern: no unpreserved screen code.
 - Homepage overall-best claim conflicted with higher stored HYDROCONDUIT HOLDOUT-DTI. Corrected the headline and added superseding top-level notices. Historical static scores are not certified visible-only fold-rebuilt experiments.
 - No single method paragraph is identifiable in this request. No lane was invented. Data and CPU validators already exist; the prompt's GPU/data-placement blocker is not current for this array pipeline.
 - Official competition pages, quota and receipts cannot be freshly verified under this session's network restrictions. No organizer score or source-access claim was fabricated.
+
+## 2026-10-24 (COULOMB session) — Disk-vs-Prose Lineage Count Drift, Conflicting Intermediate CLAIMs, Witness-Checker Exit Code
+
+### 1. `#IR-92-LINEAGE-COUNT-DRIFT`: Stale `D2.8` / `SOLO` Dot Counts in Prose (Disk Wins)
+- **Observation**: Direct `rasterio` positive-pixel counts this session: `data/bridge/d28.tif = 44,090`, `data/bridge/h27_4_solo.tif = 40,199`, `data/bridge/h19_5.tif = 121,131`, `data/parent_R0_zeros.tif = 37,654` (all `float32`, `3730×3292`). Three prose spots disagreed: `README.md:79` quoted `SOLO 39,580` (+ derived `1,926` pruned dots); `README.md:258` quoted `D2.8 46,612`; `docs/ANALYSIS_20261024_APRONRIDGE.md:33` quoted `SOLO 39,580` (+ `1,926`); `docs/ANALYSIS_20261024_HYDROCONDUIT.md:25` quoted `D2.8 46,612`. No raster or evidence JSON was affected (all pipelines read bytes, not prose).
+- **Action**: Corrected all four spots to disk values (`SOLO 40,199`, `D2.8 44,090`, `SOLO→R0` prune count `2,545 = 40,199 − 37,654`). Lineage table in `docs/ANALYSIS_20261024_COULOMB.md` §1.2 is the verified reference.
+
+### 2. `#IR-92-LINEAGE-CLAIM-CONFLICT`: Intermediate-Lineage CLAIM Scores Conflict Across Docs (Unresolvable Without Receipts)
+- **Observation**: `README.md:79` + APRONRIDGE analysis claim `H19-5 0.1922 → D2.8 0.2600 (+0.0678)`; `README.md:258` + HYDROCONDUIT analysis claim `H19-5 0.2194 → D2.8 0.2649 (+0.0455)`. Both chains agree on `SOLO 0.2708` and `R0 0.2778`. Scores are not on disk, and `ledger/` holds 0 organizer receipts, so neither chain can be falsified locally.
+- **Action**: Left both CLAIMs in place with this log entry. Resolution requires an `ORGANIZER-CONFIRMED` receipt or authenticated leaderboard snapshot; until then, quote lineage scores only as `CLAIM` with their source doc.
+
+### 3. `#IR-92-WITNESS-EXIT0`: `scripts/check_public_witness.py` Exits 0 Even on Duplicate (Docstring Says Exit 1)
+- **Observation**: The module docstring states a duplicate finding exits `1`, but `main()` has no return path, so the process always exits `0` (observed on the COULOMB `forward_overlap = 1.000` duplicate). CI or shell gates keyed on exit code would miss the stop.
+- **Action**: Treat the JSON receipt's `stop_required` field as authoritative (as `scripts/make_coulomb_run_card.py` does). Recommended follow-up: one-line fix to `return 1` on `stop_required` plus a regression test (queued; not done this session to avoid touching shared tooling mid-run-card).
+
+### 4. `#IR-92-COULOMB-MAXFUSION`: `max()` Two-Channel Fusion Dilutes the Stronger Channel (Result, Not Bug)
+- **Observation**: `COULOMB free` final dots are `71.6%` RTP-channel-dominant while `rtp_tilt`-only canary is `0.5162` vs `rel_scarp`-only `0.6230` — `max(R_rtp, R_scarp)` lets the near-random channel win most crest pixels. `HYDROCONDUIT`'s multiplicative fusion is the empirically better operator on this instrument.
+- **Action**: Recorded as a design constraint for future lanes (follow-up F-C2 in `docs/NEXT_STEPS.md`); no code change.
+
