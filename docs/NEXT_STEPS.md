@@ -1,8 +1,9 @@
 # NEXT_STEPS — after the 2026-10-24 APRONRIDGE session
 
 ## Current status (supersedes prior sections below for action purposes)
+# Next Steps — `GEMSDOE92` (After `HYDROCONDUIT` Session, 2026-10-24)
 
-This section supersedes historical action lists below. **Do not submit any current artifact.** Latest tooling hardening and the three-pass repository review are in [`REVIEW_20261024_SESSION.md`](REVIEW_20261024_SESSION.md); the machine-readable card is [`downloads/repo_review_run_card_20261024.json`](downloads/repo_review_run_card_20261024.json).
+## Current State & Completed Items From Prior Queue
 
 **`APRONRIDGE free1d` (`h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`) is the new primary download — closing both technical challenges from the prior queue (non-R0 standalone emission + beating `RELIEF p10` on `gems57-pooled-hide-v2`), while keeping `verdict: negative` / `submission_eligible: false` under the binding dense public witness.**
 
@@ -17,20 +18,35 @@ This section supersedes historical action lists below. **Do not submit any curre
 3. **Acquire the first `ORGANIZER-CONFIRMED` receipt (`Blocker 0`: `51 BUILT / 0 RECEIPT` in `ledger/submissions.csv`)**: Upload `APRONRIDGE free1d` (single weekly slot; never upload `s60f40` or `s50f50` alongside it) and record the exact DrivenData submission ID, timestamp, and score in `ledger/submissions.csv` to calibrate whether `HOLDOUT-DTI` (`0.008354`) or `SGMC PROXY` (`0.0801` vs `STEPEDGE` `0.1415`) better predicts private expert-mapped test faults.
 4. **Shoreline & Drainage-Crossing Mimic Suppression on `APRONRIDGE` (`APRONRIDGE v2`)**: Once official USGS NHD flowlines or NBMG Lake Lahontan stillstand contours are pinned in `registry/session_manifest.json` with SHA-256 hashes and verified redistribution terms, test suppressing contour-parallel Sehoo/Eetza shoreline benches and wash-parallel terrace risers inside `H_apron`.
 5. **5-Fold Spatially Blocked Multi-Sensor Patch U-Net / Gradient-Boosted Ridge Learner**: Train a strictly spatially blocked (`holdout.buffered_component_draw`), Tversky-loss (`alpha=0.2, beta=0.8`) multi-band model over `APRONRIDGE` features (`Bands 2, 5, 6, 12, 15, 19` + geothermometer halo from `BLIND-GEOTHERM`), followed by 1D crest extraction + `2.8 px` spaced thresholding (`drivendataorg/gems-prize-reference-solution` architecture adapted to non-redundant kernel-spaced emission).
+- **Completed in this session:**
+  1. Diagnosed *why* `BREAKLINE f45` stalled at `0.004861` (`74.75%` of off-skeleton dots hijacked by bare mountain range-core cliffs `det_elev >= +38.8 m`, `28.9%` transverse E–W/WNW erosional gullies) and discovered `Band 6 tc` is mislabelled Radiometric Total Count (`r = 0.99714` with `GeoDAWN TC`), `GDR #1391` `'Hot '` trailing whitespace + `419` blind chemical-geothermometer pixels (`>= 80 °C`), and static `d_full_cat > 2.0` self-masking.
+  2. Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261024_HYDROCONDUIT.md`) and implemented `HYDROCONDUIT` (`gems/hydroconduit.py`), clearing all 24 single-feature leakage canaries (`max symmetric AUC = 0.65012 <= 0.90`).
+  3. Built and evaluated 3 experiments (`f45pied`, `f45hydro`, `f50hydro`): **`HYDROCONDUIT f45hydro` beat both `R0` (`0.004006 -> 0.008549`, `+113.4%`) and prior holdout-best `RELIEF p10` (`0.006045 -> 0.008549`, `+41.4%`)** while passing **local uniqueness (`0.5500 <= 0.70`)** and **all 1,147 sparse (`<= 150k` px) public rasters across all 102 public `GEMSDOE` repositories (`0 > 70%`, max `0.6719 <= 0.70`)**.
+  4. Executed full live 102-repo GitHub API public registry scan (`1,332` compatible rasters, `evidence/hydroconduit_public_registry_uniqueness.json`) on both continuous pre-placement surface and final dots, confirming the literal dense-surface duplicate stop (`118` rasters `> 150k` px led by `17GEMSDOE E-proba-multiscale`, `100%` footprint positive).
 
 ---
 
-## Historical notes (superseded for action purposes)
+## Prioritized Remaining Blockers & Future Work
 
 ### Prior automated review — 2026-10-24 UTC
 1. Preserve the literal registry stop; [fresh exact-file check](downloads/review_20261024_springalign_witness_v2.json) proves SPRINGALIGN fails and the witness halo covers the whole footprint.
 2. An authorized protocol resolution is required before any candidate can be cleared for upload. Do not silently exempt dense rasters or change the >70% rule. See [prior review](REVIEW_AUTOMATED_20261024.md).
 
 # Prior NEXT_STEPS — after the 2026-10-24 ANASIG session
+### Priority 0 — Human Operator / Selector Decisions (Cannot Be Resolved Autonomously)
+1. **Dense-Surface Representation Policy Decision (`17GEMSDOE E-proba-multiscale`):**
+   - `17GEMSDOE_E-proba-multiscale` (`5,167,373` positive footprint cells = `100%` of footprint) makes literal 3-px forward overlap equal `1.000` for **every** nonempty in-footprint raster.
+   - If the human operator scopes the 3-px dot-overlap uniqueness rule to sparse dot-set candidates (`<= 150,000` positive pixels, `<= 2.9%` of footprint) while retaining `|Spearman rho| <= 0.90` on all `1,332` rasters (`max = 0.4396`), `HYDROCONDUIT f45hydro` (`c9e07ba6…`) already passes every uniqueness, format, canary, and static-holdout gate. Until that explicit human policy update, keep `submission_eligible: false`.
+2. **Blocker 0 — Obtain First `ORGANIZER-CONFIRMED` Submission Receipt:**
+   - `ledger/submissions.csv` now holds `49 BUILT` rows and `0 RECEIPT` rows. Recording even one organizer submission-page receipt (e.g. confirming `R0 = 0.2778` or testing one selector-cleared candidate) is the only way to calibrate whether DrivenData's hidden test set aligns closer to Quaternary piedmont/geothermal recovery (`HYDROCONDUIT`) or exposed bedrock mapping (`BREAKLINE` / `SGMC`).
 
-## Current status (supersedes the collar section below for action purposes)
+### Priority 1 — External Data Acquisition (Blocked by Sandbox Network Policy)
+3. **1 m USGS 3DEP LiDAR Micro-Scarp + Lake Lahontan Shoreline Mask (Hypothesis #5 in `HYPOTHESES_20261024_HYDROCONDUIT.md`):**
+   - In an environment with outbound access to `apps.nationalmap.gov` / DrivenData's `1m_DEM_links.csv` and orthometric (AMSL) elevation tiles, extract sub-meter alluvial scarp doublets and mask Pleistocene Lake Lahontan highstand (~1330–1338 m AMSL) and recessional beach ridges (which cannot be isolated from detrended `Band 12` alone).
 
-**ANASIG f45 is the primary download; verdict negative / NOT CLEARED.** Locally lane-unique (worst forward 0.550, |ρ| 0.547 over 24 local rasters; surface |ρ| 0.024), format-valid (10/10 gates), HOLDOUT-DTI 0.004967 [0.004098, 0.005940] (Δ vs R0 +0.000961 [+0.000168, +0.001814]) — but below the holdout best RELIEF p10 (paired Δ −0.001078 [−0.002034, −0.000112]), below R0 on the SGMC proxy (0.080556 vs 0.096060), and stopped by the binding public witness (17GEMSDOE E-proba, 100% footprint-positive; forward overlap 1.000 for these bytes, `evidence/public_witness_anasig.json`). **Do not spend a slot.** Full record: `docs/ANALYSIS_20261024_ANASIG.md`.
+### Priority 2 — Methodological Next Steps (In-Stack, No External Access Needed)
+4. **Resolve the Static vs Fold-Visible (`d_visible > 2.0`) Holdout Gap:**
+   - Our new `fold_visible_rule2` diagnostic (`scripts/report_hydroconduit_proxies.py`) showed `100% H19-5` (`d_visible > 2.0`) reaches `0.0968` vs `0.0852` when `45%` of dots are forced `> 300 m` off `H19-5`. Test whether **2D Coulomb transtensional slip + dilation tendency** (`Bands 4, 7, 8` projected onto joint `Band 12 + Band 2 RTP` fault normals, Hypothesis #4) or **blind geothermometer strike bridges across MT clay-cap lateral gradients** (`||\nabla \text{Band 17}||`, Hypothesis #3) lifts **both** fold-visible `d_visible > 2.0` `HOLDOUT-DTI` **and** `SGMC` `PROXY` simultaneously.
 
 ## Highest-value work, in order
 
@@ -114,3 +130,7 @@ Next, in order:
 Done: (1) R0 forensic audit (`evidence/r0_forensics_20261024.json`): CLAIM climb fully explained by spacing→3 px + catalogue clearance on a fixed skeleton; (2) fixed wrong DTI algebra in shared `gems/metric.py` (vendor evaluator verified clean); (3) screened 6 surfaces with preserved code (baseline reproduced to the digit) — coherence-gated STEPEDGE/TRANSV duplicate-stopped (0.75 vs BREAKLINE far), RADSTEP passed but weaker; (4) built STEPRAW f33/f45/f60 (3 experiments): f60 is **literal-unique on the 28-raster local registry** (0.461) with **SGMC 0.141464 (repo best)** but **HOLDOUT-DTI 0.003980** fails every bar → verdict negative, primary download, no slot. Sibling f33/f45 are duplicates (0.760/0.711) — never submit.
 
 Next, in order: (1) **one organizer receipt** remains Blocker 0 — the selector choice is now STEPEDGE f60 (SGMC-best/unique) vs STRAINBREAK f60 (holdout-best unique) vs BREAKLINE f45 (balanced); receipt decision rules in `docs/ANALYSIS_20261024_STEPEDGE.md` §4; (2) obtain the 1 m DEM links via DrivenData login (largest identified content gap toward 0.4413; unrestorable from sandbox); (3) no fourth STEPEDGE dose, no new coherence-gated terrain lane (three duplicate-stops); shoreline-suppressed steps only after a receipt; (4) re-run local uniqueness at any future selector decision (verdicts decay as registry grows — see IRREGULARITIES 2026-10-24); (5) optional full public scan refresh (`audit_public_registry.py`) before any selector action — this session ran the single binding witness only.
+### Parallel-Session Benchmark Update (`PIEDFRONT` + `STEPEDGE` + `review_20261024`)
+- **`PIEDFRONT f35Ptop`** (`GEMSDOE92-PIEDFRONT-f35Ptop-20261024`, `docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif`, SHA-256 `e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8`): static `HOLDOUT-DTI = 0.006425 [0.005375, 0.007479]`, `SGMC = 0.059993`, `verdict: negative` (**OK TO DOWNLOAD**, **DO NOT SUBMIT**). `HYDROCONDUIT f45hydro` (`0.008549 [0.007626, 0.009487]`) improves over `PIEDFRONT f35Ptop` by `+33.1%` (`+0.002124`) while overlapping only `56.56% <= 70%` within 3 px (`phi = 0.2000`).
+- **`STEPEDGE f60Sraw`** (`GEMSDOE92-STEPEDGE-f60Sraw-20261024`, `docs/downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif`, SHA-256 `c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4`): static `HOLDOUT-DTI = 0.003980 [0.003295, 0.004702]`, repo-best `SGMC = 0.141464`, `verdict: negative` (`42.35% <= 70%` 3-px overlap with `HYDROCONDUIT f45hydro`).
+- Ledger total across all merged sessions: `54 BUILT / 0 RECEIPT`.

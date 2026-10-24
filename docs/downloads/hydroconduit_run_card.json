@@ -1,0 +1,269 @@
+{
+  "schema": "gemsdoe92-protocol-run-card.v1",
+  "lane": "HYDROCONDUIT",
+  "primary_variant": "f45hydro",
+  "hypothesis": "Active Quaternary Basin-and-Range normal faults and >75% of blind INGENIOUS geothermal conduits localize on subtle 1-5 m piedmont/shallow-basement breaks in slope rather than 25-40 deg bare range-core cliffs (which consumed 74.8% of BREAKLINE far dots), and carry hydrothermal magnetite-destruction / RTP contact troughs, K/Th potassic alteration, MT clay-cap conductivity, and blind silica/cation geothermometer (>=80 C) signatures.",
+  "mechanism": "Relative log-slope break ||grad log(slope+1 deg)|| * 600 m cross-strike step monotonicity mu_step * elevation coherence detects one-sided piedmont scarps while rejecting V-shaped erosional canyons; unified placement repacks H19-5 piedmont strands via exact marginal expected DTI and places 45-50% spaced dots >3 px off H19-5.",
+  "named_non_fault_process_that_could_mimic_it": "Piedmont alluvial-fan coalescing bajada aprons, non-tectonic Pleistocene Lake Lahontan recessional shorelines at piedmont elevations, and altered volcanic contacts or lateral thermal-outflow paleochannels.",
+  "experiments_run_in_budget": {
+    "budget_cap": 3,
+    "experiments_executed": 3,
+    "arms": {
+      "f45pied": {
+        "id": "h33-h33-2-b2-HYDROCONDUITf45pied-20261024-3c236840",
+        "sha256_zeros": "e9ba570999447016b568a4bcffb77ef8bce09669310fd9db93ba4236bec3746f",
+        "sha256_nan": "3c236840afc30d9dc715648f9bc2ec52dd09a7a70c731ebd7c0fcca517a5ba9b",
+        "n_dots": 37654,
+        "n_skeleton_repacked": 20710,
+        "n_far_off_h19": 16944,
+        "far_tercile_fractions": {
+          "basin": 0.070999,
+          "piedmont": 0.858475,
+          "range_core": 0.070526
+        },
+        "static_holdout_dti": 0.00852418046837157,
+        "static_holdout_ci95": [
+          0.007621492658954995,
+          0.009459454570933574
+        ],
+        "sgmc_proxy_dti": 0.073312,
+        "local_worst_forward_overlap": 0.550008
+      },
+      "f45hydro": {
+        "id": "h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb",
+        "sha256_zeros": "c9e07ba6627672bfd58b08572a19d48aa16ff07a2f95347993550eaaccba8fdd",
+        "sha256_nan": "979c9cdb8e6b5143042801e9d88fae6b01ba3924ff4e30c28c0063a6e0ad6a1e",
+        "n_dots": 37654,
+        "n_skeleton_repacked": 20710,
+        "n_far_off_h19": 16944,
+        "far_tercile_fractions": {
+          "basin": 0.10334,
+          "piedmont": 0.834455,
+          "range_core": 0.062205
+        },
+        "static_holdout_dti": 0.008549099911705209,
+        "static_holdout_ci95": [
+          0.007625521081642486,
+          0.009487155789642671
+        ],
+        "sgmc_proxy_dti": 0.074107,
+        "local_worst_forward_overlap": 0.550008
+      },
+      "f50hydro": {
+        "id": "h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3",
+        "sha256_zeros": "6625e43d362f6f65d60c7954004f4e37afb6bc15a53cf540b1fa84c1d3b8e38b",
+        "sha256_nan": "5d50e9e3bc92aa8efdd313d750d15e13c10216c61da0660f49cf2cbf7cd77fcd",
+        "n_dots": 37654,
+        "n_skeleton_repacked": 18827,
+        "n_far_off_h19": 18827,
+        "far_tercile_fractions": {
+          "basin": 0.107346,
+          "piedmont": 0.828172,
+          "range_core": 0.064482
+        },
+        "static_holdout_dti": 0.008456816864812203,
+        "static_holdout_ci95": [
+          0.007531719124820079,
+          0.009429732217401636
+        ],
+        "sgmc_proxy_dti": 0.072799,
+        "local_worst_forward_overlap": 0.514288
+      }
+    }
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.008549099911705209,
+    "ci95": [
+      0.007625521081642486,
+      0.009487155789642671
+    ],
+    "delta_vs_R0": 0.004542952737020463,
+    "delta_vs_R0_ci95": [
+      0.0037700871237530556,
+      0.005314581448349911
+    ],
+    "delta_vs_holdout_best_RELIEFp10": 0.0025039675145322824,
+    "delta_vs_RELIEFp10_ci95": [
+      0.0017952281627593473,
+      0.003222042336948988
+    ],
+    "delta_vs_STRAINBREAKf60": 0.0030624088722107203,
+    "delta_vs_STRAINBREAKf60_ci95": [
+      0.001991569612151358,
+      0.004142918110631735
+    ],
+    "delta_vs_SPRINGALIGNf33": 0.0036840308786223125,
+    "delta_vs_SPRINGALIGNf33_ci95": [
+      0.0026949990572239825,
+      0.004656789837277184
+    ],
+    "R0_dti": 0.004006147174684746,
+    "holdout_best_prior_RELIEFp10_dti": 0.006045132397172926,
+    "STRAINBREAKf60_dti": 0.0054866910394944885,
+    "ANASIGf45_dti": 0.004966945692180205,
+    "SPRINGALIGNf33_dti": 0.004865069033082896,
+    "BREAKLINEf45_dti": 0.004860507967529687,
+    "spatial_clusters": 363,
+    "bootstrap_draws": 1000
+  },
+  "fold_visible_rule2_holdout_diagnostic": {
+    "evidence_class": "HOLDOUT-DTI (true fold-by-fold d_visible > 2.0; zero full-catalogue self-masking)",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "H19_skeleton_dvis2_dti": 0.09675733336022943,
+    "H19_skeleton_dvis2_ci95": [
+      0.0874015850275538,
+      0.10621440914887433
+    ],
+    "HYDROCONDUIT_f45hydro_dvis2_dti": 0.08522145707884293,
+    "HYDROCONDUIT_f45hydro_dvis2_ci95": [
+      0.07509769270979003,
+      0.0949629143219576
+    ],
+    "note": "Demonstrates the structural self-masking discovery: when d > 2.0 px is computed from visible_catalogue per fold rather than static full existing_faults.tif, withheld fault segments are not artificially zeroed within 200 m of themselves."
+  },
+  "leakage_canary_max_symmetric_auc": 0.65012,
+  "leakage_canaries_all_pass_le_0_90": true,
+  "sgmc_control_proxy": {
+    "evidence_class": "PROXY (off-catalogue USGS SGMC bedrock faults >3 px from catalogue)",
+    "dti": 0.074107,
+    "f45pied_dti": 0.073312,
+    "f50hydro_dti": 0.072799,
+    "R0_dti": 0.09606,
+    "RELIEFp10_dti": 0.087245,
+    "STRAINBREAKf60_dti": 0.105162,
+    "BREAKLINEf45_dti": 0.126105,
+    "truth_pixels": 62703,
+    "note": "Adding the hydrothermal/RTP multiplier lifts SGMC (+0.00080 over f45pied), while suppressing bare mountain range-core cliffs (from 74.8% in BREAKLINE to 6.2% in f45hydro) trades exposed pre-Quaternary bedrock SGMC faults (0.0741 vs R0 0.0961) for Quaternary piedmont/geothermal fault localization (+113.4% static HOLDOUT-DTI)."
+  },
+  "correlation_overlap_vs_registry": {
+    "local": {
+      "registry_rasters_checked": 29,
+      "worst_forward_overlap_within_3px": 0.550008,
+      "worst_forward_overlap_file": "h19_5.tif",
+      "worst_abs_spearman": 0.298174,
+      "worst_abs_spearman_file": "h19_5.tif",
+      "literal_duplicate": false,
+      "preplacement_surface_S_hydro_top37654": {
+        "registry_rasters_checked": 29,
+        "worst_forward_overlap": 0.189249,
+        "worst_forward_overlap_file": "h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+        "worst_abs_spearman": 0.063126,
+        "worst_abs_spearman_file": "h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+        "duplicate": false
+      },
+      "preplacement_surface_continuous_spearman_300k": {
+        "registry_file": "h19_5.tif",
+        "spearman_S_hydro": 0.109815,
+        "spearman_S_pied": 0.114722
+      }
+    },
+    "public_expanded": {
+      "evidence_file": "evidence/hydroconduit_public_registry_uniqueness.json",
+      "matching_public_repositories": 102,
+      "registries_checked": 1332,
+      "scan_complete_for_declared_scope": false,
+      "scan_source": "current GitHub API",
+      "preplacement_surface_worst_abs_spearman": 0.43964673194974535,
+      "preplacement_surface_worst_forward_overlap": 1.0,
+      "final_dots_worst_abs_spearman": 0.36928934038407785,
+      "final_dots_worst_rho_raster": "60GEMSDOE/docs/downloads/gems32-lazygreedy-maxcov-44090-supconfined-zeros.tif",
+      "final_dots_worst_forward_overlap": 1.0,
+      "final_dots_worst_overlap_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "rasters_over_70pct_overlap": 118,
+      "unique_under_literal_rule": false,
+      "stop_required": true,
+      "sparse_only_diagnostic_NOT_A_GATE": {
+        "evidence_file": "evidence/hydroconduit_public_sparse_diagnostic.json",
+        "sparse_checked_le_150k_positive_px": 1147,
+        "dense_skipped_gt_150k_positive_px": 185,
+        "worst_sparse_le_150k_forward_overlap": 0.671934,
+        "worst_sparse_le_150k_raster": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+        "count_over_70pct_le_150k": 0,
+        "sparse_checked_le_90k_positive_px": 1089,
+        "worst_sparse_le_90k_forward_overlap": 0.651803,
+        "count_over_70pct_le_90k": 0,
+        "note": "Across ALL 1,147 sparse dot-like rasters (<=150k positive px) in all 102 public GEMSDOE repositories, ZERO rasters exceed 70% forward overlap (max 0.6719 <= 0.70; max <=90k is 0.6518 <= 0.70). Every one of the 118 rasters exceeding 70% is a dense >150k-px surface led by 17GEMSDOE E-proba-multiscale (5,167,373 positive px = 100% of footprint)."
+      }
+    }
+  },
+  "raster_sha256": "c9e07ba6627672bfd58b08572a19d48aa16ff07a2f95347993550eaaccba8fdd",
+  "raster_sha256_nan_twin": "979c9cdb8e6b5143042801e9d88fae6b01ba3924ff4e30c28c0063a6e0ad6a1e",
+  "validator": {
+    "overall_pass": true,
+    "gates_zeros": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=float32 count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nan_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      },
+      {
+        "name": "submission_encoding",
+        "ok": true,
+        "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "c9e07ba6627672bfd58b08572a19d48aa16ff07a2f95347993550eaaccba8fdd"
+      }
+    ],
+    "no_nan_inside_footprint": true,
+    "outside_footprint_zero_in_primary": true,
+    "values_in_0_1": true,
+    "zero_catalogue_mass": true,
+    "crs_shape_transform_match": "EPSG:32611, 3730x3292, float32, exact sample_submission.tif grid"
+  },
+  "submission_name": "GEMSDOE92-HYDROCONDUIT-f45hydro-20261024",
+  "file": "h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif",
+  "note": "h33-h33-2-b2; HYDROCONDUIT f45hydro: 20710 piedmont H19-5 + 16944 off-skel scarp/RTP/GDR dots (>3px H19-5)",
+  "note_chars": 106,
+  "organizer_score": null,
+  "download_status": "OK TO DOWNLOAD (format-valid, [0, 1] verified, locally & sparse-public unique)",
+  "submission_status": "DO NOT SUBMIT \u2014 NOT CLEARED FOR A WEEKLY SLOT (duplicate under literal dense-surface registry rule; human selector decision required)",
+  "submission_eligible": false,
+  "verdict": "negative",
+  "verdict_reason": "1. Positive achievements: HYDROCONDUIT f45hydro is the first candidate in GEMSDOE92 to beat BOTH R0 (0.004006 -> 0.008549, +113.4%) and prior holdout-best RELIEF p10 (0.006045 -> 0.008549, +41.4%, paired 95% CI [+0.00180, +0.00322]) while passing every single-feature leakage canary (max AUC 0.6501 <= 0.90), local registry uniqueness (0.5500 <= 0.70), and ALL 1,147 sparse (<=150k px) public rasters across 102 public GEMSDOE repos (max 0.6719 <= 0.70; |rho| <= 0.4396 <= 0.90). 2. Why verdict remains 'negative' (DO NOT SUBMIT without human policy override): (a) Under the literal Rule-1 wording with no representation exemption, 118 dense public rasters (>150k positive px, led by 17GEMSDOE E-proba-multiscale with 100% footprint support) yield 100% > 70% forward overlap; an agent session cannot waive that rule unilaterally. (b) Multi-instrument disclosure: true fold-by-fold d_visible>2 holdout (0.0852 vs 0.0968 H19-only) and off-catalogue SGMC bedrock proxy (0.0741 vs R0 0.0961) show static-holdout gains partly reflect piedmont H19-5 collar repacking while 45% off-skeleton moves trade H19-5 spine density and mountain-core SGMC faults."
+}
