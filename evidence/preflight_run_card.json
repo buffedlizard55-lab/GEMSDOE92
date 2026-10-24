@@ -1,0 +1,36 @@
+{
+  "schema": "gemsdoe92-run-card-v1",
+  "lane": "MT-gravity transverse phase (preplacement screen only)",
+  "hypothesis": "Co-located transverse gradients in Band 17 conductivity and Band 13 isostatic gravity, under intermediate Band 15 cover, might reveal unmapped permeable basement contacts.",
+  "mechanism": "Joint oriented cross-strike field discontinuities could distinguish concealed fluid-guiding faults from isolated magnetic or topographic lineaments.",
+  "non_fault_process": "Saline playa clays along a non-tectonic density contact.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": null,
+    "value": null,
+    "ci95": null,
+    "reason": "Not evaluated: universal public-registry pre-placement stop; no candidate dots or catalogue-based features built."
+  },
+  "leakage_canary": null,
+  "registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "source": "evidence/preplacement_dense_witness.json",
+    "correlation": null,
+    "overlap": 1.0,
+    "overlap_scope": "Mathematical consequence for ANY nonempty candidate in footprint, against one SHA-verified dense public registry raster; not a candidate-specific scored overlap.",
+    "limit": 0.70
+  },
+  "raster_sha256": null,
+  "validator": {
+    "no_nan_in_footprint": null,
+    "values_in_0_1": null,
+    "crs_shape_transform_match": null,
+    "reason": "No new submission raster was built because pre-placement uniqueness failed."
+  },
+  "submission_name": null,
+  "note": null,
+  "submission_eligible": false,
+  "verdict": "negative",
+  "next_step": "Selector must resolve whether dense continuous probability maps count as 'dots'; only after an explicit policy change should the top candidate be screened, canary-tested, held out, placed, validated and compared against full registry. No weekly slot spent."
+}
