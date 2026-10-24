@@ -246,3 +246,95 @@ rather than mid-facet bedrock cliffs.
 - **Falsifier**: A live receipt gain `>= +0.01` over both `R0` and `scarp2p0px`
   falsifies surface-scarp dominance and proves hidden test faults are primarily
   concealed basement structures best centered by potential-field gradients alone.
+
+---
+
+# Mechanism Cards — CONCENTRATION axis (2026-10-24)
+
+Parent: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots. Axis chosen
+autonomously per the session prompt. Block size **10 px = 1 km**. Prior: km-scale
+Gaussian KDE of the pinned known-fault catalogue (`sigma = 1 km`), averaged per
+1 km block — a fault-proximity field, not truth. Operation: remove dots from the
+extreme-prior blocks, re-place them on H19-5 support in the opposite-extreme
+blocks, count and mass held at exactly 37,654.
+
+## Measured preconditions (why this build looks the way it does)
+- R0 is a **saturated D2.8 packing** of the H19-5 support: of 66,151
+  catalogue-legal H19-5 pixels not already dotted, `794` clear `2.8284 px`,
+  `5,383` clear `2.2 px`, `9,760` clear `2.0 px`, `29,114` clear `1.414 px`.
+  A relocation experiment that keeps the parent's spacing floor is therefore
+  capped at 2.1% of the file, which cannot reach the 0.01 evidence threshold.
+  All three arms therefore share one declared secondary change: moved dots use a
+  `>= 2.0 px` floor. It is identical in both directions, so it cannot by itself
+  create the up/down difference the axis is testing.
+- R0's dots sit **99% more than 3 px from the catalogue** (median nearest
+  distance `46.57 px`, mean hit rate on withheld catalogue components `0.010`).
+  The file's implicit bet is "new faults are away from known ones". No previous
+  session tested the alternative.
+- Raw per-block catalogue counts were rejected as the prior: 60,988 catalogue
+  pixels over 52,387 blocks (1.16 px/block) puts almost every block in a
+  0-density tie. The KDE removes the tie degeneracy.
+- Dot-weighted block prior: parent `0.01216`; destination capacity above `0.002`
+  is `4,054` dots, above `0.01` is `2,725` dots — the capacity that makes the
+  20% arm saturated.
+
+## `h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48`
+- **Value**: 3,765 dots (10.00%) moved from zero-prior blocks into the highest
+  prior H19-5 holes; source mean prior `0.000`, destination mean `0.0199`,
+  destination floor `0.00144`; median transport `304.6 px` (30 km); file prior
+  `0.01216 -> 0.01415`; `min_nn 2.0 px`; `CV_occupied 0.619 -> 0.648`.
+- **Hypothesis**: at fixed count and mass, re-concentrating the file onto the
+  km-blocks that the catalogue proves are faulted raises the share of dots whose
+  strand is real new-fault truth.
+- **Mechanism**: with `S` and count fixed, DTI moves only through `T` (kernel
+  credit) and `|G|` (newly covered truth). A relocated dot pays iff it lands
+  within ~2.5 px of truth with credit above ~0.05; a dead dot costs ~0.06 of
+  denominator. So the operation is a pure precision bet on the destination
+  blocks, which is exactly what the catalogue-density prior measures.
+- **Non-fault mimic**: catalogue density also tracks *survey attention and
+  bedrock exposure*. Well-mapped corridors may be where USGS/INGENIOUS looked,
+  not where faults are densest, so the prior can concentrate mass onto
+  already-exhausted ground.
+- **Predicted sign and size**: `MODEL:+0.006`, range `[-0.008, +0.020]`.
+- **Falsifier**: receipt `<= -0.01` — new-fault truth is not enriched near the
+  catalogue; receipt `<= +0.01` — no evidence either way.
+
+## `h33-h33-2-b2-CONCcatblk10up20-20261024-b6e80d73`
+- **Value**: 7,531 dots (20.00%) moved; destination mean prior `0.0100`, floor
+  `0.0`; file prior `0.01216 -> 0.01416` (same as the 10% arm); median transport
+  `47.0 px`; `min_nn 2.0 px`; 35.9% of pairs below `2.8284 px`.
+- **Hypothesis (and the measured surprise)**: this was designed as the dose
+  point, but the prior's destination capacity above `0.002` is only `4,054`
+  dots, so the first ~4k movers concentrate and the remaining ~3.5k spill onto
+  near-zero prior ground. The arm therefore tests **saturation**, not a linear
+  dose: the file-level prior gain is identical to the 10% arm.
+- **Mechanism**: same as above; the extra movers add variance without adding
+  concentration, and they consume the last `2.0 px` holes in the best blocks.
+- **Non-fault mimic**: as above, plus the tighter packing itself (35.9% of pairs
+  below the parent's `2.8284 px`) which can double-credit one strand.
+- **Predicted sign and size**: `MODEL:+0.004`, range `[-0.010, +0.018]`.
+- **Falsifier**: `>= +0.01` apart from the 10% arm means destination capacity —
+  not the prior — was binding, which points at the SPACING axis next;
+  `>= 0.01` *below* it means moving mass to zero-prior ground is harmful.
+
+## `h33-h33-2-b2-CONCcatblk10dn10-20261024-c671b704`
+- **Value**: inverse direction — 3,765 dots (10.00%) moved *out* of the
+  highest-prior blocks into the lowest; source mean prior `0.0525`, destination
+  mean `0.00032`; file prior `0.01216 -> 0.00694`; median transport `72.1 px`.
+- **Hypothesis**: the competition masks known faults pixel-exactly and scores
+  only new-fault truth. If that truth was drawn from structures absent from
+  USGS/INGENIOUS (data gaps, concealed basin faults), catalogue-dense blocks are
+  the least productive ground and this direction wins.
+- **Mechanism**: identical algebra with the sign reversed; the file deliberately
+  moves mass into ground the catalogue does not cover.
+- **Non-fault mimic**: low-prior blocks are also the least lineament-corroborated
+  basins, so the new dots can be pure dead mass.
+- **Predicted sign and size**: `MODEL:-0.006`, range `[-0.018, +0.010]`.
+- **Falsifier**: receipt `>= +0.01` reverses the strategic bet and says the
+  catalogue is anti-predictive for new-fault truth. Together the up/down pair
+  brackets the sign of the block prior, which is the only thing this axis can
+  establish for the remaining weeks.
+
+## Shared decision rule
+Absolute live change `< 0.01` is **no evidence** (public chunks only; the private
+score may differ). Only human-supplied receipt scores decide.

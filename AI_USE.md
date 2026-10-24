@@ -146,3 +146,21 @@ slots, receipts) are left blank.
 ### What the human decides and supplies
 - Autonomous `AXIS = SNAP` selection was delegated by the human's session prompt ("Do not prompt me over choosing an Axis for the session, pick your own session").
 - The human supplies `TOP_PUBLIC` (with observation date), confirms rolling-week and remaining competition slots, chooses whether/which single encoding file to upload from their registered DrivenData account, and records official submission-page `RECEIPT` scores and dates in `ledger/submissions.csv`.
+
+---
+
+## Session 6 — CONCENTRATION, 1 km known-fault prior (2026-10-24)
+
+### What AI wrote
+- `scripts/build_concentration_variants.py` — full pipeline: SHA-256/byte verification of all 12 pinned inputs, byte-exact R0 lineage rebuild (both encodings), 1 km Gaussian-KDE known-fault prior, deterministic mover selection and capacity-aware placement, write of 3 GeoTIFF pairs, disk re-read of 13 checks per file, `gems.gates` run, ledger append (idempotent) and `evidence/concentration_variants.json`.
+- `scripts/report_concentration_proxies.py` — report-only hide-and-recover, SGMC control and canaries, all labelled `interpretable: false` because the design prior is catalogue-derived (`evidence/concentration_proxy_audit.json`).
+- `docs/mechanism_cards.md`, `ledger/mechanism_cards.json`, `SLOT_PLAN.md`, `docs/SUBMIT.md`, `IRREGULARITIES.md`, `README.md` (CURRENT STATE block only) and this file.
+- Measured preconditions that drove the design: saturated D2.8 packing capacity (794 / 9,760 / 29,114 legal pixels at 2.8284 / 2.0 / 1.414 px), R0's catalogue-distance profile (median 46.57 px), and the previous MASS_A10 spacing breach (min_nn 1.0 px).
+
+### What the human decided and supplies
+- The human delegated the axis choice ("pick your own session"); the AI selected `CONCENTRATION`.
+- The human supplies `TOP_PUBLIC` with its observation date, confirms the entity's rolling-week quota and remaining slots, decides which single file (if any) to upload, and records the submission-page `RECEIPT` score and date in `ledger/submissions.csv`.
+- The human decides whether the declared secondary change (moved-dot spacing floor `2.0 px` instead of `2.8284 px`, needed because the parent is a saturated packing) is acceptable for a slot.
+
+### What the AI did not do
+No submission, no login, no leaderboard or competition-page access, no Dropbox contact, no label probing, no invented numbers. Unknown values (`TOP_PUBLIC`, slots, receipts) are left blank.

@@ -1,0 +1,484 @@
+{
+  "schema": "gemsdoe92.concentration-variants.v1",
+  "session_date_utc": "20261024",
+  "axis": "CONCENTRATION",
+  "parent": "h33-h33-2-b2",
+  "parent_claim": {
+    "score": 0.2778,
+    "evidence_label": "CLAIM",
+    "receipt": false
+  },
+  "exact_parent_rebuild": {
+    "n_dots": 37654,
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "matches_recorded_hashes": true
+  },
+  "block_px": 10,
+  "block_km": 1.0,
+  "prior": {
+    "definition": "known-fault (catalogue) pixel density per 1 km block = catalogue_px / in_footprint_px",
+    "source": "pinned existing_faults.tif (USGS/INGENIOUS catalogue)",
+    "built_from_labels": true,
+    "organizer_statement": "new faults include newly mapped geometry of existing systems and can lie within 300 m of known traces (community.drivendata.org threads 11516 and 11536)",
+    "corr_with_r0_dot_count_spearman_note": "see ledger notes"
+  },
+  "spacing_policy": {
+    "parent_min_nn_px": 2.8284,
+    "moved_dot_floor_px": 2.0,
+    "reason": "R0 is a saturated D2.8 packing; >=2.8284 px leaves only 794 legal H19-5 destination pixels (2.1% of the file), which cannot reach the brief's 0.01 evidence threshold. The floor is applied identically to every variant, so it cannot masquerade as the axis.",
+    "capacity_measured": {
+      "ge_1p0px": 66151,
+      "ge_1p414px": 29114,
+      "ge_2p0px": 9760,
+      "ge_2p2px": 5383,
+      "ge_2p8284px": 794,
+      "ge_3p0px": 733
+    }
+  },
+  "moved_dot_rules": {
+    "on_h19_5_support": true,
+    "in_footprint": true,
+    "d_cat_gt_px": 3.0,
+    "kept_dot_rules": "parent dots keep their exact positions and the parent's own d_cat > 2.0 px rule"
+  },
+  "parent_block_cv": {
+    "cv_all_eligible": 1.880011,
+    "cv_occupied": 0.618731,
+    "n_blocks_all_eligible": 52387,
+    "n_blocks_occupied": 15976,
+    "max_dots_per_block": 9
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48",
+      "n_moved": 3765,
+      "pct_changed": 9.998938,
+      "mean_displacement_px": 696.9957,
+      "median_displacement_px": 304.6457,
+      "min_displacement_px": 21.095,
+      "source_mean_prior": 0.0,
+      "source_prior_cut": 0.0,
+      "n_source_blocks": 1481,
+      "destination_mean_prior": 0.01989677862192291,
+      "destination_prior_floor": 0.001439382622775156,
+      "n_destination_blocks": 3092,
+      "max_dots_in_one_block": 5,
+      "capacity_slots_at_floor": 13872,
+      "capacity_by_prior_band": {
+        "ge_0.002": 4054,
+        "ge_0.005": 3441,
+        "ge_0.01": 2725,
+        "ge_0.02": 1689
+      },
+      "spacing_floor_px": 2.0,
+      "cv_before": {
+        "cv_all_eligible": 1.880011,
+        "cv_occupied": 0.618731,
+        "n_blocks_all_eligible": 52387,
+        "n_blocks_occupied": 15976,
+        "max_dots_per_block": 9
+      },
+      "cv_after": {
+        "cv_all_eligible": 2.012853,
+        "cv_occupied": 0.647553,
+        "n_blocks_all_eligible": 52387,
+        "n_blocks_occupied": 14719,
+        "max_dots_per_block": 13
+      },
+      "dot_weighted_prior_before": 0.01216,
+      "dot_weighted_prior_after": 0.01415,
+      "nnd_after": {
+        "min_nn_px": 2.0,
+        "median_nn_px": 3.0,
+        "frac_nn_below_2p8284": 0.223642
+      },
+      "nnd_parent": {
+        "min_nn_px": 2.828427,
+        "median_nn_px": 3.0,
+        "frac_nn_below_2p8284": 0.0
+      },
+      "cv_parent": {
+        "cv_all_eligible": 1.880011,
+        "cv_occupied": 0.618731,
+        "n_blocks_all_eligible": 52387,
+        "n_blocks_occupied": 15976,
+        "max_dots_per_block": 9
+      },
+      "sha256": "cd5ae43ba6116418d09fb911baa0c05a8a0541e73f74275ce3f5feb3713f127e",
+      "sha256_zeros": "c9503d4873924d833e311eebe56e220bad97acd21e701a7f4bac10af67e499f2",
+      "sha8": "c9503d48",
+      "primary_file": "h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48.tif",
+      "fallback_file": "h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48-zeros.tif",
+      "reread_nan": {
+        "crs_matches": true,
+        "shape_matches": true,
+        "transform_matches": true,
+        "dtype_float32": true,
+        "one_band": true,
+        "inside_finite": true,
+        "outside_encoding": true,
+        "range_0_1": true,
+        "binary_unit_mass": true,
+        "zero_catalogue_mass": true,
+        "count_37654": true,
+        "mass_37654": true,
+        "moved_dots_clear_catalogue_3px": true
+      },
+      "reread_zeros": {
+        "crs_matches": true,
+        "shape_matches": true,
+        "transform_matches": true,
+        "dtype_float32": true,
+        "one_band": true,
+        "inside_finite": true,
+        "outside_encoding": true,
+        "range_0_1": true,
+        "binary_unit_mass": true,
+        "zero_catalogue_mass": true,
+        "count_37654": true,
+        "mass_37654": true,
+        "moved_dots_clear_catalogue_3px": true
+      },
+      "gates": [
+        {
+          "gate": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "gate": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "gate": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "gate": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "gate": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "gate": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "gate": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 zero=0 other=0"
+        },
+        {
+          "gate": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "gate": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (AXIS=PRUNE: deviation declared)"
+        },
+        {
+          "gate": "reread_sha256",
+          "ok": true,
+          "detail": "cd5ae43ba6116418d09fb911baa0c05a8a0541e73f74275ce3f5feb3713f127e"
+        }
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-CONCcatblk10up20-20261024-b6e80d73",
+      "n_moved": 7531,
+      "pct_changed": 20.000531,
+      "mean_displacement_px": 62.3508,
+      "median_displacement_px": 47.0106,
+      "min_displacement_px": 1.0,
+      "source_mean_prior": 1.0204950779164403e-10,
+      "source_prior_cut": 5.86224865317675e-09,
+      "n_source_blocks": 3016,
+      "destination_mean_prior": 0.010012557937696103,
+      "destination_prior_floor": 0.0,
+      "n_destination_blocks": 5364,
+      "max_dots_in_one_block": 9,
+      "capacity_slots_at_floor": 19556,
+      "capacity_by_prior_band": {
+        "ge_0.002": 4054,
+        "ge_0.005": 3441,
+        "ge_0.01": 2725,
+        "ge_0.02": 1689
+      },
+      "spacing_floor_px": 2.0,
+      "cv_before": {
+        "cv_all_eligible": 1.880011,
+        "cv_occupied": 0.618731,
+        "n_blocks_all_eligible": 52387,
+        "n_blocks_occupied": 15976,
+        "max_dots_per_block": 9
+      },
+      "cv_after": {
+        "cv_all_eligible": 2.082735,
+        "cv_occupied": 0.65539,
+        "n_blocks_all_eligible": 52387,
+        "n_blocks_occupied": 14030,
+        "max_dots_per_block": 13
+      },
+      "dot_weighted_prior_before": 0.01216,
+      "dot_weighted_prior_after": 0.014163,
+      "nnd_after": {
+        "min_nn_px": 2.0,
+        "median_nn_px": 2.828427,
+        "frac_nn_below_2p8284": 0.358793
+      },
+      "nnd_parent": {
+        "min_nn_px": 2.828427,
+        "median_nn_px": 3.0,
+        "frac_nn_below_2p8284": 0.0
+      },
+      "cv_parent": {
+        "cv_all_eligible": 1.880011,
+        "cv_occupied": 0.618731,
+        "n_blocks_all_eligible": 52387,
+        "n_blocks_occupied": 15976,
+        "max_dots_per_block": 9
+      },
+      "sha256": "a877e3aaecd3ce85c297280ff7fd1163379af3009d041d7b9a83908e1f26c985",
+      "sha256_zeros": "b6e80d73fa67e26c91e3bebf7b86c5f4f51fb8b295f0247fd73a6e559afe2991",
+      "sha8": "b6e80d73",
+      "primary_file": "h33-h33-2-b2-CONCcatblk10up20-20261024-b6e80d73.tif",
+      "fallback_file": "h33-h33-2-b2-CONCcatblk10up20-20261024-b6e80d73-zeros.tif",
+      "reread_nan": {
+        "crs_matches": true,
+        "shape_matches": true,
+        "transform_matches": true,
+        "dtype_float32": true,
+        "one_band": true,
+        "inside_finite": true,
+        "outside_encoding": true,
+        "range_0_1": true,
+        "binary_unit_mass": true,
+        "zero_catalogue_mass": true,
+        "count_37654": true,
+        "mass_37654": true,
+        "moved_dots_clear_catalogue_3px": true
+      },
+      "reread_zeros": {
+        "crs_matches": true,
+        "shape_matches": true,
+        "transform_matches": true,
+        "dtype_float32": true,
+        "one_band": true,
+        "inside_finite": true,
+        "outside_encoding": true,
+        "range_0_1": true,
+        "binary_unit_mass": true,
+        "zero_catalogue_mass": true,
+        "count_37654": true,
+        "mass_37654": true,
+        "moved_dots_clear_catalogue_3px": true
+      },
+      "gates": [
+        {
+          "gate": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "gate": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "gate": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "gate": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "gate": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "gate": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "gate": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 zero=0 other=0"
+        },
+        {
+          "gate": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "gate": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (AXIS=PRUNE: deviation declared)"
+        },
+        {
+          "gate": "reread_sha256",
+          "ok": true,
+          "detail": "a877e3aaecd3ce85c297280ff7fd1163379af3009d041d7b9a83908e1f26c985"
+        }
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-CONCcatblk10dn10-20261024-c671b704",
+      "n_moved": 3765,
+      "pct_changed": 9.998938,
+      "mean_displacement_px": 77.8717,
+      "median_displacement_px": 72.111,
+      "min_displacement_px": 11.1803,
+      "source_mean_prior": 0.05250905858463036,
+      "source_prior_cut": 0.03643851401284337,
+      "n_source_blocks": 1822,
+      "destination_mean_prior": 0.0003222822230294823,
+      "destination_prior_floor": 0.0,
+      "n_destination_blocks": 3006,
+      "max_dots_in_one_block": 5,
+      "capacity_slots_at_floor": 12326,
+      "capacity_by_prior_band": {
+        "ge_0.002": 8301,
+        "ge_0.005": 7688,
+        "ge_0.01": 6972,
+        "ge_0.02": 5898
+      },
+      "spacing_floor_px": 2.0,
+      "cv_before": {
+        "cv_all_eligible": 1.880011,
+        "cv_occupied": 0.618731,
+        "n_blocks_all_eligible": 52387,
+        "n_blocks_occupied": 15976,
+        "max_dots_per_block": 9
+      },
+      "cv_after": {
+        "cv_all_eligible": 2.043658,
+        "cv_occupied": 0.647424,
+        "n_blocks_all_eligible": 52387,
+        "n_blocks_occupied": 14362,
+        "max_dots_per_block": 12
+      },
+      "dot_weighted_prior_before": 0.01216,
+      "dot_weighted_prior_after": 0.006942,
+      "nnd_after": {
+        "min_nn_px": 2.0,
+        "median_nn_px": 3.0,
+        "frac_nn_below_2p8284": 0.227891
+      },
+      "nnd_parent": {
+        "min_nn_px": 2.828427,
+        "median_nn_px": 3.0,
+        "frac_nn_below_2p8284": 0.0
+      },
+      "cv_parent": {
+        "cv_all_eligible": 1.880011,
+        "cv_occupied": 0.618731,
+        "n_blocks_all_eligible": 52387,
+        "n_blocks_occupied": 15976,
+        "max_dots_per_block": 9
+      },
+      "sha256": "838bf4a157ed5139dc3fe4290021624a671215131c733e0624685a0330e6b337",
+      "sha256_zeros": "c671b704cc671216f6b732769bab622ed6e75b42e59bfdcdb6b38cb37e6a51bc",
+      "sha8": "c671b704",
+      "primary_file": "h33-h33-2-b2-CONCcatblk10dn10-20261024-c671b704.tif",
+      "fallback_file": "h33-h33-2-b2-CONCcatblk10dn10-20261024-c671b704-zeros.tif",
+      "reread_nan": {
+        "crs_matches": true,
+        "shape_matches": true,
+        "transform_matches": true,
+        "dtype_float32": true,
+        "one_band": true,
+        "inside_finite": true,
+        "outside_encoding": true,
+        "range_0_1": true,
+        "binary_unit_mass": true,
+        "zero_catalogue_mass": true,
+        "count_37654": true,
+        "mass_37654": true,
+        "moved_dots_clear_catalogue_3px": true
+      },
+      "reread_zeros": {
+        "crs_matches": true,
+        "shape_matches": true,
+        "transform_matches": true,
+        "dtype_float32": true,
+        "one_band": true,
+        "inside_finite": true,
+        "outside_encoding": true,
+        "range_0_1": true,
+        "binary_unit_mass": true,
+        "zero_catalogue_mass": true,
+        "count_37654": true,
+        "mass_37654": true,
+        "moved_dots_clear_catalogue_3px": true
+      },
+      "gates": [
+        {
+          "gate": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "gate": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "gate": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "gate": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "gate": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "gate": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "gate": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 zero=0 other=0"
+        },
+        {
+          "gate": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "gate": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (AXIS=PRUNE: deviation declared)"
+        },
+        {
+          "gate": "reread_sha256",
+          "ok": true,
+          "detail": "838bf4a157ed5139dc3fe4290021624a671215131c733e0624685a0330e6b337"
+        }
+      ]
+    }
+  ],
+  "warning": "All scores here are CLAIM/MODEL. No file was submitted."
+}
