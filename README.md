@@ -6,6 +6,8 @@
 
 **NEGATIVE — NOT OK TO SUBMIT.** A fresh, byte-unique RELIEF GeoTIFF was generated and format-validated, but `99.3812%` of its dots lie within 3 px of registry parent R0, exceeding the mandated `70%` duplicate-stop threshold. The generated raster is downloadable for inspection and reproducibility; it must not consume a competition slot. Open [`docs/index.html`](docs/index.html) for the executive summary and unambiguous status.
 
+> **Read first:** [`docs/PROJECT_CHARTER.md`](docs/PROJECT_CHARTER.md) before each project session. It records evidence labeling, the lane protocol, run-card schema, and submission gates.
+
 ## CURRENT STATE
 - **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots; exact lineage rebuild matches both pinned SHA-256 digests (`zeros`: `c55bafc4…`, `nan`: `baeae321…`). `0.2778` remains **CLAIM** (no receipt in `ledger/`).
 - **Best receipt**: none recorded (`ledger/submissions.csv` has 21 `BUILT` rows and zero `RECEIPT` rows).
