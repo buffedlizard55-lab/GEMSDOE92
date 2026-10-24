@@ -9,6 +9,7 @@ import pytest
 import rasterio
 from rasterio.transform import from_origin
 
+from gems.cli import main as cli_main
 from gems.gates import run_gates, summarise
 from gems.rasters import read_reference, sha256_file, write_candidate
 
@@ -65,6 +66,57 @@ def test_zeros_outside_is_also_accepted(tmp_path):
     write_candidate(out, dots, reference, outside="zero")
     ok, report = summarise(run_gates(out, refp))
     assert ok, report
+
+
+def test_strict_submission_encoding_accepts_only_finite_zeros_outside(tmp_path):
+    refp = make_reference(tmp_path)
+    reference = read_reference(refp)
+    dots = build_dots([(10, 10)])
+    out = tmp_path / "cand_zeros.tif"
+    write_candidate(out, dots, reference, outside="zero")
+    ok, report = summarise(run_gates(out, refp, require_submission_encoding=True))
+    assert ok, report
+    assert "submission_encoding" in report
+    assert "all_finite=True" in report
+    assert "zero_outside=True" in report
+
+
+def test_strict_submission_encoding_rejects_nan_outside(tmp_path):
+    refp = make_reference(tmp_path)
+    reference = read_reference(refp)
+    out = tmp_path / "cand_nan.tif"
+    write_candidate(out, build_dots([(10, 10)]), reference, outside="nan")
+    ok, report = summarise(run_gates(out, refp, require_submission_encoding=True))
+    assert not ok
+    assert "submission_encoding" in report
+    assert "all_finite=False" in report
+
+
+def test_cli_submission_preflight_rejects_nan_outside(tmp_path, capsys):
+    refp = make_reference(tmp_path)
+    reference = read_reference(refp)
+    out = tmp_path / "cand_nan.tif"
+    write_candidate(out, build_dots([(10, 10)]), reference, outside="nan")
+
+    assert cli_main(["validate", str(out), "--reference", str(refp)]) == 1
+    report = capsys.readouterr().out
+    assert "submission_encoding" in report
+    assert "all_finite=False" in report
+    assert "RESULT: FAIL" in report
+
+
+def test_cli_submission_preflight_accepts_zeros_outside(tmp_path, capsys):
+    refp = make_reference(tmp_path)
+    reference = read_reference(refp)
+    out = tmp_path / "cand_zeros.tif"
+    write_candidate(out, build_dots([(10, 10)]), reference, outside="zero")
+
+    assert cli_main(["validate", str(out), "--reference", str(refp)]) == 0
+    report = capsys.readouterr().out
+    assert "submission_encoding" in report
+    assert "all_finite=True" in report
+    assert "zero_outside=True" in report
+    assert "RESULT: PASS" in report
 
 
 def test_nan_inside_footprint_fails(tmp_path):
@@ -129,6 +181,29 @@ def test_value_out_of_range_fails(tmp_path):
     ok, report = summarise(run_gates(out, refp))
     assert not ok
     assert "values_in_0_1" in report
+
+
+@pytest.mark.parametrize("bad", [np.inf, -np.inf, -0.01, 1.01])
+def test_invalid_finite_or_infinite_values_outside_footprint_fail(tmp_path, bad):
+    refp = make_reference(tmp_path)
+    reference = read_reference(refp)
+    out = tmp_path / "cand.tif"
+    write_candidate(out, build_dots([(10, 10)]), reference, outside="zero")
+    with rasterio.open(out, "r+") as ds:
+        arr = ds.read(1)
+        arr[0, 0] = bad
+        ds.write(arr, 1)
+
+    ok, report = summarise(run_gates(out, refp))
+    assert not ok
+    assert "nan_outside_footprint" in report
+    assert "inf=1" in report if np.isinf(bad) else "other=1" in report
+
+    strict_ok, strict_report = summarise(
+        run_gates(out, refp, require_submission_encoding=True)
+    )
+    assert not strict_ok
+    assert "submission_encoding" in strict_report
 
 
 def test_sha256_is_of_the_file_on_disk(tmp_path):

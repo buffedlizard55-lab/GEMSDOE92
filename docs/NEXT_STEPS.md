@@ -2,6 +2,8 @@
 
 ## Current status (supersedes prior sections below for action purposes)
 
+This section supersedes historical action lists below. **Do not submit any current artifact.** Latest tooling hardening and the three-pass repository review are in [`REVIEW_20261024_SESSION.md`](REVIEW_20261024_SESSION.md); the machine-readable card is [`downloads/repo_review_run_card_20261024.json`](downloads/repo_review_run_card_20261024.json).
+
 **`APRONRIDGE free1d` (`h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`) is the new primary download — closing both technical challenges from the prior queue (non-R0 standalone emission + beating `RELIEF p10` on `gems57-pooled-hide-v2`), while keeping `verdict: negative` / `submission_eligible: false` under the binding dense public witness.**
 
 - **`HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives)**: **`0.008354 [0.006823, 0.010135]`** (hybrid siblings `s60f40 = 0.008291`, `s50f50 = 0.008097`), vs `RELIEF p10 = 0.006045`, `STRAINBREAK f60s2i = 0.005487`, `ANASIG f45Atop = 0.004967`, `SPRINGALIGN f33Ctop = 0.004865`, `BREAKLINE f45Ltop = 0.004861`, `R0 = 0.004006`, and `STEPEDGE f60Sraw = 0.003980`.

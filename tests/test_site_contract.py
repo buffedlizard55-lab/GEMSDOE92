@@ -109,6 +109,18 @@ def test_legacy_submission_page_redirect_does_not_claim_breakline_is_primary():
         assert "SUBMIT.html" in page
 
 
+def test_current_review_run_card_is_served_byte_identically():
+    source = ROOT / "evidence" / "repo_review_run_card_20261024.json"
+    served = DOCS / "downloads" / source.name
+    assert source.is_file() and served.is_file()
+    assert source.read_bytes() == served.read_bytes()
+    card = json.loads(source.read_text(encoding="utf-8"))
+    assert card["verdict"] == "negative"
+    assert card["new_unique_tiff_generated"] is False
+    assert card["weekly_submission_slots_used"] == 0
+    assert "downloads/repo_review_run_card_20261024.json" in _index()
+
+
 def test_submit_page_exists():
     for name in ("SUBMIT.html", "submit.html"):
         p = DOCS / name

@@ -1,6 +1,7 @@
 .PHONY: test verify manifest ledger validate clean site
 
 PYTHON ?= python3
+REFERENCE ?= data/bridge/sample_submission.tif
 
 test:
 	$(PYTHON) -m pytest tests -q
@@ -22,7 +23,7 @@ ledger:
 # make validate FILE=releases/x.tif
 validate:
 	@test -n "$(FILE)" || (echo "usage: make validate FILE=releases/<id>.tif" && exit 2)
-	$(PYTHON) -m gems validate "$(FILE)" --reference $(REFERENCE)
+	$(PYTHON) -m gems validate "$(FILE)" --reference "$(REFERENCE)"
 
 clean:
 	rm -rf .pytest_cache **/__pycache__ __pycache__

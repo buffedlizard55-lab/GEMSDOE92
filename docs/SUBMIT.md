@@ -1,80 +1,57 @@
-# Submission executive summary — GEMSDOE92 candidate
+# Executive summary — GEMSDOE92 submission workbench
 
-## Current site primary: STEPEDGE f60Sraw (2026-10-24) — unique, OK TO DOWNLOAD, DO NOT SUBMIT
+## Current decision — 2026-10-24 UTC
 
-New this session: aperture-persistent sustained DEM steps (Band 12). Format-valid
-zeros-outside float32 (all gates; [0,1]; 37,654 dots) and **literal-unique vs the
-28-raster local dot registry** (surface |ρ| 0.138; final worst forward overlap
-0.461, |ρ| 0.396). Verdict **negative by automated gates** (`submission_eligible:
-false`, no human inspection): HOLDOUT-DTI 0.003980 [0.003295, 0.004702]
-(`gems57-pooled-hide-v2`, 22,663 withheld) does not beat STRAINBREAK f60
-(0.005487) or RELIEF p10 (0.006045); paired Δ vs R0 includes 0. SGMC PROXY
-0.141464 (repo best) disagrees — holdout gate governs. Dense public-witness
-literal overlap 1.000 disclosed (ρ 0.0004). Sibling doses f33/f45 are
-duplicates (0.760/0.711); never submit them.
+**Existing research TIFFs: OK TO DOWNLOAD for review; DO NOT SUBMIT. No new unique TIFF was generated in this review.** The site's current primary download is the existing SPRINGALIGN artifact; its public-registry uniqueness check is a binding rejection, and its holdout result does not establish live competition performance. The weekly selector/slot was not used.
 
-- [Download STEPEDGE TIF (negative deliverable)](downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif) · [ZIP](downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.zip) · [audit](downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-audit.json) · [run card](downloads/stepedge_run_card.json) · [analysis](ANALYSIS_20261024_STEPEDGE.md) · [hypotheses](HYPOTHESES_20261024_STEPEDGE.md)
-- Name: `GEMSDOE92-STEPEDGE-f60Sraw-20261024` · Note (93): `h33-h33-2-b2; STEPEDGE f60Sraw 22592 far dots on aperture-persistent DEM steps >3px off H19-5` · SHA-256 `c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4`
-- If a future artifact's audit ever says `submission_eligible: true`: download the zeros-outside .tif unedited → DrivenData New submission → exact name/note → record the organizer receipt in `ledger/submissions.csv`. This agent does not upload.
+The policy stop is decisive: the hash-verified 17GEMSDOE E-proba witness has positive support on every competition-footprint cell. Under the literal rule (>70% forward 3-px overlap or absolute Spearman >0.90), every nonempty in-footprint prediction necessarily overlaps that witness beyond threshold. Do not evade this by moving mass outside the footprint, emitting an empty raster, excluding dense support, or changing the rule. The artifact-generation requirement is explicitly **unfulfilled** until the policy owner resolves the contradiction.
 
-## Parallel artifact: STRAINBREAK f60s2i — OK TO DOWNLOAD, NOT CLEARED TO SUBMIT
+- [Current Pages download/index](index.html) · [current status](REVIEW_CURRENT.md) · [current three-pass review](REVIEW_20261024_SESSION.md) · [ranked-hypothesis/source review](REVIEW_AUTOMATED_20261024.md) · [witness run card](downloads/review_20261024_run_card.json) · [current repo review card](downloads/repo_review_run_card_20261024.json)
+- [Fresh exact-file witness receipt](downloads/review_20261024_springalign_witness_v2.json) · [SPRINGALIGN format audit](downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-audit.json)
 
-Format-valid zeros-outside float32 GeoTIFF (10/10 local MUST gates; values in [0,1], no NaN in footprint). Verdict **negative**: HOLDOUT-DTI 0.005487 [0.004522, 0.006430] (evaluator `gems57-pooled-hide-v2`, 22,663 withheld positives) beats R0 0.004006 but not the holdout best (RELIEF p10 0.006045), and the USGS SGMC off-catalogue control prefers BREAKLINE f45 (0.12611 vs 0.10516). Local literal uniqueness passes (worst forward 3-px overlap 40.0%, 21 rasters); the expanded public-registry result is in the audit receipt. **Do not spend a weekly slot without a separate human selector decision.**
+## Existing site-primary artifact — research only
 
-- [Download STRAINBREAK TIF (negative deliverable)](downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif) · [ZIP](downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2.zip) · [audit](downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-audit.json) · [run card](downloads/strainbreak_run_card.json) · [hypotheses](HYPOTHESES_20261024_GRAVCrest.md)
-- Name: `GEMSDOE92-STRAINBREAK-f60s2i-20261024` · Note (87): `h33-h33-2-b2; STRAINBREAK f60s2i 22592 far dots on strained scarp-breaks >3px off H19-5` · SHA-256 `000d0bd7e0a549c2d38ca52a5df5b249763a7be998ad2ccfa30cc45136c05c1f`
-- If a slot is ever cleared: download zeros-outside .tif unedited -> DrivenData New submission -> exact name/note -> record organizer receipt in `ledger/submissions.csv`. This agent does not upload.
-- This session's rank-1 GRAVCrest hypothesis was falsified by the pre-build SGMC screen and never built (`evidence/gravcrest_screen.json`).
+This file predates the current review and is **not a new submission from this session**. The inherited date in its filename is later than the review date; the filename is not evidence of when it was generated.
 
-## Parallel artifact: ANASIG f45 (prior site primary) — do not submit
+- **GeoTIFF:** [Download SPRINGALIGN zeros-outside research raster](downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif) · [single-TIFF ZIP](downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.zip)
+- **Research identifier (not a request to upload):** `GEMSDOE92-SPRINGALIGN-f33Ctop-20261025`
+- **Research note (≤140 characters):** `h33-h33-2-b2; SPRINGALIGN f33Ctop 12426 far dots on spring-pair alignment lines >3px off H19-5`
+- **SHA-256:** `1772ad5c62506b6b380e221d2202b583edf0a5be4f96916af655e0478eba11b1`
+- **Automated format receipt:** single-band float32; EPSG:32611; 3730 × 3292; template transform matches; all values finite in [0,1]; no NaN in the footprint; zeros outside; zero known-catalogue mass. This is format-valid/downloadable, **not submission-eligible**.
+- **REGISTRY-MEASUREMENT:** exact-file forward overlap 1.0 and |Spearman ρ| 0.0437294869 against the cited 17GEMSDOE witness. The witness is positive on 5,167,373 of 5,167,373 footprint cells; therefore any nonempty valid prediction is rejected by the literal overlap gate. This is one rejection witness, not a fresh complete registry scan. The actual SPRINGALIGN pre-placement surface was not checked in that retrospective test.
+- **HOLDOUT-DTI (historical; not rerun this review):** evaluator `gems57-pooled-hide-v2`; 22,663 withheld positives; 0.0048650690; 95% CI [0.0040254482, 0.0057850159]. This local hide-and-recover estimate is not a competition score.
 
-Prior site primary was the ANASIG candidate (`GEMSDOE92-ANASIG-f45Atop-20261024`); see `index.html` / `SUBMIT.html` and `downloads/anasig_run_card.json`. It is likewise format-valid and **not cleared** (literal registry stop). STRAINBREAK above is a parallel-session negative deliverable, not a replacement primary.
+## What the reported GEMSDOE32 result supports
 
-## Previous artifact: visible collar — duplicate, do not submit
+`h33-h33-2-b2` at **0.2778 is a CLAIM**, based on the user-supplied GEMSDOE32 site result; this repository has no corresponding organizer receipt. The parent's measured lineage and geometry are consistent with spatial thinning, a fixed prediction budget, pruning and clearance from known faults retaining useful distance-weighted coverage while reducing redundant or masked mass. This is a plausible mechanism, not proof that any one step caused the reported score: the exact organizer-evaluated bytes and private labels are not available here.
 
-The primary file is a format-valid, all-finite, zeros-outside float32 GeoTIFF and passes all 10 local MUST gates. The separate uniqueness gate **fails**: a broader scan of 1,279 same-grid registry rasters found 100% forward 3-px overlap with multiple registry rasters (131 exceed the 70% stop threshold). Per the operator's literal protocol, this is a duplicate and must not consume a competition slot.
+The user supplied **0.3195** and **0.4413** as different leaderboard values. They are conflicting, undated snapshots in this task, not refreshed evidence in this review. A score value does not reveal the winning method. It is possible in principle to outperform the GEMSDOE32 CLAIM, but this review does not demonstrate that outcome. HOLDOUT-DTI, public-site CLAIMs and live organizer scores are different quantities and must not be compared as if they were the same metric.
 
-- [Download candidate TIF (negative deliverable)](downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif)
-- [Download ZIP containing one TIFF](downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.zip)
-- [Format + public-registry audit](downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-audit.json)
-- [Full run card](downloads/visible_collar_run_card.json)
-- [Public registry scan and scope](downloads/public_registry_uniqueness.json)
+The four ranked, conditional research hypotheses (including DEM cross-profile step-vs-channel discrimination, offset magnetic-edge continuation, terrain-conditioned gravity residuals, and relief-matched spring-alignment testing) are documented in [the automated review](REVIEW_AUTOMATED_20261024.md). They are research ideas, not established gains or proof of global novelty. No new experiment was run: the literal registry stop blocks placement, and the cached `training_features.tif` stack is absent from this checkout. The official [competition data tab](https://www.drivendata.org/competitions/306/competition-doe-gems/data/) is the required source for the stack; account access was not available to this runtime, and owner-mirror hashes do not establish organizer provenance or redistribution rights.
 
-**Do not submit this candidate.** The holdout improvement does not override the duplicate stop. No slot was used.
+## Submission procedure — only after a future artifact is genuinely cleared
 
-## Research evidence (not a contest score)
+Do **not** submit any current download. A future file may be considered only if its own evidence shows all of the following: strict format validator passes on reread; leakage canaries are reviewed; spatially blocked HOLDOUT-DTI improves over the comparable holdout best with uncertainty; actual pre-placement-surface and final-dot registry checks pass the applicable policy; its run card says `promote`; and a separate selector confirms the current weekly cap. A format pass alone is never slot clearance.
 
-**HOLDOUT-DTI** — evaluator `gems57-pooled-hide-v2`; eight buffered spatial folds (four quadrants × seeds 20 and 30); 22,663 withheld catalogue positives; α=0.2, β=0.8, 300 m triangular kernel; 1,000 paired 20 km spatial-cluster bootstrap draws:
+After a separate selector authorizes an exact artifact:
 
-- Candidate: `0.046866`, 95% CI `[0.040216, 0.053315]`.
-- Parent R0: `0.004006`, 95% CI `[0.003424, 0.004690]`.
-- Paired difference: `+0.042860`, 95% CI `[+0.036122, +0.049357]`.
-- Leakage canary, visible-fault distance alone: symmetric AUC `0.745593` (<0.90 stop).
+1. Download only its zeros-outside `.tif` (or ZIP containing exactly that one TIFF); verify the exact SHA-256 in its receipt and do not edit/resave it.
+2. On DrivenData's **New submission** form, select that file. The supplied form description says it accepts one single-band GeoTIFF or one GeoTIFF inside a ZIP and requires matching CRS, shape and geotransform. The live form was not accessed in this review.
+3. Paste the artifact's short note into **Note (optional)**. Keep the unique submission name in the local ledger; do not assume the described form has a separate name field.
+4. Record the actual organizer receipt (submission ID, timestamp and score) in `ledger/submissions.csv`. Only a copied receipt is **ORGANIZER-CONFIRMED**; a model projection or HOLDOUT-DTI is not.
 
-This hide-and-recover result rewards recovery of mapped catalogue structure and does not show live performance on private, genuinely uncatalogued faults.
+## Automated validation and the portal range error
 
-## GeoTIFF format audit
+`python -m gems validate <candidate.tif> --reference data/bridge/sample_submission.tif --catalogue data/bridge/existing_faults.tif --prune-radius 2` is the strict local submission preflight: every cell must be finite and in [0,1], cells outside the valid footprint must be zero, and template CRS/shape/transform must match. It rejects NaN/Inf and out-of-range values anywhere in the file. `python scripts/check_site.py` independently gates every served zeros-outside TIFF, exact-byte audit receipt and current site status. The shared legacy/research `run_gates()` API can still accept NaN outside the footprint for historical comparisons, but it is not the CLI upload preflight. No silent clipping or repair is performed.
 
-All ten local gates pass: one float32 band; EPSG:32611; shape 3730×3292; matching sample geotransform; finite values in `[0,1]`; no NaN inside the footprint; zeros outside; no positive catalogue mass. This is **format-valid/downloadable**, not **submission-eligible**.
+A local validator pass reduces the risk of the error `Predicted values must be in range [0, 1]`; it cannot guarantee portal acceptance or competition eligibility.
 
-## Form fields (for archive/review only; not a recommendation to upload)
+## Source and access limitations
 
-- Name: `GEMSDOE92-visible-collar-r0-excluded-20261024`
-- Note (62 characters): `Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots`
-- SHA-256: `60082b75a3d8e4648a858622f71f24257c8cfef79286a1a96147c59f05377da7`
+Manual-review links (not all retrieved during this review): [competition problem / metric](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/), [competition rules PDF](https://docs.nlr.gov/docs/fy26osti/96647.pdf), [official DrivenData reference solution](https://github.com/drivendataorg/gems-prize-reference-solution), [USGS GeoDAWN](https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and), and [GDR INGENIOUS #1391](https://gdr.openei.org/submissions/1391).
 
-The human competitor must authenticate and use the separate selector/weekly quota; this agent does not upload or spend a slot. The registration audit scope covers current public default branches in 102 owner repositories, not all historical/private/site-hosted or other-owner files. The duplicate witness is sufficient to stop under the literal rule.
+DrivenData, USGS and GDR were not accessed during this review under the runtime's restricted outbound-host policy; current leaderboard, submission quota, upload acceptance, official data licensing and organizer receipts therefore remain unverified. No credentials are requested or stored. `docs/REVIEW_AUTOMATED_20261024.md`, `docs/REVIEW_CURRENT.md`, `SESSION_PROMPT.md`, and `IRREGULARITIES.md` preserve the source audit, scientific caveats, next steps and unresolved issues.
 
-## Context: GEMSDOE32 claim and leaderboard
+## Historical candidate files
 
-`h33-h33-2-b2` at `0.2778` is an owner-reported **CLAIM** without an organizer receipt in this ledger. A plausible, unproven mechanism is a fixed budget of ridge candidates, spatial thinning to reduce redundant mass, pruning, and avoiding known traces under the distance-tolerant asymmetric DTI. The exact evaluated artifact and private truth are unavailable here, so the cause cannot be established.
-
-The repository records a 2026-10-24 read of the official public leaderboard showing `0.4413` at #1 (**LEADERBOARD-SNAPSHOT**, not a receipt for GEMSDOE32 or this candidate); the prompt's `0.3195` is an older conflicting snapshot. This HOLDOUT-DTI is not comparable to either public leaderboard value. A genuine score comparison requires an organizer receipt after a separate human submission.
-
-## Parallel-session artifact — BREAKLINE f45Ltop (not cleared, negative)
-
-- [Download BREAKLINE TIF](downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif) · [ZIP](downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0.zip) · [gate audit](downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-audit.json) · [run card](downloads/breakline_run_card.json) · [analysis](ANALYSIS_20261024.md)
-- Name: `GEMSDOE92-BREAKLINE-f45Ltop-20261024` · Note (90): `h33-h33-2-b2; BREAKLINE f45Ltop 16944 far dots on linear scarp-break ridges >3px off H19-5` · SHA-256 `cd9c8a564588e6542b379cd36cbe05fc6da3be07b8edbc542bf737336907810e`
-- HOLDOUT-DTI `0.004861 [0.004032, 0.005822]` (delta vs R0 +0.000854 [+0.000300, +0.001423]); unique within the 18-raster **local** registry (worst 55.0% vs R0; 3.5% vs the collar candidate) and below the holdout-best arms; update 2026-10-24: expanded public scan (1,309 rasters) run — literal duplicate stop triggers (134 >70%; `evidence/breakline_public_registry_uniqueness.json`) → **NOT CLEARED; do not submit without a human selector decision.** If a slot is ever spent: zeros-outside .tif unedited -> DrivenData New submission -> exact name/note -> record receipt in `ledger/submissions.csv`. Never submit more than one BREAKLINE dose.
-
-Canonical HTML: [`SUBMIT.html`](SUBMIT.html). Main site: [`index.html`](index.html).
+Other candidate TIFs listed on the site are prior research artifacts, not new outputs from this review. Each download's audit/run card and current stop status must be checked. In particular, local uniqueness against a sparse dot registry does not override the exact public-witness rejection under the literal rule.
