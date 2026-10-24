@@ -1,5 +1,10 @@
-"""Tests for the DTI algebra. These pin the brief's own shortcut, so if the
-algebra or the |G| reading is wrong, the build fails before any raster exists."""
+"""Tests for the DTI algebra.
+
+Corrected 2026-10-24: the previous tests pinned a session-brief algebra that
+could produce DTI = 5.0 (impossible under the official metric, which lies in
+[0, 1]). These tests now pin the official p.967 equations and cross-check
+gems.metric against vendor/gems57/metric.dti_exact (itself verified against a
+literal brute-force transcription in tests/test_metric_and_policy.py)."""
 
 import numpy as np
 import pytest
@@ -27,24 +32,46 @@ def test_totals_on_single_dot_single_truth():
     assert tot.T == pytest.approx(1.0)      # dot sits on truth
     assert tot.S == pytest.approx(1.0)
     assert tot.M == pytest.approx(1.0)
-    assert tot.G == pytest.approx(0.0)      # fully covered
-    # DTI = 1 / (0.2*1 + 0.2*0 + 0.8*0) = 5.0
-    assert tot.dti == pytest.approx(5.0)
+    assert tot.G == pytest.approx(1.0)      # |G| = total truth pixels
+    # Official: DTI = 1 / (1 + 0.2*0 + 0.8*0) = 1.0 (perfect, in [0,1])
+    assert tot.dti == pytest.approx(1.0)
 
 
-def test_gain_add_matches_brief_shortcut():
-    """c > 0.2*DTI: the exact marginal gain must equal c - 0.2*DTI when the
-    added dot only touches currently uncovered truth (the brief's algebra)."""
-    # one dot on one truth pixel -> DTI 5.0, isolated truth pixel 2 px away
-    t = make_truth([(10, 10), (10, 12)])
+def test_gain_add_marginal_bar_and_redundancy():
+    """Official marginal rule: a non-redundant dot with self-credit k raises
+    DTI iff k > ALPHA*DTI; a redundant dot (truth already covered at the same
+    kernel weight) has dT = 0 and must not gain."""
+    # Isolated second truth 20 px away: no interaction with the first dot.
+    t = make_truth([(10, 10), (10, 30)])
     ds = DotSet([10], [10], [1.0], t)
     dti0 = ds.totals().dti
-    # candidate 2 px from the second truth, at distance 2 from nothing else
-    y, x = 10, 14  # distance 2 from truth (10,12); 4 from (10,10) -> clips
-    c = kernel(2.0)
-    got = ds.gain_add(y, x)
-    want = c - 0.2 * dti0
-    assert got == pytest.approx(want, abs=1e-9), f"got {got}, shortcut says {want}"
+    c = kernel(2.0)  # candidate (10,28) is 2 px from truth (10,30)
+    got = ds.gain_add(10, 28)
+    assert (got > 0) == (c > ALPHA * dti0)
+    # Redundant: truth (10,30) already covered at k=1/3 by a dot at (10,28);
+    # an equal-weight dot on the other side adds no TPw.
+    ds2 = DotSet([10, 10], [10, 28], [1.0, 1.0], t)
+    assert ds2.gain_add(10, 32) < 0
+
+
+def test_totals_match_vendor_official_metric():
+    """gems.metric must agree with vendor/gems57 dti_exact on random cases."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "vendor"))
+    from gems57 import metric as vendor_metric
+
+    rng = np.random.default_rng(3)
+    for _ in range(25):
+        truth = rng.random((20, 20)) < 0.07
+        if not truth.any():
+            continue
+        pred = (rng.random((20, 20)) < 0.09).astype(float)
+        tys, txs = np.nonzero(truth)
+        ours = DotSet.from_raster(pred, Truth(tys, txs)).totals().dti
+        theirs = vendor_metric.dti_exact(pred, truth)["dti"]
+        assert ours == pytest.approx(theirs, abs=1e-9)
+        assert 0.0 <= ours <= 1.0
 
 
 def test_gain_add_equals_finite_difference():

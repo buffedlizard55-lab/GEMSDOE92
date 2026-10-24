@@ -1,0 +1,376 @@
+{
+  "evidence_class": "GEOMETRY + PROXY (measured locally); CLAIM scores copied from ledger, receipt=N",
+  "evaluator": "vendor/gems57/metric.py dti_binary/dti_exact (official p.967 equations)",
+  "parent_lineage_rebuilt_mask_exact": true,
+  "claims_from_ledger_historical_climb": {
+    "h19-5-powerlaw-budget-multiline": {
+      "score": 0.1922,
+      "label": "CLAIM",
+      "receipt": "N",
+      "n_dots": 121131
+    },
+    "dotted-h19-5-d1-5": {
+      "score": 0.2477,
+      "label": "CLAIM",
+      "receipt": "N",
+      "n_dots": 60069
+    },
+    "dotted-h19-5-d2-8": {
+      "score": 0.26,
+      "label": "CLAIM",
+      "receipt": "N",
+      "n_dots": 44090
+    },
+    "solo-d28": {
+      "score": 0.2708,
+      "label": "CLAIM",
+      "receipt": "N",
+      "n_dots": 40199
+    },
+    "h33-h33-2-b2": {
+      "score": 0.2778,
+      "label": "CLAIM",
+      "receipt": "N",
+      "n_dots": 37654
+    }
+  },
+  "stages": {
+    "H19-5 skeleton (raw)": {
+      "n_dots_or_px": 121131,
+      "nn_dist_px_min": 1.0,
+      "nn_dist_px_median": 1.0,
+      "nn_dist_px_mean": 1.2967,
+      "frac_with_neighbour_within_3px": 0.961562,
+      "frac_with_neighbour_within_1px": 0.825478,
+      "frac_footprint_within_3px_of_mask": 0.196095,
+      "dots_on_catalogue": 0,
+      "frac_dots_dcat_le_2px": 0.143035,
+      "frac_dots_dcat_le_3px": 0.199511,
+      "frac_dots_dcat_gt_3px": 0.800489,
+      "min_dcat_px": 1.0,
+      "PROXY_fixedcat_dti": 0.166351,
+      "PROXY_sgmc_dti": 0.100603
+    },
+    "D1.5": {
+      "n_dots_or_px": 60069,
+      "nn_dist_px_min": 2.0,
+      "nn_dist_px_median": 2.2361,
+      "nn_dist_px_mean": 2.6167,
+      "frac_with_neighbour_within_3px": 0.858296,
+      "frac_with_neighbour_within_1px": 0.0,
+      "frac_footprint_within_3px_of_mask": 0.180793,
+      "dots_on_catalogue": 0,
+      "frac_dots_dcat_le_2px": 0.145982,
+      "frac_dots_dcat_le_3px": 0.198738,
+      "frac_dots_dcat_gt_3px": 0.801262,
+      "min_dcat_px": 1.0,
+      "PROXY_fixedcat_dti": 0.171929,
+      "PROXY_sgmc_dti": 0.101118
+    },
+    "D2.8": {
+      "n_dots_or_px": 44090,
+      "nn_dist_px_min": 2.8284,
+      "nn_dist_px_median": 3.0,
+      "nn_dist_px_mean": 3.5791,
+      "frac_with_neighbour_within_3px": 0.528782,
+      "frac_with_neighbour_within_1px": 0.0,
+      "frac_footprint_within_3px_of_mask": 0.171911,
+      "dots_on_catalogue": 0,
+      "frac_dots_dcat_le_2px": 0.145974,
+      "frac_dots_dcat_le_3px": 0.195214,
+      "frac_dots_dcat_gt_3px": 0.804786,
+      "min_dcat_px": 1.0,
+      "PROXY_fixedcat_dti": 0.161772,
+      "PROXY_sgmc_dti": 0.095282
+    },
+    "SOLO-D2.8 (dcat>1)": {
+      "n_dots_or_px": 40199,
+      "nn_dist_px_min": 2.8284,
+      "nn_dist_px_median": 3.0,
+      "nn_dist_px_mean": 3.6801,
+      "frac_with_neighbour_within_3px": 0.510908,
+      "frac_with_neighbour_within_1px": 0.0,
+      "frac_footprint_within_3px_of_mask": 0.160064,
+      "dots_on_catalogue": 0,
+      "frac_dots_dcat_le_2px": 0.06331,
+      "frac_dots_dcat_le_3px": 0.117316,
+      "frac_dots_dcat_gt_3px": 0.882684,
+      "min_dcat_px": 1.4142,
+      "PROXY_fixedcat_dti": 0.049095,
+      "PROXY_sgmc_dti": 0.096273
+    },
+    "R0 (dcat>2)": {
+      "n_dots_or_px": 37654,
+      "nn_dist_px_min": 2.8284,
+      "nn_dist_px_median": 3.0,
+      "nn_dist_px_mean": 3.7351,
+      "frac_with_neighbour_within_3px": 0.504966,
+      "frac_with_neighbour_within_1px": 0.0,
+      "frac_footprint_within_3px_of_mask": 0.150853,
+      "dots_on_catalogue": 0,
+      "frac_dots_dcat_le_2px": 0.0,
+      "frac_dots_dcat_le_3px": 0.057657,
+      "frac_dots_dcat_gt_3px": 0.942343,
+      "min_dcat_px": 2.2361,
+      "PROXY_fixedcat_dti": 0.006709,
+      "PROXY_sgmc_dti": 0.09606
+    }
+  },
+  "sgmc_truth_px": 62703,
+  "metric_cross_checks": {
+    "official_worked_example_3_1p89_2": 0.6026516673361586,
+    "expected": 0.6,
+    "vendor_exact_vs_bruteforce_max_absdiff_30_random": 1.6653345369377348e-16,
+    "gems_metric_vs_vendor_max_absdiff_30_random": 0.881534333368076,
+    "gems_metric_agrees_with_official": false,
+    "rows": [
+      {
+        "trial": 0,
+        "vendor_exact": 0.4242957758399791,
+        "vendor_brute": 0.4242957758399792,
+        "gems_metric": 0.9554164061110181,
+        "vendor_vs_brute_absdiff": 1.1102230246251565e-16,
+        "gems_vs_vendor_absdiff": 0.531120630271039
+      },
+      {
+        "trial": 1,
+        "vendor_exact": 0.40364839093796373,
+        "vendor_brute": 0.4036483909379637,
+        "gems_metric": 0.886204794991005,
+        "vendor_vs_brute_absdiff": 5.551115123125783e-17,
+        "gems_vs_vendor_absdiff": 0.4825564040530413
+      },
+      {
+        "trial": 2,
+        "vendor_exact": 0.2915719849667535,
+        "vendor_brute": 0.29157198496675346,
+        "gems_metric": 0.6212740838623158,
+        "vendor_vs_brute_absdiff": 5.551115123125783e-17,
+        "gems_vs_vendor_absdiff": 0.32970209889556223
+      },
+      {
+        "trial": 3,
+        "vendor_exact": 0.347251979188007,
+        "vendor_brute": 0.3472519791880069,
+        "gems_metric": 0.768155422760348,
+        "vendor_vs_brute_absdiff": 1.1102230246251565e-16,
+        "gems_vs_vendor_absdiff": 0.420903443572341
+      },
+      {
+        "trial": 4,
+        "vendor_exact": 0.34363787409493723,
+        "vendor_brute": 0.34363787409493723,
+        "gems_metric": 0.7691128415141604,
+        "vendor_vs_brute_absdiff": 0.0,
+        "gems_vs_vendor_absdiff": 0.42547496741922314
+      },
+      {
+        "trial": 5,
+        "vendor_exact": 0.4035347671631905,
+        "vendor_brute": 0.4035347671631904,
+        "gems_metric": 0.9030881112031516,
+        "vendor_vs_brute_absdiff": 5.551115123125783e-17,
+        "gems_vs_vendor_absdiff": 0.4995533440399611
+      },
+      {
+        "trial": 6,
+        "vendor_exact": 0.3772436099963628,
+        "vendor_brute": 0.3772436099963628,
+        "gems_metric": 0.8366327591462998,
+        "vendor_vs_brute_absdiff": 0.0,
+        "gems_vs_vendor_absdiff": 0.45938914914993695
+      },
+      {
+        "trial": 7,
+        "vendor_exact": 0.42000225530899965,
+        "vendor_brute": 0.42000225530899965,
+        "gems_metric": 0.9710779726163348,
+        "vendor_vs_brute_absdiff": 0.0,
+        "gems_vs_vendor_absdiff": 0.5510757173073351
+      },
+      {
+        "trial": 8,
+        "vendor_exact": 0.4689767008543355,
+        "vendor_brute": 0.46897670085433546,
+        "gems_metric": 1.1723087297785817,
+        "vendor_vs_brute_absdiff": 5.551115123125783e-17,
+        "gems_vs_vendor_absdiff": 0.7033320289242462
+      },
+      {
+        "trial": 9,
+        "vendor_exact": 0.45179266121352607,
+        "vendor_brute": 0.45179266121352607,
+        "gems_metric": 0.9360424215241727,
+        "vendor_vs_brute_absdiff": 0.0,
+        "gems_vs_vendor_absdiff": 0.48424976031064665
+      },
+      {
+        "trial": 10,
+        "vendor_exact": 0.461197528650218,
+        "vendor_brute": 0.461197528650218,
+        "gems_metric": 1.342731862018294,
+        "vendor_vs_brute_absdiff": 0.0,
+        "gems_vs_vendor_absdiff": 0.881534333368076
+      },
+      {
+        "trial": 11,
+        "vendor_exact": 0.3674888958805083,
+        "vendor_brute": 0.36748889588050826,
+        "gems_metric": 0.7118998203147138,
+        "vendor_vs_brute_absdiff": 5.551115123125783e-17,
+        "gems_vs_vendor_absdiff": 0.34441092443420546
+      },
+      {
+        "trial": 12,
+        "vendor_exact": 0.3335625788106933,
+        "vendor_brute": 0.33356257881069323,
+        "gems_metric": 0.6217557764956779,
+        "vendor_vs_brute_absdiff": 5.551115123125783e-17,
+        "gems_vs_vendor_absdiff": 0.28819319768498464
+      },
+      {
+        "trial": 13,
+        "vendor_exact": 0.480083781744978,
+        "vendor_brute": 0.480083781744978,
+        "gems_metric": 1.2257982831500036,
+        "vendor_vs_brute_absdiff": 0.0,
+        "gems_vs_vendor_absdiff": 0.7457145014050256
+      },
+      {
+        "trial": 14,
+        "vendor_exact": 0.4076668635196611,
+        "vendor_brute": 0.4076668635196612,
+        "gems_metric": 0.9010714922546124,
+        "vendor_vs_brute_absdiff": 1.1102230246251565e-16,
+        "gems_vs_vendor_absdiff": 0.4934046287349513
+      },
+      {
+        "trial": 15,
+        "vendor_exact": 0.21021180561427524,
+        "vendor_brute": 0.21021180561427524,
+        "gems_metric": 0.3874880492733023,
+        "vendor_vs_brute_absdiff": 0.0,
+        "gems_vs_vendor_absdiff": 0.17727624365902708
+      },
+      {
+        "trial": 16,
+        "vendor_exact": 0.42386339996272093,
+        "vendor_brute": 0.4238633999627209,
+        "gems_metric": 0.8909384415790821,
+        "vendor_vs_brute_absdiff": 5.551115123125783e-17,
+        "gems_vs_vendor_absdiff": 0.46707504161636115
+      },
+      {
+        "trial": 17,
+        "vendor_exact": 0.4238064821825529,
+        "vendor_brute": 0.42380648218255296,
+        "gems_metric": 0.9937134701421076,
+        "vendor_vs_brute_absdiff": 5.551115123125783e-17,
+        "gems_vs_vendor_absdiff": 0.5699069879595547
+      },
+      {
+        "trial": 18,
+        "vendor_exact": 0.4700120380724152,
+        "vendor_brute": 0.47001203807241504,
+        "gems_metric": 1.1247835339754682,
+        "vendor_vs_brute_absdiff": 1.6653345369377348e-16,
+        "gems_vs_vendor_absdiff": 0.654771495903053
+      },
+      {
+        "trial": 19,
+        "vendor_exact": 0.46829651608285994,
+        "vendor_brute": 0.46829651608285994,
+        "gems_metric": 1.0105652718323046,
+        "vendor_vs_brute_absdiff": 0.0,
+        "gems_vs_vendor_absdiff": 0.5422687557494447
+      },
+      {
+        "trial": 20,
+        "vendor_exact": 0.33774239527856886,
+        "vendor_brute": 0.3377423952785689,
+        "gems_metric": 0.6784606345909536,
+        "vendor_vs_brute_absdiff": 5.551115123125783e-17,
+        "gems_vs_vendor_absdiff": 0.34071823931238476
+      },
+      {
+        "trial": 21,
+        "vendor_exact": 0.3014614886564754,
+        "vendor_brute": 0.3014614886564754,
+        "gems_metric": 0.5793419842010004,
+        "vendor_vs_brute_absdiff": 0.0,
+        "gems_vs_vendor_absdiff": 0.277880495544525
+      },
+      {
+        "trial": 22,
+        "vendor_exact": 0.3098874111093803,
+        "vendor_brute": 0.3098874111093803,
+        "gems_metric": 0.5890751151399075,
+        "vendor_vs_brute_absdiff": 0.0,
+        "gems_vs_vendor_absdiff": 0.27918770403052723
+      },
+      {
+        "trial": 23,
+        "vendor_exact": 0.45741968672686556,
+        "vendor_brute": 0.45741968672686556,
+        "gems_metric": 1.235437849919086,
+        "vendor_vs_brute_absdiff": 0.0,
+        "gems_vs_vendor_absdiff": 0.7780181631922203
+      },
+      {
+        "trial": 24,
+        "vendor_exact": 0.4433848300738397,
+        "vendor_brute": 0.4433848300738397,
+        "gems_metric": 1.0379287057618996,
+        "vendor_vs_brute_absdiff": 0.0,
+        "gems_vs_vendor_absdiff": 0.5945438756880599
+      },
+      {
+        "trial": 25,
+        "vendor_exact": 0.38015437592445295,
+        "vendor_brute": 0.38015437592445295,
+        "gems_metric": 0.9021892351888928,
+        "vendor_vs_brute_absdiff": 0.0,
+        "gems_vs_vendor_absdiff": 0.5220348592644399
+      },
+      {
+        "trial": 26,
+        "vendor_exact": 0.4883201939335384,
+        "vendor_brute": 0.48832019393353854,
+        "gems_metric": 1.122254935480516,
+        "vendor_vs_brute_absdiff": 1.1102230246251565e-16,
+        "gems_vs_vendor_absdiff": 0.6339347415469776
+      },
+      {
+        "trial": 27,
+        "vendor_exact": 0.37275215340472645,
+        "vendor_brute": 0.3727521534047265,
+        "gems_metric": 0.8941795285707388,
+        "vendor_vs_brute_absdiff": 5.551115123125783e-17,
+        "gems_vs_vendor_absdiff": 0.5214273751660123
+      },
+      {
+        "trial": 28,
+        "vendor_exact": 0.3318763646434144,
+        "vendor_brute": 0.33187636464341436,
+        "gems_metric": 0.6791756265655886,
+        "vendor_vs_brute_absdiff": 5.551115123125783e-17,
+        "gems_vs_vendor_absdiff": 0.3472992619221742
+      },
+      {
+        "trial": 29,
+        "vendor_exact": 0.3827279592252605,
+        "vendor_brute": 0.38272795922526054,
+        "gems_metric": 0.8573227480988992,
+        "vendor_vs_brute_absdiff": 5.551115123125783e-17,
+        "gems_vs_vendor_absdiff": 0.4745947888736387
+      }
+    ]
+  },
+  "sample_submission_check": {
+    "positive_px": 60988,
+    "catalogue_px": 60988,
+    "positives_equal_catalogue": true,
+    "note": "footprint = finite cells is unaffected; values are NOT the all-zero sample described on p.967"
+  },
+  " Interpretation": "R0's climb is an emission-geometry effect on a fixed skeleton: thinning toward the 3 px kernel scale removes max-cover redundancy (TPw takes a max per truth pixel, so neighbouring dots double-pay FP mass) and dcat>2 px clearance stops spending mass on/near pixel-exactly masked known faults. Skeleton content never changed."
+}

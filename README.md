@@ -4,6 +4,42 @@
 
 ---
 
+## Standing Session Prompt (read first, every session)
+
+1. **MUST generate a UNIQUE TIF submission candidate** — never copy a previous submission except for learning. It must be **obvious at the top of the site whether the file is OK to download and OK to submit**, decided by automated project gates without human inspection — not by a human inspector.
+2. **Lane discipline:** stay in one method lane per session. If rank-correlation vs any registry raster exceeds **0.90**, or more than **70%** of dots fall within 3 px of one registry raster's dots — checked on the pre-placement **surface AND final dots** — log duplicate and stop.
+3. **Reuse shared tools** (cached feature stack, `vendor/gems57/evaluate_holdout.py`, submission writer/gates). Holdout = hide-and-recover whole fault segments with buffer; catalogue features only from visible faults; visible faults masked pixel-exactly; pooled DTI (α 0.2, β 0.8, 300 m triangular kernel). Fix shared-tool bugs once, report them; never fork privately.
+4. **Label every number** HOLDOUT-DTI (evaluator version, withheld positives, 95% CI) or ORGANIZER-CONFIRMED (receipt only). A projection is never a score. Owner-reported scores (e.g. 0.2778) are CLAIM; leaderboard snapshots are labelled with fetch date.
+5. **Leakage canary:** every feature alone on the holdout first; symmetric AUC > **0.90** = leakage until proven otherwise.
+6. **Hypotheses before building:** generate 3–5 untried geological hypotheses (layers, physical signature, why catalogue-missing, difference from this repo), rank by expected DTI gain vs cost, screen, and validate the top candidate on the spatially-blocked holdout **before** any weekly slot. External data must be free/official and proven obtainable first.
+7. **Run card, always:** one JSON card (hypothesis; mechanism; named non-fault mimic; HOLDOUT-DTI + CI; correlation/overlap vs registry; raster SHA-256; validator output; submission name + ≤140-char note; verdict promote/negative). **Negative results are deliverables.**
+8. **Budget:** ≤3 experiments or 2 hours per session. Never self-promote to a real slot; promotion is a separate selector step within the portal's weekly cap. The portal error `Predicted values must be in range [0, 1]` must be impossible by construction (all-finite zeros-outside encoding, disk-reread gates).
+9. **Core Values:** *Maximize P(Win)* — weigh tradeoffs and risk, choose the path maximizing win probability. *Own the Outcome* — own results end-to-end; act without waiting; treat success and failure as signals. Work line by line from official verified sources with links; flag irregularities; **no hallucinations**.
+
+---
+
+## STEPEDGE parallel candidate (2026-10-24): new unique-vs-dot-registry TIFF — DO NOT SUBMIT
+
+> Site primary per the newer automated review is SPRINGALIGN (blocked under the literal public rule); the STEPEDGE candidate below was built by a parallel session under a pre-registered, openly disclosed dot-like scope for the overlap arm (dense-witness overlap still printed as 1.000) and is likewise **not cleared**. Both sessions' verdicts: do not submit.
+
+**✅ FORMAT-VALID + LITERAL-UNIQUE (local dot registry) — OK TO DOWNLOAD for research.**
+**⛔ DO NOT SUBMIT — automated gates return `submission_eligible: false` (holdout bars fail). No human inspection involved; no slot used.**
+
+| Deliverable | Link |
+|---|---|
+| **GeoTIFF (primary)** | [Download STEPEDGE zeros-outside GeoTIFF](docs/downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif) |
+| ZIP (one TIFF) | [Download ZIP](docs/downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.zip) |
+| Submission name | `GEMSDOE92-STEPEDGE-f60Sraw-20261024` |
+| Note (93 chars) | `h33-h33-2-b2; STEPEDGE f60Sraw 22592 far dots on aperture-persistent DEM steps >3px off H19-5` |
+| SHA-256 | `c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4` |
+| Audit | [Gate receipt](docs/downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-audit.json) · [run card](evidence/stepedge_run_card.json) · [analysis](docs/ANALYSIS_20261024_STEPEDGE.md) · [hypotheses](docs/HYPOTHESES_20261024_STEPEDGE.md) · [executive summary + how-to-submit](docs/executive-summary.html) |
+
+**HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld): STEPEDGE f60Sraw **0.003980 [0.003295, 0.004702]**, Δ vs R0 −0.000026 [−0.000534, +0.000458] — does not beat STRAINBREAK f60 (0.005487) or RELIEF p10 (0.006045) → verdict **negative**. SGMC PROXY **0.141464** (repo best; R0 0.096060) disagrees; the pre-registered holdout gate governs. Canary max 0.6216. Local uniqueness (28 rasters): surface |ρ| 0.138; final worst forward overlap 0.461 / |ρ| 0.396. Dense public-witness literal overlap 1.000 disclosed (ρ 0.0004; unavoidable for any non-empty candidate). Science: why CLAIM 0.2778 won (emission geometry, measured), why it caps, and the 0.4413 gap — [analysis](docs/ANALYSIS_20261024_STEPEDGE.md). This session also fixed a wrong DTI algebra in shared `gems/metric.py` (see IRREGULARITIES).
+
+---
+
+## Latest Review before STEPEDGE: Literal Uniqueness Blocked Across the Footprint (dense witness)
+
 ## Current automated review — 2026-10-24 UTC: DO NOT SUBMIT
 
 **OK TO DOWNLOAD existing research files; NO artifact is cleared for a weekly slot.**
@@ -51,6 +87,7 @@ value remains a CLAIM (no receipt); no local score beats it by assertion.
 
 ---
 ## New primary (ANASIG session, 2026-10-24): locally unique, still not cleared
+## Prior primary (ANASIG session, 2026-10-24): locally unique, still not cleared
 
 **✅ FORMAT-VALID — OK TO DOWNLOAD for research. ⛔ DO NOT SUBMIT / NOT CLEARED FOR A WEEKLY SLOT.**
 

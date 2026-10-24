@@ -1,0 +1,85 @@
+{
+  "evidence_class": "PROXY-SCREEN",
+  "n_far": 16944,
+  "sgmc_truth_px": 62703,
+  "baseline_expected": {
+    "sym_auc": 0.621604,
+    "far_only_sgmc_dti": 0.072325
+  },
+  "baseline_reproduced_within_5e-4": true,
+  "surfaces": {
+    "breakline_L_baseline": {
+      "sym_auc": 0.621604,
+      "auc": 0.621604,
+      "far_only_sgmc_dti": 0.072325,
+      "far_only_fixedcat_dti": 0.002887,
+      "far_pool": 3974627,
+      "far_overlap_vs_prior_lanes": {
+        "breakline_f45": 1.0,
+        "anasig_f45": 0.134266,
+        "strainbreak_f60": 0.0
+      }
+    },
+    "stepedge_persistent": {
+      "sym_auc": 0.620374,
+      "auc": 0.620374,
+      "far_only_sgmc_dti": 0.065885,
+      "far_only_fixedcat_dti": 0.004309,
+      "far_pool": 3974627,
+      "far_overlap_vs_prior_lanes": {
+        "breakline_f45": 0.754958,
+        "anasig_f45": 0.114318,
+        "strainbreak_f60": 0.155984
+      }
+    },
+    "stepedge_near_only": {
+      "sym_auc": 0.617734,
+      "auc": 0.617734,
+      "far_only_sgmc_dti": 0.066072,
+      "far_only_fixedcat_dti": 0.004145,
+      "far_pool": 3974627,
+      "far_overlap_vs_prior_lanes": {
+        "breakline_f45": 0.76564,
+        "anasig_f45": 0.116856,
+        "strainbreak_f60": 0.153447
+      }
+    },
+    "transv_L_x_transv": {
+      "sym_auc": 0.637155,
+      "auc": 0.637155,
+      "far_only_sgmc_dti": 0.06806,
+      "far_only_fixedcat_dti": 0.003912,
+      "far_pool": 3974627,
+      "far_overlap_vs_prior_lanes": {
+        "breakline_f45": 0.753659,
+        "anasig_f45": 0.118921,
+        "strainbreak_f60": 0.149965
+      }
+    },
+    "radstep_concordance": {
+      "sym_auc": 0.609099,
+      "auc": 0.609099,
+      "far_only_sgmc_dti": 0.061765,
+      "far_only_fixedcat_dti": 0.003567,
+      "far_pool": 3974621,
+      "far_overlap_vs_prior_lanes": {
+        "breakline_f45": 0.668024,
+        "anasig_f45": 0.097911,
+        "strainbreak_f60": 0.171624
+      }
+    },
+    "stepedge_step_only_no_coh": {
+      "sym_auc": 0.57972,
+      "auc": 0.57972,
+      "far_only_sgmc_dti": 0.071257,
+      "far_only_fixedcat_dti": 0.00209,
+      "far_pool": 3974627,
+      "far_overlap_vs_prior_lanes": {
+        "breakline_f45": 0.427231,
+        "anasig_f45": 0.098855,
+        "strainbreak_f60": 0.157991
+      }
+    }
+  },
+  "preregistered_rule": "Build best non-baseline by far_only_sgmc_dti if sym_auc<=0.90, far SGMC >= 0.5*baseline, and far overlap vs every prior lane <=0.70."
+}
