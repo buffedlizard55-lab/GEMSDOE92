@@ -32,7 +32,7 @@ def main() -> int:
     with rasterio.open(paths["parent_r0_zeros"]) as ds:
         arms["R0"] = (ds.read(1) > 0) & grid.footprint
 
-    receipt = json.loads((ROOT / "evidence" / "concentration_variants.json").read_text(encoding="utf-8"))
+    receipt = json.loads((ROOT / "evidence" / "concentration_physics_variant.json").read_text(encoding="utf-8"))
     for item in receipt["variants"]:
         with rasterio.open(ROOT / "releases" / item["primary_file"]) as ds:
             arms[item["value"]] = (ds.read(1) > 0) & grid.footprint
@@ -57,7 +57,7 @@ def main() -> int:
         terms_by_arm[arm_name] = all_terms
 
     pooled = evaluate_holdout.pooled_summary(
-        terms_by_arm, draws=1000, seed=520810, candidate="catd10"
+        terms_by_arm, draws=1000, seed=520810, candidate="phys10"
     )
 
     # Single-feature leakage canaries on every feature entering SNAP response surfaces
@@ -167,7 +167,7 @@ def main() -> int:
         ),
     }
 
-    out = ROOT / "evidence" / "concentration_proxy_audit.json"
+    out = ROOT / "evidence" / "concentration_physics_proxy_audit.json"
     out.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(
         json.dumps(

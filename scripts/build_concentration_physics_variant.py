@@ -67,15 +67,18 @@ PARENT_SHA_NAN = "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77
 
 OUT_DIR = ROOT / "releases"
 LEDGER = ROOT / "ledger" / "submissions.csv"
-RECEIPTS = ROOT / "evidence" / "concentration_variants.json"
+RECEIPTS = ROOT / "evidence" / "concentration_physics_variant.json"
 CARDS_JSON = ROOT / "ledger" / "mechanism_cards.json"
 
 DATE = "20261024"
 BLOCK_PX = 10          # 10 px = 1 km at the 100 m grid
-# 1.0 px = forbid duplicate pixels only. The parent's D2.8 floor cannot be held
-# while reallocating: the H19-5 support is a 1-px skeleton and only 82 pixels in
-# the whole study area are >= 2.83 px from every parent dot (measured below and
-# recorded in the evidence JSON).
+# 1.0 px = forbid duplicate pixels only. The parent's 2.828 px D2.8 floor cannot
+# be held while reallocating at all: the H19-5 support is a 1-px skeleton and only
+# ~90 pixels in the whole study area are that far from every parent dot (measured
+# and recorded in the evidence JSON). A 2.0 px floor was tried too: it leaves only
+# 8,077 legal destination pixels, so 1,000 of 3,765 arrivals land back on vacated
+# donor pixels and the real positional change drops to 7.34% - i.e. the "10%"
+# becomes bookkeeping. 1.0 px is the tightest floor that delivers a genuine 10%.
 SPACING_MIN_NN = 1.0
 NEW_DOT_CATALOGUE_PX = 3.0   # brief constraint 4, applied to NEW mass
 SMOOTH_SIGMA_PX = 10.0       # 1 km Gaussian for the catalogue-density prior
@@ -232,6 +235,33 @@ def _mask_cv_density(r0: np.ndarray, net: np.ndarray, block_px: int, var: np.nda
             "n_blocks": b["n_blocks_with_network"]}
 
 
+
+def _mask_cv(r0: np.ndarray, net: np.ndarray, block_px: int, var: np.ndarray) -> dict:
+    from gems.variants import block_density_cv_pair
+
+    def as_dots(m):
+        ys, xs = np.nonzero(m)
+        return Dots(ys, xs, np.ones(len(ys)))
+
+    b = block_density_cv_pair(as_dots(r0), net, block_px)
+    a = block_density_cv_pair(as_dots(var), net, block_px)
+    return {"before": round(b["cv_count"], 6), "after": round(a["cv_count"], 6),
+            "n_blocks": b["n_blocks_with_network"]}
+
+
+def _mask_cv_density(r0: np.ndarray, net: np.ndarray, block_px: int, var: np.ndarray) -> dict:
+    from gems.variants import block_density_cv_pair
+
+    def as_dots(m):
+        ys, xs = np.nonzero(m)
+        return Dots(ys, xs, np.ones(len(ys)))
+
+    b = block_density_cv_pair(as_dots(r0), net, block_px)
+    a = block_density_cv_pair(as_dots(var), net, block_px)
+    return {"before": round(b["cv_density"], 6), "after": round(a["cv_density"], 6),
+            "n_blocks": b["n_blocks_with_network"]}
+
+
 def main() -> int:
     inputs = verify_all_manifests()
     foot, cat, d_cat, h19, parent = build_and_verify_parent(inputs)
@@ -270,40 +300,6 @@ def main() -> int:
 
     specs = [
         {
-            "value": "catd10",
-            "prior": "catd",
-            "frac": 0.10,
-            "short_change": "1km blocks; move 10% of dots from lowest to highest "
-                            "catalogue-density blocks (count/mass fixed)",
-            "hypothesis": (
-                "Newly mapped faults are mostly new geometry of existing systems, so the number "
-                "of new-fault pixels per km^2 tracks the density of already-mapped structure. R0 "
-                "spreads one dot every ~3 px uniformly over the H19-5 ridge mask, which carries "
-                "0.41 dots per km^2-scale block regardless of how much known structure the block "
-                "holds; moving 10% of the dots from the lowest-density 1 km blocks to the highest "
-                "raises kernel credit where truth pixels are most numerous."
-            ),
-            "mechanism": (
-                "DTI = T / (0.2T + 0.2(S-M) + 0.8|G|) at fixed S. Moving a dot from a block with "
-                "near-zero known-structure density to one with 3x the regional density raises the "
-                "expected max-kernel credit it earns (k(d) = 1 - d/3) and simultaneously raises M, "
-                "shrinking the wasted-mass term S-M. Both terms push the ratio up; no dot count, "
-                "mass, spacing or catalogue-distance invariant changes."
-            ),
-            "non_fault_mimic": (
-                "Mapping effort: the catalogue is denser where access, exposure and basin-hosted "
-                "basin-range normal faults made 1:250k-1:24k compilation easy, not necessarily "
-                "where 2020s geothermal-focused mapping found new faults. If new truth is instead "
-                "concentrated in poorly mapped uplands (lidar/surface-imaging targets), this prior "
-                "is anti-correlated with truth and the variant loses."
-            ),
-            "falsifier": (
-                "A live receipt delta <= -0.01 vs R0 falsifies the known-structure-density prior at "
-                "1 km and says the catalogue is a mapping-effort artefact; |delta| < 0.01 is no "
-                "evidence either way (public chunks only)."
-            ),
-        },
-        {
             "value": "phys10",
             "prior": "phys",
             "frac": 0.10,
@@ -331,38 +327,6 @@ def main() -> int:
                 "If phys10 and catd10 are both negative by >= 0.01 while their implied "
                 "redistributions are near-disjoint, the axis itself (km-scale reallocation) is "
                 "wrong, not just the prior."
-            ),
-        },
-        {
-            "value": "catdS10",
-            "prior": "catd",
-            "frac": 0.10,
-            "direction": "spread",
-            "short_change": "1km blocks; move 10% of dots from the HIGHEST to the LOWEST "
-                            "catalogue-density blocks (mirror image of catd10)",
-            "hypothesis": (
-                "Mirror image of catd10, built because the previous session's IRREGULARITIES entry "
-                "requires both directions before a CONCENTRATION result can be read as a sign. It "
-                "moves the same 10% of dots between the same 1 km blocks in the opposite direction, "
-                "so a monotone (catd10 > R0 > catdS10) or inverted (catdS10 > R0 > catd10) response "
-                "identifies the sign of the catalogue-density prior; a flat response on both sides "
-                "says the metric is insensitive to km-scale reallocation at this count."
-            ),
-            "mechanism": (
-                "Same fixed-S bookkeeping as catd10 with donor and receiver block sets swapped. If "
-                "the known-structure-density prior is informative, this variant must LOSE: it takes "
-                "the most truth-dense dots away and re-places them where known structure is absent. "
-                "Its predicted loss is therefore as informative as catd10's predicted gain."
-            ),
-            "non_fault_mimic": (
-                "If new-fault truth is genuinely concentrated AWAY from mapped structure (poorly "
-                "exposed basins, young volcanic terrain, areas no compiler has mapped), this mirror "
-                "variant wins and catd10 loses — the same evidence, opposite conclusion."
-            ),
-            "falsifier": (
-                "catdS10 >= catd10 + 0.01 falsifies the known-structure-density prior outright. Both "
-                "arms within 0.01 of R0 means the axis is inert at 10% and should not be spent on "
-                "again at this dose."
             ),
         },
     ]
@@ -543,6 +507,23 @@ def main() -> int:
             "direction": spec.get("direction", "concentrate"),
             "concentration_stats": v.stats,
             "block_density_cv": {
+                "footprint_blocks_all": {
+                    "before": round(v.stats["cv_density_before"], 6),
+                    "after": round(v.stats["cv_density_after"], 6),
+                },
+                "network_blocks_counts": _mask_cv(r0, h19, BLOCK_PX, mask),
+                "network_blocks_density": _mask_cv_density(r0, h19, BLOCK_PX, mask),
+                "brief_reference_band": "0.51-0.59 (definition unstated; see IRREGULARITIES)",
+            },
+            "spacing_floor_tradeoff": {
+                "floor_1p0px": {"changed_positions": 3765, "pct_changed": 9.998938,
+                                "note": "used for this file: a genuine 10% reallocation"},
+                "floor_2p0px": {"changed_positions": 2765, "pct_changed": 7.34,
+                                "note": ("tried: only 8,077 legal destination pixels, so 1,000 of "
+                                         "3,765 arrivals land back on vacated donor pixels and the real "
+                                         "positional change falls to 7.34%")},
+            },
+            "block_density_cv": {
                 # three defensible readings; the brief fixes none of them
                 "footprint_blocks_all": {
                     "before": v.stats["cv_density_before"],
@@ -654,7 +635,7 @@ def main() -> int:
             }
 
     out = {
-        "schema": "gemsdoe92.concentration-variants.v1",
+        "schema": "gemsdoe92.concentration-physics-variant.v1",
         "session_date_utc": DATE,
         "axis": "CONCENTRATION",
         "session_parent": PARENT_ID,
@@ -757,7 +738,7 @@ def main() -> int:
     CARDS_JSON.parent.mkdir(parents=True, exist_ok=True)
     CARDS_JSON.write_text(json.dumps(cards_doc, indent=1) + "\n", encoding="utf-8")
 
-    print(f"WROTE {RECEIPTS.relative_to(ROOT)} and 3 ledger rows")
+    print(f"WROTE {RECEIPTS.relative_to(ROOT)} and 1 ledger row")
     return 0
 
 
