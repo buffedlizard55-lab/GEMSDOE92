@@ -1,3 +1,5 @@
+> **Latest review override (2026-10-24):** [D97F969E three-pass review](REVIEW_D97F969E.md). No new candidate: the freshly verified full-footprint witness mandates stop. APRONRIDGE is the research download, not overall historical HOLDOUT-DTI best. No dense-map exemption or submission selection is authorized. Earlier sections below are historical.
+
 # Current review — 2026-10-24 (updated after `APRONRIDGE` breakthrough)
 
 ## Download status comes first
