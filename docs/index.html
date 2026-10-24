@@ -12,10 +12,17 @@
   <p class="kicker">DOE GEMS Prize · DrivenData #306 · EPSG:32611 · 100 m</p>
   <h1>GeoTIFF candidate — format validated, slot blocked</h1>
   <p class="lede">Download the all-finite, single-band GeoTIFF. Its byte-level audit, holdout result, and local-registry uniqueness checks are published beside the file.</p>
+  <nav style="margin: 0.8rem 0; font-size: 0.95rem;">
+    <strong>Quick Navigation:</strong>
+    <a href="executive-summary.html">Executive Summary</a> ·
+    <a href="SUBMIT.html">Submission Guide</a> ·
+    <a href="HYPOTHESES.html">Candidate Hypotheses</a> ·
+    <a href="ANALYSIS_20261024.md">Scientific Analysis</a>
+  </nav>
   <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> All 10 local MUST gates pass: one float32 band; CRS, shape and transform match; finite values in [0,1]; no NaN inside the footprint; zeros outside; zero known-fault mass; SHA-256 recorded.</div>
   <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE.</strong> A broader scan checked 1,279 unique, single-band, template-grid rasters in current default branches of 102 public GEMSDOE-named repositories. The candidate's pre-placement surface and final dots each have 100% forward 3-px overlap with registry raster <a href="https://github.com/buffedlizard55-lab/11GEMSDOE/blob/main/docs/downloads/gems-structural-area06-v1.tif"><code>11GEMSDOE/gems-structural-area06-v1.tif</code></a>; 131 rasters exceed the 70% stop threshold. The duplicate rule governs; stop and do not submit this candidate. See <a href="downloads/public_registry_uniqueness.json">public-registry audit</a>.</div>
   <div class="banner banner-warn"><strong>HOLDOUT-DTI improvement does not override uniqueness.</strong> No live submission slot has been used. This is a negative deliverable: it may still be downloaded for review, but it is not recommended or cleared for competition submission. The holdout can reward recovery of mapped catalogue faults and does not prove live performance on uncatalogued faults.</div>
-  <div class="banner banner-warn">The portal error <code>Predicted values must be in range [0, 1]</code> is guarded against: this download was reread from disk and every cell is finite and in range. Upload the <strong>zeros-outside</strong> encoding.</div>
+  <div class="banner banner-warn">The portal error <code>Predicted values must be in range [0, 1]</code> is guarded against: this download was reread from disk and every cell is finite and in range. Upload the <strong>zeros-outside</strong> encoding. Note: human step required for weekly competition slot promotion.</div>
 </header>
 
 <main>
@@ -31,7 +38,7 @@
     <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 unit-mass dots</dd></div>
     <div><dt>Audit receipt</dt><dd><a href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-audit.json">Format and local-uniqueness JSON</a> · <a href="downloads/visible_collar_run_card.json">full run card</a></dd></div>
   </dl>
-  <p><a href="SUBMIT.html">Executive summary: submit in three steps</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData submission page</a></p>
+  <p><a href="executive-summary.html">Executive summary &amp; quick start</a> · <a href="SUBMIT.html">Step-by-step submission guide</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData submission page</a></p>
 </section>
 
 <section id="breakline" class="download-card">
@@ -79,7 +86,7 @@
 
 <section>
   <h2>Submission guide and research</h2>
-  <p><a href="SUBMIT.html">Executive summary and three submission steps</a> · <a href="hypotheses_visible_collar_20261024.md">Five ranked geological hypotheses</a> · <a href="../SESSION_PROMPT.md">Session protocol</a> · <a href="../IRREGULARITIES.md">Irregularities and limitations</a></p>
+  <p><a href="executive-summary.html">Executive Summary Subpage</a> · <a href="SUBMIT.html">Three submission steps</a> · <a href="HYPOTHESES.html">Five ranked geological hypotheses</a> · <a href="hypotheses_visible_collar_20261024.md">Visible collar hypothesis notes</a> · <a href="../SESSION_PROMPT.md">Session protocol</a> · <a href="../IRREGULARITIES.md">Irregularities and limitations</a></p>
   <h3>Official references</h3>
   <ul>
     <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Competition problem and metric</a></li>
