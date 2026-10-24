@@ -1,6 +1,6 @@
 # Candidate handoff — human review and submission only
 
-**✅ OK TO DOWNLOAD AND SUBMIT.** The zeros-outside files below re-pass all 10 MUST gates after being written and independently re-read from disk. If you see ✅, the portal error `Predicted values must be in range [0, 1]` is fixed for that file: every one of the 12,279,160 cells is finite, `nodata=None`, values are `0.0`/`1.0` only.
+**✅ FORMAT-VALID — OK TO DOWNLOAD. ⚠ NOT CLEARED FOR A WEEKLY SLOT.** The zeros-outside files below re-pass all 10 MUST gates after being written and independently re-read from disk. If you see ✅, the portal error `Predicted values must be in range [0, 1]` is fixed for that file: every one of the 12,279,160 cells is finite, `nodata=None`, values are `0.0`/`1.0` only.
 
 **Do not upload until you confirm the entity's rolling-week quota and independently review the selected raster.** The agent never submits and never contacts the leaderboard. Parent R0 (`h33-h33-2-b2`) score `0.2778` is an owner-reported **CLAIM**, not a `RECEIPT`. Upload **at most one** file per slot — the NaN-outside `.tif` and the `-zeros.tif` twin carry identical in-footprint values and score identically, so uploading both wastes a slot.
 

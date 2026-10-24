@@ -480,3 +480,56 @@ staged first.
 **Impact — decision-changing.** The local hide-and-recover instrument cannot rank a new gate-compliant candidate against R0, because R0's small proxy credit comes from inherited dots inside the 3 px catalogue collar. A zero here must not be read as an organizer score, and a positive proxy for an in-collar descendant must not be read as gate compliance.
 
 **Decision.** STEPOVER is recorded as a negative deliverable (`evidence/run_card.json`, verdict `negative`): OK to download, not OK to spend a weekly submission slot unless a separate selector explicitly overrides the holdout rule. Future promotion needs either an organizer receipt, a PRUNE-axis design that is allowed to change the collar rule, or an independent truth source that is not a subset of the exclusion catalogue.
+
+## 2026-10-25 (DILATATION session, post-merge) — the brief's uniqueness rule disqualifies every arm with a positive holdout, and this branch had shipped a recommendation that ignored it
+
+**Observation.** The brief's lane rule is literal: *if more than 70 % of your dots fall
+within 3 px of one registry raster's dots, log it as a duplicate and stop.* Parent R0 is a
+registry raster (`registry/parents/R0.json`, `mode: pinned_artefact`; it is also the
+`parent` value on all 30 ledger rows). Measured, every served zeros-outside file against R0:
+
+| served file | dots | % ≤3 px of R0 | literal verdict |
+|---|---:|---:|---|
+| DILATATION p10 | 37,654 | 99.40 % | DUPLICATE |
+| DILATATION p12 | 37,654 | 99.37 % | DUPLICATE |
+| DILATATION p15 | 37,654 | 99.37 % | DUPLICATE |
+| RELIEF p10 | 37,654 | 99.38 % | DUPLICATE |
+| TIPGAP far18f33 | 37,654 | **67.00 %** | unique |
+
+**Impact — decision-changing, and it reverses a recommendation this branch had already
+published.** Two errors, both mine:
+
+1. This branch shipped `docs/index.html` with a `✅ OK TO DOWNLOAD AND SUBMIT` banner and a
+   `verdict: promote` run card for DILATATION p12, having reinterpreted the 70 % rule as
+   applying to *arrival sets* rather than whole files. The reinterpretation is defensible
+   science — these files keep 88–90 % of R0's dots *by construction*, since the count is
+   held at 37,654 and only 10–15 % is reallocated, and on arrivals the lanes are nearly
+   disjoint (Jaccard 0.0011 vs TIPGAP, 0.1593 vs RELIEF). But it is **this repository
+   reinterpreting an operator gate in its own favour**, which is precisely the move that
+   lets a non-compliant file look compliant. The operator's instruction governs.
+2. This branch also ranked `RELIEF p10` as **"Slot 1"** in `SLOT_PLAN.md` on holdout gain
+   alone — while `docs/REVIEW_AND_NEXT_STEPS.md`, already on `main`, had recorded that same
+   artifact as *"explicitly negative / NOT OK TO SUBMIT"* for exactly this 99.38 % reason.
+   The two statements were in the repository at the same time and contradicted each other.
+
+**Decision.** Withdrawn and corrected rather than argued:
+- `docs/index.html` banner changed from `OK TO DOWNLOAD AND SUBMIT` to
+  **format-valid, NOT CLEARED FOR A WEEKLY SLOT**, with both readings shown side by side and
+  the literal one marked as governing.
+- `SLOT_PLAN.md` slot table now carries a `% dots ≤3 px of R0` column and marks every
+  positive-holdout arm **NO — fails uniqueness**. No slot is recommended this session.
+- The earlier "Slot 1 = RELIEF p10" recommendation is explicitly retracted in the same file,
+  with the contradiction named.
+
+**The honest state of the repository:** under the operator's own gates, **no served file is
+both unique and expected to improve.** The one file that clears uniqueness (TIPGAP, 67.00 %)
+scores below R0 (−0.001283, its own run card says `verdict: negative`). Every file expected
+to improve is an R0 duplicate. That is the deliverable, and it is a stronger result than a
+submission that would have been logged as a duplicate.
+
+**The structural tension to resolve next session.** TIPGAP clears uniqueness *because* it
+moves 33 % of the budget far off the D2.8 skeleton — and that same move is what cost it
+holdout credit. Uniqueness and expected gain currently pull in opposite directions, so the
+next session's job is not another variant: it is either (a) an arm that reallocates enough to
+clear 70 % *without* leaving the skeleton's high-credit neighbourhood, or (b) an explicit,
+recorded human decision that Reading 2 governs. See `docs/NEXT_STEPS.md`.
