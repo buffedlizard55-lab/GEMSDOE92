@@ -357,3 +357,21 @@ and derives the receipt name from the variant stem.
 
 ### What the AI did not do
 No DrivenData login, no leaderboard scraping, no actual competition submission, no Dropbox contact, no invented score. The file's organizer score is unknown until a submission-page receipt exists.
+
+## Session 9 — BREAKLINE unique TIF (2026-10-24)
+
+### What AI wrote
+- `gems/breakline.py` — lane surface (percentile rank, slope-break magnitude, structure-tensor coherence) + `spaced_top_mask` emitter, with mimic/geology docstring.
+- `scripts/build_breakline_variants.py` — deterministic 3-dose build (f33/f38/f45 Ltop): manifest+parent verification, masked Band-12/19 reads, exact-DTI greedy keep, spaced top-L far emission, per-file gates and disk re-read, ledger + mechanism-card append, `evidence/breakline_variants.json`.
+- `scripts/report_breakline_proxies.py` — pooled hide-and-recover (R0/RELIEF-p10 controls + 3 doses), leakage canaries, SGMC control, fixed-catalogue diagnostic, literal-uniqueness vs 17 pre-session registry rasters → `evidence/breakline_proxy_audit.json`.
+- `scripts/audit_download.py` (independent gate receipt for the served primary) and `scripts/make_breakline_run_card.py` (run card assembled from evidence, no hand-transcribed numbers).
+- `tests/test_breakline_variants.py` (synthetic algorithmic tests + policy/evidence/hash invariants, 9 tests).
+- Served downloads: three BREAKLINE Ltop zeros+NaN TIFs, primary `.zip`, audit receipt, run-card JSON; site primary switched to `h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif` (sha256 `cd9c8a56…810e`); `docs/SUBMIT.html`/`SUBMIT.md` rewritten for it; stale `submit.html` (TIPGAP) and `executive-summary.html` (STEPOVER) now redirect to `SUBMIT.html`.
+- Docs: `docs/ANALYSIS_20261024.md` (line-by-line 0.2778 derivation, instruments, verdict), `docs/HYPOTHESES_20261024_BREAKLINE.md` (5 ranked lanes, one screened out), updates to README/SLOT_PLAN/NEXT_STEPS/HYPOTHESES/SESSION_PROMPT, 5 IRREGULARITIES entries, 6 ledger rows (3 annotated SUPERSEDED after the Pass-2 emission correction; `evidence/breakline_*_exactgreedy_superseded.json`, `evidence/screen_vs_greedy_diagnostic.json`).
+
+### What the human decides
+- Whether to spend one weekly slot on BREAKLINE f45Ltop (the agent's verdict is **negative / NOT_CLEARED** by the pre-registered rule; a calibration-slot override is a human portfolio call), and to transcribe any receipt into `ledger/submissions.csv`.
+- `TOP_PUBLIC`, remaining weekly quota, GitHub Pages enablement/source, and whether competition data-use terms permit keeping derived rasters in the public repo.
+
+### What the AI did not do
+No DrivenData login or upload, no leaderboard scraping, no copied score, no projection presented as a score. External claims were fetched from the official competition page and the organizer reference repository this session; forum points are marked second-hand.

@@ -34,6 +34,23 @@
   <p><a href="SUBMIT.html">Executive summary: submit in three steps</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData submission page</a></p>
 </section>
 
+<section id="breakline" class="download-card">
+  <h2>Parallel-session candidate: BREAKLINE f45Ltop (off-skeleton DEM scarp-breaks)</h2>
+  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> All 10 local MUST gates pass on an independent re-read (audit receipt beside the file).</div>
+  <div class="banner banner-warn"><strong>⚠ NOT CLEARED FOR A WEEKLY SLOT — verdict negative.</strong> HOLDOUT-DTI 0.004861 beats parent R0 but not the holdout best arms. It <em>is</em> unique within the <strong>local</strong> registry: worst forward overlap 55.0% (parent R0) and worst |ρ| 0.547 over 18 local registry rasters — including only 3.5% forward overlap with the visible-collar candidate above (φ ≈ 0.001; the two parallel lanes are essentially disjoint). It has <strong>not</strong> been scanned against the 1,279-raster public registry that stopped the collar candidate; under that scan's dense-raster forward-overlap logic, local uniqueness must not be treated as global clearance. No live submission slot has been used for this file either.</div>
+  <p class="filename">h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif</p>
+  <p><a class="btn" href="downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif" download>Download BREAKLINE GeoTIFF (.tif)</a>
+     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0.zip" download>Download ZIP (one TIFF)</a></p>
+  <dl class="meta">
+    <div><dt>Submission name</dt><dd><code>GEMSDOE92-BREAKLINE-f45Ltop-20261024</code></dd></div>
+    <div><dt>Note (90 chars)</dt><dd><code>h33-h33-2-b2; BREAKLINE f45Ltop 16944 far dots on linear scarp-break ridges &gt;3px off H19-5</code></dd></div>
+    <div><dt>SHA-256</dt><dd><code>cd9c8a564588e6542b379cd36cbe05fc6da3be07b8edbc542bf737336907810e</code></dd></div>
+    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 unit-mass dots (20,710 kept R0 + 16,944 far)</dd></div>
+    <div><dt>Audit / run card</dt><dd><a href="downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-audit.json">gate audit receipt</a> · <a href="downloads/breakline_run_card.json">run-card JSON</a> · <a href="ANALYSIS_20261024.md">full analysis</a></dd></div>
+  </dl>
+  <p><strong>Hypothesis:</strong> faults with a DEM scarp-break but no magnetic/gravity contrast are missed by the H19-5 worm skeleton and the older-imagery catalogue, while expert DEM mapping (the live label source) traces them. Detector L = pct_rank(||grad Band19 slope||) × structure-tensor coherence(Band12). Named mimic: Lake Lahontan shorelines, fan-toe breaks, channel banks. <strong>HOLDOUT-DTI</strong> (same evaluator/folds as above): f45Ltop <strong>0.004861 [0.004032, 0.005822]</strong>, Δ vs R0 +0.000854 [+0.000300, +0.001423]; dose-monotone f33 0.004673 → f38 0.004761 → f45; off-catalogue USGS SGMC control 0.12611 vs R0 0.09606 (+31%); leakage canary max 0.6216. Sibling doses (never submit more than one BREAKLINE file): <a href="downloads/h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif">f38Ltop</a> · <a href="downloads/h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif">f33Ltop</a>. Submission steps: <a href="SUBMIT.html">executive summary</a> (use the name/note above for this file).</p>
+</section>
+
 <section>
   <h2>What was tested</h2>
   <p><strong>Hypothesis:</strong> blind splays, relay fractures, or parallel strands may lie in a narrow 200–300 m collar around visible mapped faults, outside the inherited R0 dots' 300 m halo. The holdout-placement surface uses visible catalogue geometry only. The final file also excludes the full known-fault catalogue. This geometric association is not proof of new faults.</p>
