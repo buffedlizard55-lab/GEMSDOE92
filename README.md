@@ -1,6 +1,6 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench (`APRONRIDGE` Primary + `HYDROCONDUIT` Hybrid)
 
-> **Session start:** Read this README and [`SESSION_PROMPT.md`](SESSION_PROMPT.md) before research or code changes. The prompt and parallel-run rules are part of the project contract.
+**Start every session with [SESSION_PROMPT.md](SESSION_PROMPT.md).** This file holds the user's complete working instructions and core values (Maximize P(Win), Own the Outcome). [2026-10-24 preflight evidence](evidence/preplacement_dense_witness.json) proves that the literal public-registry overlap rule makes **every nonempty in-footprint candidate a duplicate**: the SHA-pinned 17GEMSDOE witness is positive on every one of 5,167,373 footprint cells. [Pre-registered four hypotheses](docs/HYPOTHESES_20261024_PREFLIGHT.md) are stopped *before placement*; no new slot-ready TIF was made in this pass. [Negative run card](evidence/preflight_run_card.json). This is an explicit incompatibility between “make a unique TIF” and the literal overlap gate, not a request for manual inspection. Existing research-only downloads below remain available but **DO NOT SUBMIT**.
 
 > ### ✅ DOWNLOAD STATUS: **FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH**
 > ### ⛔ SUBMISSION / WEEKLY SLOT STATUS: **DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (`verdict: "negative"`, `submission_eligible: false`; DUPLICATE UNDER THE LITERAL REGISTRY RULE)**
