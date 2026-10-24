@@ -8,7 +8,7 @@
 
 - **HOLDOUT-DTI (historical, not rerun in this repository review):** `gems57-pooled-hide-v2`, 8 spatial folds, 22,663 withheld positive pixels; APRONRIDGE free1d `0.008354`, 95% CI `[0.006823, 0.010135]`. This is a local hide-and-recover result, not a competition score. See its [run card](../evidence/apronridge_run_card.json).
 - **Format check:** after installing the pinned `requirements.txt`, 206 tests passed; `scripts/check_site.py` passed for 25 served rasters; the 8-entry manifest and pinned R0 parent verified. These confirm local integrity only—not public uniqueness or organizer acceptance.
-- **Submission ledger:** 57 BUILT / 0 RECEIPT (current command output). No weekly slot was used in this review.
+- **Submission ledger:** 60 BUILT / 0 RECEIPT (current command output). No weekly slot was used in this review.
 - **Current session generated no TIFF and ran no geological experiment.** The requested new unique candidate remains unmet: the binding final-dot duplicate stop prevents honest promotion under the literal rule. Do not relabel an existing file or emit an all-zero/no-signal raster to evade the stop.
 
 ## Next actions (fail-closed order)

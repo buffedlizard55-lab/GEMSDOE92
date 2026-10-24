@@ -22,8 +22,13 @@
   <p>Every hypothesis below names specific sensor bands (verified directly against the 19-band GDAL header of <code>training_features.tif</code>), its mathematical transform, why legacy USGS QFaults / INGENIOUS compilations miss those structures, its named non-fault geological mimics, and its measured leakage-canary and off-skeleton diagnostic results (<code>evidence/apron_prebuild_screen.json</code>). Note: earlier session notes claimed <code>Band 18</code> was the only signed band in the stack; live pixel verification shows 10 of 19 bands take signed values (including <code>Band 2 rtp</code>, <code>Band 8 geod_dilaterate</code>, <code>Band 9 tmi_vg</code>, <code>Band 11 iso_grav_anom_vg</code>, <code>Band 12 det_elev</code>, <code>Band 13 iso_grav_anom</code>, <code>Band 14 tmi</code>, and <code>Band 18 iso_grav_anom_hg</code>; logged in <a href="../IRREGULARITIES.md">IRREGULARITIES.md</a>).</p>
 </section>
 
+<section class="download-card"><h2>Current branch hypothesis: GEOTENSION (2026-10-25) — this branch's new lane</h2><p>Current branch primary for <code>arena/2d7b7394-gemsdoe92</code>: <a href="index.html#download-geotension">GEOTENSION free1d</a> (HOLDOUT-DTI 0.007615, locally unique 0.5241, <code>verdict: negative</code> under dense witness) — see <a href="HYPOTHESES_20261025_GEOTENSION.md">GEOTENSION pre-registration (5 ranked hypotheses)</a> · <a href="ANALYSIS_20261025_GEOTENSION.md">PhD analysis — why 0.2778 scored highest & can we beat it?</a>. Historical repository best remains <a href="HYPOTHESES_20261024_APRONRIDGE.md">APRONRIDGE free1d</a> (0.008354). Prior parallel <a href="HYPOTHESES_20261024_STEPEDGE.md">STEPEDGE</a>.</p></section>
 <section>
-  <h2>Ranked Hypotheses (1 to 5)</h2>
+  <h2>GEOTENSION Ranked Hypotheses (2026-10-25, this branch) — 5 pre-registered before building</h2>
+  <p>See <a href="HYPOTHESES_20261025_GEOTENSION.md">full mathematical pre-registration</a> for definitions, sensors, signatures, catalogue-gap reasoning, non-fault mimics, expected gain/cost and official sources. Top lane <strong>GEOTENSION</strong> (Bands 4/7/8·12/15/19, dilatation × second-invariant × shear gating scarp 1D ridges) was built and validated this session (HOLDOUT-DTI 0.007615, max canary 0.6216, locally unique 0.5241). Reserve lanes: <code>ALTERATION-CONDUIT</code> (K/Th·cond·dilatation), <code>SEISGAP</code> (deq/ieq·strain), <code>MTSHEAR-CONDUIT</code> (cond·shear), <code>GRAVTILT-ZERO</code> (tilt zero-crossing).</p>
+</section>
+<section>
+  <h2>Prior APRONRIDGE Ranked Hypotheses (2026-10-24, historical #1)</h2>
 
   <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
     <p class="kicker" style="color:#4ecb71;">Rank 1 · Implemented &amp; Validated · standalone physics-first HOLDOUT-DTI (0.008354; HYDROCONDUIT hybrid: 0.008549)</p>

@@ -1,0 +1,581 @@
+{
+  "schema": "gemsdoe92.geotension-variants.v1",
+  "session_date_utc": "20261025",
+  "axis": "GEOTENSION",
+  "parent": "h33-h33-2-b2",
+  "parent_claim": {
+    "score": 0.2778,
+    "evidence_label": "CLAIM",
+    "receipt": false
+  },
+  "pre_placement_surface": {
+    "cache_path": ".cache/geotension_surface.tif",
+    "sha256": "da01bc9b6e9b5cb4ef30dab125a61c42adf2249507af443942a03ab7ccf2bb97",
+    "registry_check": "evidence/geotension_surface_registry.json"
+  },
+  "lane_surface": {
+    "definition": "S_raw = H_ten(B4,B7,B8,B12,B15) * R_scarp(B12,B19) * (0.5+0.5*coh(B8))",
+    "bands": "Band 4 geod_2ndinv, Band 7 geod_shearrate, Band 8 geod_dilaterate, Band 12 det_elev, Band 15 depth_to_base_surf, Band 19 det_elev_slope",
+    "implementation": "gems/geotension.py",
+    "catalogue_use": "zero in surface, skeleton weights, or ridge extraction; d_cat>2.0px gate only",
+    "experiments_built": 3,
+    "budget_limit": 3
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-GEOTENSIONs60f40-20261025-ab46201e",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-GEOTENSION-s60f40-20261025",
+      "name": "h33-h33-2-b2-GEOTENSIONs60f40-20261025-ab46201e.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-GEOTENSIONs60f40-20261025-ab46201e-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-GEOTENSIONs60f40-20261025-ab46201e-zeros.zip",
+      "file_nan_cache": ".cache/geotension_builds/h33-h33-2-b2-GEOTENSIONs60f40-20261025-ab46201e.tif",
+      "sha8": "ab46201e",
+      "change_desc": "GEOTENSION (s60f40): 22592 tension-gated H19-5 + 15062 far 1D GEOTENSION crests >3px off H19-5; fixed 37654 unit dots",
+      "notes": "arm=s60f40; n_skel=22592; n_far=15062; shared_R0=8045; within3px_H19=0.6000; piedmont_pct=55.2%; high_coh_dil=35311; git=c16e8b7cc88a",
+      "parent": "h33-h33-2-b2",
+      "axis": "GEOTENSION",
+      "value": "s60f40",
+      "n_dots": 37654,
+      "n_skel": 22592,
+      "n_far": 15062,
+      "pct_changed": 78.63440803101928,
+      "removed": 29609,
+      "added": 29609,
+      "sha256": "ab46201e733090b3672f740dfafe30acc03800be440f4b68af32878e616bf989",
+      "sha256_zeros": "dc673c9fb0e81077455e6aa93cc697fb2148c12c0959b941dd2e523fd06862ba",
+      "zip_sha256": "3307f4edb29ea3edbfaf5fbe3bbf4d50598bb1320165014122b47cf8d581d73f",
+      "primary_file": "h33-h33-2-b2-GEOTENSIONs60f40-20261025-ab46201e-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-GEOTENSIONs60f40-20261025-ab46201e-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/geotension_proxy_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 8076,
+        "basin_pct": 21.448,
+        "piedmont_dots": 20789,
+        "piedmont_pct": 55.211,
+        "range_dots": 8789,
+        "range_pct": 23.341
+      },
+      "channel_diagnostics": {
+        "high_coh_dil_dots": 35311,
+        "high_coh_frac": 0.9378,
+        "within_3px_of_h19_5_frac": 0.599989,
+        "shared_exact_pixels_with_R0": 8045,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "collar_dots_dcat_le_3": 3449,
+        "mean_S_pct_emitted": 0.9461531043052673
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "dc673c9fb0e81077455e6aa93cc697fb2148c12c0959b941dd2e523fd06862ba"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "ab46201e733090b3672f740dfafe30acc03800be440f4b68af32878e616bf989"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; GEOTENSION s60f40: 22592 H19-5 tension-gated + 15062 far dilat-scarp ridges (>3px H19-5)",
+      "gate_status": "PASS (submission_writer + disk reread + 10/10 gems.gates)",
+      "seed": 0
+    },
+    {
+      "id": "h33-h33-2-b2-GEOTENSIONs50f50-20261025-caa53f9d",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-GEOTENSION-s50f50-20261025",
+      "name": "h33-h33-2-b2-GEOTENSIONs50f50-20261025-caa53f9d.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-GEOTENSIONs50f50-20261025-caa53f9d-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-GEOTENSIONs50f50-20261025-caa53f9d-zeros.zip",
+      "file_nan_cache": ".cache/geotension_builds/h33-h33-2-b2-GEOTENSIONs50f50-20261025-caa53f9d.tif",
+      "sha8": "caa53f9d",
+      "change_desc": "GEOTENSION (s50f50): 18827 tension-gated H19-5 + 18827 far 1D GEOTENSION crests >3px off H19-5; fixed 37654 unit dots",
+      "notes": "arm=s50f50; n_skel=18827; n_far=18827; shared_R0=6618; within3px_H19=0.5000; piedmont_pct=54.8%; high_coh_dil=35526; git=c16e8b7cc88a",
+      "parent": "h33-h33-2-b2",
+      "axis": "GEOTENSION",
+      "value": "s50f50",
+      "n_dots": 37654,
+      "n_skel": 18827,
+      "n_far": 18827,
+      "pct_changed": 82.42417804217348,
+      "removed": 31036,
+      "added": 31036,
+      "sha256": "caa53f9dde16749cd3bdb980a2fe642ed4b2858217424f141f7702eea0cf0942",
+      "sha256_zeros": "eab96221bc01cf338852a897654b623f681600d5a243644b9e9dc7e38274c7f5",
+      "zip_sha256": "17cc3eb74f900b7d578ee0ec34c3b3983cc5472cca75b0cf7b2e08b4933308bd",
+      "primary_file": "h33-h33-2-b2-GEOTENSIONs50f50-20261025-caa53f9d-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-GEOTENSIONs50f50-20261025-caa53f9d-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/geotension_proxy_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 8017,
+        "basin_pct": 21.291,
+        "piedmont_dots": 20637,
+        "piedmont_pct": 54.807,
+        "range_dots": 9000,
+        "range_pct": 23.902
+      },
+      "channel_diagnostics": {
+        "high_coh_dil_dots": 35526,
+        "high_coh_frac": 0.9435,
+        "within_3px_of_h19_5_frac": 0.5,
+        "shared_exact_pixels_with_R0": 6618,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "collar_dots_dcat_le_3": 3417,
+        "mean_S_pct_emitted": 0.9523484110832214
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "eab96221bc01cf338852a897654b623f681600d5a243644b9e9dc7e38274c7f5"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "caa53f9dde16749cd3bdb980a2fe642ed4b2858217424f141f7702eea0cf0942"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; GEOTENSION s50f50: 18827 H19-5 tension-gated + 18827 far dilat-scarp ridges (>3px H19-5)",
+      "gate_status": "PASS (submission_writer + disk reread + 10/10 gems.gates)",
+      "seed": 0
+    },
+    {
+      "id": "h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-GEOTENSION-free1d-20261025",
+      "name": "h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.zip",
+      "file_nan_cache": ".cache/geotension_builds/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61.tif",
+      "sha8": "95252d61",
+      "change_desc": "GEOTENSION (free1d): 37654 standalone 1D GEOTENSION crests (zero H19-5/R0 skeleton); fixed 37654 unit dots",
+      "notes": "arm=free1d; n_skel=0; n_far=37654; shared_R0=848; within3px_H19=0.4058; piedmont_pct=52.6%; high_coh_dil=36709; git=c16e8b7cc88a",
+      "parent": "h33-h33-2-b2",
+      "axis": "GEOTENSION",
+      "value": "free1d",
+      "n_dots": 37654,
+      "n_skel": 0,
+      "n_far": 37654,
+      "pct_changed": 97.74791522812981,
+      "removed": 36806,
+      "added": 36806,
+      "sha256": "95252d6173f20b73fe5c75cd0c7f39fc586fc9b56dbbac179eb843fd335c557c",
+      "sha256_zeros": "b0dba55e56a5e714dd62673dd48c0d7f695cf9a25b40786cb243f1bf7dd4d054",
+      "zip_sha256": "dcf8ba3ee3d5f12b75e962dda929588819c4805c986020b35137e20fadf5f182",
+      "primary_file": "h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/geotension_proxy_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 8352,
+        "basin_pct": 22.181,
+        "piedmont_dots": 19810,
+        "piedmont_pct": 52.611,
+        "range_dots": 9492,
+        "range_pct": 25.208
+      },
+      "channel_diagnostics": {
+        "high_coh_dil_dots": 36709,
+        "high_coh_frac": 0.9749,
+        "within_3px_of_h19_5_frac": 0.405827,
+        "shared_exact_pixels_with_R0": 848,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "collar_dots_dcat_le_3": 3346,
+        "mean_S_pct_emitted": 0.9697927832603455
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "b0dba55e56a5e714dd62673dd48c0d7f695cf9a25b40786cb243f1bf7dd4d054"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "95252d6173f20b73fe5c75cd0c7f39fc586fc9b56dbbac179eb843fd335c557c"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; GEOTENSION free1d: 37654 standalone dilat-scarp 1D crests (0 H19-5)",
+      "gate_status": "PASS (submission_writer + disk reread + 10/10 gems.gates)",
+      "seed": 0
+    }
+  ]
+}
