@@ -409,3 +409,61 @@ Study GEMSDOE32 (h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros: 0.2778): why and 
 ```
 
 </details>
+
+## Current Session Prompt (2026-10-24): Generate a UNIQUE TIF submission
+
+<details>
+<summary>Click to expand current session prompt</summary>
+
+```markdown
+Generate a UNIQUE TIF submission for the DOE GEMS Prize #306 competition that is obviously OK to download and submit (no NaN in footprint, values in [0,1], CRS/shape/transform match). Must be unlike any previous GEMSDOE site submission. Steps: (1) read entire prompt; (2) generate 3–5 new candidate geological hypotheses (layers, physical signature, why missing from USGS/INGENIOUS catalogue, how differs from repo) ranked by expected DTI improvement + cost; (3) validate top candidate on spatially-blocked holdout before touching a submission slot; (4) if candidate can't validate without new external data, name the specific free official source and check obtainability; (5) generate unique submission TIF with unique name + note ≤140 chars; (6) create executive summary subpage making download obvious; (7) put prompt into README.md; (8) run 3 passes; (9) create and merge PR to main. Leaderboard high: 0.3195 (current), 0.4413 (conflicting claim). GEMSDOE32 R0 claimed 0.2778 (no organizer receipt). Must not copy previous submissions. Must label numbers as HOLDOUT-DTI or ORGANIZER-CONFIRMED only.
+
+User constraints:
+- MUST generate a unique TIF submission; do not copy a previous submission unless for learning/education
+- IT MUST BE OBVIOUS whether OK to download and submit the generated TIF
+- Inspection must be done through the project, validated for submission without human intervention
+- Stay inside one method lane (parallel-run protocol): if rank-correlation with any registry raster >0.90 or >70% of dots within 3 px of one registry raster's dots → log duplicate and stop (check surface before placement AND final dots)
+- Reuse template's cached feature stack, evaluate_holdout.py and submission_writer.py; never keep a private fork
+- Label every number as HOLDOUT-DTI (evaluator version, withheld positives, 95% CI) or ORGANIZER-CONFIRMED (submission-page receipt); a projection is never written as a score
+- Leakage canary: test each feature alone on holdout; AUC >0.90 means leakage until proven otherwise
+- Run card JSON required: hypothesis; mechanism; named non-fault mimic process; holdout DTI + CI; correlation/overlap vs registry; raster sha256; validator output (no NaN in footprint, values [0,1], CRS/shape/transform match); submission name + note ≤140 chars; verdict promote/negative
+- Budget: stop after 3 experiments or 2 hours; do not pick submissions (separate selector step)
+- No DrivenData auth → cannot auto-download training_features.tif, labels.tif, sample_submission.tif, 1m_DEM_links.csv (verified redirect to login)
+- Work line by line, verify from official verified trusted sources, provide links, no hallucinations
+- Previous submissions all blocked by literal registry rule (dense public witness 100% footprint positive) — must resolve this blocker before emitting a submission artifact
+```
+
+Session result (this branch, `arena/50fc30d1-gemsdoe92`):
+- Hypotheses documented: `docs/HYPOTHESES_20261024_MICROSWARM.md` (MICROSWARM short3 Rank 1, built as experiment 1: protocol duplicate — worst forward overlap 1.000 vs skeleton rasters, static HOLDOUT-DTI 0.000000 [0,0], archived negative).
+- Experiment 2: `scripts/build_basementedge_variant.py` built `docs/downloads/h33-h33-2-b2-BASEMENTEDGEstep3-20261024-80719f12-zeros.tif` (37,654 dots on ||grad depth_to_base_surf|| basement-step edges in thin-cover piedmont, >3 px off h19_5 & mapped faults, 2.8 px spaced, zeros-outside). Byte-unique vs 66 local submission rasters (worst 3-px forward overlap 0.6368 ≤ 0.70; worst |φ| 0.0243). All 11 format gates PASS + gems57.validate all_checks_passed. Static HOLDOUT-DTI 0.000000 [0.000000, 0.000000] (off-catalogue discovery lane by design; vs RELIEF p10 0.006045 / R0 0.004006). Canaries max symmetric AUC 0.5324 ≤ 0.90. SGMC proxy 0.023889 vs R0 0.09606. Verdict: negative (does not beat holdout best); NOT CLEARED FOR A WEEKLY SLOT until the literal public dense-witness rule is resolved by the human selector. OK TO DOWNLOAD; DO NOT SUBMIT.
+- Budget: 2 of 3 experiments used; <2 hours.
+- Site updated: `docs/index.html` (BASEMENTEDGE unique card + MICROSWARM negative record), `docs/executive-summary.html` (unique-TIF callout + table row), `README.md` (this prompt).
+
+## Current Session Prompt (2026-10-24): Generate a UNIQUE TIF submission
+
+<details>
+<summary>Click to expand current session prompt</summary>
+
+```markdown
+Generate a UNIQUE TIF submission for the DOE GEMS Prize #306 competition that is obviously OK to download and submit (no NaN in footprint, values in [0,1], CRS/shape/transform match). Must be unlike any previous GEMSDOE site submission. Steps: (1) read entire prompt; (2) generate 3–5 new candidate geological hypotheses (layers, physical signature, why missing from USGS/INGENIOUS catalogue, how differs from repo) ranked by expected DTI improvement + cost; (3) validate top candidate on spatially-blocked holdout before touching a submission slot; (4) if candidate can't validate without new external data, name the specific free official source and check obtainability; (5) generate unique submission TIF with unique name + note ≤140 chars; (6) create executive summary subpage making download obvious; (7) put prompt into README.md; (8) run 3 passes; (9) create and merge PR to main. Leaderboard high: 0.3195 (current), 0.4413 (conflicting claim). GEMSDOE32 R0 claimed 0.2778 (no organizer receipt). Must not copy previous submissions. Must label numbers as HOLDOUT-DTI or ORGANIZER-CONFIRMED only.
+
+User constraints:
+- MUST generate a unique TIF submission; do not copy a previous submission unless for learning/education
+- IT MUST BE OBVIOUS whether OK to download and submit the generated TIF
+- Inspection must be done through the project, validated for submission without human intervention
+- Stay inside one method lane (parallel-run protocol): if rank-correlation with any registry raster >0.90 or >70% of dots within 3 px of one registry raster's dots → log duplicate and stop (check surface before placement AND final dots)
+- Reuse template's cached feature stack, evaluate_holdout.py and submission_writer.py; never keep a private fork
+- Label every number as HOLDOUT-DTI (evaluator version, withheld positives, 95% CI) or ORGANIZER-CONFIRMED (submission-page receipt); a projection is never written as a score
+- Leakage canary: test each feature alone on holdout; AUC >0.90 means leakage until proven otherwise
+- Run card JSON required: hypothesis; mechanism; named non-fault mimic process; holdout DTI + CI; correlation/overlap vs registry; raster sha256; validator output (no NaN in footprint, values [0,1], CRS/shape/transform match); submission name + note ≤140 chars; verdict promote/negative
+- Budget: stop after 3 experiments or 2 hours; do not pick submissions (separate selector step)
+- No DrivenData auth → cannot auto-download training_features.tif, labels.tif, sample_submission.tif, 1m_DEM_links.csv (verified redirect to login)
+- Work line by line, verify from official verified trusted sources, provide links, no hallucinations
+- Previous submissions all blocked by literal registry rule (dense public witness 100% footprint positive) — must resolve this blocker before emitting a submission artifact
+```
+
+Session result (this branch, `arena/50fc30d1-gemsdoe92`):
+- Hypotheses documented: `docs/HYPOTHESES_20261024_MICROSWARM.md` (MICROSWARM short3 Rank 1, built as experiment 1: protocol duplicate — worst forward overlap 1.000 vs skeleton rasters, static HOLDOUT-DTI 0.000000 [0,0], archived negative).
+- Experiment 2: `scripts/build_basementedge_variant.py` built `docs/downloads/h33-h33-2-b2-BASEMENTEDGEstep3-20261024-80719f12-zeros.tif` (37,654 dots on ||grad depth_to_base_surf|| basement-step edges in thin-cover piedmont, >3 px off h19_5 & mapped faults, 2.8 px spaced, zeros-outside). Byte-unique vs 66 local submission rasters (worst 3-px forward overlap 0.6368 ≤ 0.70; worst |φ| 0.0243). All 11 format gates PASS + gems57.validate all_checks_passed. Static HOLDOUT-DTI 0.000000 [0.000000, 0.000000] (off-catalogue discovery lane by design; vs RELIEF p10 0.006045 / R0 0.004006). Canaries max symmetric AUC 0.5324 ≤ 0.90. SGMC proxy 0.023889 vs R0 0.09606. Verdict: negative (does not beat holdout best); NOT CLEARED FOR A WEEKLY SLOT until the literal public dense-witness rule is resolved by the human selector. OK TO DOWNLOAD; DO NOT SUBMIT.
+- Budget: 2 of 3 experiments used; <2 hours.
+- Site updated: `docs/index.html` (BASEMENTEDGE unique card + MICROSWARM negative record), `docs/executive-summary.html` (unique-TIF callout + table row), `README.md` (this prompt).
