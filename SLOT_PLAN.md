@@ -1,6 +1,6 @@
 # SLOT_PLAN — GEMS Prize #306
 
-**2026-10-25 DILATATION session:** `h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b` is format-valid, portal-safe (zeros-outside, all finite), lane-distinct from every other built arm, and the **only** arm whose HOLDOUT-DTI CI excludes zero *and* which ships in the safe encoding. **Verdict promote.**
+**Current selector status: NO SLOT RECOMMENDED.** DILATATION p12 is format-valid but fails the literal uniqueness stop: 99.37% of its dots are within 3 px of registry raster R0 (limit: >70%). It is retained as a research artifact only. Its positive local holdout does not clear it for upload.
 
 **2026-10-24 TIPGAP FAR session:** `h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a` is format-valid and lane-distinct, but HOLDOUT-DTI `0.002723 [0.002324, 0.003131]` (`gems57-pooled-hide-v2`, n = 22,663) is **below** R0 `0.004006`. **Verdict negative — do not spend a weekly slot.** On-skeleton 10–15 % TIPGAP doses were parent-lane duplicates (arrival overlap ≈ 0.999) and are not offered.
 
@@ -41,9 +41,9 @@ Every arm below was scored on the same instrument (`gems57-pooled-hide-v2`, 22,6
 
 ### Decision rules
 
-- **Slot 1 (RELIEF p10):** receipt Δ ≥ +0.01 vs R0 → unmapped Quaternary truth concentrates on the range-front piedmont; promote to parent for a Week-3 composite. Δ ≤ −0.01 → piedmont hypothesis rejected; concealed intrabasinal faults dominate. |Δ| < 0.01 → no evidence.
-- **Slot 2 (DILATATION p12):** Δ ≥ +0.01 → active dilatation predicts new faults; promote and compose `DILATATION + SNAP`. Δ ≤ −0.01 → rejects the kinematic prior; expect Phase-2 truth to be inactive/exhumed or compressional.
-- **Slot 3 (DILATATION p15):** only if Slot 2 is positive — it maps whether the dose response has plateaued. If Slot 2 is neutral, substitute `SNAPscarp2p0px` to test positional lineament error instead.
+- **No current slot is cleared.** The 70% registry-overlap duplicate stop is a hard precondition, not a preference that a positive holdout or later receipt can silently override. Existing RELIEF and DILATATION variants fail it; TIPGAP clears it but is negative on the local holdout.
+- A future candidate can enter the selector only after its full raster passes format and registry uniqueness checks, and its named holdout has been run under the shared evaluator. The weekly-slot decision remains a separate selector step; no slot is consumed by this plan.
+- Do not infer a winning geological mechanism from catalogue-hide holdout alone: that instrument's positives are catalogue faults, unlike the off-catalogue competition target.
 
 ## Schedule to Deadline (2026-12-03, ~6 weeks)
 

@@ -10,19 +10,19 @@
   <a class="skip" href="#download">Skip to download</a>
   <header class="hero">
     <p class="kicker">DOE GEMS Prize · DrivenData #306 · EPSG:32611 100 m</p>
-    <h1>Validated GeoTIFF candidate</h1>
+    <h1>GEMS GeoTIFF research &amp; validation</h1>
     <p class="lede">One-click download of an all-finite, format-validated GeoTIFF candidate. The served TIPGAP raster is distinct under the documented comparison against this repository’s locally accessible registry; this is <strong>not proof of uniqueness against every external GEMSDOE site</strong>.</p>
     <div class="banner banner-ok">
-      <strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong>
+      <strong>✅ FORMAT-VALID — OK TO DOWNLOAD FOR REVIEW; NOT CLEARED TO SUBMIT.</strong>
       The TIPGAP file passes the local format/range checks: CRS · shape · transform · float32 · 1 band · values in [0, 1] · no NaN · zeros outside · zero catalogue mass. It does <strong>not</strong> beat R0 on HOLDOUT-DTI.
     </div>
     <div class="banner banner-warn">
-      <strong>⚠ NOT CLEARED FOR A WEEKLY SLOT — it fails the operator's literal uniqueness rule.</strong>
-      The brief says: if <em>more than 70 % of your dots fall within 3 px of one registry raster's dots, log it as a duplicate and stop</em>. Parent R0 <strong>is</strong> a registry raster (<code>registry/parents/R0.json</code>), and the DILATATION file measures <strong>99.37 %</strong> of its dots within 3 px of R0. So do every other DILATATION dose (99.37–99.40 %) and RELIEF p10 (99.38 %). Only <code>TIPGAP far18f33</code> clears the rule at 67.00 % — and its own run card puts its HOLDOUT-DTI <em>below</em> R0 (−0.001283, verdict negative).
-      <strong>The honest state of this repository: no locally tested file is both unique under that rule and expected to improve. The file offered below is a negative-result artifact, not a scoring recommendation. See <a href="#uniqueness">the two readings</a> below.
+      <strong>⚠ NO FILE IS CLEARED FOR A WEEKLY SLOT.</strong>
+      The brief says: if <em>more than 70 % of your dots fall within 3 px of one registry raster's dots, log it as a duplicate and stop</em>. Parent R0 <strong>is</strong> a registry raster (<code>registry/parents/R0.json</code>); DILATATION and RELIEF fail this gate (99.37–99.40 % within 3 px). <code>TIPGAP far18f33</code> clears it locally at 67.00 %, but its HOLDOUT-DTI is below R0 (−0.001283; negative). The local registry is not exhaustive of external GEMSDOE sites.
+      <strong>No locally evaluated file is both below the overlap limit and positive against R0 on HOLDOUT-DTI. The file offered below is a negative-result research artifact, not a scoring recommendation. See <a href="#uniqueness">the two readings</a> below.
     </div>
     <div class="banner banner-warn">
-      The portal error <code>Predicted values must be in range [0, 1]</code> comes from a value outside [0, 1] anywhere in the raster — usually the training stack's <code>−3.4028235e+38</code> nodata sentinel (3,061 such cells sit <em>inside</em> the footprint) or a stray NaN. Every cell of this download is finite and <code>nodata=None</code>, so neither can reach the validator. Upload the <strong>zeros-outside</strong> file below.
+      The portal error <code>Predicted values must be in range [0, 1]</code> comes from a value outside [0, 1] anywhere in the raster — usually the training stack's <code>−3.4028235e+38</code> nodata sentinel (3,061 such cells sit <em>inside</em> the footprint) or a stray NaN. Every cell of this download is finite and <code>nodata=None</code>, so neither can reach the validator. This establishes format/range preflight only; the file below is not cleared for upload.
     </div>
   </header>
 
@@ -111,7 +111,7 @@
       <thead><tr><th>Lane</th><th>HOLDOUT-DTI</th><th>Δ vs R0</th><th>Verdict</th><th>File</th></tr></thead>
       <tbody>
         <tr>
-          <td><strong>DILATATION p12</strong></td><td>0.005779</td><td><strong>+0.00177</strong></td><td><strong>promote</strong></td>
+          <td><strong>DILATATION p12</strong></td><td>0.005779</td><td><strong>+0.00177</strong></td><td><strong>duplicate — do not submit</strong></td>
           <td><a href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif">download</a></td>
         </tr>
         <tr>
@@ -120,7 +120,7 @@
           <td><a href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif">download</a></td>
         </tr>
         <tr>
-          <td>RELIEF p10 — piedmont detrended-elevation tercile shift</td><td>0.006045</td><td><strong>+0.002039</strong></td><td>built, Slot 1 by holdout</td>
+          <td>RELIEF p10 — piedmont detrended-elevation tercile shift</td><td>0.006045</td><td><strong>+0.002039</strong></td><td>duplicate — do not submit</td>
           <td><a href="downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif">download (zeros-outside)</a></td>
         </tr>
         <tr>
@@ -133,7 +133,7 @@
         </tr>
       </tbody>
     </table>
-    <p><strong>Read the ranking honestly.</strong> By HOLDOUT-DTI alone, <em>RELIEF p10</em> is the largest gain of any arm (+0.002039, CI excludes 0) and it is listed as Slot 1 in <a href="../SLOT_PLAN.md">SLOT_PLAN.md</a>. It was previously served <strong>only</strong> in the NaN-outside encoding — the one that triggered the portal error — so it was not safely submittable; a zeros-outside twin has now been built, passes 10/10 gates, and its sha256 <code>60f02085…</code> reproduces the value recorded in <code>evidence/relief_variants.json</code> byte-for-byte.</p>
+    <p><strong>Read the ranking honestly.</strong> By HOLDOUT-DTI alone, <em>RELIEF p10</em> has the largest reported gain of the tested arms (+0.002039, CI excludes 0), but it also fails the registry-overlap gate (99.38% within 3 px of R0). It is not cleared for a weekly slot; a higher holdout result cannot override the uniqueness stop. The zeros-outside twin passes format validation only.</p>
     <p>DILATATION is retained as a negative/duplicate comparison because it is the arm with a <strong>monotone three-point dose ladder</strong> (+0.00174 / +0.00177 / +0.00181) on a mechanism no other lane touches, and it is nearly disjoint from both RELIEF (arrival Jaccard 0.159) and TIPGAP (0.0011). Note that RELIEF and DILATATION arrivals overlap 28.84 % within 3 px, so they are <strong>not independent</strong> — two positive receipts from those two arms are partly the same information, not two confirmations.</p>
     <p><strong>Read the TIPGAP row honestly:</strong> its own run card records <code>verdict: negative</code> with HOLDOUT-DTI <em>below</em> R0, and its page text says not to spend a weekly slot on it unless a human overrides. It is kept because a negative result is a deliverable — moving 33 % of the budget off the D2.8 skeleton onto along-strike tip walks <em>costs</em> credit, which falsifies the "continuations sit 0.5–1.8 km past the tips" hypothesis on this instrument. Do not submit it expecting a gain.</p>
     <p>The three on-skeleton 10–15 % TIPGAP doses were logged as lane-duplicates of R0 (overlap ≈ 0.999) and are <em>not</em> offered for download.</p>

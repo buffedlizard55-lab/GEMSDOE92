@@ -1,0 +1,46 @@
+{
+  "record_type": "review_closeout_no_new_experiment",
+  "hypothesis": "Band 8 geodetic dilatation prioritization on H19-5-supported fault ridges improves holdout recovery of withheld catalogue segments.",
+  "mechanism": "Prior tested p10/p12/p15 dose ladder reallocates fixed-mass parent dots from lower to upper dilatation terciles; exact expected-DTI refill, alpha=0.2, beta=0.8, triangular kernel radius=300m.",
+  "named_non_fault_mimic": "Brine-pumping or agricultural subsidence bowls, Walker Lane strain shadows, or ductile thick basin fill without brittle faulting.",
+  "holdout_dti": {
+    "label": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 22663,
+    "candidate_p12": 0.005779,
+    "candidate_ci95": [0.004863, 0.006851],
+    "parent_r0": 0.004006,
+    "parent_ci95": [0.003424, 0.004690],
+    "paired_delta": 0.00177,
+    "paired_delta_ci95": [0.00111, 0.00246],
+    "note": "These are local catalogue-hide holdout results, not leaderboard scores. The three dose experiments were already completed before this review; no new experiment was run."
+  },
+  "correlation_overlap_vs_registry": {
+    "registry_raster": "data/parent_R0_zeros.tif",
+    "spearman_rho_binary_masks": 0.8796,
+    "candidate_dots_within_3px": 0.9937,
+    "thresholds": {
+      "rho_greater_than": 0.90,
+      "overlap_greater_than": 0.70
+    },
+    "result": "DUPLICATE_STOP: overlap exceeds 70%; do not submit"
+  },
+  "raster_sha256": "25ba17a26d31df9d574fba2a2f34d03ff58f587f4ffde092dcc4bba9822f8898",
+  "validator_output": {
+    "local_format_validation": "PASS",
+    "single_band": true,
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "shape": [3730, 3292],
+    "transform_matches_sample_submission": true,
+    "all_values_finite": true,
+    "no_nan_inside_footprint": true,
+    "values_range": [0.0, 1.0],
+    "outside_footprint": "zeros",
+    "catalogue_mass": 0,
+    "registry_uniqueness_gate": "FAIL: 99.37% within 3 px of R0, above 70% limit"
+  },
+  "submission_name": "GEMSDOE92-DILATATION-p12-20261025",
+  "submission_note": "h33-h33-2-b2; DILATATION shift 4518 dots (12%) low-to-high tercile; duplicate-stop, do not submit",
+  "verdict": "negative"
+}

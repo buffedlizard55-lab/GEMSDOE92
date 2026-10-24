@@ -41,6 +41,6 @@ Parent studied: GEMSDOE32 `h33-h33-2-b2` CLAIM 0.2778 (zeros). That score is **n
 
 Maximize P(Win). Own the outcome end to end. Do not copy a previous submission except to learn.
 
-## This session’s result (2026-10-24)
+## Current repository status (as checked 2026-10-24)
 
-TIPGAP FAR (`far18f33`) is unique vs the local registry and format-valid. HOLDOUT-DTI did not beat R0. Verdict **negative**. File still published for download with that banner.
+The prior DILATATION experiment budget is exhausted (p10, p12, p15). Their holdout results are positive relative to R0, but each is over the literal 70%/3-pixel registry duplicate threshold; record them as duplicates and do not recommend a weekly slot. TIPGAP FAR clears the overlap threshold (67.00%) but its HOLDOUT-DTI is below R0, so it is a negative deliverable. A format-valid TIFF may be downloaded for review, but no current artifact is cleared to submit. Do not begin another arm without a fresh task/session budget; the next scientifically useful action is resolve the uniqueness-versus-credit gap, then validate with the shared holdout before slot selection.
