@@ -1,0 +1,203 @@
+{
+  "evidence_label": "PROXY",
+  "created_utc": "2026-10-24",
+  "axis": "RELIEF",
+  "purpose": "Report-only catalogue hide-and-recover instrument, single-feature leakage canaries, and USGS SGMC bedrock fault control proxy for RELIEF variants from parent R0.",
+  "parent": "h33-h33-2-b2",
+  "hide_and_recover_pooled_summary": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "alpha": 0.2,
+    "beta": 0.8,
+    "triangular_radius_m": 300.0,
+    "pooled": true,
+    "scores": {
+      "R0": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.004006147174684743,
+        "ci95": [
+          0.0034243961318463374,
+          0.004689525221466778
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 129.29712893913688,
+        "fpw": 70592.1164043663,
+        "fnw": 22533.70287106087
+      },
+      "p10piedmont": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.0060451323971729325,
+        "ci95": [
+          0.005187022524132649,
+          0.0069268388021730696
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 195.01412046639513,
+        "fpw": 70451.45517161682,
+        "fnw": 22467.9858795336
+      },
+      "p12piedmont": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.005973602059171582,
+        "ci95": [
+          0.005096021986140893,
+          0.006879919257370315
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 192.6910136143049,
+        "fpw": 70440.75427182818,
+        "fnw": 22470.308986385684
+      },
+      "p15piedmont": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.005961442412078279,
+        "ci95": [
+          0.005071141332559942,
+          0.006872507022014095
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 192.29067690537929,
+        "fpw": 70434.35936572998,
+        "fnw": 22470.709323094612
+      }
+    },
+    "best_comparable_control": "p10piedmont",
+    "paired_differences": {
+      "R0": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.0019674548844868392,
+        "ci95": [
+          0.0014833397436496544,
+          0.0025038082524788934
+        ],
+        "withheld_positive_pixels": 22663
+      },
+      "p10piedmont": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": -7.15303380013502e-05,
+        "ci95": [
+          -0.00015940326918226376,
+          2.8037462960529307e-05
+        ],
+        "withheld_positive_pixels": 22663
+      },
+      "p15piedmont": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 1.2159647093303722e-05,
+        "ci95": [
+          -0.00011469539335276456,
+          0.0001544869339958556
+        ],
+        "withheld_positive_pixels": 22663
+      }
+    },
+    "bootstrap": {
+      "method": "paired physical spatial-cluster percentile",
+      "clusters": 157,
+      "draws": 1000,
+      "seed": 520810,
+      "confidence": 0.95,
+      "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+    },
+    "implementation_sha256": {
+      "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+      "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+      "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+      "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+    }
+  },
+  "per_arm_fold_scores": {
+    "R0": [
+      0.0033190361096884797,
+      0.004407926168167087,
+      0.0031089001997361824,
+      0.004072828198897818,
+      0.00489997713403107,
+      0.005013980811213483,
+      0.004355576467076173,
+      0.003125934420342564
+    ],
+    "p10piedmont": [
+      0.004578056954825213,
+      0.00658626211231911,
+      0.005662643564358266,
+      0.00540408666315905,
+      0.00750167560429133,
+      0.007457189434327682,
+      0.0066340163128888255,
+      0.004633597763238065
+    ],
+    "p12piedmont": [
+      0.004654392539981297,
+      0.006445183061568491,
+      0.0055594852528745905,
+      0.0052159341737592225,
+      0.007497006231099156,
+      0.00737366551810018,
+      0.00655300812427468,
+      0.004634372877285653
+    ],
+    "p15piedmont": [
+      0.0046726683534414944,
+      0.006400615242425536,
+      0.005731269922382057,
+      0.004645906070205677,
+      0.0077756677292253,
+      0.007303425410815723,
+      0.006609995308528893,
+      0.004661014126631195
+    ]
+  },
+  "leakage_canaries": {
+    "definition": "symmetric AUC=max(AUC,1-AUC) on hidden known-catalogue positives vs non-catalogue negatives in buffered fold regions",
+    "results": {
+      "training_band_3_tmi_hg": {
+        "auc": 0.498777,
+        "symmetric_auc": 0.501223,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "training_band_5_iso_grav_anom_slope": {
+        "auc": 0.551113,
+        "symmetric_auc": 0.551113,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "training_band_12_detrended_elevation": {
+        "auc": 0.497553,
+        "symmetric_auc": 0.502447,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "training_band_19_detrended_elevation_slope": {
+        "auc": 0.55314,
+        "symmetric_auc": 0.55314,
+        "status": "REPORT_ONLY_PASS"
+      }
+    },
+    "stop_and_investigate_if_any_gt_0_90": false,
+    "max_symmetric_auc": 0.55314
+  },
+  "sgmc_control_proxy": {
+    "source": "manifest-pinned USGS SGMC derived fault control (https://www.sciencebase.gov/catalog/item/5888bf4fe4b05ccb964bab9d, US Public Domain)",
+    "truth_pixels_after_catalogue_and_3px_exclusion": 62703,
+    "r0_dti": 0.09606,
+    "variant_dti": {
+      "R0": 0.09606,
+      "p10piedmont": 0.087245,
+      "p12piedmont": 0.085162,
+      "p15piedmont": 0.082782
+    },
+    "variant_deltas_vs_r0": {
+      "R0": 0.0,
+      "p10piedmont": -0.008815,
+      "p12piedmont": -0.010898,
+      "p15piedmont": -0.013278
+    }
+  },
+  "caution": "These are catalogue/SGMC PROXY diagnostics, never live public scores, private-set scores, or decision gates. As documented in IRREGULARITIES.md, local catalogue proxies correlate poorly with live ground-truth changes and serve solely for leakage sanity-checks."
+}

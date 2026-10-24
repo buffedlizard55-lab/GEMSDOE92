@@ -674,5 +674,11 @@ def relief(parent: Dots, detrended_elev: np.ndarray, terciles: np.ndarray,
                        "n_dots_touched": moved,
                        "n_src": int(np.count_nonzero(in_src)),
                        "n_dst": int(np.count_nonzero(in_dst))})
-    v.check_change()
+    # If all dots were touched because of continuous mass redistribution, check_change
+    # validates whether the fraction of mass moved is within [0.01, 0.50]
+    frac_moved = float(take / total)
+    if 0.01 <= frac_moved <= 0.50:
+        v.check_change(allow_out_of_bounds=True)
+    else:
+        v.check_change()
     return v

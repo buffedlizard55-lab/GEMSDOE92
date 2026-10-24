@@ -146,3 +146,17 @@ slots, receipts) are left blank.
 ### What the human decides and supplies
 - Autonomous `AXIS = SNAP` selection was delegated by the human's session prompt ("Do not prompt me over choosing an Axis for the session, pick your own session").
 - The human supplies `TOP_PUBLIC` (with observation date), confirms rolling-week and remaining competition slots, chooses whether/which single encoding file to upload from their registered DrivenData account, and records official submission-page `RECEIPT` scores and dates in `ledger/submissions.csv`.
+
+---
+
+## Session 6 — RELIEF axis (2026-10-24)
+
+### What AI wrote
+- `scripts/build_relief_variants.py`: deterministic build verifying all input manifest SHA-256 digests, byte-exact parent R0 lineage rebuild check, detrended elevation (Band 12) tercile thresholding (`p33 = -142.91 m`, `p67 = +38.75 m`), physical prior calculation, selective dropping of lowest-prior basin & range dots, greedy exact expected DTI refill into the piedmont tercile, disk reread format validation, ledger appending, and generation of `evidence/relief_variants.json`.
+- `scripts/report_relief_proxies.py`: report-only buffered catalogue hide-and-recover PROXY (`gems57-pooled-hide-v2`), single-feature leakage canaries, and USGS SGMC off-catalogue bedrock fault control PROXY (`evidence/relief_proxy_audit.json`).
+- `tests/test_relief_variants.py`: unit and policy tests for RELIEF mass shifting, tercile properties, ledger uniqueness, and evidence documentation.
+- Updates to `gems/variants.py`, `README.md` (CURRENT STATE block), `SLOT_PLAN.md`, `docs/SUBMIT.md`, `docs/mechanism_cards.md`, `IRREGULARITIES.md`, and this file.
+
+### What the human decides and supplies
+- Autonomous `AXIS = RELIEF` selection per brief instructions ("Do not prompt me over choosing an Axis for the session, pick your own session").
+- Human fills `TOP_PUBLIC` from leaderboard with observation date, verifies entity weekly submission quota, chooses whether and which candidate file to submit from their own registered DrivenData account, and records submission receipts in `ledger/submissions.csv`.

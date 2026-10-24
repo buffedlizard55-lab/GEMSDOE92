@@ -215,3 +215,18 @@ gitignored and not redistributed. No new external data was introduced.
 2. Every band in `training_features.tif` encodes `3,061` in-footprint pixels (`0.06%`; `3,073` on Band 6) with float32 sentinel `-3.4028235e+38`, which passes `np.isfinite()`. Reading without `masked=True` treats nodata pixels as extreme negative finite values.
 
 **Decision.** `scripts/build_snap_scarp_variants.py` reads `training_features.tif` with `ds.read(b, masked=True).filled(np.nan)` (plus `> -1e30` guard) and uses unsigned **`Band 5 (iso_grav_anom_slope)`** paired with the piedmont break-in-slope inflection `||grad(det_elev_slope)||` (`Band 19`). Furthermore, enforcing literal `"Same count, same exclusions"` (`d_cat > 2.0 px` on both kept and moved dots, rather than a one-way `d_cat > 3.0` membrane on moved dots) prevents partial depletion of the `2.0 < d_cat <= 3.0` collar (`2,171` vs `2,175` dots, `0.01%` delta vs `-24.7%` under `g0.05`), keeping `SNAPscarp2p0px`, `SNAPscarp1p4px`, and `SNAPpot2p0px` 100% unconfounded with `PRUNE`.
+
+---
+
+## 2026-10-24 (RELIEF session) — Baseline Parent R0 Mass is Asymmetrically Concentrated in Bedrock Range Front / Range Interior Rather than Active Piedmont
+
+**Observation.**
+Decomposition of parent R0 (`37,654` dots) across the three regional detrended-elevation terciles (`Band 12 det_elev`: `p33 = -142.9087 m`, `p67 = +38.7522 m` across the 5.17M px valid footprint) reveals:
+- Basin tercile (`det_elev < p33`): 7,691 dots (20.43%)
+- Piedmont tercile (`p33 <= det_elev < p67`): 15,743 dots (41.81%)
+- Range-front / Range core tercile (`det_elev >= p67`): 14,204 dots (37.72%)
+
+R0's dots in basin + range total 21,895 dots (58.15%). In extensional Basin-and-Range tectonic settings, active Quaternary normal faulting predominantly localizes along range-front alluvial fans and piedmont fault scarps, while deep basins conceal faults beneath thick, ductile/unconsolidated graben fill and range interiors contain eroded, exhumed, often inactive bedrock structures.
+
+**Decision.**
+Shift 10%, 12%, and 15% of total mass (3,765, 4,518, and 5,648 dots) from the lowest-prior basin and range dots into the highest-prior unpopulated H19-5 pixels located strictly within the piedmont tercile, using greedy exact expected-DTI marginal gain on the label-free physical prior (`Band 3`, `Band 5`, `Band 19`). Dot count is held at exactly 37,654, zero mass is placed on the catalogue, and all dots maintain R0's `d_cat > 2.0 px` exclusion.
