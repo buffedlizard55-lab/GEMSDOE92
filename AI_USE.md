@@ -205,6 +205,28 @@ No submission, no login, no leaderboard or competition-page access, no Dropbox c
 - Autonomous `AXIS = RELIEF` selection per brief instructions ("Do not prompt me over choosing an Axis for the session, pick your own session").
 - Human fills `TOP_PUBLIC` from leaderboard with observation date, verifies entity weekly submission quota, chooses whether and which candidate file to submit from their own registered DrivenData account, and records submission receipts in `ledger/submissions.csv`.
 
+
+---
+
+## Session — TIPGAP FAR, 2026-10-24
+
+### What AI wrote
+- `gems/variants.py` `tipgap` / `skeleton_endpoints` / `tipgap_targets`
+- `scripts/build_tipgap_variants.py`, `scripts/build_tipgap_far.py`, `scripts/check_site.py`
+- `docs/index.html`, `docs/submit.html`, `docs/style.css`, download GeoTIFF/ZIP
+- README.md, SESSION_PROMPT.md, mechanism card, this disclosure
+
+### What the human must still do
+- Enable GitHub Pages (`docs/` on `main`) if the site URL 404s
+- Fill TOP_PUBLIC from the leaderboard with a date
+- Confirm rolling-week quota; upload only from the registered account
+- Record RECEIPT scores with dates
+
+### Data
+- Parent R0, H19-5, sample_submission, labels: already in `data/` (owner mirrors, SHA-256 pinned)
+- No new external download this session
+- No drivendata.org or dropbox.com contact
+
 ---
 
 ## Session 8 — DILATATION axis + submission-ready download site (2026-10-25)

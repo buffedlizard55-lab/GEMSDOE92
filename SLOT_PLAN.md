@@ -1,28 +1,54 @@
 # SLOT_PLAN — GEMS Prize #306
 
-**Incumbent / Parent R0:** `h33-h33-2-b2` (37,654 unit-mass dots; both `zeros` `c55bafc4…` and `nan` `baeae321…` SHA-256 digests rebuilt byte-for-byte from the pinned lineage). Score `0.2778` is **CLAIM** until a submission-page receipt is recorded in `ledger/submissions.csv` (25 `BUILT` candidates across `MASS`, `PRUNE`, `SNAP`, `CONCENTRATION`, `RELIEF`, `DILATATION`; zero `RECEIPT` rows).
+**2026-10-25 DILATATION session:** `h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b` is format-valid, portal-safe (zeros-outside, all finite), lane-distinct from every other built arm, and the **only** arm whose HOLDOUT-DTI CI excludes zero *and* which ships in the safe encoding. **Verdict promote.**
+
+**2026-10-24 TIPGAP FAR session:** `h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a` is format-valid and lane-distinct, but HOLDOUT-DTI `0.002723 [0.002324, 0.003131]` (`gems57-pooled-hide-v2`, n = 22,663) is **below** R0 `0.004006`. **Verdict negative — do not spend a weekly slot.** On-skeleton 10–15 % TIPGAP doses were parent-lane duplicates (arrival overlap ≈ 0.999) and are not offered.
+
+**Incumbent / Parent R0:** `h33-h33-2-b2` (37,654 unit-mass dots; both `zeros` `c55bafc4…` and `nan` `baeae321…` SHA-256 digests rebuilt byte-for-byte from the pinned lineage, and now re-verified by `make verify`, which re-measures dot count, total mass, min catalogue distance, footprint and the 3/4/5 px collar counts from the raster itself). Score `0.2778` is **CLAIM** until a submission-page receipt is recorded in `ledger/submissions.csv` (29 `BUILT` candidates across `MASS`, `PRUNE`, `SNAP`, `CONCENTRATION`, `RELIEF`, `TIPGAP`, `DILATATION`; **zero** `RECEIPT` rows).
+
 **Target & Quota:** `TOP_PUBLIC = ____` (date: `____`); rolling-week slots left: `__ / 3`; total weekly slots remaining to `2026-12-03`: `__` (~18 max across ~6 weeks, plus ONE blind final file; confirm deadline on competition page). Never submit repeats or both NaN/zeros twins of a pair. Treat live public-chunk deltas with `|delta| < 0.01` as **no evidence**.
 
-## Next 3 Live Slots (in priority order, conditional on human quota check) — UPDATED 2026-10-25 DILATATION
+## Ranking is by HOLDOUT-DTI, not by MODEL projection
 
-1. **`h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b`** (`AXIS=DILATATION, value=p12dilatation`) — Shift 12.0% (4,518 dots) from lowest/mid-dilatation (≤7.24 nstrain/yr) into high-dilatation tercile (≥7.24) on H19-5 via greedy exact expected-DTI (0.70·dilatation + 0.30·TMI/grav/scarp); exact 37,654 dots held; `d_cat > 2.0 px`; zero catalogue mass. Prediction: **`MODEL:+0.007`** (`[-0.003,+0.019]`); **HOLDOUT-DTI** `0.005779 [0.004863,0.006851]` vs R0 `0.004006 [0.003424,0.004690]` → **`+0.00177` `[0.00111,0.00246]`** (gems57-pooled-hide-v2, 22,663 withheld, 8 folds, 157 clusters, 1,000 paired draws). Leakage max AUC 0.515 (PASS).
-   - *Decision rule:* If receipt delta `>= +0.01` vs R0, validates that unmapped fault truth concentrates in actively dilating corridors; promote `DILATATIONp12` to parent for Week 3 composite (`DILATATION + SNAP` or `DILATATION + RELIEF` — orthogonal: strain vs topography). If `<= -0.01`, rejects dilatation predictor and suggests concealed compressional or inactive exhumed faults dominate.
-2. **`h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88`** (`AXIS=DILATATION, value=p10dilatation`) — 10.0% shift (3,765 dots) into high-dilatation tercile; `MODEL:+0.005` `[-0.004,+0.016]`; HOLDOUT `+0.00174` vs R0. Tests conservative dose; if Slot 1 is neutral (|Δ|<0.01) but p10 wins, dose-response is flat-to-saturated and 10% is the optimum.
-   - *Decision rule:* If Slot 1 neutral and p10 `>= +0.01`, 10% dose is the knee; if both neutral, dilatation geography is wrong and next axis should be CONCEALED BASIN-EDGE.
-3. **`h33-h33-2-b2-RELIEFp12piedmont-20261024-a0998ed7`** (`AXIS=RELIEF, value=p12piedmont`, `MODEL:+0.008`, HOLDOUT `+0.00197` vs R0) **OR conditional swap to `h33-h33-2-b2-SNAPscarp2p0px-20261023-2a65fe24`** (`MODEL:+0.012`) if Slot 1 succeeds and orthogonal test is desired.
-   - *Decision rule:* If DILATATION Slot 1 succeeds, Slot 3 tests RELIEF orthogonality (does piedmont still add after dilatation?). If DILATATION fails, Slot 3 tests SNAP positional correction independent of tercile allocation.
+Every arm below was scored on the same instrument (`gems57-pooled-hide-v2`, 22,663 withheld catalogue positives, 157 spatial clusters, 1,000 paired draws, seed 520810). **R0 = 0.004006 [0.003424, 0.004690].**
 
-Reserve files that must not be paired in same week (they ask same question): `DILATATIONp15dilatation` (15% aggressive dose, MODEL:+0.006, HOLDOUT +0.00181 — saturated), `RELIEFp10piedmont` / `RELIEFp15piedmont` (same RELIEF question, different dose), `CONCcatblk10up10/up20/dn10` (catalogue-density concentration prior), and `CONCENTRATIONphys10` (physics prior control, MODEL:-0.008). **Spacing caveat on every CONCENTRATION file:** at fixed count on 1-px H19-5 skeleton, arrivals must land 1.0-2.0 px from survivor; 2.83 px parent floor unattainable (only ~90 legal pixels exist), and at 2.0 px floor a “10%” move silently becomes 7.34% positions (see IRREGULARITIES).
+| rank | arm | HOLDOUT-DTI | Δ vs R0 | 95 % CI of Δ | encoding served | slot? |
+|---|---|---|---|---|---|---|
+| 1 | `RELIEFp10piedmont-20261024-3e900c24` | 0.006045 | **+0.002039** | [0.001483, 0.002504] | zeros-outside ✅ | **Slot 1** |
+| 2 | `DILATATIONp12dilatation-20261025-8b4d248b` | 0.005779 | +0.00177 | [0.001110, 0.002455] | zeros-outside ✅ | **Slot 2** |
+| 3 | `DILATATIONp15dilatation-20261025-ebc1b432` | 0.005818 | +0.00181 | — | zeros-outside ✅ | **Slot 3** |
+| — | `DILATATIONp10dilatation-20261025-2e501f88` | 0.005747 | +0.00174 | — | zeros-outside ✅ | reserve |
+| — | `RELIEFp12piedmont-20261024-a0998ed7` | 0.005974 | +0.00197 | — | NaN-outside ⚠ | needs a zeros twin first |
+| — | `TIPGAPfar18f33-…-0ca8248a` | 0.002723 | **−0.001283** | — | zeros-outside ✅ | **no — negative** |
+
+**Why Slot 1 is RELIEF p10 and not the DILATATION file this session built.** Ranked honestly on the shared instrument, RELIEF p10 is the largest holdout gain of any arm (+0.002039, CI excludes 0). It was previously served **only** in the NaN-outside encoding — the one that triggered the portal error — so it was not safely submittable. A zeros-outside twin has now been built and passes 10/10 gates; its sha256 `60f0208547efd4fb8b52fd5a298d9151de15208c3c44b04e90e78ec13a978296` **reproduces the value recorded in `evidence/relief_variants.json` byte-for-byte**, which independently corroborates the re-encode.
+
+**Why DILATATION still leads the site banner.** It is the arm with a *dose-response ladder* (three arms, monotone: +0.00174 / +0.00177 / +0.00181) on a mechanism no other lane touches (kinematic strain rather than topography or geometry), and it is nearly disjoint from both RELIEF and TIPGAP (arrival Jaccard 0.159 and 0.0011). Slots 2–3 buy that diversification; if the human prefers one bet, take Slot 1.
+
+### Do not pair these in the same week
+
+- `DILATATIONp10` / `p12` / `p15` — one dose-response question. Spend **one**, read the receipt, then decide whether to walk the ladder.
+- `RELIEFp10` / `p12` / `p15` — same question at another dose. RELIEF and DILATATION arrivals overlap 28.84 % within 3 px (Jaccard 0.1593), so they are *not* independent; a RELIEF win and a DILATATION win are partly the same information.
+- `CONCcatblk10up10` / `up20` / `dn10` and `CONCENTRATIONphys10` (`MODEL:−0.008`, the control that says whether a `catblk10up10` win came from the catalogue prior or from reallocation itself). **Spacing caveat on every CONCENTRATION file:** at a fixed count on the 1-px H19-5 skeleton the 2.83 px parent floor is unattainable (only ~90 legal pixels exist), and at a 2.0 px floor a "10 %" move silently becomes 7.34 % of positions (measured; see IRREGULARITIES).
+- `SNAPscarp2p0px` / `scarp1p4px` / `pot2p0px` and `SNAPcap2p0-g0.05/0.10/0.15` — one positional-correction question.
+- `PRUNE_B3/B4/B5` and `PRUNEp2.5/p3.5/p4.5px-refill` — one collar question.
+- `TIPGAPfar18f33` — negative on the holdout; keep as a deliverable, not a slot.
+
+### Decision rules
+
+- **Slot 1 (RELIEF p10):** receipt Δ ≥ +0.01 vs R0 → unmapped Quaternary truth concentrates on the range-front piedmont; promote to parent for a Week-3 composite. Δ ≤ −0.01 → piedmont hypothesis rejected; concealed intrabasinal faults dominate. |Δ| < 0.01 → no evidence.
+- **Slot 2 (DILATATION p12):** Δ ≥ +0.01 → active dilatation predicts new faults; promote and compose `DILATATION + SNAP`. Δ ≤ −0.01 → rejects the kinematic prior; expect Phase-2 truth to be inactive/exhumed or compressional.
+- **Slot 3 (DILATATION p15):** only if Slot 2 is positive — it maps whether the dose response has plateaued. If Slot 2 is neutral, substitute `SNAPscarp2p0px` to test positional lineament error instead.
 
 ## Schedule to Deadline (2026-12-03, ~6 weeks)
 
-- **Weeks 1–2 (2026-10-25 to 2026-11-06 — Single-Axis Screening, now with DILATATION):** Execute Slots 1–3 above (`DILATATION` primary, `RELIEF` orthogonal); evaluate dose responses against receipts in `ledger/submissions.csv`. DILATATION dose ladder (p10/p12/p15) maps plateau — if p15 > p12 > p10 monotonically, optimum beyond 15% (rare).
-- **Weeks 3–4 (2026-11-07 to 2026-11-19 — Orthogonal Combination & Mechanism Refinement):** Combine ONLY axes with receipt-backed gains `>= +0.01` (primary candidate: `DILATATIONp12 + SNAPscarp2p0px`, or `DILATATIONp12 + RELIEFp12`). DILATATION and RELIEF are orthogonal (strain vs elevation), so composite tests additive gain: `DILATATION+RELIEF` should be ≤ sum of parts if overlapping geography.
-- **Weeks 5–6 (2026-11-20 to 2026-12-03 — Confirmation, Blind Final Selection & Audit):** Confirm top composite on live chunks without chasing |Δ|<0.01 noise; lock ONE blind final submission file and ONE fallback, re-validate both from disk against `sample_submission.tif`, finalize `AI_USE.md` + reproducible code archive.
+- **Weeks 1–2 (to 2026-11-06 — single-axis screening):** Slots 1–3 above. Record every receipt in `ledger/submissions.csv`; the holdout cannot settle these.
+- **Weeks 3–4 (2026-11-07 to 2026-11-19 — orthogonal combination):** combine **only** axes with receipt-backed gains ≥ +0.01, one controlled change per step from the best receipted parent. Candidate composites: `RELIEF + SNAP`, `DILATATION + SNAP`. Do **not** compose `RELIEF + DILATATION` blind — their arrivals already overlap 28.84 %, so the composite may be worth less than either alone.
+- **Weeks 5–6 (2026-11-20 to 2026-12-03 — confirmation, blind final, audit):** confirm the top composite on live chunks without chasing |Δ| < 0.01 noise; lock ONE blind final file and ONE fallback, re-validate both from disk against `sample_submission.tif` with `make verify` and `python -m gems validate`; finalize `AI_USE.md` and the reproducible code archive.
 
-## Proposed Better Axes (Not Built This Session — ranked in docs/HYPOTHESES.md)
+## Proposed better axes (not built; ranked in `docs/HYPOTHESES.md`)
 
-- **`CONCEALED_BASIN_EDGE` (Rank 2):** `||∇ depth_to_base_surf||` (Band 15 gradient) high but `||∇ det_elev_slope||` low — buried basement fault with no surface scarp. *Confounder:* paleocanyon basalt fills. *Falsifier:* receipt Δ < +0.01 vs R0.
-- **`SEISMICITY_GUIDED` (Rank 3):** `pct(-deq)*pct(ieq)*pct(2ndinv)` (Bands 10/16/4) — swarm proximity. *Confounder:* anthropogenic quakes.
-- **`CONDUCTIVITY_ALTERATION` (Rank 4):** `cond_surf` (Band 17) high + radiometric Th low halo — geothermal clay. *Confounder:* playa lake clays. Needs `geodawn_rad_u8.tif` (26 MB pinned).
-- **`DILATATION_RELIEF_COMPOSITE` (composite):** First shift 12% into high-dilatation tercile, then within that tercile shift into piedmont. *Confounder:* double-counting same dots. *Falsifier:* composite Δ < max(DILATATION_Δ, RELIEF_Δ).
+1. **`CONCEALED_BASIN_EDGE`** — `||∇ depth_to_base_surf||` (Band 15) high while `||∇ det_elev_slope||` is low: a buried basement step with no surface scarp. *Mimic:* paleocanyon basalt fills, caldera margins. *Falsifier:* receipt Δ < +0.01.
+2. **`SEISMICITY_GUIDED`** — `pct(−deq)·pct(ieq)·pct(2ndinv)` (Bands 10/16/4): instrumental swarms on blind faults. *Mimic:* anthropogenic seismicity from geothermal production and blasting.
+3. **`CONDUCTIVITY_ALTERATION`** — `cond_surf` (Band 17) high with low radiometric Th: smectite-altered damage zones. *Mimic:* Lahontan playa clays. Needs `geodawn_rad_u8.tif` (already pinned).
+4. **`DILATATION_RELIEF_COMPOSITE`** — 12 % into high dilatation, then piedmont within it. *Confounder:* double-counting the same dots; the 28.84 % arrival overlap says the two are not independent.
