@@ -91,10 +91,10 @@ def test_legacy_submission_page_redirect_does_not_claim_breakline_is_primary():
     canonical = (DOCS / "SUBMIT.html").read_text(encoding="utf-8")
     for name in ("executive-summary.html", "submit.html"):
         page = (DOCS / name).read_text(encoding="utf-8")
-        assert "visible-collar" in page
+        assert "ANASIG" in page
         assert "NOT CLEARED" in page
         assert "Current primary: BREAKLINE" not in page
-        assert "SUBMIT.html" in page and "visible-collar" in canonical
+        assert "SUBMIT.html" in page and "ANASIG" in canonical
 
 
 def test_submit_page_exists():

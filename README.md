@@ -10,6 +10,23 @@
 
 ---
 
+## New primary (ANASIG session, 2026-10-24): locally unique, still not cleared
+
+**✅ FORMAT-VALID — OK TO DOWNLOAD for research. ⛔ DO NOT SUBMIT / NOT CLEARED FOR A WEEKLY SLOT.**
+
+| Deliverable | Link |
+|---|---|
+| **GeoTIFF (primary)** | [Download ANASIG zeros-outside GeoTIFF](docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif) |
+| ZIP (one TIFF) | [Download ZIP](docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.zip) |
+| Submission name | `GEMSDOE92-ANASIG-f45Atop-20261024` |
+| Note (84 chars) | `h33-h33-2-b2; ANASIG f45Atop 16944 far dots on analytic-signal ridges >3px off H19-5` |
+| SHA-256 | `68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5` |
+| Audit | [Gate receipt](docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-audit.json) · [run card](evidence/anasig_run_card.json) · [analysis](docs/ANALYSIS_20261024_ANASIG.md) |
+
+**HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld): ANASIG **0.004967 [0.004098, 0.005940]**, Δ vs R0 +0.000961 [+0.000168, +0.001814], vs holdout-best RELIEF p10 (0.006045) −0.001078 [−0.002034, −0.000112]; canary max 0.551113; SGMC PROXY 0.080556 vs R0 0.096060. Local uniqueness passes (24 rasters: worst forward 0.550, |ρ| 0.547; surface |ρ| 0.024). Slot blockers: holdout-best bar + the footprint-positive public witness below (forward overlap 1.000 for these bytes, `evidence/public_witness_anasig.json`). This session's rank-1 SCARPPOL lane beat BREAKLINE on holdout (0.005315) but overlaps it 0.900–0.913 → duplicate-stopped (`evidence/scarppol_run_card.json`). No slot used. Ranked hypotheses/screens: `docs/HYPOTHESES_20261024_SCARPPOL.md`.
+
+---
+
 ## Executive Summary — Format-Validated Candidate, One-Click Download
 
 **✅ FORMAT-VALID — OK TO DOWNLOAD.** The generated submission raster is an all-finite, single-band float32 GeoTIFF, EPSG:32611, shape 3730 × 3292, matching the competition template geotransform. It contains zero NaNs inside the footprint, zeros outside, values strictly in `[0, 1]`, and passes all 10 local MUST gates on independent re-read from disk. This completely prevents the DrivenData portal error: `Predicted values must be in range [0, 1]`.

@@ -134,10 +134,11 @@ def main() -> int:
                 if public.get("candidate_hash_matches_scan") is not True:
                     problems.append("public registry audit is absent or not for these exact candidate bytes")
                 if public.get("unique_under_literal_rule") is not False or public.get("stop_required") is not True:
-                    problems.append("site audit must preserve the literal duplicate stop verdict")
-            card_path = ROOT / "evidence" / "visible_collar_run_card.json"
+                    problems.append("site audit must preserve the literal duplicate stop verdict (binding public witness or full-scan duplicate)")
+            card_rel = doc.get("run_card")
+            card_path = (ROOT / card_rel) if card_rel else (ROOT / "evidence" / "visible_collar_run_card.json")
             if not card_path.is_file():
-                problems.append("visible collar run card missing")
+                problems.append(f"primary run card missing: {card_path}")
             else:
                 card = json.loads(card_path.read_text())
                 if card.get("raster_sha256") != sha256_file(primary):
