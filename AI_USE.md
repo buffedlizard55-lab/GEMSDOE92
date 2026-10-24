@@ -205,15 +205,37 @@ No submission, no login, no leaderboard or competition-page access, no Dropbox c
 - Autonomous `AXIS = RELIEF` selection per brief instructions ("Do not prompt me over choosing an Axis for the session, pick your own session").
 - Human fills `TOP_PUBLIC` from leaderboard with observation date, verifies entity weekly submission quota, chooses whether and which candidate file to submit from their own registered DrivenData account, and records submission receipts in `ledger/submissions.csv`.
 
+
 ---
 
-## Session 8 — STEPOVER unique TIF + site (2026-10-24)
+## Session — TIPGAP FAR, 2026-10-24
+
+### What AI wrote
+- `gems/variants.py` `tipgap` / `skeleton_endpoints` / `tipgap_targets`
+- `scripts/build_tipgap_variants.py`, `scripts/build_tipgap_far.py`, `scripts/check_site.py`
+- `docs/index.html`, `docs/submit.html`, `docs/style.css`, download GeoTIFF/ZIP
+- README.md, SESSION_PROMPT.md, mechanism card, this disclosure
+
+### What the human must still do
+- Enable GitHub Pages (`docs/` on `main`) if the site URL 404s
+- Fill TOP_PUBLIC from the leaderboard with a date
+- Confirm rolling-week quota; upload only from the registered account
+- Record RECEIPT scores with dates
+
+### Data
+- Parent R0, H19-5, sample_submission, labels: already in `data/` (owner mirrors, SHA-256 pinned)
+- No new external download this session
+- No drivendata.org or dropbox.com contact
+
+---
+
+## Session 8 — STEPOVER unique TIF (2026-10-24)
 
 ### What AI wrote
 - `scripts/build_stepover_submission.py` — deterministic STEPOVER build: pinned-manifest verification, visible-only trace-tip features, off-catalogue (`d_cat > 3 px`) placement, hide-and-recover evaluation, leakage canary, local-registry lane check, fail-closed GeoTIFF/ZIP/receipt packaging, format-gate re-check, evidence and run-card writing.
 - `releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif` (+ `.zip`, `.json`) — 5,000 unit-mass dots, all-finite zeros encoding, SHA-256 `e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205`.
-- `docs/index.html` and `docs/executive-summary.html` — GitHub Pages landing page and executive-summary subpage with the download at the top and an explicit "OK TO DOWNLOAD: YES / OK TO SPEND A WEEKLY SLOT: NO" decision.
-- `docs/ANALYSIS.md`, `evidence/stepover_evidence.json`, `evidence/run_card.json`, `evidence/lane_registry_index.json`, one `ledger/submissions.csv` BUILT row, README download banner + standing requirements, and an IRREGULARITIES entry for the structural-zero holdout limitation.
+- `docs/executive-summary.html` — STEPOVER executive-summary subpage with the download and an explicit “OK TO DOWNLOAD: YES / OK TO SPEND A WEEKLY SLOT: NO” decision. The main `docs/index.html` TIPGAP download from the parallel session was retained at merge.
+- `docs/ANALYSIS.md`, `evidence/stepover_evidence.json`, `evidence/run_card.json`, `evidence/lane_registry_index.json`, one `ledger/submissions.csv` BUILT row, README/SLOT_PLAN notes, and an IRREGULARITIES entry for the structural-zero holdout limitation.
 
 ### What the human decides
 - Whether to override the negative verdict and spend a weekly submission slot anyway (not recommended by the agent), and if so, upload from their own registered DrivenData account and transcribe the receipt score/date into `ledger/submissions.csv`.

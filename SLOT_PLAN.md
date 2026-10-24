@@ -1,6 +1,11 @@
 # SLOT_PLAN — GEMS Prize #306
 
-**Incumbent / Parent R0:** `h33-h33-2-b2` (37,654 unit-mass dots; both `zeros` `c55bafc4…` and `nan` `baeae321…` SHA-256 digests rebuilt byte-for-byte from the pinned lineage). Score `0.2778` is **CLAIM** until a submission-page receipt is recorded in `ledger/submissions.csv` (23 `BUILT` candidates across `MASS`, `PRUNE`, `SNAP`, `CONCENTRATION`, `RELIEF`, `STEPOVER`; zero `RECEIPT` rows).
+**2026-10-24 TIPGAP FAR session:** unique download `h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a` is format-valid and under overlap/ρ limits vs the local registry, but HOLDOUT-DTI 0.002723 [0.002324, 0.003131] (`gems57-pooled-hide-v2`, n=22,663) is below R0 0.004006. **Verdict negative — do not spend a weekly slot.** On-skeleton 10–15% TIPGAP doses were parent-lane duplicates (overlap≈0.999) and are not offered.
+
+
+**2026-10-24 STEPOVER session:** additional unique file `h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f` is format-valid and lane-unique (worst ρ 0.0277; worst 3-px forward overlap 0.2534 vs 14 local registry rasters), but HOLDOUT-DTI is a structural 0.0000 vs R0 0.00370. **Verdict negative — do not spend a weekly slot.** It is not one of the Next 3 Live Slots below.
+
+**Incumbent / Parent R0:** `h33-h33-2-b2` (37,654 unit-mass dots; both `zeros` `c55bafc4…` and `nan` `baeae321…` SHA-256 digests rebuilt byte-for-byte from the pinned lineage). Score `0.2778` is **CLAIM** until a submission-page receipt is recorded in `ledger/submissions.csv` (BUILT candidates across `MASS`, `PRUNE`, `SNAP`, `CONCENTRATION`, `RELIEF`, `TIPGAP`; zero `RECEIPT` rows).
 **Target & Quota:** `TOP_PUBLIC = ____` (date: `____`); rolling-week slots left: `__ / 3`; total weekly slots remaining to `2026-12-03`: `__` (~18 max across ~6 weeks, plus ONE blind final file; confirm deadline on competition page). Never submit repeats or both NaN/zeros twins of a pair. Treat live public-chunk deltas with `|delta| < 0.01` as **no evidence**.
 
 ## Next 3 Live Slots (in priority order, conditional on human quota check)

@@ -4,7 +4,7 @@
 
 ### What 0.2778 actually is
 
-`h33-h33-2-b2` (GEMSDOE32, 2026-10-04T22:00:00Z, uuid e5eb6e7e) is an **owner-reported CLAIM of 0.2778**. It is NOT an ORGANIZER-CONFIRMED receipt: `ledger/submissions.csv` has 23 BUILT rows and zero RECEIPT rows; no submission-page receipt date or score is recorded for it (see `registry/parents/R0.json`, `receipt: null`, IRREGULARITIES 2026-10-23 "No TOP_PUBLIC filled").
+`h33-h33-2-b2` (GEMSDOE32, 2026-10-04T22:00:00Z, uuid e5eb6e7e) is an **owner-reported CLAIM of 0.2778**. It is NOT an ORGANIZER-CONFIRMED receipt: `ledger/submissions.csv` has 27 BUILT rows and zero RECEIPT rows; no submission-page receipt date or score is recorded for it (see `registry/parents/R0.json`, `receipt: null`, IRREGULARITIES 2026-10-23 "No TOP_PUBLIC filled").
 
 Mechanically, the file is plausible as a strong entry: 37,654 unit-mass dots on the H19-5 ridge skeleton, D2.8 Poisson-disk spacing (min nn 2.828 px), zero mass on the mapped catalogue (`d_cat` min 2.236 px, 0 dots ≤ 2 px), exact DTI kernel budget (triangular R=3 px/300 m, alpha 0.2, beta 0.8). Under the DTI algebra, a fixed dot budget spent on non-redundant dots that each reach withheld truth pixels within 3 px maximizes `TP_w / (TP_w + 0.2 FP_w + 0.8 FN_w)`; R0's design (fixed count, spacing floor, off-catalogue placement) follows that algebra. That is *why* it plausibly ranked highest among the listed GEMSDOE site entries (next best listed: 0.2750, 0.2708, 0.2707, 0.2649, 0.2632, 0.2600…).
 
