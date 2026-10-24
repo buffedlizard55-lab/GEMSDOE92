@@ -6,7 +6,7 @@
 
 ## Latest Review: Literal Uniqueness is Blocked Across the Footprint
 
-**OK TO DOWNLOAD for research; NOT OK TO SUBMIT.** The queued BREAKLINE public witness audit finds **REGISTRY-MEASUREMENT 100% forward overlap** with the hash-verified 17GEMSDOE dense raster. Its 3-pixel halo covers the whole footprint, so every nonempty in-footprint candidate fails the current literal rule. No new unique submission was generated, no score improvement is claimed, and no slot was used. [Review and limitations](docs/REVIEW_CURRENT.md) · [witness receipt](docs/downloads/breakline_public_witness.json) · [session JSON card](docs/downloads/session_review_run_card.json).
+**OK TO DOWNLOAD for research; NOT OK TO SUBMIT.** The queued BREAKLINE public witness audit finds **REGISTRY-MEASUREMENT 100% forward overlap** with the hash-verified 17GEMSDOE dense raster. Its 3-pixel halo covers the whole footprint, so every nonempty in-footprint candidate fails the current literal rule. No new unique submission was generated, no score improvement is claimed, and no slot was used. [Review and limitations](docs/REVIEW_CURRENT.md) · [2026-10-24 repository review closeout](docs/REVIEW_CLOSEOUT_20261024.md) · [witness receipt](docs/downloads/breakline_public_witness.json) · [session JSON card](docs/downloads/session_review_run_card.json).
 
 ---
 
@@ -78,42 +78,13 @@ A second session built **BREAKLINE f45Ltop**: keeping 20,710 parent R0 dots via 
 
 ---
 
-## In-Depth Scientific Analysis: Why did GEMSDOE32 Score 0.2778 and How to Beat It?
+## What the reported GEMSDOE32 value can support
 
-### 1. Mathematical Mechanics of the Competition Metric
-The official competition metric is the distance-weighted, asymmetric Tversky Index ($DTI$):
-$$\text{DTI} = \frac{\text{TP}_w}{\text{TP}_w + \alpha \cdot \text{FP}_w + \beta \cdot \text{FN}_w + \varepsilon}$$
-where $\alpha = 0.2$, $\beta = 0.8$, and $k(d) = \max(0, 1 - d/300\text{ m})$ with cutoff radius $R = 300\text{ m}$ (3 pixels on a 100 m grid).
+The value **0.2778 is a CLAIM** copied from the supplied GEMSDOE32 site history; this checkout has no submission-page receipt for that artifact. Its file lineage can be measured locally: H19-5 → D2.8 → SOLO → B2/R0 changes the candidate geometry, thinning, pruning, and known-catalogue clearance. These measurements are consistent with a plausible mechanism—removing redundant predictions and avoiding mapped catalogue pixels may improve the distance-weighted asymmetric Tversky score—but they do not establish causality without the organizer receipt and private target labels.
 
-### 2. Lineage Breakdown of Score Progression
-1. **H19-5 (0.1922):** Multiscale potential-field ridge skeleton (gravity & magnetic gradient maximums). Captured regional crustal fault zones across the Great Basin. However, raw continuous skeletons contained dense, adjacent pixels along single fault traces, creating extreme false-positive mass redundancy.
-2. **D2.8 (0.2600):** Applied Poisson-disk thinning with $r = 2.8\text{ px}$ (280 m). Because the triangular kernel width is 3 px, adjacent pixels along a line cover the exact same ground truth ($TP_w$ is max-pooled, so credit is earned once), while each pixel adds $1.0$ to emitted mass $S$ and false-positive mass $FP_w$. Spacing dots at $2.8\text{ px}$ eliminated redundancy and surged the score from 0.1922 to 0.2600.
-3. **SOLO (0.2708):** Removed sub-bar isolated dots with low expected gain and removed dots within 1 px of mapped known faults.
-4. **B2 / R0 (0.2778):** Enforced strict clearance from known mapped faults ($d_{\text{cat}} > 2.0\text{ px}$, zero mass on catalogue, 37,654 dots). Because competition organizers mask all known USGS/INGENIOUS faults pixel-exactly from live scoring, any prediction placed on or touching a mapped fault yields zero true positive credit while paying full false-positive penalty.
+The historical 0.3195 and 0.4413 values in the prompt are conflicting leaderboard claims/snapshots. They do not identify the methods used by the highest-scoring submission, and cannot be compared to local HOLDOUT-DTI. The project has not established that any candidate beats the 0.2778 CLAIM.
 
-### 3. Why 0.2778 Hit an Asymptotic Ceiling vs the 0.4413 Leaderboard Top
-- **Target Ground Truth:** The competition target is expert-mapped *new* faults (mapped primarily from 1m LiDAR and 10m DEM high-resolution topography, active geothermal fault scarps, dilatational stepovers, and geothermal conduit permeability zones).
-- **Physical Limitation of Potential Fields:** Potential field worms (H19-5) only detect deep lithologic density and susceptibility contrasts. They completely miss active Quaternary normal fault scarps in basin alluvium (alluvium against alluvium), small-throw fault scarps, and shallow geothermal permeability networks.
-- **How Top Submissions Score 0.4413:** Fusing:
-  1. A high-confidence skeleton core (~20,000 dots) for deep crustal fault systems.
-  2. High-resolution DEM scarp-break detection (structure-tensor coherence $\times$ slope gradient) catching subtle surface ruptures.
-  3. Dilatational structural stepovers, pull-apart zones, and geothermal vent clusters (INGENIOUS / GDR wellspring concordance).
-  4. Radiometric alteration halos (K/Th radiometrics from GeoDAWN).
-  5. Exact Poisson-disk spacing discipline across all emitted dots.
-
----
-
-## Candidate Geological Hypotheses (Ranked)
-
-| Rank | Hypothesis | Target Signature | Layer(s) Involved | Missing Fault Rationale | Expected DTI Rank / Cost | Data Source & Official Link |
-|---|---|---|---|---|---|---|
-| **1** | **BREAKLINE (Built)** | Structure-tensor coherence on detrended slope breaks | Band 19 (`det_elev_slope`) & Band 12 (`det_elev`) | Quaternary scarps in alluvium lack magnetic/gravity contrast but express as sharp linear breaks on DEMs. | **Top (Rank 1)** / Low (in-stack) | [USGS 3DEP](https://www.usgs.gov/3d-elevation-program) |
-| **2** | **GAMMA-CREST** | Signed gravity horizontal gradient zero-crossing & asymmetric crest | Band 18 (`iso_grav_anom_hg`, signed) & Band 5 (`iso_grav_anom_slope`) | Basinward density edge of listric/dipping normal faults buried under thick hanging-wall alluvium. | **Rank 2** / Low (in-stack) | [USGS GeoDAWN Catalog](https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7) |
-| **3** | **DILATATIONAL-STEPOVER** | Positive dilatational strain rate on structural relay bends | Bands 8, 7, 4 (geodetic strain) & Band 19 (DEM breaks) | Geothermal fluid permeability localizes in extensional stepovers and pull-apart jogs between overlapping fault strands. | **Rank 3** / Medium (in-stack) | [UNR Nevada Geodetic Lab](http://geodesy.unr.edu/) |
-| **4** | **HYDROTHERMAL-ALTERATION** | K/Th radiometric ratio gradients & magnetic destruction | External GeoDAWN Radiometrics (`geodawn_rad_u8.tif`) & Band 14 (TMI) | Hydrothermal alteration halos trace active fluid-transmitting fault corridors lacking surface scarps. | **Rank 4** / Medium (pinned cache) | [USGS GeoDAWN Radiometrics](https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and) |
-| **5** | **SHORELINE-FILTERED SCARP** | Elevation-band contour-parallel suppressed breaklines | Bands 19, 12 + Lake Lahontan highstand masks (~1330 m AMSL) | Removes wave-cut shoreline terraces (the dominant non-tectonic false-positive mimic in the Great Basin). | **Rank 5** / Medium (requires NBMG shoreline grid) | [Nevada Bureau of Mines & Geology](https://data.nbmg.unr.edu/) |
-
-Detailed documentation: [`docs/HYPOTHESES.html`](docs/HYPOTHESES.html) · [`docs/HYPOTHESES.md`](docs/HYPOTHESES.md).
+Reported method concepts and prior screening results are catalogued in [`docs/HYPOTHESES.html`](docs/HYPOTHESES.html), [`docs/HYPOTHESES.md`](docs/HYPOTHESES.md), and [`docs/REVIEW_CURRENT.md`](docs/REVIEW_CURRENT.md). Their ranks are research priorities, not predictions of leaderboard score. Existing BREAKLINE, SCARPPOL, ANASIG and STRAINBREAK variants are already tested and are not fresh hypotheses. The current full-footprint public-registry witness blocks all nonempty in-footprint predictions under the literal overlap rule; no new method can be emitted for a submission slot until that policy blocker is explicitly resolved.
 
 ---
 
