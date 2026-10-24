@@ -138,3 +138,24 @@ The live Arena operator prompt is stored in [`SESSION_PROMPT.md`](SESSION_PROMPT
 6. Stop after 3 experiments or 2 hours. Do not pick live slots.
 7. Ship an obvious zeros-outside GeoTIFF download. Never claim a HOLDOUT number is a leaderboard score.
 8. Maximize P(Win) and own the outcome: a negative unique file is a deliverable; a copied 0.2778 file is not.
+
+---
+# FULL SESSION PROMPT (embedded from 2026-10-24 user message — read at start of every session)
+
+GEMSDOE — Review the repo. THE FOLLOWING IS THE HIGHEST URGENCY AND MUST BE FOLLOWED! MUST GENERATE A UNIQUE TIF SUBMISSION FOR THE COMPETITION. DO NOT COPY A PREVIOUS SUBMISSION UNLESS IT'S FOR LEARNING AND EDUCATION. BUT WE MUST GENERATE A UNIQUE TIF SUBMISSION. IT MUST BE OBVIOUS WHETHER IT IS OK TO DOWNLOAD AND SUBMIT THE GENERATED TIF SUBMISSION.
+
+PARALLEL-RUN PROTOCOL — read first.
+1. LANE. Your lane is the single method paragraph below. Stay inside it. If your raster's rank-correlation with any registry raster exceeds [0.90], or more than [70%] of your dots fall within 3 px of one registry raster's dots, you have drifted into another lane: log it as a duplicate and stop. Check this on the surface before placement AND on the final dots.
+2. REUSE, DON'T REBUILD. Use the template's cached feature stack, evaluate_holdout.py and submission_writer.py. Holdout = hide-and-recover: withhold whole fault segments with a buffer, derive every catalogue-based feature only from the visible faults, mask visible faults pixel-exactly, score pooled DTI (alpha 0.2, beta 0.8, 300 m triangular kernel). If a shared tool is wrong, fix it once in the template and report it; never keep a private fork.
+3. LABEL EVERY NUMBER as HOLDOUT-DTI (evaluator version, number of withheld positives, 95% CI) or ORGANIZER-CONFIRMED (copied from a submission-page receipt). A projection is never written as a score.
+4. LEAKAGE CANARY. Test each feature alone on the holdout before trusting any result. AUC above [0.90] means leakage until proven otherwise.
+5. RUN CARD. End with one JSON card: hypothesis; mechanism; the named non-fault process that could mimic it; holdout DTI + CI; correlation/overlap vs registry; raster sha256; validator output (no NaN inside the footprint, values in [0,1], CRS/shape/transform match); submission name + note of at most 140 characters; verdict promote / negative. Negative results are deliverables.
+6. BUDGET. Stop after [3] experiments or [2] hours. Do not pick submissions: promotion to a real slot is a separate selector step, within the weekly cap shown on the submission page.
+
+Site / download rules: Zeros-outside encoding only. Banner must say whether file is OK to download and whether recommended for weekly slot. Executive summary subpage explains DrivenData form (name + note). No manual inspection required for format validation.
+
+Official sources verified: https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/ · https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/ · https://www.drivendata.org/competitions/306/competition-doe-gems/data/ · https://github.com/drivendataorg/gems-prize-reference-solution · https://docs.nlr.gov/docs/fy26osti/96647.pdf · https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7 · https://gdr.openei.org/submissions/1391 · https://epsg.io/32611 · https://en.wikipedia.org/wiki/Tversky_index · https://gbcge.org/current-projects/ingenious/
+
+Core values: Maximize P(Win). Own the outcome end to end.
+
+This session's result (2026-10-24): TIPGAP FAR (far18f33) is unique vs local registry (67.00 % within 3 px of R0, <70 % limit) and format-valid (no NaN inside footprint, values [0,1], CRS/shape/transform match parent). HOLDOUT-DTI did not beat R0 (Δ −0.001283, 95 % CI excludes 0 in negative direction). Verdict **negative**. File published for download with that banner.
