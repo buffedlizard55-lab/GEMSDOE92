@@ -137,6 +137,10 @@ def main() -> int:
     ap.add_argument("--workers", type=int, default=12)
     ap.add_argument("--cache-only", action="store_true",
                     help="reuse a previously verified .cache/gemsdoe_public_registry/repo_inventory.json and blob cache; makes no GitHub API requests")
+    ap.add_argument("--preplacement-surface", default=None,
+                    help="GeoTIFF (float in [0,1] on the template grid) whose positive support is the pre-placement prospectivity surface to compare. Required for any candidate other than the legacy visible-collar candidate, whose surface was hard-coded here before 2026-10-24 (shared-tool bug, fixed this session: the audit no longer silently substitutes the collar surface for a different lane).")
+    ap.add_argument("--output", default=None,
+                    help="Evidence JSON output path (default: evidence/public_registry_uniqueness.json). Use a lane-specific path so one candidate's scan does not overwrite another's.")
     args = ap.parse_args()
     candidate_path = (ROOT / args.candidate).resolve()
     if not candidate_path.is_file():
@@ -208,13 +212,25 @@ def main() -> int:
 
     with rasterio.open(candidate_path) as ds:
         candidate = ds.read(1)
-    pre_path = ROOT / "data" / "parent_R0_zeros.tif"
-    with rasterio.open(pre_path) as ds:
-        parent = (ds.read(1) > 0) & grid.footprint
-    full_distance = distance_transform_edt(~grid.catalogue)
-    surface_mask = grid.footprint & (full_distance > 2.0) & (full_distance <= 3.0) & ~_near(parent, 3.0)
-    surface = np.zeros(grid.footprint.shape, dtype=np.float32)
-    surface[surface_mask] = (1.0 / full_distance[surface_mask]).astype(np.float32)
+    if args.preplacement_surface:
+        surface_path = (ROOT / args.preplacement_surface).resolve() if not Path(args.preplacement_surface).is_absolute() else Path(args.preplacement_surface)
+        with rasterio.open(surface_path) as ds:
+            if ds.count != 1 or (ds.shape, ds.crs, ds.transform) != expected_grid:
+                raise SystemExit(f"pre-placement surface is not on the template grid: {surface_path}")
+            surface = ds.read(1).astype(np.float32)
+        surface = np.where(np.isfinite(surface), surface, 0.0).astype(np.float32)
+        if (surface < 0).any() or (surface > 1).any():
+            raise SystemExit("pre-placement surface must be in [0,1]; no silent clipping")
+    elif "visible-collar" in candidate_path.name:
+        pre_path = ROOT / "data" / "parent_R0_zeros.tif"
+        with rasterio.open(pre_path) as ds:
+            parent = (ds.read(1) > 0) & grid.footprint
+        full_distance = distance_transform_edt(~grid.catalogue)
+        surface_mask = grid.footprint & (full_distance > 2.0) & (full_distance <= 3.0) & ~_near(parent, 3.0)
+        surface = np.zeros(grid.footprint.shape, dtype=np.float32)
+        surface[surface_mask] = (1.0 / full_distance[surface_mask]).astype(np.float32)
+    else:
+        raise SystemExit("refusing to audit a non-collar candidate without --preplacement-surface (the legacy hard-coded collar surface would be a false measurement for this lane)")
     pre_compare = compare_array_to_registry(surface, index, grid.footprint)
     final_compare = compare_array_to_registry(candidate, index, grid.footprint,
                                               file_sha256=hashlib.sha256(candidate_path.read_bytes()).hexdigest())
@@ -264,11 +280,12 @@ def main() -> int:
         "candidate_file_sha256": hashlib.sha256(candidate_path.read_bytes()).hexdigest(),
         "cache_index": str(index_path.relative_to(ROOT)),
     }
-    out = ROOT / "evidence" / "public_registry_uniqueness.json"
+    out = (ROOT / args.output) if args.output else (ROOT / "evidence" / "public_registry_uniqueness.json")
     serialized = json.dumps(result, indent=2) + "\n"
     out.write_text(serialized, encoding="utf-8")
-    (ROOT / "docs" / "downloads" / "public_registry_uniqueness.json").write_text(
-        serialized, encoding="utf-8")
+    if args.output is None:
+        (ROOT / "docs" / "downloads" / "public_registry_uniqueness.json").write_text(
+            serialized, encoding="utf-8")
     print(json.dumps({"output": str(out), "preplacement": pre_summary,
                       "final": final_summary, "verdict": result["verdict"]}, indent=2))
     return 0 if result["scan_complete_for_declared_scope"] else 2

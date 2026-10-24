@@ -4,23 +4,40 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Auditable, locally validated GeoTIFF candidate for DrivenData DOE GEMS Prize #306.">
-  <title>GEMSDOE92 — GEMS submission workbench</title>
+  <title>GEMSDOE92 — GEMS submission workbench (ANASIG primary)</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="hero">
   <p class="kicker">DOE GEMS Prize · DrivenData #306 · EPSG:32611 · 100 m</p>
-  <h1>GeoTIFF candidate — format validated, slot blocked</h1>
-  <p class="lede">Download the all-finite, single-band GeoTIFF. Its byte-level audit, holdout result, and local-registry uniqueness checks are published beside the file.</p>
-  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> All 10 local MUST gates pass: one float32 band; CRS, shape and transform match; finite values in [0,1]; no NaN inside the footprint; zeros outside; zero known-fault mass; SHA-256 recorded.</div>
-  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE.</strong> A broader scan checked 1,279 unique, single-band, template-grid rasters in current default branches of 102 public GEMSDOE-named repositories. The candidate's pre-placement surface and final dots each have 100% forward 3-px overlap with registry raster <a href="https://github.com/buffedlizard55-lab/11GEMSDOE/blob/main/docs/downloads/gems-structural-area06-v1.tif"><code>11GEMSDOE/gems-structural-area06-v1.tif</code></a>; 131 rasters exceed the 70% stop threshold. The duplicate rule governs; stop and do not submit this candidate. See <a href="downloads/public_registry_uniqueness.json">public-registry audit</a>.</div>
-  <div class="banner banner-warn"><strong>HOLDOUT-DTI improvement does not override uniqueness.</strong> No live submission slot has been used. This is a negative deliverable: it may still be downloaded for review, but it is not recommended or cleared for competition submission. The holdout can reward recovery of mapped catalogue faults and does not prove live performance on uncatalogued faults.</div>
-  <div class="banner banner-warn">The portal error <code>Predicted values must be in range [0, 1]</code> is guarded against: this download was reread from disk and every cell is finite and in range. Upload the <strong>zeros-outside</strong> encoding.</div>
+  <h1>ANASIG GeoTIFF — format-valid download, not cleared for a weekly slot</h1>
+  <p class="lede">Download the all-finite, single-band ANASIG GeoTIFF (magnetic analytic-signal ridges off the H19-5 skeleton). Its byte-level audit, holdout result, and local-registry uniqueness checks are published beside the file. It is the only file on this page that is lane-unique against every local dot registry raster — and it is still <strong>not cleared for a weekly slot</strong> (read the red banner before using any download).</p>
+  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> Primary file below (ANASIG f45): all 10 local MUST gates pass on an independent re-read: one float32 band; EPSG:32611, 3730 × 3292, template transform; finite values in [0,1]; no NaN inside the footprint; zeros outside; zero known-fault mass; SHA-256 recorded. This guards against the portal error <code>Predicted values must be in range [0, 1]</code>.</div>
+  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DO NOT SUBMIT THE PRIMARY AS A COMPETITION ENTRY FROM THIS PAGE.</strong> Two independent reasons: (1) its HOLDOUT-DTI (0.004967) beats parent R0 but does <em>not</em> beat the current holdout best (RELIEF p10, 0.006045; paired difference −0.001078 [−0.002034, −0.000112]); (2) <strong>DUPLICATE UNDER THE LITERAL REGISTRY RULE</strong> on the public inventory: the binding witness <a href="https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif"><code>17GEMSDOE E-proba-multiscale</code></a> is positive on 100% of the footprint, so 100% of any in-footprint candidate's dots fall within 3 px of it (measured this session for these exact bytes: <a href="downloads/public_witness_anasig.json">witness receipt</a>). Against the <em>local dot registry</em> the primary is unique: worst forward overlap 55.0% (parent R0), worst |ρ| 0.547 over 24 rasters, pre-placement surface worst |ρ| 0.024. No live submission slot has been used.</div>
+  <div class="banner banner-warn"><strong>Earlier primary (visible-collar) remains a duplicate deliverable</strong> under the expanded 1,279-raster public scan (100% forward overlap; 131 rasters over 70%). It stays downloadable below for review only. A HOLDOUT-DTI improvement never overrides a uniqueness stop, and no local number on this page is an organizer score.</div>
 </header>
 
 <main>
 <section id="download" class="download-card">
-  <h2>Download the submission</h2>
+  <h2>⬇ Download the primary submission file (ANASIG f45)</h2>
+  <p><strong>OK to download:</strong> ✅ format-valid. <strong>OK to submit into the competition:</strong> ⛔ NO — not cleared for a weekly slot (see the red banner above). Download it to inspect, reproduce, or archive it as this session's unique lane deliverable.</p>
+  <p class="filename">h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif</p>
+  <p><a class="btn" href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif" download>Download GeoTIFF (.tif)</a>
+     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.zip" download>Download ZIP (one TIFF)</a></p>
+  <dl class="meta">
+    <div><dt>Submission name</dt><dd><code>GEMSDOE92-ANASIG-f45Atop-20261024</code></dd></div>
+    <div><dt>Note (≤140 chars)</dt><dd><code>h33-h33-2-b2; ANASIG f45Atop 16944 far dots on analytic-signal ridges &gt;3px off H19-5</code></dd></div>
+    <div><dt>SHA-256 (zeros file)</dt><dd><code>68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5</code></dd></div>
+    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 unit-mass dots (20,710 kept R0 + 16,944 far)</dd></div>
+    <div><dt>Audit / run card</dt><dd><a href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-audit.json">gate audit receipt</a> · <a href="downloads/anasig_run_card.json">run-card JSON</a> · <a href="downloads/public_witness_anasig.json">public-witness receipt</a> · <a href="ANALYSIS_20261024_ANASIG.md">full analysis</a> · <a href="HYPOTHESES_20261024_SCARPPOL.md">ranked hypotheses + screens</a></dd></div>
+  </dl>
+  <p><strong>Hypothesis:</strong> magnetic analytic-signal ridges (sqrt(Band3²+Band9²), coherence-gated on Band14) mark basement contacts that the multi-line-corroborated H19-5 worm skeleton dropped; placing 45% of the budget on the strongest such ridges &gt;3 px off the skeleton tests that single-line channel. Named mimic: lithologic contacts, dikes, flow margins, cultural noise. <strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives): <strong>0.004967 [0.004098, 0.005940]</strong>, Δ vs R0 +0.000961 [+0.000168, +0.001814], Δ vs holdout-best RELIEF p10 −0.001078 [−0.002034, −0.000112]; leakage canary max 0.551113 (surface itself 0.503999); off-catalogue SGMC PROXY 0.080556 vs R0 0.096060. <strong>Local uniqueness:</strong> worst forward overlap 0.550, worst |ρ| 0.547 (24 rasters) — not a local duplicate. The session's rank-1 lane (SCARPPOL) was stopped as a BREAKLINE duplicate (forward overlap 0.900–0.913): <a href="downloads/scarppol_run_card.json">SCARPPOL run card</a>. Submission steps, if a human selector ever clears a file: <a href="SUBMIT.html">executive summary</a>.</p>
+</section>
+
+<section id="collar" class="download-card">
+  <h2>Earlier primary: visible-collar (negative — duplicate)</h2>
+  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE (expanded public scan).</strong> Download for review only.</div>
+  <p>The expanded scan checked 1,279 unique, single-band, template-grid rasters in current default branches of 102 public GEMSDOE-named repositories; the collar candidate's pre-placement surface and final dots each have 100% forward 3-px overlap with registry rasters, and <strong>131 rasters exceed the 70% stop threshold</strong>. Worst |Spearman ρ| was below 0.90 (0.421367 surface; 0.492957 final) — overlap alone triggers the stop. See the <a href="downloads/public_registry_uniqueness.json">public-registry audit</a>.</p>
   <p class="filename">GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif</p>
   <p><a class="btn" href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif" download>Download GeoTIFF (.tif)</a>
      <a class="btn btn-ghost" href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.zip" download>Download ZIP (one TIFF)</a></p>
@@ -28,10 +45,8 @@
     <div><dt>Submission name</dt><dd><code>GEMSDOE92-visible-collar-r0-excluded-20261024</code></dd></div>
     <div><dt>Note (62 chars)</dt><dd><code>Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots</code></dd></div>
     <div><dt>SHA-256</dt><dd><code>60082b75a3d8e4648a858622f71f24257c8cfef79286a1a96147c59f05377da7</code></dd></div>
-    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 unit-mass dots</dd></div>
-    <div><dt>Audit receipt</dt><dd><a href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-audit.json">Format and local-uniqueness JSON</a> · <a href="downloads/visible_collar_run_card.json">full run card</a></dd></div>
+    <div><dt>Audit receipt</dt><dd><a href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-audit.json">Format and local-uniqueness JSON</a> · <a href="downloads/visible_collar_run_card.json">full run card</a> · <a href="downloads/public_registry_uniqueness.json">public-registry audit</a></dd></div>
   </dl>
-  <p><a href="SUBMIT.html">Executive summary: submit in three steps</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData submission page</a></p>
 </section>
 
 <section id="breakline" class="download-card">

@@ -1,0 +1,25 @@
+{
+  "schema": "gemsdoe92-public-witness-check.v1",
+  "evidence_class": "REGISTRY-MEASUREMENT (single binding witness; not a full public scan)",
+  "reviewed_utc": "2026-10-24T16:29:42.697405+00:00",
+  "candidate": {
+    "file": "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+    "sha256": "68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5",
+    "dots": 37654
+  },
+  "witness": {
+    "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+    "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "bytes": 25065181,
+    "positive_pixels_in_footprint": 5167373,
+    "footprint_pixels": 5167373,
+    "positive_fraction_of_footprint": 1.0
+  },
+  "forward_overlap_candidate_dots_within_3px_of_witness": 1.0,
+  "literal_rule": "forward overlap > 0.70 OR |Spearman| > 0.90 => duplicate, log and stop",
+  "unique_under_literal_rule_vs_this_witness": false,
+  "stop_required_vs_this_witness": true,
+  "scope": "Single-witness measurement. A pass here would NOT be public uniqueness; a fail here IS binding for this witness. The full scan remains scripts/audit_public_registry.py."
+}

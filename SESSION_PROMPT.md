@@ -65,3 +65,28 @@ A second session ran in parallel from the same base and DID restore the feature 
 - **Local-registry uniqueness:** worst 55.0% forward / |ρ| 0.547 vs parent R0 over 18 local rasters; vs the visible-collar candidate only 3.5% (φ≈0.001) — disjoint lanes. **It has NOT been through the 1,279-raster public scan** — run `scripts/audit_public_registry.py` on it before any future uniqueness claim beyond "local".
 - Facts: R0 ⊂ SOLO ⊂ D2.8 ⊂ H19-5 exactly; bridge `sample_submission.tif` *is* the catalogue (60,988 px, geometry only); Band 18 is the only signed band; collar count 2,171 (float64 EDT). Emission: spaced top-L beat exact-DTI greedy by +0.000701 [+0.000321, +0.001161] — never deviate at build time from the screened selector. Do not retry BASEMENT-STEP (Band 15, SGMC AUC 0.378), pure-seismicity placement, radiometric K/Th gradients.
 - One BREAKLINE dose total may ever be submitted (siblings share keeps; 3 SUPERSEDED greedy siblings in `ledger/`). Full record: `docs/ANALYSIS_20261024.md`, `docs/HYPOTHESES_20261024_BREAKLINE.md`, `evidence/breakline_run_card.json`. Ledger: 36 BUILT / 0 RECEIPT.
+
+## Addendum — SCARPPOL/ANASIG session (2026-10-24, later)
+
+Two lanes were run from `docs/HYPOTHESES_20261024_SCARPPOL.md` (screens for
+gravity-crest, analytic-signal, hinge, strain, radiometric and spring
+surfaces are recorded there; the 19-band stack was restored and SHA-verified
+this session, so band hypotheses are no longer "untested for lack of stack"):
+
+- **SCARPPOL** (fall-line signed second derivative, Bands 12/19): built
+  f33/f38/f45. HOLDOUT-DTI f45 0.005315 [0.004387, 0.006418] beats BREAKLINE
+  f45, but final dots overlap same-dose BREAKLINE at 0.900–0.913 → duplicate
+  under rule 1, stopped. Keeps are >90% shared because the template
+  keep-greedy is coverage-dominated — see IRREGULARITIES (this session) #1.
+- **ANASIG** (analytic signal Bands 3/9/14; single f45 build): primary file
+  `h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif`, SHA-256
+  `68964bd6…f4d5`. HOLDOUT-DTI **0.004967 [0.004098, 0.005940]**, Δ vs R0
+  +0.000961 [+0.000168, +0.001814], vs holdout-best RELIEF p10 −0.001078
+  [−0.002034, −0.000112]; canary max 0.551113; SGMC PROXY 0.080556 < R0.
+  Local uniqueness passes (24 rasters: worst forward 0.550, |ρ| 0.547;
+  surface |ρ| 0.024). Public witness re-proven at 100% footprint-positive
+  (`evidence/public_witness_anasig.json`).
+- Verdict **negative / NOT CLEARED**; format-valid ✅ OK TO DOWNLOAD on the
+  homepage, with the slot block stated in the first banner. Ledger now has
+  3 SCARPPOL + 1 ANASIG BUILT rows added this session; still 0 RECEIPT.
+  Next actions: `docs/NEXT_STEPS.md` (top section).

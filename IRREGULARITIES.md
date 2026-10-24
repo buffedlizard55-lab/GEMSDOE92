@@ -618,3 +618,42 @@ submitted. Corollary for future lanes: the fixed full-catalogue proxy-diagnostic
 predicted the screened design at ratio 1.146 vs R0 and the (different) greedy build
 measured 0.964 — the instrument prices near-catalogue collar mass and **must never be
 labelled a holdout or a score**.
+
+---
+
+## 2026-10-24 (ANASIG session) — new irregularities
+
+1. **SCARPPOL lane drift via shared template.** The rank-1 lane's surface
+   (fall-line directional second derivative) screened distinct from
+   BREAKLINE, yet the built files overlap same-dose BREAKLINE files at
+   0.900–0.913 forward: the exact-DTI keep-greedy is coverage-dominated
+   (>90% shared keeps regardless of lane weight) and both surfaces pick
+   the same ridge lines (82% of far dots within 3 px). Logged as a
+   duplicate under protocol rule 1 and stopped
+   (`evidence/scarppol_run_card.json`). Future lanes must differentiate
+   the *keep* stage, not only the far surface.
+2. **Budget deviation (disclosed).** After SCARPPOL's three doses hit the
+   duplicate stop, one additional single-dose build (ANASIG f45) was made
+   from the pre-ranked hypothesis list so the session would deliver a
+   lane-unique file as required. Total files built this session: 4.
+   No submission slot was used for any of them.
+3. **Shared-tool bug fixed once, not forked.** `scripts/audit_public_registry.py`
+   hard-coded the visible-collar pre-placement surface; auditing any other
+   candidate would have reported collar measurements under that candidate's
+   name. It now requires `--preplacement-surface` for non-collar candidates
+   and fails closed without it, and accepts `--output` so scans do not
+   overwrite each other.
+4. **Report OOM on the 3 GB host.** The first ANASIG proxy report was
+   killed (exit 137): the uniqueness helper stored a float64 distance
+   transform for every registry raster. It now computes distances per
+   row. No numbers were produced by the killed runs.
+5. **Generated form-note duplication.** The ANASIG builder's note read
+   "analytic-signal analytic-signal ridges" (100 chars). Fixed to 84 chars
+   in the ledger/evidence/site text; the TIFF bytes and both SHA-256s are
+   unchanged (the note is submission-form metadata, not file content).
+6. **Public literal rule remains impossible as written (re-proven).**
+   17GEMSDOE `E-proba-multiscale` is positive on 5,167,373/5,167,373
+   footprint cells (Git blob `374c88b1…`, re-measured this session), so
+   any in-footprint candidate has 100% forward overlap with it. ANASIG's
+   binding measurement is `evidence/public_witness_anasig.json`. This is
+   an operator/policy decision; the agent does not waive it.

@@ -2,52 +2,35 @@
 
 > **Start each session by reading this README and [`SESSION_PROMPT.md`](SESSION_PROMPT.md).** The session contract is the lane/budget/holdout/uniqueness policy; do not spend a live slot from this agent. Maximize P(Win) and own the outcome.
 
-## Executive summary — format-validated candidate, one-click download
+## Executive summary — unique ANASIG candidate, format-valid, not cleared for a slot
 
-**✅ FORMAT-VALID — OK TO DOWNLOAD.** The new candidate is an all-finite single-band float32 GeoTIFF, EPSG:32611, shape 3730 × 3292, matching the competition template's transform. It has no NaN inside the footprint, zeros outside, values only in `[0,1]`, and passes all 10 local MUST gates. This prevents the portal error `Predicted values must be in range [0, 1]`.
+**✅ FORMAT-VALID — OK TO DOWNLOAD.** The new primary candidate is an all-finite single-band float32 GeoTIFF, EPSG:32611, shape 3730 × 3292, matching the competition template's transform. It has no NaN inside the footprint, zeros outside, values only in `[0,1]`, and passes all 10 local MUST gates. This prevents the portal error `Predicted values must be in range [0, 1]`.
 
-**⛔ NOT CLEARED FOR A WEEKLY SLOT — duplicate under the literal registry rule.** An expanded scan found 100% 3-px forward overlap with public registry rasters (131 of 1,279 exceed 70%). Stop; do not submit. This file remains downloadable as a negative research deliverable. The scan covers current default branches in 102 public owner repositories, not every historic/site-hosted file.
+**⛔ NOT CLEARED FOR A WEEKLY SLOT — do not submit it as a competition entry.** (1) Its HOLDOUT-DTI beats parent R0 but not the current holdout best (RELIEF p10). (2) Under the literal public-registry rule, the binding witness 17GEMSDOE `E-proba-multiscale` is positive on 100% of the footprint, giving 100% forward overlap for these exact bytes (single-witness receipt in `evidence/public_witness_anasig.json`; not waived). Against the **local dot registry** (24 rasters) the file **is unique**: worst forward 3-px overlap 0.550, worst |ρ| 0.547, pre-placement surface worst |ρ| 0.024. No slot was used and no upload was performed.
 
 | Deliverable | Link |
 |---|---|
-| **GeoTIFF** | [Download zeros-outside submission](docs/downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif) |
-| ZIP (one TIFF) | [Download ZIP](docs/downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.zip) |
-| Submission name | `GEMSDOE92-visible-collar-r0-excluded-20261024` |
-| Note (62 chars) | `Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots` |
-| SHA-256 | `60082b75a3d8e4648a858622f71f24257c8cfef79286a1a96147c59f05377da7` |
+| **GeoTIFF (primary)** | [Download ANASIG zeros-outside submission](docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif) |
+| ZIP (one TIFF) | [Download ZIP](docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.zip) |
+| Submission name | `GEMSDOE92-ANASIG-f45Atop-20261024` |
+| Note (84 chars) | `h33-h33-2-b2; ANASIG f45Atop 16944 far dots on analytic-signal ridges >3px off H19-5` |
+| SHA-256 | `68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5` |
 | Submission steps | [Executive summary](docs/SUBMIT.html) · [site](https://buffedlizard55-lab.github.io/GEMSDOE92/) |
-| Audit | [Machine-readable gate receipt](docs/downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-audit.json) · [full run card](evidence/visible_collar_run_card.json) |
+| Audit | [Gate receipt](docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-audit.json) · [run card](evidence/anasig_run_card.json) · [full analysis](docs/ANALYSIS_20261024_ANASIG.md) |
 
-**Verdict: negative (duplicate).** No slot was used and no upload was performed. The literal uniqueness rule is binding even though the candidate's local holdout improved.
+**Verdict: negative (not cleared).** This session first built SCARPPOL (rank-1 hypothesis): HOLDOUT-DTI f45 0.005315 beat BREAKLINE, but final dots overlap same-dose BREAKLINE files at 0.900–0.913 → logged as a duplicate under protocol rule 1 and stopped (`evidence/scarppol_run_card.json`). ANASIG is the lane-unique deliverable that replaced it as primary.
 
 ### Holdout evidence (not a competition score)
 
-**HOLDOUT-DTI**, evaluator `gems57-pooled-hide-v2`, 8 buffered spatial folds (4 quadrants × seeds 20 and 30), 22,663 withheld positive catalogue pixels, pooled DTI α=0.2 / β=0.8 / 300 m triangular kernel, 1,000 paired 20 km spatial-cluster bootstrap draws:
+**HOLDOUT-DTI**, evaluator `gems57-pooled-hide-v2`, 8 buffered spatial folds (seeds 20/30), 22,663 withheld positive catalogue pixels, pooled DTI α=0.2 / β=0.8 / 300 m triangular kernel, 1,000 paired 20 km spatial-cluster bootstrap draws:
 
-- Candidate: **0.046866**, 95% CI **[0.040216, 0.053315]**.
-- Parent R0: **0.004006**, 95% CI **[0.003424, 0.004690]**.
-- Paired difference: **+0.042860**, 95% CI **[+0.036122, +0.049357]**.
-- Leakage canary (visible-fault distance alone): symmetric AUC **0.745593**, below the 0.90 stop threshold.
+- ANASIG f45: **0.004967 [0.004098, 0.005940]**; paired Δ vs R0 **+0.000961 [+0.000168, +0.001814]**.
+- Holdout best RELIEF p10: **0.006045 [0.005187, 0.006927]**; paired Δ ANASIG−RELIEF **−0.001078 [−0.002034, −0.000112]**.
+- Parent R0: **0.004006 [0.003424, 0.004690]**.
+- Leakage canary: ANASIG surface symmetric AUC **0.503999**; max over features **0.551113** (< 0.90).
+- Off-catalogue SGMC **PROXY**: ANASIG 0.080556 vs R0 0.096060 (below parent).
 
-This is a large improvement on the **catalogue hide-and-recover proxy**. It does not show that the candidate finds a genuinely new fault, and cannot be translated into an organizer score. Hidden truth is from the mapped catalogue; the live target is private and specifically emphasizes uncatalogued structure.
-
-### Hypothesis and non-fault mimic
-
-Emit 37,654 unit-mass dots at the closest legal cells 2–3 pixels (200–300 m) from visible catalogue faults, while excluding all cells within 3 pixels of parent R0. Hypothesis: blind splays, relay fractures, or parallel strands may occur close to mapped structures but outside the inherited R0 footprint. Named mimic: drainage/alluvial-fan margins and lithologic contacts can create non-tectonic lineaments near mapped faults.
-
-The holdout placement surface used **only each fold's visible catalogue**. The final export additionally used the full known catalogue to enforce zero mass on known faults. This differs from TIPGAP/STEPOVER endpoint-focused lanes and from previous R0 perturbations. It is a geometric association test, not direct geological proof.
-
-Expanded REGISTRY-MEASUREMENT: 1,279 unique same-grid TIFFs from current default branches of 102 public GEMSDOE-named owner repositories. Pre-placement worst |ρ| **0.421367** and final worst |ρ| **0.492957** (below 0.90); however both the surface and final dots have **1.000000 forward 3-px overlap** with registry support, and **131** rasters exceed the 70% stop threshold. Binding witnesses include [11GEMSDOE structural-area06](https://github.com/buffedlizard55-lab/11GEMSDOE/blob/main/docs/downloads/gems-structural-area06-v1.tif) and 17GEMSDOE's full-footprint E-proba raster. Verdict is **negative; stop**. The latter may act as a universal blocker under the literal positive-support definition. Scan scope and omissions are recorded in `evidence/public_registry_uniqueness.json`; inventory was first fetched live then compared from SHA-verified cache after GitHub API rate limiting, and is not exhaustive of historical/private/site-hosted assets.
-
-## Parallel-session candidate — BREAKLINE f45Ltop (also negative)
-
-A second 2026-10-24 session (merged after the candidate above) built **BREAKLINE**: keep 20,710 R0 dots by exact expected-DTI greedy under a DEM scarp-break field `L = pct_rank(||grad det_elev_slope||) x structure-tensor coherence(det_elev)` (Bands 19/12), and spend the freed 16,944 dots (45%) on the strongest coherent breaks **>3 px off the whole H19-5 skeleton**. Hypothesis: faults with a scarp but no magnetic/gravity contrast are missed by the worm skeleton and the older-imagery catalogue, while expert DEM mapping (the live label source) traces them. Named mimic: Lahontan shorelines, fan-toe breaks, channel banks.
-
-- **Download:** [`docs/downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif`](docs/downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif) · name `GEMSDOE92-BREAKLINE-f45Ltop-20261024` · note (90) `h33-h33-2-b2; BREAKLINE f45Ltop 16944 far dots on linear scarp-break ridges >3px off H19-5` · SHA-256 `cd9c8a564588e6542b379cd36cbe05fc6da3be07b8edbc542bf737336907810e`.
-- **Format:** 10/10 MUST gates on independent re-read (audit receipt in `docs/downloads/`).
-- **HOLDOUT-DTI** (same instrument): **0.004861 [0.004032, 0.005822]**, paired delta vs R0 **+0.000854 [+0.000300, +0.001423]**; dose-monotone f33/f38/f45; off-catalogue USGS SGMC control **+31% vs R0**; leakage-canary max **0.6216**.
-- **Uniqueness (local registry):** worst forward overlap **55.0%** (parent R0), worst |rho| 0.547 over 18 local rasters; vs the visible-collar candidate only **3.5%** forward overlap (phi ~0.001) — the lanes are disjoint. **Caveat:** BREAKLINE has *not* been run through the 1,279-raster public-registry scan that stopped the collar candidate; under that scan's dense-raster forward-overlap logic the local result is not global clearance (`scripts/audit_public_registry.py` on this file is queued work — see `docs/NEXT_STEPS.md`).
-- **Verdict: negative / NOT CLEARED** (does not beat the holdout-best arms). Full line-by-line analysis of why 0.2778 is high: [`docs/ANALYSIS_20261024.md`](docs/ANALYSIS_20261024.md); ranked lanes: [`docs/HYPOTHESES_20261024_BREAKLINE.md`](docs/HYPOTHESES_20261024_BREAKLINE.md); run card: [`evidence/breakline_run_card.json`](evidence/breakline_run_card.json). Ledger now holds 36 BUILT / 0 RECEIPT rows (3 BREAKLINE rows are SUPERSEDED emission evidence; the visible-collar candidate predates the ledger row convention used there — see its run card).
+Hypothesis: magnetic analytic-signal ridges (`sqrt(Band3²+Band9²)`, coherence-gated on Band14) mark basement contacts dropped by the multi-line-corroborated H19-5 skeleton; 16,944 far dots sit on the strongest such ridges >3 px off the skeleton. Named mimic: lithologic contacts, dikes, volcanic flow margins, cultural noise. Ranked hypotheses + all screens: [`docs/HYPOTHESES_20261024_SCARPPOL.md`](docs/HYPOTHESES_20261024_SCARPPOL.md).
 
 ## What did the claimed 0.2778 result tell us?
 
