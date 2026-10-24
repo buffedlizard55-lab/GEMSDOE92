@@ -6,7 +6,7 @@
 
 ## Latest Review: Literal Uniqueness is Blocked Across the Footprint
 
-**OK TO DOWNLOAD for research; NOT OK TO SUBMIT.** The queued BREAKLINE public witness audit finds **REGISTRY-MEASUREMENT 100% forward overlap** with the hash-verified 17GEMSDOE dense raster. Its 3-pixel halo covers the whole footprint, so every nonempty in-footprint candidate fails the current literal rule. No new unique submission was generated, no score improvement is claimed, and no slot was used. [Review and limitations](docs/REVIEW_CURRENT.md) · [witness receipt](docs/downloads/breakline_public_witness.json) · [session JSON card](docs/downloads/session_review_run_card.json).
+**OK TO DOWNLOAD for research; NOT OK TO SUBMIT.** The queued BREAKLINE public witness audit finds **REGISTRY-MEASUREMENT 100% forward overlap** with the hash-verified 17GEMSDOE dense raster. Its 3-pixel halo covers the whole footprint, so every nonempty in-footprint candidate fails the current literal rule. No new unique submission was generated, no score improvement is claimed, and no slot was used. [Review and limitations](docs/REVIEW_CURRENT.md) · [2026-10-24 repository review closeout](docs/REVIEW_CLOSEOUT_20261024.md) · [witness receipt](docs/downloads/breakline_public_witness.json) · [session JSON card](docs/downloads/session_review_run_card.json).
 
 ---
 
@@ -78,27 +78,15 @@ A second session built **BREAKLINE f45Ltop**: keeping 20,710 parent R0 dots via 
 
 ---
 
-## Interpretation of the reported GEMSDOE32 result — evidence limits first
+## What the reported GEMSDOE32 value can support
 
-### 1. Mathematical Mechanics of the Competition Metric
-The official competition metric is the distance-weighted, asymmetric Tversky Index ($DTI$):
-$$\text{DTI} = \frac{\text{TP}_w}{\text{TP}_w + \alpha \cdot \text{FP}_w + \beta \cdot \text{FN}_w + \varepsilon}$$
-where $\alpha = 0.2$, $\beta = 0.8$, and $k(d) = \max(0, 1 - d/300\text{ m})$ with cutoff radius $R = 300\text{ m}$ (3 pixels on a 100 m grid).
+The reported value **0.2778 is a CLAIM** copied from the supplied GEMSDOE32 site history; this checkout has no submission-page receipt for that artifact. The reported lineage H19-5 → D2.8 → SOLO → B2/R0 is consistent with changes to candidate geometry, thinning, pruning, and known-catalogue clearance. The prompt-reported intermediate values 0.1922, 0.2600, and 0.2708 are also CLAIMs, not organizer-confirmed receipts here.
 
-### 2. What the historical sequence can—and cannot—show
+A plausible mechanism is that thinning spatially redundant predictions reduces false-positive cost while maintaining coverage, and avoiding mapped catalogue pixels avoids predictions that may be masked. This is **mechanistic inference**, not causal proof: attributing score changes requires exact artifacts, identical scoring conditions, controlled ablations, and organizer receipts. Nearby predictions can have overlapping kernel support while each emitted prediction contributes to total prediction mass; that makes redundancy a sensible experiment, not proof that a specific thinning step caused the claimed increase. Local HOLDOUT-DTI is not comparable to private leaderboard scores.
 
-The values **0.1922 (H19-5), 0.2600 (D2.8), 0.2708 (SOLO), and 0.2778 (B2/R0)** are **CLAIMs copied from the prompt/site history**, not ORGANIZER-CONFIRMED receipts verified in this checkout. The score sequence is consistent with a useful hypothesis: thinning spatially redundant predictions and excluding already-mapped faults may reduce false-positive cost under a distance-weighted metric. It does **not** isolate which change caused the reported differences; that would require the exact rasters, matching scoring conditions, and controlled ablations or organizer receipts.
+The prompt's **0.3195 and 0.4413 are conflicting leaderboard snapshots/claims**; neither was refreshed in this session. We have no authenticated winning raster or method receipt, so cannot state that the highest-scoring submission fused a skeleton, DEM scarps, stepovers, radiometrics, or vent proximity. A score alone does not reveal its feature set. The project has not established that a candidate beats the 0.2778 CLAIM.
 
-In particular, the repo's locally recorded R0 lineage and metric code can help explain the *mechanism* of a thinning strategy: nearby predictions can have overlapping kernel support, while each emitted prediction still contributes to prediction mass. That makes redundancy a plausible cost. It is not proof that D2.8 caused the claimed increase, and local HOLDOUT-DTI results are not comparable to private leaderboard scores.
-
-The prompt's **0.4413** is likewise a user-provided leaderboard snapshot, not freshly checked in this environment. We have no authenticated winning raster/method receipt here. Therefore claims that the leading submission fused a specific skeleton, DEM scarp, stepover, radiometric, or vent-proximity feature are **unverified hypotheses**, not a description of the winner. A score alone cannot identify its causal feature set.
-
-### 3. Scientific hypotheses and limits
-
-A plausible, testable explanation for the reported 0.2778 is that coverage-aware spacing reduced redundant false-positive mass while maintaining broad spatial coverage, with known-fault exclusion avoiding predictions on masked catalogue traces. This is **mechanistic inference**, not an organizer-confirmed explanation. Potential-field lineaments may miss shallow scarps where there is little subsurface density or susceptibility contrast; conversely, lithologic contacts and non-tectonic topographic breaks can mimic faults. Neither mechanism justifies saying they “completely miss” a class without a validated detection study.
-
-The target and masking details should be quoted only from the [official problem/rules pages](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/) and the corresponding submission receipt. Those non-GitHub pages were not reachable from this session. The current research priority is to test missing-fault hypotheses with spatially blocked holdouts and independent off-catalogue controls—not to infer or fabricate the winning submission's recipe.
----
+The concepts and previous screens are catalogued in [`docs/HYPOTHESES.html`](docs/HYPOTHESES.html), [`docs/HYPOTHESES.md`](docs/HYPOTHESES.md), and [`docs/REVIEW_CURRENT.md`](docs/REVIEW_CURRENT.md). Their rankings are research priorities, not score forecasts. BREAKLINE, SCARPPOL, ANASIG, and STRAINBREAK are already tested—not new hypotheses. The current full-footprint public-registry witness blocks all nonempty in-footprint predictions under the literal overlap rule; do not emit another submission artifact unless that policy blocker is explicitly resolved.
 
 ## Candidate Geological Hypotheses (Ranked)
 
@@ -109,6 +97,7 @@ The target and masking details should be quoted only from the [official problem/
 | **3** | **DILATATIONAL-STEPOVER** | Positive dilatational strain rate on structural relay bends | Bands 8, 7, 4 (geodetic strain) & Band 19 (DEM breaks) | Geothermal fluid permeability localizes in extensional stepovers and pull-apart jogs between overlapping fault strands. | **Rank 3** / Medium (in-stack) | [UNR Nevada Geodetic Lab](http://geodesy.unr.edu/) |
 | **4** | **HYDROTHERMAL-ALTERATION** | K/Th radiometric ratio gradients & magnetic destruction | External GeoDAWN Radiometrics (`geodawn_rad_u8.tif`) & Band 14 (TMI) | Hydrothermal alteration halos trace active fluid-transmitting fault corridors lacking surface scarps. | **Rank 4** / Medium (pinned cache) | [USGS GeoDAWN Radiometrics](https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and) |
 | **5** | **SHORELINE-FILTERED SCARP** | Elevation-band contour-parallel suppressed breaklines | Bands 19, 12 + Lake Lahontan highstand masks (~1330 m AMSL) | Removes wave-cut shoreline terraces (the dominant non-tectonic false-positive mimic in the Great Basin). | **Rank 5** / Medium (requires NBMG shoreline grid) | [Nevada Bureau of Mines & Geology](https://data.nbmg.unr.edu/) |
+
 
 Detailed documentation: [`docs/HYPOTHESES.html`](docs/HYPOTHESES.html) · [`docs/HYPOTHESES.md`](docs/HYPOTHESES.md).
 
@@ -130,17 +119,17 @@ We own results end to end &mdash; not just our individual slice of the work. Whe
 # 1. Restore all SHA-256 pinned inputs into .cache/gems_inputs/
 python3 scripts/restore_inputs.py
 
-# 2. Run comprehensive automated test suite (117+ tests)
-pytest -v
+# 2. Run the automated test suite in the pinned environment
+.venv/bin/python -m pytest -q
 
 # 3. Verify pinned data manifests and hashes
-python3 scripts/verify_manifest.py
+.venv/bin/python scripts/verify_manifest.py
 
 # 4. Run automated gate inspection on all served downloads
-python3 scripts/check_site.py
+.venv/bin/python scripts/check_site.py
 
-# 5. Format validation on submission candidate
-python3 scripts/validate_submission.py --candidate docs/downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif
+# 5. Format validation on a candidate (format pass is not submission clearance)
+.venv/bin/python scripts/validate_submission.py --candidate docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif
 ```
 
 ---
