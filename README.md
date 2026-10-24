@@ -1,38 +1,40 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench (`APRONRIDGE` research download)
 
-## Latest verified review — 2026-10-24 (`d97f969e`)
+## Latest continuation review — 2026-10-24 UTC
 
-**✅ OK TO DOWNLOAD FOR RESEARCH; ⛔ DO NOT SUBMIT.** [Download the existing format-valid APRONRIDGE GeoTIFF](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif). It was not newly generated, copied, promoted, or uploaded in this review; this is not a new submission.
+**✅ OK TO DOWNLOAD FOR RESEARCH; ⛔ DO NOT SUBMIT.** The existing APRONRIDGE free1d TIFF remains the research download; it is not a new submission, new experiment, or selector choice. No new TIFF or geological experiment was generated in the continuation.
 
-Read [SESSION_PROMPT.md](SESSION_PROMPT.md) and this README at every session start. The durable operating contract preserves the user's goals and protocol; it is not a verbatim transcript of every repeated prompt. **Maximize P(Win)** and **Own the Outcome** require stopping when evidence contradicts readiness, not claiming a guaranteed score.
+Read this README, [`SESSION_PROMPT.md`](SESSION_PROMPT.md), and [`docs/REVIEW_CURRENT.md`](docs/REVIEW_CURRENT.md) at every session start. Arena values: **Maximize P(Win)** and **Own the Outcome**.
 
-**This review supersedes conflicting historical “#1” and primary-choice wording below.** Historical **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): APRONRIDGE `0.008354` (95% CI `[0.006823, 0.010135]`); HYDROCONDUIT `0.008549` (95% CI `[0.007626, 0.009487]`). These stored static evaluations were not rerun or certified as leak-free/fold-rebuilt here, do not establish organizer performance or causal geothermal discovery, and are not competition scores. A freshly hash-verified public registry witness is positive across the full footprint, forcing `100%` forward overlap under the literal rule. Stop before generating another raster; no policy exemption was invented.
+- **Current research download:** [`docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif) · [single-TIFF ZIP](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.zip) · SHA-256 `1a29a5d81e8561954f04a563b4975cb84d00898b8d7634700a9d409a10e06cbc`.
+- **Fresh exact-file rejection:** a SHA/Git-blob-verified witness is positive on all 5,167,373 valid footprint cells, yielding `1.0` forward 3-px overlap for APRONRIDGE. This is a single-witness rejection, not a new full-registry scan, pre-placement candidate-surface evaluation, or proof of geological equivalence. Under the literal rule every nonempty in-footprint output fails; no exemption or workaround was invented.
+- **Historical HOLDOUT-DTI only** (`gems57-pooled-hide-v2`, 22,663 withheld positives): APRONRIDGE `0.008354` (95% CI `[0.006823, 0.010135]`); HYDROCONDUIT `0.008549` (`[0.007626, 0.009487]`). These stored static evaluations were not rerun or certified here as leak-free/fold-rebuilt promotion evidence, are not organizer scores, and do not establish causal discovery. APRONRIDGE is lower than HYDROCONDUIT by point estimate.
+- **No new experiment / slot:** the feature stack and official source/licensing provenance are not ready in this checkout; no experiment or weekly submission slot was used. The four ranked hypotheses remain conditional and unvalidated in [`docs/HYPOTHESES_20261024_PREFLIGHT.md`](docs/HYPOTHESES_20261024_PREFLIGHT.md).
 
-[Three-pass review](docs/REVIEW_D97F969E.md) · [Fresh witness receipt](evidence/review_d97f969e_witness.json) · [Run card](evidence/review_d97f969e_run_card.json) · [Executive summary](docs/executive-summary.html).
+[Latest continuation review and limitations](docs/REVIEW_20261024_CONTINUATION.md) · [Continuation run card](evidence/review_20261024_continuation_run_card.json) · [Exact-file witness receipt](evidence/current_witness_recheck_20261024.json) · [D97 three-pass review](docs/REVIEW_D97F969E.md) · [D97 run card](evidence/review_d97f969e_run_card.json) · [site](docs/index.html).
 
 ---
 
 ## Current research artifact
 
-**Start every session with [SESSION_PROMPT.md](SESSION_PROMPT.md).** This file holds the user's complete working instructions and core values (Maximize P(Win), Own the Outcome). [2026-10-24 preflight evidence](evidence/preplacement_dense_witness.json) proves that the literal public-registry overlap rule makes **every nonempty in-footprint candidate a duplicate**: the SHA-pinned 17GEMSDOE witness is positive on every one of 5,167,373 footprint cells. [Pre-registered four hypotheses](docs/HYPOTHESES_20261024_PREFLIGHT.md) are stopped *before placement*; no new slot-ready TIF was made in this pass. [Negative run card](evidence/preflight_run_card.json). This is an explicit incompatibility between “make a unique TIF” and the literal overlap gate, not a request for manual inspection. Existing research-only downloads below remain available but **DO NOT SUBMIT**.
+**Start every session with [SESSION_PROMPT.md](SESSION_PROMPT.md).** [Preflight evidence](evidence/preplacement_dense_witness.json) proves that the literal public-registry overlap rule makes every nonempty in-footprint candidate a duplicate: the SHA-pinned 17GEMSDOE witness is positive on all 5,167,373 footprint cells. The pre-registered four hypotheses are stopped before placement; no new slot-ready TIF was made. This is an incompatibility between “make a unique TIF” and the literal overlap gate, not a request for manual inspection. Existing research-only downloads remain available but **DO NOT SUBMIT**.
 
 > ### ✅ DOWNLOAD STATUS: **FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH**
 > ### ⛔ SUBMISSION / WEEKLY SLOT STATUS: **DO NOT SUBMIT — NOT CLEARED (`verdict: "negative"`, `submission_eligible: false`; public-registry duplicate stop)**
 >
-> The canonical site currently presents APRONRIDGE free1d as its primary research download. Its standalone **HOLDOUT-DTI** is `0.008354 [0.006823, 0.010135]`; the higher documented HYDROCONDUIT hybrid is `0.008549 [0.007626, 0.009487]` on the same evaluator and 22,663 withheld positives. Neither is cleared for a competition slot: a SHA-pinned public registry witness is positive across the whole valid footprint, forcing a literal duplicate stop for every nonempty prediction.
+> The site presents APRONRIDGE free1d as its research download, not a selector choice. Its standalone **HOLDOUT-DTI** is `0.008354 [0.006823, 0.010135]`; the higher documented HYDROCONDUIT hybrid is `0.008549 [0.007626, 0.009487]` on the same evaluator and 22,663 withheld positives. These historical static results were not rerun or certified as fold-rebuilt here. Neither is cleared for a competition slot.
 >
-> - **Current site primary GeoTIFF (zeros outside, `nodata=None`):** [`docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif) · [One-TIFF ZIP](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.zip)
-> - **SHA-256 (`-zeros.tif`):** `1a29a5d81e8561954f04a563b4975cb84d00898b8d7634700a9d409a10e06cbc` (`37,654` unit-mass dots, zero outside footprint, zero catalogue mass)
-> - **Research-ledger name / form note (90 / 140 characters):** `GEMSDOE92-APRONRIDGE-free1d-20261024` / `h33-h33-2-b2; APRONRIDGE free1d: 37654 standalone 1D piedmont-apron + RTP ridges (0 H19-5)`
-> - **Automated format audit:** [Audit JSON](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-audit.json) (`10/10` local format gates PASS; format-valid means downloadable for research, **not** submission-cleared)
-> - **Pre-placement registry stop:** [SHA-pinned witness measurement](evidence/preplacement_dense_witness.json) · [preflight run card](evidence/preflight_run_card.json) · [four conditional hypotheses](docs/HYPOTHESES_20261024_PREFLIGHT.md) · [full review](docs/REVIEW_20261024_REAUDIT.md)
+> - **Research GeoTIFF (zeros outside, `nodata=None`):** [`docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif) · [One-TIFF ZIP](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.zip)
+> - **Research identifier / note:** `GEMSDOE92-APRONRIDGE-free1d-20261024` / `h33-h33-2-b2; APRONRIDGE free1d: 37654 standalone 1D piedmont-apron + RTP ridges (0 H19-5)`
+> - **Automated format audit:** [Audit JSON](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-audit.json) (`10/10` local format gates PASS; downloadable for research is **not** submission clearance)
+> - **Pre-placement stop:** [witness measurement](evidence/preplacement_dense_witness.json) · [run card](evidence/preflight_run_card.json) · [four conditional hypotheses](docs/HYPOTHESES_20261024_PREFLIGHT.md)
 > - **Site guides:** [Main workbench](docs/index.html) · [Executive summary](docs/executive-summary.html) · [Submission procedure](docs/SUBMIT.html)
 >
-> **Persistent brief:** At every session start, read this README and [`SESSION_PROMPT.md`](SESSION_PROMPT.md). Use authorized, cached inputs; shared feature/evaluation/writer tools; whole-segment buffered holdout; per-feature leakage canaries; pre-placement and final registry gates; and auditable run cards. A local HOLDOUT-DTI is not a competition score. Preserve negative results, respect the experiment/time budget, and never use a slot until the exact file is eligible and a separate selector approves it. Keep download-vs-submit status unmistakable; follow **Maximize P(Win)** and **Own the Outcome**.
+> A local HOLDOUT-DTI is not a competition score. Preserve negative results, respect the experiment/time budget, and never use a slot until the exact file is eligible and a separate selector approves it. Keep download-vs-submit status unmistakable; follow **Maximize P(Win)** and **Own the Outcome**.
 
 ---
 
-## Prior Candidate: Why `HYDROCONDUIT f45hydro` Has the Highest Documented Hybrid HOLDOUT-DTI but Is Not Cleared for Submission
+## Prior/parallel candidate — `HYDROCONDUIT f45hydro` (historical research artifact, not current primary)
 
 1. **Why It Is a strong local holdout result (not an organizer score):**
    - **Highest recorded value among the documented GEMSDOE92 candidates:** On the shared `gems57-pooled-hide-v2` buffered spatial holdout (`22,663` withheld catalogue fault pixels, `1,000` paired cluster-bootstrap draws), `HYDROCONDUIT f45hydro` achieves **`HOLDOUT-DTI = 0.008549 [0.007626, 0.009487]`** — **`+113.4%` over `R0` (`0.004006`)** (`Δ = +0.004543 [+0.003770, +0.005315]`) and **`+41.4%` over `RELIEF p10` (`0.006045`)** (`Δ = +0.002504 [+0.001795, +0.003222]`). This is a local validation statistic, not an organizer-confirmed score.

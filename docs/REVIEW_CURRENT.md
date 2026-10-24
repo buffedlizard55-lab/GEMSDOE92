@@ -8,11 +8,13 @@
 - **Ranking correction:** the stored APRONRIDGE `HOLDOUT-DTI` is `0.008354 [0.006823, 0.010135]`, lower in point estimate than HYDROCONDUIT `0.008549 [0.007626, 0.009487]` on the same evaluator / 22,663 withheld positives. Both remain historical static evaluations; no paired significance or fold-rebuilt validation is newly claimed. The 0.2778 GEMSDOE32 value remains a `CLAIM`; the supplied 0.3195 and 0.4413 leaderboard values were not refreshed.
 - **Hypotheses and limits:** four concepts are in [`HYPOTHESES_20261024_PREFLIGHT.md`](HYPOTHESES_20261024_PREFLIGHT.md), unvalidated and conditional on policy resolution and restoring the absent feature stack. No candidate was implemented or scored, and no projected score is offered.
 - **Three-pass review:** Pass 1 found README/site primary and ranking drift plus a form-note length error. Pass 2 corrected current-facing summaries and added consistency checks. Pass 3 rechecked the stop status, guides, primary hashes, tests, and site gates; no TIFF bytes were changed.
-- **Post-resolution local validation:** 204 tests passed (103 nonfatal Rasterio/Affine warnings); the site gate passed all 25 served zeros-outside TIFs. The 8-entry input manifest, pinned R0 parent, and 57-row ledger checks passed; local HTML link audit found no missing targets. These establish format/software integrity only, not eligibility.
+- **Post-resolution local validation:** 206 tests passed (103 nonfatal Rasterio/Affine warnings); the site gate passed all 25 served zeros-outside TIFs. The 8-entry input manifest, pinned R0 parent, and 57-row ledger checks passed; local HTML link audit found no missing targets. These establish format/software integrity only, not eligibility.
 
 ---
 
 # Historical APRONRIDGE review (read the latest override above first)
+
+> Latest continuation: [fresh exact-file witness recheck, ranked untested hypotheses, current download/submission decision, and three-pass review](REVIEW_20261024_CONTINUATION.md) · [machine-readable run card](downloads/review_20261024_continuation_run_card.json). This follow-up is another **single-witness rejection only**, not a full-registry scan or candidate-surface evaluation; its historical HOLDOUT-DTI references are not rerun or certified as fold-rebuilt/leak-free promotion evidence.
 
 ## Download status comes first
 
