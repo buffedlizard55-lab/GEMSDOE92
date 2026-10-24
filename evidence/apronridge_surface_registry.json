@@ -1,0 +1,186 @@
+{
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "phase": "pre_placement_surface",
+  "rasters_checked": 29,
+  "worst_abs_spearman": 0.122173,
+  "worst_abs_spearman_file": "h19_5.tif",
+  "worst_top37654_forward_overlap": 0.552664,
+  "worst_top37654_forward_overlap_file": "h19_5.tif",
+  "duplicate": false,
+  "rows": [
+    {
+      "registry_file": "parent_R0_zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.063117,
+      "surface_top37654_forward_3px_overlap": 0.427976
+    },
+    {
+      "registry_file": "h19_5.tif",
+      "their_dots": 121131,
+      "surface_spearman_sample250k": 0.122173,
+      "surface_top37654_forward_3px_overlap": 0.552664
+    },
+    {
+      "registry_file": "d28.tif",
+      "their_dots": 44090,
+      "surface_spearman_sample250k": 0.071776,
+      "surface_top37654_forward_3px_overlap": 0.50316
+    },
+    {
+      "registry_file": "h27_4_solo.tif",
+      "their_dots": 40199,
+      "surface_spearman_sample250k": 0.066925,
+      "surface_top37654_forward_3px_overlap": 0.460987
+    },
+    {
+      "registry_file": "sample_submission.tif",
+      "their_dots": 60988,
+      "surface_spearman_sample250k": 0.049405,
+      "surface_top37654_forward_3px_overlap": 0.177166
+    },
+    {
+      "registry_file": "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.030603,
+      "surface_top37654_forward_3px_overlap": 0.149785
+    },
+    {
+      "registry_file": "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.048382,
+      "surface_top37654_forward_3px_overlap": 0.367424
+    },
+    {
+      "registry_file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.044087,
+      "surface_top37654_forward_3px_overlap": 0.435996
+    },
+    {
+      "registry_file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.040523,
+      "surface_top37654_forward_3px_overlap": 0.432889
+    },
+    {
+      "registry_file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.036083,
+      "surface_top37654_forward_3px_overlap": 0.429808
+    },
+    {
+      "registry_file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.062676,
+      "surface_top37654_forward_3px_overlap": 0.394965
+    },
+    {
+      "registry_file": "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.061703,
+      "surface_top37654_forward_3px_overlap": 0.384209
+    },
+    {
+      "registry_file": "h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.061311,
+      "surface_top37654_forward_3px_overlap": 0.370319
+    },
+    {
+      "registry_file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.073064,
+      "surface_top37654_forward_3px_overlap": 0.449355
+    },
+    {
+      "registry_file": "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.04661,
+      "surface_top37654_forward_3px_overlap": 0.360785
+    },
+    {
+      "registry_file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+      "their_dots": 5000,
+      "surface_spearman_sample250k": 0.010701,
+      "surface_top37654_forward_3px_overlap": 0.03248
+    },
+    {
+      "registry_file": "h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.046848,
+      "surface_top37654_forward_3px_overlap": 0.382589
+    },
+    {
+      "registry_file": "h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.040918,
+      "surface_top37654_forward_3px_overlap": 0.353854
+    },
+    {
+      "registry_file": "h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.035813,
+      "surface_top37654_forward_3px_overlap": 0.309104
+    },
+    {
+      "registry_file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.049241,
+      "surface_top37654_forward_3px_overlap": 0.389441
+    },
+    {
+      "registry_file": "h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
+      "their_dots": 41419,
+      "surface_spearman_sample250k": 0.068556,
+      "surface_top37654_forward_3px_overlap": 0.431747
+    },
+    {
+      "registry_file": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif",
+      "their_dots": 33889,
+      "surface_spearman_sample250k": 0.058884,
+      "surface_top37654_forward_3px_overlap": 0.378393
+    },
+    {
+      "registry_file": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.064649,
+      "surface_top37654_forward_3px_overlap": 0.406623
+    },
+    {
+      "registry_file": "h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.062622,
+      "surface_top37654_forward_3px_overlap": 0.408828
+    },
+    {
+      "registry_file": "h33-h33-2-b2-PRUNE_B4-20261023-78e893d7-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.061775,
+      "surface_top37654_forward_3px_overlap": 0.389202
+    },
+    {
+      "registry_file": "h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.062556,
+      "surface_top37654_forward_3px_overlap": 0.3653
+    },
+    {
+      "registry_file": "h33-h33-2-b2-SCARPPOLf33Stop-20261024-7b3571a5-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.045025,
+      "surface_top37654_forward_3px_overlap": 0.428958
+    },
+    {
+      "registry_file": "h33-h33-2-b2-SCARPPOLf38Stop-20261024-a259cb8c-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.042841,
+      "surface_top37654_forward_3px_overlap": 0.426728
+    },
+    {
+      "registry_file": "h33-h33-2-b2-SCARPPOLf45Stop-20261024-cf4e45c0-zeros.tif",
+      "their_dots": 37654,
+      "surface_spearman_sample250k": 0.038879,
+      "surface_top37654_forward_3px_overlap": 0.421469
+    }
+  ]
+}

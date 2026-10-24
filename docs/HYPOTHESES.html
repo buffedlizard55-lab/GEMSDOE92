@@ -3,20 +3,107 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="5 Pre-Registered Ranked Geological Hypotheses — GEMSDOE92 DOE GEMS Prize #306">
-  <title>Candidate Geological Hypotheses — GEMSDOE92 (HYDROCONDUIT Session)</title>
+  <meta name="description" content="Pre-Registered Geological Hypotheses — GEMSDOE92 DOE GEMS Prize">
+  <title>Candidate Geological Hypotheses — GEMSDOE92</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="hero">
-  <p class="kicker">Geological Hypotheses · DOE GEMS Prize #306 · Pre-Registered Before Implementation</p>
-  <h1>5 Ranked Candidate Geological Hypotheses (2026-10-24)</h1>
-  <p class="lede">Formulated and ranked prior to building or scoring any candidate (<a href="HYPOTHESES_20261024_HYDROCONDUIT.md">markdown source</a>). Every hypothesis specifies exact sensor bands, mathematical transform, missing-fault mechanism, distinction from all prior <code>GEMSDOE92</code> lanes, named non-fault mimic, expected DTI vs. cost, and verified data availability.</p>
-  <p><a href="index.html">← Back to Main Workbench</a> · <a href="executive-summary.html">Executive Summary</a> · <a href="SUBMIT.html">Submission Guide</a> · <a href="ANALYSIS_20261024_HYDROCONDUIT.md">Full Session Analysis</a></p>
+  <p class="kicker">Geological Hypotheses · DOE GEMS Prize #306 · Pre-Registered Discovery Queue</p>
+  <h1>Pre-Registered Geological Hypotheses (2026-10-24 Session)</h1>
+  <p class="lede">Five untried Basin-and-Range structural &amp; geophysical hypotheses formulated from previously unused layers of the SHA-pinned 19-band stack and GDR #1391 table, pre-screened before dot placement and ranked by expected DTI gain and implementation cost.</p>
+  <p><a href="index.html">← Back to Main Workbench</a> · <a href="executive-summary.html">Executive Summary</a> · <a href="SUBMIT.html">Submission Guide</a> · <a href="HYPOTHESES_20261024_APRONRIDGE.md">Full Mathematical Pre-Registration</a></p>
 </header>
 
 <main>
-<section class="download-card"><h2>Latest pre-registered hypotheses: STEPEDGE session (2026-10-24)</h2><p>Ranked before screening, with screen/build outcomes appended: <a href="HYPOTHESES_20261024_STEPEDGE.md">STEPEDGE / TRANSV / RADSTEP + amendment</a> · <a href="ANALYSIS_20261024_STEPEDGE.md">results analysis</a>. Current primary (unique TIFF, verdict negative, DO NOT SUBMIT): <a href="index.html#download-stepedge">STEPEDGE f60Sraw</a>. The generic catalogue below is retained as historical background.</p></section>
+<section class="download-card"><h2>Current primary hypothesis: APRONRIDGE session (2026-10-24) &amp; prior STEPEDGE record</h2><p>Current primary (#1 repository HOLDOUT-DTI <code>0.008354</code>, locally unique, verdict <code>negative</code> under dense public witness — DO NOT SUBMIT): <a href="index.html#download-apronridge">APRONRIDGE free1d</a> (<a href="HYPOTHESES_20261024_APRONRIDGE.md">APRONRIDGE pre-registration</a> · <a href="ANALYSIS_20261024_APRONRIDGE.md">PhD results analysis</a>). Prior parallel DEM step-persistence screen/build (<a href="HYPOTHESES_20261024_STEPEDGE.md">STEPEDGE / TRANSV / RADSTEP</a> · <a href="ANALYSIS_20261024_STEPEDGE.md">STEPEDGE analysis</a>): <a href="index.html#download-stepedge">STEPEDGE f60Sraw</a>.</p></section>
+<section>
+  <h2>Pre-Build Screening &amp; Holdout Summary</h2>
+  <p>Every hypothesis below names specific sensor bands (verified directly against the 19-band GDAL header of <code>training_features.tif</code>), its mathematical transform, why legacy USGS QFaults / INGENIOUS compilations miss those structures, its named non-fault geological mimics, and its measured leakage-canary and off-skeleton diagnostic results (<code>evidence/apron_prebuild_screen.json</code>). Note: earlier session notes claimed <code>Band 18</code> was the only signed band in the stack; live pixel verification shows 10 of 19 bands take signed values (including <code>Band 2 rtp</code>, <code>Band 8 geod_dilaterate</code>, <code>Band 9 tmi_vg</code>, <code>Band 11 iso_grav_anom_vg</code>, <code>Band 12 det_elev</code>, <code>Band 13 iso_grav_anom</code>, <code>Band 14 tmi</code>, and <code>Band 18 iso_grav_anom_hg</code>; logged in <a href="../IRREGULARITIES.md">IRREGULARITIES.md</a>).</p>
+</section>
+
+<section>
+  <h2>Ranked Hypotheses (1 to 5)</h2>
+
+  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
+    <p class="kicker" style="color:#4ecb71;">Rank 1 · Implemented &amp; Validated · #1 All-Time Repository HOLDOUT-DTI (0.008354)</p>
+    <h3 style="margin-top:0.2rem;">1. APRONRIDGE — Thin-Cover Piedmont Accommodation Apron &amp; Inclination-Corrected RTP-Curvature 1D Ridges</h3>
+    <dl class="meta">
+      <div><dt>Layers Involved</dt><dd><strong>Band 15</strong> (<code>depth_to_base_surf</code>), <strong>Band 12</strong> (<code>det_elev</code>), <strong>Band 5</strong> (<code>iso_grav_anom_slope</code>), <strong>Band 19</strong> (<code>det_elev_slope</code>), <strong>Band 2</strong> (<code>rtp</code>, Reduced-to-Pole magnetics), and <strong>Band 6</strong> (<code>tc</code>, total curvature) — Bands 2, 6, and 15 were unused by all 13 prior built lanes.</dd></div>
+      <div><dt>Physical Signature</dt><dd><code>S_raw = H_apron(B12, B15 ~20–600 m log-normal, B5) &times; max(R_scarp[B19,B12], 0.85 &times; R_rtp[||&nabla;B2|| &times; (-B6) &times; coh(B2)])</code> restricted to 4-axis 1D directional crests (<code>directional_ridge_1d</code>).</dd></div>
+      <div><dt>Why Missing from Catalogue</dt><dd>Synthetic hanging-wall step-faults and shallow-buried basement transfer faults in the thin-cover piedmont apron either offset homogeneous fan gravels (zero gravity worm) or have degraded surface scarps where raw TMI is laterally skewed 300–800 m by ~65&deg; geomagnetic inclination; RTP centers the magnetic gradient directly over the vertical basement step.</dd></div>
+      <div><dt>Named Non-Fault Mimics</dt><dd>Sehoo/Eetza pluvial shoreline benches on piedmont fans, incised alluvial-fan terrace risers / wash walls, and remanently magnetized Tertiary basalt flow margins beneath thin gravel.</dd></div>
+      <div><dt>Measured Outcome</dt><dd>Canary symmetric AUC = <strong>0.636490</strong> (&le; 0.90 PASS); <code>free1d</code> <strong>HOLDOUT-DTI = 0.008354 [0.006823, 0.010135]</strong> (+108.5% over R0, +38.2% over RELIEF p10, +52.2% over STRAINBREAK f60s2i); worst local 3-px overlap = <strong>0.4605</strong> (locally unique). Blocked from weekly slot only by the dense 17GEMSDOE public witness.</dd></div>
+    </dl>
+  </div>
+
+  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
+    <p class="kicker" style="color:#d08a3c;">Rank 2 · Screened &amp; Folded into APRONRIDGE Channel 2</p>
+    <h3 style="margin-top:0.2rem;">2. RTPTILT-CURV — Inclination-Corrected RTP Horizontal-Gradient &times; Inverted Curvature</h3>
+    <dl class="meta">
+      <div><dt>Layers Involved</dt><dd><strong>Band 2</strong> (<code>rtp</code>) &amp; <strong>Band 6</strong> (<code>tc</code>)</dd></div>
+      <div><dt>Physical Signature</dt><dd><code>R_rtp = pct_rank(||&nabla;rtp||) &times; pct_rank(-tc) &times; structure_tensor_coherence(rtp)</code></dd></div>
+      <div><dt>Why Missing from Catalogue</dt><dd>Recovers shallow-buried volcanic/crystalline fault contacts beneath coalescing bajadas without raw-TMI dipolar skew or elevation-dependent terrain correlation.</dd></div>
+      <div><dt>Named Non-Fault Mimics</dt><dd>Unfaulted pluton roof pendants, caldera ring-dike margins, and incised channels draining magnetic volcanics.</dd></div>
+      <div><dt>Screen Result</dt><dd>Canary AUC = <code>0.541297</code>, off-skeleton SGMC = <code>0.034975</code>; folded directly into <code>APRONRIDGE</code> where it wins <code>10.5%</code> of far 1D crests.</dd></div>
+    </dl>
+  </div>
+
+  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
+    <p class="kicker" style="color:#d08a3c;">Rank 3 · Screened · Reserve Hydrothermal Gate</p>
+    <h3 style="margin-top:0.2rem;">3. BLIND-GEOTHERM — Sub-Boiling Geothermometer Upflow Halos on Thin-Cover Basement Steps</h3>
+    <dl class="meta">
+      <div><dt>Layers Involved</dt><dd><code>gdr_wellspring_in_footprint.csv</code> chemical geothermometers (<code>na_k_ca_mg_c</code>, <code>quartz_c</code>, <code>chalcedony_c &ge; 90 &deg;C</code>; 477 cells vs 144 thermal vents) &times; <strong>Band 15</strong> &amp; <strong>Band 5</strong></dd></div>
+      <div><dt>Physical Signature</dt><dd>Gaussian upflow halo (<code>&sigma;=18 px</code>) around deep-equilibrated chemical geothermometer anomalies gating thin-cover gravity-gradient ridges.</dd></div>
+      <div><dt>Why Missing from Catalogue</dt><dd>Roughly 75% of Great Basin hydrothermal systems are blind (cool surface waters retaining &gt;90 &deg;C silica/cation equilibration signatures above unmapped permeable fault conduits).</dd></div>
+      <div><dt>Named Non-Fault Mimics</dt><dd>Lateral outflow plumes in regional carbonate aquifers and diagenetic silica enrichment in ash-rich lacustrine sediments.</dd></div>
+      <div><dt>Screen Result</dt><dd>Canary AUC = <code>0.551863</code>, off-skeleton SGMC = <code>0.019012</code> (held in reserve due to uneven exploration-well sampling).</dd></div>
+    </dl>
+  </div>
+
+  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
+    <p class="kicker" style="color:#b7a48a;">Rank 4 · Screened · Wavelength-Limited at 100 m</p>
+    <h3 style="margin-top:0.2rem;">4. MTSHEAR-CONDUIT — Magnetotelluric Crustal Conductance &times; Geodetic Shear Rate</h3>
+    <dl class="meta">
+      <div><dt>Layers Involved</dt><dd><strong>Band 17</strong> (<code>cond_surf</code>) &amp; <strong>Band 7</strong> (<code>geod_shearrate</code>)</dd></div>
+      <div><dt>Physical Signature</dt><dd>Coupled high-conductance / high-shear gradient corridors targeting dextral-normal Walker Lane fluid conduits.</dd></div>
+      <div><dt>Named Non-Fault Mimics</dt><dd>Saline playa brines, smectite-rich lacustrine clays, and Paleozoic graphitic/pyritic black shales.</dd></div>
+      <div><dt>Screen Result</dt><dd>Canary AUC = <code>0.519137</code>, off-skeleton SGMC = <code>0.024453</code> (not built: regional MT/GPS smoothing is too coarse for 300 m DTI precision without DEM/RTP crest locking).</dd></div>
+    </dl>
+  </div>
+
+  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
+    <p class="kicker" style="color:#b7a48a;">Rank 5 · Screened · Potential-Field Resolution Ceiling</p>
+    <h3 style="margin-top:0.2rem;">5. GRAVTILT-ZERO — Standardized Gravity Tilt-Angle Zero-Contour Ridge</h3>
+    <dl class="meta">
+      <div><dt>Layers Involved</dt><dd><strong>Band 11</strong> (<code>iso_grav_anom_vg</code>), <strong>Band 5</strong> (<code>iso_grav_anom_slope</code>), &amp; <strong>Band 13</strong> (<code>iso_grav_anom</code>) / <strong>Band 18</strong> (<code>iso_grav_anom_hg</code>)</dd></div>
+      <div><dt>Physical Signature</dt><dd>MAD-standardized gravity tilt zero-contour ridge (<code>exp(-(&theta;/0.30)&sup2;) &times; pct_rank(B5)</code>) tracking AGC-normalized basement contacts.</dd></div>
+      <div><dt>Named Non-Fault Mimics</dt><dd>Unfaulted granitoid pluton margins, caldera ring boundaries, and buried paleovalleys.</dd></div>
+      <div><dt>Screen Result</dt><dd>Canary AUC = <code>0.510746</code>, off-skeleton SGMC = <code>0.028019</code> (not built: terrestrial gravity station spacing ~2–5 km cannot localize fault traces to &le;300 m alone).</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section>
+  <h2>Official Verification Sources</h2>
+  <table>
+    <thead><tr><th>Dataset / Resource</th><th>Official Source URL</th><th>Role</th></tr></thead>
+    <tbody>
+      <tr><td>DrivenData DOE GEMS #306</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">drivendata.org/.../page/967/</a></td><td>Competition task, rules, DTI metric</td></tr>
+      <tr><td>GEMS Prize Reference Solution</td><td><a href="https://github.com/drivendataorg/gems-prize-reference-solution">github.com/drivendataorg/gems-prize-reference-solution</a></td><td>Official U-Net MC CV baseline &amp; Tversky loss</td></tr>
+      <tr><td>USGS GeoDAWN Airborne Surveys</td><td><a href="https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7">data.usgs.gov/.../USGS:657e1d85d34e23d3533209f7</a></td><td>High-resolution aeromagnetic (RTP/TMI) &amp; radiometric data</td></tr>
+      <tr><td>DOE GDR #1391 (INGENIOUS)</td><td><a href="https://gdr.openei.org/submissions/1391">gdr.openei.org/submissions/1391</a></td><td>Great Basin 19-band feature compilation &amp; well/spring geochemistry</td></tr>
+      <tr><td>USGS SGMC (ScienceBase)</td><td><a href="https://www.sciencebase.gov/catalog/item/5888bf4fe4b05ccb964bab9d">sciencebase.gov/.../5888bf4fe4b05ccb964bab9d</a></td><td>1:500k bedrock fault control raster</td></tr>
+      <tr><td>USGS 3DEP &amp; QFaults</td><td><a href="https://www.usgs.gov/3d-elevation-program">usgs.gov/3d-elevation-program</a> · <a href="https://www.usgs.gov/programs/earthquake-hazards/faults">usgs.gov/.../faults</a></td><td>Topographic DEM &amp; mapped Quaternary fault baseline</td></tr>
+    </tbody>
+  </table>
+</section>
+</main>
+
+<footer>
+  <p>GEMSDOE92 Workbench · Pre-Registered Physics-First Discovery · Automated Gate &amp; Uniqueness Verification.</p>
+</footer>
+</section>
 <section>
   <h2>Ranked Untried Hypotheses (HYDROCONDUIT Session)</h2>
 

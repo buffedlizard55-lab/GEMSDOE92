@@ -1,7 +1,49 @@
+# SLOT_PLAN — current selector state (2026-10-24, APRONRIDGE session)
+
+## Current primary artifact: `APRONRIDGE free1d` — #1 Holdout-DTI & locally unique, blocked ONLY by dense public witness (`verdict: negative`, no slot used)
+
+Primary download `GEMSDOE92-APRONRIDGE-free1d-20261024` (file
+`docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`,
+SHA-256 `1a29a5d81e8561954f04a563b4975cb84d00898b8d7634700a9d409a10e06cbc`,
+note `h33-h33-2-b2; APRONRIDGE free1d: 37654 standalone 1D piedmont-apron + RTP ridges (0 H19-5)`):
+
+- **Format gates**: `10/10 PASS` on independent disk re-read (`EPSG:32611`, `3730×3292`, `float32`, `[0, 1]`, `0` NaN in footprint, `0.0` outside, `37,654` unit dots, `0` catalogue mass, `d_cat > 2.0 px`).
+- **`HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `8` spatial folds, `22,663` withheld positives)**: **`0.008354 [0.006823, 0.010135]`** — **new all-time repository high**, beating `R0` (`0.004006`, paired Δ `+0.004347 [+0.003019, +0.005710]`), `STEPEDGE f60Sraw` (`0.003980`), prior locally-unique best `STRAINBREAK f60s2i` (`0.005487`, paired Δ `+0.002867`), and prior holdout best `RELIEF p10piedmont` (`0.006045`, paired Δ `+0.002308`). Pre-registered hybrid siblings `s60f40` (`0.008291`) and `s50f50` (`0.008097`) also beat `RELIEF p10`; never submit multiple `APRONRIDGE` siblings.
+- **Leakage canaries**: `11/11 PASS` (`max symmetric AUC = 0.636490 <= 0.90`).
+- **SGMC 1:500k off-catalogue `PROXY`**: `0.080098` vs `R0` `0.096060` (intentional suppression of high-range Mesozoic bedrock contacts in favor of thin-cover piedmont Quaternary accommodation zones; contrast `STEPEDGE f60Sraw` SGMC `0.141464` vs holdout `0.003980`).
+- **Uniqueness**:
+  - Pre-placement continuous surface vs `29` local rasters (`evidence/apronridge_surface_registry.json`): `worst_|Spearman| = 0.122173 <= 0.90`, `worst_top37654_forward_overlap = 0.552664 <= 0.70`.
+  - Final dots vs all `46` cross-lane local rasters (`43` in `evidence/apronridge_proxy_audit.json` + `3` newly merged `STEPEDGE` rasters at `0.3023–0.3783`): **`worst_forward_overlap = 0.460482 <= 0.70`**, `worst_|phi| = 0.056117 <= 0.90` (`local_duplicate: false`).
+  - Top public sparse witnesses (`62GEMSDOE` `120k` px, `GEMSDOE23` `91.5k–100k` px; `evidence/apronridge_public_sparse_spotcheck.json`): **`0.6028–0.6456 <= 0.70`**.
+  - **Binding public dense witness (`evidence/public_witness_apronridge.json`)**: `17GEMSDOE E-proba-multiscale` (`5,167,373 / 5,167,373` positive footprint cells) forces `forward_overlap = 1.000`. Therefore `submission_eligible = false` and `verdict = "negative"`; **do not spend a weekly slot** until an operator policy decision adds a dense-probability support ceiling (`<= 150,000` positive pixels). Once that policy update is approved and a full refreshed `scripts/audit_public_registry.py` confirms sparse uniqueness, `APRONRIDGE free1d` is the #1 queued candidate for a single weekly slot.
+
+---
+
+# SLOT_PLAN — prior parallel state (2026-10-24, STEPEDGE session)
 # Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-24, `HYDROCONDUIT` Session)
 
 ## Current Slot Decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT (`submission_eligible: false`)**
 
+Primary download `GEMSDOE92-STEPEDGE-f60Sraw-20261024` (file
+`h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif`, SHA-256
+`c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4`) is
+format-valid and literal-unique vs the local dot registry (worst
+forward overlap 0.461; surface |ρ| 0.138), with the repo's best SGMC PROXY
+(0.141464 vs R0 0.096060). It is **not cleared**: automated gates record
+`submission_eligible: false` because HOLDOUT-DTI 0.003980 [0.003295, 0.004702]
+does not beat STRAINBREAK f60 (0.005487), RELIEF p10 (0.006045), or APRONRIDGE free1d (0.008354) and paired
+Δ vs R0 includes 0. Dense public-witness literal overlap 1.000 is disclosed
+(ρ 0.0004; see amended dot-like scope in
+`docs/HYPOTHESES_20261024_STEPEDGE.md`). Sibling doses f33/f45Sraw are
+duplicates (0.760/0.711 vs same-dose BREAKLINE/SCARPPOL) and must never be
+submitted; never pair doses in one week. Selector framing + receipt decision
+rules: `docs/ANALYSIS_20261024_STEPEDGE.md` §4. No slot used this session.
+Re-validate uniqueness at decision time — verdicts decay as the registry
+grows (IRREGULARITIES 2026-10-24).
+
+---
+
+# SLOT_PLAN — prior selector state (2026-10-24, ANASIG session)
 - **Current Primary Artifact:** `docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif`
   - **SHA-256 (`-zeros.tif`):** `c9e07ba6627672bfd58b08572a19d48aa16ff07a2f95347993550eaaccba8fdd`
   - **Run Card:** `evidence/hydroconduit_run_card.json` (`docs/downloads/hydroconduit_run_card.json`)

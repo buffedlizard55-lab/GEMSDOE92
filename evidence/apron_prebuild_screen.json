@@ -1,0 +1,52 @@
+{
+  "evidence_class": "PROXY-SCREEN",
+  "created_utc": "2026-10-24",
+  "n_far_screen": 13179,
+  "sgmc_truth_px": 62703,
+  "chem_points_ge_90C": 442,
+  "chem_pairs": 1981,
+  "surfaces": {
+    "H1_APRONHINGE": {
+      "canary_auc": 0.607683,
+      "canary_symmetric_auc": 0.607683,
+      "far_only_13179_sgmc_dti": 0.021025,
+      "spearman_vs_breakline_L": 0.1217,
+      "spearman_vs_R0": 0.0432
+    },
+    "H2_GRAVTILT_ZERO": {
+      "canary_auc": 0.510746,
+      "canary_symmetric_auc": 0.510746,
+      "far_only_13179_sgmc_dti": 0.028019,
+      "spearman_vs_breakline_L": -0.0183,
+      "spearman_vs_R0": 0.0038
+    },
+    "H3_RTPTILT_CURV": {
+      "canary_auc": 0.541297,
+      "canary_symmetric_auc": 0.541297,
+      "far_only_13179_sgmc_dti": 0.034975,
+      "spearman_vs_breakline_L": 0.1857,
+      "spearman_vs_R0": 0.0329
+    },
+    "H4_MTSHEAR_CONDUIT": {
+      "canary_auc": 0.519137,
+      "canary_symmetric_auc": 0.519137,
+      "far_only_13179_sgmc_dti": 0.024453,
+      "spearman_vs_breakline_L": 0.017,
+      "spearman_vs_R0": 0.0017
+    },
+    "H5_BLIND_GEOTHERM": {
+      "canary_auc": 0.551863,
+      "canary_symmetric_auc": 0.551863,
+      "far_only_13179_sgmc_dti": 0.019012,
+      "spearman_vs_breakline_L": 0.0425,
+      "spearman_vs_R0": 0.0111
+    },
+    "CTRL_BREAKLINE_L": {
+      "canary_auc": 0.621604,
+      "canary_symmetric_auc": 0.621604,
+      "far_only_13179_sgmc_dti": 0.056526,
+      "spearman_vs_breakline_L": 1.0,
+      "spearman_vs_R0": 0.078
+    }
+  }
+}

@@ -797,9 +797,10 @@ that pattern: no unpreserved screen code.
 
 ## 2026-10-24 (PIEDFRONT session) — structural trade-off between mountain-core SGMC bedrock faults and piedmont Quaternary/geothermal holdout faults
 
-- **Observation**: Relocating off-skeleton dots out of steep mountain-core bedrock (`det_elev >= 38.76 m`) into the piedmont alluvial transition (`78.7%` of `f35Ptop` far dots, `73.9%` overall) raises `HOLDOUT-DTI` to the repository's highest non-collar value (`0.006425 [0.005375, 0.007479]`, paired $\Delta$ vs `R0` `+0.002418 [+0.001538, +0.003255]`, paired $\Delta$ vs `BREAKLINE f45` `+0.001564 [+0.000471, +0.002607]`), while reducing `SGMC` bedrock fault recovery from `0.096060` (`R0`) / `0.126105` (`BREAKLINE f45`) to `0.059993` (`PIEDFRONT f35Ptop`).
+- **Observation**: Relocating off-skeleton dots out of steep mountain-core bedrock (`det_elev >= 38.76 m`) into the piedmont alluvial transition (`78.7%` of `f35Ptop` far dots, `73.9%` overall) raises `HOLDOUT-DTI` (`0.006425 [0.005375, 0.007479]`, paired $\Delta$ vs `R0` `+0.002418 [+0.001538, +0.003255]`, paired $\Delta$ vs `BREAKLINE f45` `+0.001564 [+0.000471, +0.002607]`), while reducing `SGMC` bedrock fault recovery from `0.096060` (`R0`) / `0.126105` (`BREAKLINE f45`) to `0.059993` (`PIEDFRONT f35Ptop`).
 - **Decision**: Because the pre-registered promotion rule requires beating `RELIEF p10` with paired 95% CI excluding 0 AND beating `R0` on `SGMC`, and because the dense public witness (`17GEMSDOE E-proba`) remains an unresolved policy blocker, `PIEDFRONT f35Ptop` is recorded with `verdict: negative` (`OK TO DOWNLOAD` for research, `NOT CLEARED` for a weekly slot).
-## 2026-10-24 automated recheck (this branch)
+
+## 2026-10-24 automated recheck (PR #44)
 
 - **Binding protocol conflict freshly confirmed, not waived:** 17GEMSDOE blob
   `374c88b1da2b803e2ed160de467fd71ae114010d` is positive across the exact footprint.
@@ -839,6 +840,17 @@ that pattern: no unpreserved screen code.
   be claimed to control the separate legacy publisher. Repository-admin
   integration access is needed to reconcile settings; do not claim it succeeded.
 
+## 2026-10-24 (APRONRIDGE session) — Resolved cross-page primary drift & signed-band metadata claim
+- **Observation**: Entering this session at `d3d8c9c`, `docs/index.html` `<h1>` and `data-primary="true"` pointed to `SPRINGALIGNf33Ctop`, whereas `<p class="lede">` on `docs/index.html` plus `docs/SUBMIT.html`, `docs/executive-summary.html`, `docs/submit.html`, and `SLOT_PLAN.md` still named `ANASIGf45Atop` as primary (enforced by a hardcoded `assert "ANASIG" in page` in `tests/test_site_contract.py`). In addition, prior notes stated *"Band 18 is the only signed band"*, whereas live GDAL + pixel inspection of SHA-verified `training_features.tif` shows 10 of 19 bands take signed values (`Bands 1, 2, 8, 9, 11, 12, 13, 14, 15, 18`).
+- **Decision & Action**: Synchronized `docs/index.html`, `docs/executive-summary.html`, `docs/SUBMIT.html`, `docs/submit.html`, `SLOT_PLAN.md`, `README.md`, and `tests/test_site_contract.py` so every page and test agrees on the single current primary (`h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`), while preserving `STEPEDGE` and `SPRINGALIGN` records, and published a full 19-band GDAL-verified pixel summary table in `README.md`.
+
+## 2026-10-24 (APRONRIDGE session) — First lane to beat `RELIEF p10` on `HOLDOUT-DTI` (`0.008354` vs `0.006045`), while `17GEMSDOE` dense witness remains the sole slot blocker
+- **Observation**: All three pre-registered `APRONRIDGE` experiments (`free1d = 0.008354`, `s60f40 = 0.008291`, `s50f50 = 0.008097` on `gems57-pooled-hide-v2`) beat the prior repository holdout record `RELIEF p10` (`0.006045`), locally-unique best `STRAINBREAK f60s2i` (`0.005487`), and `STEPEDGE f60Sraw` (`0.003980`), pass all 11 leakage canaries (`max symmetric AUC = 0.636490 <= 0.90`), pass local uniqueness across all 46 cross-lane rasters (`free1d` worst forward 3-px overlap `0.460482`, vs `STEPEDGE` `0.3023–0.3783`), and pass diagnostic spot-checks (`0.6028–0.6456 <= 0.70`) against the top 91k–120k sparse public witnesses (`62GEMSDOE`, `GEMSDOE23`) that tripped `STRAINBREAK f60s2i`. However, direct measurement on `APRONRIDGEfree1d` bytes against Git-blob-verified `17GEMSDOE E-proba-multiscale` (`git_blob_sha = 374c88b1...`, positive across `100%` of the footprint) yields `1.000` forward overlap (`evidence/public_witness_apronridge.json`), and SGMC 1:500k bedrock DTI (`0.080098` vs `R0` `0.096060` and `STEPEDGE` `0.141464`) moves opposite to Quaternary fault holdout because `H_apron` suppresses high-range Mesozoic bedrock contacts.
+- **Decision**: Enforce the literal public witness rule without waiver: record `submission_eligible: false` and `verdict: "negative"` in `evidence/apronridge_run_card.json` and sidecar audits. Do not spend a weekly competition slot until an explicit operator policy decision adds a dense-probability support ceiling (`<= 150,000` positive pixels).
+
+## 2026-10-24 (APRONRIDGE session) — Fixed shared `scripts/validate_submission.py` silently ignoring `--candidate` (Protocol Rule 2)
+- **Observation**: `README.md` documented `scripts/validate_submission.py --candidate <path>`, but `scripts/validate_submission.py` never parsed `sys.argv`, ignoring `--candidate` completely and scanning `releases/*.tif` only — so passing a nonexistent or invalid `--candidate` path in `docs/downloads/` still printed `All format checks PASS` with exit code `0`.
+- **Decision & Action**: Fixed once in the shared `scripts/validate_submission.py` (never forked) to parse `--candidate` and positional paths via `argparse`, fail closed (`exit 1`) on missing files, `nodata != None`, or non-zero/NaN outside cells on `*-zeros.tif` files, and validate both `releases/*.tif` and `docs/downloads/*.tif` when invoked with no arguments; added regression test in `tests/test_apronridge.py`.
 ## 2026-10-24 (HYDROCONDUIT session) — Five Newly Verified Data, Metric & Site Irregularities
 
 ### 1. `#IR-92-BAND6-TC-MISLABEL`: `training_features.tif` Band 6 (`tc`) is Radiometric Total Count, NOT Magnetic Tilt Angle

@@ -95,13 +95,19 @@ def test_public_registry_receipt_is_valid_json_and_records_stop():
 
 def test_legacy_submission_page_redirect_does_not_claim_breakline_is_primary():
     """Aliases must describe the same current primary and warning as the canonical guide."""
+    index_html = (DOCS / "index.html").read_text(encoding="utf-8")
     canonical = (DOCS / "SUBMIT.html").read_text(encoding="utf-8")
+    assert "APRONRIDGEfree1d" in index_html
+    assert "APRONRIDGEfree1d" in canonical
     assert "HYDROCONDUIT" in canonical
     for name in ("executive-summary.html", "submit.html"):
         page = (DOCS / name).read_text(encoding="utf-8")
+        assert "APRONRIDGE" in page
         assert "HYDROCONDUIT" in page
         assert "NOT CLEARED" in page
         assert "Current primary: BREAKLINE" not in page
+        assert "Current primary: ANASIG" not in page
+        assert "Current primary: SPRINGALIGN" not in page
         assert "SUBMIT.html" in page
 
 
@@ -198,11 +204,12 @@ def test_pages_validates_before_uploading_artifact():
 def test_guides_agree_with_current_primary_and_stop():
     for name in ("SUBMIT.html", "submit.html", "executive-summary.html"):
         html = (DOCS / name).read_text()
+        assert 'APRONRIDGEfree1d-20261024-d5760830-zeros.tif' in html
+        assert 'public_witness_apronridge.json' in html
         assert 'SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif' in html
         assert 'review_20261024_springalign_witness_v2.json' in html
         assert 'Do not perform these steps with the current artifact' in html
         assert 'separate name field' in html
-        assert 'No new unique TIFF was generated' in html
     html = _index()
     assert 'unique GeoTIFF generated this session' not in html
     assert 'format-valid, unique download' not in html

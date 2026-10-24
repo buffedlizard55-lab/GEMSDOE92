@@ -1,0 +1,581 @@
+{
+  "schema": "gemsdoe92.apronridge-variants.v1",
+  "session_date_utc": "20261024",
+  "axis": "APRONRIDGE",
+  "parent": "h33-h33-2-b2",
+  "parent_claim": {
+    "score": 0.2778,
+    "evidence_label": "CLAIM",
+    "receipt": false
+  },
+  "pre_placement_surface": {
+    "cache_path": ".cache/apronridge_surface.tif",
+    "sha256": "9fc77be7df75486c81c61087749fd38e292c122f2d48243d50dba05b7f56c655",
+    "registry_check": "evidence/apronridge_surface_registry.json"
+  },
+  "lane_surface": {
+    "definition": "S_raw = H_apron(B12, B15, B5) * max(R_scarp(B12, B19), 0.85 * R_rtp(B2, B6))",
+    "bands": "Band 2 rtp, Band 5 iso_grav_anom_slope, Band 6 tc, Band 12 det_elev, Band 15 depth_to_base_surf, Band 19 det_elev_slope",
+    "implementation": "gems/apronridge.py",
+    "catalogue_use": "zero in surface, skeleton weights, or ridge extraction; d_cat>2.0px gate only",
+    "experiments_built": 3,
+    "budget_limit": 3
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-APRONRIDGEs60f40-20261024-6e7e0174",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-APRONRIDGE-s60f40-20261024",
+      "name": "h33-h33-2-b2-APRONRIDGEs60f40-20261024-6e7e0174.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-APRONRIDGEs60f40-20261024-6e7e0174-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-APRONRIDGEs60f40-20261024-6e7e0174-zeros.zip",
+      "file_nan_cache": ".cache/apronridge_builds/h33-h33-2-b2-APRONRIDGEs60f40-20261024-6e7e0174.tif",
+      "sha8": "6e7e0174",
+      "change_desc": "APRONRIDGE (s60f40): 22592 piedmont-apron H19-5 + 15062 far 1D apron/RTP ridges >3px off H19-5; fixed 37654 unit dots",
+      "notes": "arm=s60f40; n_skel=22592; n_far=15062; shared_R0=7832; within3px_H19=0.6000; piedmont_pct=68.8%; rtp_dom_dots=3852; git=d3d8c9c80909",
+      "parent": "h33-h33-2-b2",
+      "axis": "APRONRIDGE",
+      "value": "s60f40",
+      "n_dots": 37654,
+      "n_skel": 22592,
+      "n_far": 15062,
+      "pct_changed": 79.20008498433101,
+      "removed": 29822,
+      "added": 29822,
+      "sha256": "6e7e0174cc9592f6d6b2e769a8a360df5c205857f169398804acb74be2a3ca81",
+      "sha256_zeros": "49f93646c71489d573a34932a5ff92749817751669938b43a5c849de7df6acea",
+      "zip_sha256": "389139eef42f4208bcf0adf01a1776faa9b465da8993b35f39ff1d83d53470a2",
+      "primary_file": "h33-h33-2-b2-APRONRIDGEs60f40-20261024-6e7e0174-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-APRONRIDGEs60f40-20261024-6e7e0174-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/apronridge_proxy_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 5420,
+        "basin_pct": 14.394,
+        "piedmont_dots": 25917,
+        "piedmont_pct": 68.829,
+        "range_dots": 6317,
+        "range_pct": 16.776
+      },
+      "channel_diagnostics": {
+        "rtp_channel_dominant_dots": 3852,
+        "rtp_channel_dominant_frac": 0.1023,
+        "within_3px_of_h19_5_frac": 0.599989,
+        "shared_exact_pixels_with_R0": 7832,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "collar_dots_dcat_le_3": 3738,
+        "mean_S_pct_emitted": 0.9275686740875244
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "49f93646c71489d573a34932a5ff92749817751669938b43a5c849de7df6acea"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "6e7e0174cc9592f6d6b2e769a8a360df5c205857f169398804acb74be2a3ca81"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; APRONRIDGE s60f40: 22592 apron-H19 + 15062 far 1D apron/RTP ridges >3px off H19-5",
+      "gate_status": "PASS (submission_writer + disk reread + 10/10 gems.gates)",
+      "seed": 0
+    },
+    {
+      "id": "h33-h33-2-b2-APRONRIDGEs50f50-20261024-2f0431ea",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-APRONRIDGE-s50f50-20261024",
+      "name": "h33-h33-2-b2-APRONRIDGEs50f50-20261024-2f0431ea.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-APRONRIDGEs50f50-20261024-2f0431ea-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-APRONRIDGEs50f50-20261024-2f0431ea-zeros.zip",
+      "file_nan_cache": ".cache/apronridge_builds/h33-h33-2-b2-APRONRIDGEs50f50-20261024-2f0431ea.tif",
+      "sha8": "2f0431ea",
+      "change_desc": "APRONRIDGE (s50f50): 18827 piedmont-apron H19-5 + 18827 far 1D apron/RTP ridges >3px off H19-5; fixed 37654 unit dots",
+      "notes": "arm=s50f50; n_skel=18827; n_far=18827; shared_R0=6032; within3px_H19=0.5000; piedmont_pct=70.6%; rtp_dom_dots=3888; git=d3d8c9c80909",
+      "parent": "h33-h33-2-b2",
+      "axis": "APRONRIDGE",
+      "value": "s50f50",
+      "n_dots": 37654,
+      "n_skel": 18827,
+      "n_far": 18827,
+      "pct_changed": 83.98045360386679,
+      "removed": 31622,
+      "added": 31622,
+      "sha256": "2f0431eaeb1f1919b1f5d57fec15a826a8dbe1b12408343662881072221bc433",
+      "sha256_zeros": "6fe3170f6b2a6486e9c7b05932a1046f62cd71f8b316c9f9de19d8415de5e603",
+      "zip_sha256": "e61bba2bfc1de38cd20189696805db679ee087b5d8e897ffc64fedcd010ffe84",
+      "primary_file": "h33-h33-2-b2-APRONRIDGEs50f50-20261024-2f0431ea-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-APRONRIDGEs50f50-20261024-2f0431ea-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/apronridge_proxy_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 5072,
+        "basin_pct": 13.47,
+        "piedmont_dots": 26574,
+        "piedmont_pct": 70.574,
+        "range_dots": 6008,
+        "range_pct": 15.956
+      },
+      "channel_diagnostics": {
+        "rtp_channel_dominant_dots": 3888,
+        "rtp_channel_dominant_frac": 0.1033,
+        "within_3px_of_h19_5_frac": 0.5,
+        "shared_exact_pixels_with_R0": 6032,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "collar_dots_dcat_le_3": 3659,
+        "mean_S_pct_emitted": 0.9384323358535767
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "6fe3170f6b2a6486e9c7b05932a1046f62cd71f8b316c9f9de19d8415de5e603"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "2f0431eaeb1f1919b1f5d57fec15a826a8dbe1b12408343662881072221bc433"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; APRONRIDGE s50f50: 18827 apron-H19 + 18827 far 1D apron/RTP ridges >3px off H19-5",
+      "gate_status": "PASS (submission_writer + disk reread + 10/10 gems.gates)",
+      "seed": 0
+    },
+    {
+      "id": "h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-APRONRIDGE-free1d-20261024",
+      "name": "h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.zip",
+      "file_nan_cache": ".cache/apronridge_builds/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830.tif",
+      "sha8": "d5760830",
+      "change_desc": "APRONRIDGE (free1d): 37654 standalone 1D apron/RTP ridges (zero H19-5 or R0 skeleton input); fixed 37654 unit dots",
+      "notes": "arm=free1d; n_skel=0; n_far=37654; shared_R0=1138; within3px_H19=0.5174; piedmont_pct=75.4%; rtp_dom_dots=2974; git=d3d8c9c80909",
+      "parent": "h33-h33-2-b2",
+      "axis": "APRONRIDGE",
+      "value": "free1d",
+      "n_dots": 37654,
+      "n_skel": 0,
+      "n_far": 37654,
+      "pct_changed": 96.97774472831571,
+      "removed": 36516,
+      "added": 36516,
+      "sha256": "d576083091a41b55514a9be04294a28486712cdb6d68ffde0400ec6b3912a859",
+      "sha256_zeros": "1a29a5d81e8561954f04a563b4975cb84d00898b8d7634700a9d409a10e06cbc",
+      "zip_sha256": "6f91c4a3b42083e5d30aaf071dbdc2a0dc0ae68363f8822afc701247be53871a",
+      "primary_file": "h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/apronridge_proxy_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 4043,
+        "basin_pct": 10.737,
+        "piedmont_dots": 28406,
+        "piedmont_pct": 75.44,
+        "range_dots": 5205,
+        "range_pct": 13.823
+      },
+      "channel_diagnostics": {
+        "rtp_channel_dominant_dots": 2974,
+        "rtp_channel_dominant_frac": 0.079,
+        "within_3px_of_h19_5_frac": 0.517369,
+        "shared_exact_pixels_with_R0": 1138,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "collar_dots_dcat_le_3": 3488,
+        "mean_S_pct_emitted": 0.9749489426612854
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "1a29a5d81e8561954f04a563b4975cb84d00898b8d7634700a9d409a10e06cbc"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "d576083091a41b55514a9be04294a28486712cdb6d68ffde0400ec6b3912a859"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; APRONRIDGE free1d: 37654 standalone 1D piedmont-apron + RTP ridges (0 H19-5)",
+      "gate_status": "PASS (submission_writer + disk reread + 10/10 gems.gates)",
+      "seed": 0
+    }
+  ]
+}
