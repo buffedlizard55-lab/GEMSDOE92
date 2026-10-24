@@ -1,0 +1,60 @@
+{
+  "schema": "gemsdoe92-review-run-card.v1",
+  "record_type": "no_new_experiment_repository_reaudit",
+  "reviewed_utc": "2026-10-24",
+  "hypothesis": "No new geological hypothesis was evaluated. Under the literal registry rule, a candidate with any positive in-footprint prediction is rejected by the cited full-footprint-positive witness.",
+  "mechanism": "The witness has positive support in every valid footprint cell. Therefore every nonempty in-footprint candidate dot falls within its support and yields final-dot forward overlap 1.000, exceeding the 0.70 stop threshold. This is an operational registry-rule result, not proof of geological equivalence.",
+  "named_non_fault_process_that_could_mimic_it": "A diffuse continuous probability prior, interpolation background, or spatially broad covariate surface can be positive across an entire study footprint without representing discrete faults.",
+  "holdout_dti": {
+    "label": "HOLDOUT-DTI",
+    "this_review": "NOT RUN: no candidate experiment was run under the binding registry stop.",
+    "historical_reference": {
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positive_pixels": 22663,
+      "candidate": "APRONRIDGE free1d (existing artifact; not rerun in this review)",
+      "value": 0.008354,
+      "ci95": [0.006823, 0.010135],
+      "status": "Historical HOLDOUT-DTI only; not this review's result and not a competition score."
+    }
+  },
+  "correlation_overlap_vs_registry": {
+    "label": "REGISTRY-MEASUREMENT",
+    "scope": "Existing exact-file single-witness measurement; no fresh full public registry scan in this review.",
+    "candidate": "APRONRIDGE free1d existing research artifact",
+    "candidate_sha256": "1a29a5d81e8561954f04a563b4975cb84d00898b8d7634700a9d409a10e06cbc",
+    "witness": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "witness_git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+    "witness_positive_pixels_in_footprint": 5167373,
+    "footprint_pixels": 5167373,
+    "existing_candidate_final_dot_forward_overlap": 1.0,
+    "candidate_preplacement_surface_checked_this_review": false,
+    "result": "Binding final-dot stop; no pre-placement pass or global uniqueness claim is made."
+  },
+  "raster_sha256": "1a29a5d81e8561954f04a563b4975cb84d00898b8d7634700a9d409a10e06cbc",
+  "raster_identity": "Existing APRONRIDGE free1d research artifact; not generated in this review.",
+  "validator_output": {
+    "source": "Current scripts/check_site.py output and exact-file APRONRIDGE audit receipt.",
+    "format_status": "PASS for research download only; submission eligibility remains false.",
+    "single_band_float32": true,
+    "no_nan_inside_footprint": true,
+    "all_finite": true,
+    "values_range": [0.0, 1.0],
+    "crs": "EPSG:32611",
+    "shape": [3730, 3292],
+    "transform_matches_template": true,
+    "zero_outside_footprint": true,
+    "site_gate": "PASS for all 25 served zeros-outside TIFFs.",
+    "tests": "199 passed; 103 non-fatal Rasterio/Affine pending-deprecation warnings.",
+    "manifest_inputs": "8 verified.",
+    "parent": "Pinned R0 verified.",
+    "ledger": "57 BUILT, 0 ORGANIZER-CONFIRMED receipts.",
+    "submission_eligible": false
+  },
+  "submission_name": "GEMSDOE92-APRONRIDGE-free1d-20261024",
+  "submission_note": "Existing research artifact; registry stop; no new candidate or slot used.",
+  "new_unique_tiff_generated": false,
+  "experiments_run": 0,
+  "weekly_submission_slots_used": 0,
+  "verdict": "negative",
+  "unfulfilled_requirement": "No fresh unique TIFF was generated because the binding literal final-dot registry rule rejects every nonempty in-footprint prediction."
+}

@@ -1,0 +1,161 @@
+{
+  "schema": "gemsdoe92-protocol-run-card.v1",
+  "lane": "COULOMB",
+  "primary_variant": "seismo",
+  "hypothesis": "Critically stressed fractures -- optimally oriented for simultaneous shear slip and normal opening under WNW-ESE Basin-and-Range extension plus Walker Lane dextral shear -- maintain permeability and rupture first, while misoriented pre-Quaternary contacts stay locked. Resolving signed local dilatation/shear onto per-pixel lineament normals finds young opening relay strands whose scarps are too subtle for photo mapping or worms.",
+  "mechanism": "At fixed S=37654, DTI rises when expected kernel credit per dot rises. Standalone emission on 1D crests of max(RTP tilt-contact edge, relative monoclinal scarp) x Coulomb opening tendency x piedmont apron concentrates mass on opening lineaments in extending crust, repelling all prior far sets >3px so credit is not double-counted with earlier lanes.",
+  "named_non_fault_process_that_could_mimic_it": "Alluvial compaction / groundwater-withdrawal subsidence bowls (apparent dilatation without faulting), Walker Lane elastic strain shadows (shear-parallel, no open fault), and Lahontan shoreline benches / fan terrace risers striking near-NNE inside extending crust.",
+  "experiments_run_in_budget": {
+    "budget_cap": 3,
+    "experiments_executed": 3,
+    "arms": {
+      "free": {
+        "id": "h33-h33-2-b2-COULOMBfree-20261024-d0cf5db5",
+        "sha256_zeros": "e4dde5f44ce9c2b1da0d7610970cb2c5ca75f7176d84ed7c1b07f5d966946cde",
+        "n_dots": 37654,
+        "repulsion_tier": "tier1_all_prior_far",
+        "static_holdout_dti": 0.0056885153811495285,
+        "static_holdout_ci95": [
+          0.004744078562836504,
+          0.006687994658272311
+        ],
+        "sgmc_proxy": 0.035122,
+        "worst_local_forward_overlap": 0.263212,
+        "local_duplicate": false
+      },
+      "open": {
+        "id": "h33-h33-2-b2-COULOMBopen-20261024-58a7a394",
+        "sha256_zeros": "96487c1bc2f9a0fe7b667825a8dbd609e9fd619713953d3521cb6031cbd84c47",
+        "n_dots": 37654,
+        "repulsion_tier": "tier1_all_prior_far",
+        "static_holdout_dti": 0.005183672122542001,
+        "static_holdout_ci95": [
+          0.004188126601932789,
+          0.006256131907684266
+        ],
+        "sgmc_proxy": 0.039945,
+        "worst_local_forward_overlap": 0.290434,
+        "local_duplicate": false
+      },
+      "seismo": {
+        "id": "h33-h33-2-b2-COULOMBseismo-20261024-d243140b",
+        "sha256_zeros": "0c344d4d6d0828a07810a1a1fbd00bd14c3a17bc562e6a22491ca21ab68066d9",
+        "n_dots": 37654,
+        "repulsion_tier": "tier1_all_prior_far",
+        "static_holdout_dti": 0.005808065706203761,
+        "static_holdout_ci95": [
+          0.0048459602914952,
+          0.0068092206543265855
+        ],
+        "sgmc_proxy": 0.035654,
+        "worst_local_forward_overlap": 0.266081,
+        "local_duplicate": false
+      }
+    }
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.005808065706203761,
+    "ci95": [
+      0.0048459602914952,
+      0.0068092206543265855
+    ],
+    "delta_vs_R0": 0.0018019185315190176,
+    "delta_vs_R0_ci95": [
+      0.0006163287630501355,
+      0.0029239764111619933
+    ],
+    "delta_vs_RELIEFp10": -0.00023706669096917182,
+    "delta_vs_RELIEFp10_ci95": [
+      -0.001497158917955547,
+      0.00096023216850079
+    ],
+    "delta_vs_BREAKLINEf45": 0.0009475577386740706,
+    "delta_vs_BREAKLINEf45_ci95": [
+      -0.0005144176409401599,
+      0.0023058570753904106
+    ],
+    "delta_vs_APRONRIDGEfree1d": -0.0025454917964395146,
+    "delta_vs_APRONRIDGEfree1d_ci95": [
+      -0.00439020363474994,
+      -0.0008134089888486856
+    ],
+    "delta_vs_HYDROCONDUITf45hydro": -0.002741034205501448,
+    "delta_vs_HYDROCONDUITf45hydro_ci95": [
+      -0.004137162760134625,
+      -0.0013819842265982145
+    ],
+    "R0_dti": 0.004006147174684743,
+    "holdout_best_prior_HYDROCONDUITf45hydro_dti": 0.008549099911705209,
+    "promotion_bar_beaten": false
+  },
+  "leakage_canary_max_symmetric_auc": 0.622959,
+  "leakage_canaries_all_pass_le_0_90": true,
+  "sgmc_control_proxy": {
+    "evidence_class": "PROXY",
+    "lead_arm_dti": 0.035654,
+    "R0_dti": 0.09606,
+    "truth_px": 62703
+  },
+  "correlation_overlap_vs_registry": {
+    "local": {
+      "registry_rasters_checked": 41,
+      "worst_forward_overlap_within_3px": 0.266081,
+      "worst_forward_overlap_file": "h19_5.tif",
+      "worst_abs_spearman": 0.016951,
+      "worst_abs_spearman_file": "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+      "literal_duplicate": false,
+      "preplacement_surface_top37654": {
+        "registry_rasters_checked": 41,
+        "worst_forward_overlap": 0.543687,
+        "worst_forward_overlap_file": "h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif",
+        "worst_abs_spearman": 0.123961,
+        "sampled_continuous_spearman": {
+          "worst_spearman_rho": 0.088912,
+          "worst_rho_file": "h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif",
+          "n_rasters": 43
+        },
+        "duplicate": false
+      }
+    },
+    "public_spotcheck_diagnostic_not_clearance": {
+      "evidence_file": "evidence/coulomb_public_spotcheck.json",
+      "witnesses_checked": 5,
+      "full_102_repo_scan_run_this_session": false,
+      "dense_17GEMSDOE_forward_overlap": 1.0,
+      "sparse_witness_max_forward_overlap": 0.483083
+    },
+    "public_binding_witness": {
+      "evidence_file": "evidence/public_witness_coulomb.json",
+      "witness": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "forward_overlap": 1.0,
+      "spearman_full_footprint": 0.027102713740726318,
+      "stop_required": true
+    }
+  },
+  "raster_sha256": "0c344d4d6d0828a07810a1a1fbd00bd14c3a17bc562e6a22491ca21ab68066d9",
+  "raster_sha256_nan_twin": "d243140bfcb9876afbfe18a8ca47208a6b199f10bbc8c5a549f843ad04f12550",
+  "validator": {
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "grid": "EPSG:32611 3730x3292 100m float32 single-band nodata=None",
+    "n_dots": 37654,
+    "zero_outside_footprint": true,
+    "zero_catalogue_mass": true,
+    "gates": "10/10 gems.gates + gems57.validate PASS (see per-file -audit.json)"
+  },
+  "submission_name": "GEMSDOE92-COULOMB-seismo-20261024",
+  "file": "docs/downloads/h33-h33-2-b2-COULOMBseismo-20261024-d243140b-zeros.tif",
+  "note": "h33-h33-2-b2; COULOMB seismo: 37654 Coulomb x swarm-prior 1D crests, piedmont-gated (0 H19-5)",
+  "note_chars": 93,
+  "organizer_score": null,
+  "download_status": "OK TO DOWNLOAD FOR RESEARCH (format-valid)",
+  "submission_status": "DO NOT SUBMIT \u2014 NOT CLEARED FOR A WEEKLY SLOT",
+  "submission_eligible": false,
+  "verdict": "negative",
+  "verdict_reason": "HOLDOUT-DTI 0.005808 [0.004846, 0.006809] beats R0 (paired +0.001802 [+0.000616, +0.002924]) but trails the 0.008549 promotion bar (paired -0.002741 [-0.004137, -0.001382] vs HYDROCONDUIT f45hydro, CI excludes 0); SGMC PROXY 0.035654 << R0 0.096060; binding 17GEMSDOE dense witness forward overlap 1.000 (literal duplicate stop). Locally unique (worst 0.2661 <= 0.70) and format-valid: negative research deliverable."
+}

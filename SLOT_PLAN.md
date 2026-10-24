@@ -1,3 +1,20 @@
+# SLOT_PLAN — current selector state (2026-10-24, COULOMB session): NO SLOT AUTHORIZED — research downloads only
+
+## COULOMB session decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT (`submission_eligible: false`, `verdict: negative`)**
+
+Three new format-valid standalone research downloads (`10/10` gates + `13/13` `gems57.validate` PASS each):
+`COULOMBseismo-20261024-d243140b` (lead, `HOLDOUT-DTI 0.005808 [0.004846, 0.006809]`),
+`COULOMBfree-20261024-d0cf5db5` (`0.005689`), `COULOMBopen-20261024-58a7a394` (`0.005184`).
+All beat `R0` (`0.004006`) but trail the `0.008549` promotion bar with paired CIs excluding promotion
+(seismo vs bar `Δ −0.002741 [−0.004137, −0.001382]`), and the lead arm trips the binding dense public
+witness (`17GEMSDOE E-proba-multiscale`, `forward_overlap = 1.000`, `evidence/public_witness_coulomb.json`).
+Locally unique (`0.263–0.290 ≤ 0.70`, `|φ| ≤ 0.024`); canaries `20/20 PASS`. **No slot used this session
+(3/3 experiment budget consumed as research).** Promotion bar stays
+`HYDROCONDUIT f45hydro 0.008549` (still the repo holdout best; parallel-session branch primary
+`GEOTENSION free1d` scored `0.007615`). Run card: `docs/downloads/coulomb_run_card.json`.
+
+---
+
 # SLOT_PLAN — current selector state (2026-10-24, APRONRIDGE session)
 
 ## Current primary artifact: `APRONRIDGE free1d` — #1 Holdout-DTI & locally unique, blocked ONLY by dense public witness (`verdict: negative`, no slot used)

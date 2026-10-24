@@ -1,0 +1,86 @@
+{
+  "hypothesis": "Active dilatational step-overs and relay ramps concentrate geothermal permeability where GPS dilatation (Band 8 >0) + second-invariant magnitude (Band 4) + shear (Band 7) peak inside the thin-cover piedmont accommodation apron (Band 12 det_elev transition x Band 15 depth_to_base 20-600 m). Coherent DEM scarp-breaks (Bands 19/12) gated by this tension habitat isolate opening piedmont faults missed by potential-field worms.",
+  "mechanism": "GEOTENSION free1d: standalone 1D crest emission allocates all 37,654 unit-mass dots via spaced_top_mask(S_raw, min_dist=2.8 px) on 4-axis non-maximum-suppressed GEOTENSION crests (S_raw = H_ten * R_scarp * (0.5+0.5*coh(B8)), d_cat>2.0 px), using ZERO H19-5/R0 input and ZERO catalogue input.",
+  "named_non_fault_process_that_could_mimic_it": "Alluvial compaction/subsidence bowls (Clayton Valley brine pumping, ag drawdown), elastic strain shadows around locked Walker Lane dextral segments, and incised alluvial-fan terrace risers/wash walls producing coherent slope-breaks without tectonic slip.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.007614651904567113,
+    "ci95": [
+      0.005831858661726233,
+      0.009386348908673492
+    ],
+    "paired_vs_R0": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.00360850472988237,
+      "ci95": [
+        0.001913081320140098,
+        0.005263063169672607
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "paired_vs_RELIEFp10": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.0015695195073941806,
+      "ci95": [
+        -0.0002452881561150466,
+        0.0031610335134999164
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "paired_vs_APRONRIDGE": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": -0.0007389055980761621,
+      "ci95": [
+        -0.0028066113548175435,
+        0.0011957193933271818
+      ],
+      "withheld_positive_pixels": 22663
+    }
+  },
+  "leakage_canary_max_symmetric_auc": 0.621604,
+  "sgmc_proxy": {
+    "evidence_class": "PROXY",
+    "dti": 0.06127,
+    "R0": 0.09606,
+    "delta_vs_R0": -0.03479
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "pre-placement surface vs local rasters + final dots vs 67 cross-lane local rasters + Git-blob-verified public dense witness 17GEMSDOE E-proba",
+    "surface_worst_abs_spearman": 0.15,
+    "surface_worst_top37654_forward_overlap": 0.53,
+    "final_worst_forward_overlap": 0.524088,
+    "final_worst_forward_file": "docs/downloads/h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+    "final_worst_abs_spearman_phi": 0.05,
+    "local_duplicate": false,
+    "public_dense_witness_forward_overlap": 1.0,
+    "unique_under_literal_public_rule": false,
+    "public_dense_witness_note": "17GEMSDOE E-proba-multiscale (git blob 374c88b1..., positive across all 5,167,373 footprint cells) yields 1.0 forward 3-px overlap for every nonempty in-footprint candidate; measured directly on candidate bytes and enforced without waiver."
+  },
+  "raster_sha256": "b0dba55e56a5e714dd62673dd48c0d7f695cf9a25b40786cb243f1bf7dd4d054",
+  "raster_nan_sha256": "95252d6173f20b73fe5c75cd0c7f39fc586fc9b56dbbac179eb843fd335c557c",
+  "zip_sha256": "dcf8ba3ee3d5f12b75e962dda929588819c4805c986020b35137e20fadf5f182",
+  "primary_download": "docs/downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif",
+  "primary_zip": "docs/downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.zip",
+  "validator_output": {
+    "gates_zeros_pass": true,
+    "gates_nan_pass": true,
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "catalogue_zero_mass": true,
+    "min_catalogue_distance_gt_2px": true,
+    "n_dots": 37654
+  },
+  "submission_name": "GEMSDOE92-GEOTENSION-free1d-20261025",
+  "note": "h33-h33-2-b2; GEOTENSION free1d: 37654 standalone dilat-scarp 1D crests (0 H19-5)",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "experiments_used": 3,
+  "verdict_detail": "negative \u2014 GEOTENSION free1d achieves HOLDOUT-DTI 0.007615 [0.005832,0.009386] (+90.1% vs R0, +26.0% vs RELIEF p10, -8.8% vs APRONRIDGE free1d 0.008354), passes 11/11 canaries (max 0.6216) and 10/10 gates, locally unique (worst 0.524 <=0.70 vs 67 local rasters, 0.430 vs APRONRIDGE), but blocked ONLY by literal public dense witness (17GEMSDOE E-proba, 100% footprint =>1.0). OK TO DOWNLOAD for research; NOT CLEARED FOR WEEKLY SLOT until operator density-clause revision."
+}
