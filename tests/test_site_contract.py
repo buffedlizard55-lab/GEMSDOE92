@@ -78,6 +78,25 @@ def test_index_primary_has_an_audit_receipt_that_matches():
     assert doc["public_registry_uniqueness"]["unique_under_literal_rule"] is False
 
 
+def test_public_registry_receipt_is_valid_json_and_records_stop():
+    """Published machine-readable uniqueness evidence must parse, fail closed, and cite scope."""
+    audit = json.loads((DOCS / "downloads" / "public_registry_uniqueness.json").read_text())
+    assert audit["evidence_class"] == "REGISTRY-MEASUREMENT"
+    assert audit["final_dots"]["stop_required"] is True
+    assert audit["inventory"]["one_band_exact_template_grid_rasters_compared"] == 1279
+
+
+def test_legacy_submission_page_redirect_does_not_claim_breakline_is_primary():
+    """Aliases must describe the same current primary and warning as the canonical guide."""
+    canonical = (DOCS / "SUBMIT.html").read_text(encoding="utf-8")
+    for name in ("executive-summary.html", "submit.html"):
+        page = (DOCS / name).read_text(encoding="utf-8")
+        assert "visible-collar" in page
+        assert "NOT CLEARED" in page
+        assert "Current primary: BREAKLINE" not in page
+        assert "SUBMIT.html" in page and "visible-collar" in canonical
+
+
 def test_submit_page_exists():
     for name in ("SUBMIT.html", "submit.html"):
         p = DOCS / name
