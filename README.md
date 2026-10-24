@@ -26,7 +26,7 @@
 1. R0 (claimed 0.2778) = the H19-5 skeleton thinned to ≥ 2.83 px, with every dot within 2 px of a mapped fault removed — dots the scorer ([masks the catalogue](https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516)) treats as pure false positives; the two removal steps gained +0.0108 and +0.0070 at 96 % / 95 % of the zero-credit ceiling.
 2. Nothing else in the GEMSDOE family beat it: re-selecting skeleton dots changes nothing (±0.0003); adding dots from other sources scored lower (R0 + 1,200 dots → 0.2750, ≈ 0.012 credit each); independent lanes earn 0.065–0.119 credit per dot vs R0's 0.134.
 3. The live public board (top 50 only) starts at 0.4413; 0.2778 is below row 50 (0.2818). Headroom is in *ranking precision*, not in R0's rules (+≈0.01).
-4. The biggest untested lever near R0 is its 8,719 dots (23 %) on isolated 1-px skeleton fragments: **+0.024 if worthless, −0.036 if average** — `scripts/build_singleton_probe.py` builds the one-slot probe.
+4. The biggest untested lever near R0 is its 8,719 dots (23 %) on isolated 1-px skeleton fragments: **+0.029 if worthless, −0.039 if average (MODEL)** — `scripts/build_singleton_probe.py` builds the one-slot probe.
 5. The literal all-registry uniqueness rule is structurally unpassable (63 blanket rasters), which is why every earlier session ended "negative".
 
 ---

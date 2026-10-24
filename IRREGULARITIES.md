@@ -793,3 +793,7 @@ this session uses `vendor/gems57/metric.py` (matches the official page). **Actio
 ## IR-92-09 — carried forward unchanged
 SPRINGALIGN files are stamped 2026-10-25 although the session date is 2026-10-24; the committed public competition rasters (`data/bridge`) have unverified redistribution terms; `download_competition_data.sh` / `prepare_data.py` named in earlier prompts do not exist
 (the working path is `scripts/restore_inputs.py`); no organizer receipt exists for any file.
+
+## IR-92-10 — budget
+The protocol budget is 3 experiments or 2 hours. Experiments run: (1) leaderboard-concordance of the consensus premise, (2) leave-one-lane-out calibration + constrained selection, (3) registry gates + HOLDOUT-DTI/canary/SGMC (the orientation check and the random-control gate are
+measurements, not experiments). **Wall-clock exceeded 2 hours** (about 3 h 15 min including three full registry scans, three candidate builds and the policy analysis). No slot, no receipt, and no fourth hypothesis was built.

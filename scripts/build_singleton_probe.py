@@ -7,9 +7,9 @@ lane duplicate by the 70 % rule and can only be a human-selected measurement slo
 
 Why it exists: 8,719 of R0's 37,654 dots (23.2 %) are isolated one-pixel components and no
 scored raster in the registry removes them (MEASURED, docs/WHY_R0_0_2778.md section 6).  With
-credit c per removed dot the score change is about
-    +/- (n/D) * (0.0556 * (1 - kbar) - 0.944 * c)       (n = removed dots, D ~ 18,200)
-i.e. +0.024 if c = 0, 0 at c = 0.056 (break-even), -0.036 at c = 0.134 (R0 average).  The live score
+credit c per removed dot the MODEL change in DTI (|G| = 12,500; gems.lcs.project_dti) is
+    +0.029 at c = 0,  +0.019 at 0.02,  +0.001 at 0.056 (break-even),  -0.017 at 0.09,  -0.039 at 0.134 (R0 average).
+The live score
 of this one file therefore measures the credit of the fragment population directly.
 
 Writes releases/ only (gitignored).  Uses the shared fail-closed writer.

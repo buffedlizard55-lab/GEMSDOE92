@@ -85,3 +85,7 @@ A projection is never written as a score. No slot is spent, approved or implied 
   reading the gate code (brief constraint 4); Tier-L class defined by halo coverage rather than support after the vendor gate caught a 0.7254 violation in v2.
 * **Ranking after the fact:** H1 stays first for *eligibility and cost*; H3 (fragment prune, **8,719 of R0's dots on isolated 1-px skeleton components, untested live**) is the best *probe*;
   H2 (CNN/U-Net) remains the highest-upside, highest-cost item and is the recommended next investment if GPU time or lidar access exists.
+* **H5 data source verified; the artefact test is negative.** The GeoDAWN release is public (USGS ScienceBase item 657e1d85d34e23d3533209f7, doi 10.5066/P93LGLVQ): E–W flight lines at 200/400 m, N–S tie lines at 2/4 km,
+  four acquisition blocks, tie-line and micro-levelling, flight-path shapefiles and flight-line CSVs included (read as page text; binaries are not reachable from this sandbox's shell). `scripts/orientation_check.py`
+  (`evidence/orientation_check_20261024.json`): elongated dot strings within ±10° of E–W (flight direction) are **6.0 %** of R0's and **4.0 %** of LCS's (uniform 11.1 %, mapped faults 3.0 %); N–S shares (21.0 % / 22.5 %) track the catalogue's 19.1 %.
+  No flight-line striping signature; an N–S tie-line test needs the flight-path shapefiles. H5's expected gain stays at the low end (+0.002…+0.005) and it is no longer "blocked" on obtainability, only on shell access.

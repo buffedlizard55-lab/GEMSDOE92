@@ -1,0 +1,68 @@
+{
+  "evidence_class": "MEASURED",
+  "source": "https://doi.org/10.5066/P93LGLVQ (USGS ScienceBase GeoDAWN release)",
+  "uniform_expectation_per_pm10deg_window": 0.1111111111111111,
+  "arms": {
+    "R0": {
+      "n_strings": 1347,
+      "dots_in_strings": 11907,
+      "east_west_pm10": 0.05988074242042496,
+      "north_south_pm10": 0.21012849584278157,
+      "hist_15deg": [
+        0.0504,
+        0.0518,
+        0.0497,
+        0.0632,
+        0.0932,
+        0.1508,
+        0.1549,
+        0.1223,
+        0.0911,
+        0.0787,
+        0.0493,
+        0.0446
+      ]
+    },
+    "LCS": {
+      "n_strings": 954,
+      "dots_in_strings": 8960,
+      "east_west_pm10": 0.040290178571428574,
+      "north_south_pm10": 0.22466517857142856,
+      "hist_15deg": [
+        0.0369,
+        0.0472,
+        0.0708,
+        0.1081,
+        0.1474,
+        0.1836,
+        0.1379,
+        0.0898,
+        0.0662,
+        0.0577,
+        0.0251,
+        0.0291
+      ]
+    },
+    "CATALOGUE": {
+      "n_strings": 1871,
+      "dots_in_strings": 49979,
+      "east_west_pm10": 0.029552412013045478,
+      "north_south_pm10": 0.19086016126773245,
+      "hist_15deg": [
+        0.0263,
+        0.049,
+        0.0715,
+        0.129,
+        0.1848,
+        0.1563,
+        0.1431,
+        0.1024,
+        0.0869,
+        0.0238,
+        0.0113,
+        0.0156
+      ]
+    }
+  },
+  "reading": "No E-W (flight-line) excess in either file: R0 and LCS are at or below the uniform 11.1 % and above the catalogue's ~3 %, N-S shares track the catalogue's, i.e. the regional structural grain. Not evidence of levelling artefacts; N-S tie-line artefacts cannot be separated without the flight-path shapefiles."
+}

@@ -13,7 +13,7 @@
 
 ## Highest-value experiments, in order (each is one weekly slot; the human selector decides — three per week)
 1. **PROBE — R0 minus isolated skeleton fragments** (`python scripts/build_singleton_probe.py`; 28,935 dots). 8,719 of R0's dots (23.2 %) sit on isolated 1-px components of H19-5 (59.7 % on components ≤ 10 px) and no scored raster removes them.
-   Score change ≈ (n/D)·(0.0556·(1−k̄) − 0.944·c): **+0.024 if those dots carry zero credit, 0 at c = 0.056, −0.036 at c = 0.134**. One receipt measures their credit directly. It is a lane duplicate (R0 subset): a *measurement*, not a lane candidate.
+   MODEL change in DTI (|G| = 12,500): **+0.029 if those dots carry zero credit, +0.019 at 0.02/dot, ≈ 0 at the 0.056 break-even, −0.017 at 0.09, −0.039 at R0's average 0.134**. One receipt measures their credit directly. It is a lane duplicate (R0 subset): a *measurement*, not a lane candidate.
 2. **LCS (this file)** — receipt vs 0.2778 at matched budget; then update the credit model with the result (the board is a 4-decimal group-testing instrument: ±1 % on a group's credit).
 3. After receipts: if the probe shows fragment dots are worthless, **apply the fragment rule inside every future lane** (it is a 23 % false-positive reservoir); if LCS ≥ R0, raise the consensus weight and widen the voter set; if LCS < R0, the lane-concordance premise (ρ +0.60…+0.83) did not transfer to dot-level precision — record it as a negative.
 
@@ -21,7 +21,7 @@
 1. **Catalogue-trained U-Net with masked-halo-aware thresholding** (the organizers' own approach, `drivendataorg/gems-prize-reference-solution`). Highest upside, high cost: needs GPU hours; the sandbox is 2 CPUs / 3.9 GB. The leaderboard cluster at ≈ 0.33 is consistent with thresholded catalogue-trained models (inference, not evidence).
 2. **Lidar-derivative scarp detectors validated on public expert picks** (the #5 team's stated approach, forum 11531): needs USGS 3DEP 1 m DEM access (`1m_DEM_links.csv`) — **not reachable from this sandbox's shell** (only github.com / PyPI / npm).
 3. **Fold-pure holdout**: catalogue exclusion computed from visible faults only; requires per-fold lane rebuilds. Until then the repository has no instrument that can rank a file honouring the 3-px rule (IR-92-06).
-4. GeoDAWN survey line / tie-line metadata (USGS release doi 10.5066/P93LGLVQ) for an artefact-mimic filter — obtainability from this sandbox not verified.
+4. GeoDAWN flight-path shapefiles / flight-line CSVs (USGS ScienceBase item 657e1d85d34e23d3533209f7, doi 10.5066/P93LGLVQ — **verified public**, not reachable from this sandbox's shell) for an N–S tie-line artefact test; the E–W flight-line test is already negative (`scripts/orientation_check.py`: R0 6.0 %, LCS 4.0 % vs 11.1 % uniform).
 
 ## Standing facts to reuse (all verified this session; see `docs/WHY_R0_0_2778.md`)
 * Known faults are masked, "new fault" = any pixel not captured by USGS/INGENIOUS, pooled single Tversky, same metric in all rounds, truth sources undisclosed (forum 11516 / 11536 / 11550 / 11556 / 11527).

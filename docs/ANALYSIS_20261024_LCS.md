@@ -36,6 +36,7 @@ model error of ± 0.066, so **no improvement over R0 is claimed**; it is an expl
 * 37,654 dots (budget matched to R0), min spacing 2.83 px (no pair closer), min distance to any mapped fault **3.16 px** (0 dots within 3 px; R0 has 2,171).
 * Only **8.3 %** of its dots coincide with R0's; 3.6 % lie within 5 px of a mapped fault (R0: 15.0 %); mean distance to the catalogue 30.7 px (R0 median 19.6).
 * Mean lane agreement 5.7 of 10 voters per dot (uncapped selection: 7.1).
+* Continuity (dots linked when ≤ 3.2 px apart): singletons **29.2 %** (R0 27.6 %, random control 88.1 %); on strings of ≤ 3 dots 56.7 % (R0 53.9 %); median nearest-neighbour spacing 3.00 px for both. The file is as string-like as R0, not patchier (the zoomed map looks patchier only because of how it is rendered). A continuity prune (the fragment probe's logic) would apply to it equally — a next-step item, not applied here.
 * Selection: Lagrangian rank-sum maximisation under per-raster overlap caps (0.67) against the 26 scored rasters plus six Tier-L rasters the first solution violated; deterministic.
 
 ## 5. Uniqueness (REGISTRY-MEASUREMENT) — full table in `UNIQUENESS_POLICY_20261024.md`
