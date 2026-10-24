@@ -331,3 +331,20 @@ asks a genuinely different question from the merged set.
 
 **Decision.**
 Shift 10%, 12%, and 15% of total mass (3,765, 4,518, and 5,648 dots) from the lowest-prior basin and range dots into the highest-prior unpopulated H19-5 pixels located strictly within the piedmont tercile, using greedy exact expected-DTI marginal gain on the label-free physical prior (`Band 3`, `Band 5`, `Band 19`). Dot count is held at exactly 37,654, zero mass is placed on the catalogue, and all dots maintain R0's `d_cat > 2.0 px` exclusion.
+
+
+---
+
+## 2026-10-24 (TIPGAP session) — on-skeleton reallocations are parent-lane duplicates
+
+**Observation.** Moving 10–15% of R0 dots onto H19-5 near-tip skeleton pixels left 85–90% of dots unmoved. Because remaining parent dots still sit along the same 1-px skeleton, **>99.9% of variant dots fell within 3 px of R0** (Spearman 0.85–0.90). Parallel-run rule 1 (overlap > 0.70 or ρ > 0.90) flags that as another lane.
+
+**Decision.** Those three files stay in `releases/` as the failed dose-response; they are **not** on the GitHub Pages download. The uniqueness-corrected operator (`far18f33`, 33% moved, destinations >3 px from every parent dot) is the only public download: overlap 0.6700, Spearman 0.6690.
+
+**Holdout.** All four TIPGAP arms scored below R0 on `gems57-pooled-hide-v2` (22,663 withheld positives). Off-skeleton tips are not where withheld catalogue continuations sit. Verdict negative. No weekly slot.
+
+## 2026-10-24 — zeros-outside is the only portal-safe encoding we will advertise
+
+**Observation.** A prior human upload of a NaN-outside GeoTIFF returned `Predicted values must be in range [0, 1]`. `vendor/gems57/grid.write_geotiff` and `submission_writer.py` already require all-finite `[0, 1]`.
+
+**Decision.** The site download is the zeros-outside file written by `submission_writer.py`. NaN twins may exist locally as diagnostics and are not linked.

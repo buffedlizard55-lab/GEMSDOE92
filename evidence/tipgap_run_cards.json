@@ -1,0 +1,308 @@
+[
+  {
+    "hypothesis": "Unmapped geothermal-related fault continuations concentrate along-strike of H19-5 strand endpoints in 0.5\u20131.8 km gaps the D2.8 thinning left empty.",
+    "mechanism": "Reallocate kernel-redundant unit-mass dots onto along-strike tip extensions and near-tip unoccupied skeleton pixels; DTI beta=0.8 then credits newly covered withheld continuations without increasing S.",
+    "named_non_fault_process_that_could_mimic_it": "Erosional drainage nickpoints and lithologic pinch-outs that terminate geophysical lineaments without tectonic slip.",
+    "holdout_dti": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "n_withheld_positives": 22663,
+      "dti": 0.0038131002718350946,
+      "ci95": [
+        0.0032789921359656395,
+        0.00440664751833382
+      ],
+      "delta_vs_R0": -0.00019304690284964844,
+      "R0_dti": 0.004006147174684743,
+      "R0_ci95": [
+        0.0034243961318463374,
+        0.004689525221466778
+      ]
+    },
+    "correlation_overlap_vs_registry": {
+      "parent": {
+        "overlap_within_3px": 0.9994954055346046,
+        "spearman_full_footprint": 0.8997030628439346,
+        "duplicate_by_overlap": true,
+        "duplicate_by_rho": false,
+        "submission": "parent_R0"
+      },
+      "worst_nonparent_overlap": 0.999601635948372,
+      "worst_nonparent_overlap_name": "h33-h33-2-b2-MASS_A10-20261023-e5613a00.tif",
+      "lane_duplicate_nonparent": true,
+      "rows_head": [
+        {
+          "overlap_within_3px": 0.9994954055346046,
+          "spearman_full_footprint": 0.8997030628439346,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "parent_R0"
+        },
+        {
+          "overlap_within_3px": 0.999601635948372,
+          "spearman_full_footprint": 0.864738209544316,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif"
+        },
+        {
+          "overlap_within_3px": 0.999601635948372,
+          "spearman_full_footprint": 0.864738209544316,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-MASS_A10-20261023-e5613a00.tif"
+        },
+        {
+          "overlap_within_3px": 0.8973017474903064,
+          "spearman_full_footprint": 0.8529730273180415,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif"
+        },
+        {
+          "overlap_within_3px": 0.8973017474903064,
+          "spearman_full_footprint": 0.8529730273180415,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8.tif"
+        },
+        {
+          "overlap_within_3px": 0.9500982631327349,
+          "spearman_full_footprint": 0.8164286337469819,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif"
+        },
+        {
+          "overlap_within_3px": 0.9500982631327349,
+          "spearman_full_footprint": 0.8164286337469819,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063.tif"
+        },
+        {
+          "overlap_within_3px": 0.977107345833112,
+          "spearman_full_footprint": 0.8477031634206889,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7-zeros.tif"
+        }
+      ]
+    },
+    "raster_sha256": "2a99ee9013ecb5cbe2bcc41a5e4b5f3c0211b445c4b2502322ee8e1c0b0f258d",
+    "validator": {
+      "ok": true,
+      "no_nan_inside_footprint": true,
+      "values_in_0_1": true,
+      "crs_shape_transform_match": true,
+      "zeros_outside_primary_download": true
+    },
+    "submission_name": "h33-h33-2-b2-TIPGAPe12f10-20261024T062627Z-2a99ee90",
+    "note": "h33-h33-2-b2; TIPGAP along-strike 10% e5-12px; n=3765",
+    "verdict": "negative"
+  },
+  {
+    "hypothesis": "Unmapped geothermal-related fault continuations concentrate along-strike of H19-5 strand endpoints in 0.5\u20131.8 km gaps the D2.8 thinning left empty.",
+    "mechanism": "Reallocate kernel-redundant unit-mass dots onto along-strike tip extensions and near-tip unoccupied skeleton pixels; DTI beta=0.8 then credits newly covered withheld continuations without increasing S.",
+    "named_non_fault_process_that_could_mimic_it": "Erosional drainage nickpoints and lithologic pinch-outs that terminate geophysical lineaments without tectonic slip.",
+    "holdout_dti": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "n_withheld_positives": 22663,
+      "dti": 0.0037242925213215494,
+      "ci95": [
+        0.003222058004795049,
+        0.004268334483389106
+      ],
+      "delta_vs_R0": -0.00028185465336319363,
+      "R0_dti": 0.004006147174684743,
+      "R0_ci95": [
+        0.0034243961318463374,
+        0.004689525221466778
+      ]
+    },
+    "correlation_overlap_vs_registry": {
+      "parent": {
+        "overlap_within_3px": 0.9994954055346046,
+        "spearman_full_footprint": 0.8796436754127476,
+        "duplicate_by_overlap": true,
+        "duplicate_by_rho": false,
+        "submission": "parent_R0"
+      },
+      "worst_nonparent_overlap": 0.999601635948372,
+      "worst_nonparent_overlap_name": "h33-h33-2-b2-MASS_A10-20261023-e5613a00.tif",
+      "lane_duplicate_nonparent": true,
+      "rows_head": [
+        {
+          "overlap_within_3px": 0.9994954055346046,
+          "spearman_full_footprint": 0.8796436754127476,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "parent_R0"
+        },
+        {
+          "overlap_within_3px": 0.999601635948372,
+          "spearman_full_footprint": 0.8463206005999624,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif"
+        },
+        {
+          "overlap_within_3px": 0.999601635948372,
+          "spearman_full_footprint": 0.8463206005999624,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-MASS_A10-20261023-e5613a00.tif"
+        },
+        {
+          "overlap_within_3px": 0.8981250331970043,
+          "spearman_full_footprint": 0.8338253336171866,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif"
+        },
+        {
+          "overlap_within_3px": 0.8981250331970043,
+          "spearman_full_footprint": 0.8338253336171866,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8.tif"
+        },
+        {
+          "overlap_within_3px": 0.9504435119774791,
+          "spearman_full_footprint": 0.7990065362967474,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif"
+        },
+        {
+          "overlap_within_3px": 0.9504435119774791,
+          "spearman_full_footprint": 0.7990065362967474,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063.tif"
+        },
+        {
+          "overlap_within_3px": 0.977293249057205,
+          "spearman_full_footprint": 0.8290822977972613,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7-zeros.tif"
+        }
+      ]
+    },
+    "raster_sha256": "be307de043c642a6a6e663a878e26d159879f8872d29b61079f0dd099783e26e",
+    "validator": {
+      "ok": true,
+      "no_nan_inside_footprint": true,
+      "values_in_0_1": true,
+      "crs_shape_transform_match": true,
+      "zeros_outside_primary_download": true
+    },
+    "submission_name": "h33-h33-2-b2-TIPGAPe15f12-20261024T062627Z-be307de0",
+    "note": "h33-h33-2-b2; TIPGAP along-strike 12% e5-15px; n=4518",
+    "verdict": "negative"
+  },
+  {
+    "hypothesis": "Unmapped geothermal-related fault continuations concentrate along-strike of H19-5 strand endpoints in 0.5\u20131.8 km gaps the D2.8 thinning left empty.",
+    "mechanism": "Reallocate kernel-redundant unit-mass dots onto along-strike tip extensions and near-tip unoccupied skeleton pixels; DTI beta=0.8 then credits newly covered withheld continuations without increasing S.",
+    "named_non_fault_process_that_could_mimic_it": "Erosional drainage nickpoints and lithologic pinch-outs that terminate geophysical lineaments without tectonic slip.",
+    "holdout_dti": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "n_withheld_positives": 22663,
+      "dti": 0.003478261838489129,
+      "ci95": [
+        0.002983080204894226,
+        0.003986406068925723
+      ],
+      "delta_vs_R0": -0.000527885336195614,
+      "R0_dti": 0.004006147174684743,
+      "R0_ci95": [
+        0.0034243961318463374,
+        0.004689525221466778
+      ]
+    },
+    "correlation_overlap_vs_registry": {
+      "parent": {
+        "overlap_within_3px": 0.9993891751208371,
+        "spearman_full_footprint": 0.8495412746195818,
+        "duplicate_by_overlap": true,
+        "duplicate_by_rho": false,
+        "submission": "parent_R0"
+      },
+      "worst_nonparent_overlap": 0.9994954055346046,
+      "worst_nonparent_overlap_name": "h33-h33-2-b2-MASS_A10-20261023-e5613a00.tif",
+      "lane_duplicate_nonparent": true,
+      "rows_head": [
+        {
+          "overlap_within_3px": 0.9993891751208371,
+          "spearman_full_footprint": 0.8495412746195818,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "parent_R0"
+        },
+        {
+          "overlap_within_3px": 0.9994954055346046,
+          "spearman_full_footprint": 0.8205359480778636,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif"
+        },
+        {
+          "overlap_within_3px": 0.9994954055346046,
+          "spearman_full_footprint": 0.8205359480778636,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-MASS_A10-20261023-e5613a00.tif"
+        },
+        {
+          "overlap_within_3px": 0.8963722313698412,
+          "spearman_full_footprint": 0.8058899153879351,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif"
+        },
+        {
+          "overlap_within_3px": 0.8963722313698412,
+          "spearman_full_footprint": 0.8058899153879351,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8.tif"
+        },
+        {
+          "overlap_within_3px": 0.9495405534604557,
+          "spearman_full_footprint": 0.7755639586879544,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif"
+        },
+        {
+          "overlap_within_3px": 0.9495405534604557,
+          "spearman_full_footprint": 0.7755639586879544,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063.tif"
+        },
+        {
+          "overlap_within_3px": 0.9778244011260424,
+          "spearman_full_footprint": 0.8024163657671199,
+          "duplicate_by_overlap": true,
+          "duplicate_by_rho": false,
+          "submission": "h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7-zeros.tif"
+        }
+      ]
+    },
+    "raster_sha256": "85ec31fc66f272e24858ee392041c09847d7a7ab076664e56d9d2d43a800e84c",
+    "validator": {
+      "ok": true,
+      "no_nan_inside_footprint": true,
+      "values_in_0_1": true,
+      "crs_shape_transform_match": true,
+      "zeros_outside_primary_download": true
+    },
+    "submission_name": "h33-h33-2-b2-TIPGAPe18f15-20261024T062627Z-85ec31fc",
+    "note": "h33-h33-2-b2; TIPGAP along-strike 15% e6-18px; n=5648",
+    "verdict": "negative"
+  }
+]

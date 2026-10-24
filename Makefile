@@ -1,9 +1,12 @@
-.PHONY: test verify manifest ledger validate clean
+.PHONY: test verify manifest ledger validate clean site
 
 PYTHON ?= python3
 
 test:
 	$(PYTHON) -m pytest tests -q
+
+site:
+	PYTHONPATH=vendor $(PYTHON) scripts/check_site.py
 
 manifest:
 	$(PYTHON) -m gems manifest --manifest registry/data_manifest.json --data-root data

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GEMSDOE92 — unique GeoTIFF download (DOE GEMS Prize)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#download">Skip to download</a>
+  <header class="hero">
+    <p class="kicker">DOE GEMS Prize · DrivenData #306 · EPSG:32611 100 m</p>
+    <h1>Unique submission GeoTIFF</h1>
+    <p class="lede">One-click download of a locally validated, all-finite <code>[0, 1]</code> GeoTIFF. This file is <strong>not a copy</strong> of h33-h33-2-b2 or of any raster in this repository’s releases folder.</p>
+    <div class="banner banner-hold">
+      <strong>OK TO DOWNLOAD.</strong>
+      Format gates passed (CRS / shape / transform / float32 / values in [0, 1] / no NaN inside footprint / zeros outside / zero catalogue mass).
+      <strong>NOT recommended for a weekly competition slot:</strong> HOLDOUT-DTI is below parent R0. Promotion to a live slot is a separate human step (3/week cap).
+    </div>
+    <div class="banner banner-warn">
+      Do <em>not</em> upload a NaN-outside twin. A previous portal error was <code>Predicted values must be in range [0, 1]</code>. This download is the zeros-outside encoding only.
+    </div>
+  </header>
+
+  <section id="download" class="download-card">
+    <h2>Download this file</h2>
+    <p class="filename">h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif</p>
+    <p>
+      <a class="btn" href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif" download>Download GeoTIFF (zeros-outside)</a>
+      <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.zip" download>Download .zip (single TIFF)</a>
+    </p>
+    <dl class="meta">
+      <div><dt>Submission name</dt><dd><code>h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a</code></dd></div>
+      <div><dt>Form note (89 chars)</dt><dd><code>h33-h33-2-b2; TIPGAP FAR 33% along-strike &gt;3px off parent skeleton e6-18; unique lane</code></dd></div>
+      <div><dt>SHA-256</dt><dd><code>0ca8248acace558f5cf86b153134b8fd5cc2b7d5b343d0a36f000f9fbfe4758f</code></dd></div>
+      <div><dt>Dots / mass</dt><dd>37,654 unit-mass pixels, values {0, 1} only</dd></div>
+      <div><dt>Grid</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · matches sample_submission.tif</dd></div>
+    </dl>
+    <p><a href="submit.html">Executive summary: how to submit</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">Competition submission page</a></p>
+  </section>
+
+  <section>
+    <h2>Why parent 0.2778 is high — and why this file is not claimed higher</h2>
+    <p>h33-h33-2-b2 (GEMSDOE32) is an owner-reported <strong>CLAIM 0.2778</strong>, not an organizer receipt. The climb that produced it is mechanical, not mysterious:</p>
+    <ol>
+      <li><strong>H19-5 multiline ridges ~0.1922 CLAIM</strong> — geophysical lineaments already sit near hidden truth.</li>
+      <li><strong>Poisson-disk thinning at 2.8 px → 0.2600 CLAIM</strong> — DTI uses α=0.2, β=0.8, so extra mass is expensive. Unit-mass dots near the 300 m kernel diameter stop double-counting the same truth pixel.</li>
+      <li><strong>SOLO prune → 0.2708 CLAIM</strong> — drop dots whose credit is below ~0.2·DTI ≈ 0.056.</li>
+      <li><strong>B2 catalogue collar → 0.2778 CLAIM</strong> — known USGS/INGENIOUS traces are masked at scoring, so dots on them add S without T. <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">Organizer forum 11516</a>.</li>
+    </ol>
+    <p>A public leaderboard number of 0.4413 / 0.3195 (prompt-supplied, <strong>not ORGANIZER-CONFIRMED in this repo</strong>) is a different chunk mix. This session did not beat R0 on hide-and-recover, so it does not claim a live gain.</p>
+  </section>
+
+  <section>
+    <h2>This session’s unique lane (TIPGAP FAR)</h2>
+    <p><strong>Hypothesis.</strong> Unmapped geothermal-related continuations of Basin-and-Range normal faults sit 0.5–1.8 km <em>along strike</em> of H19-5 strand endpoints — the pixels D2.8 thinning never occupied. Faulds-type permeability at tips is the named geothermal process (<a href="https://gbcge.org/current-projects/ingenious/">INGENIOUS / GBCGE</a>).</p>
+    <p><strong>Mechanism.</strong> Hold count at 37,654. Move 33% of the most kernel-redundant parent dots onto along-strike walks 6–18 px past H19-5 endpoints, landing only where Euclidean distance to <em>every</em> parent dot is &gt; 3 px (off-skeleton). Catalogue mass stays zero; moved dots have min d_cat = 3.16 px.</p>
+    <p><strong>Named non-fault mimic.</strong> Alluvial-fan channel nickpoints and lithologic pinch-outs that terminate magnetic lineaments without slip.</p>
+    <p><strong>HOLDOUT-DTI</strong> (evaluator <code>gems57-pooled-hide-v2</code>, 22,663 withheld catalogue positives, 20 km spatial-block bootstrap 95% CI):</p>
+    <table>
+      <thead><tr><th>Arm</th><th>HOLDOUT-DTI</th><th>95% CI</th></tr></thead>
+      <tbody>
+        <tr><td>R0 parent</td><td>0.004006</td><td>[0.003408, 0.004651]</td></tr>
+        <tr><td>TIPGAP far18f33 (this file)</td><td>0.002723</td><td>[0.002324, 0.003131]</td></tr>
+      </tbody>
+    </table>
+    <p>Delta vs R0 = <strong>−0.001283</strong> (HOLDOUT-DTI, not a score). Leakage canary (distance to H19-5 endpoint) symmetric AUC = 0.6199 ≪ 0.90 (REPORT_ONLY_PASS).</p>
+    <p><strong>Uniqueness vs local registry</strong> (not a complete internet scan): parent overlap-within-3 px = 0.6700 (&lt; 0.70); Spearman = 0.6690 (&lt; 0.90). All MASS/PRUNE rasters in <code>releases/</code> also under both limits. On-skeleton 10–15% TIPGAP doses from this session were logged as lane-duplicates of R0 (overlap ≈ 0.999) and are <em>not</em> offered for download.</p>
+    <p><strong>Verdict: negative.</strong> Negative results are deliverables. Do not spend a weekly slot on this file unless a human overrides.</p>
+  </section>
+
+  <section>
+    <h2>Candidate hypotheses ranked before this lane</h2>
+    <table>
+      <thead><tr><th>Rank</th><th>Hypothesis</th><th>Layers</th><th>Why it could beat catalogue-only files</th><th>Cost</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Along-strike tip/gap (this lane)</td><td>H19-5 skeleton endpoints</td><td>Phase-2 target is newly mapped geometry of existing systems, off the D2.8 packing</td><td>Low</td></tr>
+        <tr><td>2</td><td>Cross-strike hanging-wall 1 px offset</td><td>Band 12 det_elev</td><td>50–60° normal-fault projection vs 400 m GeoDAWN line spacing</td><td>Needs 19-band stack</td></tr>
+        <tr><td>3</td><td>Damage-zone outer envelope 5–8 px</td><td>visible catalogue only</td><td>Parallel splays, not prune-to-nearest-H19-5</td><td>Medium</td></tr>
+        <tr><td>4</td><td>K/Th alteration corridors</td><td>USGS GeoDAWN rad (pinned)</td><td>Hydrothermal illite not always mapped as faults</td><td>Prior live CLAIM 0.0782</td></tr>
+        <tr><td>5</td><td>GDR wellspring corroboration</td><td>GDR #1391 CSV (pinned)</td><td>High-T discharge clusters</td><td>Prior pindrop CLAIM 0.12</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Official sources (manual review)</h2>
+    <ul>
+      <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Problem description / DTI metric</a></li>
+      <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">About / resources</a></li>
+      <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">Data tab (login)</a></li>
+      <li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Reference solution</a></li>
+      <li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Rules PDF (NREL/OSTI 96647)</a></li>
+      <li><a href="https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7">USGS GeoDAWN</a> · <a href="https://doi.org/10.5066/P93LGLVQ">DOI P93LGLVQ</a></li>
+      <li><a href="https://epsg.io/32611">EPSG:32611</a> · <a href="https://en.wikipedia.org/wiki/Tversky_index">Tversky index</a></li>
+      <li><a href="https://gdr.openei.org/submissions/1391">GDR INGENIOUS wellsprings</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Local validation is not organizer acceptance. No DrivenData credentials in this sandbox. Agent never uploads.</p>
+    <p><a href="https://github.com/buffedlizard55-lab/GEMSDOE92">Source repository</a></p>
+  </footer>
+</body>
+</html>
