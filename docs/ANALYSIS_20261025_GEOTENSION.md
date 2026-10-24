@@ -109,4 +109,3 @@ All three pre-registered `GEOTENSION` experiments (`docs/HYPOTHESES_20261025_GEO
 - **Dense-witness policy is the sole slot blocker**: `GEOTENSION` clears every local holdout, canary, and sparse-registry gate but remains `verdict: negative` solely because `17GEMSDOE E-proba` covers `100%` of the footprint. A density-exempt (`>150k` px) revision would clear it to `promote` with no re-build.
 - **Strain smoothing limits piedmont capture**: `10 km` GPS posting smooths `H_ten`; augmenting `H_ten` with `R_rtp` (as `APRONRIDGE` did) or with radiometric `K/Th` alteration halos (`ALTERATION-CONDUIT`, rank 2 in `HYPOTHESES_20261025_GEOTENSION.md`) could recover `~0.0007` DTI to match `APRONRIDGE`.
 - **Seismicity gaps and tilt zero-crossings remain unbuilt**: hypotheses `SEISGAP`, `GRAVTILT-ZERO`, `MTSHEAR-CONDUIT` are pre-registered, screened `0.51–0.55` canary, low cost, and disjoint from `GEOTENSION` (`<0.15` surface `|ρ|`), ready for the next budget without new data.
-

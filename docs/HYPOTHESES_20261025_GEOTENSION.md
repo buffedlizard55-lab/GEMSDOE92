@@ -67,4 +67,3 @@ A built artifact may receive `verdict: "promote"` **only if ALL four conditions 
 - **Miller & Singh tilt (gravity tilt):** [https://doi.org/10.1190/1.1443545](https://doi.org/10.1190/1.1443545)
 
 No new external data beyond the 12 SHA-256-pinned files in `registry/session_manifest.json` is required for the selected `GEOTENSION` lane; all six bands are in-stack.
-

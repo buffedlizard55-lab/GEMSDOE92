@@ -215,6 +215,19 @@ def test_guides_agree_with_current_primary_and_stop():
     assert 'format-valid, unique download' not in html
 
 
+def test_readme_and_site_agree_on_current_download_and_holdout_ranking():
+    """Keep the first-screen research download and historical ranking unambiguous."""
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    index = _index()
+    assert "h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif" in readme
+    assert "current research download" in readme.lower()
+    assert "the higher documented HYDROCONDUIT hybrid is" in readme
+    assert "HYDROCONDUIT f45hydro" in readme
+    assert "0.008549 [0.007626, 0.009487]" in readme
+    assert "#1 all-time in repo" not in readme.lower()
+    assert "new repository <strong>HOLDOUT-DTI</strong> high" not in index
+
+
 def test_readme_first_screen_matches_actual_site_primary_and_session_contract():
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     index = (DOCS / "index.html").read_text(encoding="utf-8")
