@@ -116,7 +116,7 @@ def test_prune_axis_deviation_is_declared_not_silent(tmp_path):
     write_candidate(out, dots, reference)
     ok, report = summarise(run_gates(out, refp, catalogue_path=catp, prune_radius=2))
     assert ok, report
-    assert "AXIS=PRUNE" in report
+    assert "declared clearance override" in report
 
 
 def test_value_out_of_range_fails(tmp_path):

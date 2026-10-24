@@ -160,6 +160,47 @@ slots, receipts) are left blank.
 - `tests/test_relief_variants.py`: unit and policy tests for RELIEF mass shifting, tercile properties, ledger uniqueness, and evidence documentation.
 - Updates to `gems/variants.py`, `README.md` (CURRENT STATE block), `SLOT_PLAN.md`, `docs/SUBMIT.md`, `docs/mechanism_cards.md`, `IRREGULARITIES.md`, and this file.
 
-### What the human decides and supplies
+### What the human decided and supplies
+- The human delegated the axis choice ("pick your own session"); the AI selected `CONCENTRATION`.
+- The human supplies `TOP_PUBLIC` with its observation date, confirms the entity's rolling-week quota and remaining slots, decides which single file (if any) to upload, and records the submission-page `RECEIPT` score and date in `ledger/submissions.csv`.
+- The human decides whether the declared secondary change (moved-dot spacing floor `2.0 px` instead of `2.8284 px`, needed because the parent is a saturated packing) is acceptable for a slot.
+
+### What the AI did not do
+No submission, no login, no leaderboard or competition-page access, no Dropbox contact, no label probing, no invented numbers. Unknown values (`TOP_PUBLIC`, slots, receipts) are left blank.
+
+
+---
+
+## Session 7 — second CONCENTRATION run, one surviving variant (2026-10-24)
+
+### What AI wrote
+- `gems.variants.concentration_reallocate` (+ `spacing_blocked`, `block_mean`,
+  `block_counts`, `block_density_cv_pair`, `_greedy_place_spaced`) with a
+  `direction` switch, so donor/receiver blocks and the mirror image come from one
+  code path with exact marginal-DTI placement.
+- `scripts/build_concentration_physics_variant.py`, `scripts/report_concentration_physics_proxies.py`,
+  `tests/test_concentration_physics.py`, `evidence/concentration_physics_variant.json`,
+  `evidence/concentration_physics_proxy_audit.json`.
+- Docs: this entry, one IRREGULARITIES entry per decision-changing finding, one
+  mechanism card, a README CURRENT STATE bullet, a `SLOT_PLAN` reserve line and a
+  `docs/SUBMIT.md` reserve row.
+
+### What the human decides
+- Axis choice was delegated by the brief; the AI chose CONCENTRATION over RELIEF
+  (no detrended-elevation terciles pinned as such) and SPACING (lowest priority).
+- Whether the sub-floor-spacing caveat is acceptable (it is unavoidable at a fixed
+  count on a 1-px skeleton — see IRREGULARITIES).
+- All uploads, receipt transcription, `TOP_PUBLIC` and slot accounting.
+
+### What the AI found, flagged, and cut
+- Measured, not assumed: the swap's mechanical cost with no spatial information is
+  `-0.016` of model DTI for this file; the physics prior is worth about `+0.014`
+  and still ends short, hence `MODEL:-0.008`.
+- Two of the three variants this session originally built (`catd10`, `catdS10`)
+  duplicated a set that had meanwhile merged from a parallel session, so they were
+  **deleted from the ledger instead of being offered for slots** — the honest
+  outcome of the cross-session dedupe rule, even though it removed work.
+- The 2.0 px spacing floor was tried and rejected because it silently reduced the
+  real reallocation to 7.34%; the measurement is recorded instead of the choice.
 - Autonomous `AXIS = RELIEF` selection per brief instructions ("Do not prompt me over choosing an Axis for the session, pick your own session").
 - Human fills `TOP_PUBLIC` from leaderboard with observation date, verifies entity weekly submission quota, chooses whether and which candidate file to submit from their own registered DrivenData account, and records submission receipts in `ledger/submissions.csv`.

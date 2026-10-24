@@ -12,6 +12,15 @@
 3. **`h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48`** (`AXIS=CONCENTRATION, value=catblk10up10`, `MODEL:+0.006`) **OR conditional swap to `h33-h33-2-b2-RELIEFp15piedmont-20261024-15254f0a`** (`AXIS=RELIEF, value=p15piedmont`, `MODEL:+0.006`) **iff Slot 1 succeeds**.
    - *Decision rule:* If Slot 1 shows a positive dose response (`>= +0.01`), Slot 3 evaluates the aggressive 15% relief shift (`p15piedmont`, 56.8% piedmont allocation) to map the dose-response plateau. If Slot 1 is neutral (`|delta| < 0.01`), Slot 3 tests the 1 km known-fault concentration prior (`CONCcatblk10up10`).
 
+Reserve files that must not be paired in the same week (they ask the same question):
+`CONCcatblk10up20` (`MODEL:+0.004`, saturated dose), `CONCcatblk10dn10`
+(`MODEL:-0.006`, direction test), and `CONCENTRATIONphys10-20261024-b93a4cf8`
+(`MODEL:-0.008`, physics prior, no catalogue information — the control that says
+whether a `catblk10up10` win came from the catalogue prior or from reallocation
+itself). **Spacing caveat on every CONCENTRATION file:** at a fixed count on the
+1-px H19-5 skeleton, arrivals must land 1.0-2.0 px from a survivor; the 2.83 px
+parent floor is unattainable (only ~90 legal pixels exist), and at a 2.0 px floor a
+"10%" move silently becomes 7.34% of positions (measured; see IRREGULARITIES).
 ## Schedule to Deadline (2026-12-03, ~6 weeks)
 
 - **Weeks 1–2 (2026-10-24 to 2026-11-05 — Single-Axis Screening):** Execute Slots 1–3 above (`RELIEF`, `SNAP`, `CONCENTRATION`); evaluate dose responses against recorded receipts in `ledger/submissions.csv`.

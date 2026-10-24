@@ -286,3 +286,55 @@ rather than mid-facet bedrock cliffs.
 - **Predicted sign and size**: MODEL:+0.006 (range `[-0.008,+0.020]`).
 - **Falsifier**: Same as above.
 - **Decision rule**: Treat live deltas with `|delta| < 0.01` as no evidence.
+
+---
+
+# Mechanism Card — CONCENTRATION with an independent (non-catalogue) prior, 2026-10-24
+
+Built by a second, independently-run session on the same parent and merged after the
+catalogue-prior set (`catblk10up10` / `catblk10up20` / `catblk10dn10`) landed. Its
+`catd`-prior and mirror variants were **dropped as duplicates** of that set; only
+the physics-prior variant is kept, because no other file tests a prior that is not
+derived from the known-fault catalogue.
+
+## `h33-h33-2-b2-CONCENTRATIONphys10-20261024-b93a4cf8` (`phys10`)
+- **Construction**: 1 km (10 px) blocks, 10% (3,765) of the dots moved out of the
+  lowest-prior blocks into the highest, count and mass fixed at 37,654. Prior =
+  1 km Gaussian of `0.40·pct(band 3 tmi_hg) + 0.35·pct(band 5 iso_grav_anom_slope)
+  + 0.25·pct(band 19 det_elev_slope)` (the repository's pre-existing weight mix,
+  never tuned on a score). Arrivals restricted to the H19-5 ridge mask, data-valid
+  pixels, `d_cat > 3.0 px`; every arrival is chosen by exact expected-DTI marginal
+  gain under the same prior; donors are the most kernel-redundant dots in the
+  lowest-prior blocks. Destination blocks chosen deterministically by prior rank.
+- **Why it is not a duplicate**: the catalogue prior is `0.0000 → 0.1865`
+  (p10 → p90 of block density) and pulls moved dots to a median `5 px` from known
+  traces; the physics prior is `0.39 → 0.75` and leaves the median moved dot at
+  `20 px`. In the same harness the catalogue-prior and physics-prior arrival sets
+  overlapped at Jaccard `0.087`, i.e. the two priors select essentially disjoint
+  destinations.
+- **Hypothesis**: crust that is more intensely broken per km² hosts more fault
+  pixels, and the magnetic/gravity gradient + detrended-slope energy sees that
+  without inheriting mapping effort or exposure.
+- **Mechanism**: at fixed `S`, moving a dot into a block with ~2x the regional
+  favourability raises the expected `max k` it earns and raises `M`, shrinking the
+  wasted-mass term. The placement rule is the exact marginal-DTI test, so a dot is
+  only put where it beats the alternative under the prior.
+- **Non-fault process that could mimic it**: volcanic flow margins, caldera ring
+  fractures, pluton contacts, lithologic scarps — plus the fact that the H19-5
+  mask was itself built from these bands, which is why the implied redistribution
+  is the mildest of the session's variants.
+- **Predicted sign and size**: **`MODEL:-0.008`**, range `[-0.014,-0.002]`
+  (own-prior projection `-0.002`, catalogue-prior projection `-0.014`, rule =
+  midpoint). **The bar it has to clear is visible**: with a flat prior and no
+  spatial information at all, the identical swap costs `-0.016` of model DTI
+  (`model_flat_prior`). The physics prior is therefore worth about `+0.014` and
+  still ends up short.
+- **Falsifier**: a live receipt `>= +0.01` says km-scale physics favourability is
+  worth more than the model allows and justifies the **additive** version of this
+  axis (`ADD_HIGH_PRIOR`, no removal cost — proposed in `SLOT_PLAN.md`); a loss
+  `<= -0.01` alongside a gain on `catblk10up10` says the catalogue prior, not
+  "concentration" in general, is what works. `|delta| < 0.01` is no evidence.
+- **Report-only `PROXY`**: SGMC off-catalogue control `0.087633` vs R0 `0.096060`
+  (`-0.008427`); catalogue hide-and-recover `0.003592` vs R0 `0.004006`; leakage
+  canaries max symmetric AUC `0.569` (`<< 0.90`). None of these gates the file.
+

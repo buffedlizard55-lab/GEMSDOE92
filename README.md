@@ -10,6 +10,7 @@
   1. `h33-h33-2-b2-RELIEFp12piedmont-20261024-a0998ed7` — 12.0% shift (4,518 dots) into piedmont tercile (`MODEL:+0.008` `[-0.003,+0.022]`; hide-and-recover `PROXY` `+0.00197` vs R0).
   2. `h33-h33-2-b2-SNAPscarp2p0px-20261023-2a65fe24` — `<=2.0 px` joint scarp+break+TMI/grav edge snap, mean disp `1.234 px` (`MODEL:+0.012` `[-0.006,+0.025]`; SGMC `PROXY` `+0.00267` vs R0).
   3. `h33-h33-2-b2-RELIEFp15piedmont-20261024-15254f0a` (`MODEL:+0.006`), or conditional swap to `h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48` (`MODEL:+0.006`) if Slot 1 is neutral.
+  - Merge note (2026-10-24): an independent CONCENTRATION set landed on main (`CONCcatblk10up10/up20/dn10`, 1 km catalogue-density prior) and this branch adds ONE file that set does not contain — `h33-h33-2-b2-CONCENTRATIONphys10-20261024-b93a4cf8` (`phys10`, physics prior, no catalogue information, `MODEL:-0.008` `[-0.014,-0.002]`). Its duplicate `catd`/mirror twins were deleted from the ledger rather than offered for slots. See `SLOT_PLAN.md` for how the RELIEF / CONCENTRATION / physics-prior files rank against each other.
 
 No file was submitted. Candidate GeoTIFF pairs exist locally in `releases/` and are gitignored per public-repo safeguard; regenerate anytime via `python scripts/build_relief_variants.py`. See `docs/SUBMIT.md` and `SLOT_PLAN.md`.
 
