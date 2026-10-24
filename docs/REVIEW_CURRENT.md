@@ -1,4 +1,18 @@
-# Current review — 2026-10-24
+# Current review — 2026-10-24 (updated after `APRONRIDGE` breakthrough)
+
+## Download status comes first
+
+**✅ OK TO DOWNLOAD for research; ⛔ NOT CLEARED FOR A WEEKLY SLOT (`verdict: negative`, `submission_eligible: false`).**
+The current primary artifact [`h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`](downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif)
+was generated and validated in the `2026-10-24` `APRONRIDGE` session:
+- **10/10 automated format gates PASS** on independent disk re-read (`EPSG:32611`, `3730×3292`, `float32`, finite `[0, 1]`, `0` NaN in footprint, `0.0` outside, `37,654` unit dots, `0` catalogue mass, `d_cat > 2.0 px`).
+- **#1 All-Time Repository `HOLDOUT-DTI`**: **`0.008354 [0.006823, 0.010135]`** on `gems57-pooled-hide-v2` (`22,663` withheld positive pixels across 8 buffered folds), beating `RELIEF p10` (`0.006045`) by **`+38.2%`**, `STRAINBREAK f60s2i` (`0.005487`) by **`+52.2%`**, and `R0` (`0.004006`) by **`+108.5%`** (paired Δ `+0.004347 [+0.003019, +0.005710]`), with zero `H19-5` or `R0` input.
+- **Locally Unique (`local_duplicate: false`)**: Pre-placement continuous surface `worst_|Spearman| = 0.122173 <= 0.90`, `worst_top37654_forward_overlap = 0.552664 <= 0.70` (`29` rasters); final dots **`worst_forward_overlap = 0.460482 <= 0.70`**, `worst_|phi| = 0.056117 <= 0.90` (`43` cross-lane rasters); diagnostic spot-check against top sparse public witnesses (`62GEMSDOE` `120k` px, `GEMSDOE23` `91.5k–100k` px) also passes (`0.6028–0.6456 <= 0.70`).
+- **Sole Remaining Slot Blocker (Binding Public Dense Witness)**: Direct measurement on `APRONRIDGEfree1d` bytes against Git-blob-verified `buffedlizard55-lab/17GEMSDOE` `17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` (`git_blob_sha = 374c88b1da2b803e2ed160de467fd71ae114010d`, positive on `5,167,373 / 5,167,373` footprint cells) gives `forward_overlap = 1.000` ([witness receipt](downloads/public_witness_apronridge.json), [run card](downloads/apronridge_run_card.json), [PhD analysis](ANALYSIS_20261024_APRONRIDGE.md)). Under the literal unweighted rule, `submission_eligible` stays `false` until an operator policy update excludes dense continuous probability maps (`> 150,000` positive pixels).
+
+---
+
+# Earlier closeout note — BREAKLINE witness check (2026-10-24)
 
 ## Download status comes first
 

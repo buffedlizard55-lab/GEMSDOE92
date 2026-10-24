@@ -1,4 +1,24 @@
-# NEXT_STEPS — after the 2026-10-24 ANASIG session
+# NEXT_STEPS — after the 2026-10-24 APRONRIDGE session
+
+## Current status (supersedes prior sections below for action purposes)
+
+**`APRONRIDGE free1d` (`h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`) is the new primary download — closing both technical challenges from the prior queue (non-R0 standalone emission + beating `RELIEF p10` on `gems57-pooled-hide-v2`), while keeping `verdict: negative` / `submission_eligible: false` under the binding dense public witness.**
+
+- **`HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives)**: **`0.008354 [0.006823, 0.010135]`** (hybrid siblings `s60f40 = 0.008291`, `s50f50 = 0.008097`), vs `RELIEF p10 = 0.006045`, `STRAINBREAK f60s2i = 0.005487`, `ANASIG f45Atop = 0.004967`, `SPRINGALIGN f33Ctop = 0.004865`, `BREAKLINE f45Ltop = 0.004861`, and `R0 = 0.004006`.
+- **Leakage canaries**: `11/11 PASS` (`max symmetric AUC = 0.636490 <= 0.90`).
+- **Uniqueness**: Locally unique on pre-placement surface (`|ρ| <= 0.1222`, top-37k overlap `0.5527`) and final dots (`worst_forward_overlap = 0.4605 <= 0.70` across `43` cross-lane local rasters; `0.6028–0.6456 <= 0.70` against top `62GEMSDOE`/`GEMSDOE23` sparse public witnesses). Blocked solely by `17GEMSDOE E-proba-multiscale` (`100%` footprint positive => `forward_overlap = 1.000`, `evidence/public_witness_apronridge.json`).
+
+## Highest-value next actions, in strict priority order
+
+1. **Operator policy update on dense continuous public rasters (Unblocks Weekly Slot #1)**: Revise Rule 1's binary `> 0` 3-px halo test so continuous probability rasters with `> 150,000` positive pixels are evaluated by continuous Spearman rank correlation (`|ρ| <= 0.90`), while binary/sparse dot rasters (`<= 150,000` positive pixels) retain the `<= 0.70` 3-px halo rule.
+2. **Run a full refreshed sparse-plus-Spearman public registry scan (`scripts/audit_public_registry.py --surface .cache/apronridge_surface.tif`) on `APRONRIDGE free1d`** immediately after Step 1's policy update, then flip `submission_eligible: true` if 0 sparse public rasters exceed `0.70`.
+3. **Acquire the first `ORGANIZER-CONFIRMED` receipt (`Blocker 0`: `48 BUILT / 0 RECEIPT` in `ledger/submissions.csv`)**: Upload `APRONRIDGE free1d` (single weekly slot; never upload `s60f40` or `s50f50` alongside it) and record the exact DrivenData submission ID, timestamp, and score in `ledger/submissions.csv` to calibrate whether `HOLDOUT-DTI` (`0.008354`) or `SGMC PROXY` (`0.0801` vs `BREAKLINE` `0.1261`) better predicts private expert-mapped test faults.
+4. **Shoreline & Drainage-Crossing Mimic Suppression on `APRONRIDGE` (`APRONRIDGE v2`)**: Once official USGS NHD flowlines or NBMG Lake Lahontan stillstand contours are pinned in `registry/session_manifest.json` with SHA-256 hashes and verified redistribution terms, test suppressing contour-parallel Sehoo/Eetza shoreline benches and wash-parallel terrace risers inside `H_apron`.
+5. **5-Fold Spatially Blocked Multi-Sensor Patch U-Net / Gradient-Boosted Ridge Learner**: Train a strictly spatially blocked (`holdout.buffered_component_draw`), Tversky-loss (`alpha=0.2, beta=0.8`) multi-band model over `APRONRIDGE` features (`Bands 2, 5, 6, 12, 15, 19` + geothermometer halo from `BLIND-GEOTHERM`), followed by 1D crest extraction + `2.8 px` spaced thresholding (`drivendataorg/gems-prize-reference-solution` architecture adapted to non-redundant kernel-spaced emission).
+
+---
+
+# Prior NEXT_STEPS — after the 2026-10-24 ANASIG session
 
 ## Current status (supersedes the collar section below for action purposes)
 
@@ -59,7 +79,7 @@ See [current review](REVIEW_CURRENT.md). The queued public check now rejects BRE
 
 ## Follow-up registry stop (2026-10-24)
 
-**2026-10-24 follow-up — BREAKLINE is now a confirmed duplicate under the literal registry rule.** A live, Git-blob-verified witness check compared one raster from 11GEMSDOE and five from 17GEMSDOE. BREAKLINE final dots have **100% forward 3-px overlap** with the dense 17GEMSDOE E-proba raster. This is REGISTRY-MEASUREMENT, not a competition score. The actual BREAKLINE pre-placement surface was not supplied and was **not checked**; no collar surface was substituted. A final-dot failure alone requires stop. No new experiment or TIFF was generated; no slot used. See [follow-up review](REVIEW_REGISTRY_STOP_20261024.md) and [run card](evidence/breakline_registry_stop_run_card.json). **Download for research only; do not submit.**
+**2026-10-24 follow-up — BREAKLINE is now a confirmed duplicate under the literal registry rule.** A live, Git-blob-verified witness check compared one raster from 11GEMSDOE and five from 17GEMSDOE. BREAKLINE final dots have **100% forward 3-px overlap** with the dense 17GEMSDOE E-proba raster. This is REGISTRY-MEASUREMENT, not a competition score. The actual BREAKLINE pre-placement surface was not supplied and was **not checked**; no collar surface was substituted. A final-dot failure alone requires stop. No new experiment or TIFF was generated; no slot used. See [follow-up review](REVIEW_REGISTRY_STOP_20261024.md) and [run card](../evidence/breakline_registry_stop_run_card.json). **Download for research only; do not submit.**
 
 ## Late-session update — STRAINBREAK + GRAVCrest screen (2026-10-24)
 

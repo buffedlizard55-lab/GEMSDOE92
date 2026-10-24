@@ -95,13 +95,18 @@ def test_public_registry_receipt_is_valid_json_and_records_stop():
 
 def test_legacy_submission_page_redirect_does_not_claim_breakline_is_primary():
     """Aliases must describe the same current primary and warning as the canonical guide."""
+    index_html = (DOCS / "index.html").read_text(encoding="utf-8")
     canonical = (DOCS / "SUBMIT.html").read_text(encoding="utf-8")
+    assert "APRONRIDGEfree1d" in index_html
+    assert "APRONRIDGEfree1d" in canonical
     for name in ("executive-summary.html", "submit.html"):
         page = (DOCS / name).read_text(encoding="utf-8")
-        assert "ANASIG" in page
+        assert "APRONRIDGE" in page
         assert "NOT CLEARED" in page
         assert "Current primary: BREAKLINE" not in page
-        assert "SUBMIT.html" in page and "ANASIG" in canonical
+        assert "Current primary: ANASIG" not in page
+        assert "Current primary: SPRINGALIGN" not in page
+        assert "SUBMIT.html" in page
 
 
 def test_submit_page_exists():

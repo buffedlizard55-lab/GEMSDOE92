@@ -1,0 +1,37 @@
+{
+  "evidence_class": "REGISTRY-DIAGNOSTIC (spot-check against top public sparse witnesses from STRAINBREAK scan)",
+  "results": [
+    {
+      "raster": "62GEMSDOE/docs/downloads/gems62b-tiltgrad-vote-scarpcorrob-120000-zeros.tif",
+      "git_blob_sha": "800e27139c0a4664de786706a4a4d2a0a8862b89",
+      "positive_pixels": 120000,
+      "free1d_forward_3px": 0.622962,
+      "s60f40_forward_3px": 0.627583,
+      "s50f50_forward_3px": 0.617119
+    },
+    {
+      "raster": "GEMSDOE23/docs/downloads/gemsdoe23-h30-arrangement-matched-habitat-20261002-0d4e02e8-allfinite.tif",
+      "git_blob_sha": "1cd1123a6a2d963c7145f8bf006fae75fdac4833",
+      "positive_pixels": 91533,
+      "free1d_forward_3px": 0.602751,
+      "s60f40_forward_3px": 0.646067,
+      "s50f50_forward_3px": 0.6202
+    },
+    {
+      "raster": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+      "git_blob_sha": "7d19b90ed6e358b14b561bc405690a104c5da64b",
+      "positive_pixels": 100000,
+      "free1d_forward_3px": 0.645615,
+      "s60f40_forward_3px": 0.693419,
+      "s50f50_forward_3px": 0.665879
+    },
+    {
+      "raster": "GEMSDOE23/docs/downloads/gemsdoe23-h24-dispersed-habitat-20261002-ada8df14-allfinite.tif",
+      "git_blob_sha": "1374c17668adc23d0ab1c67ee07187bbe48f007b",
+      "positive_pixels": 100000,
+      "free1d_forward_3px": 0.641446,
+      "s60f40_forward_3px": 0.688718,
+      "s50f50_forward_3px": 0.660249
+    }
+  ]
+}
