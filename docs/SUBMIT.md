@@ -1,17 +1,16 @@
 # Candidate handoff — human review and submission only
 
-**2026-10-24 unique download (zeros-outside only):**
-`docs/downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif`
-Name `h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a`.
-Note `h33-h33-2-b2; TIPGAP FAR 33% along-strike >3px off parent skeleton e6-18; unique lane`.
-Format PASS. HOLDOUT-DTI below R0 → **not a weekly slot**. See `docs/index.html`.
+> **2026-10-24 STOP — no current file is cleared for submission.** The literal shared uniqueness rule is universally blocked: a hash-verified public same-grid raster is positive on every legal pixel, so any nonempty candidate has forward overlap `1.0` (> `0.70`). The selected depth-stratified MT lane stopped before placement. No slot was used and no DrivenData upload occurred. The candidate tables below are historical records, not current recommendations or permission to submit.
 
-The parallel RELIEF `p10piedmont` candidate on main failed the 70% overlap gate (99.38% within 3 px of R0) and is inspection-only.
+## Existing parallel TIPGAP artifact — inspection only
 
+`docs/downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif` (SHA-256 `0ca8248acace558f5cf86b153134b8fd5cc2b7d5b343d0a36f000f9fbfe4758f`) remains in the public project from a separate parallel run. Its local format preflight passed and its local parent overlap/Spearman were `0.6700`/`0.6690`, but its accessible registry scan was incomplete. **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives) was `0.002723`, 95% CI `[0.002324, 0.003131]`, below R0 `0.004006`, 95% CI `[0.003408, 0.004651]`. It is **negative, globally blocked, and DO NOT SUBMIT**. The old proposed name/note are retained only in the parallel run card; do not copy them.
 
-**Do not upload until you confirm the entity's rolling-week quota and independently review the selected raster.** The agent never submits and never contacts the leaderboard. Parent R0 (`h33-h33-2-b2`) score `0.2778` is an owner-reported **CLAIM**, not a `RECEIPT`. Upload **at most one** file per slot (the NaN-outside primary `.tif` and `-zeros.tif` fallback carry identical in-footprint values and score identically).
+The parallel RELIEF `p10piedmont` artifact also failed the local 70% overlap rule (99.38% within 3 px of R0) and is inspection-only. See `IRREGULARITIES.md` for the integration review and the universal blocker certificate.
 
-## Current session candidates (`AXIS = RELIEF`, detrended-elevation tercile reallocation, 2026-10-24)
+**Only if a future candidate clears every gate**, a human must confirm the entity's rolling-week quota and independently review that exact raster before any upload. The agent never submits and never contacts the leaderboard. Parent R0 (`h33-h33-2-b2`) score `0.2778` is an owner-reported **CLAIM**, not a `RECEIPT`. For a future approved candidate, upload at most one file per slot; NaN/zeros twins are not separate candidates.
+
+## Historical RELIEF candidate records (`AXIS = RELIEF`, detrended-elevation tercile reallocation, 2026-10-24)
 
 All three candidates preserve exact R0 dot count (`37,654` binary unit-mass dots), R0 catalogue exclusions (zero catalogue mass, `d_cat > 2.0 px`), and shift mass strictly from lowest-prior basin/range dots into highest-prior exact-expected-DTI H19-5 pixels within the piedmont relief tercile (`-142.91 m <= det_elev < +38.75 m`). Form notes are `<=140` characters.
 

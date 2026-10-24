@@ -1,4 +1,6 @@
-# Repository review and next-step decision (2026-10-24)
+# Superseded repository review and next-step decision (earlier 2026-10-24 snapshot)
+
+> **Historical snapshot only.** This earlier review predates the completed input restore, the 75-test result, the full-support registry saturation certificate, and the integration of the parallel TIPGAP artifact. For current status use [`docs/review_passes_20261024.md`](review_passes_20261024.md), [`docs/research_assessment_20261024.md`](research_assessment_20261024.md), and `evidence/registry_saturation_blocker.json`. Historical environment, inventory, and stop notes below are not current.
 
 ## Answer on the cited 0.2778 and prospects for improvement
 

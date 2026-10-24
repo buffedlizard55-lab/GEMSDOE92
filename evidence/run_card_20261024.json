@@ -7,25 +7,40 @@
     "evaluator_version": "gems57-pooled-hide-v2",
     "withheld_positives": 22663,
     "value": 0.0060451323971729325,
-    "ci95": [0.005187022524132649, 0.00692683880217307],
+    "ci95": [
+      0.005187022524132649,
+      0.00692683880217307
+    ],
     "parent_value": 0.004006147174684743,
-    "parent_ci95": [0.0034243961318463374, 0.004689525221466778]
+    "parent_ci95": [
+      0.0034243961318463374,
+      0.004689525221466778
+    ]
   },
   "correlation_overlap_vs_registry": {
     "registry_raster": "parent_R0_nan.tif",
     "binary_rank_correlation": 0.899276664709599,
     "candidate_dots_within_3px": 0.9938120783980453,
     "exact_dot_overlap": 0.9000106230413768,
-    "lane_thresholds": {"rank_correlation_gt": 0.90, "within_3px_gt": 0.70},
+    "lane_thresholds": {
+      "rank_correlation_gt": 0.9,
+      "within_3px_gt": 0.7
+    },
     "result": "DUPLICATE_STOP: 99.3812% within 3 px exceeds 70%"
   },
   "raster_sha256": "3e900c24a2c836b54916624c5cf055413ceea5f742870a7faa3ab7228bb177a5",
   "validator_output": {
     "result": "PASS",
     "no_nan_inside_footprint": true,
-    "values_range": [0.0, 1.0],
+    "values_range": [
+      0.0,
+      1.0
+    ],
     "crs": "EPSG:32611",
-    "shape": [3730, 3292],
+    "shape": [
+      3730,
+      3292
+    ],
     "transform_matches_sample_submission": true,
     "bands": 1,
     "dtype": "float32",
@@ -33,5 +48,19 @@
   },
   "submission_name": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24",
   "note": "RELIEF 10% basin/range-to-piedmont; HOLDOUT-DTI 0.00605; DUPLICATE-STOP, do not submit",
-  "verdict": "negative"
+  "verdict": "negative",
+  "posthoc_registry_review": {
+    "status": "BLOCKED_BY_UNIVERSAL_CERTIFICATE",
+    "certificate": "evidence/registry_saturation_blocker.json",
+    "witness": "buffedlizard55-lab/17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "forward_dot_overlap": 1.0,
+    "overlap_limit": 0.7,
+    "basis": "The witness is positive on every legal output cell; this follows from the shared support rule and is not a candidate-specific raster correlation run.",
+    "candidate_specific_spearman": null,
+    "full_registry_byte_comparison": "NOT_COMPLETED"
+  },
+  "upload_clearance": "BLOCKED_DO_NOT_SUBMIT",
+  "submission_name_status": "Historical proposed identifier only; no organizer receipt or upload; not cleared for use.",
+  "note_status": "Historical proposed form note only; no submission recommendation."
 }

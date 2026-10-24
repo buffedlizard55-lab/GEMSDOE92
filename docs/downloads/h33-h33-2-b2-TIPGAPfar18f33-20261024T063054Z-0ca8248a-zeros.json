@@ -115,10 +115,26 @@
   "approved_for_weekly_slot": false,
   "promoted": false,
   "submission_slots_used": 0,
-  "status": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval",
+  "status": "LOCAL_FORMAT_PREFLIGHT_PASSED; GLOBAL_UNIQUENESS_BLOCKED; NOT ORGANIZER ACCEPTANCE OR SLOT APPROVAL",
   "metadata": {
     "axis": "TIPGAP",
     "value": "far18f33",
     "lane": "far"
-  }
+  },
+  "posthoc_registry_review": {
+    "status": "BLOCKED_BY_UNIVERSAL_CERTIFICATE",
+    "certificate": "evidence/registry_saturation_blocker.json",
+    "witness": "buffedlizard55-lab/17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "forward_dot_overlap": 1.0,
+    "overlap_limit": 0.7,
+    "basis": "The witness is positive on every legal output cell; this follows from the shared support rule and is not a candidate-specific raster correlation run.",
+    "candidate_specific_spearman": null,
+    "full_registry_byte_comparison": "NOT_COMPLETED"
+  },
+  "local_format_preflight_passed": true,
+  "format_ok_to_upload": false,
+  "upload_clearance": "BLOCKED_DO_NOT_SUBMIT",
+  "submission_name_status": "Historical proposed identifier only; no organizer receipt or upload; not cleared for use.",
+  "note_status": "Historical proposed form note only; it contains a stale uniqueness claim and must not be used."
 }

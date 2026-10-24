@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail closed if the GitHub Pages download is missing, out of range, or mislabeled."""
+"""Fail closed if the inspection download is missing, malformed, or mislabeled as cleared."""
 from __future__ import annotations
 
 import re
@@ -33,16 +33,20 @@ def main() -> int:
     sub = SUBMIT.read_text(encoding="utf-8")
     for needle in (
         "downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
-        "OK TO DOWNLOAD",
-        "NOT recommended for a weekly competition slot",
+        "INSPECTION ONLY — DO NOT SUBMIT",
+        "Weekly slot: NO.",
+        "full-support witness",
         "Predicted values must be in range [0, 1]",
         EXPECTED_SHA,
         "h33-h33-2-b2; TIPGAP FAR 33% along-strike",
     ):
         if needle not in html:
             problems.append(f"index.html missing {needle!r}")
-    if "How to make a competition submission" not in sub:
-        problems.append("submit.html missing executive heading")
+    if "OK TO DOWNLOAD" in html or "Unique submission GeoTIFF" in html:
+        problems.append("index.html incorrectly implies submission clearance")
+    for needle in ("Submission status: blocked", "DO NOT SUBMIT", "When a future candidate is actually cleared"):
+        if needle not in sub:
+            problems.append(f"submit.html missing clearance policy {needle!r}")
     # Must not present HOLDOUT as an organizer score.
     if re.search(r"ORGANIZER-CONFIRMED[^<]{0,40}0\\.002723", html):
         problems.append("holdout number labeled ORGANIZER-CONFIRMED")

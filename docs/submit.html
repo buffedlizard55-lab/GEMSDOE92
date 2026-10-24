@@ -3,53 +3,45 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>How to submit — GEMSDOE92</title>
+  <title>Submission status — GEMSDOE92</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="hero">
-    <p class="kicker">Executive summary</p>
-    <h1>How to make a competition submission</h1>
-    <p class="lede">Human upload only. This agent never contacts DrivenData and never spends a weekly slot.</p>
-    <p><a href="index.html">← Back to download</a></p>
+    <p class="kicker">Executive summary · Human upload only</p>
+    <h1>Submission status: blocked</h1>
+    <p class="lede">No current GeoTIFF is cleared for a DrivenData slot. This agent never contacts DrivenData, uploads a file, or spends a weekly slot.</p>
+    <p><a href="index.html">← Back to the inspection-only download</a></p>
   </header>
   <section>
-    <h2>Should you upload the generated file?</h2>
+    <h2>Should you upload the existing TIPGAP file?</h2>
     <div class="banner banner-hold">
-      <strong>Format: YES, it is OK to download.</strong> The GeoTIFF is all-finite float32 in [0, 1], CRS/shape/transform match sample_submission.tif, no NaN inside the footprint, zeros outside, zero mass on the known-fault catalogue.
+      <strong>NO — INSPECTION ONLY; DO NOT SUBMIT.</strong> The file passes local format checks (single-band float32, CRS/shape/transform, finite [0,1] values, zeros outside), but format validity is not uniqueness clearance.
     </div>
     <div class="banner banner-warn">
-      <strong>Slot: NO, not recommended.</strong> HOLDOUT-DTI 0.002723 [0.002324, 0.003131] (22,663 withheld positives, gems57-pooled-hide-v2) is below parent R0 0.004006. Verdict = negative. Spending a 3/week slot requires a human override.
+      <strong>Global uniqueness is blocked.</strong> A hash-verified public raster is positive on every legal output cell. Under the literal shared all-raster gate, every nonempty candidate has forward overlap 1.0, above the 0.70 stop limit. The parallel TIPGAP run's local registry scan was incomplete. Its <strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives) is 0.002723, 95% CI [0.002324, 0.003131], below R0 0.004006, 95% CI [0.003408, 0.004651]. Verdict: negative. No weekly slot is recommended or authorized.
     </div>
   </section>
   <section>
-    <h2>Steps</h2>
-    <ol>
-      <li>Open the <a href="index.html">download page</a> and save
-        <code>h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif</code>
-        (or the .zip that contains only that TIFF).</li>
-      <li>Log in to DrivenData as the registered competitor (not this agent).</li>
-      <li>Go to
-        <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">New submission</a>.</li>
-      <li>Choose the zeros-outside <code>.tif</code> or the single-TIFF <code>.zip</code>.</li>
-      <li>Name: <code>h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a</code></li>
-      <li>Note (≤140 chars): <code>h33-h33-2-b2; TIPGAP FAR 33% along-strike &gt;3px off parent skeleton e6-18; unique lane</code></li>
-      <li>Do not upload a NaN-outside file. Portal error previously seen: <code>Predicted values must be in range [0, 1]</code>.</li>
-      <li>Copy the receipt score and date into <code>ledger/submissions.csv</code> (RECEIPT only with a date).</li>
-    </ol>
-    <p>Rules: <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">NREL/OSTI 96647</a>. Metric: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">page 967</a>.</p>
+    <h2>Current run: no submission artifact</h2>
+    <p>The selected depth-stratified USGS MT conductance hypothesis stopped before feature construction and placement. Its run card records holdout, candidate hash, validator, submission name, and note as not run/not generated. No file was created for this lane and no upload occurred.</p>
+    <p>See <a href="https://github.com/buffedlizard55-lab/GEMSDOE92/blob/main/evidence/registry_saturation_blocker.json">the shared uniqueness blocker certificate</a>, the <a href="https://github.com/buffedlizard55-lab/GEMSDOE92/blob/main/evidence/run_card_mt_registry_stop_20261024.json">blocked MT run card</a>, and the <a href="https://github.com/buffedlizard55-lab/GEMSDOE92/blob/main/docs/review_passes_20261024.md">three-pass review</a>.</p>
   </section>
   <section>
-    <h2>What this file is</h2>
+    <h2>Existing parallel file — identifiers for audit only</h2>
     <ul>
-      <li>Parent R0 = h33-h33-2-b2, 37,654 dots, CLAIM 0.2778 (no receipt in this ledger).</li>
-      <li>Axis TIPGAP / far18f33: 12,426 dots (33.00%) moved onto along-strike extensions 6–18 px past H19-5 endpoints, each &gt; 3 px from every parent dot.</li>
-      <li>Count held at 37,654. Unit mass. min d_cat of moved dots 3.16 px.</li>
-      <li>Written with <code>vendor/gems57/submission_writer.py</code> (all-finite zeros policy).</li>
+      <li>Inspection download: <code>h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif</code>.</li>
+      <li>SHA-256: <code>0ca8248acace558f5cf86b153134b8fd5cc2b7d5b343d0a36f000f9fbfe4758f</code>.</li>
+      <li>Its original form name/note are preserved in the historical run card, but are not cleared or recommended for use. Do not copy them into a submission.</li>
     </ul>
   </section>
+  <section>
+    <h2>When a future candidate is actually cleared</h2>
+    <p>Only after an explicitly authorized uniqueness scope, complete registry comparison, holdout decision, and on-disk format validation all pass should a human use a submission form. Take the exact unique name and note (≤140 characters) from that candidate's run card, select the approved zeros-outside TIFF or single-TIFF ZIP, confirm the entity's rolling-week quota and current official rules, and record the actual receipt in <code>ledger/submissions.csv</code>. A HOLDOUT-DTI value is never an organizer receipt.</p>
+    <p>Official references: <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">NLR GEMS Prize rules</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">competition metric and format</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData submission page</a>.</p>
+  </section>
   <footer>
-    <p>Local PASS ≠ organizer acceptance. Confirm the entity rolling-week quota before any upload.</p>
+    <p>Local format PASS is not global uniqueness, scientific validation, organizer acceptance, or slot approval. No current upload is recommended.</p>
   </footer>
 </body>
 </html>

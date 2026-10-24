@@ -4,7 +4,7 @@ Read this at the start of every session, together with `README.md`.
 
 ## Mission
 
-Produce a **unique** GeoTIFF for DrivenData competition 306 (DOE GEMS Prize: hidden geothermal-related faults, NW Great Basin, EPSG:32611 100 m). The file must be obviously downloadable from the GitHub Pages site. Inspection and validation run in the project, without a human inspector in the loop. A human still performs the DrivenData upload (3/week cap).
+The goal is to produce a **unique** GeoTIFF for DrivenData competition 306 (DOE GEMS Prize: hidden geothermal-related faults, NW Great Basin, EPSG:32611 100 m) only when the scientific, registry-uniqueness, and format gates all pass. A cleared file must be obviously downloadable from GitHub Pages; a blocked file must not be labeled as unique or submission-ready. Inspection and validation run in the project, without a human inspector in the loop. A human alone performs any DrivenData upload (3/week cap).
 
 Parent studied: GEMSDOE32 `h33-h33-2-b2` CLAIM 0.2778 (zeros). That score is **not** ORGANIZER-CONFIRMED in this ledger. Prompt-cited public tops (0.3195 / 0.4413) are likewise not receipts here.
 
@@ -19,10 +19,10 @@ Parent studied: GEMSDOE32 `h33-h33-2-b2` CLAIM 0.2778 (zeros). That score is **n
 
 ## Site / download rules
 
-- Zeros-outside encoding is the only download offered (portal error: `Predicted values must be in range [0, 1]`).
-- Banner must say whether the file is OK to download **and** whether it is recommended for a weekly slot.
-- Executive summary subpage explains the DrivenData form (name + note).
-- No manual inspection required for format validation (`scripts/check_site.py`, `gems.gates`, `gems57.validate`).
+- For a candidate that has cleared every gate, zeros-outside encoding is the only submission download offered (portal error: `Predicted values must be in range [0, 1]`).
+- The banner must distinguish format-download status from uniqueness/scientific clearance and weekly-slot recommendation. Existing uncleared artifacts may be retained for inspection, but must say **DO NOT SUBMIT**.
+- The executive summary subpage explains the DrivenData form and current clearance status; it must not direct upload of an uncleared file.
+- Format validation uses `scripts/check_site.py`, `gems.gates`, and `gems57.validate`; a format pass is not uniqueness or scientific clearance.
 
 ## Official sources
 
@@ -41,6 +41,6 @@ Parent studied: GEMSDOE32 `h33-h33-2-b2` CLAIM 0.2778 (zeros). That score is **n
 
 Maximize P(Win). Own the outcome end to end. Do not copy a previous submission except to learn.
 
-## This session’s result (2026-10-24)
+## Current evidence boundary (2026-10-24)
 
-TIPGAP FAR (`far18f33`) is unique vs the local registry and format-valid. HOLDOUT-DTI did not beat R0. Verdict **negative**. File still published for download with that banner.
+A separate parallel TIPGAP FAR (`far18f33`) artifact remains on `main`; its local format preflight passed and its parent-only/local-registry comparison was below the thresholds, but its run card records an incomplete accessible-registry scan. The later hash-verified full-support witness proves that every nonempty legal raster fails the literal all-raster forward-overlap rule. Its **HOLDOUT-DTI** result is negative; the public page therefore retains it for inspection only and says **DO NOT SUBMIT**. This session's selected MT lane stopped before feature construction or placement; no candidate was generated, no slot was used, and no upload occurred.

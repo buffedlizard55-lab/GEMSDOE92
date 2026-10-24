@@ -342,7 +342,7 @@ derived from the known-fault catalogue.
 
 ---
 
-# TIPGAP FAR — unique lane (2026-10-24, GEMSDOE92)
+# TIPGAP FAR — local-uniqueness proposal; post-hoc global blocker (2026-10-24, GEMSDOE92)
 
 ## `h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a`
 - **Parent**: `h33-h33-2-b2` (CLAIM 0.2778, no receipt)
@@ -353,9 +353,11 @@ derived from the known-fault catalogue.
 - **Non-fault mimic**: Alluvial-fan channel nickpoints and lithologic pinch-outs that terminate magnetic lineaments without slip.
 - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, n=22,663 withheld positives, 95% CI): **0.002723 [0.002324, 0.003131]** vs R0 **0.004006 [0.003408, 0.004651]**. Delta −0.001283. This is HOLDOUT-DTI, not a score.
 - **Leakage canary**: distance to H19-5 endpoint, symmetric AUC 0.6199 ≪ 0.90.
-- **Uniqueness**: parent overlap-within-3 px = 0.6700; Spearman = 0.6690. On-skeleton 10/12/15% doses overlapped parent at ~0.999 and were logged as duplicates, not offered for download.
+- **Local comparison only**: parent overlap-within-3 px = 0.6700; Spearman = 0.6690. The original run card says the accessible registry scan was incomplete; these values are not global uniqueness clearance. On-skeleton 10/12/15% doses overlapped parent at ~0.999 and were logged as duplicates, not offered for download.
 - **Falsifier**: a live receipt ≥ +0.01 vs R0 would say off-skeleton tips carry above-bar credit despite the holdout.
-- **Verdict**: **negative**. Format-valid zeros-outside download is published anyway.
-- **Note (89 chars)**: `h33-h33-2-b2; TIPGAP FAR 33% along-strike >3px off parent skeleton e6-18; unique lane`
+- **Verdict**: **negative and globally blocked** by the later full-support certificate; the zeros-outside file remains only as a prior parallel artifact for inspection. Do not submit it.
+- **Original proposed note (stale; do not use)**: `h33-h33-2-b2; TIPGAP FAR 33% along-strike >3px off parent skeleton e6-18; unique lane`
 
 Three on-skeleton doses (`e12f10`, `e15f12`, `e18f15`) were run first. HOLDOUT-DTI declined monotonically with dose (0.003813 / 0.003724 / 0.003478 vs R0 0.004006) and overlap-within-3 px vs parent was ~0.999. They are duplicates of the parent lane and are not downloadable from the site.
+
+**Post-hoc global gate review:** the shared saturation certificate proves any nonempty legal prediction, including this file, has forward dot overlap `1.0` with the full-support `17GEMSDOE_E-proba-multiscale` witness under the literal all-raster support rule. This is not a candidate-specific remeasurement of its surface Spearman. See `evidence/registry_saturation_blocker.json` and the integration entry in `IRREGULARITIES.md`.

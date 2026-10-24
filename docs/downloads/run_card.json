@@ -1,5 +1,5 @@
 {
-  "hypothesis": "Unmapped fault continuations sit 0.5\u20131.8 km along-strike of H19-5 tips, off the D2.8 skeleton (the pixels the Poisson thinning never occupied).",
+  "hypothesis": "Unmapped fault continuations sit 0.5–1.8 km along-strike of H19-5 tips, off the D2.8 skeleton (the pixels the Poisson thinning never occupied).",
   "mechanism": "Move 33% kernel-redundant parent dots onto along-strike walks >3 px from every R0 dot; S fixed, new T only if withheld continuations exist off-skeleton.",
   "named_non_fault_process_that_could_mimic_it": "Alluvial-fan channel nickpoints and lithologic pinch-outs that terminate magnetic lineaments without slip.",
   "holdout_dti": {
@@ -179,6 +179,21 @@
   "submission_name": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a",
   "note": "h33-h33-2-b2; TIPGAP FAR 33% along-strike >3px off parent skeleton e6-18; unique lane",
   "verdict": "negative",
-  "format_ok_to_upload": true,
-  "slot_recommendation": "NOT a weekly slot unless a human overrides; holdout did not beat R0"
+  "format_ok_to_upload": false,
+  "slot_recommendation": "NOT a weekly slot unless a human overrides; holdout did not beat R0",
+  "posthoc_registry_review": {
+    "status": "BLOCKED_BY_UNIVERSAL_CERTIFICATE",
+    "certificate": "evidence/registry_saturation_blocker.json",
+    "witness": "buffedlizard55-lab/17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "forward_dot_overlap": 1.0,
+    "overlap_limit": 0.7,
+    "basis": "The witness is positive on every legal output cell; this follows from the shared support rule and is not a candidate-specific raster correlation run.",
+    "candidate_specific_spearman": null,
+    "full_registry_byte_comparison": "NOT_COMPLETED"
+  },
+  "local_format_preflight_passed": true,
+  "upload_clearance": "BLOCKED_DO_NOT_SUBMIT",
+  "submission_name_status": "Historical proposed identifier only; no organizer receipt or upload; not cleared for use.",
+  "note_status": "Historical proposed form note only; it contains a stale uniqueness claim and must not be used."
 }
