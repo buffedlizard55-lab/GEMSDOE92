@@ -43,7 +43,7 @@ Expanded REGISTRY-MEASUREMENT: 1,279 unique same-grid TIFFs from current default
 
 The provided record identifies `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros` as a **CLAIM 0.2778**, not an organizer-confirmed receipt in this repository. Its reported lineage suggests its score arose from successive improvements in ridge-based placement, Poisson thinning, pruning low-value dots, and avoiding known traces; under DTI's α=0.2, β=0.8 weighting, extra poorly placed mass is costly. These are plausible explanations from the reported lineage—not an independently verified causal analysis. The actual competition score, exact submitted bytes, and organizer evaluation receipt are absent here.
 
-The newly generated HOLDOUT-DTI is on a different, local hide-and-recover instrument and must **not** be compared numerically to 0.2778. The task of beating the public competition result remains unproven until a valid organizer receipt exists. Publicly mentioned leaderboard ceilings 0.3195 and 0.4413 conflict and are not authenticated by this checkout.
+The newly generated HOLDOUT-DTI is on a different, local hide-and-recover instrument and must **not** be compared numerically to 0.2778. A prior repo-recorded read of the [official public leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/) on 2026-10-24 showed **0.4413 at #1** (LEADERBOARD-SNAPSHOT, not a receipt for GEMSDOE32 or this candidate); the prompt's 0.3195 is an older conflicting snapshot. The task of beating the live competition result remains unproven until this project has a valid organizer receipt.
 
 ## Hypotheses and scientific queue
 

@@ -18,7 +18,7 @@ The scan covered current default-branch TIFF paths in `docs/downloads/`, `releas
 
 The largest overlap is 100% against `11GEMSDOE/docs/downloads/gems-structural-area06-v1.tif`; additionally, `17GEMSDOE_E-proba-multiscale` is positive across the full footprint and is also a binding overlap witness. We do not waive those because they are dense or continuous surfaces; the requested literal rule governs.
 
-HOLDOUT-DTI is a local catalogue hide-and-recover estimate, not a competition score, and cannot be compared with the prompt-reported **CLAIM 0.2778** or cited 0.3195/0.4413 leaderboard values. No ORGANIZER-CONFIRMED receipt for this candidate exists.
+HOLDOUT-DTI is a local catalogue hide-and-recover estimate, not a competition score, and cannot be compared with the prompt-reported **CLAIM 0.2778**. A prior repository record says the official public leaderboard was read on 2026-10-24 and showed 0.4413 at #1 (LEADERBOARD-SNAPSHOT, not a receipt for this candidate); the prompt's 0.3195 is an older conflicting snapshot. No ORGANIZER-CONFIRMED receipt for this candidate exists.
 
 ## Historical results retained
 

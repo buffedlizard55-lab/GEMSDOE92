@@ -70,6 +70,17 @@ def main() -> int:
 
     for path in served:
         tag = path.name
+        expected_dots = N_DOTS
+        variant = path.stem.removesuffix("-zeros")
+        per_file_audit = path.with_name(variant + "-audit.json")
+        if per_file_audit.is_file():
+            try:
+                audit_doc = json.loads(per_file_audit.read_text(encoding="utf-8"))
+                expected_dots = int(audit_doc.get("n_positive_pixels",
+                                      audit_doc.get("raster", {}).get("positive_pixels",
+                                      audit_doc.get("n_dots", N_DOTS))))
+            except (OSError, ValueError, TypeError, json.JSONDecodeError) as exc:
+                problems.append(f"{tag}: invalid per-file audit receipt: {exc}")
         with rasterio.open(path) as ds:
             a = ds.read(1)
             if ds.dtypes[0] != "float32" or ds.count != 1:
@@ -82,8 +93,8 @@ def main() -> int:
                 problems.append(f"{tag}: mass outside footprint")
             if np.any(a[cat] > 0):
                 problems.append(f"{tag}: mass on catalogue")
-            if int((a > 0).sum()) != N_DOTS:
-                problems.append(f"{tag}: n_dots {int((a > 0).sum())} != {N_DOTS}")
+            if int((a > 0).sum()) != expected_dots:
+                problems.append(f"{tag}: n_dots {int((a > 0).sum())} != audit/expected {expected_dots}")
 
         try:
             assert_submittable(validate(path, footprint, cat))

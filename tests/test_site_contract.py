@@ -1,11 +1,10 @@
 """The public site must expose an obvious zeros-outside download and must never
 present a local HOLDOUT number as an organizer score.
 
-Updated 2026-10-25 when the DILATATION lane merged with the TIPGAP lane on main.
-The earlier version asserted one hard-coded TIPGAP sentence; the primary is now
-chosen by HOLDOUT-DTI, so the contract is written against *properties* of the
-page (one obvious primary, a slot warning, the portal error explained, evidence
-labels intact, every served file linked) rather than one lane's wording.
+Updated 2026-10-24 after the expanded public registry scan found a literal duplicate stop.
+The contract asserts explicit format-valid vs slot-ineligible status, evidence
+labels, a byte-matched audit, and links to every served raster rather than one
+stale method name.
 """
 
 import json
@@ -26,6 +25,8 @@ def test_index_has_download_and_slot_warning():
     html = _index()
     # an obvious download, and the encoding that survives the portal validator
     assert "OK TO DOWNLOAD" in html
+    assert "NOT CLEARED FOR A WEEKLY SLOT" in html
+    assert "DUPLICATE UNDER THE LITERAL REGISTRY RULE" in html
     assert re.search(r'href="downloads/[^"]+-zeros\.tif"', html), \
         "no zeros-outside download is offered"
     # the portal failure the site exists to prevent must be named
