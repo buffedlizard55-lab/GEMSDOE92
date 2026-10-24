@@ -4,11 +4,17 @@
 
 ---
 
+## Latest Review: Literal Uniqueness is Blocked Across the Footprint
+
+**OK TO DOWNLOAD for research; NOT OK TO SUBMIT.** The queued BREAKLINE public witness audit finds **REGISTRY-MEASUREMENT 100% forward overlap** with the hash-verified 17GEMSDOE dense raster. Its 3-pixel halo covers the whole footprint, so every nonempty in-footprint candidate fails the current literal rule. No new unique submission was generated, no score improvement is claimed, and no slot was used. [Review and limitations](docs/REVIEW_CURRENT.md) · [witness receipt](docs/downloads/breakline_public_witness.json) · [session JSON card](docs/downloads/session_review_run_card.json).
+
+---
+
 ## Executive Summary — Format-Validated Candidate, One-Click Download
 
 **✅ FORMAT-VALID — OK TO DOWNLOAD.** The generated submission raster is an all-finite, single-band float32 GeoTIFF, EPSG:32611, shape 3730 × 3292, matching the competition template geotransform. It contains zero NaNs inside the footprint, zeros outside, values strictly in `[0, 1]`, and passes all 10 local MUST gates on independent re-read from disk. This completely prevents the DrivenData portal error: `Predicted values must be in range [0, 1]`.
 
-**⛔ NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE.** A comprehensive scan of 1,279 unique, same-grid rasters from default branches across 102 public GEMSDOE-named repositories found 100% 3-px forward overlap with public registry rasters (131 rasters exceed the 70% stop threshold). Per parallel-run protocol rule 1, the file is retained as an auditable negative research deliverable. Do not spend a weekly slot on this candidate.
+**⛔ NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE.** An expanded scan found 100% 3-px forward overlap with public registry rasters (131 of 1,279 exceed 70%). Stop; do not submit. This file remains downloadable as a negative research deliverable. The scan covers current default branches in 102 public owner repositories, not every historic/site-hosted file.
 
 | Deliverable | Link / Metadata |
 |---|---|
@@ -36,7 +42,8 @@ A second session built **BREAKLINE f45Ltop**: keeping 20,710 parent R0 dots via 
 - **Validation:** 10/10 local MUST gates pass on independent re-read.
 - **HOLDOUT-DTI:** **0.004861 [0.004032, 0.005822]**, paired delta vs R0 **+0.000854 [+0.000300, +0.001423]**; dose-monotone f33 &rarr; f38 &rarr; f45; USGS SGMC off-catalogue control **+31% vs R0** (0.12611 vs 0.09606); leakage canary max **0.6216** (<0.90 threshold).
 - **Local Uniqueness:** Worst forward overlap **55.0%** (vs parent R0), worst $|\rho| = 0.547$; vs visible collar candidate only **3.5%** forward overlap (&phi; &asymp; 0.001, disjoint lanes).
-- **Verdict:** Negative / NOT CLEARED for slot (below holdout-best arms; public registry scan pending). Full analysis: [`docs/ANALYSIS_20261024.md`](docs/ANALYSIS_20261024.md); run card: [`evidence/breakline_run_card.json`](evidence/breakline_run_card.json).
+- **Public Registry Audit:** A live public witness check confirmed 100% forward overlap with GEMSDOE17 E-proba. Duplicate; stop. See `evidence/breakline_public_registry_witness17.json`.
+- **Verdict:** Negative / NOT CLEARED for slot (below holdout-best arms; stopped by registry overlap). Full analysis: [`docs/ANALYSIS_20261024.md`](docs/ANALYSIS_20261024.md); run card: [`evidence/breakline_run_card.json`](evidence/breakline_run_card.json).
 
 ---
 
