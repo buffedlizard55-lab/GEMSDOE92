@@ -229,7 +229,6 @@ Decomposition of parent R0 (`37,654` dots) across the three regional detrended-e
 
 R0's dots in basin + range total 21,895 dots (58.15%). In extensional Basin-and-Range tectonic settings, active Quaternary normal faulting predominantly localizes along range-front alluvial fans and piedmont fault scarps, while deep basins conceal faults beneath thick, ductile/unconsolidated graben fill and range interiors contain eroded, exhumed, often inactive bedrock structures.
 
-<<<<<<< HEAD
 **Observation.** `releases/h33-h33-2-b2-MASS_A10-20261023-e5613a00.tif` (41,419
 dots) contains 3,765 dots that are not in R0. All 3,765 sit on H19-5, but their
 distance to the nearest R0 dot is **1.0 px at the minimum and 1.0 px at the
@@ -329,7 +328,6 @@ file tests a prior that is not derived from the catalogue. Cross-variant overlap
 measured rather than asserted: in this branch's own harness the catalogue-prior and
 physics-prior arrival sets overlapped at Jaccard `0.087`, so the surviving variant
 asks a genuinely different question from the merged set.
-=======
+
 **Decision.**
 Shift 10%, 12%, and 15% of total mass (3,765, 4,518, and 5,648 dots) from the lowest-prior basin and range dots into the highest-prior unpopulated H19-5 pixels located strictly within the piedmont tercile, using greedy exact expected-DTI marginal gain on the label-free physical prior (`Band 3`, `Band 5`, `Band 19`). Dot count is held at exactly 37,654, zero mass is placed on the catalogue, and all dots maintain R0's `d_cat > 2.0 px` exclusion.
->>>>>>> origin/main

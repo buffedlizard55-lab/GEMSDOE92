@@ -160,7 +160,6 @@ slots, receipts) are left blank.
 - `tests/test_relief_variants.py`: unit and policy tests for RELIEF mass shifting, tercile properties, ledger uniqueness, and evidence documentation.
 - Updates to `gems/variants.py`, `README.md` (CURRENT STATE block), `SLOT_PLAN.md`, `docs/SUBMIT.md`, `docs/mechanism_cards.md`, `IRREGULARITIES.md`, and this file.
 
-<<<<<<< HEAD
 ### What the human decided and supplies
 - The human delegated the axis choice ("pick your own session"); the AI selected `CONCENTRATION`.
 - The human supplies `TOP_PUBLIC` with its observation date, confirms the entity's rolling-week quota and remaining slots, decides which single file (if any) to upload, and records the submission-page `RECEIPT` score and date in `ledger/submissions.csv`.
@@ -203,8 +202,5 @@ No submission, no login, no leaderboard or competition-page access, no Dropbox c
   outcome of the cross-session dedupe rule, even though it removed work.
 - The 2.0 px spacing floor was tried and rejected because it silently reduced the
   real reallocation to 7.34%; the measurement is recorded instead of the choice.
-=======
-### What the human decides and supplies
 - Autonomous `AXIS = RELIEF` selection per brief instructions ("Do not prompt me over choosing an Axis for the session, pick your own session").
 - Human fills `TOP_PUBLIC` from leaderboard with observation date, verifies entity weekly submission quota, chooses whether and which candidate file to submit from their own registered DrivenData account, and records submission receipts in `ledger/submissions.csv`.
->>>>>>> origin/main
