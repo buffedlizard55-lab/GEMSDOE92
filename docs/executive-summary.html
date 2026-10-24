@@ -1,88 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="utf-8">
-<title>GEMSDOE92 — Executive summary: how to make a submission</title>
-<style>
-  body { font-family: system-ui, -apple-system, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #1a1a1a; }
-  h1 { font-size: 1.5rem; border-bottom: 2px solid #0b5ed7; padding-bottom: .4rem; }
-  h2 { font-size: 1.2rem; margin-top: 1.5rem; }
-  .status { display: inline-block; padding: .25rem .75rem; border-radius: 1rem; font-weight: bold; font-size: .9rem; }
-  .ok { background: #dcfce7; color: #166534; border: 1px solid #166534; }
-  .warn { background: #fef3c7; color: #92400e; border: 1px solid #92400e; }
-  .no { background: #fee2e2; color: #991b1b; border: 1px solid #991b1b; }
-  code, pre { background: #f3f4f6; padding: .15rem .4rem; border-radius: 4px; font-size: .9rem; }
-  pre { padding: .75rem; overflow: auto; border: 1px solid #e5e7eb; }
-  table { border-collapse: collapse; width: 100%; margin: .75rem 0; }
-  th, td { border: 1px solid #cbd5e1; padding: .5rem .75rem; text-align: left; font-size: .9rem; }
-  th { background: #eef2f7; }
-  .mono { font-family: ui-monospace, SFMono-Regular, monospace; }
-  a { color: #0b5ed7; }
-  .callout { border-left: 4px solid #0b5ed7; background: #f0f7ff; padding: .75rem 1rem; margin: 1rem 0; }
-  .flag { border-left: 4px solid #b45309; background: #fffbeb; padding: .75rem 1rem; margin: 1rem 0; }
-  ul { margin: .5rem 0 .5rem 1.25rem; }
-</style>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive summary and submission guide — GEMSDOE92</title>
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
-<h1>GEMSDOE92 — Submission executive summary</h1>
-<p><strong>Repo:</strong> <code>buffedlizard55-lab/GEMSDOE92</code> &nbsp;|&nbsp; <strong>Branch:</strong> <code>arena/aebe414f-gemsdoe92</code> &nbsp;|&nbsp; <strong>Competition:</strong> DOE GEMS Prize #306 (DrivenData) <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">competition page</a> &nbsp;|&nbsp; <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">data (login required)</a></p>
-
-<div class="callout">
-<h2 style="margin-top:0">1. The submission file — download here</h2>
-<p><strong>Format-validated GeoTIFF, ready to download and upload:</strong></p>
+<header class="hero">
+<p class="kicker">DOE GEMS Prize · DrivenData #306</p>
+<h1>Submission executive summary</h1>
+<p class="lede">Status: one local format-validated GeoTIFF is available for download as a <strong>negative result</strong>. It is not recommended for a competition slot.</p>
+<div class="banner banner-ok"><strong>FORMAT: OK TO DOWNLOAD.</strong> The zeros-outside GeoTIFF passes local checks for one float32 band, EPSG:32611, 3730×3292 grid, matching transform, finite [0,1] values, no catalogue-positive cells and the expected 37,654 positive pixels. Local checks are not an organizer acceptance receipt.</div>
+<div class="banner banner-warn"><strong>SCIENTIFIC / UNIQUENESS STATUS: DO NOT SPEND A SLOT.</strong> TIPGAP's HOLDOUT-DTI is below R0. It clears the literal 70% 3-pixel overlap cutoff against the local R0 raster (67.00%), but the accessible registry is not a complete inventory of all external GEMSDOE sites. Global uniqueness is therefore unverified. This artifact is not a claim of exceeding the 0.2778 historical value or current leaderboard.</div>
+</header>
+<main>
+<section class="download-card">
+<h2>Download the candidate</h2>
+<p><a class="btn" href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif" download>Download zeros-outside GeoTIFF</a>
+<a class="btn btn-ghost" href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.zip" download>Download single-TIFF ZIP</a></p>
 <ul>
-  <li><strong>File (NaN-outside is NOT used; this is the all-finite zeros encoding that avoids the "Predicted values must be in range [0, 1]" upload error):</strong><br>
-  <a class="mono" href="https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE92/main/releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif">h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif</a> (70 kB)</li>
-  <li><strong>Companion ZIP (single TIFF inside):</strong> <a class="mono" href="https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE92/main/releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.zip">.zip</a></li>
-  <li><strong>Validator receipt (machine-readable):</strong> <a class="mono" href="https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE92/main/releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.json">.json</a></li>
+<li>Submission name: <code>h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a</code></li>
+<li>Note (90 chars): <code>h33-h33-2-b2; TIPGAP FAR 33% along-strike &gt;3px off parent skeleton; HOLDOUT-DTI negative</code></li>
+<li>SHA-256: <code>0ca8248acace558f5cf86b153134b8fd5cc2b7d5b343d0a36f000f9fbfe4758f</code></li>
+<li>Machine validation record: <a href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-audit.json">audit JSON</a>. Run <code>python scripts/check_site.py</code> for independent local revalidation of every served zeros-outside raster.</li>
 </ul>
-<p><span class="status ok">OK TO DOWNLOAD</span> — the file is committed to the repository and served from GitHub raw (use the <code>main</code> links above after the PR merge; before merge, replace <code>main</code> with the session branch name). The GitHub Pages landing page is <a href="index.html">docs/index.html</a>.</p>
-</div>
-
-<h2>2. Is it OK to submit this file?</h2>
-<table>
-<tr><th>Check</th><th>Result</th><th>Detail</th></tr>
-<tr><td>Single band, float32</td><td><span class="status ok">PASS</span></td><td>1 band, dtype float32</td></tr>
-<tr><td>Values in [0, 1] (no silent repair)</td><td><span class="status ok">PASS</span></td><td>min 0.0, max 1.0 — avoids the [0,1] upload error</td></tr>
-<tr><td>No NaN inside footprint</td><td><span class="status ok">PASS</span></td><td>0 NaN pixels inside the scored footprint</td></tr>
-<tr><td>CRS / shape / geotransform match sample_submission.tif</td><td><span class="status ok">PASS</span></td><td>EPSG:32611, 3730x3292, transform (100, 0, 243350, 0, -100, 4508550), 100 m pixels</td></tr>
-<tr><td>Zero mass on mapped catalogue</td><td><span class="status ok">PASS</span></td><td>0 dots on existing_faults/labels; all dots &gt; 3 px from catalogue</td></tr>
-<tr><td>Format gates (gems.gates)</td><td><span class="status ok">PASS</span></td><td>10/10 MUST-pass gates, re-read from disk</td></tr>
-<tr><td>Uniqueness (LANE vs registry rasters)</td><td><span class="status ok">PASS</span></td><td>Worst rank correlation 0.0277 (&lt;= 0.90); worst forward 3-px dot overlap 0.2534 (&lt;= 0.70) vs 14 locally accessible registry rasters</td></tr>
-<tr><td>Leakage canary (AUC vs held truth)</td><td><span class="status ok">PASS</span></td><td>AUC 0.4996 (&lt;= 0.90) — no leakage</td></tr>
-<tr><td>Holdout-DTI (HOLDOUT-DTI, gems57-pooled-hide-v2)</td><td><span class="status warn">0.0000 [0.0000, 0.0000]</span></td><td>11,321 withheld positives, 323 spatial blocks. Structural zero: gate-compliant dots cannot reach catalogue-derived held truth within the 3 px kernel (see evidence/stepover_evidence.json). Not a score.</td></tr>
-</table>
-
-<div class="flag">
-<strong>Submission recommendation: do NOT burn a weekly slot on this file as-is.</strong> The raster is format-valid and unique (OK to download), but its holdout-DTI is a structural zero and it did not beat the R0 holdout baseline (0.00370 [0.00301, 0.00432]); per the parallel-run protocol it is a <strong>negative</strong> result, which is still a deliverable. Whether <em>any</em> submission scores above the GEMSDOE32 claim of 0.2778 (owner-reported, no receipt) or the current leaderboard high is <strong>ORGANIZER-CONFIRMED only after upload</strong> — no local proxy is the organizer metric and this session has no DrivenData authentication.
-</div>
-
-<h2>3. How to make a submission on the competition page</h2>
+</section>
+<section>
+<h2>Result and evidence</h2>
+<p><strong>HOLDOUT-DTI</strong>, evaluator <code>gems57-pooled-hide-v2</code>, 22,663 withheld positives, 95% CI: TIPGAP FAR <strong>0.002723 [0.002324, 0.003131]</strong>; R0 comparison <strong>0.004006 [0.003408, 0.004651]</strong>. Difference vs R0 is −0.001283. This is a local hide-and-recover metric, <strong>not an organizer score</strong>. The run card reports the local comparison; see <code>docs/downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.json</code>.</p>
+<p>The local R0 comparison is 67.00% within 3 px and Spearman 0.66898, below the protocol thresholds 70% and 0.90. The scanned registry is explicitly incomplete outside this checkout, so we cannot assert uniqueness across all named public sites without retrieving and checking their actual rasters. No receipt proves the prompt-cited historical or leaderboard scores.</p>
+<h3>Hypothesis and falsification</h3>
+<p>Hypothesis: blind fault continuations lie 0.5–1.8 km along strike past mapped H19-5 lineament tips. Mechanism: reallocate 33% of 37,654 unit-mass dots to along-strike tip walks, at least 3 px off the catalogue. Non-fault mimic: alluvial-fan channel nickpoints and lithologic pinch-outs can terminate magnetic lineaments without fault slip. The observed holdout result is negative, falsifying this placement rule on this evaluator; it does not disprove the geology generally.</p>
+</section>
+<section>
+<h2>How to make a DrivenData submission</h2>
 <ol>
-  <li>Go to <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">the DrivenData submission page</a> (login required; competition rules: <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">rules PDF</a>).</li>
-  <li>Choose "New submission" &rarr; <strong>File to submit</strong>: upload the <code>.tif</code> above (or the single-TIFF <code>.zip</code>).</li>
-  <li><strong>Submission name (required, &lt;=140 chars):</strong> <code class="mono">h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f</code></li>
-  <li><strong>Note (optional, &lt;=140 chars):</strong> <code class="mono">h33-h33-2-b2; STEPOVER step-over dots 3-10px off catalogue at visible trace tips; HOLDOUT-DTI 0.0000 [0.0000,0.0000]</code> (116 chars)</li>
-  <li>Submit. Copy the receipt score + date into <code>ledger/submissions.csv</code> as a RECEIPT row (receipt_date must be present for a number to count as a score).</li>
+<li>Only if a human selector chooses to override the negative recommendation, download the zeros-outside TIFF above. Do not upload both TIFF and ZIP.</li>
+<li>Log in and open <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData submissions</a>, then choose <em>New submission</em>.</li>
+<li>Choose the downloaded TIFF as “File to submit”. Enter the exact submission name and note shown above; the note is under 140 characters.</li>
+<li>Submit only after checking the competition’s current slot quota and rules. Upload is a human action; this agent cannot access the user’s DrivenData account or submit on their behalf.</li>
+<li>Copy the organizer receipt and date to <code>ledger/submissions.csv</code>. Only a receipt is ORGANIZER-CONFIRMED; HOLDOUT-DTI is never a leaderboard score.</li>
 </ol>
-
-<h2>4. What this submission is (method)</h2>
+<p>The zeros-outside file is chosen because the portal reported “Predicted values must be in range [0, 1]” for prior submissions. The supplied raster uses finite values in [0,1] throughout, including outside the scored footprint; it does not use NaN or an out-of-range nodata sentinel.</p>
+</section>
+<section>
+<h2>Scientific candidate queue</h2>
+<p>Three to five ranked hypotheses and validation status are recorded in <a href="hypotheses_20261024.md">the candidate-hypotheses note</a>. It identifies bands, targeted signatures, novelty relative to repository methods, expected improvement as MODEL (not score), implementation cost, and the tested top candidate. No additional candidate should be run until the protocol's experiment/time budget resets.</p>
+</section>
+<section>
+<h2>Official references for review</h2>
 <ul>
-  <li><strong>Hypothesis:</strong> blind geothermal strands localize at visible-tract step-overs / relay ramps (3–10 px off mapped traces, strike continuation of trace tips), under-mapped in the USGS/INGENIOUS catalogue.</li>
-  <li><strong>Mechanism:</strong> 5,000 unit-mass dots placed by visible-geometry favourability (strike alignment × distance decay from trace tips), 1 px minimum spacing, all dots &gt; 3 px from the catalogue (zero catalogue mass), EPSG:32611 100 m grid.</li>
-  <li><strong>Non-fault mimic named:</strong> erosional notches, alluvial-fan heads and pluvial-lake shoreline terminations can create tip-like trace ends without displacement.</li>
-  <li><strong>How it differs from prior lanes in this repo:</strong> STEPOVER places <em>new</em> dots off-catalogue at trace tips; MASS/PRUNE/CONCENTRATION/RELIEF reallocate on H19-5 support or relief/block priors; SNAP moves existing dots &lt;= 2 px onto edge response.</li>
+<li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Competition problem and scoring description</a></li>
+<li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">Competition about page</a></li>
+<li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">Competition data page</a> (account access may be required)</li>
+<li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Official reference solution repository</a></li>
+<li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">DOE GEMS rules PDF</a></li>
+<li><a href="https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7">USGS GeoDAWN catalog</a> · <a href="https://gdr.openei.org/submissions/1391">DOE GDR/INGENIOUS submission</a> · <a href="https://epsg.io/32611">EPSG:32611</a></li>
+<li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Competition leaderboard</a> (no organizer receipt captured in this checkout)</li>
 </ul>
-
-<h2>5. Run card (protocol rule 5)</h2>
-<pre class="mono">{ "submission_name": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f", "verdict": "negative", "holdout_dti": 0.0, "holdout_ci95": [0.0, 0.0], "holdout_withheld_positives": 11321, "holdout_evaluator_version": "gems57-pooled-hide-v2", "delta_vs_R0": -0.00370, "delta_vs_R0_ci95": [-0.00438, -0.00306], "leakage_canary_auc": 0.4996, "lane_worst_rho": 0.0277, "lane_worst_forward_overlap": 0.2534, "lane_unique": true, "raster_sha256": "e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205", "gates_pass": true }</pre>
-<p>Full artifacts: <code>evidence/run_card.json</code>, <code>evidence/stepover_evidence.json</code>, <code>ledger/submissions.csv</code> (row: <code>h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f</code>, status BUILT, no receipt yet).</p>
-
-<h2>6. Sources (official / verified)</h2>
-<ul>
-  <li>Competition: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData #306 GEMS Prize</a>; problem page <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">page 967</a>; about <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">page 968</a>; rules <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">96647.pdf</a>; scoring clarification (known faults masked, new truth may lie within 300 m of known traces): <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">community thread 11516</a></li>
-  <li>Reference solution: <a href="https://github.com/drivendataorg/gems-prize-reference-solution">drivendataorg/gems-prize-reference-solution</a></li>
-  <li>Data provenance (USGS): <a href="https://gdr.openei.org/submissions/1391">DOE GDR #1391</a>; <a href="https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7">USGS GeoDAWN catalog</a>; CRS <a href="https://epsg.io/32611">EPSG:32611</a>; metric basis <a href="https://en.wikipedia.org/wiki/Tversky_index">Tversky index</a></li>
-  <li>Leaderboard: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">DrivenData leaderboard</a> (no automated access from this sandbox; scores here are CLAIMS/receipts from other GEMSDOE sites, not organizer confirmations)</li>
-</ul>
-<p><em>Labels per project convention: HOLDOUT-DTI = local holdout estimate (evaluator version, withheld positives, 95% CI — never a score); ORGANIZER-CONFIRMED = copied from a submission-page receipt. No projection is written as a score.</em></p>
-</body>
-</html>
+<p><a href="index.html">Back to the project home and download</a></p>
+</section>
+</main>
+</body></html>

@@ -173,11 +173,12 @@ def test_dilatation_site_offers_obvious_download_and_submission_note() -> None:
     html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
     # an obvious download, and the encoding that survives the portal validator
     assert "OK TO DOWNLOAD" in html
-    assert "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif" in html
+    # TIPGAP is deliberately the primary because DILATATION fails the literal
+    # whole-file overlap gate. Its negative holdout is not represented as a win.
+    assert "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif" in html
     assert "download" in html
-    # a unique submission name and a <=140 char note
-    assert "GEMSDOE92-DILATATION-p12-20261025" in html
-    note = "h33-h33-2-b2; DILATATION shift 4518 dots (12%) low→high dilat; pred MODEL:+0.007"
+    assert "DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif" in html  # comparison artifact
+    note = "h33-h33-2-b2; TIPGAP FAR 33% along-strike >3px off parent skeleton; HOLDOUT-DTI negative"
     assert note in html and len(note) <= 140
     # the run card must be present with its verdict
     assert "run-card" in html or "Run card" in html
