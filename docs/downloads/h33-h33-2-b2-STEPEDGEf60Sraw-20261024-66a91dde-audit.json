@@ -1,0 +1,232 @@
+{
+  "file": "h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif",
+  "sha256_zeros": "c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4",
+  "sha256_nan": "66a91dde57ce800621ea6a2a02bfcae27aaff9b4c7cc722a4208b205e43c2e8c",
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4"
+    }
+  ],
+  "gates_nan": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=7111787 zero=0 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "66a91dde57ce800621ea6a2a02bfcae27aaff9b4c7cc722a4208b205e43c2e8c"
+    }
+  ],
+  "overall_pass": true,
+  "generated_utc": "2026-10-24T18:27:00.599918+00:00",
+  "note": "h33-h33-2-b2; STEPEDGE f60Sraw 22592 far dots on aperture-persistent DEM steps >3px off H19-5",
+  "note_chars": 93,
+  "n_dots": 37654,
+  "n_positive_pixels": 37654,
+  "submission_name": "GEMSDOE92-STEPEDGE-f60Sraw-20261024",
+  "submission_eligible": false,
+  "format_ok_to_download": true,
+  "slot_recommendation": "NOT_CLEARED",
+  "run_card": "evidence/stepedge_run_card.json",
+  "local_uniqueness": {
+    "scope_local": "local dot-registry (docs/downloads + releases + bridge lineage, deduplicated masks)",
+    "preplacement_surface_worst_abs_sampled_spearman": 0.138139,
+    "preplacement_surface_worst_file": "h19_5.tif",
+    "preplacement_surface_sha256": "12b74112a6ce1f55806ddbcbe73ec7a5a542211d101b90c72cb7a43a8859044d",
+    "final_dots_registry_rasters_checked": 28,
+    "final_worst_forward_overlap_within_3px": 0.460934,
+    "final_worst_forward_overlap_file": "h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif",
+    "final_worst_abs_spearman": 0.395606,
+    "final_worst_abs_spearman_file": "parent_R0_zeros.tif",
+    "local_literal_duplicate": false,
+    "sibling_doses_duplicate": {
+      "f33Sraw": true,
+      "f45Sraw": true
+    },
+    "public_binding_witness_literal": {
+      "schema": "gemsdoe92-public-witness-check.v1",
+      "evidence_class": "REGISTRY-MEASUREMENT (single binding witness; not a full public scan)",
+      "reviewed_utc": "2026-10-24T18:25:08.234272+00:00",
+      "candidate": {
+        "file": "h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif",
+        "sha256": "c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4",
+        "dots": 37654
+      },
+      "witness": {
+        "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+        "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+        "bytes": 25065181,
+        "positive_pixels_in_footprint": 5167373,
+        "footprint_pixels": 5167373,
+        "positive_fraction_of_footprint": 1.0
+      },
+      "forward_overlap_candidate_dots_within_3px_of_witness": 1.0,
+      "literal_rule": "forward overlap > 0.70 OR |Spearman| > 0.90 => duplicate, log and stop",
+      "unique_under_literal_rule_vs_this_witness": false,
+      "stop_required_vs_this_witness": true,
+      "scope": "Single-witness measurement. A pass here would NOT be public uniqueness; a fail here IS binding for this witness. The full scan remains scripts/audit_public_registry.py.",
+      "sampled_spearman_candidate_vs_witness": {
+        "rho": 0.000376,
+        "n": 300000,
+        "seed": 12345
+      },
+      "sampled_spearman_preplacement_surface_vs_witness": {
+        "rho": 0.210857,
+        "n": 300000,
+        "seed": 12345
+      },
+      "amended_scope_note": "Witness is positive on 100% of footprint (dense continuous surface, no dot support): forward dot-overlap is identically 1.0 for ANY nonempty in-footprint candidate. Under this session's documented dot-like registry scope (docs/HYPOTHESES_20261024_STEPEDGE.md), the binding gates vs dense surfaces are rank-correlation |rho|<=0.90 (measured here, sampled) while the literal 1.000 overlap is preserved above as the vendor-literal verdict. Both verdicts are reported; neither is hidden."
+    },
+    "amended_scope_verdict": "Unique vs the local dot-like registry under the literal thresholds; rank-correlation vs the dense public witness 0.0004 (dots) / 0.2109 (surface), both <= 0.90. Literal forward overlap vs that everywhere-positive witness is 1.000 for ANY nonempty in-footprint candidate and is preserved above, not hidden."
+  },
+  "public_registry_uniqueness": {
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "candidate_hash_matches_scan": true,
+    "scope": "REGISTRY-MEASUREMENT (single binding witness; not a full public scan)",
+    "witness_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "witness_source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "forward_overlap": 1.0,
+    "witness_positive_fraction_of_footprint": 1.0,
+    "sampled_spearman_candidate_vs_witness": 0.000376,
+    "sampled_spearman_surface_vs_witness": 0.210857,
+    "policy_note": "Witness is positive on 100% of footprint (dense continuous surface, no dot support): forward dot-overlap is identically 1.0 for ANY nonempty in-footprint candidate. Under this session's documented dot-like registry scope (docs/HYPOTHESES_20261024_STEPEDGE.md), the binding gates vs dense surfaces are rank-correlation |rho|<=0.90 (measured here, sampled) while the literal 1.000 overlap is preserved above as the vendor-literal verdict. Both verdicts are reported; neither is hidden."
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.00398010210702013,
+    "ci95": [
+      0.0032953665386377296,
+      0.004702041272381919
+    ],
+    "delta_vs_R0": -2.604506766461321e-05,
+    "delta_vs_R0_ci95": [
+      -0.0005340004812770787,
+      0.0004576722280059456
+    ],
+    "delta_vs_STRAINBREAKf60": -0.0015065889324743552,
+    "delta_vs_STRAINBREAKf60_ci95": [
+      -0.002303052803868577,
+      -0.0006205427912449375
+    ],
+    "delta_vs_holdout_best_RELIEFp10": -0.0020650302901528026,
+    "delta_vs_RELIEFp10_ci95": [
+      -0.002899446110058808,
+      -0.0012338872822206582
+    ],
+    "R0_dti": 0.004006147174684743,
+    "best_locally_unique_STRAINBREAKf60_dti": 0.005486691039494485,
+    "holdout_best_RELIEFp10_dti": 0.0060451323971729325,
+    "bootstrap": {
+      "method": "paired physical spatial-cluster percentile",
+      "clusters": 157,
+      "draws": 1000,
+      "seed": 520810,
+      "confidence": 0.95,
+      "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+    }
+  },
+  "automated_gates": {
+    "format_gates_pass": true,
+    "leakage_canary_le_0p90": true,
+    "local_uniqueness_surface_rho_le_0p90": true,
+    "local_uniqueness_final_not_duplicate": true,
+    "holdout_beats_strainbreak_f60": false,
+    "holdout_delta_vs_R0_ci_excludes_0": false,
+    "sgmc_exceeds_R0": true
+  },
+  "verdict": "negative"
+}

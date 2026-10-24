@@ -16,7 +16,7 @@
 </header>
 
 <main>
-<section class="download-card"><h2>⬇ Current Primary Download (ANASIG f45) — DO NOT SUBMIT</h2><p>✅ <strong>FORMAT-VALID — OK TO DOWNLOAD for research</strong> (10/10 gates, [0,1], EPSG:32611 3730×3292, 37,654 dots). ⛔ <strong>DO NOT SUBMIT / NOT CLEARED</strong>: HOLDOUT-DTI 0.004967 does not beat the holdout best (0.006045), and the footprint-positive public witness gives 100% literal forward overlap. Locally lane-unique (worst 0.550).</p><p class="filename">h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif</p><p><a class="btn" href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif" download>Download ANASIG GeoTIFF — DO NOT SUBMIT</a> <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.zip" download>ZIP</a></p><p><strong>Name:</strong> <code>GEMSDOE92-ANASIG-f45Atop-20261024</code> · <strong>Note (84):</strong> <code>h33-h33-2-b2; ANASIG f45Atop 16944 far dots on analytic-signal ridges &gt;3px off H19-5</code> · <strong>SHA-256:</strong> <code>68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5</code></p></section>
+<section class="download-card"><h2>⬇ Current Primary Download (STEPEDGE f60Sraw, unique) — DO NOT SUBMIT</h2><p>✅ <strong>FORMAT-VALID + LITERAL-UNIQUE (local dot registry) — OK TO DOWNLOAD for research</strong> (all gates, [0,1], EPSG:32611 3730×3292, 37,654 dots; worst overlap 0.461 / |ρ| 0.396 over 28 rasters). ⛔ <strong>DO NOT SUBMIT / NOT CLEARED</strong> — decided by automated gates without human inspection: HOLDOUT-DTI 0.003980 does not beat the holdout bars (STRAINBREAK 0.005487 / RELIEF 0.006045), so <code>submission_eligible: false</code>. SGMC PROXY is the repo best (0.141464); instruments disagree, holdout gate governs. Dense-witness literal overlap 1.000 disclosed in the audit (ρ 0.0004). Prior primary ANASIG f45 remains served below, likewise not cleared.</p><p class="filename">h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif</p><p><a class="btn" href="downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif" download>Download STEPEDGE GeoTIFF — DO NOT SUBMIT</a> <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.zip" download>ZIP (one TIFF)</a></p><p><strong>Name:</strong> <code>GEMSDOE92-STEPEDGE-f60Sraw-20261024</code> · <strong>Note (93):</strong> <code>h33-h33-2-b2; STEPEDGE f60Sraw 22592 far dots on aperture-persistent DEM steps &gt;3px off H19-5</code> · <strong>SHA-256:</strong> <code>c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4</code> · <a href="downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-audit.json">Audit receipt</a> · <a href="downloads/stepedge_run_card.json">Run card</a> · <a href="ANALYSIS_20261024_STEPEDGE.md">Analysis</a></p><h3>Automated submission gates (machine-checked, no human inspection)</h3><table><thead><tr><th>Gate</th><th>Result</th><th>Evidence</th></tr></thead><tbody><tr><td>Format (CRS/shape/transform/float32/[0,1]/finite/zeros-outside/no catalogue mass)</td><td>✅ PASS</td><td>audit receipt gates_zeros, disk re-read</td></tr><tr><td>Leakage canary (single-feature sym AUC ≤ 0.90)</td><td>✅ PASS — 0.6216 max, built surface 0.5797</td><td>proxy audit</td></tr><tr><td>Uniqueness: surface + final dots vs local dot registry (fwd ≤ 0.70, |ρ| ≤ 0.90)</td><td>✅ PASS — 0.461 / 0.396 / surface 0.138 (28 rasters)</td><td>proxy audit uniqueness blocks</td></tr><tr><td>Uniqueness vs dense public witness (literal vendor rule)</td><td>⚠ FAIL-DISCLOSED — overlap 1.000 unavoidable (witness positive everywhere); ρ 0.0004</td><td>public witness receipt</td></tr><tr><td>HOLDOUT-DTI beats holdout bars, Δ vs R0 CI excludes 0</td><td>⛔ FAIL — 0.003980; Δ −0.000026 [−0.000534, +0.000458]</td><td>pooled holdout, 22,663 withheld</td></tr><tr><td>SGMC off-catalogue PROXY &gt; R0</td><td>✅ PASS — 0.141464 vs 0.096060 (repo best)</td><td>proxy audit</td></tr><tr><td><strong>Overall submission_eligible</strong></td><td><strong>⛔ FALSE — DO NOT SUBMIT</strong></td><td>run card automated_gates</td></tr></tbody></table></section>
 <section class="download-card">
   <h2>Primary Candidate Download &amp; Submission Metadata</h2>
   <div class="banner banner-ok">
@@ -42,20 +42,23 @@
 </section>
 
 <section>
-  <h2>How to Submit into the Competition (Step-by-Step)</h2>
+  <h2>How to Submit into the Competition (Step-by-Step) — only for an artifact whose audit says <code>submission_eligible: true</code></h2>
+  <p><strong>⛔ Do not perform these steps with the current artifact (STEPEDGE f60Sraw, or any prior candidate on this page): its automated gates return <code>submission_eligible: false</code>.</strong> The current artifact is blocked. The steps below are the exact, pre-written procedure for the first future artifact that passes every automated gate — the audit receipt beside that file is the single source of truth for its exact filename, submission name, and note.</p>
   <ol>
     <li>
-      <strong>Download the validated zeros-outside GeoTIFF:</strong> Click the download button above to save <code>GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif</code> (or its ZIP). Do not open and re-save in GIS software that could alter nodata headers, floating-point precision, or compression.
+      <strong>Check the machine verdict first:</strong> Open the candidate's <code>*-audit.json</code> beside the download and confirm <code>"submission_eligible": true</code> and <code>"verdict": "promote"</code>. Anything else = stop; do not submit. (Current primary: false / negative.)
     </li>
     <li>
-      <strong>Navigate to the DrivenData Submission Form:</strong> Open the official <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData GEMS Submissions page</a> while logged into your registered competitor account.
+      <strong>Download the validated zeros-outside GeoTIFF</strong> named in that audit (or its one-TIFF ZIP), byte-identical — do not open and re-save in GIS software that could alter nodata headers, floating-point precision, or compression. Verify SHA-256 against the audit if in doubt.
     </li>
     <li>
-      <strong>Upload the File:</strong> In the &ldquo;File to submit&rdquo; field, choose the downloaded <code>.tif</code> or <code>.zip</code> file.
+      <strong>Navigate to the DrivenData Submission Form:</strong> Open the official <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData GEMS Submissions page</a> while logged into your registered competitor account, and confirm the weekly quota shown there (the one state this project cannot read for you).
     </li>
     <li>
-      <strong>Enter Submission Note:</strong> In the &ldquo;Note (optional)&rdquo; field, enter the exact comment:
-      <br><code>Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots</code>
+      <strong>Upload the File:</strong> In the &ldquo;File to submit&rdquo; field, choose the downloaded <code>.tif</code> or <code>.zip</code> file. It is a single-band float32 GeoTIFF matching the submission format's CRS, shape and geotransform, with all values in [0,1] (the portal range error cannot occur).
+    </li>
+    <li>
+      <strong>Enter the Note</strong> exactly as recorded in that artifact's audit (<code>note</code> field, ≤140 chars) — for the current (blocked) primary that field reads <code>h33-h33-2-b2; STEPEDGE f60Sraw 22592 far dots on aperture-persistent DEM steps &gt;3px off H19-5</code>; do not use it unless this exact artifact is ever re-cleared by a selector.
     </li>
     <li>
       <strong>Record Receipt:</strong> After DrivenData processes the submission, record the official timestamp, submission ID, and confirmed score in <code>ledger/submissions.csv</code>.
@@ -85,13 +88,8 @@
     <li><strong>Concealed Fault Strands &amp; Relay Jogs:</strong> Blind tips, stepover transfer zones, and cross-faults where strain is actively localized.</li>
   </ul>
 
-  <h3>3. How Top Submissions Reach 0.4413</h3>
-  <p>To reach &gt;0.4413, a submission must combine:</p>
-  <ul>
-    <li><strong>Retaining High-Confidence Regional Skeletons:</strong> Keeping the top non-redundant potential-field skeleton dots (the ~20,000 core dots that cover deep fault traces).</li>
-    <li><strong>DEM Scarp-Break Coherence Allocation:</strong> Reallocating freed budget mass to high-coherence linear slope breaks ($L = \text{pct\_rank}(\|\nabla \text{slope}\|) \times \text{coherence}(\text{elev})$) >3 px off the skeleton.</li>
-    <li><strong>Active Geothermal Permeability Signatures:</strong> Targeting geodetic dilatational strain stepovers, hydrothermal potassium alteration haloes (K/Th radiometrics from GeoDAWN), and active thermal spring corridors (INGENIOUS / GDR catalog).</li>
-  </ul>
+  <h3>3. What Separates 0.2778 (CLAIM) from 0.4413 (leaderboard, fetched 2026-10-24)</h3>
+  <p>Measured in this session (<a href="ANALYSIS_20261024_STEPEDGE.md">analysis</a>): the owner's climb 0.1922 → 0.2778 is explained entirely by emission geometry on a fixed skeleton (dot spacing → 3 px kernel radius; catalogue-adjacent mass 14.3% → 0%; deleting 69% of pixels cost only 4.5 points of kernel coverage). Geometry is saturated. The remaining gap must therefore be <em>skeleton content</em> — fault traces the H19-5 worm skeleton never contained. The leading hypothesis (labelled hypothesis, not measured here) is that top teams exploit the organizer-distributed 1 m DEM coverage — the experts who made the labels mapped manually, most plausibly on high-resolution topography. That dataset requires DrivenData login and is the project's largest access gap. Within the 100 m stack, seven off-skeleton channels have now been tested in this repo family (BREAKLINE, SCARPPOL, ANASIG, STRAINBREAK, gravity crests, STEPEDGE, radiometric concordance screened); none has an organizer receipt, so none can claim to beat 0.2778.</p>
 </section>
 
 <section>

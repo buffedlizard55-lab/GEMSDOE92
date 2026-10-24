@@ -732,3 +732,53 @@ Catalogue hide-and-recover and SGMC price different truths; neither is the
 private expert-mapped label set. Treating either as decisive alone would be
 an irregularity. The only resolver is an organizer receipt, which remains
 Blocker 0 (ledger: BUILT rows grew by 3 this session, RECEIPT rows still 0).
+
+## 2026-10-24 (STEPEDGE session) — `gems/metric.py` implemented a non-official DTI algebra (FIXED)
+
+The module defined T as a dot-side sum of kernel weights (double-counting
+truth pixels covered by several dots) and G as *uncovered* truth mass, so
+`Totals.dti` could exceed 1 — its own unit test asserted DTI = 5.0 on a
+single perfectly-placed dot. Against `vendor/gems57/metric.dti_exact` (the
+instrument every holdout in this repo actually uses; verified this session
+against `dti_bruteforce` to 1.7e-16 and the official worked example
+3.00/1.89/2.00 → 0.6027 ≈ 0.60), the old code differed by up to 0.88 on 30
+random cases (`evidence/r0_forensics_20261024.json`,
+`scripts/analyze_r0_lineage.py`). Fixed once in the shared module to the
+official p.967 equations (T = Σ_g best_g; DTI = T/(0.2T+0.2(S−M)+0.8|G|);
+exact marginal gains rewritten; tests now cross-check vendor to 1e-9 and
+assert DTI ∈ [0,1]). Impact: none on any historical raster file or holdout
+number (no builder/gate read the buggy totals), but historical MASS
+*candidate ordering* used `rank_candidates` under the old algebra; those
+BUILTs remain as-built artifacts, and any future rebuild will differ.
+
+## 2026-10-24 (STEPEDGE session) — bridged `sample_submission.tif` is not the all-zero sample
+
+p.967: "A sample submission that predicts total fault absence is provided."
+The pinned bridge file's positive pixels are *pixel-identical to the fault
+catalogue* (60,988 px; verified this session). It is a catalogue-as-prediction
+example, not the zero sample. Footprint derivation (finite cells = 5,167,373)
+is unaffected, which is all this repo uses it for; but no one should treat
+its values as a format example. Provenance remains owner-mirror only.
+
+## 2026-10-24 (STEPEDGE session) — local-uniqueness verdicts are not stable as the registry grows
+
+STEPEDGE f45Sraw's far set is only 42.7% within 3 px of BREAKLINE f45's far
+dots, yet its whole-file forward overlap vs BREAKLINE f45 is 0.711 (duplicate):
+at equal dose, two greedy keep-subsets tile the same skeleton within 3 px of
+each other. BREAKLINE f45 itself measured "unique, worst 55%" in its own
+session only because no same-dose sibling existed yet. Consequence: a
+"locally unique" verdict is a statement about *that day's* registry, and
+every new sibling build can retroactively duplicate-block earlier primaries.
+Any future selector must re-run the full local uniqueness scan at decision
+time; historical uniqueness claims in older run cards must not be quoted
+without their registry date/composition. Mitigation used here (f60 +
+sibling-far repulsion) works but consumes dose headroom.
+
+## 2026-10-24 (STEPEDGE session) — prior screen code was lost; preserve screens in `scripts/`
+
+GRAVCrest/SCARPPOL-era screens ran from `.cache/diag/` and only their JSON
+survives, so their exact sampling cannot be re-executed. This session
+preserves its screen as `scripts/screen_stepedge_surfaces.py` and validated
+the harness by reproducing the BREAKLINE baseline to the digit
+(sym AUC 0.621604, far SGMC 0.072325) before trusting new numbers. Keep
+that pattern: no unpreserved screen code.

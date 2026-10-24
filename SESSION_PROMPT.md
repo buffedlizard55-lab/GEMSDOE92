@@ -99,3 +99,22 @@ See [current review](docs/REVIEW_CURRENT.md). The queued public check now reject
 ## Follow-up registry stop (2026-10-24)
 
 **2026-10-24 follow-up — BREAKLINE is now a confirmed duplicate under the literal registry rule.** A live, Git-blob-verified witness check compared one raster from 11GEMSDOE and five from 17GEMSDOE. BREAKLINE final dots have **100% forward 3-px overlap** with the dense 17GEMSDOE E-proba raster. This is REGISTRY-MEASUREMENT, not a competition score. The actual BREAKLINE pre-placement surface was not supplied and was **not checked**; no collar surface was substituted. A final-dot failure alone requires stop. No new experiment or TIFF was generated; no slot used. See [follow-up review](docs/REVIEW_REGISTRY_STOP_20261024.md) and [run card](evidence/breakline_registry_stop_run_card.json). **Download for research only; do not submit.**
+
+## STEPEDGE session (2026-10-24) — read with NEXT_STEPS top section
+
+- New primary download: `h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif`
+  (SHA-256 `c5dc98f2…07b4`): aperture-persistent sustained DEM steps (Band 12,
+  no coherence gate), 22,592 far dots >3 px off H19-5 and off BREAKLINE/SCARPPOL
+  f45 far dots + 15,062 greedy-kept R0. HOLDOUT-DTI **0.003980 [0.003295,
+  0.004702]**, Δ vs R0 −0.000026 [−0.000534, +0.000458]; SGMC **0.141464**
+  (repo best); canary 0.5797 (max 0.6216 control). Literal-unique vs 28 local
+  dot rasters (surface |ρ| 0.138; final 0.461/0.396); dense-witness literal
+  overlap 1.000 disclosed (ρ 0.0004). Verdict **negative** (holdout bars fail),
+  `submission_eligible: false` by automated gates; f33/f45 siblings are
+  duplicates — never submit. Ledger: +3 BUILT, still 0 RECEIPT.
+- R0 forensics: CLAIM 0.2778 = spacing→kernel radius + d_cat>2 clearance on a
+  fixed skeleton (`evidence/r0_forensics_20261024.json`). Shared-tool fix:
+  `gems/metric.py` now implements official DTI (was returning up to 5.0).
+  Leaderboard fetched 2026-10-24: #1 0.4413 (LEADERBOARD-SNAPSHOT).
+- Analysis `docs/ANALYSIS_20261024_STEPEDGE.md`; run card
+  `evidence/stepedge_run_card.json`. Budget spent (3 experiments).
