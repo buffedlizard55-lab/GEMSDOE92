@@ -594,3 +594,15 @@ submitted. Corollary for future lanes: the fixed full-catalogue proxy-diagnostic
 predicted the screened design at ratio 1.146 vs R0 and the (different) greedy build
 measured 0.964 — the instrument prices near-catalogue collar mass and **must never be
 labelled a holdout or a score**.
+
+## 2026-10-24 review (parallel session, merged) — conflicting landing-page recommendation and timestamp anomalies
+
+**Observation.** The inherited `docs/index.html` stated that DILATATION p12 was not cleared under the literal uniqueness rule, but a lower comparison table still labelled it `promote`. Its run card's overlap statistic was 99.37% within 3 px of registry parent R0, above the 70% stop threshold. The README also described that file as primary while the current findings said no file was both unique and expected to improve. The two visible recommendations were incompatible.
+
+**Correction (that session).** The landing page then featured the existing STEPOVER negative candidate because its saved local registry scan passes the specified thresholds; it explicitly said **OK TO DOWNLOAD, NOT RECOMMENDED FOR A WEEKLY SUBMISSION SLOT**. Its candidate raster/zip are byte-identical to the existing release artifacts (SHA-256 `e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205`); publishing an existing locally generated negative result, not a new experiment. A sidecar audit records independent format-gate results for the site-served copy. The submission guide is consolidated at `docs/SUBMIT.html`; old guide URLs point there.
+
+**Measured in that checkout.** The STEPOVER site TIF passes all 10 `gems.gates` checks, has 5,000 positive pixels, all finite values 0–1, sample-submission CRS/shape/transform; ZIP has exactly one `.tif` member. Its run card evidence remains HOLDOUT-DTI `gems57-pooled-hide-v2`, 11,321 withheld positives, `0.0000 [0.0000, 0.0000]`, negative vs R0. Uniqueness is limited to the 14 rasters in that local scan.
+
+**Date irregularity flagged, not silently normalized.** Several inherited files are stamped `2026-10-25` (DILATATION outputs, README/next-step text, an IRREGULARITIES section) despite the review date being `2026-10-24`. Provenance of those future-dated entries is not established; keep original filenames and historical records intact.
+
+**Post-merge note (BREAKLINE session).** The BREAKLINE session branch and this review ran in parallel from the same base. On merge, `BREAKLINEf45Ltop` — literal-unique (55.0 %) **and** holdout-positive vs R0 — supersedes STEPOVER as the site primary, since it strictly dominates the "unique but zero" candidate while carrying the same verdict (negative / NOT RECOMMENDED for a weekly slot). STEPOVER remains served and linked as a negative deliverable. The `promote` label discrepancy in the old README lane table was fixed independently in both branches.

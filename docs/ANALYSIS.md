@@ -1,52 +1,49 @@
-# GEMSDOE92 — Hypothesis analysis and submission design (session 2026-10-24)
+# GEMSDOE92 — evidence review and research decision (2026-10-24)
 
-## The question: h33-h33-2-b2-zeros scored 0.2778 — why, and can we beat it?
+## Question: why is `h33-h33-2-b2` associated with 0.2778, and can a new candidate exceed it?
 
-### What 0.2778 actually is
+### Evidence class
 
-`h33-h33-2-b2` (GEMSDOE32, 2026-10-04T22:00:00Z, uuid e5eb6e7e) is an **owner-reported CLAIM of 0.2778**. It is NOT an ORGANIZER-CONFIRMED receipt: `ledger/submissions.csv` has 27 BUILT rows and zero RECEIPT rows; no submission-page receipt date or score is recorded for it (see `registry/parents/R0.json`, `receipt: null`, IRREGULARITIES 2026-10-23 "No TOP_PUBLIC filled").
+The supplied GEMSDOE32 listing associates `h33-h33-2-b2` with 0.2778. In this checkout that is an owner-reported **CLAIM**, not an **ORGANIZER-CONFIRMED** submission receipt: there is no receipt date/score row for this item in `ledger/submissions.csv`, and `registry/parents/R0.json` has `receipt: null`. The prompt gives 0.3195 and 0.4413 as conflicting snapshots. The [official public leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/) was checked on 2026-10-24 and displayed 0.4413 at #1; this is a dated public leaderboard observation, not a submission-page receipt for GEMSDOE32 or GEMSDOE92. The [GEMSDOE32 project page](https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html) itself distinguishes model/holdout evidence from organizer scoring and says that no organizer score exists for its artifacts.
 
-Mechanically, the file is plausible as a strong entry: 37,654 unit-mass dots on the H19-5 ridge skeleton, D2.8 Poisson-disk spacing (min nn 2.828 px), zero mass on the mapped catalogue (`d_cat` min 2.236 px, 0 dots ≤ 2 px), exact DTI kernel budget (triangular R=3 px/300 m, alpha 0.2, beta 0.8). Under the DTI algebra, a fixed dot budget spent on non-redundant dots that each reach withheld truth pixels within 3 px maximizes `TP_w / (TP_w + 0.2 FP_w + 0.8 FN_w)`; R0's design (fixed count, spacing floor, off-catalogue placement) follows that algebra. That is *why* it plausibly ranked highest among the listed GEMSDOE site entries (next best listed: 0.2750, 0.2708, 0.2707, 0.2649, 0.2632, 0.2600…).
+### Mechanistic explanation: plausible, not causal proof
 
-### Can we generate a submission scoring higher than 0.2778?
+The documented parent uses a fixed 37,654-pixel prediction budget, H19-5 ridge support, D2.8 Poisson spacing, and an off-known-trace mask. Given the competition's distance-weighted, asymmetric Tversky scoring, a fixed budget of spatially distinct predictions near hidden faults can be more efficient than diffuse or redundant positive mass. That is a reason the design *could* do well; without the submission receipt and private test labels, we cannot prove which design choice caused 0.2778.
 
-**Unknown until an ORGANIZER-CONFIRMED receipt exists.** No local proxy (holdout-DTI, SGMC control, leakage canary) is the organizer metric; the brief (parallel-run protocol rule 3) forbids writing a projection as a score. What we *can* do, within budget, is:
+The competition page describes the target as geological faults, says the public known-fault data is incomplete and may contain errors, and defines expert-labelled new faults for scoring. Therefore the catalogue-derived holdout is a diagnostic, not an equivalent sample of private new-fault truth.
 
-1. Generate a **unique** raster (not a copy of any GEMSDOE site file; lane-checked against locally accessible registry rasters).
-2. Validate it locally without human intervention: format gates (CRS EPSG:32611, 3730x3292, geotransform of sample_submission.tif, float32, 1 band, values in [0,1], no NaN inside footprint, zero catalogue mass, dots > 3 px from catalogue).
-3. Evaluate it on the spatially-blocked hide-and-recover holdout (pooled DTI + 95% CI) and beat the R0 holdout baseline before spending a submission slot.
-4. Publish the TIF with an obvious download path and an executive summary stating exactly whether it is OK to download and submit (locally valid: YES; organizer acceptance/score: only after receipt).
+### Can GEMSDOE92 score higher?
 
-The submission below is generated under that discipline. Its live score relative to 0.2778 (and to the current leaderboard high of 0.4413 / 0.3195 depending on snapshot) is ORGANIZER-CONFIRMED only after upload; the local readout is HOLDOUT-DTI only.
+**Possible in principle; not established by this checkout.** No local HOLDOUT-DTI, feature AUC, scientific rationale, or projection is an organizer score. The only evidence for live performance is an ORGANIZER-CONFIRMED receipt after a human submission. The safer next action is better data- and leakage-controlled validation, not more score forecasts.
 
----
+## Candidate evidence and current disposition
 
-## Candidate hypotheses not yet tried in this repo
+### STEPOVER — unique local negative deliverable
 
-Tried axes (repo): MASS, PRUNE, SNAP, CONCENTRATION, RELIEF — all reallocate or reposition dots on/near H19-5 support, relief terciles, 1 km catalogue-prior blocks, or edge-response windows ≤ 2 px.
+The repository's STEPOVER run card records this recipe: derive visible trace tips from the visible catalogue only; construct strike continuation/step-over favourability; select off-catalogue dots; and use `gems57-pooled-hide-v2` with buffered whole-segment holdout, pooled DTI α=0.2, β=0.8, 300 m triangular kernel. The run card reports 11,321 withheld positives and HOLDOUT-DTI `0.0000 [0.0000, 0.0000]` vs R0 proxy baseline `0.0037 [0.0031, 0.0044]`. Its stated explanation is a structural zero: held truth is a subset of the catalogue, while the candidate is constrained away from the full catalogue. The zero does not establish the live score for genuinely unmapped faults.
 
-| Rank | Hypothesis | Layer(s) | Physical signature | Why it catches catalogue-missing faults | Difference from repo implementation | Est. DTI gain | Cost |
-|---|---|---|---|---|---|---|---|
-| 1 | **STEPOVER** (validated this session) | visible catalogue traces (existing_faults/labels) only | Step-over / relay-ramp geometry at trace tips: dots 3–10 px off mapped traces, in the strike-continuation direction of trace tips | Blind geothermal strands localize at 3-D step-overs and relay ramps between mapped traces; these junctions are under-mapped in USGS/INGENIOUS and held-out truth sits just beyond the visible buffer (nearest_visible_to_truth = 3.16 px) | Places NEW dots only off-catalogue (≥3 px) at tip step-overs; SNAP moves existing dots ≤2 px onto edges; PRUNE refills nearest legal pixels; CONCENTRATION uses 1 km block priors | Holdout decides (target: clear R0 0.00370 [0.00301,0.00432]) | Low — local data only |
-| 2 | **MAG-EDGE ridges** | Band 3 TMI horiz grad, Band 13 unsigned gravity gradient (19-band stack) | `||∇TMI||` / gravity-gradient ridge crests (demagnetized hydrothermal fault zones) | Blind faults with geophysical expression but no surface trace; not captured by trace-proximity priors | Needs training_features.tif (419 MB owner mirror, gitignored restore); repo SNAP mixes bands and moves dots ≤2 px, never places off-catalogue dots by gradient ridge | Medium | Medium — 419 MB restore |
-| 3 | **RAD-ANOMALY** | USGS GeoDAWN radiometrics (DOI 10.5066/P93LGLVQ, public domain; pinned ext_geodawn_rad_u8) | K/Th depletion or eU enrichment halos over hydrothermal alteration | Concealed faults marked by alteration, invisible to structural priors | Not used anywhere in repo; external restore needed (26 MB) | Medium | Medium — external data |
-| 4 | **WELLSPRING proximity** | GDR #1391 CC BY 4.0 INGENIOUS geothermometry (pinned gdr_wellspring_in_footprint.csv) | Near-surface geothermal indicators / well geochemistry | Directly targets blind geothermal systems rather than structure | Only used report-only in repo (SGMC control) | Low-medium | Low — 2.1 MB pinned CSV |
-| 5 | **TIP-DILATION** (fallback) | visible catalogue traces | Pure distance-to-tip field (no strike alignment) | Same step-over mechanism as #1, simpler | No strike information; lower expected gain than STEPOVER | Low | Low |
+The saved lane scan reports a maximum surface rank correlation 0.0277, final-dot rank correlation 0.0082, and maximum 3-px dot overlap 0.2534 for 14 locally accessible registry rasters. Thus it clears the specified numeric thresholds only within that local scan. It is format-valid and available for download, but its negative result means **not recommended for a weekly slot**.
 
-**Validated top candidate this session: STEPOVER** (Rank 1). Hypotheses 2–5 are documented for future sessions; 2–4 require external/restored data that must be obtained (pins exist in registry/session_manifest.json) before they are viable.
+### RELIEF and DILATATION — positive local holdout, failed literal uniqueness rule
 
----
+Their saved run cards report positive catalogue-derived holdout deltas. However, 99.37–99.40% of their dots lie within 3 px of registered parent R0, above the operator's 70% duplication threshold. Record them as duplicates; do not substitute arrival-set comparisons for the stated whole-dot rule. Their local result does not clear them for a slot.
 
-## Method of the validated submission (STEPOVER)
+### Historical comparison
 
-- Holdout: `gems57.buffered_component_draw` (label-blind quadrants, whole-component withholding, `hide_frac=0.20`, `buffer_px=3`, `boundary_px=12`, seed 20) → 11,321 withheld positives across 4 folds / 323 spatial blocks.
-- Features derived ONLY from visible faults (`catalogue & ~hidden_all`); visible faults masked pixel-exactly from scoring (`known` mask).
-- Candidate domain: footprint & `d_cat > 3 px` (zero catalogue mass; off mapped faults) & within 3–10 px of a visible trace tip (step-over/relay zone).
-- Favourability `s(x) = cos²(relative angle between tip→pixel and tip strike) * exp(-(d_tip - 3)/3)` — visible geometry only.
-- Dots placed greedily by descending `s`, 1 px minimum spacing, unit mass, count chosen by holdout-DTI sweep (5k/10k/15k).
-- Score: pooled DTI, alpha 0.2, beta 0.8, triangular kernel R=300 m (3 px), evaluator `gems57-pooled-hide-v2` — reported as HOLDOUT-DTI with 95% CI and withheld-positive count.
-- Leakage canary: single-feature AUC of `s` vs held truth must be < 0.90 (result below).
-- Packaging: `gems57.submission_writer` fail-closed writer → all-finite GeoTIFF (zeros outside footprint) + ZIP + receipt JSON; then `gems.gates` MUST-pass format gates vs `sample_submission.tif`.
-- Uniqueness (LANE): rank correlation ≤ 0.90 and ≤ 70% of dots within 3 px of every locally accessible registry raster (R0 + GEMSDOE92 releases) — checked on surface before placement and on final dots.
+TIPGAP FAR clears the recorded R0 overlap threshold at 67.00% of dots within 3 px but its `gems57-pooled-hide-v2` HOLDOUT-DTI is below R0. It remains a negative deliverable. The conflicting trade-off is evidence against another derivative of the same parent, not a reason to reinterpret the lane gate.
 
-**Labels:** every number hereafter is HOLDOUT-DTI (evaluator version `gems57-pooled-hide-v2`, # withheld positives, 95% CI) or ORGANIZER-CONFIRMED (submission-page receipt). No projection is written as a score. The organizer high score (0.4413 / 0.3195 depending on snapshot) and the GEMSDOE32 claim (0.2778) are CLAIMS/receipts from other sites, not results of this submission.
+## Candidate hypotheses for a future reset
+
+Three to five untried hypotheses with layer names, physical signatures, why they might detect unmapped structures, differences from implemented methods, qualitative priority/cost, non-fault mimics, and data availability are in [`hypotheses_20261024.md`](hypotheses_20261024.md). The current highest-priority idea cannot be tested here because the authorized 19-band feature stack is absent from `.cache/gems_inputs/`. The official DrivenData data page is login-gated in this environment. No experiment was started and no weekly slot was touched.
+
+Before any future slot selector action: restore authorized inputs and verify hashes; run each feature-alone leakage canary; use whole-segment buffered holdout, visible-only features, exact visible-catalogue mask, pooled DTI and 95% CI; run correlation/overlap checks before and after placement; stop on a duplicate; and run local format checks on the actual served bytes.
+
+## Sources and verification boundaries
+
+- [DrivenData problem and metric page](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/) — consulted directly; it describes the goal, incomplete known-fault data, feature classes, and distance-weighted Tversky metric.
+- [DrivenData reference solution](https://github.com/drivendataorg/gems-prize-reference-solution) — public code/repository; it is a baseline, not an organizer receipt for this candidate.
+- [USGS GeoDAWN catalog](https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7) — official data provenance.
+- [DOE GDR INGENIOUS #1391](https://gdr.openei.org/submissions/1391) — source link.
+- [Official competition rules](https://docs.nlr.gov/docs/fy26osti/96647.pdf).
+
+Source-page availability is not the same as local input availability. This review checked the local repository and official references; it did not access DrivenData account-only data, private test truth, or a submission receipt.

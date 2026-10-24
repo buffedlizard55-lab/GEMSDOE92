@@ -16,7 +16,7 @@
 | Status | Meaning |
 |---|---|
 | **✅ FORMAT-VALID — OK TO DOWNLOAD** | All 10 MUST gates pass on an independent re-read of the **served** bytes. All-finite float32 in `[0, 1]`, zeros outside the footprint, `nodata=None` — so neither the training stack's `−3.4028235e+38` sentinel nor a stray NaN can trigger `Predicted values must be in range [0, 1]`. |
-| **⚠ NOT CLEARED FOR A SLOT** | HOLDOUT-DTI 0.004861 does not beat the holdout best (RELIEF p10, 0.006045, unsubmittable duplicate). Verdict by the pre-registered rule: **negative**. Any upload is a recorded **human decision**, not an agent recommendation. |
+| **⚠ NOT CLEARED FOR A SLOT — NOT RECOMMENDED** | HOLDOUT-DTI 0.004861 does not beat the holdout best (RELIEF p10, 0.006045, unsubmittable duplicate). Verdict by the pre-registered rule: **negative**. Any upload is a recorded **human decision**, not an agent recommendation. |
 | **HOLDOUT-DTI above R0** | Δ **+0.000854 [+0.000300, +0.001423]**, CI excludes 0; off-catalogue SGMC control **+31 %** vs R0. Local instruments, **not** leaderboard scores. Weekly-slot promotion is a human step (3/week cap); this agent never submits. |
 
 ```bash

@@ -49,7 +49,7 @@ TIPGAP FAR (`far18f33`) is unique vs the local registry and format-valid. HOLDOU
 
 - State: primary = `h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif`
   (sha256 `cd9c8a564588e6542b379cd36cbe05fc6da3be07b8edbc542bf737336907810e`).
-  Verdict **negative / NOT_CLEARED** (HOLDOUT-DTI 0.004861 < holdout best RELIEF p10
+  Verdict **negative / NOT_CLEARED — NOT RECOMMENDED for a weekly slot** (HOLDOUT-DTI 0.004861 < holdout best RELIEF p10
   0.006045), but the first literal-unique (55.0 % ≤ 3 px vs R0, worst of 17 registry
   rasters) + parent-dominating (+0.000854 [+0.000300, +0.001423]) file in this repo;
   SGMC control +31 % vs R0. Do not relabel it "promote" without a receipt.

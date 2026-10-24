@@ -1,11 +1,10 @@
 """The public site must expose an obvious zeros-outside download and must never
 present a local HOLDOUT number as an organizer score.
 
-Updated 2026-10-25 when the DILATATION lane merged with the TIPGAP lane on main.
-The earlier version asserted one hard-coded TIPGAP sentence; the primary is now
-chosen by HOLDOUT-DTI, so the contract is written against *properties* of the
-page (one obvious primary, a slot warning, the portal error explained, evidence
-labels intact, every served file linked) rather than one lane's wording.
+The current contract intentionally asserts an obvious primary download, explicit
+format-valid vs slot-recommendation distinction, the portal error explanation,
+evidence labels, an audit receipt matching served bytes, and links to every
+served candidate rather than relying on one stale method name.
 """
 
 import json
@@ -26,6 +25,8 @@ def test_index_has_download_and_slot_warning():
     html = _index()
     # an obvious download, and the encoding that survives the portal validator
     assert "OK TO DOWNLOAD" in html
+    assert "NOT RECOMMENDED" in html
+    assert "unique-within-local-registry" in html
     assert re.search(r'href="downloads/[^"]+-zeros\.tif"', html), \
         "no zeros-outside download is offered"
     # the portal failure the site exists to prevent must be named
@@ -37,9 +38,10 @@ def test_index_has_download_and_slot_warning():
     assert "HOLDOUT-DTI" in html
     first_holdout = html.split("HOLDOUT-DTI")[1][:200]
     assert "ORGANIZER-CONFIRMED" not in first_holdout
-    # the negative lane must stay visible as a deliverable, with its verdict
-    assert "TIPGAPfar18f33" in html
+    # the unique-within-scan negative lane must be the obvious primary
+    assert "STEPOVER-tip10px-N5000" in html
     assert "negative" in html
+    assert "NOT RECOMMENDED FOR A WEEKLY SUBMISSION SLOT" in html
 
 
 def test_index_links_every_served_zeros_file():

@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""Fail closed if the GitHub Pages download is missing, out of range, or mislabeled.
+"""Fail closed if a GitHub Pages download is missing, out of range, or mislabeled.
 
-Rewritten 2026-10-25 when the DILATATION lane merged with the TIPGAP lane. The
-previous version hard-coded one lane's filename, sha256 and form note, so it
-broke the moment the primary changed -- and it only ever checked that one file
-even when several were being served. This version derives the primary from the
-page itself and gates **every** served zeros-outside raster, so an orphaned or
-out-of-range download cannot ship unnoticed.
+The primary is read from the landing page, and every served zeros-outside TIFF
+is gated. Per-file expected dot counts are taken from adjacent audit receipts
+when available; older fixed-budget descendants are still validated for format
+and catalogue compliance. The primary audit SHA must match the served bytes.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import sys
+import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,6 +20,7 @@ sys.path[:0] = [str(ROOT), str(ROOT / "vendor")]
 
 import numpy as np  # noqa: E402
 import rasterio  # noqa: E402
+from scipy.ndimage import distance_transform_edt  # noqa: E402
 
 from gems.gates import run_gates, summarise  # noqa: E402
 from gems.rasters import sha256_file  # noqa: E402
@@ -30,7 +31,30 @@ DOWNLOADS = DOCS / "downloads"
 INDEX = DOCS / "index.html"
 SAMPLE = ROOT / "data" / "bridge" / "sample_submission.tif"
 LABELS = ROOT / "data" / "bridge" / "labels.tif"
-N_DOTS = 37654
+
+def _receipt_dot_count(path: Path) -> int | None:
+    """Read a dot-count assertion from the adjacent audit/run receipt if present."""
+    stem = path.stem.removesuffix("-zeros")
+    candidates = [path.with_name(stem + "-audit.json"), path.with_suffix(".json")]
+    for receipt_path in candidates:
+        if not receipt_path.is_file():
+            continue
+        try:
+            doc = json.loads(receipt_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if isinstance(doc.get("n_positive_pixels"), int):
+            return doc["n_positive_pixels"]
+        nested = doc.get("validator_receipt")
+        objects = [doc.get("raster"), doc.get("validator")]
+        if isinstance(nested, dict):
+            objects.append(nested.get("validator"))
+        for obj in objects:
+            if isinstance(obj, dict):
+                n = obj.get("emitted_positive_pixels", obj.get("positive_pixels"))
+                if isinstance(n, int):
+                    return n
+    return None
 
 
 def main() -> int:
@@ -42,8 +66,8 @@ def main() -> int:
     html = INDEX.read_text(encoding="utf-8")
 
     # ---- the page contract, written against properties not one lane's wording --
-    for needle in ("OK TO DOWNLOAD", "Predicted values must be in range [0, 1]",
-                   "HOLDOUT-DTI"):
+    for needle in ("OK TO DOWNLOAD", "NOT RECOMMENDED", "Predicted values must be in range [0, 1]",
+                   "HOLDOUT-DTI", "unique-within-local-registry"):
         if needle not in html:
             problems.append(f"index.html missing {needle!r}")
     if not re.search(r"(weekly slot|3/week|weekly competition slot|human step)", html):
@@ -66,6 +90,12 @@ def main() -> int:
         footprint = np.isfinite(ds.read(1))
     with rasterio.open(LABELS) as ds:
         cat = ds.read(1) > 0.5
+    # Parent R0 is itself a registry raster and must be included in the literal gate.
+    with rasterio.open(ROOT / "data" / "parent_R0_zeros.tif") as ds:
+        r0 = ds.read(1) > 0
+    r0_distance = distance_transform_edt(~r0)
+    n_footprint = int(footprint.sum())
+    r0_count = int((r0 & footprint).sum())
 
     for path in served:
         tag = path.name
@@ -81,8 +111,26 @@ def main() -> int:
                 problems.append(f"{tag}: mass outside footprint")
             if np.any(a[cat] > 0):
                 problems.append(f"{tag}: mass on catalogue")
-            if int((a > 0).sum()) != N_DOTS:
-                problems.append(f"{tag}: n_dots {int((a > 0).sum())} != {N_DOTS}")
+            candidate_mask = (a > 0) & footprint
+            actual_dots = int(candidate_mask.sum())
+            expected_dots = _receipt_dot_count(path)
+            if expected_dots is not None and actual_dots != expected_dots:
+                problems.append(f"{tag}: n_dots {actual_dots} != receipt {expected_dots}")
+            elif actual_dots == 0:
+                problems.append(f"{tag}: raster contains no positive predictions")
+
+            overlap_fraction = float(np.count_nonzero(candidate_mask & (r0_distance <= 3))) / actual_dots
+            p = actual_dots / n_footprint
+            q = r0_count / n_footprint
+            joint = int((candidate_mask & r0).sum()) / n_footprint
+            denom = np.sqrt(p * (1.0 - p) * q * (1.0 - q))
+            # For binary masks, Spearman with average ranks equals binary Pearson.
+            rho = (joint - p * q) / denom if denom > 0 else 0.0
+            print(f"  REGISTRY R0 {tag}: rho={rho:.4f}; {overlap_fraction:.2%} within 3 px")
+            if (rho > 0.90 or overlap_fraction > 0.70) and "duplicate" not in html.lower():
+                problems.append(f"{tag}: registry threshold exceeded; page must disclose duplicate stop")
+            if "OK TO DOWNLOAD AND SUBMIT" in html:
+                problems.append("index.html conflates format-valid download with submission clearance")
 
         try:
             assert_submittable(validate(path, footprint, cat))
@@ -113,10 +161,33 @@ def main() -> int:
                     problems.append("audit receipt does not record overall_pass == true")
                 if doc.get("sha256_zeros") != sha256_file(primary):
                     problems.append("audit receipt sha256 != primary bytes on disk")
+                uniqueness = doc.get("uniqueness", {})
+                if uniqueness and uniqueness.get("unique_within_scope") is not True:
+                    problems.append("primary audit does not pass its stated local uniqueness scan")
+                if "NOT RECOMMENDED" not in html and "NOT a weekly slot" not in html:
+                    problems.append("primary page does not disclose slot recommendation")
                 bad = [g["name"] for g in doc.get("gates_zeros", []) if not g["ok"]]
                 if bad:
                     problems.append(f"audit receipt records failing gates: {bad}")
             print(f"  PRIMARY {primary.name}")
+
+            # The competition accepts a ZIP only when it contains one GeoTIFF;
+            # verify the actual linked archive and its payload bytes.
+            for zip_match in re.finditer(r'href="(downloads/[^\"]+\.zip)"', html):
+                zip_path = DOCS / zip_match.group(1)
+                if not zip_path.is_file():
+                    problems.append(f"linked ZIP is missing: {zip_path.name}")
+                    continue
+                try:
+                    with zipfile.ZipFile(zip_path) as archive:
+                        tiff_members = [n for n in archive.namelist()
+                                        if n.lower().endswith((".tif", ".tiff"))]
+                        if len(tiff_members) != 1:
+                            problems.append(f"{zip_path.name}: expected one TIFF, found {len(tiff_members)}")
+                        elif sha256_file(primary) != hashlib.sha256(archive.read(tiff_members[0])).hexdigest():
+                            problems.append(f"{zip_path.name}: TIFF payload differs from primary download")
+                except (OSError, zipfile.BadZipFile) as exc:
+                    problems.append(f"{zip_path.name}: invalid ZIP ({exc})")
 
     if problems:
         print("SITE CHECK FAIL")

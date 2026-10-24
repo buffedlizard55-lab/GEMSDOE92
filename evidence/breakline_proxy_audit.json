@@ -868,6 +868,14 @@
           "jaccard_exact_pixels": 0.433728
         },
         {
+          "registry_file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+          "their_dots": 5000,
+          "forward_overlap_my_dots_within_3px": 0.029771,
+          "reverse_overlap_their_dots_within_3px": 0.2322,
+          "binary_spearman_phi": 0.002383,
+          "jaccard_exact_pixels": 0.00162
+        },
+        {
           "registry_file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
           "their_dots": 37654,
           "forward_overlap_my_dots_within_3px": 0.514739,
@@ -922,14 +930,6 @@
           "reverse_overlap_their_dots_within_3px": 0.803686,
           "binary_spearman_phi": 0.551627,
           "jaccard_exact_pixels": 0.383982
-        },
-        {
-          "registry_file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif",
-          "their_dots": 5000,
-          "forward_overlap_my_dots_within_3px": 0.029771,
-          "reverse_overlap_their_dots_within_3px": 0.2322,
-          "binary_spearman_phi": 0.002383,
-          "jaccard_exact_pixels": 0.00162
         }
       ]
     },
@@ -1016,6 +1016,14 @@
           "jaccard_exact_pixels": 0.389729
         },
         {
+          "registry_file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+          "their_dots": 5000,
+          "forward_overlap_my_dots_within_3px": 0.029054,
+          "reverse_overlap_their_dots_within_3px": 0.2274,
+          "binary_spearman_phi": 0.002164,
+          "jaccard_exact_pixels": 0.00155
+        },
+        {
           "registry_file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
           "their_dots": 37654,
           "forward_overlap_my_dots_within_3px": 0.478701,
@@ -1070,14 +1078,6 @@
           "reverse_overlap_their_dots_within_3px": 0.770994,
           "binary_spearman_phi": 0.507379,
           "jaccard_exact_pixels": 0.343155
-        },
-        {
-          "registry_file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif",
-          "their_dots": 5000,
-          "forward_overlap_my_dots_within_3px": 0.029054,
-          "reverse_overlap_their_dots_within_3px": 0.2274,
-          "binary_spearman_phi": 0.002164,
-          "jaccard_exact_pixels": 0.00155
         }
       ]
     },
@@ -1164,6 +1164,14 @@
           "jaccard_exact_pixels": 0.331165
         },
         {
+          "registry_file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+          "their_dots": 5000,
+          "forward_overlap_my_dots_within_3px": 0.028204,
+          "reverse_overlap_their_dots_within_3px": 0.2226,
+          "binary_spearman_phi": 0.001871,
+          "jaccard_exact_pixels": 0.001456
+        },
+        {
           "registry_file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
           "their_dots": 37654,
           "forward_overlap_my_dots_within_3px": 0.430233,
@@ -1218,14 +1226,6 @@
           "reverse_overlap_their_dots_within_3px": 0.727599,
           "binary_spearman_phi": 0.445714,
           "jaccard_exact_pixels": 0.290117
-        },
-        {
-          "registry_file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif",
-          "their_dots": 5000,
-          "forward_overlap_my_dots_within_3px": 0.028204,
-          "reverse_overlap_their_dots_within_3px": 0.2226,
-          "binary_spearman_phi": 0.001871,
-          "jaccard_exact_pixels": 0.001456
         }
       ]
     }

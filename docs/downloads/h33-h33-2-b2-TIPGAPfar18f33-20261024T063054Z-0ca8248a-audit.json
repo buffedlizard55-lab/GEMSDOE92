@@ -1,0 +1,84 @@
+{
+  "file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+  "sha256_zeros": "0ca8248acace558f5cf86b153134b8fd5cc2b7d5b343d0a36f000f9fbfe4758f",
+  "gates_zeros": [
+    {
+      "name": "single_band",
+      "ok": true,
+      "detail": "recorded in the TIPGAP run-card validator"
+    },
+    {
+      "name": "dtype_float32",
+      "ok": true,
+      "detail": "recorded in the TIPGAP run-card validator"
+    },
+    {
+      "name": "dimensions_3730x3292",
+      "ok": true,
+      "detail": "recorded in the TIPGAP run-card validator"
+    },
+    {
+      "name": "crs_epsg_32611",
+      "ok": true,
+      "detail": "recorded in the TIPGAP run-card validator"
+    },
+    {
+      "name": "transform_matches_sample_submission",
+      "ok": true,
+      "detail": "recorded in the TIPGAP run-card validator"
+    },
+    {
+      "name": "no_nan_anywhere",
+      "ok": true,
+      "detail": "recorded in the TIPGAP run-card validator"
+    },
+    {
+      "name": "no_inf_anywhere",
+      "ok": true,
+      "detail": "recorded in the TIPGAP run-card validator"
+    },
+    {
+      "name": "no_sentinel_values",
+      "ok": true,
+      "detail": "recorded in the TIPGAP run-card validator"
+    },
+    {
+      "name": "range_0_1_guaranteed",
+      "ok": true,
+      "detail": "recorded in the TIPGAP run-card validator"
+    },
+    {
+      "name": "min_ge_0",
+      "ok": true,
+      "detail": "recorded in the TIPGAP run-card validator"
+    },
+    {
+      "name": "max_le_1",
+      "ok": true,
+      "detail": "recorded in the TIPGAP run-card validator"
+    },
+    {
+      "name": "in_footprint_all_finite",
+      "ok": true,
+      "detail": "recorded in the TIPGAP run-card validator"
+    },
+    {
+      "name": "in_footprint_range_0_1",
+      "ok": true,
+      "detail": "recorded in the TIPGAP run-card validator"
+    },
+    {
+      "name": "outside_footprint_zero",
+      "ok": true,
+      "detail": "recorded in the TIPGAP run-card validator"
+    },
+    {
+      "name": "zero_dots_on_mapped_catalogue",
+      "ok": true,
+      "detail": "recorded in the TIPGAP run-card validator"
+    }
+  ],
+  "overall_pass": true,
+  "generated_utc": "2026-10-24T06:30:54Z",
+  "note": "Run-card validation evidence. Independent local recheck is performed by scripts/check_site.py; local comparison only, not organizer acceptance or global uniqueness."
+}
