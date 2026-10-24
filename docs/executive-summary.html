@@ -16,6 +16,21 @@
 </header>
 <main>
 <section class="download-card">
+  <h2>Current primary (2026-10-24): PIEDFRONT f35Ptop (HOLDOUT-DTI 0.006425) — OK TO DOWNLOAD, NOT CLEARED TO SUBMIT</h2>
+  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH.</strong> The PIEDFRONT f35Ptop zeros-outside GeoTIFF passed all 10 local format gates on disk reread: one float32 band; EPSG:32611; 3730 × 3292; template-matching transform; finite values in [0,1]; no NaNs inside the footprint; zeros outside; zero catalogue mass; 37,654 unit-mass dots.</div>
+  <div class="banner banner-warn"><strong>⛔ DO NOT SUBMIT / NO WEEKLY SLOT CLEARED.</strong> PIEDFRONT f35Ptop achieves the highest non-collar <strong>HOLDOUT-DTI</strong> in this repository (<strong>0.006425 [0.005375, 0.007479]</strong>, beating R0 0.004006 by +0.002418 [+0.001538, +0.003255] and exceeding prior holdout best RELIEF p10 0.006045 in point estimate by +0.000379 [−0.000257, +0.001066]), and passes every local registry uniqueness threshold (worst 3-px forward overlap 0.6500 vs h19_5.tif ≤ 0.70, worst |φ| 0.5859 ≤ 0.90 across 29 local rasters) and leakage canary (max symmetric AUC 0.6391 ≤ 0.90). However, its paired 95% CI vs RELIEF p10 includes 0, its off-catalogue SGMC bedrock proxy is 0.059993 vs R0 0.096060, and the hash-verified public registry witness (<code>17GEMSDOE E-proba</code>, positive on all 5,167,373 footprint pixels) triggers the literal &gt;70% 3-px overlap rule.</div>
+  <p class="filename">h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif</p>
+  <p><a class="btn" href="downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif" download>⬇ Download PIEDFRONT f35Ptop research GeoTIFF — DO NOT SUBMIT</a>
+     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.zip" download>Download ZIP (one TIFF)</a></p>
+  <dl class="meta">
+    <div><dt>Suggested name (research record only)</dt><dd><code>GEMSDOE92-PIEDFRONT-f35Ptop-20261024</code></dd></div>
+    <div><dt>Suggested note (≤140 chars, 111 chars; do not upload this artifact)</dt><dd><code>h33-h33-2-b2; PIEDFRONT f35Ptop 13179 far piedmont scarp-gravity dots &gt;3px off H19-5 + 4000 H19-5 hole refill</code></dd></div>
+    <div><dt>SHA-256 (zeros)</dt><dd><code>e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8</code></dd></div>
+    <div><dt>Evidence</dt><dd><a href="downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-audit.json">Format audit</a> · <a href="downloads/piedfront_run_card.json">Run card</a> · <a href="ANALYSIS_20261024_PIEDFRONT.md">PIEDFRONT analysis</a> · <a href="HYPOTHESES_20261024_PIEDFRONT.md">PIEDFRONT hypotheses</a> · <a href="downloads/piedfront_public_registry_witness17.json">17GEMSDOE witness</a></dd></div>
+  </dl>
+</section>
+
+<section class="download-card">
   <h2>Current decision: NOT CLEARED — no artifact is approved to submit</h2>
   <div class="banner banner-ok"><strong>FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH.</strong> The current primary ANASIG f45 zeros-outside GeoTIFF passed the repository's 10 local format gates: one float32 band; EPSG:32611; 3730 × 3292; template-matching transform; finite values in [0,1]; no NaNs inside the footprint; and zeros outside.</div>
   <div class="banner banner-warn"><strong>DO NOT SUBMIT / NO WEEKLY SLOT CLEARED.</strong> The local HOLDOUT-DTI is below the recorded holdout-best baseline, and a hash-verified public registry witness is positive throughout the competition footprint. Under the repository's literal 3-pixel overlap rule, the final dots are a duplicate. The repository review concludes that this witness makes the rule fail for every nonempty in-footprint raster. Do not evade this by emitting an empty raster or moving predictions outside the footprint. No new TIFF was generated in this review.</div>

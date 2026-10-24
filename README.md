@@ -4,7 +4,31 @@
 
 ---
 
-## Latest (2026-10-25, SPRINGALIGN): NEW UNIQUE TIF GENERATED
+## Latest (2026-10-24, PIEDFRONT f35Ptop): NEW UNIQUE TIF GENERATED — HIGHEST NON-COLLAR HOLDOUT-DTI (`0.006425`)
+
+**✅ OK TO DOWNLOAD for research (10/10 format gates PASS on disk reread) — ⛔ NOT CLEARED FOR A WEEKLY SLOT (verdict `negative`).**
+
+| Deliverable | Link |
+|---|---|
+| **GeoTIFF (primary, zeros-outside)** | [docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif](docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif) |
+| ZIP (one TIFF) | [docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.zip](docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.zip) |
+| Submission name | `GEMSDOE92-PIEDFRONT-f35Ptop-20261024` |
+| Note (≤140 chars, 111 chars) | `h33-h33-2-b2; PIEDFRONT f35Ptop 13179 far piedmont scarp-gravity dots >3px off H19-5 + 4000 H19-5 hole refill` |
+| SHA-256 (zeros) | `e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8` |
+| Audit / Run Card / Analysis | [gate audit receipt](docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-audit.json) · [run card](evidence/piedfront_run_card.json) · [analysis](docs/ANALYSIS_20261024_PIEDFRONT.md) · [hypotheses](docs/HYPOTHESES_20261024_PIEDFRONT.md) · [17GEMSDOE witness](evidence/piedfront_public_registry_witness17.json) |
+
+**What `PIEDFRONT` is and why it broke the off-skeleton `HOLDOUT-DTI` ceiling:**
+- Prior off-skeleton lanes (`BREAKLINE f45` `0.004861`, `SCARPPOL f45` `0.005315`, `STRAINBREAK f60` `0.005487`, `ANASIG f45` `0.004967`, `SPRINGALIGN f33` `0.004865`) trailed `RELIEF p10` (`0.006045`) because unnormalized DEM slope-break magnitude $\|\nabla\,\text{det\_elev\_slope}\|$ placed **74.8%** of far dots in steep mountain range interiors (`det_elev >= 38.76 m`), whereas active Basin-and-Range normal faults and blind geothermal step-overs sit at the piedmont range-front transition. Simultaneously, `R0` (`h33-h33-2-b2`) had **794 spacing-legal holes** on `H19-5` ($d_{\text{R0}} > 2.8\text{ px}, d_{\text{cat}} > 2.0\text{ px}$) left behind when `b2` pruned $d_{\text{cat}} \le 2\text{ px}$ dots without re-thinning.
+- `PIEDFRONT` normalizes the DEM scarp-break by local background slope ($\|\nabla\,\text{det\_elev\_slope}\| / (\text{det\_elev\_slope} + 2^\circ)$, Band 19 × Band 12 coherence), gates by the piedmont elevation + basement-depth + isostatic-gravity-slope envelope $W_{\text{pied}}$ (Bands 12, 15, 5), refills **4,000 piedmont `H19-5` holes** via exact marginal expected-DTI greedy, and places **13,179 (35%) / 15,062 (40%) / 16,944 (45%) far dots** (`78.7%` in the piedmont) strictly $>3.0\text{ px}$ off `H19-5` and $>3.0\text{ px}$ off all 5 prior off-skeleton lanes' far sets.
+- **Pooled `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, 22,663 withheld positives, 8 folds, 1,000 paired 20 km cluster draws):**
+  - **`PIEDFRONT f35Ptop`: `0.006425 [0.005375, 0.007479]`** — **all-time highest non-collar `HOLDOUT-DTI` in the repository**, beating `R0` (`0.004006`) by **`+0.002418 [+0.001538, +0.003255]` (`+60.4%`)**, beating `BREAKLINE f45` (`0.004861`) by **`+0.001564 [+0.000471, +0.002607]` (`+32.2%`)**, beating `STRAINBREAK f60` (`0.005487`) by `+0.000938 [-0.000322, +0.002239]`, and exceeding `RELIEF p10` (`0.006045`) in point estimate across all three doses (`f35Ptop` `0.006425`, `f40Ptop` `0.006402`, `f45Ptop` `0.006137`).
+  - **Leakage canaries:** max symmetric AUC = `0.639112` ($\le 0.90$ PASS).
+  - **Local registry uniqueness (`REGISTRY-MEASUREMENT`, 29 local rasters):** pre-placement surface worst `|ρ| = 0.127084`, top-37,654 3-px overlap `0.434907`; final dots `f35Ptop` worst 3-px forward overlap **`0.649997` (`h19_5.tif`, $\le 0.70$ PASS)**, worst `|φ| = 0.585871` ($\le 0.90$ PASS).
+  - **Why verdict is still `negative` (NOT CLEARED FOR A WEEKLY SLOT):** (1) Paired 95% CI against `RELIEF p10` (`[-0.000257, +0.001066]`) includes zero and off-catalogue `SGMC` bedrock fault proxy (`0.059993`) is below `R0` (`0.096060`), and (2) the dense public witness (`17GEMSDOE E-proba`, positive on 100% of the footprint) triggers the literal $>70\%$ forward-overlap rule (`evidence/piedfront_public_registry_witness17.json`).
+
+---
+
+## Prior (2026-10-25, SPRINGALIGN): UNIQUE TIF GENERATED
 
 **✅ OK TO DOWNLOAD for research — ⛔ NOT CLEARED FOR A WEEKLY SLOT (verdict negative).**
 
@@ -106,7 +130,18 @@ The prompt's **0.3195 and 0.4413 are conflicting leaderboard snapshots/claims**;
 
 The concepts and previous screens are catalogued in [`docs/HYPOTHESES.html`](docs/HYPOTHESES.html), [`docs/HYPOTHESES.md`](docs/HYPOTHESES.md), and [`docs/REVIEW_CURRENT.md`](docs/REVIEW_CURRENT.md). Their rankings are research priorities, not score forecasts. BREAKLINE, SCARPPOL, ANASIG, and STRAINBREAK are already tested—not new hypotheses. The current full-footprint public-registry witness blocks all nonempty in-footprint predictions under the literal overlap rule; do not emit another submission artifact unless that policy blocker is explicitly resolved.
 
-## Candidate Geological Hypotheses (Ranked)
+## Candidate Geological Hypotheses (Ranked — Session 2026-10-24 `PIEDFRONT` + Prior Inventory)
+
+### Session 2026-10-24 Pre-Registered Untried Hypotheses ([`docs/HYPOTHESES_20261024_PIEDFRONT.md`](docs/HYPOTHESES_20261024_PIEDFRONT.md))
+
+| Rank | Hypothesis | Target Signature | Layer(s) Involved | Missing Fault Rationale | Expected DTI Rank / Cost | Data Source & Official Link |
+|---|---|---|---|---|---|---|
+| **1** | **`PIEDFRONT` (Built — Holdout Best `0.006425`)** | Relative scarp-break $\|\nabla\,\text{det\_elev\_slope}\| / (\text{det\_elev\_slope}+2^\circ)$ × `coh(det_elev)` × piedmont/cover gravity-slope envelope $W_{\text{pied}}$, plus 4,000 piedmont `H19-5` hole refills | Band 12 (`det_elev`), Band 19 (`det_elev_slope`), Band 5 (`iso_grav_anom_slope`), Band 15 (`depth_to_base_surf`) | Unnormalized `BREAKLINE` placed 74.8% of far dots in steep mountain range interiors; relative break + piedmont gravity/cover gating concentrates 78.7% of far dots in the piedmont range-front transition where active Quaternary normal faults and blind geothermal step-overs sit. | **Rank 1 (Built: `0.006425`)** / Low (~35 lines in-stack) | [USGS 3DEP](https://www.usgs.gov/3d-elevation-program) · [USGS GeoDAWN](https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7) · [GDR #1391](https://gdr.openei.org/submissions/1391) |
+| **2** | **`GRAVTILT` (Untried)** | Isostatic gravity tilt-angle zero-crossing $\cos(\arctan(\text{Band 11}/\text{Band 5})) \times \text{pct\_rank}(\text{Band 5}) \times \text{coh}(\text{Band 13})$ | Band 11 (`iso_grav_anom`), Band 5 (`iso_grav_anom_slope`), Band 13 (`gravity`) | AGC-like ratio of residual gravity to horizontal gradient places $\theta_g = 0$ directly over buried basement fault steps at all depths, even where `GRAVCrest`'s raw horizontal-gradient inflection was washed out by regional basin gradients. | **Rank 2** / Low (~30 lines in-stack) | [USGS GeoDAWN Catalog](https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7) · [GDR #1391](https://gdr.openei.org/submissions/1391) |
+| **3** | **`GEOTHERM-CHALC` (Untried)** | Chemical geothermometer disequilibrium $\Delta T = \max(T_{\text{quartz}}, T_{\text{chalc}}, T_{\text{cat}}) - T_{\text{surface}}$ coupled with `cond_surf` (Band 17) & `geod_dilaterate` (Band 8) | Pinned GDR `#1391` well/spring geochemistry (`na_ppm`, `k_ppm`, `ca_ppm`, `sio2_ppm`, `temp_c`) + Bands 17, 8 | Cold/warm mixed springs with high silica/Na-K-Ca geothermometer disequilibrium mark deep fault upflow conduits missed by `SPRINGALIGN`'s raw $T \ge 40^\circ\text{C}$ filter. | **Rank 3** / Medium (~65 lines, pinned CSV + stack) | [GDR / INGENIOUS #1391](https://gdr.openei.org/submissions/1391) |
+| **4** | **`MAGTILT-CONTACT` (Untried)** | Magnetic tilt-derivative steep gradient $\|\nabla\arctan(\text{Band 9}/\text{Band 3})\|$ gated by `rtp` coherence (Band 2) and low `tc` (Band 6) | Band 2 (`rtp`), Band 3 (` mag_hgrad`), Band 6 (`tc`), Band 9 (`mag_1vd`) | Equalizes shallow volcanic and deep sub-alluvial intrabasinal horst/relay fault contacts where `ANASIG`'s unnormalized amplitude was dominated by shallow basaltic lavas. | **Rank 4** / Low–Medium (~45 lines in-stack) | [USGS GeoDAWN Aeromagnetics](https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7) |
+
+### Prior Hypothesis Inventory ([`docs/HYPOTHESES.html`](docs/HYPOTHESES.html) · [`docs/HYPOTHESES.md`](docs/HYPOTHESES.md))
 
 | Rank | Hypothesis | Target Signature | Layer(s) Involved | Missing Fault Rationale | Expected DTI Rank / Cost | Data Source & Official Link |
 |---|---|---|---|---|---|---|

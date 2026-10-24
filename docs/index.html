@@ -4,18 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Auditable, locally validated GeoTIFF candidate for DrivenData DOE GEMS Prize #306.">
-  <title>GEMSDOE92 — GEMS submission workbench (SPRINGALIGN primary)</title>
+  <title>GEMSDOE92 — GEMS submission workbench (PIEDFRONT primary)</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="hero">
   <p class="kicker">DOE GEMS Prize · DrivenData #306 · EPSG:32611 · 100 m</p>
-  <h1>SPRINGALIGN GeoTIFF — format-valid, unique download — NOT CLEARED TO SUBMIT</h1>
-  <p class="lede">Download the all-finite, single-band ANASIG GeoTIFF (magnetic analytic-signal ridges off the H19-5 skeleton) for research. It is lane-unique against every local dot registry raster, and still <strong>DO NOT SUBMIT</strong>: not cleared for a weekly slot (read the banners). Its audit, holdout result, and uniqueness checks are published beside the file.</p>
+  <h1>PIEDFRONT f35Ptop GeoTIFF — format-valid, unique download (HOLDOUT-DTI 0.006425) — NOT CLEARED TO SUBMIT</h1>
+  <p class="lede">Download the all-finite, single-band PIEDFRONT f35Ptop GeoTIFF (piedmont range-front relative scarp-break × isostatic gravity slope + H19-5 piedmont hole repair, <strong>HOLDOUT-DTI 0.006425 [0.005375, 0.007479]</strong>, highest non-collar holdout score in this repository) or prior research lanes (SPRINGALIGN, ANASIG, STRAINBREAK, BREAKLINE). It is lane-unique against every local dot registry raster (worst 3-px overlap 0.650 ≤ 0.70, worst |φ| 0.586 ≤ 0.90 across 29 local rasters), and still <strong>DO NOT SUBMIT</strong>: not cleared for a weekly slot (read the banners). Its audit, holdout result, and uniqueness checks are published beside the file.</p>
   <nav style="margin: 0.8rem 0; font-size: 0.95rem;">
     <strong>Quick Navigation:</strong>
     <a href="executive-summary.html">Executive Summary</a> ·
     <a href="SUBMIT.html">Submission Guide</a> ·
+    <a href="HYPOTHESES_20261024_PIEDFRONT.md">PIEDFRONT Hypotheses</a> ·
+    <a href="ANALYSIS_20261024_PIEDFRONT.md">PIEDFRONT Analysis</a> ·
     <a href="HYPOTHESES.html">Candidate Hypotheses</a> ·
     <a href="ANALYSIS_20261024.md">Scientific Analysis</a>
   </nav>
@@ -36,8 +38,25 @@ REGISTRY-MEASUREMENT: the hash-verified 17GEMSDOE E-proba witness is positive on
 <a href="downloads/session_review_run_card.json">Session run card</a></p>
 </section>
 
-<section id="download-springalign" class="download-card" data-primary="true">
-  <h2>NEW PRIMARY (2026-10-25): SPRINGALIGN f33Ctop — unique GeoTIFF generated this session</h2>
+<section id="download-piedfront" class="download-card" data-primary="true">
+  <h2>NEW PRIMARY (2026-10-24): PIEDFRONT f35Ptop — unique GeoTIFF generated this session (HOLDOUT-DTI 0.006425)</h2>
+  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> Automated validation (no human inspection): 10/10 MUST gates pass on disk re-read; single float32 band; EPSG:32611, 3730×3292, template transform; finite values in [0,1] (portal error <code>Predicted values must be in range [0, 1]</code> cannot occur); no NaN inside footprint; zeros outside; zero catalogue mass; 37,654 dots.</div>
+  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DO NOT SUBMIT YET.</strong> Verdict negative under the pre-registered rule: <strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives) <strong>0.006425 [0.005375, 0.007479]</strong> — the highest non-collar holdout score in this repository — beats parent R0 0.004006 (+60.4%, paired Δ +0.002418 [+0.001538, +0.003255]), beats BREAKLINE f45 0.004861 (paired Δ +0.001564 [+0.000471, +0.002607]), beats STRAINBREAK f60 0.005487 (+0.000938 [−0.000322, +0.002239]), and exceeds prior holdout best RELIEF p10 0.006045 in point estimate (paired Δ +0.000379 [−0.000257, +0.001066]), across all three doses (f35Ptop 0.006425, f40Ptop 0.006402, f45Ptop 0.006137). However, its paired 95% CI vs RELIEF p10 includes 0, its off-catalogue SGMC bedrock fault proxy is 0.059993 vs R0 0.096060 (reflecting relocation of dots out of mountain-core bedrock into the piedmont transition), and the dense 17GEMSDOE public witness remains <strong>DUPLICATE UNDER THE LITERAL REGISTRY RULE</strong> policy-wide (100% footprint halo; <a href="downloads/piedfront_public_registry_witness17.json">witness receipt</a>). Leakage canary max symmetric AUC 0.639112 (≤0.90). Local uniqueness (29 local registry rasters): surface worst |ρ| 0.127084, surface top-37,654 3-px overlap 0.434907; final dots worst 3-px forward overlap 0.649997 vs h19_5.tif (≤0.70), worst |φ| 0.585871 (≤0.90) — <strong>locally unique, byte-unique (new SHA-256)</strong>.</div>
+  <p class="filename">h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif</p>
+  <p><a class="btn" href="downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif" download>⬇ Download PIEDFRONT f35Ptop GeoTIFF (.tif) — OK TO DOWNLOAD, DO NOT SUBMIT</a>
+     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.zip" download>Download ZIP (one TIFF)</a></p>
+  <dl class="meta">
+    <div><dt>Submission name</dt><dd><code>GEMSDOE92-PIEDFRONT-f35Ptop-20261024</code></dd></div>
+    <div><dt>Note (≤140 chars, 111 chars)</dt><dd><code>h33-h33-2-b2; PIEDFRONT f35Ptop 13179 far piedmont scarp-gravity dots &gt;3px off H19-5 + 4000 H19-5 hole refill</code></dd></div>
+    <div><dt>SHA-256 (zeros)</dt><dd><code>e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8</code></dd></div>
+    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 unit-mass dots (20,475 kept R0 + 4,000 piedmont H19-5 hole refill + 13,179 far)</dd></div>
+    <div><dt>Audit / run card</dt><dd><a href="downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-audit.json">gate audit receipt</a> · <a href="downloads/piedfront_run_card.json">run-card JSON</a> · <a href="HYPOTHESES_20261024_PIEDFRONT.md">ranked hypotheses</a> · <a href="ANALYSIS_20261024_PIEDFRONT.md">full analysis</a> · <a href="downloads/piedfront_public_registry_witness17.json">17GEMSDOE witness</a> · <a href="SUBMIT.html">submission guide</a></dd></div>
+  </dl>
+  <p><strong>Hypothesis:</strong> active Basin-and-Range range-front normal faults and concealed geothermal step-overs localize at the piedmont transition where bedrock steps down across an isostatic gravity gradient (Band 5) beneath moderate alluvial cover (Bands 12, 15), producing a sharp relative break-in-slope <code>||∇ det_elev_slope|| / (det_elev_slope + 2°)</code> (Band 19) along a coherent lineament (Band 12). Unnormalized BREAKLINE placed 74.8% of its far dots in steep mountain range interiors; normalizing by background slope and gating by the piedmont gravity-cover envelope concentrates 78.7% of far dots (73.9% overall) in the piedmont while refilling 4,000 post-<code>b2</code> holes on H19-5. Named mimic: Lake Lahontan shoreline terraces and incised fan-head trenches over regional basin-margin gravity gradients. Sibling doses (research only): <a href="downloads/h33-h33-2-b2-PIEDFRONTf40Ptop-20261024-6b0cd56a-zeros.tif">f40Ptop (0.006402)</a> · <a href="downloads/h33-h33-2-b2-PIEDFRONTf45Ptop-20261024-aad86ac9-zeros.tif">f45Ptop (0.006137)</a>.</p>
+</section>
+
+<section id="download-springalign" class="download-card">
+  <h2>Prior primary (2026-10-25): SPRINGALIGN f33Ctop — unique GeoTIFF — DO NOT SUBMIT</h2>
   <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> Automated validation (no human inspection): 10/10 MUST gates pass on disk re-read; single float32 band; EPSG:32611, 3730×3292, template transform; finite values in [0,1] (portal error <code>Predicted values must be in range [0, 1]</code> cannot occur); no NaN inside footprint; zeros outside; zero catalogue mass; 37,654 dots.</div>
   <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DO NOT SUBMIT YET.</strong> Verdict negative under the pre-registered rule: <strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives) <strong>0.004865 [0.004025, 0.005785]</strong> beats parent R0 0.004006 (paired Δ +0.000859 [+0.000263, +0.001500]) but does <em>not</em> beat the holdout best RELIEF p10 0.006045 (paired Δ −0.001180 [−0.002065, −0.000337]). Leakage canary max symmetric AUC 0.553 (&lt;0.90). SGMC PROXY 0.0802 vs R0 0.0961. Local uniqueness: surface worst |ρ| 0.009 (100k sample, 28+ rasters); final dots worst forward overlap 0.670 vs parent R0 (by construction, &lt;0.70), worst |φ| 0.668 — <strong>locally unique, byte-unique (new SHA-256)</strong>. The dense 17GEMSDOE public witness remains <strong>DUPLICATE UNDER THE LITERAL REGISTRY RULE</strong> policy-wide (its 3-px halo covers the whole footprint; reported, not waived). A human selector step, separate from this page, decides any weekly slot.</div>
   <p class="filename">h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif</p>
