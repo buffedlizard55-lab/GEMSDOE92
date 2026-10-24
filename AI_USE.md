@@ -149,45 +149,53 @@ slots, receipts) are left blank.
 
 ---
 
-## Session 6 — CONCENTRATION, prior-driven km-scale reallocation (2026-10-24)
+## Session 6 — CONCENTRATION, 1 km known-fault prior (2026-10-24)
 
 ### What AI wrote
-- `gems.variants.concentration_reallocate` plus helpers `spacing_blocked`,
-  `block_mean`, `block_counts`, `block_density_cv_pair`, `_greedy_place_spaced`,
-  and a `direction` switch (`concentrate` / `spread`) so the mirror image required
-  by the previous session's IRREGULARITIES entry can be built from one code path.
-  The 2026-10-23 `concentration` builder is kept untouched for its unit tests but
-  is not used for a submission: it places moved dots at block centres and ignores
-  the catalogue exclusion, the ridge mask and the spacing floor.
-- `scripts/build_concentration_variants.py` — manifest SHA-256/byte verification,
-  byte-exact R0 lineage rebuild, the two km-scale priors, the three variants, both
-  encodings, disk re-read gates, a MODEL projection (anchored on the parent's
-  CLAIM, with a flat-prior mechanics-only control and a prior-sharpening sweep),
-  ledger rows and `evidence/concentration_variants.json`.
-- `scripts/report_concentration_proxies.py` — report-only hide-and-recover PROXY,
-  leakage canaries and SGMC control (`evidence/concentration_proxy_audit.json`).
-- `tests/test_concentration.py` — 10 tests (fraction moved, donor/receiver block
-  selection, mass, allowed-mask, spacing, determinism, refusal cases).
-- Updates to `README.md` (CURRENT STATE), `SLOT_PLAN.md`, `docs/SUBMIT.md`,
-  `docs/mechanism_cards.md`, `IRREGULARITIES.md`, and this file.
+- `scripts/build_concentration_variants.py` — full pipeline: SHA-256/byte verification of all 12 pinned inputs, byte-exact R0 lineage rebuild (both encodings), 1 km Gaussian-KDE known-fault prior, deterministic mover selection and capacity-aware placement, write of 3 GeoTIFF pairs, disk re-read of 13 checks per file, `gems.gates` run, ledger append (idempotent) and `evidence/concentration_variants.json`.
+- `scripts/report_concentration_proxies.py` — report-only hide-and-recover, SGMC control and canaries, all labelled `interpretable: false` because the design prior is catalogue-derived (`evidence/concentration_proxy_audit.json`).
+- `docs/mechanism_cards.md`, `ledger/mechanism_cards.json`, `SLOT_PLAN.md`, `docs/SUBMIT.md`, `IRREGULARITIES.md`, `README.md` (CURRENT STATE block only) and this file.
+- Measured preconditions that drove the design: saturated D2.8 packing capacity (794 / 9,760 / 29,114 legal pixels at 2.8284 / 2.0 / 1.414 px), R0's catalogue-distance profile (median 46.57 px), and the previous MASS_A10 spacing breach (min_nn 1.0 px).
+
+### What the human decided and supplies
+- The human delegated the axis choice ("pick your own session"); the AI selected `CONCENTRATION`.
+- The human supplies `TOP_PUBLIC` with its observation date, confirms the entity's rolling-week quota and remaining slots, decides which single file (if any) to upload, and records the submission-page `RECEIPT` score and date in `ledger/submissions.csv`.
+- The human decides whether the declared secondary change (moved-dot spacing floor `2.0 px` instead of `2.8284 px`, needed because the parent is a saturated packing) is acceptable for a slot.
+
+### What the AI did not do
+No submission, no login, no leaderboard or competition-page access, no Dropbox contact, no label probing, no invented numbers. Unknown values (`TOP_PUBLIC`, slots, receipts) are left blank.
+
+
+---
+
+## Session 7 — second CONCENTRATION run, one surviving variant (2026-10-24)
+
+### What AI wrote
+- `gems.variants.concentration_reallocate` (+ `spacing_blocked`, `block_mean`,
+  `block_counts`, `block_density_cv_pair`, `_greedy_place_spaced`) with a
+  `direction` switch, so donor/receiver blocks and the mirror image come from one
+  code path with exact marginal-DTI placement.
+- `scripts/build_concentration_physics_variant.py`, `scripts/report_concentration_physics_proxies.py`,
+  `tests/test_concentration_physics.py`, `evidence/concentration_physics_variant.json`,
+  `evidence/concentration_physics_proxy_audit.json`.
+- Docs: this entry, one IRREGULARITIES entry per decision-changing finding, one
+  mechanism card, a README CURRENT STATE bullet, a `SLOT_PLAN` reserve line and a
+  `docs/SUBMIT.md` reserve row.
 
 ### What the human decides
-- Axis choice was delegated by the session brief ("Do not prompt me over choosing
-  an Axis"); AI chose CONCENTRATION over RELIEF (no detrended-elevation terciles
-  are pinned as such) and SPACING (lowest priority per the brief).
-- Predictions follow a rule fixed before the build: point = midpoint of the
-  own-prior and other-prior MODEL projections, range = those two projections.
-  No proxy or live score feeds a prediction or a build.
-- The human supplies `TOP_PUBLIC` (with date), confirms slot counts, decides
-  whether the sub-floor spacing caveat is acceptable, uploads at most one file per
-  slot from their own account, and records receipt scores and dates.
+- Axis choice was delegated by the brief; the AI chose CONCENTRATION over RELIEF
+  (no detrended-elevation terciles pinned as such) and SPACING (lowest priority).
+- Whether the sub-floor-spacing caveat is acceptable (it is unavoidable at a fixed
+  count on a 1-px skeleton — see IRREGULARITIES).
+- All uploads, receipt transcription, `TOP_PUBLIC` and slot accounting.
 
-### What the AI found and flagged rather than papered over
-- A count-preserving CONCENTRATION swap **cannot** keep the parent's 2.828 px
-  spacing floor: only 90 legal pixels exist at that floor. Measured mechanical cost
-  of the swap is `-0.013` to `-0.021`; every prior must beat that to win.
-- Both `catd` variants need the catalogue-density prior to carry more than 0.013 of
-  DTI information; `phys10` is predicted to lose.
-- The hide-and-recover PROXY is flat for `catd10` (0.004011 vs R0 0.004006) and the
-  instrument is structurally unable to see this axis — reported as such rather than
-  dressed up as support.
+### What the AI found, flagged, and cut
+- Measured, not assumed: the swap's mechanical cost with no spatial information is
+  `-0.016` of model DTI for this file; the physics prior is worth about `+0.014`
+  and still ends short, hence `MODEL:-0.008`.
+- Two of the three variants this session originally built (`catd10`, `catdS10`)
+  duplicated a set that had meanwhile merged from a parallel session, so they were
+  **deleted from the ledger instead of being offered for slots** — the honest
+  outcome of the cross-session dedupe rule, even though it removed work.
+- The 2.0 px spacing floor was tried and rejected because it silently reduced the
+  real reallocation to 7.34%; the measurement is recorded instead of the choice.

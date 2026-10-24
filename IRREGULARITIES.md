@@ -216,49 +216,129 @@ gitignored and not redistributed. No new external data was introduced.
 
 **Decision.** `scripts/build_snap_scarp_variants.py` reads `training_features.tif` with `ds.read(b, masked=True).filled(np.nan)` (plus `> -1e30` guard) and uses unsigned **`Band 5 (iso_grav_anom_slope)`** paired with the piedmont break-in-slope inflection `||grad(det_elev_slope)||` (`Band 19`). Furthermore, enforcing literal `"Same count, same exclusions"` (`d_cat > 2.0 px` on both kept and moved dots, rather than a one-way `d_cat > 3.0` membrane on moved dots) prevents partial depletion of the `2.0 < d_cat <= 3.0` collar (`2,171` vs `2,175` dots, `0.01%` delta vs `-24.7%` under `g0.05`), keeping `SNAPscarp2p0px`, `SNAPscarp1p4px`, and `SNAPpot2p0px` 100% unconfounded with `PRUNE`.
 
+## 2026-10-24 (CONCENTRATION session) — R0 is a saturated D2.8 packing, so every "add or relocate" axis is capacity-bound
+
+**Observation.** R0 is `dot_thin(H19-5, 2.8) & d_cat > 2.0`: a maximal
+Poisson-disk packing of the H19-5 support. Measured this session on the pinned
+grid: of the 66,151 catalogue-legal H19-5 pixels that do **not** already carry a
+dot, only **794 (1.2%) are >= 2.8284 px** from the nearest parent dot, 5,383 are
+>= 2.2 px, 9,760 are >= 2.0 px, 29,114 are >= 1.414 px.
+
+**Impact — decision-changing.** The brief's CONCENTRATION recipe ("move 10-20%
+of dots from low-prior to high-prior blocks") is impossible at the parent's own
+spacing floor: 20% of the file is 7,531 dots and the whole grid offers 794 legal
+destinations. The same cap applies to MASS *additions* and to any future
+"extend coverage" idea: you cannot add mass to R0's support without either
+relaxing the spacing invariant or leaving the H19-5 evidence field.
+
+**Decision.** The three CONCENTRATION arms keep every inherited dot exactly
+where the parent put it and declare ONE secondary change, identical in all three
+arms: moved dots are placed on a `>= 2.0 px` floor (200 m — inside the 300 m
+kernel radius and half the GeoDAWN 400 m line spacing). The floor cannot create
+the up/down difference the axis tests because both directions carry it. Recorded
+in `evidence/concentration_variants.json` (`spacing_policy`), in `docs/SUBMIT.md`
+and in the mechanism cards. **Consequence for the plan:** SPACING is now the
+highest-value follow-up axis, because it is the parameter that unlocks every
+other relocation/expansion experiment.
+
+## 2026-10-24 (CONCENTRATION session) — the previous session's MASS_A10/SWAP10 quietly broke the spacing invariant
+
+**Observation.** `releases/h33-h33-2-b2-MASS_A10-20261023-e5613a00.tif` (41,419
+dots) contains 3,765 dots that are not in R0. All 3,765 sit on H19-5, but their
+distance to the nearest R0 dot is **1.0 px at the minimum and 1.0 px at the
+median**; the file's `min_nn` is `1.000 px` and 13.54% of its dot pairs are
+closer than the parent's `2.8284 px`. `MASS_SWAP10` inherits the same additions.
+
+**Impact — decision-changing.** Those files were already re-scoped (H19-5 is
+binary, so the "ranking" was a tie) as a random 10% perturbation. They are also
+a **mass + spacing** change at once, not a clean mass change: each added dot sits
+inside the DTI kernel of an existing dot, so it mostly double-credits one strand
+while adding `S`. Any receipt from them cannot be read as a mass-budget result.
+
+**Decision.** No file is rewritten or deleted (they are a prior session's
+artefact and already in the ledger). No conclusion about the mass optimum may be
+drawn from them; a clean mass test still needs a real ranking and a spacing-safe
+placement, which the saturated-packing measurement above shows is only possible
+by *removing* dots.
+
+## 2026-10-24 (CONCENTRATION session) — the block-CV reference band still gives no direction, and this axis cannot reach it
+
+**Observation.** The brief quotes "the best files reportedly sit at 0.51-0.59"
+for block-density CV. Measured with the repo's own definitions at 1 km blocks,
+R0 is `CV_all_eligible = 1.880` and `CV_occupied = 0.619`. After the moves:
+`up10 0.648`, `up20 0.655`, `dn10 0.648` (occupied-block definition). The band
+is below R0 under the occupied definition and unrelated to it under the
+all-eligible definition.
+
+**Impact — decision-changing.** The statistic cannot be used to choose a dose or
+a target, and neither direction moves the file into the quoted band — moving dots
+from dense to sparse blocks *raises* CV (it adds first dots to sparse blocks)
+just as much as the canonical direction does.
+
+**Decision.** The CV is reported as a descriptive statistic only. The axis is
+tested by its *direction* and its *prior*, not by chasing 0.51-0.59.
+
+## 2026-10-24 (CONCENTRATION session) — this session's local PROXY instruments are invalid by construction
+
+**Observation.** The prior used to place dots is a km-scale KDE of the known-fault
+catalogue, and the repo's report-only instrument withholds catalogue components
+as pseudo-truth. Its leakage canary for the design prior is symmetric AUC
+`0.9273` (the four physical bands stay at `0.5012-0.5685`).
+
+**Impact — decision-changing.** Per the brief, a canary above 0.90 means "stop and
+investigate". Investigating: the prior is *deliberately* catalogue-derived (the
+catalogue is a provided competition input and the organizer states new-fault truth
+includes newly mapped geometry of existing systems), so this is not hidden test
+label leakage — but it does mean the hide-and-recover and SGMC numbers cannot
+support or refute these three arms. They are recorded with
+`interpretable: false`.
+
+**Decision.** For these arms only, the live receipt is the only decision
+instrument. For completeness the probe returned `R0 0.004006`, `up10 0.004011`,
+`up20 0.004008`, `dn10 0.002099` (hide-and-recover) and `R0 0.096060`,
+`up10 0.092966`, `up20 0.089916`, `dn10 0.092296` (SGMC) — flat-to-worse, which
+is at least consistent with "the known-fault halo is not where the withheld
+catalogue components are".
+
 ---
 
-## 2026-10-24 (CONCENTRATION session) — a count-preserving CONCENTRATION move cannot hold R0's 2.828 px spacing floor
+## 2026-10-24 (second CONCENTRATION session) — a count-preserving move cannot hold the parent's spacing floor, and the floor sets how much of the "10%" is real
 
-**Observation.** The H19-5 support is a **1-px-wide skeleton** (121,131 px over a
-123,000 km² area). Counting pixels that are at least `R` px from every one of
-R0's 37,654 dots and also legal (on the skeleton, off catalogue, `d_cat > 3.0`,
-data-valid): `R = 1.0` → 61,472 px; `R = 2.0` → 8,077 px; `R = 2.828` → **90 px**.
+**Observation.** The H19-5 support is a 1-px-wide skeleton (121,131 px). Counting
+legal destination pixels (on the skeleton, data-valid, off catalogue, `d_cat > 3`)
+that are at least `R` px from every one of R0's 37,654 dots: `R = 1.0` → 61,472;
+`R = 2.0` → 8,077; `R = 2.828` (the parent's own D2.8 floor) → **90**.
 
-**Impact — decision-changing.** The brief's CONCENTRATION recipe ("move 10-20% of
-dots between blocks, count fixed") requires placing 3,765-7,531 new dots. With a
-2.83 px floor there are 90 legal destinations in the entire study area, so the
-recipe as literally specified is impossible, and any implementation that claims to
-preserve spacing is either not moving dots or not telling the truth. Dropping the
-floor to 1.0 px makes the recipe feasible but changes what the experiment tests:
-98-100% of arrivals land within 2.83 px of a surviving dot, i.e. they duplicate part
-of a neighbour's kernel footprint while still paying `+1` of denominator mass.
+**Impact — decision-changing, twice.** (i) The brief's CONCENTRATION recipe is
+impossible at the parent's spacing floor, so any implementation that claims to keep
+2.828 px is either not moving dots or misreporting. (ii) The floor chosen changes
+how much of the requested 10% is genuine: at a 2.0 px floor only 8,077 destination
+pixels exist, and a 3,765-dot move then sends **1,000 of its 3,765 arrivals back
+onto vacated donor pixels**, so the real positional change falls to **7.34%** and
+the "10%" becomes bookkeeping. At 1.0 px (unique pixels only) the move is a genuine
+10.00% (3,765 removed, 3,765 arrivals, no returns).
 
-**Decision.** Built the axis at `min_nn = 1.0` (unique pixels only), and *measured*
-the consequence instead of assuming it: with a flat prior and no spatial
-information at all, the identical swap costs `-0.013` (`catd10`), `-0.016`
-(`phys10`) and `-0.021` (`catdS10`) of model DTI (`model_flat_prior` in
-`evidence/concentration_variants.json`). Those numbers are the bar every prior must
-clear, and they are quoted in `SLOT_PLAN.md` and `docs/SUBMIT.md`. The next axis
-(`ADD_HIGH_PRIOR`, proposed, not built) adds dots instead of swapping them so the
-removal cost disappears.
+**Decision.** `phys10` is built at `min_nn = 1.0` and the trade-off is recorded in
+its evidence file (`spacing_floor_tradeoff`). The other session's files on this
+axis declare a 2.0 px floor; that is their choice and is not contradicted here,
+but the two are **not** dose-comparable. Whatever the human submits, the sub-floor
+spacing caveat in `docs/SUBMIT.md` applies.
 
-## 2026-10-24 (CONCENTRATION session) — the brief's block-CV band 0.51-0.59 still matches no defensible definition, and the mirror direction was built because of it
+## 2026-10-24 (second CONCENTRATION session) — two sessions built the same axis from the same parent
 
-**Observation.** R0's 1 km block-density CV, four ways: all in-footprint blocks
-`1.885`; blocks containing ridge-mask pixels `0.765`; dots per ridge-mask pixel in
-those blocks `0.733`; blocks containing at least one dot `0.619` (the 2026-10-23
-measurement). The quoted optimum `0.51-0.59` sits below every one of them.
+**Observation.** This branch and PR #13 independently built a 1 km,
+catalogue-density CONCENTRATION set from `h33-h33-2-b2` on the same day, with the
+same moved-dot rules (`on H19-5`, `d_cat > 3.0`, kept dots at parent positions) and
+the same mirror direction. The branch's `catd10` and `catdS10` were near-duplicates
+of `catblk10up10` and `catblk10dn10`.
 
-**Impact.** The band cannot pick a dose or a sign, so tuning toward it would be
-unfalsifiable. The 2026-10-23 entry additionally requires that any future
-CONCENTRATION axis "state which CV definition it targets and build the
-less-concentrated direction too".
+**Impact — slot economy.** The brief allows one build per `(AXIS, value)` across
+sessions and one entity at 3 slots/week; two near-identical files would compete for
+the same question and could burn two slots on one answer.
 
-**Decision.** Reported all four readings per variant
-(`block_density_cv` in the evidence file) rather than nominating one as "the"
-definition, and built `catdS10` — the same 10% moved in the opposite direction —
-so the axis is a two-sided test. All three variants raise R0's CV in every
-definition (e.g. network-block density `0.733 → 0.765 / 0.815 / 0.830`), which is
-expected for both directions of a reallocation away from uniform tiling and is why
-the CV is reported but never used to steer a build.
+**Decision.** The duplicates were **dropped** from the ledger; only
+`CONCENTRATIONphys10-20261024-b93a4cf8` survives from this branch, because no other
+file tests a prior that is not derived from the catalogue. Cross-variant overlap is
+measured rather than asserted: in this branch's own harness the catalogue-prior and
+physics-prior arrival sets overlapped at Jaccard `0.087`, so the surviving variant
+asks a genuinely different question from the merged set.
