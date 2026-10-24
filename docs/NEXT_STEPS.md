@@ -1,30 +1,21 @@
-# NEXT_STEPS — after the 2026-10-24 APRONRIDGE session
+# NEXT_STEPS — current review status (2026-10-24)
 
-## Current status (supersedes prior sections below for action purposes)
-# Next Steps — `GEMSDOE92` (After `HYDROCONDUIT` Session, 2026-10-24)
+## Current state (this section supersedes historical queues below)
 
-## Current State & Completed Items From Prior Queue
+**Current research download:** `APRONRIDGE free1d`, [`docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`](downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif). It is format-valid and available for research download, but **NOT CLEARED FOR A WEEKLY SLOT; DO NOT SUBMIT**. Its exact-file witness measurement records `1.000` final-dot forward overlap with a hash-verified raster whose support is positive on every cell in the competition footprint. Under the literal rule, this mandates a stop for every nonempty prediction; it does not show geological equivalence. See [witness receipt](downloads/public_witness_apronridge.json) and [review](REVIEW_CURRENT.md).
 
-**`APRONRIDGE free1d` (`h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`) is the new primary download — closing both technical challenges from the prior queue (non-R0 standalone emission + beating `RELIEF p10` on `gems57-pooled-hide-v2`), while keeping `verdict: negative` / `submission_eligible: false` under the binding dense public witness.**
+- **HOLDOUT-DTI (historical, not rerun in this repository review):** `gems57-pooled-hide-v2`, 8 spatial folds, 22,663 withheld positive pixels; APRONRIDGE free1d `0.008354`, 95% CI `[0.006823, 0.010135]`. This is a local hide-and-recover result, not a competition score. See its [run card](../evidence/apronridge_run_card.json).
+- **Format check:** after installing the pinned `requirements.txt`, 202 tests passed; `scripts/check_site.py` passed for 25 served rasters; the 8-entry manifest and pinned R0 parent verified. These confirm local integrity only—not public uniqueness or organizer acceptance.
+- **Submission ledger:** 57 BUILT / 0 RECEIPT (current command output). No weekly slot was used in this review.
+- **Current session generated no TIFF and ran no geological experiment.** The requested new unique candidate remains unmet: the binding final-dot duplicate stop prevents honest promotion under the literal rule. Do not relabel an existing file or emit an all-zero/no-signal raster to evade the stop.
 
-- **`HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives)**: **`0.008354 [0.006823, 0.010135]`** (hybrid siblings `s60f40 = 0.008291`, `s50f50 = 0.008097`), vs `RELIEF p10 = 0.006045`, `STRAINBREAK f60s2i = 0.005487`, `ANASIG f45Atop = 0.004967`, `SPRINGALIGN f33Ctop = 0.004865`, `BREAKLINE f45Ltop = 0.004861`, `R0 = 0.004006`, and `STEPEDGE f60Sraw = 0.003980`.
-- **Leakage canaries**: `11/11 PASS` (`max symmetric AUC = 0.636490 <= 0.90`).
-- **Uniqueness**: Locally unique on pre-placement surface (`|ρ| <= 0.1222`, top-37k overlap `0.5527`) and final dots (`worst_forward_overlap = 0.4605 <= 0.70` across all `46` cross-lane local rasters including `STEPEDGE` at `0.3023–0.3783`; `0.6028–0.6456 <= 0.70` against top `62GEMSDOE`/`GEMSDOE23` sparse public witnesses). Blocked solely by `17GEMSDOE E-proba-multiscale` (`100%` footprint positive => `forward_overlap = 1.000`, `evidence/public_witness_apronridge.json`).
+## Next actions (fail-closed order)
 
-## Highest-value next actions, in strict priority order
-
-1. **Operator policy update on dense continuous public rasters (Unblocks Weekly Slot #1)**: Revise Rule 1's binary `> 0` 3-px halo test so continuous probability rasters with `> 150,000` positive pixels are evaluated by continuous Spearman rank correlation (`|ρ| <= 0.90`), while binary/sparse dot rasters (`<= 150,000` positive pixels) retain the `<= 0.70` 3-px halo rule.
-2. **Run a full refreshed sparse-plus-Spearman public registry scan (`scripts/audit_public_registry.py --surface .cache/apronridge_surface.tif`) on `APRONRIDGE free1d`** immediately after Step 1's policy update, then flip `submission_eligible: true` if 0 sparse public rasters exceed `0.70`.
-3. **Acquire the first `ORGANIZER-CONFIRMED` receipt (`Blocker 0`: `51 BUILT / 0 RECEIPT` in `ledger/submissions.csv`)**: Upload `APRONRIDGE free1d` (single weekly slot; never upload `s60f40` or `s50f50` alongside it) and record the exact DrivenData submission ID, timestamp, and score in `ledger/submissions.csv` to calibrate whether `HOLDOUT-DTI` (`0.008354`) or `SGMC PROXY` (`0.0801` vs `STEPEDGE` `0.1415`) better predicts private expert-mapped test faults.
-4. **Shoreline & Drainage-Crossing Mimic Suppression on `APRONRIDGE` (`APRONRIDGE v2`)**: Once official USGS NHD flowlines or NBMG Lake Lahontan stillstand contours are pinned in `registry/session_manifest.json` with SHA-256 hashes and verified redistribution terms, test suppressing contour-parallel Sehoo/Eetza shoreline benches and wash-parallel terrace risers inside `H_apron`.
-5. **5-Fold Spatially Blocked Multi-Sensor Patch U-Net / Gradient-Boosted Ridge Learner**: Train a strictly spatially blocked (`holdout.buffered_component_draw`), Tversky-loss (`alpha=0.2, beta=0.8`) multi-band model over `APRONRIDGE` features (`Bands 2, 5, 6, 12, 15, 19` + geothermometer halo from `BLIND-GEOTHERM`), followed by 1D crest extraction + `2.8 px` spaced thresholding (`drivendataorg/gems-prize-reference-solution` architecture adapted to non-redundant kernel-spaced emission).
-- **Completed in this session:**
-  1. Diagnosed *why* `BREAKLINE f45` stalled at `0.004861` (`74.75%` of off-skeleton dots hijacked by bare mountain range-core cliffs `det_elev >= +38.8 m`, `28.9%` transverse E–W/WNW erosional gullies) and discovered `Band 6 tc` is mislabelled Radiometric Total Count (`r = 0.99714` with `GeoDAWN TC`), `GDR #1391` `'Hot '` trailing whitespace + `419` blind chemical-geothermometer pixels (`>= 80 °C`), and static `d_full_cat > 2.0` self-masking.
-  2. Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261024_HYDROCONDUIT.md`) and implemented `HYDROCONDUIT` (`gems/hydroconduit.py`), clearing all 24 single-feature leakage canaries (`max symmetric AUC = 0.65012 <= 0.90`).
-  3. Built and evaluated 3 experiments (`f45pied`, `f45hydro`, `f50hydro`): **`HYDROCONDUIT f45hydro` beat both `R0` (`0.004006 -> 0.008549`, `+113.4%`) and prior holdout-best `RELIEF p10` (`0.006045 -> 0.008549`, `+41.4%`)** while passing **local uniqueness (`0.5500 <= 0.70`)** and **all 1,147 sparse (`<= 150k` px) public rasters across all 102 public `GEMSDOE` repositories (`0 > 70%`, max `0.6719 <= 0.70`)**.
-  4. Executed full live 102-repo GitHub API public registry scan (`1,332` compatible rasters, `evidence/hydroconduit_public_registry_uniqueness.json`) on both continuous pre-placement surface and final dots, confirming the literal dense-surface duplicate stop (`118` rasters `> 150k` px led by `17GEMSDOE E-proba-multiscale`, `100%` footprint positive).
-
----
+1. Preserve the literal registry stop. No candidate construction or placement until the protocol's treatment of full-footprint continuous probability rasters is formally resolved; do not locally exempt them or silently change the `>70%` threshold.
+2. Once a policy resolution is authorized, restore/check the cached feature stack and available registry; pre-register one method lane, compare its actual continuous surface before placement, run single-feature leakage canaries, then whole-segment buffered `gems57-pooled-hide-v2` validation with `vendor/gems57/evaluate_holdout.py`. Keep within the 3-experiment / 2-hour cap.
+3. Only if holdout best is beaten under the registered comparison, emit one candidate via the shared `vendor/gems57/submission_writer.py`, validate independently, and run final-dot uniqueness against a refreshed registry. Promotion to any real slot is a separate selector decision; no slot is selected here.
+4. Obtain an `ORGANIZER-CONFIRMED` receipt only after a candidate is explicitly cleared and uploaded by the authorized account holder; record its exact portal receipt. No organizer receipt or current leaderboard was obtained in this review.
+5. The full training feature stack (`training_features.tif`) is absent from this checkout's staged `data/`; `data/` currently contains only bridge/template and parent rasters. The user-provided competition data page is login-gated per prior repository records. Do not claim a fresh official download or training run until the official source is accessible and provenance/use terms are checked.
 
 ## Prioritized Remaining Blockers & Future Work
 

@@ -1,21 +1,24 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench (`APRONRIDGE` download primary; `HYDROCONDUIT` highest recorded hybrid holdout)
 
+**Start every session with [SESSION_PROMPT.md](SESSION_PROMPT.md).** This file holds the user's complete working instructions and core values (Maximize P(Win), Own the Outcome). [2026-10-24 preflight evidence](evidence/preplacement_dense_witness.json) proves that the literal public-registry overlap rule makes **every nonempty in-footprint candidate a duplicate**: the SHA-pinned 17GEMSDOE witness is positive on every one of 5,167,373 footprint cells. [Pre-registered four hypotheses](docs/HYPOTHESES_20261024_PREFLIGHT.md) are stopped *before placement*; no new slot-ready TIF was made in this pass. [Negative run card](evidence/preflight_run_card.json). This is an explicit incompatibility between “make a unique TIF” and the literal overlap gate, not a request for manual inspection. Existing research-only downloads below remain available but **DO NOT SUBMIT**.
+
 > ### ✅ DOWNLOAD STATUS: **FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH**
 > ### ⛔ SUBMISSION / WEEKLY SLOT STATUS: **DO NOT SUBMIT — NOT CLEARED (`verdict: "negative"`, `submission_eligible: false`; public-registry duplicate stop)**
 >
-> The canonical site currently presents APRONRIDGE free1d as its primary research download. This is **not** the repository's highest reported HOLDOUT-DTI: the parallel HYDROCONDUIT hybrid is higher. Neither is cleared for a competition slot because the literal registry-overlap gate is blocked by a full-footprint-positive public raster.
+> The canonical site currently presents APRONRIDGE free1d as its primary research download. Its standalone **HOLDOUT-DTI** is `0.008354 [0.006823, 0.010135]`; the higher documented HYDROCONDUIT hybrid is `0.008549 [0.007626, 0.009487]` on the same evaluator and 22,663 withheld positives. Neither is cleared for a competition slot: a SHA-pinned public registry witness is positive across the whole valid footprint, forcing a literal duplicate stop for every nonempty prediction.
 >
 > - **Current site primary GeoTIFF (zeros outside, `nodata=None`):** [`docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif) · [One-TIFF ZIP](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.zip)
 > - **SHA-256 (`-zeros.tif`):** `1a29a5d81e8561954f04a563b4975cb84d00898b8d7634700a9d409a10e06cbc` (`37,654` unit-mass dots, zero outside footprint, zero catalogue mass)
-> - **Research-ledger name / note:** `GEMSDOE92-APRONRIDGE-free1d-20261024` / `h33-h33-2-b2; APRONRIDGE free1d: 37654 standalone 1D piedmont-apron + RTP ridges (0 H19-5)`
-> - **Format audit / run card / registry witness:** [Audit JSON](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-audit.json) · [APRONRIDGE run card](docs/downloads/apronridge_run_card.json) · [Witness receipt](docs/downloads/public_witness_apronridge.json)
-> - **Site pages:** [Main workbench](docs/index.html) · [Executive summary and submission guide](docs/executive-summary.html) · [Detailed submission procedure](docs/SUBMIT.html) · [Candidate hypotheses](docs/HYPOTHESES.html)
+> - **Research-ledger name / form note (90 / 140 characters):** `GEMSDOE92-APRONRIDGE-free1d-20261024` / `h33-h33-2-b2; APRONRIDGE free1d: 37654 standalone 1D piedmont-apron + RTP ridges (0 H19-5)`
+> - **Automated format audit:** [Audit JSON](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-audit.json) (`10/10` local format gates PASS; format-valid means downloadable for research, **not** submission-cleared)
+> - **Pre-placement registry stop:** [SHA-pinned witness measurement](evidence/preplacement_dense_witness.json) · [preflight run card](evidence/preflight_run_card.json) · [four conditional hypotheses](docs/HYPOTHESES_20261024_PREFLIGHT.md) · [full review](docs/REVIEW_20261024_REAUDIT.md)
+> - **Site guides:** [Main workbench](docs/index.html) · [Executive summary](docs/executive-summary.html) · [Submission procedure](docs/SUBMIT.html)
 >
-> **Persistent brief:** At the start of every session, read this README and [`SESSION_PROMPT.md`](SESSION_PROMPT.md). Research and test novel geothermal-fault hypotheses only with the cached/authorized project data, use whole-segment buffered spatial holdouts and the shared evaluator/writer, run single-feature leakage canaries, and preserve run-card, uniqueness, and format evidence. A local HOLDOUT-DTI is not a competition score. Do not spend a weekly slot unless the exact artifact passes all stated gates and is independently eligible; human upload/selector action remains separate. Keep the site download status unmistakable. Follow **Maximize P(Win)** and **Own the Outcome** while reporting uncertainty and negative results honestly.
+> **Persistent brief:** At every session start, read this README and [`SESSION_PROMPT.md`](SESSION_PROMPT.md). Use authorized, cached inputs; shared feature/evaluation/writer tools; whole-segment buffered holdout; per-feature leakage canaries; pre-placement and final registry gates; and auditable run cards. A local HOLDOUT-DTI is not a competition score. Preserve negative results, respect the experiment/time budget, and never use a slot until the exact file is eligible and a separate selector approves it. Keep download-vs-submit status unmistakable; follow **Maximize P(Win)** and **Own the Outcome**.
 
 ---
 
-## Why Is `HYDROCONDUIT f45hydro` the Highest Recorded HOLDOUT-DTI Yet Blocked From Submission?
+## Prior Candidate: Why `HYDROCONDUIT f45hydro` Has the Highest Documented Hybrid HOLDOUT-DTI but Is Not Cleared for Submission
 
 1. **Why It Is a strong local holdout result (not an organizer score):**
    - **Highest recorded value among the documented GEMSDOE92 candidates:** On the shared `gems57-pooled-hide-v2` buffered spatial holdout (`22,663` withheld catalogue fault pixels, `1,000` paired cluster-bootstrap draws), `HYDROCONDUIT f45hydro` achieves **`HOLDOUT-DTI = 0.008549 [0.007626, 0.009487]`** — **`+113.4%` over `R0` (`0.004006`)** (`Δ = +0.004543 [+0.003770, +0.005315]`) and **`+41.4%` over `RELIEF p10` (`0.006045`)** (`Δ = +0.002504 [+0.001795, +0.003222]`). This is a local validation statistic, not an organizer-confirmed score.
@@ -54,7 +57,7 @@ Pre-registered hybrid ablation siblings built in the same 3-experiment budget (r
 
 ## Audited Cross-Lane Benchmark Table (`gems57-pooled-hide-v2`, `22,663` Withheld Positives)
 
-> **Evidence Rule:** Local `HOLDOUT-DTI` and `SGMC PROXY` values rank methods on withheld catalogue segments and 1:500k bedrock faults; they are **never** numerically comparable to DrivenData leaderboard scores (`CLAIM 0.2778`, `LEADERBOARD-SNAPSHOT 0.3195 / 0.4413`). `ledger/submissions.csv` currently holds `51 BUILT / 0 RECEIPT` rows.
+> **Evidence Rule:** Local `HOLDOUT-DTI` and `SGMC PROXY` values rank methods on withheld catalogue segments and 1:500k bedrock faults; they are **never** numerically comparable to DrivenData leaderboard scores (`CLAIM 0.2778`, `LEADERBOARD-SNAPSHOT 0.3195 / 0.4413`). `ledger/submissions.csv` currently holds `57 BUILT / 0 RECEIPT` rows (verified by `python -m gems ledger`).
 
 | Lane / Variant | Dots (`H19-5` / Off-Skel) | `HOLDOUT-DTI` [95% CI] | Paired Δ vs `R0` | `SGMC PROXY` | Canary Max AUC | Worst Local 3-px Overlap | Local Unique? | Slot Status |
 |---|---:|---|---:|---:|---:|---:|---|---|
@@ -73,16 +76,16 @@ Pre-registered hybrid ablation siblings built in the same 3-experiment budget (r
 
 ---
 
-## PhD Analysis: Why `GEMSDOE32` Scored `0.2778` (`CLAIM`) & How `APRONRIDGE` Advances Discovery
+## Evidence-Limited Analysis: What the GEMSDOE32 `0.2778` CLAIM and R0 Lineage Can Support
 
-Full mathematical & structural derivation: [`docs/ANALYSIS_20261024_APRONRIDGE.md`](docs/ANALYSIS_20261024_APRONRIDGE.md) (and companion R0 geometry forensics: [`docs/ANALYSIS_20261024_STEPEDGE.md`](docs/ANALYSIS_20261024_STEPEDGE.md)).
+The supplied score is a **CLAIM**, not an organizer receipt. The exact score contribution of any individual transformation cannot be identified from the score alone. The owner-reported parent lineage is compatible with a fixed-budget sequence of spacing, speckle pruning, and known-catalogue clearance; this is a plausible mechanism to test, not proof of why the claim was achieved. Full method and uncertainty discussion: [`docs/ANALYSIS_20261024_APRONRIDGE.md`](docs/ANALYSIS_20261024_APRONRIDGE.md) (and companion R0 geometry forensics: [`docs/ANALYSIS_20261024_STEPEDGE.md`](docs/ANALYSIS_20261024_STEPEDGE.md)).
 
-1. **Why `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros` (`R0`) Reached `0.2778` (`CLAIM`)**:
+1. **Plausible R0 mechanisms (not causal attribution of `CLAIM 0.2778`)**:
    - Under the competition's asymmetric Distance-weighted Tversky Index ($\alpha = 0.2, \beta = 0.8$, `300 m` / `3 px` linear kernel, verified in [`drivendataorg/gems-prize-reference-solution`](https://github.com/drivendataorg/gems-prize-reference-solution)), false positives carry **4× the denominator penalty** of false negatives (`0.8` vs `0.2`), and overlapping dots closer than `2.8 px` saturate $\max_y K(\|x-y\|) P(y)$ without adding true-positive credit.
    - SHA-verified parent lineage (`gems/parent.py`): `H19-5` (`121,131` worm-skeleton px, `CLAIM 0.1922`) $\to$ `D1.5` (`86,625` px) $\to$ **`D2.8`** (`44,090` px at `280 m` kernel-matched spacing, `CLAIM 0.2600`, `+0.0678`) $\to$ **`SOLO`** (`39,580` px removing isolated point dipoles, `CLAIM 0.2708`, `+0.0108`) $\to$ **`R0/B2`** (`37,654` px pruning `1,926` dots within `d_cat <= 2.0 px` of mapped `existing_faults.tif` and encoding `0.0` outside footprint to avoid DrivenData's `NaN` range error, `CLAIM 0.2778`, `+0.0070`).
-2. **Why `R0` Plateaued — and What `APRONRIDGE` Fixes**:
+2. **What the local APRONRIDGE holdout tests (not private leaderboard performance)**:
    - `R0` allocates `58.2%` of its dots to deep central playas (`20.4%`, where `> 1 km` basin fill masks basement faults and hosts Lake Lahontan shoreline mimics) or high eroded mountain cores (`37.7%`, dominated by inactive Mesozoic thrusts), leaving only `41.8%` in the piedmont transition; and its magnetic worms derive from raw `TMI` (`Bands 3/9/14`), whose gradients are laterally shifted `300–800 m` off steep faults by `~65°` geomagnetic inclination — exceeding the `300 m` DTI scoring cone.
-   - **`APRONRIDGE`** confines habitat to the **thin-cover piedmont accommodation apron** (`Band 12 det_elev` transition $\times$ `Band 15 depth_to_base_surf` log-normal `~20–600 m` $\times$ `Band 5 iso_grav_anom_slope`, concentrating `75.4%` of `free1d` dots in the piedmont) and fuses coherent DEM slope-breaks (`Bands 19/12`) with inclination-corrected **Reduced-to-Pole magnetic gradient $\times$ inverted `tc` edge curvature** (`Bands 2/6`) along 4-axis 1D crests — more than doubling `R0` on `HOLDOUT-DTI` (`0.008354` vs `0.004006`) without using a single `H19-5` or `R0` pixel. Only a future `ORGANIZER-CONFIRMED` submission receipt can test whether this local holdout gain translates to the live leaderboard (`0.3195` / `0.4413` remain unverified `LEADERBOARD-SNAPSHOT` claims).
+   - **`APRONRIDGE`** confines habitat to the **thin-cover piedmont accommodation apron** (`Band 12 det_elev` transition $\times$ `Band 15 depth_to_base_surf` log-normal `~20–600 m` $\times$ `Band 5 iso_grav_anom_slope`, concentrating `75.4%` of `free1d` dots in the piedmont) and fuses coherent DEM slope-breaks (`Bands 19/12`) with inclination-corrected **Reduced-to-Pole magnetic gradient $\times$ inverted `tc` edge curvature** (`Bands 2/6`) along 4-axis 1D crests — more than doubling `R0` on **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives, 8 folds; APRONRIDGE `0.008354`, 95% CI `[0.006823, 0.010135]`, versus R0 `0.004006`, 95% CI `[0.003408, 0.004651]`) without using a single `H19-5` or `R0` pixel. This is a local holdout comparison, not a competition score. Only a future **ORGANIZER-CONFIRMED** submission receipt can test whether it transfers to the live leaderboard; the prompt's `0.3195` / `0.4413` remain unrefreshed, conflicting leaderboard claims.
 
 ---
 
