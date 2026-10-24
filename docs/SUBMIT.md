@@ -8,16 +8,25 @@ All three candidates preserve exact R0 dot count (`37,654` binary unit-mass dots
 
 | Order | Primary file (NaN outside) | Fallback (`-zeros.tif`) | Submission name | Form note (`<=140` chars) | % changed / dots moved | Primary SHA-256 (`-zeros` SHA-256) | Format receipt |
 |---:|---|---|---|---|---|---|---|
-<<<<<<< HEAD
-| 2 | `releases/h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48.tif` / `...-c9503d48-zeros.tif` | `h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48` | `h33-h33-2-b2; CONC 1km known-fault prior, 10% up; 3765 moved; pred MODEL:+0.006` (88) | 3,765 (10.00%) | 0.0122 -> 0.0142 | `cd5ae43ba6116418d09fb911baa0c05a8a0541e73f74275ce3f5feb3713f127e` (`c9503d4873924d833e311eebe56e220bad97acd21e701a7f4bac10af67e499f2`) | 13/13 disk reread PASS + `gems.gates` PASS; `EPSG:32611`; `3730x3292`; `float32`, 1 band; `[0,1]`; 0 NaN inside; 37,654 dots; 0 catalogue mass; `min_nn = 2.0000 px`; moved `d_cat > 3.0 px` |
-| reserve | `releases/h33-h33-2-b2-CONCcatblk10up20-20261024-b6e80d73.tif` / `...-zeros.tif` | `h33-h33-2-b2-CONCcatblk10up20-20261024-b6e80d73` | `h33-h33-2-b2; CONC 1km known-fault prior, 20% up (saturated); pred MODEL:+0.004` (94) | 7,531 (20.00%) | 0.0122 -> 0.0142 | `a877e3aaecd3ce85c297280ff7fd1163379af3009d041d7b9a83908e1f26c985` (`b6e80d73fa67e26c91e3bebf7b86c5f4f51fb8b295f0247fd73a6e559afe2991`) | same 13/13; `min_nn = 2.0000 px`; 35.9% of pairs below 2.8284 px |
-| reserve | `releases/h33-h33-2-b2-CONCcatblk10dn10-20261024-c671b704.tif` / `...-zeros.tif` | `h33-h33-2-b2-CONCcatblk10dn10-20261024-c671b704` | `h33-h33-2-b2; CONC 1km known-fault prior, 10% down (direction test); pred MODEL:-0.006` (102) | 3,765 (10.00%) | 0.0122 -> 0.0069 | `838bf4a157ed5139dc3fe4290021624a671215131c733e0624685a0330e6b337` (`c671b704cc671216f6b732769bab622ed6e75b42e59bfdcdb6b38cb37e6a51bc`) | same 13/13; `min_nn = 2.0000 px` |
-| reserve (physics prior) | `releases/h33-h33-2-b2-CONCENTRATIONphys10-20261024-b93a4cf8.tif` / `...-b93a4cf8-zeros.tif` | `h33-h33-2-b2-CONCENTRATIONphys10-20261024-b93a4cf8` | `h33-h33-2-b2; CONC 1km on TMI/grav/scarp prior (not catalogue); pred MODEL:-0.008` (96) | `3,765` (10.0%) | physics `0.39-0.75` | `b93a4cf8dd01ee1cdc6cf3dc3640e5e36f7baa369b468300b90147a5f8968f3f` (`7fa6cea4a4a155d7407cf8e0c204d21b9d73c7c94dd3b023797a2933d1c56277`) | Disk reread + `gems.gates` 10/10 PASS; EPSG:32611; 3730x3292; float32, 1 band; values in [0,1]; 0 NaN inside; NaN outside; 37,654 dots; 0 catalogue mass; new dots `min d_cat = 3.16 px`; `min_nn = 1.0 px` (declared) |
-=======
 | 1 | `releases/h33-h33-2-b2-RELIEFp12piedmont-20261024-a0998ed7.tif` | `releases/h33-h33-2-b2-RELIEFp12piedmont-20261024-a0998ed7-zeros.tif` | `h33-h33-2-b2-RELIEFp12piedmont-20261024-a0998ed7` | `h33-h33-2-b2; RELIEF shift 4518 dots (12%) basin/range->piedmont; pred MODEL:+0.008` (84 chars) | `12.00%` (4,518 dots moved) | `a0998ed7e9b39c91eead413ab1bd9c02511a29fb6f8438a36f921d3f3ef6d079` (`b0b3b1ffb3881a084211454d55ed0e417594b5f9a01bb57acbd8500f9aab9f17`) | Disk reread PASS + `gems.gates` 10/10 PASS; `EPSG:32611`; `3730x3292`; exact `sample_submission.tif` transform; `float32`, 1 band; values in `[0,1]`; 0 NaN inside footprint; NaN outside; 37,654 unit-mass dots; 0 catalogue mass; min `d_cat = 2.236 px`. |
 | 2 | `releases/h33-h33-2-b2-SNAPscarp2p0px-20261023-2a65fe24.tif` | `releases/h33-h33-2-b2-SNAPscarp2p0px-20261023-2a65fe24-zeros.tif` | `h33-h33-2-b2-SNAPscarp2p0px-20261023-2a65fe24` | `h33-h33-2-b2; SNAP <=2.0px edge+scarp+break (nn>=2.8); mean disp 1.23px; pred MODEL:+0.012` (90 chars) | `82.05%` (30,896 dots snapped) | `2a65fe24766375d5d2330daa9547f33a0cd16838d20675b1a03d531b0e33601d` (`96c8598a20114682579078044f03149c15d42f79cc8143d9f7300bd1881d2d1e`) | Disk reread PASS + `gems.gates` 10/10 PASS; `EPSG:32611`; `3730x3292`; exact `sample_submission.tif` transform; `float32`, 1 band; values in `[0,1]`; 0 NaN inside footprint; NaN outside; 37,654 unit-mass dots; 0 catalogue mass; min `d_cat = 2.236 px`; `min_nn = 2.828 px`. |
 | 3 | `releases/h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48.tif` | `releases/h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48-zeros.tif` | `h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48` | `h33-h33-2-b2; CONC 1km known-fault prior, 10% up; 3765 moved; pred MODEL:+0.006` (88 chars) | `10.00%` (3,765 dots moved) | `cd5ae43ba6116418d09fb911baa0c05a8a0541e73f74275ce3f5feb3713f127e` (`c9503d4873924d833e311eebe56e220bad97acd21e701a7f4bac10af67e499f2`) | 13/13 disk reread PASS + `gems.gates` PASS; `EPSG:32611`; `3730x3292`; `float32`, 1 band; `[0,1]`; 0 NaN inside; 37,654 dots; 0 catalogue mass; `min_nn = 2.0000 px`; moved `d_cat > 3.0 px`. |
->>>>>>> origin/main
+
+### Reserve file added by the merged second CONCENTRATION run (2026-10-24)
+
+`releases/h33-h33-2-b2-CONCENTRATIONphys10-20261024-b93a4cf8.tif` (fallback
+`...-b93a4cf8-zeros.tif`), submission name
+`h33-h33-2-b2-CONCENTRATIONphys10-20261024-b93a4cf8`, note
+`h33-h33-2-b2; CONC 1km on TMI/grav/scarp prior (not catalogue); pred MODEL:-0.008`.
+SHA-256 `b93a4cf8dd01ee1cdc6cf3dc3640e5e36f7baa369b468300b90147a5f8968f3f`
+(zeros `7fa6cea4a4a155d7407cf8e0c204d21b9d73c7c94dd3b023797a2933d1c56277`).
+Format receipt: disk re-read + `gems.gates` 10/10 PASS; EPSG:32611; 3730x3292;
+float32, 1 band; values in [0,1]; 0 NaN inside the footprint; NaN outside; 37,654
+unit-mass dots; 0 catalogue mass; new dots `min d_cat = 3.16 px`; `min_nn = 1.0 px`
+(declared, see the spacing caveat below). Its only job is the control question:
+if `CONCcatblk10up10` wins, does the physics prior (which is not derived from the
+catalogue) also win? It is predicted to lose (`MODEL:-0.008`), so it is NOT a slot
+candidate unless you deliberately want to buy that control.
 
 *(Alternative 10% and 15% RELIEF dose variants `RELIEFp10piedmont` and `RELIEFp15piedmont` are built and recorded in `evidence/relief_variants.json`; previous session candidates across `SNAP`, `CONCENTRATION` and `PRUNE` remain documented in `ledger/submissions.csv`.)*
 
