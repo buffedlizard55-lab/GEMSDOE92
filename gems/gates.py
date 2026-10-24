@@ -6,8 +6,10 @@ network access or the competition data beyond the reference grid and the
 catalogue/known-fault mask.
 
 Design note: gates are intentionally independent of the dots' semantics, so a
-variant cannot "pass" by being pretty. They check exactly what the uploader
-will check.
+variant cannot "pass" by being pretty. The default mode preserves the legacy
+NaN-outside encoding for research artifacts. The CLI uses the stricter
+submission mode: every cell must be finite and in [0,1], and cells outside the
+reference footprint must be zero. A local pass is not organizer acceptance.
 """
 
 from __future__ import annotations
@@ -50,7 +52,8 @@ def _dots_within(mask_ys, mask_xs, dots_ys, dots_xs, radius):
 
 
 def run_gates(candidate_path, reference_path, catalogue_path=None,
-              prune_radius: int | None = None) -> list[GateResult]:
+              prune_radius: int | None = None, *,
+              require_submission_encoding: bool = False) -> list[GateResult]:
     results: list[GateResult] = []
 
     ref = rasterio.open(reference_path)
@@ -65,6 +68,8 @@ def run_gates(candidate_path, reference_path, catalogue_path=None,
         results.append(_g_value_range(arr, footprint))
         results.append(_g_no_nan_inside(arr, footprint))
         results.append(_g_nan_outside(arr, footprint))
+        if require_submission_encoding:
+            results.append(_g_submission_encoding(arr, footprint))
         if catalogue_path is not None:
             results.extend(_g_catalogue(arr, footprint, catalogue_path, prune_radius))
     finally:
@@ -116,15 +121,37 @@ def _g_nan_outside(arr, footprint):
     outside = ~footprint
     if not outside.any():
         return GateResult("nan_outside_footprint", True, "no outside pixels")
-    finite_outside = np.isfinite(arr[outside])
-    # either convention is allowed upstream; flag which one this file uses
-    n_nan = int((~finite_outside).sum())
-    n_zero = int((finite_outside & (arr[outside] == 0)).sum())
+    outside_values = arr[outside]
+    finite_outside = np.isfinite(outside_values)
+    # Either NaN or zero is allowed by this legacy/research gate. Infinity and
+    # any other finite value are not valid outside encodings.
+    n_nan = int(np.isnan(outside_values).sum())
+    n_inf = int(np.isinf(outside_values).sum())
+    n_zero = int((finite_outside & (outside_values == 0)).sum())
     other = int(finite_outside.sum() - n_zero)
-    ok = other == 0
+    ok = n_inf == 0 and other == 0
     return GateResult("nan_outside_footprint", ok,
-                      f"outside={int(outside.sum())} nan={n_nan} zero={n_zero} "
-                      f"other={other}")
+                      f"outside={int(outside.sum())} nan={n_nan} inf={n_inf} "
+                      f"zero={n_zero} other={other}")
+
+
+def _g_submission_encoding(arr, footprint):
+    """Require the project's upload-safe, all-finite, zeros-outside encoding."""
+    all_finite = bool(np.isfinite(arr).all())
+    in_range = bool(all_finite and (arr >= 0).all() and (arr <= 1).all())
+    zero_outside = bool(np.all(arr[~footprint] == 0))
+    nonempty_footprint = bool(footprint.any())
+    ok = all_finite and in_range and zero_outside and nonempty_footprint
+    if all_finite:
+        lo = float(arr.min())
+        hi = float(arr.max())
+    else:
+        lo = hi = None
+    return GateResult(
+        "submission_encoding", ok,
+        f"all_finite={all_finite} global_range=[{lo}, {hi}] "
+        f"zero_outside={zero_outside} nonempty_footprint={nonempty_footprint}",
+    )
 
 
 def _g_catalogue(arr, footprint, catalogue_path, prune_radius):

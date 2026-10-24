@@ -2,19 +2,26 @@
 
 > **Operating Contract:** Read this README and [`SESSION_PROMPT.md`](SESSION_PROMPT.md) at the start of every session. Every experiment adheres to parallel-run protocol rules (lane discipline, holdout evaluation, leakage canary, registry uniqueness, and machine-readable run cards). Core Values: **Maximize P(Win)** and **Own the Outcome**.
 
+## Current decision — 2026-10-24 UTC
+
+**Existing TIFFs: OK TO DOWNLOAD for research; DO NOT SUBMIT. No new TIFF was generated in this review.** The existing hash-verified witness receipt records the 17GEMSDOE E-proba registry raster positive on every competition-footprint cell; under the user's literal forward-overlap rule, every nonempty in-footprint candidate necessarily fails the duplicate threshold. This is a protocol stop, not evidence that all geological methods are equivalent. Do not bypass it by emitting an empty/out-of-footprint raster, changing the threshold, or rebranding an old file. The exact-file rejection receipt and limitations are in [`evidence/review_20261024_springalign_witness_v2.json`](evidence/review_20261024_springalign_witness_v2.json), [`docs/REVIEW_CURRENT.md`](docs/REVIEW_CURRENT.md), the current three-pass [`docs/REVIEW_20261024_SESSION.md`](docs/REVIEW_20261024_SESSION.md), and [`evidence/repo_review_run_card_20261024.json`](evidence/repo_review_run_card_20261024.json).
+
+The TIF-generation requirement is therefore **explicitly unfulfilled** until the registry rule is resolved by its policy owner. No weekly submission slot was used. The site communicates this at the top of [`docs/index.html`](docs/index.html). Local format validity means downloadable for research, not eligible for contest submission.
+
 ---
 
 ## Standing Session Prompt (read first, every session)
 
-1. **MUST generate a UNIQUE TIF submission candidate** — never copy a previous submission except for learning. It must be **obvious at the top of the site whether the file is OK to download and OK to submit**, decided by automated project gates without human inspection — not by a human inspector.
+1. **Attempt to generate a UNIQUE TIF submission candidate** — never copy a previous submission except for learning. The site must make it obvious whether each file is OK to download and whether it is cleared to submit; automated project gates, not a human pixel inspector, decide. If a binding protocol gate makes any valid candidate impossible, stop, report the requirement as unfulfilled, and do not fabricate or mislabel a submission.
 2. **Lane discipline:** stay in one method lane per session. If rank-correlation vs any registry raster exceeds **0.90**, or more than **70%** of dots fall within 3 px of one registry raster's dots — checked on the pre-placement **surface AND final dots** — log duplicate and stop.
 3. **Reuse shared tools** (cached feature stack, `vendor/gems57/evaluate_holdout.py`, submission writer/gates). Holdout = hide-and-recover whole fault segments with buffer; catalogue features only from visible faults; visible faults masked pixel-exactly; pooled DTI (α 0.2, β 0.8, 300 m triangular kernel). Fix shared-tool bugs once, report them; never fork privately.
 4. **Label every number** HOLDOUT-DTI (evaluator version, withheld positives, 95% CI) or ORGANIZER-CONFIRMED (receipt only). A projection is never a score. Owner-reported scores (e.g. 0.2778) are CLAIM; leaderboard snapshots are labelled with fetch date.
 5. **Leakage canary:** every feature alone on the holdout first; symmetric AUC > **0.90** = leakage until proven otherwise.
 6. **Hypotheses before building:** generate 3–5 untried geological hypotheses (layers, physical signature, why catalogue-missing, difference from this repo), rank by expected DTI gain vs cost, screen, and validate the top candidate on the spatially-blocked holdout **before** any weekly slot. External data must be free/official and proven obtainable first.
 7. **Run card, always:** one JSON card (hypothesis; mechanism; named non-fault mimic; HOLDOUT-DTI + CI; correlation/overlap vs registry; raster SHA-256; validator output; submission name + ≤140-char note; verdict promote/negative). **Negative results are deliverables.**
-8. **Budget:** ≤3 experiments or 2 hours per session. Never self-promote to a real slot; promotion is a separate selector step within the portal's weekly cap. The portal error `Predicted values must be in range [0, 1]` must be impossible by construction (all-finite zeros-outside encoding, disk-reread gates).
-9. **Core Values:** *Maximize P(Win)* — weigh tradeoffs and risk, choose the path maximizing win probability. *Own the Outcome* — own results end-to-end; act without waiting; treat success and failure as signals. Work line by line from official verified sources with links; flag irregularities; **no hallucinations**.
+8. **Budget and selector:** ≤3 experiments or 2 hours per session. Never self-promote or spend a weekly slot; promotion is a separate selector step after checking the current portal cap. The portal error `Predicted values must be in range [0, 1]` is guarded against by all-finite `[0,1]` values, zeros outside, and disk-reread gates; local validation is not a guarantee of portal acceptance.
+9. **Three passes:** implement/complete, review for bugs and edge cases, then re-check every original requirement and fix omissions. Record all unfulfilled requirements and limitations.
+10. **Core Values:** *Maximize P(Win)* — weigh tradeoffs and risk, choose the path maximizing win probability. *Own the Outcome* — own results end-to-end; act without waiting; treat success and failure as signals. Work line by line from official verified sources with links; flag irregularities; **no hallucinations**. Preserve a dated source/provenance record and current status feed; never describe a source or score as verified unless the actual artifact/receipt was checked.
 
 ---
 
@@ -192,6 +199,13 @@ We own results end to end &mdash; not just our individual slice of the work. Whe
 
 ## Reproducible Validation & Verification Pipeline
 
+`python -m gems validate` and `scripts/check_site.py` use the strict submission
+encoding: every raster cell must be finite and in `[0,1]`, and every cell
+outside the valid footprint must be zero. A generic legacy/research gate still
+accepts NaN outside the footprint, but that is not an upload-safe preflight.
+Infinity or any nonzero/out-of-range value outside the footprint is rejected.
+These are local checks, not a guarantee of portal acceptance.
+
 ```bash
 # 1. Restore all SHA-256 pinned inputs into .cache/gems_inputs/
 python3 scripts/restore_inputs.py
@@ -226,36 +240,10 @@ python3 scripts/restore_inputs.py
 
 ---
 
-## Original Session Prompt
+## Durable prompt and session-start references
 
-```markdown
-Review the repo. 
+The actionable user request is captured in the Standing Session Prompt above and expanded in [`SESSION_PROMPT.md`](SESSION_PROMPT.md). Read both at the start of every project session, then read [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md) and [`docs/REVIEW_CURRENT.md`](docs/REVIEW_CURRENT.md) before proposing work. The long request's non-negotiables are: understand the user-supplied GEMSDOE result history without treating it as receipts; ground fault-mapping hypotheses in official, free data; rank 3–5 untested candidates before implementation; use the shared segment-buffered holdout and feature-alone leakage canaries; run automatic uniqueness and file-format gates; expose download/submit status and an executive submission guide; preserve provenance and irregularities; perform three review passes; stay within the experiment/time budget; and never use a weekly slot without separate selector authorization.
 
-THE FOLLOWING IS THE HIGHEST URGENCY AND MUST BE FOLLOWED!
+The score `0.2778` and competing leaderboard values `0.3195` / `0.4413` are **CLAIMs or historical snapshots**, not evidence of causal method or a receipt for this repository. See [`docs/ANALYSIS_20261024_STEPEDGE.md`](docs/ANALYSIS_20261024_STEPEDGE.md) for the measured R0 lineage and mechanism limits, and [`docs/REVIEW_AUTOMATED_20261024.md`](docs/REVIEW_AUTOMATED_20261024.md) for the ranked conditional hypotheses, source audit, and restrictions. Only organizer receipts belong in `ledger/submissions.csv` as ORGANIZER-CONFIRMED.
 
-MUST GENERATE A UNIQUE TIF SUBMISSION FOR THE COMPETITION.  DO NOT COPY A PREVIOUS SUBMISSION UNLESS IT'S FOR LEARNING AND EDUCATION.  BUT WE MUST GENERATE A UNIQUE TIF SUBMISSION.  IT MUST BE OBVIOUS WHETHER IT IS OK TO DOWNLOAD AND SUBMIT THE GENERATED TIF SUBMISSION.
-
-There should be an easy to download submission tif file as described by the prompt.  Read the entire prompt.  A lot of sites mention inspection only and a human inspector, but the inspection needs to be done through the project and needs to be validated for submission without human intervention.
-
-PARALLEL-RUN PROTOCOL — read first. This session is one of several running from this same prompt.
-
-1. LANE. Your lane is the single method paragraph below. Stay inside it. If your raster's rank-correlation with any registry raster exceeds [0.90], or more than [70%] of your dots fall within 3 px of one registry raster's dots, you have drifted into another lane: log it as a duplicate and stop. Check this on the surface before placement AND on the final dots.
-
-2. REUSE, DON'T REBUILD. Use the template's cached feature stack, evaluate_holdout.py and submission_writer.py. Holdout = hide-and-recover: withhold whole fault segments with a buffer, derive every catalogue-based feature only from the visible faults, mask visible faults pixel-exactly, score pooled DTI (alpha 0.2, beta 0.8, 300 m triangular kernel). If a shared tool is wrong, fix it once in the template and report it; never keep a private fork.
-
-3. LABEL EVERY NUMBER as HOLDOUT-DTI (evaluator version, number of withheld positives, 95% CI) or ORGANIZER-CONFIRMED (copied from a submission-page receipt). A projection is never written as a score.
-
-4. LEAKAGE CANARY. Test each feature alone on the holdout before trusting any result. AUC above [0.90] means leakage until proven otherwise.
-
-5. RUN CARD. End with one JSON card: hypothesis; mechanism; the named non-fault process that could mimic it; holdout DTI + CI; correlation/overlap vs registry; raster sha256; validator output (no NaN inside the footprint, values in [0,1], CRS/shape/transform match); submission name + note of at most 140 characters; verdict promote / negative. Negative results are deliverables.
-
-6. BUDGET. Stop after [3] experiments or [2] hours. Do not pick submissions: promotion to a real slot is a separate selector step, within the weekly cap shown on the submission page.
-
-The following sites should serve as a starting point for understanding how to generate TIF submissions...
-WE NEED TO STUDY, ANALYZE, AND UNDERSTAND THE HIGHEST SCORE FROM THE GEMDOE SITE WHERE THE SUBMISSION TIF IS DOWNLOADED FROM WHICH IS THE FOLLOWING:
-https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html
-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros: 0.2778
-Why and how did this get the highest score and are we able to generate a submission that scores higher than 0.2778?
-Answer the question using Phd level experience, knowledge, and judgement. Then use the answer to generate a unique TIF submission into the competition.  Must be unique submission unlike any within the GEMSDOE sites above.  Verify working line by line no hallucinations.
-Current competition leaderboard GEMSDOE high score: 0.4413
-```
+This README is the concise session-start checklist; it does not imply that every site URL or historical score was independently refreshed. The complete source/claim boundary and current stop are recorded in the linked review documents.

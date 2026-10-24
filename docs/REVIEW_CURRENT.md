@@ -2,12 +2,16 @@
 
 ## Download status comes first
 
-**OK TO DOWNLOAD for research; NOT OK TO SUBMIT under the required gates.**
-The [BREAKLINE TIFF](downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif)
-is an existing artifact, not a new unique submission generated this session.
-Independent disk reread confirms single-band float32, finite everywhere, values
-in [0,1], zero outside the footprint, and template-matching CRS/shape/transform.
-[Run card](downloads/session_review_run_card.json).
+**OK TO DOWNLOAD existing files for research; DO NOT SUBMIT any current artifact.**
+The site primary is the pre-existing [SPRINGALIGN research TIFF](downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif),
+not a new unique submission from this review. Its local format audit passes,
+but the hash-verified dense public witness triggers the literal duplicate stop.
+No weekly slot was used. See the [exact witness receipt](downloads/review_20261024_springalign_witness_v2.json),
+[current session review](REVIEW_20261024_SESSION.md), and
+[run card](downloads/repo_review_run_card_20261024.json).
+
+The BREAKLINE artifact discussed in the historical follow-up below is also an
+existing research file and is rejected by the same literal witness rule.
 
 ## Outstanding next step completed: public witness check
 
@@ -133,4 +137,10 @@ Corrected two documentation risks found during review: the homepage previously l
 - `git diff --check`: PASS.
 - System Python initially lacked `pytest` and NumPy. A repository-ignored `.venv` was created and dependencies installed from `requirements.txt`; no environment artifacts are tracked.
 
-No public endpoint, leaderboard, DrivenData receipt, submission quota, or competition upload was accessed or verified in this review. Existing TIF links are for research/download only, not approved for competition submission.
+No public endpoint, leaderboard, DrivenData receipt, submission quota, or competition upload was accessed or verified in that review. Existing TIF links are for research/download only, not approved for competition submission.
+
+## Tooling-hardening follow-up — 2026-10-24 UTC
+
+See the [current three-pass repository review](REVIEW_20261024_SESSION.md) and [run card](../evidence/repo_review_run_card_20261024.json). This follow-up found and fixed a shared preflight edge case: infinity outside the footprint was previously counted as an allowed NaN by `gems.gates._g_nan_outside()`. The common CLI now requires all-finite values in `[0,1]` across the whole raster and zeros outside; the site checker calls the same strict gate for every served candidate. The generic `run_gates()` default retains NaN-outside only for historical/research comparisons and rejects infinity or nonzero outside values.
+
+This is tooling validation, not a geological experiment. No new TIFF, holdout result, public-registry scan, or weekly slot was produced/used. The current session verification is: 182 tests passed (103 nonfatal Rasterio/Affine pending-deprecation warnings); all 16 served zeros-outside downloads passed `scripts/check_site.py`; all eight pinned hashes and the R0 parent proof passed; `git diff --check` passed. The first four counts are software/data-integrity checks, not competition metrics.

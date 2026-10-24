@@ -1,6 +1,6 @@
 # Current next steps — automated review 2026-10-24 UTC
 
-This section supersedes historical action lists below. **Do not submit any current artifact.**
+This section supersedes historical action lists below. **Do not submit any current artifact.** Latest tooling hardening and the three-pass repository review are in [`REVIEW_20261024_SESSION.md`](REVIEW_20261024_SESSION.md); the machine-readable card is [`downloads/repo_review_run_card_20261024.json`](downloads/repo_review_run_card_20261024.json).
 
 1. Preserve the literal registry stop; do not build another inevitably blocked TIFF.
    [Fresh exact-file check](downloads/review_20261024_springalign_witness_v2.json)
