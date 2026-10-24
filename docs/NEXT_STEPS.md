@@ -1,3 +1,22 @@
+# NEXT_STEPS — after the 2026-10-24 COULOMB session (negative verdict; queue unchanged, 4 follow-ups appended)
+
+## Completed this session (COULOMB, 2026-10-24)
+
+1. Pre-registered 5 ranked hypotheses (`docs/HYPOTHESES_20261024_COULOMB.md`) before any screen/build; gate-zero reproduced `BREAKLINE-L` exactly (canary `0.621604`, far-SGMC `0.072325`).
+2. Built + scored 3 experiments (`free 0.005689`, `open 0.005184`, `seismo 0.005808` on `HOLDOUT-DTI`), all Tier-1 repulsion, `20/20` canaries PASS, locally unique (`0.263–0.290`).
+3. Falsified at 100 m: Coulomb opening weighting (`0.5423` canary), 100 km seismicity fusion (statistical tie), TMI-tilt zero-contours (`0.5167`), MT-edge × dilatation (`0.5166`).
+4. Falsified `max()` two-channel fusion vs multiplicative: weaker RTP channel (`0.5162`) dominates `71.6%` of `max()` emission over stronger relative-scarp (`0.6230`).
+5. Disk-verified lineage counts (`D2.8 44,090`, `SOLO 40,199`, `R0 37,654`) and corrected 3 stale prose spots; logged conflicting intermediate `CLAIM` scores.
+
+## New follow-ups (appended behind Blocker 0 + dense-policy decision; strict order preserved below)
+
+- **F-C1. Rule-2 Coulomb re-evaluation**: score the built `COULOMB` rasters under fold-visible `d_visible > 2.0` to test whether the static self-mask (`#IR-92-STATIC-DCAT2-SELFMASK`) under-prices off-collar Coulomb emission. Zero new builds; one reporting script.
+- **F-C2. Multiplicative re-fusion**: rebuild the Coulomb screen as `rel_scarp × O_coulomb` (HYDROCONDUIT pattern) instead of `max(R_rtp, R_scarp) × O` and re-screen only — tests whether the fusion operator, not the physics, caused the shortfall.
+- **F-C3. Relative-scarp standalone lane**: `rel_scarp`-only screened `0.6230`, above the `BREAKLINE-L` baseline — the strongest unbuilt single component in the repo. Pre-register + screen + (if gate passes) build as its own lane.
+- **F-C4. LIDAR1M-LAHONTAN stays HELD**: still blocked on `1m_DEM_links.csv` + `apps.nationalmap.gov`; remains the highest-leverage untested instrument.
+
+---
+
 # NEXT_STEPS — after the 2026-10-24 APRONRIDGE session
 
 ## Current status (supersedes prior sections below for action purposes)

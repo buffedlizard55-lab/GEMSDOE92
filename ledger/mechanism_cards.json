@@ -475,5 +475,38 @@
     "falsifier": "Pooled HOLDOUT-DTI failing to beat repository holdout best RELIEF p10 (0.006045) on gems57-pooled-hide-v2, any single-feature leakage canary symmetric AUC >0.90, or local registry forward 3-px overlap >0.70 / |Spearman| >0.90.",
     "decision_rule": "Promote only if pooled HOLDOUT-DTI beats RELIEF p10 (0.006045) with paired 95% CI excluding 0 vs R0, all canaries <=0.90, 10/10 format gates pass, AND literal uniqueness passes on both local and public registries. Because the binding dense public witness (17GEMSDOE E-proba, 100% footprint positive) triggers the literal public overlap rule for every nonempty in-footprint raster until operator policy revision, never waive it silently: record submission_eligible=false and verdict=negative.",
     "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/apronridge_proxy_audit.json"
+  },
+  "h33-h33-2-b2-COULOMBfree-20261024-d0cf5db5": {
+    "parent": "h33-h33-2-b2",
+    "axis": "COULOMB",
+    "value": "free",
+    "hypothesis": "Critically stressed fractures -- optimally oriented for simultaneous shear slip and normal opening under WNW-ESE Basin-and-Range extension plus Walker Lane dextral shear -- maintain permeability and rupture first, while misoriented pre-Quaternary contacts stay locked. Resolving signed local dilatation/shear onto per-pixel lineament normals finds young opening relay strands whose scarps are too subtle for photo mapping or worms.",
+    "mechanism": "At fixed S=37654, DTI rises when expected kernel credit per dot rises. Standalone emission on 1D crests of max(RTP tilt-contact edge, relative monoclinal scarp) x Coulomb opening tendency x piedmont apron concentrates mass on opening lineaments in extending crust, repelling all prior far sets >3px so credit is not double-counted with earlier lanes.",
+    "non_fault_mimic": "Alluvial compaction / groundwater-withdrawal subsidence bowls (apparent dilatation without faulting), Walker Lane elastic strain shadows (shear-parallel, no open fault), and Lahontan shoreline benches / fan terrace risers striking near-NNE inside extending crust.",
+    "falsifier": "Pooled HOLDOUT-DTI at/below R0 (0.004006) with paired CI excluding a gain, single-feature canary symmetric AUC > 0.90, or forward 3-px overlap > 0.70 / |rho| > 0.90 vs any pre-session registry raster.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats HYDROCONDUIT f45hydro (0.008549) with paired CI excluding 0 vs R0 AND literal local uniqueness passes AND all format gates pass; otherwise verdict='negative' (OK TO DOWNLOAD, NOT CLEARED FOR A WEEKLY SLOT).",
+    "predicted_sign_and_size": "MODEL: unknown live delta; HOLDOUT-DTI in evidence/coulomb_proxy_audit.json"
+  },
+  "h33-h33-2-b2-COULOMBopen-20261024-58a7a394": {
+    "parent": "h33-h33-2-b2",
+    "axis": "COULOMB",
+    "value": "open",
+    "hypothesis": "Critically stressed fractures -- optimally oriented for simultaneous shear slip and normal opening under WNW-ESE Basin-and-Range extension plus Walker Lane dextral shear -- maintain permeability and rupture first, while misoriented pre-Quaternary contacts stay locked. Resolving signed local dilatation/shear onto per-pixel lineament normals finds young opening relay strands whose scarps are too subtle for photo mapping or worms.",
+    "mechanism": "At fixed S=37654, DTI rises when expected kernel credit per dot rises. Standalone emission on 1D crests of max(RTP tilt-contact edge, relative monoclinal scarp) x Coulomb opening tendency x piedmont apron concentrates mass on opening lineaments in extending crust, repelling all prior far sets >3px so credit is not double-counted with earlier lanes.",
+    "non_fault_mimic": "Alluvial compaction / groundwater-withdrawal subsidence bowls (apparent dilatation without faulting), Walker Lane elastic strain shadows (shear-parallel, no open fault), and Lahontan shoreline benches / fan terrace risers striking near-NNE inside extending crust.",
+    "falsifier": "Pooled HOLDOUT-DTI at/below R0 (0.004006) with paired CI excluding a gain, single-feature canary symmetric AUC > 0.90, or forward 3-px overlap > 0.70 / |rho| > 0.90 vs any pre-session registry raster.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats HYDROCONDUIT f45hydro (0.008549) with paired CI excluding 0 vs R0 AND literal local uniqueness passes AND all format gates pass; otherwise verdict='negative' (OK TO DOWNLOAD, NOT CLEARED FOR A WEEKLY SLOT).",
+    "predicted_sign_and_size": "MODEL: unknown live delta; HOLDOUT-DTI in evidence/coulomb_proxy_audit.json"
+  },
+  "h33-h33-2-b2-COULOMBseismo-20261024-d243140b": {
+    "parent": "h33-h33-2-b2",
+    "axis": "COULOMB",
+    "value": "seismo",
+    "hypothesis": "Critically stressed fractures -- optimally oriented for simultaneous shear slip and normal opening under WNW-ESE Basin-and-Range extension plus Walker Lane dextral shear -- maintain permeability and rupture first, while misoriented pre-Quaternary contacts stay locked. Resolving signed local dilatation/shear onto per-pixel lineament normals finds young opening relay strands whose scarps are too subtle for photo mapping or worms.",
+    "mechanism": "At fixed S=37654, DTI rises when expected kernel credit per dot rises. Standalone emission on 1D crests of max(RTP tilt-contact edge, relative monoclinal scarp) x Coulomb opening tendency x piedmont apron concentrates mass on opening lineaments in extending crust, repelling all prior far sets >3px so credit is not double-counted with earlier lanes.",
+    "non_fault_mimic": "Alluvial compaction / groundwater-withdrawal subsidence bowls (apparent dilatation without faulting), Walker Lane elastic strain shadows (shear-parallel, no open fault), and Lahontan shoreline benches / fan terrace risers striking near-NNE inside extending crust.",
+    "falsifier": "Pooled HOLDOUT-DTI at/below R0 (0.004006) with paired CI excluding a gain, single-feature canary symmetric AUC > 0.90, or forward 3-px overlap > 0.70 / |rho| > 0.90 vs any pre-session registry raster.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats HYDROCONDUIT f45hydro (0.008549) with paired CI excluding 0 vs R0 AND literal local uniqueness passes AND all format gates pass; otherwise verdict='negative' (OK TO DOWNLOAD, NOT CLEARED FOR A WEEKLY SLOT).",
+    "predicted_sign_and_size": "MODEL: unknown live delta; HOLDOUT-DTI in evidence/coulomb_proxy_audit.json"
   }
 }
