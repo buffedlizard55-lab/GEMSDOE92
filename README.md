@@ -18,7 +18,9 @@
 
 ---
 
-## Current Primary (2026-10-24, `APRONRIDGE free1d`): #1 All-Time Holdout-DTI & Standalone Physics GeoTIFF
+## Current Primary (2026-10-24, `APRONRIDGE free1d`): #1 All-Time Holdout-DTI (`0.008354`) & Standalone Physics GeoTIFF
+
+> Parallel candidate `PIEDFRONT f35Ptop` (`GEMSDOE92-PIEDFRONT-f35Ptop-20261024`, [`h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif`](docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif), SHA-256 `e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8`, `HOLDOUT-DTI = 0.006425`) is also preserved below (`APRONRIDGE free1d` beats `PIEDFRONT f35Ptop` by `+30.0%` on `HOLDOUT-DTI` while keeping `0.6434–0.6507 <= 0.70` forward overlap).
 
 **✅ FORMAT-VALID (10/10 automated gates PASS) — OK TO DOWNLOAD FOR RESEARCH.**  
 **⛔ NOT CLEARED FOR A WEEKLY SLOT — DO NOT SUBMIT (`verdict: negative`, `submission_eligible: false` solely under the binding `17GEMSDOE` full-footprint dense public witness).**
@@ -287,7 +289,7 @@ python3 scripts/restore_inputs.py
 ## Original Session Prompt
 
 ```markdown
-Review the repo. 
+Review the repo.
 
 THE FOLLOWING IS THE HIGHEST URGENCY AND MUST BE FOLLOWED!
 

@@ -1,0 +1,1948 @@
+{
+  "evidence_label": "PROXY",
+  "created_utc": "2026-10-24",
+  "axis": "PIEDFRONT",
+  "best_candidate": "f35Ptop",
+  "purpose": "Report-only instruments for PIEDFRONT variants: pooled catalogue hide-and-recover HOLDOUT-DTI, single-feature leakage canaries, USGS SGMC off-catalogue control, fixed-catalogue diagnostic, and literal-rule uniqueness on pre-placement surface and final dots.",
+  "parent": "h33-h33-2-b2",
+  "hide_and_recover_pooled_summary": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "alpha": 0.2,
+    "beta": 0.8,
+    "triangular_radius_m": 300.0,
+    "pooled": true,
+    "scores": {
+      "R0": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.004006147174684743,
+        "ci95": [
+          0.0034076934823601903,
+          0.004650591020077596
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 129.29712893913688,
+        "fpw": 70592.1164043663,
+        "fnw": 22533.70287106087
+      },
+      "RELIEFp10": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.0060451323971729325,
+        "ci95": [
+          0.005178776529069184,
+          0.006881860197257362
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 195.01412046639513,
+        "fpw": 70451.45517161682,
+        "fnw": 22467.9858795336
+      },
+      "BREAKLINEf45": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.00486050796752969,
+        "ci95": [
+          0.003929981664177456,
+          0.005887216912183688
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 155.29924363792867,
+        "fpw": 68948.88743005469,
+        "fnw": 22507.700756362065
+      },
+      "STRAINBREAKf60": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.005486691039494485,
+        "ci95": [
+          0.004550291606276137,
+          0.0063860967938230255
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 176.3925242543222,
+        "fpw": 69917.42219777714,
+        "fnw": 22486.607475745688
+      },
+      "f35Ptop": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.006424520433386923,
+        "ci95": [
+          0.005398685661719292,
+          0.007489351647384481
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 207.14853108339088,
+        "fpw": 70357.96738536867,
+        "fnw": 22455.851468916608
+      },
+      "f40Ptop": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.006402242718081935,
+        "ci95": [
+          0.005377603662172589,
+          0.007499350206336804
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 206.52486115155492,
+        "fpw": 70432.5025535575,
+        "fnw": 22456.475138848436
+      },
+      "f45Ptop": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.006137316420290028,
+        "ci95": [
+          0.005124996382387362,
+          0.007265291836673883
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 198.00722698721677,
+        "fpw": 70464.16775395634,
+        "fnw": 22464.992773012786
+      }
+    },
+    "best_comparable_control": "f40Ptop",
+    "paired_differences": {
+      "R0": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.00241837325870218,
+        "ci95": [
+          0.0015378413288938272,
+          0.0032554608006190146
+        ],
+        "withheld_positive_pixels": 22663
+      },
+      "RELIEFp10": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.0003793880362139906,
+        "ci95": [
+          -0.000256935331415852,
+          0.0010656763860387693
+        ],
+        "withheld_positive_pixels": 22663
+      },
+      "BREAKLINEf45": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.001564012465857233,
+        "ci95": [
+          0.00047134050342366126,
+          0.002606645958118455
+        ],
+        "withheld_positive_pixels": 22663
+      },
+      "STRAINBREAKf60": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.000937829393892438,
+        "ci95": [
+          -0.0003217144265033274,
+          0.002239274961122934
+        ],
+        "withheld_positive_pixels": 22663
+      },
+      "f40Ptop": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 2.227771530498822e-05,
+        "ci95": [
+          -0.00011938335339131758,
+          0.00016192576596311996
+        ],
+        "withheld_positive_pixels": 22663
+      },
+      "f45Ptop": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.0002872040130968952,
+        "ci95": [
+          2.680725399709981e-05,
+          0.0005481184175969606
+        ],
+        "withheld_positive_pixels": 22663
+      }
+    },
+    "bootstrap": {
+      "method": "paired physical spatial-cluster percentile",
+      "clusters": 158,
+      "draws": 1000,
+      "seed": 520810,
+      "confidence": 0.95,
+      "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+    },
+    "implementation_sha256": {
+      "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+      "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+      "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+      "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+    }
+  },
+  "hide_and_recover_pooled_by_candidate": {
+    "f35Ptop": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "alpha": 0.2,
+      "beta": 0.8,
+      "triangular_radius_m": 300.0,
+      "pooled": true,
+      "scores": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.004006147174684743,
+          "ci95": [
+            0.0034076934823601903,
+            0.004650591020077596
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 129.29712893913688,
+          "fpw": 70592.1164043663,
+          "fnw": 22533.70287106087
+        },
+        "RELIEFp10": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0060451323971729325,
+          "ci95": [
+            0.005178776529069184,
+            0.006881860197257362
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 195.01412046639513,
+          "fpw": 70451.45517161682,
+          "fnw": 22467.9858795336
+        },
+        "BREAKLINEf45": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.00486050796752969,
+          "ci95": [
+            0.003929981664177456,
+            0.005887216912183688
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 155.29924363792867,
+          "fpw": 68948.88743005469,
+          "fnw": 22507.700756362065
+        },
+        "STRAINBREAKf60": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.005486691039494485,
+          "ci95": [
+            0.004550291606276137,
+            0.0063860967938230255
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 176.3925242543222,
+          "fpw": 69917.42219777714,
+          "fnw": 22486.607475745688
+        },
+        "f35Ptop": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.006424520433386923,
+          "ci95": [
+            0.005398685661719292,
+            0.007489351647384481
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 207.14853108339088,
+          "fpw": 70357.96738536867,
+          "fnw": 22455.851468916608
+        },
+        "f40Ptop": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.006402242718081935,
+          "ci95": [
+            0.005377603662172589,
+            0.007499350206336804
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 206.52486115155492,
+          "fpw": 70432.5025535575,
+          "fnw": 22456.475138848436
+        },
+        "f45Ptop": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.006137316420290028,
+          "ci95": [
+            0.005124996382387362,
+            0.007265291836673883
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 198.00722698721677,
+          "fpw": 70464.16775395634,
+          "fnw": 22464.992773012786
+        }
+      },
+      "best_comparable_control": "f40Ptop",
+      "paired_differences": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.00241837325870218,
+          "ci95": [
+            0.0015378413288938272,
+            0.0032554608006190146
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "RELIEFp10": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.0003793880362139906,
+          "ci95": [
+            -0.000256935331415852,
+            0.0010656763860387693
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "BREAKLINEf45": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.001564012465857233,
+          "ci95": [
+            0.00047134050342366126,
+            0.002606645958118455
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "STRAINBREAKf60": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.000937829393892438,
+          "ci95": [
+            -0.0003217144265033274,
+            0.002239274961122934
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "f40Ptop": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 2.227771530498822e-05,
+          "ci95": [
+            -0.00011938335339131758,
+            0.00016192576596311996
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "f45Ptop": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.0002872040130968952,
+          "ci95": [
+            2.680725399709981e-05,
+            0.0005481184175969606
+          ],
+          "withheld_positive_pixels": 22663
+        }
+      },
+      "bootstrap": {
+        "method": "paired physical spatial-cluster percentile",
+        "clusters": 158,
+        "draws": 1000,
+        "seed": 520810,
+        "confidence": 0.95,
+        "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+      },
+      "implementation_sha256": {
+        "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+        "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+        "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+        "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+      }
+    },
+    "f40Ptop": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "alpha": 0.2,
+      "beta": 0.8,
+      "triangular_radius_m": 300.0,
+      "pooled": true,
+      "scores": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.004006147174684743,
+          "ci95": [
+            0.0034076934823601903,
+            0.004650591020077596
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 129.29712893913688,
+          "fpw": 70592.1164043663,
+          "fnw": 22533.70287106087
+        },
+        "RELIEFp10": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0060451323971729325,
+          "ci95": [
+            0.005178776529069184,
+            0.006881860197257362
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 195.01412046639513,
+          "fpw": 70451.45517161682,
+          "fnw": 22467.9858795336
+        },
+        "BREAKLINEf45": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.00486050796752969,
+          "ci95": [
+            0.003929981664177456,
+            0.005887216912183688
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 155.29924363792867,
+          "fpw": 68948.88743005469,
+          "fnw": 22507.700756362065
+        },
+        "STRAINBREAKf60": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.005486691039494485,
+          "ci95": [
+            0.004550291606276137,
+            0.0063860967938230255
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 176.3925242543222,
+          "fpw": 69917.42219777714,
+          "fnw": 22486.607475745688
+        },
+        "f35Ptop": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.006424520433386923,
+          "ci95": [
+            0.005398685661719292,
+            0.007489351647384481
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 207.14853108339088,
+          "fpw": 70357.96738536867,
+          "fnw": 22455.851468916608
+        },
+        "f40Ptop": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.006402242718081935,
+          "ci95": [
+            0.005377603662172589,
+            0.007499350206336804
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 206.52486115155492,
+          "fpw": 70432.5025535575,
+          "fnw": 22456.475138848436
+        },
+        "f45Ptop": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.006137316420290028,
+          "ci95": [
+            0.005124996382387362,
+            0.007265291836673883
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 198.00722698721677,
+          "fpw": 70464.16775395634,
+          "fnw": 22464.992773012786
+        }
+      },
+      "best_comparable_control": "f35Ptop",
+      "paired_differences": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.002396095543397192,
+          "ci95": [
+            0.0014658208268719752,
+            0.0032519828318931057
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "RELIEFp10": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.0003571103209090024,
+          "ci95": [
+            -0.0003014361183265464,
+            0.001064462055039998
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "BREAKLINEf45": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.0015417347505522448,
+          "ci95": [
+            0.0004185414899342766,
+            0.0025929776920076033
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "STRAINBREAKf60": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.0009155516785874498,
+          "ci95": [
+            -0.0003562457254521026,
+            0.0022545846691352785
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "f35Ptop": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": -2.227771530498822e-05,
+          "ci95": [
+            -0.00016192576596312013,
+            0.00011938335339131757
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "f45Ptop": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.000264926297791907,
+          "ci95": [
+            7.338743050074925e-05,
+            0.0004566551320461626
+          ],
+          "withheld_positive_pixels": 22663
+        }
+      },
+      "bootstrap": {
+        "method": "paired physical spatial-cluster percentile",
+        "clusters": 158,
+        "draws": 1000,
+        "seed": 520810,
+        "confidence": 0.95,
+        "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+      },
+      "implementation_sha256": {
+        "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+        "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+        "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+        "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+      }
+    },
+    "f45Ptop": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "alpha": 0.2,
+      "beta": 0.8,
+      "triangular_radius_m": 300.0,
+      "pooled": true,
+      "scores": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.004006147174684743,
+          "ci95": [
+            0.0034076934823601903,
+            0.004650591020077596
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 129.29712893913688,
+          "fpw": 70592.1164043663,
+          "fnw": 22533.70287106087
+        },
+        "RELIEFp10": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0060451323971729325,
+          "ci95": [
+            0.005178776529069184,
+            0.006881860197257362
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 195.01412046639513,
+          "fpw": 70451.45517161682,
+          "fnw": 22467.9858795336
+        },
+        "BREAKLINEf45": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.00486050796752969,
+          "ci95": [
+            0.003929981664177456,
+            0.005887216912183688
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 155.29924363792867,
+          "fpw": 68948.88743005469,
+          "fnw": 22507.700756362065
+        },
+        "STRAINBREAKf60": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.005486691039494485,
+          "ci95": [
+            0.004550291606276137,
+            0.0063860967938230255
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 176.3925242543222,
+          "fpw": 69917.42219777714,
+          "fnw": 22486.607475745688
+        },
+        "f35Ptop": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.006424520433386923,
+          "ci95": [
+            0.005398685661719292,
+            0.007489351647384481
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 207.14853108339088,
+          "fpw": 70357.96738536867,
+          "fnw": 22455.851468916608
+        },
+        "f40Ptop": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.006402242718081935,
+          "ci95": [
+            0.005377603662172589,
+            0.007499350206336804
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 206.52486115155492,
+          "fpw": 70432.5025535575,
+          "fnw": 22456.475138848436
+        },
+        "f45Ptop": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.006137316420290028,
+          "ci95": [
+            0.005124996382387362,
+            0.007265291836673883
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 198.00722698721677,
+          "fpw": 70464.16775395634,
+          "fnw": 22464.992773012786
+        }
+      },
+      "best_comparable_control": "f35Ptop",
+      "paired_differences": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.002131169245605285,
+          "ci95": [
+            0.0011957267542898763,
+            0.0030747074717568687
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "RELIEFp10": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 9.21840231170954e-05,
+          "ci95": [
+            -0.0006275439293116605,
+            0.0008470367425931728
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "BREAKLINEf45": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.0012768084527603378,
+          "ci95": [
+            0.00010475105735759631,
+            0.0024390724968592933
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "STRAINBREAKf60": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.0006506253807955428,
+          "ci95": [
+            -0.0006558985742418557,
+            0.0020366837494493377
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "f35Ptop": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": -0.0002872040130968952,
+          "ci95": [
+            -0.0005481184175969607,
+            -2.680725399709982e-05
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "f40Ptop": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": -0.000264926297791907,
+          "ci95": [
+            -0.0004566551320461626,
+            -7.338743050074927e-05
+          ],
+          "withheld_positive_pixels": 22663
+        }
+      },
+      "bootstrap": {
+        "method": "paired physical spatial-cluster percentile",
+        "clusters": 158,
+        "draws": 1000,
+        "seed": 520810,
+        "confidence": 0.95,
+        "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+      },
+      "implementation_sha256": {
+        "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+        "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+        "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+        "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+      }
+    }
+  },
+  "holdout_splits": [
+    {
+      "seed": 20,
+      "folds": [
+        {
+          "fold": "NW",
+          "seed": 20,
+          "held_components": 96,
+          "withheld_positive_pixels": 1923,
+          "eligible_components": 598,
+          "boundary_buffer_px": 12,
+          "feature_buffer_px": 3,
+          "nearest_visible_to_truth_px": 3.1622776601683795,
+          "split_version": "buffered-whole-components-loqo-v2",
+          "evaluation_region_label_blind": true
+        },
+        {
+          "fold": "NE",
+          "seed": 20,
+          "held_components": 145,
+          "withheld_positive_pixels": 2367,
+          "eligible_components": 628,
+          "boundary_buffer_px": 12,
+          "feature_buffer_px": 3,
+          "nearest_visible_to_truth_px": 3.1622776601683795,
+          "split_version": "buffered-whole-components-loqo-v2",
+          "evaluation_region_label_blind": true
+        },
+        {
+          "fold": "SW",
+          "seed": 20,
+          "held_components": 223,
+          "withheld_positive_pixels": 3781,
+          "eligible_components": 983,
+          "boundary_buffer_px": 12,
+          "feature_buffer_px": 3,
+          "nearest_visible_to_truth_px": 3.1622776601683795,
+          "split_version": "buffered-whole-components-loqo-v2",
+          "evaluation_region_label_blind": true
+        },
+        {
+          "fold": "SE",
+          "seed": 20,
+          "held_components": 142,
+          "withheld_positive_pixels": 3250,
+          "eligible_components": 648,
+          "boundary_buffer_px": 12,
+          "feature_buffer_px": 3,
+          "nearest_visible_to_truth_px": 3.1622776601683795,
+          "split_version": "buffered-whole-components-loqo-v2",
+          "evaluation_region_label_blind": true
+        }
+      ]
+    },
+    {
+      "seed": 30,
+      "folds": [
+        {
+          "fold": "NW",
+          "seed": 30,
+          "held_components": 138,
+          "withheld_positive_pixels": 1919,
+          "eligible_components": 598,
+          "boundary_buffer_px": 12,
+          "feature_buffer_px": 3,
+          "nearest_visible_to_truth_px": 3.1622776601683795,
+          "split_version": "buffered-whole-components-loqo-v2",
+          "evaluation_region_label_blind": true
+        },
+        {
+          "fold": "NE",
+          "seed": 30,
+          "held_components": 131,
+          "withheld_positive_pixels": 2356,
+          "eligible_components": 628,
+          "boundary_buffer_px": 12,
+          "feature_buffer_px": 3,
+          "nearest_visible_to_truth_px": 3.1622776601683795,
+          "split_version": "buffered-whole-components-loqo-v2",
+          "evaluation_region_label_blind": true
+        },
+        {
+          "fold": "SW",
+          "seed": 30,
+          "held_components": 203,
+          "withheld_positive_pixels": 3805,
+          "eligible_components": 983,
+          "boundary_buffer_px": 12,
+          "feature_buffer_px": 3,
+          "nearest_visible_to_truth_px": 3.1622776601683795,
+          "split_version": "buffered-whole-components-loqo-v2",
+          "evaluation_region_label_blind": true
+        },
+        {
+          "fold": "SE",
+          "seed": 30,
+          "held_components": 145,
+          "withheld_positive_pixels": 3262,
+          "eligible_components": 648,
+          "boundary_buffer_px": 12,
+          "feature_buffer_px": 3,
+          "nearest_visible_to_truth_px": 3.1622776601683795,
+          "split_version": "buffered-whole-components-loqo-v2",
+          "evaluation_region_label_blind": true
+        }
+      ]
+    }
+  ],
+  "per_arm_fold_scores": {
+    "R0": [
+      0.0033190361096884797,
+      0.004407926168167087,
+      0.0031089001997361824,
+      0.004072828198897818,
+      0.00489997713403107,
+      0.005013980811213483,
+      0.004355576467076173,
+      0.003125934420342564
+    ],
+    "RELIEFp10": [
+      0.004578056954825213,
+      0.00658626211231911,
+      0.005662643564358266,
+      0.00540408666315905,
+      0.00750167560429133,
+      0.007457189434327682,
+      0.0066340163128888255,
+      0.004633597763238065
+    ],
+    "BREAKLINEf45": [
+      0.004980086985584999,
+      0.004139077869131841,
+      0.004082108724074291,
+      0.0045586718236277635,
+      0.007427375804418359,
+      0.005926112314567232,
+      0.0049389548050161386,
+      0.0036808872739087445
+    ],
+    "STRAINBREAKf60": [
+      0.0032321895110560073,
+      0.0020890461684217863,
+      0.007846430547293861,
+      0.005789126063841591,
+      0.004905777773046384,
+      0.003030951715129736,
+      0.0068039879164997425,
+      0.004133888815980074
+    ],
+    "f35Ptop": [
+      0.0037900509988501147,
+      0.00815265454534194,
+      0.006272763518463102,
+      0.004510849292436636,
+      0.007717946342512185,
+      0.007518171008374377,
+      0.0071836503059207095,
+      0.005994720169162164
+    ],
+    "f40Ptop": [
+      0.003706362663894784,
+      0.00835454095095137,
+      0.006132591948840961,
+      0.0046725657828343425,
+      0.007509168450029672,
+      0.007454258607725213,
+      0.007099446769917028,
+      0.006025857552426558
+    ],
+    "f45Ptop": [
+      0.003259750917428539,
+      0.008374961731644724,
+      0.005865256616052097,
+      0.004455973226956429,
+      0.00680854671516175,
+      0.006948704645802871,
+      0.007097485095872607,
+      0.005863553364072549
+    ]
+  },
+  "leakage_canaries": {
+    "definition": "symmetric AUC on hidden catalogue positives vs non-catalogue negatives in buffered fold regions",
+    "results": {
+      "training_band_5_iso_grav_anom_slope": {
+        "auc": 0.551113,
+        "symmetric_auc": 0.551113,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "training_band_12_det_elev": {
+        "auc": 0.497553,
+        "symmetric_auc": 0.502447,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "training_band_15_depth_to_base_surf": {
+        "auc": 0.514862,
+        "symmetric_auc": 0.514862,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "training_band_19_det_elev_slope": {
+        "auc": 0.55314,
+        "symmetric_auc": 0.55314,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "piedfront_rel_break_pct": {
+        "auc": 0.579356,
+        "symmetric_auc": 0.579356,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "piedfront_R_scarp": {
+        "auc": 0.620797,
+        "symmetric_auc": 0.620797,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "piedfront_W_pied": {
+        "auc": 0.582369,
+        "symmetric_auc": 0.582369,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "piedfront_S_pct_main": {
+        "auc": 0.639112,
+        "symmetric_auc": 0.639112,
+        "status": "REPORT_ONLY_PASS"
+      }
+    },
+    "stop_and_investigate_if_any_gt_0_90": false,
+    "max_symmetric_auc": 0.639112
+  },
+  "sgmc_control_proxy": {
+    "source": "manifest-pinned USGS SGMC derived fault control (https://www.sciencebase.gov/catalog/item/5888bf4fe4b05ccb964bab9d, US Public Domain)",
+    "truth_pixels_after_catalogue_and_3px_exclusion": 62703,
+    "r0_dti": 0.09606,
+    "variant_dti": {
+      "R0": 0.09606,
+      "RELIEFp10": 0.087245,
+      "BREAKLINEf45": 0.126105,
+      "STRAINBREAKf60": 0.105162,
+      "f35Ptop": 0.059993,
+      "f40Ptop": 0.058179,
+      "f45Ptop": 0.0559
+    },
+    "variant_deltas_vs_r0": {
+      "R0": 0.0,
+      "RELIEFp10": -0.008815,
+      "BREAKLINEf45": 0.030045,
+      "STRAINBREAKf60": 0.009102,
+      "f35Ptop": -0.036067,
+      "f40Ptop": -0.037881,
+      "f45Ptop": -0.04016
+    }
+  },
+  "fixed_catalogue_diagnostic": {
+    "evidence_class": "PROXY-DIAGNOSTIC (not a holdout; no withholding)",
+    "definition": "DTI of each fixed raster against the full known catalogue (known=None)",
+    "variant_dti": {
+      "R0": 0.006709,
+      "RELIEFp10": 0.009791,
+      "BREAKLINEf45": 0.007746,
+      "STRAINBREAKf60": 0.008561,
+      "f35Ptop": 0.009569,
+      "f40Ptop": 0.009382,
+      "f45Ptop": 0.009052
+    },
+    "variant_deltas_vs_r0": {
+      "R0": 0.0,
+      "RELIEFp10": 0.003082,
+      "BREAKLINEf45": 0.001037,
+      "STRAINBREAKf60": 0.001852,
+      "f35Ptop": 0.00286,
+      "f40Ptop": 0.002673,
+      "f45Ptop": 0.002343
+    }
+  },
+  "uniqueness_preplacement_surface": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "phase": "preplacement_surface",
+    "rule": "literal: forward_overlap > 0.70 OR |spearman| > 0.90 => duplicate, log and stop",
+    "registry_rasters_checked": 29,
+    "worst_forward_overlap": 0.434907,
+    "worst_forward_overlap_file": "h19_5.tif",
+    "worst_abs_spearman": 0.127084,
+    "worst_abs_spearman_file": "h19_5.tif",
+    "duplicate": false,
+    "rows": [
+      {
+        "registry_file": "parent_R0_zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.062379,
+        "abs_spearman_sample100k": 0.062379,
+        "surface_top37654_forward_overlap_3px": 0.376082
+      },
+      {
+        "registry_file": "h19_5.tif",
+        "their_dots": 121131,
+        "spearman_sample100k": 0.127084,
+        "abs_spearman_sample100k": 0.127084,
+        "surface_top37654_forward_overlap_3px": 0.434907
+      },
+      {
+        "registry_file": "d28.tif",
+        "their_dots": 44090,
+        "spearman_sample100k": 0.06999,
+        "abs_spearman_sample100k": 0.06999,
+        "surface_top37654_forward_overlap_3px": 0.397328
+      },
+      {
+        "registry_file": "h27_4_solo.tif",
+        "their_dots": 40199,
+        "spearman_sample100k": 0.066057,
+        "abs_spearman_sample100k": 0.066057,
+        "surface_top37654_forward_overlap_3px": 0.386918
+      },
+      {
+        "registry_file": "sample_submission.tif",
+        "their_dots": 60988,
+        "spearman_sample100k": 0.052431,
+        "abs_spearman_sample100k": 0.052431,
+        "surface_top37654_forward_overlap_3px": 0.07784
+      },
+      {
+        "registry_file": "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.021071,
+        "abs_spearman_sample100k": 0.021071,
+        "surface_top37654_forward_overlap_3px": 0.092261
+      },
+      {
+        "registry_file": "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.037494,
+        "abs_spearman_sample100k": 0.037494,
+        "surface_top37654_forward_overlap_3px": 0.307006
+      },
+      {
+        "registry_file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.059742,
+        "abs_spearman_sample100k": 0.059742,
+        "surface_top37654_forward_overlap_3px": 0.350321
+      },
+      {
+        "registry_file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.058724,
+        "abs_spearman_sample100k": 0.058724,
+        "surface_top37654_forward_overlap_3px": 0.345594
+      },
+      {
+        "registry_file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.05692,
+        "abs_spearman_sample100k": 0.05692,
+        "surface_top37654_forward_overlap_3px": 0.337361
+      },
+      {
+        "registry_file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.060145,
+        "abs_spearman_sample100k": 0.060145,
+        "surface_top37654_forward_overlap_3px": 0.345355
+      },
+      {
+        "registry_file": "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.060633,
+        "abs_spearman_sample100k": 0.060633,
+        "surface_top37654_forward_overlap_3px": 0.33614
+      },
+      {
+        "registry_file": "h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.060325,
+        "abs_spearman_sample100k": 0.060325,
+        "surface_top37654_forward_overlap_3px": 0.32472
+      },
+      {
+        "registry_file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.072697,
+        "abs_spearman_sample100k": 0.072697,
+        "surface_top37654_forward_overlap_3px": 0.390928
+      },
+      {
+        "registry_file": "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.046122,
+        "abs_spearman_sample100k": 0.046122,
+        "surface_top37654_forward_overlap_3px": 0.322303
+      },
+      {
+        "registry_file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+        "their_dots": 5000,
+        "spearman_sample100k": 0.008784,
+        "abs_spearman_sample100k": 0.008784,
+        "surface_top37654_forward_overlap_3px": 0.031896
+      },
+      {
+        "registry_file": "h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.062732,
+        "abs_spearman_sample100k": 0.062732,
+        "surface_top37654_forward_overlap_3px": 0.325782
+      },
+      {
+        "registry_file": "h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.059585,
+        "abs_spearman_sample100k": 0.059585,
+        "surface_top37654_forward_overlap_3px": 0.302996
+      },
+      {
+        "registry_file": "h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.055602,
+        "abs_spearman_sample100k": 0.055602,
+        "surface_top37654_forward_overlap_3px": 0.26632
+      },
+      {
+        "registry_file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.045564,
+        "abs_spearman_sample100k": 0.045564,
+        "surface_top37654_forward_overlap_3px": 0.351118
+      },
+      {
+        "registry_file": "h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
+        "their_dots": 41419,
+        "spearman_sample100k": 0.065894,
+        "abs_spearman_sample100k": 0.065894,
+        "surface_top37654_forward_overlap_3px": 0.378658
+      },
+      {
+        "registry_file": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif",
+        "their_dots": 33889,
+        "spearman_sample100k": 0.059372,
+        "abs_spearman_sample100k": 0.059372,
+        "surface_top37654_forward_overlap_3px": 0.336086
+      },
+      {
+        "registry_file": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.063052,
+        "abs_spearman_sample100k": 0.063052,
+        "surface_top37654_forward_overlap_3px": 0.358979
+      },
+      {
+        "registry_file": "h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.061127,
+        "abs_spearman_sample100k": 0.061127,
+        "surface_top37654_forward_overlap_3px": 0.368221
+      },
+      {
+        "registry_file": "h33-h33-2-b2-PRUNE_B4-20261023-78e893d7-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.061694,
+        "abs_spearman_sample100k": 0.061694,
+        "surface_top37654_forward_overlap_3px": 0.355713
+      },
+      {
+        "registry_file": "h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.0625,
+        "abs_spearman_sample100k": 0.0625,
+        "surface_top37654_forward_overlap_3px": 0.332581
+      },
+      {
+        "registry_file": "h33-h33-2-b2-SCARPPOLf33Stop-20261024-7b3571a5-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.055776,
+        "abs_spearman_sample100k": 0.055776,
+        "surface_top37654_forward_overlap_3px": 0.34902
+      },
+      {
+        "registry_file": "h33-h33-2-b2-SCARPPOLf38Stop-20261024-a259cb8c-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.054341,
+        "abs_spearman_sample100k": 0.054341,
+        "surface_top37654_forward_overlap_3px": 0.344266
+      },
+      {
+        "registry_file": "h33-h33-2-b2-SCARPPOLf45Stop-20261024-cf4e45c0-zeros.tif",
+        "their_dots": 37654,
+        "spearman_sample100k": 0.052798,
+        "abs_spearman_sample100k": 0.052798,
+        "surface_top37654_forward_overlap_3px": 0.336697
+      }
+    ]
+  },
+  "uniqueness_final_dots": {
+    "f35Ptop": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "phase": "final_dots",
+      "rule": "literal: forward_overlap > 0.70 OR |spearman| > 0.90 => duplicate, log and stop",
+      "registry_rasters_checked": 29,
+      "worst_forward_overlap": 0.649997,
+      "worst_forward_overlap_file": "h19_5.tif",
+      "worst_abs_spearman": 0.585871,
+      "worst_abs_spearman_file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+      "duplicate": false,
+      "rows": [
+        {
+          "registry_file": "parent_R0_zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.643942,
+          "reverse_overlap_their_dots_within_3px": 0.616535,
+          "binary_spearman_phi": 0.540418,
+          "jaccard_exact_pixels": 0.373407
+        },
+        {
+          "registry_file": "h19_5.tif",
+          "their_dots": 121131,
+          "forward_overlap_my_dots_within_3px": 0.649997,
+          "reverse_overlap_their_dots_within_3px": 0.590171,
+          "binary_spearman_phi": 0.354794,
+          "jaccard_exact_pixels": 0.182228
+        },
+        {
+          "registry_file": "d28.tif",
+          "their_dots": 44090,
+          "forward_overlap_my_dots_within_3px": 0.649997,
+          "reverse_overlap_their_dots_within_3px": 0.557564,
+          "binary_spearman_phi": 0.498573,
+          "jaccard_exact_pixels": 0.334182
+        },
+        {
+          "registry_file": "h27_4_solo.tif",
+          "their_dots": 40199,
+          "forward_overlap_my_dots_within_3px": 0.648669,
+          "reverse_overlap_their_dots_within_3px": 0.597129,
+          "binary_spearman_phi": 0.522681,
+          "jaccard_exact_pixels": 0.356844
+        },
+        {
+          "registry_file": "sample_submission.tif",
+          "their_dots": 60988,
+          "forward_overlap_my_dots_within_3px": 0.074494,
+          "reverse_overlap_their_dots_within_3px": 0.082656,
+          "binary_spearman_phi": -0.009363,
+          "jaccard_exact_pixels": 0.0
+        },
+        {
+          "registry_file": "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.044378,
+          "reverse_overlap_their_dots_within_3px": 0.080868,
+          "binary_spearman_phi": 0.002986,
+          "jaccard_exact_pixels": 0.005152
+        },
+        {
+          "registry_file": "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.466484,
+          "reverse_overlap_their_dots_within_3px": 0.34987,
+          "binary_spearman_phi": 0.302454,
+          "jaccard_exact_pixels": 0.18171
+        },
+        {
+          "registry_file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.533781,
+          "reverse_overlap_their_dots_within_3px": 0.425957,
+          "binary_spearman_phi": 0.372118,
+          "jaccard_exact_pixels": 0.232053
+        },
+        {
+          "registry_file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.516067,
+          "reverse_overlap_their_dots_within_3px": 0.398656,
+          "binary_spearman_phi": 0.347933,
+          "jaccard_exact_pixels": 0.214097
+        },
+        {
+          "registry_file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.48866,
+          "reverse_overlap_their_dots_within_3px": 0.355766,
+          "binary_spearman_phi": 0.310079,
+          "jaccard_exact_pixels": 0.187018
+        },
+        {
+          "registry_file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.583046,
+          "reverse_overlap_their_dots_within_3px": 0.612339,
+          "binary_spearman_phi": 0.503098,
+          "jaccard_exact_pixels": 0.339333
+        },
+        {
+          "registry_file": "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.568837,
+          "reverse_overlap_their_dots_within_3px": 0.611117,
+          "binary_spearman_phi": 0.491193,
+          "jaccard_exact_pixels": 0.328816
+        },
+        {
+          "registry_file": "h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.549238,
+          "reverse_overlap_their_dots_within_3px": 0.610825,
+          "binary_spearman_phi": 0.474473,
+          "jaccard_exact_pixels": 0.314322
+        },
+        {
+          "registry_file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.64041,
+          "reverse_overlap_their_dots_within_3px": 0.697695,
+          "binary_spearman_phi": 0.585871,
+          "jaccard_exact_pixels": 0.417322
+        },
+        {
+          "registry_file": "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.547352,
+          "reverse_overlap_their_dots_within_3px": 0.433181,
+          "binary_spearman_phi": 0.373669,
+          "jaccard_exact_pixels": 0.233223
+        },
+        {
+          "registry_file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+          "their_dots": 5000,
+          "forward_overlap_my_dots_within_3px": 0.035959,
+          "reverse_overlap_their_dots_within_3px": 0.2364,
+          "binary_spearman_phi": 0.002822,
+          "jaccard_exact_pixels": 0.001761
+        },
+        {
+          "registry_file": "h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.465024,
+          "reverse_overlap_their_dots_within_3px": 0.349312,
+          "binary_spearman_phi": 0.306467,
+          "jaccard_exact_pixels": 0.184498
+        },
+        {
+          "registry_file": "h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.389149,
+          "reverse_overlap_their_dots_within_3px": 0.255856,
+          "binary_spearman_phi": 0.222892,
+          "jaccard_exact_pixels": 0.129022
+        },
+        {
+          "registry_file": "h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.295958,
+          "reverse_overlap_their_dots_within_3px": 0.17196,
+          "binary_spearman_phi": 0.143517,
+          "jaccard_exact_pixels": 0.08094
+        },
+        {
+          "registry_file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.517687,
+          "reverse_overlap_their_dots_within_3px": 0.42686,
+          "binary_spearman_phi": 0.34887,
+          "jaccard_exact_pixels": 0.214782
+        },
+        {
+          "registry_file": "h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
+          "their_dots": 41419,
+          "forward_overlap_my_dots_within_3px": 0.644234,
+          "reverse_overlap_their_dots_within_3px": 0.626331,
+          "binary_spearman_phi": 0.520859,
+          "jaccard_exact_pixels": 0.354941
+        },
+        {
+          "registry_file": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif",
+          "their_dots": 33889,
+          "forward_overlap_my_dots_within_3px": 0.574892,
+          "reverse_overlap_their_dots_within_3px": 0.611408,
+          "binary_spearman_phi": 0.507406,
+          "jaccard_exact_pixels": 0.342371
+        },
+        {
+          "registry_file": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.612551,
+          "reverse_overlap_their_dots_within_3px": 0.622696,
+          "binary_spearman_phi": 0.487207,
+          "jaccard_exact_pixels": 0.325332
+        },
+        {
+          "registry_file": "h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.62753,
+          "reverse_overlap_their_dots_within_3px": 0.618527,
+          "binary_spearman_phi": 0.508235,
+          "jaccard_exact_pixels": 0.343922
+        },
+        {
+          "registry_file": "h33-h33-2-b2-PRUNE_B4-20261023-78e893d7-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.603229,
+          "reverse_overlap_their_dots_within_3px": 0.619801,
+          "binary_spearman_phi": 0.484425,
+          "jaccard_exact_pixels": 0.32291
+        },
+        {
+          "registry_file": "h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.561879,
+          "reverse_overlap_their_dots_within_3px": 0.617411,
+          "binary_spearman_phi": 0.457967,
+          "jaccard_exact_pixels": 0.300319
+        },
+        {
+          "registry_file": "h33-h33-2-b2-SCARPPOLf33Stop-20261024-7b3571a5-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.528204,
+          "reverse_overlap_their_dots_within_3px": 0.426807,
+          "binary_spearman_phi": 0.370085,
+          "jaccard_exact_pixels": 0.230523
+        },
+        {
+          "registry_file": "h33-h33-2-b2-SCARPPOLf38Stop-20261024-a259cb8c-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.509561,
+          "reverse_overlap_their_dots_within_3px": 0.398683,
+          "binary_spearman_phi": 0.345044,
+          "jaccard_exact_pixels": 0.211987
+        },
+        {
+          "registry_file": "h33-h33-2-b2-SCARPPOLf45Stop-20261024-cf4e45c0-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.481755,
+          "reverse_overlap_their_dots_within_3px": 0.355872,
+          "binary_spearman_phi": 0.307189,
+          "jaccard_exact_pixels": 0.185001
+        }
+      ]
+    },
+    "f40Ptop": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "phase": "final_dots",
+      "rule": "literal: forward_overlap > 0.70 OR |spearman| > 0.90 => duplicate, log and stop",
+      "registry_rasters_checked": 29,
+      "worst_forward_overlap": 0.599989,
+      "worst_forward_overlap_file": "h19_5.tif",
+      "worst_abs_spearman": 0.528941,
+      "worst_abs_spearman_file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+      "duplicate": false,
+      "rows": [
+        {
+          "registry_file": "parent_R0_zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.59404,
+          "reverse_overlap_their_dots_within_3px": 0.583311,
+          "binary_spearman_phi": 0.490043,
+          "jaccard_exact_pixels": 0.327809
+        },
+        {
+          "registry_file": "h19_5.tif",
+          "their_dots": 121131,
+          "forward_overlap_my_dots_within_3px": 0.599989,
+          "reverse_overlap_their_dots_within_3px": 0.561161,
+          "binary_spearman_phi": 0.326477,
+          "jaccard_exact_pixels": 0.165882
+        },
+        {
+          "registry_file": "d28.tif",
+          "their_dots": 44090,
+          "forward_overlap_my_dots_within_3px": 0.599989,
+          "reverse_overlap_their_dots_within_3px": 0.527693,
+          "binary_spearman_phi": 0.45199,
+          "jaccard_exact_pixels": 0.294401
+        },
+        {
+          "registry_file": "h27_4_solo.tif",
+          "their_dots": 40199,
+          "forward_overlap_my_dots_within_3px": 0.598688,
+          "reverse_overlap_their_dots_within_3px": 0.564989,
+          "binary_spearman_phi": 0.473914,
+          "jaccard_exact_pixels": 0.313731
+        },
+        {
+          "registry_file": "sample_submission.tif",
+          "their_dots": 60988,
+          "forward_overlap_my_dots_within_3px": 0.073379,
+          "reverse_overlap_their_dots_within_3px": 0.081737,
+          "binary_spearman_phi": -0.009363,
+          "jaccard_exact_pixels": 0.0
+        },
+        {
+          "registry_file": "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.047963,
+          "reverse_overlap_their_dots_within_3px": 0.088092,
+          "binary_spearman_phi": 0.003896,
+          "jaccard_exact_pixels": 0.005608
+        },
+        {
+          "registry_file": "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.431747,
+          "reverse_overlap_their_dots_within_3px": 0.331758,
+          "binary_spearman_phi": 0.273909,
+          "jaccard_exact_pixels": 0.16225
+        },
+        {
+          "registry_file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.49437,
+          "reverse_overlap_their_dots_within_3px": 0.405375,
+          "binary_spearman_phi": 0.33857,
+          "jaccard_exact_pixels": 0.207285
+        },
+        {
+          "registry_file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.478409,
+          "reverse_overlap_their_dots_within_3px": 0.379747,
+          "binary_spearman_phi": 0.316713,
+          "jaccard_exact_pixels": 0.191677
+        },
+        {
+          "registry_file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.453418,
+          "reverse_overlap_their_dots_within_3px": 0.338875,
+          "binary_spearman_phi": 0.282229,
+          "jaccard_exact_pixels": 0.167856
+        },
+        {
+          "registry_file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.537765,
+          "reverse_overlap_their_dots_within_3px": 0.579328,
+          "binary_spearman_phi": 0.454676,
+          "jaccard_exact_pixels": 0.297564
+        },
+        {
+          "registry_file": "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.524699,
+          "reverse_overlap_their_dots_within_3px": 0.578053,
+          "binary_spearman_phi": 0.443761,
+          "jaccard_exact_pixels": 0.288506
+        },
+        {
+          "registry_file": "h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.506852,
+          "reverse_overlap_their_dots_within_3px": 0.577708,
+          "binary_spearman_phi": 0.42886,
+          "jaccard_exact_pixels": 0.276342
+        },
+        {
+          "registry_file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.592792,
+          "reverse_overlap_their_dots_within_3px": 0.667924,
+          "binary_spearman_phi": 0.528941,
+          "jaccard_exact_pixels": 0.362745
+        },
+        {
+          "registry_file": "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.507171,
+          "reverse_overlap_their_dots_within_3px": 0.412865,
+          "binary_spearman_phi": 0.33956,
+          "jaccard_exact_pixels": 0.208001
+        },
+        {
+          "registry_file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+          "their_dots": 5000,
+          "forward_overlap_my_dots_within_3px": 0.035136,
+          "reverse_overlap_their_dots_within_3px": 0.2318,
+          "binary_spearman_phi": 0.002749,
+          "jaccard_exact_pixels": 0.001738
+        },
+        {
+          "registry_file": "h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.429675,
+          "reverse_overlap_their_dots_within_3px": 0.33128,
+          "binary_spearman_phi": 0.277815,
+          "jaccard_exact_pixels": 0.164875
+        },
+        {
+          "registry_file": "h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.360466,
+          "reverse_overlap_their_dots_within_3px": 0.242922,
+          "binary_spearman_phi": 0.202319,
+          "jaccard_exact_pixels": 0.116154
+        },
+        {
+          "registry_file": "h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.277129,
+          "reverse_overlap_their_dots_within_3px": 0.164763,
+          "binary_spearman_phi": 0.131158,
+          "jaccard_exact_pixels": 0.073819
+        },
+        {
+          "registry_file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.482817,
+          "reverse_overlap_their_dots_within_3px": 0.407341,
+          "binary_spearman_phi": 0.315108,
+          "jaccard_exact_pixels": 0.190546
+        },
+        {
+          "registry_file": "h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
+          "their_dots": 41419,
+          "forward_overlap_my_dots_within_3px": 0.594333,
+          "reverse_overlap_their_dots_within_3px": 0.592844,
+          "binary_spearman_phi": 0.472682,
+          "jaccard_exact_pixels": 0.31248
+        },
+        {
+          "registry_file": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif",
+          "their_dots": 33889,
+          "forward_overlap_my_dots_within_3px": 0.530462,
+          "reverse_overlap_their_dots_within_3px": 0.578654,
+          "binary_spearman_phi": 0.459767,
+          "jaccard_exact_pixels": 0.301113
+        },
+        {
+          "registry_file": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.565093,
+          "reverse_overlap_their_dots_within_3px": 0.589605,
+          "binary_spearman_phi": 0.441862,
+          "jaccard_exact_pixels": 0.286942
+        },
+        {
+          "registry_file": "h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.57885,
+          "reverse_overlap_their_dots_within_3px": 0.585037,
+          "binary_spearman_phi": 0.460856,
+          "jaccard_exact_pixels": 0.302749
+        },
+        {
+          "registry_file": "h33-h33-2-b2-PRUNE_B4-20261023-78e893d7-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.556329,
+          "reverse_overlap_their_dots_within_3px": 0.586259,
+          "binary_spearman_phi": 0.439053,
+          "jaccard_exact_pixels": 0.284637
+        },
+        {
+          "registry_file": "h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.518404,
+          "reverse_overlap_their_dots_within_3px": 0.584692,
+          "binary_spearman_phi": 0.415296,
+          "jaccard_exact_pixels": 0.265468
+        },
+        {
+          "registry_file": "h33-h33-2-b2-SCARPPOLf33Stop-20261024-7b3571a5-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.489085,
+          "reverse_overlap_their_dots_within_3px": 0.405614,
+          "binary_spearman_phi": 0.335627,
+          "jaccard_exact_pixels": 0.205159
+        },
+        {
+          "registry_file": "h33-h33-2-b2-SCARPPOLf38Stop-20261024-a259cb8c-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.472566,
+          "reverse_overlap_their_dots_within_3px": 0.379269,
+          "binary_spearman_phi": 0.313369,
+          "jaccard_exact_pixels": 0.189324
+        },
+        {
+          "registry_file": "h33-h33-2-b2-SCARPPOLf45Stop-20261024-cf4e45c0-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.44715,
+          "reverse_overlap_their_dots_within_3px": 0.338848,
+          "binary_spearman_phi": 0.279233,
+          "jaccard_exact_pixels": 0.165831
+        }
+      ]
+    },
+    "f45Ptop": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "phase": "final_dots",
+      "rule": "literal: forward_overlap > 0.70 OR |spearman| > 0.90 => duplicate, log and stop",
+      "registry_rasters_checked": 29,
+      "worst_forward_overlap": 0.550008,
+      "worst_forward_overlap_file": "h19_5.tif",
+      "worst_abs_spearman": 0.469979,
+      "worst_abs_spearman_file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+      "duplicate": false,
+      "rows": [
+        {
+          "registry_file": "parent_R0_zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.544165,
+          "reverse_overlap_their_dots_within_3px": 0.553354,
+          "binary_spearman_phi": 0.439695,
+          "jaccard_exact_pixels": 0.285163
+        },
+        {
+          "registry_file": "h19_5.tif",
+          "their_dots": 121131,
+          "forward_overlap_my_dots_within_3px": 0.550008,
+          "reverse_overlap_their_dots_within_3px": 0.535313,
+          "binary_spearman_phi": 0.298174,
+          "jaccard_exact_pixels": 0.149991
+        },
+        {
+          "registry_file": "d28.tif",
+          "their_dots": 44090,
+          "forward_overlap_my_dots_within_3px": 0.550008,
+          "reverse_overlap_their_dots_within_3px": 0.500794,
+          "binary_spearman_phi": 0.405432,
+          "jaccard_exact_pixels": 0.256943
+        },
+        {
+          "registry_file": "h27_4_solo.tif",
+          "their_dots": 40199,
+          "forward_overlap_my_dots_within_3px": 0.548733,
+          "reverse_overlap_their_dots_within_3px": 0.536431,
+          "binary_spearman_phi": 0.425174,
+          "jaccard_exact_pixels": 0.273294
+        },
+        {
+          "registry_file": "sample_submission.tif",
+          "their_dots": 60988,
+          "forward_overlap_my_dots_within_3px": 0.071015,
+          "reverse_overlap_their_dots_within_3px": 0.07954,
+          "binary_spearman_phi": -0.009363,
+          "jaccard_exact_pixels": 0.0
+        },
+        {
+          "registry_file": "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.051336,
+          "reverse_overlap_their_dots_within_3px": 0.094598,
+          "binary_spearman_phi": 0.004752,
+          "jaccard_exact_pixels": 0.006038
+        },
+        {
+          "registry_file": "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.397063,
+          "reverse_overlap_their_dots_within_3px": 0.316354,
+          "binary_spearman_phi": 0.245043,
+          "jaccard_exact_pixels": 0.143213
+        },
+        {
+          "registry_file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.454852,
+          "reverse_overlap_their_dots_within_3px": 0.387343,
+          "binary_spearman_phi": 0.303818,
+          "jaccard_exact_pixels": 0.182656
+        },
+        {
+          "registry_file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.440564,
+          "reverse_overlap_their_dots_within_3px": 0.362989,
+          "binary_spearman_phi": 0.284182,
+          "jaccard_exact_pixels": 0.169179
+        },
+        {
+          "registry_file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.417671,
+          "reverse_overlap_their_dots_within_3px": 0.323976,
+          "binary_spearman_phi": 0.253176,
+          "jaccard_exact_pixels": 0.148513
+        },
+        {
+          "registry_file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.491926,
+          "reverse_overlap_their_dots_within_3px": 0.549371,
+          "binary_spearman_phi": 0.405612,
+          "jaccard_exact_pixels": 0.257817
+        },
+        {
+          "registry_file": "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.479816,
+          "reverse_overlap_their_dots_within_3px": 0.547883,
+          "binary_spearman_phi": 0.39566,
+          "jaccard_exact_pixels": 0.25005
+        },
+        {
+          "registry_file": "h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.463297,
+          "reverse_overlap_their_dots_within_3px": 0.547352,
+          "binary_spearman_phi": 0.38223,
+          "jaccard_exact_pixels": 0.239719
+        },
+        {
+          "registry_file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.545467,
+          "reverse_overlap_their_dots_within_3px": 0.640994,
+          "binary_spearman_phi": 0.469979,
+          "jaccard_exact_pixels": 0.310479
+        },
+        {
+          "registry_file": "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.466537,
+          "reverse_overlap_their_dots_within_3px": 0.394726,
+          "binary_spearman_phi": 0.30414,
+          "jaccard_exact_pixels": 0.182879
+        },
+        {
+          "registry_file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+          "their_dots": 5000,
+          "forward_overlap_my_dots_within_3px": 0.034259,
+          "reverse_overlap_their_dots_within_3px": 0.2288,
+          "binary_spearman_phi": 0.002456,
+          "jaccard_exact_pixels": 0.001644
+        },
+        {
+          "registry_file": "h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.395629,
+          "reverse_overlap_their_dots_within_3px": 0.315637,
+          "binary_spearman_phi": 0.249484,
+          "jaccard_exact_pixels": 0.146101
+        },
+        {
+          "registry_file": "h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.332289,
+          "reverse_overlap_their_dots_within_3px": 0.23137,
+          "binary_spearman_phi": 0.181292,
+          "jaccard_exact_pixels": 0.103301
+        },
+        {
+          "registry_file": "h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.257954,
+          "reverse_overlap_their_dots_within_3px": 0.158018,
+          "binary_spearman_phi": 0.11829,
+          "jaccard_exact_pixels": 0.066504
+        },
+        {
+          "registry_file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.447867,
+          "reverse_overlap_their_dots_within_3px": 0.389175,
+          "binary_spearman_phi": 0.282309,
+          "jaccard_exact_pixels": 0.16791
+        },
+        {
+          "registry_file": "h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
+          "their_dots": 41419,
+          "forward_overlap_my_dots_within_3px": 0.544457,
+          "reverse_overlap_their_dots_within_3px": 0.562761,
+          "binary_spearman_phi": 0.424608,
+          "jaccard_exact_pixels": 0.272682
+        },
+        {
+          "registry_file": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif",
+          "their_dots": 33889,
+          "forward_overlap_my_dots_within_3px": 0.486349,
+          "reverse_overlap_their_dots_within_3px": 0.549618,
+          "binary_spearman_phi": 0.412691,
+          "jaccard_exact_pixels": 0.262761
+        },
+        {
+          "registry_file": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.518059,
+          "reverse_overlap_their_dots_within_3px": 0.560339,
+          "binary_spearman_phi": 0.397131,
+          "jaccard_exact_pixels": 0.251192
+        },
+        {
+          "registry_file": "h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.530754,
+          "reverse_overlap_their_dots_within_3px": 0.555426,
+          "binary_spearman_phi": 0.413638,
+          "jaccard_exact_pixels": 0.264151
+        },
+        {
+          "registry_file": "h33-h33-2-b2-PRUNE_B4-20261023-78e893d7-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.509933,
+          "reverse_overlap_their_dots_within_3px": 0.556435,
+          "binary_spearman_phi": 0.394028,
+          "jaccard_exact_pixels": 0.248785
+        },
+        {
+          "registry_file": "h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.475275,
+          "reverse_overlap_their_dots_within_3px": 0.555638,
+          "binary_spearman_phi": 0.37268,
+          "jaccard_exact_pixels": 0.232476
+        },
+        {
+          "registry_file": "h33-h33-2-b2-SCARPPOLf33Stop-20261024-7b3571a5-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.450125,
+          "reverse_overlap_their_dots_within_3px": 0.387874,
+          "binary_spearman_phi": 0.301304,
+          "jaccard_exact_pixels": 0.180913
+        },
+        {
+          "registry_file": "h33-h33-2-b2-SCARPPOLf38Stop-20261024-a259cb8c-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.43512,
+          "reverse_overlap_their_dots_within_3px": 0.362857,
+          "binary_spearman_phi": 0.281106,
+          "jaccard_exact_pixels": 0.167095
+        },
+        {
+          "registry_file": "h33-h33-2-b2-SCARPPOLf45Stop-20261024-cf4e45c0-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.411935,
+          "reverse_overlap_their_dots_within_3px": 0.323923,
+          "binary_spearman_phi": 0.250073,
+          "jaccard_exact_pixels": 0.146485
+        }
+      ]
+    }
+  },
+  "caution": "HOLDOUT-DTI / SGMC / fixed-catalogue numbers are local instruments, never live public scores, private-set scores, or organizer receipts."
+}
