@@ -1,4 +1,6 @@
-# GEMSDOE92 — PRUNE axis session
+# GEMSDOE92 — auditable GEMS research and submission toolkit
+
+> **Read first:** [`docs/PROJECT_CHARTER.md`](docs/PROJECT_CHARTER.md) before each project session. It records the experiment and evidence rules, data boundary, and submission acceptance checklist. Current status: the full feature stack/evaluator cache is absent, so this checkout cannot scientifically validate or generate a fresh TIFF. Dependencies are available in the local `.venv`; do not upload an existing file as a new submission.
 
 ## CURRENT STATE
 - **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots; exact lineage rebuild matches both pinned SHA-256 digests (`zeros`: `c55bafc4…`, `nan`: `baeae321…`). `0.2778` remains **CLAIM** (no receipt in `ledger/`).
