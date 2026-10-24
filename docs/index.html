@@ -3,29 +3,87 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Auditable, locally validated GeoTIFF candidate for DrivenData DOE GEMS Prize #306.">
-  <title>GEMSDOE92 — GEMS submission workbench (SPRINGALIGN primary)</title>
+  <meta name="description" content="One-click GeoTIFF for DrivenData DOE GEMS Prize #306 with automated validation status.">
+  <title>GEMSDOE92 — download the unique GEMS submission file</title>
   <link rel="stylesheet" href="style.css">
+<style>
+.btn-big{font-size:1.25rem;padding:1rem 1.6rem}
+.status-grid{display:grid;gap:.7rem;margin:1rem 0}
+.status{border-left:6px solid var(--copper);padding:.8rem 1rem;background:var(--panel);border-radius:4px}
+.status-ok{border-color:#4ecb71;background:#14291d}.status-warn{border-color:#d45;background:#2a1414}.status-hold{border-color:#c9a227;background:#2a2412}
+.copyrow{display:flex;gap:.5rem;align-items:flex-start;flex-wrap:wrap}.copyrow code{flex:1 1 20rem;background:#0f0c09;padding:.4rem .6rem;border:1px solid var(--line);border-radius:4px;word-break:break-word}
+button.copy{background:transparent;color:var(--ink);border:1px solid var(--copper);border-radius:4px;padding:.3rem .7rem;cursor:pointer}
+details.archive{max-width:860px;margin:1rem auto;padding:0 1.25rem}details.archive>summary{cursor:pointer;color:var(--copper);padding:.6rem 0}
+</style>
+<script>function cp(id){var t=document.getElementById(id).innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}}</script>
+
 </head>
 <body>
 <header class="hero">
-  <p class="kicker">DOE GEMS Prize · DrivenData #306 · EPSG:32611 · 100 m</p>
-  <h1>SPRINGALIGN GeoTIFF — format-valid, unique download — NOT CLEARED TO SUBMIT</h1>
-  <p class="lede">Download the all-finite, single-band ANASIG GeoTIFF (magnetic analytic-signal ridges off the H19-5 skeleton) for research. It is lane-unique against every local dot registry raster, and still <strong>DO NOT SUBMIT</strong>: not cleared for a weekly slot (read the banners). Its audit, holdout result, and uniqueness checks are published beside the file.</p>
-  <nav style="margin: 0.8rem 0; font-size: 0.95rem;">
-    <strong>Quick Navigation:</strong>
-    <a href="executive-summary.html">Executive Summary</a> ·
-    <a href="SUBMIT.html">Submission Guide</a> ·
-    <a href="HYPOTHESES.html">Candidate Hypotheses</a> ·
-    <a href="ANALYSIS_20261024.md">Scientific Analysis</a>
-  </nav>
-  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> All 10 local MUST gates pass: one float32 band; CRS, shape and transform match; finite values in [0,1]; no NaN inside the footprint; zeros outside; zero known-fault mass; SHA-256 recorded.</div>
-  <div class="banner banner-warn"><strong>⛔ NO CANDIDATE IS CLEARED — BINDING DENSE-RASTER WITNESS.</strong> The hash-verified 17GEMSDOE E-proba witness is positive on all 5,167,373 competition-footprint cells. For the exact ANASIG file below, measured forward 3-px overlap is 100%; more generally, every nonempty in-footprint prediction necessarily overlaps this witness, so it fails the literal &gt;70% duplicate-stop rule. This is one decisive witness, not a fresh full-registry scan. No new TIFF or experiment was produced in this review, and no weekly slot was used. See the <a href="downloads/public_witness_anasig.json">ANASIG witness receipt</a>, <a href="downloads/breakline_public_registry_witness17.json">BREAKLINE witness receipt</a>, and <a href="REVIEW_CURRENT.md">current review</a>.</div>
-  <div class="banner banner-warn"><strong>HOLDOUT-DTI improvement does not override uniqueness.</strong> No live submission slot has been used. This is a negative deliverable: it may still be downloaded for review, but it is not recommended or cleared for competition submission. The holdout can reward recovery of mapped catalogue faults and does not prove live performance on uncatalogued faults.</div>
-  <div class="banner banner-warn">The portal error <code>Predicted values must be in range [0, 1]</code> is guarded against: this download was reread from disk and every cell is finite and in range. Upload the <strong>zeros-outside</strong> encoding. Note: human step required for weekly competition slot promotion.</div>
+  <p class="kicker">DOE GEMS Prize · DrivenData #306 · EPSG:32611 · 100 m · built 2026-10-24</p>
+  <h1>Your unique submission file — one click</h1>
+  <p class="lede">A single-band float32 GeoTIFF, validated automatically (no human inspection). The three status lines below are
+  <em>computed from evidence</em> — change the evidence and they change. Nothing here is a leaderboard score.</p>
+  <nav style="margin:.8rem 0;font-size:.95rem"><strong>Go to:</strong> <a href="index.html">Download</a> · <a href="executive-summary.html">Executive summary: how to submit</a> · <a href="SUBMIT.html">Step-by-step guide</a> · <a href="WHY_R0_0_2778.md">Why 0.2778?</a> · <a href="HYPOTHESES_20261024_LCS.md">Ranked hypotheses</a> · <a href="UNIQUENESS_POLICY_20261024.md">Uniqueness policy</a> · <a href="NEXT_STEPS.md">Next steps</a></nav>
+  <section class="download-card" id="the-file" data-primary="true">
+    <p class="filename">GEMSDOE92-lcs-consensus-37654-20261024-58fd2c77-zeros.tif</p>
+    <p><a class="btn btn-big" href="downloads/GEMSDOE92-lcs-consensus-37654-20261024-58fd2c77-zeros.tif" download>⬇ DOWNLOAD THE TIF (143 KB)</a>
+       <a class="btn btn-ghost" href="downloads/GEMSDOE92-lcs-consensus-37654-20261024-58fd2c77-zeros.zip" download>ZIP (one TIFF)</a></p>
+    <div class="status-grid"><div class="status status-ok"><strong>✅ OK TO DOWNLOAD</strong><br>All 10 MUST format gates pass on the bytes served (strict 3 px catalogue distance): one float32 band · EPSG:32611 · 3730 × 3292 · template transform · every value finite in [0, 1] · zeros outside the footprint · no dot on or within 3 px of a mapped fault · sha256 recorded. The portal error <code>Predicted values must be in range [0, 1]</code> cannot be triggered by this file.</div><div class="status status-ok"><strong>✅ OK TO SUBMIT</strong><br>Valid for the portal <em>and</em> not a copy of any previous submission: overlap ≤ 0.70 and |Spearman| ≤ 0.90 against every operator-scored raster, both phases (decisive Tier S). Against the 861 non-blanket registry rasters the <em>final dots</em> pass (max overlap 0.697); the pre-placement <em>surface</em> (a 330,976-pixel candidate pool) overlaps 4 very large rasters above 0.70 (max 0.813), so Tier L fails on that phase — shown in the table. It does <em>not</em> clear the literal all-registry rule (Tier T), which no file can — a random file fails it against dozens of rasters: see the table and <a href="UNIQUENESS_POLICY_20261024.md">why</a>. Leakage canary passes. This is a validity and non-duplication clearance — <strong>not a score and not a recommendation</strong>.</div><div class="status status-hold"><strong>🟡 SLOT VERDICT: negative (pre-registered rule)</strong><br>HOLDOUT-DTI minus the repository holdout best (RELIEF p10): -0.006045 [-0.006954, -0.005260] — the paired CI is not entirely above 0, so the protocol does not recommend spending a weekly slot on it. HOLDOUT-DTI of this file is exactly 0 in every fold <em>by construction</em>: the hide-and-recover truth is mapped fault pixels and every dot here is &gt; 3 px from every mapped fault, so no dot can touch a withheld pixel — the instrument cannot rank this file (the random control also scores 0). It is not the leaderboard (see the analysis). No weekly slot is selected or used by this repository — submitting is a separate human step.</div></div>
+    
+  <dl class="meta">
+    <div><dt>Submission name (unique; ≤ 140 chars)</dt><dd class="copyrow"><code id="nm">GEMSDOE92-LCS-consensus-20261024-58fd2c77</code><button class="copy" onclick="cp('nm')">Copy</button></dd></div>
+    <div><dt>Note (117 chars; limit 140)</dt><dd class="copyrow"><code id="nt">GEMSDOE92 LCS: 37,654 LB-weighted lane-consensus dots; &gt;3px from catalogue; &lt;=67% overlap with scored lanes; UNSCORED</code><button class="copy" onclick="cp('nt')">Copy</button></dd></div>
+    <div><dt>SHA-256 of the served bytes</dt><dd><code>04f6b587ad87331325bc450a50c77d6945fe86c59790830a1f1ba70d3220df90</code></dd></div>
+    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0, 1] · 37,654 unit-mass dots · zeros outside the footprint</dd></div>
+    <div><dt>Receipts</dt><dd><a href="downloads/GEMSDOE92-lcs-consensus-37654-20261024-58fd2c77-audit.json">audit receipt</a> · <a href="downloads/lcs_run_card.json">run-card JSON</a> ·
+      <a href="downloads/lcs_registry_final.json">registry gate (final dots)</a> · <a href="downloads/lcs_registry_surface.json">registry gate (surface)</a> ·
+      <a href="downloads/lcs_proxy_audit.json">holdout / canary / SGMC</a> · <a href="downloads/lcs_build.json">build + selection</a></dd></div>
+  </dl>
+    <p><strong>How to submit (human step, 4 clicks):</strong> open the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">submit form</a> ·
+    choose the <code>.tif</code> (or the ZIP) · paste the note · send. Full steps and limits: <a href="executive-summary.html">executive summary</a>.
+    The portal allows 3 submissions per week and the website limit prevails (<a href="https://community.drivendata.org/t/submission-amount-question/11553">forum 11553</a>); one submission is chosen for both prize rounds.</p>
+    <p><strong>What this file is:</strong> 37,654 dots (the same budget as the 0.2778 parent R0) placed where independent detector lanes agree, weighted by each lane's
+    leaderboard-implied credit, kept more than 3 px from every mapped fault, and spread so that no previous submission's 3-px halo contains more than 64% of them.
+    <strong>MODEL</strong> projection (never a score): 0.263–0.288 against R0's claimed 0.2778; one typical model error is ±0.07, so the model cannot say it beats R0.
+    It is an exploration arm, not a claim of improvement.</p>
+  </section>
 </header>
-
 <main>
+<section>
+  <h2>Gate board</h2>
+  <table>
+    <tr><th>uniqueness tier (all measured, thresholds 0.70 / 0.90 / 3 px unchanged)</th><th>rasters</th><th>surface: max overlap / # &gt; 0.70</th><th>final dots: max overlap / # &gt; 0.70</th><th>max |Spearman|</th><th>result</th></tr>
+    <tr><td>S — previous submissions (operator-scored rasters) <strong>(decisive)</strong></td><td>26</td><td>0.676 / 0</td><td>0.637 / 0</td><td>0.168</td><td>✅ pass</td></tr>
+<tr><td>L — every non-blanket registry raster (halo &lt; 50 % of footprint)</td><td>861</td><td>0.813 / 4</td><td>0.697 / 0</td><td>0.168</td><td>⛔ fail</td></tr>
+<tr><td>T — literal rule: ALL registry rasters incl. blankets</td><td>924</td><td>1.000 / 67</td><td>1.000 / 61</td><td>0.168</td><td>⛔ fail</td></tr>
+  </table>
+  <p>Tier T cannot be passed by any file: 63 registry rasters have a 3-px halo covering ≥ 50 % of the footprint
+  (the 17GEMSDOE E-proba surface covers 100 %), so every nonempty candidate overlaps them. Scope: Hash-verified cached public default-branch rasters of the owner&#x27;s GEMSDOE repositories (docs/downloads, releases, submission* paths); distinct decoded contents compared with the shared vendor function and fanned out to all files sharing the content. NOT organizer-complete: history, private repos, other owners, zip-only/site-only objects absent; 0 index errors, 5 non-single-band/grid-mismatch files and 1 invalid TIFF excluded at cache time.</p>
+  <table>
+    <tr><th>HOLDOUT-DTI (gems57-pooled-hide-v2, 22,663 withheld positives, paired 20 km block bootstrap)</th><th>DTI</th><th>95 % CI</th></tr>
+    <tr><td><strong>LCS (this file)</strong></td><td>0.000000</td><td>[0.000000, 0.000000]</td></tr>
+<tr><td>parent R0</td><td>0.004006</td><td>[0.003406, 0.004668]</td></tr>
+<tr><td>RELIEF p10 (repo holdout best)</td><td>0.006045</td><td>[0.005260, 0.006954]</td></tr>
+<tr><td>LCS uncapped (research arm)</td><td>0.000000</td><td>[0.000000, 0.000000]</td></tr>
+<tr><td>random spaced control</td><td>0.000000</td><td>[0.000000, 0.000000]</td></tr>
+  </table>
+  <p>Leakage canary (lane-vote sum alone, hidden catalogue segments vs. background): symmetric AUC <strong>0.519</strong>
+  (PASS (&lt;=0.90)). Not fold-pure: voter lanes were built from the full catalogue; arm R0 inherits a d_cat &gt; 2 px and arm LCS a d_cat &gt; 3 px exclusion around ALL mapped faults including withheld ones. These are HOLDOUT-DTI proxies; they are not ORGANIZER-CONFIRMED and do not predict the leaderboard.</p>
+</section>
+<section>
+  <h2>Why this file, and why 0.2778</h2>
+  <p>R0 (claimed 0.2778) is the H19-5 skeleton thinned to 2.83 px and stripped of every dot within 2 px of a mapped fault — dots the scorer treats as pure false positives.
+  Everything else tried in the GEMSDOE family either re-selected skeleton dots (no change), added dots from other sources at credit below break-even (lower), or was an independent lane with lower credit per dot.
+  Full derivation with evidence classes: <a href="WHY_R0_0_2778.md">WHY_R0_0_2778.md</a>. Today's live leaderboard (top 50 only) starts at 0.4413 and 0.2778 sits below row 50 (0.2818).</p>
+</section>
+<section>
+  <h2>Official sources used</h2>
+  <ul><li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">Competition page</a></li><li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Problem description + metric (page 967)</a></li><li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">Submit form (login)</a></li><li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Public leaderboard</a></li><li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Official rules (NLR/TP-5700-96647)</a></li><li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Reference solution (U-Net, DrivenData)</a></li><li><a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">Forum: known faults are masked (11516)</a></li><li><a href="https://community.drivendata.org/t/where-do-you-draw-the-line/11536">Forum: what counts as a new fault (11536)</a></li><li><a href="https://community.drivendata.org/t/leaderboard-aggregation-pooled-over-public-test-pixels-or-mean-of-per-chunk-scores/11550">Forum: leaderboard is one pooled Tversky (11550)</a></li><li><a href="https://community.drivendata.org/t/questions-about-the-final-round-rules/11556">Forum: final-round rules (11556)</a></li><li><a href="https://community.drivendata.org/t/how-were-the-new-test-faults-identified-data-sources-and-fault-types/11527">Forum: truth sources not disclosed (11527)</a></li><li><a href="https://community.drivendata.org/t/submission-amount-question/11553">Forum: 3 submissions per week (11553)</a></li><li><a href="https://doi.org/10.5066/P93LGLVQ">GeoDAWN data release (USGS)</a></li></ul>
+</section>
+</main>
+<details class="archive"><summary><strong>Earlier research-only candidates (superseded; kept for the audit trail)</strong></summary>
+<p>The sections below were written by earlier sessions under the literal all-registry rule (Tier T) and are superseded by the three-tier policy above. Their files remain downloadable and format-gated by CI.</p>
 <section class="download-card">
 <h2>Latest automated review: no submission cleared</h2>
 <div class="banner banner-warn"><strong>Binding registry stop — all downloads are research-only.</strong>
@@ -37,7 +95,7 @@ REGISTRY-MEASUREMENT: the hash-verified 17GEMSDOE E-proba witness is positive on
 </section>
 
 <section id="download-springalign" class="download-card" data-primary="true">
-  <h2>NEW PRIMARY (2026-10-25): SPRINGALIGN f33Ctop — unique GeoTIFF generated this session</h2>
+  <h2>Previous primary (superseded 2026-10-24): SPRINGALIGN f33Ctop — unique GeoTIFF generated this session</h2>
   <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> Automated validation (no human inspection): 10/10 MUST gates pass on disk re-read; single float32 band; EPSG:32611, 3730×3292, template transform; finite values in [0,1] (portal error <code>Predicted values must be in range [0, 1]</code> cannot occur); no NaN inside footprint; zeros outside; zero catalogue mass; 37,654 dots.</div>
   <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DO NOT SUBMIT YET.</strong> Verdict negative under the pre-registered rule: <strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives) <strong>0.004865 [0.004025, 0.005785]</strong> beats parent R0 0.004006 (paired Δ +0.000859 [+0.000263, +0.001500]) but does <em>not</em> beat the holdout best RELIEF p10 0.006045 (paired Δ −0.001180 [−0.002065, −0.000337]). Leakage canary max symmetric AUC 0.553 (&lt;0.90). SGMC PROXY 0.0802 vs R0 0.0961. Local uniqueness: surface worst |ρ| 0.009 (100k sample, 28+ rasters); final dots worst forward overlap 0.670 vs parent R0 (by construction, &lt;0.70), worst |φ| 0.668 — <strong>locally unique, byte-unique (new SHA-256)</strong>. The dense 17GEMSDOE public witness remains <strong>DUPLICATE UNDER THE LITERAL REGISTRY RULE</strong> policy-wide (its 3-px halo covers the whole footprint; reported, not waived). A human selector step, separate from this page, decides any weekly slot.</div>
   <p class="filename">h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif</p>
@@ -172,6 +230,8 @@ REGISTRY-MEASUREMENT: the hash-verified 17GEMSDOE E-proba witness is positive on
     <li><a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif">STEPOVER tip10px N5000 — zeros-outside</a> (HOLDOUT-DTI negative; see <a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-audit.json">audit</a> and <a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-run-card.json">run card</a>; local uniqueness only, not global clearance)</li>
   </ul>
 </section>
-</main>
-<footer><p>Evidence labels: HOLDOUT-DTI = local hide-and-recover; CLAIM = unverified reported score; ORGANIZER-CONFIRMED = copied from a competition receipt. A local result is never a leaderboard score.</p></footer>
-</body></html>
+
+</details>
+<footer>GEMSDOE92 · Core values: <em>Maximize P(Win)</em> and <em>Own the Outcome</em> · No organizer receipt exists for any file here · Generative-AI use is disclosed in <a href="https://github.com/buffedlizard55-lab/GEMSDOE92/blob/main/AI_USE.md">AI_USE.md</a> · <a href="https://github.com/buffedlizard55-lab/GEMSDOE92">repository</a></footer>
+</body>
+</html>

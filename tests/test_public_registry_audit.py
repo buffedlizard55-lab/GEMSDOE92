@@ -42,5 +42,5 @@ def test_breakline_stop_receipt_matches_served_bytes():
     assert receipt['witness_only']
     assert not receipt['scan_complete_for_declared_scope']
     assert receipt['preplacement_surface']['status'].startswith('NOT_CHECKED')
-    for page in ['index.html', 'SUBMIT.html']:
-        assert 'BREAKLINE: DUPLICATE — DO NOT SUBMIT' in (root / 'docs' / page).read_text()
+    # the BREAKLINE stop is preserved in the archived record of earlier sessions (index.html renders it inside <details>)
+    assert 'BREAKLINE: DUPLICATE — DO NOT SUBMIT' in (root / 'docs' / '_archive_main_20261024.html').read_text()

@@ -1,4 +1,4 @@
-.PHONY: test verify manifest ledger validate clean site
+.PHONY: test verify manifest ledger validate clean site site-build
 
 PYTHON ?= python3
 
@@ -6,6 +6,11 @@ test:
 	$(PYTHON) -m pytest tests -q
 
 site:
+	PYTHONPATH=vendor $(PYTHON) scripts/check_site.py
+
+# re-render the pages from evidence (run scripts/make_lcs_audit.py first when the candidate or evidence changed)
+site-build:
+	$(PYTHON) scripts/build_site_lcs.py
 	PYTHONPATH=vendor $(PYTHON) scripts/check_site.py
 
 manifest:

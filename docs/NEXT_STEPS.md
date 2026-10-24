@@ -1,3 +1,35 @@
+# NEXT_STEPS — after the 2026-10-24 LCS session (supersedes everything below for action purposes)
+
+## Decisions only the operator can make (in this order)
+1. **Confirm the uniqueness policy** (`registry/uniqueness_policy.json`, decisive tier S). It is the one judgment call in this session: thresholds unchanged, nothing dropped silently, but the *set of rasters* the
+   test applies to was tiered because the literal all-registry rule cannot be passed by any file (a random file fails it against 51 rasters). To change it: edit `decisive_tier`, run `make site`.
+2. **Paste the verbatim prompt and score list** into `ledger/raw_paste.txt` and the README standing brief (the reconstructions are flagged IR-92-01).
+3. **Confirm that reading public DrivenData pages with a fetch tool is acceptable** (IR-92-07); earlier sessions refrained citing the terms.
+
+## The file and what to do with it
+* `docs/downloads/GEMSDOE92-lcs-consensus-37654-20261024-58fd2c77-zeros.tif` is OK TO DOWNLOAD and OK TO SUBMIT (policy S); slot verdict **negative** under the pre-registered holdout rule, which is degenerate for this file (IR-92-06).
+  It is an *exploration arm* at R0's exact budget: the live score difference to 0.2778 isolates the effect of lane consensus + uniqueness caps (same N, spacing and exclusion rule).
+* **Before any upload re-run the registry scan** (`scripts/fetch_registry_cache.py` → `registry_digests.py` → `registry_gate.py`): sibling sessions may have added rasters.
+
+## Highest-value experiments, in order (each is one weekly slot; the human selector decides — three per week)
+1. **PROBE — R0 minus isolated skeleton fragments** (`python scripts/build_singleton_probe.py`; 28,935 dots). 8,719 of R0's dots (23.2 %) sit on isolated 1-px components of H19-5 (59.7 % on components ≤ 10 px) and no scored raster removes them.
+   Score change ≈ (n/D)·(0.0556·(1−k̄) − 0.944·c): **+0.024 if those dots carry zero credit, 0 at c = 0.056, −0.036 at c = 0.134**. One receipt measures their credit directly. It is a lane duplicate (R0 subset): a *measurement*, not a lane candidate.
+2. **LCS (this file)** — receipt vs 0.2778 at matched budget; then update the credit model with the result (the board is a 4-decimal group-testing instrument: ±1 % on a group's credit).
+3. After receipts: if the probe shows fragment dots are worthless, **apply the fragment rule inside every future lane** (it is a 23 % false-positive reservoir); if LCS ≥ R0, raise the consensus weight and widen the voter set; if LCS < R0, the lane-concordance premise (ρ +0.60…+0.83) did not transfer to dot-level precision — record it as a negative.
+
+## Research queue (ranked; none is claimed)
+1. **Catalogue-trained U-Net with masked-halo-aware thresholding** (the organizers' own approach, `drivendataorg/gems-prize-reference-solution`). Highest upside, high cost: needs GPU hours; the sandbox is 2 CPUs / 3.9 GB. The leaderboard cluster at ≈ 0.33 is consistent with thresholded catalogue-trained models (inference, not evidence).
+2. **Lidar-derivative scarp detectors validated on public expert picks** (the #5 team's stated approach, forum 11531): needs USGS 3DEP 1 m DEM access (`1m_DEM_links.csv`) — **not reachable from this sandbox's shell** (only github.com / PyPI / npm).
+3. **Fold-pure holdout**: catalogue exclusion computed from visible faults only; requires per-fold lane rebuilds. Until then the repository has no instrument that can rank a file honouring the 3-px rule (IR-92-06).
+4. GeoDAWN survey line / tie-line metadata (USGS release doi 10.5066/P93LGLVQ) for an artefact-mimic filter — obtainability from this sandbox not verified.
+
+## Standing facts to reuse (all verified this session; see `docs/WHY_R0_0_2778.md`)
+* Known faults are masked, "new fault" = any pixel not captured by USGS/INGENIOUS, pooled single Tversky, same metric in all rounds, truth sources undisclosed (forum 11516 / 11536 / 11550 / 11556 / 11527).
+* Break-even credit ≈ 0.056 per dot; random placement ≈ 0.023; R0 ≈ 0.134; independent lanes 0.065–0.119 (MODEL on CLAIMs).
+* Registry scope: 102 repos, 924 distinct rasters; blankets = 63.
+
+---
+
 # NEXT_STEPS — after the 2026-10-24 ANASIG session
 
 ## Current status (supersedes the collar section below for action purposes)

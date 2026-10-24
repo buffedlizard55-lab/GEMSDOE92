@@ -1,0 +1,334 @@
+{
+  "evidence_label": "PROXY",
+  "created_utc": "2026-10-24",
+  "candidate": "GEMSDOE92-lcs-consensus-37654-20261024-58fd2c77-zeros.tif",
+  "purpose": "Report-only hide-and-recover instrument, single-feature leakage canary and SGMC control for the LCS lane.",
+  "evaluator": "gems57-pooled-hide-v2",
+  "holdout": {
+    "seeds": [
+      20,
+      30
+    ],
+    "withheld_positive_pixels": 22663,
+    "scores": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "alpha": 0.2,
+      "beta": 0.8,
+      "triangular_radius_m": 300.0,
+      "pooled": true,
+      "scores": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.004006147174684743,
+          "ci95": [
+            0.0034062631492617914,
+            0.004667627876412318
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 129.29712893913688,
+          "fpw": 70592.1164043663,
+          "fnw": 22533.70287106087
+        },
+        "LCS": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 0.0,
+          "fpw": 70230.0,
+          "fnw": 22663.0
+        },
+        "LCS_uncapped_research": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 0.0,
+          "fpw": 70328.0,
+          "fnw": 22663.0
+        },
+        "RANDOM_spaced": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 0.0,
+          "fpw": 71232.0,
+          "fnw": 22663.0
+        },
+        "RELIEF_p10_holdout_best": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0060451323971729325,
+          "ci95": [
+            0.005260414462091035,
+            0.006954482077964988
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 195.01412046639513,
+          "fpw": 70451.45517161682,
+          "fnw": 22467.9858795336
+        }
+      },
+      "best_comparable_control": "RELIEF_p10_holdout_best",
+      "paired_differences": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": -0.004006147174684743,
+          "ci95": [
+            -0.004667627876412318,
+            -0.0034062631492617914
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "LCS_uncapped_research": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "RANDOM_spaced": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "RELIEF_p10_holdout_best": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": -0.0060451323971729325,
+          "ci95": [
+            -0.006954482077964988,
+            -0.005260414462091036
+          ],
+          "withheld_positive_pixels": 22663
+        }
+      },
+      "bootstrap": {
+        "method": "paired physical spatial-cluster percentile",
+        "clusters": 159,
+        "draws": 1000,
+        "seed": 520810,
+        "confidence": 0.95,
+        "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+      },
+      "implementation_sha256": {
+        "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+        "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+        "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+        "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+      }
+    },
+    "per_fold_dti": {
+      "R0": [
+        0.0033190361096884797,
+        0.004407926168167087,
+        0.0031089001997361824,
+        0.004072828198897818,
+        0.00489997713403107,
+        0.005013980811213483,
+        0.004355576467076173,
+        0.003125934420342564
+      ],
+      "LCS": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "LCS_uncapped_research": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "RANDOM_spaced": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "RELIEF_p10_holdout_best": [
+        0.004578056954825213,
+        0.00658626211231911,
+        0.005662643564358266,
+        0.00540408666315905,
+        0.00750167560429133,
+        0.007457189434327682,
+        0.0066340163128888255,
+        0.004633597763238065
+      ]
+    },
+    "split_receipts": [
+      {
+        "seed": 20,
+        "folds": [
+          {
+            "fold": "NW",
+            "seed": 20,
+            "held_components": 96,
+            "withheld_positive_pixels": 1923,
+            "eligible_components": 598,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          },
+          {
+            "fold": "NE",
+            "seed": 20,
+            "held_components": 145,
+            "withheld_positive_pixels": 2367,
+            "eligible_components": 628,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          },
+          {
+            "fold": "SW",
+            "seed": 20,
+            "held_components": 223,
+            "withheld_positive_pixels": 3781,
+            "eligible_components": 983,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          },
+          {
+            "fold": "SE",
+            "seed": 20,
+            "held_components": 142,
+            "withheld_positive_pixels": 3250,
+            "eligible_components": 648,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          }
+        ]
+      },
+      {
+        "seed": 30,
+        "folds": [
+          {
+            "fold": "NW",
+            "seed": 30,
+            "held_components": 138,
+            "withheld_positive_pixels": 1919,
+            "eligible_components": 598,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          },
+          {
+            "fold": "NE",
+            "seed": 30,
+            "held_components": 131,
+            "withheld_positive_pixels": 2356,
+            "eligible_components": 628,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          },
+          {
+            "fold": "SW",
+            "seed": 30,
+            "held_components": 203,
+            "withheld_positive_pixels": 3805,
+            "eligible_components": 983,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          },
+          {
+            "fold": "SE",
+            "seed": 30,
+            "held_components": 145,
+            "withheld_positive_pixels": 3262,
+            "eligible_components": 648,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          }
+        ]
+      }
+    ],
+    "ci_method": "paired 20 km spatial-block bootstrap, 1000 draws, seed 520810",
+    "not_fold_pure": "voter lanes were built from the full catalogue; arm R0 inherits a d_cat > 2 px and arm LCS a d_cat > 3 px exclusion around ALL mapped faults including withheld ones"
+  },
+  "leakage_canary": {
+    "feature": "lane-vote sum (LB-weighted halo votes of the 10 voters)",
+    "auc": 0.518949,
+    "symmetric_auc": 0.518949,
+    "status": "PASS (<=0.90)",
+    "caveat": "voters were built with the full catalogue; an AUC near 0.5-0.7 is therefore the expected, non-leaking regime"
+  },
+  "sgmc_control": {
+    "truth_pixels": 62703,
+    "dti_by_arm": {
+      "R0": 0.09606,
+      "LCS": 0.109206,
+      "LCS_uncapped_research": 0.107156,
+      "RANDOM_spaced": 0.074264,
+      "RELIEF_p10_holdout_best": 0.087245
+    },
+    "delta_vs_r0": {
+      "R0": 0.0,
+      "LCS": 0.013146,
+      "LCS_uncapped_research": 0.011096,
+      "RANDOM_spaced": -0.021796,
+      "RELIEF_p10_holdout_best": -0.008815
+    },
+    "note": "SGMC bedrock faults are not the leaderboard truth (SGMC-lane rasters score ~0.05 live); control only"
+  },
+  "warning": "PROXY diagnostics: not a leaderboard score, not a promotion proof, not a win probability."
+}

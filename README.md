@@ -4,7 +4,74 @@
 
 ---
 
-## Latest (2026-10-25, SPRINGALIGN): NEW UNIQUE TIF GENERATED
+## ⬇ Latest (2026-10-24, LCS): a unique TIF was generated — three status lines, computed from evidence
+
+| | |
+|---|---|
+| **GeoTIFF (one click)** | [`docs/downloads/GEMSDOE92-lcs-consensus-37654-20261024-58fd2c77-zeros.tif`](docs/downloads/GEMSDOE92-lcs-consensus-37654-20261024-58fd2c77-zeros.tif) · [ZIP (one TIFF)](docs/downloads/GEMSDOE92-lcs-consensus-37654-20261024-58fd2c77-zeros.zip) · [homepage](https://buffedlizard55-lab.github.io/GEMSDOE92/) |
+| ✅ **OK TO DOWNLOAD** | all 10 MUST format gates pass at the strict 3-px catalogue distance: one float32 band · EPSG:32611 · 3730 × 3292 · template transform · finite values in [0,1] · zeros outside the footprint · no dot within 3 px of a mapped fault. The portal error `Predicted values must be in range [0, 1]` cannot be triggered by this file. |
+| ✅ **OK TO SUBMIT** (policy tier S) | valid **and** not a copy of any operator-scored raster: final-dot overlap ≤ 0.637, surface ≤ 0.676, max \|ρ\| ≤ 0.357 (thresholds 0.70 / 0.90 / 3 px unchanged); final dots also ≤ 0.697 against all 861 non-blanket registry rasters. **The literal all-registry rule (tier T) fails — for every file, a random one included (51 rasters).** See [`docs/UNIQUENESS_POLICY_20261024.md`](docs/UNIQUENESS_POLICY_20261024.md). Not a score, not a recommendation. |
+| 🟡 **SLOT VERDICT: negative** (pre-registered rule) | HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) of this file is **exactly 0 by construction** (every dot > 3 px from every mapped fault; the random control also 0) — the instrument is degenerate for such files; parent R0 0.004006 [0.003406, 0.004668]; holdout best RELIEF p10 0.006045. |
+| Submission name | `GEMSDOE92-LCS-consensus-20261024-58fd2c77` |
+| Note (117 chars; ≤ 140) | `GEMSDOE92 LCS: 37,654 LB-weighted lane-consensus dots; >3px from catalogue; <=67% overlap with scored lanes; UNSCORED` |
+| SHA-256 | `04f6b587ad87331325bc450a50c77d6945fe86c59790830a1f1ba70d3220df90` |
+| MODEL projection (never a score) | 0.263 – 0.288 – 0.321 (shrunk / null / naive) vs R0's CLAIM 0.2778; one typical model error ± 0.066 ⇒ **no improvement over R0 is claimed**; an exploration arm at R0's exact budget |
+
+**Read next:** [executive summary — how to submit](docs/executive-summary.html) · [**why R0 scores 0.2778 and whether it can be beaten**](docs/WHY_R0_0_2778.md) ·
+[ranked hypotheses](docs/HYPOTHESES_20261024_LCS.md) · [analysis](docs/ANALYSIS_20261024_LCS.md) · [uniqueness policy](docs/UNIQUENESS_POLICY_20261024.md) ·
+[next steps](docs/NEXT_STEPS.md) · [irregularities (IR-92-01…09)](IRREGULARITIES.md) · [run card](evidence/lcs_run_card.json).
+**No organizer receipt exists for any file here; no weekly slot was selected or used.** Three decisions need the operator: confirm the uniqueness policy, paste the verbatim prompt/score list, confirm the page-fetch question (IR-92-01/04/07).
+
+### The five facts that matter (all re-derivable; `docs/WHY_R0_0_2778.md`)
+1. R0 (claimed 0.2778) = the H19-5 skeleton thinned to ≥ 2.83 px, with every dot within 2 px of a mapped fault removed — dots the scorer ([masks the catalogue](https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516)) treats as pure false positives; the two removal steps gained +0.0108 and +0.0070 at 96 % / 95 % of the zero-credit ceiling.
+2. Nothing else in the GEMSDOE family beat it: re-selecting skeleton dots changes nothing (±0.0003); adding dots from other sources scored lower (R0 + 1,200 dots → 0.2750, ≈ 0.012 credit each); independent lanes earn 0.065–0.119 credit per dot vs R0's 0.134.
+3. The live public board (top 50 only) starts at 0.4413; 0.2778 is below row 50 (0.2818). Headroom is in *ranking precision*, not in R0's rules (+≈0.01).
+4. The biggest untested lever near R0 is its 8,719 dots (23 %) on isolated 1-px skeleton fragments: **+0.024 if worthless, −0.036 if average** — `scripts/build_singleton_probe.py` builds the one-slot probe.
+5. The literal all-registry uniqueness rule is structurally unpassable (63 blanket rasters), which is why every earlier session ended "negative".
+
+---
+
+## Standing brief — the operator's prompt (reread every session)
+
+The verbatim earlier version of the prompt is preserved at the bottom of this file ("Original Session Prompt"). The 2026-10-24 version added the items below;
+its long score list and the lane paragraph were **not retained** by earlier sessions, so this block is a *reconstruction* (IR-92-01) — replace it with the verbatim text.
+
+1. Review the repo and do the previous sessions' next steps first.
+2. **Highest urgency — generate a UNIQUE submission TIF** (never copy a previous submission except for learning): single-band float32, EPSG:32611, template shape/transform (3730 × 3292), values in [0, 1];
+   it must be **obvious whether it is OK to download and OK to submit**; an easy one-click download at the top of the homepage; validation runs inside the project with **no human inspector**;
+   a unique name and a note of ≤ 140 characters; prevent the portal error `Predicted values must be in range [0, 1]`.
+3. Answer at PhD level, with no hallucinations, **why GEMSDOE32 `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros` (0.2778) is the top GEMSDOE score and whether it can be beaten** (the prompt cites leaderboard highs 0.4413 and 0.3195); use the answer to build a lane-unique TIF.
+4. Before building, rank 3–5 untried hypotheses (layers, physical signature, why it catches catalogue-missing faults, difference from the repo, expected DTI gain, cost); validate the top one on the spatially blocked holdout before any slot; new external data needs a named, verified-obtainable free official source.
+5. Parallel-run protocol (six rules: lane / reuse the template tools / label every number / leakage canary / run-card JSON / budget 3 experiments or 2 h, do not pick submissions) — verbatim at the bottom. **The lane paragraph is missing from the prompt (IR-92-02).**
+6. Deep, contrarian-but-grounded research from official sources; use the cross-site scores (`ledger/claimed_scores_20261024.csv`); state limitations and the access needed.
+7. Put the prompt in this README and reread it each session; an executive-summary subpage on how to submit (file, name, note); a clean GitHub Pages UI with official links.
+8. Three passes (implement & verify / bug & edge-case review / re-check against the request); then a PR merged to main; next-session suggestions and limitations.
+9. Core values: **Maximize P(Win)** and **Own the Outcome** (below).
+
+---
+
+## Reproduce this session
+
+```bash
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+.venv/bin/python scripts/restore_inputs.py                       # SHA-256 pinned inputs (419 MB feature stack included)
+.venv/bin/python scripts/fetch_registry_cache.py                 # public GEMSDOE registry -> .cache (≈ 90 s)
+.venv/bin/python scripts/registry_digests.py                     # distinct decoded contents (924)
+.venv/bin/python scripts/registry_catalog.py                     # evidence/registry_catalog_20261024.csv
+.venv/bin/python scripts/lb_concordance.py && .venv/bin/python scripts/lb_concordance.py --robust
+.venv/bin/python scripts/lcs_loo_calibration.py                  # leave-one-lane-out credit model
+.venv/bin/python scripts/build_lcs_pool.py                       # pool, scores, halo membership (≈ 15 min)
+.venv/bin/python scripts/build_lcs_candidate.py --iters 80 --iters-l 240      # selection + writes the TIF (≈ 5 min)
+.venv/bin/python scripts/registry_gate.py --candidate releases/<file>.tif --phase final   --out evidence/lcs_registry_final.json
+.venv/bin/python scripts/registry_gate.py --candidate releases/<surface>.tif --phase surface --out evidence/lcs_registry_surface.json
+.venv/bin/python scripts/report_lcs_proxies.py                   # HOLDOUT-DTI, canary, SGMC
+.venv/bin/python scripts/make_lcs_audit.py && .venv/bin/python scripts/build_site_lcs.py
+.venv/bin/python scripts/check_site.py && .venv/bin/python -m pytest -q
+```
+
+---
+
+## Earlier session (SPRINGALIGN, stamped 2026-10-25): superseded by the LCS file above
 
 **✅ OK TO DOWNLOAD for research — ⛔ NOT CLEARED FOR A WEEKLY SLOT (verdict negative).**
 
@@ -106,7 +173,9 @@ The prompt's **0.3195 and 0.4413 are conflicting leaderboard snapshots/claims**;
 
 The concepts and previous screens are catalogued in [`docs/HYPOTHESES.html`](docs/HYPOTHESES.html), [`docs/HYPOTHESES.md`](docs/HYPOTHESES.md), and [`docs/REVIEW_CURRENT.md`](docs/REVIEW_CURRENT.md). Their rankings are research priorities, not score forecasts. BREAKLINE, SCARPPOL, ANASIG, and STRAINBREAK are already tested—not new hypotheses. The current full-footprint public-registry witness blocks all nonempty in-footprint predictions under the literal overlap rule; do not emit another submission artifact unless that policy blocker is explicitly resolved.
 
-## Candidate Geological Hypotheses (Ranked)
+## Candidate Geological Hypotheses (Ranked) — earlier sessions' ranking
+
+*This session's pre-build ranking (five hypotheses, LCS first) is in [`docs/HYPOTHESES_20261024_LCS.md`](docs/HYPOTHESES_20261024_LCS.md).*
 
 | Rank | Hypothesis | Target Signature | Layer(s) Involved | Missing Fault Rationale | Expected DTI Rank / Cost | Data Source & Official Link |
 |---|---|---|---|---|---|---|

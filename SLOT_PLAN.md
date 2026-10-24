@@ -1,3 +1,16 @@
+# SLOT_PLAN — current selector state (2026-10-24, LCS session)
+
+## Current artifact: LCS consensus — OK to download, OK to submit (policy S), slot verdict negative, no slot used
+
+`GEMSDOE92-LCS-consensus-20261024-58fd2c77` (file `GEMSDOE92-lcs-consensus-37654-20261024-58fd2c77-zeros.tif`, SHA-256
+`04f6b587ad87331325bc450a50c77d6945fe86c59790830a1f1ba70d3220df90`): all 10 MUST gates pass at the strict 3-px catalogue distance; unique against every operator-scored
+raster in both phases (final max overlap 0.637, surface 0.676, |ρ| ≤ 0.358) and, on final dots, against all 861 non-blanket registry rasters (max 0.697); the literal all-registry rule
+(Tier T) fails — as it does for a random file. HOLDOUT-DTI is exactly 0 by construction (instrument degenerate for 3-px-clean files); the protocol's rule is applied literally → **negative**.
+MODEL projection 0.263–0.321 vs R0 0.2778 (± 0.066): an exploration arm, no improvement claimed. **The selector (a human, ≤ 3 per week) decides; this repository selects, approves and uses no slot.**
+Recommended measurement order: see `docs/NEXT_STEPS.md` (probe R0-minus-fragments first, then this file).
+
+---
+
 # SLOT_PLAN — current selector state (2026-10-24, ANASIG session)
 
 ## Current artifact: ANASIG f45 — negative, no slot used

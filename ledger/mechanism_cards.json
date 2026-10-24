@@ -343,5 +343,16 @@
     "falsifier": "Pooled HOLDOUT-DTI failing to beat RELIEF p10 (0.006045) rejects promotion; canary symmetric AUC >0.90 stops as leakage; forward overlap >0.70 or |rho| >0.90 vs any local registry raster logs a duplicate and stops.",
     "decision_rule": "Promote only if literal local-registry uniqueness AND pooled HOLDOUT-DTI beats RELIEF p10 with paired CI excluding 0 vs R0 AND all format gates pass. Otherwise negative: format-valid, downloadable, not cleared for a weekly slot.",
     "predicted_sign_and_size": "MODEL: unknown live delta; HOLDOUT-DTI in evidence/springalign_proxy_audit.json"
+  },
+  "GEMSDOE92-lcs-consensus-37654-20261024-58fd2c77": {
+    "parent": "h33-h33-2-b2",
+    "axis": "LCS",
+    "value": "consensus-S+L",
+    "hypothesis": "Dots chosen where several INDEPENDENT detector lanes agree, with each lane's vote weighted by its leaderboard-implied credit per dot, are more likely to land within 300 m of a new-fault pixel than the single skeleton lane alone, and can be made unique by construction (<= 67 % overlap with every scored lane and with every non-blanket registry raster).",
+    "mechanism": "Multi-modality agreement (potential-field edges, slope breaks, radon, strain, geologic) suppresses modality-specific mimics; a halo-survival factor and vote excess measured inside distance-to-catalogue strata prevent re-detections of mapped faults (masked by the scorer, DrivenData thread 11516) from posing as consensus; selection is a Lagrangian-capped greedy at a matched 37,654-dot budget, 2.83 px spacing, > 3 px from the catalogue.",
+    "non_fault_mimic": "range-front lithologic contacts and erosional escarpments shared by all potential-field lanes; geophysical re-detection of already-mapped faults (halo, handled by stratification); survey levelling / block-seam artefacts common to several magnetic lanes",
+    "falsifier": "MODEL band: projection below R0 by more than one typical LOO error (0.066) rejects; canary symmetric AUC >0.90 stops as leakage; forward overlap >0.70 or |rho| >0.90 vs any Tier-S raster (either phase) logs a duplicate and stops; live: a receipt below R0 at the same budget falsifies the consensus premise at dot level.",
+    "decision_rule": "OK TO SUBMIT iff format-valid AND decisive uniqueness tier passes both phases AND canary passes AND model kill-criterion not triggered; PROMOTE only if the paired HOLDOUT-DTI CI vs the holdout best is entirely >0 (unreachable here: instrument is exactly 0 for files >3px from the catalogue).",
+    "predicted_sign_and_size": "MODEL: 0.263-0.321 vs 0.2778 (+/-0.066); no improvement claimed"
   }
 }

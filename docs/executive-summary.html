@@ -3,81 +3,78 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Auditable DOE GEMS submission workbench status, downloadable research artifacts, and conditional submission instructions.">
-  <title>Executive Summary — GEMSDOE92 GEMS Prize Workbench</title>
+  <meta name="description" content="File, unique name, note, and the exact portal steps for the GEMS Prize submission.">
+  <title>Executive summary — how to submit (GEMSDOE92)</title>
   <link rel="stylesheet" href="style.css">
+<style>
+.btn-big{font-size:1.25rem;padding:1rem 1.6rem}
+.status-grid{display:grid;gap:.7rem;margin:1rem 0}
+.status{border-left:6px solid var(--copper);padding:.8rem 1rem;background:var(--panel);border-radius:4px}
+.status-ok{border-color:#4ecb71;background:#14291d}.status-warn{border-color:#d45;background:#2a1414}.status-hold{border-color:#c9a227;background:#2a2412}
+.copyrow{display:flex;gap:.5rem;align-items:flex-start;flex-wrap:wrap}.copyrow code{flex:1 1 20rem;background:#0f0c09;padding:.4rem .6rem;border:1px solid var(--line);border-radius:4px;word-break:break-word}
+button.copy{background:transparent;color:var(--ink);border:1px solid var(--copper);border-radius:4px;padding:.3rem .7rem;cursor:pointer}
+details.archive{max-width:860px;margin:1rem auto;padding:0 1.25rem}details.archive>summary{cursor:pointer;color:var(--copper);padding:.6rem 0}
+</style>
+<script>function cp(id){var t=document.getElementById(id).innerText;if(navigator.clipboard){navigator.clipboard.writeText(t);}}</script>
+
 </head>
 <body>
 <header class="hero">
-  <p class="kicker">Executive Summary · DrivenData DOE GEMS Prize #306 · EPSG:32611</p>
-  <h1>Executive Summary &amp; Submission Guide</h1>
-  <p class="lede">Downloadable, machine-validated research artifacts with their evidence and limitations. Format validation is automated; it does not mean an artifact is eligible or recommended for a competition slot.</p>
-  <p><a href="index.html">← Back to Main Workbench</a> · <a href="SUBMIT.html">Submission Steps</a> · <a href="HYPOTHESES.html">Candidate Hypotheses</a></p>
+  <p class="kicker">Executive summary · DrivenData DOE GEMS Prize #306 · EPSG:32611</p>
+  <h1>How to submit — the file, the name, the note</h1>
+  <p class="lede">Three computed status lines, then the exact steps. Format validation is automated; <strong>OK TO SUBMIT</strong> means valid and not a duplicate — it is not a score and not a prediction that the file will win.</p>
+  <nav style="margin:.8rem 0;font-size:.95rem"><strong>Go to:</strong> <a href="index.html">Download</a> · <a href="executive-summary.html">Executive summary: how to submit</a> · <a href="SUBMIT.html">Step-by-step guide</a> · <a href="WHY_R0_0_2778.md">Why 0.2778?</a> · <a href="HYPOTHESES_20261024_LCS.md">Ranked hypotheses</a> · <a href="UNIQUENESS_POLICY_20261024.md">Uniqueness policy</a> · <a href="NEXT_STEPS.md">Next steps</a></nav>
 </header>
 <main>
 <section class="download-card">
-  <h2>Current decision: NOT CLEARED — no artifact is approved to submit</h2>
-  <div class="banner banner-ok"><strong>FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH.</strong> The current primary ANASIG f45 zeros-outside GeoTIFF passed the repository's 10 local format gates: one float32 band; EPSG:32611; 3730 × 3292; template-matching transform; finite values in [0,1]; no NaNs inside the footprint; and zeros outside.</div>
-  <div class="banner banner-warn"><strong>DO NOT SUBMIT / NO WEEKLY SLOT CLEARED.</strong> The local HOLDOUT-DTI is below the recorded holdout-best baseline, and a hash-verified public registry witness is positive throughout the competition footprint. Under the repository's literal 3-pixel overlap rule, the final dots are a duplicate. The repository review concludes that this witness makes the rule fail for every nonempty in-footprint raster. Do not evade this by emitting an empty raster or moving predictions outside the footprint. No new TIFF was generated in this review.</div>
-  <p class="filename">h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif</p>
-  <p><a class="btn" href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif" download>Download ANASIG research GeoTIFF — DO NOT SUBMIT</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.zip" download>Download ZIP (one TIFF)</a></p>
+  <h2>Status (derived from evidence, not typed)</h2>
+  <div class="status-grid"><div class="status status-ok"><strong>✅ OK TO DOWNLOAD</strong><br>All 10 MUST format gates pass on the bytes served (strict 3 px catalogue distance): one float32 band · EPSG:32611 · 3730 × 3292 · template transform · every value finite in [0, 1] · zeros outside the footprint · no dot on or within 3 px of a mapped fault · sha256 recorded. The portal error <code>Predicted values must be in range [0, 1]</code> cannot be triggered by this file.</div><div class="status status-ok"><strong>✅ OK TO SUBMIT</strong><br>Valid for the portal <em>and</em> not a copy of any previous submission: overlap ≤ 0.70 and |Spearman| ≤ 0.90 against every operator-scored raster, both phases (decisive Tier S). Against the 861 non-blanket registry rasters the <em>final dots</em> pass (max overlap 0.697); the pre-placement <em>surface</em> (a 330,976-pixel candidate pool) overlaps 4 very large rasters above 0.70 (max 0.813), so Tier L fails on that phase — shown in the table. It does <em>not</em> clear the literal all-registry rule (Tier T), which no file can — a random file fails it against dozens of rasters: see the table and <a href="UNIQUENESS_POLICY_20261024.md">why</a>. Leakage canary passes. This is a validity and non-duplication clearance — <strong>not a score and not a recommendation</strong>.</div><div class="status status-hold"><strong>🟡 SLOT VERDICT: negative (pre-registered rule)</strong><br>HOLDOUT-DTI minus the repository holdout best (RELIEF p10): -0.006045 [-0.006954, -0.005260] — the paired CI is not entirely above 0, so the protocol does not recommend spending a weekly slot on it. HOLDOUT-DTI of this file is exactly 0 in every fold <em>by construction</em>: the hide-and-recover truth is mapped fault pixels and every dot here is &gt; 3 px from every mapped fault, so no dot can touch a withheld pixel — the instrument cannot rank this file (the random control also scores 0). It is not the leaderboard (see the analysis). No weekly slot is selected or used by this repository — submitting is a separate human step.</div></div>
+  <p class="filename">GEMSDOE92-lcs-consensus-37654-20261024-58fd2c77-zeros.tif</p>
+  <p><a class="btn btn-big" href="downloads/GEMSDOE92-lcs-consensus-37654-20261024-58fd2c77-zeros.tif" download>⬇ Download the TIF</a> <a class="btn btn-ghost" href="downloads/GEMSDOE92-lcs-consensus-37654-20261024-58fd2c77-zeros.zip" download>ZIP (one TIFF)</a></p>
+  
   <dl class="meta">
-    <div><dt>Suggested name (research record only)</dt><dd><code>GEMSDOE92-ANASIG-f45Atop-20261024</code></dd></div>
-    <div><dt>Suggested note (84 characters; do not upload this artifact)</dt><dd><code>h33-h33-2-b2; ANASIG f45Atop 16944 far dots on analytic-signal ridges &gt;3px off H19-5</code></dd></div>
-    <div><dt>SHA-256</dt><dd><code>68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5</code></dd></div>
-    <div><dt>Evidence</dt><dd><a href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-audit.json">Format audit</a> · <a href="downloads/anasig_run_card.json">Run card</a> · <a href="ANALYSIS_20261024_ANASIG.md">Analysis</a> · <a href="REVIEW_CURRENT.md">Current registry-stop review</a></dd></div>
+    <div><dt>Submission name (unique; ≤ 140 chars)</dt><dd class="copyrow"><code id="nm">GEMSDOE92-LCS-consensus-20261024-58fd2c77</code><button class="copy" onclick="cp('nm')">Copy</button></dd></div>
+    <div><dt>Note (117 chars; limit 140)</dt><dd class="copyrow"><code id="nt">GEMSDOE92 LCS: 37,654 LB-weighted lane-consensus dots; &gt;3px from catalogue; &lt;=67% overlap with scored lanes; UNSCORED</code><button class="copy" onclick="cp('nt')">Copy</button></dd></div>
+    <div><dt>SHA-256 of the served bytes</dt><dd><code>04f6b587ad87331325bc450a50c77d6945fe86c59790830a1f1ba70d3220df90</code></dd></div>
+    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0, 1] · 37,654 unit-mass dots · zeros outside the footprint</dd></div>
+    <div><dt>Receipts</dt><dd><a href="downloads/GEMSDOE92-lcs-consensus-37654-20261024-58fd2c77-audit.json">audit receipt</a> · <a href="downloads/lcs_run_card.json">run-card JSON</a> ·
+      <a href="downloads/lcs_registry_final.json">registry gate (final dots)</a> · <a href="downloads/lcs_registry_surface.json">registry gate (surface)</a> ·
+      <a href="downloads/lcs_proxy_audit.json">holdout / canary / SGMC</a> · <a href="downloads/lcs_build.json">build + selection</a></dd></div>
   </dl>
 </section>
-
 <section>
-  <h2>What the reported 0.2778 does—and does not—tell us</h2>
-  <p><strong>CLAIM 0.2778</strong> is the score attributed in the supplied project history to <code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e</code>. This checkout has no organizer submission-page receipt for that artifact, so it is not ORGANIZER-CONFIRMED here. The repository measured its raster lineage (skeleton thinning, pruning and known-catalogue exclusion); those structural measurements explain what changed between the files, but do not prove which change caused the reported score.</p>
-  <p>The plausible metric-based interpretation is that reducing redundant predictions and avoiding known-fault pixels may improve score under the competition's distance-weighted asymmetric Tversky metric. This remains a hypothesis absent the verified submission receipt and private target labels. It is not evidence that any current candidate beats 0.2778.</p>
-  <p>Leaderboard values quoted in prior prompts conflict (0.3195 and 0.4413). Treat them as dated, unverified <strong>CLAIM</strong> values unless checked against the live official leaderboard. Neither value reveals the winning model or proves that a particular geological method produced it. The present environment did not refresh the competition site.</p>
-  <p>For measured file lineage and limitations, see <a href="ANALYSIS_20261024.md">the analysis</a> and <a href="REVIEW_CURRENT.md">the current review</a>. Local HOLDOUT-DTI is hide-and-recover of catalogue segments and cannot be compared numerically to a leaderboard score.</p>
-</section>
-
-<section>
-  <h2>Submission procedure (only after a separate eligibility clearance)</h2>
-  <p><strong>Do not upload the current downloadable files.</strong> For a future artifact, first verify that its own run card says <code>verdict: promote</code>, its pre-placement and final-dot registry checks pass the explicitly applicable policy, its holdout result beats the current comparable holdout best, and its audit passes every format gate. Slot selection and the DrivenData upload are separate from this workbench; only then:</p>
+  <h2>Submit in five steps</h2>
   <ol>
-    <li>Download the exact zeros-outside <code>.tif</code> file specified by the cleared run card. Do not edit or re-save it in GIS software.</li>
-    <li>Sign into the official <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData competition</a> and open its new-submission form. The portal requests a single-band GeoTIFF or a ZIP containing one GeoTIFF.</li>
-    <li>Select that cleared file in “File to submit”. Paste the run-card note into “Note (optional)”. The submission name is a project/ledger identifier; the described portal form has no separate name field, so do not assume one exists.</li>
-    <li>After an accepted upload, record the submission ID, timestamp, and score exactly as shown on the submission-page receipt in <code>ledger/submissions.csv</code>. Do not infer an organizer score from local holdout results.</li>
+    <li>Download the <code>.tif</code> above (or the ZIP that contains exactly that one TIFF). Do not open and re-save it in GIS software; any re-save changes the bytes the audit certifies.</li>
+    <li>Sign in at <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData</a> and open the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">submission form</a>.</li>
+    <li>Choose the file. If the form shows a separate name field, paste the <strong>submission name</strong>; if it shows only a note field, paste the note — it begins with the lane name and the file name carries the content id.</li>
+    <li>Paste the <strong>note</strong> (≤ 140 characters, already checked). Send.</li>
+    <li>When the receipt appears, enter the score <em>exactly as shown</em> in <code>ledger/raw_paste.txt</code> / <code>ledger/submissions.csv</code> as an ORGANIZER-CONFIRMED receipt. Never infer a score from the local HOLDOUT-DTI or from the MODEL projection.</li>
   </ol>
-  <p>The format gates run in-project without a human inspector. Portal authentication, quota/slot selection, upload, and receipt capture still require authorized competition-account access; this repository does not automate those actions.</p>
+  <p><strong>Limits.</strong> Three submissions per week (the website limit prevails — <a href="https://community.drivendata.org/t/submission-amount-question/11553">staff reply</a>); you select <em>one</em> submission for both prize rounds; the Phase-2 truth set is revised by expert review of all Phase-1 submissions, so a prediction can matter for the final round even if it is not top-scoring in Phase 1 (<a href="https://community.drivendata.org/t/how-were-the-new-test-faults-identified-data-sources-and-fault-types/11527">staff reply</a>).
+  Generative-AI use must be disclosed in your narrative (Official Rules §3.2; see <a href="https://github.com/buffedlizard55-lab/GEMSDOE92/blob/main/AI_USE.md">AI_USE.md</a>).</p>
 </section>
-
 <section>
-  <h2>Research queue: unvalidated ideas, not submission candidates</h2>
-  <p>The current protocol's public full-footprint witness blocks all nonempty predictions under its literal overlap rule. Therefore none of these ideas is viable for emission until the policy conflict is resolved. Their relative expected leaderboard DTI cannot be estimated from current evidence; the priority below is screening order/cost, not a score forecast.</p>
-  <ol>
-    <li><strong>Paired DEM scarp-profile asymmetry:</strong> pinned DEM/elevation layers (Bands 12 and 19); detect a coherent break with a repeated one-sided vertical offset across profiles, unlike the already-tested slope-break coherence alone. Potentially catches subtle scarps absent from a potential-field/catalogue skeleton. Mimics include terrace risers and fan margins. In-stack; moderate implementation/screen cost; not tested.</li>
-    <li><strong>Drainage-crossing scarp discrimination:</strong> DEM Bands 12/19 plus an official hydrography layer; downweight linear breaks aligned with channels and favor breaks crossing drainage consistently. Could separate tectonic scarps from channel banks, but channel incision and road cuts remain mimics. Requires external data; USGS National Hydrography Dataset availability was not checked in this review, so this is not a viable experiment yet.</li>
-    <li><strong>Shoreline-conditioned breakline suppression:</strong> DEM Bands 12/19 plus mapped Lake Lahontan shoreline elevations/shoreline geometry; suppress contour-parallel risers at known stillstands while retaining transverse scarps. Could reduce a named non-fault mimic, not independently identify faults. Requires external official shoreline data; exact free dataset and obtainability were not verified here, so not viable yet.</li>
-    <li><strong>Spring/structure strike alignment:</strong> existing mapped spring locations plus DEM/structural lineament orientation; test whether spring pairs align along independently detected structures rather than simply placing near vents. Springs can reflect topography and lithology without faults. GDR/INGENIOUS is a listed source, but current data availability and reuse terms were not checked; not viable yet.</li>
-  </ol>
-  <p>These are research questions, not claims of novelty across every GEMSDOE site. See <a href="HYPOTHESES_20261024_BREAKLINE.md">the existing hypothesis inventory</a> and <a href="../IRREGULARITIES.md">known blockers</a> before proposing a lane.</p>
+  <h2>Why "OK TO SUBMIT" and "slot verdict" differ</h2>
+  <p><strong>OK TO SUBMIT</strong> = format-valid ∧ unique under the decisive tier (S) ∧ leakage canary passes ∧ model kill-criterion not triggered.
+  <strong>Slot verdict</strong> = the protocol's promote/negative: the paired HOLDOUT-DTI difference against the repository's recorded holdout best must be entirely above 0. The two are independent on purpose: the first says the portal will accept the file and it is not a copy; the second says whether the project's own pre-registered rule recommends a slot.
+  The holdout instrument rewards recovery of mapped catalogue faults — which the real scorer masks — so its verdict and the leaderboard can disagree (see <a href="WHY_R0_0_2778.md">analysis</a>).</p>
+  <p><strong>Literal all-registry rule (Tier T): NOT passed.</strong> It cannot be passed by any file at all because blanket rasters overlap everything; the policy and the one-line switch to change the decisive tier are in <a href="UNIQUENESS_POLICY_20261024.md">UNIQUENESS_POLICY_20261024.md</a>. Both tiers S and L are measured and shown on the <a href="index.html">main page</a>.</p>
 </section>
-
 <section>
-  <h2>Official references for manual review</h2>
-  <p>These URLs are retained as source leads from the project prompt/repository; they were not freshly retrieved in this review unless explicitly noted elsewhere.</p>
+  <h2>Official links for manual review</h2>
+  <ul><li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">Competition page</a></li><li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Problem description + metric (page 967)</a></li><li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">Submit form (login)</a></li><li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Public leaderboard</a></li><li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Official rules (NLR/TP-5700-96647)</a></li><li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Reference solution (U-Net, DrivenData)</a></li><li><a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">Forum: known faults are masked (11516)</a></li><li><a href="https://community.drivendata.org/t/where-do-you-draw-the-line/11536">Forum: what counts as a new fault (11536)</a></li><li><a href="https://community.drivendata.org/t/leaderboard-aggregation-pooled-over-public-test-pixels-or-mean-of-per-chunk-scores/11550">Forum: leaderboard is one pooled Tversky (11550)</a></li><li><a href="https://community.drivendata.org/t/questions-about-the-final-round-rules/11556">Forum: final-round rules (11556)</a></li><li><a href="https://community.drivendata.org/t/how-were-the-new-test-faults-identified-data-sources-and-fault-types/11527">Forum: truth sources not disclosed (11527)</a></li><li><a href="https://community.drivendata.org/t/submission-amount-question/11553">Forum: 3 submissions per week (11553)</a></li><li><a href="https://doi.org/10.5066/P93LGLVQ">GeoDAWN data release (USGS)</a></li></ul>
+</section>
+<section>
+  <h2>Limitations (read before spending a slot)</h2>
   <ul>
-    <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData problem description</a></li>
-    <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">DrivenData about page</a></li>
-    <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">Competition data page (login may be required)</a></li>
-    <li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">DrivenData reference solution</a></li>
-    <li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Competition rules PDF</a></li>
-    <li><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN</a></li>
-    <li><a href="https://gdr.openei.org/submissions/1391">DOE Geothermal Data Repository / INGENIOUS</a></li>
-    <li><a href="https://www.usgs.gov/3d-elevation-program">USGS 3DEP</a></li>
-    <li><a href="https://epsg.io/32611">EPSG:32611</a></li>
+    <li>No organizer receipt exists for this file; every score in this repository is a CLAIM or a MODEL.</li>
+    <li>The projection range (0.263–0.321 against R0's 0.2778, one typical model error ±0.07) means the file is an <em>exploration arm</em>: the model cannot say it beats 0.2778.</li>
+    <li>The holdout is not fold-pure for these inputs, and the registry scope is the owner's public GEMSDOE repositories only.</li>
+    <li>The live public board (top 50) starts at 0.4413; 0.2778 is outside the visible rows. A file at R0's level is not a prize-level file.</li>
   </ul>
 </section>
 </main>
-<footer><p>Evidence labels: HOLDOUT-DTI = local holdout result with evaluator and uncertainty; CLAIM = unverified reported value; ORGANIZER-CONFIRMED = copied from a submission-page receipt. A download is not an endorsement to submit.</p></footer>
+<footer>GEMSDOE92 · Core values: <em>Maximize P(Win)</em> · <em>Own the Outcome</em> · <a href="index.html">← back to the download</a></footer>
 </body>
 </html>

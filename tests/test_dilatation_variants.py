@@ -165,12 +165,15 @@ def test_current_primary_download_is_tracked_and_gate_passed() -> None:
 
 
 def test_site_offers_primary_download_and_exact_submission_fields() -> None:
+    # 2026-10-24: the earlier lanes' sections moved into docs/_archive_main_20261024.html (rendered inside a
+    # collapsed <details> on index.html); the record of what each said must stay intact and linked.
     html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
+    archive = (ROOT / "docs" / "_archive_main_20261024.html").read_text(encoding="utf-8")
     assert "OK TO DOWNLOAD" in html
     assert "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif" in html
-    assert "GEMSDOE92-visible-collar-r0-excluded-20261024" in html
+    assert "GEMSDOE92-visible-collar-r0-excluded-20261024" in archive
     note = "Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots"
-    assert note in html and len(note) <= 140
+    assert note in archive and len(note) <= 140
     assert "visible_collar_run_card.json" in html
     submit = (ROOT / "docs" / "SUBMIT.html").read_text(encoding="utf-8")
     assert "DrivenData" in submit and "OK TO DOWNLOAD" in submit
@@ -178,13 +181,16 @@ def test_site_offers_primary_download_and_exact_submission_fields() -> None:
 
 def test_site_discloses_literal_duplicate_stop_and_evidence_boundary() -> None:
     html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
-    assert "NOT CLEARED FOR A WEEKLY SLOT" in html
-    assert "DUPLICATE UNDER THE LITERAL REGISTRY RULE" in html
-    assert "5,167,373" in html
-    assert "not a fresh full-registry scan" in html
-    assert "downloads/public_witness_anasig.json" in html
-    assert "HOLDOUT-DTI" in html and "not a competition score" in html
-    assert "No live submission slot has been used" in html
+    archive = (ROOT / "docs" / "_archive_main_20261024.html").read_text(encoding="utf-8")
+    # the earlier sessions' disclosures are preserved verbatim in the archive ...
+    assert "NOT CLEARED FOR A WEEKLY SLOT" in archive
+    assert "DUPLICATE UNDER THE LITERAL REGISTRY RULE" in archive
+    assert "5,167,373" in archive
+    assert "not a fresh full-registry scan" in archive
+    assert "downloads/public_witness_anasig.json" in archive
+    assert "HOLDOUT-DTI" in html and "not a competition score" in archive
+    # ... and the current page discloses the literal-rule (Tier T) status explicitly
+    assert "Tier T" in html
     card = json.loads((ROOT / "evidence" / "visible_collar_run_card.json").read_text(encoding="utf-8"))
     assert card["verdict"] == "negative"
     assert card["holdout_dti"]["paired_delta_vs_R0"]["ci95"][0] > 0

@@ -1,3 +1,5 @@
+> **Superseded 2026-10-24 by [`ANALYSIS_20261024_LCS.md`](ANALYSIS_20261024_LCS.md), [`UNIQUENESS_POLICY_20261024.md`](UNIQUENESS_POLICY_20261024.md) and [`NEXT_STEPS.md`](NEXT_STEPS.md).** The registry-stop reasoning below was written under the literal all-registry rule (tier T), which no file can pass; kept verbatim as the audit trail.
+
 # Current review — 2026-10-24
 
 ## Download status comes first

@@ -99,3 +99,16 @@ See [current review](docs/REVIEW_CURRENT.md). The queued public check now reject
 ## Follow-up registry stop (2026-10-24)
 
 **2026-10-24 follow-up — BREAKLINE is now a confirmed duplicate under the literal registry rule.** A live, Git-blob-verified witness check compared one raster from 11GEMSDOE and five from 17GEMSDOE. BREAKLINE final dots have **100% forward 3-px overlap** with the dense 17GEMSDOE E-proba raster. This is REGISTRY-MEASUREMENT, not a competition score. The actual BREAKLINE pre-placement surface was not supplied and was **not checked**; no collar surface was substituted. A final-dot failure alone requires stop. No new experiment or TIFF was generated; no slot used. See [follow-up review](docs/REVIEW_REGISTRY_STOP_20261024.md) and [run card](evidence/breakline_registry_stop_run_card.json). **Download for research only; do not submit.**
+
+
+---
+
+## Addendum 2026-10-24 (LCS session) — what the next session must know before it starts
+
+* **Verdict logic is derived, not typed.** The site, audit receipt and run card must equal `gems.uniqueness_policy.decide` + `gems.verdict.derive` computed from evidence (`scripts/check_site.py`, `tests/test_site_contract.py`).
+  The old fixed "NOT CLEARED" contract was removed because it made OK TO SUBMIT unreachable (IR-92-04).
+* **Uniqueness has three tiers (S / L / T), all always measured**; thresholds 0.90 / 0.70 / 3 px are unchanged; the decisive tier is in `registry/uniqueness_policy.json` (operator may flip it). Tier T (literal, all rasters) cannot be passed by any file — a random file fails it.
+* **A new lane keeps every dot > 3 px from every mapped fault** (brief constraint 4). CI's `--prune-radius 2` makes that gate vacuous; use the strict radius. Consequence: the hide-and-recover HOLDOUT-DTI is exactly 0 for such files (IR-92-06) — do not read it as evidence about the idea.
+* **Leaderboard-as-instrument:** nested rasters with claimed scores give group credits to ±1 % (`scripts/why_r0_analysis.py`). Use receipts the same way; update `ledger/` first.
+* **Registry:** re-run `scripts/fetch_registry_cache.py` + `registry_gate.py` before any submission (sibling sessions add rasters). Scope is the owner's public default branches only.
+* **Never** write a MODEL projection as a score; never drop a raster from a comparison silently; never overwrite `evidence/lcs_build.json` from a dry run (`--no-write` does not).

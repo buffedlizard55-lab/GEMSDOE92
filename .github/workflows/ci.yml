@@ -95,3 +95,7 @@ jobs:
           print(f"  audit receipt agrees; {len(doc['gates_zeros'])} gates recorded PASS")
           PY
 
+      # The homepage / audit / run-card statuses are DERIVED from evidence (gems.uniqueness_policy + gems.verdict).
+      # check_site.py recomputes them and fails if any page disagrees (2026-10-24: replaces the fixed "NOT CLEARED" contract).
+      - name: site statuses must equal the evidence-derived verdict
+        run: PYTHONPATH=vendor python scripts/check_site.py

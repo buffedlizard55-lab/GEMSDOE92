@@ -375,3 +375,22 @@ No DrivenData login, no leaderboard scraping, no actual competition submission, 
 
 ### What the AI did not do
 No DrivenData login or upload, no leaderboard scraping, no copied score, no projection presented as a score. External claims were fetched from the official competition page and the organizer reference repository this session; forum points are marked second-hand.
+
+
+---
+
+## 2026-10-24 — LCS session addendum (branch `arena/949d4182-gemsdoe92`)
+
+**What AI did.** Reviewed the repository; verified R0's lineage and group structure from rasters; read official DrivenData and NLR sources; built the registry cache, catalogue and digest tooling
+(`scripts/fetch_registry_cache.py`, `registry_catalog.py`, `registry_digests.py`, `registry_gate.py`); wrote the leaderboard-concordance, leave-one-lane-out and consensus-selection code (`gems/lcs.py`,
+`scripts/lb_concordance.py`, `lcs_loo_calibration.py`, `build_lcs_pool.py`, `build_lcs_candidate.py`); the policy/verdict logic (`gems/uniqueness_policy.py`, `gems/verdict.py`, `registry/uniqueness_policy.json`); the audit/site generators and the
+rewritten site contract and tests; all analysis documents. The raster was written only through the shared fail-closed writer (`vendor/gems57/submission_writer.py`).
+
+**What the human must decide / do.** (1) Confirm the uniqueness policy (tier S decisive; IR-92-04). (2) Paste the verbatim prompt and score list (IR-92-01). (3) Confirm that fetching public DrivenData pages with a page-fetch tool is acceptable (IR-92-07).
+(4) Decide whether to spend a weekly slot on this file and/or the one-slot probe (`docs/NEXT_STEPS.md`); upload from the registered account; copy any receipt into `ledger/`. (5) Disclose AI use in the submission narrative (Official Rules §3.2).
+
+**Sources used this session.** Pinned inputs restored by `scripts/restore_inputs.py` (hash-verified); the owner's public GEMSDOE repositories via the GitHub API / git (blobs verified by git SHA-1 and byte length);
+official pages read as text only: DrivenData problem page 967, public leaderboard (top 50), forum threads 11516, 11527, 11531, 11536, 11550, 11553, 11556, and the NLR rules PDF. No login, no data download from DrivenData, no submission, no external dataset beyond those already pinned.
+
+**Reproducibility.** Every number in the new documents is produced by a tracked script (see README "Reproduce this session") from pinned inputs and the cached registry; selection is deterministic (stable sorts, fixed seeds).
+**Generative-AI disclosure.** This work was done by an AI agent on Arena.ai Agent Mode (a model mix); all code, documents and analysis were AI-generated and checked by the repository's own validators and tests; no human review of the geology has taken place.

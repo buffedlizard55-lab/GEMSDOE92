@@ -1,0 +1,91 @@
+{
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=3px dots_within=0"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "04f6b587ad87331325bc450a50c77d6945fe86c59790830a1f1ba70d3220df90"
+    }
+  ],
+  "gates_zeros_pass": true,
+  "file": "GEMSDOE92-lcs-consensus-37654-20261024-58fd2c77-zeros.tif",
+  "sha256_zeros": "04f6b587ad87331325bc450a50c77d6945fe86c59790830a1f1ba70d3220df90",
+  "n_positive_pixels": 37654,
+  "n_dots": 37654,
+  "overall_pass": true,
+  "submission_eligible": true,
+  "verdict": "negative",
+  "run_card": "evidence/lcs_run_card.json",
+  "distance_gate_radius_px": 3,
+  "note": "distance_from_catalogue gate run at the strict 3 px radius, not the R0-lineage 2 px override",
+  "public_registry_uniqueness": {
+    "candidate_hash_matches_scan": true,
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "decisive_tier": "S",
+    "decisive_tier_passed": true,
+    "tiers": {
+      "S": {
+        "passed": true
+      },
+      "L": {
+        "passed": false
+      },
+      "T": {
+        "passed": false
+      }
+    },
+    "scope": "Hash-verified cached public default-branch rasters of the owner's GEMSDOE repositories (docs/downloads, releases, submission* paths); distinct decoded contents compared with the shared vendor function and fanned out to all files sharing the content. NOT organizer-complete: history, private repos, other owners, zip-only/site-only objects absent; 0 index errors, 5 non-single-band/grid-mismatch files and 1 invalid TIFF excluded at cache time."
+  },
+  "status": {
+    "ok_to_download": true,
+    "ok_to_submit": true,
+    "blocking_reasons": [],
+    "slot_recommended": false,
+    "literal_registry_rule_passed": false
+  }
+}
