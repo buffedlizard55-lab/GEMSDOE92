@@ -216,33 +216,20 @@ gitignored and not redistributed. No new external data was introduced.
 
 **Decision.** `scripts/build_snap_scarp_variants.py` reads `training_features.tif` with `ds.read(b, masked=True).filled(np.nan)` (plus `> -1e30` guard) and uses unsigned **`Band 5 (iso_grav_anom_slope)`** paired with the piedmont break-in-slope inflection `||grad(det_elev_slope)||` (`Band 19`). Furthermore, enforcing literal `"Same count, same exclusions"` (`d_cat > 2.0 px` on both kept and moved dots, rather than a one-way `d_cat > 3.0` membrane on moved dots) prevents partial depletion of the `2.0 < d_cat <= 3.0` collar (`2,171` vs `2,175` dots, `0.01%` delta vs `-24.7%` under `g0.05`), keeping `SNAPscarp2p0px`, `SNAPscarp1p4px`, and `SNAPpot2p0px` 100% unconfounded with `PRUNE`.
 
-## 2026-10-24 (CONCENTRATION session) — R0 is a saturated D2.8 packing, so every "add or relocate" axis is capacity-bound
 
-**Observation.** R0 is `dot_thin(H19-5, 2.8) & d_cat > 2.0`: a maximal
-Poisson-disk packing of the H19-5 support. Measured this session on the pinned
-grid: of the 66,151 catalogue-legal H19-5 pixels that do **not** already carry a
-dot, only **794 (1.2%) are >= 2.8284 px** from the nearest parent dot, 5,383 are
->= 2.2 px, 9,760 are >= 2.0 px, 29,114 are >= 1.414 px.
+---
 
-**Impact — decision-changing.** The brief's CONCENTRATION recipe ("move 10-20%
-of dots from low-prior to high-prior blocks") is impossible at the parent's own
-spacing floor: 20% of the file is 7,531 dots and the whole grid offers 794 legal
-destinations. The same cap applies to MASS *additions* and to any future
-"extend coverage" idea: you cannot add mass to R0's support without either
-relaxing the spacing invariant or leaving the H19-5 evidence field.
+## 2026-10-24 (RELIEF session) — Baseline Parent R0 Mass is Asymmetrically Concentrated in Bedrock Range Front / Range Interior Rather than Active Piedmont
 
-**Decision.** The three CONCENTRATION arms keep every inherited dot exactly
-where the parent put it and declare ONE secondary change, identical in all three
-arms: moved dots are placed on a `>= 2.0 px` floor (200 m — inside the 300 m
-kernel radius and half the GeoDAWN 400 m line spacing). The floor cannot create
-the up/down difference the axis tests because both directions carry it. Recorded
-in `evidence/concentration_variants.json` (`spacing_policy`), in `docs/SUBMIT.md`
-and in the mechanism cards. **Consequence for the plan:** SPACING is now the
-highest-value follow-up axis, because it is the parameter that unlocks every
-other relocation/expansion experiment.
+**Observation.**
+Decomposition of parent R0 (`37,654` dots) across the three regional detrended-elevation terciles (`Band 12 det_elev`: `p33 = -142.9087 m`, `p67 = +38.7522 m` across the 5.17M px valid footprint) reveals:
+- Basin tercile (`det_elev < p33`): 7,691 dots (20.43%)
+- Piedmont tercile (`p33 <= det_elev < p67`): 15,743 dots (41.81%)
+- Range-front / Range core tercile (`det_elev >= p67`): 14,204 dots (37.72%)
 
-## 2026-10-24 (CONCENTRATION session) — the previous session's MASS_A10/SWAP10 quietly broke the spacing invariant
+R0's dots in basin + range total 21,895 dots (58.15%). In extensional Basin-and-Range tectonic settings, active Quaternary normal faulting predominantly localizes along range-front alluvial fans and piedmont fault scarps, while deep basins conceal faults beneath thick, ductile/unconsolidated graben fill and range interiors contain eroded, exhumed, often inactive bedrock structures.
 
+<<<<<<< HEAD
 **Observation.** `releases/h33-h33-2-b2-MASS_A10-20261023-e5613a00.tif` (41,419
 dots) contains 3,765 dots that are not in R0. All 3,765 sit on H19-5, but their
 distance to the nearest R0 dot is **1.0 px at the minimum and 1.0 px at the
@@ -342,3 +329,7 @@ file tests a prior that is not derived from the catalogue. Cross-variant overlap
 measured rather than asserted: in this branch's own harness the catalogue-prior and
 physics-prior arrival sets overlapped at Jaccard `0.087`, so the surviving variant
 asks a genuinely different question from the merged set.
+=======
+**Decision.**
+Shift 10%, 12%, and 15% of total mass (3,765, 4,518, and 5,648 dots) from the lowest-prior basin and range dots into the highest-prior unpopulated H19-5 pixels located strictly within the piedmont tercile, using greedy exact expected-DTI marginal gain on the label-free physical prior (`Band 3`, `Band 5`, `Band 19`). Dot count is held at exactly 37,654, zero mass is placed on the catalogue, and all dots maintain R0's `d_cat > 2.0 px` exclusion.
+>>>>>>> origin/main
