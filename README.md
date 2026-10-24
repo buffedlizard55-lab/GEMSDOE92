@@ -1,5 +1,7 @@
 # GEMSDOE92 — unique GEMS Prize GeoTIFF
 
+A parallel RELIEF session on `main` produced `RELIEFp10piedmont` that **fails** the 70% overlap gate (99.38% within 3 px of R0) and is inspection-only. This branch's TIPGAP FAR file is the unique zeros-outside download (overlap 0.6700).
+
 **Read this file at the start of every session.** Full operator contract: [`SESSION_PROMPT.md`](SESSION_PROMPT.md).
 
 ## Download (start here)
