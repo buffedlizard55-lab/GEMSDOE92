@@ -219,6 +219,7 @@ def test_readme_and_site_agree_on_current_download_and_holdout_ranking():
     """Keep the first-screen research download and historical ranking unambiguous."""
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     index = _index()
+    assert "h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif" in readme
     assert "h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif" in readme
     assert "current research download" in readme.lower()
     assert "the higher documented HYDROCONDUIT hybrid is" in readme
@@ -255,6 +256,66 @@ def test_continuation_review_card_is_negative_and_mirrored():
     assert card["validator_output"]["values_range"] == [0.0, 1.0]
     assert card["correlation_overlap_vs_registry"]["existing_apronridge_forward_3px_overlap"] == 1.0
     assert served.read_bytes() == canonical.read_bytes()
+
+
+def test_piedfront_primary_contract_across_site_and_readme():
+    idx = (DOCS / "index.html").read_text(encoding="utf-8")
+    exec_sum = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
+    sub = (DOCS / "SUBMIT.html").read_text(encoding="utf-8")
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+
+    for tok in (
+        "GEMSDOE92-PIEDFRONT-f35Ptop-20261024",
+        "h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif",
+        "e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8",
+        "0.006425",
+    ):
+        assert tok in idx, f"missing {tok} in docs/index.html"
+        assert tok in exec_sum, f"missing {tok} in docs/executive-summary.html"
+        assert tok in sub, f"missing {tok} in docs/SUBMIT.html"
+        assert tok in readme, f"missing {tok} in README.md"
+
+
+def test_coulomb_loqo_primary_run_card_and_no_duplicate_html_ids():
+    import hashlib
+
+    src = ROOT / "evidence" / "coulomb_loqo_run_card.json"
+    dl = DOCS / "downloads" / "coulomb_loqo_run_card.json"
+    assert src.is_file() and dl.is_file()
+    assert src.read_bytes() == dl.read_bytes()
+
+    card = json.loads(src.read_text(encoding="utf-8"))
+    for key in (
+        "hypothesis",
+        "mechanism",
+        "named_non_fault_process_that_could_mimic_it",
+        "holdout_dti",
+        "correlation_overlap_vs_registry",
+        "raster_sha256",
+        "validator_output",
+        "submission_name",
+        "note",
+        "verdict",
+    ):
+        assert key in card, f"missing run-card key: {key}"
+
+    primary = ROOT / card["primary_download"]
+    assert primary.is_file()
+    assert hashlib.sha256(primary.read_bytes()).hexdigest() == card["raster_sha256"]
+    assert len(card["note"]) <= 140
+    assert card["leakage_canary_max_symmetric_auc"] <= 0.90
+    assert card["correlation_overlap_vs_registry"]["local_duplicate"] is False
+    assert card["holdout_dti"]["dti"] > 0.008549  # beats prior repo #1 HYDROCONDUIT
+    assert card["holdout_dti"]["strict_draw_blind_dvis2_dti"] > 0.096757  # beats H19-5
+    assert card["verdict"] == "negative"
+    assert card["submission_eligible"] is False
+    assert card["weekly_slots_used"] == 0
+
+    # Ensure zero duplicate HTML element IDs across all docs/*.html pages
+    for page_path in sorted(DOCS.glob("*.html")):
+        text = page_path.read_text(encoding="utf-8")
+        ids = re.findall(r'\bid="([^"]+)"', text)
+        assert len(ids) == len(set(ids)), f"Duplicate HTML id in {page_path.name}: {ids}"
 
 
 def test_piedfront_primary_contract_across_site_and_readme():

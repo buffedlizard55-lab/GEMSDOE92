@@ -900,3 +900,29 @@ that pattern: no unpreserved screen code.
 - **Observation**: `COULOMB free` final dots are `71.6%` RTP-channel-dominant while `rtp_tilt`-only canary is `0.5162` vs `rel_scarp`-only `0.6230` — `max(R_rtp, R_scarp)` lets the near-random channel win most crest pixels. `HYDROCONDUIT`'s multiplicative fusion is the empirically better operator on this instrument.
 - **Action**: Recorded as a design constraint for future lanes (follow-up F-C2 in `docs/NEXT_STEPS.md`); no code change.
 
+## 2026-10-24 (`COULOMB-LOQO` Session) — Five Newly Verified Metric, Lineage, Bootstrap & HTML Merge Irregularities
+
+### 1. `#IR-92-ALPHA-BETA-PROSE-SWAP`: Inverted $\alpha / \beta$ Tversky Penalty Weights in `README.md` and `ANALYSIS_20261024_APRONRIDGE.md`
+- **Observation**: `README.md` (line 80) and `docs/ANALYSIS_20261024_APRONRIDGE.md` (§2.1) wrote the DTI denominator as $\mathrm{TP}_w + \alpha\,\mathrm{FN}_w + \beta\,\mathrm{FP}_w$ (`0.2` on `FN_w` and `0.8` on `FP_w`), asserting that false positives carried a $4\times$ heavier penalty than false negatives. Direct verification against the official DrivenData reference notebook (`drivendataorg/gems-prize-reference-solution/unet-mc-cv-reference-solution.ipynb`, Cell 16: `alpha = 0.2 # weight for false positives`, `beta = 0.8 # weight for false negatives`), `vendor/gems57/metric.py`, and `gems/metric.py` proves the exact opposite: $\mathrm{DTI} = \mathrm{TP}_w / (\mathrm{TP}_w + 0.2\,\mathrm{FP}_w + 0.8\,\mathrm{FN}_w)$ — **false negatives carry $4\times$ the penalty of false positives**.
+- **Action**: Corrected the prose formula in `README.md` and `docs/ANALYSIS_20261024_COULOMBLOQO.md` while clarifying why kernel-matched spacing (`~2.8 px`) still improves DTI (not because $\alpha > \beta$, but because $\max_{x \in A} K(\|g - x\|_2)$ saturates at zero marginal $\mathrm{TP}_w$ gain when two dots overlap within `< 2.8 px`, leaving pure $+0.2\,\mathrm{FP}_w$ cost).
+
+### 2. `#IR-92-SOLO-R1-BYTE-IDENTITY`: Exact Byte Identity of `SOLO` (`h27_4_solo.tif`) = `D2.8 & (d_cat > 1.0)`
+- **Observation**: Prior analyses (`ANALYSIS_20261024_APRONRIDGE.md` citing `39,580` px; `ANALYSIS_20261024_HYDROCONDUIT.md` describing `"6,413 speckles"` / isolated 1–2-dot speckle removal) misdescribed the `D2.8 -> SOLO -> R0` transition. Direct pixel algebra on the SHA-256-verified bridge rasters proves `d28.sum() == 44,090`, `h27_4_solo.sum() == 40,199`, **`XOR(h27_4_solo, d28 & (d_cat > 1.0)) == 0`** (`-3,891` pixels all at `d_cat == 1.0`), and **`XOR(R0, d28 & (d_cat > 2.0)) == 0`** (`-2,545` pixels at `1.0 < d_cat <= 2.0`, `-6,436` total).
+- **Action**: Documented the exact zero-XOR byte-verified ancestor table in `README.md` and `docs/ANALYSIS_20261024_COULOMBLOQO.md`.
+
+### 3. `#IR-92-CAT-COUNT-PROSE`: Mapped Catalogue Pixel Count Typo (`36,249` vs Exact `60,988`)
+- **Observation**: `docs/ANALYSIS_20261024_APRONRIDGE.md` stated `existing_faults.tif` contained `36,249` in-footprint pixels; exact byte inspection of `existing_faults.tif` and `labels.tif` confirms **`60,988`** in-footprint positive pixels (`1.180%` of the `5,167,373`-cell footprint).
+- **Action**: Recorded the verified `60,988` pixel count across `README.md`, `docs/HYPOTHESES_20261024_COULOMBLOQO.md`, and `docs/ANALYSIS_20261024_COULOMBLOQO.md`.
+
+### 4. `#IR-92-HYDROCONDUIT-EXTEND-TERMS`: Spatial-Block Bootstrap Pseudo-Replication via `list.extend` in `scripts/report_hydroconduit_proxies.py`
+- **Observation**: `vendor/gems57/evaluate_holdout.py::run` sums `(tp, fp, fn)` block vectors across the 8 folds per physical 20 km spatial block (`all_terms = terms if all_terms is None else all_terms + terms`) so `pooled_summary` resamples physical 20 km blocks with replacement. `scripts/report_hydroconduit_proxies.py` (lines 78, 80, 158) instead called `all_terms.extend(terms)`, concatenating `8 * n_blocks` rows and treating the 8 fold evaluations of the same 20 km block as independent bootstrap units, artificially narrowing 95% CIs (point estimates were unaffected).
+- **Action**: Fixed `scripts/report_hydroconduit_proxies.py` in-place to sum `terms` per physical 20 km block (`all_terms + terms`), matching `vendor/gems57/evaluate_holdout.py`, `scripts/report_apronridge_proxies.py`, and `scripts/report_coulomb_loqo_proxies.py`.
+
+### 5. `#IR-92-PR49-MERGE-SEAMS`: Duplicate HTML IDs, Broken `<main>` Seam in `HYPOTHESES.html`, and Dual-Primary Prose After PR #49
+- **Observation**: Merging parallel sessions in PR #49 (`c16e8b7`) left duplicate `id="download-springalign"` in `docs/index.html`, an invalid `</main><footer>...</footer></section><section>` block in `docs/HYPOTHESES.html`, and split primary declarations across `README.md`, `SLOT_PLAN.md`, `docs/NEXT_STEPS.md`, and `docs/REVIEW_CURRENT.md` (`APRONRIDGE free1d` vs `HYDROCONDUIT f45hydro`).
+- **Action**: Cleaned all merge seams, eliminated duplicate HTML IDs (added regression check in `tests/test_site_contract.py`), restored valid HTML5 structure in `docs/HYPOTHESES.html`, and unified every page, doc, and contract test around the new #1 primary `COULOMBLOQO standalone` (`h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif`, `HOLDOUT-DTI = 0.009220`) while preserving full historical tables and downloads for `HYDROCONDUIT`, `APRONRIDGE`, `PIEDFRONT`, `STEPEDGE`, and all earlier lanes.
+
+### 6. `#IR-92-LEDGER-CSV-UNQUOTED-COMMAS`: Unquoted Commas in PR #60 `MICROSWARM` / `BASEMENTEDGE` Ledger Rows
+- **Observation**: During merge of `origin/main` (`5a23dd2`), lines 66–67 of `ledger/submissions.csv` (`h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21` and `h33-h33-2-b2-BASEMENTEDGEstep3-20261024-80719f12`) contained unquoted commas inside `change_desc` and `notes`, splitting 16 columns into 18 columns (`csv.DictReader` key `None`) alongside a blank line 65.
+- **Action**: Re-serialized all 68 merged rows through `gems.ledger.save()` with RFC-4180 quoting so every row has the exact 16 canonical columns.
+

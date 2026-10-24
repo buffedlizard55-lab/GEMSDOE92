@@ -541,5 +541,38 @@
     "falsifier": "Pooled HOLDOUT-DTI failing to beat APRONRIDGE free1d (0.008354) on gems57-pooled-hide-v2, any canary symmetric AUC >0.90, or literal overlap >0.70 / |rho| >0.90.",
     "decision_rule": "Promote only if pooled HOLDOUT-DTI beats APRONRIDGE free1d (0.008354) with paired 95% CI excluding 0 vs R0, all canaries <=0.90, 10/10 gates pass, AND literal uniqueness passes locally. Dense public witness (>150k px) triggers informational note but not silent waiver; record submission_eligible false under literal rule until operator density-clause revision.",
     "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/geotension_proxy_audit.json"
+  },
+  "h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af": {
+    "parent": "h33-h33-2-b2",
+    "axis": "COULOMBLOQO",
+    "value": "standalone",
+    "hypothesis": "Active Quaternary Basin-and-Range normal/transtensional faults and blind INGENIOUS geothermal conduits exhibit concordant footwall-hangingwall polarity between detrended elevation, Band 18 E-W horizontal gravity gradient (iso_grav_anom_hg), and basement relief, axial strike phase-locking across topography + true Band 2 RTP magnetics + gravity, high 2D Coulomb slip/dilation tendency along N15E normal and NW/ENE conjugate strikes, and MT clay-cap / radioelement / blind silica-cation geothermometer (>=80 C) halos.",
+    "mechanism": "A 4-quadrant Leave-One-Quadrant-Out (LOQO, >=1.2 km guard band, >500 m negative buffer) HistGradientBoostingClassifier fit strictly on 24 catalogue-free physical features (dropping dist_known_fault_px; zero cross-quadrant quantile sharing) predicts out-of-quadrant fault probability P_LOQO(x), sharpened by 1D topographic Hessian/scarp and subsurface RTP/basement/MT crest localization, then emitted at fixed budget S=37,654 unit-mass dots with d_cat > 2.0 px and min_dist = 2.8 px.",
+    "non_fault_mimic": "Pleistocene Lake Lahontan wave-cut shorelines, radial alluvial-fan incised wash walls, remanently magnetized Tertiary lava flow edges, and flat-lying conductive playa evaporite lenses.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat repository holdout best HYDROCONDUIT f45hydro (0.008549) on gems57-pooled-hide-v2, any single-feature leakage canary symmetric AUC > 0.90, or local registry forward 3-px overlap > 0.70 / |Spearman| > 0.90.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats HYDROCONDUIT f45hydro (0.008549) with paired 95% CI > 0, all canaries <= 0.90, 10/10 format gates pass, AND literal uniqueness passes on both local and public registries. Because 17GEMSDOE E-proba-multiscale sets every in-footprint pixel > 0 under the literal >70% public overlap clause, record submission_eligible=false and verdict='negative' (OK TO DOWNLOAD, NOT CLEARED FOR A WEEKLY SLOT) without waiving the rule.",
+    "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/coulomb_loqo_proxy_audit.json"
+  },
+  "h33-h33-2-b2-COULOMBLOQOnocoulomb-20261024-ab7c4415": {
+    "parent": "h33-h33-2-b2",
+    "axis": "COULOMBLOQO",
+    "value": "nocoulomb",
+    "hypothesis": "Active Quaternary Basin-and-Range normal/transtensional faults and blind INGENIOUS geothermal conduits exhibit concordant footwall-hangingwall polarity between detrended elevation, Band 18 E-W horizontal gravity gradient (iso_grav_anom_hg), and basement relief, axial strike phase-locking across topography + true Band 2 RTP magnetics + gravity, high 2D Coulomb slip/dilation tendency along N15E normal and NW/ENE conjugate strikes, and MT clay-cap / radioelement / blind silica-cation geothermometer (>=80 C) halos.",
+    "mechanism": "A 4-quadrant Leave-One-Quadrant-Out (LOQO, >=1.2 km guard band, >500 m negative buffer) HistGradientBoostingClassifier fit strictly on 24 catalogue-free physical features (dropping dist_known_fault_px; zero cross-quadrant quantile sharing) predicts out-of-quadrant fault probability P_LOQO(x), sharpened by 1D topographic Hessian/scarp and subsurface RTP/basement/MT crest localization, then emitted at fixed budget S=37,654 unit-mass dots with d_cat > 2.0 px and min_dist = 2.8 px.",
+    "non_fault_mimic": "Pleistocene Lake Lahontan wave-cut shorelines, radial alluvial-fan incised wash walls, remanently magnetized Tertiary lava flow edges, and flat-lying conductive playa evaporite lenses.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat repository holdout best HYDROCONDUIT f45hydro (0.008549) on gems57-pooled-hide-v2, any single-feature leakage canary symmetric AUC > 0.90, or local registry forward 3-px overlap > 0.70 / |Spearman| > 0.90.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats HYDROCONDUIT f45hydro (0.008549) with paired 95% CI > 0, all canaries <= 0.90, 10/10 format gates pass, AND literal uniqueness passes on both local and public registries. Because 17GEMSDOE E-proba-multiscale sets every in-footprint pixel > 0 under the literal >70% public overlap clause, record submission_eligible=false and verdict='negative' (OK TO DOWNLOAD, NOT CLEARED FOR A WEEKLY SLOT) without waiving the rule.",
+    "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/coulomb_loqo_proxy_audit.json"
+  },
+  "h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c": {
+    "parent": "h33-h33-2-b2",
+    "axis": "COULOMBLOQO",
+    "value": "dual45",
+    "hypothesis": "Active Quaternary Basin-and-Range normal/transtensional faults and blind INGENIOUS geothermal conduits exhibit concordant footwall-hangingwall polarity between detrended elevation, Band 18 E-W horizontal gravity gradient (iso_grav_anom_hg), and basement relief, axial strike phase-locking across topography + true Band 2 RTP magnetics + gravity, high 2D Coulomb slip/dilation tendency along N15E normal and NW/ENE conjugate strikes, and MT clay-cap / radioelement / blind silica-cation geothermometer (>=80 C) halos.",
+    "mechanism": "A 4-quadrant Leave-One-Quadrant-Out (LOQO, >=1.2 km guard band, >500 m negative buffer) HistGradientBoostingClassifier fit strictly on 24 catalogue-free physical features (dropping dist_known_fault_px; zero cross-quadrant quantile sharing) predicts out-of-quadrant fault probability P_LOQO(x), sharpened by 1D topographic Hessian/scarp and subsurface RTP/basement/MT crest localization, then emitted at fixed budget S=37,654 unit-mass dots with d_cat > 2.0 px and min_dist = 2.8 px.",
+    "non_fault_mimic": "Pleistocene Lake Lahontan wave-cut shorelines, radial alluvial-fan incised wash walls, remanently magnetized Tertiary lava flow edges, and flat-lying conductive playa evaporite lenses.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat repository holdout best HYDROCONDUIT f45hydro (0.008549) on gems57-pooled-hide-v2, any single-feature leakage canary symmetric AUC > 0.90, or local registry forward 3-px overlap > 0.70 / |Spearman| > 0.90.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats HYDROCONDUIT f45hydro (0.008549) with paired 95% CI > 0, all canaries <= 0.90, 10/10 format gates pass, AND literal uniqueness passes on both local and public registries. Because 17GEMSDOE E-proba-multiscale sets every in-footprint pixel > 0 under the literal >70% public overlap clause, record submission_eligible=false and verdict='negative' (OK TO DOWNLOAD, NOT CLEARED FOR A WEEKLY SLOT) without waiving the rule.",
+    "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/coulomb_loqo_proxy_audit.json"
   }
 }

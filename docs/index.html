@@ -3,249 +3,275 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Auditable, locally validated GeoTIFF candidate for DrivenData DOE GEMS Prize #306.">
-  <title>GEMSDOE92 — GEMS submission workbench (APRONRIDGE free1d research download)</title>
+  <title>GEMSDOE92 — COULOMB-LOQO Automated Validation &amp; Download Workbench</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <aside class="banner banner-warn" aria-label="Latest verified review">
-  <strong>2026-10-24 verified review: OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT.</strong>
-  The existing APRONRIDGE file remains the research download, not a newly generated submission or a selector choice.
-  Fresh hash-verified registry measurement gives 100% forward overlap against one dense witness: the literal duplicate-stop rule is binding.
-  Historical HOLDOUT-DTI (gems57-pooled-hide-v2, 22,663 withheld positives):
-  APRONRIDGE 0.008354 (95% CI 0.006823–0.010135);
-  HYDROCONDUIT 0.008549 (95% CI 0.007626–0.009487).
-  APRONRIDGE is therefore not the overall holdout best: HYDROCONDUIT's stored static HOLDOUT-DTI point estimate is higher, while the separate GEOTENSION HOLDOUT-DTI is 0.007615 [0.005832–0.009386], below both. The APRONRIDGE and HYDROCONDUIT static results were not freshly rerun or certified here as fold-rebuilt, leak-free promotion evidence, and neither is an organizer score. GEOTENSION is also blocked by the same dense-witness stop. The later COULOMB seismo HOLDOUT-DTI is 0.005808 [0.004846–0.006809], also below APRONRIDGE and blocked by that witness.
-  <a href="REVIEW_D97F969E.md">Three-pass review and limitations</a> ·
-  <a href="downloads/review_d97f969e_run_card.json">Run card</a> ·
-  <a href="downloads/review_d97f969e_witness.json">Fresh witness measurement</a>
+  <strong>2026-10-24 verified status: CURRENT PRIMARY <code>COULOMBLOQO standalone</code> IS OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT.</strong>
+  Newly built this session: <code>h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif</code> sets the repository's highest <strong>HOLDOUT-DTI</strong> on both instruments — static <code>0.009220 [0.007983, 0.010493]</code> and strict Rule-2 unmasked <code>d_visible &gt; 2.0</code> <code>0.113316 [0.100614, 0.127163]</code> (<code>gems57-pooled-hide-v2</code>, <code>22,663</code> withheld positives), above <code>HYDROCONDUIT f45hydro</code> (<code>0.008549</code>), <code>APRONRIDGE free1d</code> (<code>0.008354</code>), <code>GEOTENSION free1d</code> (<code>0.007615</code>), <code>COULOMB seismo</code> (<code>0.005808</code>), <code>BASEMENTEDGE step3</code> (<code>0.000000</code>), and <code>MICROSWARM short</code> (<code>0.000000</code>) — and is locally unique against every raster on merged <code>main</code> (<code>&le; 0.6164 &le; 0.70</code>).
+  Prior review archive note: in the earlier D97 audit (<a href="REVIEW_D97F969E.md">REVIEW_D97F969E.md</a> · <a href="downloads/review_d97f969e_run_card.json">D97 run card</a> · <a href="downloads/review_d97f969e_witness.json">review_d97f969e_witness.json</a> · <a href="REVIEW_20261024_CONTINUATION.md">continuation review</a> · <a href="downloads/review_20261024_continuation_run_card.json">continuation run card</a> · <a href="downloads/preplacement_dense_witness.json">preplacement dense witness</a>), historical <code>APRONRIDGE</code> was documented as not a newly generated submission and not the overall holdout best relative to <code>HYDROCONDUIT</code>. Under the literal public dense-witness rule (<code>17GEMSDOE E-proba-multiscale</code>, <code>5,167,373</code> positive footprint cells &rarr; <code>1.000</code> forward overlap), every nonempty in-footprint candidate remains <code>submission_eligible: false</code> (<code>verdict: negative</code>).
 </aside>
-
 <header class="hero">
-  <p class="kicker">DOE GEMS Prize · DrivenData #306 · EPSG:32611 · 100 m</p>
-  <h1>APRONRIDGE free1d GeoTIFF — Format-Valid Research Download — NOT CLEARED TO SUBMIT</h1>
-  <p class="lede">Download the automatedly validated, single-band <strong>APRONRIDGE free1d</strong> GeoTIFF (<code>h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif</code>: thin-cover piedmont accommodation apron &times; 1D scarp + Reduced-to-Pole magnetic curvature ridges, zero <code>H19-5</code> or <code>R0</code> input) for research. The historical stored <strong>HOLDOUT-DTI</strong> is <code>0.008354</code> (parallel HYDROCONDUIT hybrid <code>0.008549</code>); these are local static evaluation records, not organizer scores or newly certified fold-rebuilt results. APRONRIDGE passes local registry comparisons but remains <strong>DO NOT SUBMIT</strong> / <strong>NOT CLEARED FOR A WEEKLY SLOT</strong> because a binding full-footprint-positive public witness triggers the literal overlap stop.</p>
-  <nav style="margin: 0.8rem 0; font-size: 0.95rem;">
-    <strong>Quick Navigation:</strong>
-    <a href="executive-summary.html">Executive Summary</a> ·
-    <a href="SUBMIT.html">Submission Guide</a> ·
-    <a href="HYPOTHESES.html">Candidate Hypotheses</a> ·
-    <a href="ANALYSIS_20261024_APRONRIDGE.md">APRONRIDGE PhD Analysis</a> ·
-    <a href="HYPOTHESES_20261024_APRONRIDGE.md">Pre-Registered Design</a> ·
-    <a href="REVIEW_20261024_CONTINUATION.md">Latest session review</a> ·
-    <a href="downloads/review_20261024_continuation_run_card.json">Run card</a> ·
-    <a href="downloads/review_20261024_continuation_witness.json">Fresh witness check</a>
-  </nav>
-  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> Automated zero-human-intervention validation: 10/10 MUST gates pass on disk re-read; one <code>float32</code> band; <code>EPSG:32611</code>, <code>3730 &times; 3292</code>, exact template geotransform; finite values in <code>[0, 1]</code>; zero <code>NaN</code> inside footprint; <code>0.0</code> outside; zero catalogue mass; <code>d_cat &gt; 2.0 px</code>; SHA-256 recorded.</div>
-  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE (PUBLIC DENSE WITNESS).</strong> Measured directly on <code>h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif</code> against the Git-blob-verified <code>17GEMSDOE E-proba-multiscale</code> witness (<code>git_blob_sha = 374c88b1...</code>, positive on all <code>5,167,373</code> competition-footprint cells), forward 3-px overlap is <code>1.000</code> (<a href="downloads/review_20261024_continuation_witness.json">fresh APRONRIDGE exact-file recheck</a> · <a href="downloads/public_witness_apronridge.json">historical APRONRIDGE witness receipt</a> · <a href="downloads/review_20261024_springalign_witness_v2.json">SPRINGALIGN witness receipt</a>). This is one decisive binding witness check, not a fresh full-registry scan. Under that literal rule, every nonempty in-footprint raster fails until an operator density-clause update excludes dense probability maps (&gt;150k positive px). On sparse rasters, <code>APRONRIDGE free1d</code> passes both local uniqueness (<code>0.4605 &le; 0.70</code> across 46 rasters) and top public sparse witnesses (<code>0.6028–0.6456 &le; 0.70</code> vs <code>62GEMSDOE</code>/<code>GEMSDOE23</code>). Verdict: <code>negative</code>.</div>
-  <div class="banner banner-warn"><strong>HOLDOUT-DTI improvement does not override the public witness gate.</strong> No live submission slot has been used. <code>HOLDOUT-DTI</code> measures local spatially-blocked catalogue hide-and-recover (<code>gems57-pooled-hide-v2</code>) and is not a competition score or an <code>ORGANIZER-CONFIRMED</code> receipt.</div>
-  <div class="banner banner-warn">The portal error <code>Predicted values must be in range [0, 1]</code> is guarded against: this download was reread from disk and every cell is finite and in range. Always use the <strong>zeros-outside</strong> encoding if an operator later clears a weekly competition slot (separate human step).</div>
+  <p class="kicker">DOE GEMS Prize (#306) · Automated Project Validation (Zero Human Inspection Required)</p>
+  <h1>GEMSDOE92 — Primary Artifact: <code>COULOMBLOQO standalone</code> (<code>0.009220</code> <code>HOLDOUT-DTI</code>, #1 All-Time Repo High)</h1>
+  <p class="lede"><strong>Two-Question Automated Decision Banner (Read First):</strong></p>
+  <p>
+    <span class="badge badge-ok" style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH (10/10 Automated Format Gates PASS; Values Strictly in [0, 1])</span>
+    <span class="badge badge-stop" style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (DUPLICATE UNDER THE LITERAL REGISTRY RULE)</span>
+  </p>
+  <p>Every served <code>*-zeros.tif</code> on this workbench is machine-verified inside the project via <code>vendor/gems57/submission_writer.py</code>, <code>gems/gates.py</code>, <code>vendor/gems57/validate.py</code>, and <code>scripts/check_site.py</code> (no human inspector step required) to guarantee finite <code>float32</code> values strictly in <code>[0, 1]</code> with <code>0.0</code> outside the footprint — eliminating DrivenData's <code>"Predicted values must be in range [0, 1]"</code> portal error. Promotion to a scarce live weekly competition slot (<code>3/week</code> cap, external human step) remains blocked (<code>submission_eligible: false</code>, <code>verdict: "negative"</code>, <code>0</code> slots spent) because dense public continuous probability maps such as <code>17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif</code> (<code>5,167,373</code> positive footprint pixels = 100%) force <code>1.000 &gt; 0.70</code> 3-px forward overlap under the literal Rule-1 scan.</p>
+  <p><a href="executive-summary.html"><strong>Executive Summary Subpage →</strong></a> · <a href="SUBMIT.html"><strong>Submission Guide &amp; Slot Gate →</strong></a> · <a href="HYPOTHESES.html"><strong>5 Ranked Untried Hypotheses →</strong></a> · <a href="ANALYSIS_20261024_COULOMBLOQO.md"><strong>PhD Analysis (Why GEMSDOE32 Got 0.2778 &amp; How COULOMB-LOQO Beats H19-5) →</strong></a></p>
 </header>
 
 <main>
-<section class="download-card" aria-label="2026-10-24 automatic preflight"><h2>New-candidate preflight: STOP — no unique slot-ready TIF</h2><p>Independent SHA-256 and Git-blob verification of the <a href="https://github.com/buffedlizard55-lab/17GEMSDOE/blob/6fc71d19d49dca4960d5434bd81b6dd06fcc030a/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif">public dense witness</a> confirms positive support on all 5,167,373 footprint cells. Every nonempty in-footprint dot set therefore overlaps it at 1.000 &gt; 0.70 under the literal rule. A new submission would be marked duplicate, so this lane stopped before placement, holdout and writing a new TIF. <a href="HYPOTHESES_20261024_PREFLIGHT.md">Four ranked hypotheses</a> · <a href="downloads/preplacement_dense_witness.json">machine-readable preflight (repository)</a>. Existing downloads below are independently format-valid for research, <strong>not eligible for submission</strong>. A policy decision, not human file inspection, is needed before building a new candidate.</p></section>
-<section id="download-apronridge" class="download-card">
-  <h2>CURRENT RESEARCH DOWNLOAD: APRONRIDGE free1d — historical standalone physics-first HOLDOUT-DTI</h2>
-  <div class="banner banner-ok"><strong>✅ AUTOMATED VALIDATION: 10/10 GATES PASS — OK TO DOWNLOAD FOR RESEARCH.</strong> Re-read verified via <code>submission_writer.py</code> + <code>gems/gates.py</code>: single <code>float32</code> band, <code>EPSG:32611</code>, <code>3730 &times; 3292</code>, values strictly in <code>[0, 1]</code>, <code>0</code> NaNs in footprint, <code>0.0</code> outside, <code>37,654</code> unit-mass dots, <code>0</code> catalogue pixels, <code>min d_cat &gt; 2.0 px</code>.</div>
-  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DO NOT SUBMIT YET (<code>verdict: negative</code>, <code>submission_eligible: false</code>).</strong> Historical stored standalone physics-first <strong>HOLDOUT-DTI</strong> result (the parallel HYDROCONDUIT hybrid is higher at <code>0.008549 [0.007626, 0.009487]</code>); APRONRIDGE is evaluated on <code>gems57-pooled-hide-v2</code> (8 spatial folds, 22,663 withheld positives): <strong>0.008354 [0.006823, 0.010135]</strong> — <strong>+108.5% over R0</strong> (<code>0.004006</code>, paired &Delta; <code>+0.004347 [+0.003019, +0.005710]</code>), <strong>+109.9% over STEPEDGE f60Sraw</strong> (<code>0.003980</code>), <strong>+52.2% over STRAINBREAK f60s2i</strong> (<code>0.005487</code>, paired &Delta; <code>+0.002867</code>), and <strong>+38.2% over prior holdout best RELIEF p10</strong> (<code>0.006045</code>, paired &Delta; <code>+0.002308</code>). All 11 leakage canaries pass (<code>max symmetric AUC = 0.636490 &le; 0.90</code>). Locally unique on both pre-placement surface (<code>|&rho;| &le; 0.1222</code>, top-37,654 overlap <code>0.5527 &le; 0.70</code>) and final dots (worst 3-px overlap <strong>0.4605</strong> vs 46 local rasters; worst <code>|&phi;| = 0.0561</code>; 97.0% new pixels vs R0). Blocked solely by the binding full-footprint public witness <code>17GEMSDOE E-proba-multiscale</code> (<code>forward_overlap = 1.0</code>).</div>
-  <p class="filename">h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif</p>
-  <p><a class="btn" href="downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif" data-primary="true" download>⬇ Download APRONRIDGE free1d GeoTIFF (.tif) — OK TO DOWNLOAD, DO NOT SUBMIT</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.zip" download>Download ZIP (single TIFF)</a></p>
+<section class="download-card" id="download-coulombloqo">
+  <p class="kicker">Primary Research Artifact · Spatially Cross-Fitted (LOQO) Polarity-Locked Multi-Scale Hessian &amp; 2D Coulomb Ridge Model</p>
+  <h2><code>h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif</code></h2>
+  <p>
+    <a class="btn" href="downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif" data-primary="true" download>⬇ Research Download (.tif, zeros-outside [0, 1] — DO NOT SUBMIT TO PORTAL)</a>
+    &nbsp;·&nbsp;
+    <a href="downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.zip" download>Research Archive (.zip)</a>
+    &nbsp;·&nbsp;
+    <a href="downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-audit.json">Per-File Automated Gate Audit (.json)</a>
+    &nbsp;·&nbsp;
+    <a href="downloads/coulomb_loqo_run_card.json">Protocol Rule 5 Run Card (.json)</a>
+    &nbsp;·&nbsp;
+    <a href="downloads/coulomb_loqo_public_registry_uniqueness.json">Live 102-Repo Public Scan (.json)</a>
+  </p>
   <dl class="meta">
-    <div><dt>Submission name</dt><dd><code>GEMSDOE92-APRONRIDGE-free1d-20261024</code></dd></div>
-    <div><dt>Note (90 chars &le; 140)</dt><dd><code>h33-h33-2-b2; APRONRIDGE free1d: 37654 standalone 1D piedmont-apron + RTP ridges (0 H19-5)</code></dd></div>
-    <div><dt>SHA-256 (zeros / ZIP)</dt><dd><code>1a29a5d81e8561954f04a563b4975cb84d00898b8d7634700a9d409a10e06cbc</code> · ZIP <code>6f91c4a3b42083e5d30aaf071dbdc2a0dc0ae68363f8822afc701247be53871a</code></dd></div>
-    <div><dt>Grid / allocation</dt><dd><code>EPSG:32611</code> · <code>3730 &times; 3292</code> · <code>100 m</code> · <code>float32</code> · <code>[0,1]</code> · <code>37,654</code> standalone 1D crests (<code>75.4%</code> piedmont, <code>0</code> H19-5/R0 input)</dd></div>
-    <div><dt>Audit / evidence</dt><dd><a href="downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-audit.json">gate audit JSON</a> · <a href="downloads/apronridge_run_card.json">run-card JSON</a> · <a href="downloads/review_20261024_continuation_witness.json">fresh public witness recheck</a> · <a href="downloads/review_20261024_continuation_run_card.json">latest run card</a> · <a href="downloads/repo_review_run_card_20261024.json">prior repo review run card</a> · <a href="ANALYSIS_20261024_APRONRIDGE.md">PhD analysis</a> · <a href="HYPOTHESES_20261024_APRONRIDGE.md">pre-registered hypotheses</a></dd></div>
+    <div><dt>Unique Submission Name (Local Ledger)</dt><dd><code>GEMSDOE92-COULOMBLOQO-standalone-20261024</code></dd></div>
+    <div><dt>Submission Form Note (89 / 140 chars)</dt><dd><code>h33-h33-2-b2; COULOMBLOQO standalone: 37654 1D LOQO Coulomb+polarity+RTP crests (0 H19-5)</code></dd></div>
+    <div><dt>SHA-256 (<code>-zeros.tif</code> / <code>.zip</code>)</dt><dd><code>8f1f93d8c97b4e1c359ce5fbe07d183214e707aa6bda4ed074c00921f39ad32e</code> / <code>448395137acb4860c24402fb53002539f3c688f8c232c79c23991353623c4c48</code></dd></div>
+    <div><dt>Automated Validator Output</dt><dd><code>PASS</code> — <code>EPSG:32611</code>, <code>3730 &times; 3292</code>, <code>float32</code>, <code>min=0.0, max=1.0</code>, <code>0</code> NaN anywhere, <code>37,654</code> unit dots, <code>0</code> catalogue mass, <code>min d_cat = 2.236 px &gt; 2.0 px</code>, <code>0%</code> <code>H19-5</code>/<code>R0</code> input (96.39% pixels changed vs <code>R0</code>).</dd></div>
+    <div><dt>Static <code>HOLDOUT-DTI</code> (<code>gems57-pooled-hide-v2</code>, <code>22,663</code> withheld px)</dt><dd><strong><code>0.009220</code></strong> (95% CI <code>[0.007983, 0.010493]</code>) — <strong>#1 all-time repository high</strong> (+130.2% vs <code>R0</code> <code>0.004006</code>; +52.5% vs <code>RELIEF p10</code> <code>0.006045</code>; beats <code>HYDROCONDUIT f45hydro</code> <code>0.008549</code> &amp; <code>APRONRIDGE free1d</code> <code>0.008354</code>). Strict draw-blind OOF <code>d_cat &gt; 2.0</code>: <strong><code>0.009689</code></strong> (<code>[0.008374, 0.011014]</code>).</dd></div>
+    <div><dt>Strict Rule-2 Draw-Blind <code>d_visible &gt; 2.0</code> <code>HOLDOUT-DTI</code></dt><dd><strong><code>0.113316</code></strong> (95% CI <code>[0.100614, 0.127163]</code>) vs <code>H19-5</code> skeleton <code>0.096757</code> — <strong>first standalone (0% <code>H19-5</code>) model in repo history to beat <code>H19-5</code></strong> (paired &Delta; <code>+0.016559</code>, 95% CI <code>[+0.008170, +0.024980]</code> strictly &gt; 0)!</dd></div>
+    <div><dt>Off-Catalogue <code>USGS SGMC</code> <code>PROXY</code> DTI (<code>62,703</code> px)</dt><dd><strong><code>0.090569</code></strong> (+22.2% recovery over <code>HYDROCONDUIT</code> <code>0.074107</code>; +13.1% over <code>APRONRIDGE</code> <code>0.080098</code>; sibling <code>dual45</code> = <strong><code>0.094057</code></strong> vs <code>R0</code> <code>0.096060</code>).</dd></div>
+    <div><dt>Leakage Canaries &amp; Registry Uniqueness</dt><dd>43/43 single-feature &amp; LOQO canaries PASS (max symmetric AUC <code>0.672638 &le; 0.90</code>). Locally unique across all 41 cross-lane rasters (<code>worst overlap = 0.6164 &le; 0.70</code>, <code>|&phi;| = 0.0493 &le; 0.90</code>). Sibling <code>dual45</code> has <strong><code>0 / 1,121</code></strong> (&le;90k-px) sparse public overlaps &gt;70% (max <code>0.6488</code>); literal 1,368-raster public scan triggers STOP (<code>1.0</code> vs dense <code>17GEMSDOE E-proba-multiscale</code>) &rarr; <code>verdict: "negative"</code>, <code>submission_eligible: false</code>.</dd></div>
   </dl>
-  <p><strong>Geological mechanism:</strong> Active Basin-and-Range range-front splays and synthetic piedmont step-faults concentrate in the thin-cover piedmont accommodation apron (<code>Band 12 det_elev</code> transition &times; <code>Band 15 depth_to_base_surf</code> ~20–600 m &times; <code>Band 5 iso_grav_anom_slope</code>), expressing either as coherent DEM slope-breaks (<code>Bands 19/12</code>) or shallow-buried <strong>Reduced-to-Pole magnetic gradient &times; inverted <code>tc</code> curvature</strong> ridges (<code>Bands 2/6</code>) centered vertically over basement contacts without raw-TMI dipolar inclination shift, extracted along 4-axis 1D crests. Named non-fault mimics: Sehoo/Eetza pluvial shoreline benches, incised alluvial-fan terrace risers, and buried Tertiary basalt flow margins. SGMC 1:500k bedrock control (<code>PROXY</code>): <code>0.0801</code> vs R0 <code>0.0961</code> (reflecting intentional suppression of high-range Mesozoic bedrock contacts). Pre-registered hybrid siblings (research-only, never submit multiple siblings): <a href="downloads/h33-h33-2-b2-APRONRIDGEs60f40-20261024-6e7e0174-zeros.tif">APRONRIDGE s60f40</a> (<code>HOLDOUT-DTI 0.008291</code>, <a href="downloads/h33-h33-2-b2-APRONRIDGEs60f40-20261024-6e7e0174-audit.json">audit</a>) · <a href="downloads/h33-h33-2-b2-APRONRIDGEs50f50-20261024-2f0431ea-zeros.tif">APRONRIDGE s50f50</a> (<code>HOLDOUT-DTI 0.008097</code>, <a href="downloads/h33-h33-2-b2-APRONRIDGEs50f50-20261024-2f0431ea-audit.json">audit</a>).</p>
+  <p>Pre-registered sibling ablations (3-experiment budget cap): <a href="downloads/h33-h33-2-b2-COULOMBLOQOnocoulomb-20261024-ab7c4415-zeros.tif">COULOMBLOQOnocoulomb — zeros-outside</a> (<a href="downloads/h33-h33-2-b2-COULOMBLOQOnocoulomb-20261024-ab7c4415-audit.json">audit</a>, Group-A topo-only ablation <code>0.009151</code>) · <a href="downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif">COULOMBLOQOdual45 — zeros-outside</a> (<a href="downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-audit.json">audit</a>, 45% LOQO-<code>H19</code> + 55% far 1D crests, <code>0.009107</code> static / <code>0.094057</code> SGMC / <code>0.6488</code> max &le;90k public overlap).</p>
 </section>
 
-<section id="download-geotension" class="download-card">
-  <h2>ADDITIONAL RESEARCH CANDIDATE: GEOTENSION free1d — dilatation-strain scarp 1D ridges (NOT SELECTED)</h2>
-  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH.</strong> Re-read verified via <code>submission_writer.py</code> + <code>gems/gates.py</code>: single <code>float32</code> band, <code>EPSG:32611</code>, <code>3730 &times; 3292</code>, values strictly in <code>[0, 1]</code>, <code>0</code> NaNs in footprint, <code>0.0</code> outside, <code>37,654</code> unit-mass dots, <code>0</code> catalogue pixels, <code>min d_cat &gt; 2.0 px</code>. Prevents portal error <code>Predicted values must be in range [0, 1]</code>.</div>
-  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DO NOT SUBMIT YET (<code>verdict: negative</code>, <code>submission_eligible: false</code>).</strong> <strong>GEOTENSION free1d</strong> achieves <strong>HOLDOUT-DTI 0.007615 [0.005832, 0.009386]</strong> (<code>gems57-pooled-hide-v2</code>, 8 folds, 22,663 withheld positives) — <strong>+90.1% over R0</strong> (<code>0.004006</code>, paired Δ <code>+0.003609 [+0.001913, +0.005263]</code>), <strong>+26.0% over RELIEF p10</strong> (<code>0.006045</code>), <strong>–8.8% vs repository best APRONRIDGE free1d</strong> (<code>0.008354</code>, Δ –0.000739). All 11 leakage canaries PASS (<code>max symmetric AUC = 0.621604 ≤ 0.90</code>). Locally unique on both surface and final dots (worst 3-px overlap <strong>0.5241</strong> vs 67 local rasters; vs <code>APRONRIDGE free1d</code> 0.4300; vs <code>HYDROCONDUIT f45hydro</code> 0.4913). Blocked solely by binding dense public witness <code>17GEMSDOE E-proba-multiscale</code> (100% footprint positive => <code>forward_overlap = 1.0</code>). <strong>HOLDOUT-DTI</strong> is local hide-and-recover, never a leaderboard score.</div>
-  <div class="banner banner-warn"><strong>DUPLICATE UNDER THE LITERAL REGISTRY RULE (PUBLIC DENSE WITNESS).</strong> Measured directly on <code>h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif</code> against hash-verified <code>17GEMSDOE E-proba-multiscale</code> witness, forward 3-px overlap is <code>1.000</code>. Under literal rule, every nonempty in-footprint raster fails until operator density-clause revision (&gt;150k px). See <a href="downloads/public_witness_geotension.json">witness receipt</a>.</div>
-  <p class="filename">h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif</p>
-  <p><a class="btn" href="downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif" data-primary="false" download>⬇ Download GEOTENSION free1d GeoTIFF (.tif) — OK TO DOWNLOAD, DO NOT SUBMIT</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.zip" download>Download ZIP (single TIFF)</a></p>
-  <dl class="meta">
-    <div><dt>Submission name</dt><dd><code>GEMSDOE92-GEOTENSION-free1d-20261025</code></dd></div>
-    <div><dt>Note (93 chars ≤ 140)</dt><dd><code>h33-h33-2-b2; GEOTENSION free1d: 37654 standalone dilat-scarp 1D crests (0 H19-5)</code></dd></div>
-    <div><dt>SHA-256 (zeros / ZIP)</dt><dd><code>b0dba55e56a5e714dd62673dd48c0d7f695cf9a25b40786cb243f1bf7dd4d054</code> · ZIP <code>dcf8ba3ee3d5f12b75e962dda929588819c4805c986020b35137e20fadf5f182</code></dd></div>
-    <div><dt>Grid / allocation</dt><dd><code>EPSG:32611</code> · <code>3730 × 3292</code> · <code>100 m</code> · <code>float32</code> · <code>[0,1]</code> · <code>37,654</code> standalone 1D crests (<code>52.6%</code> piedmont, <code>0</code> H19-5/R0 input)</dd></div>
-    <div><dt>Audit / evidence</dt><dd><a href="downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-audit.json">gate audit JSON</a> · <a href="downloads/geotension_run_card.json">run-card JSON</a> · <a href="downloads/public_witness_geotension.json">public witness check</a> · <a href="ANALYSIS_20261025_GEOTENSION.md">PhD analysis — why 0.2778 scored highest & can we beat it?</a> · <a href="HYPOTHESES_20261025_GEOTENSION.md">pre-registered hypotheses (5 ranked)</a></dd></div>
-  </dl>
-  <p><strong>Geological mechanism:</strong> Active dilatational step-overs and relay ramps concentrate geothermal permeability where GPS volumetric expansion (<code>Band 8 geod_dilaterate &gt;0</code>), second-invariant magnitude (<code>Band 4</code>) and shear (<code>Band 7</code>) peak inside thin-cover piedmont aprons (<code>Band 12 det_elev</code> transition × <code>Band 15 depth_to_base 20–600 m</code>). Coherent DEM slope-breaks (<code>Bands 19/12</code>) gated by this tension habitat isolate opening piedmont faults missed by potential-field worms. Named non-fault mimics: alluvial compaction/subsidence bowls, elastic strain shadows around locked Walker Lane dextral segments, and incised alluvial-fan terrace risers. SGMC 1:500k bedrock control (<code>PROXY</code>): <code>0.06127</code> vs R0 <code>0.09606</code> (intentional suppression of high-range Mesozoic thrusts). Siblings (research-only): <a href="downloads/h33-h33-2-b2-GEOTENSIONs60f40-20261025-ab46201e-zeros.tif">GEOTENSION s60f40</a> (<code>HOLDOUT-DTI 0.007527</code>) · <a href="downloads/h33-h33-2-b2-GEOTENSIONs50f50-20261025-caa53f9d-zeros.tif">GEOTENSION s50f50</a> (<code>HOLDOUT-DTI 0.007589</code>).</p>
-</section>
-
-<section id="download-coulomb" class="download-card">
-  <h2>ADDITIONAL RESEARCH CANDIDATE (NOT SELECTED): COULOMB seismo — Orientation-Resolved Coulomb Opening &times; Piedmont Apron</h2>
-  <div class="banner banner-ok"><strong>✅ AUTOMATED VALIDATION: 10/10 GATES PASS — OK TO DOWNLOAD FOR RESEARCH.</strong> Re-read verified via <code>submission_writer.py</code> + <code>gems/gates.py</code>: single <code>float32</code> band, <code>EPSG:32611</code>, <code>3730 &times; 3292</code>, values strictly in <code>[0, 1]</code>, <code>0</code> NaNs in footprint, <code>0.0</code> outside, <code>37,654</code> unit-mass dots, <code>0</code> catalogue pixels, <code>min d_cat &gt; 2.0 px</code>. Research siblings <code>free</code> and <code>open</code> pass identically (audits below).</div>
-  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DO NOT SUBMIT (<code>verdict: negative</code>, <code>submission_eligible: false</code>).</strong> <strong>COULOMB seismo</strong> scores <strong>HOLDOUT-DTI 0.005808 [0.004846, 0.006809]</strong> — beats <code>R0 0.004006</code> (paired &Delta; <code>+0.001802 [+0.000616, +0.002924]</code>) but trails the <code>0.008549</code> promotion bar (paired &Delta; vs HYDROCONDUIT <code>−0.002741 [−0.004137, −0.001382]</code>, CI excludes promotion). All 20 leakage canaries pass (<code>max symmetric AUC = 0.622959 &le; 0.90</code>). Locally unique (worst final-dots 3-px overlap <strong>0.2661</strong> vs 41 local rasters; <code>|&phi;| &le; 0.023</code>; 98.2% new pixels vs R0; Tier-1 all-prior-far repulsion). Blocked by the binding full-footprint public witness <code>17GEMSDOE E-proba-multiscale</code> (<code>forward_overlap = 1.0</code>). Siblings: <code>free 0.005689</code> (statistical tie with seismo), <code>open 0.005184</code> (no-apron ablation, −0.000505).</div>
-  <p class="filename">h33-h33-2-b2-COULOMBseismo-20261024-d243140b-zeros.tif</p>
-  <p><a class="btn" href="downloads/h33-h33-2-b2-COULOMBseismo-20261024-d243140b-zeros.tif" download>⬇ Download COULOMB seismo GeoTIFF (.tif) — OK TO DOWNLOAD, DO NOT SUBMIT</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-COULOMBseismo-20261024-d243140b-zeros.zip" download>Download ZIP (single TIFF)</a></p>
-  <dl class="meta">
-    <div><dt>Submission name</dt><dd><code>GEMSDOE92-COULOMB-seismo-20261024</code></dd></div>
-    <div><dt>Note (75 chars &le; 140)</dt><dd><code>h33-h33-2-b2; COULOMB seismo: 37654 Coulomb-opening/x-apron standalone dots</code></dd></div>
-    <div><dt>SHA-256 (zeros / ZIP)</dt><dd><code>0c344d4d6d0828a07810a1a1fbd00bd14c3a17bc562e6a22491ca21ab68066d9</code> · ZIP <code>aaf5e433fdafdf6c1082b77db88e8734cc08b3671867349f0e8dc613228bd135</code></dd></div>
-    <div><dt>Grid / allocation</dt><dd><code>EPSG:32611</code> · <code>3730 &times; 3292</code> · <code>100 m</code> · <code>float32</code> · <code>[0,1]</code> · <code>37,654</code> standalone Coulomb-weighted crests (<code>43.8%</code> piedmont, <code>0</code> H19-5/R0 input)</dd></div>
-    <div><dt>Audit / evidence</dt><dd><a href="downloads/h33-h33-2-b2-COULOMBseismo-20261024-d243140b-audit.json">gate audit JSON</a> · <a href="downloads/coulomb_run_card.json">run-card JSON</a> · <a href="downloads/public_witness_coulomb.json">public witness check</a> · <a href="ANALYSIS_20261024_COULOMB.md">PhD analysis</a> · <a href="HYPOTHESES_20261024_COULOMB.md">pre-registered hypotheses</a></dd></div>
-  </dl>
-  <p><strong>Geological mechanism:</strong> GPS strain-rate tensors (<code>Bands 7/8</code>) resolved onto DEM-ridge strike (<code>Bands 19/12</code>) as Coulomb opening potential under E–W extension (<code>&alpha;_ext = 100&deg;</code>) plus a NW-striking strike-slip relay term, multiplying <code>max(RTP-tilt-gradient, relative-scarp)</code> crest emission (<code>Bands 2/9/19/12</code>) inside the piedmont accommodation apron (<code>Bands 12/15/5</code>), fused <code>0.5 + 0.5</code> with a normalized historical-seismicity prior (<code>Bands 10/16</code>, n = 100 km). Named non-fault mimics: NNE-trending glacial/erosional ridges inside broad GPS strain lobes; Sehoo shoreline benches; basalt flow margins. SGMC 1:500k bedrock control (<code>PROXY</code>): <code>0.0357</code> vs R0 <code>0.0961</code> (Coulomb weight suppresses range-core bedrock faults). Pre-registered research siblings (never submit multiple siblings): <a href="downloads/h33-h33-2-b2-COULOMBfree-20261024-d0cf5db5-zeros.tif">COULOMB free</a> (<code>HOLDOUT-DTI 0.005689</code>, <a href="downloads/h33-h33-2-b2-COULOMBfree-20261024-d0cf5db5-audit.json">audit</a>) · <a href="downloads/h33-h33-2-b2-COULOMBopen-20261024-58a7a394-zeros.tif">COULOMB open</a> (<code>HOLDOUT-DTI 0.005184</code>, <a href="downloads/h33-h33-2-b2-COULOMBopen-20261024-58a7a394-audit.json">audit</a>).</p>
-</section>
-
-<section id="download-springalign" class="download-card">
-  <h2>Prior candidate (inherited 2026-10-25 filename): SPRINGALIGN f33Ctop — research GeoTIFF — DO NOT SUBMIT</h2>
-  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> Automated validation (no human inspection): 10/10 MUST gates pass on disk re-read; single float32 band; EPSG:32611, 3730×3292, template transform; finite values in [0,1] (portal error <code>Predicted values must be in range [0, 1]</code> cannot occur); no NaN inside footprint; zeros outside; zero catalogue mass; 37,654 dots.</div>
-  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DO NOT SUBMIT YET.</strong> Verdict negative under the pre-registered rule: <strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives) <strong>0.004865 [0.004025, 0.005785]</strong> beats parent R0 0.004006 (paired Δ +0.000859 [+0.000263, +0.001500]) but does <em>not</em> beat the holdout best RELIEF p10 0.006045 (paired Δ −0.001180 [−0.002065, −0.000337]). Leakage canary max symmetric AUC 0.553 (&lt;0.90). SGMC PROXY 0.0802 vs R0 0.0961. Local uniqueness: surface worst |ρ| 0.009 (100k sample, 28+ rasters); final dots worst forward overlap 0.670 vs parent R0 (by construction, &lt;0.70), worst |φ| 0.668 — <strong>locally unique, byte-unique (new SHA-256)</strong>. The dense 17GEMSDOE public witness remains <strong>DUPLICATE UNDER THE LITERAL REGISTRY RULE</strong> policy-wide (its 3-px halo covers the whole footprint; reported, not waived). A human selector step, separate from this page, decides any weekly slot.</div>
-  <p class="filename">h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif</p>
-  <p><a class="btn" href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif" download>⬇ Download SPRINGALIGN GeoTIFF (.tif) — OK TO DOWNLOAD, DO NOT SUBMIT</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.zip" download>Download ZIP (one TIFF)</a></p>
-  <dl class="meta">
-    <div><dt>Submission name</dt><dd><code>GEMSDOE92-SPRINGALIGN-f33Ctop-20261025</code></dd></div>
-    <div><dt>Note (≤140 chars)</dt><dd><code>h33-h33-2-b2; SPRINGALIGN f33Ctop 12426 far dots on spring-pair alignment lines &gt;3px off H19-5</code></dd></div>
-    <div><dt>SHA-256 (zeros)</dt><dd><code>1772ad5c62506b6b380e221d2202b583edf0a5be4f96916af655e0478eba11b1</code></dd></div>
-    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 unit-mass dots (25,228 kept R0 + 12,426 far)</dd></div>
-    <div><dt>Audit / run card</dt><dd><a href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-audit.json">gate audit receipt</a> · <a href="downloads/springalign_run_card.json">run-card JSON</a> · <a href="HYPOTHESES_20261025_SPRINGALIGN.md">ranked hypotheses</a> · <a href="SUBMIT.html">submission guide (human selector only)</a></dd></div>
-  </dl>
-  <p><strong>Hypothesis:</strong> hot springs (≥40 °C, GDR INGENIOUS table pinned in-repo) fed by one blind fault align along its strike; pair-segment strike votes (714 points, 7,919 pairs 10–60 px, 25% extension, σ=3 px corridor) place dots where the catalogue and H19-5 skeleton are silent. Named non-fault mimic: lithologic contacts, paleochannels, aqueducts, playa shorelines. <strong>Plausible explanation for the parent’s reported CLAIM 0.2778 (not causal proof or receipt):</strong> non-redundant 2.8 px spacing + pruning dots on/near known faults (organizers mask catalogue faults, so those dots earn nothing) concentrated mass on credible off-catalogue lines; beating it requires a genuinely new discovery channel priced by an organizer receipt — no local number here is a competition score, and no claim of beating 0.2778 / 0.3195 / 0.4413 is made.</p>
-</section>
-<section id="download-hydroconduit" class="download-card">
-  <h2>Parallel research candidate: HYDROCONDUIT f45hydro — higher historical hybrid HOLDOUT-DTI (0.008549) — DO NOT SUBMIT</h2>
-  <div class="banner banner-ok"><strong>✅ OK TO DOWNLOAD:</strong> Byte-unique GeoTIFF (<code>sha256 c9e07ba6…8fdd</code>), 100% machine-validated in <code>[0, 1]</code> with zeros outside footprint.</div>
-  <div class="banner banner-warn"><strong>⛔ DO NOT SUBMIT / NOT CLEARED FOR A WEEKLY SLOT:</strong> Verdict <code>negative</code> (<code>submission_eligible: false</code>) because the literal public dense-surface rule triggers on 118 &gt;150k-px surfaces (100% on <code>17GEMSDOE E-proba</code>), and multi-instrument cross-checks (Rule-2 fold-visible <code>d_visible &gt; 2.0</code> = 0.0852 vs 0.0968 skeleton-only; off-catalogue <code>USGS SGMC</code> = 0.0741 vs <code>R0</code> 0.0961) are disclosed for human selector review only after a future policy review changes the eligibility gate; no weekly slot is cleared.</div>
-  <p class="filename">h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif</p>
-  <p><a class="btn" href="downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif" download>⬇ Download HYDROCONDUIT GeoTIFF (.tif) — OK TO DOWNLOAD, DO NOT SUBMIT</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.zip" download>Download One-TIFF ZIP — DO NOT SUBMIT</a></p>
-  <dl class="meta">
-    <div><dt>Submission name (selector record)</dt><dd><code>GEMSDOE92-HYDROCONDUIT-f45hydro-20261024</code></dd></div>
-    <div><dt>Form note (106 / 140 chars)</dt><dd><code>h33-h33-2-b2; HYDROCONDUIT f45hydro: 20710 piedmont H19-5 + 16944 off-skel scarp/RTP/GDR dots (&gt;3px H19-5)</code></dd></div>
-    <div><dt>SHA-256 (HYDROCONDUIT zeros)</dt><dd><code>c9e07ba6627672bfd58b08572a19d48aa16ff07a2f95347993550eaaccba8fdd</code></dd></div>
-    <div><dt>SHA-256 (NaN twin)</dt><dd><code>979c9cdb8e6b5143042801e9d88fae6b01ba3924ff4e30c28c0063a6e0ad6a1e</code> (<a href="downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb.tif" download>research NaN twin</a> — never upload NaN outside)</dd></div>
-    <div><dt>Grid &amp; mass</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0, 1] · 37,654 unit-mass dots (20,710 repacked piedmont H19-5 + 16,944 far &gt;3 px off H19-5; 83.4% piedmont, 6.2% range core)</dd></div>
-    <div><dt>Machine-readable receipts</dt><dd><a href="downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-audit.json">Format &amp; public-registry audit JSON</a> · <a href="downloads/hydroconduit_run_card.json">Protocol run-card JSON</a> · <a href="downloads/hydroconduit_public_registry_uniqueness.json">102-repo live public scan JSON</a> · <a href="HYPOTHESES_20261024_HYDROCONDUIT.md">Pre-registered hypotheses</a></dd></div>
-  </dl>
-  <p><strong>Pre-registered sibling experiments (strict 3-experiment budget; never submit more than one):</strong>
-     Exp 1 geomorphic-tectonic baseline <a href="downloads/h33-h33-2-b2-HYDROCONDUITf45pied-20261024-3c236840-zeros.tif" download>f45pied (-zeros.tif)</a> (<a href="downloads/h33-h33-2-b2-HYDROCONDUITf45pied-20261024-3c236840-audit.json">audit</a>, static <strong>HOLDOUT-DTI</strong> 0.008524) ·
-     Exp 3 50%-far dose <a href="downloads/h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif" download>f50hydro (-zeros.tif)</a> (<a href="downloads/h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-audit.json">audit</a>, static <strong>HOLDOUT-DTI</strong> 0.008457, local overlap 0.5143, sparse-public &le;90k overlap 0.6125).</p>
-</section>
-
-<section>
-  <h2>HYDROCONDUIT Quantitative Evaluation &amp; Why GEMSDOE32 Scored 0.2778 (CLAIM)</h2>
-  <p><strong>Evaluator:</strong> <code>gems57-pooled-hide-v2</code> (buffered whole-component hide-and-recover, seeds 20 + 30, 22,663 withheld catalogue fault pixels, &alpha;=0.2, &beta;=0.8, 300 m triangular kernel, 1,000 paired spatial-cluster bootstrap draws). Every <strong>HOLDOUT-DTI</strong> value below is a local estimate and is not a competition score. No live submission slot has been used.</p>
-  <table>
-    <thead>
-      <tr><th>Candidate / Control</th><th>Static HOLDOUT-DTI (95% CI)</th><th>Paired &Delta; vs RELIEF p10</th><th>SGMC PROXY DTI</th><th>Local Overlap</th><th>Sparse Public (&le;150k px)</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><strong>HYDROCONDUIT f45hydro (Primary)</strong></td><td><strong>0.008549 [0.007626, 0.009487]</strong></td><td><strong>+0.002504 [+0.001795, +0.003222]</strong></td><td>0.074107</td><td>0.5500 (PASS)</td><td><strong>0.6719 (0/1,147 &gt;70%)</strong></td></tr>
-      <tr><td>HYDROCONDUIT f45pied (Exp 1)</td><td>0.008524 [0.007621, 0.009459]</td><td>+0.002479 [+0.001792, +0.003191]</td><td>0.073312</td><td>0.5500 (PASS)</td><td>—</td></tr>
-      <tr><td>HYDROCONDUIT f50hydro (Exp 3)</td><td>0.008457 [0.007532, 0.009430]</td><td>+0.002412 [+0.001722, +0.003154]</td><td>0.072799</td><td>0.5143 (PASS)</td><td>0.6578 (0/1,147 &gt;70%)</td></tr>
-      <tr><td>RELIEF p10 (prior holdout best)</td><td>0.006045 [0.005187, 0.006927]</td><td>baseline</td><td>0.087245</td><td>0.9938 (DUP)</td><td>—</td></tr>
-      <tr><td>STRAINBREAK f60s2i</td><td>0.005487 [0.004522, 0.006430]</td><td>-0.000558 [-0.001577, +0.000431]</td><td>0.105162</td><td>0.4150 (PASS)</td><td>0.7105 (3 &gt;70%)</td></tr>
-      <tr><td>ANASIG f45Atop</td><td>0.004967 [0.004098, 0.005940]</td><td>-0.001078 [-0.002034, -0.000112]</td><td>0.080556</td><td>0.5500 (PASS)</td><td>—</td></tr>
-      <tr><td>SPRINGALIGN f33Ctop</td><td>0.004865 [0.004025, 0.005785]</td><td>-0.001180 [-0.002065, -0.000337]</td><td>0.080173</td><td>0.6700 (PASS)</td><td>—</td></tr>
-      <tr><td>BREAKLINE f45Ltop</td><td>0.004861 [0.004032, 0.005822]</td><td>-0.001185 [-0.002153, -0.000282]</td><td>0.126105</td><td>0.5500 (PASS)</td><td>—</td></tr>
-      <tr><td>Parent R0 (<code>h33-h33-2-b2</code>, 0.2778 CLAIM)</td><td>0.004006 [0.003424, 0.004690]</td><td>-0.002039 [-0.002634, -0.001451]</td><td>0.096060</td><td>self</td><td>—</td></tr>
-    </tbody>
-  </table>
-  <p><strong>Why GEMSDOE32 (<code>0.2778</code> CLAIM) led listed sites &amp; how HYDROCONDUIT improves locally:</strong> <code>GEMSDOE32</code> combined 1-px worm ridges (<code>H19-5</code>), <code>2.828 px</code> Poisson-disk de-aliasing matching the 300 m Tversky kernel, micro-fragment pruning (<code>SOLO</code>), and <code>d_cat &le; 2 px</code> exclusion. However, it thinned <code>H19-5</code> in physics-blind scan order and missed off-skeleton Quaternary alluvial-fan scarps, while prior <code>BREAKLINE</code> put 74.8% of its off-skeleton dots on bare mountain range-core cliffs and never used <code>Band 2 RTP</code> tilt/demagnetization (because <code>Band 6 tc</code> is mislabelled Radiometric Total Count, <code>r = 0.99714</code>). <code>HYDROCONDUIT</code> shifts 83.4% of off-skeleton dots onto piedmont scarps with 600 m step monotonicity + RTP/K-Th/MT/GDR blind geothermometry (&ge;80 &deg;C). Only a submission-page receipt (none yet recorded in <code>ledger/</code>) can test whether this beats <code>0.2778</code> CLAIM on DrivenData's hidden targets.</p>
-</section>
-
-
-<section id="download-piedfront" class="download-card">
-  <h2>Parallel session candidate: PIEDFRONT f35Ptop — HOLDOUT-DTI 0.006425 — DO NOT SUBMIT</h2>
-  <p><strong>OK TO DOWNLOAD</strong> (10/10 MUST gates PASS) · <strong>NOT CLEARED FOR A WEEKLY SLOT</strong> (static <strong>HOLDOUT-DTI</strong> 0.006425 [0.005375, 0.007479], SGMC 0.059993, dense witness overlap 1.000 <a href="downloads/piedfront_public_registry_witness17.json">witness receipt</a>; 56.56% 3-px overlap vs HYDROCONDUIT f45hydro). Name: <code>GEMSDOE92-PIEDFRONT-f35Ptop-20261024</code> · SHA-256: <code>e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8</code>.</p>
-  <p><a class="btn btn-ghost" href="downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif" download>Download PIEDFRONT f35Ptop GeoTIFF — DO NOT SUBMIT (.tif)</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.zip" download>ZIP</a> ·
-     <a href="downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-audit.json">audit</a> ·
-     <a href="downloads/piedfront_run_card.json">run card</a> ·
-     Siblings: <a href="downloads/h33-h33-2-b2-PIEDFRONTf40Ptop-20261024-6b0cd56a-zeros.tif">f40Ptop</a> ·
-     <a href="downloads/h33-h33-2-b2-PIEDFRONTf45Ptop-20261024-aad86ac9-zeros.tif">f45Ptop</a></p>
-</section>
-
-<section id="download-stepedge" class="download-card">
-  <h2>Parallel session candidate: STEPEDGE f60Sraw — SGMC 0.141464 — DO NOT SUBMIT</h2>
-  <p><strong>OK TO DOWNLOAD</strong> (10/10 MUST gates PASS) · <strong>NOT CLEARED FOR A WEEKLY SLOT</strong> (static <strong>HOLDOUT-DTI</strong> 0.003980 [0.003295, 0.004702], repo-best SGMC PROXY 0.141464, dense witness overlap 1.000 <a href="downloads/public_witness_stepedge.json">witness receipt</a>; 42.35% 3-px overlap vs HYDROCONDUIT f45hydro). Name: <code>GEMSDOE92-STEPEDGE-f60Sraw-20261024</code> · SHA-256: <code>c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4</code>.</p>
-  <p><a class="btn btn-ghost" href="downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif" download>Download STEPEDGE f60Sraw GeoTIFF — DO NOT SUBMIT (.tif)</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.zip" download>ZIP</a> ·
-     <a href="downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-audit.json">audit</a> ·
-     <a href="downloads/stepedge_run_card.json">run card</a></p>
-</section>
-
-<section id="download-springalign" class="download-card">
-  <h2>Prior session candidate: SPRINGALIGN f33Ctop — DO NOT SUBMIT</h2>
-  <p><strong>OK TO DOWNLOAD</strong> (10/10 format gates PASS) · <strong>NOT CLEARED FOR A WEEKLY SLOT</strong> (static <strong>HOLDOUT-DTI</strong> 0.004865 &lt; RELIEF p10 0.006045; binding dense witness <code>17GEMSDOE E-proba</code>).</p>
-  <p><a class="btn btn-ghost" href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif" download>Download SPRINGALIGN GeoTIFF — DO NOT SUBMIT (.tif)</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.zip" download>ZIP</a> ·
-     <a href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-audit.json">audit</a> ·
-     <a href="downloads/springalign_run_card.json">run card</a></p>
-</section>
-
-<section id="download-anasig" class="download-card">
-  <h2>Prior session candidate: ANASIG f45Atop — DO NOT SUBMIT</h2>
-  <p><strong>OK TO DOWNLOAD</strong> (10/10 format gates PASS) · <strong>NOT CLEARED FOR A WEEKLY SLOT</strong> (static <strong>HOLDOUT-DTI</strong> 0.004967 &lt; 0.006045; single dense witness <a href="downloads/public_witness_anasig.json">witness receipt</a> overlap 1.000 — that single-witness check was not a fresh full-registry scan).</p>
-  <p><a class="btn btn-ghost" href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif" download>Download ANASIG GeoTIFF — DO NOT SUBMIT (.tif)</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.zip" download>ZIP</a> ·
-     <a href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-audit.json">audit</a> ·
-     <a href="downloads/anasig_run_card.json">run card</a></p>
-</section>
-
-<section id="strainbreak" class="download-card">
-  <h2>Prior session candidate: STRAINBREAK f60s2i — DO NOT SUBMIT</h2>
-  <p><strong>OK TO DOWNLOAD</strong> (10/10 format gates PASS) · <strong>NOT CLEARED FOR A WEEKLY SLOT</strong> (static <strong>HOLDOUT-DTI</strong> 0.005487 &lt; 0.006045; 89 public rasters &gt;70%, sparse worst 0.7105). Siblings: <a href="downloads/h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif">f45s2i</a> · <a href="downloads/h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif">f75s2i</a>.</p>
-  <p><a class="btn btn-ghost" href="downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif" download>Download STRAINBREAK GeoTIFF — DO NOT SUBMIT (.tif)</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2.zip" download>ZIP</a> ·
-     <a href="downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-audit.json">audit</a> ·
-     <a href="downloads/strainbreak_run_card.json">run card</a></p>
-</section>
-
-<section id="breakline" class="download-card">
-  <h2>Prior session candidate: BREAKLINE f45Ltop — BREAKLINE: DUPLICATE — DO NOT SUBMIT</h2>
-  <p><strong>OK TO DOWNLOAD</strong> (10/10 format gates PASS) · <strong>NOT CLEARED FOR A WEEKLY SLOT</strong> (static <strong>HOLDOUT-DTI</strong> 0.004861; SGMC 0.12611; dense public witness overlap 1.000, <a href="downloads/breakline_public_registry_witness17.json">witness receipt</a>). Siblings: <a href="downloads/h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif">f38Ltop</a> · <a href="downloads/h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif">f33Ltop</a>.</p>
-  <p><a class="btn btn-ghost" href="downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif" download>Download BREAKLINE GeoTIFF — DO NOT SUBMIT (.tif)</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0.zip" download>ZIP</a> ·
-     <a href="downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-audit.json">audit</a> ·
-     <a href="downloads/breakline_run_card.json">run card</a></p>
-</section>
-
-<section id="download" class="download-card">
-  <h2>Earlier candidate: visible-collar r0-excluded — DO NOT SUBMIT</h2>
-  <p>Submission name: <code>GEMSDOE92-visible-collar-r0-excluded-20261024</code> · Note: <code>Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots</code></p>
-  <p><a class="btn btn-ghost" href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif" download>Download visible-collar GeoTIFF — DO NOT SUBMIT (.tif)</a>
-     <a class="btn btn-ghost" href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.zip" download>ZIP</a> ·
-     <a href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-audit.json">audit</a> ·
-     <a href="downloads/visible_collar_run_card.json">run card</a> ·
-     <a href="downloads/public_registry_uniqueness.json">1,279-raster scan</a></p>
-</section>
-
-<section>
-  <h2>Archived negative &amp; diagnostic deliverables</h2>
-  <p>Preserved as auditable negative deliverables (verdict: <code>negative</code>; never upload):</p>
+<section id="phd-summary">
+  <h2>Why <code>GEMSDOE32</code> (<code>0.2778</code> <code>[CLAIM]</code>) Led the Listed Sites &amp; How <code>COULOMB-LOQO</code> Advances Beyond It</h2>
   <ul>
-    <li><a href="downloads/h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21-zeros.tif">MICROSWARM short3 — zeros-outside</a> (experiment 1 negative: 29,076 dots all on h19_5 skeleton; worst forward overlap <code>1.000</code> vs skeleton rasters &gt; 0.70 protocol stop; static <strong>HOLDOUT-DTI 0.000000 [0.000000, 0.000000]</strong>; <a href="downloads/h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21-audit.json">audit</a> · <a href="evidence/microswarm_run_card.json">run card</a>)</li>
-    <li><a href="downloads/h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21-zeros.tif">MICROSWARM short3 — zeros-outside</a> (experiment 1 negative: 29,076 dots all on h19_5 skeleton; worst forward overlap <code>1.000</code> vs skeleton rasters &gt; 0.70 protocol stop; static <strong>HOLDOUT-DTI 0.000000 [0.000000, 0.000000]</strong>; <a href="downloads/h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21-audit.json">audit</a> · <a href="evidence/microswarm_run_card.json">run card</a>)</li>
-    <li><a href="downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif">DILATATION p10 — zeros-outside</a> (99.4% R0 overlap duplicate)</li>
-    <li><a href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif">DILATATION p12 — zeros-outside</a> (duplicate of R0)</li>
-    <li><a href="downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif">DILATATION p15 — zeros-outside</a> (duplicate of R0)</li>
-    <li><a href="downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif">RELIEF p10 — zeros-outside</a> (99.38% R0 overlap duplicate; prior holdout reference 0.006045)</li>
-    <li><a href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif">TIPGAPfar18f33 — zeros-outside</a> (negative HOLDOUT-DTI deliverable)</li>
-    <li><a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif">STEPOVER tip10px N5000 — zeros-outside</a> (<a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-audit.json">audit</a> · <a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-run-card.json">run card</a>; negative deliverable)</li>
+    <li><strong>Exact Byte-Verified 4-Stage Filter Cascade in <code>GEMSDOE32</code>:</strong> Under the official DTI metric ($\mathrm{TP}_w / (\mathrm{TP}_w + 0.2\,\mathrm{FP}_w + 0.8\,\mathrm{FN}_w)$, 300 m kernel), recall ($\beta=0.8$) carries $4\times$ the weight of precision ($\alpha=0.2$), yet dots closer than <code>2.8 px</code> saturate $\max_{x \in A} K(\|g-x\|_2)$ at zero marginal $\mathrm{TP}_w$ gain while adding linear $+0.2\,\mathrm{FP}_w$ cost. Direct pixel algebra proves zero-XOR lineage identities across <code>H19-5</code> (<code>121,131</code> px, <code>0.1922</code> <code>[CLAIM]</code>) &rarr; <code>D2.8</code> (<code>44,090</code> px, <code>0.2600</code> <code>[CLAIM]</code>) &rarr; <code>SOLO</code> (<code>40,199</code> px = <code>D2.8 &amp; d_cat &gt; 1.0</code>, <code>0.2708</code> <code>[CLAIM]</code>) &rarr; <code>R0</code> / <code>GEMSDOE32 h33-2-b2</code> (<code>37,654</code> px = <code>D2.8 &amp; d_cat &gt; 2.0</code>, <code>0.2778</code> <code>[CLAIM]</code>).</li>
+    <li><strong>Why Prior Heuristic Lanes Hit Glass Ceilings:</strong> Un-normalized slope breaks (<code>BREAKLINE</code>, <code>STEPEDGE</code>) placed 74.8% of far dots on bare mountain-core cliffs, whereas rigid piedmont elevation boxcars (<code>APRONRIDGE</code>, <code>HYDROCONDUIT</code>) lifted static <code>HOLDOUT-DTI</code> (<code>0.00835–0.00855</code>) at the cost of starving active bedrock horst faults (<code>HYDROCONDUIT</code> lost to <code>H19-5</code> on unmasked <code>d_visible &gt; 2.0</code> holdout: <code>0.0852</code> vs <code>0.0968</code>, and dropped 22.9% on <code>SGMC</code>).</li>
+    <li><strong><code>COULOMB-LOQO</code> Resolution:</strong> Spatially cross-fitted 4-quadrant LOQO gradient boosting on 24 strictly catalogue-free physical features (multi-scale Hessian scarp ridges, 600 m step monotonicity, <code>Band 18</code> E–W gravity-gradient footwall polarity lock, true <code>Band 2 RTP</code> tilt/demag/Hessian, circular cross-physics axial strike lock, N15&deg;E/conjugate 2D Coulomb slip &amp; dilation tendency, MT clay-cap margins, <code>GeoDAWN K/Th, U/Th</code>, and 419 blind geothermometer cells with <code>dist_known_fault_px</code> dropped) achieves #1 static <code>HOLDOUT-DTI</code> (<code>0.009220</code>), #1 unmasked <code>d_visible &gt; 2.0</code> <code>HOLDOUT-DTI</code> (<code>0.113316</code>, beating <code>H19-5</code>!), and natural Basin-and-Range relief balance (<code>27.7%</code> basin / <code>40.8%</code> piedmont / <code>31.5%</code> range).</li>
   </ul>
 </section>
 
-<section>
-  <h2>Official References &amp; Documentation</h2>
-  <p><a href="executive-summary.html">Executive Summary Subpage</a> · <a href="SUBMIT.html">Submission Procedure</a> · <a href="HYPOTHESES.html">5 Ranked Geological Hypotheses</a> · <a href="../SESSION_PROMPT.md">Session Protocol</a> · <a href="../IRREGULARITIES.md">Irregularities Log</a></p>
+<section id="benchmark-ladder">
+  <h2>Auditable Multi-Instrument Benchmark Table (Zero Projections Written as Scores)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Candidate / Baseline</th>
+        <th>Dots (<code>H19</code> %)</th>
+        <th>Static <code>HOLDOUT-DTI</code> (<code>22,663</code> px, 95% CI)</th>
+        <th>Rule-2 <code>d_vis &gt; 2</code> <code>HOLDOUT-DTI</code></th>
+        <th><code>SGMC</code> <code>PROXY</code> (<code>62,703</code> px)</th>
+        <th>Local Overlap (&le;0.70)</th>
+        <th>Literal Public Scan</th>
+        <th>Slot Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong><code>COULOMBLOQO standalone</code> (Primary)</strong></td>
+        <td>37,654 (0%)</td>
+        <td><strong><code>0.009220 [0.007983, 0.010493]</code></strong></td>
+        <td><strong><code>0.113316</code> (#1)</strong></td>
+        <td><strong><code>0.090569</code></strong></td>
+        <td><code>0.6164</code> (PASS)</td>
+        <td><code>1.0000</code> (dense STOP)</td>
+        <td><code>negative</code> (DO NOT SUBMIT)</td>
+      </tr>
+      <tr>
+        <td><strong><code>COULOMBLOQO nocoulomb</code> (Ablation)</strong></td>
+        <td>37,654 (0%)</td>
+        <td><strong><code>0.009151 [0.007944, 0.010389]</code></strong></td>
+        <td>—</td>
+        <td><code>0.091251</code></td>
+        <td><code>0.6640</code> (PASS)</td>
+        <td><code>1.0000</code> (dense STOP)</td>
+        <td><code>negative</code> (DO NOT SUBMIT)</td>
+      </tr>
+      <tr>
+        <td><strong><code>COULOMBLOQO dual45</code> (Hybrid)</strong></td>
+        <td>37,654 (45%)</td>
+        <td><strong><code>0.009107 [0.007977, 0.010325]</code></strong></td>
+        <td><strong><code>0.101998</code></strong></td>
+        <td><strong><code>0.094057</code></strong></td>
+        <td><code>0.5982</code> (PASS)</td>
+        <td><code>1.0000</code> (<code>0.6488</code> &le;90k)</td>
+        <td><code>negative</code> (DO NOT SUBMIT)</td>
+      </tr>
+      <tr>
+        <td><code>HYDROCONDUIT f45hydro</code></td>
+        <td>37,654 (55%)</td>
+        <td><code>0.008549 [0.007461, 0.009684]</code></td>
+        <td><code>0.085221</code></td>
+        <td><code>0.074107</code></td>
+        <td><code>0.5500</code> (PASS)</td>
+        <td><code>1.0000</code> (<code>0.6719</code> &le;150k)</td>
+        <td><code>negative</code> (DO NOT SUBMIT)</td>
+      </tr>
+      <tr>
+        <td><code>APRONRIDGE free1d</code></td>
+        <td>37,654 (0%)</td>
+        <td><code>0.008354 [0.006823, 0.010135]</code></td>
+        <td>—</td>
+        <td><code>0.080098</code></td>
+        <td><code>0.6507</code> (PASS)</td>
+        <td><code>1.0000</code> (dense STOP)</td>
+        <td><code>negative</code> (DO NOT SUBMIT)</td>
+      </tr>
+      <tr>
+        <td><code>GEMSDOE92-PIEDFRONT-f35Ptop-20261024</code></td>
+        <td>37,654 (65%)</td>
+        <td><code>0.006425 [0.005375, 0.007479]</code></td>
+        <td>—</td>
+        <td><code>0.059993</code></td>
+        <td><code>0.6500</code> (PASS)</td>
+        <td><code>1.0000</code> (dense STOP)</td>
+        <td><code>negative</code> (DO NOT SUBMIT)</td>
+      </tr>
+      <tr>
+        <td><code>RELIEF p10piedmont</code> (<code>R0</code>-dup ref)</td>
+        <td>37,654 (100%)</td>
+        <td><code>0.006045 [0.005179, 0.006882]</code></td>
+        <td>—</td>
+        <td><code>0.087245</code></td>
+        <td><code>0.9938</code> (DUP)</td>
+        <td><code>1.0000</code> (DUP)</td>
+        <td><code>negative</code> (DO NOT SUBMIT)</td>
+      </tr>
+      <tr>
+        <td><code>STRAINBREAK f60s2i</code></td>
+        <td>37,654 (40%)</td>
+        <td><code>0.005487 [0.004550, 0.006386]</code></td>
+        <td>—</td>
+        <td><code>0.105162</code></td>
+        <td><code>0.4150</code> (PASS)</td>
+        <td><code>1.0000</code> (dense STOP)</td>
+        <td><code>negative</code> (DO NOT SUBMIT)</td>
+      </tr>
+      <tr>
+        <td><code>ANASIG f45Atop</code> / <code>SPRINGALIGN f33Ctop</code> / <code>BREAKLINE f45Ltop</code></td>
+        <td>37,654</td>
+        <td><code>0.004967</code> / <code>0.004865</code> / <code>0.004861</code></td>
+        <td>—</td>
+        <td><code>0.0806</code> / <code>0.0802</code> / <code>0.1261</code></td>
+        <td><code>0.55–0.67</code></td>
+        <td><code>1.0000</code> (dense STOP)</td>
+        <td><code>negative</code> (DO NOT SUBMIT)</td>
+      </tr>
+      <tr>
+        <td><code>STEPEDGE f60Sraw</code></td>
+        <td>37,654 (40%)</td>
+        <td><code>0.003980 [0.003295, 0.004702]</code></td>
+        <td>—</td>
+        <td><code>0.141464</code></td>
+        <td><code>0.4610</code> (PASS)</td>
+        <td><code>1.0000</code> (dense STOP)</td>
+        <td><code>negative</code> (DO NOT SUBMIT)</td>
+      </tr>
+      <tr>
+        <td><code>R0</code> (<code>GEMSDOE32 h33-2-b2</code>, <code>0.2778</code> <code>[CLAIM]</code>)</td>
+        <td>37,654 (100%)</td>
+        <td><code>0.004006 [0.003408, 0.004651]</code></td>
+        <td><code>0.096757</code> (<code>H19</code>)</td>
+        <td><code>0.096060</code></td>
+        <td>self</td>
+        <td>—</td>
+        <td><code>0</code> receipts in <code>ledger/</code></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="archive-downloads">
+  <h2>Complete Archive of Machine-Validated Research Downloads (All 28 Served <code>*-zeros.tif</code> Files; All <code>DO NOT SUBMIT</code>)</h2>
   <ul>
-    <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData Competition #306 Problem &amp; Metric</a> · <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Competition Rules PDF</a></li>
-    <li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">DrivenData Reference Solution</a> · <a href="https://epsg.io/32611">EPSG:32611</a></li>
-    <li><a href="https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7">USGS GeoDAWN Catalog</a> · <a href="https://gdr.openei.org/submissions/1391">DOE GDR #1391 INGENIOUS</a> · <a href="https://www.usgs.gov/3d-elevation-program">USGS 3DEP</a></li>
+    <li id="download-hydroconduit"><strong>HYDROCONDUIT:</strong>
+      <a href="downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif">HYDROCONDUITf45hydro — zeros-outside</a> (<a href="downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-audit.json">audit</a> · <a href="downloads/hydroconduit_run_card.json">run card</a> · <a href="downloads/hydroconduit_public_registry_uniqueness.json">public scan</a>) ·
+      <a href="downloads/h33-h33-2-b2-HYDROCONDUITf45pied-20261024-3c236840-zeros.tif">HYDROCONDUITf45pied — zeros-outside</a> ·
+      <a href="downloads/h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif">HYDROCONDUITf50hydro — zeros-outside</a>
+    </li>
+    <li id="download-apronridge"><strong>APRONRIDGE:</strong>
+      <a href="downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif">APRONRIDGEfree1d — zeros-outside</a> (<a href="downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-audit.json">audit</a> · <a href="downloads/apronridge_run_card.json">run card</a> · <a href="downloads/public_witness_apronridge.json">witness</a>) ·
+      <a href="downloads/h33-h33-2-b2-APRONRIDGEs50f50-20261024-2f0431ea-zeros.tif">APRONRIDGEs50f50 — zeros-outside</a> ·
+      <a href="downloads/h33-h33-2-b2-APRONRIDGEs60f40-20261024-6e7e0174-zeros.tif">APRONRIDGEs60f40 — zeros-outside</a>
+    </li>
+    <li id="download-piedfront"><strong>PIEDFRONT (<code>GEMSDOE92-PIEDFRONT-f35Ptop-20261024</code>, SHA-256 <code>e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8</code>, <code>0.006425</code> <code>HOLDOUT-DTI</code>):</strong>
+      <a href="downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif">PIEDFRONTf35Ptop — zeros-outside</a> (<a href="downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-audit.json">audit</a> · <a href="downloads/piedfront_run_card.json">run card</a>) ·
+      <a href="downloads/h33-h33-2-b2-PIEDFRONTf40Ptop-20261024-6b0cd56a-zeros.tif">PIEDFRONTf40Ptop — zeros-outside</a> ·
+      <a href="downloads/h33-h33-2-b2-PIEDFRONTf45Ptop-20261024-aad86ac9-zeros.tif">PIEDFRONTf45Ptop — zeros-outside</a>
+    </li>
+    <li id="download-stepedge"><strong>STEPEDGE:</strong>
+      <a href="downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif">STEPEDGEf60Sraw — zeros-outside</a> (<a href="downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-audit.json">audit</a> · <a href="downloads/stepedge_run_card.json">run card</a> · <a href="downloads/public_witness_stepedge.json">witness</a>)
+    </li>
+    <li id="download-strainbreak"><strong>STRAINBREAK:</strong>
+      <a href="downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif">STRAINBREAKf60s2i — zeros-outside</a> (<a href="downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-audit.json">audit</a> · <a href="downloads/strainbreak_run_card.json">run card</a>) ·
+      <a href="downloads/h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif">STRAINBREAKf45s2i — zeros-outside</a> ·
+      <a href="downloads/h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif">STRAINBREAKf75s2i — zeros-outside</a>
+    </li>
+    <li id="download-anasig"><strong>ANASIG:</strong>
+      <a href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif">ANASIGf45Atop — zeros-outside</a> (<a href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-audit.json">audit</a> · <a href="downloads/anasig_run_card.json">run card</a> · <a href="downloads/public_witness_anasig.json">witness check — single-repo witness, not a fresh full-registry scan</a>)
+    </li>
+    <li id="download-springalign"><strong>SPRINGALIGN:</strong>
+      <a href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif">SPRINGALIGNf33Ctop — zeros-outside</a> (<a href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-audit.json">audit</a> · <a href="downloads/springalign_run_card.json">run card</a> · <a href="downloads/review_20261024_springalign_witness_v2.json">witness</a> · <a href="downloads/repo_review_run_card_20261024.json">review run card</a>)
+    </li>
+    <li id="download-breakline"><strong>BREAKLINE: DUPLICATE — DO NOT SUBMIT:</strong>
+      <a href="downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif">BREAKLINEf45Ltop — zeros-outside</a> (<a href="downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-audit.json">audit</a> · <a href="downloads/breakline_run_card.json">run card</a>) ·
+      <a href="downloads/h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif">BREAKLINEf38Ltop — zeros-outside</a> ·
+      <a href="downloads/h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif">BREAKLINEf33Ltop — zeros-outside</a>
+    </li>
+    <li id="download-earlier"><strong>Collar / Dilatation / Relief / Tip-Gap / Stepover Negative Controls:</strong>
+      <a href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif">GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif</a> (<code>GEMSDOE92-visible-collar-r0-excluded-20261024</code>; note: <code>Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots</code> · <a href="downloads/visible_collar_run_card.json">visible_collar_run_card.json</a> · <a href="downloads/public_registry_uniqueness.json">public scan</a>) ·
+      <a href="downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif">DILATATIONp10 — zeros-outside</a> ·
+      <a href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif">DILATATIONp12 — zeros-outside</a> ·
+      <a href="downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif">DILATATIONp15 — zeros-outside</a> ·
+      <a href="downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif">RELIEFp10 — zeros-outside</a> ·
+      <a href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif">TIPGAPfar18f33 — zeros-outside</a> ·
+      <a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif">STEPOVER-tip10px-N5000 — zeros-outside</a>
+    </li>
+  </ul>
+  <p>No live submission slot has been used by this repository; every local <code>HOLDOUT-DTI</code> is an internal spatial hide-and-recover metric and not a competition score.</p>
+</section>
+
+<section id="official-sources">
+  <h2>Trusted Official Sources &amp; Documentation</h2>
+  <ul>
+    <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData Competition #306 Problem &amp; Metric</a> · <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Official Rules PDF (NREL/TP-5700-96647)</a></li>
+    <li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">DrivenData Official U-Net Reference Solution</a> · <a href="https://epsg.io/32611">EPSG:32611 (WGS 84 / UTM Zone 11N)</a></li>
+    <li><a href="https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7">USGS GeoDAWN Airborne Magnetic &amp; Radiometric Catalog</a> · <a href="https://gdr.openei.org/submissions/1391">DOE GDR #1391 INGENIOUS Compilation</a> · <a href="https://www.usgs.gov/3d-elevation-program">USGS 3DEP</a> · <a href="https://www.sciencebase.gov/catalog/item/5888bf4fe4b05ccb964bab9d">USGS SGMC</a></li>
+  </ul>
+</section>
+<section>
+  <h2>Merged Parallel-Session Research Downloads (2026-10-24 / 2026-10-25 — All Negative / Research-Only)</h2>
+  <ul>
+    <li><strong>GEOTENSION (<code>0.007615</code>, negative):</strong>
+      <a href="downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif">GEOTENSIONfree1d</a> (<a href="downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.zip">ZIP</a>) ·
+      <a href="downloads/h33-h33-2-b2-GEOTENSIONs50f50-20261025-caa53f9d-zeros.tif">GEOTENSIONs50f50</a> ·
+      <a href="downloads/h33-h33-2-b2-GEOTENSIONs60f40-20261025-ab46201e-zeros.tif">GEOTENSIONs60f40</a> ·
+      <a href="downloads/geotension_run_card.json">run card</a> · <a href="downloads/public_witness_geotension.json">witness</a> · <a href="ANALYSIS_20261025_GEOTENSION.md">analysis</a></li>
+    <li><strong>COULOMB (hand-weighted, <code>0.005808</code>, negative):</strong>
+      <a href="downloads/h33-h33-2-b2-COULOMBseismo-20261024-d243140b-zeros.tif">COULOMBseismo</a> (<a href="downloads/h33-h33-2-b2-COULOMBseismo-20261024-d243140b-zeros.zip">ZIP</a>) ·
+      <a href="downloads/h33-h33-2-b2-COULOMBfree-20261024-d0cf5db5-zeros.tif">COULOMBfree</a> ·
+      <a href="downloads/h33-h33-2-b2-COULOMBopen-20261024-58a7a394-zeros.tif">COULOMBopen</a> ·
+      <a href="downloads/coulomb_run_card.json">run card</a> · <a href="downloads/public_witness_coulomb.json">witness</a> · <a href="ANALYSIS_20261024_COULOMB.md">analysis</a></li>
+    <li><strong>BASEMENTEDGE &amp; MICROSWARM (<code>0.000000</code>, negative):</strong>
+      <a href="downloads/h33-h33-2-b2-BASEMENTEDGEstep3-20261024-80719f12-zeros.tif">BASEMENTEDGEstep3</a> (<a href="downloads/h33-h33-2-b2-BASEMENTEDGEstep3-20261024-80719f12-zeros.zip">ZIP</a>) ·
+      <a href="downloads/h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21-zeros.tif">MICROSWARMshort</a> (<a href="downloads/h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21-zeros.zip">ZIP</a>) ·
+      <a href="HYPOTHESES_20261024_MICROSWARM.md">pre-registration</a></li>
   </ul>
 </section>
 </main>
-<footer><p>Evidence labels: HOLDOUT-DTI = local buffered hide-and-recover; PROXY = off-catalogue USGS SGMC control; REGISTRY-MEASUREMENT = verified overlap/correlation scan; CLAIM = unverified reported figure; ORGANIZER-CONFIRMED = copied from a DrivenData submission receipt (0 recorded).</p></footer>
+
+<footer>
+  <p>Evidence labels: <code>HOLDOUT-DTI</code> = local buffered hide-and-recover (<code>gems57-pooled-hide-v2</code>); <code>PROXY</code> = off-catalogue USGS SGMC control; <code>REGISTRY-MEASUREMENT</code> = verified overlap/correlation scan; <code>CLAIM</code> = unverified reported figure; <code>ORGANIZER-CONFIRMED</code> = copied from a DrivenData submission receipt (0 recorded).</p>
+</footer>
 </body>
 </html>

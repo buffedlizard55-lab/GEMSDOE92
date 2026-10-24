@@ -10,15 +10,73 @@
 <body>
 <header class="hero">
   <p class="kicker">Geological Hypotheses · DOE GEMS Prize #306 · Pre-Registered Discovery Queue</p>
-  <h1>Pre-Registered Geological Hypotheses (2026-10-24 Session)</h1>
-  <p class="lede">Five untried Basin-and-Range structural &amp; geophysical hypotheses formulated from previously unused layers of the SHA-pinned 19-band stack and GDR #1391 table, pre-screened before dot placement and ranked by expected DTI gain and implementation cost.</p>
-  <p><a href="index.html">← Back to Main Workbench</a> · <a href="executive-summary.html">Executive Summary</a> · <a href="SUBMIT.html">Submission Guide</a> · <a href="HYPOTHESES_20261024_APRONRIDGE.md">Full Mathematical Pre-Registration</a></p>
+  <h1>5 Ranked Untried Geological Hypotheses (<code>COULOMB-LOQO</code> Session, 2026-10-24)</h1>
+  <p class="lede">Five Basin-and-Range structural &amp; geothermal hypotheses pre-registered before model code or holdout scoring (<a href="HYPOTHESES_20261024_COULOMBLOQO.md">HYPOTHESES_20261024_COULOMBLOQO.md</a>), naming exact geophysical layers, physical transforms, why USGS/INGENIOUS catalogues miss those faults, named non-fault mimics, and how each differs from every prior <code>GEMSDOE92</code> lane.</p>
+  <p><a href="index.html">← Back to Main Workbench</a> · <a href="executive-summary.html">Executive Summary</a> · <a href="SUBMIT.html">Submission Guide</a> · <a href="ANALYSIS_20261024_COULOMBLOQO.md">PhD Analysis</a></p>
 </header>
 
 <main>
-<section class="download-card"><h2>Current primary hypothesis: APRONRIDGE session (2026-10-24) &amp; prior STEPEDGE record</h2><p>Current site primary (standalone physics-first <code>HOLDOUT-DTI 0.008354</code>; the documented HYDROCONDUIT hybrid is higher at <code>0.008549</code>; locally unique but verdict <code>negative</code> under dense public witness — DO NOT SUBMIT): <a href="index.html#download-apronridge">APRONRIDGE free1d</a> (<a href="HYPOTHESES_20261024_APRONRIDGE.md">APRONRIDGE pre-registration</a> · <a href="ANALYSIS_20261024_APRONRIDGE.md">PhD results analysis</a>). Prior parallel DEM step-persistence screen/build (<a href="HYPOTHESES_20261024_STEPEDGE.md">STEPEDGE / TRANSV / RADSTEP</a> · <a href="ANALYSIS_20261024_STEPEDGE.md">STEPEDGE analysis</a>): <a href="index.html#download-stepedge">STEPEDGE f60Sraw</a>.</p></section>
+<section class="download-card">
+  <h2>Current Primary Hypothesis: <code>COULOMB-LOQO standalone</code> (#1 All-Time <code>HOLDOUT-DTI = 0.009220</code>; <code>verdict: negative</code> under dense public witness — DO NOT SUBMIT)</h2>
+  <p>Validated primary download: <a href="index.html#download-coulombloqo"><code>h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif</code></a> (<a href="downloads/coulomb_loqo_run_card.json">Run Card</a> · <a href="HYPOTHESES_20261024_COULOMBLOQO.md">Mathematical Pre-Registration</a> · <a href="ANALYSIS_20261024_COULOMBLOQO.md">Experimental Analysis</a>). Archived prior-session hypotheses: <a href="HYPOTHESES_20261024_HYDROCONDUIT.md">HYDROCONDUIT</a>, <a href="HYPOTHESES_20261024_APRONRIDGE.md">APRONRIDGE</a>, <a href="HYPOTHESES_20261024_STEPEDGE.md">STEPEDGE</a>.</p>
+</section>
+
 <section>
-  <h2>Ranked Untried Hypotheses (COULOMB Session, 2026-10-24) — All Screened or Built</h2>
+  <h2>Ranked Untried Hypotheses (1 to 5)</h2>
+
+  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
+    <p class="kicker" style="color:#4ecb71;">Rank 1 · Implemented &amp; Validated (3-Experiment Cap) · #1 Static HOLDOUT-DTI (0.009220) &amp; #1 Unmasked d_vis&gt;2 HOLDOUT-DTI (0.113316)</p>
+    <h3 style="margin-top:0.2rem;">1. COULOMB-LOQO — Spatially Cross-Fitted (LOQO) Polarity-Locked Multi-Scale Hessian &amp; 2D Coulomb Transtensional Ridge Model</h3>
+    <dl class="meta">
+      <div><dt>Layers Involved</dt><dd>Bands <code>2</code> (<code>rtp</code>), <code>4</code> (<code>geod_2ndinv</code>), <code>5</code> (<code>iso_grav_anom_slope</code>), <code>7</code> (<code>geod_shearrate</code>), <code>8</code> (<code>geod_dilaterate</code>), <code>11</code> (<code>iso_grav_anom_vg</code>), <code>12</code> (<code>det_elev</code>), <code>13</code> (<code>iso_grav_anom</code>), <code>15</code> (<code>depth_to_base_surf</code>), <code>17</code> (<code>cond_surf</code>), <code>18</code> (<code>iso_grav_anom_hg</code>, verified as signed $\partial_x$B13 at $r=+0.6260$), <code>19</code> (<code>det_elev_slope</code>) + <code>geodawn_rad_u8.tif</code> (<code>K, Th, U</code>) + <code>gdr_wellspring_in_footprint.csv</code> (<code>dist_known_fault_px</code> dropped).</dd></div>
+      <div><dt>Physical Signature</dt><dd>24 strictly local/fixed-scale physical channels (multi-scale negative Hessian eigenvalues $\sigma\in\{1.2,3.0\}$ px, 600 m step monotonicity, signed footwall-hangingwall gravity/basement/E-W <code>Band 18</code> polarity concordance, true <code>Band 2 RTP</code> tilt/demag/Hessian, circular cross-physics axial strike order $R_{\text{axial}}$, N15&deg;E/conjugate 2D Coulomb dilation &amp; slip tendency, MT clay-cap gradient, <code>K/Th, U/Th</code>, and 419 blind geothermometers) cross-fitted via 4-quadrant LOQO (<code>&ge;1.2 km</code> guard band) and sharpened onto 1D structural crests.</dd></div>
+      <div><dt>Why Missing from Catalogue</dt><dd>Catches both subtle 1–5 m degraded piedmont scarps/horst splays and 0°-slope concealed geothermal conduits while rejecting Lake Lahontan shorelines (which fail footwall gravity polarity) and radial fan washes (which fail cross-physics axial strike &amp; Coulomb orientation).</dd></div>
+      <div><dt>Named Non-Fault Mimics</dt><dd>Pleistocene Lake Lahontan wave-cut shorelines, radial alluvial-fan incised wash walls, remanently magnetized Tertiary lava pinchouts, and flat conductive playa evaporite lenses.</dd></div>
+      <div><dt>Measured Outcome</dt><dd>43/43 canaries PASS (max AUC <code>0.672638 &le; 0.90</code>); <code>standalone</code> static <strong>HOLDOUT-DTI = <code>0.009220 [0.007983, 0.010493]</code></strong> (#1 repo high); strict draw-blind <code>d_visible &gt; 2.0</code> <strong>HOLDOUT-DTI = <code>0.113316</code></strong> (beats <code>H19-5</code> <code>0.096757</code>, 95% CI <code>[+0.00817, +0.02498]</code>); <code>SGMC PROXY = 0.090569</code> (<code>dual45 = 0.094057</code>); local overlap <code>0.6164 &le; 0.70</code>; <code>dual45</code> &le;90k public sparse max <code>0.6488</code> (0/1,121 &gt;70%); literal dense stop on <code>17GEMSDOE</code> &rarr; <code>verdict: negative</code>.</dd></div>
+    </dl>
+  </div>
+
+  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
+    <p class="kicker" style="color:#d08a3c;">Rank 2 · Core Margin Channel Folded into COULOMB-LOQO Group E · Standalone Deferred</p>
+    <h3 style="margin-top:0.2rem;">2. MT-CLAYCAP-MARGIN — Lateral Magnetotelluric Smectite Clay-Cap Margin &times; Radioelement Alteration Fronts</h3>
+    <dl class="meta">
+      <div><dt>Layers Involved</dt><dd>Band <code>17</code> (<code>cond_surf</code>), <code>geodawn_rad_u8.tif</code> (<code>K, Th, U</code>), Bands <code>5, 11, 15</code>, and GDR #1391 geothermometry.</dd></div>
+      <div><dt>Physical Signature</dt><dd>Lateral resistivity gradient $\|\nabla\log\text{cond\_surf}\|$ tracking steep fault-bounded margins of conductive smectite clay caps rather than interior playa conductance maxima, paired with <code>K/(Th+1)</code> and $\|\nabla(U/(Th+1))\|$ redox fronts.</dd></div>
+      <div><dt>Named Non-Fault Mimics</dt><dd>Playa evaporite desiccation rings, rhyolitic ash-flow tuff margins, and roll-front uranium paleochannels.</dd></div>
+    </dl>
+  </div>
+
+  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
+    <p class="kicker" style="color:#b7a48a;">Rank 3 · Queued Reserve Hypothesis (Zero-Label Analytical Deconvolution)</p>
+    <h3 style="margin-top:0.2rem;">3. EULER-RTP-GRAV-N0 — Joint 3D Contact Euler Deconvolution ($N = 0$) of RTP Magnetics &amp; Isostatic Gravity</h3>
+    <dl class="meta">
+      <div><dt>Layers Involved</dt><dd>Bands <code>2, 9, 14</code> (RTP/TMI) and Bands <code>5, 11, 13, 18</code> (isostatic gravity &amp; signed E–W horizontal gradient).</dd></div>
+      <div><dt>Physical Signature</dt><dd>Moving-window Thompson (1982) / Reid et al. (1990) structural-index $N=0$ fault-contact Euler solutions gated by shallow depth $z_0 \in [50, 1200]\text{ m}$ and RTP–gravity colocation (&le;300 m).</dd></div>
+      <div><dt>Named Non-Fault Mimics</dt><dd>Steeply dipping unfaulted Mesozoic pluton walls, volcanic feeder dikes, and caldera ring-fracture intrusions.</dd></div>
+    </dl>
+  </div>
+
+  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
+    <p class="kicker" style="color:#b7a48a;">Rank 4 · Queued Reserve Hypothesis (Tectonic Geomorphology)</p>
+    <h3 style="margin-top:0.2rem;">4. DRAINAGE-KNICK-RADON — Cross-Canyon Knickpoint &amp; Deflected-Drainage Strike-Radon Alignment</h3>
+    <dl class="meta">
+      <div><dt>Layers Involved</dt><dd>Bands <code>12</code> (<code>det_elev</code>), <code>19</code> (<code>det_elev_slope</code>), <code>15</code> (<code>depth_to_base_surf</code>), and <code>7</code> (<code>geod_shearrate</code>).</dd></div>
+      <div><dt>Physical Signature</dt><dd>Along-strike Radon/Gaussian line-integral accumulation of thalweg longitudinal convexity peaks across multiple parallel range-front canyons.</dd></div>
+      <div><dt>Named Non-Fault Mimics</dt><dd>Resistant welded-tuff ledges cropping out along strike and Pleistocene Lake Lahontan highstand wave-cut notches.</dd></div>
+    </dl>
+  </div>
+
+  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
+    <p class="kicker" style="color:#b7a48a;">Rank 5 · Blocked on External Tile Ingestion</p>
+    <h3 style="margin-top:0.2rem;">5. INSAR-3DEP1M-DECONFOUNDED — Pumping-Deconfounded Sentinel-1 InSAR Line-of-Sight Gradient &times; 1 m 3DEP LiDAR Micro-Scarps</h3>
+    <dl class="meta">
+      <div><dt>Layers Involved</dt><dd>External ASF ARIA/OPERA Sentinel-1 InSAR velocity tiles + USGS 3DEP 1 m LiDAR tiles + GDR #1391 production wells (not yet staged in <code>.cache/gems_inputs/</code>; outbound network restricted).</dd></div>
+      <div><dt>Named Non-Fault Mimics</dt><dd>Agricultural/geothermal groundwater-pumping subsidence bowls, mining haul roads, and historic shoreline berms.</dd></div>
+    </dl>
+  </div>
+</section>
+<section>
+  <h2>Ranked Untried Hypotheses (COULOMB Session, 2026-10-24 — All Screened or Built</h2>
   <p>Full pre-registration: <a href="HYPOTHESES_20261024_COULOMB.md">HYPOTHESES_20261024_COULOMB.md</a> · results: <a href="ANALYSIS_20261024_COULOMB.md">ANALYSIS_20261024_COULOMB.md</a> · run card: <a href="downloads/coulomb_run_card.json">coulomb_run_card.json</a>. Screen gate reproduced <code>BREAKLINE-L</code> exactly (canary <code>0.621604</code>, far-SGMC <code>0.072325</code>); 3/3 experiment budget consumed; all arms <code>verdict: negative</code> (best <code>HOLDOUT-DTI 0.005808</code> vs <code>0.008549</code> bar; dense-witness duplicate stop).</p>
   <ol>
     <li><strong>COULOMB (Rank 1, BUILT ×3)</strong> — Orientation-resolved Coulomb opening potential: GPS strain-rate tensors (<code>Bands 7/8</code>) dotted onto DEM-ridge strike (<code>Bands 19/12</code>) under E–W extension (<code>&alpha;_ext = 100&deg;</code>) + NW strike-slip relay term, weighting <code>max(RTP-tilt-gradient, relative-scarp)</code> emission inside the piedmont apron. Arms: <code>free 0.005689</code> · <code>open 0.005184</code> (no-apron ablation) · <code>seismo 0.005808</code> (Rank-1 × Rank-2 fusion). Mechanism finding: <code>O_coulomb</code>-only canary <code>0.5423</code> vs <code>rel_scarp</code>-only <code>0.6230</code> — the orientation weight reshuffles emission away from the scoring collar; <code>max()</code> fusion lets the weaker RTP channel dominate 71.6% of dots.</li>
@@ -28,166 +86,18 @@
     <li><strong>LIDAR1M-LAHONTAN (Rank 5, HELD)</strong> — Meter-scale fault scarps from the 1 m DEM tile index, evaluated only against holdout-fold-visible Lahontan shoreline features. Blocked on <code>1m_DEM_links.csv</code> (competition site login) + <code>apps.nationalmap.gov</code> (unreachable from sandbox); remains the highest-leverage untested instrument (Blocker 0 follow-up).</li>
   </ol>
 </section>
-
 <section>
-  <h2>Pre-Build Screening &amp; Holdout Summary</h2>
-  <p>Every hypothesis below names specific sensor bands (verified directly against the 19-band GDAL header of <code>training_features.tif</code>), its mathematical transform, why legacy USGS QFaults / INGENIOUS compilations miss those structures, its named non-fault geological mimics, and its measured leakage-canary and off-skeleton diagnostic results (<code>evidence/apron_prebuild_screen.json</code>). Note: earlier session notes claimed <code>Band 18</code> was the only signed band in the stack; live pixel verification shows 10 of 19 bands take signed values (including <code>Band 2 rtp</code>, <code>Band 8 geod_dilaterate</code>, <code>Band 9 tmi_vg</code>, <code>Band 11 iso_grav_anom_vg</code>, <code>Band 12 det_elev</code>, <code>Band 13 iso_grav_anom</code>, <code>Band 14 tmi</code>, and <code>Band 18 iso_grav_anom_hg</code>; logged in <a href="../IRREGULARITIES.md">IRREGULARITIES.md</a>).</p>
-</section>
-
-<section class="download-card"><h2>Current branch hypothesis: GEOTENSION (2026-10-25) — this branch's new lane</h2><p>Current branch primary for <code>arena/2d7b7394-gemsdoe92</code>: <a href="index.html#download-geotension">GEOTENSION free1d</a> (HOLDOUT-DTI 0.007615, locally unique 0.5241, <code>verdict: negative</code> under dense witness) — see <a href="HYPOTHESES_20261025_GEOTENSION.md">GEOTENSION pre-registration (5 ranked hypotheses)</a> · <a href="ANALYSIS_20261025_GEOTENSION.md">PhD analysis — why 0.2778 scored highest & can we beat it?</a>. Historical repository best remains <a href="HYPOTHESES_20261024_APRONRIDGE.md">APRONRIDGE free1d</a> (0.008354). Prior parallel <a href="HYPOTHESES_20261024_STEPEDGE.md">STEPEDGE</a>.</p></section>
-<section>
-  <h2>GEOTENSION Ranked Hypotheses (2026-10-25, this branch) — 5 pre-registered before building</h2>
-  <p>See <a href="HYPOTHESES_20261025_GEOTENSION.md">full mathematical pre-registration</a> for definitions, sensors, signatures, catalogue-gap reasoning, non-fault mimics, expected gain/cost and official sources. Top lane <strong>GEOTENSION</strong> (Bands 4/7/8·12/15/19, dilatation × second-invariant × shear gating scarp 1D ridges) was built and validated this session (HOLDOUT-DTI 0.007615, max canary 0.6216, locally unique 0.5241). Reserve lanes: <code>ALTERATION-CONDUIT</code> (K/Th·cond·dilatation), <code>SEISGAP</code> (deq/ieq·strain), <code>MTSHEAR-CONDUIT</code> (cond·shear), <code>GRAVTILT-ZERO</code> (tilt zero-crossing).</p>
-</section>
-<section>
-  <h2>Prior APRONRIDGE Ranked Hypotheses (2026-10-24, historical #1)</h2>
-
-  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
-    <p class="kicker" style="color:#4ecb71;">Rank 1 · Implemented &amp; Validated · standalone physics-first HOLDOUT-DTI (0.008354; HYDROCONDUIT hybrid: 0.008549)</p>
-    <h3 style="margin-top:0.2rem;">1. APRONRIDGE — Thin-Cover Piedmont Accommodation Apron &amp; Inclination-Corrected RTP-Curvature 1D Ridges</h3>
-    <dl class="meta">
-      <div><dt>Layers Involved</dt><dd><strong>Band 15</strong> (<code>depth_to_base_surf</code>), <strong>Band 12</strong> (<code>det_elev</code>), <strong>Band 5</strong> (<code>iso_grav_anom_slope</code>), <strong>Band 19</strong> (<code>det_elev_slope</code>), <strong>Band 2</strong> (<code>rtp</code>, Reduced-to-Pole magnetics), and <strong>Band 6</strong> (<code>tc</code>, total curvature) — Bands 2, 6, and 15 were unused by all 13 prior built lanes.</dd></div>
-      <div><dt>Physical Signature</dt><dd><code>S_raw = H_apron(B12, B15 ~20–600 m log-normal, B5) &times; max(R_scarp[B19,B12], 0.85 &times; R_rtp[||&nabla;B2|| &times; (-B6) &times; coh(B2)])</code> restricted to 4-axis 1D directional crests (<code>directional_ridge_1d</code>).</dd></div>
-      <div><dt>Why Missing from Catalogue</dt><dd>Synthetic hanging-wall step-faults and shallow-buried basement transfer faults in the thin-cover piedmont apron either offset homogeneous fan gravels (zero gravity worm) or have degraded surface scarps where raw TMI is laterally skewed 300–800 m by ~65&deg; geomagnetic inclination; RTP centers the magnetic gradient directly over the vertical basement step.</dd></div>
-      <div><dt>Named Non-Fault Mimics</dt><dd>Sehoo/Eetza pluvial shoreline benches on piedmont fans, incised alluvial-fan terrace risers / wash walls, and remanently magnetized Tertiary basalt flow margins beneath thin gravel.</dd></div>
-      <div><dt>Measured Outcome</dt><dd>Canary symmetric AUC = <strong>0.636490</strong> (&le; 0.90 PASS); <code>free1d</code> <strong>HOLDOUT-DTI = 0.008354 [0.006823, 0.010135]</strong> (+108.5% over R0, +38.2% over RELIEF p10, +52.2% over STRAINBREAK f60s2i); worst local 3-px overlap = <strong>0.4605</strong> (locally unique). Blocked from weekly slot only by the dense 17GEMSDOE public witness.</dd></div>
-    </dl>
-  </div>
-
-  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
-    <p class="kicker" style="color:#d08a3c;">Rank 2 · Screened &amp; Folded into APRONRIDGE Channel 2</p>
-    <h3 style="margin-top:0.2rem;">2. RTPTILT-CURV — Inclination-Corrected RTP Horizontal-Gradient &times; Inverted Curvature</h3>
-    <dl class="meta">
-      <div><dt>Layers Involved</dt><dd><strong>Band 2</strong> (<code>rtp</code>) &amp; <strong>Band 6</strong> (<code>tc</code>)</dd></div>
-      <div><dt>Physical Signature</dt><dd><code>R_rtp = pct_rank(||&nabla;rtp||) &times; pct_rank(-tc) &times; structure_tensor_coherence(rtp)</code></dd></div>
-      <div><dt>Why Missing from Catalogue</dt><dd>Recovers shallow-buried volcanic/crystalline fault contacts beneath coalescing bajadas without raw-TMI dipolar skew or elevation-dependent terrain correlation.</dd></div>
-      <div><dt>Named Non-Fault Mimics</dt><dd>Unfaulted pluton roof pendants, caldera ring-dike margins, and incised channels draining magnetic volcanics.</dd></div>
-      <div><dt>Screen Result</dt><dd>Canary AUC = <code>0.541297</code>, off-skeleton SGMC = <code>0.034975</code>; folded directly into <code>APRONRIDGE</code> where it wins <code>10.5%</code> of far 1D crests.</dd></div>
-    </dl>
-  </div>
-
-  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
-    <p class="kicker" style="color:#d08a3c;">Rank 3 · Screened · Reserve Hydrothermal Gate</p>
-    <h3 style="margin-top:0.2rem;">3. BLIND-GEOTHERM — Sub-Boiling Geothermometer Upflow Halos on Thin-Cover Basement Steps</h3>
-    <dl class="meta">
-      <div><dt>Layers Involved</dt><dd><code>gdr_wellspring_in_footprint.csv</code> chemical geothermometers (<code>na_k_ca_mg_c</code>, <code>quartz_c</code>, <code>chalcedony_c &ge; 90 &deg;C</code>; 477 cells vs 144 thermal vents) &times; <strong>Band 15</strong> &amp; <strong>Band 5</strong></dd></div>
-      <div><dt>Physical Signature</dt><dd>Gaussian upflow halo (<code>&sigma;=18 px</code>) around deep-equilibrated chemical geothermometer anomalies gating thin-cover gravity-gradient ridges.</dd></div>
-      <div><dt>Why Missing from Catalogue</dt><dd>Roughly 75% of Great Basin hydrothermal systems are blind (cool surface waters retaining &gt;90 &deg;C silica/cation equilibration signatures above unmapped permeable fault conduits).</dd></div>
-      <div><dt>Named Non-Fault Mimics</dt><dd>Lateral outflow plumes in regional carbonate aquifers and diagenetic silica enrichment in ash-rich lacustrine sediments.</dd></div>
-      <div><dt>Screen Result</dt><dd>Canary AUC = <code>0.551863</code>, off-skeleton SGMC = <code>0.019012</code> (held in reserve due to uneven exploration-well sampling).</dd></div>
-    </dl>
-  </div>
-
-  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
-    <p class="kicker" style="color:#b7a48a;">Rank 4 · Screened · Wavelength-Limited at 100 m</p>
-    <h3 style="margin-top:0.2rem;">4. MTSHEAR-CONDUIT — Magnetotelluric Crustal Conductance &times; Geodetic Shear Rate</h3>
-    <dl class="meta">
-      <div><dt>Layers Involved</dt><dd><strong>Band 17</strong> (<code>cond_surf</code>) &amp; <strong>Band 7</strong> (<code>geod_shearrate</code>)</dd></div>
-      <div><dt>Physical Signature</dt><dd>Coupled high-conductance / high-shear gradient corridors targeting dextral-normal Walker Lane fluid conduits.</dd></div>
-      <div><dt>Named Non-Fault Mimics</dt><dd>Saline playa brines, smectite-rich lacustrine clays, and Paleozoic graphitic/pyritic black shales.</dd></div>
-      <div><dt>Screen Result</dt><dd>Canary AUC = <code>0.519137</code>, off-skeleton SGMC = <code>0.024453</code> (not built: regional MT/GPS smoothing is too coarse for 300 m DTI precision without DEM/RTP crest locking).</dd></div>
-    </dl>
-  </div>
-
-  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
-    <p class="kicker" style="color:#b7a48a;">Rank 5 · Screened · Potential-Field Resolution Ceiling</p>
-    <h3 style="margin-top:0.2rem;">5. GRAVTILT-ZERO — Standardized Gravity Tilt-Angle Zero-Contour Ridge</h3>
-    <dl class="meta">
-      <div><dt>Layers Involved</dt><dd><strong>Band 11</strong> (<code>iso_grav_anom_vg</code>), <strong>Band 5</strong> (<code>iso_grav_anom_slope</code>), &amp; <strong>Band 13</strong> (<code>iso_grav_anom</code>) / <strong>Band 18</strong> (<code>iso_grav_anom_hg</code>)</dd></div>
-      <div><dt>Physical Signature</dt><dd>MAD-standardized gravity tilt zero-contour ridge (<code>exp(-(&theta;/0.30)&sup2;) &times; pct_rank(B5)</code>) tracking AGC-normalized basement contacts.</dd></div>
-      <div><dt>Named Non-Fault Mimics</dt><dd>Unfaulted granitoid pluton margins, caldera ring boundaries, and buried paleovalleys.</dd></div>
-      <div><dt>Screen Result</dt><dd>Canary AUC = <code>0.510746</code>, off-skeleton SGMC = <code>0.028019</code> (not built: terrestrial gravity station spacing ~2–5 km cannot localize fault traces to &le;300 m alone).</dd></div>
-    </dl>
-  </div>
-</section>
-
-<section>
-  <h2>Official Verification Sources</h2>
-  <table>
-    <thead><tr><th>Dataset / Resource</th><th>Official Source URL</th><th>Role</th></tr></thead>
-    <tbody>
-      <tr><td>DrivenData DOE GEMS #306</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">drivendata.org/.../page/967/</a></td><td>Competition task, rules, DTI metric</td></tr>
-      <tr><td>GEMS Prize Reference Solution</td><td><a href="https://github.com/drivendataorg/gems-prize-reference-solution">github.com/drivendataorg/gems-prize-reference-solution</a></td><td>Official U-Net MC CV baseline &amp; Tversky loss</td></tr>
-      <tr><td>USGS GeoDAWN Airborne Surveys</td><td><a href="https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7">data.usgs.gov/.../USGS:657e1d85d34e23d3533209f7</a></td><td>High-resolution aeromagnetic (RTP/TMI) &amp; radiometric data</td></tr>
-      <tr><td>DOE GDR #1391 (INGENIOUS)</td><td><a href="https://gdr.openei.org/submissions/1391">gdr.openei.org/submissions/1391</a></td><td>Great Basin 19-band feature compilation &amp; well/spring geochemistry</td></tr>
-      <tr><td>USGS SGMC (ScienceBase)</td><td><a href="https://www.sciencebase.gov/catalog/item/5888bf4fe4b05ccb964bab9d">sciencebase.gov/.../5888bf4fe4b05ccb964bab9d</a></td><td>1:500k bedrock fault control raster</td></tr>
-      <tr><td>USGS 3DEP &amp; QFaults</td><td><a href="https://www.usgs.gov/3d-elevation-program">usgs.gov/3d-elevation-program</a> · <a href="https://www.usgs.gov/programs/earthquake-hazards/faults">usgs.gov/.../faults</a></td><td>Topographic DEM &amp; mapped Quaternary fault baseline</td></tr>
-    </tbody>
-  </table>
+  <h2>Merged Parallel-Session Pre-Registrations (2026-10-24 / 2026-10-25)</h2>
+  <ul>
+    <li><a href="HYPOTHESES_20261025_GEOTENSION.md">GEOTENSION (dilatation-strain scarp 1D ridges)</a> · <a href="ANALYSIS_20261025_GEOTENSION.md">GEOTENSION analysis</a> · <a href="downloads/geotension_run_card.json">run card</a> (<code>HOLDOUT-DTI 0.007615</code>, <code>verdict: negative</code>)</li>
+    <li><a href="HYPOTHESES_20261024_MICROSWARM.md">MICROSWARM &amp; BASEMENTEDGE</a> · <a href="downloads/h33-h33-2-b2-BASEMENTEDGEstep3-20261024-80719f12-zeros.tif">BASEMENTEDGE step3</a> · <a href="downloads/h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21-zeros.tif">MICROSWARM short</a> (<code>HOLDOUT-DTI 0.000000</code>, <code>verdict: negative</code>)</li>
+    <li><a href="HYPOTHESES_20261024_PREFLIGHT.md">Conditional preflight hypotheses</a> · <a href="downloads/preplacement_dense_witness.json">preplacement dense witness</a></li>
+  </ul>
 </section>
 </main>
 
 <footer>
   <p>GEMSDOE92 Workbench · Pre-Registered Physics-First Discovery · Automated Gate &amp; Uniqueness Verification.</p>
 </footer>
-</section>
-<section>
-  <h2>Ranked Untried Hypotheses (HYDROCONDUIT Session)</h2>
-
-  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
-    <p class="kicker" style="color:#4ecb71;">Rank 1 · Validated &amp; Built (3-Experiment Cap) · New Repo Static-Holdout Best</p>
-    <h3 style="margin-top:0.2rem;">1. HYDROCONDUIT — Piedmont-Hinge Relative Monoclinal Scarp &times; Hydrothermal RTP Conduit</h3>
-    <dl class="meta">
-      <div><dt>Layers Involved</dt><dd>Bands <code>12</code> (<code>det_elev</code>), <code>19</code> (<code>det_elev_slope</code>), <code>15</code> (<code>depth_to_base_surf</code>), <code>2</code> (<code>rtp</code>), <code>4</code> (<code>geod_2ndinv</code>), <code>8</code> (<code>geod_dilaterate</code>), <code>17</code> (<code>cond_surf</code>) + pinned <code>geodawn_rad_u8.tif</code> (<code>K</code>, <code>Th</code>) + pinned <code>gdr_wellspring_in_footprint.csv</code> (surface + quartz/chalcedony/Na-K-Ca geothermometers &ge;80 &deg;C).</dd></div>
-      <div><dt>Physical Signature</dt><dd>Background-normalized relative log-slope break <code>||grad log(slope+1&deg;)||</code> &times; 600 m cross-strike step monotonicity <code>&mu;_step</code> (rejecting V-canyons) &times; piedmont/shallow-basement hinge &times; Andersonian strike/strain, corroborated by Laplace <code>Band 2 RTP</code> tilt-contact + demagnetization trough, <code>K/(Th+1)</code> potassic alteration, MT conductivity, and blind chemical geothermometer plumes.</dd></div>
-      <div><dt>Why Missing from Catalogue</dt><dd>Subtle 1–5 m Quaternary alluvial-fan scarps lack raw cliff relief and potential-field worms, and &gt;75% of Great Basin geothermal upflow cools below 40 &deg;C near surface while retaining silica/cation thermometry and magnetite destruction.</dd></div>
-      <div><dt>Distinction from Repo Lanes</dt><dd>Inverts <code>BREAKLINE</code>'s 74.8% range-core cliff hijack to 83.4% piedmont / 6.2% range core, fixes the <code>Band 6 tc</code> = Radiometric Total Count mislabelling by using true <code>Band 2 RTP</code>, adds 419 blind geothermometer pixels, and unifies repacked <code>H19-5</code> piedmont strands (55%) with 45–50% off-skeleton placement.</dd></div>
-      <div><dt>Named Non-Fault Mimic</dt><dd>Alluvial-fan coalescing bajada aprons, Pleistocene Lake Lahontan recessional shorelines at piedmont elevations, and altered volcanic margins / lateral thermal-outflow paleochannels.</dd></div>
-      <div><dt>Measured Outcome</dt><dd>Static <strong>HOLDOUT-DTI</strong> <code>0.008549 [0.007626, 0.009487]</code> (+113.4% vs <code>R0</code>, +41.4% vs <code>RELIEF p10</code>); Canaries PASS (max AUC 0.6501 &le; 0.90); Local overlap 0.5500 &le; 0.70; Sparse public (&le;150k px) 0/1,147 &gt;70% (max 0.6719); Literal dense-surface stop triggers on <code>17GEMSDOE E-proba</code> (<code>verdict: negative</code>, OK TO DOWNLOAD, DO NOT SUBMIT).</dd></div>
-    </dl>
-  </div>
-
-  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
-    <p class="kicker" style="color:#d08a3c;">Rank 2 · Low Cost · Viable In-Stack (Tested as Explicit Ablation Inside Rank 1)</p>
-    <h3 style="margin-top:0.2rem;">2. RTP-TILT-DEMAG — Reduced-to-Pole Laplace Tilt-Contact &amp; Magnetite-Destruction Trough</h3>
-    <dl class="meta">
-      <div><dt>Layers Involved</dt><dd><code>Band 2</code> (<code>rtp</code>), <code>Band 17</code> (<code>cond_surf</code>), and <code>geodawn_rad_u8.tif</code> (<code>K</code>, <code>Th</code>).</dd></div>
-      <div><dt>Physical Signature</dt><dd>Miller–Singh / Verduzco phase-normalized RTP tilt-contact crest via Laplace's equation (<code>&partial;&sup2;RTP/&partial;z&sup2; = -&nabla;_H&sup2; RTP</code>) + positive-Laplacian linear demagnetization troughs gated by <code>K/(Th+1)</code>.</dd></div>
-      <div><dt>Why Missing from Catalogue</dt><dd>Concealed intrabasin faults beneath flat playa fill have zero topographic scarp, and deep (200–800 m) magnetic steps or magnetite-destruction zones are missed by unreduced <code>TMI</code> gradients.</dd></div>
-      <div><dt>Distinction &amp; Mimic</dt><dd>Corrects the <code>Band 6 tc</code> metadata error (<code>ANASIG</code> used unreduced <code>Bands 3/9/14</code>). Mimics: buried Tertiary caldera ring margins, mafic flow edges, cultural lines. Paired ablation inside Rank 1 (<code>f45hydro</code> vs <code>f45pied</code>) lifted both static <code>HOLDOUT-DTI</code> (+0.000025) and <code>SGMC</code> (+0.00080).</dd></div>
-    </dl>
-  </div>
-
-  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
-    <p class="kicker" style="color:#d08a3c;">Rank 3 · Low Cost · Viable In-Repo Pinned Data</p>
-    <h3 style="margin-top:0.2rem;">3. BLIND-CHEM-BRIDGE — Silica/Cation Blind Geothermometer Strike-Bridge &times; MT Clay-Cap Margin</h3>
-    <dl class="meta">
-      <div><dt>Layers Involved</dt><dd>Pinned <code>gdr_wellspring_in_footprint.csv</code> (<code>geothermquartz_c</code>, <code>geothermchalc_c</code>, <code>geothermcat_c &ge; 80 &deg;C</code> with <code>temp_c &lt; 40 &deg;C</code>) + <code>Band 17</code> (<code>cond_surf</code>) + <code>Band 8</code> (<code>geod_dilaterate</code>).</dd></div>
-      <div><dt>Physical Signature</dt><dd>Anisotropic NNE strike corridors bridging the 419 blind chemical-geothermometer pixels across lateral edges (<code>||&nabla; Band 17||</code>) of conductive smectite clay caps in positively dilating crust.</dd></div>
-      <div><dt>Distinction &amp; Mimic</dt><dd><code>SPRINGALIGN</code> ignored all 419 blind chemical-geothermometer pixels and <code>Band 17</code> lateral margins. Mimics: saline playa-margin evaporite brines and shallow conductive clay lakebeds.</dd></div>
-    </dl>
-  </div>
-
-  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
-    <p class="kicker" style="color:#b7a48a;">Rank 4 · Low Cost · Viable In-Stack</p>
-    <h3 style="margin-top:0.2rem;">4. COULOMB-SLIP-TENDENCY — 2D Transtensional Slip &amp; Dilation Tendency on Multi-Physics Tensor</h3>
-    <dl class="meta">
-      <div><dt>Layers Involved</dt><dd><code>Band 7</code> (<code>geod_shearrate</code>), <code>Band 8</code> (<code>geod_dilaterate</code>), <code>Band 4</code> (<code>geod_2ndinv</code>), <code>Band 2</code> (<code>rtp</code>), <code>Band 12</code> (<code>det_elev</code>).</dd></div>
-      <div><dt>Physical Signature</dt><dd>Morris–Ferrill–Henderson slip + dilation tendency resolved analytically by projecting local joint topographic+RTP fault normals onto the regional WNW–ESE extension + Walker Lane dextral shear tensor.</dd></div>
-      <div><dt>Distinction &amp; Mimic</dt><dd><code>STRAINBREAK</code> multiplied scalar strain without resolving onto fault strike; <code>DILATATION</code> stayed 99.4% on <code>R0</code>. Mimics: NNE-trending glacial/erosional ridges inside broad GPS strain lobes.</dd></div>
-    </dl>
-  </div>
-
-  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
-    <p class="kicker" style="color:#ef4444;">Rank 5 · High I/O Cost · Held (External Data Blocked by Sandbox Allowlist)</p>
-    <h3 style="margin-top:0.2rem;">5. LIDAR-1M-LAHONTAN-MASK — 1 m USGS 3DEP Micro-Scarp Curvature Minus Lake Lahontan Stillstands</h3>
-    <dl class="meta">
-      <div><dt>Layers &amp; Official Source</dt><dd>External free <a href="https://apps.nationalmap.gov/tnmaccess/">USGS 3DEP 1 m LiDAR DEM tiles</a> (<a href="https://www.usgs.gov/3d-elevation-program">program page</a>) + published Sehoo (~1330–1338 m AMSL) &amp; Wyemaha/Fallon shoreline contour masks.</dd></div>
-      <div><dt>Verified Availability Status</dt><dd><strong>NOT VIABLE IN THIS SANDBOX (DATA-BLOCKED):</strong> Live Python reachability check to <code>apps.nationalmap.gov</code> and <code>www.usgs.gov</code> returned <code>URLError: TLS/SSL connection closed (EOF)</code> due to sandbox outbound host policy, and <code>Band 12 det_elev</code> has regional orthometric elevation removed so absolute 1335 m AMSL shoreline contours cannot be reconstructed in-stack.</dd></div>
-    </dl>
-  </div>
-</section>
-
-<section>
-  <h2>Prior Session Hypothesis Archives</h2>
-  <ul>
-    <li><a href="HYPOTHESES_20261025_SPRINGALIGN.md">SPRINGALIGN Session Hypotheses (2026-10-25)</a></li>
-    <li><a href="HYPOTHESES_20261024_SCARPPOL.md">SCARPPOL / ANASIG Session Hypotheses (2026-10-24)</a></li>
-    <li><a href="HYPOTHESES_20261024_GRAVCrest.md">GRAVCrest / STRAINBREAK Session Hypotheses (2026-10-24)</a></li>
-    <li><a href="HYPOTHESES_20261024_BREAKLINE.md">BREAKLINE Session Hypotheses (2026-10-24)</a></li>
-  </ul>
-</section>
-</main>
-<footer><p>All hypotheses pre-registered prior to holdout scoring under Parallel-Run Protocol Rules 1–6.</p></footer>
 </body>
 </html>
