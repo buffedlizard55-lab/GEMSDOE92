@@ -1,4 +1,12 @@
-# Current review — 2026-10-24 (updated after `APRONRIDGE` breakthrough)
+# Current review — APRONRIDGE site primary (2026-10-24; with HYDROCONDUIT comparison)
+
+## Latest repository review update (2026-10-24 UTC)
+
+- **No new experiment or GeoTIFF was generated.** The requested unique fresh candidate remains unfulfilled, not silently replaced with an inherited raster. Under the unchanged literal registry protocol, the verified public witness is positive at every valid footprint cell; thus any nonempty in-footprint candidate's final dots have 100% forward overlap with that witness and must stop. This is a protocol-level stop, not evidence of geologic similarity. No weekly slot was used.
+- **Documentation defect corrected:** the Pages homepage and guides identify APRONRIDGE free1d as the current site-primary research download, but its `HOLDOUT-DTI` (`0.008354 [0.006823, 0.010135]`) is lower than the documented HYDROCONDUIT hybrid (`0.008549 [0.007626, 0.009487]`) on the same evaluator / 22,663 withheld positives. APRONRIDGE is now described as a standalone physics-first result, not the overall repository holdout maximum. Both values are **HOLDOUT-DTI**, not competition scores. The 0.2778 GEMSDOE32 number remains a `CLAIM` absent an organizer receipt; leaderboard values 0.3195 and 0.4413 remain conflicting snapshots not refreshed here.
+- **Hypotheses and experiment budget:** the existing ranked queue in [`REVIEW_20261024_SESSION.md`](REVIEW_20261024_SESSION.md) remains conditional. No new lane was ranked as viable and no holdout was run because the binding registry stop makes a nonempty unique placement impossible under the current rule; the training feature stack is not staged in the tracked checkout. There is no defensible projected score.
+- **Three-pass review:** Pass 1 found stale README primary naming, an incorrect overall `HOLDOUT-DTI`-winner claim, and a submission-note character-count error. Pass 2 corrected the summary across README / homepage / hypothesis and review pages and added a regression test for primary/ranking consistency. Pass 3 rechecked the guides, exact primary link/hash references, explicit download-vs-slot status, and preserved the registry stop; no TIFF or holdout data were altered.
+- **Validation in this review:** 200 tests passed (103 nonfatal Rasterio/Affine warnings); `scripts/check_site.py` passed all 25 served zeros-outside TIFs; a local-link audit found 163 links across the four primary HTML pages with no missing local targets; `compileall` and `git diff --check` passed. These are software and file-format checks only; they do not grant uniqueness clearance or slot eligibility.
 
 ## Download status comes first
 
@@ -6,18 +14,18 @@
 The current primary artifact [`h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`](downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif)
 was generated and validated in the `2026-10-24` `APRONRIDGE` session:
 - **10/10 automated format gates PASS** on independent disk re-read (`EPSG:32611`, `3730×3292`, `float32`, finite `[0, 1]`, `0` NaN in footprint, `0.0` outside, `37,654` unit dots, `0` catalogue mass, `d_cat > 2.0 px`).
-- **#1 All-Time Repository `HOLDOUT-DTI`**: **`0.008354 [0.006823, 0.010135]`** on `gems57-pooled-hide-v2` (`22,663` withheld positive pixels across 8 buffered folds), beating `RELIEF p10` (`0.006045`) by **`+38.2%`**, `STRAINBREAK f60s2i` (`0.005487`) by **`+52.2%`**, and `R0` (`0.004006`) by **`+108.5%`** (paired Δ `+0.004347 [+0.003019, +0.005710]`), with zero `H19-5` or `R0` input.
+- **Standalone physics-first `HOLDOUT-DTI`**: **`0.008354 [0.006823, 0.010135]`** on `gems57-pooled-hide-v2` (`22,663` withheld positive pixels across 8 buffered folds). The higher documented result is the parallel `HYDROCONDUIT` hybrid: **`0.008549 [0.007626, 0.009487]`** (same evaluator / withheld count). APRONRIDGE beats `RELIEF p10` (`0.006045`) by **`+38.2%`**, `STRAINBREAK f60s2i` (`0.005487`) by **`+52.2%`**, and `R0` (`0.004006`) by **`+108.5%`** (paired Δ `+0.004347 [+0.003019, +0.005710]`), with zero `H19-5` or `R0` input.
 - **Locally Unique (`local_duplicate: false`)**: Pre-placement continuous surface `worst_|Spearman| = 0.122173 <= 0.90`, `worst_top37654_forward_overlap = 0.552664 <= 0.70` (`29` rasters); final dots **`worst_forward_overlap = 0.460482 <= 0.70`**, `worst_|phi| = 0.056117 <= 0.90` (`43` cross-lane rasters); diagnostic spot-check against top sparse public witnesses (`62GEMSDOE` `120k` px, `GEMSDOE23` `91.5k–100k` px) also passes (`0.6028–0.6456 <= 0.70`).
 - **Sole Remaining Slot Blocker (Binding Public Dense Witness)**: Direct measurement on `APRONRIDGEfree1d` bytes against Git-blob-verified `buffedlizard55-lab/17GEMSDOE` `17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` (`git_blob_sha = 374c88b1da2b803e2ed160de467fd71ae114010d`, positive on `5,167,373 / 5,167,373` footprint cells) gives `forward_overlap = 1.000` ([witness receipt](downloads/public_witness_apronridge.json), [run card](downloads/apronridge_run_card.json), [PhD analysis](ANALYSIS_20261024_APRONRIDGE.md)). Under the literal unweighted rule, `submission_eligible` stays `false` until an operator policy update excludes dense continuous probability maps (`> 150,000` positive pixels).
 
 ---
 
 # Earlier closeout note — BREAKLINE witness check (2026-10-24)
-# Current Review Status — `GEMSDOE92` (`HYDROCONDUIT` Session, 2026-10-24)
+# Archived parallel-session review — `HYDROCONDUIT` (2026-10-24; superseded as site primary by APRONRIDGE)
 
 ## Headline Decision
 
-- **Current Primary Artifact:** `docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif`
+- **Historical HYDROCONDUIT artifact (parallel candidate; not current site primary):** `docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif`
   - **SHA-256 (`-zeros.tif`):** `c9e07ba6627672bfd58b08572a19d48aa16ff07a2f95347993550eaaccba8fdd`
   - **Download Clearance:** **✅ FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH** (`10 / 10` `gems.gates` + `13 / 13` `gems57.validate` checks pass; finite `[0, 1]`, zero NaNs anywhere, zeros outside footprint, zero catalogue mass, `37,654` unit-mass dots).
   - **Submission / Slot Clearance:** **⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (`verdict: "negative"`, `submission_eligible: false`; DUPLICATE UNDER THE LITERAL REGISTRY RULE).**

@@ -215,6 +215,19 @@ def test_guides_agree_with_current_primary_and_stop():
     assert 'format-valid, unique download' not in html
 
 
+def test_readme_and_site_agree_on_primary_and_holdout_ranking():
+    """Prevent a stale README from naming a different primary or misranking HOLDOUT-DTI."""
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    index = _index()
+    assert "h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif" in readme
+    assert "current site primary" in readme.lower()
+    assert "repository's highest reported HOLDOUT-DTI" in readme
+    assert "HYDROCONDUIT f45hydro" in readme
+    assert "0.008549 [0.007626, 0.009487]" in readme
+    assert "#1 all-time in repo" not in readme.lower()
+    assert "new repository <strong>HOLDOUT-DTI</strong> high" not in index
+
+
 def test_piedfront_primary_contract_across_site_and_readme():
     idx = (DOCS / "index.html").read_text(encoding="utf-8")
     exec_sum = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
