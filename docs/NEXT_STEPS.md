@@ -1,24 +1,34 @@
-# NEXT_STEPS — current blockers and action order
+# NEXT_STEPS — after the 2026-10-24 registry stop
 
-**Current review date: 2026-10-24.** This current status supersedes stale recommendations embedded in older planning records. A unique-within-local-scan STEPOVER GeoTIFF is format-valid and published, but its HOLDOUT-DTI is negative; no weekly submission slot is recommended. See [`SLOT_PLAN.md`](../SLOT_PLAN.md) and the public [`index.html`](index.html).
+## Current status
 
-## Highest-value actions before another experiment
+One new method was evaluated: a 200–300 m collar around visible mapped faults, excluding the parent R0 dots' 300 m halo. It passes file-format gates and improves the local catalogue hide-and-recover measure, but the expanded public registry scan triggers the protocol's literal duplicate stop. **The result is negative. Do not use a weekly submission slot.** The TIF remains available as a negative deliverable, with the homepage clearly saying format-valid/downloadable but not cleared for submission.
 
-1. **Resolve data access and permitted provenance.** The full competition `training_features.tif` is absent from `.cache/gems_inputs/`. The official [DrivenData data page](https://www.drivendata.org/competitions/306/competition-doe-gems/data/) is login-gated; this session cannot retrieve authenticated files. Do not silently substitute a public owner mirror while its redistribution terms are unchecked. Stage authorized files, verify pinned hashes and byte lengths, record provenance, then run `make manifest` and `make verify`.
-2. **Do not burn a slot on current candidates.** The format-valid unique STEPOVER candidate is negative. The positive catalogue-holdout RELIEF/DILATATION candidates violate the literal 70%/3-px uniqueness stop against R0. Only a separately authorized human may override these findings; the agent does not choose or upload.
-3. **Validate only after the inputs and experiment budget are reset.** Use [`hypotheses_20261024.md`](hypotheses_20261024.md) as the queue. The top untried multi-scale geophysical-edge idea requires the missing feature stack and has no holdout result yet. Test each feature alone for leakage; withhold whole fault segments with buffers; use visible-only catalogue features and exact masking; evaluate pooled DTI α=0.2, β=0.8, 300 m triangular kernel; report evaluator version, withheld positives, and 95% CI.
-4. **Do not claim the local holdout validates the competition objective.** The local truth consists of catalogue faults, while competition truth consists of newly identified faults absent from that public catalogue. The local evaluator may reward proximity to known faults and has a structural-zero problem for candidates forced outside the catalogue buffer. An organizer receipt or an independent off-catalogue truth source is required to calibrate live performance.
-5. **Verify every published byte.** Run `PYTHONPATH=vendor python scripts/check_site.py`; ensure the primary link, archive links, audit SHA, CRS/shape/transform, range, finiteness, and catalogue gates all match the file actually served. Local PASS is not organizer acceptance.
-6. **Record real outcomes.** No submission receipt for this project is presently recorded in `ledger/submissions.csv`. The official public leaderboard was checked on 2026-10-24 and displayed 0.4413 at #1; this is a leaderboard snapshot, not a receipt for this project. The GEMSDOE32 0.2778 remains a CLAIM without a receipt here; 0.3195 is the older prompt-cited snapshot.
+**HOLDOUT-DTI** (`gems57-pooled-hide-v2`; buffered whole-component hide/recover; 8 spatial folds, seeds 20 and 30; 22,663 withheld positives; 1,000 paired 20 km block bootstrap draws): candidate 0.046866 [0.040216, 0.053315]; R0 0.004006 [0.003424, 0.004690]; paired Δ +0.042860 [+0.036122, +0.049357]. This is not a DrivenData score.
 
-## Other repository issues to track
+## Critical uniqueness finding
 
-- **Registry scope is incomplete.** The local STEPOVER comparison covers 14 accessible rasters. A full all-site, private, or competition registry is unavailable, so “unique” must retain the scope qualifier.
-- **Data-use terms need owner review.** The manifest flags competition data from public mirrors as redistribution terms unchecked. The derived TIF is still a submission candidate with an auditable license/provenance question; confirm competition and source terms before wider distribution.
-- **Timestamp discrepancy.** Several inherited files are future-dated 2026-10-25 although the current review date is 2026-10-24. Their provenance is not known; flagged in `IRREGULARITIES.md`, not silently rewritten.
-- **Historical planning pages contained contradictory slot recommendations.** `SLOT_PLAN.md`, `docs/SUBMIT.md`, `docs/SUBMIT.html`, and `docs/index.html` are now aligned on no slot recommendation. Continue testing this contract.
-- **CI status:** review the GitHub Actions status before any later PR merge. Local tests are not a substitute for a workflow that actually completes.
+The initial in-repository 14-raster audit was too narrow and produced an incorrect selector-positive result. It is superseded. A broader scan of current default branches in 102 public `buffedlizard55-lab` repositories found 1,629 relevant TIFF paths / 1,285 unique Git blobs; 1,279 single-band rasters matched the target grid and were compared. The candidate's pre-placement surface and final dots both have **1.000000** forward 3-px overlap with accessible registry rasters; **131/1,279** exceed the 70% threshold. Worst absolute Spearman is below the 0.90 threshold (0.421367 on the surface; 0.492957 on the final dots), but overlap alone triggers the stop rule.
 
-## Stable local checks
+A concrete witness is [11GEMSDOE `gems-structural-area06-v1.tif`](https://github.com/buffedlizard55-lab/11GEMSDOE/blob/main/docs/downloads/gems-structural-area06-v1.tif), for which all candidate dots are within 3 px of positive support. Another witness is 17GEMSDOE's full-footprint `E-proba-multiscale` surface. Under the user's literal instruction, these are binding; this project does not waive the test because a raster has dense support. Full measurements/scope are `evidence/public_registry_uniqueness.json`.
 
-As measured during this review: 107 tests pass (17 existing Rasterio `PendingDeprecationWarning`s); `scripts/check_site.py` gates all 6 served zeros-outside TIFFs and confirms the primary audit hash; the manifest verifies 8/8 local bridge/parent inputs; the pinned parent gate re-measures all recorded invariants and reports `PARENT VERIFIED`. These checks do not regenerate holdout results or authenticate organizer scores.
+The scan is broad, not exhaustive: historical branches, private repositories, other owners, unlinked GitHub Pages files, zip-only assets, and assets outside the searched directories may be missing. This caveat does not undo a duplicate already found.
+
+## Highest-value work, in order
+
+1. **Do not submit this candidate.** Keep it as a negative deliverable; preserve the cross-site audit and the corrected negative verdict. The build script must fail closed if the matching global audit is missing or says duplicate.
+2. **Keep the registry scan repeatable/current.** `scripts/audit_public_registry.py` queries current public default-branch trees, downloads submission TIFF blobs to ignored `.cache/`, verifies Git blob SHA and size, and records failures. Run it periodically; never claim it covers deleted/history/site-hosted files.
+3. **Resolve the literal overlap gate with the operator/policy owner outside this agent.** Until then, any candidate with >70% forward 3-px overlap against any registry raster is a duplicate and must stop. Do not silently substitute arrival-only overlap or exempt dense rasters.
+4. **Calibrate with an organizer receipt.** The local evaluator recovers mapped catalogue segments; live target is private/new faults. A human may choose a different candidate only through the separate selector after reviewing policy and weekly quota. Upload/receipt entry are human-only.
+5. **Build an off-catalogue validation instrument** before further candidate experiments. Score it separately from HOLDOUT-DTI and label it PROXY, never private test performance.
+6. **Obtain the missing GeoDAWN stack through the official competition data tab** if authorized, hash/size/grid verify it, and check license/data terms. The feature stack is absent from this checkout's cache; band-specific hypotheses remain untested.
+7. **Resolve redistribution terms** for tracked `data/` and releases; see `IRREGULARITIES.md`.
+8. Keep both submission guides, homepage, run card, validator tests and status strings synchronized. A format pass means downloadable, not selected/submittable.
+
+## Candidate queue and experiment budget
+
+The five-hypothesis list is `docs/hypotheses_visible_collar_20261024.md`. Candidate 1 was tested and stopped by the duplicate gate. The lane protocol says stop when a duplicate is found; do not continue by testing more placement variations under this lane. Any future lane requires a fresh session, distinct hypothesis, pre-placement surface registry test, and the stated 3-experiment/2-hour budget.
+
+## Data and evidence boundary
+
+The bridged sample submission, catalogue, and parent are hash-verified against owner mirrors. That proves the local bytes match those pins; it does not authenticate them with DrivenData or establish redistribution permission. Official competition data and upload can require login. No credentials are stored or requested. A HOLDOUT-DTI value is never an organizer score.

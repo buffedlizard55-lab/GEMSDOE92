@@ -1,36 +1,10 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Executive summary — submit GEMSDOE92</title><link rel="stylesheet" href="style.css"></head>
-<body><main class="wrap">
-<p><a href="index.html">← Back to download page</a></p>
-<h1>Executive summary: how to make a DrivenData submission</h1>
-<div class="banner banner-ok"><strong>Download status: YES — format-valid.</strong> The linked zeros-outside GeoTIFF passes local format/range validation, including all-pixel finite values in [0,1].</div>
-<div class="banner banner-warn"><strong>Slot recommendation: NO — NOT RECOMMENDED.</strong> The STEPOVER candidate has HOLDOUT-DTI 0.0000 [0.0000, 0.0000], below the R0 proxy baseline. It is retained as a unique negative result. Do not spend a weekly slot on it unless a human makes and records an override.</div>
-
-<h2>1. Download</h2>
-<p><a class="btn" href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif" download>Download the GeoTIFF</a> <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.zip" download>Download the single-TIFF ZIP</a></p>
-<p>Submission name: <code>h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f</code></p>
-<p>Optional note (116/140 characters): <code>h33-h33-2-b2; STEPOVER step-over dots 3-10px off catalogue at visible trace tips; HOLDOUT-DTI 0.0000 [0.0000,0.0000]</code></p>
-<p>SHA-256: <code>e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205</code>. The <a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-audit.json">audit receipt</a> describes the bytes served from this site.</p>
-
-<h2>2. What local validation means</h2>
-<p>The local validator independently read the downloadable file and checked the reference grid and catalogue. It passed ten local gates: one float32 band; EPSG:32611; shape 3730×3292; transform equal to the sample-submission grid; finite values in [0,1]; no NaN in the footprint; zeros outside; no positive mass on the catalogue; and SHA-256 recorded. This directly addresses the reported portal error <code>Predicted values must be in range [0, 1]</code>.</p>
-<p>A local pass is not DrivenData acceptance, scientific validity, leaderboard score, or a recommendation to use a slot. The uniqueness comparison covers 14 locally accessible registry rasters only; it cannot certify uniqueness across every public, private, or unindexed site.</p>
-
-<h2>3. Competition form steps</h2>
-<ol>
-  <li>Sign in to the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData competition submission page</a>.</li>
-  <li>Choose “New submission” and upload the <code>.tif</code> above, or the supplied ZIP containing exactly one GeoTIFF.</li>
-  <li>Paste the submission name and optional note shown above. Verify the selected file name and submit only if you independently decide to override the negative slot recommendation.</li>
-  <li>After submission, copy the score and date from the submission-page receipt into the ledger as ORGANIZER-CONFIRMED. A local holdout value is never a competition score.</li>
-</ol>
-<p>Competition rules: <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">official rules PDF</a>. Detailed metric description: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">problem page</a>.</p>
-
-<h2>4. Evidence and limitations</h2>
-<ul>
-  <li><strong>HOLDOUT-DTI</strong> (gems57-pooled-hide-v2; 11,321 withheld positives; pooled DTI α=0.2, β=0.8, 300 m triangular kernel; 95% CI): candidate 0.0000 [0.0000, 0.0000]. R0 0.0037 [0.0031, 0.0044]. Negative result.</li>
-  <li>Leakage canary AUCs and registry overlap are in <code>evidence/run_card.json</code> and the site audit JSON. Canary values were below the 0.90 stop threshold; that does not rescue the negative holdout.</li>
-  <li>The full competition feature stack is not present in this checkout's cache, so the candidate's historical run card cannot be independently regenerated here. The shipped TIF's format, range, grid, and hash were independently rechecked from the local served copy.</li>
-  <li>No DrivenData authentication or submission receipt is available in this session. No upload, slot selection, or live score verification was performed.</li>
-</ul>
-<p><a href="hypotheses_20261024.md">Candidate-hypothesis comparison</a> · <a href="NEXT_STEPS.md">Remaining work and blockers</a> · <a href="index.html">Home</a></p>
-</main></body></html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Executive summary — submit GEMSDOE92 candidate</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="hero"><p class="kicker">Executive summary · DrivenData DOE GEMS Prize #306</p><h1>How to submit the generated GeoTIFF</h1><p class="lede">Format inspection and validation are automated in this project. The competition upload is a separate human action; this agent does not log in or spend slots.</p><p><a href="index.html">← Back to the one-click download</a></p></header>
+<main>
+<section><h2>Current artifact</h2><div class="banner banner-ok"><strong>FORMAT-VALID — OK TO DOWNLOAD.</strong> The zeros-outside file passes all 10 local MUST gates on bytes reread from disk: single-band float32, EPSG:32611, 3730 × 3292, matching geotransform, finite values in [0,1], no NaN inside, zeros outside, zero known-catalogue mass.</div><div class="banner banner-warn"><strong>NOT CLEARED FOR A SLOT — duplicate under the literal registry rule. Do not submit this candidate.</strong> A scan of 1,279 same-grid rasters found 100% forward 3-px overlap with at least one registry raster; 131 exceed the 70% stop threshold. Binding witness: <a href="https://github.com/buffedlizard55-lab/11GEMSDOE/blob/main/docs/downloads/gems-structural-area06-v1.tif">11GEMSDOE structural-area06</a>. No slot has been used. HOLDOUT-DTI cannot override this duplicate stop.</div><p><a class="btn" href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif" download>Download the submission GeoTIFF</a> <a class="btn btn-ghost" href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.zip" download>Download one-TIFF ZIP</a></p><p><strong>Submission name:</strong> <code>GEMSDOE92-visible-collar-r0-excluded-20261024</code><br><strong>Note (62 characters):</strong> <code>Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots</code></p></section>
+<section><h2>Three steps</h2><ol><li>Download the <strong>zeros-outside</strong> .tif above. Do not edit or re-encode it. Verify SHA-256 if desired: <code>60082b75a3d8e4648a858622f71f24257c8cfef79286a1a96147c59f05377da7</code>.</li><li>Open the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData New submission page</a> while signed into the registered competitor account. Choose the TIFF or the ZIP containing this one TIFF.</li><li>Enter the exact submission name and note above, then submit if selected through the separate slot-selection process. Record the organizer's actual receipt and score in <code>ledger/submissions.csv</code>; never label HOLDOUT-DTI as a competition score.</li></ol></section>
+<section><h2>Why this is not a leaderboard claim</h2><p><strong>HOLDOUT-DTI</strong> (`gems57-pooled-hide-v2`, eight buffered spatial folds, 22,663 withheld catalogue positives): candidate 0.046866 [0.040216, 0.053315], R0 0.004006 [0.003424, 0.004690], paired Δ +0.042860 [+0.036122, +0.049357]. This estimates hide-and-recover of mapped catalogue segments; it cannot establish a score on private, genuinely uncatalogued targets.</p><p>The site validates format automatically. The broader scan compared 1,279 current-branch, same-grid rasters and found a binding duplicate; 131 exceed 70% overlap. It is not exhaustive of historic or site-hosted assets. Do not submit this file.</p></section>
+<section><h2>Portal range error</h2><p>The upload error <code>Predicted values must be in range [0, 1]</code> is avoided by writing a zeros-outside TIFF with <code>nodata=None</code>, then rereading all 12,279,160 cells and checking finite `[0,1]` values. See the <a href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-audit.json">machine-readable audit</a> and <a href="downloads/visible_collar_run_card.json">run card</a>.</p></section>
+<section><h2>Official links</h2><ul><li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Problem description and metric</a></li><li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Competition rules PDF</a></li><li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Reference solution</a></li></ul></section>
+</main><footer><p>Human upload and slot selection remain external. No credentials are stored or requested.</p></footer></body></html>

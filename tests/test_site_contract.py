@@ -1,10 +1,10 @@
 """The public site must expose an obvious zeros-outside download and must never
 present a local HOLDOUT number as an organizer score.
 
-The current contract intentionally asserts an obvious primary download, explicit
-format-valid vs slot-recommendation distinction, the portal error explanation,
-evidence labels, an audit receipt matching served bytes, and links to every
-served candidate rather than relying on one stale method name.
+Updated 2026-10-24 after the expanded public registry scan found a literal duplicate stop.
+The contract asserts explicit format-valid vs slot-ineligible status, evidence
+labels, a byte-matched audit, and links to every served raster rather than one
+stale method name.
 """
 
 import json
@@ -25,23 +25,22 @@ def test_index_has_download_and_slot_warning():
     html = _index()
     # an obvious download, and the encoding that survives the portal validator
     assert "OK TO DOWNLOAD" in html
-    assert "NOT RECOMMENDED" in html
-    assert "unique-within-local-registry" in html
+    assert "NOT CLEARED FOR A WEEKLY SLOT" in html
+    assert "DUPLICATE UNDER THE LITERAL REGISTRY RULE" in html
     assert re.search(r'href="downloads/[^"]+-zeros\.tif"', html), \
         "no zeros-outside download is offered"
     # the portal failure the site exists to prevent must be named
     assert "Predicted values must be in range [0, 1]" in html
     # a slot warning must survive whatever the primary is
-    assert re.search(r"(weekly slot|3/week|weekly competition slot|human step)", html), \
+    assert re.search(r"(weekly slot|3/week|weekly competition slot|human step)", html, re.I), \
         "no weekly-slot caution on the page"
     # evidence discipline: holdout numbers must be labelled, and not dressed as scores
     assert "HOLDOUT-DTI" in html
     first_holdout = html.split("HOLDOUT-DTI")[1][:200]
     assert "ORGANIZER-CONFIRMED" not in first_holdout
-    # the unique-within-scan negative lane must be the obvious primary
-    assert "STEPOVER-tip10px-N5000" in html
+    # the negative lane must stay visible as a deliverable, with its verdict
+    assert "TIPGAPfar18f33" in html
     assert "negative" in html
-    assert "NOT RECOMMENDED FOR A WEEKLY SUBMISSION SLOT" in html
 
 
 def test_index_links_every_served_zeros_file():
@@ -68,9 +67,11 @@ def test_index_primary_has_an_audit_receipt_that_matches():
     assert audit_path.is_file(), f"no audit receipt beside the primary: {audit_path.name}"
 
     doc = json.loads(audit_path.read_text())
-    assert doc["overall_pass"] is True
+    assert doc["overall_pass"] is True  # format-valid is distinct from slot eligibility
+    assert doc["submission_eligible"] is False
     assert doc["sha256_zeros"] == hashlib.sha256(primary.read_bytes()).hexdigest()
-    assert all(g["ok"] for g in doc["gates_zeros"]), "audit records a failing gate"
+    assert all(g["ok"] for g in doc["gates_zeros"]), "audit records a failing format gate"
+    assert doc["public_registry_uniqueness"]["unique_under_literal_rule"] is False
 
 
 def test_submit_page_exists():

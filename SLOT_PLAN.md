@@ -1,49 +1,37 @@
-# Submission selector — evidence, not a slot recommendation
+# SLOT_PLAN — current selector state (2026-10-24)
 
-**Current decision:** no weekly slot is recommended. The local evidence has no candidate that both clears the literal registry-overlap rule and is positive on the available holdout. This plan is an audit summary only; selecting a slot is a separate human decision. No slot was used by the agent.
+## Current artifact: negative duplicate; no slot used
 
-## Current downloadable candidate
+`GEMSDOE92-visible-collar-r0-excluded-20261024` is the current primary download and a negative research deliverable. It passes all file-format gates. The initial 14-file local uniqueness scan was incomplete; the expanded literal registry scan across 1,279 matching-grid rasters in 102 public owner repositories found a duplicate. **Do not submit this candidate.**
 
-- **File:** `docs/downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif`
-- **Format:** **OK TO DOWNLOAD**; all 10 local gates pass on the served bytes. One float32 band, EPSG:32611, 3730 × 3292, matching sample-submission transform, all values finite and in [0,1], zero outside the footprint, zero mass on the mapped catalogue.
-- **Uniqueness:** saved scan passes against 14 locally accessible registry rasters (surface max Spearman 0.0277; final-dot max Spearman 0.0082; maximum 3-px dot overlap 0.2534). This is not global registry coverage.
-- **HOLDOUT-DTI:** evaluator `gems57-pooled-hide-v2`, 11,321 withheld positives, 95% CI `[0.0000, 0.0000]`: candidate 0.0000. R0 proxy baseline 0.0037 `[0.0031, 0.0044]`. Verdict **negative**; not recommended for a slot.
-- **Name:** `h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f`
-- **Note (116 characters):** `h33-h33-2-b2; STEPOVER step-over dots 3-10px off catalogue at visible trace tips; HOLDOUT-DTI 0.0000 [0.0000,0.0000]`
-- **Audit:** [`docs/downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-audit.json`](docs/downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-audit.json)
+- **HOLDOUT-DTI** `gems57-pooled-hide-v2`, 8 buffered folds, 22,663 withheld positives: candidate **0.046866 [0.040216, 0.053315]**; parent R0 **0.004006 [0.003424, 0.004690]**; paired Δ **+0.042860 [+0.036122, +0.049357]**.
+- Leakage canary (visible-fault distance alone): symmetric AUC **0.745593**, below 0.90.
+- **REGISTRY-MEASUREMENT:** pre-placement and final worst forward 3-px overlap **1.000000**; 131/1,279 rasters exceed 70%. Worst |Spearman ρ|: pre-placement **0.421367**, final **0.492957** (both below 0.90). Overlap alone triggers the stop rule.
+- Format validation: 10/10 gates pass. SHA-256 `60082b75a3d8e4648a858622f71f24257c8cfef79286a1a96147c59f05377da7`.
+- **Verdict: negative — duplicate under the literal gate; stop.** No weekly slot was selected or used.
 
-The holdout is catalogue-derived, so its structural zero does **not** establish zero performance on genuinely unmapped faults. It also cannot be used to rescue a candidate as a contest winner. The positive holdout results below fail uniqueness.
+Audit: `evidence/public_registry_uniqueness.json`; run card: `evidence/visible_collar_run_card.json`; file: `docs/downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif`.
 
-## Why the historical `0.2778` cannot be explained as a verified win
+## Scan scope and comparison boundary
 
-`h33-h33-2-b2` is recorded as a **CLAIM 0.2778** from the supplied GEMSDOE32 listing; this repository has no organizer receipt for it. A plausible mechanistic explanation is that a fixed prediction budget, spatial thinning, reduced redundant mass, and placement near structures can benefit a distance-tolerant asymmetric DTI. The available evidence does not prove this caused the reported value. The official public leaderboard page was checked on 2026-10-24 and displayed 0.4413 at #1 (public leaderboard snapshot, not a receipt for this project). The prompt's 0.3195 is an older conflicting snapshot. A higher live score is possible in principle, but no local result forecasts or confirms one.
+The scan covered current default-branch TIFF paths in `docs/downloads/`, `releases/`, and submission directories across 102 public repositories whose names match GEMSDOE in the `buffedlizard55-lab` account. Trees were complete in the API scan; 1,285 unique Git blobs were downloaded and SHA/size-verified, and 1,279 single-band rasters matching the sample grid were compared. The audit is not exhaustive of historic branches, unlinked/site-hosted assets, private repositories, zip-only artifacts, or other owners. One binding duplicate witness is sufficient to stop under the literal rule, independent of scan completeness.
 
-## Existing arms and disposition
+The largest overlap is 100% against `11GEMSDOE/docs/downloads/gems-structural-area06-v1.tif`; additionally, `17GEMSDOE_E-proba-multiscale` is positive across the full footprint and is also a binding overlap witness. We do not waive those because they are dense or continuous surfaces; the requested literal rule governs.
 
-All values in this table are from the recorded local holdout instruments; they are **not** leaderboard scores.
+HOLDOUT-DTI is a local catalogue hide-and-recover estimate, not a competition score, and cannot be compared with the prompt-reported **CLAIM 0.2778**. A prior repository record says the official public leaderboard was read on 2026-10-24 and showed 0.4413 at #1 (LEADERBOARD-SNAPSHOT, not a receipt for this candidate); the prompt's 0.3195 is an older conflicting snapshot. No ORGANIZER-CONFIRMED receipt for this candidate exists.
 
-| Candidate | HOLDOUT-DTI evidence | Registry result | Disposition |
-|---|---|---|---|
-| RELIEF p10 | `gems57-pooled-hide-v2`, 22,663 withheld positives; 0.006045 `[0.005187, 0.006927]`; Δ vs R0 +0.002039 `[0.001483, 0.002504]` | 99.38% of dots within 3 px of R0 | Duplicate under literal rule; no slot |
-| DILATATION p10/p12/p15 | `gems57-pooled-hide-v2`, 22,663 withheld positives; p12 0.005779 `[0.004863, 0.006851]`; Δ +0.00177 `[0.00111, 0.00246]` | 99.37–99.40% of dots within 3 px of R0 | Duplicate under literal rule; no slot |
-| TIPGAP FAR | `gems57-pooled-hide-v2`, 22,663 withheld positives; 0.002723 `[0.002324, 0.003131]`; Δ vs R0 −0.001283 | 67.00% within 3 px of R0 | Clears local overlap threshold but negative; no slot |
-| STEPOVER | `gems57-pooled-hide-v2`, 11,321 withheld positives; 0.0000 `[0.0000, 0.0000]` | Unique within 14-raster local scan | Downloadable negative result; no slot |
+## Historical results retained
 
-The RELIEF/DILATATION results above are not comparable to STEPOVER/TIPGAP across holdout versions and withheld-positive counts. Their internal comparisons use the evaluator versions stated in their run cards. The literal uniqueness rule governs; arrival-set interpretation does not override it.
+- DILATATION p10/p12/p15 and RELIEF p10 had positive local HOLDOUT-DTI but were flagged as R0 duplicates under the literal >70%/3px rule. Do not recommend them for a slot.
+- TIPGAP FAR and STEPOVER were negative on their documented holdout instruments. Keep as negative deliverables.
+- Parent R0's 0.2778 remains **CLAIM** until a dated competition receipt is recorded in `ledger/submissions.csv`.
 
-## Next work and stop conditions
+## Next steps (no more candidate experiments until selector/gates reconciled)
 
-1. Do not run another experiment until the shared experiment budget is explicitly reset and the authorized full feature stack is staged. `.cache/gems_inputs/training_features.tif` is absent in this checkout.
-2. Use the 3–5 untried mechanism hypotheses and source-availability notes in [`docs/hypotheses_20261024.md`](docs/hypotheses_20261024.md). The top candidate cannot presently be validated because the competition data download is login-gated here.
-3. After data access, test each feature alone as a leakage canary; derive catalogue features from visible segments only; withhold whole segments with a buffer; mask visible faults pixel-exactly; use pooled DTI α=0.2, β=0.8, 300 m triangular kernel, and report withheld count + 95% CI.
-4. Check surface correlation before placement and final-dot overlap/correlation after placement against the registry. Stop and log duplicate if a threshold is crossed. Run format validation on the actual site-served bytes and match its SHA to the audit receipt.
-5. Only then can the separate human selector consider spending a weekly slot. Copy a live score only from the organizer submission-page receipt into `ledger/submissions.csv`.
-
-## Sources
-
-- [DrivenData competition problem, provided features, and metric](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/)
-- [Official competition rules](https://docs.nlr.gov/docs/fy26osti/96647.pdf)
-- [USGS GeoDAWN data catalog](https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7)
-- [DOE GDR INGENIOUS submission 1391](https://gdr.openei.org/submissions/1391)
-- [EPSG:32611](https://epsg.io/32611)
-- [Faulds et al. structural investigations of Great Basin geothermal fields](https://www.osti.gov/servlets/purl/1110517)
+1. Keep the current candidate as a downloadable **negative** artifact; do not submit it.
+2. Run `scripts/audit_public_registry.py` periodically to refresh the expanded scan against current public branches; it records scan date/scope. Do not confuse public default branches with all historical/site-hosted assets.
+3. Resolve the literal overlap gate with a policy decision outside this agent's authority. Until then, any candidate with >70% overlap against any single indexed raster must stop; no arrival-only or dense-surface exception.
+4. Add an off-catalogue validation instrument. The current holdout's truth is the mapped catalogue and may not rank candidates for private uncatalogued targets.
+5. Obtain the missing GeoDAWN stack from the official competition data tab when authorized; current cache is absent. Hash-verify and record terms before testing the remaining hypotheses.
+6. Have the human selector review the actual current weekly quota. No credentials or slot were requested or used here.
+7. Resolve public-repository redistribution terms for committed rasters; see `IRREGULARITIES.md`.

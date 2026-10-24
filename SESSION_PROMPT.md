@@ -1,49 +1,58 @@
 # Session prompt — GEMSDOE92
 
-Read this file and `README.md` at the start of every session. This is the standing operator contract for the repository.
+Read this at the start of every session, together with `README.md`. The README is the short executive summary; this file is the durable project operating contract. Preserve the user's goals: a unique, easy-to-download submission GeoTIFF, automated format validation, transparent evidence, and no hallucinated claims.
 
 ## Mission
 
-Produce a unique, scientifically defensible GeoTIFF for DrivenData competition 306 (DOE GEMS Prize: hidden geothermal-related faults, NW Great Basin, EPSG:32611 at 100 m). The public Pages site must make the download obvious and state distinctly whether the file is format-valid to download and whether it is recommended for a weekly competition slot. Format inspection/validation must run in the project without a human inspector. A human competitor still authenticates, selects a slot, and uploads.
+Produce a **unique** GeoTIFF for DrivenData competition 306 (DOE GEMS Prize: hidden geothermal-related faults, NW Great Basin, EPSG:32611 100 m). The file must be obviously downloadable from the GitHub Pages site. Inspection and validation run in the project, without a human inspector in the loop. A human still performs the DrivenData upload and weekly-slot selection.
 
-The GEMSDOE32 `h33-h33-2-b2` value 0.2778 remains an owner-reported CLAIM without a submission-page receipt in this repository. The official public leaderboard was checked on 2026-10-24 and displayed 0.4413 at #1; this is an official leaderboard snapshot, not a receipt for GEMSDOE32 or GEMSDOE92. The prompt's 0.3195 is an older conflicting snapshot. Never elevate a CLAIM or leaderboard observation into an organizer receipt for this project's submission.
+Study the prompt-reported GEMSDOE32 `h33-h33-2-b2` **CLAIM 0.2778** and other site values as learning context only. They are not ORGANIZER-CONFIRMED receipts unless a submission-page receipt is recorded in `ledger/`. A prior repository record says the official public leaderboard was read on 2026-10-24 and showed 0.4413 at #1 (LEADERBOARD-SNAPSHOT, not a receipt for GEMSDOE32 or GEMSDOE92); the prompt's 0.3195 is an older conflicting snapshot. Never say a local holdout beats a live competition score.
+
+The goal is maximize the probability of placing well through reproducible science: collect public/official data where permitted, organize source and provenance, generate hypotheses, test using spatial holdouts, preserve negative results, and make an audited TIF easy to download. Keep Arena's core values explicit: **Maximize P(Win)** and **Own the Outcome**.
 
 ## Parallel-run protocol
 
-1. **One method lane.** Before placement and on final dots, compare against registry rasters. If Spearman rank correlation > 0.90 or >70% of dots are within 3 px of one registry raster, log duplicate and stop. State registry-scan coverage; a local index is not global proof.
-2. **Reuse shared tools.** Use the authorized cached feature stack, `vendor/gems57/evaluate_holdout.py`, and `vendor/gems57/submission_writer.py`. Hide whole fault segments with a buffer; derive catalogue features only from visible faults; mask visible faults pixel-exactly; evaluate pooled DTI α=0.2, β=0.8, 300 m triangular kernel. Fix shared tools in the template rather than making a private fork.
-3. **Label every performance value.** `HOLDOUT-DTI` must include evaluator version, withheld-positive count, and 95% CI. `ORGANIZER-CONFIRMED` must be copied from a submission-page receipt. A projection is never a score.
-4. **Leakage canary.** Test each feature alone on holdout; AUC >0.90 is leakage until proven otherwise.
-5. **Run card.** Record hypothesis, mechanism, named non-fault mimic, holdout DTI + CI, correlation/overlap vs registry, raster SHA-256, validator result (no NaN inside footprint, values [0,1], CRS/shape/transform match), submission name and note ≤140 characters, and verdict `promote` or `negative`.
-6. **Budget/selector.** Stop after 3 experiments or 2 hours. Do not pick competition submissions: weekly-slot promotion is a separate selector step. Negative results are deliverables.
+1. **Lane.** Stay in one named method. Before placement, compare the prospectivity surface with the accessible registry; after placement, compare final dots. If absolute Spearman rank correlation exceeds 0.90 or more than 70% of dots fall within 3 px of one registry raster's dots, log it as a duplicate and stop. Never reinterpret the threshold to make a result pass. Report local inventory scope; local uniqueness is not proof of uniqueness across every site.
+2. **Reuse.** Use the template's cached feature stack when it is actually available, `vendor/gems57/evaluate_holdout.py`, and `vendor/gems57/submission_writer.py` or the shared writer. Holdout = hide whole fault segments/components with a buffer; derive all catalogue-based features from visible faults only; mask visible faults pixel-exactly; pooled DTI α=0.2, β=0.8, 300 m triangular kernel. Fix a shared tool once in the template, never create a private fork.
+3. **Label every number** as HOLDOUT-DTI (evaluator version, withheld positives, 95% CI) or ORGANIZER-CONFIRMED (copied from submission-page receipt). CLAIM, MODEL, PROXY, and REGISTRY-MEASUREMENT must remain distinct. A projection is never written as a score.
+4. **Leakage canary.** Test each feature alone on the holdout before trusting a result. AUC above 0.90 means leakage until investigated. Use the symmetric AUC if direction could reverse.
+5. **Run card JSON:** hypothesis; mechanism; named non-fault process that could mimic it; holdout DTI + CI; correlation/overlap vs registry; raster SHA-256; validator output (no NaN inside footprint, values in [0,1], CRS/shape/transform match); submission name + note ≤140 characters; verdict promote / negative. Negative results are deliverables.
+6. **Budget.** Stop after 3 experiments or 2 hours. Do not pick submissions; promotion to a real slot is a separate selector step within the weekly cap.
+7. **Hypothesis request.** Before implementing, rank 3–5 candidate geological hypotheses; for each identify layers, physical signature, why it could detect a fault absent from the catalogue, difference from this repo, expected value/cost, and required data. If new data are needed, name a free official source and verify availability before calling the candidate viable. Do not claim a source was retrieved if it was not.
 
-## Current verified project state (reviewed 2026-10-24)
+## Site / download rules
 
-- The site download is `h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif` (zeros outside). Local format/range/grid validation passes; full receipt is `docs/downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros-audit.json`.
-- The candidate is **OK TO DOWNLOAD, NOT RECOMMENDED FOR A SLOT**. Its saved run card reports HOLDOUT-DTI 0.0000 [0.0000, 0.0000], evaluator `gems57-pooled-hide-v2`, 11,321 withheld positives. It is unique only against the documented 14 locally accessible registry rasters.
-- The previous RELIEF/DILATATION positive holdout arms fail the literal >70% within-3-px overlap rule against R0; record them as duplicates, not promoted candidates.
-- No new experiment was performed in the latest review. The three-experiment budget was already consumed; the full `training_features.tif` stack is absent from the current cache.
+- Zeros-outside encoding is the only submission download offered (portal error: `Predicted values must be in range [0, 1]`).
+- Homepage must clearly say whether the file is OK to download **and** whether it is recommended for a weekly slot.
+- Executive summary subpage explains the DrivenData form (file, name, note).
+- No human inspection is needed for format validation (`scripts/check_site.py`, `gems.gates`, `gems57.validate`). Human upload and selector remain separate.
+- Never silently change `nodata`, clip out-of-range values, or convert NaNs without a recorded rationale.
 
-## Site and submission rules
+## Trusted source starting points
 
-- Zeros-outside encoding is the offered download because it is all finite and avoids the reported portal range error.
-- Executive summary: `docs/SUBMIT.html`; lowercase duplicate and `executive-summary.html` point to that canonical page.
-- `scripts/check_site.py`, `gems.gates`, and `gems57.validate` perform local format preflight. Local PASS is not organizer acceptance or performance evidence.
-- Never claim a holdout score predicts organizer score. Do not submit or spend a weekly slot from this agent session.
+- Competition overview/problem: https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/
+- Competition about: https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/
+- Competition data: https://www.drivendata.org/competitions/306/competition-doe-gems/data/
+- DrivenData reference solution: https://github.com/drivendataorg/gems-prize-reference-solution
+- Competition rules PDF: https://docs.nlr.gov/docs/fy26osti/96647.pdf
+- USGS GeoDAWN catalog: https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7
+- GDR / INGENIOUS: https://gdr.openei.org/submissions/1391
+- EPSG:32611: https://epsg.io/32611
+- Tversky index: https://en.wikipedia.org/wiki/Tversky_index
+- Great Basin Center for Geothermal Energy: https://gbcge.org/current-projects/ingenious/
+- USGS 3DEP: https://www.usgs.gov/3d-elevation-program
 
-## Official sources
+Competition data may be login-gated. Follow license and data-use terms; owner-mirror hash checks establish byte identity, not organizer authentication or redistribution permission.
 
-- https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/
-- https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/
-- https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/
-- https://www.drivendata.org/competitions/306/competition-doe-gems/data/
-- https://github.com/drivendataorg/gems-prize-reference-solution
-- https://docs.nlr.gov/docs/fy26osti/96647.pdf
-- https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7
-- https://gdr.openei.org/submissions/1391
-- https://epsg.io/32611
-- https://www.osti.gov/servlets/purl/1110517
+## Current session result (2026-10-24)
 
-## Core values
+One candidate method was tested: R0-excluded visible-fault collar. Builder: `scripts/build_visible_collar_submission.py`. It generated `docs/downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif` and its run card is `evidence/visible_collar_run_card.json`.
 
-Maximize P(Win): weigh evidence, upside, and risk rather than optimizing for a flattering narrative. Own the outcome end to end: record negative results, blockers, and validation limits honestly.
+- **HOLDOUT-DTI** `gems57-pooled-hide-v2`, 8 buffered spatial folds, 22,663 withheld positives: candidate 0.046866 (95% CI 0.040216–0.053315); parent R0 0.004006 (0.003424–0.004690); paired difference +0.042860 (0.036122–0.049357). These are local holdout values, not competition scores.
+- **Leakage canary:** visible-fault distance alone, symmetric AUC 0.745593 (<0.90).
+- **REGISTRY-MEASUREMENT:** the initial local-only comparison passed on 14 rasters, but the expanded literal scan found 1,279 matching-grid rasters across 102 public owner repositories. Pre-placement and final overlap both reach 1.000000; 131 rasters exceed 70%. Worst |ρ| is 0.421367 / 0.492957, below the 0.90 stop, but overlap triggers the binding duplicate rule. See `evidence/public_registry_uniqueness.json`.
+- **Validator:** 10/10 local MUST gates pass; all finite, range [0,1], zero outside; EPSG:32611, 3730×3292, template transform.
+- Verdict: **negative — duplicate under the literal registry rule; stop and do not submit**. No weekly slot was selected or used. The local result may reward recovery of mapped catalogue structure and does not prove discovery of new faults.
+- The GeoDAWN training stack is not present in this checkout's local cache. The band-based hypotheses in `docs/hypotheses_visible_collar_20261024.md` remain untested.
+
+The earlier TIPGAP FAR result (2026-10-24) is a separate negative deliverable; preserve it and its evidence. Do not overwrite historical evidence or mistake it for this session's primary.

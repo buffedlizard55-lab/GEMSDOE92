@@ -22,7 +22,7 @@ The competition page describes the target as geological faults, says the public 
 
 The repository's STEPOVER run card records this recipe: derive visible trace tips from the visible catalogue only; construct strike continuation/step-over favourability; select off-catalogue dots; and use `gems57-pooled-hide-v2` with buffered whole-segment holdout, pooled DTI α=0.2, β=0.8, 300 m triangular kernel. The run card reports 11,321 withheld positives and HOLDOUT-DTI `0.0000 [0.0000, 0.0000]` vs R0 proxy baseline `0.0037 [0.0031, 0.0044]`. Its stated explanation is a structural zero: held truth is a subset of the catalogue, while the candidate is constrained away from the full catalogue. The zero does not establish the live score for genuinely unmapped faults.
 
-The saved lane scan reports a maximum surface rank correlation 0.0277, final-dot rank correlation 0.0082, and maximum 3-px dot overlap 0.2534 for 14 locally accessible registry rasters. Thus it clears the specified numeric thresholds only within that local scan. It is format-valid and available for download, but its negative result means **not recommended for a weekly slot**.
+The saved lane scan's 14-file local comparison reported maximum surface rank correlation 0.0277, final-dot rank correlation 0.0082, and maximum 3-px dot overlap 0.2534; these clear thresholds only within that incomplete local scan. A later broader audit found a full-support duplicate witness: under the literal >70%/3-px rule, the STEPOVER and other nonempty candidates are not cleared for a slot. The file remains format-valid and downloadable, but its HOLDOUT-DTI is negative and global uniqueness fails.
 
 ### RELIEF and DILATATION — positive local holdout, failed literal uniqueness rule
 

@@ -3,82 +3,90 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GEMSDOE92 — submission download and validation</title>
+  <meta name="description" content="Auditable, locally validated GeoTIFF candidate for DrivenData DOE GEMS Prize #306.">
+  <title>GEMSDOE92 — GEMS submission workbench</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="hero">
-  <p class="kicker">DOE GEMS Prize · DrivenData competition 306</p>
-  <h1>Submission file &amp; validation status</h1>
-  <p class="lede">A single-band GeoTIFF is ready to download. Format validation and scientific selection are separate decisions; this file passes the local format and uniqueness checks but is <strong>NOT RECOMMENDED FOR A WEEKLY SUBMISSION SLOT</strong> because its holdout result is negative.</p>
-  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> All-finite float32 values in [0, 1], one band, no NaN in the scored footprint, zeros outside, and exact EPSG:32611 grid match. Ten local MUST gates passed on re-read.</div>
-  <div class="banner banner-warn"><strong>⚠ NOT RECOMMENDED FOR A WEEKLY SUBMISSION SLOT.</strong> The candidate is unique-within-local-registry against the 14 rasters in the locally accessible scan, but its HOLDOUT-DTI is 0.0000 [0.0000, 0.0000], below R0. This is a negative research deliverable, not a prediction of leaderboard performance. Slot selection remains separate; no slot was used.</div>
+  <p class="kicker">DOE GEMS Prize · DrivenData #306 · EPSG:32611 · 100 m</p>
+  <h1>GeoTIFF candidate — format validated, slot blocked</h1>
+  <p class="lede">Download the all-finite, single-band GeoTIFF. Its byte-level audit, holdout result, and local-registry uniqueness checks are published beside the file.</p>
+  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> All 10 local MUST gates pass: one float32 band; CRS, shape and transform match; finite values in [0,1]; no NaN inside the footprint; zeros outside; zero known-fault mass; SHA-256 recorded.</div>
+  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE.</strong> A broader scan checked 1,279 unique, single-band, template-grid rasters in current default branches of 102 public GEMSDOE-named repositories. The candidate's pre-placement surface and final dots each have 100% forward 3-px overlap with registry raster <a href="https://github.com/buffedlizard55-lab/11GEMSDOE/blob/main/docs/downloads/gems-structural-area06-v1.tif"><code>11GEMSDOE/gems-structural-area06-v1.tif</code></a>; 131 rasters exceed the 70% stop threshold. The duplicate rule governs; stop and do not submit this candidate. See <a href="downloads/public_registry_uniqueness.json">public-registry audit</a>.</div>
+  <div class="banner banner-warn"><strong>HOLDOUT-DTI improvement does not override uniqueness.</strong> No live submission slot has been used. This is a negative deliverable: it may still be downloaded for review, but it is not recommended or cleared for competition submission. The holdout can reward recovery of mapped catalogue faults and does not prove live performance on uncatalogued faults.</div>
+  <div class="banner banner-warn">The portal error <code>Predicted values must be in range [0, 1]</code> is guarded against: this download was reread from disk and every cell is finite and in range. Upload the <strong>zeros-outside</strong> encoding.</div>
 </header>
 
 <main>
 <section id="download" class="download-card">
-  <h2>Download the GeoTIFF</h2>
-  <p class="filename">h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif</p>
-  <p><a class="btn" href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif" download>Download validated .tif</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.zip" download>Download .zip (one TIFF)</a></p>
+  <h2>Download the submission</h2>
+  <p class="filename">GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif</p>
+  <p><a class="btn" href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif" download>Download GeoTIFF (.tif)</a>
+     <a class="btn btn-ghost" href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.zip" download>Download ZIP (one TIFF)</a></p>
   <dl class="meta">
-    <div><dt>Submission name</dt><dd><code>h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f</code></dd></div>
-    <div><dt>Optional note (116 characters)</dt><dd><code>h33-h33-2-b2; STEPOVER step-over dots 3-10px off catalogue at visible trace tips; HOLDOUT-DTI 0.0000 [0.0000,0.0000]</code></dd></div>
-    <div><dt>SHA-256</dt><dd><code>e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205</code></dd></div>
-    <div><dt>Raster</dt><dd>5,000 positive pixels; 1 band; float32; EPSG:32611; 3730 × 3292; 100 m</dd></div>
-    <div><dt>Machine audit</dt><dd><a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-audit.json">Download audit JSON</a> · <a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-run-card.json">Full run card</a> · <a href="SUBMIT.html">Executive summary / submission steps</a></dd></div>
+    <div><dt>Submission name</dt><dd><code>GEMSDOE92-visible-collar-r0-excluded-20261024</code></dd></div>
+    <div><dt>Note (62 chars)</dt><dd><code>Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots</code></dd></div>
+    <div><dt>SHA-256</dt><dd><code>60082b75a3d8e4648a858622f71f24257c8cfef79286a1a96147c59f05377da7</code></dd></div>
+    <div><dt>Grid / values</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · float32 · [0,1] · 37,654 unit-mass dots</dd></div>
+    <div><dt>Audit receipt</dt><dd><a href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-audit.json">Format and local-uniqueness JSON</a> · <a href="downloads/visible_collar_run_card.json">full run card</a></dd></div>
   </dl>
-  <p><strong>Meaning of “OK to download”:</strong> the file is locally format-valid and safe from the reported <code>Predicted values must be in range [0, 1]</code> error. It does <em>not</em> mean that the candidate is expected to score well, accepted by DrivenData, or recommended for upload.</p>
+  <p><a href="SUBMIT.html">Executive summary: submit in three steps</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData submission page</a></p>
 </section>
 
 <section>
-  <h2>What was built and what it found</h2>
-  <p><strong>Method lane: visible-trace step-overs.</strong> The candidate places 5,000 unit-mass pixels in a strike-aligned 3–10 px zone around visible mapped trace tips, with zero mass on the mapped catalogue and more than 3 px catalogue clearance. The named non-fault mimic is erosional notches, alluvial-fan heads, or pluvial-lake shoreline terminations that can resemble fault-tip geometry.</p>
-  <p><strong>HOLDOUT-DTI</strong> — evaluator <code>gems57-pooled-hide-v2</code>; 11,321 withheld positives; pooled DTI α=0.2, β=0.8, 300 m triangular kernel; 95% CI: candidate <strong>0.0000 [0.0000, 0.0000]</strong>, R0 proxy baseline <strong>0.0037 [0.0031, 0.0044]</strong>. The run card identifies this as a structural zero for the particular catalogue-derived holdout and a negative result. It is not an organizer score and does not establish how a genuinely new fault would score.</p>
-  <p><strong>Uniqueness scan:</strong> the saved run card reports maximum surface rank-correlation 0.0277, final-dot rank-correlation 0.0082, and maximum 3-px dot overlap 0.2534 against 14 locally accessible registry rasters. These are local scan statistics, not proof of global uniqueness; external, private, or unindexed rasters may be missing.</p>
-  <p><strong>Format audit:</strong> all 10 local MUST gates pass. Every raster cell is finite; observed values are 0 and 1; outside-footprint cells are zero. The audit JSON records CRS, dimensions, transform, ranges, dot count, SHA-256, and individual gate outcomes.</p>
+  <h2>What was tested</h2>
+  <p><strong>Hypothesis:</strong> blind splays, relay fractures, or parallel strands may lie in a narrow 200–300 m collar around visible mapped faults, outside the inherited R0 dots' 300 m halo. The holdout-placement surface uses visible catalogue geometry only. The final file also excludes the full known-fault catalogue. This geometric association is not proof of new faults.</p>
+  <p><strong>Mechanism:</strong> place 37,654 dots at legal cells 2–3 pixels from visible traces, excluding all cells within 3 pixels of R0. Unlike TIPGAP/STEPOVER, this is a full-line collar, not an endpoint detector. Named non-fault mimic: drainage/alluvial-fan margins or lithologic contacts can create nearby lineaments.</p>
+  <p><strong>Leakage canary:</strong> visible-fault distance alone has symmetric AUC 0.745593, below the 0.90 investigation threshold.</p>
+  <h3>HOLDOUT-DTI (not a competition score)</h3>
+  <p>Evaluator <code>gems57-pooled-hide-v2</code>; buffered whole-component hide/recover; 8 spatial folds (4 quadrants × seeds 20 and 30); 22,663 withheld positives; α=0.2, β=0.8, 300 m triangular kernel; 1,000 paired spatial-cluster draws.</p>
+  <table><thead><tr><th>Arm</th><th>HOLDOUT-DTI</th><th>95% CI</th></tr></thead>
+  <tbody>
+    <tr><td>Candidate</td><td>0.046866</td><td>[0.040216, 0.053315]</td></tr>
+    <tr><td>Parent R0</td><td>0.004006</td><td>[0.003424, 0.004690]</td></tr>
+    <tr><td>Paired difference vs R0</td><td>+0.042860</td><td>[+0.036122, +0.049357]</td></tr>
+  </tbody></table>
+  <p>These are local catalogue-recovery estimates only. They cannot be compared numerically with the prompt-reported CLAIM 0.2778 or any leaderboard result, and do not establish live competition performance.</p>
+  <h2>What might explain the reported 0.2778 — and can this beat it?</h2>
+  <p>The supplied GEMSDOE32 lineage is consistent with a fixed-budget ridge candidate set, spatial thinning to reduce redundant hits, pruning low-value mass, and avoiding known traces. Under the asymmetric distance-weighted Tversky score, a well-placed, spatially distinct dot can credit nearby hidden truth, while redundant or distant mass adds false-positive cost. This is a plausible mechanistic explanation, not a proven causal account: this checkout lacks the exact organizer receipt, private truth, and confirmation that the listed bytes were the evaluated artifact.</p>
+  <p>The repository's prior recorded read of the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">official public leaderboard</a> on 2026-10-24 showed 0.4413 at #1 (LEADERBOARD-SNAPSHOT, not a submission receipt for GEMSDOE32 or GEMSDOE92); the prompt's 0.3195 is an older conflicting snapshot. This candidate's HOLDOUT-DTI does not answer whether it can beat CLAIM 0.2778. An organizer-confirmed submission receipt is the only valid live comparison.</p>
 </section>
 
 <section>
-  <h2>What does the reported 0.2778 mean?</h2>
-  <p>The file named <code>h33-h33-2-b2</code> is associated with a reported value of <strong>0.2778</strong> in the supplied GEMSDOE32 history. This repository records it as an owner-reported <strong>CLAIM</strong>, not an ORGANIZER-CONFIRMED receipt. Its documented lineage is consistent with a fixed-budget, spatially thinned H19-5 ridge prediction, filtering/reallocating some dots, and avoiding known traces. Those design choices are plausible under a distance-tolerant, asymmetric Tversky metric, which rewards useful nearby hits while penalizing redundant false-positive mass. They do not prove why the submission obtained that score: the receipt and original private test labels are unavailable here.</p>
-  <p>The official public leaderboard page was checked on 2026-10-24 and displayed 0.4413 at #1 (official leaderboard snapshot, not a submission-page receipt for GEMSDOE32 or this file). The prompt's 0.3195 is an older conflicting snapshot. A higher score is possible in principle but cannot be forecast or claimed from the local holdout. The honest test is a dated ORGANIZER-CONFIRMED receipt after a human upload.</p>
-  <p>Read the <a href="hypotheses_20261024.md">ranked hypotheses and next validation plan</a>, <a href="ANALYSIS.md">analysis notes</a>, and <a href="NEXT_STEPS.md">remaining blockers</a>.</p>
+  <h2>Uniqueness measurement and scope</h2>
+  <p><strong>Binding cross-site REGISTRY-MEASUREMENT:</strong> pre-placement surface worst |Spearman ρ| 0.421367; final dots worst |ρ| 0.492957 (both below 0.90), but worst forward overlap is 1.000000 in both phases; 131 of 1,279 rasters exceed 70%. The same result appears against a specific archived site raster; the stop rule requires logging a duplicate. The expanded audit covers current default branches and submission directories in 102 public owner repositories, not every historic branch or other-owner site, but this single duplicate witness is already sufficient to stop.</p>
+  <p>The earlier 14-raster local-only comparison passed because that registry was incomplete. It has been superseded by this broader binding scan; do not treat the local-only result as clearance.</p>
+  <p>The site's exact format gates run in-project without a human inspector. Competition submission itself is separate: the agent has no DrivenData credentials and does not upload.</p>
 </section>
 
 <section>
-  <h2>Archived comparison rasters — not recommendations</h2>
-  <p>These older zeros-outside candidates are retained for reproducibility. The RELIEF arm and DILATATION arms (99.37–99.40% of dots within 3 px of R0) are logged as duplicates under the literal registry-overlap rule; TIPGAP FAR passed the local overlap scan but has a negative HOLDOUT-DTI. None is recommended for a competition slot. The primary download above is the unique-within-local-scan STEPOVER negative result.</p>
+  <h2>Submission guide and research</h2>
+  <p><a href="SUBMIT.html">Executive summary and three submission steps</a> · <a href="hypotheses_visible_collar_20261024.md">Five ranked geological hypotheses</a> · <a href="../SESSION_PROMPT.md">Session protocol</a> · <a href="../IRREGULARITIES.md">Irregularities and limitations</a></p>
+  <h3>Official references</h3>
   <ul>
-    <li><a href="downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif">RELIEF p10</a> — duplicate by >70% overlap with R0.</li>
-    <li><a href="downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif">DILATATION p10</a> — duplicate by >70% overlap with R0.</li>
-    <li><a href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif">DILATATION p12</a> — duplicate by >70% overlap with R0.</li>
-    <li><a href="downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif">DILATATION p15</a> — duplicate by >70% overlap with R0.</li>
-    <li><a href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif">TIPGAP FAR</a> — 67.00% within 3 px of R0; negative HOLDOUT-DTI.</li>
+    <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Competition problem and metric</a></li>
+    <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">Competition about page</a></li>
+    <li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Competition rules PDF</a></li>
+    <li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">DrivenData reference solution</a></li>
+    <li><a href="https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7">USGS GeoDAWN catalog</a></li>
+    <li><a href="https://gdr.openei.org/submissions/1391">GDR / INGENIOUS</a></li>
+    <li><a href="https://epsg.io/32611">EPSG:32611</a></li>
   </ul>
 </section>
 
 <section>
-  <h2>Submission in three steps</h2>
-  <ol>
-    <li>Download the <code>.tif</code> above (or the supplied ZIP containing exactly one TIFF).</li>
-    <li>On DrivenData, open competition 306 → New submission, select the file, and paste the displayed name and optional note. The human competitor must authenticate and submit; this project does not upload or use a weekly slot.</li>
-    <li>Record the submission-page receipt and date as ORGANIZER-CONFIRMED. Do not replace a holdout result with a leaderboard claim.</li>
-  </ol>
-  <p><a href="SUBMIT.html">Full executive summary and exact form instructions</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData submissions page</a></p>
-</section>
-
-<section>
-  <h2>Official references</h2>
+  <h2>Archived candidate downloads</h2>
+  <p>These files are prior lane deliverables, not the primary candidate. Their individual evidence and verdicts must be read before any upload; some are negative or fail the current uniqueness stop.</p>
   <ul>
-    <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData problem, dataset, CRS, and metric</a></li>
-    <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">DrivenData about page</a> · <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">official competition rules PDF</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">official public leaderboard (checked 2026-10-24)</a> · <a href="https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html">GEMSDOE32 historical H33-2-B2 page</a></li>
-    <li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Organizer reference solution</a></li>
-    <li><a href="https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7">USGS GeoDAWN catalog record</a> · <a href="https://gdr.openei.org/submissions/1391">DOE Geothermal Data Repository / INGENIOUS</a></li>
-    <li><a href="https://epsg.io/32611">EPSG:32611</a> · <a href="https://www.osti.gov/servlets/purl/1110517">Faulds, Hinz &amp; Coolbaugh: Great Basin geothermal structural settings</a></li>
+    <li><a href="downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif">DILATATION p10 — zeros-outside</a> (duplicate of R0 under literal gate)</li>
+    <li><a href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif">DILATATION p12 — zeros-outside</a> (duplicate of R0 under literal gate)</li>
+    <li><a href="downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif">DILATATION p15 — zeros-outside</a> (duplicate of R0 under literal gate)</li>
+    <li><a href="downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif">RELIEF p10 — zeros-outside</a> (prior lane; see its audit)</li>
+    <li><a href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif">TIPGAP far18f33 — zeros-outside</a> (negative HOLDOUT-DTI deliverable)</li>
+    <li><a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif">STEPOVER tip10px N5000 — zeros-outside</a> (HOLDOUT-DTI negative; see <a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-audit.json">audit</a> and <a href="downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-run-card.json">run card</a>; local uniqueness only, not global clearance)</li>
   </ul>
-  <p class="small">Repository review verified the local artifacts and tests. External competition pages and owner mirrors are not equivalent to an organizer receipt; sources and access limits are recorded in the project documentation.</p>
 </section>
 </main>
-<footer><p>GEMSDOE92 · maximize evidence quality; own both positive and negative outcomes.</p></footer>
+<footer><p>Evidence labels: HOLDOUT-DTI = local hide-and-recover; CLAIM = unverified reported score; ORGANIZER-CONFIRMED = copied from a competition receipt. A local result is never a leaderboard score.</p></footer>
 </body></html>

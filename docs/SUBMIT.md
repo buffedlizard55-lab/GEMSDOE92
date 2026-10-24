@@ -1,27 +1,44 @@
-# Submission executive summary
+# Submission executive summary — GEMSDOE92 candidate
 
-## Download status
+## Status: OK TO DOWNLOAD, NOT CLEARED TO SUBMIT
 
-**OK TO DOWNLOAD — format-valid.** The project landing page offers a zeros-outside, all-finite float32 GeoTIFF that matches the sample grid and passes all local MUST gates. The downloadable raster is unique within the recorded 14-raster local registry scan.
+The primary file is a format-valid, all-finite, zeros-outside float32 GeoTIFF and passes all 10 local MUST gates. The separate uniqueness gate **fails**: a broader scan of 1,279 same-grid registry rasters found 100% forward 3-px overlap with multiple registry rasters (131 exceed the 70% stop threshold). Per the operator's literal protocol, this is a duplicate and must not consume a competition slot.
 
-**NOT RECOMMENDED FOR A WEEKLY SUBMISSION SLOT.** The STEPOVER candidate is a negative result on the local holdout. Local validation and local uniqueness do not imply contest performance or organizer acceptance.
+- [Download candidate TIF (negative deliverable)](downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif)
+- [Download ZIP containing one TIFF](downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.zip)
+- [Format + public-registry audit](downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-audit.json)
+- [Full run card](downloads/visible_collar_run_card.json)
+- [Public registry scan and scope](downloads/public_registry_uniqueness.json)
 
-- [Download GeoTIFF](downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif)
-- [Download ZIP containing one TIFF](downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.zip)
-- [Machine audit receipt](downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-audit.json)
+**Do not submit this candidate.** The holdout improvement does not override the duplicate stop. No slot was used.
 
-**Submission name:** `h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f`
+## Research evidence (not a contest score)
 
-**Optional note (116/140 characters):** `h33-h33-2-b2; STEPOVER step-over dots 3-10px off catalogue at visible trace tips; HOLDOUT-DTI 0.0000 [0.0000,0.0000]`
+**HOLDOUT-DTI** — evaluator `gems57-pooled-hide-v2`; eight buffered spatial folds (four quadrants × seeds 20 and 30); 22,663 withheld catalogue positives; α=0.2, β=0.8, 300 m triangular kernel; 1,000 paired 20 km spatial-cluster bootstrap draws:
 
-## Evidence
+- Candidate: `0.046866`, 95% CI `[0.040216, 0.053315]`.
+- Parent R0: `0.004006`, 95% CI `[0.003424, 0.004690]`.
+- Paired difference: `+0.042860`, 95% CI `[+0.036122, +0.049357]`.
+- Leakage canary, visible-fault distance alone: symmetric AUC `0.745593` (<0.90 stop).
 
-- **HOLDOUT-DTI** — evaluator `gems57-pooled-hide-v2`; 11,321 withheld positives; pooled DTI α=0.2, β=0.8, 300 m triangular kernel; 95% CI: `0.0000 [0.0000, 0.0000]`. R0 proxy baseline: `0.0037 [0.0031, 0.0044]`. Verdict negative.
-- **Local registry scan:** 14 locally accessible rasters; the saved card reports worst surface Spearman 0.0277, final-dot Spearman 0.0082, and maximum 3-px overlap 0.2534. This is not proof of global uniqueness.
-- **Local format preflight:** single-band float32, EPSG:32611, shape 3730×3292, sample transform match, all values finite in [0,1], no NaN inside footprint, zeros outside, zero positive catalogue mass. Audit SHA-256 matches the served TIF.
+This hide-and-recover result rewards recovery of mapped catalogue structure and does not show live performance on private, genuinely uncatalogued faults.
 
-## Competition form
+## GeoTIFF format audit
 
-The human competitor must sign in to the [DrivenData submissions page](https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/), select “New submission”, upload the `.tif` (or ZIP containing exactly one TIFF), and paste the name and optional note above. Do not submit this candidate unless a human explicitly chooses to override the negative recommendation. After upload, record the score/date from the submission-page receipt as **ORGANIZER-CONFIRMED**. The agent does not authenticate, upload, or spend a slot.
+All ten local gates pass: one float32 band; EPSG:32611; shape 3730×3292; matching sample geotransform; finite values in `[0,1]`; no NaN inside the footprint; zeros outside; no positive catalogue mass. This is **format-valid/downloadable**, not **submission-eligible**.
 
-See the [public landing page](index.html), [ranked hypotheses and data access assessment](hypotheses_20261024.md), and [current slot plan](../SLOT_PLAN.md).
+## Form fields (for archive/review only; not a recommendation to upload)
+
+- Name: `GEMSDOE92-visible-collar-r0-excluded-20261024`
+- Note (62 characters): `Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots`
+- SHA-256: `60082b75a3d8e4648a858622f71f24257c8cfef79286a1a96147c59f05377da7`
+
+The human competitor must authenticate and use the separate selector/weekly quota; this agent does not upload or spend a slot. The registration audit scope covers current public default branches in 102 owner repositories, not all historical/private/site-hosted or other-owner files. The duplicate witness is sufficient to stop under the literal rule.
+
+## Context: GEMSDOE32 claim and leaderboard
+
+`h33-h33-2-b2` at `0.2778` is an owner-reported **CLAIM** without an organizer receipt in this ledger. A plausible, unproven mechanism is a fixed budget of ridge candidates, spatial thinning to reduce redundant mass, pruning, and avoiding known traces under the distance-tolerant asymmetric DTI. The exact evaluated artifact and private truth are unavailable here, so the cause cannot be established.
+
+The repository records a 2026-10-24 read of the official public leaderboard showing `0.4413` at #1 (**LEADERBOARD-SNAPSHOT**, not a receipt for GEMSDOE32 or this candidate); the prompt's `0.3195` is an older conflicting snapshot. This HOLDOUT-DTI is not comparable to either public leaderboard value. A genuine score comparison requires an organizer receipt after a separate human submission.
+
+Canonical HTML: [`SUBMIT.html`](SUBMIT.html). Main site: [`index.html`](index.html).

@@ -1,0 +1,198 @@
+{
+  "schema": "gemsdoe92-public-registry-uniqueness.v1",
+  "reviewed_utc": "2026-10-24T08:26:13.807542+00:00",
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "binding_rule": "literal: absolute Spearman >0.90 OR >70% of candidate dots within 3 px of any registry raster; no representation exemption",
+  "candidate": {
+    "name": "GEMSDOE92-visible-collar-r0-excluded-20261024",
+    "sha256": "60082b75a3d8e4648a858622f71f24257c8cfef79286a1a96147c59f05377da7",
+    "dots": 37654
+  },
+  "inventory": {
+    "owner": "buffedlizard55-lab",
+    "matching_public_repositories": 102,
+    "default_branch_trees_complete": 102,
+    "tree_errors": 0,
+    "truncated_trees": 0,
+    "submission_tiff_paths": 1629,
+    "unique_git_blobs": 1285,
+    "download_verified": 1285,
+    "download_failures": 0,
+    "one_band_exact_template_grid_rasters_compared": 1279,
+    "exclusions": {
+      "not_single_band_or_grid_mismatch": 5,
+      "invalid_tiff": 1
+    },
+    "scope": "Current public default branches; TIFF paths under docs/downloads/, releases/, and submission directories; unique Git blobs. Does not cover history, private repositories, other owners, zip-only objects, or site-hosted objects not in those paths."
+  },
+  "preplacement_surface": {
+    "registries_checked": 1279,
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "worst_abs_spearman": 0.42136679097978735,
+    "worst_rho": 0.42136679097978735,
+    "worst_rho_raster": "GEMSDOE81/docs/downloads/gems81-cont-poisson44090-buf2-20261021T233115Z-42223e10-zeros.tif",
+    "worst_forward_overlap": 1.0,
+    "worst_overlap_raster": "11GEMSDOE/docs/downloads/gems-structural-area06-v1.tif",
+    "rasters_over_70pct_overlap": 131,
+    "duplicate_examples": [
+      {
+        "raster": "11GEMSDOE/docs/downloads/gems-structural-area06-v1.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 343526,
+        "spearman": 0.10479447438820699
+      },
+      {
+        "raster": "12GEMSDOE/docs/downloads/12GEMSDOE_multiphysics_submission_06ca61e5.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 224173,
+        "spearman": 0.08623432876469482
+      },
+      {
+        "raster": "13GEMSDOE/docs/downloads/13gems_20261001_r11-greedy-mp_v2_nan-outside.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 272853,
+        "spearman": -0.006859950205487139
+      },
+      {
+        "raster": "13GEMSDOE/docs/downloads/13gems_20261001_r11-greedy-mp_v2_zerofill.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 272853,
+        "spearman": -0.006859950205487139
+      },
+      {
+        "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-20260928T040920Z.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 338755,
+        "spearman": 0.0025510449950131033
+      },
+      {
+        "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-20260928T040920Z_allfinite.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 338755,
+        "spearman": 0.0025510449950131033
+      },
+      {
+        "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-20260929T183221Z.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 507776,
+        "spearman": 0.00705315197101346
+      },
+      {
+        "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-20260929T183221Z_allfinite.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 507776,
+        "spearman": 0.00705315197101346
+      },
+      {
+        "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-plus-20260929T183249Z.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 380365,
+        "spearman": 0.022836109719950218
+      },
+      {
+        "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-plus-20260929T183249Z_allfinite.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 380365,
+        "spearman": 0.022836109719950218
+      }
+    ]
+  },
+  "final_dots": {
+    "registries_checked": 1279,
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "worst_abs_spearman": 0.49295706750328594,
+    "worst_rho": 0.49295706750328594,
+    "worst_rho_raster": "GEMSDOE81/docs/downloads/gems81-cont-poisson44090-buf2-20261021T233115Z-42223e10-zeros.tif",
+    "worst_forward_overlap": 1.0,
+    "worst_overlap_raster": "11GEMSDOE/docs/downloads/gems-structural-area06-v1.tif",
+    "rasters_over_70pct_overlap": 131,
+    "duplicate_examples": [
+      {
+        "raster": "11GEMSDOE/docs/downloads/gems-structural-area06-v1.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 343526,
+        "spearman": 0.053036572483099086
+      },
+      {
+        "raster": "12GEMSDOE/docs/downloads/12GEMSDOE_multiphysics_submission_06ca61e5.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 224173,
+        "spearman": 0.036594047735528934
+      },
+      {
+        "raster": "13GEMSDOE/docs/downloads/13gems_20261001_r11-greedy-mp_v2_nan-outside.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 272853,
+        "spearman": -0.004682607235886603
+      },
+      {
+        "raster": "13GEMSDOE/docs/downloads/13gems_20261001_r11-greedy-mp_v2_zerofill.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 272853,
+        "spearman": -0.004682607235886603
+      },
+      {
+        "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-20260928T040920Z.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 338755,
+        "spearman": 0.003387986010379602
+      },
+      {
+        "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-20260928T040920Z_allfinite.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 338755,
+        "spearman": 0.003387986010379602
+      },
+      {
+        "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-20260929T183221Z.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 507776,
+        "spearman": 0.004600779838008162
+      },
+      {
+        "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-20260929T183221Z_allfinite.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 507776,
+        "spearman": 0.004600779838008162
+      },
+      {
+        "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-plus-20260929T183249Z.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 380365,
+        "spearman": 0.01682833398500097
+      },
+      {
+        "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-plus-20260929T183249Z_allfinite.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 380365,
+        "spearman": 0.01682833398500097
+      }
+    ]
+  },
+  "binding_witness": {
+    "worst_forward_overlap": {
+      "raster": "11GEMSDOE/docs/downloads/gems-structural-area06-v1.tif",
+      "source_url": "https://github.com/buffedlizard55-lab/11GEMSDOE/blob/main/docs/downloads/gems-structural-area06-v1.tif",
+      "git_blob_sha": "45289d81d5a3650837ce61187de7bde604f50da3",
+      "sha256": "6292a7916c83d371fc650b0f0c6a090702b9890eaa6e6546d50f104eea2fadc3",
+      "bytes": 705023,
+      "forward_overlap": 1.0
+    },
+    "full_footprint_surface": {
+      "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "bytes": 25065181,
+      "positive_pixels_in_footprint": 5167373,
+      "forward_overlap": 1.0,
+      "spearman": 0.09568131910830463
+    }
+  },
+  "verdict": "negative \u2014 duplicate under literal registry rule; stop and do not spend a weekly slot",
+  "scan_complete_for_declared_scope": true,
+  "candidate_file_sha256": "60082b75a3d8e4648a858622f71f24257c8cfef79286a1a96147c59f05377da7",
+  "cache_index": ".cache/gemsdoe_public_registry/registry_index.json"
+}

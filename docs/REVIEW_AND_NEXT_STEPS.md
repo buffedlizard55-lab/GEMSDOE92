@@ -1,5 +1,7 @@
 # Repository review and next-step decision (2026-10-24)
 
+> **Supersession note (2026-10-24):** This earlier review concluded the STEPOVER file was unique within a 14-raster local inventory. A later scan of 1,279 matching-grid TIFFs across 102 public owner repositories found binding 100% 3-px overlap witnesses. The prior local-only uniqueness/slot statements below are historical and superseded; current status is in `SLOT_PLAN.md`, `docs/NEXT_STEPS.md`, and `evidence/public_registry_uniqueness.json`: format-valid, negative duplicate, do not submit.
+
 ## Current three-pass review addendum (2026-10-24)
 
 1. **Pass 1 — inspect and source-check.** Read `README.md`, `SESSION_PROMPT.md`, active run cards, release/audit receipts, registry inputs, site pages, tests, and current branch status. Checked the official DrivenData problem/metric page, USGS GeoDAWN catalog, OSTI structural-geothermal source, and DrivenData reference repository directly. The published `0.2778` and leaderboard snapshots remain unconfirmed in this checkout.
