@@ -24,6 +24,33 @@ def sha256_file(path: str | Path) -> str:
     return h.hexdigest()
 
 
+def resolve_pinned_path(root: str | Path, rel: str | Path) -> Path:
+    """Resolve a manifest/recipe path recorded in either convention.
+
+    This repo's registries record both styles and both are in active use:
+
+      * ``registry/session_manifest.json`` — data-root relative, e.g.
+        ``bridge/sample_submission.tif``
+      * ``registry/data_manifest.json`` and ``registry/parents/R0.json`` —
+        repo relative, e.g. ``data/bridge/sample_submission.tif``
+
+    Blindly joining onto the data root turns the second form into
+    ``data/data/bridge/...`` and reports every pinned input as MISSING, which is
+    what ``make manifest`` and ``make verify`` did until 2026-10-25. Trying the
+    data root first and then the repo root accepts both, and still refuses a
+    third, unintended location (the returned path simply will not exist, so the
+    caller's MISSING branch fires as before).
+    """
+    root = Path(root)
+    p = Path(rel)
+    joined = root / p
+    if joined.is_file():
+        return joined
+    if p.is_file():
+        return p
+    return joined  # report the data-root form in the error message
+
+
 def read_reference(path: str | Path) -> dict:
     """Read the reference grid (sample_submission.tif): CRS, transform, shape."""
     with rasterio.open(path) as ds:

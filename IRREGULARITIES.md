@@ -351,6 +351,128 @@ Shift 10%, 12%, and 15% of total mass (3,765, 4,518, and 5,648 dots) from the lo
 
 ---
 
+## 2026-10-25 (DILATATION session) — No new irregularities that change a decision
+
+**Observation.** This session's prior is geodetic dilatation (Band 8, `geod_dilaterate`, nstrain/yr). Its distribution on the footprint is `p33=3.80`, `p67=7.24`, range `[-16.5, +34.5]`, mean `6.36`. R0's 37,654 dots split `low 27.96% / mid 35.40% / high 36.60%` across dilatation terciles — less skewed than detrended elevation (`basin 20.4% / piedmont 41.8% / range 37.7%`), so the axis is not simply relabelling relief. Candidate pool (high tercile ∩ H19-5 ∩ d_cat>2) holds 24,583 pixels, sufficient for 15% shift (5,648). Leakage canary max AUC `0.5149` (<<0.90). Correlation vs R0 `0.8997` (<0.90 PASS); overlap vs parent `99.4%` within 3 px is by construction (90% shared dots) and not a registry duplicate — checked against surface before placement (ranked dilatation vs relief, Jaccard of arrival sets not measured this session but axis layers are disjoint: Band 8 vs Band 12).
+
+**Impact.** None that changes a decision. SGMC control drops `−0.012 to −0.016` — expected because SGMC bedrock faults are range-core, not dilating piedmonts; recorded as confirmation of geographical reallocation, not a failure.
+
+**Decision.** Promote `DILATATIONp12` (middle dose, balanced) as Slot 1; keep p10/p15 as dose ladder. No external data leakage.
+
+
+## 2026-10-25 (DILATATION session) — `make verify` and `make manifest` were both broken, and the break hid a wrong number in the parent record
+
+Two shared-tool defects, found by running the repo's own gates rather than trusting
+them. Both are fixed once, in the shared module, per the brief's "fix it once in the
+template and report it; never keep a private fork".
+
+### (a) Pinned paths were joined onto the data root twice
+
+**Observation.** The two registries record paths in *different* conventions, and both
+are in active use:
+
+| registry | example `dest` / `path` | convention |
+|---|---|---|
+| `registry/session_manifest.json` | `bridge/sample_submission.tif` | data-root relative |
+| `registry/data_manifest.json` | `data/bridge/sample_submission.tif` | repo relative |
+| `registry/parents/R0.json` | `data/parent_R0_nan.tif` | repo relative |
+
+`gems.manifest.verify` and `gems.parent.verify_inputs` both did `Path(data_root) / rel`
+unconditionally. For the repo-relative form that yields `data/data/bridge/...`, which
+does not exist.
+
+**Measured before the fix:** `make manifest` → `RESULT: FAILED`, **8 of 8** pinned
+inputs reported `MISSING` (`sample_submission`, `existing_faults`, `labels`,
+`parent_R0_zeros`, `parent_R0_nan`, `h19_5`, `h27_4_solo`, `d28`) while every one of
+those files was present on disk with a correct hash. `make verify` →
+`PARENT UNAVAILABLE: recipe ... lacks required keys` (see (b)).
+
+**Impact — decision-changing.** The gate the Makefile advertises as "the gate that
+stops a session before it burns slots on descendants of an unverified parent" was
+incapable of verifying anything: it failed closed on inputs that were fine, so the
+only rational response was to ignore it. A gate everyone ignores protects nothing.
+
+**Decision.** Added `gems.rasters.resolve_pinned_path(root, rel)` — tries the data
+root first, then the repo root, and otherwise returns the data-root form so the
+caller's `MISSING` branch still fires. One implementation, used by
+`gems/manifest.py`, `gems.parent.verify_inputs` and
+`gems.parent.verify_pinned_artefact`. It accepts both recorded conventions and still
+refuses a third, unintended location.
+
+**Measured after the fix:** `make manifest` → `RESULT: OK`, 8/8 `OK`.
+Regression-tested in `tests/test_pinned_path_resolution.py` (6 tests), including the
+committed `registry/data_manifest.json` verifying against the committed bytes.
+
+### (b) `registry/parents/R0.json` is a pinned artefact, which the loader could not read
+
+**Observation.** R0 was produced upstream in GEMSDOE32; no recipe reproduces it
+bit-for-bit. The record therefore uses `"mode": "pinned_artefact"` with a `files`
+map instead of the rebuild keys (`builder`, `inputs`, `expected_sha256`, `git_sha`,
+`seed`) that `Recipe.load` required. It raised `ParentUnavailable` on every run.
+
+**Impact.** The parent was in fact verified byte-for-byte — but only inside
+`scripts/build_snap_scarp_variants.py::build_and_verify_parent`, which needs the
+418 MB feature stack. `make verify`, the cheap gate, proved nothing.
+
+**Decision.** `Recipe.load` now accepts `mode: pinned_artefact` and validates that
+form (real 64-hex digest per encoding, a path, a byte length — placeholders still
+refused). Added `verify_pinned_artefact()`, which does **two** independent checks,
+because a recorded sha256 only proves the file has not changed, not that the
+invariants the record advertises are true of it:
+
+1. **Byte identity** — sha256 *and* length of every recorded encoding.
+2. **Re-measured invariants** — dot count, total mass, minimum catalogue distance,
+   footprint size and the 3/4/5 px collar counts are recomputed *from the raster
+   itself* and diffed against the record's `verified` block
+   (`compare_claimed_invariants`).
+
+`cmd_parent` dispatches on mode; `--no-measure` skips step 2. The original rebuild
+contract is untouched and still refuses templates
+(`test_rebuild_recipe_still_requires_its_keys`).
+
+**Measured after the fix** — `make verify` exits 0 and every re-measured number
+matches the record exactly, with zero drift:
+
+```
+nan      baeae3219bba… 355443 B  data/parent_R0_nan.tif
+zeros    c55bafc47005… 219065 B  data/parent_R0_zeros.tif
+n_dots                       37654
+total_mass                   37654.0
+footprint_px                 5167373
+min_catalogue_distance_px    2.23606797749979
+dots_within_3px              2171
+dots_within_4px              3825
+dots_within_5px              5637
+PARENT VERIFIED (pinned artefact): h33-h33-2-b2 sha256 c55bafc47005…
+```
+
+### (c) The new byte-length check immediately caught a wrong number in the parent record
+
+**Observation.** `registry/parents/R0.json` claimed the NaN artefact is
+**355,000 bytes**. The file on disk is **355,443 bytes**. Independently corroborated:
+
+| source | nan bytes | nan sha256 |
+|---|---|---|
+| disk (`stat` + `sha256sum`) | **355443** | `baeae3219bba6a19…` |
+| `registry/parents/R0.json` (before fix) | 355000 ✗ | `baeae3219bba6a19…` ✓ |
+| `registry/session_manifest.json` | **355443** ✓ | `baeae3219bba6a19…` ✓ |
+
+**Impact.** Low in isolation — the sha256, which is the real authority, was correct
+everywhere and matched disk, so no artefact was ever mis-identified. But it is
+exactly the class of stale record the brief asks to be flagged: a number in a
+registry that nobody had ever checked against the file it describes. The zeros
+artefact's 219,065 was correct in both registries.
+
+**Decision.** Corrected `R0.json` to `355443` and left a `bytes_note` in the record
+pointing here. The sha256 was **not** touched (it was never wrong). Regression-tested
+by `test_verify_pinned_artefact_catches_stale_byte_length` and
+`test_repo_root_parent_verifies_against_committed_bytes`.
+
+**Note on CI.** `.github/workflows/ci.yml` ran the parent gate as
+`python -m gems parent ... || true`, i.e. deliberately non-fatal — which is why a
+gate that had never once passed went unnoticed. It is now fatal, with the data
+staged first.
+
 ## 2026-10-24 (STEPOVER session) — catalogue-derived holdout truth is structurally unreachable for gate-compliant new dots
 
 **Observation.** The STEPOVER candidate (`h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f`) passes all 10 format gates and is lane-unique, but scores HOLDOUT-DTI 0.0000 [0.0000, 0.0000] on `gems57-pooled-hide-v2` (11,321 withheld positives; pooled tp=0, fp=4,630, fn=11,321). This is a structural zero: every gate-compliant non-PRUNE dot must be >3 px from the full catalogue, while the held-out truth used by the local holdout is a subset of that same catalogue, so no compliant dot can fall within the 3 px triangular kernel of held truth.

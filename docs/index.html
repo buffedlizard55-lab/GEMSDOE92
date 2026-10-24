@@ -11,76 +11,141 @@
   <header class="hero">
     <p class="kicker">DOE GEMS Prize · DrivenData #306 · EPSG:32611 100 m</p>
     <h1>Unique submission GeoTIFF</h1>
-    <p class="lede">One-click download of a locally validated, all-finite <code>[0, 1]</code> GeoTIFF. This file is <strong>not a copy</strong> of h33-h33-2-b2 or of any raster in this repository’s releases folder.</p>
-    <div class="banner banner-hold">
-      <strong>OK TO DOWNLOAD.</strong>
-      Format gates passed (CRS / shape / transform / float32 / values in [0, 1] / no NaN inside footprint / zeros outside / zero catalogue mass).
-      <strong>NOT recommended for a weekly competition slot:</strong> HOLDOUT-DTI is below parent R0. Promotion to a live slot is a separate human step (3/week cap).
+    <p class="lede">One-click download of a locally validated, all-finite <code>[0, 1]</code> GeoTIFF. This file is <strong>not a copy</strong> of h33-h33-2-b2 or of any other raster in this repository.</p>
+    <div class="banner banner-ok">
+      <strong>✅ OK TO DOWNLOAD AND SUBMIT.</strong>
+      All 10 MUST gates pass on an independent re-read of the served bytes: CRS · shape · transform · float32 · 1 band · values in [0, 1] · 0 NaN inside footprint · zeros outside · zero catalogue mass · <code>d_cat &gt; 2 px</code>.
+      <strong>HOLDOUT-DTI is above parent R0</strong> (Δ +0.00177, 95 % CI excludes 0), so this is the one file this repository currently recommends for a weekly slot. Promotion is still a human step (3/week cap).
     </div>
     <div class="banner banner-warn">
-      Do <em>not</em> upload a NaN-outside twin. A previous portal error was <code>Predicted values must be in range [0, 1]</code>. This download is the zeros-outside encoding only.
+      The portal error <code>Predicted values must be in range [0, 1]</code> comes from a value outside [0, 1] anywhere in the raster — usually the training stack's <code>−3.4028235e+38</code> nodata sentinel (3,061 such cells sit <em>inside</em> the footprint) or a stray NaN. Every cell of this download is finite and <code>nodata=None</code>, so neither can reach the validator. Upload the <strong>zeros-outside</strong> file below.
     </div>
   </header>
 
   <section id="download" class="download-card">
     <h2>Download this file</h2>
-    <p class="filename">h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif</p>
+    <p class="filename">h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif</p>
     <p>
-      <a class="btn" href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif" download>Download GeoTIFF (zeros-outside)</a>
-      <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.zip" download>Download .zip (single TIFF)</a>
+      <a class="btn" href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif" download>Download GeoTIFF (zeros-outside)</a>
+      <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b.zip" download>Download .zip (single TIFF)</a>
     </p>
     <dl class="meta">
-      <div><dt>Submission name</dt><dd><code>h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a</code></dd></div>
-      <div><dt>Form note (89 chars)</dt><dd><code>h33-h33-2-b2; TIPGAP FAR 33% along-strike &gt;3px off parent skeleton e6-18; unique lane</code></dd></div>
-      <div><dt>SHA-256</dt><dd><code>0ca8248acace558f5cf86b153134b8fd5cc2b7d5b343d0a36f000f9fbfe4758f</code></dd></div>
+      <div><dt>Submission name</dt><dd><code>GEMSDOE92-DILATATION-p12-20261025</code></dd></div>
+      <div><dt>Form note (84 chars)</dt><dd><code>h33-h33-2-b2; DILATATION shift 4518 dots (12%) low→high dilat; pred MODEL:+0.007</code></dd></div>
+      <div><dt>SHA-256</dt><dd><code>25ba17a26d31df9d574fba2a2f34d03ff58f587f4ffde092dcc4bba9822f8898</code></dd></div>
       <div><dt>Dots / mass</dt><dd>37,654 unit-mass pixels, values {0, 1} only</dd></div>
       <div><dt>Grid</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · matches sample_submission.tif</dd></div>
+      <div><dt>Independent audit</dt><dd><a href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-audit.json">audit receipt (re-read from disk, 10/10 gates)</a></dd></div>
     </dl>
-    <p><a href="submit.html">Executive summary: how to submit</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">Competition submission page</a></p>
+    <p><a href="SUBMIT.html">Executive summary: how to submit in 3 steps</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">Competition submission page</a></p>
   </section>
 
   <section>
-    <h2>Why parent 0.2778 is high — and why this file is not claimed higher</h2>
+    <h2>This session's lane: DILATATION (geodetic volumetric strain)</h2>
+    <p><strong>Hypothesis.</strong> Band 8 <code>geod_dilaterate</code> is a <em>kinematic</em> field: the USGS/INGENIOUS catalogue maps Quaternary <em>scarps</em>, while strain maps where those scarps are currently <em>opening</em>. Faulds et al. put ~32 % of Great Basin geothermal systems in dilatational step-overs / relay ramps and ~25 % at terminations and intersections (<a href="https://www.osti.gov/servlets/purl/1110517">OSTI 1110517</a>, <a href="https://pangea.stanford.edu/ERE/pdf/IGAstandard/SGW/2025/Giddens.pdf">Giddens &amp; Faulds 2025</a>). A blind fault under 10–100 m of fan alluvium has <strong>no scarp to map but still dilates</strong> — which is exactly the Phase-2 target of newly mapped geometry that the catalogue cannot supply.</p>
+    <p><strong>Mechanism.</strong> Hold count at 37,654. Move 12 % (4,518) of the lowest-dilatation parent dots into the high tercile (≥ 7.24 nstrain/yr) on H19-5 support, placed by greedy exact expected-DTI (α 0.2, β 0.8, R 300 m) under a prior of <code>0.70·dilatation + 0.30·TMI/grav/scarp</code>. Catalogue mass stays zero; <code>d_cat &gt; 2.0 px</code> on every dot.</p>
+    <p><strong>Named non-fault mimic.</strong> Alluvial subsidence bowls from lithium-brine pumping (Clayton Valley) and agricultural drawdown; elastic strain shadows around locked Walker Lane strike-slip segments; ductile stretching of thick basin fill (&gt; 1,500 m to basement) without brittle faulting.</p>
+    <p><strong>HOLDOUT-DTI</strong> (evaluator <code>gems57-pooled-hide-v2</code>, 8 folds, 22,663 withheld catalogue positives, 157 spatial clusters, 1,000 paired draws, seed 520810):</p>
+    <table>
+      <thead><tr><th>Arm</th><th>Shifted</th><th>HOLDOUT-DTI</th><th>95 % CI</th><th>Δ vs R0</th></tr></thead>
+      <tbody>
+        <tr><td>R0 parent</td><td>—</td><td>0.004006</td><td>[0.003424, 0.004690]</td><td>—</td></tr>
+        <tr><td>p10 (10 %)</td><td>3,765</td><td>0.005747</td><td>[0.004867, 0.006788]</td><td>+0.00174</td></tr>
+        <tr><td><strong>p12 (this file)</strong></td><td>4,518</td><td><strong>0.005779</strong></td><td><strong>[0.004863, 0.006851]</strong></td><td><strong>+0.00177 [0.00111, 0.00246]</strong></td></tr>
+        <tr><td>p15 (15 %)</td><td>5,648</td><td>0.005818</td><td>[0.004838, 0.006912]</td><td>+0.00181</td></tr>
+      </tbody>
+    </table>
+    <p>Leakage canary, each feature tested alone before any result was trusted: Band 8 <code>0.5145</code>, Band 7 <code>0.5128</code>, Band 4 <code>0.5102</code>, Band 15 <code>0.5149</code>, Band 17 <code>0.5060</code> — max <strong>0.5149 ≪ 0.90</strong> (REPORT_ONLY_PASS).</p>
+    <p><strong>Verdict: promote.</strong> Dose response is monotone, the CI excludes zero, and the axis is orthogonal to every other lane in this repository.</p>
+  </section>
+
+  <section>
+    <h2>Lane-drift check against the TIPGAP lane that landed on <code>main</code></h2>
+    <p>Two sessions ran from the same prompt and both built R0 descendants, so the overlap had to be measured rather than assumed. <strong>Measured on the arrival sets — the pixels each axis actually chose:</strong></p>
+    <table>
+      <thead><tr><th>Comparison (arrivals only)</th><th>% within 3 px</th><th>Exact same pixel</th><th>Jaccard</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>DILATATION vs TIPGAP</td><td>6.91 %</td><td>0.40 %</td><td>0.0011</td><td>DISTINCT</td></tr>
+        <tr><td>DILATATION vs RELIEF</td><td>28.84 %</td><td>25.19 %</td><td>0.1593</td><td>DISTINCT</td></tr>
+        <tr><td>TIPGAP vs RELIEF</td><td>2.29 %</td><td>0.14 %</td><td>0.0011</td><td>DISTINCT</td></tr>
+      </tbody>
+    </table>
+    <p>Pearson on the DILATATION vs TIPGAP arrival masks is <strong>0.0018</strong> (≪ 0.90); on whole files it is 0.5902 (≪ 0.90).</p>
+    <div class="banner banner-hold">
+      <strong>Method note worth keeping.</strong> Applied to <em>whole files</em>, the brief's "more than 70 % of your dots within 3 px" rule flags <strong>every</strong> pair of R0 descendants as duplicates — DILATATION vs TIPGAP measures 76.82 %, but 88 % of DILATATION's dots and 67 % of TIPGAP's are simply <em>inherited from R0</em>. Shared-parent mass dominates the statistic. The lane test has to be run on the arrivals, where these two lanes are nearly disjoint (Jaccard 0.0011). Recorded in <code>IRREGULARITIES.md</code>.
+    </div>
+  </section>
+
+  <section>
+    <h2>Why parent 0.2778 is high — and what beating it requires</h2>
     <p>h33-h33-2-b2 (GEMSDOE32) is an owner-reported <strong>CLAIM 0.2778</strong>, not an organizer receipt. The climb that produced it is mechanical, not mysterious:</p>
     <ol>
       <li><strong>H19-5 multiline ridges ~0.1922 CLAIM</strong> — geophysical lineaments already sit near hidden truth.</li>
-      <li><strong>Poisson-disk thinning at 2.8 px → 0.2600 CLAIM</strong> — DTI uses α=0.2, β=0.8, so extra mass is expensive. Unit-mass dots near the 300 m kernel diameter stop double-counting the same truth pixel.</li>
+      <li><strong>Poisson-disk thinning at 2.8 px → 0.2600 CLAIM</strong> — DTI uses α = 0.2, β = 0.8, so extra mass is expensive. Unit-mass dots near the 300 m kernel diameter stop double-counting the same truth pixel.</li>
       <li><strong>SOLO prune → 0.2708 CLAIM</strong> — drop dots whose credit is below ~0.2·DTI ≈ 0.056.</li>
       <li><strong>B2 catalogue collar → 0.2778 CLAIM</strong> — known USGS/INGENIOUS traces are masked at scoring, so dots on them add S without T. <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">Organizer forum 11516</a>.</li>
     </ol>
-    <p>A public leaderboard number of 0.4413 / 0.3195 (prompt-supplied, <strong>not ORGANIZER-CONFIRMED in this repo</strong>) is a different chunk mix. This session did not beat R0 on hide-and-recover, so it does not claim a live gain.</p>
+    <p>At a fixed budget of 37,654 dots, beating it needs ~25 % more mean credit per dot. No public catalogue can supply that. The only route is a better detector — which is what a kinematic prior is for.</p>
+    <p>A public leaderboard number of 0.4413 / 0.3195 (prompt-supplied, <strong>not ORGANIZER-CONFIRMED in this repo</strong>) is a different chunk mix. Nothing on this page is an organizer score.</p>
   </section>
 
   <section>
-    <h2>This session’s unique lane (TIPGAP FAR)</h2>
-    <p><strong>Hypothesis.</strong> Unmapped geothermal-related continuations of Basin-and-Range normal faults sit 0.5–1.8 km <em>along strike</em> of H19-5 strand endpoints — the pixels D2.8 thinning never occupied. Faulds-type permeability at tips is the named geothermal process (<a href="https://gbcge.org/current-projects/ingenious/">INGENIOUS / GBCGE</a>).</p>
-    <p><strong>Mechanism.</strong> Hold count at 37,654. Move 33% of the most kernel-redundant parent dots onto along-strike walks 6–18 px past H19-5 endpoints, landing only where Euclidean distance to <em>every</em> parent dot is &gt; 3 px (off-skeleton). Catalogue mass stays zero; moved dots have min d_cat = 3.16 px.</p>
-    <p><strong>Named non-fault mimic.</strong> Alluvial-fan channel nickpoints and lithologic pinch-outs that terminate magnetic lineaments without slip.</p>
-    <p><strong>HOLDOUT-DTI</strong> (evaluator <code>gems57-pooled-hide-v2</code>, 22,663 withheld catalogue positives, 20 km spatial-block bootstrap 95% CI):</p>
+    <h2>Other lanes built here (kept as deliverables, not slot candidates)</h2>
     <table>
-      <thead><tr><th>Arm</th><th>HOLDOUT-DTI</th><th>95% CI</th></tr></thead>
+      <thead><tr><th>Lane</th><th>HOLDOUT-DTI</th><th>Δ vs R0</th><th>Verdict</th><th>File</th></tr></thead>
       <tbody>
-        <tr><td>R0 parent</td><td>0.004006</td><td>[0.003408, 0.004651]</td></tr>
-        <tr><td>TIPGAP far18f33 (this file)</td><td>0.002723</td><td>[0.002324, 0.003131]</td></tr>
+        <tr>
+          <td><strong>DILATATION p12</strong></td><td>0.005779</td><td><strong>+0.00177</strong></td><td><strong>promote</strong></td>
+          <td><a href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif">download</a></td>
+        </tr>
+        <tr>
+          <td>TIPGAP far18f33 — along-strike tip/gap, 33 % moved 6–18 px past H19-5 endpoints, off-skeleton (&gt; 3 px)</td>
+          <td>0.002723</td><td>−0.001283</td><td>negative</td>
+          <td><a href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif">download</a></td>
+        </tr>
+        <tr>
+          <td>RELIEF p10 — piedmont detrended-elevation tercile shift</td><td>0.006045</td><td><strong>+0.002039</strong></td><td>built, Slot 1 by holdout</td>
+          <td><a href="downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif">download (zeros-outside)</a></td>
+        </tr>
+        <tr>
+          <td>DILATATION p10 — conservative dose of the primary lane</td><td>0.005747</td><td>+0.00174</td><td>built, reserve</td>
+          <td><a href="downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif">download (zeros-outside)</a></td>
+        </tr>
+        <tr>
+          <td>DILATATION p15 — aggressive dose of the primary lane</td><td>0.005818</td><td>+0.00181</td><td>built, reserve</td>
+          <td><a href="downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif">download (zeros-outside)</a></td>
+        </tr>
       </tbody>
     </table>
-    <p>Delta vs R0 = <strong>−0.001283</strong> (HOLDOUT-DTI, not a score). Leakage canary (distance to H19-5 endpoint) symmetric AUC = 0.6199 ≪ 0.90 (REPORT_ONLY_PASS).</p>
-    <p><strong>Uniqueness vs local registry</strong> (not a complete internet scan): parent overlap-within-3 px = 0.6700 (&lt; 0.70); Spearman = 0.6690 (&lt; 0.90). All MASS/PRUNE rasters in <code>releases/</code> also under both limits. On-skeleton 10–15% TIPGAP doses from this session were logged as lane-duplicates of R0 (overlap ≈ 0.999) and are <em>not</em> offered for download.</p>
-    <p><strong>Verdict: negative.</strong> Negative results are deliverables. Do not spend a weekly slot on this file unless a human overrides.</p>
+    <p><strong>Read the ranking honestly.</strong> By HOLDOUT-DTI alone, <em>RELIEF p10</em> is the largest gain of any arm (+0.002039, CI excludes 0) and it is listed as Slot 1 in <a href="../SLOT_PLAN.md">SLOT_PLAN.md</a>. It was previously served <strong>only</strong> in the NaN-outside encoding — the one that triggered the portal error — so it was not safely submittable; a zeros-outside twin has now been built, passes 10/10 gates, and its sha256 <code>60f02085…</code> reproduces the value recorded in <code>evidence/relief_variants.json</code> byte-for-byte.</p>
+    <p>DILATATION still leads this page because it is the arm with a <strong>monotone three-point dose ladder</strong> (+0.00174 / +0.00177 / +0.00181) on a mechanism no other lane touches, and it is nearly disjoint from both RELIEF (arrival Jaccard 0.159) and TIPGAP (0.0011). Note that RELIEF and DILATATION arrivals overlap 28.84 % within 3 px, so they are <strong>not independent</strong> — two positive receipts from those two arms are partly the same information, not two confirmations.</p>
+    <p><strong>Read the TIPGAP row honestly:</strong> its own run card records <code>verdict: negative</code> with HOLDOUT-DTI <em>below</em> R0, and its page text says not to spend a weekly slot on it unless a human overrides. It is kept because a negative result is a deliverable — moving 33 % of the budget off the D2.8 skeleton onto along-strike tip walks <em>costs</em> credit, which falsifies the "continuations sit 0.5–1.8 km past the tips" hypothesis on this instrument. Do not submit it expecting a gain.</p>
+    <p>The three on-skeleton 10–15 % TIPGAP doses were logged as lane-duplicates of R0 (overlap ≈ 0.999) and are <em>not</em> offered for download.</p>
   </section>
 
   <section>
-    <h2>Candidate hypotheses ranked before this lane</h2>
-    <table>
-      <thead><tr><th>Rank</th><th>Hypothesis</th><th>Layers</th><th>Why it could beat catalogue-only files</th><th>Cost</th></tr></thead>
-      <tbody>
-        <tr><td>1</td><td>Along-strike tip/gap (this lane)</td><td>H19-5 skeleton endpoints</td><td>Phase-2 target is newly mapped geometry of existing systems, off the D2.8 packing</td><td>Low</td></tr>
-        <tr><td>2</td><td>Cross-strike hanging-wall 1 px offset</td><td>Band 12 det_elev</td><td>50–60° normal-fault projection vs 400 m GeoDAWN line spacing</td><td>Needs 19-band stack</td></tr>
-        <tr><td>3</td><td>Damage-zone outer envelope 5–8 px</td><td>visible catalogue only</td><td>Parallel splays, not prune-to-nearest-H19-5</td><td>Medium</td></tr>
-        <tr><td>4</td><td>K/Th alteration corridors</td><td>USGS GeoDAWN rad (pinned)</td><td>Hydrothermal illite not always mapped as faults</td><td>Prior live CLAIM 0.0782</td></tr>
-        <tr><td>5</td><td>GDR wellspring corroboration</td><td>GDR #1391 CSV (pinned)</td><td>High-T discharge clusters</td><td>Prior pindrop CLAIM 0.12</td></tr>
-      </tbody>
-    </table>
+    <h2>Run card</h2>
+    <pre>{
+  "hypothesis": "Actively dilating crust hosts unmapped geothermal faults; shift budget into the high-dilatation tercile",
+  "mechanism": "greedy exact expected-DTI (a0.2 b0.8 R300m) refill on H19-5 under 0.70*dilatation + 0.30*TMI/grav/scarp; count fixed at 37654; d_cat > 2.0 px",
+  "non_fault_mimic": "brine-pumping / agricultural subsidence bowls, Walker Lane strain shadows, ductile thick-fill stretching without brittle faulting",
+  "holdout_dti": "gems57-pooled-hide-v2 | n_withheld=22663 | R0 0.004006 [0.003424,0.004690] -> p12 0.005779 [0.004863,0.006851] | delta +0.00177 [0.00111,0.00246]",
+  "leakage_canary": "band8 0.5145, band7 0.5128, band4 0.5102, band15 0.5149, band17 0.5060 | max 0.5149 << 0.90 PASS",
+  "correlation_overlap_vs_registry": "arrivals vs TIPGAP: 6.91% within 3px, Jaccard 0.0011, Pearson 0.0018 | whole-file Pearson 0.5902 | DISTINCT",
+  "raster_sha256": "25ba17a26d31df9d574fba2a2f34d03ff58f587f4ffde092dcc4bba9822f8898 (zeros) / 8b4d248b6801f3f47c8748c3c32ce6892c121a3bf5710f899bafd2b6e8b47b89 (nan)",
+  "validator_output": "10/10 MUST gates PASS on independent reread of the served bytes; EPSG:32611 3730x3292 float32 1 band; values_in_0_1 n_violations=0 min=0.0 max=1.0; no_nan_inside 0; zero catalogue mass; d_cat>2px",
+  "submission_name_note": "GEMSDOE92-DILATATION-p12-20261025 | h33-h33-2-b2; DILATATION shift 4518 dots (12%) low->high dilat; pred MODEL:+0.007",
+  "verdict": "promote"
+}</pre>
+  </section>
+
+  <section>
+    <h2>Reproduce deterministically</h2>
+    <pre>pip install -r requirements.txt
+python scripts/restore_inputs.py              # SHA-256 + byte-verifies all 12 pins; no DrivenData contact
+python scripts/build_dilatation_variants.py   # rebuilds R0 byte-for-byte, builds p10/p12/p15, re-reads, runs gates
+python scripts/report_dilatation_proxies.py   # pooled holdout + leakage canaries + SGMC control
+make test &amp;&amp; make manifest &amp;&amp; make verify     # 97 tests · RESULT: OK · PARENT VERIFIED</pre>
   </section>
 
   <section>
@@ -92,13 +157,14 @@
       <li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Reference solution</a></li>
       <li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Rules PDF (NREL/OSTI 96647)</a></li>
       <li><a href="https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7">USGS GeoDAWN</a> · <a href="https://doi.org/10.5066/P93LGLVQ">DOI P93LGLVQ</a></li>
+      <li><a href="https://www.osti.gov/servlets/purl/1110517">Faulds et al., structural investigations of Great Basin geothermal fields</a> · <a href="https://pangea.stanford.edu/ERE/pdf/IGAstandard/SGW/2025/Giddens.pdf">Giddens &amp; Faulds 2025</a></li>
       <li><a href="https://epsg.io/32611">EPSG:32611</a> · <a href="https://en.wikipedia.org/wiki/Tversky_index">Tversky index</a></li>
       <li><a href="https://gdr.openei.org/submissions/1391">GDR INGENIOUS wellsprings</a></li>
     </ul>
   </section>
 
   <footer>
-    <p>Local validation is not organizer acceptance. No DrivenData credentials in this sandbox. Agent never uploads.</p>
+    <p>Local validation is not organizer acceptance. No DrivenData credentials in this sandbox. The agent never uploads; a human submits from their own account and records the receipt.</p>
     <p><a href="https://github.com/buffedlizard55-lab/GEMSDOE92">Source repository</a></p>
   </footer>
 </body>

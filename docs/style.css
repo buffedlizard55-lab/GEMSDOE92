@@ -20,6 +20,7 @@ h1 { font-size: 2.1rem; line-height: 1.15; margin: .2rem 0 .8rem; }
 h2 { font-size: 1.35rem; margin-top: 0; }
 .lede { color: var(--muted); font-size: 1.05rem; }
 .banner { border-left: 6px solid var(--copper); padding: .85rem 1rem; margin: 1rem 0; background: var(--panel); }
+.banner-ok { border-color: #4ecb71; background: #14291d; }
 .banner-hold { border-color: #c9a227; }
 .banner-warn { border-color: #d45; background: #2a1414; }
 .download-card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }

@@ -10,7 +10,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from .rasters import sha256_file
+from .rasters import resolve_pinned_path, sha256_file
 
 
 def verify(manifest_path: str | Path, data_root: str | Path) -> dict:
@@ -25,7 +25,7 @@ def verify(manifest_path: str | Path, data_root: str | Path) -> dict:
         rel = item.get("dest") or item.get("path") or item.get("name")
         src = item.get("path") or rel
         want = item.get("sha256")
-        f = root / rel if rel else None
+        f = resolve_pinned_path(root, rel) if rel else None
         if f is None or not f.exists():
             entries.append({"path": rel, "status": "MISSING"})
             problems.append(f"{rel}: MISSING")

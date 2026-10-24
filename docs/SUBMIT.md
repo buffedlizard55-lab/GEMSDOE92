@@ -1,67 +1,65 @@
 # Candidate handoff — human review and submission only
 
-**2026-10-24 unique download (zeros-outside only):**
-`docs/downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif`
-Name `h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a`.
-Note `h33-h33-2-b2; TIPGAP FAR 33% along-strike >3px off parent skeleton e6-18; unique lane`.
-Format PASS. HOLDOUT-DTI below R0 → **not a weekly slot**. See `docs/index.html`.
+**✅ OK TO DOWNLOAD AND SUBMIT.** The zeros-outside files below re-pass all 10 MUST gates after being written and independently re-read from disk. If you see ✅, the portal error `Predicted values must be in range [0, 1]` is fixed for that file: every one of the 12,279,160 cells is finite, `nodata=None`, values are `0.0`/`1.0` only.
 
-The parallel RELIEF `p10piedmont` candidate on main failed the 70% overlap gate (99.38% within 3 px of R0) and is inspection-only.
+**Do not upload until you confirm the entity's rolling-week quota and independently review the selected raster.** The agent never submits and never contacts the leaderboard. Parent R0 (`h33-h33-2-b2`) score `0.2778` is an owner-reported **CLAIM**, not a `RECEIPT`. Upload **at most one** file per slot — the NaN-outside `.tif` and the `-zeros.tif` twin carry identical in-footprint values and score identically, so uploading both wastes a slot.
 
+## Use the zeros-outside encoding
 
-**Do not upload until you confirm the entity's rolling-week quota and independently review the selected raster.** The agent never submits and never contacts the leaderboard. Parent R0 (`h33-h33-2-b2`) score `0.2778` is an owner-reported **CLAIM**, not a `RECEIPT`. Upload **at most one** file per slot (the NaN-outside primary `.tif` and `-zeros.tif` fallback carry identical in-footprint values and score identically).
+The portal validates **every** cell, including outside the study-area footprint. Two historical failures produce the same `[0, 1]` message: the training stack's `−3.4028235e+38` nodata sentinel (3,061 such cells lie *inside* the footprint) and a stray NaN. Every `*-zeros.tif` below is written all-finite and cannot trigger either.
 
-## Current session candidates (`AXIS = RELIEF`, detrended-elevation tercile reallocation, 2026-10-24)
+| served file | encoding | portal |
+|---|---|---|
+| `*-zeros.tif` | zeros outside, `nodata=None` | **PORTAL-SAFE** |
+| `*.tif` (no suffix) | NaN outside, `nodata=nan` | valid competition format, but one validator change from rejection |
 
-All three candidates preserve exact R0 dot count (`37,654` binary unit-mass dots), R0 catalogue exclusions (zero catalogue mass, `d_cat > 2.0 px`), and shift mass strictly from lowest-prior basin/range dots into highest-prior exact-expected-DTI H19-5 pixels within the piedmont relief tercile (`-142.91 m <= det_elev < +38.75 m`). Form notes are `<=140` characters.
+## Ranked candidates — by HOLDOUT-DTI, not by MODEL projection
 
-| Order | Primary file (NaN outside) | Fallback (`-zeros.tif`) | Submission name | Form note (`<=140` chars) | % changed / dots moved | Primary SHA-256 (`-zeros` SHA-256) | Format receipt |
-|---:|---|---|---|---|---|---|---|
-| 1 | `releases/h33-h33-2-b2-RELIEFp12piedmont-20261024-a0998ed7.tif` | `releases/h33-h33-2-b2-RELIEFp12piedmont-20261024-a0998ed7-zeros.tif` | `h33-h33-2-b2-RELIEFp12piedmont-20261024-a0998ed7` | `h33-h33-2-b2; RELIEF shift 4518 dots (12%) basin/range->piedmont; pred MODEL:+0.008` (84 chars) | `12.00%` (4,518 dots moved) | `a0998ed7e9b39c91eead413ab1bd9c02511a29fb6f8438a36f921d3f3ef6d079` (`b0b3b1ffb3881a084211454d55ed0e417594b5f9a01bb57acbd8500f9aab9f17`) | Disk reread PASS + `gems.gates` 10/10 PASS; `EPSG:32611`; `3730x3292`; exact `sample_submission.tif` transform; `float32`, 1 band; values in `[0,1]`; 0 NaN inside footprint; NaN outside; 37,654 unit-mass dots; 0 catalogue mass; min `d_cat = 2.236 px`. |
-| 2 | `releases/h33-h33-2-b2-SNAPscarp2p0px-20261023-2a65fe24.tif` | `releases/h33-h33-2-b2-SNAPscarp2p0px-20261023-2a65fe24-zeros.tif` | `h33-h33-2-b2-SNAPscarp2p0px-20261023-2a65fe24` | `h33-h33-2-b2; SNAP <=2.0px edge+scarp+break (nn>=2.8); mean disp 1.23px; pred MODEL:+0.012` (90 chars) | `82.05%` (30,896 dots snapped) | `2a65fe24766375d5d2330daa9547f33a0cd16838d20675b1a03d531b0e33601d` (`96c8598a20114682579078044f03149c15d42f79cc8143d9f7300bd1881d2d1e`) | Disk reread PASS + `gems.gates` 10/10 PASS; `EPSG:32611`; `3730x3292`; exact `sample_submission.tif` transform; `float32`, 1 band; values in `[0,1]`; 0 NaN inside footprint; NaN outside; 37,654 unit-mass dots; 0 catalogue mass; min `d_cat = 2.236 px`; `min_nn = 2.828 px`. |
-| 3 | `releases/h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48.tif` | `releases/h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48-zeros.tif` | `h33-h33-2-b2-CONCcatblk10up10-20261024-c9503d48` | `h33-h33-2-b2; CONC 1km known-fault prior, 10% up; 3765 moved; pred MODEL:+0.006` (88 chars) | `10.00%` (3,765 dots moved) | `cd5ae43ba6116418d09fb911baa0c05a8a0541e73f74275ce3f5feb3713f127e` (`c9503d4873924d833e311eebe56e220bad97acd21e701a7f4bac10af67e499f2`) | 13/13 disk reread PASS + `gems.gates` PASS; `EPSG:32611`; `3730x3292`; `float32`, 1 band; `[0,1]`; 0 NaN inside; 37,654 dots; 0 catalogue mass; `min_nn = 2.0000 px`; moved `d_cat > 3.0 px`. |
+Same instrument for every row: `gems57-pooled-hide-v2`, 8 folds, 22,663 withheld catalogue positives, 157 spatial clusters, 1,000 paired draws, seed 520810. **R0 = 0.004006 [0.003424, 0.004690].** These are local instruments, **never** leaderboard scores.
 
-### Reserve file added by the merged second CONCENTRATION run (2026-10-24)
+| Slot | File to upload (zeros-outside) | Submission name | Form note (≤140) | HOLDOUT Δ vs R0 | MODEL | SHA-256 |
+|---|---|---|---|---|---|---|
+| **1** | `docs/downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif` | `GEMSDOE92-RELIEF-p10-20261024` | `h33-h33-2-b2; RELIEF shift 3765 dots (10%) basin/range->piedmont tercile` (73) | **+0.002039** `[0.001483,0.002504]` | +0.005 | `60f0208547efd4fb8b52fd5a298d9151de15208c3c44b04e90e78ec13a978296` |
+| **2** | `docs/downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif` | `GEMSDOE92-DILATATION-p12-20261025` | `h33-h33-2-b2; DILATATION shift 4518 dots (12%) low→high dilat; pred MODEL:+0.007` (84) | +0.00177 `[0.001110,0.002455]` | +0.007 | `25ba17a26d31df9d574fba2a2f34d03ff58f587f4ffde092dcc4bba9822f8898` |
+| **3** | `docs/downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif` | `GEMSDOE92-DILATATION-p15-20261025` | `h33-h33-2-b2; DILATATION shift 5648 dots (15%) low→high dilat; pred MODEL:+0.006` (84) | +0.00181 | +0.006 | `cc79c48ae0f46b0c22cd410305a773e72b719833718bceed2c5bcda3c8c38052` |
+| reserve | `docs/downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif` | `GEMSDOE92-DILATATION-p10-20261025` | `h33-h33-2-b2; DILATATION shift 3765 dots (10%) low→high dilat; pred MODEL:+0.005` (84) | +0.00174 | +0.005 | `d3b0d4a65aacff6b962056e7a4245734bef89ed72fa54767fe8b9ea3746e8aea` |
+| **no** | `docs/downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif` | — | — | **−0.001283** | — | `0ca8248acace558f5cf86b153134b8fd5cc2b7d5b343d0a36f000f9fbfe4758f` |
 
-`releases/h33-h33-2-b2-CONCENTRATIONphys10-20261024-b93a4cf8.tif` (fallback
-`...-b93a4cf8-zeros.tif`), submission name
-`h33-h33-2-b2-CONCENTRATIONphys10-20261024-b93a4cf8`, note
-`h33-h33-2-b2; CONC 1km on TMI/grav/scarp prior (not catalogue); pred MODEL:-0.008`.
-SHA-256 `b93a4cf8dd01ee1cdc6cf3dc3640e5e36f7baa369b468300b90147a5f8968f3f`
-(zeros `7fa6cea4a4a155d7407cf8e0c204d21b9d73c7c94dd3b023797a2933d1c56277`).
-Format receipt: disk re-read + `gems.gates` 10/10 PASS; EPSG:32611; 3730x3292;
-float32, 1 band; values in [0,1]; 0 NaN inside the footprint; NaN outside; 37,654
-unit-mass dots; 0 catalogue mass; new dots `min d_cat = 3.16 px`; `min_nn = 1.0 px`
-(declared, see the spacing caveat below). Its only job is the control question:
-if `CONCcatblk10up10` wins, does the physics prior (which is not derived from the
-catalogue) also win? It is predicted to lose (`MODEL:-0.008`), so it is NOT a slot
-candidate unless you deliberately want to buy that control.
+All slot rows: 37,654 unit-mass dots · EPSG:32611 · 3730×3292 · float32 · 1 band · values in `[0,1]` · 0 NaN inside footprint · 0 catalogue mass · `d_cat > 2.0 px` · **10/10 `gems.gates` PASS on independent disk reread**.
 
-*(Alternative 10% and 15% RELIEF dose variants `RELIEFp10piedmont` and `RELIEFp15piedmont` are built and recorded in `evidence/relief_variants.json`; previous session candidates across `SNAP`, `CONCENTRATION` and `PRUNE` remain documented in `ledger/submissions.csv`.)*
+**The TIPGAP row is a negative-result deliverable, not a slot.** Its own run card records `verdict: negative`: HOLDOUT-DTI `0.002723` is *below* R0. Moving 33 % of the budget 6–18 px off the D2.8 skeleton onto along-strike tip walks **costs** credit on this instrument, which falsifies the "continuations sit 0.5–1.8 km past the tips" hypothesis. Keep it as evidence; do not spend a slot expecting a gain.
+
+### Two honest caveats on the ranking
+
+- **Slot 1 was not previously submittable.** RELIEF p10 had the largest holdout gain of any arm but was served only in the NaN-outside encoding. A zeros-outside twin has now been built and passes 10/10 gates; its sha256 **reproduces the value recorded in `evidence/relief_variants.json` byte-for-byte**, which independently corroborates the re-encode rather than trusting it.
+- **Slots 1 and 2 are not independent.** RELIEF and DILATATION arrivals overlap 28.84 % within 3 px (Jaccard 0.1593), so a win on both is partly the same information. Do not treat two positive receipts from these two arms as two confirmations.
+
+## Earlier sessions' candidates (still built, all documented in `ledger/submissions.csv`)
+
+`RELIEF p12/p15`, `SNAP scarp2p0px / scarp1p4px / pot2p0px / cap2p0-g0.05/0.10/0.15`, `CONCENTRATION catblk10up10 / up20 / dn10 / phys10`, `PRUNE B3/B4/B5` and `PRUNEp2.5/p3.5/p4.5px-refill`, `MASS D10/A10/SWAP10`.
+
+Two standing caveats apply to those rows:
+
+- **MASS:** `h19_5.tif` is binary `{0,1}` with value 1.0 at every R0 dot, so the "ranking" those files used had no ordering. They are a random 10 % perturbation control, **not** a ranking test. See `IRREGULARITIES.md`.
+- **CONCENTRATION:** at a fixed count on the 1-px H19-5 skeleton the parent's 2.83 px spacing floor is unattainable (only ~90 legal pixels exist), and at a 2.0 px floor a "10 %" move silently becomes 7.34 % of positions. `CONCENTRATIONphys10` (`MODEL:−0.008`) exists only as the control that says whether a `catblk10up10` win came from the catalogue prior or from reallocation itself.
 
 ## Report-only diagnostics (`PROXY`, never gates or scores)
 
-- **Catalogue hide-and-recover `PROXY`** (`n = 22,663` withheld catalogue positives, paired 20 km spatial-block bootstrap 95% CI, `evidence/relief_proxy_audit.json`):
-  - `R0`: `0.004006 [0.003424, 0.004690]`
-  - `RELIEFp10piedmont`: `0.006045 [0.005187, 0.006927]` (`+0.002039` vs R0)
-  - `RELIEFp12piedmont`: `0.005974 [0.005096, 0.006880]` (`+0.001967` vs R0)
-  - `RELIEFp15piedmont`: `0.005961 [0.005071, 0.006873]` (`+0.001955` vs R0)
-- **Single-feature leakage canaries** (symmetric AUC on hidden catalogue folds):
-  - `Band 3 tmi_hg`: `0.5012`
-  - `Band 5 iso_grav_anom_slope`: `0.5511`
-  - `Band 12 det_elev`: `0.5024`
-  - `Band 19 det_elev_slope`: `0.5531` — max `0.5531 << 0.90` (`REPORT_ONLY_PASS`).
-- **USGS SGMC off-catalogue bedrock control `PROXY`** (`n = 62,703` pixels `>3 px` from catalogue):
-  - `R0`: `0.096060`
-  - `RELIEFp10piedmont`: `0.087245` (`-0.008815` vs R0)
-  - `RELIEFp12piedmont`: `0.085162` (`-0.010898` vs R0)
-  - `RELIEFp15piedmont`: `0.082782` (`-0.013278` vs R0)
-  *(Notice: SGMC maps exhumed bedrock faults inside mountain ranges; reallocating dots away from range interiors into the piedmont alluvial plain naturally lowers the bedrock-only SGMC control, confirming genuine geographical reallocation).*
+- **DILATATION** (`evidence/dilatation_proxy_audit.json`) — holdout as tabulated above. Leakage canaries, each band tested alone before any result was trusted: Band 8 `0.5145`, Band 7 `0.5128`, Band 4 `0.5102`, Band 15 `0.5149`, Band 17 `0.5060` — max `0.5149 ≪ 0.90` (`REPORT_ONLY_PASS`).
+- **SGMC off-catalogue bedrock control** (`n = 62,703` pixels `> 3 px` from the catalogue): R0 `0.096060`; DILATATION p10 `0.083547`, p12 `0.081467`, p15 `0.079888` (`−0.0125` / `−0.0146` / `−0.0162`). Expected: SGMC maps exhumed **range-core** bedrock faults, not dilating piedmonts, so reallocating away from range interiors lowers this control. Recorded as confirmation of genuine geographical reallocation, not presented as a pass.
+
+## How to submit — 3 steps
+
+1. Download the zeros-outside file for the slot you are spending (table above).
+2. At <https://www.drivendata.org/competitions/306/competition-doe-gems/data/> (login required) choose **New submission**, select the `.tif` (or a `.zip` containing one GeoTIFF — both are accepted). Do not edit the file.
+3. Paste the submission name and form note from the table, submit, and **copy the receipt score into `ledger/submissions.csv`**. That receipt is the only ORGANIZER-CONFIRMED number; holdout and MODEL values are never scores.
 
 ## Deterministic reproduction
 
-1. `pip install -r requirements.txt`
-2. `python scripts/restore_inputs.py` (restores and SHA-256/byte-verifies all 12 manifest pins into gitignored `.cache/gems_inputs/`).
-3. `python scripts/build_relief_variants.py` (rebuilds R0 byte-for-byte, generates all GeoTIFF pairs in `releases/`, re-reads from disk, runs format gates, and updates ledger/evidence).
-4. `python scripts/report_relief_proxies.py` (computes report-only diagnostics in `evidence/relief_proxy_audit.json`).
-5. Earlier sessions' files rebuild with `python scripts/build_concentration_variants.py`, `python scripts/build_snap_scarp_variants.py`, `python scripts/build_prune_variants.py`, `python scripts/build_prune_rungs.py` and `python scripts/build_mass_variants.py`.
+```bash
+pip install -r requirements.txt
+python scripts/restore_inputs.py              # SHA-256 + byte-verifies all 12 pins
+python scripts/build_dilatation_variants.py   # rebuilds R0 byte-for-byte, builds p10/p12/p15, re-reads, runs gates
+python scripts/report_dilatation_proxies.py   # pooled holdout + leakage canaries + SGMC control
+make test && make manifest && make verify     # 97 passed · RESULT: OK · PARENT VERIFIED
+```

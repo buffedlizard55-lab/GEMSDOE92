@@ -36,12 +36,39 @@ def cmd_manifest(a) -> int:
 
 
 def cmd_parent(a) -> int:
-    from .parent import ParentUnavailable, Recipe, rebuild, verify_inputs
+    from .parent import (ParentUnavailable, Recipe, compare_claimed_invariants,
+                         verify_inputs, verify_pinned_artefact)
     try:
         recipe = Recipe.load(a.recipe)
     except ParentUnavailable as e:
         print(f"PARENT UNAVAILABLE: {e}", file=sys.stderr)
         return 2
+
+    if recipe.mode == "pinned_artefact":
+        report = verify_pinned_artefact(recipe, a.data_root, measure=not a.no_measure)
+        for enc, got in report["measured"].items():
+            # "remeasured" is the invariant block, not an encoding entry
+            if isinstance(got, dict) and "sha256" in got:
+                print(f"  {enc:8s} {got['sha256'][:12]}… {got['bytes']} B  {got['path']}")
+        remeasured = report["measured"].get("remeasured")
+        if remeasured:
+            drift = compare_claimed_invariants(a.recipe, remeasured)
+            for k, v in remeasured.items():
+                flag = "  <-- DRIFT" if any(d.startswith(f"{k}:") for d in drift) else ""
+                print(f"  {k:28s} {v}{flag}")
+            if drift:
+                for d in drift:
+                    print(f"  PROBLEM: record disagrees with raster: {d}", file=sys.stderr)
+        for p in report["problems"]:
+            print(f"  PROBLEM: {p}", file=sys.stderr)
+        if report["ok"] and not (remeasured and compare_claimed_invariants(a.recipe, remeasured)):
+            print(f"PARENT VERIFIED (pinned artefact): {recipe.parent_id} "
+                  f"sha256 {recipe.expected_sha256[:12]}…")
+            return 0
+        print("Refusing to approximate the parent: the pinned bytes or the recorded "
+              "invariants do not hold.", file=sys.stderr)
+        return 2
+
     problems = verify_inputs(recipe, a.data_root)
     if problems:
         print("PARENT UNAVAILABLE -- pinned inputs unusable:", file=sys.stderr)
@@ -95,6 +122,9 @@ def main(argv=None) -> int:
     p = sub.add_parser("parent", help="verify the parent recipe's inputs")
     p.add_argument("--recipe", default="registry/parents/R0.json")
     p.add_argument("--data-root", default="data")
+    p.add_argument("--no-measure", action="store_true",
+                   help="pinned-artefact mode: check sha256/length only, skip the "
+                        "raster re-measurement of the recorded invariants")
     p.set_defaults(fn=cmd_parent)
 
     l = sub.add_parser("ledger", help="summarise the ledger")

@@ -7,7 +7,8 @@
     "nan": {
       "path": "data/parent_R0_nan.tif",
       "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
-      "bytes": 355000
+      "bytes": 355443,
+      "bytes_note": "corrected 2026-10-25 from a stale 355000; sha256 unchanged and matched disk throughout, and registry/session_manifest.json independently records 355443. See IRREGULARITIES.md 2026-10-25."
     },
     "zeros": {
       "path": "data/parent_R0_zeros.tif",

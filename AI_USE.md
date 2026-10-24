@@ -229,6 +229,120 @@ No submission, no login, no leaderboard or competition-page access, no Dropbox c
 
 ---
 
+## Session 8 — DILATATION axis + submission-ready download site (2026-10-25)
+
+### What AI wrote
+- `docs/HYPOTHESES.md` — 5 ranked, not-yet-tried geological hypotheses, each naming its
+  layer(s), physical transform, why it catches a fault the USGS/INGENIOUS catalogue
+  misses, and how it differs from every axis already in the repo (MASS / PRUNE / SNAP /
+  CONCENTRATION / RELIEF). Ranked by expected HOLDOUT-DTI gain per implementation cost.
+- `scripts/build_dilatation_variants.py` — deterministic build: verifies all 12 manifest
+  pins by SHA-256 + byte length, rebuilds R0 byte-for-byte through the pinned lineage,
+  reads Band 8 `geod_dilaterate` with `masked=True` (sentinel-safe), computes terciles
+  (`p33 = 3.800`, `p67 = 7.2377` nstrain/yr), selects the lowest-prior donors and regrows
+  them by greedy exact expected-DTI inside the high-dilatation tercile, writes both
+  encodings, re-reads from disk, runs `gems.gates`, appends ledger rows, writes
+  `evidence/dilatation_variants.json` and mechanism cards.
+- `scripts/report_dilatation_proxies.py` — report-only pooled hide-and-recover HOLDOUT-DTI
+  (`gems57-pooled-hide-v2`), single-feature leakage canaries for Bands 4/7/8/15/17, and
+  the USGS SGMC off-catalogue bedrock control → `evidence/dilatation_proxy_audit.json`.
+- `tests/test_dilatation_variants.py` — 8 tests (synthetic reallocation contract +
+  receipt/policy/ledger/canary/download-contract assertions). `make test` = **80 passed**.
+- `docs/index.html`, `docs/SUBMIT.html`, `docs/_config.yml`, `docs/.nojekyll` — the
+  GitHub Pages site: one obvious download at the top behind a programmatic
+  "OK TO DOWNLOAD AND SUBMIT" banner, the portal `[0,1]`-range failure explained and fixed,
+  the run card, official source links, and a 4-command reproduction.
+- `docs/downloads/` — the three dose pairs + primary .zip + independent `audit.json`;
+  `.gitignore` gained `!docs/downloads/*.tif` / `*.zip` exceptions so the served files are
+  tracked while `releases/` stays ignored.
+- Updated `README.md` (DILATATION current state + run card), `SLOT_PLAN.md` (DILATATION as
+  Slots 1–2, RELIEF/SNAP demoted to orthogonal Slot 3), `docs/SUBMIT.md`,
+  `IRREGULARITIES.md`, this file.
+
+### What the human decided or supplied
+- The axis choice was delegated by the brief ("pick your own session"); the AI chose
+  `DILATATION` after ranking the 5 candidates by expected gain per cost.
+- The parent R0 and its `CLAIM` 0.2778. The AI verified the file byte-for-byte but cannot
+  verify a score without a receipt.
+- `TOP_PUBLIC` with its observation date, the entity's rolling-week quota, the decision
+  whether/which single encoding to upload, and every ORGANIZER-CONFIRMED receipt
+  transcription into `ledger/submissions.csv`.
+
+### What the AI verified rather than asserted
+- Parent lineage rebuilt byte-for-byte; both pinned digests match (`c55bafc4…` / `baeae321…`).
+- Leakage canary run **per feature before trusting any result**: Band 8 `0.514464`,
+  Band 7 `0.512772`, Band 4 `0.510186`, Band 15 `0.514862`, Band 17 `0.505983` —
+  max `0.514862 << 0.90` (`REPORT_ONLY_PASS`).
+- HOLDOUT-DTI on the whole-component buffered hide-and-recover (8 folds, `n = 22,663`,
+  157 spatial clusters, 1,000 paired draws, seed 520810): R0 `0.004006 [0.003424, 0.004690]`,
+  p12 `0.005779 [0.004863, 0.006851]`, Δ `+0.00177 [0.00111, 0.00246]` — CI excludes 0.
+- Lane drift checked on the final dots: Pearson vs R0 `0.8997` (< 0.90). The 99.4 % of
+  new dots lying within 3 px of an R0 dot is the parent's own 90 % shared set, not an
+  external-registry duplicate; the axis layer (Band 8 strain) is disjoint from every
+  previously used layer.
+- The **served** file, not just the built one: fetched over HTTP, SHA-256 matched the
+  recorded audit (`25ba17a2…`), and the 10 MUST gates re-passed on those exact bytes
+  (`n_violations=0 min=0.0 max=1.0 nan_pixels=0 dots_on_catalogue=0`). The `.zip` was
+  unzipped and contains exactly one GeoTIFF (214,619 bytes).
+- Nothing was submitted, no leaderboard or competition page was contacted, no Dropbox
+  contact, no credentials used, no label probing. No number was invented: unknown values
+  (`TOP_PUBLIC`, slots, receipts) are blank.
+
+### What the AI flagged instead of hiding
+- The SGMC bedrock control **falls** (`−0.0125` / `−0.0146` / `−0.0162`) under DILATATION.
+  That is the expected geography (SGMC maps exhumed range-core faults, not dilating
+  piedmonts), so it is recorded as confirmation of genuine reallocation rather than
+  presented as a pass.
+- The holdout's truth is the visible catalogue, so it cannot reward a genuinely new fault;
+  it is a slot-economy instrument, never a score. Live receipts remain the decision anchor.
+- R0 inherits 2,171 dots within 3 px of the catalogue; every non-PRUNE descendant keeps
+  them, and the gate's declared `radius=2` override is recorded verbatim rather than
+  papered over.
+
+### Shared tools the AI found broken and fixed once (not forked)
+
+Running the repo's *own* gates — rather than trusting them — exposed two defects and
+one wrong number. All three are recorded in `IRREGULARITIES.md` (2026-10-25) with the
+before/after measurements.
+
+1. **Pinned paths were joined onto the data root twice.** `registry/session_manifest.json`
+   records data-root-relative paths (`bridge/sample_submission.tif`) while
+   `registry/data_manifest.json` and `registry/parents/R0.json` record repo-relative ones
+   (`data/parent_R0_nan.tif`). `gems.manifest.verify` and `gems.parent.verify_inputs` both
+   did `data_root / rel`, so the second form became `data/data/...`. **Measured before:**
+   `make manifest` → `RESULT: FAILED`, 8 of 8 pinned inputs `MISSING`, all present on disk
+   with correct hashes. **Fix:** one `gems.rasters.resolve_pinned_path(root, rel)` used by
+   both call sites (data root first, then repo root; a genuinely absent file still reports
+   MISSING at the data-root path). **Measured after:** `make manifest` → `RESULT: OK`, 8/8.
+2. **`registry/parents/R0.json` is `mode: pinned_artefact`, which the loader could not
+   read.** `Recipe.load` required the rebuild keys, so `make verify` — the gate the Makefile
+   calls "the gate that stops a session before it burns slots on descendants of an
+   unverified parent" — raised `ParentUnavailable` on every run. **Fix:** the loader now
+   accepts and validates the pinned-artefact form, and `verify_pinned_artefact()` checks
+   (a) sha256 **and** byte length of every encoding and (b) *re-measures* dot count, total
+   mass, minimum catalogue distance, footprint size and the 3/4/5 px collar counts from the
+   raster itself and diffs them against the record's `verified` block
+   (`compare_claimed_invariants`). The rebuild contract is untouched and still refuses
+   templates. **Measured after:** `make verify` exits 0, zero drift on all seven invariants.
+3. **The new byte-length check immediately caught a stale number.** `R0.json` claimed the
+   NaN artefact was 355,000 bytes; disk says 355,443, and `session_manifest.json`
+   independently says 355,443. The sha256 — the real authority — was correct in both
+   registries and matched disk, so no artefact was ever mis-identified. Corrected to
+   355443 with a `bytes_note` pointing at the irregularity; the sha256 was not touched.
+
+**CI was why this went unnoticed.** `.github/workflows/ci.yml` ran the parent gate as
+`... || true`, i.e. deliberately non-fatal, so a gate that had never once passed produced
+no signal. It is fatal now, alongside a new `make manifest` step and a step that re-runs
+the 10 MUST gates on **every** `docs/downloads/*-zeros.tif` and then asserts the primary
+named in `index.html` matches its shipped audit receipt byte-for-byte. That step was
+written, then run: it first selected `p10` (alphabetical `ls | head`) instead of the `p12`
+primary and looked for `...-zeros-audit.json` instead of `...-audit.json`. Both bugs were
+caught by executing the step, not by reading it; the loop now gates all three served files
+and derives the receipt name from the variant stem.
+
+`make test` = **97 passed** (was 72 at session start: +8 DILATATION, +11 parent-artefact,
++6 path-resolution).
+
 ## Session 8 — STEPOVER unique TIF (2026-10-24)
 
 ### What AI wrote
