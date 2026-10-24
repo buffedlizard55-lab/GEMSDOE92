@@ -27,6 +27,20 @@
 
 ---
 
+## Parallel candidate — STRAINBREAK f60s2i (2026-10-24 late session, also negative)
+
+**✅ FORMAT-VALID — OK TO DOWNLOAD. ⛔ NOT CLEARED FOR A WEEKLY SLOT (verdict negative).** Unique new TIF: 22,592 dots (60%) on strained coherent DEM scarp-breaks (`S = BREAKLINE L × pct_rank(Band 4 geod_2ndinv)`), >3 px off the whole H19-5 skeleton **and** >3 px off BREAKLINE f45's far dots; 15,062 coverage-greedy R0 dots kept; 37,654 total. Hypothesis: scarps on currently-loading structures (young step-over strands) are missed by both catalogue and worms. Mimic: Walker Lane strain shadows, subsidence, Lahontan shorelines in strained crust. This session's rank-1 GRAVCrest (signed Band-18 gravity crest) was **falsified by the pre-build SGMC screen and never built** (far-only SGMC 0.005–0.016 vs 0.072).
+
+| Deliverable | Link |
+|---|---|
+| **GeoTIFF (zeros-outside)** | [Download](docs/downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif) · [ZIP](docs/downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2.zip) |
+| Submission name | `GEMSDOE92-STRAINBREAK-f60s2i-20261024` |
+| Note (87 chars) | `h33-h33-2-b2; STRAINBREAK f60s2i 22592 far dots on strained scarp-breaks >3px off H19-5` |
+| SHA-256 (zeros) | `000d0bd7e0a549c2d38ca52a5df5b249763a7be998ad2ccfa30cc45136c05c1f` |
+| Audit / run card | [audit](docs/downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-audit.json) · [run card](evidence/strainbreak_run_card.json) · [analysis](docs/ANALYSIS_20261024_STRAINBREAK.md) · [hypotheses](docs/HYPOTHESES_20261024_GRAVCrest.md) |
+
+**HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld px): f60s2i **0.005487 [0.004522, 0.006430]** — the best locally-unique holdout in this repo (R0 0.004006, BREAKLINE f45 0.004861), Δ vs R0 +0.001481 [+0.000582, +0.002296]; dose plateau f45 0.005022 → f60 → f75 0.005486. But it does **not** beat the holdout best (RELIEF p10 0.006045, paired Δ CI includes 0) and SGMC prefers BREAKLINE (0.12611 vs 0.10516) → promotion rule fails, verdict **negative**. Local uniqueness: worst forward overlap 40.0% / |ρ| 0.401 (21 rasters; surface worst 10.0% / sampled ρ 0.103). Expanded public-registry scan (1,309 rasters, complete for declared scope; `evidence/strainbreak_public_registry_uniqueness.json`): **literal duplicate stop triggered** — worst forward overlap 1.0 (17GEMSDOE full-footprint E-proba), 89 rasters >70%, worst |ρ| 0.417; even vs sparse dot-like rasters only (≤150k positives, 1,125 checked; diagnostic, not a gate) worst is 0.7105 with 3 over 70%. The queued BREAKLINE public scan was also run this session: likewise duplicate (134 >70%; `evidence/breakline_public_registry_uniqueness.json`). Leakage canary max 0.6216. Queued item closed: visible-collar SGMC = 0.021192 vs R0 0.09606 (its holdout gain does not transfer off-catalogue).
+
 ## Executive Summary — Format-Validated Candidate, One-Click Download
 
 **✅ FORMAT-VALID — OK TO DOWNLOAD.** The generated submission raster is an all-finite, single-band float32 GeoTIFF, EPSG:32611, shape 3730 × 3292, matching the competition template geotransform. It contains zero NaNs inside the footprint, zeros outside, values strictly in `[0, 1]`, and passes all 10 local MUST gates on independent re-read from disk. This completely prevents the DrivenData portal error: `Predicted values must be in range [0, 1]`.

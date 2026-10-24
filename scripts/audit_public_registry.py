@@ -153,7 +153,15 @@ def main() -> int:
     ap.add_argument("--surface", type=Path, help="Actual lane pre-placement GeoTIFF; never substitute another lane")
     ap.add_argument("--witness-repo", help="Check one public owner repo for a binding duplicate; cannot clear uniqueness")
     ap.add_argument("--output", type=Path, default=ROOT / "evidence/public_registry_uniqueness.json")
+    ap.add_argument("--out-name", default=None,
+                    help="compat alias (STRAINBREAK session): evidence/<name>.json + docs/downloads/<name>.json")
+    ap.add_argument("--preplacement-tif", type=Path, default=None,
+                    help="compat alias for --surface")
     args = ap.parse_args()
+    if args.preplacement_tif and not args.surface:
+        args.surface = args.preplacement_tif
+    if args.out_name:
+        args.output = ROOT / "evidence" / f"{args.out_name}.json"
     candidate_path = (ROOT / args.candidate).resolve()
     if not candidate_path.is_file():
         ap.error(f"candidate not found: {candidate_path}")
@@ -308,6 +316,8 @@ def main() -> int:
     out.write_text(serialized, encoding="utf-8")
     if out.resolve() == (ROOT / "evidence/public_registry_uniqueness.json").resolve():
         (ROOT / "docs/downloads/public_registry_uniqueness.json").write_text(serialized, encoding="utf-8")
+    if args.out_name:
+        (ROOT / "docs/downloads" / f"{args.out_name}.json").write_text(serialized, encoding="utf-8")
     print(json.dumps({"output": str(out), "preplacement": pre_summary,
                       "final": final_summary, "verdict": result["verdict"]}, indent=2))
     return 0 if result["scan_complete_for_declared_scope"] or final_summary["stop_required"] or pre_summary.get("stop_required") else 2

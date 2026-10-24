@@ -1,6 +1,19 @@
 # Submission executive summary — GEMSDOE92 candidate
 
-## Status: OK TO DOWNLOAD, NOT CLEARED TO SUBMIT
+## Parallel artifact: STRAINBREAK f60s2i — OK TO DOWNLOAD, NOT CLEARED TO SUBMIT
+
+Format-valid zeros-outside float32 GeoTIFF (10/10 local MUST gates; values in [0,1], no NaN in footprint). Verdict **negative**: HOLDOUT-DTI 0.005487 [0.004522, 0.006430] (evaluator `gems57-pooled-hide-v2`, 22,663 withheld positives) beats R0 0.004006 but not the holdout best (RELIEF p10 0.006045), and the USGS SGMC off-catalogue control prefers BREAKLINE f45 (0.12611 vs 0.10516). Local literal uniqueness passes (worst forward 3-px overlap 40.0%, 21 rasters); the expanded public-registry result is in the audit receipt. **Do not spend a weekly slot without a separate human selector decision.**
+
+- [Download STRAINBREAK TIF (negative deliverable)](downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif) · [ZIP](downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2.zip) · [audit](downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-audit.json) · [run card](downloads/strainbreak_run_card.json) · [hypotheses](HYPOTHESES_20261024_GRAVCrest.md)
+- Name: `GEMSDOE92-STRAINBREAK-f60s2i-20261024` · Note (87): `h33-h33-2-b2; STRAINBREAK f60s2i 22592 far dots on strained scarp-breaks >3px off H19-5` · SHA-256 `000d0bd7e0a549c2d38ca52a5df5b249763a7be998ad2ccfa30cc45136c05c1f`
+- If a slot is ever cleared: download zeros-outside .tif unedited -> DrivenData New submission -> exact name/note -> record organizer receipt in `ledger/submissions.csv`. This agent does not upload.
+- This session's rank-1 GRAVCrest hypothesis was falsified by the pre-build SGMC screen and never built (`evidence/gravcrest_screen.json`).
+
+## Parallel artifact: ANASIG f45 (site primary) — do not submit
+
+Site primary is the ANASIG candidate (`GEMSDOE92-ANASIG-f45Atop-20261024`); see `index.html` / `SUBMIT.html` and `downloads/anasig_run_card.json`. It is likewise format-valid and **not cleared** (literal registry stop). STRAINBREAK above is a parallel-session negative deliverable, not a replacement primary.
+
+## Previous artifact: visible collar — duplicate, do not submit
 
 The primary file is a format-valid, all-finite, zeros-outside float32 GeoTIFF and passes all 10 local MUST gates. The separate uniqueness gate **fails**: a broader scan of 1,279 same-grid registry rasters found 100% forward 3-px overlap with multiple registry rasters (131 exceed the 70% stop threshold). Per the operator's literal protocol, this is a duplicate and must not consume a competition slot.
 
@@ -45,6 +58,6 @@ The repository records a 2026-10-24 read of the official public leaderboard show
 
 - [Download BREAKLINE TIF](downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif) · [ZIP](downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0.zip) · [gate audit](downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-audit.json) · [run card](downloads/breakline_run_card.json) · [analysis](ANALYSIS_20261024.md)
 - Name: `GEMSDOE92-BREAKLINE-f45Ltop-20261024` · Note (90): `h33-h33-2-b2; BREAKLINE f45Ltop 16944 far dots on linear scarp-break ridges >3px off H19-5` · SHA-256 `cd9c8a564588e6542b379cd36cbe05fc6da3be07b8edbc542bf737336907810e`
-- HOLDOUT-DTI `0.004861 [0.004032, 0.005822]` (delta vs R0 +0.000854 [+0.000300, +0.001423]); unique within the 18-raster **local** registry (worst 55.0% vs R0; 3.5% vs the collar candidate) but **not scanned** against the 1,279-raster public registry and below the holdout-best arms → **NOT CLEARED; do not submit without a human selector decision.** If a slot is ever spent: zeros-outside .tif unedited -> DrivenData New submission -> exact name/note -> record receipt in `ledger/submissions.csv`. Never submit more than one BREAKLINE dose.
+- HOLDOUT-DTI `0.004861 [0.004032, 0.005822]` (delta vs R0 +0.000854 [+0.000300, +0.001423]); unique within the 18-raster **local** registry (worst 55.0% vs R0; 3.5% vs the collar candidate) and below the holdout-best arms; update 2026-10-24: expanded public scan (1,309 rasters) run — literal duplicate stop triggers (134 >70%; `evidence/breakline_public_registry_uniqueness.json`) → **NOT CLEARED; do not submit without a human selector decision.** If a slot is ever spent: zeros-outside .tif unedited -> DrivenData New submission -> exact name/note -> record receipt in `ledger/submissions.csv`. Never submit more than one BREAKLINE dose.
 
 Canonical HTML: [`SUBMIT.html`](SUBMIT.html). Main site: [`index.html`](index.html).

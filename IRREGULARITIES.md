@@ -676,3 +676,59 @@ Follow-up verified a binding public duplicate: all BREAKLINE f45Ltop dots lie wi
 **Correction.** Action text now says “generated research GeoTIFF” and “DO NOT SUBMIT.” The form instructions are explicitly conditional on a future exact artifact whose audit records `submission_eligible: true`. Site-contract tests prohibit “Download the submission” while the current negative verdict is active.
 
 **Scientific outcome.** No fourth experiment was run. The DILATATION lane had already consumed its three-arm budget and all arms fail the literal 70% registry-overlap rule (99.37–99.40% versus R0). Creating a cosmetic raster mutation would produce unique bytes but would not satisfy scientific uniqueness; it was deliberately not done.
+
+## 2026-10-24 (STRAINBREAK session) — `evidence/public_registry_uniqueness.json` was not valid JSON
+
+Both copies (`evidence/` and `docs/downloads/`, byte-identical) failed to parse:
+a missing comma after `inventory.scan_source` (line 14). The file is the binding
+duplicate-stop evidence for the visible-collar candidate, so any tooling that
+`json.load`s it (including the site contract) would have failed closed or crashed.
+Fixed by inserting the single missing comma in both copies; content otherwise
+unchanged, verified by re-parsing (102 repositories). No numbers changed.
+A repo-wide JSON parse sweep this session found no other corrupt JSON.
+
+## 2026-10-24 (STRAINBREAK session) — shared `uniqueness()` OOM-killed at 4 GB; streamed fix
+
+`scripts/report_breakline_proxies.py:uniqueness()` materialised a float64 EDT
+(~110 MB) for **every** registry raster simultaneously (>20 rasters ≈ 2.7 GB)
+and was OOM-killed when reused by the STRAINBREAK reporter on a 4 GB sandbox —
+silently (log tail just `Killed`). Fixed in the shared function, per protocol,
+to stream one registry raster at a time; outputs numerically unchanged
+(reproduced BREAKLINE f45 worst forward overlap 0.550008 and all control
+holdout scores to the digit after the fix).
+
+## 2026-10-24 (STRAINBREAK session) — `audit_public_registry.py` was hard-coded to the visible-collar candidate
+
+Three separate hard-codings made the scanner unsafe to run on any other file:
+(1) the "pre-placement surface" was always the collar corridor regardless of
+`--candidate`; (2) output always overwrote the collar's
+`evidence/public_registry_uniqueness.json`; (3) `check_site.py` and
+`tests/test_site_contract.py` inferred "the primary" as the *first* zeros link
+and asserted the collar's duplicate-stop fields, so adding any new primary
+card broke the site contract. Generalized (backward-compatible): `--out-name`,
+`--preplacement-tif`, legacy collar surface only for the collar candidate,
+primary identified by `data-primary="true"`, run-card path/verdict read from
+the audit receipt, eligibility allowed only when the public literal gate
+passes AND verdict is promote (fail-closed otherwise). Defaults reproduce the
+original collar scan exactly.
+
+## 2026-10-24 (STRAINBREAK session) — GitHub API quota exhausted mid-scan (incomplete-scan handling)
+
+The expanded public scan needs ~1,300 `gh api` blob fetches. The shared quota
+hit 0/5000 remaining after 152 blobs; the first run also crashed on the
+then-unpatched scanner (above). The cached inventory + verified blobs are
+retained under `.cache/gemsdoe_public_registry/`; the completed scan was
+re-run `--cache-only` after quota reset so tree calls were not repeated.
+Any scan with fetch errors is recorded `scan_complete_for_declared_scope:
+false` and fails closed — an incomplete scan is never quoted as clearance.
+
+## 2026-10-24 (STRAINBREAK session) — local instruments now openly disagree; no local tie-breaker exists
+
+STRAINBREAK f60 is best-ever on the catalogue holdout among locally-unique
+files (0.005487) yet loses to BREAKLINE on the SGMC bedrock control
+(0.10516 vs 0.12611); the visible collar is the extreme case (holdout
+0.046866, SGMC 0.021192 — measured this session, closing the queued item).
+Catalogue hide-and-recover and SGMC price different truths; neither is the
+private expert-mapped label set. Treating either as decisive alone would be
+an irregularity. The only resolver is an organizer receipt, which remains
+Blocker 0 (ledger: BUILT rows grew by 3 this session, RECEIPT rows still 0).

@@ -75,37 +75,42 @@ def uniqueness(arms: dict[str, np.ndarray], footprint: np.ndarray,
     registry_paths += sorted((ROOT / "releases").glob("*-zeros.tif"))
     registry_paths += sorted((ROOT / "releases").glob("*STEPOVER*.tif"))
 
+    # Stream the registry one raster at a time (2026-10-24 late-session fix:
+    # the original held a float64 EDT for every registry raster at once,
+    # ~110 MB x >20 rasters, and was OOM-killed on a 4 GB sandbox when reused
+    # by report_strainbreak_proxies.py; outputs are numerically unchanged).
+    cand_arms = {k: v for k, v in arms.items() if k not in ("R0", "RELIEFp10")}
+    d_ours_by_arm = {k: distance_transform_edt(~v) for k, v in cand_arms.items()}
+    rows_by_arm: dict[str, list] = {k: [] for k in cand_arms}
     seen_masks: dict[bytes, str] = {}
-    registry: list[tuple[str, np.ndarray, np.ndarray]] = []  # name, mask, dist-to-mask
     for p in registry_paths:
         if not p.is_file() or p.name in own_ids:
             continue
-        m = load_mask(p, footprint)
-        key = np.packbits(m).tobytes()
+        theirs = load_mask(p, footprint)
+        key = np.packbits(theirs).tobytes()
         if key in seen_masks:
             continue
         seen_masks[key] = p.name
-        if not m.any():
+        if not theirs.any():
             continue
-        registry.append((p.name, m, distance_transform_edt(~m)))
-
-    out: dict[str, dict] = {}
-    for arm_name, mask in arms.items():
-        if arm_name in ("R0", "RELIEFp10"):
-            continue
-        d_ours = distance_transform_edt(~mask)
-        rows = []
-        for name, theirs, d_theirs in registry:
+        d_theirs = distance_transform_edt(~theirs)
+        for arm_name, mask in cand_arms.items():
             fwd = float(np.mean(d_theirs[mask] <= 3.0)) if mask.any() else 0.0
-            rev = float(np.mean(d_ours[theirs] <= 3.0)) if theirs.any() else 0.0
+            rev = float(np.mean(d_ours_by_arm[arm_name][theirs] <= 3.0)) if theirs.any() else 0.0
             phi, jac = phi_and_jaccard(mask, theirs, footprint)
-            rows.append({
-                "registry_file": name, "their_dots": int(theirs.sum()),
+            rows_by_arm[arm_name].append({
+                "registry_file": p.name, "their_dots": int(theirs.sum()),
                 "forward_overlap_my_dots_within_3px": round(fwd, 6),
                 "reverse_overlap_their_dots_within_3px": round(rev, 6),
                 "binary_spearman_phi": round(phi, 6),
                 "jaccard_exact_pixels": round(jac, 6),
             })
+        del theirs, d_theirs
+    del d_ours_by_arm
+
+    out: dict[str, dict] = {}
+    for arm_name, mask in cand_arms.items():
+        rows = rows_by_arm[arm_name]
         worst_fwd = max(rows, key=lambda r: r["forward_overlap_my_dots_within_3px"])
         worst_rho = max(rows, key=lambda r: abs(r["binary_spearman_phi"]))
         out[arm_name] = {
