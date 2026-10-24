@@ -1,5 +1,22 @@
 # Submission executive summary — GEMSDOE92 candidate
 
+## Current site primary: STEPEDGE f60Sraw (2026-10-24) — unique, OK TO DOWNLOAD, DO NOT SUBMIT
+
+New this session: aperture-persistent sustained DEM steps (Band 12). Format-valid
+zeros-outside float32 (all gates; [0,1]; 37,654 dots) and **literal-unique vs the
+28-raster local dot registry** (surface |ρ| 0.138; final worst forward overlap
+0.461, |ρ| 0.396). Verdict **negative by automated gates** (`submission_eligible:
+false`, no human inspection): HOLDOUT-DTI 0.003980 [0.003295, 0.004702]
+(`gems57-pooled-hide-v2`, 22,663 withheld) does not beat STRAINBREAK f60
+(0.005487) or RELIEF p10 (0.006045); paired Δ vs R0 includes 0. SGMC PROXY
+0.141464 (repo best) disagrees — holdout gate governs. Dense public-witness
+literal overlap 1.000 disclosed (ρ 0.0004). Sibling doses f33/f45 are
+duplicates (0.760/0.711); never submit them.
+
+- [Download STEPEDGE TIF (negative deliverable)](downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif) · [ZIP](downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.zip) · [audit](downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-audit.json) · [run card](downloads/stepedge_run_card.json) · [analysis](ANALYSIS_20261024_STEPEDGE.md) · [hypotheses](HYPOTHESES_20261024_STEPEDGE.md)
+- Name: `GEMSDOE92-STEPEDGE-f60Sraw-20261024` · Note (93): `h33-h33-2-b2; STEPEDGE f60Sraw 22592 far dots on aperture-persistent DEM steps >3px off H19-5` · SHA-256 `c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4`
+- If a future artifact's audit ever says `submission_eligible: true`: download the zeros-outside .tif unedited → DrivenData New submission → exact name/note → record the organizer receipt in `ledger/submissions.csv`. This agent does not upload.
+
 ## Parallel artifact: STRAINBREAK f60s2i — OK TO DOWNLOAD, NOT CLEARED TO SUBMIT
 
 Format-valid zeros-outside float32 GeoTIFF (10/10 local MUST gates; values in [0,1], no NaN in footprint). Verdict **negative**: HOLDOUT-DTI 0.005487 [0.004522, 0.006430] (evaluator `gems57-pooled-hide-v2`, 22,663 withheld positives) beats R0 0.004006 but not the holdout best (RELIEF p10 0.006045), and the USGS SGMC off-catalogue control prefers BREAKLINE f45 (0.12611 vs 0.10516). Local literal uniqueness passes (worst forward 3-px overlap 40.0%, 21 rasters); the expanded public-registry result is in the audit receipt. **Do not spend a weekly slot without a separate human selector decision.**
@@ -9,9 +26,9 @@ Format-valid zeros-outside float32 GeoTIFF (10/10 local MUST gates; values in [0
 - If a slot is ever cleared: download zeros-outside .tif unedited -> DrivenData New submission -> exact name/note -> record organizer receipt in `ledger/submissions.csv`. This agent does not upload.
 - This session's rank-1 GRAVCrest hypothesis was falsified by the pre-build SGMC screen and never built (`evidence/gravcrest_screen.json`).
 
-## Parallel artifact: ANASIG f45 (site primary) — do not submit
+## Parallel artifact: ANASIG f45 (prior site primary) — do not submit
 
-Site primary is the ANASIG candidate (`GEMSDOE92-ANASIG-f45Atop-20261024`); see `index.html` / `SUBMIT.html` and `downloads/anasig_run_card.json`. It is likewise format-valid and **not cleared** (literal registry stop). STRAINBREAK above is a parallel-session negative deliverable, not a replacement primary.
+Prior site primary was the ANASIG candidate (`GEMSDOE92-ANASIG-f45Atop-20261024`); see `index.html` / `SUBMIT.html` and `downloads/anasig_run_card.json`. It is likewise format-valid and **not cleared** (literal registry stop). STRAINBREAK above is a parallel-session negative deliverable, not a replacement primary.
 
 ## Previous artifact: visible collar — duplicate, do not submit
 

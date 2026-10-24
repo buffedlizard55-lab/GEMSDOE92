@@ -96,6 +96,10 @@ python3 scripts/restore_inputs.py && python3 scripts/verify_manifest.py
 
 ---
 
+### Integrated Parallel-Session Artifacts (`PIEDFRONT` + `STEPEDGE` + `review_20261024`)
+- **`GEMSDOE92-PIEDFRONT-f35Ptop-20261024`** (`docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif`, SHA-256 `e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8`): static `HOLDOUT-DTI = 0.006425 [0.005375, 0.007479]`, `SGMC = 0.059993`, `verdict: negative` (**OK TO DOWNLOAD**, **DO NOT SUBMIT**). `HYDROCONDUIT f45hydro` (`0.008549`) exceeds `PIEDFRONT f35Ptop` (`0.006425`) by `+33.1%` while overlapping only `56.56% <= 70%` within 3 px (`phi = 0.2000`).
+- **`GEMSDOE92-STEPEDGE-f60Sraw-20261024`** (`docs/downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif`, SHA-256 `c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4`): static `HOLDOUT-DTI = 0.003980 [0.003295, 0.004702]`, repo-best `SGMC = 0.141464`, `verdict: negative` (`42.35% <= 70%` 3-px overlap with `HYDROCONDUIT f45hydro`).
+
 ## Stored Session Prompt
 
 <details>

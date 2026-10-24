@@ -733,6 +733,55 @@ private expert-mapped label set. Treating either as decisive alone would be
 an irregularity. The only resolver is an organizer receipt, which remains
 Blocker 0 (ledger: BUILT rows grew by 3 this session, RECEIPT rows still 0).
 
+## 2026-10-24 (STEPEDGE session) — `gems/metric.py` implemented a non-official DTI algebra (FIXED)
+
+The module defined T as a dot-side sum of kernel weights (double-counting
+truth pixels covered by several dots) and G as *uncovered* truth mass, so
+`Totals.dti` could exceed 1 — its own unit test asserted DTI = 5.0 on a
+single perfectly-placed dot. Against `vendor/gems57/metric.dti_exact` (the
+instrument every holdout in this repo actually uses; verified this session
+against `dti_bruteforce` to 1.7e-16 and the official worked example
+3.00/1.89/2.00 → 0.6027 ≈ 0.60), the old code differed by up to 0.88 on 30
+random cases (`evidence/r0_forensics_20261024.json`,
+`scripts/analyze_r0_lineage.py`). Fixed once in the shared module to the
+official p.967 equations (T = Σ_g best_g; DTI = T/(0.2T+0.2(S−M)+0.8|G|);
+exact marginal gains rewritten; tests now cross-check vendor to 1e-9 and
+assert DTI ∈ [0,1]). Impact: none on any historical raster file or holdout
+number (no builder/gate read the buggy totals), but historical MASS
+*candidate ordering* used `rank_candidates` under the old algebra; those
+BUILTs remain as-built artifacts, and any future rebuild will differ.
+
+## 2026-10-24 (STEPEDGE session) — bridged `sample_submission.tif` is not the all-zero sample
+
+p.967: "A sample submission that predicts total fault absence is provided."
+The pinned bridge file's positive pixels are *pixel-identical to the fault
+catalogue* (60,988 px; verified this session). It is a catalogue-as-prediction
+example, not the zero sample. Footprint derivation (finite cells = 5,167,373)
+is unaffected, which is all this repo uses it for; but no one should treat
+its values as a format example. Provenance remains owner-mirror only.
+
+## 2026-10-24 (STEPEDGE session) — local-uniqueness verdicts are not stable as the registry grows
+
+STEPEDGE f45Sraw's far set is only 42.7% within 3 px of BREAKLINE f45's far
+dots, yet its whole-file forward overlap vs BREAKLINE f45 is 0.711 (duplicate):
+at equal dose, two greedy keep-subsets tile the same skeleton within 3 px of
+each other. BREAKLINE f45 itself measured "unique, worst 55%" in its own
+session only because no same-dose sibling existed yet. Consequence: a
+"locally unique" verdict is a statement about *that day's* registry, and
+every new sibling build can retroactively duplicate-block earlier primaries.
+Any future selector must re-run the full local uniqueness scan at decision
+time; historical uniqueness claims in older run cards must not be quoted
+without their registry date/composition. Mitigation used here (f60 +
+sibling-far repulsion) works but consumes dose headroom.
+
+## 2026-10-24 (STEPEDGE session) — prior screen code was lost; preserve screens in `scripts/`
+
+GRAVCrest/SCARPPOL-era screens ran from `.cache/diag/` and only their JSON
+survives, so their exact sampling cannot be re-executed. This session
+preserves its screen as `scripts/screen_stepedge_surfaces.py` and validated
+the harness by reproducing the BREAKLINE baseline to the digit
+(sym AUC 0.621604, far SGMC 0.072325) before trusting new numbers. Keep
+that pattern: no unpreserved screen code.
 ## 2026-10-25 — SPRINGALIGN dose amended pre-results
 - **Observation**: 1-px spring-pair alignment lines yield 30,547 eligible far pixels but only 4,058 dots under the 2.8 px spacing floor; the pre-registered 16,944 far dots cannot be placed without zero-vote filler.
 - **Decision**: Single dose amended to 4,000 far dots (10.6%) before any holdout result was seen. No zero-vote filling.
@@ -740,6 +789,55 @@ Blocker 0 (ledger: BUILT rows grew by 3 this session, RECEIPT rows still 0).
 ## 2026-10-25 — SPRINGALIGN corridor dose amended pre-results
 - **Observation**: sigma=2px corridor supports 12,743 spaced far dots < 16,944 (f45).
 - **Decision**: Experiment 2 set to sigma=3px, f33 (12,426 far; 67.0% keep, the BREAKLINE f33 uniqueness geometry) before any holdout result for this variant.
+
+## 2026-10-24 (PIEDFRONT session) — unnormalized BREAKLINE placed 74.8% of off-skeleton dots in mountain range interiors; relative scarp-break + piedmont envelope resolves the off-skeleton holdout gap
+
+- **Observation**: Auditing the elevation tercile distribution of `BREAKLINE f45Ltop`'s 16,944 off-skeleton dots (`d_H19 > 3.0 px`) revealed why every prior off-skeleton lane (`BREAKLINE f45` `0.004861`, `SCARPPOL f45` `0.005315`, `STRAINBREAK f60` `0.005487`, `ANASIG f45` `0.004967`, `SPRINGALIGN f33` `0.004865`) trailed `RELIEF p10` (`0.006045`) on `HOLDOUT-DTI`: raw $\|\nabla\,\text{det\_elev\_slope}\|$ scales with background slope, placing **74.8% (`12,673 / 16,944`)** of `BREAKLINE f45` far dots in the highest-elevation range-interior tercile (`det_elev >= 38.76 m`) and only **23.1%** in the piedmont transition (`-29.40 <= det_elev < 38.76 m`). Simultaneously, `R0` (`h33-h33-2-b2`) had **794 spacing-legal holes** on `H19-5` ($d_{\text{R0}} > 2.8\text{ px}, d_{\text{cat}} > 2.0\text{ px}$, including 593 in $2.0 < d_{\text{cat}} \le 3.0\text{ px}$) left when `b2` pruned $d_{\text{cat}} \le 2.0\text{ px}$ dots without re-thinning.
+- **Decision**: Implemented `PIEDFRONT` (`gems/piedfront.py`, `scripts/build_piedfront_variants.py`), which normalizes the DEM slope-break by local background slope ($\|\nabla\,\text{det\_elev\_slope}\| / (\max(\text{det\_elev\_slope}, 0) + 2.0^\circ)$), gates by the piedmont elevation + basement-depth + isostatic-gravity-slope envelope $W_{\text{pied}}$ (Bands 12, 15, 5), refills 4,000 piedmont `H19-5` holes via `select_exact_marginal_dti_add`, and places 35% (`f35Ptop`), 40% (`f40Ptop`), and 45% (`f45Ptop`) far dots $>3.0\text{ px}$ off `H19-5` and $>3.0\text{ px}$ off all 5 prior off-skeleton lanes' far sets. All three doses (`0.006425`, `0.006402`, `0.006137`) exceed both `R0` (`0.004006`) and `RELIEF p10` (`0.006045`) in point estimate while passing all local uniqueness gates ($\le 0.6500$ 3-px forward overlap).
+
+## 2026-10-24 (PIEDFRONT session) — structural trade-off between mountain-core SGMC bedrock faults and piedmont Quaternary/geothermal holdout faults
+
+- **Observation**: Relocating off-skeleton dots out of steep mountain-core bedrock (`det_elev >= 38.76 m`) into the piedmont alluvial transition (`78.7%` of `f35Ptop` far dots, `73.9%` overall) raises `HOLDOUT-DTI` to the repository's highest non-collar value (`0.006425 [0.005375, 0.007479]`, paired $\Delta$ vs `R0` `+0.002418 [+0.001538, +0.003255]`, paired $\Delta$ vs `BREAKLINE f45` `+0.001564 [+0.000471, +0.002607]`), while reducing `SGMC` bedrock fault recovery from `0.096060` (`R0`) / `0.126105` (`BREAKLINE f45`) to `0.059993` (`PIEDFRONT f35Ptop`).
+- **Decision**: Because the pre-registered promotion rule requires beating `RELIEF p10` with paired 95% CI excluding 0 AND beating `R0` on `SGMC`, and because the dense public witness (`17GEMSDOE E-proba`) remains an unresolved policy blocker, `PIEDFRONT f35Ptop` is recorded with `verdict: negative` (`OK TO DOWNLOAD` for research, `NOT CLEARED` for a weekly slot).
+## 2026-10-24 automated recheck (this branch)
+
+- **Binding protocol conflict freshly confirmed, not waived:** 17GEMSDOE blob
+  `374c88b1da2b803e2ed160de467fd71ae114010d` is positive across the exact footprint.
+  The existing SPRINGALIGN artifact has forward overlap 1.0; no nonempty
+  in-footprint prediction can meet the current literal overlap rule. No new
+  TIFF/experiment/weekly slot was generated/used. See
+  `evidence/review_20261024_springalign_witness_v2.json`.
+- **Wrong-primary/freshness language:** homepage title said SPRINGALIGN while
+  its lead and submission guides said ANASIG; headline claimed a unique TIFF
+  generated “this session.” The files predate checkout and include future-dated
+  `20261025` names relative to today's 2026-10-24 UTC. Corrected the active
+  display; preserved filenames and historical receipts as evidence.
+- **Single-witness checker risk:** shape-only comparison ignored CRS/transform
+  and silently masked invalid outside-footprint mass. An empty witness could
+  fabricate EDT boundary distances; rank-only duplicates were not checked.
+  Repaired the shared project checker using template helpers, without forking
+  the evaluator. Empty/invalid candidates now fail; unknown is not “unique.”
+  Checker exits 1 for a measured stop, 2 for invalid inputs, 0 for inconclusive
+  rejection-only check. No single-witness result grants submission eligibility.
+- **Evidence robustness:** absent primary audit could cause an unbound `doc`
+  error in the site checker; malformed JSON could crash it. These cases now
+  report a failed site check. Historical witness output cannot be overwritten.
+- **Deployment gate gap:** Pages previously uploaded `docs/` without running
+  the project site check. CI and Pages now require it. This validates local
+  bytes/status, not official data provenance or organizer portal acceptance.
+- **Score provenance:** fetched GEMSDOE32 page source has no `0.2778` string
+  and explicitly says no organizer score exists in its snapshot. This does not
+  disprove a later user result, but cannot authenticate it. No organizer receipt
+  or live leaderboard/quota was accessed. Values remain CLAIM, not scores
+  confirmed by this review. Source hashes in `evidence/review_20261024_source_audit.json`.
+- **Training limitation correction:** the freshly read official reference
+  supports CPU training. A GPU is faster, not an absolute prerequisite. The
+  prompt's named downloader/preparer scripts do not exist in this checkout.
+- **Pages admin permission:** API reports legacy publishing from `main:/`.
+  Attempting `build_type=workflow` returned HTTP 403 `Resource not accessible
+  by integration`; settings remain unchanged. The added workflow gate cannot
+  be claimed to control the separate legacy publisher. Repository-admin
+  integration access is needed to reconcile settings; do not claim it succeeded.
 
 ## 2026-10-24 (HYDROCONDUIT session) — Five Newly Verified Data, Metric & Site Irregularities
 

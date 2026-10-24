@@ -1,0 +1,214 @@
+{
+  "hypothesis": "A Quaternary fault offsetting alluvium (or one lithology against itself) leaves a SUSTAINED topographic step: detrended elevation stays offset across the trace at both 200-300 m and 400-600 m apertures. Such a fault has no magnetic/gravity contrast, so the H19-5 potential-field worm skeleton behind R0 misses it, and a low scarp is easily missed by photo-era Qfaults mapping, while DEM-based expert mapping (the competition label source, DrivenData #306 p.967) traces exactly such steps. The min over apertures rejects channel walls/ridges, whose cross-line offset decays once the aperture exceeds their width (synthetic: 6 m step 5.4 m persistent vs channel 1.3 m).",
+  "mechanism": "At fixed S=37,654, DTI rises when expected T gains outweigh denominator growth. Kept skeleton dots are chosen by exact marginal expected-DTI greedy (alpha 0.2, beta 0.8, R=3px) under w=0.30+0.70*S on H19-5 support, so coverage-redundant parent dots are the donors. Far dots take the strongest aperture-persistent steps first (descending S, 2.8px spacing): the pre-build screen's identical 16,944-dot far set hit off-catalogue USGS SGMC bedrock faults at 0.071257 vs BREAKLINE-L 0.072325 while being 57% disjoint from BREAKLINE's far dots -- an independent evidence channel, not a reweighting.",
+  "named_non_fault_process_that_could_mimic_it": "Lake Lahontan wave-cut shoreline benches are sustained steps at all apertures; so are alluvial-fan segment boundaries, fluvial terrace edges, bedding-controlled cuestas and (without a coherence gate) rugged range-interior relief. Any of these concentrated in the far set would be pure false positives.",
+  "screen_summary": {
+    "evidence_class": "PROXY-SCREEN",
+    "baseline_reproduced": true,
+    "built_surface": "stepedge_step_only_no_coh (STEPRAW)",
+    "built_surface_screen": {
+      "sym_auc": 0.57972,
+      "auc": 0.57972,
+      "far_only_sgmc_dti": 0.071257,
+      "far_only_fixedcat_dti": 0.00209,
+      "far_pool": 3974627,
+      "far_overlap_vs_prior_lanes": {
+        "breakline_f45": 0.427231,
+        "anasig_f45": 0.098855,
+        "strainbreak_f60": 0.157991
+      }
+    },
+    "coherence_gated_form_duplicate_stopped": {
+      "sym_auc": 0.620374,
+      "auc": 0.620374,
+      "far_only_sgmc_dti": 0.065885,
+      "far_only_fixedcat_dti": 0.004309,
+      "far_pool": 3974627,
+      "far_overlap_vs_prior_lanes": {
+        "breakline_f45": 0.754958,
+        "anasig_f45": 0.114318,
+        "strainbreak_f60": 0.155984
+      }
+    }
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.00398010210702013,
+    "ci95": [
+      0.0032953665386377296,
+      0.004702041272381919
+    ],
+    "delta_vs_R0": -2.604506766461321e-05,
+    "delta_vs_R0_ci95": [
+      -0.0005340004812770787,
+      0.0004576722280059456
+    ],
+    "delta_vs_STRAINBREAKf60": -0.0015065889324743552,
+    "delta_vs_STRAINBREAKf60_ci95": [
+      -0.002303052803868577,
+      -0.0006205427912449375
+    ],
+    "delta_vs_holdout_best_RELIEFp10": -0.0020650302901528026,
+    "delta_vs_RELIEFp10_ci95": [
+      -0.002899446110058808,
+      -0.0012338872822206582
+    ],
+    "R0_dti": 0.004006147174684743,
+    "best_locally_unique_STRAINBREAKf60_dti": 0.005486691039494485,
+    "holdout_best_RELIEFp10_dti": 0.0060451323971729325,
+    "bootstrap": {
+      "method": "paired physical spatial-cluster percentile",
+      "clusters": 157,
+      "draws": 1000,
+      "seed": 520810,
+      "confidence": 0.95,
+      "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+    }
+  },
+  "leakage_canary": {
+    "max_symmetric_auc": 0.621604,
+    "built_surface_symmetric_auc": 0.57972,
+    "threshold": 0.9,
+    "status": "REPORT_ONLY_PASS"
+  },
+  "sgmc_control_proxy": {
+    "evidence_class": "PROXY (off-catalogue USGS SGMC bedrock faults; not a score)",
+    "dti": 0.141464,
+    "R0_dti": 0.09606,
+    "delta_vs_R0": 0.045404,
+    "truth_pixels": 62703,
+    "note": "Highest SGMC of any arm scored in this repo (BREAKLINE f45 0.126105); instruments disagree with the catalogue holdout -- see docs/ANALYSIS_20261024_STEPEDGE.md."
+  },
+  "correlation_overlap_vs_registry": {
+    "scope_local": "local dot-registry (docs/downloads + releases + bridge lineage, deduplicated masks)",
+    "preplacement_surface_worst_abs_sampled_spearman": 0.138139,
+    "preplacement_surface_worst_file": "h19_5.tif",
+    "preplacement_surface_sha256": "12b74112a6ce1f55806ddbcbe73ec7a5a542211d101b90c72cb7a43a8859044d",
+    "final_dots_registry_rasters_checked": 28,
+    "final_worst_forward_overlap_within_3px": 0.460934,
+    "final_worst_forward_overlap_file": "h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif",
+    "final_worst_abs_spearman": 0.395606,
+    "final_worst_abs_spearman_file": "parent_R0_zeros.tif",
+    "local_literal_duplicate": false,
+    "sibling_doses_duplicate": {
+      "f33Sraw": true,
+      "f45Sraw": true
+    },
+    "public_binding_witness_literal": {
+      "schema": "gemsdoe92-public-witness-check.v1",
+      "evidence_class": "REGISTRY-MEASUREMENT (single binding witness; not a full public scan)",
+      "reviewed_utc": "2026-10-24T18:25:08.234272+00:00",
+      "candidate": {
+        "file": "h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif",
+        "sha256": "c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4",
+        "dots": 37654
+      },
+      "witness": {
+        "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+        "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+        "bytes": 25065181,
+        "positive_pixels_in_footprint": 5167373,
+        "footprint_pixels": 5167373,
+        "positive_fraction_of_footprint": 1.0
+      },
+      "forward_overlap_candidate_dots_within_3px_of_witness": 1.0,
+      "literal_rule": "forward overlap > 0.70 OR |Spearman| > 0.90 => duplicate, log and stop",
+      "unique_under_literal_rule_vs_this_witness": false,
+      "stop_required_vs_this_witness": true,
+      "scope": "Single-witness measurement. A pass here would NOT be public uniqueness; a fail here IS binding for this witness. The full scan remains scripts/audit_public_registry.py.",
+      "sampled_spearman_candidate_vs_witness": {
+        "rho": 0.000376,
+        "n": 300000,
+        "seed": 12345
+      },
+      "sampled_spearman_preplacement_surface_vs_witness": {
+        "rho": 0.210857,
+        "n": 300000,
+        "seed": 12345
+      },
+      "amended_scope_note": "Witness is positive on 100% of footprint (dense continuous surface, no dot support): forward dot-overlap is identically 1.0 for ANY nonempty in-footprint candidate. Under this session's documented dot-like registry scope (docs/HYPOTHESES_20261024_STEPEDGE.md), the binding gates vs dense surfaces are rank-correlation |rho|<=0.90 (measured here, sampled) while the literal 1.000 overlap is preserved above as the vendor-literal verdict. Both verdicts are reported; neither is hidden."
+    },
+    "amended_scope_verdict": "Unique vs the local dot-like registry under the literal thresholds; rank-correlation vs the dense public witness 0.0004 (dots) / 0.2109 (surface), both <= 0.90. Literal forward overlap vs that everywhere-positive witness is 1.000 for ANY nonempty in-footprint candidate and is preserved above, not hidden."
+  },
+  "raster_sha256": "c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4",
+  "raster_sha256_nan_twin": "66a91dde57ce800621ea6a2a02bfcae27aaff9b4c7cc722a4208b205e43c2e8c",
+  "validator": {
+    "overall_pass": true,
+    "gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=float32 count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nan_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4"
+      }
+    ],
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": "EPSG:32611, 3730x3292, transform of sample_submission.tif"
+  },
+  "automated_gates": {
+    "format_gates_pass": true,
+    "leakage_canary_le_0p90": true,
+    "local_uniqueness_surface_rho_le_0p90": true,
+    "local_uniqueness_final_not_duplicate": true,
+    "holdout_beats_strainbreak_f60": false,
+    "holdout_delta_vs_R0_ci_excludes_0": false,
+    "sgmc_exceeds_R0": true
+  },
+  "submission_name": "GEMSDOE92-STEPEDGE-f60Sraw-20261024",
+  "file": "h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif",
+  "note": "h33-h33-2-b2; STEPEDGE f60Sraw 22592 far dots on aperture-persistent DEM steps >3px off H19-5",
+  "note_chars": 93,
+  "experiments_used": "3 of 3 (f33/f45/f60); coherence-gated form duplicate-stopped at screen, GRAVCrest-style gravity crest not retried",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "verdict_reason": "Format-valid and literal-unique vs the local dot registry, with the repo's best SGMC -- but HOLDOUT-DTI 0.003980 does not beat the holdout bars (STRAINBREAK f60 0.005487 / RELIEF p10 0.006045) and paired delta vs R0 includes 0. Pre-registered rule: negative. Download for research; DO NOT SUBMIT; no slot used."
+}
