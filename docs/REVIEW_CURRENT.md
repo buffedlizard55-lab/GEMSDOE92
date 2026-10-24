@@ -2,12 +2,16 @@
 
 ## Download status comes first
 
-**OK TO DOWNLOAD for research; NOT OK TO SUBMIT under the required gates.**
-The [BREAKLINE TIFF](downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif)
-is an existing artifact, not a new unique submission generated this session.
-Independent disk reread confirms single-band float32, finite everywhere, values
-in [0,1], zero outside the footprint, and template-matching CRS/shape/transform.
-[Run card](downloads/session_review_run_card.json).
+**OK TO DOWNLOAD existing files for research; DO NOT SUBMIT any current artifact.**
+The site primary is the pre-existing [SPRINGALIGN research TIFF](downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif),
+not a new unique submission from this review. Its local format audit passes,
+but the hash-verified dense public witness triggers the literal duplicate stop.
+No weekly slot was used. See the [exact witness receipt](downloads/review_20261024_springalign_witness_v2.json),
+[current session review](REVIEW_20261024_SESSION.md), and
+[run card](downloads/repo_review_run_card_20261024.json).
+
+The BREAKLINE artifact discussed in the historical follow-up below is also an
+existing research file and is rejected by the same literal witness rule.
 
 ## Outstanding next step completed: public witness check
 
@@ -135,9 +139,12 @@ Corrected two documentation risks found during review: the homepage previously l
 
 No public endpoint, leaderboard, DrivenData receipt, submission quota, or competition upload was accessed or verified in this review. Existing TIF links are for research/download only, not approved for competition submission.
 
-## Session update — `PIEDFRONT` (`f35Ptop`, `f40Ptop`, `f45Ptop`) — 2026-10-24
+## Tooling-hardening follow-up — 2026-10-24 UTC
 
-- **Primary research GeoTIFF built & validated:** `docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif` (`sha256=e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8`, 37,654 unit-mass dots; 10/10 MUST gates PASS on disk reread).
-- **Pooled `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, 22,663 withheld positives):** **`0.006425 [0.005375, 0.007479]`** (`f40Ptop = 0.006402`, `f45Ptop = 0.006137`) — highest non-collar `HOLDOUT-DTI` in this repository, beating `R0` (`0.004006`, paired $\Delta = +0.002418 [+0.001538, +0.003255]$) and `BREAKLINE f45` (`0.004861`, paired $\Delta = +0.001564 [+0.000471, +0.002607]$), and exceeding `RELIEF p10` (`0.006045`) in point estimate (`+0.000379 [-0.000257, +0.001066]`).
-- **Local & public uniqueness:** Locally unique across all 29 unique local registry rasters (worst 3-px forward overlap `0.649997` vs `h19_5.tif`, $\le 0.70$; worst `|φ| = 0.585871`, $\le 0.90$; pre-placement surface worst `|ρ| = 0.127084`); public witness `17GEMSDOE E-proba` verified in `evidence/piedfront_public_registry_witness17.json` (100% forward overlap due to full-footprint positive support).
-- **Verdict:** `negative` (`OK TO DOWNLOAD` for research; `NOT CLEARED` for a weekly slot). Full analysis: [`ANALYSIS_20261024_PIEDFRONT.md`](ANALYSIS_20261024_PIEDFRONT.md); run card: [`downloads/piedfront_run_card.json`](downloads/piedfront_run_card.json).
+See the [three-pass repository review](REVIEW_20261024_SESSION.md) and [run card](../evidence/repo_review_run_card_20261024.json). This follow-up fixed a shared preflight edge case: infinity outside the footprint was previously counted as an allowed NaN by `gems.gates._g_nan_outside()`. The common CLI now requires all-finite values in `[0,1]` across the whole raster and zeros outside; the site checker calls the same strict gate for every served candidate. The generic `run_gates()` default retains NaN-outside only for historical/research comparisons and rejects infinity or nonzero outside values.
+
+This is tooling validation, not a geological experiment. No new TIFF, holdout result, public-registry scan, or weekly slot was produced/used in this review. The test/site verification counts are recorded in `REVIEW_20261024_SESSION.md`; they are software/data-integrity checks, not competition metrics.
+
+## Parallel-session update — `PIEDFRONT` (`f35Ptop`, `f40Ptop`, `f45Ptop`) — 2026-10-24
+
+PIEDFRONT was produced by a separate parallel session and is present on the updated `main` branch via PR #48; it was not generated in this repository-review/tooling-hardening session. Its main artifact is `docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif` (SHA-256 `e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8`, 37,654 unit-mass dots). Its reported metric is **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives), `0.006425 [0.005375, 0.007479]`; this is not an organizer score. Its local-registry comparison passed the stated local thresholds (final 3-px forward overlap `0.649997`, worst `|φ| = 0.585871`, pre-placement surface worst `|ρ| = 0.127084`), but the hash-verified dense public witness is positive across the footprint and PIEDFRONT's measured forward overlap is 1.0. The run card therefore records a negative verdict: research download only, not cleared for a weekly slot. See the [PIEDFRONT analysis](ANALYSIS_20261024_PIEDFRONT.md), [run card](../evidence/piedfront_run_card.json), and [witness receipt](../evidence/piedfront_public_registry_witness17.json).

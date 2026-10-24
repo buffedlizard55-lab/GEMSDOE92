@@ -133,3 +133,9 @@ not successful completion of the requested new-TIFF generation. Preserve the
 negative result and exact old bytes, and follow `docs/REVIEW_AUTOMATED_20261024.md`.
 The inherited SPRINGALIGN filenames are future-dated relative to today's UTC
 date; do not use their dates as proof that this review generated them.
+
+## Tooling review follow-up — 2026-10-24 UTC
+
+A shared gate defect was fixed: the generic outside-footprint validator previously classified infinities as NaNs. `gems.gates.run_gates()` now rejects infinity and every other nonzero finite value outside; its explicit `require_submission_encoding=True` mode requires the whole raster to be finite and within `[0,1]`, with zeros outside. The public `python -m gems validate` CLI and site check always use the strict mode; there is no permissive CLI override. Historic NaN-outside artifacts may still be inspected through the generic research API, but they are not upload-safe under project policy. No raster or old receipt was changed.
+
+The latest repository review is [`docs/REVIEW_20261024_SESSION.md`](docs/REVIEW_20261024_SESSION.md), with machine-readable card [`evidence/repo_review_run_card_20261024.json`](evidence/repo_review_run_card_20261024.json) (served mirror: [`docs/downloads/repo_review_run_card_20261024.json`](docs/downloads/repo_review_run_card_20261024.json)). No new geological experiment, TIF, holdout, pre-placement surface, or submission slot was produced/used: the dense public witness remains a binding universal final-dot stop, and the training feature cache is absent. Keep all current downloads explicitly labeled research-only. The unique-TIF requirement remains unfulfilled; do not bypass the literal threshold.
