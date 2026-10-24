@@ -1,3 +1,5 @@
+> **Latest verification (2026-10-24):** [D97F969E three-pass review](REVIEW_D97F969E.md) adds a freshly downloaded witness receipt and corrects the overall-best claim. No generation or policy exemption.
+
 # NEXT_STEPS — current review status (2026-10-24)
 
 ## Current state (this section supersedes historical queues below)

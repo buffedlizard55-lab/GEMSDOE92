@@ -1,3 +1,15 @@
+# Latest verified review — 2026-10-24 (d97f969e)
+
+**OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT.** [Download the existing format-valid APRONRIDGE GeoTIFF](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif). This is not a new submission. No TIFF was copied, generated, promoted, or uploaded in this review.
+
+Read [SESSION_PROMPT.md](SESSION_PROMPT.md) and this README at every session start. The durable operating contract preserves the user's mission and protocol; it is not a verbatim transcript of the complete repeated request. Maximize P(Win) and Own the Outcome mean stopping when evidence contradicts readiness, not claiming a guaranteed score.
+
+**This section supersedes conflicting historical “#1” and primary-choice statements below.** Historical HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 positives): APRONRIDGE 0.008354, 95% CI [0.006823, 0.010135]; HYDROCONDUIT 0.008549, 95% CI [0.007626, 0.009487]. These are stored static evaluations, not rerun or certified as leak-free here. They cannot establish organizer performance or causal geothermal discovery. A full-footprint positive registry witness freshly reverified in this review forces 100% forward overlap under the literal rule. Generation stops; no policy exemption was invented.
+
+[Three-pass review](docs/REVIEW_D97F969E.md) · [Fresh witness](evidence/review_d97f969e_witness.json) · [Run card](evidence/review_d97f969e_run_card.json) · [Executive summary](docs/executive-summary.html).
+
+---
+
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench (`APRONRIDGE` Primary + `HYDROCONDUIT` Hybrid)
 
 **Start every session with [SESSION_PROMPT.md](SESSION_PROMPT.md).** This file holds the user's complete working instructions and core values (Maximize P(Win), Own the Outcome). [2026-10-24 preflight evidence](evidence/preplacement_dense_witness.json) proves that the literal public-registry overlap rule makes **every nonempty in-footprint candidate a duplicate**: the SHA-pinned 17GEMSDOE witness is positive on every one of 5,167,373 footprint cells. [Pre-registered four hypotheses](docs/HYPOTHESES_20261024_PREFLIGHT.md) are stopped *before placement*; no new slot-ready TIF was made in this pass. [Negative run card](evidence/preflight_run_card.json). This is an explicit incompatibility between “make a unique TIF” and the literal overlap gate, not a request for manual inspection. Existing research-only downloads below remain available but **DO NOT SUBMIT**.
