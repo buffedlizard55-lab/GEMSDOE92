@@ -1,0 +1,44 @@
+{
+  "review_date_utc": "2026-10-24",
+  "evidence_class": "SOURCE-AUDIT (not a score)",
+  "retrieval": "GitHub API; downloaded source, not rendered Pages URLs",
+  "sources": [
+    {
+      "id": "official-reference-readme",
+      "repo": "drivendataorg/gems-prize-reference-solution",
+      "path": "README.md",
+      "commit": "aebe92f7c8a990f0e3443451b7a825d9afd6336b",
+      "sha256": "cfa4d55559c9128313beb9417eae7e0a94c31677132afb1120f9e86222804239",
+      "git_blob_sha": "a8814f99c395d12a8e1c3731c738e61d7dca06b5",
+      "bytes": 2367,
+      "url": "https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/README.md",
+      "note": "Official reference supports CPU training and instructs downloading data; not a competition receipt."
+    },
+    {
+      "id": "official-reference-notebook",
+      "repo": "drivendataorg/gems-prize-reference-solution",
+      "path": "unet-mc-cv-reference-solution.ipynb",
+      "commit": "aebe92f7c8a990f0e3443451b7a825d9afd6336b",
+      "sha256": "1a7622732ba00f67237058bc0efe79b45ba4e87c449fc9c1e5d6ea659de92ca0",
+      "git_blob_sha": "d45bf7bdb1d31a22caa38371ad195c2f6eb965ae",
+      "bytes": 1578736,
+      "url": "https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/unet-mc-cv-reference-solution.ipynb",
+      "note": "U-Net Monte Carlo patch splits; alpha=0.2 beta=0.8 training TverskyLoss; does not independently verify the official 300 m evaluation kernel."
+    },
+    {
+      "id": "gems32-site-source",
+      "repo": "buffedlizard55-lab/GEMSDOE32",
+      "path": "docs/index.html",
+      "commit": null,
+      "sha256": "b4a0f68193d7814fd4e406ea86465c0b0350cbed91b4f174d45c425f2b40e0d0",
+      "git_blob_sha": "6fc6c67e6e62d0b55a573c01b3a80f9b9d3c0d7d",
+      "bytes": 19571,
+      "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/main/docs/index.html",
+      "note": "Owner source, not official organizer evidence; contains no 0.2778 string and explicitly says no organizer score exists in that page snapshot."
+    }
+  ],
+  "unretrieved": [
+    "DrivenData leaderboard, submission page, data portal",
+    "USGS, GDR, NLR PDF and Dropbox: outside outbound-host allowlist"
+  ]
+}

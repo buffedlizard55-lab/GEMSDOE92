@@ -99,3 +99,19 @@ See [current review](docs/REVIEW_CURRENT.md). The queued public check now reject
 ## Follow-up registry stop (2026-10-24)
 
 **2026-10-24 follow-up — BREAKLINE is now a confirmed duplicate under the literal registry rule.** A live, Git-blob-verified witness check compared one raster from 11GEMSDOE and five from 17GEMSDOE. BREAKLINE final dots have **100% forward 3-px overlap** with the dense 17GEMSDOE E-proba raster. This is REGISTRY-MEASUREMENT, not a competition score. The actual BREAKLINE pre-placement surface was not supplied and was **not checked**; no collar surface was substituted. A final-dot failure alone requires stop. No new experiment or TIFF was generated; no slot used. See [follow-up review](docs/REVIEW_REGISTRY_STOP_20261024.md) and [run card](evidence/breakline_registry_stop_run_card.json). **Download for research only; do not submit.**
+
+
+## Current request/review addendum — 2026-10-24 UTC
+
+Read the README's current automated review before all historical run records.
+The user's repeated highest-priority request remains a genuinely unique,
+one-click downloadable TIFF with autonomous in-project validation, no copied
+submission passed off as new, explicit download/submission status, geological
+hypotheses ranked before experiments, no invented live score, maximum three
+experiments/two hours, and no weekly slot without separate selector clearance.
+The new review confirms a binding dense-witness universal overlap stop; no new
+TIFF may honestly be promoted under the unchanged rule. This is a limitation,
+not successful completion of the requested new-TIFF generation. Preserve the
+negative result and exact old bytes, and follow `docs/REVIEW_AUTOMATED_20261024.md`.
+The inherited SPRINGALIGN filenames are future-dated relative to today's UTC
+date; do not use their dates as proof that this review generated them.

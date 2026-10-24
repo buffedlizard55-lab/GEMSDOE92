@@ -4,7 +4,29 @@
 
 ---
 
-## Latest (2026-10-25, SPRINGALIGN): NEW UNIQUE TIF GENERATED
+## Current automated review — 2026-10-24 UTC: DO NOT SUBMIT
+
+**OK TO DOWNLOAD existing research files; NO artifact is cleared for a weekly slot.**
+**No new unique TIFF was generated in this review.** The requested literal registry
+rule rejects every nonempty in-footprint prediction against a hash-verified dense
+witness; generating another would violate the required stop. This is an explicit
+unfulfilled requirement, not a renamed/repackaged prior submission.
+
+- [One-click research GeoTIFF](docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif) · [Executive summary / conditional submission guide](docs/executive-summary.html)
+- [Fresh exact-file witness receipt](evidence/review_20261024_springalign_witness_v2.json): **REGISTRY-MEASUREMENT** overlap 1.0, |Spearman| 0.0437295. Reference/witness/candidate grid checked; no threshold waiver.
+- [Three-pass review, ranked hypotheses, source table and limitations](docs/REVIEW_AUTOMATED_20261024.md) · [Review run card](evidence/review_20261024_run_card.json)
+- Existing SPRINGALIGN bytes have an inherited future-dated filename (2026-10-25); today is 2026-10-24 UTC. They are not new output from this session.
+- GEMSDOE32's retrieved page source describes its method but does not verify the **CLAIM 0.2778**. Official reference code was read at a pinned commit; the live leaderboard, submission quota and non-GitHub official data were not accessed.
+- New checks reject wrong grids, invalid/out-of-footprint predictions and evidence overwrites. CI and Pages must run the automated site gate. Format-valid is not submission-eligible.
+
+The full project operating prompt is retained below and in `SESSION_PROMPT.md`;
+read both at every session start. **Maximize P(Win)** by testing falsifiable
+hypotheses, not by claiming unmeasured scores. **Own the Outcome** by reporting
+blocking evidence and unmet requirements, not bypassing them.
+
+---
+
+## Historical SPRINGALIGN record (filename date 2026-10-25; not this review)
 
 **✅ OK TO DOWNLOAD for research — ⛔ NOT CLEARED FOR A WEEKLY SLOT (verdict negative).**
 
@@ -61,7 +83,7 @@ value remains a CLAIM (no receipt); no local score beats it by assertion.
 
 ## Executive Summary — Format-Validated Candidate, One-Click Download
 
-**✅ FORMAT-VALID — OK TO DOWNLOAD.** The generated submission raster is an all-finite, single-band float32 GeoTIFF, EPSG:32611, shape 3730 × 3292, matching the competition template geotransform. It contains zero NaNs inside the footprint, zeros outside, values strictly in `[0, 1]`, and passes all 10 local MUST gates on independent re-read from disk. This completely prevents the DrivenData portal error: `Predicted values must be in range [0, 1]`.
+**✅ FORMAT-VALID — OK TO DOWNLOAD.** The generated submission raster is an all-finite, single-band float32 GeoTIFF, EPSG:32611, shape 3730 × 3292, matching the competition template geotransform. It contains zero NaNs inside the footprint, zeros outside, values strictly in `[0, 1]`, and passes all 10 local MUST gates on independent re-read from disk. These local checks guard against, but do not guarantee portal acceptance or prevent all causes of, the error: `Predicted values must be in range [0, 1]`.
 
 **⛔ NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE.** An expanded scan found 100% 3-px forward overlap with public registry rasters (131 of 1,279 exceed 70%). Stop; do not submit. This file remains downloadable as a negative research deliverable. The scan covers current default branches in 102 public owner repositories, not every historic/site-hosted file.
 
