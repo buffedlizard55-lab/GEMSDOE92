@@ -331,3 +331,13 @@ asks a genuinely different question from the merged set.
 
 **Decision.**
 Shift 10%, 12%, and 15% of total mass (3,765, 4,518, and 5,648 dots) from the lowest-prior basin and range dots into the highest-prior unpopulated H19-5 pixels located strictly within the piedmont tercile, using greedy exact expected-DTI marginal gain on the label-free physical prior (`Band 3`, `Band 5`, `Band 19`). Dot count is held at exactly 37,654, zero mass is placed on the catalogue, and all dots maintain R0's `d_cat > 2.0 px` exclusion.
+
+---
+
+## 2026-10-24 (STEPOVER session) — catalogue-derived holdout truth is structurally unreachable for gate-compliant new dots
+
+**Observation.** The STEPOVER candidate (`h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f`) passes all 10 format gates and is lane-unique, but scores HOLDOUT-DTI 0.0000 [0.0000, 0.0000] on `gems57-pooled-hide-v2` (11,321 withheld positives; pooled tp=0, fp=4,630, fn=11,321). This is a structural zero: every gate-compliant non-PRUNE dot must be >3 px from the full catalogue, while the held-out truth used by the local holdout is a subset of that same catalogue, so no compliant dot can fall within the 3 px triangular kernel of held truth.
+
+**Impact — decision-changing.** The local hide-and-recover instrument cannot rank a new gate-compliant candidate against R0, because R0's small proxy credit comes from inherited dots inside the 3 px catalogue collar. A zero here must not be read as an organizer score, and a positive proxy for an in-collar descendant must not be read as gate compliance.
+
+**Decision.** STEPOVER is recorded as a negative deliverable (`evidence/run_card.json`, verdict `negative`): OK to download, not OK to spend a weekly submission slot unless a separate selector explicitly overrides the holdout rule. Future promotion needs either an organizer receipt, a PRUNE-axis design that is allowed to change the collar rule, or an independent truth source that is not a subset of the exclusion catalogue.

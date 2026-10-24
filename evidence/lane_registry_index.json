@@ -1,0 +1,120 @@
+{
+  "schema": "gemsdoe92-lane-registry.v1",
+  "complete_accessible_scan": true,
+  "n_rasters": 14,
+  "scope": "Locally accessible rasters only (this repo: parent R0 + releases). Not organizer-complete; external/private/unlinked rasters may be absent.",
+  "rasters": [
+    {
+      "repo_first": "GEMSDOE92 (local)",
+      "sources": [
+        "parent_R0_nan.tif"
+      ],
+      "cache_file": "data/parent_R0_nan.tif",
+      "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd"
+    },
+    {
+      "repo_first": "GEMSDOE92 (local)",
+      "sources": [
+        "parent_R0_zeros.tif"
+      ],
+      "cache_file": "data/parent_R0_zeros.tif",
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9"
+    },
+    {
+      "repo_first": "GEMSDOE92 (local)",
+      "sources": [
+        "h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif"
+      ],
+      "cache_file": "releases/h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
+      "sha256": "e5613a00a14a01c20089e5741c0727142439d5bb0d4f55cfccea9640b757f6e8"
+    },
+    {
+      "repo_first": "GEMSDOE92 (local)",
+      "sources": [
+        "h33-h33-2-b2-MASS_A10-20261023-e5613a00.tif"
+      ],
+      "cache_file": "releases/h33-h33-2-b2-MASS_A10-20261023-e5613a00.tif",
+      "sha256": "da34a17f08793094b4e0dbd22ae5fbc4298387b4424735ba8695673be7fc28fa"
+    },
+    {
+      "repo_first": "GEMSDOE92 (local)",
+      "sources": [
+        "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif"
+      ],
+      "cache_file": "releases/h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif",
+      "sha256": "e26a6cb8e0c419c9e9be226f6ea26e673224acf786a772fcd0c3600359e4c380"
+    },
+    {
+      "repo_first": "GEMSDOE92 (local)",
+      "sources": [
+        "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8.tif"
+      ],
+      "cache_file": "releases/h33-h33-2-b2-MASS_D10-20261023-e26a6cb8.tif",
+      "sha256": "fc02de515bc9f7a0ceb9a406ff05f48b8cacd6c078c933024d02ec4d9c4d8bec"
+    },
+    {
+      "repo_first": "GEMSDOE92 (local)",
+      "sources": [
+        "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif"
+      ],
+      "cache_file": "releases/h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif",
+      "sha256": "3e776063effec215ed35b18f80d9bb6717cf607db2002c96e56d5e7c92f61cb0"
+    },
+    {
+      "repo_first": "GEMSDOE92 (local)",
+      "sources": [
+        "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063.tif"
+      ],
+      "cache_file": "releases/h33-h33-2-b2-MASS_SWAP10-20261023-3e776063.tif",
+      "sha256": "18126db9ae32b9d600258dae1df99a6be15da4fcf719a1b52356ae1e0b229fb2"
+    },
+    {
+      "repo_first": "GEMSDOE92 (local)",
+      "sources": [
+        "h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7-zeros.tif"
+      ],
+      "cache_file": "releases/h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7-zeros.tif",
+      "sha256": "9a883fb1ce5648f2e9738188b66abbb5f2359129df4f60964247ed8243e0e1fe"
+    },
+    {
+      "repo_first": "GEMSDOE92 (local)",
+      "sources": [
+        "h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7.tif"
+      ],
+      "cache_file": "releases/h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7.tif",
+      "sha256": "3d2403c79c8c7c5064e09f6c232a45b1df18e094ce434aeddf12876958ebd455"
+    },
+    {
+      "repo_first": "GEMSDOE92 (local)",
+      "sources": [
+        "h33-h33-2-b2-PRUNE_B4-20261023-78e893d7-zeros.tif"
+      ],
+      "cache_file": "releases/h33-h33-2-b2-PRUNE_B4-20261023-78e893d7-zeros.tif",
+      "sha256": "e643b410e2e822e742e319e7c015772567af4cc5dcfd73e8251993ebb7b8a418"
+    },
+    {
+      "repo_first": "GEMSDOE92 (local)",
+      "sources": [
+        "h33-h33-2-b2-PRUNE_B4-20261023-78e893d7.tif"
+      ],
+      "cache_file": "releases/h33-h33-2-b2-PRUNE_B4-20261023-78e893d7.tif",
+      "sha256": "78e893d79cb2bfb869d58239a9c92aa6757f9e01042bf474242e7305c00f8635"
+    },
+    {
+      "repo_first": "GEMSDOE92 (local)",
+      "sources": [
+        "h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad-zeros.tif"
+      ],
+      "cache_file": "releases/h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad-zeros.tif",
+      "sha256": "de9abde46df6cab55c2404745dfa56c54bf2d9a88307b095a8c6e71f13aa276c"
+    },
+    {
+      "repo_first": "GEMSDOE92 (local)",
+      "sources": [
+        "h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad.tif"
+      ],
+      "cache_file": "releases/h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad.tif",
+      "sha256": "85cd67adb4721aeeb5783766d58286384073a74a30ad947c74100340939bf012"
+    }
+  ]
+}

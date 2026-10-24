@@ -1,8 +1,19 @@
 # GEMSDOE92 — PRUNE axis session
 
+## ⬇️ SUBMISSION DOWNLOAD — READ FIRST
+
+**Unique submission TIF generated this session:** [`h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif`](https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE92/main/releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif)
+
+- **OK TO DOWNLOAD:** ✅ YES — all-finite GeoTIFF, values in [0, 1], 10/10 format gates PASS.
+- **OK TO SPEND A WEEKLY SUBMISSION SLOT:** ❌ NO — HOLDOUT-DTI is negative versus R0, so this is a deliverable negative result, not a promoted candidate.
+- **Site / executive summary:** [`docs/index.html`](docs/index.html) · [`docs/executive-summary.html`](docs/executive-summary.html)
+- **Submission name:** `h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f`
+- **Note (116/140 chars):** `h33-h33-2-b2; STEPOVER step-over dots 3-10px off catalogue at visible trace tips; HOLDOUT-DTI 0.0000 [0.0000,0.0000]`
+- **SHA-256:** `e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205`
+
 ## CURRENT STATE
 - **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots; exact lineage rebuild matches both pinned SHA-256 digests (`zeros`: `c55bafc4…`, `nan`: `baeae321…`). `0.2778` remains **CLAIM** (no receipt in `ledger/`).
-- **Best receipt**: none recorded (`ledger/submissions.csv` has 21 `BUILT` rows and zero `RECEIPT` rows).
+- **Best receipt**: none recorded (`ledger/submissions.csv` has 23 `BUILT` rows and zero `RECEIPT` rows).
 - **TOP_PUBLIC**: `____` (not supplied; human must fill value and observation date from leaderboard).
 - **Slots left this week**: `__` / total left to 2026-12-03: `__` (human must confirm entity rolling-week quota).
 - **AXIS this session**: `RELIEF`, chosen autonomously. New values: `p10piedmont`, `p12piedmont`, `p15piedmont` (shifting 10%, 12%, and 15% of dots from low-prior basin & range-front terciles to exact-DTI refill in the piedmont tercile; exact 37,654 dots held; `d_cat > 2.0 px`).
@@ -66,3 +77,21 @@ See IRREGULARITIES.md — only items that change a decision.
 
 ## AI disclosure
 See AI_USE.md
+
+## STANDING REQUIREMENTS (from session prompt — read at the start of every session)
+
+1. **Unique TIF submission.** Generate a unique submission TIF for the competition; never copy a previous submission except for learning/education. It must be obvious whether the generated TIF is OK to download and submit.
+2. **Obvious, easy download.** Provide one easy-to-download submission TIF (this session: `releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif`, linked from `docs/executive-summary.html`) plus an executive summary subpage explaining exactly how to submit (file + name + note &lt;=140 chars on the DrivenData submission page).
+3. **Validation without human intervention.** Format gates (CRS EPSG:32611, shape/geotransform == sample_submission.tif, float32 single band, values in [0,1], 0 NaN inside footprint, zero catalogue mass, dots &gt;3 px from catalogue) must pass by re-reading from disk — `make validate FILE=...`. This session: 10/10 PASS.
+4. **Labeling.** Every number is HOLDOUT-DTI (evaluator version, # withheld positives, 95% CI) or ORGANIZER-CONFIRMED (submission-page receipt). A projection is never written as a score. 0.2778 (GEMSDOE32 h33-h33-2-b2) is an owner-reported CLAIM with no receipt.
+5. **Parallel-run protocol (LANE).** Rank correlation &gt;0.90 with any registry raster, or &gt;70% of dots within 3 px of one registry raster's dots => duplicate, log and stop. Checked on surface before placement and on final dots. This session: worst rho 0.0277, worst overlap 0.2534 vs 14 local registry rasters => unique.
+6. **Holdout method.** Hide-and-recover: withhold whole fault segments with a buffer; catalogue-based features only from visible faults; visible faults masked pixel-exactly; pooled DTI alpha 0.2 beta 0.8, 300 m triangular kernel. Reported as HOLDOUT-DTI with 95% CI.
+7. **Leakage canary.** Single-feature AUC &gt;0.90 => stop and investigate. This session: AUC 0.4996 (pass).
+8. **Run card.** End every session with one JSON card (`evidence/run_card.json`): hypothesis, mechanism, named non-fault mimic, holdout-DTI + CI, correlation/overlap vs registry, raster sha256, validator output, submission name + note (&lt;=140 chars), verdict promote/negative. Negative results are deliverables.
+9. **Budget.** Stop after 3 experiments or 2 hours; promotion to a real submission slot is a separate selector step within the weekly cap.
+10. **Core values.** Maximize P(Win); Own the Outcome.
+
+## Session result (2026-10-24, this branch)
+- New lane **STEPOVER** built: `h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f` (5,000 unit-mass step-over dots, all-finite zeros encoding, sha256 `e5fee27f…`), ledger row BUILT (no receipt), 10/10 format gates PASS, lane-unique, leakage canary pass.
+- Holdout-DTI = 0.0000 [0.0000, 0.0000] vs R0 0.00370 [0.00301, 0.00432]: structural zero (gate-compliant dots cannot reach catalogue-derived held truth within the 3 px kernel); verdict **negative** — do not spend a weekly slot on this file until a mechanism clears the holdout bar. Negative result is a deliverable; whether any submission scores above 0.2778 is ORGANIZER-CONFIRMED only after upload.
+- See `docs/executive-summary.html`, `evidence/run_card.json`, `evidence/stepover_evidence.json`.

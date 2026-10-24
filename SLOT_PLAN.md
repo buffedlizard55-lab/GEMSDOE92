@@ -1,6 +1,6 @@
 # SLOT_PLAN — GEMS Prize #306
 
-**Incumbent / Parent R0:** `h33-h33-2-b2` (37,654 unit-mass dots; both `zeros` `c55bafc4…` and `nan` `baeae321…` SHA-256 digests rebuilt byte-for-byte from the pinned lineage). Score `0.2778` is **CLAIM** until a submission-page receipt is recorded in `ledger/submissions.csv` (21 `BUILT` candidates across `MASS`, `PRUNE`, `SNAP`, `CONCENTRATION`, `RELIEF`; zero `RECEIPT` rows).
+**Incumbent / Parent R0:** `h33-h33-2-b2` (37,654 unit-mass dots; both `zeros` `c55bafc4…` and `nan` `baeae321…` SHA-256 digests rebuilt byte-for-byte from the pinned lineage). Score `0.2778` is **CLAIM** until a submission-page receipt is recorded in `ledger/submissions.csv` (23 `BUILT` candidates across `MASS`, `PRUNE`, `SNAP`, `CONCENTRATION`, `RELIEF`, `STEPOVER`; zero `RECEIPT` rows).
 **Target & Quota:** `TOP_PUBLIC = ____` (date: `____`); rolling-week slots left: `__ / 3`; total weekly slots remaining to `2026-12-03`: `__` (~18 max across ~6 weeks, plus ONE blind final file; confirm deadline on competition page). Never submit repeats or both NaN/zeros twins of a pair. Treat live public-chunk deltas with `|delta| < 0.01` as **no evidence**.
 
 ## Next 3 Live Slots (in priority order, conditional on human quota check)

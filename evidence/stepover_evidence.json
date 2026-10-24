@@ -1,0 +1,213 @@
+{
+  "schema": "gemsdoe92.stepover.v1",
+  "created_utc": "2026-10-24T06:32:36.638106+00:00",
+  "branch": "arena/aebe414f-gemsdoe92",
+  "hypothesis": "STEPOVER: blind geothermal strands localize at visible-tract step-overs (3-10 px off mapped traces, strike continuation of trace tips), under-mapped in the USGS/INGENIOUS catalogue.",
+  "mechanism": "dots placed by visible-geometry favourability s(x) = strike-alignment x exp(-(d_tip-3)/3), unit mass, 1 px spacing, count N by holdout-DTI sweep.",
+  "non_fault_mimic": "erosional notch / alluvial fan head and pluvial-lake shoreline terminations can create tip-like trace ends without displacement.",
+  "holdout": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "alpha": 0.2,
+    "beta": 0.8,
+    "triangular_radius_m": 300.0,
+    "withheld_positive_pixels": 11321,
+            "n_blocks": 323,
+            "dti": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "pooled_tp": 0.0,
+            "pooled_fp": 4630.0,
+            "pooled_fn": 11321.0,
+            "pooled_n_truth": 11321,
+            "holdout_note": "Structural zero: every gate-compliant dot is >3 px from the full catalogue, and the held-out truth is a subset of the catalogue, so no gate-compliant (non-PRUNE) raster can recover held truth within the 3 px kernel. R0's proxy credit (0.00370) comes from its 2,171 dots within 3 px of the catalogue, which the gate bars for new non-PRUNE submissions. Holdout-DTI therefore cannot rank gate-compliant candidates; the live receipt is the decision anchor (per IRREGULARITIES).",
+    "delta_vs_R0_dti": -0.003698680598708719,
+    "delta_vs_R0_ci95": [
+      -0.0043771556582928245,
+      -0.0030647746270595546
+    ]
+  },
+  "baseline_R0": {
+    "dti": 0.003698680598708719,
+    "ci95": [
+      0.0030647746270595546,
+      0.0043771556582928245
+    ],
+    "withheld_positive_pixels": 11321,
+    "evidence_label": "HOLDOUT-DTI proxy baseline, not a score"
+  },
+  "leakage_canary": {
+    "auc_favourability_vs_held_truth": 0.461965,
+    "auc_final_dots_vs_held_truth": 0.49957,
+    "limit": 0.9,
+    "status": "PASS"
+  },
+  "lane": {
+    "registry_index": "evidence/lane_registry_index.json",
+    "registry_rasters_checked": 14,
+    "complete_accessible_scan": true,
+    "surface_worst_rho": 0.027719626468556663,
+    "dots_worst_rho": 0.00823784399966051,
+    "dots_worst_forward_overlap": 0.2534,
+    "duplicate_count": 0,
+    "unique": true,
+    "rule": "rank correlation <= 0.90 and <= 70% of dots within 3 px of every registry raster, surface before placement and dots on the final raster."
+  },
+  "raster": {
+    "file": "releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif",
+    "name": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f",
+    "note": "h33-h33-2-b2; STEPOVER step-over dots 3-10px off catalogue at visible trace tips; HOLDOUT-DTI 0.0000 [0.0000,0.0000]",
+    "note_chars": 116,
+    "sha256": "e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205",
+    "bytes": 70122,
+    "zip": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.zip",
+    "receipt": "releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.json"
+  },
+  "validation": {
+    "gates_pass": true,
+    "validator_receipt": {
+      "file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif",
+      "sha256": "e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205",
+      "bytes": 70122,
+      "submission_name": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f",
+      "note": "h33-h33-2-b2; STEPOVER step-over dots 3-10px off catalogue at visible trace tips; HOLDOUT-DTI 0.0000 [0.0000,0.0000]",
+      "note_chars": 116,
+      "validator": {
+        "file": "releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif",
+        "bytes": 70122,
+        "sha256": "e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205",
+        "meta": {
+          "crs": "EPSG:32611",
+          "shape": [
+            3730,
+            3292
+          ],
+          "dtype": "float32",
+          "count": 1,
+          "nodata": null,
+          "transform": [
+            100.0,
+            0.0,
+            243350.0,
+            0.0,
+            -100.0,
+            4508550.0
+          ],
+          "profile_compress": "deflate"
+        },
+        "band_description": [
+          null
+        ],
+        "n_finite": 12279160,
+        "n_nan": 0,
+        "n_infinite": 0,
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.00040719399112276733,
+        "emitted_positive_pixels": 5000,
+        "checks": {
+          "single_band": true,
+          "dtype_float32": true,
+          "dimensions_3730x3292": true,
+          "crs_epsg_32611": true,
+          "transform_matches_sample_submission": true,
+          "no_nan_anywhere": true,
+          "no_inf_anywhere": true,
+          "no_sentinel_values": true,
+          "range_0_1_guaranteed": true,
+          "min_ge_0": true,
+          "max_le_1": true,
+          "in_footprint_all_finite": true,
+          "in_footprint_range_0_1": true,
+          "outside_footprint_zero": true,
+          "zero_dots_on_mapped_catalogue": true
+        },
+        "all_checks_passed": true,
+        "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+        "on_catalogue_positive_pixels": 0,
+        "in_footprint_positive_pixels": 5000,
+        "footprint_fraction": 0.0009676096538802212
+      },
+      "template_report": {
+        "path": "releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif",
+        "bytes": 70122,
+        "sha256": "e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205",
+        "bands": 1,
+        "dtype": "float32",
+        "crs": "EPSG:32611",
+        "width": 3292,
+        "height": 3730,
+        "bounds": [
+          243350.0,
+          4135550.0,
+          572550.0,
+          4508550.0
+        ],
+        "ref_bounds": [
+          243350.0,
+          4135550.0,
+          572550.0,
+          4508550.0
+        ],
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "nodata": null,
+        "blocksize": [
+          256,
+          256
+        ],
+        "fixture_grid": false,
+        "has_validity_mask": false,
+        "nan_pixels": 0,
+        "infinity_pixels": 0,
+        "n_nan": 0,
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.00040719399112276733,
+        "n_nonzero": 5000,
+        "mass": 5000.0,
+        "mass_outside_footprint": 0,
+        "problems": [],
+        "ok": true,
+        "validation_class": "local on-disk template/range check; not organizer upload acceptance"
+      },
+      "zip_file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.zip",
+      "zip_sha256": "851b88a19822ae634e4109998190ea4209f313e6f0bbc7a01e9c9e22726835e0",
+      "approved_for_weekly_slot": false,
+      "promoted": false,
+      "submission_slots_used": 0,
+      "status": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval",
+      "metadata": {
+        "axis": "STEPOVER",
+        "parent": "h33-h33-2-b2",
+        "method": "visible-tract step-over/relay dots; d_cat>3 px; 1 px spacing; unit mass",
+        "n_dots": 5000,
+        "holdout_dti": 0.0,
+        "holdout_ci95": [
+          0.0,
+          0.0
+        ],
+        "holdout_withheld_positives": 11321,
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "alpha": 0.2,
+        "beta": 0.8,
+        "triangular_radius_m": 300.0,
+        "leakage_canary_auc_s": 0.461965,
+        "leakage_canary_auc_dots": 0.49957,
+        "lane_unique": true,
+        "lane_registry": "evidence/lane_registry_index.json",
+        "receipt_class": "locally validated; organizer acceptance pending"
+      }
+    }
+  },
+  "verdict": "negative",
+  "scope_note": "No DrivenData/leaderboard access, no submission, no organizer receipt. 0.2778 (GEMSDOE32 h33-h33-2-b2) is an owner-reported CLAIM, not a receipt; whether this submission scores higher is ORGANIZER-CONFIRMED only after upload."
+}
