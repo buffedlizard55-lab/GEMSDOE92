@@ -1,0 +1,213 @@
+{
+  "schema": "gemsdoe92.run-card.v1",
+  "created_utc": "2026-10-24T19:02:50.931532+00:00",
+  "lane": "PIEDFRONT",
+  "primary_variant": "h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b",
+  "hypothesis": "Active Quaternary normal faults and blind range-front geothermal conduits in the Great Basin localize at the piedmont-range-front transition where bedrock steps down across a subsurface density gradient (Band 5 iso_grav_anom_slope) into moderate alluvial cover (Band 15 depth_to_base_surf, Band 12 det_elev), expressing at the surface as a sharp relative break-in-slope ||grad(det_elev_slope)||/(det_elev_slope+2 deg) (Band 19) along an orientation-coherent lineament (Band 12). Unnormalized BREAKLINE placed 74.8% of its far dots in steep mountain range interiors; normalizing by background slope and gating by the piedmont gravity-cover envelope concentrates 82.5% of far candidates in the piedmont while repairing R0's post-b2 skeleton holes.",
+  "mechanism": "At fixed S=37,654 unit-mass dots, on-skeleton dots (N_skel = 37,654 - N_far) keep the highest-w_pf R0 dots and refill 4,000 piedmont H19-5 holes (left when R0 pruned d_cat<=2 after D2.8 thinning) via exact marginal expected-DTI greedy under S_pct. Off-skeleton dots (N_far in {13179, 15062, 16944}, 35/40/45%) are placed by spaced_top_mask (2.8 px floor) on S_raw strictly >3 px off H19-5 and >3 px off prior off-skeleton lanes' far sets.",
+  "named_non_fault_process_that_could_mimic_it": "Pluvial Lake Lahontan wave-cut shoreline terraces and beach ridges at piedmont elevations (~1,200-1,330 m AMSL) overlying regional basin-margin gravity gradients, incised alluvial-fan terrace risers (fan-head trenches), and pediment-alluvium contacts.",
+  "falsifier": "Pooled HOLDOUT-DTI failing to beat both R0 (0.004006) and the holdout best RELIEF p10 (0.006045) with paired 95% CI excluding 0, or SGMC off-catalogue DTI falling below R0 (0.096060), or any single-feature leakage canary > 0.90, or local registry forward overlap > 0.70 / |rho| > 0.90.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.006424520433386923,
+    "ci95": [
+      0.005398685661719292,
+      0.007489351647384481
+    ],
+    "delta_vs_R0": 0.00241837325870218,
+    "delta_vs_R0_ci95": [
+      0.0015378413288938272,
+      0.0032554608006190146
+    ],
+    "delta_vs_RELIEFp10": 0.0003793880362139906,
+    "delta_vs_RELIEFp10_ci95": [
+      -0.000256935331415852,
+      0.0010656763860387693
+    ],
+    "delta_vs_BREAKLINEf45": 0.001564012465857233,
+    "delta_vs_BREAKLINEf45_ci95": [
+      0.00047134050342366126,
+      0.002606645958118455
+    ],
+    "delta_vs_STRAINBREAKf60": 0.000937829393892438,
+    "delta_vs_STRAINBREAKf60_ci95": [
+      -0.0003217144265033274,
+      0.002239274961122934
+    ],
+    "R0_dti": 0.004006147174684743,
+    "RELIEFp10_dti": 0.0060451323971729325,
+    "BREAKLINEf45_dti": 0.00486050796752969,
+    "STRAINBREAKf60_dti": 0.005486691039494485,
+    "dose_ladder": {
+      "f35Ptop": 0.006424520433386923,
+      "f40Ptop": 0.006402242718081935,
+      "f45Ptop": 0.006137316420290028
+    },
+    "dose_note": "All three PIEDFRONT doses (0.006425, 0.006402, 0.006137) exceed R0 (0.004006) and prior holdout best RELIEF p10 (0.006045) in point estimate on gems57-pooled-hide-v2; f35Ptop is the primary dose (highest HOLDOUT-DTI, highest SGMC among the three doses, and paired delta vs f45Ptop +0.000287 [+0.000027, +0.000548]).",
+    "spatial_clusters": 158,
+    "bootstrap_draws": 1000
+  },
+  "leakage_canary_max_symmetric_auc": 0.639112,
+  "leakage_canaries_by_feature": {
+    "training_band_5_iso_grav_anom_slope": {
+      "auc": 0.551113,
+      "symmetric_auc": 0.551113,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "training_band_12_det_elev": {
+      "auc": 0.497553,
+      "symmetric_auc": 0.502447,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "training_band_15_depth_to_base_surf": {
+      "auc": 0.514862,
+      "symmetric_auc": 0.514862,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "training_band_19_det_elev_slope": {
+      "auc": 0.55314,
+      "symmetric_auc": 0.55314,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "piedfront_rel_break_pct": {
+      "auc": 0.579356,
+      "symmetric_auc": 0.579356,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "piedfront_R_scarp": {
+      "auc": 0.620797,
+      "symmetric_auc": 0.620797,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "piedfront_W_pied": {
+      "auc": 0.582369,
+      "symmetric_auc": 0.582369,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "piedfront_S_pct_main": {
+      "auc": 0.639112,
+      "symmetric_auc": 0.639112,
+      "status": "REPORT_ONLY_PASS"
+    }
+  },
+  "sgmc_control_proxy": {
+    "evidence_class": "PROXY (off-catalogue USGS SGMC bedrock faults)",
+    "dti": 0.059993,
+    "R0_dti": 0.09606,
+    "RELIEFp10_dti": 0.087245,
+    "BREAKLINEf45_dti": 0.126105,
+    "STRAINBREAKf60_dti": 0.105162,
+    "f40Ptop_dti": 0.058179,
+    "f45Ptop_dti": 0.0559,
+    "truth_pixels": 62703,
+    "note": "PIEDFRONT intentionally shifts off-skeleton dots out of steep mountain-interior pre-Quaternary bedrock (where unnormalized BREAKLINE placed 74.8% of its far dots) into the piedmont range-front transition (78.7% of f35Ptop far dots, 73.9% overall). Consequently it achieves the repository's highest non-collar HOLDOUT-DTI (0.006425) on Quaternary/geothermal catalogue faults while scoring lower (0.059993 vs R0 0.096060) on exposed mountain-core SGMC bedrock faults."
+  },
+  "fixed_catalogue_diagnostic": {
+    "evidence_class": "DIAGNOSTIC (fixed-catalogue DTI, known=None)",
+    "dti": 0.009569,
+    "R0_dti": 0.006709,
+    "RELIEFp10_dti": 0.009791
+  },
+  "correlation_overlap_vs_registry": {
+    "local": {
+      "registry_rasters_checked": 29,
+      "worst_forward_overlap_within_3px": 0.649997,
+      "worst_forward_overlap_file": "h19_5.tif",
+      "worst_abs_spearman": 0.585871,
+      "worst_abs_spearman_file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+      "literal_duplicate": false,
+      "preplacement_surface": {
+        "worst_forward_overlap": 0.434907,
+        "worst_forward_overlap_file": "h19_5.tif",
+        "worst_abs_spearman": 0.127084,
+        "worst_abs_spearman_file": "h19_5.tif",
+        "duplicate": false
+      }
+    },
+    "public_witness_17gemsdoe": {
+      "evidence_file": "evidence/piedfront_public_registry_witness17.json",
+      "registries_checked": 5,
+      "preplacement_worst_forward_overlap": 1.0,
+      "preplacement_worst_abs_spearman": 0.4117899749153575,
+      "worst_forward_overlap": 1.0,
+      "worst_overlap_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "worst_abs_spearman": 0.05215991539448195,
+      "worst_rho_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "rasters_over_70pct_overlap": 1,
+      "unique_under_literal_rule": false,
+      "stop_required": true
+    }
+  },
+  "raster_sha256": "e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8",
+  "raster_sha256_nan_twin": "a44bb11be17928dc6058ddbff20ad2761bc50c333e79a4f92d1c60b3f360c548",
+  "validator": {
+    "overall_pass": true,
+    "gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=float32 count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nan_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8"
+      }
+    ],
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": "EPSG:32611, 3730x3292, transform of sample_submission.tif"
+  },
+  "submission_name": "GEMSDOE92-PIEDFRONT-f35Ptop-20261024",
+  "file": "h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif",
+  "note": "h33-h33-2-b2; PIEDFRONT f35Ptop 13179 far piedmont scarp-gravity dots >3px off H19-5 + 4000 H19-5 hole refill",
+  "note_chars": 109,
+  "organizer_score": null,
+  "experiments_built_this_session": 3,
+  "verdict": "negative",
+  "verdict_reason": "PIEDFRONT f35Ptop achieves the highest non-collar HOLDOUT-DTI in the repository (0.006425 [0.005375, 0.007479], beating R0 0.004006 by +0.002418 [+0.001538, +0.003255] and beating BREAKLINE f45 0.004861 by +0.001564 [+0.000471, +0.002607], and exceeding prior holdout best RELIEF p10 0.006045 by +0.000379 [-0.000257, +0.001066]), while passing every local registry uniqueness threshold (worst 3-px forward overlap 0.649997 <= 0.70 across 29 local registry rasters; worst |phi| = 0.585871 <= 0.90; pre-placement surface worst |rho| = 0.127084) and all leakage canaries (max AUC = 0.639112 <= 0.90). Verdict remains negative (NOT CLEARED FOR A WEEKLY SLOT) because: (1) the paired 95% bootstrap CI against RELIEF p10 includes 0 and the off-catalogue SGMC bedrock fault proxy (0.059993) is below R0 (0.096060), and (2) the dense public-registry witness (17GEMSDOE E-proba, 5,167,373 positive pixels covering 100% of the footprint) triggers the literal >70% forward-overlap stop until an operator policy decision on dense surfaces vs sparse dot clouds.",
+  "format_ok_to_download": true,
+  "slot_recommendation": "NOT_CLEARED"
+}

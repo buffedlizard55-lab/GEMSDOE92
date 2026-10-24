@@ -1,0 +1,145 @@
+{
+  "file": "h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif",
+  "sha256_zeros": "e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8",
+  "sha256_nan": "a44bb11be17928dc6058ddbff20ad2761bc50c333e79a4f92d1c60b3f360c548",
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8"
+    }
+  ],
+  "gates_nan": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=7111787 zero=0 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "a44bb11be17928dc6058ddbff20ad2761bc50c333e79a4f92d1c60b3f360c548"
+    }
+  ],
+  "overall_pass": true,
+  "generated_utc": "2026-10-24T19:02:50.932422+00:00",
+  "note": "All gates PASS on independent disk reread; values in [0,1], no NaN inside footprint, zero catalogue mass",
+  "schema": "gemsdoe92.download-audit.v1",
+  "format_pass": true,
+  "submission_eligible": false,
+  "candidate": "h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif",
+  "n_dots": 37654,
+  "run_card": "evidence/piedfront_run_card.json",
+  "verdict": "negative",
+  "local_uniqueness": {
+    "worst_abs_spearman": 0.585871,
+    "worst_rho_raster": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+    "worst_forward_overlap": 0.649997,
+    "worst_overlap_raster": "h19_5.tif",
+    "registry_rasters_checked": 29,
+    "complete_local_scan": true,
+    "unique_under_thresholds": true
+  },
+  "public_registry_uniqueness": {
+    "evidence_file": "evidence/piedfront_public_registry_witness17.json",
+    "candidate_hash_matches_scan": true,
+    "scan_complete_for_declared_scope": false,
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "registries_checked": 5,
+    "worst_forward_overlap": 1.0,
+    "worst_overlap_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "worst_abs_spearman": 0.05215991539448195,
+    "rasters_over_70pct_overlap": 1
+  },
+  "evidence": {
+    "holdout": "evidence/piedfront_proxy_audit.json (HOLDOUT-DTI, gems57-pooled-hide-v2)",
+    "variants": "evidence/piedfront_variants.json",
+    "run_card": "evidence/piedfront_run_card.json"
+  }
+}

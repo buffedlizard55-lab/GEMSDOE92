@@ -163,3 +163,21 @@ def test_guides_agree_with_current_primary_and_stop():
     html = _index()
     assert 'unique GeoTIFF generated this session' not in html
     assert 'format-valid, unique download' not in html
+
+
+def test_piedfront_primary_contract_across_site_and_readme():
+    idx = (DOCS / "index.html").read_text(encoding="utf-8")
+    exec_sum = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
+    sub = (DOCS / "SUBMIT.html").read_text(encoding="utf-8")
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+
+    for tok in (
+        "GEMSDOE92-PIEDFRONT-f35Ptop-20261024",
+        "h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif",
+        "e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8",
+        "0.006425",
+    ):
+        assert tok in idx, f"missing {tok} in docs/index.html"
+        assert tok in exec_sum, f"missing {tok} in docs/executive-summary.html"
+        assert tok in sub, f"missing {tok} in docs/SUBMIT.html"
+        assert tok in readme, f"missing {tok} in README.md"

@@ -134,3 +134,10 @@ Corrected two documentation risks found during review: the homepage previously l
 - System Python initially lacked `pytest` and NumPy. A repository-ignored `.venv` was created and dependencies installed from `requirements.txt`; no environment artifacts are tracked.
 
 No public endpoint, leaderboard, DrivenData receipt, submission quota, or competition upload was accessed or verified in this review. Existing TIF links are for research/download only, not approved for competition submission.
+
+## Session update — `PIEDFRONT` (`f35Ptop`, `f40Ptop`, `f45Ptop`) — 2026-10-24
+
+- **Primary research GeoTIFF built & validated:** `docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif` (`sha256=e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8`, 37,654 unit-mass dots; 10/10 MUST gates PASS on disk reread).
+- **Pooled `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, 22,663 withheld positives):** **`0.006425 [0.005375, 0.007479]`** (`f40Ptop = 0.006402`, `f45Ptop = 0.006137`) — highest non-collar `HOLDOUT-DTI` in this repository, beating `R0` (`0.004006`, paired $\Delta = +0.002418 [+0.001538, +0.003255]$) and `BREAKLINE f45` (`0.004861`, paired $\Delta = +0.001564 [+0.000471, +0.002607]$), and exceeding `RELIEF p10` (`0.006045`) in point estimate (`+0.000379 [-0.000257, +0.001066]`).
+- **Local & public uniqueness:** Locally unique across all 29 unique local registry rasters (worst 3-px forward overlap `0.649997` vs `h19_5.tif`, $\le 0.70$; worst `|φ| = 0.585871`, $\le 0.90$; pre-placement surface worst `|ρ| = 0.127084`); public witness `17GEMSDOE E-proba` verified in `evidence/piedfront_public_registry_witness17.json` (100% forward overlap due to full-footprint positive support).
+- **Verdict:** `negative` (`OK TO DOWNLOAD` for research; `NOT CLEARED` for a weekly slot). Full analysis: [`ANALYSIS_20261024_PIEDFRONT.md`](ANALYSIS_20261024_PIEDFRONT.md); run card: [`downloads/piedfront_run_card.json`](downloads/piedfront_run_card.json).
