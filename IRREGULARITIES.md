@@ -775,3 +775,8 @@ Blocker 0 (ledger: BUILT rows grew by 3 this session, RECEIPT rows still 0).
 - **Training limitation correction:** the freshly read official reference
   supports CPU training. A GPU is faster, not an absolute prerequisite. The
   prompt's named downloader/preparer scripts do not exist in this checkout.
+- **Pages admin permission:** API reports legacy publishing from `main:/`.
+  Attempting `build_type=workflow` returned HTTP 403 `Resource not accessible
+  by integration`; settings remain unchanged. The added workflow gate cannot
+  be claimed to control the separate legacy publisher. Repository-admin
+  integration access is needed to reconcile settings; do not claim it succeeded.

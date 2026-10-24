@@ -156,3 +156,14 @@ Owner mirrors are not trusted official provenance simply because their bytes has
 - GitHub Pages API initially reported legacy publishing from `main:/` while
   the workflow uploads `docs/`. This is a deployment-setting mismatch; publication
   status/configuration will be checked separately from local format validity.
+
+### GitHub publishing permission finding
+
+The attempt to align Pages with workflow publishing returned HTTP 403,
+`Resource not accessible by integration`. No Pages setting changed: the API
+still reports legacy publishing from `main:/`. This is a GitHub integration
+permission limitation, not a TIFF/model validation failure. The repository's
+Pages workflow exists and has historically succeeded, but this review cannot
+claim the legacy publisher is governed by the new workflow gate. Branch CI
+validates this patch; Pages configuration requires separate repository-admin
+access. No GitHub password or token is requested or stored.
