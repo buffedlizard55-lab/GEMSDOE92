@@ -226,8 +226,8 @@ def test_readme_first_screen_matches_actual_site_primary_and_session_contract():
     assert "docs/REVIEW_CURRENT.md" in readme
     assert "OK TO DOWNLOAD FOR RESEARCH" in readme
     assert "DO NOT SUBMIT" in readme
-    first_screen = readme.split("## Preserved Parallel Candidate", 1)[0]
-    assert "Current research primary GeoTIFF" in first_screen
+    first_screen = readme.split("## Prior/parallel candidate", 1)[0]
+    assert "Current research download" in first_screen
     assert "HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif" not in first_screen
 
 

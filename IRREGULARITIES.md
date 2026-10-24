@@ -873,3 +873,11 @@ that pattern: no unpreserved screen code.
 - **Observation**: Prior `SPRINGALIGN` update changed `docs/index.html` `<h1>` while leaving `"This session tested ANASIG"` in the lede, placed `data-primary="true"` on `<section>` instead of `<a href=...>`, and left `docs/executive-summary.html`, `docs/SUBMIT.html`, and `docs/submit.html` pointing to `ANASIG`.
 - **Action**: Synchronized `docs/index.html`, `docs/executive-summary.html`, `docs/SUBMIT.html`, `docs/submit.html`, `docs/HYPOTHESES.html`, `README.md`, `SLOT_PLAN.md`, `docs/REVIEW_CURRENT.md`, `docs/NEXT_STEPS.md`, and `tests/test_site_contract.py` around `HYDROCONDUIT f45hydro`, placing `data-primary="true"` directly on the primary `-zeros.tif` anchor.
 
+
+
+## Review d97f969e — 2026-10-24
+
+- Fresh Git-blob-verified dense witness rejects the current APRONRIDGE download (forward overlap 1.0). Literal protocol mandates stop; no new candidate or policy exemption. See `evidence/review_d97f969e_witness.json`.
+- Homepage overall-best claim conflicted with higher stored HYDROCONDUIT HOLDOUT-DTI. Corrected the headline and added superseding top-level notices. Historical static scores are not certified visible-only fold-rebuilt experiments.
+- No single method paragraph is identifiable in this request. No lane was invented. Data and CPU validators already exist; the prompt's GPU/data-placement blocker is not current for this array pipeline.
+- Official competition pages, quota and receipts cannot be freshly verified under this session's network restrictions. No organizer score or source-access claim was fabricated.
