@@ -9,8 +9,9 @@ All beat `R0` (`0.004006`) but trail the `0.008549` promotion bar with paired CI
 (seismo vs bar `Δ −0.002741 [−0.004137, −0.001382]`), and the lead arm trips the binding dense public
 witness (`17GEMSDOE E-proba-multiscale`, `forward_overlap = 1.000`, `evidence/public_witness_coulomb.json`).
 Locally unique (`0.263–0.290 ≤ 0.70`, `|φ| ≤ 0.024`); canaries `20/20 PASS`. **No slot used this session
-(3/3 experiment budget consumed as research).** Primary stays `APRONRIDGE free1d`; promotion bar stays
-`HYDROCONDUIT f45hydro 0.008549`. Run card: `docs/downloads/coulomb_run_card.json`.
+(3/3 experiment budget consumed as research).** Promotion bar stays
+`HYDROCONDUIT f45hydro 0.008549` (still the repo holdout best; parallel-session branch primary
+`GEOTENSION free1d` scored `0.007615`). Run card: `docs/downloads/coulomb_run_card.json`.
 
 ---
 

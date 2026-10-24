@@ -10,11 +10,14 @@ Built, scored, witnessed, and carded 3 standalone Coulomb-opening experiments
 - **`HOLDOUT-DTI`**: `seismo 0.005808 [0.004846, 0.006809]` · `free 0.005689` · `open 0.005184` — all beat `R0 0.004006`, all trail `HYDROCONDUIT 0.008549` with paired CIs excluding promotion; `free`↔`seismo` is a statistical tie (100 km seismicity kernels add nothing at 100 m).
 - **Mechanism**: `O_coulomb`-only canary `0.5423` « `rel_scarp`-only `0.6230`; `max()` fusion lets the weaker RTP channel dominate `71.6%` of dots; SGMC collapses to `0.035–0.040`. Orientation-resolved geomechanics does not beat repacking + multiplicative corroboration on the catalogue instrument.
 - **Uniqueness / witness**: locally unique (`0.263–0.290 ≤ 0.70`); binding dense-witness duplicate stop (`forward_overlap = 1.000` vs `17GEMSDOE E-proba`; [receipt](downloads/public_witness_coulomb.json)); sparse diagnostic `≤ 0.4831` (not clearance).
-- **Docs**: [pre-registration](HYPOTHESES_20261024_COULOMB.md) · [PhD analysis](ANALYSIS_20261024_COULOMB.md) · [run card](downloads/coulomb_run_card.json). Disk-verified lineage counts (`D2.8 44,090`, `SOLO 40,199`) corrected in 3 stale prose spots; conflicting intermediate `CLAIM` scores (`0.1922` vs `0.2194`, `0.2600` vs `0.2649`) logged as unresolvable without receipts. No slot used; primary and bar unchanged.
+- **Docs**: [pre-registration](HYPOTHESES_20261024_COULOMB.md) · [PhD analysis](ANALYSIS_20261024_COULOMB.md) · [run card](downloads/coulomb_run_card.json). Disk-verified lineage counts (`D2.8 44,090`, `SOLO 40,199`) corrected in 4 stale prose spots (3 files); conflicting intermediate `CLAIM` scores (`0.1922` vs `0.2194`, `0.2600` vs `0.2649`) logged as unresolvable without receipts. No slot used; promotion bar unchanged at `0.008549` (still above branch-primary `GEOTENSION free1d 0.007615`).
 
 ---
+> **Latest review override (2026-10-24):** [D97F969E three-pass review](REVIEW_D97F969E.md). No new candidate: the freshly verified full-footprint witness mandates stop. APRONRIDGE is the research download, not overall historical HOLDOUT-DTI best. No dense-map exemption or submission selection is authorized. Earlier sections below are historical.
 
 # Current review — 2026-10-24 (updated after `APRONRIDGE` breakthrough)
+
+> Latest continuation: [fresh exact-file witness recheck, ranked untested hypotheses, current download/submission decision, and three-pass review](REVIEW_20261024_CONTINUATION.md) · [machine-readable run card](downloads/review_20261024_continuation_run_card.json).
 
 ## Download status comes first
 

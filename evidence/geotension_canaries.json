@@ -1,0 +1,57 @@
+{
+  "Band04_geod_2ndinv": {
+    "auc": 0.510186,
+    "symmetric_auc": 0.510186,
+    "status": "PASS"
+  },
+  "Band07_geod_shearrate": {
+    "auc": 0.512772,
+    "symmetric_auc": 0.512772,
+    "status": "PASS"
+  },
+  "Band08_geod_dilaterate": {
+    "auc": 0.514464,
+    "symmetric_auc": 0.514464,
+    "status": "PASS"
+  },
+  "Band12_det_elev": {
+    "auc": 0.497553,
+    "symmetric_auc": 0.502447,
+    "status": "PASS"
+  },
+  "Band15_depth_to_base_surf": {
+    "auc": 0.514862,
+    "symmetric_auc": 0.514862,
+    "status": "PASS"
+  },
+  "Band19_det_elev_slope": {
+    "auc": 0.55314,
+    "symmetric_auc": 0.55314,
+    "status": "PASS"
+  },
+  "GEOTENSION_H_ten": {
+    "auc": 0.571434,
+    "symmetric_auc": 0.571434,
+    "status": "PASS"
+  },
+  "GEOTENSION_H_apron": {
+    "auc": 0.581319,
+    "symmetric_auc": 0.581319,
+    "status": "PASS"
+  },
+  "GEOTENSION_R_scarp": {
+    "auc": 0.621604,
+    "symmetric_auc": 0.621604,
+    "status": "PASS"
+  },
+  "GEOTENSION_S_raw": {
+    "auc": 0.613236,
+    "symmetric_auc": 0.613236,
+    "status": "PASS"
+  },
+  "GEOTENSION_S_pct": {
+    "auc": 0.613236,
+    "symmetric_auc": 0.613236,
+    "status": "PASS"
+  }
+}
