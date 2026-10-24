@@ -1,3 +1,5 @@
+> **Latest verification (2026-10-24):** [D97F969E three-pass review](REVIEW_D97F969E.md) adds a freshly downloaded witness receipt and corrects the overall-best claim. No generation or policy exemption.
+
 # NEXT_STEPS — current review status (2026-10-24)
 
 ## Current state (this section supersedes historical queues below)
@@ -5,7 +7,7 @@
 **Current research download:** `APRONRIDGE free1d`, [`docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`](downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif). It is format-valid and available for research download, but **NOT CLEARED FOR A WEEKLY SLOT; DO NOT SUBMIT**. Its exact-file witness measurement records `1.000` final-dot forward overlap with a hash-verified raster whose support is positive on every cell in the competition footprint. Under the literal rule, this mandates a stop for every nonempty prediction; it does not show geological equivalence. See [witness receipt](downloads/public_witness_apronridge.json) and [review](REVIEW_CURRENT.md).
 
 - **HOLDOUT-DTI (historical, not rerun in this repository review):** `gems57-pooled-hide-v2`, 8 spatial folds, 22,663 withheld positive pixels; APRONRIDGE free1d `0.008354`, 95% CI `[0.006823, 0.010135]`. This is a local hide-and-recover result, not a competition score. See its [run card](../evidence/apronridge_run_card.json).
-- **Format check:** after installing the pinned `requirements.txt`, 202 tests passed; `scripts/check_site.py` passed for 25 served rasters; the 8-entry manifest and pinned R0 parent verified. These confirm local integrity only—not public uniqueness or organizer acceptance.
+- **Format check:** after installing the pinned `requirements.txt`, 204 tests passed; `scripts/check_site.py` passed for 25 served rasters; the 8-entry manifest and pinned R0 parent verified. These confirm local integrity only—not public uniqueness or organizer acceptance.
 - **Submission ledger:** 57 BUILT / 0 RECEIPT (current command output). No weekly slot was used in this review.
 - **Current session generated no TIFF and ran no geological experiment.** The requested new unique candidate remains unmet: the binding final-dot duplicate stop prevents honest promotion under the literal rule. Do not relabel an existing file or emit an all-zero/no-signal raster to evade the stop.
 

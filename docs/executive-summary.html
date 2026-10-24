@@ -8,6 +8,19 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<aside class="banner banner-warn" aria-label="Latest verified review">
+  <strong>2026-10-24 verified review: OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT.</strong>
+  The existing APRONRIDGE file remains the research download, not a newly generated submission or a selector choice.
+  Fresh hash-verified registry measurement gives 100% forward overlap against one dense witness: the literal duplicate-stop rule is binding.
+  Historical HOLDOUT-DTI (gems57-pooled-hide-v2, 22,663 withheld positives):
+  APRONRIDGE 0.008354 (95% CI 0.006823–0.010135);
+  HYDROCONDUIT 0.008549 (95% CI 0.007626–0.009487).
+  APRONRIDGE is therefore not the overall holdout best. Neither static result establishes fold-rebuilt, leak-free superiority or an organizer score.
+  <a href="REVIEW_D97F969E.md">Three-pass review and limitations</a> ·
+  <a href="downloads/review_d97f969e_run_card.json">Run card</a> ·
+  <a href="downloads/review_d97f969e_witness.json">Fresh witness measurement</a>
+</aside>
+
 <header class="hero">
   <p class="kicker">Executive Summary · DrivenData DOE GEMS Prize #306 · EPSG:32611 · 2026-10-24 UTC</p>
   <h1>Executive Summary &amp; Submission Guide — current artifact is blocked</h1>
@@ -17,8 +30,8 @@
 <main>
 <section class="download-card" aria-label="2026-10-24 automatic preflight"><h2>New-candidate preflight: STOP — no unique slot-ready TIF</h2><p>Independent SHA-256 and Git-blob verification of the <a href="https://github.com/buffedlizard55-lab/17GEMSDOE/blob/6fc71d19d49dca4960d5434bd81b6dd06fcc030a/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif">public dense witness</a> confirms positive support on all 5,167,373 footprint cells. Every nonempty in-footprint dot set therefore overlaps it at 1.000 &gt; 0.70 under the literal rule. A new submission would be marked duplicate, so this lane stopped before placement, holdout and writing a new TIF. <a href="HYPOTHESES_20261024_PREFLIGHT.md">Four ranked hypotheses</a> · <a href="downloads/preplacement_dense_witness.json">machine-readable preflight (repository)</a>. Existing downloads below are independently format-valid for research, <strong>not eligible for submission</strong>. A policy decision, not human file inspection, is needed before building a new candidate.</p></section>
 <section class="download-card">
-  <h2>Current primary (2026-10-24): APRONRIDGE free1d — #1 Standalone Physics GeoTIFF (HOLDOUT-DTI 0.008354), NOT CLEARED FOR A WEEKLY SLOT</h2>
-  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH.</strong> The current primary <strong>APRONRIDGE free1d</strong> zeros-outside GeoTIFF (<code>h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif</code>) passed all 10 automated MUST gates + strict submission encoding on independent disk re-read: single <code>float32</code> band; <code>EPSG:32611</code>; <code>3730 &times; 3292</code>; exact template geotransform; finite values in <code>[0, 1]</code>; zero <code>NaN</code>s inside footprint; <code>0.0</code> outside; zero catalogue pixels; <code>d_cat &gt; 2.0 px</code>.</div>
+  <h2>Current research download: APRONRIDGE free1d — standalone physics GeoTIFF (historical HOLDOUT-DTI 0.008354), NOT CLEARED FOR A WEEKLY SLOT</h2>
+  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH.</strong> The existing research-download <strong>APRONRIDGE free1d</strong> zeros-outside GeoTIFF (<code>h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif</code>) passed all 10 automated MUST gates + strict submission encoding on independent disk re-read: single <code>float32</code> band; <code>EPSG:32611</code>; <code>3730 &times; 3292</code>; exact template geotransform; finite values in <code>[0, 1]</code>; zero <code>NaN</code>s inside footprint; <code>0.0</code> outside; zero catalogue pixels; <code>d_cat &gt; 2.0 px</code>.</div>
   <div class="banner banner-warn"><strong>⛔ DO NOT SUBMIT / NO WEEKLY SLOT CLEARED (<code>verdict: negative</code>, <code>submission_eligible: false</code>).</strong> <strong>APRONRIDGE free1d</strong> achieves <strong>HOLDOUT-DTI 0.008354 [0.006823, 0.010135]</strong> with <strong>zero H19-5/R0 input</strong> (<code>97.0%</code> new pixels vs <code>R0</code>; beating <code>PIEDFRONT f35Ptop</code> <code>0.006425</code> by <code>+30.0%</code>, <code>RELIEF p10</code> <code>0.006045</code> by <code>+38.2%</code>, and <code>R0</code> <code>0.004006</code> by <code>+108.5%</code>) and passes local uniqueness across all 52 cross-lane rasters (worst 3-px overlap <code>0.6507 &le; 0.70</code>, including <code>0.5979 &le; 0.70</code> vs parallel hybrid <code>HYDROCONDUIT f45hydro</code> at <code>0.008549</code>). However, the Git-blob-verified public dense witness <code>17GEMSDOE E-proba-multiscale</code> is positive across all <code>5,167,373</code> footprint cells, forcing <code>1.000</code> forward 3-px overlap under the literal unweighted rule (<a href="downloads/public_witness_apronridge.json">APRONRIDGE witness receipt</a>).</div>
   <p class="filename">h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif</p>
   <p><a class="btn" href="downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif" download>⬇ Download APRONRIDGE free1d GeoTIFF — DO NOT SUBMIT</a>
@@ -37,8 +50,8 @@
   <table>
     <thead><tr><th>Candidate / Baseline</th><th>HOLDOUT-DTI [95% CI]</th><th>SGMC Off-Cat DTI (PROXY)</th><th>Worst Local 3-px Overlap</th><th>Status</th></tr></thead>
     <tbody>
-      <tr><td><strong>HYDROCONDUIT f45hydro</strong> (parallel hybrid: 55% H19-5 + 45% far)</td><td><strong>0.008549 [0.007626, 0.009487]</strong></td><td>0.07411</td><td>0.5979 vs APRONRIDGE / 0.5500 R0</td><td>#1 Hybrid Holdout; blocked by 17GEMSDOE dense witness</td></tr>
-      <tr><td><strong>APRONRIDGE free1d</strong> (current primary: 0% H19-5 standalone)</td><td><strong>0.008354 [0.006823, 0.010135]</strong></td><td>0.08010</td><td><strong>0.6507</strong> vs PIEDFRONT / 0.4605 prior</td><td>#1 Standalone Holdout; blocked by 17GEMSDOE dense witness</td></tr>
+      <tr><td><strong>HYDROCONDUIT f45hydro</strong> (parallel hybrid: 55% H19-5 + 45% far)</td><td><strong>0.008549 [0.007626, 0.009487]</strong></td><td>0.07411</td><td>0.5979 vs APRONRIDGE / 0.5500 R0</td><td>Higher stored hybrid HOLDOUT-DTI; historical static result, blocked by dense-witness stop</td></tr>
+      <tr><td><strong>APRONRIDGE free1d</strong> (standalone: 0% H19-5)</td><td><strong>0.008354 [0.006823, 0.010135]</strong></td><td>0.08010</td><td><strong>0.6507</strong> vs PIEDFRONT / 0.4605 prior</td><td>Stored standalone HOLDOUT-DTI; historical static result, blocked by dense-witness stop</td></tr>
       <tr><td><strong>APRONRIDGE s60f40</strong></td><td><strong>0.008291 [0.007073, 0.009643]</strong></td><td>0.08135</td><td>0.5916 (prior local)</td><td>Sibling dose; research-only</td></tr>
       <tr><td><strong>APRONRIDGE s50f50</strong></td><td><strong>0.008097 [0.006851, 0.009478]</strong></td><td>0.08149</td><td>0.5188 (prior local)</td><td>Sibling dose; research-only</td></tr>
       <tr><td>PIEDFRONT f35Ptop (<code>GEMSDOE92-PIEDFRONT-f35Ptop-20261024</code>)</td><td>0.006425 [0.005375, 0.007479]</td><td>0.05999</td><td>0.6500 (locally unique)</td><td>Parallel research download; SHA-256 <code>e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8</code></td></tr>

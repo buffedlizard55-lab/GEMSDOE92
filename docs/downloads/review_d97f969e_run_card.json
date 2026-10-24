@@ -1,0 +1,86 @@
+{
+  "schema": "gemsdoe92-review-run-card.v1",
+  "lane": "verification-only; no method paragraph identified in request",
+  "hypothesis": "Active Quaternary range-front splays and synthetic piedmont step-faults concentrate in the thin-cover piedmont accommodation apron (Band 12 det_elev transition x Band 15 depth_to_base_surf ~20-600 m x Band 5 iso_grav_anom_slope), expressing as coherent DEM slope-breaks (Bands 19/12) or shallow-buried Reduced-to-Pole magnetic gradient x inverted tc curvature 1D ridges (Bands 2/6) centered vertically over basement contacts.",
+  "mechanism": "APRONRIDGE free1d: standalone physics-first 1D crest emission allocates all 37654 unit-mass dots via spaced_top_mask(S_raw, min_dist=2.8 px) on 4-axis non-maximum-suppressed APRONRIDGE crests (S_raw = H_apron * max(R_scarp, 0.85 * R_rtp), d_cat > 2.0 px), using ZERO H19-5 skeleton, ZERO R0 parent dots, and ZERO catalogue input in surface or weights.",
+  "named_non_fault_process_that_could_mimic_it": "Intermediate-elevation pluvial shoreline benches (Sehoo/Eetza recessional strandlines) and Gilbert-delta toes on piedmont fans, incised alluvial-fan terrace risers / wash walls, and remanently magnetized Tertiary basaltic-andesite flow margins beneath thin gravel.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.008353557502643275,
+    "ci95": [
+      0.006823024076833538,
+      0.010135013822319561
+    ],
+    "paired_vs_R0": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.004347410327958532,
+      "ci95": [
+        0.00301902930692466,
+        0.005710020785524389
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "paired_vs_RELIEFp10_holdout_best": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.0023084251054703428,
+      "ci95": [
+        0.0011513580540617654,
+        0.003575182459655973
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "paired_vs_STRAINBREAKf60s2i_unique_best": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.00286686646314879,
+      "ci95": [
+        0.001276234914616346,
+        0.004580640359834079
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "status": "historical static evaluation; not rerun or certified fold-rebuilt in this review"
+  },
+  "registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "Single witness: rejection only, no full-registry or pre-placement clearance.",
+    "forward_overlap": 1.0,
+    "spearman": 0.05623747382008243,
+    "stop_required": true,
+    "preplacement": "not rerun; universal witness stop before generation"
+  },
+  "raster_sha256": "1a29a5d81e8561954f04a563b4975cb84d00898b8d7634700a9d409a10e06cbc",
+  "validator_output": {
+    "all_finite": true,
+    "values_in_0_1": true,
+    "zero_outside_footprint": true,
+    "grid_checks_pass": true,
+    "grid": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ]
+    },
+    "nan_inside_footprint": 0
+  },
+  "submission_name": "GEMSDOE92-APRONRIDGE-free1d-20261024",
+  "submission_note": "Research only; existing APRONRIDGE artifact. Dense registry witness fails literal overlap rule. Do not submit.",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "new_raster_generated": false,
+  "experiments_executed": 0,
+  "organizer_confirmed_score": null
+}

@@ -1,4 +1,18 @@
-# GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench (`APRONRIDGE` download primary; `HYDROCONDUIT` highest recorded hybrid holdout)
+# GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench (`APRONRIDGE` research download)
+
+## Latest verified review — 2026-10-24 (`d97f969e`)
+
+**✅ OK TO DOWNLOAD FOR RESEARCH; ⛔ DO NOT SUBMIT.** [Download the existing format-valid APRONRIDGE GeoTIFF](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif). It was not newly generated, copied, promoted, or uploaded in this review; this is not a new submission.
+
+Read [SESSION_PROMPT.md](SESSION_PROMPT.md) and this README at every session start. The durable operating contract preserves the user's goals and protocol; it is not a verbatim transcript of every repeated prompt. **Maximize P(Win)** and **Own the Outcome** require stopping when evidence contradicts readiness, not claiming a guaranteed score.
+
+**This review supersedes conflicting historical “#1” and primary-choice wording below.** Historical **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): APRONRIDGE `0.008354` (95% CI `[0.006823, 0.010135]`); HYDROCONDUIT `0.008549` (95% CI `[0.007626, 0.009487]`). These stored static evaluations were not rerun or certified as leak-free/fold-rebuilt here, do not establish organizer performance or causal geothermal discovery, and are not competition scores. A freshly hash-verified public registry witness is positive across the full footprint, forcing `100%` forward overlap under the literal rule. Stop before generating another raster; no policy exemption was invented.
+
+[Three-pass review](docs/REVIEW_D97F969E.md) · [Fresh witness receipt](evidence/review_d97f969e_witness.json) · [Run card](evidence/review_d97f969e_run_card.json) · [Executive summary](docs/executive-summary.html).
+
+---
+
+## Current research artifact
 
 **Start every session with [SESSION_PROMPT.md](SESSION_PROMPT.md).** This file holds the user's complete working instructions and core values (Maximize P(Win), Own the Outcome). [2026-10-24 preflight evidence](evidence/preplacement_dense_witness.json) proves that the literal public-registry overlap rule makes **every nonempty in-footprint candidate a duplicate**: the SHA-pinned 17GEMSDOE witness is positive on every one of 5,167,373 footprint cells. [Pre-registered four hypotheses](docs/HYPOTHESES_20261024_PREFLIGHT.md) are stopped *before placement*; no new slot-ready TIF was made in this pass. [Negative run card](evidence/preflight_run_card.json). This is an explicit incompatibility between “make a unique TIF” and the literal overlap gate, not a request for manual inspection. Existing research-only downloads below remain available but **DO NOT SUBMIT**.
 
@@ -30,7 +44,7 @@
 
 ---
 
-## Current Site Primary (`APRONRIDGE free1d`): standalone physics-first research GeoTIFF (`HOLDOUT-DTI = 0.008354`); HYDROCONDUIT hybrid is higher (`0.008549`)
+## Current Site Research Download (`APRONRIDGE free1d`): standalone physics-first research GeoTIFF (historical `HOLDOUT-DTI = 0.008354`); HYDROCONDUIT hybrid is higher (`0.008549`)
 
 > Parallel candidate `PIEDFRONT f35Ptop` (`GEMSDOE92-PIEDFRONT-f35Ptop-20261024`, [`h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif`](docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif), SHA-256 `e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8`, `HOLDOUT-DTI = 0.006425`) is also preserved below (`APRONRIDGE free1d` beats `PIEDFRONT f35Ptop` by `+30.0%` on `HOLDOUT-DTI` while keeping `0.6434–0.6507 <= 0.70` forward overlap).
 
