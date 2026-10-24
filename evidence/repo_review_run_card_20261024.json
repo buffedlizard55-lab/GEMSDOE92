@@ -1,0 +1,58 @@
+{
+  "schema": "gemsdoe92.review-run-card.v1",
+  "review_date_utc": "2026-10-24",
+  "status": "aborted-before-placement",
+  "hypothesis": "Paired-profile DEM throw persistence: repeated, polarity-consistent cross-strike elevation steps on Band 12 det_elev, constrained by Band 19 det_elev_slope, could identify subtle unmapped scarps.",
+  "mechanism": "A true fault scarp can produce a signed step between footwall and hanging-wall baselines that persists across neighboring profiles and scales; this differs from an unsigned slope-break coherence score or a local fall-line curvature score.",
+  "named_non_fault_process_that_could_mimic_it": "Lake Lahontan shoreline risers, alluvial-fan margins, channel banks, and lithologic contacts can create persistent non-tectonic elevation steps.",
+  "holdout_dti": {
+    "evidence_class": "NOT_RUN",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": null,
+    "dti": null,
+    "ci95": null,
+    "reason": "No candidate feature surface was constructed or scored. The 19-band feature stack is absent from .cache/gems_inputs/, and the literal registry witness fails the pre-placement gate before any build."
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "policy": "absolute Spearman > 0.90 OR > 70% of candidate dots within 3 px of one registry raster means duplicate; no density exemption applied",
+    "witness": {
+      "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "positive_pixels_in_footprint": 5167373,
+      "footprint_pixels": 5167373,
+      "positive_fraction_of_footprint": 1.0,
+      "source_receipt": "evidence/public_witness_anasig.json"
+    },
+    "preplacement_surface": {
+      "surface_built": false,
+      "measured_candidate_surface_overlap": null,
+      "forward_overlap_for_any_nonempty_in_footprint_surface": 1.0,
+      "basis": "Set-theoretic implication from the witness receipt: every footprint cell is positive in the witness, so any in-footprint positive surface cell is coincident with a witness positive cell. No candidate-specific surface measurement is claimed."
+    },
+    "final_dots": {
+      "new_candidate_dots_placed": false,
+      "measured_new_candidate_overlap": null,
+      "forward_overlap_for_any_nonempty_in_footprint_dot_set": 1.0,
+      "basis": "The same full-support witness makes every in-footprint dot coincide with a positive witness cell. No new candidate dots were emitted."
+    },
+    "spearman_abs": null,
+    "scope_limit": "A prior GitHub-blob-verified single-witness receipt is decisive for rejection but is not a fresh exhaustive registry scan."
+  },
+  "raster_sha256": null,
+  "validator_output": {
+    "new_candidate_built": false,
+    "no_nan_inside_footprint": null,
+    "values_in_0_1": null,
+    "crs_shape_transform_match": null,
+    "reason": "No new raster exists to validate. On the reviewed tree, scripts/check_site.py independently rereads and gates all 15 existing served zeros-outside rasters; that validates those existing research files only."
+  },
+  "submission_name": null,
+  "note": null,
+  "note_characters": 0,
+  "verdict": "negative",
+  "verdict_detail": "No experiment and no TIFF were generated because the literal pre-placement uniqueness gate is unsatisfiable for nonempty predictions under the existing full-footprint witness. Existing downloads are for research only; none is cleared for a weekly slot.",
+  "experiments_used": 0,
+  "submission_slots_used": 0,
+  "organizer_confirmed_score": null
+}

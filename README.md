@@ -4,31 +4,26 @@
 
 ---
 
-## Latest (2026-10-25, SPRINGALIGN): NEW UNIQUE TIF GENERATED
+## Current decision — 2026-10-24 review: no submission cleared
 
-**✅ OK TO DOWNLOAD for research — ⛔ NOT CLEARED FOR A WEEKLY SLOT (verdict negative).**
+**No new TIFF was generated in this review. Existing files are downloadable for research only; none is cleared to submit.** A hash-verified registry witness is positive on every target-footprint cell, so every nonempty in-footprint prediction has 100% forward overlap under the literal rule. This is a decisive single-witness stop, not a fresh exhaustive scan.
 
-| Deliverable | Link |
+| Existing research artifact | Link / metadata |
 |---|---|
-| **GeoTIFF (primary, zeros-outside)** | [docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif](docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif) |
-| ZIP (one TIFF) | [docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.zip](docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.zip) |
-| Submission name | `GEMSDOE92-SPRINGALIGN-f33Ctop-20261025` |
-| Note (≤140) | `h33-h33-2-b2; SPRINGALIGN f33Ctop 12426 far dots on spring-pair alignment lines >3px off H19-5` |
-| SHA-256 (zeros) | `1772ad5c62506b6b380e221d2202b583edf0a5be4f96916af655e0478eba11b1` |
+| **GeoTIFF (zeros-outside)** | [Download SPRINGALIGN research TIFF — DO NOT SUBMIT](docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif) · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.zip) |
+| Internal research identifier (not a verified portal field) | `GEMSDOE92-SPRINGALIGN-f33Ctop-20261025` |
+| Research note (not for current upload) | `h33-h33-2-b2; SPRINGALIGN f33Ctop 12426 far dots on spring-pair alignment lines >3px off H19-5` |
+| SHA-256 | `1772ad5c62506b6b380e221d2202b583edf0a5be4f96916af655e0478eba11b1` |
+| Evidence | [format audit](docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-audit.json) · [run card](evidence/springalign_run_card.json) · [three-pass review](docs/REVIEW_REPO_20261024.md) |
 
-SPRINGALIGN: hot-spring pair strike alignments (GDR INGENIOUS, pinned).
-HOLDOUT-DTI `gems57-pooled-hide-v2` (22,663 withheld) **0.004865
-[0.004025, 0.005785]** — beats R0, below holdout best RELIEF p10, so
-**negative**: downloadable, not slot-cleared. Locally unique (surface
-|ρ|≤0.009; final forward ≤0.670). Dense public witness policy unresolved.
-Full record: [analysis](docs/ANALYSIS_20261025_SPRINGALIGN.md) ·
-[run card](evidence/springalign_run_card.json). The 0.2778 GEMSDOE32
-value remains a CLAIM (no receipt); no local score beats it by assertion.
+**HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): SPRINGALIGN 0.004865, 95% CI [0.004025, 0.005785]. Paired difference versus RELIEF p10 (recorded holdout best) is −0.001180, 95% CI [−0.002065, −0.000337]. These are local holdout values, not leaderboard scores. The public witness independently blocks all nonempty predictions. No weekly slot was selected or used.
 
-**Historical closeout (superseded by SPRINGALIGN above for downloads): OK TO DOWNLOAD for research; NOT OK TO SUBMIT.** BREAKLINE witness: REGISTRY-MEASUREMENT 100% forward overlap with 17GEMSDOE dense raster. [Review](docs/REVIEW_CURRENT.md) · [closeout](docs/REVIEW_CLOSEOUT_20261024.md)
+The filename retains its `20261025` suffix as artifact identity; the base commit timestamp is 2026-10-24. Do not treat the suffix as a timestamp for this review.
+
+See [current review](docs/REVIEW_CURRENT.md), [hypothesis queue](docs/HYPOTHESES.md), [submission guide](docs/SUBMIT.html), and [machine-readable negative run card](evidence/repo_review_run_card_20261024.json).
 
 ---
-## New primary (ANASIG session, 2026-10-24): locally unique, still not cleared
+## Archived ANASIG research artifact (2026-10-24) — local-only uniqueness, do not submit
 
 **✅ FORMAT-VALID — OK TO DOWNLOAD for research. ⛔ DO NOT SUBMIT / NOT CLEARED FOR A WEEKLY SLOT.**
 
@@ -45,9 +40,9 @@ value remains a CLAIM (no receipt); no local score beats it by assertion.
 
 ---
 
-## Parallel candidate — STRAINBREAK f60s2i (2026-10-24 late session, also negative)
+## Archived STRAINBREAK f60s2i research artifact (2026-10-24; negative)
 
-**✅ FORMAT-VALID — OK TO DOWNLOAD. ⛔ NOT CLEARED FOR A WEEKLY SLOT (verdict negative).** Unique new TIF: 22,592 dots (60%) on strained coherent DEM scarp-breaks (`S = BREAKLINE L × pct_rank(Band 4 geod_2ndinv)`), >3 px off the whole H19-5 skeleton **and** >3 px off BREAKLINE f45's far dots; 15,062 coverage-greedy R0 dots kept; 37,654 total. Hypothesis: scarps on currently-loading structures (young step-over strands) are missed by both catalogue and worms. Mimic: Walker Lane strain shadows, subsidence, Lahontan shorelines in strained crust. This session's rank-1 GRAVCrest (signed Band-18 gravity crest) was **falsified by the pre-build SGMC screen and never built** (far-only SGMC 0.005–0.016 vs 0.072).
+**✅ FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH. ⛔ NOT CLEARED FOR A WEEKLY SLOT (verdict negative).** Existing artifact: 22,592 dots (60%) on strained coherent DEM scarp-breaks (`S = BREAKLINE L × pct_rank(Band 4 geod_2ndinv)`), >3 px off the whole H19-5 skeleton **and** >3 px off BREAKLINE f45's far dots; 15,062 coverage-greedy R0 dots kept; 37,654 total. Hypothesis: scarps on currently-loading structures (young step-over strands) are missed by both catalogue and worms. Mimic: Walker Lane strain shadows, subsidence, Lahontan shorelines in strained crust. This session's rank-1 GRAVCrest (signed Band-18 gravity crest) was **falsified by the pre-build SGMC screen and never built** (far-only SGMC 0.005–0.016 vs 0.072).
 
 | Deliverable | Link |
 |---|---|
@@ -59,7 +54,7 @@ value remains a CLAIM (no receipt); no local score beats it by assertion.
 
 **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld px): f60s2i **0.005487 [0.004522, 0.006430]** — the best locally-unique holdout in this repo (R0 0.004006, BREAKLINE f45 0.004861), Δ vs R0 +0.001481 [+0.000582, +0.002296]; dose plateau f45 0.005022 → f60 → f75 0.005486. But it does **not** beat the holdout best (RELIEF p10 0.006045, paired Δ CI includes 0) and SGMC prefers BREAKLINE (0.12611 vs 0.10516) → promotion rule fails, verdict **negative**. Local uniqueness: worst forward overlap 40.0% / |ρ| 0.401 (21 rasters; surface worst 10.0% / sampled ρ 0.103). Expanded public-registry scan (1,309 rasters, complete for declared scope; `evidence/strainbreak_public_registry_uniqueness.json`): **literal duplicate stop triggered** — worst forward overlap 1.0 (17GEMSDOE full-footprint E-proba), 89 rasters >70%, worst |ρ| 0.417; even vs sparse dot-like rasters only (≤150k positives, 1,125 checked; diagnostic, not a gate) worst is 0.7105 with 3 over 70%. The queued BREAKLINE public scan was also run this session: likewise duplicate (134 >70%; `evidence/breakline_public_registry_uniqueness.json`). Leakage canary max 0.6216. Queued item closed: visible-collar SGMC = 0.021192 vs R0 0.09606 (its holdout gain does not transfer off-catalogue).
 
-## Executive Summary — Format-Validated Candidate, One-Click Download
+## Archived visible-collar candidate — format-valid research download, duplicate stop
 
 **✅ FORMAT-VALID — OK TO DOWNLOAD.** The generated submission raster is an all-finite, single-band float32 GeoTIFF, EPSG:32611, shape 3730 × 3292, matching the competition template geotransform. It contains zero NaNs inside the footprint, zeros outside, values strictly in `[0, 1]`, and passes all 10 local MUST gates on independent re-read from disk. This completely prevents the DrivenData portal error: `Predicted values must be in range [0, 1]`.
 
@@ -80,7 +75,7 @@ value remains a CLAIM (no receipt); no local score beats it by assertion.
 
 ---
 
-## Parallel Candidate — BREAKLINE f45Ltop (DEM Scarp-Break Coherence)
+## Archived BREAKLINE f45Ltop research artifact (DEM scarp-break coherence)
 
 A second session built **BREAKLINE f45Ltop**: keeping 20,710 parent R0 dots via exact expected-DTI greedy under an orientation-coherent slope-break field $L = \text{pct\_rank}(\|\nabla \text{det\_elev\_slope}\|) \times \text{coherence}(\text{det\_elev})$ (Bands 19/12), and allocating 16,944 far dots (45%) to the strongest coherent breaks located **>3 px off the entire H19-5 skeleton**.
 
@@ -106,18 +101,11 @@ The prompt's **0.3195 and 0.4413 are conflicting leaderboard snapshots/claims**;
 
 The concepts and previous screens are catalogued in [`docs/HYPOTHESES.html`](docs/HYPOTHESES.html), [`docs/HYPOTHESES.md`](docs/HYPOTHESES.md), and [`docs/REVIEW_CURRENT.md`](docs/REVIEW_CURRENT.md). Their rankings are research priorities, not score forecasts. BREAKLINE, SCARPPOL, ANASIG, and STRAINBREAK are already tested—not new hypotheses. The current full-footprint public-registry witness blocks all nonempty in-footprint predictions under the literal overlap rule; do not emit another submission artifact unless that policy blocker is explicitly resolved.
 
-## Candidate Geological Hypotheses (Ranked)
+## Candidate Geological Hypotheses — unvalidated research queue
 
-| Rank | Hypothesis | Target Signature | Layer(s) Involved | Missing Fault Rationale | Expected DTI Rank / Cost | Data Source & Official Link |
-|---|---|---|---|---|---|---|
-| **1** | **BREAKLINE (Built)** | Structure-tensor coherence on detrended slope breaks | Band 19 (`det_elev_slope`) & Band 12 (`det_elev`) | Quaternary scarps in alluvium lack magnetic/gravity contrast but express as sharp linear breaks on DEMs. | **Top (Rank 1)** / Low (in-stack) | [USGS 3DEP](https://www.usgs.gov/3d-elevation-program) |
-| **2** | **GAMMA-CREST** | Signed gravity horizontal gradient zero-crossing & asymmetric crest | Band 18 (`iso_grav_anom_hg`, signed) & Band 5 (`iso_grav_anom_slope`) | Basinward density edge of listric/dipping normal faults buried under thick hanging-wall alluvium. | **Rank 2** / Low (in-stack) | [USGS GeoDAWN Catalog](https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7) |
-| **3** | **DILATATIONAL-STEPOVER** | Positive dilatational strain rate on structural relay bends | Bands 8, 7, 4 (geodetic strain) & Band 19 (DEM breaks) | Geothermal fluid permeability localizes in extensional stepovers and pull-apart jogs between overlapping fault strands. | **Rank 3** / Medium (in-stack) | [UNR Nevada Geodetic Lab](http://geodesy.unr.edu/) |
-| **4** | **HYDROTHERMAL-ALTERATION** | K/Th radiometric ratio gradients & magnetic destruction | External GeoDAWN Radiometrics (`geodawn_rad_u8.tif`) & Band 14 (TMI) | Hydrothermal alteration halos trace active fluid-transmitting fault corridors lacking surface scarps. | **Rank 4** / Medium (pinned cache) | [USGS GeoDAWN Radiometrics](https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and) |
-| **5** | **SHORELINE-FILTERED SCARP** | Elevation-band contour-parallel suppressed breaklines | Bands 19, 12 + Lake Lahontan highstand masks (~1330 m AMSL) | Removes wave-cut shoreline terraces (the dominant non-tectonic false-positive mimic in the Great Basin). | **Rank 5** / Medium (requires NBMG shoreline grid) | [Nevada Bureau of Mines & Geology](https://data.nbmg.unr.edu/) |
+The current queue contains four untested ideas, each with named layers, physical signature, catalogue-missing rationale, implemented-method distinction, non-fault mimic, qualitative benefit/cost rank, and source-access status. No numeric DTI projection is made. All are blocked today by the full-footprint registry witness and the missing local feature-stack cache.
 
-
-Detailed documentation: [`docs/HYPOTHESES.html`](docs/HYPOTHESES.html) · [`docs/HYPOTHESES.md`](docs/HYPOTHESES.md).
+See [`docs/HYPOTHESES.html`](docs/HYPOTHESES.html) · [`docs/HYPOTHESES.md`](docs/HYPOTHESES.md) · [three-pass repository review](docs/REVIEW_REPO_20261024.md). Previously implemented/tested methods—including BREAKLINE, DILATATION, ANASIG, STRAINBREAK, and SPRINGALIGN—are not presented as new candidates.
 
 ---
 
@@ -133,21 +121,19 @@ We own results end to end &mdash; not just our individual slice of the work. Whe
 
 ## Reproducible Validation & Verification Pipeline
 
+There is no new candidate from this review. The 19-band feature cache is absent; `scripts/restore_inputs.py` restores pinned owner-mirror bytes, which does not authenticate official competition provenance or establish redistribution permission. Do not launch an experiment until those issues and the registry stop are resolved.
+
 ```bash
-# 1. Restore all SHA-256 pinned inputs into .cache/gems_inputs/
-python3 scripts/restore_inputs.py
+# Run repository tests, manifest/parent checks, and ledger audit
+make test
+make manifest verify ledger
 
-# 2. Run the automated test suite in the pinned environment
-.venv/bin/python -m pytest -q
+# Re-read and gate every zeros-outside GeoTIFF linked from the public site
+make site
 
-# 3. Verify pinned data manifests and hashes
-.venv/bin/python scripts/verify_manifest.py
-
-# 4. Run automated gate inspection on all served downloads
-.venv/bin/python scripts/check_site.py
-
-# 5. Format validation on a candidate (format pass is not submission clearance)
-.venv/bin/python scripts/validate_submission.py --candidate docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif
+# Optional format-only check on an already-existing research raster.
+# A format pass does not clear it for a competition slot.
+make validate FILE=docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif
 ```
 
 ---
@@ -167,7 +153,9 @@ python3 scripts/restore_inputs.py
 
 ---
 
-## Original Session Prompt
+## Original Session Prompt (archival)
+
+The original request is retained verbatim for continuity. The current decision above supersedes its requested build where the literal registry gate makes a compliant nonempty candidate impossible.
 
 ```markdown
 Review the repo. 

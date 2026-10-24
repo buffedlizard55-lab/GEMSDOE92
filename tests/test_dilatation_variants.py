@@ -149,8 +149,8 @@ def test_dilatation_proxy_audit_labels_and_canary() -> None:
     assert "training_band_8_geod_dilaterate" in canaries["results"]
 
 
-def test_current_primary_download_is_tracked_and_gate_passed() -> None:
-    """The current homepage artifact exists and matches its audit receipt."""
+def test_archived_visible_collar_download_is_tracked_and_gate_passed() -> None:
+    """The historical visible-collar research raster exists and matches its audit receipt."""
     primary = ROOT / "docs" / "downloads" / "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif"
     assert primary.is_file(), "primary download missing from docs/downloads"
     audit_path = primary.with_name("GEMSDOE92-visible-collar-r0-excluded-20261024-audit.json")
@@ -164,7 +164,7 @@ def test_current_primary_download_is_tracked_and_gate_passed() -> None:
     assert "!docs/downloads/*.zip" in ignore
 
 
-def test_site_offers_primary_download_and_exact_submission_fields() -> None:
+def test_site_archives_visible_collar_download_and_research_metadata() -> None:
     html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
     assert "OK TO DOWNLOAD" in html
     assert "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif" in html
@@ -172,8 +172,10 @@ def test_site_offers_primary_download_and_exact_submission_fields() -> None:
     note = "Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots"
     assert note in html and len(note) <= 140
     assert "visible_collar_run_card.json" in html
+    assert "Archived visible-collar" in html
     submit = (ROOT / "docs" / "SUBMIT.html").read_text(encoding="utf-8")
     assert "DrivenData" in submit and "OK TO DOWNLOAD" in submit
+    assert "No current file is cleared to submit" in submit
 
 
 def test_site_discloses_literal_duplicate_stop_and_evidence_boundary() -> None:
@@ -184,7 +186,7 @@ def test_site_discloses_literal_duplicate_stop_and_evidence_boundary() -> None:
     assert "not a fresh full-registry scan" in html
     assert "downloads/public_witness_anasig.json" in html
     assert "HOLDOUT-DTI" in html and "not a competition score" in html
-    assert "No live submission slot has been used" in html
+    assert "No weekly slot was used" in html
     card = json.loads((ROOT / "evidence" / "visible_collar_run_card.json").read_text(encoding="utf-8"))
     assert card["verdict"] == "negative"
     assert card["holdout_dti"]["paired_delta_vs_R0"]["ci95"][0] > 0

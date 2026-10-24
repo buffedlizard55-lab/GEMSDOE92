@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-"""Fail closed if the GitHub Pages download is missing, out of range, or mislabeled.
+"""Fail closed if a served research download is missing, out of range, or mislabeled.
 
-Rewritten 2026-10-25 when the DILATATION lane merged with the TIPGAP lane. The
-previous version hard-coded one lane's filename, sha256 and form note, so it
-broke the moment the primary changed -- and it only ever checked that one file
-even when several were being served. This version derives the primary from the
-page itself and gates **every** served zeros-outside raster, so an orphaned or
-out-of-range download cannot ship unnoticed.
+Derives the primary from its explicit ``data-primary`` section and gates every
+served zeros-outside raster. It also requires the homepage to distinguish
+format-valid research downloads from submission eligibility. Format validity
+never overrides a negative scientific or registry verdict.
 """
 from __future__ import annotations
 
@@ -41,16 +39,27 @@ def main() -> int:
         return 2
     html = INDEX.read_text(encoding="utf-8")
 
-    # ---- the page contract, written against properties not one lane's wording --
-    for needle in ("OK TO DOWNLOAD", "Predicted values must be in range [0, 1]",
-                   "HOLDOUT-DTI", "NOT CLEARED FOR A WEEKLY SLOT",
+    # ---- page contract: download status, no-submit status, and explicit primary --
+    for needle in ("OK TO DOWNLOAD", "FOR RESEARCH ONLY", "DO NOT SUBMIT",
+                   "Predicted values must be in range [0, 1]", "HOLDOUT-DTI",
+                   "NOT CLEARED FOR A WEEKLY SLOT",
                    "DUPLICATE UNDER THE LITERAL REGISTRY RULE"):
         if needle not in html:
             problems.append(f"index.html missing {needle!r}")
+    hero = html.split("</header>", 1)[0]
+    if "No GeoTIFF is cleared for competition submission" not in hero:
+        problems.append("homepage hero must state that no file is cleared to submit")
+    if "SUBMISSION STATUS: NO" not in hero:
+        problems.append("homepage hero must distinguish research download from submission status")
     if not re.search(r"(weekly slot|3/week|weekly competition slot|human step)", html, re.I):
         problems.append("index.html carries no weekly-slot caution")
     if re.search(r'href="downloads/[^"]+-zeros\.tif"', html) is None:
         problems.append("index.html offers no zeros-outside download")
+    primary_sections = re.findall(
+        r'<section\b(?=[^>]*\bdata-primary="true")[^>]*>(.*?)</section>',
+        html, flags=re.S)
+    if len(primary_sections) != 1:
+        problems.append(f"index.html must declare exactly one data-primary section; found {len(primary_sections)}")
     # a HOLDOUT number must never be dressed as an organizer receipt
     if re.search(r"ORGANIZER-CONFIRMED[^<]{0,40}0\.00\d{4}", html):
         problems.append("holdout number labeled ORGANIZER-CONFIRMED")
@@ -108,44 +117,77 @@ def main() -> int:
         else:
             print(f"  PASS {tag}  sha256 {sha256_file(path)[:16]}…")
 
-    # ---- the primary named on the page must match its audit receipt ----------
-    m = re.search(r'href="(downloads/[^"]+-zeros\.tif)"', html)
-    if m:
-        primary = DOCS / m.group(1)
-        if not primary.is_file():
-            problems.append(f"index.html points at {m.group(1)}, which does not exist")
+    # ---- the explicitly declared primary must match its audit and run card ---
+    primary = None
+    if len(primary_sections) == 1:
+        links = re.findall(r'href="(downloads/[^"]+-zeros\.tif)"', primary_sections[0])
+        if len(links) != 1:
+            problems.append(f"data-primary section must contain exactly one zeros-outside TIFF link; found {len(links)}")
         else:
-            variant = primary.stem.removesuffix("-zeros")
-            audit_path = primary.with_name(variant + "-audit.json")
-            if not audit_path.is_file():
-                problems.append(f"no audit receipt beside the primary: {audit_path.name}")
+            primary = DOCS / links[0]
+            if not primary.is_file():
+                problems.append(f"index.html points at {links[0]}, which does not exist")
+                primary = None
+
+    if primary is not None:
+        variant = primary.stem.removesuffix("-zeros")
+        audit_path = primary.with_name(variant + "-audit.json")
+        audit_doc = None
+        if not audit_path.is_file():
+            problems.append(f"no audit receipt beside the primary: {audit_path.name}")
+        else:
+            try:
+                parsed = json.loads(audit_path.read_text(encoding="utf-8"))
+                if not isinstance(parsed, dict):
+                    raise ValueError("audit root must be a JSON object")
+                audit_doc = parsed
+            except (OSError, ValueError, json.JSONDecodeError) as exc:
+                problems.append(f"invalid primary audit receipt {audit_path.name}: {exc}")
+
+        if audit_doc is not None:
+            if audit_doc.get("overall_pass") is not True:
+                problems.append("audit receipt does not record format validation pass")
+            if audit_doc.get("sha256_zeros") != sha256_file(primary):
+                problems.append("audit receipt sha256 != primary bytes on disk")
+            gates = audit_doc.get("gates_zeros", [])
+            if not isinstance(gates, list):
+                problems.append("audit receipt gates_zeros must be a list")
             else:
-                doc = json.loads(audit_path.read_text())
-                if doc.get("overall_pass") is not True:
-                    problems.append("audit receipt does not record format_pass == true")
-                if doc.get("sha256_zeros") != sha256_file(primary):
-                    problems.append("audit receipt sha256 != primary bytes on disk")
-                bad = [g["name"] for g in doc.get("gates_zeros", []) if not g["ok"]]
+                bad = []
+                for gate in gates:
+                    if not isinstance(gate, dict):
+                        bad.append("<invalid gate record>")
+                    elif gate.get("ok") is not True:
+                        bad.append(gate.get("name", "<unnamed>"))
                 if bad:
                     problems.append(f"audit receipt records failing format gate(s): {bad}")
-                if doc.get("submission_eligible") is not False:
-                    problems.append("audit must say submission_eligible=false when the binding uniqueness gate fails")
-                public = doc.get("public_registry_uniqueness", {})
-                if public.get("candidate_hash_matches_scan") is not True:
-                    problems.append("public registry audit is absent or not for these exact candidate bytes")
-                if public.get("unique_under_literal_rule") is not False or public.get("stop_required") is not True:
-                    problems.append("site audit must preserve the literal duplicate stop verdict (binding public witness or full-scan duplicate)")
-            card_rel = doc.get("run_card")
-            card_path = (ROOT / card_rel) if card_rel else (ROOT / "evidence" / "visible_collar_run_card.json")
+            if audit_doc.get("submission_eligible") is not False:
+                problems.append("audit must say submission_eligible=false when the binding uniqueness gate fails")
+            public = audit_doc.get("public_registry_uniqueness", {})
+            if not isinstance(public, dict):
+                problems.append("public registry uniqueness audit must be an object")
+                public = {}
+            if public.get("candidate_hash_matches_scan") is not True:
+                problems.append("public registry audit is absent or not for these exact candidate bytes")
+            if public.get("unique_under_literal_rule") is not False or public.get("stop_required") is not True:
+                problems.append("site audit must preserve the literal duplicate stop verdict (binding public witness or full-scan duplicate)")
+
+            card_rel = audit_doc.get("run_card")
+            card_path = ROOT / card_rel if isinstance(card_rel, str) else ROOT / "evidence" / "visible_collar_run_card.json"
             if not card_path.is_file():
                 problems.append(f"primary run card missing: {card_path}")
             else:
-                card = json.loads(card_path.read_text())
-                if card.get("raster_sha256") != sha256_file(primary):
-                    problems.append("run card SHA256 != primary bytes")
-                if card.get("verdict") != "negative":
-                    problems.append("run card must record negative verdict after registry duplicate stop")
-            print(f"  PRIMARY {primary.name}")
+                try:
+                    card = json.loads(card_path.read_text(encoding="utf-8"))
+                    if not isinstance(card, dict):
+                        raise ValueError("run card root must be a JSON object")
+                    if card.get("raster_sha256") != sha256_file(primary):
+                        problems.append("run card SHA256 != primary bytes")
+                    if card.get("verdict") != "negative":
+                        problems.append("run card must record negative verdict after registry duplicate stop")
+                except (OSError, ValueError, json.JSONDecodeError) as exc:
+                    problems.append(f"invalid primary run card {card_path}: {exc}")
+        print(f"  PRIMARY {primary.name}")
 
     if problems:
         print("SITE CHECK FAIL")

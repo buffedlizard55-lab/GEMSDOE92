@@ -1,6 +1,8 @@
 .PHONY: test verify manifest ledger validate clean site
 
-PYTHON ?= python3
+# Prefer the project's ignored virtual environment when it exists, but honor
+# an explicit `PYTHON=...` override and retain system Python as the fallback.
+PYTHON ?= $(if $(wildcard .venv/bin/python),.venv/bin/python,python3)
 
 test:
 	$(PYTHON) -m pytest tests -q
