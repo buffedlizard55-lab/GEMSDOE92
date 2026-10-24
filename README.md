@@ -25,6 +25,30 @@ The TIF-generation requirement is therefore **explicitly unfulfilled** until the
 
 ---
 
+## PIEDFRONT parallel candidate (2026-10-24): new unique-vs-dot-registry TIFF — HIGHEST NON-COLLAR HOLDOUT-DTI (`0.006425`) — DO NOT SUBMIT
+
+**✅ FORMAT-VALID + LITERAL-UNIQUE (local dot registry) — OK TO DOWNLOAD for research.**
+**⛔ DO NOT SUBMIT / NOT CLEARED FOR A WEEKLY SLOT — automated gates return `submission_eligible: false` (paired CI vs RELIEF p10 includes 0, SGMC bedrock proxy below R0, and dense public witness `17GEMSDOE E-proba` triggers the literal >70% overlap rule). No human inspection involved; no slot used.**
+
+| Deliverable | Link |
+|---|---|
+| **GeoTIFF (primary, zeros-outside)** | [Download PIEDFRONT f35Ptop zeros-outside GeoTIFF](docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif) |
+| ZIP (one TIFF) | [Download ZIP](docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.zip) |
+| Submission name | `GEMSDOE92-PIEDFRONT-f35Ptop-20261024` |
+| Note (111 chars ≤140) | `h33-h33-2-b2; PIEDFRONT f35Ptop 13179 far piedmont scarp-gravity dots >3px off H19-5 + 4000 H19-5 hole refill` |
+| SHA-256 (zeros) | `e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8` |
+| Audit / Run Card / Analysis | [Gate receipt](docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-audit.json) · [run card](evidence/piedfront_run_card.json) · [analysis](docs/ANALYSIS_20261024_PIEDFRONT.md) · [hypotheses](docs/HYPOTHESES_20261024_PIEDFRONT.md) · [17GEMSDOE witness](evidence/piedfront_public_registry_witness17.json) · [executive summary + how-to-submit](docs/executive-summary.html) |
+
+**What `PIEDFRONT` is and why it broke the off-skeleton `HOLDOUT-DTI` ceiling:**
+- Prior off-skeleton lanes (`BREAKLINE f45` `0.004861`, `SCARPPOL f45` `0.005315`, `STRAINBREAK f60` `0.005487`, `ANASIG f45` `0.004967`, `SPRINGALIGN f33` `0.004865`, `STEPEDGE f60` `0.003980`) trailed `RELIEF p10` (`0.006045`) because unnormalized DEM slope-break magnitude $\|\nabla\,\text{det\_elev\_slope}\|$ placed **74.8%** of far dots in steep mountain range interiors (`det_elev >= 38.76 m`), whereas active Basin-and-Range normal faults and blind geothermal step-overs sit at the piedmont range-front transition. Simultaneously, `R0` (`h33-h33-2-b2`) had **794 spacing-legal holes** on `H19-5` ($d_{\text{R0}} > 2.8\text{ px}, d_{\text{cat}} > 2.0\text{ px}$) left behind when `b2` pruned $d_{\text{cat}} \le 2\text{ px}$ dots without re-thinning.
+- `PIEDFRONT` normalizes the DEM scarp-break by local background slope ($\|\nabla\,\text{det\_elev\_slope}\| / (\text{det\_elev\_slope} + 2^\circ)$, Band 19 × Band 12 coherence), gates by the piedmont elevation + basement-depth + isostatic-gravity-slope envelope $W_{\text{pied}}$ (Bands 12, 15, 5), refills **4,000 piedmont `H19-5` holes** via exact marginal expected-DTI greedy (`select_exact_marginal_dti_add`), and places **13,179 (35%) / 15,062 (40%) / 16,944 (45%) far dots** (`78.7%` in the piedmont) strictly $>3.0\text{ px}$ off `H19-5` and $>3.0\text{ px}$ off all 5 prior off-skeleton lanes' far sets.
+- **Pooled `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, 22,663 withheld positives, 8 folds, 1,000 paired 20 km cluster draws):**
+  - **`PIEDFRONT f35Ptop`: `0.006425 [0.005375, 0.007479]`** — **all-time highest non-collar `HOLDOUT-DTI` in the repository**, beating `R0` (`0.004006`) by **`+0.002418 [+0.001538, +0.003255]` (`+60.4%`)**, beating `BREAKLINE f45` (`0.004861`) by **`+0.001564 [+0.000471, +0.002607]` (`+32.2%`)**, beating `STRAINBREAK f60` (`0.005487`) by `+0.000938 [-0.000322, +0.002239]`, and exceeding `RELIEF p10` (`0.006045`) in point estimate across all three doses (`f35Ptop` `0.006425`, `f40Ptop` `0.006402`, `f45Ptop` `0.006137`).
+  - **Leakage canaries:** max symmetric AUC = `0.639112` ($\le 0.90$ PASS).
+  - **Local registry uniqueness (`REGISTRY-MEASUREMENT`, 29 local rasters + `STEPEDGE`):** pre-placement surface worst `|ρ| = 0.127084`, top-37,654 3-px overlap `0.434907`; final dots `f35Ptop` worst 3-px forward overlap **`0.649997` (`h19_5.tif`, $\le 0.70$ PASS; vs `STEPEDGE f60Sraw` `0.408881`)**, worst `|φ| = 0.585871` ($\le 0.90$ PASS).
+
+---
+
 ## STEPEDGE parallel candidate (2026-10-24): new unique-vs-dot-registry TIFF — DO NOT SUBMIT
 
 > Site primary per the newer automated review is SPRINGALIGN (blocked under the literal public rule); the STEPEDGE candidate below was built by a parallel session under a pre-registered, openly disclosed dot-like scope for the overlap arm (dense-witness overlap still printed as 1.000) and is likewise **not cleared**. Both sessions' verdicts: do not submit.
@@ -242,7 +266,7 @@ python3 scripts/restore_inputs.py
 
 ## Durable prompt and session-start references
 
-The actionable user request is captured in the Standing Session Prompt above and expanded in [`SESSION_PROMPT.md`](SESSION_PROMPT.md). Read both at the start of every project session, then read [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md) and [`docs/REVIEW_CURRENT.md`](docs/REVIEW_CURRENT.md) before proposing work. The long request's non-negotiables are: understand the user-supplied GEMSDOE result history without treating it as receipts; ground fault-mapping hypotheses in official, free data; rank 3–5 untested candidates before implementation; use the shared segment-buffered holdout and feature-alone leakage canaries; run automatic uniqueness and file-format gates; expose download/submit status and an executive submission guide; preserve provenance and irregularities; perform three review passes; stay within the experiment/time budget; and never use a weekly slot without separate selector authorization.
+The actionable operating prompt is captured in the Standing Session Prompt above and expanded in [`SESSION_PROMPT.md`](SESSION_PROMPT.md). Read both at the start of every project session, then read [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md) and [`docs/REVIEW_CURRENT.md`](docs/REVIEW_CURRENT.md) before proposing work. The non-negotiables are: treat user-supplied GEMSDOE values as claims until receipted; ground hypotheses in official, free data; rank 3–5 untried candidates before implementation; use the shared buffered whole-segment holdout and feature-alone leakage canaries; run registry uniqueness before placement and on final dots; expose automated download/submission status and an executive guide; preserve provenance and flag irregularities; complete three review passes; stay within experiment/time limits; and never use a weekly slot without separate selector authorization.
 
 The score `0.2778` and competing leaderboard values `0.3195` / `0.4413` are **CLAIMs or historical snapshots**, not evidence of causal method or a receipt for this repository. See [`docs/ANALYSIS_20261024_STEPEDGE.md`](docs/ANALYSIS_20261024_STEPEDGE.md) for the measured R0 lineage and mechanism limits, and [`docs/REVIEW_AUTOMATED_20261024.md`](docs/REVIEW_AUTOMATED_20261024.md) for the ranked conditional hypotheses, source audit, and restrictions. Only organizer receipts belong in `ledger/submissions.csv` as ORGANIZER-CONFIRMED.
 

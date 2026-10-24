@@ -1,7 +1,7 @@
 {
   "schema": "gemsdoe92-repository-review-run-card.v1",
   "record_type": "no_new_experiment_tooling_review",
-  "reviewed_utc": "2026-10-24T19:32:27Z",
+  "reviewed_utc": "2026-10-24T19:39:49Z",
   "hypothesis": "No new geological candidate is tested. Under the literal registry rule, any nonempty final prediction on the valid footprint is a duplicate against the cited full-footprint-positive witness.",
   "mechanism": "The witness has positive support on every valid footprint cell, so every in-footprint predicted dot is within the witness support. This blocks final-dot uniqueness; it does not establish geological equivalence and is not a pre-placement surface test.",
   "named_non_fault_process_that_could_mimic_it": "A diffuse multi-scale prospectivity prior or interpolation background can be positive across the study footprint without representing discrete fault traces.",
@@ -13,7 +13,10 @@
       "withheld_positive_pixels": 22663,
       "candidate": "SPRINGALIGN f33Ctop (existing artifact; historical value, not rerun)",
       "value": 0.004865069033082899,
-      "ci95": [0.004025448154051826, 0.005785015879540241],
+      "ci95": [
+        0.004025448154051826,
+        0.005785015879540241
+      ],
       "status": "HISTORICAL HOLDOUT-DTI; not a competition score or evidence that this review's candidate improved."
     }
   },
@@ -37,14 +40,20 @@
     "single_band_float32": true,
     "no_nan_inside_footprint": true,
     "all_finite": true,
-    "values_range": [0.0, 1.0],
+    "values_range": [
+      0.0,
+      1.0
+    ],
     "crs": "EPSG:32611",
-    "shape": [3730, 3292],
+    "shape": [
+      3730,
+      3292
+    ],
     "transform_matches_template": true,
     "zero_outside_footprint": true,
     "submission_eligible": false,
     "shared_cli_strict_encoding_gate_added": true,
-    "tests_and_site_checks": "182 tests passed; 103 nonfatal Rasterio/Affine pending-deprecation warnings; scripts/check_site.py passed all 16 served zeros-outside TIFFs; all 8 manifest hashes and R0 parent proof passed; strict CLI passed 11 local gates on the associated existing TIFF; compileall, Makefile dry-run, 124 local HTML links with no missing targets, mirrored-card equality, and git diff --check passed. These are not competition scores or uniqueness clearance."
+    "tests_and_site_checks": "186 tests passed; 103 nonfatal Rasterio/Affine pending-deprecation warnings; scripts/check_site.py passed all 19 served zeros-outside TIFFs; all 8 manifest hashes and the pinned R0 parent proof passed; strict CLI passed 9 format gates on the existing SPRINGALIGN primary; compileall, make validate dry-run, 156 local HTML links across 4 pages with no missing targets, run-card mirror equality/JSON validation, and the PR-diff git diff --check passed. These are software/data-integrity checks, not competition scores or uniqueness clearance."
   },
   "submission_name": "GEMSDOE92-SPRINGALIGN-f33Ctop-20261025",
   "submission_note": "Existing research artifact only; registry stop; no new TIFF or weekly slot.",
