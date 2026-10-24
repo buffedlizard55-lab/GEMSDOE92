@@ -115,7 +115,7 @@ def summarize(rows: list[dict], threshold: float = 0.70) -> dict:
                         key=lambda r: r["my_dots_within_3px_of_theirs"], reverse=True)
     return {
         "registries_checked": len(valid),
-        "unique_under_literal_rule": not bool(duplicates or any(r.get("duplicate_by_rho") for r in valid)),
+        "unique_under_literal_rule": bool(valid) and len(valid) == len(rows) and not bool(duplicates or any(r.get("duplicate_by_rho") for r in valid)),
         "stop_required": bool(duplicates or any(r.get("duplicate_by_rho") for r in valid)),
         "worst_abs_spearman": abs(max_rho["spearman_full_footprint"]) if max_rho else None,
         "worst_rho": max_rho["spearman_full_footprint"] if max_rho else None,
@@ -137,6 +137,9 @@ def main() -> int:
     ap.add_argument("--workers", type=int, default=12)
     ap.add_argument("--cache-only", action="store_true",
                     help="reuse a previously verified .cache/gemsdoe_public_registry/repo_inventory.json and blob cache; makes no GitHub API requests")
+    ap.add_argument("--surface", type=Path, help="Actual lane pre-placement GeoTIFF; never substitute another lane")
+    ap.add_argument("--witness-repo", help="Check one public owner repo for a binding duplicate; cannot clear uniqueness")
+    ap.add_argument("--output", type=Path, default=ROOT / "evidence/public_registry_uniqueness.json")
     args = ap.parse_args()
     candidate_path = (ROOT / args.candidate).resolve()
     if not candidate_path.is_file():
@@ -151,11 +154,16 @@ def main() -> int:
     else:
         try:
             repos = get_repositories()
+            if args.witness_repo:
+                repos = [r for r in repos if r["name"] == args.witness_repo]
+                if not repos:
+                    raise ValueError("witness repository not found")
             with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as pool:
                 tree_results = list(pool.map(tree_for, repos))
             if any(t.get("error") or t.get("truncated") for t in tree_results):
                 raise RuntimeError("one or more public repository trees failed or were truncated")
-            cached_trees.write_text(json.dumps([
+            inventory_target = CACHE / "witness_inventory.json" if args.witness_repo else cached_trees
+            inventory_target.write_text(json.dumps([
                 {"repo": t["repo"], "branch": t.get("branch"), "truncated": t.get("truncated", False),
                  "error": t.get("error"),
                  "tifs": [{"path": f["path"], "sha": f["git_sha"], "size": f["bytes"]}
@@ -166,6 +174,9 @@ def main() -> int:
             print(f"WARNING: live GitHub inventory refresh failed ({exc}); using cached inventory, not claiming it is current.", file=sys.stderr)
             tree_results, repos = read_cached_trees(cached_trees)
             scan_source = "cached GitHub API inventory (live refresh failed)"
+    if args.witness_repo:
+        tree_results = [t for t in tree_results if t["repo"] == args.witness_repo]
+        repos = [r for r in repos if r["name"] == args.witness_repo]
     paths = [f for result in tree_results for f in result["files"]]
     unique_by_blob = {}
     for item in paths:
@@ -203,22 +214,31 @@ def main() -> int:
              "errors": [*fetch_errors, *tree_errors,
                         *[{"repo": t["repo"], "error": "tree truncated"}
                           for t in tree_results if t["truncated"]]]}
-    index_path = CACHE / "registry_index.json"
+    index_path = CACHE / ("witness_registry_index.json" if args.witness_repo else "registry_index.json")
     index_path.write_text(json.dumps(index), encoding="utf-8")
 
     with rasterio.open(candidate_path) as ds:
+        if ds.count != 1 or (ds.shape, ds.crs, ds.transform) != expected_grid:
+            raise ValueError("candidate grid mismatch")
         candidate = ds.read(1)
-    pre_path = ROOT / "data" / "parent_R0_zeros.tif"
-    with rasterio.open(pre_path) as ds:
-        parent = (ds.read(1) > 0) & grid.footprint
-    full_distance = distance_transform_edt(~grid.catalogue)
-    surface_mask = grid.footprint & (full_distance > 2.0) & (full_distance <= 3.0) & ~_near(parent, 3.0)
-    surface = np.zeros(grid.footprint.shape, dtype=np.float32)
-    surface[surface_mask] = (1.0 / full_distance[surface_mask]).astype(np.float32)
-    pre_compare = compare_array_to_registry(surface, index, grid.footprint)
+    surface = None
+    if args.surface:
+        with rasterio.open(args.surface) as ds:
+            if ds.count != 1 or (ds.shape, ds.crs, ds.transform) != expected_grid:
+                raise ValueError("pre-placement surface grid mismatch")
+            surface = ds.read(1)
+    elif candidate_path.name == "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif":
+        with rasterio.open(ROOT / "data/parent_R0_zeros.tif") as ds:
+            parent = (ds.read(1) > 0) & grid.footprint
+        full_distance = distance_transform_edt(~grid.catalogue)
+        surface_mask = grid.footprint & (full_distance > 2.0) & (full_distance <= 3.0) & ~_near(parent, 3.0)
+        surface = np.zeros(grid.footprint.shape, dtype=np.float32)
+        surface[surface_mask] = (1.0 / full_distance[surface_mask]).astype(np.float32)
+    pre_compare = compare_array_to_registry(surface, index, grid.footprint) if surface is not None else None
     final_compare = compare_array_to_registry(candidate, index, grid.footprint,
                                               file_sha256=hashlib.sha256(candidate_path.read_bytes()).hexdigest())
-    pre_summary, final_summary = summarize(pre_compare["rows"]), summarize(final_compare["rows"])
+    pre_summary = summarize(pre_compare["rows"]) if pre_compare else {"status": "NOT_CHECKED: actual lane surface not supplied", "unique_under_literal_rule": False}
+    final_summary = summarize(final_compare["rows"])
     witness_name = final_summary["worst_overlap_raster"]
     witness_item = next((f for f in compatible if f["repo"] + "/" + f["path"] == witness_name), None)
     witness = None
@@ -259,19 +279,21 @@ def main() -> int:
         "final_dots": final_summary,
         "binding_witness": {"worst_forward_overlap": witness,
                             "full_footprint_surface": full_surface_witness},
-        "verdict": "negative — duplicate under literal registry rule; stop and do not spend a weekly slot" if final_summary["stop_required"] else ("promote" if complete else "negative — scan incomplete; fail closed"),
-        "scan_complete_for_declared_scope": bool(complete and not pre_compare["missing_or_invalid"] and not final_compare["missing_or_invalid"]),
+        "verdict": "negative — duplicate under literal registry rule; stop and do not spend a weekly slot" if (final_summary["stop_required"] or pre_summary.get("stop_required")) else "negative — uniqueness audit alone cannot promote; selector required",
+        "witness_only": bool(args.witness_repo),
+        "scan_complete_for_declared_scope": bool(complete and not args.witness_repo and pre_compare is not None and not pre_compare["missing_or_invalid"] and not final_compare["missing_or_invalid"]),
         "candidate_file_sha256": hashlib.sha256(candidate_path.read_bytes()).hexdigest(),
         "cache_index": str(index_path.relative_to(ROOT)),
     }
-    out = ROOT / "evidence" / "public_registry_uniqueness.json"
+    out = ROOT / args.output
+    out.parent.mkdir(parents=True, exist_ok=True)
     serialized = json.dumps(result, indent=2) + "\n"
     out.write_text(serialized, encoding="utf-8")
-    (ROOT / "docs" / "downloads" / "public_registry_uniqueness.json").write_text(
-        serialized, encoding="utf-8")
+    if out.resolve() == (ROOT / "evidence/public_registry_uniqueness.json").resolve():
+        (ROOT / "docs/downloads/public_registry_uniqueness.json").write_text(serialized, encoding="utf-8")
     print(json.dumps({"output": str(out), "preplacement": pre_summary,
                       "final": final_summary, "verdict": result["verdict"]}, indent=2))
-    return 0 if result["scan_complete_for_declared_scope"] else 2
+    return 0 if result["scan_complete_for_declared_scope"] or final_summary["stop_required"] or pre_summary.get("stop_required") else 2
 
 
 if __name__ == "__main__":

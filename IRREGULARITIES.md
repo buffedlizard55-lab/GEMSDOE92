@@ -619,6 +619,10 @@ predicted the screened design at ratio 1.146 vs R0 and the (different) greedy bu
 measured 0.964 — the instrument prices near-catalogue collar mass and **must never be
 labelled a holdout or a score**.
 
+## 2026-10-24 — BREAKLINE registry stop / audit mislabel / Pages root
+
+Follow-up verified a binding public duplicate: all BREAKLINE f45Ltop dots lie within 3 px of 17GEMSDOE E-proba positive support. Do not submit. Prior 18-raster local uniqueness is insufficient. Shared repo auditor used the collar surface for arbitrary `--candidate` inputs; fixed with explicit actual-surface input and a NOT_CHECKED state when unavailable. Historical BREAKLINE pre-placement public gate remains missing; no reconstructed result is invented. Pages source is main:/, not /docs; changing settings was denied by integration permissions (403), so a root redirect was added. Full review: `docs/REVIEW_REGISTRY_STOP_20261024.md`. No candidate experiment or slot in this follow-up.
+
 ## 2026-10-24 review — download wording could be mistaken for permission to submit
 
 **Observation.** The landing page correctly said the primary artifact was a literal-registry duplicate and “do not submit,” but the adjacent card was titled “Download the submission” and the guide immediately offered “Three steps.” A user scanning action labels could reasonably mistake format validity for slot eligibility.
