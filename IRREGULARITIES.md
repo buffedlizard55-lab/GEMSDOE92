@@ -732,3 +732,11 @@ Catalogue hide-and-recover and SGMC price different truths; neither is the
 private expert-mapped label set. Treating either as decisive alone would be
 an irregularity. The only resolver is an organizer receipt, which remains
 Blocker 0 (ledger: BUILT rows grew by 3 this session, RECEIPT rows still 0).
+
+## 2026-10-25 — SPRINGALIGN dose amended pre-results
+- **Observation**: 1-px spring-pair alignment lines yield 30,547 eligible far pixels but only 4,058 dots under the 2.8 px spacing floor; the pre-registered 16,944 far dots cannot be placed without zero-vote filler.
+- **Decision**: Single dose amended to 4,000 far dots (10.6%) before any holdout result was seen. No zero-vote filling.
+
+## 2026-10-25 — SPRINGALIGN corridor dose amended pre-results
+- **Observation**: sigma=2px corridor supports 12,743 spaced far dots < 16,944 (f45).
+- **Decision**: Experiment 2 set to sigma=3px, f33 (12,426 far; 67.0% keep, the BREAKLINE f33 uniqueness geometry) before any holdout result for this variant.

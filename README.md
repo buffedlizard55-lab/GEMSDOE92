@@ -4,12 +4,28 @@
 
 ---
 
-## Latest Review: Literal Uniqueness is Blocked Across the Footprint
+## Latest (2026-10-25, SPRINGALIGN): NEW UNIQUE TIF GENERATED
 
-**OK TO DOWNLOAD for research; NOT OK TO SUBMIT.** The queued BREAKLINE public witness audit finds **REGISTRY-MEASUREMENT 100% forward overlap** with the hash-verified 17GEMSDOE dense raster. Its 3-pixel halo covers the whole footprint, so every nonempty in-footprint candidate fails the current literal rule. No new unique submission was generated, no score improvement is claimed, and no slot was used. [Review and limitations](docs/REVIEW_CURRENT.md) · [witness receipt](docs/downloads/breakline_public_witness.json) · [session JSON card](docs/downloads/session_review_run_card.json).
+**✅ OK TO DOWNLOAD for research — ⛔ NOT CLEARED FOR A WEEKLY SLOT (verdict negative).**
+
+| Deliverable | Link |
+|---|---|
+| **GeoTIFF (primary, zeros-outside)** | [docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif](docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif) |
+| ZIP (one TIFF) | [docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.zip](docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.zip) |
+| Submission name | `GEMSDOE92-SPRINGALIGN-f33Ctop-20261025` |
+| Note (≤140) | `h33-h33-2-b2; SPRINGALIGN f33Ctop 12426 far dots on spring-pair alignment lines >3px off H19-5` |
+| SHA-256 (zeros) | `1772ad5c62506b6b380e221d2202b583edf0a5be4f96916af655e0478eba11b1` |
+
+SPRINGALIGN: hot-spring pair strike alignments (GDR INGENIOUS, pinned).
+HOLDOUT-DTI `gems57-pooled-hide-v2` (22,663 withheld) **0.004865
+[0.004025, 0.005785]** — beats R0, below holdout best RELIEF p10, so
+**negative**: downloadable, not slot-cleared. Locally unique (surface
+|ρ|≤0.009; final forward ≤0.670). Dense public witness policy unresolved.
+Full record: [analysis](docs/ANALYSIS_20261025_SPRINGALIGN.md) ·
+[run card](evidence/springalign_run_card.json). The 0.2778 GEMSDOE32
+value remains a CLAIM (no receipt); no local score beats it by assertion.
 
 ---
-
 ## New primary (ANASIG session, 2026-10-24): locally unique, still not cleared
 
 **✅ FORMAT-VALID — OK TO DOWNLOAD for research. ⛔ DO NOT SUBMIT / NOT CLEARED FOR A WEEKLY SLOT.**

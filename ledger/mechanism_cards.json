@@ -321,5 +321,27 @@
     "falsifier": "Pooled HOLDOUT-DTI at or below BREAKLINE f45Ltop (0.004861) with paired CI excluding a gain rejects the strain multiplier on the catalogue instrument; the pre-build screen already showed the strain far set UNDERPERFORMS plain L on the SGMC bedrock control (0.058 vs 0.072 far-only), so a holdout win driven only by catalogue-proximity would not promote this lane either. Live receipt delta <= -0.010 vs R0 would reject it live.",
     "decision_rule": "Promote only if literal uniqueness (<=70% dots within 3px of every measured registry raster, |Spearman| <= 0.90, surface and final dots) AND pooled HOLDOUT-DTI beats the current holdout best comparable arms (RELIEF p10 0.006045; BREAKLINE f45 0.004861) with paired CI excluding 0 vs R0. Otherwise verdict negative: format-valid and downloadable, not cleared for a weekly slot.",
     "predicted_sign_and_size": "MODEL: unknown live delta; HOLDOUT-DTI in evidence/strainbreak_proxy_audit.json"
+  },
+  "h33-h33-2-b2-SPRINGALIGNf11Atop-20261025-7dffb02a": {
+    "parent": "h33-h33-2-b2",
+    "axis": "SPRINGALIGN",
+    "value": "f11Atop",
+    "hypothesis": "Hot springs/wells (temp_c>=40C, pinned GDR INGENIOUS table) fed by one blind fault align along its strike. Pair-segment strike votes (10-60px pairs, 25% extension) mark permeable fracture lines with no scarp, magnetic contrast or catalogue trace. Placing 45% of the budget on the strongest alignment lines >3px off the H19-5 skeleton tests that geothermal-vent channel.",
+    "mechanism": "At fixed S=37,654, DTI rises when expected T gains outweigh denominator growth. Kept skeleton dots are chosen by exact marginal expected-DTI greedy (alpha 0.2, beta 0.8, R=3px) under w=0.30+0.70*S_pct on H19-5 support. Far dots take the strongest spring-pair alignment lines first (descending S_raw, 2.8px spacing).",
+    "non_fault_mimic": "Springs also align along lithologic contacts, paleochannel margins, aqueducts and playa shorelines; a spring line is permeability, not proof of a fault.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat RELIEF p10 (0.006045) rejects promotion; canary symmetric AUC >0.90 stops as leakage; forward overlap >0.70 or |rho| >0.90 vs any local registry raster logs a duplicate and stops.",
+    "decision_rule": "Promote only if literal local-registry uniqueness AND pooled HOLDOUT-DTI beats RELIEF p10 with paired CI excluding 0 vs R0 AND all format gates pass. Otherwise negative: format-valid, downloadable, not cleared for a weekly slot.",
+    "predicted_sign_and_size": "MODEL: unknown live delta; HOLDOUT-DTI in evidence/springalign_proxy_audit.json"
+  },
+  "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a": {
+    "parent": "h33-h33-2-b2",
+    "axis": "SPRINGALIGN",
+    "value": "f33Ctop",
+    "hypothesis": "Hot springs/wells (temp_c>=40C, pinned GDR INGENIOUS table) fed by one blind fault align along its strike. Pair-segment strike votes (10-60px pairs, 25% extension) mark permeable fracture lines with no scarp, magnetic contrast or catalogue trace. Placing 45% of the budget on the strongest alignment lines >3px off the H19-5 skeleton tests that geothermal-vent channel.",
+    "mechanism": "At fixed S=37,654, DTI rises when expected T gains outweigh denominator growth. Kept skeleton dots are chosen by exact marginal expected-DTI greedy (alpha 0.2, beta 0.8, R=3px) under w=0.30+0.70*S_pct on H19-5 support. Far dots take the strongest spring-pair alignment lines first (descending S_raw, 2.8px spacing).",
+    "non_fault_mimic": "Springs also align along lithologic contacts, paleochannel margins, aqueducts and playa shorelines; a spring line is permeability, not proof of a fault.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat RELIEF p10 (0.006045) rejects promotion; canary symmetric AUC >0.90 stops as leakage; forward overlap >0.70 or |rho| >0.90 vs any local registry raster logs a duplicate and stops.",
+    "decision_rule": "Promote only if literal local-registry uniqueness AND pooled HOLDOUT-DTI beats RELIEF p10 with paired CI excluding 0 vs R0 AND all format gates pass. Otherwise negative: format-valid, downloadable, not cleared for a weekly slot.",
+    "predicted_sign_and_size": "MODEL: unknown live delta; HOLDOUT-DTI in evidence/springalign_proxy_audit.json"
   }
 }
