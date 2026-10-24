@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Auditable, format-validated GeoTIFF submission workbench for DrivenData DOE GEMS Prize #306 (SCARPDIPOLE f42dipole primary).">
   <title>GEMSDOE92 — SCARPDIPOLE f42dipole Submission Hub &amp; Automated Audit</title>
   <style>
     :root {
@@ -229,7 +230,8 @@
       <div class="muted">Autonomous GeoTIFF Validation, Spatial Hide-and-Recover Evaluation &amp; 1,300-Raster Registry Audit (2026-10-24 UTC)</div>
     </div>
     <nav>
-      <a href="SUBMIT.html">Executive Summary &amp; How to Submit →</a>
+      <a href="executive-summary.html">Executive Summary</a>
+      <a href="SUBMIT.html">Submission Guide →</a>
       <a href="downloads/scarpdipole_run_card.json">Run Card JSON</a>
       <a href="downloads/scarpdipole_public_registry_uniqueness.json">1,300-Raster Audit JSON</a>
       <a href="https://github.com/buffedlizard55-lab/GEMSDOE92">GitHub Repo</a>
@@ -250,32 +252,32 @@
     </div>
 
     <div class="banner banner-warn">
-      <div class="badge">Binding Registry Gate · Verdict: negative (Hold Live Weekly Slot)</div>
-      <h2>NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE</h2>
+      <div class="badge">Binding Registry Gate · Verdict: negative (DO NOT SUBMIT)</div>
+      <h2>NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE — DO NOT SUBMIT</h2>
       <p>
         <strong>Sparse-Submission Uniqueness PASS:</strong> <code>0 / 1,004</code> overlaps &gt; 70% across all sparse dotted public submissions
-        (<code>&le; 60,000</code> dots in all 102 public GEMSDOE repos; max <code>68.77%</code>) and <code>0 / 20</code> local rasters (max <code>66.05%</code>),
+        (<code>&le; 60,000</code> dots in all 102 public GEMSDOE repos; max <code>68.77%</code>) and <code>0 / 27</code> local rasters (max <code>66.05%</code>),
         with global <code>max |Spearman &rho;| = 0.3152 &le; 0.90</code>.<br>
         <strong>Literal All-Rasters Stop:</strong> <code>17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif</code> is positive on all
-        <code>5,167,373 / 5,167,373</code> footprint pixels (100% overlap for <em>every</em> nonempty raster). Do not spend a 3/week competition slot
-        unless the human selector explicitly scopes the 3-px dot-overlap check to sparse dot fields.
+        <code>5,167,373 / 5,167,373</code> footprint pixels (100% overlap for <em>every</em> nonempty raster). <strong>DO NOT SUBMIT</strong> to a
+        3/week competition slot unless the human selector explicitly scopes the 3-px dot-overlap check to sparse dot fields.
       </p>
     </div>
   </div>
 
   <div class="hero-card">
-    <h2 style="margin:0 0 6px;font-size:1.2rem;">Primary Downloadable Candidate — <code>SCARPDIPOLE f42dipole</code></h2>
+    <h2 style="margin:0 0 6px;font-size:1.2rem;">Primary Downloadable Research Candidate — <code>SCARPDIPOLE f42dipole</code> (Format-Valid · DO NOT SUBMIT Without Selector Waiver)</h2>
     <div class="muted">
       Hanks–Bucknam–Wallace piedmont-to-range-front scarp-diffusion profile-curvature dipole zero-crossing
       (<code>21,839</code> piedmont-reranked <code>H19-5</code> dots + <code>15,815</code> off-skeleton <code>&gt;3 px</code> scarp-dipole dots = <code>37,654</code> unit-mass dots).
     </div>
 
     <div class="btn-row">
-      <a class="btn btn-primary" href="downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif" download>
-        ⬇ Download Portal-Safe .TIF (149,655 B, zeros-outside)
+      <a class="btn btn-primary" href="downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif" data-primary="true" download>
+        ⬇ Download Format-Valid .TIF — DO NOT SUBMIT (149,655 B, zeros-outside)
       </a>
       <a class="btn btn-secondary" href="downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.zip" download>
-        ⬇ Download Single-TIFF .ZIP (117,470 B)
+        ⬇ Download Single-TIFF .ZIP — DO NOT SUBMIT (117,470 B)
       </a>
       <a class="btn btn-secondary" href="downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-audit.json">
         View Per-File Validator Audit (.json)
@@ -284,7 +286,7 @@
         View Canonical Run Card (.json)
       </a>
       <a class="btn btn-secondary" href="SUBMIT.html">
-        Executive Summary &amp; DrivenData Upload Guide →
+        Executive Summary &amp; Conditional Portal Guide →
       </a>
     </div>
 
@@ -303,7 +305,7 @@
       </div>
       <div class="kv">
         <div class="k">Validator Gate Summary</div>
-        <div class="v">10/10 PASS · 0 NaN · [0.0, 1.0] · 37,654 dots · min d_cat = 2.24 px</div>
+        <div class="v">10/10 PASS · 0 NaN · [0.0, 1.0] · 37,654 dots · min d_cat = 2.24 px · verdict: negative</div>
       </div>
     </div>
   </div>
@@ -358,13 +360,31 @@
           <td><code>negative</code></td>
         </tr>
         <tr>
-          <td><code>visible-collar-r0-excluded</code></td>
-          <td>0.046866 <code>[0.0402, 0.0533]</code><br><span class="muted">(1.61&times; fold-fair parent)</span></td>
-          <td>N/A <span class="muted">(full-cat collar)</span></td>
-          <td>0.021192 <span class="muted">(-77.94% collapse)</span></td>
-          <td><code>0.7456</code> (PASS)</td>
-          <td>Fails <span class="muted">(11GEMSDOE)</span></td>
-          <td><code>negative</code> <span class="muted">(131 &gt;70%)</span></td>
+          <td><code>RELIEF p10</code></td>
+          <td>—</td>
+          <td>0.006045 <code>[0.0052, 0.0069]</code></td>
+          <td>0.087245 <span class="muted">(-9.18%)</span></td>
+          <td><code>0.5944</code> (PASS)</td>
+          <td>Fails <span class="muted">(99.38% vs R0)</span></td>
+          <td><code>negative</code> <span class="muted">(R0 dup)</span></td>
+        </tr>
+        <tr>
+          <td><code>STRAINBREAK f60s2i</code></td>
+          <td>—</td>
+          <td>0.005487 <code>[0.0045, 0.0064]</code></td>
+          <td>0.105160 <span class="muted">(+9.47%)</span></td>
+          <td><code>0.6216</code> (PASS)</td>
+          <td>Fails <span class="muted">(max 71.05%)</span></td>
+          <td><code>negative</code> <span class="muted">(89 &gt;70%)</span></td>
+        </tr>
+        <tr>
+          <td><code>ANASIG f45Atop</code></td>
+          <td>—</td>
+          <td>0.004967 <code>[0.0041, 0.0059]</code></td>
+          <td>0.080556 <span class="muted">(-16.14%)</span></td>
+          <td><code>0.5511</code> (PASS)</td>
+          <td>Below holdout best</td>
+          <td><code>negative</code> <span class="muted">(17GEMSDOE witness)</span></td>
         </tr>
         <tr>
           <td><code>BREAKLINE f45Ltop</code></td>
@@ -373,16 +393,16 @@
           <td>0.126105 <span class="muted">(+31.28%)</span></td>
           <td><code>0.6216</code> (PASS)</td>
           <td>Fails 54 &lt;70%-halo rasters</td>
-          <td><code>negative</code> <span class="muted">(122 &gt;70%)</span></td>
+          <td><code>negative</code> — BREAKLINE: DUPLICATE — DO NOT SUBMIT</td>
         </tr>
         <tr>
-          <td><code>RELIEF p10</code></td>
-          <td>—</td>
-          <td>0.006045 <code>[0.0052, 0.0069]</code></td>
-          <td>0.087245 <span class="muted">(-9.18%)</span></td>
-          <td><code>0.5944</code> (PASS)</td>
-          <td>Fails <span class="muted">(99.38% vs R0)</span></td>
-          <td><code>negative</code> <span class="muted">(R0 dup)</span></td>
+          <td><code>visible-collar-r0-excluded</code></td>
+          <td>0.046866 <code>[0.0402, 0.0533]</code><br><span class="muted">(1.61&times; fold-fair parent)</span></td>
+          <td>N/A <span class="muted">(full-cat collar)</span></td>
+          <td>0.021192 <span class="muted">(-77.94% collapse)</span></td>
+          <td><code>0.7456</code> (PASS)</td>
+          <td>Fails <span class="muted">(11GEMSDOE)</span></td>
+          <td><code>negative</code> <span class="muted">(131 &gt;70%)</span></td>
         </tr>
         <tr>
           <td><code>R0</code> (<code>h33-h33-2-b2</code>, <code>CLAIM 0.2778</code>)</td>
@@ -398,20 +418,20 @@
   </section>
 
   <section>
-    <h3>2. Why <code>GEMSDOE32 R0</code> Achieved <code>0.2778</code> (<code>CLAIM</code>) &amp; Why <code>SCARPDIPOLE</code> Beats Both Prior Regimes</h3>
+    <h3>2. Why <code>GEMSDOE32 R0</code> Achieved <code>0.2778</code> (<code>CLAIM</code>) &amp; Why <code>SCARPDIPOLE</code> Beats All Prior Lanes</h3>
     <ul>
       <li><strong>Why <code>R0</code> scored <code>0.2778</code> (<code>CLAIM</code>):</strong> Under DTI (&alpha;=0.2, &beta;=0.8, 300 m max-pooled linear tent kernel), thinning the <code>121,131</code>-pixel potential-field worm skeleton (<code>H19-5</code>, <code>0.1922 CLAIM</code>) at <code>2.8 px</code> spacing (<code>D2.8</code>, <code>0.2600 CLAIM</code>) eliminated redundant intra-kernel false positives, and pruning <code>B=2 px</code> (200 m) flanks around mapped faults (<code>R0</code>, <code>37,654</code> dots, <code>0.2778 CLAIM</code>) stripped halo false positives on already-masked faults (2.08&times; FP saved per off-flank TP risked).</li>
-      <li><strong>Why <code>SCARPDIPOLE</code> unlocks unmapped Quaternary faults:</strong> <code>R0</code> places 100% of its mass on magnetic/gravity potential-field worms (<code>H19-5</code>), completely missing intra-alluvial piedmont scarps and homogeneous-volcanic faults where density/susceptibility contrast vanishes. Under Hanks–Bucknam–Wallace linear scarp diffusion (<code>&part;z/&part;t = &kappa;&nabla;&sup2;z</code>), a degraded normal-fault scarp creates a directional downslope profile-curvature dipole zero-crossing (convex crest <code>z_ss &lt; 0</code> &rarr; trace midpoint <code>z_ss = 0, &part;_s z_ss &gt; 0</code> &rarr; concave colluvial wedge <code>z_ss &gt; 0</code>) inside the <code>[p15, p85]</code> detrended-elevation range-front corridor.</li>
-      <li><strong>Methodological discovery:</strong> Prior sessions compared <code>visible-collar</code>'s fold-fair <code>0.046866</code> against pre-punched static <code>R0 = 0.004006</code>. Evaluated fairly under fold-specific <code>d_visible &gt; 2 px</code>, <code>parent_B2_visible</code> scores <code>0.029074</code> and <strong><code>SCARPDIPOLE f42dipole</code> scores <code>0.098565</code> (3.39&times; parent; 2.10&times; <code>visible-collar</code>)</strong> while improving off-catalogue <code>USGS SGMC</code> by <code>+12.26%</code> (where <code>visible-collar</code> collapsed <code>-77.94%</code>).</li>
+      <li><strong>Why <code>SCARPDIPOLE</code> unlocks unmapped Quaternary faults:</strong> <code>R0</code> places 100% of its mass on magnetic/gravity potential-field worms (<code>H19-5</code>), missing intra-alluvial piedmont scarps and homogeneous-volcanic faults where density/susceptibility contrast vanishes. Under Hanks–Bucknam–Wallace linear scarp diffusion (<code>&part;z/&part;t = &kappa;&nabla;&sup2;z</code>), a degraded normal-fault scarp creates a directional downslope profile-curvature dipole zero-crossing (convex crest <code>z_ss &lt; 0</code> &rarr; trace midpoint <code>z_ss = 0, &part;_s z_ss &gt; 0</code> &rarr; concave colluvial wedge <code>z_ss &gt; 0</code>) inside the <code>[p15, p85]</code> detrended-elevation range-front corridor.</li>
+      <li><strong>Methodological discovery:</strong> Prior sessions compared <code>visible-collar</code>'s fold-fair <code>0.046866</code> against pre-punched static <code>R0 = 0.004006</code>. Evaluated fairly under fold-specific <code>d_visible &gt; 2 px</code>, <code>parent_B2_visible</code> scores <code>0.029074</code> and <strong><code>SCARPDIPOLE f42dipole</code> scores <code>0.098565</code> (3.39&times; parent; 2.10&times; <code>visible-collar</code>)</strong> while ranking <strong>#1 on static holdout (<code>0.006812</code>)</strong> ahead of <code>RELIEF p10</code> (<code>0.006045</code>), <code>STRAINBREAK f60s2i</code> (<code>0.005487</code>), <code>ANASIG f45Atop</code> (<code>0.004967</code>), and <code>BREAKLINE f45Ltop</code> (<code>0.004861</code>), and improving off-catalogue <code>USGS SGMC</code> by <code>+12.26%</code>.</li>
     </ul>
   </section>
 
   <section>
-    <h3>3. Complete Served Zeros-Outside GeoTIFF Archive (All 13 Artifacts Format-Validated <code>10/10</code>)</h3>
+    <h3>3. Complete Served Zeros-Outside GeoTIFF Archive (All 17 Artifacts Format-Validated <code>10/10</code>)</h3>
     <p class="muted">
       Every served <code>*-zeros.tif</code> in <code>docs/downloads/</code> is verified on every CI / <code>make site</code> run for
       <code>float32</code>, <code>[0, 1]</code>, zero NaN/Inf, exact template CRS/shape/transform, and zero catalogue mass.
-      Historical negative deliverables remain preserved for auditability.
+      All 17 artifacts remain preserved as format-valid negative research deliverables under the literal <code>17GEMSDOE</code> all-positive surface rule.
     </p>
     <table>
       <thead>
@@ -427,31 +447,55 @@
           <td><strong>SCARPDIPOLE f42dipole (Primary)</strong></td>
           <td><a href="downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif">h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif</a></td>
           <td>37,654</td>
-          <td><code>negative</code> under literal 17GEMSDOE surface rule · <strong>#1 Holdout &amp; 0/1,004 sparse &gt;70%</strong></td>
+          <td><code>negative</code> under literal 17GEMSDOE surface rule · <strong>#1 Holdout &amp; 0/1,004 sparse &gt;70%</strong> — DO NOT SUBMIT</td>
         </tr>
         <tr>
           <td>SCARPDIPOLE f45dipole</td>
           <td><a href="downloads/h33-h33-2-b2-SCARPDIPOLEf45dipole-20261024-b774637b-zeros.tif">h33-h33-2-b2-SCARPDIPOLEf45dipole-20261024-b774637b-zeros.tif</a></td>
           <td>37,654</td>
-          <td><code>negative</code> under literal 17GEMSDOE surface rule · Dose sibling (0/1,004 sparse &gt;70%)</td>
+          <td><code>negative</code> under literal 17GEMSDOE surface rule · Dose sibling (0/1,004 sparse &gt;70%) — DO NOT SUBMIT</td>
         </tr>
         <tr>
           <td>SCARPDIPOLE f50dipole</td>
           <td><a href="downloads/h33-h33-2-b2-SCARPDIPOLEf50dipole-20261024-a6ce622f-zeros.tif">h33-h33-2-b2-SCARPDIPOLEf50dipole-20261024-a6ce622f-zeros.tif</a></td>
           <td>37,654</td>
-          <td><code>negative</code> under literal 17GEMSDOE surface rule · Dose sibling (0/1,004 sparse &gt;70%)</td>
+          <td><code>negative</code> under literal 17GEMSDOE surface rule · Dose sibling (0/1,004 sparse &gt;70%) — DO NOT SUBMIT</td>
+        </tr>
+        <tr>
+          <td>STRAINBREAK f60s2i</td>
+          <td><a href="downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif">h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif</a></td>
+          <td>37,654</td>
+          <td><code>negative</code> — HOLDOUT-DTI 0.005487 below RELIEF p10 &amp; SCARPDIPOLE; 89 public &gt;70% (<a href="downloads/strainbreak_run_card.json">run card</a>)</td>
+        </tr>
+        <tr>
+          <td>STRAINBREAK f45s2i</td>
+          <td><a href="downloads/h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif">h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif</a></td>
+          <td>37,654</td>
+          <td><code>negative</code> — STRAINBREAK dose sibling (HOLDOUT-DTI 0.005022)</td>
+        </tr>
+        <tr>
+          <td>STRAINBREAK f75s2i</td>
+          <td><a href="downloads/h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif">h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif</a></td>
+          <td>37,654</td>
+          <td><code>negative</code> — STRAINBREAK dose sibling (HOLDOUT-DTI 0.005486)</td>
+        </tr>
+        <tr>
+          <td>ANASIG f45Atop</td>
+          <td><a href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif">h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif</a></td>
+          <td>37,654</td>
+          <td><code>negative</code> — HOLDOUT-DTI 0.004967 below RELIEF p10 &amp; SCARPDIPOLE; public witness stop (<a href="downloads/anasig_run_card.json">run card</a>)</td>
         </tr>
         <tr>
           <td>visible-collar-r0-excluded</td>
           <td><a href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif">GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif</a></td>
           <td>37,654</td>
-          <td><code>negative</code> — 131 rasters exceed the 70% stop threshold; -77.94% SGMC collapse (<a href="downloads/visible_collar_run_card.json">run card</a>)</td>
+          <td><code>negative</code> — 131 rasters exceed the 70% stop threshold (<a href="downloads/public_registry_uniqueness.json">public audit</a>); -77.94% SGMC (<a href="downloads/visible_collar_run_card.json">run card</a>)</td>
         </tr>
         <tr>
           <td>BREAKLINE f45Ltop</td>
           <td><a href="downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif">h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif</a></td>
           <td>37,654</td>
-          <td><code>negative</code> — 122 public overlaps &gt;70% (<a href="downloads/breakline_public_registry_uniqueness.json">audit</a>)</td>
+          <td><strong>BREAKLINE: DUPLICATE — DO NOT SUBMIT.</strong> <code>negative</code> — 122 public overlaps &gt;70% (<a href="downloads/breakline_public_registry_uniqueness.json">audit</a>)</td>
         </tr>
         <tr>
           <td>BREAKLINE f38Ltop</td>
@@ -503,6 +547,18 @@
         </tr>
       </tbody>
     </table>
+  </section>
+
+  <section>
+    <h3>4. Official Competition &amp; Data References</h3>
+    <ul>
+      <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData Competition #306 — Problem Description &amp; DTI Metric</a></li>
+      <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData Competition #306 — Submissions Portal (human selector step only)</a></li>
+      <li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">DOE GEMS Prize Official Rules PDF (FY26 OSTI 96647)</a></li>
+      <li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">DrivenData Official U-Net MC-CV Reference Solution (<code>drivendataorg/gems-prize-reference-solution</code>)</a></li>
+      <li><a href="https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7">USGS GeoDAWN Geophysical &amp; Terrain Compilation</a> · <a href="https://doi.org/10.3133/ds1052">USGS SGMC (DS-1052)</a></li>
+      <li><a href="https://gdr.openei.org/submissions/1391">DOE Geothermal Data Repository — Great Basin INGENIOUS (#1391)</a> · <a href="https://epsg.io/32611">EPSG:32611 (WGS 84 / UTM Zone 11N)</a></li>
+    </ul>
   </section>
 </div>
 </body>

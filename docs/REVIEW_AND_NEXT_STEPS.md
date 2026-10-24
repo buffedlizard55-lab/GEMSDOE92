@@ -1,5 +1,11 @@
 # Repository review and next-step decision (2026-10-24)
 
+## Follow-up review — evidence and site consistency
+
+A fresh review found a malformed comma in both copies of `public_registry_uniqueness.json`, so neither published machine-readable registry receipt parsed as JSON. Fixed the syntax in the root evidence and downloadable copy, and added regression tests that parse the downloadable receipt and verify its explicit duplicate-stop state. Two legacy alias pages also incorrectly called BREAKLINE the current primary while the canonical site and submission guide designate visible-collar; corrected both aliases to state the actual status (format-valid/downloadable for review, duplicate, do not submit). The BREAKLINE file remains a separate unscanned/NOT CLEARED artifact and was not promoted.
+
+Verification after fixes: `.venv/bin/python -m pytest tests -q` → **119 passed**, 17 existing Rasterio pending-deprecation warnings; `PYTHONPATH=vendor .venv/bin/python scripts/check_site.py` → **10 served rasters pass**. No new candidate experiment or TIFF was generated. The user's strict lane protocol and currently binding duplicate gate prohibit treating a merely format-valid raster as competition-ready. Full public-registry re-scan of BREAKLINE, actual organizer receipt, authorized feature-data provenance, and any corrected submission candidate remain open; no weekly slot was used.
+
 > **Supersession note (2026-10-24):** This earlier review concluded the STEPOVER file was unique within a 14-raster local inventory. A later scan of 1,279 matching-grid TIFFs across 102 public owner repositories found binding 100% 3-px overlap witnesses. The prior local-only uniqueness/slot statements below are historical and superseded; current status is in `SLOT_PLAN.md`, `docs/NEXT_STEPS.md`, and `evidence/public_registry_uniqueness.json`: format-valid, negative duplicate, do not submit.
 
 ## Current three-pass review addendum (2026-10-24)

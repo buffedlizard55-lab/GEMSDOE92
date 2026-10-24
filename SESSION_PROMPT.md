@@ -66,19 +66,27 @@ A second session ran in parallel from the same base and DID restore the feature 
 - Facts: R0 ⊂ SOLO ⊂ D2.8 ⊂ H19-5 exactly; bridge `sample_submission.tif` *is* the catalogue (60,988 px, geometry only); Band 18 is the only signed band; collar count 2,171 (float64 EDT). Emission: spaced top-L beat exact-DTI greedy by +0.000701 [+0.000321, +0.001161] — never deviate at build time from the screened selector. Do not retry BASEMENT-STEP (Band 15, SGMC AUC 0.378), pure-seismicity placement, radiometric K/Th gradients.
 - One BREAKLINE dose total may ever be submitted (siblings share keeps; 3 SUPERSEDED greedy siblings in `ledger/`). Full record: `docs/ANALYSIS_20261024.md`, `docs/HYPOTHESES_20261024_BREAKLINE.md`, `evidence/breakline_run_card.json`. Ledger: 36 BUILT / 0 RECEIPT.
 
-## Addendum — SCARPDIPOLE session (2026-10-24)
+## Addendum — SCARPPOL/ANASIG & STRAINBREAK sessions (2026-10-24)
+
+Two lanes were run from `docs/HYPOTHESES_20261024_SCARPPOL.md`:
+- **SCARPPOL** (fall-line signed second derivative, Bands 12/19): built f33/f38/f45; final dots overlap same-dose BREAKLINE at 0.900–0.913 → duplicate under rule 1, stopped.
+- **ANASIG** (analytic signal Bands 3/9/14; single f45 build `h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif`, SHA-256 `68964bd6…f4d5`): HOLDOUT-DTI `0.004967 [0.004098, 0.005940]` (below RELIEF p10 `0.006045`), SGMC PROXY `0.080556 < R0`, `verdict: negative`.
+- **STRAINBREAK** (`S = BREAKLINE L × pct_rank(Band 4 geod_2ndinv)`, `f45s2i`/`f60s2i`/`f75s2i`): `f60s2i` HOLDOUT-DTI `0.005487 [0.004522, 0.006430]` (below RELIEF p10 `0.006045`), SGMC `0.10516`, public scan `89 > 70%` (sparse worst `0.7105`), `verdict: negative`.
+- **BREAKLINE public witness:** verified 100% forward overlap against `17GEMSDOE/E-proba-multiscale` (`docs/REVIEW_CURRENT.md`, `docs/REVIEW_REGISTRY_STOP_20261024.md`).
+
+## Addendum — SCARPDIPOLE session (2026-10-24, current primary)
 
 1. **Completed prior-session action items first:**
-   - Ran the full 1,300-raster public-registry scan (`102` repos) on `BREAKLINE f45Ltop` (`evidence/breakline_public_registry_uniqueness.json`): `122` rasters exceed `70%` overlap (`68` `>=70%`-halo surfaces + `54` `<70%`-halo rasters up to `0.9130` vs `GEMSDOE3/coverage-v3-wide`), `verdict: negative`.
+   - Ran the full 1,300-raster public-registry scan (`102` repos, both pre-placement surface and final dots) on `BREAKLINE f45Ltop` (`evidence/breakline_public_registry_uniqueness.json`): `122` rasters exceed `70%` overlap (`68` `>=70%`-halo surfaces + `54` `<70%`-halo rasters up to `0.9130` vs `GEMSDOE3/coverage-v3-wide`), `verdict: negative`.
    - Measured off-catalogue `USGS SGMC` bedrock-fault DTI (`n = 62,703`) on `visible-collar-r0-excluded`: **`0.021192` (`-77.94%` vs `R0 = 0.096060`)**, and uncovered a repo-wide masking confound in prior `visible-collar` reporting (`0.046866` fold-fair `d_visible > 2` was compared against static pre-punched `R0 = 0.004006` instead of fold-fair `parent_B2_visible = 0.029074`).
-   - Repaired trailing-comma JSON syntax error in `evidence/public_registry_uniqueness.json` and `docs/downloads/public_registry_uniqueness.json`.
+   - Repaired JSON syntax errors in `evidence/public_registry_uniqueness.json` and `docs/downloads/public_registry_uniqueness.json`.
 2. **Screened 5 untried geological hypotheses (`docs/HYPOTHESES_20261024_SCARPDIPOLE.md`) and implemented `SCARPDIPOLE` (`gems/scarpdipole.py`, `scripts/build_scarpdipole_variants.py`, `scripts/report_scarpdipole_proxies.py`):**
-   - Built 3 doses (`f42dipole` primary, `f45dipole`, `f50dipole`) via shared `vendor/gems57/submission_writer.py`.
+   - Built 3 doses (`f42dipole` primary, `f45dipole`, `f50dipole`) via shared `vendor/gems57/submission_writer.py`, differentiating BOTH the H19-5 keep ranking (piedmont scarp-dipole reranking) and the `>3 px` off-skeleton emission.
    - Primary `h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif` (`sha256: 9febfbd7e301d708b0f60df08dc4add6bd5bd442909ea653bcd2a83a92d36262`):
      - **Fold-Fair `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `n = 22,663`):** **`0.098565 [0.087985, 0.108974]`** (`#1` in `GEMSDOE92`; paired Δ vs `parent_B2_visible` `+0.069492 [+0.060008, +0.077790]`, `3.39×`; paired Δ vs `visible_collar` `+0.051699 [+0.037872, +0.064896]`, `2.10×`).
-     - **Static `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `n = 22,663`):** **`0.006812 [0.005770, 0.008034]`** (`#1` in `GEMSDOE92`; paired Δ vs `R0` `+0.002806 [+0.001946, +0.003686]`).
+     - **Static `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `n = 22,663`):** **`0.006812 [0.005770, 0.008034]`** (`#1` in `GEMSDOE92`; beats `RELIEF p10 = 0.006045`, `STRAINBREAK f60s2i = 0.005487`, `ANASIG f45Atop = 0.004967`, `BREAKLINE f45Ltop = 0.004861`, and `R0 = 0.004006`).
      - **Off-Catalogue `USGS SGMC` (`PROXY`, `n = 62,703`):** **`0.107841`** (`+12.26%` vs `R0`).
      - **Leakage Canary:** max raw band `0.5531`, `S_pct` `0.6328` (`<= 0.90` PASS).
-     - **Uniqueness (`REGISTRY-MEASUREMENT`):** `0 / 20` local overlaps `> 70%` (`max = 0.6605`); **`0 / 1,004` overlaps `> 70%` across ALL sparse dotted public submissions (`<= 60,000` dots) in all `102` public GEMSDOE repos** (`max = 0.6877` for `f42dipole`, `0.6657` for `f45dipole`, `0.6348` for `f50dipole`); global `max |ρ| = 0.3152 << 0.90`.
-     - **Binding Literal All-Rasters Verdict:** **`negative` / NOT CLEARED FOR LIVE WEEKLY SLOT** without human selector waiver because `17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` has positive support on `100.0%` (`5,167,373 / 5,167,373`) of footprint pixels (`saturation_certificate`). Ledger: 39 BUILT / 0 RECEIPT.
+     - **Uniqueness (`REGISTRY-MEASUREMENT`):** `0 / 27` local overlaps `> 70%` (`max = 0.6605`); **`0 / 1,004` overlaps `> 70%` across ALL sparse dotted public submissions (`<= 60,000` dots) in all `102` public GEMSDOE repos** (`max = 0.6877` for `f42dipole`, `0.6657` for `f45dipole`, `0.6348` for `f50dipole`); global `max |ρ| = 0.3152 << 0.90`.
+     - **Binding Literal All-Rasters Verdict:** **`negative` / NOT CLEARED FOR LIVE WEEKLY SLOT** without human selector waiver because `17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` has positive support on `100.0%` (`5,167,373 / 5,167,373`) of footprint pixels (`saturation_certificate`). Ledger: 46 BUILT / 0 RECEIPT.
 

@@ -1,0 +1,122 @@
+{
+  "hypothesis": "Quaternary fault scarps express in detrended topography as LINEAR breaks-in-slope (||grad det_elev_slope|| ridges with high structure-tensor coherence of det_elev). Faults that juxtapose like lithologies or offset only alluvium have a scarp but no magnetic/gravity contrast, so the H19-5 potential-field worm skeleton -- and with it parent R0 and the Qfaults-based catalogue built largely from mappable scarps on older imagery -- misses or misplaces them, while expert mapping on high-resolution DEMs (the competition label source, DrivenData #306 p.967) traces exactly such breaks. Placing 33-45% of the fixed budget on coherent slope-break ridges >3px off the worm skeleton, and keeping only coverage-nonredundant skeleton dots under the same field, raises expected kernel credit per dot versus R0's unranked geometric thinning.",
+  "mechanism": "At fixed S=37,654, DTI rises when expected T gains outweigh denominator growth. Kept skeleton dots are chosen by exact marginal expected-DTI greedy (alpha 0.2, beta 0.8, triangular R=3px) under w=0.30+0.70*L_pct on H19-5 support, so coverage-redundant parent dots are the donors. Far dots take the strongest remaining coherent break lineaments first (descending L, 2.8px spacing floor): if per-pixel fault probability rises superlinearly with L rank -- as the screen's SGMC/catalogue enrichments indicated -- concentrating on the top lineaments at kernel spacing earns more expected credit per dot than spreading to cover low-rank support mass (measured directly: evidence/screen_vs_greedy_diagnostic.json).",
+  "named_non_fault_process_that_could_mimic_it": "Pluvial Lake Lahontan shoreline terraces, alluvial-fan segment boundaries and terrace risers, bedding-plane breaks on dipping volcanic strata, and incised-drainage valley walls all produce linear, coherent slope breaks with no Quaternary surface rupture. Far dots concentrated on a shoreline bench would be pure false positives.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.00486050796752969,
+    "ci95": [
+      0.00403154211411757,
+      0.00582235313319924
+    ],
+    "delta_vs_R0": 0.000854360792844947,
+    "delta_vs_R0_ci95": [
+      0.0003004560006930167,
+      0.0014228538036351638
+    ],
+    "delta_vs_holdout_best_RELIEFp10": -0.0011846244296432424,
+    "delta_vs_RELIEFp10_ci95": [
+      -0.0019952446310740287,
+      -0.00039356379093353165
+    ],
+    "R0_dti": 0.004006147174684743,
+    "holdout_best_RELIEFp10_dti": 0.0060451323971729325,
+    "spatial_clusters": 157,
+    "bootstrap_draws": 1000,
+    "provenance": "Historical recorded result; not rerun in this follow-up."
+  },
+  "leakage_canary_max_symmetric_auc": 0.621604,
+  "sgmc_control_proxy": {
+    "evidence_class": "PROXY (off-catalogue USGS SGMC bedrock faults)",
+    "dti": 0.126105,
+    "R0_dti": 0.09606,
+    "delta_vs_R0": 0.030045,
+    "truth_pixels": 62703
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "Live public witness checks: 1 TIFF from 11GEMSDOE, 5 from 17GEMSDOE; not exhaustive.",
+    "final_dots_worst_forward_overlap_within_3px": 1.0,
+    "final_dots_worst_abs_spearman": 0.03370629029395908,
+    "binding_witness": "17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "preplacement_surface": "NOT_CHECKED: actual lane surface not supplied; no substitute; final failure requires stop.",
+    "literal_duplicate": true,
+    "evidence": "evidence/breakline_public_registry_witness17.json"
+  },
+  "raster_sha256": "cd9c8a564588e6542b379cd36cbe05fc6da3be07b8edbc542bf737336907810e",
+  "raster_sha256_nan_twin": "57fa85f003e789f2dcc2cbaec21c8e97c44e3241a9df1408238959dbf0ca9f17",
+  "validator": {
+    "overall_pass": true,
+    "gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=float32 count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nan_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "cd9c8a564588e6542b379cd36cbe05fc6da3be07b8edbc542bf737336907810e"
+      }
+    ],
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": "EPSG:32611, 3730x3292, transform of sample_submission.tif"
+  },
+  "submission_name": "GEMSDOE92-BREAKLINE-f45Ltop-20261024",
+  "file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+  "note": "h33-h33-2-b2; BREAKLINE f45Ltop 16944 far dots on linear scarp-break ridges >3px off H19-5",
+  "note_chars": 90,
+  "organizer_score": null,
+  "verdict": "negative",
+  "verdict_reason": "Literal-unique (55.0% worst forward overlap) and HOLDOUT-DTI above parent R0 with paired CI excluding 0, but HOLDOUT-DTI 0.004861 does not beat the current holdout best (RELIEF p10, 0.006045, itself a literal duplicate of R0). Under the pre-registered promotion rule: NOT_CLEARED for a weekly slot. Format-valid and OK TO DOWNLOAD.",
+  "format_ok_to_download": true,
+  "slot_recommendation": "NOT_CLEARED",
+  "record_type": "followup_registry_stop_no_new_experiment",
+  "submission_note": "BREAKLINE scarp breaks; public-registry duplicate stop; research only, do not submit.",
+  "validator_recheck": "All 10 local format gates passed this follow-up on unchanged bytes. Format validity does not clear uniqueness.",
+  "experiments_this_followup": 0,
+  "weekly_slots_used": 0
+}

@@ -78,6 +78,7 @@ def _emit_cards_and_sidecars(vdoc: dict, pub_uniq: dict, variant_reports: list[d
             "id": v["id"],
             "submission_name": v["submission_name"],
             "file": v["file_zeros"],
+            "run_card": "evidence/scarpdipole_run_card.json",
             "sha256": v["sha256_zeros"],
             "sha256_zeros": v["sha256_zeros"],
             "n_dots": v["n_dots"],
@@ -199,6 +200,10 @@ def _emit_cards_and_sidecars(vdoc: dict, pub_uniq: dict, variant_reports: list[d
             },
         },
         "raster_sha256": prim_v["sha256_zeros"],
+        "sha256": {
+            "zeros": prim_v["sha256_zeros"],
+            "nan": prim_v["sha256"],
+        },
         "artifact": {
             "download_tif": prim_v["file_zeros"],
             "download_zip": str(Path(prim_v["file_zeros"]).with_suffix(".zip")),
@@ -263,6 +268,35 @@ def main() -> int:
 
     if "--refresh-cards-only" in sys.argv and OUT_AUDIT.exists():
         adoc = json.loads(OUT_AUDIT.read_text(encoding="utf-8"))
+        grid = grid_mod.load_grid(ROOT / "data" / "bridge")
+        foot = grid.footprint
+        prior_local_tifs = sorted(
+            p for p in (ROOT / "docs" / "downloads").glob("*-zeros.tif")
+            if "SCARPDIPOLE" not in p.name
+        )
+        prior_halos = {p.name: _near(load_mask(p, foot), 3.0) for p in prior_local_tifs}
+        vrep_by_val = {r["value"]: r for r in adoc["variants"]}
+        for v in vdoc["variants"]:
+            val_name = v["value"]
+            zp = ROOT / v["file_zeros"]
+            m_bool = load_mask(zp, foot)
+            local_idx_cmp = uniqueness.compare_to_registry(zp, LOCAL_REGISTRY_INDEX, foot)
+            overlaps_local = {
+                pname: round(float((m_bool & phalo).sum()) / float(m_bool.sum()), 6)
+                for pname, phalo in prior_halos.items()
+            }
+            worst_local_name, worst_local_ov = max(overlaps_local.items(), key=lambda kv: kv[1])
+            assert worst_local_ov <= 0.70, f"Local overlap > 0.70 for {val_name}: {worst_local_ov} vs {worst_local_name}"
+            vrep_by_val[val_name]["local_uniqueness"] = {
+                "evidence_class": "REGISTRY-MEASUREMENT",
+                "lane_registry_index_pass": not local_idx_cmp["stop_required"],
+                "worst_abs_spearman": abs(float(local_idx_cmp["worst_spearman_full_footprint"])),
+                "worst_local_3px_overlap": worst_local_ov,
+                "worst_local_overlap_raster": worst_local_name,
+                "prior_local_downloads_checked": len(prior_halos),
+                "all_prior_local_le_70pct": worst_local_ov <= 0.70,
+            }
+        OUT_AUDIT.write_text(json.dumps(adoc, indent=2) + "\n", encoding="utf-8")
         _emit_cards_and_sidecars(
             vdoc, pub_uniq, adoc["variants"],
             adoc["fold_fair_pooled_by_candidate"],

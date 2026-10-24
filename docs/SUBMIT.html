@@ -91,7 +91,7 @@
 <div class="wrap">
   <header>
     <div>
-      <h1>Executive Summary &amp; DrivenData Portal Submission Guide</h1>
+      <h1>Executive Summary &amp; DrivenData Submission Procedure — current artifact is blocked</h1>
       <div class="muted">GEMSDOE92 · Competition #306 (DOE GEMS Geothermal Fault Discovery) · 2026-10-24 UTC</div>
     </div>
     <div>
@@ -108,51 +108,52 @@
   </div>
 
   <div class="banner banner-warn">
-    <strong>WEEKLY SLOT SELECTOR STATUS: NOT CLEARED FOR A WEEKLY SLOT WITHOUT HUMAN SELECTOR WAIVER (<code>verdict: negative</code>)</strong><br>
+    <strong>WEEKLY SLOT SELECTOR STATUS: NOT CLEARED FOR A WEEKLY SLOT — DO NOT SUBMIT (<code>verdict: negative</code>, <code>submission_eligible: false</code>)</strong><br>
     <code>SCARPDIPOLE f42dipole</code> ranks <strong>#1 in GEMSDOE92</strong> on fold-fair <code>HOLDOUT-DTI</code>
     (<code>0.098565 [0.0880, 0.1090]</code>, 3.39&times; parent and 2.10&times; <code>visible-collar</code>),
-    <strong>#1 on static <code>HOLDOUT-DTI</code></strong> (<code>0.006812 [0.0058, 0.0080]</code>),
+    <strong>#1 on static <code>HOLDOUT-DTI</code></strong> (<code>0.006812 [0.0058, 0.0080]</code>, beating <code>RELIEF p10</code> <code>0.006045</code>,
+    <code>STRAINBREAK f60s2i</code> <code>0.005487</code>, <code>ANASIG f45Atop</code> <code>0.004967</code>, and <code>BREAKLINE f45Ltop</code> <code>0.004861</code>),
     <code>+12.26%</code> above <code>R0</code> on off-catalogue <code>USGS SGMC</code> faults (<code>0.107841</code>),
     and passes <strong>100% of sparse dotted public submissions</strong> (<code>0 / 1,004</code> overlaps &gt; 70% across
     all <code>&le; 60,000</code>-dot submissions in all 102 public GEMSDOE repos; max <code>68.77%</code>).<br>
     However, <code>17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif</code> is positive on
     all <code>5,167,373 / 5,167,373</code> footprint pixels, triggering <code>100.0%</code> overlap under the un-waived
-    literal all-rasters rule. Only upload to DrivenData if the human selector explicitly scopes the 3-px overlap rule to
+    literal all-rasters rule — so the current artifact is blocked unless the human selector explicitly scopes the 3-px overlap rule to
     sparse dot-field submissions.
   </div>
 
   <section>
-    <h2>1. Executive Summary of Candidate <code>SCARPDIPOLE f42dipole</code></h2>
+    <h2>1. Executive Summary of Primary Candidate <code>SCARPDIPOLE f42dipole</code></h2>
     <ul>
       <li><strong>Geological Mechanism:</strong> Under linear hillslope diffusion (<code>&part;z/&part;t = &kappa;&nabla;&sup2;z</code>; Wallace 1977; Hanks et al. 1984), degraded Quaternary normal-fault scarps in unconsolidated Basin-and-Range piedmont alluvium and homogeneous volcanic sheets exhibit a directional convex-crest &rarr; concave-toe profile-curvature zero-crossing directly at the fault trace midpoint inside the <code>[p15, p85]</code> detrended-elevation corridor.</li>
       <li><strong>Unified Budget Allocation:</strong> Emits <code>21,839</code> piedmont scarp-reranked dots on <code>H19-5</code> (<code>58%</code>) + <code>15,815</code> off-skeleton scarp-dipole dots <code>&gt;3 px</code> from <code>H19-5</code> (<code>42%</code>) = <code>37,654</code> unit-mass dots at <code>&ge; 2.8 px</code> spacing and <code>d_cat &gt; 2.0 px</code>.</li>
-      <li><strong>One-Click Downloads:</strong><br>
-        <a class="btn" href="downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif" download>⬇ Download .TIF (zeros-outside)</a>
-        <a class="btn" href="downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.zip" download>⬇ Download .ZIP</a>
+      <li><strong>One-Click Research Downloads:</strong><br>
+        <a class="btn" href="downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif" download>⬇ Download Format-Valid .TIF — DO NOT SUBMIT (zeros-outside)</a>
+        <a class="btn" href="downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.zip" download>⬇ Download .ZIP — DO NOT SUBMIT</a>
       </li>
     </ul>
   </section>
 
   <section>
-    <h2>2. Step-by-Step DrivenData Submission Instructions (Human Selector Step Only)</h2>
-    <p class="muted">
-      DrivenData enforces a strict rolling <strong>3 submissions per 7 days</strong> cap. Do <strong>not</strong> upload
-      any NaN-outside file from <code>releases/</code>; always use the <code>-zeros.tif</code> (or single-TIFF <code>-zeros.zip</code>)
-      from <code>docs/downloads/</code>.
+    <h2>2. Conditional DrivenData Submission Procedure (Human Selector Step Only)</h2>
+    <p>
+      <strong>Do not perform these steps with the current artifact.</strong> They document the portal form procedure
+      only for an artifact whose machine-readable audit records <code>submission_eligible: true</code> (or after an explicit
+      human-selector waiver scoping the literal 3-px dot-overlap check to sparse dot-field submissions). DrivenData enforces a rolling
+      <strong>3 submissions per 7 days</strong> cap; never upload any NaN-outside file from <code>releases/</code>.
     </p>
     <ol>
       <li>
-        <strong>Verify SHA-256 checksum locally after downloading:</strong>
+        <strong>Verify SHA-256 checksum locally after downloading the zeros-outside GeoTIFF:</strong>
         <pre>sha256sum h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif
 # Expected: 9febfbd7e301d708b0f60df08dc4add6bd5bd442909ea653bcd2a83a92d36262</pre>
       </li>
       <li>
         <strong>Open the DrivenData Competition #306 Submission Page:</strong><br>
-        Navigate while signed in to <code>https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/</code>.
+        Navigate while signed in to <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/</a>.
       </li>
       <li>
-        <strong>Upload File:</strong> Select <code>h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif</code>
-        (or <code>h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.zip</code> if the portal requests a single-TIFF ZIP).
+        <strong>Upload File:</strong> Select the zeros-outside <code>.tif</code> (or single-TIFF <code>-zeros.zip</code>) whose audit records <code>submission_eligible: true</code>.
       </li>
       <li>
         <strong>Enter Unique Submission Identification &amp; Note (&le;140 chars):</strong>
@@ -163,9 +164,19 @@ Portal Note     : SCARPDIPOLE f42dipole: 15815 off-H19 scarp-dipole dots + 21839
         <strong>Record Organizer Receipt Back Into Ledger:</strong><br>
         Once DrivenData returns an official score, record the exact <code>ORGANIZER-CONFIRMED</code> score and UTC timestamp in
         <code>ledger/submissions.csv</code> under row <code>h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987</code>.
-        Never pair sibling doses (<code>f45dipole</code>, <code>f50dipole</code>) in the same weekly window.
+        Never pair sibling doses (<code>f45dipole</code>, <code>f50dipole</code>) in the same weekly window, and never report local <code>HOLDOUT-DTI</code> as an organizer score.
       </li>
     </ol>
+  </section>
+
+  <section>
+    <h2>3. Parallel &amp; Historical Research Deliverables (All Blocked Under Literal Rule)</h2>
+    <ul>
+      <li><strong>STRAINBREAK f60s2i:</strong> <code>HOLDOUT-DTI 0.005487</code>; 89 public rasters &gt;70% overlap; <code>verdict: negative</code> — DO NOT SUBMIT (<a href="downloads/strainbreak_run_card.json">run card</a>).</li>
+      <li><strong>ANASIG f45Atop:</strong> <code>HOLDOUT-DTI 0.004967</code>; below holdout best &amp; 17GEMSDOE public witness stop; <code>verdict: negative</code> — DO NOT SUBMIT (<a href="downloads/anasig_run_card.json">run card</a>).</li>
+      <li><strong>BREAKLINE: DUPLICATE — DO NOT SUBMIT.</strong> <code>BREAKLINE f45Ltop</code> (<code>HOLDOUT-DTI 0.004861</code>) has 100% forward overlap against <code>17GEMSDOE E-proba</code> and exceeds 70% overlap against 54 sparse/discriminating priors (<a href="downloads/breakline_public_registry_uniqueness.json">full audit</a> · <a href="downloads/breakline_public_registry_witness17.json">witness receipt</a>).</li>
+      <li><strong>visible-collar-r0-excluded:</strong> <code>131</code> public rasters &gt;70% overlap and <code>-77.94%</code> collapse on off-catalogue <code>USGS SGMC</code> — DO NOT SUBMIT (<a href="downloads/public_registry_uniqueness.json">public audit</a>).</li>
+    </ul>
   </section>
 </div>
 </body>

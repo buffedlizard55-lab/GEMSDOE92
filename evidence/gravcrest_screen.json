@@ -1,0 +1,71 @@
+{
+  "evidence_class": "PROXY-SCREEN",
+  "n_far": 16944,
+  "sgmc_truth_px": 62703,
+  "surfaces": {
+    "breakline_L_baseline": {
+      "sym_auc": 0.621604,
+      "auc": 0.621604,
+      "far_only_sgmc_dti": 0.072325,
+      "far_only_fixedcat_dti": 0.002887,
+      "far_pool": 3974627
+    },
+    "crestA_abshg_x_cohgrav": {
+      "sym_auc": 0.53391,
+      "auc": 0.53391,
+      "far_only_sgmc_dti": 0.005259,
+      "far_only_fixedcat_dti": 0.003478,
+      "far_pool": 3974627
+    },
+    "crestB_gradhg_x_cohgrav": {
+      "sym_auc": 0.539567,
+      "auc": 0.539567,
+      "far_only_sgmc_dti": 0.016145,
+      "far_only_fixedcat_dti": 0.003852,
+      "far_pool": 3974627
+    },
+    "crestC_gravslope_x_cohgrav": {
+      "sym_auc": 0.54972,
+      "auc": 0.54972,
+      "far_only_sgmc_dti": 0.005477,
+      "far_only_fixedcat_dti": 0.003255,
+      "far_pool": 3974627
+    },
+    "strainbreak_L_x_dilat": {
+      "sym_auc": 0.587003,
+      "auc": 0.587003,
+      "far_only_sgmc_dti": 0.040133,
+      "far_only_fixedcat_dti": 0.003905,
+      "far_pool": 3974627
+    },
+    "strainbreak_L_x_2ndinv": {
+      "sym_auc": 0.586453,
+      "auc": 0.586453,
+      "far_only_sgmc_dti": 0.058377,
+      "far_only_fixedcat_dti": 0.003386,
+      "far_pool": 3974627
+    },
+    "seismic_prox": {
+      "sym_auc": 0.524689,
+      "auc": 0.524689,
+      "far_only_sgmc_dti": 0.020558,
+      "far_only_fixedcat_dti": 0.002169,
+      "far_pool": 3974627
+    }
+  },
+  "R0_full": {
+    "sgmc_dti": 0.09606,
+    "fixedcat_dti": 0.006709,
+    "dots": 37654
+  },
+  "visible_collar_full": {
+    "sgmc_dti": 0.021192,
+    "fixedcat_dti": 0.129546,
+    "dots": 37654
+  },
+  "breakline_f45_full": {
+    "sgmc_dti": 0.126105,
+    "fixedcat_dti": 0.007746,
+    "dots": 37654
+  }
+}

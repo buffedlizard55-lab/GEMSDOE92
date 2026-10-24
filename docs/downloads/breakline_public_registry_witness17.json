@@ -1,0 +1,77 @@
+{
+  "schema": "gemsdoe92-public-registry-uniqueness.v1",
+  "reviewed_utc": "2026-10-24T16:08:38.498069+00:00",
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "binding_rule": "literal: absolute Spearman >0.90 OR >70% of candidate dots within 3 px of any registry raster; no representation exemption",
+  "candidate": {
+    "name": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0",
+    "sha256": "cd9c8a564588e6542b379cd36cbe05fc6da3be07b8edbc542bf737336907810e",
+    "dots": 37654
+  },
+  "inventory": {
+    "owner": "buffedlizard55-lab",
+    "scan_source": "current GitHub API",
+    "matching_public_repositories": 1,
+    "default_branch_trees_complete": 1,
+    "tree_errors": 0,
+    "truncated_trees": 0,
+    "submission_tiff_paths": 5,
+    "unique_git_blobs": 5,
+    "download_verified": 5,
+    "download_failures": 0,
+    "one_band_exact_template_grid_rasters_compared": 5,
+    "exclusions": {
+      "not_single_band_or_grid_mismatch": 0,
+      "invalid_tiff": 0
+    },
+    "scope": "Current public default branches; TIFF paths under docs/downloads/, releases/, and submission directories; unique Git blobs. Does not cover history, private repositories, other owners, zip-only objects, or site-hosted objects not in those paths."
+  },
+  "preplacement_surface": {
+    "status": "NOT_CHECKED: actual lane surface not supplied",
+    "unique_under_literal_rule": false
+  },
+  "final_dots": {
+    "registries_checked": 5,
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "worst_abs_spearman": 0.03370629029395908,
+    "worst_rho": 0.03370629029395908,
+    "worst_rho_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_A-verified-01563-support_c5ea501e_20260930T021105Z.tif",
+    "worst_forward_overlap": 1.0,
+    "worst_overlap_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "rasters_over_70pct_overlap": 1,
+    "duplicate_examples": [
+      {
+        "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "forward_overlap": 1.0,
+        "positive_pixels": 5167373,
+        "spearman": 0.03159061184613562
+      }
+    ]
+  },
+  "binding_witness": {
+    "worst_forward_overlap": {
+      "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "bytes": 25065181,
+      "forward_overlap": 1.0
+    },
+    "full_footprint_surface": {
+      "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "bytes": 25065181,
+      "positive_pixels_in_footprint": 5167373,
+      "forward_overlap": 1.0,
+      "spearman": 0.03159061184613562
+    }
+  },
+  "verdict": "negative \u2014 duplicate under literal registry rule; stop and do not spend a weekly slot",
+  "witness_only": true,
+  "scan_complete_for_declared_scope": false,
+  "candidate_file_sha256": "cd9c8a564588e6542b379cd36cbe05fc6da3be07b8edbc542bf737336907810e",
+  "cache_index": ".cache/gemsdoe_public_registry/witness_registry_index.json"
+}

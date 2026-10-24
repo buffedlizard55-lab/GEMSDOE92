@@ -117,6 +117,7 @@ def main() -> int:
         else:
             variant = primary.stem.removesuffix("-zeros")
             audit_path = primary.with_name(variant + "-audit.json")
+            card_rel_from_doc = None
             if not audit_path.is_file():
                 problems.append(f"no audit receipt beside the primary: {audit_path.name}")
             else:
@@ -134,8 +135,12 @@ def main() -> int:
                 if public.get("candidate_hash_matches_scan") is not True:
                     problems.append("public registry audit is absent or not for these exact candidate bytes")
                 if public.get("unique_under_literal_rule") is not False or public.get("stop_required") is not True:
-                    problems.append("site audit must preserve the literal duplicate stop verdict")
-            for card_rel in ("evidence/run_card.json", "evidence/scarpdipole_run_card.json"):
+                    problems.append("site audit must preserve the literal duplicate stop verdict (binding public witness or full-scan duplicate)")
+                card_rel_from_doc = doc.get("run_card")
+            card_rels = ["evidence/run_card.json", "evidence/scarpdipole_run_card.json"]
+            if card_rel_from_doc and card_rel_from_doc not in card_rels:
+                card_rels.append(card_rel_from_doc)
+            for card_rel in card_rels:
                 card_path = ROOT / card_rel
                 if not card_path.is_file():
                     problems.append(f"run card missing: {card_rel}")

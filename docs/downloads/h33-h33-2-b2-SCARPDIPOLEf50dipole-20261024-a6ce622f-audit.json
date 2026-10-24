@@ -1,9 +1,10 @@
 {
   "schema": "gemsdoe92.download-audit.v2",
-  "generated_utc": "2026-10-24T17:47:01.178913+00:00",
+  "generated_utc": "2026-10-24T18:10:33.965449+00:00",
   "id": "h33-h33-2-b2-SCARPDIPOLEf50dipole-20261024-a6ce622f",
   "submission_name": "GEMSDOE92-SCARPDIPOLE-f50dipole-20261024",
   "file": "docs/downloads/h33-h33-2-b2-SCARPDIPOLEf50dipole-20261024-a6ce622f-zeros.tif",
+  "run_card": "evidence/scarpdipole_run_card.json",
   "sha256": "f7c6a7bdc4b22da1acf3d9e4ada87981704bb18f98c7387159174c003b92482e",
   "sha256_zeros": "f7c6a7bdc4b22da1acf3d9e4ada87981704bb18f98c7387159174c003b92482e",
   "n_dots": 37654,
@@ -169,7 +170,7 @@
     "worst_abs_spearman": 0.2306532506199603,
     "worst_local_3px_overlap": 0.616641,
     "worst_local_overlap_raster": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
-    "prior_local_downloads_checked": 10,
+    "prior_local_downloads_checked": 14,
     "all_prior_local_le_70pct": true
   },
   "public_registry_uniqueness": {

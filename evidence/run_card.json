@@ -1,6 +1,6 @@
 {
   "schema": "gemsdoe-parallel-run-card.v1",
-  "generated_utc": "2026-10-24T17:47:01.179136+00:00",
+  "generated_utc": "2026-10-24T18:10:33.965721+00:00",
   "repository": "buffedlizard55-lab/GEMSDOE92",
   "branch": "arena/5f8cf0f6-gemsdoe92",
   "lane": "SCARPDIPOLE (Hanks-Bucknam-Wallace piedmont scarp-diffusion profile-curvature dipole)",
@@ -132,7 +132,7 @@
       "worst_abs_spearman": 0.2697963911859379,
       "worst_local_3px_overlap": 0.660461,
       "worst_local_overlap_raster": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
-      "prior_local_downloads_checked": 10,
+      "prior_local_downloads_checked": 14,
       "all_prior_local_le_70pct": true
     },
     "public_registry_1300_rasters": {
@@ -171,6 +171,10 @@
     }
   },
   "raster_sha256": "9febfbd7e301d708b0f60df08dc4add6bd5bd442909ea653bcd2a83a92d36262",
+  "sha256": {
+    "zeros": "9febfbd7e301d708b0f60df08dc4add6bd5bd442909ea653bcd2a83a92d36262",
+    "nan": "5bc7d9875b79efd1af8f5940e1447ab70c4c6a4ea4614159eb07e23da3adeda8"
+  },
   "artifact": {
     "download_tif": "docs/downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif",
     "download_zip": "docs/downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.zip",

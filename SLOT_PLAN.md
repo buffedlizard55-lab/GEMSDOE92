@@ -10,7 +10,7 @@
   - Paired Δ vs `parent_B2_visible` (`0.029074`): **`+0.069492 [+0.060008, +0.077790]`** (`3.39×` parent)
   - Paired Δ vs `visible_collar` (`0.046866`): **`+0.051699 [+0.037872, +0.064896]`** (`2.10×` prior holdout high)
 - **Static Final-Raster `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `n = 22,663`, `d_full_catalogue > 2.0 px` pre-punched):**
-  - `SCARPDIPOLE f42dipole`: **`0.006812 [0.005770, 0.008034]`** (`#1` in `GEMSDOE92`)
+  - `SCARPDIPOLE f42dipole`: **`0.006812 [0.005770, 0.008034]`** (`#1` in `GEMSDOE92`, beating `RELIEF p10 = 0.006045`, `STRAINBREAK f60s2i = 0.005487`, `ANASIG f45Atop = 0.004967`, `BREAKLINE f45Ltop = 0.004861`, and `R0 = 0.004006`)
   - Paired Δ vs `R0` (`0.004006`): **`+0.002806 [+0.001946, +0.003686]`**
   - Paired Δ vs `BREAKLINE f45Ltop` (`0.004861`): **`+0.001951 [+0.001091, +0.002781]`**
   - Paired Δ vs `RELIEF p10` (`0.006045`): **`+0.000767 [-0.000090, +0.001595]`**
@@ -18,7 +18,7 @@
   - `SCARPDIPOLE f42dipole`: **`0.107841`** (`+12.26%` above `R0 = 0.096060`; vs `visible_collar = 0.021192`, `-77.94%`).
 - **Leakage Canary (`<= 0.90` gate):** Max raw band symmetric AUC = **`0.5531`**; `SCARPDIPOLE S_pct` symmetric AUC = **`0.6328`** (`PASS`).
 - **`REGISTRY-MEASUREMENT` (`1,300` compatible rasters across `102` public `buffedlizard55-lab` GEMSDOE repos):**
-  - **Local `GEMSDOE92` registry (`20` prior rasters):** `PASS` (`worst_local_3px_overlap = 0.6605 <= 0.70`, `worst |ρ| = 0.2698 <= 0.90`).
+  - **Local `GEMSDOE92` registry (`27` prior/sibling rasters):** `PASS` (`worst_local_3px_overlap = 0.6605 <= 0.70`, `worst |ρ| = 0.2698 <= 0.90`).
   - **All sparse dotted public submissions (`<= 60,000` dots, `n = 1,004` across all `102` repos):** **`0 / 1,004` rasters `> 70%` overlap** (`max = 0.6877` vs `GEMSDOE48/H57-ds-relief-augmented`; `max |ρ| = 0.2742`).
   - **Binding literal all-rasters rule (no continuous-surface exemption):** **`STOP` (`verdict: negative`, `submission_eligible: false`)** because `17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` is strictly positive on all **`5,167,373 / 5,167,373`** footprint pixels (`100.0%` forward 3-px overlap for every nonempty submission; `123` dense/wide rasters `>70%` total; global `max |ρ| = 0.3152 << 0.90`).
 
@@ -34,9 +34,12 @@ No weekly DrivenData submission slot was spent in this session. Promotion to a l
 | **`SCARPDIPOLE f42dipole` (Primary)** | **37,654** | **`0.098565` `[0.0880, 0.1090]`** | **`0.006812` `[0.0058, 0.0080]`** | **`0.107841` (`+12.3%`)** | **`0.6605` (PASS)** | **`0 / 1,004` (`max 0.6877`)** | **`negative` (`17GEMSDOE` 100% surface)** | **Hold slot unless selector scopes gate to sparse dot fields (`#1` technical candidate)** |
 | `SCARPDIPOLE f45dipole` | 37,654 | `0.097641` `[0.0871, 0.1075]` | `0.006719` `[0.0056, 0.0079]` | `0.107849` (`+12.3%`) | `0.6634` (PASS) | `0 / 1,004` (`max 0.6657`) | `negative` (`17GEMSDOE` 100% surface) | Dose sibling — never pair with `f42dipole` in same week |
 | `SCARPDIPOLE f50dipole` | 37,654 | `0.094286` `[0.0840, 0.1036]` | `0.006516` `[0.0054, 0.0077]` | `0.107692` (`+12.1%`) | `0.6665` (PASS) | `0 / 1,004` (`max 0.6348`) | `negative` (`17GEMSDOE` 100% surface) | Dose sibling — never pair with `f42dipole` in same week |
-| `visible-collar-r0-excluded` | 37,654 | `0.046866` `[0.0402, 0.0533]` | N/A *(full-cat collar)* | `0.021192` (`-77.9%`) | `0.0352` vs `BREAKLINE` | Fails (`11GEMSDOE` / collar priors) | `negative` (`131` rasters `>70%`) | **Do NOT submit** — collapses `-77.9%` on off-catalogue `SGMC` |
-| `BREAKLINE f45Ltop` | 37,654 | — | `0.004861` `[0.0040, 0.0058]` | `0.126105` (`+31.3%`) | `0.5500` vs `R0` | Overlaps `54` `<70%`-halo rasters | `negative` (`122` rasters `>70%`) | Superseded on both holdout regimes by `SCARPDIPOLE f42dipole` |
 | `RELIEF p10` / `DILATATION p12` | 37,654 | — | `0.006045` / `0.005781` | `0.087245` (`-9.2%`) | `0.9938` / `0.9937` | Fails (`~99.4%` vs `R0`) | `negative` (`R0` duplicate) | **Do NOT submit** — `99.4%` duplicate of `R0` |
+| `STRAINBREAK f60s2i` | 37,654 | — | `0.005487` `[0.0045, 0.0064]` | `0.105160` (`+9.5%`) | `0.5500` (PASS) | Fails (`max 0.7105`) | `negative` (`89` rasters `>70%`) | Superseded on both holdout & SGMC by `SCARPDIPOLE f42dipole` |
+| `ANASIG f45Atop` | 37,654 | — | `0.004967` `[0.0041, 0.0059]` | `0.080556` (`-16.1%`) | `0.5500` (PASS) | Below holdout best | `negative` (`17GEMSDOE` witness) | Superseded on both holdout & SGMC by `SCARPDIPOLE f42dipole` |
+| `BREAKLINE f45Ltop` | 37,654 | — | `0.004861` `[0.0040, 0.0058]` | `0.126105` (`+31.3%`) | `0.5500` vs `R0` | Overlaps `54` `<70%`-halo rasters | `negative` (`122` rasters `>70%`) | Superseded on holdout by `SCARPDIPOLE f42dipole` |
+| `SCARPPOL f33/f38/f45Stop` | 37,654 | — | *(stopped pre-eval)* | — | `0.9130` vs `BREAKLINE` | Fails (`>90%` vs `BREAKLINE`) | `negative` (duplicate stop) | **Do NOT submit** — duplicate of `BREAKLINE` |
+| `visible-collar-r0-excluded` | 37,654 | `0.046866` `[0.0402, 0.0533]` | N/A *(full-cat collar)* | `0.021192` (`-77.9%`) | `0.0352` vs `BREAKLINE` | Fails (`11GEMSDOE` / collar priors) | `negative` (`131` rasters `>70%`) | **Do NOT submit** — collapses `-77.9%` on off-catalogue `SGMC` |
 | `TIPGAP far18f33` / `STEPOVER` | 37,654 / 5,000 | — | `0.002724` / `0.000000` | — | `0.6700` / `<0.70` | — | `negative` (below `R0` holdout) | **Do NOT submit** — below `R0` on holdout |
 
 ---

@@ -2,26 +2,28 @@
 
 **Operating Principles:** **Maximize P(Win)** · **Own the Outcome** · **Zero Hallucinations** · **Automated Fail-Closed Verification**
 
+> **Operating Contract:** Read this `README.md` and [`SESSION_PROMPT.md`](SESSION_PROMPT.md) at the start of every session. Every experiment adheres strictly to the Parallel-Run Protocol (lane discipline, shared `evaluate_holdout.py` + `submission_writer.py`, single-feature leakage canary, pre-placement + final-dot registry uniqueness, and machine-readable Run Card JSON).
+
 > ### CURRENT PRIMARY ARTIFACT STATUS (`2026-10-24`)
 > - **File:** [`docs/downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif`](docs/downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.tif) ([`.zip`](docs/downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-zeros.zip) · [`-audit.json`](docs/downloads/h33-h33-2-b2-SCARPDIPOLEf42dipole-20261024-5bc7d987-audit.json) · [`scarpdipole_run_card.json`](evidence/scarpdipole_run_card.json))
-> - **Download & Format Clearance:** **OK TO DOWNLOAD (`10/10` automated format & portal gates PASS)** — single-band `float32`, `3730 × 3292`, `EPSG:32611`, exact sample geotransform, **`0` NaN inside or outside footprint**, values strictly in `[0.0, 1.0]`, `37,654` unit-mass dots, `0.0` mass on `existing_faults`, `min(d_cat) = 2.2361 px` (eliminates portal error `Predicted values must be in range [0, 1]`).
-> - **Weekly Slot Clearance:** **NOT CLEARED FOR A WEEKLY SLOT WITHOUT HUMAN SELECTOR WAIVER (`verdict: negative` under literal all-rasters rule)** — `SCARPDIPOLE f42dipole` passes **100% of sparse dotted public submissions (`0 / 1,004` overlaps `> 70%` across all `<= 60,000`-dot submissions in all `102` public GEMSDOE repos; `max = 68.77%`)** and **`0 / 20` local rasters (`max = 66.05%`)**, with global `max |Spearman ρ| = 0.3152 << 0.90`. However, under the un-waived literal all-rasters positive-support check (`finite > 0`), `17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` is strictly positive on all **`5,167,373 / 5,167,373`** footprint pixels (`100.0%` overlap for **every** nonempty submission; see `saturation_certificate` in [`evidence/scarpdipole_public_registry_uniqueness.json`](evidence/scarpdipole_public_registry_uniqueness.json)).
-> - **GitHub Pages Site & Submission Guide:** Landing page [`docs/index.html`](docs/index.html) (`https://buffedlizard55-lab.github.io/GEMSDOE92/`) · Step-by-step DrivenData portal upload guide [`docs/SUBMIT.html`](docs/SUBMIT.html).
+> - **Download & Format Clearance:** **✅ OK TO DOWNLOAD (`10/10` automated format & portal gates PASS)** — single-band `float32`, `3730 × 3292`, `EPSG:32611`, exact sample geotransform, **`0` NaN inside or outside footprint**, values strictly in `[0.0, 1.0]`, `37,654` unit-mass dots, `0.0` mass on `existing_faults`, `min(d_cat) = 2.2361 px` (eliminates portal error `Predicted values must be in range [0, 1]`).
+> - **Weekly Slot Clearance:** **⛔ DO NOT SUBMIT / NOT CLEARED FOR A WEEKLY SLOT WITHOUT HUMAN SELECTOR WAIVER (`verdict: negative` under literal all-rasters rule)** — `SCARPDIPOLE f42dipole` passes **100% of sparse dotted public submissions (`0 / 1,004` overlaps `> 70%` across all `<= 60,000`-dot submissions in all `102` public GEMSDOE repos; `max = 68.77%`)** and **`0 / 27` local rasters (`max = 66.05%`)**, with global `max |Spearman ρ| = 0.3152 << 0.90`. However, under the un-waived literal all-rasters positive-support check (`finite > 0`), `17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` is strictly positive on all **`5,167,373 / 5,167,373`** footprint pixels (`100.0%` overlap for **every** nonempty submission; see `saturation_certificate` in [`evidence/scarpdipole_public_registry_uniqueness.json`](evidence/scarpdipole_public_registry_uniqueness.json)).
+> - **GitHub Pages Site & Submission Guide:** Landing page [`docs/index.html`](docs/index.html) (`https://buffedlizard55-lab.github.io/GEMSDOE92/`) · Executive summary & conditional portal procedure [`docs/SUBMIT.html`](docs/SUBMIT.html) ([`docs/executive-summary.html`](docs/executive-summary.html)).
 
 ---
 
 ## 1. Executive Summary & Completed Session Objectives
 
 1. **Prior-Session Queued Next Steps Executed First (`docs/NEXT_STEPS.md`):**
-   - **Full 1,300-raster public-registry audit on `BREAKLINE f45Ltop` ([`evidence/breakline_public_registry_uniqueness.json`](evidence/breakline_public_registry_uniqueness.json)):** Scanned `102` public `buffedlizard55-lab` GEMSDOE repositories (`1,306` unique SHA-verified blobs; `1,294` non-BREAKLINE compatible rasters). `BREAKLINE f45Ltop` exceeded `70%` overlap on `122` rasters (`68` space-filling `>=70%`-halo surfaces **plus `54` discriminating `<70%`-halo rasters**, up to `91.30%` vs `GEMSDOE3/coverage-v3-wide`) -> confirmed `negative`.
+   - **Full 1,300-raster public-registry audit on `BREAKLINE f45Ltop` ([`evidence/breakline_public_registry_uniqueness.json`](evidence/breakline_public_registry_uniqueness.json)):** Scanned `102` public `buffedlizard55-lab` GEMSDOE repositories (`1,306` unique SHA-verified blobs; `1,294` non-BREAKLINE compatible rasters, both pre-placement surface and final dots). `BREAKLINE f45Ltop` exceeded `70%` overlap on `122` rasters (`68` space-filling `>=70%`-halo surfaces **plus `54` discriminating `<70%`-halo rasters**, up to `91.30%` vs `GEMSDOE3/coverage-v3-wide`) -> confirmed `negative`.
    - **Off-catalogue `USGS SGMC` control & holdout confound audit on `visible-collar-r0-excluded` ([`evidence/scarpdipole_proxy_audit.json`](evidence/scarpdipole_proxy_audit.json)):** `visible-collar` collapses **`-77.94%`** vs `R0` on off-catalogue `USGS SGMC` bedrock faults (`0.021192` vs `0.096060`, `n = 62,703`), and its previously quoted `11.7×` holdout ratio was proved to be a masking confound (comparing fold-fair `d_visible > 2.0` `0.046866` against pre-punched static `R0` `0.004006` rather than fold-fair `parent_B2_visible` `0.029074`, where the true ratio is `1.61×`).
-   - **Defect repairs:** Fixed trailing-comma JSON syntax error in `evidence/public_registry_uniqueness.json` and `docs/downloads/public_registry_uniqueness.json`, resolved stale `BREAKLINE` primary copy in `docs/executive-summary.html` & `docs/submit.html`, and removed hardcoded run-card path in `scripts/check_site.py`.
+   - **Defect repairs:** Repaired JSON syntax errors in `evidence/public_registry_uniqueness.json` and `docs/downloads/public_registry_uniqueness.json`, generalized fail-closed `scripts/audit_public_registry.py`, resolved stale subpage copy in `docs/executive-summary.html` & `docs/submit.html`, and generalized `scripts/check_site.py` across all 17 served `*-zeros.tif` downloads.
 
 2. **New Top Geological Candidate Implemented (`SCARPDIPOLE` — [`gems/scarpdipole.py`](gems/scarpdipole.py)):**
    - Formulated and screened **5 untried geological hypotheses** ([`docs/HYPOTHESES_20261024_SCARPDIPOLE.md`](docs/HYPOTHESES_20261024_SCARPDIPOLE.md)) before building any raster.
-   - Built a 3-dose ladder (`f42dipole` primary, `f45dipole`, `f50dipole`) via shared `vendor/gems57/submission_writer.py`:
+   - Built a 3-dose ladder (`f42dipole` primary, `f45dipole`, `f50dipole`) via shared `vendor/gems57/submission_writer.py`, differentiating BOTH the `H19-5` keep stage and `>3 px` off-skeleton emission:
      - **Fold-Fair `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `n = 22,663`, `d_visible > 2 px`):** **`0.098565 [0.087985, 0.108974]`** — **#1 in `GEMSDOE92`** (`3.39×` `parent_B2_visible = 0.029074`; `2.10×` `visible_collar = 0.046866`; paired Δ vs `visible_collar` `+0.051699 [+0.037872, +0.064896]`).
-     - **Static Final-Raster `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `n = 22,663`, `d_full_cat > 2 px`):** **`0.006812 [0.005770, 0.008034]`** — **#1 in `GEMSDOE92`** (beats `R0 = 0.004006`, `BREAKLINE f45Ltop = 0.004861`, and `RELIEF p10 = 0.006045`).
+     - **Static Final-Raster `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `n = 22,663`, `d_full_cat > 2 px`):** **`0.006812 [0.005770, 0.008034]`** — **#1 in `GEMSDOE92`** (beats `RELIEF p10 = 0.006045`, `STRAINBREAK f60s2i = 0.005487`, `ANASIG f45Atop = 0.004967`, `BREAKLINE f45Ltop = 0.004861`, and `R0 = 0.004006`).
      - **Off-Catalogue `USGS SGMC` DTI (`PROXY`, `n = 62,703`):** **`0.107841`** (`+12.26%` above `R0 = 0.096060`).
      - **Single-Feature Leakage Canaries (`<= 0.90` gate):** Max raw band `symAUC = 0.5531`; `SCARPDIPOLE S_pct` `symAUC = 0.6328` (`PASS`).
 
@@ -36,7 +38,7 @@
 | `LEADERBOARD-SNAPSHOT` | Public leaderboard reference values reported in prompt/prior audits (`0.4413` #1 snapshot recorded 2026-10-24; `0.3195` earlier prompt snapshot). |
 | `HOLDOUT-DTI` | Local buffered whole-segment hide-and-recover evaluation via shared `vendor/gems57/evaluate_holdout.py` (`gems57-pooled-hide-v2`, `n = 22,663` withheld positives across 8 folds, `α = 0.2`, `β = 0.8`, `300 m` triangular kernel, 1,000 paired 20 km spatial-cluster bootstrap draws). Never comparable numerically to live scores. |
 | `PROXY` | Off-catalogue `USGS SGMC` bedrock-fault evaluation (`n = 62,703` pixels `>3 px` from `existing_faults`, `metric.dti_binary`). |
-| `REGISTRY-MEASUREMENT` | Measured full-footprint Spearman `ρ` and 3-px forward dot overlap against local (`n = 20`) and cached public (`n = 1,300` across `102` repos) rasters. |
+| `REGISTRY-MEASUREMENT` | Measured full-footprint Spearman `ρ` and 3-px forward dot overlap against local (`n = 27`) and cached public (`n = 1,300` across `102` repos) rasters. |
 
 ---
 
@@ -79,18 +81,20 @@ Full equations, mimic analysis, and controlled screening (`20,710` kept `R0` + `
 
 ---
 
-## 5. Audited Evaluation Summary (`SCARPDIPOLE` vs Prior `GEMSDOE92` Lanes)
+## 5. Audited Evaluation Summary (`SCARPDIPOLE` vs All Merged `GEMSDOE92` Lanes)
 
 All `HOLDOUT-DTI` numbers come from shared `vendor/gems57/evaluate_holdout.py` (`gems57-pooled-hide-v2`, `8` buffered whole-component folds, seeds `20` & `30`, `22,663` withheld positives, `1,000` paired 20 km spatial-cluster bootstrap draws). Full machine-readable output: [`evidence/scarpdipole_proxy_audit.json`](evidence/scarpdipole_proxy_audit.json).
 
-| Arm | Dots (`on H19-5` / `>3 px far`) | Fold-Fair `HOLDOUT-DTI` (`d_vis > 2 px`) `[95% CI]` | Static `HOLDOUT-DTI` (`d_cat > 2 px`) `[95% CI]` | Off-Catalogue `USGS SGMC` (`PROXY`, `n=62,703`) | Local `<=3 px` Max Overlap (`n=20`) | Public Sparse `<=60k` Dots `>70%` (`n=1,004`) | Public All-Rasters (`n=1,300`) Binding Verdict |
+| Arm | Dots (`on H19-5` / `>3 px far`) | Fold-Fair `HOLDOUT-DTI` (`d_vis > 2 px`) `[95% CI]` | Static `HOLDOUT-DTI` (`d_cat > 2 px`) `[95% CI]` | Off-Catalogue `USGS SGMC` (`PROXY`, `n=62,703`) | Local `<=3 px` Max Overlap (`n=27`) | Public Sparse `<=60k` Dots `>70%` (`n=1,004`) | Public All-Rasters (`n=1,300`) Binding Verdict |
 |---|---:|---|---|---|---:|---:|---|
 | **`SCARPDIPOLE f42dipole` (Primary)** | `37,654` (`21,839` / `15,815`) | **`0.098565 [0.0880, 0.1090]`** (`#1`) | **`0.006812 [0.0058, 0.0080]`** (`#1`) | **`0.107841`** (`+12.26%` vs `R0`) | **`0.6605`** (`PASS`) | **`0 / 1,004`** (`max 0.6877`) | `negative` (`17GEMSDOE` 100% surface) |
 | `SCARPDIPOLE f45dipole` | `37,654` (`20,710` / `16,944`) | `0.097641 [0.0871, 0.1075]` | `0.006719 [0.0056, 0.0079]` | `0.107849` (`+12.27%` vs `R0`) | `0.6634` (`PASS`) | `0 / 1,004` (`max 0.6657`) | `negative` (`17GEMSDOE` 100% surface) |
 | `SCARPDIPOLE f50dipole` | `37,654` (`18,827` / `18,827`) | `0.094286 [0.0840, 0.1036]` | `0.006516 [0.0054, 0.0077]` | `0.107692` (`+12.11%` vs `R0`) | `0.6665` (`PASS`) | `0 / 1,004` (`max 0.6348`) | `negative` (`17GEMSDOE` 100% surface) |
-| `visible-collar-r0-excluded` | `37,654` (`0` / `37,654` collar) | `0.046866 [0.0402, 0.0533]` | N/A *(full-cat collar)* | `0.021192` (`-77.94%` vs `R0`) | `0.0352` | Fails (`11GEMSDOE`) | `negative` (`131` rasters `>70%`) |
-| `BREAKLINE f45Ltop` | `37,654` (`20,710` / `16,944`) | — | `0.004861 [0.0040, 0.0058]` | `0.126105` (`+31.28%` vs `R0`) | `0.5500` | Fails `54` `<70%`-halo rasters | `negative` (`122` rasters `>70%`) |
 | `RELIEF p10` | `37,654` (`37,654` / `0`) | — | `0.006045 [0.0052, 0.0069]` | `0.087245` (`-9.18%` vs `R0`) | `0.9938` (`DUP`) | Fails (`99.38%` vs `R0`) | `negative` (`R0` duplicate) |
+| `STRAINBREAK f60s2i` | `37,654` (`15,062` / `22,592`) | — | `0.005487 [0.0045, 0.0064]` | `0.105160` (`+9.47%` vs `R0`) | `0.5500` (`PASS`) | Fails (`max 0.7105`) | `negative` (`89` rasters `>70%`) |
+| `ANASIG f45Atop` | `37,654` (`20,710` / `16,944`) | — | `0.004967 [0.0041, 0.0059]` | `0.080556` (`-16.14%` vs `R0`) | `0.5500` (`PASS`) | Below holdout best | `negative` (`17GEMSDOE` witness) |
+| `BREAKLINE f45Ltop` | `37,654` (`20,710` / `16,944`) | — | `0.004861 [0.0040, 0.0058]` | `0.126105` (`+31.28%` vs `R0`) | `0.5500` (`PASS`) | Fails `54` `<70%`-halo rasters | `negative` (`122` rasters `>70%`) |
+| `visible-collar-r0-excluded` | `37,654` (`0` / `37,654` collar) | `0.046866 [0.0402, 0.0533]` | N/A *(full-cat collar)* | `0.021192` (`-77.94%` vs `R0`) | `0.0352` | Fails (`11GEMSDOE`) | `negative` (`131` rasters `>70%`) |
 | `R0` (`h33-h33-2-b2`, parent `CLAIM 0.2778`) | `37,654` (`37,654` / `0`) | `0.029074 [0.0258, 0.0324]` *(as `parent_B2_visible`)* | `0.004006 [0.0034, 0.0047]` | `0.096060` (`baseline`) | `1.0000` (self) | — | Reference parent (`GEMSDOE32`) |
 
 ---
@@ -106,7 +110,7 @@ All `HOLDOUT-DTI` numbers come from shared `vendor/gems57/evaluate_holdout.py` (
 | USGS GeoDAWN Radiometric/Aeromagnetic Compilation | https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7 | Pinned 4-band subset `.cache/gems_inputs/external/geodawn_rad_u8.tif` SHA-256 verified (`12/12 OK`). |
 | DOE GDR #1391 / GBCGE INGENIOUS Dataset | https://gdr.openei.org/submissions/1391 · https://gbcge.org/current-projects/ingenious/ | Pinned footprint thermal well/spring table `.cache/gems_inputs/external/gdr_wellspring_in_footprint.csv` (`27,092` rows) SHA-256 verified. |
 | USGS SGMC Bedrock Fault Compilation | https://www.sciencebase.gov/catalog/item/5888bf4fe4b05ccb964bab9d | Pinned 100 m off-catalogue control `.cache/gems_inputs/derived_sgmc_faults_100m_u8.tif` (`62,703` eval pixels `>3 px` from `existing_faults`) SHA-256 verified. |
-| CRS `EPSG:32611` & Tversky Index Reference | https://epsg.io/32611 · https://en.wikipedia.org/wiki/Tversky_index | Verified in raster headers (` NAD83 / WGS84 UTM Zone 11N`, `100 m` pixels, `3730 × 3292`) and `vendor/gems57/metric.py` (`α=0.2, β=0.8`). |
+| CRS `EPSG:32611` & Tversky Index Reference | https://epsg.io/32611 · https://en.wikipedia.org/wiki/Tversky_index | Verified in raster headers (`NAD83 / WGS84 UTM Zone 11N`, `100 m` pixels, `3730 × 3292`) and `vendor/gems57/metric.py` (`α=0.2, β=0.8`). |
 | Public GEMSDOE Submission Registry (`102` repos) | https://github.com/buffedlizard55-lab | **Verified live via GitHub API + SHA-1 blob cache:** `1,655` TIFF paths -> `1,306` unique blobs -> `1,300` single-band template-grid rasters audited in [`evidence/scarpdipole_public_registry_uniqueness.json`](evidence/scarpdipole_public_registry_uniqueness.json). |
 
 ### Explicit Limitations
@@ -159,13 +163,35 @@ make manifest && make verify && make site && make ledger
 
 See also [`SESSION_PROMPT.md`](SESSION_PROMPT.md), [`IRREGULARITIES.md`](IRREGULARITIES.md), [`SLOT_PLAN.md`](SLOT_PLAN.md), and [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md).
 
-- **Goal:** Review `GEMSDOE92` thoroughly, execute prior-session next steps first, study why `GEMSDOE32` `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros` achieved `0.2778` (owner-reported) and how to beat `0.2778` (noting leaderboard references `0.4413` and `0.3195`), formulate 3–5 ranked untried geological hypotheses before implementing, implement and validate a unique single-band GeoTIFF submission autonomously without human visual inspection, prevent `"Predicted values must be in range [0, 1]"` via all-finite `[0, 1]` zeros-outside encoding, expose one-click download + unmistakable clearance banner + executive summary submission guide on GitHub Pages (`docs/`), complete 3 full implementation/verification/audit passes, and merge a clean PR onto `main`.
-- **Parallel-Run Protocol:**
-  1. **Lane:** Stay in one method. Check registry uniqueness on both pre-placement surface and final dots: `|Spearman ρ| > 0.90` OR `> 70%` of dots within `3 px` of any registry raster's dots => log as duplicate and stop. Never reinterpret thresholds silently.
-  2. **Reuse:** Use shared `evaluate_holdout.py`, `submission_writer.py`, and cached feature stack (`restore_inputs.py`); fix shared tools in-place rather than forking. Holdout = whole-segment buffered hide-and-recover, catalogue features from visible faults only, visible faults masked pixel-exactly, pooled DTI (`α = 0.2`, `β = 0.8`, `300 m` triangular kernel).
-  3. **Provenance Labels:** Strictly label `HOLDOUT-DTI` (with evaluator version, withheld positives, 95% CI) vs `ORGANIZER-CONFIRMED` (from submission receipt); never write projections as scores.
-  4. **Leakage Canary:** Single-feature holdout symmetric AUC `> 0.90` = leakage until proven otherwise.
-  5. **Run Card JSON:** Hypothesis, mechanism, named non-fault mimic, holdout DTI + CI, registry correlation/overlap, raster SHA-256, validator output, submission name + note (`<= 140` chars), verdict `promote` / `negative`.
-  6. **Budget:** Max 3 experiments or 2 hours; promotion to a live weekly DrivenData slot (`3/week`) is a separate human selector step.
+```markdown
+Review the repo.
+
+THE FOLLOWING IS THE HIGHEST URGENCY AND MUST BE FOLLOWED!
+
+MUST GENERATE A UNIQUE TIF SUBMISSION FOR THE COMPETITION. DO NOT COPY A PREVIOUS SUBMISSION UNLESS IT'S FOR LEARNING AND EDUCATION. BUT WE MUST GENERATE A UNIQUE TIF SUBMISSION. IT MUST BE OBVIOUS WHETHER IT IS OK TO DOWNLOAD AND SUBMIT THE GENERATED TIF SUBMISSION.
+
+There should be an easy to download submission tif file as described by the prompt. Read the entire prompt. A lot of sites mention inspection only and a human inspector, but the inspection needs to be done through the project and needs to be validated for submission without human intervention.
+
+PARALLEL-RUN PROTOCOL — read first. This session is one of several running from this same prompt.
+
+1. LANE. Your lane is the single method paragraph below. Stay inside it. If your raster's rank-correlation with any registry raster exceeds [0.90], or more than [70%] of your dots fall within 3 px of one registry raster's dots, you have drifted into another lane: log it as a duplicate and stop. Check this on the surface before placement AND on the final dots.
+
+2. REUSE, DON'T REBUILD. Use the template's cached feature stack, evaluate_holdout.py and submission_writer.py. Holdout = hide-and-recover: withhold whole fault segments with a buffer, derive every catalogue-based feature only from the visible faults, mask visible faults pixel-exactly, score pooled DTI (alpha 0.2, beta 0.8, 300 m triangular kernel). If a shared tool is wrong, fix it once in the template and report it; never keep a private fork.
+
+3. LABEL EVERY NUMBER as HOLDOUT-DTI (evaluator version, number of withheld positives, 95% CI) or ORGANIZER-CONFIRMED (copied from a submission-page receipt). A projection is never written as a score.
+
+4. LEAKAGE CANARY. Test each feature alone on the holdout before trusting any result. AUC above [0.90] means leakage until proven otherwise.
+
+5. RUN CARD. End with one JSON card: hypothesis; mechanism; the named non-fault process that could mimic it; holdout DTI + CI; correlation/overlap vs registry; raster sha256; validator output (no NaN inside the footprint, values in [0,1], CRS/shape/transform match); submission name + note of at most 140 characters; verdict promote / negative. Negative results are deliverables.
+
+6. BUDGET. Stop after [3] experiments or [2] hours. Do not pick submissions: promotion to a real slot is a separate selector step, within the weekly cap shown on the submission page.
+
+WE NEED TO STUDY, ANALYZE, AND UNDERSTAND THE HIGHEST SCORE FROM THE GEMDOE SITE WHERE THE SUBMISSION TIF IS DOWNLOADED FROM WHICH IS THE FOLLOWING:
+https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html
+h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros: 0.2778
+Why and how did this get the highest score and are we able to generate a submission that scores higher than 0.2778?
+Answer the question using Phd level experience, knowledge, and judgement. Then use the answer to generate a unique TIF submission into the competition. Must be unique submission unlike any within the GEMSDOE sites above. Verify working line by line no hallucinations.
+Current competition leaderboard GEMSDOE high score: 0.4413
+```
 
 </details>
