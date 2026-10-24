@@ -1,18 +1,21 @@
-# GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench (`APRONRIDGE` Primary + `HYDROCONDUIT` Hybrid)
+# GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench (`APRONRIDGE free1d` research primary)
 
-> ### ✅ DOWNLOAD STATUS: **FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH**
-> ### ⛔ SUBMISSION / WEEKLY SLOT STATUS: **DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (`verdict: "negative"`, `submission_eligible: false`; DUPLICATE UNDER THE LITERAL REGISTRY RULE)**
+> **Start every session by reading this README, [`SESSION_PROMPT.md`](SESSION_PROMPT.md), and [`docs/REVIEW_CURRENT.md`](docs/REVIEW_CURRENT.md).** The session prompt is the operating contract; current review supersedes historical notes when they conflict. Arena values: **Maximize P(Win)** and **Own the Outcome**.
 >
-> - **Current Primary GeoTIFF (zeros outside, `nodata=None`):** [`docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif`](docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif) · [One-TIFF ZIP](docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.zip)
-> - **SHA-256 (`-zeros.tif`):** `c9e07ba6627672bfd58b08572a19d48aa16ff07a2f95347993550eaaccba8fdd` (`37,654` unit-mass dots, `0.0` outside footprint, `0` catalogue mass)
-> - **Suggested Submission Name (for ledger / human selector record only):** `GEMSDOE92-HYDROCONDUIT-f45hydro-20261024`
-> - **Suggested Form Note (106 / 140 chars):** `h33-h33-2-b2; HYDROCONDUIT f45hydro: 20710 piedmont H19-5 + 16944 off-skel scarp/RTP/GDR dots (>3px H19-5)`
-> - **Automated Gate Receipts:** [Format & Public-Registry Audit JSON](docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-audit.json) (`10/10` `gems.gates` + `13/13` `gems57.validate` PASS — prevents DrivenData error `"Predicted values must be in range [0, 1]"`) · [Protocol Run Card JSON](docs/downloads/hydroconduit_run_card.json)
-> - **Site Pages:** [Main Workbench (`docs/index.html`)](docs/index.html) · [Executive Summary & Submission Form Guide (`docs/executive-summary.html`)](docs/executive-summary.html) · [Detailed Submission Procedure (`docs/SUBMIT.html`)](docs/SUBMIT.html) · [Candidate Geological Hypotheses (`docs/HYPOTHESES.html`)](docs/HYPOTHESES.html)
+> ### ✅ DOWNLOAD STATUS: **FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH**
+> ### ⛔ SUBMISSION / WEEKLY SLOT STATUS: **DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (`verdict: "negative"`, `submission_eligible: false`; duplicate under the literal public-registry rule)**
+>
+> - **Current research primary GeoTIFF (zeros outside, `nodata=None`):** [`docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif) · [One-TIFF ZIP](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.zip)
+> - **SHA-256:** `1a29a5d81e8561954f04a563b4975cb84d00898b8d7634700a9d409a10e06cbc` (`37,654` unit-mass dots, zeros outside footprint)
+> - **Research identifier (not slot clearance):** `GEMSDOE92-APRONRIDGE-free1d-20261024`
+> - **Short note (92 / 140 chars):** `h33-h33-2-b2; APRONRIDGE free1d: 37654 standalone 1D piedmont-apron + RTP ridges (0 H19-5)`
+> - **Automated format receipt:** [Audit JSON](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-audit.json) · [Run card](docs/downloads/apronridge_run_card.json). Format validation does not clear uniqueness or competition submission.
+> - **Site pages:** [Main workbench](docs/index.html) · [Executive summary and submission guide](docs/executive-summary.html) · [Detailed procedure](docs/SUBMIT.html) · [Candidate hypotheses](docs/HYPOTHESES.html)
+> - **Important conflict:** the hash-verified public witness in [`evidence/current_witness_recheck_20261024.json`](evidence/current_witness_recheck_20261024.json) is positive across the entire valid footprint. Under the literal `>70%` 3-px overlap rule, no nonempty in-footprint candidate can be cleared. The witness is a rejection criterion, not proof of geological equivalence.
 
 ---
 
-## Why Is `HYDROCONDUIT f45hydro` OK to Download Yet Blocked From Submission?
+## Preserved Parallel Candidate — `HYDROCONDUIT f45hydro` (Research-Only; Not the Current Primary)
 
 1. **Why It Is a Genuine Scientific & Holdout Breakthrough (`OK TO DOWNLOAD`):**
    - **First candidate in `GEMSDOE92` to beat BOTH `R0` and prior holdout-best `RELIEF p10`:** On the shared `gems57-pooled-hide-v2` buffered spatial holdout (`22,663` withheld catalogue fault pixels, `1,000` paired cluster-bootstrap draws), `HYDROCONDUIT f45hydro` achieves **`HOLDOUT-DTI = 0.008549 [0.007626, 0.009487]`** — **`+113.4%` over `R0` (`0.004006`)** (`Δ = +0.004543 [+0.003770, +0.005315]`) and **`+41.4%` over `RELIEF p10` (`0.006045`)** (`Δ = +0.002504 [+0.001795, +0.003222]`).

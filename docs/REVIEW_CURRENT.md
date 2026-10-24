@@ -1,5 +1,7 @@
 # Current review — 2026-10-24 (updated after `APRONRIDGE` breakthrough)
 
+> Latest continuation: [fresh exact-file witness recheck, ranked untested hypotheses, current download/submission decision, and three-pass review](REVIEW_20261024_CONTINUATION.md) · [machine-readable run card](downloads/review_20261024_continuation_run_card.json).
+
 ## Download status comes first
 
 **✅ OK TO DOWNLOAD for research; ⛔ NOT CLEARED FOR A WEEKLY SLOT (`verdict: negative`, `submission_eligible: false`).**
