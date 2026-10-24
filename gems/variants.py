@@ -997,3 +997,183 @@ def concentration_reallocate(parent: Dots, w: np.ndarray, footprint: np.ndarray,
     )
     v.check_change()
     return v
+
+# --------------------------------------------------------------------------
+# TIPGAP: along-strike tip extensions + unoccupied skeleton near endpoints
+# --------------------------------------------------------------------------
+_N8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
+
+
+def skeleton_endpoints(skel: np.ndarray):
+    """Degree-1 pixels of an 8-connected skeleton and outward unit steps.
+
+    Outward step is the opposite of the unique 8-neighbour offset, i.e. the
+    direction that continues the strand past the tip. Isolated pixels
+    (degree 0) are ignored: they have no strike.
+    """
+    from scipy import ndimage as ndi
+
+    m = np.asarray(skel, dtype=bool)
+    nbr = ndi.convolve(m.astype(np.int16), np.ones((3, 3), np.int16), mode="constant") - m.astype(np.int16)
+    ey, ex = np.nonzero(m & (nbr == 1))
+    H, W = m.shape
+    dys = np.zeros(len(ey), dtype=np.int64)
+    dxs = np.zeros(len(ex), dtype=np.int64)
+    for i, (y, x) in enumerate(zip(ey.tolist(), ex.tolist())):
+        for dy, dx in _N8:
+            ny, nx = y + dy, x + dx
+            if 0 <= ny < H and 0 <= nx < W and m[ny, nx]:
+                dys[i] = -dy
+                dxs[i] = -dx
+                break
+    return ey.astype(np.int64), ex.astype(np.int64), dys, dxs
+
+
+def tipgap_targets(skel: np.ndarray, footprint: np.ndarray, catalogue: np.ndarray,
+                   d_cat: np.ndarray, *, extend_lo: int = 5, extend_hi: int = 12,
+                   min_dcat: float = 3.0) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Legal along-strike extension and near-tip unoccupied-skeleton pixels.
+
+    Ranking key (higher is better): on-skeleton gap fill outranks off-skeleton
+    along-strike continuation. Within a class, closer to the tip ranks higher.
+    Catalogue pixels and d_cat <= min_dcat are excluded so moved dots cannot
+    become a silent PRUNE.
+    """
+    m = np.asarray(skel, dtype=bool) & np.asarray(footprint, dtype=bool)
+    fp = np.asarray(footprint, dtype=bool)
+    cat = np.asarray(catalogue, dtype=bool)
+    ey, ex, dys, dxs = skeleton_endpoints(m)
+    H, W = m.shape
+    rank = np.zeros((H, W), dtype=np.float64)
+    for y, x in zip(ey.tolist(), ex.tolist()):
+        y0, y1 = max(0, y - extend_hi), min(H, y + extend_hi + 1)
+        x0, x1 = max(0, x - extend_hi), min(W, x + extend_hi + 1)
+        yy, xx = np.ogrid[y0:y1, x0:x1]
+        cheb = np.maximum(np.abs(yy - y), np.abs(xx - x))
+        on = m[y0:y1, x0:x1] & (cheb >= 1) & (cheb <= extend_hi)
+        cand = 2000.0 + (extend_hi - cheb)
+        rank[y0:y1, x0:x1] = np.where(on, np.maximum(rank[y0:y1, x0:x1], cand), rank[y0:y1, x0:x1])
+    for y, x, dy, dx in zip(ey.tolist(), ex.tolist(), dys.tolist(), dxs.tolist()):
+        if dy == 0 and dx == 0:
+            continue
+        for k in range(extend_lo, extend_hi + 1):
+            ny, nx = y + k * dy, x + k * dx
+            if not (0 <= ny < H and 0 <= nx < W):
+                break
+            if not fp[ny, nx]:
+                break
+            score = (2000.0 if m[ny, nx] else 1000.0) + (extend_hi - k)
+            if score > rank[ny, nx]:
+                rank[ny, nx] = score
+    legal = (rank > 0) & fp & ~cat & (d_cat > min_dcat)
+    ys, xs = np.nonzero(legal)
+    return ys.astype(np.int64), xs.astype(np.int64), rank[legal]
+
+
+def tipgap(parent: Dots, skel: np.ndarray, footprint: np.ndarray,
+           catalogue: np.ndarray, d_cat: np.ndarray, *,
+           frac: float = 0.12, extend_lo: int = 5, extend_hi: int = 12,
+           min_dcat: float = 3.0, min_nn: float = 2.0,
+           min_parent_dist: float = 0.0,
+           value: str | None = None) -> Variant:
+    """Move `frac` of the most kernel-redundant parent dots onto tip/gap pixels.
+
+    One axis only: along-strike continuation of the H19-5 skeleton past its
+    endpoints. Count, unit mass, and inherited parent positions of non-movers
+    are held. Movers must land at d_cat > min_dcat and >= min_nn from every
+    surviving parent dot. Does not read truth labels.
+    """
+    if not (0.0 < frac < 1.0):
+        raise ValueError(f"frac {frac} must be in (0,1)")
+    n_move = int(round(frac * len(parent)))
+    if n_move <= 0:
+        raise ValueError("frac rounds to zero dots")
+    ty, tx, tr = tipgap_targets(skel, footprint, catalogue, d_cat,
+                                extend_lo=extend_lo, extend_hi=extend_hi,
+                                min_dcat=min_dcat)
+    parent_set = parent.keys
+    free = np.array([(int(y), int(x)) not in parent_set for y, x in zip(ty, tx)], dtype=bool)
+    ty, tx, tr = ty[free], tx[free], tr[free]
+    if min_parent_dist > 0 and len(ty) and len(parent):
+        ptree = cKDTree(np.c_[parent.ys, parent.xs])
+        dd, _ = ptree.query(np.c_[ty, tx], k=1)
+        far = dd > min_parent_dist
+        ty, tx, tr = ty[far], tx[far], tr[far]
+    if len(ty) < n_move:
+        raise ValueError(f"tip/gap pool {len(ty)} < n_move {n_move}")
+
+    tree = cKDTree(np.c_[parent.ys, parent.xs])
+    nbr = np.asarray([len(v) - 1 for v in tree.query_ball_point(
+        np.c_[parent.ys, parent.xs], 3.0)], dtype=np.int64)
+    ey, ex, _, _ = skeleton_endpoints(np.asarray(skel, bool) & np.asarray(footprint, bool))
+    if len(ey):
+        etree = cKDTree(np.c_[ey, ex])
+        d_tip, _ = etree.query(np.c_[parent.ys, parent.xs], k=1)
+    else:
+        d_tip = np.full(len(parent), 1e9)
+    order = np.lexsort((parent.xs, parent.ys, -d_tip, -nbr))
+    movers = np.sort(order[:n_move])
+    keep = np.ones(len(parent), dtype=bool)
+    keep[movers] = False
+    base_y, base_x = parent.ys[keep], parent.xs[keep]
+    have = set(zip(base_y.tolist(), base_x.tolist()))
+
+    dest_order = np.argsort(-tr, kind="stable")
+    placed_y, placed_x = [], []
+    H, W = skel.shape
+    occ = np.zeros((H, W), dtype=bool)
+    if len(base_y):
+        occ[base_y, base_x] = True
+    r_block = int(np.ceil(min_nn - 1e-9))
+    offs = [(dy, dx) for dy in range(-r_block, r_block + 1)
+            for dx in range(-r_block, r_block + 1)
+            if (dy or dx) and (dy * dy + dx * dx) ** 0.5 < min_nn]
+    def blocked(y, x):
+        if occ[y, x]:
+            return True
+        for dy, dx in offs:
+            ny, nx = y + dy, x + dx
+            if 0 <= ny < H and 0 <= nx < W and occ[ny, nx]:
+                return True
+        return False
+    for i in dest_order:
+        y, x = int(ty[i]), int(tx[i])
+        if (y, x) in have or blocked(y, x):
+            continue
+        placed_y.append(y)
+        placed_x.append(x)
+        have.add((y, x))
+        occ[y, x] = True
+        if len(placed_y) == n_move:
+            break
+    if len(placed_y) != n_move:
+        raise ValueError(f"placement shortfall: {len(placed_y)} != {n_move}")
+
+    ys = np.r_[base_y, placed_y]
+    xs = np.r_[base_x, placed_x]
+    ps = np.r_[parent.p[keep], np.full(n_move, float(np.median(parent.p)))]
+    out = Dots(ys, xs, ps)
+    if len(out) != len(parent):
+        raise ValueError("count not preserved")
+    nn = cKDTree(np.c_[out.ys, out.xs]).query(np.c_[out.ys, out.xs], k=2)[0][:, 1]
+    moved_dcat = d_cat[np.array(placed_y), np.array(placed_x)]
+    v = Variant(
+        "TIPGAP",
+        value or f"e{extend_hi}f{int(round(frac * 100))}",
+        out, len(parent), _changed(parent, out),
+        stats={
+            "n_moved": int(n_move),
+            "frac_target": float(frac),
+            "extend_lo": int(extend_lo),
+            "extend_hi": int(extend_hi),
+            "n_targets_legal": int(len(ty)),
+            "mean_nbr3_donors": float(nbr[movers].mean()) if n_move else 0.0,
+            "mean_nbr3_parent": float(nbr.mean()),
+            "min_dcat_moved": float(moved_dcat.min()),
+            "min_nn_px_after": float(nn.min()),
+            "n_endpoints": int(len(ey)),
+            "min_parent_dist": float(min_parent_dist),
+        },
+    )
+    v.check_change()
+    return v
