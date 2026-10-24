@@ -187,6 +187,16 @@ def test_dilatation_site_offers_obvious_download_and_submission_note() -> None:
     assert "DrivenData" in submit and "OK TO DOWNLOAD" in submit
 
 
+def test_review_closeout_card_matches_the_research_artifact() -> None:
+    card_path = ROOT / "evidence" / "review_closeout_run_card_20261024.json"
+    card = json.loads(card_path.read_text(encoding="utf-8"))
+    raster = ROOT / "docs" / "downloads" / "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif"
+    assert card["raster_sha256"] == hashlib.sha256(raster.read_bytes()).hexdigest()
+    assert len(card["submission_note"]) <= 140
+    assert card["verdict"] == "negative"
+    assert card["correlation_overlap_vs_registry"]["result"].startswith("DUPLICATE_STOP")
+
+
 def test_site_must_disclose_the_uniqueness_failure() -> None:
     """Guard the correction: no unqualified 'submit this' banner may come back.
 
@@ -198,13 +208,22 @@ def test_site_must_disclose_the_uniqueness_failure() -> None:
     html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
 
     # the page must state the disqualification, with the measured number
-    assert "NOT CLEARED FOR A WEEKLY SLOT" in html
+    assert "NO FILE IS CLEARED FOR A WEEKLY SLOT" in html
     assert "99.37" in html
     assert "70 %" in html or "70%" in html
     # and it must not carry the withdrawn recommendation
     assert "OK TO DOWNLOAD AND SUBMIT" not in html
     assert "Verdict: promote" not in html
     assert '"verdict": "promote"' not in html
+    assert ">promote</" not in html
+    assert "Slot 1 by holdout" not in html
+    assert "OK TO DOWNLOAD FOR REVIEW; NOT CLEARED TO SUBMIT" in html
+    assert "DUPLICATE" in html
+    # The executive summary must not transform format validity into submission clearance.
+    submit = (ROOT / "docs" / "SUBMIT.html").read_text(encoding="utf-8")
+    assert "Do not upload this artifact" in submit
+    assert "Is this file OK to submit?</strong> No." in submit
+    assert "Yes — if you see" not in submit
     # the run card verdict must record the disqualification, not a promotion
     assert "NOT_CLEARED" in html
 

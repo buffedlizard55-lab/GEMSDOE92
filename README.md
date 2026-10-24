@@ -1,6 +1,6 @@
 # GEMSDOE92 — DOE GEMS submission research and validation
 
-> **Start every session by reading this README and [`SESSION_PROMPT.md`](SESSION_PROMPT.md).** That file records the requested parallel-run protocol, evidence-label policy, experiment budget, and source links. It is an operational summary of the user’s project brief; the full brief remains in the session conversation.
+> **Start every session by reading this README and [`SESSION_PROMPT.md`](SESSION_PROMPT.md).** That file records the requested parallel-run protocol, evidence-label policy, experiment budget, and source links. This repository's live files and test-gated behavior are authoritative where earlier session notes conflict.
 
 ## Current deliverable — negative-result GeoTIFF
 
@@ -16,6 +16,8 @@
 | SHA-256 | `0ca8248acace558f5cf86b153134b8fd5cc2b7d5b343d0a36f000f9fbfe4758f` |
 | Decision evidence | [`evidence/tipgap_far18f33_submission_card.json`](evidence/tipgap_far18f33_submission_card.json) |
 | Guide | [`docs/executive-summary.html`](docs/executive-summary.html) · [project site](https://buffedlizard55-lab.github.io/GEMSDOE92/) |
+
+**Provenance irregularity:** this checkout is being reviewed on 2026-10-24, but several pre-existing artifact filenames and notes say 2026-10-25. Their chronology cannot be reconciled from repository bytes alone; treat those timestamps as unverified metadata, not as work performed in this session.
 
 Local validation records one-band float32, EPSG:32611, 3730×3292, matching sample transform, finite values in [0,1], no NaN, zeros outside the footprint, and 37,654 positive pixels. This addresses the reported portal error `Predicted values must be in range [0, 1]`. Local validation is not organizer acceptance.
 
