@@ -31,6 +31,10 @@ def test_index_has_download_and_slot_warning():
         "no zeros-outside download is offered"
     # the portal failure the site exists to prevent must be named
     assert "Predicted values must be in range [0, 1]" in html
+    # A negative artifact must never be presented with an action label that
+    # sounds like permission to use a competition slot.
+    assert "Download the submission" not in html
+    assert "DO NOT SUBMIT" in html
     # a slot warning must survive whatever the primary is
     assert re.search(r"(weekly slot|3/week|weekly competition slot|human step)", html, re.I), \
         "no weekly-slot caution on the page"
@@ -81,5 +85,8 @@ def test_submit_page_exists():
             html = p.read_text(encoding="utf-8")
             assert "zeros" in html.lower()
             assert "DrivenData" in html
+            assert "current artifact is blocked" in html.lower()
+            assert "Do not perform these steps with the current artifact" in html
+            assert "submission_eligible: true" in html
             return
     pytest.fail("no submission guide page in docs/")
