@@ -1,30 +1,21 @@
-# GEMSDOE92 — DOE GEMS Prize (#306): Automated Fault Discovery & Validation Workbench
+# GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench (`COULOMB-LOQO` Primary Research Download)
 
-**Live GitHub Pages Workbench:** <https://buffedlizard55-lab.github.io/GEMSDOE92/>  
-**Executive Summary Subpage:** [`docs/executive-summary.html`](docs/executive-summary.html) · **Submission Guide:** [`docs/SUBMIT.html`](docs/SUBMIT.html) · **5 Ranked Untried Hypotheses:** [`docs/HYPOTHESES_20261024_COULOMBLOQO.md`](docs/HYPOTHESES_20261024_COULOMBLOQO.md) · **Full PhD Analysis:** [`docs/ANALYSIS_20261024_COULOMBLOQO.md`](docs/ANALYSIS_20261024_COULOMBLOQO.md)
+> ### ✅ DOWNLOAD STATUS: **FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH**
+> ### ⛔ SUBMISSION / WEEKLY SLOT STATUS: **DO NOT SUBMIT — NOT CLEARED (`verdict: "negative"`, `submission_eligible: false`; literal public dense-witness stop)**
+>
+> Read this README, [`SESSION_PROMPT.md`](SESSION_PROMPT.md), and [`docs/REVIEW_CURRENT.md`](docs/REVIEW_CURRENT.md) at every session start.
+>
+> - **Current research download:** [`docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif`](docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif) · [One-TIFF ZIP](docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.zip) · [Audit JSON](docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-audit.json) (`10 / 10` format MUST gates PASS; `float32`, `EPSG:32611`, `3730 × 3292`, finite `[0, 1]`, `0.0` outside footprint, `0` NaNs anywhere, `37,654` unit-mass dots, `0` catalogue mass, `min d_cat = 2.236 px > 2.0 px`).
+> - **SHA-256 (`-zeros.tif`):** `8f1f93d8c97b4e1c359ce5fbe07d183214e707aa6bda4ed074c00921f39ad32e` (ZIP: `448395137acb4860c24402fb53002539f3c688f8c232c79c23991353623c4c48`)
+> - **Suggested Submission Name (research record only — DO NOT UPLOAD YET):** `GEMSDOE92-COULOMBLOQO-standalone-20261024`
+> - **Suggested Submission Note (`89 / 140` chars):** `h33-h33-2-b2; COULOMBLOQO standalone: 37654 1D LOQO Coulomb+polarity+RTP crests (0 H19-5)`
+> - **Measured `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives):** **`0.009220 [0.007983, 0.010493]`** static (`0.009689` strict draw-blind `d_cat > 2.0`) and **`0.113316 [0.100614, 0.127163]`** strict Rule-2 unmasked `d_visible > 2.0` (`+0.016559 [+0.008170, +0.024980]` paired over `H19-5` `0.096757`). Local `HOLDOUT-DTI` is **not** an `ORGANIZER-CONFIRMED` competition score.
+> - **Uniqueness & Stop Gate:** Locally unique against every repository raster (`worst 3-px overlap = 0.6164 <= 0.70`, `|Spearman| <= 0.1593 <= 0.90`). Blocked solely by the literal public dense witness `17GEMSDOE E-proba-multiscale` (`5,167,373` positive footprint cells → `1.000` forward overlap; [1,368-raster public scan](docs/downloads/coulomb_loqo_public_registry_uniqueness.json) · [Run Card](docs/downloads/coulomb_loqo_run_card.json)). **0 weekly slots spent.**
+> - **Workbench & Analysis:** [Main Workbench](docs/index.html) · [Executive Summary](docs/executive-summary.html) · [Submission Guide](docs/SUBMIT.html) · [Pre-Registered Hypotheses](docs/HYPOTHESES_20261024_COULOMBLOQO.md) · [PhD Analysis](docs/ANALYSIS_20261024_COULOMBLOQO.md)
 
----
+## Prior/parallel candidate summary & full technical reference
 
-## Immediate Two-Question Status (Automated Project Validation — Zero Human Inspector Required)
-
-| Question | Automated Verdict | Exact Evidence & Reason |
-|---|---|---|
-| **1. Is the primary `.tif` OK TO DOWNLOAD?** | **✅ YES — OK TO DOWNLOAD FOR RESEARCH** | [`docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif`](docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif) (`SHA-256: 8f1f93d8c97b4e1c359ce5fbe07d183214e707aa6bda4ed074c00921f39ad32e`) passes **10/10** `gems.gates` + `gems57.validate` + `scripts/check_site.py` checks (`EPSG:32611`, `3730 × 3292`, `float32`, finite `[0.0, 1.0]` everywhere, `0.0` outside footprint, `0` NaN anywhere — preventing DrivenData's `"Predicted values must be in range [0, 1]"` error — `37,654` unit dots, `0` catalogue mass, `d_cat > 2.0 px`). |
-| **2. Is it CLEARED TO SUBMIT to a live weekly DrivenData slot?** | **⛔ NO — DO NOT SUBMIT (`submission_eligible: false`, `verdict: "negative"`)** | Locally unique across **all 41 cross-lane `GEMSDOE92` rasters** (`worst 3-px overlap = 0.6164 <= 0.70`, `|phi| = 0.0493 <= 0.90`), and sibling `dual45` achieves **`0 / 1,121` (`max = 0.6488 <= 0.70`)** across all `<= 90k`-px sparse public submissions, **but** under the literal Rule-1 public scan (`1,368` template rasters across 102 public `GEMSDOE` repos), dense full-footprint probability surfaces led by `17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` (`5,167,373 / 5,167,373` positive footprint cells) force `forward_overlap = 1.000 > 0.70` ([`evidence/coulomb_loqo_public_registry_uniqueness.json`](evidence/coulomb_loqo_public_registry_uniqueness.json)). `0` weekly slots spent. |
-
-### Primary Artifact Card (`COULOMBLOQO standalone`)
-
-| Field | Value |
-|---|---|
-| **Download (zeros-outside `.tif`)** | [`docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif`](docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif) · [`.zip`](docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.zip) |
-| **Unique Submission Name (local ledger)** | `GEMSDOE92-COULOMBLOQO-standalone-20261024` |
-| **Submission Note (`89 / 140` chars)** | `h33-h33-2-b2; COULOMBLOQO standalone: 37654 1D LOQO Coulomb+polarity+RTP crests (0 H19-5)` |
-| **SHA-256 (`-zeros.tif` / `.zip`)** | `8f1f93d8c97b4e1c359ce5fbe07d183214e707aa6bda4ed074c00921f39ad32e` / `448395137acb4860c24402fb53002539f3c688f8c232c79c23991353623c4c48` |
-| **Audit & Protocol Rule 5 Run Card** | [`docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-audit.json`](docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-audit.json) · [`evidence/coulomb_loqo_run_card.json`](evidence/coulomb_loqo_run_card.json) |
-| **Static `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` px)** | **`0.009220 [0.007983, 0.010493]`** (**#1 all-time `GEMSDOE92` high**; `+130.2%` vs `R0` `0.004006`; `+52.5%` vs `RELIEF p10` `0.006045`; beats `HYDROCONDUIT` `0.008549` & `APRONRIDGE` `0.008354`; strict draw-blind `d_cat > 2.0` = **`0.009689`**) |
-| **Strict Draw-Blind Rule-2 `d_visible > 2.0` `HOLDOUT-DTI`** | **`0.113316 [0.100614, 0.127163]`** vs `H19-5` `0.096757` (paired $\Delta = +0.016559$, 95% CI `[+0.008170, +0.024980]` — **first `0% H19-5` standalone model in repo history to beat `H19-5`**) |
-| **Off-Catalogue `USGS SGMC` `PROXY` DTI (`62,703` px)** | **`0.090569`** (`+22.2%` over `HYDROCONDUIT` `0.074107`; sibling `dual45` = **`0.094057`** vs `R0` `0.096060`) |
-| **Leakage Canaries (43 raw/derived/LOQO features)** | **PASS** — `max symmetric AUC = 0.672638 <= 0.90` ([`evidence/coulomb_loqo_screen.json`](evidence/coulomb_loqo_screen.json)) |
+Among earlier historical baselines, `APRONRIDGE free1d` (`h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`) recorded `0.008354 [0.006823, 0.010135]` while the higher documented HYDROCONDUIT hybrid is `HYDROCONDUIT f45hydro` (`h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif`) at `0.008549 [0.007626, 0.009487]`; merged parallel lanes recorded `GEOTENSION free1d` (`0.007615 [0.005832, 0.009386]`), `PIEDFRONT f35Ptop` (`GEMSDOE92-PIEDFRONT-f35Ptop-20261024`, `h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif`, SHA-256 `e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8`, `0.006425`), `COULOMB seismo` (`0.005808 [0.004846, 0.006809]`), `BASEMENTEDGE step3` (`0.000000`), and `MICROSWARM short` (`0.000000`) — all `verdict: "negative"`, `submission_eligible: false`.
 
 ---
 

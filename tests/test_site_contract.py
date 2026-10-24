@@ -204,8 +204,6 @@ def test_pages_validates_before_uploading_artifact():
 def test_guides_agree_with_current_primary_and_stop():
     for name in ("SUBMIT.html", "submit.html", "executive-summary.html"):
         html = (DOCS / name).read_text()
-        assert 'COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif' in html
-        assert 'coulomb_loqo_run_card.json' in html
         assert 'APRONRIDGEfree1d-20261024-d5760830-zeros.tif' in html
         assert 'public_witness_apronridge.json' in html
         assert 'SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif' in html
@@ -213,9 +211,69 @@ def test_guides_agree_with_current_primary_and_stop():
         assert 'Do not perform these steps with the current artifact' in html
         assert 'separate name field' in html
     html = _index()
-    assert 'COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif' in html
     assert 'unique GeoTIFF generated this session' not in html
     assert 'format-valid, unique download' not in html
+
+
+def test_readme_and_site_agree_on_current_download_and_holdout_ranking():
+    """Keep the first-screen research download and historical ranking unambiguous."""
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    index = _index()
+    assert "h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif" in readme
+    assert "h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif" in readme
+    assert "current research download" in readme.lower()
+    assert "the higher documented HYDROCONDUIT hybrid is" in readme
+    assert "HYDROCONDUIT f45hydro" in readme
+    assert "0.008549 [0.007626, 0.009487]" in readme
+    assert "#1 all-time in repo" not in readme.lower()
+    assert "new repository <strong>HOLDOUT-DTI</strong> high" not in index
+
+
+def test_readme_first_screen_matches_actual_site_primary_and_session_contract():
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    index = (DOCS / "index.html").read_text(encoding="utf-8")
+    match = re.search(r'<a class="btn" href="(downloads/[^"]+-zeros\.tif)" data-primary="true"', index)
+    assert match, "index.html must declare one machine-detectable primary TIFF"
+    primary_path = f"docs/{match.group(1)}"
+    assert primary_path in readme
+    assert "SESSION_PROMPT.md" in readme
+    assert "docs/REVIEW_CURRENT.md" in readme
+    assert "OK TO DOWNLOAD FOR RESEARCH" in readme
+    assert "DO NOT SUBMIT" in readme
+    first_screen = readme.split("## Prior/parallel candidate", 1)[0]
+    assert "Current research download" in first_screen
+    assert "HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif" not in first_screen
+
+
+def test_continuation_review_card_is_negative_and_mirrored():
+    import json
+
+    canonical = ROOT / "evidence/review_20261024_continuation_run_card.json"
+    served = DOCS / "downloads/review_20261024_continuation_run_card.json"
+    card = json.loads(canonical.read_text(encoding="utf-8"))
+    assert card["new_unique_tiff_generated"] is False
+    assert card["verdict"] == "negative"
+    assert card["validator_output"]["values_range"] == [0.0, 1.0]
+    assert card["correlation_overlap_vs_registry"]["existing_apronridge_forward_3px_overlap"] == 1.0
+    assert served.read_bytes() == canonical.read_bytes()
+
+
+def test_piedfront_primary_contract_across_site_and_readme():
+    idx = (DOCS / "index.html").read_text(encoding="utf-8")
+    exec_sum = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
+    sub = (DOCS / "SUBMIT.html").read_text(encoding="utf-8")
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+
+    for tok in (
+        "GEMSDOE92-PIEDFRONT-f35Ptop-20261024",
+        "h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif",
+        "e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8",
+        "0.006425",
+    ):
+        assert tok in idx, f"missing {tok} in docs/index.html"
+        assert tok in exec_sum, f"missing {tok} in docs/executive-summary.html"
+        assert tok in sub, f"missing {tok} in docs/SUBMIT.html"
+        assert tok in readme, f"missing {tok} in README.md"
 
 
 def test_coulomb_loqo_primary_run_card_and_no_duplicate_html_ids():

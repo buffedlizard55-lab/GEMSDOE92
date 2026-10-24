@@ -873,6 +873,33 @@ that pattern: no unpreserved screen code.
 - **Observation**: Prior `SPRINGALIGN` update changed `docs/index.html` `<h1>` while leaving `"This session tested ANASIG"` in the lede, placed `data-primary="true"` on `<section>` instead of `<a href=...>`, and left `docs/executive-summary.html`, `docs/SUBMIT.html`, and `docs/submit.html` pointing to `ANASIG`.
 - **Action**: Synchronized `docs/index.html`, `docs/executive-summary.html`, `docs/SUBMIT.html`, `docs/submit.html`, `docs/HYPOTHESES.html`, `README.md`, `SLOT_PLAN.md`, `docs/REVIEW_CURRENT.md`, `docs/NEXT_STEPS.md`, and `tests/test_site_contract.py` around `HYDROCONDUIT f45hydro`, placing `data-primary="true"` directly on the primary `-zeros.tif` anchor.
 
+
+
+## Review d97f969e — 2026-10-24
+
+- Fresh Git-blob-verified dense witness rejects the current APRONRIDGE download (forward overlap 1.0). Literal protocol mandates stop; no new candidate or policy exemption. See `evidence/review_d97f969e_witness.json`.
+- Homepage overall-best claim conflicted with higher stored HYDROCONDUIT HOLDOUT-DTI. Corrected the headline and added superseding top-level notices. Historical static scores are not certified visible-only fold-rebuilt experiments.
+- No single method paragraph is identifiable in this request. No lane was invented. Data and CPU validators already exist; the prompt's GPU/data-placement blocker is not current for this array pipeline.
+- Official competition pages, quota and receipts cannot be freshly verified under this session's network restrictions. No organizer score or source-access claim was fabricated.
+
+## 2026-10-24 (COULOMB session) — Disk-vs-Prose Lineage Count Drift, Conflicting Intermediate CLAIMs, Witness-Checker Exit Code
+
+### 1. `#IR-92-LINEAGE-COUNT-DRIFT`: Stale `D2.8` / `SOLO` Dot Counts in Prose (Disk Wins)
+- **Observation**: Direct `rasterio` positive-pixel counts this session: `data/bridge/d28.tif = 44,090`, `data/bridge/h27_4_solo.tif = 40,199`, `data/bridge/h19_5.tif = 121,131`, `data/parent_R0_zeros.tif = 37,654` (all `float32`, `3730×3292`). Three prose spots disagreed: `README.md:79` quoted `SOLO 39,580` (+ derived `1,926` pruned dots); `README.md:258` quoted `D2.8 46,612`; `docs/ANALYSIS_20261024_APRONRIDGE.md:33` quoted `SOLO 39,580` (+ `1,926`); `docs/ANALYSIS_20261024_HYDROCONDUIT.md:25` quoted `D2.8 46,612`. No raster or evidence JSON was affected (all pipelines read bytes, not prose).
+- **Action**: Corrected all four spots to disk values (`SOLO 40,199`, `D2.8 44,090`, `SOLO→R0` prune count `2,545 = 40,199 − 37,654`). Lineage table in `docs/ANALYSIS_20261024_COULOMB.md` §1.2 is the verified reference.
+
+### 2. `#IR-92-LINEAGE-CLAIM-CONFLICT`: Intermediate-Lineage CLAIM Scores Conflict Across Docs (Unresolvable Without Receipts)
+- **Observation**: `README.md:79` + APRONRIDGE analysis claim `H19-5 0.1922 → D2.8 0.2600 (+0.0678)`; `README.md:258` + HYDROCONDUIT analysis claim `H19-5 0.2194 → D2.8 0.2649 (+0.0455)`. Both chains agree on `SOLO 0.2708` and `R0 0.2778`. Scores are not on disk, and `ledger/` holds 0 organizer receipts, so neither chain can be falsified locally.
+- **Action**: Left both CLAIMs in place with this log entry. Resolution requires an `ORGANIZER-CONFIRMED` receipt or authenticated leaderboard snapshot; until then, quote lineage scores only as `CLAIM` with their source doc.
+
+### 3. `#IR-92-WITNESS-EXIT0`: `scripts/check_public_witness.py` Exits 0 Even on Duplicate (Docstring Says Exit 1)
+- **Observation**: The module docstring states a duplicate finding exits `1`, but `main()` has no return path, so the process always exits `0` (observed on the COULOMB `forward_overlap = 1.000` duplicate). CI or shell gates keyed on exit code would miss the stop.
+- **Action**: Treat the JSON receipt's `stop_required` field as authoritative (as `scripts/make_coulomb_run_card.py` does). Recommended follow-up: one-line fix to `return 1` on `stop_required` plus a regression test (queued; not done this session to avoid touching shared tooling mid-run-card).
+
+### 4. `#IR-92-COULOMB-MAXFUSION`: `max()` Two-Channel Fusion Dilutes the Stronger Channel (Result, Not Bug)
+- **Observation**: `COULOMB free` final dots are `71.6%` RTP-channel-dominant while `rtp_tilt`-only canary is `0.5162` vs `rel_scarp`-only `0.6230` — `max(R_rtp, R_scarp)` lets the near-random channel win most crest pixels. `HYDROCONDUIT`'s multiplicative fusion is the empirically better operator on this instrument.
+- **Action**: Recorded as a design constraint for future lanes (follow-up F-C2 in `docs/NEXT_STEPS.md`); no code change.
+
 ## 2026-10-24 (`COULOMB-LOQO` Session) — Five Newly Verified Metric, Lineage, Bootstrap & HTML Merge Irregularities
 
 ### 1. `#IR-92-ALPHA-BETA-PROSE-SWAP`: Inverted $\alpha / \beta$ Tversky Penalty Weights in `README.md` and `ANALYSIS_20261024_APRONRIDGE.md`
@@ -895,4 +922,7 @@ that pattern: no unpreserved screen code.
 - **Observation**: Merging parallel sessions in PR #49 (`c16e8b7`) left duplicate `id="download-springalign"` in `docs/index.html`, an invalid `</main><footer>...</footer></section><section>` block in `docs/HYPOTHESES.html`, and split primary declarations across `README.md`, `SLOT_PLAN.md`, `docs/NEXT_STEPS.md`, and `docs/REVIEW_CURRENT.md` (`APRONRIDGE free1d` vs `HYDROCONDUIT f45hydro`).
 - **Action**: Cleaned all merge seams, eliminated duplicate HTML IDs (added regression check in `tests/test_site_contract.py`), restored valid HTML5 structure in `docs/HYPOTHESES.html`, and unified every page, doc, and contract test around the new #1 primary `COULOMBLOQO standalone` (`h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif`, `HOLDOUT-DTI = 0.009220`) while preserving full historical tables and downloads for `HYDROCONDUIT`, `APRONRIDGE`, `PIEDFRONT`, `STEPEDGE`, and all earlier lanes.
 
+### 6. `#IR-92-LEDGER-CSV-UNQUOTED-COMMAS`: Unquoted Commas in PR #60 `MICROSWARM` / `BASEMENTEDGE` Ledger Rows
+- **Observation**: During merge of `origin/main` (`5a23dd2`), lines 66–67 of `ledger/submissions.csv` (`h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21` and `h33-h33-2-b2-BASEMENTEDGEstep3-20261024-80719f12`) contained unquoted commas inside `change_desc` and `notes`, splitting 16 columns into 18 columns (`csv.DictReader` key `None`) alongside a blank line 65.
+- **Action**: Re-serialized all 68 merged rows through `gems.ledger.save()` with RFC-4180 quoting so every row has the exact 16 canonical columns.
 

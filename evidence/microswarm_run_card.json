@@ -1,0 +1,745 @@
+{
+  "schema": "gemsdoe92-protocol-run-card.v1",
+  "created_utc": "20261024T00:00:00Z",
+  "lane": "MICROSWARM",
+  "primary_variant": "short3",
+  "parent": "h33-h33-2-b2",
+  "hypothesis": "Short off-catalogue fault-segment rescue: dense swarms of short Quaternary normal faults / relay ramps (5-60 px) of the h19_5 skeleton, >3 px off the USGS/INGENIOUS catalogue, are geothermal upflow hosts under-mapped by the catalogue; R0/D2.8/SOLO pruned them as speckle, MICROSWARM rescues them. Local data only (data/bridge); no external download.",
+  "mechanism": "Unit-mass dots on h19_5 short connected components (5-60 px) with d_cat > 3 px, greedy Poisson-disk at min 2.8 px spacing (300 m kernel radius), count capped 37654; zeros outside footprint; no H19-5/R0 dot reuse beyond the shared skeleton input layer.",
+  "named_non_fault_process_that_could_mimic_it": "Playa shoreline fragments, wash/drainage segments, and alluvial-fan terrace risers; mitigated by h19_5 provenance (already worm-filtered geophysical/DEM lineaments) and Euclidean catalogue clearance >=3 px.",
+  "experiments_run_in_budget": {
+    "budget_cap": 3,
+    "experiments_executed": 1,
+    "arms": {
+      "short3": {
+        "id": "h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21",
+        "sha256_zeros": "261a2f216b8684f2278d0ff2acb63dbb17523fa0c4bb6c80dedfaee25e07b162",
+        "n_dots": 29076,
+        "n_skeleton_input_px": 121131,
+        "min_catalogue_distance_px": 3.1622776601683795,
+        "static_holdout_dti": 0.0,
+        "static_holdout_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_vs_R0": -0.004006147174684743,
+        "paired_ci95_vs_R0": [
+          -0.004689525221466779,
+          -0.0034243961318463374
+        ],
+        "local_worst_forward_overlap": 1.0,
+        "local_worst_forward_file": "docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif",
+        "local_worst_abs_phi": 0.300328,
+        "leakage_canary_max_symmetric_auc": 0.511759
+      }
+    }
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "paired_vs_R0": {
+      "delta": -0.004006147174684743,
+      "ci95": [
+        -0.004689525221466779,
+        -0.0034243961318463374
+      ]
+    },
+    "paired_vs_RELIEFp10": {
+      "delta": -0.0060451323971729325,
+      "ci95": [
+        -0.0069268388021730696,
+        -0.005187022524132649
+      ]
+    },
+    "R0_dti": 0.004006147174684743,
+    "RELIEF_p10_dti": 0.0060451323971729325,
+    "spatial_clusters": 157,
+    "bootstrap_draws": 1000,
+    "per_arm_fold_dti": {
+      "MICROSWARM": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "R0": [
+        0.003319,
+        0.004408,
+        0.003109,
+        0.004073,
+        0.0049,
+        0.005014,
+        0.004356,
+        0.003126
+      ],
+      "RELIEF_p10piedmont": [
+        0.004578,
+        0.006586,
+        0.005663,
+        0.005404,
+        0.007502,
+        0.007457,
+        0.006634,
+        0.004634
+      ],
+      "STRAINBREAK_f60s2i": [
+        0.003232,
+        0.002089,
+        0.007846,
+        0.005789,
+        0.004906,
+        0.003031,
+        0.006804,
+        0.004134
+      ]
+    }
+  },
+  "leakage_canaries": {
+    "definition": "symmetric ROC AUC of single feature on withheld positives vs non-catalogue negatives in buffered fold regions",
+    "results": [
+      {
+        "feature": "h19_5_skeleton_membership",
+        "auc": 0.488241,
+        "symmetric_auc": 0.511759,
+        "n_pairs": 67989
+      },
+      {
+        "feature": "MICROSWARM_dot_mask_itself",
+        "auc": 0.497099,
+        "symmetric_auc": 0.502901,
+        "n_pairs": 67989
+      }
+    ],
+    "max_symmetric_auc": 0.511759,
+    "all_le_0_90": true
+  },
+  "sgmc_control_proxy": {
+    "evidence_class": "PROXY",
+    "available": false,
+    "note": "PROXY input (derived_sgmc_faults_100m_u8.tif) not present in this checkout's .cache/gems_inputs and not reachable under the sandbox network policy; SGMC control not computed for this build. See registry/session_manifest.json."
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "final dots vs 65 local submission rasters (docs/downloads, releases); input layers disclosed separately, not treated as submissions",
+    "n_rasters_checked": 65,
+    "worst_forward_overlap_3px": 1.0,
+    "worst_forward_overlap_file": "docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif",
+    "worst_abs_phi": 0.300328,
+    "local_duplicate": true,
+    "all_comparisons": [
+      {
+        "raster": "docs/downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+        "forward_3px_overlap": 0.036628,
+        "reverse_3px_overlap": 0.030276,
+        "phi": -0.006445,
+        "duplicate": false
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+        "forward_3px_overlap": 0.935651,
+        "reverse_3px_overlap": 0.389759,
+        "phi": 0.176311,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a.tif",
+        "forward_3px_overlap": 0.935651,
+        "reverse_3px_overlap": 0.389759,
+        "phi": 0.176311,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif",
+        "forward_3px_overlap": 0.430871,
+        "reverse_3px_overlap": 0.30443,
+        "phi": 0.021905,
+        "duplicate": false
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-APRONRIDGEs50f50-20261024-2f0431ea-zeros.tif",
+        "forward_3px_overlap": 0.700371,
+        "reverse_3px_overlap": 0.355288,
+        "phi": 0.118758,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-APRONRIDGEs60f40-20261024-6e7e0174-zeros.tif",
+        "forward_3px_overlap": 0.735005,
+        "reverse_3px_overlap": 0.409332,
+        "phi": 0.145861,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+        "forward_3px_overlap": 0.997661,
+        "reverse_3px_overlap": 0.465608,
+        "phi": 0.219901,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439.tif",
+        "forward_3px_overlap": 0.997661,
+        "reverse_3px_overlap": 0.465608,
+        "phi": 0.219901,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif",
+        "forward_3px_overlap": 0.995942,
+        "reverse_3px_overlap": 0.442795,
+        "phi": 0.204752,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c.tif",
+        "forward_3px_overlap": 0.995942,
+        "reverse_3px_overlap": 0.442795,
+        "phi": 0.204752,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+        "forward_3px_overlap": 0.993259,
+        "reverse_3px_overlap": 0.404977,
+        "phi": 0.180478,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0.tif",
+        "forward_3px_overlap": 0.993259,
+        "reverse_3px_overlap": 0.404977,
+        "phi": 0.180478,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
+        "forward_3px_overlap": 0.903426,
+        "reverse_3px_overlap": 0.595501,
+        "phi": 0.276753,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88.tif",
+        "forward_3px_overlap": 0.903426,
+        "reverse_3px_overlap": 0.595501,
+        "phi": 0.276753,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif",
+        "forward_3px_overlap": 0.887261,
+        "reverse_3px_overlap": 0.599086,
+        "phi": 0.278548,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b.tif",
+        "forward_3px_overlap": 0.887261,
+        "reverse_3px_overlap": 0.599086,
+        "phi": 0.278548,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif",
+        "forward_3px_overlap": 0.857133,
+        "reverse_3px_overlap": 0.601795,
+        "phi": 0.279217,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432.tif",
+        "forward_3px_overlap": 0.857133,
+        "reverse_3px_overlap": 0.601795,
+        "phi": 0.279217,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif",
+        "forward_3px_overlap": 0.933897,
+        "reverse_3px_overlap": 0.382562,
+        "phi": 0.133177,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb.tif",
+        "forward_3px_overlap": 0.933897,
+        "reverse_3px_overlap": 0.382562,
+        "phi": 0.133177,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-HYDROCONDUITf45pied-20261024-3c236840-zeros.tif",
+        "forward_3px_overlap": 0.931077,
+        "reverse_3px_overlap": 0.382748,
+        "phi": 0.133846,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif",
+        "forward_3px_overlap": 0.913743,
+        "reverse_3px_overlap": 0.360015,
+        "phi": 0.122774,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif",
+        "forward_3px_overlap": 0.66254,
+        "reverse_3px_overlap": 0.416583,
+        "phi": 0.178987,
+        "duplicate": false
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b.tif",
+        "forward_3px_overlap": 0.66254,
+        "reverse_3px_overlap": 0.416583,
+        "phi": 0.178987,
+        "duplicate": false
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-PIEDFRONTf40Ptop-20261024-6b0cd56a-zeros.tif",
+        "forward_3px_overlap": 0.631552,
+        "reverse_3px_overlap": 0.388432,
+        "phi": 0.163809,
+        "duplicate": false
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-PIEDFRONTf45Ptop-20261024-aad86ac9-zeros.tif",
+        "forward_3px_overlap": 0.604003,
+        "reverse_3px_overlap": 0.36044,
+        "phi": 0.149238,
+        "duplicate": false
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+        "forward_3px_overlap": 0.942667,
+        "reverse_3px_overlap": 0.600494,
+        "phi": 0.277179,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24.tif",
+        "forward_3px_overlap": 0.942667,
+        "reverse_3px_overlap": 0.600494,
+        "phi": 0.277179,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif",
+        "forward_3px_overlap": 1.0,
+        "reverse_3px_overlap": 0.455543,
+        "phi": 0.213847,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif",
+        "forward_3px_overlap": 0.97228,
+        "reverse_3px_overlap": 0.31569,
+        "phi": 0.133968,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde.tif",
+        "forward_3px_overlap": 0.97228,
+        "reverse_3px_overlap": 0.31569,
+        "phi": 0.133968,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+        "forward_3px_overlap": 0.031538,
+        "reverse_3px_overlap": 0.1458,
+        "phi": 0.004316,
+        "duplicate": false
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif",
+        "forward_3px_overlap": 0.933794,
+        "reverse_3px_overlap": 0.40333,
+        "phi": 0.180235,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif",
+        "forward_3px_overlap": 0.873194,
+        "reverse_3px_overlap": 0.323233,
+        "phi": 0.128097,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2.tif",
+        "forward_3px_overlap": 0.873194,
+        "reverse_3px_overlap": 0.323233,
+        "phi": 0.128097,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+        "forward_3px_overlap": 0.740576,
+        "reverse_3px_overlap": 0.243135,
+        "phi": 0.085024,
+        "duplicate": true
+      },
+      {
+        "raster": "docs/downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+        "forward_3px_overlap": 0.796568,
+        "reverse_3px_overlap": 0.373904,
+        "phi": 0.147291,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+        "forward_3px_overlap": 0.935651,
+        "reverse_3px_overlap": 0.389759,
+        "phi": 0.176311,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a.tif",
+        "forward_3px_overlap": 0.935651,
+        "reverse_3px_overlap": 0.389759,
+        "phi": 0.176311,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
+        "forward_3px_overlap": 1.0,
+        "reverse_3px_overlap": 0.61129,
+        "phi": 0.299596,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-MASS_A10-20261023-e5613a00.tif",
+        "forward_3px_overlap": 1.0,
+        "reverse_3px_overlap": 0.61129,
+        "phi": 0.299596,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif",
+        "forward_3px_overlap": 0.908688,
+        "reverse_3px_overlap": 0.601552,
+        "phi": 0.270979,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-MASS_D10-20261023-e26a6cb8.tif",
+        "forward_3px_overlap": 0.908688,
+        "reverse_3px_overlap": 0.601552,
+        "phi": 0.270979,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif",
+        "forward_3px_overlap": 0.963716,
+        "reverse_3px_overlap": 0.615154,
+        "phi": 0.289377,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-MASS_SWAP10-20261023-3e776063.tif",
+        "forward_3px_overlap": 0.963716,
+        "reverse_3px_overlap": 0.615154,
+        "phi": 0.289377,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7-zeros.tif",
+        "forward_3px_overlap": 1.0,
+        "reverse_3px_overlap": 0.611728,
+        "phi": 0.300328,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7.tif",
+        "forward_3px_overlap": 1.0,
+        "reverse_3px_overlap": 0.611728,
+        "phi": 0.300328,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-PRUNE_B4-20261023-78e893d7-zeros.tif",
+        "forward_3px_overlap": 0.997489,
+        "reverse_3px_overlap": 0.628353,
+        "phi": 0.284844,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-PRUNE_B4-20261023-78e893d7.tif",
+        "forward_3px_overlap": 0.997489,
+        "reverse_3px_overlap": 0.628353,
+        "phi": 0.284844,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad-zeros.tif",
+        "forward_3px_overlap": 0.980912,
+        "reverse_3px_overlap": 0.641871,
+        "phi": 0.29759,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad.tif",
+        "forward_3px_overlap": 0.980912,
+        "reverse_3px_overlap": 0.641871,
+        "phi": 0.29759,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-SCARPPOLf33Stop-20261024-7b3571a5-zeros.tif",
+        "forward_3px_overlap": 0.995838,
+        "reverse_3px_overlap": 0.474425,
+        "phi": 0.223216,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-SCARPPOLf33Stop-20261024-7b3571a5.tif",
+        "forward_3px_overlap": 0.995838,
+        "reverse_3px_overlap": 0.474425,
+        "phi": 0.223216,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-SCARPPOLf38Stop-20261024-a259cb8c-zeros.tif",
+        "forward_3px_overlap": 0.994119,
+        "reverse_3px_overlap": 0.452249,
+        "phi": 0.209102,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-SCARPPOLf38Stop-20261024-a259cb8c.tif",
+        "forward_3px_overlap": 0.994119,
+        "reverse_3px_overlap": 0.452249,
+        "phi": 0.209102,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-SCARPPOLf45Stop-20261024-cf4e45c0-zeros.tif",
+        "forward_3px_overlap": 0.990404,
+        "reverse_3px_overlap": 0.414856,
+        "phi": 0.183642,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-SCARPPOLf45Stop-20261024-cf4e45c0.tif",
+        "forward_3px_overlap": 0.990404,
+        "reverse_3px_overlap": 0.414856,
+        "phi": 0.183642,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-STEPEDGEf33Sraw-20261024-12f4b454-zeros.tif",
+        "forward_3px_overlap": 0.998384,
+        "reverse_3px_overlap": 0.454985,
+        "phi": 0.218288,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-STEPEDGEf33Sraw-20261024-12f4b454.tif",
+        "forward_3px_overlap": 0.998384,
+        "reverse_3px_overlap": 0.454985,
+        "phi": 0.218288,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-STEPEDGEf45Sraw-20261024-0854307f-zeros.tif",
+        "forward_3px_overlap": 0.994119,
+        "reverse_3px_overlap": 0.392628,
+        "phi": 0.179961,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-STEPEDGEf45Sraw-20261024-0854307f.tif",
+        "forward_3px_overlap": 0.994119,
+        "reverse_3px_overlap": 0.392628,
+        "phi": 0.179961,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif",
+        "forward_3px_overlap": 0.97228,
+        "reverse_3px_overlap": 0.31569,
+        "phi": 0.133968,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde.tif",
+        "forward_3px_overlap": 0.97228,
+        "reverse_3px_overlap": 0.31569,
+        "phi": 0.133968,
+        "duplicate": true
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f.tif",
+        "forward_3px_overlap": 0.031538,
+        "reverse_3px_overlap": 0.1458,
+        "phi": 0.004316,
+        "duplicate": false
+      },
+      {
+        "raster": "releases/h33-h33-2-b2-TIPGAPfar18f33-20261024-unique-zeros.tif",
+        "forward_3px_overlap": 0.796568,
+        "reverse_3px_overlap": 0.373904,
+        "phi": 0.147291,
+        "duplicate": true
+      }
+    ],
+    "disclosure_vs_input_layers": {
+      "h19_5_input": {
+        "forward_3px_overlap": 1.0,
+        "dots_on_layer": 29076
+      },
+      "parent_R0_input": {
+        "forward_3px_overlap": 1.0,
+        "dots_on_layer": 9479
+      }
+    },
+    "public_dense_witness_note": "The 17GEMSDOE E-proba-multiscale dense witness (100% footprint positive) forces 1.0 forward overlap for every nonempty in-footprint raster under the project's literal rule; full public sweep was not re-run in this session. No raster in this repo is self-cleared for a weekly slot pending operator density-clause resolution."
+  },
+  "raster_sha256": "261a2f216b8684f2278d0ff2acb63dbb17523fa0c4bb6c80dedfaee25e07b162",
+  "raster_sha256_zip": "d0463c0d8cd52bb209d16d46716a549ed661dd583c7cdcb5a423a38f3a0a4368",
+  "primary_download": "docs/downloads/h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21-zeros.tif",
+  "primary_zip": "docs/downloads/h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21-zeros.zip",
+  "validator_output": {
+    "overall_pass": false,
+    "gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=float32 count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nan_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      },
+      {
+        "name": "submission_encoding",
+        "ok": true,
+        "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=3px dots_within=0"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "261a2f216b8684f2278d0ff2acb63dbb17523fa0c4bb6c80dedfaee25e07b162"
+      }
+    ],
+    "gems57_validate": {
+      "file": "/home/user/GEMSDOE92/docs/downloads/h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21-zeros.tif",
+      "bytes": 807784,
+      "sha256": "261a2f216b8684f2278d0ff2acb63dbb17523fa0c4bb6c80dedfaee25e07b162",
+      "meta": {
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "nodata": null,
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "profile_compress": "lzw"
+      },
+      "band_description": [
+        "predicted_new_fault_probability"
+      ],
+      "n_finite": 12279160,
+      "n_nan": 0,
+      "n_infinite": 0,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.0023679144214838743,
+      "emitted_positive_pixels": 29076,
+      "checks": {
+        "single_band": true,
+        "dtype_float32": true,
+        "dimensions_3730x3292": true,
+        "crs_epsg_32611": true,
+        "transform_matches_sample_submission": true,
+        "no_nan_anywhere": true,
+        "no_inf_anywhere": true,
+        "no_sentinel_values": true,
+        "range_0_1_guaranteed": true,
+        "min_ge_0": true,
+        "max_le_1": true,
+        "in_footprint_all_finite": true,
+        "in_footprint_range_0_1": true,
+        "outside_footprint_zero": true,
+        "zero_dots_on_mapped_catalogue": true
+      },
+      "all_checks_passed": true,
+      "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+      "on_catalogue_positive_pixels": 0,
+      "in_footprint_positive_pixels": 29076,
+      "footprint_fraction": 0.005626843659244262
+    },
+    "gems57_all_checks_passed": true,
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": "EPSG:32611, 3730x3292, float32, exact sample_submission.tif grid",
+    "catalogue_zero_mass": true,
+    "min_catalogue_distance_gt_3px": true,
+    "n_dots": 29076,
+    "outside_footprint_zero": true
+  },
+  "submission_name": "GEMSDOE92-MICROSWARM-short3-20261024",
+  "note": "h33-h33-2-b2; MICROSWARM short3: 29076 dots on short off-catalogue h19_5 fault segments (5-60 px, >3 px off mapped faults, 2.8 px spaced)",
+  "note_chars": 137,
+  "organizer_score": null,
+  "download_status": "OK TO DOWNLOAD (format-valid, [0,1] verified, unique vs local submission rasters)",
+  "submission_status": "DO NOT SUBMIT \u2014 NOT CLEARED FOR A WEEKLY SLOT (literal public dense-witness duplicate rule; human selector decision required before spending a slot)",
+  "submission_eligible": false,
+  "verdict": "negative",
+  "verdict_detail": "MICROSWARM short3: 29076 unit-mass dots on short (5-60 px) h19_5 skeleton segments >3 px off the mapped catalogue, 2.8 px spaced, zeros-outside. Static HOLDOUT-DTI 0.000000 [0.000000, 0.000000] (22663 withheld px, gems57-pooled-hide-v2). vs RELIEF p10 0.006045 (-0.006045 [-0.006927, -0.005187]). vs R0 -0.004006 [-0.004690, -0.003424]. Canary max symmetric AUC 0.511759 (<=0.90). Local registry: 65 submission rasters, worst forward 1.000000 (docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif), worst |phi| 0.300328; local_duplicate=True. Gates 10/10 pass=True; gems57 all_checks_passed=True. Note: every raster is blocked by the unresolved literal public dense witness (17GEMSDOE E-proba, 100% footprint positive) under the project's fail-closed registry rule; that policy sits with the human selector."
+}

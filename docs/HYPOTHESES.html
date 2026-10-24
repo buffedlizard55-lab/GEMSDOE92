@@ -75,6 +75,25 @@
     </dl>
   </div>
 </section>
+<section>
+  <h2>Ranked Untried Hypotheses (COULOMB Session, 2026-10-24 — All Screened or Built</h2>
+  <p>Full pre-registration: <a href="HYPOTHESES_20261024_COULOMB.md">HYPOTHESES_20261024_COULOMB.md</a> · results: <a href="ANALYSIS_20261024_COULOMB.md">ANALYSIS_20261024_COULOMB.md</a> · run card: <a href="downloads/coulomb_run_card.json">coulomb_run_card.json</a>. Screen gate reproduced <code>BREAKLINE-L</code> exactly (canary <code>0.621604</code>, far-SGMC <code>0.072325</code>); 3/3 experiment budget consumed; all arms <code>verdict: negative</code> (best <code>HOLDOUT-DTI 0.005808</code> vs <code>0.008549</code> bar; dense-witness duplicate stop).</p>
+  <ol>
+    <li><strong>COULOMB (Rank 1, BUILT ×3)</strong> — Orientation-resolved Coulomb opening potential: GPS strain-rate tensors (<code>Bands 7/8</code>) dotted onto DEM-ridge strike (<code>Bands 19/12</code>) under E–W extension (<code>&alpha;_ext = 100&deg;</code>) + NW strike-slip relay term, weighting <code>max(RTP-tilt-gradient, relative-scarp)</code> emission inside the piedmont apron. Arms: <code>free 0.005689</code> · <code>open 0.005184</code> (no-apron ablation) · <code>seismo 0.005808</code> (Rank-1 × Rank-2 fusion). Mechanism finding: <code>O_coulomb</code>-only canary <code>0.5423</code> vs <code>rel_scarp</code>-only <code>0.6230</code> — the orientation weight reshuffles emission away from the scoring collar; <code>max()</code> fusion lets the weaker RTP channel dominate 71.6% of dots.</li>
+    <li><strong>SEISMO-STRAIN (Rank 2, fused as null result)</strong> — Normalized historical-seismicity catalog prior (<code>Bands 10/16</code>, n = 100 km). Standalone canary <code>0.5249</code>; fusion vs <code>free</code> is a statistical tie (<code>+0.000120 [−0.000212, +0.000441]</code>) — 100 km kernels add nothing at 100 m posting.</li>
+    <li><strong>MAGTILT-CONTACT (Rank 3, screened out)</strong> — Zero-contours of <code>Band 9 TMI vertical gradient</code>. Canary <code>0.5167</code> ≈ random at 100 m; do not build without a sharper localizer.</li>
+    <li><strong>MTEDGE-DILAT (Rank 4, screened out)</strong> — Magnetotelluric resistivity-gradient edges (<code>Band 17</code>) clipped to dilating crust (<code>Band 8 &gt; 0</code>). Canary <code>0.5166</code> ≈ random; do not build.</li>
+    <li><strong>LIDAR1M-LAHONTAN (Rank 5, HELD)</strong> — Meter-scale fault scarps from the 1 m DEM tile index, evaluated only against holdout-fold-visible Lahontan shoreline features. Blocked on <code>1m_DEM_links.csv</code> (competition site login) + <code>apps.nationalmap.gov</code> (unreachable from sandbox); remains the highest-leverage untested instrument (Blocker 0 follow-up).</li>
+  </ol>
+</section>
+<section>
+  <h2>Merged Parallel-Session Pre-Registrations (2026-10-24 / 2026-10-25)</h2>
+  <ul>
+    <li><a href="HYPOTHESES_20261025_GEOTENSION.md">GEOTENSION (dilatation-strain scarp 1D ridges)</a> · <a href="ANALYSIS_20261025_GEOTENSION.md">GEOTENSION analysis</a> · <a href="downloads/geotension_run_card.json">run card</a> (<code>HOLDOUT-DTI 0.007615</code>, <code>verdict: negative</code>)</li>
+    <li><a href="HYPOTHESES_20261024_MICROSWARM.md">MICROSWARM &amp; BASEMENTEDGE</a> · <a href="downloads/h33-h33-2-b2-BASEMENTEDGEstep3-20261024-80719f12-zeros.tif">BASEMENTEDGE step3</a> · <a href="downloads/h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21-zeros.tif">MICROSWARM short</a> (<code>HOLDOUT-DTI 0.000000</code>, <code>verdict: negative</code>)</li>
+    <li><a href="HYPOTHESES_20261024_PREFLIGHT.md">Conditional preflight hypotheses</a> · <a href="downloads/preplacement_dense_witness.json">preplacement dense witness</a></li>
+  </ul>
+</section>
 </main>
 
 <footer>
