@@ -13,18 +13,22 @@
 
 Every arm below was scored on the same instrument (`gems57-pooled-hide-v2`, 22,663 withheld catalogue positives, 157 spatial clusters, 1,000 paired draws, seed 520810). **R0 = 0.004006 [0.003424, 0.004690].**
 
-| rank | arm | HOLDOUT-DTI | Δ vs R0 | 95 % CI of Δ | encoding served | slot? |
-|---|---|---|---|---|---|---|
-| 1 | `RELIEFp10piedmont-20261024-3e900c24` | 0.006045 | **+0.002039** | [0.001483, 0.002504] | zeros-outside ✅ | **Slot 1** |
-| 2 | `DILATATIONp12dilatation-20261025-8b4d248b` | 0.005779 | +0.00177 | [0.001110, 0.002455] | zeros-outside ✅ | **Slot 2** |
-| 3 | `DILATATIONp15dilatation-20261025-ebc1b432` | 0.005818 | +0.00181 | — | zeros-outside ✅ | **Slot 3** |
-| — | `DILATATIONp10dilatation-20261025-2e501f88` | 0.005747 | +0.00174 | — | zeros-outside ✅ | reserve |
-| — | `RELIEFp12piedmont-20261024-a0998ed7` | 0.005974 | +0.00197 | — | NaN-outside ⚠ | needs a zeros twin first |
-| — | `TIPGAPfar18f33-…-0ca8248a` | 0.002723 | **−0.001283** | — | zeros-outside ✅ | **no — negative** |
+| rank | arm | HOLDOUT-DTI | Δ vs R0 | 95 % CI of Δ | % dots ≤3 px of R0 | encoding | cleared for a slot? |
+|---|---|---|---|---|---|---|---|
+| 1 | `RELIEFp10piedmont-20261024-3e900c24` | 0.006045 | **+0.002039** | [0.001483, 0.002504] | 99.38 % | zeros-outside ✅ | **NO — fails uniqueness** |
+| 2 | `DILATATIONp15dilatation-20261025-ebc1b432` | 0.005818 | +0.00181 | — | 99.37 % | zeros-outside ✅ | **NO — fails uniqueness** |
+| 3 | `DILATATIONp12dilatation-20261025-8b4d248b` | 0.005779 | +0.00177 | [0.001110, 0.002455] | 99.37 % | zeros-outside ✅ | **NO — fails uniqueness** |
+| — | `DILATATIONp10dilatation-20261025-2e501f88` | 0.005747 | +0.00174 | — | 99.40 % | zeros-outside ✅ | **NO — fails uniqueness** |
+| — | `RELIEFp12piedmont-20261024-a0998ed7` | 0.005974 | +0.00197 | — | 99.38 % | zeros twin now built | **NO — fails uniqueness** |
+| — | `TIPGAPfar18f33-…-0ca8248a` | 0.002723 | **−0.001283** | — | **67.00 %** ✅ | zeros-outside ✅ | unique, but **negative** |
 
-**Why Slot 1 is RELIEF p10 and not the DILATATION file this session built.** Ranked honestly on the shared instrument, RELIEF p10 is the largest holdout gain of any arm (+0.002039, CI excludes 0). It was previously served **only** in the NaN-outside encoding — the one that triggered the portal error — so it was not safely submittable. A zeros-outside twin has now been built and passes 10/10 gates; its sha256 `60f0208547efd4fb8b52fd5a298d9151de15208c3c44b04e90e78ec13a978296` **reproduces the value recorded in `evidence/relief_variants.json` byte-for-byte**, which independently corroborates the re-encode.
+**No slot is recommended this session.** The brief's uniqueness rule is literal: *if more than 70 % of your dots fall within 3 px of one registry raster's dots, log it as a duplicate and stop.* Parent R0 **is** a registry raster (`registry/parents/R0.json`). Every arm with a positive HOLDOUT-DTI measures 99.37–99.40 % against it, so all are duplicates under that rule. The one arm that clears the rule — TIPGAP, at 67.00 % — scores **below** R0. **Under the operator's own gates there is currently nothing here that is both unique and expected to improve**, and the correct output of the session is that finding rather than a submission.
 
-**Why DILATATION still leads the site banner.** It is the arm with a *dose-response ladder* (three arms, monotone: +0.00174 / +0.00177 / +0.00181) on a mechanism no other lane touches (kinematic strain rather than topography or geometry), and it is nearly disjoint from both RELIEF and TIPGAP (arrival Jaccard 0.159 and 0.0011). Slots 2–3 buy that diversification; if the human prefers one bet, take Slot 1.
+**This supersedes an earlier recommendation in this file.** A previous revision of this plan ranked RELIEF p10 as "Slot 1" on holdout gain alone. That was wrong twice over: it ignored the uniqueness rule, and `docs/REVIEW_AND_NEXT_STEPS.md` had already recorded RELIEF p10 as *"explicitly negative / NOT OK TO SUBMIT"* for exactly this 99.38 % reason. The recommendation is withdrawn. See `IRREGULARITIES.md` 2026-10-25 (uniqueness rule).
+
+**The two readings, stated plainly.** Reading 1 (literal): these are R0 duplicates; log and stop. Reading 2 (lane drift): the files keep 88–90 % of R0's dots *by construction* — count is held at 37,654 and only 10–15 % is reallocated — so whole-file overlap measures how much parent you kept, not whose lane you are in; run on **arrival sets** the lanes are nearly disjoint (DILATATION vs TIPGAP Jaccard 0.0011, vs RELIEF 0.1593). Reading 2 is the better science but it is *this repository reinterpreting an operator gate in its own favour*, so **Reading 1 governs** and any upload is a recorded human override.
+
+**Note the structural tension this exposes.** TIPGAP clears uniqueness *because* it moves 33 % of the budget far off the D2.8 skeleton — and that same move is what drove its holdout below R0. Under this rule set, uniqueness and expected gain pull in opposite directions. Resolving that, not building another variant, is the next session's real job (see `docs/NEXT_STEPS.md`).
 
 ### Do not pair these in the same week
 

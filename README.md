@@ -2,7 +2,7 @@
 
 > **Read this file at the start of every session.** Full operator contract: [`SESSION_PROMPT.md`](SESSION_PROMPT.md).
 
-**Primary download:** `DILATATION p12` — the one file in this repository whose HOLDOUT-DTI is **above** parent R0 with a 95 % CI that excludes zero. Verdict **promote**.
+**Primary download:** `DILATATION p12` — the file in this repository whose HOLDOUT-DTI is **above** parent R0 with a 95 % CI that excludes zero. **Format-valid, but NOT cleared for a weekly slot:** it fails the operator's literal uniqueness rule (99.37 % of its dots lie within 3 px of registry raster R0). See ⚠ below.
 
 | | |
 |---|---|
@@ -15,7 +15,8 @@
 
 | Status | Meaning |
 |---|---|
-| **✅ OK TO DOWNLOAD AND SUBMIT** | All 10 MUST gates pass on an independent re-read of the **served** bytes. All-finite float32 in `[0, 1]`, zeros outside the footprint, `nodata=None` — so neither the training stack's `−3.4028235e+38` sentinel nor a stray NaN can trigger `Predicted values must be in range [0, 1]`. |
+| **✅ FORMAT-VALID — OK TO DOWNLOAD** | All 10 MUST gates pass on an independent re-read of the **served** bytes. All-finite float32 in `[0, 1]`, zeros outside the footprint, `nodata=None` — so neither the training stack's `−3.4028235e+38` sentinel nor a stray NaN can trigger `Predicted values must be in range [0, 1]`. |
+| **⚠ NOT CLEARED FOR A SLOT** | 99.37 % of its dots lie within 3 px of registry raster R0, over the brief's 70 % uniqueness limit. Uploading it is a recorded **human override**, not an agent recommendation. |
 | **HOLDOUT-DTI above R0** | Δ **+0.00177 [0.00111, 0.00246]**, CI excludes 0. This is a local instrument, **not** a leaderboard score. Weekly-slot promotion is a human step (3/week cap); this agent never submits. |
 
 ```bash
@@ -31,13 +32,13 @@ PYTHONPATH=vendor python scripts/check_site.py
 - **Non-fault mimic.** Brine-pumping / agricultural subsidence bowls, Walker Lane strain shadows, ductile thick-fill stretching without brittle faulting.
 - **HOLDOUT-DTI** `gems57-pooled-hide-v2`, 8 folds, 22,663 withheld positives, 157 spatial clusters, 1,000 paired draws: R0 `0.004006 [0.003424, 0.004690]` → p12 `0.005779 [0.004863, 0.006851]`, Δ **+0.00177 [0.00111, 0.00246]**.
 - **Leakage canary** (each band tested alone before any result was trusted): Band 8 `0.5145`, 7 `0.5128`, 4 `0.5102`, 15 `0.5149`, 17 `0.5060` — max **0.5149 ≪ 0.90**.
-- **Verdict:** promote. Dose response monotone (p10 +0.00174, p12 +0.00177, p15 +0.00181).
+- **Verdict:** **NOT CLEARED** — dose response is monotone (p10 +0.00174, p12 +0.00177, p15 +0.00181) but all three measure 99.37–99.40 % within 3 px of registry raster R0, over the brief's 70 % limit. Logged as duplicates under the operator's rule.
 
 Rebuild: `python scripts/build_dilatation_variants.py` · proxies: `python scripts/report_dilatation_proxies.py`
 
-## ⚠ The 70 %-overlap lane gate is the wrong test for R0 descendants
+## ⚠ No served file is both unique and expected to improve
 
-Measured this session, and it changes how every lane in this repo should be judged.
+Measured this session, and it is the finding that should drive the next one. **Under the operator's literal rule this repository has nothing submittable.**
 
 Applied to **whole files**, the rule "more than 70 % of your dots within 3 px of one registry raster ⇒ duplicate" flags **every** R0 descendant:
 
@@ -55,7 +56,9 @@ Shared-parent mass dominates the statistic, so the whole-file number mostly meas
 | DILATATION vs RELIEF | 28.84 % | 25.19 % | 0.1593 |
 | TIPGAP vs RELIEF | 2.29 % | 0.14 % | **0.0011** |
 
-**The tension this exposes.** TIPGAP passes the whole-file gate (0.6700) *only because* it moves 33 % of the budget far off the D2.8 skeleton — and that is precisely the change that drove its HOLDOUT-DTI **below** R0 (−0.001283, verdict negative). The more a file moves off-skeleton, the more "unique" it looks and the worse it scores. **Do not use whole-file overlap as a proxy for either uniqueness or quality**; run the lane test on arrivals, and judge quality on the holdout.
+**Which reading governs.** Reading 2 is the better science, but it is *this repository reinterpreting an operator gate in its own favour* — exactly the move that lets a non-compliant file look compliant. So **the literal rule governs**: every positive-holdout arm above is logged as a duplicate of R0, and no slot is recommended. An upload is a recorded human override, not an agent recommendation. This supersedes an earlier revision of this README that carried `Verdict: promote` for DILATATION p12; see `IRREGULARITIES.md` 2026-10-25.
+
+**The tension this exposes.** TIPGAP clears the whole-file gate (67.00 %) *only because* it moves 33 % of the budget far off the D2.8 skeleton — and that is precisely the change that drove its HOLDOUT-DTI **below** R0 (−0.001283, verdict negative). Uniqueness and expected gain currently pull in opposite directions. Resolving that, not building another variant, is the next session's job — see [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md).
 
 ## Why h33-h33-2-b2 CLAIM 0.2778 is high
 

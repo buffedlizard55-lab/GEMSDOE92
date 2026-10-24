@@ -13,9 +13,13 @@
     <h1>Unique submission GeoTIFF</h1>
     <p class="lede">One-click download of a locally validated, all-finite <code>[0, 1]</code> GeoTIFF. This file is <strong>not a copy</strong> of h33-h33-2-b2 or of any other raster in this repository.</p>
     <div class="banner banner-ok">
-      <strong>✅ OK TO DOWNLOAD AND SUBMIT.</strong>
-      All 10 MUST gates pass on an independent re-read of the served bytes: CRS · shape · transform · float32 · 1 band · values in [0, 1] · 0 NaN inside footprint · zeros outside · zero catalogue mass · <code>d_cat &gt; 2 px</code>.
-      <strong>HOLDOUT-DTI is above parent R0</strong> (Δ +0.00177, 95 % CI excludes 0), so this is the one file this repository currently recommends for a weekly slot. Promotion is still a human step (3/week cap).
+      <strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong>
+      All 10 MUST gates pass on an independent re-read of the served bytes: CRS · shape · transform · float32 · 1 band · values in [0, 1] · 0 NaN inside footprint · zeros outside · zero catalogue mass · <code>d_cat &gt; 2 px</code>. HOLDOUT-DTI is above parent R0 (Δ +0.00177, 95 % CI excludes 0).
+    </div>
+    <div class="banner banner-warn">
+      <strong>⚠ NOT CLEARED FOR A WEEKLY SLOT — it fails the operator's literal uniqueness rule.</strong>
+      The brief says: if <em>more than 70 % of your dots fall within 3 px of one registry raster's dots, log it as a duplicate and stop</em>. Parent R0 <strong>is</strong> a registry raster (<code>registry/parents/R0.json</code>), and this file measures <strong>99.37 %</strong> of its dots within 3 px of R0. So do every other DILATATION dose (99.37–99.40 %) and RELIEF p10 (99.38 %). Only <code>TIPGAP far18f33</code> clears the rule at 67.00 % — and its own run card puts its HOLDOUT-DTI <em>below</em> R0 (−0.001283, verdict negative).
+      <strong>The honest state of this repository: no served file is both unique under that rule and expected to improve.</strong> Submitting any file here is a human override, not an agent recommendation. See <a href="#uniqueness">the two readings</a> below.
     </div>
     <div class="banner banner-warn">
       The portal error <code>Predicted values must be in range [0, 1]</code> comes from a value outside [0, 1] anywhere in the raster — usually the training stack's <code>−3.4028235e+38</code> nodata sentinel (3,061 such cells sit <em>inside</em> the footprint) or a stray NaN. Every cell of this download is finite and <code>nodata=None</code>, so neither can reach the validator. Upload the <strong>zeros-outside</strong> file below.
@@ -56,12 +60,24 @@
       </tbody>
     </table>
     <p>Leakage canary, each feature tested alone before any result was trusted: Band 8 <code>0.5145</code>, Band 7 <code>0.5128</code>, Band 4 <code>0.5102</code>, Band 15 <code>0.5149</code>, Band 17 <code>0.5060</code> — max <strong>0.5149 ≪ 0.90</strong> (REPORT_ONLY_PASS).</p>
-    <p><strong>Verdict: promote.</strong> Dose response is monotone, the CI excludes zero, and the axis is orthogonal to every other lane in this repository.</p>
+    <p><strong>Verdict: NOT CLEARED.</strong> The dose response is monotone and the CI excludes zero, but all three doses measure 99.37–99.40 % within 3 px of registry raster R0 — over the brief’s 70 % uniqueness limit. Logged as duplicates under the operator’s rule; see <a href="#uniqueness">the two readings</a>.</p>
   </section>
 
   <section>
-    <h2>Lane-drift check against the TIPGAP lane that landed on <code>main</code></h2>
-    <p>Two sessions ran from the same prompt and both built R0 descendants, so the overlap had to be measured rather than assumed. <strong>Measured on the arrival sets — the pixels each axis actually chose:</strong></p>
+    <h2 id="uniqueness">Uniqueness: the two readings, and which one governs</h2>
+    <p>The brief's rule is literal: <em>if more than 70 % of your dots fall within 3 px of one registry raster's dots, log it as a duplicate and stop</em>. Parent R0 is a registry raster (<code>registry/parents/R0.json</code>, mode <code>pinned_artefact</code>), so it counts. Measured against it:</p>
+    <table>
+      <thead><tr><th>Served file</th><th>dots</th><th>% within 3 px of R0</th><th>literal verdict</th></tr></thead>
+      <tbody>
+        <tr><td>DILATATION p10</td><td>37,654</td><td>99.40 %</td><td><strong>DUPLICATE</strong></td></tr>
+        <tr><td>DILATATION p12 (this page's download)</td><td>37,654</td><td>99.37 %</td><td><strong>DUPLICATE</strong></td></tr>
+        <tr><td>DILATATION p15</td><td>37,654</td><td>99.37 %</td><td><strong>DUPLICATE</strong></td></tr>
+        <tr><td>RELIEF p10</td><td>37,654</td><td>99.38 %</td><td><strong>DUPLICATE</strong></td></tr>
+        <tr><td>TIPGAP far18f33</td><td>37,654</td><td>67.00 %</td><td>unique</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Reading 1 — the operator's literal rule governs.</strong> Every file with a positive HOLDOUT-DTI is a duplicate of R0 and must be logged and stopped. The only file that clears the rule, TIPGAP, scores <em>below</em> R0. On this reading <strong>there is nothing in this repository that should be submitted</strong>, and the correct output of the session is that finding.</p>
+    <p><strong>Reading 2 — the rule was meant to catch lane drift, not shared parentage.</strong> These files keep 88–90 % of R0's dots by construction (count is held at 37,654 and only 10–15 % is reallocated), so whole-file overlap mostly measures <em>how much of the parent you kept</em>. Run on the <strong>arrival sets</strong> — the pixels each axis actually chose — the lanes separate cleanly:</p>
     <table>
       <thead><tr><th>Comparison (arrivals only)</th><th>% within 3 px</th><th>Exact same pixel</th><th>Jaccard</th><th>Result</th></tr></thead>
       <tbody>
@@ -70,9 +86,9 @@
         <tr><td>TIPGAP vs RELIEF</td><td>2.29 %</td><td>0.14 %</td><td>0.0011</td><td>DISTINCT</td></tr>
       </tbody>
     </table>
-    <p>Pearson on the DILATATION vs TIPGAP arrival masks is <strong>0.0018</strong> (≪ 0.90); on whole files it is 0.5902 (≪ 0.90).</p>
-    <div class="banner banner-hold">
-      <strong>Method note worth keeping.</strong> Applied to <em>whole files</em>, the brief's "more than 70 % of your dots within 3 px" rule flags <strong>every</strong> pair of R0 descendants as duplicates — DILATATION vs TIPGAP measures 76.82 %, but 88 % of DILATATION's dots and 67 % of TIPGAP's are simply <em>inherited from R0</em>. Shared-parent mass dominates the statistic. The lane test has to be run on the arrivals, where these two lanes are nearly disjoint (Jaccard 0.0011). Recorded in <code>IRREGULARITIES.md</code>.
+    <p>Pearson on the DILATATION vs TIPGAP arrival masks is <strong>0.0018</strong> (≪ 0.90); on whole files 0.5902 (≪ 0.90).</p>
+    <div class="banner banner-warn">
+      <strong>Which reading this site defers to, and why it matters.</strong> Reading 2 is the better <em>science</em> — but it is <strong>this repository's</strong> reinterpretation of an operator instruction, and reinterpreting a gate in your own favour is exactly how a bad submission gets justified. So the site reports Reading 1 as governing and marks these files <strong>NOT CLEARED FOR A SLOT</strong>. If you want to spend a slot on DILATATION p12 you are making an informed override of the uniqueness rule on the strength of the arrival-set evidence — that is a defensible human call, but it is yours to make and yours to record, not the agent's. Note also that TIPGAP clears uniqueness <em>because</em> it moves 33 % of the budget far off the D2.8 skeleton, and that same move is what drove its holdout below R0: under this rule set, uniqueness and expected gain currently pull in opposite directions.
     </div>
   </section>
 
@@ -135,7 +151,7 @@
   "raster_sha256": "25ba17a26d31df9d574fba2a2f34d03ff58f587f4ffde092dcc4bba9822f8898 (zeros) / 8b4d248b6801f3f47c8748c3c32ce6892c121a3bf5710f899bafd2b6e8b47b89 (nan)",
   "validator_output": "10/10 MUST gates PASS on independent reread of the served bytes; EPSG:32611 3730x3292 float32 1 band; values_in_0_1 n_violations=0 min=0.0 max=1.0; no_nan_inside 0; zero catalogue mass; d_cat>2px",
   "submission_name_note": "GEMSDOE92-DILATATION-p12-20261025 | h33-h33-2-b2; DILATATION shift 4518 dots (12%) low->high dilat; pred MODEL:+0.007",
-  "verdict": "promote"
+  "verdict": "NOT_CLEARED — format-valid and holdout-positive, but 99.37% of dots lie within 3px of registry raster R0, over the 70% uniqueness limit; literal rule governs, upload is a human override"
 }</pre>
   </section>
 
