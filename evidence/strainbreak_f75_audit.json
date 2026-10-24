@@ -1,0 +1,329 @@
+{
+  "evidence_label": "PROXY",
+  "axis": "STRAINBREAK",
+  "experiment": 3,
+  "candidate": "f75s2i",
+  "hide_and_recover_pooled_by_candidate": {
+    "f75s2i": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "alpha": 0.2,
+      "beta": 0.8,
+      "triangular_radius_m": 300.0,
+      "pooled": true,
+      "scores": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.004006147174684743,
+          "ci95": [
+            0.0034243961318463374,
+            0.004689525221466778
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 129.29712893913688,
+          "fpw": 70592.1164043663,
+          "fnw": 22533.70287106087
+        },
+        "RELIEFp10": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0060451323971729325,
+          "ci95": [
+            0.005187022524132649,
+            0.0069268388021730696
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 195.01412046639513,
+          "fpw": 70451.45517161682,
+          "fnw": 22467.9858795336
+        },
+        "BREAKLINEf45": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.00486050796752969,
+          "ci95": [
+            0.00403154211411757,
+            0.00582235313319924
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 155.29924363792867,
+          "fpw": 68948.88743005469,
+          "fnw": 22507.700756362065
+        },
+        "f60s2i": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.005486691039494485,
+          "ci95": [
+            0.004522420854689027,
+            0.006430115305473997
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 176.3925242543222,
+          "fpw": 69917.42219777714,
+          "fnw": 22486.607475745688
+        },
+        "f75s2i": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.005486137521118966,
+          "ci95": [
+            0.004453583219407359,
+            0.006486157312455127
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 176.3557828589713,
+          "fpw": 69900.19156041043,
+          "fnw": 22486.644217141038
+        }
+      },
+      "best_comparable_control": "RELIEFp10",
+      "paired_differences": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.001479990346434223,
+          "ci95": [
+            0.00047411704282919085,
+            0.0024170042809608942
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "RELIEFp10": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": -0.0005589948760539665,
+          "ci95": [
+            -0.0017040307728474048,
+            0.0005434235220089765
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "BREAKLINEf45": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.0006256295535892759,
+          "ci95": [
+            -0.0005332157643255459,
+            0.0017235531342734498
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "f60s2i": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": -5.53518375519084e-07,
+          "ci95": [
+            -0.0003318509716282902,
+            0.000325268545603113
+          ],
+          "withheld_positive_pixels": 22663
+        }
+      },
+      "bootstrap": {
+        "method": "paired physical spatial-cluster percentile",
+        "clusters": 157,
+        "draws": 1000,
+        "seed": 520810,
+        "confidence": 0.95,
+        "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+      },
+      "implementation_sha256": {
+        "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+        "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+        "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+        "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+      }
+    }
+  },
+  "sgmc_control_proxy": {
+    "f75s2i": 0.103271
+  },
+  "fixed_catalogue_diagnostic": {
+    "f75s2i": 0.008513
+  },
+  "uniqueness_final_dots": {
+    "f75s2i": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "rule": "literal: forward_overlap > 0.70 OR |spearman| > 0.90 => duplicate, log and stop",
+      "registry_rasters_checked": 21,
+      "worst_forward_overlap": 0.250013,
+      "worst_forward_overlap_file": "parent_R0_zeros.tif",
+      "worst_abs_spearman": 0.249842,
+      "worst_abs_spearman_file": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif",
+      "duplicate": false,
+      "rows": [
+        {
+          "registry_file": "parent_R0_zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.250013,
+          "reverse_overlap_their_dots_within_3px": 0.406039,
+          "binary_spearman_phi": 0.244508,
+          "jaccard_exact_pixels": 0.142866
+        },
+        {
+          "registry_file": "h19_5.tif",
+          "their_dots": 121131,
+          "forward_overlap_my_dots_within_3px": 0.250013,
+          "reverse_overlap_their_dots_within_3px": 0.495554,
+          "binary_spearman_phi": 0.128299,
+          "jaccard_exact_pixels": 0.063024
+        },
+        {
+          "registry_file": "d28.tif",
+          "their_dots": 44090,
+          "forward_overlap_my_dots_within_3px": 0.250013,
+          "reverse_overlap_their_dots_within_3px": 0.361783,
+          "binary_spearman_phi": 0.22494,
+          "jaccard_exact_pixels": 0.130153
+        },
+        {
+          "registry_file": "h27_4_solo.tif",
+          "their_dots": 40199,
+          "forward_overlap_my_dots_within_3px": 0.250013,
+          "reverse_overlap_their_dots_within_3px": 0.389885,
+          "binary_spearman_phi": 0.23622,
+          "jaccard_exact_pixels": 0.137553
+        },
+        {
+          "registry_file": "sample_submission.tif",
+          "their_dots": 60988,
+          "forward_overlap_my_dots_within_3px": 0.066474,
+          "reverse_overlap_their_dots_within_3px": 0.078966,
+          "binary_spearman_phi": -0.009363,
+          "jaccard_exact_pixels": 0.0
+        },
+        {
+          "registry_file": "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.05192,
+          "reverse_overlap_their_dots_within_3px": 0.102751,
+          "binary_spearman_phi": 0.005608,
+          "jaccard_exact_pixels": 0.006469
+        },
+        {
+          "registry_file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.249854,
+          "reverse_overlap_their_dots_within_3px": 0.348648,
+          "binary_spearman_phi": 0.242956,
+          "jaccard_exact_pixels": 0.141861
+        },
+        {
+          "registry_file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.249774,
+          "reverse_overlap_their_dots_within_3px": 0.335369,
+          "binary_spearman_phi": 0.242288,
+          "jaccard_exact_pixels": 0.141428
+        },
+        {
+          "registry_file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.249482,
+          "reverse_overlap_their_dots_within_3px": 0.313273,
+          "binary_spearman_phi": 0.240816,
+          "jaccard_exact_pixels": 0.140477
+        },
+        {
+          "registry_file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.212726,
+          "reverse_overlap_their_dots_within_3px": 0.411802,
+          "binary_spearman_phi": 0.206707,
+          "jaccard_exact_pixels": 0.118873
+        },
+        {
+          "registry_file": "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.206804,
+          "reverse_overlap_their_dots_within_3px": 0.417193,
+          "binary_spearman_phi": 0.200741,
+          "jaccard_exact_pixels": 0.115178
+        },
+        {
+          "registry_file": "h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.201147,
+          "reverse_overlap_their_dots_within_3px": 0.432703,
+          "binary_spearman_phi": 0.194855,
+          "jaccard_exact_pixels": 0.111557
+        },
+        {
+          "registry_file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.237558,
+          "reverse_overlap_their_dots_within_3px": 0.427126,
+          "binary_spearman_phi": 0.226664,
+          "jaccard_exact_pixels": 0.131413
+        },
+        {
+          "registry_file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+          "their_dots": 5000,
+          "forward_overlap_my_dots_within_3px": 0.029054,
+          "reverse_overlap_their_dots_within_3px": 0.2292,
+          "binary_spearman_phi": 0.002676,
+          "jaccard_exact_pixels": 0.001714
+        },
+        {
+          "registry_file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.238275,
+          "reverse_overlap_their_dots_within_3px": 0.237425,
+          "binary_spearman_phi": 0.124683,
+          "jaccard_exact_pixels": 0.070126
+        },
+        {
+          "registry_file": "h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
+          "their_dots": 41419,
+          "forward_overlap_my_dots_within_3px": 0.250013,
+          "reverse_overlap_their_dots_within_3px": 0.38958,
+          "binary_spearman_phi": 0.232516,
+          "jaccard_exact_pixels": 0.135144
+        },
+        {
+          "registry_file": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif",
+          "their_dots": 33889,
+          "forward_overlap_my_dots_within_3px": 0.24194,
+          "reverse_overlap_their_dots_within_3px": 0.434861,
+          "binary_spearman_phi": 0.249842,
+          "jaccard_exact_pixels": 0.145916
+        },
+        {
+          "registry_file": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.246109,
+          "reverse_overlap_their_dots_within_3px": 0.413874,
+          "binary_spearman_phi": 0.236375,
+          "jaccard_exact_pixels": 0.137617
+        },
+        {
+          "registry_file": "h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.243055,
+          "reverse_overlap_their_dots_within_3px": 0.411988,
+          "binary_spearman_phi": 0.221661,
+          "jaccard_exact_pixels": 0.128244
+        },
+        {
+          "registry_file": "h33-h33-2-b2-PRUNE_B4-20261023-78e893d7-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.233309,
+          "reverse_overlap_their_dots_within_3px": 0.41807,
+          "binary_spearman_phi": 0.207402,
+          "jaccard_exact_pixels": 0.119306
+        },
+        {
+          "registry_file": "h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.217002,
+          "reverse_overlap_their_dots_within_3px": 0.420779,
+          "binary_spearman_phi": 0.193652,
+          "jaccard_exact_pixels": 0.110819
+        }
+      ]
+    }
+  },
+  "note": "Controls R0/RELIEFp10/BREAKLINEf45/f60s2i reproduced on identical folds; see pooled summary scores."
+}

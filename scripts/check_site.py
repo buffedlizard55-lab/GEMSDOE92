@@ -109,7 +109,10 @@ def main() -> int:
             print(f"  PASS {tag}  sha256 {sha256_file(path)[:16]}…")
 
     # ---- the primary named on the page must match its audit receipt ----------
-    m = re.search(r'href="(downloads/[^"]+-zeros\.tif)"', html)
+    # Primary = link tagged data-primary="true" (2026-10-24: several lane
+    # cards are served; first-link inference broke when STRAINBREAK was added).
+    m = re.search(r'href="(downloads/[^"]+-zeros\.tif)" data-primary="true"', html) \
+        or re.search(r'href="(downloads/[^"]+-zeros\.tif)"', html)
     if m:
         primary = DOCS / m.group(1)
         if not primary.is_file():
@@ -128,22 +131,27 @@ def main() -> int:
                 bad = [g["name"] for g in doc.get("gates_zeros", []) if not g["ok"]]
                 if bad:
                     problems.append(f"audit receipt records failing format gate(s): {bad}")
-                if doc.get("submission_eligible") is not False:
-                    problems.append("audit must say submission_eligible=false when the binding uniqueness gate fails")
                 public = doc.get("public_registry_uniqueness", {})
+                if doc.get("submission_eligible") is not False and public.get("unique_under_literal_rule") is not True:
+                    problems.append("audit must say submission_eligible=false unless the public literal uniqueness gate passes for these bytes")
                 if public.get("candidate_hash_matches_scan") is not True:
                     problems.append("public registry audit is absent or not for these exact candidate bytes")
-                if public.get("unique_under_literal_rule") is not False or public.get("stop_required") is not True:
-                    problems.append("site audit must preserve the literal duplicate stop verdict")
-            card_path = ROOT / "evidence" / "visible_collar_run_card.json"
+                uniq_flag, stop_flag = public.get("unique_under_literal_rule"), public.get("stop_required")
+                if (uniq_flag is False and stop_flag is not True) or (uniq_flag is True and stop_flag is not False) or uniq_flag is None:
+                    problems.append("site audit public-uniqueness verdict is internally inconsistent (unique/stop flags)")
+            card_rel = doc.get("run_card", "evidence/visible_collar_run_card.json") if audit_path.is_file() else "evidence/visible_collar_run_card.json"
+            card_path = ROOT / card_rel
             if not card_path.is_file():
-                problems.append("visible collar run card missing")
+                problems.append(f"primary run card missing: {card_rel}")
             else:
                 card = json.loads(card_path.read_text())
                 if card.get("raster_sha256") != sha256_file(primary):
                     problems.append("run card SHA256 != primary bytes")
-                if card.get("verdict") != "negative":
-                    problems.append("run card must record negative verdict after registry duplicate stop")
+                expected_verdict = doc.get("verdict", "negative") if audit_path.is_file() else "negative"
+                if card.get("verdict") != expected_verdict:
+                    problems.append("run card verdict != audit receipt verdict")
+                if expected_verdict != "promote" and audit_path.is_file() and doc.get("submission_eligible") is True:
+                    problems.append("non-promote run card cannot be submission_eligible")
             print(f"  PRIMARY {primary.name}")
 
     if problems:

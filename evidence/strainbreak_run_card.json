@@ -1,0 +1,183 @@
+{
+  "hypothesis": "A linear DEM break-in-slope (BREAKLINE L: pct_rank(||grad det_elev_slope||) x structure-tensor coherence of det_elev) that also sits in high geodetic strain-rate crust (Band 4 geod_2ndinv percentile) is a scarp on a structure that is currently loading. Young, still-propagating strands in extensional step-overs/relay ramps can be geomorphically subtle -- missing from the Qfaults-based catalogue and from the potential-field worm skeleton -- while actively straining (cf. the 2020 M6.5 Monte Cristo Range rupture of largely unmapped Candelaria-fault strands). Emitting 45-60% of the fixed budget on strained coherent breaks >3px off the skeleton (and >3px off BREAKLINE f45's far dots) tests the strain multiplier as an independent lane.",
+  "mechanism": "At fixed S=37,654, DTI rises when expected kernel credit per dot rises. Kept skeleton dots are chosen by exact marginal expected-DTI greedy (alpha 0.2, beta 0.8, R=3px) under w=0.30+0.70*S_pct on H19-5 support, so coverage-redundant, low-strain parent dots are the donors. Far dots take the strongest strained breaks first (descending S_raw, 2.8px spacing floor): if per-pixel new-fault probability is concentrated where terrain lineaments and active strain coincide, those dots earn more expected credit than R0's unranked thinning or BREAKLINE's strain-blind top-L set.",
+  "named_non_fault_process_that_could_mimic_it": "Walker Lane elastic strain shadows (high total strain rate, shear-parallel, no open normal fault), alluvial compaction/subsidence strain, and -- inherited from L -- Lake Lahontan shoreline terraces and alluvial-fan segment boundaries lying in strained crust all score high on S with no Quaternary fault.",
+  "screen_falsified_alternative": {
+    "lane": "GRAVCrest (rank-1 hypothesis, Bands 18/13/5 gravity-gradient crest)",
+    "result": "NOT BUILT -- pre-registered SGMC screen falsified it",
+    "far_only_sgmc_dti": {
+      "crestA_abshg_x_cohgrav": 0.005259,
+      "crestB_gradhg_x_cohgrav": 0.016145,
+      "crestC_gravslope_x_cohgrav": 0.005477
+    },
+    "breakline_L_baseline_far_only_sgmc_dti": 0.072325,
+    "evidence": "evidence/gravcrest_screen.json"
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.005486691039494485,
+    "ci95": [
+      0.004522420854689027,
+      0.006430115305473997
+    ],
+    "delta_vs_R0": 0.001480543864809742,
+    "delta_vs_R0_ci95": [
+      0.0005815022031051307,
+      0.0022957491487707554
+    ],
+    "delta_vs_BREAKLINEf45": 0.000626183071964795,
+    "delta_vs_BREAKLINEf45_ci95": [
+      -0.0003998431025119317,
+      0.0015772373035631275
+    ],
+    "delta_vs_holdout_best_RELIEFp10": -0.0005584413576784474,
+    "delta_vs_RELIEFp10_ci95": [
+      -0.0016154581142722344,
+      0.00043602153013388696
+    ],
+    "R0_dti": 0.004006147174684743,
+    "BREAKLINEf45_dti": 0.00486050796752969,
+    "holdout_best_RELIEFp10_dti": 0.0060451323971729325,
+    "dose_ladder": {
+      "f45s2i": 0.0050220611306460525,
+      "f60s2i": 0.005486691039494485,
+      "f75s2i": 0.005486137521118966
+    },
+    "dose_note": "f75 == f60 (paired delta -5.5e-07): dose plateau; primary is f60 (same holdout, higher SGMC, more parent mass retained). No fourth dose.",
+    "spatial_clusters": 157,
+    "bootstrap_draws": 1000
+  },
+  "leakage_canary_max_symmetric_auc": 0.621604,
+  "sgmc_control_proxy": {
+    "evidence_class": "PROXY (off-catalogue USGS SGMC bedrock faults)",
+    "dti": 0.105162,
+    "R0_dti": 0.09606,
+    "BREAKLINEf45_dti": 0.126105,
+    "f75s2i_dti": 0.103271,
+    "truth_pixels": 62703,
+    "note": "STRAINBREAK beats R0 on SGMC (+9.5%) but trails strain-blind BREAKLINE f45 (0.126105): the strain multiplier trades bedrock-fault credit for catalogue-holdout credit. The two local instruments disagree on the lane's discovery value."
+  },
+  "queued_item_closed_visible_collar_sgmc": {
+    "evidence_class": "PROXY",
+    "sgmc_dti": 0.021192,
+    "R0_dti": 0.09606,
+    "note": "NEXT_STEPS queued scoring the collar candidate on SGMC: 0.021192 vs R0 0.09606 -- the collar's holdout gain does not transfer off-catalogue."
+  },
+  "correlation_overlap_vs_registry": {
+    "local": {
+      "registry_rasters_checked": 21,
+      "worst_forward_overlap_within_3px": 0.400011,
+      "worst_forward_overlap_file": "parent_R0_zeros.tif",
+      "worst_abs_spearman": 0.40071,
+      "worst_abs_spearman_file": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif",
+      "literal_duplicate": false,
+      "preplacement_surface_spaced_top37654": {
+        "registry_rasters_checked": 21,
+        "worst_forward_overlap": 0.099538,
+        "worst_forward_overlap_file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+        "worst_abs_spearman": 0.013274,
+        "worst_abs_spearman_file": "h19_5.tif",
+        "duplicate": false
+      },
+      "preplacement_surface_sampled_spearman_worst": {
+        "registry_file": "h19_5.tif",
+        "sampled_spearman_surface": 0.102662
+      }
+    },
+    "public_expanded": {
+      "evidence_file": "evidence/strainbreak_public_registry_uniqueness.json",
+      "registries_checked": 1309,
+      "worst_forward_overlap": 1.0,
+      "worst_overlap_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "worst_abs_spearman": 0.4174264872291007,
+      "worst_rho_raster": "GEMSDOE85/releases/h33-2-b2-mass-m10e-20261023-1238b3ab-zeros.tif",
+      "rasters_over_70pct_overlap": 89,
+      "unique_under_literal_rule": false,
+      "stop_required": true,
+      "scan_complete_for_declared_scope": true,
+      "scan_source": "cached GitHub API inventory (no network refresh)",
+      "preplacement_note": "pre-placement surface NOT scanned publicly for this candidate; surface uniqueness is measured on the local registry in the lane proxy audit. The final-dots public scan below is binding either way.",
+      "sparse_only_diagnostic_NOT_A_GATE": {
+        "evidence_file": "evidence/strainbreak_public_sparse_diagnostic.json",
+        "sparse_checked_le_150k_positive_px": 1125,
+        "dense_skipped": 184,
+        "worst_sparse_forward_overlap": 0.710549,
+        "worst_sparse_raster": "62GEMSDOE/docs/downloads/gems62b-tiltgrad-vote-scarpcorrob-120000-zeros.tif",
+        "sparse_over_70pct": 3,
+        "note": "Even against sparse dot-like rasters only, 3 large dot clouds (92-120k dots) exceed 70% forward overlap. The literal stop is therefore not solely a dense-surface artifact; measured, not waived."
+      }
+    }
+  },
+  "raster_sha256": "000d0bd7e0a549c2d38ca52a5df5b249763a7be998ad2ccfa30cc45136c05c1f",
+  "raster_sha256_nan_twin": "5c3c6ca25a94941cc5cb53f02a75974ed1b9f7bc73ce60a3e0b2374eb9cd81f7",
+  "validator": {
+    "overall_pass": true,
+    "gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=float32 count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nan_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "000d0bd7e0a549c2d38ca52a5df5b249763a7be998ad2ccfa30cc45136c05c1f"
+      }
+    ],
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": "EPSG:32611, 3730x3292, transform of sample_submission.tif"
+  },
+  "submission_name": "GEMSDOE92-STRAINBREAK-f60s2i-20261024",
+  "file": "h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif",
+  "note": "h33-h33-2-b2; STRAINBREAK f60s2i 22592 far dots on strained scarp-breaks >3px off H19-5",
+  "note_chars": 87,
+  "organizer_score": null,
+  "experiments_built_this_session": 3,
+  "verdict": "negative",
+  "verdict_reason": "Pre-registered promotion rule not met: HOLDOUT-DTI 0.005487 beats R0 (paired CI excludes 0) and the BREAKLINE point estimate, but does not beat the holdout best (RELIEF p10, 0.006045; paired delta CI includes 0), and the SGMC off-catalogue control prefers strain-blind BREAKLINE. Public-registry literal gate: TRIGGERED (duplicate under literal rule, see public_expanded) -- independently binding. Format-valid and OK TO DOWNLOAD; NOT cleared for a weekly slot.",
+  "format_ok_to_download": true,
+  "slot_recommendation": "NOT_CLEARED"
+}

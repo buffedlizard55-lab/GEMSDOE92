@@ -57,7 +57,8 @@ def test_index_primary_has_an_audit_receipt_that_matches():
     import hashlib
 
     html = _index()
-    m = re.search(r'href="(downloads/[^"]+-zeros\.tif)"', html)
+    m = re.search(r'href="(downloads/[^"]+-zeros\.tif)" data-primary="true"', html) \
+        or re.search(r'href="(downloads/[^"]+-zeros\.tif)"', html)
     assert m, "index.html offers no zeros-outside primary"
     primary = DOCS / m.group(1)
     assert primary.is_file()
@@ -68,10 +69,16 @@ def test_index_primary_has_an_audit_receipt_that_matches():
 
     doc = json.loads(audit_path.read_text())
     assert doc["overall_pass"] is True  # format-valid is distinct from slot eligibility
-    assert doc["submission_eligible"] is False
     assert doc["sha256_zeros"] == hashlib.sha256(primary.read_bytes()).hexdigest()
     assert all(g["ok"] for g in doc["gates_zeros"]), "audit records a failing format gate"
-    assert doc["public_registry_uniqueness"]["unique_under_literal_rule"] is False
+    pub = doc["public_registry_uniqueness"]
+    assert pub["candidate_hash_matches_scan"] is True
+    # fail-closed consistency: eligibility requires a passing literal gate AND a promote verdict
+    if pub["unique_under_literal_rule"] is False:
+        assert pub["stop_required"] is True
+        assert doc["submission_eligible"] is False
+    if doc.get("verdict") != "promote":
+        assert doc["submission_eligible"] is False
 
 
 def test_submit_page_exists():

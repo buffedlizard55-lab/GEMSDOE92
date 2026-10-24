@@ -137,6 +137,13 @@ def main() -> int:
     ap.add_argument("--workers", type=int, default=12)
     ap.add_argument("--cache-only", action="store_true",
                     help="reuse a previously verified .cache/gemsdoe_public_registry/repo_inventory.json and blob cache; makes no GitHub API requests")
+    ap.add_argument("--out-name", default="public_registry_uniqueness",
+                    help="evidence stem: writes evidence/<out-name>.json and docs/downloads/<out-name>.json "
+                         "(2026-10-24 generalization: the original always overwrote the visible-collar scan)")
+    ap.add_argument("--preplacement-tif", default=None,
+                    help="optional float GeoTIFF in [0,1] on the template grid used as the pre-placement "
+                         "surface raster; default keeps the legacy visible-collar corridor for the "
+                         "default candidate, otherwise records preplacement as not-scanned")
     args = ap.parse_args()
     candidate_path = (ROOT / args.candidate).resolve()
     if not candidate_path.is_file():
@@ -208,17 +215,32 @@ def main() -> int:
 
     with rasterio.open(candidate_path) as ds:
         candidate = ds.read(1)
-    pre_path = ROOT / "data" / "parent_R0_zeros.tif"
-    with rasterio.open(pre_path) as ds:
-        parent = (ds.read(1) > 0) & grid.footprint
-    full_distance = distance_transform_edt(~grid.catalogue)
-    surface_mask = grid.footprint & (full_distance > 2.0) & (full_distance <= 3.0) & ~_near(parent, 3.0)
-    surface = np.zeros(grid.footprint.shape, dtype=np.float32)
-    surface[surface_mask] = (1.0 / full_distance[surface_mask]).astype(np.float32)
-    pre_compare = compare_array_to_registry(surface, index, grid.footprint)
+    if args.preplacement_tif:
+        with rasterio.open((ROOT / args.preplacement_tif).resolve()) as ds:
+            surface = np.nan_to_num(ds.read(1), nan=0.0).astype(np.float32)
+        surface = np.clip(surface, 0.0, 1.0)
+        surface[~grid.footprint] = 0.0
+        pre_compare = compare_array_to_registry(surface, index, grid.footprint)
+        pre_note = f"pre-placement raster from --preplacement-tif {args.preplacement_tif}"
+    elif candidate_path.name == "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif":
+        pre_path = ROOT / "data" / "parent_R0_zeros.tif"
+        with rasterio.open(pre_path) as ds:
+            parent = (ds.read(1) > 0) & grid.footprint
+        full_distance = distance_transform_edt(~grid.catalogue)
+        surface_mask = grid.footprint & (full_distance > 2.0) & (full_distance <= 3.0) & ~_near(parent, 3.0)
+        surface = np.zeros(grid.footprint.shape, dtype=np.float32)
+        surface[surface_mask] = (1.0 / full_distance[surface_mask]).astype(np.float32)
+        pre_compare = compare_array_to_registry(surface, index, grid.footprint)
+        pre_note = "legacy visible-collar corridor surface (candidate is the collar file)"
+    else:
+        pre_compare = None
+        pre_note = ("pre-placement surface NOT scanned publicly for this candidate; "
+                    "surface uniqueness is measured on the local registry in the lane proxy audit. "
+                    "The final-dots public scan below is binding either way.")
     final_compare = compare_array_to_registry(candidate, index, grid.footprint,
                                               file_sha256=hashlib.sha256(candidate_path.read_bytes()).hexdigest())
-    pre_summary, final_summary = summarize(pre_compare["rows"]), summarize(final_compare["rows"])
+    pre_summary = summarize(pre_compare["rows"]) if pre_compare is not None else None
+    final_summary = summarize(final_compare["rows"])
     witness_name = final_summary["worst_overlap_raster"]
     witness_item = next((f for f in compatible if f["repo"] + "/" + f["path"] == witness_name), None)
     witness = None
@@ -256,18 +278,19 @@ def main() -> int:
                       "exclusions": exclusions,
                       "scope": "Current public default branches; TIFF paths under docs/downloads/, releases/, and submission directories; unique Git blobs. Does not cover history, private repositories, other owners, zip-only objects, or site-hosted objects not in those paths."},
         "preplacement_surface": pre_summary,
+        "preplacement_note": pre_note,
         "final_dots": final_summary,
         "binding_witness": {"worst_forward_overlap": witness,
                             "full_footprint_surface": full_surface_witness},
         "verdict": "negative — duplicate under literal registry rule; stop and do not spend a weekly slot" if final_summary["stop_required"] else ("promote" if complete else "negative — scan incomplete; fail closed"),
-        "scan_complete_for_declared_scope": bool(complete and not pre_compare["missing_or_invalid"] and not final_compare["missing_or_invalid"]),
+        "scan_complete_for_declared_scope": bool(complete and (pre_compare is None or not pre_compare["missing_or_invalid"]) and not final_compare["missing_or_invalid"]),
         "candidate_file_sha256": hashlib.sha256(candidate_path.read_bytes()).hexdigest(),
         "cache_index": str(index_path.relative_to(ROOT)),
     }
-    out = ROOT / "evidence" / "public_registry_uniqueness.json"
+    out = ROOT / "evidence" / f"{args.out_name}.json"
     serialized = json.dumps(result, indent=2) + "\n"
     out.write_text(serialized, encoding="utf-8")
-    (ROOT / "docs" / "downloads" / "public_registry_uniqueness.json").write_text(
+    (ROOT / "docs" / "downloads" / f"{args.out_name}.json").write_text(
         serialized, encoding="utf-8")
     print(json.dumps({"output": str(out), "preplacement": pre_summary,
                       "final": final_summary, "verdict": result["verdict"]}, indent=2))
