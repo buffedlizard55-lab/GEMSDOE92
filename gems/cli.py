@@ -13,8 +13,13 @@ from .manifest import verify
 
 
 def cmd_validate(a) -> int:
-    results = run_gates(a.candidate, a.reference, catalogue_path=a.catalogue,
-                        prune_radius=a.prune_radius)
+    results = run_gates(
+        a.candidate,
+        a.reference,
+        catalogue_path=a.catalogue,
+        prune_radius=a.prune_radius,
+        require_submission_encoding=True,
+    )
     ok, report = summarise(results)
     print(report)
     if a.json:
@@ -106,7 +111,7 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="gems", description="GEMS candidate toolkit")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
-    v = sub.add_parser("validate", help="run the MUST-pass format gates")
+    v = sub.add_parser("validate", help="run the strict, upload-safe local format preflight")
     v.add_argument("candidate")
     v.add_argument("--reference", required=True)
     v.add_argument("--catalogue", default=None)

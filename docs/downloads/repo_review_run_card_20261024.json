@@ -1,0 +1,65 @@
+{
+  "schema": "gemsdoe92-repository-review-run-card.v1",
+  "record_type": "no_new_experiment_tooling_review",
+  "reviewed_utc": "2026-10-24T19:39:49Z",
+  "hypothesis": "No new geological candidate is tested. Under the literal registry rule, any nonempty final prediction on the valid footprint is a duplicate against the cited full-footprint-positive witness.",
+  "mechanism": "The witness has positive support on every valid footprint cell, so every in-footprint predicted dot is within the witness support. This blocks final-dot uniqueness; it does not establish geological equivalence and is not a pre-placement surface test.",
+  "named_non_fault_process_that_could_mimic_it": "A diffuse multi-scale prospectivity prior or interpolation background can be positive across the study footprint without representing discrete fault traces.",
+  "holdout_dti": {
+    "label": "HOLDOUT-DTI",
+    "this_session": "NOT RUN: no candidate experiment was authorized under the binding registry stop; no holdout value is claimed for this review.",
+    "historical_reference": {
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positive_pixels": 22663,
+      "candidate": "SPRINGALIGN f33Ctop (existing artifact; historical value, not rerun)",
+      "value": 0.004865069033082899,
+      "ci95": [
+        0.004025448154051826,
+        0.005785015879540241
+      ],
+      "status": "HISTORICAL HOLDOUT-DTI; not a competition score or evidence that this review's candidate improved."
+    }
+  },
+  "correlation_overlap_vs_registry": {
+    "label": "REGISTRY-MEASUREMENT",
+    "scope": "One hash-verified public witness for rejection only; no fresh full scan.",
+    "witness": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "witness_positive_pixels": 5167373,
+    "footprint_pixels": 5167373,
+    "witness_positive_fraction": 1.0,
+    "existing_springalign_final_dot_forward_overlap": 1.0,
+    "existing_springalign_spearman": 0.04372948694731268,
+    "actual_preplacement_surface_checked": false,
+    "result": "Duplicate stop: final overlap exceeds 0.70. No new surface or final placement was constructed."
+  },
+  "raster_sha256": "1772ad5c62506b6b380e221d2202b583edf0a5be4f96916af655e0478eba11b1",
+  "raster_identity": "Existing SPRINGALIGN research artifact; not generated in this review.",
+  "validator_output": {
+    "source": "existing exact-file format audit receipt, plus current site gate run",
+    "format_status": "PASS for the associated existing research artifact; this is not uniqueness clearance.",
+    "single_band_float32": true,
+    "no_nan_inside_footprint": true,
+    "all_finite": true,
+    "values_range": [
+      0.0,
+      1.0
+    ],
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform_matches_template": true,
+    "zero_outside_footprint": true,
+    "submission_eligible": false,
+    "shared_cli_strict_encoding_gate_added": true,
+    "tests_and_site_checks": "186 tests passed; 103 nonfatal Rasterio/Affine pending-deprecation warnings; scripts/check_site.py passed all 19 served zeros-outside TIFFs; all 8 manifest hashes and the pinned R0 parent proof passed; strict CLI passed 9 format gates on the existing SPRINGALIGN primary; compileall, make validate dry-run, 156 local HTML links across 4 pages with no missing targets, run-card mirror equality/JSON validation, and the PR-diff git diff --check passed. These are software/data-integrity checks, not competition scores or uniqueness clearance."
+  },
+  "submission_name": "GEMSDOE92-SPRINGALIGN-f33Ctop-20261025",
+  "submission_note": "Existing research artifact only; registry stop; no new TIFF or weekly slot.",
+  "new_unique_tiff_generated": false,
+  "experiments_run": 0,
+  "weekly_submission_slots_used": 0,
+  "verdict": "negative",
+  "unfulfilled_requirement": "A fresh unique TIF was not generated because the literal registry stop rejects every nonempty final prediction inside the footprint."
+}

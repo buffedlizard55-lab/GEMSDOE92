@@ -17,14 +17,19 @@ sys.path.insert(0, str(ROOT))
 from gems.gates import run_gates
 from gems.rasters import sha256_file
 
-def gates(path: Path):
-    res = run_gates(str(path), str(ROOT/"data/bridge/sample_submission.tif"),
-                    str(ROOT/"data/bridge/labels.tif"), prune_radius=2)
+def gates(path: Path, *, require_submission_encoding: bool = False):
+    res = run_gates(
+        str(path), str(ROOT/"data/bridge/sample_submission.tif"),
+        str(ROOT/"data/bridge/labels.tif"), prune_radius=2,
+        require_submission_encoding=require_submission_encoding,
+    )
     return [{"name": r.name, "ok": bool(r.ok), "detail": r.detail} for r in res]
 
 def main() -> int:
     zeros, nan = Path(sys.argv[1]), Path(sys.argv[2])
-    gz, gn = gates(zeros), gates(nan)
+    # Only the zeros-outside encoding is intended as an upload candidate.
+    # Keep the NaN twin in the receipt as a legacy/research comparison.
+    gz, gn = gates(zeros, require_submission_encoding=True), gates(nan)
     ok = all(g["ok"] for g in gz) and all(g["ok"] for g in gn)
     doc = {
         "file": zeros.name,

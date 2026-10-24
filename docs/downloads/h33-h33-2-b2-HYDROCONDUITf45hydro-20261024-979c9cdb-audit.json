@@ -36,7 +36,12 @@
     {
       "name": "nan_outside_footprint",
       "ok": true,
-      "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
     },
     {
       "name": "catalogue_zero_mass",
@@ -88,7 +93,7 @@
     {
       "name": "nan_outside_footprint",
       "ok": true,
-      "detail": "outside=7111787 nan=7111787 zero=0 other=0"
+      "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
     },
     {
       "name": "catalogue_zero_mass",
@@ -107,7 +112,7 @@
     }
   ],
   "overall_pass": true,
-  "generated_utc": "2026-10-24T19:07:41.717302+00:00",
+  "generated_utc": "2026-10-24T19:45:31.285506+00:00",
   "note": "All gates PASS on independent disk reread; values in [0,1], no NaN inside footprint, zero catalogue mass",
   "n_positive_pixels": 37654,
   "n_dots": 37654,

@@ -113,8 +113,10 @@ def main() -> int:
         except AssertionError as exc:
             problems.append(f"{tag}: {exc}")
 
-        ok, report = summarise(run_gates(str(path), str(SAMPLE), str(LABELS),
-                                         prune_radius=2))
+        ok, report = summarise(run_gates(
+            str(path), str(SAMPLE), str(LABELS), prune_radius=2,
+            require_submission_encoding=True,
+        ))
         if not ok:
             problems.append(f"{tag}: gates failed\n{report}")
         else:

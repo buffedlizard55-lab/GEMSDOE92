@@ -227,7 +227,12 @@
       {
         "name": "nan_outside_footprint",
         "ok": true,
-        "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+        "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      },
+      {
+        "name": "submission_encoding",
+        "ok": true,
+        "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
       },
       {
         "name": "catalogue_zero_mass",
