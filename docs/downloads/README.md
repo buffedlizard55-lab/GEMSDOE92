@@ -4,4 +4,4 @@
 
 Use [`../index.html`](../index.html) for the current status and the archive list. The directory also contains diagnostic TIFF twins (including non-zeros-outside encodings) and historical artifacts. Do not upload those files. A passing format audit does not mean the artifact is scientifically eligible or registry-unique.
 
-The `DILATATION` filenames include the future date `2026-10-25`, while the current review is dated `2026-10-24`; their provenance discrepancy is flagged in the repository's `IRREGULARITIES.md`. No new file in this directory was generated during the current review.
+The `DILATATION` variants and the SPRINGALIGN TIFF/ZIP imported from updated upstream `main` carry the future date `2026-10-25`, while this review is dated `2026-10-24`; their provenance discrepancy is flagged in the repository's `IRREGULARITIES.md`. No new file in this directory was generated during the current review.

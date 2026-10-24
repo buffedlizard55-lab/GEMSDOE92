@@ -746,3 +746,13 @@ Blocker 0 (ledger: BUILT rows grew by 3 this session, RECEIPT rows still 0).
 **Date irregularity.** Three tracked `docs/downloads/` DILATATION TIFF pairs have filenames dated `2026-10-25`, one day after the current review date (`2026-10-24`). Their bytes are preserved as pre-existing artifacts, but the timestamp/provenance discrepancy has not been resolved. They are archived and explicitly marked **DO NOT SUBMIT**; they are not treated as newly generated or current recommendations.
 
 **Action.** Replaced the active README with the complete operating prompt/current status; corrected the public index, executive summary, submission guides, and hypothesis backlog; added exact witness/run-card and score-claim provenance; added automated tests and site checks for explicit download status. `docs/REVIEW_CURRENT.md` is the current review. The large feature stack is absent from `.cache/gems_inputs/`; current official data-page access and redistribution terms were not verified. No candidate is declared viable.
+
+## 2026-10-24 current review — future-dated SPRINGALIGN artifact inherited from updated main
+
+**Observation.** Fetching `origin/main` to resolve the open pull request brought in a SPRINGALIGN zeros-outside TIFF and ZIP, analysis/hypothesis pages, run cards, and implementation files. The artifact filename and associated reports are dated `2026-10-25`, one day after the current system/review date (`2026-10-24`). The imported run card reports two experiments and a local HOLDOUT-DTI result; those claims were not rerun or independently authenticated in this review. Raster SHA-256 recorded upstream: `1772ad5c62506b6b380e221d2202b583edf0a5be4f96916af655e0478eba11b1`.
+
+**Impact.** This is an unresolved provenance/time irregularity. The incoming report's local registry comparison does not override the current full-footprint-positive 17GEMSDOE witness. Under the literal rule, every nonempty in-footprint candidate—including SPRINGALIGN—has 100% forward overlap. The artifact is not eligible, irrespective of format pass or local uniqueness.
+
+**Decision.** Preserve the upstream bytes and associated historical records, but do not present SPRINGALIGN as the current primary or a recommendation. Label its TIFF and ZIP archived research-only / **DO NOT SUBMIT**; current index and reports say it was not generated or rerun in this review. Keep ANASIG as the current research artifact described in the review scope, while clearly documenting the imported SPRINGALIGN artifact.
+
+**Action.** Add the timestamp/provenance discrepancy to this log and the current status pages; retain exact upstream file hash. Do not generate a new candidate, run another experiment, or select a submission slot to resolve this inconsistency.

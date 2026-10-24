@@ -16,6 +16,10 @@ The existing ANASIG zeros-outside GeoTIFF is **FORMAT-VALID — OK TO DOWNLOAD F
 
 The current receipt, including scope and limitations, is [`current registry-stop run card`](docs/downloads/current_registry_stop_run_card_20261024.json). The public site lists every archived TIFF/ZIP as research-only and **DO NOT SUBMIT**; see [`docs/index.html`](docs/index.html).
 
+### Additional future-dated artifact inherited from upstream main
+
+The updated upstream `main` contains a SPRINGALIGN zeros-outside TIFF and ZIP dated `2026-10-25`, after this review's `2026-10-24` date. They were not generated, rerun, or approved in this review. The raster is preserved as an **archived research artifact — DO NOT SUBMIT** ([Archived SPRINGALIGN research GeoTIFF — DO NOT SUBMIT](docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif) · [Archived SPRINGALIGN research ZIP — DO NOT SUBMIT](docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.zip)); its future-dated provenance is unresolved and flagged in [`IRREGULARITIES.md`](IRREGULARITIES.md). The upstream local-uniqueness record is not a check against the current full-support witness. Because that witness covers every footprint cell, this artifact is blocked by the same literal overlap rule as every other nonempty in-footprint TIFF. It is not a new current candidate or a submission recommendation.
+
 ## What the reported scores do—and do not—establish
 
 No fresh official leaderboard check was made, and this repository has no organizer submission receipt for the disputed values. The exact classes are preserved in [`ledger/score_claims.csv`](ledger/score_claims.csv):

@@ -18,7 +18,7 @@
 <main>
   <section>
     <h2>What “unvalidated” means</h2>
-    <p>The tracked builders, run cards, and prior hypothesis notes were reviewed. “Unvalidated” means the exact formulation below has no tracked build/holdout result; it does not claim worldwide novelty. Related prior work is explicitly named so it is not mislabeled as new. No external official source was verified in this review, and <code>.cache/gems_inputs/training_features.tif</code> is absent, so <strong>none is viable to test now</strong>.</p>
+    <p>The tracked builders, run cards, and prior hypothesis notes were reviewed. “Unvalidated” means the exact formulation below has no tracked build/holdout result; it does not claim worldwide novelty. Related prior work is explicitly named so it is not mislabeled as new. The spring-pair alignment method is excluded because a future-dated SPRINGALIGN build/run card is now present in updated upstream <code>main</code>; its provenance/time status is unresolved and it remains blocked by the full-footprint witness. No external official source was verified in this review, and <code>.cache/gems_inputs/training_features.tif</code> is absent, so <strong>none is viable to test now</strong>.</p>
     <p>All expected-value descriptions are qualitative. No numeric HOLDOUT-DTI forecasts are made. Full data requirements, provenance status, and block reasons are in <a href="HYPOTHESES.md">the detailed markdown record</a>.</p>
   </section>
 
@@ -37,16 +37,16 @@
   </section>
 
   <section class="download-card">
-    <p class="kicker">Rank 2 · medium-high geological specificity · moderate/high cost</p>
-    <h2>SPRING-PAIR-STRIKE — geothermal discharge pair alignment</h2>
+    <p class="kicker">Rank 2 · medium information value · moderate/high cost</p>
+    <h2>SCARP-PROFILE-ASYMMETRY — repeated one-sided vertical step</h2>
     <dl class="meta">
-      <div><dt>Layers</dt><dd>DOE GDR INGENIOUS spring/well coordinates, temperatures and chemistry with source-quality flags; optional DEM-derived catchment/valley orientation for controls.</dd></div>
-      <div><dt>Physical signature</dt><dd>Fault-compatible, strike-coherent pairwise orientations among independent hot-spring or geothermometry-confirmed well points, with spatially blocked controls—not point density.</dd></div>
-      <div><dt>Why a catalogue-missing fault?</dt><dd>Blind permeable strands may connect separated discharge points even when the connecting fault lacks a mapped Quaternary scarp.</dd></div>
-      <div><dt>Difference from repo work</dt><dd>A related spring-density/elongation screen was not promising. Pairwise strike alignment was explicitly left unbuilt; this is not a claim that the density screen worked.</dd></div>
-      <div><dt>Named non-fault mimics</dt><dd>Aquifer or lithologic-contact discharge; rivers/playa margins; anthropogenic wells; multiple outlets fed by one aquifer rather than a fault.</dd></div>
-      <div><dt>Expected value / cost</dt><dd>Medium-high geological specificity but uncertain power; moderate-high cost for provenance, duplicate removal, cluster dependence and leakage-safe validation. No numeric score forecast.</dd></div>
-      <div><dt>Data and source status</dt><dd><a href="https://gdr.openei.org/submissions/1391">Official GDR / INGENIOUS #1391</a>. The project manifest records a CC BY 4.0 classification for a pinned mirror, but this review did not verify the live source or current terms. <strong>Not viable now.</strong></dd></div>
+      <div><dt>Layers</dt><dd>Competition DEM Band 12 <code>det_elev</code> and Band 19 <code>det_elev_slope</code>; oriented cross-profiles sampled normal to candidate ridge axes. Band 17 <code>cond_surf</code> is optional as a host/facies control only after definitions and provenance are verified.</dd></div>
+      <div><dt>Physical signature</dt><dd>Repeated profiles with a consistent one-sided elevation step and asymmetric paired slope/curvature response across the same line, tested at multiple along-ridge positions. Reject symmetric channel banks and isolated curvature peaks.</dd></div>
+      <div><dt>Why a catalogue-missing fault?</dt><dd>Small-offset Quaternary faults can create a consistent vertical step across profiles while remaining too subtle for a mapped scarp; cross-profile sign and persistence may distinguish the structure from one terrain edge.</dd></div>
+      <div><dt>Difference from repo work</dt><dd>BREAKLINE and SCARPPOL rank local slope-break / fall-line-curvature pixels. This cross-profile antisymmetry and repeated one-sided step statistic has no tracked build/holdout result; it is not another slope-gradient weight.</dd></div>
+      <div><dt>Named non-fault mimics</dt><dd>Paired river-channel walls; alluvial-fan margins; shore-parallel lake benches; landslide headwalls; roads or drainage cuts.</dd></div>
+      <div><dt>Expected value / cost</dt><dd>Medium potential; moderate-to-high implementation/validation cost. Profile-sign stability and resolution sensitivity are first falsification checks. No numeric score forecast.</dd></div>
+      <div><dt>Data and source status</dt><dd><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">Official competition data page</a>. Access, terms and current feature-stack bytes were not verified; the stack is absent. <strong>Not viable now.</strong></dd></div>
     </dl>
   </section>
 

@@ -15,7 +15,7 @@
     "official_competition_data_source": "https://www.drivendata.org/competitions/306/competition-doe-gems/data/",
     "official_competition_source_verified_this_review": false,
     "external_official_sources_verified_this_review": [],
-    "note": "The official competition site and non-GitHub external sources were outside the permitted network hosts. Pinned owner-mirror hashes do not authenticate organizer provenance, current availability, or redistribution terms."
+    "note": "The official competition site and non-GitHub external sources were outside the permitted network hosts. Pinned owner-mirror hashes do not authenticate organizer provenance, current availability, or redistribution terms. A future-dated SPRINGALIGN build/run card is present in updated upstream main; spring-pair alignment is therefore excluded from the untried queue and remains blocked by the full-footprint witness."
   },
   "experiment_budget": {
     "limit": "Stop after 3 experiments or 2 hours, whichever comes first.",
@@ -59,36 +59,37 @@
     },
     {
       "rank": 2,
-      "id": "SPRING_PAIR_STRIKE",
-      "status": "UNVALIDATED HYPOTHESIS; related density screen exists, alignment formulation not built",
+      "id": "SCARP_PROFILE_ASYMMETRY",
+      "status": "UNVALIDATED HYPOTHESIS; not built or scored",
       "layers": [
-        "DOE GDR INGENIOUS spring / well coordinates",
-        "Temperature and chemistry fields with source-quality flags",
-        "Optional DEM-derived catchment and valley orientation for mimic controls"
+        "Competition DEM Band 12 det_elev",
+        "Competition DEM Band 19 det_elev_slope",
+        "Oriented cross-profiles sampled normal to candidate ridge axes; optional Band 17 cond_surf host control only after provenance/semantics are verified"
       ],
-      "physical_signature": "Test whether independent hot-spring or geothermometry-confirmed well pairs form fault-compatible strike-coherent corridors, using pairwise axial orientation and spatially blocked controls rather than point density alone.",
-      "why_it_may_find_catalogue_missing_faults": "Blind permeable strands can connect separated surface discharge points even when the connecting fault has no mapped Quaternary scarp. A corridor may be informative when no single spring lies on a mapped trace.",
-      "distinction_from_prior_repo_methods": "The repository screened spring density / elongation and found no useful enrichment; the explicitly retained spring-pair strike-alignment construction was not built. This is not a rerun of the density lane.",
+      "physical_signature": "Find repeated profiles with a consistent one-sided elevation step and an asymmetric paired slope/curvature response across the same line, tested at several along-ridge positions. Reject symmetric channel banks and isolated curvature peaks.",
+      "why_it_may_find_catalogue_missing_faults": "Small-offset Quaternary faults may produce a consistent vertical step across repeated profiles while remaining too subtle for a mapped scarp; profile sign and persistence may distinguish the structure from a single terrain edge.",
+      "distinction_from_prior_repo_methods": "BREAKLINE and SCARPPOL rank local slope-break or fall-line-curvature pixels. This cross-profile antisymmetry and repeated one-sided step statistic has no tracked build/holdout result; it is not another slope-gradient weight.",
       "named_non_fault_mimics": [
-        "Regional aquifer or lithologic-contact discharge",
-        "Springs aligned along a river, playa margin, or topographic low",
-        "Anthropogenic production wells and field-level reporting clusters",
-        "Multiple outlets connected by one aquifer rather than a fault"
+        "Paired river-channel walls",
+        "Alluvial-fan margins",
+        "Shore-parallel lake benches",
+        "Landslide headwalls",
+        "Roads or drainage cuts"
       ],
-      "expected_value_and_cost": "Potential information value: medium-high geological specificity but uncertain statistical power; cost: moderate-high because point-source provenance, duplicate wells, cluster dependence, and spatial holdout leakage require careful treatment. No numeric DTI expectation is assigned.",
+      "expected_value_and_cost": "Potential information value: medium; implementation and validation cost: moderate to high. No numeric DTI expectation is assigned. Profile-sign stability and resolution sensitivity are first falsification checks.",
       "required_data": [
-        "Official GDR submission 1391 data with terms, coordinates, temperatures, and provenance verified from the source",
-        "Independent spring/well de-duplication and spatially blocked negative controls",
-        "Visible-fault-only fold features and a feature-alone leakage canary"
+        "Exact hash-verified competition DEM bands and authorized buffered holdout labels",
+        "Grid-matched oriented cross-profiles and a reproducible scale / resolution sensitivity analysis",
+        "Independent channel, shoreline, landslide, and road/canal mimic controls"
       ],
       "official_source": {
-        "name": "DOE Geothermal Data Repository / INGENIOUS submission 1391",
-        "url": "https://gdr.openei.org/submissions/1391",
-        "free_or_authorized_status": "The project manifest records a CC BY 4.0 classification for a pinned mirror, but this review did not verify the live official source or current terms.",
+        "name": "DrivenData DOE GEMS competition data page (for in-stack DEM bands)",
+        "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/data/",
+        "free_or_authorized_status": "Not verified this review; competition access/terms and the current feature-stack bytes require verification.",
         "availability_verified_this_review": false
       },
       "viable_now": false,
-      "blocked_because": "The official source was not reachable/verified, the pinned feature file is not in the current cache, and the current literal registry gate blocks every nonempty in-footprint candidate."
+      "blocked_because": "The feature stack is absent from the cache, official access/terms were not verified, and the current literal registry gate blocks every nonempty in-footprint candidate."
     },
     {
       "rank": 3,

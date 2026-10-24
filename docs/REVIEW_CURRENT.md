@@ -42,13 +42,13 @@ A plausible **HYPOTHESIS**, not a causal finding, is that fixed-budget thinning/
 ## Current run card and hypothesis queue
 
 - [Current status/run card](downloads/current_registry_stop_run_card_20261024.json) — prior local result, fresh witness scope, current format receipt, and no-new-candidate status.
-- [Four ranked unvalidated hypotheses](HYPOTHESES.html) — drainage-network relay, spring-pair strike alignment, host-normalized radiometric residual, and multiseason thermal corridor. Each names layers, physical signature, catalogue-missing rationale, repo distinction, expected value/cost, data requirements, and non-fault mimics. No external source is declared verified or viable.
+- [Four ranked unvalidated hypotheses](HYPOTHESES.html) — drainage-network relay, repeated one-sided scarp-profile asymmetry, host-normalized radiometric residual, and multiseason thermal corridor. Each names layers, physical signature, catalogue-missing rationale, repo distinction, expected value/cost, data requirements, and non-fault mimics. Spring-pair alignment is excluded because a future-dated SPRINGALIGN build/run card exists in updated upstream `main`; its provenance remains unresolved and it is blocked by the current witness. No external source is declared verified or viable.
 
 ## Data and source limitations
 
 The 19-band `training_features.tif` stack is absent from `.cache/gems_inputs/` in this checkout. The registry manifest points at owner-mirror GitHub bytes; hash identity is not organizer authentication, data-use permission, or redistribution clearance. The official DrivenData data page and non-GitHub external sources were not verified in this review. No candidate that depends on unverified external data is described as viable.
 
-Three pre-existing DILATATION variants (with zeros-outside and diagnostic TIFF encodings) carry filenames dated `2026-10-25`, later than this review's date (`2026-10-24`). Their existing bytes are preserved but their timestamp/provenance discrepancy is flagged in [`IRREGULARITIES.md`](https://github.com/buffedlizard55-lab/GEMSDOE92/blob/main/IRREGULARITIES.md); they are not treated as current work or recommendations.
+Three pre-existing DILATATION variants (with zeros-outside and diagnostic TIFF encodings) carry filenames dated `2026-10-25`, later than this review's date (`2026-10-24`). The updated upstream `main` also contains a future-dated SPRINGALIGN zeros-outside TIFF/ZIP from a separate session. Those bytes are preserved and the timestamp/provenance discrepancy is flagged in [`IRREGULARITIES.md`](https://github.com/buffedlizard55-lab/GEMSDOE92/blob/main/IRREGULARITIES.md); no SPRINGALIGN run or artifact was generated or rerun in this review. The single full-support witness blocks every nonempty in-footprint candidate, including this archived file. Treat all these files as research-only / DO NOT SUBMIT, not as current recommendations.
 
 ## Reproduce the checks
 

@@ -4,7 +4,7 @@
 
 A fresh `REGISTRY-MEASUREMENT` found one hash-verified public raster positive on every allowed footprint cell. Under the literal `>70%` overlap stop, every nonempty candidate in the footprint fails before placement. No experiment or TIFF was generated for this queue. Do not try to evade the stop by moving dots outside the footprint, choosing an empty raster, or excluding the witness.
 
-The list was checked against tracked builders, run cards, and prior hypothesis notes. “Unvalidated” means the exact formulation below has no tracked build/holdout result; it does **not** claim global novelty. Several related concepts were previously screened and are called out explicitly. No external source is called verified or viable in this review; the official sites were not reachable from the permitted network hosts, and the large feature stack is absent from `.cache/gems_inputs/`.
+The list was checked against tracked builders, run cards, and prior hypothesis notes. “Unvalidated” means the exact formulation below has no tracked build/holdout result; it does **not** claim global novelty. Several related concepts were previously screened and are called out explicitly. The spring-pair alignment method is excluded: a future-dated SPRINGALIGN build/run card is present in updated upstream `main`, but its provenance/time status is unresolved and it is not viable under the current registry stop. No external source is called verified or viable in this review; the official sites were not reachable from the permitted network hosts, and the large feature stack is absent from `.cache/gems_inputs/`.
 
 ## Rank 1 — DRAINAGE-RELAY: multi-catchment deflection / knickpoint coherence
 
@@ -16,15 +16,15 @@ The list was checked against tracked builders, run cards, and prior hypothesis n
 - **Expected value / cost:** medium potential information value; moderate-to-high implementation and validation cost. A 100 m DEM may be too coarse for small offsets. No numeric HOLDOUT-DTI expectation is assigned.
 - **Data requirement / source:** exact hash-verified competition DEM stack or an independently authorized, grid-matched DEM. Official starting point: [DrivenData competition data page](https://www.drivendata.org/competitions/306/competition-doe-gems/data/). Availability and terms were not verified; the stack is absent from the current cache. **Not viable now.**
 
-## Rank 2 — SPRING-PAIR-STRIKE: geothermal discharge pair alignment
+## Rank 2 — SCARP-PROFILE-ASYMMETRY: repeated one-sided vertical step
 
-- **Layers:** DOE GDR INGENIOUS spring/well coordinates, temperature and chemistry with source-quality flags; optional DEM-derived catchment/valley orientation only as a mimic control.
-- **Physical signature:** determine whether independent hot-spring or geothermometry-confirmed well pairs form fault-compatible, strike-coherent corridors using pairwise axial orientations and spatially blocked controls—not point density.
-- **Why it could find a catalogue-missing fault:** blind permeable strands may connect separated surface discharge points while lacking a mapped Quaternary scarp.
-- **Difference from repo methods:** a prior spring-density/elongation screen was not promising. The explicit spring-pair alignment construction was left unbuilt; it is not a claim that spring density worked.
-- **Named non-fault mimics:** regional aquifer or lithologic-contact discharge; outlets following a river/playa margin; anthropogenic production wells; multiple outlets connected by an aquifer rather than a fault.
-- **Expected value / cost:** medium-high geological specificity but uncertain power; moderate-high cost for point provenance, duplicate removal, cluster dependence, and leakage-safe spatial validation. No numeric HOLDOUT-DTI expectation is assigned.
-- **Data requirement / source:** official GDR submission 1391 with source terms, coordinates, temperature, and provenance checked. [GDR / INGENIOUS #1391](https://gdr.openei.org/submissions/1391). The project manifest records a CC BY 4.0 classification for a pinned mirror, but this review did not verify the live official source or current terms. **Not viable now.**
+- **Layers:** competition DEM Band 12 `det_elev` and Band 19 `det_elev_slope`; oriented cross-profiles sampled normal to candidate ridge axes. Band 17 `cond_surf` may be used only as a host/facies control after its definitions and provenance are verified.
+- **Physical signature:** repeated profiles with a consistent one-sided elevation step and an asymmetric paired slope/curvature response across the same line, tested at several distances along the ridge. Reject symmetric channel banks and isolated curvature peaks.
+- **Why it could find a catalogue-missing fault:** small-offset Quaternary faults can produce a consistent vertical step across repeated profiles while remaining too subtle for a mapped scarp; the cross-profile sign and persistence may distinguish the structure from a single terrain edge.
+- **Difference from repo methods:** BREAKLINE and SCARPPOL rank local slope-break / fall-line-curvature pixels. The proposed cross-profile antisymmetry and repeated one-sided step statistic has not been built or evaluated in the tracked repository; it is different from merely adding another slope-gradient weight.
+- **Named non-fault mimics:** paired river-channel walls; alluvial-fan margins; shore-parallel lake benches; landslide headwalls; roads or drainage cuts.
+- **Expected value / cost:** medium potential information value with moderate-to-high implementation and validation cost. No numeric HOLDOUT-DTI expectation is assigned; profile sign stability and resolution sensitivity are the first falsification checks.
+- **Data requirement / source:** exact hash-verified competition DEM bands and buffered holdout labels. [DrivenData competition data page](https://www.drivendata.org/competitions/306/competition-doe-gems/data/). Access, terms, and the current feature-stack bytes were not verified; the stack is absent from the cache. **Not viable now.**
 
 ## Rank 3 — HOST-NORMALIZED-RADIOMETRIC-RESIDUAL
 
