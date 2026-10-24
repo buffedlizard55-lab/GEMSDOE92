@@ -31,7 +31,7 @@ def test_index_has_download_and_slot_warning():
     # the portal failure the site exists to prevent must be named
     assert "Predicted values must be in range [0, 1]" in html
     # a slot warning must survive whatever the primary is
-    assert re.search(r"(weekly slot|3/week|weekly competition slot|human step)", html), \
+    assert re.search(r"(weekly slot|3/week|weekly competition slot|human step)", html, re.I), \
         "no weekly-slot caution on the page"
     # evidence discipline: holdout numbers must be labelled, and not dressed as scores
     assert "HOLDOUT-DTI" in html
@@ -66,9 +66,11 @@ def test_index_primary_has_an_audit_receipt_that_matches():
     assert audit_path.is_file(), f"no audit receipt beside the primary: {audit_path.name}"
 
     doc = json.loads(audit_path.read_text())
-    assert doc["overall_pass"] is True
+    assert doc["overall_pass"] is True  # format-valid is distinct from slot eligibility
+    assert doc["submission_eligible"] is False
     assert doc["sha256_zeros"] == hashlib.sha256(primary.read_bytes()).hexdigest()
-    assert all(g["ok"] for g in doc["gates_zeros"]), "audit records a failing gate"
+    assert all(g["ok"] for g in doc["gates_zeros"]), "audit records a failing format gate"
+    assert doc["public_registry_uniqueness"]["unique_under_literal_rule"] is False
 
 
 def test_submit_page_exists():

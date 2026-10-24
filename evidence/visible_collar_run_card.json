@@ -1,0 +1,307 @@
+{
+  "schema": "gemsdoe92.run-card.v1",
+  "hypothesis": "Blind or unmapped faults may occur in a narrow 200\u2013300 m collar around visible faults, beyond the 3-px halo of the inherited R0 dots.",
+  "mechanism": "Place 37,654 dots at the closest legal cells 2<d_visible<=3 px from visible catalogue geometry, excluding all cells within 3 px of R0. Holdout uses visible catalogue only; final export additionally excludes full known catalogue.",
+  "named_non_fault_mimic": "Non-tectonic lineaments in drainage/alluvial-fan margins and lithologic contacts may lie close to mapped faults and mimic a fault-proximity signal.",
+  "holdout_dti": {
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "candidate": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.04686635034458693,
+      "ci95": [
+        0.04021610249418663,
+        0.05331453669984687
+      ],
+      "withheld_positive_pixels": 22663,
+      "tpw": 1504.9333769581158,
+      "fpw": 68398.92022514941,
+      "fnw": 21158.066623041876
+    },
+    "R0": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.004006147174684743,
+      "ci95": [
+        0.0034243961318463374,
+        0.004689525221466778
+      ],
+      "withheld_positive_pixels": 22663,
+      "tpw": 129.29712893913688,
+      "fpw": 70592.1164043663,
+      "fnw": 22533.70287106087
+    },
+    "paired_delta_vs_R0": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.04286020316990219,
+      "ci95": [
+        0.036122100702189755,
+        0.0493568273198809
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "holdout_design": "buffered whole-component hide/recover, 4 spatial quadrants at seeds 20 and 30 (8 folds), pooled DTI alpha=.2 beta=.8 triangular radius=300m; 1,000 paired 20km-cluster draws, seed 520810"
+  },
+  "leakage_canary": {
+    "feature": "distance to visible faults (alone)",
+    "auc": 0.2544070682722491,
+    "symmetric_auc": 0.7455929317277509,
+    "threshold": 0.9,
+    "status": "PASS"
+  },
+  "correlation_overlap_vs_registry": {
+    "registry_scope": "Local index: 14 rasters; public scan: current default-branch submission TIFFs across 102 public buffedlizard55-lab GEMSDOE-named repositories (1,279 matching-grid raster blobs). Neither scan includes all historical, private, site-hosted, or other-owner files.",
+    "public_registry_scan": {
+      "evidence_file": "evidence/public_registry_uniqueness.json",
+      "candidate_hash_matches_scan": true,
+      "scan_complete_for_declared_scope": true,
+      "preplacement_surface": {
+        "registries_checked": 1279,
+        "unique_under_literal_rule": false,
+        "stop_required": true,
+        "worst_abs_spearman": 0.42136679097978735,
+        "worst_rho": 0.42136679097978735,
+        "worst_rho_raster": "GEMSDOE81/docs/downloads/gems81-cont-poisson44090-buf2-20261021T233115Z-42223e10-zeros.tif",
+        "worst_forward_overlap": 1.0,
+        "worst_overlap_raster": "11GEMSDOE/docs/downloads/gems-structural-area06-v1.tif",
+        "rasters_over_70pct_overlap": 131,
+        "duplicate_examples": [
+          {
+            "raster": "11GEMSDOE/docs/downloads/gems-structural-area06-v1.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 343526,
+            "spearman": 0.10479447438820699
+          },
+          {
+            "raster": "12GEMSDOE/docs/downloads/12GEMSDOE_multiphysics_submission_06ca61e5.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 224173,
+            "spearman": 0.08623432876469482
+          },
+          {
+            "raster": "13GEMSDOE/docs/downloads/13gems_20261001_r11-greedy-mp_v2_nan-outside.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 272853,
+            "spearman": -0.006859950205487139
+          },
+          {
+            "raster": "13GEMSDOE/docs/downloads/13gems_20261001_r11-greedy-mp_v2_zerofill.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 272853,
+            "spearman": -0.006859950205487139
+          },
+          {
+            "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-20260928T040920Z.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 338755,
+            "spearman": 0.0025510449950131033
+          },
+          {
+            "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-20260928T040920Z_allfinite.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 338755,
+            "spearman": 0.0025510449950131033
+          },
+          {
+            "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-20260929T183221Z.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 507776,
+            "spearman": 0.00705315197101346
+          },
+          {
+            "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-20260929T183221Z_allfinite.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 507776,
+            "spearman": 0.00705315197101346
+          },
+          {
+            "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-plus-20260929T183249Z.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 380365,
+            "spearman": 0.022836109719950218
+          },
+          {
+            "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-plus-20260929T183249Z_allfinite.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 380365,
+            "spearman": 0.022836109719950218
+          }
+        ]
+      },
+      "final_dots": {
+        "registries_checked": 1279,
+        "unique_under_literal_rule": false,
+        "stop_required": true,
+        "worst_abs_spearman": 0.49295706750328594,
+        "worst_rho": 0.49295706750328594,
+        "worst_rho_raster": "GEMSDOE81/docs/downloads/gems81-cont-poisson44090-buf2-20261021T233115Z-42223e10-zeros.tif",
+        "worst_forward_overlap": 1.0,
+        "worst_overlap_raster": "11GEMSDOE/docs/downloads/gems-structural-area06-v1.tif",
+        "rasters_over_70pct_overlap": 131,
+        "duplicate_examples": [
+          {
+            "raster": "11GEMSDOE/docs/downloads/gems-structural-area06-v1.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 343526,
+            "spearman": 0.053036572483099086
+          },
+          {
+            "raster": "12GEMSDOE/docs/downloads/12GEMSDOE_multiphysics_submission_06ca61e5.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 224173,
+            "spearman": 0.036594047735528934
+          },
+          {
+            "raster": "13GEMSDOE/docs/downloads/13gems_20261001_r11-greedy-mp_v2_nan-outside.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 272853,
+            "spearman": -0.004682607235886603
+          },
+          {
+            "raster": "13GEMSDOE/docs/downloads/13gems_20261001_r11-greedy-mp_v2_zerofill.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 272853,
+            "spearman": -0.004682607235886603
+          },
+          {
+            "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-20260928T040920Z.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 338755,
+            "spearman": 0.003387986010379602
+          },
+          {
+            "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-20260928T040920Z_allfinite.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 338755,
+            "spearman": 0.003387986010379602
+          },
+          {
+            "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-20260929T183221Z.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 507776,
+            "spearman": 0.004600779838008162
+          },
+          {
+            "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-20260929T183221Z_allfinite.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 507776,
+            "spearman": 0.004600779838008162
+          },
+          {
+            "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-plus-20260929T183249Z.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 380365,
+            "spearman": 0.01682833398500097
+          },
+          {
+            "raster": "13GEMSDOE/docs/downloads/archive/13gems-composite-plus-20260929T183249Z_allfinite.tif",
+            "forward_overlap": 1.0,
+            "positive_pixels": 380365,
+            "spearman": 0.01682833398500097
+          }
+        ]
+      },
+      "unique_under_literal_rule": false,
+      "stop_required": true
+    },
+    "preplacement_surface": {
+      "worst_abs_spearman": 0.012812660509852886,
+      "worst_rho_raster": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif",
+      "worst_dot_overlap": 0.007208944398252162,
+      "worst_overlap_raster": "h33-h33-2-b2-PRUNE_B4-20261023-78e893d7-zeros.tif"
+    },
+    "final_dots": {
+      "worst_abs_spearman": 0.00734036308811463,
+      "worst_rho_raster": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif",
+      "worst_forward_overlap": 0.006958092101768737,
+      "worst_overlap_raster": "h33-h33-2-b2-PRUNE_B4-20261023-78e893d7-zeros.tif",
+      "registry_rasters_checked": 14,
+      "complete_local_scan": true,
+      "unique_under_thresholds": true
+    }
+  },
+  "raster_sha256": "60082b75a3d8e4648a858622f71f24257c8cfef79286a1a96147c59f05377da7",
+  "validator": {
+    "status": "PASS",
+    "no_nan_inside_footprint": true,
+    "all_values_in_0_1": true,
+    "zeros_outside_footprint": true,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "single_band_float32": true,
+    "gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=float32 count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nan_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "60082b75a3d8e4648a858622f71f24257c8cfef79286a1a96147c59f05377da7"
+      }
+    ]
+  },
+  "submission_name": "GEMSDOE92-visible-collar-r0-excluded-20261024",
+  "submission_note": "Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots",
+  "verdict": "negative",
+  "negative_reason": "Literal public-registry overlap stop: candidate is within 3 px of positive support in registry rasters; do not spend a weekly slot.",
+  "limits": [
+    "HOLDOUT-DTI is not a DrivenData score.",
+    "Registry scan covers current public default-branch submission TIFFs in 102 owner repositories, not every historic, private, site-hosted, or other-owner file.",
+    "Competition label truth is unpublished; holdout rewards recovery of mapped catalogue features, not necessarily novel live faults."
+  ]
+}

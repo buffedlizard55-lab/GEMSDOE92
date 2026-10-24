@@ -43,10 +43,11 @@ def main() -> int:
 
     # ---- the page contract, written against properties not one lane's wording --
     for needle in ("OK TO DOWNLOAD", "Predicted values must be in range [0, 1]",
-                   "HOLDOUT-DTI"):
+                   "HOLDOUT-DTI", "NOT CLEARED FOR A WEEKLY SLOT",
+                   "DUPLICATE UNDER THE LITERAL REGISTRY RULE"):
         if needle not in html:
             problems.append(f"index.html missing {needle!r}")
-    if not re.search(r"(weekly slot|3/week|weekly competition slot|human step)", html):
+    if not re.search(r"(weekly slot|3/week|weekly competition slot|human step)", html, re.I):
         problems.append("index.html carries no weekly-slot caution")
     if re.search(r'href="downloads/[^"]+-zeros\.tif"', html) is None:
         problems.append("index.html offers no zeros-outside download")
@@ -110,12 +111,28 @@ def main() -> int:
             else:
                 doc = json.loads(audit_path.read_text())
                 if doc.get("overall_pass") is not True:
-                    problems.append("audit receipt does not record overall_pass == true")
+                    problems.append("audit receipt does not record format_pass == true")
                 if doc.get("sha256_zeros") != sha256_file(primary):
                     problems.append("audit receipt sha256 != primary bytes on disk")
                 bad = [g["name"] for g in doc.get("gates_zeros", []) if not g["ok"]]
                 if bad:
-                    problems.append(f"audit receipt records failing gates: {bad}")
+                    problems.append(f"audit receipt records failing format gate(s): {bad}")
+                if doc.get("submission_eligible") is not False:
+                    problems.append("audit must say submission_eligible=false when the binding uniqueness gate fails")
+                public = doc.get("public_registry_uniqueness", {})
+                if public.get("candidate_hash_matches_scan") is not True:
+                    problems.append("public registry audit is absent or not for these exact candidate bytes")
+                if public.get("unique_under_literal_rule") is not False or public.get("stop_required") is not True:
+                    problems.append("site audit must preserve the literal duplicate stop verdict")
+            card_path = ROOT / "evidence" / "visible_collar_run_card.json"
+            if not card_path.is_file():
+                problems.append("visible collar run card missing")
+            else:
+                card = json.loads(card_path.read_text())
+                if card.get("raster_sha256") != sha256_file(primary):
+                    problems.append("run card SHA256 != primary bytes")
+                if card.get("verdict") != "negative":
+                    problems.append("run card must record negative verdict after registry duplicate stop")
             print(f"  PRIMARY {primary.name}")
 
     if problems:

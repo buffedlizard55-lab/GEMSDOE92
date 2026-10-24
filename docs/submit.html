@@ -1,55 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>How to submit — GEMSDOE92</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="hero">
-    <p class="kicker">Executive summary</p>
-    <h1>How to make a competition submission</h1>
-    <p class="lede">Human upload only. This agent never contacts DrivenData and never spends a weekly slot.</p>
-    <p><a href="index.html">← Back to download</a></p>
-  </header>
-  <section>
-    <h2>Should you upload the generated file?</h2>
-    <div class="banner banner-hold">
-      <strong>Format: YES, it is OK to download.</strong> The GeoTIFF is all-finite float32 in [0, 1], CRS/shape/transform match sample_submission.tif, no NaN inside the footprint, zeros outside, zero mass on the known-fault catalogue.
-    </div>
-    <div class="banner banner-warn">
-      <strong>Slot: NO, not recommended.</strong> HOLDOUT-DTI 0.002723 [0.002324, 0.003131] (22,663 withheld positives, gems57-pooled-hide-v2) is below parent R0 0.004006. Verdict = negative. Spending a 3/week slot requires a human override.
-    </div>
-  </section>
-  <section>
-    <h2>Steps</h2>
-    <ol>
-      <li>Open the <a href="index.html">download page</a> and save
-        <code>h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif</code>
-        (or the .zip that contains only that TIFF).</li>
-      <li>Log in to DrivenData as the registered competitor (not this agent).</li>
-      <li>Go to
-        <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">New submission</a>.</li>
-      <li>Choose the zeros-outside <code>.tif</code> or the single-TIFF <code>.zip</code>.</li>
-      <li>Name: <code>h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a</code></li>
-      <li>Note (≤140 chars): <code>h33-h33-2-b2; TIPGAP FAR 33% along-strike &gt;3px off parent skeleton e6-18; unique lane</code></li>
-      <li>Do not upload a NaN-outside file. Portal error previously seen: <code>Predicted values must be in range [0, 1]</code>.</li>
-      <li>Copy the receipt score and date into <code>ledger/submissions.csv</code> (RECEIPT only with a date).</li>
-    </ol>
-    <p>Rules: <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">NREL/OSTI 96647</a>. Metric: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">page 967</a>.</p>
-  </section>
-  <section>
-    <h2>What this file is</h2>
-    <ul>
-      <li>Parent R0 = h33-h33-2-b2, 37,654 dots, CLAIM 0.2778 (no receipt in this ledger).</li>
-      <li>Axis TIPGAP / far18f33: 12,426 dots (33.00%) moved onto along-strike extensions 6–18 px past H19-5 endpoints, each &gt; 3 px from every parent dot.</li>
-      <li>Count held at 37,654. Unit mass. min d_cat of moved dots 3.16 px.</li>
-      <li>Written with <code>vendor/gems57/submission_writer.py</code> (all-finite zeros policy).</li>
-    </ul>
-  </section>
-  <footer>
-    <p>Local PASS ≠ organizer acceptance. Confirm the entity rolling-week quota before any upload.</p>
-  </footer>
-</body>
-</html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Executive summary — submit GEMSDOE92 candidate</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="hero"><p class="kicker">Executive summary · DrivenData DOE GEMS Prize #306</p><h1>How to submit the generated GeoTIFF</h1><p class="lede">Format inspection and validation are automated in this project. The competition upload is a separate human action; this agent does not log in or spend slots.</p><p><a href="index.html">← Back to the one-click download</a></p></header>
+<main><section><h2>Current artifact</h2><div class="banner banner-ok"><strong>FORMAT-VALID — OK TO DOWNLOAD.</strong> The zeros-outside file passes all 10 local MUST gates on bytes reread from disk: single-band float32, EPSG:32611, 3730 × 3292, matching geotransform, finite values in [0,1], no NaN inside, zeros outside, zero known-catalogue mass.</div><div class="banner banner-warn"><strong>NOT CLEARED FOR A SLOT — duplicate under the literal registry rule. Do not submit this candidate.</strong> A scan of 1,279 same-grid rasters found 100% forward 3-px overlap with at least one registry raster; 131 exceed the 70% stop threshold. No slot has been used. HOLDOUT-DTI cannot override this duplicate stop.</div><p><a class="btn" href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif" download>Download the submission GeoTIFF</a> <a class="btn btn-ghost" href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.zip" download>Download one-TIFF ZIP</a></p><p><strong>Submission name:</strong> <code>GEMSDOE92-visible-collar-r0-excluded-20261024</code><br><strong>Note:</strong> <code>Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots</code></p></section>
+<section><h2>Three steps</h2><ol><li>Download the zeros-outside .tif; do not edit it. SHA-256: <code>60082b75a3d8e4648a858622f71f24257c8cfef79286a1a96147c59f05377da7</code>.</li><li>Sign into DrivenData and open <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">New submission</a>. Upload the TIFF or the ZIP containing that single TIFF.</li><li>Enter the exact name and note above. Upload only if chosen via the separate selector step; record the organizer's actual receipt in the ledger.</li></ol></section>
+<section><h2>Evidence boundary</h2><p>HOLDOUT-DTI (`gems57-pooled-hide-v2`, 8 buffered folds, 22,663 withheld positives): candidate 0.046866 [0.040216, 0.053315]; parent R0 0.004006 [0.003424, 0.004690]; paired Δ +0.042860 [+0.036122, +0.049357]. This is local catalogue hide-and-recover, not a competition score or proof about uncatalogued faults.</p><p>Format audit is automatic. The broader scan of 1,279 current-branch matching rasters found a literal duplicate stop; 131 exceed 70% overlap. It is not exhaustive of historic/site-hosted assets. The portal error <code>Predicted values must be in range [0, 1]</code> is prevented by all-finite values, `[0,1]`, and zero outside-footprint data.</p><p><a href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-audit.json">Audit receipt</a> · <a href="downloads/visible_collar_run_card.json">Full run card</a> · <a href="SUBMIT.html">Canonical guide</a></p></section></main><footer><p>No credentials are stored or requested. No slot was used.</p></footer></body></html>
