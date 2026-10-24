@@ -90,8 +90,10 @@ PYTHONPATH=vendor python scripts/check_site.py
 python scripts/audit_breakline_witness.py
 ```
 
-For a full later scan, `audit_public_registry.py --candidate OTHER.tif` now
-requires `--surface ACTUAL_SURFACE.tif --output evidence/OTHER-audit.json`.
+For a full later scan, use `audit_public_registry.py --candidate OTHER.tif`
+with `--surface ACTUAL_SURFACE.tif --output evidence/OTHER-audit.json`.
+A separate output is required for non-collar candidates. Omitting the surface
+is permitted for retrospective rejection only and cannot clear uniqueness.
 This prevents reusing the collar surface or overwriting its historical receipt.
 The actual pre-placement surface is required; final dots are not a substitute.
 The full scan still needs API access, disk space and runtime; the witness check
