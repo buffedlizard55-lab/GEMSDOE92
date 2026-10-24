@@ -1,13 +1,13 @@
-# GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench (`APRONRIDGE` Primary + `HYDROCONDUIT` Hybrid)
+# GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench (`GEOTENSION free1d` Branch Primary · `APRONRIDGE free1d` Historical Best `0.008354` · `HYDROCONDUIT f45hydro` Hybrid `0.008549`)
 
 > ### ✅ DOWNLOAD STATUS: **FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH**
 > ### ⛔ SUBMISSION / WEEKLY SLOT STATUS: **DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (`verdict: "negative"`, `submission_eligible: false`; DUPLICATE UNDER THE LITERAL REGISTRY RULE)**
 >
-> - **Current Primary GeoTIFF (zeros outside, `nodata=None`):** [`docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif`](docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif) · [One-TIFF ZIP](docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.zip)
-> - **SHA-256 (`-zeros.tif`):** `c9e07ba6627672bfd58b08572a19d48aa16ff07a2f95347993550eaaccba8fdd` (`37,654` unit-mass dots, `0.0` outside footprint, `0` catalogue mass)
-> - **Suggested Submission Name (for ledger / human selector record only):** `GEMSDOE92-HYDROCONDUIT-f45hydro-20261024`
-> - **Suggested Form Note (106 / 140 chars):** `h33-h33-2-b2; HYDROCONDUIT f45hydro: 20710 piedmont H19-5 + 16944 off-skel scarp/RTP/GDR dots (>3px H19-5)`
-> - **Automated Gate Receipts:** [Format & Public-Registry Audit JSON](docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-audit.json) (`10/10` `gems.gates` + `13/13` `gems57.validate` PASS — prevents DrivenData error `"Predicted values must be in range [0, 1]"`) · [Protocol Run Card JSON](docs/downloads/hydroconduit_run_card.json)
+> - **Current Branch Primary GeoTIFF (this `arena/2d7b7394-gemsdoe92` branch, zeros outside, `nodata=None`):** [`docs/downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif`](docs/downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif) · [One-TIFF ZIP](docs/downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.zip)
+> - **SHA-256 (`-zeros.tif`):** `b0dba55e56a5e714dd62673dd48c0d7f695cf9a25b40786cb243f1bf7dd4d054` (`37,654` unit-mass dots, `0.0` outside footprint, `0` catalogue mass; `52.6%` piedmont, `0` `H19-5`/`R0` input)
+> - **Suggested Submission Name (for ledger / human selector record only):** `GEMSDOE92-GEOTENSION-free1d-20261025`
+> - **Suggested Form Note (93 / 140 chars):** `h33-h33-2-b2; GEOTENSION free1d: 37654 standalone dilat-scarp 1D crests (0 H19-5)`
+> - **Automated Gate Receipts:** [Format & Public-Registry Audit JSON](docs/downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-audit.json) (`10/10` `gems.gates` + `13/13` `gems57.validate` PASS — prevents DrivenData error `"Predicted values must be in range [0, 1]"`) · [Protocol Run Card JSON](evidence/geotension_run_card.json) · [PhD Analysis](docs/ANALYSIS_20261025_GEOTENSION.md) · [Pre-Registered Hypotheses](docs/HYPOTHESES_20261025_GEOTENSION.md)
 > - **Site Pages:** [Main Workbench (`docs/index.html`)](docs/index.html) · [Executive Summary & Submission Form Guide (`docs/executive-summary.html`)](docs/executive-summary.html) · [Detailed Submission Procedure (`docs/SUBMIT.html`)](docs/SUBMIT.html) · [Candidate Geological Hypotheses (`docs/HYPOTHESES.html`)](docs/HYPOTHESES.html)
 
 ---

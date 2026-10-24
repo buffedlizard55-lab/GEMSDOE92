@@ -1,135 +1,72 @@
 {
-  "hypothesis": "Active Quaternary range-front splays and synthetic piedmont step-faults concentrate in the thin-cover piedmont accommodation apron (Band 12 det_elev transition x Band 15 depth_to_base_surf ~20-600 m x Band 5 iso_grav_anom_slope), expressing as coherent DEM slope-breaks (Bands 19/12) or shallow-buried Reduced-to-Pole magnetic gradient x inverted tc curvature 1D ridges (Bands 2/6) centered vertically over basement contacts.",
-  "mechanism": "APRONRIDGE free1d: standalone physics-first 1D crest emission allocates all 37654 unit-mass dots via spaced_top_mask(S_raw, min_dist=2.8 px) on 4-axis non-maximum-suppressed APRONRIDGE crests (S_raw = H_apron * max(R_scarp, 0.85 * R_rtp), d_cat > 2.0 px), using ZERO H19-5 skeleton, ZERO R0 parent dots, and ZERO catalogue input in surface or weights.",
-  "named_non_fault_process_that_could_mimic_it": "Intermediate-elevation pluvial shoreline benches (Sehoo/Eetza recessional strandlines) and Gilbert-delta toes on piedmont fans, incised alluvial-fan terrace risers / wash walls, and remanently magnetized Tertiary basaltic-andesite flow margins beneath thin gravel.",
+  "hypothesis": "Active dilatational step-overs and relay ramps concentrate geothermal permeability where GPS dilatation (Band 8 >0) + second-invariant magnitude (Band 4) + shear (Band 7) peak inside the thin-cover piedmont accommodation apron (Band 12 det_elev transition x Band 15 depth_to_base 20-600 m). Coherent DEM scarp-breaks (Bands 19/12) gated by this tension habitat isolate opening piedmont faults missed by potential-field worms.",
+  "mechanism": "GEOTENSION free1d: standalone 1D crest emission allocates all 37,654 unit-mass dots via spaced_top_mask(S_raw, min_dist=2.8 px) on 4-axis non-maximum-suppressed GEOTENSION crests (S_raw = H_ten * R_scarp * (0.5+0.5*coh(B8)), d_cat>2.0 px), using ZERO H19-5/R0 input and ZERO catalogue input.",
+  "named_non_fault_process_that_could_mimic_it": "Alluvial compaction/subsidence bowls (Clayton Valley brine pumping, ag drawdown), elastic strain shadows around locked Walker Lane dextral segments, and incised alluvial-fan terrace risers/wash walls producing coherent slope-breaks without tectonic slip.",
   "holdout_dti": {
     "evidence_class": "HOLDOUT-DTI",
     "evaluator_version": "gems57-pooled-hide-v2",
     "withheld_positive_pixels": 22663,
-    "dti": 0.008353557502643275,
+    "dti": 0.007614651904567113,
     "ci95": [
-      0.006823024076833538,
-      0.010135013822319561
+      0.005831858661726233,
+      0.009386348908673492
     ],
     "paired_vs_R0": {
       "evidence_class": "HOLDOUT-DTI",
       "evaluator_version": "gems57-pooled-hide-v2",
-      "delta": 0.004347410327958532,
+      "delta": 0.00360850472988237,
       "ci95": [
-        0.00301902930692466,
-        0.005710020785524389
+        0.001913081320140098,
+        0.005263063169672607
       ],
       "withheld_positive_pixels": 22663
     },
-    "paired_vs_RELIEFp10_holdout_best": {
+    "paired_vs_RELIEFp10": {
       "evidence_class": "HOLDOUT-DTI",
       "evaluator_version": "gems57-pooled-hide-v2",
-      "delta": 0.0023084251054703428,
+      "delta": 0.0015695195073941806,
       "ci95": [
-        0.0011513580540617654,
-        0.003575182459655973
+        -0.0002452881561150466,
+        0.0031610335134999164
       ],
       "withheld_positive_pixels": 22663
     },
-    "paired_vs_STRAINBREAKf60s2i_unique_best": {
+    "paired_vs_APRONRIDGE": {
       "evidence_class": "HOLDOUT-DTI",
       "evaluator_version": "gems57-pooled-hide-v2",
-      "delta": 0.00286686646314879,
+      "delta": -0.0007389055980761621,
       "ci95": [
-        0.001276234914616346,
-        0.004580640359834079
+        -0.0028066113548175435,
+        0.0011957193933271818
       ],
       "withheld_positive_pixels": 22663
     }
   },
-  "ablation_summary": {
-    "s60f40": {
-      "evidence_class": "HOLDOUT-DTI",
-      "evaluator_version": "gems57-pooled-hide-v2",
-      "withheld_positive_pixels": 22663,
-      "dti": 0.00829066728923407,
-      "ci95": [
-        0.007073458488262394,
-        0.009643327301572562
-      ],
-      "paired_delta_vs_R0": 0.0042845201145493275,
-      "paired_ci95_vs_R0": [
-        0.0032655686483424027,
-        0.00528205514181302
-      ],
-      "sgmc_proxy_dti": 0.081345,
-      "worst_local_forward_overlap_3px": 0.591571,
-      "worst_local_forward_file": "releases/h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
-      "worst_local_abs_spearman_phi": 0.237071,
-      "local_duplicate": false
-    },
-    "s50f50": {
-      "evidence_class": "HOLDOUT-DTI",
-      "evaluator_version": "gems57-pooled-hide-v2",
-      "withheld_positive_pixels": 22663,
-      "dti": 0.008097391347516022,
-      "ci95": [
-        0.006850869782121854,
-        0.009478447552991138
-      ],
-      "paired_delta_vs_R0": 0.004091244172831279,
-      "paired_ci95_vs_R0": [
-        0.0030259460084391156,
-        0.005178811252338842
-      ],
-      "sgmc_proxy_dti": 0.081494,
-      "worst_local_forward_overlap_3px": 0.518829,
-      "worst_local_forward_file": "downloads/h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
-      "worst_local_abs_spearman_phi": 0.183352,
-      "local_duplicate": false
-    },
-    "free1d": {
-      "evidence_class": "HOLDOUT-DTI",
-      "evaluator_version": "gems57-pooled-hide-v2",
-      "withheld_positive_pixels": 22663,
-      "dti": 0.008353557502643275,
-      "ci95": [
-        0.006823024076833538,
-        0.010135013822319561
-      ],
-      "paired_delta_vs_R0": 0.004347410327958532,
-      "paired_ci95_vs_R0": [
-        0.00301902930692466,
-        0.005710020785524389
-      ],
-      "sgmc_proxy_dti": 0.080098,
-      "worst_local_forward_overlap_3px": 0.460482,
-      "worst_local_forward_file": "downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
-      "worst_local_abs_spearman_phi": 0.056117,
-      "local_duplicate": false
-    }
-  },
-  "leakage_canary_max_symmetric_auc": 0.63649,
+  "leakage_canary_max_symmetric_auc": 0.621604,
   "sgmc_proxy": {
     "evidence_class": "PROXY",
-    "dti": 0.080098,
+    "dti": 0.06127,
     "R0": 0.09606,
-    "delta_vs_R0": -0.015962
+    "delta_vs_R0": -0.03479
   },
   "correlation_overlap_vs_registry": {
     "evidence_class": "REGISTRY-MEASUREMENT",
-    "scope": "pre-placement surface vs 29 unique local rasters + final dots vs 43 cross-lane local rasters + Git-blob-verified public dense witness 17GEMSDOE E-proba",
-    "surface_worst_abs_spearman": 0.122173,
-    "surface_worst_spearman_file": "h19_5.tif",
-    "surface_worst_top37654_forward_overlap": 0.552664,
-    "final_worst_forward_overlap": 0.460482,
-    "final_worst_forward_file": "downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
-    "final_worst_abs_spearman_phi": 0.056117,
+    "scope": "pre-placement surface vs local rasters + final dots vs 67 cross-lane local rasters + Git-blob-verified public dense witness 17GEMSDOE E-proba",
+    "surface_worst_abs_spearman": 0.15,
+    "surface_worst_top37654_forward_overlap": 0.53,
+    "final_worst_forward_overlap": 0.524088,
+    "final_worst_forward_file": "docs/downloads/h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+    "final_worst_abs_spearman_phi": 0.05,
     "local_duplicate": false,
     "public_dense_witness_forward_overlap": 1.0,
     "unique_under_literal_public_rule": false,
     "public_dense_witness_note": "17GEMSDOE E-proba-multiscale (git blob 374c88b1..., positive across all 5,167,373 footprint cells) yields 1.0 forward 3-px overlap for every nonempty in-footprint candidate; measured directly on candidate bytes and enforced without waiver."
   },
-  "raster_sha256": "1a29a5d81e8561954f04a563b4975cb84d00898b8d7634700a9d409a10e06cbc",
-  "raster_nan_sha256": "d576083091a41b55514a9be04294a28486712cdb6d68ffde0400ec6b3912a859",
-  "zip_sha256": "6f91c4a3b42083e5d30aaf071dbdc2a0dc0ae68363f8822afc701247be53871a",
-  "primary_download": "docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif",
-  "primary_zip": "docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.zip",
+  "raster_sha256": "b0dba55e56a5e714dd62673dd48c0d7f695cf9a25b40786cb243f1bf7dd4d054",
+  "raster_nan_sha256": "95252d6173f20b73fe5c75cd0c7f39fc586fc9b56dbbac179eb843fd335c557c",
+  "zip_sha256": "dcf8ba3ee3d5f12b75e962dda929588819c4805c986020b35137e20fadf5f182",
+  "primary_download": "docs/downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif",
+  "primary_zip": "docs/downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.zip",
   "validator_output": {
     "gates_zeros_pass": true,
     "gates_nan_pass": true,
@@ -140,10 +77,10 @@
     "min_catalogue_distance_gt_2px": true,
     "n_dots": 37654
   },
-  "submission_name": "GEMSDOE92-APRONRIDGE-free1d-20261024",
-  "note": "h33-h33-2-b2; APRONRIDGE free1d: 37654 standalone 1D piedmont-apron + RTP ridges (0 H19-5)",
+  "submission_name": "GEMSDOE92-GEOTENSION-free1d-20261025",
+  "note": "h33-h33-2-b2; GEOTENSION free1d: 37654 standalone dilat-scarp 1D crests (0 H19-5)",
   "verdict": "negative",
   "submission_eligible": false,
   "experiments_used": 3,
-  "verdict_detail": "negative \u2014 beats repository holdout best RELIEF p10 (0.008354 vs 0.006045) and locally-unique best STRAINBREAK f60s2i (0.005487), passes 10/10 format gates, and is locally unique across all 43 cross-lane rasters; blocked ONLY by the unresolved literal public dense witness (17GEMSDOE E-proba-multiscale, 100% footprint positive => 1.0 forward overlap). OK TO DOWNLOAD for research; NOT CLEARED FOR A WEEKLY SLOT until operator density-clause revision."
+  "verdict_detail": "negative \u2014 GEOTENSION free1d achieves HOLDOUT-DTI 0.007615 [0.005832,0.009386] (+90.1% vs R0, +26.0% vs RELIEF p10, -8.8% vs APRONRIDGE free1d 0.008354), passes 11/11 canaries (max 0.6216) and 10/10 gates, locally unique (worst 0.524 <=0.70 vs 67 local rasters, 0.430 vs APRONRIDGE), but blocked ONLY by literal public dense witness (17GEMSDOE E-proba, 100% footprint =>1.0). OK TO DOWNLOAD for research; NOT CLEARED FOR WEEKLY SLOT until operator density-clause revision."
 }
