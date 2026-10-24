@@ -8,7 +8,7 @@ A higher result is possible in principle, but the currently available local evid
 
 ## Parallel-run boundary and candidate hypotheses
 
-The active session README declares the `RELIEF` axis. Per the parallel-run protocol, this review does not execute a second method lane, alter the cached stack, or make a slot decision. The following are **unrun research backlog hypotheses**, not candidates promoted for submission. They must be compared against the registry and actual implementation before use; no novelty claim is made against every sibling public repository.
+The current README declares the `DILATATION` axis. Per the parallel-run protocol, this review does not execute another method lane, alter the feature stack, or make a slot decision. This paragraph records an earlier review state; the current candidate inventory and blocked-validation decision are in [`RESEARCH_AND_CANDIDATE_REVIEW_20261024.md`](RESEARCH_AND_CANDIDATE_REVIEW_20261024.md). The following are **unrun research backlog hypotheses**, not candidates promoted for submission. They must be compared against the registry and actual implementation before use; no novelty claim is made against every sibling public repository.
 
 | Rank | Hypothesis and exact layer/signature to test | Why it might add uncatalogued faults rather than reproduce known traces | Difference from implementation in this checkout | Expected DTI direction / cost |
 |---:|---|---|---|---|

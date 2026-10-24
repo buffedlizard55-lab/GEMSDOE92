@@ -50,13 +50,9 @@ construction it *cannot* reward a genuinely new fault. The repo's own `gems/prox
 records that this instrument correlated **−0.87 to +0.54 with live scores across 12–14
 files**, and that one candidate (`lidar03`) passed it and then scored 0.1152 live.
 
-**Action:** spend ONE weekly slot on the file the human judges best and record the receipt.
-One receipt is worth more than another ten local variants, because it is the only thing that
-can calibrate the holdout. Until then every "Δ +0.0018" in this repo is an unvalidated
-preference ordering.
+**Action:** first produce a candidate that passes the literal uniqueness stop and format checks, then a separate human selector may choose whether one weekly slot is justified and record the receipt. No current file meets both the uniqueness and positive-holdout criteria, so do not spend a slot on the present primary. A receipt would still be the only direct way to calibrate the local holdout against the live score.
 
-**Blocking it:** no DrivenData credentials in the sandbox, and the agent must never submit.
-Human-only.
+**Blocking it:** no DrivenData credentials in the sandbox, and the agent must never submit. Human upload/receipt capture remains separate from this agent workflow.
 
 ## Blocker 1 — six of eight axes have never been scored on the shared instrument
 
@@ -134,7 +130,7 @@ separate, owner-level decision.
 - `make manifest` verifies all 8 pinned inputs (was reporting 8/8 MISSING from a path-join
   bug; fixed once in `gems.rasters.resolve_pinned_path`).
 - `scripts/check_site.py` derives the primary from the page and gates **every** served
-  zeros-outside raster (5 currently), and asserts the primary matches its audit receipt
+  zeros-outside raster (5 currently), and asserts the primary matches its local format-audit JSON
   byte-for-byte. It caught a real orphan (a served file not linked from the page).
 - The portal `[0,1]` failure mode is understood and prevented: all-finite writes,
   `nodata=None`, zeros outside. Verified over HTTP on the served bytes, not just on disk.

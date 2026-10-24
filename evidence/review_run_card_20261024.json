@@ -1,0 +1,56 @@
+{
+  "hypothesis": "Positive geodetic dilatation may preferentially mark permeability-relevant blind normal-fault corridors; this card audits the already-built DILATATION p12 artifact, not the newly proposed strain-coherence candidate.",
+  "mechanism": "The existing p12 arm moves 4,518 of the 37,654 parent pixels from lower to high-tercile Band 8 geod_dilaterate support on H19-5 with an exact expected-DTI refill. Band 7/4 coherence is a future hypothesis and was not tested because the official 19-band stack is absent.",
+  "named_non_fault_process_that_could_mimic_it": "Groundwater or lithium-brine extraction subsidence, agricultural pumping, and broad basin-fill deformation without brittle faulting.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_count": 22663,
+    "p12": 0.005779,
+    "p12_ci95": [0.004863, 0.006851],
+    "parent_R0": 0.004006,
+    "parent_R0_ci95": [0.003424, 0.004690],
+    "paired_delta_vs_R0": 0.00177,
+    "paired_delta_ci95": [0.00111, 0.00246],
+    "source": "Existing evidence/dilatation_proxy_audit.json; inherited run evidence, not independently rerun in this review because the 19-band stack is absent."
+  },
+  "correlation_overlap_vs_registry": {
+    "registry_raster": "data/parent_R0_zeros.tif",
+    "measurement_scope": "Spearman computed on finite sample_submission footprint; forward overlap is candidate dots within 3 px of parent dots.",
+    "spearman_full_footprint": 0.8791319976514362,
+    "candidate_dots_within_3px": 0.99373241,
+    "thresholds": {
+      "spearman_gt": 0.90,
+      "overlap_gt": 0.70
+    },
+    "result": "DUPLICATE_STOP: forward overlap exceeds 70%; parent-only screening cannot certify global uniqueness."
+  },
+  "raster_sha256": "25ba17a26d31df9d574fba2a2f34d03ff58f587f4ffde092dcc4bba9822f8898",
+  "validator_output": {
+    "local_preflight_status": "PASS",
+    "official_submission_format_status": "UNRESOLVED_OUTSIDE_ENCODING",
+    "official_spec": "Problem page 967 states outside-bounds data should be null/NaN; served candidate uses zeros outside.",
+    "source": "scripts/check_site.py rerun in this review; 10 local range/geometry gates independently reread from served bytes; not organizer validation.",
+    "no_nan_inside_footprint": true,
+    "all_values_finite": true,
+    "values_in_0_1": true,
+    "crs": "EPSG:32611",
+    "shape": [3730, 3292],
+    "transform_matches_sample_submission": true,
+    "bands": 1,
+    "dtype": "float32",
+    "outside_footprint": "zeros",
+    "promotion_status": "BLOCKED_DUPLICATE"
+  },
+  "submission_name": "GEMSDOE92-DILATATION-p12-20261025",
+  "note": "HOLDOUT-DTI 0.005779 [0.004863,0.006851], gems57-pooled-hide-v2, n=22663; DILATATION p12 duplicate-stop",
+  "note_characters": 103,
+  "verdict": "negative",
+  "new_candidate_validation": {
+    "candidate": "Extensional-strain coherence: Band 8 positive dilatation relative to Band 7 shear and Band 4 second-invariant strain.",
+    "status": "BLOCKED_NOT_RUN",
+    "blocker": "The pinned official 19-band feature raster is not present in data/ or .cache/; the official DrivenData data page requires competitor access and is not available to this sandbox.",
+    "experiments_run_this_review": 0,
+    "weekly_slots_spent": 0
+  }
+}

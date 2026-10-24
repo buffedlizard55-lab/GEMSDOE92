@@ -171,13 +171,13 @@ def test_dilatation_primary_download_is_tracked_and_gate_passed() -> None:
 
 def test_dilatation_site_offers_obvious_download_and_submission_note() -> None:
     html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
-    # an obvious download, and the encoding that survives the portal validator
-    assert "OK TO DOWNLOAD" in html
+    # an obvious diagnostic download; local preflight is not official acceptance
+    assert "OK TO DOWNLOAD FOR REVIEW" in html
     assert "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif" in html
     assert "download" in html
     # a unique submission name and a <=140 char note
     assert "GEMSDOE92-DILATATION-p12-20261025" in html
-    note = "h33-h33-2-b2; DILATATION shift 4518 dots (12%) low→high dilat; pred MODEL:+0.007"
+    note = "HOLDOUT-DTI 0.005779 [0.004863,0.006851], gems57-pooled-hide-v2, n=22663; DILATATION p12 duplicate-stop"
     assert note in html and len(note) <= 140
     # the run card must be present with its verdict
     assert "run-card" in html or "Run card" in html

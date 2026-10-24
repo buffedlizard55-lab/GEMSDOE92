@@ -533,3 +533,15 @@ holdout credit. Uniqueness and expected gain currently pull in opposite directio
 next session's job is not another variant: it is either (a) an arm that reallocates enough to
 clear 70 % *without* leaving the skeleton's high-credit neighbourhood, or (b) an explicit,
 recorded human decision that Reading 2 governs. See `docs/NEXT_STEPS.md`.
+
+## 2026-10-24 review — local zero-fill preflight conflicts with official outside-bounds wording
+
+**Observed from the current official problem page.** The page at <https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/> says a submission uses a single float32 GeoTIFF, values from 0 to 1, EPSG:32611, 100 m, matching bounds, and null/NaN outside those bounds. This page was retrieved during the review. The official data page redirected to login. No organizer submission receipt or authenticated upload validation is present in this repository.
+
+**Observed in the local artifact.** The served DILATATION p12 `-zeros.tif` has all-finite values in [0,1] and passes the project's local range/geometry gates, but it stores 0 outside the footprint. This directly differs from the official page's stated null/NaN outside-bounds convention. The local checker proves only its implemented checks; it does not prove that DrivenData accepts zero-fill outside the mask. The previously reported range error does not establish that zero-fill is officially accepted.
+
+**Independent blocking issue.** `scripts/check_site.py` now measures primary p12 against `data/parent_R0_zeros.tif` on the sample-submission footprint: Spearman 0.879132 and 99.373241% of candidate dots within 3 px. The overlap exceeds the 70% lane threshold, so promotion is automatically reported as `DUPLICATE_STOP`. The parent comparison is a sufficient failure, not a complete global registry uniqueness certificate.
+
+**Decision.** The file is clearly labelled **OK TO DOWNLOAD FOR REVIEW**, but **NOT CLEARED / NOT RECOMMENDED FOR SUBMISSION** for both the uniqueness breach and unresolved outside-mask format. No new TIFF or slot was created. A future candidate must first reconcile the null/NaN convention with the portal validator and pass the scientific/uniqueness gates; local format checks must not be called organizer acceptance.
+
+**Date/provenance irregularity.** The current review date is 2026-10-24 UTC, but existing README/run evidence, CI comments and the primary DILATATION filenames contain 2026-10-25 dates. Those timestamps were not rewritten. Treat them as imported or clock-inconsistent provenance until independently explained.

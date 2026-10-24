@@ -1,12 +1,14 @@
-# GEMSDOE92 — Hypothesis analysis and submission design (session 2026-10-24)
+# GEMSDOE92 — Historical hypothesis analysis and submission design
 
-## The question: h33-h33-2-b2-zeros scored 0.2778 — why, and can we beat it?
+> **Archive notice:** this is an earlier STEPOVER/DILATATION research memo, not the current slot recommendation. Its experimental descriptions are historical; its predictions are not organizer scores. The current candidate and source-availability review is [`RESEARCH_AND_CANDIDATE_REVIEW_20261024.md`](RESEARCH_AND_CANDIDATE_REVIEW_20261024.md). No current file is cleared for a competition slot.
+
+## The question: the owner-claimed h33-h33-2-b2-zeros value of 0.2778 — what can be inferred?
 
 ### What 0.2778 actually is
 
 `h33-h33-2-b2` (GEMSDOE32, 2026-10-04T22:00:00Z, uuid e5eb6e7e) is an **owner-reported CLAIM of 0.2778**. It is NOT an ORGANIZER-CONFIRMED receipt: `ledger/submissions.csv` has 27 BUILT rows and zero RECEIPT rows; no submission-page receipt date or score is recorded for it (see `registry/parents/R0.json`, `receipt: null`, IRREGULARITIES 2026-10-23 "No TOP_PUBLIC filled").
 
-Mechanically, the file is plausible as a strong entry: 37,654 unit-mass dots on the H19-5 ridge skeleton, D2.8 Poisson-disk spacing (min nn 2.828 px), zero mass on the mapped catalogue (`d_cat` min 2.236 px, 0 dots ≤ 2 px), exact DTI kernel budget (triangular R=3 px/300 m, alpha 0.2, beta 0.8). Under the DTI algebra, a fixed dot budget spent on non-redundant dots that each reach withheld truth pixels within 3 px maximizes `TP_w / (TP_w + 0.2 FP_w + 0.8 FN_w)`; R0's design (fixed count, spacing floor, off-catalogue placement) follows that algebra. That is *why* it plausibly ranked highest among the listed GEMSDOE site entries (next best listed: 0.2750, 0.2708, 0.2707, 0.2649, 0.2632, 0.2600…).
+Mechanically, the file is plausible as a strong entry: 37,654 unit-mass dots on the H19-5 ridge skeleton, D2.8 Poisson-disk spacing (min nn 2.828 px), zero mass on the mapped catalogue (`d_cat` min 2.236 px, 0 dots ≤ 2 px), exact DTI kernel budget (triangular R=3 px/300 m, alpha 0.2, beta 0.8). The repository's metric implementation uses a tolerance-kernel DTI with a fixed asymmetric false-positive/false-negative weighting. A fixed dot budget and spacing constraints can reduce redundant predicted mass, while nearby truth may receive spatial credit. That makes the parent design a plausible strategy, but it does **not** explain the reported value causally or establish that it ranked highest; the other site values and the parent value are not receipt-verified in this checkout.
 
 ### Can we generate a submission scoring higher than 0.2778?
 

@@ -19,10 +19,10 @@ Parent studied: GEMSDOE32 `h33-h33-2-b2` CLAIM 0.2778 (zeros). That score is **n
 
 ## Site / download rules
 
-- Zeros-outside encoding is the only download offered (portal error: `Predicted values must be in range [0, 1]`).
-- Banner must say whether the file is OK to download **and** whether it is recommended for a weekly slot.
-- Executive summary subpage explains the DrivenData form (name + note).
-- No manual inspection required for format validation (`scripts/check_site.py`, `gems.gates`, `gems57.validate`).
+- A zeros-outside encoding is currently offered for **review only** because the reported portal error was `Predicted values must be in range [0, 1]`; it is not confirmed submission-compliant. The official problem page says data outside the submission bounds should be null/NaN, so do not submit a zero-filled outside mask without organizer confirmation.
+- Banner must say whether the file is OK to download for review **and** whether it is recommended for a weekly slot; local range validation is not official acceptance.
+- Executive summary subpage explains the DrivenData form (name + note) and clearly says when not to upload.
+- Project format/uniqueness checks run without manual pixel inspection (`scripts/check_site.py`, `gems.gates`, `gems57.validate`); slot selection and organizer validation remain external.
 
 ## Official sources
 
@@ -41,6 +41,9 @@ Parent studied: GEMSDOE32 `h33-h33-2-b2` CLAIM 0.2778 (zeros). That score is **n
 
 Maximize P(Win). Own the outcome end to end. Do not copy a previous submission except to learn.
 
-## This session’s result (2026-10-24)
+## Session history and current review state
 
-TIPGAP FAR (`far18f33`) is unique vs the local registry and format-valid. HOLDOUT-DTI did not beat R0. Verdict **negative**. File still published for download with that banner.
+- The previously executed TIPGAP FAR (`far18f33`) lane passes local range/geometry preflight and was below the R0 holdout baseline; its verdict is **negative**. Its zero-filled outside mask also lacks confirmed acceptance against the official null/NaN outside-bounds statement. It remains a documented negative diagnostic artifact.
+- This checkout also contains DILATATION p10/p12/p15 artifacts whose filenames/evidence carry the date `2026-10-25`, later than the present review date (`2026-10-24` UTC). Treat that as a provenance irregularity, not a date to silently normalize.
+- Current research review follows the repository README's DILATATION scope, but does **not** launch a new experiment: the official 19-band training feature stack is absent from `data/` and `.cache/`. DILATATION p12 passes local range/geometry gates, but its zero-filled outside mask differs from the official null/NaN statement, and its 99.37% overlap within 3 px of registered parent R0 breaches the 70% uniqueness stop. It is **not cleared / not recommended for submission**.
+- The official training-data page is https://www.drivendata.org/competitions/306/competition-doe-gems/data/ (login may be required). Do not use a public owner mirror as an official substitute when redistribution terms are unchecked. No weekly slot is selected or spent.

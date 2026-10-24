@@ -3,26 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GEMSDOE92 — unique GeoTIFF download (DOE GEMS Prize)</title>
+  <title>GEMSDOE92 — diagnostic GeoTIFF preflight (DOE GEMS Prize)</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a class="skip" href="#download">Skip to download</a>
   <header class="hero">
     <p class="kicker">DOE GEMS Prize · DrivenData #306 · EPSG:32611 100 m</p>
-    <h1>Unique submission GeoTIFF</h1>
-    <p class="lede">One-click download of a locally validated, all-finite <code>[0, 1]</code> GeoTIFF. This file is <strong>not a copy</strong> of h33-h33-2-b2 or of any other raster in this repository.</p>
+    <h1>Submission GeoTIFF preflight</h1>
+    <p class="lede">One-click download of a local-preflight diagnostic GeoTIFF for review. It is <strong>not cleared as unique or submission-ready</strong>; read the two blocking notices below before downloading.</p>
     <div class="banner banner-ok">
-      <strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong>
-      All 10 MUST gates pass on an independent re-read of the served bytes: CRS · shape · transform · float32 · 1 band · values in [0, 1] · 0 NaN inside footprint · zeros outside · zero catalogue mass · <code>d_cat &gt; 2 px</code>. HOLDOUT-DTI is above parent R0 (Δ +0.00177, 95 % CI excludes 0).
+      <strong>✅ LOCAL PREFLIGHT PASS — OK TO DOWNLOAD FOR REVIEW.</strong>
+      All 10 project format/range gates pass on an independent reread of the served bytes: CRS · shape · transform · float32 · 1 band · values in [0, 1] · 0 NaN inside footprint · zero outside · zero catalogue mass. This local check does not establish official format acceptance or score.
     </div>
     <div class="banner banner-warn">
-      <strong>⚠ NOT CLEARED FOR A WEEKLY SLOT — it fails the operator's literal uniqueness rule.</strong>
+      <strong>⛔ NOT CLEARED / NOT RECOMMENDED FOR COMPETITION SUBMISSION — NOT CLEARED FOR A WEEKLY SLOT — it fails the operator's literal uniqueness rule.</strong>
       The brief says: if <em>more than 70 % of your dots fall within 3 px of one registry raster's dots, log it as a duplicate and stop</em>. Parent R0 <strong>is</strong> a registry raster (<code>registry/parents/R0.json</code>), and this file measures <strong>99.37 %</strong> of its dots within 3 px of R0. So do every other DILATATION dose (99.37–99.40 %) and RELIEF p10 (99.38 %). Only <code>TIPGAP far18f33</code> clears the rule at 67.00 % — and its own run card puts its HOLDOUT-DTI <em>below</em> R0 (−0.001283, verdict negative).
       <strong>The honest state of this repository: no served file is both unique under that rule and expected to improve.</strong> Submitting any file here is a human override, not an agent recommendation. See <a href="#uniqueness">the two readings</a> below.
     </div>
     <div class="banner banner-warn">
-      The portal error <code>Predicted values must be in range [0, 1]</code> comes from a value outside [0, 1] anywhere in the raster — usually the training stack's <code>−3.4028235e+38</code> nodata sentinel (3,061 such cells sit <em>inside</em> the footprint) or a stray NaN. Every cell of this download is finite and <code>nodata=None</code>, so neither can reach the validator. Upload the <strong>zeros-outside</strong> file below.
+      The reported portal error <code>Predicted values must be in range [0, 1]</code> can result from out-of-range prediction values; this file's local preflight confirms all stored cells are finite and in range. However, the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">official problem description</a> says data outside submission bounds should be null/NaN. This download instead stores zeros outside. No organizer receipt confirms that this encoding is accepted. Download it for review only; do <strong>not</strong> submit it.
     </div>
   </header>
 
@@ -35,13 +35,13 @@
     </p>
     <dl class="meta">
       <div><dt>Submission name</dt><dd><code>GEMSDOE92-DILATATION-p12-20261025</code></dd></div>
-      <div><dt>Form note (84 chars)</dt><dd><code>h33-h33-2-b2; DILATATION shift 4518 dots (12%) low→high dilat; pred MODEL:+0.007</code></dd></div>
+      <div><dt>Form note (103 chars)</dt><dd><code>HOLDOUT-DTI 0.005779 [0.004863,0.006851], gems57-pooled-hide-v2, n=22663; DILATATION p12 duplicate-stop</code></dd></div>
       <div><dt>SHA-256</dt><dd><code>25ba17a26d31df9d574fba2a2f34d03ff58f587f4ffde092dcc4bba9822f8898</code></dd></div>
       <div><dt>Dots / mass</dt><dd>37,654 unit-mass pixels, values {0, 1} only</dd></div>
       <div><dt>Grid</dt><dd>EPSG:32611 · 3730 × 3292 · 100 m · matches sample_submission.tif</dd></div>
-      <div><dt>Independent audit</dt><dd><a href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-audit.json">audit receipt (re-read from disk, 10/10 gates)</a></dd></div>
+      <div><dt>Local format audit</dt><dd><a href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-audit.json">JSON gate report (disk reread, 10/10 project gates; not an organizer receipt)</a></dd></div>
     </dl>
-    <p><a href="SUBMIT.html">Executive summary: how to submit in 3 steps</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">Competition submission page</a></p>
+    <p><a href="SUBMIT.html">Executive summary: download status and form guide</a> · <a href="RESEARCH_AND_CANDIDATE_REVIEW_20261024.md">Research hypotheses, holdout status, and blockers</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">Competition submission page</a></p>
   </section>
 
   <section>
@@ -88,52 +88,51 @@
     </table>
     <p>Pearson on the DILATATION vs TIPGAP arrival masks is <strong>0.0018</strong> (≪ 0.90); on whole files 0.5902 (≪ 0.90).</p>
     <div class="banner banner-warn">
-      <strong>Which reading this site defers to, and why it matters.</strong> Reading 2 is the better <em>science</em> — but it is <strong>this repository's</strong> reinterpretation of an operator instruction, and reinterpreting a gate in your own favour is exactly how a bad submission gets justified. So the site reports Reading 1 as governing and marks these files <strong>NOT CLEARED FOR A SLOT</strong>. If you want to spend a slot on DILATATION p12 you are making an informed override of the uniqueness rule on the strength of the arrival-set evidence — that is a defensible human call, but it is yours to make and yours to record, not the agent's. Note also that TIPGAP clears uniqueness <em>because</em> it moves 33 % of the budget far off the D2.8 skeleton, and that same move is what drove its holdout below R0: under this rule set, uniqueness and expected gain currently pull in opposite directions.
+      <strong>Promotion is blocked by two independent unresolved checks.</strong> The literal uniqueness rule marks the DILATATION/RELIEF descendants as duplicates of R0. Separately, the official problem page says outside-bounds cells should be null/NaN, while the current diagnostic downloads use zeros outside. No current file is cleared for a competition slot. TIPGAP's 67% overlap against R0 is below the overlap threshold in this one comparison, but it is a negative holdout result and that local comparison does not certify global uniqueness or format acceptance.
     </div>
   </section>
 
   <section>
-    <h2>Why parent 0.2778 is high — and what beating it requires</h2>
-    <p>h33-h33-2-b2 (GEMSDOE32) is an owner-reported <strong>CLAIM 0.2778</strong>, not an organizer receipt. The climb that produced it is mechanical, not mysterious:</p>
+    <h2>What the reported parent value 0.2778 could mean — and what is unverified</h2>
+    <p><code>h33-h33-2-b2</code> is associated with an owner-reported <strong>CLAIM 0.2778</strong>; the local parent record has no submission-page receipt. The historical build lineage lists these claimed milestones:</p>
     <ol>
-      <li><strong>H19-5 multiline ridges ~0.1922 CLAIM</strong> — geophysical lineaments already sit near hidden truth.</li>
-      <li><strong>Poisson-disk thinning at 2.8 px → 0.2600 CLAIM</strong> — DTI uses α = 0.2, β = 0.8, so extra mass is expensive. Unit-mass dots near the 300 m kernel diameter stop double-counting the same truth pixel.</li>
-      <li><strong>SOLO prune → 0.2708 CLAIM</strong> — drop dots whose credit is below ~0.2·DTI ≈ 0.056.</li>
-      <li><strong>B2 catalogue collar → 0.2778 CLAIM</strong> — known USGS/INGENIOUS traces are masked at scoring, so dots on them add S without T. <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">Organizer forum 11516</a>.</li>
+      <li>H19-5 multiline ridge prior — <strong>CLAIM 0.1922</strong>; the prior's relationship to the hidden truth has not been independently established here.</li>
+      <li>Poisson-style thinning at 2.8 px — <strong>CLAIM 0.2600</strong>; the official metric has a 300 m triangular tolerance kernel, so spacing could reduce redundant predictions, but that causal effect was not isolated.</li>
+      <li>SOLO pruning — <strong>CLAIM 0.2708</strong>; a sparse selection may improve precision/recall trade-offs, but no organizer receipt or controlled comparison is stored.</li>
+      <li>B2 catalogue exclusion — <strong>CLAIM 0.2778</strong>; its asserted interaction with the known-fault mask should be reviewed against the <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">organizer forum clarification</a>.</li>
     </ol>
-    <p>At a fixed budget of 37,654 dots, beating it needs ~25 % more mean credit per dot. No public catalogue can supply that. The only route is a better detector — which is what a kinematic prior is for.</p>
-    <p>A public leaderboard number of 0.4413 / 0.3195 (prompt-supplied, <strong>not ORGANIZER-CONFIRMED in this repo</strong>) is a different chunk mix. Nothing on this page is an organizer score.</p>
+    <p>These owner-claimed milestones make a plausible design story, not a verified explanation for a live score. The original parent ranking was not retained; the local record explicitly notes that H19-5 has no ranking at its parent dots. The prompt's public leaderboard figures 0.3195 and 0.4413 conflict and have not been confirmed from a receipt in this checkout. A higher live score is therefore unknown.</p>
   </section>
 
   <section>
     <h2>Other lanes built here (kept as deliverables, not slot candidates)</h2>
     <table>
-      <thead><tr><th>Lane</th><th>HOLDOUT-DTI</th><th>Δ vs R0</th><th>Verdict</th><th>File</th></tr></thead>
+      <thead><tr><th>Lane</th><th>HOLDOUT-DTI (evaluator `gems57-pooled-hide-v2`; 22,663 withheld positives; 95% CI)</th><th>Disposition</th><th>File</th></tr></thead>
       <tbody>
         <tr>
-          <td><strong>DILATATION p12</strong></td><td>0.005779</td><td><strong>+0.00177</strong></td><td><strong>promote</strong></td>
-          <td><a href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif">download</a></td>
+          <td><strong>DILATATION p12</strong></td><td>0.005779 [0.004863, 0.006851]</td><td><strong>negative: duplicate-stop; outside encoding unresolved</strong></td>
+          <td><a href="downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif">download for review</a></td>
         </tr>
         <tr>
           <td>TIPGAP far18f33 — along-strike tip/gap, 33 % moved 6–18 px past H19-5 endpoints, off-skeleton (&gt; 3 px)</td>
-          <td>0.002723</td><td>−0.001283</td><td>negative</td>
-          <td><a href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif">download</a></td>
+          <td>0.002723 [0.002324, 0.003131]</td><td>negative; no slot</td>
+          <td><a href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif">download for review</a></td>
         </tr>
         <tr>
-          <td>RELIEF p10 — piedmont detrended-elevation tercile shift</td><td>0.006045</td><td><strong>+0.002039</strong></td><td>built, Slot 1 by holdout</td>
-          <td><a href="downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif">download (zeros-outside)</a></td>
+          <td>RELIEF p10 — piedmont detrended-elevation tercile shift</td><td>0.006045 [0.005187, 0.006927]</td><td>negative: duplicate-stop; outside encoding unresolved</td>
+          <td><a href="downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif">download for review (zeros-outside)</a></td>
         </tr>
         <tr>
-          <td>DILATATION p10 — conservative dose of the primary lane</td><td>0.005747</td><td>+0.00174</td><td>built, reserve</td>
-          <td><a href="downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif">download (zeros-outside)</a></td>
+          <td>DILATATION p10 — conservative dose of the primary lane</td><td>0.005747 [0.004867, 0.006788]</td><td>negative: duplicate-stop; outside encoding unresolved</td>
+          <td><a href="downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif">download for review (zeros-outside)</a></td>
         </tr>
         <tr>
-          <td>DILATATION p15 — aggressive dose of the primary lane</td><td>0.005818</td><td>+0.00181</td><td>built, reserve</td>
-          <td><a href="downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif">download (zeros-outside)</a></td>
+          <td>DILATATION p15 — aggressive dose of the primary lane</td><td>0.005818 [0.004838, 0.006912]</td><td>negative: duplicate-stop; outside encoding unresolved</td>
+          <td><a href="downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif">download for review (zeros-outside)</a></td>
         </tr>
       </tbody>
     </table>
-    <p><strong>Read the ranking honestly.</strong> By HOLDOUT-DTI alone, <em>RELIEF p10</em> is the largest gain of any arm (+0.002039, CI excludes 0) and it is listed as Slot 1 in <a href="../SLOT_PLAN.md">SLOT_PLAN.md</a>. It was previously served <strong>only</strong> in the NaN-outside encoding — the one that triggered the portal error — so it was not safely submittable; a zeros-outside twin has now been built, passes 10/10 gates, and its sha256 <code>60f02085…</code> reproduces the value recorded in <code>evidence/relief_variants.json</code> byte-for-byte.</p>
+    <p><strong>No slot is recommended.</strong> RELIEF p10 has the largest recorded catalogue HOLDOUT-DTI gain among the existing arms, but it also exceeds the literal uniqueness threshold and its zeros-outside re-encoding has the same unresolved official-format issue noted above. A local holdout ranking is not a competition-slot selection; see <a href="../SLOT_PLAN.md">SLOT_PLAN.md</a> for historical plans, not current authorization.</p>
     <p>DILATATION still leads this page because it is the arm with a <strong>monotone three-point dose ladder</strong> (+0.00174 / +0.00177 / +0.00181) on a mechanism no other lane touches, and it is nearly disjoint from both RELIEF (arrival Jaccard 0.159) and TIPGAP (0.0011). Note that RELIEF and DILATATION arrivals overlap 28.84 % within 3 px, so they are <strong>not independent</strong> — two positive receipts from those two arms are partly the same information, not two confirmations.</p>
     <p><strong>Read the TIPGAP row honestly:</strong> its own run card records <code>verdict: negative</code> with HOLDOUT-DTI <em>below</em> R0, and its page text says not to spend a weekly slot on it unless a human overrides. It is kept because a negative result is a deliverable — moving 33 % of the budget off the D2.8 skeleton onto along-strike tip walks <em>costs</em> credit, which falsifies the "continuations sit 0.5–1.8 km past the tips" hypothesis on this instrument. Do not submit it expecting a gain.</p>
     <p>The three on-skeleton 10–15 % TIPGAP doses were logged as lane-duplicates of R0 (overlap ≈ 0.999) and are <em>not</em> offered for download.</p>
@@ -150,8 +149,8 @@
   "correlation_overlap_vs_registry": "arrivals vs TIPGAP: 6.91% within 3px, Jaccard 0.0011, Pearson 0.0018 | whole-file Pearson 0.5902 | DISTINCT",
   "raster_sha256": "25ba17a26d31df9d574fba2a2f34d03ff58f587f4ffde092dcc4bba9822f8898 (zeros) / 8b4d248b6801f3f47c8748c3c32ce6892c121a3bf5710f899bafd2b6e8b47b89 (nan)",
   "validator_output": "10/10 MUST gates PASS on independent reread of the served bytes; EPSG:32611 3730x3292 float32 1 band; values_in_0_1 n_violations=0 min=0.0 max=1.0; no_nan_inside 0; zero catalogue mass; d_cat>2px",
-  "submission_name_note": "GEMSDOE92-DILATATION-p12-20261025 | h33-h33-2-b2; DILATATION shift 4518 dots (12%) low->high dilat; pred MODEL:+0.007",
-  "verdict": "NOT_CLEARED — format-valid and holdout-positive, but 99.37% of dots lie within 3px of registry raster R0, over the 70% uniqueness limit; literal rule governs, upload is a human override"
+  "submission_name_note": "GEMSDOE92-DILATATION-p12-20261025 | HOLDOUT-DTI 0.005779 [0.004863,0.006851], gems57-pooled-hide-v2, n=22663; DILATATION p12 duplicate-stop",
+  "verdict": "NOT_CLEARED — local range/geometry checks pass, but the zero-filled outside mask conflicts with official null/NaN outside-bounds text and 99.37% of dots lie within 3px of R0; do not submit"
 }</pre>
   </section>
 

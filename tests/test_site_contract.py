@@ -52,7 +52,7 @@ def test_index_links_every_served_zeros_file():
 
 
 def test_index_primary_has_an_audit_receipt_that_matches():
-    """The primary's audit receipt must describe the bytes actually on disk."""
+    """The primary's local format audit must describe the bytes actually on disk."""
     import hashlib
 
     html = _index()
@@ -63,7 +63,7 @@ def test_index_primary_has_an_audit_receipt_that_matches():
 
     variant = primary.stem.removesuffix("-zeros")
     audit_path = primary.with_name(variant + "-audit.json")
-    assert audit_path.is_file(), f"no audit receipt beside the primary: {audit_path.name}"
+    assert audit_path.is_file(), f"no local format-audit JSON beside the primary: {audit_path.name}"
 
     doc = json.loads(audit_path.read_text())
     assert doc["overall_pass"] is True
@@ -71,12 +71,55 @@ def test_index_primary_has_an_audit_receipt_that_matches():
     assert all(g["ok"] for g in doc["gates_zeros"]), "audit records a failing gate"
 
 
-def test_submit_page_exists():
-    for name in ("SUBMIT.html", "submit.html"):
-        p = DOCS / name
-        if p.is_file():
-            html = p.read_text(encoding="utf-8")
-            assert "zeros" in html.lower()
-            assert "DrivenData" in html
-            return
-    pytest.fail("no submission guide page in docs/")
+def test_submit_page_exists_and_distinguishes_download_from_slot_clearance():
+    canonical = DOCS / "SUBMIT.html"
+    assert canonical.is_file(), "canonical executive summary is missing"
+    html = canonical.read_text(encoding="utf-8")
+    assert "zeros" in html.lower()
+    assert "DrivenData" in html
+    assert "OK TO DOWNLOAD" in html
+    assert "NOT CLEARED" in html
+    assert "recommended to submit?</strong> No" in html
+    assert "HOLDOUT-DTI" in html
+    assert "null/NaN" in html
+    assert "Current decision: do not upload this file" in html
+
+
+def test_lowercase_submission_guide_redirects_to_canonical():
+    lower = DOCS / "submit.html"
+    assert lower.is_file()
+    html = lower.read_text(encoding="utf-8")
+    assert 'url=SUBMIT.html' in html
+    assert '<a href="SUBMIT.html">' in html
+
+
+def test_primary_uniqueness_screen_automatically_blocks_r0_duplicate():
+    import numpy as np
+    import rasterio
+    from scripts.check_site import measure_primary_uniqueness
+
+    html = _index()
+    match = re.search(r'href="(downloads/[^"]+-zeros\.tif)"', html)
+    assert match, "no primary zeros-outside raster"
+    primary = DOCS / match.group(1)
+    with rasterio.open(ROOT / "data" / "bridge" / "sample_submission.tif") as ds:
+        footprint = np.isfinite(ds.read(1))
+    result = measure_primary_uniqueness(primary, footprint)
+    assert result["status"] == "DUPLICATE_STOP"
+    assert result["candidate_dots_within_3px_of_R0"] > 0.70
+    assert "parent R0 only" in result["scope"]
+
+
+def test_research_review_reports_candidate_blocker_without_claiming_score():
+    report = ROOT / "docs" / "RESEARCH_AND_CANDIDATE_REVIEW_20261024.md"
+    text = report.read_text(encoding="utf-8")
+    assert "five testable hypotheses" in text.lower()
+    assert "not viable" in text.lower()
+    assert "validation is **blocked**" in text.lower()
+    assert "ORGANIZER-CONFIRMED" in text
+    card = json.loads((ROOT / "evidence" / "review_run_card_20261024.json").read_text())
+    assert card["verdict"] == "negative"
+    assert len(card["note"]) <= 140
+    assert card["note_characters"] == len(card["note"])
+    assert card["validator_output"]["official_submission_format_status"] == "UNRESOLVED_OUTSIDE_ENCODING"
+    assert card["new_candidate_validation"]["status"] == "BLOCKED_NOT_RUN"

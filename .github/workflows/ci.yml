@@ -61,9 +61,15 @@ jobs:
           done
           echo "gated ${#files[@]} served file(s)"
 
+      # Independently reread every download and print the primary's automatic
+      # parent-R0 uniqueness screen. A duplicate blocks promotion without hiding
+      # a local-preflight negative diagnostic from the research site.
+      - name: site preflight and promotion status
+        run: python scripts/check_site.py
+
       # The primary named on the page must exist, be one of the gated files, and
-      # agree byte-for-byte with the audit receipt shipped beside it.
-      - name: primary download must match its audit receipt
+      # agree byte-for-byte with the local format-audit JSON (not an organizer receipt).
+      - name: primary download must match its local format audit
         run: |
           set -euo pipefail
           python - <<'PY'
@@ -80,18 +86,18 @@ jobs:
           variant = primary.stem.removesuffix("-zeros")
           audit = primary.with_name(variant + "-audit.json")
           if not audit.is_file():
-              sys.exit(f"missing audit receipt beside the primary: {audit}")
+              sys.exit(f"missing local format-audit JSON beside the primary: {audit}")
           doc = json.loads(audit.read_text())
           got = hashlib.sha256(primary.read_bytes()).hexdigest()
           if got != doc["sha256_zeros"]:
               sys.exit(f"audit hash {doc['sha256_zeros']} != served bytes {got}")
           if doc.get("overall_pass") is not True:
-              sys.exit("audit receipt does not record overall_pass == true")
+              sys.exit("format-audit JSON does not record overall_pass == true")
           bad = [g["name"] for g in doc["gates_zeros"] if not g["ok"]]
           if bad:
-              sys.exit(f"audit receipt records failing gates: {bad}")
+              sys.exit(f"format-audit JSON records failing gates: {bad}")
           print(f"primary {primary.name}")
           print(f"  sha256 {got}")
-          print(f"  audit receipt agrees; {len(doc['gates_zeros'])} gates recorded PASS")
+          print(f"  local format-audit JSON agrees; {len(doc['gates_zeros'])} project gates recorded PASS")
           PY
 
