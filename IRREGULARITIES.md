@@ -618,3 +618,7 @@ submitted. Corollary for future lanes: the fixed full-catalogue proxy-diagnostic
 predicted the screened design at ratio 1.146 vs R0 and the (different) greedy build
 measured 0.964 — the instrument prices near-catalogue collar mass and **must never be
 labelled a holdout or a score**.
+
+## Latest review: decisive BREAKLINE public witness
+
+See [current review](docs/REVIEW_CURRENT.md). The queued public check now rejects BREAKLINE: 100% forward overlap with the hash-verified 17GEMSDOE full-halo raster. Every nonempty in-footprint candidate fails the current literal gate against this witness. This supersedes the pending-public-scan status above; the full registry was not rescanned. Zero new experiments or submission slots; resolve the policy before more placements.

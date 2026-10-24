@@ -2,6 +2,19 @@
 
 > **Start each session by reading this README and [`SESSION_PROMPT.md`](SESSION_PROMPT.md).** The session contract is the lane/budget/holdout/uniqueness policy; do not spend a live slot from this agent. Maximize P(Win) and own the outcome.
 
+## Latest review: literal uniqueness is blocked across the footprint
+
+**OK TO DOWNLOAD for research; NOT OK TO SUBMIT.** The queued BREAKLINE public
+witness audit now finds **REGISTRY-MEASUREMENT 100% forward overlap** with the
+hash-verified 17GEMSDOE dense raster. Its 3-pixel halo covers the whole footprint,
+so every nonempty in-footprint candidate would fail the current literal rule.
+No new unique submission was generated, no score improvement is claimed, and no
+slot was used. [Review and limitations](docs/REVIEW_CURRENT.md) ·
+[witness receipt](docs/downloads/breakline_public_witness.json) ·
+[session JSON card](docs/downloads/session_review_run_card.json).
+This supersedes the older statement below that BREAKLINE was unscanned publicly;
+the full historical registry scan was **not** repeated.
+
 ## Executive summary — format-validated candidate, one-click download
 
 **✅ FORMAT-VALID — OK TO DOWNLOAD.** The new candidate is an all-finite single-band float32 GeoTIFF, EPSG:32611, shape 3730 × 3292, matching the competition template's transform. It has no NaN inside the footprint, zeros outside, values only in `[0,1]`, and passes all 10 local MUST gates. This prevents the portal error `Predicted values must be in range [0, 1]`.
