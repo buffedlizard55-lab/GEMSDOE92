@@ -78,29 +78,26 @@ A second session built **BREAKLINE f45Ltop**: keeping 20,710 parent R0 dots via 
 
 ---
 
-## In-Depth Scientific Analysis: Why did GEMSDOE32 Score 0.2778 and How to Beat It?
+## Interpretation of the reported GEMSDOE32 result — evidence limits first
 
 ### 1. Mathematical Mechanics of the Competition Metric
 The official competition metric is the distance-weighted, asymmetric Tversky Index ($DTI$):
 $$\text{DTI} = \frac{\text{TP}_w}{\text{TP}_w + \alpha \cdot \text{FP}_w + \beta \cdot \text{FN}_w + \varepsilon}$$
 where $\alpha = 0.2$, $\beta = 0.8$, and $k(d) = \max(0, 1 - d/300\text{ m})$ with cutoff radius $R = 300\text{ m}$ (3 pixels on a 100 m grid).
 
-### 2. Lineage Breakdown of Score Progression
-1. **H19-5 (0.1922):** Multiscale potential-field ridge skeleton (gravity & magnetic gradient maximums). Captured regional crustal fault zones across the Great Basin. However, raw continuous skeletons contained dense, adjacent pixels along single fault traces, creating extreme false-positive mass redundancy.
-2. **D2.8 (0.2600):** Applied Poisson-disk thinning with $r = 2.8\text{ px}$ (280 m). Because the triangular kernel width is 3 px, adjacent pixels along a line cover the exact same ground truth ($TP_w$ is max-pooled, so credit is earned once), while each pixel adds $1.0$ to emitted mass $S$ and false-positive mass $FP_w$. Spacing dots at $2.8\text{ px}$ eliminated redundancy and surged the score from 0.1922 to 0.2600.
-3. **SOLO (0.2708):** Removed sub-bar isolated dots with low expected gain and removed dots within 1 px of mapped known faults.
-4. **B2 / R0 (0.2778):** Enforced strict clearance from known mapped faults ($d_{\text{cat}} > 2.0\text{ px}$, zero mass on catalogue, 37,654 dots). Because competition organizers mask all known USGS/INGENIOUS faults pixel-exactly from live scoring, any prediction placed on or touching a mapped fault yields zero true positive credit while paying full false-positive penalty.
+### 2. What the historical sequence can—and cannot—show
 
-### 3. Why 0.2778 Hit an Asymptotic Ceiling vs the 0.4413 Leaderboard Top
-- **Target Ground Truth:** The competition target is expert-mapped *new* faults (mapped primarily from 1m LiDAR and 10m DEM high-resolution topography, active geothermal fault scarps, dilatational stepovers, and geothermal conduit permeability zones).
-- **Physical Limitation of Potential Fields:** Potential field worms (H19-5) only detect deep lithologic density and susceptibility contrasts. They completely miss active Quaternary normal fault scarps in basin alluvium (alluvium against alluvium), small-throw fault scarps, and shallow geothermal permeability networks.
-- **How Top Submissions Score 0.4413:** Fusing:
-  1. A high-confidence skeleton core (~20,000 dots) for deep crustal fault systems.
-  2. High-resolution DEM scarp-break detection (structure-tensor coherence $\times$ slope gradient) catching subtle surface ruptures.
-  3. Dilatational structural stepovers, pull-apart zones, and geothermal vent clusters (INGENIOUS / GDR wellspring concordance).
-  4. Radiometric alteration halos (K/Th radiometrics from GeoDAWN).
-  5. Exact Poisson-disk spacing discipline across all emitted dots.
+The values **0.1922 (H19-5), 0.2600 (D2.8), 0.2708 (SOLO), and 0.2778 (B2/R0)** are **CLAIMs copied from the prompt/site history**, not ORGANIZER-CONFIRMED receipts verified in this checkout. The score sequence is consistent with a useful hypothesis: thinning spatially redundant predictions and excluding already-mapped faults may reduce false-positive cost under a distance-weighted metric. It does **not** isolate which change caused the reported differences; that would require the exact rasters, matching scoring conditions, and controlled ablations or organizer receipts.
 
+In particular, the repo's locally recorded R0 lineage and metric code can help explain the *mechanism* of a thinning strategy: nearby predictions can have overlapping kernel support, while each emitted prediction still contributes to prediction mass. That makes redundancy a plausible cost. It is not proof that D2.8 caused the claimed increase, and local HOLDOUT-DTI results are not comparable to private leaderboard scores.
+
+The prompt's **0.4413** is likewise a user-provided leaderboard snapshot, not freshly checked in this environment. We have no authenticated winning raster/method receipt here. Therefore claims that the leading submission fused a specific skeleton, DEM scarp, stepover, radiometric, or vent-proximity feature are **unverified hypotheses**, not a description of the winner. A score alone cannot identify its causal feature set.
+
+### 3. Scientific hypotheses and limits
+
+A plausible, testable explanation for the reported 0.2778 is that coverage-aware spacing reduced redundant false-positive mass while maintaining broad spatial coverage, with known-fault exclusion avoiding predictions on masked catalogue traces. This is **mechanistic inference**, not an organizer-confirmed explanation. Potential-field lineaments may miss shallow scarps where there is little subsurface density or susceptibility contrast; conversely, lithologic contacts and non-tectonic topographic breaks can mimic faults. Neither mechanism justifies saying they “completely miss” a class without a validated detection study.
+
+The target and masking details should be quoted only from the [official problem/rules pages](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/) and the corresponding submission receipt. Those non-GitHub pages were not reachable from this session. The current research priority is to test missing-fault hypotheses with spatially blocked holdouts and independent off-catalogue controls—not to infer or fabricate the winning submission's recipe.
 ---
 
 ## Candidate Geological Hypotheses (Ranked)

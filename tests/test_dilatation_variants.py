@@ -180,7 +180,9 @@ def test_site_discloses_literal_duplicate_stop_and_evidence_boundary() -> None:
     html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
     assert "NOT CLEARED FOR A WEEKLY SLOT" in html
     assert "DUPLICATE UNDER THE LITERAL REGISTRY RULE" in html
-    assert "131 rasters exceed the 70% stop threshold" in html
+    assert "5,167,373" in html
+    assert "not a fresh full-registry scan" in html
+    assert "downloads/public_witness_anasig.json" in html
     assert "HOLDOUT-DTI" in html and "not a competition score" in html
     assert "No live submission slot has been used" in html
     card = json.loads((ROOT / "evidence" / "visible_collar_run_card.json").read_text(encoding="utf-8"))
