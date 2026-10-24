@@ -733,6 +733,55 @@ private expert-mapped label set. Treating either as decisive alone would be
 an irregularity. The only resolver is an organizer receipt, which remains
 Blocker 0 (ledger: BUILT rows grew by 3 this session, RECEIPT rows still 0).
 
+## 2026-10-24 (STEPEDGE session) — `gems/metric.py` implemented a non-official DTI algebra (FIXED)
+
+The module defined T as a dot-side sum of kernel weights (double-counting
+truth pixels covered by several dots) and G as *uncovered* truth mass, so
+`Totals.dti` could exceed 1 — its own unit test asserted DTI = 5.0 on a
+single perfectly-placed dot. Against `vendor/gems57/metric.dti_exact` (the
+instrument every holdout in this repo actually uses; verified this session
+against `dti_bruteforce` to 1.7e-16 and the official worked example
+3.00/1.89/2.00 → 0.6027 ≈ 0.60), the old code differed by up to 0.88 on 30
+random cases (`evidence/r0_forensics_20261024.json`,
+`scripts/analyze_r0_lineage.py`). Fixed once in the shared module to the
+official p.967 equations (T = Σ_g best_g; DTI = T/(0.2T+0.2(S−M)+0.8|G|);
+exact marginal gains rewritten; tests now cross-check vendor to 1e-9 and
+assert DTI ∈ [0,1]). Impact: none on any historical raster file or holdout
+number (no builder/gate read the buggy totals), but historical MASS
+*candidate ordering* used `rank_candidates` under the old algebra; those
+BUILTs remain as-built artifacts, and any future rebuild will differ.
+
+## 2026-10-24 (STEPEDGE session) — bridged `sample_submission.tif` is not the all-zero sample
+
+p.967: "A sample submission that predicts total fault absence is provided."
+The pinned bridge file's positive pixels are *pixel-identical to the fault
+catalogue* (60,988 px; verified this session). It is a catalogue-as-prediction
+example, not the zero sample. Footprint derivation (finite cells = 5,167,373)
+is unaffected, which is all this repo uses it for; but no one should treat
+its values as a format example. Provenance remains owner-mirror only.
+
+## 2026-10-24 (STEPEDGE session) — local-uniqueness verdicts are not stable as the registry grows
+
+STEPEDGE f45Sraw's far set is only 42.7% within 3 px of BREAKLINE f45's far
+dots, yet its whole-file forward overlap vs BREAKLINE f45 is 0.711 (duplicate):
+at equal dose, two greedy keep-subsets tile the same skeleton within 3 px of
+each other. BREAKLINE f45 itself measured "unique, worst 55%" in its own
+session only because no same-dose sibling existed yet. Consequence: a
+"locally unique" verdict is a statement about *that day's* registry, and
+every new sibling build can retroactively duplicate-block earlier primaries.
+Any future selector must re-run the full local uniqueness scan at decision
+time; historical uniqueness claims in older run cards must not be quoted
+without their registry date/composition. Mitigation used here (f60 +
+sibling-far repulsion) works but consumes dose headroom.
+
+## 2026-10-24 (STEPEDGE session) — prior screen code was lost; preserve screens in `scripts/`
+
+GRAVCrest/SCARPPOL-era screens ran from `.cache/diag/` and only their JSON
+survives, so their exact sampling cannot be re-executed. This session
+preserves its screen as `scripts/screen_stepedge_surfaces.py` and validated
+the harness by reproducing the BREAKLINE baseline to the digit
+(sym AUC 0.621604, far SGMC 0.072325) before trusting new numbers. Keep
+that pattern: no unpreserved screen code.
 ## 2026-10-25 — SPRINGALIGN dose amended pre-results
 - **Observation**: 1-px spring-pair alignment lines yield 30,547 eligible far pixels but only 4,058 dots under the 2.8 px spacing floor; the pre-registered 16,944 far dots cannot be placed without zero-vote filler.
 - **Decision**: Single dose amended to 4,000 far dots (10.6%) before any holdout result was seen. No zero-vote filling.
@@ -741,16 +790,54 @@ Blocker 0 (ledger: BUILT rows grew by 3 this session, RECEIPT rows still 0).
 - **Observation**: sigma=2px corridor supports 12,743 spaced far dots < 16,944 (f45).
 - **Decision**: Experiment 2 set to sigma=3px, f33 (12,426 far; 67.0% keep, the BREAKLINE f33 uniqueness geometry) before any holdout result for this variant.
 
-## 2026-10-24 (APRONRIDGE session) — Resolved cross-page primary drift (`SPRINGALIGN` vs `ANASIG`) & signed-band metadata claim
+## 2026-10-24 automated recheck (PR #44)
+
+- **Binding protocol conflict freshly confirmed, not waived:** 17GEMSDOE blob
+  `374c88b1da2b803e2ed160de467fd71ae114010d` is positive across the exact footprint.
+  The existing SPRINGALIGN artifact has forward overlap 1.0; no nonempty
+  in-footprint prediction can meet the current literal overlap rule. No new
+  TIFF/experiment/weekly slot was generated/used. See
+  `evidence/review_20261024_springalign_witness_v2.json`.
+- **Wrong-primary/freshness language:** homepage title said SPRINGALIGN while
+  its lead and submission guides said ANASIG; headline claimed a unique TIFF
+  generated “this session.” The files predate checkout and include future-dated
+  `20261025` names relative to today's 2026-10-24 UTC. Corrected the active
+  display; preserved filenames and historical receipts as evidence.
+- **Single-witness checker risk:** shape-only comparison ignored CRS/transform
+  and silently masked invalid outside-footprint mass. An empty witness could
+  fabricate EDT boundary distances; rank-only duplicates were not checked.
+  Repaired the shared project checker using template helpers, without forking
+  the evaluator. Empty/invalid candidates now fail; unknown is not “unique.”
+  Checker exits 1 for a measured stop, 2 for invalid inputs, 0 for inconclusive
+  rejection-only check. No single-witness result grants submission eligibility.
+- **Evidence robustness:** absent primary audit could cause an unbound `doc`
+  error in the site checker; malformed JSON could crash it. These cases now
+  report a failed site check. Historical witness output cannot be overwritten.
+- **Deployment gate gap:** Pages previously uploaded `docs/` without running
+  the project site check. CI and Pages now require it. This validates local
+  bytes/status, not official data provenance or organizer portal acceptance.
+- **Score provenance:** fetched GEMSDOE32 page source has no `0.2778` string
+  and explicitly says no organizer score exists in its snapshot. This does not
+  disprove a later user result, but cannot authenticate it. No organizer receipt
+  or live leaderboard/quota was accessed. Values remain CLAIM, not scores
+  confirmed by this review. Source hashes in `evidence/review_20261024_source_audit.json`.
+- **Training limitation correction:** the freshly read official reference
+  supports CPU training. A GPU is faster, not an absolute prerequisite. The
+  prompt's named downloader/preparer scripts do not exist in this checkout.
+- **Pages admin permission:** API reports legacy publishing from `main:/`.
+  Attempting `build_type=workflow` returned HTTP 403 `Resource not accessible
+  by integration`; settings remain unchanged. The added workflow gate cannot
+  be claimed to control the separate legacy publisher. Repository-admin
+  integration access is needed to reconcile settings; do not claim it succeeded.
+
+## 2026-10-24 (APRONRIDGE session) — Resolved cross-page primary drift & signed-band metadata claim
 - **Observation**: Entering this session at `d3d8c9c`, `docs/index.html` `<h1>` and `data-primary="true"` pointed to `SPRINGALIGNf33Ctop`, whereas `<p class="lede">` on `docs/index.html` plus `docs/SUBMIT.html`, `docs/executive-summary.html`, `docs/submit.html`, and `SLOT_PLAN.md` still named `ANASIGf45Atop` as primary (enforced by a hardcoded `assert "ANASIG" in page` in `tests/test_site_contract.py`). In addition, prior notes stated *"Band 18 is the only signed band"*, whereas live GDAL + pixel inspection of SHA-verified `training_features.tif` shows 10 of 19 bands take signed values (`Bands 1, 2, 8, 9, 11, 12, 13, 14, 15, 18`).
-- **Decision & Action**: Synchronized `docs/index.html`, `docs/executive-summary.html`, `docs/SUBMIT.html`, `docs/submit.html`, `SLOT_PLAN.md`, `README.md`, and `tests/test_site_contract.py` so every page and test agrees on the single current primary (`h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`), and published a full 19-band GDAL-verified pixel summary table in `README.md`.
+- **Decision & Action**: Synchronized `docs/index.html`, `docs/executive-summary.html`, `docs/SUBMIT.html`, `docs/submit.html`, `SLOT_PLAN.md`, `README.md`, and `tests/test_site_contract.py` so every page and test agrees on the single current primary (`h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`), while preserving `STEPEDGE` and `SPRINGALIGN` records, and published a full 19-band GDAL-verified pixel summary table in `README.md`.
 
 ## 2026-10-24 (APRONRIDGE session) — First lane to beat `RELIEF p10` on `HOLDOUT-DTI` (`0.008354` vs `0.006045`), while `17GEMSDOE` dense witness remains the sole slot blocker
-- **Observation**: All three pre-registered `APRONRIDGE` experiments (`free1d = 0.008354`, `s60f40 = 0.008291`, `s50f50 = 0.008097` on `gems57-pooled-hide-v2`) beat the prior repository holdout record `RELIEF p10` (`0.006045`) and locally-unique best `STRAINBREAK f60s2i` (`0.005487`), pass all 11 leakage canaries (`max symmetric AUC = 0.636490 <= 0.90`), pass local uniqueness across all 43 cross-lane rasters (`free1d` worst forward 3-px overlap `0.460482`), and pass diagnostic spot-checks (`0.6028–0.6456 <= 0.70`) against the top 91k–120k sparse public witnesses (`62GEMSDOE`, `GEMSDOE23`) that tripped `STRAINBREAK f60s2i`. However, direct measurement on `APRONRIDGEfree1d` bytes against Git-blob-verified `17GEMSDOE E-proba-multiscale` (`git_blob_sha = 374c88b1...`, positive across `100%` of the footprint) yields `1.000` forward overlap (`evidence/public_witness_apronridge.json`), and SGMC 1:500k bedrock DTI (`0.080098` vs `R0` `0.096060`) moves opposite to Quaternary fault holdout because `H_apron` suppresses high-range Mesozoic bedrock contacts.
+- **Observation**: All three pre-registered `APRONRIDGE` experiments (`free1d = 0.008354`, `s60f40 = 0.008291`, `s50f50 = 0.008097` on `gems57-pooled-hide-v2`) beat the prior repository holdout record `RELIEF p10` (`0.006045`), locally-unique best `STRAINBREAK f60s2i` (`0.005487`), and `STEPEDGE f60Sraw` (`0.003980`), pass all 11 leakage canaries (`max symmetric AUC = 0.636490 <= 0.90`), pass local uniqueness across all 46 cross-lane rasters (`free1d` worst forward 3-px overlap `0.460482`, vs `STEPEDGE` `0.3023–0.3783`), and pass diagnostic spot-checks (`0.6028–0.6456 <= 0.70`) against the top 91k–120k sparse public witnesses (`62GEMSDOE`, `GEMSDOE23`) that tripped `STRAINBREAK f60s2i`. However, direct measurement on `APRONRIDGEfree1d` bytes against Git-blob-verified `17GEMSDOE E-proba-multiscale` (`git_blob_sha = 374c88b1...`, positive across `100%` of the footprint) yields `1.000` forward overlap (`evidence/public_witness_apronridge.json`), and SGMC 1:500k bedrock DTI (`0.080098` vs `R0` `0.096060` and `STEPEDGE` `0.141464`) moves opposite to Quaternary fault holdout because `H_apron` suppresses high-range Mesozoic bedrock contacts.
 - **Decision**: Enforce the literal public witness rule without waiver: record `submission_eligible: false` and `verdict: "negative"` in `evidence/apronridge_run_card.json` and sidecar audits. Do not spend a weekly competition slot until an explicit operator policy decision adds a dense-probability support ceiling (`<= 150,000` positive pixels).
 
 ## 2026-10-24 (APRONRIDGE session) — Fixed shared `scripts/validate_submission.py` silently ignoring `--candidate` (Protocol Rule 2)
 - **Observation**: `README.md` documented `scripts/validate_submission.py --candidate <path>`, but `scripts/validate_submission.py` never parsed `sys.argv`, ignoring `--candidate` completely and scanning `releases/*.tif` only — so passing a nonexistent or invalid `--candidate` path in `docs/downloads/` still printed `All format checks PASS` with exit code `0`.
 - **Decision & Action**: Fixed once in the shared `scripts/validate_submission.py` (never forked) to parse `--candidate` and positional paths via `argparse`, fail closed (`exit 1`) on missing files, `nodata != None`, or non-zero/NaN outside cells on `*-zeros.tif` files, and validate both `releases/*.tif` and `docs/downloads/*.tif` when invoked with no arguments; added regression test in `tests/test_apronridge.py`.
-
-

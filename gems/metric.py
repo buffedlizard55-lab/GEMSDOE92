@@ -1,35 +1,34 @@
-"""DTI metric algebra for GEMS (DrivenData #306).
+"""DTI metric algebra for GEMS (DrivenData #306) -- official equations.
 
-The algebra is taken from the session brief v2, section 2, which records it as
-derived and checked on 2026-10-22 against
-https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/
-That page is NOT fetched here: its terms of use ban automated access.
+CORRECTED 2026-10-24 (shared-tool fix; see IRREGULARITIES.md). The previous
+revision transcribed a session-brief algebra that does NOT match the official
+metric: it defined T as a sum over dot->truth kernel weights (double-counting
+truth pixels covered by several dots) and G as *uncovered* truth mass, which
+can yield DTI > 1 (its old unit test asserted DTI = 5.0). Measured against the
+official implementation (vendor/gems57/metric.dti_exact, itself verified
+against a literal brute-force transcription) on 30 random small cases, the old
+code differed by up to 0.88 (evidence/r0_forensics_20261024.json). No live
+decision in this repo was gated on this module -- the holdout instrument has
+always been vendor/gems57 -- but the fix is made here, once, so no future lane
+inherits the wrong algebra.
 
-    DTI = T / (0.2*T + 0.2*(S - M) + 0.8*|G|)
+Official definitions (problem description p.967, fetched and transcribed
+2026-10-24; alpha = 0.2, beta = 0.8, triangular kernel R = 300 m = 3 px):
 
-    T   = kernel credit
-        = sum over dots j of p_j * sum over truth pixels g with d(j,g) <= R of k(d)
-    S   = sum over dots j of p_j                       (total emitted mass)
-    M   = sum over dots j of p_j * max over g of k(d)  (mass already credited)
-    |G| = uncovered truth mass                        (ASSUMED, see below)
+    TPw = sum_g max_x p(x) k(d(x,g))          (= T below, a max per truth px)
+    FPw = sum_x p(x) [1 - max_g k(d(x,g))]    (= S - M below)
+    FNw = |G| - TPw
+    DTI = TPw / (TPw + alpha*FPw + beta*FNw)
+        = T / (0.2*T + 0.2*(S - M) + 0.8*|G|)
 
-Kernel: triangular, R = 300 m = 3 px at 100 m pixels, k(d) = max(0, 1 - d/R).
+    T   = sum over truth pixels g of max_j p_j k(d(j,g))   (saturates per g)
+    S   = sum over dots j of p_j                           (total emitted mass)
+    M   = sum over dots j of p_j * max over g of k(d)      (saturates per dot)
+    |G| = total number of truth pixels (Totals.G; NOT the uncovered mass)
 
-ASSUMPTION ABOUT |G|
---------------------
-The brief gives |G| no closed form. We take |G| = sum over truth pixels g of
-(1 - min(1, best coverage of g by any dot)), i.e. truth mass no dot reaches.
-This is flagged in IRREGULARITIES.md item 3 because the choice can reorder
-dots under marginal-gain ranking.
-
-The assumption is not arbitrary: it is the only reading under which the brief's
-own stated shortcut holds. Adding one dot with credit c next to a currently
-uncovered isolated truth pixel changes T by c, S by 1, M by c, |G| by -c, so
-
-    dDTI = c - DTI*(0.2c + 0.2(1-c) + 0.8(-c)) = c - 0.2*DTI
-
-which pays iff c > 0.2*DTI, i.e. c > 0.056 at DTI = 0.28 -- the brief's numbers.
-tests/test_metric.py asserts this identity.
+Marginal bar (vendor/gems57/metric.py derives the same result): adding one
+non-redundant dot whose marginal truth credit dT equals its self-credit k
+raises DTI iff k > alpha * DTI (k > 0.056 at DTI = 0.28).
 
 Everything here is a PROXY evaluator for local decisions. It scores dots against
 whatever truth set it is handed (normally the known-fault catalogue, used only as
@@ -156,9 +155,13 @@ class DotSet:
         return float(self.p.sum())
 
     def totals(self) -> Totals:
-        T = float((self.p * self.dot_credit).sum())
+        # Official TPw: per-truth-pixel max credit (self.best), summed over
+        # truth pixels -- NOT sum_j p_j * sum_g k, which double-counts truth
+        # covered by several dots (pre-2026-10-24 bug; dot_credit is kept
+        # only as a diagnostic). G is the total truth count |G|.
+        T = float(np.minimum(1.0, self.best).sum())
         M = float((self.p * self.dot_max).sum())
-        G = float((1.0 - np.minimum(1.0, self.best)).sum())
+        G = float(len(self.truth))
         return Totals(T=T, S=self.S, M=M, G=G)
 
     # -- exact marginal gains --------------------------------------------
@@ -183,11 +186,12 @@ class DotSet:
         if len(idx) == 0:
             return self._apply(t.T, t.S, t.M, t.G, 0.0, p, 0.0, 0.0)
         k = kernel(d)
-        c_credit = float(p * k.sum())
-        c_max = float(p * k.max())
+        # Marginal TPw: only the improvement over each truth pixel's current
+        # best coverage counts (official max-per-truth rule). |G| is fixed.
         newcov = np.minimum(1.0, p * k)
-        dG = float(-np.sum(np.maximum(0.0, newcov - self.best[idx])))
-        return self._apply(t.T, t.S, t.M, t.G, c_credit, p, c_max, dG)
+        dT = float(np.sum(np.maximum(0.0, newcov - self.best[idx])))
+        c_max = float(p * k.max())
+        return self._apply(t.T, t.S, t.M, t.G, dT, p, c_max, 0.0)
 
     def gain_move(self, j: int, y: int, x: int) -> float:
         """Exact dDTI of moving dot j to (y, x). Mass, count and S preserved."""
@@ -196,23 +200,23 @@ class DotSet:
         new_idx, nd = self._ball(y, x)
         affected = set(np.asarray(self.dot_truth[j]).tolist()) | set(new_idx.tolist())
 
-        dT = -pj * self.dot_credit[j]
         dM = -pj * self.dot_max[j]
         if len(new_idx):
             k = kernel(nd)
-            dT += pj * float(k.sum())
             dM += pj * float(k.max())
             newmap = {int(g): float(kk) for g, kk in zip(new_idx, k)}
         else:
             newmap = {}
 
-        dG = 0.0
+        # Marginal TPw: recompute each affected truth pixel's best coverage
+        # without dot j, then with dot j at its new location. |G| is fixed.
+        dT = 0.0
         for g in affected:
             others = self._cover[g] - {j}
             cov_other = max((min(1.0, self.p[m] * self._kg(m, g)) for m in others), default=0.0)
             cov_new = min(1.0, pj * newmap[g]) if g in newmap else 0.0
-            dG += float(min(1.0, self.best[g]) - min(1.0, max(cov_other, cov_new)))
-        return self._apply(t.T, t.S, t.M, t.G, dT, 0.0, dM, dG)
+            dT += float(min(1.0, max(cov_other, cov_new)) - min(1.0, self.best[g]))
+        return self._apply(t.T, t.S, t.M, t.G, dT, 0.0, dM, 0.0)
 
     def rank_candidates(self, candidates, p: float = 1.0) -> list[tuple[tuple[int, int], float]]:
         """Rank empty candidate pixels by exact marginal gain, best first."""

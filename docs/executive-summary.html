@@ -9,16 +9,16 @@
 </head>
 <body>
 <header class="hero">
-  <p class="kicker">Executive Summary · DrivenData DOE GEMS Prize #306 · EPSG:32611</p>
-  <h1>Executive Summary &amp; Submission Guide</h1>
-  <p class="lede">Downloadable, machine-validated research artifacts with their audited evidence, PhD analysis of the <code>0.2778</code> lineage, and transparent uniqueness gates. Format validation runs automatically with zero human intervention; slot eligibility remains governed by the repository's fail-closed registry rule.</p>
-  <p><a href="index.html">← Back to Main Workbench</a> · <a href="SUBMIT.html">Submission Steps</a> · <a href="HYPOTHESES.html">Candidate Hypotheses</a> · <a href="ANALYSIS_20261024_APRONRIDGE.md">APRONRIDGE PhD Analysis</a></p>
+  <p class="kicker">Executive Summary · DrivenData DOE GEMS Prize #306 · EPSG:32611 · 2026-10-24 UTC</p>
+  <h1>Executive Summary &amp; Submission Guide — current artifact is blocked</h1>
+  <p class="lede">OK TO DOWNLOAD for research. DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT. Format validation runs automatically with zero human intervention; slot eligibility remains governed by the repository's fail-closed registry rule.</p>
+  <p><a href="index.html">← Back to Main Workbench</a> · <a href="SUBMIT.html">Canonical Submission Guide</a> · <a href="HYPOTHESES.html">Candidate Hypotheses</a> · <a href="ANALYSIS_20261024_APRONRIDGE.md">APRONRIDGE PhD Analysis</a></p>
 </header>
 <main>
 <section class="download-card">
-  <h2>Current decision: NOT CLEARED FOR A WEEKLY SLOT — research download ready (10/10 format gates PASS)</h2>
+  <h2>Current primary (2026-10-24): APRONRIDGE free1d — #1 Holdout-DTI &amp; locally unique, NOT CLEARED FOR A WEEKLY SLOT</h2>
   <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH.</strong> The current primary <strong>APRONRIDGE free1d</strong> zeros-outside GeoTIFF (<code>h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif</code>) passed all 10 automated MUST gates on independent disk re-read: single <code>float32</code> band; <code>EPSG:32611</code>; <code>3730 &times; 3292</code>; exact template geotransform; finite values in <code>[0, 1]</code>; zero <code>NaN</code>s inside footprint; <code>0.0</code> outside; zero catalogue pixels; <code>d_cat &gt; 2.0 px</code>.</div>
-  <div class="banner banner-warn"><strong>⛔ DO NOT SUBMIT / NO WEEKLY SLOT CLEARED (<code>verdict: negative</code>, <code>submission_eligible: false</code>).</strong> Although <strong>APRONRIDGE free1d</strong> sets a new all-time repository <strong>HOLDOUT-DTI</strong> high (<code>0.008354 [0.006823, 0.010135]</code> on <code>gems57-pooled-hide-v2</code>, beating prior holdout best <code>RELIEF p10</code> <code>0.006045</code> by <code>+38.2%</code>, <code>STRAINBREAK f60s2i</code> <code>0.005487</code> by <code>+52.2%</code>, and <code>R0</code> <code>0.004006</code> by <code>+108.5%</code>) and passes local uniqueness across all 43 cross-lane rasters (worst 3-px overlap <code>0.4605 &le; 0.70</code>), the Git-blob-verified public dense witness <code>17GEMSDOE E-proba-multiscale</code> is positive across all <code>5,167,373</code> footprint cells, forcing <code>1.000</code> forward 3-px overlap under the literal unweighted rule (<a href="downloads/public_witness_apronridge.json">witness receipt</a>). Until an explicit operator policy update excludes dense continuous probability maps (&gt;150k positive pixels), no weekly slot is cleared.</div>
+  <div class="banner banner-warn"><strong>⛔ DO NOT SUBMIT / NO WEEKLY SLOT CLEARED (<code>verdict: negative</code>, <code>submission_eligible: false</code>).</strong> Although <strong>APRONRIDGE free1d</strong> sets a new all-time repository <strong>HOLDOUT-DTI</strong> high (<code>0.008354 [0.006823, 0.010135]</code> on <code>gems57-pooled-hide-v2</code>, beating prior holdout best <code>RELIEF p10</code> <code>0.006045</code> by <code>+38.2%</code>, <code>STRAINBREAK f60s2i</code> <code>0.005487</code> by <code>+52.2%</code>, <code>R0</code> <code>0.004006</code> by <code>+108.5%</code>, and <code>STEPEDGE f60Sraw</code> <code>0.003980</code> by <code>+109.9%</code>) and passes local uniqueness across all 46 cross-lane rasters (worst 3-px overlap <code>0.4605 &le; 0.70</code>), the Git-blob-verified public dense witness <code>17GEMSDOE E-proba-multiscale</code> is positive across all <code>5,167,373</code> footprint cells, forcing <code>1.000</code> forward 3-px overlap under the literal unweighted rule (<a href="downloads/public_witness_apronridge.json">APRONRIDGE witness receipt</a>). Until an explicit operator policy update excludes dense continuous probability maps (&gt;150k positive pixels), no weekly slot is cleared.</div>
   <p class="filename">h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif</p>
   <p><a class="btn" href="downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif" download>⬇ Download APRONRIDGE free1d GeoTIFF — DO NOT SUBMIT</a>
      <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.zip" download>Download ZIP (one TIFF)</a></p>
@@ -43,10 +43,12 @@
       <tr><td>STRAINBREAK f60s2i (prior unique best)</td><td>0.005487 [0.004550, 0.006386]</td><td>0.10516</td><td>0.6642 (locally unique)</td><td>Below APRONRIDGE; public witness blocked</td></tr>
       <tr><td>ANASIG f45Atop</td><td>0.004967 [0.004102, 0.005931]</td><td>0.08056</td><td>0.5877 (locally unique)</td><td>Below APRONRIDGE; public witness blocked</td></tr>
       <tr><td>SPRINGALIGN f33Ctop</td><td>0.004865 [0.004038, 0.005782]</td><td>0.08017</td><td>0.6700 (locally unique)</td><td>Below APRONRIDGE; public witness blocked</td></tr>
-      <tr><td>BREAKLINE f45Ltop</td><td>0.004861 [0.003930, 0.005887]</td><td>0.12611</td><td>0.5500 (locally unique)</td><td>Below APRONRIDGE; public witness blocked</td></tr>
+      <tr><td>BREAKLINE f45Ltop</td><td>0.004861 [0.003930, 0.005887]</td><td>0.12611</td><td>0.5500 (locally unique)</td><td><strong>BREAKLINE: DUPLICATE — DO NOT SUBMIT</strong></td></tr>
+      <tr><td>STEPEDGE f60Sraw</td><td>0.003980 [0.003295, 0.004702]</td><td><strong>0.14146</strong></td><td>0.4609 (locally unique)</td><td>Best SGMC; below R0/APRONRIDGE on holdout</td></tr>
       <tr><td>Parent R0 (<code>h33-h33-2-b2</code>)</td><td>0.004006 [0.003408, 0.004651]</td><td>0.09606</td><td>—</td><td>CLAIM 0.2778 reference</td></tr>
     </tbody>
   </table>
+  <p>Prior session research downloads preserved: <a href="downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif">STEPEDGE f60Sraw GeoTIFF</a> (<a href="downloads/stepedge_run_card.json">run card</a> · <a href="ANALYSIS_20261024_STEPEDGE.md">analysis</a>) and <a href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif">SPRINGALIGN f33Ctop GeoTIFF</a> (<a href="downloads/review_20261024_springalign_witness_v2.json">SPRINGALIGN witness receipt</a> · <a href="downloads/review_20261024_run_card.json">review run card</a>).</p>
 </section>
 
 <section>
@@ -56,13 +58,13 @@
 </section>
 
 <section>
-  <h2>Submission procedure (only after explicit operator policy clearance)</h2>
-  <p><strong>Do not upload the current downloadable files while <code>submission_eligible: false</code>.</strong> Once an operator updates the public uniqueness policy to exclude dense full-footprint probability rasters (&gt;150k positive pixels) and flips <code>submission_eligible: true</code>:</p>
+  <h2>Procedure only for a future eligible artifact</h2>
+  <p><strong>Do not perform these steps with the current artifact while <code>submission_eligible: false</code>.</strong> Before uploading any future file, require that artifact's audit to say <code>submission_eligible: true</code> and its run card to say <code>verdict: promote</code>:</p>
   <ol>
-    <li>Download the exact zeros-outside <code>.tif</code> (or single-TIFF <code>.zip</code>) specified by the cleared run card. Never re-save in GIS software.</li>
+    <li>Download the exact cleared zeros-outside <code>.tif</code> (or single-TIFF <code>.zip</code>) specified by the cleared run card and verify its SHA-256 hash. Never re-save in GIS software.</li>
     <li>Sign into <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData DOE GEMS #306</a> and open the new-submission form.</li>
-    <li>Upload the cleared zeros-outside file and paste the &le;140-character note from the run card into “Note (optional)”.</li>
-    <li>Record the organizer submission ID, timestamp, and exact receipt score in <code>ledger/submissions.csv</code> as <code>ORGANIZER-CONFIRMED</code>.</li>
+    <li>Choose the cleared file in “File to submit” and paste the &le;140-character note from the run card into “Note (optional)”. Keep the unique submission name in the local ledger/filename; the portal form does not expose a separate name field.</li>
+    <li>Record the organizer submission ID, UTC timestamp, and exact receipt score in <code>ledger/submissions.csv</code> as <code>ORGANIZER-CONFIRMED</code>.</li>
   </ol>
 </section>
 

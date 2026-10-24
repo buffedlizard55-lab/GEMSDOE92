@@ -4,6 +4,20 @@
 
 ---
 
+## Standing Session Prompt (read first, every session)
+
+1. **MUST generate a UNIQUE TIF submission candidate** — never copy a previous submission except for learning. It must be **obvious at the top of the site whether the file is OK to download and OK to submit**, decided by automated project gates without human inspection — not by a human inspector.
+2. **Lane discipline:** stay in one method lane per session. If rank-correlation vs any registry raster exceeds **0.90**, or more than **70%** of dots fall within 3 px of one registry raster's dots — checked on the pre-placement **surface AND final dots** — log duplicate and stop.
+3. **Reuse shared tools** (cached feature stack, `vendor/gems57/evaluate_holdout.py`, submission writer/gates). Holdout = hide-and-recover whole fault segments with buffer; catalogue features only from visible faults; visible faults masked pixel-exactly; pooled DTI (α 0.2, β 0.8, 300 m triangular kernel). Fix shared-tool bugs once, report them; never fork privately.
+4. **Label every number** HOLDOUT-DTI (evaluator version, withheld positives, 95% CI) or ORGANIZER-CONFIRMED (receipt only). A projection is never a score. Owner-reported scores (e.g. 0.2778) are CLAIM; leaderboard snapshots are labelled with fetch date.
+5. **Leakage canary:** every feature alone on the holdout first; symmetric AUC > **0.90** = leakage until proven otherwise.
+6. **Hypotheses before building:** generate 3–5 untried geological hypotheses (layers, physical signature, why catalogue-missing, difference from this repo), rank by expected DTI gain vs cost, screen, and validate the top candidate on the spatially-blocked holdout **before** any weekly slot. External data must be free/official and proven obtainable first.
+7. **Run card, always:** one JSON card (hypothesis; mechanism; named non-fault mimic; HOLDOUT-DTI + CI; correlation/overlap vs registry; raster SHA-256; validator output; submission name + ≤140-char note; verdict promote/negative). **Negative results are deliverables.**
+8. **Budget:** ≤3 experiments or 2 hours per session. Never self-promote to a real slot; promotion is a separate selector step within the portal's weekly cap. The portal error `Predicted values must be in range [0, 1]` must be impossible by construction (all-finite zeros-outside encoding, disk-reread gates).
+9. **Core Values:** *Maximize P(Win)* — weigh tradeoffs and risk, choose the path maximizing win probability. *Own the Outcome* — own results end-to-end; act without waiting; treat success and failure as signals. Work line by line from official verified sources with links; flag irregularities; **no hallucinations**.
+
+---
+
 ## Current Primary (2026-10-24, `APRONRIDGE free1d`): #1 All-Time Holdout-DTI & Standalone Physics GeoTIFF
 
 **✅ FORMAT-VALID (10/10 automated gates PASS) — OK TO DOWNLOAD FOR RESEARCH.**  
@@ -18,9 +32,9 @@
 | **SHA-256 (`-zeros.tif`)** | `1a29a5d81e8561954f04a563b4975cb84d00898b8d7634700a9d409a10e06cbc` |
 | **SHA-256 (`.zip` / NaN-cache)** | `6f91c4a3b42083e5d30aaf071dbdc2a0dc0ae68363f8822afc701247be53871a` / `d5760830106d338184569e18ccbc05f7ee6d21b6067c32989e83440d4847a3f3` |
 | **Grid & Automated Validation** | `EPSG:32611` · `3730 × 3292` @ `100 m` · single-band `float32` · `nodata=None` · finite `[0, 1]` (`0` NaNs in footprint, `0.0` outside) · `37,654` unit dots · `0` catalogue mass · `min d_cat > 2.0 px` (`10/10` gates PASS) |
-| **`HOLDOUT-DTI` (`gems57-pooled-hide-v2`)** | **`0.008354 [0.006823, 0.010135]`** (`22,663` withheld positives, `8` folds) — **#1 all-time in repo**: `+108.5%` vs `R0` (`0.004006`, paired Δ `+0.004347 [+0.003019, +0.005710]`), `+52.2%` vs `STRAINBREAK f60s2i` (`0.005487`), `+38.2%` vs `RELIEF p10` (`0.006045`) |
+| **`HOLDOUT-DTI` (`gems57-pooled-hide-v2`)** | **`0.008354 [0.006823, 0.010135]`** (`22,663` withheld positives, `8` folds) — **#1 all-time in repo**: `+108.5%` vs `R0` (`0.004006`, paired Δ `+0.004347 [+0.003019, +0.005710]`), `+109.9%` vs `STEPEDGE f60Sraw` (`0.003980`), `+52.2%` vs `STRAINBREAK f60s2i` (`0.005487`), `+38.2%` vs `RELIEF p10` (`0.006045`) |
 | **Leakage Canaries & `SGMC PROXY`** | `11/11 PASS` (`max symmetric AUC = 0.636490 <= 0.90`); USGS SGMC 1:500k off-catalogue `PROXY = 0.080098` (vs `R0` `0.096060`) |
-| **Uniqueness (`REGISTRY-MEASUREMENT`)** | Surface vs `29` local rasters: `\|ρ\| <= 0.1222`, top-37k overlap `0.5527 <= 0.70`; final dots vs `43` cross-lane local rasters: **`worst_forward_overlap = 0.4605 <= 0.70`**, `\|φ\| <= 0.0561`; top public sparse witnesses (`62GEMSDOE`/`GEMSDOE23`): `0.6028–0.6456 <= 0.70`; **binding dense public witness `17GEMSDOE E-proba-multiscale` (`100%` footprint positive): `1.000` (`stop_required: true`)** |
+| **Uniqueness (`REGISTRY-MEASUREMENT`)** | Surface vs `29` local rasters: `\|ρ\| <= 0.1222`, top-37k overlap `0.5527 <= 0.70`; final dots vs all `46` cross-lane local rasters (including `STEPEDGE` `0.3023–0.3783`): **`worst_forward_overlap = 0.4605 <= 0.70`**, `\|φ\| <= 0.0561`; top public sparse witnesses (`62GEMSDOE`/`GEMSDOE23`): `0.6028–0.6456 <= 0.70`; **binding dense public witness `17GEMSDOE E-proba-multiscale` (`100%` footprint positive): `1.000` (`stop_required: true`)** |
 | **Audit, Analysis & Site Guides** | [Format Audit JSON](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-audit.json) · [Run Card JSON](evidence/apronridge_run_card.json) · [Witness Check JSON](evidence/public_witness_apronridge.json) · [PhD Analysis](docs/ANALYSIS_20261024_APRONRIDGE.md) · [Pre-Registered Hypotheses](docs/HYPOTHESES_20261024_APRONRIDGE.md) · [Executive Summary](docs/executive-summary.html) · [Submission Guide](docs/SUBMIT.html) |
 
 Pre-registered hybrid ablation siblings built in the same 3-experiment budget (research-only; never submit multiple siblings): [`APRONRIDGE s60f40`](docs/downloads/h33-h33-2-b2-APRONRIDGEs60f40-20261024-6e7e0174-zeros.tif) (`HOLDOUT-DTI = 0.008291 [0.007073, 0.009643]`, worst local overlap `0.5916`) and [`APRONRIDGE s50f50`](docs/downloads/h33-h33-2-b2-APRONRIDGEs50f50-20261024-2f0431ea-zeros.tif) (`HOLDOUT-DTI = 0.008097 [0.006851, 0.009478]`, worst local overlap `0.5188`).
@@ -29,7 +43,7 @@ Pre-registered hybrid ablation siblings built in the same 3-experiment budget (r
 
 ## Audited Cross-Lane Benchmark Table (`gems57-pooled-hide-v2`, `22,663` Withheld Positives)
 
-> **Evidence Rule:** Local `HOLDOUT-DTI` and `SGMC PROXY` values rank methods on withheld catalogue segments and 1:500k bedrock faults; they are **never** numerically comparable to DrivenData leaderboard scores (`CLAIM 0.2778`, `LEADERBOARD-SNAPSHOT 0.3195 / 0.4413`). `ledger/submissions.csv` currently holds `48 BUILT / 0 RECEIPT` rows.
+> **Evidence Rule:** Local `HOLDOUT-DTI` and `SGMC PROXY` values rank methods on withheld catalogue segments and 1:500k bedrock faults; they are **never** numerically comparable to DrivenData leaderboard scores (`CLAIM 0.2778`, `LEADERBOARD-SNAPSHOT 0.3195 / 0.4413`). `ledger/submissions.csv` currently holds `51 BUILT / 0 RECEIPT` rows.
 
 | Lane / Variant | Dots (`H19-5` / Off-Skel) | `HOLDOUT-DTI` [95% CI] | Paired Δ vs `R0` | `SGMC PROXY` | Canary Max AUC | Worst Local 3-px Overlap | Local Unique? | Slot Status |
 |---|---:|---|---:|---:|---:|---:|---|---|
@@ -42,6 +56,7 @@ Pre-registered hybrid ablation siblings built in the same 3-experiment budget (r
 | `ANASIG f45Atop` | `20,710 / 16,944` | `0.004967 [0.004102, 0.005931]` | `+0.000961` | `0.08056` | `0.5511` | `0.5877` | Yes | Below `APRONRIDGE`; witness stop |
 | `SPRINGALIGN f33Ctop` | `25,228 / 12,426` | `0.004865 [0.004038, 0.005782]` | `+0.000859` | `0.08017` | `0.5531` | `0.6700` | Yes | Below `APRONRIDGE`; witness stop |
 | `BREAKLINE f45Ltop` | `20,710 / 16,944` | `0.004861 [0.003930, 0.005887]` | `+0.000854` | `0.12611` | `0.6216` | `0.5500` | Yes | Below `APRONRIDGE`; witness stop |
+| `STEPEDGE f60Sraw` | `15,062 / 22,592` | `0.003980 [0.003295, 0.004702]` | `-0.000026` | **`0.14146`** | `0.6216` | `0.4609` | Yes | Below `R0`/`APRONRIDGE`; witness stop |
 | `visible-collar` *(diagnostic)* | `0 / 37,654` | `0.046866` *(catalogue-collar artifact)* | `+0.042860` | `0.02119` | `0.7456` | `1.0000` (public) | Yes (local) | Stopped (catalogue-collar + public dup) |
 | `R0` (`h33-h33-2-b2` parent) | `37,654 / 0` | `0.004006 [0.003408, 0.004651]` | `0.000000` | `0.09606` | — | — | Reference | `CLAIM 0.2778` baseline |
 
@@ -49,7 +64,7 @@ Pre-registered hybrid ablation siblings built in the same 3-experiment budget (r
 
 ## PhD Analysis: Why `GEMSDOE32` Scored `0.2778` (`CLAIM`) & How `APRONRIDGE` Advances Discovery
 
-Full mathematical & structural derivation: [`docs/ANALYSIS_20261024_APRONRIDGE.md`](docs/ANALYSIS_20261024_APRONRIDGE.md).
+Full mathematical & structural derivation: [`docs/ANALYSIS_20261024_APRONRIDGE.md`](docs/ANALYSIS_20261024_APRONRIDGE.md) (and companion R0 geometry forensics: [`docs/ANALYSIS_20261024_STEPEDGE.md`](docs/ANALYSIS_20261024_STEPEDGE.md)).
 
 1. **Why `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros` (`R0`) Reached `0.2778` (`CLAIM`)**:
    - Under the competition's asymmetric Distance-weighted Tversky Index ($\alpha = 0.2, \beta = 0.8$, `300 m` / `3 px` linear kernel, verified in [`drivendataorg/gems-prize-reference-solution`](https://github.com/drivendataorg/gems-prize-reference-solution)), false positives carry **4× the denominator penalty** of false negatives (`0.8` vs `0.2`), and overlapping dots closer than `2.8 px` saturate $\max_y K(\|x-y\|) P(y)$ without adding true-positive credit.
@@ -88,7 +103,21 @@ Verified directly from GDAL band headers and footprint pixel distributions (`reg
 
 ---
 
-## Prior Session Candidate — `SPRINGALIGN f33Ctop` (2026-10-25, Superseded as Primary by `APRONRIDGE free1d`)
+## STEPEDGE Parallel Candidate (2026-10-24): Locally-Unique DEM Step Persistence — DO NOT SUBMIT
+
+| Deliverable | Link |
+|---|---|
+| **GeoTIFF (research)** | [Download STEPEDGE zeros-outside GeoTIFF](docs/downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif) · [Download ZIP](docs/downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.zip) |
+| Submission name / Note | `GEMSDOE92-STEPEDGE-f60Sraw-20261024` / `h33-h33-2-b2; STEPEDGE f60Sraw 22592 far dots on aperture-persistent DEM steps >3px off H19-5` |
+| SHA-256 / Audit | `c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4` · [Gate receipt](docs/downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-audit.json) · [run card](evidence/stepedge_run_card.json) · [analysis](docs/ANALYSIS_20261024_STEPEDGE.md) |
+
+**HOLDOUT-DTI** (`gems57-pooled-hide-v2`, `22,663` withheld): `0.003980 [0.003295, 0.004702]` (verdict **negative**); SGMC PROXY `0.141464` (highest bedrock SGMC in repo, showing ungated aperture-persistent DEM steps favor rugged range-interior bedrock relief rather than piedmont Quaternary faults).
+
+---
+
+## Historical SPRINGALIGN & Automated Witness Review Record (2026-10-24 UTC)
+
+- [Fresh exact-file SPRINGALIGN witness receipt](evidence/review_20261024_springalign_witness_v2.json) · [Automated review & source audit](docs/REVIEW_AUTOMATED_20261024.md) · [Review run card](evidence/review_20261024_run_card.json)
 
 **✅ OK TO DOWNLOAD for research — ⛔ NOT CLEARED FOR A WEEKLY SLOT (verdict negative).**
 
@@ -113,6 +142,7 @@ value remains a CLAIM (no receipt); no local score beats it by assertion.
 
 ---
 ## New primary (ANASIG session, 2026-10-24): locally unique, still not cleared
+## Prior primary (ANASIG session, 2026-10-24): locally unique, still not cleared
 
 **✅ FORMAT-VALID — OK TO DOWNLOAD for research. ⛔ DO NOT SUBMIT / NOT CLEARED FOR A WEEKLY SLOT.**
 
@@ -145,7 +175,7 @@ value remains a CLAIM (no receipt); no local score beats it by assertion.
 
 ## Executive Summary — Format-Validated Candidate, One-Click Download
 
-**✅ FORMAT-VALID — OK TO DOWNLOAD.** The generated submission raster is an all-finite, single-band float32 GeoTIFF, EPSG:32611, shape 3730 × 3292, matching the competition template geotransform. It contains zero NaNs inside the footprint, zeros outside, values strictly in `[0, 1]`, and passes all 10 local MUST gates on independent re-read from disk. This completely prevents the DrivenData portal error: `Predicted values must be in range [0, 1]`.
+**✅ FORMAT-VALID — OK TO DOWNLOAD.** The generated submission raster is an all-finite, single-band float32 GeoTIFF, EPSG:32611, shape 3730 × 3292, matching the competition template geotransform. It contains zero NaNs inside the footprint, zeros outside, values strictly in `[0, 1]`, and passes all 10 local MUST gates on independent re-read from disk. These local checks guard against, but do not guarantee portal acceptance or prevent all causes of, the error: `Predicted values must be in range [0, 1]`.
 
 **⛔ NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE.** An expanded scan found 100% 3-px forward overlap with public registry rasters (131 of 1,279 exceed 70%). Stop; do not submit. This file remains downloadable as a negative research deliverable. The scan covers current default branches in 102 public owner repositories, not every historic/site-hosted file.
 
