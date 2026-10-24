@@ -246,3 +246,107 @@ rather than mid-facet bedrock cliffs.
 - **Falsifier**: A live receipt gain `>= +0.01` over both `R0` and `scarp2p0px`
   falsifies surface-scarp dominance and proves hidden test faults are primarily
   concealed basement structures best centered by potential-field gradients alone.
+
+---
+
+# Mechanism Cards — CONCENTRATION axis (2026-10-24)
+
+Parent: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit-mass dots, **CLAIM** 0.2778 (no
+receipt). Axis: move 10% of the dots (3,765) between **1 km blocks** (10 px at
+the 100 m grid) selected by a km-scale prior, holding count and mass exactly.
+New dots are restricted to the H19-5 ridge mask, data-valid pixels, and `d_cat >
+3.0 px`; inherited dots keep R0's own `d_cat > 2.0 px` rule. All three variants
+pass all format gates and were re-read from disk (`evidence/concentration_variants.json`).
+
+Shared arithmetic, stated once:
+
+* `DTI = T / (0.2T + 0.2(S-M) + 0.8|G|)` with `S = 37,654` fixed, so the only
+  free variables are `T` (kernel credit on truth) and `M` (mass overlapping truth).
+* A dot already tiles the H19-5 skeleton at ~3.0 px (median nn 3.0, min 2.828).
+  A 1-px reallocation therefore **removes** a dot that was carrying ~1.0 credit at
+  its own pixel and **adds** a neighbour worth ~0.3-0.6 credit, while the `+1` of
+  denominator mass stays. The measured mechanical cost, with a flat prior and no
+  spatial information at all (`model_flat_prior`), is **-0.013 / -0.016 / -0.021**
+  for the three variants. **A CONCENTRATION move can only win if the prior's
+  spatial information is worth more than that cost.** This is the single most
+  important number in this session and it is recorded per variant in the evidence
+  file.
+
+## `h33-h33-2-b2-CONCENTRATIONcatd10-20261024-c313194a` (`catd10`)
+- **Prior**: 1 km Gaussian of the pinned known-fault catalogue, renormalised to
+  mean 1.0 on the footprint. Block prior of the dots that leave: 0.00; of the
+  blocks that receive them: mean 1.41. Median catalogue distance of a moved dot
+  goes from 70.6 px (7.1 km) to 5.0 px (0.5 km) — the 10% is collected into the
+  collar around mapped structure.
+- **Hypothesis**: newly mapped faults are mostly new geometry of existing
+  systems, so new-fault pixels per km² track the density of already-mapped
+  structure. R0 spreads dots uniformly over its ridge mask (dot density per block
+  is uncorrelated with the catalogue prior: r = -0.33), so reallocating 10% toward
+  dense blocks should raise `T` where truth is most numerous.
+- **Mechanism**: at fixed `S`, moving a dot from a block with near-zero known
+  structure to one with several times the regional density raises its expected
+  `max k` and raises `M`, shrinking the wasted-mass term `S-M`. Placement is by
+  exact expected-DTI marginal gain under the same prior.
+- **Non-fault process that could mimic it**: **mapping effort**. The catalogue is
+  denser where exposure, access and basin-range normal faults made compilation
+  easy, not necessarily where 2020s geothermal-focused mapping found new faults.
+  If new truth instead sits in poorly mapped uplands, the prior is
+  anti-correlated and this file loses.
+- **Predicted sign and size**: **`MODEL:+0.013`**, range `[-0.013,+0.040]` (rule:
+  midpoint of the own-prior projection `+0.040` and the other-prior projection
+  `-0.013`; the flat-prior mechanics-only cost is `-0.013`). Report-only
+  `PROXY`: SGMC off-catalogue control `-0.0037`; catalogue hide-and-recover
+  `+0.000005` (flat, and uninformative — see `evidence/concentration_proxy_audit.json`).
+- **Falsifier**: a live receipt delta `<= -0.01` vs R0 says the catalogue is a
+  mapping-effort artefact at 1 km. `|delta| < 0.01` is no evidence (public chunks
+  only), and then `catdS10` decides the sign.
+
+## `h33-h33-2-b2-CONCENTRATIONphys10-20261024-b93a4cf8` (`phys10`)
+- **Prior**: 1 km Gaussian of `0.40·pct(band 3 tmi_hg) + 0.35·pct(band 5
+  iso_grav_anom_slope) + 0.25·pct(band 19 det_elev_slope)` (the repository's
+  pre-existing weight mix, not tuned on any score). Block prior range across the
+  dots is 0.69 → 1.42, i.e. a much flatter prior than `catd`: the median moved
+  dot barely shifts (22.2 → 20.0 px from the catalogue). This variant is
+  effectively "does any 1-km physics prior beat the mechanical cost of the swap?"
+- **Hypothesis**: more intensely broken crust per km² hosts more fault pixels;
+  magnetic/gravity gradient and detrended-slope energy are a label-free proxy for
+  that, with no mapping-effort bias.
+- **Mechanism**: same fixed-`S` budget trade as `catd10`; only the donor and
+  receiver block sets differ (destination pixels overlap `catd10`'s by Jaccard
+  0.087, so the two priors are near-orthogonal).
+- **Non-fault mimic**: volcanic flow margins, caldera ring fractures, pluton
+  contacts, lithologic scarps — and note the H19-5 mask was itself built from
+  these bands, so the implied redistribution is the mildest of the three.
+- **Predicted sign and size**: **`MODEL:-0.008`**, range `[-0.014,-0.002]`
+  (own-prior `-0.002`, other-prior `-0.014`, mechanics-only `-0.016`). The prior's
+  contrast at 1 km (~2x) is too small to pay the swap cost in the model.
+  `PROXY`: SGMC `-0.0084`; hide-and-recover `0.003592` vs R0 `0.004006`.
+- **Falsifier**: a live gain `>= +0.01` would mean km-scale physics
+  favourability is worth more than the model says and would justify a *combined*
+  axis (see `SLOT_PLAN.md`); a loss `<= -0.01` alongside `catd10 >= +0.01` says
+  the catalogue prior (not "concentration" in general) is what works.
+
+## `h33-h33-2-b2-CONCENTRATIONcatdS10-20261024-6b87f2d7` (`catdS10`)
+- **Prior**: identical to `catd10`, run in the **opposite direction** — 10% of the
+  dots leave the highest-prior blocks and land in the lowest. Built because the
+  2026-10-23 session's `IRREGULARITIES.md` entry requires both directions before a
+  CONCENTRATION result can be read as a sign. Median catalogue distance of a moved
+  dot goes from 4.1 px to 55.0 px.
+- **Hypothesis**: mirror image of `catd10`. If the known-structure-density prior
+  is informative, this variant must LOSE, and the pair (`catd10` up, `catdS10`
+  down) is a two-sided test of that one statement instead of a one-sided bet.
+- **Mechanism**: same bookkeeping with donor and receiver block sets swapped;
+  count, mass, mask, catalogue clearance and placement rule identical.
+- **Non-fault mimic**: if new-fault truth really is concentrated **away** from
+  mapped structure (poorly exposed basins, young volcanic terrain, unmapped
+  uplands), this file wins and `catd10` loses on the same evidence.
+- **Predicted sign and size**: **`MODEL:-0.070`**, range `[-0.118,-0.022]`
+  (own-prior `-0.118`, other-prior `-0.022`, mechanics-only `-0.021`). The model's
+  catd-anchored truth total is `|G| ≈ 198,000 px`, which is what makes the
+  asymmetry between the two directions large; treat the magnitude as a MODEL
+  artefact and the **sign** as the claim. `PROXY`: SGMC `-0.0069`;
+  hide-and-recover `0.002106` vs R0 `0.004006` (the mirror does depopulate the
+  catalogue collar, as designed, and the instrument confirms it).
+- **Falsifier**: `catdS10 >= catd10 + 0.01` falsifies the
+  known-structure-density prior outright. All three arms within 0.01 of R0 means
+  the axis is inert at 10% and should not be spent on again at this dose.

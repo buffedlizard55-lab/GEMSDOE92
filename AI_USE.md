@@ -146,3 +146,48 @@ slots, receipts) are left blank.
 ### What the human decides and supplies
 - Autonomous `AXIS = SNAP` selection was delegated by the human's session prompt ("Do not prompt me over choosing an Axis for the session, pick your own session").
 - The human supplies `TOP_PUBLIC` (with observation date), confirms rolling-week and remaining competition slots, chooses whether/which single encoding file to upload from their registered DrivenData account, and records official submission-page `RECEIPT` scores and dates in `ledger/submissions.csv`.
+
+---
+
+## Session 6 — CONCENTRATION, prior-driven km-scale reallocation (2026-10-24)
+
+### What AI wrote
+- `gems.variants.concentration_reallocate` plus helpers `spacing_blocked`,
+  `block_mean`, `block_counts`, `block_density_cv_pair`, `_greedy_place_spaced`,
+  and a `direction` switch (`concentrate` / `spread`) so the mirror image required
+  by the previous session's IRREGULARITIES entry can be built from one code path.
+  The 2026-10-23 `concentration` builder is kept untouched for its unit tests but
+  is not used for a submission: it places moved dots at block centres and ignores
+  the catalogue exclusion, the ridge mask and the spacing floor.
+- `scripts/build_concentration_variants.py` — manifest SHA-256/byte verification,
+  byte-exact R0 lineage rebuild, the two km-scale priors, the three variants, both
+  encodings, disk re-read gates, a MODEL projection (anchored on the parent's
+  CLAIM, with a flat-prior mechanics-only control and a prior-sharpening sweep),
+  ledger rows and `evidence/concentration_variants.json`.
+- `scripts/report_concentration_proxies.py` — report-only hide-and-recover PROXY,
+  leakage canaries and SGMC control (`evidence/concentration_proxy_audit.json`).
+- `tests/test_concentration.py` — 10 tests (fraction moved, donor/receiver block
+  selection, mass, allowed-mask, spacing, determinism, refusal cases).
+- Updates to `README.md` (CURRENT STATE), `SLOT_PLAN.md`, `docs/SUBMIT.md`,
+  `docs/mechanism_cards.md`, `IRREGULARITIES.md`, and this file.
+
+### What the human decides
+- Axis choice was delegated by the session brief ("Do not prompt me over choosing
+  an Axis"); AI chose CONCENTRATION over RELIEF (no detrended-elevation terciles
+  are pinned as such) and SPACING (lowest priority per the brief).
+- Predictions follow a rule fixed before the build: point = midpoint of the
+  own-prior and other-prior MODEL projections, range = those two projections.
+  No proxy or live score feeds a prediction or a build.
+- The human supplies `TOP_PUBLIC` (with date), confirms slot counts, decides
+  whether the sub-floor spacing caveat is acceptable, uploads at most one file per
+  slot from their own account, and records receipt scores and dates.
+
+### What the AI found and flagged rather than papered over
+- A count-preserving CONCENTRATION swap **cannot** keep the parent's 2.828 px
+  spacing floor: only 90 legal pixels exist at that floor. Measured mechanical cost
+  of the swap is `-0.013` to `-0.021`; every prior must beat that to win.
+- Both `catd` variants need the catalogue-density prior to carry more than 0.013 of
+  DTI information; `phys10` is predicted to lose.
+- The hide-and-recover PROXY is flat for `catd10` (0.004011 vs R0 0.004006) and the
+  instrument is structurally unable to see this axis — reported as such rather than
+  dressed up as support.

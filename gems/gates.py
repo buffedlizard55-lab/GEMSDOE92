@@ -148,7 +148,7 @@ def _g_catalogue(arr, footprint, catalogue_path, prune_radius):
         GateResult("catalogue_zero_mass", zero_ok, f"dots_on_catalogue={int(hit.sum())}"),
         GateResult("distance_from_catalogue", n_near == 0 or expected_ok,
                    f"radius={radius}px dots_within={n_near}"
-                   + (" (AXIS=PRUNE: deviation declared)" if expected_ok else "")),
+                   + (" (declared clearance override: radius < 3 px, inherited R0 dots only)" if expected_ok else "")),
     ]
 
 

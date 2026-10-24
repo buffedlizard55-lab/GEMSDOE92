@@ -1,0 +1,823 @@
+{
+ "schema": "gemsdoe92.concentration-variants.v1",
+ "session_date_utc": "20261024",
+ "axis": "CONCENTRATION",
+ "session_parent": "h33-h33-2-b2",
+ "parent_claim": {
+  "score": 0.2778,
+  "evidence_label": "CLAIM",
+  "receipt": false
+ },
+ "exact_parent_rebuild": {
+  "n_dots": 37654,
+  "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+  "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+  "matches_recorded_hashes": true
+ },
+ "prior_definitions": {
+  "phys": "1 km Gaussian of 0.40 pct(band 3 tmi_hg) + 0.35 pct(band 5 iso_grav_anom_slope) + 0.25 pct(band 19 det_elev_slope), renormalised to mean 1.0 on the footprint",
+  "catd": "1 km Gaussian of the pinned known-fault catalogue (labels.tif == existing_faults.tif), renormalised to mean 1.0 on the footprint; catalogue pixels themselves are masked from scoring",
+  "normalisation": "mean 1.0 over the scored footprint, so a block prior of 2 means twice",
+  "block_size": "10 px = 1 km",
+  "placement_rule": "exact expected-DTI marginal gain under the same prior, inside the highest-prior blocks, restricted to ridge-mask / data-valid / off-catalogue / >3 px pixels, min_nn >= 2.828427 px",
+  "removal_rule": "dots in the lowest-prior blocks leave first; within those blocks the dots with the most neighbours inside the R = 3 px kernel leave first (most redundant credit)"
+ },
+ "allowed_new_dot_pixels": 96940,
+ "model_truth_support": {
+  "definition": "H19-5 ridge network dilated by the 3 px DTI kernel",
+  "support_px": 946299,
+  "why": "assuming truth was spread over the full 5.17M-px footprint made the parent's claimed 0.2778 unreachable at every |G| (model maximum 0.057); truth must sit on or near the network the dots are built on"
+ },
+ "spacing_feasibility": {
+  "h19_support_is_one_pixel_skeleton": true,
+  "free_pixels_at_floor": {
+   "1.0": 61472,
+   "2.0": 8077,
+   "2.828427": 90
+  },
+  "moved_dots": {
+   "catd10": 3765,
+   "phys10": 3765,
+   "catdS10": 3765
+  },
+  "conclusion": "A count-preserving CONCENTRATION move cannot keep the parent's 2.828 px spacing floor: at that floor only 82 legal destination pixels exist, against 3,765 dots to place. The floor was lowered to 1.0 px (no duplicate pixels); the exact marginal-DTI test with the prior decides whether a tight neighbour pays for its mass."
+ },
+ "input_manifest": {
+  "sample_submission": {
+   "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+   "bytes": 1599597
+  },
+  "existing_faults": {
+   "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+   "bytes": 425830
+  },
+  "training_features": {
+   "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+   "bytes": 418912844
+  },
+  "parent_r0_zeros": {
+   "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+   "bytes": 219065
+  },
+  "parent_r0_nan": {
+   "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+   "bytes": 355443
+  },
+  "anc_h19_5": {
+   "sha256": "ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d",
+   "bytes": 1712322
+  },
+  "anc_d1_5": {
+   "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+   "bytes": 1632732
+  },
+  "anc_d2_8": {
+   "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+   "bytes": 1603424
+  },
+  "anc_solo_d2_8": {
+   "sha256": "2fc94a38d77f74d4f4ed1a97a83e7bb71a1ceea090515ec641e6681cc47c44c8",
+   "bytes": 830036
+  },
+  "gdr_wellspring_in_footprint": {
+   "sha256": "122718e65bdf55aab0ee12ad20d80062f0deb1de957225a61ad880dd5dc196ea",
+   "bytes": 2146771
+  },
+  "ext_geodawn_rad_u8": {
+   "sha256": "c22420f75999030d7cc65c9e31e50d232ea6158423bca051613a18a8b20ba682",
+   "bytes": 26612970
+  },
+  "sgmc_faults_control": {
+   "sha256": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0",
+   "bytes": 198602
+  }
+ },
+ "git_sha": "8c3dd43be7b5c05b6bbdeea1218a3add29d6c5ee",
+ "sgmc_r0_proxy": 0.09606,
+ "addition_overlap_between_variants": {
+  "catd10__vs__phys10": {
+   "shared_added_px": 605,
+   "jaccard": 0.0874
+  },
+  "catd10__vs__catdS10": {
+   "shared_added_px": 0,
+   "jaccard": 0.0
+  },
+  "phys10__vs__catdS10": {
+   "shared_added_px": 222,
+   "jaccard": 0.0304
+  }
+ },
+ "variants": [
+  {
+   "id": "h33-h33-2-b2-CONCENTRATIONcatd10-20261024-c313194a",
+   "site": "GEMSDOE92",
+   "parent": "h33-h33-2-b2",
+   "axis": "CONCENTRATION",
+   "value": "catd10",
+   "n_dots": 37654,
+   "pct_changed": 9.998938,
+   "removed": 3765,
+   "added": 3765,
+   "sha8": "c313194a",
+   "sha256": "c313194ad749bd6bf401a7b6259b0d99dcae4f417284ae4b70e091445a696ac5",
+   "sha256_zeros": "8c9605a6023d261495c7397ad064bf7d6f6eba30eb60c3705d0dadcaf8f2af64",
+   "primary_file": "h33-h33-2-b2-CONCENTRATIONcatd10-20261024-c313194a.tif",
+   "fallback_file": "h33-h33-2-b2-CONCENTRATIONcatd10-20261024-c313194a-zeros.tif",
+   "primary_encoding": "NaN outside footprint",
+   "fallback_encoding": "zero outside footprint",
+   "status": "BUILT",
+   "predicted_change": "MODEL:+0.013",
+   "predicted_range": "[-0.013,+0.040]",
+   "prediction_scope": "MODEL: E[DTI] projection assuming truth pixels are drawn with probability proportional to the named km-scale prior and the model is anchored on the parent's CLAIM 0.2778. Public-chunk changes under 0.01 are no evidence.",
+   "change_desc": "1km blocks; move 10% of dots from lowest to highest catalogue-density blocks (count/mass fixed)",
+   "prior": "catd",
+   "block_px": 10,
+   "block_km": 1.0,
+   "frac_moved": 0.1,
+   "direction": "concentrate",
+   "concentration_stats": {
+    "n_moved": 3765,
+    "direction": "concentrate",
+    "block_px": 10,
+    "block_size_km": 1.0,
+    "frac_target": 0.1,
+    "n_destination_blocks": 3701,
+    "destination_block_px": 15060,
+    "dest_capacity_factor": 4.0,
+    "mean_block_prior_movers": 0.0,
+    "mean_block_prior_all_parent_dots": 1.047883806469572,
+    "mean_block_prior_after": 1.408595378827771,
+    "cv_count_before": 1.8800107964394928,
+    "cv_count_after": 1.973591060714226,
+    "cv_density_before": 1.8852048381250681,
+    "cv_density_after": 1.98184973454423,
+    "mean_dots_per_network_px_before": 0.007286203286665789,
+    "mean_dots_per_network_px_after": 0.007285250983590139,
+    "min_nn_px_after": 1.0,
+    "min_nn_px_before": 2.8284271247461903,
+    "count_preserved": true
+   },
+   "block_density_cv": {
+    "footprint_blocks_all": {
+     "before": 1.8852048381250681,
+     "after": 1.98184973454423
+    },
+    "network_blocks_counts": {
+     "before": 0.765265,
+     "after": 0.843644,
+     "n_blocks": 18319
+    },
+    "network_blocks_density": {
+     "before": 0.732962,
+     "after": 0.76466,
+     "n_blocks": 18319
+    },
+    "brief_reference_band": "0.51-0.59 (definition unstated; see IRREGULARITIES)"
+   },
+   "parent_diff": {
+    "removed": 3765,
+    "added": 3765,
+    "shared": 33889,
+    "moved_pct": 9.998938,
+    "block_px": 10,
+    "dst_blocks": 3701
+   },
+   "catalogue_invariants": {
+    "dots_on_catalogue": 0,
+    "min_d_cat_px_all_dots": 2.23606797749979,
+    "min_d_cat_px_new_dots": 3.1622776601683795,
+    "n_dots_within_3px_all": 2171,
+    "n_dots_within_3px_new": 0,
+    "note": "parent dots keep R0's own >2 px rule; every dot moved this session lies >3 px from the catalogue"
+   },
+   "spacing": {
+    "min_nn_px": 1.0,
+    "min_nn_px_parent": 2.8284271247461903,
+    "floor_px": 1.0
+   },
+   "mover_catalogue_distance_px": {
+    "median_before": 70.60453243241541,
+    "median_after": 5.0,
+    "mean_before": 75.610195396024,
+    "mean_after": 5.792069691656076
+   },
+   "model_projection": {
+    "evidence_label": "MODEL",
+    "anchor_parent_claim": 0.2778,
+    "anchor_truth_total_by_prior": {
+     "phys": 20909.7,
+     "catd": 197941.1
+    },
+    "under_own_prior": {
+     "model_dti": 0.317552,
+     "delta": 0.039752
+    },
+    "under_other_prior": {
+     "model_dti": 0.26493,
+     "delta": -0.01287
+    },
+    "prior_sharpening_sweep": {
+     "gamma_0.5": {
+      "k_truth_model_own": 197941.11353444553,
+      "k_truth_model_other": 20909.696301401385,
+      "delta_own_prior": 0.035324,
+      "implied_parent_dti_own_prior": 0.312516,
+      "delta_other_prior": -0.012855,
+      "implied_parent_dti_other_prior": 0.277197
+     },
+     "gamma_1": {
+      "k_truth_model_own": 197941.11353444553,
+      "k_truth_model_other": 20909.696301401385,
+      "delta_own_prior": 0.039752,
+      "implied_parent_dti_own_prior": 0.2778,
+      "delta_other_prior": -0.01287,
+      "implied_parent_dti_other_prior": 0.2778
+     },
+     "gamma_2": {
+      "k_truth_model_own": 197941.11353444553,
+      "k_truth_model_other": 20909.696301401385,
+      "delta_own_prior": 0.039514,
+      "implied_parent_dti_own_prior": 0.226892,
+      "delta_other_prior": -0.012956,
+      "implied_parent_dti_other_prior": 0.278906
+     }
+    },
+    "note": "delta_under_* are MODEL differences within one prior; a live |delta| < 0.01 is no evidence."
+   },
+   "model_flat_prior": {
+    "evidence_label": "MODEL",
+    "k_truth_model": 21212.4,
+    "model_dti": 0.264899,
+    "delta_vs_r0": -0.012901,
+    "meaning": "cost of the swap itself with NO spatial information: removes a dot's own ~1.0 credit, adds a neighbour's ~0.3-0.6 credit, keeps the +1 mass"
+   },
+   "kernel_stacking": {
+    "frac_added_within_2_0px_of_survivor": 0.6350597609561753,
+    "frac_added_within_2_83px_of_survivor": 0.9782204515272245,
+    "median_added_to_survivor_px": 1.4142135623730951,
+    "variant_min_nn_px": 1.0,
+    "variant_frac_dots_under_2_83px": 0.20117384607213046,
+    "parent_frac_dots_under_2_83px": 0.0,
+    "interpretation": "arrivals sit in the remaining 1-2 px slack of corridors that R0 already tiles at ~3 px; each one duplicates part of a neighbour's kernel footprint and still pays +1 of denominator mass, which is why the flat-prior model delta below is negative"
+   },
+   "sgmc_control_proxy": {
+    "evidence_label": "PROXY",
+    "dti": 0.092346,
+    "delta_vs_r0": -0.003714,
+    "n_control_pixels": 62703
+   },
+   "gate_receipt": {
+    "primary_checks": {
+     "crs_matches": true,
+     "shape_matches": true,
+     "transform_matches": true,
+     "dtype_float32": true,
+     "one_band": true,
+     "inside_finite": true,
+     "outside_encoding": true,
+     "range_0_1": true,
+     "binary_unit_mass": true,
+     "zero_catalogue_mass": true,
+     "catalogue_distance_gt_2px": true,
+     "count_37654": true,
+     "gems_gates_pass": true
+    },
+    "fallback_checks": {
+     "crs_matches": true,
+     "shape_matches": true,
+     "transform_matches": true,
+     "dtype_float32": true,
+     "one_band": true,
+     "inside_finite": true,
+     "outside_encoding": true,
+     "range_0_1": true,
+     "binary_unit_mass": true,
+     "zero_catalogue_mass": true,
+     "catalogue_distance_gt_2px": true,
+     "count_37654": true,
+     "gems_gates_pass": true
+    },
+    "gems_gates_primary": [
+     "[PASS] crs: reference=EPSG:32611 candidate=EPSG:32611",
+     "[PASS] shape: reference=3730x3292 candidate=3730x3292",
+     "[PASS] transform: | 100.00, 0.00, 243350.00|",
+     "| 0.00,-100.00, 4508550.00|",
+     "| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|",
+     "| 0.00,-100.00, 4508550.00|",
+     "| 0.00, 0.00, 1.00|",
+     "[PASS] dtype_and_band: dtype=float32 count=1",
+     "[PASS] values_in_0_1: n_violations=0 min=0.0 max=1.0",
+     "[PASS] no_nan_inside_footprint: nan_pixels=0",
+     "[PASS] nan_outside_footprint: outside=7111787 nan=7111787 zero=0 other=0",
+     "[PASS] catalogue_zero_mass: dots_on_catalogue=0",
+     "[PASS] distance_from_catalogue: radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)",
+     "[PASS] reread_sha256: c313194ad749bd6bf401a7b6259b0d99dcae4f417284ae4b70e091445a696ac5",
+     "RESULT: PASS (10 gates)"
+    ],
+    "gems_gates_fallback": [
+     "[PASS] crs: reference=EPSG:32611 candidate=EPSG:32611",
+     "[PASS] shape: reference=3730x3292 candidate=3730x3292",
+     "[PASS] transform: | 100.00, 0.00, 243350.00|",
+     "| 0.00,-100.00, 4508550.00|",
+     "| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|",
+     "| 0.00,-100.00, 4508550.00|",
+     "| 0.00, 0.00, 1.00|",
+     "[PASS] dtype_and_band: dtype=float32 count=1",
+     "[PASS] values_in_0_1: n_violations=0 min=0.0 max=1.0",
+     "[PASS] no_nan_inside_footprint: nan_pixels=0",
+     "[PASS] nan_outside_footprint: outside=7111787 nan=0 zero=7111787 other=0",
+     "[PASS] catalogue_zero_mass: dots_on_catalogue=0",
+     "[PASS] distance_from_catalogue: radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)",
+     "[PASS] reread_sha256: 8c9605a6023d261495c7397ad064bf7d6f6eba30eb60c3705d0dadcaf8f2af64",
+     "RESULT: PASS (10 gates)"
+    ]
+   }
+  },
+  {
+   "id": "h33-h33-2-b2-CONCENTRATIONphys10-20261024-b93a4cf8",
+   "site": "GEMSDOE92",
+   "parent": "h33-h33-2-b2",
+   "axis": "CONCENTRATION",
+   "value": "phys10",
+   "n_dots": 37654,
+   "pct_changed": 9.998938,
+   "removed": 3765,
+   "added": 3765,
+   "sha8": "b93a4cf8",
+   "sha256": "b93a4cf8dd01ee1cdc6cf3dc3640e5e36f7baa369b468300b90147a5f8968f3f",
+   "sha256_zeros": "7fa6cea4a4a155d7407cf8e0c204d21b9d73c7c94dd3b023797a2933d1c56277",
+   "primary_file": "h33-h33-2-b2-CONCENTRATIONphys10-20261024-b93a4cf8.tif",
+   "fallback_file": "h33-h33-2-b2-CONCENTRATIONphys10-20261024-b93a4cf8-zeros.tif",
+   "primary_encoding": "NaN outside footprint",
+   "fallback_encoding": "zero outside footprint",
+   "status": "BUILT",
+   "predicted_change": "MODEL:-0.008",
+   "predicted_range": "[-0.014,-0.002]",
+   "prediction_scope": "MODEL: E[DTI] projection assuming truth pixels are drawn with probability proportional to the named km-scale prior and the model is anchored on the parent's CLAIM 0.2778. Public-chunk changes under 0.01 are no evidence.",
+   "change_desc": "1km blocks; move 10% of dots from lowest to highest potential-field/scarp favourability blocks (count/mass fixed)",
+   "prior": "phys",
+   "block_px": 10,
+   "block_km": 1.0,
+   "frac_moved": 0.1,
+   "direction": "concentrate",
+   "concentration_stats": {
+    "n_moved": 3765,
+    "direction": "concentrate",
+    "block_px": 10,
+    "block_size_km": 1.0,
+    "frac_target": 0.1,
+    "n_destination_blocks": 2902,
+    "destination_block_px": 15060,
+    "dest_capacity_factor": 4.0,
+    "mean_block_prior_movers": 0.6899601214873841,
+    "mean_block_prior_all_parent_dots": 1.1229729766305316,
+    "mean_block_prior_after": 1.1962254321475456,
+    "cv_count_before": 1.8800107964394928,
+    "cv_count_after": 2.064112401844279,
+    "cv_density_before": 1.8852048381250681,
+    "cv_density_after": 2.0639047789863874,
+    "mean_dots_per_network_px_before": 0.007286203286665789,
+    "mean_dots_per_network_px_after": 0.007199171238649192,
+    "min_nn_px_after": 1.0,
+    "min_nn_px_before": 2.8284271247461903,
+    "count_preserved": true
+   },
+   "block_density_cv": {
+    "footprint_blocks_all": {
+     "before": 1.8852048381250681,
+     "after": 2.0639047789863874
+    },
+    "network_blocks_counts": {
+     "before": 0.765265,
+     "after": 0.916266,
+     "n_blocks": 18319
+    },
+    "network_blocks_density": {
+     "before": 0.732962,
+     "after": 0.815099,
+     "n_blocks": 18319
+    },
+    "brief_reference_band": "0.51-0.59 (definition unstated; see IRREGULARITIES)"
+   },
+   "parent_diff": {
+    "removed": 3765,
+    "added": 3765,
+    "shared": 33889,
+    "moved_pct": 9.998938,
+    "block_px": 10,
+    "dst_blocks": 2902
+   },
+   "catalogue_invariants": {
+    "dots_on_catalogue": 0,
+    "min_d_cat_px_all_dots": 2.23606797749979,
+    "min_d_cat_px_new_dots": 3.1622776601683795,
+    "n_dots_within_3px_all": 1944,
+    "n_dots_within_3px_new": 0,
+    "note": "parent dots keep R0's own >2 px rule; every dot moved this session lies >3 px from the catalogue"
+   },
+   "spacing": {
+    "min_nn_px": 1.0,
+    "min_nn_px_parent": 2.8284271247461903,
+    "floor_px": 1.0
+   },
+   "mover_catalogue_distance_px": {
+    "median_before": 22.20360331117452,
+    "median_after": 20.024984394500787,
+    "mean_before": 29.60237396258684,
+    "mean_after": 29.55185523933309
+   },
+   "model_projection": {
+    "evidence_label": "MODEL",
+    "anchor_parent_claim": 0.2778,
+    "anchor_truth_total_by_prior": {
+     "phys": 20909.7,
+     "catd": 197941.1
+    },
+    "under_own_prior": {
+     "model_dti": 0.27598,
+     "delta": -0.00182
+    },
+    "under_other_prior": {
+     "model_dti": 0.263814,
+     "delta": -0.013986
+    },
+    "prior_sharpening_sweep": {
+     "gamma_0.5": {
+      "k_truth_model_own": 20909.696301401385,
+      "k_truth_model_other": 197941.11353444553,
+      "delta_own_prior": -0.008256,
+      "implied_parent_dti_own_prior": 0.277197,
+      "delta_other_prior": -0.015568,
+      "implied_parent_dti_other_prior": 0.312516
+     },
+     "gamma_1": {
+      "k_truth_model_own": 20909.696301401385,
+      "k_truth_model_other": 197941.11353444553,
+      "delta_own_prior": -0.00182,
+      "implied_parent_dti_own_prior": 0.2778,
+      "delta_other_prior": -0.013986,
+      "implied_parent_dti_other_prior": 0.2778
+     },
+     "gamma_2": {
+      "k_truth_model_own": 20909.696301401385,
+      "k_truth_model_other": 197941.11353444553,
+      "delta_own_prior": 0.008458,
+      "implied_parent_dti_own_prior": 0.278906,
+      "delta_other_prior": -0.011521,
+      "implied_parent_dti_other_prior": 0.226892
+     }
+    },
+    "note": "delta_under_* are MODEL differences within one prior; a live |delta| < 0.01 is no evidence."
+   },
+   "model_flat_prior": {
+    "evidence_label": "MODEL",
+    "k_truth_model": 21212.4,
+    "model_dti": 0.261944,
+    "delta_vs_r0": -0.015856,
+    "meaning": "cost of the swap itself with NO spatial information: removes a dot's own ~1.0 credit, adds a neighbour's ~0.3-0.6 credit, keeps the +1 mass"
+   },
+   "kernel_stacking": {
+    "frac_added_within_2_0px_of_survivor": 0.5968127490039841,
+    "frac_added_within_2_83px_of_survivor": 0.9954847277556441,
+    "median_added_to_survivor_px": 1.4142135623730951,
+    "variant_min_nn_px": 1.0,
+    "variant_frac_dots_under_2_83px": 0.20938014553566686,
+    "parent_frac_dots_under_2_83px": 0.0,
+    "interpretation": "arrivals sit in the remaining 1-2 px slack of corridors that R0 already tiles at ~3 px; each one duplicates part of a neighbour's kernel footprint and still pays +1 of denominator mass, which is why the flat-prior model delta below is negative"
+   },
+   "sgmc_control_proxy": {
+    "evidence_label": "PROXY",
+    "dti": 0.087633,
+    "delta_vs_r0": -0.008427,
+    "n_control_pixels": 62703
+   },
+   "gate_receipt": {
+    "primary_checks": {
+     "crs_matches": true,
+     "shape_matches": true,
+     "transform_matches": true,
+     "dtype_float32": true,
+     "one_band": true,
+     "inside_finite": true,
+     "outside_encoding": true,
+     "range_0_1": true,
+     "binary_unit_mass": true,
+     "zero_catalogue_mass": true,
+     "catalogue_distance_gt_2px": true,
+     "count_37654": true,
+     "gems_gates_pass": true
+    },
+    "fallback_checks": {
+     "crs_matches": true,
+     "shape_matches": true,
+     "transform_matches": true,
+     "dtype_float32": true,
+     "one_band": true,
+     "inside_finite": true,
+     "outside_encoding": true,
+     "range_0_1": true,
+     "binary_unit_mass": true,
+     "zero_catalogue_mass": true,
+     "catalogue_distance_gt_2px": true,
+     "count_37654": true,
+     "gems_gates_pass": true
+    },
+    "gems_gates_primary": [
+     "[PASS] crs: reference=EPSG:32611 candidate=EPSG:32611",
+     "[PASS] shape: reference=3730x3292 candidate=3730x3292",
+     "[PASS] transform: | 100.00, 0.00, 243350.00|",
+     "| 0.00,-100.00, 4508550.00|",
+     "| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|",
+     "| 0.00,-100.00, 4508550.00|",
+     "| 0.00, 0.00, 1.00|",
+     "[PASS] dtype_and_band: dtype=float32 count=1",
+     "[PASS] values_in_0_1: n_violations=0 min=0.0 max=1.0",
+     "[PASS] no_nan_inside_footprint: nan_pixels=0",
+     "[PASS] nan_outside_footprint: outside=7111787 nan=7111787 zero=0 other=0",
+     "[PASS] catalogue_zero_mass: dots_on_catalogue=0",
+     "[PASS] distance_from_catalogue: radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)",
+     "[PASS] reread_sha256: b93a4cf8dd01ee1cdc6cf3dc3640e5e36f7baa369b468300b90147a5f8968f3f",
+     "RESULT: PASS (10 gates)"
+    ],
+    "gems_gates_fallback": [
+     "[PASS] crs: reference=EPSG:32611 candidate=EPSG:32611",
+     "[PASS] shape: reference=3730x3292 candidate=3730x3292",
+     "[PASS] transform: | 100.00, 0.00, 243350.00|",
+     "| 0.00,-100.00, 4508550.00|",
+     "| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|",
+     "| 0.00,-100.00, 4508550.00|",
+     "| 0.00, 0.00, 1.00|",
+     "[PASS] dtype_and_band: dtype=float32 count=1",
+     "[PASS] values_in_0_1: n_violations=0 min=0.0 max=1.0",
+     "[PASS] no_nan_inside_footprint: nan_pixels=0",
+     "[PASS] nan_outside_footprint: outside=7111787 nan=0 zero=7111787 other=0",
+     "[PASS] catalogue_zero_mass: dots_on_catalogue=0",
+     "[PASS] distance_from_catalogue: radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)",
+     "[PASS] reread_sha256: 7fa6cea4a4a155d7407cf8e0c204d21b9d73c7c94dd3b023797a2933d1c56277",
+     "RESULT: PASS (10 gates)"
+    ]
+   }
+  },
+  {
+   "id": "h33-h33-2-b2-CONCENTRATIONcatdS10-20261024-6b87f2d7",
+   "site": "GEMSDOE92",
+   "parent": "h33-h33-2-b2",
+   "axis": "CONCENTRATION",
+   "value": "catdS10",
+   "n_dots": 37654,
+   "pct_changed": 9.998938,
+   "removed": 3765,
+   "added": 3765,
+   "sha8": "6b87f2d7",
+   "sha256": "6b87f2d7876dc776f3d961c2fbee1b5696c5655c4c433258911e6f317e6a6ffe",
+   "sha256_zeros": "417f952beee24b2a8b3585d2c86bdf062d3df9a06e2f56ebbc49cc18b4534388",
+   "primary_file": "h33-h33-2-b2-CONCENTRATIONcatdS10-20261024-6b87f2d7.tif",
+   "fallback_file": "h33-h33-2-b2-CONCENTRATIONcatdS10-20261024-6b87f2d7-zeros.tif",
+   "primary_encoding": "NaN outside footprint",
+   "fallback_encoding": "zero outside footprint",
+   "status": "BUILT",
+   "predicted_change": "MODEL:-0.070",
+   "predicted_range": "[-0.118,-0.022]",
+   "prediction_scope": "MODEL: E[DTI] projection assuming truth pixels are drawn with probability proportional to the named km-scale prior and the model is anchored on the parent's CLAIM 0.2778. Public-chunk changes under 0.01 are no evidence.",
+   "change_desc": "1km blocks; move 10% of dots from the HIGHEST to the LOWEST catalogue-density blocks (mirror image of catd10)",
+   "prior": "catd",
+   "block_px": 10,
+   "block_km": 1.0,
+   "frac_moved": 0.1,
+   "direction": "spread",
+   "concentration_stats": {
+    "n_moved": 3765,
+    "direction": "spread",
+    "block_px": 10,
+    "block_size_km": 1.0,
+    "frac_target": 0.1,
+    "n_destination_blocks": 2999,
+    "destination_block_px": 15060,
+    "dest_capacity_factor": 4.0,
+    "mean_block_prior_movers": 4.521389009686102,
+    "mean_block_prior_all_parent_dots": 1.047883806469572,
+    "mean_block_prior_after": 0.5957932137700078,
+    "cv_count_before": 1.8800107964394928,
+    "cv_count_after": 2.250607193965518,
+    "cv_density_before": 1.8852048381250681,
+    "cv_density_after": 2.25043215949543,
+    "mean_dots_per_network_px_before": 0.007286203286665789,
+    "mean_dots_per_network_px_after": 0.00727523323257025,
+    "min_nn_px_after": 1.0,
+    "min_nn_px_before": 2.8284271247461903,
+    "count_preserved": true
+   },
+   "block_density_cv": {
+    "footprint_blocks_all": {
+     "before": 1.8852048381250681,
+     "after": 2.25043215949543
+    },
+    "network_blocks_counts": {
+     "before": 0.765265,
+     "after": 1.058738,
+     "n_blocks": 18319
+    },
+    "network_blocks_density": {
+     "before": 0.732962,
+     "after": 0.829842,
+     "n_blocks": 18319
+    },
+    "brief_reference_band": "0.51-0.59 (definition unstated; see IRREGULARITIES)"
+   },
+   "parent_diff": {
+    "removed": 3765,
+    "added": 3765,
+    "shared": 33889,
+    "moved_pct": 9.998938,
+    "block_px": 10,
+    "dst_blocks": 2999
+   },
+   "catalogue_invariants": {
+    "dots_on_catalogue": 0,
+    "min_d_cat_px_all_dots": 2.23606797749979,
+    "min_d_cat_px_new_dots": 39.11521443121589,
+    "n_dots_within_3px_all": 1156,
+    "n_dots_within_3px_new": 0,
+    "note": "parent dots keep R0's own >2 px rule; every dot moved this session lies >3 px from the catalogue"
+   },
+   "spacing": {
+    "min_nn_px": 1.0,
+    "min_nn_px_parent": 2.8284271247461903,
+    "floor_px": 1.0
+   },
+   "mover_catalogue_distance_px": {
+    "median_before": 4.123105625617661,
+    "median_after": 55.0,
+    "mean_before": 4.78272164068673,
+    "mean_after": 60.854266005071665
+   },
+   "model_projection": {
+    "evidence_label": "MODEL",
+    "anchor_parent_claim": 0.2778,
+    "anchor_truth_total_by_prior": {
+     "phys": 20909.7,
+     "catd": 197941.1
+    },
+    "under_own_prior": {
+     "model_dti": 0.159626,
+     "delta": -0.118174
+    },
+    "under_other_prior": {
+     "model_dti": 0.256098,
+     "delta": -0.021702
+    },
+    "prior_sharpening_sweep": {
+     "gamma_0.5": {
+      "k_truth_model_own": 197941.11353444553,
+      "k_truth_model_other": 20909.696301401385,
+      "delta_own_prior": -0.091673,
+      "implied_parent_dti_own_prior": 0.312516,
+      "delta_other_prior": -0.021545,
+      "implied_parent_dti_other_prior": 0.277197
+     },
+     "gamma_1": {
+      "k_truth_model_own": 197941.11353444553,
+      "k_truth_model_other": 20909.696301401385,
+      "delta_own_prior": -0.118174,
+      "implied_parent_dti_own_prior": 0.2778,
+      "delta_other_prior": -0.021702,
+      "implied_parent_dti_other_prior": 0.2778
+     },
+     "gamma_2": {
+      "k_truth_model_own": 197941.11353444553,
+      "k_truth_model_other": 20909.696301401385,
+      "delta_own_prior": -0.146323,
+      "implied_parent_dti_own_prior": 0.226892,
+      "delta_other_prior": -0.021845,
+      "implied_parent_dti_other_prior": 0.278906
+     }
+    },
+    "note": "delta_under_* are MODEL differences within one prior; a live |delta| < 0.01 is no evidence."
+   },
+   "model_flat_prior": {
+    "evidence_label": "MODEL",
+    "k_truth_model": 21212.4,
+    "model_dti": 0.256377,
+    "delta_vs_r0": -0.021423,
+    "meaning": "cost of the swap itself with NO spatial information: removes a dot's own ~1.0 credit, adds a neighbour's ~0.3-0.6 credit, keeps the +1 mass"
+   },
+   "kernel_stacking": {
+    "frac_added_within_2_0px_of_survivor": 0.8624169986719787,
+    "frac_added_within_2_83px_of_survivor": 1.0,
+    "median_added_to_survivor_px": 1.0,
+    "variant_min_nn_px": 1.0,
+    "variant_frac_dots_under_2_83px": 0.16160301694375098,
+    "parent_frac_dots_under_2_83px": 0.0,
+    "interpretation": "arrivals sit in the remaining 1-2 px slack of corridors that R0 already tiles at ~3 px; each one duplicates part of a neighbour's kernel footprint and still pays +1 of denominator mass, which is why the flat-prior model delta below is negative"
+   },
+   "sgmc_control_proxy": {
+    "evidence_label": "PROXY",
+    "dti": 0.08921,
+    "delta_vs_r0": -0.00685,
+    "n_control_pixels": 62703
+   },
+   "gate_receipt": {
+    "primary_checks": {
+     "crs_matches": true,
+     "shape_matches": true,
+     "transform_matches": true,
+     "dtype_float32": true,
+     "one_band": true,
+     "inside_finite": true,
+     "outside_encoding": true,
+     "range_0_1": true,
+     "binary_unit_mass": true,
+     "zero_catalogue_mass": true,
+     "catalogue_distance_gt_2px": true,
+     "count_37654": true,
+     "gems_gates_pass": true
+    },
+    "fallback_checks": {
+     "crs_matches": true,
+     "shape_matches": true,
+     "transform_matches": true,
+     "dtype_float32": true,
+     "one_band": true,
+     "inside_finite": true,
+     "outside_encoding": true,
+     "range_0_1": true,
+     "binary_unit_mass": true,
+     "zero_catalogue_mass": true,
+     "catalogue_distance_gt_2px": true,
+     "count_37654": true,
+     "gems_gates_pass": true
+    },
+    "gems_gates_primary": [
+     "[PASS] crs: reference=EPSG:32611 candidate=EPSG:32611",
+     "[PASS] shape: reference=3730x3292 candidate=3730x3292",
+     "[PASS] transform: | 100.00, 0.00, 243350.00|",
+     "| 0.00,-100.00, 4508550.00|",
+     "| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|",
+     "| 0.00,-100.00, 4508550.00|",
+     "| 0.00, 0.00, 1.00|",
+     "[PASS] dtype_and_band: dtype=float32 count=1",
+     "[PASS] values_in_0_1: n_violations=0 min=0.0 max=1.0",
+     "[PASS] no_nan_inside_footprint: nan_pixels=0",
+     "[PASS] nan_outside_footprint: outside=7111787 nan=7111787 zero=0 other=0",
+     "[PASS] catalogue_zero_mass: dots_on_catalogue=0",
+     "[PASS] distance_from_catalogue: radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)",
+     "[PASS] reread_sha256: 6b87f2d7876dc776f3d961c2fbee1b5696c5655c4c433258911e6f317e6a6ffe",
+     "RESULT: PASS (10 gates)"
+    ],
+    "gems_gates_fallback": [
+     "[PASS] crs: reference=EPSG:32611 candidate=EPSG:32611",
+     "[PASS] shape: reference=3730x3292 candidate=3730x3292",
+     "[PASS] transform: | 100.00, 0.00, 243350.00|",
+     "| 0.00,-100.00, 4508550.00|",
+     "| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|",
+     "| 0.00,-100.00, 4508550.00|",
+     "| 0.00, 0.00, 1.00|",
+     "[PASS] dtype_and_band: dtype=float32 count=1",
+     "[PASS] values_in_0_1: n_violations=0 min=0.0 max=1.0",
+     "[PASS] no_nan_inside_footprint: nan_pixels=0",
+     "[PASS] nan_outside_footprint: outside=7111787 nan=0 zero=7111787 other=0",
+     "[PASS] catalogue_zero_mass: dots_on_catalogue=0",
+     "[PASS] distance_from_catalogue: radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)",
+     "[PASS] reread_sha256: 417f952beee24b2a8b3585d2c86bdf062d3df9a06e2f56ebbc49cc18b4534388",
+     "RESULT: PASS (10 gates)"
+    ]
+   }
+  }
+ ],
+ "mechanism_cards": {
+  "catd10": {
+   "axis": "CONCENTRATION",
+   "value": "catd10",
+   "variant_id": "h33-h33-2-b2-CONCENTRATIONcatd10-20261024-c313194a",
+   "hypothesis": "Newly mapped faults are mostly new geometry of existing systems, so the number of new-fault pixels per km^2 tracks the density of already-mapped structure. R0 spreads one dot every ~3 px uniformly over the H19-5 ridge mask, which carries 0.41 dots per km^2-scale block regardless of how much known structure the block holds; moving 10% of the dots from the lowest-density 1 km blocks to the highest raises kernel credit where truth pixels are most numerous.",
+   "mechanism": "DTI = T / (0.2T + 0.2(S-M) + 0.8|G|) at fixed S. Moving a dot from a block with near-zero known-structure density to one with 3x the regional density raises the expected max-kernel credit it earns (k(d) = 1 - d/3) and simultaneously raises M, shrinking the wasted-mass term S-M. Both terms push the ratio up; no dot count, mass, spacing or catalogue-distance invariant changes.",
+   "non_fault_mimic": "Mapping effort: the catalogue is denser where access, exposure and basin-hosted basin-range normal faults made 1:250k-1:24k compilation easy, not necessarily where 2020s geothermal-focused mapping found new faults. If new truth is instead concentrated in poorly mapped uplands (lidar/surface-imaging targets), this prior is anti-correlated with truth and the variant loses.",
+   "predicted_sign_and_size": "MODEL:+0.013 (range [-0.013,+0.040], MODEL; rule = midpoint of the own-prior and other-prior projections)",
+   "falsifier": "A live receipt delta <= -0.01 vs R0 falsifies the known-structure-density prior at 1 km and says the catalogue is a mapping-effort artefact; |delta| < 0.01 is no evidence either way (public chunks only).",
+   "evidence_label": "MODEL"
+  },
+  "phys10": {
+   "axis": "CONCENTRATION",
+   "value": "phys10",
+   "variant_id": "h33-h33-2-b2-CONCENTRATIONphys10-20261024-b93a4cf8",
+   "hypothesis": "Where magnetic horizontal gradient, isostatic-gravity slope and detrended-elevation slope are jointly high, the crust is more intensely broken per km^2, so truth density per km^2 is high there. This prior is built only from physics, so unlike the catalogue prior it cannot inherit mapping effort or exposure bias.",
+   "mechanism": "Same fixed-S budget trade as catd10, with the block prior replaced by the 0.40 pct(tmi_hg) + 0.35 pct(iso_grav_anom_slope) + 0.25 pct(det_elev_slope) mix smoothed to 1 km. Differences ONLY which blocks are donors and receivers: same count, same mass, same spacing floor, same catalogue clearance.",
+   "non_fault_mimic": "The same bands respond to non-tectonic contrasts: Tertiary volcanic flow margins, caldera ring fractures, pluton contacts, and lithologic scarps in resistant tuff. Because the physics mix is also what the H19-5 ridge mask was built to track, the implied redistribution is the mildest of the three variants.",
+   "predicted_sign_and_size": "MODEL:-0.008 (range [-0.014,-0.002], MODEL; rule = midpoint of the own-prior and other-prior projections)",
+   "falsifier": "If phys10 and catd10 are both negative by >= 0.01 while their implied redistributions are near-disjoint, the axis itself (km-scale reallocation) is wrong, not just the prior.",
+   "evidence_label": "MODEL"
+  },
+  "catdS10": {
+   "axis": "CONCENTRATION",
+   "value": "catdS10",
+   "variant_id": "h33-h33-2-b2-CONCENTRATIONcatdS10-20261024-6b87f2d7",
+   "hypothesis": "Mirror image of catd10, built because the previous session's IRREGULARITIES entry requires both directions before a CONCENTRATION result can be read as a sign. It moves the same 10% of dots between the same 1 km blocks in the opposite direction, so a monotone (catd10 > R0 > catdS10) or inverted (catdS10 > R0 > catd10) response identifies the sign of the catalogue-density prior; a flat response on both sides says the metric is insensitive to km-scale reallocation at this count.",
+   "mechanism": "Same fixed-S bookkeeping as catd10 with donor and receiver block sets swapped. If the known-structure-density prior is informative, this variant must LOSE: it takes the most truth-dense dots away and re-places them where known structure is absent. Its predicted loss is therefore as informative as catd10's predicted gain.",
+   "non_fault_mimic": "If new-fault truth is genuinely concentrated AWAY from mapped structure (poorly exposed basins, young volcanic terrain, areas no compiler has mapped), this mirror variant wins and catd10 loses \u2014 the same evidence, opposite conclusion.",
+   "predicted_sign_and_size": "MODEL:-0.070 (range [-0.118,-0.022], MODEL; rule = midpoint of the own-prior and other-prior projections)",
+   "falsifier": "catdS10 >= catd10 + 0.01 falsifies the known-structure-density prior outright. Both arms within 0.01 of R0 means the axis is inert at 10% and should not be spent on again at this dose.",
+   "evidence_label": "MODEL"
+  }
+ }
+}

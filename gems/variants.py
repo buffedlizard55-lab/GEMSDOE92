@@ -676,3 +676,318 @@ def relief(parent: Dots, detrended_elev: np.ndarray, terciles: np.ndarray,
                        "n_dst": int(np.count_nonzero(in_dst))})
     v.check_change()
     return v
+
+
+# --------------------------------------------------------------------------
+# CONCENTRATION (prior-driven reallocation), 2026-10-24 session
+# --------------------------------------------------------------------------
+# The `concentration` builder above (2026-10-23 lineage) places moved dots at
+# block centres and ignores the catalogue exclusion, the ridge mask and the
+# parent's Poisson spacing. It is kept for its unit tests, but a submission
+# built with it would violate constraint 4. `concentration_reallocate` below is
+# the auditable version: sources and destinations are chosen ONLY by the
+# km-scale prior (the axis), while *which* dot leaves a source block (most
+# redundant first) and *where* a moved dot lands (exact expected-DTI gain under
+# the same prior, inside the destination blocks, subject to the parent's
+# spacing and catalogue invariants) are deterministic bookkeeping.
+# --------------------------------------------------------------------------
+
+DTI_ALPHA, DTI_BETA, DTI_RADIUS = 0.2, 0.8, 3.0
+
+
+def _kernel_offsets(radius: float = DTI_RADIUS):
+    r = int(np.ceil(radius))
+    dy, dx, kw = [], [], []
+    for j in range(-r, r + 1):
+        for i in range(-r, r + 1):
+            k = 1.0 - float(np.hypot(j, i)) / radius
+            if k > 0.0:
+                dy.append(j)
+                dx.append(i)
+                kw.append(k)
+    return (np.asarray(dy, np.int64), np.asarray(dx, np.int64),
+            np.asarray(kw, np.float64))
+
+
+OFF_DY, OFF_DX, OFF_K = _kernel_offsets()
+
+
+def block_mean(a: np.ndarray, mask: np.ndarray, block_px: int):
+    """Mean of `a` over `mask` pixels per block; NaN where the block has no mask."""
+    H, W = a.shape
+    nby, nbx = H // block_px + 1, W // block_px + 1
+    flat = (np.arange(H) // block_px)[:, None] * nbx + (np.arange(W) // block_px)[None, :]
+    sel = np.asarray(mask, bool) & np.isfinite(a)
+    s = np.bincount(flat[sel], weights=np.asarray(a, np.float64)[sel], minlength=nby * nbx)
+    c = np.bincount(flat[sel], minlength=nby * nbx)
+    with np.errstate(invalid="ignore", divide="ignore"):
+        bp = np.where(c > 0, s / np.maximum(c, 1), np.nan).reshape(nby, nbx)
+    return bp, nby, nbx
+
+
+def block_counts(sel: np.ndarray, mask: np.ndarray, block_px: int):
+    H, W = sel.shape
+    nby, nbx = H // block_px + 1, W // block_px + 1
+    flat = (np.arange(H) // block_px)[:, None] * nbx + (np.arange(W) // block_px)[None, :]
+    return np.bincount(flat[np.asarray(mask, bool)], minlength=nby * nbx).reshape(nby, nbx)
+
+
+def block_density_cv_pair(dots: "Dots", network: np.ndarray, block_px: int) -> dict:
+    """Two defensible readings of "block-density CV" (the brief fixes neither).
+
+    cv_count   : CV of raw dot counts across blocks that contain network pixels.
+    cv_density : CV of dots per network pixel across the same blocks (removes the
+                 trivial dependence on how much ridge mask a block happens to hold).
+    """
+    H, W = network.shape
+    nby, nbx = H // block_px + 1, W // block_px + 1
+    npix = block_counts(network, np.asarray(network, bool), block_px)
+    flat = ((np.arange(H) // block_px)[:, None] * nbx
+            + (np.arange(W) // block_px)[None, :])
+    ndot = np.bincount(flat[dots.ys, dots.xs], minlength=nby * nbx).reshape(nby, nbx)
+    hb = npix > 0
+    cnt = ndot[hb].astype(float)
+    dens = (ndot[hb] / npix[hb]).astype(float)
+    return {
+        "n_blocks_with_network": int(hb.sum()),
+        "cv_count": float(cnt.std() / cnt.mean()) if cnt.mean() > 0 else float("nan"),
+        "cv_density": float(dens.std() / dens.mean()) if dens.mean() > 0 else float("nan"),
+        "mean_dots_per_block": float(cnt.mean()),
+        "mean_dots_per_network_px": float(dens.mean()),
+    }
+
+
+def spacing_blocked(base: np.ndarray, min_nn: float = 2.828427) -> np.ndarray:
+    """Pixels that are a base dot itself or closer than `min_nn` px to one."""
+    base = np.asarray(base, bool)
+    H, W = base.shape
+    blk = np.zeros((H, W), bool)
+    by, bx = np.nonzero(base)
+    blk[by, bx] = True
+    r = int(np.ceil(min_nn))
+    for j in range(-r, r + 1):
+        for i in range(-r, r + 1):
+            if 0 < j * j + i * i < min_nn * min_nn - 1e-9:
+                yy, xx = by + j, bx + i
+                ok = (yy >= 0) & (yy < H) & (xx >= 0) & (xx < W)
+                blk[yy[ok], xx[ok]] = True
+    return blk
+
+
+def _greedy_place_spaced(base: np.ndarray, cand: np.ndarray, w: np.ndarray,
+                         n_add: int, min_nn: float = 2.828427,
+                         valid: np.ndarray | None = None) -> np.ndarray:
+    """Add `n_add` dots to `base` from `cand`, greedy on exact expected DTI.
+
+    `w` is an expected truth-density weight field (its sum is the model truth
+    total used by the exact incremental DTI test). Candidates closer than
+    `min_nn` px to an already-placed or surviving dot are excluded, so a child
+    cannot duplicate a pixel or stack dots inside one R = 3 px kernel footprint
+    beyond the floor the caller asked for.
+    """
+    H, W = base.shape
+    base = np.asarray(base, bool)
+    cand = np.asarray(cand, bool) & ~base
+    if valid is not None:
+        cand &= np.asarray(valid, bool)
+    w64 = np.asarray(w, np.float64)
+    k_tot = float(w64.sum())
+    blk = [(j, i) for j in range(-2, 3) for i in range(-2, 3)
+           if 0 < j * j + i * i < min_nn * min_nn - 1e-9]
+
+    # Pixels closer than `min_nn` to a SURVIVING dot are not legal.
+    blocked = spacing_blocked(base, min_nn)
+    cand &= ~blocked
+    cy, cx = np.nonzero(cand)
+    if len(cy) < n_add:
+        raise ValueError(f"candidate pool ({len(cy)}) smaller than n_add ({n_add})")
+
+    cov = np.zeros((H, W), np.float64)
+    by, bx = np.nonzero(base)
+    mvals = np.zeros(len(by), np.float64)
+    for dy, dx, kw in zip(OFF_DY, OFF_DX, OFF_K):
+        gy = np.clip(by + int(dy), 0, H - 1)
+        gx = np.clip(bx + int(dx), 0, W - 1)
+        np.maximum.at(cov, (gy, gx), kw)
+        if len(by):
+            mvals = np.maximum(mvals, w64[gy, gx] * kw)
+    t_cur = float((w64 * cov).sum())
+    m_cur = float(mvals.sum())
+    s_cur = float(len(by))
+
+    out = np.zeros((H, W), bool)
+    alive = np.ones(len(cy), bool)
+    for _ in range(n_add):
+        yy, xx = cy[alive], cx[alive]
+        if yy.size == 0:
+            raise ValueError("no live candidates left to place")
+        dT = np.zeros(yy.size, np.float64)
+        mc = np.zeros(yy.size, np.float64)
+        for dy, dx, kw in zip(OFF_DY, OFF_DX, OFF_K):
+            wy = np.clip(yy + int(dy), 0, H - 1)
+            wx = np.clip(xx + int(dx), 0, W - 1)
+            wv = w64[wy, wx]
+            dT += wv * np.maximum(0.0, kw - cov[wy, wx])
+            mc = np.maximum(mc, wv * kw)
+        live_ok = ~blocked[yy, xx]
+        if not live_ok.any():
+            raise ValueError("every live candidate is inside the spacing exclusion")
+        d_cur = DTI_ALPHA * (t_cur + s_cur - m_cur) + DTI_BETA * k_tot + 1e-12
+        score = (t_cur + dT) / (d_cur + DTI_ALPHA * (dT + 1.0 - mc))
+        score[~live_ok] = -np.inf
+        bi = int(np.argmax(score))
+        py, px = int(yy[bi]), int(xx[bi])
+        t_cur += float(dT[bi])
+        m_cur += float(mc[bi])
+        s_cur += 1.0
+        out[py, px] = True
+        for dy, dx, kw in zip(OFF_DY, OFF_DX, OFF_K):
+            gy, gx = py + int(dy), px + int(dx)
+            if 0 <= gy < H and 0 <= gx < W and kw > cov[gy, gx]:
+                cov[gy, gx] = kw
+        blocked[py, px] = True
+        for j, i in blk:
+            if 0 <= py + j < H and 0 <= px + i < W:
+                blocked[py + j, px + i] = True
+        alive[bi] = False
+    return out
+
+
+def concentration_reallocate(parent: Dots, w: np.ndarray, footprint: np.ndarray,
+                             allowed: np.ndarray, block_px: int = 10,
+                             frac: float = 0.10, min_nn: float = 1.0,
+                             dest_capacity_factor: float = 4.0,
+                             direction: str = "concentrate",
+                             value: str | None = None) -> Variant:
+    """Move `frac` of the parent's dots between km-scale blocks, prior only.
+
+    Sources and destinations are chosen by the block-mean of `w` (the axis).
+    Within a source block the dots with the most neighbours inside the DTI
+    kernel leave first (their credit is the most redundant); each arrival is
+    placed where the expected-DTI gain under the same `w` is largest, inside the
+    highest-prior blocks, subject to `allowed` (the caller's catalogue / mask /
+    data-validity constraints) and a `min_nn` spacing floor. Count and unit
+    mass are preserved exactly.
+
+    Spacing note (measured on R0, 2026-10-24): the H19-5 support is a 1-px-wide
+    skeleton, so only **82** pixels in the whole study area lie >= 2.83 px from
+    every parent dot. A 3,765-dot reallocation that preserved the parent's D2.8
+    floor is therefore mathematically impossible; the floor has to drop. The
+    default `min_nn = 1.0` forbids only duplicate pixels and lets the exact
+    marginal-DTI test (with the prior as truth weight) decide whether a tight
+    neighbour is worth its +1 of denominator mass.
+    """
+    if direction not in ("concentrate", "spread"):
+        raise ValueError(f"direction must be 'concentrate' or 'spread', got {direction!r}")
+    if w.shape != footprint.shape:
+        raise ValueError("prior and footprint grids must match")
+    if len(parent) == 0:
+        raise ValueError("empty parent")
+    n_move = int(round(frac * len(parent)))
+    if n_move == 0:
+        raise ValueError("frac rounds to zero dots")
+    before = block_density_cv_pair(parent, footprint, block_px)
+
+    bp, nby, nbx = block_mean(np.where(footprint, w, np.nan), footprint, block_px)
+    finite_bp = bp[np.isfinite(bp)]
+    if finite_bp.size == 0 or float(finite_bp.max() - finite_bp.min()) <= 0.0:
+        raise ValueError("block prior carries no spatial information: every block has the "
+                         "same value, so there is no concentration to test")
+
+    by, bx = parent.ys // block_px, parent.xs // block_px
+    dot_bp = bp[by, bx]
+    if not np.isfinite(dot_bp).all():
+        raise ValueError("some dots sit in blocks with no prior value")
+
+    tree = cKDTree(np.c_[parent.ys, parent.xs])
+    nbr = np.asarray([len(v) - 1 for v in tree.query_ball_point(
+        np.c_[parent.ys, parent.xs], DTI_RADIUS)], dtype=np.int64)
+    # primary key: block prior (ascending for "concentrate" = leave the least
+    # favourable blocks first; descending for "spread", the deliberate mirror
+    # image that the previous session's IRREGULARITIES entry required before any
+    # CONCENTRATION result could be read as a sign). tie-breaks: most crowded dot
+    # first, then a fixed raster order so the result is bit-reproducible.
+    pri_key = dot_bp if direction == "concentrate" else -dot_bp
+    order = np.lexsort((parent.xs, parent.ys, -nbr, pri_key))
+    movers = np.sort(order[:n_move])
+
+    keep = np.ones(len(parent), bool)
+    keep[movers] = False
+    base_y, base_x = parent.ys[keep], parent.xs[keep]
+    base_mask = np.zeros(footprint.shape, bool)
+    base_mask[base_y, base_x] = True
+
+    # destination capacity is measured on LEGAL pixels that no surviving dot
+    # blocks, otherwise the destination set is chosen from phantom space
+    free = np.asarray(allowed, bool) & ~spacing_blocked(base_mask, min_nn)
+    ab = block_counts(free, free, block_px)
+
+    okb = (ab > 0) & np.isfinite(bp)
+    if not okb.any():
+        raise ValueError("no destination block holds any legal placement pixel")
+    if direction == "concentrate":
+        ranked = np.argsort(-np.where(okb, bp, -np.inf), axis=None, kind="stable")
+    else:
+        ranked = np.argsort(np.where(okb, bp, np.inf), axis=None, kind="stable")
+    cum, dest_blocks = 0, []
+    need = dest_capacity_factor * n_move
+    for kb in ranked:
+        if not np.isfinite(bp.flat[kb]) or not okb.flat[kb]:
+            continue
+        dest_blocks.append(int(kb))
+        cum += int(ab.flat[kb])
+        if cum >= need:
+            break
+    dest_b = np.zeros((nby, nbx), bool)
+    for kb in dest_blocks:
+        dest_b.flat[kb] = True
+    H, W = footprint.shape
+    dest = np.repeat(np.repeat(dest_b, block_px, 0), block_px, 1)[:H, :W]
+
+    cand = allowed & dest & ~base_mask
+    placed = _greedy_place_spaced(base_mask, cand, np.where(footprint, w, 0.0),
+                                  n_move, min_nn=min_nn, valid=footprint)
+    if int(placed.sum()) != n_move:
+        raise ValueError(f"placement shortfall: {int(placed.sum())} != {n_move}")
+    py, px = np.nonzero(placed)
+
+    ys = np.r_[base_y, py]
+    xs = np.r_[base_x, px]
+    ps = np.r_[parent.p[keep], np.full(n_move, float(np.median(parent.p)))]
+    out = Dots(ys, xs, ps)
+    if len(out) != len(parent):
+        raise ValueError("count not preserved")
+
+    after = block_density_cv_pair(out, footprint, block_px)
+    dbp = bp[out.ys // block_px, out.xs // block_px]
+    from_tree = cKDTree(np.c_[out.ys, out.xs])
+    nn_out, _ = from_tree.query(np.c_[out.ys, out.xs], k=2)
+    v = Variant(
+        "CONCENTRATION", value or f"blk{block_px}px_frac{frac:.2f}", out,
+        len(parent), _changed(parent, out),
+        stats={
+            "n_moved": int(n_move),
+            "direction": direction,
+            "block_px": int(block_px),
+            "block_size_km": block_px / 10.0,
+            "frac_target": float(frac),
+            "n_destination_blocks": len(dest_blocks),
+            "destination_block_px": int(cum),
+            "dest_capacity_factor": float(dest_capacity_factor),
+            "mean_block_prior_movers": float(np.mean(dot_bp[movers])),
+            "mean_block_prior_all_parent_dots": float(np.mean(dot_bp)),
+            "mean_block_prior_after": float(np.mean(dbp)),
+            "cv_count_before": before["cv_count"],
+            "cv_count_after": after["cv_count"],
+            "cv_density_before": before["cv_density"],
+            "cv_density_after": after["cv_density"],
+            "mean_dots_per_network_px_before": before["mean_dots_per_network_px"],
+            "mean_dots_per_network_px_after": after["mean_dots_per_network_px"],
+            "min_nn_px_after": float(nn_out[:, 1].min()),
+            "min_nn_px_before": float(tree.query(
+                np.c_[parent.ys, parent.xs], k=2)[0][:, 1].min()),
+            "count_preserved": len(out) == len(parent),
+        },
+    )
+    v.check_change()
+    return v

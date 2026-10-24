@@ -215,3 +215,50 @@ gitignored and not redistributed. No new external data was introduced.
 2. Every band in `training_features.tif` encodes `3,061` in-footprint pixels (`0.06%`; `3,073` on Band 6) with float32 sentinel `-3.4028235e+38`, which passes `np.isfinite()`. Reading without `masked=True` treats nodata pixels as extreme negative finite values.
 
 **Decision.** `scripts/build_snap_scarp_variants.py` reads `training_features.tif` with `ds.read(b, masked=True).filled(np.nan)` (plus `> -1e30` guard) and uses unsigned **`Band 5 (iso_grav_anom_slope)`** paired with the piedmont break-in-slope inflection `||grad(det_elev_slope)||` (`Band 19`). Furthermore, enforcing literal `"Same count, same exclusions"` (`d_cat > 2.0 px` on both kept and moved dots, rather than a one-way `d_cat > 3.0` membrane on moved dots) prevents partial depletion of the `2.0 < d_cat <= 3.0` collar (`2,171` vs `2,175` dots, `0.01%` delta vs `-24.7%` under `g0.05`), keeping `SNAPscarp2p0px`, `SNAPscarp1p4px`, and `SNAPpot2p0px` 100% unconfounded with `PRUNE`.
+
+---
+
+## 2026-10-24 (CONCENTRATION session) — a count-preserving CONCENTRATION move cannot hold R0's 2.828 px spacing floor
+
+**Observation.** The H19-5 support is a **1-px-wide skeleton** (121,131 px over a
+123,000 km² area). Counting pixels that are at least `R` px from every one of
+R0's 37,654 dots and also legal (on the skeleton, off catalogue, `d_cat > 3.0`,
+data-valid): `R = 1.0` → 61,472 px; `R = 2.0` → 8,077 px; `R = 2.828` → **90 px**.
+
+**Impact — decision-changing.** The brief's CONCENTRATION recipe ("move 10-20% of
+dots between blocks, count fixed") requires placing 3,765-7,531 new dots. With a
+2.83 px floor there are 90 legal destinations in the entire study area, so the
+recipe as literally specified is impossible, and any implementation that claims to
+preserve spacing is either not moving dots or not telling the truth. Dropping the
+floor to 1.0 px makes the recipe feasible but changes what the experiment tests:
+98-100% of arrivals land within 2.83 px of a surviving dot, i.e. they duplicate part
+of a neighbour's kernel footprint while still paying `+1` of denominator mass.
+
+**Decision.** Built the axis at `min_nn = 1.0` (unique pixels only), and *measured*
+the consequence instead of assuming it: with a flat prior and no spatial
+information at all, the identical swap costs `-0.013` (`catd10`), `-0.016`
+(`phys10`) and `-0.021` (`catdS10`) of model DTI (`model_flat_prior` in
+`evidence/concentration_variants.json`). Those numbers are the bar every prior must
+clear, and they are quoted in `SLOT_PLAN.md` and `docs/SUBMIT.md`. The next axis
+(`ADD_HIGH_PRIOR`, proposed, not built) adds dots instead of swapping them so the
+removal cost disappears.
+
+## 2026-10-24 (CONCENTRATION session) — the brief's block-CV band 0.51-0.59 still matches no defensible definition, and the mirror direction was built because of it
+
+**Observation.** R0's 1 km block-density CV, four ways: all in-footprint blocks
+`1.885`; blocks containing ridge-mask pixels `0.765`; dots per ridge-mask pixel in
+those blocks `0.733`; blocks containing at least one dot `0.619` (the 2026-10-23
+measurement). The quoted optimum `0.51-0.59` sits below every one of them.
+
+**Impact.** The band cannot pick a dose or a sign, so tuning toward it would be
+unfalsifiable. The 2026-10-23 entry additionally requires that any future
+CONCENTRATION axis "state which CV definition it targets and build the
+less-concentrated direction too".
+
+**Decision.** Reported all four readings per variant
+(`block_density_cv` in the evidence file) rather than nominating one as "the"
+definition, and built `catdS10` — the same 10% moved in the opposite direction —
+so the axis is a two-sided test. All three variants raise R0's CV in every
+definition (e.g. network-block density `0.733 → 0.765 / 0.815 / 0.830`), which is
+expected for both directions of a reallocation away from uniform tiling and is why
+the CV is reported but never used to steer a build.

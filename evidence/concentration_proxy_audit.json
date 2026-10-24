@@ -1,0 +1,372 @@
+{
+  "evidence_label": "PROXY",
+  "created_utc": "2026-10-24",
+  "axis": "CONCENTRATION",
+  "purpose": "Report-only catalogue hide-and-recover instrument, single-feature leakage canaries, and public-domain USGS SGMC bedrock fault control; none gates the CONCENTRATION variants.",
+  "hide_and_recover_caveat": "Measured, not assumed: catd10/catd20 move ~10-20% of dots into the catalogue collar and their hide-and-recover values are flat vs R0 (0.004011/0.004015 vs 0.004006), because the instrument withholds whole 20-km buffered components and the dots that moved sit beside the KEPT catalogue, not the withheld one. The instrument is therefore silent on this axis: a flat result here is not evidence of anything about new-fault truth.",
+  "inputs_verified": {
+    "sample_submission": {
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "bytes": 1599597
+    },
+    "existing_faults": {
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "bytes": 425830
+    },
+    "training_features": {
+      "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+      "bytes": 418912844
+    },
+    "parent_r0_zeros": {
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "bytes": 219065
+    },
+    "parent_r0_nan": {
+      "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+      "bytes": 355443
+    },
+    "anc_h19_5": {
+      "sha256": "ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d",
+      "bytes": 1712322
+    },
+    "anc_d1_5": {
+      "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+      "bytes": 1632732
+    },
+    "anc_d2_8": {
+      "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+      "bytes": 1603424
+    },
+    "anc_solo_d2_8": {
+      "sha256": "2fc94a38d77f74d4f4ed1a97a83e7bb71a1ceea090515ec641e6681cc47c44c8",
+      "bytes": 830036
+    },
+    "gdr_wellspring_in_footprint": {
+      "sha256": "122718e65bdf55aab0ee12ad20d80062f0deb1de957225a61ad880dd5dc196ea",
+      "bytes": 2146771
+    },
+    "ext_geodawn_rad_u8": {
+      "sha256": "c22420f75999030d7cc65c9e31e50d232ea6158423bca051613a18a8b20ba682",
+      "bytes": 26612970
+    },
+    "sgmc_faults_control": {
+      "sha256": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0",
+      "bytes": 198602
+    }
+  },
+  "holdout_protocol": {
+    "implementation": "vendor/gems57/holdout.py buffered_component_draw",
+    "evaluator": "gems57-pooled-hide-v2",
+    "seeds": [
+      20,
+      30
+    ],
+    "whole_component_count": 1223,
+    "withheld_positive_pixels": 22663,
+    "ci_method": "paired 20 km spatial-block bootstrap, 1,000 draws",
+    "scores": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "alpha": 0.2,
+      "beta": 0.8,
+      "triangular_radius_m": 300.0,
+      "pooled": true,
+      "scores": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.004006147174684743,
+          "ci95": [
+            0.0034243961318463374,
+            0.004689525221466778
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 129.29712893913688,
+          "fpw": 70592.1164043663,
+          "fnw": 22533.70287106087
+        },
+        "catd10": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.004010919314602604,
+          "ci95": [
+            0.003439517325858401,
+            0.0046677635969437905
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 129.29712893913688,
+          "fpw": 70400.1164043663,
+          "fnw": 22533.70287106087
+        },
+        "phys10": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0035917046257173354,
+          "ci95": [
+            0.0030619643875281835,
+            0.004170269408845623
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 116.84961047624492,
+          "fpw": 71897.10242741954,
+          "fnw": 22546.15038952376
+        },
+        "catdS10": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0021060181237279167,
+          "ci95": [
+            0.001632260995922938,
+            0.0026262699018686077
+          ],
+          "withheld_positive_pixels": 22663,
+          "tpw": 68.068524313133,
+          "fpw": 70884.7238234449,
+          "fnw": 22594.931475686866
+        }
+      },
+      "best_comparable_control": "R0",
+      "paired_differences": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 4.772139917861261e-06,
+          "ci95": [
+            -5.12802843200525e-05,
+            6.96680986158945e-05
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "phys10": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.0004192146888852689,
+          "ci95": [
+            0.0002081259140237467,
+            0.0007004948868584197
+          ],
+          "withheld_positive_pixels": 22663
+        },
+        "catdS10": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.0019049011908746877,
+          "ci95": [
+            0.001514614239688162,
+            0.0023511155065707215
+          ],
+          "withheld_positive_pixels": 22663
+        }
+      },
+      "bootstrap": {
+        "method": "paired physical spatial-cluster percentile",
+        "clusters": 157,
+        "draws": 1000,
+        "seed": 520810,
+        "confidence": 0.95,
+        "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+      },
+      "implementation_sha256": {
+        "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+        "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+        "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+        "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+      }
+    },
+    "per_fold_dti": {
+      "R0": [
+        0.0033190361096884797,
+        0.004407926168167087,
+        0.0031089001997361824,
+        0.004072828198897818,
+        0.00489997713403107,
+        0.005013980811213483,
+        0.004355576467076173,
+        0.003125934420342564
+      ],
+      "catd10": [
+        0.00339534022069445,
+        0.004518154368881141,
+        0.0030196596463514746,
+        0.004075873073301984,
+        0.005012731583634061,
+        0.005139659714141173,
+        0.004231025735930109,
+        0.003128265961180762
+      ],
+      "phys10": [
+        0.002803172705579581,
+        0.0037371431027084724,
+        0.002931293016426445,
+        0.003951144975941864,
+        0.004182782788676091,
+        0.004220977330061137,
+        0.004122593602191143,
+        0.002892554317374383
+      ],
+      "catdS10": [
+        0.0016130952353384585,
+        0.002592968864803356,
+        0.0011584899871666294,
+        0.0015099428022489873,
+        0.0031353927908147903,
+        0.0034439368988290766,
+        0.0027009824447107897,
+        0.000812132947529278
+      ]
+    },
+    "split_receipts": [
+      {
+        "seed": 20,
+        "folds": [
+          {
+            "fold": "NW",
+            "seed": 20,
+            "held_components": 96,
+            "withheld_positive_pixels": 1923,
+            "eligible_components": 598,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          },
+          {
+            "fold": "NE",
+            "seed": 20,
+            "held_components": 145,
+            "withheld_positive_pixels": 2367,
+            "eligible_components": 628,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          },
+          {
+            "fold": "SW",
+            "seed": 20,
+            "held_components": 223,
+            "withheld_positive_pixels": 3781,
+            "eligible_components": 983,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          },
+          {
+            "fold": "SE",
+            "seed": 20,
+            "held_components": 142,
+            "withheld_positive_pixels": 3250,
+            "eligible_components": 648,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          }
+        ]
+      },
+      {
+        "seed": 30,
+        "folds": [
+          {
+            "fold": "NW",
+            "seed": 30,
+            "held_components": 138,
+            "withheld_positive_pixels": 1919,
+            "eligible_components": 598,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          },
+          {
+            "fold": "NE",
+            "seed": 30,
+            "held_components": 131,
+            "withheld_positive_pixels": 2356,
+            "eligible_components": 628,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          },
+          {
+            "fold": "SW",
+            "seed": 30,
+            "held_components": 203,
+            "withheld_positive_pixels": 3805,
+            "eligible_components": 983,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          },
+          {
+            "fold": "SE",
+            "seed": 30,
+            "held_components": 145,
+            "withheld_positive_pixels": 3262,
+            "eligible_components": 648,
+            "boundary_buffer_px": 12,
+            "feature_buffer_px": 3,
+            "nearest_visible_to_truth_px": 3.1622776601683795,
+            "split_version": "buffered-whole-components-loqo-v2",
+            "evaluation_region_label_blind": true
+          }
+        ]
+      }
+    ]
+  },
+  "leakage_canaries": {
+    "definition": "symmetric AUC=max(AUC,1-AUC) on hidden known-catalogue positives vs non-catalogue negatives in buffered fold regions",
+    "features": {
+      "training_band_3_tmi_hg": {
+        "auc": 0.498777,
+        "symmetric_auc": 0.501223,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "training_band_5_iso_grav_anom_slope": {
+        "auc": 0.551113,
+        "symmetric_auc": 0.551113,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "training_band_19_detrended_elevation_slope": {
+        "auc": 0.55314,
+        "symmetric_auc": 0.55314,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "derived_grad_band_19_piedmont_slope_break": {
+        "auc": 0.568516,
+        "symmetric_auc": 0.568516,
+        "status": "REPORT_ONLY_PASS"
+      }
+    },
+    "max_symmetric_auc": 0.568516,
+    "stop_and_investigate_if_any_gt_0_90": false
+  },
+  "sgmc_control": {
+    "evidence_label": "PROXY",
+    "source": "manifest-pinned USGS SGMC derived fault control (https://www.sciencebase.gov/catalog/item/5888bf4fe4b05ccb964bab9d, US Public Domain)",
+    "truth_pixels_after_catalogue_and_3px_exclusion": 62703,
+    "dti_by_arm": {
+      "R0": 0.09606,
+      "catd10": 0.092346,
+      "phys10": 0.087633,
+      "catdS10": 0.08921
+    },
+    "delta_vs_r0": {
+      "R0": 0.0,
+      "catd10": -0.003714,
+      "phys10": -0.008427,
+      "catdS10": -0.00685
+    }
+  },
+  "warning": "These are catalogue/SGMC PROXY diagnostics, never live public scores, private-set scores, or pass/fail gates."
+}

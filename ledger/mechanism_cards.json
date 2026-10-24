@@ -1,68 +1,103 @@
 {
-  "h33-h33-2-b2-PRUNEp2.5px-refill-20261023-6d7a61ba": {
-    "parent": "h33-h33-2-b2",
-    "axis": "PRUNE",
-    "value": "p2.5px-refill",
-    "hypothesis": "At fixed mass, removing every R0 dot within 2.5 pixels of the known-fault catalogue and reallocating that mass to eligible un-emitted H19-5 ridge pixels improves distance-tolerant fault detection if near-catalogue kernel overlap wastes precision on mapped traces.",
-    "mechanism": "A triangular 300 m kernel gives less incremental credit when emitted mass lies close to already-known faults. Each replacement is selected by greedy exact marginal gain on the declared label-free prior; R0 count stays at 37,654. This is a controlled collar-radius change, not a mass change.",
-    "non_fault_mimic": "Magnetic/gravity edges and H19-5 lineaments can trace lithologic contacts, caldera ring fractures, or erosional scarps rather than brittle faults.",
-    "predicted_sign_and_size": "MODEL:+0.001 vs R0, with wide [-0.010,+0.012] scenario range; MODEL only, not a score.",
-    "falsifier": "A receipt change <= -0.01 for the 2.5/3.5 px rungs, or >= +0.01 gain for the 4.5 px rung, would respectively reject a beneficial inner collar or reject the predicted outer-collar turnover.",
-    "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+ "h33-h33-2-b2-PRUNEp2.5px-refill-20261023-6d7a61ba": {
+  "parent": "h33-h33-2-b2",
+  "axis": "PRUNE",
+  "value": "p2.5px-refill",
+  "hypothesis": "At fixed mass, removing every R0 dot within 2.5 pixels of the known-fault catalogue and reallocating that mass to eligible un-emitted H19-5 ridge pixels improves distance-tolerant fault detection if near-catalogue kernel overlap wastes precision on mapped traces.",
+  "mechanism": "A triangular 300 m kernel gives less incremental credit when emitted mass lies close to already-known faults. Each replacement is selected by greedy exact marginal gain on the declared label-free prior; R0 count stays at 37,654. This is a controlled collar-radius change, not a mass change.",
+  "non_fault_mimic": "Magnetic/gravity edges and H19-5 lineaments can trace lithologic contacts, caldera ring fractures, or erosional scarps rather than brittle faults.",
+  "predicted_sign_and_size": "MODEL:+0.001 vs R0, with wide [-0.010,+0.012] scenario range; MODEL only, not a score.",
+  "falsifier": "A receipt change <= -0.01 for the 2.5/3.5 px rungs, or >= +0.01 gain for the 4.5 px rung, would respectively reject a beneficial inner collar or reject the predicted outer-collar turnover.",
+  "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+ },
+ "h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277": {
+  "parent": "h33-h33-2-b2",
+  "axis": "PRUNE",
+  "value": "p3.5px-refill",
+  "hypothesis": "At fixed mass, removing every R0 dot within 3.5 pixels of the known-fault catalogue and reallocating that mass to eligible un-emitted H19-5 ridge pixels improves distance-tolerant fault detection if near-catalogue kernel overlap wastes precision on mapped traces.",
+  "mechanism": "A triangular 300 m kernel gives less incremental credit when emitted mass lies close to already-known faults. Each replacement is selected by greedy exact marginal gain on the declared label-free prior; R0 count stays at 37,654. This is a controlled collar-radius change, not a mass change.",
+  "non_fault_mimic": "Magnetic/gravity edges and H19-5 lineaments can trace lithologic contacts, caldera ring fractures, or erosional scarps rather than brittle faults.",
+  "predicted_sign_and_size": "MODEL:+0.003 vs R0, with wide [-0.008,+0.015] scenario range; MODEL only, not a score.",
+  "falsifier": "A receipt change <= -0.01 for the 2.5/3.5 px rungs, or >= +0.01 gain for the 4.5 px rung, would respectively reject a beneficial inner collar or reject the predicted outer-collar turnover.",
+  "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+ },
+ "h33-h33-2-b2-PRUNEp4.5px-refill-20261023-ebace30d": {
+  "parent": "h33-h33-2-b2",
+  "axis": "PRUNE",
+  "value": "p4.5px-refill",
+  "hypothesis": "At fixed mass, removing every R0 dot within 4.5 pixels of the known-fault catalogue and reallocating that mass to eligible un-emitted H19-5 ridge pixels improves distance-tolerant fault detection if near-catalogue kernel overlap wastes precision on mapped traces.",
+  "mechanism": "A triangular 300 m kernel gives less incremental credit when emitted mass lies close to already-known faults. Each replacement is selected by greedy exact marginal gain on the declared label-free prior; R0 count stays at 37,654. This is a controlled collar-radius change, not a mass change.",
+  "non_fault_mimic": "Magnetic/gravity edges and H19-5 lineaments can trace lithologic contacts, caldera ring fractures, or erosional scarps rather than brittle faults.",
+  "predicted_sign_and_size": "MODEL:-0.004 vs R0, with wide [-0.018,+0.008] scenario range; MODEL only, not a score.",
+  "falsifier": "A receipt change <= -0.01 for the 2.5/3.5 px rungs, or >= +0.01 gain for the 4.5 px rung, would respectively reject a beneficial inner collar or reject the predicted outer-collar turnover.",
+  "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+ },
+ "h33-h33-2-b2-SNAPscarp2p0px-20261023-2a65fe24": {
+  "parent": "h33-h33-2-b2",
+  "axis": "SNAP",
+  "value": "scarp2p0px",
+  "hypothesis": "GeoDAWN's 400 m line spacing, 50-60 deg normal-fault hanging-wall dip projection, and D2.8's unweighted NW-seeded BFS thinning displace R0 dots by 100-200 m cross-strike from surface fault traces. Snapping <=2.0 px (200 m) onto the joint scarp slope + piedmont break-in-slope + TMI/gravity horizontal gradient crest while preserving D2.8's >=2.8 px Poisson spacing raises triangular-kernel credit k(d)=1-d/3 without along-strike dot clumping.",
+  "mechanism": "At fixed S=37,654, DTI = T / (0.2T + 0.2(S-M) + 0.8|G|) rises ~0.26*DTI per unit fractional gain in T. Shifting dots <=200 m cross-strike onto the piedmont-to-facet slope inflection (0.35*pct(det_elev_slope) + 0.35*pct(||grad det_elev_slope||) + 0.20*pct(tmi_hg) + 0.10*pct(iso_grav_anom_slope)) increases k(d) by +0.33 per 100 m of cross-strike error removed, while open-disc spacing d^2 >= 2.8^2 prevents adjacent dots from collapsing onto redundant kernel footprints.",
+  "non_fault_mimic": "Erosional range-front facets, incised alluvial-fan terrace risers, Plio-Pleistocene pluvial lake shorelines (Lahontan/Bonneville), and resistant volcanic cliff ledges produce steep slope breaks within 200 m of concealed fault traces without hosting brittle surface rupture.",
+  "predicted_sign_and_size": "MODEL:+0.012 vs R0, with scenario range [-0.006,+0.025]; MODEL only, never a score.",
+  "falsifier": "A live receipt delta <= -0.01 vs R0 falsifies <=200 m surface-scarp localization and indicates new-fault truth is dominated by concealed intrabasinal traces or eroded facets offset from the topographic inflection; |delta| < 0.01 is no evidence.",
+  "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+ },
+ "h33-h33-2-b2-SNAPscarp1p4px-20261023-01fb4acc": {
+  "parent": "h33-h33-2-b2",
+  "axis": "SNAP",
+  "value": "scarp1p4px",
+  "hypothesis": "Restricting the identical joint scarp + break-in-slope + TMI/gravity edge snap to an 8-connected Moore window (<=sqrt(2) px = 141 m) corrects D2.8's 1-px NW ribbon-edge bias and sub-grid alignment error while preventing 2-px (200 m) upslope overshoot onto eroded footwall facets.",
+  "mechanism": "Uses the exact same response surface, exclusions (d_cat > 2.0), count (37,654), and Poisson spacing (min_nn >= 2.828 px) as scarp2p0px, changing ONLY max_shift from 2.0 px to sqrt(2) px. Comparing scarp1p4px vs scarp2p0px isolates capture radius (141 m vs 200 m) on identical physics.",
+  "non_fault_mimic": "Local 100-141 m topographic terrace edges, talus aprons, and shallow volcanic dike margins adjacent to mapped H19-5 geophysical corridors.",
+  "predicted_sign_and_size": "MODEL:+0.008 vs R0, with scenario range [-0.004,+0.018]; MODEL only, never a score.",
+  "falsifier": "If scarp1p4px beats scarp2p0px by >= +0.01 on live receipts, the 200 m window overshoots onto footwall facets; if both trail R0 by >= 0.01, geomorphic scarp snapping degrades fault localization.",
+  "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+ },
+ "h33-h33-2-b2-SNAPpot2p0px-20261023-41697f8c": {
+  "parent": "h33-h33-2-b2",
+  "axis": "SNAP",
+  "value": "pot2p0px",
+  "hypothesis": "Pure potential-field horizontal-gradient control: if unmapped test faults are predominantly concealed intrabasinal structures beneath Quaternary playa/alluvial fill with no surface scarp, snapping <=2.0 px to 0.65*pct(tmi_hg) + 0.35*pct(iso_grav_anom_slope) centers dots over subsurface susceptibility/density contacts without alluvial-channel or shoreline erosion mimics. Conversely, on dipping range-front normal faults, 63 deg magnetic inclination and hanging-wall dip projection shift potential-field gradients 150-300 m off the surface trace.",
+  "mechanism": "Identical <=2.0 px window, count (37,654), exclusions (d_cat > 2.0), and spacing (min_nn >= 2.828 px) as scarp2p0px, removing only the topographic scarp/break terms. Uses unsigned Band 5 (iso_grav_anom_slope) rather than signed E-W Band 18 (dg/dx) so east-dipping and west-dipping normal faults are weighted symmetrically.",
+  "non_fault_mimic": "Unfaulted plutonic intrusive margins, caldera ring dikes, tilted ash-flow tuff pinchouts, and hanging-wall down-dip projection offsets of moderately dipping normal faults.",
+  "predicted_sign_and_size": "MODEL:-0.002 vs R0, with scenario range [-0.014,+0.010]; MODEL only, never a score.",
+  "falsifier": "A live receipt gain >= +0.01 over both R0 and scarp2p0px falsifies our surface-scarp dominance model and proves hidden test faults are predominantly blind/concealed basement contacts best localized by potential fields alone.",
+  "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+ },
+ "cards": {
+  "catd10": {
+   "axis": "CONCENTRATION",
+   "value": "catd10",
+   "variant_id": "h33-h33-2-b2-CONCENTRATIONcatd10-20261024-c313194a",
+   "hypothesis": "Newly mapped faults are mostly new geometry of existing systems, so the number of new-fault pixels per km^2 tracks the density of already-mapped structure. R0 spreads one dot every ~3 px uniformly over the H19-5 ridge mask, which carries 0.41 dots per km^2-scale block regardless of how much known structure the block holds; moving 10% of the dots from the lowest-density 1 km blocks to the highest raises kernel credit where truth pixels are most numerous.",
+   "mechanism": "DTI = T / (0.2T + 0.2(S-M) + 0.8|G|) at fixed S. Moving a dot from a block with near-zero known-structure density to one with 3x the regional density raises the expected max-kernel credit it earns (k(d) = 1 - d/3) and simultaneously raises M, shrinking the wasted-mass term S-M. Both terms push the ratio up; no dot count, mass, spacing or catalogue-distance invariant changes.",
+   "non_fault_mimic": "Mapping effort: the catalogue is denser where access, exposure and basin-hosted basin-range normal faults made 1:250k-1:24k compilation easy, not necessarily where 2020s geothermal-focused mapping found new faults. If new truth is instead concentrated in poorly mapped uplands (lidar/surface-imaging targets), this prior is anti-correlated with truth and the variant loses.",
+   "predicted_sign_and_size": "MODEL:+0.013 (range [-0.013,+0.040], MODEL)",
+   "falsifier": "A live receipt delta <= -0.01 vs R0 falsifies the known-structure-density prior at 1 km and says the catalogue is a mapping-effort artefact; |delta| < 0.01 is no evidence either way (public chunks only).",
+   "evidence_label": "MODEL"
   },
-  "h33-h33-2-b2-PRUNEp3.5px-refill-20261023-a121a277": {
-    "parent": "h33-h33-2-b2",
-    "axis": "PRUNE",
-    "value": "p3.5px-refill",
-    "hypothesis": "At fixed mass, removing every R0 dot within 3.5 pixels of the known-fault catalogue and reallocating that mass to eligible un-emitted H19-5 ridge pixels improves distance-tolerant fault detection if near-catalogue kernel overlap wastes precision on mapped traces.",
-    "mechanism": "A triangular 300 m kernel gives less incremental credit when emitted mass lies close to already-known faults. Each replacement is selected by greedy exact marginal gain on the declared label-free prior; R0 count stays at 37,654. This is a controlled collar-radius change, not a mass change.",
-    "non_fault_mimic": "Magnetic/gravity edges and H19-5 lineaments can trace lithologic contacts, caldera ring fractures, or erosional scarps rather than brittle faults.",
-    "predicted_sign_and_size": "MODEL:+0.003 vs R0, with wide [-0.008,+0.015] scenario range; MODEL only, not a score.",
-    "falsifier": "A receipt change <= -0.01 for the 2.5/3.5 px rungs, or >= +0.01 gain for the 4.5 px rung, would respectively reject a beneficial inner collar or reject the predicted outer-collar turnover.",
-    "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+  "phys10": {
+   "axis": "CONCENTRATION",
+   "value": "phys10",
+   "variant_id": "h33-h33-2-b2-CONCENTRATIONphys10-20261024-b93a4cf8",
+   "hypothesis": "Where magnetic horizontal gradient, isostatic-gravity slope and detrended-elevation slope are jointly high, the crust is more intensely broken per km^2, so truth density per km^2 is high there. This prior is built only from physics, so unlike the catalogue prior it cannot inherit mapping effort or exposure bias.",
+   "mechanism": "Same fixed-S budget trade as catd10, with the block prior replaced by the 0.40 pct(tmi_hg) + 0.35 pct(iso_grav_anom_slope) + 0.25 pct(det_elev_slope) mix smoothed to 1 km. Differences ONLY which blocks are donors and receivers: same count, same mass, same spacing floor, same catalogue clearance.",
+   "non_fault_mimic": "The same bands respond to non-tectonic contrasts: Tertiary volcanic flow margins, caldera ring fractures, pluton contacts, and lithologic scarps in resistant tuff. Because the physics mix is also what the H19-5 ridge mask was built to track, the implied redistribution is the mildest of the three variants.",
+   "predicted_sign_and_size": "MODEL:-0.008 (range [-0.014,-0.002], MODEL)",
+   "falsifier": "If phys10 and catd10 are both negative by >= 0.01 while their implied redistributions are near-disjoint, the axis itself (km-scale reallocation) is wrong, not just the prior.",
+   "evidence_label": "MODEL"
   },
-  "h33-h33-2-b2-PRUNEp4.5px-refill-20261023-ebace30d": {
-    "parent": "h33-h33-2-b2",
-    "axis": "PRUNE",
-    "value": "p4.5px-refill",
-    "hypothesis": "At fixed mass, removing every R0 dot within 4.5 pixels of the known-fault catalogue and reallocating that mass to eligible un-emitted H19-5 ridge pixels improves distance-tolerant fault detection if near-catalogue kernel overlap wastes precision on mapped traces.",
-    "mechanism": "A triangular 300 m kernel gives less incremental credit when emitted mass lies close to already-known faults. Each replacement is selected by greedy exact marginal gain on the declared label-free prior; R0 count stays at 37,654. This is a controlled collar-radius change, not a mass change.",
-    "non_fault_mimic": "Magnetic/gravity edges and H19-5 lineaments can trace lithologic contacts, caldera ring fractures, or erosional scarps rather than brittle faults.",
-    "predicted_sign_and_size": "MODEL:-0.004 vs R0, with wide [-0.018,+0.008] scenario range; MODEL only, not a score.",
-    "falsifier": "A receipt change <= -0.01 for the 2.5/3.5 px rungs, or >= +0.01 gain for the 4.5 px rung, would respectively reject a beneficial inner collar or reject the predicted outer-collar turnover.",
-    "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
-  },
-  "h33-h33-2-b2-SNAPscarp2p0px-20261023-2a65fe24": {
-    "parent": "h33-h33-2-b2",
-    "axis": "SNAP",
-    "value": "scarp2p0px",
-    "hypothesis": "GeoDAWN's 400 m line spacing, 50-60 deg normal-fault hanging-wall dip projection, and D2.8's unweighted NW-seeded BFS thinning displace R0 dots by 100-200 m cross-strike from surface fault traces. Snapping <=2.0 px (200 m) onto the joint scarp slope + piedmont break-in-slope + TMI/gravity horizontal gradient crest while preserving D2.8's >=2.8 px Poisson spacing raises triangular-kernel credit k(d)=1-d/3 without along-strike dot clumping.",
-    "mechanism": "At fixed S=37,654, DTI = T / (0.2T + 0.2(S-M) + 0.8|G|) rises ~0.26*DTI per unit fractional gain in T. Shifting dots <=200 m cross-strike onto the piedmont-to-facet slope inflection (0.35*pct(det_elev_slope) + 0.35*pct(||grad det_elev_slope||) + 0.20*pct(tmi_hg) + 0.10*pct(iso_grav_anom_slope)) increases k(d) by +0.33 per 100 m of cross-strike error removed, while open-disc spacing d^2 >= 2.8^2 prevents adjacent dots from collapsing onto redundant kernel footprints.",
-    "non_fault_mimic": "Erosional range-front facets, incised alluvial-fan terrace risers, Plio-Pleistocene pluvial lake shorelines (Lahontan/Bonneville), and resistant volcanic cliff ledges produce steep slope breaks within 200 m of concealed fault traces without hosting brittle surface rupture.",
-    "predicted_sign_and_size": "MODEL:+0.012 vs R0, with scenario range [-0.006,+0.025]; MODEL only, never a score.",
-    "falsifier": "A live receipt delta <= -0.01 vs R0 falsifies <=200 m surface-scarp localization and indicates new-fault truth is dominated by concealed intrabasinal traces or eroded facets offset from the topographic inflection; |delta| < 0.01 is no evidence.",
-    "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
-  },
-  "h33-h33-2-b2-SNAPscarp1p4px-20261023-01fb4acc": {
-    "parent": "h33-h33-2-b2",
-    "axis": "SNAP",
-    "value": "scarp1p4px",
-    "hypothesis": "Restricting the identical joint scarp + break-in-slope + TMI/gravity edge snap to an 8-connected Moore window (<=sqrt(2) px = 141 m) corrects D2.8's 1-px NW ribbon-edge bias and sub-grid alignment error while preventing 2-px (200 m) upslope overshoot onto eroded footwall facets.",
-    "mechanism": "Uses the exact same response surface, exclusions (d_cat > 2.0), count (37,654), and Poisson spacing (min_nn >= 2.828 px) as scarp2p0px, changing ONLY max_shift from 2.0 px to sqrt(2) px. Comparing scarp1p4px vs scarp2p0px isolates capture radius (141 m vs 200 m) on identical physics.",
-    "non_fault_mimic": "Local 100-141 m topographic terrace edges, talus aprons, and shallow volcanic dike margins adjacent to mapped H19-5 geophysical corridors.",
-    "predicted_sign_and_size": "MODEL:+0.008 vs R0, with scenario range [-0.004,+0.018]; MODEL only, never a score.",
-    "falsifier": "If scarp1p4px beats scarp2p0px by >= +0.01 on live receipts, the 200 m window overshoots onto footwall facets; if both trail R0 by >= 0.01, geomorphic scarp snapping degrades fault localization.",
-    "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
-  },
-  "h33-h33-2-b2-SNAPpot2p0px-20261023-41697f8c": {
-    "parent": "h33-h33-2-b2",
-    "axis": "SNAP",
-    "value": "pot2p0px",
-    "hypothesis": "Pure potential-field horizontal-gradient control: if unmapped test faults are predominantly concealed intrabasinal structures beneath Quaternary playa/alluvial fill with no surface scarp, snapping <=2.0 px to 0.65*pct(tmi_hg) + 0.35*pct(iso_grav_anom_slope) centers dots over subsurface susceptibility/density contacts without alluvial-channel or shoreline erosion mimics. Conversely, on dipping range-front normal faults, 63 deg magnetic inclination and hanging-wall dip projection shift potential-field gradients 150-300 m off the surface trace.",
-    "mechanism": "Identical <=2.0 px window, count (37,654), exclusions (d_cat > 2.0), and spacing (min_nn >= 2.828 px) as scarp2p0px, removing only the topographic scarp/break terms. Uses unsigned Band 5 (iso_grav_anom_slope) rather than signed E-W Band 18 (dg/dx) so east-dipping and west-dipping normal faults are weighted symmetrically.",
-    "non_fault_mimic": "Unfaulted plutonic intrusive margins, caldera ring dikes, tilted ash-flow tuff pinchouts, and hanging-wall down-dip projection offsets of moderately dipping normal faults.",
-    "predicted_sign_and_size": "MODEL:-0.002 vs R0, with scenario range [-0.014,+0.010]; MODEL only, never a score.",
-    "falsifier": "A live receipt gain >= +0.01 over both R0 and scarp2p0px falsifies our surface-scarp dominance model and proves hidden test faults are predominantly blind/concealed basement contacts best localized by potential fields alone.",
-    "decision_rule": "Treat absolute live change <0.01 as no evidence; compare only human-provided receipt scores."
+  "catdS10": {
+   "axis": "CONCENTRATION",
+   "value": "catdS10",
+   "variant_id": "h33-h33-2-b2-CONCENTRATIONcatdS10-20261024-6b87f2d7",
+   "hypothesis": "Mirror image of catd10, built because the previous session's IRREGULARITIES entry requires both directions before a CONCENTRATION result can be read as a sign. It moves the same 10% of dots between the same 1 km blocks in the opposite direction, so a monotone (catd10 > R0 > catdS10) or inverted (catdS10 > R0 > catd10) response identifies the sign of the catalogue-density prior; a flat response on both sides says the metric is insensitive to km-scale reallocation at this count.",
+   "mechanism": "Same fixed-S bookkeeping as catd10 with donor and receiver block sets swapped. If the known-structure-density prior is informative, this variant must LOSE: it takes the most truth-dense dots away and re-places them where known structure is absent. Its predicted loss is therefore as informative as catd10's predicted gain.",
+   "non_fault_mimic": "If new-fault truth is genuinely concentrated AWAY from mapped structure (poorly exposed basins, young volcanic terrain, areas no compiler has mapped), this mirror variant wins and catd10 loses \u2014 the same evidence, opposite conclusion.",
+   "predicted_sign_and_size": "MODEL:-0.013 (range [-0.040,+0.013], MODEL)",
+   "falsifier": "catdS10 >= catd10 + 0.01 falsifies the known-structure-density prior outright. Both arms within 0.01 of R0 means the axis is inert at 10% and should not be spent on again at this dose.",
+   "evidence_label": "MODEL"
   }
+ }
 }
