@@ -19,37 +19,51 @@
     <a href="HYPOTHESES.html">Untested hypotheses</a> ·
     <a href="REPO_REVIEW_20261024.md">Three-pass review</a>
   </nav>
-  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE.</strong> A SHA-verified public witness has positive support on all 5,167,373 footprint cells of the matching template. Any nonempty in-footprint candidate therefore has 100% forward overlap, above the required 70% stop threshold. This is a <strong>REGISTRY-MEASUREMENT</strong>, not a score. It is one binding witness, not an exhaustive public scan. No candidate or weekly slot was generated/used in this review.</div>
+  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE.</strong> A SHA-verified public witness has positive support on all 5,167,373 footprint cells of the matching template. Any nonempty in-footprint candidate therefore has 100% forward overlap, above the required 70% stop threshold. This is a <strong>REGISTRY-MEASUREMENT</strong>, not a score. It is one binding witness, not an exhaustive public scan. No new candidate or weekly slot was generated/used in this review.</div>
   <p><a href="downloads/current_status.json">Machine-readable current status</a> · <a href="downloads/current_review_run_card.json">Current review run card</a> · <a href="downloads/breakline_public_registry_witness17.json">Hash-verified witness receipt</a> · <a href="REPO_REVIEW_20261024.md">Review, source boundaries, and limitations</a></p>
 </header>
 <main>
 <section class="download-card" id="research-download">
-  <h2>One-click research download — ANASIG historical artifact — DO NOT SUBMIT</h2>
-  <div class="banner banner-ok"><strong>FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH.</strong> The saved audit reports a single-band float32 GeoTIFF with template-matching CRS/shape/transform, finite values in [0,1], no NaN inside the footprint, and the zeros-outside convention.</div>
-  <div class="banner banner-warn"><strong>NOT CLEARED / DO NOT SUBMIT.</strong> This historical candidate fails the holdout-best decision rule and the binding public witness overlap stop. Download is for research and auditing only.</div>
-  <p class="filename">h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif</p>
+  <h2>Latest prior research artifact — SPRINGALIGN f33Ctop — DO NOT SUBMIT</h2>
+  <div class="banner banner-ok"><strong>FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH.</strong> The saved exact-byte audit reports one float32 band, template-matching CRS/shape/transform, values in [0,1], no NaN inside the footprint, and the zeros-outside encoding. The local 28-raster comparison passed its numeric threshold only within that local scope.</div>
+  <div class="banner banner-warn"><strong>NEGATIVE — DO NOT SUBMIT.</strong> Its saved <strong>HOLDOUT-DTI</strong> is below the saved RELIEF p10 holdout best. Independently, the binding full-footprint-positive public witness stops every nonempty in-footprint candidate. “Locally unique” is not global clearance.</div>
+  <p class="filename">h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif</p>
   <p>
-    <a class="btn" href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif" download>Download research GeoTIFF — DO NOT SUBMIT (.tif)</a>
-    <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.zip" download>Download research ZIP — DO NOT SUBMIT (one TIFF)</a>
+    <a class="btn" href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif" download>Download SPRINGALIGN research GeoTIFF — DO NOT SUBMIT (.tif)</a>
+    <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.zip" download>Download research ZIP — DO NOT SUBMIT (one TIFF)</a>
   </p>
   <dl class="meta">
-    <div><dt>Archive-only name</dt><dd><code>GEMSDOE92-ANASIG-f45Atop-20261024</code></dd></div>
-    <div><dt>Archive-only note (84 chars)</dt><dd><code>h33-h33-2-b2; ANASIG f45Atop 16944 far dots on analytic-signal ridges &gt;3px off H19-5</code></dd></div>
-    <div><dt>SHA-256</dt><dd><code>68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5</code></dd></div>
-    <div><dt>Audit</dt><dd><a href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-audit.json">Exact-byte format/status audit</a> · <a href="downloads/anasig_run_card.json">Historical run card</a></dd></div>
+    <div><dt>Project/run-card ID</dt><dd><code>GEMSDOE92-SPRINGALIGN-f33Ctop-20261025</code> <small>(repository identifier; do not assume the portal has a separate Name field)</small></dd></div>
+    <div><dt>Optional form note (94 characters)</dt><dd><code>h33-h33-2-b2; SPRINGALIGN f33Ctop 12426 far dots on spring-pair alignment lines &gt;3px off H19-5</code></dd></div>
+    <div><dt>SHA-256</dt><dd><code>1772ad5c62506b6b380e221d2202b583edf0a5be4f96916af655e0478eba11b1</code></dd></div>
+    <div><dt>HOLDOUT-DTI</dt><dd><code>gems57-pooled-hide-v2</code>, 22,663 withheld positives: <strong>0.0048650690</strong>, 95% CI [0.0040254482, 0.0057850159]. Paired difference vs saved holdout-best RELIEF p10: −0.0011800634, 95% CI [−0.0020652571, −0.0003371520]. This is a local catalogue hide-and-recover result, not a competition score.</dd></div>
+    <div><dt>Registry measurement</dt><dd>Local 28-raster check: surface worst |ρ| 0.009; final-dot maximum forward overlap 0.670 (vs R0). Public full-footprint-positive witness: forward overlap 1.0 for every nonempty in-footprint candidate under the literal rule. Public scope is one binding witness, not a fresh full scan.</dd></div>
+    <div><dt>Saved audit / run card</dt><dd><a href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-audit.json">Format and status audit</a> · <a href="downloads/springalign_run_card.json">SPRINGALIGN experiment run card</a> · <a href="../evidence/springalign_run_card.json">Source evidence card</a></dd></div>
   </dl>
+  <p><strong>Provenance warning:</strong> the filename is stamped <code>20261025</code>, one day later than this review’s system date. The source run card has no generation timestamp; the filename date is not independently verified. Preserve as a historical research artifact and do not present the timestamp as authenticated.</p>
+</section>
+
+<section class="download-card">
+  <h2>Earlier research download — ANASIG f45Atop — DO NOT SUBMIT</h2>
+  <div class="banner banner-ok"><strong>FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH.</strong> The historical ANASIG zeros-outside GeoTIFF has a saved exact-byte audit.</div>
+  <div class="banner banner-warn"><strong>NEGATIVE / DO NOT SUBMIT.</strong> The exact artifact has a public-witness forward overlap of 1.0 and is below the saved holdout best.</div>
+  <p class="filename">h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif</p>
+  <p><a class="btn btn-ghost" href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif" download>Download ANASIG research GeoTIFF — DO NOT SUBMIT</a>
+     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.zip" download>Research ZIP (one TIFF) — DO NOT SUBMIT</a></p>
+  <p>Archive-only name: <code>GEMSDOE92-ANASIG-f45Atop-20261024</code> · archive-only note (84 chars): <code>h33-h33-2-b2; ANASIG f45Atop 16944 far dots on analytic-signal ridges &gt;3px off H19-5</code> · SHA-256: <code>68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5</code>. These fields are for traceability only.</p>
+  <p><a href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-audit.json">ANASIG exact-byte audit</a> · <a href="downloads/anasig_run_card.json">Historical ANASIG run card</a></p>
 </section>
 
 <section>
   <h2>What the reported 0.2778 means</h2>
-  <p>The supplied GEMSDOE32 page associates `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros` with <strong>CLAIM 0.2778</strong>; this repository has no organizer receipt for that number. A fixed prediction budget, spatial thinning of redundant line pixels, and avoiding the known-fault catalogue are plausible contributors, but no receipt/private target analysis here identifies a causal effect. The prompt’s 0.3195 and 0.4413 leaderboard snapshots conflict and were not refreshed from the official competition site in this network-restricted review.</p>
-  <p>The best saved local result is <strong>HOLDOUT-DTI</strong> (`gems57-pooled-hide-v2`, 22,663 withheld positives): 0.006045, 95% CI [0.005187, 0.006927]. It is a catalogue hide-and-recover estimate, was not rerun in this review, and is not a competition score or live leaderboard result. Its associated RELIEF raster is duplicate-stopped. Full evidence-labeled analysis: <a href="ANALYSIS.md">ANALYSIS.md</a>.</p>
+  <p>The supplied GEMSDOE32 page associates <code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros</code> with <strong>CLAIM 0.2778</strong>; this repository has no organizer receipt for that number. A fixed prediction budget, spatial thinning of redundant line pixels, and avoiding the known-fault catalogue are plausible contributors, but no receipt/private target analysis here identifies a causal effect. The prompt’s 0.3195 and 0.4413 leaderboard snapshots conflict and were not refreshed from the official competition site in this network-restricted review.</p>
+  <p>The best saved local result is <strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives): 0.0060451324, 95% CI [0.0051870225, 0.0069268388]. It is a catalogue hide-and-recover estimate, was not rerun in this review, and is not a competition score. Its associated RELIEF raster is duplicate-stopped. Full evidence-labeled analysis: <a href="ANALYSIS.md">ANALYSIS.md</a>.</p>
 </section>
 
 <section>
   <h2>Current work and ranked research queue</h2>
-  <p>No new hypothesis was implemented because the literal registry stop is triggered before placement and the official 19-band feature stack is absent from the local cache. The current four-item research queue (drainage-network deflection, conductivity/basement concordance, strain-regime orientation change, and cross-scale potential-field edge persistence) is qualitative and unvalidated; no numeric score forecast is made.</p>
-  <p><a href="HYPOTHESES.html">Read the ranked hypothesis list</a> · <a href="HYPOTHESES.md">Markdown details, mimics, source status, and stop rules</a> · <a href="../SESSION_PROMPT.md">Persistent project protocol</a> · <a href="../IRREGULARITIES.md">Irregularities and open limitations</a></p>
+  <p>No new hypothesis was implemented in this review because the literal registry stop is triggered before placement and the official 19-band feature stack is absent from the local cache. The archived SPRINGALIGN lane is documented separately; its <strong>HOLDOUT-DTI</strong> did not beat the saved holdout best, and the public witness still blocks it. The current four-item queue (drainage-network deflection, conductivity/basement concordance, strain-regime orientation change, and cross-scale potential-field edge persistence) is qualitative and unvalidated; no numeric gain is forecast.</p>
+  <p><a href="HYPOTHESES.html">Read the ranked current hypothesis list</a> · <a href="HYPOTHESES.md">Markdown details, mimics, source status, and stop rules</a> · <a href="../SESSION_PROMPT.md">Persistent project protocol</a> · <a href="../IRREGULARITIES.md">Irregularities and open limitations</a></p>
 </section>
 
 <section>
@@ -60,8 +74,9 @@
 
 <section>
   <h2>Archived candidate downloads — all research only, DO NOT SUBMIT</h2>
-  <p>These are prior lane artifacts. Their bytes may be format-valid, but none is currently cleared. The three DILATATION filenames below are stamped <code>20261025</code>, later than this review date; their timestamp/provenance is unverified. They are quarantined here for auditability, not promoted.</p>
+  <p>These are prior lane artifacts. Their bytes may be format-valid, but none is currently cleared. The DILATATION filenames and SPRINGALIGN filename below use <code>20261025</code>, later than this review date; the filename dates are not independently verified as generation times. DILATATION provenance is unresolved; SPRINGALIGN’s saved run card lacks a generated timestamp. They are quarantined here for auditability, not promoted.</p>
   <ul>
+    <li><a href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif">SPRINGALIGN f33Ctop — research only; negative holdout / registry stop; future-dated filename; DO NOT SUBMIT</a></li>
     <li><a href="downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif">Visible-collar R0-excluded — research only; DO NOT SUBMIT</a></li>
     <li><a href="downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif">ANASIG f45Atop — research only; DO NOT SUBMIT</a></li>
     <li><a href="downloads/h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif">BREAKLINE f33Ltop — research only; DO NOT SUBMIT</a></li>
@@ -77,7 +92,7 @@
     <li><a href="downloads/h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif">STRAINBREAK f75 — research only; DO NOT SUBMIT</a></li>
     <li><a href="downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif">TIPGAP far18f33 — negative research artifact; DO NOT SUBMIT</a></li>
   </ul>
-  <p>See each file’s own audit/run card before using it for research. A previously reported local-only uniqueness pass is not global clearance.</p>
+  <p>See each file’s own audit/run card before using it for research. A prior local-only uniqueness pass is not global clearance.</p>
 </section>
 
 <section>

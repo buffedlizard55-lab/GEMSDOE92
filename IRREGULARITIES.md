@@ -2,9 +2,9 @@
 
 ## Current decision-changing follow-up (2026-10-24)
 
-**No candidate is currently cleared for upload.** A Git-blob- and byte-verified 17GEMSDOE registry raster matches the template and is positive on all 5,167,373 footprint cells. Under the project's literal >70% forward-overlap-within-3-px rule, any nonempty in-footprint candidate is duplicate-stopped at REGISTRY-MEASUREMENT overlap 1.0. This is one decisive witness, not a fresh exhaustive public-registry scan. No new candidate, holdout experiment, TIFF, or weekly slot was generated/used in this follow-up. See `docs/downloads/current_status.json`, `docs/downloads/current_review_run_card.json`, and `docs/REPO_REVIEW_20261024.md`.
+**No candidate is currently cleared for upload.** A Git-blob- and byte-verified 17GEMSDOE registry raster matches the template and is positive on all 5,167,373 footprint cells. Under the project's literal >70% forward-overlap-within-3-px rule, any nonempty in-footprint candidate is duplicate-stopped at REGISTRY-MEASUREMENT overlap 1.0. This is one decisive witness, not a fresh exhaustive public-registry scan. No new candidate, holdout experiment, TIFF, or weekly slot was generated/used in this follow-up. The latest prior research artifact is SPRINGALIGN f33Ctop, inherited from upstream PR #42: its saved HOLDOUT-DTI is 0.0048650690 (22,663 withheld positives; 95% CI [0.0040254482, 0.0057850159]), below the saved RELIEF p10 best, and its public-witness disposition is negative. See `docs/downloads/current_status.json`, `docs/downloads/current_review_run_card.json`, and `docs/REPO_REVIEW_20261024.md`.
 
-The three DILATATION TIFF filenames are stamped `20261025`, after the environment date `2026-10-24`; provenance/timestamp is unresolved. They remain archived and explicitly DO NOT SUBMIT. The inherited `2026-10-25` header in `scripts/check_site.py` was removed because it was a future date with no verified provenance; the checker behavior is unchanged.
+The three DILATATION TIFFs and the inherited SPRINGALIGN TIFF use filename stamp `20261025`, after the environment date `2026-10-24`. The SPRINGALIGN run card has no generation timestamp; DILATATION provenance is unresolved. Keep both classes archived and explicitly DO NOT SUBMIT; do not treat the filename stamp as verified generation time. The inherited `2026-10-25` header in `scripts/check_site.py` was removed because it was a future date with no verified provenance; the checker behavior is unchanged.
 
 All older entries below are chronological historical observations. Any prior “current/primary” or local-only uniqueness decision is superseded by the current status documents and does not clear a file for submission.
 
@@ -740,3 +740,11 @@ Catalogue hide-and-recover and SGMC price different truths; neither is the
 private expert-mapped label set. Treating either as decisive alone would be
 an irregularity. The only resolver is an organizer receipt, which remains
 Blocker 0 (ledger: BUILT rows grew by 3 this session, RECEIPT rows still 0).
+
+## 2026-10-25 — SPRINGALIGN dose amended pre-results
+- **Observation**: 1-px spring-pair alignment lines yield 30,547 eligible far pixels but only 4,058 dots under the 2.8 px spacing floor; the pre-registered 16,944 far dots cannot be placed without zero-vote filler.
+- **Decision**: Single dose amended to 4,000 far dots (10.6%) before any holdout result was seen. No zero-vote filling.
+
+## 2026-10-25 — SPRINGALIGN corridor dose amended pre-results
+- **Observation**: sigma=2px corridor supports 12,743 spaced far dots < 16,944 (f45).
+- **Decision**: Experiment 2 set to sigma=3px, f33 (12,426 far; 67.0% keep, the BREAKLINE f33 uniqueness geometry) before any holdout result for this variant.

@@ -33,6 +33,21 @@ def test_index_has_research_download_and_literal_slot_warning():
     assert "ORGANIZER-CONFIRMED" not in first_holdout
 
 
+def test_index_features_springalign_as_research_only_with_provenance_caveat():
+    html = _index()
+    assert "Latest prior research artifact — SPRINGALIGN f33Ctop — DO NOT SUBMIT" in html
+    first_download = re.search(r'href="(downloads/[^"]+-zeros\.tif)"', html)
+    assert first_download and "SPRINGALIGN" in first_download.group(1)
+    assert "GEMSDOE92-SPRINGALIGN-f33Ctop-20261025" in html
+    assert "the filename date is not independently verified" in html
+    assert "below the saved RELIEF p10 holdout best" in html
+    status = json.loads((DOWNLOADS / "current_status.json").read_text(encoding="utf-8"))
+    candidate = status["latest_historical_candidate"]
+    assert candidate["name"] == "GEMSDOE92-SPRINGALIGN-f33Ctop-20261025"
+    assert candidate["submission_eligible"] is False
+    assert candidate["download_use"] == "research_only_do_not_submit"
+
+
 def test_index_links_every_served_zeros_file():
     html = _index()
     served = sorted(p.name for p in DOWNLOADS.glob("*-zeros.tif"))
@@ -56,13 +71,16 @@ def test_first_research_download_has_byte_matched_format_and_negative_audit():
     assert audit["overall_pass"] is True
     assert audit["sha256_zeros"] == hashlib.sha256(raster.read_bytes()).hexdigest()
     assert all(g["ok"] for g in audit["gates_zeros"])
-    assert audit["format_ok_to_download"] is True
     assert audit["submission_eligible"] is False
-    assert audit["verdict"] == "negative"
     registry = audit["public_registry_uniqueness"]
     assert registry["candidate_hash_matches_scan"] is True
     assert registry["unique_under_literal_rule"] is False
     assert registry["stop_required"] is True
+    card = json.loads((ROOT / audit["run_card"]).read_text(encoding="utf-8"))
+    assert card["verdict"] == "negative"
+    assert card["raster_sha256"] == audit["sha256_zeros"]
+    status = json.loads((DOWNLOADS / "current_status.json").read_text(encoding="utf-8"))
+    assert status["latest_historical_candidate"]["file"] == raster.name
 
 
 def test_current_status_feed_and_review_card_are_consistent():

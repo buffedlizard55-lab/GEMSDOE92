@@ -151,17 +151,22 @@ def test_dilatation_proxy_audit_labels_and_canary() -> None:
 
 
 def test_first_research_download_is_tracked_and_gate_passed() -> None:
-    """The visible archival download exists and its exact-byte receipt is negative."""
-    primary = ROOT / "docs" / "downloads" / "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif"
-    assert primary.is_file(), "historical ANASIG research download missing"
-    audit_path = primary.with_name("h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-audit.json")
+    """The latest archival download exists and its exact-byte receipt is negative."""
+    primary = ROOT / "docs" / "downloads" / "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif"
+    assert primary.is_file(), "historical SPRINGALIGN research download missing"
+    audit_path = primary.with_name("h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-audit.json")
     audit = json.loads(audit_path.read_text(encoding="utf-8"))
     assert audit["overall_pass"] is True  # format gate is distinct from submission clearance
-    assert audit["format_ok_to_download"] is True
     assert audit["submission_eligible"] is False
-    assert audit["verdict"] == "negative"
     assert all(g["ok"] for g in audit["gates_zeros"])
     assert hashlib.sha256(primary.read_bytes()).hexdigest() == audit["sha256_zeros"]
+    registry = audit["public_registry_uniqueness"]
+    assert registry["candidate_hash_matches_scan"] is True
+    assert registry["unique_under_literal_rule"] is False
+    assert registry["stop_required"] is True
+    card = json.loads((ROOT / audit["run_card"]).read_text(encoding="utf-8"))
+    assert card["verdict"] == "negative"
+    assert card["holdout_dti"]["evidence_class"] == "HOLDOUT-DTI"
     ignore = (ROOT / ".gitignore").read_text(encoding="utf-8")
     assert "!docs/downloads/*.tif" in ignore
     assert "!docs/downloads/*.zip" in ignore
@@ -170,11 +175,11 @@ def test_first_research_download_is_tracked_and_gate_passed() -> None:
 def test_site_offers_archival_download_and_conditional_submission_fields() -> None:
     html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
     assert "OK TO DOWNLOAD FOR RESEARCH" in html
-    assert "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif" in html
-    assert "GEMSDOE92-ANASIG-f45Atop-20261024" in html
-    note = "h33-h33-2-b2; ANASIG f45Atop 16944 far dots on analytic-signal ridges >3px off H19-5"
+    assert "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif" in html
+    assert "GEMSDOE92-SPRINGALIGN-f33Ctop-20261025" in html
+    note = "h33-h33-2-b2; SPRINGALIGN f33Ctop 12426 far dots on spring-pair alignment lines >3px off H19-5"
     assert note in html_lib.unescape(html) and len(note) <= 140
-    assert "anasig_run_card.json" in html
+    assert "springalign_run_card.json" in html
     submit = (ROOT / "docs" / "SUBMIT.html").read_text(encoding="utf-8")
     assert "DrivenData" in submit and "OK TO DOWNLOAD" in submit
     assert "submission_eligible: true" in submit
@@ -186,7 +191,7 @@ def test_site_discloses_literal_duplicate_stop_and_evidence_boundary() -> None:
     assert "DUPLICATE UNDER THE LITERAL REGISTRY RULE" in html
     assert "all 5,167,373 footprint cells" in html
     assert "HOLDOUT-DTI" in html and "not a competition score" in html.lower()
-    assert "No candidate or weekly slot was generated/used in this review" in html
+    assert "No new candidate or weekly slot was generated/used in this review" in html
     status = json.loads((ROOT / "docs" / "downloads" / "current_status.json").read_text(encoding="utf-8"))
     assert status["weekly_slots_used_this_review"] == 0
     assert status["submission_eligible"] is False

@@ -1,0 +1,111 @@
+{
+  "schema": "gemsdoe92.springalign-variants.v1",
+  "session_date_utc": "20261025",
+  "axis": "SPRINGALIGN",
+  "parent": "h33-h33-2-b2",
+  "parent_claim": {
+    "score": 0.2778,
+    "evidence_label": "CLAIM",
+    "receipt": false
+  },
+  "exact_parent_rebuild": {
+    "n_dots": 37654,
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "matches_recorded_hashes": true
+  },
+  "lane_surface": {
+    "definition": "S_pct = pct_rank(accumulated spring-pair strike votes); see gems/springalign.py",
+    "bands": "pinned GDR wellspring CSV (temp_c>=40C hot points); no training band",
+    "implementation": "gems/springalign.py (pair segments 10-60px, 25% extension cap 15px, vote sqrt(Ti*Tj)/100)",
+    "catalogue_use": "none in S, keep ranking or refill weight; inherited d_cat>2.0px exclusion only",
+    "surface_meta": {
+      "n_points": 714,
+      "n_pairs": 7919
+    },
+    "far_candidate_pool": {
+      "rule": "footprint AND valid topography AND d_cat>2.0px AND d_H19>3.0px AND not in R0; scan restricted to top-400k by S_raw",
+      "n_candidates": 141084
+    },
+    "keep_rule": "exact expected-DTI greedy (alpha 0.2 beta 0.8 R=3px) over R0 pixels only, w=0.30+0.70*S_pct on H19-5 support",
+    "refill_rule": "spaced top-S: descending S_raw, 2.8px strict spacing floor (gems.springalign.spaced_top_mask) -- the emission rule exercised by the pre-build screen",
+    "uniqueness_by_construction": "R0 and D2.8/SOLO are subsets of H19-5 (asserted in build); far dots are >3px from every H19-5 pixel, so whole-file fraction within 3px of any lineage raster equals the kept fraction (0.67/0.62/0.55) up to skeleton-adjacency of kept dots themselves, which is exact-shared only against R0. Measured against all local registry rasters in evidence/springalign_proxy_audit.json."
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a",
+      "site": "GEMSDOE92",
+      "name": "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a.tif",
+      "file_zeros": "releases/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif",
+      "file_nan": "releases/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a.tif",
+      "sha8": "9857d09a",
+      "change_desc": "SPRINGALIGN re-emission: greedy-keep 25228 of R0, add 12426 far dots (33.0%) spaced-top-S on spring-pair alignment lines >3px off H19-5; fixed 37654 dots",
+      "notes": "frac_far=0.33; n_far=12426; n_keep=25228; far_pool=141084; whole_file_within3px_of_R0_by_construction=0.6700; git=d0574cdfc761",
+      "parent": "h33-h33-2-b2",
+      "axis": "SPRINGALIGN",
+      "value": "f33Ctop",
+      "n_dots": 37654,
+      "pct_changed": 33.00047803686195,
+      "removed": 12426,
+      "added": 12426,
+      "sha256": "9857d09a2df11e0d7832be9d85f9a650ed0f48eb8a46204bfc2a3db6e80366d5",
+      "sha256_zeros": "1772ad5c62506b6b380e221d2202b583edf0a5be4f96916af655e0478eba11b1",
+      "primary_file": "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a.tif",
+      "fallback_file": "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif",
+      "primary_encoding": "NaN outside footprint",
+      "fallback_encoding": "zero outside footprint",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unknown live delta; HOLDOUT-DTI in evidence/springalign_proxy_audit.json",
+      "predicted_range": "not projected (a projection is never written as a score)",
+      "prediction_scope": "MODEL scope note only; organizer score requires a submission receipt.",
+      "parent_diff": {
+        "removed": 12426,
+        "added": 12426,
+        "shared": 25228,
+        "moved_pct": 33.00047803686195,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "far_min_distance_to_h19_px": 3.1622776601683795,
+        "collar_dots_final_dcat_le_3": 2615,
+        "collar_dots_parent_dcat_le_3": 2171,
+        "mean_S_pct_far": 0.9869391918182373,
+        "mean_S_pct_dropped": 0.964428186416626
+      },
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; SPRINGALIGN f33Atop 12426 far dots on spring-pair alignment lines >3px off H19-5",
+      "gate_status": "PASS (disk reread + gems.gates; EPSG:32611, 3730x3292, float32, binary unit-mass, d_cat>2.0)",
+      "seed": 0
+    }
+  ],
+  "scope_note": "No submission, leaderboard, or hidden labels accessed. Surface uses GDR wellspring geometry only."
+}

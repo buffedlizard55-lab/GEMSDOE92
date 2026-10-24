@@ -1,0 +1,128 @@
+{
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "scope": "pre-placement surface (S_pct) vs local registry, 100k deterministic footprint sample; sibling SPRINGALIGN excluded",
+  "worst": [
+    {
+      "file": "h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif",
+      "spearman_sample100k": -0.009003
+    },
+    {
+      "file": "h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+      "spearman_sample100k": -0.008349
+    },
+    {
+      "file": "h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif",
+      "spearman_sample100k": -0.007803
+    },
+    {
+      "file": "h33-h33-2-b2-SCARPPOLf33Stop-20261024-7b3571a5-zeros.tif",
+      "spearman_sample100k": -0.006672
+    },
+    {
+      "file": "h33-h33-2-b2-SCARPPOLf38Stop-20261024-a259cb8c-zeros.tif",
+      "spearman_sample100k": -0.006087
+    }
+  ],
+  "rows": [
+    {
+      "file": "h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif",
+      "spearman_sample100k": -0.009003
+    },
+    {
+      "file": "h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+      "spearman_sample100k": -0.008349
+    },
+    {
+      "file": "h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif",
+      "spearman_sample100k": -0.007803
+    },
+    {
+      "file": "h33-h33-2-b2-SCARPPOLf33Stop-20261024-7b3571a5-zeros.tif",
+      "spearman_sample100k": -0.006672
+    },
+    {
+      "file": "h33-h33-2-b2-SCARPPOLf38Stop-20261024-a259cb8c-zeros.tif",
+      "spearman_sample100k": -0.006087
+    },
+    {
+      "file": "h33-h33-2-b2-TIPGAPfar18f33-20261024-unique-zeros.tif",
+      "spearman_sample100k": -0.006084
+    },
+    {
+      "file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+      "spearman_sample100k": -0.006084
+    },
+    {
+      "file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+      "spearman_sample100k": -0.005842
+    },
+    {
+      "file": "h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
+      "spearman_sample100k": -0.005709
+    },
+    {
+      "file": "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+      "spearman_sample100k": 0.005254
+    },
+    {
+      "file": "h33-h33-2-b2-SCARPPOLf45Stop-20261024-cf4e45c0-zeros.tif",
+      "spearman_sample100k": -0.005246
+    },
+    {
+      "file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif",
+      "spearman_sample100k": -0.005168
+    },
+    {
+      "file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+      "spearman_sample100k": -0.005149
+    },
+    {
+      "file": "h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7-zeros.tif",
+      "spearman_sample100k": -0.005124
+    },
+    {
+      "file": "h33-h33-2-b2-PRUNE_B4-20261023-78e893d7-zeros.tif",
+      "spearman_sample100k": -0.004698
+    },
+    {
+      "file": "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+      "spearman_sample100k": -0.004635
+    },
+    {
+      "file": "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+      "spearman_sample100k": -0.004635
+    },
+    {
+      "file": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif",
+      "spearman_sample100k": -0.00439
+    },
+    {
+      "file": "h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad-zeros.tif",
+      "spearman_sample100k": -0.004215
+    },
+    {
+      "file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+      "spearman_sample100k": 0.003884
+    },
+    {
+      "file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
+      "spearman_sample100k": -0.003543
+    },
+    {
+      "file": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif",
+      "spearman_sample100k": -0.003058
+    },
+    {
+      "file": "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif",
+      "spearman_sample100k": -0.003034
+    },
+    {
+      "file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+      "spearman_sample100k": -0.003033
+    },
+    {
+      "file": "h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif",
+      "spearman_sample100k": -0.001719
+    }
+  ]
+}

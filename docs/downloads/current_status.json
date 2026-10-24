@@ -1,11 +1,13 @@
 {
   "schema": "gemsdoe92-current-status.v1",
-  "updated_utc": "2026-10-24T18:20:33Z",
+  "updated_utc": "2026-10-24T18:28:42Z",
   "status": "blocked_no_submission_cleared",
   "headline": "No current candidate is cleared for competition submission. Existing TIF downloads are research artifacts only; DO NOT SUBMIT.",
   "submission_eligible": false,
   "new_tif_generated_this_review": false,
+  "new_experiment_run_this_review": false,
   "weekly_slots_used_this_review": 0,
+  "served_zeros_outside_tiff_count": 15,
   "reason": "The literal registry rule is blocked by a matching-grid public raster with positive support on the entire competition footprint. Any nonempty in-footprint candidate exceeds the 70% forward-overlap stop threshold. No empty raster or cosmetic mutation was used to evade the rule.",
   "registry_blocker": {
     "evidence_class": "REGISTRY-MEASUREMENT",
@@ -20,16 +22,50 @@
     "positive_fraction_of_footprint": 1.0,
     "literal_forward_overlap_stop_threshold": 0.7,
     "verified_again_this_review": true,
-    "measurement_note": "Because every in-footprint pixel is positive in the witness, every nonempty in-footprint candidate pixel is within 0 px of its positive support. The exact measured historical ANASIG artifact also has forward overlap 1.0 against this witness. This is not a competition score."
+    "measurement_note": "Because every in-footprint pixel is positive in the witness, every nonempty in-footprint candidate pixel is within 0 px of its positive support. This is not a competition score."
   },
   "latest_historical_candidate": {
+    "source": "existing artifact from merged upstream PR #42; not generated in this review",
+    "name": "GEMSDOE92-SPRINGALIGN-f33Ctop-20261025",
+    "file": "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif",
+    "sha256": "1772ad5c62506b6b380e221d2202b583edf0a5be4f96916af655e0478eba11b1",
+    "format_validated": true,
+    "submission_eligible": false,
+    "verdict": "negative",
+    "download_use": "research_only_do_not_submit",
+    "filename_date_warning": "Filename is stamped 20261025; saved run card has no generation timestamp; do not treat filename as verified generation time.",
+    "holdout_dti": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positive_pixels": 22663,
+      "value": 0.004865069033082899,
+      "ci95": [0.004025448154051826, 0.005785015879540241],
+      "paired_delta_vs_saved_holdout_best": -0.0011800633640900336,
+      "paired_delta_ci95": [-0.0020652571007335244, -0.0003371520000988227],
+      "status": "saved prior result; not rerun in this review; not an organizer score"
+    },
+    "local_registry_measurement": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "scope": "local 28-raster registry; not global clearance",
+      "preplacement_surface_worst_abs_spearman_sample100k": 0.009003,
+      "final_dot_max_forward_overlap": 0.669995,
+      "final_dot_worst_abs_spearman": 0.667573
+    },
+    "public_registry_status": "Fails literal rule against the full-footprint-positive witness; this binding overlap follows from support containment and is not an exhaustive registry scan.",
+    "project_run_card": "evidence/springalign_run_card.json",
+    "download_run_card": "springalign_run_card.json",
+    "exact_byte_audit": "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-audit.json",
+    "optional_note": "h33-h33-2-b2; SPRINGALIGN f33Ctop 12426 far dots on spring-pair alignment lines >3px off H19-5",
+    "optional_note_characters": 94
+  },
+  "earlier_historical_candidate": {
     "name": "GEMSDOE92-ANASIG-f45Atop-20261024",
     "file": "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
     "sha256": "68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5",
     "format_validated": true,
     "submission_eligible": false,
     "download_use": "research_only_do_not_submit",
-    "new_candidate_this_review": false
+    "public_witness_forward_overlap": 1.0
   },
   "saved_holdout_reference": {
     "evidence_class": "HOLDOUT-DTI",
@@ -48,20 +84,23 @@
   },
   "data_availability": {
     "official_19_band_training_stack_in_local_cache": false,
+    "springalign_run_card_exists_from_prior_work": true,
     "official_data_tab_accessed_this_review": false,
     "new_holdout_experiment_run": false,
-    "reason": "No local feature stack; no competition credentials were used or requested. Owner-mirror redistribution terms remain unchecked."
+    "reason": "No local feature stack for a new terrain/geophysical experiment; no competition credentials were used or requested. Owner-mirror redistribution terms remain unchecked."
   },
   "repository_checks": {
-    "pytest": "136 passed, 17 existing Rasterio pending-deprecation warnings",
-    "served_zeros_outside_geotiffs": "14 passed format gates and independent reread through scripts/check_site.py",
+    "pytest": "PASS: 140 passed; 17 existing Rasterio PendingDeprecationWarnings",
+    "served_zeros_outside_geotiffs": "PASS: 15/15 re-read and passed local format gates",
     "pinned_data_manifest": "PASS",
     "parent_r0_verification": "PASS",
-    "git_diff_check": "PASS after documentation and test updates"
+    "local_html_links_and_json": "PASS: 5 HTML files, 0 broken relative targets; 93 JSON files parsed",
+    "git_diff_check": "PASS: staged and working-tree checks with core.whitespace=cr-at-eol (ledger retains existing CRLF line endings)"
   },
   "links": {
     "current_review": "REPO_REVIEW_20261024.md",
     "run_card": "current_review_run_card.json",
+    "latest_existing_candidate_analysis": "../ANALYSIS_20261025_SPRINGALIGN.md",
     "hypotheses": "../HYPOTHESES.md",
     "submission_guide": "../SUBMIT.html"
   }

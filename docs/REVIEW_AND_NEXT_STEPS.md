@@ -12,7 +12,7 @@ This older file previously contained several contradictory “current primary”
 
 ## Active decision
 
-**No current TIFF is cleared for submission. All are research-only; DO NOT SUBMIT. No new experiment or TIFF was produced, and no weekly slot was selected or used.** A SHA-verified public registry raster has positive support on all 5,167,373 footprint cells. Under the literal >70% / 3-pixel rule, every nonempty in-footprint candidate has REGISTRY-MEASUREMENT overlap 1.0 with that witness. This single witness is enough to reject any candidate, but does not constitute a fresh exhaustive registry scan. The full official feature stack is absent locally, so a new holdout cannot be run.
+**No current TIFF is cleared for submission. All are research-only; DO NOT SUBMIT. No new experiment or TIFF was produced, and no weekly slot was selected or used.** The latest prior research artifact is SPRINGALIGN f33Ctop from upstream PR #42, not generated in this review; its HOLDOUT-DTI is negative versus the saved best and the public witness stops it. A SHA-verified public registry raster has positive support on all 5,167,373 footprint cells. Under the literal >70% / 3-pixel rule, every nonempty in-footprint candidate has REGISTRY-MEASUREMENT overlap 1.0 with that witness. This single witness is enough to reject any candidate, but does not constitute a fresh exhaustive registry scan. The full official feature stack is absent locally, so a new holdout cannot be run.
 
 ## Historical records
 
