@@ -4,8 +4,8 @@ Two groups:
   1. Algorithmic — the reallocation primitive that the DILATATION builder relies on
      (lowest-prior donor selection + high-tercile-constrained refill, count held),
      exercised on a synthetic grid so it runs without the 418 MB feature stack.
-  2. Policy — the receipts, ledger uniqueness, evidence labels, leakage canary and
-     download-site contract for the three variants built this session.
+  2. Policy — historical DILATATION receipts/ledger/evidence plus the current
+     primary download audit and literal public-registry duplicate-stop contract.
 """
 from __future__ import annotations
 
@@ -149,42 +149,45 @@ def test_dilatation_proxy_audit_labels_and_canary() -> None:
     assert "training_band_8_geod_dilaterate" in canaries["results"]
 
 
-def test_dilatation_primary_download_is_tracked_and_gate_passed() -> None:
-    """The download the site offers must exist, be tracked, and pass the gates on disk."""
-    primary = ROOT / "docs" / "downloads" / "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif"
+def test_current_primary_download_is_tracked_and_gate_passed() -> None:
+    """The current homepage artifact exists and matches its audit receipt."""
+    primary = ROOT / "docs" / "downloads" / "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif"
     assert primary.is_file(), "primary download missing from docs/downloads"
-
-    audit_path = ROOT / "docs" / "downloads" / "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-audit.json"
+    audit_path = primary.with_name("GEMSDOE92-visible-collar-r0-excluded-20261024-audit.json")
     audit = json.loads(audit_path.read_text(encoding="utf-8"))
-    assert audit["overall_pass"] is True
-    for g in audit["gates_zeros"]:
-        assert g["ok"], f"gate {g['name']} failed in recorded audit"
-    # the recorded hash must match the bytes actually in docs/downloads
-    got = hashlib.sha256(primary.read_bytes()).hexdigest()
-    assert got == audit["sha256_zeros"], "download bytes drifted from the recorded audit hash"
-
-    # .gitignore must un-ignore exactly these, and keep releases/ ignored
+    assert audit["overall_pass"] is True  # format gate is separate from submission eligibility
+    assert audit["submission_eligible"] is False
+    assert all(g["ok"] for g in audit["gates_zeros"])
+    assert hashlib.sha256(primary.read_bytes()).hexdigest() == audit["sha256_zeros"]
     ignore = (ROOT / ".gitignore").read_text(encoding="utf-8")
     assert "!docs/downloads/*.tif" in ignore
     assert "!docs/downloads/*.zip" in ignore
 
 
-def test_site_offers_unique_negative_candidate_with_honest_slot_status() -> None:
-    """A local format pass must not be confused with a slot recommendation."""
+def test_site_offers_primary_download_and_exact_submission_fields() -> None:
     html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
     assert "OK TO DOWNLOAD" in html
-    assert "NOT RECOMMENDED FOR A WEEKLY SUBMISSION SLOT" in html
-    assert "STEPOVER-tip10px-N5000" in html
-    assert "unique-within-local-registry" in html
-    assert "HOLDOUT-DTI" in html and "0.0000 [0.0000, 0.0000]" in html
-    assert "99.37" in html or "99.37–99.40" in html
-    assert "OK TO DOWNLOAD AND SUBMIT" not in html
-    assert "verdict: promote" not in html
-
+    assert "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif" in html
+    assert "GEMSDOE92-visible-collar-r0-excluded-20261024" in html
+    note = "Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots"
+    assert note in html and len(note) <= 140
+    assert "visible_collar_run_card.json" in html
     submit = (ROOT / "docs" / "SUBMIT.html").read_text(encoding="utf-8")
-    assert "DrivenData" in submit
-    assert "Download status: YES — format-valid" in submit
-    assert "NOT RECOMMENDED" in submit
-    for rel in ("README.md", "SESSION_PROMPT.md"):
-        text = (ROOT / rel).read_text(encoding="utf-8")
-        assert "NOT RECOMMENDED" in text
+    assert "DrivenData" in submit and "OK TO DOWNLOAD" in submit
+
+
+def test_site_discloses_literal_duplicate_stop_and_evidence_boundary() -> None:
+    html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
+    assert "NOT CLEARED FOR A WEEKLY SLOT" in html
+    assert "DUPLICATE UNDER THE LITERAL REGISTRY RULE" in html
+    assert "131 rasters exceed the 70% stop threshold" in html
+    assert "HOLDOUT-DTI" in html and "not a competition score" in html
+    assert "No live submission slot has been used" in html
+    card = json.loads((ROOT / "evidence" / "visible_collar_run_card.json").read_text(encoding="utf-8"))
+    assert card["verdict"] == "negative"
+    assert card["holdout_dti"]["paired_delta_vs_R0"]["ci95"][0] > 0
+    assert card["correlation_overlap_vs_registry"]["final_dots"]["unique_under_thresholds"] is True
+    public = card["correlation_overlap_vs_registry"]["public_registry_scan"]
+    assert public["candidate_hash_matches_scan"] is True
+    assert public["final_dots"]["unique_under_literal_rule"] is False
+    assert public["final_dots"]["rasters_over_70pct_overlap"] == 131

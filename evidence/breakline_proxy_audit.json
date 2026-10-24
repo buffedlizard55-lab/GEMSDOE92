@@ -788,7 +788,7 @@
     "f33Ltop": {
       "evidence_class": "REGISTRY-MEASUREMENT",
       "rule": "literal: forward_overlap > 0.70 OR |spearman| > 0.90 => duplicate, log and stop",
-      "registry_rasters_checked": 17,
+      "registry_rasters_checked": 18,
       "worst_forward_overlap": 0.669995,
       "worst_forward_overlap_file": "parent_R0_zeros.tif",
       "worst_abs_spearman": 0.667573,
@@ -834,6 +834,14 @@
           "reverse_overlap_their_dots_within_3px": 0.075162,
           "binary_spearman_phi": -0.009363,
           "jaccard_exact_pixels": 0.0
+        },
+        {
+          "registry_file": "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.026611,
+          "reverse_overlap_their_dots_within_3px": 0.050566,
+          "binary_spearman_phi": -0.001455,
+          "jaccard_exact_pixels": 0.00293
         },
         {
           "registry_file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
@@ -936,7 +944,7 @@
     "f38Ltop": {
       "evidence_class": "REGISTRY-MEASUREMENT",
       "rule": "literal: forward_overlap > 0.70 OR |spearman| > 0.90 => duplicate, log and stop",
-      "registry_rasters_checked": 17,
+      "registry_rasters_checked": 18,
       "worst_forward_overlap": 0.619987,
       "worst_forward_overlap_file": "parent_R0_zeros.tif",
       "worst_abs_spearman": 0.617198,
@@ -982,6 +990,14 @@
           "reverse_overlap_their_dots_within_3px": 0.07613,
           "binary_spearman_phi": -0.009363,
           "jaccard_exact_pixels": 0.0
+        },
+        {
+          "registry_file": "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.029745,
+          "reverse_overlap_their_dots_within_3px": 0.056355,
+          "binary_spearman_phi": -0.000572,
+          "jaccard_exact_pixels": 0.003371
         },
         {
           "registry_file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
@@ -1084,7 +1100,7 @@
     "f45Ltop": {
       "evidence_class": "REGISTRY-MEASUREMENT",
       "rule": "literal: forward_overlap > 0.70 OR |spearman| > 0.90 => duplicate, log and stop",
-      "registry_rasters_checked": 17,
+      "registry_rasters_checked": 18,
       "worst_forward_overlap": 0.550008,
       "worst_forward_overlap_file": "parent_R0_zeros.tif",
       "worst_abs_spearman": 0.546705,
@@ -1130,6 +1146,14 @@
           "reverse_overlap_their_dots_within_3px": 0.077491,
           "binary_spearman_phi": -0.009363,
           "jaccard_exact_pixels": 0.0
+        },
+        {
+          "registry_file": "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+          "their_dots": 37654,
+          "forward_overlap_my_dots_within_3px": 0.034737,
+          "reverse_overlap_their_dots_within_3px": 0.064854,
+          "binary_spearman_phi": 0.000739,
+          "jaccard_exact_pixels": 0.004026
         },
         {
           "registry_file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",

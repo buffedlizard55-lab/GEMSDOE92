@@ -534,6 +534,30 @@ next session's job is not another variant: it is either (a) an arm that realloca
 clear 70 % *without* leaving the skeleton's high-credit neighbourhood, or (b) an explicit,
 recorded human decision that Reading 2 governs. See `docs/NEXT_STEPS.md`.
 
+## 2026-10-24 review — conflicting landing-page recommendation and timestamp anomalies
+
+**Observation.** The inherited `docs/index.html` stated that DILATATION p12 was not cleared under the literal uniqueness rule, but a lower comparison table still labelled it `promote`. Its run card's overlap statistic was 99.37% within 3 px of registry parent R0, above the 70% stop threshold. The README also described that file as primary while the current findings said no file was both unique and expected to improve. The two visible recommendations were incompatible.
+
+**Correction.** The landing page now features the existing STEPOVER negative candidate because its saved local registry scan passes the specified thresholds; it explicitly says **OK TO DOWNLOAD, NOT RECOMMENDED FOR A WEEKLY SUBMISSION SLOT**. Its candidate raster/zip are byte-identical to the existing release artifacts (SHA-256 `e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205`); this is publishing an existing locally generated negative result, not claiming a new experiment or copying an organizer-submitted file. A new sidecar audit records independent format-gate results for the actual site-served copy. The submission guide is consolidated at `docs/SUBMIT.html`; old guide URLs point there.
+
+**Measured in this checkout.** The site TIF passes all 10 `gems.gates` checks, has 5,000 positive pixels, all finite values 0–1, and the sample-submission CRS/shape/transform. ZIP inspection shows exactly one `.tif` member. The run card's scientific evidence remains **HOLDOUT-DTI** `gems57-pooled-hide-v2`, 11,321 withheld positives, 95% CI `[0.0000, 0.0000]`; negative versus R0. The uniqueness statement is explicitly limited to the 14 rasters in the local scan, not a guarantee of global uniqueness.
+
+**Date irregularity flagged, not silently normalized.** Several inherited files are stamped `2026-10-25` (including DILATATION outputs, README/next-step text, and an IRREGULARITIES section) despite this review's system date being `2026-10-24`. The provenance of those future-dated entries is not established by this checkout. They were not used as evidence of current-day work; keep the original file names and historical records intact until repository owners explain the timestamp mismatch.
+
+## 2026-10-24 (GEMSDOE92 visible-collar test) — broader registry scan reverses the local-only pass
+
+**Observation.** The initial 14-raster registry index was incomplete. A read-only GitHub API scan of current default branches in 102 public `buffedlizard55-lab` repositories matching GEMSDOE names found 1,629 submission-oriented TIFF paths. After Git blob SHA-1/size verification and de-duplication, 1,285 unique blobs were downloaded; 1,279 single-band rasters matched the competition grid and were compared. The new visible-collar prospectivity surface and final 37,654-dot TIF each show **100% forward 3-px overlap** with multiple accessible registry rasters; 131/1,279 exceed the 70% stop threshold. Worst absolute Spearman is below 0.90 (surface 0.421367; final 0.492957); overlap alone triggers the rule.
+
+A concrete witness is `11GEMSDOE/docs/downloads/gems-structural-area06-v1.tif` (343,526 positive pixels; candidate forward overlap 1.0), source: https://github.com/buffedlizard55-lab/11GEMSDOE/blob/main/docs/downloads/gems-structural-area06-v1.tif. Another is `17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif`, positive on all 5,167,373 footprint pixels; the candidate forward overlap is 1.0. Per the user's literal instruction, neither dense support nor low rank correlation is an exemption.
+
+**Impact — decision-changing.** The initial local pass was not enough to establish lane uniqueness and was corrected before any slot was used. The candidate's HOLDOUT-DTI improves catalogue hide-and-recover, but the user's duplicate gate is binding. The TIF is format-valid and downloadable only as a **negative research artifact**, not cleared for submission. The broad scan is not exhaustive of historical branches, private repositories, other owners, ZIP-only assets or site-hosted objects; the found witness alone is sufficient to stop.
+
+**Decision.** `evidence/visible_collar_run_card.json` and `evidence/public_registry_uniqueness.json` now say `negative`; homepage and both submission guides state **OK TO DOWNLOAD / NOT CLEARED TO SUBMIT**. No weekly slot was selected or used. `scripts/audit_public_registry.py` makes the registry scan repeatable; it stores downloaded blobs only under ignored `.cache/` and records scope, errors and hashes. Do not resume this lane or reinterpret the 70% rule without an explicit operator decision.
+
+**Process deviation (own the outcome).** The first disposable scratch run for the collar idea preceded recording the requested 3–5-hypothesis shortlist in `docs/hypotheses_visible_collar_20261024.md`. That scratch used full-catalogue distance in its placement and missed the exact count; it was invalid for holdout inference and none of its provisional score is carried forward. The final builder was then corrected to derive every holdout placement surface from visible faults only, exact count, and an explicit leakage canary; the final evaluation is labelled separately. Treat the ordering deviation as an audit note, not as proof the initial experiment was valid.
+
+**API rate-limit note.** GitHub API calls were available for the first live scan; after 1,285 blob downloads, a subsequent live repository-list request returned HTTP 403 rate-limit exceeded. The repeat scan then ran from the SHA-verified cache (`--cache-only`) and reproduced the same 1,279-raster metrics. The result is timestamped and the audit code now falls back to cached data with an explicit warning; a cached scan must not be represented as a fresh live inventory.
+
 ## 2026-10-24 (BREAKLINE session) — bridge `sample_submission.tif` is the catalogue, not a template
 
 `data/bridge/sample_submission.tif` positives are pixel-identical to the mapped-fault
@@ -594,15 +618,3 @@ submitted. Corollary for future lanes: the fixed full-catalogue proxy-diagnostic
 predicted the screened design at ratio 1.146 vs R0 and the (different) greedy build
 measured 0.964 — the instrument prices near-catalogue collar mass and **must never be
 labelled a holdout or a score**.
-
-## 2026-10-24 review (parallel session, merged) — conflicting landing-page recommendation and timestamp anomalies
-
-**Observation.** The inherited `docs/index.html` stated that DILATATION p12 was not cleared under the literal uniqueness rule, but a lower comparison table still labelled it `promote`. Its run card's overlap statistic was 99.37% within 3 px of registry parent R0, above the 70% stop threshold. The README also described that file as primary while the current findings said no file was both unique and expected to improve. The two visible recommendations were incompatible.
-
-**Correction (that session).** The landing page then featured the existing STEPOVER negative candidate because its saved local registry scan passes the specified thresholds; it explicitly said **OK TO DOWNLOAD, NOT RECOMMENDED FOR A WEEKLY SUBMISSION SLOT**. Its candidate raster/zip are byte-identical to the existing release artifacts (SHA-256 `e5fee27f162371d959315d1dc412e137df0348b6009fa3dfdc46dc1363bd4205`); publishing an existing locally generated negative result, not a new experiment. A sidecar audit records independent format-gate results for the site-served copy. The submission guide is consolidated at `docs/SUBMIT.html`; old guide URLs point there.
-
-**Measured in that checkout.** The STEPOVER site TIF passes all 10 `gems.gates` checks, has 5,000 positive pixels, all finite values 0–1, sample-submission CRS/shape/transform; ZIP has exactly one `.tif` member. Its run card evidence remains HOLDOUT-DTI `gems57-pooled-hide-v2`, 11,321 withheld positives, `0.0000 [0.0000, 0.0000]`, negative vs R0. Uniqueness is limited to the 14 rasters in that local scan.
-
-**Date irregularity flagged, not silently normalized.** Several inherited files are stamped `2026-10-25` (DILATATION outputs, README/next-step text, an IRREGULARITIES section) despite the review date being `2026-10-24`. Provenance of those future-dated entries is not established; keep original filenames and historical records intact.
-
-**Post-merge note (BREAKLINE session).** The BREAKLINE session branch and this review ran in parallel from the same base. On merge, `BREAKLINEf45Ltop` — literal-unique (55.0 %) **and** holdout-positive vs R0 — supersedes STEPOVER as the site primary, since it strictly dominates the "unique but zero" candidate while carrying the same verdict (negative / NOT RECOMMENDED for a weekly slot). STEPOVER remains served and linked as a negative deliverable. The `promote` label discrepancy in the old README lane table was fixed independently in both branches.

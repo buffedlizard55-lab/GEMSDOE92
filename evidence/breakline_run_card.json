@@ -35,7 +35,7 @@
     "truth_pixels": 62703
   },
   "correlation_overlap_vs_registry": {
-    "registry_rasters_checked": 17,
+    "registry_rasters_checked": 18,
     "worst_forward_overlap_within_3px": 0.550008,
     "worst_forward_overlap_file": "parent_R0_zeros.tif",
     "worst_abs_spearman": 0.546705,

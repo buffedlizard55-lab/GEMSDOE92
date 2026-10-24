@@ -101,8 +101,7 @@ Band-18 gravity-HGM gamma crest with dip-offset placement, unbuilt;
 terrace-suppressed BREAKLINE, unbuilt. BREAKLINE results (f45 primary):
 HOLDOUT-DTI 0.004861 [0.004032, 0.005822] (pooled-hide-v2, 22,663
 withheld), delta vs R0 +0.000854 [+0.000300, +0.001423]; SGMC control
-0.12611 vs R0 0.09606 (+31%); worst forward overlap vs 17 registry
-rasters 0.550 (parent); canary max 0.6216. Verdict NEGATIVE /
+0.12611 vs R0 0.09606 (+31%); worst forward overlap vs 18 local registry rasters 0.550 (parent); canary max 0.6216. Verdict NEGATIVE /
 NOT_CLEARED under the beat-holdout-best rule (RELIEF p10 0.006045,
 itself a duplicate of R0) — first literal-unique file in this repo that
 beats the parent on the holdout with CI excluding 0. Pass-2 emission
