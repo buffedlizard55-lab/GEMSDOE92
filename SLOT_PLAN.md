@@ -1,6 +1,8 @@
-# SLOT_PLAN — current selector state (2026-10-24, ANASIG session)
+# Historical SLOT_PLAN records — superseded; no current slot selection
 
-## Current artifact: ANASIG f45 — negative, no slot used
+> **Historical selector snapshots only.** This file preserves earlier, superseded candidate rankings and statements about a “current” primary. None is current clearance or authorization. The present ANASIG single-witness stop is binding; no artifact is cleared and no slot may be selected. Follow the canonical [`README.md`](README.md) and [`docs/REVIEW_CURRENT.md`](docs/REVIEW_CURRENT.md).
+
+## Earlier ANASIG session snapshot (2026-10-24): negative; no slot used
 
 Primary download `GEMSDOE92-ANASIG-f45Atop-20261024` (file
 `h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif`, SHA-256
@@ -16,11 +18,9 @@ question in `docs/NEXT_STEPS.md` is resolved. No slot used this session.
 
 ---
 
-# SLOT_PLAN — current selector state (2026-10-24)
+## Earlier visible-collar session snapshot (2026-10-24): negative duplicate; no slot used
 
-## Current artifact: negative duplicate; no slot used
-
-`GEMSDOE92-visible-collar-r0-excluded-20261024` is the current primary download and a negative research deliverable. It passes all file-format gates. The initial 14-file local uniqueness scan was incomplete; the expanded literal registry scan across 1,279 matching-grid rasters in 102 public owner repositories found a duplicate. **Do not submit this candidate.**
+`GEMSDOE92-visible-collar-r0-excluded-20261024` was the primary download in that historical session and remains a negative research deliverable. It passes all file-format gates. The initial 14-file local uniqueness scan was incomplete; the expanded literal registry scan across 1,279 matching-grid rasters in 102 public owner repositories found a duplicate. **Do not submit this candidate.**
 
 - **HOLDOUT-DTI** `gems57-pooled-hide-v2`, 8 buffered folds, 22,663 withheld positives: candidate **0.046866 [0.040216, 0.053315]**; parent R0 **0.004006 [0.003424, 0.004690]**; paired Δ **+0.042860 [+0.036122, +0.049357]**.
 - Leakage canary (visible-fault distance alone): symmetric AUC **0.745593**, below 0.90.

@@ -1,49 +1,50 @@
-# GEMSDOE92 — evidence review and research decision (2026-10-24)
+# Current scientific analysis — 2026-10-24 UTC
 
-## Question: why is `h33-h33-2-b2` associated with 0.2778, and can a new candidate exceed it?
+> **Current disposition: no submission cleared; DO NOT SUBMIT.** The evidence below separates prior local holdout performance, a fresh single-witness registry measurement, unverified score claims, and scientific hypotheses. No new candidate or model experiment was generated in this review.
 
-### Evidence class
+## 1. What is known about GEMSDOE32 `0.2778`?
 
-The supplied GEMSDOE32 listing associates `h33-h33-2-b2` with 0.2778. In this checkout that is an owner-reported **CLAIM**, not an **ORGANIZER-CONFIRMED** submission receipt: there is no receipt date/score row for this item in `ledger/submissions.csv`, and `registry/parents/R0.json` has `receipt: null`. The prompt gives 0.3195 and 0.4413 as conflicting snapshots. The [official public leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/) was checked on 2026-10-24 and displayed 0.4413 at #1; this is a dated public leaderboard observation, not a submission-page receipt for GEMSDOE32 or GEMSDOE92. The [GEMSDOE32 project page](https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html) itself distinguishes model/holdout evidence from organizer scoring and says that no organizer score exists for its artifacts.
+`0.2778` is recorded as a **CLAIM** for GEMSDOE32 `h33-h33-2-b2`; `ledger/historical_climb.csv` and `registry/parents/R0.json` do not provide an organizer submission-page receipt. The disputed values `0.3195` and `0.4413` are recorded as unverified **LEADERBOARD-SNAPSHOT** values in [`ledger/score_claims.csv`](https://github.com/buffedlizard55-lab/GEMSDOE92/blob/main/ledger/score_claims.csv). No fresh official leaderboard observation was made in this review. No current leaderboard high score is asserted.
 
-### Mechanistic explanation: plausible, not causal proof
+A plausible **HYPOTHESIS**, not a causal conclusion, is that a fixed candidate budget, spatial thinning, pruning of redundant mass, and catalogue clearance changed the balance between useful distance-weighted coverage and false-positive mass. The score alone does not identify the cause. The exact organizer-evaluated bytes and private target labels are not established here.
 
-The documented parent uses a fixed 37,654-pixel prediction budget, H19-5 ridge support, D2.8 Poisson spacing, and an off-known-trace mask. Given the competition's distance-weighted, asymmetric Tversky scoring, a fixed budget of spatially distinct predictions near hidden faults can be more efficient than diffuse or redundant positive mass. That is a reason the design *could* do well; without the submission receipt and private test labels, we cannot prove which design choice caused 0.2778.
+The repository's local holdout evaluator uses pooled distance-weighted Tversky with α=0.2, β=0.8, and a 300 m triangular kernel. Catalogue hide-and-recover can reward recovery of mapped catalogue structures; it is not equivalent to scoring private, genuinely uncatalogued faults.
 
-The competition page describes the target as geological faults, says the public known-fault data is incomplete and may contain errors, and defines expert-labelled new faults for scoring. Therefore the catalogue-derived holdout is a diagnostic, not an equivalent sample of private new-fault truth.
+## 2. Prior ANASIG HOLDOUT-DTI — not rerun in this review
 
-### Can GEMSDOE92 score higher?
+Evidence class **HOLDOUT-DTI**; evaluator `gems57-pooled-hide-v2`; 22,663 withheld positive pixels; paired spatial-cluster 95% CIs. These values are from the prior experiment, not a new run.
 
-**Possible in principle; not established by this checkout.** No local HOLDOUT-DTI, feature AUC, scientific rationale, or projection is an organizer score. The only evidence for live performance is an ORGANIZER-CONFIRMED receipt after a human submission. The safer next action is better data- and leakage-controlled validation, not more score forecasts.
+| Comparison | HOLDOUT-DTI | 95% CI |
+|---|---:|---:|
+| ANASIG | 0.004967 | [0.004098, 0.005940] |
+| ANASIG − R0 | +0.000961 | [+0.000168, +0.001814] |
+| ANASIG − prior holdout-best RELIEF p10 | −0.001078 | [−0.002034, −0.000112] |
 
-## Candidate evidence and current disposition
+The prior result improves on R0 but is below the prior local holdout best. It is not an organizer score and cannot establish live generalization.
 
-### STEPOVER — unique local negative deliverable
+## 3. Current registry blocker and candidate status
 
-The repository's STEPOVER run card records this recipe: derive visible trace tips from the visible catalogue only; construct strike continuation/step-over favourability; select off-catalogue dots; and use `gems57-pooled-hide-v2` with buffered whole-segment holdout, pooled DTI α=0.2, β=0.8, 300 m triangular kernel. The run card reports 11,321 withheld positives and HOLDOUT-DTI `0.0000 [0.0000, 0.0000]` vs R0 proxy baseline `0.0037 [0.0031, 0.0044]`. Its stated explanation is a structural zero: held truth is a subset of the catalogue, while the candidate is constrained away from the full catalogue. The zero does not establish the live score for genuinely unmapped faults.
+The current ANASIG zeros-outside file is format-valid for research; its ten local MUST gates pass on disk reread. It remains **NOT CLEARED — DO NOT SUBMIT**.
 
-The saved lane scan's 14-file local comparison reported maximum surface rank correlation 0.0277, final-dot rank correlation 0.0082, and maximum 3-px dot overlap 0.2534; these clear thresholds only within that incomplete local scan. A later broader audit found a full-support duplicate witness: under the literal >70%/3-px rule, the STEPOVER and other nonempty candidates are not cleared for a slot. The file remains format-valid and downloadable, but its HOLDOUT-DTI is negative and global uniqueness fails.
+A fresh **REGISTRY-MEASUREMENT** checked one exact public 17GEMSDOE raster, with Git blob SHA and byte hash recorded in [`downloads/public_witness_anasig.json`](downloads/public_witness_anasig.json). Its positive support covers 100% of the footprint; the 3-pixel halo leaves no allowed cell uncovered. ANASIG final-dot forward overlap is 1.000000, which exceeds the literal >0.70 stop. Full-footprint Spearman is 0.038183, below the absolute 0.90 limit; it does not cancel the overlap failure. The actual pre-placement surface was not checked against this witness in this retrospective review.
 
-### RELIEF and DILATATION — positive local holdout, failed literal uniqueness rule
+This is a single-witness negative result, not a full public scan. Because the witness is positive at every footprint cell, every nonempty in-footprint candidate would fail the literal overlap rule while it remains binding. Do not generate or promote a purportedly unique candidate under that rule.
 
-Their saved run cards report positive catalogue-derived holdout deltas. However, 99.37–99.40% of their dots lie within 3 px of registered parent R0, above the operator's 70% duplication threshold. Record them as duplicates; do not substitute arrival-set comparisons for the stated whole-dot rule. Their local result does not clear them for a slot.
+The older 1,279-raster / 11GEMSDOE scan applies to **visible-collar**, not ANASIG. It must not be attributed to ANASIG. Current measurements and scope are in [`REVIEW_CURRENT.md`](REVIEW_CURRENT.md) and [`downloads/current_registry_stop_run_card_20261024.json`](downloads/current_registry_stop_run_card_20261024.json).
 
-### Historical comparison
+## 4. Current scientific action
 
-TIPGAP FAR clears the recorded R0 overlap threshold at 67.00% of dots within 3 px but its `gems57-pooled-hide-v2` HOLDOUT-DTI is below R0. It remains a negative deliverable. The conflicting trade-off is evidence against another derivative of the same parent, not a reason to reinterpret the lane gate.
+No candidate lane is active. The ranked backlog in [`HYPOTHESES.html`](HYPOTHESES.html) contains four formulations that have no tracked build/holdout result in the exact proposed form. The variants identify related methods already screened, named non-fault mimics, value/cost, data requirements, and source verification status. No external data source is treated as verified or viable in this review. The full training feature stack is absent from the current `.cache`.
 
-## Candidate hypotheses for a future reset
+If the policy and data-access blockers are resolved in a future session, follow the canonical protocol in the [repository README](https://github.com/buffedlizard55-lab/GEMSDOE92/blob/main/README.md): one method lane, actual surface comparison before placement, final-dot comparison after, buffered whole-component holdout, visible-fault-only catalogue features, exact masking, pooled DTI, single-feature leakage canaries, automatic format gates, and a maximum of three experiments or two hours. Promotion and slot selection remain separate.
 
-Three to five untried hypotheses with layer names, physical signatures, why they might detect unmapped structures, differences from implemented methods, qualitative priority/cost, non-fault mimics, and data availability are in [`hypotheses_20261024.md`](hypotheses_20261024.md). The current highest-priority idea cannot be tested here because the authorized 19-band feature stack is absent from `.cache/gems_inputs/`. The official DrivenData data page is login-gated in this environment. No experiment was started and no weekly slot was touched.
+## 5. Evidence and limitations
 
-Before any future slot selector action: restore authorized inputs and verify hashes; run each feature-alone leakage canary; use whole-segment buffered holdout, visible-only features, exact visible-catalogue mask, pooled DTI and 95% CI; run correlation/overlap checks before and after placement; stop on a duplicate; and run local format checks on the actual served bytes.
+- **CLAIM** and **LEADERBOARD-SNAPSHOT** are not **ORGANIZER-CONFIRMED** receipts.
+- **HOLDOUT-DTI** is a local hide-and-recover diagnostic, not a leaderboard score.
+- **PROXY** and **MODEL** values are not private-label performance.
+- **REGISTRY-MEASUREMENT** reports exactly what public bytes were checked; the current ANASIG finding is one binding witness, not an exhaustive registry certificate.
+- The official DrivenData leaderboard/data page and non-GitHub data sources were not refreshed in this review. Pinned owner-mirror hashes do not prove official origin, license, or redistribution permission.
+- Existing filenames dated 2026-10-25 are later than this review date; their provenance/time discrepancy is flagged in the repository's `IRREGULARITIES.md`.
 
-## Sources and verification boundaries
-
-- [DrivenData problem and metric page](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/) — consulted directly; it describes the goal, incomplete known-fault data, feature classes, and distance-weighted Tversky metric.
-- [DrivenData reference solution](https://github.com/drivendataorg/gems-prize-reference-solution) — public code/repository; it is a baseline, not an organizer receipt for this candidate.
-- [USGS GeoDAWN catalog](https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7) — official data provenance.
-- [DOE GDR INGENIOUS #1391](https://gdr.openei.org/submissions/1391) — source link.
-- [Official competition rules](https://docs.nlr.gov/docs/fy26osti/96647.pdf).
-
-Source-page availability is not the same as local input availability. This review checked the local repository and official references; it did not access DrivenData account-only data, private test truth, or a submission receipt.
+See [`README.md`](https://github.com/buffedlizard55-lab/GEMSDOE92/blob/main/README.md) for the full operating prompt, [`SUBMIT.html`](SUBMIT.html) for the current no-submit status, and [`index.html`](index.html) for research-only downloads.

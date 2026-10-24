@@ -1,5 +1,7 @@
 # Candidate geological hypotheses — 2026-10-24
 
+> **Historical visible-collar session record; research only; DO NOT SUBMIT.** Candidate 1 and the 1,279-raster / 11GEMSDOE scan documented below are the visible-collar lane, not ANASIG. This record does not represent current eligibility; see [`REVIEW_CURRENT.md`](REVIEW_CURRENT.md) for the current ANASIG single-witness stop.
+
 Ranks are prospective priorities, not leaderboard predictions. Only candidate 1 was tested in this session; all HOLDOUT-DTI numbers are explicitly labelled and are not competition scores. The test budget used one candidate method, evaluated over eight spatial folds.
 
 | Rank | Hypothesis / layer(s) | Physical signature targeted | Why it might detect an unmapped fault | Difference from this repository | Expected DTI effect / cost | Availability and validation state |

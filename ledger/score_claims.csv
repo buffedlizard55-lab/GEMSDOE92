@@ -1,0 +1,4 @@
+claim_id,value,evidence_class,subject,source_record,source_date,receipt_verified,receipt_id,notes
+GEMSDOE32_B2,0.2778,CLAIM,GEMSDOE32 h33-h33-2-b2,ledger/historical_climb.csv,unknown,false,,Owner-lineage value; no organizer submission-page receipt is recorded here.
+LEADERBOARD_03195,0.3195,LEADERBOARD-SNAPSHOT,Public leaderboard value supplied in the user request,user request,unknown,false,,Conflicts with the prior repository note; not independently refreshed or verified in this review.
+LEADERBOARD_04413,0.4413,LEADERBOARD-SNAPSHOT,Public #1 value recorded in a prior repository note,SESSION_PROMPT.md,2026-10-24,false,,Historical note only; no fresh official-page read this review and not a receipt for GEMSDOE32 or GEMSDOE92.

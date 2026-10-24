@@ -1,5 +1,8 @@
 # Analysis — 2026-10-24 late session (GRAVCrest screen → STRAINBREAK)
 
+> **Historical STRAINBREAK experiment record — research only; DO NOT SUBMIT.** A saved local result or prior public-registry scan does not confer current eligibility. No STRAINBREAK artifact was generated or rerun in the current review. See [`REVIEW_CURRENT.md`](REVIEW_CURRENT.md) for the current project decision.
+
+
 Machine-checkable numbers: `evidence/gravcrest_screen.json`,
 `evidence/strainbreak_variants.json`, `evidence/strainbreak_proxy_audit.json`,
 `evidence/strainbreak_f75_audit.json`, `evidence/strainbreak_run_card.json`,

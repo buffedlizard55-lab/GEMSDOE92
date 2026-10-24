@@ -1,0 +1,162 @@
+{
+  "schema": "gemsdoe92.hypothesis-queue.v1",
+  "reviewed_utc": "2026-10-24T18:04:48.781450Z",
+  "status": "BACKLOG_ONLY; NO ACTIVE LANE; NO CANDIDATE IS VIABLE TO TEST OR SUBMIT UNDER THE CURRENT REGISTRY GATE",
+  "ranking_basis": "Qualitative expected scientific information per implementation cost, conditional on future policy resolution and authorized data access. No numeric HOLDOUT-DTI forecast or leaderboard projection is made.",
+  "current_blocker": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "summary": "A hash-verified public witness is positive on every competition-footprint cell and its 3-pixel halo covers every allowed cell. Every nonempty in-footprint candidate therefore fails the literal >0.70 forward-overlap stop.",
+    "receipt": "downloads/public_witness_anasig.json",
+    "full_public_registry_scan_this_review": false
+  },
+  "data_availability": {
+    "training_feature_stack_path": ".cache/gems_inputs/training_features.tif",
+    "training_feature_stack_present_this_review": false,
+    "official_competition_data_source": "https://www.drivendata.org/competitions/306/competition-doe-gems/data/",
+    "official_competition_source_verified_this_review": false,
+    "external_official_sources_verified_this_review": [],
+    "note": "The official competition site and non-GitHub external sources were outside the permitted network hosts. Pinned owner-mirror hashes do not authenticate organizer provenance, current availability, or redistribution terms."
+  },
+  "experiment_budget": {
+    "limit": "Stop after 3 experiments or 2 hours, whichever comes first.",
+    "experiments_run_this_review": 0,
+    "active_lane": null,
+    "weekly_submission_slots_used_this_review": 0
+  },
+  "hypotheses": [
+    {
+      "rank": 1,
+      "id": "DRAINAGE_RELAY",
+      "status": "UNVALIDATED HYPOTHESIS; not built or scored",
+      "layers": [
+        "Competition DEM Band 12 det_elev",
+        "Competition DEM Band 19 det_elev_slope",
+        "Hydrologically conditioned drainage network and derived channel profiles"
+      ],
+      "physical_signature": "Look for a collinear, repeated same-sense lateral deflection or knickpoint across several neighboring channels/catchments, with a consistent cross-channel step. Score the network-level geometric motif, not an isolated high slope gradient.",
+      "why_it_may_find_catalogue_missing_faults": "A young or low-throw blind fault can deform several channels before a clear scarp is mapped; a repeated displacement signature across catchments can persist where a single local slope-break detector is weak.",
+      "distinction_from_prior_repo_methods": "BREAKLINE and SCARPPOL rank local slope-break or fall-line curvature pixels; this candidate is a drainage-graph / multi-catchment relationship. No drainage-network relay or aligned-knickpoint builder or holdout result was found in the reviewed tracked evidence.",
+      "named_non_fault_mimics": [
+        "Lithologic or cementation boundaries that redirect multiple channels",
+        "Alluvial-fan avulsion and drainage capture",
+        "Pleistocene lake shorelines",
+        "Roads, canals, dams, or other drainage engineering"
+      ],
+      "expected_value_and_cost": "Potential information value: medium; implementation and validation cost: moderate to high. No numeric DTI expectation is assigned. A 100 m DEM may be too coarse for small offsets, so the first task would be a resolution / geomorphic falsification check.",
+      "required_data": [
+        "Exact, hash-verified competition feature stack or an independently authorized DEM with matching footprint and CRS",
+        "Whole-fault-segment buffered holdout labels, used only through visible-fold catalogue features",
+        "Independent geomorphic controls for lithology, lake, and anthropogenic mimics"
+      ],
+      "official_source": {
+        "name": "DrivenData DOE GEMS competition data page (for the in-stack DEM bands)",
+        "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/data/",
+        "free_or_authorized_status": "Not verified this review; likely account/competition access is required.",
+        "availability_verified_this_review": false
+      },
+      "viable_now": false,
+      "blocked_because": "The feature stack is absent from the cache, official access/terms were not verified, and the current literal registry gate blocks every nonempty in-footprint candidate."
+    },
+    {
+      "rank": 2,
+      "id": "SPRING_PAIR_STRIKE",
+      "status": "UNVALIDATED HYPOTHESIS; related density screen exists, alignment formulation not built",
+      "layers": [
+        "DOE GDR INGENIOUS spring / well coordinates",
+        "Temperature and chemistry fields with source-quality flags",
+        "Optional DEM-derived catchment and valley orientation for mimic controls"
+      ],
+      "physical_signature": "Test whether independent hot-spring or geothermometry-confirmed well pairs form fault-compatible strike-coherent corridors, using pairwise axial orientation and spatially blocked controls rather than point density alone.",
+      "why_it_may_find_catalogue_missing_faults": "Blind permeable strands can connect separated surface discharge points even when the connecting fault has no mapped Quaternary scarp. A corridor may be informative when no single spring lies on a mapped trace.",
+      "distinction_from_prior_repo_methods": "The repository screened spring density / elongation and found no useful enrichment; the explicitly retained spring-pair strike-alignment construction was not built. This is not a rerun of the density lane.",
+      "named_non_fault_mimics": [
+        "Regional aquifer or lithologic-contact discharge",
+        "Springs aligned along a river, playa margin, or topographic low",
+        "Anthropogenic production wells and field-level reporting clusters",
+        "Multiple outlets connected by one aquifer rather than a fault"
+      ],
+      "expected_value_and_cost": "Potential information value: medium-high geological specificity but uncertain statistical power; cost: moderate-high because point-source provenance, duplicate wells, cluster dependence, and spatial holdout leakage require careful treatment. No numeric DTI expectation is assigned.",
+      "required_data": [
+        "Official GDR submission 1391 data with terms, coordinates, temperatures, and provenance verified from the source",
+        "Independent spring/well de-duplication and spatially blocked negative controls",
+        "Visible-fault-only fold features and a feature-alone leakage canary"
+      ],
+      "official_source": {
+        "name": "DOE Geothermal Data Repository / INGENIOUS submission 1391",
+        "url": "https://gdr.openei.org/submissions/1391",
+        "free_or_authorized_status": "The project manifest records a CC BY 4.0 classification for a pinned mirror, but this review did not verify the live official source or current terms.",
+        "availability_verified_this_review": false
+      },
+      "viable_now": false,
+      "blocked_because": "The official source was not reachable/verified, the pinned feature file is not in the current cache, and the current literal registry gate blocks every nonempty in-footprint candidate."
+    },
+    {
+      "rank": 3,
+      "id": "HOST_NORMALIZED_RADIOMETRIC_RESIDUAL",
+      "status": "UNVALIDATED HYPOTHESIS; a related total-count gradient screen exists",
+      "layers": [
+        "USGS GeoDAWN airborne K, eTh, eU, and total-count channels",
+        "Competition Band 15 depth_to_base_surf and Band 17 cond_surf as candidate host/cover covariates",
+        "Terrain and flight-line / survey-quality masks"
+      ],
+      "physical_signature": "Estimate local, host-conditioned multi-channel radiometric residuals and test whether coherent linear K/eTh/eU alteration edges align into corridors, rather than ranking raw total-count gradients or an unconditioned ratio.",
+      "why_it_may_find_catalogue_missing_faults": "Fluid-rock alteration can mark a concealed permeable fault or splay with little present-day relief and weak regional magnetic/gravity contrast.",
+      "distinction_from_prior_repo_methods": "A prior radiometric total-count-gradient screen was recorded; the proposed host-normalized multichannel residual formulation has not been built or evaluated. It must not be described as a wholly untested radiometric idea.",
+      "named_non_fault_mimics": [
+        "Primary felsic/mafic lithology changes",
+        "Soil moisture, weathering, and transported cover",
+        "Playa salts or clay-rich lake deposits",
+        "Survey striping, altitude changes, and radiometric shielding"
+      ],
+      "expected_value_and_cost": "Potential information value: low-to-medium until survey and host normalization are demonstrated; cost: high due to co-registration, flight-line QC, compositional effects, and spatial validation. No numeric DTI expectation is assigned.",
+      "required_data": [
+        "Official GeoDAWN radiometric channels with survey coverage and quality metadata",
+        "Authorized aligned host/cover covariates",
+        "Feature-alone leakage canaries and an independent non-fault lithology control"
+      ],
+      "official_source": {
+        "name": "USGS GeoDAWN catalog / radiometric data DOI",
+        "url": "https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7",
+        "doi": "https://doi.org/10.5066/P93LGLVQ",
+        "free_or_authorized_status": "The manifest records a public-domain classification for a pinned mirror; this review did not verify the live official source, coverage, or current availability.",
+        "availability_verified_this_review": false
+      },
+      "viable_now": false,
+      "blocked_because": "External source/terms were not verified, the cached raster is absent, and the current literal registry gate blocks every nonempty in-footprint candidate."
+    },
+    {
+      "rank": 4,
+      "id": "MULTISEASON_THERMAL_CORRIDOR",
+      "status": "UNVALIDATED HYPOTHESIS; no thermal-data experiment found in reviewed repo evidence",
+      "layers": [
+        "Multi-date Landsat Collection 2 surface-temperature scenes",
+        "DEM slope/aspect and land-cover / acquisition-quality masks",
+        "Optional independently verified spring locations for interpretation, not target labels"
+      ],
+      "physical_signature": "Look for persistent, seasonally matched thermal residuals arranged along a narrow corridor after controlling for slope/aspect, land cover, acquisition time, and surface emissivity; require repeat observations rather than one warm pixel.",
+      "why_it_may_find_catalogue_missing_faults": "A shallow geothermal upflow zone may express persistent surface heat above a blind permeable structure that is not mapped from scarps or potential-field lineaments.",
+      "distinction_from_prior_repo_methods": "No Landsat thermal time-series or surface-temperature lane was found in the reviewed tracked code/evidence. This differs from static geophysical and DEM-derived priors, but its relationship to the fault labels is indirect.",
+      "named_non_fault_mimics": [
+        "Solar aspect and elevation effects",
+        "Irrigation, urban surfaces, or industrial heat",
+        "Wildfire scars, exposed rock, and emissivity error",
+        "Seasonal moisture and cloud / atmospheric correction artifacts"
+      ],
+      "expected_value_and_cost": "Potential information value: low-to-medium because thermal anomalies are spatially indirect; cost: high for scene selection, cloud screening, seasonal controls, and reproducible processing. No numeric DTI expectation is assigned.",
+      "required_data": [
+        "Official multi-date Landsat Collection 2 surface-temperature data and processing metadata",
+        "Cloud-free seasonal controls and a reproducible footprint / resolution match",
+        "Spatially blocked holdout and feature-alone leakage canary"
+      ],
+      "official_source": {
+        "name": "USGS Landsat Collection 2 Surface Temperature",
+        "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature",
+        "free_or_authorized_status": "Official source identified for future verification; access, geographic coverage, terms, and product availability were not checked this review.",
+        "availability_verified_this_review": false
+      },
+      "viable_now": false,
+      "blocked_because": "The official external source was not verified and the current literal registry gate blocks every nonempty in-footprint candidate."
+    }
+  ],
+  "decision": "No active method lane is selected. These are backlog hypotheses only; do not implement, score, or generate a raster until the registry policy is explicitly resolved and required official data/provenance are verified."
+}

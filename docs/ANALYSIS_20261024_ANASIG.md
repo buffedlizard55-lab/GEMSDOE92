@@ -1,5 +1,8 @@
 # Analysis — 2026-10-24 session (SCARPPOL → ANASIG)
 
+> **Historical ANASIG experiment record; DO NOT SUBMIT.** The current exact-byte format gate passes, but the fresh 17GEMSDOE single-witness check records 100% final-dot forward overlap. This review did not rerun HOLDOUT-DTI and did not compare the pre-placement surface against that witness. Current evidence: [`REVIEW_CURRENT.md`](REVIEW_CURRENT.md) and [`downloads/current_registry_stop_run_card_20261024.json`](downloads/current_registry_stop_run_card_20261024.json).
+
+
 Machine-checkable numbers live in `evidence/scarppol_variants.json`,
 `evidence/scarppol_proxy_audit.json`, `evidence/scarppol_run_card.json`,
 `evidence/anasig_variants.json`, `evidence/anasig_proxy_audit.json`,

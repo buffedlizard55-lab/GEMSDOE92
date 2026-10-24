@@ -1,5 +1,7 @@
 # Hypotheses — 2026-10-24 late session (ranked BEFORE any building)
 
+> **Historical GRAVCrest/STRAINBREAK-session hypothesis record; research only; DO NOT SUBMIT.** The feature-cache and source statements below describe that session and have not been revalidated. No lane is currently viable or authorized; see [`REVIEW_CURRENT.md`](REVIEW_CURRENT.md) and the current [`HYPOTHESES.md`](HYPOTHESES.md).
+
 Protocol: 3–5 previously untried geological hypotheses; each names layers,
 physical signature, why it should catch a fault missing from the
 USGS/INGENIOUS catalogue, and how it differs from everything already built

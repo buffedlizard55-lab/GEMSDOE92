@@ -732,3 +732,17 @@ Catalogue hide-and-recover and SGMC price different truths; neither is the
 private expert-mapped label set. Treating either as decisive alone would be
 an irregularity. The only resolver is an organizer receipt, which remains
 Blocker 0 (ledger: BUILT rows grew by 3 this session, RECEIPT rows still 0).
+
+## 2026-10-24 current review — ANASIG single-witness stop, attribution correction, and future-dated downloads
+
+**Observation.** A fresh recheck retrieved the exact public 17GEMSDOE E-proba Git blob, verified blob SHA-1 `374c88b1da2b803e2ed160de467fd71ae114010d`, size 25,065,181 bytes, and SHA-256 `ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be`. Its positive support covers all 5,167,373 footprint cells and its 3-pixel halo covers all 5,106,385 allowed cells. ANASIG's existing final output has forward overlap 1.0 and full-footprint Spearman 0.038182744 against this witness. This is one witness, not an exhaustive scan; the candidate's pre-placement surface was not checked against this witness.
+
+**Attribution correction.** The 1,279-raster public scan and 11GEMSDOE witness cited in older homepage/summary text pertain to the visible-collar candidate. They are not an ANASIG scan. ANASIG's current negative evidence is the single-witness 17GEMSDOE check in `docs/downloads/public_witness_anasig.json`. One witness is sufficient for a literal overlap rejection, but not for a claim of complete registry coverage.
+
+**Decision.** Keep ANASIG format-valid / research-only / **DO NOT SUBMIT**. The witness is positive at every footprint cell, so any nonempty in-footprint prediction has 100% forward overlap and fails the stated >70% rule. Do not move predictions outside the footprint, emit an empty raster, or waive the rule. No candidate or model experiment was run and no slot was used in this review.
+
+**Score provenance.** `0.2778` remains a **CLAIM** without an organizer receipt. `0.3195` and `0.4413` remain unverified **LEADERBOARD-SNAPSHOT** values; no fresh official leaderboard read was made. `ledger/score_claims.csv` records these distinctions. No score progression or causal explanation is asserted as established fact.
+
+**Date irregularity.** Three tracked `docs/downloads/` DILATATION TIFF pairs have filenames dated `2026-10-25`, one day after the current review date (`2026-10-24`). Their bytes are preserved as pre-existing artifacts, but the timestamp/provenance discrepancy has not been resolved. They are archived and explicitly marked **DO NOT SUBMIT**; they are not treated as newly generated or current recommendations.
+
+**Action.** Replaced the active README with the complete operating prompt/current status; corrected the public index, executive summary, submission guides, and hypothesis backlog; added exact witness/run-card and score-claim provenance; added automated tests and site checks for explicit download status. `docs/REVIEW_CURRENT.md` is the current review. The large feature stack is absent from `.cache/gems_inputs/`; current official data-page access and redistribution terms were not verified. No candidate is declared viable.

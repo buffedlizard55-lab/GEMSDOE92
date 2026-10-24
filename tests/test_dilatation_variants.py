@@ -151,9 +151,9 @@ def test_dilatation_proxy_audit_labels_and_canary() -> None:
 
 def test_current_primary_download_is_tracked_and_gate_passed() -> None:
     """The current homepage artifact exists and matches its audit receipt."""
-    primary = ROOT / "docs" / "downloads" / "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif"
+    primary = ROOT / "docs" / "downloads" / "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif"
     assert primary.is_file(), "primary download missing from docs/downloads"
-    audit_path = primary.with_name("GEMSDOE92-visible-collar-r0-excluded-20261024-audit.json")
+    audit_path = primary.with_name("h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-audit.json")
     audit = json.loads(audit_path.read_text(encoding="utf-8"))
     assert audit["overall_pass"] is True  # format gate is separate from submission eligibility
     assert audit["submission_eligible"] is False
@@ -164,16 +164,15 @@ def test_current_primary_download_is_tracked_and_gate_passed() -> None:
     assert "!docs/downloads/*.zip" in ignore
 
 
-def test_site_offers_primary_download_and_exact_submission_fields() -> None:
+def test_site_offers_primary_as_research_only_not_a_submission() -> None:
     html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
-    assert "OK TO DOWNLOAD" in html
-    assert "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif" in html
-    assert "GEMSDOE92-visible-collar-r0-excluded-20261024" in html
-    note = "Visible-fault collar 2-3 px; R0 3px halo excluded; 37,654 dots"
-    assert note in html and len(note) <= 140
-    assert "visible_collar_run_card.json" in html
+    assert "OK TO DOWNLOAD FOR RESEARCH ONLY" in html
+    assert "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif" in html
+    assert "DO NOT SUBMIT" in html
+    assert "current_registry_stop_run_card_20261024.json" in html
     submit = (ROOT / "docs" / "SUBMIT.html").read_text(encoding="utf-8")
-    assert "DrivenData" in submit and "OK TO DOWNLOAD" in submit
+    assert "DrivenData" in submit and "OK TO DOWNLOAD FOR RESEARCH ONLY" in submit
+    assert "NOT CLEARED" in submit and "DO NOT SUBMIT" in submit
 
 
 def test_site_discloses_literal_duplicate_stop_and_evidence_boundary() -> None:
@@ -182,7 +181,7 @@ def test_site_discloses_literal_duplicate_stop_and_evidence_boundary() -> None:
     assert "DUPLICATE UNDER THE LITERAL REGISTRY RULE" in html
     assert "131 rasters exceed the 70% stop threshold" in html
     assert "HOLDOUT-DTI" in html and "not a competition score" in html
-    assert "No live submission slot has been used" in html
+    assert "no live submission slot has been used" in html.lower()
     card = json.loads((ROOT / "evidence" / "visible_collar_run_card.json").read_text(encoding="utf-8"))
     assert card["verdict"] == "negative"
     assert card["holdout_dti"]["paired_delta_vs_R0"]["ci95"][0] > 0

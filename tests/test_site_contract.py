@@ -11,8 +11,6 @@ import json
 import re
 from pathlib import Path
 
-import pytest
-
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 
@@ -104,15 +102,16 @@ def test_legacy_submission_page_redirect_does_not_claim_breakline_is_primary():
         assert "SUBMIT.html" in page and "ANASIG" in canonical
 
 
-def test_submit_page_exists():
+def test_submit_page_exists_and_withholds_upload_instructions():
+    """The current duplicate stop must not be paired with actionable upload steps."""
     for name in ("SUBMIT.html", "submit.html"):
         p = DOCS / name
-        if p.is_file():
-            html = p.read_text(encoding="utf-8")
-            assert "zeros" in html.lower()
-            assert "DrivenData" in html
-            assert "current artifact is blocked" in html.lower()
-            assert "Do not perform these steps with the current artifact" in html
-            assert "submission_eligible: true" in html
-            return
-    pytest.fail("no submission guide page in docs/")
+        assert p.is_file(), f"missing submission status page: {name}"
+        html = p.read_text(encoding="utf-8")
+        assert "zeros" in html.lower()
+        assert "DrivenData" in html
+        assert "current artifact is blocked" in html.lower()
+        assert "DO NOT SUBMIT" in html
+        assert "submission_eligible: true" not in html
+        assert "File to submit" not in html
+        assert "Upload the File" not in html

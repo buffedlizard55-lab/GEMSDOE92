@@ -1,5 +1,7 @@
 # Hypotheses — 2026-10-24 (ranked before any building)
 
+> **Historical BREAKLINE-session hypothesis record; research only; DO NOT SUBMIT.** The pre-build screens and later scan status below are historical and do not establish current eligibility. See [`REVIEW_CURRENT.md`](REVIEW_CURRENT.md) and the current [`HYPOTHESES.md`](HYPOTHESES.md).
+
 Protocol step: generate 3–5 geologically distinct, previously untried
 hypotheses, rank by expected HOLDOUT-DTI gain per build cost, validate
 the top one on the spatially blocked holdout, stay inside the assigned

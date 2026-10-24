@@ -1,0 +1,116 @@
+{
+  "schema": "gemsdoe92.current-status-run-card.v1",
+  "record_type": "retrospective_registry_stop_no_new_candidate",
+  "reviewed_utc": "2026-10-24T18:04:48.781450Z",
+  "hypothesis": {
+    "evidence_class": "HYPOTHESIS",
+    "text": "The previously built ANASIG candidate places a fixed-budget set of dots on coherent magnetic analytic-signal ridges away from the inherited H19-5 skeleton; this might identify basement contacts or concealed structures not represented by the catalogue.",
+    "mechanism": "The analytic-signal magnitude combines horizontal and vertical magnetic derivatives; coherence weighting favors linear source edges. This mechanism is a geological hypothesis, not an organizer-confirmed explanation or live-performance claim.",
+    "named_non_fault_process_that_could_mimic_it": "Lithologic contacts without fault displacement, dikes or sills, buried volcanic-flow margins, and cultural magnetic noise can create analytic-signal ridges."
+  },
+  "candidate": {
+    "new_candidate_generated_this_review": false,
+    "existing_research_artifact": "docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+    "raster_sha256": "68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5",
+    "submission_name_archived_only": "GEMSDOE92-ANASIG-f45Atop-20261024",
+    "submission_note_archived_only": "h33-h33-2-b2; ANASIG f45Atop 16944 far dots on analytic-signal ridges >3px off H19-5",
+    "submission_note_characters": 84,
+    "download_status": "FORMAT-VALID; OK TO DOWNLOAD FOR RESEARCH",
+    "submission_status": "NOT CLEARED; DO NOT SUBMIT",
+    "slot_selection_or_upload_authorized": false
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "status": "prior recorded experiment; not rerun during this review",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.004966945692180207,
+    "ci95": [
+      0.004098145235197473,
+      0.005939990938656839
+    ],
+    "paired_delta_vs_R0": 0.0009607985174954637,
+    "paired_delta_vs_R0_ci95": [
+      0.00016776358668363014,
+      0.0018140697679650993
+    ],
+    "paired_delta_vs_prior_holdout_best_RELIEFp10": -0.0010781867049927257,
+    "paired_delta_vs_prior_holdout_best_ci95": [
+      -0.00203445435608987,
+      -0.00011185228103295617
+    ],
+    "organizer_score": null,
+    "caveat": "Local catalogue hide-and-recover only; not comparable to a live leaderboard and not evidence of performance on private uncatalogued faults."
+  },
+  "leakage_canary": {
+    "evidence_class": "LEAKAGE-CANARY / prior SCREEN-AUC",
+    "status": "prior ANASIG record; not rerun during this review",
+    "max_single_feature_symmetric_auc": 0.551113,
+    "investigation_threshold": 0.9,
+    "source": "evidence/anasig_run_card.json"
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "One current, public, Git-blob-verified witness; not a complete public registry scan.",
+    "candidate_sha256": "68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5",
+    "preplacement_surface": {
+      "status": "NOT_CHECKED_AGAINST_THIS_WITNESS",
+      "reason": "No pre-placement candidate surface was generated or retained in this review; the prior local surface comparison does not substitute for this public witness check."
+    },
+    "postplacement_final_output": {
+      "forward_dot_overlap_within_3px": 1.0,
+      "spearman_full_footprint": 0.03818274400815516,
+      "rho_threshold": 0.9,
+      "overlap_threshold": 0.7,
+      "duplicate_stop": true
+    },
+    "witness": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "repository": "buffedlizard55-lab/17GEMSDOE",
+      "path": "docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "git_blob_sha1": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "bytes": 25065181,
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "positive_pixels_in_footprint": 5167373,
+      "footprint_pixels": 5167373,
+      "positive_fraction_of_footprint": 1.0,
+      "allowed_pixels_after_catalogue_mask": 5106385,
+      "uncovered_allowed_pixels_in_3px_halo": 0,
+      "covered_allowed_fraction": 1.0,
+      "universal_overlap_blocker_for_nonempty_in_footprint_candidates": true
+    },
+    "implication": "Every nonempty candidate restricted to the allowed in-footprint domain has forward overlap 1.0 with this witness, exceeding the literal 0.70 stop threshold. Do not evade or waive the rule.",
+    "receipt": "docs/downloads/public_witness_anasig.json"
+  },
+  "validator_output": {
+    "evidence_class": "FORMAT-VALIDATION",
+    "status": "PASS (existing artifact only; not a new candidate)",
+    "local_must_gates_passed": 10,
+    "single_band": true,
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform_matches_reference": true,
+    "all_values_finite": true,
+    "no_nan_inside_footprint": true,
+    "values_range": [
+      0.0,
+      1.0
+    ],
+    "outside_footprint_encoding": "zeros",
+    "catalogue_mass": 0,
+    "reread_sha256": "68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5",
+    "audit_receipt": "docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-audit.json"
+  },
+  "experiment_budget": {
+    "experiments_run_this_review": 0,
+    "weekly_submission_slots_used_this_review": 0,
+    "new_model_or_holdout_run": false
+  },
+  "verdict": "negative",
+  "verdict_reason": "The existing ANASIG artifact passes local format gates but fails the literal public-registry forward-overlap rule against a single full-footprint-positive witness and does not beat the prior local HOLDOUT-DTI best. No new artifact is eligible; do not submit."
+}

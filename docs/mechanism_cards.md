@@ -1,5 +1,7 @@
 # Mechanism Cards — MASS axis (2026-10-23)
 
+> **Historical experiment-design record; research only; DO NOT SUBMIT.** Predicted values below are pre-experiment hypotheses, not results or competition scores. Later evidence and the current ANASIG stop supersede these plans; see [`REVIEW_CURRENT.md`](REVIEW_CURRENT.md) and the root [`README.md`](https://github.com/buffedlizard55-lab/GEMSDOE92/blob/main/README.md).
+
 Parent: h33-h33-2-b2 (GEMSDOE32), 37,654 dots, none within 2px of catalogue, CLAIM 0.2778
 Ranking: H19-5 continuous field (121k px) value at dot location, proxy for belief strength.
 

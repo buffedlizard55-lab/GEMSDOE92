@@ -1,5 +1,8 @@
 # Three-pass review — BREAKLINE public-registry stop
 
+> **Historical registry-stop note for BREAKLINE / visible-collar; not the current ANASIG scope.** The current ANASIG result is a single 17GEMSDOE witness check, not the older 1,279-raster / 11GEMSDOE scan. Current status: [`REVIEW_CURRENT.md`](REVIEW_CURRENT.md).
+
+
 ## Executive decision
 
 **Format-valid and downloadable; NOT unique under the supplied rule; DO NOT SUBMIT.** No new TIFF was generated: the mandatory duplicate stop overrides the request to generate another candidate. No competition slot was used. This session stayed in the existing BREAKLINE verification lane, with zero candidate experiments.

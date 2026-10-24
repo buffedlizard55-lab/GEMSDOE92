@@ -1,5 +1,7 @@
 # Ranked hypothesis register — review on 2026-10-24
 
+> **Historical hypothesis register; superseded by the current ANASIG review and ranked backlog.** Its prior scope, cached-data statements, and uniqueness assumptions describe earlier sessions. No current lane is viable or authorized; see [`REVIEW_CURRENT.md`](REVIEW_CURRENT.md) and [`HYPOTHESES.md`](HYPOTHESES.md).
+
 This is a research queue, not a claim that any untested method improves the contest score. Local values are labelled **HOLDOUT-DTI** with evaluator, withheld positives, and confidence interval; contest values require a dated **ORGANIZER-CONFIRMED** receipt. Numeric forecasts are intentionally omitted.
 
 ## What was evaluated already

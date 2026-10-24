@@ -1,5 +1,7 @@
 # Hypotheses — 2026-10-24 (SCARPPOL session, ranked before building)
 
+> **Historical SCARPPOL-session record.** Values, data-cache statements, and source checks below describe that earlier session and have not been revalidated in the current review. No lane is currently viable or authorized; see [`REVIEW_CURRENT.md`](REVIEW_CURRENT.md) and the current [`HYPOTHESES.md`](HYPOTHESES.md).
+
 Protocol step: generate 3–5 previously untried geological hypotheses, rank by
 expected HOLDOUT-DTI gain per build cost, validate the top one on the spatially
 blocked holdout, stay inside one lane. Evidence labels are strict:
