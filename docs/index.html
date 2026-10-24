@@ -20,7 +20,7 @@
     <a href="ANALYSIS_20261024.md">Scientific Analysis</a>
   </nav>
   <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD.</strong> All 10 local MUST gates pass: one float32 band; CRS, shape and transform match; finite values in [0,1]; no NaN inside the footprint; zeros outside; zero known-fault mass; SHA-256 recorded.</div>
-  <div class="banner banner-warn"><strong>⛔ NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE.</strong> A broader scan checked 1,279 unique, single-band, template-grid rasters in current default branches of 102 public GEMSDOE-named repositories. The candidate's pre-placement surface and final dots each have 100% forward 3-px overlap with registry raster <a href="https://github.com/buffedlizard55-lab/11GEMSDOE/blob/main/docs/downloads/gems-structural-area06-v1.tif"><code>11GEMSDOE/gems-structural-area06-v1.tif</code></a>; 131 rasters exceed the 70% stop threshold. The duplicate rule governs; stop and do not submit this candidate. See <a href="downloads/public_registry_uniqueness.json">public-registry audit</a>.</div>
+  <div class="banner banner-warn"><strong>⛔ NO CANDIDATE IS CLEARED — BINDING DENSE-RASTER WITNESS.</strong> The hash-verified 17GEMSDOE E-proba witness is positive on all 5,167,373 competition-footprint cells. For the exact ANASIG file below, measured forward 3-px overlap is 100%; more generally, every nonempty in-footprint prediction necessarily overlaps this witness, so it fails the literal &gt;70% duplicate-stop rule. This is one decisive witness, not a fresh full-registry scan. No new TIFF or experiment was produced in this review, and no weekly slot was used. See the <a href="downloads/public_witness_anasig.json">ANASIG witness receipt</a>, <a href="downloads/breakline_public_registry_witness17.json">BREAKLINE witness receipt</a>, and <a href="REVIEW_CURRENT.md">current review</a>.</div>
   <div class="banner banner-warn"><strong>HOLDOUT-DTI improvement does not override uniqueness.</strong> No live submission slot has been used. This is a negative deliverable: it may still be downloaded for review, but it is not recommended or cleared for competition submission. The holdout can reward recovery of mapped catalogue faults and does not prove live performance on uncatalogued faults.</div>
   <div class="banner banner-warn">The portal error <code>Predicted values must be in range [0, 1]</code> is guarded against: this download was reread from disk and every cell is finite and in range. Upload the <strong>zeros-outside</strong> encoding. Note: human step required for weekly competition slot promotion.</div>
 </header>
@@ -28,15 +28,11 @@
 <main>
 <section class="download-card">
 <h2>Latest automated review: no submission cleared</h2>
-<div class="banner banner-warn"><strong>BREAKLINE: DUPLICATE STOP — do not submit.</strong>
-The queued public witness check found REGISTRY-MEASUREMENT 100% forward overlap.
-The hash-verified 17GEMSDOE raster's 3-pixel halo covers the entire footprint;
-every nonempty in-footprint candidate fails the literal overlap gate against it.
-A later parallel session (ANASIG, below) did generate a locally lane-unique TIFF, and it fails
-the same witness gate: every download here remains a format-valid negative research
-deliverable only. No weekly slot was used.</div>
+<div class="banner banner-warn"><strong>Binding registry stop — all downloads are research-only.</strong>
+REGISTRY-MEASUREMENT: the hash-verified 17GEMSDOE E-proba witness is positive on every one of the 5,167,373 footprint cells. ANASIG's exact-file forward overlap was measured at 100%; for any nonempty in-footprint prediction the literal &gt;70% overlap rule is necessarily exceeded. This witness check is decisive for rejection, but is not a fresh full-registry scan. Existing TIFFs are format-valid research artifacts, not cleared submissions. No new TIFF or experiment was created in this review, and no weekly slot was used.</div>
 <p><a href="REVIEW_CURRENT.md">Current review, limitations and next steps</a> ·
-<a href="downloads/breakline_public_witness.json">Public witness measurement</a> ·
+<a href="downloads/public_witness_anasig.json">ANASIG witness receipt</a> ·
+<a href="downloads/breakline_public_registry_witness17.json">BREAKLINE witness receipt</a> ·
 <a href="downloads/session_review_run_card.json">Session run card</a></p>
 </section>
 

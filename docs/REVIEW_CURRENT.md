@@ -118,3 +118,19 @@ Official references for later review (not newly retrieved this session):
 [reference code](https://github.com/drivendataorg/gems-prize-reference-solution),
 [USGS GeoDAWN](https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and),
 [GDR INGENIOUS](https://gdr.openei.org/submissions/1391).
+
+## Repository review recheck — 2026-10-24
+
+This follow-up reviewed the current source, README, homepage, witness receipts, and download gate without running a new geological experiment. The literal uniqueness stop remains binding: the exact ANASIG receipt reports the 17GEMSDOE E-proba witness positive on all 5,167,373 footprint cells; its final-dot overlap is measured at 1.0. Since each valid submission must place its nonzero values inside this footprint, any nonempty candidate exceeds the stated 70% overlap limit against that witness. No new TIFF was produced and no weekly slot was used.
+
+Corrected two documentation risks found during review: the homepage previously led with a historical 1,279-raster / 11GEMSDOE claim, obscuring the later decisive 17GEMSDOE witness and its single-witness scope; and the README described the prompt-reported 0.2778-to-0.4413 sequence and the winning method as established causal facts. The homepage now foregrounds the current binding witness and clarifies that this is not a fresh full scan. The README labels the reported values as CLAIMs and the proposed mechanism as inference, not organizer-confirmed evidence.
+
+### Verification performed
+
+- `.venv/bin/python -m pytest -q`: **135 passed**, 17 Rasterio/Affine pending-deprecation warnings.
+- `.venv/bin/python scripts/check_site.py`: **PASS**, 14 served TIFFs gated.
+- `.venv/bin/python scripts/verify_manifest.py`: all eight pinned input hashes verified.
+- `git diff --check`: PASS.
+- System Python initially lacked `pytest` and NumPy. A repository-ignored `.venv` was created and dependencies installed from `requirements.txt`; no environment artifacts are tracked.
+
+No public endpoint, leaderboard, DrivenData receipt, submission quota, or competition upload was accessed or verified in this review. Existing TIF links are for research/download only, not approved for competition submission.
