@@ -1,0 +1,64 @@
+{
+  "record_type": "retrospective_review_no_new_experiment",
+  "hypothesis": "Quaternary fault scarps express in detrended topography as LINEAR breaks-in-slope (||grad det_elev_slope|| ridges with high structure-tensor coherence of det_elev). Faults that juxtapose like lithologies or offset only alluvium have a scarp but no magnetic/gravity contrast, so the H19-5 potential-field worm skeleton -- and with it parent R0 and the Qfaults-based catalogue built largely from mappable scarps on older imagery -- misses or misplaces them, while expert mapping on high-resolution DEMs (the competition label source, DrivenData #306 p.967) traces exactly such breaks. Placing 33-45% of the fixed budget on coherent slope-break ridges >3px off the worm skeleton, and keeping only coverage-nonredundant skeleton dots under the same field, raises expected kernel credit per dot versus R0's unranked geometric thinning.",
+  "mechanism": "At fixed S=37,654, DTI rises when expected T gains outweigh denominator growth. Kept skeleton dots are chosen by exact marginal expected-DTI greedy (alpha 0.2, beta 0.8, triangular R=3px) under w=0.30+0.70*L_pct on H19-5 support, so coverage-redundant parent dots are the donors. Far dots take the strongest remaining coherent break lineaments first (descending L, 2.8px spacing floor): if per-pixel fault probability rises superlinearly with L rank -- as the screen's SGMC/catalogue enrichments indicated -- concentrating on the top lineaments at kernel spacing earns more expected credit per dot than spreading to cover low-rank support mass (measured directly: evidence/screen_vs_greedy_diagnostic.json).",
+  "named_non_fault_process_that_could_mimic_it": "Pluvial Lake Lahontan shoreline terraces, alluvial-fan segment boundaries and terrace risers, bedding-plane breaks on dipping volcanic strata, and incised-drainage valley walls all produce linear, coherent slope breaks with no Quaternary surface rupture. Far dots concentrated on a shoreline bench would be pure false positives.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.00486050796752969,
+    "ci95": [
+      0.00403154211411757,
+      0.00582235313319924
+    ],
+    "delta_vs_R0": 0.000854360792844947,
+    "delta_vs_R0_ci95": [
+      0.0003004560006930167,
+      0.0014228538036351638
+    ],
+    "delta_vs_holdout_best_RELIEFp10": -0.0011846244296432424,
+    "delta_vs_RELIEFp10_ci95": [
+      -0.0019952446310740287,
+      -0.00039356379093353165
+    ],
+    "R0_dti": 0.004006147174684743,
+    "holdout_best_RELIEFp10_dti": 0.0060451323971729325,
+    "spatial_clusters": 157,
+    "bootstrap_draws": 1000
+  },
+  "holdout_provenance": "Prior recorded experiment, not rerun this session",
+  "correlation_overlap_vs_registry": {
+    "scope": "Single public duplicate witness only; not full-registry clearance",
+    "forward_overlap": 1.0,
+    "spearman_rho": 0.03159061184613562,
+    "witness_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "footprint_3px_halo_coverage": 1.0,
+    "result": "DUPLICATE_STOP",
+    "preplacement_surface": "Not rerun; final-dot rejection suffices for negative retrospective review"
+  },
+  "raster_sha256": "cd9c8a564588e6542b379cd36cbe05fc6da3be07b8edbc542bf737336907810e",
+  "validator_output": {
+    "single_band": true,
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "crs_shape_transform_match": true,
+    "all_values_finite": true,
+    "no_nan_inside_footprint": true,
+    "values_range": [
+      0.0,
+      1.0
+    ],
+    "values_in_0_1": true,
+    "outside_footprint_zero": true
+  },
+  "submission_name": "GEMSDOE92-BREAKLINE-f45Ltop-20261024",
+  "submission_note": "BREAKLINE coherent scarp breaks; retrospective public witness overlap 100%; negative, do not submit",
+  "verdict": "negative",
+  "new_experiments": 0,
+  "weekly_slots_used": 0
+}

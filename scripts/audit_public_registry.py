@@ -88,13 +88,15 @@ def git_blob_sha(data: bytes) -> str:
     return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
 
 
-def fetch_blob(item: dict) -> dict:
+def fetch_blob(item: dict, *, cache_only: bool = False) -> dict:
     sha = item["git_sha"]
     target = CACHE / f"{sha}.tif"
     try:
         if target.exists():
             data = target.read_bytes()
         else:
+            if cache_only:
+                raise FileNotFoundError("blob absent in cache-only mode")
             data = gh_bytes("-H", "Accept: application/vnd.github.raw",
                             f"repos/{OWNER}/{item['repo']}/git/blobs/{sha}")
             target.write_bytes(data)
@@ -131,6 +133,17 @@ def summarize(rows: list[dict], threshold: float = 0.70) -> dict:
     }
 
 
+def audit_verdict(pre_compare: dict, final_compare: dict, inventory_complete: bool) -> str:
+    """No phase, missing row, or empty inventory can authorize selector review."""
+    summaries = [summarize(c["rows"]) for c in (pre_compare, final_compare)]
+    if any(s["stop_required"] for s in summaries):
+        return "negative — duplicate under literal registry rule; stop and do not spend a weekly slot"
+    if (inventory_complete and all(c.get("complete_accessible_scan") and c.get("unique")
+                                   for c in (pre_compare, final_compare))):
+        return "selector-review-only; no slot authorization"
+    return "negative — scan incomplete; fail closed"
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--candidate", default="docs/downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif")
@@ -144,6 +157,9 @@ def main() -> int:
     candidate_path = (ROOT / args.candidate).resolve()
     if not candidate_path.is_file():
         ap.error(f"candidate not found: {candidate_path}")
+    if (candidate_path.name != "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif"
+            and args.output.resolve() == (ROOT / "evidence/public_registry_uniqueness.json").resolve()):
+        ap.error("non-collar candidate requires a separate --output; preserve collar evidence")
     CACHE.mkdir(parents=True, exist_ok=True)
 
     cached_trees = CACHE / "repo_inventory.json"
@@ -184,7 +200,7 @@ def main() -> int:
     print(f"Found {len(repos)} matching public repositories, {len(paths)} TIFF paths, "
           f"{len(unique_by_blob)} unique blobs", flush=True)
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as pool:
-        fetched = list(pool.map(fetch_blob, unique_by_blob.values()))
+        fetched = list(pool.map(lambda item: fetch_blob(item, cache_only=args.cache_only), unique_by_blob.values()))
     fetch_errors = [x for x in fetched if "error" in x]
 
     grid = grid_mod.load_grid(ROOT / "data" / "bridge")
@@ -208,6 +224,7 @@ def main() -> int:
                       for f in compatible]
     tree_errors = [t for t in tree_results if t.get("error")]
     complete = (not fetch_errors and not tree_errors and not any(t["truncated"] for t in tree_results)
+                and bool(compatible) and exclusions["invalid_tiff"] == 0
                 and len(tree_results) == len(repos))
     index = {"schema": "gemsdoe92-public-submission-registry.v1", "complete_accessible_scan": complete,
              "n_rasters": len(rows_for_index), "rasters": rows_for_index,
@@ -279,9 +296,9 @@ def main() -> int:
         "final_dots": final_summary,
         "binding_witness": {"worst_forward_overlap": witness,
                             "full_footprint_surface": full_surface_witness},
-        "verdict": "negative — duplicate under literal registry rule; stop and do not spend a weekly slot" if (final_summary["stop_required"] or pre_summary.get("stop_required")) else "negative — uniqueness audit alone cannot promote; selector required",
+        "verdict": audit_verdict(pre_compare or {"rows": []}, final_compare, complete and not args.witness_repo),
         "witness_only": bool(args.witness_repo),
-        "scan_complete_for_declared_scope": bool(complete and not args.witness_repo and pre_compare is not None and not pre_compare["missing_or_invalid"] and not final_compare["missing_or_invalid"]),
+        "scan_complete_for_declared_scope": bool(complete and not args.witness_repo and pre_compare is not None and pre_compare["complete_accessible_scan"] and final_compare["complete_accessible_scan"]),
         "candidate_file_sha256": hashlib.sha256(candidate_path.read_bytes()).hexdigest(),
         "cache_index": str(index_path.relative_to(ROOT)),
     }

@@ -2,6 +2,19 @@
 
 > **Start each session by reading this README and [`SESSION_PROMPT.md`](SESSION_PROMPT.md).** The session contract is the lane/budget/holdout/uniqueness policy; do not spend a live slot from this agent. Maximize P(Win) and own the outcome.
 
+## Latest review: literal uniqueness is blocked across the footprint
+
+**OK TO DOWNLOAD for research; NOT OK TO SUBMIT.** The queued BREAKLINE public
+witness audit now finds **REGISTRY-MEASUREMENT 100% forward overlap** with the
+hash-verified 17GEMSDOE dense raster. Its 3-pixel halo covers the whole footprint,
+so every nonempty in-footprint candidate would fail the current literal rule.
+No new unique submission was generated, no score improvement is claimed, and no
+slot was used. [Review and limitations](docs/REVIEW_CURRENT.md) ·
+[witness receipt](docs/downloads/breakline_public_witness.json) ·
+[session JSON card](docs/downloads/session_review_run_card.json).
+This supersedes the older statement below that BREAKLINE was unscanned publicly;
+the full historical registry scan was **not** repeated.
+
 **2026-10-24 follow-up — BREAKLINE is now a confirmed duplicate under the literal registry rule.** A live, Git-blob-verified witness check compared one raster from 11GEMSDOE and five from 17GEMSDOE. BREAKLINE final dots have **100% forward 3-px overlap** with the dense 17GEMSDOE E-proba raster. This is REGISTRY-MEASUREMENT, not a competition score. The actual BREAKLINE pre-placement surface was not supplied and was **not checked**; no collar surface was substituted. A final-dot failure alone requires stop. No new experiment or TIFF was generated; no slot used. See [follow-up review](docs/REVIEW_REGISTRY_STOP_20261024.md) and [run card](evidence/breakline_registry_stop_run_card.json). **Download for research only; do not submit.**
 
 ## Executive summary — format-validated candidate, one-click download
