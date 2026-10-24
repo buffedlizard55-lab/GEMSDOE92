@@ -1,0 +1,221 @@
+{
+  "evidence_classes": {
+    "sets": "MEASURED",
+    "scores": "CLAIM",
+    "credit": "MODEL"
+  },
+  "measured": {
+    "R0": 37654,
+    "SOLO": 40199,
+    "D2_8": 44090,
+    "H19_5": 121131,
+    "catalogue_px": 60988,
+    "footprint_px": 5167373,
+    "grid_cells": 12279160,
+    "R0_subset_SOLO": true,
+    "SOLO_subset_D28": true,
+    "D28_subset_H195": true,
+    "group_D28_to_SOLO": {
+      "n": 3891,
+      "d_cat_min": 1.0,
+      "d_cat_max": 1.0
+    },
+    "group_SOLO_to_R0": {
+      "n": 2545,
+      "d_cat_min": 1.4142135623730951,
+      "d_cat_max": 2.0,
+      "n_at_sqrt2": 1201,
+      "n_at_2": 1344
+    },
+    "R0_min_nn_px": 2.8284271247461903,
+    "R0_median_nn_px": 3.0,
+    "R0_median_d_cat_px": 19.6468827043885,
+    "R0_dots_within_3px_of_catalogue": 2171,
+    "R0_dots_within_4px_of_catalogue": 3825,
+    "R0_dots_within_5px_of_catalogue": 5637
+  },
+  "ladder_CLAIM": [
+    {
+      "step": "H19_5->D1_5",
+      "dots_removed": 61062,
+      "delta": 0.0555
+    },
+    {
+      "step": "D1_5->D2_8",
+      "dots_removed": 15979,
+      "delta": 0.0123
+    },
+    {
+      "step": "D2_8->SOLO",
+      "dots_removed": 3891,
+      "delta": 0.0108
+    },
+    {
+      "step": "SOLO->R0",
+      "dots_removed": 2545,
+      "delta": 0.007
+    }
+  ],
+  "algebra_MODEL": {
+    "T_from_pair1_zero_credit": 5073.287555555577,
+    "T_from_pair2_zero_credit": 5470.167737142842,
+    "T_pair1_rounding_range": [
+      5026.70490151377,
+      5120.740549766366
+    ],
+    "T_pair2_rounding_range": [
+      5393.097850352107,
+      5549.471164855063
+    ],
+    "D_at_SOLO": 18734.44444444452,
+    "per_dot_gain_group1_observed": 2.7756360832690764e-06,
+    "per_dot_gain_group2_observed": 2.7504911591355625e-06,
+    "per_dot_gain_zero_credit_ceiling": 2.8909317359587093e-06,
+    "group2_credit_units_implied": 6.371058922629898,
+    "group2_credit_per_dot": 0.00250336303443218,
+    "interpretation": "both flank groups behave as pure false positives (ceiling 2.9e-6/dot vs observed 2.78e-6 and 2.75e-6)"
+  },
+  "R0_credit_vs_G_MODEL": [
+    {
+      "G": 11000.0,
+      "T": 4711.199052920163,
+      "credit_per_dot": 0.12511815618314556,
+      "recall": 0.42829082299274207,
+      "dti_check": 0.2778
+    },
+    {
+      "G": 12500.0,
+      "T": 5057.381656558943,
+      "credit_per_dot": 0.13431193648905676,
+      "recall": 0.40459053252471544,
+      "dti_check": 0.2778
+    },
+    {
+      "G": 14000.0,
+      "T": 5403.564260197723,
+      "credit_per_dot": 0.14350571679496796,
+      "recall": 0.3859688757284088,
+      "dti_check": 0.2778
+    }
+  ],
+  "random_dot_credit_MODEL": 0.022798765351294988,
+  "break_even_credit_MODEL": 0.056,
+  "anderson_group_CLAIM_MEASURED_MODEL": {
+    "subset_relation_R0_in_anderson": true,
+    "n_added": 1200,
+    "score_change_CLAIM": -0.002799999999999969,
+    "credit_units_implied": 13.804942696527867,
+    "credit_per_added_dot": 0.011504118913773223,
+    "mean_d_cat_of_added_dots": 18.504350444390937,
+    "reading": "added non-skeleton dots earned less than random placement (0.023/dot) - about half of random placement and ~5x below break-even"
+  },
+  "enrichment_vs_footprint_MEASURED": [
+    {
+      "d_lo": 1,
+      "d_hi": 2,
+      "H19_5": 3.1851105547600316,
+      "R0": 0.0,
+      "footprint_share": 0.03446724052338396
+    },
+    {
+      "d_lo": 2,
+      "d_hi": 3,
+      "H19_5": 2.2988282245830693,
+      "R0": 1.2901980322131552,
+      "footprint_share": 0.03316103270709122
+    },
+    {
+      "d_lo": 3,
+      "d_hi": 4,
+      "H19_5": 1.7043524260833334,
+      "R0": 1.9243734744788752,
+      "footprint_share": 0.02415113627350856
+    },
+    {
+      "d_lo": 4,
+      "d_hi": 5,
+      "H19_5": 1.5308796302981589,
+      "R0": 1.7166246563479732,
+      "footprint_share": 0.02300512006047331
+    },
+    {
+      "d_lo": 5,
+      "d_hi": 7,
+      "H19_5": 1.2618738999583068,
+      "R0": 1.4375830879476734,
+      "footprint_share": 0.05272418746334246
+    },
+    {
+      "d_lo": 7,
+      "d_hi": 10,
+      "H19_5": 1.0697341046621658,
+      "R0": 1.2673937943453764,
+      "footprint_share": 0.07204157148354462
+    },
+    {
+      "d_lo": 10,
+      "d_hi": 15,
+      "H19_5": 0.9318715090118556,
+      "R0": 1.0953390582954339,
+      "footprint_share": 0.1065127286720449
+    },
+    {
+      "d_lo": 15,
+      "d_hi": 20,
+      "H19_5": 0.8379318839223795,
+      "R0": 0.9955845773201202,
+      "footprint_share": 0.09376398371842311
+    },
+    {
+      "d_lo": 20,
+      "d_hi": 30,
+      "H19_5": 0.7397821896110085,
+      "R0": 0.8919131608330048,
+      "footprint_share": 0.15105363187460405
+    },
+    {
+      "d_lo": 30,
+      "d_hi": 50,
+      "H19_5": 0.6671789136898696,
+      "R0": 0.7988016741802947,
+      "footprint_share": 0.19961381681953083
+    },
+    {
+      "d_lo": 50,
+      "d_hi": 100,
+      "H19_5": 0.8215244385460696,
+      "R0": 0.9571152737184311,
+      "footprint_share": 0.1861583096456691
+    },
+    {
+      "d_lo": 100,
+      "d_hi": null,
+      "H19_5": 0.784986359292572,
+      "R0": 0.9327541120468185,
+      "footprint_share": 0.023347240758383868
+    }
+  ],
+  "leaderboard_snapshot_2026_10_24": {
+    "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/ (public page, top 50 only)",
+    "top": [
+      0.4413,
+      0.3916,
+      0.3904,
+      0.3724,
+      0.3539,
+      0.3418,
+      0.3416,
+      0.3375,
+      0.3358,
+      0.333
+    ],
+    "rank_20": 0.3273,
+    "rank_30": 0.3004,
+    "rank_40": 0.29,
+    "rank_47": 0.2833,
+    "rank_50": 0.2818,
+    "r0_claim": 0.2778,
+    "r0_rank": "outside the visible top 50 (below 0.2818)",
+    "note": "the page lists 50 rows; R0's 0.2778 is a CLAIM and cannot be located on this page"
+  }
+}

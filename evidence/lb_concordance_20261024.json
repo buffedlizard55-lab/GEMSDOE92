@@ -1,0 +1,178 @@
+{
+  "evidence_classes": {
+    "lanes": "REGISTRY-MEASUREMENT",
+    "scores": "CLAIM (operator-reported)",
+    "credit": "MODEL"
+  },
+  "g_est": 12500.0,
+  "c_random": 0.022798765351294988,
+  "n_lanes": 12,
+  "lanes": [
+    {
+      "key": "R0",
+      "file": "data/parent_R0_zeros.tif",
+      "n": 37654,
+      "score_claim": 0.2778,
+      "independent": false,
+      "credit_per_dot": 0.13431193648905676,
+      "coverage_frac": 0.15085344139081888,
+      "enrichment_vs_random": 5.891193422955587,
+      "mean_lift_vs_others": 2.8855467993220816,
+      "lb_weighted_vote": 6.486445500427552
+    },
+    {
+      "key": "gems70_dual",
+      "file": ".cache/gemsdoe_public_registry/df462e08604d70333eb0df81eec56ff4e7e1506a.tif",
+      "n": 37654,
+      "score_claim": 0.2478,
+      "independent": true,
+      "credit_per_dot": 0.11931180331031528,
+      "coverage_frac": 0.1256354050694618,
+      "enrichment_vs_random": 5.233257216866714,
+      "mean_lift_vs_others": 3.016785833416992,
+      "lb_weighted_vote": 6.665760284731441
+    },
+    {
+      "key": "gems49_gate",
+      "file": ".cache/gemsdoe_public_registry/ab3927ff4ade32bba6fb1954a3d6aa9295734077.tif",
+      "n": 40000,
+      "score_claim": 0.2376,
+      "independent": true,
+      "credit_per_dot": 0.11041804362194318,
+      "coverage_frac": 0.1532471141525878,
+      "enrichment_vs_random": 4.843158913237876,
+      "mean_lift_vs_others": 2.499538577109763,
+      "lb_weighted_vote": 5.326032368008396
+    },
+    {
+      "key": "gems76_tiltworm",
+      "file": ".cache/gemsdoe_public_registry/f74fa15581a8628438f1540a05fce4d6e77d7840.tif",
+      "n": 39200,
+      "score_claim": 0.2343,
+      "independent": true,
+      "credit_per_dot": 0.11006896255343461,
+      "coverage_frac": 0.12886896301079873,
+      "enrichment_vs_random": 4.827847510925964,
+      "mean_lift_vs_others": 3.045225023323238,
+      "lb_weighted_vote": 6.917605037495396
+    },
+    {
+      "key": "gems63_cvarlw",
+      "file": ".cache/gemsdoe_public_registry/2168b3d053fb708a76ad132cc04166e4d49fefc0.tif",
+      "n": 54864,
+      "score_claim": 0.2303,
+      "independent": true,
+      "credit_per_dot": 0.0908254712380109,
+      "coverage_frac": 0.2506685698903485,
+      "enrichment_vs_random": 3.983789027104134,
+      "mean_lift_vs_others": 2.358695519390473,
+      "lb_weighted_vote": 5.036667818808017
+    },
+    {
+      "key": "gems73_mcsc",
+      "file": ".cache/gemsdoe_public_registry/8d78d8769b067bfe153776ff580692ec99403a0a.tif",
+      "n": 37654,
+      "score_claim": 0.1917,
+      "independent": true,
+      "credit_per_dot": 0.0915920177723164,
+      "coverage_frac": 0.14883500765282476,
+      "enrichment_vs_random": 4.017411309824016,
+      "mean_lift_vs_others": 2.563035288023217,
+      "lb_weighted_vote": 5.754561398409929
+    },
+    {
+      "key": "gems82_punoisyor",
+      "file": ".cache/gemsdoe_public_registry/4142da62699ad87a0d20d8aeba3ef6cbd0203380.tif",
+      "n": 37654,
+      "score_claim": 0.1886,
+      "independent": true,
+      "credit_per_dot": 0.0900726674351268,
+      "coverage_frac": 0.12465270070498104,
+      "enrichment_vs_random": 3.950769528403897,
+      "mean_lift_vs_others": 2.86758665193474,
+      "lb_weighted_vote": 6.580831573128024
+    },
+    {
+      "key": "gems10_h28",
+      "file": ".cache/gemsdoe_public_registry/7b158eb8dc03955d27b2c4c14927ca98cfa4b090.tif",
+      "n": 69281,
+      "score_claim": 0.1839,
+      "independent": true,
+      "credit_per_dot": 0.06491580978890306,
+      "coverage_frac": 0.27203532626733157,
+      "enrichment_vs_random": 2.847338826846419,
+      "mean_lift_vs_others": 1.9112225999655394,
+      "lb_weighted_vote": 4.182859966180655
+    },
+    {
+      "key": "gems75_radon",
+      "file": ".cache/gemsdoe_public_registry/64073b39498e58bf31e47eb747bf3a2aa4d963d8.tif",
+      "n": 36800,
+      "score_claim": 0.1627,
+      "independent": true,
+      "credit_per_dot": 0.07845388275156305,
+      "coverage_frac": 0.15530792919342187,
+      "enrichment_vs_random": 3.441146112199747,
+      "mean_lift_vs_others": 2.443512525898076,
+      "lb_weighted_vote": 5.40455026491229
+    },
+    {
+      "key": "gems78_sigx",
+      "file": ".cache/gemsdoe_public_registry/13c5cb56af2b412d15bdc015efaa5b44641b6993.tif",
+      "n": 44090,
+      "score_claim": 0.1564,
+      "independent": true,
+      "credit_per_dot": 0.06817456324048661,
+      "coverage_frac": 0.1581393485626062,
+      "enrichment_vs_random": 2.9902743499491407,
+      "mean_lift_vs_others": 2.511137409816781,
+      "lb_weighted_vote": 5.7472768072178395
+    },
+    {
+      "key": "gems29_sgmc",
+      "file": ".cache/gemsdoe_public_registry/e5099b9250aba06c2535eae4d044e88995b8e43a.tif",
+      "n": 44090,
+      "score_claim": 0.05,
+      "independent": true,
+      "credit_per_dot": 0.021483664438663442,
+      "coverage_frac": 0.12209317964853708,
+      "enrichment_vs_random": 0.9423170118044639,
+      "mean_lift_vs_others": 2.0171163841779536,
+      "lb_weighted_vote": 3.601135363186587
+    },
+    {
+      "key": "gems72_sgmc",
+      "file": ".cache/gemsdoe_public_registry/bceb6d20bb3302b3abdeb891f7f4916f85f24c40.tif",
+      "n": 27823,
+      "score_claim": 0.05,
+      "independent": true,
+      "credit_per_dot": 0.0281584667409779,
+      "coverage_frac": 0.08718472616550034,
+      "enrichment_vs_random": 1.2350873526306316,
+      "mean_lift_vs_others": 2.0583924900924533,
+      "lb_weighted_vote": 3.398652522235584
+    }
+  ],
+  "errors": [],
+  "concordance": {
+    "mean_lift_vs_others": {
+      "n": 11,
+      "spearman": 0.7545454545454545,
+      "spearman_p": 0.007282041008429154,
+      "kendall": 0.5636363636363636,
+      "kendall_p": 0.016540504248837583
+    },
+    "lb_weighted_vote": {
+      "n": 11,
+      "spearman": 0.7272727272727273,
+      "spearman_p": 0.011204967253592074,
+      "kendall": 0.5636363636363636,
+      "kendall_p": 0.016540504248837583
+    },
+    "sensitivity_to_G_spearman_mean_lift": {
+      "11000": 0.7181818181818183,
+      "12500": 0.7545454545454545,
+      "14000": 0.8000000000000002
+    }
+  }
+}

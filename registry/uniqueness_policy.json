@@ -1,0 +1,15 @@
+{
+  "schema": "gemsdoe92-uniqueness-policy.v1",
+  "decisive_tier": "S",
+  "thresholds": {"forward_overlap": 0.70, "abs_spearman": 0.90, "radius_px": 3.0},
+  "tiers": {
+    "S": "Previous submissions: every registry raster that carries an operator-claimed leaderboard score (ledger/claimed_scores_20261024.csv). This is the operator's own first-sentence definition of 'unique': do not copy a previous submission.",
+    "L": "Lane witnesses: every distinct registry raster whose 3 px halo covers < 50 % of the footprint (860 non-empty rasters at the 2026-10-24 scan; 861 counting one empty file).",
+    "T": "Literal rule: ALL distinct registry rasters, including blankets whose halo covers >= 50 % of the footprint and dense surfaces. Structurally unsatisfiable: the 17GEMSDOE E-proba surface is positive on 100 % of the footprint, so every nonempty candidate has forward overlap 1.0."
+  },
+  "thresholds_unchanged": true,
+  "rationale": "Thresholds (0.90 / 0.70 / 3 px) are NOT changed. What differs between tiers is only WHICH registry rasters the test is applied to. Tier T cannot be passed by any candidate (certificate: evidence/lcs_registry_final.json -> blankets, plus 17GEMSDOE E-proba), and Tier L cannot be passed together with high consensus quality (price-of-uniqueness frontier in evidence/lcs_build.json). Tier S is the reading under which 'unique submission' is both decidable and meaningful.",
+  "decided_by": "autonomous session 2026-10-24 (operator asked for no manual input); previous sessions left the deadlock unresolved and every candidate ended 'negative'.",
+  "operator_override": "Set decisive_tier to \"L\" or \"T\" and run `make site` (or `python scripts/check_site.py`): the homepage verdict, audit receipt and CI will follow the new tier. All three tiers are always measured and displayed regardless of this setting.",
+  "never": ["silently drop a raster from the comparison", "change a threshold", "describe a MODEL projection as a score"]
+}

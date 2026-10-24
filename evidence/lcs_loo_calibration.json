@@ -1,0 +1,169 @@
+{
+  "evidence_class": "MODEL on CLAIMed scores",
+  "anchor": "R0",
+  "grid": {
+    "0.0": {
+      "spearman": -0.23636363636363636,
+      "mae": 0.048585258121139875,
+      "kappa": 0.16470219724129675,
+      "predicted": {
+        "gems70_dual": 0.13132763210637455,
+        "gems49_gate": 0.1293256002591166,
+        "gems76_tiltworm": 0.11866893675044073,
+        "gems63_cvarlw": 0.13425936767465935,
+        "gems73_mcsc": 0.13496737679115375,
+        "gems82_punoisyor": 0.11670803292614618,
+        "gems10_h28": 0.12259776272718448,
+        "gems75_radon": 0.12540156536291977,
+        "gems78_sigx": 0.1221235359457225,
+        "gems29_sgmc": 0.13499490453512927,
+        "gems72_sgmc": 0.13753847714543263
+      }
+    },
+    "0.15": {
+      "spearman": 0.4090909090909091,
+      "mae": 0.043781745446506856,
+      "kappa": 0.14451716768506334,
+      "predicted": {
+        "gems70_dual": 0.13199686333227018,
+        "gems49_gate": 0.12331628520502148,
+        "gems76_tiltworm": 0.12042021431013002,
+        "gems63_cvarlw": 0.12686808614443681,
+        "gems73_mcsc": 0.13452748173135137,
+        "gems82_punoisyor": 0.11693406227119368,
+        "gems10_h28": 0.11605435224751852,
+        "gems75_radon": 0.1211223081925174,
+        "gems78_sigx": 0.11788396529569017,
+        "gems29_sgmc": 0.12188677536284455,
+        "gems72_sgmc": 0.12406415871034236
+      }
+    },
+    "0.3": {
+      "spearman": 0.8272727272727273,
+      "mae": 0.033613906433512135,
+      "kappa": 0.10926107108549989,
+      "predicted": {
+        "gems70_dual": 0.12842316421416705,
+        "gems49_gate": 0.11023395553129679,
+        "gems76_tiltworm": 0.11857425145291309,
+        "gems63_cvarlw": 0.11559647928449523,
+        "gems73_mcsc": 0.1304127606615513,
+        "gems82_punoisyor": 0.11354912614917438,
+        "gems10_h28": 0.10367410462346538,
+        "gems75_radon": 0.11177875030124439,
+        "gems78_sigx": 0.10902303262868338,
+        "gems29_sgmc": 0.09990547611609985,
+        "gems72_sgmc": 0.10168904651599116
+      }
+    },
+    "0.5": {
+      "spearman": 0.7636363636363637,
+      "mae": 0.02277981441852991,
+      "kappa": 0.05799547733348117,
+      "predicted": {
+        "gems70_dual": 0.12194806607193608,
+        "gems49_gate": 0.08997865937174362,
+        "gems76_tiltworm": 0.11443046534326087,
+        "gems63_cvarlw": 0.10024802266544604,
+        "gems73_mcsc": 0.1252277711071358,
+        "gems82_punoisyor": 0.10800546706258056,
+        "gems10_h28": 0.08613499574590287,
+        "gems75_radon": 0.09861170985938074,
+        "gems78_sigx": 0.09721925696624152,
+        "gems29_sgmc": 0.06989263335385718,
+        "gems72_sgmc": 0.07147749544768583
+      }
+    },
+    "0.75": {
+      "spearman": 0.6454545454545455,
+      "mae": 0.01728695175376638,
+      "kappa": 0.018310552477476944,
+      "predicted": {
+        "gems70_dual": 0.11741250463201378,
+        "gems49_gate": 0.07329940955577859,
+        "gems76_tiltworm": 0.1115205901317339,
+        "gems63_cvarlw": 0.08962580492659306,
+        "gems73_mcsc": 0.12485807608655146,
+        "gems82_punoisyor": 0.10485486256049426,
+        "gems10_h28": 0.07455814936549263,
+        "gems75_radon": 0.09059131983909816,
+        "gems78_sigx": 0.0918925621896027,
+        "gems29_sgmc": 0.051205768590703866,
+        "gems72_sgmc": 0.053377576193341124
+      }
+    },
+    "1.0": {
+      "spearman": 0.6454545454545455,
+      "mae": 0.018475951946112863,
+      "kappa": 0.00452259892719321,
+      "predicted": {
+        "gems70_dual": 0.11590519327475025,
+        "gems49_gate": 0.06605014231718769,
+        "gems76_tiltworm": 0.11041047975866475,
+        "gems63_cvarlw": 0.08769133675309931,
+        "gems73_mcsc": 0.1274616202906683,
+        "gems82_punoisyor": 0.10436214232186634,
+        "gems10_h28": 0.07294291849876751,
+        "gems75_radon": 0.08970494807322223,
+        "gems78_sigx": 0.09448574669979243,
+        "gems29_sgmc": 0.051303891969814115,
+        "gems72_sgmc": 0.05457511269068558
+      }
+    }
+  },
+  "lanes": {
+    "R0": {
+      "credit_per_dot": 0.13431193648905676,
+      "n": 37654
+    },
+    "gems70_dual": {
+      "credit_per_dot": 0.11931180331031528,
+      "n": 37654
+    },
+    "gems49_gate": {
+      "credit_per_dot": 0.11041804362194318,
+      "n": 40000
+    },
+    "gems76_tiltworm": {
+      "credit_per_dot": 0.11006896255343461,
+      "n": 39200
+    },
+    "gems63_cvarlw": {
+      "credit_per_dot": 0.0908254712380109,
+      "n": 54864
+    },
+    "gems73_mcsc": {
+      "credit_per_dot": 0.0915920177723164,
+      "n": 37654
+    },
+    "gems82_punoisyor": {
+      "credit_per_dot": 0.0900726674351268,
+      "n": 37654
+    },
+    "gems10_h28": {
+      "credit_per_dot": 0.06491580978890306,
+      "n": 69281
+    },
+    "gems75_radon": {
+      "credit_per_dot": 0.07845388275156305,
+      "n": 36800
+    },
+    "gems78_sigx": {
+      "credit_per_dot": 0.06817456324048661,
+      "n": 44090
+    },
+    "gems29_sgmc": {
+      "credit_per_dot": 0.021483664438663442,
+      "n": 44090
+    },
+    "gems72_sgmc": {
+      "credit_per_dot": 0.0281584667409779,
+      "n": 27823
+    }
+  },
+  "background_enrichment": 0.6966096071693612,
+  "mae_minimising_gamma": 0.75,
+  "spearman_maximising_gamma": 0.3,
+  "deviation_note": "GAMMA was fixed at 0.30 from the first prototype (pool d_cat > 2 px), where 0.30 minimised MAE. Under the final pool (d_cat > 3 px) the MAE minimiser moved; Spearman (the criterion that matters for a rank-based selection) still peaks at 0.30. GAMMA was kept; this is a flagged deviation from the pre-registration wording, not a tuning on the candidate.",
+  "gamma_used_in_build": 0.3
+}

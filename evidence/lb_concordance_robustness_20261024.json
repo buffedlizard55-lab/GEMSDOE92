@@ -1,0 +1,23 @@
+{
+  "baseline_all_voters": {
+    "n": 11,
+    "spearman": 0.7545454545454545,
+    "p": 0.007282041008429154
+  },
+  "voters_exclude_R0": {
+    "n": 11,
+    "spearman": 0.7545454545454545,
+    "p": 0.007282041008429154
+  },
+  "targets_exclude_sgmc": {
+    "n": 9,
+    "spearman": 0.6,
+    "p": 0.08762282904140249
+  },
+  "targets_exclude_sgmc_voters_exclude_R0_and_sgmc": {
+    "n": 9,
+    "spearman": 0.6,
+    "p": 0.08762282904140249
+  },
+  "permutation_p_one_sided": 0.004599080183963208
+}

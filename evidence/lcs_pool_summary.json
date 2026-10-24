@@ -1,0 +1,159 @@
+{
+  "evidence_class": "MODEL+REGISTRY-MEASUREMENT",
+  "pool_pixels": 330976,
+  "voters": {
+    "R0": {
+      "n": 37654,
+      "score_claim": 0.2778,
+      "credit_per_dot": 0.13431193648905676,
+      "vote_weight": 1.7734585956375417,
+      "file": "data/parent_R0_zeros.tif",
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "used_as_voter": true
+    },
+    "gems70_dual": {
+      "n": 37654,
+      "score_claim": 0.2478,
+      "credit_per_dot": 0.11931180331031528,
+      "vote_weight": 1.655033879032618,
+      "file": ".cache/gemsdoe_public_registry/df462e08604d70333eb0df81eec56ff4e7e1506a.tif",
+      "sha256": "d0e41ce921afcf3af33b7d86d75f6a258653dfbb4d050e864babe643245f0ea8",
+      "used_as_voter": true
+    },
+    "gems49_gate": {
+      "n": 40000,
+      "score_claim": 0.2376,
+      "credit_per_dot": 0.11041804362194318,
+      "vote_weight": 1.577567175857748,
+      "file": ".cache/gemsdoe_public_registry/ab3927ff4ade32bba6fb1954a3d6aa9295734077.tif",
+      "sha256": "3722e26fbf9129874be1fb8c687825803952c57ef1154ed0a21029596bc412f1",
+      "used_as_voter": true
+    },
+    "gems76_tiltworm": {
+      "n": 39200,
+      "score_claim": 0.2343,
+      "credit_per_dot": 0.11006896255343461,
+      "vote_weight": 1.5744007184212383,
+      "file": ".cache/gemsdoe_public_registry/f74fa15581a8628438f1540a05fce4d6e77d7840.tif",
+      "sha256": "54c978399d0a875ba89aacc465e7efd8644420e6ba1dfa7c0a1390328be2c514",
+      "used_as_voter": true
+    },
+    "gems63_cvarlw": {
+      "n": 54864,
+      "score_claim": 0.2303,
+      "credit_per_dot": 0.0908254712380109,
+      "vote_weight": 1.382233383276041,
+      "file": ".cache/gemsdoe_public_registry/2168b3d053fb708a76ad132cc04166e4d49fefc0.tif",
+      "sha256": "46a0f0fa2f63e6e6b4a5fe4520e999b925cf3ff954a01b10b36b735c1b0649c8",
+      "used_as_voter": true
+    },
+    "gems73_mcsc": {
+      "n": 37654,
+      "score_claim": 0.1917,
+      "credit_per_dot": 0.0915920177723164,
+      "vote_weight": 1.3906377424241894,
+      "file": ".cache/gemsdoe_public_registry/8d78d8769b067bfe153776ff580692ec99403a0a.tif",
+      "sha256": "fab28aa25f7f803907c91d0e64cbfe2755f9bc1702163f458bbb1017174a0249",
+      "used_as_voter": true
+    },
+    "gems82_punoisyor": {
+      "n": 37654,
+      "score_claim": 0.1886,
+      "credit_per_dot": 0.0900726674351268,
+      "vote_weight": 1.3739103772560435,
+      "file": ".cache/gemsdoe_public_registry/4142da62699ad87a0d20d8aeba3ef6cbd0203380.tif",
+      "sha256": "120810feffb4688c364f2bb49a3d2624dcbb53fdc294892c68957f65fbaba131",
+      "used_as_voter": true
+    },
+    "gems10_h28": {
+      "n": 69281,
+      "score_claim": 0.1839,
+      "credit_per_dot": 0.06491580978890306,
+      "vote_weight": 1.0463848131029982,
+      "file": ".cache/gemsdoe_public_registry/7b158eb8dc03955d27b2c4c14927ca98cfa4b090.tif",
+      "sha256": "7637b72d4c6c3e10226bf46bd72a20272d62ccbe29743062632d10b158b49c58",
+      "used_as_voter": true
+    },
+    "gems75_radon": {
+      "n": 36800,
+      "score_claim": 0.1627,
+      "credit_per_dot": 0.07845388275156305,
+      "vote_weight": 1.2358045880468798,
+      "file": ".cache/gemsdoe_public_registry/64073b39498e58bf31e47eb747bf3a2aa4d963d8.tif",
+      "sha256": "e04df46e8a0770b470bf8846ed2aff966fd192e7ff71fbc4d82724b28c0b1b71",
+      "used_as_voter": true
+    },
+    "gems78_sigx": {
+      "n": 44090,
+      "score_claim": 0.1564,
+      "credit_per_dot": 0.06817456324048661,
+      "vote_weight": 1.0953651390291188,
+      "file": ".cache/gemsdoe_public_registry/13c5cb56af2b412d15bdc015efaa5b44641b6993.tif",
+      "sha256": "8ca06ece44285ca2d96c1871b265dc11d3bd36b6622d04492d354289d2b11786",
+      "used_as_voter": true
+    },
+    "gems29_sgmc": {
+      "n": 44090,
+      "score_claim": 0.05,
+      "credit_per_dot": 0.021483664438663442,
+      "vote_weight": 0.0,
+      "file": ".cache/gemsdoe_public_registry/e5099b9250aba06c2535eae4d044e88995b8e43a.tif",
+      "sha256": "9b83158bde01cd5d42e38229d70d01e67cecd2514eeb5fa8d1f3ab6851469dad",
+      "used_as_voter": false
+    },
+    "gems72_sgmc": {
+      "n": 27823,
+      "score_claim": 0.05,
+      "credit_per_dot": 0.0281584667409779,
+      "vote_weight": 0.2111416984536355,
+      "file": ".cache/gemsdoe_public_registry/bceb6d20bb3302b3abdeb891f7f4916f85f24c40.tif",
+      "sha256": "650b5ad2273f3634c15c0a97840ce36056906d3a2cedb110a77f8708c6783966",
+      "used_as_voter": false
+    }
+  },
+  "c_random": 0.022798765351294988,
+  "background_enrichment": 0.6966096071693612,
+  "halo_survival": {
+    "2": 0.2907267891332051,
+    "3": 0.37763029591427505,
+    "4": 0.4587592922308553,
+    "5": 0.5185112868159263,
+    "7": 0.6192721048722781,
+    "10": 0.6966341859152436,
+    "15": 0.8038729675525493,
+    "20": 0.874103504056474
+  },
+  "lane_count_hist": [
+    0,
+    31484,
+    37859,
+    43263,
+    44268,
+    42916,
+    40245,
+    33680,
+    26582,
+    19213,
+    11466
+  ],
+  "registry": {
+    "distinct_decoded": 924,
+    "tier_L_members": 860,
+    "blankets": 63,
+    "empty": 1
+  },
+  "constants": {
+    "G_EST": 12500.0,
+    "GAMMA": 0.3,
+    "CAP_FRACTION": 0.67,
+    "N_TARGET": 37654,
+    "MIN_SPACING_SQ": 8,
+    "STRATA_EDGES": [
+      3.0,
+      4.0,
+      7.0,
+      12.0,
+      25.0
+    ]
+  }
+}

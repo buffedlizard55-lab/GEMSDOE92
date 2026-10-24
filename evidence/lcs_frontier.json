@@ -1,0 +1,99 @@
+{
+  "evidence_class": "MODEL",
+  "note": "price-of-uniqueness frontier: capping ALL Tier-L rasters at once from the uncapped start",
+  "uncapped": {
+    "rank_quality": 0.7875647596426991,
+    "mean_lane_count": 7.0692887873798265,
+    "n_over_0_70_all_sparse": 231,
+    "proj": {
+      "n": 37654,
+      "credit_per_dot_naive": 0.18794429866835816,
+      "credit_per_dot_shrunk": 0.14278950236596327,
+      "credit_per_dot_null": 0.13300676309364168,
+      "dti_naive": 0.3830631602243929,
+      "dti_shrunk": 0.2946454608088855,
+      "dti_null": 0.27519953844937983
+    }
+  },
+  "tierS_only": {
+    "rank_quality": 0.615741731907184
+  },
+  "frontier": [
+    {
+      "cap": 0.98,
+      "tier": "L (all constraints at once)",
+      "max_overlap": 0.977107345833112,
+      "n_over_cap": 0,
+      "rank_quality": 0.7876841319682878,
+      "mean_lane_count": 7.069155999362618,
+      "mean_score": 2.6240891548722574,
+      "proj": {
+        "n": 37654,
+        "credit_per_dot_naive": 0.18800944896344063,
+        "credit_per_dot_shrunk": 0.1428220775135045,
+        "credit_per_dot_null": 0.13302511252498653,
+        "dti_naive": 0.3831891634832664,
+        "dti_shrunk": 0.29471003813604046,
+        "dti_null": 0.27523611131428666
+      },
+      "seconds": 29
+    },
+    {
+      "cap": 0.9,
+      "tier": "L (all constraints at once)",
+      "max_overlap": 0.8919636691984916,
+      "n_over_cap": 0,
+      "rank_quality": 0.7616083453469921,
+      "mean_lane_count": 6.8426993148138315,
+      "mean_score": 2.5483782550985565,
+      "proj": {
+        "n": 37654,
+        "credit_per_dot_naive": 0.1825849516590902,
+        "credit_per_dot_shrunk": 0.14010982886132925,
+        "credit_per_dot_null": 0.13459137114776276,
+        "dti_naive": 0.3726826681475578,
+        "dti_shrunk": 0.2893292798286214,
+        "dti_null": 0.2783565096294661
+      },
+      "seconds": 46
+    },
+    {
+      "cap": 0.8,
+      "tier": "L (all constraints at once)",
+      "max_overlap": 0.6418176023795613,
+      "n_over_cap": 0,
+      "rank_quality": 0.30293669932503836,
+      "mean_lane_count": 2.8921761300260265,
+      "mean_score": 0.45508756794665844,
+      "proj": {
+        "n": 37654,
+        "credit_per_dot_naive": 0.0326058902079982,
+        "credit_per_dot_shrunk": 0.06512029813578328,
+        "credit_per_dot_null": 0.13957259070038625,
+        "dti_naive": 0.06938553008824376,
+        "dti_shrunk": 0.13730964245569469,
+        "dti_null": 0.28826251353862664
+      },
+      "seconds": 35
+    },
+    {
+      "cap": 0.67,
+      "tier": "L (all constraints at once)",
+      "max_overlap": 0.5447761194029851,
+      "n_over_cap": 0,
+      "rank_quality": 0.24362742892816344,
+      "mean_lane_count": 2.3953896000424924,
+      "mean_score": 0.37509781430092687,
+      "proj": {
+        "n": 37654,
+        "credit_per_dot_naive": 0.02687482368621782,
+        "credit_per_dot_shrunk": 0.06225476487489308,
+        "credit_per_dot_null": 0.13778789963978585,
+        "dti_naive": 0.05728293386025024,
+        "dti_shrunk": 0.13137334849100452,
+        "dti_null": 0.2847164769242067
+      },
+      "seconds": 34
+    }
+  ]
+}
