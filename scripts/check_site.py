@@ -33,6 +33,18 @@ LABELS = ROOT / "data" / "bridge" / "labels.tif"
 N_DOTS = 37654
 
 
+def read_json_object(path: Path, problems: list[str]) -> dict:
+    """Turn absent/malformed evidence into an explicit site failure, not a crash."""
+    try:
+        doc = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(doc, dict):
+            raise ValueError("receipt must be a JSON object")
+        return doc
+    except (OSError, ValueError) as exc:
+        problems.append(f"{path.name}: unreadable JSON receipt: {exc}")
+        return {}
+
+
 def main() -> int:
     problems: list[str] = []
 
@@ -117,10 +129,8 @@ def main() -> int:
         else:
             variant = primary.stem.removesuffix("-zeros")
             audit_path = primary.with_name(variant + "-audit.json")
-            if not audit_path.is_file():
-                problems.append(f"no audit receipt beside the primary: {audit_path.name}")
-            else:
-                doc = json.loads(audit_path.read_text())
+            doc = read_json_object(audit_path, problems)
+            if doc:
                 if doc.get("overall_pass") is not True:
                     problems.append("audit receipt does not record format_pass == true")
                 if doc.get("sha256_zeros") != sha256_file(primary):
@@ -140,7 +150,7 @@ def main() -> int:
             if not card_path.is_file():
                 problems.append(f"primary run card missing: {card_path}")
             else:
-                card = json.loads(card_path.read_text())
+                card = read_json_object(card_path, problems)
                 if card.get("raster_sha256") != sha256_file(primary):
                     problems.append("run card SHA256 != primary bytes")
                 if card.get("verdict") != "negative":

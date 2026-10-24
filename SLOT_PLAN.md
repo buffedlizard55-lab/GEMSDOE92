@@ -1,3 +1,28 @@
+# SLOT_PLAN — current selector state (2026-10-24, STEPEDGE session)
+
+## Parallel artifact: STEPEDGE f60Sraw — unique (dot scope), negative, no slot used
+
+Note: site primary is SPRINGALIGN (newer automated review holds the literal public gate unresolved); STEPEDGE is recorded here as a parallel negative candidate.
+
+Primary download `GEMSDOE92-STEPEDGE-f60Sraw-20261024` (file
+`h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif`, SHA-256
+`c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4`) is
+format-valid and literal-unique vs the 28-raster local dot registry (worst
+forward overlap 0.461; surface |ρ| 0.138), with the repo's best SGMC PROXY
+(0.141464 vs R0 0.096060). It is **not cleared**: automated gates record
+`submission_eligible: false` because HOLDOUT-DTI 0.003980 [0.003295, 0.004702]
+does not beat STRAINBREAK f60 (0.005487) or RELIEF p10 (0.006045) and paired
+Δ vs R0 includes 0. Dense public-witness literal overlap 1.000 is disclosed
+(ρ 0.0004; see amended dot-like scope in
+`docs/HYPOTHESES_20261024_STEPEDGE.md`). Sibling doses f33/f45Sraw are
+duplicates (0.760/0.711 vs same-dose BREAKLINE/SCARPPOL) and must never be
+submitted; never pair doses in one week. Selector framing + receipt decision
+rules: `docs/ANALYSIS_20261024_STEPEDGE.md` §4. No slot used this session.
+Re-validate uniqueness at decision time — verdicts decay as the registry
+grows (IRREGULARITIES 2026-10-24).
+
+---
+
 # SLOT_PLAN — current selector state (2026-10-24, ANASIG session)
 
 ## Current artifact: ANASIG f45 — negative, no slot used

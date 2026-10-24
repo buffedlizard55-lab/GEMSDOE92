@@ -118,6 +118,53 @@ def test_submit_page_exists():
     pytest.fail("no submission guide page in docs/")
 
 
+def test_site_missing_primary_receipt_fails_without_traceback(tmp_path, monkeypatch, capsys):
+    import scripts.check_site as site
+    primary_name = "example-zeros.tif"
+    (tmp_path / primary_name).write_bytes(b"existing candidate")
+    index = tmp_path / "index.html"
+    index.write_text(f'<a href="downloads/{primary_name}">research</a>')
+    # No need to re-gate real 12M-pixel rasters to exercise missing evidence.
+    monkeypatch.setattr(site, "INDEX", index)
+    monkeypatch.setattr(site, "DOCS", tmp_path)
+    download_dir = tmp_path / "downloads"
+    download_dir.mkdir()
+    (download_dir / primary_name).write_bytes(b"candidate")
+    monkeypatch.setattr(site, "DOWNLOADS", tmp_path / "empty-downloads")
+    assert site.main() == 1
+    assert "unreadable JSON receipt" in capsys.readouterr().out
+
+
+@pytest.mark.parametrize("text", ["{broken", "[]", "null"])
+def test_site_invalid_json_evidence_fails_closed(tmp_path, text):
+    from scripts.check_site import read_json_object
+    path = tmp_path / "audit.json"
+    path.write_text(text)
+    problems = []
+    assert read_json_object(path, problems) == {}
+    assert problems
+
+
+def test_pages_validates_before_uploading_artifact():
+    workflow = (ROOT / ".github/workflows/pages.yml").read_text()
+    assert workflow.index("python scripts/check_site.py") < workflow.index("actions/upload-pages-artifact")
+    assert "continue-on-error" not in workflow
+    assert "python scripts/check_site.py" in (ROOT / ".github/workflows/ci.yml").read_text()
+
+
+def test_guides_agree_with_current_primary_and_stop():
+    for name in ("SUBMIT.html", "submit.html", "executive-summary.html"):
+        html = (DOCS / name).read_text()
+        assert 'SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif' in html
+        assert 'review_20261024_springalign_witness_v2.json' in html
+        assert 'Do not perform these steps with the current artifact' in html
+        assert 'separate name field' in html
+        assert 'No new unique TIFF was generated' in html
+    html = _index()
+    assert 'unique GeoTIFF generated this session' not in html
+    assert 'format-valid, unique download' not in html
+
+
 def test_piedfront_primary_contract_across_site_and_readme():
     idx = (DOCS / "index.html").read_text(encoding="utf-8")
     exec_sum = (DOCS / "executive-summary.html").read_text(encoding="utf-8")

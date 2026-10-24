@@ -1,3 +1,25 @@
+# Current next steps — automated review 2026-10-24 UTC
+
+This section supersedes historical action lists below. **Do not submit any current artifact.**
+
+1. Preserve the literal registry stop; do not build another inevitably blocked TIFF.
+   [Fresh exact-file check](downloads/review_20261024_springalign_witness_v2.json)
+   proves SPRINGALIGN fails and the witness halo covers the whole footprint.
+2. An authorized protocol resolution is required before more placement experiments.
+   Do not silently exempt dense rasters or change the >70% rule.
+3. SPRINGALIGN is already tested and negative; it is NOT an untested next idea.
+   BREAKLINE public rejection and the collar SGMC control are already done.
+4. Verify official data provenance/license, then restore permitted features and
+   pre-register one conditional hypothesis from the [current review](REVIEW_AUTOMATED_20261024.md).
+5. Run feature-alone canaries, whole-segment buffered holdout and both actual
+   registry phases before promotion. An organizer receipt and quota check remain
+   unavailable here; no weekly slot is authorized.
+6. Keep automated site/CI checks green. No manual pixel inspector is needed.
+
+---
+
+## Historical notes (superseded for action purposes)
+
 # NEXT_STEPS — after the 2026-10-24 ANASIG session
 
 ## Current status (supersedes the collar section below for action purposes)
@@ -81,3 +103,8 @@ Done this session:
 Next, in order:
 1. **Operator policy ruling on `17GEMSDOE E-proba` dense surface + one live organizer receipt (`R0 = 0.2778` + one candidate)** before spending a weekly submission slot.
 2. **Test a split off-skeleton budget (`PIEDFRONT` in piedmont + `GRAVTILT` / `STRAINBREAK` in bedrock highs)** to test whether a single locally-unique candidate can simultaneously beat `RELIEF p10` on `HOLDOUT-DTI` (`>0.006045` with paired CI $>0$) and `R0` on `SGMC` (`>0.096060`).
+## STEPEDGE session update (2026-10-24) — unique + SGMC-best, still negative
+
+Done: (1) R0 forensic audit (`evidence/r0_forensics_20261024.json`): CLAIM climb fully explained by spacing→3 px + catalogue clearance on a fixed skeleton; (2) fixed wrong DTI algebra in shared `gems/metric.py` (vendor evaluator verified clean); (3) screened 6 surfaces with preserved code (baseline reproduced to the digit) — coherence-gated STEPEDGE/TRANSV duplicate-stopped (0.75 vs BREAKLINE far), RADSTEP passed but weaker; (4) built STEPRAW f33/f45/f60 (3 experiments): f60 is **literal-unique on the 28-raster local registry** (0.461) with **SGMC 0.141464 (repo best)** but **HOLDOUT-DTI 0.003980** fails every bar → verdict negative, primary download, no slot. Sibling f33/f45 are duplicates (0.760/0.711) — never submit.
+
+Next, in order: (1) **one organizer receipt** remains Blocker 0 — the selector choice is now STEPEDGE f60 (SGMC-best/unique) vs STRAINBREAK f60 (holdout-best unique) vs BREAKLINE f45 (balanced); receipt decision rules in `docs/ANALYSIS_20261024_STEPEDGE.md` §4; (2) obtain the 1 m DEM links via DrivenData login (largest identified content gap toward 0.4413; unrestorable from sandbox); (3) no fourth STEPEDGE dose, no new coherence-gated terrain lane (three duplicate-stops); shoreline-suppressed steps only after a receipt; (4) re-run local uniqueness at any future selector decision (verdicts decay as registry grows — see IRREGULARITIES 2026-10-24); (5) optional full public scan refresh (`audit_public_registry.py`) before any selector action — this session ran the single binding witness only.
