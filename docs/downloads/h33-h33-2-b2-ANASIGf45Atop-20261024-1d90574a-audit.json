@@ -1,0 +1,169 @@
+{
+  "file": "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+  "sha256_zeros": "68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5",
+  "sha256_nan": "1d90574a9214677c94869b87ea990e5792bfe23c7a565fa466a2c52858bd7ca4",
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 zero=7111787 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5"
+    }
+  ],
+  "gates_nan": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=7111787 zero=0 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "1d90574a9214677c94869b87ea990e5792bfe23c7a565fa466a2c52858bd7ca4"
+    }
+  ],
+  "overall_pass": true,
+  "generated_utc": "2026-10-24T16:29:30.735824+00:00",
+  "note": "h33-h33-2-b2; ANASIG f45Atop 16944 far dots on analytic-signal ridges >3px off H19-5",
+  "n_dots": 37654,
+  "n_positive_pixels": 37654,
+  "submission_name": "GEMSDOE92-ANASIG-f45Atop-20261024",
+  "submission_eligible": false,
+  "format_ok_to_download": true,
+  "slot_recommendation": "NOT_CLEARED",
+  "run_card": "evidence/anasig_run_card.json",
+  "local_uniqueness": {
+    "final_dots_registry_rasters_checked": 24,
+    "final_worst_forward_overlap_within_3px": 0.550008,
+    "final_worst_forward_overlap_file": "parent_R0_zeros.tif",
+    "final_worst_abs_spearman": 0.546705,
+    "local_literal_duplicate": false,
+    "preplacement_surface_worst_abs_spearman": 0.024278
+  },
+  "public_registry_uniqueness": {
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "candidate_hash_matches_scan": true,
+    "scope": "single binding witness measured this session (evidence/public_witness_anasig.json); not a full 1,279-raster rescan -- fail is binding, scope is stated, not inflated",
+    "witness_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "witness_source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "forward_overlap": 1.0,
+    "witness_positive_fraction_of_footprint": 1.0
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.004966945692180207,
+    "ci95": [
+      0.004098145235197473,
+      0.005939990938656839
+    ],
+    "delta_vs_R0": 0.0009607985174954637,
+    "delta_vs_R0_ci95": [
+      0.00016776358668363014,
+      0.0018140697679650993
+    ],
+    "delta_vs_holdout_best_RELIEFp10": -0.0010781867049927257,
+    "delta_vs_RELIEFp10_ci95": [
+      -0.00203445435608987,
+      -0.00011185228103295617
+    ],
+    "R0_dti": 0.004006147174684743,
+    "holdout_best_RELIEFp10_dti": 0.0060451323971729325,
+    "bootstrap": {
+      "method": "paired physical spatial-cluster percentile",
+      "clusters": 157,
+      "draws": 1000,
+      "seed": 520810,
+      "confidence": 0.95,
+      "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+    }
+  },
+  "verdict": "negative",
+  "note_chars": 84
+}

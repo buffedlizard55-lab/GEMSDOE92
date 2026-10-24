@@ -1,3 +1,21 @@
+# SLOT_PLAN — current selector state (2026-10-24, ANASIG session)
+
+## Current artifact: ANASIG f45 — negative, no slot used
+
+Primary download `GEMSDOE92-ANASIG-f45Atop-20261024` (file
+`h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif`, SHA-256
+`68964bd6c18efd8259c3b57468f5611974918e94808f613dec694737655cf4d5`) is
+format-valid and locally lane-unique, but **not cleared**: HOLDOUT-DTI
+0.004967 does not beat the holdout best RELIEF p10 (0.006045; paired
+Δ −0.001078 [−0.002034, −0.000112]), its SGMC proxy is below R0, and the
+binding public witness (footprint-positive E-proba raster) gives 100%
+forward overlap under the literal public rule. SCARPPOL doses built this
+session are duplicates of BREAKLINE (0.900–0.913) and must never be
+submitted. A human selector may only act after the literal-rule policy
+question in `docs/NEXT_STEPS.md` is resolved. No slot used this session.
+
+---
+
 # SLOT_PLAN — current selector state (2026-10-24)
 
 ## Current artifact: negative duplicate; no slot used

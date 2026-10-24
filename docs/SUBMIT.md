@@ -1,6 +1,6 @@
 # Submission executive summary — GEMSDOE92 candidate
 
-## Current artifact: STRAINBREAK f60s2i — OK TO DOWNLOAD, NOT CLEARED TO SUBMIT
+## Parallel artifact: STRAINBREAK f60s2i — OK TO DOWNLOAD, NOT CLEARED TO SUBMIT
 
 Format-valid zeros-outside float32 GeoTIFF (10/10 local MUST gates; values in [0,1], no NaN in footprint). Verdict **negative**: HOLDOUT-DTI 0.005487 [0.004522, 0.006430] (evaluator `gems57-pooled-hide-v2`, 22,663 withheld positives) beats R0 0.004006 but not the holdout best (RELIEF p10 0.006045), and the USGS SGMC off-catalogue control prefers BREAKLINE f45 (0.12611 vs 0.10516). Local literal uniqueness passes (worst forward 3-px overlap 40.0%, 21 rasters); the expanded public-registry result is in the audit receipt. **Do not spend a weekly slot without a separate human selector decision.**
 
@@ -8,6 +8,10 @@ Format-valid zeros-outside float32 GeoTIFF (10/10 local MUST gates; values in [0
 - Name: `GEMSDOE92-STRAINBREAK-f60s2i-20261024` · Note (87): `h33-h33-2-b2; STRAINBREAK f60s2i 22592 far dots on strained scarp-breaks >3px off H19-5` · SHA-256 `000d0bd7e0a549c2d38ca52a5df5b249763a7be998ad2ccfa30cc45136c05c1f`
 - If a slot is ever cleared: download zeros-outside .tif unedited -> DrivenData New submission -> exact name/note -> record organizer receipt in `ledger/submissions.csv`. This agent does not upload.
 - This session's rank-1 GRAVCrest hypothesis was falsified by the pre-build SGMC screen and never built (`evidence/gravcrest_screen.json`).
+
+## Parallel artifact: ANASIG f45 (site primary) — do not submit
+
+Site primary is the ANASIG candidate (`GEMSDOE92-ANASIG-f45Atop-20261024`); see `index.html` / `SUBMIT.html` and `downloads/anasig_run_card.json`. It is likewise format-valid and **not cleared** (literal registry stop). STRAINBREAK above is a parallel-session negative deliverable, not a replacement primary.
 
 ## Previous artifact: visible collar — duplicate, do not submit
 

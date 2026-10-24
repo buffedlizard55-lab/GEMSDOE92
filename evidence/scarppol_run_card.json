@@ -1,0 +1,586 @@
+{
+  "hypothesis": "A fault scarp is a signed step in detrended topography: slope grows downhill across its crest and collapses across its base. The fall-line directional second derivative |grad(det_elev_slope) . unit_grad(det_elev)|, gated by structure-tensor coherence of det_elev, isolates that crest/base pair, whereas isotropic slope-break magnitude (BREAKLINE) also fires on drainage roughness. Faults offsetting only alluvium or like lithologies carry such a step with no magnetic/gravity contrast, so the H19-5 worm skeleton (and parent R0 on it) misses them, while expert DEM mapping -- the competition label source -- traces exactly this polarity.",
+  "mechanism": "At fixed S=37,654, DTI rises when expected T gains outweigh denominator growth. Kept skeleton dots are chosen by exact marginal expected-DTI greedy (alpha 0.2, beta 0.8, triangular R=3px) under w=0.30+0.70*S_pct on H19-5 support, so coverage-redundant parent dots are the donors. Far dots take the strongest coherent scarp-polarity ridges first (descending S, 2.8px spacing floor): the pre-build screen gave this surface the best withheld-catalogue canary AUC of any untried DEM statistic (0.628012 vs BREAKLINE 0.621604) at comparable off-catalogue SGMC enrichment (far-set PROXY 0.067670 vs 0.072325; docs/HYPOTHESES_20261024_SCARPPOL.md).",
+  "named_non_fault_process_that_could_mimic_it": "Pluvial Lake Lahontan shoreline benches and wave-cut terraces, alluvial-fan segment boundaries, incised channel banks, and bedding-plane breaks on dipping strata all produce a signed crest/base slope pair along the fall line with no Quaternary surface rupture.",
+  "evaluator_version": "gems57-pooled-hide-v2",
+  "withheld_positive_pixels": 22663,
+  "leakage_canary_max_symmetric_auc": 0.628012,
+  "doses": [
+    {
+      "id": "h33-h33-2-b2-SCARPPOLf33Stop-20261024-7b3571a5",
+      "sha256_zeros": "b836464e7406b0787e45244148bbdaf35d848752865c1568544164b7158126ce",
+      "holdout_dti": 0.0050426918939439815,
+      "holdout_ci95": [
+        0.004247674376637466,
+        0.005974780459616873
+      ],
+      "delta_vs_R0": 0.0010365447192592385,
+      "uniqueness": {
+        "evidence_class": "REGISTRY-MEASUREMENT",
+        "rule": "literal: forward_overlap > 0.70 OR |spearman| > 0.90 => duplicate, log and stop",
+        "registry_rasters_checked": 21,
+        "worst_forward_overlap": 0.913104,
+        "worst_forward_overlap_file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+        "worst_abs_spearman": 0.712785,
+        "worst_abs_spearman_file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+        "duplicate": true,
+        "rows": [
+          {
+            "registry_file": "parent_R0_zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.669995,
+            "reverse_overlap_their_dots_within_3px": 0.780475,
+            "binary_spearman_phi": 0.667573,
+            "jaccard_exact_pixels": 0.503754
+          },
+          {
+            "registry_file": "h19_5.tif",
+            "their_dots": 121131,
+            "forward_overlap_my_dots_within_3px": 0.669995,
+            "reverse_overlap_their_dots_within_3px": 0.806713,
+            "binary_spearman_phi": 0.366118,
+            "jaccard_exact_pixels": 0.188893
+          },
+          {
+            "registry_file": "d28.tif",
+            "their_dots": 44090,
+            "forward_overlap_my_dots_within_3px": 0.669995,
+            "reverse_overlap_their_dots_within_3px": 0.692175,
+            "binary_spearman_phi": 0.616155,
+            "jaccard_exact_pixels": 0.446387
+          },
+          {
+            "registry_file": "h27_4_solo.tif",
+            "their_dots": 40199,
+            "forward_overlap_my_dots_within_3px": 0.669995,
+            "reverse_overlap_their_dots_within_3px": 0.747009,
+            "binary_spearman_phi": 0.645775,
+            "jaccard_exact_pixels": 0.479392
+          },
+          {
+            "registry_file": "sample_submission.tif",
+            "their_dots": 60988,
+            "forward_overlap_my_dots_within_3px": 0.065996,
+            "reverse_overlap_their_dots_within_3px": 0.077655,
+            "binary_spearman_phi": -0.009363,
+            "jaccard_exact_pixels": 0.0
+          },
+          {
+            "registry_file": "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.026611,
+            "reverse_overlap_their_dots_within_3px": 0.05022,
+            "binary_spearman_phi": 0.000124,
+            "jaccard_exact_pixels": 0.003719
+          },
+          {
+            "registry_file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.913104,
+            "reverse_overlap_their_dots_within_3px": 0.904525,
+            "binary_spearman_phi": 0.712785,
+            "jaccard_exact_pixels": 0.556272
+          },
+          {
+            "registry_file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.908695,
+            "reverse_overlap_their_dots_within_3px": 0.893637,
+            "binary_spearman_phi": 0.686005,
+            "jaccard_exact_pixels": 0.524731
+          },
+          {
+            "registry_file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.890556,
+            "reverse_overlap_their_dots_within_3px": 0.863361,
+            "binary_spearman_phi": 0.63333,
+            "jaccard_exact_pixels": 0.466277
+          },
+          {
+            "registry_file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.600706,
+            "reverse_overlap_their_dots_within_3px": 0.787964,
+            "binary_spearman_phi": 0.597347,
+            "jaccard_exact_pixels": 0.428859
+          },
+          {
+            "registry_file": "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.587799,
+            "reverse_overlap_their_dots_within_3px": 0.791656,
+            "binary_spearman_phi": 0.584185,
+            "jaccard_exact_pixels": 0.415644
+          },
+          {
+            "registry_file": "h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.566925,
+            "reverse_overlap_their_dots_within_3px": 0.796224,
+            "binary_spearman_phi": 0.562863,
+            "jaccard_exact_pixels": 0.394748
+          },
+          {
+            "registry_file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.618075,
+            "reverse_overlap_their_dots_within_3px": 0.792001,
+            "binary_spearman_phi": 0.601467,
+            "jaccard_exact_pixels": 0.433046
+          },
+          {
+            "registry_file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+            "their_dots": 5000,
+            "forward_overlap_my_dots_within_3px": 0.03009,
+            "reverse_overlap_their_dots_within_3px": 0.235,
+            "binary_spearman_phi": 0.002676,
+            "jaccard_exact_pixels": 0.001714
+          },
+          {
+            "registry_file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.512588,
+            "reverse_overlap_their_dots_within_3px": 0.490891,
+            "binary_spearman_phi": 0.408581,
+            "jaccard_exact_pixels": 0.260153
+          },
+          {
+            "registry_file": "h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
+            "their_dots": 41419,
+            "forward_overlap_my_dots_within_3px": 0.669995,
+            "reverse_overlap_their_dots_within_3px": 0.795842,
+            "binary_spearman_phi": 0.636042,
+            "jaccard_exact_pixels": 0.46853
+          },
+          {
+            "registry_file": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif",
+            "their_dots": 33889,
+            "forward_overlap_my_dots_within_3px": 0.606045,
+            "reverse_overlap_their_dots_within_3px": 0.78282,
+            "binary_spearman_phi": 0.636231,
+            "jaccard_exact_pixels": 0.468272
+          },
+          {
+            "registry_file": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.642641,
+            "reverse_overlap_their_dots_within_3px": 0.79949,
+            "binary_spearman_phi": 0.603072,
+            "jaccard_exact_pixels": 0.434684
+          },
+          {
+            "registry_file": "h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.653131,
+            "reverse_overlap_their_dots_within_3px": 0.7856,
+            "binary_spearman_phi": 0.619953,
+            "jaccard_exact_pixels": 0.45214
+          },
+          {
+            "registry_file": "h33-h33-2-b2-PRUNE_B4-20261023-78e893d7-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.629123,
+            "reverse_overlap_their_dots_within_3px": 0.791124,
+            "binary_spearman_phi": 0.585202,
+            "jaccard_exact_pixels": 0.416656
+          },
+          {
+            "registry_file": "h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.592553,
+            "reverse_overlap_their_dots_within_3px": 0.797206,
+            "binary_spearman_phi": 0.55152,
+            "jaccard_exact_pixels": 0.38388
+          }
+        ]
+      },
+      "verdict": "negative \u2014 duplicate of BREAKLINE sibling dose under literal local rule (forward overlap > 0.90); stop"
+    },
+    {
+      "id": "h33-h33-2-b2-SCARPPOLf38Stop-20261024-a259cb8c",
+      "sha256_zeros": "8d2d0159a06dc12e02ec1ea989554265684cbec701cb782d6faef47049dbb63e",
+      "holdout_dti": 0.00519008628946356,
+      "holdout_ci95": [
+        0.004343546838513781,
+        0.00619993627587029
+      ],
+      "delta_vs_R0": 0.0011839391147788168,
+      "uniqueness": {
+        "evidence_class": "REGISTRY-MEASUREMENT",
+        "rule": "literal: forward_overlap > 0.70 OR |spearman| > 0.90 => duplicate, log and stop",
+        "registry_rasters_checked": 21,
+        "worst_forward_overlap": 0.909465,
+        "worst_forward_overlap_file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif",
+        "worst_abs_spearman": 0.689269,
+        "worst_abs_spearman_file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+        "duplicate": true,
+        "rows": [
+          {
+            "registry_file": "parent_R0_zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.619987,
+            "reverse_overlap_their_dots_within_3px": 0.744861,
+            "binary_spearman_phi": 0.617198,
+            "jaccard_exact_pixels": 0.449262
+          },
+          {
+            "registry_file": "h19_5.tif",
+            "their_dots": 121131,
+            "forward_overlap_my_dots_within_3px": 0.619987,
+            "reverse_overlap_their_dots_within_3px": 0.789583,
+            "binary_spearman_phi": 0.337801,
+            "jaccard_exact_pixels": 0.172364
+          },
+          {
+            "registry_file": "d28.tif",
+            "their_dots": 44090,
+            "forward_overlap_my_dots_within_3px": 0.619987,
+            "reverse_overlap_their_dots_within_3px": 0.661193,
+            "binary_spearman_phi": 0.569572,
+            "jaccard_exact_pixels": 0.39975
+          },
+          {
+            "registry_file": "h27_4_solo.tif",
+            "their_dots": 40199,
+            "forward_overlap_my_dots_within_3px": 0.619987,
+            "reverse_overlap_their_dots_within_3px": 0.713401,
+            "binary_spearman_phi": 0.597009,
+            "jaccard_exact_pixels": 0.428286
+          },
+          {
+            "registry_file": "sample_submission.tif",
+            "their_dots": 60988,
+            "forward_overlap_my_dots_within_3px": 0.06727,
+            "reverse_overlap_their_dots_within_3px": 0.079409,
+            "binary_spearman_phi": -0.009363,
+            "jaccard_exact_pixels": 0.0
+          },
+          {
+            "registry_file": "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.030886,
+            "reverse_overlap_their_dots_within_3px": 0.057418,
+            "binary_spearman_phi": 0.001247,
+            "jaccard_exact_pixels": 0.004281
+          },
+          {
+            "registry_file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.900515,
+            "reverse_overlap_their_dots_within_3px": 0.898098,
+            "binary_spearman_phi": 0.689269,
+            "jaccard_exact_pixels": 0.528507
+          },
+          {
+            "registry_file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.909465,
+            "reverse_overlap_their_dots_within_3px": 0.900356,
+            "binary_spearman_phi": 0.677953,
+            "jaccard_exact_pixels": 0.515495
+          },
+          {
+            "registry_file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.903012,
+            "reverse_overlap_their_dots_within_3px": 0.882562,
+            "binary_spearman_phi": 0.636058,
+            "jaccard_exact_pixels": 0.469195
+          },
+          {
+            "registry_file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.555559,
+            "reverse_overlap_their_dots_within_3px": 0.754156,
+            "binary_spearman_phi": 0.551948,
+            "jaccard_exact_pixels": 0.384287
+          },
+          {
+            "registry_file": "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.544139,
+            "reverse_overlap_their_dots_within_3px": 0.758751,
+            "binary_spearman_phi": 0.540257,
+            "jaccard_exact_pixels": 0.373256
+          },
+          {
+            "registry_file": "h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.524778,
+            "reverse_overlap_their_dots_within_3px": 0.764142,
+            "binary_spearman_phi": 0.520434,
+            "jaccard_exact_pixels": 0.354948
+          },
+          {
+            "registry_file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.573352,
+            "reverse_overlap_their_dots_within_3px": 0.759016,
+            "binary_spearman_phi": 0.556898,
+            "jaccard_exact_pixels": 0.389011
+          },
+          {
+            "registry_file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+            "their_dots": 5000,
+            "forward_overlap_my_dots_within_3px": 0.02924,
+            "reverse_overlap_their_dots_within_3px": 0.2278,
+            "binary_spearman_phi": 0.002603,
+            "jaccard_exact_pixels": 0.001691
+          },
+          {
+            "registry_file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.476231,
+            "reverse_overlap_their_dots_within_3px": 0.462527,
+            "binary_spearman_phi": 0.370325,
+            "jaccard_exact_pixels": 0.230704
+          },
+          {
+            "registry_file": "h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
+            "their_dots": 41419,
+            "forward_overlap_my_dots_within_3px": 0.619987,
+            "reverse_overlap_their_dots_within_3px": 0.762452,
+            "binary_spearman_phi": 0.587994,
+            "jaccard_exact_pixels": 0.41891
+          },
+          {
+            "registry_file": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif",
+            "their_dots": 33889,
+            "forward_overlap_my_dots_within_3px": 0.561056,
+            "reverse_overlap_their_dots_within_3px": 0.747234,
+            "binary_spearman_phi": 0.588478,
+            "jaccard_exact_pixels": 0.418941
+          },
+          {
+            "registry_file": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.595342,
+            "reverse_overlap_their_dots_within_3px": 0.766346,
+            "binary_spearman_phi": 0.557754,
+            "jaccard_exact_pixels": 0.389831
+          },
+          {
+            "registry_file": "h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.604212,
+            "reverse_overlap_their_dots_within_3px": 0.750757,
+            "binary_spearman_phi": 0.571344,
+            "jaccard_exact_pixels": 0.402985
+          },
+          {
+            "registry_file": "h33-h33-2-b2-PRUNE_B4-20261023-78e893d7-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.581718,
+            "reverse_overlap_their_dots_within_3px": 0.757078,
+            "binary_spearman_phi": 0.539027,
+            "jaccard_exact_pixels": 0.372105
+          },
+          {
+            "registry_file": "h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.547273,
+            "reverse_overlap_their_dots_within_3px": 0.763637,
+            "binary_spearman_phi": 0.507887,
+            "jaccard_exact_pixels": 0.34361
+          }
+        ]
+      },
+      "verdict": "negative \u2014 duplicate of BREAKLINE sibling dose under literal local rule (forward overlap > 0.90); stop"
+    },
+    {
+      "id": "h33-h33-2-b2-SCARPPOLf45Stop-20261024-cf4e45c0",
+      "sha256_zeros": "911466b698578faf7973491e6ee05a56b8d12767972543b9eeeef8e6aaa0eb73",
+      "holdout_dti": 0.005314741574536843,
+      "holdout_ci95": [
+        0.004386572480162375,
+        0.006417626557940329
+      ],
+      "delta_vs_R0": 0.0013085943998521,
+      "uniqueness": {
+        "evidence_class": "REGISTRY-MEASUREMENT",
+        "rule": "literal: forward_overlap > 0.70 OR |spearman| > 0.90 => duplicate, log and stop",
+        "registry_rasters_checked": 21,
+        "worst_forward_overlap": 0.900303,
+        "worst_forward_overlap_file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+        "worst_abs_spearman": 0.639162,
+        "worst_abs_spearman_file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif",
+        "duplicate": true,
+        "rows": [
+          {
+            "registry_file": "parent_R0_zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.550008,
+            "reverse_overlap_their_dots_within_3px": 0.698199,
+            "binary_spearman_phi": 0.546705,
+            "jaccard_exact_pixels": 0.379318
+          },
+          {
+            "registry_file": "h19_5.tif",
+            "their_dots": 121131,
+            "forward_overlap_my_dots_within_3px": 0.550008,
+            "reverse_overlap_their_dots_within_3px": 0.762811,
+            "binary_spearman_phi": 0.298174,
+            "jaccard_exact_pixels": 0.149991
+          },
+          {
+            "registry_file": "d28.tif",
+            "their_dots": 44090,
+            "forward_overlap_my_dots_within_3px": 0.550008,
+            "reverse_overlap_their_dots_within_3px": 0.620367,
+            "binary_spearman_phi": 0.504386,
+            "jaccard_exact_pixels": 0.339319
+          },
+          {
+            "registry_file": "h27_4_solo.tif",
+            "their_dots": 40199,
+            "forward_overlap_my_dots_within_3px": 0.550008,
+            "reverse_overlap_their_dots_within_3px": 0.66932,
+            "binary_spearman_phi": 0.528767,
+            "jaccard_exact_pixels": 0.362424
+          },
+          {
+            "registry_file": "sample_submission.tif",
+            "their_dots": 60988,
+            "forward_overlap_my_dots_within_3px": 0.068412,
+            "reverse_overlap_their_dots_within_3px": 0.080868,
+            "binary_spearman_phi": -0.009363,
+            "jaccard_exact_pixels": 0.0
+          },
+          {
+            "registry_file": "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.036782,
+            "reverse_overlap_their_dots_within_3px": 0.068439,
+            "binary_spearman_phi": 0.002745,
+            "jaccard_exact_pixels": 0.005031
+          },
+          {
+            "registry_file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.866734,
+            "reverse_overlap_their_dots_within_3px": 0.877596,
+            "binary_spearman_phi": 0.636807,
+            "jaccard_exact_pixels": 0.469998
+          },
+          {
+            "registry_file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.886811,
+            "reverse_overlap_their_dots_within_3px": 0.890211,
+            "binary_spearman_phi": 0.639162,
+            "jaccard_exact_pixels": 0.472527
+          },
+          {
+            "registry_file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.900303,
+            "reverse_overlap_their_dots_within_3px": 0.892442,
+            "binary_spearman_phi": 0.625892,
+            "jaccard_exact_pixels": 0.458383
+          },
+          {
+            "registry_file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.492776,
+            "reverse_overlap_their_dots_within_3px": 0.707627,
+            "binary_spearman_phi": 0.488732,
+            "jaccard_exact_pixels": 0.326663
+          },
+          {
+            "registry_file": "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.48287,
+            "reverse_overlap_their_dots_within_3px": 0.712753,
+            "binary_spearman_phi": 0.47862,
+            "jaccard_exact_pixels": 0.317887
+          },
+          {
+            "registry_file": "h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.465794,
+            "reverse_overlap_their_dots_within_3px": 0.719021,
+            "binary_spearman_phi": 0.461097,
+            "jaccard_exact_pixels": 0.302952
+          },
+          {
+            "registry_file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.509455,
+            "reverse_overlap_their_dots_within_3px": 0.71347,
+            "binary_spearman_phi": 0.493895,
+            "jaccard_exact_pixels": 0.331189
+          },
+          {
+            "registry_file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+            "their_dots": 5000,
+            "forward_overlap_my_dots_within_3px": 0.02831,
+            "reverse_overlap_their_dots_within_3px": 0.2236,
+            "binary_spearman_phi": 0.00253,
+            "jaccard_exact_pixels": 0.001667
+          },
+          {
+            "registry_file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.426303,
+            "reverse_overlap_their_dots_within_3px": 0.425878,
+            "binary_spearman_phi": 0.318211,
+            "jaccard_exact_pixels": 0.192733
+          },
+          {
+            "registry_file": "h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
+            "their_dots": 41419,
+            "forward_overlap_my_dots_within_3px": 0.550008,
+            "reverse_overlap_their_dots_within_3px": 0.717473,
+            "binary_spearman_phi": 0.520756,
+            "jaccard_exact_pixels": 0.354848
+          },
+          {
+            "registry_file": "h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif",
+            "their_dots": 33889,
+            "forward_overlap_my_dots_within_3px": 0.498407,
+            "reverse_overlap_their_dots_within_3px": 0.701408,
+            "binary_spearman_phi": 0.52198,
+            "jaccard_exact_pixels": 0.35552
+          },
+          {
+            "registry_file": "h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.528603,
+            "reverse_overlap_their_dots_within_3px": 0.722287,
+            "binary_spearman_phi": 0.494644,
+            "jaccard_exact_pixels": 0.331848
+          },
+          {
+            "registry_file": "h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.535667,
+            "reverse_overlap_their_dots_within_3px": 0.704839,
+            "binary_spearman_phi": 0.503714,
+            "jaccard_exact_pixels": 0.339881
+          },
+          {
+            "registry_file": "h33-h33-2-b2-PRUNE_B4-20261023-78e893d7-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.515271,
+            "reverse_overlap_their_dots_within_3px": 0.71193,
+            "binary_spearman_phi": 0.474232,
+            "jaccard_exact_pixels": 0.314115
+          },
+          {
+            "registry_file": "h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad-zeros.tif",
+            "their_dots": 37654,
+            "forward_overlap_my_dots_within_3px": 0.483933,
+            "reverse_overlap_their_dots_within_3px": 0.718516,
+            "binary_spearman_phi": 0.446436,
+            "jaccard_exact_pixels": 0.290714
+          }
+        ]
+      },
+      "verdict": "negative \u2014 duplicate of BREAKLINE sibling dose under literal local rule (forward overlap > 0.90); stop"
+    }
+  ],
+  "raster_sha256_primary_f45": "911466b698578faf7973491e6ee05a56b8d12767972543b9eeeef8e6aaa0eb73",
+  "verdict": "negative",
+  "verdict_reason": "Holdout-positive (f45 0.005315, above BREAKLINE f45 0.004861) but final dots are >0.90 forward-overlapping the same-dose BREAKLINE files: the fall-line surface picks the same ridge lines and the coverage-greedy keep set is 90%+ shared. Logged as a duplicate under protocol rule 1 and stopped; files retained in releases/ as evidence, not offered as the primary download."
+}
