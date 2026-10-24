@@ -11,7 +11,7 @@ No current artifact is cleared for the competition. The primary existing researc
 - Internal research identifier (not a verified portal field): `GEMSDOE92-SPRINGALIGN-f33Ctop-20261025`
 - Research note (not for current upload): `h33-h33-2-b2; SPRINGALIGN f33Ctop 12426 far dots on spring-pair alignment lines >3px off H19-5`
 
-**REGISTRY-MEASUREMENT:** an existing hash-verified witness is positive on every target-footprint cell. Any nonempty in-footprint prediction therefore has 100% forward overlap at 0 px with that witness. This is a decisive single-witness stop, not a fresh full-registry scan. No new TIFF or weekly slot was used in the review.
+**REGISTRY-MEASUREMENT:** an existing hash-verified witness is positive on every target-footprint cell. Any nonempty in-footprint prediction therefore has 100% forward overlap at 0 px with that witness. The existing SPRINGALIGN bytes were measured against this witness at 100% forward overlap and |Spearman| 0.0437295; see the [exact-file rejection receipt](downloads/review_20261024_springalign_witness_v2.json). This is a decisive single-witness stop, not a fresh full-registry scan or pre-placement rerun. No new unique TIFF, experiment, or weekly slot was used in the review.
 
 **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): SPRINGALIGN 0.004865, 95% CI `[0.004025, 0.005785]`; its paired difference versus RELIEF p10 (recorded holdout best) is −0.001180, 95% CI `[−0.002065, −0.000337]`. Local holdout values are not competition scores.
 

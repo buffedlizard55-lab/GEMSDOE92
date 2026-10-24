@@ -18,6 +18,13 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: install validation dependencies
+        run: pip install -r requirements.txt
+      - name: fail closed before publishing downloads
+        run: python scripts/check_site.py
       - uses: actions/upload-pages-artifact@v3
         with:
           path: docs

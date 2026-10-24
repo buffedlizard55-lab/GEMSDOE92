@@ -11,14 +11,14 @@
 <header class="hero">
   <p class="kicker">Submission guide · DrivenData DOE GEMS Prize #306</p>
   <h1>No current file is cleared to submit</h1>
-  <p class="lede">File-format inspection is automated in this project. The existing GeoTIFF below is downloadable for research only. Do not upload it or any archived file: the literal registry-uniqueness gate stops all nonempty in-footprint predictions.</p>
+  <p class="lede">File-format inspection is automated in this project. The existing GeoTIFF below is downloadable for research only. Do not upload it or any archived file: the literal registry-uniqueness gate stops all nonempty in-footprint predictions. No new unique TIFF was generated in this review.</p>
   <p><a href="index.html">← Workbench</a> · <a href="executive-summary.html">Executive summary</a> · <a href="REVIEW_REPO_20261024.md">Full review</a></p>
 </header>
 <main>
   <section class="download-card">
     <h2>Current status: OK TO DOWNLOAD FOR RESEARCH — DO NOT SUBMIT</h2>
     <div class="banner banner-ok"><strong>Automated format checks: PASS for the existing file.</strong> The zeros-outside GeoTIFF passes the project's local single-band float32, CRS, shape, transform, finite `[0,1]`, no-NaN-in-footprint, zero-outside, and known-catalogue checks.</div>
-    <div class="banner banner-warn"><strong>Submission eligibility: NO.</strong> A recorded registry raster has positive support on every cell of the target footprint. Under the literal rule, every nonempty prediction has 100% forward 3-pixel overlap. This evidence is a decisive single-witness stop, not a fresh full-registry scan. The existing research file also does not beat the current comparable HOLDOUT-DTI best. No weekly slot has been selected or used.</div>
+    <div class="banner banner-warn"><strong>Submission eligibility: NO.</strong> REGISTRY-MEASUREMENT: a recorded registry raster has positive support on every cell of the target footprint. Under the literal rule, every nonempty prediction has 100% forward 3-pixel overlap. The exact existing SPRINGALIGN file also measured 1.0 forward overlap and |Spearman| 0.0437295 against that witness. This is a decisive single-witness stop, not a fresh full-registry scan or pre-placement rerun. See the <a href="downloads/review_20261024_springalign_witness_v2.json">exact-file rejection receipt</a>. The existing research file also does not beat the current comparable HOLDOUT-DTI best. No new unique TIFF, experiment, or weekly slot was used.</div>
     <p class="filename">h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif</p>
     <p><a class="btn" href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif" download>Download existing SPRINGALIGN research GeoTIFF — DO NOT SUBMIT</a>
        <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.zip" download>Download one-TIFF ZIP — research only</a></p>
@@ -26,7 +26,7 @@
       <div><dt>Internal research identifier only</dt><dd><code>GEMSDOE92-SPRINGALIGN-f33Ctop-20261025</code></dd></div>
       <div><dt>Note text for the research record only</dt><dd><code>h33-h33-2-b2; SPRINGALIGN f33Ctop 12426 far dots on spring-pair alignment lines &gt;3px off H19-5</code></dd></div>
       <div><dt>SHA-256</dt><dd><code>1772ad5c62506b6b380e221d2202b583edf0a5be4f96916af655e0478eba11b1</code></dd></div>
-      <div><dt>Evidence</dt><dd><a href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-audit.json">Format audit</a> · <a href="downloads/springalign_run_card.json">Run card</a> · <a href="REVIEW_CURRENT.md">Binding registry review</a></dd></div>
+      <div><dt>Evidence</dt><dd><a href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-audit.json">Format audit</a> · <a href="downloads/review_20261024_springalign_witness_v2.json">Exact-file witness receipt</a> · <a href="downloads/springalign_run_card.json">Run card</a> · <a href="REVIEW_CURRENT.md">Binding registry review</a></dd></div>
     </dl>
     <p><strong>HOLDOUT-DTI</strong> (`gems57-pooled-hide-v2`, 22,663 withheld positives): SPRINGALIGN 0.004865, 95% CI [0.004025, 0.005785]; paired difference vs the current RELIEF p10 holdout-best is −0.001180, 95% CI [−0.002065, −0.000337]. These are local hide-and-recover measurements, not organizer scores.</p>
   </section>
@@ -39,11 +39,11 @@
 
   <section>
     <h2>How to submit a future eligible file</h2>
-    <p><strong>Do not perform these steps with any current download.</strong> They apply only after the exact future artifact's machine-readable run card records <code>verdict: promote</code>, its own pre-placement surface and final dots pass the applicable registry rule, paired HOLDOUT-DTI clears the pre-registered comparison, and its audit records <code>submission_eligible: true</code>.</p>
+    <p><strong>Do not perform these steps with the current artifact or any current download.</strong> They apply only after the exact future artifact's machine-readable run card records <code>verdict: promote</code>, its own pre-placement surface and final dots pass the applicable registry rule, paired HOLDOUT-DTI clears the pre-registered comparison, and its audit records <code>submission_eligible: true</code>.</p>
     <ol>
       <li>Download the exact zeros-outside <code>.tif</code> named in the cleared run card. Do not edit, clip, convert, or re-save it in GIS software.</li>
       <li>Open the official DrivenData competition and select “New submission.” The form description supplied for this project shows a single-band GeoTIFF (or ZIP containing one GeoTIFF) and an optional note field.</li>
-      <li>Choose the exact file in “File to submit.” Paste the run-card note in “Note (optional).” The project identifier above is for the internal ledger; the described form does not show a separate submission-name field. This form description was not live-refreshed in this environment.</li>
+      <li>Choose the exact file in “File to submit.” Paste the run-card note in “Note (optional).” The project identifier above is for the internal ledger; the described form does not show a separate name field for it. This form description was not live-refreshed in this environment.</li>
       <li>Only a separately authorized selector may decide to spend a weekly slot. After an accepted upload, record the submission-page receipt's exact ID, timestamp, and score in <code>ledger/submissions.csv</code>. Never copy a local HOLDOUT-DTI into the receipt-score column.</li>
     </ol>
     <p>The local file inspection is automated; no human pixel inspector is required. DrivenData login, weekly quota, selector choice, upload, and receipt capture remain outside this tool and require authorized account access. No credentials are stored here.</p>

@@ -22,20 +22,24 @@ An existing zeros-outside GeoTIFF remains available for **research download only
 
 The repository records a lineage H19-5 → D2.8 → SOLO → B2/R0. The pinned R0 raster has 37,654 unit-mass pixels on the competition grid, zero positive mass on the mapped catalogue, minimum catalogue distance 2.236 px, and 2,171 dots within 3 px of it. These are **raster/registry measurements**, not proof of why a competition score changed. The parent record says its original ranking is unavailable; H19-5 is binary at the R0 dots, so it cannot recover a per-dot ranking.
 
+A GitHub API audit of the retrieved GEMSDOE32 owner-page HTML snapshot found no `0.2778` string and found the snapshot says no organizer score exists for its artifacts. This does not disprove a later user-reported result; it means the supplied number is not verified by that source or by a submission receipt. The pinned source hashes and retrieval boundary are recorded in [`evidence/review_20261024_source_audit.json`](../evidence/review_20261024_source_audit.json).
+
 A plausible, unproven mechanism is that spatial thinning reduces redundant prediction mass and pruning/known-fault clearance avoids mass that cannot earn credit. Under an asymmetric, distance-tolerant Tversky-style metric, that can improve precision while preserving coverage. But there is no organizer receipt, controlled ablation under identical scoring conditions, or private target truth in this checkout. We therefore cannot establish causation, call `0.2778` ORGANIZER-CONFIRMED, or promise to beat it. The prompt's `0.3195` and `0.4413` leaderboard snapshots conflict and were not refreshed here.
 
 The official [DrivenData reference solution repository](https://github.com/drivendataorg/gems-prize-reference-solution) was checked through the allowed GitHub API on 2026-10-24. Its README describes a U-Net/Tversky-loss baseline and a CPU-only environment option; it says a GPU is faster, not required. This verifies what that GitHub README says, not the current DrivenData leaderboard, competition data access, or any submission score.
 
 #### Binding uniqueness stop
 
-Existing `REGISTRY-MEASUREMENT` receipts identify the public `17GEMSDOE_E-proba-multiscale` raster and report positive support on 5,167,373 / 5,167,373 target-footprint cells. The receipt is a single decisive witness, not a new full-registry scan. Under the literal rule, every nonempty in-footprint surface and every final in-footprint dot set is therefore 100% forward-overlapping that witness within 3 px. Surface placement is stopped before build; no alternative lane or final-dot placement was attempted.
+Existing `REGISTRY-MEASUREMENT` receipts identify the public `17GEMSDOE_E-proba-multiscale` raster and report positive support on 5,167,373 / 5,167,373 target-footprint cells. The [exact-file receipt](../evidence/review_20261024_springalign_witness_v2.json) for the already-existing SPRINGALIGN bytes verifies the grid/hash and measures 100% forward overlap within 3 px plus full-footprint |Spearman| 0.0437295. It is still a single-witness rejection, not a new full-registry scan or a rerun of the SPRINGALIGN pre-placement surface. Under the literal rule, every nonempty in-footprint surface and every final in-footprint dot set is therefore 100% forward-overlapping that witness. Surface placement is stopped before build; no new lane or final-dot placement was attempted.
 
 #### Defects found and fixed
 
 - The homepage headline claimed a “unique download” and its lead paragraph described ANASIG while the `data-primary` card linked SPRINGALIGN.
 - `executive-summary.html`, `SUBMIT.html`, `submit.html`, and `SUBMIT.md` did not agree on the current artifact/status. Some wording could make a format-valid research file look eligible to upload.
 - `HYPOTHESES.md` and `HYPOTHESES.html` presented already-tested methods as a current untried queue and included numerical expected-DTI projections and unsupported “verified line-by-line” claims. They now list four untested, qualitatively ranked research questions, name layers/signatures/mimics/distinctions/costs, disclose that the feature cache is absent, and mark the hydrography-dependent proposal non-viable until its official data availability and license can be checked.
-- The site tests asserted ANASIG on legacy pages but did not assert that the homepage's declared primary, executive summary, and submission guide agreed. The tests and automated site check were tightened to enforce one explicit primary, consistent `DO NOT SUBMIT` wording, and an audit/run card for the exact primary bytes.
+- The site tests asserted ANASIG on legacy pages but did not assert that the homepage's declared primary, executive summary, and submission guide agreed. The tests and automated site check were tightened to enforce one explicit primary, consistent `DO NOT SUBMIT` wording, and an audit/run card for the exact primary bytes. Missing or malformed JSON evidence now produces a clean site failure rather than a traceback.
+- The rejection-only public-witness checker now uses the shared template uniqueness helpers and validates candidate/witness/reference CRS, transform, shape, and band count before comparison. It rejects empty/out-of-range/out-of-footprint candidates, refuses to overwrite historical receipts, and cannot grant submission eligibility. Tests cover grid mismatch, empty witnesses/candidates, range errors, hash mismatch, and rank-only duplicates.
+- GitHub Actions CI and the Pages workflow now run the site checker before publication. This is a repository workflow gate; a prior review found that the account-level Pages source setting may still be separate and requires admin verification.
 - The Makefile initially used system `python3`, which had no NumPy/pytest in this sandbox. The review environment was installed from `requirements.txt`; the Makefile now prefers `.venv/bin/python` when present while still honoring `PYTHON=...` overrides.
 
 #### No new geological experiment
@@ -44,19 +48,20 @@ The top untested proposal is paired-profile DEM throw persistence (Band 12 `det_
 
 ### Pass 3 — independent recheck after the fixes
 
-The final checks were run against the edited tree. Pass 3 first exposed four stale site assertions that still treated the archived visible-collar artifact as the current primary or expected obsolete copy. The tests and archive labels were corrected; the final run then passed:
+The final checks were run against the edited tree after integrating the current `main` review and its rejection-only witness checker. The initial Pass 3 run exposed four stale site assertions that still treated the archived visible-collar artifact as the current primary or expected obsolete copy. Those assertions and archive labels were corrected; the updated tests also cover grid/hash/range/empty-witness edge cases and malformed primary evidence. The final run passed:
 
-- `make test` (expanded command: `.venv/bin/python -m pytest tests -q`) — **139 passed**, 17 Rasterio/Affine pending-deprecation warnings.
+- `make test` (expanded command: `.venv/bin/python -m pytest tests -q`) — **166 passed**, 95 Rasterio/Affine pending-deprecation warnings.
 - `make manifest verify ledger` — **PASS**: all eight manifest rasters verified; parent `h33-h33-2-b2` verified (37,654 dots; 5,167,373 footprint pixels); 45 ledger rows, all `UNSCORED`, no best receipt.
 - `make site` (expanded command: `PYTHONPATH=vendor .venv/bin/python scripts/check_site.py`) — **SITE CHECK PASS**; all 15 served zeros-outside rasters passed local reread gates, and the explicitly declared SPRINGALIGN research primary matched its audit and negative run card.
 - Local-link scan of the five edited HTML pages — **PASS**.
 - `git diff --check` — **PASS**.
 
-No new GeoTIFF, ZIP, public-registry cache, or external-data artifact was added. Existing downloads and their bytes remain unchanged; the homepage's archive links and status copy were updated for clarity.
+No new GeoTIFF, ZIP, public-registry cache, or external feature dataset was added. Existing downloads and their bytes remain unchanged; review receipts and source-hash metadata were added, and the homepage's archive links and status copy were updated for clarity.
 
 ## Source verification and access limits
 
-- **Verified in this review:** GitHub API metadata and the README of the official `drivendataorg/gems-prize-reference-solution` repository. The reference README lists CPU-only support and says training is faster on a GPU.
+- **Verified registry measurement:** the exact-file single-witness check in [`evidence/review_20261024_springalign_witness_v2.json`](../evidence/review_20261024_springalign_witness_v2.json) confirms the existing SPRINGALIGN bytes against a SHA-verified GitHub blob. It is rejection-only and is not an exhaustive inventory or a pre-placement surface rerun.
+- **Verified in this review:** GitHub API metadata, pinned README/notebook bytes, and selected notebook cells from the official `drivendataorg/gems-prize-reference-solution` repository. The README lists CPU-only support and says training is faster on a GPU. A separate GitHub API source audit retrieved the GEMSDOE32 owner-page HTML snapshot, which contains no `0.2778` string; see [`evidence/review_20261024_source_audit.json`](../evidence/review_20261024_source_audit.json).
 - **Not refreshed:** DrivenData problem/data/leaderboard/submission pages, USGS GeoDAWN/3DEP/3DHP services, DOE GDR, EPSG.io, and the supplied competition PDF. The sandbox's outbound host allow-list excludes those hosts. The links below are retained for manual review, not described as newly fetched.
 - **No DrivenData authentication, upload, weekly-quota check, or organizer receipt** is available to this workflow. No credential was requested or used.
 - **Provenance caveat:** the feature/input manifest identifies owner-mirror GitHub pins. Hash equality would verify those mirror bytes only; it would not authenticate the competition download or authorize redistribution.

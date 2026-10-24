@@ -95,3 +95,5 @@ jobs:
           print(f"  audit receipt agrees; {len(doc['gates_zeros'])} gates recorded PASS")
           PY
 
+      - name: site status, primary evidence and all served TIFFs must agree
+        run: python scripts/check_site.py

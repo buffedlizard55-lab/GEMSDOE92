@@ -18,7 +18,7 @@
   <section class="download-card">
     <h2>Existing research file — download only; DO NOT SUBMIT</h2>
     <div class="banner banner-ok"><strong>Format checks: PASS.</strong> The existing SPRINGALIGN zeros-outside TIFF is single-band float32; EPSG:32611; shape 3730 × 3292; transform matches the template; its values are finite in `[0,1]`; it has no NaNs inside the footprint and zeros outside.</div>
-    <div class="banner banner-warn"><strong>Eligibility: NO.</strong> A recorded public registry raster is positive at every target-footprint cell, so every nonempty in-footprint prediction has 100% forward overlap with that witness under the literal 3-pixel rule. The candidate also fails the current comparable HOLDOUT-DTI-best bar. No new TIFF was generated in this review; no weekly slot was used.</div>
+    <div class="banner banner-warn"><strong>Eligibility: NO.</strong> REGISTRY-MEASUREMENT: a recorded public registry raster is positive at every target-footprint cell, so every nonempty in-footprint prediction has 100% forward overlap with that witness under the literal 3-pixel rule. The exact existing SPRINGALIGN file measured 1.0 forward overlap and |Spearman| 0.0437295 against this witness; this is a single-witness rejection, not a full scan or pre-placement rerun. See the <a href="downloads/review_20261024_springalign_witness_v2.json">exact-file receipt</a>. The candidate also fails the current comparable HOLDOUT-DTI-best bar. No new unique TIFF was generated in this review; no weekly slot was used.</div>
     <p class="filename">h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif</p>
     <p><a class="btn" href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif" download>Download SPRINGALIGN research GeoTIFF — DO NOT SUBMIT</a>
        <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.zip" download>Download one-TIFF ZIP — research only</a></p>
@@ -26,26 +26,26 @@
       <div><dt>Internal identifier (not a verified form field)</dt><dd><code>GEMSDOE92-SPRINGALIGN-f33Ctop-20261025</code></dd></div>
       <div><dt>Research note (not for current upload)</dt><dd><code>h33-h33-2-b2; SPRINGALIGN f33Ctop 12426 far dots on spring-pair alignment lines &gt;3px off H19-5</code></dd></div>
       <div><dt>SHA-256</dt><dd><code>1772ad5c62506b6b380e221d2202b583edf0a5be4f96916af655e0478eba11b1</code></dd></div>
-      <div><dt>Machine evidence</dt><dd><a href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-audit.json">Format audit</a> · <a href="downloads/springalign_run_card.json">Run card</a> · <a href="REVIEW_REPO_20261024.md">Three-pass review</a></dd></div>
+      <div><dt>Machine evidence</dt><dd><a href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-audit.json">Format audit</a> · <a href="downloads/review_20261024_springalign_witness_v2.json">Exact-file witness receipt</a> · <a href="downloads/springalign_run_card.json">Run card</a> · <a href="REVIEW_REPO_20261024.md">Three-pass review</a></dd></div>
     </dl>
     <p><strong>HOLDOUT-DTI</strong> — evaluator <code>gems57-pooled-hide-v2</code>, 22,663 withheld positives: SPRINGALIGN 0.004865, 95% CI [0.004025, 0.005785]. Its paired difference versus RELIEF p10 (the current recorded holdout best) is −0.001180, 95% CI [−0.002065, −0.000337]. These local hide-and-recover values are not leaderboard scores.</p>
   </section>
 
   <section>
     <h2>What the reported GEMSDOE32 0.2778 does and does not establish</h2>
-    <p><strong>CLAIM 0.2778</strong> is the value associated with <code>h33-h33-2-b2</code> in the supplied site history and local parent registry. The local parent record explicitly has <code>receipt: null</code>; this review has no submission-page receipt for that artifact.</p>
+    <p><strong>CLAIM 0.2778</strong> is the value associated with <code>h33-h33-2-b2</code> in the supplied site history and local parent registry. The local parent record explicitly has <code>receipt: null</code>; this review has no submission-page receipt for that artifact. A retrieved GitHub source snapshot of the GEMSDOE32 page contains no <code>0.2778</code> string and says no organizer score exists in that snapshot; this does not disprove a later user-reported result. See the <a href="../evidence/review_20261024_source_audit.json">source audit</a>.</p>
     <p>The raster's stored lineage is consistent with thinning a candidate skeleton, pruning, and excluding known-catalogue pixels. A plausible mechanism is less redundant prediction mass while retaining coverage under an asymmetric, distance-tolerant Tversky-style metric. That is a hypothesis, not a causal explanation: the parent ranking was not stored, H19-5 is binary at the parent dots, and the private target labels and accepted-submission receipt are unavailable here.</p>
     <p>The user-provided leaderboard values 0.3195 and 0.4413 conflict. Neither was refreshed in this review, and neither score identifies the winning model or proves that a specific geologic method generated it. No local HOLDOUT-DTI can establish a higher competition score.</p>
   </section>
 
   <section>
     <h2>Automated inspection and the future form workflow</h2>
-    <p>The project runs automated file checks; a human pixel inspector is not required. Passing those checks prevents the known range/format failure for the exact bytes, but does not clear uniqueness or competition submission. At present the literal registry rule makes the promotion gate fail for every nonempty in-footprint prediction.</p>
+    <p>The project runs automated file checks; a human pixel inspector is not required. Passing those checks guards against the known range/format failure for the exact bytes, but does not guarantee portal acceptance or clear uniqueness or competition submission. At present the literal registry rule makes the promotion gate fail for every nonempty in-footprint prediction.</p>
     <p><strong>Do not upload any current download.</strong> For a future exact artifact only after the machine-readable audit says <code>submission_eligible: true</code> and a separate selector authorizes a slot:</p>
     <ol>
       <li>Download the cleared zeros-outside GeoTIFF and do not re-encode it.</li>
       <li>In the official “New submission” form, choose the exact `.tif` (or a ZIP containing one GeoTIFF) under “File to submit.”</li>
-      <li>Paste the run-card text into “Note (optional).” The project identifier is for the internal ledger; the form description supplied by the user does not show a separate submission-name field.</li>
+      <li>Paste the run-card text into “Note (optional).” The project identifier is for the internal ledger; the supplied form description does not show a separate name field.</li>
       <li>Record only the actual submission-page receipt in the ledger. DrivenData authentication, slot/quota selection, upload, and receipt capture are not automated here.</li>
     </ol>
     <p>See the <a href="SUBMIT.html">conditional submission guide</a>. Competition pages were not live-refreshed in this network-restricted review.</p>

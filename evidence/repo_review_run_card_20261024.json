@@ -24,6 +24,16 @@
       "positive_fraction_of_footprint": 1.0,
       "source_receipt": "evidence/public_witness_anasig.json"
     },
+    "existing_primary_measurement": {
+      "evidence_class": "REGISTRY-MEASUREMENT (single witness, rejection only)",
+      "candidate_file": "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif",
+      "candidate_sha256": "1772ad5c62506b6b380e221d2202b583edf0a5be4f96916af655e0478eba11b1",
+      "positive_pixels": 37654,
+      "forward_overlap_within_3px": 1.0,
+      "spearman_full_footprint": 0.04372948694731268,
+      "receipt": "evidence/review_20261024_springalign_witness_v2.json",
+      "scope": "Measured on an already-existing research artifact; not a newly built candidate, not a full-registry scan, and not a pre-placement-surface rerun."
+    },
     "preplacement_surface": {
       "surface_built": false,
       "measured_candidate_surface_overlap": null,

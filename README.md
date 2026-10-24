@@ -6,7 +6,7 @@
 
 ## Current decision — 2026-10-24 review: no submission cleared
 
-**No new TIFF was generated in this review. Existing files are downloadable for research only; none is cleared to submit.** A hash-verified registry witness is positive on every target-footprint cell, so every nonempty in-footprint prediction has 100% forward overlap under the literal rule. This is a decisive single-witness stop, not a fresh exhaustive scan.
+**No new unique TIFF (or any new TIFF) was generated in this review. Existing files are downloadable for research only; none is cleared to submit.** **REGISTRY-MEASUREMENT:** a hash-verified registry witness is positive on every target-footprint cell, so every nonempty in-footprint prediction has 100% forward overlap under the literal rule. The exact existing SPRINGALIGN bytes were also measured against that single witness: forward overlap **1.0**, |Spearman| **0.0437295**. This is a decisive single-witness stop, not a fresh exhaustive scan; see the [exact-file receipt](evidence/review_20261024_springalign_witness_v2.json).
 
 | Existing research artifact | Link / metadata |
 |---|---|
@@ -14,7 +14,7 @@
 | Internal research identifier (not a verified portal field) | `GEMSDOE92-SPRINGALIGN-f33Ctop-20261025` |
 | Research note (not for current upload) | `h33-h33-2-b2; SPRINGALIGN f33Ctop 12426 far dots on spring-pair alignment lines >3px off H19-5` |
 | SHA-256 | `1772ad5c62506b6b380e221d2202b583edf0a5be4f96916af655e0478eba11b1` |
-| Evidence | [format audit](docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-audit.json) · [run card](evidence/springalign_run_card.json) · [three-pass review](docs/REVIEW_REPO_20261024.md) |
+| Evidence | [format audit](docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-audit.json) · [exact-file single-witness receipt](evidence/review_20261024_springalign_witness_v2.json) · [run card](evidence/springalign_run_card.json) · [three-pass review](docs/REVIEW_REPO_20261024.md) · [source audit](evidence/review_20261024_source_audit.json) |
 
 **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): SPRINGALIGN 0.004865, 95% CI [0.004025, 0.005785]. Paired difference versus RELIEF p10 (recorded holdout best) is −0.001180, 95% CI [−0.002065, −0.000337]. These are local holdout values, not leaderboard scores. The public witness independently blocks all nonempty predictions. No weekly slot was selected or used.
 
@@ -56,7 +56,7 @@ See [current review](docs/REVIEW_CURRENT.md), [hypothesis queue](docs/HYPOTHESES
 
 ## Archived visible-collar candidate — format-valid research download, duplicate stop
 
-**✅ FORMAT-VALID — OK TO DOWNLOAD.** The generated submission raster is an all-finite, single-band float32 GeoTIFF, EPSG:32611, shape 3730 × 3292, matching the competition template geotransform. It contains zero NaNs inside the footprint, zeros outside, values strictly in `[0, 1]`, and passes all 10 local MUST gates on independent re-read from disk. This completely prevents the DrivenData portal error: `Predicted values must be in range [0, 1]`.
+**✅ FORMAT-VALID — OK TO DOWNLOAD.** The generated submission raster is an all-finite, single-band float32 GeoTIFF, EPSG:32611, shape 3730 × 3292, matching the competition template geotransform. It contains zero NaNs inside the footprint, zeros outside, values strictly in `[0, 1]`, and passes all 10 local MUST gates on independent re-read from disk. These checks guard against, but do not guarantee portal acceptance or prevent every cause of, the reported error: `Predicted values must be in range [0, 1]`.
 
 **⛔ NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE.** An expanded scan found 100% 3-px forward overlap with public registry rasters (131 of 1,279 exceed 70%). Stop; do not submit. This file remains downloadable as a negative research deliverable. The scan covers current default branches in 102 public owner repositories, not every historic/site-hosted file.
 
@@ -93,7 +93,7 @@ A second session built **BREAKLINE f45Ltop**: keeping 20,710 parent R0 dots via 
 
 ## What the reported GEMSDOE32 value can support
 
-The reported value **0.2778 is a CLAIM** copied from the supplied GEMSDOE32 site history; this checkout has no submission-page receipt for that artifact. The reported lineage H19-5 → D2.8 → SOLO → B2/R0 is consistent with changes to candidate geometry, thinning, pruning, and known-catalogue clearance. The prompt-reported intermediate values 0.1922, 0.2600, and 0.2708 are also CLAIMs, not organizer-confirmed receipts here.
+The reported value **0.2778 is a CLAIM** copied from the supplied GEMSDOE32 site history; this checkout has no submission-page receipt for that artifact. A GitHub API audit of the owner site's retrieved HTML snapshot found no `0.2778` string and found that snapshot says no organizer score exists for its artifacts. That snapshot does not disprove a later user-reported result; it cannot authenticate it either. See the [pinned source audit](evidence/review_20261024_source_audit.json). The reported lineage H19-5 → D2.8 → SOLO → B2/R0 is consistent with changes to candidate geometry, thinning, pruning, and known-catalogue clearance. The prompt-reported intermediate values 0.1922, 0.2600, and 0.2708 are also CLAIMs, not organizer-confirmed receipts here.
 
 A plausible mechanism is that thinning spatially redundant predictions reduces false-positive cost while maintaining coverage, and avoiding mapped catalogue pixels avoids predictions that may be masked. This is **mechanistic inference**, not causal proof: attributing score changes requires exact artifacts, identical scoring conditions, controlled ablations, and organizer receipts. Nearby predictions can have overlapping kernel support while each emitted prediction contributes to total prediction mass; that makes redundancy a sensible experiment, not proof that a specific thinning step caused the claimed increase. Local HOLDOUT-DTI is not comparable to private leaderboard scores.
 
