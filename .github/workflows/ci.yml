@@ -19,15 +19,79 @@ jobs:
           pip install -r requirements.txt
       - name: tests
         run: python -m pytest tests -q
+
       - name: no conflict markers
         run: |
           if grep -rInE '^(<<<<<<<|=======|>>>>>>>)' --include='*.py' --include='*.md' --include='*.json' . ; then
             echo "conflict markers found"; exit 1
           fi
-      - name: parent recipe must never be a template in CI
+
+      # data/ and releases/*.tif are tracked by this repo's convention, so the
+      # pinned inputs are present right after checkout -- no download, no login.
+      - name: pinned inputs must hash exactly (make manifest)
+        run: make manifest
+
+      # Was `|| true` until 2026-10-25, which is why a gate that had never once
+      # passed went unnoticed. It is fatal now: an unprovable parent must stop
+      # the build rather than be waved through. See IRREGULARITIES.md 2026-10-25.
+      - name: parent must be provable from the committed bytes (make verify)
+        run: make verify
+
+      # The files the site offers for download must pass the competition's format
+      # gates as served -- no human pixel inspection. This is the gate that makes
+      # the "OK TO DOWNLOAD AND SUBMIT" banner a statement about the bytes.
+      #
+      # Every dose on the page is offered, so every dose is gated. Do NOT pick one
+      # with `ls | head`: alphabetical order selects p10, not the p12 primary the
+      # page promotes, and the gate would silently check the wrong file.
+      - name: served submission files must pass all MUST gates
         run: |
-          if [ -f registry/parents/R0.json ]; then
-            python -m gems parent --recipe registry/parents/R0.json --data-root data || true
-          else
-            echo "no R0.json yet (expected until the human supplies inputs)"
+          set -euo pipefail
+          shopt -s nullglob
+          files=(docs/downloads/*-zeros.tif)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "no served submission files in docs/downloads/"; exit 1
           fi
+          for f in "${files[@]}"; do
+            echo "=== validating $f ==="
+            python -m gems validate "$f" \
+              --reference data/bridge/sample_submission.tif \
+              --catalogue data/bridge/existing_faults.tif \
+              --prune-radius 2
+          done
+          echo "gated ${#files[@]} served file(s)"
+
+      # The primary named on the page must exist, be one of the gated files, and
+      # agree byte-for-byte with the audit receipt shipped beside it.
+      - name: primary download must match its audit receipt
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, pathlib, re, sys
+          html = pathlib.Path("docs/index.html").read_text(encoding="utf-8")
+          m = re.search(r'href="(downloads/[^"]+-zeros\.tif)"', html)
+          if not m:
+              sys.exit("index.html offers no -zeros.tif primary download")
+          primary = pathlib.Path("docs") / m.group(1)
+          if not primary.is_file():
+              sys.exit(f"index.html points at {primary}, which does not exist")
+          # the receipt is named after the variant, not the encoding twin:
+          # <variant>-audit.json for <variant>-zeros.tif
+          variant = primary.stem.removesuffix("-zeros")
+          audit = primary.with_name(variant + "-audit.json")
+          if not audit.is_file():
+              sys.exit(f"missing audit receipt beside the primary: {audit}")
+          doc = json.loads(audit.read_text())
+          got = hashlib.sha256(primary.read_bytes()).hexdigest()
+          if got != doc["sha256_zeros"]:
+              sys.exit(f"audit hash {doc['sha256_zeros']} != served bytes {got}")
+          if doc.get("overall_pass") is not True:
+              sys.exit("audit receipt does not record overall_pass == true")
+          bad = [g["name"] for g in doc["gates_zeros"] if not g["ok"]]
+          if bad:
+              sys.exit(f"audit receipt records failing gates: {bad}")
+          print(f"primary {primary.name}")
+          print(f"  sha256 {got}")
+          print(f"  audit receipt agrees; {len(doc['gates_zeros'])} gates recorded PASS")
+          PY
+

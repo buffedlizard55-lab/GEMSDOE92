@@ -16,3 +16,6 @@ __pycache__/
 *.tif
 *.tiff
 *.zip
+# Exception: GitHub Pages downloads must be served — these are the ONLY tifs tracked since 2026-10-24
+!docs/downloads/*.tif
+!docs/downloads/*.zip
