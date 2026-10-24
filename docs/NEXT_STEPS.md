@@ -1,3 +1,23 @@
+# NEXT_STEPS — after the 2026-10-24 COULOMB session (negative verdict; queue unchanged, 4 follow-ups appended)
+
+## Completed this session (COULOMB, 2026-10-24)
+
+1. Pre-registered 5 ranked hypotheses (`docs/HYPOTHESES_20261024_COULOMB.md`) before any screen/build; gate-zero reproduced `BREAKLINE-L` exactly (canary `0.621604`, far-SGMC `0.072325`).
+2. Built + scored 3 experiments (`free 0.005689`, `open 0.005184`, `seismo 0.005808` on `HOLDOUT-DTI`), all Tier-1 repulsion, `20/20` canaries PASS, locally unique (`0.263–0.290`).
+3. Falsified at 100 m: Coulomb opening weighting (`0.5423` canary), 100 km seismicity fusion (statistical tie), TMI-tilt zero-contours (`0.5167`), MT-edge × dilatation (`0.5166`).
+4. Falsified `max()` two-channel fusion vs multiplicative: weaker RTP channel (`0.5162`) dominates `71.6%` of `max()` emission over stronger relative-scarp (`0.6230`).
+5. Disk-verified lineage counts (`D2.8 44,090`, `SOLO 40,199`, `R0 37,654`) and corrected 4 stale prose spots (3 files); logged conflicting intermediate `CLAIM` scores.
+
+## New follow-ups (appended behind Blocker 0 + dense-policy decision; strict order preserved below)
+
+- **F-C1. Rule-2 Coulomb re-evaluation**: score the built `COULOMB` rasters under fold-visible `d_visible > 2.0` to test whether the static self-mask (`#IR-92-STATIC-DCAT2-SELFMASK`) under-prices off-collar Coulomb emission. Zero new builds; one reporting script.
+- **F-C2. Multiplicative re-fusion**: rebuild the Coulomb screen as `rel_scarp × O_coulomb` (HYDROCONDUIT pattern) instead of `max(R_rtp, R_scarp) × O` and re-screen only — tests whether the fusion operator, not the physics, caused the shortfall.
+- **F-C3. Relative-scarp standalone lane**: `rel_scarp`-only screened `0.6230`, above the `BREAKLINE-L` baseline — the strongest unbuilt single component in the repo. Pre-register + screen + (if gate passes) build as its own lane.
+- **F-C4. LIDAR1M-LAHONTAN stays HELD**: still blocked on `1m_DEM_links.csv` + `apps.nationalmap.gov`; remains the highest-leverage untested instrument.
+
+---
+
+# NEXT_STEPS — after the 2026-10-24 APRONRIDGE session
 > **Latest verification (2026-10-24):** [D97F969E three-pass review](REVIEW_D97F969E.md) adds a freshly downloaded witness receipt and corrects the overall-best claim. No generation or policy exemption.
 
 # NEXT_STEPS — current review status (2026-10-24)
@@ -7,9 +27,9 @@
 **Current research download:** `APRONRIDGE free1d`, [`docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`](downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif). It is format-valid and available for research download, but **NOT CLEARED FOR A WEEKLY SLOT; DO NOT SUBMIT**. Its exact-file witness measurement records `1.000` final-dot forward overlap with a hash-verified raster whose support is positive on every cell in the competition footprint. Under the literal rule, this mandates a stop for every nonempty prediction; it does not show geological equivalence. See [witness receipt](downloads/public_witness_apronridge.json) and [review](REVIEW_CURRENT.md).
 
 - **HOLDOUT-DTI (historical, not rerun in this repository review):** `gems57-pooled-hide-v2`, 8 spatial folds, 22,663 withheld positive pixels; APRONRIDGE free1d `0.008354`, 95% CI `[0.006823, 0.010135]`. This is a local hide-and-recover result, not a competition score. See its [run card](../evidence/apronridge_run_card.json).
-- **Format check:** after installing the pinned `requirements.txt`, 206 tests passed; `scripts/check_site.py` passed for 25 served rasters; the 8-entry manifest and pinned R0 parent verified. These confirm local integrity only—not public uniqueness or organizer acceptance.
-- **Submission ledger:** 60 BUILT / 0 RECEIPT (current command output). No weekly slot was used in this review.
-- **Current session generated no TIFF and ran no geological experiment.** The requested new unique candidate remains unmet: the binding final-dot duplicate stop prevents honest promotion under the literal rule. Do not relabel an existing file or emit an all-zero/no-signal raster to evade the stop.
+- **Format check:** after installing the pinned `requirements.txt`, 216 tests passed; `scripts/check_site.py` passed for 31 served rasters; the 8-entry manifest and pinned R0 parent verified. These confirm local integrity only—not public uniqueness or organizer acceptance.
+- **Submission ledger:** 63 BUILT / 0 RECEIPT (current command output). No weekly slot was used in this review.
+- **The APRONRIDGE continuation itself generated no TIFF and ran no geological experiment.** Subsequent main-branch additions include separate GEOTENSION and COULOMB research experiments (see their analyses/run cards); both remain blocked by the binding final-dot duplicate stop and are not selector choices. The request for a newly generated, submission-eligible unique candidate remains unmet. Do not relabel an existing file or emit an all-zero/no-signal raster to evade the stop.
 
 ## Next actions (fail-closed order)
 

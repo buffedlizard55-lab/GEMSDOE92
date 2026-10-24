@@ -1,4 +1,25 @@
-# Latest review override — 2026-10-24 (`d97f969e`)
+# Current review — updated after main-branch COULOMB closeout (2026-10-24)
+
+## Latest safety decision
+
+**✅ OK TO DOWNLOAD FOR RESEARCH; ⛔ DO NOT SUBMIT.** APRONRIDGE remains the site research download, not a selector choice. The D97 review's caution stands: APRONRIDGE and HYDROCONDUIT HOLDOUT-DTI numbers are stored historical static evaluations, not freshly rerun or certified here as fold-rebuilt/leak-free promotion evidence and not organizer scores. The D97 and continuation exact-file checks each reject against a single Git-blob-verified witness; neither is a fresh exhaustive registry scan or candidate-surface clearance. That witness is positive across all `5,167,373` footprint cells, so every nonempty in-footprint prediction has literal forward overlap `1.0`; no dense-map exemption is authorized.
+
+## Later main-branch research records (not selector decisions)
+
+- **APRONRIDGE free1d / HYDROCONDUIT f45hydro:** historical **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives) `0.008354 [0.006823, 0.010135]` / `0.008549 [0.007626, 0.009487]`; the hybrid is higher by point estimate. Preserve the D97 and continuation caveat above.
+- **GEOTENSION free1d:** a separate later main-branch experiment records **HOLDOUT-DTI** `0.007615 [0.005832, 0.009386]` with the same evaluator and withheld-positive count. It is below both APRONRIDGE and HYDROCONDUIT; its exact-file witness overlap is `1.0`, so it is a negative, research-only artifact.
+- **COULOMB seismo:** the later main-branch session tested three variants. Lead **HOLDOUT-DTI** `0.005808 [0.004846, 0.006809]` (`gems57-pooled-hide-v2`, 22,663 withheld positives); it beats R0 but trails HYDROCONDUIT, has lower SGMC proxy, and is still blocked by the same witness (`1.0`). It is format-valid/local-unique, not submission-cleared. The three-experiment budget for that session was consumed; no weekly slot was used.
+- The four conditional hypotheses in [`HYPOTHESES_20261024_PREFLIGHT.md`](HYPOTHESES_20261024_PREFLIGHT.md) remain unvalidated and are not cleared to build or score. The separate ranked COULOMB proposals and experiment results are in [`HYPOTHESES_20261024_COULOMB.md`](HYPOTHESES_20261024_COULOMB.md) and [`ANALYSIS_20261024_COULOMB.md`](ANALYSIS_20261024_COULOMB.md).
+
+## Review records and evidence
+
+[D97 three-pass review](REVIEW_D97F969E.md) · [D97 run card](downloads/review_d97f969e_run_card.json) · [D97 witness receipt](downloads/review_d97f969e_witness.json) · [continuation review](REVIEW_20261024_CONTINUATION.md) · [GEOTENSION analysis/run card](ANALYSIS_20261025_GEOTENSION.md) / [`../evidence/geotension_run_card.json`](../evidence/geotension_run_card.json) · [COULOMB analysis/run card](ANALYSIS_20261024_COULOMB.md) / [served run card](downloads/coulomb_run_card.json) · [COULOMB witness receipt](downloads/public_witness_coulomb.json).
+
+No artifact from these later main-branch sessions is promoted to a competition submission by this review. Download validity, local HOLDOUT-DTI, local uniqueness, and organizer confirmation remain distinct.
+
+---
+
+# Historical APRONRIDGE review (read the latest status above first)
 
 > **OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT.** The existing APRONRIDGE TIF remains the research download; it is not a newly generated candidate or a selector choice. The latest exact-file witness test is a **single-witness rejection**, not a new full-registry scan or pre-placement candidate-surface evaluation. APRONRIDGE and HYDROCONDUIT HOLDOUT-DTI figures below are historical static evaluation results and are not certified here as fold-rebuilt, leak-free promotion evidence. No dense-map exemption or submission selection is authorized. Details: [three-pass review](REVIEW_D97F969E.md), [witness receipt](downloads/review_d97f969e_witness.json), [run card](downloads/review_d97f969e_run_card.json).
 
@@ -8,7 +29,7 @@
 - **Ranking correction:** the stored APRONRIDGE `HOLDOUT-DTI` is `0.008354 [0.006823, 0.010135]`, lower in point estimate than HYDROCONDUIT `0.008549 [0.007626, 0.009487]` on the same evaluator / 22,663 withheld positives. Both remain historical static evaluations; no paired significance or fold-rebuilt validation is newly claimed. The 0.2778 GEMSDOE32 value remains a `CLAIM`; the supplied 0.3195 and 0.4413 leaderboard values were not refreshed.
 - **Hypotheses and limits:** four concepts are in [`HYPOTHESES_20261024_PREFLIGHT.md`](HYPOTHESES_20261024_PREFLIGHT.md), unvalidated and conditional on policy resolution and restoring the absent feature stack. No candidate was implemented or scored, and no projected score is offered.
 - **Three-pass review:** Pass 1 found README/site primary and ranking drift plus a form-note length error. Pass 2 corrected current-facing summaries and added consistency checks. Pass 3 rechecked the stop status, guides, primary hashes, tests, and site gates; no TIFF bytes were changed.
-- **Post-resolution local validation:** 206 tests passed (103 nonfatal Rasterio/Affine warnings); the site gate passed all 28 served zeros-outside TIFs. The 8-entry input manifest, pinned R0 parent, and 60-row ledger checks passed; local HTML link audit found no missing targets. These establish format/software integrity only, not eligibility.
+- **Post-resolution local validation:** 216 tests passed (103 nonfatal Rasterio/Affine warnings); the site gate passed all 31 served zeros-outside TIFs. The 8-entry input manifest, pinned R0 parent, and 63-row ledger checks passed; local HTML link audit found no missing targets. These establish format/software integrity only, not eligibility.
 
 ---
 
