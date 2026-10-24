@@ -1,0 +1,39 @@
+{
+  "hypothesis": "Blind fault continuations lie 0.5–1.8 km along strike beyond mapped H19-5 lineament tips.",
+  "mechanism": "Reallocate 33% (12,426) of 37,654 unit-mass dots onto along-strike tip walks, 6–18 px beyond endpoints and more than 3 px from the parent skeleton/catalogue.",
+  "named_non_fault_process_that_could_mimic_it": "Alluvial-fan channel nickpoints and lithologic pinch-outs can terminate magnetic lineaments without fault slip.",
+  "holdout_dti": {
+    "label": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 22663,
+    "value": 0.002722851453440423,
+    "ci95": [0.00232355311447333, 0.003130875606786941],
+    "parent_value": 0.004006147174684743,
+    "parent_ci95": [0.0034076934823601903, 0.004650591020077596],
+    "delta_vs_parent": -0.0012832957212443202,
+    "evidence_source": "docs/downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.json"
+  },
+  "correlation_overlap_vs_registry": {
+    "registry_raster": "parent_R0",
+    "spearman_full_footprint": 0.668980148446144,
+    "candidate_dots_within_3px": 0.6699952196313804,
+    "thresholds": {"spearman_gt": 0.9, "overlap_gt": 0.7},
+    "result": "Below thresholds for local R0 comparison only; registry inventory is incomplete beyond this checkout."
+  },
+  "raster_sha256": "0ca8248acace558f5cf86b153134b8fd5cc2b7d5b343d0a36f000f9fbfe4758f",
+  "validator_output": {
+    "result": "PASS local format checks; not organizer acceptance",
+    "no_nan_inside_footprint": true,
+    "values_range": [0.0, 1.0],
+    "crs": "EPSG:32611",
+    "shape": [3730, 3292],
+    "transform_matches_sample_submission": true,
+    "bands": 1,
+    "dtype": "float32",
+    "zeros_outside_footprint": true,
+    "independent_site_check": "scripts/check_site.py"
+  },
+  "submission_name": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a",
+  "note": "h33-h33-2-b2; TIPGAP FAR 33% along-strike >3px off parent skeleton; HOLDOUT-DTI negative",
+  "verdict": "negative"
+}
