@@ -99,3 +99,14 @@ See [current review](docs/REVIEW_CURRENT.md). The queued public check now reject
 ## Follow-up registry stop (2026-10-24)
 
 **2026-10-24 follow-up — BREAKLINE is now a confirmed duplicate under the literal registry rule.** A live, Git-blob-verified witness check compared one raster from 11GEMSDOE and five from 17GEMSDOE. BREAKLINE final dots have **100% forward 3-px overlap** with the dense 17GEMSDOE E-proba raster. This is REGISTRY-MEASUREMENT, not a competition score. The actual BREAKLINE pre-placement surface was not supplied and was **not checked**; no collar surface was substituted. A final-dot failure alone requires stop. No new experiment or TIFF was generated; no slot used. See [follow-up review](docs/REVIEW_REGISTRY_STOP_20261024.md) and [run card](evidence/breakline_registry_stop_run_card.json). **Download for research only; do not submit.**
+
+## Addendum — HYDROCONDUIT session (2026-10-24)
+
+Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261024_HYDROCONDUIT.md`) after discovering `Band 6 tc` is Radiometric Total Count (`r = 0.99714` with `GeoDAWN TC`), `GDR #1391` `'Hot '` whitespace + `419` blind chemical-geothermometer pixels (`>= 80 °C`), and `BREAKLINE`'s `74.8%` bare mountain range-core cliff hijack. Built 3 `HYDROCONDUIT` variants (`gems/hydroconduit.py`, `scripts/build_hydroconduit_variants.py`):
+
+- **Primary file:** `docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif` (`sha256 c9e07ba6627672bfd58b08572a19d48aa16ff07a2f95347993550eaaccba8fdd`, `37,654` unit-mass dots).
+- **HOLDOUT-DTI (`gems57-pooled-hide-v2`, `22,663` withheld positives):** **`0.008549 [0.007626, 0.009487]`** — first candidate in `GEMSDOE92` to beat **both** `R0` (`0.004006`, `+113.4%`, Δ `+0.004543 [+0.003770, +0.005315]`) **and** prior holdout-best `RELIEF p10` (`0.006045`, `+41.4%`, Δ `+0.002504 [+0.001795, +0.003222]`). Rule-2 fold-by-fold `d_visible > 2.0` diagnostic (`0.0852` vs `0.0968` `H19-5` skeleton-only) and `USGS SGMC` proxy (`0.0741` vs `0.0961` `R0`) are disclosed alongside.
+- **Leakage canaries:** all 24 raw/derived features `<= 0.90` (`max = 0.65012`).
+- **Uniqueness (`REGISTRY-MEASUREMENT`):** Local (`29` rasters): pre-placement surface `0.1892 <= 0.70` (`|rho| = 0.1098`), final dots `0.5500 <= 0.70` (`|rho| = 0.2982`). Live 102-repo GitHub API scan (`1,332` rasters, `evidence/hydroconduit_public_registry_uniqueness.json`): **0 / 1,147 sparse (`<= 150k` px) public rasters exceed 70%** (`max = 0.6719 <= 0.70`; `|rho| <= 0.4396`), while `118` dense surfaces (`> 150k` px, led by `17GEMSDOE E-proba-multiscale`, `100%` footprint positive) yield `1.000 > 0.70` under the literal rule.
+- **Verdict:** **`negative` (`submission_eligible: false`) — ✅ FORMAT-VALID / OK TO DOWNLOAD FOR RESEARCH; ⛔ DO NOT SUBMIT / NOT CLEARED FOR A WEEKLY SLOT** until a human operator resolves the dense-surface representation policy. Ledger: `49 BUILT / 0 RECEIPT`.
+

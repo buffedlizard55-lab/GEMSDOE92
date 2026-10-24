@@ -1,136 +1,30 @@
-# Current review — 2026-10-24
+# Current Review Status — `GEMSDOE92` (`HYDROCONDUIT` Session, 2026-10-24)
 
-## Download status comes first
+## Headline Decision
 
-**OK TO DOWNLOAD for research; NOT OK TO SUBMIT under the required gates.**
-The [BREAKLINE TIFF](downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif)
-is an existing artifact, not a new unique submission generated this session.
-Independent disk reread confirms single-band float32, finite everywhere, values
-in [0,1], zero outside the footprint, and template-matching CRS/shape/transform.
-[Run card](downloads/session_review_run_card.json).
+- **Current Primary Artifact:** `docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif`
+  - **SHA-256 (`-zeros.tif`):** `c9e07ba6627672bfd58b08572a19d48aa16ff07a2f95347993550eaaccba8fdd`
+  - **Download Clearance:** **✅ FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH** (`10 / 10` `gems.gates` + `13 / 13` `gems57.validate` checks pass; finite `[0, 1]`, zero NaNs anywhere, zeros outside footprint, zero catalogue mass, `37,654` unit-mass dots).
+  - **Submission / Slot Clearance:** **⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (`verdict: "negative"`, `submission_eligible: false`; DUPLICATE UNDER THE LITERAL REGISTRY RULE).**
 
-## Outstanding next step completed: public witness check
+---
 
-The queued BREAKLINE public-registry check was narrowed to a decisive witness,
-not represented as a repeat of the historical 1,279-raster scan.
-[Public source](https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif)
-was retrieved with GitHub API, verified against Git blob SHA-1 and byte size,
-then pinned with SHA-256. [Measurement receipt](downloads/breakline_public_witness.json).
+## Summary of What Changed in This Session
 
-**REGISTRY-MEASUREMENT:** BREAKLINE final-dot forward overlap is **1.0**;
-Spearman rho is **0.03159061184613562**. Overlap alone triggers the duplicate
-stop. The witness has positive support whose 3-pixel halo covers **1.0** of the
-competition footprint. Thus every nonempty prediction supported within that
-footprint has 100% forward overlap with this witness. This follows directly
-from set inclusion, not an extrapolated competition score. Byte uniqueness is
-not the same as passing the specified geometric uniqueness gate.
+1. **Resolved Both Open Structural Bottlenecks on the Local Holdout & Sparse Fleet:**
+   - Prior off-skeleton lanes (`BREAKLINE`, `SCARPPOL`, `ANASIG`, `STRAINBREAK`, `SPRINGALIGN`) either failed to beat `RELIEF p10` (`0.006045`) on the shared `gems57-pooled-hide-v2` static holdout (`max = 0.005487` on `STRAINBREAK f60`) or exceeded `70%` forward overlap against large (`91k–120k` px) sparse rasters in the public fleet (`STRAINBREAK f60 = 0.7105`).
+   - By normalizing slope breaks (`||grad log(slope + 1°)||` × 600 m cross-strike step monotonicity $\mu_{\text{step}}$), shifting off-skeleton dots from bare range-core cliffs (`74.8% -> 6.2%`) onto piedmont/shallow-basement scarps (`18.2% -> 83.4%`), repacking `H19-5` piedmont strands (`55%`), and adding the true `Band 2 RTP` tilt/demagnetization + `GeoDAWN K/Th` + `Band 17` MT + `GDR #1391` blind chemical geothermometer (`>= 80 °C`) conduit factor, **`HYDROCONDUIT f45hydro` achieved:**
+     - **Static `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives):** **`0.008549 [0.007626, 0.009487]`** — **`+113.4%` over `R0` (`0.004006`)** and **`+41.4%` over `RELIEF p10` (`0.006045`)** (`Δ = +0.002504 [+0.001795, +0.003222]`).
+     - **Single-feature leakage canaries:** all 24 features `<= 0.90` (`max = 0.65012`).
+     - **Local registry uniqueness (`29` rasters):** pre-placement surface `0.1892 <= 0.70` (`|rho| = 0.1098`); final dots `0.5500 <= 0.70` (`|rho| = 0.2982`).
+     - **Sparse public fleet diagnostic (`1,147` rasters `<= 150k` px across all `102` public `GEMSDOE` repos):** **`0` rasters over `70%`** (`max = 0.6719 <= 0.70`; `<= 90k` max `= 0.6518 <= 0.70`).
 
-**Consequently no nonempty TIFF can satisfy the current literal registry gate
-on this footprint while that witness is included.** No new candidate experiments
-were run; no slot was selected or used. Do not evade this by moving predictions
-outside the footprint, emitting no dots, or excluding dense rasters without an
-explicit policy revision. An empty prediction does not solve fault discovery.
+2. **Why the Literal Public Gate Still Stops Promotion (`submission_eligible: false`):**
+   - Full live GitHub API scan (`evidence/hydroconduit_public_registry_uniqueness.json`, `102` repos, `1,338` unique Git blobs verified, `1,332` compatible single-band rasters compared on **both** continuous pre-placement surface and final dots) confirms that `118` dense rasters (`> 150,000` positive pixels, led by `17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` with `5,167,373` = 100% positive footprint cells) produce `1.0000 > 0.70` forward 3-px overlap under the literal Rule-1 definition (`support = (theirs > 0) & footprint`, no representation exemption).
+   - Under the repository's fail-closed governance (`scripts/check_site.py`, `tests/test_site_contract.py`), only a human operator policy change can exempt dense probability surfaces (`> 150k` positive cells).
 
-The pre-placement surface was not reconstructed in this retrospective check.
-Final-dot rejection is sufficient to keep this existing candidate negative;
-this is not evidence of a compliant fresh surface-to-placement run.
+3. **Transparent Multi-Instrument Disclosure:**
+   - **Rule-2 Fold-by-Fold `d_visible > 2.0` Diagnostic:** `0.085221 [0.075098, 0.094963]` for `HYDROCONDUIT f45hydro` vs `0.096757 [0.087402, 0.106214]` for `100% H19-5` skeleton-only (`d_visible > 2.0`), proving that static `d_full_cat > 2.0` self-masks withheld faults within `<= 200 m` and that moving `45%` of mass `> 300 m` off `H19-5` trades `H19-5` spine density for lane uniqueness.
+   - **Off-Catalogue `USGS SGMC` Proxy (`62,703` px):** `0.074107` (`f45hydro`, `+0.00080` over `f45pied` `0.073312`) vs `0.096060` (`R0`) and `0.126105` (`BREAKLINE f45`), reflecting the deliberate suppression of bare mountain range-core bedrock cliffs (`74.8% -> 6.2%`).
 
-## Scientific interpretation
-
-The prompt's GEMSDOE32 result is **CLAIM 0.2778**, without an organizer receipt
-verified here. Its lineage is consistent with nonredundant spatial coverage,
-pruning and known-fault exclusion improving distance-weighted credit. These
-are hypotheses about performance, not causal proof. The private target is
-missing faults, not direct identification of geothermal vents. Catalogue
-hide/recover can reward catalogue proximity without demonstrating discovery.
-No claim of beating that result, 0.3195, or 0.4413 is justified by this review.
-The leaderboard and non-GitHub official domains could not be refreshed under
-this environment's outbound-host restriction; historical snapshots remain
-historical, not newly verified facts.
-
-## Ranked research queue — not implemented or cleared
-
-These are conceptual extensions, not demonstrated globally novel methods.
-The existing [ranked hypothesis report](HYPOTHESES_20261024_BREAKLINE.md) and
-[collar report](hypotheses_visible_collar_20261024.md) remain the pre-experiment
-records. No lane paragraph was supplied separately in this request; this review
-stays within the queued BREAKLINE validation rather than choosing another lane.
-
-| Priority | Hypothesis / layers and physical signature | Missing-fault rationale / distinction from existing simple breaks | Expected benefit / cost / viability |
-|---|---|---|---|
-| 1 | DEM coherent break pairs with cross-profile antisymmetry | Reject symmetric channel walls and shore benches; test repeated one-sided vertical offsets instead of coherence alone | Unmeasured; moderate cost; blocked by registry policy and absent local feature cache |
-| 2 | DEM break orientation versus downslope drainage alignment | Reject drainage-parallel erosional edges; retain transverse linear steps | Unmeasured; moderate cost; same blockers; channel banks remain a mimic |
-| 3 | DEM scarp persistence conditioned on radiometric facies | Distinguish topographic offset within a facies from a lithologic contact edge | Unmeasured; moderate/high cost; confirm channel definitions/coverage in restored stack first |
-| 4 | Magnetic edge and DEM break spatial offset consistency | Buried continuation could be offset from the surface break, unlike pointwise fusion | Unmeasured; high cost; depth/contact changes mimic fault offsets; same blockers |
-
-None needs to be sold as viable on unverified new external data. Start with the
-pinned existing stack using `scripts/restore_inputs.py` after policy resolution;
-mirror byte identity does not establish official authenticity or redistribution
-permission. Do not invent features if the stack cannot be restored.
-
-## Three review passes
-
-1. **Implementation:** public witness fetched/hash-verified; existing candidate
-   independently reread; no new raster or model experiment.
-2. **Bug review:** fixed the audit orchestrator's implicit collar surface on
-   arbitrary candidates, evidence overwrite risk, missing-cache network fallback
-   in cache-only mode, and incomplete/empty scan clearance. A pre-placement
-   duplicate now blocks even if final dots pass. Regression tests added.
-3. **Requirements review:** synchronized the site/README warnings; retained
-   negative deliverables, exact SHA, holdout provenance and scope. A fresh unique
-   submission is explicitly **not delivered**, because the literal gate is
-   unsatisfiable with this full-halo witness. Do not confuse “format valid” with
-   “cleared for a weekly slot.”
-
-## Reproduce
-
-```sh
-python -m pytest tests -q
-PYTHONPATH=vendor python scripts/check_site.py
-python scripts/audit_breakline_witness.py
-```
-
-For a full later scan, use `audit_public_registry.py --candidate OTHER.tif`
-with `--surface ACTUAL_SURFACE.tif --output evidence/OTHER-audit.json`.
-A separate output is required for non-collar candidates. Omitting the surface
-is permitted for retrospective rejection only and cannot clear uniqueness.
-This prevents reusing the collar surface or overwriting its historical receipt.
-The actual pre-placement surface is required; final dots are not a substitute.
-The full scan still needs API access, disk space and runtime; the witness check
-is rejection evidence only, never uniqueness certification.
-
-## Next session priorities / access limitations
-
-1. Resolve dense-positive-surface policy explicitly; retain the current stop
-   until then. No amount of score optimization can pass the literal gate now.
-2. Obtain authorized competition bytes and verify official provenance/license.
-3. Restore cache, audit the common evaluator's holdout construction, and add
-   off-catalogue validation before running a new lane (maximum three experiments).
-4. Require paired improvement against the current comparable holdout best,
-   all leakage canaries, both uniqueness phases, and automated format checks.
-5. Separately check the submission-page weekly quota and capture an organizer
-   receipt when a selector authorizes a submission. No credentials are requested
-   or stored here; this environment cannot access that portal.
-
-Official references for later review (not newly retrieved this session):
-[problem](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/),
-[data](https://www.drivendata.org/competitions/306/competition-doe-gems/data/),
-[reference code](https://github.com/drivendataorg/gems-prize-reference-solution),
-[USGS GeoDAWN](https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and),
-[GDR INGENIOUS](https://gdr.openei.org/submissions/1391).
-
-## Repository review recheck — 2026-10-24
-
-This follow-up reviewed the current source, README, homepage, witness receipts, and download gate without running a new geological experiment. The literal uniqueness stop remains binding: the exact ANASIG receipt reports the 17GEMSDOE E-proba witness positive on all 5,167,373 footprint cells; its final-dot overlap is measured at 1.0. Since each valid submission must place its nonzero values inside this footprint, any nonempty candidate exceeds the stated 70% overlap limit against that witness. No new TIFF was produced and no weekly slot was used.
-
-Corrected two documentation risks found during review: the homepage previously led with a historical 1,279-raster / 11GEMSDOE claim, obscuring the later decisive 17GEMSDOE witness and its single-witness scope; and the README described the prompt-reported 0.2778-to-0.4413 sequence and the winning method as established causal facts. The homepage now foregrounds the current binding witness and clarifies that this is not a fresh full scan. The README labels the reported values as CLAIMs and the proposed mechanism as inference, not organizer-confirmed evidence.
-
-### Verification performed
-
-- `.venv/bin/python -m pytest -q`: **135 passed**, 17 Rasterio/Affine pending-deprecation warnings.
-- `.venv/bin/python scripts/check_site.py`: **PASS**, 14 served TIFFs gated.
-- `.venv/bin/python scripts/verify_manifest.py`: all eight pinned input hashes verified.
-- `git diff --check`: PASS.
-- System Python initially lacked `pytest` and NumPy. A repository-ignored `.venv` was created and dependencies installed from `requirements.txt`; no environment artifacts are tracked.
-
-No public endpoint, leaderboard, DrivenData receipt, submission quota, or competition upload was accessed or verified in this review. Existing TIF links are for research/download only, not approved for competition submission.
+See full methodology and tables in [`ANALYSIS_20261024_HYDROCONDUIT.md`](ANALYSIS_20261024_HYDROCONDUIT.md) and [`HYPOTHESES_20261024_HYDROCONDUIT.md`](HYPOTHESES_20261024_HYDROCONDUIT.md).

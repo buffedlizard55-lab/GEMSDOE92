@@ -96,12 +96,43 @@ def test_public_registry_receipt_is_valid_json_and_records_stop():
 def test_legacy_submission_page_redirect_does_not_claim_breakline_is_primary():
     """Aliases must describe the same current primary and warning as the canonical guide."""
     canonical = (DOCS / "SUBMIT.html").read_text(encoding="utf-8")
+    assert "HYDROCONDUIT" in canonical
     for name in ("executive-summary.html", "submit.html"):
         page = (DOCS / name).read_text(encoding="utf-8")
-        assert "ANASIG" in page
+        assert "HYDROCONDUIT" in page
         assert "NOT CLEARED" in page
         assert "Current primary: BREAKLINE" not in page
-        assert "SUBMIT.html" in page and "ANASIG" in canonical
+        assert "SUBMIT.html" in page
+
+
+def test_hydroconduit_run_card_and_public_scan_integrity():
+    """Protocol Rule 5 run card and live public scan must match served primary bytes."""
+    import hashlib
+
+    card = json.loads((ROOT / "evidence" / "hydroconduit_run_card.json").read_text(encoding="utf-8"))
+    for key in (
+        "hypothesis",
+        "mechanism",
+        "named_non_fault_process_that_could_mimic_it",
+        "holdout_dti",
+        "correlation_overlap_vs_registry",
+        "raster_sha256",
+        "validator",
+        "submission_name",
+        "note",
+        "verdict",
+    ):
+        assert key in card, f"missing run-card key: {key}"
+
+    primary = DOCS / "downloads" / card["file"]
+    assert primary.is_file()
+    assert hashlib.sha256(primary.read_bytes()).hexdigest() == card["raster_sha256"]
+    assert len(card["note"]) <= 140
+    assert card["leakage_canary_max_symmetric_auc"] <= 0.90
+    assert card["correlation_overlap_vs_registry"]["local"]["literal_duplicate"] is False
+    assert card["holdout_dti"]["dti"] > card["holdout_dti"]["holdout_best_prior_RELIEFp10_dti"]
+    assert card["verdict"] == "negative"
+    assert card["submission_eligible"] is False
 
 
 def test_submit_page_exists():
