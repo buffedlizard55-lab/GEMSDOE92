@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-24",
+  "axis": "MASS",
+  "status": "BLOCKED_NO_VARIANTS",
+  "git_sha": "8c3dd43be7b5c05b6bbdeea1218a3add29d6c5ee",
+  "seed": 0,
+  "manifest_hashes": "8/8 PASS",
+  "rebuilt_sha256": {
+    "zeros": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "nan": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd"
+  },
+  "n_dots": 37654,
+  "dots_lt3px": 1611,
+  "catalogue_mass": 0,
+  "blockers": [
+    "Parent ranking absent; binary H19-5 cannot rank dots.",
+    "R0 violates non-PRUNE >=3px exclusion."
+  ]
+}
