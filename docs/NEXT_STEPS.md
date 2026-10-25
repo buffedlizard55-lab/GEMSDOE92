@@ -14,10 +14,16 @@
 2. Built 3 experiments. Best arm `dual40`: **HOLDOUT-DTI `0.004653 [0.003955, 0.005390]`** (`gems57-pooled-hide-v2`, 22,663 withheld positives). Locally unique (0.4000). Canaries max 0.553140. Verdict **negative**. File `h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif`. **OK TO DOWNLOAD; DO NOT SUBMIT.**
 3. Lag ablation (`nophase` 0.003487) ≈ standalone (0.003492): transverse lag is not load-bearing on catalogue hide-and-recover. Do not retry this lane without a new instrument (Rule-2 d_visible>2.0 already reported as not beating holdout-best).
 
+## Completed in parallel (`EULERFUSE`)
+
+1. Pre-registered four ranked hypotheses in `docs/HYPOTHESES_20261024_EULERFUSE.md`, implemented only Rank 1, and consumed exactly the frozen `joint`, `gravity`, and `joint45` 3/3 experiment budget.
+2. Best arm `gravity`: strict draw-blind **HOLDOUT-DTI** `0.110387 [0.097279,0.123179]` (`gems57-pooled-hide-v2`, 22,663 withheld positives), below fresh base control `0.113316 [0.101071,0.126266]`; paired delta `-0.002929 [-0.006700,0.000763]`. All 36 canaries pass (max symmetric AUC `0.662808`).
+3. Exact TIF `docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif` is byte-unique in its pre-publication scan and passes 11/11 format gates, but literal public overlap is `1.000`. Verdict **negative**, `submission_eligible=false`, zero weekly slots. Do not retry EULER parameters; this lane is closed.
+
 ## Still open (unchanged)
 
 1. Human selector: dense-witness policy + first ORGANIZER-CONFIRMED receipt.
-2. Queued physics: `EULER-N0`, `RADIO-CONTACT`. `DRAINAGE-KNICK` held (Band 12 is detrended). `INSAR-3DEP1M` blocked by sandbox network.
+2. Queued physics: `RADIO-CONTACT`; `DRAINAGE-KNICK` is the preferred genuinely new lane if official higher-resolution 3DEP availability can be verified first. `INSAR-3DEP1M` remains blocked by sandbox network.
 
 ---
 
@@ -51,7 +57,7 @@ See the [three-pass Arena repository review](REVIEW_20261024_ARENA.md) and its [
    - Formalize whether dense continuous/habitat rasters (`> 90,000` positive pixels, such as `17GEMSDOE E-proba-multiscale` at `5,167,373` pixels) are excluded from the sparse competition-budget uniqueness pool.
    - Under a `<= 90,000`-px sparse uniqueness pool, `COULOMBLOQO dual45` (`0.009107` static / `0.1020` `d_vis>2` / `0.0941` `SGMC`, `0 / 1,121` `> 70%`) is ready for human selector evaluation alongside one `ORGANIZER-CONFIRMED` calibration receipt on `R0`.
 2. **Next Untried Physics Lanes (Pre-Registered Queue in `docs/HYPOTHESES_20261024_COULOMBLOQO.md`):**
-   - **Hypothesis 3 (`EULER-RTP-GRAV-N0`):** Moving-window 3D contact Euler deconvolution ($N = 0$, Reid et al., 1990) jointly over `Bands 2, 9, 14` (RTP/TMI) and `Bands 5, 11, 13, 18` (isostatic gravity & E–W horizontal gradient) to estimate exact subcrop $(x_0, y_0, z_0)$ coordinates of concealed faults beneath `50–1,200 m` of basin fill without relying on surface DEM slope.
+   - **Hypothesis 3 (`EULER-RTP-GRAV-N0`) is now CLOSED NEGATIVE:** implemented as `EULERFUSE` on Bands 2/13/15; best strict draw-blind HOLDOUT-DTI `0.110387` lost to its fresh `0.113316` control, and all three frozen arms are spent. Do not repeat as a parameter sweep.
    - **Hypothesis 4 (`DRAINAGE-KNICK-RADON`):** Cross-canyon thalweg longitudinal convexity & deflected-drainage Radon line-integral alignment across parallel range-front canyons (`Bands 12, 19, 15, 7`) to detect degraded Pleistocene range-front faults where interfluve scarps have diffused away.
    - **Hypothesis 5 (`INSAR-3DEP1M-DECONFOUNDED`, Contingent on External Tile Staging):** If an operator with unrestricted outbound network access stages ASF ARIA/OPERA Sentinel-1 InSAR velocity tiles and USGS 3DEP 1 m LiDAR tiles into `.cache/gems_inputs/external/`, test pumping-deconfounded creep/subsidence phase-gradient steps (`> 2 km` from `GDR #1391` production wells).
 3. **Do Not Repeat Closed / Falsified Lanes:**

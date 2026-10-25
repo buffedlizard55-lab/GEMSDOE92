@@ -69,10 +69,16 @@ jobs:
           python - <<'PY'
           import hashlib, json, pathlib, re, sys
           html = pathlib.Path("docs/index.html").read_text(encoding="utf-8")
-          m = re.search(r'href="(downloads/[^"]+-zeros\.tif)"', html)
-          if not m:
-              sys.exit("index.html offers no -zeros.tif primary download")
-          primary = pathlib.Path("docs") / m.group(1)
+          explicit = [
+              m.group(1) or m.group(2)
+              for m in re.finditer(
+                  r'<a\b[^>]*?(?:href="(downloads/[^"]+-zeros\.tif)"[^>]*?\bdata-primary="true"|\bdata-primary="true"[^>]*?href="(downloads/[^"]+-zeros\.tif)")[^>]*>',
+                  html,
+              )
+          ]
+          if len(explicit) != 1:
+              sys.exit(f"index.html must declare exactly one data-primary=true download; got {explicit}")
+          primary = pathlib.Path("docs") / explicit[0]
           if not primary.is_file():
               sys.exit(f"index.html points at {primary}, which does not exist")
           # the receipt is named after the variant, not the encoding twin:

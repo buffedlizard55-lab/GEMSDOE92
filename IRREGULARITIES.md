@@ -1,5 +1,29 @@
 # IRREGULARITIES — only items that change a decision
 
+## 2026-10-24 — Literal dense-raster overlap creates a binding but representation-mismatched stop
+- **Observation**: The required registry rule treats every positive raster cell as a “dot.” A valid public continuous probability raster, `17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif`, is positive on all `5,167,373` footprint cells. Consequently every EULERFUSE dot lies within 3 pixels of that raster's positive support: forward overlap `1.000` at both pre-placement and final phases, despite low rank association (`|rho|=0.451197` for the continuous gravity surface and `0.289024` for the final binary TIF) and zero exact SHA matches.
+- **Impact**: The candidate fails the user's explicit `>0.70` duplicate rule and is ineligible, even though the witness is dense rather than a comparable dot submission.
+- **Decision**: Do not reinterpret, waive, or tune around the literal rule. Record the semantic mismatch for future protocol design, but mark EULERFUSE `negative` and `submission_eligible=false`.
+- **Action**: Exact witness and metrics are preserved in `evidence/eulerfuse_public_registry.json` and the final run card.
+
+## 2026-10-24 — Public scan completeness flag is false because one public TIFF is invalid
+- **Observation**: GitHub trees completed with zero API errors/truncations and all `1,384` unique TIFF blobs were downloaded from 102 public owner repositories, but one blob could not be opened as a raster. The audit therefore conservatively reports `complete_accessible_scan=false`; `1,378` valid one-band exact-grid rasters were compared.
+- **Impact**: “Complete” cannot be claimed literally. The invalid file cannot negate the already-observed binding dense-raster witness.
+- **Decision**: Preserve the false completeness flag and distinguish complete tree/blob acquisition from valid-raster comparability.
+- **Action**: Recorded without weakening the ineligibility decision.
+
+## 2026-10-24 — New TIF is format-valid but scientific and registry gates are independent
+- **Observation**: `gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif` passes all 11 exact-file format gates, including finite `[0,1]` values, exact grid/CRS/transform, and zero outside-footprint/catalogue mass. It nevertheless loses to the fresh base control on strict draw-blind HOLDOUT-DTI and fails literal public overlap.
+- **Impact**: Calling it simply “valid” could induce an unsafe upload.
+- **Decision**: Use two explicit statuses everywhere: “OK TO DOWNLOAD FOR RESEARCH / FORMAT-VALID” and “DO NOT SUBMIT / `submission_eligible=false`.”
+- **Action**: Added the decision to the audit, run card, README, workbench, executive summary, and submission guide.
+
+## 2026-10-24 — No organizer receipt authenticates the claimed `GEMSDOE32` 0.2778
+- **Observation**: The checked GEMSDOE32 source page states that its primary artifacts lack an organizer score; no authenticated DrivenData receipt was available in this environment. The owner-supplied `0.2778` may be real, but cannot be independently promoted to an organizer-confirmed result here.
+- **Impact**: Projections, owner claims, and local holdouts must not be reported as organizer scores.
+- **Decision**: Label `0.2778` as an owner-provided claim; provide a metric/lineage explanation only. Label all new measurements as HOLDOUT-DTI or PROXY DTI.
+- **Action**: Documented in `docs/ANALYSIS_20261024_EULERFUSE.md` and the refreshed public pages.
+
 ## 2026-10-23 — Parent distance vs new hard constraint
 - **Observation**: Parent R0 h33-h33-2-b2 has min distance to catalogue 2.236px (Euclidean), with 0 dots <=2px but 2171 dots <=3px. New hard constraint says "keep >=3 px from them unless AXIS=PRUNE".
 - **Impact**: If interpreted as Euclidean >=3, parent violates new rule. If interpreted as >2px (none within 2px), parent passes.
@@ -24,7 +48,7 @@
 - **Decision**: Leave blank, ask human to fill.
 - **Action**: Logged.
 
-No other irregularities that change a decision this session.
+No other irregularities changed the 2026-10-23 decision.
 
 ---
 

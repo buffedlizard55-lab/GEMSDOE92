@@ -41,6 +41,13 @@
   </ul>
 </section>
 
+<section class="download-card">
+  <h2>Parallel EULERFUSE Closeout: Exact Download and Decision</h2>
+  <p><a class="btn" href="downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif" download>⬇ Download <code>EULERFUSE gravity</code> TIF</a> · <a href="downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.zip">ZIP</a> · <a href="downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros-audit.json">audit</a> · <a href="downloads/eulerfuse_run_card.json">run card</a> · <a href="ANALYSIS_20261024_EULERFUSE.md">analysis</a>.</p>
+  <p><strong>✅ OK TO DOWNLOAD FOR RESEARCH; ⛔ DO NOT SUBMIT.</strong> Exact SHA-256: <code>5820e882512843a334f4497ed7f294af937339f729e4eeeecdc33d9cdafeeab9</code>. The independently generated single-band file passes <code>11/11</code> format gates with finite <code>[0,1]</code> values. Strict draw-blind <strong>HOLDOUT-DTI</strong> is <code>0.110387 [0.097279,0.123179]</code> (<code>gems57-pooled-hide-v2</code>, <code>22,663</code> withheld positives), below fresh control <code>0.113316 [0.101071,0.126266]</code>; literal public overlap is <code>1.000</code>. Name: <code>GEMSDOE92-EULERFUSE-gravity-20261024</code>. Record-only form note (80/140): <code>EULERFUSE gravity: 37654 LOQO Euler-contact dots; HOLDOUT-DTI 0.110387; negative</code>. Verdict <code>negative</code>; <code>submission_eligible: false</code>; zero slots used.</p>
+  <p>Official/manual-review sources: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Competition #306</a> · <a href="https://github.com/drivendataorg/gems-prize-reference-solution">reference solution</a> · <a href="https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7">USGS GeoDAWN</a> · <a href="https://gdr.openei.org/submissions/1391">DOE GDR #1391</a>.</p>
+</section>
+
 <section>
   <h2>2. Forensic Answer: Why <code>GEMSDOE32</code> (<code>0.2778</code> <code>[CLAIM]</code>) Beat All Listed Sites</h2>
   <p>The shared local Distance-Weighted Tversky Index uses false-positive and false-negative coefficients <code>0.2</code> and <code>0.8</code>, respectively, and a triangular distance kernel. The <a href="https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/unet-mc-cv-reference-solution.ipynb">official reference notebook</a> confirms those coefficients for its training loss; it does not implement the organizer's distance-weighted evaluator. Nearby dots can be redundant under kernel maxima, but spacing below <code>2.8 px</code> does not guarantee zero marginal truth credit. The recorded local pixel audit establishes the following lineage, not a causal explanation of an organizer score:</p>

@@ -46,6 +46,13 @@ def test_complete_receipt_cannot_hide_a_bad_gate(mutation):
     assert problems
 
 
+def test_ci_primary_receipt_gate_uses_explicit_primary_marker():
+    workflow = (ROOT / '.github/workflows/ci.yml').read_text()
+    assert 'data-primary="true"' in workflow
+    assert 'must declare exactly one data-primary=true download' in workflow
+    assert 'm = re.search' not in workflow
+
+
 def test_pages_stages_public_files_without_breaking_existing_docs_urls():
     workflow = (ROOT / '.github/workflows/pages.yml').read_text()
     assert workflow.index('python scripts/check_site.py') < workflow.index('cp -R docs')

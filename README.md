@@ -2,6 +2,8 @@
 
 **Latest session review:** [Three-pass findings and ranked conditional hypotheses](docs/REVIEW_918B947A.md) · [fresh run card](docs/downloads/review_918b947a_run_card.json). Subsequent `COULOMBDM` (and parallel `XPHASE`) work generated unique research TIFFs that are **OK TO DOWNLOAD** and **DO NOT SUBMIT**. The literal overlap rule remains unsatisfiable for weekly-slot clearance because a pinned registry raster covers the entire footprint. The operational user brief is retained below and in `SESSION_PROMPT.md`; read both at session start. Maximize P(Win) and Own the Outcome mean preserving negative evidence, not fabricating submission clearance.
 
+> ### Parallel lane closeout — `EULERFUSE gravity`: ✅ OK TO DOWNLOAD FOR RESEARCH; ⛔ DO NOT SUBMIT
+> [Exact GeoTIFF](docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif) · [one-TIFF ZIP](docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.zip) · [audit](docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros-audit.json) · [run card](docs/downloads/eulerfuse_run_card.json) · [public scan](docs/downloads/eulerfuse_public_registry.json) · [analysis](docs/ANALYSIS_20261024_EULERFUSE.md). Exact TIF SHA-256: `5820e882512843a334f4497ed7f294af937339f729e4eeeecdc33d9cdafeeab9`; no exact SHA match in the pre-publication scan of `1,378` exact-grid rasters; `11/11` format gates PASS with all values finite in `[0,1]`. Strict draw-blind **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, `22,663` withheld positives) is `0.110387 [0.097279, 0.123179]`, below fresh control `0.113316 [0.101071, 0.126266]`; paired delta `-0.002929 [-0.006700, 0.000763]`. Literal public overlap is `1.000 > 0.70`. Name: `GEMSDOE92-EULERFUSE-gravity-20261024`; 80/140-character record-only note: `EULERFUSE gravity: 37654 LOQO Euler-contact dots; HOLDOUT-DTI 0.110387; negative`. Verdict `negative`; `submission_eligible: false`; 3/3 experiments and 0 weekly slots.
 
 > ### ✅ DOWNLOAD STATUS: **FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH**
 > ### ⛔ SUBMISSION / WEEKLY SLOT STATUS: **DO NOT SUBMIT — NOT CLEARED (`verdict: "negative"`, `submission_eligible: false`; literal public dense-witness stop)**
@@ -20,7 +22,7 @@
 
 ## Prior/parallel candidate summary & full technical reference
 
-Among earlier historical baselines, repository holdout-best remains `COULOMBLOQO standalone` (`h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif`, `0.009220 [0.007983, 0.010493]`). `APRONRIDGE free1d` (`h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`) recorded `0.008354 [0.006823, 0.010135]` while the higher documented HYDROCONDUIT hybrid is `HYDROCONDUIT f45hydro` (`h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif`) at `0.008549 [0.007626, 0.009487]`; merged parallel lanes recorded `COULOMBDM s45coulomb55` (`0.007816 [0.006994, 0.008644]` static; zero-label `coulomb1d` `0.094496` Rule-2 `d_vis > 2.0`), `GEOTENSION free1d` (`0.007615 [0.005832, 0.009386]`), `PIEDFRONT f35Ptop` (`GEMSDOE92-PIEDFRONT-f35Ptop-20261024`, `h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif`, SHA-256 `e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8`, `0.006425`), `COULOMB seismo` (`0.005808 [0.004846, 0.006809]`), `XPHASE dual40` (`h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif`, `0.004653 [0.003955, 0.005390]`), `BASEMENTEDGE step3` (`0.000000`), and `MICROSWARM short` (`0.000000`) — all `verdict: "negative"`, `submission_eligible: false`.
+Among earlier historical baselines, repository holdout-best remains `COULOMBLOQO standalone` (`h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif`, `0.009220 [0.007983, 0.010493]`). `APRONRIDGE free1d` (`h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`) recorded `0.008354 [0.006823, 0.010135]` while the higher documented HYDROCONDUIT hybrid is `HYDROCONDUIT f45hydro` (`h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif`) at `0.008549 [0.007626, 0.009487]`; merged parallel lanes recorded `COULOMBDM s45coulomb55` (`0.007816 [0.006994, 0.008644]` static; zero-label `coulomb1d` `0.094496` Rule-2 `d_vis > 2.0`), `GEOTENSION free1d` (`0.007615 [0.005832, 0.009386]`), `PIEDFRONT f35Ptop` (`GEMSDOE92-PIEDFRONT-f35Ptop-20261024`, `h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif`, SHA-256 `e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8`, `0.006425`), `COULOMB seismo` (`0.005808 [0.004846, 0.006809]`), `XPHASE dual40` (`h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif`, `0.004653 [0.003955, 0.005390]`), `EULERFUSE gravity` (strict draw-blind `0.110387 [0.097279, 0.123179]`, below its fresh `0.113316` control), `BASEMENTEDGE step3` (`0.000000`), and `MICROSWARM short` (`0.000000`) — all `verdict: "negative"`, `submission_eligible: false`.
 
 ---
 
@@ -87,6 +89,24 @@ Full mathematical derivation: [`docs/ANALYSIS_20261024_COULOMBLOQO.md`](docs/ANA
 ---
 
 ## Reproducible Pipeline (Zero Manual Steps)
+
+`EULERFUSE` closeout (use a clean/scratch checkout because the builder refuses to overwrite pinned bytes):
+
+```bash
+.venv/bin/python scripts/restore_inputs.py && .venv/bin/python scripts/verify_manifest.py
+PYTHONPATH=vendor .venv/bin/python scripts/screen_eulerfuse.py
+PYTHONPATH=vendor .venv/bin/python scripts/evaluate_eulerfuse.py
+PYTHONPATH=vendor .venv/bin/python scripts/build_eulerfuse_submission.py
+PYTHONPATH=vendor .venv/bin/python scripts/audit_public_registry.py \
+  --candidate docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif \
+  --surface .cache/eulerfuse_surfaces/EULERFUSE-gravity-surface-20261024.tif \
+  --output evidence/eulerfuse_public_registry.json
+PYTHONPATH=vendor .venv/bin/python scripts/finalize_eulerfuse.py
+```
+
+The finalizer validates source-receipt agreement and writes the negative run card without human input. The stored registry scan predates publication of these bytes; a later self-match must not be misrepresented as evidence that the file copied a prior submission.
+
+Current/prior holdout-best pipeline:
 
 ```bash
 # 1. Restore & SHA-256-verify all 12 competition/external inputs into gitignored .cache/gems_inputs/

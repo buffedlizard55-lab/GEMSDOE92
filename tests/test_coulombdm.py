@@ -223,4 +223,3 @@ def test_coulombdm_served_deliverables_gates_zip_and_run_card():
             assert np.isfinite(arr).all()
             assert float(arr.min()) >= 0.0 and float(arr.max()) <= 1.0
             assert int((arr > 0).sum()) == 37654
-

@@ -1,4 +1,4 @@
-# Current Repository & Gate Review — `GEMSDOE92` (`2026-10-24`, `COULOMBDM s45coulomb55` Research Download)
+# Current Repository & Gate Review — `GEMSDOE92` (`2026-10-24`, `COULOMBDM s45coulomb55` Current Download; `EULERFUSE` Parallel Closeout)
 
 **OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT.** Subsequent to [session 918b947a](REVIEW_918B947A.md) ([run card](downloads/review_918b947a_run_card.json)), merged sessions generated unique `COULOMBDM` and `XPHASE` research TIFFs. The universal dense-witness overlap stop still bars weekly-slot clearance. No current organizer score is claimed.
 
@@ -21,6 +21,21 @@
   - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): **`0.004653 [0.003955, 0.005390]`** vs R0 `0.004006` (paired Δ CI includes 0). Below holdout-best `COULOMB-LOQO` `0.009220`.
   - **Download:** ✅ OK TO DOWNLOAD FOR RESEARCH (10/10 format gates). **Weekly slot:** ⛔ DO NOT SUBMIT (`verdict: negative`, dense witness overlap 1.000).
   - Run card: `evidence/xphase_run_card.json`. Analysis: `docs/ANALYSIS_20261024_XPHASE.md`. Hypotheses: `docs/HYPOTHESES_20261024_XPHASE.md`.
+
+## 0C. Parallel completed lane (`EULERFUSE`)
+
+- **Research GeoTIFF:** `docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif`
+  - **SHA-256:** `5820e882512843a334f4497ed7f294af937339f729e4eeeecdc33d9cdafeeab9`; pre-publication exact SHA matches: `0` among 1,378 exact-grid public rasters.
+  - **Name / note:** `GEMSDOE92-EULERFUSE-gravity-20261024` / `EULERFUSE gravity: 37654 LOQO Euler-contact dots; HOLDOUT-DTI 0.110387; negative` (80/140 characters).
+  - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): strict draw-blind `0.110387 [0.097279,0.123179]`, below fresh base `0.113316 [0.101071,0.126266]`; paired delta `-0.002929 [-0.006700,0.000763]`.
+  - **Download:** ✅ OK TO DOWNLOAD FOR RESEARCH (`11/11` format gates, finite `[0,1]`). **Weekly slot:** ⛔ DO NOT SUBMIT (`verdict: negative`; `submission_eligible=false`; literal public overlap `1.000`; 3/3 experiments and 0 weekly slots).
+  - Run card: `evidence/eulerfuse_run_card.json`. Analysis: `docs/ANALYSIS_20261024_EULERFUSE.md`. Hypotheses: `docs/HYPOTHESES_20261024_EULERFUSE.md`.
+
+### EULERFUSE cumulative passes
+
+1. **Implementation / verification:** froze four hypotheses before code, reused the pinned stack/shared evaluator/shared writer, tested 36 canaries, executed exactly three arms, independently reopened the emitted TIF, and ran local plus current-public representation checks.
+2. **Bug / edge review:** fixed batched solve RHS dimensions, changed the large design matrix to a memory map after an OOM, added shape/residual-scale guards, retained main's hardened explicit-primary site validator, embedded the exact validator receipt in the run card, and pinned exact SHA/one-file ZIP contracts.
+3. **Requirement recheck:** applied the user's literal dense-raster rule without exemption, synchronized all public guides, labeled every numeric outcome, recorded source-access limitations, and preserved format validity separately from eligibility. Combined post-merge verification: `278 passed` (124 non-failing Rasterio deprecation warnings), `git diff --check` PASS, and site gate PASS across all `43` served rasters.
 
 ## 1. Prior Active Primary & Automated Gate Status (`COULOMB-LOQO`, still repository holdout-best)
 

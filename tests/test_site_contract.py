@@ -415,4 +415,3 @@ def test_coulombdm_primary_contract_and_run_card():
         assert tok in exec_sum, f"missing {tok} in docs/executive-summary.html"
         assert tok in sub, f"missing {tok} in docs/SUBMIT.html"
         assert tok in readme, f"missing {tok} in README.md"
-

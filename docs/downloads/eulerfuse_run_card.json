@@ -1,0 +1,218 @@
+{
+  "schema": "gemsdoe92.run-card.v1",
+  "hypothesis": "Catalogue-missing, basin-covered normal-fault contacts can be recovered by stable structural-index N=0 Euler source locations that independently agree in reduced-to-pole magnetics and isostatic gravity and are consistent with depth to basement.",
+  "mechanism": "EULERFUSE solves local moving-window N=0 Euler equations on catalogue-free RTP and gravity fields, rasterizes stable shallow inferred source subcrops, adds the gravity solution and basement-depth consistency to a four-quadrant leave-one-quadrant-out physical classifier, and emits 37,654 spaced 1-D crest dots beyond the 2-pixel mapped-catalogue collar.",
+  "named_non_fault_process_that_could_mimic_it": "A volcanic dike, caldera ring fracture, pluton margin, or lithologic contact can produce a stable potential-field contact without young fault displacement.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "alpha": 0.2,
+    "beta": 0.8,
+    "triangular_kernel_m": 300.0,
+    "arm": "gravity",
+    "dti": 0.11038707084393232,
+    "ci95": [
+      0.09727897282816217,
+      0.12317940250220796
+    ],
+    "fresh_base_control_dti": 0.11331615405665604,
+    "fresh_base_control_ci95": [
+      0.10107079418666463,
+      0.12626611472283839
+    ],
+    "paired_delta_vs_fresh_base_control": -0.0029290832127237265,
+    "paired_delta_ci95": [
+      -0.006699793411854154,
+      0.0007633916451209124
+    ],
+    "promotion_gate_pass": false,
+    "organizer_confirmed": false
+  },
+  "leakage_canary": {
+    "evidence_class": "HOLDOUT-CANARY",
+    "features_tested": 36,
+    "threshold_symmetric_auc": 0.9,
+    "max_symmetric_auc": 0.662808,
+    "max_feature": "LOQO_base_drawblind_surface",
+    "all_pass": true
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "local_preplacement_rasters": 49,
+    "surface_worst_abs_spearman": 0.15815,
+    "preplacement_preview_worst_forward_overlap_3px": 0.620492,
+    "local_final_worst_abs_spearman": 0.057603,
+    "local_final_worst_forward_overlap_3px": 0.620492,
+    "public_repositories_scanned": 102,
+    "public_exact_grid_rasters_compared": 1378,
+    "public_surface_worst_abs_spearman": 0.45119703088036117,
+    "public_final_worst_abs_spearman": 0.28902434032427765,
+    "public_surface_worst_forward_overlap_3px": 1.0,
+    "public_final_worst_forward_overlap_3px": 1.0,
+    "exact_sha256_matches": 0,
+    "duplicate_under_literal_rule": true,
+    "binding_witness": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "binding_witness_positive_footprint_pixels": 5167373,
+    "scope_caveat": "Current public default branches and configured TIFF paths only; one invalid public TIFF made the accessible-scan completeness flag false. The dense witness alone is binding under the literal rule."
+  },
+  "raster_sha256": "5820e882512843a334f4497ed7f294af937339f729e4eeeecdc33d9cdafeeab9",
+  "zip_sha256": "784ac86499852b6068259715c4e78cb72e791c49899884c9681c168fda8d3f45",
+  "validator_output": {
+    "file": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+    "bytes": 143329,
+    "sha256": "5820e882512843a334f4497ed7f294af937339f729e4eeeecdc33d9cdafeeab9",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "emitted_positive_pixels": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37654,
+    "footprint_fraction": 0.007286874781441169
+  },
+  "validator_gates": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "5820e882512843a334f4497ed7f294af937339f729e4eeeecdc33d9cdafeeab9"
+    }
+  ],
+  "validator_all_gates_pass": true,
+  "validator_summary": {
+    "result": "PASS",
+    "validation_class": "LOCAL FORMAT/RANGE VALIDATION; NOT ORGANIZER ACCEPTANCE",
+    "single_band": true,
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "crs_shape_transform_match": true,
+    "no_nan_inside_footprint": true,
+    "no_nan_anywhere": true,
+    "no_infinity_anywhere": true,
+    "values_in_0_1": true,
+    "min": 0.0,
+    "max": 1.0,
+    "zeros_outside_footprint": true,
+    "catalogue_mass": 0,
+    "min_catalogue_distance_px": 2.23606797749979,
+    "dot_count": 37654,
+    "must_gates_passed": 11,
+    "must_gates_failed": 0
+  },
+  "submission_name": "GEMSDOE92-EULERFUSE-gravity-20261024",
+  "submission_note": "EULERFUSE gravity: 37654 LOQO Euler-contact dots; HOLDOUT-DTI 0.110387; negative",
+  "submission_note_characters": 80,
+  "primary_download": "docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+  "zip_download": "docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.zip",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "weekly_slots_used": 0,
+  "experiments_used": 3,
+  "experiment_budget": 3,
+  "verdict_detail": "Negative: the gravity arm is byte-unique and format-valid but does not beat the freshly reproduced holdout control, and both preplacement/final public scans exceed the literal 70% overlap stop because a registry probability surface is positive across the entire footprint. OK to download for research; DO NOT SUBMIT."
+}
