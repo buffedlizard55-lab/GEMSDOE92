@@ -1,0 +1,249 @@
+{
+  "schema": "gemsdoe92-chilistric-audit.v1",
+  "lane": "CHILISTRIC",
+  "arm": "adapt37k",
+  "file": "h33-h33-2-b2-CHILISTRICadapt37k-20261025-82694176-zeros.tif",
+  "sha256_zeros": "f63d75818dfed53c4c243d66db72b7ca5923227bc35fecac8f14134efba06abb",
+  "n_positive_pixels": 37654,
+  "sum_prediction_mass": 37654.0,
+  "n_dots": 37654,
+  "overall_pass": true,
+  "gates_zeros_pass": true,
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=('float32',) count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nonfinite_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0; strict distance > radius required"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "f63d75818dfed53c4c243d66db72b7ca5923227bc35fecac8f14134efba06abb"
+    }
+  ],
+  "submission_eligible": false,
+  "verdict": "negative",
+  "run_card": "evidence/chilistric_run_card.json",
+  "holdout_static_dcat2": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.012616847933760824,
+    "ci95": [
+      0.010979577201527977,
+      0.014239972161061244
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 404.7883441170986,
+    "fpw": 69359.00894624442,
+    "fnw": 22258.2116558829
+  },
+  "holdout_drawblind_dcat2": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.012654482403895002,
+    "ci95": [
+      0.01101192282785987,
+      0.014291052701663752
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 405.8110778778822,
+    "fpw": 69285.0085355798,
+    "fnw": 22257.18892212212
+  },
+  "holdout_rule2_dvis2": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.10896057204273442,
+    "ci95": [
+      0.09646741356088744,
+      0.12180037054135612
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 3532.7944289124575,
+    "fpw": 67928.63626815165,
+    "fnw": 19130.205571087543
+  },
+  "sgmc_proxy_dti": 0.096493,
+  "local_registry_uniqueness": {
+    "n_rasters_checked": 102,
+    "my_positive_pixels": 37654,
+    "worst_matched_budget_forward_overlap": 0.739975,
+    "worst_matched_budget_file": "docs/downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif",
+    "worst_literal_forward_overlap": 0.739975,
+    "worst_literal_file": "docs/downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif",
+    "worst_abs_spearman_surface": 0.122413,
+    "worst_spearman_surface_file": "docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif",
+    "worst_abs_spearman_final": 0.159339,
+    "worst_spearman_final_file": "docs/downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif",
+    "preplacement_surface_worst_top37654_overlap": 0.875312,
+    "preplacement_surface_worst_overlap_file": "docs/downloads/h33-h33-2-b2-LISTRICLOQOuncal-20261025-2962f45f-zeros.tif",
+    "local_duplicate": true,
+    "top5_by_overlap": [
+      {
+        "file": "docs/downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif",
+        "their_dots": 37654,
+        "my_dots": 37654,
+        "representation": "dot_field",
+        "literal_forward_overlap": 0.739975,
+        "matched_budget_forward_overlap": 0.739975,
+        "spearman_surface": 0.121069,
+        "spearman_final": 0.159339
+      },
+      {
+        "file": "docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif",
+        "their_dots": 37654,
+        "my_dots": 37654,
+        "representation": "dot_field",
+        "literal_forward_overlap": 0.737691,
+        "matched_budget_forward_overlap": 0.737691,
+        "spearman_surface": 0.122413,
+        "spearman_final": 0.156937
+      },
+      {
+        "file": "docs/downloads/h33-h33-2-b2-LISTRICLOQOuncal-20261025-2962f45f-zeros.tif",
+        "their_dots": 37654,
+        "my_dots": 37654,
+        "representation": "dot_field",
+        "literal_forward_overlap": 0.727014,
+        "matched_budget_forward_overlap": 0.727014,
+        "spearman_surface": 0.118358,
+        "spearman_final": 0.156061
+      },
+      {
+        "file": "docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif",
+        "their_dots": 37654,
+        "my_dots": 37654,
+        "representation": "dot_field",
+        "literal_forward_overlap": 0.598157,
+        "matched_budget_forward_overlap": 0.598157,
+        "spearman_surface": 0.116726,
+        "spearman_final": 0.095553
+      },
+      {
+        "file": "docs/downloads/h33-h33-2-b2-KNICKLOQOdual35-20261025-8eedc094-zeros.tif",
+        "their_dots": 37654,
+        "my_dots": 37654,
+        "representation": "dot_field",
+        "literal_forward_overlap": 0.586657,
+        "matched_budget_forward_overlap": 0.586657,
+        "spearman_surface": 0.111812,
+        "spearman_final": 0.076756
+      }
+    ]
+  },
+  "public_registry_uniqueness": {
+    "candidate_hash_matches_scan": true,
+    "candidate_sha256_zeros": "f63d75818dfed53c4c243d66db72b7ca5923227bc35fecac8f14134efba06abb",
+    "unique_under_literal_rule": false,
+    "unique_under_dual_reading_rule": false,
+    "stop_required": true,
+    "verdict": "duplicate (stop; do not spend a weekly submission slot)",
+    "operational_matched_budget_verdict": "duplicate",
+    "worst_operative_overlap_3px": 0.739975,
+    "worst_operative_witness": "GEMSDOE92/docs/downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif",
+    "operative_over_70pct_count": 3,
+    "literal_unweighted_worst_overlap_3px": 1.0,
+    "literal_unweighted_witness": "17GEMSDOE/outputs/submissions/20261024T175340Z_17GEMSDOE_E-proba-multiscale.tif"
+  },
+  "validator": {
+    "file": "docs/downloads/h33-h33-2-b2-CHILISTRICadapt37k-20261025-82694176-zeros.tif",
+    "bytes": 149637,
+    "sha256": "f63d75818dfed53c4c243d66db72b7ca5923227bc35fecac8f14134efba06abb",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "emitted_positive_pixels": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37654,
+    "footprint_fraction": 0.007286874781441169
+  }
+}

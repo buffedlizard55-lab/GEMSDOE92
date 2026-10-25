@@ -1,3 +1,17 @@
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`CHILISTRIC` Merge Integration)
+
+- **Completed in `CHILISTRIC` (`arena/2d4c152c-gemsdoe92`, `3 / 3` experiments, `0` weekly slots spent):**
+  1. Pre-registered 5 ranked geological hypotheses (`docs/HYPOTHESES_20261025_CHILISTRIC.md`), implemented zero-catalogue `gems/chilistric.py` (`44/44` Rule-4 leakage canaries PASS, `max symmetric AUC = 0.617275 <= 0.90`), and executed `scripts/run_chilistric.py` (`evidence/chilistric_run_card.json`, `docs/ANALYSIS_20261025_CHILISTRIC.md`, `docs/REVIEW_20261025_CHILISTRIC.md`).
+  2. **Primary `CHILISTRIC addtail52k`** (`docs/downloads/h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.tif`, SHA-256 `75fcc743420f817d841b9f822e82bf4e63c850ede29e0e2d75e54b26603acf50`, `52,000` crests = `37,654 @ 1.0` + `14,346 @ 0.65`, `11/11` format gates PASS):
+     - **Strict Draw-Blind OOF `d_cat > 2.0` `HOLDOUT-DTI` (`#1 ALL-TIME in GEMSDOE92`)**: **`0.013208 [0.011537, 0.014860]`** (beats `LISTRICLOQO standalone` `0.013064`/`0.013158` and `selectcal` `0.012952`/`0.013054`).
+     - **Static `d_cat > 2.0` `HOLDOUT-DTI`**: **`0.013174 [0.011583, 0.014730]`** (paired `+0.000968 [+0.000146, +0.001793]` vs `no10m_fixed`; `+0.000557 [+0.000253, +0.000869]` vs `adapt37k`; `+0.002386 [+0.001304, +0.003310]` vs `KNICKLOQO`; statistically tied with `LISTRICLOQO selectcal` `0.013295`).
+     - **Off-Catalogue `USGS SGMC` (`d_cat > 3.0`) `PROXY` DTI**: **`0.113149`** (`#1` among `<= 60k`-px dual-reading-unique zero-catalogue lanes; `+9.4%` vs `LISTRICLOQO selectcal` `0.103442`, `+17.3%` vs `adapt37k` `0.096493`).
+     - **Post-Merge Local (`124` Served Rasters) & `102`-Repo Public (`1,503` Rasters) Operational Uniqueness**: **`0 / 124 > 0.70` locally** (`max = 0.677269 <= 0.70` vs `RIEDELVALVE riedel_n90k`) and **`0 / 1,503 > 0.70` across `102` public repos** (`max = 0.635115 <= 0.70`); fail-closed `verdict = "negative"`, `submission_eligible = false` under binding literal `17GEMSDOE` dense witness (`1.0000 > 0.70`).
+  3. Caught and fixed eight fabricated SHA-256 hashes and three wrong band numbers in `docs/ANALYSIS_20261025_LISTRICLOQO.md` plus pixel/algebra defects in `docs/ANALYSIS_20261025_VENTSCARP.md` (`IRREGULARITIES.md`).
+- **Highest-P(Win) Next Actions:** (1) Combine `LISTRICLOQO selectcal`'s `37,654` unit `1.0` primary crests with `CHILISTRIC`'s non-overlapping sub-pixel 3DEP `10 m` + fluvial `chi` + sinter secondary crests (`+14,000 @ 0.65`) once the literal `17GEMSDOE` witness policy is resolved; (2) human selector governance & first `ORGANIZER-CONFIRMED` receipt; (3) stage external relocated microseismicity & `ARIA/OPERA` Sentinel-1 InSAR into a SHA-256-pinned release asset.
+
+---
+
 # Next steps — 2026-10-25 repository audit & TILTANGLE remediation (`arena/151c397c-gemsdoe92`)
 
 - **Completed in `arena/151c397c-gemsdoe92` (`0 / 3` experiments, `0` weekly slots):**

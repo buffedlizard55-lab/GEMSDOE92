@@ -20,6 +20,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CUR = ROOT / "docs" / "downloads" / "current_submission.json"
 RC_CARD = ROOT / "evidence" / "relayconduit_run_card.json"
+CL_CARD = ROOT / "evidence" / "chilistric_run_card.json"
 SUBMIT_URL = "https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/"
 BEGIN, END = "<!-- CURRENT:BEGIN -->", "<!-- CURRENT:END -->"
 HTML_PAGES = {  # page -> prefix from the page to docs/
@@ -63,6 +64,97 @@ def reason(c):
         if not (h["dti"] > v["control_dti"] and v["ci95"][0] > 0):
             out.append(f"did not beat {name} on the holdout")
     return "; ".join(out) or "did not pass every automated gate"
+
+
+def cl_html_section(cl: dict, pre: str) -> str:
+    e = html.escape
+    h = cl["holdout_dti"]
+    s_add = h["static_dcat_gt_2_primary"]
+    oof = h["drawblind_oof_dcat_gt_2_primary"]
+    r2 = h["strict_drawblind_rule2_dvis_gt_2_primary"]
+    p_ctl = h["paired_differences_static_dcat_gt_2"]["no10m_fixed"]
+    p_knk = h["paired_differences_static_dcat_gt_2"]["KNICKLOQO_standalone"]
+    sgmc = h["sgmc_independent_basement_fault_proxy_dti"]["addtail52k"]
+    u_pub = cl["correlation_overlap_vs_registry"]["public_102_repo_registry"]
+    u_pm = cl["correlation_overlap_vs_registry"]["post_merge_docs_downloads"]
+    files = cl["all_experiment_files"]
+
+    tif = pre + cl["candidate_file"].removeprefix("docs/")
+    zp = pre + cl["zip_file"].removeprefix("docs/")
+    aud = tif.replace("-zeros.tif", "-audit.json")
+    card = pre + "downloads/chilistric_run_card.json"
+    hold = pre + "downloads/chilistric_holdout.json"
+    uniq = pre + "downloads/chilistric_uniqueness.json"
+    subp = pre + "executive-summary.html"
+    ana = pre + "ANALYSIS_20261025_CHILISTRIC.md"
+    hyp = pre + "HYPOTHESES_20261025_CHILISTRIC.md"
+    rev = pre + "REVIEW_20261025_CHILISTRIC.md"
+
+    return f"""<section aria-label="Completed session lane CHILISTRIC" style="border:3px solid #7f1d1d;background:#fef2f2;padding:1rem 1.2rem;margin:0 0 1.2rem 0;border-radius:8px;font-family:system-ui,sans-serif">
+  <h2 style="margin-top:0">Newest completed session lane (2026-10-25) — <code>{e(cl['lane'])}</code> / primary arm <code>addtail52k</code> (3 new unique-byte GeoTIFFs)</h2>
+  <p style="font-size:1.15rem;margin:.25rem 0">
+    <span style="background:#14532d;color:#dcfce7;padding:0.3rem 0.65rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.15rem 0.35rem 0.15rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH (11/11 automated [0, 1] gates PASS, 0 NaN; unique across all {u_pm['rasters_checked']} local rasters at {u_pm['worst_matched_budget_forward_overlap_3px']:.4f} &le; 0.70 &amp; all {u_pub['non_self_rasters_checked']:,} public rasters in 102 repos at {u_pub['worst_operative_overlap_3px']:.4f} &le; 0.70)</span>
+    <span style="background:#7f1d1d;color:#fee2e2;padding:0.3rem 0.65rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.15rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (verdict <code>{e(cl['verdict'])}</code>; literal 17GEMSDOE dense-witness overlap 1.000 &gt; 0.70 &amp; static tie vs LISTRICLOQO 0.013295; 0 slots spent)</span>
+  </p>
+  <p style="font-size:1.1rem">
+    <a href="{e(tif)}" download><strong>⬇ Download GeoTIFF ({e(cl['candidate_file'].split('/')[-1])})</strong></a>
+    · <a href="{e(zp)}" download>one-TIFF ZIP</a>
+    · <a href="{e(aud)}">audit JSON</a>
+    · <a href="{e(card)}">JSON Run Card</a>
+    · <a href="{e(hold)}">holdout JSON</a>
+    · <a href="{e(uniq)}">102-repo uniqueness JSON</a>
+    · <a href="{e(subp)}"><strong>Executive Summary &amp; How to Submit</strong></a>
+    · <a href="{e(ana)}">PhD Analysis (0.2778 / 0.3195 / 0.4413 &amp; Verified Sources Table)</a>
+    · <a href="{e(hyp)}">Pre-Registered Hypotheses</a>
+    · <a href="{e(rev)}">3-Pass Review</a>
+  </p>
+  <p><strong>Step-by-step DrivenData #306 submission reference (only for a future ✅ cleared artifact; do NOT upload a <code>negative</code> file):</strong>
+    1) Download the zeros-outside single-band <code>float32</code> <code>.tif</code> (or matching one-TIFF <code>.zip</code>) — strict finite <code>[0.0, 1.0]</code> values with <code>0.0</code> outside footprint prevent <em>&ldquo;Predicted values must be in range [0, 1]&rdquo;</em> with zero human pixel inspection.
+    2) Open <a href="{SUBMIT_URL}">{SUBMIT_URL}</a> (not live-verified from sandbox) and choose the file.
+    3) Paste note (&le;140 chars; <code>{cl['submission_note_chars']}/140</code>): <code>{e(cl['submission_note'])}</code>.
+    4) Record local name <code>{e(cl['submission_name'])}</code> and log any organizer receipt in <code>ledger/submissions.csv</code>.
+  </p>
+  <p><strong>HOLDOUT-DTI</strong> ({e(h['evaluator_version'])}, {h['withheld_positive_pixels']:,} withheld positives, 1,000-draw 20 km paired block bootstrap):
+    <strong>Strict Draw-Blind OOF (<code>d_cat &gt; 2.0</code>) = <code>{oof['dti']:.6f} {fmt_ci(oof['ci95'])}</code> (#1 ALL-TIME zero-catalogue OOF in GEMSDOE92, beating LISTRICLOQO 0.013064)</strong>;
+    Static (<code>d_cat &gt; 2.0</code>) = <strong><code>{s_add['dti']:.6f} {fmt_ci(s_add['ci95'])}</code></strong>
+    (paired <code>{p_ctl['delta']:+.6f} {fmt_ci(p_ctl['ci95'])}</code> over <code>no10m_fixed</code> ablation <code>0.012206</code>; paired <code>{p_knk['delta']:+.6f} {fmt_ci(p_knk['ci95'])}</code> over <code>KNICKLOQO</code> <code>0.010788</code>);
+    Strict Rule-2 (<code>d_visible &gt; 2.0</code>) = <code>{r2['dti']:.6f} {fmt_ci(r2['ci95'])}</code>;
+    Off-catalogue <strong>USGS SGMC PROXY = <code>{sgmc:.6f}</code></strong> (+9.4% over LISTRICLOQO <code>0.103442</code>, +17.8% over <code>R0</code> <code>0.096060</code>). No ORGANIZER-CONFIRMED score exists.
+  </p>
+  <p><strong>Automated validation &amp; Uniqueness (REGISTRY-MEASUREMENT):</strong>
+    SHA-256 <code>{e(cl['raster_sha256'])}</code> (ZIP <code>{e(cl['zip_sha256'])}</code>); <code>44/44</code> leakage canaries PASS (max symmetric AUC <code>{cl['leakage_canary']['max_symmetric_auc']:.6f} &le; 0.90</code>);
+    <code>0 / {u_pm['rasters_checked']}</code> post-merge local overlaps &gt; 0.70 (max <code>{u_pm['worst_matched_budget_forward_overlap_3px']:.4f}</code>) and <code>0 / {u_pub['non_self_rasters_checked']:,}</code> public 102-repo operational overlaps &gt; 0.70 (max <code>{u_pub['worst_operative_overlap_3px']:.4f}</code>; surface |&rho;| <code>{u_pub['preplacement_surface_worst_abs_spearman']:.4f}</code>, final |&rho;| <code>{u_pub['final_dots_worst_abs_spearman']:.4f} &le; 0.90</code>); literal 17GEMSDOE dense witness = <code>1.0000 &gt; 0.70</code>.
+    Siblings (research only, <code>negative</code>): <a href="{e(pre + files['adapt37k'].removeprefix('docs/'))}" download>adapt37k TIF</a> (static <code>0.012617</code>) · <a href="{e(pre + files['no10m_fixed'].removeprefix('docs/'))}" download>no10m_fixed TIF</a> (static <code>0.012206</code>).
+  </p>
+</section>"""
+
+
+def cl_md_section(cl: dict, pre: str) -> str:
+    h = cl["holdout_dti"]
+    s_add = h["static_dcat_gt_2_primary"]
+    oof = h["drawblind_oof_dcat_gt_2_primary"]
+    r2 = h["strict_drawblind_rule2_dvis_gt_2_primary"]
+    p_ctl = h["paired_differences_static_dcat_gt_2"]["no10m_fixed"]
+    sgmc = h["sgmc_independent_basement_fault_proxy_dti"]["addtail52k"]
+    u_pub = cl["correlation_overlap_vs_registry"]["public_102_repo_registry"]
+    u_pm = cl["correlation_overlap_vs_registry"]["post_merge_docs_downloads"]
+    files = cl["all_experiment_files"]
+
+    tif = pre + cl["candidate_file"].removeprefix("docs/")
+    zp = pre + cl["zip_file"].removeprefix("docs/")
+    card = pre + "downloads/chilistric_run_card.json"
+    subp = pre + "executive-summary.html"
+    ana = pre + "ANALYSIS_20261025_CHILISTRIC.md"
+    hyp = pre + "HYPOTHESES_20261025_CHILISTRIC.md"
+    rev = pre + "REVIEW_20261025_CHILISTRIC.md"
+
+    return f"""> ## Newest completed session lane (`2026-10-25`) — `{cl['lane']}` / primary arm `addtail52k` (3 new unique-byte GeoTIFFs)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** (`11/11` automated `[0, 1]` gates PASS, `0` NaN; unique across all `{u_pm['rasters_checked']}` post-merge local rasters at `{u_pm['worst_matched_budget_forward_overlap_3px']:.4f} <= 0.70` & all `{u_pub['non_self_rasters_checked']:,}` public rasters across `102` repos at `{u_pub['worst_operative_overlap_3px']:.4f} <= 0.70`) · **⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT** (verdict `{cl['verdict']}`, `submission_eligible: false`; literal `17GEMSDOE` dense witness `1.000 > 0.70` & static tie vs `LISTRICLOQO` `0.013295`; `0` weekly slots spent).
+>
+> **[⬇ Download research GeoTIFF (`{cl['candidate_file'].split('/')[-1]}`)]({tif})** · [one-TIFF ZIP]({zp}) · [JSON Run Card]({card}) · [Executive Summary & How to Submit]({subp}) · [PhD Analysis (`0.2778` / `0.3195` / `0.4413` & Verified Sources Table)]({ana}) · [Pre-Registered Hypotheses]({hyp}) · [3-Pass Review]({rev})
+>
+> - **Record-only DrivenData #306 form fields (do NOT upload a `negative` file):** SHA-256 `{cl['raster_sha256']}` · name `{cl['submission_name']}` · note (`{cl['submission_note_chars']}/140`): `{cl['submission_note']}` · zeros-outside `float32` in `[0, 1]` prevents `"Predicted values must be in range [0, 1]"`.
+> - **`HOLDOUT-DTI` (`{h['evaluator_version']}`, `{h['withheld_positive_pixels']:,}` withheld positives):** **Strict Draw-Blind OOF (`d_cat > 2.0`) = `{oof['dti']:.6f} {fmt_ci(oof['ci95'])}` (`#1` all-time zero-catalogue OOF in `GEMSDOE92`, beating `LISTRICLOQO` `0.013064`)**; Static (`d_cat > 2.0`) = **`{s_add['dti']:.6f} {fmt_ci(s_add['ci95'])}`** (paired `{p_ctl['delta']:+.6f} {fmt_ci(p_ctl['ci95'])}` over `no10m_fixed` `0.012206`); Strict Rule-2 (`d_visible > 2.0`) = `{r2['dti']:.6f} {fmt_ci(r2['ci95'])}`; Off-catalogue **`USGS SGMC PROXY` = `{sgmc:.6f}`** (`+9.4%` vs `LISTRICLOQO` `0.103442`); `44/44` canaries PASS (`<= 0.617275`). Siblings: [`adapt37k`]({pre + files['adapt37k'].removeprefix('docs/')}) (`0.012617`) · [`no10m_fixed`]({pre + files['no10m_fixed'].removeprefix('docs/')}) (`0.012206`)."""
 
 
 def rc_html_section(rc: dict, pre: str) -> str:
@@ -160,7 +252,7 @@ def rc_md_section(rc: dict, pre: str) -> str:
 > - **All 3 arms (`negative`, research only):** [`relay_conduit`]({pre + s_rc['file_zeros'].removeprefix('docs/')}) ([ZIP]({pre + s_rc['file_zip'].removeprefix('docs/')}) · [audit]({pre + s_rc['file_audit'].removeprefix('docs/')})) · [`relay_delta`]({pre + s_rd['file_zeros'].removeprefix('docs/')}) ([ZIP]({pre + s_rd['file_zip'].removeprefix('docs/')}) · [audit]({pre + s_rd['file_audit'].removeprefix('docs/')})) · [`conduit_notip`]({pre + s_cn['file_zeros'].removeprefix('docs/')}) ([ZIP]({pre + s_cn['file_zip'].removeprefix('docs/')}) · [audit]({pre + s_cn['file_audit'].removeprefix('docs/')}))."""
 
 
-def html_block(c, pre, rc=None):
+def html_block(c, pre, rc=None, cl=None):
     f = facts(c)
     e = html.escape
     tif = pre + c["file"].removeprefix("docs/")
@@ -177,9 +269,10 @@ def html_block(c, pre, rc=None):
         bg = "#fef2f2"; bd = "#7f1d1d"
     sib = " · ".join(f'<a href="{e(pre + s["file"].removeprefix("docs/"))}" download>{e(a)}</a> ({e(s["verdict"])}, HOLDOUT-DTI {s["dti"]:.6f})'
                      for a, s in c["siblings"].items())
+    cl_part = (cl_html_section(cl, pre) + "\n") if cl is not None else ""
     rc_part = (rc_html_section(rc, pre) + "\n") if rc is not None else ""
     return f"""{BEGIN}
-{rc_part}<section aria-label="Current submission" style="border:3px solid {bd};background:{bg};padding:1rem 1.2rem;margin:0 0 1.2rem 0;border-radius:8px;font-family:system-ui,sans-serif">
+{cl_part}{rc_part}<section aria-label="Current submission" style="border:3px solid {bd};background:{bg};padding:1rem 1.2rem;margin:0 0 1.2rem 0;border-radius:8px;font-family:system-ui,sans-serif">
   <h2 style="margin-top:0">Parallel lane receipt — lane {e(c['lane'])} / arm <code>{e(c['arm'])}</code></h2>
   {status}
   <p style="font-size:1.15rem"><a href="{e(tif)}" download><strong>⬇ Download research GeoTIFF ({e(c['file'].split('/')[-1])})</strong></a> · <a href="{e(zp)}" download>one-TIFF ZIP</a> · <a href="{e(card)}">run card (JSON)</a> · <a href="{e(ana)}">analysis</a></p>
@@ -198,7 +291,7 @@ def html_block(c, pre, rc=None):
 {END}"""
 
 
-def md_block(c, pre, rc=None):
+def md_block(c, pre, rc=None, cl=None):
     f = facts(c)
     tif = pre + c["file"].removeprefix("docs/")
     zp = pre + c["zip"].removeprefix("docs/")
@@ -207,9 +300,10 @@ def md_block(c, pre, rc=None):
     status = ("**✅ OK TO DOWNLOAD · ✅ OK TO SUBMIT** (passed every automated gate)" if c["ok_to_submit"] else
               f"**✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `{c['verdict']}`). Reason: {reason(c)}.")
     sib = " · ".join(f"[{a}]({pre + s['file'].removeprefix('docs/')}) ({s['verdict']}, HOLDOUT-DTI {s['dti']:.6f})" for a, s in c["siblings"].items())
+    cl_part = (cl_md_section(cl, pre) + "\n\n") if cl is not None else ""
     rc_part = (rc_md_section(rc, pre) + "\n\n") if rc is not None else ""
     return f"""{BEGIN}
-{rc_part}> ## Parallel lane receipt — lane {c['lane']} / arm `{c['arm']}`
+{cl_part}{rc_part}> ## Parallel lane receipt — lane {c['lane']} / arm `{c['arm']}`
 > {status}
 >
 > **[⬇ Download research GeoTIFF]({tif})** · [one-TIFF ZIP]({zp}) · [run card]({card}) · [analysis]({ana})
@@ -253,12 +347,13 @@ def main() -> int:
     render_vario_status.render(ROOT, write=True)
     c = json.loads(CUR.read_text())
     rc = json.loads(RC_CARD.read_text()) if RC_CARD.is_file() else None
+    cl = json.loads(CL_CARD.read_text()) if CL_CARD.is_file() else None
     for p, pre in HTML_PAGES.items():
         if p.is_file():
-            p.write_text(inject(p.read_text(), html_block(c, pre, rc), True))
+            p.write_text(inject(p.read_text(), html_block(c, pre, rc, cl), True))
     for p, pre in MD_PAGES.items():
         if p.is_file():
-            blk = md_block(c, pre, rc)
+            blk = md_block(c, pre, rc, cl)
             if p.name == "SUBMIT.md":
                 blk = blk.replace("](SESSION_PROMPT.md)", "](../SESSION_PROMPT.md)")
             p.write_text(inject(p.read_text(), blk, False))

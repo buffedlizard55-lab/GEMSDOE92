@@ -1,6 +1,14 @@
 # Executive summary — GEMSDOE92 submission workbench
 
 <!-- CURRENT:BEGIN -->
+> ## Newest completed session lane (`2026-10-25`) — `CHILISTRIC` / primary arm `addtail52k` (3 new unique-byte GeoTIFFs)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** (`11/11` automated `[0, 1]` gates PASS, `0` NaN; unique across all `124` post-merge local rasters at `0.6773 <= 0.70` & all `1,503` public rasters across `102` repos at `0.6351 <= 0.70`) · **⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT** (verdict `negative`, `submission_eligible: false`; literal `17GEMSDOE` dense witness `1.000 > 0.70` & static tie vs `LISTRICLOQO` `0.013295`; `0` weekly slots spent).
+>
+> **[⬇ Download research GeoTIFF (`h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.tif`)](downloads/h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.tif)** · [one-TIFF ZIP](downloads/h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.zip) · [JSON Run Card](downloads/chilistric_run_card.json) · [Executive Summary & How to Submit](executive-summary.html) · [PhD Analysis (`0.2778` / `0.3195` / `0.4413` & Verified Sources Table)](ANALYSIS_20261025_CHILISTRIC.md) · [Pre-Registered Hypotheses](HYPOTHESES_20261025_CHILISTRIC.md) · [3-Pass Review](REVIEW_20261025_CHILISTRIC.md)
+>
+> - **Record-only DrivenData #306 form fields (do NOT upload a `negative` file):** SHA-256 `75fcc743420f817d841b9f822e82bf4e63c850ede29e0e2d75e54b26603acf50` · name `GEMSDOE92-CHILISTRIC-addtail52k-20261025` · note (`107/140`): `h33-h33-2-b2; CHILISTRIC addtail52k: 52000 3DEP-10m+adapt-listric+sinter-valve crests; HOLDOUT-DTI 0.013174` · zeros-outside `float32` in `[0, 1]` prevents `"Predicted values must be in range [0, 1]"`.
+> - **`HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives):** **Strict Draw-Blind OOF (`d_cat > 2.0`) = `0.013208 [0.011537, 0.014860]` (`#1` all-time zero-catalogue OOF in `GEMSDOE92`, beating `LISTRICLOQO` `0.013064`)**; Static (`d_cat > 2.0`) = **`0.013174 [0.011583, 0.014730]`** (paired `+0.000968 [0.000146, 0.001793]` over `no10m_fixed` `0.012206`); Strict Rule-2 (`d_visible > 2.0`) = `0.112471 [0.100285, 0.124646]`; Off-catalogue **`USGS SGMC PROXY` = `0.113149`** (`+9.4%` vs `LISTRICLOQO` `0.103442`); `44/44` canaries PASS (`<= 0.617275`). Siblings: [`adapt37k`](downloads/h33-h33-2-b2-CHILISTRICadapt37k-20261025-82694176-zeros.tif) (`0.012617`) · [`no10m_fixed`](downloads/h33-h33-2-b2-CHILISTRICno10m_fixed-20261025-48950a5f-zeros.tif) (`0.012206`).
+
 > ## Completed session lane (`2026-10-25`) — `RELAYCONDUIT` / hero arm `relay_conduit` (3 new unique-byte GeoTIFFs)
 > **✅ OK TO DOWNLOAD FOR RESEARCH** (`11/11` automated `[0, 1]` gates PASS, `0` NaN; locally unique across all `128` rasters at `0.6601 <= 0.70`) · **⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT** (verdict `negative`, `submission_eligible: false`; external 102-repo overlap `0.7843 > 0.70` vs `GEMSDOE53` 80k & literal `17GEMSDOE` dense witness `1.000 > 0.70`; `0` weekly slots spent).
 >
@@ -26,6 +34,8 @@
 > **Uniqueness** (99 registry rasters): worst overlap `0.9791` (limit 0.70), worst |ρ| `0.8913` / surface `0.1373` (limit 0.90). Literal-support reading: 4 raster(s) > 0.70. The literal reading is binding under the current protocol and triggers the duplicate stop.
 > Siblings: [vario_smooth](downloads/gemsdoe92-vario-smooth-37654-20261025-5c5a1192-zeros.tif) (negative, HOLDOUT-DTI 0.141661) · [vario_nctx](downloads/gemsdoe92-vario-nctx-37654-20261025-d2d499d5-zeros.tif) (negative, HOLDOUT-DTI 0.116258). **Read [SESSION_PROMPT.md](../SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
 <!-- CURRENT:END -->
+
+
 
 
 
