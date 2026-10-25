@@ -1,0 +1,89 @@
+{
+  "path": "docs/downloads/gemsdoe92-relaygap-relay_far-37654-20261026T000000Z-zeros.tif",
+  "bytes": 826228,
+  "sha256": "1a2de4764130c229984b8113043d71b2c49509bd49faf4dacd790926e1ccc29d",
+  "bands": 1,
+  "dtype": "float32",
+  "height": 3730,
+  "width": 3292,
+  "crs": "EPSG:32611",
+  "transform": [
+    100.0,
+    0.0,
+    243350.0,
+    0.0,
+    -100.0,
+    4508550.0
+  ],
+  "res": [
+    100.0,
+    100.0
+  ],
+  "nodata": null,
+  "nodata_repr": "None",
+  "finite_pixels": 12279160,
+  "min": 0.0,
+  "max": 1.0,
+  "positive_pixels": 37654,
+  "nonzero_in_footprint": 37654,
+  "unique_values": 2,
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=('float32',) count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nonfinite_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0; strict distance > radius required"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "1a2de4764130c229984b8113043d71b2c49509bd49faf4dacd790926e1ccc29d"
+    }
+  ],
+  "overall_pass": true,
+  "sha256_zeros": "1a2de4764130c229984b8113043d71b2c49509bd49faf4dacd790926e1ccc29d"
+}

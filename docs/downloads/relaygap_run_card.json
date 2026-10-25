@@ -1,0 +1,166 @@
+{
+  "schema": "gemsdoe92-run-card.v2",
+  "session_id": "arena/a4cb22d8-gemsdoe92",
+  "date": "2026-10-26",
+  "lane": "RELAYGAP",
+  "hypothesis": "Relay breaching faults between en echelon normal fault tips host ~57% of Great Basin geothermal systems but are omitted from the Quaternary scarp catalogue; tip-density highs between masters predict them.",
+  "mechanism": "Catalogue-free tip-density: 8-px Gaussian halo around 8-connected endpoints, masked to 2<d_cat<=60 px halo, modulated by local strike variance (structure-tensor 1-coh), normalized to [0,1], 300m halo, greedy 37,654 dots at 2.8 px spacing (d_cat>2). Visible-only per fold.",
+  "named_non_fault_process_that_could_mimic_it": "Collinear lithologic contacts, reactivated Luning-Fencemaker thrust slivers, and Pleistocene Lake Lahontan beach-ridge gaps between range fronts",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22641,
+    "dti": 0.009452726021544214,
+    "ci95": [
+      0.008898315435367912,
+      0.009969547351246043
+    ],
+    "tpw": 304.8046357633836,
+    "fpw": 70356.98095703125,
+    "fnw": 22336.195364236617,
+    "n_cells": 8
+  },
+  "holdout_dti_by_arm": {
+    "relay": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positive_pixels": 22641,
+      "dti": 0.009452726021544214,
+      "ci95": [
+        0.008898315435367912,
+        0.009969547351246043
+      ],
+      "tpw": 304.8046357633836,
+      "fpw": 70356.98095703125,
+      "fnw": 22336.195364236617,
+      "n_cells": 8
+    },
+    "relay_far": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positive_pixels": 22641,
+      "dti": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "tpw": 0.0,
+      "fpw": 70614.0,
+      "fnw": 22641.0,
+      "n_cells": 8
+    },
+    "relay_norotate": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positive_pixels": 22641,
+      "dti": 0.008511384086415056,
+      "ci95": [
+        0.007965650631521368,
+        0.008955767178407372
+      ],
+      "tpw": 274.2197792353028,
+      "fpw": 70251.7841796875,
+      "fnw": 22366.780220764696,
+      "n_cells": 8
+    }
+  },
+  "leakage_canaries": {
+    "max_symmetric_auc": 0.8583914060534018,
+    "threshold": 0.9,
+    "pass": true
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "local_sparse_dot_fields": {
+      "rasters_checked": 120,
+      "worst_forward_overlap_3px": 0.2421,
+      "worst_overlap_submission": "data/bridge/d28.tif (44090 px)",
+      "overlap_limit": 0.7,
+      "unique": true
+    },
+    "literal_dense_surface": {
+      "witness": "17GEMSDOE E-proba-multiscale 5,167,373 px =100% footprint",
+      "forward_overlap": 1.0,
+      "overlap_limit": 0.7,
+      "worst_abs_spearman": 0.01,
+      "rho_limit": 0.9,
+      "note": "Dense surface fires on every candidate under literal reading; relevant test is rho<=0.90 which passes."
+    }
+  },
+  "raster_sha256": "a689626572077c81a6d2763ac93f3354dcc301deec9d51399d11de48f9f5256e",
+  "validator_output": {
+    "all_must_gates_pass": true,
+    "no_nan_inside_footprint": true,
+    "all_finite": true,
+    "values_in_0_1": true,
+    "zero_outside_footprint": true,
+    "crs_shape_transform_match": true,
+    "gates": [
+      [
+        "crs",
+        true,
+        "reference=EPSG:32611 candidate=EPSG:32611"
+      ],
+      [
+        "shape",
+        true,
+        "reference=3730x3292 candidate=3730x3292"
+      ],
+      [
+        "transform",
+        true,
+        "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      ],
+      [
+        "dtype_and_band",
+        true,
+        "dtype=('float32',) count=1"
+      ],
+      [
+        "values_in_0_1",
+        true,
+        "n_violations=0 min=0.0 max=1.0"
+      ],
+      [
+        "no_nan_inside_footprint",
+        true,
+        "nonfinite_pixels=0"
+      ],
+      [
+        "nan_outside_footprint",
+        true,
+        "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      ],
+      [
+        "submission_encoding",
+        true,
+        "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      ],
+      [
+        "catalogue_zero_mass",
+        true,
+        "dots_on_catalogue=0"
+      ],
+      [
+        "distance_from_catalogue",
+        true,
+        "radius=2px dots_within=0; strict distance > radius required"
+      ],
+      [
+        "reread_sha256",
+        true,
+        "a689626572077c81a6d2763ac93f3354dcc301deec9d51399d11de48f9f5256e"
+      ]
+    ]
+  },
+  "submission_name": "GEMSDOE92-RELAYGAP-relay-20261026",
+  "note": "RELAYGAP relay: 37654 tip-density relay gaps (2<d<60px, strike-weighted); HOLDOUT-DTI 0.009453 [0.008898,0.00997] vs R0 0.004385",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "dual_reading_verdict": "promote (like-for-like dot-field); negative (literal dense-surface)",
+  "new_unique_tiff_generated": true,
+  "experiments": 3,
+  "weekly_slots_used": 0,
+  "organizer_confirmed_score": null,
+  "file": "docs/downloads/gemsdoe92-relaygap-relay-37654-20261026T000000Z-zeros.tif"
+}
