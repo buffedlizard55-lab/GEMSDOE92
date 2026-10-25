@@ -1,48 +1,49 @@
-"""RIEDELVENT lane: En-Echelon Riedel R-Shear Obliquity (12-28 deg) x Hanging-Wall
-Flexural Hinge Curvature x Slope-Regime Coupled 3DEP-10m Sub-Pixel Scarp, Incised
-Thalweg Knickzone & Tufa-Filtered INGENIOUS Hydrothermal Vent Out-of-Quadrant
-(LOQO) Fault Discovery.
+"""RIEDELVENT lane: Transtensional Riedel R/R' Obliquity & 3D Gravity-Tensor
+Step-Over Valve + USGS 3DEP 10 m Sub-Pixel Scarps + Tufa-Deconfounded INGENIOUS
+Hydrothermal Vents + Möbius-DTI Additive Tail.
 
-Pre-registered hypothesis & equations: docs/HYPOTHESES_20261025_RIEDELVENT.md.
+Pre-registered specification: ``docs/HYPOTHESES_20261025_RIEDELVENT.md``.
 
-Key physical innovations:
-1. En-echelon Riedel R-shear obliquity (``riedel_obliquity_index``,
-   ``riedel_strain_coupling``): measures the acute axial obliquity
-   ``Delta_theta in [0, 90 deg]`` between fine-scale (150 m) scarp/RTP magnetic
-   strike and mesoscale (1.4 km) gravity/basement master-fault strike, isolating
-   synthetic Coulomb-Riedel R-shears and P-shear relays in ``[12, 28 deg]``
-   (centered at ``phi/2 ~= 19 deg``) weighted by structure-tensor coherence and
-   mesoscale geodetic shear/dilatation strain.
-2. Hanging-wall flexural hinge curvature (``flexure_hinge_curvature``,
-   ``flexure_gravity_concordance``): extracts the 450-1,350 m difference-of-Gaussians
-   flexural rollover inflection of ``log1p(depth_to_base_surf)`` (Band 15) and
-   ``iso_grav_anom`` (Band 13) where basement deepening and gravity drop are
-   antiparallel across concealed basin-margin master faults.
-3. Slope-regime coupled 1D crest localization fusing ``< 8.5 deg`` piedmont
-   USGS 3DEP 10 m sub-pixel scarps + tufa-filtered INGENIOUS hydrothermal vent
-   plumes (``VENTSCARP``) with ``>= 6 deg`` incised drainage thalweg knickzones
-   + sliding-window Poisson magneto-gravity collinearity (``KNICKLOQO``), tested
-   under both 37,654-dot binary emission (``riedelvent``) and 64,000-dot additive
-   tail emission (``riedelvent_tail``: 37,654 @ 1.0 + 26,346 @ 0.30).
-
-Strict zero-leakage invariant: zero fault-catalogue arrays ever enter any
-feature or surface builder in this module.
+Key physical & engineering guarantees
+-------------------------------------
+1. **Verified GDAL Band-Tag Assertions (Fixes #IR-92-VENTSCARP-BAND-INDEX-MISATTRIBUTION)**:
+   On opening ``training_features.tif``, ``assert_training_band_tags`` verifies exact
+   GDAL ``band_name`` metadata for every consumed band (including ``Band 2 = rtp``,
+   ``Band 3 = tmi_hg``, ``Band 4 = geod_2ndinv``, ``Band 5 = iso_grav_anom_slope``,
+   ``Band 7 = geod_shearrate``, ``Band 8 = geod_dilaterate``, ``Band 11 = iso_grav_anom_vg``,
+   ``Band 12 = det_elev``, ``Band 13 = iso_grav_anom``, ``Band 15 = depth_to_base_surf``,
+   ``Band 17 = cond_surf``, ``Band 18 = iso_grav_anom_hg``, ``Band 19 = det_elev_slope``).
+2. **Zero Fault-Catalogue Dependence**:
+   ``build_riedelvent_stack`` never opens or receives ``existing_faults.tif`` or
+   ``labels.tif``, and ``_rasterize_active_thermal_springs`` reads only ``(row, col, temp_c)``
+   from ``gdr_wellspring_in_footprint.csv``. All 32 features are 100% invariant between
+   static deployment and draw-blind ``HOLDOUT-DTI`` folds.
+3. **Strict Leave-One-Quadrant-Out (LOQO) Cross-Fitting**:
+   Each quadrant ``q in {0, 1, 2, 3}`` is scored exclusively by regularized
+   ``HistGradientBoostingClassifier`` ensembles trained on ``quad != q`` eroded by
+   a ``>= 1.2 km`` (``12 px``) spatial guard band and ``> 500 m`` (``5 px``) negative
+   label buffer, followed by label-free within-quadrant quantile calibration.
+4. **Low-RSS Streaming (< 1.4 GiB Peak)**:
+   Streams individual ``float32`` bands and packs only footprint pixels
+   (``5,167,373 x 32``, ~661 MB ``float32``) so execution stays comfortably inside
+   a 3.8 GiB zero-swap container.
 """
 from __future__ import annotations
 
+from dataclasses import dataclass
 import gc
 from pathlib import Path
-
 import numpy as np
 import rasterio
-from scipy.ndimage import binary_dilation, distance_transform_edt, gaussian_filter
-from sklearn.ensemble import HistGradientBoostingClassifier
+from scipy.ndimage import gaussian_filter
 
-from .breakline import spaced_top_mask
-from .coulomb_loqo import _grad_xy, _sat, directional_ridge_1d, hessian_ridge_strength
+from .apronridge import directional_ridge_1d
+from .breakline import percentile_rank, spaced_top_mask
+from .coulomb_loqo import _grad_xy, coulomb_tendencies, hessian_ridge_strength
 from .hydroconduit import _clean_valid, coherence_and_strike_deg, cross_strike_monotonicity
 from .knick_loqo import (
     calibrate_quadrant_probabilities,
+    fit_single_loqo,
     mesoscale_zscore,
     thalweg_concavity_strength,
 )
@@ -52,824 +53,945 @@ from .ventscarp import (
     _rasterize_active_thermal_springs,
     _rasterize_paleo_vents,
     anisotropic_strike_plume,
-    is_hydrothermal_paleo_vent,
     subpixel_scarp_excess,
 )
 
-__all__ = [
-    "FEATURE_NAMES",
-    "GROUP_A_SCARP_KNICK_INDICES",
-    "GROUP_B_VENT_INDICES",
-    "GROUP_C_SUBSURF_INDICES",
-    "GROUP_D_RIEDEL_FLEX_INDICES",
-    "ABLATED_NOVENT_INDICES",
-    "RIEDEL_SUBSURF_INDICES",
-    "riedel_obliquity_field",
-    "flexural_hinge_field",
-    "build_additive_tail_allocation",
-    "compute_riedelvent_stack",
-    "fit_predict_riedelvent_loqo",
-    "build_riedelvent_crest_surface",
-    "is_hydrothermal_paleo_vent",
-    "anisotropic_strike_plume",
-    "subpixel_scarp_excess",
-    "spaced_top_mask",
-]
+EXPECTED_GRID_H: int = 3730
+EXPECTED_GRID_W: int = 3292
 
-FEATURE_NAMES: tuple[str, ...] = (
-    # Group A: Seamless USGS 3DEP 10 m Sub-Pixel Scarp & 10m/100m Thalweg Knickzones (0..8)
-    "scarp10m_excess_max",
-    "scarp10m_excess_p90",
-    "scarp10m_slope_std_norm",
-    "scarp10m_curv_prof_piedmont",
-    "scarp10m_linear_coherence",
-    "scarp10m_steep_step_grad",
-    "chi10m_knick_step",
-    "chi10m_ksn_drainage",
-    "thalweg100m_knickzone_idx",
-    # Group B: Tufa-Filtered INGENIOUS Paleo/Blind Hydrothermal Vents, 2mDAB & Alteration (9..17)
+EXPECTED_TRAINING_BAND_TAGS: dict[int, str] = {
+    1: "mag_anom",
+    2: "rtp",
+    3: "tmi_hg",
+    4: "geod_2ndinv",
+    5: "iso_grav_anom_slope",
+    6: "tc",
+    7: "geod_shearrate",
+    8: "geod_dilaterate",
+    9: "tmi_vg",
+    10: "deq_n100a15",
+    11: "iso_grav_anom_vg",
+    12: "det_elev",
+    13: "iso_grav_anom",
+    14: "tmi",
+    15: "depth_to_base_surf",
+    16: "ieq_n100a15",
+    17: "cond_surf",
+    18: "iso_grav_anom_hg",
+    19: "det_elev_slope",
+}
+
+RIEDELVENT_FEATURE_NAMES: tuple[str, ...] = (
+    # Group A (0..8): 3DEP 10 m sub-pixel scarp + 10 m chi/ksn + 100 m thalweg knickzones
+    "dem10_scarp_excess_max",
+    "dem10_scarp_excess_p90",
+    "dem10_subpixel_dispersion",
+    "dem10_wallace_curv",
+    "dem10_linear_coherence",
+    "dem10_steep_step_grad",
+    "fluvial_chi_step_10m",
+    "fluvial_ksn_10m",
+    "thalweg_knickzone_100m",
+    # Group B (9..14): TENSOR-RIEDEL 3D gravity-tensor step-over & R/R' strike obliquity
+    "grav_tensor_3d_stepover",
+    "grav_tensor_as_amp",
+    "riedel_synthetic_R_20deg",
+    "riedel_conjugate_Rprime_72deg",
+    "riedel_oblique_excess",
+    "transtensional_riedel_pump",
+    # Group C (15..22): Tufa-deconfounded INGENIOUS hydrothermal vents, 2m probes & alteration
     "paleo_vent_aniso_plume",
     "probe_2mdab_aniso_plume",
     "active_thermal_spring_aniso",
     "unified_vent_district_halo",
-    "rad_k_over_th_z",
-    "rad_u_over_th_z",
-    "grauch_mag_demag_residual",
-    "mt_claycap_perimeter_grad",
-    "heatflow_scarp_coupling",
-    # Group C: Province-Debiased Subsurface Potential, Poisson Collinearity & Shoreline Null (18..25)
-    "iso_grav_slope_meso_z",
-    "grav_tilt_grad",
-    "basement_step_grad",
-    "poisson_mag_grav_collinearity",
-    "dip_concord_scarp_grav",
-    "strain_2ndinv_meso_z",
-    "cross_contour_scarp_transgression",
-    "lahontan_shoreline_mimic_index",
-    # Group D: En-Echelon Riedel R-Shear Obliquity & Hanging-Wall Flexural Hinge (26..29)
-    "riedel_obliquity_index",
-    "riedel_strain_coupling",
-    "flexure_hinge_curvature",
-    "flexure_gravity_concordance",
+    "rad_k_th_adularia_z",
+    "rad_u_th_redox_z",
+    "mag_shallow_demag_anom",
+    "mt_claycap_tmi_hg_valve",
+    # Group D (23..31): Tag-verified subsurface potential fields, Coulomb strain & Lahontan null
+    "grav_tilt_edge_b13_b11",
+    "dip_concord_z10_grav13",
+    "ew_scarp_b18_polarity",
+    "poisson_mag_grav_concord",
+    "basement_depth_step_grad",
+    "coulomb_dilation_slip",
+    "geod_shear_mesoscale_z",
+    "geod_dilat_mesoscale_z",
+    "lahontan_shoreline_null",
 )
 
-GROUP_A_SCARP_KNICK_INDICES: tuple[int, ...] = tuple(range(0, 9))
-GROUP_B_VENT_INDICES: tuple[int, ...] = tuple(range(9, 18))
-GROUP_C_SUBSURF_INDICES: tuple[int, ...] = tuple(range(18, 26))
-GROUP_D_RIEDEL_FLEX_INDICES: tuple[int, ...] = tuple(range(26, 30))
+GROUP_A_INDICES: tuple[int, ...] = tuple(range(0, 9))
+GROUP_B_RIEDEL_INDICES: tuple[int, ...] = tuple(range(9, 15))
+GROUP_C_VENT_INDICES: tuple[int, ...] = tuple(range(15, 23))
+GROUP_D_SUBSURF_INDICES: tuple[int, ...] = tuple(range(23, 32))
 
-# Arm 2 (riedel_novent): ablates all 9 Group B hydrothermal-vent features and all 4 Group D Riedel/flexure features
-ABLATED_NOVENT_INDICES: tuple[int, ...] = GROUP_A_SCARP_KNICK_INDICES + GROUP_C_SUBSURF_INDICES
+# Pre-registered Arm 2 ablation subset: drops Group B (TENSOR-RIEDEL) and Group C (Vents/Alteration)
+COLLINEAR_NOVENT_INDICES: tuple[int, ...] = GROUP_A_INDICES + GROUP_D_SUBSURF_INDICES
 
-# Subsurface + Riedel + Flexure + Hydrothermal Valve branch (forces model to weight deeper geophysical + Riedel/vent coupling)
-RIEDEL_SUBSURF_INDICES: tuple[int, ...] = (
-    (0, 3, 4, 6, 7, 8)
-    + GROUP_B_VENT_INDICES
-    + GROUP_C_SUBSURF_INDICES
-    + GROUP_D_RIEDEL_FLEX_INDICES
+# Four physically orthogonalized LOQO sub-ensembles for Arm 1 & Arm 3:
+PROVINCE_DEBIASED_INDICES: tuple[int, ...] = tuple(
+    i for i in range(len(RIEDELVENT_FEATURE_NAMES)) if i not in (18, 29, 30)
+)
+RIEDEL_SUBSURF_KNICK_INDICES: tuple[int, ...] = (0, 1, 4, 6, 7, 8) + GROUP_B_RIEDEL_INDICES + GROUP_D_SUBSURF_INDICES
+HYDROTHERMAL_RIEDEL_SCARP_INDICES: tuple[int, ...] = GROUP_A_INDICES + GROUP_B_RIEDEL_INDICES + GROUP_C_VENT_INDICES + (31,)
+
+RIEDELVENT_BRANCH_SPECS: tuple[tuple[str, tuple[int, ...], float], ...] = (
+    ("full_riedelvent", tuple(range(len(RIEDELVENT_FEATURE_NAMES))), 0.22),
+    ("province_debiased", PROVINCE_DEBIASED_INDICES, 0.28),
+    ("riedel_subsurf_knick", RIEDEL_SUBSURF_KNICK_INDICES, 0.28),
+    ("hydrothermal_riedel_scarp", HYDROTHERMAL_RIEDEL_SCARP_INDICES, 0.22),
 )
 
-# Province-debiased full feature tuple (all 30 features are already baseline-level free!)
-FULL_INDICES: tuple[int, ...] = tuple(range(len(FEATURE_NAMES)))
+COLLINEAR_NOVENT_BRANCH_SPECS: tuple[tuple[str, tuple[int, ...], float], ...] = (
+    ("collinear_all", COLLINEAR_NOVENT_INDICES, 0.50),
+    (
+        "collinear_debiased",
+        tuple(i for i in COLLINEAR_NOVENT_INDICES if i not in (29, 30)),
+        0.50,
+    ),
+)
 
 
-def riedel_obliquity_field(
-    fine_field: np.ndarray,
-    master_field: np.ndarray,
-    valid: np.ndarray,
-    *,
-    fine_grad_sigma: float = 1.2,
-    fine_tensor_sigma: float = 2.5,
-    master_grad_sigma: float = 4.0,
-    master_tensor_sigma: float = 14.0,
-    target_obliquity_deg: float = 19.0,
-    bandwidth_deg: float = 6.5,
-) -> tuple[np.ndarray, np.ndarray]:
-    """Compute en-echelon Riedel R-shear obliquity index and acute axial angle ``Delta_theta``.
+@dataclass
+class RiedelVentStack:
+    """Memory-packed zero-catalogue feature matrix + continuous localization channels."""
 
-    Measures the acute angle ``Delta_theta in [0, 90 deg]`` between the fine-scale
-    (150-250 m) surface/near-surface break strike ``theta_fine`` and the mesoscale
-    (1.4 km) basement/gravity master-zone strike ``theta_master``. Under Coulomb-Riedel
-    mechanics with friction angle ``phi in [30, 38 deg]``, synthetic R-shears form at
-    ``Delta_theta = phi/2 ~= 15-19 deg`` (and P-shear relays in ``12-28 deg``).
-    """
-    if bandwidth_deg <= 0.0:
-        raise ValueError("bandwidth_deg must be positive")
-    valid_b = np.asarray(valid, dtype=bool)
-    coh_f, az_f = coherence_and_strike_deg(
-        fine_field,
-        valid_b,
-        deriv_sigma=float(fine_grad_sigma),
-        tensor_sigma=float(fine_tensor_sigma),
-    )
-    coh_m, az_m = coherence_and_strike_deg(
-        master_field,
-        valid_b,
-        deriv_sigma=float(master_grad_sigma),
-        tensor_sigma=float(master_tensor_sigma),
-    )
-    # Axial difference in [0, 90 deg]
-    diff_rad = np.deg2rad(np.asarray(az_f, dtype=np.float32) - np.asarray(az_m, dtype=np.float32))
-    cos_diff = np.clip(np.abs(np.cos(diff_rad)), 0.0, 1.0)
-    delta_deg = np.rad2deg(np.arccos(cos_diff)).astype(np.float32)
-
-    gauss_ang = np.exp(
-        -0.5 * (((delta_deg - np.float32(target_obliquity_deg)) / np.float32(bandwidth_deg)) ** 2)
-    ).astype(np.float32)
-    coh_geom = np.sqrt(np.maximum(coh_f * coh_m, 0.0)).astype(np.float32)
-    idx = np.where(valid_b, gauss_ang * coh_geom, 0.0).astype(np.float32)
-    delta_out = np.where(valid_b, delta_deg, 0.0).astype(np.float32)
-    return idx, delta_out
+    X_foot: np.ndarray  # (n_foot, 32) float32
+    footprint: np.ndarray  # (H, W) bool
+    valid: np.ndarray  # (H, W) bool
+    L_scarp10m: np.ndarray  # (H, W) float32 in [0, 1]
+    L_riedel: np.ndarray  # (H, W) float32 in [0, 1]
+    L_knick: np.ndarray  # (H, W) float32 in [0, 1]
+    L_subsurf: np.ndarray  # (H, W) float32 in [0, 1]
+    L_topo100: np.ndarray  # (H, W) float32 in [0, 1]
+    L_vent_amp: np.ndarray  # (H, W) float32 >= 1.0
+    feature_names: tuple[str, ...]
+    meta: dict[str, object]
 
 
-def flexural_hinge_field(
-    depth_to_base_m: np.ndarray,
-    iso_grav_anom: np.ndarray,
-    valid: np.ndarray,
-    *,
-    sigma_inner_px: float = 4.5,
-    sigma_outer_px: float = 13.5,
-) -> tuple[np.ndarray, np.ndarray]:
-    """Compute hanging-wall flexural rollover hinge curvature and gravity concordance.
-
-    Above a concealed listric or normal master fault, the hanging-wall basin floor
-    exhibits a 450-1,350 m flexural rollover inflection where ``log1p(depth_to_base)``
-    curves downward while ``iso_grav_anom`` drops antiparallel to basement deepening.
-    """
-    if sigma_inner_px <= 0.0 or sigma_outer_px <= sigma_inner_px:
-        raise ValueError("Require 0 < sigma_inner_px < sigma_outer_px")
-    valid_b = np.asarray(valid, dtype=bool)
-    base_clean = np.maximum(_clean_valid(depth_to_base_m, valid_b), 0.0).astype(np.float32)
-    base_log = np.log1p(base_clean).astype(np.float32)
-    del base_clean
-
-    b_in = gaussian_filter(base_log, float(sigma_inner_px)).astype(np.float32)
-    b_out = gaussian_filter(base_log, float(sigma_outer_px)).astype(np.float32)
-    dog_base = np.maximum(b_in - b_out, 0.0).astype(np.float32)
-    del b_in, b_out
-
-    by, bx = _grad_xy(base_log, valid_b, sigma=2.0)
-    b_step = np.hypot(bx, by).astype(np.float32)
-    del base_log
-
-    hinge_curv = np.where(valid_b, dog_base * b_step * np.float32(10.0), 0.0).astype(np.float32)
-    del dog_base
-
-    grav_clean = _clean_valid(iso_grav_anom, valid_b).astype(np.float32)
-    g_in = gaussian_filter(grav_clean, float(sigma_inner_px)).astype(np.float32)
-    g_out = gaussian_filter(grav_clean, float(sigma_outer_px)).astype(np.float32)
-    dog_grav = np.maximum(g_out - g_in, 0.0).astype(np.float32)
-    del g_in, g_out
-
-    gy, gx = _grad_xy(grav_clean, valid_b, sigma=2.0)
-    g_step = np.hypot(gx, gy).astype(np.float32)
-    del grav_clean
-
-    # Antiparallel alignment: basement deepens (+grad B) where gravity drops (-grad G)
-    anti_cos = np.clip(-(bx * gx + by * gy) / (b_step * g_step + np.float32(1e-4)), 0.0, 1.0)
-    flex_grav = np.where(
-        valid_b,
-        np.log1p(dog_grav) * anti_cos * _sat(b_step, 0.14),
-        0.0,
-    ).astype(np.float32)
-    return hinge_curv, flex_grav
+def assert_training_band_tags(
+    src: rasterio.DatasetReader,
+    band_indices: list[int] | tuple[int, ...] | None = None,
+) -> None:
+    """Verify exact GDAL ``band_name`` tags on ``training_features.tif``."""
+    check_ids = tuple(EXPECTED_TRAINING_BAND_TAGS.keys()) if band_indices is None else tuple(band_indices)
+    for b in check_ids:
+        expected = EXPECTED_TRAINING_BAND_TAGS[b]
+        tags = src.tags(b)
+        actual = tags.get("band_name")
+        if actual != expected:
+            raise ValueError(
+                f"training_features.tif Band {b} expected band_name={expected!r}, got {actual!r}"
+            )
 
 
-def build_additive_tail_allocation(
-    s_crest: np.ndarray,
-    candidate_pool: np.ndarray,
-    *,
-    n_core: int = 37654,
-    n_total: int = 64000,
-    tail_weight: float = 0.30,
-    min_dist_px: float = 3.30,
-) -> np.ndarray:
-    """Build an additive-tail continuous [0, 1] allocation keeping top ``n_core`` crests at 1.0.
+def _sat_pos(arr: np.ndarray, c0: float) -> np.ndarray:
+    """Monotone local saturating transform ``max(x, 0) / (max(x, 0) + c0)`` in ``[0, 1)``."""
+    pos = np.maximum(np.asarray(arr, dtype=np.float32), 0.0)
+    return (pos / (pos + np.float32(c0))).astype(np.float32)
 
-    Addresses docs/NEXT_STEPS.md Item #1:
-      - Ranks 1..n_core receive full unit weight 1.0 (preserving 100% of primary TP_w
-        and avoiding VENTSCARP E3's soft-weight dilution of primary crests).
-      - Ranks (n_core + 1)..n_total receive continuous weight ``tail_weight`` in (0, 1)
-        (capturing secondary en-echelon Riedel & hydrothermal step-over strands with a
-        70% reduction in false-positive denominator cost under alpha=0.2, beta=0.8).
-    """
-    if not (0.0 < tail_weight <= 1.0):
-        raise ValueError("tail_weight must lie in (0, 1]")
-    if n_total < n_core or n_core < 1:
-        raise ValueError("Require 1 <= n_core <= n_total")
 
-    sel_all = spaced_top_mask(
-        s_crest,
-        candidate_pool,
-        int(n_total),
-        min_dist_px=float(min_dist_px),
-        cand_cap=950_000,
-    )
-    idx = np.flatnonzero(sel_all)
-    out = np.zeros(s_crest.shape, dtype=np.float32)
-    if idx.size == 0:
-        return out
-    vals = s_crest.ravel()[idx]
-    order = np.argsort(-vals, kind="mergesort")
-    sorted_idx = idx[order]
+def _smooth_valid(arr: np.ndarray, valid: np.ndarray, sigma_px: float) -> np.ndarray:
+    u = _clean_valid(arr, valid)
+    if sigma_px > 0.0:
+        u = gaussian_filter(u, float(sigma_px)).astype(np.float32)
+    return u
 
-    core_idx = sorted_idx[: int(n_core)]
-    tail_idx = sorted_idx[int(n_core) : int(n_total)]
-    out.ravel()[core_idx] = 1.0
-    if tail_idx.size > 0:
-        out.ravel()[tail_idx] = np.float32(tail_weight)
+
+def _decode_i16_band(ds: rasterio.DatasetReader, band_idx: int, scale: float = 1.0) -> np.ndarray:
+    raw = ds.read(band_idx)
+    nodata = ds.nodatavals[band_idx - 1]
+    out = np.zeros(raw.shape, dtype=np.float32)
+    ok = raw != nodata if nodata is not None else np.ones(raw.shape, dtype=bool)
+    out[ok] = raw[ok].astype(np.float32) * np.float32(scale)
     return out
 
 
-def compute_riedelvent_stack(
-    training_features_tif: Path,
-    topo_10m_tif: Path,
-    dem10_chi_tif: Path,
+def gravity_gradient_tensor_invariants(
+    grav_anom: np.ndarray,
+    grav_vg: np.ndarray,
+    valid: np.ndarray,
+    sigma_px: float = 2.2,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """Compute Pedersen & Rasmussen (1990) 2D horizontal gravity gradient tensor invariants.
+
+    Returns
+    -------
+    stepover_3d : float32 (H, W) in [0, 1]
+        ``(4 |lambda_1 lambda_2| / (lambda_1^2 + lambda_2^2 + eps)) * pct_rank(||G_AS||)``.
+        Vanishes (``-> 0``) on infinite 2D planar steps and peaks (``-> 1``) at 3D
+        relay-ramp breaches, fault terminations, and structural intersections.
+    log_as_amp : float32 (H, W) >= 0
+        ``log(1 + ||G_AS||)`` tensor analytic-signal amplitude.
+    gy, gx : float32 (H, W)
+        First horizontal derivatives of smoothed ``grav_anom``.
+    """
+    valid_b = np.asarray(valid, dtype=bool)
+    g_sm = _smooth_valid(grav_anom, valid_b, sigma_px=float(sigma_px))
+    gy, gx = np.gradient(g_sm)
+    gy = gy.astype(np.float32)
+    gx = gx.astype(np.float32)
+    gyy, gxy1 = np.gradient(gy)
+    gxy2, gxx = np.gradient(gx)
+    gxy = (0.5 * (gxy1 + gxy2)).astype(np.float32)
+    gxx = gxx.astype(np.float32)
+    gyy = gyy.astype(np.float32)
+    del g_sm, gxy1, gxy2
+
+    tr = (gxx + gyy).astype(np.float32)
+    rad = np.sqrt((gxx - gyy) ** 2 + np.float32(4.0) * gxy * gxy).astype(np.float32)
+    lam1 = (0.5 * (tr + rad)).astype(np.float32)
+    lam2 = (0.5 * (tr - rad)).astype(np.float32)
+    del tr, rad
+
+    gz = (np.float32(0.10) * _smooth_valid(grav_vg, valid_b, sigma_px=1.2)).astype(np.float32)
+    as_amp = np.sqrt(gxx * gxx + np.float32(2.0) * gxy * gxy + gyy * gyy + gz * gz).astype(np.float32)
+    del gxx, gxy, gyy, gz
+
+    dim_ratio = (
+        np.float32(4.0)
+        * np.abs(lam1 * lam2)
+        / (lam1 * lam1 + lam2 * lam2 + np.float32(1e-5))
+    ).astype(np.float32)
+    del lam1, lam2
+
+    dim_ratio = np.clip(dim_ratio, 0.0, 1.0)
+    as_rank = percentile_rank(as_amp, valid_b)
+    stepover_3d = np.where(valid_b, dim_ratio * as_rank, 0.0).astype(np.float32)
+    log_as_amp = np.where(valid_b, np.log1p(as_amp), 0.0).astype(np.float32)
+    gy[~valid_b] = 0.0
+    gx[~valid_b] = 0.0
+    return stepover_3d, log_as_amp, gy, gx
+
+
+def riedel_obliquity_couplings(
+    surf_gy: np.ndarray,
+    surf_gx: np.ndarray,
+    base_gy: np.ndarray,
+    base_gx: np.ndarray,
+    stepover_3d: np.ndarray,
+    shear_z: np.ndarray,
+    dilat_z: np.ndarray,
+    valid: np.ndarray,
+    mu_r_deg: float = 20.0,
+    sigma_r_deg: float = 8.5,
+    mu_rprime_deg: float = 72.0,
+    sigma_rprime_deg: float = 9.5,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """Compute Tchalenko (1970) synthetic R (20 deg) & antithetic R' (72 deg) strike obliquity."""
+    valid_b = np.asarray(valid, dtype=bool)
+    s_mag = np.hypot(surf_gy, surf_gx).astype(np.float32)
+    b_mag = np.hypot(base_gy, base_gx).astype(np.float32)
+
+    cos_dtheta = np.clip(
+        np.abs(surf_gy * base_gy + surf_gx * base_gx) / (s_mag * b_mag + np.float32(1e-6)),
+        0.0,
+        1.0,
+    ).astype(np.float32)
+    dtheta_deg = np.degrees(np.arccos(cos_dtheta)).astype(np.float32)
+    del cos_dtheta
+
+    edge_prod = np.sqrt(
+        percentile_rank(s_mag, valid_b) * percentile_rank(b_mag, valid_b)
+    ).astype(np.float32)
+    del s_mag, b_mag
+
+    r_syn = (
+        np.exp(-0.5 * ((dtheta_deg - np.float32(mu_r_deg)) / np.float32(sigma_r_deg)) ** 2)
+        * edge_prod
+    ).astype(np.float32)
+    r_conj = (
+        np.exp(-0.5 * ((dtheta_deg - np.float32(mu_rprime_deg)) / np.float32(sigma_rprime_deg)) ** 2)
+        * edge_prod
+    ).astype(np.float32)
+    r_collin = (
+        np.exp(-0.5 * (dtheta_deg / np.float32(sigma_r_deg)) ** 2) * edge_prod
+    ).astype(np.float32)
+    del dtheta_deg, edge_prod
+
+    r_excess = np.maximum(np.maximum(r_syn, r_conj) - r_collin, 0.0).astype(np.float32)
+    del r_collin
+
+    shear_gate = (np.float32(1.0) / (np.float32(1.0) + np.exp(-np.clip(shear_z, -6.0, 6.0)))).astype(
+        np.float32
+    )
+    dilat_gate = (
+        np.float32(0.5)
+        + np.float32(0.5) / (np.float32(1.0) + np.exp(-np.clip(dilat_z, -6.0, 6.0)))
+    ).astype(np.float32)
+    trans_pump = (
+        (np.float32(0.55) * r_syn + np.float32(0.25) * r_conj + np.float32(0.20) * stepover_3d)
+        * shear_gate
+        * dilat_gate
+    ).astype(np.float32)
+
+    for arr in (r_syn, r_conj, r_excess, trans_pump):
+        arr[~valid_b] = 0.0
+    return r_syn, r_conj, r_excess, trans_pump
+
+
+def build_riedelvent_crest_surface(
+    proba_2d: np.ndarray,
+    stack: RiedelVentStack,
+    *,
+    ablation_collinear_novent: bool = False,
+) -> dict[str, np.ndarray]:
+    """Fuse LOQO fault posterior with 1D Riedel/10m-scarp/knick/subsurface localization."""
+    valid_b = np.asarray(stack.valid, dtype=bool) & np.asarray(stack.footprint, dtype=bool)
+    p = np.where(valid_b, np.clip(np.asarray(proba_2d, dtype=np.float32), 0.0, 1.0), 0.0)
+
+    if ablation_collinear_novent:
+        e_line = np.maximum(
+            np.float32(0.95) * stack.L_topo100,
+            np.maximum(
+                np.float32(0.88) * stack.L_scarp10m,
+                np.maximum(
+                    np.float32(0.86) * stack.L_knick,
+                    np.float32(1.12) * stack.L_subsurf,
+                ),
+            ),
+        ).astype(np.float32)
+    else:
+        e_base = np.maximum(
+            np.float32(0.96) * stack.L_scarp10m,
+            np.maximum(
+                np.float32(1.06) * stack.L_riedel,
+                np.maximum(
+                    np.float32(0.92) * stack.L_knick,
+                    np.float32(1.18) * stack.L_subsurf,
+                ),
+            ),
+        )
+        e_line = (e_base * stack.L_vent_amp).astype(np.float32)
+
+    s_crest = np.where(valid_b, p * (np.float32(0.14) + np.float32(0.86) * e_line), 0.0).astype(
+        np.float32
+    )
+    ridge_1d = directional_ridge_1d(s_crest, valid_b)
+    s_max = float(s_crest.max())
+    s_unit = (s_crest / np.float32(s_max)).astype(np.float32) if s_max > 0.0 else s_crest.copy()
+    return {
+        "S_crest": s_crest,
+        "S_crest_unit": np.clip(s_unit, 0.0, 1.0).astype(np.float32),
+        "E_line": np.where(valid_b, e_line, 0.0).astype(np.float32),
+        "ridge_1d": ridge_1d,
+    }
+
+
+def emit_binary_crest_dots(
+    s_crest: np.ndarray,
+    cand_pool: np.ndarray,
+    *,
+    n_dots: int = 37_654,
+    min_dist_px: float = 3.2,
+    cand_cap: int = 500_000,
+) -> np.ndarray:
+    """Emit deterministic binary ``{0.0, 1.0}`` spaced 1D crest dots."""
+    chosen = spaced_top_mask(
+        s_crest,
+        cand_pool,
+        int(n_dots),
+        min_dist_px=float(min_dist_px),
+        cand_cap=int(cand_cap),
+        require_full=False,
+    )
+    return chosen.astype(np.float32)
+
+
+def build_additive_mobius_tail_allocation(
+    s_crest: np.ndarray,
+    cand_pool: np.ndarray,
+    *,
+    n_primary: int = 37_654,
+    n_total: int = 85_000,
+    min_dist_px: float = 3.0,
+    tail_hi: float = 0.60,
+    tail_lo: float = 0.30,
+    cand_cap: int = 650_000,
+) -> np.ndarray:
+    """Möbius-DTI additive recall tail with ZERO dilution of primary crests.
+
+    Ranks ``1..n_primary`` receive exact weight ``1.0``; secondary spaced crests
+    ``n_primary+1..n_total`` receive monotone weights linearly ramped from
+    ``tail_hi`` to ``tail_lo``.
+    """
+    if n_total < n_primary or n_primary <= 0:
+        raise ValueError(f"Require 0 < n_primary <= n_total, got {n_primary}, {n_total}")
+    if not (0.0 < tail_lo <= tail_hi <= 1.0):
+        raise ValueError(f"Require 0 < tail_lo <= tail_hi <= 1, got {tail_lo}, {tail_hi}")
+
+    cand_b = np.asarray(cand_pool, dtype=bool)
+    chosen = spaced_top_mask(
+        s_crest,
+        cand_b,
+        int(n_total),
+        min_dist_px=float(min_dist_px),
+        cand_cap=int(cand_cap),
+        require_full=False,
+    )
+    ys, xs = np.nonzero(chosen)
+    out = np.zeros(s_crest.shape, dtype=np.float32)
+    if ys.size == 0:
+        return out
+
+    scores = s_crest[ys, xs].astype(np.float64)
+    order = np.lexsort((xs, ys, -scores))
+    ys = ys[order]
+    xs = xs[order]
+    k = ys.size
+
+    k_prim = min(int(n_primary), k)
+    out[ys[:k_prim], xs[:k_prim]] = np.float32(1.0)
+    if k > k_prim:
+        n_tail = k - k_prim
+        if n_tail == 1:
+            tail_w = np.array([tail_hi], dtype=np.float32)
+        else:
+            tail_w = np.linspace(float(tail_hi), float(tail_lo), n_tail, dtype=np.float32)
+        out[ys[k_prim:], xs[k_prim:]] = np.clip(tail_w, np.float32(1e-4), np.float32(1.0))
+
+    out[~cand_b] = 0.0
+    return np.clip(out, 0.0, 1.0).astype(np.float32)
+
+
+def build_riedelvent_stack(
+    training_tif: Path,
+    topo10m_tif: Path,
+    chi10m_tif: Path,
+    geodawn_rad_tif: Path,
+    geodawn_ext_tif: Path,
     paleo_zip: Path,
     probe_2m_zip: Path,
     wellspring_csv: Path,
-    geodawn_ext_tif: Path,
     footprint: np.ndarray,
-) -> dict[str, object]:
-    """Stream all 30 zero-catalogue RIEDELVENT features into ``X_foot`` (<1.45 GiB peak RSS)."""
+) -> RiedelVentStack:
+    """Build the 32-feature zero-catalogue ``RIEDELVENT`` matrix and 1D localizers."""
     foot = np.asarray(footprint, dtype=bool)
-    shape = foot.shape
-    n_foot = int(foot.sum())
-    X = np.zeros((n_foot, len(FEATURE_NAMES)), dtype=np.float32)
+    if foot.shape != (EXPECTED_GRID_H, EXPECTED_GRID_W):
+        raise ValueError(f"Unexpected footprint shape: {foot.shape}")
 
-    def _read_tf(b: int) -> np.ndarray:
-        with rasterio.open(training_features_tif) as ds:
-            arr = ds.read(b, masked=True).filled(np.nan).astype(np.float32)
+    n_foot = int(foot.sum())
+    n_feat = len(RIEDELVENT_FEATURE_NAMES)
+    X = np.zeros((n_foot, n_feat), dtype=np.float32)
+
+    def _read_tf(ds: rasterio.DatasetReader, b: int) -> np.ndarray:
+        arr = ds.read(b, masked=True).filled(np.nan).astype(np.float32)
         arr[np.abs(arr) > 1e20] = np.nan
         return arr
 
-    # Read 100 m detrended elevation & slope first to establish exact valid mask
-    b12_elev = _read_tf(12)
-    b19_slope = _read_tf(19)
-    valid = foot & np.isfinite(b12_elev) & np.isfinite(b19_slope)
-    with rasterio.open(training_features_tif) as ds_ref:
-        transform = ds_ref.transform
+    def _put(col: int, arr2d: np.ndarray) -> None:
+        vals = np.asarray(arr2d, dtype=np.float32)[foot]
+        vals = np.nan_to_num(vals, nan=0.0, posinf=0.0, neginf=0.0)
+        X[:, col] = vals
 
-    b19_clean = _clean_valid(b19_slope, valid)
-    p99_b19 = float(np.percentile(b19_clean[valid], 99.0))
-    if p99_b19 <= 2.5:
-        slope_100m_deg = np.rad2deg(np.arctan(np.maximum(b19_clean, 0.0))).astype(np.float32)
-    else:
-        slope_100m_deg = np.maximum(b19_clean, 0.0).astype(np.float32)
-    del b19_slope
+    # ------------------------------------------------------------------
+    # 1. Verify exact GDAL band tags on training_features.tif & load 100 m topo
+    # ------------------------------------------------------------------
+    with rasterio.open(training_tif) as ds_tf:
+        assert_training_band_tags(ds_tf)
+        tf_transform = ds_tf.transform
+        b12_det_elev = _read_tf(ds_tf, 12)
+        b19_slope100 = _read_tf(ds_tf, 19)
 
-    # --- Group A: USGS 3DEP 10 m Sub-Pixel Scarp + 10m/100m Thalweg Knickzones (0..8) ---
-    with rasterio.open(topo_10m_tif) as ds10:
-        s10_p90 = _decode_u8_band(ds10, 1)
-        s10_max = _decode_u8_band(ds10, 2)
-        s10_std = _decode_u8_band(ds10, 4)
-        curv10_prof = _decode_u8_band(ds10, 6)
-        asp10_coh = _decode_u8_band(ds10, 7)
-        hs10_lin = _decode_u8_band(ds10, 8)
-        dem10_mean = _decode_u8_band(ds10, 9)
-
-    ex_max = subpixel_scarp_excess(s10_max, slope_100m_deg, valid)
-    ex_p90 = subpixel_scarp_excess(s10_p90, slope_100m_deg, valid)
-    std_norm = np.where(valid, s10_std / (1.0 + 0.25 * slope_100m_deg), 0.0).astype(np.float32)
-    pied_gate = np.exp(-((slope_100m_deg / np.float32(11.5)) ** 2)).astype(np.float32)
-    curv_pied = np.where(valid, np.log1p(np.maximum(curv10_prof, 0.0)) * pied_gate, 0.0).astype(
+    valid = foot & np.isfinite(b12_det_elev) & np.isfinite(b19_slope100)
+    b19_clean = np.where(valid, np.maximum(_clean_valid(b19_slope100, valid), 0.0), 0.0).astype(
         np.float32
     )
-    lin_coh = np.where(valid, asp10_coh * hs10_lin, 0.0).astype(np.float32)
-    gy_s10, gx_s10 = _grad_xy(s10_p90, valid, sigma=1.0)
-    steep_step_grad = np.hypot(gx_s10, gy_s10).astype(np.float32)
+    del b19_slope100
 
-    X[:, 0] = ex_max[foot]
-    X[:, 1] = ex_p90[foot]
-    X[:, 2] = std_norm[foot]
-    X[:, 3] = curv_pied[foot]
-    X[:, 4] = lin_coh[foot]
-    X[:, 5] = steep_step_grad[foot]
-    del s10_max, s10_std, asp10_coh, hs10_lin, gy_s10, gx_s10
+    # ------------------------------------------------------------------
+    # 2. Group A (0..8): USGS 3DEP 10 m Sub-Pixel Scarp + Chi/ksn + 100 m Thalweg Knickzones
+    # ------------------------------------------------------------------
+    with rasterio.open(topo10m_tif) as ds_t10:
+        s10_p90 = _decode_u8_band(ds_t10, 1)
+        s10_max = _decode_u8_band(ds_t10, 2)
+        steep_f = _decode_u8_band(ds_t10, 3)
+        s10_std = _decode_u8_band(ds_t10, 4)
+        curv10 = _decode_u8_band(ds_t10, 6)
+        asp_coh = _decode_u8_band(ds_t10, 7)
+        hs_lin = _decode_u8_band(ds_t10, 8)
+        dem10_z = _decode_u8_band(ds_t10, 9)
 
-    with rasterio.open(dem10_chi_tif) as dschi:
-        step_raw = dschi.read(1).astype(np.float32)
-        ksn_raw = dschi.read(3).astype(np.float32)
-        area_raw = dschi.read(4).astype(np.float32)
-    chi_valid = valid & (step_raw > -32000)
-    chi_step_pos = np.where(chi_valid, np.log1p(np.maximum(step_raw, 0.0) * 0.001), 0.0).astype(
-        np.float32
-    )
-    chi_step_sm = np.where(valid, gaussian_filter(chi_step_pos, 1.6), 0.0).astype(np.float32)
-    ksn_pos = np.where(
-        chi_valid & (ksn_raw > -32000) & (area_raw > -32000),
-        np.log1p(np.maximum(ksn_raw, 0.0)) * np.maximum(area_raw * 0.001 - 4.0, 0.0),
+    scarp_excess_max = subpixel_scarp_excess(s10_max, b19_clean, valid)
+    scarp_excess_p90 = subpixel_scarp_excess(s10_p90, np.float32(0.80) * b19_clean, valid)
+    subpix_disp = np.where(valid, s10_std / (s10_p90 + np.float32(0.5)), 0.0).astype(np.float32)
+    pied_gate = np.exp(-0.5 * (b19_clean / np.float32(14.0)) ** 2).astype(np.float32)
+    wallace_curv = np.where(
+        valid,
+        np.log1p(np.maximum(curv10, 0.0)) * pied_gate * np.log1p(np.maximum(s10_max, 0.0)),
         0.0,
     ).astype(np.float32)
-    ksn_sm = np.where(valid, gaussian_filter(ksn_pos, 1.6), 0.0).astype(np.float32)
-    X[:, 6] = chi_step_sm[foot]
-    X[:, 7] = ksn_sm[foot]
-    del step_raw, ksn_raw, area_raw, chi_valid, chi_step_pos, ksn_pos
+    lin_coh = np.where(valid, asp_coh * hs_lin, 0.0).astype(np.float32)
+    sy_sf, sx_sf = _grad_xy(steep_f, valid, sigma=1.0)
+    steep_step = np.where(valid, np.hypot(sy_sf, sx_sf), 0.0).astype(np.float32)
+    del s10_max, steep_f, s10_std, curv10, asp_coh, hs_lin, pied_gate, sy_sf, sx_sf
 
-    # 100 m incised drainage thalweg knickzone (from KNICKLOQO)
-    log_slope100 = np.log(np.maximum(b19_clean, 0.0) + np.float32(1.0)).astype(np.float32)
-    del b19_clean
-    lsy, lsx = _grad_xy(log_slope100, valid, sigma=1.0)
+    _put(0, scarp_excess_max)
+    _put(1, scarp_excess_p90)
+    _put(2, subpix_disp)
+    _put(3, wallace_curv)
+    _put(4, lin_coh)
+    _put(5, steep_step)
+    del subpix_disp
+
+    with rasterio.open(chi10m_tif) as ds_chi:
+        chi_step_max = _decode_i16_band(ds_chi, 1, scale=0.001)
+        ksn10 = _decode_i16_band(ds_chi, 3, scale=1.0)
+        log10_area = _decode_i16_band(ds_chi, 4, scale=0.001)
+
+    area_gate = np.clip((log10_area - np.float32(3.5)) / np.float32(2.5), 0.0, 1.0).astype(np.float32)
+    fluvial_chi_step = np.where(
+        valid, np.log1p(np.maximum(chi_step_max, 0.0)) * area_gate, 0.0
+    ).astype(np.float32)
+    fluvial_ksn = np.where(
+        valid, np.log1p(np.maximum(ksn10, 0.0)) * area_gate, 0.0
+    ).astype(np.float32)
+    del chi_step_max, ksn10, log10_area, area_gate
+
+    _put(6, fluvial_chi_step)
+    _put(7, fluvial_ksn)
+    del fluvial_ksn
+
+    # 100 m Incised Thalweg Concavity Knickzone
+    log_s100 = np.log(b19_clean + np.float32(0.25)).astype(np.float32)
+    lsy, lsx = _grad_xy(log_s100, valid, sigma=1.0)
     rel_break100 = np.where(valid, np.hypot(lsy, lsx), 0.0).astype(np.float32)
-    del lsy, lsx, log_slope100
-    thal_15 = thalweg_concavity_strength(b12_elev, valid, sigma=1.5)
-    thal_30 = thalweg_concavity_strength(b12_elev, valid, sigma=3.0)
+    del lsy, lsx
+    hess_s12 = hessian_ridge_strength(log_s100, valid, sigma=1.2)
+    del log_s100
+    mu_step100 = cross_strike_monotonicity(
+        b12_det_elev, valid, half_span_px=3, normal_sigma=3.0, elev_floor_m=0.5
+    )
+    thal_15 = thalweg_concavity_strength(b12_det_elev, valid, sigma=1.5)
+    thal_30 = thalweg_concavity_strength(b12_det_elev, valid, sigma=3.0)
     thal_concav = np.maximum(thal_15, np.float32(0.75) * thal_30).astype(np.float32)
     del thal_15, thal_30
     thalweg_knick = np.where(
         valid,
-        _sat(thal_concav, 1.8) * _sat(rel_break100, 0.045),
+        _sat_pos(thal_concav, 1.8) * _sat_pos(rel_break100, 0.045),
         0.0,
     ).astype(np.float32)
     del thal_concav
-    X[:, 8] = thalweg_knick[foot]
+    _put(8, thalweg_knick)
 
-    mu_step100 = cross_strike_monotonicity(
-        b12_elev, valid, half_span_px=3, normal_sigma=3.0, elev_floor_m=0.5
-    )
+    # Surface scarp gradient vector (blending 10 m sub-pixel p90 scarp + 100 m detrended elevation)
+    surf_pot = (
+        np.float32(0.65) * percentile_rank(s10_p90, valid)
+        + np.float32(0.35) * percentile_rank(b12_det_elev, valid)
+    ).astype(np.float32)
+    surf_gy, surf_gx = _grad_xy(surf_pot, valid, sigma=1.3)
+    del surf_pot, s10_p90
 
-    # Cross-contour scarp transgression vs 1,330 m Lake Lahontan shoreline bench mimic
-    gy_c100, gx_c100 = _grad_xy(b12_elev, valid, sigma=4.5)
-    gy_s, gx_s = _grad_xy(s10_p90, valid, sigma=1.2)
-    ang_c = np.arctan2(gy_c100, gx_c100)
-    ang_s = np.arctan2(gy_s, gx_s)
-    transgress = np.where(valid, np.abs(np.sin(ang_s - ang_c)), 0.0).astype(np.float32)
-    lahontan_elev = np.exp(-(((dem10_mean - np.float32(1330.0)) / np.float32(45.0)) ** 2)).astype(
+    # 10 m DEM horizontal gradient + Lake Lahontan 1330 m contour-parallel null prep
+    z10_gy, z10_gx = _grad_xy(dem10_z, valid, sigma=1.5)
+    z10_gnorm = np.hypot(z10_gy, z10_gx).astype(np.float32)
+    lahontan_elev_band = np.exp(-0.5 * ((dem10_z - np.float32(1330.0)) / np.float32(55.0)) ** 2).astype(
         np.float32
     )
-    lahontan_null = np.where(valid, lahontan_elev * (1.0 - transgress), 0.0).astype(np.float32)
-    del gy_c100, gx_c100, gy_s, gx_s, ang_c, ang_s, lahontan_elev
+    del dem10_z
 
-    # 1D Sub-Pixel Piedmont Scarp & Coupled 10m/100m Knickzone Localizer Branches
-    l_scarp10m = np.where(
+    coh_topo, az_topo = coherence_and_strike_deg(b12_det_elev, valid)
+    zy100, zx100 = _grad_xy(b12_det_elev, valid, sigma=2.0)
+    znorm100 = np.hypot(zy100, zx100).astype(np.float32)
+    az_rad = np.radians(az_topo)
+    cross_contour = np.where(
         valid,
-        0.34 * _sat(ex_max, 0.85) * (0.35 + 0.65 * pied_gate)
-        + 0.26 * _sat(curv_pied, 1.60)
-        + 0.22 * _sat(lin_coh, 0.22) * (0.40 + 0.60 * pied_gate)
-        + 0.18 * _sat(steep_step_grad, 3.5) * pied_gate,
-        0.0,
-    ).astype(np.float32)
-    l_knick = np.where(
-        valid,
-        0.44 * (0.62 * _sat(chi_step_sm, 0.25) + 0.38 * _sat(ksn_sm, 2.2))
-        + 0.34 * _sat(thalweg_knick * (0.50 + 0.50 * transgress), 0.10)
-        + 0.22 * _sat(rel_break100 * (0.40 + 0.60 * transgress) * (0.35 + 0.65 * mu_step100), 0.045),
-        0.0,
-    ).astype(np.float32)
-    del (
-        ex_p90,
-        std_norm,
-        curv10_prof,
-        curv_pied,
-        lin_coh,
-        steep_step_grad,
-        chi_step_sm,
-        ksn_sm,
-        thalweg_knick,
-        rel_break100,
-        mu_step100,
-    )
-    gc.collect()
-
-    # --- Group B: Tufa-Filtered INGENIOUS Hydrothermal Vents, 2mDAB & Alteration (9..17) ---
-    paleo_imp, paleo_stats = _rasterize_paleo_vents(paleo_zip, transform, shape, valid)
-    probe_imp, probe_stats = _rasterize_2m_temperature_probes(probe_2m_zip, transform, shape, valid)
-    spring_imp, spring_stats = _rasterize_active_thermal_springs(wellspring_csv, shape, valid)
-
-    paleo_plume = anisotropic_strike_plume(
-        paleo_imp, valid, strike_deg_east_of_north=18.0, sigma_parallel_px=24.0, sigma_perp_px=8.0
-    )
-    probe_plume = anisotropic_strike_plume(
-        probe_imp, valid, strike_deg_east_of_north=18.0, sigma_parallel_px=22.0, sigma_perp_px=7.5
-    )
-    spring_plume = anisotropic_strike_plume(
-        spring_imp, valid, strike_deg_east_of_north=18.0, sigma_parallel_px=24.0, sigma_perp_px=8.0
-    )
-    vent_comb = (1.20 * paleo_imp + 1.00 * probe_imp + 0.85 * spring_imp).astype(np.float32)
-    district_halo = np.where(valid, gaussian_filter(vent_comb, 46.0) * 100.0, 0.0).astype(
-        np.float32
-    )
-    del paleo_imp, probe_imp, spring_imp, vent_comb
-
-    X[:, 9] = np.log1p(paleo_plume * 4.0)[foot]
-    X[:, 10] = np.log1p(probe_plume * 3.0)[foot]
-    X[:, 11] = np.log1p(spring_plume * 2.5)[foot]
-    X[:, 12] = np.log1p(district_halo)[foot]
-
-    with rasterio.open(geodawn_ext_tif) as dsext:
-        thk_u8 = dsext.read(1).astype(np.float32)
-        uth_u8 = dsext.read(3).astype(np.float32)
-        tmi150_u8 = dsext.read(4).astype(np.float32)
-    ext_valid = valid & (thk_u8 > 0) & (tmi150_u8 > 0)
-    k_over_th_z = -mesoscale_zscore(thk_u8, ext_valid, sigma_px=40.0)
-    u_over_th_z = mesoscale_zscore(uth_u8, ext_valid, sigma_px=40.0)
-
-    b2_rtp = _read_tf(2)
-    rtp_clean = _clean_valid(b2_rtp, valid)
-    rtp_z30 = mesoscale_zscore(b2_rtp, ext_valid & np.isfinite(b2_rtp), sigma_px=30.0)
-    tmi150_z30 = mesoscale_zscore(tmi150_u8, ext_valid, sigma_px=30.0)
-    grauch_demag = np.where(ext_valid, np.clip(tmi150_z30 - rtp_z30, -4.0, 4.0), 0.0).astype(
-        np.float32
-    )
-    gy_demag, gx_demag = _grad_xy(grauch_demag, valid, sigma=1.5)
-    grauch_edge = np.hypot(gx_demag, gy_demag).astype(np.float32)
-    del thk_u8, uth_u8, tmi150_u8, ext_valid, b2_rtp, rtp_z30, tmi150_z30, gy_demag, gx_demag
-
-    b17_mt = _read_tf(17)
-    mt_log = np.log1p(np.maximum(_clean_valid(b17_mt, valid), 0.0)).astype(np.float32)
-    gy_mt, gx_mt = _grad_xy(mt_log, valid, sigma=2.0)
-    mt_grad = np.hypot(gx_mt, gy_mt).astype(np.float32)
-    del b17_mt, mt_log, gy_mt, gx_mt
-
-    b3_hf = _read_tf(3)
-    hf_z = mesoscale_zscore(b3_hf, valid & np.isfinite(b3_hf), sigma_px=55.0)
-    hf_scarp = np.where(
-        valid,
-        np.maximum(hf_z, 0.0) * (0.4 + 0.6 * _sat(ex_max, 0.85))
-        + np.log1p(paleo_plume + probe_plume + 0.5 * spring_plume) * _sat(ex_max, 0.85),
-        0.0,
-    ).astype(np.float32)
-    del b3_hf, hf_z
-
-    X[:, 13] = k_over_th_z[foot]
-    X[:, 14] = u_over_th_z[foot]
-    X[:, 15] = grauch_demag[foot]
-    X[:, 16] = mt_grad[foot]
-    X[:, 17] = hf_scarp[foot]
-
-    vent_gate = np.clip(
-        0.36
-        + 0.64
-        * _sat(
-            paleo_plume * 2.5 + probe_plume * 2.0 + spring_plume * 1.2 + 0.25 * district_halo,
-            0.60,
+        np.clip(
+            np.abs((-np.cos(az_rad)) * zy100 + np.sin(az_rad) * zx100)
+            / (znorm100 + np.float32(0.35)),
+            0.0,
+            1.0,
         ),
-        0.36,
-        1.0,
+        0.0,
     ).astype(np.float32)
-    del paleo_plume, probe_plume, spring_plume, district_halo, k_over_th_z, u_over_th_z, grauch_demag, hf_scarp
+    del az_rad, zy100, zx100, znorm100, b12_det_elev, b19_clean
     gc.collect()
 
-    # --- Group C: Province-Debiased Subsurface, Poisson Collinearity & Shoreline Null (18..25) ---
-    b5_gslope = _read_tf(5)
-    gslope_z = mesoscale_zscore(b5_gslope, valid & np.isfinite(b5_gslope), sigma_px=42.0)
-    del b5_gslope
+    # ------------------------------------------------------------------
+    # 3. Group B (9..14) & Group D (23..31): Tag-Verified Gravity Tensor, Riedel & Subsurface
+    # ------------------------------------------------------------------
+    with rasterio.open(training_tif) as ds_tf:
+        b2_rtp = _read_tf(ds_tf, 2)
+        b3_tmi_hg = _read_tf(ds_tf, 3)
+        b4_2ndinv = _read_tf(ds_tf, 4)
+        b5_grav_slope = _read_tf(ds_tf, 5)
+        b7_shear = _read_tf(ds_tf, 7)
+        b8_dilat = _read_tf(ds_tf, 8)
+        b11_grav_vg = _read_tf(ds_tf, 11)
+        b13_grav = _read_tf(ds_tf, 13)
+        b15_dbase = _read_tf(ds_tf, 15)
+        b17_cond = _read_tf(ds_tf, 17)
+        b18_grav_hg = _read_tf(ds_tf, 18)
 
-    b18_grav = _read_tf(18)
-    gy_g, gx_g = _grad_xy(b18_grav, valid, sigma=2.0)
-    gh = np.hypot(gx_g, gy_g).astype(np.float32)
-    gz_approx = gaussian_filter(_clean_valid(b18_grav, valid), 2.0) - gaussian_filter(
-        _clean_valid(b18_grav, valid), 6.0
+    shear_z = mesoscale_zscore(b7_shear, valid, sigma_px=45.0, eps=0.25)
+    dilat_z = mesoscale_zscore(b8_dilat, valid, sigma_px=45.0, eps=0.25)
+
+    stepover_3d, log_as_amp, grav_gy, grav_gx = gravity_gradient_tensor_invariants(
+        b13_grav, b11_grav_vg, valid, sigma_px=2.2
     )
-    grav_tilt = np.arctan2(gz_approx, gh + np.float32(1e-4)).astype(np.float32)
-    gy_gt, gx_gt = _grad_xy(grav_tilt, valid, sigma=1.5)
-    grav_tilt_grad = np.hypot(gx_gt, gy_gt).astype(np.float32)
-    del gz_approx, grav_tilt, gy_gt, gx_gt
+    grav_gnorm = np.hypot(grav_gy, grav_gx).astype(np.float32)
 
-    b15_base = _read_tf(15)
-    base_clean = np.maximum(_clean_valid(b15_base, valid), 0.0).astype(np.float32)
-    base_log = np.where(valid, np.log1p(base_clean), 0.0).astype(np.float32)
-    gy_b, gx_b = _grad_xy(base_log, valid, sigma=1.8)
-    base_step = np.hypot(gx_b, gy_b).astype(np.float32)
-    del gy_b, gx_b
+    rtp_sm = _smooth_valid(b2_rtp, valid, sigma_px=1.2)
+    rtp_gy, rtp_gx = np.gradient(rtp_sm)
+    rtp_gy = rtp_gy.astype(np.float32)
+    rtp_gx = rtp_gx.astype(np.float32)
+    rtp_gnorm = np.hypot(rtp_gy, rtp_gx).astype(np.float32)
+    ryy, _ = np.gradient(rtp_gy)
+    _, rxx = np.gradient(rtp_gx)
+    rtp_lap = (rxx + ryy).astype(np.float32)
+    del rtp_sm, rxx, ryy
+    coh_rtp, _ = coherence_and_strike_deg(b2_rtp, valid)
+    rtp_tilt = np.where(
+        valid,
+        (rtp_gnorm / np.sqrt(rtp_gnorm * rtp_gnorm + rtp_lap * rtp_lap + np.float32(1.5 ** 2)))
+        * coh_rtp,
+        0.0,
+    ).astype(np.float32)
+    del rtp_lap, coh_rtp, b2_rtp
 
-    # Sliding-window Poisson's-relation magneto-gravity vector collinearity (Band 2 RTP vs Band 13/18 gravity)
-    u_rtp = gaussian_filter(rtp_clean, 1.2).astype(np.float32)
-    ry, rx = np.gradient(u_rtp)
-    r_gh = np.hypot(ry, rx).astype(np.float32)
-    del u_rtp
+    base_pot = (
+        np.float32(0.70) * percentile_rank(b13_grav, valid)
+        + np.float32(0.30) * percentile_rank(rtp_gnorm, valid)
+    ).astype(np.float32)
+    base_gy, base_gx = _grad_xy(base_pot, valid, sigma=2.0)
+    del base_pot, b13_grav
+
+    r_syn, r_conj, r_excess, trans_pump = riedel_obliquity_couplings(
+        surf_gy,
+        surf_gx,
+        base_gy,
+        base_gx,
+        stepover_3d,
+        shear_z,
+        dilat_z,
+        valid,
+    )
+    del surf_gy, surf_gx, base_gy, base_gx
+
+    _put(9, stepover_3d)
+    _put(10, log_as_amp)
+    _put(11, r_syn)
+    _put(12, r_conj)
+    _put(13, r_excess)
+    _put(14, trans_pump)
+    del log_as_amp
+
+    # Group D (23..31)
+    gs_pos = np.where(valid, np.maximum(_clean_valid(b5_grav_slope, valid), 0.0), 0.0).astype(
+        np.float32
+    )
+    gvg_clean = _smooth_valid(b11_grav_vg, valid, sigma_px=1.0)
+    grav_tilt = np.where(
+        valid,
+        gs_pos / np.sqrt(gs_pos * gs_pos + (np.float32(0.05) * gvg_clean) ** 2 + np.float32(0.02 ** 2)),
+        0.0,
+    ).astype(np.float32)
+    del b5_grav_slope, b11_grav_vg, gs_pos, gvg_clean
+
+    dip_concord_grav13 = np.where(
+        valid,
+        np.clip(
+            (z10_gy * grav_gy + z10_gx * grav_gx) / (z10_gnorm * grav_gnorm + np.float32(1e-5)),
+            -1.0,
+            1.0,
+        ),
+        0.0,
+    ).astype(np.float32)
+    del z10_gy, z10_gnorm
+
+    b18_clean = _smooth_valid(b18_grav_hg, valid, sigma_px=1.0)
+    ew_polarity = np.where(
+        valid,
+        np.tanh(z10_gx / np.float32(6.0)) * np.tanh(b18_clean / np.float32(1.5)),
+        0.0,
+    ).astype(np.float32)
+    del z10_gx, b18_grav_hg, b18_clean
+
     poisson_collin = np.where(
         valid,
-        np.clip(np.abs(ry * gy_g + rx * gx_g) / (r_gh * gh + np.float32(1e-4)), 0.0, 1.0),
+        np.clip(
+            np.abs(rtp_gy * grav_gy + rtp_gx * grav_gx) / (rtp_gnorm * grav_gnorm + np.float32(1e-4)),
+            0.0,
+            1.0,
+        ),
         0.0,
     ).astype(np.float32)
-    rtp_hess = hessian_ridge_strength(np.log1p(r_gh), valid, sigma=2.0)
-    r_gh_norm = _sat(r_gh, float(np.percentile(r_gh[valid], 75.0)) + 1e-4)
-    del ry, rx, r_gh, rtp_clean
-
-    # Polarity concordance: hanging-wall downslope (-grad dem10_mean) aligned with gravity drop (-grad grav)
-    gy_z10, gx_z10 = _grad_xy(dem10_mean, valid, sigma=1.8)
-    nz10 = np.hypot(gx_z10, gy_z10) + np.float32(1e-4)
-    ng = gh + np.float32(1e-4)
-    dip_concord = np.where(
+    poisson_concord = np.where(
         valid,
-        np.clip((gx_z10 * gx_g + gy_z10 * gy_g) / (nz10 * ng), -1.0, 1.0)
-        * _sat(gh, float(np.percentile(gh[valid], 75.0)) + 1e-4),
+        poisson_collin * np.sqrt(np.maximum(rtp_tilt * grav_tilt, 0.0)),
         0.0,
     ).astype(np.float32)
-    del dem10_mean, gy_z10, gx_z10, gy_g, gx_g, gh
+    del rtp_gy, rtp_gx, rtp_gnorm, grav_gy, grav_gx, grav_gnorm, poisson_collin
 
-    b4_s2i = _read_tf(4)
-    s2i_z = mesoscale_zscore(b4_s2i, valid & np.isfinite(b4_s2i), sigma_px=45.0)
-    del b4_s2i
-
-    X[:, 18] = gslope_z[foot]
-    X[:, 19] = grav_tilt_grad[foot]
-    X[:, 20] = base_step[foot]
-    X[:, 21] = poisson_collin[foot]
-    X[:, 22] = dip_concord[foot]
-    X[:, 23] = s2i_z[foot]
-    X[:, 24] = transgress[foot]
-    X[:, 25] = lahontan_null[foot]
-    del dip_concord, transgress, lahontan_null
-
-    # --- Group D: En-Echelon Riedel Obliquity & Hanging-Wall Flexural Hinge (26..29) ---
-    # Fine-scale surface/shallow scarp field vs mesoscale basement/gravity master field
-    fine_struct = np.where(valid, 0.65 * s10_p90 + 0.35 * b12_elev * 0.05, 0.0).astype(np.float32)
-    master_struct = np.where(
-        valid, 0.55 * _clean_valid(b18_grav, valid) - 0.45 * base_log * 4.0, 0.0
+    db_pos = np.where(valid, np.maximum(_clean_valid(b15_dbase, valid), 0.0), 0.0).astype(np.float32)
+    del b15_dbase
+    dby, dbx = _grad_xy(np.log(db_pos + np.float32(10.0)).astype(np.float32), valid, sigma=2.0)
+    db_step = np.where(valid, np.hypot(dby, dbx), 0.0).astype(np.float32)
+    del dby, dbx
+    base_depth_step = (
+        np.float32(0.65) * percentile_rank(db_step, valid)
+        + np.float32(0.35) * percentile_rank(np.log1p(db_pos), valid)
     ).astype(np.float32)
-    del s10_p90, b12_elev, b18_grav, base_log
+    del db_pos
 
-    riedel_idx, _ = riedel_obliquity_field(
-        fine_struct,
-        master_struct,
+    t_dil, t_slip = coulomb_tendencies(az_topo, b7_shear, b8_dilat, valid)
+    s2i_rank = percentile_rank(np.maximum(_smooth_valid(b4_2ndinv, valid, sigma_px=2.0), 0.0), valid)
+    coulomb_comb = np.where(
         valid,
-        fine_grad_sigma=1.2,
-        fine_tensor_sigma=2.5,
-        master_grad_sigma=4.0,
-        master_tensor_sigma=14.0,
-        target_obliquity_deg=19.0,
-        bandwidth_deg=6.5,
-    )
-    del fine_struct, master_struct
-
-    b7_shr = _read_tf(7)
-    shr_z = mesoscale_zscore(b7_shr, valid & np.isfinite(b7_shr), sigma_px=45.0)
-    del b7_shr
-
-    b8_dil = _read_tf(8)
-    dil_z = mesoscale_zscore(b8_dil, valid & np.isfinite(b8_dil), sigma_px=45.0)
-    del b8_dil
-
-    strain_gate = (
-        1.0 / (1.0 + np.exp(-0.85 * (0.50 * shr_z + 0.35 * dil_z + 0.15 * s2i_z)))
-    ).astype(np.float32)
-    riedel_strain = np.where(valid, riedel_idx * strain_gate, 0.0).astype(np.float32)
-    del shr_z, dil_z, s2i_z, strain_gate
-
-    b13_iso = _read_tf(13)
-    flex_curv, flex_grav = flexural_hinge_field(
-        b15_base, b13_iso, valid, sigma_inner_px=4.5, sigma_outer_px=13.5
-    )
-    del b15_base, b13_iso, base_clean
-
-    X[:, 26] = riedel_idx[foot]
-    X[:, 27] = riedel_strain[foot]
-    X[:, 28] = flex_curv[foot]
-    X[:, 29] = flex_grav[foot]
-
-    # 1D Subsurface, Riedel-Flexure & Hydrothermal Crest Localizers
-    l_grav_base = np.where(
-        valid,
-        0.34 * _sat(grav_tilt_grad, 0.22)
-        + 0.26 * _sat(base_step, 0.16)
-        + 0.22 * _sat(rtp_hess, 0.04) * (0.60 + 0.40 * poisson_collin)
-        + 0.18 * _sat(np.maximum(gslope_z, 0.0), 1.8),
+        (np.float32(0.55) * t_dil + np.float32(0.45) * t_slip)
+        * (np.float32(0.40) + np.float32(0.60) * s2i_rank),
         0.0,
     ).astype(np.float32)
+    del az_topo, b7_shear, b8_dilat, b4_2ndinv, t_dil, t_slip, s2i_rank
 
-    l_riedel_flex = np.where(
+    lahontan_null = np.where(
         valid,
-        0.40 * _sat(riedel_strain, 0.16)
-        + 0.32 * _sat(flex_curv, 0.04)
-        + 0.16 * _sat(flex_grav, 0.22)
-        + 0.12 * r_gh_norm,
+        lahontan_elev_band
+        * ((np.float32(1.0) - cross_contour) ** 2)
+        * np.exp(-db_step / np.float32(0.04))
+        * (np.float32(1.0) - np.float32(0.75) * grav_tilt),
         0.0,
     ).astype(np.float32)
+    del lahontan_elev_band
 
-    l_vent_sub = np.where(
-        valid,
-        (
-            0.46 * l_grav_base
-            + 0.24 * l_riedel_flex
-            + 0.18 * _sat(grauch_edge, 0.45)
-            + 0.12 * _sat(mt_grad, 0.015)
-        )
-        * vent_gate,
-        0.0,
-    ).astype(np.float32)
-
-    del (
-        ex_max,
-        pied_gate,
-        grauch_edge,
-        mt_grad,
-        vent_gate,
-        gslope_z,
-        grav_tilt_grad,
-        base_step,
-        poisson_collin,
-        rtp_hess,
-        r_gh_norm,
-        riedel_idx,
-        riedel_strain,
-        flex_curv,
-        flex_grav,
-        slope_100m_deg,
-    )
+    _put(23, grav_tilt)
+    _put(24, dip_concord_grav13)
+    _put(25, ew_polarity)
+    _put(26, poisson_concord)
+    _put(27, base_depth_step)
+    _put(28, coulomb_comb)
+    _put(29, shear_z)
+    _put(30, dilat_z)
+    _put(31, lahontan_null)
+    del dip_concord_grav13, ew_polarity, poisson_concord, base_depth_step, coulomb_comb, shear_z, dilat_z, lahontan_null
     gc.collect()
 
-    return {
-        "X_foot": X,
-        "valid": valid,
-        "L_scarp10m": l_scarp10m,
-        "L_knick": l_knick,
-        "L_grav_base": l_grav_base,
-        "L_riedel_flex": l_riedel_flex,
-        "L_vent_sub": l_vent_sub,
+    # ------------------------------------------------------------------
+    # 4. Group C (15..22): Tufa-Deconfounded INGENIOUS Vents, 2m Probes & Alteration
+    # ------------------------------------------------------------------
+    paleo_imp, paleo_stats = _rasterize_paleo_vents(paleo_zip, tf_transform, foot.shape, valid)
+    paleo_short = anisotropic_strike_plume(
+        paleo_imp, valid, strike_deg_east_of_north=18.0, sigma_parallel_px=16.0, sigma_perp_px=6.5
+    )
+    paleo_meso = anisotropic_strike_plume(
+        paleo_imp, valid, strike_deg_east_of_north=18.0, sigma_parallel_px=38.0, sigma_perp_px=15.0
+    )
+    paleo_plume = np.where(valid, np.log1p(12.0 * paleo_short + 4.0 * paleo_meso), 0.0).astype(np.float32)
+    del paleo_imp, paleo_short
+
+    probe_imp, probe_stats = _rasterize_2m_temperature_probes(
+        probe_2m_zip, tf_transform, foot.shape, valid, dab_threshold_c=1.2
+    )
+    probe_short = anisotropic_strike_plume(
+        probe_imp, valid, strike_deg_east_of_north=18.0, sigma_parallel_px=14.0, sigma_perp_px=6.0
+    )
+    probe_meso = anisotropic_strike_plume(
+        probe_imp, valid, strike_deg_east_of_north=18.0, sigma_parallel_px=34.0, sigma_perp_px=14.0
+    )
+    probe_plume = np.where(valid, np.log1p(10.0 * probe_short + 3.5 * probe_meso), 0.0).astype(np.float32)
+    del probe_imp, probe_short
+
+    spring_imp, spring_stats = _rasterize_active_thermal_springs(
+        wellspring_csv, foot.shape, valid, min_temp_c=30.0
+    )
+    spring_plume_raw = anisotropic_strike_plume(
+        spring_imp, valid, strike_deg_east_of_north=18.0, sigma_parallel_px=18.0, sigma_perp_px=7.5
+    )
+    active_spring = np.where(valid, np.log1p(8.0 * spring_plume_raw), 0.0).astype(np.float32)
+    del spring_imp, spring_plume_raw
+
+    district_raw = (
+        np.float32(0.45) * percentile_rank(paleo_meso, valid)
+        + np.float32(0.30) * percentile_rank(probe_meso, valid)
+        + np.float32(0.25) * percentile_rank(active_spring, valid)
+    ).astype(np.float32)
+    vent_district = _smooth_valid(district_raw, valid, sigma_px=55.0)
+    del paleo_meso, probe_meso, district_raw
+
+    with rasterio.open(geodawn_rad_tif) as ds_rad:
+        rad_k = _decode_u8_band(ds_rad, 1)
+        rad_th = _decode_u8_band(ds_rad, 2)
+        rad_u = _decode_u8_band(ds_rad, 3)
+
+    with rasterio.open(geodawn_ext_tif) as ds_ext:
+        ext_uth = _decode_u8_band(ds_ext, 3)
+        ext_tmi_up150 = _decode_u8_band(ds_ext, 4)
+
+    k_th_raw = (np.maximum(rad_k, 0.0) / (np.maximum(rad_th, 0.0) + np.float32(0.35))).astype(np.float32)
+    k_th_bg = _smooth_valid(k_th_raw, valid, 24.0)
+    k_th_z = np.where(
+        valid,
+        (_smooth_valid(k_th_raw, valid, 1.5) - k_th_bg) / (np.float32(0.08) + np.abs(k_th_bg)),
+        0.0,
+    ).astype(np.float32)
+    u_th_raw = (
+        np.float32(0.5) * ext_uth
+        + np.float32(0.5) * (np.maximum(rad_u, 0.0) / (np.maximum(rad_th, 0.0) + np.float32(0.35)))
+    ).astype(np.float32)
+    u_th_bg = _smooth_valid(u_th_raw, valid, 24.0)
+    u_th_z = np.where(
+        valid,
+        (_smooth_valid(u_th_raw, valid, 1.5) - u_th_bg) / (np.float32(0.08) + np.abs(u_th_bg)),
+        0.0,
+    ).astype(np.float32)
+    del rad_k, rad_th, rad_u, ext_uth, k_th_raw, k_th_bg, u_th_raw, u_th_bg
+
+    demag_shallow = np.where(
+        valid,
+        _smooth_valid(ext_tmi_up150, valid, 18.0) - _smooth_valid(ext_tmi_up150, valid, 1.5),
+        0.0,
+    ).astype(np.float32)
+    del ext_tmi_up150
+
+    cy, cx = _grad_xy(
+        np.log1p(np.maximum(_smooth_valid(b17_cond, valid, 1.2), 0.0)).astype(np.float32),
+        valid,
+        sigma=2.0,
+    )
+    cond_grad = np.where(valid, np.hypot(cy, cx), 0.0).astype(np.float32)
+    del cy, cx
+    tmi_hg_clean = np.maximum(_smooth_valid(b3_tmi_hg, valid, 1.0), 0.0)
+    mt_claycap_valve = (
+        np.float32(0.55) * percentile_rank(cond_grad, valid)
+        + np.float32(0.45) * percentile_rank(np.log1p(tmi_hg_clean) * scarp_excess_p90, valid)
+    ).astype(np.float32)
+    del b17_cond, b3_tmi_hg, cond_grad, tmi_hg_clean
+
+    _put(15, paleo_plume)
+    _put(16, probe_plume)
+    _put(17, active_spring)
+    _put(18, vent_district)
+    _put(19, k_th_z)
+    _put(20, u_th_z)
+    _put(21, demag_shallow)
+    _put(22, mt_claycap_valve)
+    del k_th_z, u_th_z, demag_shallow, mt_claycap_valve
+
+    # ------------------------------------------------------------------
+    # 5. Construct Continuous Localization Channels in [0, 1]
+    # ------------------------------------------------------------------
+    l_scarp10m = np.where(
+        valid,
+        np.float32(0.44) * _sat_pos(scarp_excess_max, 0.35)
+        + np.float32(0.24) * _sat_pos(wallace_curv, 0.25)
+        + np.float32(0.18) * _sat_pos(steep_step, 0.05)
+        + np.float32(0.14) * np.clip(lin_coh, 0.0, 1.0),
+        0.0,
+    ).astype(np.float32)
+    del scarp_excess_max, scarp_excess_p90, wallace_curv, steep_step, lin_coh
+
+    l_knick = np.where(
+        valid,
+        np.float32(0.54) * _sat_pos(fluvial_chi_step, 0.45)
+        + np.float32(0.46) * _sat_pos(thalweg_knick * (np.float32(0.50) + np.float32(0.50) * cross_contour), 0.09),
+        0.0,
+    ).astype(np.float32)
+    del fluvial_chi_step, thalweg_knick
+
+    l_riedel = np.where(
+        valid,
+        np.float32(0.36) * percentile_rank(r_excess, valid)
+        + np.float32(0.28) * percentile_rank(trans_pump, valid)
+        + np.float32(0.20) * stepover_3d
+        + np.float32(0.16) * np.maximum(r_syn, r_conj),
+        0.0,
+    ).astype(np.float32)
+    del r_syn, r_conj, r_excess, trans_pump, stepover_3d
+
+    l_subsurf = np.where(
+        valid,
+        np.float32(0.45) * grav_tilt
+        + np.float32(0.35) * rtp_tilt
+        + np.float32(0.20) * _sat_pos(db_step, 0.035),
+        0.0,
+    ).astype(np.float32)
+    del grav_tilt, rtp_tilt, db_step
+
+    l_topo100 = np.where(
+        valid,
+        np.float32(0.52) * _sat_pos(hess_s12, 0.06)
+        + np.float32(0.48)
+        * _sat_pos(rel_break100 * (np.float32(0.35) + np.float32(0.65) * mu_step100) * coh_topo, 0.04),
+        0.0,
+    ).astype(np.float32)
+    del hess_s12, rel_break100, mu_step100, coh_topo, cross_contour
+
+    l_vent_amp = np.where(
+        valid,
+        np.float32(1.0)
+        + np.float32(0.22)
+        * percentile_rank(paleo_plume + np.float32(0.8) * probe_plume + np.float32(0.6) * active_spring, valid)
+        + np.float32(0.10) * percentile_rank(vent_district, valid),
+        1.0,
+    ).astype(np.float32)
+    del paleo_plume, probe_plume, active_spring, vent_district
+    gc.collect()
+
+    meta: dict[str, object] = {
+        "n_footprint_pixels": n_foot,
+        "n_valid_pixels": int(valid.sum()),
+        "n_features": n_feat,
+        "verified_training_band_tags": EXPECTED_TRAINING_BAND_TAGS,
         "vent_stats": {
             "paleo_geothermal": paleo_stats,
             "temperature_probe_2m": probe_stats,
             "active_thermal_springs": spring_stats,
         },
     }
-
-
-def fit_riedelvent_single_loqo(
-    X_foot: np.ndarray,
-    footprint: np.ndarray,
-    valid: np.ndarray,
-    quad: np.ndarray,
-    label_mask: np.ndarray,
-    *,
-    feature_cols: tuple[int, ...] | None = None,
-    excluded_mask: np.ndarray | None = None,
-    guard_px: int = 12,
-    neg_buffer_px: float = 5.0,
-    neg_pos_ratio: int = 3,
-    max_pos_samples: int = 40000,
-    seed: int = 20261025,
-    max_iter: int = 145,
-) -> np.ndarray:
-    """Fit a 4-quadrant Leave-One-Quadrant-Out model with stratified positive cap."""
-    if guard_px < 0:
-        raise ValueError("guard_px must be >= 0")
-    if neg_pos_ratio < 1:
-        raise ValueError("neg_pos_ratio must be >= 1")
-    foot = np.asarray(footprint, dtype=bool)
-    valid_b = np.asarray(valid, dtype=bool) & foot
-    lbl = np.asarray(label_mask, dtype=bool) & valid_b
-    excl = np.asarray(excluded_mask, dtype=bool) if excluded_mask is not None else np.zeros_like(foot)
-
-    cols = list(feature_cols) if feature_cols is not None else list(range(X_foot.shape[1]))
-    d_lbl = distance_transform_edt(~lbl)
-
-    foot_row_map = np.full(foot.shape, -1, dtype=np.int32)
-    foot_row_map[foot] = np.arange(int(foot.sum()), dtype=np.int32)
-
-    raw_proba = np.zeros(foot.shape, dtype=np.float32)
-    present_quads = [int(q) for q in (0, 1, 2, 3) if np.any((quad == q) & valid_b)]
-
-    for q in present_quads:
-        target_q = (quad == q) & valid_b
-        guard = binary_dilation(quad == q, iterations=int(guard_px)) if guard_px > 0 else (quad == q)
-        train_dom = valid_b & (quad >= 0) & (quad != q) & (~guard) & (~excl)
-
-        pos_mask = train_dom & lbl
-        neg_pool = train_dom & (~lbl) & (d_lbl > float(neg_buffer_px))
-
-        pos_idx_all = foot_row_map[pos_mask]
-        neg_idx = foot_row_map[neg_pool]
-        if pos_idx_all.size == 0 or neg_idx.size == 0:
-            raise ValueError(
-                f"Quadrant {q} RIEDELVENT training split has empty class: pos={pos_idx_all.size}, neg={neg_idx.size}"
-            )
-
-        rng = np.random.default_rng(int(seed) + 97 * q)
-        if int(max_pos_samples) > 0 and pos_idx_all.size > int(max_pos_samples):
-            pos_idx = rng.choice(pos_idx_all, size=int(max_pos_samples), replace=False)
-            pos_idx.sort()
-        else:
-            pos_idx = pos_idx_all
-
-        n_neg = min(int(neg_idx.size), max(int(pos_idx.size) * int(neg_pos_ratio), 1))
-        if n_neg < neg_idx.size:
-            neg_sel = rng.choice(neg_idx, size=n_neg, replace=False)
-            neg_sel.sort()
-        else:
-            neg_sel = neg_idx
-
-        tr_idx = np.concatenate([pos_idx, neg_sel])
-        X_tr = X_foot[tr_idx][:, cols]
-        y_tr = np.concatenate([
-            np.ones(pos_idx.size, dtype=np.int8),
-            np.zeros(neg_sel.size, dtype=np.int8),
-        ])
-        pos_weight = float(neg_sel.size) / float(max(pos_idx.size, 1))
-        sample_w = np.where(y_tr == 1, pos_weight, 1.0).astype(np.float32)
-
-        clf = HistGradientBoostingClassifier(
-            loss="log_loss",
-            learning_rate=0.065,
-            max_iter=int(max_iter),
-            max_leaf_nodes=31,
-            max_depth=5,
-            min_samples_leaf=min(200, max(10, int(tr_idx.size // 40))),
-            l2_regularization=10.0,
-            early_stopping=False,
-            random_state=int(seed) + q,
-        )
-        clf.fit(X_tr, y_tr, sample_weight=sample_w)
-
-        te_idx = foot_row_map[target_q]
-        preds = np.empty(te_idx.size, dtype=np.float32)
-        batch = 350_000
-        for start in range(0, te_idx.size, batch):
-            stop = min(start + batch, te_idx.size)
-            X_te = X_foot[te_idx[start:stop]][:, cols]
-            preds[start:stop] = clf.predict_proba(X_te)[:, 1].astype(np.float32)
-
-        raw_proba[target_q] = preds
-
-    return raw_proba
+    return RiedelVentStack(
+        X_foot=X,
+        footprint=foot,
+        valid=valid,
+        L_scarp10m=l_scarp10m,
+        L_riedel=l_riedel,
+        L_knick=l_knick,
+        L_subsurf=l_subsurf,
+        L_topo100=l_topo100,
+        L_vent_amp=l_vent_amp,
+        feature_names=RIEDELVENT_FEATURE_NAMES,
+        meta=meta,
+    )
 
 
 def fit_predict_riedelvent_loqo(
-    X_foot: np.ndarray,
-    footprint: np.ndarray,
-    valid: np.ndarray,
+    stack: RiedelVentStack,
     quad: np.ndarray,
     label_mask: np.ndarray,
     *,
-    include_riedel_vent: bool = True,
+    ablation_collinear_novent: bool = False,
     excluded_mask: np.ndarray | None = None,
     guard_px: int = 12,
     neg_buffer_px: float = 5.0,
-    neg_pos_ratio: int = 3,
-    max_pos_samples: int = 40000,
+    neg_pos_ratio: int = 4,
     seed: int = 20261025,
-    max_iter: int = 145,
+    max_iter: int = 185,
     calib_weight: float = 0.80,
-    power_gamma: float = 3.15,
+    power_gamma: float = 3.2,
 ) -> dict[str, np.ndarray]:
-    """Fit a strictly Out-of-Quadrant (LOQO) ensemble with or without Group B+D Riedel/vent features."""
-    valid_b = np.asarray(valid, dtype=bool) & np.asarray(footprint, dtype=bool)
-    if include_riedel_vent:
-        p_all = fit_riedelvent_single_loqo(
-            X_foot,
-            footprint,
+    """Fit multi-branch LOQO HistGBDT ensemble strictly out-of-quadrant."""
+    valid_b = np.asarray(stack.valid, dtype=bool) & np.asarray(stack.footprint, dtype=bool)
+    specs = COLLINEAR_NOVENT_BRANCH_SPECS if ablation_collinear_novent else RIEDELVENT_BRANCH_SPECS
+    w_total = sum(w for _, _, w in specs)
+    raw_proba = np.zeros(stack.footprint.shape, dtype=np.float32)
+    branch_maps: dict[str, np.ndarray] = {}
+
+    for idx, (b_name, cols, w) in enumerate(specs):
+        p_b = fit_single_loqo(
+            stack.X_foot,
+            stack.footprint,
             valid_b,
             quad,
             label_mask,
-            feature_cols=FULL_INDICES,
+            feature_cols=cols,
             excluded_mask=excluded_mask,
             guard_px=guard_px,
             neg_buffer_px=neg_buffer_px,
             neg_pos_ratio=neg_pos_ratio,
-            max_pos_samples=max_pos_samples,
-            seed=int(seed),
+            seed=int(seed) + 19 * idx,
             max_iter=max_iter,
         )
-        p_sub = fit_riedelvent_single_loqo(
-            X_foot,
-            footprint,
-            valid_b,
-            quad,
-            label_mask,
-            feature_cols=RIEDEL_SUBSURF_INDICES,
-            excluded_mask=excluded_mask,
-            guard_px=guard_px,
-            neg_buffer_px=neg_buffer_px,
-            neg_pos_ratio=neg_pos_ratio,
-            max_pos_samples=max_pos_samples,
-            seed=int(seed) + 13,
-            max_iter=max_iter,
-        )
-        raw_proba = (np.float32(0.45) * p_all + np.float32(0.55) * p_sub).astype(np.float32)
-    else:
-        novent_sub = (0, 3, 4, 6, 7, 8) + GROUP_C_SUBSURF_INDICES
-        p_all = fit_riedelvent_single_loqo(
-            X_foot,
-            footprint,
-            valid_b,
-            quad,
-            label_mask,
-            feature_cols=ABLATED_NOVENT_INDICES,
-            excluded_mask=excluded_mask,
-            guard_px=guard_px,
-            neg_buffer_px=neg_buffer_px,
-            neg_pos_ratio=neg_pos_ratio,
-            max_pos_samples=max_pos_samples,
-            seed=int(seed),
-            max_iter=max_iter,
-        )
-        p_sub = fit_riedelvent_single_loqo(
-            X_foot,
-            footprint,
-            valid_b,
-            quad,
-            label_mask,
-            feature_cols=novent_sub,
-            excluded_mask=excluded_mask,
-            guard_px=guard_px,
-            neg_buffer_px=neg_buffer_px,
-            neg_pos_ratio=neg_pos_ratio,
-            max_pos_samples=max_pos_samples,
-            seed=int(seed) + 13,
-            max_iter=max_iter,
-        )
-        raw_proba = (np.float32(0.45) * p_all + np.float32(0.55) * p_sub).astype(np.float32)
+        branch_maps[b_name] = p_b
+        raw_proba += np.float32(w / w_total) * p_b
 
     cal_proba = calibrate_quadrant_probabilities(
         raw_proba, valid_b, quad, calib_weight=calib_weight, power_gamma=power_gamma
@@ -877,56 +999,29 @@ def fit_predict_riedelvent_loqo(
     return {
         "raw_proba": raw_proba,
         "cal_proba": cal_proba,
+        "branches": branch_maps,
     }
 
 
-def build_riedelvent_crest_surface(
-    proba_2d: np.ndarray,
-    l_scarp10m: np.ndarray,
-    l_knick: np.ndarray,
-    l_sub: np.ndarray,
-    valid: np.ndarray,
-    *,
-    l_riedel_flex: np.ndarray | None = None,
-    scarp_weight: float = 0.72,
-    knick_weight: float = 0.70,
-    sub_weight: float = 1.05,
-    riedel_weight: float = 1.38,
-) -> dict[str, np.ndarray]:
-    """Fuse LOQO fault posterior with 10 m sub-pixel scarp, 10m/100m knickzone, and Riedel/vent crests."""
-    valid_b = np.asarray(valid, dtype=bool)
-    p = np.where(valid_b, np.clip(np.asarray(proba_2d, dtype=np.float32), 0.0, 1.0), 0.0)
-    sc = np.asarray(l_scarp10m, dtype=np.float32)
-    kn = np.asarray(l_knick, dtype=np.float32)
-    sb = np.asarray(l_sub, dtype=np.float32)
-
-    if l_riedel_flex is not None:
-        rf = np.asarray(l_riedel_flex, dtype=np.float32)
-        e_line = np.maximum(
-            np.float32(riedel_weight) * rf,
-            np.maximum(
-                np.float32(scarp_weight) * sc * (np.float32(0.45) + np.float32(0.55) * rf),
-                np.maximum(
-                    np.float32(knick_weight) * kn * (np.float32(0.50) + np.float32(0.50) * rf),
-                    np.float32(sub_weight) * sb * (np.float32(0.55) + np.float32(0.45) * rf),
-                ),
-            ),
-        )
-    else:
-        e_line = np.maximum(
-            np.float32(0.70) * sc * (np.float32(0.45) + np.float32(0.55) * sb),
-            np.maximum(
-                np.float32(0.82) * kn * (np.float32(0.45) + np.float32(0.55) * sb),
-                np.float32(1.32) * sb,
-            ),
-        )
-
-    s_crest = np.where(valid_b, p * (np.float32(0.15) + np.float32(0.85) * e_line), 0.0).astype(
-        np.float32
-    )
-    ridge_1d = directional_ridge_1d(s_crest, valid_b)
-    return {
-        "S_crest": s_crest,
-        "E_line": np.where(valid_b, e_line, 0.0).astype(np.float32),
-        "ridge_1d": ridge_1d,
-    }
+__all__ = [
+    "EXPECTED_GRID_H",
+    "EXPECTED_GRID_W",
+    "EXPECTED_TRAINING_BAND_TAGS",
+    "RIEDELVENT_FEATURE_NAMES",
+    "GROUP_A_INDICES",
+    "GROUP_B_RIEDEL_INDICES",
+    "GROUP_C_VENT_INDICES",
+    "GROUP_D_SUBSURF_INDICES",
+    "COLLINEAR_NOVENT_INDICES",
+    "RIEDELVENT_BRANCH_SPECS",
+    "COLLINEAR_NOVENT_BRANCH_SPECS",
+    "RiedelVentStack",
+    "assert_training_band_tags",
+    "gravity_gradient_tensor_invariants",
+    "riedel_obliquity_couplings",
+    "build_riedelvent_crest_surface",
+    "emit_binary_crest_dots",
+    "build_additive_mobius_tail_allocation",
+    "build_riedelvent_stack",
+    "fit_predict_riedelvent_loqo",
+]

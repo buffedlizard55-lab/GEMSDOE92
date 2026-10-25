@@ -772,5 +772,38 @@
     "falsifier": "HOLDOUT-DTI <= control_knick paired, canary >0.90, or operative overlap >0.70",
     "decision_rule": "Promote-to-selector only per docs/HYPOTHESES_20261025_NETEXPAND.md; slots spent by selector step only.",
     "predicted_sign_and_size": "unprojected (Protocol Rule 3)"
+  },
+  "gemsdoe92-riedelvent-tail85k-85000-20261025-1cc99d0f": {
+    "parent": "h33-h33-2-b2",
+    "axis": "RIEDELVENT",
+    "value": "tail85k",
+    "hypothesis": "Concealed off-catalogue accommodation/transfer faults in the Walker Lane - Central Nevada Seismic Belt transition express through Pedersen-Rasmussen 3D gravity-tensor dimensionality breaks (I_step = sqrt(|I_2|)/(I_1 + eps) from tag-verified Band 13 iso_grav_anom + Band 11 iso_grav_anom_vg) coupled to Tchalenko 20 deg synthetic R and 72 deg antithetic R' Riedel strike obliquity between USGS 3DEP 10 m scarps and basement tensor strike, plus tufa-filtered INGENIOUS hydrothermal upflow conduits and GeoDAWN K/Th, U/Th, and TMI_up150-RTP magnetite-destruction residuals.",
+    "mechanism": "Tag-verified zero-catalogue 4-quadrant Leave-One-Quadrant-Out (LOQO, >=1.2 km guard band, >500 m negative buffer) 4-branch HistGradientBoostingClassifier ensemble (Full 32-feature, Riedel+Vent+10m, Province-Debiased Tensor+Geodesy, and Collinear-No-Vent auxiliary) with within-quadrant empirical quantile calibration, localized along 1D Riedel+10m+tensor crests and allocated across 85,000 spaced crests (min_dist=2.6 px, d_cat>2.0 px) via the exact Mobius-linear soft-DTI tail (37,654 core @ 1.0 + 47,346 additive secondary crests @ [0.30, 0.60]).",
+    "non_fault_mimic": "Pleistocene Lake Lahontan wave-cut beach berms (~1,330 m Sehoo highstand) and lacustrine shoreline tufa mounds (86 Tufa rows explicitly excluded from Paleo_geothermal_final.csv), plus buried caldera ring-fracture density contrasts and alpine talus slopes.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat VENTSCARP (0.112213 Rule-2) / KNICKLOQO (0.010788 static) on gems57-pooled-hide-v2, any single-feature canary symmetric AUC > 0.90, or local/dual-reading public forward 3-px overlap > 0.70 / |Spearman| > 0.90.",
+    "decision_rule": "OK TO DOWNLOAD FOR RESEARCH (11/11 + 15/15 format gates PASS in [0,1], 0 NaN, dual_reading_unique=True at 0.6971 <= 0.70 across 102 repos, #1 repo USGS SGMC PROXY 0.135694); DO NOT SUBMIT (verdict='negative', submission_eligible=false) under literal 17GEMSDOE dense-surface witness (1.000 > 0.70) and catalogue holdout below VENTSCARP/KNICKLOQO.",
+    "predicted_sign_and_size": "none; HOLDOUT-DTI recorded in evidence/riedelvent_holdout.json"
+  },
+  "gemsdoe92-riedelvent-bin37k-37654-20261025-6797160f": {
+    "parent": "h33-h33-2-b2",
+    "axis": "RIEDELVENT",
+    "value": "bin37k",
+    "hypothesis": "Concealed off-catalogue accommodation/transfer faults in the Walker Lane - Central Nevada Seismic Belt transition express through Pedersen-Rasmussen 3D gravity-tensor dimensionality breaks (I_step = sqrt(|I_2|)/(I_1 + eps) from tag-verified Band 13 iso_grav_anom + Band 11 iso_grav_anom_vg) coupled to Tchalenko 20 deg synthetic R and 72 deg antithetic R' Riedel strike obliquity between USGS 3DEP 10 m scarps and basement tensor strike, plus tufa-filtered INGENIOUS hydrothermal upflow conduits and GeoDAWN K/Th, U/Th, and TMI_up150-RTP magnetite-destruction residuals.",
+    "mechanism": "Matched-budget S=37,654 unit-mass crest placement (min_dist=3.1 px, d_cat>2.0 px) of the tag-verified 32-feature RIEDELVENT 3-branch LOQO ensemble.",
+    "non_fault_mimic": "Pleistocene Lake Lahontan wave-cut beach berms (~1,330 m Sehoo highstand) and lacustrine shoreline tufa mounds (86 Tufa rows explicitly excluded from Paleo_geothermal_final.csv), plus buried caldera ring-fracture density contrasts and alpine talus slopes.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat collinear_novent ablation or repository holdout best, or 102-repo dual-reading overlap > 0.70.",
+    "decision_rule": "OK TO DOWNLOAD FOR RESEARCH (11/11 + 15/15 format gates PASS in [0,1], 0 NaN; beats collinear_novent on Rule-2 +0.001352 and USGS SGMC PROXY +9.53%); DO NOT SUBMIT (verdict='negative', submission_eligible=false; trips 62GEMSDOE 125,890-dot witness at 0.7465 > 0.70).",
+    "predicted_sign_and_size": "none; HOLDOUT-DTI recorded in evidence/riedelvent_holdout.json"
+  },
+  "gemsdoe92-riedelvent-collinear_novent-37654-20261025-37221889": {
+    "parent": "h33-h33-2-b2",
+    "axis": "RIEDELVENT",
+    "value": "collinear_novent",
+    "hypothesis": "Controlled ablation removing 3D gravity-tensor step-over invariants, 20 deg / 72 deg Riedel strike obliquity, and INGENIOUS hydrothermal vent / GeoDAWN magnetite-destruction features while retaining collinear cos^2(Delta theta) alignment and USGS 3DEP 10 m scarp features.",
+    "mechanism": "Matched-budget S=37,654 unit-mass crest placement (min_dist=3.1 px, d_cat>2.0 px) of the 20-feature collinear no-Riedel/no-vent LOQO ablation branch.",
+    "non_fault_mimic": "Pleistocene Lake Lahontan wave-cut beach berms (~1,330 m Sehoo highstand), buried caldera ring-fracture density contrasts, and alpine talus slopes.",
+    "falsifier": "Used as controlled negative ablation baseline against riedelvent_bin37k and riedelvent_tail85k.",
+    "decision_rule": "OK TO DOWNLOAD FOR RESEARCH (11/11 + 15/15 format gates PASS in [0,1], 0 NaN); DO NOT SUBMIT (verdict='negative', submission_eligible=false; ablation control).",
+    "predicted_sign_and_size": "none; HOLDOUT-DTI recorded in evidence/riedelvent_holdout.json"
   }
 }

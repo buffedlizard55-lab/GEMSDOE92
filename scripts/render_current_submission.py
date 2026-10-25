@@ -127,9 +127,10 @@ def md_block(c, pre):
 {END}"""
 
 
-# Shared status panels that must stay first on a page (scripts/render_readiness.py,
-# scripts/render_current_status.py). The lane-result block always sits right after them.
-ANCHORS = ("<!-- CURRENT-READINESS:END -->", "<!-- CURRENT-STATUS:END -->")
+# Shared status panels that must stay first on a page (scripts/render_vario_status.py,
+# scripts/render_readiness.py, scripts/render_current_status.py). The lane-result
+# block always sits right after them.
+ANCHORS = ("<!-- VARIO-STATUS:END -->", "<!-- CURRENT-READINESS:END -->", "<!-- CURRENT-STATUS:END -->")
 
 
 def inject(text, block, is_html):
@@ -150,6 +151,9 @@ def inject(text, block, is_html):
 
 
 def main() -> int:
+    sys.path.insert(0, str(ROOT))
+    from scripts import render_vario_status
+    render_vario_status.render(ROOT, write=True)
     c = json.loads(CUR.read_text())
     for p, pre in HTML_PAGES.items():
         if p.is_file():
@@ -160,12 +164,8 @@ def main() -> int:
             if p.name == "SUBMIT.md":
                 blk = blk.replace("](SESSION_PROMPT.md)", "](../SESSION_PROMPT.md)")
             p.write_text(inject(p.read_text(), blk, False))
-    # Let the shared page renderers normalise layout so their --check gates stay green
-    # (they keep this block directly after their own panels).
-    sys.path.insert(0, str(ROOT))
-    from scripts import render_current_status, render_readiness
-    render_readiness.sync()
-    render_current_status.check(write=True)
+    # Let the shared page renderer normalise layout so --check gates stay green.
+    render_vario_status.render(ROOT, write=True)
     print("rendered current-submission block into", len(HTML_PAGES) + len(MD_PAGES), "pages")
     return 0
 
