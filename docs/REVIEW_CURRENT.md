@@ -1,3 +1,9 @@
+# Current session — 2026-10-25 (1f514ffc)
+
+See [three-pass review](REVIEW_1F514FFC.md) and [run card](downloads/review_1f514ffc_run_card.json). No new TIFF generated; pinned dense-witness duplicate stop freshly reproduced. Existing downloads remain research-only. 289 tests and all 43 served format checks pass. Publication primary selection now requires exactly one explicit local TIFF.
+
+---
+
 # Current Repository & Gate Review — `GEMSDOE92` (`2026-10-24`, `COULOMBDM s45coulomb55` Current Download; `EULERFUSE` Parallel Closeout)
 
 **OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT.** Subsequent to [session 918b947a](REVIEW_918B947A.md) ([run card](downloads/review_918b947a_run_card.json)), merged sessions generated unique `COULOMBDM` and `XPHASE` research TIFFs. The universal dense-witness overlap stop still bars weekly-slot clearance. No current organizer score is claimed.

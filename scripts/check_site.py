@@ -11,6 +11,7 @@ out-of-range download cannot ship unnoticed.
 from __future__ import annotations
 
 import json
+from html.parser import HTMLParser
 import re
 import sys
 from pathlib import Path
@@ -75,6 +76,34 @@ def check_recorded_gates(doc: dict, problems: list[str]) -> None:
     missing = required - set(names)
     if missing:
         problems.append(f'audit receipt missing required gates: {sorted(missing)}')
+
+
+def primary_download(html: str, problems: list[str]) -> str | None:
+    """Require one explicit, local primary; never guess from link order."""
+    class Anchors(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.primaries = []
+
+        def handle_starttag(self, tag, attrs):
+            if tag == 'a' and ('data-primary', 'true') in attrs:
+                self.primaries.append(attrs)
+
+    parser = Anchors()
+    parser.feed(html)
+    if len(parser.primaries) != 1:
+        problems.append('index.html must declare exactly one data-primary=true download')
+        return None
+    attrs = parser.primaries[0]
+    for name in ('href', 'data-primary'):
+        if sum(key == name for key, _ in attrs) != 1:
+            problems.append(f'primary anchor must have exactly one {name} attribute')
+            return None
+    href = dict(attrs)['href']
+    if not isinstance(href, str) or not re.fullmatch(r'downloads/[A-Za-z0-9_.-]+-zeros\.tif', href):
+        problems.append('primary must be a local downloads/*-zeros.tif file')
+        return None
+    return href
 
 
 def main() -> int:
@@ -165,21 +194,7 @@ def main() -> int:
             print(f"  PASS {tag}  sha256 {sha256_file(path)[:16]}…")
 
     # ---- the primary named on the page must match its audit receipt ----------
-    # Prefer an explicit data-primary="true" download anchor (fail closed if >1),
-    # falling back to the first zeros-outside link for minimal fixtures.
-    explicit_primaries = [
-        m1.group(1) or m1.group(2)
-        for m1 in re.finditer(
-            r'<a\b[^>]*?(?:href="(downloads/[^"]+-zeros\.tif)"[^>]*?\bdata-primary="true"|\bdata-primary="true"[^>]*?href="(downloads/[^"]+-zeros\.tif)")[^>]*>',
-            html,
-        )
-    ]
-    if len(explicit_primaries) > 1:
-        problems.append(f"index.html marks multiple data-primary='true' downloads: {explicit_primaries}")
-    primary_rel = explicit_primaries[0] if explicit_primaries else None
-    if primary_rel is None:
-        m = re.search(r'href="(downloads/[^"]+-zeros\.tif)"', html)
-        primary_rel = m.group(1) if m else None
+    primary_rel = primary_download(html, problems)
     if primary_rel:
         primary = DOCS / primary_rel
         if not primary.is_file():

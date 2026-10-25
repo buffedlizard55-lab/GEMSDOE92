@@ -218,7 +218,7 @@ def test_site_missing_primary_receipt_fails_without_traceback(tmp_path, monkeypa
     primary_name = "example-zeros.tif"
     (tmp_path / primary_name).write_bytes(b"existing candidate")
     index = tmp_path / "index.html"
-    index.write_text(f'<a href="downloads/{primary_name}">research</a>')
+    index.write_text(f'<a href="downloads/{primary_name}" data-primary="true">research</a>')
     # No need to re-gate real 12M-pixel rasters to exercise missing evidence.
     monkeypatch.setattr(site, "INDEX", index)
     monkeypatch.setattr(site, "DOCS", tmp_path)
