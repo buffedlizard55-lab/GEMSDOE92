@@ -1,0 +1,67 @@
+{
+  "schema": "gemsdoe92-repository-review-run-card.v1",
+  "review_date_utc": "2026-10-25",
+  "review_type": "repository and site-integrity audit; no new geological experiment",
+  "hypothesis": "No new geological hypothesis tested in this review. The linked LISTRICLOQO hypothesis is historical evidence from the current machine-readable readiness record, not a new run.",
+  "mechanism": "Existing LISTRICLOQO selectcal artifact as described by docs/downloads/current_submission.json and docs/downloads/listric_loqo_run_card.json; no surface was recomputed.",
+  "named_non_fault_process_that_could_mimic_it": "Not newly assessed in this repository-only review; consult the immutable LISTRICLOQO lane run card.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 22663,
+    "dti": 0.01329539715555815,
+    "ci95": [
+      0.01171276985819553,
+      0.014979512780123137
+    ],
+    "source": "docs/downloads/current_submission.json; historical result, not rerun in this review"
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "source": "docs/downloads/current_submission.json",
+    "registry_rasters_checked": 1459,
+    "rank_correlation_worst_abs_final": 0.14341,
+    "rank_correlation_worst_abs_surface": 0.468512,
+    "dot_overlap_worst_final": 1.0,
+    "witness": "17GEMSDOE full-footprint dense witness",
+    "thresholds": {
+      "max_abs_rank_correlation": 0.9,
+      "max_3px_dot_overlap": 0.7
+    },
+    "verdict": "duplicate stop; do not submit"
+  },
+  "raster_sha256": "58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17",
+  "file": "docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif",
+  "validator_output": {
+    "source": "docs/downloads/readiness.json; revalidated by scripts/check_site.py in this review",
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "single_band_float32": true,
+    "all_finite": true,
+    "outside_footprint_zero": true,
+    "format_gate_status": "PASS; does not imply uniqueness clearance or organizer acceptance"
+  },
+  "submission_name": "GEMSDOE92-LISTRICLOQO-selectcal-20261025",
+  "submission_note": "h33-h33-2-b2; LISTRICLOQO selectcal: 37654 1D updip-listric+interfluve-knick+U/Th-K/Th crests; HOLDOUT-DTI 0.013295",
+  "note_characters": 115,
+  "experiments_this_review": 0,
+  "weekly_slots_used_this_review": 0,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "organizer_confirmed_score": null,
+  "organizer_confirmed_score_reason": "No organizer submission-page receipt is present for this raster hash."
+}

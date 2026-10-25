@@ -11,8 +11,11 @@ Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withh
 
 <!-- CURRENT-STATUS:END -->
 
-> ## This session's repository review (2026-10-25 UTC)
-> **No new TIFF or experiment was generated; research downloads only, DO NOT SUBMIT or spend a slot.** No lane was assigned and the literal public-raster stop remains binding. The existing LISTRIC research file passes local format checks but fails recorded public dot overlap (`0.710735 > 0.70`) and is dated 2026-10-26, future relative to this review. [Three-pass audit](docs/REVIEW_20261025_ARENA_REPOSITORY.md) · [run card](evidence/review_20261025_arena_run_card.json) · [existing research TIFF](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif).
+> ## Previous repository review (2026-10-25 UTC; historical)
+> The earlier review generated no TIFF or experiment and prohibited submission. Its cited LISTRIC artifact is dated 2026-10-26, later than that review. The current checked-in status is the LISTRICLOQO panel immediately below; do not treat this paragraph as current status. [Prior three-pass audit](docs/REVIEW_20261025_ARENA_REPOSITORY.md) · [prior run card](evidence/review_20261025_arena_run_card.json).
+
+> ## Authoritative review — current repository audit — 2026-10-25 UTC
+> **Research downloads only · DO NOT SUBMIT · no new TIFF or experiment generated.** The latest repository review repaired three documentation/site consistency defects, gates all 93 served rasters, and records the unresolved experiment-lane and registry blockers. [Three-pass review and reproduction steps](docs/REVIEW_ARENA_20261025.md) · [audit run card](evidence/repo_review_run_card_20261025.json).
 
 <!-- CURRENT:BEGIN -->
 > ## Newest lane result — lane LISTRICLOQO / arm `selectcal`
@@ -50,10 +53,10 @@ Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withh
 > ## Prior artifact — DRAINAGE-KNICK (2026-10-25)
 
 
-## Current decision — 2026-10-25 (`f23ca2d2` review; read first)
+## Prior review context — 2026-10-25 (`f23ca2d2`; superseded by CURRENT-STATUS above)
 
-**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT. No new unique TIFF was generated.**
-The unchanged literal duplicate rule rejects every nonempty candidate against the pinned full-footprint witness. Matched-budget “unique” claims in historical sections below are not binding clearance. We did not copy or rename a previous submission.
+**Historical decision at that review: OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT. No new unique TIFF was generated.**
+The literal duplicate rule was recorded to reject every nonempty candidate against the pinned full-footprint witness. Matched-budget “unique” claims in historical sections below are not binding clearance. We did not copy or rename a previous submission.
 
 [Current automated status](docs/downloads/readiness.json) · [Research workbench / direct TIFF](docs/index.html) · [Executive submission guide](docs/executive-summary.html) · [Three-pass review and conditional hypotheses](docs/REVIEW_F23.md) · [Review run card](docs/downloads/review_f23_run_card.json)
 
@@ -94,10 +97,10 @@ Read this README and [SESSION_PROMPT.md](SESSION_PROMPT.md) before work. The [fu
 >
 > **Persistent operating brief:** read this README and `SESSION_PROMPT.md` at every session start; use shared cached features/evaluator/writer, whole-segment buffered holdouts and leakage canaries; pre-register 3–5 hypotheses; label all metrics and provenance; never call a projection a score; stop at 3 experiments / 2 hours; keep “Maximize P(Win)” and “Own the Outcome” central. Full user prompt summary is retained under [Persistent Session Prompt Reference](#persistent-session-prompt-reference).
 
-## Authoritative review — 2026-10-25 (`797e507a`)
+## Superseded review — 2026-10-25 (`797e507a`)
 
-**OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT · no new TIFF generated in this review.**
-The requested new unique submission remains **unfulfilled**: a freshly pinned registry witness is positive across the entire footprint, so every nonempty candidate fails the unchanged literal overlap rule. This is an automated rejection, not a request for manual inspection. Matched-budget “unique” claims below are historical diagnostics, not clearance.
+**Historical decision (superseded by CURRENT-STATUS above): OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT · no new TIFF generated in that review.**
+That review reported the requested new unique submission remained **unfulfilled**: a freshly pinned registry witness is positive across the entire footprint, so every nonempty candidate fails the unchanged literal overlap rule. This is an automated rejection, not a request for manual inspection. Matched-budget “unique” claims below are historical diagnostics, not clearance.
 
 **[Download the existing format-validated research TIFF](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif)** · [Executive guide](docs/executive-summary.html) · [Review, sources and limitations](docs/REVIEW_797E507A.md) · [JSON run card](docs/downloads/review797e_run_card.json) · [Ranked conditional hypotheses](docs/HYPOTHESES_797E507A.md).
 
@@ -491,7 +494,7 @@ Main `d6f7ac0` added [RADIODECOUPLE](docs/ANALYSIS_20261025_RADIODECOUPLE.md) an
 
 ## Session Prompt — Authoritative Operating Contract (read at every session start)
 
-The full durable operating contract below is the starting point for all work on this repository. It is preserved verbatim as historical input, not as a claim that any GEMSDOE entry received a verified organizer score or that any current TIFF is submission-cleared. Follow the binding negative decision at the top of this README and the evidence-linked reviews instead.
+The durable operating contract below is the starting point for all work on this repository. Its source material and requirements are retained here; this is not a claim that any GEMSDOE entry received a verified organizer score or that any current TIFF is submission-cleared. Follow the binding negative decision at the top of this README and the evidence-linked reviews instead.
 
 ### Highest urgency — MUST
 
@@ -540,12 +543,12 @@ There should be an easy-to-download submission TIF file as described by the prom
 - **Maximize P(Win):** In every decision, weigh tradeoffs, assess risk, and choose the path that maximizes the probability of winning. Preserve scarce slots; reject unsupported score claims.
 - **Own the Outcome:** Own results end to end. Fix shared defects and report unmet requirements; do not weaken a failed gate. A reproducible negative is preferable to a fabricated submission claim.
 
-### Deliverables for this session
+### Historical deliverables (TILTANGLE session, 2026-10-25; not current instructions)
 
-1. Generate 3–5 candidate geological hypotheses not yet tried (layers, physical signature, missing-fault rationale, differences, mimic, expected value, cost) — see docs/HYPOTHESES_TILTANGLE.md
-2. Validate the top candidate (H1 TILTANGLE: gravity tilt-angle edge corridors) on the spatially-blocked holdout set — HOLDOUT-DTI 0.033466 [gems57-pooled-hide-v2, 45,253 withheld positives]
-3. Generate a unique TIF submission — gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif (format-valid, SHA-256 f17eae78ff659e3551fb4a4f92ef9e16180fde22a9d157a2114b03ef98a023e7)
-4. Create executive summary subpage — docs/tiltangle.html
-5. Store the prompt in README.md (this section)
-6. Create and merge a pull request onto main
+1. The TILTANGLE session ranked geological hypotheses in `docs/HYPOTHESES_TILTANGLE.md` and tested gravity tilt-angle edge corridors.
+2. Its recorded result is **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 45,253 withheld positives): `0.033466`; the archived TILTANGLE run card does not provide a 95% confidence interval, so this record is incomplete against the current run-card protocol.
+3. It generated `docs/downloads/gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif`, SHA-256 `f17eae78ff659e3551fb4a4f92ef9e16180fde22a9d157a2114b03ef98a023e7`. This is format-valid for research download, but the verdict is negative and it is **not cleared to submit** under the literal dense-witness registry stop.
+4. The accompanying page is `docs/tiltangle.html`; its historical form note is superseded by the explicit research-only warning on that page.
+
+These are historical artifacts. For present status and next work, use the current readiness panel and [ordered next steps](docs/NEXT_STEPS.md).
 

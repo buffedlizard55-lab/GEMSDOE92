@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TILTANGLE submission — GEMSDOE92 DOE GEMS Prize #306</title>
+  <title>TILTANGLE research artifact — GEMSDOE92 DOE GEMS Prize #306</title>
   <link rel="stylesheet" href="style.css">
   <link rel="canonical" href="https://buffedlizard55-lab.github.io/GEMSDOE92/docs/tiltangle.html">
 </head>
@@ -12,21 +12,17 @@
 <a class="skip" href="#content">Skip to content</a>
 
 <section class="banner banner-warn" aria-label="Authoritative submission status — TILTANGLE">
-  <h2 style="margin-top:0">TILTANGLE research GeoTIFF — OK to download, NOT cleared to submit</h2>
+  <h2 style="margin-top:0">TILTANGLE research GeoTIFF — OK to download for research, NOT cleared to submit</h2>
   <p><strong>✅ OK TO DOWNLOAD FOR RESEARCH</strong> · <strong>⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT</strong></p>
   <p>This is a byte-unique, single-band GeoTIFF built by the TILTANGLE lane (gravity tilt-angle × horizontal-gradient edge corridors). It passes all 11 automated format gates (float32, EPSG:32611, 3730×3292, exact sample_submission transform, every value finite in [0,1], 0 NaN, zeros outside the footprint, 0 dots on/near the mapped catalogue).</p>
-  <p><strong>Verdict:</strong> negative (<code>submission_eligible: false</code>). HOLDOUT-DTI
-  <code>0.033466</code> (<code>gems57-pooled-hide-v2</code>, 45,253 withheld positives) is a local
-  surrogate — not an organizer score. Not cleared for a weekly slot under the literal
-  dense-witness registry stop.</p>
+  <p><strong>Verdict:</strong> negative (<code>submission_eligible: false</code>). The archived run card reports HOLDOUT-DTI <code>0.033466</code> (<code>gems57-pooled-hide-v2</code>, 45,253 withheld positives), but omits its 95% confidence interval. Treat this historical metric as incomplete; it is not an organizer score. Not cleared for a weekly slot under the literal dense-witness registry stop.</p>
 </section>
 
-<a id="content"></a>
-
+<main id="content">
 <section class="download-card">
-  <h1>⬇ Download the submission-ready GeoTIFF</h1>
-  <p class="kicker">GEMSDOE92 · TILTANGLE lane · DrivenData Competition #306 · DOE GEMS Prize</h1>
-  <p>Click the button to download the single-band GeoTIFF. The ZIP below contains exactly this one TIFF (the form accepts either).</p>
+  <h1>⬇ Download the research-only GeoTIFF</h1>
+  <p class="kicker">GEMSDOE92 · TILTANGLE research lane · DrivenData Competition #306 · DOE GEMS Prize</p>
+  <p>Click to download the single-band GeoTIFF for research and audit only. The ZIP below contains exactly this one TIFF. This artifact is <strong>not cleared for competition submission</strong>.</p>
   <a class="btn" href="downloads/gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif" download>
     Download gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif
   </a>
@@ -41,19 +37,20 @@
     <div><dt>Grid</dt><dd>float32 · 1 band · EPSG:32611 · 3730 × 3292 · 100 m pixels · transform (100, 0, 243350, 0, -100, 4508550)</dd></div>
     <div><dt>Values</dt><dd>all finite, in [0, 1], 0 NaN anywhere, 0.0 outside the footprint</dd></div>
     <div><dt>Dots</dt><dd>37,654 unit-mass dots, min spacing 2.8 px, 0 on the mapped catalogue, all &gt;2 px from it</dd></div>
+    <div><dt>Local record name (not a submission)</dt><dd><code>GEMSDOE92-TILTANGLE-tiltangle-20261025T182301Z</code></dd></div>
+    <div><dt>Safe archive note (do not upload this file)</dt><dd><code>TILTANGLE research only; gravity tilt-angle × horizontal-gradient edge corridors; not cleared for upload</code></dd></div>
     <div><dt>Run card</dt><dd><a href="downloads/gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros_run_card.json">JSON run card</a> · <a href="HYPOTHESES_TILTANGLE.md">Ranked hypotheses</a></dd></div>
   </div>
 </section>
 
 <section>
   <h2>How to submit this file to the competition</h2>
-  <p><strong>Do not submit this artifact unless your selector has set <code>submission_eligible: true</code>.</strong> The current verdict is <code>negative</code> — it is a research download. When a future file is cleared, follow these steps:</p>
+  <p><strong>Do not submit this artifact unless your selector has set <code>submission_eligible: true</code>.</strong> The current verdict is <code>negative</code> — this is a research download only. Do not upload this TIFF. For a future separately cleared artifact:</p>
   <ol>
     <li>Download the exact <code>.tif</code> above (or the ZIP that contains only that TIFF). Verify its SHA-256 against the run card.</li>
     <li>Sign in at <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData #306 submissions</a> (this URL was not live-verified from the sandbox; you need DrivenData credentials).</li>
-    <li>Under <em>File to submit</em>, choose the file. Under <em>Note (optional)</em>, paste the artifact's note (≤140 characters):</li>
-    <li><code>h33-h33-2-b2; TILTANGLE: gravity tilt-angle x horizontal-gradient edge corridors; 37654 dots d_cat&gt;2px; HOLDOUT-DTI 0.033466; unique</code></li>
-    <li>Name your record <code>GEMSDOE92-TILTANGLE-tiltangle-20261025T182301Z</code>, submit within the weekly cap, and record the organizer receipt (ORGANIZER-CONFIRMED score) against the exact file SHA-256 in <code>ledger/submissions.csv</code>.</li>
+    <li>For the future cleared artifact only, use its own run-card note (≤140 characters), name, and verified weekly cap. The TILTANGLE run card note below has been superseded and must not be copied.</li>
+    <li>After a future authorized upload, record the exact organizer receipt against the uploaded file SHA-256 in <code>ledger/submissions.csv</code>.</li>
   </ol>
   <p>This project's automated validation replaces human inspection for file format: no NaN inside the footprint, values in [0,1], CRS/shape/transform match sample_submission.tif. This prevents the portal error <em>"Predicted values must be in range [0, 1]"</em>.</p>
 </section>
@@ -70,11 +67,8 @@
   <h2>Holdout result (HOLDOUT-DTI — not an organizer score)</h2>
   <table>
     <tr><th>Instrument</th><th>Value</th><th>95% CI</th><th>Withheld positives</th></tr>
-    <tr><td>gems57-pooled-hide-v2, static (d_cat &gt; 2 px)</td><td>0.033466</td><td>paired spatial-cluster bootstrap, 8 LOQO folds (seeds 20, 30)</td><td>45,253 px</td></tr>
-    <tr><td>Per-draw</td><td>0.033594 / 0.033685</td><td>—</td><td>draws 20 / 30</td></tr>
-    <tr><td>Per-quadrant</td><td>NE 0.0332 · NW 0.0354 · SE 0.0337 · SW 0.0323</td><td>—</td><td>spatially uniform, no quadrant collapse</td></tr>
+    <tr><td>Reported static result</td><td>0.033466</td><td>Not recorded in the archived run card; result is incomplete for promotion</td><td>45,253 positives withheld; evaluator gems57-pooled-hide-v2</td></tr>
   </table>
-  <p>For context: R0 parent static = 0.004006; COULOMBDM static = 0.007816; COULOMBLOQO standalone Rule-2 (holdout-best) = 0.113316. TILTANGLE beats R0 by ~8.4× and COULOMBDM by ~4.3× on static holdout, but is a standalone deterministic surface below the supervised LOQO bar.</p>
   <p class="kicker" style="margin-top:1rem">All numbers carry explicit HOLDOUT-DTI labels. A projection is never written as a score. No ORGANIZER-CONFIRMED score exists for this file.</p>
 </section>
 
@@ -93,8 +87,10 @@
   </ul>
 </section>
 
+</main>
+
 <footer>
-  <p>GEMSDOE92 · TILTANGLE submission · All format validation automated (gems.gates, gems57.validate, scripts/check_site.py) — no human inspection required for file acceptance.</p>
+  <p>GEMSDOE92 · TILTANGLE research artifact · All format validation automated (gems.gates, gems57.validate, scripts/check_site.py) — no human inspection required for file acceptance.</p>
   <p><a href="index.html">← Main download workbench</a> · <a href="executive-summary.html">Executive summary (overall)</a></p>
 </footer>
 
