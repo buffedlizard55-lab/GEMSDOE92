@@ -9,9 +9,22 @@
 
 ---
 
-# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-25, Post-`POISSONFLEX` Session)
+# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-26, Post-LISTRIC Session)
+## Current decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT** (`submission_eligible: false`, 0 slots spent this repo)
+Newest LISTRIC standalone (`h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif`, SHA `7e4b4636…1e2ab`) is ✅ OK TO DOWNLOAD (automated [0,1] gates PASS) but ⛔ DO NOT SUBMIT: public dual-reading duplicate 0.710735>0.70, literal 1.000, paired holdout gain vs KNICKLOQO not significant. Selector candidate remains KNICKLOQOstandalone pending human dual-vs-literal policy decision. See `evidence/listric_run_card.json`.
 
-## Current Slot Decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT (`submission_eligible: false`, `0` weekly slots spent, `84 BUILT / 0 RECEIPT`)**
+---
+# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-25, Post-`POISSONFLEX` Session)
+# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-25, Post-`GRAV-QUAD` Session)
+
+## Current Slot Decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT (`submission_eligible: false`, `0` weekly slots spent, `95 BUILT / 0 RECEIPT`)**
+
+- **Newest Session Research Artifacts (`RADIOCONTACT` + `GRAV-QUAD`, 2026-10-25, pre-registered Rank 1 and Rank 3 of `docs/HYPOTHESES_20261026_RADIOCONTACT.md`):**
+  - `docs/downloads/gemsdoe92-radiocontact-20261025T041646Z-zeros.tif` (SHA-256 `026a52ff46d695bb79ae39780c154cba9cc69e039e7d2a4d1fe898c6c0a79345`; static `HOLDOUT-DTI = 0.005066 [0.003638, 0.006583]`; max leakage-canary AUC `< 0.90`; 9/9 format gates PASS; `verdict: negative`).
+  - `docs/downloads/gemsdoe92-gravquad-20261025T145744Z-zeros.tif` (SHA-256 `9ea3e2e01fba5e733964e1252c729a70f0d61edc499c848628d83946d49c7ab5`; static `HOLDOUT-DTI = 0.005092 [0.004001, 0.006253]`; strict Rule-2 also `0.005092`; paired delta vs `R0` `+0.001086 [-0.000082, +0.002312]` — CI crosses 0, not significant; max leakage-canary AUC `0.5362`; locally unique vs 107 local rasters (worst overlap `0.3044`, `|rho| = 0.0523`); 9/9 format gates PASS on an independent disk re-read; `verdict: negative`).
+  - Neither beats the repository's promotion bar (COULOMB-LOQO `0.113316` Rule-2 / `0.009220` static; KNICKLOQO `0.010788` static, all-time record). Both are **OK TO DOWNLOAD FOR RESEARCH**, both are **DO NOT SUBMIT**. Public-registry scan was deliberately skipped for GRAV-QUAD per the 3-experiment/2-hour session budget (local uniqueness check alone already clears it; RADIOCONTACT and DRAINAGE-KNICK earlier in this session arc had already confirmed clean against the full public registry fleet).
+  - Both lanes are now live on the public site (`docs/index.html`, `docs/executive-summary.html`, `docs/SUBMIT.html`) with explicit green/red badges; full `pytest` suite passes `367 / 367` after the site edits.
+  - 5 new ranked, untried hypotheses for a future session are recorded in `docs/HYPOTHESES_20261025_NEXT.md`, with `LOQO-FEATURE-EXPAND` (folding the GRAV-QUAD and RADIOCONTACT features into the existing supervised quadrant-debiased LOQO ensemble) ranked first by expected-gain/cost.
 
 - **Newest Session Research Artifact (`POISSONFLEX`, 2026-10-25):** `docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif` (`SHA-256 = 37b18c200e84c77b39b07e527b17d4395968389aaf3ff0c175c71204b2065f9b`, `45,000` dots via nested visible-only OOF support; strict draw-blind `d_vis > 2.0` `HOLDOUT-DTI = 0.107466 [0.094158, 0.120431]`, static `d_cat > 2.0` `HOLDOUT-DTI = 0.008824 [0.007601, 0.010081]`, off-catalogue `USGS SGMC PROXY = 0.120957` `+35.4%` over `COULOMBLOQO standalone`; `10/10 + 13/13` format gates PASS; passes all `97` local rasters `<= 0.6488` and all `<= 80k`-dot public rasters across `102` repos `<= 0.6804`, but trails `COULOMBLOQO standalone` `0.113890` and hits `0.7541 > 0.70` on `125,890`-px `62GEMSDOE ventcons` under the `150k` dot-field cap -> **`verdict: "negative"`, DO NOT SUBMIT**; `evidence/poissonflex_run_card.json`).
 - **Closed Selector Investigation (`evidence/coulomb_loqo_dual_reading_selector.json`):** Re-auditing `COULOMBLOQO standalone` and `COULOMBLOQO dual45` across all `1,321` non-self public blobs (`102` repos, `0` missing blobs) under `uniqueness.dual_reading_decision` confirmed **both fail closed** (`standalone` `0.739842 > 0.70` across `8` sparse `100k–126k`-px witnesses; `dual45` `0.722420 > 0.70` across `4` witnesses). **Zero artifacts in the repository are cleared for a weekly slot.**

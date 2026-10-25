@@ -1,0 +1,23 @@
+{
+  "schema": "gemsdoe92-repo-review-2026-10-25",
+  "session": "911a9a62",
+  "experiments_used": 0,
+  "experiments_budget": 3,
+  "slots_used": 0,
+  "verdict": "negative (do not submit)",
+  "tests": {"command": "python -m pytest tests -q", "result": "367 passed"},
+  "make_manifest": "RESULT: OK",
+  "make_verify": "PARENT VERIFIED (pinned artefact) h33-h33-2-b2 sha256 c55bafc47005...",
+  "make_site": "SITE CHECK PASS (63 served raster(s) gated)",
+  "witness": {
+    "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "finite_positive_cells": 5167373,
+    "nan_cells": 7111787,
+    "grid": "EPSG:32611 3730x3292, transform matches sample_submission.tif"
+  },
+  "leaderboard": {"source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/", "rank1": ["xiaofanhu", 0.4413], "rank2": ["cfld__", 0.3916], "class": "ORGANIZER-CONFIRMED (public leaderboard read 2026-10-25)"},
+  "claims_not_receipts": ["GEMSDOE32 h33-h33-2-b2 0.2778 (not on page read; page states no organiser score)"],
+  "irregularities_flagged": 8,
+  "uniqueness_gate": "literal overlap = 1.0 vs full-footprint witness; interpretation needs decision"
+}

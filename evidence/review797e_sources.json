@@ -1,0 +1,37 @@
+{
+  "reviewed_utc": "2026-10-25T14:48:17.846253+00:00",
+  "sources": [
+    {
+      "source_class": "owner project, not organizer receipt",
+      "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/012e17b2a115c3c0d5e7885bea625bf9657c99fc/docs/index.html",
+      "git_blob_sha": "45d52189a1fc35d57fefb4ea920af6797926aaf2",
+      "sha256": "b88a7f10d064ae33c757d9273ab0d73d1fe29de8ea69029ddfd468bcd73560b1",
+      "bytes": 19571,
+      "retrieved_and_blob_verified": true,
+      "verified_claims": [
+        "Page says UNSCORED and NO ORGANISER SCORE EXISTS.",
+        "H33-2-B2 deletes dots at catalogue distance <= 2 pixels from its documented base.",
+        "No submission-page receipt for the user-reported 0.2778 was verified."
+      ]
+    },
+    {
+      "source_class": "official DrivenData reference repository",
+      "url": "https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/README.md",
+      "git_blob_sha": "a8814f99c395d12a8e1c3731c738e61d7dca06b5",
+      "sha256": "cfa4d55559c9128313beb9417eae7e0a94c31677132afb1120f9e86222804239",
+      "bytes": 2367,
+      "retrieved_and_blob_verified": true,
+      "verified_claims": [
+        "README explicitly provides CPU-only setup; GPU is faster, not mandatory.",
+        "Reference repository is a baseline, not a receipt for this project."
+      ]
+    }
+  ],
+  "not_currently_retrieved": [
+    "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+    "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/",
+    "https://docs.nlr.gov/docs/fy26osti/96647.pdf",
+    "https://gdr.openei.org/submissions/1391"
+  ],
+  "access_boundary": "Outbound requests limited to GitHub, npm and PyPI hosts; no authenticated DrivenData access; no live leaderboard, rules PDF or official data-license verification claimed."
+}

@@ -38,8 +38,8 @@ jobs:
         run: make verify
 
       # The files the site offers for download must pass the competition's format
-      # gates as served -- no human pixel inspection. This is the gate that makes
-      # the "OK TO DOWNLOAD AND SUBMIT" banner a statement about the bytes.
+      # gates as served -- no human pixel inspection. This proves only local
+      # format/range validity; it does not clear registry uniqueness or submission.
       #
       # Every dose on the page is offered, so every dose is gated. Do NOT pick one
       # with `ls | head`: alphabetical order selects p10, not the p12 primary the

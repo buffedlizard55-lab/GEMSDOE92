@@ -26,6 +26,100 @@
 
 ---
 
+# Next Steps — GEMSDOE92 (Updated 2026-10-26, Post-LISTRIC Session)
+
+## Completed this session (LISTRIC — NEXT_STEPS Rank 4 executed)
+- Pre-registered 5 ranked hypotheses (`docs/HYPOTHESES_20261026_LISTRIC.md`); implemented `gems/listric.py` (4 catalogue-free listric offset-pair features; canaries 0.526–0.622, all ≤0.90; overall max 0.667141).
+- v1 merged crest hit Rule-1 STOP (0.763212 vs KNICKLOQOstandalone, no TIF emitted) → pre-emission amendment to LISTRIC-PURE crest (`L_listric^3`); amended screen PASS (surface worst 0.644872 ≤0.70, |ρ|=0.179108 ≤0.90, 79 local rasters).
+- 3/3 experiments built via shared `submission_writer` (37,654 dots, [0,1] gates PASS): standalone `a705162a` static HOLDOUT-DTI 0.010909 [0.009543,0.012278] (nominal #1; paired vs KNICKLOQO +0.000121 [-0.001167,+0.001262] n.s.; draw-blind d_vis 0.110593; SGMC 0.097959 < KNICKLOQO 0.103912); uncal 0.010385; dual35 0.009446.
+- Live 102-repo public scan (1,472 exact-grid rasters, 2026-10-26): standalone/uncal duplicate even under dual reading (0.710735/0.702050 vs 62GEMSDOE 125,890-dot); dual35 unique (0.679104) but below holdout best; literal 1.000 for all. **Verdict negative, submission_eligible=false, 0 slots.** Run card `evidence/listric_run_card.json`.
+
+## Highest-P(Win) next actions
+1. **Human selector (unchanged, still #1):** decide dual-reading vs literal policy and obtain first ORGANIZER-CONFIRMED receipt — KNICKLOQOstandalone remains the selector candidate (dual-reading-unique + SGMC-best); LISTRIC does not displace it.
+2. **Untried queue:** TENSOR-RIEDEL (15–25° obliquity), then FLEXURE-HINGE (5–15 km flexural inflection) — both in-cache; INSAR-3DEP1M-CREEP still needs external tile staging (not obtainable via allowlisted hosts).
+3. Any future lane must beat KNICKLOQO static 0.010788 with paired CI>0 **and** clear the 62GEMSDOE 125,890-dot witness (≤0.70) before promotion discussion.
+
+---
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`VENTSCARP` & `LISTRICLAG` Integration)
+
+## Completed in `VENTSCARP` session (`3/3` experiments, `0` weekly slots)
+
+1. **Completed `102`-Repo Git Smart HTTP Public Registry Sync (`scripts/sync_public_registry_git.py` + `scripts/audit_public_registry.py --git-transport`):** Inventoried all `102` `buffedlizard55-lab/*GEMSDOE*` repositories (`0` errors, `1,826` TIFF paths, `1,458` SHA1-verified blobs) without GitHub REST API quota failures.
+2. **Pinned & Deconfounded USGS 3DEP 10 m Scarp + DOE GDR `#1391` INGENIOUS Hydrothermal Stack (`registry/ventscarp_external_manifest.json`, `gems/ventscarp.py`):** Excluded `86` Pleistocene Lake Lahontan shoreline `Tufa` mimics (`#IR-92-PALEO-TUFA-SHORELINE-MIMIC`, keeping `195` hydrothermal `Sinter` / `Explosion craters` / `Silica-cemented` / `Travertine` vents + `709` anomalous `2 m` probes), excluded `gdr_volcanic_vents_in_footprint.csv` (`#IR-92-VOLCANIC-CSV-DIST-KNOWN-FAULT`), and excluded `75.37%`-biased `lidar_scarp_features_u8.tif` (`#IR-92-LIDAR-COVERAGE-BIAS`). `26/26` single-feature canaries PASS (`max = 0.616694 <= 0.90`; LOQO OOF `0.674160 <= 0.90`).
+3. **E1 Primary (`VENTSCARP ventscarp`, `37,654` unit dots, `a4a342a8…`):** Achieved **`0.112213 [0.096670, 0.127254]`** strict draw-blind Rule-2 `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives) — **highest public-registry-unique (`dual_reading_unique = True`, `0.6947 <= 0.70` across `102` repos; post-merge local max `0.4770 <= 0.70` across all `GEMSDOE92` rasters including `FAULTNET`, `LISTRICLAG`, `LISTRICDIP`, `CURIE-DEMAG`, `RADIODECOUPLE`, `GRAV-QUAD`, `DRAINAGE-KNICK`) zero-catalogue Rule-2 `HOLDOUT-DTI` in `GEMSDOE92`**, surpassing `KNICKLOQO standalone` (`0.109043`). Static `d_cat > 2.0` `HOLDOUT-DTI = 0.008212 [0.007007, 0.009287]`.
+4. **E2 Causal Vent Ablation (`scarp10m_novent`, `b8e88c00…`):** Removing Group-B hydrothermal features drops Rule-2 `HOLDOUT-DTI` to `0.108862 [0.091993, 0.126805]` (`+3.08%` vent lift) and proves vents shift placement out of `>= 12°` alpine cliffs (`11.07% -> 2.97%`) onto `< 6°` basin/piedmont scarps (`71.57%`).
+5. **E3 Fixed-Mass Soft-Tversky Dilution Proof (`ventscarp_soft`, `47,000` px in `[0.35, 1.00]` at fixed `L1 = 37,654.0`, `d06c302d…`):** Scores `0.107019 [0.091774, 0.121673]` (paired `ventscarp - ventscarp_soft = +0.005193 [+0.003555, +0.006627]`), proving fixed-L1 peak dilution hurts DTI whereas `LISTRICLAG_N90K` below proves **additive** tail mass (`37,654 @ 1.0 + tail @ 0.30`) helps (`+13.4%`). Verdict `negative` (`OK TO DOWNLOAD FOR RESEARCH`, `DO NOT SUBMIT` under literal dense witness `1.000 > 0.70`).
+
+## Highest-P(Win) actions for the next session (in order)
+
+1. **`VENTSCARP-KNICKLOQO-N90K` (Slope-Regime Fusion + Additive `@ 0.30` Tail):** Combine `VENTSCARP` (`0.112213` Rule-2, `71.57% < 6°` basin/piedmont scarps) with `KNICKLOQO standalone` (`0.010788` static #1, `>= 6°` bedrock knickzones), keeping the top `37,654` crests at full `1.0` (respecting `VENTSCARP` E3) and adding an additive `@ 0.30` tail out to `90,000` crests (leveraging `LISTRICLAG` E3's `+13.4%` lift), verified against `public_fast_index_102repos.npz` before packaging.
+2. **External InSAR / Microseismic Staging Outside Allowlisted Sandbox (Path toward `0.3195` / `0.4413` `[CLAIM]`):** Stage Sentinel-1 InSAR velocity gradients, UNR NGL MIDAS GPS strain, and NSL relocated microseismic hypocenter lineations into a SHA-256-pinned GitHub mirror (`docs/ANALYSIS_20261025_VENTSCARP.md` §2.3).
+3. **Human Selector Review & First `ORGANIZER-CONFIRMED` Receipt:** Obtain human selector confirmation on literal dense-witness (`17GEMSDOE` `5,167,373` px) vs `dual_reading_unique = True` (`<= 0.6947`) before spending any weekly DrivenData slot.
+
+---
+
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`LISTRICLAG` Session)
+
+## Completed this session (`LISTRICLAG`, 3/3 experiments, 0 weekly slots)
+
+1. **Pre-registered 5 untried hypotheses** (`docs/HYPOTHESES_20261025_LISTRICLAG.md`: LISTRICLAG, GRAVQUAD, SEISGRAVLAG, MTCHANGE, TILTDEPTH) and executed Rank 1 (`gems/listriclag.py`, `scripts/build_listriclag_submission.py` — shared-template reuse, no private fork).
+2. **E1 primary (`LISTRICLAG`, 37,654 unit dots):** strict fold-visible `HOLDOUT-DTI = 0.054843 [0.044940, 0.066261]` (`gems57-pooled-hide-v2`, 22,663 withheld positives, seeds 20+30) — **below the 0.113316 promotion bar ⇒ verdict `negative`**; paired vs `R0` `+0.050837 [+0.040920, +0.061690]`. 6/6 leakage canaries PASS (max symmetric AUC `0.579583`).
+3. **E2 ablation result — lag-coupling hypothesis REJECTED:** co-located `LISTRICLAG_LOCAL = 0.067679 [0.054787, 0.081247]` beats the ring arm; paired ring-vs-local `Δ = −0.012836 [−0.020424, −0.005791]` (CI excludes 0). Structural finding: the hide-and-recover instrument's withheld truth is scarp-mapped by construction, so displacement-tolerant couplings are penalized on it — any future "lag/offset" lane must register an off-catalogue instrument (SGMC proxy) as primary instead.
+4. **E3 emission-policy probe CONFIRMED on holdout:** same-surface `LISTRICLAG_N90K` (90,000 dots; prefix 37,654 @ 1.0, tail @ 0.30) scored `0.062202 [0.051892, 0.073341]` — **+13.4% paired over the binary 37,654 arm**, the first direct holdout measurement of the extended-budget lever identified analytically in the PROVINCETOE session (`c* = alpha·DTI` marginal bar).
+5. **Artifacts (format-valid, automated gates PASS, locally unique, public audit merged into run card):** `docs/downloads/gemsdoe92-listriclag-20261025T145312Z-zeros.tif` (`a301cbfc…`) + `…-n90k-zeros.tif` (`2704229b…`); run card `evidence/gemsdoe92-listriclag-20261025T145312Z_run_card.json`; public scan `evidence/listriclag_public_registry_uniqueness.json` (102 repos, 1,464 Git-blob-verified blobs, refreshed this session). **OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT** (`submission_eligible: false`).
+
+## Highest-P(Win) actions for the next session (in order)
+
+1. **KNICKLOQO-N90K:** apply the now holdout-confirmed extended-budget emission (E3, +13.4% paired) to the repository's strongest ranker (`KNICKLOQO standalone`, Rule-2 `0.109043`, static #1 `0.010788`, public `0 / 1,412 > 0.70` under `dual_reading_decision`) instead of a single-physics surface; sweep tail budget `{60k, 90k, 120k}` × tail weight `{0.2, 0.3, 0.5}` on the same 8-fold instrument before any slot discussion.
+2. **Off-catalogue primary instrument for displacement-tolerant lanes:** re-register LISTRICLAG-class mechanisms with the USGS SGMC bedrock-fault proxy (`d_cat > 3`) as the pre-registered primary, since item 3 above proves the scarp-biased holdout structurally penalizes them.
+3. **First `ORGANIZER-CONFIRMED` receipt:** the ledger still holds 0 portal receipts; every scoring claim in the parent-site corpus remains CLAIM-class. Obtain one authenticated DrivenData receipt on a human-cleared artifact and record it in `ledger/submissions.csv`.
+4. **Untried hypothesis queue:** GRAVQUAD / SEISGRAVLAG / MTCHANGE (ranks 2–4 of this session's pre-registration) remain untried; TILTDEPTH ranked last due to EULERFUSE/ANASIG drift risk.
+# Current review and next steps — 2026-10-25 (`f23ca2d2`)
+
+**No new TIFF. Research downloads only; DO NOT SUBMIT.** [Fresh review](REVIEW_F23.md) · [automated status](downloads/readiness.json) · [run card](downloads/review_f23_run_card.json).
+
+1. The previous proposed KNICKLOQO promotion cannot proceed under the unchanged literal rule. The pinned witness rejects all nonempty candidates before placement. Matched-budget diagnostics must not supersede the user's rule silently. An explicitly revised future brief and a named lane are prerequisites to further geological experiments, not a request for human pixel inspection.
+2. Use the corrected shared validator and byte-bound status renderer. `prune_radius=2` no longer bypasses its own distance gate. Never re-use a historical audit as proof of current bytes.
+3. Only if the protocol permits experiments later: restore pinned features; verify data-use rights and band metadata; freeze a comparable holdout control and locked outer spatial test; run single-feature canaries before the experiment budget. Do not compare static-mask and fold-visible scores as one leaderboard.
+4. Verify official submission-page rules, current cap and actual score receipts through permitted access. No DrivenData session or permitted route to those hosts is available here. No submission slot was spent.
+5. GitHub Pages still reports legacy publication. Enabling workflow publication returned HTTP 403. Repository integration permissions need attention before claiming Actions gates the live site. No credential is requested or stored.
+
+Earlier “current,” “unique,” and promotion instructions below are historical and superseded where they conflict with this decision. The newly requested unique submission remains unfulfilled.
+
+# Binding next steps — 2026-10-25 (`797e507a`)
+
+1. Do not start another geological experiment under the universal literal duplicate stop. This is already decided automatically, not pending pixel inspection.
+2. Keep the generated public-status panel first on all three entry pages; run `python scripts/render_public_status.py --check` and `python scripts/check_site.py`.
+3. A future explicitly permitted lane should test one of [three ranked conditional operators](HYPOTHESES_797E507A.md), using the shared buffered visible-only evaluator, individual canaries and an untouched outer spatial test. Do not tune again on the outer test or compare incompatible holdout instruments.
+4. Resolve repository Pages configuration/permission drift: API setting change returned 403; verify post-merge deployment instead of assuming the live site updated.
+5. Obtain authoritative data-use confirmation and authenticated receipts through permitted channels. No current live score or new unique submission is established.
+
+See [full review and limits](REVIEW_797E507A.md). The entries below are historical plans and do not authorize bypassing the stop.
+
+---
+
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`LISTRICDIP` Session)
+
+## Completed this session
+
+1. Ranked five hypotheses in `docs/HYPOTHESES_20261025_LISTRICDIP.md` before scoring. Implemented only Rank 1 (`LISTRICDIP`), three arms, catalogue-free, shared evaluator and writer.
+2. `updip50` static HOLDOUT-DTI `0.005420 [0.004294, 0.006551]` beats `R0` `0.004006` (paired CI excludes 0) and loses to `KNICKLOQO` `0.010788` and `COULOMBLOQO` `0.009220`. Re-placed `d_visible > 2` is `0.048225`. Verdict `negative`. 0 weekly slots.
+3. Antithetic arms could not fill 37,654 dots on reversed-polarity support at 3.2 px spacing (9,571 and 9,555). They tied. Distance is not load-bearing. Not padded.
+4. Local uniqueness passed (worst overlap 0.1968, `|ρ|` 0.053, 110 rasters). Literal dense witness overlap is 1.0. `stop_required: true`. Research GeoTIFFs are on the site. They are not cleared to upload.
+
+## Do not do next
+
+- Do not upload `LISTRICDIP`. It did not beat the holdout best.
+- Do not retry antithetic padding, sub-3.2 px spacing, local-gradient antithetic lookup, or float32 Band-18 × depth products.
+- Do not copy `h33-h33-2-b2` / `R0`.
+- Do not treat 0.005420, CLAIM 0.2778, prompt 0.3195, or leaderboard-snapshot 0.4413 as the same number.
+
+## Still open, not started
+
+Ranks 2–5 in the LISTRICDIP hypothesis file (`TENSOR-RIEDEL`, `FLEXURE-HINGE`, `CLAYCAP-REDOX`, `INSAR-3DEP1M`) were not run. `INSAR-3DEP1M` remains not viable in this sandbox. A weekly slot still requires a file that beats the stored holdout best and clears the binding uniqueness rule. This session did not produce one.
+
+---
+
 # Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`KNICKLOQO` Session)
 
 ## Completed this session (`KNICKLOQO` + Action #1 Dual-Reading Audit + Action #2 `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` Resolution)
@@ -380,3 +474,8 @@ Next, in order: (1) **one organizer receipt** remains Blocker 0 — the selector
 - **`PIEDFRONT f35Ptop`** (`GEMSDOE92-PIEDFRONT-f35Ptop-20261024`, `docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif`, SHA-256 `e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8`): static `HOLDOUT-DTI = 0.006425 [0.005375, 0.007479]`, `SGMC = 0.059993`, `verdict: negative` (**OK TO DOWNLOAD**, **DO NOT SUBMIT**). `HYDROCONDUIT f45hydro` (`0.008549 [0.007626, 0.009487]`) improves over `PIEDFRONT f35Ptop` by `+33.1%` (`+0.002124`) while overlapping only `56.56% <= 70%` within 3 px (`phi = 0.2000`).
 - **`STEPEDGE f60Sraw`** (`GEMSDOE92-STEPEDGE-f60Sraw-20261024`, `docs/downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif`, SHA-256 `c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4`): static `HOLDOUT-DTI = 0.003980 [0.003295, 0.004702]`, repo-best `SGMC = 0.141464`, `verdict: negative` (`42.35% <= 70%` 3-px overlap with `HYDROCONDUIT f45hydro`).
 - Ledger total across all merged sessions: `54 BUILT / 0 RECEIPT`.
+
+
+## Parallel research notes, not authorization
+
+Main `d6f7ac0` added RADIODECOUPLE and CURIE-DEMAG reports. See their analysis and hypothesis registers. Their further model/promotion plans remain subordinate to the binding literal stop at the top of this file; they are not validated or selected by review797e.

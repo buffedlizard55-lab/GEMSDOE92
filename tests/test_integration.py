@@ -75,7 +75,7 @@ def test_end_to_end_prune(scene, tmp_path):
     results = run_gates(out, refp, catalogue_path=catp, prune_radius=2)
     ok, report = summarise(results)
     assert ok, report
-    assert "declared clearance override" in report
+    assert "strict distance > radius required" in report
 
     # ledger round-trip
     row = {"id": "test-variant", "parent": "h33-h33-2-b2", "axis": "PRUNE",

@@ -41,10 +41,90 @@ def test_index_has_download_and_slot_warning():
     # evidence discipline: holdout numbers must be labelled, and not dressed as scores
     assert "HOLDOUT-DTI" in html
     first_holdout = html.split("HOLDOUT-DTI")[1][:200]
-    assert "ORGANIZER-CONFIRMED" not in first_holdout
+    # An explicit denial ("No ORGANIZER-CONFIRMED score is available") is
+    # not score laundering. Reject a numerical organizer-score label instead.
+    assert not re.search(r"ORGANIZER-CONFIRMED\s*(?:score\s*)?[:=]?\s*0\.\d+", first_holdout)
     # the negative lane must stay visible as a deliverable, with its verdict
     assert "TIPGAPfar18f33" in html
     assert "negative" in html
+
+
+def test_current_status_is_first_and_links_latest_negative_artifact():
+    html = _index()
+    start = html.find('<!-- CURRENT-READINESS:BEGIN -->')
+    end = html.find('<!-- CURRENT-READINESS:END -->', start)
+    lane = re.search(r'<!-- [A-Z0-9_-]+:BEGIN', html[end + 1:])
+    primary = re.search(r'<a\b[^>]*href="(downloads/[^\"]+-zeros\.tif)"[^>]*data-primary="true"', html)
+    assert start >= 0 and end > start and lane
+    assert primary, 'site must declare one machine-detectable current research TIFF'
+    banner = html[start:end]
+    assert primary.group(1) in banner
+    assert 'OK TO DOWNLOAD FOR RESEARCH' in banner
+    assert 'DO NOT SUBMIT' in banner
+    assert 'DUPLICATE UNDER THE LITERAL REGISTRY RULE' in banner
+
+
+def test_submission_landing_pages_do_not_claim_current_clearance():
+    """Legacy promo files must not override the binding negative submission gate."""
+    ready = (ROOT / "SUBMISSION_READY.md").read_text(encoding="utf-8")
+    beat = (DOCS / "BEAT_0_2778.md").read_text(encoding="utf-8")
+    submit_now = (DOCS / "SUBMIT_NOW.html").read_text(encoding="utf-8")
+    prototype = (DOCS / "index_new.html").read_text(encoding="utf-8")
+    import re
+
+    for page in (ready, beat, submit_now):
+        assert "DO NOT SUBMIT" in page
+        for match in re.finditer("CLEARED FOR SUBMISSION", page, re.IGNORECASE):
+            # The negative warning may use this phrase, but it must explicitly
+            # negate it rather than making a positive clearance claim.
+            prefix = page[max(0, match.start() - 20):match.start()].upper()
+            assert "NOT" in prefix
+        assert "Expected Live Score" not in page
+        assert "Projected score" not in page
+    assert "DO NOT SUBMIT" in prototype
+    assert "prior clearance withdrawn" in prototype
+
+    for name in ("index.html", "SUBMIT.html", "executive-summary.html"):
+        html = (DOCS / name).read_text(encoding="utf-8")
+        begin = html.index("<!-- KNICKLOQO:BEGIN -->")
+        end = html.index("<!-- KNICKLOQO:END -->", begin)
+        block = html[begin:end]
+        assert "DO NOT SUBMIT" in block
+        assert "1.000 &gt; 0.70" in block
+        assert "diagnostic only" in block
+        assert "UNIQUE under" not in block
+
+
+def test_historical_knick_submission_card_is_superseded_and_byte_bound():
+    import hashlib
+    import rasterio
+
+    path = DOCS / "downloads" / "knickloqo_submission_run_card.json"
+    card = json.loads(path.read_text(encoding="utf-8"))
+    assert card["verdict"] == "negative"
+    assert card["submission_eligible"] is False
+    assert card["new_unique_tiff_generated"] is False
+    assert card["correlation_overlap_vs_registry"]["forward_overlap"] == 1.0
+    tif = DOCS / "downloads" / card["file"]
+    assert hashlib.sha256(tif.read_bytes()).hexdigest() == card["raster_sha256"]
+    with rasterio.open(tif) as ds:
+        assert [ds.height, ds.width] == card["metadata_measured_from_disk"]["shape"]
+    assert card["organizer_confirmed_score"] is None
+
+    historical = json.loads((DOCS / "downloads" / "knick_loqo_run_card.json").read_text(encoding="utf-8"))
+    assert historical["verdict"] == "negative"
+    assert historical["submission_eligible"] is False
+    assert historical["current_decision"]["submission_eligible"] is False
+    assert historical["correlation_overlap_vs_registry"]["literal_rule_stop"] is True
+    assert historical["correlation_overlap_vs_registry"]["matched_budget_diagnostic_pass"] is True
+    public = json.loads((DOCS / "downloads" / "knick_loqo_public_registry_uniqueness.json").read_text(encoding="utf-8"))
+    assert public["current_verdict"].startswith("negative")
+    assert public["submission_eligible"] is False
+    assert "matched-budget" in public["current_policy_notice"].lower()
+    for audit_path in (DOCS / "downloads").glob("h33-h33-2-b2-KNICKLOQO*-audit.json"):
+        audit = json.loads(audit_path.read_text(encoding="utf-8"))
+        assert audit["submission_eligible"] is False
+        assert "DO NOT SUBMIT" in audit["current_policy_notice"]
 
 
 def test_index_links_every_served_zeros_file():
@@ -144,7 +224,11 @@ def test_coulombdm_run_card_and_site_html_integrity():
     html = _index()
     primaries = re.findall(r'<a\b[^>]*\bdata-primary="true"[^>]*>', html)
     assert len(primaries) == 1, f"expected exactly 1 data-primary anchor, got {len(primaries)}"
-    assert card["file"] in primaries[0]
+    # 2026-10-25: the homepage primary moved off COULOMBDM onto the newest
+    # research download. The old file stays linked; it is no longer primary.
+    assert card["file"] not in primaries[0]
+    assert card["file"] in html
+    assert "gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif" in primaries[0]
 
     for html_path in sorted(DOCS.glob("*.html")):
         txt = html_path.read_text(encoding="utf-8")
@@ -197,6 +281,19 @@ def test_current_review_run_card_is_served_byte_identically():
     assert card["new_unique_tiff_generated"] is False
     assert card["weekly_submission_slots_used"] == 0
     assert "downloads/repo_review_run_card_20261024.json" in _index()
+
+
+def test_readme_opens_with_authoritative_no_submit_status():
+    """The README must state the current stop before historical lane records."""
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    assert readme.startswith("# GEMSDOE92")
+    marker = "<!-- LISTRICDIP:BEGIN -->"
+    assert marker in readme
+    current = readme[:readme.index(marker)]
+    assert "Authoritative review" in current
+    assert "DO NOT SUBMIT" in current
+    assert "every nonempty candidate" in current
+    assert "matched-budget" in current.lower()
 
 
 def test_submit_page_exists():
