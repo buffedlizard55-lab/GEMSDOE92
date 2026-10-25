@@ -45,6 +45,38 @@ def read_json_object(path: Path, problems: list[str]) -> dict:
         return {}
 
 
+def check_recorded_gates(doc: dict, problems: list[str]) -> None:
+    """A receipt must enumerate actual gates with literal boolean results.
+
+    Re-reading the TIFF below is still authoritative. This check prevents an
+    empty list, truthy string, or malformed row from masquerading as recorded
+    validation (or crashing publication with an unhelpful TypeError).
+    """
+    required = {
+        'crs', 'shape', 'transform', 'dtype_and_band', 'values_in_0_1',
+        'no_nan_inside_footprint', 'nan_outside_footprint',
+        'catalogue_zero_mass', 'distance_from_catalogue', 'reread_sha256',
+    }
+    rows = doc.get('gates_zeros')
+    if not isinstance(rows, list) or not rows:
+        problems.append('audit receipt gates_zeros must be a nonempty list')
+        return
+    names = []
+    for row in rows:
+        if (not isinstance(row, dict) or not isinstance(row.get('name'), str)
+                or not isinstance(row.get('ok'), bool)):
+            problems.append('audit receipt contains a malformed gate row')
+            continue
+        names.append(row['name'])
+        if row['ok'] is not True:
+            problems.append(f"audit receipt records failing format gate: {row['name']}")
+    if len(names) != len(set(names)):
+        problems.append('audit receipt contains duplicate gate names')
+    missing = required - set(names)
+    if missing:
+        problems.append(f'audit receipt missing required gates: {sorted(missing)}')
+
+
 def main() -> int:
     problems: list[str] = []
 
@@ -137,12 +169,13 @@ def main() -> int:
                     problems.append("audit receipt does not record format_pass == true")
                 if doc.get("sha256_zeros") != sha256_file(primary):
                     problems.append("audit receipt sha256 != primary bytes on disk")
-                bad = [g["name"] for g in doc.get("gates_zeros", []) if not g["ok"]]
-                if bad:
-                    problems.append(f"audit receipt records failing format gate(s): {bad}")
+                check_recorded_gates(doc, problems)
                 if doc.get("submission_eligible") is not False:
                     problems.append("audit must say submission_eligible=false when the binding uniqueness gate fails")
                 public = doc.get("public_registry_uniqueness", {})
+                if not isinstance(public, dict):
+                    problems.append('public registry evidence must be an object')
+                    public = {}
                 if public.get("candidate_hash_matches_scan") is not True:
                     problems.append("public registry audit is absent or not for these exact candidate bytes")
                 if public.get("unique_under_literal_rule") is not False or public.get("stop_required") is not True:
