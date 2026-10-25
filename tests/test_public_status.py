@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 @pytest.fixture
 def publication(tmp_path):
-    card = json.loads((ROOT / 'evidence/review797e_run_card.json').read_text())
+    card = json.loads((ROOT / 'evidence/arena_review_run_card_20261025.json').read_text())
     # No scientific data needed for publication-contract unit tests.
     files = [card['primary_download'], *card['publication_input_sha256']]
     for rel in files:
@@ -37,10 +37,10 @@ def test_actual_status_is_byte_bound_and_first_on_every_page():
     problems = []
     primary = primary_download((ROOT / 'docs/index.html').read_text(), problems)
     assert not problems
-    card = json.loads((ROOT / 'docs/downloads/review797e_run_card.json').read_text())
+    card = json.loads((ROOT / 'docs/downloads/arena_review_run_card_20261025.json').read_text())
     assert not check_panels(card, ROOT, primary)
-    assert (ROOT / 'evidence/review797e_run_card.json').read_bytes() == (
-        ROOT / 'docs/downloads/review797e_run_card.json').read_bytes()
+    assert (ROOT / 'evidence/arena_review_run_card_20261025.json').read_bytes() == (
+        ROOT / 'docs/downloads/arena_review_run_card_20261025.json').read_bytes()
 
 
 def test_panel_update_is_idempotent_and_moves_stale_banner_below(publication):

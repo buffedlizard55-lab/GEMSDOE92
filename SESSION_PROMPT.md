@@ -1,4 +1,14 @@
-## Current review addendum — 2026-10-25 (`797e507a`)
+## Current binding review addendum — 2026-10-25 (Arena repository review)
+
+Read [`docs/REVIEW_20261025_ARENA.md`](docs/REVIEW_20261025_ARENA.md) and the current README status before resuming. The decision remains **negative: research-only download; DO NOT SUBMIT; do not spend a weekly slot**. This review produced no new TIFF, model experiment, HOLDOUT-DTI result, or ORGANIZER-CONFIRMED receipt. The literal pinned-witness rule remains binding: all valid footprint cells are positive, so every nonempty in-footprint candidate has REGISTRY-MEASUREMENT forward overlap `1.0 > 0.70` and must stop before placement. The feature stack is absent; the mirrored bytes' upstream provenance and reuse terms remain unverified. No surface or holdout was built.
+
+The ranked four-hypothesis shortlist is [`docs/HYPOTHESES_20261025_ARENA.md`](docs/HYPOTHESES_20261025_ARENA.md); the rank-1 RTP magnetic-texture displacement proposal is conditional and untested. The run card and fresh receipts are in `docs/downloads/arena_review_run_card_20261025.json`, `docs/downloads/preplacement_stop_20261025_arena.json`, and `docs/downloads/arena_current_primary_witness_20261025.json`. `GEMSDOE32 0.2778` remains a CLAIM, not an organizer-confirmed score.
+
+The older dated lane and review notes below are append-only historical snapshots, not the current authorization. README banners and the existing primary filename contain future-dated strings relative to the fresh 2026-10-25 16:45–16:47Z receipts; treat that as a provenance/date inconsistency, not evidence that this review generated the files. Preserve the full operating contract below. **Maximize P(Win); Own the Outcome.**
+
+---
+
+## Prior review addendum — 2026-10-25 (`797e507a`)
 
 Read `docs/REVIEW_797E507A.md` before older session-result addenda. This review generated no new TIFF and used no experiment or slot: a fresh pinned universal registry witness requires a stop. Preserve literal overlap, not matched-budget reinterpretations. The existing LISTRICDIP primary inherited from parallel main is research-only. Three public entry pages must have the generated authoritative status first; CI/Pages check byte pins and ordering. The unique-TIF objective remains unfulfilled. Persistent requirements in this file and the README are a normalized operating brief, not a verbatim user-message archive.
 
@@ -7,18 +17,18 @@ Read `docs/REVIEW_797E507A.md` before older session-result addenda. This review 
 # Session prompt — GEMSDOE92
 
 
-## Current review — 2026-10-25 (`f23ca2d2`)
+## Prior review snapshot — 2026-10-25 (`f23ca2d2`)
 
 Read the README's current-decision and persisted-brief sections first, then [REVIEW_F23.md](docs/REVIEW_F23.md). No new TIFF or geological experiment was generated. The literal overlap stop remains binding; historical matched-budget uniqueness does not supersede it. The shared validator now enforces the requested clearance radius without an automatic override. A byte-bound status feed and collapsed historical UI prevent old record claims from competing with the current decision. The prompt's new unique, submission-cleared TIFF requirement is still unmet. No new lane paragraph or organizer receipt was supplied. No weekly slot was spent.
 
 
 Read this at the start of every session, together with `README.md`. The README is the short executive summary; this file is the durable project operating contract. Preserve the user's goals: a unique, easy-to-download submission GeoTIFF, automated format validation, transparent evidence, and no hallucinated claims.
 
-## Current session status — 2026-10-25 (`LISTRICDIP`)
+## Prior lane status snapshot — 2026-10-25 (`LISTRICDIP`)
 
 The newest completed lane is `LISTRICDIP`. Three research GeoTIFFs were generated. Static HOLDOUT-DTI for `updip50` is `0.005420 [0.004294, 0.006551]` (`gems57-pooled-hide-v2`, 22,663 withheld positives). It beats `R0` and loses to the stored holdout best (`KNICKLOQO` `0.010788`). Verdict `negative`. OK to download for research. Not OK to submit. Literal dense-witness overlap is 1.0. The `376a8469` note that no new TIFF existed applied to that review, not to this lane. The literal overlap gate is still binding. Read the run card `evidence/listricdip_run_card.json` before trusting any older banner that calls itself newest.
 
-## Current binding clarification — 2026-10-25 (`376a8469`)
+## Binding protocol clarification from prior review — 2026-10-25 (`376a8469`)
 
 Read [the protocol-gate review](docs/REVIEW_376A8469.md) first. The literal overlap gate is binding for every raster. The later historical BLINDFAULT addendum claiming an automatic policy resolution is **superseded**: matched-budget overlap remains diagnostic only. A freshly pinned witness proves all nonempty candidates fail the unchanged rule. Stop rather than fabricate a new eligible TIFF. No new method lane was specified or tested in this review. Full operating requirements remain in the README's persistent session prompt and below; read both at every session start.
 
@@ -73,7 +83,7 @@ The goal is maximize the probability of placing well through reproducible scienc
 
 Competition data may be login-gated. Follow license and data-use terms; owner-mirror hash checks establish byte identity, not organizer authentication or redistribution permission.
 
-## Current session result (2026-10-25) — `POISSONFLEX`
+## Prior session result (2026-10-25) — `POISSONFLEX`
 
 Lane **POISSONFLEX** (Poisson gravity–pseudogravity hydrothermal breakdown + hanging-wall basement rollover flexure + canyon knickpoint strike integrals + quadrant-deconfounded LOQO & nested visible-only OOF support; `gems/poissonflex.py`). Three pre-registered experiments (`poissonflex_eq`, `poissonflex_raw`, `poissonflex_opt`). Winning research file `docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif` (SHA-256 `37b18c200e84c77b39b07e527b17d4395968389aaf3ff0c175c71204b2065f9b`).
 
@@ -146,7 +156,7 @@ this session, so band hypotheses are no longer "untested for lack of stack"):
   Next actions: `docs/NEXT_STEPS.md` (top section).
 
 
-## Latest review: decisive BREAKLINE public witness
+## Prior registry review: decisive BREAKLINE public witness
 
 See [current review](docs/REVIEW_CURRENT.md). The queued public check now rejects BREAKLINE: 100% forward overlap with the hash-verified 17GEMSDOE full-halo raster. Every nonempty in-footprint candidate fails the current literal gate against this witness. This supersedes the pending-public-scan status above; the full registry was not rescanned. Zero new experiments or submission slots; resolve the policy before more placements.
 
@@ -173,7 +183,7 @@ See [current review](docs/REVIEW_CURRENT.md). The queued public check now reject
 - Analysis `docs/ANALYSIS_20261024_STEPEDGE.md`; run card
   `evidence/stepedge_run_card.json`. Budget spent (3 experiments).
 
-## Current request/review addendum — 2026-10-24 UTC
+## Prior request/review addendum — 2026-10-24 UTC
 
 Read the README's current automated review before all historical run records.
 The user's repeated highest-priority request remains a genuinely unique,

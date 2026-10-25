@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT))
 from gems.public_status import PAGES, check_panels, install_panel, render_status, validate_status
 from scripts.check_site import primary_download
 
-CARD = ROOT / 'docs/downloads/review797e_run_card.json'
+CARD = ROOT / 'docs/downloads/arena_review_run_card_20261025.json'
 
 
 def main() -> int:

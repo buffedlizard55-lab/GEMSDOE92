@@ -74,7 +74,7 @@ def build_status(root: Path = ROOT) -> dict:
     candidate = docs / relative
     sample = root / 'data/bridge/sample_submission.tif'
     catalogue = root / 'data/bridge/labels.tif'
-    proof_path = root / 'evidence/review_f23_preflight.json'
+    proof_path = root / 'evidence/preplacement_stop_20261025_arena.json'
     proof = json.loads(proof_path.read_text())
     problems.extend(rejection_proof_errors(proof, sha256_file(sample)))
     receipt = candidate.with_name(candidate.stem.removesuffix('-zeros') + '-audit.json')
@@ -118,7 +118,7 @@ def build_status(root: Path = ROOT) -> dict:
             'forward_overlap': 1.0,
             'rank_correlation': None,
             'rank_correlation_reason': 'not measured in this review; overlap alone requires stop',
-            'proof': 'downloads/review_f23_preflight.json',
+            'proof': 'downloads/preplacement_stop_20261025_arena.json',
         },
         'holdout_dti': None,
         'holdout_reason': 'No new candidate or holdout after universal pre-placement stop.',
@@ -126,7 +126,7 @@ def build_status(root: Path = ROOT) -> dict:
         'blocking_reasons': [
             'DUPLICATE UNDER THE LITERAL REGISTRY RULE: pinned positive support covers the entire footprint.',
             'Matched-budget overlap is diagnostic, not permission to replace the literal rule.',
-            'No geological method paragraph is assigned in this prompt.',
+            'No candidate was built: the literal pre-placement stop blocks placement and the feature stack is absent.',
             'No verified submission-page receipt or current weekly-cap evidence is available.',
         ],
         'input_sha256': {str(p.relative_to(root)): sha256_file(p) for p in bindings},
@@ -143,8 +143,9 @@ def panel(status: dict) -> str:
   <p><strong>{e(status['download_status'])}</strong><br><strong>{e(status['submission_status'])}</strong></p>
   <p>No new unique TIFF was generated in this review. This is an existing research artifact, not a new submission.</p>
   <p><a class="btn" href="{e(status['file'])}" download>Download existing research GeoTIFF (.tif)</a>
-  <a href="SUBMIT.html">Submission guide</a> · <a href="REVIEW_F23.md">Review, hypotheses and limitations</a> ·
-  <a href="downloads/readiness.json">Machine-readable status</a> · <a href="downloads/review_f23_run_card.json">Review run card</a></p>
+  <a href="SUBMIT.html">Submission guide</a> · <a href="REVIEW_20261025_ARENA.md">Current review, hypotheses and limitations</a> ·
+  <a href="downloads/readiness.json">Machine-readable status</a> · <a href="downloads/arena_review_run_card_20261025.json">Review run card</a> ·
+  <a href="downloads/preplacement_stop_20261025_arena.json">Fresh duplicate-stop receipt</a></p>
   <p>Fresh automated validation: single band, float32, finite values in [0, 1], zero outside the footprint,
   matching CRS, shape and transform. This is local validation, not organizer acceptance.</p>
   <ul>{reasons}</ul>
@@ -186,8 +187,8 @@ def render_page(text: str, block: str) -> str:
         public = match[0] + '\n'
         content = content[:match.start()] + content[match.end():]
     # Shared lane-result block (scripts/render_current_submission.py, generated from
-    # docs/downloads/current_submission.json). It stays visible directly after the
-    # readiness panel instead of being swept into the collapsed historical archive.
+    # docs/downloads/current_submission.json). The current Arena review supersedes
+    # this older lane snapshot, so keep it reachable only inside the collapsed archive.
     lane_result = ''
     CUR_BEGIN, CUR_END = '<!-- CURRENT:BEGIN -->', '<!-- CURRENT:END -->'
     if CUR_BEGIN in content or CUR_END in content:
@@ -205,7 +206,7 @@ def render_page(text: str, block: str) -> str:
             raise ValueError('ambiguous archive markers')
         content = content.replace(ARCHIVE_START, '').replace('</details>\n' + ARCHIVE_END, '')
     content = content.strip()
-    replacement = (body[1] + '\n' + public + block + '\n' + lane_result + ARCHIVE_START + '\n' + content
+    replacement = (body[1] + '\n' + public + block + '\n' + ARCHIVE_START + '\n' + lane_result + content
                    + '\n</details>\n' + ARCHIVE_END + '\n' + body[3])
     return text[:body.start()] + replacement + text[body.end():]
 
@@ -219,7 +220,7 @@ def retired_page() -> str:
 <body><h1>DO NOT SUBMIT — prior clearance withdrawn</h1>
 <p>The literal registry gate blocks current candidates. Format validation is not submission authorization.</p>
 <p><a href="executive-summary.html">Current automated status and research downloads</a> ·
-<a href="REVIEW_F23.md">Correction evidence and limitations</a></p></body></html>
+<a href="REVIEW_20261025_ARENA.md">Current rejection evidence and limitations</a></p></body></html>
 '''
 
 
@@ -273,19 +274,27 @@ def sync(root: Path = ROOT, *, check: bool = False) -> list[str]:
     status = build_status(root)
     outputs = {root / 'docs/downloads/readiness.json': json.dumps(status, indent=2, allow_nan=False) + '\n'}
     block = panel(status)
-    # Preserve the shared review797e publication API; refresh its input bindings
-    # through the same newly rerun gates, rather than keeping two status engines.
+    # Keep one current run card authoritative across readiness and public panels.
+    # Refresh the format-gate rows and source pins without changing any scientific result.
     from gems.public_status import install_panel, render_status, validate_status
-    public_card_path = root / 'evidence/review797e_run_card.json'
+    public_card_path = root / 'evidence/arena_review_run_card_20261025.json'
     public_card = json.loads(public_card_path.read_text())
-    public_card['validator_output'] = status['validator_output']
-    public_card['publication_input_sha256'] = {
-        rel: sha256_file(root / rel) for rel in public_card['publication_input_sha256']}
-    public_card['revalidated_by'] = 'f23ca2d2 shared readiness integration; no new scientific evaluation'
+    validator = public_card.get('validator_output')
+    if not isinstance(validator, dict):
+        raise ValueError('Arena run card must retain structured validator flags')
+    validator['gates'] = status['validator_output']
+    validator['gate_count'] = len(status['validator_output'])
+    public_card['new_raster_generated'] = False
+    registry = public_card['correlation_overlap_vs_registry']
+    registry['forward_overlap'] = registry['existing_primary_forward_overlap_within_3px']
+    pin_paths = ('data/bridge/sample_submission.tif', 'data/bridge/labels.tif',
+                 'gems/gates.py', 'evidence/preplacement_stop_20261025_arena.json')
+    public_card['publication_input_sha256'] = {rel: sha256_file(root / rel) for rel in pin_paths}
+    public_card['revalidated_by'] = '2026-10-25 Arena review; existing-primary format checks refreshed, no new scientific evaluation'
     validate_status(public_card, root, status['file'])
     public_text = json.dumps(public_card, indent=2, allow_nan=False) + '\n'
     outputs[public_card_path] = public_text
-    outputs[root / 'docs/downloads/review797e_run_card.json'] = public_text
+    outputs[root / 'docs/downloads/arena_review_run_card_20261025.json'] = public_text
     public_panel = render_status(public_card)
     for alias in ('SUBMIT_NOW.html', 'index_new.html'):
         outputs[root / 'docs' / alias] = install_panel(retired_page(), public_panel)
@@ -295,7 +304,7 @@ def sync(root: Path = ROOT, *, check: bool = False) -> list[str]:
         path = root / 'docs' / page
         outputs[path] = render_page(install_panel(path.read_text(), public_panel), block)
     # Publish the freshly verified rejection proof with exact source bytes.
-    outputs[root / 'docs/downloads/review_f23_preflight.json'] = (root / 'evidence/review_f23_preflight.json').read_text()
+    outputs[root / 'docs/downloads/preplacement_stop_20261025_arena.json'] = (root / 'evidence/preplacement_stop_20261025_arena.json').read_text()
     stale = []
     for path, expected in outputs.items():
         if not path.exists() or path.read_text() != expected:

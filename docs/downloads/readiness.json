@@ -76,7 +76,7 @@
     "forward_overlap": 1.0,
     "rank_correlation": null,
     "rank_correlation_reason": "not measured in this review; overlap alone requires stop",
-    "proof": "downloads/review_f23_preflight.json"
+    "proof": "downloads/preplacement_stop_20261025_arena.json"
   },
   "holdout_dti": null,
   "holdout_reason": "No new candidate or holdout after universal pre-placement stop.",
@@ -84,7 +84,7 @@
   "blocking_reasons": [
     "DUPLICATE UNDER THE LITERAL REGISTRY RULE: pinned positive support covers the entire footprint.",
     "Matched-budget overlap is diagnostic, not permission to replace the literal rule.",
-    "No geological method paragraph is assigned in this prompt.",
+    "No candidate was built: the literal pre-placement stop blocks placement and the feature stack is absent.",
     "No verified submission-page receipt or current weekly-cap evidence is available."
   ],
   "input_sha256": {
@@ -93,8 +93,8 @@
     "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
     "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-audit.json": "2e0ba1c132daf838e4bb46ef59506db235fc921758e092999c856014ded8c40e",
     "evidence/listricdip_run_card.json": "dcb3178eb83158db3e862add18af4b17cd22496ef90d02f85502000d98d7cf40",
-    "evidence/review_f23_preflight.json": "b1cc2d46b24ad3cde759953143ea3806c17f86d0f1eb72fc1581f5e34643fecb",
+    "evidence/preplacement_stop_20261025_arena.json": "780c51c1e04a1ee9963c1a0d32eefd642a553e34eda8e6ad2f98279e3c418656",
     "gems/gates.py": "7bf557dd1a46b01449fb1108d5617baa5f6608d025c2c86c6ee94a7d30785bf6",
-    "scripts/render_readiness.py": "f10526ba8999d3be3aa8af58772761b564d37511f3d800fc8e39e0907b94660f"
+    "scripts/render_readiness.py": "0592a05a7ce798b6f16210d9c024ac3876c2666e7d4448307c83459bdeda0db6"
   }
 }

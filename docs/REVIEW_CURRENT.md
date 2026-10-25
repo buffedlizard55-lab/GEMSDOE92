@@ -1,32 +1,20 @@
-# Current review and next steps — 2026-10-25 (`f23ca2d2`)
+# Current repository review — 2026-10-25 (Arena continuation)
 
-**No new TIFF. Research downloads only; DO NOT SUBMIT.** [Fresh review](REVIEW_F23.md) · [automated status](downloads/readiness.json) · [run card](downloads/review_f23_run_card.json).
-
-1. The previous proposed KNICKLOQO promotion cannot proceed under the unchanged literal rule. The pinned witness rejects all nonempty candidates before placement. Matched-budget diagnostics must not supersede the user's rule silently. An explicitly revised future brief and a named lane are prerequisites to further geological experiments, not a request for human pixel inspection.
-2. Use the corrected shared validator and byte-bound status renderer. `prune_radius=2` no longer bypasses its own distance gate. Never re-use a historical audit as proof of current bytes.
-3. Only if the protocol permits experiments later: restore pinned features; verify data-use rights and band metadata; freeze a comparable holdout control and locked outer spatial test; run single-feature canaries before the experiment budget. Do not compare static-mask and fold-visible scores as one leaderboard.
-4. Verify official submission-page rules, current cap and actual score receipts through permitted access. No DrivenData session or permitted route to those hosts is available here. No submission slot was spent.
-5. GitHub Pages still reports legacy publication. Enabling workflow publication returned HTTP 403. Repository integration permissions need attention before claiming Actions gates the live site. No credential is requested or stored.
-
-Earlier “current,” “unique,” and promotion instructions below are historical and superseded where they conflict with this decision. The newly requested unique submission remains unfulfilled.
-
----
-
-
-# Authoritative current repository status — 2026-10-25
-
-# Authoritative current review — 2026-10-25 (`797e507a`)
+**Decision: NEGATIVE. Research only; DO NOT SUBMIT or spend a weekly slot.** No new TIFF or experiment was run. The current site primary passes format validation but fails the literal registry-overlap gate. Read the [three-pass review](REVIEW_20261025_ARENA.md), [ranked hypotheses](HYPOTHESES_20261025_ARENA.md), [run card](downloads/arena_review_run_card_20261025.json), and [fresh pre-placement receipt](downloads/preplacement_stop_20261025_arena.json). `GEMSDOE32 0.2778` remains a **CLAIM**, not an ORGANIZER-CONFIRMED result.
 
 <!-- CURRENT-STATUS:BEGIN -->
-## Current verified decision — 2026-10-25 (review c5e3848c)
+## Current verified decision — 2026-10-25 (Arena repository review)
 
 **OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review. The new-submission requirement remains unmet.
 
-[Current research download](downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [fresh run card](downloads/review_c5e3848c_integrated_run_card.json) · [three-pass review](REVIEW_C5E3848C.md) · [executive submission guide](executive-summary.html).
+[Current research download](downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [fresh run card](downloads/arena_review_run_card_20261025.json) · [three-pass review](REVIEW_20261025_ARENA.md) · [executive submission guide](executive-summary.html).
 
-Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
+Automated format checks pass on the unchanged primary; **REGISTRY-MEASUREMENT** literal overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
 
 <!-- CURRENT-STATUS:END -->
+
+<details data-status-archive="true">
+<summary>Prior review snapshots and lane records — not current clearance</summary>
 
 **Research downloads only. DO NOT SUBMIT. No new TIFF generated.** Read [the current three-pass review](REVIEW_797E507A.md) and [run card](downloads/review797e_run_card.json). The inherited LISTRICDIP primary passes format checks but literal overlap is 1.0. A single generated status panel now precedes historical banners on all three entry pages, with byte-binding and ordering enforced by publication checks. Previous “unique” matched-budget claims below do not override the literal stop. No HOLDOUT-DTI was run or recertified; no slot was used.
 
@@ -237,3 +225,6 @@ See full methodology and tables in [`ANALYSIS_20261024_HYDROCONDUIT.md`](ANALYSI
 - **`PIEDFRONT f35Ptop`** (`GEMSDOE92-PIEDFRONT-f35Ptop-20261024`, `docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif`, SHA-256 `e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8`): static `HOLDOUT-DTI = 0.006425 [0.005375, 0.007479]`, `SGMC = 0.059993`, `verdict: negative` (**OK TO DOWNLOAD**, **DO NOT SUBMIT**). `HYDROCONDUIT f45hydro` (`0.008549 [0.007626, 0.009487]`) improves over `PIEDFRONT f35Ptop` by `+33.1%` (`+0.002124`) while overlapping only `56.56% <= 70%` within 3 px (`phi = 0.2000`).
 - **`STEPEDGE f60Sraw`** (`GEMSDOE92-STEPEDGE-f60Sraw-20261024`, `docs/downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif`, SHA-256 `c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4`): static `HOLDOUT-DTI = 0.003980 [0.003295, 0.004702]`, repo-best `SGMC = 0.141464`, `verdict: negative` (`42.35% <= 70%` 3-px overlap with `HYDROCONDUIT f45hydro`).
 - Ledger total across all merged sessions: `54 BUILT / 0 RECEIPT`.
+
+
+</details>

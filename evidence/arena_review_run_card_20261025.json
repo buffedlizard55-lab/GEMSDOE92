@@ -1,0 +1,160 @@
+{
+  "schema": "gemsdoe92-review-run-card.v1",
+  "review_id": "arena-20261025",
+  "reviewed_utc": "2026-10-25T16:47:34.846069Z",
+  "evidence_scope": "Negative repository review; single-witness rejection; no new raster or scientific experiment.",
+  "hypothesis": "Rank 1 untested proposal: RTP magnetic-texture displacement registration (GeoDAWN Band 2, rtp).",
+  "mechanism": "Estimate bidirectional, multi-window local displacement of RTP magnetic texture across trial lines; test for a persistent signed step. A buried lateral splay or oblique transfer fault could offset inherited basement magnetic fabric after a surface scarp is degraded or covered.",
+  "named_non_fault_process_that_could_mimic_it": "An intrusive or lithologic contact, separate volcanic-flow boundary, remanent-magnetization contrast, or survey seam can imitate a translated magnetic texture.",
+  "hypothesis_status": "Not implemented or tested; conditional shortlist only. See docs/HYPOTHESES_20261025_ARENA.md.",
+  "primary_download": "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif",
+  "raster_sha256": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
+  "raster_role": "Existing site-designated research primary; not created in this review.",
+  "new_raster_sha256": null,
+  "new_unique_tiff_generated": false,
+  "submission_eligible": false,
+  "verdict": "negative",
+  "submission_name": null,
+  "note": "Not applicable \u2014 no new submission in this review.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "status": "not run; no candidate surface was built",
+    "dti": null,
+    "ci95": null,
+    "evaluator_version": null,
+    "withheld_positive_count": null,
+    "reason": "The pre-placement duplicate stop blocks placement; the feature stack is absent."
+  },
+  "organizer_confirmed_score": {
+    "evidence_class": "ORGANIZER-CONFIRMED",
+    "status": "no submission-page receipt in this review",
+    "score": null,
+    "receipt": null
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "One pinned public-repository witness; rejection only, not a full-registry clearance.",
+    "preplacement_universal_stop": true,
+    "stop_required": true,
+    "literal_forward_overlap_stop_threshold": 0.7,
+    "absolute_spearman_stop_threshold": 0.9,
+    "preplacement_candidate_surface_spearman": null,
+    "preplacement_candidate_surface_forward_overlap": null,
+    "existing_primary_forward_overlap_within_3px": 1.0,
+    "existing_primary_spearman_full_footprint": 0.010352227787484035,
+    "witness_positive_pixels": 5167373,
+    "witness_footprint_pixels": 5167373,
+    "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "witness_git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+    "preplacement_receipt": "downloads/preplacement_stop_20261025_arena.json",
+    "existing_primary_receipt": "downloads/arena_current_primary_witness_20261025.json",
+    "forward_overlap": 1.0
+  },
+  "validator_output": {
+    "scope": "Existing primary only; automated format/encoding validation, not eligibility.",
+    "all_must_gates_pass": true,
+    "no_nan_inside_footprint": true,
+    "all_finite": true,
+    "values_in_0_1": true,
+    "zero_outside_footprint": true,
+    "crs_shape_transform_match": true,
+    "gate_count": 11,
+    "gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=('float32',) count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nonfinite_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      },
+      {
+        "name": "submission_encoding",
+        "ok": true,
+        "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0; strict distance > radius required"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e"
+      }
+    ]
+  },
+  "experiments_run": 0,
+  "weekly_slots_used": 0,
+  "data_status": {
+    "feature_stack_present": false,
+    "upstream_origin": "UNVERIFIED",
+    "public_mirror_data_use": "FLAGGED_DATA_USE_UNCHECKED",
+    "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5"
+  },
+  "claim_boundary": {
+    "GEMSDOE32_0_2778": "CLAIM; not ORGANIZER-CONFIRMED; no receipt reproduced by this review.",
+    "new_holdout_projection": null,
+    "new_organizer_score": null
+  },
+  "date_warning": "The existing primary filename embeds 20261025T190000Z, later than the review receipt time; README also contains a 2026-10-26 banner. This review does not establish when those bytes were created.",
+  "blocking_reasons": [
+    "Literal pre-placement stop: the pinned witness is positive in every valid footprint cell.",
+    "The feature stack is absent; mirrored-data provenance and use rights are unverified.",
+    "No candidate surface, final dots, leakage canary, HOLDOUT-DTI or organizer receipt exists for this review."
+  ],
+  "source_receipt_sha256": {
+    "evidence/preplacement_stop_20261025_arena.json": "780c51c1e04a1ee9963c1a0d32eefd642a553e34eda8e6ad2f98279e3c418656",
+    "evidence/arena_current_primary_witness_20261025.json": "2f20ebaff3bd6797746665f8aa3082d9318caaa9750ba880fc8e0054ea2f0595"
+  },
+  "review_document": "docs/REVIEW_20261025_ARENA.md",
+  "hypothesis_document": "docs/HYPOTHESES_20261025_ARENA.md",
+  "preflight_receipt": "evidence/preplacement_stop_20261025_arena.json",
+  "primary_witness_receipt": "evidence/arena_current_primary_witness_20261025.json",
+  "new_raster_generated": false,
+  "publication_input_sha256": {
+    "data/bridge/sample_submission.tif": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+    "data/bridge/labels.tif": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+    "gems/gates.py": "7bf557dd1a46b01449fb1108d5617baa5f6608d025c2c86c6ee94a7d30785bf6",
+    "evidence/preplacement_stop_20261025_arena.json": "780c51c1e04a1ee9963c1a0d32eefd642a553e34eda8e6ad2f98279e3c418656"
+  },
+  "revalidated_by": "2026-10-25 Arena review; existing-primary format checks refreshed, no new scientific evaluation",
+  "existing_primary_record_only_form_fields": {
+    "submission_name": "GEMSDOE92-LISTRICDIP-updip50-20261025",
+    "note": "LISTRICDIP updip50: 37654 listric-offset dots; HOLDOUT-DTI 0.005420; negative",
+    "status": "Historical record-only metadata for the existing research raster; not a proposed submission."
+  }
+}

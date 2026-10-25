@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def site(tmp_path):
     card = json.loads((ROOT / status.CARD).read_text())
     paths = ['docs/index.html', *status.PAGES, status.CARD, card['primary_download'],
-             'docs/downloads/review_c5e3848c_preflight.json']
+             card['preflight_receipt']]
     for name in paths:
         dest = tmp_path / name
         dest.parent.mkdir(parents=True, exist_ok=True)

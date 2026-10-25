@@ -31,7 +31,8 @@ def validate_status(card: dict, root: Path, primary_rel: str) -> None:
             card.get('verdict') != 'negative' or
             card.get('new_raster_generated') is not False):
         raise ValueError('review panel cannot authorize submission or claim a new raster')
-    rows = card.get('validator_output')
+    validator = card.get('validator_output')
+    rows = validator.get('gates') if isinstance(validator, dict) else validator
     if not isinstance(rows, list) or not rows or any(
         not isinstance(r, dict) or not isinstance(r.get('name'), str)
         or r.get('ok') is not True for r in rows
@@ -48,7 +49,7 @@ def validate_status(card: dict, root: Path, primary_rel: str) -> None:
         raise ValueError('status must preserve the universal literal stop')
     pins = card.get('publication_input_sha256', {})
     required = ('data/bridge/sample_submission.tif', 'data/bridge/labels.tif',
-                'gems/gates.py', 'evidence/review797e_preflight.json')
+                'gems/gates.py', 'evidence/preplacement_stop_20261025_arena.json')
     if not isinstance(pins, dict) or set(pins) != set(required):
         raise ValueError('status input pins missing or unexpected')
     for rel in required:
@@ -68,10 +69,11 @@ def render_status(card: dict) -> str:
   <p><strong>OK TO DOWNLOAD FOR RESEARCH · NOT CLEARED FOR A WEEKLY SLOT</strong></p>
   <p><a class="btn" href="{path}" download>Download existing format-validated GeoTIFF (.tif)</a>
   · <a href="executive-summary.html">Submission guide</a>
-  · <a href="REVIEW_797E507A.md">Current review and limitations</a>
-  · <a href="downloads/review797e_run_card.json">Automated run card</a></p>
+  · <a href="REVIEW_20261025_ARENA.md">Current review and limitations</a>
+  · <a href="downloads/arena_review_run_card_20261025.json">Automated run card</a>
+  · <a href="downloads/preplacement_stop_20261025_arena.json">Fresh duplicate-stop receipt</a></p>
   <p>This is an existing research artifact, <strong>not a newly generated or unique submission</strong>.
-  The literal registry overlap is 1.0 (limit 0.70); matched-budget uniqueness claims below do not override the stop.
+  <strong>REGISTRY-MEASUREMENT:</strong> the single pinned witness is positive across the whole footprint, so literal overlap is 1.0 (limit 0.70). This is a rejection-only check, not full-registry clearance; matched-budget uniqueness claims below do not override the stop.
   No new model, HOLDOUT-DTI result, organizer receipt or weekly slot was produced in this review.</p>
   <p>Automated format checks pass: finite values in [0, 1], no NaN inside the footprint,
   zeros outside, matching CRS/shape/transform. Format validity is not competition acceptance.</p>

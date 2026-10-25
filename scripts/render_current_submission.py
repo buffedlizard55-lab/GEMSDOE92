@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
-"""Render the single "current submission" status box at the top of every entry page.
+"""Render a historical lane-result snapshot from its source JSON.
+
+The byte-bound public/readiness panels are the current authority. This lane
+record remains reachable inside their collapsed historical archive, not as the
+current submission decision.
 
 Source of truth: docs/downloads/current_submission.json (written by
 scripts/finalize_faultnet.py). Nothing is hand-typed: every number, hash, name and
 verdict below comes from that JSON. Idempotent: replaces the block between
-<!-- CURRENT:BEGIN --> and <!-- CURRENT:END --> or inserts it right after <body>
-(HTML) / after the first H1 line (Markdown).
+<!-- CURRENT:BEGIN --> and <!-- CURRENT:END --> or inserts it after the shared
+current-status panels (HTML) / after the first H1 line (Markdown).
 """
 from __future__ import annotations
 
@@ -26,7 +30,9 @@ HTML_PAGES = {  # page -> prefix from the page to the repo root
     ROOT / "docs" / "submit.html": "",
     ROOT / "index.html": "docs/",
 }
-MD_PAGES = {ROOT / "README.md": "docs/", ROOT / "docs" / "SUBMIT.md": ""}
+# README and the Markdown guide have their own current review summaries; do not
+# prepend this historical lane snapshot to either one.
+MD_PAGES = {}
 
 
 def fmt_ci(ci):
@@ -79,8 +85,8 @@ def html_block(c, pre):
     sib = " · ".join(f'<a href="{e(pre + s["file"].removeprefix("docs/"))}" download>{e(a)}</a> ({e(s["verdict"])}, HOLDOUT-DTI {s["dti"]:.6f})'
                      for a, s in c["siblings"].items())
     return f"""{BEGIN}
-<section aria-label="Current submission" style="border:3px solid {bd};background:{bg};padding:1rem 1.2rem;margin:0 0 1.2rem 0;border-radius:8px;font-family:system-ui,sans-serif">
-  <h2 style="margin-top:0">Newest lane result — lane {e(c['lane'])} / arm <code>{e(c['arm'])}</code></h2>
+<section aria-label="Historical lane result" style="border:3px solid {bd};background:{bg};padding:1rem 1.2rem;margin:0 0 1.2rem 0;border-radius:8px;font-family:system-ui,sans-serif">
+  <h2 style="margin-top:0">Historical lane result — lane {e(c['lane'])} / arm <code>{e(c['arm'])}</code></h2>
   {status}
   <p style="font-size:1.15rem"><a href="{e(tif)}" download><strong>⬇ Download the GeoTIFF ({e(c['file'].split('/')[-1])})</strong></a> · <a href="{e(zp)}" download>one-TIFF ZIP</a> · <a href="{e(card)}">run card (JSON)</a> · <a href="{e(ana)}">analysis</a></p>
   <p><strong>{'How to submit this file:' if c['ok_to_submit'] else 'How to submit (only do this with a file marked ✅ OK TO SUBMIT, which this one is not):'}</strong></p>
@@ -108,7 +114,7 @@ def md_block(c, pre):
               f"**✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `{c['verdict']}`). Reason: {reason(c)}.")
     sib = " · ".join(f"[{a}]({pre + s['file'].removeprefix('docs/')}) ({s['verdict']}, HOLDOUT-DTI {s['dti']:.6f})" for a, s in c["siblings"].items())
     return f"""{BEGIN}
-> ## Newest lane result — lane {c['lane']} / arm `{c['arm']}`
+> ## Historical lane result — lane {c['lane']} / arm `{c['arm']}`
 > {status}
 >
 > **[⬇ Download the GeoTIFF]({tif})** · [one-TIFF ZIP]({zp}) · [run card]({card}) · [analysis]({ana})

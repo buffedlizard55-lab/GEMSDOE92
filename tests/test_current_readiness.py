@@ -10,7 +10,7 @@ from scripts.preflight_dense_witness import SAMPLE_SHA256
 
 
 def test_recorded_universal_stop_is_consistent():
-    proof = json.loads((ROOT / 'evidence/review_f23_preflight.json').read_text())
+    proof = json.loads((ROOT / 'evidence/preplacement_stop_20261025_arena.json').read_text())
     assert not rejection_proof_errors(proof, SAMPLE_SHA256)
 
 
@@ -20,13 +20,13 @@ def test_recorded_universal_stop_is_consistent():
     ('forward_overlap_for_any_nonempty_in_footprint_dot_set', True),
 ])
 def test_malformed_or_reinterpreted_rejection_proof_fails(key, value):
-    proof = json.loads((ROOT / 'evidence/review_f23_preflight.json').read_text())
+    proof = json.loads((ROOT / 'evidence/preplacement_stop_20261025_arena.json').read_text())
     proof[key] = value
     assert rejection_proof_errors(proof, SAMPLE_SHA256)
 
 
 def test_changed_sample_invalidates_proof():
-    proof = json.loads((ROOT / 'evidence/review_f23_preflight.json').read_text())
+    proof = json.loads((ROOT / 'evidence/preplacement_stop_20261025_arena.json').read_text())
     assert rejection_proof_errors(proof, '0' * 64)
 
 

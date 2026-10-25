@@ -17,7 +17,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-CARD = 'docs/downloads/review_c5e3848c_integrated_run_card.json'
+CARD = 'docs/downloads/arena_review_run_card_20261025.json'
 BEGIN = '<!-- CURRENT-STATUS:BEGIN -->'
 END = '<!-- CURRENT-STATUS:END -->'
 PAGES = ('docs/submit.html', 'index.html', 'README.md', 'docs/REVIEW_CURRENT.md',
@@ -43,7 +43,14 @@ def load_card(root: Path = ROOT) -> dict:
         raise ValueError('current status differs from declared site primary')
     if not isinstance(card.get('correlation_overlap_vs_registry'), dict):
         raise ValueError('registry evidence must be an object')
-    preflight = json.loads((root / 'docs/downloads/review_c5e3848c_preflight.json').read_text())
+    preflight_rel = card.get('preflight_receipt')
+    if not isinstance(preflight_rel, str) or not re.fullmatch(
+            r'(?:evidence|docs/downloads)/[A-Za-z0-9_.-]+\.json', preflight_rel):
+        raise ValueError('current card must name a repository-local rejection receipt')
+    preflight_path = (root / preflight_rel).resolve()
+    if not preflight_path.is_relative_to(root.resolve()):
+        raise ValueError('preflight receipt must be inside the repository')
+    preflight = json.loads(preflight_path.read_text())
     from scripts.preflight_dense_witness import SAMPLE_SHA256, WITNESS_SHA256, WITNESS_BLOB
     if (not isinstance(preflight, dict)
             or preflight.get('universal_nonempty_in_footprint_overlap_stop') is not True
@@ -86,18 +93,19 @@ def panel(card: dict, page: str) -> str:
 
     name = html.escape(Path(card['primary_download']).name)
     download = link(card['primary_download'])
-    review = link('docs/REVIEW_C5E3848C.md')
+    review = link('docs/REVIEW_20261025_ARENA.md')
     receipt = link(CARD)
     guide = link('docs/executive-summary.html')
+    format_count = len(card['validator_output']['gates'])
     if page.endswith('.md'):
         return f'''{BEGIN}
-## Current verified decision — 2026-10-25 (review c5e3848c)
+## Current verified decision — 2026-10-25 (Arena repository review)
 
 **OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review. The new-submission requirement remains unmet.
 
 [Current research download]({download}) · [fresh run card]({receipt}) · [three-pass review]({review}) · [executive submission guide]({guide}).
 
-Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
+Automated format checks pass on the unchanged primary; **REGISTRY-MEASUREMENT** literal overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
 
 {END}'''
     return f'''{BEGIN}
@@ -106,9 +114,9 @@ Automated format checks pass on the unchanged primary; literal registry overlap 
 <p><strong>OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT · NOT CLEARED FOR A WEEKLY SLOT</strong></p>
 <p><a href="{download}" download style="display:inline-block;padding:.7rem 1rem;background:#1e3a5f;color:white;border-radius:6px;font-weight:700">Download validated research TIFF</a></p>
 <p>{name}<br>SHA-256: <code>{card['raster_sha256']}</code></p>
-<p>Automated format checks pass: single band, finite [0, 1], no NaNs, zeros outside the footprint, matching CRS/shape/transform. This is an unchanged historical file, <strong>not a new unique submission</strong>.</p>
-<p><strong>Duplicate stop:</strong> the pinned registry witness covers every footprint cell. Literal dot overlap is 1.0; the limit is 0.70. No new surface, dots, leakage canaries or HOLDOUT-DTI were evaluated after this stop. No ORGANIZER-CONFIRMED score is available.</p>
-<p><a href="{receipt}">Fresh automated run card</a> · <a href="{review}">Evidence, hypotheses and limitations</a> · <a href="{guide}">Executive summary / submission instructions</a></p>
+<p>Automated format checks pass ({format_count}/{format_count}): single band, finite [0, 1], no NaNs, zeros outside the footprint, matching CRS/shape/transform. This is an unchanged historical file, <strong>not a new unique submission</strong>.</p>
+<p><strong>Duplicate stop — REGISTRY-MEASUREMENT:</strong> the single byte-pinned witness covers every footprint cell. Literal dot overlap is 1.0; the limit is 0.70. This is rejection-only, not full-registry clearance. No candidate surface, dots, leakage canaries or HOLDOUT-DTI were evaluated after this stop. No ORGANIZER-CONFIRMED score is available.</p>
+<p><a href="{receipt}">Fresh automated run card</a> · <a href="{review}">2026-10-25 review, hypotheses and limitations</a> · <a href="{guide}">Executive summary / submission instructions</a></p>
 <p>Reviewed 2026-10-25. Experiments: zero. Weekly slots used: zero. Historical “newest”, “unique” and ranking statements below are archives, not clearance.</p>
 </section>
 {END}'''
