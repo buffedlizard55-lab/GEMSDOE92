@@ -115,7 +115,7 @@ def test_faultnet_lane_is_explicitly_negative_while_site_status_remains_authorit
 
     # README has its own current first-screen review block; the legacy c5e
     # renderer must not replace it with an older compatibility panel.
-    readme_status = readme.split("## Prior decision", 1)[0]
+    readme_status = readme.split("### Persisted user brief", 1)[0]
     assert "Authoritative decision" in readme_status
     assert "OK TO DOWNLOAD FOR RESEARCH" in readme_status and "DO NOT SUBMIT" in readme_status
     assert "REVIEW_20261025_FRESH_AUDIT.md" in readme_status

@@ -45,7 +45,7 @@ def test_actual_status_is_byte_bound_and_first_on_every_page():
 
 def test_readme_first_screen_cannot_promote_historical_lane_or_score():
     readme = (ROOT / 'README.md').read_text()
-    first_screen = readme.split('## Prior decision', 1)[0]
+    first_screen = readme.split('### Persisted user brief', 1)[0]
     assert first_screen.index('Authoritative decision') < first_screen.index('DO NOT SUBMIT')
     assert 'OK TO DOWNLOAD FOR RESEARCH' in first_screen
     assert 'DO NOT SPEND A WEEKLY SLOT' in first_screen
