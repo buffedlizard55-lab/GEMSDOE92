@@ -127,8 +127,8 @@ def build_status(root: Path = ROOT) -> dict:
         'blocking_reasons': [
             'DUPLICATE UNDER THE LITERAL REGISTRY RULE: pinned positive support covers the entire footprint.',
             'Matched-budget overlap is diagnostic, not permission to replace the literal rule.',
-            'The completed LISTRIC lane used all 3 experiments and its paired improvement over KNICKLOQO includes zero.',
-            'Public dual-reading overlap is 0.710735, above the 0.70 stop threshold.',
+            'The completed LISTRICLOQO lane used all 3 experiments and beats KNICKLOQO on paired holdout; literal overlap still blocks promotion.',
+            'Public dual-reading overlap is 0.690259, below the 0.70 threshold; literal dense-witness overlap is 1.0 and remains binding.',
             'The artifact filename/run card is labelled 2026-10-26, one day after this 2026-10-25 review; chronology is unverified.',
             'No verified submission-page receipt or current weekly-cap evidence is available.',
         ],
@@ -141,13 +141,13 @@ def panel(status: dict) -> str:
     reasons = '\n'.join(f'<li>{e(reason)}</li>' for reason in status['blocking_reasons'])
     return f'''{START}
 <section class="readiness-panel" aria-labelledby="current-readiness-heading">
-  <p class="readiness-kicker">GEMSDOE92 · automated submission readiness · LISTRIC artifact labelled 2026-10-26 (future-date irregularity disclosed)</p>
+  <p class="readiness-kicker">GEMSDOE92 · automated submission readiness · LISTRICLOQO lane 2026-10-25</p>
   <h1 id="current-readiness-heading">Unique research TIFF available. Submission blocked.</h1>
   <p><strong>{e(status['download_status'])}</strong><br><strong>{e(status['submission_status'])}</strong></p>
-  <p>The completed LISTRIC lane generated a byte-unique TIFF. It is easy to download, but it is <strong>not eligible to submit</strong>: scientific and registry promotion gates failed.</p>
-  <p><a class="btn" href="{e(status['file'])}" download>Download unique LISTRIC research GeoTIFF (.tif)</a>
-  <a href="SUBMIT.html">Submission guide</a> · <a href="ANALYSIS_20261026_LISTRIC.md">Analysis and limitations</a> ·
-  <a href="downloads/readiness.json">Machine-readable status</a> · <a href="downloads/listric_run_card.json">Run card</a></p>
+  <p>The completed LISTRICLOQO lane generated a byte-unique TIFF. It is easy to download, but it is <strong>not eligible to submit</strong>: scientific and registry promotion gates failed.</p>
+  <p><a class="btn" href="{e(status['file'])}" download>Download unique LISTRICLOQO research GeoTIFF (.tif)</a>
+  <a href="SUBMIT.html">Submission guide</a> · <a href="ANALYSIS_20261025_LISTRICLOQO.md">Analysis and limitations</a> ·
+  <a href="downloads/readiness.json">Machine-readable status</a> · <a href="downloads/listric_loqo_run_card.json">Run card</a></p>
   <p>Fresh automated validation: single band, float32, finite values in [0, 1], zero outside the footprint,
   matching CRS, shape and transform. This is local validation, not organizer acceptance.</p>
   <ul>{reasons}</ul>
@@ -166,7 +166,7 @@ def panel(status: dict) -> str:
   <li>After upload, record the organizer receipt against the exact file hash. Only that receipt supports an
   ORGANIZER-CONFIRMED score. Do not project a score from the local holdout.</li></ol></details>
   <p>No ORGANIZER-CONFIRMED score. HOLDOUT-DTI (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives):
-  <code>0.010909 [0.009543, 0.012278]</code>; paired improvement over KNICKLOQO includes zero. This is not a leaderboard score.
+  <code>0.013295 [0.011713, 0.014980]</code>; paired improvement over KNICKLOQO is +0.002508 [0.001477, 0.003463]. This is not a leaderboard score.
   Older claims below are historical and a better local surrogate does not establish a better leaderboard score.</p>
 </section>
 {END}'''

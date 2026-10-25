@@ -1,22 +1,26 @@
 # Executive summary — GEMSDOE92 submission workbench
 
 <!-- CURRENT:BEGIN -->
-> ## Newest lane result — lane LISTRIC / arm `standalone`
-> **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 0.7107 of its dots lie within 3 px of the dots of 62GEMSDOE/docs/downloads/gems62f-h2r-ventcons-125890-20261012T012736Z-zeros.tif (125,890 dots), above the 0.70 limit; did not beat KNICKLOQO on the holdout.
+> ## Newest lane result — lane LISTRICLOQO / arm `selectcal`
+> **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 1.0000 of its dots lie within 3 px of the dots of 17GEMSDOE full-footprint dense witness (5,167,373 dots), above the 0.70 limit.
 >
-> **[⬇ Download the GeoTIFF](downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif)** · [one-TIFF ZIP](downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.zip) · [run card](downloads/listric_run_card.json) · [analysis](ANALYSIS_20261026_LISTRIC.md)
+> **[⬇ Download the GeoTIFF](downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif)** · [one-TIFF ZIP](downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.zip) · [run card](downloads/listric_loqo_run_card.json) · [analysis](ANALYSIS_20261025_LISTRICLOQO.md)
 >
 > **How to submit (only with a file marked ✅ OK TO SUBMIT, which this one is not):**
 > 1. Download the `.tif` (or the ZIP holding only that TIFF).
 > 2. Go to https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/ (log in; not live-verified from the sandbox), then choose the file under *File to submit*.
-> 3. Paste this into *Note (optional)*: `h33-h33-2-b2; LISTRIC standalone: 37654 1D quadrant-cal listric offset-pair crests`
-> 4. Name/record: `GEMSDOE92-LISTRIC-standalone-20261026`. After scoring, record the receipt in `ledger/submissions.csv`.
+> 3. Paste this into *Note (optional)*: `h33-h33-2-b2; LISTRICLOQO selectcal: 37654 1D updip-listric+interfluve-knick+U/Th-K/Th crests; HOLDOUT-DTI 0.013295`
+> 4. Name/record: `GEMSDOE92-LISTRICLOQO-selectcal-20261025`. After scoring, record the receipt in `ledger/submissions.csv`.
 >
-> Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `7e4b46368b2a5949bcf626bfaa4457ed15a89dde38d412a1d07469411a31e2ab`.
-> **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22,663 withheld positives): `0.010909 [0.009543, 0.012278]`. KNICKLOQO standalone control: `0.010788 [0.009468, 0.012201]`. Paired Δ `+0.000121 [-0.001167, 0.001262]`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
-> **Uniqueness** (1,472 registry rasters): worst overlap `0.7107` (limit 0.70), worst |ρ| `0.1469` / surface `0.4814` (limit 0.90). Literal-support reading: 1 raster(s) > 0.70. The literal reading is binding under the current protocol and triggers the duplicate stop.
-> Siblings: [uncal](downloads/h33-h33-2-b2-LISTRICuncal-20261026-fc9686b5-zeros.tif) (negative, HOLDOUT-DTI 0.010385) · [dual35](downloads/h33-h33-2-b2-LISTRICdual35-20261026-2b8b394a-zeros.tif) (negative, HOLDOUT-DTI 0.009446). **Read [SESSION_PROMPT.md](../SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
+> Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17`.
+> **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22,663 withheld positives): `0.013295 [0.011713, 0.014980]`. KNICKLOQO standalone control: `0.010788 [0.009468, 0.012201]`. Paired Δ `+0.002508 [0.001477, 0.003463]`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
+> **Uniqueness** (1,459 registry rasters): worst overlap `1.0000` (limit 0.70), worst |ρ| `0.1434` / surface `0.4685` (limit 0.90). Literal-support reading: 1 raster(s) > 0.70. The literal reading is binding under the current protocol and triggers the duplicate stop.
+> Siblings: [standalone](downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif) (negative, HOLDOUT-DTI 0.013250) · [uncal](downloads/h33-h33-2-b2-LISTRICLOQOuncal-20261025-2962f45f-zeros.tif) (negative, HOLDOUT-DTI 0.013105). **Read [SESSION_PROMPT.md](../SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
 <!-- CURRENT:END -->
+
+
+
+
 
 
 

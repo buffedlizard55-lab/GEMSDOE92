@@ -1,13 +1,13 @@
 # Submission clearance withdrawn — DO NOT SUBMIT
 
 <!-- CURRENT-STATUS:BEGIN -->
-## Authoritative decision — Current verified status, 2026-10-25 (LISTRIC artifact labelled 2026-10-26)
+## Authoritative decision — Current verified status, 2026-10-25 (LISTRICLOQO 2026-10-25)
 
-**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** The completed lane generated a byte-unique TIFF, but it failed promotion gates.
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** The completed LISTRICLOQO lane generated a byte-unique TIFF, but it failed promotion gates.
 
-[Current unique research download](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif) · [protocol run card](docs/downloads/listric_run_card.json) · [analysis](docs/ANALYSIS_20261026_LISTRIC.md) · [executive submission guide](docs/executive-summary.html).
+[Current unique research download](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif) · [protocol run card](docs/downloads/listric_loqo_run_card.json) · [analysis](docs/ANALYSIS_20261025_LISTRICLOQO.md) · [executive submission guide](docs/executive-summary.html).
 
-Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.010909 [0.009543, 0.012278]`; paired improvement over KNICKLOQO includes zero. Public dual-reading overlap is `0.710735 > 0.70`, and literal dense-witness overlap is `1.0`. No ORGANIZER-CONFIRMED score is available; 3/3 experiments and zero weekly slots.
+Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.013295 [0.011713, 0.014980]`; paired improvement over KNICKLOQO is +0.002508 [0.001477, 0.003463]. Public dual-reading overlap is `0.690259 <= 0.70`, and literal dense-witness overlap is `1.0`. No ORGANIZER-CONFIRMED score is available; 3/3 experiments and zero weekly slots.
 
 <!-- CURRENT-STATUS:END -->
 

@@ -66,13 +66,13 @@ def render_status(card: dict) -> str:
 <section class="banner banner-warn" aria-label="Authoritative submission status">
   <h1>Research download available. DO NOT SUBMIT.</h1>
   <p><strong>OK TO DOWNLOAD FOR RESEARCH · NOT CLEARED FOR A WEEKLY SLOT</strong></p>
-  <p><a class="btn" href="{path}" download>Download unique format-validated research GeoTIFF (.tif)</a>
+  <p><a class="btn" href="{path}" download>Download current unique format-validated research GeoTIFF (.tif)</a>
   · <a href="executive-summary.html">Submission guide</a>
-  · <a href="ANALYSIS_20261026_LISTRIC.md">Current analysis and limitations</a>
-  · <a href="downloads/listric_run_card.json">Protocol run card</a></p>
-  <p>This is a byte-unique LISTRIC research artifact, but <strong>it is not eligible for submission</strong>.
-  Public dual-reading overlap is 0.710735 and literal dense-witness overlap is 1.0 (limit 0.70).
-  Its paired HOLDOUT-DTI improvement over KNICKLOQO includes zero; no organizer receipt or weekly slot was produced.</p>
+  · <a href="ANALYSIS_20261025_LISTRICLOQO.md">Current analysis and limitations</a>
+  · <a href="downloads/listric_loqo_run_card.json">Protocol run card</a></p>
+  <p>This is a byte-unique LISTRICLOQO research artifact, but <strong>it is not eligible for submission</strong>.
+  Public dual-reading overlap is 0.690259 and literal dense-witness overlap is 1.0 (limit 0.70).
+  Its paired HOLDOUT-DTI improvement over KNICKLOQO excludes zero; no organizer receipt or weekly slot was produced.</p>
   <p>Automated format checks pass: finite values in [0, 1], no NaN inside the footprint,
   zeros outside, matching CRS/shape/transform. Format validity is not competition acceptance.</p>
   <p>SHA-256: <code>{sha}</code></p>

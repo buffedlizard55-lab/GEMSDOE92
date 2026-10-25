@@ -51,7 +51,7 @@ def test_readme_first_screen_cannot_promote_historical_lane_or_score():
     assert 'DO NOT SPEND A WEEKLY SLOT' in first_screen
     assert 'New unique-byte GeoTIFFs' in first_screen
     assert 'submission_eligible: false' in first_screen
-    assert 'HOLDOUT-DTI `0.010909' in first_screen
+    assert 'HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.013295' in first_screen
     assert 'ORGANIZER-CONFIRMED score is available' in first_screen
     assert 'docs/REVIEW_20261025_ARENA_8A5595A3.md' in first_screen
 

@@ -36,7 +36,7 @@
   "weekly_slots_used": 0,
   "organizer_confirmed_score": null,
   "verification": {
-    "pytest": "491 passed; 140 pending-deprecation warnings",
+    "pytest": "498 passed; 140 pending-deprecation warnings",
     "site_check": "PASS; 82 served rasters gated",
     "manifest": "PASS",
     "pinned_parent": "PASS; pinned artefact bytes verified",
