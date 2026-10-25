@@ -1,8 +1,8 @@
-# Repository re-audit — 2026-10-25
+# Pre-integration repository re-audit — 2026-10-25
 
-## Decision
+## Snapshot scope and decision
 
-**Latest artifact: format-valid and OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new GeoTIFF, experiment, slot selection, or organizer score was produced in this review. The latest pre-existing research artifact is `DRAINAGE_KNICK`; its local holdout is below the current repository holdout-best and the literal public-registry rule stops it. A submission-cleared file cannot be produced under the binding protocol while the pinned full-footprint witness is included.
+**At the original checkout snapshot, the latest artifact was format-valid and OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new GeoTIFF, experiment, slot selection, or organizer score was produced in this review. DRAINAGE_KNICK was the latest pre-existing research artifact at that snapshot; its local holdout was below the repository holdout-best and the literal public-registry rule stopped it. During PR preparation, `main` advanced with a separate LISTRICDIP lane and that update was merged into this branch to resolve conflicts. LISTRICDIP is now the latest listed research artifact; its separate run card reports negative HOLDOUT-DTI and literal overlap stop. See the [current repository review](REVIEW_20261025_REPOSITORY_REVIEW.md). The binding full-footprint witness still prevents any nonempty candidate from satisfying the unchanged literal gate.
 
 - [Download the existing DRAINAGE_KNICK research TIFF](downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif) — download is for research, **not submission**.
 - [DRAINAGE_KNICK run card](downloads/gemsdoe92-drainageknick-20261025T120000Z_run_card.json) · [automated audit](downloads/gemsdoe92-drainageknick-20261025T120000Z-audit.json) · [analysis](ANALYSIS_20261025_DRAINAGE_KNICK.md).

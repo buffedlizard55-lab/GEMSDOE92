@@ -116,15 +116,16 @@ def main() -> int:
 
     # ---- canonical current status must be first, not merely somewhere in history --
     status_start = html.find('<aside id="current-status-banner"')
-    first_lane = html.find('<!-- KNICKLOQO:BEGIN -->')
-    expected_current_download = 'downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif'
+    lane_match = re.search(r'<!-- [A-Z0-9_-]+:BEGIN', html)
+    first_lane = lane_match.start() if lane_match else -1
+    current_download = primary_download(html, problems)
     if status_start < 0 or first_lane < 0 or status_start > first_lane:
         problems.append('current-status banner must precede historical lane blocks')
     else:
         status_end = html.find('</aside>', status_start)
         current_banner = html[status_start:status_end] if status_end >= 0 else ''
-        if expected_current_download not in current_banner:
-            problems.append('current-status banner must link the latest DRAINAGE_KNICK research TIFF')
+        if current_download is None or current_download not in current_banner:
+            problems.append('current-status banner must link the unique data-primary research TIFF')
         if 'DO NOT SUBMIT' not in current_banner or 'OK TO DOWNLOAD FOR RESEARCH' not in current_banner:
             problems.append('current-status banner must distinguish research download from submission permission')
         if 'HOLDOUT-DTI' not in current_banner or '1.000' not in current_banner:

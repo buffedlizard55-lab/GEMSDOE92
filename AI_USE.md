@@ -249,9 +249,9 @@ No submission, no login, no leaderboard or competition-page access, no Dropbox c
 - `tests/test_dilatation_variants.py` — 8 tests (synthetic reallocation contract +
   receipt/policy/ledger/canary/download-contract assertions). `make test` = **80 passed**.
 - `docs/index.html`, `docs/SUBMIT.html`, `docs/_config.yml`, `docs/.nojekyll` — the
-  GitHub Pages site: one obvious download at the top behind a programmatic
-  "OK TO DOWNLOAD AND SUBMIT" banner, the portal `[0,1]`-range failure explained and fixed,
-  the run card, official source links, and a 4-command reproduction.
+  GitHub Pages site: one obvious research download at the top behind separate
+  format-valid and submission-eligibility notices, the portal `[0,1]`-range failure
+  explained and fixed, the run card, official source links, and a 4-command reproduction.
 - `docs/downloads/` — the three dose pairs + primary .zip + independent `audit.json`;
   `.gitignore` gained `!docs/downloads/*.tif` / `*.zip` exceptions so the served files are
   tracked while `releases/` stays ignored.

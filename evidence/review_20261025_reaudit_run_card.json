@@ -1,7 +1,7 @@
 {
   "schema": "gemsdoe92-repository-reaudit-v1",
   "reviewed_date": "2026-10-25",
-  "scope": "Three-pass repository/site review only; no new geological experiment or raster generated.",
+  "scope": "Three-pass repository/site review at the original checkout snapshot; no new geological experiment or raster generated. Subsequent origin/main integration added the LISTRICDIP lane.",
   "hypothesis": "A latest-status banner that precedes historical records will make the research-only versus submission status unambiguous at first page load.",
   "mechanism": "Homepage top-level banner links the current archived research artifact and states format-download permission separately from the negative holdout and literal registry stop.",
   "named_non_fault_process_that_could_mimic_it": "A stale or duplicated historical status block could appear current if ordering is not tested.",
@@ -29,7 +29,7 @@
     "universal_nonempty_overlap_stop_from_pinned_witness": true
   },
   "raster_sha256": "ef6c27e34fe0f28c6e52615a9fc9601c20ada5337203def25ab8753392aef910",
-  "artifact_origin": "Existing DRAINAGE_KNICK research TIFF produced before this review; no copy or new TIFF built.",
+  "artifact_origin": "Existing DRAINAGE_KNICK research TIFF at the original checkout snapshot; no copy or new TIFF built. LISTRICDIP later became the latest listed lane after origin/main integration.",
   "validator_output": {
     "evidence_class": "FORMAT-VALIDATION from existing run-card receipt; whole-site validation rerun in this review",
     "no_nan_inside_footprint": true,

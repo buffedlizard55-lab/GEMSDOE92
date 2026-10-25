@@ -1,30 +1,36 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-> ## Latest existing artifact — DRAINAGE-KNICK (2026-10-25)
-> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). This is an existing research GeoTIFF with a different byte hash from the pinned witness, but it is not cleared as spatially unique under the binding literal registry rule: the pinned full-footprint witness gives overlap `1.0 > 0.70`. **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives, strict fold-visible `d_visible > 2.0`): `0.061728 [0.047046, 0.075316]`, below the saved repository **HOLDOUT-DTI** comparator `0.113316` (same evaluator/instrument).
+> ## Binding decision — read before any download or experiment
+> **Research downloads only. DO NOT SUBMIT any current TIFF or spend a weekly slot.** The pinned public registry witness is positive in all 5,167,373 footprint cells, so every nonempty in-footprint prediction raster has literal 3-px forward overlap `1.0 > 0.70`. The pre-placement gate requires stopping. No candidate was generated in this repository review and no artifact is slot-cleared. Read the [current three-pass review](docs/REVIEW_20261025_REPOSITORY_REVIEW.md), [supplemental pre-integration re-audit](docs/REVIEW_20261025_REAUDIT.md), [binding gate evidence](docs/REVIEW_376A8469.md), and [ranked untested hypotheses](docs/HYPOTHESES_20261025_REVIEW.md). The latest lane below is a prior research result, not an exception.
+>
+> **Persistent operating brief:** read this README and `SESSION_PROMPT.md` at every session start; use shared cached features/evaluator/writer, whole-segment buffered holdouts and leakage canaries; pre-register 3–5 hypotheses; label all metrics and provenance; never call a projection a score; stop at 3 experiments / 2 hours; keep “Maximize P(Win)” and “Own the Outcome” central. Full user prompt summary is retained under [Persistent Session Prompt Reference](#persistent-session-prompt-reference).
+
+<!-- LISTRICDIP:BEGIN -->
+> ### Newest session (2026-10-25) — lane `LISTRICDIP`: 3 new unique GeoTIFFs · verdict **`negative`**
+> **✅ OK TO DOWNLOAD FOR RESEARCH** (11/11 format gates, values in `[0, 1]`, 0 NaN, local overlap 0.1968 at scoring; 0.1892 vs the later `DRAINAGE-KNICK` raster) · **⛔ OK TO SUBMIT: NO** (`submission_eligible: false`; literal dense-witness overlap 1.000; not cleared for a weekly slot; 0 slots used)
+>
+> - **Download:** [`gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif`](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [zip](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.zip) · [audit](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-audit.json) · [run card](docs/downloads/listricdip_run_card.json) · [submit steps](docs/listricdip.html) · [analysis](docs/ANALYSIS_20261025_LISTRICDIP.md) · [pre-registration](docs/HYPOTHESES_20261025_LISTRICDIP.md)
+> - **SHA-256:** `91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e` · ZIP `0ac14c467ba046835fcf32c7e3ed43a5eb550f8d2ebcc37cde8d5d7998f2052b`
+> - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): static `0.005420 [0.004294, 0.006551]`. Beats `R0` `0.004006` (paired +0.001413, CI excludes 0). Loses to `KNICKLOQO` `0.010788` and `COULOMBLOQO` `0.009220` (CIs exclude 0). Re-placed `d_visible > 2`: `0.048225 [0.039232, 0.056882]`. Not an organizer score. Not 0.2778, not 0.3195, not the 2026-10-25 leaderboard snapshot 0.4413.
+> - **Name / note (77/140):** `GEMSDOE92-LISTRICDIP-updip50-20261025` / `LISTRICDIP updip50: 37654 listric-offset dots; HOLDOUT-DTI 0.005420; negative`
+> - **Siblings (budget not filled, do not pad):** [`anti22` 9,571](docs/downloads/gemsdoe92-listricdip-anti22-9571-20261025T190000Z-zeros.tif) static `0.001291` · [`anti35` 9,555](docs/downloads/gemsdoe92-listricdip-anti35-9555-20261025T190000Z-zeros.tif) static `0.001224`
+>
+> The standing prompt is in [Persistent Session Prompt Reference](#persistent-session-prompt-reference) below and in `SESSION_PROMPT.md`. Read both at every session start. Maximize P(Win). Own the Outcome.
+<!-- LISTRICDIP:END -->
+
+> ## Prior merged lane — DRAINAGE-KNICK (2026-10-25)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). HOLDOUT-DTI `0.061728 [0.047046, 0.075316]` is that lane's strict fold-visible rebuild, not the static instrument used for `LISTRICDIP` `0.005420`. It is below the `0.113316` promotion bar. Literal public-registry overlap is `1.0 > 0.70`.
 >
 > **[Download the validated TIFF](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.zip) · [run card](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z_run_card.json) · [public registry audit](docs/downloads/drainageknick_public_registry.json) · [analysis](docs/ANALYSIS_20261025_DRAINAGE_KNICK.md)
 >
 > SHA-256 `ef6c27e34fe0f28c6e52615a9fc9601c20ada5337203def25ab8753392aef910`; name `GEMSDOE92-DRAINAGE_KNICK-20261025`; note: `DRAINAGE_KNICK terrain+basement+shear; 37654 dots; HOLDOUT-DTI 0.061728; negative`.
 
-
 <!-- KNICKLOQO:BEGIN -->
-> ### Newest Session (2026-10-25) — Lane `KNICKLOQO`: 3 New Unique GeoTIFFs Generated · All-Time #1 Static `HOLDOUT-DTI = 0.010788 [0.009468, 0.012201]` · `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` Resolved · Verdict **`negative`** (literal `17GEMSDOE` dense surface) / **`unique`** (`dual_reading_decision`)
-> **✅ OK TO DOWNLOAD: YES** (`10/10` format gates PASS, values in `[0.0, 1.0]`, `0` NaNs, unique on local `65/65` & public dual-reading `1,412/1,412 <= 0.70` including `62GEMSDOE` `125,890` px where `PROVINCETOE` `0.7918` & `POISSONFLEX` `0.7541` tripped) · **⛔ OK TO SUBMIT: NO — DIAGNOSTIC ONLY** (`verdict: "negative"`, `submission_eligible: false` under literal `17GEMSDOE` dense-surface overlap `1.000 > 0.70`) · weekly slots used: **0** · experiments: **3/3**
+> ### Superseded KNICKLOQO record — research artifact only; **DO NOT SUBMIT**
+> KNICKLOQO's earlier matched-budget `dual_reading_decision` was incorrectly presented as uniqueness clearance. It did not apply the binding literal-overlap rule. The full-footprint witness makes the literal overlap `1.000 > 0.70`, so the current verdict is **negative** and `submission_eligible: false`. Its format validation and HOLDOUT-DTI are local research evidence only, not submission clearance or an organizer score.
 >
-> - **Primary Download:** [`h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif`](docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif) · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.zip) · [audit JSON](docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-audit.json) · [run card](docs/downloads/knick_loqo_run_card.json) · [102-repo public scan](docs/downloads/knick_loqo_public_registry_uniqueness.json) · [PhD analysis](docs/ANALYSIS_20261025_KNICKLOQO.md) · [pre-registered hypotheses](docs/HYPOTHESES_20261025_KNICKLOQO.md)
-> - **SHA-256 (`-zeros.tif`):** `8ad4a8c2cd8e1fd965d91643da6efbe82da8b3668e6dc8e59d193a8302424a7d` · ZIP `d272a7cc85a3a9d76a29dc28c92fc985db1402a0d387108dc75b2dc2e940b63e`
-> - **Validator (automated, zero human inspection):** single-band `float32`, `EPSG:32611`, `3730 × 3292`, finite values strictly in `[0, 1]`, `0.0` outside footprint, `0` NaNs anywhere, `37,654` unit dots, `0` catalogue mass (`d_cat > 2.0 px`) — prevents DrivenData's `"Predicted values must be in range [0, 1]"` portal error.
-> - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, `22,663` withheld positives, 8 folds, 1,000 paired 20 km cluster bootstrap draws):
->   - **Static `d_cat > 2.0` — NEW #1 ALL-TIME REPOSITORY RECORD:** `KNICKLOQO standalone` **`0.010788 [0.009468, 0.012201]`** (surpasses `PROVINCETOE piedbasin` `0.009711` by `+11.1%`, `PROVINCETOE provincetoe` `0.009685` by `+11.4%`, `POISSONKNICK qcal` `0.009304` by `+16.0%`, `EULERFUSE gravity` `0.009265` by `+16.4%`, `COULOMBLOQO standalone` `0.009220 [0.007933, 0.010683]` by `+17.0%`, paired $\Delta = +0.001568 [+0.000592, +0.002535]$, `POISSONFLEX opt` `0.008824` by `+22.3%`, `HYDROCONDUIT f45hydro` `0.008549` by `+26.2%`, and `R0` `0.004006` by `+169.3%`); `uncal` ablation **`0.010102 [0.008907, 0.011335]`** (#2 all-time); `dual35` hybrid **`0.008976 [0.007871, 0.010008]`**.
->   - **Strict draw-blind `d_cat > 2.0`:** **`0.010958 [0.009675, 0.012337]`** (`+13.1%` over `COULOMBLOQO` `0.009689`).
->   - **Strict draw-blind fold-visible (`d_visible > 2.0`):** **`0.109043 [0.097872, 0.120534]`** (beats `POISSONFLEX opt` `0.107466`, `PROVINCETOE provincetoe` `0.106452`, `POISSONKNICK qcal` `0.098491`, and `H19-5` `0.096757 [0.084839, 0.108454]` by paired $\Delta = +0.012286 [+0.004125, +0.020591]$).
-> - **Off-catalogue USGS SGMC Bedrock Fault `PROXY` (`62,703` pixels > 3 px off catalogue):** `standalone` **`0.103912`** (`+14.7%` over `COULOMBLOQO standalone` `0.090569`, `+14.0%` over `PROVINCETOE` `0.091183`, `+28.1%` over `POISSONKNICK` `0.081106`, `+8.2%` over `R0` `0.096060`); `dual35` **`0.102945`**; `uncal` **`0.095441`**.
-> - **Resolution of `#IR-92-NE-QUADRANT-LOQO-COLLAPSE`:** Province-debiased 3-branch LOQO + label-free within-quadrant quantile calibration restores `NE` (`Q1`) dot allocation from `4,221` (`11.2%`) to **`9,286` (`24.7%`, matching the `24.7%` catalogue share)** and lifts Seed 20 `NE` fold DTI by **`+77.6%`** (`0.006100 -> 0.010834`) and Seed 30 `NE` fold DTI by **`+25.1%`** (`0.012059 -> 0.015086`).
-> - **Leakage canaries:** `50 / 50 PASS` (`max symmetric AUC = 0.659602 <= 0.90` on `LOQO_P_cal`; `LOQO_draw_blind_S_cal = 0.629098`).
-> - **Uniqueness (`REGISTRY-MEASUREMENT`):** Local registry (`65` unique rasters + merged lanes): worst overlap `0.685531 <= 0.70`, worst `|φ| = 0.141243 <= 0.90` (`PASS`). Public registry (`1,412` non-self exact-grid rasters across 102 `GEMSDOE` repos): **`0 / 1,412 > 0.70` under `dual_reading_decision`** (`worst operative overlap = 0.685531 <= 0.70` vs `COULOMBLOQOdual45`; `62GEMSDOE` `125,890`-px overlap `0.663462 <= 0.70`; `>150k` continuous-surface matched-budget max `0.485128`; `verdict = "unique"` under `dual_reading_decision`); literal unweighted overlap is `1.0000` against full-footprint `17GEMSDOE E-proba-multiscale` (`5,167,373` px). Action #1 receipt (`evidence/coulomb_loqo_dual_reading_audit.json`) also confirms `COULOMBLOQO` has `0 / 185 > 0.70` on continuous surfaces (`max 0.535853`) while documenting `#IR-92-COULOMBLOQO-EULERFUSE-POSTMERGE-COLLISION` (`0.828703` vs `EULERFUSE_gravity`).
-> - **Submission name:** `GEMSDOE92-KNICKLOQO-standalone-20261025` · **Note (`93 / 140`):** `h33-h33-2-b2; KNICKLOQO standalone: 37654 1D Q-calibrated knickzone+Poisson+scarp LOQO crests`
-> - **Sibling arms (format-valid, research only, `0 / 1,412 > 0.70` on dual reading):** [`h33-h33-2-b2-KNICKLOQOuncal-20261025-61b98143-zeros.tif`](docs/downloads/h33-h33-2-b2-KNICKLOQOuncal-20261025-61b98143-zeros.tif) (`916acb0b8b7ec58d…`, `0.010102`) · [`h33-h33-2-b2-KNICKLOQOdual35-20261025-8eedc094-zeros.tif`](docs/downloads/h33-h33-2-b2-KNICKLOQOdual35-20261025-8eedc094-zeros.tif) (`0e0841a148f3fe5e…`, `0.008976`).
+> - [Historical KNICKLOQO GeoTIFF](docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif) · [superseded run card, corrected metadata and verdict](docs/downloads/knickloqo_submission_run_card.json) · [analysis](docs/ANALYSIS_20261025_KNICKLOQO.md)
+> - See [the `0.2778` claim review](docs/BEAT_0_2778.md) for evidence limits. No organizer-confirmed GEMSDOE32 score or score projection is established by this checkout.
 <!-- KNICKLOQO:END -->
 
 <!-- PROVINCETOE:BEGIN (rendered by scripts/render_provincetoe_site.py from evidence/provincetoe_run_card.json) -->
@@ -296,7 +302,7 @@ PYTHON=.venv/bin/python make test && PYTHON=.venv/bin/python make site && PYTHON
 
 ## Persistent Session Prompt Reference
 
-Full durable operating contract also stored in [`SESSION_PROMPT.md`](SESSION_PROMPT.md).
+Full durable operating contract also stored in [`SESSION_PROMPT.md`](SESSION_PROMPT.md). The prompt below is preserved verbatim as historical input, not as a claim that GEMSDOE32 received a verified `0.2778` score or that a current TIFF is submission-cleared. Follow the binding negative decision at the top of this README and the evidence-linked reviews instead.
 
 <details>
 <summary>Click to expand persistent session prompt</summary>

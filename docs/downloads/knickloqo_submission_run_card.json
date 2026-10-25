@@ -1,0 +1,292 @@
+{
+  "submission_metadata": {
+    "submission_name": "GEMSDOE92-KNICKLOQO-standalone-20261025",
+    "submission_note": "h33-h33-2-b2; KNICKLOQO standalone: 37654 1D Q-calibrated knickzone+Poisson+scarp LOQO crests",
+    "submission_note_length": 93,
+    "max_note_length": 140,
+    "file_name": "h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif",
+    "file_name_zip": "h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.zip",
+    "sha256_tif": "8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347",
+    "sha256_zip": "4b31db8b8ba3e6abff9397d700a5814669d00c82f2bad44554c1577ee4dc1767",
+    "file_size_bytes": 149177,
+    "generated_utc": "2026-10-25T12:00:00Z",
+    "last_validated_utc": "2026-10-25T14:47:00Z"
+  },
+  "format_validation": {
+    "validator": "gems.gates + gems57.validate",
+    "gates_passed": 11,
+    "total_gates": 11,
+    "format": "single-band GeoTIFF",
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": "Affine(100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0)",
+    "resolution_m": 100,
+    "values_in_range": true,
+    "range": [
+      0.0,
+      1.0
+    ],
+    "has_nan": false,
+    "has_inf": false,
+    "zeros_outside_footprint": true,
+    "nodata": null,
+    "total_dots": 37654,
+    "dot_spacing_median_px": 2.8,
+    "catalogue_mass_d_cat_gt_2": 0
+  },
+  "lane_metadata": {
+    "lane": "KNICKLOQO",
+    "experiment": 1,
+    "total_experiments": 3,
+    "hypothesis_file": "docs/HYPOTHESES_20261025_KNICKLOQO.md",
+    "analysis_file": "docs/ANALYSIS_20261025_KNICKLOQO.md",
+    "build_script": "scripts/build_knick_loqo_variants.py",
+    "module": "gems/knick_loqo.py"
+  },
+  "hypothesis": {
+    "name": "KNICKLOQO",
+    "full_name": "Knickzone-Poisson-Scarp Leave-One-Quadrant-Out Crest Detection",
+    "mechanism": "Multi-physics coupling of drainage knickzones, Poisson-dealiased gravity-magnetic contacts, and cross-contour scarp transgression with LOQO spatial cross-fitting",
+    "target_physical_signature": [
+      "Incised drainage thalweg knickzones (f27_thalweg_knick_convexity)",
+      "Sliding-window Poisson magneto-gravity collinearity (f25_poisson_rtp_vg_decouple)",
+      "Cross-contour scarp transgression (f28_lahontan_obliquity_deconfound)",
+      "4-quadrant LOQO with >500m negative buffer"
+    ],
+    "why_catches_missing_faults": "H19-5 misses subtle Quaternary faults in alluvial fans and bedrock horsts; KNICKLOQO combines terrain (drainage knickzones), gravity (Poisson flexure), and magnetic (polarity lock) to detect faults independent of surface expression",
+    "non_fault_process_rejected": [
+      "Lake Lahontan recessional shorelines (rejected via cross-contour obliquity filter)",
+      "Volcanic flow boundaries (rejected via gravity polarity concordance)",
+      "Anthropogenic features (rejected via multi-physics coherence)"
+    ],
+    "difference_from_prior": "First to combine knickzone, Poisson, and scarp features in a single LOQO ensemble; prior lanes used each feature group separately (POISSONFLEX, POISSONKNICK, SCARPPOL)"
+  },
+  "holdout_dti": {
+    "evaluator": "gems57-pooled-hide-v2",
+    "evaluator_sha": "vendor/gems57/metric.py",
+    "withheld_positives": 22663,
+    "n_folds": 8,
+    "seeds": [
+      20,
+      30
+    ],
+    "kernel": "triangular",
+    "kernel_radius_m": 300,
+    "kernel_radius_px": 3.0,
+    "alpha": 0.2,
+    "beta": 0.8,
+    "metrics": {
+      "static_d_cat_gt_2": {
+        "value": 0.010788,
+        "ci_lower": 0.009468,
+        "ci_upper": 0.012201,
+        "label": "HOLDOUT-DTI",
+        "comparison": {
+          "vs_COULOMBLOQO_standalone": {
+            "delta": 0.001568,
+            "delta_ci_lower": 0.000592,
+            "delta_ci_upper": 0.002535,
+            "pct_improvement": 17.0
+          },
+          "vs_PROVINCETOE_piedbasin": {
+            "delta": 0.001077,
+            "pct_improvement": 11.1
+          },
+          "vs_R0": {
+            "delta": 0.006782,
+            "pct_improvement": 169.3
+          }
+        },
+        "rank": "All-time #1 repository record"
+      },
+      "strict_drawblind_d_cat_gt_2": {
+        "value": 0.010958,
+        "ci_lower": 0.009675,
+        "ci_upper": 0.012337,
+        "label": "HOLDOUT-DTI",
+        "comparison": {
+          "vs_COULOMBLOQO": {
+            "delta": 0.001269,
+            "pct_improvement": 13.1
+          }
+        }
+      },
+      "strict_drawblind_d_visible_gt_2": {
+        "value": 0.109043,
+        "ci_lower": 0.097872,
+        "ci_upper": 0.120534,
+        "label": "HOLDOUT-DTI",
+        "comparison": {
+          "vs_COULOMBLOQO_standalone": {
+            "delta": 0.012286,
+            "delta_ci_lower": 0.004125,
+            "delta_ci_upper": 0.020591,
+            "pct_improvement": 12.7
+          },
+          "vs_H19_5": {
+            "value": 0.096757,
+            "delta": 0.012286,
+            "pct_improvement": 12.7
+          }
+        }
+      }
+    },
+    "proxy_metrics": {
+      "usgs_sgmc_off_catalogue": {
+        "value": 0.103912,
+        "label": "PROXY",
+        "n_pixels_off_catalogue": 62703,
+        "comparison": {
+          "vs_COULOMBLOQO_standalone": {
+            "delta": 0.013343,
+            "pct_improvement": 14.7
+          },
+          "vs_R0": {
+            "delta": 0.007852,
+            "pct_improvement": 8.2
+          }
+        }
+      }
+    }
+  },
+  "leakage_canaries": {
+    "total_canaries": 50,
+    "passed": 50,
+    "failed": 0,
+    "max_symmetric_auc": 0.659602,
+    "threshold": 0.9,
+    "verdict": "PASS",
+    "note": "All 50 single-feature leakage canaries PASS; max AUC well below 0.90 threshold"
+  },
+  "uniqueness": {
+    "policy": "literal_registry_rule",
+    "local_registry": {
+      "n_rasters": 65,
+      "worst_overlap": 0.685531,
+      "threshold": 0.7,
+      "duplicate": false,
+      "max_correlation": 0.141243,
+      "correlation_threshold": 0.9,
+      "verdict": "PASS"
+    },
+    "public_registry": {
+      "n_rasters": 1412,
+      "n_repos": 102,
+      "worst_overlap": 0.685531,
+      "n_above_threshold": 0,
+      "threshold": 0.7,
+      "duplicate": false,
+      "verdict": "DIAGNOSTIC PASS ONLY; does not clear the literal rule",
+      "note": "0 / 1,412 public rasters exceed 0.70 overlap under dual_reading_decision",
+      "assessment_type": "matched_budget_diagnostic_only"
+    },
+    "literal_witness": {
+      "worst_overlap": 1.0,
+      "witness": "17GEMSDOE E-proba-multiscale",
+      "n_pixels": 5167373,
+      "note": "Binding literal rule: full-footprint witness yields overlap 1.0 > 0.70; stop. Matched-budget interpretation cannot exempt it."
+    },
+    "overall_verdict": "NEGATIVE: literal registry duplicate stop"
+  },
+  "submission_eligibility": {
+    "format_valid": true,
+    "values_in_range": true,
+    "crs_matches": true,
+    "shape_matches": true,
+    "transform_matches": true,
+    "no_nan": true,
+    "no_inf": true,
+    "zeros_outside_footprint": true,
+    "uniqueness_pass": false,
+    "holdout_dti_verified": true,
+    "leakage_canaries_pass": true,
+    "verdict": "negative",
+    "submission_eligible": false,
+    "policy": "binding_literal_registry_rule",
+    "note": "Not cleared. The matched-budget result is diagnostic only; the binding literal witness produces 1.0 overlap."
+  },
+  "competition_context": {
+    "competition_id": 306,
+    "competition_name": "DOE GEMS Prize",
+    "competition_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/",
+    "leaderboard_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+    "problem_description_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/",
+    "reference_solution_url": "https://github.com/drivendataorg/gems-prize-reference-solution",
+    "current_leaderboard_top": {
+      "score": 0.4413,
+      "label": "LEADERBOARD-SNAPSHOT",
+      "date": "2026-10-24",
+      "note": "Not an ORGANIZER-CONFIRMED receipt; live score requires actual submission"
+    },
+    "gemsdoe32_claim": {
+      "score": 0.2778,
+      "file": "h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+      "label": "CLAIM",
+      "note": "Byte-verified ancestor of R0; not an ORGANIZER-CONFIRMED receipt"
+    }
+  },
+  "provenance": {
+    "repository": "buffedlizard55-lab/GEMSDOE92",
+    "branch": "arena/05edd957-gemsdoe92",
+    "commit": "376a8469",
+    "core_values": [
+      "Maximize P(Win)",
+      "Own the Outcome"
+    ],
+    "automated_validation": true,
+    "human_inspector": false,
+    "manual_input": false
+  },
+  "related_files": {
+    "audit_json": "downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-audit.json",
+    "public_registry_json": "downloads/knick_loqo_public_registry_uniqueness.json",
+    "analysis_md": "docs/ANALYSIS_20261025_KNICKLOQO.md",
+    "hypotheses_md": "docs/HYPOTHESES_20261025_KNICKLOQO.md",
+    "run_card_json": "downloads/knick_loqo_run_card.json",
+    "sibling_arms": [
+      {
+        "name": "KNICKLOQO uncal",
+        "file": "downloads/h33-h33-2-b2-KNICKLOQOuncal-20261025-61b98143-zeros.tif",
+        "sha256": "916acb0b8b7ec58d...",
+        "static_dti": 0.010102,
+        "note": "Uncalibrated ablation"
+      },
+      {
+        "name": "KNICKLOQO dual35",
+        "file": "downloads/h33-h33-2-b2-KNICKLOQOdual35-20261025-8eedc094-zeros.tif",
+        "sha256": "0e0841a148f3fe5e...",
+        "static_dti": 0.008976,
+        "sgmc_proxy": 0.102945,
+        "note": "35% H19-5 hybrid"
+      }
+    ]
+  },
+  "notes": [
+    "Historical local evaluation record; not organizer confirmation and not a submission authorization.",
+    "This artifact is format-valid and may be downloaded for research only.",
+    "Any previous recommendation to submit under dual_reading_decision is superseded by the binding literal registry rule.",
+    "Literal dense witness overlaps every nonempty in-footprint candidate at 1.0, exceeding the 0.70 stop threshold.",
+    "The previous matched-budget uniqueness measurements remain diagnostic history and do not alter the current negative verdict.",
+    "No weekly slot was used; organizer_confirmed_score is null."
+  ],
+  "schema": "gemsdoe92-historical-knickloqo-run-card-superseded-v2",
+  "current_decision": {
+    "verdict": "negative",
+    "submission_eligible": false,
+    "download_status": "OK TO DOWNLOAD FOR RESEARCH only; not submission-cleared",
+    "reason": "The binding literal registry rule includes the full-footprint witness. Forward overlap is 1.0, above 0.70. Matched-budget uniqueness is diagnostic only.",
+    "literal_registry_witness": {
+      "footprint_pixels": 5167373,
+      "positive_in_footprint": 5167373,
+      "candidate_forward_overlap_within_3px": 1.0,
+      "threshold": 0.7,
+      "evidence_class": "REGISTRY-MEASUREMENT"
+    },
+    "organizer_confirmed_score": null,
+    "weekly_slots_used": 0
+  }
+}
