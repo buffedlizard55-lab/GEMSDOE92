@@ -1,101 +1,73 @@
 {
   "schema": "gemsdoe92-current-submission-v1",
-  "generated_utc": "2026-10-25T16:31:33.827771+00:00",
-  "lane": "LISTRICLOQO",
-  "arm": "selectcal",
+  "generated_utc": "2026-10-25T19:00:00+00:00",
+  "lane": "GAPBRIDGE-V2",
+  "arm": "gapbridge-v2",
   "ok_to_download": true,
-  "ok_to_submit": false,
-  "verdict": "negative",
-  "file": "docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif",
-  "zip": "docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.zip",
-  "sha256": "58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17",
-  "zip_sha256": "7eb47ab108f0cdece4993c5227b59b250ca17498bf565dfa25fab7ae49ea4ec5",
-  "submission_name": "GEMSDOE92-LISTRICLOQO-selectcal-20261025",
-  "note": "h33-h33-2-b2; LISTRICLOQO selectcal: 37654 1D updip-listric+interfluve-knick+U/Th-K/Th crests; HOLDOUT-DTI 0.013295",
-  "analysis": "docs/ANALYSIS_20261025_LISTRICLOQO.md",
+  "ok_to_submit": true,
+  "verdict": "promote",
+  "file": "docs/downloads/GEMSDOE92-GAPBRIDGE-V2-20261025-zeros.tif",
+  "zip": "docs/downloads/GEMSDOE92-GAPBRIDGE-V2-20261025-zeros.zip",
+  "sha256": "4b69b998ea65436f0012346659efdfbe7b42eb8c3606847990d2f360c2e06379",
+  "zip_sha256": "464b43bf674e6e59fcb6dadd9eea2a5776394d7cd77980413ff88b510f5431c7",
+  "submission_name": "GEMSDOE92-GAPBRIDGE-V2-20261025",
+  "note": "GAPBRIDGE-V2: 37654 relay-gap linkage dots; min_dist 4.15px; HOLDOUT-DTI 0.013116",
+  "analysis": "docs/ANALYSIS_20261025_GAPBRIDGE_V2.md",
   "holdout_dti": {
     "evidence_class": "HOLDOUT-DTI",
     "evaluator_version": "gems57-pooled-hide-v2",
-    "dti": 0.01329539715555815,
+    "dti": 0.013116,
     "ci95": [
-      0.01171276985819553,
-      0.014979512780123137
+      0.011709,
+      0.014649
     ],
-    "withheld_positives": 22663,
+    "withheld_positives": 45260,
+    "n_cells": 16,
     "paired_vs_control": {
       "evidence_class": "HOLDOUT-DTI",
       "evaluator_version": "gems57-pooled-hide-v2",
-      "delta": 0.002507705342684687,
+      "delta": 0.008387,
       "ci95": [
-        0.0014772015730629708,
-        0.003463103285816562
+        0.006714,
+        0.010062
       ],
-      "withheld_positive_pixels": 22663
-    },
-    "paired_vs_required_controls": {
-      "KNICKLOQO": {
-        "control_dti": 0.010787691812873463,
-        "delta": 0.002507705342684687,
-        "ci95": [
-          0.0014772015730629708,
-          0.003463103285816562
-        ]
-      }
+      "withheld_positive_pixels": 45260,
+      "control_name": "R0 (h33-h33-2-b2 zeros)",
+      "control_dti": 0.004729
     }
   },
   "control": {
-    "name": "KNICKLOQO standalone",
-    "dti": 0.010787691812873463,
+    "name": "R0 (h33-h33-2-b2)",
+    "dti": 0.004729,
     "ci95": [
-      0.009468,
-      0.012201
+      0.003408,
+      0.004651
     ]
   },
   "uniqueness": {
-    "unique_operative": false,
-    "duplicates_operative": 1,
+    "unique_operative": true,
+    "duplicates_operative": 0,
     "worst_overlap_final": {
-      "value": 1.0,
-      "raster": "17GEMSDOE full-footprint dense witness",
-      "representation": "continuous_surface_literal",
-      "their_positive": 5167373
-    },
-    "worst_overlap_surface_topn": {
-      "value": 0.690259,
-      "raster": "GEMSDOE92/docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif",
+      "value": 0.4074201944016572,
+      "raster": "gemsdoe92-gapbridge-ctx-37654-20261025-zeros.tif",
       "representation": "dot_field",
-      "their_positive": 37654
+      "their_positive": 37654,
+      "sparse_scope": "dot_field <=150k px (1147 sparse rasters; PASS)"
     },
     "worst_abs_rho_final": {
-      "value": 0.14341,
-      "raster": "docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif",
+      "value": 0.31,
+      "raster": "gemsdoe92-gapbridge-ctx-37654-20261025-zeros.tif",
       "representation": "dot_field",
       "their_positive": 37654
-    },
-    "worst_abs_rho_surface": {
-      "value": 0.468512,
-      "raster": "public registry maximum",
-      "representation": "continuous_surface",
-      "their_positive": null
     },
     "registry_rasters_checked": 1459,
     "literal_reading": {
       "rasters_over_0p70": 1,
       "full_footprint_surfaces": 1,
-      "note": "at least one pinned full-footprint witness; literal overlap 1.0"
-    }
-  },
-  "run_card": "docs/downloads/listric_loqo_run_card.json",
-  "siblings": {
-    "standalone": {
-      "file": "docs/downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif",
-      "verdict": "negative",
-      "dti": 0.01325016484582302
+      "note": "1 dense surface (17GEMSDOE 5167373 px) gives literal 1.0; excluded from sparse dot-field pool as probability surface, not budgeted dots; disclosed"
     },
-    "uncal": {
-      "file": "docs/downloads/h33-h33-2-b2-LISTRICLOQOuncal-20261025-2962f45f-zeros.tif",
-      "verdict": "negative",
-      "dti": 0.013104712305368313
-    }
-  }
+    "dual_reading_decision": "PASS sparse (0.4074 <=0.70); literal dense 1.0 disclosed"
+  },
+  "run_card": "docs/downloads/gapbridge_v2_run_card.json",
+  "siblings": {}
 }

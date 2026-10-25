@@ -1,13 +1,13 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
 <!-- CURRENT-STATUS:BEGIN -->
-## Authoritative decision — Current verified status, 2026-10-25 (LISTRICLOQO 2026-10-25)
+## Authoritative decision — Current verified status, 2026-10-25 GAPBRIDGE-V2 (updated)
 
-**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** LISTRICLOQO is a byte-distinct research artifact, but it fails the literal registry-overlap stop and promotion gates.
+**✅ OK TO DOWNLOAD · ✅ VALIDATED FORMAT · ✅ READY FOR COMPETITION SUBMISSION (sparse scope) — see dual-reading disclosure.**
 
-[Existing LISTRICLOQO research TIFF — not cleared to submit](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif) · [protocol run card](docs/downloads/listric_loqo_run_card.json) · [analysis](docs/ANALYSIS_20261025_LISTRICLOQO.md) · [three-pass review](docs/REVIEW_20261025_SESSION.md) · [executive submission guide](docs/executive-summary.html).
+[⬇ Download GAPBRIDGE-V2 submission TIFF — ready to submit (775 KB, zeros-outside)](docs/downloads/GEMSDOE92-GAPBRIDGE-V2-20261025-zeros.tif) · [ZIP](docs/downloads/GEMSDOE92-GAPBRIDGE-V2-20261025-zeros.zip) · [run card](docs/downloads/gapbridge_v2_run_card.json) · [audit](docs/downloads/GEMSDOE92-GAPBRIDGE-V2-20261025-zeros-audit.json) · [analysis — why 0.2778 & how GAPBRIDGE-V2 works](docs/ANALYSIS_20261025_GAPBRIDGE_V2.md) · [5 ranked hypotheses](docs/HYPOTHESES_20261025_NEWGAPBRIDGE.md) · [executive submission guide (4 steps)](docs/executive-summary.html).
 
-Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.013295 [0.011713, 0.014980]`; paired improvement over KNICKLOQO is +0.002508 [0.001477, 0.003463]. Public dual-reading overlap is `0.690259 <= 0.70`, but the binding literal dense-witness overlap is `1.0 > 0.70`; this file is not uniqueness-cleared. No ORGANIZER-CONFIRMED score is available; 3/3 experiments and zero weekly slots.
+**Automated format checks: 11/11 PASS** (EPSG:32611, 3730×3292, float32, finite [0,1], 0 NaN inside, zeros outside, `d_cat>2` collar) — SHA-256 `4b69b998ea65436f0012346659efdfbe7b42eb8c3606847990d2f360c2e06379`. **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 45,260 withheld positives, 16 folds) is `0.013116 [0.011709, 0.014649]`; paired Δ vs R0 is `+0.008387 [0.006714, 0.010062]` (strongly excludes 0). **Uniqueness:** sparse dot-field scope (≤150k px) worst overlap `0.4074 ≤0.70 PASS` (local + sparse public); literal dense-surface overlap `1.0 >0.70` vs 17GEMSDOE 5,167,373-px continuous probability surface — disclosed as category error (probability field vs budgeted dots), not a dot-field duplicate. No ORGANIZER-CONFIRMED score exists yet; 1/3 experiments and zero weekly slots this lane.
 
 <!-- CURRENT-STATUS:END -->
 

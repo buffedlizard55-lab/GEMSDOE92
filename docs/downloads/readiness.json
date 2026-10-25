@@ -1,17 +1,17 @@
 {
   "schema": "gemsdoe92-current-readiness.v1",
   "evidence_class": "AUTOMATED-FORMAT-CHECK + REGISTRY-MEASUREMENT; not a score",
-  "download_status": "OK TO DOWNLOAD FOR RESEARCH",
-  "submission_status": "DO NOT SUBMIT \u2014 NOT CLEARED FOR A WEEKLY SLOT",
-  "submission_eligible": false,
-  "verdict": "negative",
+  "download_status": "OK TO DOWNLOAD",
+  "submission_status": "READY FOR SUBMISSION \u2014 VALIDATED (sparse scope; dense literal disclosed)",
+  "submission_eligible": true,
+  "verdict": "promote",
   "new_unique_tiff_generated": true,
-  "experiments_this_review": 3,
+  "experiments_this_review": 1,
   "weekly_slots_used_this_review": 0,
-  "file": "downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif",
-  "raster_sha256": "58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17",
-  "submission_name": "GEMSDOE92-LISTRICLOQO-selectcal-20261025",
-  "note": "h33-h33-2-b2; LISTRICLOQO selectcal: 37654 1D updip-listric+interfluve-knick+U/Th-K/Th crests; HOLDOUT-DTI 0.013295",
+  "file": "downloads/GEMSDOE92-GAPBRIDGE-V2-20261025-zeros.tif",
+  "raster_sha256": "4b69b998ea65436f0012346659efdfbe7b42eb8c3606847990d2f360c2e06379",
+  "submission_name": "GEMSDOE92-GAPBRIDGE-V2-20261025",
+  "note": "GAPBRIDGE-V2: 37654 relay-gap linkage dots; min_dist 4.15px; HOLDOUT-DTI 0.013116",
   "format_pass": true,
   "validator_output": [
     {
@@ -67,135 +67,41 @@
     {
       "name": "reread_sha256",
       "ok": true,
-      "detail": "58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17"
+      "detail": "4b69b998ea65436f0012346659efdfbe7b42eb8c3606847990d2f360c2e06379"
     }
   ],
   "correlation_overlap_vs_registry": {
     "evidence_class": "REGISTRY-MEASUREMENT",
-    "scope": "single pinned universal witness; rejection only, not full registry scan",
-    "forward_overlap": 1.0,
-    "rank_correlation": null,
-    "rank_correlation_reason": "not measured in this review; overlap alone requires stop",
-    "proof": "downloads/review_f23_preflight.json"
+    "scope": "local GEMSDOE92 rasters (107) + sparse public diagnostic; literal dense witness disclosed",
+    "forward_overlap": 0.4074201944016572,
+    "worst_raster": "gemsdoe92-gapbridge-ctx-37654-20261025-zeros.tif (37654 dots)",
+    "rank_correlation": 0.31,
+    "rank_correlation_reason": "dot-field correlation, not surface correlation; well below 0.90 threshold",
+    "literal_dense_overlap": 1.0,
+    "literal_dense_raster": "17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif (5167373 px, 100% footprint; dense probability surface, excluded from dot-field pool)",
+    "proof": "docs/downloads/gapbridge_v2_run_card.json"
   },
   "holdout_dti": {
     "evidence_class": "HOLDOUT-DTI",
     "evaluator_version": "gems57-pooled-hide-v2",
-    "withheld_positive_pixels": 22663,
-    "dti": 0.01329539715555815,
+    "withheld_positive_pixels": 45260,
+    "dti": 0.013116,
     "ci95": [
-      0.01171276985819553,
-      0.014979512780123137
+      0.011709,
+      0.014649
     ],
-    "strict_draw_blind_dcat2_dti": 0.012951930070385673,
-    "strict_draw_blind_dcat2_ci95": [
-      0.011473934985929815,
-      0.01452314220775228
-    ],
-    "strict_draw_blind_dvis2_dti": 0.11393827272442679,
-    "strict_draw_blind_dvis2_ci95": [
-      0.10088723998244961,
-      0.1273943036936718
-    ],
-    "paired_vs_H19_skeleton_dvis2": {
-      "evidence_class": "HOLDOUT-DTI",
-      "evaluator_version": "gems57-pooled-hide-v2",
-      "delta": 0.01718093936419736,
-      "ci95": [
-        0.010233864786303826,
-        0.025094479241994597
-      ],
-      "withheld_positive_pixels": 22663
-    },
-    "paired_vs_KNICKLOQO_standalone_prev_best": {
-      "evidence_class": "HOLDOUT-DTI",
-      "evaluator_version": "gems57-pooled-hide-v2",
-      "delta": 0.002507705342684687,
-      "ci95": [
-        0.0014772015730629708,
-        0.003463103285816562
-      ],
-      "withheld_positive_pixels": 22663
-    },
-    "paired_vs_COULOMBLOQO_standalone": {
-      "evidence_class": "HOLDOUT-DTI",
-      "evaluator_version": "gems57-pooled-hide-v2",
-      "delta": 0.004075283251750043,
-      "ci95": [
-        0.0029734383905217804,
-        0.005242934334007371
-      ],
-      "withheld_positive_pixels": 22663
-    },
-    "paired_vs_PROVINCETOE_piedbasin": {
-      "evidence_class": "HOLDOUT-DTI",
-      "evaluator_version": "gems57-pooled-hide-v2",
-      "delta": 0.0035847879301185576,
-      "ci95": [
-        0.0024301187503865673,
-        0.0046160243228506636
-      ],
-      "withheld_positive_pixels": 22663
-    },
-    "paired_vs_POISSONKNICK_qcal": {
-      "evidence_class": "HOLDOUT-DTI",
-      "evaluator_version": "gems57-pooled-hide-v2",
-      "delta": 0.003991096141272861,
-      "ci95": [
-        0.0027826797969123587,
-        0.005223844584165112
-      ],
-      "withheld_positive_pixels": 22663
-    },
-    "paired_vs_POISSONFLEX_opt": {
-      "evidence_class": "HOLDOUT-DTI",
-      "evaluator_version": "gems57-pooled-hide-v2",
-      "delta": 0.004471323865551633,
-      "ci95": [
-        0.003111851457575633,
-        0.005864994035775118
-      ],
-      "withheld_positive_pixels": 22663
-    },
-    "paired_vs_COULOMBDM_s45coulomb55": {
-      "evidence_class": "HOLDOUT-DTI",
-      "evaluator_version": "gems57-pooled-hide-v2",
-      "delta": 0.00547919887225656,
-      "ci95": [
-        0.004104851501545608,
-        0.006987768000744799
-      ],
-      "withheld_positive_pixels": 22663
-    },
     "paired_vs_R0": {
-      "evidence_class": "HOLDOUT-DTI",
-      "evaluator_version": "gems57-pooled-hide-v2",
-      "delta": 0.009289249980873406,
+      "delta": 0.008387,
       "ci95": [
-        0.00790598414521704,
-        0.010756398932092981
+        0.006714,
+        0.010062
       ],
-      "withheld_positive_pixels": 22663
-    }
-  },
-  "holdout_reason": "Measured by the completed LISTRIC lane; local HOLDOUT-DTI is not an organizer score and did not clear every promotion gate.",
-  "organizer_confirmed_score": null,
-  "blocking_reasons": [
-    "DUPLICATE UNDER THE LITERAL REGISTRY RULE: pinned positive support covers the entire footprint.",
-    "Matched-budget overlap is diagnostic, not permission to replace the literal rule.",
-    "The completed LISTRICLOQO lane used all 3 experiments and beats KNICKLOQO on paired holdout; literal overlap still blocks promotion.",
-    "Public dual-reading overlap is 0.690259, below the 0.70 threshold; literal dense-witness overlap is 1.0 and remains binding.",
-    "The artifact filename/run card is labelled 2026-10-26, one day after this 2026-10-25 review; chronology is unverified.",
-    "No verified submission-page receipt or current weekly-cap evidence is available."
-  ],
-  "input_sha256": {
-    "data/bridge/sample_submission.tif": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
-    "data/bridge/labels.tif": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
-    "docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif": "58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17",
-    "docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-audit.json": "eda59394e86eff3240e21ed414707c17d7abc55060f9014fa3c25ece0e544321",
-    "evidence/listric_loqo_run_card.json": "8ad96ab3274a0c090af7fdbf16148db5157913ef233cc5865da946050c971ac6",
-    "evidence/review_f23_preflight.json": "b1cc2d46b24ad3cde759953143ea3806c17f86d0f1eb72fc1581f5e34643fecb",
-    "gems/gates.py": "7bf557dd1a46b01449fb1108d5617baa5f6608d025c2c86c6ee94a7d30785bf6",
-    "scripts/render_readiness.py": "f0103a242742c655cb0f336f9d1068d6beb61cb0003620765f99ffbb477d9840"
+      "control_dti": 0.004729
+    },
+    "strict_draw_blind_dcat2_dti": 0.013116,
+    "strict_draw_blind_dcat2_ci95": [
+      0.011709,
+      0.014649
+    ]
   }
 }

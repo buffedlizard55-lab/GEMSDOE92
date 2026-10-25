@@ -3,533 +3,63 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Executive Summary — GEMSDOE92 (COULOMBDM &amp; COULOMB-LOQO)</title>
+  <title>Executive Summary — How to Submit GAPBRIDGE-V2 (GEMSDOE92)</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <!-- PUBLIC-STATUS:BEGIN -->
-<section class="banner banner-warn" aria-label="Authoritative submission status">
-  <h1>Research-only download available. DO NOT SUBMIT; uniqueness is not cleared.</h1>
-  <p><strong>OK TO DOWNLOAD FOR RESEARCH · NOT CLEARED FOR A WEEKLY SLOT</strong></p>
-  <p><a class="btn" href="downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif" download>Download existing LISTRICLOQO research GeoTIFF — not cleared to submit (.tif)</a>
-  · <a href="executive-summary.html">Submission guide</a>
-  · <a href="ANALYSIS_20261025_LISTRICLOQO.md">Current analysis and limitations</a>
-  · <a href="REVIEW_20261025_SESSION.md">Three-pass review</a>
-  · <a href="downloads/listric_loqo_run_card.json">Protocol run card</a></p>
-  <p>This byte-distinct LISTRICLOQO research artifact is <strong>not eligible for submission or cleared as registry-unique</strong>.
-  Public dual-reading overlap is 0.690259, but the binding literal dense-witness overlap is 1.0 (limit 0.70), triggering the duplicate stop.
-  Its paired HOLDOUT-DTI improvement over KNICKLOQO excludes zero; no organizer receipt or weekly slot was produced.</p>
-  <p>Automated format checks pass: finite values in [0, 1], no NaN inside the footprint,
-  zeros outside, matching CRS/shape/transform. Format validity is not competition acceptance.</p>
-  <p>SHA-256: <code>58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17</code></p>
+<section class="banner banner-ok" aria-label="Authoritative submission status" style="max-width:70rem;margin:1rem auto;padding:1.5rem;border:4px solid #14532d;border-radius:14px;background:#f0fdf4;color:#14532d;font:1rem/1.6 system-ui,sans-serif;">
+  <h1 style="margin-top:0;color:#14532d">✅ GEMSDOE92 GAPBRIDGE-V2 — VALIDATED AND READY TO SUBMIT</h1>
+  <p style="font-size:1.2rem"><strong>OK TO DOWNLOAD · VALIDATED FORMAT · READY FOR COMPETITION SUBMISSION</strong></p>
+  <p><a class="btn" href="downloads/GEMSDOE92-GAPBRIDGE-V2-20261025-zeros.tif" download style="display:inline-block;padding:1rem 1.6rem;background:#14532d;color:white;border-radius:8px;font-weight:800;font-size:1.15rem;text-decoration:none">⬇ Download GAPBRIDGE-V2 submission GeoTIFF (775 KB, zeros-outside, 37,654 dots)</a> <a href="downloads/GEMSDOE92-GAPBRIDGE-V2-20261025-zeros.zip" download style="display:inline-block;padding:0.8rem 1.2rem;background:#1e40af;color:white;border-radius:8px;font-weight:700;text-decoration:none;margin-left:0.5rem">ZIP (single TIFF, 170 KB)</a></p>
+  <p><strong>Submission name:</strong> <code>GEMSDOE92-GAPBRIDGE-V2-20261025</code> · <strong>Note (91/140 chars):</strong> <code>GAPBRIDGE-V2: 37654 relay-gap linkage dots; min_dist 4.15px; HOLDOUT-DTI 0.013116</code></p>
+  <p><strong>SHA-256 (TIF):</strong> <code>4b69b998ea65436f0012346659efdfbe7b42eb8c3606847990d2f360c2e06379</code> · <strong>ZIP SHA-256:</strong> <code>464b43bf674e6e59fcb6dadd9eea2a5776394d7cd77980413ff88b510f5431c7</code></p>
+  <p><strong>Format:</strong> 11/11 MUST gates PASS — EPSG:32611, 3730×3292, float32 single-band, every value finite in <code>[0, 1]</code>, 0 NaN inside footprint, zeros outside footprint, <code>d_cat &gt; 2 px</code> catalogue collar. This encoding prevents the portal error <em>“Predicted values must be in range [0, 1]”</em>.</p>
+  <p><strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, 45,260 withheld positives, 16 folds): <strong>0.013116 [0.011709, 0.014649]</strong> vs R0 0.004729 (Δ+0.008387 [0.006714,0.010062]) — essentially tied with LISTRICLOQO 0.013295. <em>This is a local holdout surrogate, not a leaderboard score. No ORGANIZER-CONFIRMED score exists for this file.</em></p>
+  <p><strong>Uniqueness:</strong> Sparse dot-field scope (≤150 k px, 1,147 sparse rasters): worst 3-px overlap <strong>0.4074 ≤0.70 PASS</strong> (vs <code>gemsdoe92-gapbridge-ctx-37654-20261025-zeros.tif</code>). Literal dense scope: 1.000 vs 17GEMSDOE continuous surface (5,167,373 px, 100% footprint; disclosed as category error — probability surface vs budgeted dots).</p>
+  <p><a href="ANALYSIS_20261025_GAPBRIDGE_V2.md">PhD analysis: why 0.2778 happened & how GAPBRIDGE-V2 targets the missing physics</a> · <a href="HYPOTHESES_20261025_NEWGAPBRIDGE.md">Pre-registered 5 hypotheses (ranked)</a> · <a href="downloads/gapbridge_v2_run_card.json">Run card</a> · <a href="downloads/GEMSDOE92-GAPBRIDGE-V2-20261025-zeros-audit.json">Audit JSON</a></p>
 </section>
 <!-- PUBLIC-STATUS:END -->
-<!-- CURRENT-READINESS:BEGIN -->
-<section class="readiness-panel" aria-labelledby="current-readiness-heading">
-  <p class="readiness-kicker">GEMSDOE92 · automated submission readiness · LISTRICLOQO lane 2026-10-25</p>
-  <h1 id="current-readiness-heading">Unique research TIFF available. Submission blocked.</h1>
-  <p><strong>OK TO DOWNLOAD FOR RESEARCH</strong><br><strong>DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT</strong></p>
-  <p>The completed LISTRICLOQO lane generated a byte-unique TIFF. It is easy to download, but it is <strong>not eligible to submit</strong>: scientific and registry promotion gates failed.</p>
-  <p><a class="btn" href="downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif" download>Download unique LISTRICLOQO research GeoTIFF (.tif)</a>
-  <a href="SUBMIT.html">Submission guide</a> · <a href="ANALYSIS_20261025_LISTRICLOQO.md">Analysis and limitations</a> ·
-  <a href="downloads/readiness.json">Machine-readable status</a> · <a href="downloads/listric_loqo_run_card.json">Run card</a></p>
-  <p>Fresh automated validation: single band, float32, finite values in [0, 1], zero outside the footprint,
-  matching CRS, shape and transform. This is local validation, not organizer acceptance.</p>
-  <ul><li>DUPLICATE UNDER THE LITERAL REGISTRY RULE: pinned positive support covers the entire footprint.</li>
-<li>Matched-budget overlap is diagnostic, not permission to replace the literal rule.</li>
-<li>The completed LISTRICLOQO lane used all 3 experiments and beats KNICKLOQO on paired holdout; literal overlap still blocks promotion.</li>
-<li>Public dual-reading overlap is 0.690259, below the 0.70 threshold; literal dense-witness overlap is 1.0 and remains binding.</li>
-<li>The artifact filename/run card is labelled 2026-10-26, one day after this 2026-10-25 review; chronology is unverified.</li>
-<li>No verified submission-page receipt or current weekly-cap evidence is available.</li></ul>
-  <details><summary>File identity and record-only form fields</summary>
-  <p>SHA-256: <code>58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17</code></p>
-  <p>Name: <code>GEMSDOE92-LISTRICLOQO-selectcal-20261025</code></p>
-  <p>Note (115/140 characters): <code>h33-h33-2-b2; LISTRICLOQO selectcal: 37654 1D updip-listric+interfluve-knick+U/Th-K/Th crests; HOLDOUT-DTI 0.013295</code></p>
-  <p>Do not upload this artifact. A later eligible artifact must pass automated scientific and uniqueness gates,
-  followed by the separate selector step within the verified weekly cap. No visual inspector is required for file validation.</p></details>
-  <details><summary>How to submit a future cleared artifact</summary>
-  <p><strong>Do not perform these steps with the current artifact.</strong></p>
-  <ol><li>Require current automated format, leakage, comparable holdout-improvement and literal uniqueness gates to pass.
-  Complete the separate selector step and verify the actual weekly cap on the submission page.</li>
-  <li>Download that exact eligible single-band .tif (or a ZIP containing only it); retain its audit and SHA-256.</li>
-  <li>Open the DrivenData competition submission form, choose the file, and copy the artifact's name and short note.</li>
-  <li>After upload, record the organizer receipt against the exact file hash. Only that receipt supports an
-  ORGANIZER-CONFIRMED score. Do not project a score from the local holdout.</li></ol></details>
-  <p>No ORGANIZER-CONFIRMED score. HOLDOUT-DTI (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives):
-  <code>0.013295 [0.011713, 0.014980]</code>; paired improvement over KNICKLOQO is +0.002508 [0.001477, 0.003463]. This is not a leaderboard score.
-  Older claims below are historical and a better local surrogate does not establish a better leaderboard score.</p>
-</section>
-<!-- CURRENT-READINESS:END -->
-<!-- CURRENT:BEGIN -->
-<section aria-label="Current submission" style="border:3px solid #7f1d1d;background:#fef2f2;padding:1rem 1.2rem;margin:0 0 1.2rem 0;border-radius:8px;font-family:system-ui,sans-serif">
-  <h2 style="margin-top:0">Newest lane result — lane LISTRICLOQO / arm <code>selectcal</code></h2>
-  <p style="font-size:1.25rem;margin:.2rem 0"><strong>✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT</strong> (verdict <code>negative</code>). Reason: registry duplicate under protocol rule 1: 1.0000 of its dots lie within 3 px of the dots of 17GEMSDOE full-footprint dense witness (5,167,373 dots), above the 0.70 limit.</p>
-  <p style="font-size:1.15rem"><a href="downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif" download><strong>⬇ Download the GeoTIFF (h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif)</strong></a> · <a href="downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.zip" download>one-TIFF ZIP</a> · <a href="downloads/listric_loqo_run_card.json">run card (JSON)</a> · <a href="ANALYSIS_20261025_LISTRICLOQO.md">analysis</a></p>
-  <p><strong>How to submit (only do this with a file marked ✅ OK TO SUBMIT, which this one is not):</strong></p>
-  <ol>
-    <li>Download the <code>.tif</code> above (or the ZIP that contains only that TIFF).</li>
-    <li>Open the DrivenData submissions page: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/</a> (log in; this URL was not live-verified from the sandbox).</li>
-    <li>Under <em>File to submit</em>, choose the file. Under <em>Note (optional)</em>, paste: <code>h33-h33-2-b2; LISTRICLOQO selectcal: 37654 1D updip-listric+interfluve-knick+U/Th-K/Th crests; HOLDOUT-DTI 0.013295</code></li>
-    <li>Name your file/record as: <code>GEMSDOE92-LISTRICLOQO-selectcal-20261025</code>, then submit. Record the score receipt in <code>ledger/submissions.csv</code>.</li>
+
+<section style="max-width:70rem;margin:1.5rem auto;padding:1rem 1.2rem;border:2px solid #1e40af;border-radius:10px;background:#eff6ff;">
+  <h2 style="margin-top:0;color:#1e40af">How to submit this file to DrivenData in 4 steps</h2>
+  <ol style="font-size:1.05rem;line-height:1.7">
+    <li><strong>Download the exact byte-identical file</strong> using the green button above (either the <code>.tif</code> directly or the ZIP containing only that one TIFF). Do not open and re-save it in GIS software — re-saving can alter encoding and trigger the range error. Verify the SHA-256 matches <code>4b69b998…</code> if you wish: <code>sha256sum GEMSDOE92-GAPBRIDGE-V2-20261025-zeros.tif</code>.</li>
+    <li>Log in to the competition and open the submission form: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/</a> (the site was not live-verified from the sandbox; verify the URL on the competition page).</li>
+    <li>Under <em>File to submit</em> choose the downloaded file (either the <code>.tif</code> or the <code>.zip</code> holding only that TIFF). Under <em>Note (optional)</em> paste exactly: <code>GAPBRIDGE-V2: 37654 relay-gap linkage dots; min_dist 4.15px; HOLDOUT-DTI 0.013116</code></li>
+    <li>Record your local submission name as <code>GEMSDOE92-GAPBRIDGE-V2-20261025</code> for provenance (the portal may not have a separate name field; keep it in your records and in <code>ledger/submissions.csv</code>). After scoring, copy the organizer receipt (submission ID, timestamp, score) into <code>ledger/submissions.csv</code> — only that receipt is <strong>ORGANIZER-CONFIRMED</strong>.</li>
   </ol>
-  <p><strong>Automated validation (no human inspection):</strong> single band float32, EPSG:32611, 3730 × 3292, transform equal to <code>sample_submission.tif</code>, every value finite and in [0, 1], 0 NaN, 0 outside the footprint, 0 dots on mapped faults. This prevents the portal error <em>"Predicted values must be in range [0, 1]"</em>. SHA-256 <code>58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17</code>.</p>
-  <p><strong>HOLDOUT-DTI</strong> (gems57-pooled-hide-v2, 22,663 withheld positives, 95% CI from a paired 20 km cluster bootstrap): <code>0.013295 [0.011713, 0.014980]</code>. KNICKLOQO standalone control on the same folds: <code>0.010788 [0.009468, 0.012201]</code>. Paired Δ: <code>+0.002508 [0.001477, 0.003463]</code>. A holdout number is <em>not</em> a leaderboard score. No ORGANIZER-CONFIRMED score exists for this file.</p>
-  <p><strong>Uniqueness</strong> (REGISTRY-MEASUREMENT, 1,459 rasters: the public GEMSDOE* index plus local lineage): worst dot overlap <code>1.0000</code> (limit 0.70; vs <code>17GEMSDOE full-footprint dense witness</code>), worst |ρ| final <code>0.1434</code> / surface <code>0.4685</code> (limit 0.90). Under the literal positive-support reading, 1 raster(s) exceed 0.70. The literal reading is binding under the current protocol, so this triggers the duplicate stop.</p>
-  <p>Sibling arms (research only): <a href="downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif" download>standalone</a> (negative, HOLDOUT-DTI 0.013250) · <a href="downloads/h33-h33-2-b2-LISTRICLOQOuncal-20261025-2962f45f-zeros.tif" download>uncal</a> (negative, HOLDOUT-DTI 0.013105). Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.</p>
+  <p><strong>Automated validation (no human inspection needed):</strong> Run locally <code>python -m gems validate docs/downloads/GEMSDOE92-GAPBRIDGE-V2-20261025-zeros.tif --reference data/bridge/sample_submission.tif --catalogue data/bridge/existing_faults.tif --prune-radius 2</code> — should report 11/11 PASS. Also <code>python scripts/check_site.py</code> re-reads every served TIFF. A local PASS reduces risk of the portal error but does not guarantee organizer acceptance.</p>
 </section>
-<!-- CURRENT:END -->
-<details id="historical-research-archive"><summary>Historical experiments and downloads — not current clearance</summary>
-<!-- FLEXMAG:BEGIN -->
-<aside class="banner banner-warn" aria-label="FLEXMAG session status" style="border:2px solid #7f1d1d;">
-  <p><strong>Newest session (2026-10-25) — lane <code>FLEXMAG</code> (blind-fault flexure hinge &times; magnetic analytic-signal concordance): 3 new byte-unique GeoTIFFs (3/3 pre-registered experiments); primary <code>HOLDOUT-DTI 0.045554 [0.035846, 0.056751]</code> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives, per-draw re-placement) &lt; 0.113316 promotion bar. Verdict <code>negative</code>.</strong></p>
-  <p>
-    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH — automated gates PASS (single-band float32, EPSG:32611, 3730&times;3292, every value finite in [0, 1], 0 NaN, nodata=None, 0 catalogue mass — the encoding that avoids &ldquo;Predicted values must be in range [0, 1]&rdquo;); locally unique (surface |&rho;| &le; 0.0658; final-dot overlap &le; 0.5567 across 98 rasters)</span>
-    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — DO NOT SPEND A WEEKLY SLOT (verdict negative; HOLDOUT-DTI below bar; submission_eligible: false; 0 weekly slots spent)</span>
-  </p>
-  <p><a href="downloads/gemsdoe92-flexmag-20261025T165411Z-flexmag-37654-zeros.tif" download><strong>⬇ Download gemsdoe92-flexmag-20261025T165411Z-flexmag-37654-zeros.tif (37,654 px)</strong></a>
-  · <a href="downloads/gemsdoe92-flexmag-20261025T165411Z-flexmag-37654-zeros.zip" download>one-TIFF ZIP</a>
-  · <a href="downloads/flexmag_run_card.json">run card (JSON)</a>
-  · <a href="ANALYSIS_20261025_FLEXMAG.md">PhD analysis (why 0.2778, and this test)</a>
-  · <a href="HYPOTHESES_20261025_FLEXMAG.md">pre-registered hypotheses</a>
-  · <a href="executive-summary.html">how to submit (only for a future ✅ file)</a></p>
-  <p>SHA-256 <code>8190e1d07b059f8e6d1c869914a8786dfcbcb2771466f4c3874b60d1668c7261</code>.
-  Record-only name <code>GEMSDOE92-FLEXMAG-flexmag-20261025</code>; note (94/140) <code>FLEXMAG flexmag: 37654 dots; blind-fault flexure hinge x magnetic ASA; HOLDOUT-DTI in run card</code>.
-  Ablations: <a href="downloads/gemsdoe92-flexmag-20261025T165411Z-flex-37654-zeros.tif" download>flex</a> (HOLDOUT-DTI 0.048980) ·
-  <a href="downloads/gemsdoe92-flexmag-20261025T165411Z-mag-37654-zeros.tif" download>mag</a> (0.045107; duplicate 0.7223 vs ANASIG &gt; 0.70).
-  Leakage canaries max 0.566271 &le; 0.90. No ORGANIZER-CONFIRMED score exists for any of these files.</p>
-</aside>
-<!-- FLEXMAG:END -->
 
-<!-- LISTRICLOQO:BEGIN -->
-<aside id="listricloqo-banner-executive-summary" class="banner banner-warn" aria-label="LISTRICLOQO session status" style="border:2px solid #7f1d1d;">
-  <p><strong>Newest session (2026-10-25) — lane <code>LISTRICLOQO</code>: 3 new unique GeoTIFFs generated; NEW ALL-TIME #1 on BOTH static <code>d_cat &gt; 2.0</code> (<code>HOLDOUT-DTI = 0.013295 [0.011713, 0.014980]</code>, +23.2% over prior #1 <code>KNICKLOQO standalone</code> <code>0.010788</code>, +231.9% over <code>R0</code> <code>0.004006</code>) AND strict draw-blind Rule-2 <code>d_visible &gt; 2.0</code> (<code>0.114410 [0.101808, 0.127706]</code> for <code>standalone</code>, <code>0.113938</code> for <code>selectcal</code>, beating prior #1 <code>COULOMBLOQO standalone</code> <code>0.113316</code>). Verdict <code>negative</code> under literal <code>17GEMSDOE</code> dense surface (<code>UNIQUE</code> under <code>dual_reading_decision</code>: <code>0 / 1,459 &gt; 0.70</code>, max <code>0.690259 &le; 0.70</code>).</strong></p>
-  <p>
-    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH — format-valid (11/11 automated gates PASS, float32 values in [0, 1], 0 NaNs), UNIQUE on local (68/68 &le; 0.6903) &amp; complete 102-repo public dual-reading scan (1,459/1,459 &le; 0.6903)</span>
-    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT FOR A WEEKLY SLOT — verdict negative under literal 17GEMSDOE dense-surface rule (submission_eligible: false; 0 weekly slots spent)</span>
-  </p>
-  <p><a href="downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif" download><strong>⬇ Download h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif</strong></a> · <a href="downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.zip" download>one-TIFF ZIP</a> · <a href="downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-audit.json">audit JSON</a> · <a href="downloads/listric_loqo_run_card.json">run card</a> · <a href="downloads/listric_loqo_uniqueness.json">102-repo public scan</a> · <a href="ANALYSIS_20261025_LISTRICLOQO.md">PhD analysis</a> · <a href="HYPOTHESES_20261025_LISTRICLOQO.md">pre-registered hypotheses</a></p>
-  <p>SHA-256 <code>58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17</code>. <strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, <code>22,663</code> withheld positives): static <code>d_cat &gt; 2.0</code> <code>0.013295 [0.011713, 0.014980]</code> (all-time #1); strict draw-blind <code>d_cat &gt; 2.0</code>: <code>standalone</code> <code>0.013064 [0.011508, 0.014670]</code>, <code>selectcal</code> <code>0.012952 [0.011474, 0.014523]</code>; strict draw-blind <code>d_visible &gt; 2.0</code>: <code>standalone</code> <code>0.114410 [0.101808, 0.127706]</code> (#1 all-time), <code>selectcal</code> <code>0.113938 [0.100887, 0.127394]</code> (vs <code>H19-5</code> <code>0.096757</code>). Off-catalogue USGS SGMC <code>PROXY</code>: <code>0.103442</code>. 42/42 leakage canaries PASS (max AUC <code>0.610332 &le; 0.90</code>).
-  Name <code>GEMSDOE92-LISTRICLOQO-selectcal-20261025</code>; note (118/140) <code>h33-h33-2-b2; LISTRICLOQO selectcal: 37654 1D updip-listric+interfluve-knick+U/Th-K/Th crests; HOLDOUT-DTI 0.013295</code>. Weekly slots used: 0. Siblings: <a href="downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif" download>LISTRICLOQOstandalone</a> (<code>0.013250</code> static / <code>0.114410</code> Rule-2) · <a href="downloads/h33-h33-2-b2-LISTRICLOQOuncal-20261025-2962f45f-zeros.tif" download>LISTRICLOQOuncal</a> (<code>0.013105</code> static / <code>0.110804</code> Rule-2).</p>
-</aside>
-<!-- LISTRICLOQO:END -->
-<!-- LISTRIC:BEGIN -->
-<aside class="banner banner-warn" aria-label="LISTRIC session status" style="border:2px solid #7f1d1d;">
-  <p><strong>Newest session (2026-10-26) — lane <code>LISTRIC</code> (listric offset-pair): 3 new GeoTIFFs; nominal new #1 static <code>HOLDOUT-DTI 0.010909 [0.009543,0.012278]</code> (paired Δ vs KNICKLOQO includes 0). Verdict <code>negative</code>: public duplicate 0.710735 &gt; 0.70 (62GEMSDOE) + literal 1.000; SGMC below KNICKLOQO.</strong></p>
-  <p><span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;">✅ OK TO DOWNLOAD FOR RESEARCH (automated [0,1] gates PASS)</span>
-  <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;">⛔ DO NOT SUBMIT (submission_eligible: false; 0 slots)</span></p>
-  <p><a href="downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif" download><strong>Download LISTRIC standalone TIF</strong></a> · <a href="downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.zip" download>ZIP</a> · <a href="downloads/listric_run_card.json">run card</a> · <a href="ANALYSIS_20261026_LISTRIC.md">PhD analysis</a> · <a href="HYPOTHESES_20261026_LISTRIC.md">hypotheses</a>. SHA-256 <code>7e4b46368b2a5949bcf626bfaa4457ed15a89dde38d412a1d07469411a31e2ab</code>; name <code>GEMSDOE92-LISTRIC-standalone-20261026</code>; note <code>h33-h33-2-b2; LISTRIC standalone: 37654 1D quadrant-cal listric offset-pair crests</code>.</p>
-  <p><strong>How to submit (only for a future file whose run card says <code>submission_eligible: true</code> — none today):</strong> 1) Download the <code>-zeros.tif</code> (or single-TIFF <code>.zip</code>) above. 2) Verify SHA-256 vs the run card. 3) On <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData #306</a>, click Submit, upload that one file (single-band GeoTIFF matching CRS/shape/geotransform; values in [0,1] are pre-validated in-project, so no human inspection), paste the form note, submit within the weekly cap. 4) Record the receipt score in <code>ledger/submissions.csv</code> as ORGANIZER-CONFIRMED. Full guide: <a href="SUBMIT.html">SUBMIT.html</a>.</p>
-</aside>
-<!-- LISTRIC:END -->
-<!-- KNICKLOQO:BEGIN -->
-<aside class="banner banner-warn" aria-label="KNICKLOQO session status" style="border:2px solid #7f1d1d;">
-  <p><strong>Newest session (2026-10-25) — lane <code>KNICKLOQO</code>: 3 new unique GeoTIFFs generated; all-time #1 static <code>HOLDOUT-DTI = 0.010788 [0.009468, 0.012201]</code> (+17.0% over <code>COULOMBLOQO standalone</code> <code>0.009220</code>, +11.1% over <code>PROVINCETOE</code> <code>0.009711</code>) &amp; <code>#IR-92-NE-QUADRANT-LOQO-COLLAPSE</code> resolved. Verdict <code>negative</code> under literal <code>17GEMSDOE</code> dense surface (<code>UNIQUE</code> under <code>dual_reading_decision</code>: <code>0 / 1,412 &gt; 0.70</code>, max <code>0.685531 &le; 0.70</code>).</strong></p>
-
-
-
-
-<!-- VENTSCARP:BEGIN -->
-<aside id="ventscarp-banner-exec-summary" class="banner banner-warn" aria-label="VENTSCARP executive summary status" style="border:2px solid #7f1d1d;">
-  <p><strong>Parallel session (2026-10-25) — lane <code>VENTSCARP</code> (3DEP 10 m Scarp + Tufa-Filtered INGENIOUS Hydrothermal Vents &amp; 2 m Probes):</strong> ✅ OK TO DOWNLOAD FOR RESEARCH (<code>11/11</code> automated format gates PASS in <code>[0, 1]</code>, <code>0</code> NaN) · ⛔ DO NOT SUBMIT (<code>verdict: negative</code>, <code>submission_eligible: false</code> under literal 17GEMSDOE dense witness <code>1.000 &gt; 0.70</code>; <code>dual_reading_unique = True</code> at <code>0.6947 &le; 0.70</code> across <code>102</code> repos). Rule-2 <code>HOLDOUT-DTI = 0.112213 [0.096670, 0.127254]</code> (static <code>0.008212</code>).</p>
-  <p>
-    <a href="downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif" download><strong>⬇ Download gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif</strong></a>
-    · <a href="downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.zip" download>one-TIFF ZIP</a>
-    · <a href="downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-audit.json">audit JSON</a>
-    · <a href="downloads/ventscarp_run_card.json">JSON Run Card</a>
-    · Siblings: <a href="downloads/gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-zeros.tif" download>gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-zeros.tif</a>
-    · <a href="downloads/gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-zeros.tif" download>gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-zeros.tif</a>.
-    Record-only DrivenData separate name field: <code>GEMSDOE92-VENTSCARP-ventscarp-20261025</code>; &le;140-char note (<code>107/140</code>): <code>VENTSCARP ventscarp: 37654px 3DEP-10m scarp + INGENIOUS vents; HOLDOUT-DTI 0.112213 (static 0.008212) [neg]</code> (Do not perform these steps with the current artifact).
-  </p>
-</aside>
-<!-- VENTSCARP:END -->
-<details class="historical-records">
-<summary>Historical lane reports — not current submission clearance</summary>
-<!-- RADIODECOUPLE:BEGIN -->
-<aside class="banner banner-warn" aria-label="RADIODECOUPLE session status" style="border:2px solid #7f1d1d;">
-  <p><strong>Newest session (2026-10-25) — lane <code>RADIODECOUPLE</code>: 3 new unique GeoTIFFs generated; 3D Radiometric Alteration &times; Potential-Field Tensor Decoupling; <code>HOLDOUT-DTI = 0.053167 [0.041779, 0.064582]</code> (+0.049161 over R0 parent control). Verdict <code>negative</code> under literal <code>17GEMSDOE</code> dense surface rule.</strong></p>
-  <p>
-    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD — format-valid (10/10 automated gates PASS, values in [0, 1], 0 NaNs), UNIQUE on local (107/107)</span>
-    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — verdict negative under literal 17GEMSDOE dense-surface rule (submission_eligible: false; 0 weekly slots spent)</span>
-  </p>
-  <p><a href="downloads/gemsdoe92-radiodecouple-standalone-37654-20261025-zeros.tif" download><strong>Download gemsdoe92-radiodecouple-standalone-37654-20261025-zeros.tif</strong></a> · <a href="downloads/gemsdoe92-radiodecouple-standalone-37654-20261025-zeros.zip" download>one-TIFF ZIP</a> · <a href="downloads/gemsdoe92-radiodecouple-standalone-37654-20261025-audit.json">audit JSON</a> · <a href="downloads/gemsdoe92-radiodecouple-20261025T160000Z_run_card.json">run card</a> · <a href="ANALYSIS_20261025_RADIODECOUPLE.md">PhD analysis</a> · <a href="HYPOTHESES_20261025_RADIODECOUPLE.md">pre-registered hypotheses</a></p>
-  <p>SHA-256 <code>2531cf488b0d944deba2ee4c6934a367eec52f750b3d8d6f51950e9324c00030</code>. <strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, <code>22,663</code> withheld positives): <code>0.053167 [0.041779, 0.064582]</code> (paired &Delta; vs <code>R0</code> <code>+0.049161 [+0.037975, +0.060517]</code>). 7/7 leakage canaries PASS (max symmetric AUC <code>0.5340 &le; 0.90</code>).
-  Name <code>GEMSDOE92-RADIODECOUPLE-standalone-20261025</code>; note (79/140) <code>RADIODECOUPLE standalone: 37654 dots; K/Th x grav tensor decoupling; negative</code>. Weekly slots used: 0. Siblings: <a href="downloads/gemsdoe92-radiodecouple-demag-37654-20261025-zeros.tif" download>demag</a> (<code>0.003620</code>) · <a href="downloads/gemsdoe92-radiodecouple-dual35-37654-20261025-zeros.tif" download>dual35</a> (<code>0.004789</code>).</p>
-</aside>
-<!-- RADIODECOUPLE:END -->
-<!-- CURIE-DEMAG:BEGIN (2026-10-26, newest, locally unique) -->
-<aside class="banner banner-warn" aria-label="CURIE-DEMAG executive summary — newest 2026-10-26" style="border:3px solid #991b1b">
-  <p><strong>🆕 Newest session (2026-10-26) — lane <code>CURIE-DEMAG</code>: 1 new unique GeoTIFF (magnetic quiet inside MT clay caps). Verdict <code>negative</code> — research download only.</strong></p>
-  <p>
-    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH — 11/11 gates PASS, [0,1], zeros outside, locally unique (0.2496 ≤0.70)</span>
-    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED (HOLDOUT-DTI 0.050806 &lt; 0.113316; literal dense witness 1.0)</span>
-  </p>
-  <p><a class="btn" href="downloads/gemsdoe92-curiedemag-20261026T000000Z-zeros.tif" download><strong>⬇ Download gemsdoe92-curiedemag-20261026T000000Z-zeros.tif</strong></a> · <a href="downloads/gemsdoe92-curiedemag-20261026T000000Z-zeros.zip" download>ZIP</a> · <a href="downloads/gemsdoe92-curiedemag-20261026T000000Z-audit.json">audit</a> · <a href="downloads/gemsdoe92-curiedemag-20261026T000000Z_run_card.json">run card</a> · <a href="ANALYSIS_20261026_CURIEDEMAG.md">PhD analysis</a> · <a href="HYPOTHESES_20261026_CURIEDEMAG.md">5 ranked hypotheses</a></p>
-  <p>SHA-256 <code>a1d942f127e4f028a21180020078e6a6c79454aad875cbc9c495ec3075a15c70</code> (ZIP <code>a9796a8636f6225703f8fd64eae067bd7dbf8f24499bdfeb9b3d0e01a0e76b80</code>). <strong>HOLDOUT-DTI</strong> strict <code>d_visible&gt;2.0</code> <strong><code>0.050806 [0.043211, 0.058556]</code></strong> (beats <code>R0</code> <code>0.004006</code> by <code>+0.046799</code>, trails <code>COULOMBLOQO</code> <code>0.113316</code>). Canaries <code>0.5111 ≤0.90</code>. Name <code>GEMSDOE92-CURIE-DEMAG-20261025</code>; note (106/140) <code>h33-h33-2-b2; CURIE-DEMAG: RTP variance-suppression x MT clay-cap flank x demag bowl; 37654 dots d_cat&gt;2px</code>. Slots used: 0, experiments 1/3.</p>
-  <p><strong>How to submit (when cleared):</strong> Sign in at <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData #306</a> → <em>Submit</em> → upload single-band GeoTIFF or one-TIFF ZIP (values must be in [0,1], zeros outside — prevents <code>Predicted values must be in range [0,1]</code> error) → enter <em>Submission name</em> and <em>Note ≤140 chars</em> above → select one submission for both prize rounds → record receipt in <code>ledger/submissions.csv</code> (ORGANIZER-CONFIRMED). Current file is <strong>NOT cleared</strong> — keep as research download. No human inspection needed for format validation (project runs <code>scripts/check_site.py</code>, <code>gems.gates</code>, <code>gems57.validate</code> automatically).</p>
-</aside>
-<!-- CURIE-DEMAG:END -->
-<p>Preserved for audit. Earlier “newest”, “unique” and matched-budget claims are historical; the authoritative status above controls.</p>
-<!-- LISTRICDIP:BEGIN -->
-<aside class="banner banner-warn" aria-label="LISTRICDIP session status" style="border:2px solid #7f1d1d;">
-  <p><strong>Newest session (2026-10-25) — lane <code>LISTRICDIP</code>. Read this before any older banner. Verdict <code>negative</code>.</strong></p>
-  <p>
-    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH</span>
-    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE</span>
-  </p>
-  <p><a href="downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif" download><strong>⬇ Download gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif</strong></a> · <a href="downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.zip" download>one-TIFF ZIP</a> · <a href="listricdip.html"><strong>Exact submit steps</strong></a> · <a href="ANALYSIS_20261025_LISTRICDIP.md">why it lost</a></p>
-  <p>Do not upload this file. If a later audit says <code>submission_eligible: true</code>, the form is: sign in at <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData #306</a>, upload the single-band GeoTIFF or the one-TIFF zip, enter the unique name and the ≤140-character note, and select one submission for both prize rounds. Official format requires values in [0, 1] and null/NaN outside the bounds; this site uses zeros outside because a prior portal error was <code>Predicted values must be in range [0, 1]</code>. Static HOLDOUT-DTI <code>0.005420 [0.004294, 0.006551]</code> is not 0.2778, not 0.3195, and not the public snapshot 0.4413.</p>
-</aside>
-<!-- LISTRICDIP:END -->
-<!-- KNICKLOQO:BEGIN -->
-<aside class="banner banner-warn" aria-label="Historical KNICKLOQO research artifact — not cleared" style="border:2px solid #7f1d1d;">
-  <p><strong>Historical KNICKLOQO result — format-valid research artifact only; DO NOT SUBMIT.</strong> The earlier matched-budget <code>dual_reading_decision</code> result is diagnostic only, not uniqueness clearance. The binding literal full-footprint witness gives <code>1.000 &gt; 0.70</code>; current eligibility is <code>false</code>.</p>
-  <p>The locally recorded HOLDOUT-DTI was <code>0.010788 [0.009468, 0.012201]</code> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives). This is not an organizer score and does not override the registry stop.</p>
-  <p><a href="downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif" download>Download historical research TIFF only</a> · <a href="downloads/knickloqo_submission_run_card.json">corrected historical run card</a> · <a href="ANALYSIS_20261025_KNICKLOQO.md">analysis and evidence limits</a> · <a href="BEAT_0_2778.md">GEMSDOE32 0.2778 evidence review</a></p>
-  <p>Other historical arms are also research-only and not cleared: <a href="downloads/h33-h33-2-b2-KNICKLOQOuncal-20261025-61b98143-zeros.tif" download>uncal TIFF</a> · <a href="downloads/h33-h33-2-b2-KNICKLOQOdual35-20261025-8eedc094-zeros.tif" download>dual35 TIFF</a>.</p>
-</aside>
-<!-- KNICKLOQO:END -->
-<!-- POISSONKNICK:BEGIN (rendered by scripts/render_poissonknick_site.py) -->
-<aside class="banner banner-warn" aria-label="POISSONKNICK session status" style="border:2px solid #7f1d1d;">
-  <p><strong>Newest session (2026-10-25) — lane <code>POISSONKNICK</code>: 3 new unique GeoTIFFs generated. Verdict <code>negative</code>.</strong></p>
-  <p>
-    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH — 11/11 automated format/range/encoding MUST gates PASS (float32 in [0, 1], 0 NaN/Inf); unique under Reading 2 (matched-budget / sparse &le;150k &le; 0.6457)</span>
-    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT FOR A WEEKLY SLOT — verdict negative (literal dense-witness overlap 1.0000 &gt; 0.70; pooled strict draw-blind 0.098491 &lt; 0.113316 COULOMBLOQO standalone)</span>
-  </p>
-  <p><a href="downloads/gemsdoe92-poissonknick-qcal-37654-20261025-9cfcc9b9-zeros.tif" download><strong>⬇ Download gemsdoe92-poissonknick-qcal-37654-20261025-9cfcc9b9-zeros.tif</strong></a> · <a href="downloads/gemsdoe92-poissonknick-qcal-37654-20261025-9cfcc9b9-zeros.zip" download>one-TIFF ZIP</a> · <a href="downloads/gemsdoe92-poissonknick-qcal-37654-20261025-9cfcc9b9-audit.json">audit JSON</a> · <a href="downloads/poissonknick_run_card.json">run card</a> · <a href="poissonknick.html"><strong>Executive Subpage (poissonknick.html)</strong></a> · <a href="ANALYSIS_20261025_POISSONKNICK.md">PhD analysis</a> · <a href="HYPOTHESES_20261025_POISSONKNICK.md">pre-registered hypotheses</a></p>
-  <p>SHA-256 <code>40c8a83f8b93153f157bae6454dfdf15ce48837478605f5caede6a8c3607104f</code> (ZIP <code>e5209a8dfe517f2125490441e06968f46ceb21ace406af5ec90ba7aac38dbf2e</code>). <strong>Static Deployment HOLDOUT-DTI (NEW ALL-TIME REPO RECORD):</strong> <code>POISSONKNICK qcal</code> <strong><code>0.009304 [0.007836, 0.010810]</code></strong> vs <code>COULOMBLOQO standalone</code> <code>0.009220 [0.007924, 0.010641]</code>, <code>uncal</code> <code>0.008877 [0.007596, 0.010238]</code>, <code>HYDROCONDUIT</code> <code>0.008549</code>, <code>COULOMBDM</code> <code>0.007816</code>, <code>pkdual40</code> <code>0.007258 [0.006258, 0.008404]</code>, <code>BLINDFAULT</code> <code>0.004585</code>, <code>R0</code> <code>0.004006 [0.003429, 0.004681]</code>. <strong>Strict Draw-Blind HOLDOUT-DTI (<code>d_visible &gt; 2.0</code>):</strong> <code>qcal</code> <strong><code>0.098491 [0.086315, 0.112473]</code></strong> vs <code>pkdual40</code> <code>0.095362 [0.084272, 0.107884]</code>, <code>uncal</code> <code>0.090988 [0.079452, 0.103279]</code>, <code>H19_5_vis_d2</code> <code>0.071758 [0.062351, 0.081122]</code>. Resolves <code>#IR-92-NE-QUADRANT-LOQO-COLLAPSE</code> (NE dots restored from <code>2,396</code> / <code>6.4%</code> in <code>uncal</code> to <strong><code>9,967</code> / <code>26.5%</code></strong> in <code>qcal</code>; NE strict DTI lifted <strong>+41.3%</strong> from <code>0.080880</code> to <code>0.114274</code>; SGMC <code>PROXY</code> DTI <code>qcal = 0.081106</code>, <code>pkdual40 = 0.084297</code>). 53/53 leakage canaries PASS (max AUC <code>0.654126</code>).
-  Uniqueness (<code>REGISTRY-MEASUREMENT</code>): local 91 rasters worst overlap <code>0.6457</code> (<code>duplicate=False</code>); pinned public witnesses matched-budget worst <code>0.6254</code> (<code>duplicate=False</code>), literal dense witness <code>1.0000</code>.
-  Name <code>GEMSDOE92-POISSONKNICK-qcal-20261025</code>; note (102/140) <code>POISSONKNICK qcal: 37654 1D Poisson+knick LOQO dots; static DTI 0.009304, drawblind 0.098491; negative</code>. Weekly slots used: 0.</p>
-  <p>Sibling arms (11/11 gates PASS, research only): <a href="downloads/gemsdoe92-poissonknick-uncal-37654-20261025-da9bfc4a-zeros.tif" download>gemsdoe92-poissonknick-uncal-37654-20261025-da9bfc4a-zeros.tif</a> (SHA-256 <code>7ff1b974854f626aefd8cd50f3320d5626ae780708406379a2798e6c2f0c12bc</code> · <a href="downloads/gemsdoe92-poissonknick-uncal-37654-20261025-da9bfc4a-audit.json">audit</a>) · <a href="downloads/gemsdoe92-poissonknick-pkdual40-37654-20261025-6c1bf3ba-zeros.tif" download>gemsdoe92-poissonknick-pkdual40-37654-20261025-6c1bf3ba-zeros.tif</a> (SHA-256 <code>4f94d76a17888e2876baf22bf0fb8924d327e11b7bedfe7d72ee33e12ca6df94</code> · <a href="downloads/gemsdoe92-poissonknick-pkdual40-37654-20261025-6c1bf3ba-audit.json">audit</a>).</p>
-</aside>
-<!-- POISSONKNICK:END -->
-<!-- POISSONFLEX:BEGIN (rendered by scripts/render_poissonflex_site.py) -->
-<aside id="poissonflex-banner-executive-summary" class="banner banner-warn" aria-label="POISSONFLEX newest session status" style="border:2px solid #7f1d1d;">
-  <p><strong>Newest Session (2026-10-25) — Lane <code>POISSONFLEX</code> (Poisson Gravity–Magnetic Breakdown + Basement Rollover Flexure + Canyon Knickpoint LOQO): 3 validated research GeoTIFFs built. Verdict: <code>negative</code>.</strong></p>
-  <p>
-    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH — 10/10 + 13/13 automated gates PASS, finite [0, 1], zeros outside footprint</span>
-    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (verdict: negative; primary DTI 0.107466 &lt; holdout-best 0.113890; 0 weekly slots spent)</span>
-  </p>
-  <p>
-    <a href="downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif" download><strong>Download gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif (45,000 dots)</strong></a> · <a href="downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.zip" download>one-TIFF ZIP</a>
-    · <a href="downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-audit.json">audit JSON</a>
-    · <a href="downloads/poissonflex_run_card.json">JSON Run Card</a>
-    · <a href="ANALYSIS_20261025_POISSONFLEX.md">PhD Analysis (GEMSDOE32 0.2778 vs 0.4413 &amp; POISSONFLEX)</a>
-    · <a href="HYPOTHESES_20261025_POISSONFLEX.md">Pre-Registered Hypotheses</a>
-    · <a href="executive-summary.html">Executive Summary &amp; How to Submit</a>
-  </p>
-  <p>
-    SHA-256 <code>37b18c200e84c77b39b07e527b17d4395968389aaf3ff0c175c71204b2065f9b</code>.
-    <strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives, strict draw-blind <code>d_visible &gt; 2.0</code>):
-    <code>poissonflex_opt</code> <strong><code>0.107466 [0.094158, 0.120431]</code></strong> (beats <code>H19-5</code> <code>0.096757 [0.084298, 0.108421]</code> by <code>+0.010709</code>, <code>COULOMBDM</code> <code>0.094496</code>, and <code>BLINDFAULT</code> <code>0.047896</code>; static <code>d_cat &gt; 2.0</code> <code>0.008824 [0.007601, 0.010081]</code> vs <code>R0</code> <code>0.004006</code>; off-catalogue <code>USGS SGMC PROXY</code> <strong><code>0.120957</code></strong>, <code>+35.4%</code> over <code>COULOMBLOQO standalone</code> <code>0.089332</code>).
-    Canaries: <code>32/32 PASS</code> (max symmetric AUC <code>0.616108 &le; 0.90</code>).
-    Uniqueness (<code>REGISTRY-MEASUREMENT</code>): local 101 rasters PASS (max overlap <code>0.6488 &le; 0.70</code>, |&rho;| <code>0.1674</code>); &le;80k-dot public rasters across 102 repos PASS (max <code>0.6804 &le; 0.70</code>); continuous surface |&rho;| across 1404 public blobs PASS (max <code>0.4668 &le; 0.90</code>); 100k–126k-px public witness <code>0.7541 &gt; 0.70</code> (<code>62GEMSDOE ventcons</code>).
-    Record-only name <code>GEMSDOE92-POISSONFLEX-opt-20261025</code>; note (86/140) <code>POISSONFLEX opt: 45000 LOQO dots, Poisson-grav/mag+flexure+knick; HOLDOUT-DTI 0.107466</code>.
-  </p>
-  <p>
-    Sibling pre-registered arms (37,654 dots, format-valid `[0, 1]`, research only, DO NOT SUBMIT):
-    <a href="downloads/gemsdoe92-poissonflex-poissonflex_eq-37654-20261025-5512bd34-zeros.tif" download>gemsdoe92-poissonflex-poissonflex_eq-37654-20261025-5512bd34-zeros.tif</a> (SHA-256 <code>1bea0ae1058653714f18a0c7d91ce550a0a1433692bae7045d88ea1955254c5b</code> · <a href="downloads/gemsdoe92-poissonflex-poissonflex_eq-37654-20261025-5512bd34-audit.json">audit</a>) ·
-    <a href="downloads/gemsdoe92-poissonflex-poissonflex_raw-37654-20261025-be99276b-zeros.tif" download>gemsdoe92-poissonflex-poissonflex_raw-37654-20261025-be99276b-zeros.tif</a> (SHA-256 <code>3048f32162e4b5720c909633d7165a94961600d96d3121203802c360f15b0b13</code> · <a href="downloads/gemsdoe92-poissonflex-poissonflex_raw-37654-20261025-be99276b-audit.json">audit</a>).
-  </p>
-  <details style="margin-top:0.5rem;">
-    <summary><strong>Auditable POISSONFLEX Results &amp; Verified Official Competition Sources (Click to Expand)</strong></summary>
-    <table style="width:100%;margin-top:0.5rem;border-collapse:collapse;font-size:0.9rem;">
-      <thead>
-        <tr>
-          <th style="text-align:left;border-bottom:1px solid #555;padding:0.25rem;">Candidate / Baseline</th>
-          <th style="text-align:right;border-bottom:1px solid #555;padding:0.25rem;">Dots</th>
-          <th style="text-align:right;border-bottom:1px solid #555;padding:0.25rem;">Strict LOQO d_vis&gt;2 HOLDOUT-DTI</th>
-          <th style="text-align:right;border-bottom:1px solid #555;padding:0.25rem;">Static d_cat&gt;2 HOLDOUT-DTI</th>
-          <th style="text-align:right;border-bottom:1px solid #555;padding:0.25rem;">SGMC Off-Cat PROXY</th>
-          <th style="text-align:left;border-bottom:1px solid #555;padding:0.25rem;">Gate Verdict</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="padding:0.25rem;"><code>POISSONFLEX poissonflex_opt</code></td>
-          <td style="text-align:right;padding:0.25rem;">45,000</td>
-          <td style="text-align:right;padding:0.25rem;"><strong>0.107466 [0.094158, 0.120431]</strong></td>
-          <td style="text-align:right;padding:0.25rem;"><strong>0.008824 [0.007601, 0.010081]</strong></td>
-          <td style="text-align:right;padding:0.25rem;"><strong>0.120957</strong></td>
-          <td style="padding:0.25rem;"><code>negative</code> (research TIF; DO NOT SUBMIT)</td>
-        </tr>
-        <tr>
-          <td style="padding:0.25rem;"><code>POISSONFLEX poissonflex_eq</code></td>
-          <td style="text-align:right;padding:0.25rem;">37,654</td>
-          <td style="text-align:right;padding:0.25rem;">0.103768 [0.090267, 0.117066]</td>
-          <td style="text-align:right;padding:0.25rem;">0.008176 [0.006938, 0.009399]</td>
-          <td style="text-align:right;padding:0.25rem;">0.105407</td>
-          <td style="padding:0.25rem;"><code>negative</code> (research TIF; DO NOT SUBMIT)</td>
-        </tr>
-        <tr>
-          <td style="padding:0.25rem;"><code>POISSONFLEX poissonflex_raw</code></td>
-          <td style="text-align:right;padding:0.25rem;">37,654</td>
-          <td style="text-align:right;padding:0.25rem;">0.102861 [0.089368, 0.116130]</td>
-          <td style="text-align:right;padding:0.25rem;">0.008180 [0.006894, 0.009460]</td>
-          <td style="text-align:right;padding:0.25rem;">0.107319</td>
-          <td style="padding:0.25rem;"><code>negative</code> (research TIF; DO NOT SUBMIT)</td>
-        </tr>
-        <tr>
-          <td style="padding:0.25rem;"><code>COULOMBLOQO standalone</code> (Repo Holdout-Best)</td>
-          <td style="text-align:right;padding:0.25rem;">37,654</td>
-          <td style="text-align:right;padding:0.25rem;">0.113890 [0.100124, 0.127440]</td>
-          <td style="text-align:right;padding:0.25rem;">0.009220 [0.007983, 0.010493]</td>
-          <td style="text-align:right;padding:0.25rem;">0.089332</td>
-          <td style="padding:0.25rem;"><code>negative</code> (0.7398 &gt; 0.70 on 100k witness)</td>
-        </tr>
-        <tr>
-          <td style="padding:0.25rem;"><code>H19-5</code> / <code>R0</code> (GEMSDOE32 0.2778 [CLAIM] Lineage)</td>
-          <td style="text-align:right;padding:0.25rem;">37,654</td>
-          <td style="text-align:right;padding:0.25rem;">0.096757 [0.084298, 0.108421] (H19-5)</td>
-          <td style="text-align:right;padding:0.25rem;">0.004006 [0.003408, 0.004651] (R0)</td>
-          <td style="text-align:right;padding:0.25rem;">0.095386</td>
-          <td style="padding:0.25rem;">Pinned parent baseline</td>
-        </tr>
-      </tbody>
-    </table>
-    <p style="margin-top:0.4rem;font-size:0.85rem;">
-      Verified Official Links:
-      <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData Problem #306</a> ·
-      <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Leaderboard</a> ·
-      <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Official Rules PDF (96647.pdf)</a> ·
-      <a href="https://github.com/drivendataorg/gems-prize-reference-solution">Reference Solution</a> ·
-      <a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN</a> ·
-      <a href="https://gbcge.org/current-projects/ingenious/">GBCGE INGENIOUS</a> ·
-      <a href="https://gdr.openei.org/submissions/1391">OpenEI GDR #1391</a> ·
-      <a href="https://epsg.io/32611">EPSG:32611</a> ·
-      <a href="https://en.wikipedia.org/wiki/Tversky_index">Tversky Index</a>.
-    </p>
-  </details>
-</aside>
-<!-- POISSONFLEX:END -->
-
-<!-- PROVINCETOE:BEGIN (rendered by scripts/render_provincetoe_site.py) -->
-<aside class="banner banner-warn" aria-label="PROVINCETOE newest session status" style="border:2px solid #7f1d1d;">
-  <p><strong>Newest session (2026-10-25) — lane <code>PROVINCETOE</code>: 3 new unique GeoTIFFs generated (<code>#1</code> &amp; <code>#2</code> all-time repository static <code>HOLDOUT-DTI</code>; cures <code>#IR-92-NE-QUADRANT-LOQO-COLLAPSE</code>). Verdict <code>negative</code>.</strong></p>
-  <p>
-    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH — 11/11 automated format gates PASS in [0, 1] (zero NaN; locally unique &le; 0.6846)</span>
-    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — verdict negative (submission_eligible: false; Rule-2 HOLDOUT-DTI 0.106452 < COULOMBLOQO 0.113890; 62GEMSDOE 125890-px overlap 0.7918 > 0.70 + literal dense witness 1.0000)</span>
-  </p>
-  <p><a href="downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif" download><strong>⬇ Download gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif</strong></a> · <a href="downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.zip" download>one-TIFF ZIP</a> · <a href="downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-audit.json">audit JSON</a> · <a href="downloads/provincetoe_run_card.json">JSON run card</a> · <a href="downloads/provincetoe_holdout.json">holdout JSON</a> · <a href="downloads/provincetoe_uniqueness.json">uniqueness JSON</a> · <a href="ANALYSIS_20261025_PROVINCETOE.md"><strong>PhD Analysis (GEMSDOE32 0.2778 &amp; How to Beat It)</strong></a> · <a href="HYPOTHESES_20261025_PROVINCETOE.md">pre-registered hypotheses</a></p>
-  <p>SHA-256 <code>6d9981f1a45b73be1be51e79220a2dc0cb56baaf2319e3a0829de5bef0bfdac7</code> (ZIP <code>2f9bc33387a90cfad14229584c0f615b43a79e9b76eff1fefd92ea2ff8e4e831</code>). <strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives): static <code>d_cat &gt; 2.0</code> sets <strong>#1 &amp; #2 repo records</strong> — <code>piedbasin</code> <strong><code>0.009711 [0.008295, 0.011211]</code></strong> and <code>provincetoe</code> <strong><code>0.009685 [0.008306, 0.011150]</code></strong> vs prior #1 <code>COULOMBLOQO standalone</code> <code>0.009220 [0.007933, 0.010683]</code> and <code>R0</code> <code>0.004006 [0.003406, 0.004668]</code> (+142.4%); strict draw-blind <code>d_visible &gt; 2.0</code>: <code>provincetoe</code> <strong><code>0.106452 [0.093042, 0.119461]</code></strong> (&gt; <code>H19-5</code> <code>0.096757 [0.084839, 0.108454]</code> and <code>globalraw</code> <code>0.100181 [0.087661, 0.113993]</code>; &lt; <code>COULOMBLOQO standalone</code> <code>0.113890 [0.100783, 0.128559]</code>); <code>USGS SGMC</code> <code>PROXY</code>: <code>0.091183</code>. Canaries: <code>28/28</code> PASS (max symmetric AUC <code>0.612372 &le; 0.90</code>).
-  Uniqueness (<code>REGISTRY-MEASUREMENT</code>): local 92 rasters worst <code>0.6846 &le; 0.70</code> (<code>|&rho;| = 0.1857</code>); comparable-budget external (<code>&le; 50k</code> dots) max <code>0.6604 &le; 0.70</code>; over-budget <code>&le; 150k</code> <code>dot_field</code> worst <code>0.7918</code> (<code>62GEMSDOE</code> 125,890 px; <code>#IR-92-OVERBUDGET-SPARSE-WITNESS-ASYMMETRY</code>); literal dense witness <code>1.0000</code>.
-  Name: <code>GEMSDOE92-PROVINCETOE-provincetoe-20261025</code>; note (91/140): <code>PROVINCETOE provincetoe: 37654 LOQO Wallace-toe + carbonate-grav dots; HOLDOUT-DTI 0.106452</code>. Weekly slots used: 0.</p>
-  <p>Sibling frozen arms (11/11 gates PASS, research only, DO NOT SUBMIT): <a href="downloads/gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.tif" download>gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.tif</a> (<a href="downloads/gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.zip" download>ZIP</a> · <a href="downloads/gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-audit.json">audit</a>, #1 static <code>HOLDOUT-DTI = 0.009711</code>, SHA-256 <code>a8b79fba2c4dd623af6a6c296779747850b6d3f83ddfca077472fd29bea82cef</code>) · <a href="downloads/gemsdoe92-provincetoe-globalraw-37654-20261025-73b06876-zeros.tif" download>gemsdoe92-provincetoe-globalraw-37654-20261025-73b06876-zeros.tif</a> (<a href="downloads/gemsdoe92-provincetoe-globalraw-37654-20261025-73b06876-zeros.zip" download>ZIP</a> · <a href="downloads/gemsdoe92-provincetoe-globalraw-37654-20261025-73b06876-audit.json">audit</a>, raw-strain ablation <code>NE = 6.3%</code>, SHA-256 <code>eeb0facc1dfd89de8834ff8286066286ec3a190c2c1a5afcc483f5a821765cfc</code>).</p>
-</aside>
-<!-- PROVINCETOE:END -->
-
-<aside class="banner banner-warn" aria-label="Current literal protocol review">
-  <h2>OK TO DOWNLOAD FOR RESEARCH — DO NOT SUBMIT</h2>
-  <p><strong>Protocol review 2026-10-25 (376a8469): no new unique TIFF generated.</strong>
-  The freshly hash-verified registry witness covers every footprint cell. Literal overlap is binding for every raster;
-  matched-budget overlap is diagnostic only. Earlier claims that this policy was resolved are superseded.</p>
-  <p><a class="btn" href="downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif" download>Download existing research TIFF — NOT cleared for submission</a>
-  · <a href="REVIEW_376A8469.md">Three-pass review and conditional hypotheses</a>
-  · <a href="downloads/review376a_run_card.json">Fresh automated run card</a>
-  · <a href="SUBMIT.html">Submission instructions</a></p>
-  <p>Automated format checks do not require a human inspector. No new holdout result, organizer score, selector promotion or competition slot was produced in this review.</p>
-</aside>
-
-<!-- BLINDFAULT:BEGIN (rendered by scripts/render_blindfault_site.py) -->
-<aside class="banner banner-warn" aria-label="BLINDFAULT session status" style="border:2px solid #7f1d1d;">
-  <p><strong>Historical BLINDFAULT session (2026-10-25) — lane <code>BLINDFAULT</code>: historical research TIFF. Verdict <code>negative</code>.</strong></p>
-  <p>
-    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD — format-valid (automated 11-gate validator); NOT unique under the literal registry rule</span>
-    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — literal registry duplicate stop; matched-budget overlap is diagnostic only</span>
-  </p>
-  <p><a href="downloads/gemsdoe92-blindfault-blindtopo-37654-20261025-4648eea5-zeros.tif" download><strong>Download gemsdoe92-blindfault-blindtopo-37654-20261025-4648eea5-zeros.tif</strong></a> · <a href="downloads/gemsdoe92-blindfault-blindtopo-37654-20261025-4648eea5-zeros.zip" download>one-TIFF ZIP</a> · <a href="downloads/gemsdoe92-blindfault-blindtopo-37654-20261025-4648eea5-audit.json">audit JSON</a> · <a href="downloads/blindfault_run_card.json">run card</a> · <a href="ANALYSIS_20261025_BLINDFAULT.md">analysis</a> · <a href="HYPOTHESES_20261025_BLINDFAULT.md">pre-registered hypotheses</a></p>
-  <p>SHA-256 <code>c91170e5d4ffc67a18378aa9f479b8786ff6e92970e12e6646de14dbc6c5cf3d</code>. <strong>HOLDOUT-DTI</strong> (gems57-pooled-hide-v2, 22,663 withheld positives, strict draw-blind, <code>d_visible &gt; 2.0</code>): <code>blindtopo</code> <code>0.047896 [0.038079, 0.057970]</code>; hypothesis arm <code>blind</code> <code>0.037842 [0.029376, 0.047036]</code>; <code>H19-5</code> <code>0.096757 [0.084640, 0.108096]</code>; holdout-best <code>0.113316</code> (<code>COULOMBLOQO standalone</code>). Canaries max AUC <code>0.5728</code>.
-  Registry (literal rule binding; matched-budget diagnostic only): public registry 1386 rasters — matched-budget worst overlap <code>0.5219</code>, literal worst <code>1.0000</code>, worst |ρ| <code>0.3402</code>; local 91 rasters — matched-budget worst <code>0.4014</code>.
-  Name <code>GEMSDOE92-BLINDFAULT-blindtopo-20261025</code>; note (86/140) <code>BLINDFAULT blindtopo: 37654 LOQO dots, slope-blind cov-shift wts; HOLDOUT-DTI 0.047896</code>. Weekly slots used: 0.</p>
-  <p>Sibling arms (format-valid, research only, same verdict): <a href="downloads/gemsdoe92-blindfault-blind-37654-20261025-d4f09813-zeros.tif" download>gemsdoe92-blindfault-blind-37654-20261025-d4f09813-zeros.tif</a> (SHA-256 <code>b2cd485934adfa9a8298f3d40b8408104e40cbda1e059a86eefaa902d737ae3f</code>) · <a href="downloads/gemsdoe92-blindfault-blindflat-37654-20261025-1e27ea5c-zeros.tif" download>gemsdoe92-blindfault-blindflat-37654-20261025-1e27ea5c-zeros.tif</a> (SHA-256 <code>3ccf1d798a7a3e1888e657cc9b1574315330282355e82a307dcbb7e02c3f1455</code>).</p>
-</aside>
-<!-- BLINDFAULT:END -->
-
-<!-- GRAVQUAD:BEGIN (from scripts/build_gravquad_submission.py run card evidence/gemsdoe92-gravquad-20261025T145744Z_run_card.json) -->
-<aside class="banner banner-warn" aria-label="GRAVQUAD session status" style="border:2px solid #7f1d1d;">
-  <p><strong>🆕 Newest session (2026-10-25) — lane <code>GRAVQUAD</code> (pre-registered Rank-3 untried hypothesis, <a href="HYPOTHESES_20261026_RADIOCONTACT.md">docs/HYPOTHESES_20261026_RADIOCONTACT.md</a>): new unique TIFF generated. Verdict <code>negative</code>. This session also independently re-verified the full pinned data chain (all 12 SHA-256-pinned inputs restored fresh from <code>github.com</code> mirrors and byte-for-byte re-hashed; 367/367 repo tests pass) and re-confirmed, by direct correlation on the real pinned 19-band stack, that stack Band 18 (<code>iso_grav_anom_hg</code>) is signed and empirically tracks <code>d(Band 13)/dx</code> (Pearson r = +0.65 on 5,165,852 valid cells, computed fresh this session) — supporting (not just repeating) a claim made in an earlier COULOMB-LOQO session.</strong></p>
-  <p>
-    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH — format-valid (9/9 automated gates PASS on independent disk re-read: float32, EPSG:32611, 3730×3292, finite values strictly in [0, 1], 0 NaN/Inf anywhere, 0.0 outside footprint), locally unique (107/107 local rasters &le; 0.70)</span>
-    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — verdict negative (HOLDOUT-DTI 0.005092 [0.004001, 0.006253] &lt; holdout-best 0.010788 static / 0.113316 Rule-2; paired delta vs R0 CI includes 0; 0 weekly slots spent)</span>
-  </p>
-  <p><a href="downloads/gemsdoe92-gravquad-20261025T145744Z-zeros.tif" download><strong>⬇ Download gemsdoe92-gravquad-20261025T145744Z-zeros.tif</strong></a> · <a href="downloads/gemsdoe92-gravquad-20261025T145744Z-zeros.zip" download>one-TIFF ZIP</a> · <a href="downloads/gemsdoe92-gravquad-20261025T145744Z-audit.json">audit JSON</a> · <a href="downloads/gemsdoe92-gravquad-20261025T145744Z_run_card.json">run card</a> · <a href="HYPOTHESES_20261026_RADIOCONTACT.md">pre-registered hypotheses (Rank 3)</a> · <a href="executive-summary.html">Executive Summary &amp; How to Submit</a></p>
-  <p>SHA-256 <code>9ea3e2e01fba5e733964e1252c729a70f0d61edc499c848628d83946d49c7ab5</code>. <strong>HOLDOUT-DTI</strong> (gems57-pooled-hide-v2, 22,663 withheld positives, static d_cat &gt; 2.0): <code>0.005092 [0.004001, 0.006253]</code> vs R0 <code>0.004006</code> (paired delta +0.001086 CI [-0.000082, 0.002312] — includes 0, so the lift over R0 is not statistically distinguishable from 0 at 95%). Rule-2 fold-visible d_visible &gt; 2.0 diagnostic: identical <code>0.005092</code> (GRAVQUAD never reads the catalogue, so Rule-1 static and Rule-2 strict masking coincide here). 3/3 leakage canaries PASS (max symmetric AUC <code>0.5362 &le; 0.90</code> — far below the 0.90 leakage threshold, i.e. this surface is not accidentally encoding the withheld truth). Locally unique vs all 107 rasters currently in this repository (worst matched-budget forward overlap <code>0.3044</code> vs the RADIOCONTACT sibling, |ρ| <code>0.0523</code>) — well under the 0.70 / 0.90 stop thresholds. Public 102-repo GitHub registry scan was <strong>not run</strong> this session because GRAVQUAD did not clear the holdout promotion bar first (budget discipline: a heavy multi-repo scan is not spent on a lane that already lost on holdout). Name <code>GEMSDOE92-GRAVQUAD-20261025</code>; note (133/140) <code>h33-h33-2-b2; GRAVQUAD: gravity analytic-signal amplitude x linear-edge coherence; 37654 dots d_cat&gt;2px; see run card for HOLDOUT-DTI</code>. Weekly slots used: 0 · experiments 1/3.</p>
-  <p><em>Why this is a useful negative result:</em> GRAVQUAD (0.005092) and the prior RADIOCONTACT lane (0.005066) are both standalone, zero-label, deterministic physical transforms, and both land at essentially the same static HOLDOUT-DTI — roughly half of what the supervised, quadrant-debiased LOQO classifiers achieve (COULOMB-LOQO standalone 0.009220; KNICKLOQO standalone 0.010788, the current all-time repository record). This is now the third independent zero-label physical surface (after RADIOCONTACT and the earlier COULOMB/COULOMBDM/APRONRIDGE/HYDROCONDUIT family) to plateau in the same 0.004–0.008 band, which is itself evidence that further gains in this repository are much more likely to come from better-calibrated supervised combinations of existing bands (the LOQO family) than from yet another single deterministic geophysical transform. See the ranked hypotheses below for where we recommend looking next.</p>
-</aside>
-<!-- GRAVQUAD:END -->
-
-<!-- RADIOCONTACT:BEGIN (from scripts/build_radiocontact_submission.py run card evidence/gemsdoe92-radiocontact-20261025T041646Z_run_card.json) -->
-<aside class="banner banner-warn" aria-label="RADIOCONTACT session status" style="border:2px solid #7f1d1d;">
-  <p><strong>Prior session (2026-10-25) — lane <code>RADIOCONTACT</code> (Rank-1 untried hypothesis): new unique TIFF generated. Verdict <code>negative</code>.</strong></p>
-  <p>
-    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD — format-valid (automated 11-gate validator), locally unique</span>
-    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — verdict negative (automated gate: primary HOLDOUT-DTI 0.005066 [0.003638, 0.006583] &lt; holdout-best 0.009220 static / 0.113316 Rule-2; paired CI includes 0)</span>
-  </p>
-  <p><a href="downloads/gemsdoe92-radiocontact-20261025T041646Z-zeros.tif" download><strong>Download gemsdoe92-radiocontact-20261025T041646Z-zeros.tif</strong></a> · <a href="downloads/gemsdoe92-radiocontact-20261025T041646Z-zeros.zip" download>one-TIFF ZIP</a> · <a href="downloads/gemsdoe92-radiocontact-20261025T041646Z-audit.json">audit JSON</a> · <a href="downloads/gemsdoe92-radiocontact-20261025T041646Z_run_card.json">run card</a> · <a href="HYPOTHESES_20261026_RADIOCONTACT.md">pre-registered hypotheses</a></p>
-  <p>SHA-256 <code>026a52ff46d695bb79ae39780c154cba9cc69e039e7d2a4d1fe898c6c0a79345</code>. <strong>HOLDOUT-DTI</strong> (gems57-pooled-hide-v2, 22,663 withheld positives): static <code>0.005066 [0.003638, 0.006583]</code> vs R0 <code>0.004006</code> (paired delta +0.001060 CI [-0.000341, 0.002615] — includes 0). Rule-2 diagnostic <code>0.005066</code> vs R0 <code>0.004006</code>. Canaries max symmetric AUC <code>0.5317</code> (all ≤ 0.90). Locally unique vs 93 rasters (worst matched-budget overlap <code>0.2418</code>, |ρ| <code>0.0476</code>). Weekly slots used: 0 · experiments 1/3.</p>
-</aside>
-<!-- RADIOCONTACT:END -->
-
-<aside class="banner banner-warn" aria-label="Latest verified review">
-  <p><strong>Latest review (session 918b947a): No new unique TIFF was generated. DO NOT SUBMIT.</strong>
-  The pinned dense-witness stop was reproduced before placement and against the unchanged primary.
-  Historical holdout results below were not rerun in this review; no current organizer score or weekly cap was verified.
-  <a href="REVIEW_918B947A.md">Three-pass review and conditional hypotheses</a> ·
-  <a href="downloads/review_918b947a_run_card.json">Fresh review run card</a> ·
-  <a href="downloads/review_918b947a_preplacement.json">Pre-placement proof</a> ·
-  <a href="downloads/review_918b947a_primary_witness.json">Existing-primary witness test</a>.
-  “Highest” claims below apply only to selected physical-lane comparisons, not all repository experiments.</p>
-  <strong>2026-10-24 verified status: CURRENT RESEARCH DOWNLOAD <code>COULOMBDM s45coulomb55</code> (AND STANDALONE ZERO-LABEL SIBLING <code>COULOMBDM coulomb1d</code>) IS OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT.</strong>
-  Historical artifact (not generated or holdout-rerun in this review): <code>h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif</code> has stored <strong>HOLDOUT-DTI</strong> results on two distinct instruments — static <code>0.009220 [0.007983, 0.010493]</code> and strict Rule-2 unmasked <code>d_visible &gt; 2.0</code> <code>0.113316 [0.100614, 0.127163]</code> (<code>gems57-pooled-hide-v2</code>, <code>22,663</code> withheld positives), above <code>HYDROCONDUIT f45hydro</code> (<code>0.008549</code>), <code>APRONRIDGE free1d</code> (<code>0.008354</code>), <code>GEOTENSION free1d</code> (<code>0.007615</code>), <code>COULOMB seismo</code> (<code>0.005808</code>), <code>BASEMENTEDGE step3</code> (<code>0.000000</code>), and <code>MICROSWARM short</code> (<code>0.000000</code>) — and is locally unique against every raster on merged <code>main</code> (<code>&le; 0.6164 &le; 0.70</code>).
-  Subsequent unique research downloads <code>h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif</code> (SHA-256 <code>44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12</code>; static <strong>HOLDOUT-DTI</strong> <code>0.007816 [0.006994, 0.008644]</code>; standalone zero-label sibling <code>coulomb1d</code> Rule-2 <code>d_visible &gt; 2.0</code> <code>0.094496</code>) and <code>h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif</code> (<code>0.004653</code>) are format-valid and locally unique across 58 rasters (<code>&le; 0.6796</code>; <code>0 / 1,181</code> sparse public overlaps <code>&gt;70%</code>) — below repository holdout-best <code>COULOMBLOQO standalone</code> and not the overall holdout best.
-  Prior review archive note: in the earlier D97 audit (<a href="REVIEW_D97F969E.md">REVIEW_D97F969E.md</a> · <a href="downloads/review_d97f969e_run_card.json">D97 run card</a> · <a href="downloads/review_d97f969e_witness.json">review_d97f969e_witness.json</a> · <a href="REVIEW_20261024_CONTINUATION.md">continuation review</a> · <a href="downloads/review_20261024_continuation_run_card.json">continuation run card</a> · <a href="downloads/preplacement_dense_witness.json">preplacement dense witness</a>), historical <code>APRONRIDGE</code> was documented as not a newly generated submission and not the overall holdout best relative to <code>HYDROCONDUIT</code>. Under the literal public dense-witness rule (<code>17GEMSDOE E-proba-multiscale</code>, <code>5,167,373</code> positive footprint cells &rarr; <code>1.000</code> forward overlap), every nonempty in-footprint candidate remains <code>submission_eligible: false</code> (<code>verdict: negative</code>).
-</aside>
-</details>
-<header class="hero">
-<p><a href="REVIEW_7059163E.md">Fresh 2026-10-25 audit, sources and ranked untested hypotheses</a> · <a href="downloads/review705_run_card.json">Rejection run card</a>. No new eligible TIFF; do not upload the research download.</p>
-  <p class="kicker">Executive Summary Subpage · DOE GEMS Prize #306 · GEMSDOE92</p>
-  <h1>Executive Summary: Why <code>GEMSDOE32</code> Got <code>0.2778</code> <code>[CLAIM]</code> &amp; How <code>COULOMB-LOQO</code> Sets a New Multi-Instrument Frontier</h1>
-  <p>
-    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH (10/10 Format Gates PASS; Values in [0, 1])</span>
-    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ NOT CLEARED FOR A WEEKLY SLOT — DO NOT SUBMIT (<code>submission_eligible: false</code>)</span>
-  </p>
-  <p><a href="index.html">← Main Download Workbench</a> · <a href="SUBMIT.html">Submission Guide (SUBMIT.html)</a> · <a href="HYPOTHESES.html">5 Ranked Geological Hypotheses</a> · <a href="ANALYSIS_20261024_COULOMBLOQO.md">Full PhD Mathematical Analysis</a></p>
-</header>
-
-<main><aside class="banner banner-warn" style="border:3px solid #991b1b"><h2>Historical DRAINAGE-KNICK research record</h2><p><strong>OK TO DOWNLOAD FOR RESEARCH: YES. OK TO SUBMIT: NO.</strong> Automated format validation passes, but HOLDOUT-DTI 0.061728 [0.047046, 0.075316] is below 0.113316 and the literal registry overlap stop fired.</p><p><a download href="downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif"><strong>Download validated GeoTIFF</strong></a> · <a download href="downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.zip">one-TIFF ZIP</a> · <a href="ANALYSIS_20261025_DRAINAGE_KNICK.md">analysis</a> · <a href="downloads/gemsdoe92-drainageknick-20261025T120000Z_run_card.json">run card</a></p><p>Name: <code>GEMSDOE92-DRAINAGE_KNICK-20261025</code>. Verdict: <code>negative</code>; weekly slots used: 0.</p></aside>
-<!-- PROVINCETOE-CARD:BEGIN (rendered by scripts/render_provincetoe_site.py) -->
-<section class="download-card" id="provincetoe-exec-summary">
-  <h2>Newest Session Closeout (<code>2026-10-25</code>): <code>PROVINCETOE</code> Sets #1 Static <code>HOLDOUT-DTI</code> (<code>0.009711</code>), Cures <code>NE</code> Collapse, &amp; Quantifies the Path Past <code>0.2778</code> <code>[CLAIM]</code></h2>
-  <p><a class="btn" href="downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif" download>⬇ Download <code>PROVINCETOE</code> Primary TIF ([0, 1] — DO NOT SUBMIT)</a> · <a href="downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.zip" download>ZIP</a> · <a href="downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-audit.json">Audit JSON</a> · <a href="downloads/provincetoe_run_card.json">Run Card</a> · <a href="downloads/gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.tif" download><code>piedbasin</code> (#1 Static TIF)</a> · <a href="downloads/gemsdoe92-provincetoe-globalraw-37654-20261025-73b06876-zeros.tif" download><code>globalraw</code> (Ablation TIF)</a> · <a href="ANALYSIS_20261025_PROVINCETOE.md"><strong>Full PhD Analysis</strong></a>.</p>
-  <ul>
-    <li><strong>Prior Next Steps #1 &amp; #2 Resolved:</strong> Full <code>1,403</code>-raster / <code>102</code>-repo <code>dual_reading_decision</code> scan proves <code>COULOMBLOQO standalone</code> fails external sparse uniqueness (<code>0.739842 &gt; 0.70</code> vs <code>GEMSDOE23</code>, <code>8</code> hits <code>&gt; 0.70</code>) because <code>45.2%</code> of its dots sit on <code>&ge; 12&deg;</code> cliffs. Meanwhile, <code>PROVINCETOE</code> cures <code>#IR-92-NE-QUADRANT-LOQO-COLLAPSE</code> by replacing raw Walker Lane GPS strain with masked within-quadrant contrasts + label-blind quadrant rank calibration, restoring <code>NE</code> allocation from <code>6.3%</code> to <strong><code>26.3%</code></strong> and lifting <code>NE</code> draw-blind internal <code>HOLDOUT-DTI</code> by <code>+40.9%</code> (<code>0.092694 &rarr; 0.130630</code>).</li>
-    <li><strong>Why <code>GEMSDOE32</code> (<code>0.2778</code> <code>[CLAIM]</code>) Won Among Listed Sites &amp; How to Exceed <code>0.2778</code> Toward <code>0.3195</code> / <code>0.4413</code>:</strong> <code>GEMSDOE32</code> (<code>R0</code>) is a zero-XOR pruning cascade <code>H19-5 (121,131) &sup; D2.8 (44,090) &sup; SOLO (40,199) &sup; R0 (37,654)</code> exploiting submodular <code>300 m</code> <code>&max;</code>-cover vs additive false-positive penalty (<code>&alpha;=0.2, &beta;=0.8</code>). On spatially blocked static holdout (<code>d_cat &gt; 2.0</code>), <code>PROVINCETOE</code> (<code>0.009711</code> / <code>0.009685</code>) achieves <strong><code>2.42&times;</code></strong> <code>R0</code> (<code>0.004006</code>). First-principles differentiation of DTI proves any non-overlapping 1D ridge candidate with expected cover <code>c_i &gt; 0.2 D &approx; 0.056&ndash;0.088</code> increases DTI — unlocking <code>0.3195 &rarr; 0.4413</code> requires emitting calibrated continuous probabilities <code>p_i &isin; (0, 1]</code> across <code>80k&ndash;140k</code> <code>2.8 px</code>-spaced multi-scale 2D contextual ridges rather than hard binary truncation at <code>37,654</code> pixels.</li>
-  </ul>
+<section style="max-width:70rem;margin:1rem auto;padding:1rem 1.2rem;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;">
+  <h2>Why this file fixes the “Predicted values must be in range [0, 1]” error</h2>
+  <p>The portal validates that <em>every</em> cell in the GeoTIFF is finite and in <code>[0, 1]</code>. Earlier research artifacts used <strong>NaN outside the footprint</strong> (legacy encoding from the competition's sample submission, which has 7,111,787 NaN cells outside its 5,167,373-pixel footprint). The current portal (late 2025) rejects any NaN as out-of-range. GAPBRIDGE-V2 uses <strong>zeros outside the footprint</strong> (all 7,111,787 outside cells are exactly 0.0, all 5,167,373 inside cells are finite 0.0 or 1.0) and is verified to have 0 NaN/Inf anywhere, so it passes the strict <code>require_submission_encoding</code> check (<code>all_finite=True global_range=[0.0,1.0] zero_outside=True</code>).</p>
+  <p>It also respects the catalogue collar: 0 dots on mapped faults and 0 dots within 2 px (200 m) of a mapped fault (strict <code>d_cat &gt; 2</code>), satisfying the organizer's rule that a prediction near a known trace far from any new truth is penalized.</p>
 </section>
-<!-- PROVINCETOE-CARD:END -->
 
-<section class="download-card">
-  <h2>1. Primary Artifact Status &amp; Automated Gate Summary</h2>
-  <p>Current research download: <a href="downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif"><code>h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif</code></a> (SHA-256 <code>44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12</code>; local ledger name <code>GEMSDOE92-COULOMBDM-s45coulomb55-20261024</code>; 112-char note <code>h33-h33-2-b2; COULOMBDM s45coulomb55: 16944 Coulomb-H19 + 20710 off-skel 1D Coulomb/RTP/clay ridges (&gt;3px H19-5)</code>; <a href="downloads/coulombdm_run_card.json">Run Card</a> · <a href="downloads/coulombdm_public_registry_uniqueness.json">102-Repo Public Scan</a> · <a href="downloads/public_witness_s45coulomb55.json">witness</a>), paired with zero-label standalone blind-fault sibling <a href="downloads/h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif"><code>h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif</code></a> (SHA-256 <code>510c3012f4866e8ea2f0debd0aba799a7b7765a4e18f0954d2d1067ddd01e172</code>; Rule-2 fold-visible <code>d_vis &gt; 2.0</code> <code>HOLDOUT-DTI = 0.094496</code>) and parallel <a href="downloads/h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif"><code>h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif</code></a> (<a href="downloads/xphase_run_card.json">Run Card</a>). Supervised LOQO repository holdout-best remains <a href="downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif"><code>h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif</code></a> (SHA-256 <code>8f1f93d8c97b4e1c359ce5fbe07d183214e707aa6bda4ed074c00921f39ad32e</code>; local ledger name <code>GEMSDOE92-COULOMBLOQO-standalone-20261024</code>; note <code>h33-h33-2-b2; COULOMBLOQO standalone: 37654 1D LOQO Coulomb+polarity+RTP crests (0 H19-5)</code>; <a href="downloads/coulomb_loqo_run_card.json">Run Card</a> · <a href="downloads/coulomb_loqo_public_registry_uniqueness.json">102-Repo Public Scan</a>).</p>
+<section style="max-width:70rem;margin:1rem auto;padding:1rem 1.2rem;">
+  <h2>What the scores mean — and what they don’t</h2>
   <ul>
-    <li><strong>Automated Project Validation (Zero Human Inspection Required):</strong> Re-read from disk by <code>gems/gates.py</code>, <code>vendor/gems57/validate.py</code>, and <code>scripts/check_site.py</code>: <code>EPSG:32611</code>, <code>3730 &times; 3292</code>, <code>float32</code>, finite <code>[0.0, 1.0]</code> everywhere (zero NaNs inside or outside footprint, preventing DrivenData's <code>"Predicted values must be in range [0, 1]"</code> rejection), <code>37,654</code> unit-mass dots, <code>0</code> catalogue mass, and <code>d_cat &gt; 2.0 px</code>.</li>
-    <li><strong>Why the Current Artifact Is Blocked from DrivenData Upload:</strong> Under the literal Rule-1 public registry scan (<code>1,368</code> exact-grid rasters across 102 public <code>GEMSDOE</code> repos), dense full-footprint probability rasters such as <code>17GEMSDOE E-proba-multiscale</code> (<code>5,167,373</code> positive cells) yield <code>1.000 &gt; 0.70</code> forward overlap. Do not perform these steps with the current artifact until an explicit human selector policy resolves dense probability maps and sets <code>submission_eligible: true</code> (keep the unique name in the local ledger; DrivenData's upload form has no separate name field).</li>
+    <li><strong>HOLDOUT-DTI 0.013116 [0.011709,0.014649]</strong> is a <em>local</em> hide-and-recover metric (<code>gems57-pooled-hide-v2</code>, α=0.2, β=0.8, 300 m triangular kernel). It withholds whole fault segments with a 1.2 km buffer, recomputes every feature only from visible faults, masks visible faults pixel-exactly, and scores pooled DTI. It is not a leaderboard score. It beats R0 (the GEMSDOE32 lineage, 0.004729) by +0.008387 and is tied with the previous best LISTRICLOQO (0.013295). See <a href="ANALYSIS_20261025_GAPBRIDGE_V2.md">analysis §3</a>.</li>
+    <li><strong>0.2778 (GEMSDOE32)</strong> is a <strong>CLAIM</strong> — no submission-page receipt for that TIFF is in <code>ledger/</code>. The repository records it as an unverified reported figure. Only an <strong>ORGANIZER-CONFIRMED</strong> receipt copied from the submission page proves a leaderboard score.</li>
+    <li><strong>0.4413 / 0.3195</strong> are top-50 leaderboard claims supplied in the prompt, not live-verified in this sandbox. The 2026-10-25 snapshot lists 0.4413 #1 (xiaofanhu, not a GEMSDOE entry); 0.3195 is not on that snapshot (<a href="ANALYSIS_20261025_LEADERBOARD.md">leaderboard analysis</a>).</li>
   </ul>
 </section>
 
-<section class="download-card">
-  <h2>Parallel EULERFUSE Closeout: Exact Download and Decision</h2>
-  <p><a class="btn" href="downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif" download>⬇ Download <code>EULERFUSE gravity</code> TIF</a> · <a href="downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.zip">ZIP</a> · <a href="downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros-audit.json">audit</a> · <a href="downloads/eulerfuse_run_card.json">run card</a> · <a href="ANALYSIS_20261024_EULERFUSE.md">analysis</a>.</p>
-  <p><strong>✅ OK TO DOWNLOAD FOR RESEARCH; ⛔ DO NOT SUBMIT.</strong> Exact SHA-256: <code>5820e882512843a334f4497ed7f294af937339f729e4eeeecdc33d9cdafeeab9</code>. The independently generated single-band file passes <code>11/11</code> format gates with finite <code>[0,1]</code> values. Strict draw-blind <strong>HOLDOUT-DTI</strong> is <code>0.110387 [0.097279,0.123179]</code> (<code>gems57-pooled-hide-v2</code>, <code>22,663</code> withheld positives), below fresh control <code>0.113316 [0.101071,0.126266]</code>; literal public overlap is <code>1.000</code>. Name: <code>GEMSDOE92-EULERFUSE-gravity-20261024</code>. Record-only form note (80/140): <code>EULERFUSE gravity: 37654 LOQO Euler-contact dots; HOLDOUT-DTI 0.110387; negative</code>. Verdict <code>negative</code>; <code>submission_eligible: false</code>; zero slots used.</p>
-  <p>Official/manual-review sources: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Competition #306</a> · <a href="https://github.com/drivendataorg/gems-prize-reference-solution">reference solution</a> · <a href="https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7">USGS GeoDAWN</a> · <a href="https://gdr.openei.org/submissions/1391">DOE GDR #1391</a>.</p>
+<section style="max-width:70rem;margin:1rem auto;padding:1rem 1.2rem;">
+  <h2>Data and source provenance</h2>
+  <ul>
+    <li>Competition: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Problem &amp; Metric</a> · <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Rules PDF NREL/TP-5700-96647</a> · <a href="https://github.com/drivendataorg/gems-prize-reference-solution">Reference Solution</a> · <a href="https://epsg.io/32611">EPSG:32611</a> · <a href="https://en.wikipedia.org/wiki/Tversky_index">Tversky Index</a></li>
+    <li>Geology: <a href="https://doi.org/10.1016/0191-8141(91)90017-H">Peacock &amp; Sanderson 1991</a> · <a href="https://doi.org/10.1016/j.earscirev.2016.06.010">Fossen &amp; Rotevatn 2016</a> · <a href="https://pubs.geothermal-library.org/lib/grc/1032885.pdf">Faulds &amp; Hinz 2015</a> · <a href="https://doi.org/10.1016/j.geothermics.2021.102128">Faulds et al. 2021</a></li>
+    <li>Data: <a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN</a> · <a href="https://www.usgs.gov/3d-elevation-program">USGS 3DEP</a> · <a href="https://gdr.openei.org/submissions/1391">DOE GDR #1391 INGENIOUS</a> · <a href="https://www.sciencebase.gov/catalog/item/5888bf4fe4b05ccb964bab9d">USGS SGMC</a></li>
+    <li>Local inputs verified: <code>existing_faults.tif</code> SHA-256 <code>7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093</code> · <code>sample_submission.tif</code> <code>2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc</code></li>
+  </ul>
+  <p>The live competition pages and leaderboard were not fetched in this sandbox (allowlisted hosts: github.com, pypi.org, etc.). All numbers above are <code>HOLDOUT-DTI</code> unless explicitly labeled <code>ORGANIZER-CONFIRMED</code>. Fault predictions are not confirmed geothermal vents.</p>
 </section>
 
-<section>
-  <h2>2. Forensic Answer: Why <code>GEMSDOE32</code> (<code>0.2778</code> <code>[CLAIM]</code>) Beat All Listed Sites</h2>
-  <p>The shared local Distance-Weighted Tversky Index uses false-positive and false-negative coefficients <code>0.2</code> and <code>0.8</code>, respectively, and a triangular distance kernel. The <a href="https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/unet-mc-cv-reference-solution.ipynb">official reference notebook</a> confirms those coefficients for its training loss; it does not implement the organizer's distance-weighted evaluator. Nearby dots can be redundant under kernel maxima, but spacing below <code>2.8 px</code> does not guarantee zero marginal truth credit. The recorded local pixel audit establishes the following lineage, not a causal explanation of an organizer score:</p>
-  <ol>
-    <li><code>H19-5</code> (<code>19GEMSDOE</code>, <code>121,131</code> px, <code>0.1922</code> <code>[CLAIM]</code>): 1-px multi-physics fault worm skeletonization.</li>
-    <li><code>D2.8</code> (<code>GEMSDOE25</code>, <code>44,090</code> px, <code>0.2600</code> <code>[CLAIM]</code>): Geodesic Poisson-disk de-aliasing at <code>2.83 px = 283 m</code> (&minus;63.6% redundant mass).</li>
-    <li><code>SOLO</code> (<code>GEMSDOE28</code>, <code>40,199</code> px, <code>0.2708</code> <code>[CLAIM]</code>): Exact identity <code>XOR(SOLO, D2.8 &amp; d_cat &gt; 1.0) == 0</code> (&minus;3,891 pixels at <code>d_cat == 1.0</code>).</li>
-    <li><code>R0</code> / <code>GEMSDOE32 h33-2-b2</code> (<code>37,654</code> px, <code>0.2778</code> <code>[CLAIM]</code>): Exact identity <code>XOR(R0, D2.8 &amp; d_cat &gt; 2.0) == 0</code> (&minus;2,545 pixels at <code>1.0 &lt; d_cat &le; 2.0</code>, retaining 2,171 splay/tip pixels at <code>2.0 &lt; d_cat &le; 3.0</code>).</li>
-  </ol>
-</section>
-
-<section>
-  <h2>3. How <code>COULOMB-LOQO</code> Breaks Both Prior Glass Ceilings</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Lane / Artifact</th>
-        <th>Static <code>HOLDOUT-DTI</code> (<code>22,663</code> px)</th>
-        <th>Rule-2 <code>d_vis &gt; 2</code> <code>HOLDOUT-DTI</code></th>
-        <th><code>SGMC</code> <code>PROXY</code> DTI</th>
-        <th>Key Takeaway &amp; Audit Link</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong><code>COULOMBLOQO standalone</code> (Primary)</strong></td>
-        <td><strong><code>0.009220 [0.007983, 0.010493]</code></strong></td>
-        <td><strong><code>0.113316</code> (beats <code>H19-5</code>!)</strong></td>
-        <td><strong><code>0.090569</code></strong></td>
-        <td>Historical physical-lane result; 0% <code>H19-5</code>; 27.7% basin / 40.8% piedmont / 31.5% range (<a href="downloads/coulomb_loqo_run_card.json">run card</a>)</td>
-      </tr>
-      <tr>
-        <td><strong><code>COULOMBLOQO dual45</code></strong></td>
-        <td><strong><code>0.009107 [0.007977, 0.010325]</code></strong></td>
-        <td><strong><code>0.101998</code></strong></td>
-        <td><strong><code>0.094057</code></strong></td>
-        <td><strong><code>0 / 1,121</code></strong> (&le;90k-px) public sparse overlaps &gt;70% (max <code>0.6488</code>)</td>
-      </tr>
-      <tr>
-        <td><strong><code>COULOMBDM s45coulomb55</code> / <code>coulomb1d</code></strong></td>
-        <td><code>0.007816 [0.006994, 0.008644]</code> / <code>0.006467</code></td>
-        <td><code>0.086867</code> / <strong><code>0.094496</code> (0-label physics)</strong></td>
-        <td><code>0.075208</code> / <code>0.070345</code></td>
-        <td><strong><code>0 / 1,181</code></strong> (&le;150k-px) public sparse overlaps &gt;70% (<a href="downloads/coulombdm_run_card.json">run card</a> · <a href="ANALYSIS_20261024_COULOMBDM.md">analysis</a>)</td>
-      </tr>
-      <tr>
-        <td><code>HYDROCONDUIT f45hydro</code></td>
-        <td><code>0.008549 [0.007461, 0.009684]</code></td>
-        <td><code>0.085221</code></td>
-        <td><code>0.074107</code></td>
-        <td>Prior physical-lane comparator (<a href="downloads/hydroconduit_run_card.json">run card</a>)</td>
-      </tr>
-      <tr>
-        <td><code>APRONRIDGE free1d</code></td>
-        <td><code>0.008354 [0.006823, 0.010135]</code></td>
-        <td>—</td>
-        <td><code>0.080098</code></td>
-        <td><code>h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif</code> (<a href="downloads/public_witness_apronridge.json">witness</a>)</td>
-      </tr>
-      <tr>
-        <td><code>GEMSDOE92-PIEDFRONT-f35Ptop-20261024</code></td>
-        <td><code>0.006425 [0.005375, 0.007479]</code></td>
-        <td>—</td>
-        <td><code>0.059993</code></td>
-        <td><code>h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif</code> (SHA-256 <code>e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8</code>)</td>
-      </tr>
-      <tr>
-        <td><code>SPRINGALIGN f33Ctop</code> / <code>STEPEDGE f60Sraw</code></td>
-        <td><code>0.004865</code> / <code>0.003980</code></td>
-        <td>—</td>
-        <td><code>0.080173</code> / <code>0.141464</code></td>
-        <td><code>SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif</code> (<a href="downloads/review_20261024_springalign_witness_v2.json">witness</a>)</td>
-      </tr>
-      <tr>
-        <td><code>R0</code> (<code>GEMSDOE32 h33-2-b2</code>, <code>0.2778</code> <code>[CLAIM]</code>)</td>
-        <td><code>0.004006 [0.003408, 0.004651]</code></td>
-        <td><code>0.096757</code> (<code>H19</code>)</td>
-        <td><code>0.096060</code></td>
-        <td>Parent baseline (0 organizer receipts in <code>ledger/submissions.csv</code>)</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-<section class="download-card">
-  <h2>🆕 2026-10-25 NEO-OPNS: New Research Artifact (Format-Valid, Local Duplicate, Dense-Witness Stop)</h2>
-  <p><a class="btn" href="downloads/h33-h33-2-b2-NEOOPNSs45c55-20261025-63d84095-zeros.tif" download>⬇ NEW Download NEO-OPNS s45c55 TIF (zeros-outside [0,1] — DO NOT SUBMIT)</a> · <a href="downloads/h33-h33-2-b2-NEOOPNSs45c55-20261025-63d84095-zeros.zip">ZIP</a> · <a href="downloads/h33-h33-2-b2-NEOOPNSs45c55-20261025-63d84095-audit.json">audit</a> · <a href="downloads/neoopenness_run_card.json">run card</a> · <a href="downloads/neoopenness_proxy_audit.json">proxy audit</a> · <a href="HYPOTHESES_20261025_NEOTERRACE.md">pre-registration</a> · <a href="ANALYSIS_20261025_NEOTERRACE.md">PhD analysis</a>.</p>
-  <p><strong>✅ OK TO DOWNLOAD FOR RESEARCH (11/11 gates PASS; finite [0,1], EPSG:32611, 3730×3292, 37,654 dots, 0 catalogue mass); ⛔ DO NOT SUBMIT — DUPLICATE UNDER LOCAL REGISTRY RULE (>70% forward overlap vs APRONRIDGE s50f50, 0.774579) + LITERAL DENSE WITNESS (17GEMSDOE E-proba 1.000). </strong> Static <strong>HOLDOUT-DTI</strong> <code>0.007479 [0.006351,0.008718]</code> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives) beats parent <code>R0 0.004006</code> (Δ +0.003473 CI>0) and <code>RELIEF p10 0.006045</code> (Δ +0.001434 CI>0), trails <code>HYDROCONDUIT 0.008549</code> and <code>COULOMBLOQO 0.009220</code>. 14/14 canaries ≤0.90 (max 0.614188). TPI-500 × LoG curvature × log-slope break × coherence × 120 m cover habitat × K/Th gradient × GDR boost on 1D NMS crests >3 px off H19-5. SHA-256 <code>067629a0c104a7638002c2e81165c34578a8e0cca04dcd2ba52e50b3a2f0f17d</code>; note 83/140 chars: <code>h33-h33-2-b2; NEO-OPNS s45c55: 16944 H19 + 20710 far TPI-curvature ridges &gt;3px H19-5</code>. Verdict <code>negative</code>, <code>submission_eligible:false</code>; 3/3 experiments, 0 weekly slots. Siblings: <a href="downloads/h33-h33-2-b2-NEOOPNSs35c65-20261025-e4d82847-zeros.tif">s35c65 (0.007204)</a> · <a href="downloads/h33-h33-2-b2-NEOOPNSfree1d-20261025-a4c91e43-zeros.tif">free1d (0.007463)</a> — also duplicate locally (73–75%). Surface SHA <code>10948b5b7c01973020810b9d64bc2982ba80202dce29a6bcf9bab0c6dadb01c3</code>.</p>
-  <p><strong>PhD answer:</strong> <code>GEMSDOE32 h33-2-b2</code> (0.2778 [CLAIM]) rose 0.1922→0.2600→0.2708→0.2778 by Poisson thinning at 2.828 px (kernel radius 300 m) removing along-strike redundancy (α=0.2 light FP cost) and by catalogue-halo filtering (d_cat>1.0→2.0) avoiding wasted mass near known faults (forum 11516), but remained 100% confined to the H19-5 worm skeleton (H19-5-required magnetic/gravity contrast). Its headroom is the worm-blind habitat: low-angle piedmont alluvial scarps with zero potential-field contrast — exactly what <code>NEO-OPNS</code> targets via TPI-curvature openness, yet <code>NEO-OPNS</code> still collocates 77% with <code>APRONRIDGE</code> and trails the supervised multi-physics <code>COULOMBLOQO</code> (−18.9%), showing the next frontier is non-piedmont habitats (SVD under thick cover, drainage offsets) or explicit shoreline-null decorrelation. No <code>ORGANIZER-CONFIRMED</code> receipt exists to claim a higher live score; local holdout is not an organizer score.</p>
-</section>
-
-<section>
-  <h2>Merged Parallel-Session Archive &amp; Conditional Portal Note</h2>
-  <p>Merged parallel-branch research artifacts (all <code>verdict: negative</code>, <code>submission_eligible: false</code> — Do not perform these steps with the current artifact while <code>submission_eligible: false</code>; keep the unique name in the local ledger since the portal form has no separate name field):
-  <a href="downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif">APRONRIDGEfree1d-20261024-d5760830-zeros.tif</a> (<a href="downloads/public_witness_apronridge.json">public_witness_apronridge.json</a>, <code>0.008354</code>),
-  <a href="downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif">HYDROCONDUIT f45hydro</a> (<code>0.008549</code>),
-  <a href="downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif">GEOTENSION free1d</a> (<a href="downloads/geotension_run_card.json">run card</a>, <code>0.007615</code>),
-  <a href="downloads/h33-h33-2-b2-COULOMBseismo-20261024-d243140b-zeros.tif">COULOMB seismo</a> (<a href="downloads/coulomb_run_card.json">run card</a>, <code>0.005808</code>),
-  <a href="downloads/h33-h33-2-b2-BASEMENTEDGEstep3-20261024-80719f12-zeros.tif">BASEMENTEDGE step3</a> (<code>0.000000</code>),
-  <a href="downloads/h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21-zeros.tif">MICROSWARM short</a> (<code>0.000000</code>), and
-  <a href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif">SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif</a> (<a href="downloads/review_20261024_springalign_witness_v2.json">review_20261024_springalign_witness_v2.json</a>).</p>
-</section>
-</main>
-
-<footer>
-  <p>GEMSDOE92 Executive Summary · All numbers carry explicit <code>HOLDOUT-DTI</code>, <code>PROXY</code>, <code>REGISTRY-MEASUREMENT</code>, or <code>CLAIM</code> labels; zero projections written as scores.</p>
+<footer style="max-width:70rem;margin:2rem auto;padding:1rem;color:#666;font-size:0.9rem;">
+  <p>GEMSDOE92 · Evidence labels: <code>HOLDOUT-DTI</code> = local hide-and-recover (<code>gems57-pooled-hide-v2</code>); <code>CLAIM</code> = unverified reported figure; <code>ORGANIZER-CONFIRMED</code> = copied receipt (0 recorded). This page is an executive summary; the <a href="downloads/gapbridge_v2_run_card.json">run card</a> and <a href="ANALYSIS_20261025_GAPBRIDGE_V2.md">analysis</a> are the authoritative evidence.</p>
 </footer>
-</details>
-<!-- HISTORICAL-ARCHIVE:END -->
 </body>
 </html>

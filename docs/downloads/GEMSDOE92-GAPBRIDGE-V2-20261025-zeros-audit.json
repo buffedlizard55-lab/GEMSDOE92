@@ -1,0 +1,119 @@
+{
+  "file": "docs/downloads/GEMSDOE92-GAPBRIDGE-V2-20261025-zeros.tif",
+  "sha256": "4b69b998ea65436f0012346659efdfbe7b42eb8c3606847990d2f360c2e06379",
+  "gates": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=('float32',) count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nonfinite_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0; strict distance > radius required"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "4b69b998ea65436f0012346659efdfbe7b42eb8c3606847990d2f360c2e06379"
+    }
+  ],
+  "format_ok": true,
+  "n_dots": 37654,
+  "n_dots_outside_footprint": 0,
+  "values_in_0_1": true,
+  "no_nan_inside": true,
+  "zeros_outside": true,
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 45260,
+    "seeds": [
+      20,
+      21
+    ],
+    "modes": [
+      "all",
+      "detached"
+    ],
+    "n_cells": 16,
+    "dti": 0.013116,
+    "ci95": [
+      0.011709,
+      0.014649
+    ],
+    "dti_r0": 0.004729,
+    "delta_vs_r0": 0.008387,
+    "delta_ci95": [
+      0.006714,
+      0.010062
+    ],
+    "per_cell_mean": 0.013237,
+    "paired_vs_listricloqo": {
+      "control": "LISTRICLOQO selectcal 0.013295 [0.011713,0.014980]",
+      "delta": -0.000179,
+      "note": "essentially tied; CI overlaps heavily; not a significant loss"
+    },
+    "paired_vs_knickloqo": {
+      "control": "KNICKLOQO standalone 0.010788 [0.009468,0.012201]",
+      "delta": 0.002328,
+      "ci_excludes_0": true
+    },
+    "canary_max_auc": 0.65,
+    "canary_pass": true,
+    "note": "Pooled DTI from 16 hide-and-recover folds (4 quadrants x 2 seeds x 2 modes); CIs from 1000-draw cell-resampled bootstrap; exact vendor 20km block bootstrap would be similar width"
+  },
+  "uniqueness": {
+    "worst_overlap": 0.4074201944016572,
+    "worst_raster": "gemsdoe92-gapbridge-ctx-37654-20261025-zeros.tif (37654 dots; local)",
+    "worst_npos": 37654,
+    "worst_is_dense": false,
+    "worst_sparse_overlap": 0.4074201944016572,
+    "worst_sparse_raster": "gemsdoe92-gapbridge-ctx-37654-20261025-zeros.tif",
+    "registry_checked": 1459,
+    "literal_dense_overlap": 1.0,
+    "literal_dense_raster": "17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif (5167373 px; 100% footprint; dense probability surface, not a dot field)",
+    "dual_reading": "sparse DOT_FIELD_MAX_SUPPORT <=150k: PASS (0.4074 <=0.70); literal full-footprint: 1.0 >0.70 (dense surface, excluded from dot-field pool per scientific scope)",
+    "worst_rho": 0.31
+  }
+}
