@@ -1,0 +1,85 @@
+{
+ "file": "docs/downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.tif",
+ "sha256_zeros": "ad80f9a0fdc6bc608902accfedc783c700c4fd8a98bd5d903540aa7981ba8949",
+ "sha256_nan": null,
+ "gates_zeros": [
+  {
+   "name": "crs",
+   "ok": true,
+   "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+  },
+  {
+   "name": "shape",
+   "ok": true,
+   "detail": "reference=3730x3292 candidate=3730x3292"
+  },
+  {
+   "name": "transform",
+   "ok": true,
+   "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+  },
+  {
+   "name": "dtype_and_band",
+   "ok": true,
+   "detail": "dtype=float32 count=1"
+  },
+  {
+   "name": "values_in_0_1",
+   "ok": true,
+   "detail": "n_violations=0 min=0.0 max=1.0"
+  },
+  {
+   "name": "no_nan_inside_footprint",
+   "ok": true,
+   "detail": "nan_pixels=0"
+  },
+  {
+   "name": "nan_outside_footprint",
+   "ok": true,
+   "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+  },
+  {
+   "name": "submission_encoding",
+   "ok": true,
+   "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+  },
+  {
+   "name": "catalogue_zero_mass",
+   "ok": true,
+   "detail": "dots_on_catalogue=0"
+  },
+  {
+   "name": "distance_from_catalogue",
+   "ok": true,
+   "detail": "radius=3px dots_within=0"
+  },
+  {
+   "name": "reread_sha256",
+   "ok": true,
+   "detail": "ad80f9a0fdc6bc608902accfedc783c700c4fd8a98bd5d903540aa7981ba8949"
+  }
+ ],
+ "gates_nan": [],
+ "overall_pass": true,
+ "generated_utc": "2026-10-25T15:17:32+00:00",
+ "note": "FAULTNET netfar: netctx surface, dots >4px off catalogue; 37654 dots 2.8px",
+ "n_positive_pixels": 37654,
+ "n_dots": 37654,
+ "gates_zeros_pass": true,
+ "gates_nan_pass": null,
+ "submission_eligible": false,
+ "verdict": "negative",
+ "run_card": "evidence/faultnet_run_card.json",
+ "public_registry_uniqueness": {
+  "evidence_file": "evidence/faultnet_uniqueness.json",
+  "candidate_hash_matches_scan": true,
+  "candidate_sha256_zeros": "ad80f9a0fdc6bc608902accfedc783c700c4fd8a98bd5d903540aa7981ba8949",
+  "registries_checked": 1451,
+  "unique_under_literal_rule": false,
+  "stop_required": true,
+  "worst_forward_overlap": 0.758591,
+  "worst_overlap_raster": "GEMSDOE37/docs/downloads/gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif",
+  "worst_abs_spearman": 0.132893,
+  "scope": "Public buffedlizard55-lab *GEMSDOE* default branches, unique Git blobs on the competition grid (scripts/build_public_registry_index.py) plus local lineage rasters; rule per #IR-92-FAULTNET-DOT-DEFINITION."
+ }
+}

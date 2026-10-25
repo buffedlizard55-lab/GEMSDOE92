@@ -1,5 +1,36 @@
 # Executive summary — GEMSDOE92 submission workbench
 
+<!-- CURRENT:BEGIN -->
+> ## Inherited newest lane research artifact — lane FAULTNET / arm `netfar`; not the current readiness primary
+> **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 0.7586 of its dots lie within 3 px of the dots of GEMSDOE37/docs/downloads/gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif (80,000 dots), above the 0.70 limit.
+>
+> **[⬇ Download the GeoTIFF](downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.tif)** · [one-TIFF ZIP](downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.zip) · [run card](downloads/faultnet_run_card.json) · [analysis](ANALYSIS_20261025_FAULTNET.md)
+>
+> **How to submit (only with a file marked ✅ OK TO SUBMIT, which this one is not):**
+> 1. Download the `.tif` (or the ZIP holding only that TIFF).
+> 2. Go to https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/ (log in; not live-verified from the sandbox), then choose the file under *File to submit*.
+> 3. Paste this into *Note (optional)*: `FAULTNET netfar: netctx surface, dots >4px off catalogue; 37654 dots 2.8px`
+> 4. Name/record: `gemsdoe92-faultnet-netfar-20261025-3c4e9051`. After scoring, record the receipt in `ledger/submissions.csv`.
+>
+> Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `ad80f9a0fdc6bc608902accfedc783c700c4fd8a98bd5d903540aa7981ba8949`.
+> **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22,663 withheld positives): `0.175147 [0.159756, 0.189860]`. Rebuilt COULOMBLOQO control: `0.113890 [0.100783, 0.128559]`. Paired Δ `+0.061257 [0.048577, 0.074148]`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
+> **Uniqueness** (1,451 registry rasters): worst overlap `0.7586` (limit 0.70), worst |ρ| `0.1329` / surface `0.7851` (limit 0.90). Literal-support reading: 97 rasters > 0.70. That reading also fails a random raster (`#IR-92-FAULTNET-DOT-DEFINITION`).
+> Siblings: [netctx](downloads/gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif) (negative, HOLDOUT-DTI 0.148707) · [netdens](downloads/gemsdoe92-faultnet-netdens-37654-20261025-517af913-zeros.tif) (negative, HOLDOUT-DTI 0.148814). **Read [SESSION_PROMPT.md](../SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
+<!-- CURRENT:END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Current decision — 2026-10-24 UTC
 
 **Existing research TIFFs: OK TO DOWNLOAD for review; DO NOT SUBMIT. No new unique TIFF was generated in this review.** The site's current primary download is the existing SPRINGALIGN artifact; its public-registry uniqueness check is a binding rejection, and its holdout result does not establish live competition performance. The weekly selector/slot was not used.

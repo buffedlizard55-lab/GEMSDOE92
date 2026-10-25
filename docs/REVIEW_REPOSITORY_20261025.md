@@ -78,3 +78,9 @@ Final merged-tree verification: **476 tests passed** (140 nonfatal upstream Affi
 ## Latest upstream integration — `origin/main` at `f390f36` (PR #97)
 
 During final verification, `main` advanced again and added the DILATATION p15 research archive. The latest upstream merge was integrated; its run card records a negative result and no weekly slot, and it does not alter the byte-bound LISTRICDIP readiness decision. Reverification on this latest tree again passed **476 tests**, **70** served-raster checks, all three readiness/public-status checkers, `make manifest`, pinned-parent `make verify`, and `make ledger` (98 rows; no best receipt). The current readiness remains **DO NOT SUBMIT**.
+
+## Latest upstream integration — `origin/main` at `71c05d8` (PR #98)
+
+Main advanced once more with three FAULTNET research TIFFs and a lane-level run card. These were generated upstream, not by this review. The inherited run card labels its best reported result **HOLDOUT-DTI** `0.175147 [0.159756, 0.189860]` (`gems57-pooled-hide-v2`, 22,663 withheld positives)—not an organizer score and not independently rerun here. It also reports final registry overlap `0.7586 > 0.70`, so the recorded verdict is negative and no slot is cleared. The global byte-bound `readiness.json` remains LISTRICDIP as the current research-download primary, with no fresh HOLDOUT-DTI; the FAULTNET card is now explicitly labeled as an inherited newest-lane artifact, **not** the current readiness primary. Neither status authorizes submission.
+
+After that merge and clarification, final rechecks passed: **485 tests** (140 nonfatal Affine warnings), **73 served TIFFs**, all readiness/public-status render checks, manifest and pinned-parent verification, and ledger validation (98 rows; no best receipt). The review itself generated no candidate, ran no geological experiment, and used no weekly slot.

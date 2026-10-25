@@ -28,6 +28,26 @@ Reused the concurrently merged `gems/public_status.py` publication contract and 
 
 # IRREGULARITIES — only items that change a decision
 
+## 2026-10-25 (FAULTNET session) — `#IR-92-FAULTNET-OVERBUDGET-WITNESS`: best HOLDOUT-DTI in repo (netfar 0.175147) is a literal rule-1 duplicate against 56k–103k-dot fields; gate shown specific by a ridge-gated null
+- **Observation**: netfar's 37,654 final dots fall `0.758591` within 3 px of GEMSDOE37 `h6-physics-dotted-80k` (80,000 dots). They are also above 0.70 against GEMSDOE86 `gmc-linepost` (0.7365), 12GEMSDOE `r7-nms3-dem10-scarp` (0.7244, two identical blobs) and GEMSDOE53 `thin_bin_q0p1` (0.7004). Every witness has 1.5–2.7× our dot budget. Against the 1,265 rasters with ≤ 1.25× our budget, the worst overlap is `0.635258`. Rank correlation passes (worst |ρ| final 0.1329, surface 0.7851). netctx and netdens fail more widely (0.8386 and 0.8403). Source: `evidence/faultnet_uniqueness.json`.
+- **Calibration**: R0 is flagged (positive control). Uniform random dots give 0.4926. A ridge-gated random null with the same crest gate, the d_cat > 4 rule, the 2.8 px floor and 37,654 dots gives `0.494901`. So overlap from the gate geometry alone stays far below 0.70, and FAULTNET's dots really co-locate with those lanes.
+- **Decision**: verdict `negative` for all arms; `ok_to_submit=false`; no fourth experiment (budget 3/3). We do **not** propose a budget-normalised overlap waiver, because the null shows the gate is doing its job.
+
+## 2026-10-25 (FAULTNET session) — `#IR-92-FAULTNET-DOT-DEFINITION`: what counts as "dots" for a full-footprint continuous registry surface
+- **Observation**: 44 registry rasters cover the whole footprint (e.g. 17GEMSDOE `E-proba-multiscale`, 5,167,373 px). Under the literal reading, a uniform random raster is a duplicate of 69 of them.
+- **Decision**: FAULTNET used the literal rule for dot fields (≤ 150k px). For continuous surfaces it used the matched-budget top-n plus the ρ clause. It published the literal count beside that (netfar 97 rasters). Per the binding `376a8469` clarification in SESSION_PROMPT.md the literal gate is binding. **Both readings return "duplicate" here**, so this choice did not affect the verdict.
+
+## 2026-10-25 (FAULTNET session) — `#IR-92-FAULTNET-POSTHOC-CONTROL`: emission-matched control added after the first holdout read-out
+- **Observation**: netfar (d_cat > 4) was compared with the d > 2 COULOMBLOQO control. A second control was then fitted with COULOMBLOQO at d > 4 (`control_COULOMBLOQO_far`, HOLDOUT-DTI 0.115584 [0.102506, 0.130237]) to separate the context effect from the halo rule. It reuses the same folds and seeds.
+- **Impact**: This only made promotion stricter: netfar must beat both controls. Paired Δ = +0.059564 [0.046653, 0.073109]. Re-running the paired bootstrap with one more arm shifted some CI bounds in the third decimal (COULOMBLOQO [0.100124, 0.127440] → [0.100783, 0.128559]). Point estimates did not change. `evidence/faultnet_run_card.json` is canonical.
+
+## 2026-10-25 (FAULTNET session) — `#IR-92-LEDGER-CRLF`: the shared `gems.ledger.save` rewrote every row with CRLF
+- **Fix (once, shared)**: `csv.DictWriter(..., lineterminator="\n")`. A parallel lane landed the identical fix on `main` first; on merge, main's version was kept, so the fix exists once. The FAULTNET rows were re-appended byte-preserving: diff = +3 lines.
+
+## 2026-10-25 (FAULTNET session) — `#IR-92-FAULTNET-LEGACY-PRIMARY-ANCHOR`
+- `docs/index.html`'s machine `data-primary` anchor and `docs/downloads/readiness.json` still name the repository-wide research primary chosen by the shared review renderers (after merging main: LISTRICDIP `updip50`). They do not name FAULTNET, because the shared contracts (`scripts/check_site.py`, `scripts/render_readiness.py`, `scripts/render_current_status.py` and their tests) pin a negative, rejection-only primary. The FAULTNET block is rendered from `docs/downloads/current_submission.json` and sits directly after those panels; `render_readiness.render_page` was extended once so it keeps that block visible. **Both are DO NOT SUBMIT.** A future promote must update those shared contracts.
+- Links not live-verified from the sandbox (allow-list: GitHub/PyPI): the DrivenData submissions URL, forum 11516, the Kim 2004 DOI, the Faulds & Hinz 2015 WGC paper, ASF OPERA and USGS 3DEP.
+
 ## 2026-10-25 (LISTRICDIP session) — antithetic budget cannot be filled without leaving the mechanism
 
 - **Observation**: Pre-registration locked 37,654 dots for `anti22` and `anti35`. On the real stack, `oppose > 0.3` against a 12 km regional basement gradient, after `d_cat > 2` and 3.2 px spacing, emits 9,571 and 9,555 dots. A 2–8 km smooth is opposed at `oppose > 0.5` by only a minority of high-gradient pixels (median oppose is 0).
