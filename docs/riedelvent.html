@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GEMSDOE92 — RIEDELVENT Executive Summary, Programmatic Validation &amp; DrivenData Guide</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #1e293b;
+      --border: #334155;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --green-bg: #14532d;
+      --green-fg: #dcfce7;
+      --red-bg: #7f1d1d;
+      --red-fg: #fee2e2;
+      --accent: #38bdf8;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+    a { color: var(--accent); }
+    code {
+      background: #0b1120;
+      padding: 0.12rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .badge-pass {
+      background: var(--green-bg);
+      color: var(--green-fg);
+      padding: 0.4rem 0.75rem;
+      border-radius: 5px;
+      font-weight: 700;
+      display: inline-block;
+      margin: 0.25rem 0.5rem 0.25rem 0;
+    }
+    .badge-stop {
+      background: var(--red-bg);
+      color: var(--red-fg);
+      padding: 0.4rem 0.75rem;
+      border-radius: 5px;
+      font-weight: 700;
+      display: inline-block;
+      margin: 0.25rem 0;
+    }
+    .dl-btn {
+      display: inline-block;
+      background: #0284c7;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 0.65rem 1.1rem;
+      border-radius: 6px;
+      margin: 0.35rem 0.5rem 0.35rem 0;
+    }
+    .dl-btn-sec {
+      display: inline-block;
+      background: #334155;
+      color: #f8fafc;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.55rem 0.9rem;
+      border-radius: 6px;
+      margin: 0.35rem 0.4rem 0.35rem 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 0.6rem;
+    }
+    th, td {
+      border-bottom: 1px solid var(--border);
+      padding: 0.45rem 0.5rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { color: #cbd5e1; font-weight: 700; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body>
+  <main id="main-content">
+  <p><a href="index.html">&larr; Back to Main GEMSDOE92 Workbench</a> · <a href="executive-summary.html">Repository Executive Summary</a> · <a href="SUBMIT.html">DrivenData Submission Protocol</a></p>
+
+  <div class="card" style="border: 2px solid #991b1b;">
+    <h1 style="margin-top:0;">GEMSDOE92 — <code>RIEDELVENT</code> Validation Dashboard &amp; Executive Summary (2026-10-25)</h1>
+    <p>
+      <span class="badge-pass">✅ OK TO DOWNLOAD FOR RESEARCH — 11/11 + 15/15 Programmatic Gates PASS (float32 in [0, 1], 0 NaN/Inf, EPSG:32611, 3730&times;3292, zeros outside footprint)</span>
+      <span class="badge-stop">⛔ DO NOT SUBMIT FOR A WEEKLY SLOT — Verdict: negative (submission_eligible: false; literal 17GEMSDOE dense-surface overlap 1.000 &gt; 0.70; 0 weekly slots spent)</span>
+    </p>
+    <p>
+      <a class="dl-btn" href="downloads/gemsdoe92-riedelvent-tail85k-85000-20261025-1cc99d0f-zeros.tif" download>⬇ Download Primary GeoTIFF: gemsdoe92-riedelvent-tail85k-85000-20261025-1cc99d0f-zeros.tif (616 KB)</a>
+      <a class="dl-btn-sec" href="downloads/gemsdoe92-riedelvent-tail85k-85000-20261025-1cc99d0f-zeros.zip" download>⬇ One-TIFF ZIP (588 KB)</a>
+      <a class="dl-btn-sec" href="downloads/gemsdoe92-riedelvent-tail85k-85000-20261025-1cc99d0f-audit.json">11-Gate Audit JSON</a>
+      <a class="dl-btn-sec" href="downloads/riedelvent_run_card.json">JSON Run Card</a>
+      <a class="dl-btn-sec" href="downloads/riedelvent_holdout.json">Holdout &amp; Uniqueness Receipt</a>
+    </p>
+    <p style="color:var(--muted);margin-bottom:0;">
+      <strong>Zero human inspection required:</strong> Every pixel was programmatically validated by <code>vendor/gems57/submission_writer.py</code>, <code>vendor/gems57/validate.py</code> (15/15 checks), <code>gems/gates.py</code> (11/11 checks), and <code>scripts/check_site.py</code>. Specifically fixes the prior portal rejection <code>"Predicted values must be in range [0, 1]"</code> by enforcing <code>float32</code> values strictly in <code>[0.0, 1.0]</code> with exact <code>0.0</code> outside the valid footprint and <code>0</code> NaN/Inf/sentinel pixels anywhere.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:0;">1. Automated Validation &amp; Registry Uniqueness Gates (<code>riedelvent_tail85k</code>)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Automated Gate</th>
+          <th>Measured Value</th>
+          <th>Threshold / Requirement</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CRS, Grid Shape &amp; Affine Geotransform</td>
+          <td><code>EPSG:32611</code> · <code>3730 &times; 3292</code> · <code>[100, 0, 243350, 0, -100, 4508550]</code></td>
+          <td>Exact match to <code>sample_submission.tif</code></td>
+          <td><strong>PASS</strong></td>
+        </tr>
+        <tr>
+          <td>Data Type, Band Count &amp; Value Range</td>
+          <td>Single-band <code>float32</code>; min <code>0.0000</code>, max <code>1.0000</code> (<code>37,654 @ 1.0</code> + <code>47,346 @ [0.30, 0.60]</code>)</td>
+          <td>Strictly in <code>[0, 1]</code> (prevents DrivenData range error)</td>
+          <td><strong>PASS</strong></td>
+        </tr>
+        <tr>
+          <td>NaN / Inf / Outside-Footprint Encoding</td>
+          <td><code>0</code> NaN, <code>0</code> Inf anywhere; <code>0</code> positive pixels outside <code>5,167,373</code>-px footprint</td>
+          <td>Finite everywhere; zeros outside footprint</td>
+          <td><strong>PASS</strong></td>
+        </tr>
+        <tr>
+          <td>Mapped Fault Catalogue Exclusion</td>
+          <td><code>0</code> positive pixels within <code>d_cat &le; 2.0 px</code> (<code>200 m</code>) of <code>existing_faults.tif</code></td>
+          <td>Zero mass on mapped catalogue</td>
+          <td><strong>PASS</strong></td>
+        </tr>
+        <tr>
+          <td>Single-Feature &amp; OOF Leakage Canaries</td>
+          <td>32/32 features max symmetric AUC <code>0.638949</code> (<code>dem10_steep_step_grad</code>); OOF surface <code>0.667221</code></td>
+          <td>Symmetric ROC AUC <code>&le; 0.90</code> (Protocol Rule 4)</td>
+          <td><strong>PASS</strong></td>
+        </tr>
+        <tr>
+          <td>Local <code>GEMSDOE92</code> Registry Uniqueness</td>
+          <td>Worst 3-px forward overlap <code>0.4908</code> (<code>ventscarp_soft</code>); worst surface <code>|&rho;| = 0.1797</code> across <code>96</code> rasters</td>
+          <td>Overlap <code>&le; 0.70</code> &amp; <code>|&rho;| &le; 0.90</code></td>
+          <td><strong>PASS</strong></td>
+        </tr>
+        <tr>
+          <td>Public <code>102</code>-Repo Dual-Reading Uniqueness</td>
+          <td>Worst operative 3-px overlap <code>0.6971</code> (vs <code>62GEMSDOE</code> 125,890-dot witness); &le;50k-dot worst <code>0.4782</code>; worst <code>|&rho;| = 0.4338</code> across <code>1,371</code> external rasters</td>
+          <td><code>dual_reading_unique == True</code> (<code>&le; 0.70</code> &amp; <code>|&rho;| &le; 0.90</code>)</td>
+          <td><strong>PASS</strong></td>
+        </tr>
+        <tr>
+          <td>Binding Literal Dense-Surface Policy Check</td>
+          <td>Literal 3-px overlap <code>1.0000</code> against <code>17GEMSDOE E-proba-multiscale</code> (<code>5,167,373</code> positive footprint cells); holdout trails <code>VENTSCARP</code>/<code>KNICKLOQO</code></td>
+          <td>Fail-closed <code>submission_eligible: false</code> · <code>verdict: negative</code></td>
+          <td><strong>STOP (0 slots spent)</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:0;">2. Auditable Holdout &amp; Off-Catalogue Benchmark Comparison</h2>
+    <p>All scores below are measured by shared evaluator <code>vendor/gems57/evaluate_holdout.py</code> (<code>gems57-pooled-hide-v2</code>, <code>&alpha; = 0.2, &beta; = 0.8</code>, <code>300 m</code> triangular kernel, <code>22,663</code> withheld positives, <code>1,000</code>-draw paired <code>20 km</code> spatial-block bootstrap). Local <code>HOLDOUT-DTI</code> is never projected onto leaderboard scale; <code>0.2778</code>, <code>0.3195</code>, and <code>0.4413</code> are unverified <code>[CLAIM]</code> values (<code>0</code> <code>ORGANIZER-CONFIRMED</code> receipts in this repository).</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Model / Artifact</th>
+          <th class="num">Support &Vert;P&Vert;<sub>0</sub></th>
+          <th class="num">Rule-2 Draw-Blind <code>HOLDOUT-DTI</code> [95% CI]</th>
+          <th class="num">Static <code>d_cat &gt; 2</code> <code>HOLDOUT-DTI</code> [95% CI]</th>
+          <th class="num"><code>USGS SGMC PROXY</code> (<code>&gt;5 px</code> / <code>&gt;3 px</code>)</th>
+          <th>102-Repo Dual-Unique</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong><code>RIEDELVENT tail85k</code> (Primary E3)</strong></td>
+          <td class="num">85,000</td>
+          <td class="num"><strong>0.108448 [0.095906, 0.122629]</strong></td>
+          <td class="num"><strong>0.009755 [0.008434, 0.010969]</strong></td>
+          <td class="num"><strong>0.135694 / 0.139793 (#1 Repo)</strong></td>
+          <td><strong>PASS (0.6971)</strong></td>
+        </tr>
+        <tr>
+          <td><code>RIEDELVENT bin37k</code> (E1)</td>
+          <td class="num">37,654</td>
+          <td class="num">0.105910 [0.092514, 0.119946]</td>
+          <td class="num">0.008776 [0.007519, 0.009929]</td>
+          <td class="num">0.106141 / 0.109749</td>
+          <td>0.7465 (62GEMSDOE)</td>
+        </tr>
+        <tr>
+          <td><code>RIEDELVENT collinear_novent</code> (Ablation E2)</td>
+          <td class="num">37,654</td>
+          <td class="num">0.104558 [0.092740, 0.117182]</td>
+          <td class="num">0.009145 [0.007836, 0.010326]</td>
+          <td class="num">0.096908 / 0.100013</td>
+          <td>0.7411 (62GEMSDOE)</td>
+        </tr>
+        <tr>
+          <td><code>VENTSCARP ventscarp</code> (Rule-2 Best)</td>
+          <td class="num">37,654</td>
+          <td class="num"><strong>0.112213 [0.096670, 0.127254]</strong></td>
+          <td class="num">0.008212 [0.006997, 0.009273]</td>
+          <td class="num">0.081321 / 0.085709</td>
+          <td>PASS (0.6947)</td>
+        </tr>
+        <tr>
+          <td><code>KNICKLOQO standalone</code> (Static Unique #1)</td>
+          <td class="num">37,654</td>
+          <td class="num">0.109043 [0.097872, 0.120534]</td>
+          <td class="num"><strong>0.010788 [0.009356, 0.012153]</strong></td>
+          <td class="num">0.095878 / 0.099203</td>
+          <td>PASS (0.6855)</td>
+        </tr>
+        <tr>
+          <td><code>LISTRIC standalone</code> (Static Nominal #1)</td>
+          <td class="num">37,654</td>
+          <td class="num">0.110593 [0.097436, 0.123346]</td>
+          <td class="num"><strong>0.010909 [0.009521, 0.012263]</strong></td>
+          <td class="num">0.090046 / 0.093713</td>
+          <td>FAIL (0.7107)</td>
+        </tr>
+        <tr>
+          <td><code>R0</code> (<code>GEMSDOE32</code> <code>h33-2-b2</code>, <code>0.2778 [CLAIM]</code>)</td>
+          <td class="num">37,654</td>
+          <td class="num">0.004006 [0.003403, 0.004711]</td>
+          <td class="num">0.004006 [0.003404, 0.004634]</td>
+          <td class="num">0.088789 / 0.093694</td>
+          <td>Parent control</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-bottom:0;">
+      <strong>Sibling research artifacts:</strong>
+      <a href="downloads/gemsdoe92-riedelvent-bin37k-37654-20261025-6797160f-zeros.tif" download>gemsdoe92-riedelvent-bin37k-37654-20261025-6797160f-zeros.tif</a> (<a href="downloads/gemsdoe92-riedelvent-bin37k-37654-20261025-6797160f-zeros.zip" download>ZIP</a> · <a href="downloads/gemsdoe92-riedelvent-bin37k-37654-20261025-6797160f-audit.json">audit</a>, SHA-256 <code>da96c3af27994f6c8726758b9b59a8f8dc4be7894a7c0ae110039409cd41ba09</code>) ·
+      <a href="downloads/gemsdoe92-riedelvent-collinear_novent-37654-20261025-37221889-zeros.tif" download>gemsdoe92-riedelvent-collinear_novent-37654-20261025-37221889-zeros.tif</a> (<a href="downloads/gemsdoe92-riedelvent-collinear_novent-37654-20261025-37221889-zeros.zip" download>ZIP</a> · <a href="downloads/gemsdoe92-riedelvent-collinear_novent-37654-20261025-37221889-audit.json">audit</a>, SHA-256 <code>2e220bb549e65c5992ed1d068269da170e1bc5140e169ad32dba1c1a01033553</code>).
+    </p>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:0;">3. Step-by-Step DrivenData Submission Procedure (For Eligible Future Candidates Only)</h2>
+    <p><strong>Important Policy Guard:</strong> Today&rsquo;s <code>RIEDELVENT</code> artifacts carry <code>submission_eligible: false</code> and <code>verdict: "negative"</code>. Do <strong>not</strong> spend one of the 3 weekly DrivenData submission slots unless a human selector explicitly promotes a candidate whose run card records <code>submission_eligible: true</code>. When uploading an eligible candidate:</p>
+    <ol>
+      <li><strong>Verify Byte Integrity Locally (Optional One-Liner):</strong> Confirm SHA-256 matches the run card:<br>
+        <code>sha256sum gemsdoe92-riedelvent-tail85k-85000-20261025-1cc99d0f-zeros.tif</code> &rarr; <code>709fc6cd643d92cd9fa7f77623007bb9da3763aa4ba0871f41f06e4b96541a40</code>.</li>
+      <li><strong>Open Official DrivenData Portal:</strong> Sign in at <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData Competition #306 — Find the Faults: Geothermal Play Fairway</a> and click <strong>Submit</strong> (rolling cap: <strong>3 submissions per 7 days</strong>).</li>
+      <li><strong>Upload Single-Band GeoTIFF or One-TIFF ZIP:</strong> Select either the <code>-zeros.tif</code> or <code>-zeros.zip</code> file. All pixels are pre-validated <code>float32</code> in <code>[0.0, 1.0]</code> with <code>0.0</code> outside the valid footprint, matching <code>sample_submission.tif</code> (<code>EPSG:32611</code>, <code>3730 &times; 3292</code>).</li>
+      <li><strong>Enter Unique Submission Metadata:</strong>
+        <ul>
+          <li>Record-only Name: <code>GEMSDOE92-RIEDELVENT-tail85k-20261025</code></li>
+          <li>Record-only Note (<code>101 / 140</code> chars): <code>RIEDELVENT tail85k: 85000px Mobius [0.3,1] Riedel+10m+vents; HOLDOUT-DTI 0.108448 (st 0.009755) [neg]</code></li>
+        </ul>
+      </li>
+      <li><strong>Select Prize-Round Entry &amp; Log Official Receipt:</strong> Designate <strong>1 active submission</strong> for Prize Evaluation and record the returned portal score in <code>ledger/submissions.csv</code> with evidence class <code>ORGANIZER-CONFIRMED</code>.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:0;">4. Verified Official Competition &amp; Scientific Sources</h2>
+    <ul>
+      <li><a href="ANALYSIS_20261025_RIEDELVENT.md">Full PhD Analysis (<code>docs/ANALYSIS_20261025_RIEDELVENT.md</code>)</a> &amp; <a href="HYPOTHESES_20261025_RIEDELVENT.md">Pre-Registered Hypotheses (<code>docs/HYPOTHESES_20261025_RIEDELVENT.md</code>)</a></li>
+      <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData Competition #306 Problem Description &amp; DTI Metric</a> · <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Official DOE/NREL Prize Rules PDF</a></li>
+      <li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Official Reference U-Net Baseline Repository</a></li>
+      <li><a href="https://doi.org/10.5066/P93LGLVQ">USGS GeoDAWN Airborne Magnetic &amp; Radiometric Survey (DOI: 10.5066/P93LGLVQ)</a> · <a href="https://www.usgs.gov/3d-elevation-program">USGS 3DEP 1/3-Arc-Second DEM</a></li>
+      <li><a href="https://gdr.openei.org/submissions/1391">DOE Geothermal Data Repository #1391 (GBCGE/UNR INGENIOUS Regional Dataset, CC BY 4.0)</a> · <a href="https://epsg.io/32611">EPSG:32611</a></li>
+    </ul>
+  </div>
+  </main>
+</body>
+</html>
