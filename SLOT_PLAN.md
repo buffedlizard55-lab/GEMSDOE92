@@ -1,3 +1,6 @@
+# SLOT_PLAN — NETEXPAND session (2026-10-25): NO SLOT AUTHORIZED — DO NOT SUBMIT
+
+NETEXPAND 3 arms built & format-valid; best strict HOLDOUT-DTI 0.177976 (netexpand_far) beats all in-run controls paired, but every arm is a Rule-1 lane duplicate vs FAULTNET/KNICKLOQO (0.76-0.81 > 0.70). Verdict negative, 0 slots used. Selector guidance: if one slot is ever allocated to this mechanism family after the F2 policy decision, NETEXPAND arms dominate FAULTNET files on identical folds (conservative pick: netexpand d>2; holdout-max pick: netexpand_far; never submit siblings together). Full record: docs/ANALYSIS_20261025_NETEXPAND.md, evidence/netexpand_run_card.json.
 # Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-25, Post-`LISTRICLOQO` Session)
 
 ## Current Slot Decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT (`submission_eligible: false`, `0` weekly slots spent, `96 BUILT / 0 RECEIPT`)**
