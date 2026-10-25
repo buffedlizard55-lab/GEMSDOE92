@@ -1,7 +1,7 @@
 # Submission clearance withdrawn — DO NOT SUBMIT
 
 <!-- CURRENT-STATUS:BEGIN -->
-## Current verified decision — 2026-10-25 (LISTRIC artifact labelled 2026-10-26)
+## Authoritative decision — Current verified status, 2026-10-25 (LISTRIC artifact labelled 2026-10-26)
 
 **OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** The completed lane generated a byte-unique TIFF, but it failed promotion gates.
 

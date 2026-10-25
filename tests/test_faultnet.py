@@ -113,11 +113,12 @@ def test_faultnet_lane_is_explicitly_negative_while_site_status_remains_authorit
     assert cur["uniqueness"]["unique_operative"] is False
     assert (ROOT / cur["file"]).is_file() and (ROOT / cur["zip"]).is_file()
 
-    # Repository-wide readiness is authoritative and must distinguish the
-    # downloadable research primary from upload permission on every entry page.
-    assert "CURRENT-STATUS:BEGIN" in readme
-    readme_status = readme.split("<!-- CURRENT-STATUS:BEGIN -->", 1)[1].split("<!-- CURRENT-STATUS:END -->", 1)[0]
+    # README has its own current first-screen review block; the legacy c5e
+    # renderer must not replace it with an older compatibility panel.
+    readme_status = readme.split("### Persisted user brief", 1)[0]
+    assert "Authoritative decision" in readme_status
     assert "OK TO DOWNLOAD FOR RESEARCH" in readme_status and "DO NOT SUBMIT" in readme_status
+    assert "REVIEW_20261025_ARENA_8A5595A3.md" in readme_status
     assert "CURRENT-READINESS:BEGIN" in index
     site_status = index.split("<!-- CURRENT-READINESS:BEGIN -->", 1)[1].split("<!-- CURRENT-READINESS:END -->", 1)[0]
     assert "OK TO DOWNLOAD FOR RESEARCH" in site_status and "DO NOT SUBMIT" in site_status
