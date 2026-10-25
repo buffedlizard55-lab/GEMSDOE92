@@ -1,9 +1,16 @@
-## FLEXMAG session — 2026-10-25 (read first)
+## Current review addendum — 2026-10-25 (fresh repository audit)
 
-Lane `FLEXMAG` completed 3/3 pre-registered experiments (`docs/HYPOTHESES_20261025_FLEXMAG.md`, `gems/flexmag.py`, `scripts/build_flexmag_submission.py`). Primary `gemsdoe92-flexmag-20261025T165411Z-flexmag-37654-zeros.tif` (SHA-256 `8190e1d0…`) is format-valid and locally unique, but HOLDOUT-DTI `0.045554 [0.035846, 0.056751]` (per-draw re-placement) is far below the 0.113316 bar → **verdict negative, DO NOT SUBMIT, 0 slots**. This session's brief (unique TIF + obvious eligibility + ranked hypotheses + holdout-before-slot) is satisfied by a *negative* deliverable; no submission-cleared file exists yet. Fresh facts: GEMSDOE32's own page (fetched 2026-10-25) calls h33-h33-2-b2 UNSCORED with NO ORGANISER SCORE; R0 lineage XOR identities re-verified. Read `docs/ANALYSIS_20261025_FLEXMAG.md` before older addenda.
+Read `docs/REVIEW_20261025_FRESH_AUDIT.md` first, then the latest protocol/source report `docs/REVIEW_7059163E.md` before older session-result addenda. Fresh checks after merging protocol review 7059163e: 499 tests passed (140 non-fatal Rasterio affine deprecation warnings); `scripts/check_site.py` reopened and gated 82 served rasters; public-status check, pinned parent, manifest and ledger passed. The README first-screen conflict was corrected. No new TIFF, geological experiment, HOLDOUT-DTI, organizer receipt, or weekly slot was produced. The existing LISTRICDIP raster remains research-only; the literal pinned-witness overlap stop remains binding. Ranked proposals are documented but not validated; the raw feature cache is absent. The unique-TIF objective remains unfulfilled. All links/results and the access boundary are in the audit; numbers are not new score claims.
 
 ---
-## Current review addendum — 2026-10-25 (`797e507a`)
+
+## FLEXMAG session — 2026-10-25 (parallel lane; read after the current audit above)
+
+Lane `FLEXMAG` completed 3/3 pre-registered experiments (`docs/HYPOTHESES_20261025_FLEXMAG.md`, `gems/flexmag.py`, `scripts/build_flexmag_submission.py`). Primary `gemsdoe92-flexmag-20261025T165411Z-flexmag-37654-zeros.tif` (SHA-256 `8190e1d0…`) is format-valid and locally unique, but HOLDOUT-DTI `0.045554 [0.035846, 0.056751]` (per-draw re-placement) is far below the 0.113316 bar → **verdict negative, DO NOT SUBMIT, 0 slots**. Fresh facts: GEMSDOE32's own page (fetched 2026-10-25) calls h33-h33-2-b2 UNSCORED with NO ORGANISER SCORE; R0 lineage XOR identities re-verified. Read `docs/ANALYSIS_20261025_FLEXMAG.md`. The audit addendum above and the literal-overlap stop remain the current decision.
+
+---
+
+## Prior current review addendum — 2026-10-25 (`797e507a`)
 
 Read `docs/REVIEW_797E507A.md` before older session-result addenda. This review generated no new TIFF and used no experiment or slot: a fresh pinned universal registry witness requires a stop. Preserve literal overlap, not matched-budget reinterpretations. The existing LISTRICDIP primary inherited from parallel main is research-only. Three public entry pages must have the generated authoritative status first; CI/Pages check byte pins and ordering. The unique-TIF objective remains unfulfilled. Persistent requirements in this file and the README are a normalized operating brief, not a verbatim user-message archive.
 
@@ -229,3 +236,7 @@ Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261024_COULOM
 - Required pre-build step restated: generate and rank 3–5 **untried** geological hypotheses (layers, signature/transform, why it catches a fault missing from the catalogue, how it differs from `gems/*.py`), validate the top one on the spatially-blocked holdout, and do not spend a weekly slot on anything that has not beaten the current holdout best (`COULOMBLOQO standalone 0.113316` on the strict draw-blind `d_visible > 2.0` instrument).
 - Arena Core Values (Maximize P(Win); Own the Outcome) are the decision framework for every trade-off; negative results are deliverables and must be preserved with the same rigour as positive ones.
 - Three passes per session (implement/verify → review/fix → recheck against the original request), then PR + merge to `main`, then list remaining work and limitations for the next session.
+
+## Review7059163e — 2026-10-25
+
+Start at the README's top decision and `docs/REVIEW_7059163E.md`. Fresh witness download/hash/grid/footprint verification still requires stopping before placement; no new TIFF or holdout. Preserve the existing normalized operating brief, not a claimed verbatim prompt. The shared supplementary Markdown renderer now repairs a current decision displaced by a prepended lane banner and rejects reversed markers. Archive future-dated “latest” claims rather than accepting their chronology. The Pages API reports built/legacy, but workflow-mode activation is still denied with HTTP 403; publication gating is not established for the live legacy site.

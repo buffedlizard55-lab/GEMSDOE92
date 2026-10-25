@@ -1,0 +1,46 @@
+{
+  "schema": "gemsdoe92-repository-review.v1",
+  "date": "2026-10-25",
+  "hypothesis": "No geological hypothesis was tested: the assigned method lane is unspecified and the literal pre-placement registry stop is binding.",
+  "mechanism": "Rejection-only universal witness check; no feature generation or dot placement.",
+  "named_non_fault_process": "Not evaluated; no candidate surface was generated.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 22663,
+    "value": null,
+    "ci95": null,
+    "status": "not run in this review"
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "one pinned witness; rejection-only, not a complete public registry scan",
+    "witness_forward_overlap_for_any_nonempty_in_footprint_candidate": 1.0,
+    "threshold": 0.70,
+    "candidate_surface_rank_correlation": null,
+    "final_candidate_dot_overlap": null,
+    "verdict": "stop before placement"
+  },
+  "raster_sha256": null,
+  "validator_output": {
+    "candidate_raster_generated": false,
+    "no_nan_inside_footprint": null,
+    "values_in_0_1": null,
+    "crs_shape_transform_match": null,
+    "note": "No candidate file to validate. Separately, scripts/check_site.py passed local format gates on 82 served research TIFFs."
+  },
+  "submission_name": null,
+  "submission_note": null,
+  "verdict": "negative",
+  "experiments_used": 0,
+  "weekly_slots_used": 0,
+  "organizer_confirmed_score": null,
+  "verification": {
+    "pytest": "498 passed; 140 pending-deprecation warnings",
+    "site_check": "PASS; 82 served rasters gated",
+    "manifest": "PASS",
+    "pinned_parent": "PASS; pinned artefact bytes verified",
+    "ledger": "111 rows; no organizer receipt",
+    "chronology_irregularity": "2026-10-26 artifact dates occur in a 2026-10-25 session; chronology not established"
+  }
+}

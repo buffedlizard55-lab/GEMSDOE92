@@ -20,7 +20,9 @@ sys.path.insert(0, str(ROOT))
 CARD = 'docs/downloads/review_c5e3848c_integrated_run_card.json'
 BEGIN = '<!-- CURRENT-STATUS:BEGIN -->'
 END = '<!-- CURRENT-STATUS:END -->'
-PAGES = ('docs/submit.html', 'index.html', 'README.md', 'docs/REVIEW_CURRENT.md',
+# README.md has a distinct first-screen review summary and regression test; do not
+# overwrite it with this older c5e3848c compatibility panel.
+PAGES = ('docs/submit.html', 'index.html', 'docs/REVIEW_CURRENT.md',
          'SUBMISSION_READY.md', 'docs/BEAT_0_2778.md')
 
 
@@ -119,11 +121,19 @@ def render(text: str, block: str, *, markdown: bool) -> str:
         raise ValueError('malformed current-status markers')
     if BEGIN in text:
         start, end = text.index(BEGIN), text.index(END) + len(END)
-        return text[:start] + block + text[end:]
+        if text.index(END) < start:
+            raise ValueError('malformed current-status markers: end precedes begin')
+        if not markdown:
+            return text[:start] + block + text[end:]
+        # Remove and reinsert below the H1, even if a parallel lane prepended
+        # a banner above an already-existing panel. Merely replacing the panel
+        # allowed misleading future-dated 'Latest artifact' claims to win.
+        text = text[:start] + text[end:]
     if markdown:
-        # README retains its project H1; current decision precedes all lane claims.
         first, sep, rest = text.partition('\n')
-        return first + sep + '\n' + block + '\n' + rest
+        if not sep or not first.startswith('# '):
+            raise ValueError('markdown current status requires a project H1')
+        return first + sep + '\n' + block + '\n\n' + rest.lstrip('\n')
     body = re.search(r'<body\b[^>]*>', text, re.I)
     if not body:
         raise ValueError('page has no body')
