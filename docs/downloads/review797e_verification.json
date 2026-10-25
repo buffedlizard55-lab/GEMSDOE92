@@ -1,6 +1,6 @@
 {
-  "reviewed_utc": "2026-10-25T14:54:03.712160+00:00",
-  "scope": "Local three-pass verification after reconciling origin/main bbda6c5; not an organizer receipt or live deployment proof.",
+  "reviewed_utc": "2026-10-25T15:04:01.833906+00:00",
+  "scope": "Final local verification after parallel main d6f7ac0; no organizer receipt or live deployment proof.",
   "passes": [
     {
       "pass": 1,
@@ -19,14 +19,14 @@
     {
       "command": "python -m pytest -q",
       "exit_code": 0,
-      "tests_passed": 396,
+      "tests_passed": 404,
       "warnings": 126,
       "warning_class": "Rasterio Affine PendingDeprecationWarning"
     },
     {
       "command": "python scripts/check_site.py",
       "exit_code": 0,
-      "served_rasters_reopened_and_gated": 66
+      "served_rasters_reopened_and_gated": 70
     },
     {
       "command": "python scripts/render_public_status.py --check",
@@ -43,10 +43,12 @@
     }
   ],
   "critical_implementation_sha256": {
-    "gems/public_status.py": "1342ae20a6e543b98d24649dc0047c39b0da1f680863fd5f055a25a1ca37404e",
-    "scripts/render_public_status.py": "e658ed09c8ec12b0fff0c0d7918218977f7e7aa722fe72021348ff0c57c47c4c",
+    "gems/public_status.py": "68aac882760b9c846c0ae8955cc449a15f5f3ebf317471ddb9eb0f88547fbc05",
+    "scripts/render_public_status.py": "04ae970fd953bcfdb3f2554e87f6f1ba1d5ba5a245e9efb9654d62a8307888e9",
     "scripts/check_site.py": "8133e612a7d96ece4cca6f854533eba4a68fa99e27c5ed2c2b2eb68f6a015fda",
-    "tests/test_public_status.py": "6e86483ea04c8af75342d87779806ac75cc246c13314b5f89fc6775d856a9abf"
+    "tests/test_public_status.py": "6e86483ea04c8af75342d87779806ac75cc246c13314b5f89fc6775d856a9abf",
+    "validate_submission.py": "491396de870c45b4cc9423bd6cd1627ac4a54288f35810f9c9225b4e898e6f25",
+    "tests/test_submission_entrypoint.py": "6462e4d91c758c17fca027f45e1b8854dea7622d386e6b1e353c86b01d801e72"
   },
   "new_tiff_generated": false,
   "new_experiments": 0,
@@ -56,5 +58,6 @@
     "New unique submission TIFF: literal registry stop makes every nonempty candidate ineligible.",
     "Live leaderboard/receipt/data-license and current non-GitHub official source checks unavailable.",
     "Pages build-mode setting update returned 403; live refresh must be verified separately."
-  ]
+  ],
+  "parallel_integration": "Preserved incoming research files, corrected unsupported submission clearance and root validator, archived original false-promote card. Corrected initial hash attribution: incoming KNICK hash was correct, older docs stale."
 }
