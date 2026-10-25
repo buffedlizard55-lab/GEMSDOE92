@@ -1,5 +1,16 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+<!-- CURRENT-STATUS:BEGIN -->
+## Current verified decision — 2026-10-25 (review c5e3848c)
+
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review. The new-submission requirement remains unmet.
+
+[Current research download](docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif) · [fresh run card](docs/downloads/review_c5e3848c_run_card.json) · [three-pass review](docs/REVIEW_C5E3848C.md) · [executive submission guide](docs/executive-summary.html).
+
+Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
+
+<!-- CURRENT-STATUS:END -->
+
 > ## Latest artifact — DRAINAGE-KNICK (2026-10-25)
 > **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). New byte-unique GeoTIFF; all automated format checks pass, but HOLDOUT-DTI `0.061728 [0.047046, 0.075316]` is below the `0.113316` promotion bar and literal public-registry overlap is `1.0 > 0.70`.
 >

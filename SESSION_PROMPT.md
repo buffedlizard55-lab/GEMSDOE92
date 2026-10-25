@@ -1,5 +1,10 @@
 # Session prompt — GEMSDOE92
 
+## Current review addendum — 2026-10-25 (c5e3848c)
+
+Read [the current three-pass review](docs/REVIEW_C5E3848C.md) and [fresh run card](docs/downloads/review_c5e3848c_run_card.json) before historical lane records. The literal pre-placement stop was reproduced from pinned witness bytes. No new TIFF or geological experiment was generated; the new submission requirement remains unmet. Current status panels are rendered by `scripts/render_current_status.py` and publication checks reject drift. No single method paragraph was assigned in the current request. Do not invent a lane or silently weaken the overlap rule. The README retains the persistent user brief and core values; this addendum does not remove any requirement.
+
+
 Read this at the start of every session, together with `README.md`. The README is the short executive summary; this file is the durable project operating contract. Preserve the user's goals: a unique, easy-to-download submission GeoTIFF, automated format validation, transparent evidence, and no hallucinated claims.
 
 ## Current binding clarification — 2026-10-25 (`376a8469`)

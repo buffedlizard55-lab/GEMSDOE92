@@ -1,5 +1,16 @@
 # Current review — 2026-10-25 (`KNICKLOQO` session; read this block first)
 
+<!-- CURRENT-STATUS:BEGIN -->
+## Current verified decision — 2026-10-25 (review c5e3848c)
+
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review. The new-submission requirement remains unmet.
+
+[Current research download](downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif) · [fresh run card](downloads/review_c5e3848c_run_card.json) · [three-pass review](REVIEW_C5E3848C.md) · [executive submission guide](executive-summary.html).
+
+Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
+
+<!-- CURRENT-STATUS:END -->
+
 **✅ OK TO DOWNLOAD: YES (`10/10` format gates PASS, finite `[0.0, 1.0]`, `0` NaNs); ⛔ OK TO SUBMIT: NO — DIAGNOSTIC ONLY (`verdict: negative` under literal `17GEMSDOE` dense surface; `UNIQUE` under `dual_reading_decision` with `0 / 1,412` public rasters `> 0.70`, max `0.685531 <= 0.70`).**
 Newest unique artifact: `docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif` (`sha256 = 8ad4a8c2cd8e1fd965d91643da6efbe82da8b3668e6dc8e59d193a8302424a7d`, best of three pre-registered arms `standalone`, `uncal`, `dual35`).
 - **All-Time #1 Static `HOLDOUT-DTI` (`d_cat > 2.0`):** **`0.010788 [0.009468, 0.012201]`** (`gems57-pooled-hide-v2`, `22,663` withheld positives), beating `PROVINCETOE piedbasin` (`0.009711`), `POISSONKNICK qcal` (`0.009684`), `POISSONFLEX` (`0.008824`), `EULERFUSE gravity` (`0.009265`), `COULOMBLOQO standalone` (`0.009220 [0.007933, 0.010683]`) by **`+17.0%` (`+0.001568`, paired 95% CI `[+0.000592, +0.002535]`)**, and `R0` (`0.004006`) by **`+169.3%`**.

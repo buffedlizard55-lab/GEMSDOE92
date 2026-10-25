@@ -1,3 +1,17 @@
+# Current ordered next steps — c5e3848c, 2026-10-25
+
+**DO NOT SUBMIT. No new TIFF generated in this review.** [Fresh review](REVIEW_C5E3848C.md) · [run card](downloads/review_c5e3848c_run_card.json).
+
+1. Resolve the literal registry conflict explicitly in a future brief. A freshly pinned full-footprint witness gives overlap 1.0 for every nonempty candidate, requiring stop before placement. Matched-budget readings cannot substitute for the binding rule.
+2. Assign one geological lane; audit data permissions, cache identities, band meanings and the exact holdout segmentation/buffer. Freeze a comparable control and separate outer spatial test before any further adaptive search.
+3. Only when permitted: restore the existing cache, test every feature for leakage, compare surfaces before placement and final dots after placement, and evaluate at most three experiments / two hours with the shared evaluator/writer. No automatic slot promotion.
+4. Fix Pages publication permissions: current API reports legacy build mode, errored status; changing to workflow publication returned HTTP 403. Do not claim the live site is validator-gated until confirmed.
+5. Verify the current competition cap and actual organizer receipts via authorized access; external official websites/PDFs remain outside this sandbox's network allowlist.
+
+`python scripts/render_current_status.py --check` now enforces a synchronized decision above archived lane claims. Existing research TIFFs remain downloadable and automatically format-validated; none is cleared by this review. All following sections are historical session-specific next steps, not independent authorization to resume experiments.
+
+---
+
 # Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`KNICKLOQO` Session)
 
 ## Completed this session (`KNICKLOQO` + Action #1 Dual-Reading Audit + Action #2 `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` Resolution)
