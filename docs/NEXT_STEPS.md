@@ -26,6 +26,12 @@ The unique submission request is still unmet. **Maximize P(Win)** and **Own the 
 
 ## Historical next-step proposals (not authorization)
 
+## Completed in `RELAYCONDUIT` session (`2026-10-25`, `3/3` experiments, `0` weekly slots)
+
+1. Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261025_RELAYCONDUIT.md`) and implemented `gems/relayconduit.py` + `scripts/run_relayconduit.py` (`35/35` single-feature leakage canaries PASS, max symmetric AUC `0.811014 <= 0.90`).
+2. `relay_conduit` (`d > 3.2`, `dae576a3...`) achieved strict Rule-2 `HOLDOUT-DTI = 0.184485 [0.169875, 0.198933]` (paired `+0.069008 [+0.053289, +0.084771]` over rebuilt `control_COULOMBLOQO_d32` `0.115477`), halted by automated 102-repo screening on `GEMSDOE53` 80k (`0.7843 > 0.70`); zero-catalogue hero `conduit_notip` (`b5095372...`) cleared all 101 local (`0.5070 <= 0.70`) and all 1,367 external 102-repo (`0.6557 <= 0.70`, `0` violations) operative gates with `USGS SGMC PROXY = 0.106525` and remains `negative` (`DO NOT SUBMIT`) under the binding literal `17GEMSDOE` dense-surface rule (`1.000 > 0.70`).
+3. Updated `ledger/site_scores_claimed_20261025.csv` with prompt-reported `GEMSDOE91` (`0.1367`, `0.1823`) and `GEMSDOE92` (`0.0255`) claims and documented the `VENTSCARP` §1.3 corrections in `docs/ANALYSIS_20261025_RELAYCONDUIT.md`.
+
 # Next Steps — GEMSDOE92 (Updated 2026-10-26, Post-LISTRIC Session)
 
 ## Completed this session (LISTRIC — NEXT_STEPS Rank 4 executed)

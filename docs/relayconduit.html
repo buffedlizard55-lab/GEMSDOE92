@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RELAYCONDUIT — download decision, Run Card, and DrivenData submit steps</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<aside id="relayconduit-subpage-decision" class="banner banner-warn" aria-label="RELAYCONDUIT decision" style="border:2px solid #7f1d1d;">
+  <p><strong>RELAYCONDUIT (2026-10-25) — Three pre-registered GeoTIFFs built this session. Verdict: <code>negative</code>.</strong></p>
+  <p>
+    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH (11/11 automated format gates PASS in [0, 1], 0 NaN)</span>
+    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE</span>
+  </p>
+  <p>
+    <a class="btn" href="downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-zeros.tif" download><strong>⬇ Download research GeoTIFF: gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-zeros.tif</strong></a>
+    · <a href="downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-zeros.zip" download>one-TIFF ZIP</a>
+    · <a href="downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-audit.json">audit JSON</a>
+    · <a href="downloads/relayconduit_run_card.json">JSON Run Card</a>
+    · <a href="downloads/relayconduit_holdout.json">holdout JSON</a>
+    · <a href="downloads/relayconduit_uniqueness.json">102-repo uniqueness JSON</a>
+  </p>
+</aside>
+
+<header class="hero">
+  <p class="kicker">DOE GEMS Prize (#306) · RELAYCONDUIT executive subpage · local HOLDOUT-DTI (no organizer receipt)</p>
+  <h1>RELAYCONDUIT: Download Decision, DrivenData Form Guide, and 3-Arm Ablation</h1>
+  <p class="lede">Every validation check runs automatically in code without human pixel inspection. Weekly submission-slot promotion remains a separate human selector step.</p>
+</header>
+
+<section id="relayconduit-decision-before-form">
+  <h2>1. Immediate Decision (Before Touching the DrivenData Form)</h2>
+  <ul>
+    <li><strong>OK to download: YES, for research &amp; audit.</strong> Single-band <code>float32</code> GeoTIFF, <code>EPSG:32611</code>, <code>3730 &times; 3292</code>, all <code>12,279,160</code> cells finite in <code>[0.0, 1.0]</code>, <code>0</code> NaNs anywhere (zeros-outside encoding prevents the portal error <code>Predicted values must be in range [0, 1]</code>), <code>37,654</code> binary <code>1.0</code> pixels spaced &ge; <code>2.8 px</code>, <code>0</code> dots on or within <code>2.0 px</code> of <code>existing_faults</code>. GeoTIFF SHA-256: <code>b509537223cf333f463ebac6a527aa5beabde86201133317d8485584a742d7b9</code> (ZIP SHA-256: <code>7b67df2ec7c00c4cbe1fe9569e28b175324c62633c122d42705f2503532ae776</code>).</li>
+    <li><strong>OK to submit: NO (<code>verdict: negative</code>, <code>submission_eligible: false</code>, <code>0</code> weekly slots spent).</strong>
+      <ul>
+        <li>Hero arm <code>conduit_notip</code> passes <strong>all operative sparse &amp; matched-budget uniqueness checks</strong> across <code>101</code> local rasters (worst 3-px overlap <code>0.5070 &le; 0.70</code>, <code>|&rho;| = 0.1234 &le; 0.90</code>) and across all <code>1,367</code> compatible external rasters in <code>102</code> public <code>*GEMSDOE*</code> repositories (worst 3-px overlap <code>0.6557 &le; 0.70</code>, <code>0</code> violations; worst <code>&le; 50k</code>-dot overlap <code>0.4180 &le; 0.70</code>; worst surface <code>|&rho;| = 0.3154 &le; 0.90</code>), and achieves off-catalogue <strong>USGS SGMC PROXY = <code>0.106525</code></strong> (vs <code>COULOMBLOQO</code> <code>0.089332</code>) and static <code>HOLDOUT-DTI = 0.005733 [0.004823, 0.006714]</code> (beats <code>R0</code> <code>0.004006</code> and <code>LISTRICDIP</code> <code>0.005420</code>).</li>
+        <li>However, under the binding literal positive-support registry rule, full-footprint continuous witness <code>17GEMSDOE_E-proba-multiscale</code> (<code>5,167,373</code> positive cells) forces literal overlap <code>1.000 &gt; 0.70</code> on every nonempty raster, and on strict draw-blind Rule-2 catalogue holdout <code>conduit_notip</code> scores <code>0.076416 [0.063889, 0.088770]</code> vs <code>control_COULOMBLOQO</code> <code>0.113316 [0.101084, 0.126832]</code>.</li>
+        <li>Meanwhile, sibling arms <code>relay_conduit</code> (Rule-2 <code>HOLDOUT-DTI = 0.184485 [0.169875, 0.198933]</code>) and <code>relay_delta</code> (<code>0.180061 [0.165231, 0.193562]</code>) significantly beat <code>control_COULOMBLOQO_d32</code> (<code>0.115477</code>, paired <code>+0.069008 [+0.053289, +0.084771]</code>) and exceed <code>FAULTNET netfar</code> (<code>0.175147</code>), while our automated 102-repo gate caught 3-px overlap <code>0.7843 &gt; 0.70</code> and <code>0.8364 &gt; 0.70</code> against <code>GEMSDOE53</code>'s 80k tip-relay raster and halted promotion.</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section id="relayconduit-form-fields">
+  <h2>2. DrivenData Submission Form Procedure (Record-Only Reference)</h2>
+  <p>Do <strong>not</strong> perform an upload with any <code>negative</code> research artifact below. When a human weekly-slot selector uploads an authorized cleared candidate on DrivenData Competition #306, the portal requires three exact inputs:</p>
+  <ol>
+    <li><strong>File Upload:</strong> Upload either the zeros-outside single-band <code>float32</code> <code>.tif</code> (or the matching one-TIFF <code>.zip</code> archive). Never upload a file containing <code>NaN</code> outside the footprint — the DrivenData validator rejects NaNs with <code>Predicted values must be in range [0, 1]</code>.</li>
+    <li><strong>Separate Identifiable Submission Name Field:</strong><br>
+      <code>GEMSDOE92-RELAYCONDUIT-conduit_notip-20261025</code></li>
+    <li><strong>Submission Note / Description Field (&le; 140 characters; exact length <code>115/140</code>):</strong><br>
+      <code>RELAYCONDUIT conduit_notip: 37654px zero-tip OOF blind+3DEP conduit d&gt;2px; HOLDOUT-DTI 0.076416 (st 0.005733) [neg]</code></li>
+  </ol>
+</section>
+
+<section id="relayconduit-three-arms">
+  <h2>3. All Three Pre-Registered RELAYCONDUIT Artifacts (3/3 Budget Cap)</h2>
+  <ul>
+    <li><strong>Arm 3 (Hero, zero-catalogue operative-unique):</strong>
+      <a href="downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-zeros.tif" download>gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-zeros.tif</a>
+      · <a href="downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-zeros.zip" download>ZIP</a>
+      · <a href="downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-audit.json">audit</a>
+      — <code>37,654</code> dots (<code>d_cat &gt; 2.0 px</code>), SHA-256 <code>b509537223cf333f463ebac6a527aa5beabde86201133317d8485584a742d7b9</code>, Rule-2 <code>HOLDOUT-DTI = 0.076416 [0.063889, 0.088770]</code>, static <code>0.005733 [0.004823, 0.006714]</code>, <code>SGMC PROXY = 0.106525</code>, 102-repo operative worst overlap <code>0.6557 &le; 0.70</code> (<code>unique_operative = true</code>), literal overlap <code>1.000</code>, verdict <code>negative</code>.</li>
+    <li><strong>Arm 1 (Self-excluded tip-relay + bimodal OOF conduit):</strong>
+      <a href="downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.tif" download>gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.tif</a>
+      · <a href="downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.zip" download>ZIP</a>
+      · <a href="downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-audit.json">audit</a>
+      — <code>37,654</code> dots (<code>d_cat &gt; 3.2 px</code>), SHA-256 <code>dae576a3b21b83988e05f0f2a51b0d312b14bb0ca6843a1ebfdb4781edf75a66</code>, Rule-2 <code>HOLDOUT-DTI = 0.184485 [0.169875, 0.198933]</code> (paired <code>+0.069008</code> over <code>control_COULOMBLOQO_d32</code>), local overlap <code>0.6601 &le; 0.70</code>, 102-repo overlap <code>0.7843 &gt; 0.70</code> vs <code>GEMSDOE53</code> 80k, verdict <code>negative</code>.</li>
+    <li><strong>Arm 2 (Differential tip-relay uplift delta):</strong>
+      <a href="downloads/gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-zeros.tif" download>gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-zeros.tif</a>
+      · <a href="downloads/gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-zeros.zip" download>ZIP</a>
+      · <a href="downloads/gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-audit.json">audit</a>
+      — <code>37,654</code> dots (<code>d_cat &gt; 3.5 px</code>), SHA-256 <code>f1a72ef0d99e3a7943c06db59bc5f0646740778ea75c627d7ea5758b82aac613</code>, Rule-2 <code>HOLDOUT-DTI = 0.180061 [0.165231, 0.193562]</code>, local overlap <code>0.6233 &le; 0.70</code>, 102-repo overlap <code>0.8364 &gt; 0.70</code> vs <code>GEMSDOE53</code> 80k, verdict <code>negative</code>.</li>
+  </ul>
+  <p>
+    <a href="ANALYSIS_20261025_RELAYCONDUIT.md">PhD Analysis (GEMSDOE32 0.2778 [CLAIM], 0.3195 / 0.4413 ceilings &amp; VENTSCARP §1.3 correction)</a>
+    · <a href="HYPOTHESES_20261025_RELAYCONDUIT.md">Pre-Registered Hypotheses</a>
+    · <a href="executive-summary.html">Executive Summary</a>
+    · <a href="index.html">Workbench Home</a>
+  </p>
+</section>
+</main>
+</body>
+</html>
