@@ -228,7 +228,7 @@ def test_coulombdm_run_card_and_site_html_integrity():
     # research download. The old file stays linked; it is no longer primary.
     assert card["file"] not in primaries[0]
     assert card["file"] in html
-    assert "gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif" in primaries[0]
+    assert "h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif" in primaries[0]
 
     for html_path in sorted(DOCS.glob("*.html")):
         txt = html_path.read_text(encoding="utf-8")

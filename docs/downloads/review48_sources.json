@@ -1,0 +1,46 @@
+{
+  "reviewed_utc": "2026-10-25T16:44:26.602869+00:00",
+  "sources": [
+    {
+      "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/012e17b2a115c3c0d5e7885bea625bf9657c99fc/docs/index.html",
+      "git_blob_sha": "45d52189a1fc35d57fefb4ea920af6797926aaf2",
+      "sha256": "b88a7f10d064ae33c757d9273ab0d73d1fe29de8ea69029ddfd468bcd73560b1",
+      "bytes": 19571,
+      "verified_claims": [
+        "The primary note includes UNSCORED.",
+        "The page says no score in this repository is organizer-verified."
+      ],
+      "source_class": "OWNER-SITE (not organizer receipt)"
+    },
+    {
+      "url": "https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/README.md",
+      "git_blob_sha": "a8814f99c395d12a8e1c3731c738e61d7dca06b5",
+      "sha256": "cfa4d55559c9128313beb9417eae7e0a94c31677132afb1120f9e86222804239",
+      "bytes": 2367,
+      "verified_claims": [
+        "The reference supports CPU-only as well as GPU environments.",
+        "Downloading competition data is a documented prerequisite."
+      ],
+      "source_class": "OFFICIAL-REFERENCE"
+    },
+    {
+      "url": "https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/unet-mc-cv-reference-solution.ipynb",
+      "git_blob_sha": "d45bf7bdb1d31a22caa38371ad195c2f6eb965ae",
+      "sha256": "1a7622732ba00f67237058bc0efe79b45ba4e87c449fc9c1e5d6ea659de92ca0",
+      "bytes": 1578736,
+      "verified_claims": [
+        "Notebook cell 16 sets alpha=0.2 and beta=0.8 for TverskyLoss.",
+        "This is training-loss evidence, not a validation of the organizer distance-weighted scoring service."
+      ],
+      "source_class": "OFFICIAL-REFERENCE"
+    }
+  ],
+  "unverified_external_pages": [
+    "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+    "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/",
+    "https://docs.nlr.gov/docs/fy26osti/96647.pdf",
+    "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and",
+    "https://gdr.openei.org/submissions/1391"
+  ],
+  "access_limit": "Non-allowlisted hosts cannot be fetched from this sandbox; no login, live cap, score or current rules claimed."
+}

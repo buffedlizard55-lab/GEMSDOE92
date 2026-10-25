@@ -1,4 +1,30 @@
+# Current review — 2026-10-25 (`48e4797d`)
+
+<!-- CURRENT-STATUS:BEGIN -->
+## Authoritative decision — Current verified status, 2026-10-25 (LISTRICLOQO 2026-10-25)
+
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** LISTRICLOQO is a byte-distinct research artifact, but it fails the literal registry-overlap stop and promotion gates.
+
+[Existing LISTRICLOQO research TIFF — not cleared to submit](downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif) · [protocol run card](downloads/listric_loqo_run_card.json) · [analysis](ANALYSIS_20261025_LISTRICLOQO.md) · [three-pass review](REVIEW_20261025_SESSION.md) · [executive submission guide](executive-summary.html).
+
+Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.013295 [0.011713, 0.014980]`; paired improvement over KNICKLOQO is +0.002508 [0.001477, 0.003463]. Public dual-reading overlap is `0.690259 <= 0.70`, but the binding literal dense-witness overlap is `1.0 > 0.70`; this file is not uniqueness-cleared. No ORGANIZER-CONFIRMED score is available; 3/3 experiments and zero weekly slots.
+
+<!-- CURRENT-STATUS:END -->
+
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT. No new unique TIFF.**
+
+Start with the [current review page](review48.html), [three-pass record](REVIEW_48.md), [fresh automated run card](downloads/review48_run_card.json), and [retrieved-source receipt](downloads/review48_sources.json).
+
+The freshly fetched hash-pinned dense witness proves literal overlap 1.0 for every nonempty in-footprint candidate. The unchanged protocol requires stopping before placement. No assigned geological lane appears in the brief. A new candidate and holdout evaluation remain blocked; no slot was used. Historical dual-reading clearance is not binding.
+
+Use `python scripts/audit_readiness.py --fetch-witness --output .cache/new-review.json` to reproduce the rejection and revalidate current download bytes. Exit 1 is a confirmed STOP; 2 is inconclusive. No human pixel inspection is required. See [next steps](NEXT_STEPS.md) before experiments.
+
+<details>
+<summary>Historical review records — superseded where inconsistent with the binding STOP</summary>
+
 # Current review and next steps — 2026-10-25 (`f23ca2d2`)
+
+
 
 **No new TIFF. Research downloads only; DO NOT SUBMIT.** [Fresh review](REVIEW_F23.md) · [automated status](downloads/readiness.json) · [run card](downloads/review_f23_run_card.json).
 
@@ -17,16 +43,23 @@ Earlier “current,” “unique,” and promotion instructions below are histor
 
 # Authoritative current review — 2026-10-25 (`797e507a`)
 
-<!-- CURRENT-STATUS:BEGIN -->
-## Current verified decision — 2026-10-25 (review c5e3848c)
 
-**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review. The new-submission requirement remains unmet.
 
-[Current research download](downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [fresh run card](downloads/review_c5e3848c_integrated_run_card.json) · [three-pass review](REVIEW_C5E3848C.md) · [executive submission guide](executive-summary.html).
+# Current review — 2026-10-25 (`LISTRICLOQO` session; read this block first)
 
-Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
+**✅ OK TO DOWNLOAD FOR RESEARCH: YES (`11/11` automated format gates PASS, finite `[0.0, 1.0]`, `0` NaNs); ⛔ OK TO SUBMIT: NO — DO NOT SUBMIT FOR A WEEKLY SLOT (`verdict: negative` under literal `17GEMSDOE` dense surface; `UNIQUE` under `dual_reading_decision` with `0 / 1,459` public rasters `> 0.70`, max `0.690259 <= 0.70`).**
+Newest unique artifacts:
+1. `docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif` (`sha256 = 58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17`, best static arm);
+2. `docs/downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif` (`sha256 = dc6d8f06053a48efdc07146535f4fc27b50643fc54fd7fc7a3fa243d119186cb`, best strict draw-blind arm);
+3. `docs/downloads/h33-h33-2-b2-LISTRICLOQOuncal-20261025-2962f45f-zeros.tif` (`sha256 = 304ffdc6ac5899da5947f0f19dfb33579adc6e112d8af3e7f97f770f0c55b0aa`, uncalibrated ablation).
+- **All-Time #1, #2, #3 Static `HOLDOUT-DTI` (`d_cat > 2.0`, `gems57-pooled-hide-v2`, `22,663` withheld positives):** **`selectcal = 0.013295 [0.011713, 0.014980]`** (#1), **`standalone = 0.013250 [0.011620, 0.014974]`** (#2), **`uncal = 0.013105 [0.011462, 0.014868]`** (#3), beating prior #1 `KNICKLOQO standalone` (`0.010788 [0.009468, 0.012201]`) by **`+23.2%` (`+0.002508`, paired 95% CI `[+0.001477, +0.003463]`)**, `PROVINCETOE piedbasin` (`0.009711`) by **`+36.9%`**, `POISSONKNICK qcal` (`0.009304`) by **`+42.9%`**, `COULOMBLOQO standalone` (`0.009220`) by **`+44.2%`**, and `R0` (`0.004006`) by **`+231.9%`**.
+- **All-Time #1 Strict Draw-Blind `HOLDOUT-DTI` (`d_cat > 2.0`):** **`standalone = 0.013064 [0.011508, 0.014670]`** (`+19.2%` over prior #1 `KNICKLOQO standalone` `0.010958`).
+- **All-Time #1 & #2 Strict Draw-Blind Rule-2 `HOLDOUT-DTI` (`d_visible > 2.0`):** **`standalone = 0.114410 [0.101808, 0.127706]`** (#1 all-time) and **`selectcal = 0.113938 [0.100887, 0.127394]`** (#2 all-time), beating prior #1 `COULOMBLOQO standalone` (`0.113316 [0.100614, 0.127163]`), `EULERFUSE gravity` (`0.110387`), `KNICKLOQO standalone` (`0.109043`), and `H19-5` (`0.096757`, paired 95% CI `[+0.010234, +0.025094]`).
+- **USGS SGMC Off-Catalogue Bedrock `PROXY` (`62,122` px):** **`0.103442`** (`selectcal`) / **`0.103139`** (`standalone`), beating `R0` (`0.096060`) and `COULOMBLOQO standalone` (`0.090569`).
+- **Cures `#IR-92-PUBLIC-SCAN-RATELIMIT-705-FAILURES` & `#IR-92-LISTRIC-DIP-OFFSET-OVERLAP`:** Added `prefetch_via_local_and_codeload()` to `scripts/audit_public_registry.py` (`1,469 / 1,469` unique `.tif` blobs across `102` repos fetched & SHA-1-verified with `0` download failures, `1,459` compatible exact-grid rasters). All three `LISTRICLOQO` arms achieve **`0 / 1,459` public rasters `> 0.70` under `dual_reading_decision`** (`selectcal = 0.690259`, `standalone = 0.695703`, `uncal = 0.639242 <= 0.70`) and `0 / 68` local rasters `> 0.70`. Details: [`ANALYSIS_20261025_LISTRICLOQO.md`](ANALYSIS_20261025_LISTRICLOQO.md) · [run card](downloads/listric_loqo_run_card.json) · [next steps](NEXT_STEPS.md).
 
-<!-- CURRENT-STATUS:END -->
+Three passes this session: (1) implement + verify (shared-tool fix in `scripts/audit_public_registry.py`, pre-registered `docs/HYPOTHESES_20261025_LISTRICLOQO.md`, 42 single-feature leakage canaries `max AUC = 0.610332 <= 0.90`, 36-feature `gems/listric_loqo.py` stack + 3-branch LOQO models, 3 pre-registered arms `standalone`, `selectcal`, `uncal`, holdout + SGMC proxy + 102-repo `1,459`-raster uniqueness scan); (2) review — verified all 3 served TIFFs, `-audit.json` sidecars (`stop_required=True`), run card, and ledger rows; fixed `bilinear_sample_2d` test inputs and canary key assertions in `tests/test_listric_loqo.py`, and linked all 3 new TIFFs on `docs/index.html`, `docs/executive-summary.html`, `docs/SUBMIT.html`, and `README.md`; (3) recheck against the brief — all pytest tests pass (`372 passed`), all `66` served rasters pass `scripts/check_site.py`, all `96` ledger rows pass `make ledger`, and all manifests pass `make manifest` and `make verify`.
+
 
 **Research downloads only. DO NOT SUBMIT. No new TIFF generated.** Read [the current three-pass review](REVIEW_797E507A.md) and [run card](downloads/review797e_run_card.json). The inherited LISTRICDIP primary passes format checks but literal overlap is 1.0. A single generated status panel now precedes historical banners on all three entry pages, with byte-binding and ordering enforced by publication checks. Previous “unique” matched-budget claims below do not override the literal stop. No HOLDOUT-DTI was run or recertified; no slot was used.
 
@@ -237,3 +270,5 @@ See full methodology and tables in [`ANALYSIS_20261024_HYDROCONDUIT.md`](ANALYSI
 - **`PIEDFRONT f35Ptop`** (`GEMSDOE92-PIEDFRONT-f35Ptop-20261024`, `docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif`, SHA-256 `e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8`): static `HOLDOUT-DTI = 0.006425 [0.005375, 0.007479]`, `SGMC = 0.059993`, `verdict: negative` (**OK TO DOWNLOAD**, **DO NOT SUBMIT**). `HYDROCONDUIT f45hydro` (`0.008549 [0.007626, 0.009487]`) improves over `PIEDFRONT f35Ptop` by `+33.1%` (`+0.002124`) while overlapping only `56.56% <= 70%` within 3 px (`phi = 0.2000`).
 - **`STEPEDGE f60Sraw`** (`GEMSDOE92-STEPEDGE-f60Sraw-20261024`, `docs/downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif`, SHA-256 `c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4`): static `HOLDOUT-DTI = 0.003980 [0.003295, 0.004702]`, repo-best `SGMC = 0.141464`, `verdict: negative` (`42.35% <= 70%` 3-px overlap with `HYDROCONDUIT f45hydro`).
 - Ledger total across all merged sessions: `54 BUILT / 0 RECEIPT`.
+
+</details>
