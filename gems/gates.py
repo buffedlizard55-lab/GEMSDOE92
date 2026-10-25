@@ -55,29 +55,43 @@ def run_gates(candidate_path, reference_path, catalogue_path=None,
               prune_radius: int | None = None, *,
               require_submission_encoding: bool = False) -> list[GateResult]:
     results: list[GateResult] = []
-
-    ref = rasterio.open(reference_path)
-    cand = rasterio.open(candidate_path)
+    if prune_radius is not None and (
+        isinstance(prune_radius, (bool, np.bool_))
+        or not isinstance(prune_radius, (int, float, np.integer, np.floating))
+        or not np.isfinite(prune_radius) or prune_radius < 0
+    ):
+        return [GateResult("prune_radius", False, "radius must be finite and nonnegative")]
     try:
-        results.append(_g_crs(ref, cand))
-        results.append(_g_shape(ref, cand))
-        results.append(_g_transform(ref, cand))
-        results.append(_g_dtype_band(cand))
-        arr = cand.read(1).astype(np.float64)
-        footprint = np.isfinite(ref.read(1).astype(np.float64))
-        results.append(_g_value_range(arr, footprint))
-        results.append(_g_no_nan_inside(arr, footprint))
-        results.append(_g_nan_outside(arr, footprint))
-        if require_submission_encoding:
-            results.append(_g_submission_encoding(arr, footprint))
-        if catalogue_path is not None:
-            results.extend(_g_catalogue(arr, footprint, catalogue_path, prune_radius))
-    finally:
-        ref.close()
-        cand.close()
-
-    results.append(GateResult("reread_sha256", True,
-                              sha256_file(candidate_path)))
+        with rasterio.open(reference_path) as ref, rasterio.open(candidate_path) as cand:
+            results.extend((_g_crs(ref, cand), _g_shape(ref, cand),
+                            _g_transform(ref, cand), _g_dtype_band(cand)))
+            reference_ok = ref.count == 1 and ref.crs is not None
+            if not reference_ok:
+                results.append(GateResult("reference_grid", False,
+                                          "reference requires one band and a CRS"))
+            # Never index a mismatched grid, or interpret a multiband reference.
+            if not reference_ok or cand.count < 1 or ref.shape != cand.shape:
+                return results
+            arr = cand.read(1).astype(np.float64)
+            footprint = np.isfinite(ref.read(1).astype(np.float64))
+            if not footprint.any():
+                results.append(GateResult("reference_footprint", False, "empty footprint"))
+            results.extend((_g_value_range(arr, footprint), _g_no_nan_inside(arr, footprint),
+                            _g_nan_outside(arr, footprint)))
+            if require_submission_encoding:
+                results.append(_g_submission_encoding(arr, footprint))
+            if catalogue_path is not None:
+                with rasterio.open(catalogue_path) as cat:
+                    aligned = (cat.count == 1 and cat.shape == ref.shape
+                               and cat.crs == ref.crs and cat.transform == ref.transform)
+                if not aligned:
+                    results.append(GateResult("catalogue_grid", False,
+                                              "catalogue CRS/shape/transform/band mismatch"))
+                else:
+                    results.extend(_g_catalogue(arr, footprint, catalogue_path, prune_radius))
+        results.append(GateResult("reread_sha256", True, sha256_file(candidate_path)))
+    except (OSError, rasterio.errors.RasterioError) as exc:
+        results.append(GateResult("readable_raster", False, str(exc)))
     return results
 
 
@@ -93,14 +107,14 @@ def _g_shape(ref, cand):
 
 
 def _g_transform(ref, cand):
-    ok = ref.transform.almost_equals(cand.transform, precision=1e-6)
+    ok = ref.transform == cand.transform
     return GateResult("transform", ok, f"{ref.transform} vs {cand.transform}")
 
 
 def _g_dtype_band(cand):
-    ok = cand.dtypes[0] == "float32" and cand.count == 1
+    ok = cand.count == 1 and cand.dtypes[0] == "float32"
     return GateResult("dtype_and_band", ok,
-                      f"dtype={cand.dtypes[0]} count={cand.count}")
+                      f"dtype={cand.dtypes} count={cand.count}")
 
 
 def _g_value_range(arr, footprint):
@@ -113,8 +127,8 @@ def _g_value_range(arr, footprint):
 
 
 def _g_no_nan_inside(arr, footprint):
-    n = int(np.isnan(arr[footprint]).sum())
-    return GateResult("no_nan_inside_footprint", n == 0, f"nan_pixels={n}")
+    n = int((~np.isfinite(arr[footprint])).sum())
+    return GateResult("no_nan_inside_footprint", n == 0, f"nonfinite_pixels={n}")
 
 
 def _g_nan_outside(arr, footprint):
@@ -170,12 +184,10 @@ def _g_catalogue(arr, footprint, catalogue_path, prune_radius):
     on_or_near = _dots_within(*np.nonzero(mask), dot_ys, dot_xs, radius)
     # dots sitting ON the catalogue belong to the zero-mass gate, not this one
     n_near = int((on_or_near & ~mask[dot_ys, dot_xs]).sum())
-    expected_ok = prune_radius is not None and prune_radius < MIN_FROM_CATALOGUE_PX
     return [
         GateResult("catalogue_zero_mass", zero_ok, f"dots_on_catalogue={int(hit.sum())}"),
-        GateResult("distance_from_catalogue", n_near == 0 or expected_ok,
-                   f"radius={radius}px dots_within={n_near}"
-                   + (" (declared clearance override: radius < 3 px, inherited R0 dots only)" if expected_ok else "")),
+        GateResult("distance_from_catalogue", n_near == 0,
+                   f"radius={radius}px dots_within={n_near}; strict distance > radius required"),
     ]
 
 

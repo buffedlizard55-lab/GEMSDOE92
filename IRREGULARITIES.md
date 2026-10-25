@@ -1,3 +1,31 @@
+# Final integration note — 2026-10-25 (`f23ca2d2`)
+
+Reused the concurrently merged `gems/public_status.py` publication contract and rejection-only root CLI; refreshed its format-gate pins from the corrected shared validator. Both publication checks agree on the negative decision. Parallel RADIODECOUPLE/CURIE-DEMAG rasters are preserved and revalidated, not attributed to this review. Future-dated 2026-10-26 filenames/headers remain historical identifiers; the current review date remains 2026-10-25. Final checks: 436 tests and 70 served TIFFs pass; no newly generated candidate or slot.
+
+---
+
+# Concurrent merge correction — 2026-10-25 (`f23ca2d2`, PR #89 integration)
+
+- **IR-92-FALSE-UPLOAD-CLEARANCE (fixed):** commit `406638a` added active “submission ready” pages and `submission_eligible: true` despite the known literal duplicate stop. `SUBMIT_NOW.html` and `index_new.html` now redirect to the checked current status. Unsupported score projections and portal guarantees are withdrawn; the original publication remains in Git history.
+- **IR-92-SWALLOWED-VALIDATOR-ERROR (fixed, reproduced):** its root validator called `run_gates` without `reference_path`, caught the resulting TypeError, printed “ALL CHECKS PASSED — FILE IS READY FOR SUBMISSION,” and exited zero. Reproduced in this review before replacing it with a shared-readiness compatibility entry point that returns blocked status and never swallows a failure as clearance.
+- **IR-92-PARALLEL-RECEIPT-METADATA (fixed):** the new receipt said 123456 bytes, shape `[3292,3730]`, incorrect geotransform and nodata zero. Actual disk read: 149177 bytes, shape `[3730,3292]`, transform `[100,0,243350,0,-100,4508550]`, nodata null. Metadata is now generated from disk. **The parallel TIFF SHA-256 correction was valid**, not an error: `8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347` matches the original and current bytes. Earlier prose in this repo used a stale hash; this review initially repeated that mistake in commentary, then corrected it after comparing Git blobs and disk bytes.
+- Untested parallel `gems/flexure_knick_province.py` research code is preserved, not represented as a model trained or validated by this review.
+
+---
+
+# 2026-10-25 review (`f23ca2d2`) — new findings
+
+- **IR-92-PRUNE-RADIUS-BYPASS (fixed):** `gems/gates.py::_g_catalogue` used `n_near == 0 or prune_radius < 3`; any prediction inside a declared radius below three passed the distance gate. The legacy test encoded that bypass. Removed the override; test boundaries now include inside, exactly at, and outside the declared radius. All existing served artifacts are revalidated, not assumed to inherit a PASS.
+- **IR-92-READINESS-DRIFT (mitigated):** newer KNICKLOQO panels describe a matched-budget `dual_reading_decision` as unique although the shared helper's operative rule is now literal. Historical JSON and numerical claims are preserved, explicitly archived; a byte-bound current panel is generated and checked before CI/Pages publication. Future edits that stale that panel fail the checker.
+- **IR-92-GRID-FAILURE-HANDLING (fixed):** the validator could index a wrong-shape raster with the template mask and did not check catalogue georeferencing. It now returns structured failed gates for malformed rasters, mismatched catalogue grids and invalid radii; exact transform match is required.
+- **IR-92-NO-ELIGIBLE-NEW-TIFF (unresolved):** fresh pinned witness covers every footprint pixel, so the unchanged literal rule forbids all nonempty candidates. No new TIFF is generated, and no old artifact is renamed as new.
+- **IR-92-PAGES-MODE (unresolved, rechecked):** GitHub API reports legacy publication; PUT build_type=workflow returned HTTP 403 Resource not accessible by integration. Actions checks are not asserted to guard the live legacy site.
+- **IR-92-SCORE-PROVENANCE (unresolved):** freshly retrieved GEMSDOE32 page says UNSCORED and NO ORGANISER SCORE EXISTS. User-reported values and conflicting leaderboard numbers remain unverified.
+
+[Review](docs/REVIEW_F23.md) · [source receipt](evidence/review_f23_sources.json) · [pre-placement proof](evidence/review_f23_preflight.json).
+
+---
+
 # IRREGULARITIES — only items that change a decision
 
 ## 2026-10-25 (LISTRICDIP session) — antithetic budget cannot be filled without leaving the mechanism
@@ -1066,3 +1094,15 @@ Fresh Pages API: legacy publication; `PUT /repos/buffedlizard55-lab/GEMSDOE92/pa
 ### 3. `#IR-92-OVERBUDGET-SPARSE-WITNESS-ASYMMETRY`: `DOT_FIELD_MAX_SUPPORT = 150,000` Evaluates `37,654`-Dot Candidates Without Budget-Matching Against `55k–126k`-Dot Skeletons
 - **Observation (`REGISTRY-MEASUREMENT`):** `PROVINCETOE provincetoe` (`0.684575` local; **`0.660434 <= 0.70` max across all external rasters with `<= 50,000` positive pixels**) and `piedbasin` (`0.661284` local; **`0.638843 <= 0.70` max across all `<= 50,000`-dot external rasters**) pass uniqueness against every comparable-budget peer across `102` repos. Every external hit `> 0.70` has **`54,864` to `125,890` positive pixels (`1.46x`–`3.34x` budget)**, led by `62GEMSDOE/.../gems62f-h2r-ventcons-125890-20261012T012736Z-zeros.tif` (`0.791815` forward overlap vs only `0.443927` reverse overlap), because `vendor/gems57/uniqueness.py` sets `DOT_FIELD_MAX_SUPPORT = 150_000` (`4.0x` a `37,654`-dot budget) before applying `matched_budget_support`.
 - **Action:** Per Protocol Rule 2 and fail-closed selector discipline, `vendor/gems57/uniqueness.py` was **not** weakened; `PROVINCETOE` fails closed (`verdict: "negative"`, `submission_eligible: false`, `0` weekly slots spent), and both diagnostics are recorded in `evidence/provincetoe_uniqueness.json` for future human selector review.
+
+## 2026-10-25 — review797e: status ordering and Pages permission drift
+
+- **Fixed publication ambiguity:** baseline tests/site checks passed even though historical “newest/unique” banners preceded the actual rejection. A generated first-in-body panel is now byte-bound to the current primary and critical validation inputs across homepage, executive guide and submission form guide. The site gate rejects stale/buried/edited/duplicate panels; historical lane reports are collapsed but preserved. No TIFF/scientific result was modified.
+- **Binding scientific stop reverified:** the pinned 17GEMSDOE witness covers all 5,167,373 footprint pixels. Literal forward overlap is 1.0 for any nonempty valid candidate. New unique-TIF generation remains unfulfilled; no feature generation, holdout or competition slot used.
+- **Parallel primary drift handled:** merged `origin/main` at `bbda6c5`, retained its LISTRICDIP primary and freshly measured/revalidated it. Initial COULOMBDM receipts remain under `review797e_prior_*`. The inherited LISTRICDIP filename time is later than this review, not proof of execution time.
+- **Pages setting limitation:** API read showed legacy build mode and an errored legacy build; changing build mode to Actions via API returned 403 `Resource not accessible by integration`. No setting changed. Existing Actions workflow had a successful earlier deployment, but local verification alone does not establish current public-site freshness. Integration permissions need attention for configuration changes; no credentials were requested.
+- **Source boundary:** fresh GitHub blob verification confirms GEMSDOE32's page says UNSCORED / NO ORGANISER SCORE EXISTS, and official reference README provides CPU-only setup. Prompt scores remain unverified; non-GitHub official websites and PDF are outside the outbound allowlist. See `docs/REVIEW_797E507A.md` and `evidence/review797e_sources.json`.
+
+## 2026-10-25 — review797e integration: false clearance from parallel main quarantined
+
+Main `71f6ac4` introduced claims that KNICKLOQO was cleared under matched budgets, plus wrong size/shape/transform in a public card (its SHA-256 was correct; older inherited documentation was stale) and a root validator that swallowed shared-API errors before printing success. Incoming raw card preserved at `evidence/review797e_superseded_knickloqo_card.json`; public card replaced with negative, real-hash/metadata/format evidence. Alternative entry pages and markdown claims are explicitly superseded and archived, and the same canonical rejection panel now covers five HTML entry pages. The root entry point uses shared strict validation and cannot return submission success. This does not recertify old holdout numbers or modify raster bytes.
