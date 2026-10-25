@@ -35,7 +35,7 @@
 
 1. **Implementation / verification:** froze four hypotheses before code, reused the pinned stack/shared evaluator/shared writer, tested 36 canaries, executed exactly three arms, independently reopened the emitted TIF, and ran local plus current-public representation checks.
 2. **Bug / edge review:** fixed batched solve RHS dimensions, changed the large design matrix to a memory map after an OOM, added shape/residual-scale guards, retained main's hardened explicit-primary site validator, embedded the exact validator receipt in the run card, and pinned exact SHA/one-file ZIP contracts.
-3. **Requirement recheck:** applied the user's literal dense-raster rule without exemption, synchronized all public guides, labeled every numeric outcome, recorded source-access limitations, and preserved format validity separately from eligibility. Combined post-merge verification: `277 passed` (124 non-failing Rasterio deprecation warnings), `git diff --check` PASS, and site gate PASS across all `43` served rasters.
+3. **Requirement recheck:** applied the user's literal dense-raster rule without exemption, synchronized all public guides, labeled every numeric outcome, recorded source-access limitations, and preserved format validity separately from eligibility. Combined post-merge verification: `278 passed` (124 non-failing Rasterio deprecation warnings), `git diff --check` PASS, and site gate PASS across all `43` served rasters.
 
 ## 1. Prior Active Primary & Automated Gate Status (`COULOMB-LOQO`, still repository holdout-best)
 
