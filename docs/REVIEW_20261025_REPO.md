@@ -1,12 +1,12 @@
 # Repository review — 2026-10-25 UTC
 
-**Scope:** code, committed evidence, site wiring, and reproducible checks for the current checkout. No geological experiment was run, no new raster was generated, and no competition slot was used. The lane-specific review below is limited to the most recent `RADIOCONTACT` implementation; prior lanes remain historical evidence. This review does not independently verify claims on external websites or submission receipts.
+**Scope:** code, committed evidence, site wiring, and reproducible checks at the pre-integration checkout headed by `4441f6a`. No geological experiment was run, no new raster was generated, and no competition slot was used. The lane-specific code audit below covers `RADIOCONTACT`; it does not re-evaluate the geology or scripts of other lanes. While this PR was being prepared, `origin/main` advanced to `bbda6c5` and added the separate `LISTRICDIP` lane. The merge resolution retains those upstream changes; the `LISTRICDIP` result is therefore newer in the integrated tree and is not audited in this RADIOCONTACT-focused report. This review does not independently verify claims on external websites or submission receipts.
 
 ## Executive decision
 
-**Do not upload any current artifact as a competition submission.** Existing TIFFs can be downloaded as research artifacts, but the newest `RADIOCONTACT` DTI result is not protocol-valid for the requested hide-and-recover comparison, its public-registry scan is absent, and its method-level uniqueness stop is not enforced. The current site correctly warns that its designated primary is not for submission, but that primary is an older `COULOMBDM` raster rather than the newest lane. No evidence here demonstrates that any local candidate beats the organizer's score for `h33-h33-2-b2` or the leaderboard.
+**Do not upload any current artifact as a competition submission.** The newest lane in the pre-integration checkout (`RADIOCONTACT`) has a recorded DTI result that is not protocol-valid for the requested hide-and-recover comparison, its public-registry scan is absent, and its method-level uniqueness stop is not enforced. The upstream LISTRICDIP addition also labels its result `negative` and `submission_eligible: false`; its own run card and analysis should be used for lane-specific details. No evidence here demonstrates that any local candidate beats the organizer's score for `h33-h33-2-b2` or the leaderboard.
 
-The **recorded** `RADIOCONTACT` result is `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, 22,663 withheld positive pixels, stored 95% CI `[0.003638, 0.006583]`), but this review rejects it as a valid estimate under the project protocol for the reasons in Finding 1. It must not be used for promotion. It is not `ORGANIZER-CONFIRMED` and is not a competition score. The run card's local result and the static validation result remain useful for debugging only.
+The **recorded** `RADIOCONTACT` result is `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, 22,663 withheld positive pixels, stored 95% CI `[0.003638, 0.006583]`), but this review rejects it as a valid estimate under the project protocol for the reasons in Finding 1. It must not be used for promotion. It is not `ORGANIZER-CONFIRMED` and is not a competition score. The run card's local result and static validation result remain useful for debugging only.
 
 ## Findings (ordered by decision impact)
 
@@ -30,9 +30,9 @@ The code sets `beats_rule2 = primary["dti"] > HOLDout_BEST_RULE2`, but `primary`
 
 The current run card explicitly says its public scan is unavailable; it only records the local registry. Its `dual_reading` duplicate decision is based on matched-budget overlap and Spearman correlation, while the user's stop rule is based on correlation and the share of candidate dots falling within three pixels of a registry raster. The scan also happens after placement; there is no surface-level registry comparison before candidate placement. Consequently, `duplicate: false` in that local result cannot establish that the candidate is unique across the public GEMSDOE registry, nor that it passes the specified pre-placement stop. Treat global uniqueness as **NOT VERIFIED**, not as a pass. The supplied dense-witness concern is also not cleared by local-only checks.
 
-### 4. High — site/README do not present one consistent current artifact
+### 4. High — historical site sections make status auditing harder than necessary
 
-The root README opens with DRAINAGE-KNICK, then carries multiple historical “newest” lane sections; `docs/index.html` also stacks lane banners. Its designated `data-primary="true"` download remains an older COULOMBDM artifact, whereas the newest lane card is RADIOCONTACT. Both are warned against portal submission, but a reader has to reconcile several dates, candidates, and status banners. Make one authoritative current-status block on the site and README, with the current research download, explicit `OK TO DOWNLOAD FOR RESEARCH` / `DO NOT SUBMIT`, the run-card link, and why no slot is cleared. Keep the historical results below an archive heading. Do not designate a new primary until its exact bytes have a complete, compliant holdout and registry audit.
+At the pre-integration review point, the README, lane banners, and `data-primary="true"` link described different candidates. The incoming `LISTRICDIP` merge updates the README and current primary to that lane's artifact and explicitly marks it negative / not submission-eligible; this **supersedes the stale-primary observation** from the initial review. The site still contains many stacked historical lane banners. Preserve one unambiguous latest-status summary and move old “newest/current” summaries under an archive label. Do not designate a candidate as upload-ready unless its exact bytes pass the compliant holdout and registry gates.
 
 ### 5. Medium — pre-registration chronology is inconsistent
 
@@ -44,8 +44,8 @@ The committed site serves many GeoTIFFs and evidence files, and the repository t
 
 ## Verified checks in this review
 
-- **TEST:** installed the pinned project dependencies into the ignored `.venv`; `367 passed` under `pytest` (126 Rasterio pending-deprecation warnings; no test failures).
-- **FORMAT/SITE GATE:** `scripts/check_site.py` passed and re-read all `63` served `*-zeros.tif` files against the committed bridge submission grid/catalogue. This is a local technical gate, not competition acceptance and not proof of public-registry uniqueness.
+- **TEST:** installed the pinned project dependencies into the ignored `.venv`; after integrating the upstream LISTRICDIP changes, `371 passed` under `pytest` (126 Rasterio pending-deprecation warnings; no test failures).
+- **FORMAT/SITE GATE:** after integration, `scripts/check_site.py` passed and re-read all `66` served `*-zeros.tif` files against the committed bridge submission grid/catalogue. The designated primary is now the LISTRICDIP raster. This is a local technical gate, not competition acceptance and not proof of public-registry uniqueness.
 - **PARENT PROVENANCE:** `make manifest` passed for the committed pinned artifacts. `make verify` reproduced the pinned parent `h33-h33-2-b2` byte hash and reported 37,654 dots. This verifies the committed parent artefact against this repository's recipe; it does not verify the owner-reported `0.2778` score.
 - **COMPETITION SCORE:** No submission receipt was found or produced by these checks. The user-provided `0.2778`, `0.3195`, and `0.4413` are not treated as `ORGANIZER-CONFIRMED` evidence in this review.
 

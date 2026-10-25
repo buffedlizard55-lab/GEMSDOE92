@@ -1,7 +1,7 @@
 {
   "schema": "gemsdoe92-repository-review.v1",
   "review_date_utc": "2026-10-25",
-  "scope": "repository review; RADIOCONTACT holdout and submission-integrity audit",
+  "scope": "pre-integration repository snapshot audit focused on RADIOCONTACT; origin/main later advanced to bbda6c5 and added LISTRICDIP, not audited here",
   "experiments_run": 0,
   "weekly_slots_used": 0,
   "hypothesis": "RADIOCONTACT radiometric U/K and Th/K alteration-contact gradients, gravity-gradient concordance, and MT conductivity may identify concealed fluid-conducting structures not represented by a scarp catalogue.",
@@ -34,7 +34,8 @@
     "values_in_0_1": true,
     "crs_shape_transform_match": true,
     "single_band_float32": true,
-    "all_served_zeros_tifs_checked": 63,
+    "all_served_zeros_tifs_checked_after_integration": 66,
+    "pytest_passed_after_integration": 371,
     "interpretation": "Local format validation only; not uniqueness clearance, scientific validation, or organizer acceptance."
   },
   "submission_name": "GEMSDOE92-RADIOCONTACT-20261025",
@@ -46,7 +47,7 @@
     "full-catalogue candidate placement makes the stored holdout result protocol-invalid",
     "promotion code compares the static result against a strict fold-visible threshold",
     "public registry and pre-placement surface uniqueness checks are absent",
-    "site and README foreground different current artifacts",
+    "historical site and README status conflicted at the initial review point; incoming LISTRICDIP change updated the primary designation",
     "hypothesis file date is later than its associated artifact timestamp"
   ]
 }

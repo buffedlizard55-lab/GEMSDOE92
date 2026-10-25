@@ -1,8 +1,8 @@
 # Current review — repository integrity review (2026-10-25 UTC; read first)
 
-**⛔ No current artifact is cleared for a competition slot.** The newest RADIOCONTACT raster is research-only. Its recorded holdout used one prediction raster placed with a full-catalogue distance mask and reused across folds, which does not satisfy the required fold-local hide-and-recover protocol. Public-registry uniqueness is also unverified, and the site-primary remains an older COULOMBDM file. See the [current repository review](REVIEW_20261025_REPO.md) and [machine-readable review card](../evidence/repo_review_20261025.json).
+**⛔ No current artifact is cleared for a competition slot.** The newest integrated lane is LISTRICDIP, whose run card declares `verdict: negative` and `submission_eligible: false`. Its TIFF is research-only. A separate RADIOCONTACT code audit found that its recorded holdout used one prediction raster placed with a full-catalogue distance mask and reused across folds; that historical result is not accepted for promotion. Public-registry uniqueness is a separate gate. See the [LISTRICDIP analysis](ANALYSIS_20261025_LISTRICDIP.md), [repository review](REVIEW_20261025_REPO.md), and [machine-readable RADIOCONTACT audit card](../evidence/repo_review_20261025.json).
 
-Local review checks: **TEST** `367 passed`; **SITE FORMAT GATE** all `63` served TIFFs passed local format/range checks; **PARENT VERIFICATION** passed. These are technical checks, not an organizer score or public uniqueness result. The RADIOCONTACT score in the historical section below is retained as recorded but rejected for promotion until the evaluation design is corrected and rerun.
+After integrating commit `bbda6c5`, the re-run checks pass: **371 tests** and **66 served TIFFs** through `scripts/check_site.py`; pinned manifest and parent verification pass. These are technical checks, not an organizer score or public uniqueness result. The RADIOCONTACT review ran before that integration and is limited to that lane; its recorded value is rejected for promotion until its evaluation design is corrected and rerun.
 
 ---
 
