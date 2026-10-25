@@ -1106,3 +1106,17 @@ Fresh Pages API: legacy publication; `PUT /repos/buffedlizard55-lab/GEMSDOE92/pa
 ## 2026-10-25 — review797e integration: false clearance from parallel main quarantined
 
 Main `71f6ac4` introduced claims that KNICKLOQO was cleared under matched budgets, plus wrong size/shape/transform in a public card (its SHA-256 was correct; older inherited documentation was stale) and a root validator that swallowed shared-API errors before printing success. Incoming raw card preserved at `evidence/review797e_superseded_knickloqo_card.json`; public card replaced with negative, real-hash/metadata/format evidence. Alternative entry pages and markdown claims are explicitly superseded and archived, and the same canonical rejection panel now covers five HTML entry pages. The root entry point uses shared strict validation and cannot return submission success. This does not recertify old holdout numbers or modify raster bytes.
+
+## 2026-10-25 — c5e3848c repository review (fresh checks)
+
+- **Binding universal duplicate stop reproduced:** pinned 17GEMSDOE witness is positive in every sample-footprint cell. Literal overlap is 1.0 for every nonempty valid dot set. No new raster/experiment generated. See `docs/downloads/review_c5e3848c_preflight.json`.
+- **Conflicting status banners:** independent lanes prepend “newest” and alternative “unique” statements. Added a byte-bound current panel and fail-closed publication drift check; archived statements do not authorize submission.
+- **No organizer receipt:** fresh pinned GEMSDOE32 owner page says UNSCORED / NO ORGANISER SCORE EXISTS, conflicting with the prompt's CLAIM 0.2778. Local ledger has no organizer-confirmed receipt. Do not invent causal score attribution.
+- **Date/provenance inconsistencies:** RADIOCONTACT hypothesis documentation is future-dated 2026-10-26; today is 2026-10-25. The session manifest claims zero tracked competition rasters, while `git ls-files data` lists eight tracked files. Historical evidence retained; public-mirror byte checks do not verify data-use permission.
+- **Obsolete pipeline assumption:** prompt-named download/prepare scripts are absent; actual restoration script is `scripts/restore_inputs.py`. Official reference README supports CPU training, so GPU is not an absolute requirement. Data placement is not the only current blocker.
+- **Pages not operationally verified:** API reported legacy publication, `main:/`, status errored. Attempt to set workflow publication returned 403 Resource not accessible by integration. No live-deployment success or live validator enforcement is asserted.
+- **External research limited:** official non-GitHub domains are not permitted by this sandbox's network allowlist. No new literature/PDF/official-geodata retrieval or current cap/ranking verification was performed.
+
+### c5e3848c integration of parallel main 71f6ac4
+
+Preserved LISTRICDIP research outputs; freshly validated its newly declared primary and recorded literal overlap 1.0. A parallel KNICKLOQO “submission ready” package had an incorrect SHA-256/size/grid in JSON and silently ignored failing validator calls while predicting an organizer score. Corrected metadata from the served bytes, revoked unsupported promotion, added authoritative warnings to its pages and replaced its validator with a shared-gate compatibility wrapper that cannot grant eligibility. See `docs/REVIEW_C5E3848C.md` and `review_correction` in `docs/downloads/knickloqo_submission_run_card.json`. No new predictions were made.
