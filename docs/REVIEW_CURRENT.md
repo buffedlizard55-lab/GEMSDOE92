@@ -1,5 +1,16 @@
 # Current review and next steps — 2026-10-25 (`f23ca2d2`)
 
+<!-- CURRENT-STATUS:BEGIN -->
+## Current verified decision — 2026-10-25 (LISTRIC artifact labelled 2026-10-26)
+
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** The completed lane generated a byte-unique TIFF, but it failed promotion gates.
+
+[Current unique research download](downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif) · [protocol run card](downloads/listric_run_card.json) · [analysis](ANALYSIS_20261026_LISTRIC.md) · [executive submission guide](executive-summary.html).
+
+Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.010909 [0.009543, 0.012278]`; paired improvement over KNICKLOQO includes zero. Public dual-reading overlap is `0.710735 > 0.70`, and literal dense-witness overlap is `1.0`. No ORGANIZER-CONFIRMED score is available; 3/3 experiments and zero weekly slots.
+
+<!-- CURRENT-STATUS:END -->
+
 **No new TIFF. Research downloads only; DO NOT SUBMIT.** [Fresh review](REVIEW_F23.md) · [automated status](downloads/readiness.json) · [run card](downloads/review_f23_run_card.json).
 
 1. The previous proposed KNICKLOQO promotion cannot proceed under the unchanged literal rule. The pinned witness rejects all nonempty candidates before placement. Matched-budget diagnostics must not supersede the user's rule silently. An explicitly revised future brief and a named lane are prerequisites to further geological experiments, not a request for human pixel inspection.
@@ -17,16 +28,7 @@ Earlier “current,” “unique,” and promotion instructions below are histor
 
 # Authoritative current review — 2026-10-25 (`797e507a`)
 
-<!-- CURRENT-STATUS:BEGIN -->
-## Current verified decision — 2026-10-25 (LISTRIC artifact labelled 2026-10-26)
 
-**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** The completed lane generated a byte-unique TIFF, but it failed promotion gates.
-
-[Current unique research download](downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif) · [protocol run card](downloads/listric_run_card.json) · [analysis](ANALYSIS_20261026_LISTRIC.md) · [executive submission guide](executive-summary.html).
-
-Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.010909 [0.009543, 0.012278]`; paired improvement over KNICKLOQO includes zero. Public dual-reading overlap is `0.710735 > 0.70`, and literal dense-witness overlap is `1.0`. No ORGANIZER-CONFIRMED score is available; 3/3 experiments and zero weekly slots.
-
-<!-- CURRENT-STATUS:END -->
 
 **Research downloads only. DO NOT SUBMIT. No new TIFF generated.** Read [the current three-pass review](REVIEW_797E507A.md) and [run card](downloads/review797e_run_card.json). The inherited LISTRICDIP primary passes format checks but literal overlap is 1.0. A single generated status panel now precedes historical banners on all three entry pages, with byte-binding and ordering enforced by publication checks. Previous “unique” matched-budget claims below do not override the literal stop. No HOLDOUT-DTI was run or recertified; no slot was used.
 

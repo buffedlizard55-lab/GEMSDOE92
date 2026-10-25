@@ -390,15 +390,19 @@
 </aside>
 </details>
 <header class="hero">
-  <p class="kicker">DOE GEMS Prize (#306) · Automated Project Validation (Zero Human Inspection Required)</p>
-  <h1>GEMSDOE92 — Research Download: <code>LISTRICDIP updip50</code> (static HOLDOUT-DTI <code>0.005420</code>; <code>verdict: negative</code>; not cleared for a weekly slot)</h1>
-  <p class="lede"><strong>Two-Question Automated Decision Banner (Read First):</strong></p>
-  <p>
-    <span class="badge badge-ok" style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH (10/10 Automated Format Gates PASS; Values Strictly in [0, 1])</span>
-    <span class="badge badge-stop" style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (DUPLICATE UNDER THE LITERAL REGISTRY RULE)</span>
-  </p>
-  <p>Every served <code>*-zeros.tif</code> on this workbench is machine-verified inside the project via <code>vendor/gems57/submission_writer.py</code>, <code>gems/gates.py</code>, <code>vendor/gems57/validate.py</code>, and <code>scripts/check_site.py</code> (no human inspector step required) to guarantee finite <code>float32</code> values strictly in <code>[0, 1]</code> with <code>0.0</code> outside the footprint — eliminating DrivenData's <code>"Predicted values must be in range [0, 1]"</code> portal error. Promotion to a scarce live weekly competition slot (<code>3/week</code> cap, external human step) remains blocked (<code>submission_eligible: false</code>, <code>verdict: "negative"</code>, <code>0</code> slots spent) because dense public continuous probability maps such as <code>17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif</code> (<code>5,167,373</code> positive footprint pixels = 100%) force <code>1.000 &gt; 0.70</code> 3-px forward overlap under the literal Rule-1 scan.</p>
-  <p><a href="executive-summary.html"><strong>Executive Summary Subpage →</strong></a> · <a href="SUBMIT.html"><strong>Submission Guide &amp; Slot Gate →</strong></a> · <a href="HYPOTHESES.html"><strong>5 Ranked Untried Hypotheses →</strong></a> · <a href="ANALYSIS_20261024_COULOMBDM.md"><strong>PhD Analysis (COULOMBDM) →</strong></a> · <a href="ANALYSIS_20261024_COULOMBLOQO.md"><strong>Prior COULOMB-LOQO Analysis →</strong></a> · <a href="ANALYSIS_20261024_XPHASE.md"><strong>Prior XPHASE Analysis →</strong></a> · <a href="ANALYSIS_20261024_EULERFUSE.md"><strong>EULERFUSE Analysis →</strong></a> · <a href="REVIEW_20261024_ARENA.md"><strong>Parallel Three-Pass Review →</strong></a></p>
+  <p class="kicker">DOE GEMS Prize (#306) · Automated validation, auditable evidence</p>
+  <h1>GEMSDOE92 — fault-prediction research workbench</h1>
+  <p class="lede">A format-valid research file is downloadable above. No artifact is cleared for a weekly submission slot.</p>
+  <p>Every served zeros-outside TIFF is re-read by <code>scripts/check_site.py</code> using shared validators:
+  finite values in [0, 1], one band, template-aligned CRS/shape/transform and zero outside the footprint.
+  These checks address the reported <code>"Predicted values must be in range [0, 1]"</code> error locally;
+  they do not guarantee organizer acceptance. No human pixel inspector is required.</p>
+  <p><a href="REVIEW_7059163E.md"><strong>2026-10-25 repository review, sources and four ranked untested hypotheses</strong></a>
+  · <a href="downloads/review705_run_card.json">Fresh rejection run card</a>
+  · <a href="downloads/review705_preflight.json">Fresh pre-placement proof</a>
+  · <a href="executive-summary.html">Executive summary / how a future cleared submission is uploaded</a></p>
+  <p>Literal registry overlap requires a stop before generating a new candidate. No new TIFF or HOLDOUT-DTI was generated in this review.
+  The live weekly cap, leaderboard and submission receipts have not been verified here. Fault predictions are not confirmed geothermal vents.</p>
 </header>
 
 <main><aside class="banner banner-warn" style="border:3px solid #991b1b"><h2>Historical DRAINAGE-KNICK research record</h2><p><strong>OK TO DOWNLOAD FOR RESEARCH: YES. OK TO SUBMIT: NO.</strong> Automated format validation passes, but HOLDOUT-DTI 0.061728 [0.047046, 0.075316] is below 0.113316 and the literal registry overlap stop fired.</p><p><a download href="downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif"><strong>Download validated GeoTIFF</strong></a> · <a download href="downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.zip">one-TIFF ZIP</a> · <a href="ANALYSIS_20261025_DRAINAGE_KNICK.md">analysis</a> · <a href="downloads/gemsdoe92-drainageknick-20261025T120000Z_run_card.json">run card</a></p><p>Name: <code>GEMSDOE92-DRAINAGE_KNICK-20261025</code>. Verdict: <code>negative</code>; weekly slots used: 0.</p></aside>
