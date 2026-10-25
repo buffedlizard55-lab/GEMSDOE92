@@ -50,7 +50,7 @@ def facts(card: dict) -> dict:
 def html_line(card: dict, prefix: str = "") -> str:
     """One paragraph; ``prefix`` is the path from the page to docs/."""
     f = {k: escape(str(v), quote=True) for k, v in facts(card).items()}
-    return (f'<p><strong>Newest session (2026-10-25, ALI lane): a NEW raster was generated and tested — '
+    return (f'<p><strong>Also 2026-10-25 — ALI lane: a NEW raster was generated and tested — '
             f'DO NOT SUBMIT.</strong> <a href="{prefix}{f["file"]}" download>Download it for research</a> · '
             f'<a href="{prefix}ALI_LANE.md">full report</a> · <a href="{prefix}downloads/ali_run_card.json">run card</a>. '
             f'Reasons: <strong>duplicate under the registry rule</strong> ({f["ovl"]} of its dots lie within 3 px of '
@@ -61,7 +61,7 @@ def html_line(card: dict, prefix: str = "") -> str:
 
 def md_line(card: dict, prefix: str = "") -> str:
     f = facts(card)
-    return (f"**Newest session (2026-10-25, ALI lane): a NEW raster was generated and tested — DO NOT SUBMIT.** "
+    return (f"**Also 2026-10-25 — ALI lane: a NEW raster was generated and tested — DO NOT SUBMIT.** "
             f"[Download it for research]({prefix}{f['file']}) · [full report]({prefix}ALI_LANE.md) · "
             f"[run card]({prefix}downloads/ali_run_card.json). Reasons: **duplicate under the registry rule** "
             f"({f['ovl']} of its dots lie within 3 px of {f['ovl_repo']} `{f['ovl_file']}`, whose halo covers only "

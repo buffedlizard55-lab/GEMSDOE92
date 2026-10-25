@@ -113,11 +113,14 @@ def test_faultnet_lane_is_explicitly_negative_while_site_status_remains_authorit
     assert cur["uniqueness"]["unique_operative"] is False
     assert (ROOT / cur["file"]).is_file() and (ROOT / cur["zip"]).is_file()
 
-    # Repository-wide readiness is authoritative and must distinguish the
-    # downloadable research primary from upload permission on every entry page.
+    # README's generated first-screen decision must agree with the current
+    # research-only stop and link the current review, not a stale lane score.
     assert "CURRENT-STATUS:BEGIN" in readme
     readme_status = readme.split("<!-- CURRENT-STATUS:BEGIN -->", 1)[1].split("<!-- CURRENT-STATUS:END -->", 1)[0]
+    assert "Current verified status" in readme_status
     assert "OK TO DOWNLOAD FOR RESEARCH" in readme_status and "DO NOT SUBMIT" in readme_status
+    assert "REVIEW_20261025_SESSION.md" in readme_status
+    assert "literal dense-witness overlap is `1.0 > 0.70`" in readme_status
     assert "CURRENT-READINESS:BEGIN" in index
     site_status = index.split("<!-- CURRENT-READINESS:BEGIN -->", 1)[1].split("<!-- CURRENT-READINESS:END -->", 1)[0]
     assert "OK TO DOWNLOAD FOR RESEARCH" in site_status and "DO NOT SUBMIT" in site_status
@@ -127,4 +130,4 @@ def test_faultnet_lane_is_explicitly_negative_while_site_status_remains_authorit
     faultnet = index.split("<!-- CURRENT:BEGIN -->", 1)[1].split("<!-- CURRENT:END -->", 1)[0]
     assert cur["sha256"] in faultnet
     assert "DO NOT SUBMIT" in faultnet
-    assert "0.7586" in faultnet
+    assert f"{cur['uniqueness']['worst_overlap_final']['value']:.4f}" in faultnet

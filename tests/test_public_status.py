@@ -43,6 +43,26 @@ def test_actual_status_is_byte_bound_and_first_on_every_page():
         ROOT / 'docs/downloads/review797e_run_card.json').read_bytes()
 
 
+def test_readme_first_screen_cannot_promote_historical_lane_or_score():
+    readme = (ROOT / 'README.md').read_text()
+    first_screen = readme.split('### Starting point for every session', 1)[0]
+    assert 'CURRENT-STATUS:BEGIN' in first_screen
+    assert 'CURRENT:BEGIN' in first_screen
+    assert first_screen.index('<!-- CURRENT-STATUS:BEGIN -->') < first_screen.index('<!-- CURRENT:BEGIN -->')
+    status = first_screen.split('<!-- CURRENT-STATUS:BEGIN -->', 1)[1].split('<!-- CURRENT-STATUS:END -->', 1)[0]
+    assert 'Current verified status' in status
+    assert 'OK TO DOWNLOAD FOR RESEARCH' in status and 'DO NOT SUBMIT' in status
+    assert 'docs/REVIEW_20261025_SESSION.md' in status
+    assert 'literal dense-witness overlap is `1.0 > 0.70`' in status
+
+
+def test_session_prompt_points_to_latest_audit_before_history():
+    prompt = (ROOT / 'SESSION_PROMPT.md').read_text()
+    first_addendum = prompt.split('---', 1)[0]
+    assert 'docs/REVIEW_20261025_SESSION.md' in first_addendum
+    assert 'No new raster' in first_addendum
+
+
 def test_panel_update_is_idempotent_and_moves_stale_banner_below(publication):
     _, card, _ = publication
     panel = render_status(card)
@@ -56,7 +76,7 @@ def test_panel_update_is_idempotent_and_moves_stale_banner_below(publication):
 
 @pytest.mark.parametrize('field,value', [
     ('submission_eligible', True), ('submission_eligible', 'false'),
-    ('new_raster_generated', True), ('verdict', 'promote'),
+    ('new_raster_generated', 'true'), ('verdict', 'promote'),
     ('raster_sha256', '0' * 64), ('note', ''), ('note', 'x' * 141),
     ('validator_output', []), ('validator_output', [None]),
     ('validator_output', [{'name': [], 'ok': True}]),
@@ -94,7 +114,7 @@ def test_each_page_is_checked_not_just_the_homepage(publication, mutation):
     elif mutation == 'duplicate':
         text += render_status(card)
     else:
-        text = text.replace('DO NOT SUBMIT.', 'SUBMIT NOW.')
+        text = text.replace('Research-only download available.', 'SUBMIT NOW.')
     path.write_text(text)
     assert check_panels(card, root, primary)
 
