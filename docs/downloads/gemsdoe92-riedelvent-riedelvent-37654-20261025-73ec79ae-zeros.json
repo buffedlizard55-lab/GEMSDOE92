@@ -1,0 +1,123 @@
+{
+  "file": "gemsdoe92-riedelvent-riedelvent-37654-20261025-73ec79ae-zeros.tif",
+  "sha256": "bfb4a45cc25f924606d96985ecd19fea571b74a0d18cbca2acb1028181cf4911",
+  "bytes": 148657,
+  "submission_name": "GEMSDOE92-RIEDELVENT-riedelvent-20261025",
+  "note": "RIEDELVENT riedelvent: 37654px Riedel+Flexure+3DEP10m+vents; HOLDOUT-DTI 0.104176 (static 0.009682) [neg]",
+  "note_chars": 105,
+  "validator": {
+    "file": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-riedelvent-riedelvent-37654-20261025-73ec79ae-zeros.tif",
+    "bytes": 148657,
+    "sha256": "bfb4a45cc25f924606d96985ecd19fea571b74a0d18cbca2acb1028181cf4911",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "emitted_positive_pixels": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37654,
+    "footprint_fraction": 0.007286874781441169
+  },
+  "template_report": {
+    "path": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-riedelvent-riedelvent-37654-20261025-73ec79ae-zeros.tif",
+    "bytes": 148657,
+    "sha256": "bfb4a45cc25f924606d96985ecd19fea571b74a0d18cbca2acb1028181cf4911",
+    "bands": 1,
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "width": 3292,
+    "height": 3730,
+    "bounds": [
+      243350.0,
+      4135550.0,
+      572550.0,
+      4508550.0
+    ],
+    "ref_bounds": [
+      243350.0,
+      4135550.0,
+      572550.0,
+      4508550.0
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "nodata": null,
+    "blocksize": [
+      256,
+      256
+    ],
+    "fixture_grid": false,
+    "has_validity_mask": false,
+    "nan_pixels": 0,
+    "infinity_pixels": 0,
+    "n_nan": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "n_nonzero": 37654,
+    "mass": 37654.0,
+    "mass_outside_footprint": 0,
+    "problems": [],
+    "ok": true,
+    "validation_class": "local on-disk template/range check; not organizer upload acceptance"
+  },
+  "zip_file": "gemsdoe92-riedelvent-riedelvent-37654-20261025-73ec79ae-zeros.zip",
+  "zip_sha256": "65ce53d0600677af418cdfd04458310b18b686085de1cb4e007e2a98b05eaf2f",
+  "approved_for_weekly_slot": false,
+  "promoted": false,
+  "submission_slots_used": 0,
+  "status": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval",
+  "metadata": {
+    "lane": "RIEDELVENT",
+    "arm": "riedelvent"
+  }
+}

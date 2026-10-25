@@ -1,10 +1,10 @@
 # Pre-Registered Geological Hypotheses — `2026-10-25` Session (`RIEDELVENT` Lane)
 
-**Branch:** `arena/bbfe2d11-gemsdoe92`  
-**Pre-Registration Timestamp:** Locked prior to any `RIEDELVENT` feature evaluation, holdout scoring, or GeoTIFF emission.  
-**Shared Evaluator (Protocol Rule 2 — zero private forks):** `vendor/gems57/evaluate_holdout.py` (`gems57-pooled-hide-v2`, $\alpha = 0.2$, $\beta = 0.8$, $R = 300\text{ m} = 3.0\text{ px}$ triangular $\max$-kernel, `22,663` withheld catalogue fault pixels across `8` buffered whole-segment folds, `seeds 20, 30`, `1,000`-draw paired `20 km` spatial-cluster bootstrap).  
-**Shared Packaging & Validation (Protocol Rule 2):** `vendor/gems57/submission_writer.py`, `vendor/gems57/validate.py`, `gems/gates.py`, `vendor/gems57/uniqueness.py`.  
-**Experiment Budget (Protocol Rule 6):** Strictly `3` experiments (`riedelvent_bin37k`, `collinear_novent_bin37k`, `riedelvent_tail85k`); **`0` live weekly DrivenData submission slots spent**.  
+**Branch:** `arena/bbfe2d11-gemsdoe92`
+**Pre-Registration Timestamp:** Locked prior to any `RIEDELVENT` feature evaluation, holdout scoring, or GeoTIFF emission.
+**Shared Evaluator (Protocol Rule 2 — zero private forks):** `vendor/gems57/evaluate_holdout.py` (`gems57-pooled-hide-v2`, $\alpha = 0.2$, $\beta = 0.8$, $R = 300\text{ m} = 3.0\text{ px}$ triangular $\max$-kernel, `22,663` withheld catalogue fault pixels across `8` buffered whole-segment folds, `seeds 20, 30`, `1,000`-draw paired `20 km` spatial-cluster bootstrap).
+**Shared Packaging & Validation (Protocol Rule 2):** `vendor/gems57/submission_writer.py`, `vendor/gems57/validate.py`, `gems/gates.py`, `vendor/gems57/uniqueness.py`.
+**Experiment Budget (Protocol Rule 6):** Strictly `3` experiments (`riedelvent_bin37k`, `collinear_novent_bin37k`, `riedelvent_tail85k`); **`0` live weekly DrivenData submission slots spent**.
 **Stored Repository Holdout Bests to Beat:**
 - **Strict Draw-Blind Rule-2 (`d_visible > 2.0`, public-unique zero-catalogue LOQO):** `VENTSCARP ventscarp` **`0.112213 [0.096670, 0.127254]`** (`evidence/ventscarp_run_card.json`), `LISTRIC standalone` `0.110593 [0.097436, 0.123346]` (public-duplicate `0.7107 > 0.70`), `KNICKLOQO standalone` `0.109043 [0.097872, 0.120534]`.
 - **Static Deployment Raster (`d_cat > 2.0`):** `LISTRIC standalone` **`0.010909 [0.009543, 0.012278]`** (public-duplicate `0.7107 > 0.70`), `KNICKLOQO standalone` **`0.010788 [0.009468, 0.012201]`** (#1 public-unique under `dual_reading_decision`).

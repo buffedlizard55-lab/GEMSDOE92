@@ -129,6 +129,21 @@ The unique submission request is still unmet. **Maximize P(Win)** and **Own the 
 
 ## Historical next-step proposals (not authorization)
 
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`RIEDELVENT` Integration)
+
+## Completed in `RIEDELVENT` session (`3/3` experiments, `0` weekly slots)
+1. **Executed `docs/NEXT_STEPS.md` Item #1 (`VENTSCARP` + `KNICKLOQO` Slope-Regime Coupling + `TENSOR-RIEDEL` $12^\circ\text{–}28^\circ$ Obliquity + `FLEXURE-HINGE` + Additive `@ 0.30` Tail) in `gems/riedelvent.py` & `scripts/run_riedelvent.py`:** Pre-registered 5 untried geological hypotheses in `docs/HYPOTHESES_20261025_RIEDELVENT.md` and verified `30/30` single-feature leakage canaries (`max symmetric AUC = 0.616694 <= 0.90`; OOF LOQO surface `0.675473 <= 0.90`).
+2. **E1 Primary (`RIEDELVENT riedelvent`, `37,654` unit dots, `bfb4a45c…`):** Achieved **`0.009682 [0.008345, 0.010822]`** static `d_cat > 2.0` `HOLDOUT-DTI` (`+0.001470 [+0.000477, +0.002492]` vs `VENTSCARP` `0.008212`, `+17.9%` lift with 95% CI > 0; `+0.005675` vs `R0` `0.004006`), **`0.104176 [0.091329, 0.117184]`** strict draw-blind Rule-2 `HOLDOUT-DTI`, and **`0.087277`** `USGS SGMC PROXY`, while passing both local (`0.5807 <= 0.70`) and 102-repo dual-reading uniqueness (`0.6190 <= 0.70`, `|ρ| = 0.3976 <= 0.90`).
+3. **E2 Ablation (`RIEDELVENT riedel_novent`, `37,654` unit dots, `7116022e…`):** Static `HOLDOUT-DTI = 0.009432 [0.007948, 0.010838]`, Rule-2 `0.106203 [0.090750, 0.119881]`, `USGS SGMC PROXY = 0.098513`, 102-repo dual-reading unique (`0.6631 <= 0.70`).
+4. **E3 Additive-Tail Allocation (`RIEDELVENT riedelvent_tail`, `64,000` dots: `37,654 @ 1.0 + 26,346 @ 0.30`, mass `45,557.8`, `fdc4dac4…`):** Strictly improved **every** benchmark over binary `riedelvent` with 95% bootstrap CIs excluding zero: static `HOLDOUT-DTI` **`0.010268 [0.008986, 0.011408]`** (`+0.000587 [+0.000373, +0.000810]` vs `riedelvent`, `+0.002057 [+0.001194, +0.003008]` vs `VENTSCARP` [`+25.0%`]), strict draw-blind Rule-2 `HOLDOUT-DTI` **`0.107465 [0.094960, 0.119761]`** (`+0.003289 [+0.002375, +0.004224]` vs `riedelvent`), off-catalogue `USGS SGMC PROXY` **`0.103378`** (`+18.4%` vs `riedelvent`, `+27.1%` vs `VENTSCARP`, `+7.8%` vs `KNICKLOQO standalone`), and 102-repo dual-reading overlap **`0.6144 <= 0.70`** (local **`0.5246 <= 0.70`**). Verdict `negative` (`OK TO DOWNLOAD FOR RESEARCH`, `DO NOT SUBMIT` under literal dense witness `1.000 > 0.70`).
+
+## Highest-P(Win) actions for the next session (in order)
+1. **Apply Additive `@ 0.30` Tail (`37,654 @ 1.0 + 26,346 @ 0.30`) to `KNICKLOQO standalone` + `RIEDELVENT` Cross-Calibrated Crest Surface:** Combine `KNICKLOQO standalone` (`0.010788` static) with `RIEDELVENT`'s `L_riedel_flex` localizer and the now-proven `64,000`-dot additive `@ 0.30` tail to target `> 0.0112` static `HOLDOUT-DTI` while keeping 102-repo dual-reading overlap `<= 0.65`.
+2. **Untried Hypotheses #2–#4 (`docs/HYPOTHESES_20261025_RIEDELVENT.md`):** Test `CURIE-POISSON-APRON` (Rank #2), `SCARP-POLARITY-VALVE` (Rank #3), and `EULER-BASEMENT-HINGE` (Rank #4).
+3. **Human Selector Policy Decision & First `ORGANIZER-CONFIRMED` Receipt:** Obtain human selector decision on literal dense-witness (`17GEMSDOE` `5,167,373` px) vs `dual_reading_unique = True` (`<= 0.6190`) and record the first `ORGANIZER-CONFIRMED` DrivenData receipt in `ledger/submissions.csv`.
+
+---
+
 # Next Steps — GEMSDOE92 (Updated 2026-10-26, Post-LISTRIC Session)
 
 ## Completed this session (LISTRIC — NEXT_STEPS Rank 4 executed)

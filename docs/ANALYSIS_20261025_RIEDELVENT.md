@@ -1,8 +1,8 @@
 # PhD Geotechnical & Metric Analysis — Why `GEMSDOE32` (`0.2778` `[CLAIM]`) Stopped Short of `0.3195` / `0.4413`, and Experimental Verification of `RIEDELVENT` + Möbius-DTI Additive Tail (`2026-10-25`)
 
-**Repository / Branch:** `buffedlizard55-lab/GEMSDOE92` (`arena/bbfe2d11-gemsdoe92`)  
-**Pre-Registration:** [`docs/HYPOTHESES_20261025_RIEDELVENT.md`](HYPOTHESES_20261025_RIEDELVENT.md)  
-**Canonical Run Card:** [`evidence/riedelvent_run_card.json`](../evidence/riedelvent_run_card.json) · [`docs/downloads/riedelvent_run_card.json`](downloads/riedelvent_run_card.json)  
+**Repository / Branch:** `buffedlizard55-lab/GEMSDOE92` (`arena/bbfe2d11-gemsdoe92`)
+**Pre-Registration:** [`docs/HYPOTHESES_20261025_RIEDELVENT.md`](HYPOTHESES_20261025_RIEDELVENT.md)
+**Canonical Run Card:** [`evidence/riedelvent_run_card.json`](../evidence/riedelvent_run_card.json) · [`docs/downloads/riedelvent_run_card.json`](downloads/riedelvent_run_card.json)
 **Shared Evaluator:** `vendor/gems57/evaluate_holdout.py` (`gems57-pooled-hide-v2`, $\alpha = 0.2$, $\beta = 0.8$, $R = 300\text{ m} = 3.0\text{ px}$ triangular $\max$-kernel, `22,663` withheld catalogue fault pixels across `8` buffered whole-component folds, `seeds 20, 30`, `1,000`-draw paired `20 km` spatial-cluster bootstrap).
 
 ---
