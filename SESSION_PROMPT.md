@@ -4,6 +4,13 @@ Read `docs/REVIEW_20261025_FRESH_AUDIT.md` first, then the latest protocol/sourc
 
 ---
 
+## Current session addendum — 2026-10-25 (leaderboard research, branch `arena/09f84f2f-gemsdoe92`)
+
+Parallel leaderboard lane (merged after the fresh audit below; read the fresh audit first, then this). Read `docs/ANALYSIS_20261025_LEADERBOARD.md`. Facts established this session: the live DrivenData top score is `0.4413` (#1 xiaofanhu, not a GEMSDOE entry); `0.3195` is not on the top-50 snapshot; `0.2778` (GEMSDOE32) remains `CLAIM receipt=N`. The official rules (NLR PDF, Sept 2026) allow three submissions per week and require one final selection. The shared metric matches an independent naive implementation of the official equations (`tests/test_metric_independent.py`). The fresh witness audit re-confirms the literal universal stop (`evidence/readiness_20261025_leaderboard.json`). Five hypotheses are pre-registered in `docs/HYPOTHESES_20261025_LEADERBOARD.md`; none is built. Experiments used: 0 of 3. The blocking decision (dense-witness policy) is recorded in the analysis, §5. Do not place dots until that decision is made.
+
+---
+
+## Current review addendum — 2026-10-25 (`797e507a`)
 ## FLEXMAG session — 2026-10-25 (parallel lane; read after the current audit above)
 
 Lane `FLEXMAG` completed 3/3 pre-registered experiments (`docs/HYPOTHESES_20261025_FLEXMAG.md`, `gems/flexmag.py`, `scripts/build_flexmag_submission.py`). Primary `gemsdoe92-flexmag-20261025T165411Z-flexmag-37654-zeros.tif` (SHA-256 `8190e1d0…`) is format-valid and locally unique, but HOLDOUT-DTI `0.045554 [0.035846, 0.056751]` (per-draw re-placement) is far below the 0.113316 bar → **verdict negative, DO NOT SUBMIT, 0 slots**. Fresh facts: GEMSDOE32's own page (fetched 2026-10-25) calls h33-h33-2-b2 UNSCORED with NO ORGANISER SCORE; R0 lineage XOR identities re-verified. Read `docs/ANALYSIS_20261025_FLEXMAG.md`. The audit addendum above and the literal-overlap stop remain the current decision.
