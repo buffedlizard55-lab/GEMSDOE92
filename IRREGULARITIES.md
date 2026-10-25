@@ -1,3 +1,31 @@
+# Final integration note — 2026-10-25 (`f23ca2d2`)
+
+Reused the concurrently merged `gems/public_status.py` publication contract and rejection-only root CLI; refreshed its format-gate pins from the corrected shared validator. Both publication checks agree on the negative decision. Parallel RADIODECOUPLE/CURIE-DEMAG rasters are preserved and revalidated, not attributed to this review. Future-dated 2026-10-26 filenames/headers remain historical identifiers; the current review date remains 2026-10-25. Final checks: 436 tests and 70 served TIFFs pass; no newly generated candidate or slot.
+
+---
+
+# Concurrent merge correction — 2026-10-25 (`f23ca2d2`, PR #89 integration)
+
+- **IR-92-FALSE-UPLOAD-CLEARANCE (fixed):** commit `406638a` added active “submission ready” pages and `submission_eligible: true` despite the known literal duplicate stop. `SUBMIT_NOW.html` and `index_new.html` now redirect to the checked current status. Unsupported score projections and portal guarantees are withdrawn; the original publication remains in Git history.
+- **IR-92-SWALLOWED-VALIDATOR-ERROR (fixed, reproduced):** its root validator called `run_gates` without `reference_path`, caught the resulting TypeError, printed “ALL CHECKS PASSED — FILE IS READY FOR SUBMISSION,” and exited zero. Reproduced in this review before replacing it with a shared-readiness compatibility entry point that returns blocked status and never swallows a failure as clearance.
+- **IR-92-PARALLEL-RECEIPT-METADATA (fixed):** the new receipt said 123456 bytes, shape `[3292,3730]`, incorrect geotransform and nodata zero. Actual disk read: 149177 bytes, shape `[3730,3292]`, transform `[100,0,243350,0,-100,4508550]`, nodata null. Metadata is now generated from disk. **The parallel TIFF SHA-256 correction was valid**, not an error: `8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347` matches the original and current bytes. Earlier prose in this repo used a stale hash; this review initially repeated that mistake in commentary, then corrected it after comparing Git blobs and disk bytes.
+- Untested parallel `gems/flexure_knick_province.py` research code is preserved, not represented as a model trained or validated by this review.
+
+---
+
+# 2026-10-25 review (`f23ca2d2`) — new findings
+
+- **IR-92-PRUNE-RADIUS-BYPASS (fixed):** `gems/gates.py::_g_catalogue` used `n_near == 0 or prune_radius < 3`; any prediction inside a declared radius below three passed the distance gate. The legacy test encoded that bypass. Removed the override; test boundaries now include inside, exactly at, and outside the declared radius. All existing served artifacts are revalidated, not assumed to inherit a PASS.
+- **IR-92-READINESS-DRIFT (mitigated):** newer KNICKLOQO panels describe a matched-budget `dual_reading_decision` as unique although the shared helper's operative rule is now literal. Historical JSON and numerical claims are preserved, explicitly archived; a byte-bound current panel is generated and checked before CI/Pages publication. Future edits that stale that panel fail the checker.
+- **IR-92-GRID-FAILURE-HANDLING (fixed):** the validator could index a wrong-shape raster with the template mask and did not check catalogue georeferencing. It now returns structured failed gates for malformed rasters, mismatched catalogue grids and invalid radii; exact transform match is required.
+- **IR-92-NO-ELIGIBLE-NEW-TIFF (unresolved):** fresh pinned witness covers every footprint pixel, so the unchanged literal rule forbids all nonempty candidates. No new TIFF is generated, and no old artifact is renamed as new.
+- **IR-92-PAGES-MODE (unresolved, rechecked):** GitHub API reports legacy publication; PUT build_type=workflow returned HTTP 403 Resource not accessible by integration. Actions checks are not asserted to guard the live legacy site.
+- **IR-92-SCORE-PROVENANCE (unresolved):** freshly retrieved GEMSDOE32 page says UNSCORED and NO ORGANISER SCORE EXISTS. User-reported values and conflicting leaderboard numbers remain unverified.
+
+[Review](docs/REVIEW_F23.md) · [source receipt](evidence/review_f23_sources.json) · [pre-placement proof](evidence/review_f23_preflight.json).
+
+---
+
 # IRREGULARITIES — only items that change a decision
 
 ## 2026-10-25 (GRAVQUAD session) — `thermalclass` string-trim defect in the pinned GDR #1391 geothermometer CSV silently splits the `Hot` class
@@ -25,6 +53,17 @@
 - **Observation**: This session directly tested outbound HTTPS reachability (plain `curl`, 5 s timeout) from the sandbox to `drivendata.org`, `dropbox.com`, `usgs.gov`, `gbcge.org`, `epsg.io`, `wikipedia.org`, `gdr.openei.org`, and a `github.io` Pages domain. **All eight returned connection failures (`000`)** — none are reachable. Only `github.com`, `codeload.github.com`, `api.github.com`, `registry.npmjs.org`, `pypi.org`, and `files.pythonhosted.org` are reachable in this environment.
 - **Impact**: Confirms, rather than merely assumes, that this and prior sessions' documented claims of "cannot fetch drivendata.org / dropbox.com directly" are an accurate description of a real sandbox network restriction, not an unverified excuse. Any future external-data hypothesis (e.g. `GDR-GEOTHERMOMETER-FIELD` or the named GBCGE/INGENIOUS source in `docs/HYPOTHESES_20261025_NEXT.md`) must get new source data via a `buffedlizard55-lab/*` GitHub mirror (as the existing pinned-input chain already does) or via human download outside this sandbox — direct fetches from the organizer, Dropbox, or agency sites will not work from here.
 - **Decision**: No action needed; this is now a verified fact rather than an inherited assumption.
+## 2026-10-25 (LISTRICDIP session) — antithetic budget cannot be filled without leaving the mechanism
+
+- **Observation**: Pre-registration locked 37,654 dots for `anti22` and `anti35`. On the real stack, `oppose > 0.3` against a 12 km regional basement gradient, after `d_cat > 2` and 3.2 px spacing, emits 9,571 and 9,555 dots. A 2–8 km smooth is opposed at `oppose > 0.5` by only a minority of high-gradient pixels (median oppose is 0).
+- **Impact**: Filling 37,654 by padding non-oppose pixels, or by packing dots inside the 300 m DTI kernel, would score a different hypothesis. The shortfall is the result.
+- **Decision**: Ship the short arms. Do not rewrite the locked hypothesis file's budgets. Record the deviation in the addendum. Verdict remains `negative` on the science, independently of the dense-witness stop.
+
+## 2026-10-25 (LISTRICDIP session) — this run's H19-5 control is not the published thinned Rule-2 number
+
+- **Observation**: Evaluating the full unthinned `H19-5` mask on these folds gives 0.066289, identical on the static and "rule-2" loops because the mask was not re-placed. The previously published thinned Rule-2 figure near 0.096757 is a different emission and was not re-measured here.
+- **Impact**: Comparing `updip50` re-placed 0.048225 to 0.066289 is valid only as "shifted dots versus the unthinned skeleton on these folds." It is not a comparison to the published Rule-2 leader (`COULOMBLOQO` ~0.1133–0.1139).
+- **Decision**: Label the two H19-5 numbers separately in the analysis. Do not cite 0.066289 as a new Rule-2 record.
 
 ## 2026-10-25 (KNICKLOQO session) — `#IR-92-COULOMBLOQO-EULERFUSE-POSTMERGE-COLLISION`: `COULOMBLOQO` passes matched-budget continuous-surface uniqueness (`0 / 185 > 0.70`) but collides at `82.87%` / `73.26%` with post-merge `EULERFUSE_gravity`
 - **Observation**: Re-auditing `COULOMBLOQO_standalone` (`e01d27af`) and `COULOMBLOQO_dual45` (`dd91d98c`) across all `1,412` non-self single-band exact-grid rasters in the 102-repo public inventory (`evidence/coulomb_loqo_dual_reading_audit.json`) under `vendor/gems57/uniqueness.py:dual_reading_decision` confirms that **all `185` continuous surfaces (`> 150,000` positive pixels) have `<= 0.535853` overlap** at matched top-`37,654` budget (`0 / 185 > 0.70`), completely eliminating the `17GEMSDOE E-proba-multiscale` (`5,167,373` px) dense-witness artifact. However, among `<= 90,000`-dot rasters, `COULOMBLOQO_standalone` has **`0.828703` (`82.87%`)** 3-px forward overlap (and `COULOMBLOQO_dual45` has **`0.732565`**) with `GEMSDOE92/docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif` (`EULERFUSE_gravity`, merged in PR #63 after `COULOMBLOQO`'s PR #55 scan), because `EULERFUSE` imported `gems/coulomb_loqo.py:fit_predict_loqo` directly and multiplied the same 24-feature `P_loqo` surface by an Euler gravity gate. In addition, `100,000`-dot `GEMSDOE23 h29-dealiased-habitat` reaches `0.739842` / `0.722420`.
@@ -1080,3 +1119,15 @@ Fresh Pages API: legacy publication; `PUT /repos/buffedlizard55-lab/GEMSDOE92/pa
 ### 3. `#IR-92-OVERBUDGET-SPARSE-WITNESS-ASYMMETRY`: `DOT_FIELD_MAX_SUPPORT = 150,000` Evaluates `37,654`-Dot Candidates Without Budget-Matching Against `55k–126k`-Dot Skeletons
 - **Observation (`REGISTRY-MEASUREMENT`):** `PROVINCETOE provincetoe` (`0.684575` local; **`0.660434 <= 0.70` max across all external rasters with `<= 50,000` positive pixels**) and `piedbasin` (`0.661284` local; **`0.638843 <= 0.70` max across all `<= 50,000`-dot external rasters**) pass uniqueness against every comparable-budget peer across `102` repos. Every external hit `> 0.70` has **`54,864` to `125,890` positive pixels (`1.46x`–`3.34x` budget)**, led by `62GEMSDOE/.../gems62f-h2r-ventcons-125890-20261012T012736Z-zeros.tif` (`0.791815` forward overlap vs only `0.443927` reverse overlap), because `vendor/gems57/uniqueness.py` sets `DOT_FIELD_MAX_SUPPORT = 150_000` (`4.0x` a `37,654`-dot budget) before applying `matched_budget_support`.
 - **Action:** Per Protocol Rule 2 and fail-closed selector discipline, `vendor/gems57/uniqueness.py` was **not** weakened; `PROVINCETOE` fails closed (`verdict: "negative"`, `submission_eligible: false`, `0` weekly slots spent), and both diagnostics are recorded in `evidence/provincetoe_uniqueness.json` for future human selector review.
+
+## 2026-10-25 — review797e: status ordering and Pages permission drift
+
+- **Fixed publication ambiguity:** baseline tests/site checks passed even though historical “newest/unique” banners preceded the actual rejection. A generated first-in-body panel is now byte-bound to the current primary and critical validation inputs across homepage, executive guide and submission form guide. The site gate rejects stale/buried/edited/duplicate panels; historical lane reports are collapsed but preserved. No TIFF/scientific result was modified.
+- **Binding scientific stop reverified:** the pinned 17GEMSDOE witness covers all 5,167,373 footprint pixels. Literal forward overlap is 1.0 for any nonempty valid candidate. New unique-TIF generation remains unfulfilled; no feature generation, holdout or competition slot used.
+- **Parallel primary drift handled:** merged `origin/main` at `bbda6c5`, retained its LISTRICDIP primary and freshly measured/revalidated it. Initial COULOMBDM receipts remain under `review797e_prior_*`. The inherited LISTRICDIP filename time is later than this review, not proof of execution time.
+- **Pages setting limitation:** API read showed legacy build mode and an errored legacy build; changing build mode to Actions via API returned 403 `Resource not accessible by integration`. No setting changed. Existing Actions workflow had a successful earlier deployment, but local verification alone does not establish current public-site freshness. Integration permissions need attention for configuration changes; no credentials were requested.
+- **Source boundary:** fresh GitHub blob verification confirms GEMSDOE32's page says UNSCORED / NO ORGANISER SCORE EXISTS, and official reference README provides CPU-only setup. Prompt scores remain unverified; non-GitHub official websites and PDF are outside the outbound allowlist. See `docs/REVIEW_797E507A.md` and `evidence/review797e_sources.json`.
+
+## 2026-10-25 — review797e integration: false clearance from parallel main quarantined
+
+Main `71f6ac4` introduced claims that KNICKLOQO was cleared under matched budgets, plus wrong size/shape/transform in a public card (its SHA-256 was correct; older inherited documentation was stale) and a root validator that swallowed shared-API errors before printing success. Incoming raw card preserved at `evidence/review797e_superseded_knickloqo_card.json`; public card replaced with negative, real-hash/metadata/format evidence. Alternative entry pages and markdown claims are explicitly superseded and archived, and the same canonical rejection panel now covers five HTML entry pages. The root entry point uses shared strict validation and cannot return submission success. This does not recertify old holdout numbers or modify raster bytes.

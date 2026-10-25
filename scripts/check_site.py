@@ -138,6 +138,17 @@ def main() -> int:
     if dup_ids:
         problems.append(f"index.html contains duplicate element id(s): {sorted(dup_ids)}")
 
+    # Recompute the current panel from bytes, not from historical PASS booleans.
+    # Both CI and Pages call this entry point; stale status must block publication.
+    if INDEX == ROOT / "docs/index.html":
+        from scripts.render_readiness import sync
+        try:
+            stale = sync(check=True)
+            if stale:
+                problems.append("stale current readiness: " + ", ".join(stale))
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            problems.append(f"current readiness failed: {exc}")
+
     # ---- every served zeros-outside raster must be linked AND pass the gates ---
     served = sorted(DOWNLOADS.glob("*-zeros.tif"))
     if not served:
@@ -153,6 +164,13 @@ def main() -> int:
 
     for path in served:
         tag = path.name
+        ok, report = summarise(run_gates(
+            str(path), str(SAMPLE), str(LABELS), prune_radius=2,
+            require_submission_encoding=True,
+        ))
+        if not ok:
+            problems.append(f"{tag}: gates failed\n{report}")
+            continue  # Do not index malformed/mismatched arrays below.
         expected_dots = N_DOTS
         variant = path.stem.removesuffix("-zeros")
         per_file_audit = path.with_name(variant + "-audit.json")
@@ -184,14 +202,7 @@ def main() -> int:
         except AssertionError as exc:
             problems.append(f"{tag}: {exc}")
 
-        ok, report = summarise(run_gates(
-            str(path), str(SAMPLE), str(LABELS), prune_radius=2,
-            require_submission_encoding=True,
-        ))
-        if not ok:
-            problems.append(f"{tag}: gates failed\n{report}")
-        else:
-            print(f"  PASS {tag}  sha256 {sha256_file(path)[:16]}…")
+        print(f"  PASS {tag}  sha256 {sha256_file(path)[:16]}…")
 
     # ---- the primary named on the page must match its audit receipt ----------
     primary_rel = primary_download(html, problems)
@@ -230,6 +241,13 @@ def main() -> int:
                 if card.get("verdict") != "negative":
                     problems.append("run card must record negative verdict after registry duplicate stop")
             print(f"  PRIMARY {primary.name}")
+
+    # Canonical status must precede every historical lane banner. A matching
+    # sentence buried below stale 'unique' claims is not an obvious decision.
+    from gems.public_status import check_panels
+    status_card = read_json_object(DOWNLOADS / 'review797e_run_card.json', problems)
+    if primary_rel:
+        problems.extend(check_panels(status_card, ROOT, primary_rel))
 
     if problems:
         print("SITE CHECK FAIL")
