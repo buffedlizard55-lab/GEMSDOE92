@@ -56,7 +56,7 @@ def test_panel_update_is_idempotent_and_moves_stale_banner_below(publication):
 
 @pytest.mark.parametrize('field,value', [
     ('submission_eligible', True), ('submission_eligible', 'false'),
-    ('new_raster_generated', True), ('verdict', 'promote'),
+    ('new_raster_generated', 'true'), ('verdict', 'promote'),
     ('raster_sha256', '0' * 64), ('note', ''), ('note', 'x' * 141),
     ('validator_output', []), ('validator_output', [None]),
     ('validator_output', [{'name': [], 'ok': True}]),

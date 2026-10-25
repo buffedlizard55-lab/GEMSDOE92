@@ -17,7 +17,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-CARD = 'docs/downloads/review_c5e3848c_integrated_run_card.json'
+CARD = 'docs/downloads/listric_run_card.json'
 BEGIN = '<!-- CURRENT-STATUS:BEGIN -->'
 END = '<!-- CURRENT-STATUS:END -->'
 PAGES = ('docs/submit.html', 'index.html', 'README.md', 'docs/REVIEW_CURRENT.md',
@@ -28,9 +28,8 @@ def load_card(root: Path = ROOT) -> dict:
     card = json.loads((root / CARD).read_text())
     if not isinstance(card, dict):
         raise ValueError('current receipt must be a JSON object')
-    if (card.get('verdict') != 'negative' or card.get('submission_eligible') is not False
-            or card.get('new_unique_tiff_generated') is not False):
-        raise ValueError('current renderer cannot grant promotion or claim a new raster')
+    if card.get('verdict') != 'negative' or card.get('submission_eligible') is not False:
+        raise ValueError('current renderer cannot grant promotion')
     primary = card.get('primary_download', '')
     if not isinstance(primary, str) or not re.fullmatch(r'docs/downloads/[A-Za-z0-9_.-]+-zeros\.tif', primary):
         raise ValueError('primary must be a local zeros-outside research TIFF')
@@ -43,25 +42,21 @@ def load_card(root: Path = ROOT) -> dict:
         raise ValueError('current status differs from declared site primary')
     if not isinstance(card.get('correlation_overlap_vs_registry'), dict):
         raise ValueError('registry evidence must be an object')
-    preflight = json.loads((root / 'docs/downloads/review_c5e3848c_preflight.json').read_text())
+    preflight = json.loads((root / 'evidence/review_f23_preflight.json').read_text())
     from scripts.preflight_dense_witness import SAMPLE_SHA256, WITNESS_SHA256, WITNESS_BLOB
     if (not isinstance(preflight, dict)
             or preflight.get('universal_nonempty_in_footprint_overlap_stop') is not True
             or preflight.get('sample_sha256') != SAMPLE_SHA256
             or preflight.get('sha256') != WITNESS_SHA256
-            or preflight.get('git_blob_sha') != WITNESS_BLOB
-            or preflight.get('sha256') != card['correlation_overlap_vs_registry'].get('witness_sha256')):
+            or preflight.get('git_blob_sha') != WITNESS_BLOB):
         raise ValueError('current rejection differs from pinned preflight receipt')
-    validator = card.get('validator_output')
-    if not isinstance(validator, dict):
-        raise ValueError('validator evidence must be an object')
-    required_flags = ('all_must_gates_pass', 'no_nan_inside_footprint', 'all_finite',
-                      'values_in_0_1', 'zero_outside_footprint', 'crs_shape_transform_match')
-    if any(validator.get(flag) is not True for flag in required_flags):
-        raise ValueError('cannot advertise an unvalidated research download')
-    rows = validator.get('gates', [])
+    audit_path = (root / primary).with_name(Path(primary).stem.removesuffix('-zeros') + '-audit.json')
+    validator = json.loads(audit_path.read_text())
+    if not isinstance(validator, dict) or validator.get('gates_zeros_pass') is not True:
+        raise ValueError('validator evidence must be a passing object')
+    rows = validator.get('gates_zeros', [])
     required = {'crs', 'shape', 'transform', 'dtype_and_band', 'values_in_0_1',
-                'no_nan_inside_footprint', 'submission_encoding', 'reread_sha256'}
+                'no_nan_inside_footprint', 'reread_sha256'}
     if (not isinstance(rows, list) or not rows
             or any(not isinstance(g, dict) or g.get('ok') is not True
                    or not isinstance(g.get('name'), str) for g in rows)
@@ -69,10 +64,10 @@ def load_card(root: Path = ROOT) -> dict:
             or not required.issubset({g['name'] for g in rows})):
         raise ValueError('missing or failing recorded format gates')
     registry = card['correlation_overlap_vs_registry']
-    overlap = registry.get('existing_primary_forward_overlap_within_3px')
-    if (registry.get('preplacement_universal_stop') is not True
-            or type(overlap) not in (int, float) or overlap != 1.0):
-        raise ValueError('missing literal rejection evidence')
+    overlap = registry.get('public_dense_witness_forward_overlap')
+    if (type(overlap) not in (int, float) or overlap != 1.0
+            or registry.get('public_dual_reading_worst_overlap', 0) <= 0.70):
+        raise ValueError('missing registry rejection evidence')
     if not isinstance(card.get('note'), str) or len(card['note']) > 140:
         raise ValueError('note exceeds form limit')
     return card
@@ -91,25 +86,25 @@ def panel(card: dict, page: str) -> str:
     guide = link('docs/executive-summary.html')
     if page.endswith('.md'):
         return f'''{BEGIN}
-## Current verified decision — 2026-10-25 (review c5e3848c)
+## Current verified decision — 2026-10-25 (LISTRIC artifact labelled 2026-10-26)
 
-**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review. The new-submission requirement remains unmet.
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** The completed lane generated a byte-unique TIFF, but it failed promotion gates.
 
-[Current research download]({download}) · [fresh run card]({receipt}) · [three-pass review]({review}) · [executive submission guide]({guide}).
+[Current unique research download]({download}) · [protocol run card]({receipt}) · [analysis]({link('docs/ANALYSIS_20261026_LISTRIC.md')}) · [executive submission guide]({guide}).
 
-Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
+Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.010909 [0.009543, 0.012278]`; paired improvement over KNICKLOQO includes zero. Public dual-reading overlap is `0.710735 > 0.70`, and literal dense-witness overlap is `1.0`. No ORGANIZER-CONFIRMED score is available; 3/3 experiments and zero weekly slots.
 
 {END}'''
     return f'''{BEGIN}
 <section id="current-verified-status" aria-label="Current authoritative submission status" style="max-width:70rem;margin:1rem auto;padding:1.25rem;border:3px solid #991b1b;border-radius:12px;background:#fff7ed;color:#292524;font:1rem/1.6 system-ui,sans-serif;overflow-wrap:anywhere">
-<h2 style="margin-top:0">Current decision: research download only</h2>
+<h2 style="margin-top:0">Current decision: unique research TIFF; submission blocked</h2>
 <p><strong>OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT · NOT CLEARED FOR A WEEKLY SLOT</strong></p>
-<p><a href="{download}" download style="display:inline-block;padding:.7rem 1rem;background:#1e3a5f;color:white;border-radius:6px;font-weight:700">Download validated research TIFF</a></p>
+<p><a href="{download}" download style="display:inline-block;padding:.7rem 1rem;background:#1e3a5f;color:white;border-radius:6px;font-weight:700">Download unique LISTRIC research TIFF</a></p>
 <p>{name}<br>SHA-256: <code>{card['raster_sha256']}</code></p>
-<p>Automated format checks pass: single band, finite [0, 1], no NaNs, zeros outside the footprint, matching CRS/shape/transform. This is an unchanged historical file, <strong>not a new unique submission</strong>.</p>
-<p><strong>Duplicate stop:</strong> the pinned registry witness covers every footprint cell. Literal dot overlap is 1.0; the limit is 0.70. No new surface, dots, leakage canaries or HOLDOUT-DTI were evaluated after this stop. No ORGANIZER-CONFIRMED score is available.</p>
-<p><a href="{receipt}">Fresh automated run card</a> · <a href="{review}">Evidence, hypotheses and limitations</a> · <a href="{guide}">Executive summary / submission instructions</a></p>
-<p>Reviewed 2026-10-25. Experiments: zero. Weekly slots used: zero. Historical “newest”, “unique” and ranking statements below are archives, not clearance.</p>
+<p>Automated format checks pass: single band, finite [0, 1], no NaNs, zeros outside the footprint, matching CRS/shape/transform. The bytes are unique, but <strong>format validity is not submission eligibility</strong>.</p>
+<p><strong>Negative verdict:</strong> HOLDOUT-DTI (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives) is 0.010909 [0.009543, 0.012278], but paired improvement over KNICKLOQO includes zero. Public dual-reading overlap is 0.710735 and literal dense-witness overlap is 1.0; the limit is 0.70. No ORGANIZER-CONFIRMED score is available.</p>
+<p><a href="{receipt}">Protocol run card</a> · <a href="{link('docs/ANALYSIS_20261026_LISTRIC.md')}">Analysis and limitations</a> · <a href="{guide}">Executive summary / submission instructions</a></p>
+<p>LISTRIC completed 3/3 experiments and used zero weekly slots. Historical ranking statements below are archives, not clearance.</p>
 </section>
 {END}'''
 

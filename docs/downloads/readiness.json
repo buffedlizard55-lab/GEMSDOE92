@@ -5,13 +5,13 @@
   "submission_status": "DO NOT SUBMIT \u2014 NOT CLEARED FOR A WEEKLY SLOT",
   "submission_eligible": false,
   "verdict": "negative",
-  "new_unique_tiff_generated": false,
-  "experiments_this_review": 0,
+  "new_unique_tiff_generated": true,
+  "experiments_this_review": 3,
   "weekly_slots_used_this_review": 0,
-  "file": "downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif",
-  "raster_sha256": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
-  "submission_name": "GEMSDOE92-LISTRICDIP-updip50-20261025",
-  "note": "LISTRICDIP updip50: 37654 listric-offset dots; HOLDOUT-DTI 0.005420; negative",
+  "file": "downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif",
+  "raster_sha256": "7e4b46368b2a5949bcf626bfaa4457ed15a89dde38d412a1d07469411a31e2ab",
+  "submission_name": "GEMSDOE92-LISTRIC-standalone-20261026",
+  "note": "h33-h33-2-b2; LISTRIC standalone: 37654 1D quadrant-cal listric offset-pair crests",
   "format_pass": true,
   "validator_output": [
     {
@@ -67,7 +67,7 @@
     {
       "name": "reread_sha256",
       "ok": true,
-      "detail": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e"
+      "detail": "7e4b46368b2a5949bcf626bfaa4457ed15a89dde38d412a1d07469411a31e2ab"
     }
   ],
   "correlation_overlap_vs_registry": {
@@ -78,23 +78,114 @@
     "rank_correlation_reason": "not measured in this review; overlap alone requires stop",
     "proof": "downloads/review_f23_preflight.json"
   },
-  "holdout_dti": null,
-  "holdout_reason": "No new candidate or holdout after universal pre-placement stop.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.01090854835537191,
+    "ci95": [
+      0.009543315051539832,
+      0.012277592308589378
+    ],
+    "strict_draw_blind_dcat2_dti": 0.010951018470271238,
+    "strict_draw_blind_dcat2_ci95": [
+      0.009677351521267592,
+      0.012293722010131633
+    ],
+    "strict_draw_blind_dvis2_dti": 0.11059316734085466,
+    "strict_draw_blind_dvis2_ci95": [
+      0.0974356173124059,
+      0.12334638585474715
+    ],
+    "paired_vs_H19_skeleton_dvis2": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.013835833980625226,
+      "ci95": [
+        0.005531103251456,
+        0.0231015668709022
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "paired_vs_KNICKLOQO_standalone_prev_best": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.00012085654249844625,
+      "ci95": [
+        -0.0011670355298850383,
+        0.0012623752801468634
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "paired_vs_COULOMBLOQO_standalone": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.0016884344515638028,
+      "ci95": [
+        0.00041112808015404196,
+        0.002963828410836799
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "paired_vs_EULERFUSE_gravity": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.0016437626752730944,
+      "ci95": [
+        0.00039839687889284357,
+        0.0028847472806963785
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "paired_vs_HYDROCONDUIT_f45hydro": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.0023594484436667007,
+      "ci95": [
+        0.0010596041006956881,
+        0.0036641774020228952
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "paired_vs_COULOMBDM_s45coulomb55": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.003092350072070319,
+      "ci95": [
+        0.001951674452995462,
+        0.004227500043264597
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "paired_vs_R0": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.0069024011806871665,
+      "ci95": [
+        0.005729330852337109,
+        0.008081286053821943
+      ],
+      "withheld_positive_pixels": 22663
+    }
+  },
+  "holdout_reason": "Measured by the completed LISTRIC lane; local HOLDOUT-DTI is not an organizer score and did not clear every promotion gate.",
   "organizer_confirmed_score": null,
   "blocking_reasons": [
     "DUPLICATE UNDER THE LITERAL REGISTRY RULE: pinned positive support covers the entire footprint.",
     "Matched-budget overlap is diagnostic, not permission to replace the literal rule.",
-    "No geological method paragraph is assigned in this prompt.",
+    "The completed LISTRIC lane used all 3 experiments and its paired improvement over KNICKLOQO includes zero.",
+    "Public dual-reading overlap is 0.710735, above the 0.70 stop threshold.",
+    "The artifact filename/run card is labelled 2026-10-26, one day after this 2026-10-25 review; chronology is unverified.",
     "No verified submission-page receipt or current weekly-cap evidence is available."
   ],
   "input_sha256": {
     "data/bridge/sample_submission.tif": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
     "data/bridge/labels.tif": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
-    "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
-    "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-audit.json": "2e0ba1c132daf838e4bb46ef59506db235fc921758e092999c856014ded8c40e",
-    "evidence/listricdip_run_card.json": "dcb3178eb83158db3e862add18af4b17cd22496ef90d02f85502000d98d7cf40",
+    "docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif": "7e4b46368b2a5949bcf626bfaa4457ed15a89dde38d412a1d07469411a31e2ab",
+    "docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-audit.json": "e47fc931d23ad6c8491f62239ec08e8960da5dc91019cad951781c7bbda8a202",
+    "evidence/listric_run_card.json": "495d99649b26e32718f33c29e95bd5e949b696459ab7314d6b5ee3bb1c08bf49",
     "evidence/review_f23_preflight.json": "b1cc2d46b24ad3cde759953143ea3806c17f86d0f1eb72fc1581f5e34643fecb",
     "gems/gates.py": "7bf557dd1a46b01449fb1108d5617baa5f6608d025c2c86c6ee94a7d30785bf6",
-    "scripts/render_readiness.py": "f10526ba8999d3be3aa8af58772761b564d37511f3d800fc8e39e0907b94660f"
+    "scripts/render_readiness.py": "9fb39d7905a9899510da5e9d3df197f06d698a808c898e433f713efe3c10e3e7"
   }
 }
