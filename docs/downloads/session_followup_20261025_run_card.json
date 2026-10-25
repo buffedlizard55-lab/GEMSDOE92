@@ -127,8 +127,8 @@
     "tracked_data_irregularity": "8 tracked files under data/ conflict with session_manifest's never-track policy."
   },
   "integration_recheck": {
-    "verified_utc": "2026-10-25T18:05:15Z",
-    "base_commit": "461aced930c6a10a726b3a1c36add34e3d0aa271",
+    "verified_utc": "2026-10-25T18:15:34Z",
+    "base_commit": "3547cde5dc1829e620ff0e8ff91e54ffcca54107",
     "pytest": "538 passed; 140 upstream Affine pending-deprecation warnings",
     "site_check": "PASS; 89 served rasters gated",
     "current_status_and_readiness_checks": "PASS; supplemental audit and leaderboard links generated and synchronized",
