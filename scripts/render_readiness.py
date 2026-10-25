@@ -173,6 +173,18 @@ def render_page(text: str, block: str) -> str:
     if body is None:
         raise ValueError('missing body')
     content = body[2]
+    # Reuse the concurrently merged shared first-in-body public-status contract.
+    # The detailed readiness panel follows the same negative decision.
+    from gems.public_status import BEGIN as PUBLIC_BEGIN, END as PUBLIC_END
+    public = ''
+    if PUBLIC_BEGIN in content or PUBLIC_END in content:
+        if content.count(PUBLIC_BEGIN) != 1 or content.count(PUBLIC_END) != 1:
+            raise ValueError('ambiguous public-status markers')
+        match = re.search(re.escape(PUBLIC_BEGIN) + r'.*?' + re.escape(PUBLIC_END), content, flags=re.S)
+        if match is None:
+            raise ValueError('malformed public-status panel')
+        public = match[0] + '\n'
+        content = content[:match.start()] + content[match.end():]
     if START in content or END in content:
         if content.count(START) != 1 or content.count(END) != 1:
             raise ValueError('ambiguous readiness markers')
@@ -182,7 +194,7 @@ def render_page(text: str, block: str) -> str:
             raise ValueError('ambiguous archive markers')
         content = content.replace(ARCHIVE_START, '').replace('</details>\n' + ARCHIVE_END, '')
     content = content.strip()
-    replacement = (body[1] + '\n' + block + '\n' + ARCHIVE_START + '\n' + content
+    replacement = (body[1] + '\n' + public + block + '\n' + ARCHIVE_START + '\n' + content
                    + '\n</details>\n' + ARCHIVE_END + '\n' + body[3])
     return text[:body.start()] + replacement + text[body.end():]
 
@@ -222,10 +234,13 @@ def corrected_knickloqo_receipt(root: Path) -> dict:
         'source_run_card_sha256': sha256_file(card_path),
         'raster_sha256': digest,
         'file': candidate.name,
+        'primary_download': str(candidate.relative_to(root)),
         'metadata_measured_from_disk': metadata,
+        'raster_metadata': metadata,
+        'supersedes': {'archived_card': 'evidence/review797e_superseded_knickloqo_card.json'},
         'format_pass': all(g.ok for g in gates),
         'validator_output': [asdict(g) for g in gates],
-        'holdout_dti': None,
+        'holdout_dti': {'evidence_class': 'HOLDOUT-DTI', 'dti': None, 'ci95': None},
         'holdout_note': 'No new evaluation. Historical results remain in the linked source run card.',
         'organizer_confirmed_score': None,
         'correlation_overlap_vs_registry': {
@@ -247,13 +262,27 @@ def sync(root: Path = ROOT, *, check: bool = False) -> list[str]:
     status = build_status(root)
     outputs = {root / 'docs/downloads/readiness.json': json.dumps(status, indent=2, allow_nan=False) + '\n'}
     block = panel(status)
+    # Preserve the shared review797e publication API; refresh its input bindings
+    # through the same newly rerun gates, rather than keeping two status engines.
+    from gems.public_status import install_panel, render_status, validate_status
+    public_card_path = root / 'evidence/review797e_run_card.json'
+    public_card = json.loads(public_card_path.read_text())
+    public_card['validator_output'] = status['validator_output']
+    public_card['publication_input_sha256'] = {
+        rel: sha256_file(root / rel) for rel in public_card['publication_input_sha256']}
+    public_card['revalidated_by'] = 'f23ca2d2 shared readiness integration; no new scientific evaluation'
+    validate_status(public_card, root, status['file'])
+    public_text = json.dumps(public_card, indent=2, allow_nan=False) + '\n'
+    outputs[public_card_path] = public_text
+    outputs[root / 'docs/downloads/review797e_run_card.json'] = public_text
+    public_panel = render_status(public_card)
     for alias in ('SUBMIT_NOW.html', 'index_new.html'):
-        outputs[root / 'docs' / alias] = retired_page()
+        outputs[root / 'docs' / alias] = install_panel(retired_page(), public_panel)
     outputs[root / 'docs/downloads/knickloqo_submission_run_card.json'] = (
         json.dumps(corrected_knickloqo_receipt(root), indent=2, allow_nan=False) + '\n')
     for page in PAGES:
         path = root / 'docs' / page
-        outputs[path] = render_page(path.read_text(), block)
+        outputs[path] = render_page(install_panel(path.read_text(), public_panel), block)
     # Publish the freshly verified rejection proof with exact source bytes.
     outputs[root / 'docs/downloads/review_f23_preflight.json'] = (root / 'evidence/review_f23_preflight.json').read_text()
     stale = []

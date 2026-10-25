@@ -1,25 +1,47 @@
 #!/usr/bin/env python3
-"""Compatibility entry point for current readiness, not an organizer validator.
+"""Rejection-only entry point using the shared strict validator.
 
-Uses the same byte-bound shared checks as the site. Exit 1 means blocked (even
-when local format checks pass); no exception may be converted to clearance.
-For format-only checks of another file use ``python -m gems validate``.
+A format pass is not upload clearance. The literal universal registry stop is
+binding; exit 1 means DO NOT SUBMIT even when all format checks pass. No exception
+is converted into success. No score or organizer-acceptance forecast is made.
 """
-import json
+from __future__ import annotations
+import argparse
+from pathlib import Path
 import sys
-from scripts.render_readiness import build_status
+
+import rasterio
+from gems.gates import run_gates, summarise
+from scripts.check_site import primary_download
+
+ROOT = Path(__file__).resolve().parent
 
 
-def main() -> int:
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('candidate', nargs='?', type=Path)
+    args = parser.parse_args(argv)
     try:
-        status = build_status()
-    except (OSError, ValueError, KeyError, TypeError) as exc:
-        print(f'VALIDATION FAILED: {exc}', file=sys.stderr)
+        candidate = args.candidate
+        if candidate is None:
+            problems = []
+            rel = primary_download((ROOT / 'docs/index.html').read_text(), problems)
+            if problems or rel is None:
+                raise ValueError('; '.join(problems))
+            candidate = ROOT / 'docs' / rel
+        results = run_gates(
+            str(candidate), str(ROOT / 'data/bridge/sample_submission.tif'),
+            str(ROOT / 'data/bridge/labels.tif'), prune_radius=2,
+            require_submission_encoding=True,
+        )
+        ok, report = summarise(results)
+        print(report)
+        print('FORMAT PASS (local only)' if ok else 'FORMAT FAIL')
+        print('DO NOT SUBMIT: literal registry stop; no weekly-slot clearance.')
         return 1
-    print(json.dumps(status, indent=2, allow_nan=False))
-    print(status['submission_status'])
-    # This entry point provides no selector/weekly-cap authorization mechanism.
-    return 1
+    except (OSError, ValueError, rasterio.errors.RasterioError) as exc:
+        print(f'INCONCLUSIVE / DO NOT SUBMIT: {exc}', file=sys.stderr)
+        return 2
 
 
 if __name__ == '__main__':

@@ -94,3 +94,19 @@ Final post-conflict verification: **405 tests pass**, with 140 nonfatal upstream
 Affine warnings; **66 served TIFFs pass** the full site checker. Manifest,
 pinned-parent and ledger checks pass. These are software/format outcomes, not
 competition scores. No candidate generation or weekly slot occurred.
+
+### Final integrated checkpoint (supersedes intermediate test totals)
+
+Main advanced again through `e1c2ad9`. Preserved the parallel RADIODECOUPLE and
+CURIE-DEMAG research files; they are not creations or new experiments of this
+review. Reused the other review's shared first-in-body public-status contract
+and rejection-only CLI, with our detailed byte-derived readiness panel following
+the same negative decision. Both status checkers pass. The old clearance pages
+remain retired; corrected receipts remain derived from actual disk metadata.
+
+**436 tests pass; all 70 served TIFFs pass** the corrected shared/site validators.
+The 140 warnings are nonfatal upstream Affine deprecations. Manifest, pinned
+parent, ledger and diff checks pass. Earlier counts above are intermediate
+checkpoints, not the final total. Parallel filenames dated 2026-10-26 are retained
+as historical identifiers, not evidence that this review occurred after
+2026-10-25. No new scientific score or submission is claimed.

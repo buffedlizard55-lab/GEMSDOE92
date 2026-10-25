@@ -5,6 +5,7 @@
   "source_run_card_sha256": "fbaa57c74f67fd0d4f256248f629f950a7cb70ad9d17a56875551ac040fb40ce",
   "raster_sha256": "8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347",
   "file": "h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif",
+  "primary_download": "docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif",
   "metadata_measured_from_disk": {
     "bytes": 149177,
     "shape": [
@@ -23,6 +24,28 @@
     "band_count": 1,
     "dtype": "float32",
     "nodata": null
+  },
+  "raster_metadata": {
+    "bytes": 149177,
+    "shape": [
+      3730,
+      3292
+    ],
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "band_count": 1,
+    "dtype": "float32",
+    "nodata": null
+  },
+  "supersedes": {
+    "archived_card": "evidence/review797e_superseded_knickloqo_card.json"
   },
   "format_pass": true,
   "validator_output": [
@@ -82,7 +105,11 @@
       "detail": "8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347"
     }
   ],
-  "holdout_dti": null,
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "dti": null,
+    "ci95": null
+  },
   "holdout_note": "No new evaluation. Historical results remain in the linked source run card.",
   "organizer_confirmed_score": null,
   "correlation_overlap_vs_registry": {

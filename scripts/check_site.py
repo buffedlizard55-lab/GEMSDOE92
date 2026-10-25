@@ -242,6 +242,13 @@ def main() -> int:
                     problems.append("run card must record negative verdict after registry duplicate stop")
             print(f"  PRIMARY {primary.name}")
 
+    # Canonical status must precede every historical lane banner. A matching
+    # sentence buried below stale 'unique' claims is not an obvious decision.
+    from gems.public_status import check_panels
+    status_card = read_json_object(DOWNLOADS / 'review797e_run_card.json', problems)
+    if primary_rel:
+        problems.extend(check_panels(status_card, ROOT, primary_rel))
+
     if problems:
         print("SITE CHECK FAIL")
         for p in problems:

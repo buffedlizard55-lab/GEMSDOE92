@@ -1,0 +1,101 @@
+{
+  "schema": "gemsdoe92-review-run-card-v1",
+  "reviewed_utc": "2026-10-25T14:50:32.370965+00:00",
+  "lane": "PROTOCOL-PUBLICATION-REVIEW; no single geological method paragraph assigned",
+  "hypothesis": "A literal universal registry witness bars generation before placement; the publication decision must precede historical uniqueness claims.",
+  "mechanism": "Reverify pinned witness and sample; independently reread existing primary through shared format gates; bind one first-in-body rejection panel to exact primary bytes.",
+  "named_non_fault_process_that_could_mimic_it": "Not a new geological experiment. Inherited LISTRICDIP interpretation can be mimicked by volcanic contacts and Lake Lahontan shoreline terraces.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "status": "not run or recertified in this review; stopped before feature generation",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": null,
+    "ci95": null,
+    "withheld_positives": null
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "one pinned witness; rejection only, not full inventory clearance",
+    "forward_overlap": 1.0,
+    "spearman": 0.010352227787484035,
+    "stop_required": true,
+    "preplacement_universal_stop": true,
+    "new_candidate_surface": null
+  },
+  "primary_download": "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif",
+  "raster_sha256": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
+  "validator_output": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=('float32',) count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nonfinite_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0; strict distance > radius required"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e"
+    }
+  ],
+  "publication_input_sha256": {
+    "data/bridge/sample_submission.tif": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+    "data/bridge/labels.tif": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+    "gems/gates.py": "7bf557dd1a46b01449fb1108d5617baa5f6608d025c2c86c6ee94a7d30785bf6",
+    "evidence/review797e_preflight.json": "b82d2c2cafd7087637d64e558678776163d4ca21627d20976876cf433837a4c1"
+  },
+  "submission_name": "GEMSDOE92-REVIEW797E-20261025-NO-NEW-SUBMISSION",
+  "note": "Protocol review only: inherited LISTRICDIP research raster; literal overlap 1.0; do not submit.",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "new_raster_generated": false,
+  "experiments_executed": 0,
+  "weekly_slots_used": 0,
+  "organizer_confirmed_score": null,
+  "unfulfilled": "No new unique submission TIFF generated: literal uniqueness rule requires stop for every nonempty candidate.",
+  "parallel_merge": "Reconciled origin/main bbda6c5 without selecting a candidate. Preserved its existing LISTRICDIP primary and freshly revalidated it; prior COULOMBDM witness/card retained with prior prefix.",
+  "revalidated_by": "f23ca2d2 shared readiness integration; no new scientific evaluation"
+}
