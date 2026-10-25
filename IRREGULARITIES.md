@@ -1,3 +1,31 @@
+# Final integration note — 2026-10-25 (`f23ca2d2`)
+
+Reused the concurrently merged `gems/public_status.py` publication contract and rejection-only root CLI; refreshed its format-gate pins from the corrected shared validator. Both publication checks agree on the negative decision. Parallel RADIODECOUPLE/CURIE-DEMAG rasters are preserved and revalidated, not attributed to this review. Future-dated 2026-10-26 filenames/headers remain historical identifiers; the current review date remains 2026-10-25. Final checks: 436 tests and 70 served TIFFs pass; no newly generated candidate or slot.
+
+---
+
+# Concurrent merge correction — 2026-10-25 (`f23ca2d2`, PR #89 integration)
+
+- **IR-92-FALSE-UPLOAD-CLEARANCE (fixed):** commit `406638a` added active “submission ready” pages and `submission_eligible: true` despite the known literal duplicate stop. `SUBMIT_NOW.html` and `index_new.html` now redirect to the checked current status. Unsupported score projections and portal guarantees are withdrawn; the original publication remains in Git history.
+- **IR-92-SWALLOWED-VALIDATOR-ERROR (fixed, reproduced):** its root validator called `run_gates` without `reference_path`, caught the resulting TypeError, printed “ALL CHECKS PASSED — FILE IS READY FOR SUBMISSION,” and exited zero. Reproduced in this review before replacing it with a shared-readiness compatibility entry point that returns blocked status and never swallows a failure as clearance.
+- **IR-92-PARALLEL-RECEIPT-METADATA (fixed):** the new receipt said 123456 bytes, shape `[3292,3730]`, incorrect geotransform and nodata zero. Actual disk read: 149177 bytes, shape `[3730,3292]`, transform `[100,0,243350,0,-100,4508550]`, nodata null. Metadata is now generated from disk. **The parallel TIFF SHA-256 correction was valid**, not an error: `8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347` matches the original and current bytes. Earlier prose in this repo used a stale hash; this review initially repeated that mistake in commentary, then corrected it after comparing Git blobs and disk bytes.
+- Untested parallel `gems/flexure_knick_province.py` research code is preserved, not represented as a model trained or validated by this review.
+
+---
+
+# 2026-10-25 review (`f23ca2d2`) — new findings
+
+- **IR-92-PRUNE-RADIUS-BYPASS (fixed):** `gems/gates.py::_g_catalogue` used `n_near == 0 or prune_radius < 3`; any prediction inside a declared radius below three passed the distance gate. The legacy test encoded that bypass. Removed the override; test boundaries now include inside, exactly at, and outside the declared radius. All existing served artifacts are revalidated, not assumed to inherit a PASS.
+- **IR-92-READINESS-DRIFT (mitigated):** newer KNICKLOQO panels describe a matched-budget `dual_reading_decision` as unique although the shared helper's operative rule is now literal. Historical JSON and numerical claims are preserved, explicitly archived; a byte-bound current panel is generated and checked before CI/Pages publication. Future edits that stale that panel fail the checker.
+- **IR-92-GRID-FAILURE-HANDLING (fixed):** the validator could index a wrong-shape raster with the template mask and did not check catalogue georeferencing. It now returns structured failed gates for malformed rasters, mismatched catalogue grids and invalid radii; exact transform match is required.
+- **IR-92-NO-ELIGIBLE-NEW-TIFF (unresolved):** fresh pinned witness covers every footprint pixel, so the unchanged literal rule forbids all nonempty candidates. No new TIFF is generated, and no old artifact is renamed as new.
+- **IR-92-PAGES-MODE (unresolved, rechecked):** GitHub API reports legacy publication; PUT build_type=workflow returned HTTP 403 Resource not accessible by integration. Actions checks are not asserted to guard the live legacy site.
+- **IR-92-SCORE-PROVENANCE (unresolved):** freshly retrieved GEMSDOE32 page says UNSCORED and NO ORGANISER SCORE EXISTS. User-reported values and conflicting leaderboard numbers remain unverified.
+
+[Review](docs/REVIEW_F23.md) · [source receipt](evidence/review_f23_sources.json) · [pre-placement proof](evidence/review_f23_preflight.json).
+
+---
+
 # IRREGULARITIES — only items that change a decision
 
 ## 2026-10-25 (LISTRICDIP session) — antithetic budget cannot be filled without leaving the mechanism

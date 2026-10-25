@@ -1,18 +1,14 @@
-# Current ordered next steps — c5e3848c, 2026-10-25
+# Current review and next steps — 2026-10-25 (`f23ca2d2`)
 
-**DO NOT SUBMIT. No new TIFF generated in this review.** [Fresh review](REVIEW_C5E3848C.md) · [run card](downloads/review_c5e3848c_run_card.json).
+**No new TIFF. Research downloads only; DO NOT SUBMIT.** [Fresh review](REVIEW_F23.md) · [automated status](downloads/readiness.json) · [run card](downloads/review_f23_run_card.json).
 
-1. Resolve the literal registry conflict explicitly in a future brief. A freshly pinned full-footprint witness gives overlap 1.0 for every nonempty candidate, requiring stop before placement. Matched-budget readings cannot substitute for the binding rule.
-2. Assign one geological lane; audit data permissions, cache identities, band meanings and the exact holdout segmentation/buffer. Freeze a comparable control and separate outer spatial test before any further adaptive search.
-3. Only when permitted: restore the existing cache, test every feature for leakage, compare surfaces before placement and final dots after placement, and evaluate at most three experiments / two hours with the shared evaluator/writer. No automatic slot promotion.
-4. Fix Pages publication permissions: current API reports legacy build mode, errored status; changing to workflow publication returned HTTP 403. Do not claim the live site is validator-gated until confirmed.
-5. Verify the current competition cap and actual organizer receipts via authorized access; external official websites/PDFs remain outside this sandbox's network allowlist.
+1. The previous proposed KNICKLOQO promotion cannot proceed under the unchanged literal rule. The pinned witness rejects all nonempty candidates before placement. Matched-budget diagnostics must not supersede the user's rule silently. An explicitly revised future brief and a named lane are prerequisites to further geological experiments, not a request for human pixel inspection.
+2. Use the corrected shared validator and byte-bound status renderer. `prune_radius=2` no longer bypasses its own distance gate. Never re-use a historical audit as proof of current bytes.
+3. Only if the protocol permits experiments later: restore pinned features; verify data-use rights and band metadata; freeze a comparable holdout control and locked outer spatial test; run single-feature canaries before the experiment budget. Do not compare static-mask and fold-visible scores as one leaderboard.
+4. Verify official submission-page rules, current cap and actual score receipts through permitted access. No DrivenData session or permitted route to those hosts is available here. No submission slot was spent.
+5. GitHub Pages still reports legacy publication. Enabling workflow publication returned HTTP 403. Repository integration permissions need attention before claiming Actions gates the live site. No credential is requested or stored.
 
-`python scripts/render_current_status.py --check` now enforces a synchronized decision above archived lane claims. Existing research TIFFs remain downloadable and automatically format-validated; none is cleared by this review. All following sections are historical session-specific next steps, not independent authorization to resume experiments.
-
-
-
----
+Earlier “current,” “unique,” and promotion instructions below are historical and superseded where they conflict with this decision. The newly requested unique submission remains unfulfilled.
 
 # Binding next steps — 2026-10-25 (`797e507a`)
 

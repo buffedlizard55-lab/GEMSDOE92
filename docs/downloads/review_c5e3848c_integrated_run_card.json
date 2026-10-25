@@ -77,7 +77,7 @@
       {
         "name": "dtype_and_band",
         "ok": true,
-        "detail": "dtype=float32 count=1"
+        "detail": "dtype=('float32',) count=1"
       },
       {
         "name": "values_in_0_1",
@@ -87,7 +87,7 @@
       {
         "name": "no_nan_inside_footprint",
         "ok": true,
-        "detail": "nan_pixels=0"
+        "detail": "nonfinite_pixels=0"
       },
       {
         "name": "nan_outside_footprint",
@@ -107,7 +107,7 @@
       {
         "name": "distance_from_catalogue",
         "ok": true,
-        "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        "detail": "radius=2px dots_within=0; strict distance > radius required"
       },
       {
         "name": "reread_sha256",
@@ -149,15 +149,15 @@
     }
   ],
   "integration": {
-    "main_commit": "e1c2ad9",
+    "main_commit": "216983c",
     "historical_checkpoint_card": "docs/downloads/review_c5e3848c_run_card.json",
-    "note": "Integrated parallel LISTRICDIP, RADIODECOUPLE, CURIEDEMAG and publication review records; no new predictions. Reused gems.public_status for the five core HTML pages and retained six supplementary review panels."
+    "note": "Integrated shared public-status and readiness renderers plus strict shared validator fixes. Five core HTML status panels and six supplementary panels remain rejection-only. No new predictions."
   },
   "verification": {
     "passes_completed": 3,
     "baseline_tests_passed": 367,
-    "final_tests_passed": 439,
-    "nonfatal_upstream_deprecation_warnings": 126,
+    "final_tests_passed": 471,
+    "nonfatal_upstream_deprecation_warnings": 140,
     "served_rasters_gated": 70,
     "current_panels_synchronized": 11,
     "manifest": "PASS",

@@ -74,7 +74,7 @@ Flagged inherited future-dated RADIOCONTACT documentation (2026-10-26 versus tod
 
 ## Pass 3 — final acceptance and remaining work
 
-Final verification: **439 tests passed**, with **126 nonfatal upstream Affine deprecation warnings**; **70 served TIFFs** passed the site gate; pinned input manifest, pinned parent bytes, ledger and `git diff --check` passed. These are software/format counts, not competition scores. Results are recorded in the run card's `verification` object. All served zeros-outside TIFFs are re-read by the automated site gate, not visually inspected by a human. A format pass is not organizer acceptance. Current authoritative panels must be regenerated after a legitimate primary change with `python scripts/render_current_status.py`; `--check` detects drift. That renderer intentionally cannot authorize a submission.
+Final verification: **471 tests passed**, with **140 nonfatal upstream Affine deprecation warnings**; **70 served TIFFs** passed the site gate; pinned input manifest, pinned parent bytes, ledger and `git diff --check` passed. These are software/format counts, not competition scores. Results are recorded in the run card's `verification` object. All served zeros-outside TIFFs are re-read by the automated site gate, not visually inspected by a human. A format pass is not organizer acceptance. Current authoritative panels must be regenerated after a legitimate primary change with `python scripts/render_current_status.py`; `--check` detects drift. That renderer intentionally cannot authorize a submission.
 
 Remaining work, ordered by value:
 
@@ -99,3 +99,9 @@ The conflicting readiness pages are retained as collapsed, explicitly superseded
 A second parallel merge supplied the same rejection decision in shared `gems.public_status`, plus RADIODECOUPLE/CURIEDEMAG research artifacts. Reused its first-in-body panel and validator on the five core HTML pages rather than maintaining a competing private status renderer there. This review's renderer now covers the six supplementary Markdown/root/redirect entrypoints; `scripts/check_site.py` checks both scopes. Preserved its standardized corrected KNICKLOQO card and exception-safe compatibility validator. The original unsupported card is archived by that review in `evidence/review797e_superseded_knickloqo_card.json`; no historical score was rerun.
 
 **Final integrated result:** 439 tests passed (126 nonfatal upstream deprecation warnings), 70 served TIFFs format-gated, 11 synchronized entrypoints; manifest, parent, ledger and diff checks passed. Other sessions' outputs are not attributed to this review. The requested new, eligible submission remains unmet.
+
+### Final strict-validator integration (216983c)
+
+A third parallel review strengthened `gems.gates` to enforce the declared clearance radius, reject mismatched catalogue grids/unreadable rasters, require exact transforms and treat infinities as nonfinite. Those fixes were reused, not forked. Its shared `scripts/render_readiness.py` now owns the three main download/executive/guide panels, with shared public-status evidence retained in the archive; this review's supplementary panels remain synchronized. Re-read the current primary with the revised validator and updated the integrated card's recorded gate details.
+
+Final verification after integration: **471 tests passed**, **140 nonfatal upstream deprecation warnings**, **70 served TIFFs** format-gated; manifest, parent, ledger, readiness and both status contracts pass. No geological experiment or submission slot was used by this review.

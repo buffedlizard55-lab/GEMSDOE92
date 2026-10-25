@@ -38,7 +38,8 @@ def main() -> int:
         "gates_zeros": gz, "gates_nan": gn,
         "overall_pass": ok,
         "generated_utc": datetime.now(timezone.utc).isoformat(),
-        "note": "All gates PASS on independent disk reread; values in [0,1], no NaN inside footprint, zero catalogue mass",
+        "note": ("All gates PASS on independent disk reread; local format check only, not submission clearance"
+                 if ok else "FAIL: one or more gates failed on independent disk reread; do not submit"),
     }
     out = zeros.with_name(zeros.stem.removesuffix("-zeros") + "-audit.json")
     out.write_text(json.dumps(doc, indent=2), encoding="utf-8")
