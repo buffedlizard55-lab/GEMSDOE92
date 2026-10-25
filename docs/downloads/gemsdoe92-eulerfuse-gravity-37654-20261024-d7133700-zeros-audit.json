@@ -1,0 +1,149 @@
+{
+  "schema": "gemsdoe92.eulerfuse-download-audit.v1",
+  "file": "gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+  "sha256": "5820e882512843a334f4497ed7f294af937339f729e4eeeecdc33d9cdafeeab9",
+  "zip_file": "gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.zip",
+  "zip_sha256": "784ac86499852b6068259715c4e78cb72e791c49899884c9681c168fda8d3f45",
+  "submission_name": "GEMSDOE92-EULERFUSE-gravity-20261024",
+  "note": "EULERFUSE gravity: 37654 LOQO Euler-contact dots; HOLDOUT-DTI 0.110387; negative",
+  "note_chars": 80,
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.11038707084393232,
+    "ci95": [
+      0.09727897282816217,
+      0.12317940250220796
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 3548.8575849425697,
+    "fpw": 66545.21339106979,
+    "fnw": 19114.14241505743
+  },
+  "verdict": "negative",
+  "submission_eligible": false,
+  "weekly_slots_used": 0,
+  "validator_output": {
+    "file": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+    "bytes": 143329,
+    "sha256": "5820e882512843a334f4497ed7f294af937339f729e4eeeecdc33d9cdafeeab9",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "emitted_positive_pixels": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37654,
+    "footprint_fraction": 0.007286874781441169
+  },
+  "gates": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "5820e882512843a334f4497ed7f294af937339f729e4eeeecdc33d9cdafeeab9"
+    }
+  ],
+  "all_gates_pass": true,
+  "dot_count": 37654,
+  "catalogue_mass": 0,
+  "min_catalogue_distance_px": 2.23606797749979,
+  "mask_sha256": "d7133700fdc9f4f41c1a9d1efb2aeeb2d95d770f613efadd32b7f5d5439c578f",
+  "status_text": "OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT \u2014 HOLDOUT-DTI promotion gate failed and literal public registry overlap stop triggered.",
+  "public_registry_audit": "evidence/eulerfuse_public_registry.json",
+  "public_surface_worst_forward_overlap_3px": 1.0,
+  "public_final_worst_forward_overlap_3px": 1.0,
+  "public_duplicate_under_literal_rule": true
+}

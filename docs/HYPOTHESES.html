@@ -10,8 +10,8 @@
 <body>
 <header class="hero">
   <p class="kicker">Geological Hypotheses · DOE GEMS Prize #306 · Pre-Registered Discovery Queue</p>
-  <h1>5 Ranked Untried Geological Hypotheses (<code>COULOMB-LOQO</code> Session, 2026-10-24)</h1>
-  <p class="lede">Five Basin-and-Range structural &amp; geothermal hypotheses pre-registered before model code or holdout scoring (<a href="HYPOTHESES_20261024_COULOMBLOQO.md">HYPOTHESES_20261024_COULOMBLOQO.md</a>), naming exact geophysical layers, physical transforms, why USGS/INGENIOUS catalogues miss those faults, named non-fault mimics, and how each differs from every prior <code>GEMSDOE92</code> lane.</p>
+  <h1>Ranked Geological Hypotheses and Completed Tests (Latest: <code>EULERFUSE</code>, 2026-10-24)</h1>
+  <p class="lede">The latest four-candidate pre-registration is <a href="HYPOTHESES_20261024_EULERFUSE.md">HYPOTHESES_20261024_EULERFUSE.md</a>. Rank 1 was tested in exactly three frozen arms and closed as a negative result (<a href="ANALYSIS_20261024_EULERFUSE.md">analysis</a> · <a href="downloads/eulerfuse_run_card.json">run card</a>). The earlier five-candidate COULOMB-LOQO registration remains archived at <a href="HYPOTHESES_20261024_COULOMBLOQO.md">HYPOTHESES_20261024_COULOMBLOQO.md</a>.</p>
   <p><a href="index.html">← Back to Main Workbench</a> · <a href="executive-summary.html">Executive Summary</a> · <a href="SUBMIT.html">Submission Guide</a> · <a href="ANALYSIS_20261024_COULOMBLOQO.md">PhD Analysis</a></p>
 </header>
 
@@ -47,12 +47,15 @@
   </div>
 
   <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
-    <p class="kicker" style="color:#b7a48a;">Rank 3 · Queued Reserve Hypothesis (Zero-Label Analytical Deconvolution)</p>
-    <h3 style="margin-top:0.2rem;">3. EULER-RTP-GRAV-N0 — Joint 3D Contact Euler Deconvolution ($N = 0$) of RTP Magnetics &amp; Isostatic Gravity</h3>
+    <p class="kicker" style="color:#d08a3c;">Originally Rank 3 · Now Implemented as EULERFUSE (3/3 Arms) · Negative</p>
+    <h3 style="margin-top:0.2rem;">3. EULERFUSE / EULER-RTP-GRAV-N0 — Joint Contact-Source Deconvolution</h3>
     <dl class="meta">
-      <div><dt>Layers Involved</dt><dd>Bands <code>2, 9, 14</code> (RTP/TMI) and Bands <code>5, 11, 13, 18</code> (isostatic gravity &amp; signed E–W horizontal gradient).</dd></div>
-      <div><dt>Physical Signature</dt><dd>Moving-window Thompson (1982) / Reid et al. (1990) structural-index $N=0$ fault-contact Euler solutions gated by shallow depth $z_0 \in [50, 1200]\text{ m}$ and RTP–gravity colocation (&le;300 m).</dd></div>
-      <div><dt>Named Non-Fault Mimics</dt><dd>Steeply dipping unfaulted Mesozoic pluton walls, volcanic feeder dikes, and caldera ring-fracture intrusions.</dd></div>
+      <div><dt>Layers Involved</dt><dd>Band <code>2</code> (<code>rtp</code>), Band <code>13</code> (<code>iso_grav_anom</code>), and Band <code>15</code> (<code>depth_to_base_surf</code>); horizontal derivatives and Fourier vertical derivatives are computed from Bands 2/13.</dd></div>
+      <div><dt>Physical Signature</dt><dd>Moving-window structural-index <code>N=0</code> contact-source solutions retained at <code>0.5–12</code> pixels inferred depth and within <code>5</code> pixels of the observation window, then rasterized and checked for RTP–gravity colocation, depth agreement, and basement-depth consistency.</dd></div>
+      <div><dt>Why Catalogue-Missing Faults Are Detectable</dt><dd>A buried normal-fault contact can offset magnetic basement and density structure after its Quaternary scarp is covered or erased; source localization attempts to move a broad derivative response back toward the concealed contact.</dd></div>
+      <div><dt>Difference from Prior Methods</dt><dd>Earlier lanes used derivative amplitude, tilt, Hessian ridges, or scalar potential-field channels; no implemented lane solved local source coordinates and cross-checked independent RTP/gravity Euler locations.</dd></div>
+      <div><dt>Named Non-Fault Mimics</dt><dd>Volcanic dikes, caldera ring fractures, pluton margins, and lithologic contacts without young displacement.</dd></div>
+      <div><dt>Measured Outcome</dt><dd>All 36 leakage canaries pass (max symmetric AUC <code>0.662808</code>). Best arm <code>gravity</code>: primary <strong>HOLDOUT-DTI</strong> <code>0.110387 [0.097279,0.123179]</code> (<code>gems57-pooled-hide-v2</code>, <code>22,663</code> withheld positives), below fresh control <code>0.113316</code>; paired delta <code>−0.002929 [−0.006700,0.000763]</code>. Format-valid <a href="downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif">research TIF</a>; literal registry stop; <code>verdict: negative</code>.</dd></div>
     </dl>
   </div>
 
@@ -76,7 +79,7 @@
   </div>
 </section>
 <section>
-  <h2>Ranked Untried Hypotheses (COULOMB Session, 2026-10-24 — All Screened or Built</h2>
+  <h2>Ranked Untried Hypotheses (COULOMB Session, 2026-10-24 — All Screened or Built)</h2>
   <p>Full pre-registration: <a href="HYPOTHESES_20261024_COULOMB.md">HYPOTHESES_20261024_COULOMB.md</a> · results: <a href="ANALYSIS_20261024_COULOMB.md">ANALYSIS_20261024_COULOMB.md</a> · run card: <a href="downloads/coulomb_run_card.json">coulomb_run_card.json</a>. Screen gate reproduced <code>BREAKLINE-L</code> exactly (canary <code>0.621604</code>, far-SGMC <code>0.072325</code>); 3/3 experiment budget consumed; all arms <code>verdict: negative</code> (best <code>HOLDOUT-DTI 0.005808</code> vs <code>0.008549</code> bar; dense-witness duplicate stop).</p>
   <ol>
     <li><strong>COULOMB (Rank 1, BUILT ×3)</strong> — Orientation-resolved Coulomb opening potential: GPS strain-rate tensors (<code>Bands 7/8</code>) dotted onto DEM-ridge strike (<code>Bands 19/12</code>) under E–W extension (<code>&alpha;_ext = 100&deg;</code>) + NW strike-slip relay term, weighting <code>max(RTP-tilt-gradient, relative-scarp)</code> emission inside the piedmont apron. Arms: <code>free 0.005689</code> · <code>open 0.005184</code> (no-apron ablation) · <code>seismo 0.005808</code> (Rank-1 × Rank-2 fusion). Mechanism finding: <code>O_coulomb</code>-only canary <code>0.5423</code> vs <code>rel_scarp</code>-only <code>0.6230</code> — the orientation weight reshuffles emission away from the scoring collar; <code>max()</code> fusion lets the weaker RTP channel dominate 71.6% of dots.</li>

@@ -1,6 +1,20 @@
-# Current Repository & Gate Review — `GEMSDOE92` (`2026-10-24`, `COULOMB-LOQO` Primary)
+# Current Repository & Gate Review — `GEMSDOE92` (`2026-10-24`, `COULOMB-LOQO` Holdout Best; `EULERFUSE` Latest Build)
 
-## 1. Current Active Primary & Automated Gate Status
+## Latest completed session — EULERFUSE (2026-10-24 UTC)
+
+A fresh, non-copied TIF was generated and independently reopened: `docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif`, SHA-256 `5820e882512843a334f4497ed7f294af937339f729e4eeeecdc33d9cdafeeab9`. It passes 11/11 local format gates, is finite in `[0,1]`, matches the sample CRS/shape/transform, and has zero mass outside the footprint or on the mapped catalogue. It is therefore **OK TO DOWNLOAD FOR RESEARCH**.
+
+It is **NOT CLEARED FOR A WEEKLY SLOT; DO NOT SUBMIT**. Primary **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.110387 [0.097279,0.123179]`, below the freshly reproduced base control `0.113316 [0.101071,0.126266]`; paired delta `-0.002929 [-0.006700,0.000763]`. A 102-repository scan compared 1,378 exact-grid public rasters and found no exact SHA match, but the literal positive-support overlap is `1.000 > 0.70` against the full-footprint `17GEMSDOE E-proba-multiscale` witness at both pre-placement and final phases. Verdict `negative`; `submission_eligible: false`; 3/3 experiment budget used; 0 weekly slots used. Evidence: [`EULERFUSE analysis`](ANALYSIS_20261024_EULERFUSE.md), [`run card`](../evidence/eulerfuse_run_card.json), [`holdout`](../evidence/eulerfuse_holdout.json), and [`public scan`](../evidence/eulerfuse_public_registry.json).
+
+The negative result is scientifically useful: the six raw Euler channels have symmetric holdout AUC near 0.500–0.501, and augmenting the base model reduced the strict draw-blind holdout. Do not run an Euler parameter sweep in the next session; the lane budget is exhausted.
+
+### Three cumulative review passes completed
+
+1. **Implementation / verification:** froze four ranked hypotheses before code; implemented only EULERFUSE; reused the pinned stack, shared evaluator, and shared writer; tested all 36 individual/composite leakage canaries; executed exactly three frozen arms; emitted and independently reopened the exact research TIF; ran local and current public registry comparisons; generated a fail-closed run card.
+2. **Bug / edge-case review:** repaired batched `numpy.linalg.solve` RHS shape handling, moved the ~592 MB design matrix to a memory map after an out-of-memory failure, added matching-shape and positive-finite residual-scale guards, made site validation honor the explicit `data-primary` marker despite a newer negative download appearing first, added the exact raw validator receipt to the run card, and exposed exact public SHA-match count in the registry receipt. Added deterministic synthetic Euler tests and immutable artifact/evidence tests.
+3. **Full requirement / quality recheck:** reconciled the frozen dense-surface-exemption sentence with the stricter user rule through an explicit post-run correction (no post-hoc threshold change), synchronized README/workbench/executive/submission/hypothesis/review/next-step pages, pinned exact TIF/ZIP hashes and one-file ZIP contents, recorded official source links and access caveats, verified the ≤140-character note, and preserved the negative verdict independently of local format validity. Final verification: `233 passed` (103 non-failing Rasterio deprecation warnings), Python compile check PASS, `git diff --check` PASS, and site check PASS across all 37 served rasters.
+
+## 1. Current Active Holdout-Best Primary & Automated Gate Status
 
 - **Primary Served GeoTIFF:** `docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif`
   - **SHA-256 (`-zeros.tif`):** `8f1f93d8c97b4e1c359ce5fbe07d183214e707aa6bda4ed074c00921f39ad32e`

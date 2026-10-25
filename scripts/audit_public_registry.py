@@ -242,6 +242,10 @@ def main() -> int:
     index_path = CACHE / ("witness_registry_index.json" if args.witness_repo else "registry_index.json")
     index_path.write_text(json.dumps(index), encoding="utf-8")
 
+    candidate_file_sha256 = hashlib.sha256(candidate_path.read_bytes()).hexdigest()
+    exact_candidate_hash_matches = sum(
+        item.get("sha256") == candidate_file_sha256 for item in compatible
+    )
     with rasterio.open(candidate_path) as ds:
         if ds.count != 1 or (ds.shape, ds.crs, ds.transform) != expected_grid:
             raise ValueError("candidate grid mismatch")
@@ -260,8 +264,9 @@ def main() -> int:
         surface = np.zeros(grid.footprint.shape, dtype=np.float32)
         surface[surface_mask] = (1.0 / full_distance[surface_mask]).astype(np.float32)
     pre_compare = compare_array_to_registry(surface, index, grid.footprint) if surface is not None else None
-    final_compare = compare_array_to_registry(candidate, index, grid.footprint,
-                                              file_sha256=hashlib.sha256(candidate_path.read_bytes()).hexdigest())
+    final_compare = compare_array_to_registry(
+        candidate, index, grid.footprint, file_sha256=candidate_file_sha256
+    )
     pre_summary = summarize(pre_compare["rows"]) if pre_compare else {"status": "NOT_CHECKED: actual lane surface not supplied", "unique_under_literal_rule": False}
     final_summary = summarize(final_compare["rows"])
     witness_name = final_summary["worst_overlap_raster"]
@@ -290,7 +295,7 @@ def main() -> int:
         "evidence_class": "REGISTRY-MEASUREMENT",
         "binding_rule": "literal: absolute Spearman >0.90 OR >70% of candidate dots within 3 px of any registry raster; no representation exemption",
         "candidate": {"name": candidate_path.stem.removesuffix("-zeros"),
-                      "sha256": hashlib.sha256(candidate_path.read_bytes()).hexdigest(),
+                      "sha256": candidate_file_sha256,
                       "dots": int((candidate > 0).sum())},
         "inventory": {"owner": OWNER, "scan_source": scan_source, "matching_public_repositories": len(repos),
                       "default_branch_trees_complete": sum(not t["truncated"] for t in tree_results),
@@ -298,6 +303,7 @@ def main() -> int:
                       "submission_tiff_paths": len(paths), "unique_git_blobs": len(unique_by_blob),
                       "download_verified": len(fetched) - len(fetch_errors), "download_failures": len(fetch_errors),
                       "one_band_exact_template_grid_rasters_compared": len(compatible),
+                      "candidate_exact_sha256_matches": exact_candidate_hash_matches,
                       "exclusions": exclusions,
                       "scope": "Current public default branches; TIFF paths under docs/downloads/, releases/, and submission directories; unique Git blobs. Does not cover history, private repositories, other owners, zip-only objects, or site-hosted objects not in those paths."},
         "preplacement_surface": pre_summary,
@@ -307,7 +313,7 @@ def main() -> int:
         "verdict": audit_verdict(pre_compare or {"rows": []}, final_compare, complete and not args.witness_repo),
         "witness_only": bool(args.witness_repo),
         "scan_complete_for_declared_scope": bool(complete and not args.witness_repo and pre_compare is not None and pre_compare["complete_accessible_scan"] and final_compare["complete_accessible_scan"]),
-        "candidate_file_sha256": hashlib.sha256(candidate_path.read_bytes()).hexdigest(),
+        "candidate_file_sha256": candidate_file_sha256,
         "cache_index": str(index_path.relative_to(ROOT)),
     }
     out = ROOT / args.output

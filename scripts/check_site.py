@@ -123,7 +123,8 @@ def main() -> int:
             print(f"  PASS {tag}  sha256 {sha256_file(path)[:16]}…")
 
     # ---- the primary named on the page must match its audit receipt ----------
-    m = re.search(r'href="(downloads/[^"]+-zeros\.tif)"', html)
+    m = (re.search(r'href="(downloads/[^"]+-zeros\.tif)"[^>]*data-primary="true"', html)
+         or re.search(r'href="(downloads/[^"]+-zeros\.tif)"', html))
     if m:
         primary = DOCS / m.group(1)
         if not primary.is_file():

@@ -1,4 +1,10 @@
-# Next Steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`COULOMB-LOQO` Session)
+# Next Steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`EULERFUSE` Session)
+
+## 0. Latest Handoff: `EULERFUSE` Is Closed Negative
+
+Do not spend a weekly slot on `GEMSDOE92-EULERFUSE-gravity-20261024`. The exact TIF is format-valid and safe to download for research, but `submission_eligible=false`: strict draw-blind **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.110387 [0.097279,0.123179]`, below fresh control `0.113316 [0.101071,0.126266]`, and the binding literal public-registry overlap is `1.000 > 0.70`. The 3/3 experiment budget is exhausted. Full evidence is in `evidence/eulerfuse_run_card.json`; the exact negative TIF is `docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif` (SHA-256 `5820e882512843a334f4497ed7f294af937339f729e4eeeecdc33d9cdafeeab9`).
+
+Highest-value next scientific action: preregister a **new lane**, not another EULERFUSE variant. Prefer the ranked cross-catchment drainage knickpoint-alignment hypothesis if official 1 m 3DEP source availability, coverage, and licensing can first be verified and the data can be acquired within the resource/time budget. Otherwise use the existing stack for a genuinely new catalogue-free transform. Preserve the same draw-blind whole-segment holdout, leakage canaries, literal two-phase registry rule, and separate selector step.
 
 ## 1. Completed in the `COULOMB-LOQO` Session
 

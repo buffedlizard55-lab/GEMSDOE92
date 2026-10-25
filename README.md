@@ -1,6 +1,18 @@
-# GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench (`COULOMB-LOQO` Primary Research Download)
+# GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench (`COULOMB-LOQO` Holdout Best; `EULERFUSE` Latest Unique Build)
 
-> ### ✅ DOWNLOAD STATUS: **FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH**
+> ## LATEST UNIQUE TIF (2026-10-24): `EULERFUSE gravity`
+> **✅ FORMAT-VALID AND OK TO DOWNLOAD FOR RESEARCH · ⛔ DO NOT SUBMIT (`verdict: negative`, `submission_eligible: false`).**
+>
+> - [Download the exact GeoTIFF](docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif) · [one-TIFF ZIP](docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.zip) · [automated audit](docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros-audit.json) · [run card](docs/downloads/eulerfuse_run_card.json) · [public registry audit](docs/downloads/eulerfuse_public_registry.json)
+> - Exact TIF SHA-256: `5820e882512843a334f4497ed7f294af937339f729e4eeeecdc33d9cdafeeab9`; no exact SHA match among `1,378` accessible public exact-grid registry rasters.
+> - Local format validator: `11 / 11` gates PASS; single-band `float32`, `EPSG:32611`, `3730 × 3292`, matching transform, all `12,279,160` values finite in `[0,1]`, zeros outside, `37,654` dots, no catalogue mass.
+> - Primary **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, `22,663` withheld positives): `0.110387 [0.097279, 0.123179]`; fresh base control `0.113316 [0.101071, 0.126266]`; paired delta `-0.002929 [-0.006700, 0.000763]`. It did **not** beat the current holdout best.
+> - Literal public registry stop: pre-placement and final forward overlap are both `1.000 > 0.70` against a full-footprint-positive probability raster. This and the failed holdout promotion gate make the file research-only. **Zero weekly slots were used.**
+> - Unique local name: `GEMSDOE92-EULERFUSE-gravity-20261024`; portal note (`80 / 140`): `EULERFUSE gravity: 37654 LOQO Euler-contact dots; HOLDOUT-DTI 0.110387; negative`.
+>
+> **Session-start contract:** read this README, the owner request preserved in [`SESSION_PROMPT.md`](SESSION_PROMPT.md), [`docs/PROJECT_CHARTER.md`](docs/PROJECT_CHARTER.md), and [`docs/REVIEW_CURRENT.md`](docs/REVIEW_CURRENT.md) before every future session. The controlling goals are autonomous validation, an obvious exact-file download decision, no hallucinated score, `Maximize P(Win)`, and `Own the Outcome`.
+
+> ### ✅ HOLDOUT-BEST DOWNLOAD STATUS: **FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH**
 > ### ⛔ SUBMISSION / WEEKLY SLOT STATUS: **DO NOT SUBMIT — NOT CLEARED (`verdict: "negative"`, `submission_eligible: false`; literal public dense-witness stop)**
 >
 > Read this README, [`SESSION_PROMPT.md`](SESSION_PROMPT.md), and [`docs/REVIEW_CURRENT.md`](docs/REVIEW_CURRENT.md) at every session start.
@@ -80,6 +92,25 @@ Full mathematical derivation: [`docs/ANALYSIS_20261024_COULOMBLOQO.md`](docs/ANA
 ---
 
 ## Reproducible Pipeline (Zero Manual Steps)
+
+Latest `EULERFUSE` lane (run in a clean/scratch checkout; the artifact builder intentionally refuses to overwrite pinned output bytes):
+
+```bash
+.venv/bin/python scripts/restore_inputs.py && .venv/bin/python scripts/verify_manifest.py
+PYTHONPATH=vendor .venv/bin/python scripts/screen_eulerfuse.py
+PYTHONPATH=vendor .venv/bin/python scripts/evaluate_eulerfuse.py
+PYTHONPATH=vendor .venv/bin/python scripts/build_eulerfuse_submission.py
+PYTHONPATH=vendor .venv/bin/python scripts/audit_public_registry.py \
+  --candidate docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif \
+  --surface .cache/eulerfuse_surfaces/EULERFUSE-gravity-surface-20261024.tif \
+  --output evidence/eulerfuse_public_registry.json
+PYTHONPATH=vendor .venv/bin/python scripts/finalize_eulerfuse.py
+.venv/bin/python -m pytest -q && .venv/bin/python scripts/check_site.py
+```
+
+The finalizer validates source-receipt agreement and writes the served negative run card without human input. The public scan is time-sensitive: after this exact artifact becomes public, an exact self-match must be identified as such rather than misrepresented as evidence that it copied a prior file.
+
+Earlier `COULOMB-LOQO` holdout-best lane:
 
 ```bash
 # 1. Restore & SHA-256-verify all 12 competition/external inputs into gitignored .cache/gems_inputs/
