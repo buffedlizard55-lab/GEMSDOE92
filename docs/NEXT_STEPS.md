@@ -13,7 +13,7 @@ Earlier “current,” “unique,” and promotion instructions below are histor
 # Binding next steps — 2026-10-25 (`797e507a`)
 
 1. Do not start another geological experiment under the universal literal duplicate stop. This is already decided automatically, not pending pixel inspection.
-2. Keep the generated public-status panel first on all three entry pages; run `python scripts/render_public_status.py --check` and `python scripts/check_site.py`.
+2. Keep the generated public-status panel first on all five public entry pages; run `python scripts/render_public_status.py --check` and `python scripts/check_site.py`.
 3. A future explicitly permitted lane should test one of [three ranked conditional operators](HYPOTHESES_797E507A.md), using the shared buffered visible-only evaluator, individual canaries and an untouched outer spatial test. Do not tune again on the outer test or compare incompatible holdout instruments.
 4. Resolve repository Pages configuration/permission drift: API setting change returned 403; verify post-merge deployment instead of assuming the live site updated.
 5. Obtain authoritative data-use confirmation and authenticated receipts through permitted channels. No current live score or new unique submission is established.

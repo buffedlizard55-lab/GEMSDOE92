@@ -1,10 +1,10 @@
 # PhD-Level Geological, Statistical & Registry Analysis — Session `2026-10-25` (`KNICKLOQO` Lane, Dual-Reading Audit & `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` Resolution)
 
-**Branch:** `arena/4d56f06c-gemsdoe92`  
-**Date:** `2026-10-25` (UTC)  
-**Method Lane:** `KNICKLOQO` (`gems/knick_loqo.py` — Province-Debiased Quadrant-Calibrated Thalweg-Knickzone & Poisson Magneto-Gravity LOQO)  
+**Branch:** `arena/4d56f06c-gemsdoe92`
+**Date:** `2026-10-25` (UTC)
+**Method Lane:** `KNICKLOQO` (`gems/knick_loqo.py` — Province-Debiased Quadrant-Calibrated Thalweg-Knickzone & Poisson Magneto-Gravity LOQO)
 **Primary Verified GeoTIFF:** `docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif` (`sha256 = 8ad4a8c2cd8e1fd965d91643da6efbe82da8b3668e6dc8e59d193a8302424a7d`, `S = 37,654` dots, `0%` `H19-5`, `0%` `R0` input)
-**Canonical Run Card:** `evidence/run_card.json` & `evidence/knick_loqo_run_card.json`  
+**Canonical Run Card:** `evidence/run_card.json` & `evidence/knick_loqo_run_card.json`
 **Status Banner:** **DOWNLOAD GATE: `OK TO DOWNLOAD: YES` (`10/10` format gates PASS, range `[0.0, 1.0]`, `0` NaNs)** | **SUBMISSION GATE: `OK TO SUBMIT: NO — DIAGNOSTIC ONLY` (`verdict = "negative"` under literal `17GEMSDOE` dense-surface rule; `UNIQUE` under `dual_reading_decision` with `0 / 1,412` public rasters `> 0.70`, max `0.685531 <= 0.70`)**
 
 ---

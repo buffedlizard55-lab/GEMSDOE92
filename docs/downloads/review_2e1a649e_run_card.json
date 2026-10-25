@@ -1,0 +1,140 @@
+{
+  "schema": "gemsdoe92-run-card.review-2e1a649e.v2",
+  "reviewed_utc": "2026-10-25T15:06:18.981685+00:00",
+  "scope": "Repository review, latest-main integration, and mandatory literal registry gate; no new geological lane was assigned or executed.",
+  "hypothesis": "The standing literal registry rule makes every nonempty in-footprint candidate a duplicate because one pinned registry raster has positive support on the entire valid footprint.",
+  "mechanism": "The witness support contains every valid candidate coordinate; its 3-pixel halo therefore contains every possible nonempty candidate dot set, forcing literal forward overlap to 1.0.",
+  "named_non_fault_process_that_could_mimic_it": "A space-filling continuous probability background; this is a registry-representation degeneracy, not evidence that two geological models share a fault mechanism.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "session_status": "Not rerun: Rule 1 stopped this review before feature construction and placement; zero new experiments.",
+    "carried_forward_artifact": "LISTRICDIP updip50 inherited from latest main",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 22663,
+    "dti": 0.0054195278859189445,
+    "ci95": [
+      0.0042936054837163905,
+      0.006550678712361833
+    ],
+    "source": "evidence/listricdip_run_card.json",
+    "comparable_static_best": 0.010788,
+    "comparable_static_best_lane": "KNICKLOQO standalone",
+    "beats_comparable_static_best": false,
+    "caveat": "Carried forward exactly from the merged lane receipt; not a current rerun and not an organizer score."
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "preplacement": {
+      "scope": "Single pinned witness; rejection only. No candidate surface was generated or scored.",
+      "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "footprint_pixels": 5167373,
+      "witness_positive_in_footprint": 5167373,
+      "forward_overlap_for_any_nonempty_candidate": 1.0,
+      "threshold": 0.7,
+      "stop_required": true
+    },
+    "existing_artifact_exact_file_check": {
+      "candidate_sha256": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
+      "forward_overlap_within_3px": 1.0,
+      "spearman_full_footprint": 0.010352227787484035,
+      "stop_required": true,
+      "scope": "Single witness: rejection only, no full-registry or pre-placement clearance."
+    }
+  },
+  "raster_sha256": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
+  "raster_status": "Existing merged-main LISTRICDIP research artifact; no file copied, renamed, or generated in this review.",
+  "file": "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif",
+  "validator_output": {
+    "overall_pass": true,
+    "gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=float32 count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nan_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      },
+      {
+        "name": "submission_encoding",
+        "ok": true,
+        "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e"
+      }
+    ],
+    "all_finite": true,
+    "values_in_0_1": true,
+    "zero_outside_footprint": true,
+    "sha256_reread": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e"
+  },
+  "submission_name": "GEMSDOE92-LISTRICDIP-updip50-20261025",
+  "note": "LISTRICDIP updip50: 37654 listric-offset dots; HOLDOUT-DTI 0.005420; negative",
+  "note_chars": 77,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "new_unique_tiff_generated": false,
+  "requirement_status": "UNFULFILLED: generating a nonempty candidate after the pre-placement stop would violate the standing protocol.",
+  "experiments_used": "0/3",
+  "weekly_slots_used": 0,
+  "organizer_confirmed": null,
+  "latest_main_integrated": {
+    "commit": "f390f36e7b309da69ff87efd19740d093c80e4d6",
+    "public_review": "797e507a",
+    "latest_integrated_review": "c5e3848c",
+    "primary_preserved": "LISTRICDIP updip50"
+  },
+  "evidence": {
+    "preplacement": "evidence/review_2e1a649e_preflight.json",
+    "exact_artifact_witness": "evidence/review_2e1a649e_primary_witness.json",
+    "sources": "evidence/review_2e1a649e_sources.json",
+    "ranked_hypotheses": "docs/HYPOTHESES_20261025_REVIEW2E1A.md",
+    "lane_run_card": "evidence/listricdip_run_card.json"
+  },
+  "limitations": [
+    "No new submission-cleared TIFF can be produced under the simultaneous nonempty-artifact and literal-overlap requirements.",
+    "The single pinned full-footprint witness is sufficient for rejection but is not a full-registry characterization.",
+    "No organizer receipt, current leaderboard, current weekly cap, or authenticated submission-page acceptance was available.",
+    "GitHub Pages publication protection for the currently configured mode was not independently proven by this review."
+  ]
+}

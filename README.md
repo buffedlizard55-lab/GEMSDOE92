@@ -57,6 +57,8 @@ The requested new unique submission remains **unfulfilled**: a freshly pinned re
 
 No candidate was selected for a slot. Parallel main changed the primary to LISTRICDIP; this review preserved it and rechecked its bytes. SHA-256 `91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e`; REGISTRY-MEASUREMENT overlap `1.0`, Spearman `0.010352227787484035`. No fresh HOLDOUT-DTI or organizer score. Three passes are documented in the review.
 
+Supplemental audit `2e1a649e`: [three-pass repository review](docs/REVIEW_2E1A649E.md) · [ranked untried hypotheses](docs/HYPOTHESES_20261025_REVIEW2E1A.md) · [machine status](docs/downloads/current_status.json). It independently reaches the same literal-stop decision and adds manifest byte-length enforcement; it does not claim another TIFF or slot.
+
 ### Start every session here
 
 Read this README, including its **Persistent Session Prompt Reference**, then the full [durable operating contract](SESSION_PROMPT.md), [current review](docs/REVIEW_CURRENT.md) and [ordered next steps](docs/NEXT_STEPS.md). The persistent brief is normalized requirements, not a verbatim chat transcript. Preserve the unique-TIF objective, strict automated range/grid validation, named geological hypotheses, visible-only buffered holdout, leakage canaries, literal pre/post-placement uniqueness checks, evidence labels, three-experiment/two-hour budget, run card and separate weekly selector. **Maximize P(Win); Own the Outcome:** a reproducible negative is preferable to a fabricated submission claim.

@@ -87,6 +87,44 @@ def test_index_primary_has_an_audit_receipt_that_matches():
         assert doc["submission_eligible"] is False
 
 
+def test_machine_current_status_and_supplemental_review_are_byte_bound():
+    import hashlib
+
+    canonical = ROOT / "registry" / "current_status.json"
+    served = DOCS / "downloads" / "current_status.json"
+    assert served.read_bytes() == canonical.read_bytes()
+    status = json.loads(canonical.read_text(encoding="utf-8"))
+    assert status["active_public_review"] == "797e507a"
+    assert status["supplemental_review"] == "2e1a649e"
+    assert status["latest_integrated_review"] == "c5e3848c"
+    research = status["research_download"]
+    decision = status["decision"]
+    primary = ROOT / research["file"]
+    digest = hashlib.sha256(primary.read_bytes()).hexdigest()
+    assert digest == research["sha256"]
+    assert research["generated_in_supplemental_review"] is False
+    assert decision["verdict"] == "negative"
+    assert decision["submission_eligible"] is False
+    assert decision["recommended_to_submit"] is False
+    assert decision["weekly_slots_used_in_supplemental_review"] == 0
+    assert decision["experiments_used_in_supplemental_review"] == 0
+
+    public = json.loads((ROOT / status["evidence"]["public_run_card"]).read_text())
+    supplemental_path = ROOT / status["evidence"]["supplemental_run_card"]
+    supplemental = json.loads(supplemental_path.read_text())
+    assert (DOCS / "downloads" / supplemental_path.name).read_bytes() == supplemental_path.read_bytes()
+    for card in (public, supplemental):
+        assert card["raster_sha256"] == digest
+        assert card["verdict"] == "negative"
+        assert card["submission_eligible"] is False
+    assert supplemental["new_unique_tiff_generated"] is False
+    assert supplemental["note_chars"] == len(supplemental["note"]) <= 140
+    witness = json.loads((ROOT / status["evidence"]["exact_artifact_check"]).read_text())
+    assert witness["candidate"]["sha256"] == digest
+    assert witness["forward_overlap_candidate_dots_within_3px_of_witness"] == 1.0
+    assert witness["stop_required_vs_this_witness"] is True
+
+
 def test_public_registry_receipt_is_valid_json_and_records_stop():
     """Published machine-readable uniqueness evidence must parse, fail closed, and cite scope."""
     audit = json.loads((DOCS / "downloads" / "public_registry_uniqueness.json").read_text())

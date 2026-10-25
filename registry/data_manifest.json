@@ -44,7 +44,7 @@
       "path": "docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif",
       "dest": "data/parent_R0_nan.tif",
       "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
-      "bytes": 355000,
+      "bytes": 355443,
       "group": "parent"
     },
     {
@@ -62,7 +62,7 @@
       "path": "docs/downloads/gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif",
       "dest": "data/bridge/h27_4_solo.tif",
       "sha256": "ab02300152248fdda04e988e2cd2a0c13f35eec42fcf670a15e8b76b19e24a73",
-      "bytes": 1600000,
+      "bytes": 1595850,
       "group": "scored"
     },
     {
