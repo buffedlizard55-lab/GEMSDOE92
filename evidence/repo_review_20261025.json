@@ -1,7 +1,7 @@
 {
   "schema": "gemsdoe92-repository-review.v1",
   "review_date_utc": "2026-10-25",
-  "scope": "pre-integration repository snapshot audit focused on RADIOCONTACT; origin/main later advanced to bbda6c5 and added LISTRICDIP, not audited here",
+  "scope": "pre-integration repository snapshot audit focused on RADIOCONTACT; origin/main later advanced through bbda6c5, c9292c4, and e1c2ad9; later lanes/reviews are not scientifically audited in this card",
   "experiments_run": 0,
   "weekly_slots_used": 0,
   "hypothesis": "RADIOCONTACT radiometric U/K and Th/K alteration-contact gradients, gravity-gradient concordance, and MT conductivity may identify concealed fluid-conducting structures not represented by a scarp catalogue.",
@@ -42,8 +42,8 @@
     "values_in_0_1": true,
     "crs_shape_transform_match": true,
     "single_band_float32": true,
-    "all_served_zeros_tifs_checked_after_integration": 66,
-    "pytest_passed_after_integration": 371,
+    "all_served_zeros_tifs_checked_after_latest_main_sync": 70,
+    "pytest_passed_after_latest_main_sync": 404,
     "interpretation": "Local format validation only; not uniqueness clearance, scientific validation, or organizer acceptance."
   },
   "submission_name": "GEMSDOE92-RADIOCONTACT-20261025",

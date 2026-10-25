@@ -44,8 +44,8 @@ The committed site serves many GeoTIFFs and evidence files, and the repository t
 
 ## Verified checks in this review
 
-- **TEST:** installed the pinned project dependencies into the ignored `.venv`; after integrating the upstream LISTRICDIP changes, `371 passed` under `pytest` (126 Rasterio pending-deprecation warnings; no test failures).
-- **FORMAT/SITE GATE:** after integration, `scripts/check_site.py` passed and re-read all `66` served `*-zeros.tif` files against the committed bridge submission grid/catalogue. The designated primary is now the LISTRICDIP raster. This is a local technical gate, not competition acceptance and not proof of public-registry uniqueness.
+- **TEST:** installed the pinned project dependencies into the ignored `.venv`; after the latest main sync (`e1c2ad9`), `404 passed` under `pytest` (126 Rasterio pending-deprecation warnings; no test failures).
+- **PUBLIC STATUS / FORMAT SITE GATE:** after that sync, `scripts/render_public_status.py --check` passed and confirmed byte-binding/status order on all entry pages; `scripts/check_site.py` passed and re-read all `70` served `*-zeros.tif` files against the committed bridge grid/catalogue. The designated primary remains the LISTRICDIP research TIFF; it is explicitly not cleared by the literal overlap gate. These are local technical checks, not competition acceptance or proof of public-registry uniqueness.
 - **PARENT PROVENANCE:** `make manifest` passed for the committed pinned artifacts. `make verify` reproduced the pinned parent `h33-h33-2-b2` byte hash and reported 37,654 dots. This verifies the committed parent artefact against this repository's recipe; it does not verify the owner-reported `0.2778` score.
 - **COMPETITION SCORE:** No submission receipt was found or produced by these checks. The user-provided `0.2778`, `0.3195`, and `0.4413` are not treated as `ORGANIZER-CONFIRMED` evidence in this review.
 

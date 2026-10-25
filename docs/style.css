@@ -38,3 +38,9 @@ th, td { text-align: left; border-bottom: 1px solid var(--line); padding: .45rem
 a { color: #e2b36a; }
 footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); }
 ol { padding-left: 1.2rem; }
+
+/* Keep parallel-lane audit history accessible without burying the decision. */
+.historical-records { max-width: 1120px; margin: 1rem auto; padding: 1rem;
+  border: 1px solid #64748b; border-radius: .65rem; }
+.historical-records > summary { cursor: pointer; font-weight: 700; }
+[aria-label="Authoritative submission status"] code { overflow-wrap: anywhere; }
