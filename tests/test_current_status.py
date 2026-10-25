@@ -138,7 +138,7 @@ def test_preflight_pin_must_match(site):
 
 def test_stale_panel_fails_check_and_is_repairable(site):
     path = site / 'index.html'
-    path.write_text(path.read_text().replace('Current decision: unique research TIFF; submission blocked', 'stale decision'))
+    path.write_text(path.read_text().replace('Current decision: research-only TIFF; submission blocked', 'stale decision'))
     assert status.check(site) == ['index.html']
     assert status.check(site, write=True) == ['index.html']
     assert status.check(site) == []

@@ -45,22 +45,22 @@ def test_actual_status_is_byte_bound_and_first_on_every_page():
 
 def test_readme_first_screen_cannot_promote_historical_lane_or_score():
     readme = (ROOT / 'README.md').read_text()
-    first_screen = readme.split('### Persisted user brief', 1)[0]
-    assert first_screen.index('Authoritative decision') < first_screen.index('DO NOT SUBMIT')
-    assert 'OK TO DOWNLOAD FOR RESEARCH' in first_screen
-    assert 'DO NOT SPEND A WEEKLY SLOT' in first_screen
-    assert 'New unique-byte GeoTIFFs' in first_screen
-    assert 'submission_eligible: false' in first_screen
-    assert 'HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.013295' in first_screen
-    assert 'ORGANIZER-CONFIRMED score is available' in first_screen
-    assert 'docs/REVIEW_20261025_ARENA_8A5595A3.md' in first_screen
+    first_screen = readme.split('### Starting point for every session', 1)[0]
+    assert 'CURRENT-STATUS:BEGIN' in first_screen
+    assert 'CURRENT:BEGIN' in first_screen
+    assert first_screen.index('<!-- CURRENT-STATUS:BEGIN -->') < first_screen.index('<!-- CURRENT:BEGIN -->')
+    status = first_screen.split('<!-- CURRENT-STATUS:BEGIN -->', 1)[1].split('<!-- CURRENT-STATUS:END -->', 1)[0]
+    assert 'Current verified status' in status
+    assert 'OK TO DOWNLOAD FOR RESEARCH' in status and 'DO NOT SUBMIT' in status
+    assert 'docs/REVIEW_20261025_SESSION.md' in status
+    assert 'literal dense-witness overlap is `1.0 > 0.70`' in status
 
 
 def test_session_prompt_points_to_latest_audit_before_history():
     prompt = (ROOT / 'SESSION_PROMPT.md').read_text()
     first_addendum = prompt.split('---', 1)[0]
-    assert 'docs/REVIEW_20261025_FRESH_AUDIT.md' in first_addendum
-    assert 'No new TIFF' in first_addendum
+    assert 'docs/REVIEW_20261025_SESSION.md' in first_addendum
+    assert 'No new raster' in first_addendum
 
 
 def test_panel_update_is_idempotent_and_moves_stale_banner_below(publication):
@@ -114,7 +114,7 @@ def test_each_page_is_checked_not_just_the_homepage(publication, mutation):
     elif mutation == 'duplicate':
         text += render_status(card)
     else:
-        text = text.replace('DO NOT SUBMIT.', 'SUBMIT NOW.')
+        text = text.replace('Research-only download available.', 'SUBMIT NOW.')
     path.write_text(text)
     assert check_panels(card, root, primary)
 

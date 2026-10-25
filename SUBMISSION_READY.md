@@ -3,11 +3,11 @@
 <!-- CURRENT-STATUS:BEGIN -->
 ## Authoritative decision — Current verified status, 2026-10-25 (LISTRICLOQO 2026-10-25)
 
-**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** The completed LISTRICLOQO lane generated a byte-unique TIFF, but it failed promotion gates.
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** LISTRICLOQO is a byte-distinct research artifact, but it fails the literal registry-overlap stop and promotion gates.
 
-[Current unique research download](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif) · [protocol run card](docs/downloads/listric_loqo_run_card.json) · [analysis](docs/ANALYSIS_20261025_LISTRICLOQO.md) · [executive submission guide](docs/executive-summary.html).
+[Existing LISTRICLOQO research TIFF — not cleared to submit](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif) · [protocol run card](docs/downloads/listric_loqo_run_card.json) · [analysis](docs/ANALYSIS_20261025_LISTRICLOQO.md) · [three-pass review](docs/REVIEW_20261025_SESSION.md) · [executive submission guide](docs/executive-summary.html).
 
-Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.013295 [0.011713, 0.014980]`; paired improvement over KNICKLOQO is +0.002508 [0.001477, 0.003463]. Public dual-reading overlap is `0.690259 <= 0.70`, and literal dense-witness overlap is `1.0`. No ORGANIZER-CONFIRMED score is available; 3/3 experiments and zero weekly slots.
+Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.013295 [0.011713, 0.014980]`; paired improvement over KNICKLOQO is +0.002508 [0.001477, 0.003463]. Public dual-reading overlap is `0.690259 <= 0.70`, but the binding literal dense-witness overlap is `1.0 > 0.70`; this file is not uniqueness-cleared. No ORGANIZER-CONFIRMED score is available; 3/3 experiments and zero weekly slots.
 
 <!-- CURRENT-STATUS:END -->
 
@@ -39,4 +39,3 @@ slot. The original publication is preserved in Git history for audit.
 
 # GAPBRIDGE unique TIF generated 2026-10-25 — ✅ OK TO DOWNLOAD · ⛔ DO NOT SUBMIT YET
 File: docs/downloads/gemsdoe92-gapbridge-ctx-37654-20261025-zeros.tif · SHA-256 14f37bb37fb27ece491b79c16a9b8a29d7c90c18755287ee4c636643ee42219d · Validator 11/11 PASS (values [0,1], no NaN) · Uniqueness worst overlap 0.4376 / |rho| 0.086 (PASS local registry) · HOLDOUT-DTI 0.1015 [0.0887,0.1126] (gems57-pooled-hide-v2, 22,893 withheld) vs R0 0.0039 — does NOT beat repo best 0.1751, so weekly slot NOT cleared. See docs/gapbridge.html + run card docs/downloads/gemsdoe92-gapbridge_run_card.json.
-
