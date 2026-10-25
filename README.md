@@ -1,13 +1,13 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
 <!-- CURRENT-STATUS:BEGIN -->
-## Current verified decision — 2026-10-25 (fresh readiness audit)
+## Authoritative decision — Current verified status, 2026-10-25 (LISTRICLOQO 2026-10-25)
 
-**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review; the unique-submission objective remains unmet. Fresh audit confirms the literal pre-placement stop: the pinned witness is positive throughout all 5,167,373 template footprint cells, so every nonempty in-footprint candidate has forward overlap 1.0 (>0.70).
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** The completed LISTRICLOQO lane generated a byte-unique TIFF, but it failed promotion gates.
 
-[Fresh audit run card](evidence/review_20261025_readiness.json) · [three-pass repo review](docs/REVIEW_20261025_SESSION.md) · [existing research download](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [executive submission guide](docs/executive-summary.html).
+[Current unique research download](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif) · [protocol run card](docs/downloads/listric_loqo_run_card.json) · [analysis](docs/ANALYSIS_20261025_LISTRICLOQO.md) · [executive submission guide](docs/executive-summary.html).
 
-The existing TIFF passes format/grid checks, but this is not submission clearance. No new surface/dots, HOLDOUT-DTI, leakage test, organizer-confirmed score, or weekly slot was produced in this review. Values 0.2778, 0.3195, and 0.4413 in user-provided snapshots are not receipt-verified here.
+Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.013295 [0.011713, 0.014980]`; paired improvement over KNICKLOQO is +0.002508 [0.001477, 0.003463]. Public dual-reading overlap is `0.690259 <= 0.70`, and literal dense-witness overlap is `1.0`. No ORGANIZER-CONFIRMED score is available; 3/3 experiments and zero weekly slots.
 
 <!-- CURRENT-STATUS:END -->
 
@@ -459,6 +459,19 @@ Study GEMSDOE32 (h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros: 0.2778): why and 
 
 </details>
 
+
+## Session 2026-10-25 — leaderboard research: decision and links
+
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new submission-eligible TIFF was generated. The binding literal dense-witness stop was re-confirmed from a sha-pinned GitHub blob (exit 1, [receipt](evidence/readiness_20261025_leaderboard.json)). A policy decision is needed before any candidate can be cleared: [analysis §5](docs/ANALYSIS_20261025_LEADERBOARD.md).
+
+- **Why `0.2778` (GEMSDOE32) is a CLAIM, not a receipt, and what the forensic evidence supports:** [analysis §1–3](docs/ANALYSIS_20261025_LEADERBOARD.md).
+- **Live leaderboard (fetched 2026-10-25):** #1 `0.4413` (xiaofanhu, not a GEMSDOE entry); `0.3195` is not on the top-50 snapshot. [Leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/).
+- **Official rules read this session:** three submissions per week, one final selection, generative-AI disclosure, and human judging by DOE. [NLR Official Rules PDF](https://docs.nlr.gov/docs/fy26osti/96647.pdf).
+- **Metric verified:** the shared evaluator matches an independent naive implementation of the official equations to `2.2e-16`. Regression test: `tests/test_metric_independent.py`.
+- **Ranked pre-registered hypotheses (none built or scored):** [docs/HYPOTHESES_20261025_LEADERBOARD.md](docs/HYPOTHESES_20261025_LEADERBOARD.md). Top candidate: phase congruency on the RTP band (H1), not yet built because the stop precedes placement.
+- **Run card (values computed from files):** [evidence/leaderboard_session_20261025_run_card.json](evidence/leaderboard_session_20261025_run_card.json). The LISTRICDIP research file `gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif` passes every automated format gate (not the current primary; see the status block above).
+- **Irregularities for review:** [IRREGULARITIES.md](IRREGULARITIES.md) (2026-10-25 section, IR-25-A to IR-25-I).
+- **Budget used:** 0 of 3 experiments, 0 weekly slots.
 
 ## Additional parallel research records (not rerun in review797e)
 
