@@ -1,3 +1,16 @@
+# Current review — 2026-10-25 (`KNICKLOQO` session; read this block first)
+
+**✅ OK TO DOWNLOAD: YES (`10/10` format gates PASS, finite `[0.0, 1.0]`, `0` NaNs); ⛔ OK TO SUBMIT: NO — DIAGNOSTIC ONLY (`verdict: negative` under literal `17GEMSDOE` dense surface; `UNIQUE` under `dual_reading_decision` with `0 / 1,412` public rasters `> 0.70`, max `0.685531 <= 0.70`).**
+Newest unique artifact: `docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif` (`sha256 = 8ad4a8c2cd8e1fd965d91643da6efbe82da8b3668e6dc8e59d193a8302424a7d`, best of three pre-registered arms `standalone`, `uncal`, `dual35`).
+- **All-Time #1 Static `HOLDOUT-DTI` (`d_cat > 2.0`):** **`0.010788 [0.009468, 0.012201]`** (`gems57-pooled-hide-v2`, `22,663` withheld positives), beating `COULOMBLOQO standalone` (`0.009220 [0.007933, 0.010683]`) by **`+17.0%` (`+0.001568`, paired 95% CI `[+0.000592, +0.002535]`)**, `EULERFUSE gravity` (`0.009265`) by **`+16.4%` (`+0.001523`, paired 95% CI `[+0.000516, +0.002499]`)**, and `R0` (`0.004006`) by **`+169.3%`**.
+- **Strict Draw-Blind `HOLDOUT-DTI` (`d_cat > 2.0`):** **`0.010958 [0.009675, 0.012337]`** (`+13.1%` over `COULOMBLOQO` `0.009689`).
+- **Strict Draw-Blind Fold-Visible `HOLDOUT-DTI` (`d_visible > 2.0`):** **`0.109043 [0.097872, 0.120534]`**, beating `H19-5` (`0.096757`, paired 95% CI `[+0.004125, +0.020591]`).
+- **USGS SGMC Off-Catalogue Bedrock `PROXY` (`62,703` px):** **`0.103912`** (`+14.7%` over `COULOMBLOQO standalone` `0.090569`, beating `R0` `0.096060`).
+- **Cures `#IR-92-NE-QUADRANT-LOQO-COLLAPSE`:** Restores `NE` (`Q1`) dot allocation from `4,221` (`11.2%`) to **`9,286` (`24.7%`)** and lifts Seed 20 `NE` DTI by **`+77.6%`** (`0.006100 -> 0.010834`) and Seed 30 `NE` DTI by **`+25.1%`** (`0.012059 -> 0.015086`).
+- **Uniqueness (`REGISTRY-MEASUREMENT`):** `0 / 65` local rasters `> 0.70` and **`0 / 1,412` non-self public rasters `> 0.70` under `dual_reading_decision`** across all three arms (`standalone = 0.685531`, `uncal = 0.681840`, `dual35 = 0.671164 <= 0.70`). Action #1 audit (`evidence/coulomb_loqo_dual_reading_audit.json`) also resolved `COULOMBLOQO` against all 185 continuous surfaces (`0 / 185 > 0.70`) while documenting `#IR-92-COULOMBLOQO-EULERFUSE-POSTMERGE-COLLISION` (`0.828703` vs `EULERFUSE_gravity`). Details: [`ANALYSIS_20261025_KNICKLOQO.md`](ANALYSIS_20261025_KNICKLOQO.md) · [run card](downloads/knick_loqo_run_card.json) · [next steps](NEXT_STEPS.md).
+
+Three passes this session: (1) implement + verify (Action #1 dual-reading audit, Action #2 NE collapse diagnosis, 50 leakage canaries, 3-branch `KNICKLOQO` ensemble, 3 pre-registered experiments, holdout + SGMC proxy + 102-repo dual-reading scan); (2) review — verified all 3 served TIFFs, audit sidecars, run card, and ledger rows; fixed key assertions in `tests/test_knick_loqo.py` and linked all 3 new TIFFs on `docs/index.html`, `docs/executive-summary.html`, and `docs/SUBMIT.html`; (3) recheck against the brief — 299/299 pytest pass, 52/52 served rasters pass `scripts/check_site.py`, 84/84 ledger rows pass `make ledger`, all 12 manifests pass `make verify`.
+
 # Current review — 2026-10-25 (`BLINDFAULT` session; read this block first)
 
 **✅ OK TO DOWNLOAD; ⛔ DO NOT SUBMIT (`verdict: negative`, fails the pre-registered holdout gate, not the uniqueness gate).**

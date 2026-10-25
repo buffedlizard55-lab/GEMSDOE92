@@ -1,3 +1,38 @@
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`KNICKLOQO` Session)
+
+## Completed this session (`KNICKLOQO` + Action #1 Dual-Reading Audit + Action #2 `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` Resolution)
+
+1. **Completed Priority #1 (`COULOMBLOQO` Dual-Reading Audit Across 1,412 Public Rasters — `evidence/coulomb_loqo_dual_reading_audit.json`):**
+   - Refreshed `.cache/gemsdoe_public_registry/` (102 repos, `1,415` single-band exact-grid rasters, pre-indexed in `fast_supports.npz`) and evaluated `COULOMBLOQO_standalone` (`e01d27af`) and `COULOMBLOQO_dual45` (`dd91d98c`) under `vendor/gems57/uniqueness.py:dual_reading_decision`.
+   - Confirmed **`0 / 185` continuous surfaces (`> 150,000` px) exceed `0.70`** (`max = 0.535853` for `standalone`, `0.440617` for `dual45`), eliminating the `17GEMSDOE E-proba-multiscale` (`5,167,373` px) dense-surface artifact.
+   - Discovered and logged `#IR-92-COULOMBLOQO-EULERFUSE-POSTMERGE-COLLISION`: `EULERFUSE_gravity` (`d7133700`, merged in PR #63) reused `gems/coulomb_loqo.py:fit_predict_loqo` and collides at **`0.828703` (`82.87%`)** with `COULOMBLOQO_standalone` and **`0.732565` (`73.26%`)** with `COULOMBLOQO_dual45` (plus `0.739842` / `0.722420` against `100,000`-dot `GEMSDOE23 h29-dealiased-habitat`), keeping both `COULOMBLOQO` rasters `verdict = "negative"`.
+2. **Completed Priority #2 (Diagnosing and Curing `#IR-92-NE-QUADRANT-LOQO-COLLAPSE`):**
+   - Proved that the NE collapse was driven by a **$6.4\times\text{ to }8.5\times$ province-scale step down** in geodetic strain (`Bands 4, 7, 8`) from the SW Walker Lane (`Q2 Band 8` p90 `= 58.65`) to the NE Owyhee/Humboldt interior (`Q1 Band 8` p90 `= 6.91`), starving `COULOMBLOQO_standalone` to **`4,221` dots (`11.2%`)** in `NE` vs `24.7%` of the fault catalogue.
+3. **Completed Priority #3 (Pre-Registered & Executed 3 `KNICKLOQO` Experiments — `gems/knick_loqo.py`, `docs/HYPOTHESES_20261025_KNICKLOQO.md`, `docs/ANALYSIS_20261025_KNICKLOQO.md`):**
+   - Built the 30-feature, 3-branch `KNICKLOQO` ensemble (`15%` Full + `35%` Province-Debiased + `50%` Subsurface-Knickzone) with incised drainage thalweg knickzones (`thalweg_knickzone_idx`), cross-contour scarp transgression (`cross_contour_transgression`, rejecting contour-parallel Pleistocene Lake Lahontan shorelines), sliding-window Poisson magneto-gravity collinearity (`poisson_mag_grav_collinearity`), 4.5 km mesoscale-standardized strain (`coulomb_mesoscale_z`), and **label-free within-quadrant empirical quantile calibration (`lambda = 0.80`, `gamma = 3.3`)**.
+   - **All 50 leakage canaries PASS** (`max symmetric AUC = 0.659602 <= 0.90`).
+   - **Experiment 1 (`KNICKLOQO standalone`, `h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif`):**
+     - **Static `d_cat > 2.0` `HOLDOUT-DTI = 0.010788 [0.009468, 0.012201]`** — **all-time #1 in `GEMSDOE92`** (`+17.0%` over `COULOMBLOQO standalone` `0.009220`, paired $\Delta = +0.001568 [+0.000592, +0.002535]$; `+16.4%` over `EULERFUSE gravity` `0.009265`; `+169.3%` over `R0` `0.004006`).
+     - **Strict draw-blind `d_cat > 2.0` `HOLDOUT-DTI = 0.010958 [0.009675, 0.012337]`** (`+13.1%` over `COULOMBLOQO` `0.009689`).
+     - **Strict draw-blind `d_visible > 2.0` `HOLDOUT-DTI = 0.109043 [0.097872, 0.120534]`** (beating `H19-5` `0.096757`, paired 95% CI `[+0.004125, +0.020591]`).
+     - **USGS SGMC off-catalogue `PROXY = 0.103912`** (`+14.7%` over `COULOMBLOQO standalone` `0.090569`, beating `R0` `0.096060`).
+     - **Restored `NE` (`Q1`) dot allocation from `4,221` (`11.2%`) to `9,286` (`24.7%`)**, lifting Seed 20 `NE` DTI by **`+77.6%`** (`0.006100 -> 0.010834`) and Seed 30 `NE` DTI by **`+25.1%`** (`0.012059 -> 0.015086`).
+     - **`100%` unique on local (`65/65`) and public `dual_reading_decision` (`0 / 1,412` rasters `> 0.70`, worst operative overlap `= 0.685531 <= 0.70`, `verdict = "unique"`)**; literal unweighted overlap `= 1.0000` on `17GEMSDOE E-proba-multiscale`.
+   - **Experiment 2 (`KNICKLOQO uncal`, `61b98143`):** Static `HOLDOUT-DTI = 0.010102 [0.008907, 0.011335]` (`NE` dots `= 5,529`, proving within-quadrant calibration adds `+0.000686` pooled DTI and `+35.2%` Seed 20 `NE` DTI); `0 / 1,412` public rasters `> 0.70` (`max = 0.681840`).
+   - **Experiment 3 (`KNICKLOQO dual35`, `8eedc094`):** Static `HOLDOUT-DTI = 0.008976 [0.007871, 0.010008]`, `SGMC PROXY = 0.102945`; `0 / 1,412` public rasters `> 0.70` (`max = 0.671164`).
+
+## Highest-P(Win) actions for the next session (in order)
+
+1. **Human Selector Step — First `ORGANIZER-CONFIRMED` Calibration & `KNICKLOQO standalone` Promotion Decision:**
+   - Under `dual_reading_decision` (`#IR-92-DENSE-WITNESS-MATCHED-BUDGET`), `h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif` (`8ad4a8c2cd8e1fd9…`) is the **only artifact in `GEMSDOE92` that simultaneously holds the all-time #1 static `HOLDOUT-DTI` (`0.010788`), all-time #1 draw-blind `d_cat > 2.0` `HOLDOUT-DTI` (`0.010958`), beats `H19-5` on draw-blind `d_visible > 2.0` (`0.109043` vs `0.096757`), beats `R0` on `SGMC PROXY` (`0.103912` vs `0.096060`), cures `#IR-92-NE-QUADRANT-LOQO-COLLAPSE`, and achieves `0 / 1,412` public overlaps `> 0.70` (`max = 0.685531 <= 0.70`)**.
+   - Once the human selector confirms `dual_reading_decision` supersedes the degenerate `17GEMSDOE` full-footprint literal witness for portal uploads, promote `KNICKLOQOstandalone` and record the resulting `ORGANIZER-CONFIRMED` receipt in `ledger/submissions.csv`.
+2. **Untried Hypothesis Queue (`docs/HYPOTHESES_20261025_KNICKLOQO.md` Ranks 3–5):**
+   - **Rank 3 (`RADIO-POTENTIAL-DECOUPLE`):** 3D tensor concordance between radiometric `K/Th` & `U/Th` contact gradients (`ext_geodawn_rad_u8`) and gravity/magnetic horizontal gradients (`Bands 16, 18`) to separate deeply rooted hydrothermally altered fault contacts from surficial volcanic ash-flow sheets.
+   - **Rank 4 (`LISTRIC-ASYMMETRY-DIP`):** Lateral horizontal offset ($200\text{--}800\text{ m}$ toward the hanging wall) between the surface topographic scarp (`Band 12/19`) and the subsurface gravity/basement inflection (`Bands 15/18`) to capture listric normal faults ($45^\circ\text{--}60^\circ$ dip).
+   - **Rank 5 (`INSAR-3DEP1M-CREEP`, Contingent on External Tile Staging):** Pumping-deconfounded Sentinel-1 InSAR velocity gradient + 3DEP 1 m LiDAR micro-scarp steps.
+
+---
+
 # Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`BLINDFAULT` Session)
 
 ## Completed this session (`BLINDFAULT`)
