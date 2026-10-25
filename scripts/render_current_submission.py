@@ -80,7 +80,7 @@ def html_block(c, pre):
                      for a, s in c["siblings"].items())
     return f"""{BEGIN}
 <section aria-label="Current submission" style="border:3px solid {bd};background:{bg};padding:1rem 1.2rem;margin:0 0 1.2rem 0;border-radius:8px;font-family:system-ui,sans-serif">
-  <h2 style="margin-top:0">Current submission file — lane {e(c['lane'])} / arm <code>{e(c['arm'])}</code></h2>
+  <h2 style="margin-top:0">Newest lane result — lane {e(c['lane'])} / arm <code>{e(c['arm'])}</code></h2>
   {status}
   <p style="font-size:1.15rem"><a href="{e(tif)}" download><strong>⬇ Download the GeoTIFF ({e(c['file'].split('/')[-1])})</strong></a> · <a href="{e(zp)}" download>one-TIFF ZIP</a> · <a href="{e(card)}">run card (JSON)</a> · <a href="{e(ana)}">analysis</a></p>
   <p><strong>{'How to submit this file:' if c['ok_to_submit'] else 'How to submit (only do this with a file marked ✅ OK TO SUBMIT, which this one is not):'}</strong></p>
@@ -93,7 +93,7 @@ def html_block(c, pre):
   <p><strong>Automated validation (no human inspection):</strong> single band float32, EPSG:32611, 3730 × 3292, transform equal to <code>sample_submission.tif</code>, every value finite and in [0, 1], 0 NaN, 0 outside the footprint, 0 dots on mapped faults. This prevents the portal error <em>"Predicted values must be in range [0, 1]"</em>. SHA-256 <code>{e(c['sha256'])}</code>.</p>
   <p><strong>HOLDOUT-DTI</strong> ({e(f['ev'])}, {f['n']:,} withheld positives, 95% CI from a paired 20 km cluster bootstrap): <code>{f['dti']}</code>. Rebuilt COULOMBLOQO control on the same folds: <code>{f['ctrl']}</code>. Paired Δ: <code>{f['delta']}</code>. A holdout number is <em>not</em> a leaderboard score. No ORGANIZER-CONFIRMED score exists for this file.</p>
   <p><strong>Uniqueness</strong> (REGISTRY-MEASUREMENT, {f['nreg']:,} rasters: the public GEMSDOE* index plus local lineage): worst dot overlap <code>{f['ovl']}</code> (limit 0.70; vs <code>{e(f['ovl_r'])}</code>), worst |ρ| final <code>{f['rho']}</code> / surface <code>{f['rhos']}</code> (limit 0.90). Under the literal positive-support reading, {f['lit']} rasters exceed 0.70. Under that reading even a random raster fails, so it is reported but not used (<code>#IR-92-FAULTNET-DOT-DEFINITION</code>).</p>
-  <p>Sibling arms (research only): {sib}. Everything below this box is historical.</p>
+  <p>Sibling arms (research only): {sib}. Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.</p>
 </section>
 {END}"""
 
@@ -108,7 +108,7 @@ def md_block(c, pre):
               f"**✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `{c['verdict']}`). Reason: {reason(c)}.")
     sib = " · ".join(f"[{a}]({pre + s['file'].removeprefix('docs/')}) ({s['verdict']}, HOLDOUT-DTI {s['dti']:.6f})" for a, s in c["siblings"].items())
     return f"""{BEGIN}
-> ## Current submission file — lane {c['lane']} / arm `{c['arm']}`
+> ## Newest lane result — lane {c['lane']} / arm `{c['arm']}`
 > {status}
 >
 > **[⬇ Download the GeoTIFF]({tif})** · [one-TIFF ZIP]({zp}) · [run card]({card}) · [analysis]({ana})
@@ -122,14 +122,24 @@ def md_block(c, pre):
 > Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `{c['sha256']}`.
 > **HOLDOUT-DTI** ({f['ev']}, {f['n']:,} withheld positives): `{f['dti']}`. Rebuilt COULOMBLOQO control: `{f['ctrl']}`. Paired Δ `{f['delta']}`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
 > **Uniqueness** ({f['nreg']:,} registry rasters): worst overlap `{f['ovl']}` (limit 0.70), worst |ρ| `{f['rho']}` / surface `{f['rhos']}` (limit 0.90). Literal-support reading: {f['lit']} rasters > 0.70. That reading also fails a random raster (`#IR-92-FAULTNET-DOT-DEFINITION`).
-> Siblings: {sib}. **Read [SESSION_PROMPT.md](SESSION_PROMPT.md) first in every session.** Everything below this box is historical.
+> Siblings: {sib}. **Read [SESSION_PROMPT.md](SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
 {END}"""
 
 
+# Shared status panels that must stay first on a page (scripts/render_readiness.py,
+# scripts/render_current_status.py). The lane-result block always sits right after them.
+ANCHORS = ("<!-- CURRENT-READINESS:END -->", "<!-- CURRENT-STATUS:END -->")
+
+
 def inject(text, block, is_html):
-    pat = re.compile(re.escape(BEGIN) + r".*?" + re.escape(END), re.S)
-    if pat.search(text):
-        return pat.sub(lambda _m: block, text, count=1)
+    pat = re.compile(r"\n?" + re.escape(BEGIN) + r".*?" + re.escape(END) + r"\n?", re.S)
+    if len(pat.findall(text)) > 1:
+        raise ValueError("ambiguous lane-result markers")
+    text = pat.sub("\n", text, count=1)
+    for rd in ANCHORS:
+        if rd in text:
+            i = text.index(rd) + len(rd)
+            return text[:i] + "\n" + block + ("" if text[i:i + 1] == "\n" else "\n") + text[i:]
     if is_html:
         i = text.index("<body>") + len("<body>")
         return text[:i] + "\n" + block + "\n" + text[i:]
@@ -149,6 +159,12 @@ def main() -> int:
             if p.name == "SUBMIT.md":
                 blk = blk.replace("](SESSION_PROMPT.md)", "](../SESSION_PROMPT.md)")
             p.write_text(inject(p.read_text(), blk, False))
+    # Let the shared page renderers normalise layout so their --check gates stay green
+    # (they keep this block directly after their own panels).
+    sys.path.insert(0, str(ROOT))
+    from scripts import render_current_status, render_readiness
+    render_readiness.sync()
+    render_current_status.check(write=True)
     print("rendered current-submission block into", len(HTML_PAGES) + len(MD_PAGES), "pages")
     return 0
 
