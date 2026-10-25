@@ -1,3 +1,18 @@
+# Binding next steps — 2026-10-25 (`48e4797d` review)
+
+**No experiment or weekly slot is currently authorized.** [Fresh proof and report](review48.html).
+
+1. Resolve the dense-registry policy conflict explicitly and identify one method lane in a revised operating brief. Do not silently redefine dots, remove witnesses, switch to matched-budget overlap, or implement a "next" lane from historical records while the literal STOP remains binding.
+2. Re-run `scripts/audit_readiness.py` using fresh or cached hash-pinned evidence. A failing/missing proof is inconclusive, never clearance. This now has an automated `--fetch-witness` path and immutable JSON output.
+3. If a later protocol permits experiments: verify data-use rights; restore the pinned feature cache; audit exact operator novelty; freeze a comparable control and outer spatial test; then canaries → shared segment-buffered holdout → paired CI → surface/final-dot registry gates. The [three untried operator shortlist](HYPOTHESES_20261025_REVIEW.md) is conditional, not a selected lane.
+4. Obtain permitted official rules/receipt access and establish the live weekly cap through the organizer. CPU training is supported by the official reference; GPU is a speed option, not a universal blocker. Enable workflow-mode Pages with sufficient integration permission so validation gates publication.
+5. Only after all scientific and literal uniqueness gates pass may the separate selector consider a real slot. No claim here establishes geothermal vent discovery or a future leaderboard gain.
+
+The unique submission request is still unmet. **Maximize P(Win)** and **Own the Outcome** require reporting that fact, not bypassing the rule.
+
+---
+## Historical next-step queues — superseded where they conflict with the binding STOP
+
 # Next Steps — GEMSDOE92 (Updated 2026-10-26, Post-LISTRIC Session)
 
 ## Completed this session (LISTRIC — NEXT_STEPS Rank 4 executed)

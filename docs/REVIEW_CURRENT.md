@@ -1,3 +1,16 @@
+# Current review — 2026-10-25 (`48e4797d`)
+
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT. No new unique TIFF.**
+
+Start with the [current review page](review48.html), [three-pass record](REVIEW_48.md), [fresh automated run card](downloads/review48_run_card.json), and [retrieved-source receipt](downloads/review48_sources.json).
+
+The freshly fetched hash-pinned dense witness proves literal overlap 1.0 for every nonempty in-footprint candidate. The unchanged protocol requires stopping before placement. No assigned geological lane appears in the brief. A new candidate and holdout evaluation remain blocked; no slot was used. Historical dual-reading clearance is not binding.
+
+Use `python scripts/audit_readiness.py --fetch-witness --output .cache/new-review.json` to reproduce the rejection and revalidate current download bytes. Exit 1 is a confirmed STOP; 2 is inconclusive. No human pixel inspection is required. See [next steps](NEXT_STEPS.md) before experiments.
+
+<details>
+<summary>Historical review records — superseded where inconsistent with the binding STOP</summary>
+
 # Current review and next steps — 2026-10-25 (`f23ca2d2`)
 
 **No new TIFF. Research downloads only; DO NOT SUBMIT.** [Fresh review](REVIEW_F23.md) · [automated status](downloads/readiness.json) · [run card](downloads/review_f23_run_card.json).
@@ -237,3 +250,5 @@ See full methodology and tables in [`ANALYSIS_20261024_HYDROCONDUIT.md`](ANALYSI
 - **`PIEDFRONT f35Ptop`** (`GEMSDOE92-PIEDFRONT-f35Ptop-20261024`, `docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif`, SHA-256 `e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8`): static `HOLDOUT-DTI = 0.006425 [0.005375, 0.007479]`, `SGMC = 0.059993`, `verdict: negative` (**OK TO DOWNLOAD**, **DO NOT SUBMIT**). `HYDROCONDUIT f45hydro` (`0.008549 [0.007626, 0.009487]`) improves over `PIEDFRONT f35Ptop` by `+33.1%` (`+0.002124`) while overlapping only `56.56% <= 70%` within 3 px (`phi = 0.2000`).
 - **`STEPEDGE f60Sraw`** (`GEMSDOE92-STEPEDGE-f60Sraw-20261024`, `docs/downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif`, SHA-256 `c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4`): static `HOLDOUT-DTI = 0.003980 [0.003295, 0.004702]`, repo-best `SGMC = 0.141464`, `verdict: negative` (`42.35% <= 70%` 3-px overlap with `HYDROCONDUIT f45hydro`).
 - Ledger total across all merged sessions: `54 BUILT / 0 RECEIPT`.
+
+</details>
