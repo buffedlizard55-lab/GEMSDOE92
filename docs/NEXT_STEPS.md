@@ -1,4 +1,19 @@
-# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`KNICKLOQO` Session)
+# Next Steps — `GEMSDOE92` (2026-10-25 review `2e1a649e`)
+
+## Blocking decision and ordered actions
+
+1. **Do not generate or submit a nonempty TIFF under the current contract.** Fresh `REGISTRY-MEASUREMENT` proves the pinned witness is positive on every one of the `5,167,373` footprint cells, so literal 3-pixel overlap is `1.0 > 0.70` for every possible candidate. DRAINAGE-KNICK remains a format-valid research download with `verdict: negative`; no weekly slot is recommended.
+2. **Resolve the specification conflict explicitly.** Keeping the literal rule means every nonempty candidate remains rejected. Matched-budget overlap may be reported as a diagnostic but must not silently become the operative rule. Preserve the fresh receipts in `evidence/review_2e1a649e_*.json`.
+3. **If and only if a future instruction changes the gate, assign one lane and test `STRIP-INPAINT` first** under the frozen protocol in `HYPOTHESES_20261025_REVIEW2E1A.md`: registry screen before placement; each feature alone; symmetric AUC `>0.90` treated as leakage; buffered whole-segment folds; visible-only rebuilding; pooled `alpha=0.2`, `beta=0.8`, 300 m triangular-kernel HOLDOUT-DTI with withheld-positive count and 95% CI; shared evaluator/writer; separate selector.
+4. **Verify provenance before restoring the full stack.** Owner-mirror hashes prove byte identity, not official origin, band semantics, redistribution permission, or suitability. In particular, reject the conditional GRAVITY-CLOSURE avenue if B15 basement depth was derived from B13 gravity.
+5. **Seek actual organizer evidence only through the account holder's eventual human flow.** Record the current weekly cap, live leaderboard state, portal validation, and score as `ORGANIZER-CONFIRMED` only when an authenticated receipt exists. The ledger currently has none.
+6. **Deployment maintenance:** resolve GitHub Pages legacy/workflow publication protection with repository-settings permission and complete the partial public registry download only if full characterization is needed. Neither task weakens the existing rejection proof.
+
+See [the authoritative three-pass review](REVIEW_2E1A649E.md), [current machine status](downloads/current_status.json), and [current run card](downloads/review_2e1a649e_run_card.json). All sections below are archived session queues and do not override this order.
+
+---
+
+# Archived next steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`KNICKLOQO` Session)
 
 ## Completed this session (`KNICKLOQO` + Action #1 Dual-Reading Audit + Action #2 `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` Resolution)
 
@@ -33,7 +48,7 @@
 
 ---
 
-# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`POISSONKNICK`, `POISSONFLEX`, & `PROVINCETOE` Sessions)
+# Archived next steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`POISSONKNICK`, `POISSONFLEX`, & `PROVINCETOE` Sessions)
 
 ## Completed this session (`POISSONKNICK`)
 
@@ -52,7 +67,7 @@
 
 ---
 
-# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`POISSONFLEX` & `PROVINCETOE` Merge)
+# Archived next steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`POISSONFLEX` & `PROVINCETOE` Merge)
 
 ## Completed in `POISSONFLEX` session
 
@@ -68,7 +83,7 @@
 
 ---
 
-# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`PROVINCETOE` Session)
+# Archived next steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`PROVINCETOE` Session)
 
 ## Completed this session (`PROVINCETOE`)
 
@@ -103,13 +118,13 @@
 
 ---
 
-# Current protocol review — 2026-10-25 (`376a8469`)
+# Archived historical protocol review — 2026-10-25 (`376a8469`)
 
 **Research downloads only. DO NOT SUBMIT.** The shared dual-reading helper now enforces the literal duplicate stop for every raster. Matched-budget overlap is diagnostic, not a specification change. Prior claims below that the policy was automatically resolved are historical and superseded. No new TIFF or geological experiment was generated in this review. See [review, conditional hypotheses and ordered next steps](REVIEW_376A8469.md) and [fresh run card](downloads/review376a_run_card.json). A new submission-cleared artifact remains unfulfilled.
 
 ---
 
-# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`BLINDFAULT` Session)
+# Archived next steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`BLINDFAULT` Session)
 
 ## Completed this session (`BLINDFAULT`)
 
@@ -134,7 +149,7 @@
 
 ---
 
-# Next Steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`COULOMBDM` & `XPHASE` Sessions)
+# Archived next steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`COULOMBDM` & `XPHASE` Sessions)
 
 ## Completed this session (`COULOMBDM`)
 
@@ -163,7 +178,7 @@
 
 ---
 
-# Next Steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`COULOMB-LOQO` Session)
+# Archived next steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`COULOMB-LOQO` Session)
 
 ## 1. Completed in the `COULOMB-LOQO` Session
 

@@ -1,0 +1,47 @@
+{
+  "schema": "gemsdoe92-source-audit.review-2e1a649e.v1",
+  "reviewed_utc": "2026-10-25T14:45:38Z",
+  "sources": [
+    {
+      "url": "https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/unet-mc-cv-reference-solution.ipynb",
+      "git_blob_sha": "d45bf7bdb1d31a22caa38371ad195c2f6eb965ae",
+      "sha256": "1a7622732ba00f67237058bc0efe79b45ba4e87c449fc9c1e5d6ea659de92ca0",
+      "bytes": 1578736,
+      "verification": "fresh GitHub API retrieval; Git blob endpoint pinned; SHA-256 matched prior independent audit",
+      "authority": "organizer reference code; confirms training implementation, not an organizer submission receipt or the local distance evaluator"
+    },
+    {
+      "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/098f3af9508a135277ef4d1bf2266e2e448be814/docs/index.html",
+      "git_blob_sha": "6fc6c67e6e62d0b55a573c01b3a80f9b9d3c0d7d",
+      "sha256": "b4a0f68193d7814fd4e406ea86465c0b0350cbed91b4f174d45c425f2b40e0d0",
+      "bytes": 19571,
+      "verification": "fresh GitHub API retrieval; SHA-256 matched prior independent audit",
+      "authority": "owner page; explicitly says UNSCORED/NO ORGANISER SCORE; not an organizer receipt"
+    },
+    {
+      "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/098f3af9508a135277ef4d1bf2266e2e448be814/src/gems32/h33.py",
+      "git_blob_sha": "86eb18e89e92a7982804e2a367f646ac8f1ba895",
+      "sha256": "e478a6f4cb5beb6dd79f711cde43b77748010154d73d1e11b33cf3df47301516",
+      "bytes": 17901,
+      "verification": "fresh GitHub API retrieval; SHA-256 matched prior independent audit",
+      "authority": "owner implementation; not organizer score evidence"
+    },
+    {
+      "url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/6fc71d19d49dca4960d5434bd81b6dd06fcc030a/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "bytes": 25065181,
+      "verification": "fresh GitHub API retrieval; Git blob and SHA-256 pins verified; exact sample grid verified by preflight",
+      "authority": "owner registry artifact; rejection witness only, not organizer evidence"
+    }
+  ],
+  "manual_review_official_urls_not_live_verified": [
+    "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/",
+    "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+    "https://docs.nlr.gov/docs/fy26osti/96647.pdf",
+    "https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7",
+    "https://gdr.openei.org/submissions/1391",
+    "https://epsg.io/32611"
+  ],
+  "network_limitation": "This sandbox allowed GitHub and package registries only. No DrivenData session, live weekly cap, live leaderboard, non-GitHub official page, or organizer receipt was available."
+}

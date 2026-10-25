@@ -1,4 +1,4 @@
-.PHONY: test verify manifest ledger validate clean site
+.PHONY: test verify manifest ledger validate clean site render-current
 
 PYTHON ?= python3
 REFERENCE ?= data/bridge/sample_submission.tif
@@ -6,7 +6,11 @@ REFERENCE ?= data/bridge/sample_submission.tif
 test:
 	$(PYTHON) -m pytest tests -q
 
+render-current:
+	$(PYTHON) scripts/render_current_review.py
+
 site:
+	$(PYTHON) scripts/render_current_review.py --check
 	PYTHONPATH=vendor $(PYTHON) scripts/check_site.py
 
 manifest:

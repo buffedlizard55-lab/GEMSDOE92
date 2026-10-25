@@ -138,5 +138,87 @@
   "public_registry": {
     "available": false,
     "reason": "gh CLI unauthenticated and no cached inventory in this sandbox; local complete registry used instead; public scope not claimed"
-  }
+  },
+  "sha256_zeros": "ef6c27e34fe0f28c6e52615a9fc9601c20ada5337203def25ab8753392aef910",
+  "overall_pass": true,
+  "n_positive_pixels": 37654,
+  "n_dots": 37654,
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "ef6c27e34fe0f28c6e52615a9fc9601c20ada5337203def25ab8753392aef910"
+    }
+  ],
+  "gates_zeros_pass": true,
+  "submission_eligible": false,
+  "verdict": "negative",
+  "run_card": "evidence/review_2e1a649e_run_card.json",
+  "post_build_reconciliation": {
+    "reviewed_utc": "2026-10-25T14:45:38Z",
+    "reason": "Added canonical site-contract fields and exact-file public witness evidence; original build measurements remain under their original keys.",
+    "review_run_card": "evidence/review_2e1a649e_run_card.json"
+  },
+  "public_registry_uniqueness": {
+    "evidence_file": "evidence/review_2e1a649e_drainage_witness.json",
+    "broader_partial_scan": "evidence/drainageknick_public_registry.json",
+    "candidate_hash_matches_scan": true,
+    "candidate_file_sha256": "ef6c27e34fe0f28c6e52615a9fc9601c20ada5337203def25ab8753392aef910",
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "forward_overlap_with_binding_witness": 1.0,
+    "scan_complete": false,
+    "scope": "Pinned single-witness rejection is exact and sufficient to stop; broader scan had 705 download failures and is not represented as complete."
+  },
+  "historical_build_run_card": "evidence/gemsdoe92-drainageknick-20261025T120000Z_run_card.json"
 }

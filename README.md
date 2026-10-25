@@ -1,4 +1,12 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
+<!-- CURRENT-REVIEW-2E1A649E-README:BEGIN -->
+> ## Current verified decision — 2026-10-25 review `2e1a649e`
+> **✅ OK TO DOWNLOAD FOR RESEARCH: YES** · **⛔ OK TO SUBMIT / USE A WEEKLY SLOT: NO** (`verdict: negative`, `submission_eligible: false`). The binding pre-placement `REGISTRY-MEASUREMENT` is universal: a SHA-256/Git-blob-pinned registry raster is positive on all `5,167,373` footprint cells, so every nonempty candidate has literal 3-pixel forward overlap `1.0 > 0.70`. The protocol says stop; no new TIFF or experiment was generated in this review.
+>
+> **Current research download:** [DRAINAGE-KNICK GeoTIFF](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif) (**DO NOT SUBMIT**) · [one-TIFF ZIP](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.zip) · [format audit](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-audit.json) · [current run card](docs/downloads/review_2e1a649e_run_card.json) · [machine status](docs/downloads/current_status.json) · [three-pass review](docs/REVIEW_2E1A649E.md) · [ranked conditional hypotheses](docs/HYPOTHESES_20261025_REVIEW2E1A.md).
+>
+> Exact SHA-256 `ef6c27e34fe0f28c6e52615a9fc9601c20ada5337203def25ab8753392aef910`. The linked file was generated independently in prior PR #78, not copied or renamed in this review. Carried-forward **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, `22,663` withheld positives, 95% CI) `0.061728 [0.047046, 0.075316]` is below the `0.113316` comparable promotion bar and is **not** an organizer score.
+<!-- CURRENT-REVIEW-2E1A649E-README:END -->
 
 > ## Latest artifact — DRAINAGE-KNICK (2026-10-25)
 > **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). New byte-unique GeoTIFF; all automated format checks pass, but HOLDOUT-DTI `0.061728 [0.047046, 0.075316]` is below the `0.113316` promotion bar and literal public-registry overlap is `1.0 > 0.70`.

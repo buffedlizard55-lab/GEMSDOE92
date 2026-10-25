@@ -1,0 +1,91 @@
+{
+  "schema": "gemsdoe92-run-card.review-2e1a649e.v1",
+  "reviewed_utc": "2026-10-25T14:45:38Z",
+  "scope": "Repository review and mandatory pre-placement registry gate; no new geological lane was assigned or executed.",
+  "hypothesis": "The standing literal registry rule makes every nonempty in-footprint candidate a duplicate because one pinned registry raster has positive support on the entire valid footprint.",
+  "mechanism": "The witness support contains every valid candidate coordinate; its 3-pixel halo therefore contains every possible nonempty candidate dot set, forcing literal forward overlap to 1.0.",
+  "named_non_fault_process_that_could_mimic_it": "A space-filling continuous probability background; this is a registry-representation degeneracy, not evidence that two geological models share a fault mechanism.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "session_status": "Not rerun: Rule 1 stopped before feature construction and placement; zero new experiments.",
+    "carried_forward_artifact": "DRAINAGE_KNICK generated in prior PR #78",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 22663,
+    "dti": 0.06172760041972649,
+    "ci95": [
+      0.04704647590617514,
+      0.07531604288537347
+    ],
+    "source": "evidence/gemsdoe92-drainageknick-20261025T120000Z_run_card.json",
+    "promotion_bar": 0.113316,
+    "beats_promotion_bar": false,
+    "caveat": "Carried forward exactly from the prior run card; not a current rerun and not an organizer score."
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "preplacement": {
+      "scope": "Single pinned witness; rejection only. No candidate surface was generated or scored.",
+      "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "footprint_pixels": 5167373,
+      "witness_positive_in_footprint": 5167373,
+      "forward_overlap_for_any_nonempty_candidate": 1.0,
+      "threshold": 0.7,
+      "stop_required": true
+    },
+    "existing_artifact_exact_file_check": {
+      "candidate_sha256": "ef6c27e34fe0f28c6e52615a9fc9601c20ada5337203def25ab8753392aef910",
+      "forward_overlap_within_3px": 1.0,
+      "spearman_full_footprint": 0.040028366426527635,
+      "stop_required": true,
+      "scope": "Single witness: rejection only, no full-registry or pre-placement clearance."
+    }
+  },
+  "raster_sha256": "ef6c27e34fe0f28c6e52615a9fc9601c20ada5337203def25ab8753392aef910",
+  "raster_status": "Existing prior-session DRAINAGE_KNICK research artifact; no file copied, renamed, or generated in this review.",
+  "file": "docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif",
+  "validator_output": {
+    "no_nan_in_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "dots": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    }
+  },
+  "submission_name": "GEMSDOE92-DRAINAGE_KNICK-20261025",
+  "note": "h33-h33-2-b2; DRAINAGE_KNICK: terrain-knick persistence x basement edge x shear; 37654 dots d_cat>2px; see run card for HOLDOUT-DTI",
+  "note_chars": 131,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "new_unique_tiff_generated": false,
+  "requirement_status": "UNFULFILLED: generating a nonempty candidate after the pre-placement stop would violate the standing protocol.",
+  "experiments_used": "0/3",
+  "weekly_slots_used": 0,
+  "organizer_confirmed": null,
+  "evidence": {
+    "preplacement": "evidence/review_2e1a649e_preflight.json",
+    "exact_artifact_witness": "evidence/review_2e1a649e_drainage_witness.json",
+    "sources": "evidence/review_2e1a649e_sources.json",
+    "ranked_hypotheses": "docs/HYPOTHESES_20261025_REVIEW2E1A.md"
+  },
+  "limitations": [
+    "No new submission-cleared TIFF can be produced under the simultaneous nonempty-artifact and literal-overlap requirements.",
+    "The DRAINAGE_KNICK public scan downloaded only 750 of 1455 inventoried unique blobs; the pinned full-footprint witness is sufficient for rejection but not full-registry characterization.",
+    "No organizer receipt, current leaderboard, current weekly cap, or authenticated submission-page acceptance was available.",
+    "GitHub Pages remains in legacy main-root mode; workflow publication protection is not verified active."
+  ]
+}

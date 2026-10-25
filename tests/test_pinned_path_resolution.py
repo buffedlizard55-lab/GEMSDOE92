@@ -81,6 +81,42 @@ def test_manifest_verifies_repo_relative_dest(tmp_path):
     assert rep["entries"][0]["status"] == "OK"
 
 
+def test_manifest_accepts_list_root_and_rejects_invalid_structure(tmp_path):
+    f = tmp_path / "a.tif"
+    f.write_bytes(b"hello")
+    manifest = tmp_path / "list.json"
+    manifest.write_text(json.dumps([{
+        "dest": "a.tif", "sha256": sha256_file(f), "bytes": 5,
+    }]))
+    assert verify(manifest, tmp_path)["ok"] is True
+
+    manifest.write_text(json.dumps({"files": "not-a-list"}))
+    report = verify(manifest, tmp_path)
+    assert report["ok"] is False
+    assert report["error"] == "manifest files must be a list"
+
+    manifest.write_text("{not json")
+    report = verify(manifest, tmp_path)
+    assert report["ok"] is False
+    assert report["error"].startswith("manifest is unreadable JSON:")
+
+
+def test_manifest_rejects_invalid_pin_and_unsafe_path(tmp_path):
+    f = tmp_path / "a.tif"
+    f.write_bytes(b"hello")
+    manifest = tmp_path / "m.json"
+    manifest.write_text(json.dumps({"files": [
+        {"dest": "a.tif", "sha256": "NOT-A-DIGEST"},
+        {"dest": "../a.tif", "sha256": sha256_file(f)},
+        "not-an-object",
+    ]}))
+    report = verify(manifest, tmp_path)
+    assert report["ok"] is False
+    assert [row["status"] for row in report["entries"]] == [
+        "INVALID_SHA256_PIN", "INVALID_PATH", "MALFORMED",
+    ]
+
+
 def test_manifest_still_reports_missing_and_mismatch(tmp_path):
     (tmp_path / "bridge").mkdir()
     f = tmp_path / "bridge" / "a.tif"
@@ -96,12 +132,46 @@ def test_manifest_still_reports_missing_and_mismatch(tmp_path):
     assert any("MISSING" in p for p in rep["problems"])       # absent file
 
 
+def test_manifest_rejects_stale_recorded_byte_length_even_when_hash_matches(tmp_path):
+    """A correct digest must not make a contradictory size claim disappear."""
+    f = tmp_path / "a.tif"
+    f.write_bytes(b"hello")
+    manifest = tmp_path / "m.json"
+    manifest.write_text(json.dumps({"files": [{
+        "id": "a", "dest": "a.tif", "sha256": sha256_file(f), "bytes": 4,
+    }]}))
+    rep = verify(manifest, tmp_path)
+    assert not rep["ok"]
+    assert rep["entries"][0]["status"] == "SIZE_MISMATCH"
+    assert rep["entries"][0]["bytes"] == 5
+    assert rep["problems"] == ["a.tif: expected 4 bytes, got 5"]
+
+
+@pytest.mark.parametrize("bad_pin", [True, -1, 5.0, "5"])
+def test_manifest_rejects_malformed_byte_length_without_crashing(tmp_path, bad_pin):
+    f = tmp_path / "a.tif"
+    f.write_bytes(b"hello")
+    manifest = tmp_path / "m.json"
+    manifest.write_text(json.dumps({"files": [{
+        "id": "a", "dest": "a.tif", "sha256": sha256_file(f), "bytes": bad_pin,
+    }]}))
+    rep = verify(manifest, tmp_path)
+    assert not rep["ok"]
+    assert rep["entries"][0]["status"] == "INVALID_BYTES_PIN"
+    assert "expected a nonnegative integer" in rep["problems"][0]
+
+
 # --------------------------------------------------------------------------
 # the committed registries must actually verify against the committed bytes
 # --------------------------------------------------------------------------
 @pytest.mark.skipif(not (ROOT / "data" / "bridge" / "sample_submission.tif").is_file(),
                     reason="competition data not staged in this checkout")
 def test_committed_data_manifest_verifies():
+    manifest = json.loads((ROOT / "registry" / "data_manifest.json").read_text())
     rep = verify(ROOT / "registry" / "data_manifest.json", ROOT / "data")
     assert rep["ok"], rep["problems"]
     assert all(e["status"] == "OK" for e in rep["entries"])
+    # Keep human-readable byte counts auditable too; SHA-256 alone previously
+    # let two stale size claims survive in this registry.
+    for item in manifest["files"]:
+        assert item["bytes"] == (ROOT / item["dest"]).stat().st_size

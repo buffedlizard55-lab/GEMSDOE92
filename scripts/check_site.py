@@ -31,6 +31,8 @@ DOWNLOADS = DOCS / "downloads"
 INDEX = DOCS / "index.html"
 SAMPLE = ROOT / "data" / "bridge" / "sample_submission.tif"
 LABELS = ROOT / "data" / "bridge" / "labels.tif"
+CURRENT_STATUS = ROOT / "registry" / "current_status.json"
+SERVED_STATUS = DOWNLOADS / "current_status.json"
 N_DOTS = 37654
 
 
@@ -104,6 +106,69 @@ def primary_download(html: str, problems: list[str]) -> str | None:
         problems.append('primary must be a local downloads/*-zeros.tif file')
         return None
     return href
+
+
+def check_current_status(primary_rel: str | None, problems: list[str]) -> None:
+    """Keep the human first screen and canonical machine status byte-consistent."""
+    status = read_json_object(CURRENT_STATUS, problems)
+    served = read_json_object(SERVED_STATUS, problems)
+    if not status or not served:
+        return
+    if CURRENT_STATUS.read_bytes() != SERVED_STATUS.read_bytes():
+        problems.append("served current_status.json differs from registry/current_status.json")
+    research = status.get("research_download")
+    decision = status.get("decision")
+    evidence = status.get("evidence")
+    if not isinstance(research, dict) or not isinstance(decision, dict) or not isinstance(evidence, dict):
+        problems.append("current status must contain research_download, decision and evidence objects")
+        return
+    expected = f"docs/{primary_rel}" if primary_rel else None
+    file_rel = research.get("file")
+    if file_rel != expected:
+        problems.append(f"current status file {file_rel!r} != page primary {expected!r}")
+    safe_file = (isinstance(file_rel, str) and not Path(file_rel).is_absolute()
+                 and ".." not in Path(file_rel).parts)
+    if not safe_file:
+        problems.append("current status research download must be a safe repository-relative path")
+        raster = None
+    else:
+        raster = ROOT / file_rel
+    if raster is None or not raster.is_file():
+        problems.append("current status research download does not exist")
+    elif research.get("sha256") != sha256_file(raster):
+        problems.append("current status SHA256 != research download bytes")
+    for key, want in (
+        ("format_valid", True), ("downloadable", True),
+        ("generated_in_active_review", False),
+    ):
+        if research.get(key) is not want:
+            problems.append(f"current status research_download.{key} must be {want!r}")
+    if decision.get("verdict") != "negative":
+        problems.append("current status decision.verdict must be 'negative'")
+    for key in ("submission_eligible", "recommended_to_submit"):
+        if decision.get(key) is not False:
+            problems.append(f"current status decision.{key} must be False")
+    for key in ("weekly_slots_used", "experiments_used"):
+        value = decision.get(key)
+        if isinstance(value, bool) or not isinstance(value, int) or value != 0:
+            problems.append(f"current status decision.{key} must be integer 0")
+    if "DUPLICATE UNDER THE LITERAL REGISTRY RULE" not in str(decision.get("reason", "")):
+        problems.append("current status does not preserve the literal duplicate reason")
+    for label, rel in evidence.items():
+        safe = (isinstance(rel, str) and not Path(rel).is_absolute()
+                and ".." not in Path(rel).parts)
+        if not safe or not (ROOT / rel).is_file():
+            problems.append(f"current status evidence {label!r} is missing or unsafe: {rel!r}")
+    card_rel = evidence.get("run_card")
+    if (isinstance(card_rel, str) and not Path(card_rel).is_absolute()
+            and ".." not in Path(card_rel).parts and (ROOT / card_rel).is_file()):
+        card = read_json_object(ROOT / card_rel, problems)
+        if card.get("raster_sha256") != research.get("sha256"):
+            problems.append("current status and review run card disagree on raster SHA256")
+        if card.get("verdict") != decision.get("verdict"):
+            problems.append("current status and review run card disagree on verdict")
+        if card.get("submission_eligible") != decision.get("submission_eligible"):
+            problems.append("current status and review run card disagree on eligibility")
 
 
 def main() -> int:
@@ -230,6 +295,8 @@ def main() -> int:
                 if card.get("verdict") != "negative":
                     problems.append("run card must record negative verdict after registry duplicate stop")
             print(f"  PRIMARY {primary.name}")
+
+    check_current_status(primary_rel, problems)
 
     if problems:
         print("SITE CHECK FAIL")
