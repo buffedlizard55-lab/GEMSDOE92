@@ -1,6 +1,26 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-> ## Latest artifact — DRAINAGE-KNICK (2026-10-25)
+> ## Binding current decision — 2026-10-25 repository review
+> **Research downloads only. DO NOT SUBMIT any current TIFF or spend a weekly slot.** A pinned public-registry witness is positive in all 5,167,373 footprint cells; therefore every nonempty in-footprint prediction raster has literal 3-px forward overlap `1.0`, exceeding the protocol's `0.70` stop. No new candidate was built, no submission-cleared TIFF was generated, and no slot was spent. This is a verified blocker, not a claim of success. See [three-pass repository review](docs/REVIEW_20261025_REPOSITORY_REVIEW.md), [binding protocol-gate review](docs/REVIEW_376A8469.md), and [pre-placement evidence](docs/downloads/review376a_preflight.json).
+>
+> Prior TIF links below remain convenient **research** downloads only. Format validation ([0,1], CRS, shape, transform, no NaN) is not uniqueness, holdout promotion, organizer acceptance, or a submission recommendation. Do not treat “unique” under historical matched-budget diagnostics as a pass of the binding literal rule.
+
+## Persistent operating brief — read at every session start
+
+The mission is to maximize the probability of winning DOE GEMS competition #306 through a scientifically defensible, reproducible, auditable workflow—not by guessing leaderboard scores. Read this README and [`SESSION_PROMPT.md`](SESSION_PROMPT.md) before every project session. Keep **Maximize P(Win)** and **Own the Outcome** central.
+
+- Generate a **new, genuinely distinct** single-band GeoTIFF only when the active protocol permits it. Never copy an old raster, emit a meaningless empty file, or overstate novelty. The current binding literal overlap gate makes any nonempty candidate a stop; record the failure and stop rather than evade the gate.
+- Reuse the shared feature stack, buffered hide-and-recover evaluator (`vendor/gems57/evaluate_holdout.py`), and writer (`vendor/gems57/submission_writer.py`). Rebuild catalogue features from visible faults only, mask visible faults pixel-exactly, and report pooled triangular-kernel DTI with alpha 0.2, beta 0.8, withheld positives, evaluator version, and 95% CI. Test each feature alone for leakage; AUC >0.90 is a stop pending investigation.
+- Pre-register 3–5 candidate geological hypotheses before implementation; state layers, physical signature, why it could reveal a missing fault, differences from implemented methods, non-fault mimic, data source/availability, and cost. Test only the top-ranked candidate if pre-placement uniqueness passes. Stop by 3 experiments or 2 hours.
+- Label every number: `HOLDOUT-DTI` (evaluator, withheld count, CI), `ORGANIZER-CONFIRMED` (submission receipt), `CLAIM`, `PROXY`, or `REGISTRY-MEASUREMENT`. Never present a projection as a score. A holdout cannot establish geothermal-vent discovery or organizer performance.
+- Make download clearance and weekly-slot recommendation separate and unmistakable. Automated project validation replaces human format inspection; a person still uploads and selects a slot. No artifact is recommended for submission unless it passes all required gates and a separate selector approves it.
+- Keep source links, provenance, checksums, licenses/permissions, negative results, and irregularities auditable. Competition login data may not be available; an owner-mirror hash does not prove organizer authenticity or permission to redistribute.
+
+## Current status and next decision
+
+No current file is cleared for a weekly slot. The requested new submission cannot be generated under the unchanged literal duplicate rule. Resolve that specification conflict explicitly before resuming geological experiments. The ranked, unimplemented shortlist is in [`docs/HYPOTHESES_20261025_REVIEW.md`](docs/HYPOTHESES_20261025_REVIEW.md); current tests and limitations are in the [three-pass review](docs/REVIEW_20261025_REPOSITORY_REVIEW.md).
+
+> ## Historical research artifact — DRAINAGE-KNICK (2026-10-25)
 > **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). New byte-unique GeoTIFF; all automated format checks pass, but HOLDOUT-DTI `0.061728 [0.047046, 0.075316]` is below the `0.113316` promotion bar and literal public-registry overlap is `1.0 > 0.70`.
 >
 > **[Download the validated TIFF](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.zip) · [run card](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z_run_card.json) · [public registry audit](docs/downloads/drainageknick_public_registry.json) · [analysis](docs/ANALYSIS_20261025_DRAINAGE_KNICK.md)

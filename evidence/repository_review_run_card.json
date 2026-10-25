@@ -1,0 +1,46 @@
+{
+  "schema": "gemsdoe92-run-card.v3",
+  "session_date": "2026-10-25",
+  "lane": "REPOSITORY_REVIEW_NO_EXPERIMENT",
+  "hypothesis": "RTP magnetic texture displacement registration (training stack Band 2) could identify fault-related offset of pre-existing magnetic texture where the surface scarp is degraded or buried; this remains an untested proposal.",
+  "mechanism": "Bidirectional multi-window registration would estimate along-strike displacement across trial lines and require a spatially stable signed offset; no candidate surface was computed because the binding pre-placement duplicate gate rejected all nonempty in-footprint candidates.",
+  "named_non_fault_process": "Intrusive/lithologic contacts or separate volcanic flows can mimic translated magnetic texture.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": null,
+    "dti": null,
+    "ci95": null,
+    "status": "NOT RUN; no feature stack staged and pre-placement literal registry duplicate stop applies. No score is projected."
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "candidate_surface_spearman": null,
+    "candidate_dots_correlation": null,
+    "candidate_dots_overlap": null,
+    "preplacement_witness": {
+      "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "footprint_pixels": 5167373,
+      "positive_in_footprint": 5167373,
+      "literal_forward_overlap_for_any_nonempty_candidate": 1.0,
+      "threshold": 0.7,
+      "result": "STOP BEFORE PLACEMENT"
+    }
+  },
+  "raster_sha256": null,
+  "validator_output": {
+    "candidate_generated": false,
+    "no_nan_inside_footprint": null,
+    "values_in_0_1": null,
+    "crs_shape_transform_match": null,
+    "status": "NOT APPLICABLE: no new candidate raster was generated. Existing site raster checks are separate and passed for 63 served TIFFs in scripts/check_site.py."
+  },
+  "submission_name": null,
+  "submission_note": "No candidate generated; literal registry gate stops every nonempty raster.",
+  "submission_note_characters": 74,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "weekly_slots_used": 0,
+  "experiments_used": 0,
+  "reason": "The binding literal 3-px overlap gate fails at preflight for any nonempty in-footprint raster; do not evade the gate or replace it with matched-budget overlap."
+}
