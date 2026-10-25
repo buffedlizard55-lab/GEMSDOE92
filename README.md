@@ -1,6 +1,9 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-> ## Latest artifact — LISTRIC (2026-10-26)
+> ## Repository review (2026-10-25 UTC) — read before relying on the artifact banner
+> **No new TIFF or experiment was generated in this review. Existing rasters are for research download only; DO NOT SUBMIT or spend a weekly slot.** The session lane was not specified, and the binding literal duplicate rule is blocked by a pinned full-footprint witness (overlap `1.0 > 0.70` for every nonempty prediction). The existing LISTRIC raster passes local format validation, but its recorded public dot overlap is `0.710735 > 0.70`; its run-card date `2026-10-26` is future-dated relative to this review and is not claimed as a newly generated current artifact. See the [three-pass repository review](docs/REVIEW_20261025_ARENA_REPOSITORY.md) and [run card](evidence/review_20261025_arena_run_card.json). Verified in this review: 491 tests passed, site gates passed for 82 served rasters, pinned parent and manifest passed, and the ledger has no ORGANIZER-CONFIRMED receipt.
+>
+> ## Existing research artifact — LISTRIC (recorded 2026-10-26)
 > **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`, `submission_eligible: false`). New unique-byte GeoTIFFs (3 experiments); automated [0,1] validation PASS. Static **HOLDOUT-DTI `0.010909 [0.009543, 0.012278]`** (`gems57-pooled-hide-v2`, 22,663 withheld px) nominally tops KNICKLOQO `0.010788` but paired Δ `+0.000121 [-0.001167, +0.001262]` includes 0, SGMC proxy is lower, and the public dual-reading overlap `0.710735 > 0.70` (62GEMSDOE) + literal `1.000` block promotion.
 >
 > **[Download LISTRIC standalone TIFF](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif)** · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.zip) · [run card](docs/downloads/listric_run_card.json) · [analysis](docs/ANALYSIS_20261026_LISTRIC.md) · [hypotheses](docs/HYPOTHESES_20261026_LISTRIC.md) · [executive summary — how to submit](docs/executive-summary.html)
