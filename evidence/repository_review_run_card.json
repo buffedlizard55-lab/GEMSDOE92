@@ -33,7 +33,7 @@
     "no_nan_inside_footprint": null,
     "values_in_0_1": null,
     "crs_shape_transform_match": null,
-    "status": "NOT APPLICABLE: no new candidate raster was generated. Existing site raster checks are separate and passed for 63 served TIFFs in scripts/check_site.py."
+    "status": "NOT APPLICABLE: no new candidate raster was generated. Existing site raster checks are separate and passed for 66 served TIFFs in scripts/check_site.py after syncing current main."
   },
   "submission_name": null,
   "submission_note": "No candidate generated; literal registry gate stops every nonempty raster.",

@@ -11,7 +11,8 @@ The project does contain prior research TIFFs. Their on-disk format validation d
 - Read `README.md`, `SESSION_PROMPT.md`, `docs/REVIEW_CURRENT.md`, `docs/REVIEW_376A8469.md`, `docs/NEXT_STEPS.md`, the pinned input manifest, shared evaluator/writer/uniqueness tools, public site, and the recent run cards.
 - The checkout is on the required `arena/17630c39-gemsdoe92` branch and was clean before review. No branch change was made.
 - The feature cache `.cache/gems_inputs/` is absent. `data/bridge/` contains only eight small bridge/parent rasters; it is not the full 19-band feature stack. Thus a fresh full geological holdout experiment could not be claimed from the available inputs.
-- Existing RADIOCONTACT run card `evidence/gemsdoe92-radiocontact-20261025T041646Z_run_card.json` reports **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives) `0.005066 [0.003638, 0.006583]`, below its recorded `0.113316` holdout reference; its local-only uniqueness is not global registry clearance (`public.available: false`). No fresh evaluation was run in this review.
+- Existing RADIOCONTACT run card `evidence/gemsdoe92-radiocontact-20261025T041646Z_run_card.json` reports **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives) `0.005066 [0.003638, 0.006583]`, below its recorded **HOLDOUT-DTI** promotion reference `0.113316`; its local-only uniqueness is not global registry clearance (`public.available: false`). No fresh evaluation was run in this review.
+- During PR preparation, `main` advanced with a separate LISTRICDIP lane, which was merged into this working branch to remove PR conflicts. Its existing run card reports **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives, static `d_cat > 2` instrument) `0.005420 [0.004294, 0.006551]`; it is below the recorded **HOLDOUT-DTI** repository reference `0.010788` (KNICKLOQO static) and has literal dense-witness overlap `1.0`. It remains a research artifact and was not generated or re-evaluated by this review. Its run-card provenance is `evidence/listricdip_run_card.json`.
 - A future-dated file `docs/HYPOTHESES_20261026_RADIOCONTACT.md` states it was preregistered before a run-card dated 2026-10-25. Since the document date is after this review date, that chronology is not independently established and is an irregularity for review. Do not treat it as verified preregistration evidence.
 - Ranked fresh candidate concepts (not implemented) and named mimics/falsifiers are in [`HYPOTHESES_20261025_REVIEW.md`](HYPOTHESES_20261025_REVIEW.md). They use the existing stack, so no additional free official source is required; the stack itself is not currently staged, and mirror rights/origin remain unverified.
 - Why the reported 0.2778 may have arisen: local parent lineage notes characterize R0 as a spaced/thinned fault-skeleton descendant, plausibly reducing redundant predictions under the distance-weighted matching kernel while retaining proximity to mapped faults. This is a plausible mechanism, not a verified causal explanation of an organizer score. Beating that claim requires true additional hidden-fault recovery without excess false positives; no competition receipt or outer-test evidence proves this repo can do so.
@@ -32,11 +33,11 @@ The first proposal is RTP magnetic texture displacement registration (B2); secon
 
 After the documentation/status changes:
 
-- `.venv/bin/python -m pytest tests -q`: **367 passed**, 126 upstream Rasterio/Affine pending-deprecation warnings.
-- `PYTHONPATH=vendor .venv/bin/python scripts/check_site.py`: **63 served TIFFs passed** current site format gates.
+- `PYTHONPATH=vendor .venv/bin/python -m pytest tests -q`: **371 passed**, 126 upstream Rasterio/Affine pending-deprecation warnings (final post-merge rerun).
+- `PYTHONPATH=vendor .venv/bin/python scripts/check_site.py`: **66 served TIFFs passed** current site format gates (final post-merge rerun).
 - `PYTHONPATH=vendor .venv/bin/python -m gems parent --recipe registry/parents/R0.json --data-root data`: pinned parent R0 verified.
 - `PYTHONPATH=vendor .venv/bin/python -m gems manifest --manifest registry/data_manifest.json --data-root data`: all eight staged manifest entries passed.
-- `PYTHONPATH=vendor .venv/bin/python -m gems ledger`: **93 rows**, best organizer receipt: **none**.
+- `PYTHONPATH=vendor .venv/bin/python -m gems ledger`: **97 rows**, best organizer receipt: **none**.
 - No fresh holdout, model score, public registry scan, or organizer receipt was produced. No TIF bytes or weekly slot were changed. External official pages and current leaderboard were not fetched.
 
 ## Remaining work, ordered by decision value
