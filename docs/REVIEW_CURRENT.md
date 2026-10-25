@@ -1,5 +1,16 @@
 # Current review — 2026-10-25 (`48e4797d`)
 
+<!-- CURRENT-STATUS:BEGIN -->
+## Current verified decision — 2026-10-25 (review c5e3848c)
+
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review. The new-submission requirement remains unmet.
+
+[Current research download](downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [fresh run card](downloads/review_c5e3848c_integrated_run_card.json) · [three-pass review](REVIEW_C5E3848C.md) · [executive submission guide](executive-summary.html).
+
+Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
+
+<!-- CURRENT-STATUS:END -->
+
 **OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT. No new unique TIFF.**
 
 Start with the [current review page](review48.html), [three-pass record](REVIEW_48.md), [fresh automated run card](downloads/review48_run_card.json), and [retrieved-source receipt](downloads/review48_sources.json).
@@ -12,6 +23,8 @@ Use `python scripts/audit_readiness.py --fetch-witness --output .cache/new-revie
 <summary>Historical review records — superseded where inconsistent with the binding STOP</summary>
 
 # Current review and next steps — 2026-10-25 (`f23ca2d2`)
+
+
 
 **No new TIFF. Research downloads only; DO NOT SUBMIT.** [Fresh review](REVIEW_F23.md) · [automated status](downloads/readiness.json) · [run card](downloads/review_f23_run_card.json).
 
@@ -30,16 +43,7 @@ Earlier “current,” “unique,” and promotion instructions below are histor
 
 # Authoritative current review — 2026-10-25 (`797e507a`)
 
-<!-- CURRENT-STATUS:BEGIN -->
-## Current verified decision — 2026-10-25 (review c5e3848c)
 
-**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review. The new-submission requirement remains unmet.
-
-[Current research download](downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [fresh run card](downloads/review_c5e3848c_integrated_run_card.json) · [three-pass review](REVIEW_C5E3848C.md) · [executive submission guide](executive-summary.html).
-
-Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
-
-<!-- CURRENT-STATUS:END -->
 
 **Research downloads only. DO NOT SUBMIT. No new TIFF generated.** Read [the current three-pass review](REVIEW_797E507A.md) and [run card](downloads/review797e_run_card.json). The inherited LISTRICDIP primary passes format checks but literal overlap is 1.0. A single generated status panel now precedes historical banners on all three entry pages, with byte-binding and ordering enforced by publication checks. Previous “unique” matched-budget claims below do not override the literal stop. No HOLDOUT-DTI was run or recertified; no slot was used.
 

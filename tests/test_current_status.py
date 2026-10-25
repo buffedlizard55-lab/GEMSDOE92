@@ -153,3 +153,28 @@ def test_render_escapes_local_paths_and_text(site):
 
 def test_site_publication_gate_includes_current_status():
     assert 'check_current_status(ROOT)' in (ROOT / 'scripts/check_site.py').read_text()
+
+
+@pytest.mark.parametrize('name', [p for p in status.PAGES if p.endswith('.md')])
+def test_markdown_lane_cannot_precede_current_decision(site, name):
+    path = site / name
+    first, rest = path.read_text().split('\n', 1)
+    banner = '> Latest artifact — future date; unique and ready (stale claim)\n'
+    path.write_text(first + '\n' + banner + rest)
+    assert name in status.check(site)
+    assert name in status.check(site, write=True)
+    repaired = path.read_text()
+    assert repaired.index(status.END) < repaired.index(banner)
+    assert repaired.count(banner) == 1  # Preserve historical evidence.
+    assert status.check(site) == []
+
+
+@pytest.mark.parametrize('markdown', [True, False])
+def test_reversed_markers_rejected(markdown):
+    with pytest.raises(ValueError, match='end precedes begin'):
+        status.render('# Heading\n' + status.END + status.BEGIN, 'block', markdown=markdown)
+
+
+def test_markdown_requires_h1():
+    with pytest.raises(ValueError, match='project H1'):
+        status.render('stale claim\n', 'block', markdown=True)

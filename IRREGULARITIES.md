@@ -1191,3 +1191,10 @@ Preserved LISTRICDIP research outputs; freshly validated its newly declared prim
 - **IR-48-GPU-ASSERTION:** official reference README supports CPU-only training; GPU-required wording in the supplied brief is too strong. Full cache, authorized protocol/lane and organizer access remain separate blockers.
 - **IR-48-PAGES-LEGACY:** GitHub API still reports legacy main/root publication. The workflow file does not prove Actions gates that legacy publisher.
 - **IR-48-SYNC-REGRESSION (fixed):** initial documentation cleanup removed a canonical status marker and historical artifact link, breaking three tests. Restored archived records and the existing synchronization contract; no tests weakened.
+
+## 2026-10-25 — review7059163e: current status could be buried in Markdown
+
+- Shared `scripts/render_current_status.py` previously replaced an existing Markdown status block in place, allowing a prepended future-dated “Latest artifact” lane banner to appear before the binding decision while `--check` passed. Fixed by relocating the block immediately below the project H1; historical content is preserved. Reversed markers now reject instead of slicing incorrectly.
+- Fresh hash-pinned witness again proves universal literal overlap stop. No new TIFF, canary or holdout was generated; unique-submission objective remains unmet. This review does not waive the rule, redefine “dots,” or spend a slot.
+- README future-dated/history banners are now collapsed after the durable operating brief. Main site header no longer asserts an unverified live weekly cap, stale gate count or guaranteed portal acceptance. Existing historical research reports remain unchanged.
+- GitHub Pages GET now reports `built` but still `legacy`, `main:/`. Enabling workflow publishing again returns HTTP 403 `Resource not accessible by integration`. A built legacy page is not proof of validator-gated publication. Details and source links: `docs/REVIEW_7059163E.md`; fresh machine evidence: `docs/downloads/review705_run_card.json`.

@@ -61,3 +61,7 @@ Follow the ordered [binding next steps](NEXT_STEPS.md), not an older experimenta
 Obtain permitted official rules/receipt access and adequate Pages configuration permissions. No password, token, OAuth secret or 2FA code is requested or stored. Deep non-GitHub literature/data verification and a reliable live competition feed require an allowed route to those sources; links alone are not verification.
 
 **Maximize P(Win):** do not burn a slot on an unsupported promise. **Own the Outcome:** make the rejection independently reproducible and keep the unmet objective visible.
+
+### Concurrent-main integration before merge
+
+PR #103 initially conflicted because main advanced to `d8fce35` (PR #101). Merged that main commit into the same fixed session branch, retained its shared Markdown-panel relocation/reversed-marker fix and all its evidence/tests, and resolved documentation conflicts by preserving both reviews under explicit historical boundaries. No scientific/raster bytes changed. Reran the full integrated suite: **525 tests passed**, 140 upstream warnings; site gate again passed all **82 served rasters**. Both status-renderer checks and whitespace/conflict-marker checks pass on the integrated tree.
