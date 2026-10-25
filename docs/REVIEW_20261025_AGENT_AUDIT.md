@@ -16,7 +16,7 @@ The protocol names no single method paragraph/lane for this session. More import
 
 Freshly installed the repository's pinned Python dependencies in ignored `.venv/` and ran:
 
-- `.venv/bin/python -m pytest tests -q` — **491 passed**, 140 pending-deprecation warnings from Rasterio/Affine. These are software tests, not scores.
+- `.venv/bin/python -m pytest tests -q` — **498 passed**, 140 pending-deprecation warnings from Rasterio/Affine. These are software tests, not scores.
 - `PYTHONPATH=vendor .venv/bin/python scripts/check_site.py` — **PASS; 82 served rasters gated** for the repository's local format/range/site contract.
 - `make manifest PYTHON=.venv/bin/python` — PASS for the tracked bridge and parent inputs listed in `registry/data_manifest.json`.
 - `make verify PYTHON=.venv/bin/python` — pinned parent bytes verified: 37,654 positive cells, 5,167,373 footprint cells, minimum known-catalogue distance 2.236 px. This verifies pinned artifact bytes, not independent reconstruction of its model-training lineage.
@@ -80,8 +80,8 @@ Recommended next sequence: (i) keep the current rejection; (ii) only after the g
   "named_non_fault_process": "Not evaluated; no candidate surface was generated.",
   "holdout_dti": {
     "evidence_class": "HOLDOUT-DTI",
-    "evaluator_version": "gems57-pooled-hide-v2",
-    "withheld_positives": 22663,
+    "evaluator_version": null,
+    "withheld_positives": null,
     "value": null,
     "ci95": null,
     "status": "not run in this review"
