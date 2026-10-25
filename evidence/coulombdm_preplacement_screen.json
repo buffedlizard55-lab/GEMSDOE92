@@ -1,0 +1,228 @@
+{
+  "schema": "gemsdoe92-preplacement-screen.v1",
+  "lane": "COULOMBDM",
+  "gdr_summary": {
+    "n_thermal_pixels": 2312,
+    "n_blind_geotherm_pixels": 419
+  },
+  "pool_and_channel_diagnostics": {
+    "crest_1d_total_px": 880613,
+    "free_pool_dcat_gt_2_px": 823502,
+    "far_pool_dh19_gt_3_px": 649551,
+    "free_spaced_37654_emitted": 37654,
+    "far_spaced_37654_emitted": 37654,
+    "channel_winners_on_free_37654": {
+      "piedmont_monoclinal_scarp": 20233,
+      "concealed_subsurface_rtp_grav_mt": 8612,
+      "corroborated_bedrock_relay": 8809
+    },
+    "sgmc_off_catalogue_screen": {
+      "coulomb1d_top37654_sgmc_dti": 0.070345,
+      "coulombfar_top37654_sgmc_dti": 0.057447,
+      "rank4_seismic_anisotropy_far_sgmc_dti": 0.043349
+    }
+  },
+  "leakage_canaries": {
+    "max_symmetric_auc": 0.651397,
+    "all_pass_le_0_90": true,
+    "features": {
+      "band02_rtp": {
+        "auc": 0.513549,
+        "symmetric_auc": 0.513549,
+        "status": "PASS"
+      },
+      "band04_geod_2ndinv": {
+        "auc": 0.510186,
+        "symmetric_auc": 0.510186,
+        "status": "PASS"
+      },
+      "band05_iso_grav_slope": {
+        "auc": 0.551113,
+        "symmetric_auc": 0.551113,
+        "status": "PASS"
+      },
+      "band07_geod_shearrate": {
+        "auc": 0.512772,
+        "symmetric_auc": 0.512772,
+        "status": "PASS"
+      },
+      "band08_geod_dilaterate": {
+        "auc": 0.514464,
+        "symmetric_auc": 0.514464,
+        "status": "PASS"
+      },
+      "band10_deq_n100a15": {
+        "auc": 0.491397,
+        "symmetric_auc": 0.508603,
+        "status": "PASS"
+      },
+      "band11_iso_grav_vg": {
+        "auc": 0.529367,
+        "symmetric_auc": 0.529367,
+        "status": "PASS"
+      },
+      "band12_det_elev": {
+        "auc": 0.497553,
+        "symmetric_auc": 0.502447,
+        "status": "PASS"
+      },
+      "band15_depth_to_base": {
+        "auc": 0.514862,
+        "symmetric_auc": 0.514862,
+        "status": "PASS"
+      },
+      "band16_ieq_n100a15": {
+        "auc": 0.505294,
+        "symmetric_auc": 0.505294,
+        "status": "PASS"
+      },
+      "band17_cond_surf": {
+        "auc": 0.505983,
+        "symmetric_auc": 0.505983,
+        "status": "PASS"
+      },
+      "band19_det_elev_slope": {
+        "auc": 0.55314,
+        "symmetric_auc": 0.55314,
+        "status": "PASS"
+      },
+      "rad_k_raw": {
+        "auc": 0.441235,
+        "symmetric_auc": 0.558765,
+        "status": "PASS"
+      },
+      "rad_th_raw": {
+        "auc": 0.458128,
+        "symmetric_auc": 0.541872,
+        "status": "PASS"
+      },
+      "rad_u_raw": {
+        "auc": 0.468269,
+        "symmetric_auc": 0.531731,
+        "status": "PASS"
+      },
+      "rel_break_pct": {
+        "auc": 0.603859,
+        "symmetric_auc": 0.603859,
+        "status": "PASS"
+      },
+      "mu_step": {
+        "auc": 0.582023,
+        "symmetric_auc": 0.582023,
+        "status": "PASS"
+      },
+      "coh_elev": {
+        "auc": 0.552077,
+        "symmetric_auc": 0.552077,
+        "status": "PASS"
+      },
+      "scarp_edge_pct": {
+        "auc": 0.63705,
+        "symmetric_auc": 0.63705,
+        "status": "PASS"
+      },
+      "rtp_persist_pct": {
+        "auc": 0.51805,
+        "symmetric_auc": 0.51805,
+        "status": "PASS"
+      },
+      "rtp_demag_pct": {
+        "auc": 0.523349,
+        "symmetric_auc": 0.523349,
+        "status": "PASS"
+      },
+      "rtp_conduit_pct": {
+        "auc": 0.522153,
+        "symmetric_auc": 0.522153,
+        "status": "PASS"
+      },
+      "grav_contact_pct": {
+        "auc": 0.551918,
+        "symmetric_auc": 0.551918,
+        "status": "PASS"
+      },
+      "mt_edge_pct": {
+        "auc": 0.509422,
+        "symmetric_auc": 0.509422,
+        "status": "PASS"
+      },
+      "rad_alt_pct": {
+        "auc": 0.502172,
+        "symmetric_auc": 0.502172,
+        "status": "PASS"
+      },
+      "hydro_boost_pct": {
+        "auc": 0.503994,
+        "symmetric_auc": 0.503994,
+        "status": "PASS"
+      },
+      "kappa_mc": {
+        "auc": 0.571637,
+        "symmetric_auc": 0.571637,
+        "status": "PASS"
+      },
+      "c_coulomb_elev": {
+        "auc": 0.569274,
+        "symmetric_auc": 0.569274,
+        "status": "PASS"
+      },
+      "c_coulomb_rtp": {
+        "auc": 0.506619,
+        "symmetric_auc": 0.506619,
+        "status": "PASS"
+      },
+      "r_pied": {
+        "auc": 0.651397,
+        "symmetric_auc": 0.651397,
+        "status": "PASS"
+      },
+      "r_sub": {
+        "auc": 0.571016,
+        "symmetric_auc": 0.571016,
+        "status": "PASS"
+      },
+      "r_bed": {
+        "auc": 0.617078,
+        "symmetric_auc": 0.617078,
+        "status": "PASS"
+      },
+      "S_pct": {
+        "auc": 0.640176,
+        "symmetric_auc": 0.640176,
+        "status": "PASS"
+      },
+      "hab_coulomb_pct": {
+        "auc": 0.611464,
+        "symmetric_auc": 0.611464,
+        "status": "PASS"
+      },
+      "seismic_anisotropy_rank4_screen": {
+        "auc": 0.510962,
+        "symmetric_auc": 0.510962,
+        "status": "PASS"
+      }
+    }
+  },
+  "preplacement_surface_uniqueness": {
+    "SURF_COULOMB1D_TOP37654": {
+      "registry_rasters_checked": 41,
+      "worst_forward_overlap": 0.585861,
+      "worst_forward_overlap_file": "h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif",
+      "worst_abs_spearman": 0.08105,
+      "worst_abs_spearman_file": "h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif",
+      "duplicate": false
+    },
+    "SURF_COULOMBFAR_TOP37654": {
+      "registry_rasters_checked": 41,
+      "worst_forward_overlap": 0.359457,
+      "worst_forward_overlap_file": "h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif",
+      "worst_abs_spearman": 0.070777,
+      "worst_abs_spearman_file": "h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif",
+      "duplicate": false
+    },
+    "continuous_sampled_spearman_300k": {
+      "registry_file": "h19_5.tif",
+      "spearman_S_pct": 0.133447
+    }
+  }
+}

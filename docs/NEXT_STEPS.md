@@ -1,6 +1,14 @@
-# Next Steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`XPHASE` Session)
+# Next Steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`COULOMBDM` & `XPHASE` Sessions)
 
-## Completed this session (`XPHASE`)
+## Completed this session (`COULOMBDM`)
+
+1. Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261024_COULOMBDM.md`) and implemented Rank 1 zero-label `COULOMBDM` (`gems/coulombdm.py`: 2D Mohr–Coulomb dilatant shear `Bands 4, 7, 8` + 2D FFT upward-continued `Band 2 RTP` `100/300/600 m` + `Band 17` MT clay-cap lateral edges + lateral `GeoDAWN K/Th, U/Th` contact gradients + `>= 80 °C` blind `GDR #1391` geothermometers + Canny cross-strike 1D NMS).
+2. Built and gate-validated 3 experiments (`coulomb1d`, `s35coulomb65`, `s45coulomb55`; `11/11` format MUST gates PASS):
+   - Zero-label standalone `coulomb1d` (`0% H19-5`, `0%` catalogue supervision): **Rule-2 fold-visible `d_vis > 2.0` `HOLDOUT-DTI = 0.094496 [0.085916, 0.102867]`** (statistically matching supervised `H19-5 = 0.096757` within 95% CI, exceeding unsupervised `APRONRIDGE free1d = 0.086787` and `HYDROCONDUIT f45hydro = 0.085221`).
+   - Hybrid `s45coulomb55`: static `d_cat > 2.0` **`HOLDOUT-DTI = 0.007816 [0.006994, 0.008644]`** (`+95.1%` vs `R0`), `SGMC PROXY = 0.075208` (below supervised LOQO `COULOMB-LOQO standalone = 0.009220`).
+   - Uniqueness: `0 / 58` local rasters (`max = 0.6796`, vs `COULOMBLOQO` `<= 0.5448`) and **`0 / 1,181` sparse (`<= 150k` px) public rasters** exceed `70%` across 102 `GEMSDOE` repos; literal dense witness `17GEMSDOE E-proba-multiscale` (`1.000`) forces **`verdict: negative`, `submission_eligible: false` (`0` weekly slots spent)**.
+
+## Completed in parallel (`XPHASE`)
 
 1. Pre-registered 5 untried hypotheses (`docs/HYPOTHESES_20261024_XPHASE.md`); implemented Rank 1 `XPHASE` (`gems/xphase.py`).
 2. Built 3 experiments. Best arm `dual40`: **HOLDOUT-DTI `0.004653 [0.003955, 0.005390]`** (`gems57-pooled-hide-v2`, 22,663 withheld positives). Locally unique (0.4000). Canaries max 0.553140. Verdict **negative**. File `h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif`. **OK TO DOWNLOAD; DO NOT SUBMIT.**

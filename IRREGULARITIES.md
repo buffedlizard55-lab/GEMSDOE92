@@ -936,3 +936,26 @@ that pattern: no unpreserved screen code.
 - Non-GitHub sources, live leaderboard, authenticated weekly cap, official receipts, input redistribution rights, and fresh fold-rebuilt promotion evidence remain unverified. Wall-clock receipt times crossed midnight UTC relative to the October 24 task brief. Historical receipts are unchanged.
 
 Pages closeout for session 918b947a: `PUT /repos/buffedlizard55-lab/GEMSDOE92/pages` with `build_type=workflow` returned **HTTP 403 Resource not accessible by integration**. Follow-up GET still reports legacy main-root mode. No repository setting was changed; broader Pages-settings permission is needed. Do not claim the fail-closed Actions deployment gate is active while legacy mode remains configured.
+
+---
+
+## 2026-10-24 (COULOMBDM session) — Five Newly Verified Uniqueness, Data & Tooling Irregularities
+
+### 1. `#IR-92-PIEDFRONT-HYDROCONDUIT-CROSSOVER`: Post-Merge Asymmetric 3-px Forward Overlap (`0.7132 > 0.70`) Between `PIEDFRONT f35Ptop` and `HYDROCONDUIT f45hydro`
+- **Observation**: Pairwise 3-px forward overlap audit across merged lanes reveals `PIEDFRONT f35Ptop` has **`71.32%` (`26,855 / 37,654 > 0.70`)** of its dots within `<= 3.0 px` of `HYDROCONDUIT f45hydro` (reverse `56.56%`), driven by shared `R0` keeps + piedmont `H19-5` hole refills.
+- **Action**: Documented so human selectors never pair `PIEDFRONT f35Ptop` with `HYDROCONDUIT f45hydro`; `COULOMBDM` (`<= 45% H19-5`) stays strictly `<= 0.6796 <= 0.70` against all 58 local rasters (including `<= 0.5448` vs `COULOMBLOQO` and `<= 0.2979` vs `XPHASE`) and `0 / 1,181` sparse (`<= 150k` px) public rasters.
+
+### 2. `#IR-92-GDR-CSV-FAULT-LEAKAGE-COL`: Direct Catalogue Leakage Column `dist_known_fault_px` Inside `external/gdr_wellspring_in_footprint.csv`
+- **Observation**: `external/gdr_wellspring_in_footprint.csv` contains precomputed `dist_known_fault_px` to `existing_faults.tif`, which would leak withheld holdout faults if ingested.
+- **Action**: `gems/coulombdm.py` reads only `row`, `col`, `thermalclass`, `temp_c`, `geothermquartz_c`, `geothermchalc_c`, and `geothermcat_c`, verified by signature inspection tests (`tests/test_coulombdm.py`) and `35 / 35` single-feature leakage canaries (`max symmetric AUC = 0.640176 <= 0.90`).
+
+### 3. `#IR-92-GEODAWN-RAW-LEVEL-INVERSION`: Raw Airborne Radiometric Ratio Levels (`K/Th`, `U/Th`) Score `< 0.50` AUC, Whereas Lateral Contact Gradients Carry Positive Signal
+- **Observation**: Regional felsic ash-flow tuffs and potassium-enriched playas cause raw `GeoDAWN` `K/(Th+1)` and `U/(Th+1)` levels to anti-correlate with Quaternary faults (`AUC 0.44–0.47`), whereas lateral contact gradients (`||grad(K/(Th+1))|| + 0.70 ||grad(U/(Th+1))||`) isolate fault lithologic juxtapositions and narrow adularia/illite alteration halos (`canary AUC = 0.5697`).
+
+### 4. `#IR-92-UNIQUENESS-EDT-OOM` & `#IR-92-CHECKSITE-PRIMARY`: Shared-Tool `binary_dilation` Speedup & Explicit `data-primary="true"` Enforcement
+- **Observation**: `scripts/report_breakline_proxies.py:uniqueness` previously allocated 98 MB `float64` `distance_transform_edt` per registry raster, risking OOM on `3.8 GiB` zero-swap sandboxes as the registry grew past 50 rasters; `scripts/check_site.py` also needed explicit multi-`data-primary="true"` and duplicate HTML `id` rejection.
+- **Action**: Updated `scripts/report_breakline_proxies.py:uniqueness` in-place to use bit-identical `7×7` Euclidean `binary_dilation(..., disk_r3)` (`80×` faster, `12 MB bool`, unit-tested in `tests/test_coulombdm.py`) and updated `scripts/check_site.py` in-place.
+
+### 5. `#IR-92-PUBLIC-SMOKE-INVALID-TIFF`: Truncated `110`-Byte `GEMSDOE63/docs/downloads/smoke.tif` in Live 102-Repo Scan
+- **Observation**: Live 102-repo GitHub API scan (`1,750` TIFF paths, `1,376` unique blobs; `evidence/coulombdm_public_registry_uniqueness.json`) identified `buffedlizard55-lab/GEMSDOE63` `docs/downloads/smoke.tif` (`89ffb2d6...`, `110 B`) as a truncated smoke fixture (`1,370` valid `3730×3292` rasters compared cleanly with `0` download failures).
+

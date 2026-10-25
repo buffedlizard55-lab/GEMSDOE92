@@ -1,10 +1,19 @@
-# Current Repository & Gate Review — `GEMSDOE92` (`2026-10-24`, `XPHASE dual40` Research Download)
+# Current Repository & Gate Review — `GEMSDOE92` (`2026-10-24`, `COULOMBDM s45coulomb55` Research Download)
 
-**OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT.** Subsequent to [session 918b947a](REVIEW_918B947A.md) ([run card](downloads/review_918b947a_run_card.json)), this session generated unique `XPHASE` research TIFFs. The universal dense-witness overlap stop still bars weekly-slot clearance. No current organizer score is claimed.
+**OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT.** Subsequent to [session 918b947a](REVIEW_918B947A.md) ([run card](downloads/review_918b947a_run_card.json)), merged sessions generated unique `COULOMBDM` and `XPHASE` research TIFFs. The universal dense-witness overlap stop still bars weekly-slot clearance. No current organizer score is claimed.
 
 ---
 
-## 0. This session (`XPHASE`)
+## 0A. Current research download (`COULOMBDM`)
+
+- **Research GeoTIFF:** `docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif` (standalone zero-label sibling: `docs/downloads/h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif`)
+  - **SHA-256:** `44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12` (`coulomb1d`: `510c3012f4866e8ea2f0debd0aba799a7b7765a4e18f0954d2d1067ddd01e172`)
+  - **Name / note:** `GEMSDOE92-COULOMBDM-s45coulomb55-20261024` / `h33-h33-2-b2; COULOMBDM s45coulomb55: 16944 Coulomb-H19 + 20710 off-skel 1D Coulomb/RTP/clay ridges (>3px H19-5)`
+  - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): static `0.007816 [0.006994, 0.008644]` (`+95.1%` vs `R0`); zero-label standalone `coulomb1d` Rule-2 fold-visible `d_vis > 2.0` **`0.094496 [0.085916, 0.102867]`** (below supervised LOQO repository holdout-best `COULOMB-LOQO standalone` `0.009220` static / `0.113316` LOQO `d_vis > 2.0`).
+  - **Download:** ✅ OK TO DOWNLOAD FOR RESEARCH (11/11 format gates; `0 / 58` local and `0 / 1,181` sparse `<=150k` public overlaps `>70%`). **Weekly slot:** ⛔ DO NOT SUBMIT (`verdict: negative`, dense witness overlap 1.000).
+  - Run card: `evidence/coulombdm_run_card.json`. Analysis: `docs/ANALYSIS_20261024_COULOMBDM.md`. Hypotheses: `docs/HYPOTHESES_20261024_COULOMBDM.md`.
+
+## 0B. Parallel session (`XPHASE`)
 
 - **Research GeoTIFF:** `docs/downloads/h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif`
   - **SHA-256:** `080018382de33758c78e1b11f80098a1f736ac7de5f4c55641bd84b52b0f7200`

@@ -99,6 +99,16 @@ def main() -> int:
     if re.search(r"ORGANIZER-CONFIRMED[^<]{0,40}0\.00\d{4}", html):
         problems.append("holdout number labeled ORGANIZER-CONFIRMED")
 
+    # Reject duplicate HTML element id="..." attributes so anchor links stay unambiguous
+    seen_ids: set[str] = set()
+    dup_ids: set[str] = set()
+    for elem_id in re.findall(r'\bid="([^"]+)"', html):
+        if elem_id in seen_ids:
+            dup_ids.add(elem_id)
+        seen_ids.add(elem_id)
+    if dup_ids:
+        problems.append(f"index.html contains duplicate element id(s): {sorted(dup_ids)}")
+
     # ---- every served zeros-outside raster must be linked AND pass the gates ---
     served = sorted(DOWNLOADS.glob("*-zeros.tif"))
     if not served:
@@ -155,11 +165,25 @@ def main() -> int:
             print(f"  PASS {tag}  sha256 {sha256_file(path)[:16]}…")
 
     # ---- the primary named on the page must match its audit receipt ----------
-    m = re.search(r'href="(downloads/[^"]+-zeros\.tif)"', html)
-    if m:
-        primary = DOCS / m.group(1)
+    # Prefer an explicit data-primary="true" download anchor (fail closed if >1),
+    # falling back to the first zeros-outside link for minimal fixtures.
+    explicit_primaries = [
+        m1.group(1) or m1.group(2)
+        for m1 in re.finditer(
+            r'<a\b[^>]*?(?:href="(downloads/[^"]+-zeros\.tif)"[^>]*?\bdata-primary="true"|\bdata-primary="true"[^>]*?href="(downloads/[^"]+-zeros\.tif)")[^>]*>',
+            html,
+        )
+    ]
+    if len(explicit_primaries) > 1:
+        problems.append(f"index.html marks multiple data-primary='true' downloads: {explicit_primaries}")
+    primary_rel = explicit_primaries[0] if explicit_primaries else None
+    if primary_rel is None:
+        m = re.search(r'href="(downloads/[^"]+-zeros\.tif)"', html)
+        primary_rel = m.group(1) if m else None
+    if primary_rel:
+        primary = DOCS / primary_rel
         if not primary.is_file():
-            problems.append(f"index.html points at {m.group(1)}, which does not exist")
+            problems.append(f"index.html points at {primary_rel}, which does not exist")
         else:
             variant = primary.stem.removesuffix("-zeros")
             audit_path = primary.with_name(variant + "-audit.json")
