@@ -1,4 +1,32 @@
+# Current review and next steps — 2026-10-25 (`f23ca2d2`)
+
+**No new TIFF. Research downloads only; DO NOT SUBMIT.** [Fresh review](REVIEW_F23.md) · [automated status](downloads/readiness.json) · [run card](downloads/review_f23_run_card.json).
+
+1. The previous proposed KNICKLOQO promotion cannot proceed under the unchanged literal rule. The pinned witness rejects all nonempty candidates before placement. Matched-budget diagnostics must not supersede the user's rule silently. An explicitly revised future brief and a named lane are prerequisites to further geological experiments, not a request for human pixel inspection.
+2. Use the corrected shared validator and byte-bound status renderer. `prune_radius=2` no longer bypasses its own distance gate. Never re-use a historical audit as proof of current bytes.
+3. Only if the protocol permits experiments later: restore pinned features; verify data-use rights and band metadata; freeze a comparable holdout control and locked outer spatial test; run single-feature canaries before the experiment budget. Do not compare static-mask and fold-visible scores as one leaderboard.
+4. Verify official submission-page rules, current cap and actual score receipts through permitted access. No DrivenData session or permitted route to those hosts is available here. No submission slot was spent.
+5. GitHub Pages still reports legacy publication. Enabling workflow publication returned HTTP 403. Repository integration permissions need attention before claiming Actions gates the live site. No credential is requested or stored.
+
+Earlier “current,” “unique,” and promotion instructions below are historical and superseded where they conflict with this decision. The newly requested unique submission remains unfulfilled.
+
+---
+
+
+# Authoritative current repository status — 2026-10-25
+
 # Authoritative current review — 2026-10-25 (`797e507a`)
+
+<!-- CURRENT-STATUS:BEGIN -->
+## Current verified decision — 2026-10-25 (review c5e3848c)
+
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review. The new-submission requirement remains unmet.
+
+[Current research download](downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [fresh run card](downloads/review_c5e3848c_integrated_run_card.json) · [three-pass review](REVIEW_C5E3848C.md) · [executive submission guide](executive-summary.html).
+
+Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
+
+<!-- CURRENT-STATUS:END -->
 
 **Research downloads only. DO NOT SUBMIT. No new TIFF generated.** Read [the current three-pass review](REVIEW_797E507A.md) and [run card](downloads/review797e_run_card.json). The inherited LISTRICDIP primary passes format checks but literal overlap is 1.0. A single generated status panel now precedes historical banners on all three entry pages, with byte-binding and ordering enforced by publication checks. Previous “unique” matched-budget claims below do not override the literal stop. No HOLDOUT-DTI was run or recertified; no slot was used.
 

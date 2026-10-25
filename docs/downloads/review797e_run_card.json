@@ -43,7 +43,7 @@
     {
       "name": "dtype_and_band",
       "ok": true,
-      "detail": "dtype=float32 count=1"
+      "detail": "dtype=('float32',) count=1"
     },
     {
       "name": "values_in_0_1",
@@ -53,7 +53,7 @@
     {
       "name": "no_nan_inside_footprint",
       "ok": true,
-      "detail": "nan_pixels=0"
+      "detail": "nonfinite_pixels=0"
     },
     {
       "name": "nan_outside_footprint",
@@ -73,7 +73,7 @@
     {
       "name": "distance_from_catalogue",
       "ok": true,
-      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+      "detail": "radius=2px dots_within=0; strict distance > radius required"
     },
     {
       "name": "reread_sha256",
@@ -84,7 +84,7 @@
   "publication_input_sha256": {
     "data/bridge/sample_submission.tif": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
     "data/bridge/labels.tif": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
-    "gems/gates.py": "5e4fa149addea4bbafa9525d1527be8f684029b5f98cecee1b36887ae37c7365",
+    "gems/gates.py": "7bf557dd1a46b01449fb1108d5617baa5f6608d025c2c86c6ee94a7d30785bf6",
     "evidence/review797e_preflight.json": "b82d2c2cafd7087637d64e558678776163d4ca21627d20976876cf433837a4c1"
   },
   "submission_name": "GEMSDOE92-REVIEW797E-20261025-NO-NEW-SUBMISSION",
@@ -96,5 +96,6 @@
   "weekly_slots_used": 0,
   "organizer_confirmed_score": null,
   "unfulfilled": "No new unique submission TIFF generated: literal uniqueness rule requires stop for every nonempty candidate.",
-  "parallel_merge": "Reconciled origin/main bbda6c5 without selecting a candidate. Preserved its existing LISTRICDIP primary and freshly revalidated it; prior COULOMBDM witness/card retained with prior prefix."
+  "parallel_merge": "Reconciled origin/main bbda6c5 without selecting a candidate. Preserved its existing LISTRICDIP primary and freshly revalidated it; prior COULOMBDM witness/card retained with prior prefix.",
+  "revalidated_by": "f23ca2d2 shared readiness integration; no new scientific evaluation"
 }

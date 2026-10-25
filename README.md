@@ -1,5 +1,53 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+<!-- CURRENT-STATUS:BEGIN -->
+## Current verified decision — 2026-10-25 (review c5e3848c)
+
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review. The new-submission requirement remains unmet.
+
+[Current research download](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [fresh run card](docs/downloads/review_c5e3848c_integrated_run_card.json) · [three-pass review](docs/REVIEW_C5E3848C.md) · [executive submission guide](docs/executive-summary.html).
+
+Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
+
+<!-- CURRENT-STATUS:END -->
+
+## Current decision — 2026-10-25 (`f23ca2d2` review; read first)
+
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT. No new unique TIFF was generated.**
+The unchanged literal duplicate rule rejects every nonempty candidate against the pinned full-footprint witness. Matched-budget “unique” claims in historical sections below are not binding clearance. We did not copy or rename a previous submission.
+
+[Current automated status](docs/downloads/readiness.json) · [Research workbench / direct TIFF](docs/index.html) · [Executive submission guide](docs/executive-summary.html) · [Three-pass review and conditional hypotheses](docs/REVIEW_F23.md) · [Review run card](docs/downloads/review_f23_run_card.json)
+
+The shared distance validator previously accepted predictions inside a declared prune radius. It now enforces the radius, verifies catalogue alignment, rejects unreadable/mismatched grids cleanly and requires exact transform matching. Status is recomputed from the served bytes, not inferred from a historical PASS label. Run `python scripts/render_readiness.py` after deliberate input changes and `python scripts/check_site.py` to validate all served files and reject stale status.
+
+GitHub Pages is still in **legacy** publishing mode; changing to workflow mode returned HTTP 403. Local/CI verification does not prove the legacy deployment is gated by Actions. No live organizer score, slot cap or portal acceptance was verified.
+
+### Persisted user brief — starting point for every session
+
+Read this README and [SESSION_PROMPT.md](SESSION_PROMPT.md) before work. The [full supplied site-score inventory](ledger/site_scores_claimed_20261025.csv) remains owner-reported claims, not verified receipts. Retain these requirements:
+
+- Generate a genuinely new, distinct competition TIFF, never pass off a copied submission as new. Make download and submission eligibility obvious at the start of the site; finite `[0,1]`, one band, matching template CRS/shape/transform, unique name and a note of at most 140 characters. Automated checks replace visual inspection, not the separate weekly-slot selector.
+- Stay in the assigned method lane. Stop if any registry rank correlation exceeds the specified threshold or literal three-pixel dot overlap exceeds the specified threshold; check surface before placement and final dots. Missing lane assignment is not permission to invent a scientific result.
+- Reuse the cached stack, shared hide-and-recover evaluator and writer. Hide whole fault segments with buffers, recompute catalogue-derived features from visible faults, and mask visible faults exactly. Use pooled DTI with alpha 0.2, beta 0.8 and the 300 m triangular kernel. Label local HOLDOUT-DTI with version, withheld positives and confidence intervals; only organizer receipts justify ORGANIZER-CONFIRMED.
+- Rank three to five geological hypotheses before implementation: layers, physical signature, missing-fault rationale, differences, non-fault mimics, expected value and cost. Verify new free official data are obtainable before claiming viability. Test each feature alone for leakage; do not trust AUC above 0.90 without resolving leakage.
+- Complete prior-session next steps first. Stop at three experiments or two hours. Validate on comparable spatial holdouts and beat the current holdout control before promotion; no weekly slot is authorized by format validity alone. Negative results are deliverables.
+- Store research with official-source links, provenance and explicit access limitations. Do not invent leaderboard gains or equate fault prediction with proven geothermal vents. Preserve the reported GEMSDOE32 result and conflicting leaderboard figures as unverified unless receipts establish them.
+- Maintain a clean GitHub Pages site, executive submission subpage, machine-readable current status, reproducible run card, and no manual pixel-inspection requirement. Run three passes: implement and verify; inspect bugs/assumptions/edge cases; recheck against this brief and fix remaining problems. Create and merge a pull request as requested, and document outstanding work honestly.
+- **Maximize P(Win)** means preserving scarce slots and rejecting unsupported score claims. **Own the Outcome** means fixing shared defects and reporting unmet requirements, not weakening a failed gate.
+
+---
+
+## Historical session record (not current clearance)
+
+
+> ## Latest artifact — DRAINAGE-KNICK (2026-10-25)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). New byte-unique GeoTIFF; all automated format checks pass, but HOLDOUT-DTI `0.061728 [0.047046, 0.075316]` is below the `0.113316` promotion bar and literal public-registry overlap is `1.0 > 0.70`.
+
+> ## Binding decision — read before any download or experiment
+> **Research downloads only. DO NOT SUBMIT any current TIFF or spend a weekly slot.** The pinned public registry witness is positive in all 5,167,373 footprint cells, so every nonempty in-footprint prediction raster has literal 3-px forward overlap `1.0 > 0.70`. The pre-placement gate requires stopping. No candidate was generated in this repository review and no artifact is slot-cleared. Read the [current three-pass review](docs/REVIEW_20261025_REPOSITORY_REVIEW.md), [binding gate evidence](docs/REVIEW_376A8469.md), and [ranked untested hypotheses](docs/HYPOTHESES_20261025_REVIEW.md). The latest lane below is a prior research result, not an exception.
+>
+> **Persistent operating brief:** read this README and `SESSION_PROMPT.md` at every session start; use shared cached features/evaluator/writer, whole-segment buffered holdouts and leakage canaries; pre-register 3–5 hypotheses; label all metrics and provenance; never call a projection a score; stop at 3 experiments / 2 hours; keep “Maximize P(Win)” and “Own the Outcome” central. Full user prompt summary is retained under [Persistent Session Prompt Reference](#persistent-session-prompt-reference).
+
 ## Authoritative review — 2026-10-25 (`797e507a`)
 
 **OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT · no new TIFF generated in this review.**
@@ -136,6 +184,12 @@ Publication check: `python scripts/render_public_status.py --check` then `python
 - **Submission name:** `GEMSDOE92-RADIOCONTACT-20261025` · **Note (140/140):** `h33-h33-2-b2; RADIOCONTACT: U/K+Th/K alteration x gravity-gradient + MT; 37654 dots d_cat>2px; HOLDOUT-DTI 0.005066 [neg]`
 
 **Current review:** [Three-pass closeout and limitations](docs/REVIEW_20261025_BLINDFAULT_CLOSEOUT.md) · [current review index](docs/REVIEW_CURRENT.md). The latest merged lane is RADIOCONTACT (research-only TIFF; **DO NOT SUBMIT**, negative holdout); BLINDFAULT is a prior research lane, also negative. See each lane's run card before using any numbers. The RADIOCONTACT pre-registration filename is dated 2026-10-26 despite the run card's 2026-10-25 date; this chronology irregularity is unresolved and must not be presented as verified pre-registration timing. Read [`SESSION_PROMPT.md`](SESSION_PROMPT.md) and this README at each session start.
+
+**This session — lane `DILATATION` (Band 8 geodetic dilatation rate, Rank-1 pre-registered untried hypothesis):** new unique-byte research GeoTIFF `h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif` published with ZIP, per-file audit JSON and Protocol Rule 5 run card. ✅ **OK TO DOWNLOAD FOR RESEARCH** — 10/10 automated format gates PASS (`EPSG:32611`, `3730 × 3292`, `float32`, finite `[0, 1]`, `0.0` outside footprint, `37,654` unit dots, `0` catalogue mass) — prevents DrivenData's `"Predicted values must be in range [0, 1]"` portal error. ⛔ **DO NOT SUBMIT — verdict `negative`, `submission_eligible: false`**: static `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, 22,663 withheld positives) `0.005818 [0.004838, 0.006912]` vs parent R0 `0.004006 [0.003424, 0.004690]` — paired `Δ +0.001812 [+0.001106, +0.002535] > 0` beats parent R0 but stays below holdout-best `COULOMBLOQO standalone` (`0.113316` Rule-2 / `0.009220` static); literal registry overlap stop fires (worst 3-px forward overlap `1.0000` vs DILATATION p10 sibling; pinned public dense witness `1.0000 > 0.70`). Leakage canaries max symmetric AUC `0.514862 <= 0.90`. Weekly slots used: `0`; experiments: `1/3`.
+
+- **Download:** [`docs/downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif`](docs/downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif) · [`...-zeros.zip`](docs/downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.zip) · [audit JSON](docs/downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-audit.json) · [run card](docs/downloads/dilatation_run_card.json) · [variant build receipt](evidence/dilatation_variants.json) · [proxy audit](evidence/dilatation_proxy_audit.json)
+- **SHA-256 (`-zeros.tif`):** `cc79c48ae0f46b0c22cd410305a773e72b719833718bceed2c5bcda3c8c38052` · ZIP `eb4a76d9c766429b7942283d7501ffec7bef321a8eeac57dc6694ad89b11ae13`
+- **Name:** `GEMSDOE92-DILATATION-p15-20261025` · **Note (`139 / 140`):** `h33-h33-2-b2; DILATATION p15: 5648 dots shifted low-to-high geodetic dilatation tercile on H19-5, d_cat>2px; HOLDOUT-DTI 0.005818; negative`
 
 **Latest session review:** [Three-pass findings and ranked conditional hypotheses](docs/REVIEW_918B947A.md) · [fresh run card](docs/downloads/review_918b947a_run_card.json). Subsequent `COULOMBDM` (and parallel `XPHASE`) work generated unique research TIFFs that are **OK TO DOWNLOAD** and **DO NOT SUBMIT**. The literal overlap rule remains unsatisfiable for weekly-slot clearance because a pinned registry raster covers the entire footprint. The operational user brief is retained below and in `SESSION_PROMPT.md`; read both at session start. Maximize P(Win) and Own the Outcome mean preserving negative evidence, not fabricating submission clearance.
 
