@@ -72,15 +72,16 @@ def test_repository_review_does_not_claim_a_new_or_promoted_candidate() -> None:
 
 
 def test_pr89_submission_clearance_is_rejected_by_binding_literal_rule() -> None:
+    # Use the superseding correction card's current schema, not the retired
+    # nested dual-reading card that previously mislabeled a diagnostic as clearance.
     run_card = json.loads((ROOT / "docs/downloads/knickloqo_submission_run_card.json").read_text())
-    assert run_card["uniqueness"]["literal_witness"]["worst_overlap"] == 1.0
-    assert run_card["uniqueness"]["literal_witness"]["threshold"] == 0.70
-    assert run_card["uniqueness"]["literal_witness"]["duplicate"] is True
-    assert run_card["uniqueness"]["overall_verdict"] == "DUPLICATE_STOP"
-    assert run_card["submission_eligibility"]["uniqueness_pass"] is False
-    assert run_card["submission_eligibility"]["submission_eligible"] is False
-    assert run_card["submission_eligibility"]["verdict"] == "negative"
-    assert run_card["submission_eligibility"]["policy"] == "binding_literal_rule"
+    literal = run_card["correlation_overlap_vs_registry"]
+    assert literal["evidence_class"] == "REGISTRY-MEASUREMENT"
+    assert literal["forward_overlap"] == 1.0
+    assert "Pinned universal witness" in literal["scope"]
+    assert run_card["verdict"] == "negative"
+    assert run_card["submission_eligible"] is False
+    assert run_card["organizer_confirmed_score"] is None
 
 
 def test_download_and_format_pages_do_not_claim_slot_clearance_or_score_projection() -> None:
@@ -92,10 +93,10 @@ def test_download_and_format_pages_do_not_claim_slot_clearance_or_score_projecti
     submit_now = (ROOT / "docs/SUBMIT_NOW.html").read_text(encoding="utf-8")
     assert "DO NOT SUBMIT" in submit_now
     assert "OK TO DOWNLOAD AND SUBMIT" not in submit_now
-    assert "literal" in submit_now and "1.000" in submit_now
+    assert "literal" in submit_now and "1.0" in submit_now
 
     validator = (ROOT / "validate_submission.py").read_text(encoding="utf-8")
-    assert "NOT SUBMISSION CLEARANCE" in validator
+    assert "DO NOT SUBMIT" in validator
     assert "Expected Score" not in validator
     assert "FILE IS READY FOR SUBMISSION" not in validator
 

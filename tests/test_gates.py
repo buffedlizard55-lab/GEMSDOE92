@@ -159,7 +159,7 @@ def test_dot_within_3px_of_catalogue_fails_distance_gate(tmp_path):
     assert "distance_from_catalogue" in report
 
 
-def test_prune_axis_deviation_is_declared_not_silent(tmp_path):
+def test_prune_radius_does_not_override_distance_failure(tmp_path):
     refp = make_reference(tmp_path)
     catp = make_catalogue(tmp_path, [(10, 10)])
     reference = read_reference(refp)
@@ -167,8 +167,8 @@ def test_prune_axis_deviation_is_declared_not_silent(tmp_path):
     out = tmp_path / "cand.tif"
     write_candidate(out, dots, reference)
     ok, report = summarise(run_gates(out, refp, catalogue_path=catp, prune_radius=2))
-    assert ok, report
-    assert "declared clearance override" in report
+    assert not ok, report
+    assert "strict distance > radius required" in report
 
 
 def test_value_out_of_range_fails(tmp_path):
@@ -213,3 +213,65 @@ def test_sha256_is_of_the_file_on_disk(tmp_path):
     sha = write_candidate(out, build_dots([(10, 10)]), reference)
     assert sha == sha256_file(out)
     assert len(sha) == 64
+
+
+@pytest.mark.parametrize('distance,passes', [(1, False), (2, False), (3, True)])
+def test_custom_prune_radius_is_enforced(tmp_path, distance, passes):
+    refp = make_reference(tmp_path)
+    catp = make_catalogue(tmp_path, [(10, 10)])
+    out = tmp_path / 'candidate.tif'
+    write_candidate(out, build_dots([(10, 10 + distance)]), read_reference(refp), outside='zero')
+    ok, report = summarise(run_gates(out, refp, catp, prune_radius=2))
+    assert ok is passes, report
+
+
+@pytest.mark.parametrize('radius', [-1, np.inf, np.nan, True, '2'])
+def test_invalid_prune_radius_fails_closed(tmp_path, radius):
+    ok, report = summarise(run_gates('missing.tif', 'missing-reference.tif', prune_radius=radius))
+    assert not ok and 'prune_radius' in report
+
+
+def test_missing_raster_returns_failure_not_traceback(tmp_path):
+    ok, report = summarise(run_gates(tmp_path / 'missing.tif', make_reference(tmp_path)))
+    assert not ok and 'readable_raster' in report
+
+
+def test_shape_mismatch_returns_failure_without_mask_indexing(tmp_path):
+    refp = make_reference(tmp_path)
+    out = tmp_path / 'small.tif'
+    with rasterio.open(refp) as ds:
+        profile = ds.profile
+    profile.update(height=2, width=3)
+    with rasterio.open(out, 'w', **profile) as ds:
+        ds.write(np.zeros((2, 3), dtype='float32'), 1)
+    ok, report = summarise(run_gates(out, refp, require_submission_encoding=True))
+    assert not ok and '[FAIL] shape' in report
+
+
+def test_shifted_catalogue_rejected(tmp_path):
+    refp = make_reference(tmp_path)
+    catp = make_catalogue(tmp_path, [(10, 10)])
+    with rasterio.open(catp, 'r+') as ds:
+        ds.transform = from_origin(500100, 4200000, 100, 100)
+    out = tmp_path / 'candidate.tif'
+    write_candidate(out, build_dots([(20, 20)]), read_reference(refp), outside='zero')
+    ok, report = summarise(run_gates(out, refp, catp))
+    assert not ok and 'catalogue_grid' in report
+
+
+def test_subpixel_transform_drift_is_not_accepted(tmp_path):
+    refp = make_reference(tmp_path)
+    out = tmp_path / 'candidate.tif'
+    write_candidate(out, build_dots([(20, 20)]), read_reference(refp), outside='zero')
+    with rasterio.open(out, 'r+') as ds:
+        ds.transform = from_origin(500000.0000001, 4200000, 100, 100)
+    ok, report = summarise(run_gates(out, refp))
+    assert not ok and '[FAIL] transform' in report
+
+
+def test_empty_reference_footprint_rejected_even_in_research_mode(tmp_path):
+    refp = make_reference(tmp_path, (slice(0, 0), slice(0, 0)))
+    out = tmp_path / 'candidate.tif'
+    write_candidate(out, build_dots([]), read_reference(refp), outside='zero')
+    ok, report = summarise(run_gates(out, refp))
+    assert not ok and 'reference_footprint' in report

@@ -1,5 +1,19 @@
 # Correction: NOT CLEARED FOR SUBMISSION
 
+<!-- CURRENT-STATUS:BEGIN -->
+## Current verified decision — 2026-10-25 (review c5e3848c)
+
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review. The new-submission requirement remains unmet.
+
+[Current research download](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [fresh run card](docs/downloads/review_c5e3848c_integrated_run_card.json) · [three-pass review](docs/REVIEW_C5E3848C.md) · [executive submission guide](docs/executive-summary.html).
+
+Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
+
+<!-- CURRENT-STATUS:END -->
+<details data-status-archive="true">
+<summary>Archived parallel-lane reports — not current submission clearance</summary>
+
+
 **Decision: RESEARCH DOWNLOAD ONLY — DO NOT SUBMIT this TIFF or spend a weekly slot.**
 
 The KNICKLOQO standalone file is an existing, format-valid research artifact:
@@ -23,3 +37,4 @@ GEMSDOE32 `0.2778` is an unverified claim in the evidence reviewed here. The loc
 3. Only report an organizer score when a dated portal receipt supports it.
 
 See [`docs/REVIEW_20261025_SUBMISSION_CLEARANCE_AUDIT.md`](docs/REVIEW_20261025_SUBMISSION_CLEARANCE_AUDIT.md), [`docs/REVIEW_REPOSITORY_20261025.md`](docs/REVIEW_REPOSITORY_20261025.md), and [`docs/REVIEW_376A8469.md`](docs/REVIEW_376A8469.md) for the evidence and policy boundary.
+</details>
