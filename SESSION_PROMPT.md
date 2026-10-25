@@ -1,4 +1,16 @@
+## Current review addendum — 2026-10-25 (`797e507a`)
+
+Read `docs/REVIEW_797E507A.md` before older session-result addenda. This review generated no new TIFF and used no experiment or slot: a fresh pinned universal registry witness requires a stop. Preserve literal overlap, not matched-budget reinterpretations. The existing LISTRICDIP primary inherited from parallel main is research-only. Three public entry pages must have the generated authoritative status first; CI/Pages check byte pins and ordering. The unique-TIF objective remains unfulfilled. Persistent requirements in this file and the README are a normalized operating brief, not a verbatim user-message archive.
+
+---
+
 # Session prompt — GEMSDOE92
+
+
+## Current review — 2026-10-25 (`f23ca2d2`)
+
+Read the README's current-decision and persisted-brief sections first, then [REVIEW_F23.md](docs/REVIEW_F23.md). No new TIFF or geological experiment was generated. The literal overlap stop remains binding; historical matched-budget uniqueness does not supersede it. The shared validator now enforces the requested clearance radius without an automatic override. A byte-bound status feed and collapsed historical UI prevent old record claims from competing with the current decision. The prompt's new unique, submission-cleared TIFF requirement is still unmet. No new lane paragraph or organizer receipt was supplied. No weekly slot was spent.
+
 
 Read this at the start of every session, together with `README.md`. The README is the short executive summary; this file is the durable project operating contract. Preserve the user's goals: a unique, easy-to-download submission GeoTIFF, automated format validation, transparent evidence, and no hallucinated claims.
 

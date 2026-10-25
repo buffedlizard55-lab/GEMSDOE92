@@ -41,7 +41,9 @@ def test_index_has_download_and_slot_warning():
     # evidence discipline: holdout numbers must be labelled, and not dressed as scores
     assert "HOLDOUT-DTI" in html
     first_holdout = html.split("HOLDOUT-DTI")[1][:200]
-    assert "ORGANIZER-CONFIRMED" not in first_holdout
+    # An explicit denial ("No ORGANIZER-CONFIRMED score is available") is
+    # not score laundering. Reject a numerical organizer-score label instead.
+    assert not re.search(r"ORGANIZER-CONFIRMED\s*(?:score\s*)?[:=]?\s*0\.\d+", first_holdout)
     # the negative lane must stay visible as a deliverable, with its verdict
     assert "TIPGAPfar18f33" in html
     assert "negative" in html
@@ -49,17 +51,17 @@ def test_index_has_download_and_slot_warning():
 
 def test_current_status_is_first_and_links_latest_negative_artifact():
     html = _index()
-    start = html.find('<aside id="current-status-banner"')
-    end = html.find('</aside>', start)
-    lane = re.search(r'<!-- [A-Z0-9_-]+:BEGIN', html)
-    primary = re.search(r'<a\b[^>]*href="(downloads/[^"]+-zeros\.tif)"[^>]*data-primary="true"', html)
-    assert start >= 0 and end > start and lane and start < lane.start()
+    start = html.find('<!-- CURRENT-READINESS:BEGIN -->')
+    end = html.find('<!-- CURRENT-READINESS:END -->', start)
+    lane = re.search(r'<!-- [A-Z0-9_-]+:BEGIN', html[end + 1:])
+    primary = re.search(r'<a\b[^>]*href="(downloads/[^\"]+-zeros\.tif)"[^>]*data-primary="true"', html)
+    assert start >= 0 and end > start and lane
     assert primary, 'site must declare one machine-detectable current research TIFF'
     banner = html[start:end]
     assert primary.group(1) in banner
     assert 'OK TO DOWNLOAD FOR RESEARCH' in banner
     assert 'DO NOT SUBMIT' in banner
-    assert 'HOLDOUT-DTI' in banner and '1.000' in banner
+    assert 'DUPLICATE UNDER THE LITERAL REGISTRY RULE' in banner
 
 
 def test_submission_landing_pages_do_not_claim_current_clearance():
@@ -79,8 +81,8 @@ def test_submission_landing_pages_do_not_claim_current_clearance():
             assert "NOT" in prefix
         assert "Expected Live Score" not in page
         assert "Projected score" not in page
-    assert "Current status and downloads have moved" in prototype
-    assert "superseded claim" in prototype
+    assert "DO NOT SUBMIT" in prototype
+    assert "prior clearance withdrawn" in prototype
 
     for name in ("index.html", "SUBMIT.html", "executive-summary.html"):
         html = (DOCS / name).read_text(encoding="utf-8")
@@ -95,17 +97,19 @@ def test_submission_landing_pages_do_not_claim_current_clearance():
 
 def test_historical_knick_submission_card_is_superseded_and_byte_bound():
     import hashlib
+    import rasterio
 
     path = DOCS / "downloads" / "knickloqo_submission_run_card.json"
     card = json.loads(path.read_text(encoding="utf-8"))
-    decision = card["current_decision"]
-    assert decision["verdict"] == "negative"
-    assert decision["submission_eligible"] is False
-    assert decision["literal_registry_witness"]["candidate_forward_overlap_within_3px"] == 1.0
-    assert card["submission_eligibility"]["submission_eligible"] is False
-    tif = DOCS / "downloads" / card["submission_metadata"]["file_name"]
-    assert hashlib.sha256(tif.read_bytes()).hexdigest() == card["submission_metadata"]["sha256_tif"]
-    assert "CLEARED FOR SUBMISSION" not in " ".join(card["notes"])
+    assert card["verdict"] == "negative"
+    assert card["submission_eligible"] is False
+    assert card["new_unique_tiff_generated"] is False
+    assert card["correlation_overlap_vs_registry"]["forward_overlap"] == 1.0
+    tif = DOCS / "downloads" / card["file"]
+    assert hashlib.sha256(tif.read_bytes()).hexdigest() == card["raster_sha256"]
+    with rasterio.open(tif) as ds:
+        assert [ds.height, ds.width] == card["metadata_measured_from_disk"]["shape"]
+    assert card["organizer_confirmed_score"] is None
 
     historical = json.loads((DOCS / "downloads" / "knick_loqo_run_card.json").read_text(encoding="utf-8"))
     assert historical["verdict"] == "negative"

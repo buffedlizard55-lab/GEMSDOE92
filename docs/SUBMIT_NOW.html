@@ -1,31 +1,26 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Submission status — research only, do not submit</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="0; url=executive-summary.html">
+<title>Clearance withdrawn — research only</title><link rel="stylesheet" href="style.css"></head>
 <body>
-<main>
-  <aside class="banner banner-warn" aria-label="Submission eligibility blocked" style="border:3px solid #991b1b; margin:1rem;">
-    <h1>Current decision: DO NOT SUBMIT</h1>
-    <p><strong>OK TO DOWNLOAD FOR RESEARCH; NOT CLEARED FOR A competition slot.</strong> Format validity is not submission eligibility. The binding literal registry rule is stopped by a pinned raster that is positive across the full footprint; every nonempty prediction has 3-pixel forward overlap <code>1.000 &gt; 0.70</code>.</p>
-    <p>The currently listed research artifact is LISTRICDIP updip50. Its run card records <code>verdict: negative</code>, <code>submission_eligible: false</code>, and zero weekly slots used.</p>
-    <p><a class="btn" href="downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif" download>Download LISTRICDIP GeoTIFF — research only; do not submit</a> · <a href="listricdip.html">Detailed status and form instructions</a> · <a href="downloads/listricdip_run_card.json">Run card</a> · <a href="../SUBMISSION_READY.md">Eligibility explanation</a></p>
-  </aside>
-
-  <section>
-    <h2>What the form requires when a future artifact is cleared</h2>
-    <p>The DrivenData submission form asks for one single-band GeoTIFF or a ZIP containing one GeoTIFF, plus an optional note. This page describes the workflow only; it is <strong>not permission to upload the current file</strong>.</p>
-    <ol>
-      <li>Wait until the project marks one exact TIFF as both format-valid and submission-cleared under the active uniqueness and holdout rules.</li>
-      <li>Download that exact file from the project and use its listed unique submission name and note (the note must be 140 characters or fewer).</li>
-      <li>Sign in to the competition, select the file, enter the name/note, and submit it manually. This project does not log in or submit on the user's behalf.</li>
-      <li>Save the organizer's submission-page receipt and record it in the ledger. A local holdout is never an organizer score.</li>
-    </ol>
-    <p>For the current files, stop before upload. See the <a href="SUBMIT.html">canonical submission guide</a> and <a href="REVIEW_376A8469.md">binding literal-gate review</a>.</p>
-  </section>
-</main>
-</body>
-</html>
+<!-- PUBLIC-STATUS:BEGIN -->
+<section class="banner banner-warn" aria-label="Authoritative submission status">
+  <h1>Research download available. DO NOT SUBMIT.</h1>
+  <p><strong>OK TO DOWNLOAD FOR RESEARCH · NOT CLEARED FOR A WEEKLY SLOT</strong></p>
+  <p><a class="btn" href="downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif" download>Download existing format-validated GeoTIFF (.tif)</a>
+  · <a href="executive-summary.html">Submission guide</a>
+  · <a href="REVIEW_797E507A.md">Current review and limitations</a>
+  · <a href="downloads/review797e_run_card.json">Automated run card</a></p>
+  <p>This is an existing research artifact, <strong>not a newly generated or unique submission</strong>.
+  The literal registry overlap is 1.0 (limit 0.70); matched-budget uniqueness claims below do not override the stop.
+  No new model, HOLDOUT-DTI result, organizer receipt or weekly slot was produced in this review.</p>
+  <p>Automated format checks pass: finite values in [0, 1], no NaN inside the footprint,
+  zeros outside, matching CRS/shape/transform. Format validity is not competition acceptance.</p>
+  <p>SHA-256: <code>91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e</code></p>
+</section>
+<!-- PUBLIC-STATUS:END -->
+<h1>DO NOT SUBMIT — prior clearance withdrawn</h1>
+<p>The literal registry gate blocks current candidates. Format validation is not submission authorization.</p>
+<p><a href="executive-summary.html">Current automated status and research downloads</a> ·
+<a href="REVIEW_F23.md">Correction evidence and limitations</a></p></body></html>

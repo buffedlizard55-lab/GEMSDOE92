@@ -1,70 +1,48 @@
 #!/usr/bin/env python3
-"""Run local GeoTIFF format/range preflight; never grant upload eligibility.
+"""Rejection-only entry point using the shared strict validator.
 
-A successful local preflight means only that the supplied file matches the
-known template grid and local [0, 1]/footprint conventions. It does not test
-registry uniqueness, holdout promotion, organizer acceptance, or a weekly-slot
-selector. Under the repository's current binding literal-registry rule, files
-are research-only and MUST NOT be submitted.
+A format pass is not upload clearance. The literal universal registry stop is
+binding; exit 1 means DO NOT SUBMIT even when all format checks pass. No exception
+is converted into success. No score or organizer-acceptance forecast is made.
 """
 from __future__ import annotations
-
 import argparse
-import sys
 from pathlib import Path
+import sys
 
-import numpy as np
 import rasterio
+from gems.gates import run_gates, summarise
+from scripts.check_site import primary_download
 
 ROOT = Path(__file__).resolve().parent
-sys.path[:0] = [str(ROOT / "vendor"), str(ROOT)]
-
-from gems57.validate import validate  # noqa: E402
-
-DEFAULT_FILE = Path(
-    "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif"
-)
-SAMPLE = ROOT / "data/bridge/sample_submission.tif"
-CATALOGUE = ROOT / "data/bridge/existing_faults.tif"
 
 
-def run_preflight(candidate: Path) -> tuple[bool, dict]:
-    if not candidate.is_absolute():
-        candidate = ROOT / candidate
-    if not candidate.is_file():
-        raise FileNotFoundError(candidate)
-    if not SAMPLE.is_file() or not CATALOGUE.is_file():
-        raise FileNotFoundError("local sample_submission/existing_faults bridge rasters are missing")
-
-    with rasterio.open(SAMPLE) as ds:
-        reference = ds.read(1)
-        footprint = np.isfinite(reference)
-    with rasterio.open(CATALOGUE) as ds:
-        catalogue = ds.read(1) > 0.5
-    return True, validate(candidate, footprint=footprint, catalogue=catalogue)
-
-
-def main(argv: list[str] | None = None) -> int:
+def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("file", nargs="?", default=str(DEFAULT_FILE), help="GeoTIFF to format-check")
+    parser.add_argument('candidate', nargs='?', type=Path)
     args = parser.parse_args(argv)
-    candidate = Path(args.file)
     try:
-        _, receipt = run_preflight(candidate)
-    except (OSError, ValueError) as exc:
-        print(f"FORMAT PREFLIGHT FAIL: {exc}")
+        candidate = args.candidate
+        if candidate is None:
+            problems = []
+            rel = primary_download((ROOT / 'docs/index.html').read_text(), problems)
+            if problems or rel is None:
+                raise ValueError('; '.join(problems))
+            candidate = ROOT / 'docs' / rel
+        results = run_gates(
+            str(candidate), str(ROOT / 'data/bridge/sample_submission.tif'),
+            str(ROOT / 'data/bridge/labels.tif'), prune_radius=2,
+            require_submission_encoding=True,
+        )
+        ok, report = summarise(results)
+        print(report)
+        print('FORMAT PASS (local only)' if ok else 'FORMAT FAIL')
+        print('DO NOT SUBMIT: literal registry stop; no weekly-slot clearance.')
+        return 1
+    except (OSError, ValueError, rasterio.errors.RasterioError) as exc:
+        print(f'INCONCLUSIVE / DO NOT SUBMIT: {exc}', file=sys.stderr)
         return 2
 
-    print(f"File: {candidate}")
-    print(f"SHA-256: {receipt['sha256']}")
-    for name, ok in receipt["checks"].items():
-        print(f"{'PASS' if ok else 'FAIL'} {name}")
-    print(f"Overall local format/range preflight: {'PASS' if receipt['all_checks_passed'] else 'FAIL'}")
-    print("Submission eligibility: NOT CLEARED by this validator")
-    print("Current project decision: DO NOT SUBMIT; research download only")
-    print("This tool does not evaluate registry uniqueness, holdout promotion, organizer acceptance, or slot selection.")
-    return 0 if receipt["all_checks_passed"] else 1
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     raise SystemExit(main())

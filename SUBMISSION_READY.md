@@ -1,27 +1,38 @@
-# No submission-cleared TIFF — GEMSDOE92
+# Submission clearance withdrawn — DO NOT SUBMIT
 
-**Current decision: DO NOT SUBMIT any TIFF in this repository or spend a weekly slot.**
+<!-- CURRENT-STATUS:BEGIN -->
+## Current verified decision — 2026-10-25 (review c5e3848c)
 
-The automated format gate can establish GeoTIFF compatibility, but that is not sufficient for submission eligibility. The binding literal registry protocol is stopped by a pinned public raster that is positive in all `5,167,373` footprint pixels. Therefore every nonempty in-footprint raster has 3-pixel forward overlap `1.0`, exceeding the `0.70` limit. Matched-budget comparisons are diagnostic only and do not override this stop.
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review. The new-submission requirement remains unmet.
 
-## Available download (research only)
+[Current research download](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [fresh run card](docs/downloads/review_c5e3848c_integrated_run_card.json) · [three-pass review](docs/REVIEW_C5E3848C.md) · [executive submission guide](docs/executive-summary.html).
 
-The current research artifact listed on the site is LISTRICDIP updip50:
+Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
 
-- [GeoTIFF](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) — **OK TO DOWNLOAD FOR RESEARCH; NOT CLEARED FOR SUBMISSION**
-- [Run card](docs/downloads/listricdip_run_card.json) · [audit](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-audit.json) · [automated submit-guide/status page](docs/listricdip.html)
-- Exact SHA-256: `91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e`
-- Record-only name: `GEMSDOE92-LISTRICDIP-updip50-20261025`
-- Record-only note (77/140 chars): `LISTRICDIP updip50: 37654 listric-offset dots; HOLDOUT-DTI 0.005420; negative`
+<!-- CURRENT-STATUS:END -->
 
-Its **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives, static `d_cat > 2` instrument) is `0.005420 [0.004294, 0.006551]`. This is local validation, not an organizer score; the run card records a negative verdict and literal-overlap stop. No score for this artifact is implied by the name/note fields.
+For the evidence review of the user-reported GEMSDOE32 `0.2778` value, see [the sourced explanation and evidence limits](docs/BEAT_0_2778.md). The value is not a verified organizer receipt.
 
-## Why the previous “submission ready” claim was withdrawn
+<details data-status-archive="true">
+<summary>Archived parallel-lane reports — not current submission clearance</summary>
 
-A previous KNICKLOQO page interpreted `dual_reading_decision`'s matched-budget result as submission clearance while explicitly excluding the full-footprint witness. That conflicts with the binding project rule, which applies literal forward overlap to every registry raster. The old recommendation and score projection were unsupported and are superseded. The KNICKLOQO TIFF remains available only as a historical research artifact; its format validity does not make it eligible.
 
-The user-reported GEMSDOE32 `0.2778` and leaderboard values `0.3195` / `0.4413` are not verified organizer receipts in the local ledger. There is no defensible live-score projection here. See [the careful assessment of the `0.2778` claim](docs/BEAT_0_2778.md) and the [current three-pass repository review](docs/REVIEW_20261025_REPOSITORY_REVIEW.md).
+The clearance published in commit `406638a` was not supported by the binding
+literal overlap rule. The known registry witness covers the entire footprint;
+all nonempty candidates remain blocked. No new unique TIFF was produced by
+renaming or repackaging KNICKLOQO.
 
-## If a future file is actually cleared
+- [Current byte-bound status](docs/downloads/readiness.json)
+- [Research downloads and executive summary](docs/executive-summary.html)
+- [Corrected KNICKLOQO status receipt](docs/downloads/knickloqo_submission_run_card.json)
+- [Three-pass review and limitations](docs/REVIEW_F23.md)
 
-Only after the literal gate is resolved under an explicitly authorized rule, a candidate beats the locked holdout control, passes the single-feature leakage canaries and pre/post-placement uniqueness checks, and its exact bytes pass the automated CRS/shape/transform/range validator should the selector consider a weekly slot. The human account holder still uploads the TIFF and enters its name/note on DrivenData; the project does not claim to submit automatically.
+The prior TIFF hash correction is valid. A fresh read found the newly published
+run card's file size, shape order and transform were wrong, however. Its
+projected leaderboard scores and guaranteed portal acceptance were unsupported.
+These claims have been withdrawn, not replaced by another projection.
+
+`python validate_submission.py` now delegates to the shared readiness checks and
+returns a blocked exit status. A format PASS does not authorize a competition
+slot. The original publication is preserved in Git history for audit.
+</details>
