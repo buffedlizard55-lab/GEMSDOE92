@@ -24,14 +24,14 @@ def _index() -> str:
 def test_index_has_download_and_slot_warning():
     html = _index()
     # The current binding registry stop must precede any historical lane claims.
-    assert html.index('id="current-protocol-status"') < html.index('KNICKLOQO:BEGIN')
-    current = html[html.index('id="current-protocol-status"'):html.index('KNICKLOQO:BEGIN')]
+    assert html.index('id="current-protocol-status"') < html.index('LISTRICDIP:BEGIN')
+    current = html[html.index('id="current-protocol-status"'):html.index('LISTRICDIP:BEGIN')]
     assert "no submission-cleared TIFF" in current
     assert "DO NOT SUBMIT" in current
     assert "single pinned witness" in current
     assert "literal 3-pixel forward overlap 1.0" in current
     assert "matched-budget overlap is diagnostic only" in current.lower()
-    assert "Download existing format-validated research TIFF — NOT CLEARED FOR SUBMISSION" in current
+    assert "Download current primary LISTRICDIP research TIFF — NOT CLEARED FOR SUBMISSION" in current
     # an obvious download, and the encoding that survives the portal validator
     assert "OK TO DOWNLOAD" in html
     assert "NOT CLEARED FOR A WEEKLY SLOT" in html
@@ -153,7 +153,11 @@ def test_coulombdm_run_card_and_site_html_integrity():
     html = _index()
     primaries = re.findall(r'<a\b[^>]*\bdata-primary="true"[^>]*>', html)
     assert len(primaries) == 1, f"expected exactly 1 data-primary anchor, got {len(primaries)}"
-    assert card["file"] in primaries[0]
+    # 2026-10-25: the homepage primary moved off COULOMBDM onto the newest
+    # research download. The old file stays linked; it is no longer primary.
+    assert card["file"] not in primaries[0]
+    assert card["file"] in html
+    assert "gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif" in primaries[0]
 
     for html_path in sorted(DOCS.glob("*.html")):
         txt = html_path.read_text(encoding="utf-8")
@@ -212,9 +216,9 @@ def test_readme_opens_with_current_no_submit_decision():
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     assert readme.startswith("# GEMSDOE92")
     first_status = readme.index("Current submission decision")
-    assert first_status < readme.index("<!-- KNICKLOQO:BEGIN -->")
-    assert "DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT" in readme[:readme.index("<!-- KNICKLOQO:BEGIN -->")]
-    assert "No new submission-cleared TIFF was generated" in readme[:readme.index("<!-- KNICKLOQO:BEGIN -->")]
+    assert first_status < readme.index("<!-- LISTRICDIP:BEGIN -->")
+    assert "DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT" in readme[:readme.index("<!-- LISTRICDIP:BEGIN -->")]
+    assert "No submission-cleared TIFF exists" in readme[:readme.index("<!-- LISTRICDIP:BEGIN -->")]
 
 
 def test_submit_page_exists():
