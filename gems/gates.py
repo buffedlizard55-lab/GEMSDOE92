@@ -35,6 +35,9 @@ class GateResult:
         return f"[{'PASS' if self.ok else 'FAIL'}] {self.name}: {self.detail}"
 
 
+_TREE_CACHE: dict[tuple[int, int, int, int, int], object] = {}
+
+
 def _dots_within(mask_ys, mask_xs, dots_ys, dots_xs, radius):
     """Boolean per-dot: is it within `radius` px (Euclidean) of a mask pixel?
 
@@ -46,7 +49,13 @@ def _dots_within(mask_ys, mask_xs, dots_ys, dots_xs, radius):
 
     if len(mask_ys) == 0 or len(dots_ys) == 0:
         return np.zeros(len(dots_ys), dtype=bool)
-    tree = cKDTree(np.c_[mask_ys, mask_xs])
+    key = (len(mask_ys), int(mask_ys[0]), int(mask_ys[-1]), int(mask_xs[0]), int(mask_xs[-1]))
+    tree = _TREE_CACHE.get(key)
+    if tree is None:
+        if len(_TREE_CACHE) >= 4:
+            _TREE_CACHE.clear()
+        tree = cKDTree(np.c_[mask_ys, mask_xs])
+        _TREE_CACHE[key] = tree
     d, _ = tree.query(np.c_[dots_ys, dots_xs], k=1)
     return d <= radius
 

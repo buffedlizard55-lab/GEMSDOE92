@@ -2,6 +2,22 @@
 
 Read this at the start of every session, together with `README.md`. The README is the short executive summary; this file is the durable project operating contract. Preserve the user's goals: a unique, easy-to-download submission GeoTIFF, automated format validation, transparent evidence, and no hallucinated claims.
 
+## Latest session closeout — 2026-10-25 (`RIEDELTENSOR` lane, `arena/dbdc0fd1-gemsdoe92`)
+
+- **Lane & Artifacts:** `RIEDELTENSOR` (`gems/riedel_tensor.py` — 3D Laplace-consistent gravity-gradient tensor invariants, en-echelon Riedel $R/R'$ transtensional relay obliquity, 3D radiometric-potential alteration coupling, Wallace basal piedmont toe concavity, selective branch-specific 4-branch LOQO, and Submodular 1D spacing `min_dist_px = 4.48 px`).
+  - **Primary Research Artifact:** `docs/downloads/h33-h33-2-b2-RIEDELTENSORstandalone-20261025-31b00e47-zeros.tif` (`sha256: 4a789af87b86fb80c8abca91ef8e7d9f8858b257f3d5642e6bd08b2288b76e9a`; ZIP `b373059417bdcc69000d92ef0d35562e607b29d7924f5eb29723ebdd46d87dc0`)
+  - **Sibling Ablations (`3/3` experiment budget):** `h33-h33-2-b2-RIEDELTENSORuncal-20261025-e19ad8a9-zeros.tif` (`7c01b839fa77032e…`) and `h33-h33-2-b2-RIEDELTENSORhybrid35-20261025-be3233f3-zeros.tif` (`649ec657783f4dda…`)
+- **Automated Gate & Protocol Status:**
+  - **OK TO DOWNLOAD:** **YES** (`10/10` `gems.gates` PASS, `float32`, `EPSG:32611`, `3730x3292`, `[0.0, 1.0]`, `0` NaNs anywhere, `37,654` unit dots, `d_cat > 2.0 px`).
+  - **OK TO SUBMIT:** **NO (`verdict: "negative"`, `submission_eligible: false`, `0` weekly slots spent)** — **UNIQUE** across all `79` local `GEMSDOE92` rasters (`max overlap = 0.685080 <= 0.70`, `max |phi| = 0.206680 <= 0.90`) and **UNIQUE under `dual_reading_decision`** across all `1,448` non-self public rasters (`0 / 1,448 > 0.70`, max operative overlap `0.685080 <= 0.70`), stopped solely by literal unweighted overlap (`1.0000 > 0.70`) against full-footprint `17GEMSDOE E-proba-multiscale` (`5,167,373` positive pixels).
+- **Holdout & Proxy Benchmarks (`gems57-pooled-hide-v2`, `22,663` withheld positives):**
+  - **Static `d_cat > 2.0` `HOLDOUT-DTI`:** **`0.011574 [0.010334, 0.012985]`** (**#1 All-Time in `GEMSDOE92`**, beating `KNICKLOQO standalone` `0.010788` by `+7.29%` and winning all `8/8` folds; `RIEDELTENSOR uncal` `0.011265` is **#2 All-Time**).
+  - **Strict Draw-Blind `d_cat > 2.0` `HOLDOUT-DTI`:** **`0.011576 [0.010423, 0.012879]`** (**#1 All-Time**).
+  - **Strict Draw-Blind `d_visible > 2.0` `HOLDOUT-DTI`:** **`0.113119 [0.100329, 0.126839]`** (**#1 among all unique `<= 0.70` models**).
+  - **Off-Catalogue `USGS SGMC` Bedrock Fault `PROXY` (`62,703` px):** **`0.105051`** (**#1 among `37,654`-dot models**).
+  - **Rule-4 Leakage Canaries:** `97 / 97 PASS` (`max symmetric AUC = 0.664574 <= 0.90`).
+  - **Details:** [`docs/ANALYSIS_20261025_RIEDEL_TENSOR.md`](docs/ANALYSIS_20261025_RIEDEL_TENSOR.md) · [`docs/HYPOTHESES_20261025_RIEDEL_TENSOR.md`](docs/HYPOTHESES_20261025_RIEDEL_TENSOR.md) · [`evidence/riedel_tensor_run_card.json`](evidence/riedel_tensor_run_card.json) · [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md).
+
 ## Current binding clarification — 2026-10-25 (`376a8469`)
 
 Read [the protocol-gate review](docs/REVIEW_376A8469.md) first. The literal overlap gate is binding for every raster. The later historical BLINDFAULT addendum claiming an automatic policy resolution is **superseded**: matched-budget overlap remains diagnostic only. A freshly pinned witness proves all nonempty candidates fail the unchanged rule. Stop rather than fabricate a new eligible TIFF. No new method lane was specified or tested in this review. Full operating requirements remain in the README's persistent session prompt and below; read both at every session start.

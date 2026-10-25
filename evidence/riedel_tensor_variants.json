@@ -1,0 +1,596 @@
+{
+  "schema": "gemsdoe92.riedel-tensor-variants.v1",
+  "session_date_utc": "20261025",
+  "axis": "RIEDELTENSOR",
+  "parent": "h33-h33-2-b2",
+  "parent_claim": {
+    "score": 0.2778,
+    "evidence_label": "CLAIM",
+    "receipt": false
+  },
+  "pre_placement_surface": {
+    "cache_path": ".cache/gems_inputs/riedel_tensor_S_cal_surface.tif",
+    "sha256": "2efd25e4efd90053ecd143127a7a051fa5f70dfe0ca5ad74af3508bbf7153d1b",
+    "registry_check": "evidence/riedel_tensor_screen.json"
+  },
+  "lane_surface": {
+    "definition": "S_cal = P_cal(X_36) * (0.14 + 0.86 * max(0.12*L_topo, 0.58*L_toe, 0.80*L_knick, 1.65*L_sub))",
+    "bands": "Bands 2, 4, 5, 7, 8, 11, 12, 13, 15, 17, 18, 19 + GeoDAWN K/Th/U + GDR #1391 thermal & blind geothermometry",
+    "implementation": "gems/riedel_tensor.py",
+    "catalogue_use": "Features strictly catalogue-free (dist_known_fault_px dropped); LOQO 4-branch ensemble trained strictly out-of-quadrant (>=1.2 km guard, >500 m neg buffer) with selective branch-specific within-quadrant quantile calibration; placement uses d_cat > 2.0 px gate",
+    "experiments_built": 3,
+    "budget_limit": 3
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-RIEDELTENSORstandalone-20261025-31b00e47",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-RIEDELTENSOR-standalone-20261025",
+      "name": "h33-h33-2-b2-RIEDELTENSORstandalone-20261025-31b00e47.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-RIEDELTENSORstandalone-20261025-31b00e47-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-RIEDELTENSORstandalone-20261025-31b00e47-zeros.zip",
+      "file_nan_cache": ".cache/riedel_tensor_builds/h33-h33-2-b2-RIEDELTENSORstandalone-20261025-31b00e47.tif",
+      "sha8": "31b00e47",
+      "change_desc": "RIEDELTENSOR (standalone): 37654 standalone 1D RIEDELTENSOR gravity-tensor+Riedel+basal-toe+knickzone crests (0 H19-5); fixed 37654 unit dots",
+      "notes": "arm=standalone; n_skel=0; n_far=37654; shared_R0=1450; within3px_H19=0.5310; piedmont_pct=38.2%; sub_dom_dots=21945; toe_dom_dots=5829; knick_dom_dots=14547; git=4441f6a3df98",
+      "parent": "h33-h33-2-b2",
+      "axis": "RIEDELTENSOR",
+      "value": "standalone",
+      "n_dots": 37654,
+      "n_skel": 0,
+      "n_far": 37654,
+      "pct_changed": 96.14914750092952,
+      "removed": 36204,
+      "added": 36204,
+      "sha256": "31b00e4783eb40fdabd8c14493ff2a7301928143026c9aefc6f356995abfe720",
+      "sha256_zeros": "4a789af87b86fb80c3202f9be4bf3c665d4c6098e32587aa9b5b76840ad9363a",
+      "zip_sha256": "92919e4deba144ba71fdf8933cb0ced6da3e06c1f39c499695b97dcdfa57bce0",
+      "primary_file": "h33-h33-2-b2-RIEDELTENSORstandalone-20261025-31b00e47-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-RIEDELTENSORstandalone-20261025-31b00e47-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/riedel_tensor_holdout_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 9284,
+        "basin_pct": 24.656,
+        "piedmont_dots": 14376,
+        "piedmont_pct": 38.179,
+        "range_dots": 13994,
+        "range_pct": 37.165
+      },
+      "channel_diagnostics": {
+        "subsurface_channel_dominant_dots": 21945,
+        "subsurface_channel_dominant_frac": 0.5828,
+        "basal_toe_dominant_over_scarp_dots": 5829,
+        "basal_toe_dominant_over_scarp_frac": 0.1548,
+        "knickzone_channel_dominant_dots": 14547,
+        "knickzone_channel_dominant_frac": 0.3863,
+        "within_3px_of_h19_5_frac": 0.531019,
+        "shared_exact_pixels_with_R0": 1450,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "collar_dots_dcat_le_3": 4579,
+        "mean_P_loqo_emitted": 0.7607699632644653,
+        "mean_S_emitted": 0.5457603335380554
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "4a789af87b86fb80c3202f9be4bf3c665d4c6098e32587aa9b5b76840ad9363a"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "31b00e4783eb40fdabd8c14493ff2a7301928143026c9aefc6f356995abfe720"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; RIEDELTENSOR standalone: 37654 1D gravity-tensor+Riedel+toe+knick crests",
+      "gate_status": "PASS (submission_writer + disk reread + 10/10 gems.gates)",
+      "seed": 20261025
+    },
+    {
+      "id": "h33-h33-2-b2-RIEDELTENSORuncal-20261025-e19ad8a9",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-RIEDELTENSOR-uncal-20261025",
+      "name": "h33-h33-2-b2-RIEDELTENSORuncal-20261025-e19ad8a9.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-RIEDELTENSORuncal-20261025-e19ad8a9-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-RIEDELTENSORuncal-20261025-e19ad8a9-zeros.zip",
+      "file_nan_cache": ".cache/riedel_tensor_builds/h33-h33-2-b2-RIEDELTENSORuncal-20261025-e19ad8a9.tif",
+      "sha8": "e19ad8a9",
+      "change_desc": "RIEDELTENSOR (uncal): 37654 standalone 1D RIEDELTENSOR uncalibrated ablation crests (0 H19-5); fixed 37654 unit dots",
+      "notes": "arm=uncal; n_skel=0; n_far=37654; shared_R0=1503; within3px_H19=0.5120; piedmont_pct=38.1%; sub_dom_dots=23444; toe_dom_dots=5580; knick_dom_dots=13474; git=4441f6a3df98",
+      "parent": "h33-h33-2-b2",
+      "axis": "RIEDELTENSOR",
+      "value": "uncal",
+      "n_dots": 37654,
+      "n_skel": 0,
+      "n_far": 37654,
+      "pct_changed": 96.00839220268763,
+      "removed": 36151,
+      "added": 36151,
+      "sha256": "e19ad8a938bca669c6776f30a5293f0e5adf28ba2bf9e1696a25ea5b65e1f158",
+      "sha256_zeros": "7c01b839fa77032e60f758616c05520190b36538682399fe0df13086a419623d",
+      "zip_sha256": "89213e3e3282d0de841def765975428c9cb255db17fe697a80fe22481bcc624a",
+      "primary_file": "h33-h33-2-b2-RIEDELTENSORuncal-20261025-e19ad8a9-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-RIEDELTENSORuncal-20261025-e19ad8a9-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/riedel_tensor_holdout_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 9605,
+        "basin_pct": 25.509,
+        "piedmont_dots": 14364,
+        "piedmont_pct": 38.147,
+        "range_dots": 13685,
+        "range_pct": 36.344
+      },
+      "channel_diagnostics": {
+        "subsurface_channel_dominant_dots": 23444,
+        "subsurface_channel_dominant_frac": 0.6226,
+        "basal_toe_dominant_over_scarp_dots": 5580,
+        "basal_toe_dominant_over_scarp_frac": 0.1482,
+        "knickzone_channel_dominant_dots": 13474,
+        "knickzone_channel_dominant_frac": 0.3578,
+        "within_3px_of_h19_5_frac": 0.511951,
+        "shared_exact_pixels_with_R0": 1503,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "collar_dots_dcat_le_3": 4507,
+        "mean_P_loqo_emitted": 0.7403668761253357,
+        "mean_S_emitted": 0.4953038692474365
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "7c01b839fa77032e60f758616c05520190b36538682399fe0df13086a419623d"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "e19ad8a938bca669c6776f30a5293f0e5adf28ba2bf9e1696a25ea5b65e1f158"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; RIEDELTENSOR uncal: 37654 1D uncalibrated ablation tensor+Riedel crests",
+      "gate_status": "PASS (submission_writer + disk reread + 10/10 gems.gates)",
+      "seed": 20261025
+    },
+    {
+      "id": "h33-h33-2-b2-RIEDELTENSORhybrid35-20261025-be3233f3",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-RIEDELTENSOR-hybrid35-20261025",
+      "name": "h33-h33-2-b2-RIEDELTENSORhybrid35-20261025-be3233f3.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-RIEDELTENSORhybrid35-20261025-be3233f3-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-RIEDELTENSORhybrid35-20261025-be3233f3-zeros.zip",
+      "file_nan_cache": ".cache/riedel_tensor_builds/h33-h33-2-b2-RIEDELTENSORhybrid35-20261025-be3233f3.tif",
+      "sha8": "be3233f3",
+      "change_desc": "RIEDELTENSOR (hybrid35): 13179 RIEDELTENSOR-repacked H19-5 + 24475 off-skeleton (>3px) 1D RIEDELTENSOR crests; fixed 37654 unit dots",
+      "notes": "arm=hybrid35; n_skel=13179; n_far=24475; shared_R0=5466; within3px_H19=0.3500; piedmont_pct=38.6%; sub_dom_dots=22448; toe_dom_dots=7676; knick_dom_dots=13539; git=4441f6a3df98",
+      "parent": "h33-h33-2-b2",
+      "axis": "RIEDELTENSOR",
+      "value": "hybrid35",
+      "n_dots": 37654,
+      "n_skel": 13179,
+      "n_far": 24475,
+      "pct_changed": 85.48361395867637,
+      "removed": 32188,
+      "added": 32188,
+      "sha256": "be3233f3f816c2a646ca233257a16946b5f9d1463bfe4c1d15f485abd29da019",
+      "sha256_zeros": "649ec657783f4dda641e369b3cf8e4c0748dd9b49ffbcbd16a9a1ab968e09e76",
+      "zip_sha256": "7a2faf873eb897a60d9e297c3c3d778236ff09927245dc287c17c8f6c06f9192",
+      "primary_file": "h33-h33-2-b2-RIEDELTENSORhybrid35-20261025-be3233f3-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-RIEDELTENSORhybrid35-20261025-be3233f3-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/riedel_tensor_holdout_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 9433,
+        "basin_pct": 25.052,
+        "piedmont_dots": 14528,
+        "piedmont_pct": 38.583,
+        "range_dots": 13693,
+        "range_pct": 36.365
+      },
+      "channel_diagnostics": {
+        "subsurface_channel_dominant_dots": 22448,
+        "subsurface_channel_dominant_frac": 0.5962,
+        "basal_toe_dominant_over_scarp_dots": 7676,
+        "basal_toe_dominant_over_scarp_frac": 0.2039,
+        "knickzone_channel_dominant_dots": 13539,
+        "knickzone_channel_dominant_frac": 0.3596,
+        "within_3px_of_h19_5_frac": 0.350003,
+        "shared_exact_pixels_with_R0": 5466,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "collar_dots_dcat_le_3": 3417,
+        "mean_P_loqo_emitted": 0.7310514450073242,
+        "mean_S_emitted": 0.5206093192100525
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "649ec657783f4dda641e369b3cf8e4c0748dd9b49ffbcbd16a9a1ab968e09e76"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "be3233f3f816c2a646ca233257a16946b5f9d1463bfe4c1d15f485abd29da019"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; RIEDELTENSOR hybrid35: 13179 RIEDELTENSOR-H19 + 24475 far 1D tensor+Riedel crests",
+      "gate_status": "PASS (submission_writer + disk reread + 10/10 gems.gates)",
+      "seed": 20261025
+    }
+  ]
+}

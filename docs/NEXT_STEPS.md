@@ -1,6 +1,35 @@
-# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`KNICKLOQO` Session)
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`RIEDELTENSOR` Session)
 
-## Completed this session (`KNICKLOQO` + Action #1 Dual-Reading Audit + Action #2 `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` Resolution)
+## Completed this session (`RIEDELTENSOR` — 3D Gravity-Gradient Tensor + Riedel $R/R'$ Relay + Radiometric-Potential Coupling + Wallace Basal Toe + Selective 4-Branch LOQO + Submodular 1D Spacing)
+
+1. **Completed Previous Next Steps (`HYPOTHESES_20261025_KNICKLOQO.md` Ranks 3–4 & `#IR-92-NE-QUADRANT-DOUBLE-EDGED-CALIBRATION`):**
+   - Implemented 3D Laplace-consistent gravity-gradient tensor invariants (`f31_tensor_tilt_gz`, `f32_tensor_ghz_hess`, `f33_tensor_dipole_concord` using $G_{xx} + G_{yy} + G_{zz} = 0$), en-echelon synthetic Riedel ($R \approx 19^\circ$) and conjugate ($R' \approx 68^\circ$) transtensional relay obliquity (`f34_riedel_obliquity_r`), 3D radiometric-potential (`K/Th`, `U/Th` $\times$ tensor tilt $\times$ MT) alteration coupling (`f35_rad_pot_concord`), and Wallace (1977) upward-concave basal piedmont fault-toe curvature (`f36_wallace_basal_toe`) in `gems/riedel_tensor.py`.
+   - Discovered and resolved `#IR-92-NE-QUADRANT-DOUBLE-EDGED-CALIBRATION` via **selective branch-specific within-quadrant quantile calibration** (`Full` 36-feature and `Province-Debiased` 30-feature branches calibrated at $\lambda = 0.80, \gamma = 3.3$; `Subsurface-Tensor-Riedel` 31-feature and `Basal-Toe-Riedel` 28-feature branches preserved on physical derivative probability scale).
+   - Proved and applied the **Submodular 1D Coverage Theorem (`min_dist_px = 4.48 px` $\approx \sqrt{20}\text{ px} = 448\text{ m}$)**, keeping every along-strike midpoint at $\le 2.24\text{ px} < 3.0\text{ px}$ inside the positive support of the $R = 3.0\text{ px}$ triangular DTI kernel while expanding linear fault-strike coverage by **`+40.0%`** (`168.7 km` vs `120.5 km` at `3.2 px` spacing).
+   - **All 97 single-feature/surface leakage canaries PASS** (`max symmetric AUC = 0.664574 <= 0.90` on `LOQO_P_cal`; `max single feature = 0.603859` on `rel_log_slope_break`).
+2. **Completed 3 Pre-Registered `RIEDELTENSOR` Experiments (`evidence/riedel_tensor_variants.json`, `evidence/riedel_tensor_proxy_audit.json`, `evidence/riedel_tensor_run_card.json`):**
+   - **Experiment 1 (`RIEDELTENSOR standalone`, `h33-h33-2-b2-RIEDELTENSORstandalone-20261025-31b00e47-zeros.tif`):**
+     - **Static `d_cat > 2.0` `HOLDOUT-DTI = 0.011574 [0.010334, 0.012985]`** — **NEW ALL-TIME #1 IN `GEMSDOE92`**, beating prior #1 `KNICKLOQO standalone` (`0.010788 [0.009468, 0.012201]`) by **`+7.29%` (`+0.000786`, paired 95% CI `[+0.000284, +0.001298]`)** and winning on **all `8/8` folds**; beating `PROVINCETOE piedbasin` (`0.009711`) by **`+19.18%`**, `POISSONKNICK qcal` (`0.009304`) by **`+24.40%`**, `EULERFUSE gravity` (`0.009265`) by **`+24.92%`**, `COULOMBLOQO standalone` (`0.009220`) by **`+25.53%`**, and `R0` (`0.004006`) by **`+188.9%`**.
+     - **Strict draw-blind `d_cat > 2.0` `HOLDOUT-DTI = 0.011576 [0.010423, 0.012879]`** (**#1 All-Time**, `+5.64%` over `KNICKLOQO` `0.010958`).
+     - **Strict draw-blind `d_visible > 2.0` `HOLDOUT-DTI = 0.113119 [0.100329, 0.126839]`** (**#1 among all unique `<= 0.70` models**, beating `KNICKLOQO` `0.109043`, `EULERFUSE` `0.110387`, `POISSONFLEX` `0.107466`, `PROVINCETOE` `0.106452`, and `H19-5` `0.096757`, paired 95% CI `[+0.007978, +0.024722]`).
+     - **USGS SGMC off-catalogue `PROXY = 0.105051`** (**#1 among `37,654`-dot models**, beating `KNICKLOQO` `0.103912`, `R0` `0.096060`, and `COULOMBLOQO` `0.090569`).
+     - **`100%` unique on local (`79/79` rasters, `worst overlap = 0.685080 <= 0.70`, `worst |phi| = 0.206680 <= 0.90`) and public `dual_reading_decision` (`0 / 1,448` non-self rasters `> 0.70`, `worst operative overlap = 0.685080 <= 0.70`, `verdict = "unique"`)**.
+   - **Experiment 2 (`RIEDELTENSOR uncal`, `e19ad8a9`):** Static `HOLDOUT-DTI = 0.011265 [0.010070, 0.012652]` (**#2 All-Time in `GEMSDOE92`**, also beating `KNICKLOQO standalone`); `0 / 1,448` public rasters `> 0.70` (`max = 0.674563`).
+   - **Experiment 3 (`RIEDELTENSOR hybrid35`, `be3233f3`):** Static `HOLDOUT-DTI = 0.007802 [0.006836, 0.008845]`, `SGMC PROXY = 0.101373`; `0 / 1,448` public rasters `> 0.70` (`max = 0.665135`).
+
+## Highest-P(Win) actions for the next session (in order)
+
+1. **Human Selector Step — First `ORGANIZER-CONFIRMED` Calibration & `RIEDELTENSOR standalone` Promotion Decision:**
+   - Under `dual_reading_decision`, `h33-h33-2-b2-RIEDELTENSORstandalone-20261025-31b00e47-zeros.tif` (`4a789af87b86fb80…`) is the **#1 artifact in `GEMSDOE92` across every primary metric simultaneously**: #1 static `d_cat > 2.0` `HOLDOUT-DTI` (`0.011574`), #1 draw-blind `d_cat > 2.0` `HOLDOUT-DTI` (`0.011576`), #1 unique draw-blind `d_visible > 2.0` `HOLDOUT-DTI` (`0.113119`), #1 `37,654`-dot `USGS SGMC PROXY` (`0.105051`), and `0 / 1,448` public overlaps `> 0.70` (`max = 0.685080 <= 0.70`).
+   - Once the human selector confirms `dual_reading_decision` supersedes the degenerate `17GEMSDOE` full-footprint literal witness for portal uploads, promote `RIEDELTENSORstandalone` and record the resulting `ORGANIZER-CONFIRMED` receipt in `ledger/submissions.csv`.
+2. **Anisotropic Along-Strike Continuous Filament Emission (`FILAMENT-LOQO`):**
+   - Instead of emitting isolated 0D unit dots at `min_dist_px = 4.48 px`, test convolving ~`16,000`–`19,000` crest seed centers along the local scarp/tensor unit tangent $\mathbf{t}(x) = (\cos\theta, \sin\theta)$ with a $1\text{ px}$-wide, $2$–$3\text{ px}$-long tapered filament in $[0, 1]$ so total mass remains $S \approx 37,654$ while eliminating the $0.25$ midpoint kernel dip between adjacent seed points.
+3. **Untried Hypothesis Queue (`docs/HYPOTHESES_20261025_RIEDEL_TENSOR.md` Ranks 4–5):**
+   - **Rank 4 (`MT-SKIN-DEPTH-GRADIENT`):** Multi-depth MT vertical conductivity log-gradient ($\partial_z \ln \sigma$ across `500 m -> 1 km -> 2 km -> 4 km`) to isolate smectite-illite clay-cap transitions over sub-vertical brittle fault upflow zones.
+
+---
+
+## Prior Completed Session (`KNICKLOQO` + Action #1 Dual-Reading Audit + Action #2 `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` Resolution)
 
 1. **Completed Priority #1 (`COULOMBLOQO` Dual-Reading Audit Across 1,412 Public Rasters — `evidence/coulomb_loqo_dual_reading_audit.json`):**
    - Refreshed `.cache/gemsdoe_public_registry/` (102 repos, `1,415` single-band exact-grid rasters, pre-indexed in `fast_supports.npz`) and evaluated `COULOMBLOQO_standalone` (`e01d27af`) and `COULOMBLOQO_dual45` (`dd91d98c`) under `vendor/gems57/uniqueness.py:dual_reading_decision`.
