@@ -150,6 +150,8 @@ def main() -> int:
     ap.add_argument("--workers", type=int, default=12)
     ap.add_argument("--cache-only", action="store_true",
                     help="reuse a previously verified .cache/gemsdoe_public_registry/repo_inventory.json and blob cache; makes no GitHub API requests")
+    ap.add_argument("--git-transport", action="store_true",
+                    help="populate .cache/gemsdoe_public_registry via Git Smart HTTP (scripts/sync_public_registry_git.py) without REST blob/tree API quota")
     ap.add_argument("--surface", type=Path, help="Actual lane pre-placement GeoTIFF; never substitute another lane")
     ap.add_argument("--witness-repo", help="Check one public owner repo for a binding duplicate; cannot clear uniqueness")
     ap.add_argument("--output", type=Path, default=ROOT / "evidence/public_registry_uniqueness.json")
@@ -175,6 +177,11 @@ def main() -> int:
     if args.cache_only:
         tree_results, repos = read_cached_trees(cached_trees)
         scan_source = "cached GitHub API inventory (no network refresh)"
+    elif args.git_transport:
+        subprocess.run([sys.executable, str(ROOT / "scripts" / "sync_public_registry_git.py"),
+                        "--workers", str(min(args.workers, 8))], check=True)
+        tree_results, repos = read_cached_trees(cached_trees)
+        scan_source = "live Git Smart HTTP inventory (zero REST blob/tree quota)"
     else:
         try:
             repos = get_repositories()
@@ -194,10 +201,15 @@ def main() -> int:
                           for f in t.get("files", [])]} for t in tree_results], indent=2), encoding="utf-8")
         except Exception as exc:
             if not cached_trees.is_file():
-                raise
-            print(f"WARNING: live GitHub inventory refresh failed ({exc}); using cached inventory, not claiming it is current.", file=sys.stderr)
-            tree_results, repos = read_cached_trees(cached_trees)
-            scan_source = "cached GitHub API inventory (live refresh failed)"
+                print(f"WARNING: GitHub REST API failed ({exc}); falling back to Git Smart HTTP sync...", file=sys.stderr)
+                subprocess.run([sys.executable, str(ROOT / "scripts" / "sync_public_registry_git.py"),
+                                "--workers", str(min(args.workers, 8))], check=True)
+                tree_results, repos = read_cached_trees(cached_trees)
+                scan_source = "live Git Smart HTTP fallback inventory"
+            else:
+                print(f"WARNING: live GitHub inventory refresh failed ({exc}); using cached inventory, not claiming it is current.", file=sys.stderr)
+                tree_results, repos = read_cached_trees(cached_trees)
+                scan_source = "cached GitHub API inventory (live refresh failed)"
     if args.witness_repo:
         tree_results = [t for t in tree_results if t["repo"] == args.witness_repo]
         repos = [r for r in repos if r["name"] == args.witness_repo]

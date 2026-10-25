@@ -21,6 +21,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_PATH = ROOT / "registry" / "session_manifest.json"
+VENTSCARP_EXT_MANIFEST_PATH = ROOT / "registry" / "ventscarp_external_manifest.json"
 
 
 def sha256_file(path: Path) -> str:
@@ -68,14 +69,24 @@ def main() -> int:
         action="store_true",
         help="Restore all pinned grid, parent R0 lineage, and control inputs without 419 MB training_features.tif",
     )
+    parser.add_argument(
+        "--ventscarp-external",
+        action="store_true",
+        help="Also restore SHA-256-pinned USGS 3DEP 10 m and DOE GDR INGENIOUS external inputs from registry/ventscarp_external_manifest.json",
+    )
     args = parser.parse_args()
 
     manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+    files = list(manifest["files"])
+    if args.ventscarp_external and VENTSCARP_EXT_MANIFEST_PATH.is_file():
+        ext_manifest = json.loads(VENTSCARP_EXT_MANIFEST_PATH.read_text(encoding="utf-8"))
+        files.extend(ext_manifest["files"])
+
     cache_root = ROOT / ".cache" / "gems_inputs"
     cache_root.mkdir(parents=True, exist_ok=True)
 
     grouped: dict[tuple[str, str], list[dict]] = defaultdict(list)
-    for entry in manifest["files"]:
+    for entry in files:
         if args.validation and entry["id"] == "training_features":
             continue
         target = ROOT / entry["local_path"]
