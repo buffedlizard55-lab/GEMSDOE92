@@ -1,4 +1,4 @@
-# Submission clearance withdrawn — DO NOT SUBMIT
+# Correction: NOT CLEARED FOR SUBMISSION
 
 <!-- CURRENT-STATUS:BEGIN -->
 ## Current verified decision — 2026-10-25 (review c5e3848c)
@@ -14,22 +14,27 @@ Automated format checks pass on the unchanged primary; literal registry overlap 
 <summary>Archived parallel-lane reports — not current submission clearance</summary>
 
 
-The clearance published in commit `406638a` was not supported by the binding
-literal overlap rule. The known registry witness covers the entire footprint;
-all nonempty candidates remain blocked. No new unique TIFF was produced by
-renaming or repackaging KNICKLOQO.
+**Decision: RESEARCH DOWNLOAD ONLY — DO NOT SUBMIT this TIFF or spend a weekly slot.**
 
-- [Current byte-bound status](docs/downloads/readiness.json)
-- [Research downloads and executive summary](docs/executive-summary.html)
-- [Corrected KNICKLOQO status receipt](docs/downloads/knickloqo_submission_run_card.json)
-- [Three-pass review and limitations](docs/REVIEW_F23.md)
+The KNICKLOQO standalone file is an existing, format-valid research artifact:
 
-The prior TIFF hash correction is valid. A fresh read found the newly published
-run card's file size, shape order and transform were wrong, however. Its
-projected leaderboard scores and guaranteed portal acceptance were unsupported.
-These claims have been withdrawn, not replaced by another projection.
+- File: `docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif`
+- SHA-256: `8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347`
+- Local **HOLDOUT-DTI**: `0.010788 [0.009468, 0.012201]`, `gems57-pooled-hide-v2`, 22,663 withheld positives. This is an internal spatial holdout metric, not an organizer score.
 
-`python validate_submission.py` now delegates to the shared readiness checks and
-returns a blocked exit status. A format PASS does not authorize a competition
-slot. The original publication is preserved in Git history for audit.
+An earlier version of this page incorrectly called it submission-cleared by applying a `dual_reading_decision` matched-budget interpretation. That interpretation is not the binding rule in this project brief and cannot waive the stated thresholds. The recorded literal dense-witness forward overlap is `1.000`, exceeding the `0.70` duplicate stop. The run-card's later `submission_eligible: true` status is therefore not accepted; corrected audit status is negative. Format-valid and download-ready do not mean slot-eligible.
+
+The separate latest homepage research download is LISTRICDIP updip50; it also remains **DO NOT SUBMIT** under the same literal rule. Neither TIFF is cleared.
+
+## Score claims
+
+GEMSDOE32 `0.2778` is an unverified claim in the evidence reviewed here. The local HOLDOUT-DTI numbers are not calibrated to the organizer's hidden score. Previous expected live-score ranges (`0.28–0.32` and `0.35–0.40`) and statements that KNICKLOQO will beat `0.2778` are unsupported projections and are withdrawn. No organizer-confirmed receipt is present in the ledger.
+
+## Safe next steps
+
+1. Use downloads for local research only; do not upload either artifact.
+2. Before any candidate promotion, run the required continuous-surface and final-dot registry tests under the unchanged `|Spearman| > 0.90` / `>70% within 3 px` rule.
+3. Only report an organizer score when a dated portal receipt supports it.
+
+See [`docs/REVIEW_20261025_SUBMISSION_CLEARANCE_AUDIT.md`](docs/REVIEW_20261025_SUBMISSION_CLEARANCE_AUDIT.md), [`docs/REVIEW_REPOSITORY_20261025.md`](docs/REVIEW_REPOSITORY_20261025.md), and [`docs/REVIEW_376A8469.md`](docs/REVIEW_376A8469.md) for the evidence and policy boundary.
 </details>

@@ -14,11 +14,9 @@ Non-fault process that could mimic:
 - Lake Lahontan recessional shorelines (rejected via cross-contour obliquity filter)
 - Volcanic flow boundaries (rejected via gravity polarity concordance)
 
-Expected improvement: Beat COULOMBLOQO standalone (0.113890) on strict draw-blind HOLDOUT-DTI
-through multi-physics coupling and quadrant debiasing.
+Validation status: UNTESTED PROTOTYPE. Expected improvement is unknown; no HOLDOUT-DTI result, leakage-canary receipt, surface comparison, final-dot registry scan, or submission eligibility has been established.
 
-Uniqueness: Combines three previously separate lanes (POISSONFLEX, KNICKLOQO, PROVINCETOE)
-in a novel multi-physics ensemble not present in any prior GEMSDOE repo.
+Do not use this prototype until its feature shapes, labels, LOQO fold isolation, footprint mask, and shared-writer contract have been corrected and tested. It is not a cleared or promoted lane.
 """
 
 import numpy as np
@@ -234,10 +232,13 @@ def build_fkp_feature_stack(training_features_path, dem_path=None):
 
 def fit_fkp_loqo(training_features_path, existing_faults_path, n_dots=37654):
     """
-    Fit FKP model using LOQO (Leave-One-Quadrant-Out).
+    Quarantined prototype. The current implementation violates the LOQO contract.
 
-    Returns probabilities and final dot placement.
+    It must not generate a raster until the documented source-review blockers are fixed.
     """
+    raise NotImplementedError(
+        "FKP is quarantined: fix feature dimensions, labels, fold isolation, and masks first"
+    )
     # Build feature stack
     feature_stack = build_fkp_feature_stack(training_features_path)
 
