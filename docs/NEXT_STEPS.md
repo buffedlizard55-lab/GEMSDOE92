@@ -1,16 +1,33 @@
+# Current Next Steps — `GEMSDOE92` (2026-10-25, Post-`PHASEWIND`)
+
+## Binding current status
+
+- `PHASEWIND` is **negative**. Its primary **HOLDOUT-DTI** is `0.0291145349 [0.0241141856, 0.0337746352]` (`gems57-pooled-hide-v2`, 22,663 withheld positives) at an amended 20,000-dot budget; this is not budget-matched to the 37,654-dot reference `0.1133161541 [0.1006136423, 0.1271630703]` and is not an organizer score.
+- The live public audit verified the 17GEMSDOE full-footprint witness (SHA-256 `ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be`). The shared saturation certificate found zero uncovered catalogue-clear cells. Under the user's literal rule, every nonempty final dot field has guaranteed 1.0 forward overlap, above the 0.70 limit. **Do not place final dots, emit a submission TIFF, or select/use a weekly slot while this binding rule/witness stands.** Do not substitute matched-budget overlap.
+- The PHASEWIND continuous surface measured no `|rho| > 0.90` among checked local/public rasters, but the public scan had 79 blob-download failures and is not a complete uniqueness clearance. The surface scan followed fold-specific holdout emissions for metric evaluation, but preceded any full-domain deployment placement; see the run card's sequencing caveat.
+- No PHASEWIND submission TIFF, submission-format validation, unique submission name/note, or download exists. The evidence-only card is `evidence/phasewind_run_card.json`; details are in `docs/ANALYSIS_20261025_PHASEWIND.md`, `docs/REVIEW_20261025_PHASEWIND.md`, and `evidence/phasewind_registry_gate.json`.
+- `GEMSDOE32 0.2778` remains `CLAIM` (no organizer receipt recorded in `ledger/`). The official DrivenData data tab redirected to login. The official page's null/NaN outside-footprint instruction differs from the workbench's finite-zero policy; reconcile with the live form/sample before any upload.
+- **Next actions:** preserve the negative result; do not start another placement lane under the current literal rule. Obtain explicit policy clarification from the user/organizer before any future full-domain dot placement; do not infer that this is already authorized. No real slot is selected or used.
+
+---
+
+## Historical next steps from the prior `BLINDFAULT` session — retained for audit, not operative under the current literal rule
+
 # Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`BLINDFAULT` Session)
 
 ## Completed this session (`BLINDFAULT`)
 
 1. Pre-registered 5 untried hypotheses (`docs/HYPOTHESES_20261025_BLINDFAULT.md`) and built Rank 1 `BLINDFAULT` (`gems/blindfault.py`): subsurface-only 12-feature LOQO with covariate-shift importance weights toward low-conspicuity catalogue faults; 3 frozen arms (`blind`, `blindflat`, `blindtopo`); 3/3 experiments, 0 weekly slots.
 2. **Result: `negative`.** Primary `HOLDOUT-DTI` (strict draw-blind, `d_visible > 2.0`, 22,663 withheld positives): best arm `blindtopo 0.047896 [0.038079, 0.057970]` < `H19-5 0.096757` < holdout-best `COULOMBLOQO standalone 0.113316`. Hypothesis arm `blind 0.037842` is the worst arm; `blind − blindflat = −0.0096 [−0.0192, +0.0011]` → the reweighting mechanism is not load-bearing. New low-conspicuity instrument: all LOQO arms > `H19-5` but CIs overlap. Full numbers: `docs/ANALYSIS_20261025_BLINDFAULT.md`.
-3. **Shared-template fix (reported, not forked):** `vendor/gems57/uniqueness.py` now provides `matched_budget_support`, `dual_overlap`, `dual_reading_decision` (`#IR-92-DENSE-WITNESS-MATCHED-BUDGET`). The literal dense-witness reading is still printed; the operative duplicate test is matched-budget for > 150k-px surfaces. Specificity proof recorded (`R0` parent literal overlap vs the witness) in `evidence/blindfault_uniqueness.json`.
+3. **Historical shared-template interpretation (superseded):** `vendor/gems57/uniqueness.py` added `matched_budget_support`, `dual_overlap`, and `dual_reading_decision` (`#IR-92-DENSE-WITNESS-MATCHED-BUDGET`). That session treated matched-budget overlap as operative for >150k-px surfaces while printing the literal result. The user's current correction makes the literal threshold binding; this historical helper/evidence does not clear any candidate and must not be used to bypass the full-footprint witness. Keep the old measurements as history.
 4. Three unique format-valid TIFFs in `docs/downloads/gemsdoe92-blindfault-*-zeros.tif` (validator-written, 37,654 dots each); README/site banners rendered from the run card by `scripts/render_blindfault_site.py` (no hand-typed numbers).
 5. New irregularity `#IR-92-NE-QUADRANT-LOQO-COLLAPSE`: every LOQO arm scores `0.000–0.005` on the NE fold.
 
-## Highest-P(Win) actions for the next session (in order)
+## Historical BLINDFAULT-era follow-ups (not current actions; superseded by the literal stop above)
 
-1. **Selector step (not an experiment): re-read the stored `COULOMBLOQO standalone` and `dual45` rasters under `dual_reading_decision` against the complete cached public registry (`.cache/gemsdoe_public_registry`, 1,396 blobs; re-run `scripts/audit_public_registry.py` to refresh).** They are the only artifacts that beat `H19-5` on the primary instrument with a CI excluding 0. If they pass the matched-budget reading, they are the first candidates eligible for a weekly slot under the automated gate; the README/site must then show ✅ OK TO SUBMIT for exactly one file.
+The following selector/experiment ideas were written under the superseded matched-budget interpretation. Do not execute their selector recommendation or mark any file eligible under the current literal rule.
+
+1. **Historical selector suggestion (withdrawn):** re-read `COULOMBLOQO standalone` and `dual45` against the public registry. Any matched-budget pass is non-binding; the full-footprint witness still means every nonempty final dot field triggers the literal stop. No weekly-slot eligibility follows from this old suggestion.
 2. **Quadrant-stratified reporting for every LOQO lane** and a diagnosis of the NE collapse (basin-fill thickness / MT coverage / catalogue density differences). If NE is unlearnable from the other quadrants, a 3-quadrant deployment with an `H19-5`-fallback in NE is a legitimate, pre-registrable hybrid.
 3. **Do not retry subsurface-only learners** for 300 m localisation at 100 m (three concordant negatives: `EULERFUSE`, `COULOMBDM coulomb1d`, `BLINDFAULT`). Next genuinely new physics in the queue: `POISSONCORR` (Rank 2, medium cost) and `KNICKLINE` (Rank 3, needs official 10 m 3DEP, blocked in this sandbox).
 4. Obtain the first `ORGANIZER-CONFIRMED` receipt (upload of a cleared file through the DrivenData form by the account holder; the sandbox cannot reach drivendata.org) and record it in `ledger/`.

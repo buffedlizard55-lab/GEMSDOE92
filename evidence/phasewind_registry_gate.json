@@ -1,0 +1,98 @@
+{
+  "schema": "gemsdoe92-phasewind-registry-gate.v1",
+  "reviewed_utc": "2026-10-25T04:51:24.790437+00:00",
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "binding_rule": "absolute Spearman > 0.90 OR > 70% of candidate dots within 3 px of one registry raster; literal rule, no matched-budget or dense-surface exemption",
+  "candidate_surface": {
+    "path": ".cache/phasewind/phasewind_preplacement_surface.tif (gitignored research intermediate)",
+    "sha256_tiff": "c012aa601debfad2085f5704c7b0c77f654891f551658183605dbb76e272a80e",
+    "sha256_array": "03aa29e64af5dc6180fc09c55fe45fab14db6e389da2329de9d474982f038731",
+    "metadata": {
+      "count": 1,
+      "dtype": "float32",
+      "shape": [
+        3730,
+        3292
+      ],
+      "crs": "EPSG:32611",
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "nodata": null,
+      "all_finite": true,
+      "min": 0.0,
+      "max": 0.9992519617080688,
+      "positive_pixels": 112851
+    }
+  },
+  "surface_spearman_gate": {
+    "threshold_abs_rho_gt": 0.9,
+    "local": {
+      "rasters_checked": 91,
+      "scope": "all exact-grid single-band TIFFs in docs/downloads/, releases/, and data/parent_R0*.tif in this checkout",
+      "worst_abs_spearman": 0.003147135918050335,
+      "worst_raster": "docs/downloads/h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+      "measured_no_rho_trigger": true
+    },
+    "public": {
+      "scan_source": "current GitHub API",
+      "matching_public_repositories": 102,
+      "default_branch_trees_complete": 102,
+      "submission_tiff_paths": 1785,
+      "unique_git_blobs": 1421,
+      "verified_blob_downloads": 1342,
+      "blob_download_failures": 79,
+      "exact_grid_rasters_compared": 1336,
+      "scan_complete_for_declared_scope": false,
+      "worst_abs_spearman": 0.07365335378846032,
+      "worst_raster": "18GEMSDOE/docs/downloads/18GEMSDOE_H19-C_20260930T212401Z_c11e495e.tif",
+      "measured_no_rho_trigger_among_checked": true,
+      "scope": "Current public default branches; TIFF paths under docs/downloads/, releases/, and submission directories; unique Git blobs. Does not cover history, private repositories, other owners, zip-only objects, or site-hosted objects not in those paths."
+    }
+  },
+  "overlap_interpretation": {
+    "preplacement_surface_overlap": "not a final-dot comparison: the audit helper counts every positive surface pixel as support; its raw 1.0 worst-overlap does not apply the user\u2019s dot-only overlap test to a final dot field",
+    "raw_audit_surface_worst_forward_overlap": 1.0,
+    "raw_audit_duplicate_rows_above_70pct": 71,
+    "no_final_dot_field_was_created": true
+  },
+  "audit_cli_note": {
+    "candidate_argument": "data/parent_R0_zeros.tif (CLI requires a candidate for its final phase)",
+    "phasewind_evidence_field": "only audit output preplacement_surface refers to PHASEWIND",
+    "not_phasewind_evidence": "audit output final summary is the parent R0 candidate and is excluded from all PHASEWIND conclusions"
+  },
+  "binding_witness": {
+    "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+    "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "bytes": 25065181,
+    "positive_pixels": 5167373,
+    "allowed_pixels": 5106385,
+    "uncovered_allowed_pixels": 0,
+    "covered_allowed_fraction": 1.0,
+    "universal_overlap_blocker": true,
+    "overlap_limit": 0.7,
+    "support_definition": "finite prediction > 0 (inherited literal support rule)",
+    "implication": "Every nonempty candidate dot set in the allowed domain has forward overlap 1.0 with this prior; therefore it cannot pass the 0.70 gate.",
+    "current_exact_sha256_reverified": true
+  },
+  "sequence_scope": "Surface registry correlation was checked after fold-specific holdout emissions used for DTI, but before any full-domain deployment placement. If 'placement' includes temporary holdout predictions, the scan was not strictly pre-placement; no final dots were created.",
+  "final_dots": {
+    "status": "not created; stopped before full-domain placement",
+    "measured_overlap": null,
+    "why": "the exact-grid, SHA-verified public witness covers every allowed footprint cell; any nonempty final dot field would have literal forward overlap 1.0 > 0.70"
+  },
+  "submission_tiff": {
+    "status": "not emitted",
+    "downloadable": false,
+    "raster_sha256": null,
+    "validator": "not run; no submission raster exists"
+  },
+  "verdict": "negative \u2014 literal duplicate stop; no final dots, submission TIFF, download, or weekly-slot recommendation"
+}

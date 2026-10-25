@@ -1,0 +1,136 @@
+{
+  "schema": "gemsdoe92-phasewind-run-card.v1",
+  "lane": "PHASEWIND",
+  "date_utc": "2026-10-25",
+  "hypothesis": "Scale-persistent complex-gradient phase winding in RTP magnetic contacts (Band 2) identifies terminations or offsets of magnetized basement contacts that may reflect unmapped buried fault splays.",
+  "mechanism": "Compute first derivatives of G_sigma at sigma 2/4/8 pixels, estimate phase winding around a 2-pixel ring, require consistent nonzero charge at two or more scales, then rank by ring-amplitude support. No catalogue or label input enters the feature surface.",
+  "scale_normalization_note": "The plan writes the complex derivative with a sigma multiplier. The implementation omits that positive scalar: it leaves phase winding unchanged, and the amplitude is ranked within each scale with a scale-relative floor, so the emitted feature is invariant to this omitted factor.",
+  "named_non_fault_mimic": "Dike or intrusion tips, volcanic-flow boundaries, remanent magnetization, gridding seams, and low-amplitude noise can all create phase defects without a fault.",
+  "hypothesis_plan": "docs/HYPOTHESES_20261025_PHASEWIND.md (ranked five hypotheses; pre-DTI feasibility amendment recorded)",
+  "experiment": {
+    "primary_arm": "phasewind_200_400_800",
+    "scored_arms": ["phasewind_200_400_800"],
+    "unscored_arms": ["phasewind_200_400", "phasewind_400_800"],
+    "dot_budget": 20000,
+    "spacing_px": 2.83,
+    "budget_amendment": "The originally pre-registered 37,654-dot budget was infeasible under the shared spacing floor (model-capacity diagnostic only). Before DTI, the primary was fixed at 20,000 dots, below capacity on both holdout seeds. Ablations were not scored. This is not like-for-like with the 37,654-dot repository reference.",
+    "experiments_used": 1,
+    "weekly_slots_used": 0
+  },
+  "data_and_evaluator": {
+    "feature_stack_path": ".cache/gems_inputs/training_features.tif (gitignored verified input)",
+    "feature_stack_sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+    "band": 2,
+    "band_name": "rtp",
+    "shape": [3730, 3292],
+    "crs": "EPSG:32611",
+    "holdout": "vendor/gems57/holdout.py buffered whole 8-connected fault components; 4 quadrants each for seeds 20 and 30; fold-visible emission uses d_visible > 2 px; evaluator masks visible fault pixels exactly",
+    "metric": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positive_pixels": 22663,
+      "alpha": 0.2,
+      "beta": 0.8,
+      "triangular_kernel_radius_m": 300
+    }
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "primary_dti": 0.02911453492270285,
+    "ci95": [0.02411418561113624, 0.03377463523150796],
+    "bootstrap": {
+      "method": "paired physical spatial-cluster percentile",
+      "clusters": 153,
+      "draws": 1000,
+      "seed": 820251,
+      "confidence": 0.95
+    },
+    "repository_reference": {
+      "lane": "COULOMBLOQO standalone",
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positive_pixels": 22663,
+      "dti": 0.11331615405665604,
+      "ci95": [0.10061364231351806, 0.12716307034305033],
+      "source": "evidence/coulomb_loqo_run_card.json"
+    },
+    "comparison_caveat": "The PHASEWIND primary point estimate is lower, but its pre-DTI amended budget is 20,000 dots versus the reference's 37,654. This is descriptive, not a like-for-like ranking or a leaderboard comparison.",
+    "result_file": "evidence/phasewind_holdout.json"
+  },
+  "leakage_canary": {
+    "evidence_class": "HOLDOUT-CANARY",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "max_symmetric_auc": 0.5024302784840298,
+    "threshold": 0.9,
+    "all_features_pass": true,
+    "result_file": ".cache/phasewind/phasewind_canaries.json (gitignored; summary copied here)"
+  },
+  "registry_correlation_overlap": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "binding_rule": "Literal: abs(Spearman) > 0.90 OR >70% of candidate dots within 3 px of any registry raster; no dense-surface exemption or matched-budget substitution.",
+    "preplacement_surface": {
+      "sha256_tiff": "c012aa601debfad2085f5704c7b0c77f654891f551658183605dbb76e272a80e",
+      "local_exact_grid_rasters_checked": 91,
+      "local_worst_abs_spearman": 0.003147135918050335,
+      "local_worst_raster": "docs/downloads/h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+      "public_exact_grid_rasters_checked": 1336,
+      "public_worst_abs_spearman_among_checked": 0.07365335378846032,
+      "public_worst_raster": "18GEMSDOE/docs/downloads/18GEMSDOE_H19-C_20260930T212401Z_c11e495e.tif",
+      "public_scan_complete_for_declared_scope": false,
+      "public_blob_download_failures": 79,
+      "interpretation": "No >0.90 surface-rho trigger was measured among checked rasters. The public scan is incomplete, so this is not a global uniqueness clearance. The audit helper also reports raw support overlap for the continuous surface; that is not a final-dot overlap measurement and is not used as one."
+    },
+    "final_dots": {
+      "status": "not created; stopped before full-domain deployment placement",
+      "measured_candidate_dot_overlap": null,
+      "reason": "A current exact-grid public witness covers every catalogue-clear footprint cell; a nonempty candidate dot field would necessarily have literal forward 3-px overlap 1.0 (>0.70)."
+    },
+    "binding_witness": {
+      "file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "bytes": 25065181,
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "positive_footprint_pixels": 5167373,
+      "allowed_candidate_pixels": 5106385,
+      "uncovered_allowed_pixels": 0,
+      "guaranteed_forward_overlap_for_any_nonempty_in_footprint_dots": 1.0,
+      "overlap_limit": 0.7,
+      "saturation_certificate": "evidence/phasewind_registry_gate.json"
+    },
+    "audit_scope_note": "The audit_public_registry invocation used parent_R0_zeros.tif only because the CLI requires a candidate argument. Its preplacement_surface section refers to PHASEWIND; its final summary refers to parent R0 and is not a PHASEWIND final-dot result.",
+    "sequence_note": "The surface registry scan ran after fold-specific holdout emissions needed for DTI, but before any full-domain production placement. If 'placement' is read to include holdout-only evaluation emissions, the surface scan was not strictly pre-placement; no final dots or submission raster were created."
+  },
+  "raster_sha256": null,
+  "preplacement_surface": {
+    "path": ".cache/phasewind/phasewind_preplacement_surface.tif (gitignored intermediate; not a submission)",
+    "sha256": "c012aa601debfad2085f5704c7b0c77f654891f551658183605dbb76e272a80e",
+    "shape": [3730, 3292],
+    "crs": "EPSG:32611",
+    "transform": [100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0],
+    "dtype": "float32",
+    "finite": true,
+    "range": [0.0, 0.9992519617080688],
+    "positive_pixels": 112851
+  },
+  "validator_output": {
+    "submission_tiff": "not emitted; no submission file exists, so submission_writer / submission validator were not run",
+    "intermediate_surface": "shared grid writer wrote and re-read a single-band float32 EPSG:32611 3730x3292 GeoTIFF with the pinned 100 m transform, all finite values in [0,1]; this does not establish submission or uniqueness clearance"
+  },
+  "submission_name": null,
+  "submission_note": null,
+  "downloadable_tiff": false,
+  "submission_eligible": false,
+  "verdict": "negative",
+  "verdict_reason": "HOLDOUT-DTI is below the documented repository reference on an amended, smaller dot budget, and the literal public registry rule universally blocks any nonempty final dot field. No weekly slot was used or selected.",
+  "organizer_confirmed_score": null,
+  "gemsdoe32_0_2778": {
+    "evidence_class": "CLAIM",
+    "value": 0.2778,
+    "organizer_receipt_found": false,
+    "treatment": "Unverified prompt/repository-reported score; not an ORGANIZER-CONFIRMED result and not directly comparable to local HOLDOUT-DTI."
+  }
+}

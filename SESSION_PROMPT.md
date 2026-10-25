@@ -4,7 +4,7 @@ Read this at the start of every session, together with `README.md`. The README i
 
 ## Mission
 
-Produce a **unique** GeoTIFF for DrivenData competition 306 (DOE GEMS Prize: hidden geothermal-related faults, NW Great Basin, EPSG:32611 100 m). The file must be obviously downloadable from the GitHub Pages site. Inspection and validation run in the project, without a human inspector in the loop. A human still performs the DrivenData upload and weekly-slot selection.
+Produce a **unique** GeoTIFF for DrivenData competition 306 (DOE GEMS Prize: hidden geothermal-related faults, NW Great Basin, EPSG:32611 100 m) **only if the current literal uniqueness rule permits it**. The file must be obviously downloadable from the GitHub Pages site only after it passes the project gates. Inspection and validation run in the project, without a human inspector in the loop. A human still performs the DrivenData upload and weekly-slot selection. If a verified registry witness makes every nonempty candidate fail the literal rule, stop before full-domain dot placement and report the unique-TIFF goal as blocked; do not create a download, weaken the rule, or call the work complete.
 
 Study the prompt-reported GEMSDOE32 `h33-h33-2-b2` **CLAIM 0.2778** and other site values as learning context only. They are not ORGANIZER-CONFIRMED receipts unless a submission-page receipt is recorded in `ledger/`. A prior repository record says the official public leaderboard was read on 2026-10-24 and showed 0.4413 at #1 (LEADERBOARD-SNAPSHOT, not a receipt for GEMSDOE32 or GEMSDOE92); the prompt's 0.3195 is an older conflicting snapshot. Never say a local holdout beats a live competition score.
 
@@ -12,7 +12,7 @@ The goal is maximize the probability of placing well through reproducible scienc
 
 ## Parallel-run protocol
 
-1. **Lane.** Stay in one named method. Before placement, compare the prospectivity surface with the accessible registry; after placement, compare final dots. If absolute Spearman rank correlation exceeds 0.90 or more than 70% of dots fall within 3 px of one registry raster's dots, log it as a duplicate and stop. Never reinterpret the threshold to make a result pass. Report local inventory scope; local uniqueness is not proof of uniqueness across every site.
+1. **Lane.** Stay in one named method. Before full-domain placement, compare the prospectivity surface with the accessible registry using absolute Spearman rank correlation; after placement, compare final dots using the literal 3-px overlap. If absolute Spearman exceeds 0.90 or more than 70% of candidate dots fall within 3 px of one registry raster's dots, log a duplicate and stop. Never reinterpret the threshold to make a result pass. Do not apply dot-overlap to a continuous surface as if its positive pixels were final dots, and do not use matched-budget overlap to override the literal rule. A verified raster positive on every allowed footprint cell is a universal stop for every nonempty candidate dot field. Report local/public inventory scope; local uniqueness is not proof of uniqueness across every site.
 2. **Reuse.** Use the template's cached feature stack when it is actually available, `vendor/gems57/evaluate_holdout.py`, and `vendor/gems57/submission_writer.py` or the shared writer. Holdout = hide whole fault segments/components with a buffer; derive all catalogue-based features from visible faults only; mask visible faults pixel-exactly; pooled DTI α=0.2, β=0.8, 300 m triangular kernel. Fix a shared tool once in the template, never create a private fork.
 3. **Label every number** as HOLDOUT-DTI (evaluator version, withheld positives, 95% CI) or ORGANIZER-CONFIRMED (copied from submission-page receipt). CLAIM, MODEL, PROXY, and REGISTRY-MEASUREMENT must remain distinct. A projection is never written as a score.
 4. **Leakage canary.** Test each feature alone on the holdout before trusting a result. AUC above 0.90 means leakage until investigated. Use the symmetric AUC if direction could reverse.
@@ -22,11 +22,12 @@ The goal is maximize the probability of placing well through reproducible scienc
 
 ## Site / download rules
 
-- Zeros-outside encoding is the only submission download offered (portal error: `Predicted values must be in range [0, 1]`).
-- Homepage must clearly say whether the file is OK to download **and** whether it is recommended for a weekly slot.
+- The workbench's current download policy uses finite zeros outside the footprint because a prior portal/range preflight reported `Predicted values must be in range [0, 1]`. This is a project policy, not established here as the organizer's requirement: the official problem page reviewed 2026-10-25 says values outside bounds should be null/NaN. Reconcile the live form/sample before any upload; no TIF is submission-cleared by format alone.
+- Homepage must clearly say whether a file is OK to download **and** whether it is recommended for a weekly slot.
 - Executive summary subpage explains the DrivenData form (file, name, note).
 - No human inspection is needed for format validation (`scripts/check_site.py`, `gems.gates`, `gems57.validate`). Human upload and selector remain separate.
 - Never silently change `nodata`, clip out-of-range values, or convert NaNs without a recorded rationale.
+- The current binding user rule is literal. A historical matched-budget calculation or a dense-raster exception cannot clear a candidate; if the full-footprint witness blocks every nonempty dot set, no new candidate TIF may be offered.
 
 ## Trusted source starting points
 
@@ -41,6 +42,8 @@ The goal is maximize the probability of placing well through reproducible scienc
 - Tversky index: https://en.wikipedia.org/wiki/Tversky_index
 - Great Basin Center for Geothermal Energy: https://gbcge.org/current-projects/ingenious/
 - USGS 3DEP: https://www.usgs.gov/3d-elevation-program
+
+**Official-source review completed 2026-10-25:** the DrivenData problem page and September 2026 DOE/NLR rules PDF were live-read; the data tab redirected to its login page. The page states the DTI α=0.2, β=0.8 and 300 m triangular kernel, one-band float32 predictions on the EPSG:32611 / 100 m grid, and null/NaN outside bounds. The current workbench finite-zero outside policy is not asserted to be organizer-approved; reconcile it against the live form/sample before an upload. The official rules require one final submission across both prize rounds, allow up to three feedback submissions per week, and require generative-AI disclosure in the submission narrative when applicable. The USGS GeoDAWN catalog record was live-reviewed for provenance context; no new raster was acquired. See `docs/ANALYSIS_20261025_PHASEWIND.md` for links and the full distinction between official facts and local policy.
 
 Competition data may be login-gated. Follow license and data-use terms; owner-mirror hash checks establish byte identity, not organizer authentication or redistribution permission.
 
@@ -178,7 +181,13 @@ Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261024_COULOM
 
 ## 2026-10-25 addendum (BLINDFAULT session) — items added to the operating contract from the latest user brief
 
-- The brief now lists ~90 prior `GEMSDOE*` sites with their owner-reported scores (`0.0000 – 0.2778`), restates leaderboard `0.4413` (#1) and `0.3195` as `[CLAIM]` snapshots, and repeats: "A lot of sites mention inspection only and a human inspector, but the inspection needs to be done through the project and needs to be validated for submission without human intervention." **Consequence adopted:** the dense-witness uniqueness degeneracy is resolved inside the template (`#IR-92-DENSE-WITNESS-MATCHED-BUDGET`), not deferred to a human selector. Both literal and matched-budget readings are always printed.
+- The brief lists owner-reported `GEMSDOE*` values (including `GEMSDOE32 0.2778`) as claims without organizer receipts and requires automated project validation without a human inspector. **Historical note, superseded by the user's current correction:** the BLINDFAULT session adopted a matched-budget interpretation for dense-raster overlap and printed both readings. Do not use that interpretation to clear uniqueness. The binding rule is the user's literal >0.90 absolute-rho / >70%-within-3-px rule, with no dense-surface exemption; a verified full-footprint-positive witness blocks every nonempty candidate dot field.
 - Required pre-build step restated: generate and rank 3–5 **untried** geological hypotheses (layers, signature/transform, why it catches a fault missing from the catalogue, how it differs from `gems/*.py`), validate the top one on the spatially-blocked holdout, and do not spend a weekly slot on anything that has not beaten the current holdout best (`COULOMBLOQO standalone 0.113316` on the strict draw-blind `d_visible > 2.0` instrument).
 - Arena Core Values (Maximize P(Win); Own the Outcome) are the decision framework for every trade-off; negative results are deliverables and must be preserved with the same rigour as positive ones.
 - Three passes per session (implement/verify → review/fix → recheck against the original request), then PR + merge to `main`, then list remaining work and limitations for the next session.
+
+## Current session result (2026-10-25) — `PHASEWIND`
+
+One pre-registered primary was scored after a documented pre-DTI capacity amendment; two ablations were not scored. The primary used a 20,000-dot budget because the shared 2.83-px spacing emitter could not realize the originally pre-registered 37,654-dot budget. The shared evaluator reported **HOLDOUT-DTI 0.0291145349 [0.0241141856, 0.0337746352]**, `gems57-pooled-hide-v2`, 22,663 withheld positives. This is below the 37,654-dot repository reference `COULOMBLOQO standalone` **HOLDOUT-DTI 0.1133161541 [0.1006136423, 0.1271630703]**; the changed budget makes this descriptive, not a like-for-like comparison or organizer score. The maximum separate-feature/arm canary was **HOLDOUT-CANARY symmetric AUC 0.5024303** (threshold 0.90).
+
+The pre-placement surface scan measured no `|rho| > 0.90` among 91 exact-grid local rasters or 1,336 successfully retrieved public exact-grid rasters; the public scan had 79 blob-download failures and is not a complete uniqueness clearance. A current hash-verified 17GEMSDOE public raster was re-read on the exact grid: it covers all 5,106,385 catalogue-clear pixels (0 uncovered), so any nonempty final dot field would have literal forward overlap 1.0, above the 0.70 limit. **Stop before full-domain dot placement.** No final dots, candidate submission TIFF, download, submission-validator result, submission name/note, or weekly-slot recommendation was produced. The 0.2778 `GEMSDOE32` value remains a `CLAIM`; no receipt is in the ledger. Full record: `docs/ANALYSIS_20261025_PHASEWIND.md`, `docs/HYPOTHESES_20261025_PHASEWIND.md`, `evidence/phasewind_run_card.json`, and `evidence/phasewind_registry_gate.json`. Synthetic tests: 5 passed; no organizer receipt or competition score was obtained.
