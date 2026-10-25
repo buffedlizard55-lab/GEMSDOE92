@@ -11,6 +11,12 @@ Start with the generated README decision, the [latest three-pass repository revi
 
 ---
 
+## Current session addendum — 2026-10-25 (MT-CHANGEPOINT lane, branch `arena/7f2e773e-gemsdoe92`)
+
+Lane `MT-CHANGEPOINT` completed 3/3 pre-registered experiments (`docs/HYPOTHESES_20261025_MT_CHANGEPOINT.md`, `gems/mt_changepoint.py`, `scripts/build_mt_changepoint_submission.py`). Primary `gemsdoe92-mtcp-20261025T182129Z-mtcp-37654-zeros.tif` (SHA-256 `ad3bc4b7a8110c2b…`) is format-valid (`run_gates` 10/10 PASS, single-band float32, EPSG:32611, 3730×3292, values in [0, 1], nodata=None, 0 NaN anywhere, 0 on catalogue). Locally unique across 105 local registry rasters (surface worst |ρ| = 0.0642 ≤ 0.90; final-dot worst overlap = 0.3854 ≤ 0.70). Primary HOLDOUT-DTI `0.043936 [0.036431, 0.051261]` (gems57-pooled-hide-v2, 22,663 withheld positives, per-draw re-placement) is below the 0.113316 bar → **verdict negative, DO NOT SUBMIT, 0 slots spent**. Forensic analysis of GEMSDOE32's claimed 0.2778 score vs 0.4413 / 0.3195 leaderboard documented in `docs/ANALYSIS_20261025_MT_CHANGEPOINT.md`.
+
+---
+
 ## Current session addendum — 2026-10-25 (leaderboard research, branch `arena/09f84f2f-gemsdoe92`)
 
 Parallel leaderboard lane (merged after the fresh audit below; read the fresh audit first, then this). Read `docs/ANALYSIS_20261025_LEADERBOARD.md`. Facts established this session: the live DrivenData top score is `0.4413` (#1 xiaofanhu, not a GEMSDOE entry); `0.3195` is not on the top-50 snapshot; `0.2778` (GEMSDOE32) remains `CLAIM receipt=N`. The official rules (NLR PDF, Sept 2026) allow three submissions per week and require one final selection. The shared metric matches an independent naive implementation of the official equations (`tests/test_metric_independent.py`). The fresh witness audit re-confirms the literal universal stop (`evidence/readiness_20261025_leaderboard.json`). Five hypotheses are pre-registered in `docs/HYPOTHESES_20261025_LEADERBOARD.md`; none is built. Experiments used: 0 of 3. The blocking decision (dense-witness policy) is recorded in the analysis, §5. Do not place dots until that decision is made.

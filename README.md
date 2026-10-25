@@ -135,6 +135,14 @@ Read this README and [SESSION_PROMPT.md](SESSION_PROMPT.md) before work. The [fu
 ## Historical session record (not current clearance)
 
 
+> ## Latest lane artifact — MT-CHANGEPOINT (2026-10-25, this session)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`, `submission_eligible: false`). 3 new byte-unique GeoTIFFs (Magnetotelluric conductive conduit & basement DoG changepoint detection; 3/3 pre-registered experiments); automated [0,1] format validation PASS (`nodata=None`, 0 NaN, all-finite in [0, 1]). Primary **HOLDOUT-DTI `0.043936 [0.036431, 0.051261]`** (`gems57-pooled-hide-v2`, 22,663 withheld positives, per-draw re-placement) is below the 0.113316 promotion bar. Locally unique (surface |ρ| ≤ 0.0642; final-dot overlap ≤ 0.3854 across 105 local registry rasters); literal-witness stop remains binding.
+>
+> **[Download MT-CHANGEPOINT primary TIFF](docs/downloads/gemsdoe92-mtcp-20261025T182129Z-mtcp-37654-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-mtcp-20261025T182129Z-mtcp-37654-zeros.zip) · [run card](docs/downloads/mtcp_run_card.json) · [analysis — why/how 0.2778 + this test](docs/ANALYSIS_20261025_MT_CHANGEPOINT.md) · [hypotheses](docs/HYPOTHESES_20261025_MT_CHANGEPOINT.md) · [executive summary — how to submit](docs/executive-summary.html)
+>
+> SHA-256 `ad3bc4b7a8110c2bbd3a776df9bb53e77c867201b1b1ae0e53a30c57febebb5c`; name `GEMSDOE92-MTCP-mtcp-20261025`; note (99/140): `MT-CHANGEPOINT mtcp: 37654 dots; MT changepoint x basement DoG gradient; HOLDOUT-DTI in run card`.
+> Ablations: [mt alone](docs/downloads/gemsdoe92-mtcp-20261025T182129Z-mt-37654-zeros.tif) (HOLDOUT-DTI 0.043875) · [base_grav](docs/downloads/gemsdoe92-mtcp-20261025T182129Z-base_grav-37654-zeros.tif) (0.040989; overlap 0.4189 ≤ 0.70). Leakage canaries max 0.547024 ≤ 0.90. No ORGANIZER-CONFIRMED score exists.
+
 > ## Latest lane artifact — FLEXMAG (2026-10-25, parallel session)
 > **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`, `submission_eligible: false`). 3 new byte-unique GeoTIFFs (blind-fault flexure hinge × magnetic ASA; 3/3 pre-registered experiments); automated [0,1] format validation PASS (`nodata=None`, 0 NaN). Primary **HOLDOUT-DTI `0.045554 [0.035846, 0.056751]`** (`gems57-pooled-hide-v2`, 22,663 withheld positives, per-draw re-placement) is below the 0.113316 promotion bar; magnetic-gate paired Δ includes 0. Locally unique (surface |ρ| ≤ 0.0658, final-dot overlap ≤ 0.5567 / 98 rasters); public 102-repo scan not rerun; literal-witness stop above remains binding.
 >
