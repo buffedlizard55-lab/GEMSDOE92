@@ -259,6 +259,11 @@ def main() -> int:
     if primary_rel:
         problems.extend(check_panels(status_card, ROOT, primary_rel))
 
+    # The fresh receipt linked in the first status panel must not drift from
+    # current validation code or served bytes; missing evidence fails closed.
+    from scripts.audit_readiness import check_published_audit
+    problems.extend(check_published_audit(ROOT))
+
     if problems:
         print("SITE CHECK FAIL")
         for p in problems:
