@@ -26,6 +26,25 @@
 3. **Public Registry Dual-Reading Promotion Evaluation for Top Holdout Candidate:**
    - Continue audit of public registry continuous rasters to separate valid spatial predictions from degenerate full-footprint continuous rasters (`17GEMSDOE`).
 
+## Prior completed session (`LISTRICDIP`)
+
+1. Ranked five hypotheses in `docs/HYPOTHESES_20261025_LISTRICDIP.md` before scoring. Implemented only Rank 1 (`LISTRICDIP`), three arms, catalogue-free, shared evaluator and writer.
+2. `updip50` static HOLDOUT-DTI `0.005420 [0.004294, 0.006551]` beats `R0` `0.004006` (paired CI excludes 0) and loses to `KNICKLOQO` `0.010788` and `COULOMBLOQO` `0.009220`. Re-placed `d_visible > 2` is `0.048225`. Verdict `negative`. 0 weekly slots.
+3. Antithetic arms could not fill 37,654 dots on reversed-polarity support at 3.2 px spacing (9,571 and 9,555). They tied. Distance is not load-bearing. Not padded.
+4. Local uniqueness passed (worst overlap 0.1968, `|ρ|` 0.053, 110 rasters). Literal dense witness overlap is 1.0. `stop_required: true`. Research GeoTIFFs are on the site. They are not cleared to upload.
+
+## Do not do next
+
+- Do not upload `LISTRICDIP`. It did not beat the holdout best.
+- Do not retry antithetic padding, sub-3.2 px spacing, local-gradient antithetic lookup, or float32 Band-18 × depth products.
+- Do not copy `h33-h33-2-b2` / `R0`.
+- Do not treat 0.005420, CLAIM 0.2778, prompt 0.3195, or leaderboard-snapshot 0.4413 as the same number.
+
+## Still open, not started
+
+Ranks 2–5 in the LISTRICDIP hypothesis file (`TENSOR-RIEDEL`, `FLEXURE-HINGE`, `CLAYCAP-REDOX`, `INSAR-3DEP1M`) were not run. `INSAR-3DEP1M` remains not viable in this sandbox. A weekly slot still requires a file that beats the stored holdout best and clears the binding uniqueness rule. This session did not produce one.
+
+
 ---
 
 # Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`KNICKLOQO` Session)

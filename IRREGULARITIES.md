@@ -1,5 +1,17 @@
 # IRREGULARITIES — only items that change a decision
 
+## 2026-10-25 (LISTRICDIP session) — antithetic budget cannot be filled without leaving the mechanism
+
+- **Observation**: Pre-registration locked 37,654 dots for `anti22` and `anti35`. On the real stack, `oppose > 0.3` against a 12 km regional basement gradient, after `d_cat > 2` and 3.2 px spacing, emits 9,571 and 9,555 dots. A 2–8 km smooth is opposed at `oppose > 0.5` by only a minority of high-gradient pixels (median oppose is 0).
+- **Impact**: Filling 37,654 by padding non-oppose pixels, or by packing dots inside the 300 m DTI kernel, would score a different hypothesis. The shortfall is the result.
+- **Decision**: Ship the short arms. Do not rewrite the locked hypothesis file's budgets. Record the deviation in the addendum. Verdict remains `negative` on the science, independently of the dense-witness stop.
+
+## 2026-10-25 (LISTRICDIP session) — this run's H19-5 control is not the published thinned Rule-2 number
+
+- **Observation**: Evaluating the full unthinned `H19-5` mask on these folds gives 0.066289, identical on the static and "rule-2" loops because the mask was not re-placed. The previously published thinned Rule-2 figure near 0.096757 is a different emission and was not re-measured here.
+- **Impact**: Comparing `updip50` re-placed 0.048225 to 0.066289 is valid only as "shifted dots versus the unthinned skeleton on these folds." It is not a comparison to the published Rule-2 leader (`COULOMBLOQO` ~0.1133–0.1139).
+- **Decision**: Label the two H19-5 numbers separately in the analysis. Do not cite 0.066289 as a new Rule-2 record.
+
 ## 2026-10-25 (KNICKLOQO session) — `#IR-92-COULOMBLOQO-EULERFUSE-POSTMERGE-COLLISION`: `COULOMBLOQO` passes matched-budget continuous-surface uniqueness (`0 / 185 > 0.70`) but collides at `82.87%` / `73.26%` with post-merge `EULERFUSE_gravity`
 - **Observation**: Re-auditing `COULOMBLOQO_standalone` (`e01d27af`) and `COULOMBLOQO_dual45` (`dd91d98c`) across all `1,412` non-self single-band exact-grid rasters in the 102-repo public inventory (`evidence/coulomb_loqo_dual_reading_audit.json`) under `vendor/gems57/uniqueness.py:dual_reading_decision` confirms that **all `185` continuous surfaces (`> 150,000` positive pixels) have `<= 0.535853` overlap** at matched top-`37,654` budget (`0 / 185 > 0.70`), completely eliminating the `17GEMSDOE E-proba-multiscale` (`5,167,373` px) dense-witness artifact. However, among `<= 90,000`-dot rasters, `COULOMBLOQO_standalone` has **`0.828703` (`82.87%`)** 3-px forward overlap (and `COULOMBLOQO_dual45` has **`0.732565`**) with `GEMSDOE92/docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif` (`EULERFUSE_gravity`, merged in PR #63 after `COULOMBLOQO`'s PR #55 scan), because `EULERFUSE` imported `gems/coulomb_loqo.py:fit_predict_loqo` directly and multiplied the same 24-feature `P_loqo` surface by an Euler gravity gate. In addition, `100,000`-dot `GEMSDOE23 h29-dealiased-habitat` reaches `0.739842` / `0.722420`.
 - **Impact**: `COULOMBLOQO_standalone` and `COULOMBLOQO_dual45` cannot be retroactively promoted under `dual_reading_decision` because they exceed `0.70` against `EULERFUSE_gravity` and `GEMSDOE23`. By contrast, the three `COULOMBDM` rasters (`coulomb1d`, `s35coulomb65`, `s45coulomb55`) have worst operative overlaps `0.641180`, `0.623599`, and `0.679583 <= 0.70` (`0 / 1,412 > 0.70`).
