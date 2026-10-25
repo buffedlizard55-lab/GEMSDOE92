@@ -140,6 +140,45 @@ Read this README and [SESSION_PROMPT.md](SESSION_PROMPT.md) before work. The [fu
 
 ---
 
+### Session request — 2026-10-25 (read at the start of every session)
+
+This block records the user's 2026-10-25 request in condensed form. The full message is long and repeats itself. Its site-score list is already stored in [`ledger/site_scores_claimed_20261025.csv`](ledger/site_scores_claimed_20261025.csv). The two operating blocks below are reproduced in full.
+
+**What was asked, mapped to where it lives**
+
+| Requirement | Status (2026-10-25) | Where |
+|---|---|---|
+| A unique, easy-to-download competition TIF, with the download/submit decision obvious on arrival | **Not met.** No candidate can clear the literal duplicate rule (dense witness, overlap 1.000). Research downloads only. | Top of this README; [executive guide](docs/executive-summary.html); [review §1](docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md) |
+| Why GEMSDOE32 reportedly scored 0.2778, and can we beat it | **Not explained.** The page says UNSCORED. Derived break-even: credit per unit mass must exceed 0.2·S. | [review §2](docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md) |
+| Live leaderboard | #1 **0.4413** (xiaofanhu, not a GEMSDOE entry). 0.3195 is not in the live top 22. | [review §2.1](docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md) |
+| 3–5 untried hypotheses, ranked, one validated before any slot | **4 ranked; none validated.** Validation is blocked by the login-gated 1 m DEM and the absent feature stack. | [review §3](docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md) |
+| Flag irregularities; no hallucinations; line-by-line verification | Done. 15 irregularities; 15 verification rows. | [review §4–5](docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md); [run card](evidence/review_20261025_audit_run_card.json) |
+| Three passes; fix failing tests | Baseline 539 pass / 3 fail. The same three failures were fixed on `main` (PR #128) during this session; merged branch: **528 pass**. | [review §0](docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md) |
+| Pull request and merge to `main` | Done in this session (see the pull request in the session summary). A publication-gate failure already on `main` (LISTRIC-HALO TIF, I-15) was removed upstream; this branch keeps that removal. Open PR #125 is **not** merged (see D1). | `gh pr list` |
+| Limitations and next steps | Listed; five operator decisions D1–D5. | [review §6–7](docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md) |
+
+**Operator decisions the agent cannot make** (the user asked for no manual input, but these are policy calls): **D1** dense-witness policy · **D2** NaN-outside vs zeros-outside · **D3** place competition inputs in `data/` from a DrivenData login · **D4** whether competition-derived files belong in a public repo · **D5** PR backlog and the AI-use narrative.
+
+**Parallel-run protocol (reproduced in full; markdown link artifacts removed):**
+
+> 1. LANE. Your lane is the single method paragraph below. Stay inside it. If your raster's rank-correlation with any registry raster exceeds [0.90], or more than [70%] of your dots fall within 3 px of one registry raster's dots, you have drifted into another lane: log it as a duplicate and stop. Check this on the surface before placement AND on the final dots.
+>
+> 2. REUSE, DON'T REBUILD. Use the template's cached feature stack, evaluate_[holdout.py] and submission_[writer.py]. Holdout = hide-and-recover: withhold whole fault segments with a buffer, derive every catalogue-based feature only from the visible faults, mask visible faults pixel-exactly, score pooled DTI (alpha 0.2, beta 0.8, 300 m triangular kernel). If a shared tool is wrong, fix it once in the template and report it; never keep a private fork.
+>
+> 3. LABEL EVERY NUMBER as HOLDOUT-DTI (evaluator version, number of withheld positives, 95% CI) or ORGANIZER-CONFIRMED (copied from a submission-page receipt). A projection is never written as a score.
+>
+> 4. LEAKAGE CANARY. Test each feature alone on the holdout before trusting any result. AUC above [0.90] means leakage until proven otherwise.
+>
+> 5. RUN CARD. End with one JSON card: hypothesis; mechanism; the named non-fault process that could mimic it; holdout DTI + CI; correlation/overlap vs registry; raster sha256; validator output (no NaN inside the footprint, values in [0,1], CRS/shape/transform match); submission name + note of at most 140 characters; verdict promote / negative. Negative results are deliverables.
+>
+> 6. BUDGET. Stop after [3] experiments or [2] hours. Do not pick submissions: promotion to a real slot is a separate selector step, within the weekly cap shown on the submission page.
+
+**Core values (quoted in part):** *Maximize P(Win)* — "Maximize the Probability of Winning": our decision making framework. *Own the Outcome* — "We own results end to end — not just our individual slice of the work."
+
+**Working rules for this project (condensed from the request):** work line by line from official, verifiable sources and give links for manual review; no manual input; flag irregularities; do not hallucinate; three passes (implement and verify, review and fix, recheck against the request); and open and merge a pull request, then list the remaining work and limitations.
+
+---
+
 ## Historical session record (not current clearance)
 
 
