@@ -10,6 +10,9 @@
 Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
 
 <!-- CURRENT-STATUS:END -->
+
+For the evidence review of the user-reported GEMSDOE32 `0.2778` value, see [the sourced explanation and evidence limits](docs/BEAT_0_2778.md). The value is not a verified organizer receipt.
+
 <details data-status-archive="true">
 <summary>Archived parallel-lane reports — not current submission clearance</summary>
 

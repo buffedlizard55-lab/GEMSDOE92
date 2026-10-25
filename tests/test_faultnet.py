@@ -105,12 +105,26 @@ def test_run_card_matches_served_files_and_decision_rule():
 
 
 @pytest.mark.skipif(not CARD.is_file(), reason="run card not generated")
-def test_site_block_is_rendered_from_current_submission_json():
+def test_faultnet_lane_is_explicitly_negative_while_site_status_remains_authoritative():
     cur = json.loads((ROOT / "docs" / "downloads" / "current_submission.json").read_text())
     readme = (ROOT / "README.md").read_text()
     index = (ROOT / "docs" / "index.html").read_text()
-    for text in (readme, index):
-        assert text.count("<!-- CURRENT:BEGIN -->") == 1
-        assert cur["sha256"] in text
-        assert ("DO NOT SUBMIT" in text.split("<!-- CURRENT:END -->")[0]) == (not cur["ok_to_submit"])
+    assert cur["verdict"] == "negative" and cur["ok_to_submit"] is False
+    assert cur["uniqueness"]["unique_operative"] is False
     assert (ROOT / cur["file"]).is_file() and (ROOT / cur["zip"]).is_file()
+
+    # Repository-wide readiness is authoritative and must distinguish the
+    # downloadable research primary from upload permission on every entry page.
+    assert "CURRENT-STATUS:BEGIN" in readme
+    readme_status = readme.split("<!-- CURRENT-STATUS:BEGIN -->", 1)[1].split("<!-- CURRENT-STATUS:END -->", 1)[0]
+    assert "OK TO DOWNLOAD FOR RESEARCH" in readme_status and "DO NOT SUBMIT" in readme_status
+    assert "CURRENT-READINESS:BEGIN" in index
+    site_status = index.split("<!-- CURRENT-READINESS:BEGIN -->", 1)[1].split("<!-- CURRENT-READINESS:END -->", 1)[0]
+    assert "OK TO DOWNLOAD FOR RESEARCH" in site_status and "DO NOT SUBMIT" in site_status
+
+    # The lane-specific receipt remains visible as a negative research result,
+    # not as a second current submission authorization.
+    faultnet = index.split("<!-- CURRENT:BEGIN -->", 1)[1].split("<!-- CURRENT:END -->", 1)[0]
+    assert cur["sha256"] in faultnet
+    assert "DO NOT SUBMIT" in faultnet
+    assert "0.7586" in faultnet

@@ -2,7 +2,7 @@
   "schema": "gemsdoe92-public-registry-uniqueness.v1",
   "reviewed_utc": "2026-10-25T06:09:15.762326+00:00",
   "evidence_class": "REGISTRY-MEASUREMENT",
-  "binding_rule": "literal: absolute Spearman >0.90 OR >70% of candidate dots within 3 px of any registry raster; dual_reading_decision (<=150k px literal, >150k px matched-budget top-37654) recorded alongside",
+  "binding_rule": "Literal full-footprint stop applies to all nonempty candidates: 3-px forward overlap >0.70 OR absolute rank correlation >0.90; the pinned witness covers all 5,167,373 footprint cells. Matched-budget dual_reading_decision output is diagnostic only.",
   "candidate": {
     "name": "h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f",
     "sha256": "8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347",
@@ -23,19 +23,20 @@
   "preplacement_surface": {
     "registries_checked": 1415,
     "unique_under_literal_rule": false,
-    "unique_under_dual_reading_rule": true,
+    "unique_under_dual_reading_rule": false,
     "stop_required": true,
     "worst_abs_spearman": 0.456199,
     "worst_rho_raster": "h19_5.tif",
     "worst_forward_overlap": 1.0,
     "worst_overlap_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
     "worst_operative_matched_budget_overlap": 0.685531,
-    "worst_operative_witness": "GEMSDOE92/docs/downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif"
+    "worst_operative_witness": "GEMSDOE92/docs/downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif",
+    "matched_budget_diagnostic_pass": true
   },
   "final_dots": {
     "registries_checked": 1415,
     "unique_under_literal_rule": false,
-    "unique_under_dual_reading_rule": true,
+    "unique_under_dual_reading_rule": false,
     "stop_required": true,
     "worst_abs_spearman": 0.141243,
     "worst_rho_raster": "downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
@@ -43,7 +44,8 @@
     "worst_overlap_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
     "worst_operative_overlap_3px": 0.685531,
     "worst_operative_witness": "GEMSDOE92/docs/downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif",
-    "operative_over_70pct_count": 0
+    "operative_over_70pct_count": 0,
+    "matched_budget_diagnostic_pass": true
   },
   "dual_reading_summary": {
     "sha256": "8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347",
@@ -64,7 +66,7 @@
     "continuous_gt_150k_matched_budget_worst_overlap_3px": 0.514235,
     "continuous_gt_150k_matched_budget_worst_witness": "GEMSDOE48/docs/downloads/diagnostics/GEMSDOE48-H57-ds-relief-augmented-20261007-e6b785718c07-diag-belief.tif",
     "continuous_gt_150k_over_70pct_count": 0,
-    "dual_reading_verdict": "unique",
+    "dual_reading_verdict": "matched-budget diagnostic only; not clearance under literal rule",
     "literal_unweighted_worst_overlap_3px": 1.0,
     "literal_unweighted_witness": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
     "top5_operative": [
@@ -110,7 +112,10 @@
       "spearman_final": 0.058838
     }
   },
-  "verdict": "negative \u2014 duplicate under literal registry rule (17GEMSDOE dense surface 1.000); unique under dual_reading_decision (0/1412 > 0.70, max 0.685531)",
+  "verdict": "negative — duplicate under binding literal registry rule (1.0 > 0.70); matched-budget diagnostics do not clear submission",
   "scan_complete_for_declared_scope": true,
-  "candidate_file_sha256": "8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347"
+  "candidate_file_sha256": "8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347",
+  "current_policy_notice": "Current policy decision: NEGATIVE / DO NOT SUBMIT. The literal full-footprint witness has 1.0 forward overlap (>0.70). Matched-budget dual-reading values are retained only as historical diagnostics; they do not establish uniqueness or submission clearance.",
+  "submission_eligible": false,
+  "current_verdict": "negative — literal registry stop"
 }
