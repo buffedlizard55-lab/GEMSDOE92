@@ -1,4 +1,10 @@
-## Current review addendum — 2026-10-25 (`797e507a`)
+## Current review addendum — 2026-10-25 (fresh repository audit)
+
+Read `docs/REVIEW_20261025_FRESH_AUDIT.md` first, then the latest protocol/source report `docs/REVIEW_7059163E.md` before older session-result addenda. Fresh checks after merging protocol review 7059163e: 499 tests passed (140 non-fatal Rasterio affine deprecation warnings); `scripts/check_site.py` reopened and gated 82 served rasters; public-status check, pinned parent, manifest and ledger passed. The README first-screen conflict was corrected. No new TIFF, geological experiment, HOLDOUT-DTI, organizer receipt, or weekly slot was produced. The existing LISTRICDIP raster remains research-only; the literal pinned-witness overlap stop remains binding. Ranked proposals are documented but not validated; the raw feature cache is absent. The unique-TIF objective remains unfulfilled. All links/results and the access boundary are in the audit; numbers are not new score claims.
+
+---
+
+## Prior current review addendum — 2026-10-25 (`797e507a`)
 
 Read `docs/REVIEW_797E507A.md` before older session-result addenda. This review generated no new TIFF and used no experiment or slot: a fresh pinned universal registry witness requires a stop. Preserve literal overlap, not matched-budget reinterpretations. The existing LISTRICDIP primary inherited from parallel main is research-only. Three public entry pages must have the generated authoritative status first; CI/Pages check byte pins and ordering. The unique-TIF objective remains unfulfilled. Persistent requirements in this file and the README are a normalized operating brief, not a verbatim user-message archive.
 
