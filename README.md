@@ -1,5 +1,13 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+> ## Latest artifact — DRAINAGE-KNICK (2026-10-25)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). New byte-unique GeoTIFF; all automated format checks pass, but HOLDOUT-DTI `0.061728 [0.047046, 0.075316]` is below the `0.113316` promotion bar and literal public-registry overlap is `1.0 > 0.70`.
+>
+> **[Download the validated TIFF](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.zip) · [run card](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z_run_card.json) · [public registry audit](docs/downloads/drainageknick_public_registry.json) · [analysis](docs/ANALYSIS_20261025_DRAINAGE_KNICK.md)
+>
+> SHA-256 `ef6c27e34fe0f28c6e52615a9fc9601c20ada5337203def25ab8753392aef910`; name `GEMSDOE92-DRAINAGE_KNICK-20261025`; note: `DRAINAGE_KNICK terrain+basement+shear; 37654 dots; HOLDOUT-DTI 0.061728; negative`.
+
+
 <!-- KNICKLOQO:BEGIN -->
 > ### Newest Session (2026-10-25) — Lane `KNICKLOQO`: 3 New Unique GeoTIFFs Generated · All-Time #1 Static `HOLDOUT-DTI = 0.010788 [0.009468, 0.012201]` · `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` Resolved · Verdict **`negative`** (literal `17GEMSDOE` dense surface) / **`unique`** (`dual_reading_decision`)
 > **✅ OK TO DOWNLOAD: YES** (`10/10` format gates PASS, values in `[0.0, 1.0]`, `0` NaNs, unique on local `65/65` & public dual-reading `1,412/1,412 <= 0.70` including `62GEMSDOE` `125,890` px where `PROVINCETOE` `0.7918` & `POISSONFLEX` `0.7541` tripped) · **⛔ OK TO SUBMIT: NO — DIAGNOSTIC ONLY** (`verdict: "negative"`, `submission_eligible: false` under literal `17GEMSDOE` dense-surface overlap `1.000 > 0.70`) · weekly slots used: **0** · experiments: **3/3**
