@@ -17,6 +17,12 @@
 
 ## 1. Completed in the `COULOMB-LOQO` Session
 
+# Current review update — 2026-10-24 UTC
+
+See the [three-pass Arena repository review](REVIEW_20261024_ARENA.md) and its [machine-readable run card](../evidence/arena_review_run_card_20261024.json). Revalidation passed 224 tests, the site gate over 36 served TIFFs, all eight tracked manifest hashes, pinned R0 lineage, and the 68-row ledger integrity check (no organizer receipt). No new experiment or TIFF was generated. The recorded full-footprint-positive public witness forces a 100% final-dot overlap under the unchanged literal `>70%` rule, so existing artifacts remain research-only and **DO NOT SUBMIT**. The current local GeoDAWN feature stack is not staged. Do not spend a slot or evade the gate; resolve the dense-raster policy and establish authorized input provenance before the ranked Euler/contact/DEM/InSAR queue is tested.
+
+---
+
 1. **Unified PR #49 Merge State & Corrected 5 Newly Verified Irregularities (`IRREGULARITIES.md`):**
    - `#IR-92-ALPHA-BETA-PROSE-SWAP`: Corrected inverted Tversky denominator prose (`0.2 * FP_w + 0.8 * FN_w`, verified in `drivendataorg/gems-prize-reference-solution` Cell 16 and `vendor/gems57/metric.py`).
    - `#IR-92-SOLO-R1-BYTE-IDENTITY` & `#IR-92-CAT-COUNT-PROSE`: Proved exact zero-XOR ancestor cascade `H19-5 (121,131) -> D2.8 (44,090) -> SOLO (40,199 = D2.8 & d_cat > 1.0) -> R0 (37,654 = D2.8 & d_cat > 2.0)` across `60,988` `existing_faults` pixels.

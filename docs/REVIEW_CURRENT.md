@@ -1,5 +1,9 @@
 # Current Repository & Gate Review — `GEMSDOE92` (`2026-10-24`, `XPHASE dual40` Research Download)
 
+**OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT.** Subsequent to [session 918b947a](REVIEW_918B947A.md) ([run card](downloads/review_918b947a_run_card.json)), this session generated unique `XPHASE` research TIFFs. The universal dense-witness overlap stop still bars weekly-slot clearance. No current organizer score is claimed.
+
+---
+
 ## 0. This session (`XPHASE`)
 
 - **Research GeoTIFF:** `docs/downloads/h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif`
