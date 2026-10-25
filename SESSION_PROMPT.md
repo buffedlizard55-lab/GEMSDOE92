@@ -3,6 +3,9 @@
 Read the README's "Session request — 2026-10-25" block, then [`docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md`](docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md) and [`evidence/review_20261025_audit_run_card.json`](evidence/review_20261025_audit_run_card.json). Earlier readiness audit (still valid): docs/REVIEW_20261025_SESSION.md. Current verified state: research downloads only; DO NOT SUBMIT; No new raster was generated this session; 0 of 3 experiments; 0 slots. The literal duplicate rule cannot be satisfied by any in-footprint raster (the public 17GEMSDOE witness is positive on all 5,167,373 footprint cells). Five operator decisions (D1–D5) block promotion; an agent may not decide them silently. The official rules say outside-bounds values should be null or NaN; this repo's gate requires zeros (D2). Live #1 is 0.4413 (not a GEMSDOE entry). GEMSDOE32's 0.2778 is a CLAIM with no receipt.
 
 ---
+## Current review addendum — 2026-10-26 (session `977778c1`)
+
+Read `docs/REVIEW_20261026_SESSION_977778C1.md` + `evidence/review_20261026_977778c1_run_card.json`. Three-pass review only: no TIFF, experiment, holdout, or slot. Fixed 3 pre-existing failures on main (README contract phrase, unlinked served TILTANGLE TIFF, missing `<main>` in tiltangle.html): **542 tests passed**, site check PASS (93 rasters). Binding literal dense-witness stop still applies; submission-cleared unique TIFF remains unmet; all brief scores remain CLAIM. Next: protocol owner must resolve the literal-rule policy; ensure site-contract tests gate CI.
 
 ## Current lane addendum — 2026-10-25 (`NETEXPAND`, branch `arena/a7cdad14-gemsdoe92`)
 
