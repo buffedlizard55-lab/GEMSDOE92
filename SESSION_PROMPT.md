@@ -1,3 +1,7 @@
+## Current review addendum — 2026-10-26 (session `977778c1`)
+
+Read `docs/REVIEW_20261026_SESSION_977778C1.md` + `evidence/review_20261026_977778c1_run_card.json`. Three-pass review only: no TIFF, experiment, holdout, or slot. Fixed 3 pre-existing failures on main (README contract phrase, unlinked served TILTANGLE TIFF, missing `<main>` in tiltangle.html): **542 tests passed**, site check PASS (93 rasters). Binding literal dense-witness stop still applies; submission-cleared unique TIFF remains unmet; all brief scores remain CLAIM. Next: protocol owner must resolve the literal-rule policy; ensure site-contract tests gate CI.
+
 ## Current lane addendum — 2026-10-25 (`NETEXPAND`, branch `arena/a7cdad14-gemsdoe92`)
 
 Read `docs/ANALYSIS_20261025_NETEXPAND.md` + `evidence/netexpand_run_card.json` first. NETEXPAND (KNICK30+LISTRIC4+FAULTNET-context5+ASA/coherence/curie/MT6 LOQO, pure crest) produced 3 format-valid (11/11 gates) byte-unique TIFs. Strict draw-blind HOLDOUT-DTI: netexpand_far 0.177976 [0.163109,0.193227], netexpand 0.146798, nocontext 0.115566 vs control_knick 0.109069 / control_knick_far 0.111601 (22,663 withheld; canaries <=0.7775). All arms verdict negative: Rule-1 lane duplicates vs FAULTNET/KNICKLOQO (0.76-0.81 > 0.70 local, 123 rasters); vs R0/H19-5 <=0.40 (not copies). 3/3 experiments used, 0 slots. GEMSDOE32 0.2778 re-verified live as UNSCORED CLAIM (no organiser score exists). Next: NETEXPAND-R repelled emission or GDR-GEOTHERMOMETER-FIELD (see hypotheses doc); operator must resolve dense-witness literal-rule policy (F2). Maximize P(Win); Own the Outcome.
@@ -8,6 +12,12 @@ Start with the generated README decision, the [latest three-pass repository revi
 ## Supplemental initial session follow-up — 2026-10-25 (`17:03:59Z` audit)
 
 [Three-pass follow-up](docs/REVIEW_20261025_SESSION_FOLLOWUP.md) · [rejection-only run card](docs/downloads/session_followup_20261025_run_card.json). This timestamped audit produced no candidate raster, holdout, leakage canary, experiment, or slot and had no method paragraph assigned. Its rank-1 candidate is conditional, not an assigned lane. The audit-time inability to fetch DrivenData is historical: a later main-branch [leaderboard review](docs/ANALYSIS_20261025_LEADERBOARD.md) records a public top-50 snapshot; that is not a submission receipt for GEMSDOE32, whose `0.2778` remains a `CLAIM`. This is a supplemental record for that audit, not a replacement for the current review or later repository lane records below.
+
+---
+
+## Current session addendum — 2026-10-25 (MT-CHANGEPOINT lane, branch `arena/7f2e773e-gemsdoe92`)
+
+Lane `MT-CHANGEPOINT` completed 3/3 pre-registered experiments (`docs/HYPOTHESES_20261025_MT_CHANGEPOINT.md`, `gems/mt_changepoint.py`, `scripts/build_mt_changepoint_submission.py`). Primary `gemsdoe92-mtcp-20261025T182129Z-mtcp-37654-zeros.tif` (SHA-256 `ad3bc4b7a8110c2b…`) is format-valid (`run_gates` 10/10 PASS, single-band float32, EPSG:32611, 3730×3292, values in [0, 1], nodata=None, 0 NaN anywhere, 0 on catalogue). Locally unique across 105 local registry rasters (surface worst |ρ| = 0.0642 ≤ 0.90; final-dot worst overlap = 0.3854 ≤ 0.70). Primary HOLDOUT-DTI `0.043936 [0.036431, 0.051261]` (gems57-pooled-hide-v2, 22,663 withheld positives, per-draw re-placement) is below the 0.113316 bar → **verdict negative, DO NOT SUBMIT, 0 slots spent**. Forensic analysis of GEMSDOE32's claimed 0.2778 score vs 0.4413 / 0.3195 leaderboard documented in `docs/ANALYSIS_20261025_MT_CHANGEPOINT.md`.
 
 ---
 
