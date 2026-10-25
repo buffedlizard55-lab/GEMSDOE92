@@ -1,22 +1,28 @@
 # Executive summary — GEMSDOE92 submission workbench
 
 <!-- CURRENT:BEGIN -->
-> ## Newest lane result — lane LISTRICLOQO / arm `selectcal`
-> **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 1.0000 of its dots lie within 3 px of the dots of 17GEMSDOE full-footprint dense witness (5,167,373 dots), above the 0.70 limit.
+> ## Newest lane result — lane VARIO / arm `vario_full`
+> **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 0.9791 of its dots lie within 3 px of the dots of gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif (37,654 dots), above the 0.70 limit; did not beat control_FAULTNET_far on the holdout.
 >
-> **[⬇ Download the GeoTIFF](downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif)** · [one-TIFF ZIP](downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.zip) · [run card](downloads/listric_loqo_run_card.json) · [analysis](ANALYSIS_20261025_LISTRICLOQO.md)
+> **[⬇ Download the GeoTIFF](downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif)** · [one-TIFF ZIP](downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.zip) · [run card](downloads/vario_run_card.json) · [analysis](ANALYSIS_20261025_VARIO.md)
 >
 > **How to submit (only with a file marked ✅ OK TO SUBMIT, which this one is not):**
 > 1. Download the `.tif` (or the ZIP holding only that TIFF).
 > 2. Go to https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/ (log in; not live-verified from the sandbox), then choose the file under *File to submit*.
-> 3. Paste this into *Note (optional)*: `h33-h33-2-b2; LISTRICLOQO selectcal: 37654 1D updip-listric+interfluve-knick+U/Th-K/Th crests; HOLDOUT-DTI 0.013295`
-> 4. Name/record: `GEMSDOE92-LISTRICLOQO-selectcal-20261025`. After scoring, record the receipt in `ledger/submissions.csv`.
+> 3. Paste this into *Note (optional)*: `VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat>2`
+> 4. Name/record: `GEMSDOE92-VARIO-full-20261025`. After scoring, record the receipt in `ledger/submissions.csv`.
 >
-> Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17`.
-> **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22,663 withheld positives): `0.013295 [0.011713, 0.014980]`. KNICKLOQO standalone control: `0.010788 [0.009468, 0.012201]`. Paired Δ `+0.002508 [0.001477, 0.003463]`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
-> **Uniqueness** (1,459 registry rasters): worst overlap `1.0000` (limit 0.70), worst |ρ| `0.1434` / surface `0.4685` (limit 0.90). Literal-support reading: 1 raster(s) > 0.70. The literal reading is binding under the current protocol and triggers the duplicate stop.
-> Siblings: [standalone](downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif) (negative, HOLDOUT-DTI 0.013250) · [uncal](downloads/h33-h33-2-b2-LISTRICLOQOuncal-20261025-2962f45f-zeros.tif) (negative, HOLDOUT-DTI 0.013105). **Read [SESSION_PROMPT.md](../SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
+> Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573`.
+> **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22,663 withheld positives): `0.150020 [0.134975, 0.164286]`. control_FAULTNET_far control: `0.175147 [0.159756, 0.189860]`. Paired Δ `-0.025127 [-0.029306, -0.020842]`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
+> **Uniqueness** (99 registry rasters): worst overlap `0.9791` (limit 0.70), worst |ρ| `0.8913` / surface `0.1373` (limit 0.90). Literal-support reading: 4 raster(s) > 0.70. The literal reading is binding under the current protocol and triggers the duplicate stop.
+> Siblings: [vario_smooth](downloads/gemsdoe92-vario-smooth-37654-20261025-5c5a1192-zeros.tif) (negative, HOLDOUT-DTI 0.141661) · [vario_nctx](downloads/gemsdoe92-vario-nctx-37654-20261025-d2d499d5-zeros.tif) (negative, HOLDOUT-DTI 0.116258). **Read [SESSION_PROMPT.md](../SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
 <!-- CURRENT:END -->
+
+
+
+
+
+
 
 
 

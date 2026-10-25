@@ -126,6 +126,105 @@ def readiness(card: dict) -> dict:
     )
 
 
+def current_submission(card: dict) -> dict:
+    """Keep docs/downloads/current_submission.json byte-bound to the VARIO primary."""
+    hold = card["holdout_dti"]
+    arm = card["primary_arm"]
+    prim = hold["scores"][arm]
+    ctrl_key = hold["best_comparable_control"]
+    ctrl = hold["scores"][ctrl_key]
+    delta = hold["primary_minus_best_control"]
+    fd = card["correlation_overlap_vs_registry"]["final_dots"][arm]
+    uniq = fd["operative_sparse"]
+    wo = uniq["worst_overlap"]
+    wr = uniq["worst_abs_spearman"]
+    sp = card["correlation_overlap_vs_registry"]["surface_preplacement"]["worst_abs_spearman"]
+    rows = fd.get("registry_rows") or []
+    n_lit = sum(1 for r in rows if r.get("forward_overlap_within_3px", 0.0) > 0.70)
+    pkg = card["packaged"][arm]
+    siblings = {
+        k: {
+            "file": v["file"],
+            "verdict": "negative",
+            "dti": hold["scores"][k]["dti"],
+        }
+        for k, v in card["packaged"].items()
+        if k != arm
+    }
+    return {
+        "schema": "gemsdoe92-current-submission-v1",
+        "generated_utc": card["generated_utc"],
+        "lane": card["lane"],
+        "arm": arm,
+        "ok_to_download": True,
+        "ok_to_submit": False,
+        "verdict": card["verdict"],
+        "file": card["submission_file"],
+        "zip": pkg["zip"],
+        "sha256": card["raster_sha256"],
+        "zip_sha256": pkg["zip_sha256"],
+        "submission_name": card["submission_name"],
+        "note": card["note"],
+        "analysis": "docs/ANALYSIS_20261025_VARIO.md",
+        "holdout_dti": {
+            "evidence_class": "HOLDOUT-DTI",
+            "evaluator_version": hold["evaluator_version"],
+            "dti": prim["dti"],
+            "ci95": prim["ci95"],
+            "withheld_positives": prim["withheld_positive_pixels"],
+            "paired_vs_control": delta,
+            "paired_vs_required_controls": {
+                ctrl_key: {
+                    "control_dti": ctrl["dti"],
+                    "delta": delta["delta"],
+                    "ci95": delta["ci95"],
+                }
+            },
+        },
+        "control": {
+            "name": ctrl_key,
+            "dti": ctrl["dti"],
+            "ci95": ctrl["ci95"],
+        },
+        "uniqueness": {
+            "unique_operative": bool(uniq["passes"]),
+            "duplicates_operative": n_lit,
+            "worst_overlap_final": {
+                "value": wo["forward_overlap_within_3px"],
+                "raster": wo["file"],
+                "representation": "dot_field" if wo.get("binary") else "continuous_surface",
+                "their_positive": wo["n_positive"],
+            },
+            "worst_overlap_surface_topn": {
+                "value": wo["forward_overlap_within_3px"],
+                "raster": wo["file"],
+                "representation": "dot_field" if wo.get("binary") else "continuous_surface",
+                "their_positive": wo["n_positive"],
+            },
+            "worst_abs_rho_final": {
+                "value": abs(wr["spearman"]),
+                "raster": wr["file"],
+                "representation": "dot_field" if wr.get("binary") else "continuous_surface",
+                "their_positive": wr["n_positive"],
+            },
+            "worst_abs_rho_surface": {
+                "value": abs(sp["spearman"]),
+                "raster": sp["file"],
+                "representation": "dot_field",
+                "their_positive": None,
+            },
+            "registry_rasters_checked": uniq["rasters"],
+            "literal_reading": {
+                "rasters_over_0p70": n_lit + 1,
+                "full_footprint_surfaces": 1,
+                "note": f"{n_lit} local rasters > 0.70 plus pinned full-footprint witness overlap 1.0",
+            },
+        },
+        "run_card": "docs/downloads/vario_run_card.json",
+        "siblings": siblings,
+    }
+
+
 def _fmt(x) -> str:
     return f"{x:.6f}" if isinstance(x, (int, float)) else str(x)
 
@@ -306,9 +405,11 @@ the sandbox cannot reach DrivenData/USGS directly. Byte identity is verified; of
 def render(root: Path = ROOT, *, write: bool = True) -> dict:
     card = load_card(root)
     st = readiness(card)
+    cur = current_submission(card)
     changes: dict[Path, str] = {}
     changes[root / "docs/downloads/readiness.json"] = json.dumps(
         {k: v for k, v in st.items()}, indent=2) + "\n"
+    changes[root / "docs/downloads/current_submission.json"] = json.dumps(cur, indent=2) + "\n"
     changes[root / "docs/vario.html"] = vario_page(card, st)
     block_h = panel_html(card, st)
     for rel in HTML_PAGES:

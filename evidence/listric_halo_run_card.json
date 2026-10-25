@@ -61,5 +61,10 @@
   },
   "submission_name": "listric-deep-halo-32k",
   "submission_note": "Listric fault deep root halo via blind offset",
-  "verdict": "negative"
+  "verdict": "negative",
+  "serving_quarantine": {
+    "removed_from_docs_downloads": true,
+    "reason": "Orphaned commit 15e4643 (#132) placed an unlinked raster into docs/downloads/ that fails shared run_gates(prune_radius=2): distance_from_catalogue radius=2px dots_within=4750; strict distance > radius required.",
+    "preserved_git_commit": "15e46431f278deb3fe3b806a927d3d486049cf29"
+  }
 }
