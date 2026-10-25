@@ -1,59 +1,55 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-> ## Authoritative decision — review `7059163e` (2026-10-25), locally rechecked
-> **✅ OK TO DOWNLOAD FOR RESEARCH · ⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT.** The existing LISTRICDIP TIFF is format-valid but fails the binding literal registry-overlap stop: **REGISTRY-MEASUREMENT** overlap `1.0` against one pinned full-footprint witness (`0.70` limit). No new TIFF, geological experiment, HOLDOUT-DTI result, organizer receipt, or weekly-slot use was produced by the latest protocol review. The unique submission request remains unfulfilled.
+<!-- CURRENT-STATUS:BEGIN -->
+## Authoritative decision — Current verified status, 2026-10-25 (LISTRICLOQO 2026-10-25)
+
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** The completed LISTRICLOQO lane generated a byte-unique TIFF, but it failed promotion gates.
+
+[Current unique research download](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif) · [protocol run card](docs/downloads/listric_loqo_run_card.json) · [analysis](docs/ANALYSIS_20261025_LISTRICLOQO.md) · [executive submission guide](docs/executive-summary.html).
+
+Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.013295 [0.011713, 0.014980]`; paired improvement over KNICKLOQO is +0.002508 [0.001477, 0.003463]. Public dual-reading overlap is `0.690259 <= 0.70`, and literal dense-witness overlap is `1.0`. No ORGANIZER-CONFIRMED score is available; 3/3 experiments and zero weekly slots.
+
+<!-- CURRENT-STATUS:END -->
+
+<!-- CURRENT:BEGIN -->
+> ## Newest lane result — lane LISTRICLOQO / arm `selectcal`
+> **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 1.0000 of its dots lie within 3 px of the dots of 17GEMSDOE full-footprint dense witness (5,167,373 dots), above the 0.70 limit.
 >
-> **[Download existing research TIFF](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif)** · [latest three-pass review and ranked hypotheses](docs/REVIEW_7059163E.md) · [fresh repository audit](docs/REVIEW_20261025_FRESH_AUDIT.md) · [automated run card](docs/downloads/review705_run_card.json) · [executive summary — submission instructions](docs/executive-summary.html).
+> **[⬇ Download the GeoTIFF](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif)** · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.zip) · [run card](docs/downloads/listric_loqo_run_card.json) · [analysis](docs/ANALYSIS_20261025_LISTRICLOQO.md)
 >
-> This is not submission clearance. Format validation does not establish scientific validity or competition acceptance. Historical lane results below are not current eligibility decisions.
-
-## Current review — 2026-10-25 (`48e4797d`)
-
-**OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT. No new unique TIFF was generated.**
-The unique-submission objective remains unmet; this review did not copy, rename or select a prior submission.
-
-**[Download the existing format-validated research TIFF](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif)** · [clean current review and source links](docs/review48.html) · [fresh run card](docs/downloads/review48_run_card.json) · [executive submission guide](docs/executive-summary.html) · [three-pass record](docs/REVIEW_48.md).
-
-Fresh **REGISTRY-MEASUREMENT**: the pinned public witness is positive at all 5,167,373 finite template cells. Every nonempty in-footprint candidate therefore has literal overlap **1.0 > 0.70**; stop before feature generation or dot placement. Single-witness rejection is sufficient; it is not a full new registry scan. No geological lane paragraph was supplied. No new HOLDOUT-DTI, leakage result, organizer receipt or weekly slot was produced.
-
-### Starting point for every session — persistent user requirements
-
-Read this README, [SESSION_PROMPT.md](SESSION_PROMPT.md), [current review](docs/REVIEW_CURRENT.md) and [ordered next steps](docs/NEXT_STEPS.md) before work. The durable brief and historical prompt inventory below preserve the supplied requirements; they are not permission to bypass a failed gate.
-
-- The goal is a **genuinely new, high-performing competition TIFF**, not a renamed prior submission. Put an easy download and explicit download/submission decision first on the site. Require one band, finite [0,1], no NaNs inside, matching CRS/shape/transform, an identifiable name and a note of at most 140 characters. Automated validation replaces visual inspection, not the separate slot selector.
-- Stay in one explicitly assigned lane; stop at the literal registry correlation/overlap thresholds before placement and on final dots. Reuse the cached feature stack and shared evaluator/writer; hide whole buffered fault segments and derive catalogue features from visible faults only. Run feature-alone leakage canaries before trusting results.
-- Rank 3–5 untried geological hypotheses first; record layers, physical operator, missing-fault rationale, differences, mimics, expected benefit and cost. Expected gains are unknown until tested. Only propose new external data as obtainable when verified.
-- Report local results as HOLDOUT-DTI with evaluator, withheld positives and 95% CI; only an exact organizer receipt supports ORGANIZER-CONFIRMED. Beat a comparable locked control before promotion; never equate catalogue recovery with geothermal vent discovery. Stop at three experiments or two hours.
-- Preserve official-source links, evidence provenance, access limitations and irregularities. No hallucinated live leaderboard, cap, source retrieval, score or eligibility. Complete three passes and use a PR for reviewed integration.
-- **Maximize P(Win):** protect slots and reject unsupported claims. **Own the Outcome:** repair shared tools, automate reproducible checks and plainly report unmet requirements.
-
-### One-command automatic audit (no pixel inspection)
-
-```bash
-python -m venv .venv
-.venv/bin/pip install -r requirements.txt
-.venv/bin/python scripts/audit_readiness.py --fetch-witness \
-  --output .cache/readiness-review.json
-```
-
-Exit **1** = confirmed protocol STOP; **2** = inconclusive/invalid. This rejection-only tool never grants upload permission. Network downloads stay in ignored `.cache/`; omit `--fetch-witness` for cached/offline verification. Receipts are immutable: choose a fresh output path on each run.
-
-The fetched official reference explicitly supports CPU-only training; the supplied claim that a GPU is mandatory is too strong. This checkout lacks the full feature cache, an authorized dense-raster policy resolution, an assigned lane and an authenticated organizer receipt. Non-GitHub official pages cannot be fetched under this sandbox's network policy. Historical “latest” banners and future-dated 2026-10-26 reports below are preserved records, **not current clearance or independently verified chronology**.
+> **How to submit (only with a file marked ✅ OK TO SUBMIT, which this one is not):**
+> 1. Download the `.tif` (or the ZIP holding only that TIFF).
+> 2. Go to https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/ (log in; not live-verified from the sandbox), then choose the file under *File to submit*.
+> 3. Paste this into *Note (optional)*: `h33-h33-2-b2; LISTRICLOQO selectcal: 37654 1D updip-listric+interfluve-knick+U/Th-K/Th crests; HOLDOUT-DTI 0.013295`
+> 4. Name/record: `GEMSDOE92-LISTRICLOQO-selectcal-20261025`. After scoring, record the receipt in `ledger/submissions.csv`.
+>
+> Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17`.
+> **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22,663 withheld positives): `0.013295 [0.011713, 0.014980]`. KNICKLOQO standalone control: `0.010788 [0.009468, 0.012201]`. Paired Δ `+0.002508 [0.001477, 0.003463]`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
+> **Uniqueness** (1,459 registry rasters): worst overlap `1.0000` (limit 0.70), worst |ρ| `0.1434` / surface `0.4685` (limit 0.90). Literal-support reading: 1 raster(s) > 0.70. The literal reading is binding under the current protocol and triggers the duplicate stop.
+> Siblings: [standalone](docs/downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif) (negative, HOLDOUT-DTI 0.013250) · [uncal](docs/downloads/h33-h33-2-b2-LISTRICLOQOuncal-20261025-2962f45f-zeros.tif) (negative, HOLDOUT-DTI 0.013105). **Read [SESSION_PROMPT.md](SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
+<!-- CURRENT:END -->
 
 
+> ## Latest artifact — LISTRIC (artifact label 2026-10-26; reviewed 2026-10-25, future-date irregularity disclosed)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`, `submission_eligible: false`). New unique-byte GeoTIFFs (3 experiments); automated [0,1] validation PASS. Static **HOLDOUT-DTI `0.010909 [0.009543, 0.012278]`** (`gems57-pooled-hide-v2`, 22,663 withheld px) nominally tops KNICKLOQO `0.010788` but paired Δ `+0.000121 [-0.001167, +0.001262]` includes 0, SGMC proxy is lower, and the public dual-reading overlap `0.710735 > 0.70` (62GEMSDOE) + literal `1.000` block promotion.
+>
+> **[Download LISTRIC standalone TIFF](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif)** · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.zip) · [run card](docs/downloads/listric_run_card.json) · [analysis](docs/ANALYSIS_20261026_LISTRIC.md) · [hypotheses](docs/HYPOTHESES_20261026_LISTRIC.md) · [three-pass current review](docs/REVIEW_20261025_ARENA_8A5595A3.md) · [executive summary — how to submit](docs/executive-summary.html)
+>
+> SHA-256 `7e4b46368b2a5949bcf626bfaa4457ed15a89dde38d412a1d07469411a31e2ab`; name `GEMSDOE92-LISTRIC-standalone-20261026`; note (82/140): `h33-h33-2-b2; LISTRIC standalone: 37654 1D quadrant-cal listric offset-pair crests`.
+
+> ## Prior artifact — DRAINAGE-KNICK (2026-10-25)
 
 
-## Repository review — 2026-10-25 (`7059163e`)
+## Current decision — 2026-10-25 (`f23ca2d2` review; read first)
 
-**New submission objective remains blocked, not completed.** Independently fetched and hash-checked registry bytes require stopping before placement. No new TIFF was generated, copied, or selected. The downloadable file above is an existing, automatically format-validated research artifact.
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT. No new unique TIFF was generated.**
+The unchanged literal duplicate rule rejects every nonempty candidate against the pinned full-footprint witness. Matched-budget “unique” claims in historical sections below are not binding clearance. We did not copy or rename a previous submission.
 
-[Three-pass review, ranked untested hypotheses and source audit](docs/REVIEW_7059163E.md) · [new rejection run card](docs/downloads/review705_run_card.json) · [fresh pre-placement proof](docs/downloads/review705_preflight.json) · [live machine-readable format status](docs/downloads/readiness.json).
+[Current automated status](docs/downloads/readiness.json) · [Research workbench / direct TIFF](docs/index.html) · [Executive submission guide](docs/executive-summary.html) · [Three-pass review and conditional hypotheses](docs/REVIEW_F23.md) · [Review run card](docs/downloads/review_f23_run_card.json)
 
-The GEMSDOE32 page says **UNSCORED** and **NO ORGANISER SCORE EXISTS** at the retrieved commit. The prompt's **CLAIM 0.2778** is not an organizer-confirmed result. A spacing/pruning mechanism is plausible, but it is not evidence of that private score or a forecast that a new candidate will beat it. See [analysis](docs/BEAT_0_2778.md).
+The shared distance validator previously accepted predictions inside a declared prune radius. It now enforces the radius, verifies catalogue alignment, rejects unreadable/mismatched grids cleanly and requires exact transform matching. Status is recomputed from the served bytes, not inferred from a historical PASS label. Run `python scripts/render_readiness.py` after deliberate input changes and `python scripts/check_site.py` to validate all served files and reject stale status.
 
-Read the operating brief below and `SESSION_PROMPT.md` at every session start. Data placement is **not** the sole blocker; no method paragraph was assigned, the universal registry stop binds, and official-source/receipt access remains incomplete. Future-dated historical claims are archived below, not endorsed as current results.
-
-**Chronology / fresh validation addendum:** files labelled 2026-10-26 occur in a 2026-10-25 session checkout; their dates are not proof of when the artifacts or preregistration were created. The independent repository audit records the current test/site-gate counts and explicitly reports no new TIFF or HOLDOUT-DTI: [2026-10-25 audit](docs/REVIEW_20261025_AGENT_AUDIT.md) · [machine-readable card](evidence/agent_repo_review_20261025_run_card.json).
+GitHub Pages is still in **legacy** publishing mode; changing to workflow mode returned HTTP 403. Local/CI verification does not prove the legacy deployment is gated by Actions. No live organizer score, slot cap or portal acceptance was verified.
 
 ### Persisted user brief — starting point for every session
 
@@ -68,27 +64,10 @@ Read this README and [SESSION_PROMPT.md](SESSION_PROMPT.md) before work. The [fu
 - Maintain a clean GitHub Pages site, executive submission subpage, machine-readable current status, reproducible run card, and no manual pixel-inspection requirement. Run three passes: implement and verify; inspect bugs/assumptions/edge cases; recheck against this brief and fix remaining problems. Create and merge a pull request as requested, and document outstanding work honestly.
 - **Maximize P(Win)** means preserving scarce slots and rejecting unsupported score claims. **Own the Outcome** means fixing shared defects and reporting unmet requirements, not weakening a failed gate.
 
+---
 
-<details>
-<summary>Historical session records — superseded status, not current submission clearance</summary>
+## Historical session record (not current clearance)
 
-<!-- LISTRICLOQO:BEGIN -->
-> ### Newest Session (2026-10-25) — Lane `LISTRICLOQO`: 3 New Unique GeoTIFFs Generated · All-Time #1 on BOTH Static `d_cat > 2.0` (`HOLDOUT-DTI = 0.013295 [0.011713, 0.014980]`) AND Strict Draw-Blind `d_visible > 2.0` (`HOLDOUT-DTI = 0.114410 [0.101808, 0.127706]`) · Verdict **`negative`** (literal `17GEMSDOE` dense surface) / **`unique`** (`dual_reading_decision`: `0 / 1,459 > 0.70`)
-> **✅ OK TO DOWNLOAD FOR RESEARCH: YES** (`11/11` automated format gates PASS, `float32` values strictly in `[0.0, 1.0]`, `0` NaNs anywhere, unique on local `68/68 <= 0.6903` & complete 102-repo public dual-reading scan `1,459/1,459 <= 0.6903`, `0` download failures) · **⛔ OK TO SUBMIT: NO — DO NOT SUBMIT FOR A WEEKLY SLOT** (`verdict: "negative"`, `submission_eligible: false` under literal `17GEMSDOE` dense-surface overlap `1.000 > 0.70`) · weekly slots used: **0** · experiments: **3/3**
->
-> - **Primary Research Download (`selectcal`):** [`h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif`](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif) · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.zip) · [audit JSON](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-audit.json) · [Rule 5 run card](docs/downloads/listric_loqo_run_card.json) · [holdout JSON](docs/downloads/listric_loqo_holdout.json) · [102-repo public scan (`1,459` rasters)](docs/downloads/listric_loqo_uniqueness.json) · [PhD Analysis (`GEMSDOE32` `0.2778` vs `0.3195` vs `0.4413` & `LISTRICLOQO`)](docs/ANALYSIS_20261025_LISTRICLOQO.md) · [Pre-Registered Hypotheses](docs/HYPOTHESES_20261025_LISTRICLOQO.md)
-> - **SHA-256 (`-zeros.tif`):** `58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17` · ZIP `7eb47ab108f0cdece4993c5227b59b250ca17498bf565dfa25fab7ae49ea4ec5`
-> - **Automated Project Validator (zero human inspection):** single-band `float32`, `EPSG:32611`, `3730 × 3292`, finite values strictly in `[0, 1]`, `0.0` outside footprint, `0` NaNs anywhere, `37,654` unit dots, `0` catalogue mass (`min d_cat = 2.2361 px > 2.0 px`) — prevents DrivenData's `"Predicted values must be in range [0, 1]"` portal error.
-> - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, `22,663` withheld positives, 8 folds, 1,000 paired 20 km cluster bootstrap draws):
->   - **Static `d_cat > 2.0` — NEW #1, #2 & #3 ALL-TIME REPOSITORY RECORDS:** `LISTRICLOQO selectcal` **`0.013295 [0.011713, 0.014980]`** (#1 all-time; surpasses prior #1 `KNICKLOQO standalone` `0.010788 [0.009468, 0.012201]` by **`+23.2%`**, paired $\Delta = +0.002508\,[+0.001477, +0.003463]$, `PROVINCETOE piedbasin` `0.009711` by **`+36.9%`**, `POISSONKNICK qcal` `0.009304` by **`+42.9%`**, `EULERFUSE gravity` `0.009265` by **`+43.5%`**, `COULOMBLOQO standalone` `0.009220` by **`+44.2%`**, `POISSONFLEX opt` `0.008824` by **`+50.7%`**, and parent `R0` `0.004006` by **`+231.9%`**); `LISTRICLOQO standalone` **`0.013250 [0.011620, 0.014974]`** (#2 all-time); `LISTRICLOQO uncal` **`0.013105 [0.011462, 0.014868]`** (#3 all-time).
->   - **Strict draw-blind `d_cat > 2.0` — NEW #1 ALL-TIME REPOSITORY RECORD:** `standalone` **`0.013064 [0.011508, 0.014670]`** (`+19.2%` over `KNICKLOQO` `0.010958`); `uncal` **`0.012994`**; `selectcal` **`0.012952`**.
->   - **Strict draw-blind fold-visible (`d_visible > 2.0`) — NEW #1 & #2 ALL-TIME REPOSITORY RECORDS:** `standalone` **`0.114410 [0.101808, 0.127706]`** (#1 all-time) and `selectcal` **`0.113938 [0.100887, 0.127394]`** (#2 all-time), surpassing prior #1 `COULOMBLOQO standalone` `0.113316 [0.100614, 0.127163]`, `EULERFUSE gravity` `0.110387`, `KNICKLOQO standalone` `0.109043`, `POISSONFLEX opt` `0.107466`, `PROVINCETOE` `0.106452`, and `H19-5` `0.096757 [0.084839, 0.108454]` (paired $\Delta = +0.017181\,[+0.010234, +0.025094]$).
-> - **Off-catalogue USGS SGMC Bedrock Fault `PROXY` (`62,122` pixels > 3 px off catalogue):** `selectcal` **`0.103442`**, `standalone` **`0.103139`** (`+14.2%` over `COULOMBLOQO standalone` `0.090569`, `+7.7%` over `R0` `0.096060`), `uncal` **`0.095001`**.
-> - **Leakage canaries (Protocol Rule 4):** `42 / 42 PASS` (`max symmetric AUC = 0.610332 <= 0.90`).
-> - **Uniqueness (`REGISTRY-MEASUREMENT`, Protocol Rule 1):** Local registry (`68` unique rasters): worst overlap `0.690259 <= 0.70`, worst `|ρ| = 0.181524 <= 0.90` (`PASS`). Complete 102-repo public registry (`1,459` non-self exact-grid rasters from `1,469` SHA-1-verified blobs, `0` download failures — resolving `#IR-92-PUBLIC-SCAN-RATELIMIT-705-FAILURES`): **`0 / 1,459 > 0.70` under `dual_reading_decision`** (`selectcal` max `0.690259 <= 0.70`, `standalone` max `0.695703 <= 0.70`, `uncal` max `0.639242 <= 0.70`; `62GEMSDOE` `125,890`-px overlap `0.636851 <= 0.70`; `GEMSDOE23` `100,000`-px overlap `0.594492 <= 0.70`; `>150k` continuous-surface matched-budget max `0.454108 <= 0.70`; `verdict = "unique"` under `dual_reading_decision`); literal unweighted overlap is `1.0000` against full-footprint `17GEMSDOE E-proba-multiscale` (`5,167,373` px).
-> - **Submission name:** `GEMSDOE92-LISTRICLOQO-selectcal-20261025` · **Note (`118 / 140`):** `h33-h33-2-b2; LISTRICLOQO selectcal: 37654 1D updip-listric+interfluve-knick+U/Th-K/Th crests; HOLDOUT-DTI 0.013295`
-> - **Sibling arms (`11/11` format gates PASS, research only, `0 / 1,459 > 0.70` on dual reading):** [`h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif`](docs/downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif) (`dc6d8f06053a48ef…`, static `0.013250`, Rule-2 `d_vis>2.0` #1 all-time `0.114410`) · [`h33-h33-2-b2-LISTRICLOQOuncal-20261025-2962f45f-zeros.tif`](docs/downloads/h33-h33-2-b2-LISTRICLOQOuncal-20261025-2962f45f-zeros.tif) (`304ffdc6ac5899da…`, static `0.013105`, Rule-2 `0.110804`).
-<!-- LISTRICLOQO:END -->
 
 > ## Latest lane artifact — FLEXMAG (2026-10-25, parallel session)
 > **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`, `submission_eligible: false`). 3 new byte-unique GeoTIFFs (blind-fault flexure hinge × magnetic ASA; 3/3 pre-registered experiments); automated [0,1] format validation PASS (`nodata=None`, 0 NaN). Primary **HOLDOUT-DTI `0.045554 [0.035846, 0.056751]`** (`gems57-pooled-hide-v2`, 22,663 withheld positives, per-draw re-placement) is below the 0.113316 promotion bar; magnetic-gate paired Δ includes 0. Locally unique (surface |ρ| ≤ 0.0658, final-dot overlap ≤ 0.5567 / 98 rasters); public 102-repo scan not rerun; literal-witness stop above remains binding.
@@ -96,33 +75,6 @@ Read this README and [SESSION_PROMPT.md](SESSION_PROMPT.md) before work. The [fu
 > **[Download FLEXMAG primary TIFF](docs/downloads/gemsdoe92-flexmag-20261025T165411Z-flexmag-37654-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-flexmag-20261025T165411Z-flexmag-37654-zeros.zip) · [run card](docs/downloads/flexmag_run_card.json) · [analysis — why/how 0.2778 + this test](docs/ANALYSIS_20261025_FLEXMAG.md) · [hypotheses](docs/HYPOTHESES_20261025_FLEXMAG.md) · [executive summary — how to submit](docs/executive-summary.html)
 >
 > SHA-256 `8190e1d07b059f8e6d1c869914a8786dfcbcb2771466f4c3874b60d1668c7261`; name `GEMSDOE92-FLEXMAG-flexmag-20261025`; note (94/140): `FLEXMAG flexmag: 37654 dots; blind-fault flexure hinge x magnetic ASA; HOLDOUT-DTI in run card`. Fresh source check: GEMSDOE32's own page (fetched 2026-10-25) labels `h33-h33-2-b2` **UNSCORED — NO ORGANISER SCORE EXISTS**; `0.2778` remains a CLAIM (see analysis §1).
-
-> ## Latest artifact — LISTRIC (2026-10-26)
-> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`, `submission_eligible: false`). New unique-byte GeoTIFFs (3 experiments); automated [0,1] validation PASS. Static **HOLDOUT-DTI `0.010909 [0.009543, 0.012278]`** (`gems57-pooled-hide-v2`, 22,663 withheld px) nominally tops KNICKLOQO `0.010788` but paired Δ `+0.000121 [-0.001167, +0.001262]` includes 0, SGMC proxy is lower, and the public dual-reading overlap `0.710735 > 0.70` (62GEMSDOE) + literal `1.000` block promotion.
->
-> **[Download LISTRIC standalone TIFF](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif)** · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.zip) · [run card](docs/downloads/listric_run_card.json) · [analysis](docs/ANALYSIS_20261026_LISTRIC.md) · [hypotheses](docs/HYPOTHESES_20261026_LISTRIC.md) · [executive summary — how to submit](docs/executive-summary.html)
->
-> SHA-256 `7e4b46368b2a5949bcf626bfaa4457ed15a89dde38d412a1d07469411a31e2ab`; name `GEMSDOE92-LISTRIC-standalone-20261026`; note (82/140): `h33-h33-2-b2; LISTRIC standalone: 37654 1D quadrant-cal listric offset-pair crests`.
-
-> ## Prior artifact — DRAINAGE-KNICK (2026-10-25)
-
-
-## Current decision — 2026-10-25 (`f23ca2d2` review; read first)
-
-**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT. No new unique TIFF was generated.**
-The unchanged literal duplicate rule rejects every nonempty candidate against the pinned full-footprint witness. Matched-budget “unique” claims in historical sections below are not binding clearance. We did not copy or rename a previous submission.
-
-[Current automated status](docs/downloads/readiness.json) · [Research workbench / direct TIFF](docs/index.html) · [Executive submission guide](docs/executive-summary.html) · [2026-10-26 repository review](docs/REVIEW_20261026_REPO.md) · [Three-pass review and conditional hypotheses](docs/REVIEW_F23.md) · [Review run card](docs/downloads/review_f23_run_card.json)
-
-The shared distance validator previously accepted predictions inside a declared prune radius. It now enforces the radius, verifies catalogue alignment, rejects unreadable/mismatched grids cleanly and requires exact transform matching. Status is recomputed from the served bytes, not inferred from a historical PASS label. Run `python scripts/render_readiness.py` after deliberate input changes and `python scripts/check_site.py` to validate all served files and reject stale status.
-
-GitHub Pages is still in **legacy** publishing mode; changing to workflow mode returned HTTP 403. Local/CI verification does not prove the legacy deployment is gated by Actions. No live organizer score, slot cap or portal acceptance was verified.
-
-
----
-
-## Historical session record (not current clearance)
-
 
 > ## Latest artifact — DRAINAGE-KNICK (2026-10-25)
 > **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). New byte-unique GeoTIFF; all automated format checks pass, but HOLDOUT-DTI `0.061728 [0.047046, 0.075316]` is below the `0.113316` promotion bar and literal public-registry overlap is `1.0 > 0.70`.
@@ -511,5 +463,3 @@ Study GEMSDOE32 (h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros: 0.2778): why and 
 ## Additional parallel research records (not rerun in review797e)
 
 Main `d6f7ac0` added [RADIODECOUPLE](docs/ANALYSIS_20261025_RADIODECOUPLE.md) and [CURIE-DEMAG](docs/ANALYSIS_20261026_CURIEDEMAG.md) research artifacts. Their original run cards and code are preserved. These do not override the literal stop or constitute experiments run in this review. CURIE-DEMAG names are future-dated relative to this review; use receipt hashes and actual verification timestamps.
-
-</details>

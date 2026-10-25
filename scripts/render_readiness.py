@@ -103,9 +103,9 @@ def build_status(root: Path = ROOT) -> dict:
         'submission_status': 'DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT',
         'submission_eligible': False,
         'verdict': 'negative',
-        'new_unique_tiff_generated': False,
-        'experiments_this_review': 0,
-        'weekly_slots_used_this_review': 0,
+        'new_unique_tiff_generated': True,
+        'experiments_this_review': int(card.get('experiments_used', 0)),
+        'weekly_slots_used_this_review': int(card.get('weekly_slots_used', 0)),
         'file': relative,
         'raster_sha256': digest,
         'submission_name': card['submission_name'],
@@ -120,13 +120,16 @@ def build_status(root: Path = ROOT) -> dict:
             'rank_correlation_reason': 'not measured in this review; overlap alone requires stop',
             'proof': 'downloads/review_f23_preflight.json',
         },
-        'holdout_dti': None,
-        'holdout_reason': 'No new candidate or holdout after universal pre-placement stop.',
+        'holdout_dti': card.get('holdout_dti'),
+        'holdout_reason': ('Measured by the completed LISTRIC lane; local HOLDOUT-DTI is not an '
+                           'organizer score and did not clear every promotion gate.'),
         'organizer_confirmed_score': None,
         'blocking_reasons': [
             'DUPLICATE UNDER THE LITERAL REGISTRY RULE: pinned positive support covers the entire footprint.',
             'Matched-budget overlap is diagnostic, not permission to replace the literal rule.',
-            'No geological method paragraph is assigned in this prompt.',
+            'The completed LISTRICLOQO lane used all 3 experiments and beats KNICKLOQO on paired holdout; literal overlap still blocks promotion.',
+            'Public dual-reading overlap is 0.690259, below the 0.70 threshold; literal dense-witness overlap is 1.0 and remains binding.',
+            'The artifact filename/run card is labelled 2026-10-26, one day after this 2026-10-25 review; chronology is unverified.',
             'No verified submission-page receipt or current weekly-cap evidence is available.',
         ],
         'input_sha256': {str(p.relative_to(root)): sha256_file(p) for p in bindings},
@@ -138,13 +141,13 @@ def panel(status: dict) -> str:
     reasons = '\n'.join(f'<li>{e(reason)}</li>' for reason in status['blocking_reasons'])
     return f'''{START}
 <section class="readiness-panel" aria-labelledby="current-readiness-heading">
-  <p class="readiness-kicker">GEMSDOE92 · automated submission readiness · review 2026-10-25</p>
-  <h1 id="current-readiness-heading">Research file available. Submission blocked.</h1>
+  <p class="readiness-kicker">GEMSDOE92 · automated submission readiness · LISTRICLOQO lane 2026-10-25</p>
+  <h1 id="current-readiness-heading">Unique research TIFF available. Submission blocked.</h1>
   <p><strong>{e(status['download_status'])}</strong><br><strong>{e(status['submission_status'])}</strong></p>
-  <p>No new unique TIFF was generated in this review. This is an existing research artifact, not a new submission.</p>
-  <p><a class="btn" href="{e(status['file'])}" download>Download existing research GeoTIFF (.tif)</a>
-  <a href="SUBMIT.html">Submission guide</a> · <a href="REVIEW_F23.md">Review, hypotheses and limitations</a> ·
-  <a href="downloads/readiness.json">Machine-readable status</a> · <a href="downloads/review_f23_run_card.json">Review run card</a></p>
+  <p>The completed LISTRICLOQO lane generated a byte-unique TIFF. It is easy to download, but it is <strong>not eligible to submit</strong>: scientific and registry promotion gates failed.</p>
+  <p><a class="btn" href="{e(status['file'])}" download>Download unique LISTRICLOQO research GeoTIFF (.tif)</a>
+  <a href="SUBMIT.html">Submission guide</a> · <a href="ANALYSIS_20261025_LISTRICLOQO.md">Analysis and limitations</a> ·
+  <a href="downloads/readiness.json">Machine-readable status</a> · <a href="downloads/listric_loqo_run_card.json">Run card</a></p>
   <p>Fresh automated validation: single band, float32, finite values in [0, 1], zero outside the footprint,
   matching CRS, shape and transform. This is local validation, not organizer acceptance.</p>
   <ul>{reasons}</ul>
@@ -162,8 +165,9 @@ def panel(status: dict) -> str:
   <li>Open the DrivenData competition submission form, choose the file, and copy the artifact's name and short note.</li>
   <li>After upload, record the organizer receipt against the exact file hash. Only that receipt supports an
   ORGANIZER-CONFIRMED score. Do not project a score from the local holdout.</li></ol></details>
-  <p>No ORGANIZER-CONFIRMED score. No fresh HOLDOUT-DTI measurement. Older “unique” and “record” claims below are historical,
-  not current clearance. A better local surrogate does not establish a better leaderboard score.</p>
+  <p>No ORGANIZER-CONFIRMED score. HOLDOUT-DTI (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives):
+  <code>0.013295 [0.011713, 0.014980]</code>; paired improvement over KNICKLOQO is +0.002508 [0.001477, 0.003463]. This is not a leaderboard score.
+  Older claims below are historical and a better local surrogate does not establish a better leaderboard score.</p>
 </section>
 {END}'''
 
