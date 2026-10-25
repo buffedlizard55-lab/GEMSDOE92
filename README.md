@@ -1,5 +1,7 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench (`COULOMBDM s45coulomb55` Research Download)
 
+**Current review (2026-10-25, 1f514ffc):** [Three-pass audit and next steps](docs/REVIEW_1F514FFC.md) · [JSON run card](docs/downloads/review_1f514ffc_run_card.json). **No new TIFF generated; existing files are research-only, DO NOT SUBMIT.** Fresh pinned-witness rejection reproduced; publication primary selection now fails closed. The complete durable operating brief is in [`SESSION_PROMPT.md`](SESSION_PROMPT.md); read it and this README at every session start.
+
 **Latest session review:** [Three-pass findings and ranked conditional hypotheses](docs/REVIEW_918B947A.md) · [fresh run card](docs/downloads/review_918b947a_run_card.json). Subsequent `COULOMBDM` (and parallel `XPHASE`) work generated unique research TIFFs that are **OK TO DOWNLOAD** and **DO NOT SUBMIT**. The literal overlap rule remains unsatisfiable for weekly-slot clearance because a pinned registry raster covers the entire footprint. The operational user brief is retained below and in `SESSION_PROMPT.md`; read both at session start. Maximize P(Win) and Own the Outcome mean preserving negative evidence, not fabricating submission clearance.
 
 > ### Parallel lane closeout — `EULERFUSE gravity`: ✅ OK TO DOWNLOAD FOR RESEARCH; ⛔ DO NOT SUBMIT
