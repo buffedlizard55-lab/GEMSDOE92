@@ -7,6 +7,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- LISTRIC:BEGIN -->
+<aside class="banner banner-warn" aria-label="LISTRIC session status" style="border:2px solid #7f1d1d;">
+  <p><strong>Newest session (2026-10-26) — lane <code>LISTRIC</code> (listric offset-pair): 3 new GeoTIFFs; nominal new #1 static <code>HOLDOUT-DTI 0.010909 [0.009543,0.012278]</code> (paired Δ vs KNICKLOQO includes 0). Verdict <code>negative</code>: public duplicate 0.710735 &gt; 0.70 (62GEMSDOE) + literal 1.000; SGMC below KNICKLOQO.</strong></p>
+  <p><span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;">✅ OK TO DOWNLOAD FOR RESEARCH (automated [0,1] gates PASS)</span>
+  <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;">⛔ DO NOT SUBMIT (submission_eligible: false; 0 slots)</span></p>
+  <p><a href="downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif" download><strong>Download LISTRIC standalone TIF</strong></a> · <a href="downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.zip" download>ZIP</a> · <a href="downloads/listric_run_card.json">run card</a> · <a href="ANALYSIS_20261026_LISTRIC.md">PhD analysis</a> · <a href="HYPOTHESES_20261026_LISTRIC.md">hypotheses</a>. SHA-256 <code>7e4b46368b2a5949bcf626bfaa4457ed15a89dde38d412a1d07469411a31e2ab</code>; name <code>GEMSDOE92-LISTRIC-standalone-20261026</code>; note <code>h33-h33-2-b2; LISTRIC standalone: 37654 1D quadrant-cal listric offset-pair crests</code>.</p>
+  <p><strong>How to submit (only for a future file whose run card says <code>submission_eligible: true</code> — none today):</strong> 1) Download the <code>-zeros.tif</code> (or single-TIFF <code>.zip</code>) above. 2) Verify SHA-256 vs the run card. 3) On <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData #306</a>, click Submit, upload that one file (single-band GeoTIFF matching CRS/shape/geotransform; values in [0,1] are pre-validated in-project, so no human inspection), paste the form note, submit within the weekly cap. 4) Record the receipt score in <code>ledger/submissions.csv</code> as ORGANIZER-CONFIRMED. Full guide: <a href="SUBMIT.html">SUBMIT.html</a>.</p>
+</aside>
+<!-- LISTRIC:END -->
 <!-- KNICKLOQO:BEGIN -->
 <aside class="banner banner-warn" aria-label="KNICKLOQO session status" style="border:2px solid #7f1d1d;">
   <p><strong>Newest session (2026-10-25) — lane <code>KNICKLOQO</code>: 3 new unique GeoTIFFs generated; all-time #1 static <code>HOLDOUT-DTI = 0.010788 [0.009468, 0.012201]</code> (+17.0% over <code>COULOMBLOQO standalone</code> <code>0.009220</code>, +11.1% over <code>PROVINCETOE</code> <code>0.009711</code>) &amp; <code>#IR-92-NE-QUADRANT-LOQO-COLLAPSE</code> resolved. Verdict <code>negative</code> under literal <code>17GEMSDOE</code> dense surface (<code>UNIQUE</code> under <code>dual_reading_decision</code>: <code>0 / 1,412 &gt; 0.70</code>, max <code>0.685531 &le; 0.70</code>).</strong></p>

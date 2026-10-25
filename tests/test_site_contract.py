@@ -144,7 +144,10 @@ def test_coulombdm_run_card_and_site_html_integrity():
     html = _index()
     primaries = re.findall(r'<a\b[^>]*\bdata-primary="true"[^>]*>', html)
     assert len(primaries) == 1, f"expected exactly 1 data-primary anchor, got {len(primaries)}"
-    assert card["file"] in primaries[0]
+    # The data-primary anchor tracks the newest lane's canonical run card
+    # (evidence/run_card.json), not a historical lane.
+    canon = json.loads((ROOT / "evidence" / "run_card.json").read_text(encoding="utf-8"))
+    assert canon["primary_download"].split("/")[-1] in primaries[0]
 
     for html_path in sorted(DOCS.glob("*.html")):
         txt = html_path.read_text(encoding="utf-8")
