@@ -56,6 +56,24 @@
   not current clearance. A better local surrogate does not establish a better leaderboard score.</p>
 </section>
 <!-- CURRENT-READINESS:END -->
+<!-- CURRENT:BEGIN -->
+<section aria-label="Current submission" style="border:3px solid #7f1d1d;background:#fef2f2;padding:1rem 1.2rem;margin:0 0 1.2rem 0;border-radius:8px;font-family:system-ui,sans-serif">
+  <h2 style="margin-top:0">Newest lane result — lane FAULTNET / arm <code>netfar</code></h2>
+  <p style="font-size:1.25rem;margin:.2rem 0"><strong>✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT</strong> (verdict <code>negative</code>). Reason: registry duplicate under protocol rule 1: 0.7586 of its dots lie within 3 px of the dots of GEMSDOE37/docs/downloads/gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif (80,000 dots), above the 0.70 limit.</p>
+  <p style="font-size:1.15rem"><a href="downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.tif" download><strong>⬇ Download the GeoTIFF (gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.tif)</strong></a> · <a href="downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.zip" download>one-TIFF ZIP</a> · <a href="downloads/faultnet_run_card.json">run card (JSON)</a> · <a href="ANALYSIS_20261025_FAULTNET.md">analysis</a></p>
+  <p><strong>How to submit (only do this with a file marked ✅ OK TO SUBMIT, which this one is not):</strong></p>
+  <ol>
+    <li>Download the <code>.tif</code> above (or the ZIP that contains only that TIFF).</li>
+    <li>Open the DrivenData submissions page: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/</a> (log in; this URL was not live-verified from the sandbox).</li>
+    <li>Under <em>File to submit</em>, choose the file. Under <em>Note (optional)</em>, paste: <code>FAULTNET netfar: netctx surface, dots &gt;4px off catalogue; 37654 dots 2.8px</code></li>
+    <li>Name your file/record as: <code>gemsdoe92-faultnet-netfar-20261025-3c4e9051</code>, then submit. Record the score receipt in <code>ledger/submissions.csv</code>.</li>
+  </ol>
+  <p><strong>Automated validation (no human inspection):</strong> single band float32, EPSG:32611, 3730 × 3292, transform equal to <code>sample_submission.tif</code>, every value finite and in [0, 1], 0 NaN, 0 outside the footprint, 0 dots on mapped faults. This prevents the portal error <em>"Predicted values must be in range [0, 1]"</em>. SHA-256 <code>ad80f9a0fdc6bc608902accfedc783c700c4fd8a98bd5d903540aa7981ba8949</code>.</p>
+  <p><strong>HOLDOUT-DTI</strong> (gems57-pooled-hide-v2, 22,663 withheld positives, 95% CI from a paired 20 km cluster bootstrap): <code>0.175147 [0.159756, 0.189860]</code>. Rebuilt COULOMBLOQO control on the same folds: <code>0.113890 [0.100783, 0.128559]</code>. Paired Δ: <code>+0.061257 [0.048577, 0.074148]</code>. A holdout number is <em>not</em> a leaderboard score. No ORGANIZER-CONFIRMED score exists for this file.</p>
+  <p><strong>Uniqueness</strong> (REGISTRY-MEASUREMENT, 1,451 rasters: the public GEMSDOE* index plus local lineage): worst dot overlap <code>0.7586</code> (limit 0.70; vs <code>GEMSDOE37/docs/downloads/gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif</code>), worst |ρ| final <code>0.1329</code> / surface <code>0.7851</code> (limit 0.90). Under the literal positive-support reading, 97 rasters exceed 0.70. Under that reading even a random raster fails, so it is reported but not used (<code>#IR-92-FAULTNET-DOT-DEFINITION</code>).</p>
+  <p>Sibling arms (research only): <a href="downloads/gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif" download>netctx</a> (negative, HOLDOUT-DTI 0.148707) · <a href="downloads/gemsdoe92-faultnet-netdens-37654-20261025-517af913-zeros.tif" download>netdens</a> (negative, HOLDOUT-DTI 0.148814). Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.</p>
+</section>
+<!-- CURRENT:END -->
 <details id="historical-research-archive"><summary>Historical experiments and downloads — not current clearance</summary>
 <details class="historical-records">
 <summary>Historical lane reports — not current submission clearance</summary>
