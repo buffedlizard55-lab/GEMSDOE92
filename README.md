@@ -11,8 +11,12 @@ Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withh
 
 <!-- CURRENT-STATUS:END -->
 
-> ## This session's repository review (2026-10-25 UTC)
-> **No new TIFF or experiment was generated; research downloads only, DO NOT SUBMIT or spend a slot.** No lane was assigned and the literal public-raster stop remains binding. The existing LISTRIC research file passes local format checks but fails recorded public dot overlap (`0.710735 > 0.70`) and is dated 2026-10-26, future relative to this review. [Three-pass audit](docs/REVIEW_20261025_ARENA_REPOSITORY.md) · [run card](evidence/review_20261025_arena_run_card.json) · [existing research TIFF](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif).
+> **Read before every session:** this README, [`SESSION_PROMPT.md`](SESSION_PROMPT.md), [`docs/PROJECT_CHARTER.md`](docs/PROJECT_CHARTER.md), the [latest review on this branch](docs/REVIEW_20261025_ARENA_3B4DB247.md), and [ordered next steps](docs/NEXT_STEPS.md). Treat this brief as operating requirements, not as proof of a score or permission to submit.
+
+> ## Fresh repository review — 2026-10-25 UTC (`arena/3b4db247-gemsdoe92`)
+> **No new TIFF or geological experiment was generated; 0 weekly slots used.** The current primary is a format-valid **research download only**; the fresh hash-pinned full-footprint witness forces literal REGISTRY-MEASUREMENT overlap `1.0 > 0.70`, so **DO NOT SUBMIT**. `0.2778` remains a CLAIM without an organizer receipt. [Three-pass review and conditional hypothesis ranking](docs/REVIEW_20261025_ARENA_3B4DB247.md) · [fresh rejection-only run card](evidence/review_20261025_live_stop.json) · [selected primary TIFF](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif) · [submission guide](docs/executive-summary.html).
+>
+> `scripts/check_site.py` now fails if the page's `data-primary` raster, `current_submission.json`, and `readiness.json` drift in path, hash, eligibility, name, or note. The README below is a historical archive; only the current status panel and its linked byte-bound records govern the current decision.
 
 <!-- CURRENT:BEGIN -->
 > ## Newest lane result — lane LISTRICLOQO / arm `selectcal`
@@ -434,10 +438,10 @@ PYTHON=.venv/bin/python make test && PYTHON=.venv/bin/python make site && PYTHON
 
 ## Persistent Session Prompt Reference
 
-Full durable operating contract also stored in [`SESSION_PROMPT.md`](SESSION_PROMPT.md). The prompt below is preserved verbatim as historical input, not as a claim that GEMSDOE32 received a verified `0.2778` score or that a current TIFF is submission-cleared. Follow the binding negative decision at the top of this README and the evidence-linked reviews instead.
+The block below is a **normalized operating brief**, not a verbatim transcript of the repeated user message. The full durable contract is also stored in [`SESSION_PROMPT.md`](SESSION_PROMPT.md); read this README and that file at every session start. Neither text makes `GEMSDOE32`'s `0.2778` an organizer-confirmed score or clears any current TIFF for submission. Follow the byte-bound status and linked reviews above.
 
 <details>
-<summary>Click to expand persistent session prompt</summary>
+<summary>Click to expand the persisted operating brief (normalized, not verbatim)</summary>
 
 ```markdown
 Review the repo. Work on the previous sessions' next steps first.
