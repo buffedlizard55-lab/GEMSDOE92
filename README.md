@@ -105,7 +105,7 @@ Read this README and [SESSION_PROMPT.md](SESSION_PROMPT.md) before work. The [fu
 **OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT. No new unique TIFF was generated.**
 The unchanged literal duplicate rule rejects every nonempty candidate against the pinned full-footprint witness. Matched-budget “unique” claims in historical sections below are not binding clearance. We did not copy or rename a previous submission.
 
-[Current automated status](docs/downloads/readiness.json) · [Research workbench / direct TIFF](docs/index.html) · [Executive submission guide](docs/executive-summary.html) · [Three-pass review and conditional hypotheses](docs/REVIEW_F23.md) · [Review run card](docs/downloads/review_f23_run_card.json)
+[Current automated status](docs/downloads/readiness.json) · [Research workbench / direct TIFF](docs/index.html) · [Executive submission guide](docs/executive-summary.html) · [2026-10-26 repository review](docs/REVIEW_20261026_REPO.md) · [Three-pass review and conditional hypotheses](docs/REVIEW_F23.md) · [Review run card](docs/downloads/review_f23_run_card.json)
 
 The shared distance validator previously accepted predictions inside a declared prune radius. It now enforces the radius, verifies catalogue alignment, rejects unreadable/mismatched grids cleanly and requires exact transform matching. Status is recomputed from the served bytes, not inferred from a historical PASS label. Run `python scripts/render_readiness.py` after deliberate input changes and `python scripts/check_site.py` to validate all served files and reject stale status.
 
