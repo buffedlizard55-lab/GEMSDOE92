@@ -49,6 +49,84 @@ def test_index_has_download_and_slot_warning():
     assert "negative" in html
 
 
+def test_current_status_is_first_and_links_latest_negative_artifact():
+    html = _index()
+    start = html.find('<!-- CURRENT-READINESS:BEGIN -->')
+    end = html.find('<!-- CURRENT-READINESS:END -->', start)
+    lane = re.search(r'<!-- [A-Z0-9_-]+:BEGIN', html[end + 1:])
+    primary = re.search(r'<a\b[^>]*href="(downloads/[^\"]+-zeros\.tif)"[^>]*data-primary="true"', html)
+    assert start >= 0 and end > start and lane
+    assert primary, 'site must declare one machine-detectable current research TIFF'
+    banner = html[start:end]
+    assert primary.group(1) in banner
+    assert 'OK TO DOWNLOAD FOR RESEARCH' in banner
+    assert 'DO NOT SUBMIT' in banner
+    assert 'DUPLICATE UNDER THE LITERAL REGISTRY RULE' in banner
+
+
+def test_submission_landing_pages_do_not_claim_current_clearance():
+    """Legacy promo files must not override the binding negative submission gate."""
+    ready = (ROOT / "SUBMISSION_READY.md").read_text(encoding="utf-8")
+    beat = (DOCS / "BEAT_0_2778.md").read_text(encoding="utf-8")
+    submit_now = (DOCS / "SUBMIT_NOW.html").read_text(encoding="utf-8")
+    prototype = (DOCS / "index_new.html").read_text(encoding="utf-8")
+    import re
+
+    for page in (ready, beat, submit_now):
+        assert "DO NOT SUBMIT" in page
+        for match in re.finditer("CLEARED FOR SUBMISSION", page, re.IGNORECASE):
+            # The negative warning may use this phrase, but it must explicitly
+            # negate it rather than making a positive clearance claim.
+            prefix = page[max(0, match.start() - 20):match.start()].upper()
+            assert "NOT" in prefix
+        assert "Expected Live Score" not in page
+        assert "Projected score" not in page
+    assert "DO NOT SUBMIT" in prototype
+    assert "prior clearance withdrawn" in prototype
+
+    for name in ("index.html", "SUBMIT.html", "executive-summary.html"):
+        html = (DOCS / name).read_text(encoding="utf-8")
+        begin = html.index("<!-- KNICKLOQO:BEGIN -->")
+        end = html.index("<!-- KNICKLOQO:END -->", begin)
+        block = html[begin:end]
+        assert "DO NOT SUBMIT" in block
+        assert "1.000 &gt; 0.70" in block
+        assert "diagnostic only" in block
+        assert "UNIQUE under" not in block
+
+
+def test_historical_knick_submission_card_is_superseded_and_byte_bound():
+    import hashlib
+    import rasterio
+
+    path = DOCS / "downloads" / "knickloqo_submission_run_card.json"
+    card = json.loads(path.read_text(encoding="utf-8"))
+    assert card["verdict"] == "negative"
+    assert card["submission_eligible"] is False
+    assert card["new_unique_tiff_generated"] is False
+    assert card["correlation_overlap_vs_registry"]["forward_overlap"] == 1.0
+    tif = DOCS / "downloads" / card["file"]
+    assert hashlib.sha256(tif.read_bytes()).hexdigest() == card["raster_sha256"]
+    with rasterio.open(tif) as ds:
+        assert [ds.height, ds.width] == card["metadata_measured_from_disk"]["shape"]
+    assert card["organizer_confirmed_score"] is None
+
+    historical = json.loads((DOCS / "downloads" / "knick_loqo_run_card.json").read_text(encoding="utf-8"))
+    assert historical["verdict"] == "negative"
+    assert historical["submission_eligible"] is False
+    assert historical["current_decision"]["submission_eligible"] is False
+    assert historical["correlation_overlap_vs_registry"]["literal_rule_stop"] is True
+    assert historical["correlation_overlap_vs_registry"]["matched_budget_diagnostic_pass"] is True
+    public = json.loads((DOCS / "downloads" / "knick_loqo_public_registry_uniqueness.json").read_text(encoding="utf-8"))
+    assert public["current_verdict"].startswith("negative")
+    assert public["submission_eligible"] is False
+    assert "matched-budget" in public["current_policy_notice"].lower()
+    for audit_path in (DOCS / "downloads").glob("h33-h33-2-b2-KNICKLOQO*-audit.json"):
+        audit = json.loads(audit_path.read_text(encoding="utf-8"))
+        assert audit["submission_eligible"] is False
+        assert "DO NOT SUBMIT" in audit["current_policy_notice"]
+
+
 def test_index_links_every_served_zeros_file():
     """Anything offered for download must be reachable from the page."""
     html = _index()
