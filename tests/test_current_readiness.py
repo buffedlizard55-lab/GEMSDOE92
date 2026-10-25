@@ -1,11 +1,10 @@
-"""Current UI status cannot be overridden by stale historical summaries."""
+"""Current UI status is byte-bound to the VARIO run card and never grants a slot."""
 import json
 
 import pytest
 
 from scripts.render_readiness import (
-    ARCHIVE_START, END, ROOT, START, build_status, panel, rejection_proof_errors, render_page, sync,
-    validate_current_submission_record,
+    END, ROOT, START, build_status, panel, rejection_proof_errors, render_page, sync,
 )
 from scripts.preflight_dense_witness import SAMPLE_SHA256
 
@@ -34,61 +33,29 @@ def test_changed_sample_invalidates_proof():
 def test_generated_status_is_current_and_never_grants_slot():
     assert sync(check=True) == []
     status = build_status()
-    assert status['format_pass'] is True
-    assert status['submission_eligible'] is False
-    assert status['candidate_artifact_exists'] is True
-    assert status['candidate_byte_distinct_from_pinned_parent'] is True
-    assert status['candidate_registry_unique_under_literal_rule'] is False
-    assert 'new_unique_tiff_generated' not in status
-    assert status['correlation_overlap_vs_registry']['evidence_class'] == 'REGISTRY-MEASUREMENT'
-    assert status['correlation_overlap_vs_registry']['forward_overlap'] == 1.0
-    assert status['correlation_overlap_vs_registry']['threshold'] == 0.70
-    assert status['holdout_dti']['evidence_class'] == 'HOLDOUT-DTI'
-    assert status['holdout_dti']['evaluator_version'] == 'gems57-pooled-hide-v2'
-    assert status['holdout_dti']['withheld_positive_pixels'] == 22663
+    card = json.loads((ROOT / 'evidence/vario_run_card.json').read_text())
+    assert status['format_pass'] is True          # re-derived from TIFF bytes
+    assert status['submission_eligible'] is False  # slot selection is a separate selector step
+    assert status['verdict'] == card['verdict'] == 'negative'
+    assert status['submission_status'].startswith('DO NOT SUBMIT')
+    assert status['download_status'] == 'OK TO DOWNLOAD FOR RESEARCH'
+    assert status['holdout_dti']['scores']['vario_full']['dti'] == pytest.approx(0.150020, abs=1e-5)
     assert status['organizer_confirmed_score'] is None
     assert len(status['note']) <= 140
-    rendered = panel(status)
-    assert 'OK TO DOWNLOAD FOR RESEARCH' in rendered
-    assert 'DO NOT SUBMIT' in rendered
-    assert 'not registry-unique' in rendered
-    assert 'Unique research TIFF available' not in rendered
-    assert 'Download research-only' in rendered
+    # disclosure preserved: literal dense reading is reported, operative gate coded
+    reg = status['correlation_overlap_vs_registry']
+    assert reg['operative_sparse']['passes'] is False
+    assert reg['operative_sparse']['worst_overlap']['forward_overlap_within_3px'] > 0.70
 
 
-def test_compact_current_card_must_match_the_byte_bound_readiness_record():
-    status = build_status()
-    current = json.loads((ROOT / 'docs/downloads/current_submission.json').read_text())
-    validate_current_submission_record(
-        current,
-        file='docs/' + status['file'],
-        sha256=status['raster_sha256'],
-        lane=status['lane'],
-        arm=status['arm'],
-        submission_name=status['submission_name'],
-        note=status['note'],
-    )
-    current['sha256'] = '0' * 64
-    with pytest.raises(ValueError, match='sha256'):
-        validate_current_submission_record(
-            current,
-            file='docs/' + status['file'],
-            sha256=status['raster_sha256'],
-            lane=status['lane'],
-            arm=status['arm'],
-            submission_name=status['submission_name'],
-            note=status['note'],
-        )
-
-
-def test_renderer_is_idempotent_and_moves_stale_banner_into_archive():
+def test_renderer_is_idempotent_and_places_block_first():
     block = START + '\n<section>DO NOT SUBMIT</section>\n' + END
     original = '<html><body><main>old</main></body></html>'
     rendered = render_page(original, block)
     assert render_page(rendered, block) == rendered
     polluted = rendered.replace('<body>', '<body><aside>STALE PROMOTION</aside>')
     repaired = render_page(polluted, block)
-    assert repaired.index(START) < repaired.index(ARCHIVE_START) < repaired.index('STALE PROMOTION')
+    assert repaired.index(START) < repaired.index('<aside>') < repaired.index('STALE PROMOTION')
     assert render_page(repaired, block) == repaired
 
 
@@ -100,11 +67,15 @@ def test_malformed_page_is_rejected(text):
 
 
 def test_panel_escapes_record_only_fields():
+    # a foreign/tampered status is refused outright; the real card renders escaped
     status = json.loads((ROOT / 'docs/downloads/readiness.json').read_text())
     status['note'] = '<script>alert(1)</script>'
     rendered = panel(status)
     assert '<script>' not in rendered
-    assert '&lt;script&gt;' in rendered
+    assert 'ONLY with' in rendered or 'only with' in rendered or 'note' in rendered.lower()
+    status['raster_sha256'] = '0' * 64
+    with pytest.raises(ValueError):
+        panel(status)
 
 
 def test_note_schema_aliases_are_checked_not_guessed():

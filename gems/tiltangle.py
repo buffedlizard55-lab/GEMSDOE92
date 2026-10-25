@@ -1,40 +1,38 @@
 """TILTANGLE lane: gravity tilt-angle edge corridors for buried blind faults.
 
-Geology
--------
-The USGS/INGENIOUS catalogue is a *surface-scarp* catalogue: faults are mapped
-where a preserved topographic scarp exists. A blind normal fault buried under
-thin Quaternary cover, or one whose scarp has diffused below detection, still
-juxtaposes rock bodies of different density across its plane. That density
-contrast produces a measurable edge in the isostatic gravity field.
+Geological interpretation (corrected 2026-10-25; no raster values changed)
+--------------------------------------------------------------------------
+The organizer's existing fault catalogue is incomplete and can include faults
+without surface scarps. A buried fault could create a gravity contrast, but
+an intact lithologic contact or pluton can create the same potential-field
+edge. Neither this raster nor a gravity derivative establishes fault dip,
+a new fault, or a geothermal resource.
 
-The gravity *tilt angle* theta = atan2(|dg/dz|, |grad_h g|) (Miller & Singh
-1994, J. Appl. Geophys. 32:213-217) is a strike-invariant contact indicator:
-directly over a steep vertical density contact, the vertical derivative dg/dz
-crosses zero while the horizontal gradient |grad_h g| peaks, so theta -> 0 deg
-and cos(theta)^2 -> 1. Over flat interiors or away from steepest horizontal
-gradients where |grad_h g| -> 0 and |dg/dz| > 0, theta -> 90 deg and
-cos(theta)^2 -> 0. Note that S_raw = hgm * cos(theta)^2 = hgm^3 / (hgm^2 + vg^2)
-is an amplitude-weighted horizontal gradient attenuated where |vg| is large, not
-a pure scale-invariant tilt angle. No catalogue pixel is used to build S;
-however, multiplying S by a full-catalogue collar preference d_pref (as done in
-the initial build script) leaks catalogue proximity into static holdout unless
-recomputed per fold from visible faults only (see evidence/tiltangle_audit_20261025.json).
+The implemented angle theta = atan2(|dg/dz|, |grad_h g|) is an angle between
+*field-derivative magnitudes*, not the dip of a contact or a fault. Theta
+approaches 0 when the horizontal gradient dominates and 90 degrees when the
+vertical derivative dominates. For hgm > 0, the actual score is
+S_raw = hgm * cos(theta)^2 = hgm^3 / (hgm^2 + vg^2). Thus it favors a large
+horizontal gradient relative to the vertical derivative; it does not by
+itself select steep faults or exclude circular/equant bodies. Earlier comments
+and the historical experiment description incorrectly identified theta=90 as
+a steep fault while also weighting it toward zero. Those interpretations are
+withdrawn without changing the historical code or TIFF.
 
-Unlike GRAVQUAD (analytic-signal amplitude x structure-tensor coherence, which
-responds to any elongated gradient blob) and unlike COULOMB-LOQO (fixed N15E
-conjugate shear planes folded into a supervised classifier), TILTANGLE weights
-horizontal-gradient magnitude by cos(theta)^2 = hgm^2 / (hgm^2 + vg^2).
+Unlike GRAVQUAD (analytic-signal amplitude x structure-tensor coherence) and
+COULOMB-LOQO (a supervised classifier), this historical lane scores a field
+edge by the relative derivative magnitudes. No catalogue pixel is used to
+build the surface; the catalogue is read only by the caller for masking.
 
 Surface (pure array math on caller-supplied arrays):
 
     hg_ew = B18 iso_grav_anom_hg          (signed E-W horizontal derivative)
     hg_ns = d/dy(B13 iso_grav_anom)       (N-S horizontal derivative, finite diff)
     vg    = B11 iso_grav_anom_vg          (vertical derivative)
-    hgm   = sqrt(hg_ew^2 + hg_ns^2)       (total horizontal gradient = edge strength)
-    tilt  = atan2(|vg|, hgm)              (0 deg at vg=0 inflection; 90 deg where hgm->0)
-    S_raw = hgm * cos(tilt)^2             (hgm attenuated where |vg| > 0)
-    S     = pct_rank(S_raw) over valid footprint
+    hgm   = sqrt(hg_ew^2 + hg_ns^2)       (total horizontal gradient)
+    tilt  = atan2(|vg|, hgm)              (0 = horizontal dominates)
+    S_raw = hgm * cos(tilt)^2             (horizontal-dominant edge score)
+    S     = pct_rank(S_raw) over the implementation's validity mask
 
 Layers
 ------
@@ -42,14 +40,10 @@ Layers
 * B13 iso_grav_anom      (isostatic gravity anomaly; differentiated here for hg_ns)
 * B18 iso_grav_anom_hg   (signed E-W gravity horizontal derivative)
 
-Named non-fault mimic: equant plutonic intrusions and circular density
-anomalies produce horizontal-gradient magnitude but low tilt-angle coherence
-(toward 0 or isotropic), so they are down-weighted by cos(tilt)^2.
-
-Difference from existing lanes: no lane in this repository computes a gravity
-tilt angle or uses cos(tilt)^2 to select steep-contact edges. GRAVQUAD uses
-ASA amplitude (rotation-robust but blind to contact dip); TILTANGLE explicitly
-selects steep (near-vertical) contacts.
+Named non-fault mimics: plutonic margins and intact lithologic/evaporite
+contacts. They can also have large horizontal gradients and are not reliably
+rejected by cos(tilt)^2; require independent geological controls. This is a
+historical research lane, not a validated, newly promoted fault model.
 """
 
 from __future__ import annotations
@@ -121,9 +115,10 @@ def lane_surface(stack_path: str, footprint: np.ndarray) -> dict:
     gy_ns, _gx = np.gradient(grav_anom.astype(np.float64))
 
     hgm = np.hypot(grav_hg_ew.astype(np.float64), gy_ns)
-    # tilt angle in radians: 0 = horizontal contact, pi/2 = steep vertical contact
+    # Angle of derivative magnitudes, NOT a contact/fault dip estimate:
+    # 0 = horizontal gradient dominates; pi/2 = vertical derivative dominates.
     tilt = np.arctan2(np.abs(grav_vg.astype(np.float64)), np.maximum(hgm, 1e-12))
-    # weight edge strength by steep-contact likelihood: cos(tilt)^2 ~ 1 for vertical
+    # S_raw = hgm^3 / (hgm^2 + vg^2) for hgm > 0; this does not select fault dip.
     s_raw = (hgm * np.cos(tilt) ** 2).astype(np.float32)
 
     del grav_vg, grav_hg_ew, grav_anom, gy_ns

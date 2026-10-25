@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TILTANGLE submission — GEMSDOE92 DOE GEMS Prize #306</title>
+  <title>TILTANGLE research download — DO NOT SUBMIT — GEMSDOE92</title>
   <link rel="stylesheet" href="style.css">
   <link rel="canonical" href="https://buffedlizard55-lab.github.io/GEMSDOE92/docs/tiltangle.html">
 </head>
@@ -12,21 +12,22 @@
 <a class="skip" href="#content">Skip to content</a>
 
 <section class="banner banner-warn" aria-label="Authoritative submission status — TILTANGLE">
-  <h2 style="margin-top:0">TILTANGLE research GeoTIFF — OK to download for research, DO NOT SUBMIT</h2>
+  <h2 style="margin-top:0">TILTANGLE research GeoTIFF — OK to download, NOT cleared to submit</h2>
   <p><strong>✅ OK TO DOWNLOAD FOR RESEARCH</strong> · <strong>⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT</strong></p>
-  <p>This is a byte-distinct, single-band research GeoTIFF built by the TILTANGLE lane. It passes all 11 automated format gates (float32, EPSG:32611, 3730×3292, exact sample_submission transform, every value finite in [0,1], 0 NaN, zeros outside the footprint, 0 dots on/near the mapped catalogue).</p>
-  <p><strong>Verdict:</strong> negative (<code>submission_eligible: false</code>). Audited 2026-10-25 (<a href="../evidence/tiltangle_audit_20261025.json">audit JSON</a>): (1) the initial static figure <code>0.033466</code> (unbuffered 45,253 px) / <code>0.031591 [0.029030, 0.034098]</code> (buffered 22,663 px) failed the Protocol Rule 4 leakage canary because <code>d_pref</code> was computed from the full <code>existing_faults.tif</code> catalogue including withheld faults (symmetric <code>AUC = 0.962399 &gt; 0.90</code>, target leakage); leak-free evaluation via <code>vendor/gems57/evaluate_holdout.py</code> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives) gives pure-surface static <strong>HOLDOUT-DTI <code>0.005272 [0.003839, 0.006810]</code></strong> and strict fold-visible Rule-2 <strong>HOLDOUT-DTI <code>0.085247 [0.072752, 0.098193]</code></strong> (with visible-only <code>d_pref</code>) / <code>0.042670 [0.030397, 0.055911]</code> (pure <code>S</code>), all below repository holdout-best; (2) fails local 3-px dot-field uniqueness (<code>0.776332 &gt; 0.70</code> vs <code>NETEXPAND netexpand</code>) and literal dense-witness overlap (<code>1.0000 &gt; 0.70</code>).</p>
+  <p>This is a byte-unique, single-band GeoTIFF built by the TILTANGLE lane (gravity tilt-angle × horizontal-gradient edge corridors). It passes all 11 automated format gates (float32, EPSG:32611, 3730×3292, exact sample_submission transform, every value finite in [0,1], 0 NaN, zeros outside the footprint, 0 dots on/near the mapped catalogue).</p>
+  <p><strong>Verdict:</strong> negative (<code>submission_eligible: false</code>). HOLDOUT-DTI
+  <code>0.033466</code> (<code>gems57-pooled-hide-v2</code>, 45,253 withheld positives) is a local
+  surrogate — not an organizer score. Not cleared for a weekly slot under the literal
+  dense-witness registry stop.</p>
 </section>
 
-<a id="content"></a>
-<main>
-
+<main id="content">
 <section class="download-card">
-  <h1>⬇ Download the research-only GeoTIFF (DO NOT SUBMIT)</h1>
-  <p class="kicker">GEMSDOE92 · TILTANGLE lane (research only; negative verdict) · DrivenData Competition #306 · DOE GEMS Prize</p>
-  <p>Click the button to download the single-band research GeoTIFF. Do not upload this file to a weekly competition slot.</p>
+  <h1>⬇ Download the TILTANGLE research GeoTIFF — DO NOT SUBMIT</h1>
+  <p class="kicker">GEMSDOE92 · TILTANGLE lane · DrivenData Competition #306 · DOE GEMS Prize</p>
+  <p>Click the button to download the single-band research GeoTIFF. The ZIP is a one-TIFF convenience copy; neither download is cleared for the competition form.</p>
   <a class="btn" href="downloads/gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif" download>
-    Download gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif (research only)
+    Download gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif
   </a>
   <a class="btn btn-ghost" href="downloads/gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.zip" download>
     Download one-TIFF ZIP
@@ -44,36 +45,35 @@
 </section>
 
 <section>
-  <h2>How to submit a future cleared file to the competition</h2>
-  <p><strong>Do not perform these steps with the current artifact:</strong> its verdict is <code>negative</code> (<code>submission_eligible: false</code>) due to target-leaked static collar weighting and registry duplicate collisions. When a future file is cleared, follow these steps:</p>
+  <h2>How to submit a future cleared file — not this one</h2>
+  <p><strong>Do not submit the TILTANGLE artifact above.</strong> Its archived form note called it “unique,” but the literal registry witness makes that claim false as a submission-clearance statement. The current verdict is <code>negative</code>. For a future candidate with <code>submission_eligible: true</code> after a separate selector step:</p>
   <ol>
-    <li>Download the exact cleared <code>.tif</code> (or the ZIP that contains only that TIFF). Verify its SHA-256 against the run card.</li>
-    <li>Sign in at <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData #306 submissions</a> (you need DrivenData credentials).</li>
-    <li>Under <em>File to submit</em>, choose the file. Under <em>Note (optional)</em>, paste the record-only note (≤140 characters):</li>
-    <li><code>h33-h33-2-b2; TILTANGLE research only (DO NOT SUBMIT): gravity edge x collar; pure static HOLDOUT-DTI 0.005272; duplicate</code></li>
-    <li>Name your record <code>GEMSDOE92-TILTANGLE-tiltangle-20261025T182301Z</code>, submit within the weekly cap, and record the organizer receipt (ORGANIZER-CONFIRMED score) against the exact file SHA-256 in <code>ledger/submissions.csv</code>.</li>
+    <li>Download <em>that future eligible</em> .tif (or a ZIP containing only that TIFF), not the research artifact above. Verify its hash and automated format/uniqueness receipt.</li>
+    <li>Sign in to the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData #306</a> site and open its submissions form (authentication is required).</li>
+    <li>Choose the eligible file under <em>File to submit</em> and paste <em>its own</em> ≤140-character note under <em>Note (optional)</em>. Keep the distinct name in the filename/ledger; the form does not show a separate name field.</li>
+    <li>Submit within the organizer's current weekly cap, then record the organizer receipt and exact SHA-256 in <code>ledger/submissions.csv</code>.</li>
   </ol>
-  <p>This project's automated validation replaces human inspection for file format: no NaN inside the footprint, values in [0,1], CRS/shape/transform match sample_submission.tif. This prevents the portal error <em>"Predicted values must be in range [0, 1]"</em>.</p>
+  <p>Local automated validation replaces manual pixel inspection for format: no NaN inside the footprint, values in [0,1], CRS/shape/transform match sample_submission.tif. This checks the reported portal range-error condition locally; it does not prove acceptance by DrivenData or uniqueness clearance.</p>
 </section>
 
 <section>
-  <h2>Hypothesis &amp; Miller–Singh (1994) tilt-angle audit</h2>
-  <p>The USGS/INGENIOUS catalogue is a <em>surface-scarp</em> catalogue: faults are mapped where a preserved topographic scarp exists. A blind normal fault buried under thin Quaternary cover, or one whose scarp has diffused below detection, still juxtaposes rock bodies of different density across a steep plane.</p>
-  <p>The TILTANGLE surface computes <code>theta = atan2(|dg/dz|, |grad_h g|)</code> from bands B11 (vertical derivative), B13 (gravity anomaly, differentiated for N–S derivative), and B18 (E–W horizontal derivative), and sets <code>S_raw = hgm * cos(theta)^2 = hgm^3 / (hgm^2 + vg^2)</code>. Per Miller &amp; Singh (1994, <em>J. Appl. Geophys.</em> 32:213–217), directly over a steep vertical density contact <code>dg/dz = 0</code> while <code>|grad_h g|</code> peaks, so <code>theta -&gt; 0 deg</code> and <code>cos(theta)^2 -&gt; 1</code>; over flat interiors where <code>|grad_h g| -&gt; 0</code> and <code>|dg/dz| &gt; 0</code>, <code>theta -&gt; 90 deg</code> and <code>cos(theta)^2 -&gt; 0</code> (correcting the inverted prose in the initial docstring). While the pure surface <code>S</code> is catalogue-free (max canary symmetric AUC <code>0.526594 &lt;= 0.90</code>), multiplying <code>S</code> by <code>d_pref</code> computed from the full <code>existing_faults.tif</code> catalogue leaked withheld fault locations into static scoring (symmetric AUC <code>0.962399 &gt; 0.90</code>).</p>
-  <p><strong>Named non-fault mimic:</strong> equant plutonic intrusions, circular playa/evaporite density bodies, and non-fault lithologic density contacts.</p>
+  <h2>Hypothesis: why this surface targets faults missing from the catalogue</h2>
+  <p>The challenge supplies existing USGS/INGENIOUS fault labels, which the organizer says are incomplete; they are <em>not</em> solely a catalogue of preserved surface scarps. A hypothetical buried normal fault might juxtapose rock bodies of different density without a pronounced surface scarp, producing a gravity gradient. A gradient alone does not establish a fault or geothermal activity.</p>
+  <p>The archived TILTANGLE implementation computes θ = atan2(|∂z g|, |∇ₕ g|) from bands B11 (vertical derivative), B13 (gravity anomaly, differentiated for N–S derivative), and B18 (E–W horizontal derivative). This is an angle between <em>field-derivative magnitudes, not fault dip</em>: θ approaches 0 when the horizontal gradient dominates and 90° when the vertical derivative dominates. The actual edge score is |∇ₕ g| × cos(θ)² = |∇ₕ g|³ / (|∇ₕ g|² + |∂z g|²), when the denominator is nonzero. It favors horizontally sharp gravity transitions; it does <strong>not</strong> prove a steep fault or discriminate a circular body from a fault. Earlier wording incorrectly described θ≈90° as a steep contact even though cos²θ then approaches zero. This is a documentation correction only; the TIFF was not regenerated. The catalogue is not directly fed to the scoring surface but is used for masking.</p>
+  <p><strong>Named non-fault mimics:</strong> a plutonic margin, intact lithologic contact, or playa/evaporite density boundary can also produce a sharp horizontal gradient; the cos² factor does not guarantee their removal. A future study must use independent geological controls and test the possible median-fill boundary artifact before claiming a new fault.</p>
+  <p><strong>How it differs from existing lanes:</strong> no lane in this repo computes a gravity tilt angle. GRAVQUAD uses analytic-signal amplitude × structure-tensor coherence (dip-blind). COULOMB-LOQO assumes fixed N15°E conjugate shear planes inside a supervised classifier. CURIE-DEMAG uses RTP variance suppression × MT clay-cap flank × demag bowl.</p>
 </section>
 
 <section>
-  <h2>Holdout &amp; Uniqueness Results (HOLDOUT-DTI — not an organizer score)</h2>
+  <h2>Holdout result (HOLDOUT-DTI — not an organizer score)</h2>
   <table>
-    <tr><th>Instrument (<code>gems57-pooled-hide-v2</code>)</th><th>HOLDOUT-DTI</th><th>95% CI (1,000-draw paired spatial bootstrap)</th><th>Withheld positives</th></tr>
-    <tr><td>Pure surface <code>S</code> static (<code>d_cat &gt; 2 px</code>, leak-free)</td><td><code>0.005272</code></td><td><code>[0.003839, 0.006810]</code> (paired Δ vs R0 <code>+0.001266 [-0.000247, +0.002861]</code>)</td><td>22,663 px</td></tr>
-    <tr><td>Strict fold-visible Rule-2 (<code>d_visible &gt; 2 px</code>, visible-only <code>d_pref</code>)</td><td><code>0.085247</code></td><td><code>[0.072752, 0.098193]</code></td><td>22,663 px</td></tr>
-    <tr><td>Strict fold-visible Rule-2 (<code>d_visible &gt; 2 px</code>, pure <code>S</code>)</td><td><code>0.042670</code></td><td><code>[0.030397, 0.055911]</code></td><td>22,663 px</td></tr>
-    <tr><td>Invalidated full-catalogue <code>d_pref</code> static (LEAKED: canary AUC <code>0.962399 &gt; 0.90</code>)</td><td><code>0.031591</code> (buffered) / <code>0.033466</code> (unbuffered)</td><td><code>[0.029030, 0.034098]</code> (INVALID — target leakage)</td><td>22,663 / 45,253 px</td></tr>
+    <tr><th>Instrument</th><th>Value</th><th>95% CI</th><th>Withheld positives</th></tr>
+    <tr><td>gems57-pooled-hide-v2, static (d_cat &gt; 2 px)</td><td>0.033466</td><td>Not recorded in the run card; cannot treat this result as a CI-gated improvement</td><td>45,253 px</td></tr>
+    <tr><td>Per-draw</td><td>0.033594 / 0.033685</td><td>—</td><td>draws 20 / 30</td></tr>
+    <tr><td>Per-quadrant</td><td>NE 0.0332 · NW 0.0354 · SE 0.0337 · SW 0.0323</td><td>—</td><td>spatially uniform, no quadrant collapse</td></tr>
   </table>
-  <p><strong>Uniqueness (REGISTRY-MEASUREMENT, 138 local rasters + pinned public witness):</strong> worst local 3-px dot-field overlap is <code>0.776332 &gt; 0.70</code> vs <code>NETEXPAND netexpand</code> and <code>0.761513 &gt; 0.70</code> vs <code>NETEXPAND netexpandfar</code> (local duplicate); worst surface <code>|ρ| = 0.073692 &lt;= 0.90</code>; literal dense-witness overlap is <code>1.0000 &gt; 0.70</code>. Leak-free static (<code>0.005272</code>) and Rule-2 (<code>0.085247</code>) both trail repository holdout-best (<code>LISTRICLOQO</code> <code>0.013295</code> static / <code>0.114410</code> Rule-2; <code>COULOMBLOQO</code> <code>0.113316</code> Rule-2).</p>
-  <p class="kicker" style="margin-top:1rem">All numbers carry explicit HOLDOUT-DTI and REGISTRY-MEASUREMENT labels. A projection is never written as a score. No ORGANIZER-CONFIRMED score exists for this file.</p>
+  <p>Historical context only: R0 parent static HOLDOUT-DTI = 0.004006; COULOMBDM static = 0.007816. TILTANGLE's archived 0.033466 static figure has no recorded 95% CI and is <strong>invalidated by target leakage</strong> (<a href="../evidence/tiltangle_audit_20261025.json">audit JSON</a>): <code>scripts/build_tiltangle_submission.py</code> multiplied <code>S</code> by <code>d_pref</code> computed from the full <code>existing_faults.tif</code> catalogue (including withheld faults), which fails the Protocol Rule 4 leakage canary with symmetric <code>AUC = 0.962399 &gt; 0.90</code> (whereas pure surface features pass at <code>&lt;= 0.526594</code>). Leak-free recomputation via <code>vendor/gems57/evaluate_holdout.py</code> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives, 1,000-draw paired spatial bootstrap) gives pure-surface static <strong>HOLDOUT-DTI <code>0.005272 [0.003839, 0.006810]</code></strong> and strict fold-visible Rule-2 <strong>HOLDOUT-DTI <code>0.085247 [0.072752, 0.098193]</code></strong> (with visible-only <code>d_pref</code>) / <code>0.042670 [0.030397, 0.055911]</code> (pure <code>S</code>), all below repository holdout-best. Furthermore, <strong>REGISTRY-MEASUREMENT</strong> shows local 3-px dot-field overlap <code>0.776332 &gt; 0.70</code> vs <code>NETEXPAND netexpand</code> and <code>0.761513 &gt; 0.70</code> vs <code>NETEXPAND netexpandfar</code>, in addition to the literal dense-witness stop (<code>1.0000 &gt; 0.70</code>).</p>
+  <p class="kicker" style="margin-top:1rem">This archived HOLDOUT-DTI has no recorded 95% CI and is not promotion evidence. A projection is never a score. No ORGANIZER-CONFIRMED score exists for this file.</p>
 </section>
 
 <section>
@@ -93,7 +93,7 @@
 </main>
 
 <footer>
-  <p>GEMSDOE92 · TILTANGLE submission · All format validation automated (gems.gates, gems57.validate, scripts/check_site.py) — no human inspection required for file acceptance.</p>
+  <p>GEMSDOE92 · TILTANGLE research artifact · Local format validation is automated; the organizer has not accepted or scored this file.</p>
   <p><a href="index.html">← Main download workbench</a> · <a href="executive-summary.html">Executive summary (overall)</a></p>
 </footer>
 
