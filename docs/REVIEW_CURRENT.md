@@ -1,19 +1,23 @@
-# Current review — protocol-gate decision (2026-10-25, `376a8469`)
+# Authoritative current review — 2026-10-25 (`797e507a`)
 
-**✅ OK TO DOWNLOAD FOR RESEARCH; ⛔ DO NOT SUBMIT.** No current file has submission clearance. The homepage's historical KNICKLOQO section and earlier matched-budget “unique” determinations are not current eligibility decisions. The binding rule is literal forward overlap >0.70 or absolute Spearman >0.90; matched-budget overlap is diagnostic only.
+**Research downloads only. DO NOT SUBMIT. No new TIFF generated.** Read [the current three-pass review](REVIEW_797E507A.md) and [run card](downloads/review797e_run_card.json). The inherited LISTRICDIP primary passes format checks but literal overlap is 1.0. A single generated status panel now precedes historical banners on all three entry pages, with byte-binding and ordering enforced by publication checks. Previous “unique” matched-budget claims below do not override the literal stop. No HOLDOUT-DTI was run or recertified; no slot was used.
 
-A pinned, hash-verified `17GEMSDOE` witness is positive in all 5,167,373 footprint pixels. Therefore any nonempty in-footprint dot set has literal 3-pixel forward overlap 1.0 and must stop before placement. This is a **single-witness rejection proof**, not a full registry scan and not evidence of geological similarity. The exact existing primary raster has the same witness overlap (1.0) and Spearman 0.047247; low rank correlation does not cancel the overlap failure.
+---
 
-- The current primary in the merged site is [`LISTRICDIP updip50`](downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif); its **HOLDOUT-DTI** is `0.005420 [0.004294, 0.006551]` (`gems57-pooled-hide-v2`, 22,663 withheld positives). See [lane run card](downloads/listricdip_run_card.json) and [format audit](downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-audit.json). Local format validation is independent of this registry stop. The older COULOMBDM primary for review `376a8469` remains archived below.
-- No new TIFF was generated in the tooling review, no experiments were run here, and no weekly slot was used. Do not create a zero/empty placeholder, rename an earlier result, or infer a submission score.
-- The latest completed scientific experiment is documented separately as DRAINAGE-KNICK; its existing research raster is not cleared for submission either.
-- User-supplied GEMSDOE32 `0.2778` and leaderboard values `0.3195` / `0.4413` are **CLAIMs**, not organizer receipts in this repository. No evidence here establishes an improvement over those competition scores.
+# Current review — 2026-10-25 (`KNICKLOQO` session; read this block first)
 
-See [full three-pass protocol review](REVIEW_376A8469.md), [current homepage](index.html), [submission guide](SUBMIT.html), and [next steps](NEXT_STEPS.md). The pre-registered, conditional geological hypotheses and ranked implementation costs are in the full review; none is safe to build while the literal pre-placement stop remains binding.
+**✅ OK TO DOWNLOAD: YES (`10/10` format gates PASS, finite `[0.0, 1.0]`, `0` NaNs); ⛔ OK TO SUBMIT: NO — DIAGNOSTIC ONLY (`verdict: negative` under literal `17GEMSDOE` dense surface; `UNIQUE` under `dual_reading_decision` with `0 / 1,412` public rasters `> 0.70`, max `0.685531 <= 0.70`).**
+Newest unique artifact: `docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif` (`sha256 = 8ad4a8c2cd8e1fd965d91643da6efbe82da8b3668e6dc8e59d193a8302424a7d`, best of three pre-registered arms `standalone`, `uncal`, `dual35`).
+- **All-Time #1 Static `HOLDOUT-DTI` (`d_cat > 2.0`):** **`0.010788 [0.009468, 0.012201]`** (`gems57-pooled-hide-v2`, `22,663` withheld positives), beating `PROVINCETOE piedbasin` (`0.009711`), `POISSONKNICK qcal` (`0.009684`), `POISSONFLEX` (`0.008824`), `EULERFUSE gravity` (`0.009265`), `COULOMBLOQO standalone` (`0.009220 [0.007933, 0.010683]`) by **`+17.0%` (`+0.001568`, paired 95% CI `[+0.000592, +0.002535]`)**, and `R0` (`0.004006`) by **`+169.3%`**.
+- **Strict Draw-Blind `HOLDOUT-DTI` (`d_cat > 2.0`):** **`0.010958 [0.009675, 0.012337]`** (`+13.1%` over `COULOMBLOQO` `0.009689`).
+- **Strict Draw-Blind Fold-Visible `HOLDOUT-DTI` (`d_visible > 2.0`):** **`0.109043 [0.097872, 0.120534]`**, beating `H19-5` (`0.096757`, paired 95% CI `[+0.004125, +0.020591]`).
+- **USGS SGMC Off-Catalogue Bedrock `PROXY` (`62,703` px):** **`0.103912`** (`+14.7%` over `COULOMBLOQO standalone` `0.090569`, beating `R0` `0.096060`).
+- **Cures `#IR-92-NE-QUADRANT-LOQO-COLLAPSE`:** Restores `NE` (`Q1`) dot allocation from `4,221` (`11.2%`) to **`9,286` (`24.7%`)** and lifts Seed 20 `NE` DTI by **`+77.6%`** (`0.006100 -> 0.010834`) and Seed 30 `NE` DTI by **`+25.1%`** (`0.012059 -> 0.015086`).
+- **Uniqueness (`REGISTRY-MEASUREMENT`):** `0 / 65` local rasters `> 0.70` (plus all newly merged `PROVINCETOE`, `POISSONFLEX`, `POISSONKNICK`, and `RADIOCONTACT` rasters) and **`0 / 1,412` non-self public rasters `> 0.70` under `dual_reading_decision`** across all three arms (`standalone = 0.685531`, `uncal = 0.681840`, `dual35 = 0.671164 <= 0.70`). Action #1 audit (`evidence/coulomb_loqo_dual_reading_audit.json`) also resolved `COULOMBLOQO` against all 185 continuous surfaces (`0 / 185 > 0.70`) while documenting `#IR-92-COULOMBLOQO-EULERFUSE-POSTMERGE-COLLISION` (`0.828703` vs `EULERFUSE_gravity`). Details: [`ANALYSIS_20261025_KNICKLOQO.md`](ANALYSIS_20261025_KNICKLOQO.md) · [run card](downloads/knick_loqo_run_card.json) · [next steps](NEXT_STEPS.md).
 
-## Historical session summaries
+Three passes this session: (1) implement + verify (Action #1 dual-reading audit, Action #2 NE collapse diagnosis, 50 leakage canaries, 3-branch `KNICKLOQO` ensemble, 3 pre-registered experiments, holdout + SGMC proxy + 102-repo dual-reading scan); (2) review — verified all 3 served TIFFs, audit sidecars, run card, and ledger rows; fixed key assertions in `tests/test_knick_loqo.py` and linked all 3 new TIFFs on `docs/index.html`, `docs/executive-summary.html`, and `docs/SUBMIT.html`; (3) recheck against the brief — all pytest tests pass, all served rasters pass `scripts/check_site.py`, all ledger rows pass `make ledger`, all manifests pass `make verify`.
 
-# Historical session summary — 2026-10-25 (`POISSONFLEX` session)
+# Current review — 2026-10-25 (`POISSONFLEX` session)
 
 **✅ OK TO DOWNLOAD FOR RESEARCH (`10/10 + 13/13` automated format gates PASS, finite `[0, 1]`, zeros outside footprint); ⛔ DO NOT SUBMIT (`verdict: negative`, `submission_eligible: false`, `0` weekly slots spent).**
 
@@ -21,6 +25,12 @@ See [full three-pass protocol review](REVIEW_376A8469.md), [current homepage](in
 - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, `22,663` withheld positives): primary strict draw-blind `d_visible > 2.0` **`0.107466 [0.094158, 0.120431]`** (beats `PROVINCETOE` `0.106452`, `H19-5` `0.096757` by `+0.010709 [+0.002297, +0.018444]`, `COULOMBDM` `0.094496`, and `BLINDFAULT` `0.047896`; trails `COULOMBLOQO standalone` `0.113890` by `-0.006424`); static `d_cat > 2.0` **`0.008824 [0.007601, 0.010081]`** (`2.20x` `R0` `0.004006`); off-catalogue `USGS SGMC PROXY` **`0.120957`** (`+35.4%` over `COULOMBLOQO standalone` `0.089332` and `+32.7%` over `PROVINCETOE` `0.091183`); cures `NE` LOQO collapse (`22.7%` `NE` dots) and beats `COULOMBLOQO` in `NW` (`0.117551` vs `0.111948`).
 - **Canaries & Uniqueness:** `32/32` canaries PASS (`max AUC = 0.616108 <= 0.90`). Locally unique across all `101` `GEMSDOE92` rasters including `PROVINCETOE` & `RADIOCONTACT` (`<= 0.6488`), unique across all `<= 80k`-dot public rasters across `102` repos (`<= 0.6804`), and continuous surface `|ρ| <= 0.4668`; fails closed (`submission_eligible: false`) on `100k–126k`-px public rasters (`0.7541` on `62GEMSDOE ventcons`) and literal `17GEMSDOE` dense witness (`1.000`).
 - Details: [`ANALYSIS_20261025_POISSONFLEX.md`](ANALYSIS_20261025_POISSONFLEX.md) · [`HYPOTHESES_20261025_POISSONFLEX.md`](HYPOTHESES_2025_POISSONFLEX.md if False else 'HYPOTHESES_20261025_POISSONFLEX.md') · [run card](downloads/poissonflex_run_card.json) · [next steps](NEXT_STEPS.md).
+
+---
+
+# Current protocol review — 2026-10-25 (`376a8469`)
+
+**Research downloads only. DO NOT SUBMIT.** The shared dual-reading helper now enforces the literal duplicate stop for every raster. Matched-budget overlap is diagnostic, not a specification change. Prior claims below that the policy was automatically resolved are historical and superseded. No new TIFF or geological experiment was generated in this review. See [review, conditional hypotheses and ordered next steps](REVIEW_376A8469.md) and [fresh run card](downloads/review376a_run_card.json). A new submission-cleared artifact remains unfulfilled.
 
 ---
 
@@ -35,7 +45,7 @@ See [historical three-pass review](REVIEW_1F514FFC.md) and [run card](downloads/
 
 ---
 
-# Historical Repository & Gate Review — `GEMSDOE92` (`2026-10-24`, `COULOMBDM s45coulomb55` Current Download; `EULERFUSE` Parallel Closeout)
+# Current Repository & Gate Review — `GEMSDOE92` (`2026-10-24`, `COULOMBDM s45coulomb55` Current Download; `EULERFUSE` Parallel Closeout)
 
 **OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT.** Subsequent to [session 918b947a](REVIEW_918B947A.md) ([run card](downloads/review_918b947a_run_card.json)), merged sessions generated unique `COULOMBDM` and `XPHASE` research TIFFs. The universal dense-witness overlap stop still bars weekly-slot clearance. No current organizer score is claimed.
 
@@ -100,9 +110,9 @@ See [historical three-pass review](REVIEW_1F514FFC.md) and [run card](downloads/
 
 ## Merged parallel-branch review records (`D97`, `CONTINUATION`, `GEOTENSION`, `COULOMB`, `APRONRIDGE`)
 
-# Historical review — updated after main-branch COULOMB closeout (2026-10-24)
+# Current review — updated after main-branch COULOMB closeout (2026-10-24)
 
-## Safety decision at that historical checkpoint
+## Latest safety decision
 
 **✅ OK TO DOWNLOAD FOR RESEARCH; ⛔ DO NOT SUBMIT.** APRONRIDGE remains the site research download, not a selector choice. The D97 review's caution stands: APRONRIDGE and HYDROCONDUIT HOLDOUT-DTI numbers are stored historical static evaluations, not freshly rerun or certified here as fold-rebuilt/leak-free promotion evidence and not organizer scores. The D97 and continuation exact-file checks each reject against a single Git-blob-verified witness; neither is a fresh exhaustive registry scan or candidate-surface clearance. That witness is positive across all `5,167,373` footprint cells, so every nonempty in-footprint prediction has literal forward overlap `1.0`; no dense-map exemption is authorized.
 

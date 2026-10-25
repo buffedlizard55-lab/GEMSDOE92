@@ -1,17 +1,25 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-> ## Current submission decision — literal registry gate blocks every nonempty candidate
-> **✅ OK TO DOWNLOAD FOR RESEARCH** (format/range checks pass) · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT.** A pinned public registry witness is positive in every valid footprint cell, so every nonempty candidate has literal 3-pixel forward overlap `1.0`, exceeding the binding `0.70` stop threshold. This is a single-witness rejection proof, not full-registry clearance; matched-budget overlap is diagnostic only. No submission-cleared TIFF exists; this review generated no TIFF.
->
-> **[Download current primary research TIFF — LISTRICDIP](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif)** · [run card](docs/downloads/listricdip_run_card.json) · [submission guide](docs/listricdip.html) · [current gate review](docs/REVIEW_376A8469.md) · [repo review](docs/REVIEW_20261025_ARENA.md)
->
-> **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): LISTRICDIP `updip50` `0.005420 [0.004294, 0.006551]`. This is an internal spatial holdout, not an organizer score; literal registry overlap is `1.0`, so it is not cleared for upload.
->
-> Maximize P(Win). Own the Outcome. Do not upload a format-valid but method-ineligible file or relabel a local metric as a competition score.
+## Authoritative review — 2026-10-25 (`797e507a`)
+
+**OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT · no new TIFF generated in this review.**
+The requested new unique submission remains **unfulfilled**: a freshly pinned registry witness is positive across the entire footprint, so every nonempty candidate fails the unchanged literal overlap rule. This is an automated rejection, not a request for manual inspection. Matched-budget “unique” claims below are historical diagnostics, not clearance.
+
+**[Download the existing format-validated research TIFF](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif)** · [Executive guide](docs/executive-summary.html) · [Review, sources and limitations](docs/REVIEW_797E507A.md) · [JSON run card](docs/downloads/review797e_run_card.json) · [Ranked conditional hypotheses](docs/HYPOTHESES_797E507A.md).
+
+No candidate was selected for a slot. Parallel main changed the primary to LISTRICDIP; this review preserved it and rechecked its bytes. SHA-256 `91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e`; REGISTRY-MEASUREMENT overlap `1.0`, Spearman `0.010352227787484035`. No fresh HOLDOUT-DTI or organizer score. Three passes are documented in the review.
+
+### Start every session here
+
+Read this README, including its **Persistent Session Prompt Reference**, then the full [durable operating contract](SESSION_PROMPT.md), [current review](docs/REVIEW_CURRENT.md) and [ordered next steps](docs/NEXT_STEPS.md). The persistent brief is normalized requirements, not a verbatim chat transcript. Preserve the unique-TIF objective, strict automated range/grid validation, named geological hypotheses, visible-only buffered holdout, leakage canaries, literal pre/post-placement uniqueness checks, evidence labels, three-experiment/two-hour budget, run card and separate weekly selector. **Maximize P(Win); Own the Outcome:** a reproducible negative is preferable to a fabricated submission claim.
+
+Publication check: `python scripts/render_public_status.py --check` then `python scripts/check_site.py`. After a lane renderer changes banner order, `python scripts/render_public_status.py` restores the authoritative first-in-body status. Both CI and Pages use the site checker; a missing/stale/buried status blocks publication. Historical lane records follow below and do not override it.
+
+---
 
 <!-- LISTRICDIP:BEGIN -->
-> ### Latest research lane (2026-10-25) — `LISTRICDIP`: 3 research GeoTIFFs · verdict **`negative`**
-> **✅ OK TO DOWNLOAD FOR RESEARCH** (11/11 format gates, values in `[0, 1]`, 0 NaN, locally distinct under the recorded sparse-raster measurement; literal dense-witness overlap 1.000) · **⛔ OK TO SUBMIT: NO** (`submission_eligible: false`; literal dense-witness overlap 1.000; not cleared for a weekly slot; 0 slots used)
+> ### Newest session (2026-10-25) — lane `LISTRICDIP`: 3 new unique GeoTIFFs · verdict **`negative`**
+> **✅ OK TO DOWNLOAD FOR RESEARCH** (11/11 format gates, values in `[0, 1]`, 0 NaN, local overlap 0.1968 at scoring; 0.1892 vs the later `DRAINAGE-KNICK` raster) · **⛔ OK TO SUBMIT: NO** (`submission_eligible: false`; literal dense-witness overlap 1.000; not cleared for a weekly slot; 0 slots used)
 >
 > - **Download:** [`gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif`](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [zip](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.zip) · [audit](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-audit.json) · [run card](docs/downloads/listricdip_run_card.json) · [submit steps](docs/listricdip.html) · [analysis](docs/ANALYSIS_20261025_LISTRICDIP.md) · [pre-registration](docs/HYPOTHESES_20261025_LISTRICDIP.md)
 > - **SHA-256:** `91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e` · ZIP `0ac14c467ba046835fcf32c7e3ed43a5eb550f8d2ebcc37cde8d5d7998f2052b`
@@ -64,7 +72,7 @@
 > - **Sibling Frozen Arms (`11/11` gates PASS, research only):** [`gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.tif`](docs/downloads/gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.tif) (`#1` repo static `HOLDOUT-DTI = 0.009711`, SHA `a8b79fba2c4dd623…`) · [`gemsdoe92-provincetoe-globalraw-37654-20261025-73b06876-zeros.tif`](docs/downloads/gemsdoe92-provincetoe-globalraw-37654-20261025-73b06876-zeros.tif) (raw-strain ablation, SHA `eeb0facc1dfd89de…`).
 <!-- PROVINCETOE:END -->
 
-**Read first:** the protocol-gate review below is current; lane banners below it are historical. Older banners further down are historical lane closeouts kept for audit. Two questions are answered for every served file, by the project, with no human inspector: **(1) OK to download?** (format gates) **(2) OK to submit?** (pre-registered holdout gate + binding literal registry uniqueness rule). Matched-budget overlap is diagnostic only.
+**Read first:** the protocol-gate review below is current; lane banners below it are historical. Older banners further down are historical lane closeouts kept for audit. Two questions are answered for every served file, by the project, with no human inspector: **(1) OK to download?** (format gates) **(2) OK to submit?** (pre-registered holdout gate + dual-reading uniqueness).
 
 > ### Current protocol-gate review — 2026-10-25 (`376a8469`)
 > **✅ OK TO DOWNLOAD FOR RESEARCH · ⛔ DO NOT SUBMIT. No new unique TIFF generated.**
@@ -344,3 +352,8 @@ Study GEMSDOE32 (h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros: 0.2778): why and 
 ```
 
 </details>
+
+
+## Additional parallel research records (not rerun in review797e)
+
+Main `d6f7ac0` added [RADIODECOUPLE](docs/ANALYSIS_20261025_RADIODECOUPLE.md) and [CURIE-DEMAG](docs/ANALYSIS_20261026_CURIEDEMAG.md) research artifacts. Their original run cards and code are preserved. These do not override the literal stop or constitute experiments run in this review. CURIE-DEMAG names are future-dated relative to this review; use receipt hashes and actual verification timestamps.

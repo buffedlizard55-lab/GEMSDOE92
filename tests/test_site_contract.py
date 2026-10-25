@@ -23,15 +23,6 @@ def _index() -> str:
 
 def test_index_has_download_and_slot_warning():
     html = _index()
-    # The current binding registry stop must precede any historical lane claims.
-    assert html.index('id="current-protocol-status"') < html.index('LISTRICDIP:BEGIN')
-    current = html[html.index('id="current-protocol-status"'):html.index('LISTRICDIP:BEGIN')]
-    assert "no submission-cleared TIFF" in current
-    assert "DO NOT SUBMIT" in current
-    assert "single pinned witness" in current
-    assert "literal 3-pixel forward overlap 1.0" in current
-    assert "matched-budget overlap is diagnostic only" in current.lower()
-    assert "Download current primary LISTRICDIP research TIFF — NOT CLEARED FOR SUBMISSION" in current
     # an obvious download, and the encoding that survives the portal validator
     assert "OK TO DOWNLOAD" in html
     assert "NOT CLEARED FOR A WEEKLY SLOT" in html
@@ -212,13 +203,17 @@ def test_current_review_run_card_is_served_byte_identically():
     assert "downloads/repo_review_run_card_20261024.json" in _index()
 
 
-def test_readme_opens_with_current_no_submit_decision():
+def test_readme_opens_with_authoritative_no_submit_status():
+    """The README must state the current stop before historical lane records."""
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     assert readme.startswith("# GEMSDOE92")
-    first_status = readme.index("Current submission decision")
-    assert first_status < readme.index("<!-- LISTRICDIP:BEGIN -->")
-    assert "DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT" in readme[:readme.index("<!-- LISTRICDIP:BEGIN -->")]
-    assert "No submission-cleared TIFF exists" in readme[:readme.index("<!-- LISTRICDIP:BEGIN -->")]
+    marker = "<!-- LISTRICDIP:BEGIN -->"
+    assert marker in readme
+    current = readme[:readme.index(marker)]
+    assert "Authoritative review" in current
+    assert "DO NOT SUBMIT" in current
+    assert "every nonempty candidate" in current
+    assert "matched-budget" in current.lower()
 
 
 def test_submit_page_exists():
