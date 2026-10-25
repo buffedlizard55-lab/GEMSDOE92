@@ -57,6 +57,8 @@ The GEMSDOE32 page says **UNSCORED** and **NO ORGANISER SCORE EXISTS** at the re
 
 Read the operating brief below and `SESSION_PROMPT.md` at every session start. Data placement is **not** the sole blocker; no method paragraph was assigned, the universal registry stop binds, and official-source/receipt access remains incomplete. Future-dated historical claims are archived below, not endorsed as current results.
 
+**Chronology / fresh validation addendum:** files labelled 2026-10-26 occur in a 2026-10-25 session checkout; their dates are not proof of when the artifacts or preregistration were created. The independent repository audit records the current test/site-gate counts and explicitly reports no new TIFF or HOLDOUT-DTI: [2026-10-25 audit](docs/REVIEW_20261025_AGENT_AUDIT.md) · [machine-readable card](evidence/agent_repo_review_20261025_run_card.json).
+
 ### Persisted user brief — starting point for every session
 
 Read this README and [SESSION_PROMPT.md](SESSION_PROMPT.md) before work. The [full supplied site-score inventory](ledger/site_scores_claimed_20261025.csv) remains owner-reported claims, not verified receipts. Retain these requirements:
