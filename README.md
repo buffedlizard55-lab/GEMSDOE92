@@ -1,12 +1,5 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-## Current decision (2026-10-25)
-
-**Research downloads only — DO NOT SUBMIT.** The current review below is authoritative. No new candidate was generated in that review; the pinned pre-placement registry witness covers the full footprint, making literal 3-pixel overlap 1.0 for every nonempty in-footprint prediction set (stop threshold 0.70). See [the repo audit and ranked conditional hypotheses](docs/REVIEW_20261025_AGENT_AUDIT.md).
-
-**Chronology warning:** this checkout contains files and README/site banners dated 2026-10-26, one day after the current system date (2026-10-25). Their stored presence and format-gate results do not establish when they were created or validate their claimed preregistration chronology. Do not call them the current session's new submission or use their numbers as current clearance; they remain archived, negative research artifacts unless independently re-established in a later-dated review.
-
-> ## Prior artifact — DRAINAGE-KNICK (2026-10-25)
 <!-- CURRENT-STATUS:BEGIN -->
 ## Current verified decision — 2026-10-25 (review c5e3848c)
 
@@ -18,16 +11,17 @@ Automated format checks pass on the unchanged primary; literal registry overlap 
 
 <!-- CURRENT-STATUS:END -->
 
-## Current decision — 2026-10-25 (`f23ca2d2` review; read first)
+## Repository review — 2026-10-25 (`7059163e`)
 
-**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT. No new unique TIFF was generated.**
-The unchanged literal duplicate rule rejects every nonempty candidate against the pinned full-footprint witness. Matched-budget “unique” claims in historical sections below are not binding clearance. We did not copy or rename a previous submission.
+**New submission objective remains blocked, not completed.** Independently fetched and hash-checked registry bytes require stopping before placement. No new TIFF was generated, copied, or selected. The downloadable file above is an existing, automatically format-validated research artifact.
 
-[Current automated status](docs/downloads/readiness.json) · [Research workbench / direct TIFF](docs/index.html) · [Executive submission guide](docs/executive-summary.html) · [Three-pass review and conditional hypotheses](docs/REVIEW_F23.md) · [Review run card](docs/downloads/review_f23_run_card.json)
+[Three-pass review, ranked untested hypotheses and source audit](docs/REVIEW_7059163E.md) · [new rejection run card](docs/downloads/review705_run_card.json) · [fresh pre-placement proof](docs/downloads/review705_preflight.json) · [live machine-readable format status](docs/downloads/readiness.json).
 
-The shared distance validator previously accepted predictions inside a declared prune radius. It now enforces the radius, verifies catalogue alignment, rejects unreadable/mismatched grids cleanly and requires exact transform matching. Status is recomputed from the served bytes, not inferred from a historical PASS label. Run `python scripts/render_readiness.py` after deliberate input changes and `python scripts/check_site.py` to validate all served files and reject stale status.
+The GEMSDOE32 page says **UNSCORED** and **NO ORGANISER SCORE EXISTS** at the retrieved commit. The prompt's **CLAIM 0.2778** is not an organizer-confirmed result. A spacing/pruning mechanism is plausible, but it is not evidence of that private score or a forecast that a new candidate will beat it. See [analysis](docs/BEAT_0_2778.md).
 
-GitHub Pages is still in **legacy** publishing mode; changing to workflow mode returned HTTP 403. Local/CI verification does not prove the legacy deployment is gated by Actions. No live organizer score, slot cap or portal acceptance was verified.
+Read the operating brief below and `SESSION_PROMPT.md` at every session start. Data placement is **not** the sole blocker; no method paragraph was assigned, the universal registry stop binds, and official-source/receipt access remains incomplete. Future-dated historical claims are archived below, not endorsed as current results.
+
+**Chronology / fresh validation addendum:** files labelled 2026-10-26 occur in a 2026-10-25 session checkout; their dates are not proof of when the artifacts or preregistration were created. The independent repository audit records the current test/site-gate counts and explicitly reports no new TIFF or HOLDOUT-DTI: [2026-10-25 audit](docs/REVIEW_20261025_AGENT_AUDIT.md) · [machine-readable card](evidence/agent_repo_review_20261025_run_card.json).
 
 ### Persisted user brief — starting point for every session
 
@@ -41,6 +35,32 @@ Read this README and [SESSION_PROMPT.md](SESSION_PROMPT.md) before work. The [fu
 - Store research with official-source links, provenance and explicit access limitations. Do not invent leaderboard gains or equate fault prediction with proven geothermal vents. Preserve the reported GEMSDOE32 result and conflicting leaderboard figures as unverified unless receipts establish them.
 - Maintain a clean GitHub Pages site, executive submission subpage, machine-readable current status, reproducible run card, and no manual pixel-inspection requirement. Run three passes: implement and verify; inspect bugs/assumptions/edge cases; recheck against this brief and fix remaining problems. Create and merge a pull request as requested, and document outstanding work honestly.
 - **Maximize P(Win)** means preserving scarce slots and rejecting unsupported score claims. **Own the Outcome** means fixing shared defects and reporting unmet requirements, not weakening a failed gate.
+
+
+<details>
+<summary>Historical session records — superseded status, not current submission clearance</summary>
+
+> ## Latest artifact — LISTRIC (2026-10-26)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`, `submission_eligible: false`). New unique-byte GeoTIFFs (3 experiments); automated [0,1] validation PASS. Static **HOLDOUT-DTI `0.010909 [0.009543, 0.012278]`** (`gems57-pooled-hide-v2`, 22,663 withheld px) nominally tops KNICKLOQO `0.010788` but paired Δ `+0.000121 [-0.001167, +0.001262]` includes 0, SGMC proxy is lower, and the public dual-reading overlap `0.710735 > 0.70` (62GEMSDOE) + literal `1.000` block promotion.
+>
+> **[Download LISTRIC standalone TIFF](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif)** · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.zip) · [run card](docs/downloads/listric_run_card.json) · [analysis](docs/ANALYSIS_20261026_LISTRIC.md) · [hypotheses](docs/HYPOTHESES_20261026_LISTRIC.md) · [executive summary — how to submit](docs/executive-summary.html)
+>
+> SHA-256 `7e4b46368b2a5949bcf626bfaa4457ed15a89dde38d412a1d07469411a31e2ab`; name `GEMSDOE92-LISTRIC-standalone-20261026`; note (82/140): `h33-h33-2-b2; LISTRIC standalone: 37654 1D quadrant-cal listric offset-pair crests`.
+
+> ## Prior artifact — DRAINAGE-KNICK (2026-10-25)
+
+
+## Current decision — 2026-10-25 (`f23ca2d2` review; read first)
+
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT. No new unique TIFF was generated.**
+The unchanged literal duplicate rule rejects every nonempty candidate against the pinned full-footprint witness. Matched-budget “unique” claims in historical sections below are not binding clearance. We did not copy or rename a previous submission.
+
+[Current automated status](docs/downloads/readiness.json) · [Research workbench / direct TIFF](docs/index.html) · [Executive submission guide](docs/executive-summary.html) · [Three-pass review and conditional hypotheses](docs/REVIEW_F23.md) · [Review run card](docs/downloads/review_f23_run_card.json)
+
+The shared distance validator previously accepted predictions inside a declared prune radius. It now enforces the radius, verifies catalogue alignment, rejects unreadable/mismatched grids cleanly and requires exact transform matching. Status is recomputed from the served bytes, not inferred from a historical PASS label. Run `python scripts/render_readiness.py` after deliberate input changes and `python scripts/check_site.py` to validate all served files and reject stale status.
+
+GitHub Pages is still in **legacy** publishing mode; changing to workflow mode returned HTTP 403. Local/CI verification does not prove the legacy deployment is gated by Actions. No live organizer score, slot cap or portal acceptance was verified.
+
 
 ---
 
@@ -434,3 +454,5 @@ Study GEMSDOE32 (h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros: 0.2778): why and 
 ## Additional parallel research records (not rerun in review797e)
 
 Main `d6f7ac0` added [RADIODECOUPLE](docs/ANALYSIS_20261025_RADIODECOUPLE.md) and [CURIE-DEMAG](docs/ANALYSIS_20261026_CURIEDEMAG.md) research artifacts. Their original run cards and code are preserved. These do not override the literal stop or constitute experiments run in this review. CURIE-DEMAG names are future-dated relative to this review; use receipt hashes and actual verification timestamps.
+
+</details>
