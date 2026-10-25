@@ -15,6 +15,42 @@ Automated validation (no human inspection): finite [0, 1] everywhere (the portal
 
 <!-- VARIO-STATUS:END -->
 
+## ALI session — executive summary (2026-10-25, branch `arena/4eccf0bc-gemsdoe92`)
+
+**Bottom line: a new GeoTIFF was generated, validated and tested. It is OK to download for research and NOT OK to submit.**
+
+| | |
+|---|---|
+| File | [`gemsdoe92-ali-famnms-37654-20261025T230000Z-68be9b4d-zeros.tif`](docs/downloads/gemsdoe92-ali-famnms-37654-20261025T230000Z-68be9b4d-zeros.tif) · [ZIP](docs/downloads/gemsdoe92-ali-famnms-37654-20261025T230000Z-68be9b4d-zeros.zip) · SHA-256 `25398a5dee456a5fa491cb2b6b4dbd967f60b2e4239e62ac6871297c39ec7b37` |
+| Format | PASS: 1 float32 band, EPSG:32611, 3730×3292, matching transform, values exactly {0, 1}, 0 NaN, zeros outside the footprint, 0 dots on catalogued faults |
+| Submit? | **NO.** It is a **duplicate** under the registry rule (80.6% of its dots lie within 3 px of 12GEMSDOE `r7-nms3-dem10-scarp`, whose halo covers 31.7% of the domain; 30 discriminating dot fields exceed 0.70). It also **ties** the R0-recipe control on HOLDOUT-DTI: 0.097216 [0.079836, 0.117747] vs 0.097493, paired Δ −0.000278 [−0.015980, +0.015900] (`gems57-pooled-hide-v2`, 22,663 withheld positives). It does not beat the current holdout best (FAULTNET netfar 0.175147). |
+| Name / note | `gemsdoe92-ali-famnms-37654-20261025T230000Z-68be9b4d-zeros` / `GEMSDOE92 ALI: OOF physics fault-appearance model, NMS 250 m, 37654 dots >300 m off-catalogue; holdout ties R0 recipe` (117 chars) |
+
+**Why 0.2778 (verified from bytes):**
+
+* `h33-h33-2-b2` = `dotted-h19-5-d2-8` minus every dot within 2 px of a catalogued fault. The 35,483 dots more than 3 px from the catalogue are identical in d2.8 (0.2600), h27-4 (0.2708) and h33-2-b2 (0.2778).
+* The gains came from three things:
+  1. a strong supervised skeleton (H19-5, 0.1922);
+  2. kernel-aware dotting (0.19 → 0.26);
+  3. deleting dots that hug catalogued traces. Those dots are masked or unrewarded, but still pay false-positive cost.
+* Across 105 owner-reported scores matched to registry rasters, dots within about 2–3 px of the catalogue score about 0.
+* The six unique alternatives that kept ≤ 70% overlap all scored 0.18–0.25. None beat 0.2778.
+
+**Full report:** [docs/ALI_LANE.md](docs/ALI_LANE.md) covers the analysis, aggregate-label inversion, ranked hypotheses, holdout table, uniqueness scan, verified sources and limitations. Also see the [run card](docs/downloads/ali_run_card.json) and [next steps](docs/NEXT_STEPS.md).
+
+### How to submit (only when a file is ever cleared)
+
+1. Download the `-zeros.tif` named in the status box. Upload the `.tif` **or** the one-TIFF `.zip`, never both: <https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/>.
+2. Paste the **name** and **note** shown for that file. The note must be ≤ 140 characters.
+3. Use at most 3 submissions per week (official rules §3.2/§3.4: <https://docs.nlr.gov/docs/fy26osti/96647.pdf>). Choose one final submission before the deadline.
+4. **Today no file is cleared.** Every served TIFF is research-only.
+
+### Session prompt (persisted)
+
+Read this README, [SESSION_PROMPT.md](SESSION_PROMPT.md) and [docs/NEXT_STEPS.md](docs/NEXT_STEPS.md) at the start of every session. The 2026-10-25 brief re-states the following. Generate a genuinely new, unique TIFF and make "OK to download / OK to submit" obvious. Explain h33-h33-2-b2 (0.2778 CLAIM) at PhD level. Rank 3–5 untried hypotheses. Validate on the spatially blocked hide-and-recover holdout and never spend a slot on an idea that has not beaten the current holdout best. Obey the single-lane registry stop (|ρ| > 0.90 or > 70% of dots within 3 px of one registry raster's dots, checked on the surface and on the final dots). Label every number (HOLDOUT-DTI with evaluator, withheld positives and 95% CI, or ORGANIZER-CONFIRMED). Run feature-alone leakage canaries (AUC > 0.90 = leakage). Write a run card. Stop at 3 experiments or 2 hours. Verify against official sources, flag irregularities, do three passes, then open and merge a PR. Core values: **Maximize P(Win)** and **Own the Outcome**.
+
+---
+
 > ## This session's repository review (2026-10-25 UTC)
 > **No new TIFF or experiment was generated; research downloads only, DO NOT SUBMIT or spend a slot.** No lane was assigned and the literal public-raster stop remains binding. The existing LISTRIC research file passes local format checks but fails recorded public dot overlap (`0.710735 > 0.70`) and is dated 2026-10-26, future relative to this review. [Three-pass audit](docs/REVIEW_20261025_ARENA_REPOSITORY.md) · [run card](evidence/review_20261025_arena_run_card.json) · [existing research TIFF](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif).
 
@@ -505,3 +541,66 @@ Study GEMSDOE32 (h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros: 0.2778): why and 
 ## Additional parallel research records (not rerun in review797e)
 
 Main `d6f7ac0` added [RADIODECOUPLE](docs/ANALYSIS_20261025_RADIODECOUPLE.md) and [CURIE-DEMAG](docs/ANALYSIS_20261026_CURIEDEMAG.md) research artifacts. Their original run cards and code are preserved. These do not override the literal stop or constitute experiments run in this review. CURIE-DEMAG names are future-dated relative to this review; use receipt hashes and actual verification timestamps.
+
+---
+
+## Session Prompt — Authoritative Operating Contract (read at every session start)
+
+The full durable operating contract below is the starting point for all work on this repository. It is a condensed operating brief, not a verbatim archive of the historical input, and it is not a claim that any GEMSDOE entry received a verified organizer score or that any current TIFF is submission-cleared. Follow the binding negative decision at the top of this README and the evidence-linked reviews instead.
+
+### Highest urgency — MUST
+
+**MUST generate a unique TIF submission for the competition. Do not copy a previous submission unless it's for learning and education. But we must generate a unique TIF submission. It must be obvious whether it is OK to download and submit the generated TIF submission.**
+
+There should be an easy-to-download submission TIF file as described by the prompt. A lot of sites mention inspection only and a human inspector, but the inspection needs to be done through the project and needs to be validated for submission without human intervention.
+
+### Parallel-run protocol
+
+1. **LANE.** Your lane is the single method paragraph below. Stay inside it. If your raster's rank-correlation with any registry raster exceeds 0.90, or more than 70% of your dots fall within 3 px of one registry raster's dots, you have drifted into another lane: log it as a duplicate and stop. Check this on the surface before placement AND on the final dots.
+
+2. **REUSE, DON'T REBUILD.** Use the template's cached feature stack, evaluate_holdout.py and submission_writer.py. Holdout = hide-and-recover: withhold whole fault segments with a buffer, derive every catalogue-based feature only from the visible faults, mask visible faults pixel-exactly, score pooled DTI (alpha 0.2, beta 0.8, 300 m triangular kernel). If a shared tool is wrong, fix it once in the template and report it; never keep a private fork.
+
+3. **LABEL EVERY NUMBER** as HOLDOUT-DTI (evaluator version, number of withheld positives, 95% CI) or ORGANIZER-CONFIRMED (copied from a submission-page receipt). A projection is never written as a score.
+
+4. **LEAKAGE CANARY.** Test each feature alone on the holdout before trusting any result. AUC above 0.90 means leakage until proven otherwise.
+
+5. **RUN CARD.** End with one JSON card: hypothesis; mechanism; the named non-fault process that could mimic it; holdout DTI + CI; correlation/overlap vs registry; raster sha256; validator output (no NaN inside the footprint, values in [0,1], CRS/shape/transform match); submission name + note of at most 140 characters; verdict promote / negative. Negative results are deliverables.
+
+6. **BUDGET.** Stop after 3 experiments or 2 hours. Do not pick submissions: promotion to a real slot is a separate selector step, within the weekly cap shown on the submission page.
+
+### Competition context
+
+- **Competition:** DOE GEMS Prize, DrivenData #306 — <https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/>
+- **About:** <https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/>
+- **Data:** <https://www.drivendata.org/competitions/306/competition-doe-gems/data/> (requires DrivenData login)
+- **Leaderboard:** <https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/> — current high score 0.4413 (not a GEMSDOE entry); 0.3195 not on the top-50 snapshot
+- **Official rules PDF:** <https://docs.nlr.gov/docs/fy26osti/96647.pdf> (three submissions per week, one final selection, generative-AI disclosure, human judging by DOE)
+- **Reference solution:** <https://github.com/drivendataorg/gems-prize-reference-solution>
+- **USGS GeoDAWN:** <https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and>
+- **DOE GDR #1391 INGENIOUS:** <https://gdr.openei.org/submissions/1391>
+- **GBCGE INGENIOUS:** <https://gbcge.org/current-projects/ingenious/>
+- **EPSG:32611:** <https://epsg.io/32611>
+- **Tversky index:** <https://en.wikipedia.org/wiki/Tversky_index>
+
+### Submission format (validated in-project, no human inspection)
+
+- Single-band GeoTIFF (.tif) or a .zip containing a single GeoTIFF
+- Must match the submission format's CRS (EPSG:32611), shape (3730 × 3292), and geotransform ((100, 0, 243350, 0, -100, 4508550))
+- Values must be finite and in [0, 1] (prevents the portal error "Predicted values must be in range [0, 1]")
+- Zero outside the footprint; 0 NaN inside the footprint
+- Unique submission name and a short note (≤ 140 characters)
+
+### Core values
+
+- **Maximize P(Win):** In every decision, weigh tradeoffs, assess risk, and choose the path that maximizes the probability of winning. Preserve scarce slots; reject unsupported score claims.
+- **Own the Outcome:** Own results end to end. Fix shared defects and report unmet requirements; do not weaken a failed gate. A reproducible negative is preferable to a fabricated submission claim.
+
+### Deliverables for this session
+
+1. Generate 3–5 candidate geological hypotheses not yet tried (layers, physical signature, missing-fault rationale, differences, mimic, expected value, cost) — see docs/HYPOTHESES_TILTANGLE.md
+2. Validate the top candidate (H1 TILTANGLE: gravity tilt-angle edge corridors) on the spatially-blocked holdout set — HOLDOUT-DTI 0.033466 [gems57-pooled-hide-v2, 45,253 withheld positives]
+3. Generate a unique TIF submission — gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif (format-valid, SHA-256 f17eae78ff659e3551fb4a4f92ef9e16180fde22a9d157a2114b03ef98a023e7)
+4. Create executive summary subpage — docs/tiltangle.html
+5. Store the prompt in README.md (this section)
+6. Create and merge a pull request onto main
+
