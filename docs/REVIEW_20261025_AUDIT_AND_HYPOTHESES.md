@@ -13,7 +13,7 @@ Evidence labels used below: **OFFICIAL** (rules or competition page, fetched thi
 | Pass | What was done | Result |
 |---|---|---|
 | 1 — implement & verify | Installed pinned deps (`requirements.txt`), ran the full test suite, ran `check_site`, `render_public_status --check`, `gems manifest`, `gems ledger`, `make validate` on the current primary | Baseline: 539 passed, **3 failed** |
-| 2 — bugs, assumptions, edge cases | Fixed the 3 failures: `tiltangle.html` lacked `<main>`; its TIF was served but not linked from `index.html`; README said the brief was both "verbatim" and "normalized" | 542 passed, 0 failed |
+| 2 — bugs, assumptions, edge cases | Diagnosed the 3 failures: `tiltangle.html` lacked `<main>`; its TIF was served but not linked from `index.html`; README said the brief was both "verbatim" and "normalized". While this session ran, `main` fixed the same three failures in PR #128 (`85b4366`). I discarded my duplicate edits and kept `main`'s versions | Merged branch: 528 passed, 0 failed |
 | 3 — recheck against the request | Independently downloaded and hashed the public witness raster; recomputed footprint overlap for the current primary; checked the official metric and format text; wrote this review, run card and README brief | See §1–§7 |
 
 ---
@@ -35,6 +35,8 @@ Evidence labels used below: **OFFICIAL** (rules or competition page, fetched thi
 | Positive fraction of footprint | **1.000** |
 
 **Current primary** (`h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif`, SHA-256 `58e5d780…048b17`): all **37,654** nonzero cells lie inside the footprint. Because the witness is positive on the whole footprint, every one of those dots is within 0 px of a witness positive. The literal forward overlap is therefore **1.000 > 0.70**. This holds for any in-footprint candidate.
+
+**Every served candidate has the same problem.** I scanned all 109 TIFs in `docs/downloads/` on the merged branch. In every file with positive cells (109 of 109), all positive cells lie inside the official footprint. The literal overlap is therefore 1.000 for every served candidate, including the new VARIO full raster (37,654 of 37,654 positives inside the footprint).
 
 **Consequence.** The literal rule is unsatisfiable for any submission. It does not measure lane duplication. It measures "is this inside the footprint?" The repo's own sparse-public reading (PR #125 and `VENTSCARP`) passes at about 0.41–0.69, and the repo-reported surface Spearman against this witness is 0.056 (APRONRIDGE, `evidence/current_witness_recheck_20261024.json`). That reading is a choice, and the operator must make it. An agent should not make it silently.
 
@@ -97,7 +99,7 @@ Ranking is **qualitative** (High / Med / Low). It is not a DTI projection, and n
 | ID | Irregularity | Evidence | Severity | Action taken |
 |---|---|---|---|---|
 | I-1 | The literal duplicate rule is unsatisfiable for any in-footprint raster (dense full-footprint witness). | §1 (REPRODUCED) | **Blocking** | Not changed. Operator decision D1. |
-| I-2 | **Encoding conflict.** Official text: outside the bounds, "null or nan." The repo gate (`gems/gates.py`, `submission_encoding`) requires **zeros** outside and no NaN, and `SESSION_PROMPT.md` calls NaN-outside files "not upload-safe." Both encodings exist in `docs/downloads/`: 93 `-zeros.tif` files are zeros-outside; 12 unsuffixed TIFs are NaN-outside (7,111,787 NaN cells, the official template's count). Re-run this session: `gems validate` on `h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88.tif` (NaN-outside) gives PASS for `values_in_0_1` and `nan_outside_footprint`, and **FAIL** for `submission_encoding` (`all_finite=False`, `zero_outside=False`). The same file would pass the official wording; the repo's gate is stricter than the rules. The policy rests on an inferred cause of the portal error (§6, D2), not on a portal test. | Official page; `gems/gates.py`; `SESSION_PROMPT.md`; file scan (REPRODUCED) | **High** | Not changed (changing the gate changes every result). Operator decision D2. |
+| I-2 | **Encoding conflict.** Official text: outside the bounds, "null or nan." The repo gate (`gems/gates.py`, `submission_encoding`) requires **zeros** outside and no NaN, and `SESSION_PROMPT.md` calls NaN-outside files "not upload-safe." Both encodings exist in `docs/downloads/`: 97 `-zeros.tif` files are zeros-outside; 12 unsuffixed TIFs are NaN-outside (7,111,787 NaN cells, the official template's count). Re-run this session: `gems validate` on `h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88.tif` (NaN-outside) gives PASS for `values_in_0_1` and `nan_outside_footprint`, and **FAIL** for `submission_encoding` (`all_finite=False`, `zero_outside=False`). The same file would pass the official wording; the repo's gate is stricter than the rules. The policy rests on an inferred cause of the portal error (§6, D2), not on a portal test. | Official page; `gems/gates.py`; `SESSION_PROMPT.md`; file scan (REPRODUCED) | **High** | Not changed (changing the gate changes every result). Operator decision D2. |
 | I-3 | The brief's 0.2778 is a CLAIM. GEMSDOE32's page says UNSCORED. | §2.1 (LIVE) | High | Labelled CLAIM everywhere. |
 | I-4 | The brief's "0.4413 is the GEMSDOE high score" is wrong. It is xiaofanhu's score. | Live leaderboard; repo IR-25-0.4413 | High | Stated in §2.1. |
 | I-5 | The brief's "0.3195 is the highest right now" is not supported. The live top 22 does not contain it. | Live leaderboard; repo IR-25-0.3195 | Medium | Stated in §2.1. |
@@ -105,9 +107,10 @@ Ranking is **qualitative** (High / Med / Low). It is not a DTI projection, and n
 | I-7 | "PRIMARY" differs by banner. `check_site.py` reports LISTRICLOQO; older banners name NETEXPAND, FLEXMAG, LISTRICDIP and VENTSCARP as primary. Several "latest"/"newest" banners conflict. | README; `scripts/check_site.py` output | Medium | `docs/downloads/current_submission.json` is the machine source. Recommend retiring the old banners. |
 | I-8 | **Open PR #125** ("GAPBRIDGE-V2: READY TO SUBMIT") puts green READY-TO-SUBMIT banners on the site. Its own text concedes the literal dense-surface overlap is 1.0 and calls it a "category artifact." That contradicts `main`'s binding decision. | `gh pr view 125` | **High** | **Not merged.** Operator decision D1 decides it. |
 | I-9 | About 25 open PRs from parallel sessions. Only #126 is merged. | `gh pr list` | Medium | Not touched. |
+| I-14 | **Two "current" files.** The README's top banner (VARIO, added to `main` during this session) calls a new raster "a new unique GeoTIFF" and offers it as the lead research download. The machine-readable `docs/downloads/current_submission.json` still names LISTRICLOQO. The VARIO file has the same literal overlap of 1.000 as every other candidate (§1). | README top; `current_submission.json`; full scan (REPRODUCED) | Medium | Not changed. Recommend one machine-readable source for the top banner (see D5). |
 | I-10 | **Competition-derived data is tracked in git and mirrored in public repos.** `git ls-files data` shows 8 tracked files, including `data/bridge/labels.tif` (byte-identical to `existing_faults.tif`) and `sample_submission.tif`. `registry/session_manifest.json` pins the 419 MB `training_features` stack to a public mirror, marked "upstream UNVERIFIED" with "redistribution unchecked." | `git ls-files`; `registry/session_manifest.json` (REPRODUCED) | **High (legal)** | Not used to build anything. **Operator/legal review needed** (D4). |
-| I-11 | Three failing tests on `main` (site contract, README wording). | `pytest` baseline | Medium | **Fixed** (§0). |
-| I-12 | README said the brief was "verbatim" and "normalized" at once. | README lines ~444 and ~494 | Low | **Fixed**. |
+| I-11 | Three failing tests on `main` (site contract, README wording). | `pytest` baseline | Medium | **Fixed on `main` by PR #128** while this session ran; my duplicate fix was dropped in the merge (§0). |
+| I-12 | README said the brief was "verbatim" and "normalized" at once. | README lines ~444 and ~494 | Low | **Fixed on `main`** (PR #128). |
 | I-13 | Rule 3.2 requires AI-use disclosure in the narrative. Not verified that the submission narrative includes it. | Official rules §3.2 | Medium | `AI_USE.md` exists; the submission narrative must cite it (D5). |
 
 ---
@@ -124,9 +127,9 @@ Ranking is **qualitative** (High / Med / Low). It is not a DTI projection, and n
 | V6 | GEMSDOE32 primary is UNSCORED; projected 0.2747 is a model | <https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html> | LIVE (fetched) |
 | V7 | Worked example → 0.6027 (page: 0.60) | problem page; computed | REPRODUCED |
 | V8 | Witness blob SHA-1 / file SHA-256 / 5,167,373 of 5,167,373 positive | GitHub API blob `374c88b1…`; computed | REPRODUCED |
-| V9 | Current primary: 37,654 positives, all inside footprint, values in [0,1] | computed against the official template footprint | REPRODUCED |
+| V9 | Current primary: 37,654 positives, all inside footprint, values in [0,1]. Same check on all 109 TIFs in docs/downloads: 109/109 have every positive inside the footprint | computed against the official template footprint | REPRODUCED |
 | V10 | Shared validator PASS (9 gates) on the current primary; NaN-outside file FAILS only `submission_encoding` | `make validate FILE=…`; `gems validate` on the DILATATION NaN-outside file | REPRODUCED |
-| V11 | Full test suite: 542 passed (baseline 539 + 3 failing) | `pytest tests` | REPRODUCED |
+| V11 | Full test suite: 528 passed on the merged branch (baseline before any fix: 539 passed, 3 failed) | `pytest tests` | REPRODUCED |
 | V12 | Site gate: 93 served rasters PASS | `scripts/check_site.py` | REPRODUCED |
 | V13 | Break-even credit = α·S (derivation) | §2.2 | DERIVED (algebra checked) |
 | V14 | Landsat C2 Surface Temperature is a free USGS product | <https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products> | OFFICIAL (search result; page not fetched in full) |

@@ -29,7 +29,9 @@
     "literal_rule": "forward overlap > 0.70 OR |Spearman| > 0.90 => duplicate, log and stop",
     "spearman_recomputed_this_session": false,
     "spearman_reported_by_repo_for_apronridge_vs_witness": 0.05623747382008243,
-    "evidence_class": "REGISTRY-MEASUREMENT (single witness, reproduced this session)"
+    "evidence_class": "REGISTRY-MEASUREMENT (single witness, reproduced this session)",
+    "all_served_candidates_positives_inside_footprint": "109 of 109 TIFs in docs/downloads (every file with positive cells)",
+    "vario_full_positives_inside_footprint": "37654 of 37654"
   },
   "raster_sha256": {
     "new_raster_generated": false,
@@ -37,11 +39,12 @@
     "current_primary_file": "docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif"
   },
   "validator_output": {
-    "current_primary_make_validate": "RESULT: PASS (9 gates) — crs EPSG:32611, shape 3730x3292, transform matches sample, float32 1 band, values in [0,1], 0 NaN in footprint, zeros outside (7111787), reread sha256 matches",
-    "nan_outside_example_file": "docs/downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88.tif — values_in_0_1 PASS, nan_outside_footprint PASS, submission_encoding FAIL (all_finite=False, zero_outside=False)",
+    "current_primary_make_validate": "RESULT: PASS (9 gates) \u2014 crs EPSG:32611, shape 3730x3292, transform matches sample, float32 1 band, values in [0,1], 0 NaN in footprint, zeros outside (7111787), reread sha256 matches",
+    "nan_outside_example_file": "docs/downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88.tif \u2014 values_in_0_1 PASS, nan_outside_footprint PASS, submission_encoding FAIL (all_finite=False, zero_outside=False)",
     "site_check": "scripts/check_site.py: SITE CHECK PASS (93 served raster(s) gated)",
     "public_status_check": "scripts/render_public_status.py --check: PUBLIC STATUS PASS",
-    "test_suite": "pytest tests: 542 passed (baseline before fixes: 539 passed, 3 failed)"
+    "test_suite": "pytest tests on merged branch: 528 passed (pre-merge baseline: 539 passed, 3 failed; the same 3 failures were fixed on main by PR #128)",
+    "served_tif_scan": "docs/downloads: 97 -zeros.tif zeros-outside, 12 unsuffixed NaN-outside (7111787 NaN cells each)"
   },
   "submission_name": null,
   "submission_note": null,

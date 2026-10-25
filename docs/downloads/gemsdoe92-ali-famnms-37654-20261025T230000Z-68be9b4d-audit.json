@@ -1,0 +1,83 @@
+{
+ "schema": "gemsdoe92-ali-audit.v1",
+ "file": "docs/downloads/gemsdoe92-ali-famnms-37654-20261025T230000Z-68be9b4d-zeros.tif",
+ "sha256_zeros": "25398a5dee456a5fa491cb2b6b4dbd967f60b2e4239e62ac6871297c39ec7b37",
+ "sha256_nan": null,
+ "n_dots": 37654,
+ "n_positive_pixels": 37654,
+ "overall_pass": true,
+ "gates_zeros": [
+  {
+   "name": "crs",
+   "ok": true,
+   "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+  },
+  {
+   "name": "shape",
+   "ok": true,
+   "detail": "reference=3730x3292 candidate=3730x3292"
+  },
+  {
+   "name": "transform",
+   "ok": true,
+   "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+  },
+  {
+   "name": "dtype_and_band",
+   "ok": true,
+   "detail": "dtype=('float32',) count=1"
+  },
+  {
+   "name": "values_in_0_1",
+   "ok": true,
+   "detail": "n_violations=0 min=0.0 max=1.0"
+  },
+  {
+   "name": "no_nan_inside_footprint",
+   "ok": true,
+   "detail": "nonfinite_pixels=0"
+  },
+  {
+   "name": "nan_outside_footprint",
+   "ok": true,
+   "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+  },
+  {
+   "name": "submission_encoding",
+   "ok": true,
+   "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+  },
+  {
+   "name": "catalogue_zero_mass",
+   "ok": true,
+   "detail": "dots_on_catalogue=0"
+  },
+  {
+   "name": "distance_from_catalogue",
+   "ok": true,
+   "detail": "radius=2px dots_within=0; strict distance > radius required"
+  },
+  {
+   "name": "reread_sha256",
+   "ok": true,
+   "detail": "25398a5dee456a5fa491cb2b6b4dbd967f60b2e4239e62ac6871297c39ec7b37"
+  }
+ ],
+ "gates_zeros_pass": true,
+ "gates_nan": [],
+ "gates_nan_pass": false,
+ "submission_eligible": false,
+ "verdict": "negative",
+ "note": "GEMSDOE92 ALI: OOF physics fault-appearance model, NMS 250 m, 37654 dots >300 m off-catalogue; holdout ties R0 recipe",
+ "submission_name": "gemsdoe92-ali-famnms-37654-20261025T230000Z-68be9b4d-zeros",
+ "run_card": "evidence/ali_run_card.json",
+ "public_registry_uniqueness": {
+  "candidate_hash_matches_scan": true,
+  "candidate_sha256_zeros": "25398a5dee456a5fa491cb2b6b4dbd967f60b2e4239e62ac6871297c39ec7b37",
+  "unique_under_literal_rule": false,
+  "stop_required": true,
+  "worst_forward_overlap": 1.0,
+  "worst_discriminating_forward_overlap": 0.9066234662984012,
+  "scope": "full scan of every synced public-registry blob plus local downloads"
+ }
+}
