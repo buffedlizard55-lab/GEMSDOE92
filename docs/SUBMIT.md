@@ -1,7 +1,7 @@
 # Executive summary — GEMSDOE92 submission workbench
 
 <!-- CURRENT:BEGIN -->
-> ## Newest lane result — lane FAULTNET / arm `netfar`
+> ## Earlier lane result (superseded as newest by the ALI session) — lane FAULTNET / arm `netfar`
 > **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 0.7586 of its dots lie within 3 px of the dots of GEMSDOE37/docs/downloads/gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif (80,000 dots), above the 0.70 limit.
 >
 > **[⬇ Download the GeoTIFF](downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.tif)** · [one-TIFF ZIP](downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.zip) · [run card](downloads/faultnet_run_card.json) · [analysis](ANALYSIS_20261025_FAULTNET.md)
@@ -17,6 +17,8 @@
 > **Uniqueness** (1,451 registry rasters): worst overlap `0.7586` (limit 0.70), worst |ρ| `0.1329` / surface `0.7851` (limit 0.90). Literal-support reading: 97 rasters > 0.70. That reading also fails a random raster (`#IR-92-FAULTNET-DOT-DEFINITION`).
 > Siblings: [netctx](downloads/gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif) (negative, HOLDOUT-DTI 0.148707) · [netdens](downloads/gemsdoe92-faultnet-netdens-37654-20261025-517af913-zeros.tif) (negative, HOLDOUT-DTI 0.148814). **Read [SESSION_PROMPT.md](../SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
 <!-- CURRENT:END -->
+
+
 
 
 

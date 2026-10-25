@@ -89,27 +89,36 @@ def panel(card: dict, page: str) -> str:
     review = link('docs/REVIEW_C5E3848C.md')
     receipt = link(CARD)
     guide = link('docs/executive-summary.html')
+    import posixpath
+    from gems.newest_session import html_line, load as load_newest, md_line
+    to_docs = posixpath.relpath('docs', str(Path(page).parent))
+    to_docs = '' if to_docs == '.' else to_docs + '/'
+    newest_card = load_newest(ROOT)
     if page.endswith('.md'):
         return f'''{BEGIN}
-## Current verified decision — 2026-10-25 (review c5e3848c)
+## Current verified decision — 2026-10-25
 
-**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review. The new-submission requirement remains unmet.
+{md_line(newest_card, to_docs)}
+
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF exists: the new ALI raster is a registry duplicate, so no file is cleared for a weekly slot. Primary research download below (review c5e3848c, unchanged earlier file):
 
 [Current research download]({download}) · [fresh run card]({receipt}) · [three-pass review]({review}) · [executive submission guide]({guide}).
 
-Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
+Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. Review c5e3848c reran no HOLDOUT-DTI; no ORGANIZER-CONFIRMED score is available. Weekly slots used: zero.
 
 {END}'''
     return f'''{BEGIN}
 <section id="current-verified-status" aria-label="Current authoritative submission status" style="max-width:70rem;margin:1rem auto;padding:1.25rem;border:3px solid #991b1b;border-radius:12px;background:#fff7ed;color:#292524;font:1rem/1.6 system-ui,sans-serif;overflow-wrap:anywhere">
 <h2 style="margin-top:0">Current decision: research download only</h2>
 <p><strong>OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT · NOT CLEARED FOR A WEEKLY SLOT</strong></p>
+{html_line(newest_card, to_docs)}
+<p>Primary research download (review c5e3848c, unchanged earlier file):</p>
 <p><a href="{download}" download style="display:inline-block;padding:.7rem 1rem;background:#1e3a5f;color:white;border-radius:6px;font-weight:700">Download validated research TIFF</a></p>
 <p>{name}<br>SHA-256: <code>{card['raster_sha256']}</code></p>
 <p>Automated format checks pass: single band, finite [0, 1], no NaNs, zeros outside the footprint, matching CRS/shape/transform. This is an unchanged historical file, <strong>not a new unique submission</strong>.</p>
-<p><strong>Duplicate stop:</strong> the pinned registry witness covers every footprint cell. Literal dot overlap is 1.0; the limit is 0.70. No new surface, dots, leakage canaries or HOLDOUT-DTI were evaluated after this stop. No ORGANIZER-CONFIRMED score is available.</p>
+<p><strong>Duplicate stop:</strong> the pinned registry witness covers every footprint cell. Literal dot overlap is 1.0; the limit is 0.70. Review c5e3848c evaluated no new surface, dots, leakage canaries or HOLDOUT-DTI after this stop. No ORGANIZER-CONFIRMED score is available.</p>
 <p><a href="{receipt}">Fresh automated run card</a> · <a href="{review}">Evidence, hypotheses and limitations</a> · <a href="{guide}">Executive summary / submission instructions</a></p>
-<p>Reviewed 2026-10-25. Experiments: zero. Weekly slots used: zero. Historical “newest”, “unique” and ranking statements below are archives, not clearance.</p>
+<p>Reviewed 2026-10-25. Weekly slots used: zero. Historical “newest”, “unique” and ranking statements below are archives, not clearance.</p>
 </section>
 {END}'''
 

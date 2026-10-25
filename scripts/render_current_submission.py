@@ -80,7 +80,7 @@ def html_block(c, pre):
                      for a, s in c["siblings"].items())
     return f"""{BEGIN}
 <section aria-label="Current submission" style="border:3px solid {bd};background:{bg};padding:1rem 1.2rem;margin:0 0 1.2rem 0;border-radius:8px;font-family:system-ui,sans-serif">
-  <h2 style="margin-top:0">Newest lane result — lane {e(c['lane'])} / arm <code>{e(c['arm'])}</code></h2>
+  <h2 style="margin-top:0">Earlier lane result (superseded as newest by the ALI session) — lane {e(c['lane'])} / arm <code>{e(c['arm'])}</code></h2>
   {status}
   <p style="font-size:1.15rem"><a href="{e(tif)}" download><strong>⬇ Download the GeoTIFF ({e(c['file'].split('/')[-1])})</strong></a> · <a href="{e(zp)}" download>one-TIFF ZIP</a> · <a href="{e(card)}">run card (JSON)</a> · <a href="{e(ana)}">analysis</a></p>
   <p><strong>{'How to submit this file:' if c['ok_to_submit'] else 'How to submit (only do this with a file marked ✅ OK TO SUBMIT, which this one is not):'}</strong></p>
@@ -108,7 +108,7 @@ def md_block(c, pre):
               f"**✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `{c['verdict']}`). Reason: {reason(c)}.")
     sib = " · ".join(f"[{a}]({pre + s['file'].removeprefix('docs/')}) ({s['verdict']}, HOLDOUT-DTI {s['dti']:.6f})" for a, s in c["siblings"].items())
     return f"""{BEGIN}
-> ## Newest lane result — lane {c['lane']} / arm `{c['arm']}`
+> ## Earlier lane result (superseded as newest by the ALI session) — lane {c['lane']} / arm `{c['arm']}`
 > {status}
 >
 > **[⬇ Download the GeoTIFF]({tif})** · [one-TIFF ZIP]({zp}) · [run card]({card}) · [analysis]({ana})
