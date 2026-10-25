@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LISTRICDIP — download decision and exact submit steps</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside class="banner banner-warn" aria-label="LISTRICDIP decision" style="border:2px solid #7f1d1d;">
+  <p><strong>LISTRICDIP (2026-10-25). Three new GeoTIFFs. Verdict <code>negative</code>.</strong></p>
+  <p>
+    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH</span>
+    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE</span>
+  </p>
+  <p><a href="downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif" download><strong>⬇ Download gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif</strong></a></p>
+</aside>
+
+<header class="hero">
+  <p class="kicker">DOE GEMS Prize (#306) · executive subpage · not an organizer receipt</p>
+  <h1>How to submit, and why this file must not be the one you upload</h1>
+  <p class="lede">The download above is the research file. The steps below are the portal procedure. They are not permission to spend a weekly slot.</p>
+</header>
+
+<section>
+  <h2>Decision, before the form</h2>
+  <p><strong>OK to download: yes, for research.</strong> Automated gates pass. Single-band <code>float32</code>, EPSG:32611, 3730×3292, values in <code>[0, 1]</code>, 0 NaN, 0 catalogue mass, 37,654 unit dots. SHA-256 <code>91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e</code>. ZIP SHA-256 <code>0ac14c467ba046835fcf32c7e3ed43a5eb550f8d2ebcc37cde8d5d7998f2052b</code>.</p>
+  <p><strong>OK to submit: no.</strong> <code>submission_eligible: false</code>. Static <strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives) is <code>0.005420 [0.004294, 0.006551]</code>. That beats parent <code>R0</code> <code>0.004006</code> (paired +0.001413, CI excludes 0) and loses to <code>KNICKLOQO</code> <code>0.010788</code> and <code>COULOMBLOQO</code> <code>0.009220</code> (both CIs exclude 0). The pinned dense witness overlap is 1.000. Weekly slots used by this project: 0. This number is not an organizer score.</p>
+  <p>Name, if a later cleared file uses this lane's label: <code>GEMSDOE92-LISTRICDIP-updip50-20261025</code>. Note (77/140): <code>LISTRICDIP updip50: 37654 listric-offset dots; HOLDOUT-DTI 0.005420; negative</code>.</p>
+</section>
+
+<section>
+  <h2>Exact submit steps</h2>
+  <p>Official format, from the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">problem page</a> (fetched 2026-10-25): one GeoTIFF, EPSG:32611, 100 m, same bounds as the training grid, one <code>float32</code> band, values between 0 and 1. The official page says data outside the bounds should be null or NaN. This repository writes <code>0.0</code> outside the footprint because a prior portal response was <code>Predicted values must be in range [0, 1]</code> when NaNs were present. That conflict is recorded. Do not "fix" a cleared file back to NaN without a new portal test.</p>
+  <ol>
+    <li>Sign in at <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">the competition</a>. This workbench cannot log in. There is no organizer receipt in <code>ledger/</code> (0 receipts).</li>
+    <li>Open the submission form. Upload either the single-band GeoTIFF or the zip that contains exactly one GeoTIFF. Do not upload a multi-file archive.</li>
+    <li>Enter the unique name and the note printed on the file's audit. The note must be 140 characters or fewer.</li>
+    <li>Before the deadline, choose <strong>one</strong> submission to be scored in both the Initial Prize Round and the Final Prize Round. The problem page says that choice is made without knowing the private-test score.</li>
+    <li>Do not upload <code>gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif</code>, its zip, or either antithetic sibling. Their audits say <code>submission_eligible: false</code> and <code>verdict: negative</code>.</li>
+  </ol>
+  <p>This project's weekly-slot cap is an operating rule (do not spend a slot on a file that has not beaten the holdout best). It is not a sentence copied from the problem page.</p>
+</section>
+
+<section>
+  <h2>The other two files</h2>
+  <p>Same decision. They are not the homepage primary.</p>
+  <ul>
+    <li><a href="downloads/gemsdoe92-listricdip-anti22-9571-20261025T190000Z-zeros.tif" download>anti22</a> — 9,571 dots, SHA-256 <code>e0ac50406507671417d64375869b75ba9c9b32ceae55562594649dba3dae6128</code>, static HOLDOUT-DTI <code>0.001291 [0.000598, 0.002173]</code>. Budget of 37,654 was not filled.</li>
+    <li><a href="downloads/gemsdoe92-listricdip-anti35-9555-20261025T190000Z-zeros.tif" download>anti35</a> — 9,555 dots, SHA-256 <code>237842090099a0b29571f3b6077d4dd0599c7d793ea19bcd24e05b1f69a8e062</code>, static HOLDOUT-DTI <code>0.001224 [0.000597, 0.002007]</code>. Same shortfall. Distance is not load-bearing.</li>
+  </ul>
+  <p><a href="downloads/listricdip_run_card.json">Run card</a> · <a href="ANALYSIS_20261025_LISTRICDIP.md">Analysis</a> · <a href="HYPOTHESES_20261025_LISTRICDIP.md">Pre-registration</a> · <a href="index.html">Workbench</a></p>
+</section>
+</body>
+</html>
