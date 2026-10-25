@@ -1,6 +1,15 @@
-# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-24, `COULOMBDM` & `COULOMB-LOQO` Merged State)
+# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-25, Post-`POISSONFLEX` Session)
 
-## Current Slot Decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT (`submission_eligible: false`, `0` weekly slots spent, `74 BUILT / 0 RECEIPT`)**
+## Current Slot Decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT (`submission_eligible: false`, `0` weekly slots spent, `84 BUILT / 0 RECEIPT`)**
+
+- **Newest Session Research Artifact (`POISSONFLEX`, 2026-10-25):** `docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif` (`SHA-256 = 37b18c200e84c77b39b07e527b17d4395968389aaf3ff0c175c71204b2065f9b`, `45,000` dots via nested visible-only OOF support; strict draw-blind `d_vis > 2.0` `HOLDOUT-DTI = 0.107466 [0.094158, 0.120431]`, static `d_cat > 2.0` `HOLDOUT-DTI = 0.008824 [0.007601, 0.010081]`, off-catalogue `USGS SGMC PROXY = 0.120957` `+35.4%` over `COULOMBLOQO standalone`; `10/10 + 13/13` format gates PASS; passes all `97` local rasters `<= 0.6488` and all `<= 80k`-dot public rasters across `102` repos `<= 0.6804`, but trails `COULOMBLOQO standalone` `0.113890` and hits `0.7541 > 0.70` on `125,890`-px `62GEMSDOE ventcons` under the `150k` dot-field cap -> **`verdict: "negative"`, DO NOT SUBMIT**; `evidence/poissonflex_run_card.json`).
+- **Closed Selector Investigation (`evidence/coulomb_loqo_dual_reading_selector.json`):** Re-auditing `COULOMBLOQO standalone` and `COULOMBLOQO dual45` across all `1,321` non-self public blobs (`102` repos, `0` missing blobs) under `uniqueness.dual_reading_decision` confirmed **both fail closed** (`standalone` `0.739842 > 0.70` across `8` sparse `100k–126k`-px witnesses; `dual45` `0.722420 > 0.70` across `4` witnesses). **Zero artifacts in the repository are cleared for a weekly slot.**
+
+---
+
+# Historical Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-24, `COULOMBDM` & `COULOMB-LOQO` Merged State)
+
+## Prior Slot Decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT (`submission_eligible: false`, `0` weekly slots spent, `74 BUILT / 0 RECEIPT`)**
 
 - **Current Research Download (`data-primary="true"`):** `docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif` (`SHA-256 = 44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12`, static `HOLDOUT-DTI = 0.007816`, **`0 / 1,181` `<= 150k`-px sparse public overlaps `> 70%`**) and zero-label standalone sibling `docs/downloads/h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif` (`SHA-256 = 510c3012f4866e8ea2f0debd0aba799a7b7765a4e18f0954d2d1067ddd01e172`, `0% H19-5`, `0%` catalogue labels, Rule-2 `d_vis > 2.0` `HOLDOUT-DTI = 0.094496`, **`0 / 1,181` `<= 150k`-px sparse public overlaps `> 70%`, max `0.5859`**; `evidence/coulombdm_run_card.json`).
 - **Repository Holdout-Best Artifact (`COULOMB-LOQO`):** `docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif` (`0.009220` static / `0.113316` LOQO `d_vis > 2.0`, `1` sparse public overlap `0.7004` at `61k` px; hybrid sibling `COULOMBLOQO dual45` `0.009107` static, `0 / 1,121` `<= 90k`-px sparse public overlaps `> 70%`):

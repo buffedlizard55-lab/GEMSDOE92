@@ -1,3 +1,19 @@
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`POISSONFLEX` & `PROVINCETOE` Merge)
+
+## Completed in `POISSONFLEX` session
+
+1. Closed prior-session items #1 (`evidence/coulomb_loqo_dual_reading_selector.json`) and #2 (`evidence/ne_quadrant_loqo_collapse_diagnostic.json`).
+2. Pre-registered 4 untried hypotheses (`docs/HYPOTHESES_20261025_POISSONFLEX.md`) and implemented Rank #1 `POISSONFLEX` (`gems/poissonflex.py`, `32/32` canaries PASS `<= 0.616108`).
+3. Built & validated `docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif` (`SHA-256 = 37b18c200e84c77b39b07e527b17d4395968389aaf3ff0c175c71204b2065f9b`, `45,000` nested OOF dots): strict draw-blind `HOLDOUT-DTI = 0.107466 [0.094158, 0.120431]` (ahead of `PROVINCETOE` `0.106452` and `H19-5` `0.096757`), static `0.008824`, and off-catalogue `USGS SGMC PROXY = 0.120957` (`+35.4%` over `COULOMBLOQO`). Locally unique across all `101` repo rasters (`<= 0.6488`); `verdict = "negative"`, `0` weekly slots spent (`evidence/poissonflex_run_card.json`).
+
+## Highest-P(Win) next steps for the next session
+
+1. **End-to-End 2D Patch ConvNet Trained Directly on Differentiable `300 m` Soft-DTI Loss:** Replace pixelwise `HistGradientBoostingClassifier` with a `64 × 64`-patch dilated 2D ConvNet minimizing $1 - \text{Soft-DTI}_{300\text{m}}(\alpha=0.2, \beta=0.8)$ across `8` buffered LOQO folds on the combined `POISSONFLEX` + `PROVINCETOE` + `COULOMBLOQO` physical features.
+2. **Selective Subsurface-Only Quadrant Calibration (`#IR-92-NE-QUADRANT-DOUBLE-EDGED-CALIBRATION`):** Apply within-quadrant rank alignment only to regional-drift subsurface channels while preserving catalogue-prior scaling on surface scarp channels.
+3. **External Official Public Data Staging (Outside Sandbox):** Stage [USGS 3DEP](https://www.usgs.gov/3d-elevation-program) `10 m / 1 m` DEM scarp curvature tiles and record the first `ORGANIZER-CONFIRMED` DrivenData receipt in `ledger/submissions.csv`.
+
+---
+
 # Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`PROVINCETOE` Session)
 
 ## Completed this session (`PROVINCETOE`)

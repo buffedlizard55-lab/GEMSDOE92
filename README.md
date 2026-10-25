@@ -23,6 +23,25 @@
 > [Existing primary GeoTIFF](docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif) · [three-pass review and ranked conditional hypotheses](docs/REVIEW_376A8469.md) · [fresh run card](docs/downloads/review376a_run_card.json).
 > Fresh pinned-witness rejection reproduced. The shared template now enforces **literal** overlap for every raster; matched-budget overlap is diagnostic only. Earlier policy-resolution/uniqueness claims below are historical and superseded. The requested new submission-cleared artifact remains unfulfilled; zero experiments and zero competition slots used in this review.
 
+<!-- POISSONFLEX:BEGIN (rendered by scripts/render_poissonflex_site.py from evidence/poissonflex_run_card.json) -->
+> ### Newest Session (2026-10-25) — Lane `POISSONFLEX` (`gems/poissonflex.py`; 3 new validated TIFFs; verdict **`negative`**)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** (`10/10` `gems.gates` + `13/13` `gems57.validate` PASS; `float32` in `[0, 1]`, `0.0` outside footprint) · **⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (`verdict: "negative"`, `submission_eligible: false`; primary HOLDOUT-DTI 0.107466 < holdout-best 0.113890 and 126k-px public witness 0.7541 > 0.70)** · weekly slots used: **0** · experiments: **3/3**
+>
+> - **Download winning arm (`45,000` dots, nested OOF support):** [`gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif`](docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif) · [one-TIFF ZIP](docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.zip) · [audit JSON](docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-audit.json) · [JSON Run Card](docs/downloads/poissonflex_run_card.json) · [PhD Analysis](docs/ANALYSIS_20261025_POISSONFLEX.md) · [Pre-Registered Hypotheses](docs/HYPOTHESES_20261025_POISSONFLEX.md)
+> - **SHA-256 (`-zeros.tif`):** `37b18c200e84c77b39b07e527b17d4395968389aaf3ff0c175c71204b2065f9b` · ZIP `193ddff4e46015a1086ab4b293d44c271c24686c214988305e421df551fd4035`
+> - **Automated Validator (zero human step):** single-band `float32`, `EPSG:32611`, `3730 × 3292` (`100 m`), all values finite in `[0.0, 1.0]` (prevents DrivenData `"Predicted values must be in range [0, 1]"` error), `0.0` outside footprint, `45,000` unit dots (`>= 2.8 px` spacing), `0` catalogue mass (`d_cat > 2.0 px`).
+> - **HOLDOUT-DTI (`gems57-pooled-hide-v2`, `22,663` withheld positives, `8` buffered quadrant folds, seeds `20+30`):**
+>   - **Primary strict draw-blind (`d_visible > 2.0`):** `poissonflex_opt` **`0.107466 [0.094158, 0.120431]`** (beats `PROVINCETOE` `0.106452`, `H19-5` `0.096757 [0.084298, 0.108421]` by paired `+0.010709 [+0.002297, +0.018444]`, `COULOMBDM` `0.094496`, and `BLINDFAULT` `0.047896`; trails holdout-best `COULOMBLOQO_standalone_dvis2` `0.113890 [0.100124, 0.127440]` by `-0.006424 [-0.013250, +0.000170]`); `poissonflex_eq` `0.103768 [0.090267, 0.117066]`; `poissonflex_raw` `0.102861 [0.089368, 0.116130]`.
+>   - **Static deployment (`d_cat > 2.0`):** `poissonflex_opt` **`0.008824 [0.007601, 0.010081]`** (`2.20x` parent `R0` `0.004006 [0.003408, 0.004651]`, vs `COULOMBLOQO standalone` `0.009220 [0.007983, 0.010493]` and `PROVINCETOE piedbasin` `0.009711`).
+>   - **Off-catalogue `USGS SGMC` bedrock fault `PROXY` (`62,122` px `> 3 px` from `existing_faults`):** `poissonflex_opt` **`0.120957`** (**`+35.4%`** over `COULOMBLOQO standalone` `0.089332`, **`+32.7%`** over `PROVINCETOE` `0.091183`, and **`+26.8%`** over parent `R0` `0.095386`).
+>   - **NE Quadrant LOQO Collapse Cured (`#IR-92-NE-QUADRANT-LOQO-COLLAPSE`):** `NE` dot allocation restored from `0.1%` (`BLINDFAULT`) / `11.2%` (`COULOMBLOQO`) to **`22.7%`** (`NW 21.9% / NE 22.7% / SW 33.8% / SE 21.6%`), beating `COULOMBLOQO` in `NW` (`0.117551` vs `0.111948`).
+> - **Leakage Canaries (`32/32 PASS`):** max symmetric AUC **`0.616108 <= 0.90`** (`None`); new `f03_poisson_demag_conduit` = `0.548458` (`3.66x` excess AUC over raw `RTP` tilt `0.513278`).
+> - **Uniqueness (`REGISTRY-MEASUREMENT`):** **PASS** vs all `101` local `GEMSDOE92` rasters (`max 3-px overlap = 0.6488 <= 0.70`, `max |ρ| = 0.1674 <= 0.90`; vs `R0`: `0.5031`, vs `COULOMBLOQO standalone`: `0.5997`), **PASS** vs all `<= 80,000`-dot public rasters across `102` repos (`max = 0.6804 <= 0.70`), and **PASS** continuous surface `|ρ|` across all `1404` public blobs (`max |ρ| = 0.4668 <= 0.90`); **STOP** on `100k–126k`-dot public rasters (`0.7541 > 0.70` on `62GEMSDOE/docs/downloads/gems62f-h2r-ventcons-125890-20261012T012736Z-zeros.tif`) and literal dense witness (`1.0000 > 0.70` on `17GEMSDOE`).
+> - **Previous-Session Next Steps Closed:** `evidence/coulomb_loqo_dual_reading_selector.json` (`COULOMBLOQO standalone` worst matched-budget overlap `0.739842 > 0.70`, `dual45` `0.722420 > 0.70` -> both `negative`) & `evidence/ne_quadrant_loqo_collapse_diagnostic.json`.
+> - **Record-Only Name:** `GEMSDOE92-POISSONFLEX-opt-20261025` · **Note (`86/140`):** `POISSONFLEX opt: 45000 LOQO dots, Poisson-grav/mag+flexure+knick; HOLDOUT-DTI 0.107466`
+> - **Sibling Research TIFFs (`37,654` dots, `10/10` format gates PASS, DO NOT SUBMIT):** [`gemsdoe92-poissonflex-poissonflex_eq-37654-20261025-5512bd34-zeros.tif`](docs/downloads/gemsdoe92-poissonflex-poissonflex_eq-37654-20261025-5512bd34-zeros.tif) (`1bea0ae105865371…`) · [`gemsdoe92-poissonflex-poissonflex_raw-37654-20261025-be99276b-zeros.tif`](docs/downloads/gemsdoe92-poissonflex-poissonflex_raw-37654-20261025-be99276b-zeros.tif) (`3048f32162e4b572…`).
+<!-- POISSONFLEX:END -->
+
 <!-- BLINDFAULT:BEGIN (rendered by scripts/render_blindfault_site.py from evidence/blindfault_run_card.json) -->
 > ### Session 2026-10-25 — lane `BLINDFAULT` (historical research TIFF; verdict **`negative`**)
 > **✅ OK TO DOWNLOAD** (format-valid; duplicate under the literal registry rule) · **⛔ DO NOT SUBMIT — literal registry duplicate stop; matched-budget overlap is diagnostic only** · weekly slots used: **0** · experiments: **3/3**
@@ -149,6 +168,25 @@ PYTHONPATH=vendor .venv/bin/python scripts/finalize_blindfault.py   # submission
 PYTHON=.venv/bin/python make test && PYTHON=.venv/bin/python make site && PYTHON=.venv/bin/python make verify && PYTHON=.venv/bin/python make ledger
 ```
 
+
+Newest `POISSONFLEX` pipeline (`< 1.2 GiB` streaming RSS per stage):
+
+```bash
+# 1. Restore & SHA-256-verify all 12 competition/external inputs
+.venv/bin/python scripts/restore_inputs.py && .venv/bin/python scripts/verify_manifest.py
+
+# 2. Stream 30-feature POISSONFLEX stack & verify 32/32 single-feature leakage canaries (<= 0.90)
+.venv/bin/python scripts/run_poissonflex.py --stage features_canaries
+
+# 3. Run paired COULOMBLOQO control, strict 8-fold draw-blind LOQO holdout, and full deployment fit
+.venv/bin/python scripts/run_poissonflex.py --stage cl_worker
+.venv/bin/python scripts/run_poissonflex.py --stage holdout_only
+.venv/bin/python scripts/run_poissonflex.py --stage deploy_only
+
+# 4. Package via submission_writer, dual-validate [0, 1] GeoTIFFs, scan 97 local + 1,414 public blobs, emit Run Card & render site
+.venv/bin/python scripts/finalize_poissonflex.py
+.venv/bin/python scripts/render_poissonflex_site.py
+```
 
 `EULERFUSE` closeout (use a clean/scratch checkout because the builder refuses to overwrite pinned bytes):
 

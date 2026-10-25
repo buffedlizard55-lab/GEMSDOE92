@@ -48,7 +48,20 @@ The goal is maximize the probability of placing well through reproducible scienc
 
 Competition data may be login-gated. Follow license and data-use terms; owner-mirror hash checks establish byte identity, not organizer authentication or redistribution permission.
 
-## Current session result (2026-10-24) — `XPHASE`
+## Current session result (2026-10-25) — `POISSONFLEX`
+
+Lane **POISSONFLEX** (Poisson gravity–pseudogravity hydrothermal breakdown + hanging-wall basement rollover flexure + canyon knickpoint strike integrals + quadrant-deconfounded LOQO & nested visible-only OOF support; `gems/poissonflex.py`). Three pre-registered experiments (`poissonflex_eq`, `poissonflex_raw`, `poissonflex_opt`). Winning research file `docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif` (SHA-256 `37b18c200e84c77b39b07e527b17d4395968389aaf3ff0c175c71204b2065f9b`).
+
+- **Previous-session next steps closed first:** `evidence/coulomb_loqo_dual_reading_selector.json` (`COULOMBLOQO standalone` worst matched-budget overlap `0.739842 > 0.70` across `1,321` non-self public blobs; `dual45` `0.722420 > 0.70` -> both `negative`) and `evidence/ne_quadrant_loqo_collapse_diagnostic.json` (diagnosed `NE` geodetic truncation `B07` median `0.00` + `SW+SE = 62.8%` catalogue skew).
+- **HOLDOUT-DTI** `gems57-pooled-hide-v2`, 22,663 withheld positives: strict draw-blind `d_visible > 2.0`: `poissonflex_opt` (`45,000` dots) **0.107466 [0.094158, 0.120431]** (beats `H19-5` `0.096757` by paired `+0.010709 [+0.002297, +0.018444]`, `COULOMBDM` `0.094496`, and `BLINDFAULT` `0.047896`; trails `COULOMBLOQO standalone` `0.113890` by `-0.006424 [-0.013250, +0.000170]`); `poissonflex_eq` `0.103768`; `poissonflex_raw` `0.102861`. Static `d_cat > 2.0`: `poissonflex_opt` **0.008824 [0.007601, 0.010081]** (`2.20x` `R0` `0.004006`). Off-catalogue `USGS SGMC PROXY` (`62,122` px): **0.120957** (`+35.4%` over `COULOMBLOQO standalone` `0.089332`).
+- **Leakage canaries:** `32/32 PASS`, max symmetric AUC `0.616108 <= 0.90`.
+- **REGISTRY-MEASUREMENT:** local `97` rasters PASS (worst 3-px overlap `0.6488 <= 0.70`, `|ρ| = 0.1674 <= 0.90`); `<= 80k`-dot public rasters across `102` repos PASS (`max = 0.6804 <= 0.70`); continuous surface `|ρ|` across `1,404` valid public blobs PASS (`max = 0.4668 <= 0.90`); `100k–126k`-px public rasters under `150k` dot-field cap STOP (`0.7541 > 0.70` on `62GEMSDOE ventcons`).
+- **Validator:** `10/10` `gems.gates` + `13/13` `gems57.validate` PASS; all finite `[0, 1]`; zeros outside; `EPSG:32611` `3730×3292`.
+- Verdict: **negative**. Format-valid / OK TO DOWNLOAD FOR RESEARCH. **DO NOT SUBMIT.** 0 weekly slots used.
+
+Hypotheses: `docs/HYPOTHESES_20261025_POISSONFLEX.md`. Analysis: `docs/ANALYSIS_20261025_POISSONFLEX.md`. Run card: `evidence/poissonflex_run_card.json`.
+
+## Prior session result (2026-10-24) — `XPHASE`
 
 Lane **XPHASE** (MT–gravity transverse-phase concordance; `gems/xphase.py`). Three experiments (`standalone`, `nophase`, `dual40`). Primary research file `docs/downloads/h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif` (SHA-256 `080018382de33758c78e1b11f80098a1f736ac7de5f4c55641bd84b52b0f7200`).
 
