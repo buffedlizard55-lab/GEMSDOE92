@@ -75,6 +75,7 @@ Ranking is qualitative and reflects scientific distinctness, feasibility and cos
 - [x] Read LISTRIC run card and public-registry measurements; no attempt to reinterpret its negative verdict.
 - [x] Ranked five untried candidates, named layers/signatures/mimics, differentiated method families, and identified data/cost constraints.
 - [x] No model experiment, candidate surface, placement, new TIFF, or weekly slot was created.
+- [x] After merging the advanced `main` into this session branch to resolve the PR conflict, reran the complete suite: **498 passed, 140 upstream warnings**; site gates passed for **82** served rasters. The earlier pre-merge run was 491 tests; the final post-merge result is authoritative for this branch.
 
 Next actions, in order of decision value:
 

@@ -1,3 +1,16 @@
+# Current prerequisite order — review7059163e, 2026-10-25
+
+1. Literal registry policy is still a universal stop, freshly reverified. Do not run prior lane suggestions below under the unchanged rule. A future brief must resolve the continuous-surface/dot-support specification and assign a method lane explicitly.
+2. Only if permitted: restore pinned features, verify official provenance/permissions, freeze matched fold-visible controls and an untouched outer test, and test single-feature leakage before budgeted experiments. Four ranked unimplemented candidates are in [the new review](REVIEW_7059163E.md); none was run here.
+3. Obtain organizer receipts tied to exact TIFF SHA-256 and current portal cap through permitted authorized access. No local result establishes a live score.
+4. Enable GitHub Pages workflow mode with sufficient repository-settings permission. Current GET reports built/legacy; PUT is denied HTTP 403. Local tests cannot guarantee that legacy deployment is gated by Actions.
+
+**New unique submission remains unmet. Research downloads only.** No pixel inspection is required: automated shared format and rejection gates run in-project.
+
+---
+
+## Historical next-step proposals (not authorization)
+
 # Next Steps — GEMSDOE92 (Updated 2026-10-26, Post-LISTRIC Session)
 
 ## Completed this session (LISTRIC — NEXT_STEPS Rank 4 executed)
