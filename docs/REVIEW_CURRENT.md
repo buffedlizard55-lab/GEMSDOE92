@@ -30,6 +30,8 @@ Automated format checks pass on the unchanged primary; literal registry overlap 
 
 **Research downloads only. DO NOT SUBMIT. No new TIFF generated.** Read [the current three-pass review](REVIEW_797E507A.md) and [run card](downloads/review797e_run_card.json). The inherited LISTRICDIP primary passes format checks but literal overlap is 1.0. A single generated status panel now precedes historical banners on all three entry pages, with byte-binding and ordering enforced by publication checks. Previous “unique” matched-budget claims below do not override the literal stop. No HOLDOUT-DTI was run or recertified; no slot was used.
 
+Supplemental historical code audit: [RADIOCONTACT fold-local holdout and gate review](REVIEW_20261025_REPO.md) · [machine-readable card](../evidence/repo_review_20261025.json). It does not change the current universal literal-overlap stop.
+
 ---
 
 # Current review — 2026-10-25 (`KNICKLOQO` session; read this block first)

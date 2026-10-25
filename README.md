@@ -99,6 +99,7 @@ Publication check: `python scripts/render_public_status.py --check` then `python
 > - **Siblings (budget not filled, do not pad):** [`anti22` 9,571](docs/downloads/gemsdoe92-listricdip-anti22-9571-20261025T190000Z-zeros.tif) static `0.001291` · [`anti35` 9,555](docs/downloads/gemsdoe92-listricdip-anti35-9555-20261025T190000Z-zeros.tif) static `0.001224`
 >
 > The standing prompt is in [Persistent Session Prompt Reference](#persistent-session-prompt-reference) below and in `SESSION_PROMPT.md`. Read both at every session start. Maximize P(Win). Own the Outcome.
+> - **Supplemental historical RADIOCONTACT code audit (not a new experiment):** [review](docs/REVIEW_20261025_REPO.md) · [machine-readable card](evidence/repo_review_20261025.json). This review covers the pre-LISTRICDIP checkout; the current newest lane remains LISTRICDIP.
 <!-- LISTRICDIP:END -->
 
 > ## Prior merged lane — DRAINAGE-KNICK (2026-10-25)
