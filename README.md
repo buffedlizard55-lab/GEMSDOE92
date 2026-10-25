@@ -1,16 +1,17 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-> ## Latest artifact — DRAINAGE-KNICK (2026-10-25)
-> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). New byte-unique GeoTIFF; all automated format checks pass, but HOLDOUT-DTI `0.061728 [0.047046, 0.075316]` is below the `0.113316` promotion bar and literal public-registry overlap is `1.0 > 0.70`.
+> ## Current submission decision — literal registry gate blocks every nonempty candidate
+> **✅ OK TO DOWNLOAD FOR RESEARCH** (format/range checks pass) · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT.** A pinned public registry witness is positive in every valid footprint cell, so every nonempty candidate has literal 3-pixel forward overlap `1.0`, exceeding the binding `0.70` stop threshold. This is a single-witness rejection proof, not full-registry clearance; matched-budget overlap is diagnostic only. No new submission-cleared TIFF was generated.
 >
-> **[Download the validated TIFF](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.zip) · [run card](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z_run_card.json) · [public registry audit](docs/downloads/drainageknick_public_registry.json) · [analysis](docs/ANALYSIS_20261025_DRAINAGE_KNICK.md)
+> **[Download the current primary research TIFF](docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif)** · [submission guide](docs/SUBMIT.html) · [protocol-gate review](docs/REVIEW_376A8469.md) · [repo review](docs/REVIEW_20261025_ARENA.md) · [run card](docs/downloads/review376a_run_card.json)
 >
-> SHA-256 `ef6c27e34fe0f28c6e52615a9fc9601c20ada5337203def25ab8753392aef910`; name `GEMSDOE92-DRAINAGE_KNICK-20261025`; note: `DRAINAGE_KNICK terrain+basement+shear; 37654 dots; HOLDOUT-DTI 0.061728; negative`.
-
+> The DRAINAGE-KNICK research artifact is also documented here. Its reported `HOLDOUT-DTI` `0.061728 [0.047046, 0.075316]` (gems57-pooled-hide-v2; 22,663 withheld positives) is a surrogate holdout result, not an organizer score; its literal registry overlap also triggers the stop. See [analysis](docs/ANALYSIS_20261025_DRAINAGE_KNICK.md).
+>
+> This project follows **Maximize P(Win)** and **Own the Outcome**: do not upload a format-valid but method-ineligible file or relabel a local metric as a competition score.
 
 <!-- KNICKLOQO:BEGIN -->
-> ### Newest Session (2026-10-25) — Lane `KNICKLOQO`: 3 New Unique GeoTIFFs Generated · All-Time #1 Static `HOLDOUT-DTI = 0.010788 [0.009468, 0.012201]` · `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` Resolved · Verdict **`negative`** (literal `17GEMSDOE` dense surface) / **`unique`** (`dual_reading_decision`)
-> **✅ OK TO DOWNLOAD: YES** (`10/10` format gates PASS, values in `[0.0, 1.0]`, `0` NaNs, unique on local `65/65` & public dual-reading `1,412/1,412 <= 0.70` including `62GEMSDOE` `125,890` px where `PROVINCETOE` `0.7918` & `POISSONFLEX` `0.7541` tripped) · **⛔ OK TO SUBMIT: NO — DIAGNOSTIC ONLY** (`verdict: "negative"`, `submission_eligible: false` under literal `17GEMSDOE` dense-surface overlap `1.000 > 0.70`) · weekly slots used: **0** · experiments: **3/3**
+> ### Historical Session (2026-10-25) — Lane `KNICKLOQO`: 3 research GeoTIFFs generated · historical static `HOLDOUT-DTI = 0.010788 [0.009468, 0.012201]` · Verdict **`negative`**. Its former `dual_reading_decision` uniqueness designation is superseded; it is not current literal-rule clearance.
+> **✅ OK TO DOWNLOAD FOR RESEARCH: YES** (`10/10` historical format gates PASS, values in `[0.0, 1.0]`, `0` NaNs; matched-budget readings are diagnostic only) · **⛔ OK TO SUBMIT: NO** (`verdict: negative`, `submission_eligible: false` under literal `17GEMSDOE` dense-surface overlap `1.000 > 0.70`) · weekly slots used: **0** · experiments: **3/3**
 >
 > - **Primary Download:** [`h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif`](docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif) · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.zip) · [audit JSON](docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-audit.json) · [run card](docs/downloads/knick_loqo_run_card.json) · [102-repo public scan](docs/downloads/knick_loqo_public_registry_uniqueness.json) · [PhD analysis](docs/ANALYSIS_20261025_KNICKLOQO.md) · [pre-registered hypotheses](docs/HYPOTHESES_20261025_KNICKLOQO.md)
 > - **SHA-256 (`-zeros.tif`):** `8ad4a8c2cd8e1fd965d91643da6efbe82da8b3668e6dc8e59d193a8302424a7d` · ZIP `d272a7cc85a3a9d76a29dc28c92fc985db1402a0d387108dc75b2dc2e940b63e`
@@ -28,7 +29,7 @@
 <!-- KNICKLOQO:END -->
 
 <!-- PROVINCETOE:BEGIN (rendered by scripts/render_provincetoe_site.py from evidence/provincetoe_run_card.json) -->
-> ### Newest Session (2026-10-25) — Lane `PROVINCETOE`: 3 New Unique GeoTIFFs Generated · Verdict **`negative`**
+> ### Historical Session (2026-10-25) — Lane `PROVINCETOE`: 3 New Unique GeoTIFFs Generated · Verdict **`negative`**
 > **✅ OK TO DOWNLOAD FOR RESEARCH** (`11/11` automated format gates PASS in `[0, 1]`, locally unique `<= 0.6846`) · **⛔ DO NOT SUBMIT — verdict negative (submission_eligible: false; Rule-2 HOLDOUT-DTI 0.106452 < COULOMBLOQO 0.113890; 62GEMSDOE 125890-px overlap 0.7918 > 0.70 + literal dense witness 1.0000)** · weekly slots used: **`0`** · experiments: **`3/3`**
 >
 > - **Primary Research Download (`provincetoe`):** [`gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif`](docs/downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif) · [one-TIFF ZIP](docs/downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.zip) · [audit JSON](docs/downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-audit.json) · [JSON run card](docs/downloads/provincetoe_run_card.json) · [holdout JSON](docs/downloads/provincetoe_holdout.json) · [uniqueness JSON](docs/downloads/provincetoe_uniqueness.json) · [PhD Analysis](docs/ANALYSIS_20261025_PROVINCETOE.md) · [Pre-Registered Hypotheses](docs/HYPOTHESES_20261025_PROVINCETOE.md)
@@ -43,7 +44,7 @@
 > - **Sibling Frozen Arms (`11/11` gates PASS, research only):** [`gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.tif`](docs/downloads/gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.tif) (`#1` repo static `HOLDOUT-DTI = 0.009711`, SHA `a8b79fba2c4dd623…`) · [`gemsdoe92-provincetoe-globalraw-37654-20261025-73b06876-zeros.tif`](docs/downloads/gemsdoe92-provincetoe-globalraw-37654-20261025-73b06876-zeros.tif) (raw-strain ablation, SHA `eeb0facc1dfd89de…`).
 <!-- PROVINCETOE:END -->
 
-**Read first:** the protocol-gate review below is current; lane banners below it are historical. Older banners further down are historical lane closeouts kept for audit. Two questions are answered for every served file, by the project, with no human inspector: **(1) OK to download?** (format gates) **(2) OK to submit?** (pre-registered holdout gate + dual-reading uniqueness).
+**Read first:** the protocol-gate review below is current; lane banners below it are historical. Older banners further down are historical lane closeouts kept for audit. Two questions are answered for every served file, by the project, with no human inspector: **(1) OK to download?** (format gates) **(2) OK to submit?** (pre-registered holdout gate + the binding literal registry uniqueness rule). Matched-budget overlap remains diagnostic only.
 
 > ### Current protocol-gate review — 2026-10-25 (`376a8469`)
 > **✅ OK TO DOWNLOAD FOR RESEARCH · ⛔ DO NOT SUBMIT. No new unique TIFF generated.**
@@ -51,7 +52,7 @@
 > Fresh pinned-witness rejection reproduced. The shared template now enforces **literal** overlap for every raster; matched-budget overlap is diagnostic only. Earlier policy-resolution/uniqueness claims below are historical and superseded. The requested new submission-cleared artifact remains unfulfilled; zero experiments and zero competition slots used in this review.
 
 <!-- POISSONKNICK:BEGIN (rendered by scripts/render_poissonknick_site.py from evidence/poissonknick_run_card.json) -->
-> ### Newest Session (2026-10-25) — Lane `POISSONKNICK` (3 new unique GeoTIFFs generated; verdict **`negative`**)
+> ### Historical Session (2026-10-25) — Lane `POISSONKNICK` (3 new unique GeoTIFFs generated; verdict **`negative`**)
 > **✅ OK TO DOWNLOAD FOR RESEARCH** (`11/11` automatic format/range/encoding MUST gates PASS; `float32`, finite `[0, 1]`, `0` NaN/Inf, `0` catalogue mass) · **⛔ DO NOT SUBMIT FOR A WEEKLY SLOT** (`submission_eligible: false`; literal public dense-witness overlap `1.000000 > 0.70` & pooled strict draw-blind `0.098491 < 0.113316` `COULOMBLOQO standalone`) · weekly slots used: **0** · experiments: **3 / 3**
 >
 > - **Primary Research Download (`qcal`):** [`gemsdoe92-poissonknick-qcal-37654-20261025-9cfcc9b9-zeros.tif`](docs/downloads/gemsdoe92-poissonknick-qcal-37654-20261025-9cfcc9b9-zeros.tif) · [one-TIFF ZIP](docs/downloads/gemsdoe92-poissonknick-qcal-37654-20261025-9cfcc9b9-zeros.zip) · [audit JSON](docs/downloads/gemsdoe92-poissonknick-qcal-37654-20261025-9cfcc9b9-audit.json) · [run card](docs/downloads/poissonknick_run_card.json) · [subpage (`poissonknick.html`)](docs/poissonknick.html) · [PhD analysis](docs/ANALYSIS_20261025_POISSONKNICK.md) · [pre-registered hypotheses](docs/HYPOTHESES_20261025_POISSONKNICK.md)
@@ -64,7 +65,7 @@
 > - **Sibling arms (`11/11` gates PASS, research only):** [`gemsdoe92-poissonknick-uncal-37654-20261025-da9bfc4a-zeros.tif`](docs/downloads/gemsdoe92-poissonknick-uncal-37654-20261025-da9bfc4a-zeros.tif) (`7ff1b974854f626a…`) · [`gemsdoe92-poissonknick-pkdual40-37654-20261025-6c1bf3ba-zeros.tif`](docs/downloads/gemsdoe92-poissonknick-pkdual40-37654-20261025-6c1bf3ba-zeros.tif) (`4f94d76a17888e28…`).
 <!-- POISSONKNICK:END -->
 <!-- POISSONFLEX:BEGIN (rendered by scripts/render_poissonflex_site.py from evidence/poissonflex_run_card.json) -->
-> ### Newest Session (2026-10-25) — Lane `POISSONFLEX` (`gems/poissonflex.py`; 3 new validated TIFFs; verdict **`negative`**)
+> ### Historical Session (2026-10-25) — Lane `POISSONFLEX` (`gems/poissonflex.py`; 3 new validated TIFFs; verdict **`negative`**)
 > **✅ OK TO DOWNLOAD FOR RESEARCH** (`10/10` `gems.gates` + `13/13` `gems57.validate` PASS; `float32` in `[0, 1]`, `0.0` outside footprint) · **⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (`verdict: "negative"`, `submission_eligible: false`; primary HOLDOUT-DTI 0.107466 < holdout-best 0.113890 and 126k-px public witness 0.7541 > 0.70)** · weekly slots used: **0** · experiments: **3/3**
 >
 > - **Download winning arm (`45,000` dots, nested OOF support):** [`gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif`](docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif) · [one-TIFF ZIP](docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.zip) · [audit JSON](docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-audit.json) · [JSON Run Card](docs/downloads/poissonflex_run_card.json) · [PhD Analysis](docs/ANALYSIS_20261025_POISSONFLEX.md) · [Pre-Registered Hypotheses](docs/HYPOTHESES_20261025_POISSONFLEX.md)
