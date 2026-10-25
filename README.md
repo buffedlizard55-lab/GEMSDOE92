@@ -1,5 +1,22 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+## Authoritative review — 2026-10-25 (`797e507a`)
+
+**OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT · no new TIFF generated in this review.**
+The requested new unique submission remains **unfulfilled**: a freshly pinned registry witness is positive across the entire footprint, so every nonempty candidate fails the unchanged literal overlap rule. This is an automated rejection, not a request for manual inspection. Matched-budget “unique” claims below are historical diagnostics, not clearance.
+
+**[Download the existing format-validated research TIFF](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif)** · [Executive guide](docs/executive-summary.html) · [Review, sources and limitations](docs/REVIEW_797E507A.md) · [JSON run card](docs/downloads/review797e_run_card.json) · [Ranked conditional hypotheses](docs/HYPOTHESES_797E507A.md).
+
+No candidate was selected for a slot. Parallel main changed the primary to LISTRICDIP; this review preserved it and rechecked its bytes. SHA-256 `91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e`; REGISTRY-MEASUREMENT overlap `1.0`, Spearman `0.010352227787484035`. No fresh HOLDOUT-DTI or organizer score. Three passes are documented in the review.
+
+### Start every session here
+
+Read this README, including its **Persistent Session Prompt Reference**, then the full [durable operating contract](SESSION_PROMPT.md), [current review](docs/REVIEW_CURRENT.md) and [ordered next steps](docs/NEXT_STEPS.md). The persistent brief is normalized requirements, not a verbatim chat transcript. Preserve the unique-TIF objective, strict automated range/grid validation, named geological hypotheses, visible-only buffered holdout, leakage canaries, literal pre/post-placement uniqueness checks, evidence labels, three-experiment/two-hour budget, run card and separate weekly selector. **Maximize P(Win); Own the Outcome:** a reproducible negative is preferable to a fabricated submission claim.
+
+Publication check: `python scripts/render_public_status.py --check` then `python scripts/check_site.py`. After a lane renderer changes banner order, `python scripts/render_public_status.py` restores the authoritative first-in-body status. Both CI and Pages use the site checker; a missing/stale/buried status blocks publication. Historical lane records follow below and do not override it.
+
+---
+
 <!-- LISTRICDIP:BEGIN -->
 > ### Newest session (2026-10-25) — lane `LISTRICDIP`: 3 new unique GeoTIFFs · verdict **`negative`**
 > **✅ OK TO DOWNLOAD FOR RESEARCH** (11/11 format gates, values in `[0, 1]`, 0 NaN, local overlap 0.1968 at scoring; 0.1892 vs the later `DRAINAGE-KNICK` raster) · **⛔ OK TO SUBMIT: NO** (`submission_eligible: false`; literal dense-witness overlap 1.000; not cleared for a weekly slot; 0 slots used)

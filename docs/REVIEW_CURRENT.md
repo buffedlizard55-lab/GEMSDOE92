@@ -1,3 +1,9 @@
+# Authoritative current review — 2026-10-25 (`797e507a`)
+
+**Research downloads only. DO NOT SUBMIT. No new TIFF generated.** Read [the current three-pass review](REVIEW_797E507A.md) and [run card](downloads/review797e_run_card.json). The inherited LISTRICDIP primary passes format checks but literal overlap is 1.0. A single generated status panel now precedes historical banners on all three entry pages, with byte-binding and ordering enforced by publication checks. Previous “unique” matched-budget claims below do not override the literal stop. No HOLDOUT-DTI was run or recertified; no slot was used.
+
+---
+
 # Current review — 2026-10-25 (`KNICKLOQO` session; read this block first)
 
 **✅ OK TO DOWNLOAD: YES (`10/10` format gates PASS, finite `[0.0, 1.0]`, `0` NaNs); ⛔ OK TO SUBMIT: NO — DIAGNOSTIC ONLY (`verdict: negative` under literal `17GEMSDOE` dense surface; `UNIQUE` under `dual_reading_decision` with `0 / 1,412` public rasters `> 0.70`, max `0.685531 <= 0.70`).**
