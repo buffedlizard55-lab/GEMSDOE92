@@ -11,8 +11,43 @@ Automated format checks pass on the unchanged primary; literal registry overlap 
 
 <!-- CURRENT-STATUS:END -->
 
-> ## Repository review (2026-10-25 UTC) — read before relying on the artifact banner
-> **No new TIFF or experiment was generated in this review. Existing rasters are for research download only; DO NOT SUBMIT or spend a weekly slot.** The session lane was not specified, and the binding literal duplicate rule is blocked by a pinned full-footprint witness (overlap `1.0 > 0.70` for every nonempty prediction). The existing LISTRIC raster passes local format validation, but its recorded public dot overlap is `0.710735 > 0.70`; its run-card date `2026-10-26` is future-dated relative to this review and is not claimed as a newly generated current artifact. See the [three-pass repository review](docs/REVIEW_20261025_ARENA_REPOSITORY.md), [run card](evidence/review_20261025_arena_run_card.json), and [existing research TIFF](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif). Verified after merging current main: 498 tests passed, site gates passed for 82 served rasters, pinned parent and manifest passed, and the ledger has no ORGANIZER-CONFIRMED receipt.
+> ## This session's repository review (2026-10-25 UTC)
+> **No new TIFF or experiment was generated; research downloads only, DO NOT SUBMIT or spend a slot.** No lane was assigned and the literal public-raster stop remains binding. The existing LISTRIC research file passes local format checks but fails recorded public dot overlap (`0.710735 > 0.70`) and is dated 2026-10-26, future relative to this review. [Three-pass audit](docs/REVIEW_20261025_ARENA_REPOSITORY.md) · [run card](evidence/review_20261025_arena_run_card.json) · [existing research TIFF](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif).
+
+## Current review — 2026-10-25 (`48e4797d`)
+
+**OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT. No new unique TIFF was generated.**
+The unique-submission objective remains unmet; this review did not copy, rename or select a prior submission.
+
+**[Download the existing format-validated research TIFF](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif)** · [clean current review and source links](docs/review48.html) · [fresh run card](docs/downloads/review48_run_card.json) · [executive submission guide](docs/executive-summary.html) · [three-pass record](docs/REVIEW_48.md).
+
+Fresh **REGISTRY-MEASUREMENT**: the pinned public witness is positive at all 5,167,373 finite template cells. Every nonempty in-footprint candidate therefore has literal overlap **1.0 > 0.70**; stop before feature generation or dot placement. Single-witness rejection is sufficient; it is not a full new registry scan. No geological lane paragraph was supplied. No new HOLDOUT-DTI, leakage result, organizer receipt or weekly slot was produced.
+
+### Starting point for every session — persistent user requirements
+
+Read this README, [SESSION_PROMPT.md](SESSION_PROMPT.md), [current review](docs/REVIEW_CURRENT.md) and [ordered next steps](docs/NEXT_STEPS.md) before work. The durable brief and historical prompt inventory below preserve the supplied requirements; they are not permission to bypass a failed gate.
+
+- The goal is a **genuinely new, high-performing competition TIFF**, not a renamed prior submission. Put an easy download and explicit download/submission decision first on the site. Require one band, finite [0,1], no NaNs inside, matching CRS/shape/transform, an identifiable name and a note of at most 140 characters. Automated validation replaces visual inspection, not the separate slot selector.
+- Stay in one explicitly assigned lane; stop at the literal registry correlation/overlap thresholds before placement and on final dots. Reuse the cached feature stack and shared evaluator/writer; hide whole buffered fault segments and derive catalogue features from visible faults only. Run feature-alone leakage canaries before trusting results.
+- Rank 3–5 untried geological hypotheses first; record layers, physical operator, missing-fault rationale, differences, mimics, expected benefit and cost. Expected gains are unknown until tested. Only propose new external data as obtainable when verified.
+- Report local results as HOLDOUT-DTI with evaluator, withheld positives and 95% CI; only an exact organizer receipt supports ORGANIZER-CONFIRMED. Beat a comparable locked control before promotion; never equate catalogue recovery with geothermal vent discovery. Stop at three experiments or two hours.
+- Preserve official-source links, evidence provenance, access limitations and irregularities. No hallucinated live leaderboard, cap, source retrieval, score or eligibility. Complete three passes and use a PR for reviewed integration.
+- **Maximize P(Win):** protect slots and reject unsupported claims. **Own the Outcome:** repair shared tools, automate reproducible checks and plainly report unmet requirements.
+
+### One-command automatic audit (no pixel inspection)
+
+```bash
+python -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/python scripts/audit_readiness.py --fetch-witness \
+  --output .cache/readiness-review.json
+```
+
+Exit **1** = confirmed protocol STOP; **2** = inconclusive/invalid. This rejection-only tool never grants upload permission. Network downloads stay in ignored `.cache/`; omit `--fetch-witness` for cached/offline verification. Receipts are immutable: choose a fresh output path on each run.
+
+The fetched official reference explicitly supports CPU-only training; the supplied claim that a GPU is mandatory is too strong. This checkout lacks the full feature cache, an authorized dense-raster policy resolution, an assigned lane and an authenticated organizer receipt. Non-GitHub official pages cannot be fetched under this sandbox's network policy. Historical “latest” banners and future-dated 2026-10-26 reports below are preserved records, **not current clearance or independently verified chronology**.
+
+
 
 
 ## Repository review — 2026-10-25 (`7059163e`)
@@ -24,6 +59,8 @@ Automated format checks pass on the unchanged primary; literal registry overlap 
 The GEMSDOE32 page says **UNSCORED** and **NO ORGANISER SCORE EXISTS** at the retrieved commit. The prompt's **CLAIM 0.2778** is not an organizer-confirmed result. A spacing/pruning mechanism is plausible, but it is not evidence of that private score or a forecast that a new candidate will beat it. See [analysis](docs/BEAT_0_2778.md).
 
 Read the operating brief below and `SESSION_PROMPT.md` at every session start. Data placement is **not** the sole blocker; no method paragraph was assigned, the universal registry stop binds, and official-source/receipt access remains incomplete. Future-dated historical claims are archived below, not endorsed as current results.
+
+**Chronology / fresh validation addendum:** files labelled 2026-10-26 occur in a 2026-10-25 session checkout; their dates are not proof of when the artifacts or preregistration were created. The independent repository audit records the current test/site-gate counts and explicitly reports no new TIFF or HOLDOUT-DTI: [2026-10-25 audit](docs/REVIEW_20261025_AGENT_AUDIT.md) · [machine-readable card](evidence/agent_repo_review_20261025_run_card.json).
 
 ### Persisted user brief — starting point for every session
 
