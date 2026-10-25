@@ -44,7 +44,19 @@ The goal is maximize the probability of placing well through reproducible scienc
 
 Competition data may be login-gated. Follow license and data-use terms; owner-mirror hash checks establish byte identity, not organizer authentication or redistribution permission.
 
-## Current session result (2026-10-24)
+## Current session result (2026-10-24) — `XPHASE`
+
+Lane **XPHASE** (MT–gravity transverse-phase concordance; `gems/xphase.py`). Three experiments (`standalone`, `nophase`, `dual40`). Primary research file `docs/downloads/h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif` (SHA-256 `080018382de33758c78e1b11f80098a1f736ac7de5f4c55641bd84b52b0f7200`).
+
+- **HOLDOUT-DTI** `gems57-pooled-hide-v2`, 22,663 withheld positives: `dual40` **0.004653 [0.003955, 0.005390]**; `standalone` 0.003492; `nophase` 0.003487. R0 0.004006. COULOMB-LOQO standalone remains holdout-best at 0.009220.
+- **Leakage canaries:** max symmetric AUC 0.553140 (Band 19) ≤ 0.90.
+- **REGISTRY-MEASUREMENT:** local 74 rasters, worst 3-px overlap 0.4000 ≤ 0.70 (`dual40` vs H19-5); |φ| 0.2132. Literal public witness 17GEMSDOE E-proba-multiscale forward overlap 1.000 → stop.
+- **Validator:** 10/10 MUST gates pass; all finite [0,1]; zeros outside; EPSG:32611 3730×3292.
+- Verdict: **negative**. Format-valid / OK TO DOWNLOAD FOR RESEARCH. **DO NOT SUBMIT.** 0 weekly slots used.
+
+Hypotheses: `docs/HYPOTHESES_20261024_XPHASE.md`. Analysis: `docs/ANALYSIS_20261024_XPHASE.md`. Run card: `evidence/xphase_run_card.json`.
+
+## Prior session result (2026-10-24)
 
 One candidate method was tested: R0-excluded visible-fault collar. Builder: `scripts/build_visible_collar_submission.py`. It generated `docs/downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif` and its run card is `evidence/visible_collar_run_card.json`.
 

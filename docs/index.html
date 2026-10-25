@@ -3,33 +3,59 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GEMSDOE92 — COULOMB-LOQO Automated Validation &amp; Download Workbench</title>
+  <title>GEMSDOE92 — XPHASE Automated Validation &amp; Download Workbench</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <aside class="banner banner-warn" aria-label="Latest verified review">
-  <strong>2026-10-24 verified status: CURRENT PRIMARY <code>COULOMBLOQO standalone</code> IS OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT.</strong>
-  Newly built this session: <code>h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif</code> sets the repository's highest <strong>HOLDOUT-DTI</strong> on both instruments — static <code>0.009220 [0.007983, 0.010493]</code> and strict Rule-2 unmasked <code>d_visible &gt; 2.0</code> <code>0.113316 [0.100614, 0.127163]</code> (<code>gems57-pooled-hide-v2</code>, <code>22,663</code> withheld positives), above <code>HYDROCONDUIT f45hydro</code> (<code>0.008549</code>), <code>APRONRIDGE free1d</code> (<code>0.008354</code>), <code>GEOTENSION free1d</code> (<code>0.007615</code>), <code>COULOMB seismo</code> (<code>0.005808</code>), <code>BASEMENTEDGE step3</code> (<code>0.000000</code>), and <code>MICROSWARM short</code> (<code>0.000000</code>) — and is locally unique against every raster on merged <code>main</code> (<code>&le; 0.6164 &le; 0.70</code>).
+  <strong>2026-10-24 verified status: CURRENT RESEARCH DOWNLOAD <code>XPHASE dual40</code> IS OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT.</strong>
+  Newly built this session: <code>h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif</code> (SHA-256 <code>080018382de33758c78e1b11f80098a1f736ac7de5f4c55641bd84b52b0f7200</code>) is format-valid and locally unique (worst 3-px overlap <code>0.4000 &le; 0.70</code> vs 74 rasters) with <strong>HOLDOUT-DTI</strong> <code>0.004653 [0.003955, 0.005390]</code> (<code>gems57-pooled-hide-v2</code>, <code>22,663</code> withheld positives) — below repository holdout-best <code>COULOMBLOQO standalone</code> <code>0.009220</code> and not the overall holdout best.
   Prior review archive note: in the earlier D97 audit (<a href="REVIEW_D97F969E.md">REVIEW_D97F969E.md</a> · <a href="downloads/review_d97f969e_run_card.json">D97 run card</a> · <a href="downloads/review_d97f969e_witness.json">review_d97f969e_witness.json</a> · <a href="REVIEW_20261024_CONTINUATION.md">continuation review</a> · <a href="downloads/review_20261024_continuation_run_card.json">continuation run card</a> · <a href="downloads/preplacement_dense_witness.json">preplacement dense witness</a>), historical <code>APRONRIDGE</code> was documented as not a newly generated submission and not the overall holdout best relative to <code>HYDROCONDUIT</code>. Under the literal public dense-witness rule (<code>17GEMSDOE E-proba-multiscale</code>, <code>5,167,373</code> positive footprint cells &rarr; <code>1.000</code> forward overlap), every nonempty in-footprint candidate remains <code>submission_eligible: false</code> (<code>verdict: negative</code>).
 </aside>
 <header class="hero">
   <p class="kicker">DOE GEMS Prize (#306) · Automated Project Validation (Zero Human Inspection Required)</p>
-  <h1>GEMSDOE92 — Primary Artifact: <code>COULOMBLOQO standalone</code> (<code>0.009220</code> <code>HOLDOUT-DTI</code>, #1 All-Time Repo High)</h1>
+  <h1>GEMSDOE92 — Research Download: <code>XPHASE dual40</code> (<code>0.004653</code> <code>HOLDOUT-DTI</code>; <code>verdict: negative</code>)</h1>
   <p class="lede"><strong>Two-Question Automated Decision Banner (Read First):</strong></p>
   <p>
     <span class="badge badge-ok" style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH (10/10 Automated Format Gates PASS; Values Strictly in [0, 1])</span>
     <span class="badge badge-stop" style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (DUPLICATE UNDER THE LITERAL REGISTRY RULE)</span>
   </p>
   <p>Every served <code>*-zeros.tif</code> on this workbench is machine-verified inside the project via <code>vendor/gems57/submission_writer.py</code>, <code>gems/gates.py</code>, <code>vendor/gems57/validate.py</code>, and <code>scripts/check_site.py</code> (no human inspector step required) to guarantee finite <code>float32</code> values strictly in <code>[0, 1]</code> with <code>0.0</code> outside the footprint — eliminating DrivenData's <code>"Predicted values must be in range [0, 1]"</code> portal error. Promotion to a scarce live weekly competition slot (<code>3/week</code> cap, external human step) remains blocked (<code>submission_eligible: false</code>, <code>verdict: "negative"</code>, <code>0</code> slots spent) because dense public continuous probability maps such as <code>17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif</code> (<code>5,167,373</code> positive footprint pixels = 100%) force <code>1.000 &gt; 0.70</code> 3-px forward overlap under the literal Rule-1 scan.</p>
-  <p><a href="executive-summary.html"><strong>Executive Summary Subpage →</strong></a> · <a href="SUBMIT.html"><strong>Submission Guide &amp; Slot Gate →</strong></a> · <a href="HYPOTHESES.html"><strong>5 Ranked Untried Hypotheses →</strong></a> · <a href="ANALYSIS_20261024_COULOMBLOQO.md"><strong>PhD Analysis (Why GEMSDOE32 Got 0.2778 &amp; How COULOMB-LOQO Beats H19-5) →</strong></a></p>
+  <p><a href="executive-summary.html"><strong>Executive Summary Subpage →</strong></a> · <a href="SUBMIT.html"><strong>Submission Guide &amp; Slot Gate →</strong></a> · <a href="HYPOTHESES.html"><strong>5 Ranked Untried Hypotheses →</strong></a> · <a href="ANALYSIS_20261024_XPHASE.md"><strong>PhD Analysis (XPHASE negative result) →</strong></a> · <a href="ANALYSIS_20261024_COULOMBLOQO.md"><strong>Prior COULOMB-LOQO Analysis →</strong></a></p>
 </header>
 
 <main>
+<section class="download-card" id="download-xphase">
+  <p class="kicker">Current Research Artifact · MT–Gravity Transverse-Phase Concordance (this session)</p>
+  <h2><code>h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif</code></h2>
+  <p>
+    <a class="btn" href="downloads/h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif" data-primary="true" download>⬇ Research Download (.tif, zeros-outside [0, 1] — DO NOT SUBMIT TO PORTAL)</a>
+    &nbsp;·&nbsp;
+    <a href="downloads/h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.zip" download>Research Archive (.zip)</a>
+    &nbsp;·&nbsp;
+    <a href="downloads/h33-h33-2-b2-XPHASEdual40-20261024-643553cf-audit.json">Per-File Automated Gate Audit (.json)</a>
+    &nbsp;·&nbsp;
+    <a href="downloads/xphase_run_card.json">Protocol Rule 5 Run Card (.json)</a>
+    &nbsp;·&nbsp;
+    <a href="downloads/public_witness_xphase.json">Dense-Witness Receipt (.json)</a>
+  </p>
+  <dl class="meta">
+    <div><dt>Unique Submission Name (Local Ledger)</dt><dd><code>GEMSDOE92-XPHASE-dual40-20261024</code></dd></div>
+    <div><dt>Submission Form Note (73 / 140 chars)</dt><dd><code>h33-h33-2-b2; XPHASE dual40: 15062 H19-5 + 22592 far MT-grav phase crests</code></dd></div>
+    <div><dt>SHA-256 (<code>-zeros.tif</code> / <code>.zip</code>)</dt><dd><code>080018382de33758c78e1b11f80098a1f736ac7de5f4c55641bd84b52b0f7200</code> / <code>c96f22bc9f78c3a92a774d1734b777ed1b5aa759ca6ba9738f27c72f74544f26</code></dd></div>
+    <div><dt>Automated Validator Output</dt><dd><code>PASS</code> — <code>EPSG:32611</code>, <code>3730 &times; 3292</code>, <code>float32</code>, <code>min=0.0, max=1.0</code>, <code>0</code> NaN anywhere, <code>37,654</code> unit dots, <code>0</code> catalogue mass. Prevents DrivenData's <code>"Predicted values must be in range [0, 1]"</code> portal error.</dd></div>
+    <div><dt>Static <code>HOLDOUT-DTI</code> (<code>gems57-pooled-hide-v2</code>, <code>22,663</code> withheld px)</dt><dd><strong><code>0.004653</code></strong> (95% CI <code>[0.003955, 0.005390]</code>) vs <code>R0</code> <code>0.004006</code> (paired &Delta; <code>+0.000647</code>, CI includes 0). Below holdout-best <code>COULOMBLOQO standalone</code> <code>0.009220</code>.</dd></div>
+    <div><dt>Off-Catalogue <code>USGS SGMC</code> <code>PROXY</code></dt><dd><code>0.047166</code> (below <code>R0</code> <code>0.096060</code>).</dd></div>
+    <div><dt>Leakage Canaries &amp; Registry Uniqueness</dt><dd>12/12 canaries PASS (max symmetric AUC <code>0.553140 &le; 0.90</code>). Locally unique across 74 rasters (worst overlap <code>0.4000 &le; 0.70</code>, <code>|&phi;| = 0.2132</code>). Literal public dense witness STOP (<code>1.000</code> vs <code>17GEMSDOE E-proba-multiscale</code>) &rarr; <code>verdict: "negative"</code>, <code>submission_eligible: false</code>, <strong>DUPLICATE UNDER THE LITERAL REGISTRY RULE</strong>.</dd></div>
+  </dl>
+  <p>Pre-registered sibling ablations (3-experiment budget cap): <a href="downloads/h33-h33-2-b2-XPHASEstandalone-20261024-023ac854-zeros.tif">XPHASEstandalone — zeros-outside</a> (<a href="downloads/h33-h33-2-b2-XPHASEstandalone-20261024-023ac854-audit.json">audit</a>, <code>0.003492</code>) · <a href="downloads/h33-h33-2-b2-XPHASEnophase-20261024-2159567d-zeros.tif">XPHASEnophase — zeros-outside</a> (<a href="downloads/h33-h33-2-b2-XPHASEnophase-20261024-2159567d-audit.json">audit</a>, lag ablation <code>0.003487</code>).</p>
+</section>
+
 <section class="download-card" id="download-coulombloqo">
   <p class="kicker">Primary Research Artifact · Spatially Cross-Fitted (LOQO) Polarity-Locked Multi-Scale Hessian &amp; 2D Coulomb Ridge Model</p>
   <h2><code>h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif</code></h2>
   <p>
-    <a class="btn" href="downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif" data-primary="true" download>⬇ Research Download (.tif, zeros-outside [0, 1] — DO NOT SUBMIT TO PORTAL)</a>
+    <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif" download>⬇ Prior holdout-best research download (.tif — DO NOT SUBMIT)</a>
     &nbsp;·&nbsp;
     <a href="downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.zip" download>Research Archive (.zip)</a>
     &nbsp;·&nbsp;

@@ -574,5 +574,38 @@
     "falsifier": "Pooled HOLDOUT-DTI failing to beat repository holdout best HYDROCONDUIT f45hydro (0.008549) on gems57-pooled-hide-v2, any single-feature leakage canary symmetric AUC > 0.90, or local registry forward 3-px overlap > 0.70 / |Spearman| > 0.90.",
     "decision_rule": "Promote only if pooled HOLDOUT-DTI beats HYDROCONDUIT f45hydro (0.008549) with paired 95% CI > 0, all canaries <= 0.90, 10/10 format gates pass, AND literal uniqueness passes on both local and public registries. Because 17GEMSDOE E-proba-multiscale sets every in-footprint pixel > 0 under the literal >70% public overlap clause, record submission_eligible=false and verdict='negative' (OK TO DOWNLOAD, NOT CLEARED FOR A WEEKLY SLOT) without waiving the rule.",
     "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/coulomb_loqo_proxy_audit.json"
+  },
+  "h33-h33-2-b2-XPHASEstandalone-20261024-023ac854": {
+    "parent": "h33-h33-2-b2",
+    "axis": "XPHASE",
+    "value": "standalone",
+    "hypothesis": "Blind Great Basin feeders juxtapose dense basement against basin fill (isostatic gravity gradient, Band 13) and bound a smectite clay-cap / upflow (MT log-conductivity gradient, Band 17) with shared strike but a 100-300 m transverse phase lag, under intermediate Band 15 cover and away from high Band 19 slope.",
+    "mechanism": "S = pct(|grad log B17|) * pct(|grad B13|) * 2-theta orientation agreement * cover-gate * transverse-lag * slope-suppress * (0.35+0.65*coherence); emit 37654 2.8 px-spaced 1D crests with d_cat > 2.0.",
+    "non_fault_mimic": "Saline playa clay rings on a non-tectonic basin-fill density contact; irrigation conductivity fronts; Tertiary tuff/basalt pinchouts.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat R0 (0.004006) with paired 95% CI excluding 0, any canary symmetric AUC > 0.90, or local 3-px overlap > 0.70.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats COULOMB-LOQO standalone (0.009220) with paired 95% CI excluding 0 vs R0, all canaries <=0.90, 10/10 gates pass, AND literal uniqueness passes. Dense public witness (>150k px) is recorded, not waived; submission_eligible stays false under the literal rule until operator density-clause revision.",
+    "predicted_sign_and_size": "HOLDOUT-DTI vs R0 unknown until report_xphase_proxies.py"
+  },
+  "h33-h33-2-b2-XPHASEnophase-20261024-2159567d": {
+    "parent": "h33-h33-2-b2",
+    "axis": "XPHASE",
+    "value": "nophase",
+    "hypothesis": "Blind Great Basin feeders juxtapose dense basement against basin fill (isostatic gravity gradient, Band 13) and bound a smectite clay-cap / upflow (MT log-conductivity gradient, Band 17) with shared strike but a 100-300 m transverse phase lag, under intermediate Band 15 cover and away from high Band 19 slope.",
+    "mechanism": "S = pct(|grad log B17|) * pct(|grad B13|) * 2-theta orientation agreement * cover-gate * transverse-lag * slope-suppress * (0.35+0.65*coherence); emit 37654 2.8 px-spaced 1D crests with d_cat > 2.0.",
+    "non_fault_mimic": "Saline playa clay rings on a non-tectonic basin-fill density contact; irrigation conductivity fronts; Tertiary tuff/basalt pinchouts.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat R0 (0.004006) with paired 95% CI excluding 0, any canary symmetric AUC > 0.90, or local 3-px overlap > 0.70.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats COULOMB-LOQO standalone (0.009220) with paired 95% CI excluding 0 vs R0, all canaries <=0.90, 10/10 gates pass, AND literal uniqueness passes. Dense public witness (>150k px) is recorded, not waived; submission_eligible stays false under the literal rule until operator density-clause revision.",
+    "predicted_sign_and_size": "HOLDOUT-DTI vs R0 unknown until report_xphase_proxies.py"
+  },
+  "h33-h33-2-b2-XPHASEdual40-20261024-643553cf": {
+    "parent": "h33-h33-2-b2",
+    "axis": "XPHASE",
+    "value": "dual40",
+    "hypothesis": "Blind Great Basin feeders juxtapose dense basement against basin fill (isostatic gravity gradient, Band 13) and bound a smectite clay-cap / upflow (MT log-conductivity gradient, Band 17) with shared strike but a 100-300 m transverse phase lag, under intermediate Band 15 cover and away from high Band 19 slope.",
+    "mechanism": "S = pct(|grad log B17|) * pct(|grad B13|) * 2-theta orientation agreement * cover-gate * transverse-lag * slope-suppress * (0.35+0.65*coherence); emit 37654 2.8 px-spaced 1D crests with d_cat > 2.0.",
+    "non_fault_mimic": "Saline playa clay rings on a non-tectonic basin-fill density contact; irrigation conductivity fronts; Tertiary tuff/basalt pinchouts.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat R0 (0.004006) with paired 95% CI excluding 0, any canary symmetric AUC > 0.90, or local 3-px overlap > 0.70.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats COULOMB-LOQO standalone (0.009220) with paired 95% CI excluding 0 vs R0, all canaries <=0.90, 10/10 gates pass, AND literal uniqueness passes. Dense public witness (>150k px) is recorded, not waived; submission_eligible stays false under the literal rule until operator density-clause revision.",
+    "predicted_sign_and_size": "HOLDOUT-DTI vs R0 unknown until report_xphase_proxies.py"
   }
 }

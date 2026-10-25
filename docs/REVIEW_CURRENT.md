@@ -1,6 +1,15 @@
-# Current Repository & Gate Review — `GEMSDOE92` (`2026-10-24`, `COULOMB-LOQO` Primary)
+# Current Repository & Gate Review — `GEMSDOE92` (`2026-10-24`, `XPHASE dual40` Research Download)
 
-## 1. Current Active Primary & Automated Gate Status
+## 0. This session (`XPHASE`)
+
+- **Research GeoTIFF:** `docs/downloads/h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif`
+  - **SHA-256:** `080018382de33758c78e1b11f80098a1f736ac7de5f4c55641bd84b52b0f7200`
+  - **Name / note:** `GEMSDOE92-XPHASE-dual40-20261024` / `h33-h33-2-b2; XPHASE dual40: 15062 H19-5 + 22592 far MT-grav phase crests`
+  - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): **`0.004653 [0.003955, 0.005390]`** vs R0 `0.004006` (paired Δ CI includes 0). Below holdout-best `COULOMB-LOQO` `0.009220`.
+  - **Download:** ✅ OK TO DOWNLOAD FOR RESEARCH (10/10 format gates). **Weekly slot:** ⛔ DO NOT SUBMIT (`verdict: negative`, dense witness overlap 1.000).
+  - Run card: `evidence/xphase_run_card.json`. Analysis: `docs/ANALYSIS_20261024_XPHASE.md`. Hypotheses: `docs/HYPOTHESES_20261024_XPHASE.md`.
+
+## 1. Prior Active Primary & Automated Gate Status (`COULOMB-LOQO`, still repository holdout-best)
 
 - **Primary Served GeoTIFF:** `docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif`
   - **SHA-256 (`-zeros.tif`):** `8f1f93d8c97b4e1c359ce5fbe07d183214e707aa6bda4ed074c00921f39ad32e`

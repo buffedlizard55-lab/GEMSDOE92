@@ -1,0 +1,251 @@
+{
+  "schema": "gemsdoe92-protocol-rule5-run-card.v1",
+  "lane": "XPHASE",
+  "hypothesis": "Blind Great Basin feeders juxtapose dense basement against basin fill (isostatic gravity gradient, Band 13) and bound a smectite clay-cap / upflow (MT log-conductivity gradient, Band 17) with shared strike but a 100-300 m transverse phase lag, under intermediate Band 15 cover and away from high Band 19 slope.",
+  "mechanism": "S = pct(|grad log B17|) * pct(|grad B13|) * 2-theta orientation agreement * cover-gate * transverse-lag * slope-suppress * (0.35+0.65*coherence); emit 37654 2.8 px-spaced 1D crests with d_cat > 2.0.",
+  "named_non_fault_process_that_could_mimic_it": "Saline playa clay rings on a non-tectonic basin-fill density contact; irrigation conductivity fronts; Tertiary tuff/basalt pinchouts.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "n_folds": 8,
+    "dti": 0.004653,
+    "ci95": [
+      0.003955,
+      0.00539
+    ],
+    "vs_R0_delta": 0.000647,
+    "vs_R0_ci95": [
+      -0.000109,
+      0.001375
+    ],
+    "holdout_best_prior_RELIEFp10_dti": 0.006045,
+    "scores_all": {
+      "R0": {
+        "dti": 0.004006,
+        "ci95": [
+          0.003406,
+          0.004668
+        ]
+      },
+      "COULOMBLOQO_standalone": {
+        "dti": 0.00922,
+        "ci95": [
+          0.007933,
+          0.010683
+        ]
+      },
+      "HYDROCONDUIT_f45hydro": {
+        "dti": 0.008549,
+        "ci95": [
+          0.007504,
+          0.009666
+        ]
+      },
+      "APRONRIDGE_free1d": {
+        "dti": 0.008354,
+        "ci95": [
+          0.006959,
+          0.009941
+        ]
+      },
+      "RELIEF_p10piedmont": {
+        "dti": 0.006045,
+        "ci95": [
+          0.00526,
+          0.006954
+        ]
+      },
+      "STRAINBREAK_f60s2i": {
+        "dti": 0.005487,
+        "ci95": [
+          0.00457,
+          0.006376
+        ]
+      },
+      "standalone": {
+        "dti": 0.003492,
+        "ci95": [
+          0.002741,
+          0.00424
+        ]
+      },
+      "nophase": {
+        "dti": 0.003487,
+        "ci95": [
+          0.002781,
+          0.004186
+        ]
+      },
+      "dual40": {
+        "dti": 0.004653,
+        "ci95": [
+          0.003955,
+          0.00539
+        ]
+      }
+    }
+  },
+  "sgmc_proxy": {
+    "R0": 0.09606,
+    "COULOMBLOQO_standalone": 0.090569,
+    "HYDROCONDUIT_f45hydro": 0.074107,
+    "APRONRIDGE_free1d": 0.080098,
+    "RELIEF_p10piedmont": 0.087245,
+    "STRAINBREAK_f60s2i": 0.105162,
+    "standalone": 0.027957,
+    "nophase": 0.027573,
+    "dual40": 0.047166
+  },
+  "leakage_canary_max_symmetric_auc": 0.55314,
+  "leakage_canaries": {
+    "Band05_iso_grav_anom_slope": {
+      "auc": 0.551113,
+      "symmetric_auc": 0.551113,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "Band13_iso_grav_anom": {
+      "auc": 0.487735,
+      "symmetric_auc": 0.512265,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "Band15_depth_to_base_surf": {
+      "auc": 0.514862,
+      "symmetric_auc": 0.514862,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "Band17_cond_surf": {
+      "auc": 0.505983,
+      "symmetric_auc": 0.505983,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "Band19_det_elev_slope": {
+      "auc": 0.55314,
+      "symmetric_auc": 0.55314,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "XPHASE_mt_pct": {
+      "auc": 0.50972,
+      "symmetric_auc": 0.50972,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "XPHASE_gr_pct": {
+      "auc": 0.553098,
+      "symmetric_auc": 0.553098,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "XPHASE_orient": {
+      "auc": 0.509806,
+      "symmetric_auc": 0.509806,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "XPHASE_lag": {
+      "auc": 0.515988,
+      "symmetric_auc": 0.515988,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "XPHASE_cover": {
+      "auc": 0.544766,
+      "symmetric_auc": 0.544766,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "XPHASE_S_raw": {
+      "auc": 0.515523,
+      "symmetric_auc": 0.515523,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "XPHASE_S_pct": {
+      "auc": 0.515523,
+      "symmetric_auc": 0.515523,
+      "status": "REPORT_ONLY_PASS"
+    }
+  },
+  "correlation_overlap_vs_registry": {
+    "local": {
+      "n_rasters_checked": 74,
+      "worst_forward_overlap": 0.400011,
+      "worst_forward_file": "data/bridge/h19_5.tif",
+      "worst_abs_spearman_phi": 0.213237,
+      "worst_spearman_file": "data/bridge/h19_5.tif",
+      "local_duplicate": false,
+      "top5_by_forward_overlap": [
+        {
+          "raster": "data/bridge/h19_5.tif",
+          "forward_3px_overlap": 0.400011,
+          "reverse_3px_overlap": 0.412405,
+          "spearman_phi": 0.213237,
+          "jaccard": 0.104799
+        },
+        {
+          "raster": "data/bridge/d28.tif",
+          "forward_3px_overlap": 0.400011,
+          "reverse_3px_overlap": 0.395464,
+          "spearman_phi": 0.175735,
+          "jaccard": 0.099907
+        },
+        {
+          "raster": "data/bridge/h27_4_solo.tif",
+          "forward_3px_overlap": 0.398709,
+          "reverse_3px_overlap": 0.424364,
+          "spearman_phi": 0.184708,
+          "jaccard": 0.105427
+        },
+        {
+          "raster": "releases/h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
+          "forward_3px_overlap": 0.394646,
+          "reverse_3px_overlap": 0.438808,
+          "spearman_phi": 0.192148,
+          "jaccard": 0.109937
+        },
+        {
+          "raster": "releases/h33-h33-2-b2-MASS_A10-20261023-e5613a00.tif",
+          "forward_3px_overlap": 0.394646,
+          "reverse_3px_overlap": 0.438808,
+          "spearman_phi": 0.192148,
+          "jaccard": 0.109937
+        }
+      ]
+    },
+    "local_duplicate": false,
+    "public_witness": {
+      "file": "docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "forward_overlap": 1.0,
+      "stop_required": true,
+      "unique_under_literal_rule": false,
+      "evidence_class": "REGISTRY-MEASUREMENT"
+    }
+  },
+  "raster_sha256": "080018382de33758c78e1b11f80098a1f736ac7de5f4c55641bd84b52b0f7200",
+  "validator_output": {
+    "overall_pass": true,
+    "values_range": [
+      0.0,
+      1.0
+    ],
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "n_dots": 37654,
+    "nan_inside_footprint": 0,
+    "encoding": "zeros-outside"
+  },
+  "validator": {
+    "overall_pass": true,
+    "values_in_0_1": true,
+    "no_nan_inside_footprint": true,
+    "crs_shape_transform_match": true
+  },
+  "submission_name": "GEMSDOE92-XPHASE-dual40-20261024",
+  "note": "h33-h33-2-b2; XPHASE dual40: 15062 H19-5 + 22592 far MT-grav phase crests",
+  "file": "h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif",
+  "primary_download": "docs/downloads/h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif",
+  "verdict": "negative",
+  "verdict_detail": "negative \u2014 10/10 format-valid; canaries max 0.553140 <= 0.90; local uniqueness PASS (worst fwd 0.4000); HOLDOUT-DTI 0.004653 [0.003955, 0.005390] vs R0 0.004006; blocked by the unresolved literal public dense witness (17GEMSDOE E-proba-multiscale, forward_overlap=1.0). OK TO DOWNLOAD for research; NOT CLEARED FOR A WEEKLY SLOT.",
+  "submission_eligible": false,
+  "weekly_slots_used": 0,
+  "experiments_executed": 3,
+  "new_unique_tiff_generated": true
+}
