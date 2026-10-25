@@ -1,3 +1,22 @@
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`LISTRICLAG` Session)
+
+## Completed this session (`LISTRICLAG`, 3/3 experiments, 0 weekly slots)
+
+1. **Pre-registered 5 untried hypotheses** (`docs/HYPOTHESES_20261025_LISTRICLAG.md`: LISTRICLAG, GRAVQUAD, SEISGRAVLAG, MTCHANGE, TILTDEPTH) and executed Rank 1 (`gems/listriclag.py`, `scripts/build_listriclag_submission.py` — shared-template reuse, no private fork).
+2. **E1 primary (`LISTRICLAG`, 37,654 unit dots):** strict fold-visible `HOLDOUT-DTI = 0.054843 [0.044940, 0.066261]` (`gems57-pooled-hide-v2`, 22,663 withheld positives, seeds 20+30) — **below the 0.113316 promotion bar ⇒ verdict `negative`**; paired vs `R0` `+0.050837 [+0.040920, +0.061690]`. 6/6 leakage canaries PASS (max symmetric AUC `0.579583`).
+3. **E2 ablation result — lag-coupling hypothesis REJECTED:** co-located `LISTRICLAG_LOCAL = 0.067679 [0.054787, 0.081247]` beats the ring arm; paired ring-vs-local `Δ = −0.012836 [−0.020424, −0.005791]` (CI excludes 0). Structural finding: the hide-and-recover instrument's withheld truth is scarp-mapped by construction, so displacement-tolerant couplings are penalized on it — any future "lag/offset" lane must register an off-catalogue instrument (SGMC proxy) as primary instead.
+4. **E3 emission-policy probe CONFIRMED on holdout:** same-surface `LISTRICLAG_N90K` (90,000 dots; prefix 37,654 @ 1.0, tail @ 0.30) scored `0.062202 [0.051892, 0.073341]` — **+13.4% paired over the binary 37,654 arm**, the first direct holdout measurement of the extended-budget lever identified analytically in the PROVINCETOE session (`c* = alpha·DTI` marginal bar).
+5. **Artifacts (format-valid, automated gates PASS, locally unique, public audit merged into run card):** `docs/downloads/gemsdoe92-listriclag-20261025T145312Z-zeros.tif` (`a301cbfc…`) + `…-n90k-zeros.tif` (`2704229b…`); run card `evidence/gemsdoe92-listriclag-20261025T145312Z_run_card.json`; public scan `evidence/listriclag_public_registry_uniqueness.json` (102 repos, 1,464 Git-blob-verified blobs, refreshed this session). **OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT** (`submission_eligible: false`).
+
+## Highest-P(Win) actions for the next session (in order)
+
+1. **KNICKLOQO-N90K:** apply the now holdout-confirmed extended-budget emission (E3, +13.4% paired) to the repository's strongest ranker (`KNICKLOQO standalone`, Rule-2 `0.109043`, static #1 `0.010788`, public `0 / 1,412 > 0.70` under `dual_reading_decision`) instead of a single-physics surface; sweep tail budget `{60k, 90k, 120k}` × tail weight `{0.2, 0.3, 0.5}` on the same 8-fold instrument before any slot discussion.
+2. **Off-catalogue primary instrument for displacement-tolerant lanes:** re-register LISTRICLAG-class mechanisms with the USGS SGMC bedrock-fault proxy (`d_cat > 3`) as the pre-registered primary, since item 3 above proves the scarp-biased holdout structurally penalizes them.
+3. **First `ORGANIZER-CONFIRMED` receipt:** the ledger still holds 0 portal receipts; every scoring claim in the parent-site corpus remains CLAIM-class. Obtain one authenticated DrivenData receipt on a human-cleared artifact and record it in `ledger/submissions.csv`.
+4. **Untried hypothesis queue:** GRAVQUAD / SEISGRAVLAG / MTCHANGE (ranks 2–4 of this session's pre-registration) remain untried; TILTDEPTH ranked last due to EULERFUSE/ANASIG drift risk.
+
+---
+
 # Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`KNICKLOQO` Session)
 
 ## Completed this session (`KNICKLOQO` + Action #1 Dual-Reading Audit + Action #2 `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` Resolution)
