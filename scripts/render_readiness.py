@@ -65,6 +65,37 @@ def form_note(card: dict) -> str:
     return notes[0]
 
 
+def validate_current_submission_record(
+    current: dict,
+    *,
+    file: str,
+    sha256: str,
+    lane: str,
+    arm: str,
+    submission_name: str,
+    note: str,
+) -> None:
+    """Require the compact current card and full readiness feed to name one artifact."""
+    if not isinstance(current, dict):
+        raise ValueError('current_submission.json must be an object')
+    expected = {
+        'schema': 'gemsdoe92-current-submission-v1',
+        'file': file,
+        'sha256': sha256,
+        'lane': lane,
+        'arm': arm,
+        'submission_name': submission_name,
+        'note': note,
+        'ok_to_download': True,
+        'ok_to_submit': False,
+        'verdict': 'negative',
+    }
+    for key, value in expected.items():
+        got = current.get(key)
+        if type(got) is not type(value) or got != value:
+            raise ValueError(f'current_submission.json disagrees with readiness evidence: {key}')
+
+
 def build_status(root: Path = ROOT) -> dict:
     docs = root / 'docs'
     problems: list[str] = []
@@ -89,47 +120,73 @@ def build_status(root: Path = ROOT) -> dict:
     if audit.get('submission_eligible') is not False or card.get('verdict') != 'negative':
         problems.append('historical primary evidence contradicts the binding rejection')
     note = form_note(card)
+    current_path = root / 'docs/downloads/current_submission.json'
+    current = json.loads(current_path.read_text())
+    validate_current_submission_record(
+        current,
+        file=str(candidate.relative_to(root)),
+        sha256=digest,
+        lane=card['lane'],
+        arm=card['best_variant'],
+        submission_name=card['submission_name'],
+        note=note,
+    )
+    parent = root / 'data/parent_R0_zeros.tif'
+    parent_digest = sha256_file(parent)
+    if digest == parent_digest:
+        problems.append('primary bytes are an exact copy of the pinned parent raster')
     gates = run_gates(candidate, sample, catalogue, prune_radius=2,
                       require_submission_encoding=True)
     problems.extend(f'format gate failed: {gate.name}' for gate in gates if not gate.ok)
     if problems:
         raise ValueError('; '.join(problems))
     bindings = [sample, catalogue, candidate, receipt, card_path, proof_path,
-                root / 'gems/gates.py', root / 'scripts/render_readiness.py']
+                current_path, parent, root / 'gems/gates.py', root / 'scripts/render_readiness.py']
     return {
-        'schema': 'gemsdoe92-current-readiness.v1',
+        'schema': 'gemsdoe92-current-readiness.v2',
         'evidence_class': 'AUTOMATED-FORMAT-CHECK + REGISTRY-MEASUREMENT; not a score',
         'download_status': 'OK TO DOWNLOAD FOR RESEARCH',
-        'submission_status': 'DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT',
+        'submission_status': 'DO NOT SUBMIT — LITERAL DUPLICATE STOP',
         'submission_eligible': False,
         'verdict': 'negative',
-        'new_unique_tiff_generated': True,
-        'experiments_this_review': int(card.get('experiments_used', 0)),
-        'weekly_slots_used_this_review': int(card.get('weekly_slots_used', 0)),
+        'candidate_artifact_exists': True,
+        'candidate_byte_distinct_from_pinned_parent': digest != parent_digest,
+        'candidate_registry_unique_under_literal_rule': False,
+        'latest_lane_experiments_used': int(card.get('experiments_used', 0)),
+        'latest_lane_weekly_slots_used': int(card.get('weekly_slots_used', 0)),
+        'current_submission_record_generated_utc': current.get('generated_utc'),
+        'lane': card['lane'],
+        'arm': card['best_variant'],
         'file': relative,
         'raster_sha256': digest,
+        'pinned_parent_sha256': parent_digest,
         'submission_name': card['submission_name'],
         'note': note,
         'format_pass': True,
         'validator_output': [asdict(g) for g in gates],
         'correlation_overlap_vs_registry': {
             'evidence_class': 'REGISTRY-MEASUREMENT',
-            'scope': 'single pinned universal witness; rejection only, not full registry scan',
-            'forward_overlap': 1.0,
+            'scope': 'single pinned witness; rejection only, not a full registry scan',
+            'forward_overlap': proof['forward_overlap_for_any_nonempty_in_footprint_dot_set'],
+            'positive_cells': proof['positive_in_footprint'],
+            'footprint_cells': proof['footprint_pixels'],
+            'threshold': proof['threshold'],
+            'witness_sha256': proof['sha256'],
+            'witness_git_blob_sha': proof['git_blob_sha'],
             'rank_correlation': None,
-            'rank_correlation_reason': 'not measured in this review; overlap alone requires stop',
+            'rank_correlation_reason': 'not required to reject; literal overlap independently triggers stop',
             'proof': 'downloads/review_f23_preflight.json',
         },
         'holdout_dti': card.get('holdout_dti'),
-        'holdout_reason': ('Measured by the completed LISTRIC lane; local HOLDOUT-DTI is not an '
+        'holdout_reason': ('Measured by the completed LISTRICLOQO lane; local HOLDOUT-DTI is not an '
                            'organizer score and did not clear every promotion gate.'),
         'organizer_confirmed_score': None,
         'blocking_reasons': [
-            'DUPLICATE UNDER THE LITERAL REGISTRY RULE: pinned positive support covers the entire footprint.',
+            'DUPLICATE UNDER THE LITERAL REGISTRY RULE: the pinned witness is positive in every footprint cell, so every nonempty in-footprint dot set overlaps 100%.',
             'Matched-budget overlap is diagnostic, not permission to replace the literal rule.',
-            'The completed LISTRICLOQO lane used all 3 experiments and beats KNICKLOQO on paired holdout; literal overlap still blocks promotion.',
-            'Public dual-reading overlap is 0.690259, below the 0.70 threshold; literal dense-witness overlap is 1.0 and remains binding.',
-            'The artifact filename/run card is labelled 2026-10-26, one day after this 2026-10-25 review; chronology is unverified.',
+            'The prior LISTRICLOQO lane used all 3 experiments and beat KNICKLOQO on paired HOLDOUT-DTI; this is not an organizer score and does not clear the overlap stop.',
+            'A prior public dual-reading diagnostic is 0.690259, below the 0.70 threshold; it cannot override the pinned witness result.',
+            'The exact pinned witness was re-verified from its GitHub blob SHA and SHA-256; do not relax the existing STOP unless the protocol owner revises the dense-surface rule.',
             'No verified submission-page receipt or current weekly-cap evidence is available.',
         ],
         'input_sha256': {str(p.relative_to(root)): sha256_file(p) for p in bindings},
@@ -142,13 +199,13 @@ def panel(status: dict) -> str:
     return f'''{START}
 <section class="readiness-panel" aria-labelledby="current-readiness-heading">
   <p class="readiness-kicker">GEMSDOE92 · automated submission readiness · LISTRICLOQO lane 2026-10-25</p>
-  <h1 id="current-readiness-heading">Unique research TIFF available. Submission blocked.</h1>
+  <h1 id="current-readiness-heading">Research GeoTIFF available. Format checks pass; submission is blocked.</h1>
   <p><strong>{e(status['download_status'])}</strong><br><strong>{e(status['submission_status'])}</strong></p>
-  <p>The completed LISTRICLOQO lane generated a byte-unique TIFF. It is easy to download, but it is <strong>not eligible to submit</strong>: scientific and registry promotion gates failed.</p>
-  <p><a class="btn" href="{e(status['file'])}" download>Download unique LISTRICLOQO research GeoTIFF (.tif)</a>
+  <p>The existing LISTRICLOQO TIFF is byte-distinct from its pinned parent; it is <strong>not registry-unique</strong> under the literal rule. The pinned witness triggers the duplicate stop, so this file is for research download only.</p>
+  <p><a class="btn" href="{e(status['file'])}" download>Download research-only LISTRICLOQO GeoTIFF (.tif)</a>
   <a href="SUBMIT.html">Submission guide</a> · <a href="ANALYSIS_20261025_LISTRICLOQO.md">Analysis and limitations</a> ·
   <a href="downloads/readiness.json">Machine-readable status</a> · <a href="downloads/listric_loqo_run_card.json">Run card</a></p>
-  <p>Fresh automated validation: single band, float32, finite values in [0, 1], zero outside the footprint,
+  <p>Automated format validation passes: single band, float32, finite values in [0, 1], zero outside the footprint,
   matching CRS, shape and transform. This is local validation, not organizer acceptance.</p>
   <ul>{reasons}</ul>
   <details><summary>File identity and record-only form fields</summary>

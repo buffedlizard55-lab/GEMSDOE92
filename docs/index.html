@@ -28,19 +28,19 @@
 <!-- CURRENT-READINESS:BEGIN -->
 <section class="readiness-panel" aria-labelledby="current-readiness-heading">
   <p class="readiness-kicker">GEMSDOE92 · automated submission readiness · LISTRICLOQO lane 2026-10-25</p>
-  <h1 id="current-readiness-heading">Unique research TIFF available. Submission blocked.</h1>
-  <p><strong>OK TO DOWNLOAD FOR RESEARCH</strong><br><strong>DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT</strong></p>
-  <p>The completed LISTRICLOQO lane generated a byte-unique TIFF. It is easy to download, but it is <strong>not eligible to submit</strong>: scientific and registry promotion gates failed.</p>
-  <p><a class="btn" href="downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif" download>Download unique LISTRICLOQO research GeoTIFF (.tif)</a>
+  <h1 id="current-readiness-heading">Research GeoTIFF available. Format checks pass; submission is blocked.</h1>
+  <p><strong>OK TO DOWNLOAD FOR RESEARCH</strong><br><strong>DO NOT SUBMIT — LITERAL DUPLICATE STOP</strong></p>
+  <p>The existing LISTRICLOQO TIFF is byte-distinct from its pinned parent; it is <strong>not registry-unique</strong> under the literal rule. The pinned witness triggers the duplicate stop, so this file is for research download only.</p>
+  <p><a class="btn" href="downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif" download>Download research-only LISTRICLOQO GeoTIFF (.tif)</a>
   <a href="SUBMIT.html">Submission guide</a> · <a href="ANALYSIS_20261025_LISTRICLOQO.md">Analysis and limitations</a> ·
   <a href="downloads/readiness.json">Machine-readable status</a> · <a href="downloads/listric_loqo_run_card.json">Run card</a></p>
-  <p>Fresh automated validation: single band, float32, finite values in [0, 1], zero outside the footprint,
+  <p>Automated format validation passes: single band, float32, finite values in [0, 1], zero outside the footprint,
   matching CRS, shape and transform. This is local validation, not organizer acceptance.</p>
-  <ul><li>DUPLICATE UNDER THE LITERAL REGISTRY RULE: pinned positive support covers the entire footprint.</li>
+  <ul><li>DUPLICATE UNDER THE LITERAL REGISTRY RULE: the pinned witness is positive in every footprint cell, so every nonempty in-footprint dot set overlaps 100%.</li>
 <li>Matched-budget overlap is diagnostic, not permission to replace the literal rule.</li>
-<li>The completed LISTRICLOQO lane used all 3 experiments and beats KNICKLOQO on paired holdout; literal overlap still blocks promotion.</li>
-<li>Public dual-reading overlap is 0.690259, below the 0.70 threshold; literal dense-witness overlap is 1.0 and remains binding.</li>
-<li>The artifact filename/run card is labelled 2026-10-26, one day after this 2026-10-25 review; chronology is unverified.</li>
+<li>The prior LISTRICLOQO lane used all 3 experiments and beat KNICKLOQO on paired HOLDOUT-DTI; this is not an organizer score and does not clear the overlap stop.</li>
+<li>A prior public dual-reading diagnostic is 0.690259, below the 0.70 threshold; it cannot override the pinned witness result.</li>
+<li>The exact pinned witness was re-verified from its GitHub blob SHA and SHA-256; do not relax the existing STOP unless the protocol owner revises the dense-surface rule.</li>
 <li>No verified submission-page receipt or current weekly-cap evidence is available.</li></ul>
   <details><summary>File identity and record-only form fields</summary>
   <p>SHA-256: <code>58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17</code></p>

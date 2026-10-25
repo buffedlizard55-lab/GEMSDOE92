@@ -1,3 +1,29 @@
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, `arena/151c397c-gemsdoe92` Audit & Remediation)
+
+## Completed in this session (`arena/151c397c-gemsdoe92`, `0 / 3` experiments, `0` weekly slots)
+
+1. **Re-verified Pinned Witness & Restored 12 SHA-256-Pinned Inputs (`scripts/restore_inputs.py`, `scripts/audit_readiness.py --fetch-witness`):**
+   - Restored and SHA-256-verified all `12` inputs into gitignored `.cache/gems_inputs/`, including `training_features.tif` (`418,912,844` B, `sha256 = 4371c82e…`), `ext_geodawn_rad_u8.tif` (`c22420f7…`), `gdr_wellspring_in_footprint.csv` (`122718e6…`), and `derived_sgmc_faults_100m_u8.tif` (`643cbe99…`).
+   - Re-fetched and verified the pinned public witness `17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` (`git_blob_sha = 374c88b1da2b803e2ed160de467fd71ae114010d`, `sha256 = ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be`, positive on all `5,167,373 / 5,167,373` footprint cells $\implies$ literal 3-px forward overlap `1.0000 > 0.70` pre-placement **STOP**).
+2. **Audited & Remediated Merged `TILTANGLE` Defects (`scripts/audit_tiltangle_leakage.py`, `evidence/tiltangle_audit_20261025.json`, `tests/test_tiltangle_audit.py`):**
+   - Proved that `TILTANGLE`'s reported `0.033466` static figure failed the Protocol Rule 4 leakage canary because `d_pref` was computed from the full `existing_faults.tif` catalogue including withheld faults (`symmetric AUC = 0.962399 > 0.90`, `d_pref == 1.0` on `100%` of withheld fault pixels), and failed local 3-px dot-field uniqueness (`0.776332 > 0.70` vs `NETEXPAND netexpand` and `0.761513 > 0.70` vs `NETEXPAND netexpandfar`).
+   - Recomputed leak-free `HOLDOUT-DTI` via `vendor/gems57/evaluate_holdout.py` (`gems57-pooled-hide-v2`, `22,663` withheld positives, 1,000-draw paired spatial-block bootstrap): pure surface `S` static = **`0.005272 [0.003839, 0.006810]`** (paired $\Delta$ vs `R0` `+0.001266 [-0.000247, +0.002861]`, CI includes `0`); strict fold-visible Rule-2 with visible-only `d_pref` = **`0.085247 [0.072752, 0.098193]`**; strict fold-visible Rule-2 pure `S` = **`0.042670 [0.030397, 0.055911]`**.
+   - Corrected Miller & Singh (1994) tilt-angle physics prose in `gems/tiltangle.py`, `docs/HYPOTHESES_TILTANGLE.md`, and `docs/tiltangle.html`, and updated `_run_card.json` and `-zeros.json` with complete Protocol Rule 1, 3, 4 & 5 measurements.
+3. **Synchronized Status Feeds (`scripts/render_readiness.py`):**
+   - Added `validate_current_submission_record()` so `docs/downloads/current_submission.json` and `docs/downloads/readiness.json` are guaranteed to agree on `file`, `sha256`, `lane`, `arm`, `submission_name`, `note`, `ok_to_download`, `ok_to_submit`, and `verdict`, and replaced the ambiguous `"new_unique_tiff_generated": true` boolean in `readiness.json` with explicit `candidate_artifact_exists`, `candidate_byte_distinct_from_pinned_parent`, and `candidate_registry_unique_under_literal_rule` fields.
+
+## Highest-P(Win) Next Actions (In Strict Order)
+
+1. **Human Selector / Operator Decision on Dense-Witness Representation Policy (`Blocker #1`):**
+   - Decide whether `dual_reading_decision` (`<= 150,000`-px sparse dot fields checked by 3-px dot overlap `<= 0.70`; `> 150,000`-px continuous surfaces checked by matched-budget top-$K$ 3-px overlap `<= 0.70` and `|Spearman rho| <= 0.90`) supersedes the degenerate `17GEMSDOE` full-footprint literal witness (`5,167,373 / 5,167,373` positive footprint cells).
+   - Under `dual_reading_decision`, **`LISTRICLOQO selectcal`** (`docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif`, `58e5d780f3602e17…`, static #1 `0.013295 [0.011713, 0.014980]`, Rule-2 #2 `0.113938 [0.100887, 0.127394]`, `0 / 1,459` public rasters `> 0.70`, `0 / 141` local rasters `> 0.70`) and **`LISTRICLOQO standalone`** (`dc6d8f06053a48ef…`, Rule-2 #1 `0.114410 [0.101808, 0.127706]`, static #2 `0.013250`) are ready for human selector review.
+2. **Obtain First `ORGANIZER-CONFIRMED` Submission Receipt (`Blocker #2`):**
+   - Upload at most **one** selector-approved file within the 3/week submission cap (`docs.nlr.gov/docs/fy26osti/96647.pdf` §3.2) and record the returned receipt in `ledger/submissions.csv` (`117` built rows, `0` receipts).
+3. **Execute Pre-Registered Rank-1 & Rank-2 In-Stack Hypotheses Once Authorized (`docs/HYPOTHESES_20261025_REVIEW.md`):**
+   - Once the dense-witness policy is resolved and a single method lane is assigned, test `MT-CHANGEPOINT` ($r_{\text{MT}|B}$ local covariance regression residual of `Band 17 cond_surf` on `Band 15 depth_to_base_surf`) coupled with `TENSOR-RIEDEL` ($15^\circ\text{--}25^\circ$ oblique Riedel shear kernel) and depth-adaptive listric projection $s(x) = \operatorname{clip}(\text{B15}(x)\cot\theta_{\text{dip}}(x)/100\text{ m}, 2.2, 6.8)\text{ px}$.
+
+---
+
 # Next steps — updated 2026-10-25 (ALI session)
 
 1. **Uniqueness saturation map.** Before any new lane, compute the union of 3-px halos of all *discriminating* registry dot fields (halo < 70%) restricted to high fault-appearance pixels (FAM top 10%). The ALI result shows physics placements collide with 12GEMSDOE r7, GEMSDOE70 54k, GEMSDOE22 h23-a/b, GEMSDOE67 ovtr and others. A lane is only worth running if it targets pixels outside that union.

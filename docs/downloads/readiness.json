@@ -1,15 +1,21 @@
 {
-  "schema": "gemsdoe92-current-readiness.v1",
+  "schema": "gemsdoe92-current-readiness.v2",
   "evidence_class": "AUTOMATED-FORMAT-CHECK + REGISTRY-MEASUREMENT; not a score",
   "download_status": "OK TO DOWNLOAD FOR RESEARCH",
-  "submission_status": "DO NOT SUBMIT \u2014 NOT CLEARED FOR A WEEKLY SLOT",
+  "submission_status": "DO NOT SUBMIT \u2014 LITERAL DUPLICATE STOP",
   "submission_eligible": false,
   "verdict": "negative",
-  "new_unique_tiff_generated": true,
-  "experiments_this_review": 3,
-  "weekly_slots_used_this_review": 0,
+  "candidate_artifact_exists": true,
+  "candidate_byte_distinct_from_pinned_parent": true,
+  "candidate_registry_unique_under_literal_rule": false,
+  "latest_lane_experiments_used": 3,
+  "latest_lane_weekly_slots_used": 0,
+  "current_submission_record_generated_utc": "2026-10-25T16:31:33.827771+00:00",
+  "lane": "LISTRICLOQO",
+  "arm": "selectcal",
   "file": "downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif",
   "raster_sha256": "58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17",
+  "pinned_parent_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
   "submission_name": "GEMSDOE92-LISTRICLOQO-selectcal-20261025",
   "note": "h33-h33-2-b2; LISTRICLOQO selectcal: 37654 1D updip-listric+interfluve-knick+U/Th-K/Th crests; HOLDOUT-DTI 0.013295",
   "format_pass": true,
@@ -72,10 +78,15 @@
   ],
   "correlation_overlap_vs_registry": {
     "evidence_class": "REGISTRY-MEASUREMENT",
-    "scope": "single pinned universal witness; rejection only, not full registry scan",
+    "scope": "single pinned witness; rejection only, not a full registry scan",
     "forward_overlap": 1.0,
+    "positive_cells": 5167373,
+    "footprint_cells": 5167373,
+    "threshold": 0.7,
+    "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "witness_git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
     "rank_correlation": null,
-    "rank_correlation_reason": "not measured in this review; overlap alone requires stop",
+    "rank_correlation_reason": "not required to reject; literal overlap independently triggers stop",
     "proof": "downloads/review_f23_preflight.json"
   },
   "holdout_dti": {
@@ -178,14 +189,14 @@
       "withheld_positive_pixels": 22663
     }
   },
-  "holdout_reason": "Measured by the completed LISTRIC lane; local HOLDOUT-DTI is not an organizer score and did not clear every promotion gate.",
+  "holdout_reason": "Measured by the completed LISTRICLOQO lane; local HOLDOUT-DTI is not an organizer score and did not clear every promotion gate.",
   "organizer_confirmed_score": null,
   "blocking_reasons": [
-    "DUPLICATE UNDER THE LITERAL REGISTRY RULE: pinned positive support covers the entire footprint.",
+    "DUPLICATE UNDER THE LITERAL REGISTRY RULE: the pinned witness is positive in every footprint cell, so every nonempty in-footprint dot set overlaps 100%.",
     "Matched-budget overlap is diagnostic, not permission to replace the literal rule.",
-    "The completed LISTRICLOQO lane used all 3 experiments and beats KNICKLOQO on paired holdout; literal overlap still blocks promotion.",
-    "Public dual-reading overlap is 0.690259, below the 0.70 threshold; literal dense-witness overlap is 1.0 and remains binding.",
-    "The artifact filename/run card is labelled 2026-10-26, one day after this 2026-10-25 review; chronology is unverified.",
+    "The prior LISTRICLOQO lane used all 3 experiments and beat KNICKLOQO on paired HOLDOUT-DTI; this is not an organizer score and does not clear the overlap stop.",
+    "A prior public dual-reading diagnostic is 0.690259, below the 0.70 threshold; it cannot override the pinned witness result.",
+    "The exact pinned witness was re-verified from its GitHub blob SHA and SHA-256; do not relax the existing STOP unless the protocol owner revises the dense-surface rule.",
     "No verified submission-page receipt or current weekly-cap evidence is available."
   ],
   "input_sha256": {
@@ -195,7 +206,9 @@
     "docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-audit.json": "eda59394e86eff3240e21ed414707c17d7abc55060f9014fa3c25ece0e544321",
     "evidence/listric_loqo_run_card.json": "8ad96ab3274a0c090af7fdbf16148db5157913ef233cc5865da946050c971ac6",
     "evidence/review_f23_preflight.json": "b1cc2d46b24ad3cde759953143ea3806c17f86d0f1eb72fc1581f5e34643fecb",
+    "docs/downloads/current_submission.json": "5f95a5ec3d49823b87670e22e85919b0b474df3a90bec4bcd407d4e4f0675243",
+    "data/parent_R0_zeros.tif": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
     "gems/gates.py": "7bf557dd1a46b01449fb1108d5617baa5f6608d025c2c86c6ee94a7d30785bf6",
-    "scripts/render_readiness.py": "f0103a242742c655cb0f336f9d1068d6beb61cb0003620765f99ffbb477d9840"
+    "scripts/render_readiness.py": "625f919d12354711b88e0c530a57ff48a8164313855a860a9e74b4a0066add6e"
   }
 }

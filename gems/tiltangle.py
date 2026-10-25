@@ -8,20 +8,23 @@ thin Quaternary cover, or one whose scarp has diffused below detection, still
 juxtaposes rock bodies of different density across its plane. That density
 contrast produces a measurable edge in the isostatic gravity field.
 
-The gravity *tilt angle* theta = atan2(|dg/dz|, |grad_h g|) is a rotation-
-invariant edge indicator: it is 0 degrees over horizontal (bedding-parallel)
-contacts and approaches 90 degrees over steep, vertical contacts -- exactly
-the geometry of Basin-and-Range normal faults. Its magnitude is independent of
-magnetization direction and of fault strike, so it catches faults of any
-orientation that the scarp catalogue missed.
+The gravity *tilt angle* theta = atan2(|dg/dz|, |grad_h g|) (Miller & Singh
+1994, J. Appl. Geophys. 32:213-217) is a strike-invariant contact indicator:
+directly over a steep vertical density contact, the vertical derivative dg/dz
+crosses zero while the horizontal gradient |grad_h g| peaks, so theta -> 0 deg
+and cos(theta)^2 -> 1. Over flat interiors or away from steepest horizontal
+gradients where |grad_h g| -> 0 and |dg/dz| > 0, theta -> 90 deg and
+cos(theta)^2 -> 0. Note that S_raw = hgm * cos(theta)^2 = hgm^3 / (hgm^2 + vg^2)
+is an amplitude-weighted horizontal gradient attenuated where |vg| is large, not
+a pure scale-invariant tilt angle. No catalogue pixel is used to build S;
+however, multiplying S by a full-catalogue collar preference d_pref (as done in
+the initial build script) leaks catalogue proximity into static holdout unless
+recomputed per fold from visible faults only (see evidence/tiltangle_audit_20261025.json).
 
 Unlike GRAVQUAD (analytic-signal amplitude x structure-tensor coherence, which
 responds to any elongated gradient blob) and unlike COULOMB-LOQO (fixed N15E
-conjugate shear planes folded into a supervised classifier), TILTANGLE uses
-only the tilt-angle magnitude to select steep vertical-contact edges, then
-weights by horizontal-gradient magnitude for edge strength. No catalogue
-pixel is used to build the surface; the catalogue is read only by the caller
-for masking.
+conjugate shear planes folded into a supervised classifier), TILTANGLE weights
+horizontal-gradient magnitude by cos(theta)^2 = hgm^2 / (hgm^2 + vg^2).
 
 Surface (pure array math on caller-supplied arrays):
 
@@ -29,8 +32,8 @@ Surface (pure array math on caller-supplied arrays):
     hg_ns = d/dy(B13 iso_grav_anom)       (N-S horizontal derivative, finite diff)
     vg    = B11 iso_grav_anom_vg          (vertical derivative)
     hgm   = sqrt(hg_ew^2 + hg_ns^2)       (total horizontal gradient = edge strength)
-    tilt  = atan2(|vg|, hgm)              (0 = flat bedding, 90 = steep fault)
-    S_raw = hgm * cos(tilt)^2             (strong gradient + steep contact)
+    tilt  = atan2(|vg|, hgm)              (0 deg at vg=0 inflection; 90 deg where hgm->0)
+    S_raw = hgm * cos(tilt)^2             (hgm attenuated where |vg| > 0)
     S     = pct_rank(S_raw) over valid footprint
 
 Layers

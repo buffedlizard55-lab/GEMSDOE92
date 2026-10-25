@@ -5,6 +5,7 @@ import pytest
 
 from scripts.render_readiness import (
     ARCHIVE_START, END, ROOT, START, build_status, panel, rejection_proof_errors, render_page, sync,
+    validate_current_submission_record,
 )
 from scripts.preflight_dense_witness import SAMPLE_SHA256
 
@@ -35,12 +36,49 @@ def test_generated_status_is_current_and_never_grants_slot():
     status = build_status()
     assert status['format_pass'] is True
     assert status['submission_eligible'] is False
-    assert status['new_unique_tiff_generated'] is True
+    assert status['candidate_artifact_exists'] is True
+    assert status['candidate_byte_distinct_from_pinned_parent'] is True
+    assert status['candidate_registry_unique_under_literal_rule'] is False
+    assert 'new_unique_tiff_generated' not in status
+    assert status['correlation_overlap_vs_registry']['evidence_class'] == 'REGISTRY-MEASUREMENT'
+    assert status['correlation_overlap_vs_registry']['forward_overlap'] == 1.0
+    assert status['correlation_overlap_vs_registry']['threshold'] == 0.70
     assert status['holdout_dti']['evidence_class'] == 'HOLDOUT-DTI'
     assert status['holdout_dti']['evaluator_version'] == 'gems57-pooled-hide-v2'
     assert status['holdout_dti']['withheld_positive_pixels'] == 22663
     assert status['organizer_confirmed_score'] is None
     assert len(status['note']) <= 140
+    rendered = panel(status)
+    assert 'OK TO DOWNLOAD FOR RESEARCH' in rendered
+    assert 'DO NOT SUBMIT' in rendered
+    assert 'not registry-unique' in rendered
+    assert 'Unique research TIFF available' not in rendered
+    assert 'Download research-only' in rendered
+
+
+def test_compact_current_card_must_match_the_byte_bound_readiness_record():
+    status = build_status()
+    current = json.loads((ROOT / 'docs/downloads/current_submission.json').read_text())
+    validate_current_submission_record(
+        current,
+        file='docs/' + status['file'],
+        sha256=status['raster_sha256'],
+        lane=status['lane'],
+        arm=status['arm'],
+        submission_name=status['submission_name'],
+        note=status['note'],
+    )
+    current['sha256'] = '0' * 64
+    with pytest.raises(ValueError, match='sha256'):
+        validate_current_submission_record(
+            current,
+            file='docs/' + status['file'],
+            sha256=status['raster_sha256'],
+            lane=status['lane'],
+            arm=status['arm'],
+            submission_name=status['submission_name'],
+            note=status['note'],
+        )
 
 
 def test_renderer_is_idempotent_and_moves_stale_banner_into_archive():

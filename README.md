@@ -578,12 +578,11 @@ There should be an easy-to-download submission TIF file as described by the prom
 - **Maximize P(Win):** In every decision, weigh tradeoffs, assess risk, and choose the path that maximizes the probability of winning. Preserve scarce slots; reject unsupported score claims.
 - **Own the Outcome:** Own results end to end. Fix shared defects and report unmet requirements; do not weaken a failed gate. A reproducible negative is preferable to a fabricated submission claim.
 
-### Deliverables for this session
+### Deliverables for the TILTANGLE session (audited 2026-10-25 — `verdict: negative`, `submission_eligible: false`, DO NOT SUBMIT)
 
-1. Generate 3–5 candidate geological hypotheses not yet tried (layers, physical signature, missing-fault rationale, differences, mimic, expected value, cost) — see docs/HYPOTHESES_TILTANGLE.md
-2. Validate the top candidate (H1 TILTANGLE: gravity tilt-angle edge corridors) on the spatially-blocked holdout set — HOLDOUT-DTI 0.033466 [gems57-pooled-hide-v2, 45,253 withheld positives]
-3. Generate a unique TIF submission — gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif (format-valid, SHA-256 f17eae78ff659e3551fb4a4f92ef9e16180fde22a9d157a2114b03ef98a023e7)
-4. Create executive summary subpage — docs/tiltangle.html
-5. Store the prompt in README.md (this section)
-6. Create and merge a pull request onto main
-
+1. Generate 3–5 candidate geological hypotheses not yet tried (layers, physical signature, missing-fault rationale, differences, mimic, expected value, cost) — see `docs/HYPOTHESES_TILTANGLE.md` and `docs/HYPOTHESES_20261025_REVIEW.md`
+2. Audit H1 TILTANGLE on the spatially-blocked holdout set (`evidence/tiltangle_audit_20261025.json`, `gems57-pooled-hide-v2`, 22,663 withheld positives): the initial `0.033466` (unbuffered 45,253 px) / `0.031591` (buffered 22,663 px) static figure failed the Protocol Rule 4 leakage canary because `d_pref` was computed from the full `existing_faults.tif` catalogue including withheld faults (`symmetric AUC = 0.962399 > 0.90`, target leakage); leak-free evaluation gives pure-surface static **HOLDOUT-DTI `0.005272 [0.003839, 0.006810]`** and strict fold-visible Rule-2 **HOLDOUT-DTI `0.085247 [0.072752, 0.098193]`** (with visible-only `d_pref`) / **`0.042670 [0.030397, 0.055911]`** (pure `S`), all below repository holdout-best (`LISTRICLOQO` `0.013295` static / `0.114410` Rule-2)
+3. Format-valid research GeoTIFF (`gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif`, SHA-256 `f17eae78ff659e3551fb4a4f92ef9e16180fde22a9d157a2114b03ef98a023e7`) — **NOT registry-unique** (`0.776332 > 0.70` vs `NETEXPAND netexpand`, `0.761513 > 0.70` vs `NETEXPAND netexpandfar`, and `1.0000 > 0.70` vs literal dense witness); **OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT**
+4. Executive summary & TILTANGLE audit subpages — `docs/executive-summary.html` and `docs/tiltangle.html`
+5. Store the operating contract in `README.md` and `SESSION_PROMPT.md`
+6. Create and merge a pull request onto `main`

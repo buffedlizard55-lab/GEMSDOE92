@@ -12,42 +12,50 @@ All labels: HOLDOUT-DTI (local surrogate, not an organizer score).
 `iso_grav_anom` (differentiated for N–S horizontal derivative), B18
 `iso_grav_anom_hg` (signed E–W gravity horizontal derivative).
 
-**Physical signature:** Gravity tilt angle θ = atan2(|∂z g|, |∇ₕ g|).
-θ ≈ 0° over flat/bedding-parallel contacts; θ ≈ 90° over steep,
-near-vertical contacts — the geometry of Basin-and-Range normal faults.
-Edge strength = horizontal-gradient magnitude × cos(θ)², which up-weights
-steep-contact edges of any strike and down-weights equant/blob anomalies.
+**Physical signature:** Gravity tilt angle θ = atan2(|∂z g|, |∇ₕ g|) (Miller &
+Singh 1994, *J. Appl. Geophys.* 32:213–217). Directly over a steep vertical
+density contact, ∂z g crosses zero while |∇ₕ g| peaks, so θ → 0° and
+cos(θ)² → 1; over flat interiors where |∇ₕ g| → 0 and |∂z g| > 0, θ → 90° and
+cos(θ)² → 0 (correcting the inverted prose in the initial draft).
+Edge strength = `hgm * cos(θ)² = hgm³ / (hgm² + vg²)`, which attenuates
+horizontal-gradient magnitude where |∂z g| is large.
 
 **Why it catches catalogue-missing faults:** The USGS/INGENIOUS catalogue
 is a surface-scarp catalogue. Blind normal faults buried under thin Quaternary
 cover, or whose scarps have diffused below detection, still juxtapose rock
 bodies of different density across a steep plane. That density contrast is
-visible to gravity regardless of scarp preservation or fault strike. The
-catalogue is used ONLY for masking (dots off-catalogue, >2 px from it); no
-catalogue pixel enters the surface.
+visible to gravity regardless of scarp preservation or fault strike. While the
+pure surface `S` is catalogue-free (max canary symmetric AUC `0.526594 <= 0.90`),
+the initial build script multiplied `S` by `d_pref` computed from the full
+`existing_faults.tif` catalogue before static holdout scoring, which failed the
+Protocol Rule 4 leakage canary (`symmetric AUC = 0.962399 > 0.90`, target leakage).
 
 **Non-fault mimic:** Equant plutonic intrusions, circular playa/evaporite
-density bodies, and diffuse basement-terrane boundaries produce horizontal
-gradient magnitude but not steep (near-90°) tilt angles; cos(θ)² down-weights
-them.
+density bodies, and diffuse basement-terrane boundaries.
 
-**Differs from existing lanes:** No lane computes a gravity tilt angle.
-GRAVQUAD uses analytic-signal amplitude × structure-tensor coherence (dip-
-blind, responds to any elongated gradient blob). COULOMB-LOQO assumes fixed
-N15°E conjugate shear planes inside a supervised classifier. CURIE-DEMAG uses
-RTP variance suppression × MT clay-cap flank × demag bowl. TILTANGLE explicitly
-selects steep near-vertical contacts.
+**Differs from existing lanes:** GRAVQUAD uses analytic-signal amplitude ×
+structure-tensor coherence. COULOMB-LOQO assumes fixed N15°E conjugate shear
+planes inside a supervised classifier. CURIE-DEMAG uses RTP variance suppression ×
+MT clay-cap flank × demag bowl.
 
-**Expected DTI improvement:** Moderate — physical edge detector, standalone,
-no supervision. Expected to exceed R0 static (0.004006) and most standalone
-physical lanes; below supervised LOQO Rule-2 (0.113316). Actual: **0.033466**
-(static, 45,253 withheld positives, 8 LOQO folds).
+**Expected DTI improvement & audited result (`evidence/tiltangle_audit_20261025.json`):**
+Low-to-moderate standalone physical edge detector. Audited via
+`vendor/gems57/evaluate_holdout.py` (`gems57-pooled-hide-v2`, 22,663 withheld
+positives, 1,000-draw paired spatial-block bootstrap):
+- Pure `S` static (`d_cat > 2 px`, leak-free): **HOLDOUT-DTI `0.005272 [0.003839, 0.006810]`** (paired Δ vs R0 `+0.001266 [-0.000247, +0.002861]`, CI includes 0).
+- Strict fold-visible Rule-2 (`d_visible > 2 px`, visible-only `d_pref`): **HOLDOUT-DTI `0.085247 [0.072752, 0.098193]`**.
+- Strict fold-visible Rule-2 (`d_visible > 2 px`, pure `S`): **HOLDOUT-DTI `0.042670 [0.030397, 0.055911]`**.
+- Note: the initial `0.033466` (unbuffered 45,253 px) / `0.031591` (buffered 22,663 px) static figure is **INVALIDATED** due to full-catalogue `d_pref` target leakage (`AUC = 0.962399 > 0.90`).
 
 **Implementation cost:** Low — pure array math on 3 bands, no sklearn, no
-training. Built and validated in one experiment.
+training.
 
-**Result:** ✅ Format-valid (11/11 gates). HOLDOUT-DTI 0.033466. Verdict:
-negative (not slot-cleared under literal dense-witness registry stop).
+**Result:** ✅ Format-valid (11/11 gates, research download only). ⛔ **Verdict:
+negative (`submission_eligible: false`, DO NOT SUBMIT)** — does not beat
+repository holdout-best (`LISTRICLOQO` `0.013295` static / `0.114410` Rule-2),
+fails local 3-px dot-field uniqueness (`0.776332 > 0.70` vs `NETEXPAND netexpand`
+and `0.761513 > 0.70` vs `NETEXPAND netexpandfar`), and hits the literal
+dense-witness registry stop (`1.0000 > 0.70`).
 
 ---
 
