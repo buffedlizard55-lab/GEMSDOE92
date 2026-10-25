@@ -266,6 +266,11 @@ def main() -> int:
     # Canonical VARIO status freshness (byte-bound, first in body) was checked
     # at the top of main() via render_vario_status.check.
 
+    # The fresh receipt linked in the first status panel must not drift from
+    # current validation code or served bytes; missing evidence fails closed.
+    from scripts.audit_readiness import check_published_audit
+    problems.extend(check_published_audit(ROOT))
+
     if problems:
         print("SITE CHECK FAIL")
         for p in problems:

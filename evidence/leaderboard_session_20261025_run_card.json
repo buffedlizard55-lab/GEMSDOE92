@@ -1,0 +1,81 @@
+{
+  "schema": "gemsdoe92-leaderboard-session-run-card-v1",
+  "date_utc": "2026-10-25",
+  "session_branch": "arena/09f84f2f-gemsdoe92",
+  "hypothesis": "Phase congruency (Kovesi log-Gabor, multi-orientation) of the RTP magnetic band (Band 2) marks low-contrast magnetic contacts that gradient- and analytic-signal ridges miss. Pre-registered in docs/HYPOTHESES_20261025_LEADERBOARD.md as H1; NOT built, NOT placed.",
+  "mechanism": "Local phase agreement across scales/orientations is contrast-invariant; contacts with low amplitude but coherent phase would be ranked.",
+  "named_non_fault_mimic": "Lithologic contacts without offset, dike or sill margins, cultural magnetic noise.",
+  "holdout_dti": {
+    "evidence_class": "NOT RUN",
+    "value": null,
+    "reason": "Holdout requires placed dots; the literal universal duplicate stop precedes placement."
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "forward_overlap_any_nonempty_in_footprint": 1.0,
+    "threshold": 0.7,
+    "rank_correlation": null,
+    "note": "Pinned 17GEMSDOE E-proba witness is positive at all footprint cells; readiness receipt evidence/readiness_20261025_leaderboard.json."
+  },
+  "research_download_sha256": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
+  "research_download_path": "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif",
+  "validator_output": [
+    {
+      "name": "single_band",
+      "ok": true,
+      "detail": "count=1"
+    },
+    {
+      "name": "dtype_float32",
+      "ok": true,
+      "detail": "float32"
+    },
+    {
+      "name": "crs_match",
+      "ok": true,
+      "detail": "EPSG:32611"
+    },
+    {
+      "name": "shape_match",
+      "ok": true,
+      "detail": "(3730, 3292)"
+    },
+    {
+      "name": "transform_match",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "footprint=5167373"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "min=0.0 max=1.0"
+    },
+    {
+      "name": "zero_outside_footprint",
+      "ok": true,
+      "detail": "zeros file"
+    },
+    {
+      "name": "positive_cells_equal_dots",
+      "ok": true,
+      "detail": "positive=37654 expected=37654"
+    }
+  ],
+  "validator_all_pass": true,
+  "submission_name": "GEMSDOE92-LISTRICDIP-updip50-20261025",
+  "submission_note": "LISTRICDIP updip50 research TIFF; not cleared; duplicate under literal witness rule",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "new_unique_tiff_generated": false,
+  "experiments_used": 0,
+  "experiment_budget": 3,
+  "weekly_slots_used": 0,
+  "organizer_confirmed_score": null,
+  "readiness_receipt": "evidence/readiness_20261025_leaderboard.json",
+  "readiness_verdict": "negative"
+}
