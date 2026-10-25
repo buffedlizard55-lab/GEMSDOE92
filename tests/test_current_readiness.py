@@ -76,3 +76,36 @@ def test_note_schema_aliases_are_checked_not_guessed():
                     {'note': 'one', 'submission_note': 'two'}):
         with pytest.raises(ValueError):
             form_note(invalid)
+
+
+def test_withdrawn_clearance_matches_disk_not_placeholder_metadata():
+    import rasterio
+    from gems.rasters import sha256_file
+    receipt = json.loads((ROOT / 'docs/downloads/knickloqo_submission_run_card.json').read_text())
+    path = ROOT / 'docs/downloads' / receipt['file']
+    assert receipt['raster_sha256'] == sha256_file(path)
+    assert receipt['metadata_measured_from_disk']['bytes'] == path.stat().st_size
+    with rasterio.open(path) as ds:
+        assert receipt['metadata_measured_from_disk']['shape'] == list(ds.shape)
+        assert receipt['metadata_measured_from_disk']['transform'] == list(ds.transform)[:6]
+        assert receipt['metadata_measured_from_disk']['nodata'] == ds.nodata
+    assert receipt['submission_eligible'] is False
+    assert receipt['verdict'] == 'negative'
+    assert receipt['organizer_confirmed_score'] is None
+
+
+def test_legacy_validator_does_not_swallow_errors(monkeypatch, capsys):
+    import validate_submission as legacy
+    def fail():
+        raise ValueError('missing reference')
+    monkeypatch.setattr(legacy, 'build_status', fail)
+    assert legacy.main() == 1
+    assert 'VALIDATION FAILED' in capsys.readouterr().err
+
+
+def test_legacy_validator_keeps_format_pass_separate_from_submission(monkeypatch, capsys):
+    import validate_submission as legacy
+    monkeypatch.setattr(legacy, 'build_status', lambda: {
+        'format_pass': True, 'submission_status': 'DO NOT SUBMIT', 'submission_eligible': False})
+    assert legacy.main() == 1
+    assert 'DO NOT SUBMIT' in capsys.readouterr().out

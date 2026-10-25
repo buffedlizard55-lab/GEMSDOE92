@@ -1,0 +1,100 @@
+{
+  "schema": "gemsdoe92-withdrawn-clearance.v1",
+  "replaces_unsupported_clearance_commit": "406638a0dbf44b2c65a7feefcdf803ba17d0edd4",
+  "source_run_card": "knick_loqo_run_card.json",
+  "source_run_card_sha256": "fbaa57c74f67fd0d4f256248f629f950a7cb70ad9d17a56875551ac040fb40ce",
+  "raster_sha256": "8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347",
+  "file": "h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif",
+  "metadata_measured_from_disk": {
+    "bytes": 149177,
+    "shape": [
+      3730,
+      3292
+    ],
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "band_count": 1,
+    "dtype": "float32",
+    "nodata": null
+  },
+  "format_pass": true,
+  "validator_output": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=('float32',) count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nonfinite_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0; strict distance > radius required"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347"
+    }
+  ],
+  "holdout_dti": null,
+  "holdout_note": "No new evaluation. Historical results remain in the linked source run card.",
+  "organizer_confirmed_score": null,
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "forward_overlap": 1.0,
+    "scope": "Pinned universal witness; rejection only, not a complete fresh registry scan.",
+    "proof": "review_f23_preflight.json"
+  },
+  "submission_name": "GEMSDOE92-KNICKLOQO-standalone-20261025",
+  "note": "h33-h33-2-b2; KNICKLOQO standalone: 37654 1D quadrant-cal knickzone+Poisson+Coulomb crests",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "new_unique_tiff_generated": false,
+  "reason": "Literal duplicate stop. Prior clearance and private-label projections are withdrawn."
+}

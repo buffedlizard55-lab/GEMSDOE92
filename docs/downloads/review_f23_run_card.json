@@ -96,7 +96,7 @@
   "verification": {
     "pass1": "Shared gates repaired; baseline 367 tests passed; 63 served TIFFs passed.",
     "pass2": "Added boundary/grid/readiness tests; repaired wording incompatibility without changing historical score evidence.",
-    "pass3": "Integrated bbda6c5 and preserved parallel LISTRICDIP artifacts. 402 tests pass (140 nonfatal upstream Affine warnings); 66 served TIFFs, manifest, pinned parent, ledger and diff checks pass."
+    "pass3": "Integrated concurrent main through 71f6ac4; withdrew unsupported PR89 clearance, repaired its swallowed-error validator, and preserved research code. 405 tests pass (140 upstream Affine warnings); 66 served TIFFs, manifest, pinned parent, ledger and diff checks pass."
   },
   "limitations": [
     "No assigned geological lane.",

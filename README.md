@@ -32,6 +32,11 @@ Read this README and [SESSION_PROMPT.md](SESSION_PROMPT.md) before work. The [fu
 > ## Latest artifact — DRAINAGE-KNICK (2026-10-25)
 > **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). New byte-unique GeoTIFF; all automated format checks pass, but HOLDOUT-DTI `0.061728 [0.047046, 0.075316]` is below the `0.113316` promotion bar and literal public-registry overlap is `1.0 > 0.70`.
 
+> ## Binding decision — read before any download or experiment
+> **Research downloads only. DO NOT SUBMIT any current TIFF or spend a weekly slot.** The pinned public registry witness is positive in all 5,167,373 footprint cells, so every nonempty in-footprint prediction raster has literal 3-px forward overlap `1.0 > 0.70`. The pre-placement gate requires stopping. No candidate was generated in this repository review and no artifact is slot-cleared. Read the [current three-pass review](docs/REVIEW_20261025_REPOSITORY_REVIEW.md), [binding gate evidence](docs/REVIEW_376A8469.md), and [ranked untested hypotheses](docs/HYPOTHESES_20261025_REVIEW.md). The latest lane below is a prior research result, not an exception.
+>
+> **Persistent operating brief:** read this README and `SESSION_PROMPT.md` at every session start; use shared cached features/evaluator/writer, whole-segment buffered holdouts and leakage canaries; pre-register 3–5 hypotheses; label all metrics and provenance; never call a projection a score; stop at 3 experiments / 2 hours; keep “Maximize P(Win)” and “Own the Outcome” central. Full user prompt summary is retained under [Persistent Session Prompt Reference](#persistent-session-prompt-reference).
+
 <!-- LISTRICDIP:BEGIN -->
 > ### Newest session (2026-10-25) — lane `LISTRICDIP`: 3 new unique GeoTIFFs · verdict **`negative`**
 > **✅ OK TO DOWNLOAD FOR RESEARCH** (11/11 format gates, values in `[0, 1]`, 0 NaN, local overlap 0.1968 at scoring; 0.1892 vs the later `DRAINAGE-KNICK` raster) · **⛔ OK TO SUBMIT: NO** (`submission_eligible: false`; literal dense-witness overlap 1.000; not cleared for a weekly slot; 0 slots used)

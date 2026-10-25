@@ -1,3 +1,12 @@
+# Concurrent merge correction — 2026-10-25 (`f23ca2d2`, PR #89 integration)
+
+- **IR-92-FALSE-UPLOAD-CLEARANCE (fixed):** commit `406638a` added active “submission ready” pages and `submission_eligible: true` despite the known literal duplicate stop. `SUBMIT_NOW.html` and `index_new.html` now redirect to the checked current status. Unsupported score projections and portal guarantees are withdrawn; the original publication remains in Git history.
+- **IR-92-SWALLOWED-VALIDATOR-ERROR (fixed, reproduced):** its root validator called `run_gates` without `reference_path`, caught the resulting TypeError, printed “ALL CHECKS PASSED — FILE IS READY FOR SUBMISSION,” and exited zero. Reproduced in this review before replacing it with a shared-readiness compatibility entry point that returns blocked status and never swallows a failure as clearance.
+- **IR-92-PARALLEL-RECEIPT-METADATA (fixed):** the new receipt said 123456 bytes, shape `[3292,3730]`, incorrect geotransform and nodata zero. Actual disk read: 149177 bytes, shape `[3730,3292]`, transform `[100,0,243350,0,-100,4508550]`, nodata null. Metadata is now generated from disk. **The parallel TIFF SHA-256 correction was valid**, not an error: `8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347` matches the original and current bytes. Earlier prose in this repo used a stale hash; this review initially repeated that mistake in commentary, then corrected it after comparing Git blobs and disk bytes.
+- Untested parallel `gems/flexure_knick_province.py` research code is preserved, not represented as a model trained or validated by this review.
+
+---
+
 # 2026-10-25 review (`f23ca2d2`) — new findings
 
 - **IR-92-PRUNE-RADIUS-BYPASS (fixed):** `gems/gates.py::_g_catalogue` used `n_near == 0 or prune_radius < 3`; any prediction inside a declared radius below three passed the distance gate. The legacy test encoded that bypass. Removed the override; test boundaries now include inside, exactly at, and outside the declared radius. All existing served artifacts are revalidated, not assumed to inherit a PASS.

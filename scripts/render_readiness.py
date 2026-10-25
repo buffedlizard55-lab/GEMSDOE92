@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from gems.gates import run_gates
 from gems.rasters import sha256_file
+import rasterio
 from scripts.check_site import primary_download
 from scripts.preflight_dense_witness import SAMPLE_SHA256, WITNESS_SHA256, WITNESS_BLOB
 
@@ -186,10 +187,70 @@ def render_page(text: str, block: str) -> str:
     return text[:body.start()] + replacement + text[body.end():]
 
 
+def retired_page() -> str:
+    return '''<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="0; url=executive-summary.html">
+<title>Clearance withdrawn — research only</title><link rel="stylesheet" href="style.css"></head>
+<body><h1>DO NOT SUBMIT — prior clearance withdrawn</h1>
+<p>The literal registry gate blocks current candidates. Format validation is not submission authorization.</p>
+<p><a href="executive-summary.html">Current automated status and research downloads</a> ·
+<a href="REVIEW_F23.md">Correction evidence and limitations</a></p></body></html>
+'''
+
+
+def corrected_knickloqo_receipt(root: Path) -> dict:
+    """Withdraw unsupported parallel clearance; reread metadata instead of guessing."""
+    card_path = root / 'evidence/knick_loqo_run_card.json'
+    card = json.loads(card_path.read_text())
+    candidate = root / card['primary_download']
+    digest = sha256_file(candidate)
+    if digest != card['raster_sha256']:
+        raise ValueError('KNICKLOQO source card does not match bytes')
+    gates = run_gates(candidate, root / 'data/bridge/sample_submission.tif',
+                      root / 'data/bridge/labels.tif', prune_radius=2,
+                      require_submission_encoding=True)
+    with rasterio.open(candidate) as ds:
+        metadata = {'bytes': candidate.stat().st_size, 'shape': list(ds.shape),
+                    'crs': str(ds.crs), 'transform': list(ds.transform)[:6],
+                    'band_count': ds.count, 'dtype': ds.dtypes[0], 'nodata': ds.nodata}
+    return {
+        'schema': 'gemsdoe92-withdrawn-clearance.v1',
+        'replaces_unsupported_clearance_commit': '406638a0dbf44b2c65a7feefcdf803ba17d0edd4',
+        'source_run_card': 'knick_loqo_run_card.json',
+        'source_run_card_sha256': sha256_file(card_path),
+        'raster_sha256': digest,
+        'file': candidate.name,
+        'metadata_measured_from_disk': metadata,
+        'format_pass': all(g.ok for g in gates),
+        'validator_output': [asdict(g) for g in gates],
+        'holdout_dti': None,
+        'holdout_note': 'No new evaluation. Historical results remain in the linked source run card.',
+        'organizer_confirmed_score': None,
+        'correlation_overlap_vs_registry': {
+            'evidence_class': 'REGISTRY-MEASUREMENT',
+            'forward_overlap': 1.0,
+            'scope': 'Pinned universal witness; rejection only, not a complete fresh registry scan.',
+            'proof': 'review_f23_preflight.json',
+        },
+        'submission_name': card['submission_name'],
+        'note': form_note(card),
+        'verdict': 'negative',
+        'submission_eligible': False,
+        'new_unique_tiff_generated': False,
+        'reason': 'Literal duplicate stop. Prior clearance and private-label projections are withdrawn.',
+    }
+
+
 def sync(root: Path = ROOT, *, check: bool = False) -> list[str]:
     status = build_status(root)
     outputs = {root / 'docs/downloads/readiness.json': json.dumps(status, indent=2, allow_nan=False) + '\n'}
     block = panel(status)
+    for alias in ('SUBMIT_NOW.html', 'index_new.html'):
+        outputs[root / 'docs' / alias] = retired_page()
+    outputs[root / 'docs/downloads/knickloqo_submission_run_card.json'] = (
+        json.dumps(corrected_knickloqo_receipt(root), indent=2, allow_nan=False) + '\n')
     for page in PAGES:
         path = root / 'docs' / page
         outputs[path] = render_page(path.read_text(), block)
