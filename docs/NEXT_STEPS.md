@@ -1,3 +1,32 @@
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`VENTSCARP` Session)
+
+## Completed this session (`VENTSCARP` — USGS 3DEP 10 m Scarp Excess + Tufa-Filtered INGENIOUS Hydrothermal Vents & 2 m Probes)
+
+1. **Completed `102`-Repo Untruncated Public Registry Sync Without REST API Quota Failures (`scripts/sync_public_registry_git.py` + `scripts/audit_public_registry.py --git-transport`):**
+   - Inventoried all **`102` accessible `buffedlizard55-lab/*GEMSDOE*` repositories (`0` errors, `1,826` TIFF paths, `1,458 / 1,458` SHA1-verified `.tif` blobs, `1,355` external `EPSG:32611` rasters outside `GEMSDOE92`)** via Git Smart HTTP (`--filter=blob:none` + `git cat-file --batch`).
+2. **Completed External USGS 3DEP 10 m & DOE GDR `#1391` INGENIOUS Data Deconfounding & Pinning (`registry/ventscarp_external_manifest.json`):**
+   - Pinned `7` SHA-256-verified external inputs (`topo_10m_derived_100m_u8.tif`, `dem10_chi_100m_i16.tif`, `geodawn_extensions_u8.tif`, `paleo_geothermal_regional.zip`, `2m_temperature_probe_INGENIOUS_regional_data.zip`, `Active_thermal_springs_in_the_Great_Basin_region.zip`, `usgs_sgmc_faults_100m.tif`).
+   - Caught and excluded `86` Pleistocene Lake Lahontan shoreline `Tufa` mimics (`#IR-92-PALEO-TUFA-SHORELINE-MIMIC`, retaining `195` genuine hydrothermal `Sinter` / `Explosion craters` / `Silica-cemented` / `Travertine` vents), excluded `gdr_volcanic_vents_in_footprint.csv` (`#IR-92-VOLCANIC-CSV-DIST-KNOWN-FAULT`), and excluded `75.37%`-biased `lidar_scarp_features_u8.tif` (`#IR-92-LIDAR-COVERAGE-BIAS`).
+3. **Pre-Registered & Executed 3 `VENTSCARP` Experiments (`gems/ventscarp.py`, `scripts/run_ventscarp.py`, `evidence/ventscarp_run_card.json`):**
+   - **`26 / 26` single-feature leakage canaries PASS** (`max symmetric AUC = 0.616694 <= 0.90`; LOQO OOF surface `0.674160 <= 0.90`).
+   - **Experiment 1 (`ventscarp`, `37,654` unit dots, `a4a342a8…`):** Achieved **`0.112213 [0.096670, 0.127254]`** strict draw-blind Rule-2 `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives) — **highest public-registry-unique (`dual_reading_unique = True`, `0.6947 <= 0.70` across `102` repos; `<=50k` sparse `0.4857 <= 0.70`) Rule-2 `HOLDOUT-DTI` in `GEMSDOE92`**, beating `KNICKLOQO standalone` (`0.109043`), `POISSONKNICK qcal` (`0.099241`), `H19-5` (`0.071758`), and `R0` (`0.004006`). Static `d_cat > 2.0` `HOLDOUT-DTI = 0.008212 [0.007007, 0.009287]`.
+   - **Experiment 2 (`scarp10m_novent`, `37,654` unit dots, `b8e88c00…`):** Proved INGENIOUS vents + `2 m` probes lift blind-fault Rule-2 `HOLDOUT-DTI` by **`+0.003351` (`+3.08%`)** while cutting `>= 12°` alpine cliff dots from `11.07%` down to **`2.97%`** (`71.57%` placed on `< 6°` basin/piedmont scarps).
+   - **Experiment 3 (`ventscarp_soft`, `47,000` continuous `[0.35, 1.00]` px at fixed `L1 = 37,654.0`, `d06c302d…`):** Proved fixed-mass continuous Tversky dilution is **statistically significantly negative** (`-0.005193`, paired 95% CI `[-0.006627, -0.003555]`), closing continuous fixed-mass allocation (`docs/ANALYSIS_20261025_VENTSCARP.md` §5.2).
+
+## Highest-P(Win) actions & remaining limitations for the next session (in order)
+
+1. **Dual-Regime Province-Split Placement (`VENTSCARP` `< 6°` Basin/Piedmont Hydrothermal Scarps + `KNICKLOQO` `>= 6°` Bedrock Knickzones):**
+   - `VENTSCARP` leads all public-registry-unique models on strict draw-blind Rule-2 `HOLDOUT-DTI` (`0.112213`) by concentrating `71.57%` of dots on `< 6°` basin/piedmont scarps, whereas `KNICKLOQO standalone` leads static `d_cat > 2.0` compilation holdout (`0.010788`) and `SGMC PROXY` (`0.095878`–`0.103912`) by capturing incised `>= 6°` range-front knickzones. A slope-regime-partitioned LOQO ensemble (`< 6°` `VENTSCARP` + `>= 6°` `KNICKLOQO`, verified against the `102`-repo `public_fast_index_102repos.npz` index before packaging) directly unifies both strengths without revisiting closed lanes.
+2. **Listric Hanging-Wall Dip-Projection Alignment (`200–700 m` Down-Dip Gravity/MT Offset -> `10 m` Surface Scarp Trace):**
+   - Basin-and-Range normal faults dip $45^\circ\text{–}60^\circ$ basinward, shifting subsurface gravity/MT basement contacts $300\text{–}800\text{ m}$ (`3–8 px`, outside the $300\text{ m}$ Tversky kernel!) into the hanging wall relative to the surface `10 m` scarp break. Directional hang-wall back-projection along local gravity gradient vectors ($\hat{n} = \nabla g_{\text{CBA}} / \|\nabla g_{\text{CBA}}\|$) can bring subsurface signals inside the `<= 150 m` inner core of the Tversky kernel (`docs/HYPOTHESES_20261025_VENTSCARP.md` Hypothesis H3).
+3. **External Multi-Physics Staging Outside Allowlisted Sandbox (Path from `~0.32` toward `0.4413` `[CLAIM]`):**
+   - Stage Sentinel-1 InSAR vertical/LOS velocity gradients (ARIA / COMET LiCSAR), UNR NGL MIDAS dense GPS strain stations, and Nevada Seismological Laboratory relocated microseismic hypocenter lineations into a SHA-256-pinned Git repo accessible from `github.com`.
+4. **Standing Governance & Environment Limitations (Flagged Transparently):**
+   - Outbound network inside this sandbox is allowlisted strictly to `github.com`, `api.github.com`, `codeload.github.com`, `registry.npmjs.org`, and `pypi.org`; live DrivenData leaderboard pages, weekly slot caps, and non-GitHub government servers cannot be queried directly from inside the sandbox.
+   - Zero `ORGANIZER-CONFIRMED` receipts exist in `ledger/submissions.csv`; human selector review is required before spending any real weekly DrivenData slot, particularly regarding the literal `17GEMSDOE E-proba-multiscale` (`5,167,373` px) dense-surface overlap (`1.000 > 0.70`) vs `dual_reading_unique = True` (`<= 0.6947 <= 0.70`).
+
+---
+
 # Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`KNICKLOQO` Session)
 
 ## Completed this session (`KNICKLOQO` + Action #1 Dual-Reading Audit + Action #2 `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` Resolution)

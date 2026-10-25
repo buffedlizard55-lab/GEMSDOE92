@@ -7,6 +7,37 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- VENTSCARP:BEGIN -->
+<aside id="ventscarp-banner-exec-summary" class="banner banner-warn" aria-label="VENTSCARP executive summary and submission status" style="border:2px solid #7f1d1d;">
+  <p><strong>Newest Session (2026-10-25) — Executive Summary for Lane <code>VENTSCARP</code> (USGS 3DEP 10 m Scarp Excess + Tufa-Filtered INGENIOUS Hydrothermal Vents &amp; 2 m Probes): 3 new validated GeoTIFFs built; highest public-registry-unique strict draw-blind Rule-2 <code>HOLDOUT-DTI = 0.112213 [0.096670, 0.127254]</code> in <code>GEMSDOE92</code>; <code>102</code>-repo <code>dual_reading_unique = True</code> (<code>&le; 0.6947 &le; 0.70</code>). Verdict: <code>negative</code>.</strong></p>
+  <p>
+    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH — 11/11 automated format MUST gates PASS (float32 strictly in [0, 1], 0 NaN/Inf, prevents &ldquo;Predicted values must be in range [0, 1]&rdquo; error)</span>
+    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (verdict: negative, submission_eligible: false under literal 17GEMSDOE dense-surface rule 1.000 &gt; 0.70; 0 weekly slots spent)</span>
+  </p>
+  <p>
+    <a href="downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif" download><strong>⬇ Download gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif</strong></a>
+    · <a href="downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.zip" download>one-TIFF ZIP</a>
+    · <a href="downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-audit.json">audit JSON</a>
+    · <a href="downloads/ventscarp_run_card.json">JSON Run Card</a>
+    · <a href="downloads/ventscarp_holdout.json">holdout JSON</a>
+    · <a href="downloads/ventscarp_uniqueness.json">102-repo uniqueness JSON</a>
+    · <a href="index.html">Main Workbench</a>
+    · <a href="SUBMIT.html">Canonical Submission Guide</a>
+  </p>
+  <p>
+    <strong>Exact DrivenData Portal Procedure (for a future <code>submission_eligible: true</code> candidate — Do not perform these steps with the current artifact because <code>verdict = "negative"</code>):</strong>
+    (1) Verify <code>overall_pass: true</code> and <code>submission_eligible: true</code> in the artifact&rsquo;s <code>-audit.json</code> receipt;
+    (2) Download the single-band <code>float32</code> zeros-outside file (or one-TIFF <code>-zeros.zip</code>) with unique filename <code>gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif</code> (SHA-256 <code>a4a342a8ca137e6b141f80ad9346ac483e71e9428a4b4cbddc99d62ea4fd2664</code>);
+    (3) On <a href="https://www.drivendata.org/competitions/305/competition-doe-gems/">DrivenData DOE GEMS</a>, enter the unique identifier in the separate name field (if present): <code>GEMSDOE92-VENTSCARP-ventscarp-20261025</code>, and paste the &le;140-character note (<code>107/140</code> chars): <code>VENTSCARP ventscarp: 37654px 3DEP-10m scarp + INGENIOUS vents; HOLDOUT-DTI 0.112213 (static 0.008212) [neg]</code>;
+    (4) Record any organizer-returned receipt score and timestamp in <code>ledger/submissions.csv</code> as <code>ORGANIZER-CONFIRMED</code>.
+  </p>
+  <p>
+    Sibling pre-registered research arms (<code>11/11</code> gates PASS, DO NOT SUBMIT):
+    <a href="downloads/gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-zeros.tif" download>gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-zeros.tif</a> (<code>b8e88c0083255f87&hellip;</code>, Rule-2 <code>HOLDOUT-DTI 0.108862</code>) ·
+    <a href="downloads/gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-zeros.tif" download>gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-zeros.tif</a> (<code>d06c302db19afe2d&hellip;</code>, soft <code>[0.35, 1.00]</code> ablation, Rule-2 <code>HOLDOUT-DTI 0.107019</code>).
+  </p>
+</aside>
+<!-- VENTSCARP:END -->
 <!-- KNICKLOQO:BEGIN -->
 <aside class="banner banner-warn" aria-label="KNICKLOQO session status" style="border:2px solid #7f1d1d;">
   <p><strong>Newest session (2026-10-25) — lane <code>KNICKLOQO</code>: 3 new unique GeoTIFFs generated; all-time #1 static <code>HOLDOUT-DTI = 0.010788 [0.009468, 0.012201]</code> (+17.0% over <code>COULOMBLOQO standalone</code> <code>0.009220</code>, +11.1% over <code>PROVINCETOE</code> <code>0.009711</code>) &amp; <code>#IR-92-NE-QUADRANT-LOQO-COLLAPSE</code> resolved. Verdict <code>negative</code> under literal <code>17GEMSDOE</code> dense surface (<code>UNIQUE</code> under <code>dual_reading_decision</code>: <code>0 / 1,412 &gt; 0.70</code>, max <code>0.685531 &le; 0.70</code>).</strong></p>

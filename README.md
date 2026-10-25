@@ -1,5 +1,20 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+<!-- VENTSCARP:BEGIN (rendered from evidence/ventscarp_run_card.json) -->
+> ### Newest Session (2026-10-25) — Lane `VENTSCARP`: 3 New Unique GeoTIFFs Generated · Highest Public-Registry-Unique Strict Draw-Blind Rule-2 `HOLDOUT-DTI = 0.112213 [0.096670, 0.127254]` · `102`-Repo `dual_reading_unique = True` (`<= 0.6947 <= 0.70`) · Verdict **`negative`** (literal `17GEMSDOE` dense surface `1.000 > 0.70`)
+> **✅ OK TO DOWNLOAD FOR RESEARCH: YES** (`11/11` automated format gates PASS, `float32`, `EPSG:32611`, `3730 × 3292`, finite values strictly in `[0.0, 1.0]`, `0.0` outside footprint, `0` NaNs anywhere — prevents DrivenData's `"Predicted values must be in range [0, 1]"` portal error) · **⛔ DO NOT SUBMIT FOR A WEEKLY SLOT: NO** (`verdict: "negative"`, `submission_eligible: false` under binding literal `17GEMSDOE` dense-surface overlap `1.000 > 0.70` and static `0.008212 < 0.010788` `KNICKLOQO`) · weekly slots used: **`0`** · experiments: **`3 / 3`**
+>
+> - **VENTSCARP Research Download (`ventscarp`, `37,654` px):** [`gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif`](docs/downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif) · [one-TIFF ZIP](docs/downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.zip) · [audit JSON](docs/downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-audit.json) · [JSON Run Card](docs/downloads/ventscarp_run_card.json) · [holdout JSON](docs/downloads/ventscarp_holdout.json) · [102-repo uniqueness JSON](docs/downloads/ventscarp_uniqueness.json) · [PhD Analysis (`GEMSDOE32` `0.2778` `[CLAIM]`, Lipor U-Net critique & path to `0.3195+`)](docs/ANALYSIS_20261025_VENTSCARP.md) · [Pre-Registered Hypotheses](docs/HYPOTHESES_20261025_VENTSCARP.md)
+> - **SHA-256 (`-zeros.tif` / `-zeros.zip`):** `a4a342a8ca137e6b141f80ad9346ac483e71e9428a4b4cbddc99d62ea4fd2664` / `e011541c4385f182a17301c6c8e31594d6a09713cb297e0f67dbe07b167124d7`
+> - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, `22,663` withheld positives across `seeds 20, 30` = 8 buffered hide-and-recover folds, 1,000 paired block-bootstrap draws):
+>   - **Strict Draw-Blind Rule-2 (`d_visible > 2.0`, out-of-quadrant LOQO) — Highest Public-Registry-Unique Result in `GEMSDOE92`:** `ventscarp` **`0.112213 [0.096670, 0.127254]`**, beating `KNICKLOQO standalone` (`0.109043 [0.097872, 0.120534]`), `scarp10m_novent` no-vent ablation (`0.108862 [0.091993, 0.126805]`, `+3.08%` hydrothermal vent lift while cutting `>= 12°` alpine cliff dots from `11.07%` down to **`2.97%`** and placing **`71.57%`** on `< 6°` basin/piedmont scarps), `ventscarp_soft` continuous `[0.35, 1.00]` ablation (`0.107019 [0.091774, 0.121673]`, paired binary advantage `+0.005193 [+0.003555, +0.006627]`, resolving `docs/NEXT_STEPS.md` #4), `POISSONKNICK qcal` (`0.099241`), `H19-5` (`0.071758`, paired `+0.040455 [+0.030087, +0.049734]`), and `R0` (`0.004006`, paired `+0.108206 [+0.092876, +0.123218]`).
+>   - **Static Deployment (`d_cat > 2.0`):** `ventscarp` **`0.008212 [0.007007, 0.009287]`** (`2.05×` parent `R0` `0.004006`, paired `+0.004206 [+0.003127, +0.005189]`), `scarp10m_novent` **`0.008685 [0.007222, 0.010170]`**, `ventscarp_soft` **`0.007923 [0.006817, 0.009001]`** (vs `KNICKLOQO standalone` `0.010788`). Off-catalogue `USGS SGMC PROXY` (`d_cat > 5.0`, `325,847` bedrock px): `ventscarp` `0.081321`, `scarp10m_novent` `0.087680`, `ventscarp_soft` `0.079054`.
+> - **Leakage Canaries (`26 / 26 PASS`):** Max single-feature symmetric AUC = **`0.616694 <= 0.90`** (`scarp10m_steep_step_grad`); draw-blind LOQO surface `S_ventscarp` symmetric AUC = **`0.674160 <= 0.90`**. Tufa shoreline mimic filter excluded `86` Pleistocene Lake Lahontan `Tufa` mounds and kept `195` hydrothermal upflow vents (`Sinter`, `Explosion craters`, `Silica-cemented`, `Travertine`) + `709 / 2,782` anomalous `2 m` temperature probes (`F2mDAB`).
+> - **Uniqueness (`REGISTRY-MEASUREMENT`, complete Git Smart HTTP `102`-repo / `1,458`-blob inventory resolving `docs/NEXT_STEPS.md` #1):** Local `GEMSDOE92` (`79` rasters): worst overlap **`0.4770 <= 0.70`**, `|ρ| = 0.1660 <= 0.90` (`PASS`). Public `102` `GEMSDOE*` repos (`1,355` external rasters): **`dual_reading_unique = True` on all 3 arms** (`ventscarp` operative `0.6947 <= 0.70`, `<=50k` sparse `0.4857 <= 0.70`, `|ρ| = 0.4129 <= 0.90`; `scarp10m_novent` `0.6479`; `ventscarp_soft` `0.6859`). Literal dense witness `17GEMSDOE E-proba-multiscale` (`5,167,373` px) = `1.000 > 0.70` (fail-closed `negative`).
+> - **Submission Name (research record only):** `GEMSDOE92-VENTSCARP-ventscarp-20261025` · **Note (`107 / 140`):** `VENTSCARP ventscarp: 37654px 3DEP-10m scarp + INGENIOUS vents; HOLDOUT-DTI 0.112213 (static 0.008212) [neg]`
+> - **Sibling Frozen Arms (`11/11` format gates PASS, research only):** [`gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-zeros.tif`](docs/downloads/gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-zeros.tif) (`b8e88c0083255f87…`) · [`gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-zeros.tif`](docs/downloads/gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-zeros.tif) (`d06c302db19afe2d…`).
+<!-- VENTSCARP:END -->
+
 <!-- KNICKLOQO:BEGIN -->
 > ### Newest Session (2026-10-25) — Lane `KNICKLOQO`: 3 New Unique GeoTIFFs Generated · All-Time #1 Static `HOLDOUT-DTI = 0.010788 [0.009468, 0.012201]` · `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` Resolved · Verdict **`negative`** (literal `17GEMSDOE` dense surface) / **`unique`** (`dual_reading_decision`)
 > **✅ OK TO DOWNLOAD: YES** (`10/10` format gates PASS, values in `[0.0, 1.0]`, `0` NaNs, unique on local `65/65` & public dual-reading `1,412/1,412 <= 0.70` including `62GEMSDOE` `125,890` px where `PROVINCETOE` `0.7918` & `POISSONFLEX` `0.7541` tripped) · **⛔ OK TO SUBMIT: NO — DIAGNOSTIC ONLY** (`verdict: "negative"`, `submission_eligible: false` under literal `17GEMSDOE` dense-surface overlap `1.000 > 0.70`) · weekly slots used: **0** · experiments: **3/3**
@@ -238,6 +253,19 @@ PYTHONPATH=vendor .venv/bin/python scripts/finalize_eulerfuse.py
 ```
 
 The finalizer validates source-receipt agreement and writes the negative run card without human input. The stored registry scan predates publication of these bytes; a later self-match must not be misrepresented as evidence that the file copied a prior submission.
+
+Newest `VENTSCARP` 3DEP-10m + INGENIOUS hydrothermal pipeline (`gems/ventscarp.py`):
+
+```bash
+# 1. Restore & SHA-256-verify all 12 competition + 7 external 3DEP-10m / INGENIOUS GDR #1391 inputs
+.venv/bin/python scripts/restore_inputs.py --ventscarp-external
+
+# 2. Populate complete 102-repo Git Smart HTTP public registry cache (zero REST blob/tree quota)
+.venv/bin/python scripts/sync_public_registry_git.py --workers 6
+
+# 3. Run 26-canary screen, LOQO fit, 3-arm holdout evaluation, 102-repo uniqueness, and [0,1] GeoTIFF packaging
+.venv/bin/python scripts/run_ventscarp.py
+```
 
 Current/prior holdout-best pipeline:
 

@@ -7,6 +7,104 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- VENTSCARP:BEGIN -->
+<aside id="ventscarp-banner-index" class="banner banner-warn" aria-label="VENTSCARP newest session status" style="border:2px solid #7f1d1d;">
+  <p><strong>Newest Session (2026-10-25) — Lane <code>VENTSCARP</code> (USGS 3DEP 10 m Sub-Pixel Scarp Excess + Tufa-Filtered INGENIOUS Paleo-Hydrothermal Vents &amp; 2 m Temperature Probes): 3 new validated research GeoTIFFs built; highest public-registry-unique strict draw-blind Rule-2 <code>HOLDOUT-DTI = 0.112213 [0.096670, 0.127254]</code> in <code>GEMSDOE92</code>; <code>102</code>-repo <code>dual_reading_unique = True</code> (<code>&le; 0.6947 &le; 0.70</code>). Verdict: <code>negative</code>.</strong></p>
+  <p>
+    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH — 11/11 automated format MUST gates PASS (float32 strictly in [0, 1], 0 NaN/Inf, prevents &ldquo;Predicted values must be in range [0, 1]&rdquo; error); UNIQUE on local (79/79 &le; 0.4770) &amp; 102-repo dual-reading (1,355/1,355 &le; 0.6947)</span>
+    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (verdict: negative, submission_eligible: false; DUPLICATE UNDER THE LITERAL REGISTRY RULE vs 17GEMSDOE dense surface 1.000 &gt; 0.70; 0 weekly slots spent)</span>
+  </p>
+  <p>
+    <a href="downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif" download><strong>⬇ Download gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif (37,654 px)</strong></a>
+    · <a href="downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.zip" download>one-TIFF ZIP</a>
+    · <a href="downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-audit.json">audit JSON</a>
+    · <a href="downloads/ventscarp_run_card.json">JSON Run Card</a>
+    · <a href="downloads/ventscarp_holdout.json">holdout JSON</a>
+    · <a href="downloads/ventscarp_uniqueness.json">102-repo uniqueness JSON</a>
+    · <a href="executive-summary.html"><strong>Executive Summary &amp; DrivenData Submission Steps</strong></a>
+    · <a href="SUBMIT.html">Submission Guide</a>
+  </p>
+  <p>
+    SHA-256 (<code>-zeros.tif</code>): <code>a4a342a8ca137e6b141f80ad9346ac483e71e9428a4b4cbddc99d62ea4fd2664</code> · ZIP: <code>e011541c4385f182a17301c6c8e31594d6a09713cb297e0f67dbe07b167124d7</code>.
+    <strong>Strict Draw-Blind Rule-2 HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, <code>22,663</code> withheld positives, <code>d_visible &gt; 2.0</code>, 8 LOQO folds):
+    <code>ventscarp</code> <strong><code>0.112213 [0.096670, 0.127254]</code></strong> (beats <code>KNICKLOQO standalone</code> <code>0.109043 [0.097872, 0.120534]</code>, <code>scarp10m_novent</code> <code>0.108862 [0.091993, 0.126805]</code>, <code>ventscarp_soft</code> <code>0.107019 [0.091774, 0.121673]</code> by paired <code>+0.005193 [+0.003555, +0.006627]</code>, <code>POISSONKNICK qcal</code> <code>0.099241</code>, <code>H19-5</code> <code>0.071758</code> by paired <code>+0.040455</code>, and <code>R0</code> <code>0.004006</code> by paired <code>+0.108206</code>).
+    <strong>Static Deployment HOLDOUT-DTI</strong> (<code>d_cat &gt; 2.0</code>): <code>0.008212 [0.007007, 0.009287]</code> (<code>2.05&times;</code> <code>R0</code> <code>0.004006</code>; trails <code>KNICKLOQO standalone</code> <code>0.010788</code>). Off-catalogue <code>USGS SGMC PROXY</code>: <code>0.081321</code>.
+    <code>26/26</code> single-feature leakage canaries PASS (max symmetric AUC <code>0.616694 &le; 0.90</code>; LOQO OOF surface <code>0.674160 &le; 0.90</code>). Places <strong><code>71.57%</code></strong> of dots on <code>&lt; 6&deg;</code> blind basin/piedmont scarps (<code>2.97%</code> on <code>&ge; 12&deg;</code> cliffs).
+    Record-only name: <code>GEMSDOE92-VENTSCARP-ventscarp-20261025</code> · Note (<code>107/140</code>): <code>VENTSCARP ventscarp: 37654px 3DEP-10m scarp + INGENIOUS vents; HOLDOUT-DTI 0.112213 (static 0.008212) [neg]</code>.
+  </p>
+  <p>
+    Sibling pre-registered arms (11/11 automated gates PASS, research only, DO NOT SUBMIT):
+    <a href="downloads/gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-zeros.tif" download>gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-zeros.tif</a> (<a href="downloads/gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-zeros.zip" download>ZIP</a> · <a href="downloads/gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-audit.json">audit</a>, SHA-256 <code>b8e88c0083255f870f4ed6f8de56e31aa3ff3c4d66991e32dfd74c49ecad6fd6</code>, Rule-2 <code>HOLDOUT-DTI 0.108862</code>, static <code>0.008685</code>) ·
+    <a href="downloads/gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-zeros.tif" download>gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-zeros.tif</a> (<a href="downloads/gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-zeros.zip" download>ZIP</a> · <a href="downloads/gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-audit.json">audit</a>, SHA-256 <code>d06c302db19afe2dfffc955c832766afdee7877117cd6210a6d2681363024eee</code>, 47,000 px soft <code>[0.35, 1.00]</code> ablation, Rule-2 <code>HOLDOUT-DTI 0.107019</code>, static <code>0.007923</code>).
+  </p>
+  <details style="margin-top:0.5rem;">
+    <summary><strong>Auditable VENTSCARP Results, Data Provenance &amp; Verified Official Sources (Click to Expand)</strong></summary>
+    <table style="width:100%;margin-top:0.5rem;border-collapse:collapse;font-size:0.9rem;">
+      <thead>
+        <tr>
+          <th style="text-align:left;border-bottom:1px solid #555;padding:0.25rem;">Experiment / Baseline</th>
+          <th style="text-align:right;border-bottom:1px solid #555;padding:0.25rem;">Positive Px</th>
+          <th style="text-align:right;border-bottom:1px solid #555;padding:0.25rem;">Rule-2 d_vis&gt;2 HOLDOUT-DTI (95% CI)</th>
+          <th style="text-align:right;border-bottom:1px solid #555;padding:0.25rem;">Static d_cat&gt;2 HOLDOUT-DTI (95% CI)</th>
+          <th style="text-align:right;border-bottom:1px solid #555;padding:0.25rem;">102-Repo Dual-Reading Max</th>
+          <th style="text-align:left;border-bottom:1px solid #555;padding:0.25rem;">Automated Gate Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:0.25rem;"><code>VENTSCARP ventscarp</code> (Exp 1)</td>
+          <td style="text-align:right;padding:0.25rem;">37,654</td>
+          <td style="text-align:right;padding:0.25rem;"><strong>0.112213 [0.096670, 0.127254]</strong></td>
+          <td style="text-align:right;padding:0.25rem;">0.008212 [0.007007, 0.009287]</td>
+          <td style="text-align:right;padding:0.25rem;"><strong>0.6947 &le; 0.70 (PASS)</strong></td>
+          <td style="padding:0.25rem;"><code>negative</code> (OK TO DOWNLOAD; DO NOT SUBMIT)</td>
+        </tr>
+        <tr>
+          <td style="padding:0.25rem;"><code>VENTSCARP scarp10m_novent</code> (Exp 2)</td>
+          <td style="text-align:right;padding:0.25rem;">37,654</td>
+          <td style="text-align:right;padding:0.25rem;">0.108862 [0.091993, 0.126805]</td>
+          <td style="text-align:right;padding:0.25rem;">0.008685 [0.007222, 0.010170]</td>
+          <td style="text-align:right;padding:0.25rem;">0.6479 &le; 0.70 (PASS)</td>
+          <td style="padding:0.25rem;"><code>negative</code> (no-vent ablation; DO NOT SUBMIT)</td>
+        </tr>
+        <tr>
+          <td style="padding:0.25rem;"><code>VENTSCARP ventscarp_soft</code> (Exp 3)</td>
+          <td style="text-align:right;padding:0.25rem;">47,000</td>
+          <td style="text-align:right;padding:0.25rem;">0.107019 [0.091774, 0.121673]</td>
+          <td style="text-align:right;padding:0.25rem;">0.007923 [0.006817, 0.009001]</td>
+          <td style="text-align:right;padding:0.25rem;">0.6859 &le; 0.70 (PASS)</td>
+          <td style="padding:0.25rem;"><code>negative</code> (soft [0.35,1] dilution proof)</td>
+        </tr>
+        <tr>
+          <td style="padding:0.25rem;"><code>KNICKLOQO standalone</code> (comparator)</td>
+          <td style="text-align:right;padding:0.25rem;">37,654</td>
+          <td style="text-align:right;padding:0.25rem;">0.109043 [0.097872, 0.120534]</td>
+          <td style="text-align:right;padding:0.25rem;"><strong>0.010788 [0.009390, 0.012202]</strong></td>
+          <td style="text-align:right;padding:0.25rem;">0.6693 &le; 0.70 (PASS)</td>
+          <td style="padding:0.25rem;"><code>negative</code> (OK TO DOWNLOAD; DO NOT SUBMIT)</td>
+        </tr>
+        <tr>
+          <td style="padding:0.25rem;"><code>GEMSDOE32 R0</code> (<code>0.2778 [CLAIM]</code>)</td>
+          <td style="text-align:right;padding:0.25rem;">37,654</td>
+          <td style="text-align:right;padding:0.25rem;">0.004006 [0.003403, 0.004711]</td>
+          <td style="text-align:right;padding:0.25rem;">0.004006 [0.003403, 0.004711]</td>
+          <td style="text-align:right;padding:0.25rem;">public baseline</td>
+          <td style="padding:0.25rem;">Cross-repo reported baseline (<code>[CLAIM]</code>)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:0.5rem;font-size:0.86rem;">
+      <strong>Verified Official Data &amp; Code Sources:</strong>
+      <a href="https://www.drivendata.org/competitions/305/competition-doe-gems/">DrivenData DOE GEMS Competition</a> ·
+      <a href="https://github.com/drivendataorg/gems-prize-reference-solution">Official U-Net Reference Solution (Lipor)</a> ·
+      <a href="https://gdr.openei.org/submissions/1391">DOE GDR #1391 INGENIOUS Paleo-Geothermal &amp; 2 m Probes (CC BY 4.0)</a> ·
+      <a href="https://www.usgs.gov/3d-elevation-program">USGS 3DEP 1/3-Arc-Sec (~10 m) Seamless DEM</a> ·
+      <a href="https://doi.org/10.5066/P9P3625N">USGS GeoDAWN Airborne Geophysics &amp; Radiometrics</a> ·
+      <a href="https://doi.org/10.5066/F7WH2N65">USGS State Geologic Map Compilation (SGMC)</a>.
+    </p>
+  </details>
+</aside>
+<!-- VENTSCARP:END -->
 <!-- KNICKLOQO:BEGIN -->
 <aside class="banner banner-warn" aria-label="KNICKLOQO session status" style="border:2px solid #7f1d1d;">
   <p><strong>Newest session (2026-10-25) — lane <code>KNICKLOQO</code>: 3 new unique GeoTIFFs generated; all-time #1 static <code>HOLDOUT-DTI = 0.010788 [0.009468, 0.012201]</code> (+17.0% over <code>COULOMBLOQO standalone</code> <code>0.009220</code>, +11.1% over <code>PROVINCETOE</code> <code>0.009711</code>) &amp; <code>#IR-92-NE-QUADRANT-LOQO-COLLAPSE</code> resolved. Verdict <code>negative</code> under literal <code>17GEMSDOE</code> dense surface (<code>UNIQUE</code> under <code>dual_reading_decision</code>: <code>0 / 1,412 &gt; 0.70</code>, max <code>0.685531 &le; 0.70</code>).</strong></p>

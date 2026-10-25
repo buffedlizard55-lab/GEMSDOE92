@@ -1,0 +1,86 @@
+{
+  "schema": "gemsdoe92.external_manifest.v1",
+  "lane": "VENTSCARP",
+  "pinned_utc": "2026-10-25T13:55:00Z",
+  "note": "Official US Public Domain (USGS 3DEP, USGS ScienceBase GeoDAWN) and CC-BY-4.0 (DOE GDR #1391 INGENIOUS) zero-fault-catalogue external layers staged from pinned commit 02563d07fb85d2f4d35887503d380d34d4017197 of buffedlizard55-lab/60GEMSDOE into gitignored .cache/gems_inputs/external/. Strictly excludes qfault*, trace_segments_utm11.csv, and gdr_volcanic_vents_in_footprint.csv (which carries dist_known_fault_px).",
+  "files": [
+    {
+      "id": "topo_10m_derived_100m_u8",
+      "repo": "buffedlizard55-lab/60GEMSDOE",
+      "ref": "02563d07fb85d2f4d35887503d380d34d4017197",
+      "path": "data/external/topo_10m_derived_100m_u8.tif",
+      "local_path": ".cache/gems_inputs/external/topo_10m_derived_100m_u8.tif",
+      "bytes": 32523329,
+      "sha256": "a6398d9950965dec6aae6ccecdaa6ced48645d133eab222cbdd11def9bdabfa4",
+      "source_url": "https://www.usgs.gov/3d-elevation-program",
+      "upstream_tiles_url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/current/",
+      "license": "US Public Domain (17 U.S.C. § 105)"
+    },
+    {
+      "id": "topo_10m_derived_manifest",
+      "repo": "buffedlizard55-lab/60GEMSDOE",
+      "ref": "02563d07fb85d2f4d35887503d380d34d4017197",
+      "path": "data/external/topo_10m_derived_100m_u8.manifest.json",
+      "local_path": ".cache/gems_inputs/external/topo_10m_derived_100m_u8.manifest.json",
+      "bytes": 2720,
+      "sha256": "181d5527ba7ed2990031918a8b6c9d5d94e3998b2daf656de0c33322ca94120a",
+      "source_url": "https://www.usgs.gov/3d-elevation-program",
+      "license": "US Public Domain (17 U.S.C. § 105)"
+    },
+    {
+      "id": "dem10_chi_100m_i16",
+      "repo": "buffedlizard55-lab/60GEMSDOE",
+      "ref": "02563d07fb85d2f4d35887503d380d34d4017197",
+      "path": "data/external/dem10_chi_100m_i16.tif",
+      "local_path": ".cache/gems_inputs/external/dem10_chi_100m_i16.tif",
+      "bytes": 12777098,
+      "sha256": "8897ba9c30ef1cd7ad5f23c16c6dfd7bb070e7e757f36fd9486eb45edfd973a5",
+      "source_url": "https://www.usgs.gov/3d-elevation-program",
+      "license": "US Public Domain (17 U.S.C. § 105)"
+    },
+    {
+      "id": "dem10_chi_100m_manifest",
+      "repo": "buffedlizard55-lab/60GEMSDOE",
+      "ref": "02563d07fb85d2f4d35887503d380d34d4017197",
+      "path": "data/external/dem10_chi_100m.manifest.json",
+      "local_path": ".cache/gems_inputs/external/dem10_chi_100m.manifest.json",
+      "bytes": 60085,
+      "sha256": "187a961ef5da45278c84b25d16296a5f3458da37abff45046d31ed58b9f5af86",
+      "source_url": "https://www.usgs.gov/3d-elevation-program",
+      "license": "US Public Domain (17 U.S.C. § 105)"
+    },
+    {
+      "id": "paleo_geothermal_regional",
+      "repo": "buffedlizard55-lab/60GEMSDOE",
+      "ref": "02563d07fb85d2f4d35887503d380d34d4017197",
+      "path": "data/external/paleo_geothermal_regional.zip",
+      "local_path": ".cache/gems_inputs/external/paleo_geothermal_regional.zip",
+      "bytes": 84008,
+      "sha256": "faffcf697f32dbbf6cbb317cd1effb3e305538ce38eb239d72d0c6fa071e91ca",
+      "source_url": "https://gdr.openei.org/submissions/1391",
+      "license": "CC BY 4.0 (DOE GDR #1391 INGENIOUS, UNR/GBCGE)"
+    },
+    {
+      "id": "2m_temperature_probe_regional",
+      "repo": "buffedlizard55-lab/60GEMSDOE",
+      "ref": "02563d07fb85d2f4d35887503d380d34d4017197",
+      "path": "data/external/2m_temperature_probe_INGENIOUS_regional_data.zip",
+      "local_path": ".cache/gems_inputs/external/2m_temperature_probe_INGENIOUS_regional_data.zip",
+      "bytes": 1080530,
+      "sha256": "1301f70d230058e616ea5d34d1c7a32fabf7d49198172f376c59c89bd652eca3",
+      "source_url": "https://gdr.openei.org/submissions/1391",
+      "license": "CC BY 4.0 (DOE GDR #1391 INGENIOUS, GPO / UNR GBCGE / NBMG)"
+    },
+    {
+      "id": "geodawn_extensions_u8",
+      "repo": "buffedlizard55-lab/60GEMSDOE",
+      "ref": "02563d07fb85d2f4d35887503d380d34d4017197",
+      "path": "data/external/geodawn_extensions_u8.tif",
+      "local_path": ".cache/gems_inputs/external/geodawn_extensions_u8.tif",
+      "bytes": 27132925,
+      "sha256": "a35a9c6d2a14786f4dab85481ee59769213072f5dab5b2535ea82ae4d9bb7d9b",
+      "source_url": "https://doi.org/10.5066/P9X6556H",
+      "license": "US Public Domain (17 U.S.C. § 105)"
+    }
+  ]
+}
