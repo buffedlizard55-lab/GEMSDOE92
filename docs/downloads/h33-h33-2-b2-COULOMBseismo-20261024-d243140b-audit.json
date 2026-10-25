@@ -1,0 +1,136 @@
+{
+  "file": "h33-h33-2-b2-COULOMBseismo-20261024-d243140b-zeros.tif",
+  "sha256_zeros": "0c344d4d6d0828a07810a1a1fbd00bd14c3a17bc562e6a22491ca21ab68066d9",
+  "sha256_nan": "d243140bfcb9876afbfe18a8ca47208a6b199f10bbc8c5a549f843ad04f12550",
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "0c344d4d6d0828a07810a1a1fbd00bd14c3a17bc562e6a22491ca21ab68066d9"
+    }
+  ],
+  "gates_nan": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "d243140bfcb9876afbfe18a8ca47208a6b199f10bbc8c5a549f843ad04f12550"
+    }
+  ],
+  "overall_pass": true,
+  "generated_utc": "2026-10-24T22:36:05.252892+00:00",
+  "note": "All gates PASS on independent disk reread; values in [0,1], no NaN inside footprint, zero catalogue mass",
+  "n_positive_pixels": 37654,
+  "n_dots": 37654,
+  "submission_eligible": false,
+  "verdict": "negative",
+  "run_card": "evidence/coulomb_run_card.json",
+  "local_registry_uniqueness": {
+    "registry_rasters_checked": 41,
+    "worst_forward_overlap": 0.266081,
+    "worst_forward_overlap_file": "h19_5.tif",
+    "worst_abs_spearman": 0.016951,
+    "unique_under_literal_rule": true
+  },
+  "public_registry_uniqueness": {
+    "candidate_hash_matches_scan": true,
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "witness_evidence": "evidence/public_witness_coulomb.json",
+    "scope": "Binding single-witness check on lead arm seismo bytes vs Git-blob-verified 17GEMSDOE E-proba-multiscale (100% footprint positive => forward_overlap=1.0); universal halo covers every nonempty in-footprint raster including free/open. 5-witness sparse diagnostic max 0.4831 (not clearance); no full scan this session."
+  }
+}

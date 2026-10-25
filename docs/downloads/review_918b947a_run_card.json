@@ -1,0 +1,136 @@
+{
+  "schema": "gemsdoe92-review-run-card-v1",
+  "hypothesis": "The literal registered-positive-support overlap rule excludes every nonempty in-footprint candidate.",
+  "mechanism": "A pinned witness is positive at every footprint cell; all candidate dots therefore lie at distance zero from its support.",
+  "named_non_fault_process_that_could_mimic_it": "Dense classifier probability support (not a geological duplicate); channel-offset hypotheses additionally face stream capture and fan avulsion.",
+  "review_scope": "Pre-placement impossibility proof and fresh existing-primary format/single-witness audit; not a new candidate or full-registry refresh.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "status": "Historical existing-primary results only; not rerun or newly certified leak-free in this review. No new-candidate holdout exists.",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.00922,
+    "ci95": [
+      0.007983,
+      0.010493
+    ],
+    "source": "evidence/coulomb_loqo_run_card.json",
+    "new_candidate_dti": null
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "one pinned witness, existing primary only",
+    "forward_overlap_within_3px": 1.0,
+    "spearman_full_footprint": 0.0630200233025519,
+    "surface_test": "No new surface generated. Universal support proof rejects any nonempty candidate before placement.",
+    "stop_required": true
+  },
+  "raster_sha256": "8f1f93d8c97b4e1c359ce5fbe07d183214e707aa6bda4ed074c00921f39ad32e",
+  "raster_scope": "Existing research primary, unchanged; not a newly generated submission.",
+  "validator_output": {
+    "overall_pass": true,
+    "no_nan_inside_footprint": true,
+    "all_finite": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "grid": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ]
+    },
+    "gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=float32 count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nan_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      },
+      {
+        "name": "submission_encoding",
+        "ok": true,
+        "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "8f1f93d8c97b4e1c359ce5fbe07d183214e707aa6bda4ed074c00921f39ad32e"
+      }
+    ]
+  },
+  "primary_download": "docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif",
+  "submission_name": "GEMSDOE92-COULOMBLOQO-standalone-20261024",
+  "note": "Existing COULOMBLOQO research artifact; literal registry overlap stop. DO NOT SUBMIT.",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "format_ok_to_download_for_research": true,
+  "new_unique_tiff_generated": false,
+  "experiments_executed": 0,
+  "weekly_slots_used": 0,
+  "organizer_confirmed_score": null,
+  "reason": "Requested unique new submission cannot satisfy the binding overlap rule; no dense-map exemption was assumed.",
+  "software_validation": {
+    "unit_tests_passed": 250,
+    "nonfatal_affine_deprecation_warnings": 124,
+    "served_zeros_tiffs_format_gated": 36,
+    "manifest_entries_verified": 8,
+    "parent_verified": true,
+    "ledger_rows_checked": 68,
+    "missing_local_html_targets": 0,
+    "git_diff_check": "PASS"
+  },
+  "deployment": {
+    "pages_config": "legacy, main / (live API checked)",
+    "actions_mode_update": "HTTP 403 Resource not accessible by integration",
+    "remote_configuration_changed": false,
+    "limitation": "The token can read Pages but cannot switch build_type to workflow. Legacy publication is not gated by the Actions workflow."
+  }
+}

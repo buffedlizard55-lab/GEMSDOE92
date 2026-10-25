@@ -3,50 +3,50 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Submission guide — GEMSDOE92 (COULOMBDM s45coulomb55 session primary, current artifact is blocked)</title>
+  <title>Submission Guide &amp; Automated Gate Status — GEMSDOE92</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="hero">
-  <p class="kicker">Canonical Submission Guide · DOE GEMS Prize #306 · conditional submission instructions</p>
-  <h1>Submission guide (current artifact is blocked — do not upload)</h1>
-  <p class="lede">The newly generated session primary <strong>COULOMBDM s45coulomb55</strong> (<code>h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif</code>) and its pure-physics standalone sibling <strong>COULOMBDM coulomb1d</strong> (<code>h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif</code>, #1 non-CNN Rule-2 blind-fault <strong>HOLDOUT-DTI</strong> <code>0.094496</code>) pass all 11 format + submission-encoding gates and pass <code>1,181 / 1,181</code> sparse (<code>&le;150k</code> px) public rasters across 102 repositories (<code>0 &gt; 70%</code>), alongside prior static-holdout benchmarks <strong>HYDROCONDUIT f45hydro</strong> (<code>0.008549</code>) and <strong>APRONRIDGE free1d</strong> (<code>h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif</code>, <code>0.008354</code>), but are <strong>NOT CLEARED</strong> for a weekly slot under the binding public dense witness (<code>17GEMSDOE E-proba-multiscale</code>, 100% footprint positive) and static holdout bar. The steps below apply <strong>only</strong> to a future artifact whose audit explicitly records <code>submission_eligible: true</code>.</p>
-  <p><a href="index.html">← Main workbench</a> · <a href="executive-summary.html">Executive Summary</a> · <a href="HYPOTHESES.html">Candidate Hypotheses</a> · <a href="ANALYSIS_20261024_COULOMBDM.md">COULOMBDM PhD Analysis</a> · <a href="ANALYSIS_20261024_APRONRIDGE.md">APRONRIDGE Analysis</a></p>
-  <div class="banner banner-warn"><strong>⛔ DO NOT SUBMIT THE CURRENT ARTIFACT.</strong> Live 102-repo GitHub scan on <code>h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif</code> (<a href="downloads/coulombdm_public_registry_uniqueness.json">1,370-raster scan</a> · <a href="downloads/public_witness_apronridge.json">APRONRIDGE witness</a>) records <code>1.000</code> forward 3-px overlap against dense <code>17GEMSDOE E-proba-multiscale</code> (<code>0 / 1,181</code> sparse <code>&le;150k</code>-px rasters &gt;70%), and static <code>HOLDOUT-DTI</code> is <code>0.007816</code> vs <code>0.008549</code> <code>HYDROCONDUIT</code>. Verdict: <code>negative</code>; <code>submission_eligible: false</code>.</div>
-  <div class="banner banner-ok"><strong>✅ FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH ONLY.</strong> All 11 MUST + submission-encoding gates pass on disk re-read: single <code>float32</code> band, <code>EPSG:32611</code>, <code>3730 &times; 3292</code>, finite <code>[0, 1]</code>, zero NaN inside footprint, <code>0.0</code> outside, zero catalogue mass.</div>
+  <p class="kicker">Submission Procedure &amp; Weekly Slot Gate · DOE GEMS Prize #306</p>
+  <h1>Submission Guide — Current Artifact Is Blocked (<code>NOT CLEARED FOR A WEEKLY SLOT</code>)</h1>
+  <p>
+    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH (10/10 Format Gates PASS; Values in [0, 1])</span>
+    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED (<code>submission_eligible: false</code>)</span>
+  </p>
+  <p><a href="index.html">← Main Download Workbench</a> · <a href="executive-summary.html">Executive Summary</a> · <a href="HYPOTHESES.html">5 Ranked Geological Hypotheses</a> · <a href="SUBMIT.html">Canonical Guide (SUBMIT.html)</a></p>
 </header>
 
 <main>
 <section class="download-card">
-  <h2>Current session primary artifact (research download only — NOT CLEARED)</h2>
-  <p class="filename">h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif</p>
-  <p><a class="btn" href="downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif" download>⬇ Download COULOMBDM s45coulomb55 GeoTIFF — DO NOT SUBMIT</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.zip" download>Download research ZIP — DO NOT SUBMIT</a>
-     <a class="btn btn-ghost" href="downloads/h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif" download>Download coulomb1d (.tif)</a></p>
-  <dl class="meta">
-    <div><dt>Submission name (research record)</dt><dd><code>GEMSDOE92-COULOMBDM-s45coulomb55-20261024</code></dd></div>
-    <div><dt>Submission note (112 / 140 chars &le; 140)</dt><dd><code>h33-h33-2-b2; COULOMBDM s45coulomb55: 16944 Coulomb-H19 + 20710 off-skel 1D Coulomb/RTP/clay ridges (&gt;3px H19-5)</code></dd></div>
-    <div><dt>SHA-256 (zeros)</dt><dd><code>44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12</code></dd></div>
-    <div><dt>Audit / run card</dt><dd><a href="downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-audit.json">gate audit JSON</a> · <a href="downloads/coulombdm_run_card.json">run card JSON</a> · <a href="downloads/coulombdm_public_registry_uniqueness.json">102-repo public scan JSON</a></dd></div>
-  </dl>
+  <h2>1. Automated Gate Verdict for Current Research Download (<code>COULOMBDM s45coulomb55</code>)</h2>
+  <p><strong>Do not perform these steps with the current artifact.</strong> <a href="downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif"><code>h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif</code></a> (SHA-256 <code>44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12</code>; name <code>GEMSDOE92-COULOMBDM-s45coulomb55-20261024</code>; note <code>h33-h33-2-b2; COULOMBDM s45coulomb55: 16944 Coulomb-H19 + 20710 off-skel 1D Coulomb/RTP/clay ridges (&gt;3px H19-5)</code>; <a href="downloads/coulombdm_run_card.json">Run Card</a> · <a href="downloads/coulombdm_public_registry_uniqueness.json">102-Repo Scan</a> · <a href="downloads/public_witness_s45coulomb55.json">witness</a>; standalone zero-label sibling <a href="downloads/h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif"><code>COULOMBDMcoulomb1d</code></a> <code>0.094496</code> Rule-2 <code>d_vis &gt; 2.0</code>; parallel <a href="downloads/h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif"><code>XPHASEdual40</code></a> <code>0.004653</code>) passes 11/11 automated format checks (<code>float32</code>, <code>EPSG:32611</code>, <code>3730 &times; 3292</code>, finite <code>[0, 1]</code> with <code>0.0</code> outside footprint, preventing DrivenData's <code>"Predicted values must be in range [0, 1]"</code> error) with static <code>HOLDOUT-DTI</code> <code>0.007816 [0.006994, 0.008644]</code> and <code>0 / 1,181</code> sparse (<code>&le;150k</code> px) public overlaps <code>&gt;70%</code>. The current artifact is blocked because <code>17GEMSDOE E-proba-multiscale</code> (<code>5,167,373</code> positive footprint cells) triggers <code>1.000 &gt; 0.70</code> forward overlap under the literal Rule-1 public registry rule. Repository holdout-best remains <a href="downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif"><code>h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif</code></a> (SHA-256 <code>8f1f93d8c97b4e1c359ce5fbe07d183214e707aa6bda4ed074c00921f39ad32e</code>; <a href="downloads/coulomb_loqo_run_card.json">Run Card</a> · <a href="downloads/coulomb_loqo_public_registry_uniqueness.json">102-Repo Public Scan</a>, <code>0.009220</code> static; <code>0.113316</code> Rule-2 <code>d_visible &gt; 2.0</code>), likewise blocked.</p>
+  <p>Prior research artifacts remain archived under the same literal stop: <code>HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif</code> (<a href="downloads/hydroconduit_run_card.json">run card</a>), <code>h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif</code> (<a href="downloads/public_witness_apronridge.json">APRONRIDGE witness</a>), <code>GEMSDOE92-PIEDFRONT-f35Ptop-20261024</code> (<code>h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif</code>, SHA-256 <code>e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8</code>, <code>0.006425</code> <code>HOLDOUT-DTI</code>), <code>SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif</code> (<a href="downloads/review_20261024_springalign_witness_v2.json">SPRINGALIGN witness</a>), and <code>BREAKLINE: DUPLICATE — DO NOT SUBMIT</code> (<code>h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif</code>).</p>
 </section>
 
 <section>
-  <h2>Three steps — ONLY FOR A FUTURE CLEARED ARTIFACT</h2>
-  <p><strong>Do not perform these steps with the current artifact while <code>submission_eligible: false</code>.</strong> Before uploading any file to DrivenData, require its sidecar audit to record <code>submission_eligible: true</code> and its run card to record <code>verdict: promote</code>, and verify weekly submission quota (3/week cap):</p>
+  <h2>2. Human Selector Procedure (Only When a Future Audit Records <code>submission_eligible: true</code>)</h2>
+  <p><strong>Do not perform these steps with the current artifact.</strong> DrivenData enforces a hard cap of <code>3</code> submissions per rolling 7-day window. Only after a human selector resolves the dense-surface uniqueness policy and a verified audit sidecar records <code>submission_eligible: true</code>:</p>
   <ol>
-    <li><strong>Download the cleared zeros-outside GeoTIFF</strong> (or single-TIFF <code>.zip</code>) and verify its SHA-256 hash matches the sidecar audit JSON. Always use the <code>-zeros.tif</code> encoding so DrivenData's portal never triggers <code>Predicted values must be in range [0, 1]</code> on outside-footprint <code>NaN</code>s.</li>
-    <li><strong>Open the DrivenData portal</strong> at <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">drivendata.org/competitions/306/competition-doe-gems/submissions/</a>.</li>
-    <li><strong>Choose the cleared file</strong> in “File to submit” and paste the exact &le;140-character note from the run card into “Note (optional)”. Keep the unique submission name in the local ledger/filename (the portal form does not expose a separate name field), and record the returned submission ID, UTC timestamp, and score in <code>ledger/submissions.csv</code> as <code>ORGANIZER-CONFIRMED</code>.</li>
+    <li><strong>Upload ONLY the <code>*-zeros.tif</code> file</strong> (never a NaN-outside research raster, which triggers <code>"Predicted values must be in range [0, 1]"</code>).</li>
+    <li><strong>Verify SHA-256 before uploading:</strong> e.g., <code>shasum -a 256 h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif</code>.</li>
+    <li><strong>Record the unique submission name locally:</strong> DrivenData's submission form has no separate name field — record <code>GEMSDOE92-COULOMBLOQO-standalone-20261024</code> in <code>ledger/submissions.csv</code> and paste the &le;140-character note (<code>h33-h33-2-b2; COULOMBLOQO standalone: 37654 1D LOQO Coulomb+polarity+RTP crests (0 H19-5)</code>) into the portal description box.</li>
+    <li><strong>Copy the exact DrivenData score receipt back into <code>ledger/submissions.csv</code></strong> as <code>ORGANIZER-CONFIRMED</code>. Never submit two sibling arms from the same lane in the same week.</li>
   </ol>
 </section>
-
 <section>
-  <h2>Why <code>0.2778</code> worked, how <code>COULOMBDM</code>, <code>HYDROCONDUIT</code>, &amp; <code>APRONRIDGE</code> advance holdout recovery, and witness records</h2>
-  <p>The parent submission <code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros</code> (<code>CLAIM 0.2778</code>; owner-reported without an archived submission receipt) succeeded by combining 2.8 px spacing on <code>H19-5</code> (preventing redundant kernel overlap under &alpha;=0.2 FP weight, &beta;=0.8 FN weight) with 2.0 px catalogue pruning. <strong>COULOMBDM</strong> resolves 2D Mohr–Coulomb dilation/conjugate-shear onto ridge strike and extracts multi-altitude upward-continued <code>Band 2 RTP</code> + MT clay-cap lateral boundaries along Canny cross-strike 1D NMS centrelines, lifting Rule-2 fold-visible blind-fault <code>HOLDOUT-DTI</code> to <strong>0.094496</strong> on <code>coulomb1d</code> (matching supervised <code>H19-5</code> <code>0.096757</code> within 95% CI) and complementing static-holdout leaders <a href="downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif">HYDROCONDUIT f45hydro</a> (<code>0.008549</code>, <a href="downloads/hydroconduit_run_card.json">run card</a>) and <a href="downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif">APRONRIDGE free1d</a> (<code>0.008354</code>, <a href="downloads/apronridge_run_card.json">run card</a> · <a href="downloads/public_witness_apronridge.json">witness</a>).</p>
-  <p><strong>Parallel &amp; prior lane witness notices preserved:</strong> <strong>BREAKLINE: DUPLICATE — DO NOT SUBMIT.</strong> Likewise <a href="downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif">h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif</a> (<code>GEMSDOE92-PIEDFRONT-f35Ptop-20261024</code>, static <code>HOLDOUT-DTI 0.006425</code>, SHA-256 <code>e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8</code>, <a href="downloads/piedfront_run_card.json">run card</a>), <a href="downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif">STEPEDGE f60Sraw</a> (<a href="downloads/stepedge_run_card.json">run card</a>), <a href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif">SPRINGALIGN f33Ctop</a> (<a href="downloads/review_20261024_springalign_witness_v2.json">SPRINGALIGN witness receipt</a>), <code>ANASIG</code>, <code>STRAINBREAK</code>, <code>DILATATION</code>, <code>TIPGAP</code>, and <code>visible-collar</code> remain research-only negative deliverables; do not submit any of them.</p>
+  <h2>Conditional Portal Guard &amp; Merged Parallel Downloads</h2>
+  <p><strong>Do not perform these steps with the current artifact while <code>submission_eligible: false</code></strong> (keep the unique submission name in the local ledger; the DrivenData portal has no separate name field). Preserved parallel downloads:
+  <a href="downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif">APRONRIDGEfree1d-20261024-d5760830-zeros.tif</a> (<a href="downloads/public_witness_apronridge.json">public_witness_apronridge.json</a>),
+  <a href="downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif">SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif</a> (<a href="downloads/review_20261024_springalign_witness_v2.json">review_20261024_springalign_witness_v2.json</a>),
+  <a href="downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif">GEOTENSION free1d</a>,
+  <a href="downloads/h33-h33-2-b2-COULOMBseismo-20261024-d243140b-zeros.tif">COULOMB seismo</a>, and
+  <a href="downloads/h33-h33-2-b2-BASEMENTEDGEstep3-20261024-80719f12-zeros.tif">BASEMENTEDGE step3</a>.</p>
 </section>
 </main>
-<footer><p>GEMSDOE92 · Automated 11/11 format gates + fail-closed registry discipline · HOLDOUT-DTI is never a leaderboard score.</p></footer>
+
+<footer>
+  <p>GEMSDOE92 Submission Guide · Automated Gate Enforcement via <code>scripts/check_site.py</code> &amp; <code>scripts/validate_submission.py</code>.</p>
+</footer>
 </body>
 </html>

@@ -1,28 +1,64 @@
-# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-24, `COULOMBDM` Session)
+# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-24, `COULOMBDM` & `COULOMB-LOQO` Merged State)
 
-## Current Slot Decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT (`submission_eligible: false`, `60 BUILT / 0 RECEIPT`)**
+## Current Slot Decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT (`submission_eligible: false`, `0` weekly slots spent, `74 BUILT / 0 RECEIPT`)**
 
-Current session primary download `GEMSDOE92-COULOMBDM-s45coulomb55-20261024` (`docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif`, SHA-256 `44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12`, note `h33-h33-2-b2; COULOMBDM s45coulomb55: 16944 Coulomb-H19 + 20710 off-skel 1D Coulomb/RTP/clay ridges (>3px H19-5)`) and standalone blind-fault sibling `GEMSDOE92-COULOMBDM-coulomb1d-20261024` (`docs/downloads/h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif`, SHA-256 `510c3012f4866e8ea2f0debd0aba799a7b7765a4e18f0954d2d1067ddd01e172`) are **100% format-valid (`11/11` `gems.gates` + `13/13` `gems57.validate` PASS — ✅ OK TO DOWNLOAD FOR RESEARCH)**, pass all `35 / 35` leakage canaries (`max = 0.640176 <= 0.90`), pass local uniqueness across all `44` prior rasters (`<= 0.6796 <= 0.70`), and pass **`1,181 / 1,181` sparse (`<= 150,000` px) public rasters across `102` `GEMSDOE` repositories (`0 > 70%`)**. However, **neither is cleared for a live weekly submission slot (`verdict: "negative"`, `submission_eligible: false`)** because:
-
-1. **Literal Public Dense-Witness Rule (`Rule 1`):** `185` dense public probability surfaces (`> 150,000` positive pixels, led by `17GEMSDOE E-proba-multiscale` at `5,167,373 / 5,167,373 = 100%` footprint positive) force `forward_overlap = 1.000 > 0.70` (`evidence/coulombdm_public_registry_uniqueness.json`).
-2. **Pre-Registered Static `HOLDOUT-DTI` Bar:** On static `d_cat > 2.0` `HOLDOUT-DTI`, `COULOMBDM s45coulomb55` (`0.007816 [0.006994, 0.008644]`) beats `R0` (`0.004006`, `+95.1%`) and `RELIEF p10` (`0.006045`, `+29.3%`), but trails [`HYDROCONDUIT f45hydro`](docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif) (`0.008549`) and [`APRONRIDGE free1d`](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif) (`0.008354`). Meanwhile, on **Rule-2 fold-visible blind-fault `d_vis > 2.0` `HOLDOUT-DTI`**, `COULOMBDM coulomb1d` achieves **`0.094496 [0.085916, 0.102867]`** (**#1 non-CNN in repo**, `+8.9%` over `APRONRIDGE free1d` `0.086787` and `+10.9%` over `HYDROCONDUIT f45hydro` `0.085221`).
-
-### Unified Human Selector Queue (Conditional on Dense-Surface Policy Resolution)
-
-| Queue Priority | Candidate | Static `HOLDOUT-DTI` | Rule-2 `d_vis>2` `HOLDOUT-DTI` | `SGMC PROXY` | Sparse Public `<=150k` (`0 > 70%`?) | Selector Role if Dense Surfaces (`>150k` px) Exempted |
-|---:|---|---:|---:|---:|---|---|
-| **Option A (Static Holdout #1)** | `HYDROCONDUIT f45hydro` (`c9e07ba6…`) | **`0.008549`** | `0.085221` | `0.074107` | **PASS (`0 / 1,147 > 70%`)** | Best hybrid piedmont + hydrothermal `H19-5` collar candidate |
-| **Option B (Standalone Static #1)** | `APRONRIDGE free1d` (`1a29a5d8…`) | **`0.008354`** | `0.086787` | `0.080098` | Spot-checked (`0.603–0.646`); run full 102-repo scan first | Best thin-cover piedmont accommodation apron (`0% H19-5`) |
-| **Option C (Rule-2 Blind-Fault #1)** | `COULOMBDM coulomb1d` (`510c3012…`) | `0.006467` | **`0.094496`** | `0.070345` | **PASS (`0 / 1,181 > 70%`, max `0.5859`)** | Best standalone Mohr–Coulomb + upward-RTP + MT clay-cap blind-fault detector (`0% H19-5`) |
-| **Option D (Balanced Hybrid)** | `COULOMBDM s45coulomb55` (`44efd202…`) | `0.007816` | `0.086867` | `0.075208` | **PASS (`0 / 1,181 > 70%`, max `0.6796`)** | Balanced `45%` Coulomb-ranked `H19-5` + `55%` off-skeleton Coulomb/RTP/clay crests |
-
-> **Cross-Lane Duplicate Warning (`#IR-92-PIEDFRONT-HYDROCONDUIT-CROSSOVER`):** Never pair `PIEDFRONT f35Ptop` (`e314f4c0…`) with `HYDROCONDUIT f45hydro` (`71.32% > 70%` 3-px forward overlap), and never submit more than one sibling from the same lane (`coulomb1d` / `s35coulomb65` / `s45coulomb55`, `f45pied` / `f45hydro` / `f50hydro`, or `free1d` / `s60f40` / `s50f50`).
+- **Current Research Download (`data-primary="true"`):** `docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif` (`SHA-256 = 44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12`, static `HOLDOUT-DTI = 0.007816`, **`0 / 1,181` `<= 150k`-px sparse public overlaps `> 70%`**) and zero-label standalone sibling `docs/downloads/h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif` (`SHA-256 = 510c3012f4866e8ea2f0debd0aba799a7b7765a4e18f0954d2d1067ddd01e172`, `0% H19-5`, `0%` catalogue labels, Rule-2 `d_vis > 2.0` `HOLDOUT-DTI = 0.094496`, **`0 / 1,181` `<= 150k`-px sparse public overlaps `> 70%`, max `0.5859`**; `evidence/coulombdm_run_card.json`).
+- **Repository Holdout-Best Artifact (`COULOMB-LOQO`):** `docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif` (`0.009220` static / `0.113316` LOQO `d_vis > 2.0`, `1` sparse public overlap `0.7004` at `61k` px; hybrid sibling `COULOMBLOQO dual45` `0.009107` static, `0 / 1,121` `<= 90k`-px sparse public overlaps `> 70%`):
+  - **Submission Name (local ledger):** `GEMSDOE92-COULOMBLOQO-standalone-20261024`
+  - **Form Note (`89 / 140` chars):** `h33-h33-2-b2; COULOMBLOQO standalone: 37654 1D LOQO Coulomb+polarity+RTP crests (0 H19-5)`
+  - **SHA-256 (`-zeros.tif`):** `8f1f93d8c97b4e1c359ce5fbe07d183214e707aa6bda4ed074c00921f39ad32e`
+  - **Run Card:** `evidence/coulomb_loqo_run_card.json` (`docs/downloads/coulomb_loqo_run_card.json`)
+  - **Format & `[0, 1]` Gates:** **PASS (`10 / 10` `gems.gates` + `gems57.validate`) — ✅ OK TO DOWNLOAD FOR RESEARCH**
+  - **Weekly Slot Verdict:** **⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (`verdict: "negative"`)**
 
 ---
 
-## Historical Selector Records (Preserved)
+## Gate-by-Gate Selector Status for `COULOMBLOQO standalone` (and Hybrid Sibling `COULOMBLOQO dual45`)
 
-### Prior selector state (2026-10-24, APRONRIDGE session)
+| Gate | Status | Measured Value & Source |
+|---|---|---|
+| **1. Format & `[0, 1]` Range Gate** | **PASS** | `float32`, `EPSG:32611`, `3730 × 3292`, finite `[0, 1]`, `0` NaN anywhere, `0.0` outside footprint, `37,654` unit dots, `0` catalogue mass, `d_cat > 2.0 px` (`docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-audit.json`) |
+| **2. Single-Feature Leakage Canaries (43 features)** | **PASS** | All raw bands, derived features (`f01`–`f24`), and LOQO surfaces `<= 0.90`; max symmetric AUC **`0.672638`** (`evidence/coulomb_loqo_screen.json`) |
+| **3. Shared Static `HOLDOUT-DTI` (`gems57-pooled-hide-v2`)** | **PASS (#1 All-Time Repo High)** | **`0.009220 [0.007983, 0.010493]`** (`22,663` withheld px); **`+0.005214 [+0.004130, +0.006326]`** vs `R0` (`0.004006`, `+130.2%`); **`+0.003175 [+0.002123, +0.004222]`** vs `RELIEF p10` (`0.006045`, `+52.5%`); beats `HYDROCONDUIT` (`0.008549`) & `APRONRIDGE` (`0.008354`); strict draw-blind `d_cat > 2.0` = **`0.009689`** (`evidence/coulomb_loqo_proxy_audit.json`) |
+| **4. Strict Rule-2 Unmasked `d_visible > 2.0` `HOLDOUT-DTI`** | **PASS (#1 All-Time Repo High)** | **`0.113316 [0.100614, 0.127163]`** vs `H19-5` skeleton `0.096757` (paired $\Delta = +0.016559$, 95% CI **`[+0.008170, +0.024980]`** — first standalone `0% H19-5` model to beat `H19-5`) |
+| **5. Off-Catalogue `USGS SGMC` `PROXY` DTI (`62,703` px)** | **RECOVERED** | **`0.090569`** (`standalone`, `+22.2%` vs `HYDROCONDUIT` `0.074107`) / **`0.094057`** (`dual45`, `+26.9%` vs `HYDROCONDUIT`, `97.9%` of `R0` `0.096060`) |
+| **6. Local Registry Uniqueness (41 rasters)** | **PASS** | Pre-placement surface worst 3-px overlap **`0.6164 <= 0.70`**, `|rho| = 0.1593 <= 0.90`; Final dots worst 3-px overlap **`0.6164 <= 0.70`** (`dual45`: **`0.5982`**), `|phi| = 0.0493 <= 0.90` |
+| **7. Sparse Public Fleet Diagnostic (`<=90k` / `<=150k` px across 102 repos)** | **DIAGNOSTIC** | Across `1,121` `<= 90k`-px public submissions: **`COULOMBLOQO dual45` passes `0 / 1,121` (`max = 0.6488 <= 0.70`)**; `standalone` hits `0.7004` (`1` raster at `61,427` px, `15` dots above `0.7000`) and `0.7398` vs `100k`-px `GEMSDOE23` habitat (`evidence/coulomb_loqo_public_sparse_diagnostic.json`) |
+| **8. Literal Public Registry Gate (`1,368` rasters incl. dense surfaces)** | **BLOCKED (STOP)** | `17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` (`5,167,373` = 100% positive footprint px) forces **`1.0000 > 0.70`** forward overlap (`evidence/coulomb_loqo_public_registry_uniqueness.json`) |
+
+---
+
+## Human Selector Queue Once Blockers Are Resolved
+
+1. **Blocker 1 (Operator Uniqueness Scope Decision):** Decide whether dense continuous/habitat maps (`> 90,000` positive pixels, led by `17GEMSDOE E-proba-multiscale` at `5.17M` pixels) are excluded from the sparse competition-budget uniqueness pool.
+   - Under a **`<= 90,000` positive-pixel** competition-budget policy: **`COULOMBLOQO dual45`** (`0.009107` static / `0.1020` `d_vis>2` / `0.0941` `SGMC`, **`0 / 1,121` `> 70%`**) is immediately unique across all 102 public repos, followed by `HYDROCONDUIT f45hydro` (`0.008549` static, `0 / 1,179` `<= 150k`).
+   - Under a **`<= 55,000` positive-pixel** budget-matched policy: **`COULOMBLOQO standalone`** (`0.009220` static / `0.113316` `d_vis>2` / `0.0906` `SGMC`, `#1` on both holdout instruments) is the top candidate.
+2. **Blocker 0 (Calibration Anchor):** Record one `ORGANIZER-CONFIRMED` DrivenData receipt for parent `R0` (`0.2778` `[CLAIM]`) in `ledger/submissions.csv` before interpreting live leaderboard deltas, and never submit more than one `COULOMBLOQO` arm in a rolling 7-day window.
+
+---
+
+## Merged parallel-branch selector records (`COULOMB`, `APRONRIDGE`)
+
+# SLOT_PLAN — current selector state (2026-10-24, COULOMB session): NO SLOT AUTHORIZED — research downloads only
+
+## COULOMB session decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT (`submission_eligible: false`, `verdict: negative`)**
+
+Three new format-valid standalone research downloads (`10/10` gates + `13/13` `gems57.validate` PASS each):
+`COULOMBseismo-20261024-d243140b` (lead, `HOLDOUT-DTI 0.005808 [0.004846, 0.006809]`),
+`COULOMBfree-20261024-d0cf5db5` (`0.005689`), `COULOMBopen-20261024-58a7a394` (`0.005184`).
+All beat `R0` (`0.004006`) but trail the `0.008549` promotion bar with paired CIs excluding promotion
+(seismo vs bar `Δ −0.002741 [−0.004137, −0.001382]`), and the lead arm trips the binding dense public
+witness (`17GEMSDOE E-proba-multiscale`, `forward_overlap = 1.000`, `evidence/public_witness_coulomb.json`).
+Locally unique (`0.263–0.290 ≤ 0.70`, `|φ| ≤ 0.024`); canaries `20/20 PASS`. **No slot used this session
+(3/3 experiment budget consumed as research).** Promotion bar stays
+`HYDROCONDUIT f45hydro 0.008549` (still the repo holdout best; parallel-session branch primary
+`GEOTENSION free1d` scored `0.007615`). Run card: `docs/downloads/coulomb_run_card.json`.
+
+---
+
+# SLOT_PLAN — current selector state (2026-10-24, APRONRIDGE session)
+
+## Current primary artifact: `APRONRIDGE free1d` — #1 Holdout-DTI & locally unique, blocked ONLY by dense public witness (`verdict: negative`, no slot used)
 
 Primary download `GEMSDOE92-APRONRIDGE-free1d-20261024` (file
 `docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`,
@@ -41,7 +77,8 @@ note `h33-h33-2-b2; APRONRIDGE free1d: 37654 standalone 1D piedmont-apron + RTP 
 
 ---
 
-### Prior parallel state (2026-10-24, STEPEDGE & HYDROCONDUIT sessions)
+# SLOT_PLAN — prior parallel state (2026-10-24, STEPEDGE session)
+# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-24, `HYDROCONDUIT` Session)
 
 ## Current Slot Decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT (`submission_eligible: false`)**
 

@@ -1,0 +1,53 @@
+{
+  "schema": "gemsdoe92-review-run-card.v1",
+  "record_type": "policy_blocked_no_new_experiment",
+  "reviewed_utc": "2026-10-24T22:23:56Z",
+  "hypothesis": "ASYM-SCARP: paired signed cross-strike profile asymmetry in GeoDAWN Bands 12 and 19, stratified by Band 15, may reveal unmapped surface-breaking faults that are weak in potential-field layers. This lane was proposed only; its surface was not built or tested this session.",
+  "mechanism": "A fault scarp can produce repeatable asymmetric elevation and slope-break profiles across nearby transects. Score profile shape and persistence rather than raw slope magnitude. Feature stack was unavailable in the checkout, and the binding public witness mandates a duplicate stop before any final placement.",
+  "named_non_fault_process_that_could_mimic_it": "Incised alluvial-fan terrace risers or wash banks can form persistent asymmetric slope breaks without tectonic displacement.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "this_session": "NOT RUN: no feature stack staged; no candidate surface or placement created.",
+    "historical_reference": {
+      "candidate": "APRONRIDGE free1d (prior experiment; not ASYM-SCARP)",
+      "value": 0.008353557502643275,
+      "ci95": [0.006823024076833538, 0.010135013822319561],
+      "status": "HISTORICAL HOLDOUT-DTI only; not a competition score and not a result for the proposed hypothesis."
+    }
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "preplacement_surface": "NOT BUILT; no correlation or overlap claim for ASYM-SCARP.",
+    "exact_file_rechecked": "Existing APRONRIDGE free1d raster; not generated in this session.",
+    "witness": "buffedlizard55-lab/17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "witness_git_blob_sha1": "374c88b1da2b803e2ed160de467fd71ae114010d",
+    "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "witness_positive_pixels": 5167373,
+    "footprint_pixels": 5167373,
+    "existing_apronridge_forward_3px_overlap": 1.0,
+    "existing_apronridge_spearman": 0.05623747382008243,
+    "result": "Binding duplicate stop under the literal >0.70 overlap rule; single witness rejection check, not full-registry clearance or geological-equivalence proof."
+  },
+  "raster_sha256": "1a29a5d81e8561954f04a563b4975cb84d00898b8d7634700a9d409a10e06cbc",
+  "raster_identity": "Existing APRONRIDGE free1d research artifact; not generated in this session.",
+  "new_unique_tiff_generated": false,
+  "validator_output": {
+    "checked_artifact": "Existing APRONRIDGE free1d; final scripts/check_site.py passed after documentation and test edits, including its exact-byte audit receipt check.",
+    "no_nan_inside_footprint": true,
+    "all_finite": true,
+    "values_range": [0.0, 1.0],
+    "crs": "EPSG:32611",
+    "shape": [3730, 3292],
+    "transform_matches_template": true,
+    "zero_outside_footprint": true,
+    "format_status": "PASS for this existing file; not uniqueness or submission clearance."
+  },
+  "submission_name": "GEMSDOE92-ASYM-SCARP-research-proposal-20261024",
+  "submission_note": "Proposal only; no candidate TIFF generated; public witness duplicate stop; do not upload.",
+  "weekly_submission_slots_used": 0,
+  "experiments_run": 0,
+  "verdict": "negative",
+  "unfulfilled_requirement": "A fresh unique submission TIFF was not generated because the literal registry rule rejects every nonempty in-footprint prediction against the verified full-footprint-positive witness."
+}

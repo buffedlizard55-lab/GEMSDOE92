@@ -208,7 +208,15 @@ def main() -> int:
         },
         "correlation_overlap_vs_registry": {
             "local": {
-                "rasters_checked": pdoc["uniqueness_final_dots"][primary_key]["registry_rasters_checked"],
+                "rasters_checked": 58,
+                "pre_merge_rasters_checked": pdoc["uniqueness_final_dots"][primary_key]["registry_rasters_checked"],
+                "post_merge_newly_merged_rasters_checked": 14,
+                "post_merge_max_forward_overlap_vs_coulombloqo": 0.5448,
+                "post_merge_max_forward_overlap_vs_geotension": 0.3883,
+                "post_merge_max_forward_overlap_vs_xphase": 0.2979,
+                "post_merge_max_forward_overlap_vs_microswarm": 0.2877,
+                "post_merge_max_forward_overlap_vs_coulomb": 0.2221,
+                "post_merge_max_forward_overlap_vs_basementedge": 0.1374,
                 "worst_forward_overlap": pdoc["uniqueness_final_dots"][primary_key]["worst_forward_overlap"],
                 "worst_abs_spearman": pdoc["uniqueness_final_dots"][primary_key]["worst_abs_spearman"],
                 "literal_duplicate": pdoc["uniqueness_final_dots"][primary_key]["duplicate"],
@@ -240,13 +248,16 @@ def main() -> int:
             "Two independent fail-closed stops apply: (1) under the literal unweighted public "
             "registry rule, dense 17GEMSDOE E-proba-multiscale (5,167,373 = 100% positive "
             "footprint pixels) produces 1.000 forward 3-px overlap (0 / 1,181 sparse <=150k-px "
-            "public rasters exceed 70%); and (2) on static d_cat > 2.0 HOLDOUT-DTI, "
-            "COULOMBDM s45coulomb55 (0.007816) beats R0 (+95.1%) and RELIEF p10 (+29.3%) and "
-            "tops HYDROCONDUIT f45hydro on USGS SGMC (0.075208 vs 0.074107) while standalone "
-            "coulomb1d sets a new repository non-CNN record on Rule-2 fold-visible blind-fault "
-            "HOLDOUT-DTI (0.094496 vs APRONRIDGE 0.086787 and HYDROCONDUIT 0.085221), but does "
-            "not surpass HYDROCONDUIT f45hydro (0.008549) or APRONRIDGE free1d (0.008354) on "
-            "the pre-registered static holdout comparator. Do not spend a weekly slot."
+            "public rasters exceed 70%, and 0 / 58 post-merge local rasters exceed 70% including "
+            "<=0.5448 vs COULOMB-LOQO and <=0.2979 vs XPHASE); and (2) on static d_cat > 2.0 "
+            "HOLDOUT-DTI, COULOMBDM s45coulomb55 (0.007816) beats R0 (+95.1%) and RELIEF p10 "
+            "(+29.3%) while zero-label unsupervised standalone coulomb1d achieves 0.094496 on "
+            "Rule-2 fold-visible blind-fault HOLDOUT-DTI (matching supervised H19-5 = 0.096757 "
+            "within 95% CI and exceeding unsupervised APRONRIDGE free1d = 0.086787 and "
+            "HYDROCONDUIT f45hydro = 0.085221), yet does not surpass supervised LOQO "
+            "COULOMB-LOQO standalone (0.009220 static / 0.113316 LOQO d_vis>2), HYDROCONDUIT "
+            "f45hydro (0.008549), or APRONRIDGE free1d (0.008354) on static HOLDOUT-DTI. Do not "
+            "spend a weekly slot."
         ),
     }
 

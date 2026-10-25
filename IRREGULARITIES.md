@@ -873,35 +873,89 @@ that pattern: no unpreserved screen code.
 - **Observation**: Prior `SPRINGALIGN` update changed `docs/index.html` `<h1>` while leaving `"This session tested ANASIG"` in the lede, placed `data-primary="true"` on `<section>` instead of `<a href=...>`, and left `docs/executive-summary.html`, `docs/SUBMIT.html`, and `docs/submit.html` pointing to `ANASIG`.
 - **Action**: Synchronized `docs/index.html`, `docs/executive-summary.html`, `docs/SUBMIT.html`, `docs/submit.html`, `docs/HYPOTHESES.html`, `README.md`, `SLOT_PLAN.md`, `docs/REVIEW_CURRENT.md`, `docs/NEXT_STEPS.md`, and `tests/test_site_contract.py` around `HYDROCONDUIT f45hydro`, placing `data-primary="true"` directly on the primary `-zeros.tif` anchor.
 
+
+
+## Review d97f969e — 2026-10-24
+
+- Fresh Git-blob-verified dense witness rejects the current APRONRIDGE download (forward overlap 1.0). Literal protocol mandates stop; no new candidate or policy exemption. See `evidence/review_d97f969e_witness.json`.
+- Homepage overall-best claim conflicted with higher stored HYDROCONDUIT HOLDOUT-DTI. Corrected the headline and added superseding top-level notices. Historical static scores are not certified visible-only fold-rebuilt experiments.
+- No single method paragraph is identifiable in this request. No lane was invented. Data and CPU validators already exist; the prompt's GPU/data-placement blocker is not current for this array pipeline.
+- Official competition pages, quota and receipts cannot be freshly verified under this session's network restrictions. No organizer score or source-access claim was fabricated.
+
+## 2026-10-24 (COULOMB session) — Disk-vs-Prose Lineage Count Drift, Conflicting Intermediate CLAIMs, Witness-Checker Exit Code
+
+### 1. `#IR-92-LINEAGE-COUNT-DRIFT`: Stale `D2.8` / `SOLO` Dot Counts in Prose (Disk Wins)
+- **Observation**: Direct `rasterio` positive-pixel counts this session: `data/bridge/d28.tif = 44,090`, `data/bridge/h27_4_solo.tif = 40,199`, `data/bridge/h19_5.tif = 121,131`, `data/parent_R0_zeros.tif = 37,654` (all `float32`, `3730×3292`). Three prose spots disagreed: `README.md:79` quoted `SOLO 39,580` (+ derived `1,926` pruned dots); `README.md:258` quoted `D2.8 46,612`; `docs/ANALYSIS_20261024_APRONRIDGE.md:33` quoted `SOLO 39,580` (+ `1,926`); `docs/ANALYSIS_20261024_HYDROCONDUIT.md:25` quoted `D2.8 46,612`. No raster or evidence JSON was affected (all pipelines read bytes, not prose).
+- **Action**: Corrected all four spots to disk values (`SOLO 40,199`, `D2.8 44,090`, `SOLO→R0` prune count `2,545 = 40,199 − 37,654`). Lineage table in `docs/ANALYSIS_20261024_COULOMB.md` §1.2 is the verified reference.
+
+### 2. `#IR-92-LINEAGE-CLAIM-CONFLICT`: Intermediate-Lineage CLAIM Scores Conflict Across Docs (Unresolvable Without Receipts)
+- **Observation**: `README.md:79` + APRONRIDGE analysis claim `H19-5 0.1922 → D2.8 0.2600 (+0.0678)`; `README.md:258` + HYDROCONDUIT analysis claim `H19-5 0.2194 → D2.8 0.2649 (+0.0455)`. Both chains agree on `SOLO 0.2708` and `R0 0.2778`. Scores are not on disk, and `ledger/` holds 0 organizer receipts, so neither chain can be falsified locally.
+- **Action**: Left both CLAIMs in place with this log entry. Resolution requires an `ORGANIZER-CONFIRMED` receipt or authenticated leaderboard snapshot; until then, quote lineage scores only as `CLAIM` with their source doc.
+
+### 3. `#IR-92-WITNESS-EXIT0`: `scripts/check_public_witness.py` Exits 0 Even on Duplicate (Docstring Says Exit 1)
+- **Observation**: The module docstring states a duplicate finding exits `1`, but `main()` has no return path, so the process always exits `0` (observed on the COULOMB `forward_overlap = 1.000` duplicate). CI or shell gates keyed on exit code would miss the stop.
+- **Action**: Treat the JSON receipt's `stop_required` field as authoritative (as `scripts/make_coulomb_run_card.py` does). Recommended follow-up: one-line fix to `return 1` on `stop_required` plus a regression test (queued; not done this session to avoid touching shared tooling mid-run-card).
+
+### 4. `#IR-92-COULOMB-MAXFUSION`: `max()` Two-Channel Fusion Dilutes the Stronger Channel (Result, Not Bug)
+- **Observation**: `COULOMB free` final dots are `71.6%` RTP-channel-dominant while `rtp_tilt`-only canary is `0.5162` vs `rel_scarp`-only `0.6230` — `max(R_rtp, R_scarp)` lets the near-random channel win most crest pixels. `HYDROCONDUIT`'s multiplicative fusion is the empirically better operator on this instrument.
+- **Action**: Recorded as a design constraint for future lanes (follow-up F-C2 in `docs/NEXT_STEPS.md`); no code change.
+
+## 2026-10-24 (`COULOMB-LOQO` Session) — Five Newly Verified Metric, Lineage, Bootstrap & HTML Merge Irregularities
+
+### 1. `#IR-92-ALPHA-BETA-PROSE-SWAP`: Inverted $\alpha / \beta$ Tversky Penalty Weights in `README.md` and `ANALYSIS_20261024_APRONRIDGE.md`
+- **Observation**: `README.md` (line 80) and `docs/ANALYSIS_20261024_APRONRIDGE.md` (§2.1) wrote the DTI denominator as $\mathrm{TP}_w + \alpha\,\mathrm{FN}_w + \beta\,\mathrm{FP}_w$ (`0.2` on `FN_w` and `0.8` on `FP_w`), asserting that false positives carried a $4\times$ heavier penalty than false negatives. Direct verification against the official DrivenData reference notebook (`drivendataorg/gems-prize-reference-solution/unet-mc-cv-reference-solution.ipynb`, Cell 16: `alpha = 0.2 # weight for false positives`, `beta = 0.8 # weight for false negatives`), `vendor/gems57/metric.py`, and `gems/metric.py` proves the exact opposite: $\mathrm{DTI} = \mathrm{TP}_w / (\mathrm{TP}_w + 0.2\,\mathrm{FP}_w + 0.8\,\mathrm{FN}_w)$ — **false negatives carry $4\times$ the penalty of false positives**.
+- **Action**: Corrected the prose formula in `README.md` and `docs/ANALYSIS_20261024_COULOMBLOQO.md` while clarifying why kernel-matched spacing (`~2.8 px`) still improves DTI (not because $\alpha > \beta$, but because $\max_{x \in A} K(\|g - x\|_2)$ saturates at zero marginal $\mathrm{TP}_w$ gain when two dots overlap within `< 2.8 px`, leaving pure $+0.2\,\mathrm{FP}_w$ cost).
+
+### 2. `#IR-92-SOLO-R1-BYTE-IDENTITY`: Exact Byte Identity of `SOLO` (`h27_4_solo.tif`) = `D2.8 & (d_cat > 1.0)`
+- **Observation**: Prior analyses (`ANALYSIS_20261024_APRONRIDGE.md` citing `39,580` px; `ANALYSIS_20261024_HYDROCONDUIT.md` describing `"6,413 speckles"` / isolated 1–2-dot speckle removal) misdescribed the `D2.8 -> SOLO -> R0` transition. Direct pixel algebra on the SHA-256-verified bridge rasters proves `d28.sum() == 44,090`, `h27_4_solo.sum() == 40,199`, **`XOR(h27_4_solo, d28 & (d_cat > 1.0)) == 0`** (`-3,891` pixels all at `d_cat == 1.0`), and **`XOR(R0, d28 & (d_cat > 2.0)) == 0`** (`-2,545` pixels at `1.0 < d_cat <= 2.0`, `-6,436` total).
+- **Action**: Documented the exact zero-XOR byte-verified ancestor table in `README.md` and `docs/ANALYSIS_20261024_COULOMBLOQO.md`.
+
+### 3. `#IR-92-CAT-COUNT-PROSE`: Mapped Catalogue Pixel Count Typo (`36,249` vs Exact `60,988`)
+- **Observation**: `docs/ANALYSIS_20261024_APRONRIDGE.md` stated `existing_faults.tif` contained `36,249` in-footprint pixels; exact byte inspection of `existing_faults.tif` and `labels.tif` confirms **`60,988`** in-footprint positive pixels (`1.180%` of the `5,167,373`-cell footprint).
+- **Action**: Recorded the verified `60,988` pixel count across `README.md`, `docs/HYPOTHESES_20261024_COULOMBLOQO.md`, and `docs/ANALYSIS_20261024_COULOMBLOQO.md`.
+
+### 4. `#IR-92-HYDROCONDUIT-EXTEND-TERMS`: Spatial-Block Bootstrap Pseudo-Replication via `list.extend` in `scripts/report_hydroconduit_proxies.py`
+- **Observation**: `vendor/gems57/evaluate_holdout.py::run` sums `(tp, fp, fn)` block vectors across the 8 folds per physical 20 km spatial block (`all_terms = terms if all_terms is None else all_terms + terms`) so `pooled_summary` resamples physical 20 km blocks with replacement. `scripts/report_hydroconduit_proxies.py` (lines 78, 80, 158) instead called `all_terms.extend(terms)`, concatenating `8 * n_blocks` rows and treating the 8 fold evaluations of the same 20 km block as independent bootstrap units, artificially narrowing 95% CIs (point estimates were unaffected).
+- **Action**: Fixed `scripts/report_hydroconduit_proxies.py` in-place to sum `terms` per physical 20 km block (`all_terms + terms`), matching `vendor/gems57/evaluate_holdout.py`, `scripts/report_apronridge_proxies.py`, and `scripts/report_coulomb_loqo_proxies.py`.
+
+### 5. `#IR-92-PR49-MERGE-SEAMS`: Duplicate HTML IDs, Broken `<main>` Seam in `HYPOTHESES.html`, and Dual-Primary Prose After PR #49
+- **Observation**: Merging parallel sessions in PR #49 (`c16e8b7`) left duplicate `id="download-springalign"` in `docs/index.html`, an invalid `</main><footer>...</footer></section><section>` block in `docs/HYPOTHESES.html`, and split primary declarations across `README.md`, `SLOT_PLAN.md`, `docs/NEXT_STEPS.md`, and `docs/REVIEW_CURRENT.md` (`APRONRIDGE free1d` vs `HYDROCONDUIT f45hydro`).
+- **Action**: Cleaned all merge seams, eliminated duplicate HTML IDs (added regression check in `tests/test_site_contract.py`), restored valid HTML5 structure in `docs/HYPOTHESES.html`, and unified every page, doc, and contract test around the new #1 primary `COULOMBLOQO standalone` (`h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif`, `HOLDOUT-DTI = 0.009220`) while preserving full historical tables and downloads for `HYDROCONDUIT`, `APRONRIDGE`, `PIEDFRONT`, `STEPEDGE`, and all earlier lanes.
+
+### 6. `#IR-92-LEDGER-CSV-UNQUOTED-COMMAS`: Unquoted Commas in PR #60 `MICROSWARM` / `BASEMENTEDGE` Ledger Rows
+- **Observation**: During merge of `origin/main` (`5a23dd2`), lines 66–67 of `ledger/submissions.csv` (`h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21` and `h33-h33-2-b2-BASEMENTEDGEstep3-20261024-80719f12`) contained unquoted commas inside `change_desc` and `notes`, splitting 16 columns into 18 columns (`csv.DictReader` key `None`) alongside a blank line 65.
+- **Action**: Re-serialized all 68 merged rows through `gems.ledger.save()` with RFC-4180 quoting so every row has the exact 16 canonical columns.
+
+
+## Session 918b947a — fresh universal stop and review repairs
+
+- **Binding stop reproduced, not bypassed:** Fresh SHA-256/Git-blob-pinned witness is positive throughout the pinned competition footprint. The literal registry rule rejects every nonempty candidate before placement. No new TIFF/experiment/slot; see `docs/REVIEW_918B947A.md` and `evidence/review_918b947a_*.json`.
+- **Scientific claim corrections:** Official reference notebook confirms training-loss coefficients, not the organizer's distance-weighted evaluator. Sub-2.8-pixel spacing does not mathematically imply zero marginal truth credit; a regression counterexample now exercises the shared metric. Historical global-best wording ignored visible-collar results and distinct evaluation masks; current summaries now scope their comparisons and say results were not rerun.
+- **Evidence integrity repairs:** Existing preflight now pins the sample footprint, records implementation/time, refuses historical receipt overwrite, and fails closed on corrupted/alignment inputs. Site receipt parsing rejects empty/incomplete/duplicate/malformed gates and pseudo-boolean results.
+- **Pages bypass found:** Live GitHub API reported `build_type: legacy`, `source: main /`. That mode can publish without the repository's validation workflow. Updated workflow stages only root redirect + docs after validation, preserving `/docs/` URLs and excluding raw data. The repository must use Pages Actions mode for this validation gate to govern deployment; the remote configuration change and deployment outcome are recorded in the PR/session closeout rather than assumed from local YAML.
+- Non-GitHub sources, live leaderboard, authenticated weekly cap, official receipts, input redistribution rights, and fresh fold-rebuilt promotion evidence remain unverified. Wall-clock receipt times crossed midnight UTC relative to the October 24 task brief. Historical receipts are unchanged.
+
+Pages closeout for session 918b947a: `PUT /repos/buffedlizard55-lab/GEMSDOE92/pages` with `build_type=workflow` returned **HTTP 403 Resource not accessible by integration**. Follow-up GET still reports legacy main-root mode. No repository setting was changed; broader Pages-settings permission is needed. Do not claim the fail-closed Actions deployment gate is active while legacy mode remains configured.
+
 ---
 
-## 2026-10-24 (COULOMBDM session) — Six Newly Verified Merge, Uniqueness, Metric & Tooling Irregularities
+## 2026-10-24 (COULOMBDM session) — Five Newly Verified Uniqueness, Data & Tooling Irregularities
 
-### 1. `#IR-92-MERGE-SPLICE-DEFECTS`: Parallel-Session Git Merge Splices Across `check_site.py`, `docs/index.html`, `docs/HYPOTHESES.html`, `README.md`, `SLOT_PLAN.md`, and `docs/NEXT_STEPS.md`
-- **Observation**: Entering `c16e8b7` after parallel merges (`APRONRIDGE`, `HYDROCONDUIT`, `PIEDFRONT`, `STEPEDGE`), line-by-line inspection caught five real defects:
-  1. `scripts/check_site.py` matched only the *first* `-zeros.tif` link in `docs/index.html` (`TIF_LINK.findall(html)[0]`) and never parsed `data-primary="true"`, so moving card order or leaving two primary attributes silently drifted the checked primary raster.
-  2. `docs/index.html` carried duplicate HTML `id="download-springalign"` on two separate `<a href=...>` elements (lines 67 and 91), violating HTML uniqueness.
-  3. `docs/HYPOTHESES.html` had a broken git merge splice at lines 104–108 containing a duplicate `</main><footer>...</footer>` followed by stray `<section>` cards and an unmatched `</section>`.
-  4. `README.md` (line 81) and `docs/ANALYSIS_20261024_APRONRIDGE.md` (§1.1–1.2) inverted the Tversky weights ($\alpha, \beta$), writing that false positives carry `0.8` (`4×`) and false negatives carry `0.2`, whereas `drivendataorg/gems-prize-reference-solution` (`unet-mc-cv-reference-solution.ipynb` Cells 0 & 16) and `vendor/gems57/metric.py` define $\alpha = 0.2$ on $\text{FP}_w$ and $\beta = 0.8$ on $\text{FN}_w$ (**false negatives carry 4× the unit weight of false positives**). `README.md` and `docs/index.html` also still described `Band 6 (tc)` as magnetic tilt/curvature in legacy `APRONRIDGE` tables despite `#IR-92-BAND6-TC-MISLABEL` (`r = 0.99714` with `GeoDAWN` Radiometric Total Count).
-  5. `SLOT_PLAN.md` and `docs/NEXT_STEPS.md` contained mid-file spliced `# H1` headers claiming two different active primaries (`APRONRIDGE free1d` vs `HYDROCONDUIT f45hydro`).
-- **Action**: Fixed `scripts/check_site.py` once in-place (Rule 2) to select the unique `data-primary="true"` `-zeros.tif` link (failing closed if `> 1` exist) and reject duplicate HTML `id="..."` attributes across all site HTML files; fixed `docs/index.html`, `docs/HYPOTHESES.html`, `docs/executive-summary.html`, `docs/SUBMIT.html`, `docs/submit.html`, `README.md`, `docs/ANALYSIS_20261024_APRONRIDGE.md`, `SLOT_PLAN.md`, and `docs/NEXT_STEPS.md`; added regression tests in `tests/test_site_contract.py`.
+### 1. `#IR-92-PIEDFRONT-HYDROCONDUIT-CROSSOVER`: Post-Merge Asymmetric 3-px Forward Overlap (`0.7132 > 0.70`) Between `PIEDFRONT f35Ptop` and `HYDROCONDUIT f45hydro`
+- **Observation**: Pairwise 3-px forward overlap audit across merged lanes reveals `PIEDFRONT f35Ptop` has **`71.32%` (`26,855 / 37,654 > 0.70`)** of its dots within `<= 3.0 px` of `HYDROCONDUIT f45hydro` (reverse `56.56%`), driven by shared `R0` keeps + piedmont `H19-5` hole refills.
+- **Action**: Documented so human selectors never pair `PIEDFRONT f35Ptop` with `HYDROCONDUIT f45hydro`; `COULOMBDM` (`<= 45% H19-5`) stays strictly `<= 0.6796 <= 0.70` against all 58 local rasters (including `<= 0.5448` vs `COULOMBLOQO` and `<= 0.2979` vs `XPHASE`) and `0 / 1,181` sparse (`<= 150k` px) public rasters.
 
-### 2. `#IR-92-PIEDFRONT-HYDROCONDUIT-CROSSOVER`: Uncaught Post-Merge Asymmetric 3-px Forward Overlap (`0.7132 > 0.70`) Between `PIEDFRONT f35Ptop` and `HYDROCONDUIT f45hydro`
-- **Observation**: Because `PIEDFRONT` and `HYDROCONDUIT` ran in parallel before merging into `main`, neither audited against the other's output. Full cross-lane pairwise matrix measurement (`37,654` dots each) reveals that `PIEDFRONT f35Ptop` has **`71.32%` (`26,855 / 37,654 > 0.70`)** of its dots within `<= 3.0 px` of `HYDROCONDUIT f45hydro` (driven by shared `R0` keeps + piedmont `H19-5` hole refills; reverse `HYDROCONDUIT -> PIEDFRONT = 56.56%`).
-- **Action**: Logged so no human selector ever treats `PIEDFRONT f35Ptop` and `HYDROCONDUIT f45hydro` as independent lanes (`PIEDFRONT f35Ptop` is both lower on static `HOLDOUT-DTI` `0.006425 < 0.008549` and `> 70%` overlapped into `HYDROCONDUIT f45hydro`). In `COULOMBDM`, capping `H19-5` share at `<= 45%` keeps forward overlap strictly `<= 0.6796 <= 0.70` against every local raster (including both `HYDROCONDUIT` and `PIEDFRONT`) and `<= 0.6796 <= 0.70` across all `1,181` sparse (`<= 150k` px) public rasters (`0 / 1,181 > 70%`).
+### 2. `#IR-92-GDR-CSV-FAULT-LEAKAGE-COL`: Direct Catalogue Leakage Column `dist_known_fault_px` Inside `external/gdr_wellspring_in_footprint.csv`
+- **Observation**: `external/gdr_wellspring_in_footprint.csv` contains precomputed `dist_known_fault_px` to `existing_faults.tif`, which would leak withheld holdout faults if ingested.
+- **Action**: `gems/coulombdm.py` reads only `row`, `col`, `thermalclass`, `temp_c`, `geothermquartz_c`, `geothermchalc_c`, and `geothermcat_c`, verified by signature inspection tests (`tests/test_coulombdm.py`) and `35 / 35` single-feature leakage canaries (`max symmetric AUC = 0.640176 <= 0.90`).
 
-### 3. `#IR-92-GDR-CSV-FAULT-LEAKAGE-COL`: Direct Catalogue Leakage Column `dist_known_fault_px` Inside `external/gdr_wellspring_in_footprint.csv`
-- **Observation**: Inspection of `external/gdr_wellspring_in_footprint.csv` headers revealed a precomputed column `dist_known_fault_px` measuring exact Euclidean distance to `existing_faults.tif`. Using that column in feature construction would leak withheld holdout faults (`Rule 2` & `Rule 4` violation).
-- **Action**: `gems/coulombdm.py` and `gems/hydroconduit.py` explicitly read only `row`, `col`, `thermalclass`, `temp_c`, `geothermquartz_c`, `geothermchalc_c`, and `geothermcat_c`, never touching `dist_known_fault_px`; verified by unit tests in `tests/test_coulombdm.py` and all `35` single-feature leakage canaries (`max symmetric AUC = 0.640176 <= 0.90`).
+### 3. `#IR-92-GEODAWN-RAW-LEVEL-INVERSION`: Raw Airborne Radiometric Ratio Levels (`K/Th`, `U/Th`) Score `< 0.50` AUC, Whereas Lateral Contact Gradients Carry Positive Signal
+- **Observation**: Regional felsic ash-flow tuffs and potassium-enriched playas cause raw `GeoDAWN` `K/(Th+1)` and `U/(Th+1)` levels to anti-correlate with Quaternary faults (`AUC 0.44–0.47`), whereas lateral contact gradients (`||grad(K/(Th+1))|| + 0.70 ||grad(U/(Th+1))||`) isolate fault lithologic juxtapositions and narrow adularia/illite alteration halos (`canary AUC = 0.5697`).
 
-### 4. `#IR-92-GEODAWN-RAW-LEVEL-INVERSION`: Raw Airborne Radiometric Ratio Levels (`K/Th`, `U/Th`) Anti-Correlate With Faults (`AUC 0.44–0.47`), Whereas Lateral Contact Gradients Carry Positive Signal
-- **Observation**: Direct holdout screening showed raw pixel levels of `GeoDAWN` `K/(Th+1)` and `U/(Th+1)` score below random (`AUC 0.44–0.47`) because broad felsic ash-flow tuffs and potassium-enriched saline playas create regional sheet highs away from faults. Taking **lateral contact gradients** (`||grad(K/(Th+1))||` + `0.70 ||grad(U/(Th+1))||`) isolates narrow lithologic juxtapositions and local hydrothermal adularia/illite alteration halos along fault traces (`canary AUC = 0.5697`).
+### 4. `#IR-92-UNIQUENESS-EDT-OOM` & `#IR-92-CHECKSITE-PRIMARY`: Shared-Tool `binary_dilation` Speedup & Explicit `data-primary="true"` Enforcement
+- **Observation**: `scripts/report_breakline_proxies.py:uniqueness` previously allocated 98 MB `float64` `distance_transform_edt` per registry raster, risking OOM on `3.8 GiB` zero-swap sandboxes as the registry grew past 50 rasters; `scripts/check_site.py` also needed explicit multi-`data-primary="true"` and duplicate HTML `id` rejection.
+- **Action**: Updated `scripts/report_breakline_proxies.py:uniqueness` in-place to use bit-identical `7×7` Euclidean `binary_dilation(..., disk_r3)` (`80×` faster, `12 MB bool`, unit-tested in `tests/test_coulombdm.py`) and updated `scripts/check_site.py` in-place.
 
-### 5. `#IR-92-UNIQUENESS-EDT-OOM`: Memory Blowup in `scripts/report_breakline_proxies.py:uniqueness` (`float64` `distance_transform_edt` Over Growing Registry)
-- **Observation**: `scripts/report_breakline_proxies.py:uniqueness` previously computed `scipy.ndimage.distance_transform_edt(~(b > 0)) <= 3.0` (`98 MB float64` allocation + multi-pass C buffer per registry raster), causing timeouts / OOM pressure on the `3.8 GiB` zero-swap sandbox once `releases/ + docs/downloads/` grew past `40` rasters.
-- **Action**: Replaced in-place (Rule 2) with exact `7×7` Euclidean `scipy.ndimage.binary_dilation(b > 0, structure=disk_r3)` (`dx^2 + dy^2 <= 9`, `12 MB bool`), proven **100% bit-identical** on arbitrary boolean grids (`tests/test_coulombdm.py`) and ~`80×` faster.
-
-### 6. `#IR-92-PUBLIC-SMOKE-INVALID-TIFF`: Truncated `110`-Byte `GEMSDOE63/docs/downloads/smoke.tif` in Live 102-Repo Public Scan
-- **Observation**: Live scan of `102` public `buffedlizard55-lab` repositories (`1,750` TIFF paths, `1,376` unique blobs; `evidence/coulombdm_public_registry_uniqueness.json`) encountered `0` download failures, `5` shape-mismatch patch rasters, and `1` `invalid_tiff`: `buffedlizard55-lab/GEMSDOE63` `docs/downloads/smoke.tif` (`git_blob_sha = 89ffb2d677fa59d0a11cf25be2408c0969274c5b`, `110 bytes`), a truncated test fixture rather than a valid `3730×3292` submission raster (`1,370` valid rasters compared cleanly).
-
+### 5. `#IR-92-PUBLIC-SMOKE-INVALID-TIFF`: Truncated `110`-Byte `GEMSDOE63/docs/downloads/smoke.tif` in Live 102-Repo Scan
+- **Observation**: Live 102-repo GitHub API scan (`1,750` TIFF paths, `1,376` unique blobs; `evidence/coulombdm_public_registry_uniqueness.json`) identified `buffedlizard55-lab/GEMSDOE63` `docs/downloads/smoke.tif` (`89ffb2d6...`, `110 B`) as a truncated smoke fixture (`1,370` valid `3730×3292` rasters compared cleanly with `0` download failures).
 

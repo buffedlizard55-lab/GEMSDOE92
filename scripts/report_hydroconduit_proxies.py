@@ -50,7 +50,10 @@ def evaluate_fold_visible_holdout(
     n_skel = n_tot - n_far
     scan_rank = np.linspace(1.0, 0.0, foot.size, dtype=np.float32).reshape(foot.shape)
 
-    terms_vis: dict[str, list] = {"H19_skeleton_dvis2": [], "HYDROCONDUIT_f45hydro_dvis2": []}
+    terms_vis: dict[str, np.ndarray | None] = {
+        "H19_skeleton_dvis2": None,
+        "HYDROCONDUIT_f45hydro_dvis2": None,
+    }
     built_cache: dict[int, tuple[np.ndarray, np.ndarray]] = {}
     for fold in folds:
         vis = fold["visible"]
@@ -71,9 +74,13 @@ def evaluate_fold_visible_holdout(
             pred_skel, pred_hydro = built_cache[vid]
 
         _, t_s = evaluate_holdout.evaluate(pred_skel, fold, foot)
-        terms_vis["H19_skeleton_dvis2"].extend(t_s)
+        terms_vis["H19_skeleton_dvis2"] = (
+            t_s if terms_vis["H19_skeleton_dvis2"] is None else terms_vis["H19_skeleton_dvis2"] + t_s
+        )
         _, t_h = evaluate_holdout.evaluate(pred_hydro, fold, foot)
-        terms_vis["HYDROCONDUIT_f45hydro_dvis2"].extend(t_h)
+        terms_vis["HYDROCONDUIT_f45hydro_dvis2"] = (
+            t_h if terms_vis["HYDROCONDUIT_f45hydro_dvis2"] is None else terms_vis["HYDROCONDUIT_f45hydro_dvis2"] + t_h
+        )
 
     summary = evaluate_holdout.pooled_summary(
         terms_vis, draws=1000, seed=520810, candidate="HYDROCONDUIT_f45hydro_dvis2"
@@ -134,13 +141,13 @@ def main() -> int:
 
     terms_by_arm, per_arm_fold_scores = {}, {}
     for name, mask in arms.items():
-        all_terms = []
+        all_terms = None
         per_arm_fold_scores[name] = []
         arr_f = mask.astype(np.float32)
         for fold in folds:
             score, terms = evaluate_holdout.evaluate(arr_f, fold, foot)
             per_arm_fold_scores[name].append(float(score["dti"]))
-            all_terms.extend(terms)
+            all_terms = terms if all_terms is None else all_terms + terms
         terms_by_arm[name] = all_terms
 
     pooled_by_cand = {

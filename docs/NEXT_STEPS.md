@@ -1,53 +1,106 @@
-# Next Steps — `GEMSDOE92` (Updated 2026-10-24, After `COULOMBDM` Session)
+# Next Steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`COULOMBDM` & `XPHASE` Sessions)
 
-## Current State & Completed Items From Prior Queue
+## Completed this session (`COULOMBDM`)
 
-1. **Executed Prior Queue Item #4 (`COULOMBDM`: 2D Mohr–Coulomb Dilatant Shear + Upward-Continued `Band 2 RTP` + `Band 17` MT Clay-Cap Boundaries):**
-   - Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261024_COULOMBDM.md`) and implemented `gems/coulombdm.py`, clearing all `35 / 35` single-feature leakage canaries (`max symmetric AUC = 0.640176 <= 0.90`, `evidence/coulombdm_preplacement_screen.json`).
-   - Built and gate-validated 3 unique `EPSG:32611` `3730 × 3292` GeoTIFF variants (`coulomb1d`, `s35coulomb65`, `s45coulomb55`; `11/11` `gems.gates` + `13/13` `gems57.validate` PASS, zero NaNs, `[0, 1]` finite range, `0.0` outside footprint).
-   - **Closed the Rule-2 Fold-Visible Blind-Fault Gap:** Standalone `COULOMBDM coulomb1d` (`0% H19-5`, `0% labels`) achieved **`0.094496 [0.085916, 0.102867]`** on Rule-2 fold-visible `d_vis > 2.0` `HOLDOUT-DTI` — **#1 non-CNN in the repository**, matching supervised `H19-5` (`0.096757`, paired $\Delta = -0.002261 [-0.009834, +0.005283]$) and beating `APRONRIDGE free1d` (`0.086787`, `+8.9%`) and `HYDROCONDUIT f45hydro` (`0.085221`, `+10.9%`), while `s45coulomb55` achieved `0.007816 [0.006994, 0.008644]` static `HOLDOUT-DTI` (`+95.1%` over `R0`) and `0.075208` `USGS SGMC PROXY` (`> HYDROCONDUIT 0.074107`).
-   - **Verified Live 102-Repo Uniqueness (`1,370` Valid Public Rasters):** `0 / 1,181` sparse (`<= 150,000` px) public rasters exceed `70%` 3-px forward overlap (`max = 0.679583 <= 0.70` on `s45coulomb55`, `0.585887` on `coulomb1d`), while confirming the literal dense-surface duplicate stop (`185` rasters `> 150k` px led by `17GEMSDOE E-proba-multiscale`, `100%` footprint positive) -> `verdict: "negative"`, `submission_eligible: false`.
-2. **Repaired Parallel-Session Merge Splices & Shared Tooling (`Rule 2`):**
-   - Updated `scripts/check_site.py` to honor `data-primary="true"` (failing closed on `> 1`) and reject duplicate HTML `id` attributes; fixed `docs/HYPOTHESES.html` duplicate footer splice, `docs/index.html` duplicate `id`, inverted `alpha`/`beta` Tversky prose in `README.md` and `docs/ANALYSIS_20261024_APRONRIDGE.md`, and memory-heavy `distance_transform_edt` in `scripts/report_breakline_proxies.py:uniqueness` (`80×` speedup via bit-identical `binary_dilation`).
+1. Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261024_COULOMBDM.md`) and implemented Rank 1 zero-label `COULOMBDM` (`gems/coulombdm.py`: 2D Mohr–Coulomb dilatant shear `Bands 4, 7, 8` + 2D FFT upward-continued `Band 2 RTP` `100/300/600 m` + `Band 17` MT clay-cap lateral edges + lateral `GeoDAWN K/Th, U/Th` contact gradients + `>= 80 °C` blind `GDR #1391` geothermometers + Canny cross-strike 1D NMS).
+2. Built and gate-validated 3 experiments (`coulomb1d`, `s35coulomb65`, `s45coulomb55`; `11/11` format MUST gates PASS):
+   - Zero-label standalone `coulomb1d` (`0% H19-5`, `0%` catalogue supervision): **Rule-2 fold-visible `d_vis > 2.0` `HOLDOUT-DTI = 0.094496 [0.085916, 0.102867]`** (statistically matching supervised `H19-5 = 0.096757` within 95% CI, exceeding unsupervised `APRONRIDGE free1d = 0.086787` and `HYDROCONDUIT f45hydro = 0.085221`).
+   - Hybrid `s45coulomb55`: static `d_cat > 2.0` **`HOLDOUT-DTI = 0.007816 [0.006994, 0.008644]`** (`+95.1%` vs `R0`), `SGMC PROXY = 0.075208` (below supervised LOQO `COULOMB-LOQO standalone = 0.009220`).
+   - Uniqueness: `0 / 58` local rasters (`max = 0.6796`, vs `COULOMBLOQO` `<= 0.5448`) and **`0 / 1,181` sparse (`<= 150k` px) public rasters** exceed `70%` across 102 `GEMSDOE` repos; literal dense witness `17GEMSDOE E-proba-multiscale` (`1.000`) forces **`verdict: negative`, `submission_eligible: false` (`0` weekly slots spent)**.
 
-## Highest-Value Remaining Blockers & Next Actions (Strict Priority Order)
+## Completed in parallel (`XPHASE`)
 
-1. **Priority 0A — Operator Dense-Surface Uniqueness Policy Decision (`Cannot Be Waived Autonomously`):**
-   - `17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` (`5,167,373` positive footprint cells = `100%` of footprint) makes literal unweighted `> 0` 3-px forward overlap equal `1.000` for **every** nonempty prediction.
-   - Once the human operator scopes the 3-px dot-overlap test to sparse dot sets (`<= 150,000` positive pixels) and evaluates continuous probability rasters (`> 150,000` px) via Spearman `|rho| <= 0.90`, both `HYDROCONDUIT f45hydro` (`0.008549` static #1) and `COULOMBDM coulomb1d` (`0.094496` Rule-2 blind-fault #1) already pass the full `102`-repo public scan (`0` sparse duplicates).
-2. **Priority 0B — First `ORGANIZER-CONFIRMED` Submission Receipt (`60 BUILT / 0 RECEIPT` in `ledger/submissions.csv`):**
-   - Use **at most 1 weekly slot** first on either `HYDROCONDUIT f45hydro` (if testing hybrid piedmont collar + hydrothermal conduits) or `COULOMBDM coulomb1d` (if testing pure unmapped blind-fault physics at `0% H19-5`), and record the exact DrivenData receipt ID, timestamp, and `ORGANIZER-CONFIRMED` DTI score in `ledger/submissions.csv` to anchor whether hidden test faults behave like static `d_cat > 2.0` (`200–300 m` splay continuations) or Rule-2 `d_vis > 2.0` (isolated blind transfer/accommodation faults).
-3. **Priority 1 — External 1 m USGS 3DEP LiDAR & Orthometric Lake Lahontan Shoreline Rejection (`LIDAR-1M-LAHONTAN`):**
-   - In an environment with outbound access to `tnmaccess.nationalmap.gov` / `apps.nationalmap.gov` (currently blocked by the sandbox domain allowlist), retrieve orthometric AMSL elevation and `1 m` 3DEP LiDAR tiles to suppress Pleistocene Lake Lahontan highstand (`~1,330–1,340 m` AMSL) beach ridges that mimic low-relief piedmont fault scarps on `100 m` detrended elevation (`Band 12`).
-4. **Priority 2 — Spatially Blocked Multi-Scale U-Net + 1D Crest / `2.8 px` Kernel Decoder:**
-   - Train a 5-fold spatially blocked (`buffered_component_draw`) multi-scale U-Net with asymmetric Tversky loss (`alpha=0.2` FP, `beta=0.8` FN, matching `drivendataorg/gems-prize-reference-solution`) augmented with `COULOMBDM`'s physics channels (2D Mohr–Coulomb dilatant shear, upward-continued `Band 2 RTP`, `Band 17` MT clay-cap gradient, and lateral `GeoDAWN` radiometric contact gradients), then decode predictions via Canny cross-strike 1D NMS + `2.8 px` Poisson-disk thinning rather than raw `> 0.1` thresholding.
+1. Pre-registered 5 untried hypotheses (`docs/HYPOTHESES_20261024_XPHASE.md`); implemented Rank 1 `XPHASE` (`gems/xphase.py`).
+2. Built 3 experiments. Best arm `dual40`: **HOLDOUT-DTI `0.004653 [0.003955, 0.005390]`** (`gems57-pooled-hide-v2`, 22,663 withheld positives). Locally unique (0.4000). Canaries max 0.553140. Verdict **negative**. File `h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif`. **OK TO DOWNLOAD; DO NOT SUBMIT.**
+3. Lag ablation (`nophase` 0.003487) ≈ standalone (0.003492): transverse lag is not load-bearing on catalogue hide-and-recover. Do not retry this lane without a new instrument (Rule-2 d_visible>2.0 already reported as not beating holdout-best).
+
+## Still open (unchanged)
+
+1. Human selector: dense-witness policy + first ORGANIZER-CONFIRMED receipt.
+2. Queued physics: `EULER-N0`, `RADIO-CONTACT`. `DRAINAGE-KNICK` held (Band 12 is detrended). `INSAR-3DEP1M` blocked by sandbox network.
 
 ---
 
-## Historical Session Records (Preserved)
+# Next Steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`COULOMB-LOQO` Session)
 
-### Prior status — APRONRIDGE & HYDROCONDUIT sessions (2026-10-24)
+## 1. Completed in the `COULOMB-LOQO` Session
 
-**`APRONRIDGE free1d` (`h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`) is the new primary download — closing both technical challenges from the prior queue (non-R0 standalone emission + beating `RELIEF p10` on `gems57-pooled-hide-v2`), while keeping `verdict: negative` / `submission_eligible: false` under the binding dense public witness.**
+# Current review update — 2026-10-24 UTC
 
-- **`HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives)**: **`0.008354 [0.006823, 0.010135]`** (hybrid siblings `s60f40 = 0.008291`, `s50f50 = 0.008097`), vs `RELIEF p10 = 0.006045`, `STRAINBREAK f60s2i = 0.005487`, `ANASIG f45Atop = 0.004967`, `SPRINGALIGN f33Ctop = 0.004865`, `BREAKLINE f45Ltop = 0.004861`, `R0 = 0.004006`, and `STEPEDGE f60Sraw = 0.003980`.
-- **Leakage canaries**: `11/11 PASS` (`max symmetric AUC = 0.636490 <= 0.90`).
-- **Uniqueness**: Locally unique on pre-placement surface (`|ρ| <= 0.1222`, top-37k overlap `0.5527`) and final dots (`worst_forward_overlap = 0.4605 <= 0.70` across all `46` cross-lane local rasters including `STEPEDGE` at `0.3023–0.3783`; `0.6028–0.6456 <= 0.70` against top `62GEMSDOE`/`GEMSDOE23` sparse public witnesses). Blocked solely by `17GEMSDOE E-proba-multiscale` (`100%` footprint positive => `forward_overlap = 1.000`, `evidence/public_witness_apronridge.json`).
-
-## Highest-value next actions, in strict priority order
-
-1. **Operator policy update on dense continuous public rasters (Unblocks Weekly Slot #1)**: Revise Rule 1's binary `> 0` 3-px halo test so continuous probability rasters with `> 150,000` positive pixels are evaluated by continuous Spearman rank correlation (`|ρ| <= 0.90`), while binary/sparse dot rasters (`<= 150,000` positive pixels) retain the `<= 0.70` 3-px halo rule.
-2. **Run a full refreshed sparse-plus-Spearman public registry scan (`scripts/audit_public_registry.py --surface .cache/apronridge_surface.tif`) on `APRONRIDGE free1d`** immediately after Step 1's policy update, then flip `submission_eligible: true` if 0 sparse public rasters exceed `0.70`.
-3. **Acquire the first `ORGANIZER-CONFIRMED` receipt (`Blocker 0`: `51 BUILT / 0 RECEIPT` in `ledger/submissions.csv`)**: Upload `APRONRIDGE free1d` (single weekly slot; never upload `s60f40` or `s50f50` alongside it) and record the exact DrivenData submission ID, timestamp, and score in `ledger/submissions.csv` to calibrate whether `HOLDOUT-DTI` (`0.008354`) or `SGMC PROXY` (`0.0801` vs `STEPEDGE` `0.1415`) better predicts private expert-mapped test faults.
-4. **Shoreline & Drainage-Crossing Mimic Suppression on `APRONRIDGE` (`APRONRIDGE v2`)**: Once official USGS NHD flowlines or NBMG Lake Lahontan stillstand contours are pinned in `registry/session_manifest.json` with SHA-256 hashes and verified redistribution terms, test suppressing contour-parallel Sehoo/Eetza shoreline benches and wash-parallel terrace risers inside `H_apron`.
-5. **5-Fold Spatially Blocked Multi-Sensor Patch U-Net / Gradient-Boosted Ridge Learner**: Train a strictly spatially blocked (`holdout.buffered_component_draw`), Tversky-loss (`alpha=0.2, beta=0.8`) multi-band model over `APRONRIDGE` features (`Bands 2, 5, 6, 12, 15, 19` + geothermometer halo from `BLIND-GEOTHERM`), followed by 1D crest extraction + `2.8 px` spaced thresholding (`drivendataorg/gems-prize-reference-solution` architecture adapted to non-redundant kernel-spaced emission).
-- **Completed in this session:**
-  1. Diagnosed *why* `BREAKLINE f45` stalled at `0.004861` (`74.75%` of off-skeleton dots hijacked by bare mountain range-core cliffs `det_elev >= +38.8 m`, `28.9%` transverse E–W/WNW erosional gullies) and discovered `Band 6 tc` is mislabelled Radiometric Total Count (`r = 0.99714` with `GeoDAWN TC`), `GDR #1391` `'Hot '` trailing whitespace + `419` blind chemical-geothermometer pixels (`>= 80 °C`), and static `d_full_cat > 2.0` self-masking.
-  2. Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261024_HYDROCONDUIT.md`) and implemented `HYDROCONDUIT` (`gems/hydroconduit.py`), clearing all 24 single-feature leakage canaries (`max symmetric AUC = 0.65012 <= 0.90`).
-  3. Built and evaluated 3 experiments (`f45pied`, `f45hydro`, `f50hydro`): **`HYDROCONDUIT f45hydro` beat both `R0` (`0.004006 -> 0.008549`, `+113.4%`) and prior holdout-best `RELIEF p10` (`0.006045 -> 0.008549`, `+41.4%`)** while passing **local uniqueness (`0.5500 <= 0.70`)** and **all 1,147 sparse (`<= 150k` px) public rasters across all 102 public `GEMSDOE` repositories (`0 > 70%`, max `0.6719 <= 0.70`)**.
-  4. Executed full live 102-repo GitHub API public registry scan (`1,332` compatible rasters, `evidence/hydroconduit_public_registry_uniqueness.json`) on both continuous pre-placement surface and final dots, confirming the literal dense-surface duplicate stop (`118` rasters `> 150k` px led by `17GEMSDOE E-proba-multiscale`, `100%` footprint positive).
+See the [three-pass Arena repository review](REVIEW_20261024_ARENA.md) and its [machine-readable run card](../evidence/arena_review_run_card_20261024.json). Revalidation passed 224 tests, the site gate over 36 served TIFFs, all eight tracked manifest hashes, pinned R0 lineage, and the 68-row ledger integrity check (no organizer receipt). No new experiment or TIFF was generated. The recorded full-footprint-positive public witness forces a 100% final-dot overlap under the unchanged literal `>70%` rule, so existing artifacts remain research-only and **DO NOT SUBMIT**. The current local GeoDAWN feature stack is not staged. Do not spend a slot or evade the gate; resolve the dense-raster policy and establish authorized input provenance before the ranked Euler/contact/DEM/InSAR queue is tested.
 
 ---
+
+1. **Unified PR #49 Merge State & Corrected 5 Newly Verified Irregularities (`IRREGULARITIES.md`):**
+   - `#IR-92-ALPHA-BETA-PROSE-SWAP`: Corrected inverted Tversky denominator prose (`0.2 * FP_w + 0.8 * FN_w`, verified in `drivendataorg/gems-prize-reference-solution` Cell 16 and `vendor/gems57/metric.py`).
+   - `#IR-92-SOLO-R1-BYTE-IDENTITY` & `#IR-92-CAT-COUNT-PROSE`: Proved exact zero-XOR ancestor cascade `H19-5 (121,131) -> D2.8 (44,090) -> SOLO (40,199 = D2.8 & d_cat > 1.0) -> R0 (37,654 = D2.8 & d_cat > 2.0)` across `60,988` `existing_faults` pixels.
+   - `#IR-92-HYDROCONDUIT-EXTEND-TERMS`: Fixed `scripts/report_hydroconduit_proxies.py` to sum `all_terms + terms` per physical 20 km spatial block instead of concatenating `8 * n_blocks` rows.
+   - `#IR-92-PR49-MERGE-SEAMS`: Eliminated duplicate `id="download-springalign"` in `docs/index.html`, repaired invalid `</main><footer>...</footer></section><section>` markup in `docs/HYPOTHESES.html`, and unified all pages around a single active primary.
+2. **Pre-Registered 5 Untried Geological Hypotheses (`docs/HYPOTHESES_20261024_COULOMBLOQO.md`) & Implemented #1 `COULOMB-LOQO` (`gems/coulomb_loqo.py`):**
+   - 24 strictly catalogue-free physical features (`dist_known_fault_px` explicitly dropped; zero cross-quadrant quantile coupling), 4-quadrant Leave-One-Quadrant-Out (`>= 1.2 km` guard band, `> 500 m` negative buffer) `HistGradientBoostingClassifier`, and 1D multi-physics crest localization.
+   - Set **new all-time `GEMSDOE92` #1 records on BOTH holdout instruments**:
+     - Static `gems57-pooled-hide-v2` `HOLDOUT-DTI`: **`0.009220 [0.007983, 0.010493]`** (`+130.2%` vs `R0` `0.004006`; strict draw-blind `d_cat > 2.0` = `0.009689`).
+     - Strict Rule-2 unmasked `d_visible > 2.0` `HOLDOUT-DTI`: **`0.113316 [0.100614, 0.127163]`**, beating `H19-5` (`0.096757`) by `+0.016559` (`95% CI [+0.008170, +0.024980]`) — **first standalone (`0% H19-5`) model in repo history to beat `H19-5`**!
+     - Recovered `USGS SGMC` `PROXY` DTI to **`0.090569`** (`standalone`, `+22.2%` over `HYDROCONDUIT`) and **`0.094057`** (`dual45`, `+26.9%` over `HYDROCONDUIT`).
+
+---
+
+## 2. Prioritized Next Steps for Future Sessions / Human Selector
+
+1. **Human Selector Action — Resolve `Blocker 1` (Dense Public Probability Surface Uniqueness Scope) & `Blocker 0` (Organizer Calibration Receipt):**
+   - Formalize whether dense continuous/habitat rasters (`> 90,000` positive pixels, such as `17GEMSDOE E-proba-multiscale` at `5,167,373` pixels) are excluded from the sparse competition-budget uniqueness pool.
+   - Under a `<= 90,000`-px sparse uniqueness pool, `COULOMBLOQO dual45` (`0.009107` static / `0.1020` `d_vis>2` / `0.0941` `SGMC`, `0 / 1,121` `> 70%`) is ready for human selector evaluation alongside one `ORGANIZER-CONFIRMED` calibration receipt on `R0`.
+2. **Next Untried Physics Lanes (Pre-Registered Queue in `docs/HYPOTHESES_20261024_COULOMBLOQO.md`):**
+   - **Hypothesis 3 (`EULER-RTP-GRAV-N0`):** Moving-window 3D contact Euler deconvolution ($N = 0$, Reid et al., 1990) jointly over `Bands 2, 9, 14` (RTP/TMI) and `Bands 5, 11, 13, 18` (isostatic gravity & E–W horizontal gradient) to estimate exact subcrop $(x_0, y_0, z_0)$ coordinates of concealed faults beneath `50–1,200 m` of basin fill without relying on surface DEM slope.
+   - **Hypothesis 4 (`DRAINAGE-KNICK-RADON`):** Cross-canyon thalweg longitudinal convexity & deflected-drainage Radon line-integral alignment across parallel range-front canyons (`Bands 12, 19, 15, 7`) to detect degraded Pleistocene range-front faults where interfluve scarps have diffused away.
+   - **Hypothesis 5 (`INSAR-3DEP1M-DECONFOUNDED`, Contingent on External Tile Staging):** If an operator with unrestricted outbound network access stages ASF ARIA/OPERA Sentinel-1 InSAR velocity tiles and USGS 3DEP 1 m LiDAR tiles into `.cache/gems_inputs/external/`, test pumping-deconfounded creep/subsidence phase-gradient steps (`> 2 km` from `GDR #1391` production wells).
+3. **Do Not Repeat Closed / Falsified Lanes:**
+   - Do not revisit raw-thresholded `GRAVCrest`, standalone `BASEMENT-STEP`, pure seismicity (`Bands 10, 16`), un-normalized slope breaks (`BREAKLINE`, `STEPEDGE`, `SCARPPOL`), `> 70%` kept-`R0` edits (`RELIEF`, `DILATATION`), or misuse `Band 6 tc` as magnetic tilt (`#IR-92-BAND6-TC-MISLABEL`).
+
+---
+
+## Merged parallel-branch next-step notes
+
+# NEXT_STEPS — after the 2026-10-24 COULOMB session (negative verdict; queue unchanged, 4 follow-ups appended)
+
+## Completed this session (COULOMB, 2026-10-24)
+
+1. Pre-registered 5 ranked hypotheses (`docs/HYPOTHESES_20261024_COULOMB.md`) before any screen/build; gate-zero reproduced `BREAKLINE-L` exactly (canary `0.621604`, far-SGMC `0.072325`).
+2. Built + scored 3 experiments (`free 0.005689`, `open 0.005184`, `seismo 0.005808` on `HOLDOUT-DTI`), all Tier-1 repulsion, `20/20` canaries PASS, locally unique (`0.263–0.290`).
+3. Falsified at 100 m: Coulomb opening weighting (`0.5423` canary), 100 km seismicity fusion (statistical tie), TMI-tilt zero-contours (`0.5167`), MT-edge × dilatation (`0.5166`).
+4. Falsified `max()` two-channel fusion vs multiplicative: weaker RTP channel (`0.5162`) dominates `71.6%` of `max()` emission over stronger relative-scarp (`0.6230`).
+5. Disk-verified lineage counts (`D2.8 44,090`, `SOLO 40,199`, `R0 37,654`) and corrected 4 stale prose spots (3 files); logged conflicting intermediate `CLAIM` scores.
+
+## New follow-ups (appended behind Blocker 0 + dense-policy decision; strict order preserved below)
+
+- **F-C1. Rule-2 Coulomb re-evaluation**: score the built `COULOMB` rasters under fold-visible `d_visible > 2.0` to test whether the static self-mask (`#IR-92-STATIC-DCAT2-SELFMASK`) under-prices off-collar Coulomb emission. Zero new builds; one reporting script.
+- **F-C2. Multiplicative re-fusion**: rebuild the Coulomb screen as `rel_scarp × O_coulomb` (HYDROCONDUIT pattern) instead of `max(R_rtp, R_scarp) × O` and re-screen only — tests whether the fusion operator, not the physics, caused the shortfall.
+- **F-C3. Relative-scarp standalone lane**: `rel_scarp`-only screened `0.6230`, above the `BREAKLINE-L` baseline — the strongest unbuilt single component in the repo. Pre-register + screen + (if gate passes) build as its own lane.
+- **F-C4. LIDAR1M-LAHONTAN stays HELD**: still blocked on `1m_DEM_links.csv` + `apps.nationalmap.gov`; remains the highest-leverage untested instrument.
+
+---
+
+# NEXT_STEPS — after the 2026-10-24 APRONRIDGE session
+> **Latest verification (2026-10-24):** [D97F969E three-pass review](REVIEW_D97F969E.md) adds a freshly downloaded witness receipt and corrects the overall-best claim. No generation or policy exemption.
+
+# NEXT_STEPS — current review status (2026-10-24)
+
+## Current state (this section supersedes historical queues below)
+
+**Current research download:** `APRONRIDGE free1d`, [`docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`](downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif). It is format-valid and available for research download, but **NOT CLEARED FOR A WEEKLY SLOT; DO NOT SUBMIT**. Its exact-file witness measurement records `1.000` final-dot forward overlap with a hash-verified raster whose support is positive on every cell in the competition footprint. Under the literal rule, this mandates a stop for every nonempty prediction; it does not show geological equivalence. See [witness receipt](downloads/public_witness_apronridge.json) and [review](REVIEW_CURRENT.md).
+
+- **HOLDOUT-DTI (historical, not rerun in this repository review):** `gems57-pooled-hide-v2`, 8 spatial folds, 22,663 withheld positive pixels; APRONRIDGE free1d `0.008354`, 95% CI `[0.006823, 0.010135]`. This is a local hide-and-recover result, not a competition score. See its [run card](../evidence/apronridge_run_card.json).
+- **Format check:** after installing the pinned `requirements.txt`, 216 tests passed; `scripts/check_site.py` passed for 31 served rasters; the 8-entry manifest and pinned R0 parent verified. These confirm local integrity only—not public uniqueness or organizer acceptance.
+- **Submission ledger:** 63 BUILT / 0 RECEIPT (current command output). No weekly slot was used in this review.
+- **The APRONRIDGE continuation itself generated no TIFF and ran no geological experiment.** Subsequent main-branch additions include separate GEOTENSION and COULOMB research experiments (see their analyses/run cards); both remain blocked by the binding final-dot duplicate stop and are not selector choices. The request for a newly generated, submission-eligible unique candidate remains unmet. Do not relabel an existing file or emit an all-zero/no-signal raster to evade the stop.
+
+## Next actions (fail-closed order)
+
+1. Preserve the literal registry stop. No candidate construction or placement until the protocol's treatment of full-footprint continuous probability rasters is formally resolved; do not locally exempt them or silently change the `>70%` threshold.
+2. Once a policy resolution is authorized, restore/check the cached feature stack and available registry; pre-register one method lane, compare its actual continuous surface before placement, run single-feature leakage canaries, then whole-segment buffered `gems57-pooled-hide-v2` validation with `vendor/gems57/evaluate_holdout.py`. Keep within the 3-experiment / 2-hour cap.
+3. Only if holdout best is beaten under the registered comparison, emit one candidate via the shared `vendor/gems57/submission_writer.py`, validate independently, and run final-dot uniqueness against a refreshed registry. Promotion to any real slot is a separate selector decision; no slot is selected here.
+4. Obtain an `ORGANIZER-CONFIRMED` receipt only after a candidate is explicitly cleared and uploaded by the authorized account holder; record its exact portal receipt. No organizer receipt or current leaderboard was obtained in this review.
+5. The full training feature stack (`training_features.tif`) is absent from this checkout's staged `data/`; `data/` currently contains only bridge/template and parent rasters. The user-provided competition data page is login-gated per prior repository records. Do not claim a fresh official download or training run until the official source is accessible and provenance/use terms are checked.
 
 ## Prioritized Remaining Blockers & Future Work
 

@@ -1,0 +1,136 @@
+{
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "494b21bd079e44d8c036f13c980d4433fa7ae93f9c8282f3f0d4d785693bf192"
+    }
+  ],
+  "gates_zeros_pass": true,
+  "gates_nan": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "2159567d062cc9fb7252f64bc61fa9eb821a9eb4bc87971f4fe36b7d093dd5ca"
+    }
+  ],
+  "gates_nan_pass": true,
+  "file": "h33-h33-2-b2-XPHASEnophase-20261024-2159567d-zeros.tif",
+  "sha256_zeros": "494b21bd079e44d8c036f13c980d4433fa7ae93f9c8282f3f0d4d785693bf192",
+  "sha256_nan": "2159567d062cc9fb7252f64bc61fa9eb821a9eb4bc87971f4fe36b7d093dd5ca",
+  "n_positive_pixels": 37654,
+  "n_dots": 37654,
+  "overall_pass": true,
+  "submission_eligible": false,
+  "run_card": "evidence/xphase_proxy_audit.json",
+  "local_registry_uniqueness": {
+    "n_rasters_checked": 74,
+    "worst_forward_overlap_3px": 0.251394,
+    "worst_forward_file": "downloads/h33-h33-2-b2-COULOMBfree-20261024-d0cf5db5-zeros.tif",
+    "worst_abs_spearman_phi": 0.013553,
+    "local_duplicate": false
+  },
+  "public_registry_uniqueness": {
+    "candidate_hash_matches_scan": true,
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "witness_evidence": "evidence/public_witness_xphase.json",
+    "scope": "Single Git-blob-verified dense witness 17GEMSDOE E-proba-multiscale (git blob 374c88b1da2b803e2ed160de467fd71ae114010d); 100% footprint-positive => forward_overlap=1.0 under the literal >70% rule. Not a fresh 102-repo scan.",
+    "candidate_sha256_zeros": "494b21bd079e44d8c036f13c980d4433fa7ae93f9c8282f3f0d4d785693bf192"
+  }
+}

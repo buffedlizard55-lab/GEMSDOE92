@@ -476,6 +476,138 @@
     "decision_rule": "Promote only if pooled HOLDOUT-DTI beats RELIEF p10 (0.006045) with paired 95% CI excluding 0 vs R0, all canaries <=0.90, 10/10 format gates pass, AND literal uniqueness passes on both local and public registries. Because the binding dense public witness (17GEMSDOE E-proba, 100% footprint positive) triggers the literal public overlap rule for every nonempty in-footprint raster until operator policy revision, never waive it silently: record submission_eligible=false and verdict=negative.",
     "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/apronridge_proxy_audit.json"
   },
+  "h33-h33-2-b2-COULOMBfree-20261024-d0cf5db5": {
+    "parent": "h33-h33-2-b2",
+    "axis": "COULOMB",
+    "value": "free",
+    "hypothesis": "Critically stressed fractures -- optimally oriented for simultaneous shear slip and normal opening under WNW-ESE Basin-and-Range extension plus Walker Lane dextral shear -- maintain permeability and rupture first, while misoriented pre-Quaternary contacts stay locked. Resolving signed local dilatation/shear onto per-pixel lineament normals finds young opening relay strands whose scarps are too subtle for photo mapping or worms.",
+    "mechanism": "At fixed S=37654, DTI rises when expected kernel credit per dot rises. Standalone emission on 1D crests of max(RTP tilt-contact edge, relative monoclinal scarp) x Coulomb opening tendency x piedmont apron concentrates mass on opening lineaments in extending crust, repelling all prior far sets >3px so credit is not double-counted with earlier lanes.",
+    "non_fault_mimic": "Alluvial compaction / groundwater-withdrawal subsidence bowls (apparent dilatation without faulting), Walker Lane elastic strain shadows (shear-parallel, no open fault), and Lahontan shoreline benches / fan terrace risers striking near-NNE inside extending crust.",
+    "falsifier": "Pooled HOLDOUT-DTI at/below R0 (0.004006) with paired CI excluding a gain, single-feature canary symmetric AUC > 0.90, or forward 3-px overlap > 0.70 / |rho| > 0.90 vs any pre-session registry raster.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats HYDROCONDUIT f45hydro (0.008549) with paired CI excluding 0 vs R0 AND literal local uniqueness passes AND all format gates pass; otherwise verdict='negative' (OK TO DOWNLOAD, NOT CLEARED FOR A WEEKLY SLOT).",
+    "predicted_sign_and_size": "MODEL: unknown live delta; HOLDOUT-DTI in evidence/coulomb_proxy_audit.json"
+  },
+  "h33-h33-2-b2-COULOMBopen-20261024-58a7a394": {
+    "parent": "h33-h33-2-b2",
+    "axis": "COULOMB",
+    "value": "open",
+    "hypothesis": "Critically stressed fractures -- optimally oriented for simultaneous shear slip and normal opening under WNW-ESE Basin-and-Range extension plus Walker Lane dextral shear -- maintain permeability and rupture first, while misoriented pre-Quaternary contacts stay locked. Resolving signed local dilatation/shear onto per-pixel lineament normals finds young opening relay strands whose scarps are too subtle for photo mapping or worms.",
+    "mechanism": "At fixed S=37654, DTI rises when expected kernel credit per dot rises. Standalone emission on 1D crests of max(RTP tilt-contact edge, relative monoclinal scarp) x Coulomb opening tendency x piedmont apron concentrates mass on opening lineaments in extending crust, repelling all prior far sets >3px so credit is not double-counted with earlier lanes.",
+    "non_fault_mimic": "Alluvial compaction / groundwater-withdrawal subsidence bowls (apparent dilatation without faulting), Walker Lane elastic strain shadows (shear-parallel, no open fault), and Lahontan shoreline benches / fan terrace risers striking near-NNE inside extending crust.",
+    "falsifier": "Pooled HOLDOUT-DTI at/below R0 (0.004006) with paired CI excluding a gain, single-feature canary symmetric AUC > 0.90, or forward 3-px overlap > 0.70 / |rho| > 0.90 vs any pre-session registry raster.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats HYDROCONDUIT f45hydro (0.008549) with paired CI excluding 0 vs R0 AND literal local uniqueness passes AND all format gates pass; otherwise verdict='negative' (OK TO DOWNLOAD, NOT CLEARED FOR A WEEKLY SLOT).",
+    "predicted_sign_and_size": "MODEL: unknown live delta; HOLDOUT-DTI in evidence/coulomb_proxy_audit.json"
+  },
+  "h33-h33-2-b2-COULOMBseismo-20261024-d243140b": {
+    "parent": "h33-h33-2-b2",
+    "axis": "COULOMB",
+    "value": "seismo",
+    "hypothesis": "Critically stressed fractures -- optimally oriented for simultaneous shear slip and normal opening under WNW-ESE Basin-and-Range extension plus Walker Lane dextral shear -- maintain permeability and rupture first, while misoriented pre-Quaternary contacts stay locked. Resolving signed local dilatation/shear onto per-pixel lineament normals finds young opening relay strands whose scarps are too subtle for photo mapping or worms.",
+    "mechanism": "At fixed S=37654, DTI rises when expected kernel credit per dot rises. Standalone emission on 1D crests of max(RTP tilt-contact edge, relative monoclinal scarp) x Coulomb opening tendency x piedmont apron concentrates mass on opening lineaments in extending crust, repelling all prior far sets >3px so credit is not double-counted with earlier lanes.",
+    "non_fault_mimic": "Alluvial compaction / groundwater-withdrawal subsidence bowls (apparent dilatation without faulting), Walker Lane elastic strain shadows (shear-parallel, no open fault), and Lahontan shoreline benches / fan terrace risers striking near-NNE inside extending crust.",
+    "falsifier": "Pooled HOLDOUT-DTI at/below R0 (0.004006) with paired CI excluding a gain, single-feature canary symmetric AUC > 0.90, or forward 3-px overlap > 0.70 / |rho| > 0.90 vs any pre-session registry raster.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats HYDROCONDUIT f45hydro (0.008549) with paired CI excluding 0 vs R0 AND literal local uniqueness passes AND all format gates pass; otherwise verdict='negative' (OK TO DOWNLOAD, NOT CLEARED FOR A WEEKLY SLOT).",
+    "predicted_sign_and_size": "MODEL: unknown live delta; HOLDOUT-DTI in evidence/coulomb_proxy_audit.json"
+  },
+  "h33-h33-2-b2-GEOTENSIONs60f40-20261025-ab46201e": {
+    "parent": "h33-h33-2-b2",
+    "axis": "GEOTENSION",
+    "value": "s60f40",
+    "hypothesis": "Active dilatational step-overs and relay ramps concentrate geothermal permeability where GPS dilatation (Band 8 >0) + second-invariant magnitude (Band 4) + shear (Band 7) peak inside the thin-cover piedmont accommodation apron (Band 12 det_elev transition x Band 15 depth_to_base 20-600 m). Coherent DEM scarp-breaks (Bands 19/12) gated by this tension habitat isolate opening piedmont faults missed by potential-field worms.",
+    "mechanism": "At fixed S=37,654, replacing scan-order basin/range H19-5 dots with exact marginal DTI greedy on H19-5 weighted by H_ten*(0.25+0.75*S_pct) concentrates skeleton onto actively dilating piedmont corridors, and spaced 1D crests (min_dist=2.8 px) >3 px off H19-5 capture opening scarp ridges outside the worm skeleton while suppressing deep-playa and high-range strain shadows.",
+    "non_fault_mimic": "Alluvial compaction/subsidence bowls (brine pumping), elastic strain shadows around locked Walker Lane dextral segments, and incised alluvial-fan terrace risers/wash walls producing coherent scarp breaks without tectonic slip.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat APRONRIDGE free1d (0.008354) on gems57-pooled-hide-v2, any canary symmetric AUC >0.90, or literal overlap >0.70 / |rho| >0.90.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats APRONRIDGE free1d (0.008354) with paired 95% CI excluding 0 vs R0, all canaries <=0.90, 10/10 gates pass, AND literal uniqueness passes locally. Dense public witness (>150k px) triggers informational note but not silent waiver; record submission_eligible false under literal rule until operator density-clause revision.",
+    "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/geotension_proxy_audit.json"
+  },
+  "h33-h33-2-b2-GEOTENSIONs50f50-20261025-caa53f9d": {
+    "parent": "h33-h33-2-b2",
+    "axis": "GEOTENSION",
+    "value": "s50f50",
+    "hypothesis": "Active dilatational step-overs and relay ramps concentrate geothermal permeability where GPS dilatation (Band 8 >0) + second-invariant magnitude (Band 4) + shear (Band 7) peak inside the thin-cover piedmont accommodation apron (Band 12 det_elev transition x Band 15 depth_to_base 20-600 m). Coherent DEM scarp-breaks (Bands 19/12) gated by this tension habitat isolate opening piedmont faults missed by potential-field worms.",
+    "mechanism": "At fixed S=37,654, replacing scan-order basin/range H19-5 dots with exact marginal DTI greedy on H19-5 weighted by H_ten*(0.25+0.75*S_pct) concentrates skeleton onto actively dilating piedmont corridors, and spaced 1D crests (min_dist=2.8 px) >3 px off H19-5 capture opening scarp ridges outside the worm skeleton while suppressing deep-playa and high-range strain shadows.",
+    "non_fault_mimic": "Alluvial compaction/subsidence bowls (brine pumping), elastic strain shadows around locked Walker Lane dextral segments, and incised alluvial-fan terrace risers/wash walls producing coherent scarp breaks without tectonic slip.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat APRONRIDGE free1d (0.008354) on gems57-pooled-hide-v2, any canary symmetric AUC >0.90, or literal overlap >0.70 / |rho| >0.90.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats APRONRIDGE free1d (0.008354) with paired 95% CI excluding 0 vs R0, all canaries <=0.90, 10/10 gates pass, AND literal uniqueness passes locally. Dense public witness (>150k px) triggers informational note but not silent waiver; record submission_eligible false under literal rule until operator density-clause revision.",
+    "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/geotension_proxy_audit.json"
+  },
+  "h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61": {
+    "parent": "h33-h33-2-b2",
+    "axis": "GEOTENSION",
+    "value": "free1d",
+    "hypothesis": "Active dilatational step-overs and relay ramps concentrate geothermal permeability where GPS dilatation (Band 8 >0) + second-invariant magnitude (Band 4) + shear (Band 7) peak inside the thin-cover piedmont accommodation apron (Band 12 det_elev transition x Band 15 depth_to_base 20-600 m). Coherent DEM scarp-breaks (Bands 19/12) gated by this tension habitat isolate opening piedmont faults missed by potential-field worms.",
+    "mechanism": "At fixed S=37,654, replacing scan-order basin/range H19-5 dots with exact marginal DTI greedy on H19-5 weighted by H_ten*(0.25+0.75*S_pct) concentrates skeleton onto actively dilating piedmont corridors, and spaced 1D crests (min_dist=2.8 px) >3 px off H19-5 capture opening scarp ridges outside the worm skeleton while suppressing deep-playa and high-range strain shadows.",
+    "non_fault_mimic": "Alluvial compaction/subsidence bowls (brine pumping), elastic strain shadows around locked Walker Lane dextral segments, and incised alluvial-fan terrace risers/wash walls producing coherent scarp breaks without tectonic slip.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat APRONRIDGE free1d (0.008354) on gems57-pooled-hide-v2, any canary symmetric AUC >0.90, or literal overlap >0.70 / |rho| >0.90.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats APRONRIDGE free1d (0.008354) with paired 95% CI excluding 0 vs R0, all canaries <=0.90, 10/10 gates pass, AND literal uniqueness passes locally. Dense public witness (>150k px) triggers informational note but not silent waiver; record submission_eligible false under literal rule until operator density-clause revision.",
+    "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/geotension_proxy_audit.json"
+  },
+  "h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af": {
+    "parent": "h33-h33-2-b2",
+    "axis": "COULOMBLOQO",
+    "value": "standalone",
+    "hypothesis": "Active Quaternary Basin-and-Range normal/transtensional faults and blind INGENIOUS geothermal conduits exhibit concordant footwall-hangingwall polarity between detrended elevation, Band 18 E-W horizontal gravity gradient (iso_grav_anom_hg), and basement relief, axial strike phase-locking across topography + true Band 2 RTP magnetics + gravity, high 2D Coulomb slip/dilation tendency along N15E normal and NW/ENE conjugate strikes, and MT clay-cap / radioelement / blind silica-cation geothermometer (>=80 C) halos.",
+    "mechanism": "A 4-quadrant Leave-One-Quadrant-Out (LOQO, >=1.2 km guard band, >500 m negative buffer) HistGradientBoostingClassifier fit strictly on 24 catalogue-free physical features (dropping dist_known_fault_px; zero cross-quadrant quantile sharing) predicts out-of-quadrant fault probability P_LOQO(x), sharpened by 1D topographic Hessian/scarp and subsurface RTP/basement/MT crest localization, then emitted at fixed budget S=37,654 unit-mass dots with d_cat > 2.0 px and min_dist = 2.8 px.",
+    "non_fault_mimic": "Pleistocene Lake Lahontan wave-cut shorelines, radial alluvial-fan incised wash walls, remanently magnetized Tertiary lava flow edges, and flat-lying conductive playa evaporite lenses.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat repository holdout best HYDROCONDUIT f45hydro (0.008549) on gems57-pooled-hide-v2, any single-feature leakage canary symmetric AUC > 0.90, or local registry forward 3-px overlap > 0.70 / |Spearman| > 0.90.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats HYDROCONDUIT f45hydro (0.008549) with paired 95% CI > 0, all canaries <= 0.90, 10/10 format gates pass, AND literal uniqueness passes on both local and public registries. Because 17GEMSDOE E-proba-multiscale sets every in-footprint pixel > 0 under the literal >70% public overlap clause, record submission_eligible=false and verdict='negative' (OK TO DOWNLOAD, NOT CLEARED FOR A WEEKLY SLOT) without waiving the rule.",
+    "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/coulomb_loqo_proxy_audit.json"
+  },
+  "h33-h33-2-b2-COULOMBLOQOnocoulomb-20261024-ab7c4415": {
+    "parent": "h33-h33-2-b2",
+    "axis": "COULOMBLOQO",
+    "value": "nocoulomb",
+    "hypothesis": "Active Quaternary Basin-and-Range normal/transtensional faults and blind INGENIOUS geothermal conduits exhibit concordant footwall-hangingwall polarity between detrended elevation, Band 18 E-W horizontal gravity gradient (iso_grav_anom_hg), and basement relief, axial strike phase-locking across topography + true Band 2 RTP magnetics + gravity, high 2D Coulomb slip/dilation tendency along N15E normal and NW/ENE conjugate strikes, and MT clay-cap / radioelement / blind silica-cation geothermometer (>=80 C) halos.",
+    "mechanism": "A 4-quadrant Leave-One-Quadrant-Out (LOQO, >=1.2 km guard band, >500 m negative buffer) HistGradientBoostingClassifier fit strictly on 24 catalogue-free physical features (dropping dist_known_fault_px; zero cross-quadrant quantile sharing) predicts out-of-quadrant fault probability P_LOQO(x), sharpened by 1D topographic Hessian/scarp and subsurface RTP/basement/MT crest localization, then emitted at fixed budget S=37,654 unit-mass dots with d_cat > 2.0 px and min_dist = 2.8 px.",
+    "non_fault_mimic": "Pleistocene Lake Lahontan wave-cut shorelines, radial alluvial-fan incised wash walls, remanently magnetized Tertiary lava flow edges, and flat-lying conductive playa evaporite lenses.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat repository holdout best HYDROCONDUIT f45hydro (0.008549) on gems57-pooled-hide-v2, any single-feature leakage canary symmetric AUC > 0.90, or local registry forward 3-px overlap > 0.70 / |Spearman| > 0.90.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats HYDROCONDUIT f45hydro (0.008549) with paired 95% CI > 0, all canaries <= 0.90, 10/10 format gates pass, AND literal uniqueness passes on both local and public registries. Because 17GEMSDOE E-proba-multiscale sets every in-footprint pixel > 0 under the literal >70% public overlap clause, record submission_eligible=false and verdict='negative' (OK TO DOWNLOAD, NOT CLEARED FOR A WEEKLY SLOT) without waiving the rule.",
+    "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/coulomb_loqo_proxy_audit.json"
+  },
+  "h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c": {
+    "parent": "h33-h33-2-b2",
+    "axis": "COULOMBLOQO",
+    "value": "dual45",
+    "hypothesis": "Active Quaternary Basin-and-Range normal/transtensional faults and blind INGENIOUS geothermal conduits exhibit concordant footwall-hangingwall polarity between detrended elevation, Band 18 E-W horizontal gravity gradient (iso_grav_anom_hg), and basement relief, axial strike phase-locking across topography + true Band 2 RTP magnetics + gravity, high 2D Coulomb slip/dilation tendency along N15E normal and NW/ENE conjugate strikes, and MT clay-cap / radioelement / blind silica-cation geothermometer (>=80 C) halos.",
+    "mechanism": "A 4-quadrant Leave-One-Quadrant-Out (LOQO, >=1.2 km guard band, >500 m negative buffer) HistGradientBoostingClassifier fit strictly on 24 catalogue-free physical features (dropping dist_known_fault_px; zero cross-quadrant quantile sharing) predicts out-of-quadrant fault probability P_LOQO(x), sharpened by 1D topographic Hessian/scarp and subsurface RTP/basement/MT crest localization, then emitted at fixed budget S=37,654 unit-mass dots with d_cat > 2.0 px and min_dist = 2.8 px.",
+    "non_fault_mimic": "Pleistocene Lake Lahontan wave-cut shorelines, radial alluvial-fan incised wash walls, remanently magnetized Tertiary lava flow edges, and flat-lying conductive playa evaporite lenses.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat repository holdout best HYDROCONDUIT f45hydro (0.008549) on gems57-pooled-hide-v2, any single-feature leakage canary symmetric AUC > 0.90, or local registry forward 3-px overlap > 0.70 / |Spearman| > 0.90.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats HYDROCONDUIT f45hydro (0.008549) with paired 95% CI > 0, all canaries <= 0.90, 10/10 format gates pass, AND literal uniqueness passes on both local and public registries. Because 17GEMSDOE E-proba-multiscale sets every in-footprint pixel > 0 under the literal >70% public overlap clause, record submission_eligible=false and verdict='negative' (OK TO DOWNLOAD, NOT CLEARED FOR A WEEKLY SLOT) without waiving the rule.",
+    "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/coulomb_loqo_proxy_audit.json"
+  },
+  "h33-h33-2-b2-XPHASEstandalone-20261024-023ac854": {
+    "parent": "h33-h33-2-b2",
+    "axis": "XPHASE",
+    "value": "standalone",
+    "hypothesis": "Blind Great Basin feeders juxtapose dense basement against basin fill (isostatic gravity gradient, Band 13) and bound a smectite clay-cap / upflow (MT log-conductivity gradient, Band 17) with shared strike but a 100-300 m transverse phase lag, under intermediate Band 15 cover and away from high Band 19 slope.",
+    "mechanism": "S = pct(|grad log B17|) * pct(|grad B13|) * 2-theta orientation agreement * cover-gate * transverse-lag * slope-suppress * (0.35+0.65*coherence); emit 37654 2.8 px-spaced 1D crests with d_cat > 2.0.",
+    "non_fault_mimic": "Saline playa clay rings on a non-tectonic basin-fill density contact; irrigation conductivity fronts; Tertiary tuff/basalt pinchouts.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat R0 (0.004006) with paired 95% CI excluding 0, any canary symmetric AUC > 0.90, or local 3-px overlap > 0.70.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats COULOMB-LOQO standalone (0.009220) with paired 95% CI excluding 0 vs R0, all canaries <=0.90, 10/10 gates pass, AND literal uniqueness passes. Dense public witness (>150k px) is recorded, not waived; submission_eligible stays false under the literal rule until operator density-clause revision.",
+    "predicted_sign_and_size": "HOLDOUT-DTI vs R0 unknown until report_xphase_proxies.py"
+  },
+  "h33-h33-2-b2-XPHASEnophase-20261024-2159567d": {
+    "parent": "h33-h33-2-b2",
+    "axis": "XPHASE",
+    "value": "nophase",
+    "hypothesis": "Blind Great Basin feeders juxtapose dense basement against basin fill (isostatic gravity gradient, Band 13) and bound a smectite clay-cap / upflow (MT log-conductivity gradient, Band 17) with shared strike but a 100-300 m transverse phase lag, under intermediate Band 15 cover and away from high Band 19 slope.",
+    "mechanism": "S = pct(|grad log B17|) * pct(|grad B13|) * 2-theta orientation agreement * cover-gate * transverse-lag * slope-suppress * (0.35+0.65*coherence); emit 37654 2.8 px-spaced 1D crests with d_cat > 2.0.",
+    "non_fault_mimic": "Saline playa clay rings on a non-tectonic basin-fill density contact; irrigation conductivity fronts; Tertiary tuff/basalt pinchouts.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat R0 (0.004006) with paired 95% CI excluding 0, any canary symmetric AUC > 0.90, or local 3-px overlap > 0.70.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats COULOMB-LOQO standalone (0.009220) with paired 95% CI excluding 0 vs R0, all canaries <=0.90, 10/10 gates pass, AND literal uniqueness passes. Dense public witness (>150k px) is recorded, not waived; submission_eligible stays false under the literal rule until operator density-clause revision.",
+    "predicted_sign_and_size": "HOLDOUT-DTI vs R0 unknown until report_xphase_proxies.py"
+  },
+  "h33-h33-2-b2-XPHASEdual40-20261024-643553cf": {
+    "parent": "h33-h33-2-b2",
+    "axis": "XPHASE",
+    "value": "dual40",
+    "hypothesis": "Blind Great Basin feeders juxtapose dense basement against basin fill (isostatic gravity gradient, Band 13) and bound a smectite clay-cap / upflow (MT log-conductivity gradient, Band 17) with shared strike but a 100-300 m transverse phase lag, under intermediate Band 15 cover and away from high Band 19 slope.",
+    "mechanism": "S = pct(|grad log B17|) * pct(|grad B13|) * 2-theta orientation agreement * cover-gate * transverse-lag * slope-suppress * (0.35+0.65*coherence); emit 37654 2.8 px-spaced 1D crests with d_cat > 2.0.",
+    "non_fault_mimic": "Saline playa clay rings on a non-tectonic basin-fill density contact; irrigation conductivity fronts; Tertiary tuff/basalt pinchouts.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat R0 (0.004006) with paired 95% CI excluding 0, any canary symmetric AUC > 0.90, or local 3-px overlap > 0.70.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats COULOMB-LOQO standalone (0.009220) with paired 95% CI excluding 0 vs R0, all canaries <=0.90, 10/10 gates pass, AND literal uniqueness passes. Dense public witness (>150k px) is recorded, not waived; submission_eligible stays false under the literal rule until operator density-clause revision.",
+    "predicted_sign_and_size": "HOLDOUT-DTI vs R0 unknown until report_xphase_proxies.py"
+  },
   "h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3": {
     "parent": "h33-h33-2-b2",
     "axis": "COULOMBDM",

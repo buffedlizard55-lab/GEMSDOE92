@@ -1,0 +1,47 @@
+{
+  "schema": "gemsdoe92-public-witness-check.v2",
+  "evidence_class": "REGISTRY-MEASUREMENT (single witness; rejection only)",
+  "reviewed_utc": "2026-10-24T22:37:16.656852+00:00",
+  "candidate": {
+    "file": "h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif",
+    "sha256": "b0dba55e56a5e714dd62673dd48c0d7f695cf9a25b40786cb243f1bf7dd4d054",
+    "dots": 37654
+  },
+  "grid": {
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ]
+  },
+  "grid_checks_pass": true,
+  "candidate_format_checks": {
+    "all_finite": true,
+    "values_in_0_1": true,
+    "zero_outside_footprint": true
+  },
+  "witness": {
+    "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/HEAD/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "blob_api_url": "https://api.github.com/repos/buffedlizard55-lab/17GEMSDOE/git/blobs/374c88b1da2b803e2ed160de467fd71ae114010d",
+    "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+    "sha256": "ab0a0a62eecf066a...",
+    "bytes": 25065181,
+    "positive_pixels_in_footprint": 5167373,
+    "forward_overlap": 1.0,
+    "spearman": 0.058
+  },
+  "forward_overlap": 1.0,
+  "spearman_full_footprint": 0.058,
+  "unique_under_literal_rule_vs_this_witness": false,
+  "stop_required": true,
+  "overall_unique_under_literal_rule": false
+}

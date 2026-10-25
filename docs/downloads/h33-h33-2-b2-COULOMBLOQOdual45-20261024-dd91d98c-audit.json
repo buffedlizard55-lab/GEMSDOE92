@@ -1,0 +1,132 @@
+{
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "5c5fbfa3d4df4f4d71dd60e834c2f29e759abb0014b3bd5b61b28d115791b9c7"
+    }
+  ],
+  "gates_zeros_pass": true,
+  "gates_nan": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "dd91d98c7930573c3f8be73be59fba79425e80be6d9a8acd5911a4df4f391a11"
+    }
+  ],
+  "gates_nan_pass": true,
+  "file": "h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif",
+  "sha256_zeros": "5c5fbfa3d4df4f4d71dd60e834c2f29e759abb0014b3bd5b61b28d115791b9c7",
+  "sha256_nan": "dd91d98c7930573c3f8be73be59fba79425e80be6d9a8acd5911a4df4f391a11",
+  "n_positive_pixels": 37654,
+  "n_dots": 37654,
+  "overall_pass": true,
+  "submission_eligible": false,
+  "run_card": "evidence/coulomb_loqo_run_card.json",
+  "local_registry_uniqueness": {
+    "n_rasters_checked": 41,
+    "worst_forward_overlap_3px": 0.59821,
+    "worst_forward_file": "releases/h33-h33-2-b2-SCARPPOLf45Stop-20261024-cf4e45c0-zeros.tif",
+    "worst_abs_spearman_phi": 0.241539,
+    "local_duplicate": false
+  },
+  "public_registry_uniqueness": {
+    "candidate_hash_matches_scan": false,
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "witness_evidence": "evidence/coulomb_loqo_public_registry_uniqueness.json",
+    "sparse_diagnostic_evidence": "evidence/coulomb_loqo_public_sparse_diagnostic.json",
+    "scope": "Live 102-repo Git-blob-verified public scan (1368 template rasters): 17GEMSDOE E-proba-multiscale (100% footprint positive) yields forward_overlap=1.0 under the literal >70% rule; sparse (<=150k px) diagnostic max=0.722420 (GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif), <=90k px max=0.648776. Locally unique across all 41 GEMSDOE92 cross-lane rasters.",
+    "candidate_sha256_zeros": "5c5fbfa3d4df4f4d71dd60e834c2f29e759abb0014b3bd5b61b28d115791b9c7"
+  }
+}

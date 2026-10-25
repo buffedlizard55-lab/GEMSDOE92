@@ -1,149 +1,205 @@
 {
-  "hypothesis": "Active Quaternary range-front splays and synthetic piedmont step-faults concentrate in the thin-cover piedmont accommodation apron (Band 12 det_elev transition x Band 15 depth_to_base_surf ~20-600 m x Band 5 iso_grav_anom_slope), expressing as coherent DEM slope-breaks (Bands 19/12) or shallow-buried Reduced-to-Pole magnetic gradient x inverted tc curvature 1D ridges (Bands 2/6) centered vertically over basement contacts.",
-  "mechanism": "APRONRIDGE free1d: standalone physics-first 1D crest emission allocates all 37654 unit-mass dots via spaced_top_mask(S_raw, min_dist=2.8 px) on 4-axis non-maximum-suppressed APRONRIDGE crests (S_raw = H_apron * max(R_scarp, 0.85 * R_rtp), d_cat > 2.0 px), using ZERO H19-5 skeleton, ZERO R0 parent dots, and ZERO catalogue input in surface or weights.",
-  "named_non_fault_process_that_could_mimic_it": "Intermediate-elevation pluvial shoreline benches (Sehoo/Eetza recessional strandlines) and Gilbert-delta toes on piedmont fans, incised alluvial-fan terrace risers / wash walls, and remanently magnetized Tertiary basaltic-andesite flow margins beneath thin gravel.",
+  "hypothesis": "Active Quaternary Basin-and-Range normal/transtensional faults and blind INGENIOUS geothermal conduits exhibit concordant footwall-hangingwall polarity between detrended elevation (Band 12), signed E-W horizontal gravity gradient (Band 18 iso_grav_anom_hg), and basement relief (Band 15), circular axial strike phase-locking across topography + true Band 2 RTP magnetics + gravity, elevated 2D Coulomb dilation/slip tendency along N15E normal and NW/ENE conjugate strikes (Bands 7, 8, 4), and MT smectite clay-cap margins (Band 17) + GeoDAWN K/Th, U/Th + blind (>=80 C) silica/cation geothermometry.",
+  "mechanism": "COULOMBLOQO standalone: 4-quadrant Leave-One-Quadrant-Out (LOQO, >=1.2 km guard band, >500 m negative buffer) HistGradientBoostingClassifier trained on 24 strictly catalogue-free physical features (dist_known_fault_px dropped; zero cross-quadrant quantile sharing) predicts out-of-quadrant fault probability P_LOQO(x), sharpened by 1D topographic Hessian/scarp and subsurface RTP/basement/MT crest localization, allocating 37,654 standalone unit-mass 1D crests (min_dist=2.8 px, d_cat > 2.0 px, 0% H19-5, 0% R0).",
+  "named_non_fault_process_that_could_mimic_it": "Pleistocene Lake Lahontan wave-cut shorelines, radial alluvial-fan incised wash walls, remanently magnetized Tertiary lava-flow pinchouts, and flat-lying conductive playa evaporite lenses.",
   "holdout_dti": {
     "evidence_class": "HOLDOUT-DTI",
     "evaluator_version": "gems57-pooled-hide-v2",
     "withheld_positive_pixels": 22663,
-    "dti": 0.008353557502643275,
+    "dti": 0.009220113903808107,
     "ci95": [
-      0.006823024076833538,
-      0.010135013822319561
+      0.007982758454532625,
+      0.010493267336746622
     ],
+    "strict_draw_blind_dcat2_dti": 0.009688977865429051,
+    "strict_draw_blind_dcat2_ci95": [
+      0.008374252675659217,
+      0.011013516986863281
+    ],
+    "strict_draw_blind_dvis2_dti": 0.11331615405665604,
+    "strict_draw_blind_dvis2_ci95": [
+      0.10061364231351806,
+      0.12716307034305033
+    ],
+    "paired_vs_H19_skeleton_dvis2": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.016558820696426613,
+      "ci95": [
+        0.008170356832056245,
+        0.024979547830029276
+      ],
+      "withheld_positive_pixels": 22663
+    },
     "paired_vs_R0": {
       "evidence_class": "HOLDOUT-DTI",
       "evaluator_version": "gems57-pooled-hide-v2",
-      "delta": 0.004347410327958532,
+      "delta": 0.005213966729123364,
       "ci95": [
-        0.00301902930692466,
-        0.005710020785524389
+        0.004130072890582757,
+        0.006325722931095886
       ],
       "withheld_positive_pixels": 22663
     },
-    "paired_vs_RELIEFp10_holdout_best": {
+    "paired_vs_HYDROCONDUIT_f45hydro_prev_best": {
       "evidence_class": "HOLDOUT-DTI",
       "evaluator_version": "gems57-pooled-hide-v2",
-      "delta": 0.0023084251054703428,
+      "delta": 0.0006710139921028979,
       "ci95": [
-        0.0011513580540617654,
-        0.003575182459655973
+        -0.0004964175033645113,
+        0.001815226465947665
       ],
       "withheld_positive_pixels": 22663
     },
-    "paired_vs_STRAINBREAKf60s2i_unique_best": {
+    "paired_vs_APRONRIDGE_free1d": {
       "evidence_class": "HOLDOUT-DTI",
       "evaluator_version": "gems57-pooled-hide-v2",
-      "delta": 0.00286686646314879,
+      "delta": 0.0008665564011648315,
       "ci95": [
-        0.001276234914616346,
-        0.004580640359834079
+        -0.0005718668919281127,
+        0.00229046247241074
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "paired_vs_RELIEF_p10piedmont": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.0031749815066351742,
+      "ci95": [
+        0.002123448946178888,
+        0.00422180762985689
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "paired_vs_STRAINBREAK_f60s2i": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.0037334228643136217,
+      "ci95": [
+        0.0026026436065975543,
+        0.004993210879701485
       ],
       "withheld_positive_pixels": 22663
     }
   },
   "ablation_summary": {
-    "s60f40": {
+    "standalone": {
       "evidence_class": "HOLDOUT-DTI",
       "evaluator_version": "gems57-pooled-hide-v2",
       "withheld_positive_pixels": 22663,
-      "dti": 0.00829066728923407,
+      "dti": 0.009220113903808107,
       "ci95": [
-        0.007073458488262394,
-        0.009643327301572562
+        0.007982758454532625,
+        0.010493267336746622
       ],
-      "paired_delta_vs_R0": 0.0042845201145493275,
+      "paired_delta_vs_R0": 0.005213966729123364,
       "paired_ci95_vs_R0": [
-        0.0032655686483424027,
-        0.00528205514181302
+        0.004130072890582757,
+        0.006325722931095886
       ],
-      "sgmc_proxy_dti": 0.081345,
-      "worst_local_forward_overlap_3px": 0.591571,
-      "worst_local_forward_file": "releases/h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
-      "worst_local_abs_spearman_phi": 0.237071,
-      "local_duplicate": false
+      "sgmc_proxy_dti": 0.090569,
+      "worst_local_forward_overlap_3px": 0.616375,
+      "worst_local_forward_file": "h19_5.tif",
+      "worst_local_abs_spearman_phi": 0.049295,
+      "local_duplicate": false,
+      "public_sparse_max_overlap_le_90k": 0.700404,
+      "public_sparse_max_overlap_le_150k": 0.739842
     },
-    "s50f50": {
+    "nocoulomb": {
       "evidence_class": "HOLDOUT-DTI",
       "evaluator_version": "gems57-pooled-hide-v2",
       "withheld_positive_pixels": 22663,
-      "dti": 0.008097391347516022,
+      "dti": 0.009151245056091791,
       "ci95": [
-        0.006850869782121854,
-        0.009478447552991138
+        0.007944260593972212,
+        0.01038858553734828
       ],
-      "paired_delta_vs_R0": 0.004091244172831279,
+      "paired_delta_vs_R0": 0.005145097881407048,
       "paired_ci95_vs_R0": [
-        0.0030259460084391156,
-        0.005178811252338842
+        0.0041269084372134775,
+        0.006147435188607463
       ],
-      "sgmc_proxy_dti": 0.081494,
-      "worst_local_forward_overlap_3px": 0.518829,
-      "worst_local_forward_file": "downloads/h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
-      "worst_local_abs_spearman_phi": 0.183352,
-      "local_duplicate": false
+      "sgmc_proxy_dti": 0.091251,
+      "worst_local_forward_overlap_3px": 0.66402,
+      "worst_local_forward_file": "h19_5.tif",
+      "worst_local_abs_spearman_phi": 0.053678,
+      "local_duplicate": false,
+      "public_sparse_max_overlap_le_90k": 0.739629,
+      "public_sparse_max_overlap_le_150k": 0.767409
     },
-    "free1d": {
+    "dual45": {
       "evidence_class": "HOLDOUT-DTI",
       "evaluator_version": "gems57-pooled-hide-v2",
       "withheld_positive_pixels": 22663,
-      "dti": 0.008353557502643275,
+      "dti": 0.00910673476120316,
       "ci95": [
-        0.006823024076833538,
-        0.010135013822319561
+        0.007977241580388398,
+        0.010325424838746048
       ],
-      "paired_delta_vs_R0": 0.004347410327958532,
+      "paired_delta_vs_R0": 0.0051005875865184165,
       "paired_ci95_vs_R0": [
-        0.00301902930692466,
-        0.005710020785524389
+        0.004225516427377125,
+        0.006001987625611242
       ],
-      "sgmc_proxy_dti": 0.080098,
-      "worst_local_forward_overlap_3px": 0.460482,
-      "worst_local_forward_file": "downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
-      "worst_local_abs_spearman_phi": 0.056117,
-      "local_duplicate": false
+      "sgmc_proxy_dti": 0.094057,
+      "worst_local_forward_overlap_3px": 0.59821,
+      "worst_local_forward_file": "releases/h33-h33-2-b2-SCARPPOLf45Stop-20261024-cf4e45c0-zeros.tif",
+      "worst_local_abs_spearman_phi": 0.241539,
+      "local_duplicate": false,
+      "public_sparse_max_overlap_le_90k": 0.648776,
+      "public_sparse_max_overlap_le_150k": 0.72242
     }
   },
-  "leakage_canary_max_symmetric_auc": 0.63649,
+  "leakage_canary_max_symmetric_auc": 0.672638,
   "sgmc_proxy": {
     "evidence_class": "PROXY",
-    "dti": 0.080098,
+    "dti": 0.090569,
+    "dual45_dti": 0.094057,
+    "HYDROCONDUIT_f45hydro": 0.074107,
+    "APRONRIDGE_free1d": 0.080098,
     "R0": 0.09606,
-    "delta_vs_R0": -0.015962
+    "delta_vs_HYDROCONDUIT_f45hydro": 0.016462
   },
   "correlation_overlap_vs_registry": {
     "evidence_class": "REGISTRY-MEASUREMENT",
-    "scope": "pre-placement surface vs 29 unique local rasters + final dots vs 43 cross-lane local rasters + Git-blob-verified public dense witness 17GEMSDOE E-proba",
-    "surface_worst_abs_spearman": 0.122173,
-    "surface_worst_spearman_file": "h19_5.tif",
-    "surface_worst_top37654_forward_overlap": 0.552664,
-    "final_worst_forward_overlap": 0.460482,
-    "final_worst_forward_file": "downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
-    "final_worst_abs_spearman_phi": 0.056117,
+    "scope": "Pre-placement surface & final dots vs 41 unique local GEMSDOE92 rasters + live 102-repo Git-blob-verified public scan (1368 exact-grid rasters)",
+    "surface_worst_local_abs_spearman": 0.159335,
+    "surface_worst_local_top37654_overlap": 0.616375,
+    "final_worst_local_forward_overlap": 0.616375,
+    "final_worst_local_forward_file": "h19_5.tif",
+    "final_worst_local_abs_spearman_phi": 0.049295,
     "local_duplicate": false,
+    "public_worst_abs_spearman_preplacement": 0.454032,
+    "public_worst_abs_spearman_final": 0.096019,
     "public_dense_witness_forward_overlap": 1.0,
-    "unique_under_literal_public_rule": false,
-    "public_dense_witness_note": "17GEMSDOE E-proba-multiscale (git blob 374c88b1..., positive across all 5,167,373 footprint cells) yields 1.0 forward 3-px overlap for every nonempty in-footprint candidate; measured directly on candidate bytes and enforced without waiver."
+    "public_sparse_le_150k_max_overlap": 0.739842,
+    "public_sparse_le_150k_witness": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+    "public_sparse_le_90k_max_overlap": 0.700404,
+    "public_sparse_le_90k_witness": "GEMSDOE52/docs/downloads/gems52-h87-boardcal-marginal-20261010-61427px.tif",
+    "dual45_public_sparse_le_90k_max_overlap": 0.648776,
+    "unique_under_literal_public_rule": false
   },
-  "raster_sha256": "1a29a5d81e8561954f04a563b4975cb84d00898b8d7634700a9d409a10e06cbc",
-  "raster_nan_sha256": "d576083091a41b55514a9be04294a28486712cdb6d68ffde0400ec6b3912a859",
-  "zip_sha256": "6f91c4a3b42083e5d30aaf071dbdc2a0dc0ae68363f8822afc701247be53871a",
-  "primary_download": "docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif",
-  "primary_zip": "docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.zip",
+  "raster_sha256": "8f1f93d8c97b4e1c359ce5fbe07d183214e707aa6bda4ed074c00921f39ad32e",
+  "raster_nan_sha256": "e01d27af5b8939cf686f2dc7e567d901bc2e60bf01880c218cf86434b6d52819",
+  "zip_sha256": "448395137acb4860c24402fb53002539f3c688f8c232c79c23991353623c4c48",
+  "primary_download": "docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif",
+  "primary_zip": "docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.zip",
   "validator_output": {
     "gates_zeros_pass": true,
     "gates_nan_pass": true,
     "no_nan_inside_footprint": true,
+    "no_nan_outside_footprint_zeros_tif": true,
     "values_in_0_1": true,
     "crs_shape_transform_match": true,
     "catalogue_zero_mass": true,
     "min_catalogue_distance_gt_2px": true,
     "n_dots": 37654
   },
-  "submission_name": "GEMSDOE92-APRONRIDGE-free1d-20261024",
-  "note": "h33-h33-2-b2; APRONRIDGE free1d: 37654 standalone 1D piedmont-apron + RTP ridges (0 H19-5)",
+  "submission_name": "GEMSDOE92-COULOMBLOQO-standalone-20261024",
+  "note": "h33-h33-2-b2; COULOMBLOQO standalone: 37654 1D LOQO Coulomb+polarity+RTP crests (0 H19-5)",
   "verdict": "negative",
   "submission_eligible": false,
+  "weekly_slots_used": 0,
   "experiments_used": 3,
-  "verdict_detail": "negative \u2014 beats repository holdout best RELIEF p10 (0.008354 vs 0.006045) and locally-unique best STRAINBREAK f60s2i (0.005487), passes 10/10 format gates, and is locally unique across all 43 cross-lane rasters; blocked ONLY by the unresolved literal public dense witness (17GEMSDOE E-proba-multiscale, 100% footprint positive => 1.0 forward overlap). OK TO DOWNLOAD for research; NOT CLEARED FOR A WEEKLY SLOT until operator density-clause revision."
+  "verdict_detail": "negative \u2014 achieves a new all-time GEMSDOE92 HOLDOUT-DTI high on gems57-pooled-hide-v2 (0.009220 vs HYDROCONDUIT 0.008549, APRONRIDGE 0.008354, RELIEF p10 0.006045, R0 0.004006; strict draw-blind d_cat>2.0 DTI = 0.009689) AND becomes the first standalone (0% H19-5) model in repo history to beat H19-5 on strict draw-blind fold-visible d_visible>2.0 HOLDOUT-DTI (0.113316 vs 0.096757, paired 95% CI [+0.008170, +0.024980]), while recovering SGMC bedrock PROXY DTI +22.2% over HYDROCONDUIT (0.090569 vs 0.074107), passing 10/10 format gates and all 43 leakage canaries (max AUC 0.672638 <= 0.90), and remaining 100% locally unique across all 41 cross-lane rasters (max overlap 0.616375 <= 0.70). Blocked under Protocol Rule 1 by the literal public registry overlap clause (1.0 vs dense 17GEMSDOE E-proba-multiscale, 0.739842 vs 100k-px GEMSDOE23 h29-dealiased-habitat; sibling dual45 has 0.648776 max across all 1,121 <=90k-px public submissions). OK TO DOWNLOAD for research; NOT CLEARED FOR A WEEKLY SLOT."
 }
