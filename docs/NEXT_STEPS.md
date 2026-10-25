@@ -39,6 +39,15 @@
 
 ---
 
+# Next Steps — GEMSDOE92 (Updated 2026-10-25, Post-RIEDELVALVE Session)
+
+## Completed this session (`RIEDELVALVE` — `3/3` experiments, `0` weekly slots; `evidence/riedelvalve_run_card.json`)
+- **Pre-registered 5 ranked untried hypotheses** (`docs/HYPOTHESES_20261025_RIEDELVALVE.md`: `RIEDELVALVE`, `FLEXURE-ADMITTANCE`, `SEISMIC-UPDIP-PROJECTION`, `CLAYCAP-HALO-DIPOLE`, and sandbox-blocked `INSAR-3DEP1M-CREEP`), repaired `#IR-92-VENTSCARP-BAND18-UNSIGNED-GRAVITY-AND-BAND4-BAND8-SWAP`, and passed `32/32` single-feature leakage canaries (`max symmetric AUC = 0.639492 <= 0.90`).
+- **E2 Primary Research Artifact (`riedel_n90k`, `gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif`, `75d61cb1…`):** Confirmed additive `37,654 @ 1.0 + 52,346 @ 0.30` Tversky tail (`+0.000875 [+0.000531, +0.001215]` static `HOLDOUT-DTI` -> `0.009054`, Rule-2 `0.108593`), reached `#1` `dual_reading_unique` LOQO `USGS SGMC PROXY = 0.112719` (`>` `LISTRICLOQO` `0.103442` & `KNICKLOQO` `0.095878`), and passed local (`<= 0.4702`) + `102`-repo `dual_reading` uniqueness (`0.6384 <= 0.70`), while E1 vs E3 falsified Group-R Riedel obliquity on planar holdout (`-0.000092`, n.s.). Verdict `negative` (`DO NOT SUBMIT`).
+- **Next Recommended Experiment:** Apply the proven `37,654 @ 1.0 + 52,346 @ 0.30` additive Tversky tail directly to `LISTRICLOQO` (`0.013295` static) / `KNICKLOQO` (`0.010788` static), or test Rank #2 `FLEXURE-ADMITTANCE`.
+
+---
+
 # Next Steps — GEMSDOE92 (Updated 2026-10-25, Post-FLEXMAG Session)
 
 ## Completed this session (FLEXMAG — blind-fault flexure hinge × magnetic ASA)
