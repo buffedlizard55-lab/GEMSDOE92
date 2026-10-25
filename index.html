@@ -8,43 +8,65 @@
   <link rel="canonical" href="https://buffedlizard55-lab.github.io/GEMSDOE92/docs/index.html">
 </head>
 <body>
-
-<!-- CURRENT-STATUS:BEGIN -->
-<section id="current-verified-status" aria-label="Current authoritative submission status" style="max-width:70rem;margin:1rem auto;padding:1.25rem;border:3px solid #991b1b;border-radius:12px;background:#fff7ed;color:#292524;font:1rem/1.6 system-ui,sans-serif;overflow-wrap:anywhere">
-<h2 style="margin-top:0">Current decision: research download only</h2>
-<p><strong>OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT · NOT CLEARED FOR A WEEKLY SLOT</strong></p>
-<p><a href="docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif" download style="display:inline-block;padding:.7rem 1rem;background:#1e3a5f;color:white;border-radius:6px;font-weight:700">Download validated research TIFF</a></p>
-<p>gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif<br>SHA-256: <code>91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e</code></p>
-<p>Automated format checks pass: single band, finite [0, 1], no NaNs, zeros outside the footprint, matching CRS/shape/transform. This is an unchanged historical file, <strong>not a new unique submission</strong>.</p>
-<p><strong>Duplicate stop:</strong> the pinned registry witness covers every footprint cell. Literal dot overlap is 1.0; the limit is 0.70. No new surface, dots, leakage canaries or HOLDOUT-DTI were evaluated after this stop. No ORGANIZER-CONFIRMED score is available.</p>
-<p><a href="docs/downloads/review_c5e3848c_integrated_run_card.json">Fresh automated run card</a> · <a href="docs/REVIEW_C5E3848C.md">Evidence, hypotheses and limitations</a> · <a href="docs/executive-summary.html">Executive summary / submission instructions</a></p>
-<p>Reviewed 2026-10-25. Experiments: zero. Weekly slots used: zero. Historical “newest”, “unique” and ranking statements below are archives, not clearance.</p>
+<!-- VARIO-STATUS:BEGIN -->
+<section id="vario-status" aria-label="Authoritative submission status" style="max-width:70rem;margin:1rem auto;padding:1.25rem;border:3px solid #991b1b;border-radius:12px;background:#fff7ed;color:#292524;font:1rem/1.6 system-ui,sans-serif;overflow-wrap:anywhere">
+<h1 style="margin-top:0">GEMSDOE92 VARIO — new byte-unique GeoTIFF generated; registry-uniqueness gate FAILED</h1>
+<p><strong>✅ OK TO DOWNLOAD FOR RESEARCH · ⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT</strong></p>
+<p><a class="btn" href="docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif" download style="display:inline-block;padding:.8rem 1.1rem;background:#1e3a5f;color:#fff;border-radius:6px;font-weight:700">⬇ Download gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif (.tif)</a>
+· <a href="docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.zip" download>one-TIFF ZIP</a>
+· <a href="docs/vario.html"><strong>Executive summary — exactly how to submit</strong></a>
+· <a href="docs/downloads/vario_run_card.json">JSON run card</a>
+· <a href="docs/downloads/readiness.json">machine-readable status</a></p>
+<p>Submission name: <code>GEMSDOE92-VARIO-full-20261025</code><br>
+Note for the DrivenData form (72/140 chars): <code>VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat&gt;2</code><br>
+SHA-256: <code>11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573</code> · 37,654 dots · single band float32 · EPSG:32611 · 3730×3292</p>
+<p><strong>Automated validation (no human pixel inspection):</strong> every cell finite and in [0, 1] — this is the
+check behind the portal error <q>Predicted values must be in range [0, 1]</q> — no NaN inside the footprint,
+zeros outside, CRS/shape/transform byte-matched to the sample submission, 0 dots on the mapped catalogue,
+all dots &gt;2 px from it. Gates are re-derived from the downloaded bytes by <code>scripts/check_site.py</code>.</p>
+<p><strong>HOLDOUT-DTI</strong> (gems57-pooled-hide-v2, 22663 withheld positives,
+strict draw-blind whole-component holdout): primary <code>0.150020 [0.134975, 0.164286]</code>;
+best same-draw control <code>control_FAULTNET_far</code>; paired Δ <code>-0.025127 [-0.029306, -0.020842]</code>.
+Leakage canaries: max symmetric AUC <code>0.77748</code> (limit 0.90).
+This is a local surrogate, <strong>not</strong> an organizer score; no ORGANIZER-CONFIRMED score exists for this file.</p>
+<p><strong>Uniqueness (REGISTRY-MEASUREMENT):</strong> operative sparse dot-field registry worst overlap
+<code>0.979126</code> (limit 0.70, vs gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif) and worst |ρ|
+<code>0.891258</code> (limit 0.90). Disclosure: DUPLICATE UNDER THE LITERAL REGISTRY RULE
+reading is unavoidable for any non-empty raster because pinned dense registry surfaces cover the full
+footprint (overlap 1.0); both readings are in the run card.</p>
+<ul><li>paired HOLDOUT-DTI delta vs best control control_FAULTNET_far = -0.025127 CI [-0.029305915361244498, -0.02084222808563093] (must exclude 0)</li><li>operative sparse-registry uniqueness failed (overlap&gt;0.70 or |rho|&gt;0.90)</li></ul>
+<p>Sibling experiment arms (research only, DO NOT SUBMIT): <a href="docs/downloads/gemsdoe92-vario-smooth-37654-20261025-5c5a1192-zeros.tif" download>vario_smooth</a> (<a href="docs/downloads/gemsdoe92-vario-smooth-37654-20261025-5c5a1192-zeros-audit.json">audit</a>) · <a href="docs/downloads/gemsdoe92-vario-nctx-37654-20261025-d2d499d5-zeros.tif" download>vario_nctx</a> (<a href="docs/downloads/gemsdoe92-vario-nctx-37654-20261025-d2d499d5-zeros-audit.json">audit</a>). Weekly slots used by this session: 0 —
+no slot is authorized by this artifact.
+Pre-registration: <a href="docs/HYPOTHESES_20261025_VARIO.md">hypotheses</a> ·
+analysis: <a href="docs/ANALYSIS_20261025_VARIO.md">why R0 scored 0.2778 [CLAIM] and what VARIO changes</a>.</p>
 </section>
-<!-- CURRENT-STATUS:END -->
+<!-- VARIO-STATUS:END -->
 <!-- CURRENT:BEGIN -->
 <section aria-label="Current submission" style="border:3px solid #7f1d1d;background:#fef2f2;padding:1rem 1.2rem;margin:0 0 1.2rem 0;border-radius:8px;font-family:system-ui,sans-serif">
-  <h2 style="margin-top:0">Newest lane result — lane FAULTNET / arm <code>netfar</code></h2>
-  <p style="font-size:1.25rem;margin:.2rem 0"><strong>✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT</strong> (verdict <code>negative</code>). Reason: registry duplicate under protocol rule 1: 0.7586 of its dots lie within 3 px of the dots of GEMSDOE37/docs/downloads/gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif (80,000 dots), above the 0.70 limit.</p>
-  <p style="font-size:1.15rem"><a href="docs/downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.tif" download><strong>⬇ Download the GeoTIFF (gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.tif)</strong></a> · <a href="docs/downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.zip" download>one-TIFF ZIP</a> · <a href="docs/downloads/faultnet_run_card.json">run card (JSON)</a> · <a href="docs/ANALYSIS_20261025_FAULTNET.md">analysis</a></p>
+  <h2 style="margin-top:0">Newest lane result — lane VARIO / arm <code>vario_full</code></h2>
+  <p style="font-size:1.25rem;margin:.2rem 0"><strong>✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT</strong> (verdict <code>negative</code>). Reason: registry duplicate under protocol rule 1: 0.9791 of its dots lie within 3 px of the dots of gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif (37,654 dots), above the 0.70 limit; did not beat control_FAULTNET_far on the holdout.</p>
+  <p style="font-size:1.15rem"><a href="docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif" download><strong>⬇ Download the GeoTIFF (gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif)</strong></a> · <a href="docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.zip" download>one-TIFF ZIP</a> · <a href="docs/downloads/vario_run_card.json">run card (JSON)</a> · <a href="docs/ANALYSIS_20261025_VARIO.md">analysis</a></p>
   <p><strong>How to submit (only do this with a file marked ✅ OK TO SUBMIT, which this one is not):</strong></p>
   <ol>
     <li>Download the <code>.tif</code> above (or the ZIP that contains only that TIFF).</li>
     <li>Open the DrivenData submissions page: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/</a> (log in; this URL was not live-verified from the sandbox).</li>
-    <li>Under <em>File to submit</em>, choose the file. Under <em>Note (optional)</em>, paste: <code>FAULTNET netfar: netctx surface, dots &gt;4px off catalogue; 37654 dots 2.8px</code></li>
-    <li>Name your file/record as: <code>gemsdoe92-faultnet-netfar-20261025-3c4e9051</code>, then submit. Record the score receipt in <code>ledger/submissions.csv</code>.</li>
+    <li>Under <em>File to submit</em>, choose the file. Under <em>Note (optional)</em>, paste: <code>VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat&gt;2</code></li>
+    <li>Name your file/record as: <code>GEMSDOE92-VARIO-full-20261025</code>, then submit. Record the score receipt in <code>ledger/submissions.csv</code>.</li>
   </ol>
-  <p><strong>Automated validation (no human inspection):</strong> single band float32, EPSG:32611, 3730 × 3292, transform equal to <code>sample_submission.tif</code>, every value finite and in [0, 1], 0 NaN, 0 outside the footprint, 0 dots on mapped faults. This prevents the portal error <em>"Predicted values must be in range [0, 1]"</em>. SHA-256 <code>ad80f9a0fdc6bc608902accfedc783c700c4fd8a98bd5d903540aa7981ba8949</code>.</p>
-  <p><strong>HOLDOUT-DTI</strong> (gems57-pooled-hide-v2, 22,663 withheld positives, 95% CI from a paired 20 km cluster bootstrap): <code>0.175147 [0.159756, 0.189860]</code>. Rebuilt COULOMBLOQO control on the same folds: <code>0.113890 [0.100783, 0.128559]</code>. Paired Δ: <code>+0.061257 [0.048577, 0.074148]</code>. A holdout number is <em>not</em> a leaderboard score. No ORGANIZER-CONFIRMED score exists for this file.</p>
-  <p><strong>Uniqueness</strong> (REGISTRY-MEASUREMENT, 1,451 rasters: the public GEMSDOE* index plus local lineage): worst dot overlap <code>0.7586</code> (limit 0.70; vs <code>GEMSDOE37/docs/downloads/gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif</code>), worst |ρ| final <code>0.1329</code> / surface <code>0.7851</code> (limit 0.90). Under the literal positive-support reading, 97 rasters exceed 0.70. Under that reading even a random raster fails, so it is reported but not used (<code>#IR-92-FAULTNET-DOT-DEFINITION</code>).</p>
-  <p>Sibling arms (research only): <a href="docs/downloads/gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif" download>netctx</a> (negative, HOLDOUT-DTI 0.148707) · <a href="docs/downloads/gemsdoe92-faultnet-netdens-37654-20261025-517af913-zeros.tif" download>netdens</a> (negative, HOLDOUT-DTI 0.148814). Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.</p>
+  <p><strong>Automated validation (no human inspection):</strong> single band float32, EPSG:32611, 3730 × 3292, transform equal to <code>sample_submission.tif</code>, every value finite and in [0, 1], 0 NaN, 0 outside the footprint, 0 dots on mapped faults. This prevents the portal error <em>"Predicted values must be in range [0, 1]"</em>. SHA-256 <code>11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573</code>.</p>
+  <p><strong>HOLDOUT-DTI</strong> (gems57-pooled-hide-v2, 22,663 withheld positives, 95% CI from a paired 20 km cluster bootstrap): <code>0.150020 [0.134975, 0.164286]</code>. control_FAULTNET_far control on the same folds: <code>0.175147 [0.159756, 0.189860]</code>. Paired Δ: <code>-0.025127 [-0.029306, -0.020842]</code>. A holdout number is <em>not</em> a leaderboard score. No ORGANIZER-CONFIRMED score exists for this file.</p>
+  <p><strong>Uniqueness</strong> (REGISTRY-MEASUREMENT, 99 rasters: the public GEMSDOE* index plus local lineage): worst dot overlap <code>0.9791</code> (limit 0.70; vs <code>gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif</code>), worst |ρ| final <code>0.8913</code> / surface <code>0.1373</code> (limit 0.90). Under the literal positive-support reading, 4 raster(s) exceed 0.70. The literal reading is binding under the current protocol, so this triggers the duplicate stop.</p>
+  <p>Sibling arms (research only): <a href="docs/downloads/gemsdoe92-vario-smooth-37654-20261025-5c5a1192-zeros.tif" download>vario_smooth</a> (negative, HOLDOUT-DTI 0.141661) · <a href="docs/downloads/gemsdoe92-vario-nctx-37654-20261025-d2d499d5-zeros.tif" download>vario_nctx</a> (negative, HOLDOUT-DTI 0.116258). Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.</p>
 </section>
 <!-- CURRENT:END -->
 
 
 
+
+
   <h1>GEMSDOE92 submission workbench</h1>
   <p><strong>Research downloads available. Current candidates are not cleared for submission.</strong></p>
-  <p>No new unique TIFF was generated in the current review. Automated format validation is not submission clearance.</p>
+  <p>A byte-unique LISTRIC TIFF was generated and automatically format-validated. It failed scientific and registry promotion gates, so it is not submission-cleared.</p>
   <p><a href="docs/index.html">Open the workbench and audited research GeoTIFF downloads</a> · <a href="docs/executive-summary.html">Executive summary and submission guide</a> · <a href="docs/downloads/readiness.json">Current machine-readable status</a></p>
 </body>
 </html>

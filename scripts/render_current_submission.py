@@ -37,10 +37,11 @@ def facts(c):
     h = c["holdout_dti"]
     u = c["uniqueness"]
     ctrl = c["control"]
-    d = h["paired_vs_COULOMBLOQO_control"]
+    d = h.get("paired_vs_control", h.get("paired_vs_COULOMBLOQO_control"))
     return dict(
         dti=f"{h['dti']:.6f} {fmt_ci(h['ci95'])}", n=h["withheld_positives"], ev=h["evaluator_version"],
-        ctrl=f"{ctrl['dti']:.6f} {fmt_ci(ctrl['ci95'])}", delta=f"{d['delta']:+.6f} {fmt_ci(d['ci95'])}",
+        ctrl_name=ctrl.get('name', 'control'), ctrl=f"{ctrl['dti']:.6f} {fmt_ci(ctrl['ci95'])}",
+        delta=f"{d['delta']:+.6f} {fmt_ci(d['ci95'])}",
         ovl=f"{u['worst_overlap_final']['value']:.4f}", ovl_r=u["worst_overlap_final"]["raster"],
         rho=f"{abs(u['worst_abs_rho_final']['value']):.4f}", rhos=f"{abs(u['worst_abs_rho_surface']['value']):.4f}",
         nreg=u["registry_rasters_checked"], lit=u["literal_reading"]["rasters_over_0p70"])
@@ -91,8 +92,8 @@ def html_block(c, pre):
     <li>Name your file/record as: <code>{e(c['submission_name'])}</code>, then submit. Record the score receipt in <code>ledger/submissions.csv</code>.</li>
   </ol>
   <p><strong>Automated validation (no human inspection):</strong> single band float32, EPSG:32611, 3730 × 3292, transform equal to <code>sample_submission.tif</code>, every value finite and in [0, 1], 0 NaN, 0 outside the footprint, 0 dots on mapped faults. This prevents the portal error <em>"Predicted values must be in range [0, 1]"</em>. SHA-256 <code>{e(c['sha256'])}</code>.</p>
-  <p><strong>HOLDOUT-DTI</strong> ({e(f['ev'])}, {f['n']:,} withheld positives, 95% CI from a paired 20 km cluster bootstrap): <code>{f['dti']}</code>. Rebuilt COULOMBLOQO control on the same folds: <code>{f['ctrl']}</code>. Paired Δ: <code>{f['delta']}</code>. A holdout number is <em>not</em> a leaderboard score. No ORGANIZER-CONFIRMED score exists for this file.</p>
-  <p><strong>Uniqueness</strong> (REGISTRY-MEASUREMENT, {f['nreg']:,} rasters: the public GEMSDOE* index plus local lineage): worst dot overlap <code>{f['ovl']}</code> (limit 0.70; vs <code>{e(f['ovl_r'])}</code>), worst |ρ| final <code>{f['rho']}</code> / surface <code>{f['rhos']}</code> (limit 0.90). Under the literal positive-support reading, {f['lit']} rasters exceed 0.70. Under that reading even a random raster fails, so it is reported but not used (<code>#IR-92-FAULTNET-DOT-DEFINITION</code>).</p>
+  <p><strong>HOLDOUT-DTI</strong> ({e(f['ev'])}, {f['n']:,} withheld positives, 95% CI from a paired 20 km cluster bootstrap): <code>{f['dti']}</code>. {e(f['ctrl_name'])} control on the same folds: <code>{f['ctrl']}</code>. Paired Δ: <code>{f['delta']}</code>. A holdout number is <em>not</em> a leaderboard score. No ORGANIZER-CONFIRMED score exists for this file.</p>
+  <p><strong>Uniqueness</strong> (REGISTRY-MEASUREMENT, {f['nreg']:,} rasters: the public GEMSDOE* index plus local lineage): worst dot overlap <code>{f['ovl']}</code> (limit 0.70; vs <code>{e(f['ovl_r'])}</code>), worst |ρ| final <code>{f['rho']}</code> / surface <code>{f['rhos']}</code> (limit 0.90). Under the literal positive-support reading, {f['lit']} raster(s) exceed 0.70. The literal reading is binding under the current protocol, so this triggers the duplicate stop.</p>
   <p>Sibling arms (research only): {sib}. Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.</p>
 </section>
 {END}"""
@@ -120,15 +121,16 @@ def md_block(c, pre):
 > 4. Name/record: `{c['submission_name']}`. After scoring, record the receipt in `ledger/submissions.csv`.
 >
 > Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `{c['sha256']}`.
-> **HOLDOUT-DTI** ({f['ev']}, {f['n']:,} withheld positives): `{f['dti']}`. Rebuilt COULOMBLOQO control: `{f['ctrl']}`. Paired Δ `{f['delta']}`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
-> **Uniqueness** ({f['nreg']:,} registry rasters): worst overlap `{f['ovl']}` (limit 0.70), worst |ρ| `{f['rho']}` / surface `{f['rhos']}` (limit 0.90). Literal-support reading: {f['lit']} rasters > 0.70. That reading also fails a random raster (`#IR-92-FAULTNET-DOT-DEFINITION`).
+> **HOLDOUT-DTI** ({f['ev']}, {f['n']:,} withheld positives): `{f['dti']}`. {f['ctrl_name']} control: `{f['ctrl']}`. Paired Δ `{f['delta']}`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
+> **Uniqueness** ({f['nreg']:,} registry rasters): worst overlap `{f['ovl']}` (limit 0.70), worst |ρ| `{f['rho']}` / surface `{f['rhos']}` (limit 0.90). Literal-support reading: {f['lit']} raster(s) > 0.70. The literal reading is binding under the current protocol and triggers the duplicate stop.
 > Siblings: {sib}. **Read [SESSION_PROMPT.md](SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
 {END}"""
 
 
-# Shared status panels that must stay first on a page (scripts/render_readiness.py,
-# scripts/render_current_status.py). The lane-result block always sits right after them.
-ANCHORS = ("<!-- CURRENT-READINESS:END -->", "<!-- CURRENT-STATUS:END -->")
+# Shared status panels that must stay first on a page (scripts/render_vario_status.py,
+# scripts/render_readiness.py, scripts/render_current_status.py). The lane-result
+# block always sits right after them.
+ANCHORS = ("<!-- VARIO-STATUS:END -->", "<!-- CURRENT-READINESS:END -->", "<!-- CURRENT-STATUS:END -->")
 
 
 def inject(text, block, is_html):
@@ -149,6 +151,9 @@ def inject(text, block, is_html):
 
 
 def main() -> int:
+    sys.path.insert(0, str(ROOT))
+    from scripts import render_vario_status
+    render_vario_status.render(ROOT, write=True)
     c = json.loads(CUR.read_text())
     for p, pre in HTML_PAGES.items():
         if p.is_file():
@@ -159,12 +164,8 @@ def main() -> int:
             if p.name == "SUBMIT.md":
                 blk = blk.replace("](SESSION_PROMPT.md)", "](../SESSION_PROMPT.md)")
             p.write_text(inject(p.read_text(), blk, False))
-    # Let the shared page renderers normalise layout so their --check gates stay green
-    # (they keep this block directly after their own panels).
-    sys.path.insert(0, str(ROOT))
-    from scripts import render_current_status, render_readiness
-    render_readiness.sync()
-    render_current_status.check(write=True)
+    # Let the shared page renderer normalise layout so --check gates stay green.
+    render_vario_status.render(ROOT, write=True)
     print("rendered current-submission block into", len(HTML_PAGES) + len(MD_PAGES), "pages")
     return 0
 

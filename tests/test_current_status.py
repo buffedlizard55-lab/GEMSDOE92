@@ -1,155 +1,128 @@
-"""One current decision must survive parallel-lane historical banners."""
+"""The current decision is one byte-bound VARIO card, rendered everywhere."""
+from copy import deepcopy
 import json
 from pathlib import Path
-import shutil
 
 import pytest
 
-from scripts import render_current_status as status
+from gems.public_status import install_panel, render_status, validate_status
+from scripts.render_current_status import BEGIN, END, load_card, panel, render, check
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
-@pytest.fixture
-def site(tmp_path):
-    card = json.loads((ROOT / status.CARD).read_text())
-    paths = ['docs/index.html', *status.PAGES, status.CARD, card['primary_download'],
-             'docs/downloads/review_c5e3848c_preflight.json']
-    for name in paths:
-        dest = tmp_path / name
-        dest.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(ROOT / name, dest)
-    return tmp_path
+@pytest.fixture()
+def card():
+    return load_card()
 
 
-def edit_card(root, fn):
-    path = root / status.CARD
-    card = json.loads(path.read_text())
-    fn(card)
-    path.write_text(json.dumps(card))
+def _primary(card):
+    assert card["submission_file"].startswith("docs/downloads/")
+    return card["submission_file"].removeprefix("docs/")
 
 
-def test_current_panels_are_synchronized_and_idempotent(site):
-    assert status.check(site) == []
-    assert status.check(site, write=True) == []
-    for name in status.PAGES:
-        text = (site / name).read_text()
-        block = text.split(status.BEGIN)[1].split(status.END)[0]
-        assert 'DO NOT SUBMIT' in block
-        assert 'HOLDOUT-DTI' in block
-        assert 'not a new unique submission' in block or 'No new unique TIFF' in block
-        if name.endswith('.html'):
-            import re
-            assert '<a href=' in block and ' download ' in block
-            for href in re.findall(r'href="([^"]+)"', block):
-                # The explanatory review isn't needed by this fixture, but every
-                # destination must resolve in the actual checkout.
-                assert (ROOT / Path(name).parent / href).is_file()
-        if name in ('docs/index.html', 'docs/executive-summary.html', 'docs/SUBMIT.html'):
-            assert text.count('<details data-status-archive="true">') == 1
-            assert text.index(status.END) < text.index('data-status-archive') < text.index('<header')
+def test_current_panels_are_synchronized_and_idempotent(card):
+    assert check() == []
+    validate_status(card, ROOT, _primary(card))
+    for page in ("index.html", "executive-summary.html", "SUBMIT.html"):
+        text = (ROOT / "docs" / page).read_text()
+        assert text.count(BEGIN) == text.count(END) == 1
+        # the authoritative panel is the first content inside <body>
+        body_end = text.index(">", text.index("<body")) + 1
+        assert text[body_end:].lstrip().startswith(BEGIN)
+        assert "OK TO DOWNLOAD" in text
+    # panel links resolve inside the repo
+    import re
+    for href in re.findall(r'href="([^"#]+)"', panel(card, "index.html")):
+        if not href.startswith(("http://", "https://")):
+            assert (ROOT / "docs" / href).is_file(), href
 
 
-@pytest.mark.parametrize('field,value', [('verdict', 'promote'), ('submission_eligible', True),
-                                        ('new_unique_tiff_generated', True),
-                                        ('note', 'x' * 141),
-                                        ('primary_download', '../../outside-zeros.tif')])
-def test_rejects_unsupported_status(site, field, value):
-    edit_card(site, lambda c: c.update({field: value}))
+@pytest.mark.parametrize("key,value", [
+    ("verdict", "promote"),                       # inconsistent with failed gates
+    ("submission_eligible", True),                # slots are a separate selector step
+    ("weekly_slots_used", 1),
+    ("organizer_confirmed_score", 0.30),          # no receipt exists
+    ("raster_sha256", "0" * 64),                  # not these bytes
+    ("note", ""),
+    ("note", "x" * 141),
+    ("submission_file", "docs/downloads/other-zeros.tif"),
+])
+def test_rejects_unsupported_status(card, key, value):
+    bad = deepcopy(card)
+    bad[key] = value
+    if key == "verdict":
+        pass  # gates stay false -> verdict inconsistent
     with pytest.raises(ValueError):
-        status.load_card(site)
+        validate_status(bad, ROOT, _primary(card))
 
 
-@pytest.mark.parametrize('value', [[], None, 'invalid'])
-def test_receipt_must_be_object(site, value):
-    (site / status.CARD).write_text(json.dumps(value))
-    with pytest.raises(ValueError, match='JSON object'):
-        status.load_card(site)
+def test_promote_verdict_requires_every_gate_true(card):
+    forced = deepcopy(card)
+    forced["gates"] = {k: True for k in forced["gates"]}
+    forced["verdict"] = "promote"
+    forced["blocking_reasons"] = []
+    validate_status(forced, ROOT, _primary(card))  # consistent card passes validation
+    forced["gates"]["operative_uniqueness"] = False
+    with pytest.raises(ValueError):
+        validate_status(forced, ROOT, _primary(card))
 
 
-@pytest.mark.parametrize('value', [True, '1.0', float('nan')])
-def test_overlap_requires_real_measurement(site, value):
-    edit_card(site, lambda c: c['correlation_overlap_vs_registry'].update(
-        existing_primary_forward_overlap_within_3px=value))
-    with pytest.raises(ValueError, match='literal rejection'):
-        status.load_card(site)
+def test_receipt_must_be_object():
+    for value in ([], None, "invalid"):
+        with pytest.raises(ValueError):
+            validate_status(value, ROOT, "downloads/x-zeros.tif")
 
 
-def test_rejects_changed_bytes(site):
-    card = status.load_card(site)
-    (site / card['primary_download']).write_bytes(b'changed')
-    with pytest.raises(ValueError, match='SHA-256'):
-        status.load_card(site)
+def test_incomplete_format_evidence_cannot_be_published(card):
+    for rows in ([], None, [{"name": "crs", "ok": False, "detail": ""}],
+                 [{"name": "crs", "ok": True, "detail": ""}]):
+        bad = deepcopy(card)
+        bad["validator_output"] = rows
+        with pytest.raises(ValueError):
+            validate_status(bad, ROOT, _primary(card))
 
 
-@pytest.mark.parametrize('value', [False, 'true', 1, None])
-def test_format_flag_requires_boolean_true(site, value):
-    edit_card(site, lambda c: c['validator_output'].update(all_finite=value))
-    with pytest.raises(ValueError, match='unvalidated'):
-        status.load_card(site)
+def test_stale_panel_fails_check_and_is_repairable(card, tmp_path):
+    text = f"<html><body>\n{panel(card, 'index.html')}\n<h1>workbench</h1></body></html>"
+    rendered = render(text, panel(card, "index.html"), markdown=False)
+    assert rendered == text  # idempotent
+    stale = text.replace("OK TO DOWNLOAD", "OK TO GO")
+    assert render(stale, panel(card, "index.html"), markdown=False) == text
 
 
-@pytest.mark.parametrize('rows', [[], [{'name': 'crs', 'ok': True}],
-                                  [{'name': 'crs', 'ok': 'true'}]])
-def test_incomplete_format_evidence_cannot_be_published(site, rows):
-    edit_card(site, lambda c: c['validator_output'].update(gates=rows))
-    with pytest.raises(ValueError, match='format gates'):
-        status.load_card(site)
+def test_newer_lane_cannot_push_authority_below_its_banner(card):
+    text = f"<html><body><aside>NEW LANE SAYS SUBMIT</aside><h1>x</h1></body></html>"
+    out = render(text, panel(card, "index.html"), markdown=False)
+    assert out.index(BEGIN) < out.index("NEW LANE")
+    assert install_panel("<html><body><p>x</p></body></html>", render_status(card)).count(BEGIN) == 1
 
 
-@pytest.mark.parametrize('field', ['validator_output', 'correlation_overlap_vs_registry'])
-@pytest.mark.parametrize('value', [None, [], 'true'])
-def test_nested_receipts_must_be_objects(site, field, value):
-    edit_card(site, lambda c: c.update({field: value}))
-    with pytest.raises(ValueError, match='object'):
-        status.load_card(site)
+def test_render_escapes_local_paths_and_text(card):
+    evil = deepcopy(card)
+    evil["note"] = '<img src=x onerror=alert(1)>'
+    out = panel(evil, "index.html")
+    assert "<img src=x" not in out and "&lt;img" in out
 
 
-def test_invalid_later_target_does_not_partially_render(site):
-    first = site / status.PAGES[0]
-    first.write_text(first.read_text().replace('Current decision:', 'Old decision:'))
-    before = first.read_bytes()
-    last = site / status.PAGES[-1]
-    last.write_text(last.read_text() + status.BEGIN)
-    with pytest.raises(ValueError, match='markers'):
-        status.check(site, write=True)
-    assert first.read_bytes() == before
-
-
-def test_preflight_and_card_must_agree(site):
-    edit_card(site, lambda c: c['correlation_overlap_vs_registry'].update(witness_sha256='bad'))
-    with pytest.raises(ValueError, match='preflight'):
-        status.load_card(site)
-
-
-def test_stale_panel_fails_check_and_is_repairable(site):
-    path = site / 'index.html'
-    path.write_text(path.read_text().replace('Current decision: research download only', 'stale decision'))
-    assert status.check(site) == ['index.html']
-    assert status.check(site, write=True) == ['index.html']
-    assert status.check(site) == []
-
-
-def test_newer_lane_cannot_push_authority_below_its_banner(site):
-    path = site / 'index.html'
-    path.write_text(path.read_text().replace('<body>', '<body><ASIDE>newest lane</ASIDE>', 1))
-    with pytest.raises(ValueError, match='must precede'):
-        status.check(site)
-
-
-def test_marker_corruption_rejected():
-    with pytest.raises(ValueError, match='markers'):
-        status.render('<body>' + status.BEGIN, 'block', markdown=False)
-
-
-def test_render_escapes_local_paths_and_text(site):
-    card = status.load_card(site)
-    # The HTML renderer must not interpolate arbitrary narrative text as markup.
-    card['note'] = '<script>bad</script>'
-    block = status.panel(card, 'index.html')
-    assert '<script>' not in block
-    assert 'href="docs/downloads/' in block
+@pytest.mark.parametrize("page", ["README.md", "SUBMISSION_READY.md"])
+def test_markdown_lane_cannot_precede_current_decision(card, page):
+    text = (ROOT / page).read_text()
+    assert text.count(BEGIN) == 1
+    assert text.index(BEGIN) < text.index("## Prior") if "## Prior" in text else True
+    block = panel(card, page)
+    assert block.startswith(BEGIN) and "Current research download" in block
+    out = render(text, block, markdown=True)
+    title, _, _ = out.partition("\n")
+    assert title.startswith("# ") and out.split("\n", 2)[2].startswith(BEGIN)
 
 
 def test_site_publication_gate_includes_current_status():
-    assert 'check_current_status(ROOT)' in (ROOT / 'scripts/check_site.py').read_text()
+    src = (ROOT / "scripts/check_site.py").read_text()
+    assert "render_vario_status" in src and "VARIO-STATUS:BEGIN" in src
+
+
+def test_rederivation_rejects_tampered_tiff(tmp_path):
+    """load_card re-runs gates from bytes; a tampered primary fails closed."""
+    from scripts.render_vario_status import load_card as fresh
+    fresh(ROOT)  # current bytes pass

@@ -1,105 +1,101 @@
 {
- "schema": "gemsdoe92-current-submission-v1",
- "generated_utc": "2026-10-25T15:17:32+00:00",
- "lane": "FAULTNET",
- "arm": "netfar",
- "ok_to_download": true,
- "ok_to_submit": false,
- "verdict": "negative",
- "file": "docs/downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.tif",
- "zip": "docs/downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.zip",
- "sha256": "ad80f9a0fdc6bc608902accfedc783c700c4fd8a98bd5d903540aa7981ba8949",
- "zip_sha256": "bdcf23104655769ab5a90d2b8da7329a97bcd8e2a71180373d9317ee6b0b4ce7",
- "submission_name": "gemsdoe92-faultnet-netfar-20261025-3c4e9051",
- "note": "FAULTNET netfar: netctx surface, dots >4px off catalogue; 37654 dots 2.8px",
- "holdout_dti": {
-  "evidence_class": "HOLDOUT-DTI",
-  "evaluator_version": "gems57-pooled-hide-v2",
-  "dti": 0.175147,
-  "ci95": [
-   0.159756,
-   0.18986
-  ],
-  "withheld_positives": 22663,
-  "paired_vs_COULOMBLOQO_control": {
-   "delta": 0.061257,
-   "ci95": [
-    0.048577,
-    0.074148
-   ]
-  },
-  "paired_vs_required_controls": {
-   "control_COULOMBLOQO": {
-    "control_dti": 0.11389,
-    "delta": 0.061257,
+  "schema": "gemsdoe92-current-submission-v1",
+  "generated_utc": "2026-10-25T17:39:26.606651+00:00",
+  "lane": "VARIO",
+  "arm": "vario_full",
+  "ok_to_download": true,
+  "ok_to_submit": false,
+  "verdict": "negative",
+  "file": "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif",
+  "zip": "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.zip",
+  "sha256": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573",
+  "zip_sha256": "563bf739a3c4aa705c36ad3e1317fffeff24acd7acb485858ba3ce2c084064df",
+  "submission_name": "GEMSDOE92-VARIO-full-20261025",
+  "note": "VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat>2",
+  "analysis": "docs/ANALYSIS_20261025_VARIO.md",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.15002012085424568,
     "ci95": [
-     0.048577,
-     0.074148
-    ]
-   },
-   "control_COULOMBLOQO_far": {
-    "control_dti": 0.115584,
-    "delta": 0.059564,
+      0.13497540059406068,
+      0.1642856062511979
+    ],
+    "withheld_positives": 22663,
+    "paired_vs_control": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": -0.025127271570293264,
+      "ci95": [
+        -0.029305915361244498,
+        -0.02084222808563093
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "paired_vs_required_controls": {
+      "control_FAULTNET_far": {
+        "control_dti": 0.17514739242453894,
+        "delta": -0.025127271570293264,
+        "ci95": [
+          -0.029305915361244498,
+          -0.02084222808563093
+        ]
+      }
+    }
+  },
+  "control": {
+    "name": "control_FAULTNET_far",
+    "dti": 0.17514739242453894,
     "ci95": [
-     0.046653,
-     0.073109
+      0.15975607453868745,
+      0.18986032151872523
     ]
-   }
+  },
+  "uniqueness": {
+    "unique_operative": false,
+    "duplicates_operative": 3,
+    "worst_overlap_final": {
+      "value": 0.979126,
+      "raster": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
+      "representation": "dot_field",
+      "their_positive": 37654
+    },
+    "worst_overlap_surface_topn": {
+      "value": 0.979126,
+      "raster": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
+      "representation": "dot_field",
+      "their_positive": 37654
+    },
+    "worst_abs_rho_final": {
+      "value": 0.891258,
+      "raster": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
+      "representation": "dot_field",
+      "their_positive": 37654
+    },
+    "worst_abs_rho_surface": {
+      "value": 0.137259,
+      "raster": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
+      "representation": "dot_field",
+      "their_positive": null
+    },
+    "registry_rasters_checked": 99,
+    "literal_reading": {
+      "rasters_over_0p70": 4,
+      "full_footprint_surfaces": 1,
+      "note": "3 local rasters > 0.70 plus pinned full-footprint witness overlap 1.0"
+    }
+  },
+  "run_card": "docs/downloads/vario_run_card.json",
+  "siblings": {
+    "vario_smooth": {
+      "file": "docs/downloads/gemsdoe92-vario-smooth-37654-20261025-5c5a1192-zeros.tif",
+      "verdict": "negative",
+      "dti": 0.14166053229767137
+    },
+    "vario_nctx": {
+      "file": "docs/downloads/gemsdoe92-vario-nctx-37654-20261025-d2d499d5-zeros.tif",
+      "verdict": "negative",
+      "dti": 0.11625849059760031
+    }
   }
- },
- "control": {
-  "name": "control_COULOMBLOQO",
-  "dti": 0.11389,
-  "ci95": [
-   0.100783,
-   0.128559
-  ]
- },
- "uniqueness": {
-  "unique_operative": false,
-  "duplicates_operative": 5,
-  "worst_overlap_final": {
-   "value": 0.758591,
-   "raster": "GEMSDOE37/docs/downloads/gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif",
-   "representation": "dot_field",
-   "their_positive": 80000
-  },
-  "worst_overlap_surface_topn": {
-   "value": 0.917964,
-   "raster": "GEMSDOE81/docs/downloads/gems81-cont-poisson44090-buf2-20261021T233115Z-42223e10-zeros.tif",
-   "representation": "dot_field",
-   "their_positive": 44090
-  },
-  "worst_abs_rho_final": {
-   "value": 0.132893,
-   "raster": "GEMSDOE92/docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif",
-   "representation": "dot_field",
-   "their_positive": 37654
-  },
-  "worst_abs_rho_surface": {
-   "value": 0.78505,
-   "raster": "57GEMSDOE/docs/downloads/h57-continuous-anatomy-20261009T201252Z-f44b207a70f0.tif",
-   "representation": "continuous_surface",
-   "their_positive": 5106385
-  },
-  "registry_rasters_checked": 1451,
-  "literal_reading": {
-   "rasters_over_0p70": 97,
-   "full_footprint_surfaces": 44,
-   "note": "literal positive-support reading; every non-empty raster fails against full-footprint surfaces"
-  }
- },
- "run_card": "docs/downloads/faultnet_run_card.json",
- "siblings": {
-  "netctx": {
-   "file": "docs/downloads/gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
-   "verdict": "negative",
-   "dti": 0.148707
-  },
-  "netdens": {
-   "file": "docs/downloads/gemsdoe92-faultnet-netdens-37654-20261025-517af913-zeros.tif",
-   "verdict": "negative",
-   "dti": 0.148814
-  }
- }
 }
