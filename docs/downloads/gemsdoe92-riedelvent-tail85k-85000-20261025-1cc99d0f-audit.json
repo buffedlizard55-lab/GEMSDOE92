@@ -148,5 +148,5 @@
     "dot_fields_le_50k_worst_overlap_3px": 0.478176,
     "worst_surface_abs_spearman": 0.433818
   },
-  "run_card": "evidence/riedelvent_run_card.json"
+  "run_card": "evidence/riedelvent_baseline_run_card.json"
 }
