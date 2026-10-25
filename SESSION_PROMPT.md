@@ -1,3 +1,9 @@
+## Session start — 2026-10-25 audit (read first)
+
+Read the README's "Session request — 2026-10-25" block, then [`docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md`](docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md) and [`evidence/review_20261025_audit_run_card.json`](evidence/review_20261025_audit_run_card.json). Earlier readiness audit (still valid): docs/REVIEW_20261025_SESSION.md. Current verified state: research downloads only; DO NOT SUBMIT; No new raster was generated this session; 0 of 3 experiments; 0 slots. The literal duplicate rule cannot be satisfied by any in-footprint raster (the public 17GEMSDOE witness is positive on all 5,167,373 footprint cells). Five operator decisions (D1–D5) block promotion; an agent may not decide them silently. The official rules say outside-bounds values should be null or NaN; this repo's gate requires zeros (D2). Live #1 is 0.4413 (not a GEMSDOE entry). GEMSDOE32's 0.2778 is a CLAIM with no receipt.
+
+---
+
 ## Current lane addendum — 2026-10-25 (`NETEXPAND`, branch `arena/a7cdad14-gemsdoe92`)
 
 Read `docs/ANALYSIS_20261025_NETEXPAND.md` + `evidence/netexpand_run_card.json` first. NETEXPAND (KNICK30+LISTRIC4+FAULTNET-context5+ASA/coherence/curie/MT6 LOQO, pure crest) produced 3 format-valid (11/11 gates) byte-unique TIFs. Strict draw-blind HOLDOUT-DTI: netexpand_far 0.177976 [0.163109,0.193227], netexpand 0.146798, nocontext 0.115566 vs control_knick 0.109069 / control_knick_far 0.111601 (22,663 withheld; canaries <=0.7775). All arms verdict negative: Rule-1 lane duplicates vs FAULTNET/KNICKLOQO (0.76-0.81 > 0.70 local, 123 rasters); vs R0/H19-5 <=0.40 (not copies). 3/3 experiments used, 0 slots. GEMSDOE32 0.2778 re-verified live as UNSCORED CLAIM (no organiser score exists). Next: NETEXPAND-R repelled emission or GDR-GEOTHERMOMETER-FIELD (see hypotheses doc); operator must resolve dense-witness literal-rule policy (F2). Maximize P(Win); Own the Outcome.
