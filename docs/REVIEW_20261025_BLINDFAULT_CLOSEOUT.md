@@ -30,6 +30,8 @@ The website's older primary download card is still explicitly a research artifac
 
 ## Pass 3 — checks and limitations
 
+During PR preparation, `main` advanced with the separate RADIOCONTACT lane. That lane is retained as an independent research result; this review did not select it, rerun it, or combine its numbers with BLINDFAULT. Its stored pre-registration document is named and internally dated 2026-10-26 while the run card is dated 2026-10-25. Because that is future-dated relative to the session date, the claim that it was preregistered before its run cannot be independently established from timestamps here; treat the chronology as an irregularity for review, not verified provenance. No weekly selector decision is made.
+
 Checks run on this checkout:
 
 - `pytest -q`: **294 passed**, 124 upstream Affine pending-deprecation warnings.
