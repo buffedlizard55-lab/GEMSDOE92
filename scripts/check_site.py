@@ -114,6 +114,16 @@ def main() -> int:
         return 2
     html = INDEX.read_text(encoding="utf-8")
 
+    # The current decision is generated from one byte-bound receipt, not from
+    # whichever parallel lane happened to prepend its banner most recently.
+    from scripts.render_current_status import check as check_current_status
+    try:
+        stale = check_current_status(ROOT)
+        if stale:
+            problems.append('stale current status panels: ' + ', '.join(stale))
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        problems.append(f'current status evidence invalid: {exc}')
+
     # ---- the page contract, written against properties not one lane's wording --
     for needle in ("OK TO DOWNLOAD", "Predicted values must be in range [0, 1]",
                    "HOLDOUT-DTI", "NOT CLEARED FOR A WEEKLY SLOT",

@@ -185,6 +185,17 @@ def render_page(text: str, block: str) -> str:
             raise ValueError('malformed public-status panel')
         public = match[0] + '\n'
         content = content[:match.start()] + content[match.end():]
+    # Shared lane-result block (scripts/render_current_submission.py, generated from
+    # docs/downloads/current_submission.json). It stays visible directly after the
+    # readiness panel instead of being swept into the collapsed historical archive.
+    lane_result = ''
+    CUR_BEGIN, CUR_END = '<!-- CURRENT:BEGIN -->', '<!-- CURRENT:END -->'
+    if CUR_BEGIN in content or CUR_END in content:
+        if content.count(CUR_BEGIN) != 1 or content.count(CUR_END) != 1:
+            raise ValueError('ambiguous lane-result markers')
+        match = re.search(re.escape(CUR_BEGIN) + r'.*?' + re.escape(CUR_END), content, flags=re.S)
+        lane_result = match[0] + '\n'
+        content = content[:match.start()] + content[match.end():]
     if START in content or END in content:
         if content.count(START) != 1 or content.count(END) != 1:
             raise ValueError('ambiguous readiness markers')
@@ -194,7 +205,7 @@ def render_page(text: str, block: str) -> str:
             raise ValueError('ambiguous archive markers')
         content = content.replace(ARCHIVE_START, '').replace('</details>\n' + ARCHIVE_END, '')
     content = content.strip()
-    replacement = (body[1] + '\n' + public + block + '\n' + ARCHIVE_START + '\n' + content
+    replacement = (body[1] + '\n' + public + block + '\n' + lane_result + ARCHIVE_START + '\n' + content
                    + '\n</details>\n' + ARCHIVE_END + '\n' + body[3])
     return text[:body.start()] + replacement + text[body.end():]
 

@@ -1,5 +1,37 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+
+
+<!-- CURRENT-STATUS:BEGIN -->
+## Current verified decision — 2026-10-25 (review c5e3848c)
+
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review. The new-submission requirement remains unmet.
+
+[Current research download](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [fresh run card](docs/downloads/review_c5e3848c_integrated_run_card.json) · [three-pass review](docs/REVIEW_C5E3848C.md) · [executive submission guide](docs/executive-summary.html).
+
+Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
+
+<!-- CURRENT-STATUS:END -->
+<!-- CURRENT:BEGIN -->
+> ## Newest lane result — lane FAULTNET / arm `netfar`
+> **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 0.7586 of its dots lie within 3 px of the dots of GEMSDOE37/docs/downloads/gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif (80,000 dots), above the 0.70 limit.
+>
+> **[⬇ Download the GeoTIFF](docs/downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.zip) · [run card](docs/downloads/faultnet_run_card.json) · [analysis](docs/ANALYSIS_20261025_FAULTNET.md)
+>
+> **How to submit (only with a file marked ✅ OK TO SUBMIT, which this one is not):**
+> 1. Download the `.tif` (or the ZIP holding only that TIFF).
+> 2. Go to https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/ (log in; not live-verified from the sandbox), then choose the file under *File to submit*.
+> 3. Paste this into *Note (optional)*: `FAULTNET netfar: netctx surface, dots >4px off catalogue; 37654 dots 2.8px`
+> 4. Name/record: `gemsdoe92-faultnet-netfar-20261025-3c4e9051`. After scoring, record the receipt in `ledger/submissions.csv`.
+>
+> Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `ad80f9a0fdc6bc608902accfedc783c700c4fd8a98bd5d903540aa7981ba8949`.
+> **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22,663 withheld positives): `0.175147 [0.159756, 0.189860]`. Rebuilt COULOMBLOQO control: `0.113890 [0.100783, 0.128559]`. Paired Δ `+0.061257 [0.048577, 0.074148]`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
+> **Uniqueness** (1,451 registry rasters): worst overlap `0.7586` (limit 0.70), worst |ρ| `0.1329` / surface `0.7851` (limit 0.90). Literal-support reading: 97 rasters > 0.70. That reading also fails a random raster (`#IR-92-FAULTNET-DOT-DEFINITION`).
+> Siblings: [netctx](docs/downloads/gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif) (negative, HOLDOUT-DTI 0.148707) · [netdens](docs/downloads/gemsdoe92-faultnet-netdens-37654-20261025-517af913-zeros.tif) (negative, HOLDOUT-DTI 0.148814). **Read [SESSION_PROMPT.md](SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
+<!-- CURRENT:END -->
+
+
+
 ## Current decision — 2026-10-25 (`f23ca2d2` review; read first)
 
 **OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT. No new unique TIFF was generated.**
@@ -185,6 +217,12 @@ Publication check: `python scripts/render_public_status.py --check` then `python
 <!-- GRAVQUAD:END -->
 
 **Current review:** [Three-pass closeout and limitations](docs/REVIEW_20261025_BLINDFAULT_CLOSEOUT.md) · [current review index](docs/REVIEW_CURRENT.md). The newest lane added to this repository is **GRAV-QUAD** (immediately above; static HOLDOUT-DTI `0.005092 [0.004001, 0.006253]`, negative); RADIOCONTACT (above) and BLINDFAULT are prior research lanes from the same session arc, also negative. Other parallel sessions subsequently added `LISTRICDIP`, `KNICKLOQO`, `PROVINCETOE`, and `POISSONKNICK`/`POISSONFLEX` (further down this file); none of those lane names overlap with `GRAVQUAD`'s gravity-analytic-signal mechanism, so this remains a non-duplicate contribution. See each lane's run card before using any numbers. The RADIOCONTACT pre-registration filename is dated 2026-10-26 despite the run card's 2026-10-25 date; this chronology irregularity is unresolved and must not be presented as verified pre-registration timing. Read [`SESSION_PROMPT.md`](SESSION_PROMPT.md) and this README at each session start.
+
+**This session — lane `DILATATION` (Band 8 geodetic dilatation rate, Rank-1 pre-registered untried hypothesis):** new unique-byte research GeoTIFF `h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif` published with ZIP, per-file audit JSON and Protocol Rule 5 run card. ✅ **OK TO DOWNLOAD FOR RESEARCH** — 10/10 automated format gates PASS (`EPSG:32611`, `3730 × 3292`, `float32`, finite `[0, 1]`, `0.0` outside footprint, `37,654` unit dots, `0` catalogue mass) — prevents DrivenData's `"Predicted values must be in range [0, 1]"` portal error. ⛔ **DO NOT SUBMIT — verdict `negative`, `submission_eligible: false`**: static `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, 22,663 withheld positives) `0.005818 [0.004838, 0.006912]` vs parent R0 `0.004006 [0.003424, 0.004690]` — paired `Δ +0.001812 [+0.001106, +0.002535] > 0` beats parent R0 but stays below holdout-best `COULOMBLOQO standalone` (`0.113316` Rule-2 / `0.009220` static); literal registry overlap stop fires (worst 3-px forward overlap `1.0000` vs DILATATION p10 sibling; pinned public dense witness `1.0000 > 0.70`). Leakage canaries max symmetric AUC `0.514862 <= 0.90`. Weekly slots used: `0`; experiments: `1/3`.
+
+- **Download:** [`docs/downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif`](docs/downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif) · [`...-zeros.zip`](docs/downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.zip) · [audit JSON](docs/downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-audit.json) · [run card](docs/downloads/dilatation_run_card.json) · [variant build receipt](evidence/dilatation_variants.json) · [proxy audit](evidence/dilatation_proxy_audit.json)
+- **SHA-256 (`-zeros.tif`):** `cc79c48ae0f46b0c22cd410305a773e72b719833718bceed2c5bcda3c8c38052` · ZIP `eb4a76d9c766429b7942283d7501ffec7bef321a8eeac57dc6694ad89b11ae13`
+- **Name:** `GEMSDOE92-DILATATION-p15-20261025` · **Note (`139 / 140`):** `h33-h33-2-b2; DILATATION p15: 5648 dots shifted low-to-high geodetic dilatation tercile on H19-5, d_cat>2px; HOLDOUT-DTI 0.005818; negative`
 
 **Latest session review:** [Three-pass findings and ranked conditional hypotheses](docs/REVIEW_918B947A.md) · [fresh run card](docs/downloads/review_918b947a_run_card.json). Subsequent `COULOMBDM` (and parallel `XPHASE`) work generated unique research TIFFs that are **OK TO DOWNLOAD** and **DO NOT SUBMIT**. The literal overlap rule remains unsatisfiable for weekly-slot clearance because a pinned registry raster covers the entire footprint. The operational user brief is retained below and in `SESSION_PROMPT.md`; read both at session start. Maximize P(Win) and Own the Outcome mean preserving negative evidence, not fabricating submission clearance.
 
