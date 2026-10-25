@@ -1,4 +1,109 @@
+# Next steps — 2026-10-25 repository audit & TILTANGLE remediation (`arena/151c397c-gemsdoe92`)
+
+- **Completed in `arena/151c397c-gemsdoe92` (`0 / 3` experiments, `0` weekly slots):**
+  1. Re-verified all `12` SHA-256-pinned inputs (`scripts/restore_inputs.py`, `training_features.tif` `4371c82e…`) and the pinned public witness `17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` (`5,167,373 / 5,167,373` positive footprint cells $\implies$ literal 3-px forward overlap `1.0000 > 0.70` pre-placement **STOP**).
+  2. Audited and remediated the merged `TILTANGLE` artifact (`f17eae78…`; [`evidence/tiltangle_audit_20261025.json`](../evidence/tiltangle_audit_20261025.json), [`scripts/audit_tiltangle_leakage.py`](../scripts/audit_tiltangle_leakage.py), [`tests/test_tiltangle_audit.py`](../tests/test_tiltangle_audit.py)): proved its reported `0.033466` static figure failed the Protocol Rule 4 leakage canary because `d_pref` was computed from the full `existing_faults.tif` catalogue including withheld faults (`symmetric AUC = 0.962399 > 0.90`, `d_pref == 1.0` on `100%` of withheld fault pixels) and failed local 3-px dot-field uniqueness (`0.776332 > 0.70` vs `NETEXPAND netexpand` and `0.761513 > 0.70` vs `NETEXPAND netexpandfar`). Recomputed leak-free `HOLDOUT-DTI` via `vendor/gems57/evaluate_holdout.py` (`22,663` withheld positives): pure surface `S` static = **`0.005272 [0.003839, 0.006810]`**; strict fold-visible Rule-2 with visible-only `d_pref` = **`0.085247 [0.072752, 0.098193]`**; strict fold-visible Rule-2 pure `S` = **`0.042670 [0.030397, 0.055911]`**.
+  3. Updated [`docs/HYPOTHESES_20261025_REVIEW.md`](HYPOTHESES_20261025_REVIEW.md) and [`docs/REVIEW_20261025_ARENA_151C397C.md`](REVIEW_20261025_ARENA_151C397C.md) ([run card](downloads/review_20261025_151c397c_run_card.json)).
+
+---
+
+# Next steps — 2026-10-25 repository audit (`78db3076`)
+
+**No submission-clearable TIFF. DO NOT SUBMIT the current VARIO research primary or the older LISTRICLOQO/HALO files.** Under the user's unchanged literal positive-support rule, the hash-verified 17GEMSDOE witness forces 1.0 overlap >0.70 for any nonempty in-footprint candidate. VARIO also fails its reported sparse-dot overlap and paired holdout improvement. [Three-pass review](REVIEW_20261025_78DB3076.md) · [final negative JSON card](downloads/session_78db3076_run_card.json) · [four conditional untried hypotheses](HYPOTHESES_20261025_78DB3076.md). The combined main-merge HALO raster failed the catalogue-distance gate; it was quarantined, not advertised for download. This review ran **zero** experiments/holdouts/weekly slots; VARIO's prior three experiments are from a separate concurrent lane.
+
+1. The protocol owner must explicitly resolve the literal dense-witness stop and assign one geological method lane. The historical ALI proposal below for a matched-budget continuous-field rule is **not** authorization to change the binding threshold silently.
+2. Obtain rights-cleared competition inputs by an authorized route; the official DrivenData data page redirects to login. With a valid rule and cached features, lock an outer spatial test, run single-feature leakage canaries, use the shared buffered whole-segment visible-only evaluator and writer, check registry before and after dot placement, and compare a paired HOLDOUT-DTI CI to a same-instrument control. No current candidate satisfies all gates.
+3. Confirm the actual organizer submission-page weekly cap and record a file-hash-bound organizer receipt only **after** a separate weekly selector decision. No local HOLDOUT-DTI is an ORGANIZER-CONFIRMED score. Verify GitHub Pages publication mode is Actions-gated rather than assuming the observed legacy main/root publisher is gated by CI.
+
+---
+
+# Concurrent RIEDELVENT lane record (a different research session; still DO NOT SUBMIT)
+
+# Next Steps — GEMSDOE92 (Updated 2026-10-25, Post-RIEDELVENT Session)
+
+## Completed this session (`RIEDELVENT` — Prior Queue #1 `TENSOR-RIEDEL` + Additive Möbius Tail Executed; `3/3` experiments, `0` weekly slots)
+1. **Verified SHA-256 Inputs & Refreshed `102`-Repo Public Registry (`scripts/restore_inputs.py --ventscarp-external` + `scripts/sync_public_registry_git.py`):** Verified `19/19` SHA-256-pinned inputs and `1,493` unique public `.tif` Git blobs across `102` `GEMSDOE` repositories (`0` errors).
+2. **Discovered & Prevented Band-Index Misattribution (`#IR-92-VENTSCARP-BAND-INDEX-MISATTRIBUTION`):** Direct GDAL metadata verification uncovered 3 band-index bugs in `gems/ventscarp.py` (`Band 3` `tmi_hg` read as `"heatflow"`, `Band 18` `iso_grav_anom_hg` differentiated as scalar gravity while omitting `Band 11` `iso_grav_anom_vg` and `Band 7` `geod_shearrate`, and `Bands 4/8` swapped). Preserved `gems/ventscarp.py` untouched for legacy test reproducibility and enforced programmatic GDAL tag assertions (`gems/riedelvent.py::assert_training_band_tags`) on all 19 bands.
+3. **Pre-Registered 5 Untried Hypotheses (`docs/HYPOTHESES_20261025_RIEDELVENT.md`) & Implemented Rank 1 (`RIEDELVENT`, `gems/riedelvent.py`, `scripts/run_riedelvent.py`):** Coupled Pedersen–Rasmussen 3D gravity-tensor dimensionality breaks (`I_step` from tag-verified `Band 13 + Band 11`) with Tchalenko `20°` synthetic `R` / `72°` antithetic `R'` strike obliquity, USGS 3DEP 10 m scarps, tufa-filtered INGENIOUS hydrothermal vents, and exact Möbius-linear soft-DTI tail allocation (`32/32` canaries PASS, max symmetric AUC `0.638949 <= 0.90`; OOF `0.667221 <= 0.90`).
+4. **Validated 3 GeoTIFFs (`11/11` `gems.gates` + `15/15` `gems57.validate` PASS, `[0, 1]`, `0` NaN/Inf) & Established All-Time #1 Off-Catalogue `USGS SGMC PROXY`:**
+   - **Primary E3 (`riedelvent_tail85k`, `85,000` px: `37,654 @ 1.0 + 47,346 @ [0.30, 0.60]`, `709fc6cd…`):** Sets a **new all-time `GEMSDOE92` record on off-catalogue `USGS SGMC PROXY = 0.135694` (`d_cat > 5 px`) / `0.139793` (`d_cat > 3 px`)** (`+12.18%` over `POISSONFLEX opt` `0.120957`, `+41.53%` over `KNICKLOQO` `0.095878`, `+66.86%` over `VENTSCARP` `0.081321`), **passes `dual_reading_unique = True` (`0.6971 <= 0.70` across `102` repos; `<= 0.4908` locally; `max |rho| = 0.4338 <= 0.90`)**, beats `VENTSCARP` on Static `HOLDOUT-DTI` (`0.009755` vs `0.008212`, paired `+0.001543 [+0.000669, +0.002430]`), and scores `0.108448 [0.095906, 0.122629]` on Rule-2 `HOLDOUT-DTI` (`+0.002537` Möbius-tail lift over `bin37k = 0.105910`).
+   - **Matched-Budget Causal Proof (`bin37k` `da96c3af…` vs `collinear_novent` `2e220bb5…`):** At identical `37,654`-dot support, `bin37k` beats `collinear_novent` on both Rule-2 `HOLDOUT-DTI` (`+0.001352`) and off-catalogue `USGS SGMC PROXY` (`0.106141` vs `0.096908`, `+9.53%`), proving 20°/72° Riedel obliquity + vents detect concealed off-catalogue transfer structures rather than collinear range-front scarps.
+   - **Verdict:** `negative` (`submission_eligible = false`, `0` weekly slots spent) under literal `17GEMSDOE` dense-surface overlap (`1.000 > 0.70`) and catalogue holdout below `VENTSCARP` (`0.112213`) / `KNICKLOQO` (`0.010788`). Run card: `evidence/riedelvent_run_card.json`.
+
+## Remaining Limitations & Highest-P(Win) Next Steps (In Priority Order)
+1. **Human Selector Policy Decision & First `ORGANIZER-CONFIRMED` Receipt:** Still `0` GEMSDOE organizer receipts in `ledger/submissions.csv`: `0.2778` is an owner-reported CLAIM and `0.3195` is not the current #1; `0.4413` is a public leaderboard snapshot for **xiaofanhu**, not a GEMSDOE receipt. Human selector must confirm `dual_reading_unique = True` vs literal `17GEMSDOE` (`5,167,373` px) before spending any of the `3/week` DrivenData slots; `KNICKLOQO standalone` (catalogue static #1 `0.010788`), `VENTSCARP ventscarp` (catalogue Rule-2 #1 `0.112213`), and `RIEDELVENT tail85k` (off-catalogue SGMC #1 `0.135694`) are the three complementary `dual_reading_unique = True` candidates.
+2. **`KNICKLOQO-RIEDELVENT-SLOPE-SPLIT-N85K` (Slope-Regime Partition + Möbius Tail):** Partition crest support explicitly by slope regime — `KNICKLOQO` bedrock knickzone crests on `>= 6°` mountain blocks + tag-verified `RIEDELVENT` 3D tensor/Riedel/vent crests on `< 6°` piedmont & basin step-overs, with the `85,000`-pixel `[0.30, 1.0]` Möbius tail — to combine `KNICKLOQO`'s `0.010788` static range-front recall with `RIEDELVENT`'s `0.135694` off-catalogue SGMC transfer recall while staying `<= 0.70` against `62GEMSDOE`.
+3. **Remaining Pre-Registered Untried Queue (`FLEXURE-HINGE`, `CLAYCAP-REDOX`, `MT-PHASE-SADDLE`):** Ranks 2–4 in `docs/HYPOTHESES_20261025_RIEDELVENT.md` remain untried in-cache; Rank 5 (`INSAR-3DEP1M-CREEP`) requires external staging of ASF Sentinel-1 / NSL microseismic rasters into a SHA-256-pinned GitHub release due to sandbox outbound host restrictions (`github.com` / `pypi.org` / `npmjs.org` only).
+
+---
+
+# Historical next steps — ALI session (conditional, superseded where incompatible with literal stop)
+
+1. **Uniqueness saturation map.** Before any new lane, compute the union of 3-px halos of all *discriminating* registry dot fields (halo < 70%) restricted to high fault-appearance pixels (FAM top 10%). The ALI result shows physics placements collide with 12GEMSDOE r7, GEMSDOE70 54k, GEMSDOE22 h23-a/b, GEMSDOE67 ovtr and others. A lane is only worth running if it targets pixels outside that union.
+2. **Highest-ranked untried hypothesis: dextral drainage-deflection coherence** (docs/ALI_LANE.md §3). It targets a different signature (lateral channel offsets) and is the most likely to land on unclaimed pixels. Verify official 10 m 3DEP access first.
+3. **Run the pre-placement surface check before placement.** In this session it ran after placement.
+4. **Owner decision needed: dense-raster policy.** The ALI stop does not depend on it, but future lanes will hit the 17GEMSDOE / GEMSDOE48 continuous surfaces under the literal reading. Proposal: dot fields stay literal; continuous surfaces use matched-budget top-K plus Spearman; both readings stay reported.
+5. **Owner decision needed: promotion instrument.** The hide-and-recover instrument does not track the leaderboard (IR-92-HOLDOUT-VALIDITY). Consider adding leave-one-out prediction of owner-reported scores (`scripts/ali_fit.py`) as a second, MODEL-labelled gate.
+6. Keep using `safe_save` / `safe_load` for every large cache (IR-92-NPY-PAGE-ZERO).
+
+---
+
+# Next Steps — GEMSDOE92 (Updated 2026-10-25, Post-RIEDELVALVE Session)
+
+## Completed this session (`RIEDELVALVE` — `3/3` experiments, `0` weekly slots; `evidence/riedelvalve_run_card.json`)
+- **Pre-registered 5 ranked untried hypotheses** (`docs/HYPOTHESES_20261025_RIEDELVALVE.md`: `RIEDELVALVE`, `FLEXURE-ADMITTANCE`, `SEISMIC-UPDIP-PROJECTION`, `CLAYCAP-HALO-DIPOLE`, and sandbox-blocked `INSAR-3DEP1M-CREEP`), repaired `#IR-92-VENTSCARP-BAND18-UNSIGNED-GRAVITY-AND-BAND4-BAND8-SWAP`, and passed `32/32` single-feature leakage canaries (`max symmetric AUC = 0.639492 <= 0.90`).
+- **E2 Primary Research Artifact (`riedel_n90k`, `gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif`, `75d61cb1…`):** Confirmed additive `37,654 @ 1.0 + 52,346 @ 0.30` Tversky tail (`+0.000875 [+0.000531, +0.001215]` static `HOLDOUT-DTI` -> `0.009054`, Rule-2 `0.108593`), reached `#1` `dual_reading_unique` LOQO `USGS SGMC PROXY = 0.112719` (`>` `LISTRICLOQO` `0.103442` & `KNICKLOQO` `0.095878`), and passed local (`<= 0.4702`) + `102`-repo `dual_reading` uniqueness (`0.6384 <= 0.70`), while E1 vs E3 falsified Group-R Riedel obliquity on planar holdout (`-0.000092`, n.s.). Verdict `negative` (`DO NOT SUBMIT`).
+- **Next Recommended Experiment:** Apply the proven `37,654 @ 1.0 + 52,346 @ 0.30` additive Tversky tail directly to `LISTRICLOQO` (`0.013295` static) / `KNICKLOQO` (`0.010788` static), or test Rank #2 `FLEXURE-ADMITTANCE`.
+
+---
+
+# Next Steps — GEMSDOE92 (Updated 2026-10-25, Post-FLEXMAG Session)
+
+## Completed this session (FLEXMAG — blind-fault flexure hinge × magnetic ASA)
+- Pre-registered 5 ranked hypotheses (`docs/HYPOTHESES_20261025_FLEXMAG.md`); implemented `gems/flexmag.py` (catalogue-free; 14 leakage canaries, max symmetric AUC 0.566271 ≤ 0.90) + `scripts/build_flexmag_submission.py` (shared evaluator/writer/uniqueness only).
+- 3/3 experiments (37,654 dots each, all format gates PASS): flexmag primary HOLDOUT-DTI 0.045554 [0.035846, 0.056751] (per-draw re-placement, 22,663 withheld) vs flex 0.048980, mag 0.045107, GRAVQUAD control 0.043184 — all paired CIs include 0; bar 0.113316 not met. Static flexmag 0.006026 (R0 control reproduced at 0.004006). SGMC proxy flex 0.087161 > flexmag 0.068910.
+- Local uniqueness (98 unique-mask rasters): surface |ρ| ≤ 0.0658; flexmag/flex final-dot overlap ≤ 0.5682 PASS; **mag arm 0.7223 vs ANASIG = duplicate** (magnetic ASA alone is ANASIG). Public 102-repo scan not rerun (already negative). **Verdict negative, submission_eligible=false, 0 slots.** Run card `docs/downloads/flexmag_run_card.json`; analysis `docs/ANALYSIS_20261025_FLEXMAG.md`.
+- Re-verified R0 lineage by XOR (SOLO = D2.8∧d>1; R0 = D2.8∧d>2, both XOR 0) and fetched GEMSDOE32 source page: it labels h33-h33-2-b2 UNSCORED / NO ORGANISER SCORE EXISTS — 0.2778 remains a CLAIM.
+
+## Highest-P(Win) next actions
+1. **Human selector (unchanged, still #1):** obtain the first ORGANIZER-CONFIRMED receipt (KNICKLOQO-class candidate) and settle literal-vs-matched-budget policy; without a live anchor every local ranking is uncalibrated.
+2. **Do not re-tune FLEXMAG scales/gate ad hoc.** If flexure evidence is reused, do it as pre-registered added LOQO features with an overlap guard, and replace 32-px edge erosion with inpainting/reflect padding (erosion made 4.3–5.1% of withheld positives unreachable).
+3. Untried queue unchanged: MT-CHANGEPOINT and TENSOR-RIEDEL (in-stack); INSAR/1 m DEM still needs external staging outside the sandbox allowlist.
+
+---
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`LISTRICLOQO` Session)
+
+**Supplemental audit record (17:03:59Z):** [three-pass follow-up](REVIEW_20261025_SESSION_FOLLOWUP.md) · [rejection-only run card](downloads/session_followup_20261025_run_card.json). That focused audit generated no candidate, holdout, canary, experiment, or slot and had no assigned method paragraph; its ranked candidates are conditional only. This is not the latest lane result and does not replace the current ordered selector/next-step queue below.
+
+## Completed this session (`LISTRICLOQO` + Shared-Tool Public Registry Prefetch Fix + Updip Listric / Interfluve Knickzone / Selective Branch Calibration)
+
+1. **Completed Shared-Tool Fix for `#IR-92-PUBLIC-SCAN-RATELIMIT-705-FAILURES` (`scripts/audit_public_registry.py`):**
+   - Added `prefetch_via_local_and_codeload()` to `scripts/audit_public_registry.py` so the 102-repo public registry scanner seeds local matching `.tif` blobs and streams repository tarballs (`https://codeload.github.com/buffedlizard55-lab/<repo>/tar.gz/<branch>`) in one HTTP request per repository instead of issuing 1,469 per-blob GitHub REST calls (`5,000/hr` rate limit).
+   - Verified **`1,469 / 1,469` unique `.tif` blobs across `102` repositories** (`0` download failures, `1,459` compatible single-band exact-grid `3730 x 3292` rasters) and confirmed `pytest tests/test_public_audit.py tests/test_public_registry_audit.py` passes (`10 passed`).
+2. **Completed Priority #1 & #2 from `KNICKLOQO` (`RADIO-POTENTIAL-DECOUPLE`, `LISTRIC-ASYMMETRY-DIP`, and `SELECTIVE-QCAL-LOQO` — `gems/listric_loqo.py`, `docs/HYPOTHESES_20261025_LISTRICLOQO.md`, `docs/ANALYSIS_20261025_LISTRICLOQO.md`):**
+   - Implemented Grauch-Cordell updip listric dip-offset projection ($s \in \{3.6, 4.4, 5.2\}\text{ px} = 360\text{--}520\text{ m}$ along $\mathbf{n}_{\text{updip}}$; `f31_listric_updip_sub_ramp`, `f32_listric_scarp_knick_lock`, `f33_carb_bouguer_base_updip`, `L_listric_updip`), Wallace interfluve facet-spur knickpoint bridging ($\pm 3.8, \pm 4.8\text{ px}$ along $\mathbf{t}_{\text{strike}}$; `L_knick_bridge`), GeoDAWN dual-ratio `K/Th` + `U/Th` redox-contact strike concordance (`f34_rad_uth_kth_strike_concord`, `L_rad_relay`), relay-ramp longitudinal basement transfer (`f35_relay_ramp_strike_transfer`), and playa-deconfounded MT conduit contrast (`f36_mt_playa_deconfound_conduit`).
+   - **All 42 single-feature leakage canaries PASS** (`max symmetric AUC = 0.610332 <= 0.90`).
+   - **Unifies and Beats Both Repository Holdout Records Simultaneously (`gems57-pooled-hide-v2`, `22,663` withheld positives):**
+     - **Static `d_cat > 2.0` `HOLDOUT-DTI` (NEW #1, #2, #3 All-Time in `GEMSDOE92`):** `LISTRICLOQO selectcal` = **`0.013295 [0.011713, 0.014980]`** (`+23.2%` over prior #1 `KNICKLOQO standalone` `0.010788`, paired $\Delta = +0.002508\,[+0.001477, +0.003463]$; `+231.9%` over `R0` `0.004006`), `standalone` = **`0.013250 [0.011620, 0.014974]`**, `uncal` = **`0.013105 [0.011462, 0.014868]`**.
+     - **Strict Draw-Blind `d_cat > 2.0` `HOLDOUT-DTI` (NEW #1 All-Time in `GEMSDOE92`):** `standalone` = **`0.013064 [0.011508, 0.014670]`** (`+19.2%` over `KNICKLOQO standalone` `0.010958`).
+     - **Strict Draw-Blind Rule-2 `d_visible > 2.0` `HOLDOUT-DTI` (NEW #1 & #2 All-Time in `GEMSDOE92`):** `standalone` = **`0.114410 [0.101808, 0.127706]`** and `selectcal` = **`0.113938 [0.100887, 0.127394]`**, beating prior #1 `COULOMBLOQO standalone` (`0.113316`), `EULERFUSE gravity` (`0.110387`), `KNICKLOQO standalone` (`0.109043`), and `H19-5` (`0.096757`).
+     - **Passes Operational `dual_reading_decision` Uniqueness Across All `1,459` Public Rasters (`102` Repos) & `68` Local Rasters (`0 / 1,459 > 0.70`):** `selectcal` max overlap = **`0.690259 <= 0.70`**, `standalone` = **`0.695703 <= 0.70`**, `uncal` = **`0.639242 <= 0.70`** (including `0.636851 <= 0.70` vs `62GEMSDOE` `125,890` px and `0.594492 <= 0.70` vs `GEMSDOE23` `100,000` px).
+
+## Highest-P(Win) actions for the next session (in order)
+
+1. **Human Selector Step — First `ORGANIZER-CONFIRMED` Calibration & `LISTRICLOQO selectcal` / `standalone` Promotion Decision:**
+   - Under `dual_reading_decision` (`#IR-92-DENSE-WITNESS-MATCHED-BUDGET`), `h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif` (`58e5d780f3602e17…`, static #1 `0.013295`, draw-blind Rule-2 #2 `0.113938`, max public overlap `0.690259 <= 0.70`) and `h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif` (`dc6d8f06053a48ef…`, draw-blind Rule-2 #1 `0.114410`, static #2 `0.013250`, max public overlap `0.695703 <= 0.70`) are the **first artifacts in `GEMSDOE92` to simultaneously hold #1 on BOTH static `d_cat > 2.0` AND strict draw-blind Rule-2 `d_visible > 2.0` while passing `0 / 1,459` public rasters `> 0.70` under `dual_reading_decision`**.
+   - Once the human selector confirms `dual_reading_decision` supersedes the degenerate `17GEMSDOE` full-footprint literal witness for portal uploads, promote **at most one** `LISTRICLOQO` arm (`selectcal` or `standalone`, never both — their sibling overlap is `0.955`) and record the resulting `ORGANIZER-CONFIRMED` receipt in `ledger/submissions.csv`.
+2. **Depth-Adaptive Listric Dip-Offset Schedule ($s(x) = h_{\text{base}}(x) \cot \theta_{\text{dip}}$):**
+   - Replace the fixed 3-offset envelope ($s \in \{3.6, 4.4, 5.2\}\text{ px}$) in `gems/listric_loqo.py` with a spatially varying updip projection distance $s(x) = \operatorname{clip}(h_{\text{base}}(x)\cot 52^\circ / 100\text{ m},\; 2.5,\; 6.5)\text{ px}$ governed by local basement depth (`Band 15`) and gravity vertical-to-horizontal gradient ratio (`Bands 18/19`), so shallow pediment faults ($h_{\text{base}} \approx 250\text{ m}$) project $2.5\text{ px}$ updip while deep graben master faults ($h_{\text{base}} > 600\text{ m}$) project $5.5\text{--}6.5\text{ px}$ updip.
+3. **External High-Resolution Data Staging (`USGS 3DEP 1/3 arc-second = 10 m DEM` + `Sentinel-1 ARIA/OPERA InSAR` + `Waldhauser-Ellsworth Relocated Microseismicity`):**
+   - Reaching the `0.4413` leaderboard ceiling requires sub-100 m topographic break-of-slope curvature (`10 m` 3DEP tiles aggregated to $100\text{ m}$ crest anisotropy) and short-wavelength InSAR phase-gradient lineaments to resolve $10\text{--}30\text{ m}$ intrabasin Holocene scarps that are sub-pixel in `training_features.tif`.
+
+---
+
 # Binding next steps — 2026-10-25 (`48e4797d` review)
+
+**Completed in `RELAYCONDUIT` session (`2026-10-25`, `3/3` experiments, `0` weekly slots):** pre-registered `docs/HYPOTHESES_20261025_RELAYCONDUIT.md`, validated `relay_conduit` (`0.184485 [0.169875, 0.198933]`, locally unique `0.6601 <= 0.70` across `128` local rasters, external `0.7843 > 0.70` vs `GEMSDOE53` 80k) and zero-catalogue `conduit_notip` (`SGMC PROXY = 0.106525`, externally unique `0.6557 <= 0.70` across all `1,367` external rasters in `102` repos), and emitted `evidence/relayconduit_run_card.json` + `docs/ANALYSIS_20261025_RELAYCONDUIT.md` (`verdict: negative`, `DO NOT SUBMIT`).
 
 **No experiment or weekly slot is currently authorized.** [Fresh proof and report](review48.html).
 
@@ -26,11 +131,20 @@ The unique submission request is still unmet. **Maximize P(Win)** and **Own the 
 
 ## Historical next-step proposals (not authorization)
 
-## Completed in `RELAYCONDUIT` session (`2026-10-25`, `3/3` experiments, `0` weekly slots)
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`RIEDELVENT` Integration)
 
-1. Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261025_RELAYCONDUIT.md`) and implemented `gems/relayconduit.py` + `scripts/run_relayconduit.py` (`35/35` single-feature leakage canaries PASS, max symmetric AUC `0.811014 <= 0.90`).
-2. `relay_conduit` (`d > 3.2`, `dae576a3...`) achieved strict Rule-2 `HOLDOUT-DTI = 0.184485 [0.169875, 0.198933]` (paired `+0.069008 [+0.053289, +0.084771]` over rebuilt `control_COULOMBLOQO_d32` `0.115477`), halted by automated 102-repo screening on `GEMSDOE53` 80k (`0.7843 > 0.70`); zero-catalogue hero `conduit_notip` (`b5095372...`) cleared all 101 local (`0.5070 <= 0.70`) and all 1,367 external 102-repo (`0.6557 <= 0.70`, `0` violations) operative gates with `USGS SGMC PROXY = 0.106525` and remains `negative` (`DO NOT SUBMIT`) under the binding literal `17GEMSDOE` dense-surface rule (`1.000 > 0.70`).
-3. Updated `ledger/site_scores_claimed_20261025.csv` with prompt-reported `GEMSDOE91` (`0.1367`, `0.1823`) and `GEMSDOE92` (`0.0255`) claims and documented the `VENTSCARP` §1.3 corrections in `docs/ANALYSIS_20261025_RELAYCONDUIT.md`.
+## Completed in `RIEDELVENT` session (`3/3` experiments, `0` weekly slots)
+1. **Executed `docs/NEXT_STEPS.md` Item #1 (`VENTSCARP` + `KNICKLOQO` Slope-Regime Coupling + `TENSOR-RIEDEL` $12^\circ\text{–}28^\circ$ Obliquity + `FLEXURE-HINGE` + Additive `@ 0.30` Tail) in `gems/riedelvent.py` & `scripts/run_riedelvent.py`:** Pre-registered 5 untried geological hypotheses in `docs/HYPOTHESES_20261025_RIEDELVENT.md` and verified `30/30` single-feature leakage canaries (`max symmetric AUC = 0.616694 <= 0.90`; OOF LOQO surface `0.675473 <= 0.90`).
+2. **E1 Primary (`RIEDELVENT riedelvent`, `37,654` unit dots, `bfb4a45c…`):** Achieved **`0.009682 [0.008345, 0.010822]`** static `d_cat > 2.0` `HOLDOUT-DTI` (`+0.001470 [+0.000477, +0.002492]` vs `VENTSCARP` `0.008212`, `+17.9%` lift with 95% CI > 0; `+0.005675` vs `R0` `0.004006`), **`0.104176 [0.091329, 0.117184]`** strict draw-blind Rule-2 `HOLDOUT-DTI`, and **`0.087277`** `USGS SGMC PROXY`, while passing both local (`0.5807 <= 0.70`) and 102-repo dual-reading uniqueness (`0.6190 <= 0.70`, `|ρ| = 0.3976 <= 0.90`).
+3. **E2 Ablation (`RIEDELVENT riedel_novent`, `37,654` unit dots, `7116022e…`):** Static `HOLDOUT-DTI = 0.009432 [0.007948, 0.010838]`, Rule-2 `0.106203 [0.090750, 0.119881]`, `USGS SGMC PROXY = 0.098513`, 102-repo dual-reading unique (`0.6631 <= 0.70`).
+4. **E3 Additive-Tail Allocation (`RIEDELVENT riedelvent_tail`, `64,000` dots: `37,654 @ 1.0 + 26,346 @ 0.30`, mass `45,557.8`, `fdc4dac4…`):** Strictly improved **every** benchmark over binary `riedelvent` with 95% bootstrap CIs excluding zero: static `HOLDOUT-DTI` **`0.010268 [0.008986, 0.011408]`** (`+0.000587 [+0.000373, +0.000810]` vs `riedelvent`, `+0.002057 [+0.001194, +0.003008]` vs `VENTSCARP` [`+25.0%`]), strict draw-blind Rule-2 `HOLDOUT-DTI` **`0.107465 [0.094960, 0.119761]`** (`+0.003289 [+0.002375, +0.004224]` vs `riedelvent`), off-catalogue `USGS SGMC PROXY` **`0.103378`** (`+18.4%` vs `riedelvent`, `+27.1%` vs `VENTSCARP`, `+7.8%` vs `KNICKLOQO standalone`), and 102-repo dual-reading overlap **`0.6144 <= 0.70`** (local **`0.5246 <= 0.70`**). Verdict `negative` (`OK TO DOWNLOAD FOR RESEARCH`, `DO NOT SUBMIT` under literal dense witness `1.000 > 0.70`).
+
+## Highest-P(Win) actions for the next session (in order)
+1. **Apply Additive `@ 0.30` Tail (`37,654 @ 1.0 + 26,346 @ 0.30`) to `KNICKLOQO standalone` + `RIEDELVENT` Cross-Calibrated Crest Surface:** Combine `KNICKLOQO standalone` (`0.010788` static) with `RIEDELVENT`'s `L_riedel_flex` localizer and the now-proven `64,000`-dot additive `@ 0.30` tail to target `> 0.0112` static `HOLDOUT-DTI` while keeping 102-repo dual-reading overlap `<= 0.65`.
+2. **Untried Hypotheses #2–#4 (`docs/HYPOTHESES_20261025_RIEDELVENT.md`):** Test `CURIE-POISSON-APRON` (Rank #2), `SCARP-POLARITY-VALVE` (Rank #3), and `EULER-BASEMENT-HINGE` (Rank #4).
+3. **Human Selector Policy Decision & First `ORGANIZER-CONFIRMED` Receipt:** Obtain human selector decision on literal dense-witness (`17GEMSDOE` `5,167,373` px) vs `dual_reading_unique = True` (`<= 0.6190`) and record the first `ORGANIZER-CONFIRMED` DrivenData receipt in `ledger/submissions.csv`.
+
+---
 
 # Next Steps — GEMSDOE92 (Updated 2026-10-26, Post-LISTRIC Session)
 

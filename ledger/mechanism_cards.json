@@ -739,5 +739,104 @@
     "falsifier": "Pooled HOLDOUT-DTI failing to beat repository holdout best KNICKLOQO standalone (0.010788 static, evidence/knick_loqo_run_card.json) on gems57-pooled-hide-v2, any single-feature leakage canary symmetric AUC > 0.90, or local/dual-reading public forward 3-px overlap > 0.70 / |Spearman| > 0.90.",
     "decision_rule": "Promote only if pooled HOLDOUT-DTI beats KNICKLOQO standalone (0.010788) with paired 95% CI > 0, all canaries <= 0.90, 11/11 format gates pass, AND both local registry and public dual_reading_decision uniqueness pass (<=0.70). Because 17GEMSDOE E-proba-multiscale sets every in-footprint pixel > 0 under the literal >70% public overlap clause, record submission_eligible=false and verdict='negative' (OK TO DOWNLOAD, NOT CLEARED FOR A WEEKLY SLOT) without waiving the literal rule.",
     "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/listric_proxy_audit.json"
+  },
+  "gemsdoe92-netexpand-netexpand-20261025-f705be3a": {
+    "parent": "h33-h33-2-b2",
+    "axis": "NETEXPAND",
+    "value": "netexpand",
+    "hypothesis": "Catalogue-missing geothermal faults are subordinate splays/relays of mapped systems whose scarps are diffused/buried but whose strike-blind gravity/magnetic analytic-signal edges, RTP demagnetization suppression and MT clay-cap change-points persist; learning network-context x ASA/coherence x alteration interactions in a quadrant-LOQO ensemble and emitting on pure new-channel 1-D crests recovers them off-catalogue.",
+    "mechanism": "45-feature 3-branch LOQO HGB (KNICK30 + LISTRIC4 + self-excluded visible-catalogue context5 + grav/mag ASA & coherence, curie suppression, MT change-point), within-quadrant quantile calibration, pure ASA/coherence/listric crest, 37,654 unit dots >=2.8 px spacing, d_cat>2 (far arm >4), zeros-outside float32.",
+    "non_fault_mimic": "Range-front lithologic contacts parallel to mapped faults; equant plutons; thick non-magnetic Lahontan sediments; playa salinity fronts.",
+    "falsifier": "HOLDOUT-DTI <= control_knick paired, canary >0.90, or operative overlap >0.70",
+    "decision_rule": "Promote-to-selector only per docs/HYPOTHESES_20261025_NETEXPAND.md; slots spent by selector step only.",
+    "predicted_sign_and_size": "unprojected (Protocol Rule 3)"
+  },
+  "gemsdoe92-netexpand-netexpand_far-20261025-47bacc15": {
+    "parent": "h33-h33-2-b2",
+    "axis": "NETEXPAND",
+    "value": "netexpand_far",
+    "hypothesis": "Catalogue-missing geothermal faults are subordinate splays/relays of mapped systems whose scarps are diffused/buried but whose strike-blind gravity/magnetic analytic-signal edges, RTP demagnetization suppression and MT clay-cap change-points persist; learning network-context x ASA/coherence x alteration interactions in a quadrant-LOQO ensemble and emitting on pure new-channel 1-D crests recovers them off-catalogue.",
+    "mechanism": "45-feature 3-branch LOQO HGB (KNICK30 + LISTRIC4 + self-excluded visible-catalogue context5 + grav/mag ASA & coherence, curie suppression, MT change-point), within-quadrant quantile calibration, pure ASA/coherence/listric crest, 37,654 unit dots >=2.8 px spacing, d_cat>2 (far arm >4), zeros-outside float32.",
+    "non_fault_mimic": "Range-front lithologic contacts parallel to mapped faults; equant plutons; thick non-magnetic Lahontan sediments; playa salinity fronts.",
+    "falsifier": "HOLDOUT-DTI <= control_knick paired, canary >0.90, or operative overlap >0.70",
+    "decision_rule": "Promote-to-selector only per docs/HYPOTHESES_20261025_NETEXPAND.md; slots spent by selector step only.",
+    "predicted_sign_and_size": "unprojected (Protocol Rule 3)"
+  },
+  "gemsdoe92-netexpand-nocontext-20261025-d0b7d6e4": {
+    "parent": "h33-h33-2-b2",
+    "axis": "NETEXPAND",
+    "value": "nocontext",
+    "hypothesis": "Catalogue-missing geothermal faults are subordinate splays/relays of mapped systems whose scarps are diffused/buried but whose strike-blind gravity/magnetic analytic-signal edges, RTP demagnetization suppression and MT clay-cap change-points persist; learning network-context x ASA/coherence x alteration interactions in a quadrant-LOQO ensemble and emitting on pure new-channel 1-D crests recovers them off-catalogue.",
+    "mechanism": "45-feature 3-branch LOQO HGB (KNICK30 + LISTRIC4 + self-excluded visible-catalogue context5 + grav/mag ASA & coherence, curie suppression, MT change-point), within-quadrant quantile calibration, pure ASA/coherence/listric crest, 37,654 unit dots >=2.8 px spacing, d_cat>2 (far arm >4), zeros-outside float32.",
+    "non_fault_mimic": "Range-front lithologic contacts parallel to mapped faults; equant plutons; thick non-magnetic Lahontan sediments; playa salinity fronts.",
+    "falsifier": "HOLDOUT-DTI <= control_knick paired, canary >0.90, or operative overlap >0.70",
+    "decision_rule": "Promote-to-selector only per docs/HYPOTHESES_20261025_NETEXPAND.md; slots spent by selector step only.",
+    "predicted_sign_and_size": "unprojected (Protocol Rule 3)"
+  },
+  "gemsdoe92-riedelvent-tail85k-85000-20261025-1cc99d0f": {
+    "parent": "h33-h33-2-b2",
+    "axis": "RIEDELVENT",
+    "value": "tail85k",
+    "hypothesis": "Concealed off-catalogue accommodation/transfer faults in the Walker Lane - Central Nevada Seismic Belt transition express through Pedersen-Rasmussen 3D gravity-tensor dimensionality breaks (I_step = sqrt(|I_2|)/(I_1 + eps) from tag-verified Band 13 iso_grav_anom + Band 11 iso_grav_anom_vg) coupled to Tchalenko 20 deg synthetic R and 72 deg antithetic R' Riedel strike obliquity between USGS 3DEP 10 m scarps and basement tensor strike, plus tufa-filtered INGENIOUS hydrothermal upflow conduits and GeoDAWN K/Th, U/Th, and TMI_up150-RTP magnetite-destruction residuals.",
+    "mechanism": "Tag-verified zero-catalogue 4-quadrant Leave-One-Quadrant-Out (LOQO, >=1.2 km guard band, >500 m negative buffer) 4-branch HistGradientBoostingClassifier ensemble (Full 32-feature, Riedel+Vent+10m, Province-Debiased Tensor+Geodesy, and Collinear-No-Vent auxiliary) with within-quadrant empirical quantile calibration, localized along 1D Riedel+10m+tensor crests and allocated across 85,000 spaced crests (min_dist=2.6 px, d_cat>2.0 px) via the exact Mobius-linear soft-DTI tail (37,654 core @ 1.0 + 47,346 additive secondary crests @ [0.30, 0.60]).",
+    "non_fault_mimic": "Pleistocene Lake Lahontan wave-cut beach berms (~1,330 m Sehoo highstand) and lacustrine shoreline tufa mounds (86 Tufa rows explicitly excluded from Paleo_geothermal_final.csv), plus buried caldera ring-fracture density contrasts and alpine talus slopes.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat VENTSCARP (0.112213 Rule-2) / KNICKLOQO (0.010788 static) on gems57-pooled-hide-v2, any single-feature canary symmetric AUC > 0.90, or local/dual-reading public forward 3-px overlap > 0.70 / |Spearman| > 0.90.",
+    "decision_rule": "OK TO DOWNLOAD FOR RESEARCH (11/11 + 15/15 format gates PASS in [0,1], 0 NaN, dual_reading_unique=True at 0.6971 <= 0.70 across 102 repos, #1 repo USGS SGMC PROXY 0.135694); DO NOT SUBMIT (verdict='negative', submission_eligible=false) under literal 17GEMSDOE dense-surface witness (1.000 > 0.70) and catalogue holdout below VENTSCARP/KNICKLOQO.",
+    "predicted_sign_and_size": "none; HOLDOUT-DTI recorded in evidence/riedelvent_holdout.json"
+  },
+  "gemsdoe92-riedelvent-bin37k-37654-20261025-6797160f": {
+    "parent": "h33-h33-2-b2",
+    "axis": "RIEDELVENT",
+    "value": "bin37k",
+    "hypothesis": "Concealed off-catalogue accommodation/transfer faults in the Walker Lane - Central Nevada Seismic Belt transition express through Pedersen-Rasmussen 3D gravity-tensor dimensionality breaks (I_step = sqrt(|I_2|)/(I_1 + eps) from tag-verified Band 13 iso_grav_anom + Band 11 iso_grav_anom_vg) coupled to Tchalenko 20 deg synthetic R and 72 deg antithetic R' Riedel strike obliquity between USGS 3DEP 10 m scarps and basement tensor strike, plus tufa-filtered INGENIOUS hydrothermal upflow conduits and GeoDAWN K/Th, U/Th, and TMI_up150-RTP magnetite-destruction residuals.",
+    "mechanism": "Matched-budget S=37,654 unit-mass crest placement (min_dist=3.1 px, d_cat>2.0 px) of the tag-verified 32-feature RIEDELVENT 3-branch LOQO ensemble.",
+    "non_fault_mimic": "Pleistocene Lake Lahontan wave-cut beach berms (~1,330 m Sehoo highstand) and lacustrine shoreline tufa mounds (86 Tufa rows explicitly excluded from Paleo_geothermal_final.csv), plus buried caldera ring-fracture density contrasts and alpine talus slopes.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat collinear_novent ablation or repository holdout best, or 102-repo dual-reading overlap > 0.70.",
+    "decision_rule": "OK TO DOWNLOAD FOR RESEARCH (11/11 + 15/15 format gates PASS in [0,1], 0 NaN; beats collinear_novent on Rule-2 +0.001352 and USGS SGMC PROXY +9.53%); DO NOT SUBMIT (verdict='negative', submission_eligible=false; trips 62GEMSDOE 125,890-dot witness at 0.7465 > 0.70).",
+    "predicted_sign_and_size": "none; HOLDOUT-DTI recorded in evidence/riedelvent_holdout.json"
+  },
+  "gemsdoe92-riedelvent-collinear_novent-37654-20261025-37221889": {
+    "parent": "h33-h33-2-b2",
+    "axis": "RIEDELVENT",
+    "value": "collinear_novent",
+    "hypothesis": "Controlled ablation removing 3D gravity-tensor step-over invariants, 20 deg / 72 deg Riedel strike obliquity, and INGENIOUS hydrothermal vent / GeoDAWN magnetite-destruction features while retaining collinear cos^2(Delta theta) alignment and USGS 3DEP 10 m scarp features.",
+    "mechanism": "Matched-budget S=37,654 unit-mass crest placement (min_dist=3.1 px, d_cat>2.0 px) of the 20-feature collinear no-Riedel/no-vent LOQO ablation branch.",
+    "non_fault_mimic": "Pleistocene Lake Lahontan wave-cut beach berms (~1,330 m Sehoo highstand), buried caldera ring-fracture density contrasts, and alpine talus slopes.",
+    "falsifier": "Used as controlled negative ablation baseline against riedelvent_bin37k and riedelvent_tail85k.",
+    "decision_rule": "OK TO DOWNLOAD FOR RESEARCH (11/11 + 15/15 format gates PASS in [0,1], 0 NaN); DO NOT SUBMIT (verdict='negative', submission_eligible=false; ablation control).",
+    "predicted_sign_and_size": "none; HOLDOUT-DTI recorded in evidence/riedelvent_holdout.json"
+  },
+  "gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de": {
+    "parent": "h33-h33-2-b2",
+    "axis": "RIEDELVALVE",
+    "value": "riedel_n90k",
+    "hypothesis": "Unmapped Great Basin Quaternary faults and blind geothermal upflow conduits concentrate along synthetic Riedel R (~19 deg) and conjugate antithetic R' (~72 deg) transtensional splays, bimodal structure-tensor fracture intersections sqrt(lambda_1*lambda_2), <6 deg 3DEP-10m piedmont scarps coupled with tufa-filtered DOE GDR #1391 INGENIOUS hydrothermal vents/2mDAB probes, and >=6 deg incised bedrock knickzones backed by GDAL-verified signed Band 13/11/2 potential-field tilts and an additive @0.30 N90K Tversky secondary skeleton.",
+    "mechanism": "4-quadrant Leave-One-Quadrant-Out (LOQO, >=1.2 km guard band, >500 m negative buffer, zero fault-catalogue inputs) 3-branch HistGradientBoostingClassifier ensemble over 32 physical features (Group R: 8 Riedel R/R' obliquity, bimodal intersection sqrt(det J), vorticity, flexural dipole & 3.5 km up-dip seismic projection; Group A: 8 3DEP-10m sub-pixel scarp & 10m/100m knickzone features; Group B: 8 tufa-filtered INGENIOUS hydrothermal vent, 2mDAB, GeoDAWN K/Th & U/Th, Grauch demag & radial MT dome-halo features; Group C: 8 GDAL-verified signed Band 13/11/2 Miller-Singh tilt, Poisson collinearity & Lahontan shoreline-null features), calibrated within quadrants and localized onto 1D multi-branch crests.",
+    "non_fault_mimic": "Braided alluvial-fan distributary bar intersections, conjugate columnar basalt mesa edges, evaporitic alkali-playa conductivity pans, and Pleistocene Lake Lahontan (~1,330 m) tufa towers (86 Tufa records excluded) and contour-parallel beach cusps.",
+    "falsifier": "Riedel Group-R ablation failing to beat noriedel_ablation on planar holdout, additive N90K failing to beat binary 37,654 with paired 95% CI > 0, any single-feature canary symmetric AUC > 0.90, or local/dual-reading overlap > 0.70.",
+    "decision_rule": "OK TO DOWNLOAD FOR RESEARCH (11/11 format gates PASS, [0,1] finite, 0 NaN); DO NOT SUBMIT (verdict=\"negative\", submission_eligible=false) under binding literal public dense-witness stop (17GEMSDOE E-proba-multiscale = 1.000 > 0.70).",
+    "predicted_sign_and_size": "none; HOLDOUT-DTI recorded in evidence/riedelvalve_holdout.json"
+  },
+  "gemsdoe92-riedelvalve-riedelvalve-37654-20261025-10de25be": {
+    "parent": "h33-h33-2-b2",
+    "axis": "RIEDELVALVE",
+    "value": "riedelvalve",
+    "hypothesis": "Unmapped Great Basin Quaternary faults and blind geothermal upflow conduits concentrate along synthetic Riedel R (~19 deg) and conjugate antithetic R' (~72 deg) transtensional splays, bimodal structure-tensor fracture intersections sqrt(lambda_1*lambda_2), <6 deg 3DEP-10m piedmont scarps coupled with tufa-filtered DOE GDR #1391 INGENIOUS hydrothermal vents/2mDAB probes, and >=6 deg incised bedrock knickzones backed by GDAL-verified signed Band 13/11/2 potential-field tilts and an additive @0.30 N90K Tversky secondary skeleton.",
+    "mechanism": "4-quadrant Leave-One-Quadrant-Out (LOQO, >=1.2 km guard band, >500 m negative buffer, zero fault-catalogue inputs) 3-branch HistGradientBoostingClassifier ensemble over 32 physical features (Group R: 8 Riedel R/R' obliquity, bimodal intersection sqrt(det J), vorticity, flexural dipole & 3.5 km up-dip seismic projection; Group A: 8 3DEP-10m sub-pixel scarp & 10m/100m knickzone features; Group B: 8 tufa-filtered INGENIOUS hydrothermal vent, 2mDAB, GeoDAWN K/Th & U/Th, Grauch demag & radial MT dome-halo features; Group C: 8 GDAL-verified signed Band 13/11/2 Miller-Singh tilt, Poisson collinearity & Lahontan shoreline-null features), calibrated within quadrants and localized onto 1D multi-branch crests.",
+    "non_fault_mimic": "Braided alluvial-fan distributary bar intersections, conjugate columnar basalt mesa edges, evaporitic alkali-playa conductivity pans, and Pleistocene Lake Lahontan (~1,330 m) tufa towers (86 Tufa records excluded) and contour-parallel beach cusps.",
+    "falsifier": "Riedel Group-R ablation failing to beat noriedel_ablation on planar holdout, additive N90K failing to beat binary 37,654 with paired 95% CI > 0, any single-feature canary symmetric AUC > 0.90, or local/dual-reading overlap > 0.70.",
+    "decision_rule": "OK TO DOWNLOAD FOR RESEARCH (11/11 format gates PASS, [0,1] finite, 0 NaN); DO NOT SUBMIT (verdict=\"negative\", submission_eligible=false) under binding literal public dense-witness stop (17GEMSDOE E-proba-multiscale = 1.000 > 0.70).",
+    "predicted_sign_and_size": "none; HOLDOUT-DTI recorded in evidence/riedelvalve_holdout.json"
+  },
+  "gemsdoe92-riedelvalve-noriedel_ablation-37654-20261025-32530123": {
+    "parent": "h33-h33-2-b2",
+    "axis": "RIEDELVALVE",
+    "value": "noriedel_ablation",
+    "hypothesis": "Unmapped Great Basin Quaternary faults and blind geothermal upflow conduits concentrate along synthetic Riedel R (~19 deg) and conjugate antithetic R' (~72 deg) transtensional splays, bimodal structure-tensor fracture intersections sqrt(lambda_1*lambda_2), <6 deg 3DEP-10m piedmont scarps coupled with tufa-filtered DOE GDR #1391 INGENIOUS hydrothermal vents/2mDAB probes, and >=6 deg incised bedrock knickzones backed by GDAL-verified signed Band 13/11/2 potential-field tilts and an additive @0.30 N90K Tversky secondary skeleton.",
+    "mechanism": "4-quadrant Leave-One-Quadrant-Out (LOQO, >=1.2 km guard band, >500 m negative buffer, zero fault-catalogue inputs) 3-branch HistGradientBoostingClassifier ensemble over 32 physical features (Group R: 8 Riedel R/R' obliquity, bimodal intersection sqrt(det J), vorticity, flexural dipole & 3.5 km up-dip seismic projection; Group A: 8 3DEP-10m sub-pixel scarp & 10m/100m knickzone features; Group B: 8 tufa-filtered INGENIOUS hydrothermal vent, 2mDAB, GeoDAWN K/Th & U/Th, Grauch demag & radial MT dome-halo features; Group C: 8 GDAL-verified signed Band 13/11/2 Miller-Singh tilt, Poisson collinearity & Lahontan shoreline-null features), calibrated within quadrants and localized onto 1D multi-branch crests.",
+    "non_fault_mimic": "Braided alluvial-fan distributary bar intersections, conjugate columnar basalt mesa edges, evaporitic alkali-playa conductivity pans, and Pleistocene Lake Lahontan (~1,330 m) tufa towers (86 Tufa records excluded) and contour-parallel beach cusps.",
+    "falsifier": "Riedel Group-R ablation failing to beat noriedel_ablation on planar holdout, additive N90K failing to beat binary 37,654 with paired 95% CI > 0, any single-feature canary symmetric AUC > 0.90, or local/dual-reading overlap > 0.70.",
+    "decision_rule": "OK TO DOWNLOAD FOR RESEARCH (11/11 format gates PASS, [0,1] finite, 0 NaN); DO NOT SUBMIT (verdict=\"negative\", submission_eligible=false) under binding literal public dense-witness stop (17GEMSDOE E-proba-multiscale = 1.000 > 0.70).",
+    "predicted_sign_and_size": "none; HOLDOUT-DTI recorded in evidence/riedelvalve_holdout.json"
   }
 }

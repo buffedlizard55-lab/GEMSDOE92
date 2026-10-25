@@ -1,0 +1,123 @@
+{
+  "file": "gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif",
+  "sha256": "75d61cb1e548c27c1fa8804a124287996241988f715cb50f3c65c468cb3bc1e0",
+  "bytes": 267103,
+  "submission_name": "GEMSDOE92-RIEDELVALVE-riedel_n90k-20261025",
+  "note": "RIEDELVALVE riedel_n90k: 37654@1.0+52346@0.30 Riedel+3DEP10m+Knick+INGENIOUS; HOLDOUT-DTI 0.108593 (static 0.009054) [neg]",
+  "note_chars": 122,
+  "validator": {
+    "file": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif",
+    "bytes": 267103,
+    "sha256": "75d61cb1e548c27c1fa8804a124287996241988f715cb50f3c65c468cb3bc1e0",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.004345394670963287,
+    "emitted_positive_pixels": 90000,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 90000,
+    "footprint_fraction": 0.01741697376984398
+  },
+  "template_report": {
+    "path": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif",
+    "bytes": 267103,
+    "sha256": "75d61cb1e548c27c1fa8804a124287996241988f715cb50f3c65c468cb3bc1e0",
+    "bands": 1,
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "width": 3292,
+    "height": 3730,
+    "bounds": [
+      243350.0,
+      4135550.0,
+      572550.0,
+      4508550.0
+    ],
+    "ref_bounds": [
+      243350.0,
+      4135550.0,
+      572550.0,
+      4508550.0
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "nodata": null,
+    "blocksize": [
+      256,
+      256
+    ],
+    "fixture_grid": false,
+    "has_validity_mask": false,
+    "nan_pixels": 0,
+    "infinity_pixels": 0,
+    "n_nan": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.004345394670963287,
+    "n_nonzero": 90000,
+    "mass": 53357.80062401295,
+    "mass_outside_footprint": 0,
+    "problems": [],
+    "ok": true,
+    "validation_class": "local on-disk template/range check; not organizer upload acceptance"
+  },
+  "zip_file": "gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.zip",
+  "zip_sha256": "79c434d7a23f638d549bf02d71c8d12deb44873eb51fabbc58e765f97d0c96ac",
+  "approved_for_weekly_slot": false,
+  "promoted": false,
+  "submission_slots_used": 0,
+  "status": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval",
+  "metadata": {
+    "lane": "RIEDELVALVE",
+    "arm": "riedel_n90k"
+  }
+}

@@ -1,32 +1,49 @@
 # Executive summary — GEMSDOE92 submission workbench
 
 <!-- CURRENT:BEGIN -->
-> ## Completed session lane (`2026-10-25`) — `RELAYCONDUIT` / hero arm `conduit_notip` (3 new unique-byte GeoTIFFs)
-> **✅ OK TO DOWNLOAD FOR RESEARCH** (`11/11` automated `[0, 1]` gates PASS, `0` NaN; `102`-repo operative unique `0.6557 <= 0.70`, `0` violations) · **⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT** (verdict `negative`, `submission_eligible: false`; literal `17GEMSDOE` dense-witness overlap `1.000 > 0.70`; `0` weekly slots spent).
+> ## Completed session lane (`2026-10-25`) — `RELAYCONDUIT` / hero arm `relay_conduit` (3 new unique-byte GeoTIFFs)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** (`11/11` automated `[0, 1]` gates PASS, `0` NaN; locally unique across all `128` rasters at `0.6601 <= 0.70`) · **⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT** (verdict `negative`, `submission_eligible: false`; external 102-repo overlap `0.7843 > 0.70` vs `GEMSDOE53` 80k & literal `17GEMSDOE` dense witness `1.000 > 0.70`; `0` weekly slots spent).
 >
-> **[⬇ Download research GeoTIFF (`gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-zeros.tif`)](downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-zeros.tif)** · [one-TIFF ZIP](downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-zeros.zip) · [audit JSON](downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-audit.json) · [JSON Run Card](downloads/relayconduit_run_card.json) · [holdout JSON](downloads/relayconduit_holdout.json) · [102-repo uniqueness JSON](downloads/relayconduit_uniqueness.json) · [DrivenData form steps](relayconduit.html) · [PhD Analysis (`0.2778` / `0.3195` / `0.4413`)](ANALYSIS_20261025_RELAYCONDUIT.md) · [Pre-Registered Hypotheses](HYPOTHESES_20261025_RELAYCONDUIT.md)
+> **[⬇ Download research GeoTIFF (`gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.tif`)](downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.tif)** · [one-TIFF ZIP](downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.zip) · [audit JSON](downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-audit.json) · [JSON Run Card](downloads/relayconduit_run_card.json) · [holdout JSON](downloads/relayconduit_holdout.json) · [102-repo uniqueness JSON](downloads/relayconduit_uniqueness.json) · [DrivenData form steps](relayconduit.html) · [PhD Analysis (`0.2778` / `0.3195` / `0.4413`)](ANALYSIS_20261025_RELAYCONDUIT.md) · [Pre-Registered Hypotheses](HYPOTHESES_20261025_RELAYCONDUIT.md)
 >
-> - **Record-only DrivenData form fields (do NOT upload a `negative` artifact):** separate name `GEMSDOE92-RELAYCONDUIT-conduit_notip-20261025` · note (`115/140`): `RELAYCONDUIT conduit_notip: 37654px zero-tip OOF blind+3DEP conduit d>2px; HOLDOUT-DTI 0.076416 (st 0.005733) [neg]` · zeros-outside `float32` encoding prevents `"Predicted values must be in range [0, 1]"`.
-> - **`HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives):** hero zero-catalogue `conduit_notip` strict Rule-2 `0.076416 [0.063889, 0.088770]`, static `d_cat > 2.0` `0.005733 [0.004823, 0.006714]` (beats `R0` `0.004006` and `LISTRICDIP` `0.005420`), off-catalogue **`USGS SGMC PROXY` = `0.106525`** (beats `COULOMBLOQO` `0.089332`). Tip-relay sibling `relay_conduit` scores strict Rule-2 **`0.184485 [0.169875, 0.198933]`** (paired `+0.069008 [+0.053289, +0.084771]` over rebuilt `control_COULOMBLOQO_d32` `0.115477`; exceeds `FAULTNET netfar` `0.175147`) and `relay_delta` scores `0.180061 [0.165231, 0.193562]`, halted on 102-repo 3-px overlap `0.7843 > 0.70` vs `GEMSDOE53` 80k.
-> - **Validation & `REGISTRY-MEASUREMENT`:** SHA-256 `b509537223cf333f463ebac6a527aa5beabde86201133317d8485584a742d7b9`; `35/35` leakage canaries PASS (max symmetric AUC `0.811014 <= 0.90`); `conduit_notip` local worst overlap `0.5070 <= 0.70` (`101` rasters) and 102-repo external operative worst overlap `0.6557 <= 0.70` (`1,367` rasters, `0` violations; worst `<=50k`-dot `0.4180`; surface `|rho| = 0.3154 <= 0.90`).
-> - **Siblings (`negative`, research only):** [`relay_conduit`](downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.tif) ([ZIP](downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.zip) · [audit](downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-audit.json)) · [`relay_delta`](downloads/gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-zeros.tif) ([ZIP](downloads/gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-zeros.zip) · [audit](downloads/gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-audit.json)).
+> - **Record-only DrivenData form fields (do NOT upload a `negative` artifact):** separate name `GEMSDOE92-RELAYCONDUIT-relay_conduit-20261025` · note (`113/140`): `RELAYCONDUIT relay_conduit: 37654px tip-relay+OOF blind conduit d>3.2px; HOLDOUT-DTI 0.184485 (st 0.000000) [neg]` · zeros-outside `float32` encoding prevents `"Predicted values must be in range [0, 1]"`.
+> - **`HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives):** hero `relay_conduit` strict Rule-2 **`0.184485 [0.169875, 0.198933]`** (paired `+0.069008 [0.053289, 0.084771]` over rebuilt `control_COULOMBLOQO_d32` `0.115477`; exceeds `FAULTNET netfar` `0.175147` and `VARIO full` `0.150020`); `relay_delta` `0.180061 [0.165231, 0.193562]`; zero-catalogue `conduit_notip` strict Rule-2 `0.076416 [0.063889, 0.088770]`, static `d_cat > 2.0` `0.005733`, off-catalogue **`USGS SGMC PROXY` = `0.106525`** (beats `COULOMBLOQO` `0.089332`, passes all `1,367` external rasters across 102 repos at `0.6557 <= 0.70`, `0.7031` locally vs `RIEDELVALVE riedel_n90k` 90k).
+> - **All 3 arms (`negative`, research only):** [`relay_conduit`](downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.tif) ([ZIP](downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.zip) · [audit](downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-audit.json)) · [`relay_delta`](downloads/gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-zeros.tif) ([ZIP](downloads/gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-zeros.zip) · [audit](downloads/gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-audit.json)) · [`conduit_notip`](downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-zeros.tif) ([ZIP](downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-zeros.zip) · [audit](downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-audit.json)).
 
-> ## Prior parallel lane receipt — lane FAULTNET / arm `netfar`
-> **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 0.7586 of its dots lie within 3 px of the dots of GEMSDOE37/docs/downloads/gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif (80,000 dots), above the 0.70 limit.
+> ## Parallel lane receipt — lane VARIO / arm `vario_full`
+> **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 0.9791 of its dots lie within 3 px of the dots of gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif (37,654 dots), above the 0.70 limit; did not beat control_FAULTNET_far on the holdout.
 >
-> **[⬇ Download research GeoTIFF](downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.tif)** · [one-TIFF ZIP](downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.zip) · [run card](downloads/faultnet_run_card.json) · [analysis](ANALYSIS_20261025_FAULTNET.md)
+> **[⬇ Download research GeoTIFF](downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif)** · [one-TIFF ZIP](downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.zip) · [run card](downloads/vario_run_card.json) · [analysis](ANALYSIS_20261025_VARIO.md)
 >
 > **How to submit (only with a file marked ✅ OK TO SUBMIT, which this one is not):**
 > 1. Download the `.tif` (or the ZIP holding only that TIFF).
 > 2. Go to https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/ (log in; not live-verified from the sandbox), then choose the file under *File to submit*.
-> 3. Paste this into *Note (optional)*: `FAULTNET netfar: netctx surface, dots >4px off catalogue; 37654 dots 2.8px`
-> 4. Name/record: `gemsdoe92-faultnet-netfar-20261025-3c4e9051`. After scoring, record the receipt in `ledger/submissions.csv`.
+> 3. Paste this into *Note (optional)*: `VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat>2`
+> 4. Name/record: `GEMSDOE92-VARIO-full-20261025`. After scoring, record the receipt in `ledger/submissions.csv`.
 >
-> Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `ad80f9a0fdc6bc608902accfedc783c700c4fd8a98bd5d903540aa7981ba8949`.
-> **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22,663 withheld positives): `0.175147 [0.159756, 0.189860]`. Rebuilt COULOMBLOQO control: `0.113890 [0.100783, 0.128559]`. Paired Δ `+0.061257 [0.048577, 0.074148]`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
-> **Uniqueness** (1,451 registry rasters): worst overlap `0.7586` (limit 0.70), worst |ρ| `0.1329` / surface `0.7851` (limit 0.90). Literal-support reading: 97 rasters > 0.70. That reading also fails a random raster (`#IR-92-FAULTNET-DOT-DEFINITION`).
-> Siblings: [netctx](downloads/gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif) (negative, HOLDOUT-DTI 0.148707) · [netdens](downloads/gemsdoe92-faultnet-netdens-37654-20261025-517af913-zeros.tif) (negative, HOLDOUT-DTI 0.148814). **Read [SESSION_PROMPT.md](../SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
+> Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573`.
+> **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22,663 withheld positives): `0.150020 [0.134975, 0.164286]`. control_FAULTNET_far control: `0.175147 [0.159756, 0.189860]`. Paired Δ `-0.025127 [-0.029306, -0.020842]`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
+> **Uniqueness** (99 registry rasters): worst overlap `0.9791` (limit 0.70), worst |ρ| `0.8913` / surface `0.1373` (limit 0.90). Literal-support reading: 4 raster(s) > 0.70. The literal reading is binding under the current protocol and triggers the duplicate stop.
+> Siblings: [vario_smooth](downloads/gemsdoe92-vario-smooth-37654-20261025-5c5a1192-zeros.tif) (negative, HOLDOUT-DTI 0.141661) · [vario_nctx](downloads/gemsdoe92-vario-nctx-37654-20261025-d2d499d5-zeros.tif) (negative, HOLDOUT-DTI 0.116258). **Read [SESSION_PROMPT.md](../SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
 <!-- CURRENT:END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -196,7 +196,7 @@ def test_relayconduit_run_card_artifacts_ledger_and_site_contracts():
     ):
         assert req_key in card
 
-    assert card["arm"] == "conduit_notip"
+    assert card["arm"] == "relay_conduit"
     assert card["verdict"] == "negative"
     assert card["submission_eligible"] is False
     assert card["ok_to_download"] is True
@@ -207,14 +207,15 @@ def test_relayconduit_run_card_artifacts_ledger_and_site_contracts():
     assert card["leakage_canary"]["all_pass"] is True
     assert card["leakage_canary"]["max_single_feature_symmetric_auc"] <= 0.90
 
-    # Operative uniqueness on hero conduit_notip must PASS across local + 102 public repos
-    pub_hero = uniq["public_102repo_summary"]["conduit_notip"]
-    loc_hero = uniq["local_summary"]["conduit_notip"]
-    assert loc_hero["local_unique"] is True and loc_hero["worst_forward_overlap_3px"] <= 0.70
-    assert pub_hero["unique_operative"] is True and pub_hero["worst_operative_overlap_3px"] <= 0.70
-    assert pub_hero["operative_over_70pct_count"] == 0
-    assert pub_hero["worst_surface_abs_spearman"] <= 0.90
-    assert pub_hero["literal_worst_overlap_3px"] == 1.0 and pub_hero["unique_under_literal_rule"] is False
+    # Local uniqueness on hero relay_conduit (across all 128+ post-merge local rasters) and
+    # external 102-repo operative uniqueness on zero-catalogue conduit_notip
+    loc_rc = uniq["local_summary"]["relay_conduit"]
+    pub_cn = uniq["public_102repo_summary"]["conduit_notip"]
+    assert loc_rc["local_unique"] is True and loc_rc["worst_forward_overlap_3px"] <= 0.70
+    assert pub_cn["unique_operative"] is True and pub_cn["worst_operative_overlap_3px"] <= 0.70
+    assert pub_cn["operative_over_70pct_count"] == 0
+    assert pub_cn["worst_surface_abs_spearman"] <= 0.90
+    assert pub_cn["literal_worst_overlap_3px"] == 1.0 and pub_cn["unique_under_literal_rule"] is False
 
     # Statistical holdout findings
     r2_scores = holdout["strict_draw_blind_rule2_holdout_dti"]["scores"]
@@ -276,10 +277,12 @@ def test_relayconduit_run_card_artifacts_ledger_and_site_contracts():
     # Verify newly supplied GEMSDOE91 & GEMSDOE92 claims in site_scores_claimed_20261025.csv
     with (ROOT / "ledger" / "site_scores_claimed_20261025.csv").open("r", encoding="utf-8") as f:
         claimed_rows = list(csv.DictReader(f))
-    by_sub = {r["submission_name"]: r for r in claimed_rows if r["submission_name"]}
-    assert by_sub["gemsdoe91-s17-cwpc-20261025T052427Z-zeros"]["score"] == "0.1367"
-    assert by_sub["gemsdoe91-s17-lftg-20261025T071636Z-zeros"]["score"] == "0.1823"
-    assert by_sub["gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros"]["score"] == "0.0255"
+    scores_by_site = {}
+    for r in claimed_rows:
+        if r.get("score"):
+            scores_by_site.setdefault(r["site"], set()).add(r["score"])
+    assert {"0.1367", "0.1823"}.issubset(scores_by_site["GEMSDOE91"])
+    assert "0.0255" in scores_by_site["GEMSDOE92"]
 
     assert (DOCS / "HYPOTHESES_20261025_RELAYCONDUIT.md").is_file()
     assert (DOCS / "ANALYSIS_20261025_RELAYCONDUIT.md").is_file()

@@ -1,0 +1,66 @@
+{
+ "lane": "GAPBRIDGE",
+ "hypothesis": "Blind undercover faults coincide in RTP magnetic gradient + MT conductivity gradient + basement-depth gradient + topographic slope-break (geometric-mean rank coincidence), weighted toward visible-catalogue proximity for strand continuation; dots >3px from R0/d28/solo target strands the winning lineage thinned away.",
+ "mechanism": "Fault juxtaposes magnetic basement, offsets conductive cover, steps basement depth, breaks piedmont slope simultaneously; coincidence suppresses single-layer mimics.",
+ "mimic_nonfault_process": "Lithologic contacts, buried paleo-channels, intrusive margins; depth_to_base/cond are modelled products possibly catalogue-conditioned (derived-product leakage risk flagged; measured-only S2 arm still scored HOLDOUT-DTI 0.0549 vs R0 0.0039).",
+ "holdout_dti": {
+  "evidence_class": "HOLDOUT-DTI",
+  "evaluator_version": "gems57-pooled-hide-v2",
+  "instrument": "buffered whole-component quadrant draw seeds 20,21; fold-visible d>2px emission; alpha0.2 beta0.8 300m triangular kernel",
+  "dti": 0.101457,
+  "ci95": [
+   0.088711,
+   0.112639
+  ],
+  "withheld_positive_pixels": 22893,
+  "R0_control_dti": 0.003885,
+  "paired_delta_vs_R0": 0.097572,
+  "paired_delta_ci95": [
+   0.084771,
+   0.108727
+  ]
+ },
+ "experiments": [
+  {
+   "n": 1,
+   "arm": "plain/anti 4-layer",
+   "holdout_dti": [
+    0.061735,
+    0.070666
+   ]
+  },
+  {
+   "n": 2,
+   "arm": "measured-only S2 anti",
+   "holdout_dti": 0.054923
+  },
+  {
+   "n": 3,
+   "arm": "ctx proximity-weighted anti (SHIPPED)",
+   "holdout_dti": 0.101457
+  }
+ ],
+ "leakage_canaries_AUC": {
+  "rtp_grad": 0.5288,
+  "mt_grad": 0.4887,
+  "base_grad": 0.5327,
+  "topo_break": 0.5599,
+  "S_geomean": 0.564
+ },
+ "uniqueness_local_registry": {
+  "rasters_scanned": 98,
+  "worst_forward_overlap_3px": 0.4376,
+  "worst_file": "docs/downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.tif",
+  "max_abs_spearman_surface": 0.0856,
+  "gate": "PASS (<0.70 overlap, <0.90 |rho|) vs all local downloads+bridge dotted rasters; external public registry not rescanned - limitation"
+ },
+ "raster_sha256": "14f37bb37fb27ece491b79c16a9b8a29d7c90c18755287ee4c636643ee42219d",
+ "validator": "11/11 gates PASS via validate_submission.py + make validate 9/9; values [0,1], 0 NaN, EPSG:32611 3730x3292 transform match, 37654 dots, 0 on catalogue",
+ "submission_name": "gemsdoe92-gapbridge-ctx-37654-20261025",
+ "note": "GAPBRIDGE mag+MT+basement+topo coincidence, anti-R0 dotted 37654, sep2.8px; holdout-gated",
+ "note_chars": 89,
+ "verdict": "negative",
+ "ok_to_download": true,
+ "ok_to_submit": false,
+ "submit_gate_reason": "Does not beat repo strict holdout best FAULTNET 0.1751/KNICKLOQO 0.1090; protocol forbids spending weekly slot; promotion is separate selector step."
+}

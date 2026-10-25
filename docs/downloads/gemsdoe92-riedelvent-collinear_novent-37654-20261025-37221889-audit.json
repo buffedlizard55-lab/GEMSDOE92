@@ -1,0 +1,152 @@
+{
+  "schema": "gemsdoe92-per-file-audit.v2",
+  "lane": "RIEDELVENT",
+  "arm": "collinear_novent_bin37k",
+  "generated_utc": "2026-10-25T18:23:45.601110+00:00",
+  "file_zeros": "docs/downloads/gemsdoe92-riedelvent-collinear_novent-37654-20261025-37221889-zeros.tif",
+  "file_zip": "docs/downloads/gemsdoe92-riedelvent-collinear_novent-37654-20261025-37221889-zeros.zip",
+  "sha256_zeros": "2e220bb549e65c5992ed1d068269da170e1bc5140e169ad32dba1c1a01033553",
+  "sha256_zip": "b7bfc58b55edc60469b45e0ff2f35ad34617c10df7a5a5034a85dd72dd861f19",
+  "bytes_zeros": 148966,
+  "bytes_zip": 116831,
+  "n_positive_pixels": 37654,
+  "total_mass": 37654.0,
+  "overall_pass": true,
+  "download_ok": true,
+  "submission_eligible": false,
+  "verdict": "negative",
+  "verdict_reason": "Format-valid [0, 1] research artifact (11/11 MUST gates PASS, submittable=true). Marked verdict='negative' and submission_eligible=false under binding literal public registry rule because dense witness 17GEMSDOE E-proba-multiscale (5,167,373 positive pixels) forces literal 3-px overlap 1.000 > 0.70.",
+  "submission_name": "GEMSDOE92-RIEDELVENT-collinear_novent-20261025",
+  "submission_note": "RIEDELVENT collinear_novent: 37654px collinear no-Riedel/vent ablation; HOLDOUT-DTI 0.104558 (st 0.009145) [neg]",
+  "submission_note_length": 112,
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=('float32',) count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nonfinite_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0; strict distance > radius required"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "2e220bb549e65c5992ed1d068269da170e1bc5140e169ad32dba1c1a01033553"
+    }
+  ],
+  "validator": {
+    "single_band": true,
+    "dtype_float32": true,
+    "dimensions_3730x3292": true,
+    "crs_epsg_32611": true,
+    "transform_matches_sample_submission": true,
+    "no_nan_anywhere": true,
+    "no_inf_anywhere": true,
+    "no_sentinel_values": true,
+    "range_0_1_guaranteed": true,
+    "min_ge_0": true,
+    "max_le_1": true,
+    "in_footprint_all_finite": true,
+    "in_footprint_range_0_1": true,
+    "outside_footprint_zero": true,
+    "zero_dots_on_mapped_catalogue": true
+  },
+  "local_uniqueness": {
+    "n_local_rasters_checked": 96,
+    "worst_forward_overlap_3px": 0.563844,
+    "worst_forward_witness": "local/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif",
+    "worst_surface_abs_spearman": 0.177075,
+    "worst_surface_spearman_witness": "H19_5_skeleton",
+    "local_unique": true,
+    "top5_by_overlap": [
+      {
+        "registry_raster": "local/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif",
+        "their_positive_pixels": 45000,
+        "forward_overlap_3px": 0.563844,
+        "surface_spearman_rho": 0.103422
+      },
+      {
+        "registry_raster": "local/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif",
+        "their_positive_pixels": 37654,
+        "forward_overlap_3px": 0.550406,
+        "surface_spearman_rho": 0.093315
+      },
+      {
+        "registry_raster": "local/h33-h33-2-b2-KNICKLOQOuncal-20261025-61b98143-zeros.tif",
+        "their_positive_pixels": 37654,
+        "forward_overlap_3px": 0.543926,
+        "surface_spearman_rho": 0.09125
+      },
+      {
+        "registry_raster": "H19_5_skeleton",
+        "their_positive_pixels": 121131,
+        "forward_overlap_3px": 0.53989,
+        "surface_spearman_rho": 0.177075
+      },
+      {
+        "registry_raster": "local/h33-h33-2-b2-KNICKLOQOdual35-20261025-8eedc094-zeros.tif",
+        "their_positive_pixels": 37654,
+        "forward_overlap_3px": 0.532985,
+        "surface_spearman_rho": 0.088077
+      }
+    ]
+  },
+  "public_registry_uniqueness": {
+    "candidate_hash_matches_scan": true,
+    "candidate_sha256": "2e220bb549e65c5992ed1d068269da170e1bc5140e169ad32dba1c1a01033553",
+    "repos_scanned": 102,
+    "external_rasters_checked": 1371,
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "literal_worst_overlap_3px": 1.0,
+    "literal_witness": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "dual_reading_unique": false,
+    "worst_operative_overlap_3px": 0.741143,
+    "worst_operative_witness": "62GEMSDOE/docs/downloads/gems62f-h2r-ventcons-125890-20261012T012736Z-zeros.tif",
+    "dot_fields_le_50k_worst_overlap_3px": 0.530143,
+    "worst_surface_abs_spearman": 0.417013
+  },
+  "run_card": "evidence/riedelvent_baseline_run_card.json"
+}

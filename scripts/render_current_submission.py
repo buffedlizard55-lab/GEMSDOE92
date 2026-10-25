@@ -2,13 +2,12 @@
 """Render the top-of-page lane status boxes on every entry page.
 
 Sources of truth:
-  1. evidence/relayconduit_run_card.json (newest completed 2026-10-25 RELAYCONDUIT lane)
-  2. docs/downloads/current_submission.json (preserved FAULTNET lane receipt)
+  1. evidence/relayconduit_run_card.json (completed 2026-10-25 RELAYCONDUIT lane)
+  2. docs/downloads/current_submission.json (byte-bound to VARIO primary via render_vario_status)
 
 Nothing is hand-typed: every number, hash, name and verdict comes from the JSON
 receipts. Idempotent: replaces the block between <!-- CURRENT:BEGIN --> and
-<!-- CURRENT:END --> and runs render_readiness.sync() + render_current_status.check(write=True)
-so all --check gates remain byte-exact.
+<!-- CURRENT:END --> and invokes render_vario_status.render(ROOT, write=True).
 """
 from __future__ import annotations
 
@@ -41,10 +40,11 @@ def facts(c):
     h = c["holdout_dti"]
     u = c["uniqueness"]
     ctrl = c["control"]
-    d = h["paired_vs_COULOMBLOQO_control"]
+    d = h.get("paired_vs_control", h.get("paired_vs_COULOMBLOQO_control"))
     return dict(
         dti=f"{h['dti']:.6f} {fmt_ci(h['ci95'])}", n=h["withheld_positives"], ev=h["evaluator_version"],
-        ctrl=f"{ctrl['dti']:.6f} {fmt_ci(ctrl['ci95'])}", delta=f"{d['delta']:+.6f} {fmt_ci(d['ci95'])}",
+        ctrl_name=ctrl.get("name", "control"), ctrl=f"{ctrl['dti']:.6f} {fmt_ci(ctrl['ci95'])}",
+        delta=f"{d['delta']:+.6f} {fmt_ci(d['ci95'])}",
         ovl=f"{u['worst_overlap_final']['value']:.4f}", ovl_r=u["worst_overlap_final"]["raster"],
         rho=f"{abs(u['worst_abs_rho_final']['value']):.4f}", rhos=f"{abs(u['worst_abs_rho_surface']['value']):.4f}",
         nreg=u["registry_rasters_checked"], lit=u["literal_reading"]["rasters_over_0p70"])
@@ -71,10 +71,11 @@ def rc_html_section(rc: dict, pre: str) -> str:
     u_loc = rc["correlation_overlap_vs_registry"]["local"]
     u_pub = rc["correlation_overlap_vs_registry"]["public_102_repos"]
     sibs = rc["siblings"]
+    hero_arm = rc["arm"]
 
     tif = pre + rc["primary_download"].removeprefix("docs/")
     zp = pre + rc["zip_download"].removeprefix("docs/")
-    aud = pre + sibs[rc["arm"]]["file_audit"].removeprefix("docs/")
+    aud = pre + sibs[hero_arm]["file_audit"].removeprefix("docs/")
     card = pre + "downloads/relayconduit_run_card.json"
     hold = pre + "downloads/relayconduit_holdout.json"
     uniq = pre + "downloads/relayconduit_uniqueness.json"
@@ -84,12 +85,14 @@ def rc_html_section(rc: dict, pre: str) -> str:
 
     s_rc = sibs["relay_conduit"]
     s_rd = sibs["relay_delta"]
+    s_cn = sibs["conduit_notip"]
+    p_cl = h["paired_vs_COULOMBLOQO_d32"]
 
-    return f"""<section aria-label="Newest completed session lane RELAYCONDUIT" style="border:3px solid #7f1d1d;background:#fef2f2;padding:1rem 1.2rem;margin:0 0 1.2rem 0;border-radius:8px;font-family:system-ui,sans-serif">
-  <h2 style="margin-top:0">Completed session lane (2026-10-25) — <code>{e(rc['lane'])}</code> / hero arm <code>{e(rc['arm'])}</code> (3 new unique-byte GeoTIFFs)</h2>
+    return f"""<section aria-label="Completed session lane RELAYCONDUIT" style="border:3px solid #7f1d1d;background:#fef2f2;padding:1rem 1.2rem;margin:0 0 1.2rem 0;border-radius:8px;font-family:system-ui,sans-serif">
+  <h2 style="margin-top:0">Completed session lane (2026-10-25) — <code>{e(rc['lane'])}</code> / hero arm <code>{e(hero_arm)}</code> (3 new unique-byte GeoTIFFs)</h2>
   <p style="font-size:1.15rem;margin:.25rem 0">
-    <span style="background:#14532d;color:#dcfce7;padding:0.3rem 0.65rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.15rem 0.35rem 0.15rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH (11/11 automated [0, 1] gates PASS, 0 NaN; 102-repo operative unique 0.6557 &le; 0.70)</span>
-    <span style="background:#7f1d1d;color:#fee2e2;padding:0.3rem 0.65rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.15rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (verdict <code>{e(rc['verdict'])}</code>; literal dense-witness overlap 1.000 &gt; 0.70; 0 slots spent)</span>
+    <span style="background:#14532d;color:#dcfce7;padding:0.3rem 0.65rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.15rem 0.35rem 0.15rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH (11/11 automated [0, 1] gates PASS, 0 NaN; locally unique across all {u_loc['rasters_checked']} rasters at {u_loc['worst_forward_overlap_3px']:.4f} &le; 0.70)</span>
+    <span style="background:#7f1d1d;color:#fee2e2;padding:0.3rem 0.65rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.15rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (verdict <code>{e(rc['verdict'])}</code>; external 102-repo overlap {u_pub['worst_operative_overlap_3px']:.4f} &gt; 0.70 vs GEMSDOE53 80k &amp; literal dense witness 1.000 &gt; 0.70; 0 slots spent)</span>
   </p>
   <p style="font-size:1.1rem">
     <a href="{e(tif)}" download><strong>⬇ Download research GeoTIFF ({e(rc['file'])})</strong></a>
@@ -108,16 +111,19 @@ def rc_html_section(rc: dict, pre: str) -> str:
     3) Description/note (&le;140 chars; <code>{rc['note_length']}/140</code>): <code>{e(rc['note'])}</code>.
   </p>
   <p><strong>HOLDOUT-DTI</strong> ({e(h['evaluator_version'])}, {h['withheld_positives']:,} withheld positives, 1,000-draw 20 km paired spatial-cluster bootstrap):
-    hero zero-catalogue <code>conduit_notip</code> strict Rule-2 <code>{h['dti']:.6f} {fmt_ci(h['ci95'])}</code>, static <code>d_cat &gt; 2.0</code> <code>{h['static_dcat2_dti']:.6f} {fmt_ci(h['static_dcat2_ci95'])}</code> (beats <code>R0</code> <code>0.004006</code> and <code>LISTRICDIP</code> <code>0.005420</code>), off-catalogue <strong>USGS SGMC PROXY = <code>{h['sgmc_off_catalogue_proxy']['dti']:.6f}</code></strong> (beats <code>COULOMBLOQO</code> <code>0.089332</code>).
-    Tip-relay sibling <code>relay_conduit</code> achieves strict Rule-2 <strong><code>{s_rc['rule2_holdout_dti']:.6f} {fmt_ci(s_rc['rule2_ci95'])}</code></strong> (paired <code>+0.069008 [+0.053289, +0.084771]</code> over rebuilt <code>control_COULOMBLOQO_d32</code> <code>0.115477</code>; exceeds <code>FAULTNET netfar</code> <code>0.175147</code>) and <code>relay_delta</code> achieves <code>{s_rd['rule2_holdout_dti']:.6f} {fmt_ci(s_rd['rule2_ci95'])}</code>, while automated 102-repo screening caught 3-px overlap <code>{s_rc['worst_operative_overlap_3px']:.4f} &gt; 0.70</code> against <code>GEMSDOE53</code> 80k and halted promotion. A local holdout number is never a live leaderboard score; no organizer score exists.
+    hero <code>relay_conduit</code> strict Rule-2 <strong><code>{s_rc['rule2_holdout_dti']:.6f} {fmt_ci(s_rc['rule2_ci95'])}</code></strong>
+    (paired <code>{p_cl['delta']:+.6f} {fmt_ci(p_cl['ci95'])}</code> over rebuilt <code>control_COULOMBLOQO_d32</code> <code>0.115477</code>; exceeds <code>FAULTNET netfar</code> <code>0.175147</code> and <code>VARIO full</code> <code>0.150020</code>);
+    <code>relay_delta</code> strict Rule-2 <code>{s_rd['rule2_holdout_dti']:.6f} {fmt_ci(s_rd['rule2_ci95'])}</code>;
+    zero-catalogue ablation <code>conduit_notip</code> strict Rule-2 <code>{s_cn['rule2_holdout_dti']:.6f} {fmt_ci(s_cn['rule2_ci95'])}</code>, static <code>d_cat &gt; 2.0</code> <code>{s_cn['static_holdout_dti']:.6f}</code> (beats <code>R0</code> <code>0.004006</code> and <code>LISTRICDIP</code> <code>0.005420</code>), and off-catalogue <strong>USGS SGMC PROXY = <code>0.106525</code></strong> (beats <code>COULOMBLOQO</code> <code>0.089332</code>). A local holdout number is never a live leaderboard score; no organizer score exists.
   </p>
   <p><strong>Automated validation &amp; Uniqueness (REGISTRY-MEASUREMENT):</strong>
     SHA-256 <code>{e(rc['raster_sha256'])}</code> (ZIP <code>{e(rc['zip_sha256'])}</code>); <code>35/35</code> leakage canaries PASS (max symmetric AUC <code>{rc['leakage_canary']['max_single_feature_symmetric_auc']:.6f} &le; 0.90</code>).
-    <code>conduit_notip</code> passes all <code>{u_loc['rasters_checked']}</code> local rasters (worst 3-px overlap <code>{u_loc['worst_forward_overlap_3px']:.4f} &le; 0.70</code>) and all <code>{u_pub['external_rasters_checked']:,}</code> compatible external rasters across <code>102</code> public repos (worst operative 3-px overlap <code>{u_pub['worst_operative_overlap_3px']:.4f} &le; 0.70</code>, <code>0</code> violations; worst <code>&le;50k</code>-dot overlap <code>{u_pub['dot_fields_le_50k_worst_overlap_3px']:.4f}</code>; worst surface <code>|&rho;| = {u_pub['worst_surface_abs_spearman']:.4f} &le; 0.90</code>), while literal full-footprint witness <code>17GEMSDOE_E-proba-multiscale</code> forces literal overlap <code>1.000 &gt; 0.70</code>.
+    <code>relay_conduit</code> passes all <code>{u_loc['rasters_checked']}</code> local rasters (worst 3-px overlap <code>{u_loc['worst_forward_overlap_3px']:.4f} &le; 0.70</code>) and stops on external 102-repo 3-px overlap <code>{u_pub['worst_operative_overlap_3px']:.4f} &gt; 0.70</code> vs <code>GEMSDOE53</code> 80k; meanwhile zero-catalogue <code>conduit_notip</code> passes all <code>{u_pub['external_rasters_checked']:,}</code> external rasters across 102 repos (<code>0.6557 &le; 0.70</code>, <code>0</code> external violations) and hits <code>0.7031 &gt; 0.70</code> locally only against concurrently merged <code>RIEDELVALVE riedel_n90k</code> (<code>90,000</code> dots), while literal full-footprint witness <code>17GEMSDOE_E-proba-multiscale</code> forces literal overlap <code>1.000 &gt; 0.70</code>.
   </p>
-  <p>Sibling downloads (research only, <code>negative</code>):
-    <a href="{e(pre + s_rc['file_zeros'].removeprefix('docs/'))}" download>relay_conduit TIF</a> (<a href="{e(pre + s_rc['file_zip'].removeprefix('docs/'))}" download>ZIP</a> · <a href="{e(pre + s_rc['file_audit'].removeprefix('docs/'))}">audit</a>, Rule-2 HOLDOUT-DTI {s_rc['rule2_holdout_dti']:.6f})
-    · <a href="{e(pre + s_rd['file_zeros'].removeprefix('docs/'))}" download>relay_delta TIF</a> (<a href="{e(pre + s_rd['file_zip'].removeprefix('docs/'))}" download>ZIP</a> · <a href="{e(pre + s_rd['file_audit'].removeprefix('docs/'))}">audit</a>, Rule-2 HOLDOUT-DTI {s_rd['rule2_holdout_dti']:.6f}).
+  <p>All 3 pre-registered RELAYCONDUIT arms (research only, <code>negative</code>):
+    <a href="{e(pre + s_rc['file_zeros'].removeprefix('docs/'))}" download>relay_conduit TIF</a> (<a href="{e(pre + s_rc['file_zip'].removeprefix('docs/'))}" download>ZIP</a> · <a href="{e(pre + s_rc['file_audit'].removeprefix('docs/'))}">audit</a>)
+    · <a href="{e(pre + s_rd['file_zeros'].removeprefix('docs/'))}" download>relay_delta TIF</a> (<a href="{e(pre + s_rd['file_zip'].removeprefix('docs/'))}" download>ZIP</a> · <a href="{e(pre + s_rd['file_audit'].removeprefix('docs/'))}">audit</a>)
+    · <a href="{e(pre + s_cn['file_zeros'].removeprefix('docs/'))}" download>conduit_notip TIF</a> (<a href="{e(pre + s_cn['file_zip'].removeprefix('docs/'))}" download>ZIP</a> · <a href="{e(pre + s_cn['file_audit'].removeprefix('docs/'))}">audit</a>).
   </p>
 </section>"""
 
@@ -127,10 +133,11 @@ def rc_md_section(rc: dict, pre: str) -> str:
     u_loc = rc["correlation_overlap_vs_registry"]["local"]
     u_pub = rc["correlation_overlap_vs_registry"]["public_102_repos"]
     sibs = rc["siblings"]
+    hero_arm = rc["arm"]
 
     tif = pre + rc["primary_download"].removeprefix("docs/")
     zp = pre + rc["zip_download"].removeprefix("docs/")
-    aud = pre + sibs[rc["arm"]]["file_audit"].removeprefix("docs/")
+    aud = pre + sibs[hero_arm]["file_audit"].removeprefix("docs/")
     card = pre + "downloads/relayconduit_run_card.json"
     hold = pre + "downloads/relayconduit_holdout.json"
     uniq = pre + "downloads/relayconduit_uniqueness.json"
@@ -140,16 +147,17 @@ def rc_md_section(rc: dict, pre: str) -> str:
 
     s_rc = sibs["relay_conduit"]
     s_rd = sibs["relay_delta"]
+    s_cn = sibs["conduit_notip"]
+    p_cl = h["paired_vs_COULOMBLOQO_d32"]
 
-    return f"""> ## Completed session lane (`2026-10-25`) — `{rc['lane']}` / hero arm `{rc['arm']}` (3 new unique-byte GeoTIFFs)
-> **✅ OK TO DOWNLOAD FOR RESEARCH** (`11/11` automated `[0, 1]` gates PASS, `0` NaN; `102`-repo operative unique `0.6557 <= 0.70`, `0` violations) · **⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT** (verdict `{rc['verdict']}`, `submission_eligible: false`; literal `17GEMSDOE` dense-witness overlap `1.000 > 0.70`; `0` weekly slots spent).
+    return f"""> ## Completed session lane (`2026-10-25`) — `{rc['lane']}` / hero arm `{hero_arm}` (3 new unique-byte GeoTIFFs)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** (`11/11` automated `[0, 1]` gates PASS, `0` NaN; locally unique across all `{u_loc['rasters_checked']}` rasters at `{u_loc['worst_forward_overlap_3px']:.4f} <= 0.70`) · **⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT** (verdict `{rc['verdict']}`, `submission_eligible: false`; external 102-repo overlap `{u_pub['worst_operative_overlap_3px']:.4f} > 0.70` vs `GEMSDOE53` 80k & literal `17GEMSDOE` dense witness `1.000 > 0.70`; `0` weekly slots spent).
 >
 > **[⬇ Download research GeoTIFF (`{rc['file']}`)]({tif})** · [one-TIFF ZIP]({zp}) · [audit JSON]({aud}) · [JSON Run Card]({card}) · [holdout JSON]({hold}) · [102-repo uniqueness JSON]({uniq}) · [DrivenData form steps]({subp}) · [PhD Analysis (`0.2778` / `0.3195` / `0.4413`)]({ana}) · [Pre-Registered Hypotheses]({hyp})
 >
 > - **Record-only DrivenData form fields (do NOT upload a `negative` artifact):** separate name `{rc['submission_name']}` · note (`{rc['note_length']}/140`): `{rc['note']}` · zeros-outside `float32` encoding prevents `"Predicted values must be in range [0, 1]"`.
-> - **`HOLDOUT-DTI` (`{h['evaluator_version']}`, `{h['withheld_positives']:,}` withheld positives):** hero zero-catalogue `conduit_notip` strict Rule-2 `{h['dti']:.6f} {fmt_ci(h['ci95'])}`, static `d_cat > 2.0` `{h['static_dcat2_dti']:.6f} {fmt_ci(h['static_dcat2_ci95'])}` (beats `R0` `0.004006` and `LISTRICDIP` `0.005420`), off-catalogue **`USGS SGMC PROXY` = `{h['sgmc_off_catalogue_proxy']['dti']:.6f}`** (beats `COULOMBLOQO` `0.089332`). Tip-relay sibling `relay_conduit` scores strict Rule-2 **`{s_rc['rule2_holdout_dti']:.6f} {fmt_ci(s_rc['rule2_ci95'])}`** (paired `+0.069008 [+0.053289, +0.084771]` over rebuilt `control_COULOMBLOQO_d32` `0.115477`; exceeds `FAULTNET netfar` `0.175147`) and `relay_delta` scores `{s_rd['rule2_holdout_dti']:.6f} {fmt_ci(s_rd['rule2_ci95'])}`, halted on 102-repo 3-px overlap `{s_rc['worst_operative_overlap_3px']:.4f} > 0.70` vs `GEMSDOE53` 80k.
-> - **Validation & `REGISTRY-MEASUREMENT`:** SHA-256 `{rc['raster_sha256']}`; `35/35` leakage canaries PASS (max symmetric AUC `{rc['leakage_canary']['max_single_feature_symmetric_auc']:.6f} <= 0.90`); `conduit_notip` local worst overlap `{u_loc['worst_forward_overlap_3px']:.4f} <= 0.70` (`{u_loc['rasters_checked']}` rasters) and 102-repo external operative worst overlap `{u_pub['worst_operative_overlap_3px']:.4f} <= 0.70` (`{u_pub['external_rasters_checked']:,}` rasters, `0` violations; worst `<=50k`-dot `{u_pub['dot_fields_le_50k_worst_overlap_3px']:.4f}`; surface `|rho| = {u_pub['worst_surface_abs_spearman']:.4f} <= 0.90`).
-> - **Siblings (`negative`, research only):** [`relay_conduit`]({pre + s_rc['file_zeros'].removeprefix('docs/')}) ([ZIP]({pre + s_rc['file_zip'].removeprefix('docs/')}) · [audit]({pre + s_rc['file_audit'].removeprefix('docs/')})) · [`relay_delta`]({pre + s_rd['file_zeros'].removeprefix('docs/')}) ([ZIP]({pre + s_rd['file_zip'].removeprefix('docs/')}) · [audit]({pre + s_rd['file_audit'].removeprefix('docs/')}))."""
+> - **`HOLDOUT-DTI` (`{h['evaluator_version']}`, `{h['withheld_positives']:,}` withheld positives):** hero `relay_conduit` strict Rule-2 **`{s_rc['rule2_holdout_dti']:.6f} {fmt_ci(s_rc['rule2_ci95'])}`** (paired `{p_cl['delta']:+.6f} {fmt_ci(p_cl['ci95'])}` over rebuilt `control_COULOMBLOQO_d32` `0.115477`; exceeds `FAULTNET netfar` `0.175147` and `VARIO full` `0.150020`); `relay_delta` `{s_rd['rule2_holdout_dti']:.6f} {fmt_ci(s_rd['rule2_ci95'])}`; zero-catalogue `conduit_notip` strict Rule-2 `{s_cn['rule2_holdout_dti']:.6f} {fmt_ci(s_cn['rule2_ci95'])}`, static `d_cat > 2.0` `{s_cn['static_holdout_dti']:.6f}`, off-catalogue **`USGS SGMC PROXY` = `0.106525`** (beats `COULOMBLOQO` `0.089332`, passes all `1,367` external rasters across 102 repos at `0.6557 <= 0.70`, `0.7031` locally vs `RIEDELVALVE riedel_n90k` 90k).
+> - **All 3 arms (`negative`, research only):** [`relay_conduit`]({pre + s_rc['file_zeros'].removeprefix('docs/')}) ([ZIP]({pre + s_rc['file_zip'].removeprefix('docs/')}) · [audit]({pre + s_rc['file_audit'].removeprefix('docs/')})) · [`relay_delta`]({pre + s_rd['file_zeros'].removeprefix('docs/')}) ([ZIP]({pre + s_rd['file_zip'].removeprefix('docs/')}) · [audit]({pre + s_rd['file_audit'].removeprefix('docs/')})) · [`conduit_notip`]({pre + s_cn['file_zeros'].removeprefix('docs/')}) ([ZIP]({pre + s_cn['file_zip'].removeprefix('docs/')}) · [audit]({pre + s_cn['file_audit'].removeprefix('docs/')}))."""
 
 
 def html_block(c, pre, rc=None):
@@ -171,10 +179,10 @@ def html_block(c, pre, rc=None):
                      for a, s in c["siblings"].items())
     rc_part = (rc_html_section(rc, pre) + "\n") if rc is not None else ""
     return f"""{BEGIN}
-{rc_part}<section aria-label="Prior FAULTNET lane receipt" style="border:2px solid {bd};background:{bg};padding:0.9rem 1.2rem;margin:0 0 1.2rem 0;border-radius:8px;font-family:system-ui,sans-serif">
-  <h2 style="margin-top:0">Prior parallel lane receipt — lane {e(c['lane'])} / arm <code>{e(c['arm'])}</code></h2>
+{rc_part}<section aria-label="Current submission" style="border:3px solid {bd};background:{bg};padding:1rem 1.2rem;margin:0 0 1.2rem 0;border-radius:8px;font-family:system-ui,sans-serif">
+  <h2 style="margin-top:0">Parallel lane receipt — lane {e(c['lane'])} / arm <code>{e(c['arm'])}</code></h2>
   {status}
-  <p style="font-size:1.05rem"><a href="{e(tif)}" download><strong>⬇ Download research GeoTIFF ({e(c['file'].split('/')[-1])})</strong></a> · <a href="{e(zp)}" download>one-TIFF ZIP</a> · <a href="{e(card)}">run card (JSON)</a> · <a href="{e(ana)}">analysis</a></p>
+  <p style="font-size:1.15rem"><a href="{e(tif)}" download><strong>⬇ Download research GeoTIFF ({e(c['file'].split('/')[-1])})</strong></a> · <a href="{e(zp)}" download>one-TIFF ZIP</a> · <a href="{e(card)}">run card (JSON)</a> · <a href="{e(ana)}">analysis</a></p>
   <p><strong>{'How to submit this file:' if c['ok_to_submit'] else 'How to submit (only do this with a file marked ✅ OK TO SUBMIT, which this one is not):'}</strong></p>
   <ol>
     <li>Download the <code>.tif</code> above (or the ZIP that contains only that TIFF).</li>
@@ -183,8 +191,8 @@ def html_block(c, pre, rc=None):
     <li>Name your file/record as: <code>{e(c['submission_name'])}</code>, then submit. Record the score receipt in <code>ledger/submissions.csv</code>.</li>
   </ol>
   <p><strong>Automated validation (no human inspection):</strong> single band float32, EPSG:32611, 3730 × 3292, transform equal to <code>sample_submission.tif</code>, every value finite and in [0, 1], 0 NaN, 0 outside the footprint, 0 dots on mapped faults. This prevents the portal error <em>"Predicted values must be in range [0, 1]"</em>. SHA-256 <code>{e(c['sha256'])}</code>.</p>
-  <p><strong>HOLDOUT-DTI</strong> ({e(f['ev'])}, {f['n']:,} withheld positives, 95% CI from a paired 20 km cluster bootstrap): <code>{f['dti']}</code>. Rebuilt COULOMBLOQO control on the same folds: <code>{f['ctrl']}</code>. Paired Δ: <code>{f['delta']}</code>. A holdout number is <em>not</em> a leaderboard score. No ORGANIZER-CONFIRMED score exists for this file.</p>
-  <p><strong>Uniqueness</strong> (REGISTRY-MEASUREMENT, {f['nreg']:,} rasters: the public GEMSDOE* index plus local lineage): worst dot overlap <code>{f['ovl']}</code> (limit 0.70; vs <code>{e(f['ovl_r'])}</code>), worst |ρ| final <code>{f['rho']}</code> / surface <code>{f['rhos']}</code> (limit 0.90). Under the literal positive-support reading, {f['lit']} rasters exceed 0.70. Under that reading even a random raster fails, so it is reported but not used (<code>#IR-92-FAULTNET-DOT-DEFINITION</code>).</p>
+  <p><strong>HOLDOUT-DTI</strong> ({e(f['ev'])}, {f['n']:,} withheld positives, 95% CI from a paired 20 km cluster bootstrap): <code>{f['dti']}</code>. {e(f['ctrl_name'])} control on the same folds: <code>{f['ctrl']}</code>. Paired Δ: <code>{f['delta']}</code>. A holdout number is <em>not</em> a leaderboard score. No ORGANIZER-CONFIRMED score exists for this file.</p>
+  <p><strong>Uniqueness</strong> (REGISTRY-MEASUREMENT, {f['nreg']:,} rasters: the public GEMSDOE* index plus local lineage): worst dot overlap <code>{f['ovl']}</code> (limit 0.70; vs <code>{e(f['ovl_r'])}</code>), worst |ρ| final <code>{f['rho']}</code> / surface <code>{f['rhos']}</code> (limit 0.90). Under the literal positive-support reading, {f['lit']} raster(s) exceed 0.70. The literal reading is binding under the current protocol, so this triggers the duplicate stop.</p>
   <p>Sibling arms (research only): {sib}. Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.</p>
 </section>
 {END}"""
@@ -201,7 +209,7 @@ def md_block(c, pre, rc=None):
     sib = " · ".join(f"[{a}]({pre + s['file'].removeprefix('docs/')}) ({s['verdict']}, HOLDOUT-DTI {s['dti']:.6f})" for a, s in c["siblings"].items())
     rc_part = (rc_md_section(rc, pre) + "\n\n") if rc is not None else ""
     return f"""{BEGIN}
-{rc_part}> ## Prior parallel lane receipt — lane {c['lane']} / arm `{c['arm']}`
+{rc_part}> ## Parallel lane receipt — lane {c['lane']} / arm `{c['arm']}`
 > {status}
 >
 > **[⬇ Download research GeoTIFF]({tif})** · [one-TIFF ZIP]({zp}) · [run card]({card}) · [analysis]({ana})
@@ -213,13 +221,13 @@ def md_block(c, pre, rc=None):
 > 4. Name/record: `{c['submission_name']}`. After scoring, record the receipt in `ledger/submissions.csv`.
 >
 > Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `{c['sha256']}`.
-> **HOLDOUT-DTI** ({f['ev']}, {f['n']:,} withheld positives): `{f['dti']}`. Rebuilt COULOMBLOQO control: `{f['ctrl']}`. Paired Δ `{f['delta']}`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
-> **Uniqueness** ({f['nreg']:,} registry rasters): worst overlap `{f['ovl']}` (limit 0.70), worst |ρ| `{f['rho']}` / surface `{f['rhos']}` (limit 0.90). Literal-support reading: {f['lit']} rasters > 0.70. That reading also fails a random raster (`#IR-92-FAULTNET-DOT-DEFINITION`).
+> **HOLDOUT-DTI** ({f['ev']}, {f['n']:,} withheld positives): `{f['dti']}`. {f['ctrl_name']} control: `{f['ctrl']}`. Paired Δ `{f['delta']}`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
+> **Uniqueness** ({f['nreg']:,} registry rasters): worst overlap `{f['ovl']}` (limit 0.70), worst |ρ| `{f['rho']}` / surface `{f['rhos']}` (limit 0.90). Literal-support reading: {f['lit']} raster(s) > 0.70. The literal reading is binding under the current protocol and triggers the duplicate stop.
 > Siblings: {sib}. **Read [SESSION_PROMPT.md](SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
 {END}"""
 
 
-ANCHORS = ("<!-- CURRENT-READINESS:END -->", "<!-- CURRENT-STATUS:END -->")
+ANCHORS = ("<!-- VARIO-STATUS:END -->", "<!-- CURRENT-READINESS:END -->", "<!-- CURRENT-STATUS:END -->")
 
 
 def inject(text, block, is_html):
@@ -240,6 +248,9 @@ def inject(text, block, is_html):
 
 
 def main() -> int:
+    sys.path.insert(0, str(ROOT))
+    from scripts import render_vario_status
+    render_vario_status.render(ROOT, write=True)
     c = json.loads(CUR.read_text())
     rc = json.loads(RC_CARD.read_text()) if RC_CARD.is_file() else None
     for p, pre in HTML_PAGES.items():
@@ -251,10 +262,7 @@ def main() -> int:
             if p.name == "SUBMIT.md":
                 blk = blk.replace("](SESSION_PROMPT.md)", "](../SESSION_PROMPT.md)")
             p.write_text(inject(p.read_text(), blk, False))
-    sys.path.insert(0, str(ROOT))
-    from scripts import render_current_status, render_readiness
-    render_readiness.sync()
-    render_current_status.check(write=True)
+    render_vario_status.render(ROOT, write=True)
     print("rendered current-submission block into", len(HTML_PAGES) + len(MD_PAGES), "pages")
     return 0
 
