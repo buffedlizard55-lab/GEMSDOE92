@@ -1,0 +1,180 @@
+{
+  "schema": "gemsdoe92-run-card.v3",
+  "lane": "DILATATION",
+  "date": "20261025T150743Z",
+  "hypothesis": "The USGS/INGENIOUS catalogue maps Quaternary scarps; geothermal permeability is controlled by where the crust is actively opening. DILATATION tests Band 8 geodetic dilatation rate: shift parent-dot mass from low/mid to the high-dilatation tercile (>= p67) on H19-5 ridge support with d_cat > 2.0 px, holding the 37,654-dot budget fixed. Rate in nstrain/yr from the pinned 19-band GeoDAWN stack (Band 8).",
+  "mechanism": "Percentile-ranked Band 8 dilatation field defines low/mid/high terciles; the 5,648 lowest-dilatation parent dots are relocated (exact expected marginal DTI refill) into high-dilatation tercile cells on valid, off-catalogue (d_cat > 2.0 px) H19-5 support; unit mass and count held. Pure array math; the catalogue is used only for masking/clearance, never to build features.",
+  "named_non_fault_mimic": "Distributed alluvial compaction / groundwater pumping subsidence bowls (e.g. Clayton Valley), and elastic strain shadows around locked Walker Lane segments where dilatation is high but permeability is shear-parallel rather than open.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "alpha": 0.2,
+    "beta": 0.8,
+    "triangular_radius_m": 300.0,
+    "instrument": "static d_cat > 2.0 deployment, pooled gems57-pooled-hide-v2, seeds 20+30, 8 buffered quadrant folds, 1000-draw paired spatial-block bootstrap CI",
+    "withheld_positives": 22663,
+    "scores": {
+      "p15dilatation": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.005818117979644988,
+        "ci95": [
+          0.00483805617240567,
+          0.006911587751147571
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 187.40483814600455,
+        "fpw": 70213.39505492155,
+        "fnw": 22475.59516185399
+      },
+      "R0": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.004006147174684743,
+        "ci95": [
+          0.0034243961318463374,
+          0.004689525221466778
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 129.29712893913688,
+        "fpw": 70592.1164043663,
+        "fnw": 22533.70287106087
+      }
+    },
+    "paired_vs_R0": {
+      "delta": 0.0018119708049602447,
+      "ci95": [
+        0.0011061330552847716,
+        0.002535362671785804
+      ]
+    },
+    "beats_parent_R0": true,
+    "beats_holdout_best": false,
+    "holdout_best_reference": {
+      "holdout_best_rule2_d_visible_2": 0.113316,
+      "holdout_best_static_d_cat_2": 0.00922,
+      "reference_lane": "COULOMB-LOQO standalone"
+    }
+  },
+  "leakage_canaries": {
+    "source": "evidence/dilatation_proxy_audit.json (single-feature symmetric AUC vs pooled withheld truth)",
+    "max_symmetric_auc": 0.514862,
+    "all_pass_le_0p90": true,
+    "per_feature": {
+      "training_band_8_geod_dilaterate": 0.514464,
+      "training_band_7_geod_shearrate": 0.512772,
+      "training_band_4_geod_2ndinv": 0.510186,
+      "training_band_15_depth_to_base_surf": 0.514862,
+      "training_band_17_cond_surf": 0.505983
+    }
+  },
+  "correlation_overlap_vs_registry": {
+    "local": {
+      "rasters_checked": 111,
+      "complete": false,
+      "worst_literal_forward_overlap": 1.0,
+      "worst_literal_file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
+      "worst_abs_spearman": 1.000000000000008,
+      "worst_spearman_file": "h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432.tif",
+      "duplicate": true
+    },
+    "matched_budget_dense_witnesses": [],
+    "public": {
+      "available": false,
+      "scope": "102-repo public scan not available in this sandbox (no gh auth, no cached inventory)"
+    },
+    "dense_witness": "The pinned 17GEMSDOE E-proba-multiscale full-footprint witness is not cached in this sandbox; the literal gate is binding regardless: any nonempty in-footprint prediction overlaps a full-footprint-positive witness at 1.0 > 0.70."
+  },
+  "raster_sha256": "cc79c48ae0f46b0c22cd410305a773e72b719833718bceed2c5bcda3c8c38052",
+  "zip_sha256": "eb4a76d9c766429b7942283d7501ffec7bef321a8eeac57dc6694ad89b11ae13",
+  "file": "docs/downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif",
+  "validator_output": {
+    "no_nan_in_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "dots": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=float32 count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nan_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      },
+      {
+        "name": "submission_encoding",
+        "ok": true,
+        "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "cc79c48ae0f46b0c22cd410305a773e72b719833718bceed2c5bcda3c8c38052"
+      }
+    ]
+  },
+  "submission_name": "GEMSDOE92-DILATATION-p15-20261025",
+  "submission_note": "h33-h33-2-b2; DILATATION p15: 5648 dots shifted low-to-high geodetic dilatation tercile on H19-5, d_cat>2px; HOLDOUT-DTI 0.005818; negative",
+  "note_chars": 139,
+  "experiments_used": "1/3 (this lane; build + finalize)",
+  "weekly_slots_used": 0,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "verdict_reason": "static HOLDOUT-DTI 0.005818 vs holdout-best 0.113316 (Rule-2); paired delta vs R0 0.001812 CI [0.001106, 0.002535]; literal registry duplicate=True; gates_ok=True; max AUC 0.5149",
+  "organizer_confirmed": null
+}
