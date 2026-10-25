@@ -115,11 +115,11 @@ def test_faultnet_lane_is_explicitly_negative_while_site_status_remains_authorit
 
     # Repository-wide readiness is authoritative and must distinguish the
     # downloadable research primary from upload permission on every entry page.
-    assert "CURRENT-STATUS:BEGIN" in readme
-    readme_status = readme.split("<!-- CURRENT-STATUS:BEGIN -->", 1)[1].split("<!-- CURRENT-STATUS:END -->", 1)[0]
+    assert "VARIO-STATUS:BEGIN" in readme
+    readme_status = readme.split("<!-- VARIO-STATUS:BEGIN -->", 1)[1].split("<!-- VARIO-STATUS:END -->", 1)[0]
     assert "OK TO DOWNLOAD FOR RESEARCH" in readme_status and "DO NOT SUBMIT" in readme_status
-    assert "CURRENT-READINESS:BEGIN" in index
-    site_status = index.split("<!-- CURRENT-READINESS:BEGIN -->", 1)[1].split("<!-- CURRENT-READINESS:END -->", 1)[0]
+    assert "VARIO-STATUS:BEGIN" in index
+    site_status = index.split("<!-- VARIO-STATUS:BEGIN -->", 1)[1].split("<!-- VARIO-STATUS:END -->", 1)[0]
     assert "OK TO DOWNLOAD FOR RESEARCH" in site_status and "DO NOT SUBMIT" in site_status
 
     # The lane-specific receipt remains visible as a negative research result,

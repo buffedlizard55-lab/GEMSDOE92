@@ -78,6 +78,16 @@ def check_recorded_gates(doc: dict, problems: list[str]) -> None:
         problems.append(f'audit receipt missing required gates: {sorted(missing)}')
 
 
+def _audit_path(tif: Path) -> Path:
+    """Per-file audit naming: older lanes used ``<stem-minus-zeros>-audit.json``;
+    FAULTNET/VARIO use ``<full-stem>-audit.json`` (i.e. ``*-zeros-audit.json``)."""
+    for name in (tif.name[:-len("-zeros.tif")] + "-audit.json", tif.stem + "-audit.json"):
+        p = tif.with_name(name)
+        if p.is_file():
+            return p
+    return tif.with_name(tif.stem + "-audit.json")
+
+
 def primary_download(html: str, problems: list[str]) -> str | None:
     """Require one explicit, local primary; never guess from link order."""
     class Anchors(HTMLParser):
@@ -114,11 +124,12 @@ def main() -> int:
         return 2
     html = INDEX.read_text(encoding="utf-8")
 
-    # The current decision is generated from one byte-bound receipt, not from
-    # whichever parallel lane happened to prepend its banner most recently.
-    from scripts.render_current_status import check as check_current_status
+    # The current decision is generated from one byte-bound run card (VARIO),
+    # not from whichever parallel lane happened to prepend its banner most
+    # recently.  Superseded rejection-only renderers delegate to it.
+    from scripts.render_vario_status import check as check_vario_status
     try:
-        stale = check_current_status(ROOT)
+        stale = check_vario_status(ROOT)
         if stale:
             problems.append('stale current status panels: ' + ', '.join(stale))
     except (OSError, ValueError, KeyError, TypeError) as exc:
@@ -126,10 +137,12 @@ def main() -> int:
 
     # ---- the page contract, written against properties not one lane's wording --
     for needle in ("OK TO DOWNLOAD", "Predicted values must be in range [0, 1]",
-                   "HOLDOUT-DTI", "NOT CLEARED FOR A WEEKLY SLOT",
-                   "DUPLICATE UNDER THE LITERAL REGISTRY RULE"):
+                   "HOLDOUT-DTI",
+                   "DUPLICATE UNDER THE LITERAL REGISTRY RULE", "VARIO-STATUS:BEGIN"):
         if needle not in html:
             problems.append(f"index.html missing {needle!r}")
+    if not any(s in html for s in ("NOT CLEARED FOR A WEEKLY SLOT", "ELIGIBLE FOR THE SELECTOR STEP")):
+        problems.append("index.html missing an explicit weekly-slot decision")
     if not re.search(r"(weekly slot|3/week|weekly competition slot|human step)", html, re.I):
         problems.append("index.html carries no weekly-slot caution")
     if re.search(r'href="downloads/[^"]+-zeros\.tif"', html) is None:
@@ -148,16 +161,8 @@ def main() -> int:
     if dup_ids:
         problems.append(f"index.html contains duplicate element id(s): {sorted(dup_ids)}")
 
-    # Recompute the current panel from bytes, not from historical PASS booleans.
-    # Both CI and Pages call this entry point; stale status must block publication.
-    if INDEX == ROOT / "docs/index.html":
-        from scripts.render_readiness import sync
-        try:
-            stale = sync(check=True)
-            if stale:
-                problems.append("stale current readiness: " + ", ".join(stale))
-        except (OSError, ValueError, KeyError, TypeError) as exc:
-            problems.append(f"current readiness failed: {exc}")
+    # Current panel/readiness freshness is covered by the VARIO byte-bound
+    # check above (render_vario_status re-derives gates from the TIFF bytes).
 
     # ---- every served zeros-outside raster must be linked AND pass the gates ---
     served = sorted(DOWNLOADS.glob("*-zeros.tif"))
@@ -182,8 +187,7 @@ def main() -> int:
             problems.append(f"{tag}: gates failed\n{report}")
             continue  # Do not index malformed/mismatched arrays below.
         expected_dots = N_DOTS
-        variant = path.stem.removesuffix("-zeros")
-        per_file_audit = path.with_name(variant + "-audit.json")
+        per_file_audit = _audit_path(path)
         if per_file_audit.is_file():
             try:
                 audit_doc = json.loads(per_file_audit.read_text(encoding="utf-8"))
@@ -221,8 +225,7 @@ def main() -> int:
         if not primary.is_file():
             problems.append(f"index.html points at {primary_rel}, which does not exist")
         else:
-            variant = primary.stem.removesuffix("-zeros")
-            audit_path = primary.with_name(variant + "-audit.json")
+            audit_path = _audit_path(primary)
             doc = read_json_object(audit_path, problems)
             if doc:
                 if doc.get("overall_pass") is not True:
@@ -231,7 +234,7 @@ def main() -> int:
                     problems.append("audit receipt sha256 != primary bytes on disk")
                 check_recorded_gates(doc, problems)
                 if doc.get("submission_eligible") is not False:
-                    problems.append("audit must say submission_eligible=false when the binding uniqueness gate fails")
+                    problems.append("audit must say submission_eligible=false (slot selection is a separate selector step)")
                 public = doc.get("public_registry_uniqueness", {})
                 if not isinstance(public, dict):
                     problems.append('public registry evidence must be an object')
@@ -248,16 +251,20 @@ def main() -> int:
                 card = read_json_object(card_path, problems)
                 if card.get("raster_sha256") != sha256_file(primary):
                     problems.append("run card SHA256 != primary bytes")
-                if card.get("verdict") != "negative":
-                    problems.append("run card must record negative verdict after registry duplicate stop")
+                if card.get("verdict") not in ("negative", "promote"):
+                    problems.append("run card verdict must be negative or promote")
+                if doc.get("verdict") != card.get("verdict"):
+                    problems.append("audit verdict disagrees with run card")
+                try:
+                    readiness_doc = json.loads((DOWNLOADS / "readiness.json").read_text())
+                    if readiness_doc.get("verdict") != card.get("verdict") or readiness_doc.get("raster_sha256") != card.get("raster_sha256"):
+                        problems.append("readiness.json disagrees with run card")
+                except (OSError, ValueError) as exc:
+                    problems.append(f"readiness.json unreadable: {exc}")
             print(f"  PRIMARY {primary.name}")
 
-    # Canonical status must precede every historical lane banner. A matching
-    # sentence buried below stale 'unique' claims is not an obvious decision.
-    from gems.public_status import check_panels
-    status_card = read_json_object(DOWNLOADS / 'review797e_run_card.json', problems)
-    if primary_rel:
-        problems.extend(check_panels(status_card, ROOT, primary_rel))
+    # Canonical VARIO status freshness (byte-bound, first in body) was checked
+    # at the top of main() via render_vario_status.check.
 
     if problems:
         print("SITE CHECK FAIL")
