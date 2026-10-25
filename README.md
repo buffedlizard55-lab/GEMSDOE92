@@ -491,7 +491,7 @@ Main `d6f7ac0` added [RADIODECOUPLE](docs/ANALYSIS_20261025_RADIODECOUPLE.md) an
 
 ## Session Prompt — Authoritative Operating Contract (read at every session start)
 
-The full durable operating contract below is the starting point for all work on this repository. It is preserved verbatim as historical input, not as a claim that any GEMSDOE entry received a verified organizer score or that any current TIFF is submission-cleared. Follow the binding negative decision at the top of this README and the evidence-linked reviews instead.
+The full durable operating contract below is the starting point for all work on this repository. It is a condensed operating brief, not a verbatim archive of the historical input, and it is not a claim that any GEMSDOE entry received a verified organizer score or that any current TIFF is submission-cleared. Follow the binding negative decision at the top of this README and the evidence-linked reviews instead.
 
 ### Highest urgency — MUST
 
