@@ -1,0 +1,50 @@
+{
+  "schema": "gemsdoe92-coulomb-loqo-dual-reading-audit.v1",
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields (<=150000 px)",
+  "candidates": {
+    "COULOMBLOQO_standalone": {
+      "sha256": "8f1f93d8c97b4e1c359ce5fbe07d183214e707aa6bda4ed074c00921f39ad32e",
+      "non_self_rasters_checked": 1412,
+      "n_dot_fields_le_150k": 1227,
+      "n_dot_fields_le_90k": 1169,
+      "n_continuous_surfaces_gt_150k": 185,
+      "worst_operative_overlap_3px": 0.828703,
+      "worst_operative_witness": "GEMSDOE92/docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+      "worst_operative_their_dots": 37654,
+      "operative_over_70pct_count": 9,
+      "dot_fields_le_90k_worst_overlap_3px": 0.828703,
+      "dot_fields_le_90k_worst_witness": "GEMSDOE92/docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+      "dot_fields_le_90k_over_70pct_count": 2,
+      "continuous_gt_150k_matched_budget_worst_overlap_3px": 0.535853,
+      "continuous_gt_150k_matched_budget_worst_witness": "GEMSDOE48/docs/downloads/diagnostics/GEMSDOE48-H57-ds-relief-augmented-20261007-e6b785718c07-diag-belief.tif",
+      "continuous_gt_150k_over_70pct_count": 0,
+      "dual_reading_verdict_at_150k_cutoff": "negative",
+      "dual_reading_verdict_at_90k_cutoff": "negative",
+      "literal_unweighted_worst_overlap_3px": 1.0,
+      "literal_unweighted_witness": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif"
+    },
+    "COULOMBLOQO_dual45": {
+      "sha256": "5c5fbfa3d4df4f4d71dd60e834c2f29e759abb0014b3bd5b61b28d115791b9c7",
+      "non_self_rasters_checked": 1412,
+      "n_dot_fields_le_150k": 1227,
+      "n_dot_fields_le_90k": 1169,
+      "n_continuous_surfaces_gt_150k": 185,
+      "worst_operative_overlap_3px": 0.732565,
+      "worst_operative_witness": "GEMSDOE92/docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+      "worst_operative_their_dots": 37654,
+      "operative_over_70pct_count": 5,
+      "dot_fields_le_90k_worst_overlap_3px": 0.732565,
+      "dot_fields_le_90k_worst_witness": "GEMSDOE92/docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+      "dot_fields_le_90k_over_70pct_count": 1,
+      "continuous_gt_150k_matched_budget_worst_overlap_3px": 0.440617,
+      "continuous_gt_150k_matched_budget_worst_witness": "GEMSDOE48/docs/downloads/diagnostics/GEMSDOE48-H57-ds-relief-augmented-20261007-e6b785718c07-diag-belief.tif",
+      "continuous_gt_150k_over_70pct_count": 0,
+      "dual_reading_verdict_at_150k_cutoff": "negative",
+      "dual_reading_verdict_at_90k_cutoff": "negative",
+      "literal_unweighted_worst_overlap_3px": 1.0,
+      "literal_unweighted_witness": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif"
+    }
+  },
+  "elapsed_seconds": 17.156
+}

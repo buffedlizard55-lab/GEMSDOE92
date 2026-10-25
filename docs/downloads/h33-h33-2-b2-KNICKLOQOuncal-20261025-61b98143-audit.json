@@ -1,0 +1,133 @@
+{
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "916acb0b8b7ec58d54e3a8bc24efa5c1ab3bc09ef7e1fc58d84b7be354940fec"
+    }
+  ],
+  "gates_zeros_pass": true,
+  "gates_nan": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "61b9814330e8e46ae997924ce17cbbbb175e4d21d31c6719c80ce1c026ad38fa"
+    }
+  ],
+  "gates_nan_pass": true,
+  "file": "h33-h33-2-b2-KNICKLOQOuncal-20261025-61b98143-zeros.tif",
+  "sha256_zeros": "916acb0b8b7ec58d54e3a8bc24efa5c1ab3bc09ef7e1fc58d84b7be354940fec",
+  "sha256_nan": "61b9814330e8e46ae997924ce17cbbbb175e4d21d31c6719c80ce1c026ad38fa",
+  "n_positive_pixels": 37654,
+  "n_dots": 37654,
+  "overall_pass": true,
+  "submission_eligible": false,
+  "run_card": "evidence/knick_loqo_run_card.json",
+  "local_registry_uniqueness": {
+    "n_rasters_checked": 65,
+    "worst_forward_overlap_3px": 0.68184,
+    "worst_forward_file": "downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif",
+    "worst_abs_spearman_phi": 0.145122,
+    "local_duplicate": false
+  },
+  "public_registry_uniqueness": {
+    "candidate_hash_matches_scan": true,
+    "unique_under_literal_rule": false,
+    "unique_under_dual_reading_rule": true,
+    "stop_required": true,
+    "witness_evidence": "evidence/knick_loqo_public_registry_uniqueness.json",
+    "dual_reading_evidence": "evidence/knick_loqo_dual_reading_audit.json",
+    "scope": "102-repo Git-blob-verified public scan (1415 non-self template rasters): UNIQUE under dual_reading_decision (0/1415 rasters > 0.70; worst operative overlap = 0.681840 vs GEMSDOE92/docs/downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif; <=90k px max = 0.681840; >150k matched-budget max = 0.485765). Literal unweighted rule fires (1.0) on full-footprint 17GEMSDOE E-proba-multiscale.",
+    "candidate_sha256_zeros": "916acb0b8b7ec58d54e3a8bc24efa5c1ab3bc09ef7e1fc58d84b7be354940fec"
+  }
+}
