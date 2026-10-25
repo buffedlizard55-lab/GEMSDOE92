@@ -1,15 +1,25 @@
-# Next Steps — GEMSDOE92 (2026-10-25 repository review)
+# Next steps — 2026-10-25 repository audit (`78db3076`)
 
-**Binding decision: DO NOT SUBMIT; no new uniqueness-cleared TIFF can be generated while the literal registry rule remains unchanged.** The fresh pinned 17GEMSDOE witness has support throughout the entire valid footprint, so every nonempty candidate overlaps it at 1.0 > 0.70 before placement. [Three-pass review](REVIEW_20261025_78DB3076.md) · [machine-readable run card](downloads/session_78db3076_run_card.json) · [four conditional, untried geological operators](HYPOTHESES_20261025_78DB3076.md). The historical instructions below recommending a selector for prior artifacts do **not** grant submission eligibility.
+**No submission-clearable TIFF. DO NOT SUBMIT the current VARIO research primary or the older LISTRICLOQO/HALO files.** Under the user's unchanged literal positive-support rule, the hash-verified 17GEMSDOE witness forces 1.0 overlap >0.70 for any nonempty in-footprint candidate. VARIO also fails its reported sparse-dot overlap and paired holdout improvement. [Three-pass review](REVIEW_20261025_78DB3076.md) · [final negative JSON card](downloads/session_78db3076_run_card.json) · [four conditional untried hypotheses](HYPOTHESES_20261025_78DB3076.md). The combined main-merge HALO raster failed the catalogue-distance gate; it was quarantined, not advertised for download. This review ran **zero** experiments/holdouts/weekly slots; VARIO's prior three experiments are from a separate concurrent lane.
 
-1. Resolve the policy contradiction explicitly: the user's mandatory new-TIFF goal and unchanged literal >70% overlap stop cannot both be satisfied. Supply a written rule for how to compare dense probability fields to dot sets **and** assign one geological method lane; do not assume the old matched-budget reading is binding.
-2. Obtain training features through an authorized source with verified redistribution rights (the DrivenData data page redirects to login), then restore exact bytes into ignored `.cache/` if an experiment is permitted. GitHub owner mirrors are not proof of license. USGS GeoDAWN is CC0 and DOE GDR INGENIOUS is CC BY, but their binaries are not staged here.
-3. If the stop is resolved, lock an outer spatial holdout and same-instrument best comparator; run individual feature AUC leakage canaries, the shared buffered whole-segment hide/recover evaluation and spatial CI, then pre- and post-placement uniqueness. Use the shared `submission_writer.py` and automated range/footprint/grids checks. Do not equate HOLDOUT-DTI with a competition score.
-4. A separate weekly selector may then consider one artifact within the organizer's three-per-week cap; only the authenticated submission receipt can supply an ORGANIZER-CONFIRMED score. Obtain a Pages integration change so CI gates **live** publication; the current Pages mode is legacy even though CI and a workflow gate exist. No slot used in this review.
+1. The protocol owner must explicitly resolve the literal dense-witness stop and assign one geological method lane. The historical ALI proposal below for a matched-budget continuous-field rule is **not** authorization to change the binding threshold silently.
+2. Obtain rights-cleared competition inputs by an authorized route; the official DrivenData data page redirects to login. With a valid rule and cached features, lock an outer spatial test, run single-feature leakage canaries, use the shared buffered whole-segment visible-only evaluator and writer, check registry before and after dot placement, and compare a paired HOLDOUT-DTI CI to a same-instrument control. No current candidate satisfies all gates.
+3. Confirm the actual organizer submission-page weekly cap and record a file-hash-bound organizer receipt only **after** a separate weekly selector decision. No local HOLDOUT-DTI is an ORGANIZER-CONFIRMED score. Verify GitHub Pages publication mode is Actions-gated rather than assuming the observed legacy main/root publisher is gated by CI.
 
 ---
 
-# Historical Next Steps — Post-FLEXMAG Session (2026-10-25; superseded by binding stop above)
+# Historical next steps — ALI session (conditional, superseded where incompatible with literal stop)
+
+1. **Uniqueness saturation map.** Before any new lane, compute the union of 3-px halos of all *discriminating* registry dot fields (halo < 70%) restricted to high fault-appearance pixels (FAM top 10%). The ALI result shows physics placements collide with 12GEMSDOE r7, GEMSDOE70 54k, GEMSDOE22 h23-a/b, GEMSDOE67 ovtr and others. A lane is only worth running if it targets pixels outside that union.
+2. **Highest-ranked untried hypothesis: dextral drainage-deflection coherence** (docs/ALI_LANE.md §3). It targets a different signature (lateral channel offsets) and is the most likely to land on unclaimed pixels. Verify official 10 m 3DEP access first.
+3. **Run the pre-placement surface check before placement.** In this session it ran after placement.
+4. **Owner decision needed: dense-raster policy.** The ALI stop does not depend on it, but future lanes will hit the 17GEMSDOE / GEMSDOE48 continuous surfaces under the literal reading. Proposal: dot fields stay literal; continuous surfaces use matched-budget top-K plus Spearman; both readings stay reported.
+5. **Owner decision needed: promotion instrument.** The hide-and-recover instrument does not track the leaderboard (IR-92-HOLDOUT-VALIDITY). Consider adding leave-one-out prediction of owner-reported scores (`scripts/ali_fit.py`) as a second, MODEL-labelled gate.
+6. Keep using `safe_save` / `safe_load` for every large cache (IR-92-NPY-PAGE-ZERO).
+
+---
+
+# Next Steps — GEMSDOE92 (Updated 2026-10-25, Post-FLEXMAG Session)
 
 ## Completed this session (FLEXMAG — blind-fault flexure hinge × magnetic ASA)
 - Pre-registered 5 ranked hypotheses (`docs/HYPOTHESES_20261025_FLEXMAG.md`); implemented `gems/flexmag.py` (catalogue-free; 14 leakage canaries, max symmetric AUC 0.566271 ≤ 0.90) + `scripts/build_flexmag_submission.py` (shared evaluator/writer/uniqueness only).

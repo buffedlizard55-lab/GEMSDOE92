@@ -3,6 +3,8 @@
 <!-- CURRENT-STATUS:BEGIN -->
 ## Authoritative decision — Current verified status, 2026-10-25 (LISTRICLOQO 2026-10-25)
 
+**Also 2026-10-25 — ALI lane: a NEW raster was generated and tested — DO NOT SUBMIT.** [Download it for research](downloads/gemsdoe92-ali-famnms-37654-20261025T230000Z-68be9b4d-zeros.tif) · [full report](ALI_LANE.md) · [run card](downloads/ali_run_card.json). Reasons: **duplicate under the registry rule** (0.806 of its dots lie within 3 px of 12GEMSDOE `12GEMSDOE_r7-nms3-dem10-scarp_0c9199f14e62_allfinite.tif`, whose halo covers only 0.317 of the domain; 30 discriminating dot fields exceed 0.70), and HOLDOUT-DTI 0.097216 [0.079836, 0.117747] only ties the R0-recipe control 0.097493 (paired Δ -0.000278 [-0.015980, +0.015900]; gems57-pooled-hide-v2, 22663 withheld positives).
+
 **OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** LISTRICLOQO is a byte-distinct research artifact, but it fails the literal registry-overlap stop and promotion gates.
 
 [Existing LISTRICLOQO research TIFF — not cleared to submit](downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif) · [protocol run card](downloads/listric_loqo_run_card.json) · [analysis](ANALYSIS_20261025_LISTRICLOQO.md) · [three-pass review](REVIEW_20261025_SESSION.md) · [supplemental initial audit](REVIEW_20261025_SESSION_FOLLOWUP.md) · [audit run card](downloads/session_followup_20261025_run_card.json) · [later leaderboard review](ANALYSIS_20261025_LEADERBOARD.md) · [executive submission guide](executive-summary.html).
@@ -11,7 +13,7 @@ Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withh
 
 <!-- CURRENT-STATUS:END -->
 
-**New repository audit — 2026-10-25:** [three-pass review](REVIEW_20261025_78DB3076.md) · [pre-placement rejection/run card](downloads/session_78db3076_run_card.json) · [conditional hypotheses](HYPOTHESES_20261025_78DB3076.md). No new TIFF, experiment, or slot. The file linked above is an older research artifact; never upload it under the literal duplicate stop. Baseline site/test failures have been repaired and one byte-bound status contract now checks all entry points in CI.
+**Current public primary after concurrent main integration: VARIO research-only TIFF — DO NOT SUBMIT.** [Live status](downloads/readiness.json) · [VARIO lane card](downloads/vario_run_card.json) · [new three-pass repository audit](REVIEW_20261025_78DB3076.md) · [audit's final negative JSON card](downloads/session_78db3076_run_card.json). The generated LISTRICLOQO block above describes an **older** research artifact, not the latest site's primary. This audit produced no new TIFF or experiment; VARIO's three prior experiments belong to a different lane. The dense literal witness still blocks clearance. The LISTRIC-only cross-alias adapter from our earlier checkout was retired when main's newer VARIO renderer became authoritative; `scripts/check_site.py` continues to validate served files and generated status.
 
 **OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT. No new unique TIFF.**
 

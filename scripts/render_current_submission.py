@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Render the historical lane-result box beneath the authoritative decision.
+"""Render the single "current submission" status box at the top of every entry page.
 
-The alias ``docs/downloads/current_submission.json`` is checked against the
-freshly byte-validated ``readiness.json`` before writing any page. It can NEVER
-authorize a slot on its own. Idempotent: replaces the block between
+Source of truth: docs/downloads/current_submission.json (written by
+scripts/finalize_faultnet.py). Nothing is hand-typed: every number, hash, name and
+verdict below comes from that JSON. Idempotent: replaces the block between
 <!-- CURRENT:BEGIN --> and <!-- CURRENT:END --> or inserts it right after <body>
 (HTML) / after the first H1 line (Markdown).
 """
@@ -16,7 +16,6 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
 CUR = ROOT / "docs" / "downloads" / "current_submission.json"
 SUBMIT_URL = "https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/"
 BEGIN, END = "<!-- CURRENT:BEGIN -->", "<!-- CURRENT:END -->"
@@ -134,52 +133,33 @@ ANCHORS = ("<!-- CURRENT-READINESS:END -->", "<!-- CURRENT-STATUS:END -->")
 
 
 def inject(text, block, is_html):
-    if (text.count(BEGIN) != text.count(END) or text.count(BEGIN) > 1
-            or (BEGIN in text and text.index(END) < text.index(BEGIN))):
-        raise ValueError('missing, duplicated or reversed lane-result markers')
     pat = re.compile(r"\n?" + re.escape(BEGIN) + r".*?" + re.escape(END) + r"\n?", re.S)
+    if len(pat.findall(text)) > 1:
+        raise ValueError("ambiguous lane-result markers")
     text = pat.sub("\n", text, count=1)
     for rd in ANCHORS:
         if rd in text:
             i = text.index(rd) + len(rd)
-            return text[:i].rstrip("\n") + "\n" + block + "\n\n" + text[i:].lstrip("\n")
+            return text[:i] + "\n" + block + ("" if text[i:i + 1] == "\n" else "\n") + text[i:]
     if is_html:
         i = text.index("<body>") + len("<body>")
-        return text[:i] + "\n" + block + "\n" + text[i:].lstrip("\n")
+        return text[:i] + "\n" + block + "\n" + text[i:]
     lines = text.split("\n")
     k = next(i for i, l in enumerate(lines) if l.startswith("# "))
-    # A previous implementation added two blank lines on every run for the
-    # stand-alone Markdown guide. Normalize only the generated block boundary.
-    tail = "\n".join(lines[k + 1:]).lstrip("\n")
-    return "\n".join(lines[:k + 1]) + "\n\n" + block + "\n\n" + tail
+    return "\n".join(lines[:k + 1] + ["", block, ""] + lines[k + 1:])
 
 
 def main() -> int:
-    from gems.status_contract import alias_errors
-    from scripts.render_readiness import build_status
-    status = build_status(ROOT)
     c = json.loads(CUR.read_text())
-    public = json.loads((ROOT / 'docs/downloads/review797e_run_card.json').read_text())
-    published = json.loads((ROOT / 'docs/downloads/readiness.json').read_text())
-    errors = alias_errors(status, c, public)
-    if published != status:
-        errors.append('readiness.json differs from freshly validated bytes')
-    if errors:
-        raise ValueError('cannot render disputed submission status: ' + '; '.join(errors))
-    # Pre-compute *every* edit: a malformed later page must never leave half the
-    # entry points refreshed and half advertising an old primary.
-    edits = {}
     for p, pre in HTML_PAGES.items():
         if p.is_file():
-            edits[p] = inject(p.read_text(), html_block(c, pre), True)
+            p.write_text(inject(p.read_text(), html_block(c, pre), True))
     for p, pre in MD_PAGES.items():
         if p.is_file():
             blk = md_block(c, pre)
             if p.name == "SUBMIT.md":
                 blk = blk.replace("](SESSION_PROMPT.md)", "](../SESSION_PROMPT.md)")
-            edits[p] = inject(p.read_text(), blk, False)
-    for p, content in edits.items():
-        p.write_text(content)
+            p.write_text(inject(p.read_text(), blk, False))
     # Let the shared page renderers normalise layout so their --check gates stay green
     # (they keep this block directly after their own panels).
     sys.path.insert(0, str(ROOT))

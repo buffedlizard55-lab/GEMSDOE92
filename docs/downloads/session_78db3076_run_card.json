@@ -1,9 +1,9 @@
 {
-  "schema": "gemsdoe92-readiness-audit-v1",
-  "reviewed_utc": "2026-10-25T18:44:20.622346+00:00",
-  "hypothesis": "No assigned geological lane; pre-placement protocol audit only.",
-  "mechanism": "The pinned registry positive support covers every finite template pixel.",
-  "named_non_fault_mimic": "Not applicable: no geological inference was performed.",
+  "schema": "gemsdoe92-repository-review-v1",
+  "reviewed_utc": "2026-10-25T18:52:21.072453+00:00",
+  "hypothesis": "No assigned geological lane in this repository-review session; stop before placement.",
+  "mechanism": "The pinned full-footprint registry witness has a positive pixel at every valid template cell; any nonempty candidate has literal forward overlap 1.0 > 0.70. Concurrent VARIO also fails its sparse-dot overlap and paired holdout gate.",
+  "named_non_fault_mimic": "Not applicable to this review: no new geology was inferred; VARIO mimics belong to its separate run card.",
   "holdout_dti": {
     "evidence_class": "HOLDOUT-DTI",
     "value": null,
@@ -26,7 +26,7 @@
     "preplacement_proof": {
       "schema": "gemsdoe92-preplacement-stop-v2",
       "evidence_class": "REGISTRY-MEASUREMENT",
-      "reviewed_utc": "2026-10-25T18:44:20.008147+00:00",
+      "reviewed_utc": "2026-10-25T18:52:20.595065+00:00",
       "sample_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
       "implementation_sha256": "9275f329f394b90b5f80c3fd1d22d8d543879f68df9485ab5f708535958fbca3",
       "scope": "Single pinned witness; rejection only. No candidate surface was generated or scored.",
@@ -45,9 +45,9 @@
     },
     "final_dots_check": "not_run_no_new_raster"
   },
-  "artifact_role": "existing research download; NOT a newly generated submission",
-  "primary_download": "docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif",
-  "raster_sha256": "58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17",
+  "artifact_role": "existing, format-valid VARIO research download from a concurrently merged lane; NOT generated or submission-cleared by this review",
+  "primary_download": "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif",
+  "raster_sha256": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573",
   "validator_output": [
     {
       "name": "crs",
@@ -102,12 +102,12 @@
     {
       "name": "reread_sha256",
       "ok": true,
-      "detail": "58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17"
+      "detail": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573"
     }
   ],
   "format_pass": true,
-  "submission_name": "GEMSDOE92-LISTRICLOQO-selectcal-20261025",
-  "note": "h33-h33-2-b2; LISTRICLOQO selectcal: 37654 1D updip-listric+interfluve-knick+U/Th-K/Th crests; HOLDOUT-DTI 0.013295",
+  "submission_name": "GEMSDOE92-VARIO-full-20261025",
+  "note": "VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat>2",
   "verdict": "negative",
   "submission_eligible": false,
   "new_unique_tiff_generated": false,
@@ -115,22 +115,58 @@
   "weekly_slots_used": 0,
   "organizer_confirmed_score": null,
   "limitations": [
-    "DUPLICATE UNDER THE LITERAL REGISTRY RULE: pinned positive support covers the entire footprint.",
-    "Matched-budget overlap is diagnostic, not permission to replace the literal rule.",
-    "The earlier LISTRICLOQO lane used its 3 experiments; this review ran 0 and literal overlap still blocks promotion.",
-    "Public dual-reading overlap is 0.690259, below the 0.70 threshold; literal dense-witness overlap is 1.0 and remains binding.",
-    "The artifact filename/run card is labelled 2026-10-26, one day after this 2026-10-25 review; chronology is unverified.",
-    "No verified submission-page receipt or current weekly-cap evidence is available."
+    "paired HOLDOUT-DTI delta vs best control control_FAULTNET_far = -0.025127 CI [-0.029305915361244498, -0.02084222808563093] (must exclude 0)",
+    "operative sparse-registry uniqueness failed (overlap>0.70 or |rho|>0.90)",
+    "One pinned dense witness is sufficient to reject, but this is not a complete public-registry clearance scan.",
+    "No new geological experiment, candidate holdout, leakage canary, TIFF, or submission slot in this repository-review session.",
+    "VARIO HOLDOUT-DTI is historical concurrent-lane evidence, not this review's result or an organizer score."
   ],
   "input_sha256": {
     "data/bridge/sample_submission.tif": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
     "data/bridge/labels.tif": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
-    "docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif": "58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17",
-    "docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-audit.json": "eda59394e86eff3240e21ed414707c17d7abc55060f9014fa3c25ece0e544321",
-    "evidence/listric_loqo_run_card.json": "8ad96ab3274a0c090af7fdbf16148db5157913ef233cc5865da946050c971ac6",
-    "evidence/review_f23_preflight.json": "b1cc2d46b24ad3cde759953143ea3806c17f86d0f1eb72fc1581f5e34643fecb",
-    "gems/gates.py": "7bf557dd1a46b01449fb1108d5617baa5f6608d025c2c86c6ee94a7d30785bf6",
-    "scripts/render_readiness.py": "f2d13c34b52c9bbf68084a72a2c88dbdfc837ebbb1eb0b0abda9ef4091d0f783"
+    "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573",
+    "evidence/vario_run_card.json": "fc448a1ed960fb93a2fcfdef56b0ac41fc30116eb86ef17a0f020fc20b2d5cf8",
+    "scripts/audit_readiness.py": "297d0489b88824fc64bf565ac832b14f305f6dcc8986c65f72f6d448d6fad8c6",
+    "scripts/render_vario_status.py": "440c52829cba18ce6c0fd9b5cf0e9a0c44bd8c846559bfe3700d370d1531062e",
+    "scripts/check_site.py": "f1770cbaa5a772da74d38a8311b72c4ae131e44ce0cd059f2cee52ee37211a1d",
+    "scripts/preflight_dense_witness.py": "9275f329f394b90b5f80c3fd1d22d8d543879f68df9485ab5f708535958fbca3"
   },
-  "audit_implementation_sha256": "5ceed77e2071442d151de79f32049f447a6aa81ac2e4ab4b2405228472f3c5e4"
+  "audit_implementation_sha256": "297d0489b88824fc64bf565ac832b14f305f6dcc8986c65f72f6d448d6fad8c6",
+  "concurrent_lane_new_tiff_generated": true,
+  "experiments_this_review": 0,
+  "concurrent_vario_experiments": 3,
+  "premerge_snapshot": "evidence/session_78db3076_premerge.json",
+  "current_publication_status": "docs/downloads/readiness.json",
+  "concurrent_lane_run_card": "docs/downloads/vario_run_card.json",
+  "concurrent_lane_holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.15002012085424568,
+    "ci95": [
+      0.13497540059406068,
+      0.1642856062511979
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 4888.437783915989,
+    "fpw": 67385.63360171583,
+    "fnw": 17774.562216084003
+  },
+  "concurrent_lane_paired_delta_vs_best": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "delta": -0.025127271570293264,
+    "ci95": [
+      -0.029305915361244498,
+      -0.02084222808563093
+    ],
+    "withheld_positive_pixels": 22663
+  },
+  "concurrent_lane_sparse_registry_worst_overlap": 0.979126,
+  "quarantined_invalid_download": {
+    "previous_path": "docs/downloads/gemsdoe92-listric-halo-32k-20261025-zeros.tif",
+    "archived_path": "evidence/archived_research/listric-halo/gemsdoe92-listric-halo-32k-20261025-zeros.tif",
+    "sha256": "287d802984c8e581ae41fac92d05deff514f0783c00f683ce02f6635720b1341",
+    "failed_gate": "distance_from_catalogue: 4750 positive cells within prune_radius=2"
+  },
+  "publication_status_sha256": "e7e8f4eba5a4cf26ce8a0b9ed87b5a69343dbb83702c4794916b97c82d71d268"
 }

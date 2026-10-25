@@ -1,0 +1,74 @@
+{
+  "overall_pass": true,
+  "format_pass": true,
+  "gates_zeros_pass": true,
+  "submission_eligible": false,
+  "verdict": "negative",
+  "sha256_zeros": "ad3bc4b7a8110c2b58c0a25453e873c60cdd94ee5aa846dc3eb60a11b8803177",
+  "n_positive_pixels": 37654,
+  "n_dots": 37654,
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=('float32',) count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nonfinite_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0; strict distance > radius required"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "ad3bc4b7a8110c2b58c0a25453e873c60cdd94ee5aa846dc3eb60a11b8803177"
+    }
+  ],
+  "public_registry_uniqueness": {
+    "candidate_hash_matches_scan": true,
+    "unique_under_literal_rule": false,
+    "stop_required": true
+  },
+  "current_policy_notice": "DO NOT SUBMIT. Research artifact only; literal registry witness binds.",
+  "run_card": "docs/downloads/mtcp_run_card.json"
+}

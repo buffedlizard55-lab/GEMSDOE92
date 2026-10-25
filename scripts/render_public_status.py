@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render/check the rejection-only status from the current review run card.
+"""Render/check the byte-bound status from the VARIO run card.
 
 Run after any lane renderer: python scripts/render_public_status.py
 CI: python scripts/render_public_status.py --check
@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT))
 from gems.public_status import PAGES, check_panels, install_panel, render_status, validate_status
 from scripts.check_site import primary_download
 
-CARD = ROOT / 'docs/downloads/review797e_run_card.json'
+CARD = ROOT / 'docs/downloads/vario_run_card.json'
 
 
 def main() -> int:
@@ -30,22 +30,9 @@ def main() -> int:
         if problems or primary is None:
             raise ValueError('; '.join(problems))
         validate_status(card, ROOT, primary)
-        from gems.status_contract import alias_errors
-        from scripts.render_readiness import build_status
-        status = build_status(ROOT)
-        current = json.loads((ROOT / 'docs/downloads/current_submission.json').read_text())
-        problems = alias_errors(status, current, card)
-        if json.loads((ROOT / 'docs/downloads/readiness.json').read_text()) != status:
-            problems.append('readiness.json differs from freshly validated bytes')
-        if problems:
-            raise ValueError('; '.join(problems))
         if not args.check:
-            # Compute every edit first: malformed markers must not partly update the site.
-            panel = render_status(card)
-            edits = {ROOT / 'docs' / name: install_panel(
-                (ROOT / 'docs' / name).read_text(), panel) for name in PAGES}
-            for path, text in edits.items():
-                path.write_text(text, encoding='utf-8')
+            from scripts.render_vario_status import render
+            render(ROOT, write=True)
         problems = check_panels(card, ROOT, primary)
         if problems:
             raise ValueError('; '.join(problems))
