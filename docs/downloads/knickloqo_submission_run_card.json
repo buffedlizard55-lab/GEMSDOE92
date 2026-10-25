@@ -100,7 +100,7 @@
   "supersedes": {
     "source_commit": "406638a0dbf44b2c65a7feefcdf803ba17d0edd4",
     "archived_card": "evidence/review797e_superseded_knickloqo_card.json",
-    "reason": "Incoming card claimed promote under a forbidden matched-budget policy and recorded a wrong hash, size, shape order and transform. HOLDOUT numbers were not recertified."
+    "reason": "Incoming card claimed promote under a forbidden matched-budget policy and recorded a wrong size, shape order and transform. Its SHA-256 was correct (older docs were stale). HOLDOUT numbers were not recertified."
   },
   "raster_metadata": {
     "shape": [
