@@ -739,5 +739,38 @@
     "falsifier": "Pooled HOLDOUT-DTI failing to beat repository holdout best KNICKLOQO standalone (0.010788 static, evidence/knick_loqo_run_card.json) on gems57-pooled-hide-v2, any single-feature leakage canary symmetric AUC > 0.90, or local/dual-reading public forward 3-px overlap > 0.70 / |Spearman| > 0.90.",
     "decision_rule": "Promote only if pooled HOLDOUT-DTI beats KNICKLOQO standalone (0.010788) with paired 95% CI > 0, all canaries <= 0.90, 11/11 format gates pass, AND both local registry and public dual_reading_decision uniqueness pass (<=0.70). Because 17GEMSDOE E-proba-multiscale sets every in-footprint pixel > 0 under the literal >70% public overlap clause, record submission_eligible=false and verdict='negative' (OK TO DOWNLOAD, NOT CLEARED FOR A WEEKLY SLOT) without waiving the literal rule.",
     "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/listric_proxy_audit.json"
+  },
+  "gemsdoe92-netexpand-netexpand-20261025-f705be3a": {
+    "parent": "h33-h33-2-b2",
+    "axis": "NETEXPAND",
+    "value": "netexpand",
+    "hypothesis": "Catalogue-missing geothermal faults are subordinate splays/relays of mapped systems whose scarps are diffused/buried but whose strike-blind gravity/magnetic analytic-signal edges, RTP demagnetization suppression and MT clay-cap change-points persist; learning network-context x ASA/coherence x alteration interactions in a quadrant-LOQO ensemble and emitting on pure new-channel 1-D crests recovers them off-catalogue.",
+    "mechanism": "45-feature 3-branch LOQO HGB (KNICK30 + LISTRIC4 + self-excluded visible-catalogue context5 + grav/mag ASA & coherence, curie suppression, MT change-point), within-quadrant quantile calibration, pure ASA/coherence/listric crest, 37,654 unit dots >=2.8 px spacing, d_cat>2 (far arm >4), zeros-outside float32.",
+    "non_fault_mimic": "Range-front lithologic contacts parallel to mapped faults; equant plutons; thick non-magnetic Lahontan sediments; playa salinity fronts.",
+    "falsifier": "HOLDOUT-DTI <= control_knick paired, canary >0.90, or operative overlap >0.70",
+    "decision_rule": "Promote-to-selector only per docs/HYPOTHESES_20261025_NETEXPAND.md; slots spent by selector step only.",
+    "predicted_sign_and_size": "unprojected (Protocol Rule 3)"
+  },
+  "gemsdoe92-netexpand-netexpand_far-20261025-47bacc15": {
+    "parent": "h33-h33-2-b2",
+    "axis": "NETEXPAND",
+    "value": "netexpand_far",
+    "hypothesis": "Catalogue-missing geothermal faults are subordinate splays/relays of mapped systems whose scarps are diffused/buried but whose strike-blind gravity/magnetic analytic-signal edges, RTP demagnetization suppression and MT clay-cap change-points persist; learning network-context x ASA/coherence x alteration interactions in a quadrant-LOQO ensemble and emitting on pure new-channel 1-D crests recovers them off-catalogue.",
+    "mechanism": "45-feature 3-branch LOQO HGB (KNICK30 + LISTRIC4 + self-excluded visible-catalogue context5 + grav/mag ASA & coherence, curie suppression, MT change-point), within-quadrant quantile calibration, pure ASA/coherence/listric crest, 37,654 unit dots >=2.8 px spacing, d_cat>2 (far arm >4), zeros-outside float32.",
+    "non_fault_mimic": "Range-front lithologic contacts parallel to mapped faults; equant plutons; thick non-magnetic Lahontan sediments; playa salinity fronts.",
+    "falsifier": "HOLDOUT-DTI <= control_knick paired, canary >0.90, or operative overlap >0.70",
+    "decision_rule": "Promote-to-selector only per docs/HYPOTHESES_20261025_NETEXPAND.md; slots spent by selector step only.",
+    "predicted_sign_and_size": "unprojected (Protocol Rule 3)"
+  },
+  "gemsdoe92-netexpand-nocontext-20261025-d0b7d6e4": {
+    "parent": "h33-h33-2-b2",
+    "axis": "NETEXPAND",
+    "value": "nocontext",
+    "hypothesis": "Catalogue-missing geothermal faults are subordinate splays/relays of mapped systems whose scarps are diffused/buried but whose strike-blind gravity/magnetic analytic-signal edges, RTP demagnetization suppression and MT clay-cap change-points persist; learning network-context x ASA/coherence x alteration interactions in a quadrant-LOQO ensemble and emitting on pure new-channel 1-D crests recovers them off-catalogue.",
+    "mechanism": "45-feature 3-branch LOQO HGB (KNICK30 + LISTRIC4 + self-excluded visible-catalogue context5 + grav/mag ASA & coherence, curie suppression, MT change-point), within-quadrant quantile calibration, pure ASA/coherence/listric crest, 37,654 unit dots >=2.8 px spacing, d_cat>2 (far arm >4), zeros-outside float32.",
+    "non_fault_mimic": "Range-front lithologic contacts parallel to mapped faults; equant plutons; thick non-magnetic Lahontan sediments; playa salinity fronts.",
+    "falsifier": "HOLDOUT-DTI <= control_knick paired, canary >0.90, or operative overlap >0.70",
+    "decision_rule": "Promote-to-selector only per docs/HYPOTHESES_20261025_NETEXPAND.md; slots spent by selector step only.",
+    "predicted_sign_and_size": "unprojected (Protocol Rule 3)"
   }
 }

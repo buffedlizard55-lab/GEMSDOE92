@@ -11,6 +11,7 @@
 <section class="banner banner-warn" aria-label="Authoritative submission status">
   <h1>Research-only download available. DO NOT SUBMIT; uniqueness is not cleared.</h1>
   <p><strong>OK TO DOWNLOAD FOR RESEARCH · NOT CLEARED FOR A WEEKLY SLOT</strong></p>
+  <p><strong>Also 2026-10-25 — ALI lane: a NEW raster was generated and tested — DO NOT SUBMIT.</strong> <a href="downloads/gemsdoe92-ali-famnms-37654-20261025T230000Z-68be9b4d-zeros.tif" download>Download it for research</a> · <a href="ALI_LANE.md">full report</a> · <a href="downloads/ali_run_card.json">run card</a>. Reasons: <strong>duplicate under the registry rule</strong> (0.806 of its dots lie within 3 px of 12GEMSDOE <code>12GEMSDOE_r7-nms3-dem10-scarp_0c9199f14e62_allfinite.tif</code>, whose halo covers only 0.317 of the domain; 30 discriminating dot fields exceed 0.70), and HOLDOUT-DTI 0.097216 [0.079836, 0.117747] only ties the R0-recipe control 0.097493 (paired Δ -0.000278 [-0.015980, +0.015900]; gems57-pooled-hide-v2, 22663 withheld positives).</p>
   <p><a class="btn" href="downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif" download>Download existing LISTRICLOQO research GeoTIFF — not cleared to submit (.tif)</a>
   · <a href="executive-summary.html">Submission guide</a>
   · <a href="ANALYSIS_20261025_LISTRICLOQO.md">Current analysis and limitations</a>
@@ -79,6 +80,14 @@
 </section>
 <!-- CURRENT:END -->
 <details id="historical-research-archive"><summary>Historical experiments and downloads — not current clearance</summary>
+<!-- NETEXPAND:BEGIN -->
+<aside class="banner banner-warn" aria-label="NETEXPAND research artifact — not cleared" style="border:3px solid #991b1b;">
+  <h2>NETEXPAND (2026-10-25) — best strict holdout yet · lane duplicate · DO NOT SUBMIT</h2>
+  <p><strong>✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT</strong> (verdict <code>negative</code>): final-dot overlap 0.7844 &gt; 0.70 vs FAULTNET netfar (Protocol Rule 1). HOLDOUT-DTI netexpand_far <code>0.177976 [0.163109, 0.193227]</code> (gems57-pooled-hide-v2, 22,663 withheld), paired +0.066375 vs emission-matched KNICK control; canaries ≤0.7775; 11/11 format gates (finite [0,1], 0 NaN — portal range error fixed). A holdout number is not a leaderboard score; no ORGANIZER-CONFIRMED score exists. GEMSDOE32 0.2778 is a CLAIM (source page: UNSCORED).</p>
+  <p><a href="downloads/gemsdoe92-netexpand-netexpandfar-37654-20261025-47bacc15-zeros.tif" download><strong>⬇ Download primary GeoTIFF (netexpand_far)</strong></a> · <a href="downloads/gemsdoe92-netexpand-netexpandfar-37654-20261025-47bacc15-zeros.zip" download>one-TIFF ZIP</a> · <a href="downloads/netexpand_run_card.json">run card (JSON)</a> · <a href="ANALYSIS_20261025_NETEXPAND.md">analysis</a> · <a href="HYPOTHESES_20261025_NETEXPAND.md">hypotheses</a> · <a href="executive-summary.html">how to submit (future cleared file)</a></p>
+  <p>Siblings (research only, never submit together): <a href="downloads/gemsdoe92-netexpand-netexpand-37654-20261025-f705be3a-zeros.tif" download>netexpand (d&gt;2, HOLDOUT-DTI 0.146798)</a> · <a href="downloads/gemsdoe92-netexpand-nocontext-37654-20261025-d0b7d6e4-zeros.tif" download>nocontext ablation (0.115566)</a>. Primary name <code>gemsdoe92-netexpand-netexpand_far-20261025-47bacc15</code>, SHA-256 <code>a1bc94252d17f7a2…</code>, note: <code>NETEXPAND far: same LOQO pure-crest surface, dots &gt;4px off catalogue; 37654 dots 2.8px</code>.</p>
+</aside>
+<!-- NETEXPAND:END -->
 <!-- FLEXMAG:BEGIN -->
 <aside class="banner banner-warn" aria-label="FLEXMAG session status" style="border:2px solid #7f1d1d;">
   <p><strong>Newest session (2026-10-25) — lane <code>FLEXMAG</code> (blind-fault flexure hinge &times; magnetic analytic-signal concordance): 3 new byte-unique GeoTIFFs (3/3 pre-registered experiments); primary <code>HOLDOUT-DTI 0.045554 [0.035846, 0.056751]</code> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives, per-draw re-placement) &lt; 0.113316 promotion bar. Verdict <code>negative</code>.</strong></p>
@@ -440,7 +449,22 @@
   The live weekly cap, leaderboard and submission receipts have not been verified here. Fault predictions are not confirmed geothermal vents.</p>
 </header>
 
-<main><aside class="banner banner-warn" style="border:3px solid #991b1b"><h2>Historical DRAINAGE-KNICK research record</h2><p><strong>OK TO DOWNLOAD FOR RESEARCH: YES. OK TO SUBMIT: NO.</strong> Automated format validation passes, but HOLDOUT-DTI 0.061728 [0.047046, 0.075316] is below 0.113316 and the literal registry overlap stop fired.</p><p><a download href="downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif"><strong>Download validated GeoTIFF</strong></a> · <a download href="downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.zip">one-TIFF ZIP</a> · <a href="ANALYSIS_20261025_DRAINAGE_KNICK.md">analysis</a> · <a href="downloads/gemsdoe92-drainageknick-20261025T120000Z_run_card.json">run card</a></p><p>Name: <code>GEMSDOE92-DRAINAGE_KNICK-20261025</code>. Verdict: <code>negative</code>; weekly slots used: 0.</p></aside>
+<main><section id="ali-session-2026-10-25" class="banner banner-warn" style="border:3px solid #991b1b" aria-label="ALI session result">
+<h2>ALI session (2026-10-25): new GeoTIFF generated — OK TO DOWNLOAD (research) · NOT OK TO SUBMIT</h2>
+<p><a class="btn" download href="downloads/gemsdoe92-ali-famnms-37654-20261025T230000Z-68be9b4d-zeros.tif"><strong>Download the new ALI GeoTIFF</strong></a> · <a download href="downloads/gemsdoe92-ali-famnms-37654-20261025T230000Z-68be9b4d-zeros.zip">one-TIFF ZIP</a> · <a href="ALI_LANE.md">full report</a> · <a href="downloads/ali_run_card.json">run card</a></p>
+<table><tbody>
+<tr><th>Format</th><td>PASS — 1 float32 band, EPSG:32611, 3730×3292, matching transform, values exactly {0,1}, 0 NaN, zeros outside the footprint, 0 dots on catalogued faults (cannot trigger "Predicted values must be in range [0, 1]")</td></tr>
+<tr><th>Uniqueness</th><td><strong>DUPLICATE</strong> — 0.806 of its dots lie within 3 px of <code>12GEMSDOE_r7-nms3-dem10-scarp_0c9199f14e62_allfinite.tif</code> (12GEMSDOE, halo 0.317); 30 discriminating dot fields exceed 0.70; worst |ρ| 0.078</td></tr>
+<tr><th>HOLDOUT-DTI</th><td>0.097216 [0.079836, 0.117747] vs R0-recipe control 0.097493; paired Δ -0.000278 [-0.015980, +0.015900] (gems57-pooled-hide-v2, 22,663 withheld positives) — a tie; does not beat the current holdout best</td></tr>
+<tr><th>Leakage canaries</th><td>max single-feature AUC 0.586; seed FAM model alone 0.659 (limit 0.90; 52 features)</td></tr>
+<tr><th>Verdict</th><td><code>negative</code> · weekly slots used 0 · no ORGANIZER-CONFIRMED score</td></tr>
+<tr><th>Name (record only)</th><td><code>gemsdoe92-ali-famnms-37654-20261025T230000Z-68be9b4d-zeros</code></td></tr>
+<tr><th>Note (record only, 117 chars)</th><td><code>GEMSDOE92 ALI: OOF physics fault-appearance model, NMS 250 m, 37654 dots >300 m off-catalogue; holdout ties R0 recipe</code></td></tr>
+<tr><th>SHA-256</th><td><code>25398a5dee456a5fa491cb2b6b4dbd967f60b2e4239e62ac6871297c39ec7b37</code></td></tr>
+</tbody></table>
+<p><strong>How to submit a file once one is cleared:</strong> open <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">the DrivenData submissions page</a>, upload the <code>-zeros.tif</code> (or its one-TIFF ZIP — never both), paste the file's name and its ≤140-character note, and respect the 3-per-week limit (<a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">official rules</a> §3.2/§3.4). <strong>Today no file is cleared.</strong></p>
+</section>
+<aside class="banner banner-warn" style="border:3px solid #991b1b"><h2>Historical DRAINAGE-KNICK research record</h2><p><strong>OK TO DOWNLOAD FOR RESEARCH: YES. OK TO SUBMIT: NO.</strong> Automated format validation passes, but HOLDOUT-DTI 0.061728 [0.047046, 0.075316] is below 0.113316 and the literal registry overlap stop fired.</p><p><a download href="downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif"><strong>Download validated GeoTIFF</strong></a> · <a download href="downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.zip">one-TIFF ZIP</a> · <a href="ANALYSIS_20261025_DRAINAGE_KNICK.md">analysis</a> · <a href="downloads/gemsdoe92-drainageknick-20261025T120000Z_run_card.json">run card</a></p><p>Name: <code>GEMSDOE92-DRAINAGE_KNICK-20261025</code>. Verdict: <code>negative</code>; weekly slots used: 0.</p></aside>
 <!-- LISTRIC-CARD:BEGIN (2026-10-26 session) -->
 <section class="download-card" id="download-listric">
   <p class="kicker">Newest 2026-10-26 Lane: LISTRIC — Listric Asymmetry-Dip Offset-Pair LOQO (surface scarp displaced 200–800 m from subsurface gravity/basement inflection)</p>
@@ -910,6 +934,7 @@
   <p>Evidence labels: <code>HOLDOUT-DTI</code> = local buffered hide-and-recover (<code>gems57-pooled-hide-v2</code>); <code>PROXY</code> = off-catalogue USGS SGMC control; <code>REGISTRY-MEASUREMENT</code> = verified overlap/correlation scan; <code>CLAIM</code> = unverified reported figure; <code>ORGANIZER-CONFIRMED</code> = copied from a DrivenData submission receipt (0 recorded).</p>
 </footer>
 <p><strong>GAPBRIDGE (2026-10-25, unique, holdout-gated — DO NOT SUBMIT YET):</strong> <a href="downloads/gemsdoe92-gapbridge-ctx-37654-20261025-zeros.tif">gemsdoe92-gapbridge-ctx-37654-20261025-zeros.tif</a> · <a href="gapbridge.html">status &amp; submission steps</a></p>
+<p><strong>TILTANGLE (2026-10-25, negative research artifact — DO NOT SUBMIT):</strong> <a href="downloads/gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif" download>gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif</a> · <a href="downloads/gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.zip" download>one-TIFF ZIP</a> · <a href="downloads/gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros_run_card.json">run card</a> · <a href="tiltangle.html">details</a></p>
 </details>
 <!-- HISTORICAL-ARCHIVE:END -->
 </body>

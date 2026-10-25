@@ -55,7 +55,7 @@ The current prompt did not supply a single executable method paragraph, and the 
 
 ### Pass 3 — recheck against the prompt
 
-**Final validation after implementation:** `python -m pytest tests -q` — **544 passed**, 140 non-fatal Rasterio `PendingDeprecationWarning`s; `make manifest verify` — **PASS**; public/current/readiness renderer checks — **PASS**; `scripts/check_site.py` — **PASS**, all 89 served rasters gated; `git diff --check` — **PASS**. The last targeted status/site suite passed 49 tests.
+**Final validation after implementation and `origin/main` integration:** `python -m pytest tests -q` — **555 passed**, 140 non-fatal Rasterio `PendingDeprecationWarning`s; `make manifest verify ledger` — **PASS** (117 ledger rows, 0 organizer receipts); public/current/readiness renderer checks — **PASS**; `scripts/check_site.py` — **PASS**, all **94 served rasters** gated; `git diff --check` — **PASS**. During `origin/main` merge reconciliation (`63b3838`), three newly merged concurrent regressions (`TILTANGLE` served `-zeros.tif` unlinked on `docs/index.html`, missing `<main>` wrapper + malformed `</h1>` tag in `docs/tiltangle.html`, and an appended `preserved verbatim as historical input` claim in `README.md`) were also fixed.
 
 **Download/format requirement:** the site offers a direct, format-valid research TIFF and clearly says not to submit it. The exact download is not cleared for competition upload. A format pass cannot override the literal duplicate rule. **Unique new submission requirement: unmet.**
 

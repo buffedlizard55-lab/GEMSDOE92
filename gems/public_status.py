@@ -62,10 +62,13 @@ def render_status(card: dict) -> str:
     """Escape all receipt strings; never render an eligibility-dependent CTA."""
     path = escape(card['primary_download'].removeprefix('docs/'), quote=True)
     sha = escape(card['raster_sha256'])
+    from .newest_session import html_line, load as load_newest
+    ali = html_line(load_newest())
     return f'''{BEGIN}
 <section class="banner banner-warn" aria-label="Authoritative submission status">
   <h1>Research-only download available. DO NOT SUBMIT; uniqueness is not cleared.</h1>
   <p><strong>OK TO DOWNLOAD FOR RESEARCH · NOT CLEARED FOR A WEEKLY SLOT</strong></p>
+  {ali}
   <p><a class="btn" href="{path}" download>Download existing LISTRICLOQO research GeoTIFF — not cleared to submit (.tif)</a>
   · <a href="executive-summary.html">Submission guide</a>
   · <a href="ANALYSIS_20261025_LISTRICLOQO.md">Current analysis and limitations</a>

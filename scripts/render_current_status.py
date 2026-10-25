@@ -82,14 +82,24 @@ def panel(card: dict, page: str) -> str:
     download = link(card['primary_download'])
     review = link('docs/REVIEW_C5E3848C.md')
     receipt = link(CARD)
+    followup = link('docs/REVIEW_20261025_SESSION_FOLLOWUP.md')
+    followup_card = link('docs/downloads/session_followup_20261025_run_card.json')
+    leaderboard_review = link('docs/ANALYSIS_20261025_LEADERBOARD.md')
     guide = link('docs/executive-summary.html')
+    import posixpath
+    from gems.newest_session import html_line, load as load_newest, md_line
+    to_docs = posixpath.relpath('docs', str(Path(page).parent))
+    to_docs = '' if to_docs == '.' else to_docs + '/'
+    ali_card = load_newest(ROOT)
     if page.endswith('.md'):
         return f'''{BEGIN}
 ## Authoritative decision — Current verified status, 2026-10-25 (LISTRICLOQO 2026-10-25)
 
+{md_line(ali_card, to_docs)}
+
 **OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** LISTRICLOQO is a byte-distinct research artifact, but it fails the literal registry-overlap stop and promotion gates.
 
-[Existing LISTRICLOQO research TIFF — not cleared to submit]({download}) · [protocol run card]({receipt}) · [analysis]({link('docs/ANALYSIS_20261025_LISTRICLOQO.md')}) · [three-pass review]({link('docs/REVIEW_20261025_SESSION.md')}) · [executive submission guide]({guide}).
+[Existing LISTRICLOQO research TIFF — not cleared to submit]({download}) · [protocol run card]({receipt}) · [analysis]({link('docs/ANALYSIS_20261025_LISTRICLOQO.md')}) · [three-pass review]({link('docs/REVIEW_20261025_SESSION.md')}) · [supplemental initial audit]({followup}) · [audit run card]({followup_card}) · [later leaderboard review]({leaderboard_review}) · [executive submission guide]({guide}).
 
 Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.013295 [0.011713, 0.014980]`; paired improvement over KNICKLOQO is +0.002508 [0.001477, 0.003463]. Public dual-reading overlap is `0.690259 <= 0.70`, but the binding literal dense-witness overlap is `1.0 > 0.70`; this file is not uniqueness-cleared. No ORGANIZER-CONFIRMED score is available; 3/3 experiments and zero weekly slots.
 
@@ -98,11 +108,12 @@ Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withh
 <section id="current-verified-status" aria-label="Current authoritative submission status" style="max-width:70rem;margin:1rem auto;padding:1.25rem;border:3px solid #991b1b;border-radius:12px;background:#fff7ed;color:#292524;font:1rem/1.6 system-ui,sans-serif;overflow-wrap:anywhere">
 <h2 style="margin-top:0">Current decision: research-only TIFF; submission blocked</h2>
 <p><strong>OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT · NOT CLEARED FOR A WEEKLY SLOT</strong></p>
+{html_line(ali_card, to_docs)}
 <p><a href="{download}" download style="display:inline-block;padding:.7rem 1rem;background:#1e3a5f;color:white;border-radius:6px;font-weight:700">Download LISTRICLOQO research TIFF — not cleared to submit</a></p>
 <p>{name}<br>SHA-256: <code>{card['raster_sha256']}</code></p>
 <p>Automated format checks pass: single band, finite [0, 1], no NaNs, zeros outside the footprint, matching CRS/shape/transform. The file is byte-distinct and passes the public dual-reading diagnostic, but its literal dense-witness overlap is 1.0, above the 0.70 stop; <strong>it is not uniqueness-cleared or eligible to submit</strong>.</p>
 <p><strong>Negative verdict:</strong> HOLDOUT-DTI (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives) is 0.013295 [0.011713, 0.014980], but paired improvement over KNICKLOQO is +0.002508 [0.001477, 0.003463]. Public dual-reading overlap is 0.690259 and literal dense-witness overlap is 1.0; the limit is 0.70. No ORGANIZER-CONFIRMED score is available.</p>
-<p><a href="{receipt}">Protocol run card</a> · <a href="{link('docs/ANALYSIS_20261025_LISTRICLOQO.md')}">Analysis and limitations</a> · <a href="{link('docs/REVIEW_20261025_SESSION.md')}">Three-pass review</a> · <a href="{guide}">Executive summary / submission instructions</a></p>
+<p><a href="{receipt}">Protocol run card</a> · <a href="{link('docs/ANALYSIS_20261025_LISTRICLOQO.md')}">Analysis and limitations</a> · <a href="{link('docs/REVIEW_20261025_SESSION.md')}">Three-pass review</a> · <a href="{followup}">Supplemental initial audit</a> · <a href="{followup_card}">Audit run card</a> · <a href="{leaderboard_review}">Later leaderboard review</a> · <a href="{guide}">Executive summary / submission instructions</a></p>
 <p>LISTRICLOQO completed 3/3 experiments and used zero weekly slots. Historical ranking statements below are archives, not clearance.</p>
 </section>
 {END}'''
