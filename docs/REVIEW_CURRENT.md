@@ -1,3 +1,9 @@
+# Current protocol review — 2026-10-25 (`376a8469`)
+
+**Research downloads only. DO NOT SUBMIT.** The shared dual-reading helper now enforces the literal duplicate stop for every raster. Matched-budget overlap is diagnostic, not a specification change. Prior claims below that the policy was automatically resolved are historical and superseded. No new TIFF or geological experiment was generated in this review. See [review, conditional hypotheses and ordered next steps](REVIEW_376A8469.md) and [fresh run card](downloads/review376a_run_card.json). A new submission-cleared artifact remains unfulfilled.
+
+---
+
 # Current review — 2026-10-25 (`BLINDFAULT` session; read this block first)
 
 **✅ OK TO DOWNLOAD; ⛔ DO NOT SUBMIT (`verdict: negative`, fails the pre-registered holdout gate, not the uniqueness gate).**

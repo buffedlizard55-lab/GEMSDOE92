@@ -1,0 +1,120 @@
+{
+  "schema": "gemsdoe92-review376a-v1",
+  "reviewed_utc": "2026-10-25T04:27:22.450340+00:00",
+  "scope": "Tooling review; unchanged historical primary; no geological method lane or experiments executed.",
+  "hypothesis": "The literal overlap gate rejects every nonempty candidate against the pinned full-footprint witness.",
+  "mechanism": "Positive support covers every valid cell; matched-budget overlap cannot replace the requested literal stop.",
+  "named_non_fault_process_that_could_mimic_it": "Space-filling continuous prediction background, not evidence of geological equivalence.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "status": "Not run; no new candidate; historical scores not rerun or recertified.",
+    "dti": null,
+    "ci95": null,
+    "withheld_positives": null,
+    "evaluator_version": null
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "Single pinned witness; rejection only, not full registry clearance.",
+    "forward_overlap_within_3px": 1.0,
+    "spearman_full_footprint": 0.04724711160801543,
+    "preplacement_universal_stop": true,
+    "stop_required": true,
+    "witness_git_blob": "374c88b1da2b803e2ed160de467fd71ae114010d"
+  },
+  "raster_sha256": "44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12",
+  "primary_download": "docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
+  "validator_output": {
+    "evidence_class": "FORMAT-VALIDATION",
+    "all_must_gates_pass": true,
+    "no_nan_inside_footprint": true,
+    "all_finite": true,
+    "values_in_0_1": true,
+    "values_range": [
+      0.0,
+      1.0
+    ],
+    "crs_shape_transform_match": true,
+    "zero_outside_footprint": true,
+    "gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=float32 count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nan_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      },
+      {
+        "name": "submission_encoding",
+        "ok": true,
+        "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12"
+      }
+    ]
+  },
+  "submission_name": "GEMSDOE92-REVIEW376A-20261025",
+  "note": "Review only: unchanged COULOMBDM TIFF; literal registry duplicate stop; no new experiment. DO NOT SUBMIT.",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "new_unique_tiff_generated": false,
+  "experiments_executed": 0,
+  "weekly_slots_used": 0,
+  "organizer_confirmed_score": null,
+  "verification": {
+    "passes_completed": 3,
+    "tests_passed": 338,
+    "site_gated_rasters": 49,
+    "manifest": "PASS",
+    "parent": "PASS",
+    "ledger": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "limitations": [
+    "New submission requirement not fulfilled: universal literal duplicate stop.",
+    "No new holdout validation or full sibling-site review.",
+    "Official non-GitHub sources and live weekly cap not verified.",
+    "GitHub Pages workflow setting update denied with HTTP 403; legacy mode remains."
+  ]
+}
