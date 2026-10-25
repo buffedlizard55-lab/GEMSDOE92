@@ -38,6 +38,13 @@ Automated validation (no human inspection): finite [0, 1] everywhere (the portal
 
 
 > ## Latest artifact — LISTRIC (artifact label 2026-10-26; reviewed 2026-10-25, future-date irregularity disclosed)
+> ## Latest artifact — NETEXPAND (2026-10-25) — best holdout yet, lane-duplicate: DO NOT SUBMIT
+> **✅ OK TO DOWNLOAD (one click below, format-valid)** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). Three new byte-unique GeoTIFFs (37,654 dots each, 11/11 format gates, values in [0,1], 0 NaN — portal range error fixed by all-finite zeros encoding). Strict draw-blind **HOLDOUT-DTI `netexpand_far` 0.177976 [0.163109, 0.193227]** (`gems57-pooled-hide-v2`, 22,663 withheld px) beats emission-matched KNICK control by paired **+0.066375 [+0.053280, +0.079413]** (canaries ≤0.7775 PASS) — but final dots overlap FAULTNET `netfar` at **0.7844 > 0.70**, a Protocol Rule-1 lane duplicate, so no slot is cleared. Distinct from R0/H19-5 (overlap ≤0.40); not a copy. "0.2778" remains a **CLAIM** (GEMSDOE32's own page: UNSCORED, no organiser score exists).
+>
+> **[⬇ Download primary TIF (netexpand_far)](docs/downloads/gemsdoe92-netexpand-netexpandfar-37654-20261025-47bacc15-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-netexpand-netexpandfar-37654-20261025-47bacc15-zeros.zip) · [conservative d>2 sibling](docs/downloads/gemsdoe92-netexpand-netexpand-37654-20261025-f705be3a-zeros.tif) · [run card (JSON)](docs/downloads/netexpand_run_card.json) · [analysis](docs/ANALYSIS_20261025_NETEXPAND.md) · [hypotheses](docs/HYPOTHESES_20261025_NETEXPAND.md) · [executive summary — how to submit](docs/executive-summary.html)
+>
+> SHA-256 `a1bc94252d17f7a2…`; name `gemsdoe92-netexpand-netexpand_far-20261025-47bacc15`; note (≤140): `NETEXPAND far: same LOQO pure-crest surface, dots >4px off catalogue; 37654 dots 2.8px`. Verify without any human inspector: `python3 validate_submission.py docs/downloads/gemsdoe92-netexpand-netexpandfar-37654-20261025-47bacc15-zeros.tif` → `FORMAT PASS` (registry stop still applies).
+
 > **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`, `submission_eligible: false`). New unique-byte GeoTIFFs (3 experiments); automated [0,1] validation PASS. Static **HOLDOUT-DTI `0.010909 [0.009543, 0.012278]`** (`gems57-pooled-hide-v2`, 22,663 withheld px) nominally tops KNICKLOQO `0.010788` but paired Δ `+0.000121 [-0.001167, +0.001262]` includes 0, SGMC proxy is lower, and the public dual-reading overlap `0.710735 > 0.70` (62GEMSDOE) + literal `1.000` block promotion.
 >
 > **[Download LISTRIC standalone TIFF](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif)** · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.zip) · [run card](docs/downloads/listric_run_card.json) · [analysis](docs/ANALYSIS_20261026_LISTRIC.md) · [hypotheses](docs/HYPOTHESES_20261026_LISTRIC.md) · [three-pass current review](docs/REVIEW_20261025_ARENA_8A5595A3.md) · [executive summary — how to submit](docs/executive-summary.html)
@@ -66,13 +73,13 @@ yourself; generate a genuinely new unique GeoTIFF (not a copy/rename); make
 OK-TO-DOWNLOAD / OK-TO-SUBMIT obvious at the top of the site and executive
 summary with one-click download, unique name and <=140-character note; avoid
 the portal "Predicted values must be in range [0, 1]" error; answer at PhD
-level why GEMSDOE32 h33-h33-2-b2 (claimed 0.2778, vs leaderboard highs
-0.3195/0.4413) scored highest and whether/how to beat it; pre-register 3–5
-untried geological hypotheses and validate the top one on a spatially blocked
-holdout before spending any weekly slot; end with JSON run card, verdict
-promote/negative, PR merged to main, remaining limitations. Work products:
-docs/HYPOTHESES_20261025_VARIO.md, docs/ANALYSIS_20261025_VARIO.md,
-docs/vario.html, evidence/vario_run_card.json (verdict negative; 0 slots used).
+level why GEMSDOE32 h33-h33-2-b2 (claimed 0.2778) scored highest and
+whether/how to beat it; pre-register 3–5 untried geological hypotheses and
+validate the top one on a spatially blocked holdout before spending any
+weekly slot; end with JSON run card, verdict promote/negative, PR merged to
+main, remaining limitations. Work products: docs/HYPOTHESES_20261025_VARIO.md,
+docs/ANALYSIS_20261025_VARIO.md, docs/vario.html, evidence/vario_run_card.json
+(verdict negative; 0 slots used).
 
 
 Read this README and [SESSION_PROMPT.md](SESSION_PROMPT.md) before work. The [full supplied site-score inventory](ledger/site_scores_claimed_20261025.csv) remains owner-reported claims, not verified receipts. Retain these requirements:
@@ -453,7 +460,7 @@ PYTHON=.venv/bin/python make test && PYTHON=.venv/bin/python make site && PYTHON
 
 ## Persistent Session Prompt Reference
 
-Full durable operating contract also stored in [`SESSION_PROMPT.md`](SESSION_PROMPT.md). The prompt below is preserved verbatim as historical input, not as a claim that GEMSDOE32 received a verified `0.2778` score or that a current TIFF is submission-cleared. Follow the binding negative decision at the top of this README and the evidence-linked reviews instead.
+Full durable operating contract also stored in [`SESSION_PROMPT.md`](SESSION_PROMPT.md). This expandable prompt block is a **normalized, condensed operating brief**, not a verbatim archive of the full historical user message. Read it with the linked contract at every session start. Neither document turns GEMSDOE32's `0.2778` into a verified organizer score or clears a TIFF for submission; follow the binding negative decision at the top of this README and the evidence-linked reviews instead.
 
 <details>
 <summary>Click to expand persistent session prompt</summary>
