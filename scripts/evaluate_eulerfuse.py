@@ -64,7 +64,7 @@ def emit(
 
 def local_uniqueness(masks: dict[str, np.ndarray], foot: np.ndarray) -> dict[str, dict]:
     rows = {k: [] for k in masks}
-    for label, path in collect_unique_local_rasters(foot):
+    for label, path in collect_unique_local_rasters(foot, exclude_substrings=("eulerfuse", "EULERFUSE")):
         with rasterio.open(path) as ds:
             raw = np.nan_to_num(ds.read(1), nan=0.0)
         support = (raw > 0) & foot

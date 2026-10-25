@@ -1,0 +1,753 @@
+{
+  "schema": "gemsdoe92.poissonknick-uniqueness.v1",
+  "lane": "POISSONKNICK",
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "policy": "#IR-92-DENSE-WITNESS-MATCHED-BUDGET: both literal and matched-budget readings reported; fail-closed negative under literal Rule 1 because 17GEMSDOE E-proba-multiscale is positive on all 5,167,373 footprint pixels (literal overlap 1.000000 > 0.70).",
+  "local_registry_files_checked": 97,
+  "public_witness_files_checked": 7,
+  "sibling_overlap": {
+    "qcal_vs_uncal": 0.81654,
+    "qcal_vs_pkdual40": 0.950045,
+    "uncal_vs_qcal": 0.851649,
+    "uncal_vs_pkdual40": 0.865008,
+    "pkdual40_vs_qcal": 0.89847,
+    "pkdual40_vs_uncal": 0.770834
+  },
+  "dense_witness_specificity": {
+    "witness": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "witness_git_blob_sha1": "374c88b1da2b803e2ed160de467fd71ae114010d",
+    "witness_positive_footprint_cells": 5167373,
+    "footprint_cells": 5167373,
+    "R0_parent_literal_overlap": 1.0,
+    "R0_parent_matched_budget_overlap": 0.036596,
+    "qcal_literal_overlap": 1.0,
+    "qcal_matched_budget_overlap": 0.066288,
+    "uncal_literal_overlap": 1.0,
+    "uncal_matched_budget_overlap": 0.057524,
+    "pkdual40_literal_overlap": 1.0,
+    "pkdual40_matched_budget_overlap": 0.053726
+  },
+  "by_arm": {
+    "qcal": {
+      "local": {
+        "evidence_class": "REGISTRY-MEASUREMENT",
+        "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+        "rasters_checked": 97,
+        "n_dot_fields": 97,
+        "n_continuous_surfaces": 0,
+        "worst_literal_forward_overlap": 0.645668,
+        "worst_literal_file": "local:docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+        "worst_matched_budget_forward_overlap": 0.645668,
+        "worst_matched_budget_file": "local:docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+        "worst_abs_spearman": 0.150587,
+        "worst_abs_spearman_file": "local:data/bridge/h19_5.tif",
+        "overlap_limit": 0.7,
+        "rho_limit": 0.9,
+        "duplicate": false,
+        "verdict": "unique",
+        "literal_reading_fires": false,
+        "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+      },
+      "public": {
+        "evidence_class": "REGISTRY-MEASUREMENT",
+        "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+        "rasters_checked": 7,
+        "n_dot_fields": 6,
+        "n_continuous_surfaces": 1,
+        "worst_literal_forward_overlap": 1.0,
+        "worst_literal_file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "worst_matched_budget_forward_overlap": 0.625432,
+        "worst_matched_budget_file": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+        "worst_abs_spearman": 0.407735,
+        "worst_abs_spearman_file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "overlap_limit": 0.7,
+        "rho_limit": 0.9,
+        "duplicate": false,
+        "verdict": "unique",
+        "literal_reading_fires": true,
+        "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+      },
+      "top_local": [
+        {
+          "file": "local:docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+          "their_dots": 37654,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.645668,
+          "matched_budget_forward_overlap": 0.645668,
+          "spearman_surface": 0.119258
+        },
+        {
+          "file": "local:docs/downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif",
+          "their_dots": 37654,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.625538,
+          "matched_budget_forward_overlap": 0.625538,
+          "spearman_surface": 0.10498
+        },
+        {
+          "file": "local:docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif",
+          "their_dots": 37654,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.611303,
+          "matched_budget_forward_overlap": 0.611303,
+          "spearman_surface": 0.110645
+        },
+        {
+          "file": "local:data/bridge/h19_5.tif",
+          "their_dots": 121131,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.527567,
+          "matched_budget_forward_overlap": 0.527567,
+          "spearman_surface": 0.150587
+        },
+        {
+          "file": "local:docs/downloads/h33-h33-2-b2-COULOMBLOQOnocoulomb-20261024-ab7c4415-zeros.tif",
+          "their_dots": 37654,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.505258,
+          "matched_budget_forward_overlap": 0.505258,
+          "spearman_surface": 0.092891
+        },
+        {
+          "file": "local:docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
+          "their_dots": 37654,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.496494,
+          "matched_budget_forward_overlap": 0.496494,
+          "spearman_surface": 0.074835
+        }
+      ],
+      "top_public": [
+        {
+          "file": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+          "their_dots": 100000,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.625432,
+          "matched_budget_forward_overlap": 0.625432,
+          "spearman_surface": 0.022003
+        },
+        {
+          "file": "GEMSDOE23/docs/downloads/gemsdoe23-h24-dispersed-habitat-20261002-ada8df14-allfinite.tif",
+          "their_dots": 100000,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.621156,
+          "matched_budget_forward_overlap": 0.621156,
+          "spearman_surface": 0.021325
+        },
+        {
+          "file": "GEMSDOE52/docs/downloads/gems52-h87-boardcal-marginal-20261010-61427px.tif",
+          "their_dots": 61427,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.61372,
+          "matched_budget_forward_overlap": 0.61372,
+          "spearman_surface": 0.078848
+        },
+        {
+          "file": "62GEMSDOE/docs/downloads/gems62b-tiltgrad-vote-scarpcorrob-120000-zeros.tif",
+          "their_dots": 120000,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.612445,
+          "matched_budget_forward_overlap": 0.612445,
+          "spearman_surface": 0.023924
+        },
+        {
+          "file": "12GEMSDOE/docs/downloads/12GEMSDOE_r6-nms3-h28-texture_8721329b55c7.tif",
+          "their_dots": 103347,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.604292,
+          "matched_budget_forward_overlap": 0.604292,
+          "spearman_surface": 0.080481
+        },
+        {
+          "file": "GEMSDOE23/docs/downloads/gemsdoe23-h30-arrangement-matched-habitat-20261002-0d4e02e8-allfinite.tif",
+          "their_dots": 91533,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.564482,
+          "matched_budget_forward_overlap": 0.564482,
+          "spearman_surface": 0.029409
+        },
+        {
+          "file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+          "their_dots": 5167373,
+          "my_dots": 37654,
+          "representation": "continuous_surface",
+          "literal_forward_overlap": 1.0,
+          "matched_budget_forward_overlap": 0.066288,
+          "spearman_surface": 0.407735
+        }
+      ]
+    },
+    "uncal": {
+      "local": {
+        "evidence_class": "REGISTRY-MEASUREMENT",
+        "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+        "rasters_checked": 97,
+        "n_dot_fields": 97,
+        "n_continuous_surfaces": 0,
+        "worst_literal_forward_overlap": 0.65507,
+        "worst_literal_file": "local:docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+        "worst_matched_budget_forward_overlap": 0.65507,
+        "worst_matched_budget_file": "local:docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+        "worst_abs_spearman": 0.137445,
+        "worst_abs_spearman_file": "local:data/bridge/h19_5.tif",
+        "overlap_limit": 0.7,
+        "rho_limit": 0.9,
+        "duplicate": false,
+        "verdict": "unique",
+        "literal_reading_fires": false,
+        "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+      },
+      "public": {
+        "evidence_class": "REGISTRY-MEASUREMENT",
+        "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+        "rasters_checked": 7,
+        "n_dot_fields": 6,
+        "n_continuous_surfaces": 1,
+        "worst_literal_forward_overlap": 1.0,
+        "worst_literal_file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "worst_matched_budget_forward_overlap": 0.619748,
+        "worst_matched_budget_file": "62GEMSDOE/docs/downloads/gems62b-tiltgrad-vote-scarpcorrob-120000-zeros.tif",
+        "worst_abs_spearman": 0.427334,
+        "worst_abs_spearman_file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "overlap_limit": 0.7,
+        "rho_limit": 0.9,
+        "duplicate": false,
+        "verdict": "unique",
+        "literal_reading_fires": true,
+        "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+      },
+      "top_local": [
+        {
+          "file": "local:docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+          "their_dots": 37654,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.65507,
+          "matched_budget_forward_overlap": 0.65507,
+          "spearman_surface": 0.120363
+        },
+        {
+          "file": "local:docs/downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif",
+          "their_dots": 37654,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.627689,
+          "matched_budget_forward_overlap": 0.627689,
+          "spearman_surface": 0.106479
+        },
+        {
+          "file": "local:docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif",
+          "their_dots": 37654,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.618712,
+          "matched_budget_forward_overlap": 0.618712,
+          "spearman_surface": 0.112548
+        },
+        {
+          "file": "local:docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
+          "their_dots": 37654,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.489908,
+          "matched_budget_forward_overlap": 0.489908,
+          "spearman_surface": 0.075834
+        },
+        {
+          "file": "local:docs/downloads/h33-h33-2-b2-COULOMBLOQOnocoulomb-20261024-ab7c4415-zeros.tif",
+          "their_dots": 37654,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.482631,
+          "matched_budget_forward_overlap": 0.482631,
+          "spearman_surface": 0.090853
+        },
+        {
+          "file": "local:docs/downloads/h33-h33-2-b2-COULOMBDMs35coulomb65-20261024-1091c5a7-zeros.tif",
+          "their_dots": 37654,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.479551,
+          "matched_budget_forward_overlap": 0.479551,
+          "spearman_surface": 0.072694
+        }
+      ],
+      "top_public": [
+        {
+          "file": "62GEMSDOE/docs/downloads/gems62b-tiltgrad-vote-scarpcorrob-120000-zeros.tif",
+          "their_dots": 120000,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.619748,
+          "matched_budget_forward_overlap": 0.619748,
+          "spearman_surface": 0.03005
+        },
+        {
+          "file": "12GEMSDOE/docs/downloads/12GEMSDOE_r6-nms3-h28-texture_8721329b55c7.tif",
+          "their_dots": 103347,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.613295,
+          "matched_budget_forward_overlap": 0.613295,
+          "spearman_surface": 0.086566
+        },
+        {
+          "file": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+          "their_dots": 100000,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.605991,
+          "matched_budget_forward_overlap": 0.605991,
+          "spearman_surface": 0.022699
+        },
+        {
+          "file": "GEMSDOE23/docs/downloads/gemsdoe23-h24-dispersed-habitat-20261002-ada8df14-allfinite.tif",
+          "their_dots": 100000,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.602114,
+          "matched_budget_forward_overlap": 0.602114,
+          "spearman_surface": 0.022364
+        },
+        {
+          "file": "GEMSDOE52/docs/downloads/gems52-h87-boardcal-marginal-20261010-61427px.tif",
+          "their_dots": 61427,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.57144,
+          "matched_budget_forward_overlap": 0.57144,
+          "spearman_surface": 0.0745
+        },
+        {
+          "file": "GEMSDOE23/docs/downloads/gemsdoe23-h30-arrangement-matched-habitat-20261002-0d4e02e8-allfinite.tif",
+          "their_dots": 91533,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.550858,
+          "matched_budget_forward_overlap": 0.550858,
+          "spearman_surface": 0.035075
+        },
+        {
+          "file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+          "their_dots": 5167373,
+          "my_dots": 37654,
+          "representation": "continuous_surface",
+          "literal_forward_overlap": 1.0,
+          "matched_budget_forward_overlap": 0.057524,
+          "spearman_surface": 0.427334
+        }
+      ]
+    },
+    "pkdual40": {
+      "local": {
+        "evidence_class": "REGISTRY-MEASUREMENT",
+        "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+        "rasters_checked": 97,
+        "n_dot_fields": 97,
+        "n_continuous_surfaces": 0,
+        "worst_literal_forward_overlap": 0.619244,
+        "worst_literal_file": "local:docs/downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif",
+        "worst_matched_budget_forward_overlap": 0.619244,
+        "worst_matched_budget_file": "local:docs/downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif",
+        "worst_abs_spearman": 0.150587,
+        "worst_abs_spearman_file": "local:data/bridge/h19_5.tif",
+        "overlap_limit": 0.7,
+        "rho_limit": 0.9,
+        "duplicate": false,
+        "verdict": "unique",
+        "literal_reading_fires": false,
+        "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+      },
+      "public": {
+        "evidence_class": "REGISTRY-MEASUREMENT",
+        "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+        "rasters_checked": 7,
+        "n_dot_fields": 6,
+        "n_continuous_surfaces": 1,
+        "worst_literal_forward_overlap": 1.0,
+        "worst_literal_file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "worst_matched_budget_forward_overlap": 0.618075,
+        "worst_matched_budget_file": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+        "worst_abs_spearman": 0.407735,
+        "worst_abs_spearman_file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "overlap_limit": 0.7,
+        "rho_limit": 0.9,
+        "duplicate": false,
+        "verdict": "unique",
+        "literal_reading_fires": true,
+        "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+      },
+      "top_local": [
+        {
+          "file": "local:docs/downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif",
+          "their_dots": 37654,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.619244,
+          "matched_budget_forward_overlap": 0.619244,
+          "spearman_surface": 0.10498
+        },
+        {
+          "file": "local:docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+          "their_dots": 37654,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.61194,
+          "matched_budget_forward_overlap": 0.61194,
+          "spearman_surface": 0.119258
+        },
+        {
+          "file": "local:docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif",
+          "their_dots": 37654,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.585276,
+          "matched_budget_forward_overlap": 0.585276,
+          "spearman_surface": 0.110645
+        },
+        {
+          "file": "local:docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
+          "their_dots": 37654,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.499708,
+          "matched_budget_forward_overlap": 0.499708,
+          "spearman_surface": 0.074835
+        },
+        {
+          "file": "local:docs/downloads/h33-h33-2-b2-COULOMBLOQOnocoulomb-20261024-ab7c4415-zeros.tif",
+          "their_dots": 37654,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.487837,
+          "matched_budget_forward_overlap": 0.487837,
+          "spearman_surface": 0.092891
+        },
+        {
+          "file": "local:docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif",
+          "their_dots": 37654,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.485739,
+          "matched_budget_forward_overlap": 0.485739,
+          "spearman_surface": 0.080371
+        }
+      ],
+      "top_public": [
+        {
+          "file": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+          "their_dots": 100000,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.618075,
+          "matched_budget_forward_overlap": 0.618075,
+          "spearman_surface": 0.022003
+        },
+        {
+          "file": "GEMSDOE23/docs/downloads/gemsdoe23-h24-dispersed-habitat-20261002-ada8df14-allfinite.tif",
+          "their_dots": 100000,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.613428,
+          "matched_budget_forward_overlap": 0.613428,
+          "spearman_surface": 0.021325
+        },
+        {
+          "file": "62GEMSDOE/docs/downloads/gems62b-tiltgrad-vote-scarpcorrob-120000-zeros.tif",
+          "their_dots": 120000,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.607638,
+          "matched_budget_forward_overlap": 0.607638,
+          "spearman_surface": 0.023924
+        },
+        {
+          "file": "12GEMSDOE/docs/downloads/12GEMSDOE_r6-nms3-h28-texture_8721329b55c7.tif",
+          "their_dots": 103347,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.583311,
+          "matched_budget_forward_overlap": 0.583311,
+          "spearman_surface": 0.080481
+        },
+        {
+          "file": "GEMSDOE52/docs/downloads/gems52-h87-boardcal-marginal-20261010-61427px.tif",
+          "their_dots": 61427,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.566792,
+          "matched_budget_forward_overlap": 0.566792,
+          "spearman_surface": 0.078848
+        },
+        {
+          "file": "GEMSDOE23/docs/downloads/gemsdoe23-h30-arrangement-matched-habitat-20261002-0d4e02e8-allfinite.tif",
+          "their_dots": 91533,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.555559,
+          "matched_budget_forward_overlap": 0.555559,
+          "spearman_surface": 0.029409
+        },
+        {
+          "file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+          "their_dots": 5167373,
+          "my_dots": 37654,
+          "representation": "continuous_surface",
+          "literal_forward_overlap": 1.0,
+          "matched_budget_forward_overlap": 0.053726,
+          "spearman_surface": 0.407735
+        }
+      ]
+    }
+  },
+  "next_step_1_coulombloqo_dual_reading": {
+    "standalone": {
+      "local_registry_including_eulerfuse": {
+        "evidence_class": "REGISTRY-MEASUREMENT",
+        "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+        "rasters_checked": 62,
+        "n_dot_fields": 62,
+        "n_continuous_surfaces": 0,
+        "worst_literal_forward_overlap": 0.828703,
+        "worst_literal_file": "downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+        "worst_matched_budget_forward_overlap": 0.828703,
+        "worst_matched_budget_file": "downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+        "worst_abs_spearman": 0.289024,
+        "worst_abs_spearman_file": "downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+        "overlap_limit": 0.7,
+        "rho_limit": 0.9,
+        "duplicate": true,
+        "verdict": "negative",
+        "literal_reading_fires": true,
+        "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+      },
+      "local_top5_overlap": [
+        {
+          "file": "downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+          "raster": "downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+          "positive_footprint_pixels": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.828703,
+          "matched_budget_forward_overlap": 0.828703,
+          "forward_overlap_3px": 0.828703,
+          "spearman_surface": 0.289024,
+          "spearman_rho": 0.289024
+        },
+        {
+          "file": "h19_5.tif",
+          "raster": "h19_5.tif",
+          "positive_footprint_pixels": 121131,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.616375,
+          "matched_budget_forward_overlap": 0.616375,
+          "forward_overlap_3px": 0.616375,
+          "spearman_surface": 0.047843,
+          "spearman_rho": 0.047843
+        },
+        {
+          "file": "releases/h33-h33-2-b2-SCARPPOLf33Stop-20261024-7b3571a5-zeros.tif",
+          "raster": "releases/h33-h33-2-b2-SCARPPOLf33Stop-20261024-7b3571a5-zeros.tif",
+          "positive_footprint_pixels": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.605407,
+          "matched_budget_forward_overlap": 0.605407,
+          "forward_overlap_3px": 0.605407,
+          "spearman_surface": 0.042286,
+          "spearman_rho": 0.042286
+        },
+        {
+          "file": "releases/h33-h33-2-b2-SCARPPOLf38Stop-20261024-a259cb8c-zeros.tif",
+          "raster": "releases/h33-h33-2-b2-SCARPPOLf38Stop-20261024-a259cb8c-zeros.tif",
+          "positive_footprint_pixels": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.604,
+          "matched_budget_forward_overlap": 0.604,
+          "forward_overlap_3px": 0.604,
+          "spearman_surface": 0.043035,
+          "spearman_rho": 0.043035
+        },
+        {
+          "file": "releases/h33-h33-2-b2-SCARPPOLf45Stop-20261024-cf4e45c0-zeros.tif",
+          "raster": "releases/h33-h33-2-b2-SCARPPOLf45Stop-20261024-cf4e45c0-zeros.tif",
+          "positive_footprint_pixels": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.600547,
+          "matched_budget_forward_overlap": 0.600547,
+          "forward_overlap_3px": 0.600547,
+          "spearman_surface": 0.042981,
+          "spearman_rho": 0.042981
+        }
+      ],
+      "public_registry_150k": {
+        "evidence_class": "REGISTRY-MEASUREMENT",
+        "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+        "rasters_checked": 3,
+        "n_dot_fields": 2,
+        "n_continuous_surfaces": 1,
+        "worst_literal_forward_overlap": 1.0,
+        "worst_literal_file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "worst_matched_budget_forward_overlap": 0.739842,
+        "worst_matched_budget_file": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+        "worst_abs_spearman": 0.096019,
+        "worst_abs_spearman_file": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+        "overlap_limit": 0.7,
+        "rho_limit": 0.9,
+        "duplicate": true,
+        "verdict": "negative",
+        "literal_reading_fires": true,
+        "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+      },
+      "public_registry_90k": {
+        "evidence_class": "REGISTRY-MEASUREMENT",
+        "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+        "rasters_checked": 3,
+        "n_dot_fields": 1,
+        "n_continuous_surfaces": 2,
+        "worst_literal_forward_overlap": 1.0,
+        "worst_literal_file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "worst_matched_budget_forward_overlap": 0.700404,
+        "worst_matched_budget_file": "GEMSDOE52/docs/downloads/gems52-h87-boardcal-marginal-20261010-61427px.tif",
+        "worst_abs_spearman": 0.096019,
+        "worst_abs_spearman_file": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+        "overlap_limit": 0.7,
+        "rho_limit": 0.9,
+        "duplicate": true,
+        "verdict": "negative",
+        "literal_reading_fires": true,
+        "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+      },
+      "public_sparse_max_overlap_le_150k": 0.739842,
+      "public_sparse_max_overlap_le_90k": 0.700404
+    },
+    "dual45": {
+      "local_registry_including_eulerfuse": {
+        "evidence_class": "REGISTRY-MEASUREMENT",
+        "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+        "rasters_checked": 62,
+        "n_dot_fields": 62,
+        "n_continuous_surfaces": 0,
+        "worst_literal_forward_overlap": 0.732565,
+        "worst_literal_file": "downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+        "worst_matched_budget_forward_overlap": 0.732565,
+        "worst_matched_budget_file": "downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+        "worst_abs_spearman": 0.241539,
+        "worst_abs_spearman_file": "h19_5.tif",
+        "overlap_limit": 0.7,
+        "rho_limit": 0.9,
+        "duplicate": true,
+        "verdict": "negative",
+        "literal_reading_fires": true,
+        "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+      },
+      "local_top5_overlap": [
+        {
+          "file": "downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+          "raster": "downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+          "positive_footprint_pixels": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.732565,
+          "matched_budget_forward_overlap": 0.732565,
+          "forward_overlap_3px": 0.732565,
+          "spearman_surface": 0.161843,
+          "spearman_rho": 0.161843
+        },
+        {
+          "file": "releases/h33-h33-2-b2-SCARPPOLf45Stop-20261024-cf4e45c0-zeros.tif",
+          "raster": "releases/h33-h33-2-b2-SCARPPOLf45Stop-20261024-cf4e45c0-zeros.tif",
+          "positive_footprint_pixels": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.59821,
+          "matched_budget_forward_overlap": 0.59821,
+          "forward_overlap_3px": 0.59821,
+          "spearman_surface": 0.123159,
+          "spearman_rho": 0.123159
+        },
+        {
+          "file": "releases/h33-h33-2-b2-SCARPPOLf38Stop-20261024-a259cb8c-zeros.tif",
+          "raster": "releases/h33-h33-2-b2-SCARPPOLf38Stop-20261024-a259cb8c-zeros.tif",
+          "positive_footprint_pixels": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.588835,
+          "matched_budget_forward_overlap": 0.588835,
+          "forward_overlap_3px": 0.588835,
+          "spearman_surface": 0.125968,
+          "spearman_rho": 0.125968
+        },
+        {
+          "file": "downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+          "raster": "downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+          "positive_footprint_pixels": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.582036,
+          "matched_budget_forward_overlap": 0.582036,
+          "forward_overlap_3px": 0.582036,
+          "spearman_surface": 0.114839,
+          "spearman_rho": 0.114839
+        },
+        {
+          "file": "releases/h33-h33-2-b2-SCARPPOLf33Stop-20261024-7b3571a5-zeros.tif",
+          "raster": "releases/h33-h33-2-b2-SCARPPOLf33Stop-20261024-7b3571a5-zeros.tif",
+          "positive_footprint_pixels": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.579673,
+          "matched_budget_forward_overlap": 0.579673,
+          "forward_overlap_3px": 0.579673,
+          "spearman_surface": 0.128135,
+          "spearman_rho": 0.128135
+        }
+      ],
+      "public_registry_150k": {
+        "evidence_class": "REGISTRY-MEASUREMENT",
+        "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+        "rasters_checked": 3,
+        "n_dot_fields": 2,
+        "n_continuous_surfaces": 1,
+        "worst_literal_forward_overlap": 1.0,
+        "worst_literal_file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "worst_matched_budget_forward_overlap": 0.72242,
+        "worst_matched_budget_file": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+        "worst_abs_spearman": 0.096019,
+        "worst_abs_spearman_file": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+        "overlap_limit": 0.7,
+        "rho_limit": 0.9,
+        "duplicate": true,
+        "verdict": "negative",
+        "literal_reading_fires": true,
+        "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+      },
+      "public_registry_90k": {
+        "evidence_class": "REGISTRY-MEASUREMENT",
+        "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+        "rasters_checked": 3,
+        "n_dot_fields": 1,
+        "n_continuous_surfaces": 2,
+        "worst_literal_forward_overlap": 1.0,
+        "worst_literal_file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "worst_matched_budget_forward_overlap": 0.648776,
+        "worst_matched_budget_file": "GEMSDOE52/docs/downloads/gems52-h87-boardcal-marginal-20261010-61427px.tif",
+        "worst_abs_spearman": 0.096019,
+        "worst_abs_spearman_file": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+        "overlap_limit": 0.7,
+        "rho_limit": 0.9,
+        "duplicate": false,
+        "verdict": "unique",
+        "literal_reading_fires": true,
+        "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+      },
+      "public_sparse_max_overlap_le_150k": 0.72242,
+      "public_sparse_max_overlap_le_90k": 0.648776
+    }
+  }
+}

@@ -1,3 +1,31 @@
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`POISSONKNICK` Session)
+
+## Completed this session (`POISSONKNICK`)
+
+1. **Executed Priority 1 from `BLINDFAULT` (`COULOMBLOQO` re-read under `dual_reading_decision`, `evidence/poissonknick_screen.json::next_step_1_coulombloqo_dual_reading`):**
+   - Even after demoting dense `> 150,000`-px probability surfaces (`17GEMSDOE E-proba-multiscale`) to matched-budget top-`37,654` support, `COULOMBLOQO standalone` and `dual45` **still fail Rule 1 (`> 0.70` forward 3-px overlap)** against sparse public dot fields (`0.739842` / `0.722420` vs `GEMSDOE23` `100,000`-px habitat rasters; `0.700404` for `standalone` vs `GEMSDOE52` `61,427`-px raster) AND against local `37,654`-dot `gemsdoe92-eulerfuse-gravity` (`0.828703` for `standalone`, `0.732565` for `dual45`).
+   - Fixed `collect_unique_local_rasters(foot, exclude_substrings=...)` in `scripts/screen_coulomb_loqo.py`, `scripts/screen_eulerfuse.py`, and `scripts/evaluate_eulerfuse.py` so non-`COULOMBLOQO` lanes never skip `COULOMBLOQO` rasters.
+2. **Executed Priority 2 from `BLINDFAULT` (Diagnosed & Resolved `#IR-92-NE-QUADRANT-LOQO-COLLAPSE`):**
+   - Quantified per-quadrant dot allocation across `37,654` dots (`evidence/poissonknick_holdout.json::quadrant_dot_allocations`): `R0` places `10,145` dots (`26.9%`) in `NE`, whereas `BLINDFAULT blind` placed `49` (`0.1%`), `BLINDFAULT blindtopo` `272` (`0.7%`), `COULOMBLOQO standalone` `4,221` (`11.2%`), and uncalibrated `POISSONKNICK uncal` `2,396` (`6.4%`).
+   - Implemented unlabeled within-quadrant survival-quantile probability & crest calibration (`gems/poissonknick.py::calibrate_quadrant_probabilities`), restoring `POISSONKNICK qcal` `NE` allocation to **`9,967` dots (`26.5%`)** and lifting `NE` strict draw-blind `HOLDOUT-DTI` by **`+41.3%`** (`0.080880` $\to$ `0.114274`, paired 95% CI `[+0.012412, +0.054829]`).
+3. **Executed Priority 3 from `BLINDFAULT` (Pre-Registered & Evaluated `POISSONKNICK`, 3/3 Experiments, 0 Weekly Slots):**
+   - Pre-registered 5 hypotheses (`docs/HYPOTHESES_20261025_POISSONKNICK.md`) and implemented `gems/poissonknick.py` (`f25_poisson_rtp_vg_decouple`, `f26_poisson_window_cov`, `f27_thalweg_knick_convexity`, `f28_lahontan_obliquity_deconfound`, `f29_quad_norm_depth_base`, `f30_quad_norm_cond_grav`).
+   - **53 / 53 Leakage Canaries PASS** (`max symmetric AUC = 0.654126 <= 0.90`).
+   - **Static Deployment `d_cat > 2.0` `HOLDOUT-DTI`:** `POISSONKNICK qcal` sets a **new all-time repository record of `0.009304 [0.007836, 0.010810]`**, beating `COULOMBLOQO standalone` (`0.009220`), `COULOMBLOQO dual45` (`0.009107`), `POISSONKNICK uncal` (`0.008877`), `HYDROCONDUIT f45hydro` (`0.008549`), `APRONRIDGE free1d` (`0.008354`), `COULOMBDM s45coulomb55` (`0.007816`), `POISSONKNICK pkdual40` (`0.007258`), `BLINDFAULT blindtopo` (`0.004585`), and `R0` (`0.004006`, paired $\Delta = +0.005298\ [+0.004133, +0.006564]$).
+   - **Strict Draw-Blind `d_visible > 2.0` `HOLDOUT-DTI`:** `POISSONKNICK qcal = 0.098491 [0.086315, 0.112473]` beats `pkdual40` (`0.095362`), `uncal` (`0.090988`, paired $\Delta = +0.007503\ [+0.000592, +0.015116]$), and `H19_5_vis_d2` (`0.071758`, paired $\Delta = +0.026733\ [+0.017606, +0.036511]$), and achieves **`2.49x` higher `HOLDOUT-DTI` on flat basin-floor faults (`T1`: `0.042254` vs `0.016969`)**.
+   - **Uniqueness (`REGISTRY-MEASUREMENT`):** All 3 `POISSONKNICK` arms pass Reading 2 (matched-budget / sparse `<= 150k` dot-field uniqueness `<= 0.70`) across all 91 local registry files (`qcal` worst `0.645668` vs `eulerfuse-gravity`) and all 7 pinned public witnesses (`qcal` worst `0.625432` vs `GEMSDOE23 h29 100k`), solving the sparse-overlap failure of `COULOMBLOQO`. Under fail-closed governance, verdict remains `negative` (`OK TO DOWNLOAD FOR RESEARCH`, `DO NOT SUBMIT`) because pooled strict draw-blind `0.098491 < 0.113316` (`COULOMBLOQO standalone`) and literal overlap is `1.000000` on the dense `5,167,373`-px witness `17GEMSDOE_E-proba-multiscale`.
+
+## Highest-P(Win) Actions for the Next Session (In Order)
+
+1. **Pre-register & test an Catalogue-Density-Prior-Weighted Quadrant Calibration (`PRIOR-QCAL`):**
+   - `POISSONKNICK qcal` proved that uniform survival-quantile matching across `{NW, NE, SW, SE}` lifts `NE` strict draw-blind `HOLDOUT-DTI` by `+41.3%` (`0.080880` $\to$ `0.114274`) and achieves a new static deployment `HOLDOUT-DTI` record (`0.009304`), but slightly trims `{SW, SE}` dot density on the pooled fold-blind instrument (`0.098491` vs `0.113316`). Weighting each quadrant's target tail allocation by an unlabeled physical tectonic-accommodation prior (mean piedmont scarp + gravity-gradient energy per quadrant, giving `~21% NW, 22% NE, 33% SW, 24% SE`) can preserve the `+41%` `NE` recovery while retaining `{SW, SE}` fault density to beat `0.113316` on the strict draw-blind instrument while staying `< 0.65` overlap against `EULERFUSE` and `GEMSDOE23`.
+2. **External High-Resolution Data Staging (Operator Action Outside Sandbox):**
+   - Stage USGS 3DEP `1 m` LiDAR DEM tiles (`1m_DEM_links.csv`) and ASF ARIA/OPERA Sentinel-1 InSAR velocity tiles into `.cache/gems_inputs/external/` to unlock sub-meter alluvial scarp doublets and pumping-deconfounded aseismic creep steps.
+3. **First `ORGANIZER-CONFIRMED` Calibration Receipt:**
+   - Have the human account holder record at least one official DrivenData portal score in `ledger/` (e.g. `R0` or a selector-approved candidate under `#IR-92-DENSE-WITNESS-MATCHED-BUDGET`).
+
+---
+
 # Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`BLINDFAULT` Session)
 
 ## Completed this session (`BLINDFAULT`)
