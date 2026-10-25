@@ -283,6 +283,19 @@ def test_current_review_run_card_is_served_byte_identically():
     assert "downloads/repo_review_run_card_20261024.json" in _index()
 
 
+def test_readme_opens_with_authoritative_no_submit_status():
+    """The README must state the current stop before historical lane records."""
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    assert readme.startswith("# GEMSDOE92")
+    marker = "<!-- LISTRICDIP:BEGIN -->"
+    assert marker in readme
+    current = readme[:readme.index(marker)]
+    assert "Authoritative review" in current
+    assert "DO NOT SUBMIT" in current
+    assert "every nonempty candidate" in current
+    assert "matched-budget" in current.lower()
+
+
 def test_submit_page_exists():
     for name in ("SUBMIT.html", "submit.html"):
         p = DOCS / name
