@@ -88,6 +88,91 @@ def git_blob_sha(data: bytes) -> str:
     return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
 
 
+def prefetch_via_local_and_codeload(unique_by_blob: dict[str, dict]) -> None:
+    """Seed missing blobs from local workspace TIFFs and streaming codeload.github.com tarballs.
+
+    Fixes #IR-92-PUBLIC-SCAN-RATELIMIT-705-FAILURES (Protocol Rule 2): fetching 1,465+
+    blobs one-by-one via ``gh api repos/.../git/blobs/<sha>`` exhausts the 5,000/hr
+    GitHub REST API rate limit across parallel sessions. Streaming ``codeload.github.com``
+    tarballs consumes zero REST API quota while still verifying exact Git blob SHA-1
+    and byte length on every extracted TIFF.
+    """
+    import tarfile
+    import urllib.request
+
+    for folder in (ROOT / "docs/downloads", ROOT / "releases", ROOT / "data", ROOT / "data/bridge", ROOT / ".cache/gems_inputs/lineage"):
+        if not folder.is_dir():
+            continue
+        for p in folder.glob("*.tif"):
+            try:
+                data = p.read_bytes()
+                gsha = git_blob_sha(data)
+                if gsha in unique_by_blob:
+                    target = CACHE / f"{gsha}.tif"
+                    if not target.is_file():
+                        target.write_bytes(data)
+            except Exception:
+                continue
+
+    needed_by_repo: dict[tuple[str, str], dict[str, tuple[str, int]]] = {}
+    for sha, item in unique_by_blob.items():
+        target = CACHE / f"{sha}.tif"
+        if not target.is_file() or target.stat().st_size != item.get("bytes"):
+            repo = item.get("repo")
+            branch = item.get("branch") or "main"
+            path = item.get("path")
+            if repo and path:
+                needed_by_repo.setdefault((repo, branch), {})[path] = (sha, int(item["bytes"]))
+
+    if not needed_by_repo:
+        return
+
+    try:
+        tok = subprocess.check_output(["gh", "auth", "token"], text=True, timeout=10).strip()
+    except Exception:
+        tok = ""
+
+    def _stream_repo(rb_item: tuple[tuple[str, str], dict[str, tuple[str, int]]]) -> None:
+        (repo, branch), path_map = rb_item
+        remaining = {
+            p: (sha, sz)
+            for p, (sha, sz) in path_map.items()
+            if not (CACHE / f"{sha}.tif").is_file() or (CACHE / f"{sha}.tif").stat().st_size != sz
+        }
+        if not remaining:
+            return
+        url = f"https://codeload.github.com/{OWNER}/{repo}/tar.gz/{branch}"
+        headers = {"User-Agent": "gemsdoe92"}
+        if tok:
+            headers["Authorization"] = f"Bearer {tok}"
+        req = urllib.request.Request(url, headers=headers)
+        try:
+            with urllib.request.urlopen(req, timeout=90) as resp:
+                with tarfile.open(fileobj=resp, mode="r|gz") as tf:
+                    for member in tf:
+                        if not member.isfile():
+                            continue
+                        parts = member.name.split("/", 1)
+                        if len(parts) < 2:
+                            continue
+                        rel = parts[1]
+                        if rel in remaining:
+                            exp_sha, exp_bytes = remaining[rel]
+                            fobj = tf.extractfile(member)
+                            if fobj is not None:
+                                data = fobj.read()
+                                if len(data) == exp_bytes and git_blob_sha(data) == exp_sha:
+                                    (CACHE / f"{exp_sha}.tif").write_bytes(data)
+                            del remaining[rel]
+                            if not remaining:
+                                break
+        except Exception:
+            pass
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+        list(pool.map(_stream_repo, needed_by_repo.items()))
+
+
 def fetch_blob(item: dict, *, cache_only: bool = False) -> dict:
     sha = item["git_sha"]
     target = CACHE / f"{sha}.tif"
@@ -207,6 +292,8 @@ def main() -> int:
         unique_by_blob.setdefault(item["git_sha"], item)
     print(f"Found {len(repos)} matching public repositories, {len(paths)} TIFF paths, "
           f"{len(unique_by_blob)} unique blobs", flush=True)
+    if not args.cache_only:
+        prefetch_via_local_and_codeload(unique_by_blob)
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as pool:
         fetched = list(pool.map(lambda item: fetch_blob(item, cache_only=args.cache_only), unique_by_blob.values()))
     fetch_errors = [x for x in fetched if "error" in x]
