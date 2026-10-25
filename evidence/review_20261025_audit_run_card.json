@@ -45,7 +45,7 @@
     "public_status_check": "scripts/render_public_status.py --check: PUBLIC STATUS PASS",
     "test_suite": "pytest tests on merged branch: 528 passed (pre-merge baseline: 539 passed, 3 failed; the same 3 failures were fixed on main by PR #128)",
     "served_tif_scan": "docs/downloads: 97 -zeros.tif zeros-outside, 12 unsuffixed NaN-outside (7111787 NaN cells each)",
-    "test_suite_after_quarantine": "531 passed (merged branch); site gate PASS on 100 served rasters"
+    "test_suite_after_quarantine": "549 passed (merged tree with main through PR #134); site gate PASS on 103 served rasters"
   },
   "submission_name": null,
   "submission_note": null,
@@ -67,5 +67,5 @@
     "https://docs.nlr.gov/docs/fy26osti/96647.pdf",
     "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
   ],
-  "irregularities_action": "I-15: listric-halo 32k TIF (lane verdict negative; fails distance_from_catalogue) moved to evidence/quarantine/listric-halo-32k/ to restore the publication gate on main; reversible."
+  "irregularities_action": "I-15: LISTRIC-HALO 32k TIF (lane verdict negative; fails distance_from_catalogue) was first moved to evidence/quarantine/ on this branch, then removed upstream on main; this branch keeps the removal. Git history retains the files."
 }
