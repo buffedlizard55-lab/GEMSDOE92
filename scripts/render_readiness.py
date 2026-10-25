@@ -55,6 +55,15 @@ def rejection_proof_errors(proof: dict, sample_sha: str) -> list[str]:
     return errors
 
 
+def form_note(card: dict) -> str:
+    """Accept the two historical schemas, but never hide conflicting aliases."""
+    notes = [card[k] for k in ('note', 'submission_note') if k in card]
+    if (not notes or any(not isinstance(n, str) or not 0 < len(n) <= 140 for n in notes)
+            or len(set(notes)) != 1):
+        raise ValueError('primary note must contain 1–140 characters; aliases must agree')
+    return notes[0]
+
+
 def build_status(root: Path = ROOT) -> dict:
     docs = root / 'docs'
     problems: list[str] = []
@@ -78,9 +87,7 @@ def build_status(root: Path = ROOT) -> dict:
         problems.append('primary bytes do not match audit and run card')
     if audit.get('submission_eligible') is not False or card.get('verdict') != 'negative':
         problems.append('historical primary evidence contradicts the binding rejection')
-    note = card.get('note')
-    if not isinstance(note, str) or not 0 < len(note) <= 140:
-        problems.append('primary note must contain 1–140 characters')
+    note = form_note(card)
     gates = run_gates(candidate, sample, catalogue, prune_radius=2,
                       require_submission_encoding=True)
     problems.extend(f'format gate failed: {gate.name}' for gate in gates if not gate.ok)
@@ -146,6 +153,14 @@ def panel(status: dict) -> str:
   <p>Note ({len(status['note'])}/140 characters): <code>{e(status['note'])}</code></p>
   <p>Do not upload this artifact. A later eligible artifact must pass automated scientific and uniqueness gates,
   followed by the separate selector step within the verified weekly cap. No visual inspector is required for file validation.</p></details>
+  <details><summary>How to submit a future cleared artifact</summary>
+  <p><strong>Do not perform these steps with the current artifact.</strong></p>
+  <ol><li>Require current automated format, leakage, comparable holdout-improvement and literal uniqueness gates to pass.
+  Complete the separate selector step and verify the actual weekly cap on the submission page.</li>
+  <li>Download that exact eligible single-band .tif (or a ZIP containing only it); retain its audit and SHA-256.</li>
+  <li>Open the DrivenData competition submission form, choose the file, and copy the artifact's name and short note.</li>
+  <li>After upload, record the organizer receipt against the exact file hash. Only that receipt supports an
+  ORGANIZER-CONFIRMED score. Do not project a score from the local holdout.</li></ol></details>
   <p>No ORGANIZER-CONFIRMED score. No fresh HOLDOUT-DTI measurement. Older “unique” and “record” claims below are historical,
   not current clearance. A better local surrogate does not establish a better leaderboard score.</p>
 </section>

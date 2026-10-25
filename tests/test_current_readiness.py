@@ -65,3 +65,14 @@ def test_panel_escapes_record_only_fields():
     rendered = panel(status)
     assert '<script>' not in rendered
     assert '&lt;script&gt;' in rendered
+
+
+def test_note_schema_aliases_are_checked_not_guessed():
+    from scripts.render_readiness import form_note
+    assert form_note({'note': 'research'}) == 'research'
+    assert form_note({'submission_note': 'research'}) == 'research'
+    assert form_note({'note': 'research', 'submission_note': 'research'}) == 'research'
+    for invalid in ({}, {'note': 'x' * 141}, {'note': None},
+                    {'note': 'one', 'submission_note': 'two'}):
+        with pytest.raises(ValueError):
+            form_note(invalid)

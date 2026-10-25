@@ -24,8 +24,8 @@
   "raster_sha256": null,
   "validator_output": {
     "new_candidate": "not generated; not validated",
-    "existing_research_file": "downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
-    "existing_research_sha256": "44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12",
+    "existing_research_file": "downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif",
+    "existing_research_sha256": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
     "existing_file_gates": [
       {
         "name": "crs",
@@ -80,7 +80,7 @@
       {
         "name": "reread_sha256",
         "ok": true,
-        "detail": "44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12"
+        "detail": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e"
       }
     ]
   },
@@ -96,7 +96,7 @@
   "verification": {
     "pass1": "Shared gates repaired; baseline 367 tests passed; 63 served TIFFs passed.",
     "pass2": "Added boundary/grid/readiness tests; repaired wording incompatibility without changing historical score evidence.",
-    "pass3": "Pending final integrated check; recorded in REVIEW_F23.md after completion."
+    "pass3": "Integrated bbda6c5 and preserved parallel LISTRICDIP artifacts. 402 tests pass (140 nonfatal upstream Affine warnings); 66 served TIFFs, manifest, pinned parent, ledger and diff checks pass."
   },
   "limitations": [
     "No assigned geological lane.",

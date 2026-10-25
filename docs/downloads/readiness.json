@@ -8,10 +8,10 @@
   "new_unique_tiff_generated": false,
   "experiments_this_review": 0,
   "weekly_slots_used_this_review": 0,
-  "file": "downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
-  "raster_sha256": "44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12",
-  "submission_name": "GEMSDOE92-COULOMBDM-s45coulomb55-20261024",
-  "note": "h33-h33-2-b2; COULOMBDM s45coulomb55: 16944 Coulomb-H19 + 20710 off-skel 1D Coulomb/RTP/clay ridges (>3px H19-5)",
+  "file": "downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif",
+  "raster_sha256": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
+  "submission_name": "GEMSDOE92-LISTRICDIP-updip50-20261025",
+  "note": "LISTRICDIP updip50: 37654 listric-offset dots; HOLDOUT-DTI 0.005420; negative",
   "format_pass": true,
   "validator_output": [
     {
@@ -67,7 +67,7 @@
     {
       "name": "reread_sha256",
       "ok": true,
-      "detail": "44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12"
+      "detail": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e"
     }
   ],
   "correlation_overlap_vs_registry": {
@@ -90,11 +90,11 @@
   "input_sha256": {
     "data/bridge/sample_submission.tif": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
     "data/bridge/labels.tif": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
-    "docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif": "44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12",
-    "docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-audit.json": "e7ca7d529b75f58d678f9f065fe2d49531135dd2c71a53206a18e8916f94b6f1",
-    "evidence/coulombdm_run_card.json": "055a5d793b5f0a898b73927c038f0f858b6fd45f32c28ac104afb49e089f2948",
+    "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
+    "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-audit.json": "2e0ba1c132daf838e4bb46ef59506db235fc921758e092999c856014ded8c40e",
+    "evidence/listricdip_run_card.json": "dcb3178eb83158db3e862add18af4b17cd22496ef90d02f85502000d98d7cf40",
     "evidence/review_f23_preflight.json": "b1cc2d46b24ad3cde759953143ea3806c17f86d0f1eb72fc1581f5e34643fecb",
     "gems/gates.py": "7bf557dd1a46b01449fb1108d5617baa5f6608d025c2c86c6ee94a7d30785bf6",
-    "scripts/render_readiness.py": "52270555a85afb4587c9b7b092f5c4f593141e1c81df7c6a0d99fd9e8c5ca4d4"
+    "scripts/render_readiness.py": "e5665d25a8f9bba7dd608a01fca18ef0ca67122259f22e886bc2fdfc37d1d7da"
   }
 }
