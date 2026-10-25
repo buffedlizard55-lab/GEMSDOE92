@@ -1,3 +1,9 @@
+## Current lane addendum — 2026-10-25 (`NETEXPAND`, branch `arena/a7cdad14-gemsdoe92`)
+
+Read `docs/ANALYSIS_20261025_NETEXPAND.md` + `evidence/netexpand_run_card.json` first. NETEXPAND (KNICK30+LISTRIC4+FAULTNET-context5+ASA/coherence/curie/MT6 LOQO, pure crest) produced 3 format-valid (11/11 gates) byte-unique TIFs. Strict draw-blind HOLDOUT-DTI: netexpand_far 0.177976 [0.163109,0.193227], netexpand 0.146798, nocontext 0.115566 vs control_knick 0.109069 / control_knick_far 0.111601 (22,663 withheld; canaries <=0.7775). All arms verdict negative: Rule-1 lane duplicates vs FAULTNET/KNICKLOQO (0.76-0.81 > 0.70 local, 123 rasters); vs R0/H19-5 <=0.40 (not copies). 3/3 experiments used, 0 slots. GEMSDOE32 0.2778 re-verified live as UNSCORED CLAIM (no organiser score exists). Next: NETEXPAND-R repelled emission or GDR-GEOTHERMOMETER-FIELD (see hypotheses doc); operator must resolve dense-witness literal-rule policy (F2). Maximize P(Win); Own the Outcome.
+
+---
+
 ## Current review addendum — 2026-10-25 (`797e507a`)
 
 Read `docs/REVIEW_797E507A.md` before older session-result addenda. This review generated no new TIFF and used no experiment or slot: a fresh pinned universal registry witness requires a stop. Preserve literal overlap, not matched-budget reinterpretations. The existing LISTRICDIP primary inherited from parallel main is research-only. Three public entry pages must have the generated authoritative status first; CI/Pages check byte pins and ordering. The unique-TIF objective remains unfulfilled. Persistent requirements in this file and the README are a normalized operating brief, not a verbatim user-message archive.

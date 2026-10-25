@@ -1,3 +1,9 @@
+# SLOT_PLAN — NETEXPAND session (2026-10-25): NO SLOT AUTHORIZED — DO NOT SUBMIT
+
+NETEXPAND 3 arms built & format-valid; best strict HOLDOUT-DTI 0.177976 (netexpand_far) beats all in-run controls paired, but every arm is a Rule-1 lane duplicate vs FAULTNET/KNICKLOQO (0.76-0.81 > 0.70). Verdict negative, 0 slots used. Selector guidance: if one slot is ever allocated to this mechanism family after the F2 policy decision, NETEXPAND arms dominate FAULTNET files on identical folds (conservative pick: netexpand d>2; holdout-max pick: netexpand_far; never submit siblings together). Full record: docs/ANALYSIS_20261025_NETEXPAND.md, evidence/netexpand_run_card.json.
+
+---
+
 # Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-26, Post-LISTRIC Session)
 ## Current decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT** (`submission_eligible: false`, 0 slots spent this repo)
 Newest LISTRIC standalone (`h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif`, SHA `7e4b4636…1e2ab`) is ✅ OK TO DOWNLOAD (automated [0,1] gates PASS) but ⛔ DO NOT SUBMIT: public dual-reading duplicate 0.710735>0.70, literal 1.000, paired holdout gain vs KNICKLOQO not significant. Selector candidate remains KNICKLOQOstandalone pending human dual-vs-literal policy decision. See `evidence/listric_run_card.json`.
