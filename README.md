@@ -1,15 +1,11 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-<!-- CURRENT-STATUS:BEGIN -->
-## Current verified decision — 2026-10-25 (repository review)
-
-**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated; the unique-submission objective remains unmet. Current automated pre-placement audit confirms the literal duplicate STOP: the pinned witness has positive support at all 5,167,373 template footprint cells, implying overlap 1.0 for every nonempty in-footprint candidate (>0.70 limit).
-
-[Fresh audit run card](evidence/review_20261025_readiness.json) · [three-pass repo review](docs/REVIEW_20261025_SESSION.md) · [existing research download](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [executive submission guide](docs/executive-summary.html).
-
-The existing TIFF passes format/grid checks, but that is not submission clearance. No new surface/dots, HOLDOUT-DTI, leakage test, organizer-confirmed score, or weekly slot was produced in this review. The 0.2778, 0.3195, and 0.4413 values cited in user-provided snapshots are not receipt-verified here. See the review's evidence limits before relying on historical claims.
-
-<!-- CURRENT-STATUS:END -->
+> ## Authoritative decision — review `7059163e` (2026-10-25), locally rechecked
+> **✅ OK TO DOWNLOAD FOR RESEARCH · ⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT.** The existing LISTRICDIP TIFF is format-valid but fails the binding literal registry-overlap stop: **REGISTRY-MEASUREMENT** overlap `1.0` against one pinned full-footprint witness (`0.70` limit). No new TIFF, geological experiment, HOLDOUT-DTI result, organizer receipt, or weekly-slot use was produced by the latest protocol review. The unique submission request remains unfulfilled.
+>
+> **[Download existing research TIFF](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif)** · [latest three-pass review and ranked hypotheses](docs/REVIEW_7059163E.md) · [fresh repository audit](docs/REVIEW_20261025_FRESH_AUDIT.md) · [this session's audited review](docs/REVIEW_20261025_SESSION.md) · [fresh machine-readable readiness receipt](evidence/review_20261025_readiness.json) · [executive summary — submission instructions](docs/executive-summary.html).
+>
+> This is not submission clearance. Format validation does not establish scientific validity or competition acceptance. Historical lane results below are not current eligibility decisions.
 
 ## Current review — 2026-10-25 (`48e4797d`)
 
