@@ -1,0 +1,236 @@
+{
+  "relay": {
+    "path": "docs/downloads/gemsdoe92-relaygap-relay-37654-20261026T000000Z-zeros.tif",
+    "n_dots": 37654,
+    "sha256": "a689626572077c81a6d2763ac93f3354dcc301deec9d51399d11de48f9f5256e",
+    "holdout": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positive_pixels": 22641,
+      "dti": 0.009452726021544214,
+      "ci95": [
+        0.008898315435367912,
+        0.009969547351246043
+      ],
+      "tpw": 304.8046357633836,
+      "fpw": 70356.98095703125,
+      "fnw": 22336.195364236617,
+      "n_cells": 8
+    },
+    "canary": 0.8583914060534018,
+    "gates": [
+      [
+        "crs",
+        true,
+        "reference=EPSG:32611 candidate=EPSG:32611"
+      ],
+      [
+        "shape",
+        true,
+        "reference=3730x3292 candidate=3730x3292"
+      ],
+      [
+        "transform",
+        true,
+        "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      ],
+      [
+        "dtype_and_band",
+        true,
+        "dtype=('float32',) count=1"
+      ],
+      [
+        "values_in_0_1",
+        true,
+        "n_violations=0 min=0.0 max=1.0"
+      ],
+      [
+        "no_nan_inside_footprint",
+        true,
+        "nonfinite_pixels=0"
+      ],
+      [
+        "nan_outside_footprint",
+        true,
+        "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      ],
+      [
+        "submission_encoding",
+        true,
+        "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      ],
+      [
+        "catalogue_zero_mass",
+        true,
+        "dots_on_catalogue=0"
+      ],
+      [
+        "distance_from_catalogue",
+        true,
+        "radius=2px dots_within=0; strict distance > radius required"
+      ],
+      [
+        "reread_sha256",
+        true,
+        "a689626572077c81a6d2763ac93f3354dcc301deec9d51399d11de48f9f5256e"
+      ]
+    ],
+    "field_path": "docs/downloads/gemsdoe92-relaygap-relay-37654-20261026T000000Z-zeros.tif"
+  },
+  "relay_far": {
+    "path": "docs/downloads/gemsdoe92-relaygap-relay_far-37654-20261026T000000Z-zeros.tif",
+    "n_dots": 37654,
+    "sha256": "1a2de4764130c229984b8113043d71b2c49509bd49faf4dacd790926e1ccc29d",
+    "holdout": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positive_pixels": 22641,
+      "dti": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "tpw": 0.0,
+      "fpw": 70614.0,
+      "fnw": 22641.0,
+      "n_cells": 8
+    },
+    "canary": 0.8583914060534018,
+    "gates": [
+      [
+        "crs",
+        true,
+        "reference=EPSG:32611 candidate=EPSG:32611"
+      ],
+      [
+        "shape",
+        true,
+        "reference=3730x3292 candidate=3730x3292"
+      ],
+      [
+        "transform",
+        true,
+        "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      ],
+      [
+        "dtype_and_band",
+        true,
+        "dtype=('float32',) count=1"
+      ],
+      [
+        "values_in_0_1",
+        true,
+        "n_violations=0 min=0.0 max=1.0"
+      ],
+      [
+        "no_nan_inside_footprint",
+        true,
+        "nonfinite_pixels=0"
+      ],
+      [
+        "nan_outside_footprint",
+        true,
+        "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      ],
+      [
+        "submission_encoding",
+        true,
+        "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      ],
+      [
+        "catalogue_zero_mass",
+        true,
+        "dots_on_catalogue=0"
+      ],
+      [
+        "distance_from_catalogue",
+        true,
+        "radius=2px dots_within=0; strict distance > radius required"
+      ],
+      [
+        "reread_sha256",
+        true,
+        "1a2de4764130c229984b8113043d71b2c49509bd49faf4dacd790926e1ccc29d"
+      ]
+    ],
+    "field_path": "docs/downloads/gemsdoe92-relaygap-relay_far-37654-20261026T000000Z-zeros.tif"
+  },
+  "relay_norotate": {
+    "path": "docs/downloads/gemsdoe92-relaygap-relay_norotate-37654-20261026T000000Z-zeros.tif",
+    "n_dots": 37654,
+    "sha256": "ec9aa1704d3b77431fa2661ad596877c3afa835fac45b7c7134109d07cc26ddd",
+    "holdout": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positive_pixels": 22641,
+      "dti": 0.008511384086415056,
+      "ci95": [
+        0.007965650631521368,
+        0.008955767178407372
+      ],
+      "tpw": 274.2197792353028,
+      "fpw": 70251.7841796875,
+      "fnw": 22366.780220764696,
+      "n_cells": 8
+    },
+    "canary": 0.7073847741601935,
+    "gates": [
+      [
+        "crs",
+        true,
+        "reference=EPSG:32611 candidate=EPSG:32611"
+      ],
+      [
+        "shape",
+        true,
+        "reference=3730x3292 candidate=3730x3292"
+      ],
+      [
+        "transform",
+        true,
+        "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      ],
+      [
+        "dtype_and_band",
+        true,
+        "dtype=('float32',) count=1"
+      ],
+      [
+        "values_in_0_1",
+        true,
+        "n_violations=0 min=0.0 max=1.0"
+      ],
+      [
+        "no_nan_inside_footprint",
+        true,
+        "nonfinite_pixels=0"
+      ],
+      [
+        "nan_outside_footprint",
+        true,
+        "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      ],
+      [
+        "submission_encoding",
+        true,
+        "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      ],
+      [
+        "catalogue_zero_mass",
+        true,
+        "dots_on_catalogue=0"
+      ],
+      [
+        "distance_from_catalogue",
+        true,
+        "radius=2px dots_within=0; strict distance > radius required"
+      ],
+      [
+        "reread_sha256",
+        true,
+        "ec9aa1704d3b77431fa2661ad596877c3afa835fac45b7c7134109d07cc26ddd"
+      ]
+    ],
+    "field_path": "docs/downloads/gemsdoe92-relaygap-relay_norotate-37654-20261026T000000Z-zeros.tif"
+  }
+}
