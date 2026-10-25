@@ -119,7 +119,7 @@
   "weekly_slots_used": 0,
   "organizer_confirmed": null,
   "latest_main_integrated": {
-    "commit": "f0c3b90c8e5b17876544c752548113bf085eaf9b",
+    "commit": "f390f36e7b309da69ff87efd19740d093c80e4d6",
     "public_review": "797e507a",
     "latest_integrated_review": "c5e3848c",
     "primary_preserved": "LISTRICDIP updip50"
