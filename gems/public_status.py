@@ -29,8 +29,8 @@ def validate_status(card: dict, root: Path, primary_rel: str) -> None:
         raise ValueError('status raster SHA-256 is stale')
     if (card.get('submission_eligible') is not False or
             card.get('verdict') != 'negative' or
-            card.get('new_raster_generated') is not False):
-        raise ValueError('review panel cannot authorize submission or claim a new raster')
+            not isinstance(card.get('new_raster_generated'), bool)):
+        raise ValueError('review panel must fail closed and state whether the raster is newly generated')
     rows = card.get('validator_output')
     if not isinstance(rows, list) or not rows or any(
         not isinstance(r, dict) or not isinstance(r.get('name'), str)
@@ -64,15 +64,16 @@ def render_status(card: dict) -> str:
     sha = escape(card['raster_sha256'])
     return f'''{BEGIN}
 <section class="banner banner-warn" aria-label="Authoritative submission status">
-  <h1>Research download available. DO NOT SUBMIT.</h1>
+  <h1>Research-only download available. DO NOT SUBMIT; uniqueness is not cleared.</h1>
   <p><strong>OK TO DOWNLOAD FOR RESEARCH · NOT CLEARED FOR A WEEKLY SLOT</strong></p>
-  <p><a class="btn" href="{path}" download>Download existing format-validated GeoTIFF (.tif)</a>
+  <p><a class="btn" href="{path}" download>Download existing LISTRICLOQO research GeoTIFF — not cleared to submit (.tif)</a>
   · <a href="executive-summary.html">Submission guide</a>
-  · <a href="review48.html">Current review, evidence and limitations</a>
-  · <a href="downloads/review48_run_card.json">Fresh automated audit card</a></p>
-  <p>This is an existing research artifact, <strong>not a newly generated or unique submission</strong>.
-  The literal registry overlap is 1.0 (limit 0.70); matched-budget uniqueness claims below do not override the stop.
-  No new model, HOLDOUT-DTI result, organizer receipt or weekly slot was produced in this review.</p>
+  · <a href="ANALYSIS_20261025_LISTRICLOQO.md">Current analysis and limitations</a>
+  · <a href="REVIEW_20261025_SESSION.md">Three-pass review</a>
+  · <a href="downloads/listric_loqo_run_card.json">Protocol run card</a></p>
+  <p>This byte-distinct LISTRICLOQO research artifact is <strong>not eligible for submission or cleared as registry-unique</strong>.
+  Public dual-reading overlap is 0.690259, but the binding literal dense-witness overlap is 1.0 (limit 0.70), triggering the duplicate stop.
+  Its paired HOLDOUT-DTI improvement over KNICKLOQO excludes zero; no organizer receipt or weekly slot was produced.</p>
   <p>Automated format checks pass: finite values in [0, 1], no NaN inside the footprint,
   zeros outside, matching CRS/shape/transform. Format validity is not competition acceptance.</p>
   <p>SHA-256: <code>{sha}</code></p>
