@@ -1,0 +1,367 @@
+{
+  "schema": "gemsdoe92-run-card.v3",
+  "lane": "LISTRICLAG",
+  "date": "20261025T145312Z",
+  "session_budget": {
+    "experiments_used": "3/3 (primary + LOCAL ablation + N90K probe)",
+    "weekly_slots_used": 0
+  },
+  "hypothesis": "Listric/planar Basin-and-Range normal faults dip 45-60 deg, so the buried basement density step images 200-800 m basinward of the surface scarp. Scarp-degraded or buried faults keep the offset basement step while the scarp-mapped USGS/INGENIOUS catalogue misses them; coupling basement-edge evidence with the strongest scarp evidence in a 2.8-8 px annulus (instead of the same pixel) targets exactly that blind spot.",
+  "mechanism": "Label-free cube-root product of (1) annulus-maximum (2.8-8 px) multi-scale detrended-elevation scarp evidence (Bands 12/19), (2) depth-to-basement gradient (Band 15, sigma 3), (3) gravity-gradient edge confirmation (|B18 HG| x |B11 VG| rank product). Placement per holdout fold rebuilt from fold-visible faults only; deployment dots at d_cat > 2.0 px.",
+  "named_non_fault_mimic": "Fan-toe/piedmont junctions beside basin-margin onlap density contacts; pluvial Lake Lahontan shoreline risers near lithologic density steps; DEM seams near gravity survey edges.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 22663,
+    "primary_instrument": "strict fold-visible rebuild d_visible > 2.0, pooled gems57-pooled-hide-v2, seeds 20+30, 8 folds, 1000-draw paired spatial-block bootstrap CI",
+    "scores": {
+      "LISTRICLAG": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.054843161778973415,
+        "ci95": [
+          0.04493972429999354,
+          0.06626109542215501
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 1736.4383180200919,
+        "fpw": 65921.0264989622,
+        "fnw": 20926.56168197991
+      },
+      "LISTRICLAG_LOCAL": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.06767882338507868,
+        "ci95": [
+          0.05478713719675966,
+          0.08124686609451914
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 2158.477460982601,
+        "fpw": 66654.28219517344,
+        "fnw": 20504.522539017402
+      },
+      "LISTRICLAG_N90K": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.06220152682585248,
+        "ci95": [
+          0.05189213934695405,
+          0.07334118416500271
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 2332.1779230124043,
+        "fpw": 94485.32982250281,
+        "fnw": 20330.822076987588
+      },
+      "R0": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.004006147174684743,
+        "ci95": [
+          0.0034062631492617914,
+          0.004667627876412318
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 129.29712893913688,
+        "fpw": 70592.1164043663,
+        "fnw": 22533.70287106087
+      }
+    },
+    "per_fold": {
+      "LISTRICLAG": [
+        0.061605,
+        0.020138,
+        0.052668,
+        0.071292,
+        0.059898,
+        0.053205,
+        0.049705,
+        0.068415
+      ],
+      "LISTRICLAG_LOCAL": [
+        0.048879,
+        0.033106,
+        0.057612,
+        0.091504,
+        0.066741,
+        0.065792,
+        0.048909,
+        0.115521
+      ],
+      "LISTRICLAG_N90K": [
+        0.063613,
+        0.030084,
+        0.058449,
+        0.080465,
+        0.062864,
+        0.058786,
+        0.056646,
+        0.082648
+      ],
+      "R0": [
+        0.003319,
+        0.004408,
+        0.003109,
+        0.004073,
+        0.0049,
+        0.005014,
+        0.004356,
+        0.003126
+      ]
+    },
+    "paired_vs_R0": {
+      "delta": 0.050837014604288674,
+      "ci95": [
+        0.04092009928072586,
+        0.06169001840874883
+      ]
+    },
+    "paired_ring_vs_local": {
+      "delta": -0.012835661606105261,
+      "ci95": [
+        -0.02042410499689858,
+        -0.005791489567130255
+      ]
+    },
+    "beats_holdout_best": false,
+    "holdout_best_reference": {
+      "rule2_d_visible_2": {
+        "lane": "COULOMB-LOQO standalone",
+        "dti": 0.113316
+      },
+      "static_d_cat_2": {
+        "lane": "KNICKLOQO standalone",
+        "dti": 0.010788
+      }
+    }
+  },
+  "leakage_canaries": {
+    "max_symmetric_auc": 0.5795828079307441,
+    "all_pass_le_0p90": true,
+    "per_feature": {
+      "terrain_ring": 0.522754,
+      "terrain_local": 0.533741,
+      "basement_edge": 0.544129,
+      "grav_edge": 0.530088,
+      "S": 0.579583,
+      "S_local": 0.572166
+    }
+  },
+  "correlation_overlap_vs_registry": {
+    "local": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "rasters_checked": 107,
+      "worst_literal_forward_overlap": 0.412386,
+      "worst_literal_file": "local:docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif",
+      "worst_matched_budget_forward_overlap": 0.412386,
+      "worst_matched_budget_file": "local:docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif",
+      "worst_abs_spearman": 0.083332,
+      "worst_abs_spearman_file": "local:docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif",
+      "duplicate": false,
+      "verdict": "unique"
+    },
+    "local_n90k": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "rasters_checked": 107,
+      "worst_literal_forward_overlap": 0.343589,
+      "worst_literal_file": "local:docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif",
+      "worst_matched_budget_forward_overlap": 0.343589,
+      "worst_matched_budget_file": "local:docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif",
+      "worst_abs_spearman": 0.083332,
+      "worst_abs_spearman_file": "local:docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif",
+      "duplicate": false,
+      "verdict": "unique"
+    },
+    "public": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "source": "evidence/listriclag_public_registry_uniqueness.json",
+      "scan_source": "cached GitHub API inventory (no network refresh)",
+      "rasters_compared": 1458,
+      "scan_complete_for_declared_scope": false,
+      "preplacement_worst_abs_spearman": 0.2901656993663966,
+      "preplacement_worst_rho_raster": "GEMSDOE76/docs/downloads/gems76-geophys-cataloguefree-rank-gate1-20261021.tif",
+      "final_worst_forward_overlap": 1.0,
+      "final_worst_overlap_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "rasters_over_70pct_overlap": 84,
+      "duplicate_examples": [
+        {
+          "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+          "forward_overlap": 1.0,
+          "positive_pixels": 5167373,
+          "spearman": 0.03593228360313451
+        },
+        {
+          "raster": "57GEMSDOE/docs/downloads/gems57-h57g-width-normalized-b1329dc0f248-RESEARCH-DO-NOT-SUBMIT.tif",
+          "forward_overlap": 1.0,
+          "positive_pixels": 5106385,
+          "spearman": 0.018344664437764734
+        },
+        {
+          "raster": "57GEMSDOE/docs/downloads/h57-continuous-anatomy-20261009T201252Z-f44b207a70f0.tif",
+          "forward_overlap": 1.0,
+          "positive_pixels": 5106385,
+          "spearman": 0.01835687426694261
+        },
+        {
+          "raster": "5GEMSDOE/docs/downloads/gems-density-probe-20260925T184215Z-9cdae9b4.tif",
+          "forward_overlap": 1.0,
+          "positive_pixels": 5106385,
+          "spearman": 0.009363197610913412
+        },
+        {
+          "raster": "GEMSDOE2/data/evidence/runs/turbo-simple-20260925T041759Z/submission.tif",
+          "forward_overlap": 1.0,
+          "positive_pixels": 5167373,
+          "spearman": 0.021470325688107472
+        },
+        {
+          "raster": "GEMSDOE2/data/evidence/runs/turbo-simple-20260925T041907Z/submission.tif",
+          "forward_overlap": 1.0,
+          "positive_pixels": 5167373,
+          "spearman": 0.021470325688107472
+        },
+        {
+          "raster": "GEMSDOE2/data/evidence/runs/turbo-simple-20260925T042003Z/submission.tif",
+          "forward_overlap": 1.0,
+          "positive_pixels": 5167373,
+          "spearman": 0.021470325688107472
+        },
+        {
+          "raster": "GEMSDOE2/data/evidence/runs/turbo-simple-20260925T042118Z/submission.tif",
+          "forward_overlap": 1.0,
+          "positive_pixels": 5167373,
+          "spearman": 0.021470325688107472
+        },
+        {
+          "raster": "GEMSDOE2/data/evidence/runs/turbo-simple-20260925T043629Z/submission.tif",
+          "forward_overlap": 1.0,
+          "positive_pixels": 5167373,
+          "spearman": 0.021470325688107472
+        },
+        {
+          "raster": "GEMSDOE48/docs/downloads/GEMSDOE48-H53-3SRC-DS-20261007-9242c831-diag-plausibility-nan.tif",
+          "forward_overlap": 1.0,
+          "positive_pixels": 5167373,
+          "spearman": 0.03533340804355439
+        }
+      ],
+      "binding_witness": {
+        "worst_forward_overlap": {
+          "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+          "source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+          "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+          "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+          "bytes": 25065181,
+          "forward_overlap": 1.0
+        },
+        "full_footprint_surface": {
+          "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+          "source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/main/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+          "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+          "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+          "bytes": 25065181,
+          "positive_pixels_in_footprint": 5167373,
+          "forward_overlap": 1.0,
+          "spearman": 0.03593228360313451
+        }
+      },
+      "stop_required": true,
+      "audit_verdict": "negative \u2014 duplicate under literal registry rule; stop and do not spend a weekly slot"
+    },
+    "dense_witness_specificity": {
+      "witness": "17GEMSDOE E-proba-multiscale (git blob 374c88b1...)",
+      "witness_positive_footprint_cells": 5167373,
+      "LISTRICLAG_literal_overlap": 1.0,
+      "LISTRICLAG_matched_budget_overlap": 0.06020608700270887,
+      "R0_parent_literal_overlap": 1.0,
+      "R0_parent_matched_budget_overlap": 0.03659637754289053
+    },
+    "public_dual_reading": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "note": "Measured this session on the final primary dots against all 1,458 exact-grid public rasters (cache of 1,464 Git-blob-verified blobs, 102 repos).",
+      "worst_sparse_le150k_literal_overlap": 0.67605,
+      "worst_sparse_file": "62GEMSDOE/docs/downloads/gems62b-tiltgrad-vote-scarpcorrob-120000-zeros.tif (120,000 px)",
+      "worst_dense_matched_budget_overlap": 0.314336,
+      "worst_dense_file": "GEMSDOE48/docs/downloads/diagnostics/GEMSDOE48-H57-ds-relief-augmented-20261007-e6b785718c07-diag-belief.tif (763,399 px)",
+      "preplacement_worst_abs_spearman": 0.290166,
+      "dual_reading_verdict": "unique (0 / 1,458 > 0.70 on operative reading; <= 0.90 rho)",
+      "literal_rule_verdict": "negative - 84 full-footprint dense surfaces fire literal 1.0 against every nonempty raster incl. parent R0; fail-closed"
+    },
+    "post_merge_parallel_lane_check": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "note": "Post-merge collision check against 7 rasters merged to main by parallel sessions while this session ran (LISTRICDIP x3, RADIODECOUPLE x3, CURIEDEMAG x1). Flag: LISTRICDIP is thematically adjacent (listric updip offset) but mechanically distinct \u2014 measured non-duplicate.",
+      "rows": {
+        "gemsdoe92-listricdip-updip50-37654": {
+          "overlap": 0.2777,
+          "rho": 0.0251
+        },
+        "gemsdoe92-listricdip-anti22-9571": {
+          "overlap": 0.0112,
+          "rho": -0.0448
+        },
+        "gemsdoe92-listricdip-anti35-9555": {
+          "overlap": 0.011,
+          "rho": -0.0442
+        },
+        "gemsdoe92-radiodecouple-standalone-37654": {
+          "overlap": 0.281,
+          "rho": 0.0436
+        },
+        "gemsdoe92-radiodecouple-dual35-37654": {
+          "overlap": 0.341,
+          "rho": 0.0522
+        },
+        "gemsdoe92-radiodecouple-demag-37654": {
+          "overlap": 0.3134,
+          "rho": 0.0471
+        },
+        "gemsdoe92-curiedemag-20261026": {
+          "overlap": 0.2317,
+          "rho": 0.0108
+        }
+      },
+      "worst_overlap": 0.341,
+      "worst_abs_rho": 0.0522,
+      "duplicate": false
+    }
+  },
+  "raster_sha256": "a301cbfc970861c65f8001d0e1a3ecc1dca76c48699d4fdbd56d6768d2405b4c",
+  "zip_sha256": "345d7444049789a5a28e2dbfbe5b652f264c00a9f5ecfd4786b100f474e9f811",
+  "file": "docs/downloads/gemsdoe92-listriclag-20261025T145312Z-zeros.tif",
+  "n90k_file": "docs/downloads/gemsdoe92-listriclag-20261025T145312Z-n90k-zeros.tif",
+  "n90k_raster_sha256": "2704229bd09ef26ae1586e060d3453d82c8a683a6e083e34da2889cefa2f31a1",
+  "n90k_zip_sha256": "7cd590c979367afdcaae4c304b83ac7aebb6f5eae3ce6c1b18682bae9c08ced4",
+  "validator_output": {
+    "no_nan_in_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "dots": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    }
+  },
+  "submission_name": "GEMSDOE92-LISTRICLAG-20261025",
+  "submission_note": "h33-h33-2-b2; LISTRICLAG: 37654 dots, annulus(2.8-8px) scarp evidence x basement-step x gravity edge; listric updip-lag lane",
+  "note_chars": 124,
+  "experiments_used": "3/3",
+  "weekly_slots_used": 0,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "verdict_reason": "strict fold-visible HOLDOUT-DTI 0.054843 vs holdout-best 0.113316 (Rule-2); paired-vs-R0 delta 0.050837 CI [0.040920, 0.061690]; ring-vs-local delta -0.012836; unique_ok=True; gates_ok=True; max canary AUC 0.5796; public scan merged (stop_required=True, worst literal overlap 1.0, 1458 rasters)",
+  "organizer_confirmed": null
+}

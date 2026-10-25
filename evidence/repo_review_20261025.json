@@ -1,0 +1,77 @@
+{
+  "schema": "gemsdoe92-repository-review.v1",
+  "review_date_utc": "2026-10-25",
+  "scope": "pre-integration repository snapshot audit focused on RADIOCONTACT; origin/main later advanced through bbda6c5, c9292c4, e1c2ad9, f390f36, and a5e0b4d; later lanes/reviews are not scientifically audited in this card",
+  "experiments_run": 0,
+  "weekly_slots_used": 0,
+  "hypothesis": "RADIOCONTACT radiometric U/K and Th/K alteration-contact gradients, gravity-gradient concordance, and MT conductivity may identify concealed fluid-conducting structures not represented by a scarp catalogue.",
+  "mechanism": "Recorded surface is a percentile-rank product of radiometric ratio-gradient strength, gravity vertical-gradient/E-W derivative concordance, and MT conductivity. Review found that the candidate support was then filtered using the full catalogue instead of each fold's visible catalogue.",
+  "named_non_fault_process": "K-rich ash-fall beds or basin-fill lithologic contacts, playa/evaporite conductivity, and irrigation salinity.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI (recorded, NOT ACCEPTED: fold-local prediction protocol not satisfied)",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 22663,
+    "recorded_value": 0.005065754599997356,
+    "recorded_ci95": [0.0036384110039370888, 0.006582554116880161],
+    "valid_for_promotion": false,
+    "reason": "The builder places one raster using full-catalogue d_cat and reuses it in all folds; the holdout must rebuild catalogue-dependent support from each fold's visible faults."
+  },
+  "latest_integrated_lane_record_not_audited": {
+    "lane": "FAULTNET",
+    "evidence_class": "HOLDOUT-DTI (as recorded in upstream run card; not re-audited here)",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 22663,
+    "recorded_value": 0.175147,
+    "recorded_ci95": [0.159756, 0.18986],
+    "registry_measurement": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "recorded_overlap_within_3px": 0.7586,
+      "threshold": 0.7,
+      "recorded_verdict": "negative"
+    },
+    "organizer_confirmed": null,
+    "note": "Quoted from docs/downloads/faultnet_run_card.json; not a promotion recommendation and not a competition score."
+  },
+  "correlation_overlap_vs_registry": {
+    "local_scan": {
+      "evidence_class": "REGISTRY-MEASUREMENT (local only)",
+      "rasters_checked": 93,
+      "worst_abs_spearman": 0.047573,
+      "worst_final_dot_overlap_within_3px": 0.241807
+    },
+    "public_registry": "Full registry scan NOT_VERIFIED; run card says no public scan was available",
+    "pinned_dense_witness": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "witness": "17GEMSDOE E-proba-multiscale",
+      "positive_footprint_cells": 5167373,
+      "literal_final_dot_overlap": 1.0,
+      "stop_threshold": 0.7,
+      "decision": "duplicate; stop"
+    },
+    "preplacement_surface_check": "NOT_IMPLEMENTED in the lane builder",
+    "specified_duplicate_stop_result": "FAIL on the documented full-footprint witness; full registry uniqueness remains NOT_VERIFIED"
+  },
+  "raster_sha256": "026a52ff46d695bb79ae39780c154cba9cc69e039e7d2a4d1fe898c6c0a79345",
+  "validator_output": {
+    "local_site_gate": "PASS",
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "single_band_float32": true,
+    "all_served_zeros_tifs_checked_after_latest_main_sync": 73,
+    "pytest_passed_after_latest_main_sync": 480,
+    "interpretation": "Local format validation only; not uniqueness clearance, scientific validation, or organizer acceptance."
+  },
+  "submission_name": "GEMSDOE92-RADIOCONTACT-20261025",
+  "note": "h33-h33-2-b2; RADIOCONTACT: U/K+Th/K alteration x gravity-gradient + MT; 37654 dots d_cat>2px; HOLDOUT-DTI 0.005066 [neg]",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "organizer_confirmed": null,
+  "review_findings": [
+    "full-catalogue candidate placement makes the stored holdout result protocol-invalid",
+    "promotion code compares the static result against a strict fold-visible threshold",
+    "public registry and pre-placement surface uniqueness checks are absent",
+    "historical site and README status conflicted at the initial review point; incoming LISTRICDIP change updated the primary designation",
+    "hypothesis file date is later than its associated artifact timestamp"
+  ]
+}
