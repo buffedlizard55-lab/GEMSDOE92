@@ -81,10 +81,12 @@ jobs:
           primary = pathlib.Path("docs") / explicit[0]
           if not primary.is_file():
               sys.exit(f"index.html points at {primary}, which does not exist")
-          # the receipt is named after the variant, not the encoding twin:
-          # <variant>-audit.json for <variant>-zeros.tif
-          variant = primary.stem.removesuffix("-zeros")
-          audit = primary.with_name(variant + "-audit.json")
+          # receipt naming: older lanes use <variant>-audit.json for
+          # <variant>-zeros.tif; FAULTNET/VARIO use <full-stem>-audit.json
+          # (mirrors scripts/check_site.py::_audit_path)
+          candidates = [primary.with_name(primary.name[:-len("-zeros.tif")] + "-audit.json"),
+                        primary.with_name(primary.stem + "-audit.json")]
+          audit = next((c for c in candidates if c.is_file()), candidates[0])
           if not audit.is_file():
               sys.exit(f"missing audit receipt beside the primary: {audit}")
           doc = json.loads(audit.read_text())
@@ -93,12 +95,13 @@ jobs:
               sys.exit(f"audit hash {doc['sha256_zeros']} != served bytes {got}")
           if doc.get("overall_pass") is not True:
               sys.exit("audit receipt does not record overall_pass == true")
-          bad = [g["name"] for g in doc["gates_zeros"] if not g["ok"]]
-          if bad:
+          rows = doc.get("gates") or doc.get("gates_zeros") or doc.get("validator_output") or []
+          bad = [g["name"] for g in rows if not g["ok"]]
+          if bad or not rows:
               sys.exit(f"audit receipt records failing gates: {bad}")
           print(f"primary {primary.name}")
           print(f"  sha256 {got}")
-          print(f"  audit receipt agrees; {len(doc['gates_zeros'])} gates recorded PASS")
+          print(f"  audit receipt agrees; {len(rows)} gates recorded PASS")
           PY
 
       - name: site status, primary evidence and all served TIFFs must agree

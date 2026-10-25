@@ -1,0 +1,3180 @@
+{
+ "schema": "gemsdoe92-vario-run-card-v1",
+ "lane": "VARIO",
+ "date": "20261025",
+ "branch": "arena/d7ca8737-gemsdoe92",
+ "pre_registration": "docs/HYPOTHESES_20261025_VARIO.md",
+ "hypothesis": "Buried/off-catalogue Great Basin faults are recoverable by adding three previously unused catalogue-free families \u2014 RTP directional semivariogram anisotropy (lags 2/4 px), MT conductivity change-point at constant basement cover, and USGS 3DEP 10 m sub-pixel scarp/chi statistics \u2014 to the proven COULOMBLOQO physics + FAULTNET context LOQO ensemble.",
+ "mechanism": "4-quadrant LOQO HistGradientBoosting (12 px guard, 5 px negative buffer) over 38 features; crest-surface localisation; 37,654 spaced (2.8 px) dots with d_visible>2 in holdout / d_cat>2 at deployment; E3 blurs the crest at sigma=1.85 px before emission.",
+ "non_fault_mimic": "Lava-flow/intrusive contacts and flight-line seams (semivariogram anisotropy); playa/aquifer salinity fronts (MT break at constant cover); Lake Lahontan shoreline berms and fan-age breaks (10 m scarp statistics).",
+ "primary_arm": "vario_full",
+ "experiments": [
+  "vario_full",
+  "vario_smooth",
+  "vario_nctx"
+ ],
+ "experiments_used": 3,
+ "weekly_slots_used": 0,
+ "holdout_dti": {
+  "evidence_class": "HOLDOUT-DTI",
+  "evaluator_version": "gems57-pooled-hide-v2",
+  "instrument": "strict draw-blind fold-visible buffered whole-component holdout (d_visible > 2.0 emission; control_FAULTNET_far d_visible > 4.0)",
+  "seeds": [
+   20,
+   30
+  ],
+  "alpha": 0.2,
+  "beta": 0.8,
+  "triangular_radius_m": 300.0,
+  "scores": {
+   "vario_full": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.15002012085424568,
+    "ci95": [
+     0.13497540059406068,
+     0.1642856062511979
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 4888.437783915989,
+    "fpw": 67385.63360171583,
+    "fnw": 17774.562216084003
+   },
+   "vario_smooth": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.14166053229767137,
+    "ci95": [
+     0.12585751115088195,
+     0.15668475096737394
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 4615.561647003185,
+    "fpw": 67641.66833190518,
+    "fnw": 18047.43835299681
+   },
+   "vario_nctx": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.11625849059760031,
+    "ci95": [
+     0.10295621516643327,
+     0.13059218444834425
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 3751.3076185706436,
+    "fpw": 66931.47314831789,
+    "fnw": 18911.69238142936
+   },
+   "control_FAULTNET": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.14870740021689016,
+    "ci95": [
+     0.13388759143853787,
+     0.16283434259910612
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 4841.287709408152,
+    "fpw": 67285.68974386994,
+    "fnw": 17821.712290591837
+   },
+   "control_FAULTNET_far": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.17514739242453894,
+    "ci95": [
+     0.15975607453868745,
+     0.18986032151872523
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 5734.679240480025,
+    "fpw": 67323.41547162863,
+    "fnw": 16928.320759519964
+   },
+   "control_COULOMBLOQO": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.11389028250278395,
+    "ci95": [
+     0.10078254384924246,
+     0.12855907083329318
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 3667.627675703619,
+    "fpw": 66696.20243315432,
+    "fnw": 18995.372324296375
+   },
+   "control_H19_5": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.09675733336022943,
+    "ci95": [
+     0.08483917230734493,
+     0.1084543408986222
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 3161.578851384054,
+    "fpw": 69563.12561056274,
+    "fnw": 19501.421148615944
+   }
+  },
+  "paired_by_candidate": {
+   "vario_full": {
+    "vario_smooth": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": 0.008359588556574316,
+     "ci95": [
+      0.0031951251004797504,
+      0.01314890358297684
+     ],
+     "withheld_positive_pixels": 22663
+    },
+    "vario_nctx": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": 0.03376163025664537,
+     "ci95": [
+      0.021611827210575398,
+      0.046337474121536666
+     ],
+     "withheld_positive_pixels": 22663
+    },
+    "control_FAULTNET": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": 0.001312720637355519,
+     "ci95": [
+      -0.0007226422791844024,
+      0.003368210279887531
+     ],
+     "withheld_positive_pixels": 22663
+    },
+    "control_FAULTNET_far": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": -0.025127271570293264,
+     "ci95": [
+      -0.029305915361244498,
+      -0.02084222808563093
+     ],
+     "withheld_positive_pixels": 22663
+    },
+    "control_COULOMBLOQO": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": 0.03612983835146173,
+     "ci95": [
+      0.023528691156931264,
+      0.04930921951684896
+     ],
+     "withheld_positive_pixels": 22663
+    },
+    "control_H19_5": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": 0.05326278749401625,
+     "ci95": [
+      0.040445778188941385,
+      0.06670577541068215
+     ],
+     "withheld_positive_pixels": 22663
+    }
+   },
+   "vario_smooth": {
+    "vario_full": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": -0.008359588556574316,
+     "ci95": [
+      -0.01314890358297684,
+      -0.0031951251004797513
+     ],
+     "withheld_positive_pixels": 22663
+    },
+    "vario_nctx": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": 0.025402041700071057,
+     "ci95": [
+      0.010835891982874463,
+      0.040730937687181556
+     ],
+     "withheld_positive_pixels": 22663
+    },
+    "control_FAULTNET": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": -0.007046867919218797,
+     "ci95": [
+      -0.011919261897644915,
+      -0.0018618378353447858
+     ],
+     "withheld_positive_pixels": 22663
+    },
+    "control_FAULTNET_far": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": -0.03348686012686758,
+     "ci95": [
+      -0.040045570009959904,
+      -0.02711082513576471
+     ],
+     "withheld_positive_pixels": 22663
+    },
+    "control_COULOMBLOQO": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": 0.027770249794887417,
+     "ci95": [
+      0.012527910242746897,
+      0.04344402335730515
+     ],
+     "withheld_positive_pixels": 22663
+    },
+    "control_H19_5": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": 0.044903198937441935,
+     "ci95": [
+      0.029355764673421356,
+      0.06029786058918552
+     ],
+     "withheld_positive_pixels": 22663
+    }
+   },
+   "vario_nctx": {
+    "vario_full": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": -0.03376163025664537,
+     "ci95": [
+      -0.04633747412153667,
+      -0.021611827210575398
+     ],
+     "withheld_positive_pixels": 22663
+    },
+    "vario_smooth": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": -0.025402041700071057,
+     "ci95": [
+      -0.04073093768718156,
+      -0.010835891982874464
+     ],
+     "withheld_positive_pixels": 22663
+    },
+    "control_FAULTNET": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": -0.032448909619289854,
+     "ci95": [
+      -0.045222096412329674,
+      -0.01991120337636985
+     ],
+     "withheld_positive_pixels": 22663
+    },
+    "control_FAULTNET_far": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": -0.058888901826938636,
+     "ci95": [
+      -0.0713356545904425,
+      -0.04639532428048912
+     ],
+     "withheld_positive_pixels": 22663
+    },
+    "control_COULOMBLOQO": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": 0.0023682080948163597,
+     "ci95": [
+      -0.0008181106067966157,
+      0.0056402634634898086
+     ],
+     "withheld_positive_pixels": 22663
+    },
+    "control_H19_5": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": 0.019501157237370878,
+     "ci95": [
+      0.010945716076348243,
+      0.027301391669927993
+     ],
+     "withheld_positive_pixels": 22663
+    }
+   }
+  },
+  "best_comparable_control": "control_FAULTNET_far",
+  "primary_minus_best_control": {
+   "evidence_class": "HOLDOUT-DTI",
+   "evaluator_version": "gems57-pooled-hide-v2",
+   "delta": -0.025127271570293264,
+   "ci95": [
+    -0.029305915361244498,
+    -0.02084222808563093
+   ],
+   "withheld_positive_pixels": 22663
+  },
+  "historical_reference": {
+   "faultnet_netfar": {
+    "dti": 0.175147,
+    "ci95": [
+     0.159756,
+     0.18986
+    ],
+    "withheld_positive_pixels": 22663,
+    "source": "evidence/faultnet_holdout.json (same instrument/seeds; non-paired)"
+   }
+  },
+  "implementation_sha256": {
+   "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+   "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+   "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+   "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+  },
+  "evidence_file": "evidence/vario_holdout.json"
+ },
+ "leakage_canaries": {
+  "max_symmetric_auc": 0.77748,
+  "worst": {
+   "seed": 20,
+   "feature": "cx_logtip",
+   "auc": 0.22252,
+   "symmetric_auc": 0.77748
+  },
+  "n": 76,
+  "limit": 0.9,
+  "passes": true
+ },
+ "correlation_overlap_vs_registry": {
+  "final_dots": {
+   "vario_full": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "local registry: 94 docs/downloads rasters + 5 pinned lineage rasters; own VARIO outputs excluded; NOT a full public-repo scan",
+    "registry_rows": [
+     {
+      "file": "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.453126,
+      "spearman": 0.113258
+     },
+     {
+      "file": "gemsdoe92-blindfault-blind-37654-20261025-d4f09813-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.129017,
+      "spearman": 0.008912
+     },
+     {
+      "file": "gemsdoe92-blindfault-blindflat-37654-20261025-1e27ea5c-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.178759,
+      "spearman": 0.014133
+     },
+     {
+      "file": "gemsdoe92-blindfault-blindtopo-37654-20261025-4648eea5-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.180512,
+      "spearman": 0.013574
+     },
+     {
+      "file": "gemsdoe92-curiedemag-20261026T000000Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.202608,
+      "spearman": 0.006994
+     },
+     {
+      "file": "gemsdoe92-drainageknick-20261025T120000Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.215462,
+      "spearman": 0.016664
+     },
+     {
+      "file": "gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.400701,
+      "spearman": 0.067012
+     },
+     {
+      "file": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.979126,
+      "spearman": 0.891258
+     },
+     {
+      "file": "gemsdoe92-faultnet-netdens-37654-20261025-517af913-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.759308,
+      "spearman": 0.366917
+     },
+     {
+      "file": "gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.86437,
+      "spearman": 0.381462
+     },
+     {
+      "file": "gemsdoe92-gravquad-20261025T145744Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.120279,
+      "spearman": 0.007154
+     },
+     {
+      "file": "gemsdoe92-listricdip-anti22-9571-20261025T190000Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 9571,
+      "binary": true,
+      "forward_overlap_within_3px": 0.028523,
+      "spearman": 0.002779
+     },
+     {
+      "file": "gemsdoe92-listricdip-anti35-9555-20261025T190000Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 9555,
+      "binary": true,
+      "forward_overlap_within_3px": 0.028337,
+      "spearman": 0.002837
+     },
+     {
+      "file": "gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.172226,
+      "spearman": 0.002918
+     },
+     {
+      "file": "gemsdoe92-listriclag-20261025T145312Z-n90k-zeros.tif",
+      "scope": "local",
+      "n_positive": 90000,
+      "binary": false,
+      "forward_overlap_within_3px": 0.339884,
+      "spearman": 0.016243
+     },
+     {
+      "file": "gemsdoe92-listriclag-20261025T145312Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.170155,
+      "spearman": 0.017303
+     },
+     {
+      "file": "gemsdoe92-poissonflex-poissonflex_eq-37654-20261025-5512bd34-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.420832,
+      "spearman": 0.124713
+     },
+     {
+      "file": "gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif",
+      "scope": "local",
+      "n_positive": 45000,
+      "binary": true,
+      "forward_overlap_within_3px": 0.467467,
+      "spearman": 0.127874
+     },
+     {
+      "file": "gemsdoe92-poissonflex-poissonflex_raw-37654-20261025-be99276b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.415653,
+      "spearman": 0.123061
+     },
+     {
+      "file": "gemsdoe92-poissonknick-pkdual40-37654-20261025-6c1bf3ba-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.354889,
+      "spearman": 0.030197
+     },
+     {
+      "file": "gemsdoe92-poissonknick-qcal-37654-20261025-9cfcc9b9-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.339167,
+      "spearman": 0.039893
+     },
+     {
+      "file": "gemsdoe92-poissonknick-uncal-37654-20261025-da9bfc4a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.340468,
+      "spearman": 0.03944
+     },
+     {
+      "file": "gemsdoe92-provincetoe-globalraw-37654-20261025-73b06876-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.387104,
+      "spearman": 0.019434
+     },
+     {
+      "file": "gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.383784,
+      "spearman": 0.017223
+     },
+     {
+      "file": "gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.385059,
+      "spearman": 0.018262
+     },
+     {
+      "file": "gemsdoe92-radiocontact-20261025T041646Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.138418,
+      "spearman": 0.010563
+     },
+     {
+      "file": "gemsdoe92-radiodecouple-demag-37654-20261025-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.182052,
+      "spearman": 0.008805
+     },
+     {
+      "file": "gemsdoe92-radiodecouple-dual35-37654-20261025-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.241356,
+      "spearman": 0.012162
+     },
+     {
+      "file": "gemsdoe92-radiodecouple-standalone-37654-20261025-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.15576,
+      "spearman": 0.00718
+     },
+     {
+      "file": "gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.365512,
+      "spearman": 0.024016
+     },
+     {
+      "file": "gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.376321,
+      "spearman": 0.018236
+     },
+     {
+      "file": "gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-zeros.tif",
+      "scope": "local",
+      "n_positive": 47000,
+      "binary": false,
+      "forward_overlap_within_3px": 0.42447,
+      "spearman": 0.014835
+     },
+     {
+      "file": "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.333696,
+      "spearman": 0.017969
+     },
+     {
+      "file": "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.333696,
+      "spearman": 0.017969
+     },
+     {
+      "file": "h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.293196,
+      "spearman": 0.033047
+     },
+     {
+      "file": "h33-h33-2-b2-APRONRIDGEs50f50-20261024-2f0431ea-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.343788,
+      "spearman": 0.028625
+     },
+     {
+      "file": "h33-h33-2-b2-APRONRIDGEs60f40-20261024-6e7e0174-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.350215,
+      "spearman": 0.029211
+     },
+     {
+      "file": "h33-h33-2-b2-BASEMENTEDGEstep3-20261024-80719f12-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.066182,
+      "spearman": 0.001852
+     },
+     {
+      "file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.382429,
+      "spearman": 0.022631
+     },
+     {
+      "file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.382429,
+      "spearman": 0.022631
+     },
+     {
+      "file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.380809,
+      "spearman": 0.023031
+     },
+     {
+      "file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.380809,
+      "spearman": 0.023031
+     },
+     {
+      "file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.378897,
+      "spearman": 0.023004
+     },
+     {
+      "file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.378897,
+      "spearman": 0.023004
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.331864,
+      "spearman": 0.019567
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBDMs35coulomb65-20261024-1091c5a7-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.367106,
+      "spearman": 0.020926
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.383067,
+      "spearman": 0.022365
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.46274,
+      "spearman": 0.073112
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBLOQOnocoulomb-20261024-ab7c4415-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.468662,
+      "spearman": 0.164752
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.453365,
+      "spearman": 0.15295
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBfree-20261024-d0cf5db5-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.168349,
+      "spearman": 0.010883
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBopen-20261024-58a7a394-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.187762,
+      "spearman": 0.012561
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBseismo-20261024-d243140b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.176688,
+      "spearman": 0.011442
+     },
+     {
+      "file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.335396,
+      "spearman": 0.022738
+     },
+     {
+      "file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.335396,
+      "spearman": 0.022738
+     },
+     {
+      "file": "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.328225,
+      "spearman": 0.023004
+     },
+     {
+      "file": "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.328225,
+      "spearman": 0.023004
+     },
+     {
+      "file": "h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.318213,
+      "spearman": 0.023377
+     },
+     {
+      "file": "h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.318213,
+      "spearman": 0.023377
+     },
+     {
+      "file": "h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.263425,
+      "spearman": 0.030197
+     },
+     {
+      "file": "h33-h33-2-b2-GEOTENSIONs50f50-20261025-caa53f9d-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.305811,
+      "spearman": 0.029451
+     },
+     {
+      "file": "h33-h33-2-b2-GEOTENSIONs60f40-20261025-ab46201e-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.309954,
+      "spearman": 0.031129
+     },
+     {
+      "file": "h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.383651,
+      "spearman": 0.025934
+     },
+     {
+      "file": "h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.383651,
+      "spearman": 0.025934
+     },
+     {
+      "file": "h33-h33-2-b2-HYDROCONDUITf45pied-20261024-3c236840-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.379907,
+      "spearman": 0.025588
+     },
+     {
+      "file": "h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.378765,
+      "spearman": 0.025108
+     },
+     {
+      "file": "h33-h33-2-b2-KNICKLOQOdual35-20261025-8eedc094-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.441653,
+      "spearman": 0.034805
+     },
+     {
+      "file": "h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.459659,
+      "spearman": 0.045887
+     },
+     {
+      "file": "h33-h33-2-b2-KNICKLOQOuncal-20261025-61b98143-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.462182,
+      "spearman": 0.047619
+     },
+     {
+      "file": "h33-h33-2-b2-LISTRICdual35-20261026-2b8b394a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.421735,
+      "spearman": 0.036856
+     },
+     {
+      "file": "h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.439847,
+      "spearman": 0.04301
+     },
+     {
+      "file": "h33-h33-2-b2-LISTRICuncal-20261026-fc9686b5-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.436474,
+      "spearman": 0.042584
+     },
+     {
+      "file": "h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21-zeros.tif",
+      "scope": "local",
+      "n_positive": 29076,
+      "binary": true,
+      "forward_overlap_within_3px": 0.177963,
+      "spearman": 0.011965
+     },
+     {
+      "file": "h33-h33-2-b2-NEOOPNSfree1d-20261025-a4c91e43-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.291656,
+      "spearman": 0.02082
+     },
+     {
+      "file": "h33-h33-2-b2-NEOOPNSs35c65-20261025-e4d82847-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.311839,
+      "spearman": 0.019754
+     },
+     {
+      "file": "h33-h33-2-b2-NEOOPNSs45c55-20261025-63d84095-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.322675,
+      "spearman": 0.021672
+     },
+     {
+      "file": "h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.296702,
+      "spearman": 0.02034
+     },
+     {
+      "file": "h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.296702,
+      "spearman": 0.02034
+     },
+     {
+      "file": "h33-h33-2-b2-PIEDFRONTf40Ptop-20261024-6b0cd56a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.287194,
+      "spearman": 0.019248
+     },
+     {
+      "file": "h33-h33-2-b2-PIEDFRONTf45Ptop-20261024-aad86ac9-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.27928,
+      "spearman": 0.018449
+     },
+     {
+      "file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.350481,
+      "spearman": 0.02375
+     },
+     {
+      "file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.350481,
+      "spearman": 0.02375
+     },
+     {
+      "file": "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.315186,
+      "spearman": 0.017436
+     },
+     {
+      "file": "h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.277261,
+      "spearman": 0.012508
+     },
+     {
+      "file": "h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.277261,
+      "spearman": 0.012508
+     },
+     {
+      "file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+      "scope": "local",
+      "n_positive": 5000,
+      "binary": true,
+      "forward_overlap_within_3px": 0.137967,
+      "spearman": 0.01319
+     },
+     {
+      "file": "h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.372577,
+      "spearman": 0.022711
+     },
+     {
+      "file": "h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.365406,
+      "spearman": 0.022365
+     },
+     {
+      "file": "h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.365406,
+      "spearman": 0.022365
+     },
+     {
+      "file": "h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.34408,
+      "spearman": 0.021166
+     },
+     {
+      "file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.338583,
+      "spearman": 0.014826
+     },
+     {
+      "file": "h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.212142,
+      "spearman": 0.009205
+     },
+     {
+      "file": "h33-h33-2-b2-XPHASEnophase-20261024-2159567d-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.110373,
+      "spearman": 0.003717
+     },
+     {
+      "file": "h33-h33-2-b2-XPHASEstandalone-20261024-023ac854-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.110851,
+      "spearman": 0.003397
+     },
+     {
+      "file": "GEMSDOE32__h33-2-b2-zeros.tif",
+      "scope": "lineage",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.354517,
+      "spearman": 0.019461
+     },
+     {
+      "file": "GEMSDOE28__h27-4-r1-solo-d2-8.tif",
+      "scope": "lineage",
+      "n_positive": 40199,
+      "binary": true,
+      "forward_overlap_within_3px": 0.390822,
+      "spearman": 0.018636
+     },
+     {
+      "file": "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+      "scope": "lineage",
+      "n_positive": 44090,
+      "binary": true,
+      "forward_overlap_within_3px": 0.425347,
+      "spearman": 0.017503
+     },
+     {
+      "file": "calib_h195_01922.tif",
+      "scope": "lineage",
+      "n_positive": 121131,
+      "binary": true,
+      "forward_overlap_within_3px": 0.469299,
+      "spearman": 0.034748
+     },
+     {
+      "file": "calib_d15_02477.tif",
+      "scope": "lineage",
+      "n_positive": 60069,
+      "binary": true,
+      "forward_overlap_within_3px": 0.443512,
+      "spearman": 0.022331
+     }
+    ],
+    "registry_errors": [],
+    "operative_sparse": {
+     "max_positive_pixels": 150000,
+     "rasters": 99,
+     "worst_overlap": {
+      "file": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.979126,
+      "spearman": 0.891258
+     },
+     "worst_abs_spearman": {
+      "file": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.979126,
+      "spearman": 0.891258
+     },
+     "overlap_limit": 0.7,
+     "rho_limit": 0.9,
+     "passes": false
+    },
+    "literal_positive_support": {
+     "rasters": 99,
+     "worst_overlap": {
+      "file": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.979126,
+      "spearman": 0.891258
+     },
+     "note": "Literal >0-support reading: dense continuous surfaces in the wider public registry (pinned full-footprint witness, docs/downloads/review_f23_preflight.json) make every non-empty candidate overlap 1.0. Reported for disclosure; operative sparse dot-field reading is the discriminating gate (see docs/HYPOTHESES_20261025_VARIO.md)."
+    }
+   },
+   "vario_smooth": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "local registry: 94 docs/downloads rasters + 5 pinned lineage rasters; own VARIO outputs excluded; NOT a full public-repo scan",
+    "registry_rows": [
+     {
+      "file": "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.514341,
+      "spearman": 0.166137
+     },
+     {
+      "file": "gemsdoe92-blindfault-blind-37654-20261025-d4f09813-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.126866,
+      "spearman": 0.01051
+     },
+     {
+      "file": "gemsdoe92-blindfault-blindflat-37654-20261025-1e27ea5c-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.180645,
+      "spearman": 0.016397
+     },
+     {
+      "file": "gemsdoe92-blindfault-blindtopo-37654-20261025-4648eea5-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.178865,
+      "spearman": 0.014719
+     },
+     {
+      "file": "gemsdoe92-curiedemag-20261026T000000Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.188931,
+      "spearman": 0.007686
+     },
+     {
+      "file": "gemsdoe92-drainageknick-20261025T120000Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.209486,
+      "spearman": 0.016904
+     },
+     {
+      "file": "gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.378047,
+      "spearman": 0.047645
+     },
+     {
+      "file": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.92856,
+      "spearman": 0.257909
+     },
+     {
+      "file": "gemsdoe92-faultnet-netdens-37654-20261025-517af913-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.748101,
+      "spearman": 0.174901
+     },
+     {
+      "file": "gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.826605,
+      "spearman": 0.067651
+     },
+     {
+      "file": "gemsdoe92-gravquad-20261025T145744Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.120731,
+      "spearman": 0.007686
+     },
+     {
+      "file": "gemsdoe92-listricdip-anti22-9571-20261025T190000Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 9571,
+      "binary": true,
+      "forward_overlap_within_3px": 0.02507,
+      "spearman": 0.00262
+     },
+     {
+      "file": "gemsdoe92-listricdip-anti35-9555-20261025T190000Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 9555,
+      "binary": true,
+      "forward_overlap_within_3px": 0.024805,
+      "spearman": 0.002414
+     },
+     {
+      "file": "gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.171084,
+      "spearman": 0.005395
+     },
+     {
+      "file": "gemsdoe92-listriclag-20261025T145312Z-n90k-zeros.tif",
+      "scope": "local",
+      "n_positive": 90000,
+      "binary": false,
+      "forward_overlap_within_3px": 0.34177,
+      "spearman": 0.019986
+     },
+     {
+      "file": "gemsdoe92-listriclag-20261025T145312Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.168694,
+      "spearman": 0.019967
+     },
+     {
+      "file": "gemsdoe92-poissonflex-poissonflex_eq-37654-20261025-5512bd34-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.389334,
+      "spearman": 0.067758
+     },
+     {
+      "file": "gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif",
+      "scope": "local",
+      "n_positive": 45000,
+      "binary": true,
+      "forward_overlap_within_3px": 0.435624,
+      "spearman": 0.070348
+     },
+     {
+      "file": "gemsdoe92-poissonflex-poissonflex_raw-37654-20261025-be99276b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.384315,
+      "spearman": 0.067145
+     },
+     {
+      "file": "gemsdoe92-poissonknick-pkdual40-37654-20261025-6c1bf3ba-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.34161,
+      "spearman": 0.027053
+     },
+     {
+      "file": "gemsdoe92-poissonknick-qcal-37654-20261025-9cfcc9b9-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.33112,
+      "spearman": 0.036537
+     },
+     {
+      "file": "gemsdoe92-poissonknick-uncal-37654-20261025-da9bfc4a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.333112,
+      "spearman": 0.035471
+     },
+     {
+      "file": "gemsdoe92-provincetoe-globalraw-37654-20261025-73b06876-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.370266,
+      "spearman": 0.023643
+     },
+     {
+      "file": "gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.367371,
+      "spearman": 0.022365
+     },
+     {
+      "file": "gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.368779,
+      "spearman": 0.023297
+     },
+     {
+      "file": "gemsdoe92-radiocontact-20261025T041646Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.143278,
+      "spearman": 0.012402
+     },
+     {
+      "file": "gemsdoe92-radiodecouple-demag-37654-20261025-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.176263,
+      "spearman": 0.009152
+     },
+     {
+      "file": "gemsdoe92-radiodecouple-dual35-37654-20261025-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.233441,
+      "spearman": 0.013067
+     },
+     {
+      "file": "gemsdoe92-radiodecouple-standalone-37654-20261025-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.153822,
+      "spearman": 0.0075
+     },
+     {
+      "file": "gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.349153,
+      "spearman": 0.022738
+     },
+     {
+      "file": "gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.364264,
+      "spearman": 0.019621
+     },
+     {
+      "file": "gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-zeros.tif",
+      "scope": "local",
+      "n_positive": 47000,
+      "binary": false,
+      "forward_overlap_within_3px": 0.412386,
+      "spearman": 0.017032
+     },
+     {
+      "file": "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.319807,
+      "spearman": 0.019088
+     },
+     {
+      "file": "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.319807,
+      "spearman": 0.019088
+     },
+     {
+      "file": "h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.28337,
+      "spearman": 0.028998
+     },
+     {
+      "file": "h33-h33-2-b2-APRONRIDGEs50f50-20261024-2f0431ea-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.33351,
+      "spearman": 0.0266
+     },
+     {
+      "file": "h33-h33-2-b2-APRONRIDGEs60f40-20261024-6e7e0174-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.338556,
+      "spearman": 0.027666
+     },
+     {
+      "file": "h33-h33-2-b2-BASEMENTEDGEstep3-20261024-80719f12-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.065969,
+      "spearman": 0.001373
+     },
+     {
+      "file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.349631,
+      "spearman": 0.02042
+     },
+     {
+      "file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.349631,
+      "spearman": 0.02042
+     },
+     {
+      "file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.347081,
+      "spearman": 0.020367
+     },
+     {
+      "file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.347081,
+      "spearman": 0.020367
+     },
+     {
+      "file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.343815,
+      "spearman": 0.020526
+     },
+     {
+      "file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.343815,
+      "spearman": 0.020526
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.315823,
+      "spearman": 0.018742
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBDMs35coulomb65-20261024-1091c5a7-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.350401,
+      "spearman": 0.019754
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.365565,
+      "spearman": 0.020979
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.432756,
+      "spearman": 0.044768
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBLOQOnocoulomb-20261024-ab7c4415-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.425267,
+      "spearman": 0.076362
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.418229,
+      "spearman": 0.075723
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBfree-20261024-d0cf5db5-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.179503,
+      "spearman": 0.012108
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBopen-20261024-58a7a394-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.193074,
+      "spearman": 0.01376
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBseismo-20261024-d243140b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.190312,
+      "spearman": 0.012748
+     },
+     {
+      "file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.320152,
+      "spearman": 0.022365
+     },
+     {
+      "file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.320152,
+      "spearman": 0.022365
+     },
+     {
+      "file": "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.313167,
+      "spearman": 0.022445
+     },
+     {
+      "file": "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.313167,
+      "spearman": 0.022445
+     },
+     {
+      "file": "h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.303846,
+      "spearman": 0.022684
+     },
+     {
+      "file": "h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.303846,
+      "spearman": 0.022684
+     },
+     {
+      "file": "h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.263186,
+      "spearman": 0.026041
+     },
+     {
+      "file": "h33-h33-2-b2-GEOTENSIONs50f50-20261025-caa53f9d-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.301349,
+      "spearman": 0.025481
+     },
+     {
+      "file": "h33-h33-2-b2-GEOTENSIONs60f40-20261025-ab46201e-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.30358,
+      "spearman": 0.02708
+     },
+     {
+      "file": "h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.371222,
+      "spearman": 0.024442
+     },
+     {
+      "file": "h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.371222,
+      "spearman": 0.024442
+     },
+     {
+      "file": "h33-h33-2-b2-HYDROCONDUITf45pied-20261024-3c236840-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.367849,
+      "spearman": 0.024043
+     },
+     {
+      "file": "h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.366043,
+      "spearman": 0.023617
+     },
+     {
+      "file": "h33-h33-2-b2-KNICKLOQOdual35-20261025-8eedc094-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.417034,
+      "spearman": 0.030942
+     },
+     {
+      "file": "h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.435359,
+      "spearman": 0.03952
+     },
+     {
+      "file": "h33-h33-2-b2-KNICKLOQOuncal-20261025-61b98143-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.441201,
+      "spearman": 0.039494
+     },
+     {
+      "file": "h33-h33-2-b2-LISTRICdual35-20261026-2b8b394a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.400887,
+      "spearman": 0.029238
+     },
+     {
+      "file": "h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.422531,
+      "spearman": 0.03302
+     },
+     {
+      "file": "h33-h33-2-b2-LISTRICuncal-20261026-fc9686b5-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.421443,
+      "spearman": 0.031981
+     },
+     {
+      "file": "h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21-zeros.tif",
+      "scope": "local",
+      "n_positive": 29076,
+      "binary": true,
+      "forward_overlap_within_3px": 0.159346,
+      "spearman": 0.009693
+     },
+     {
+      "file": "h33-h33-2-b2-NEOOPNSfree1d-20261025-a4c91e43-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.280953,
+      "spearman": 0.023643
+     },
+     {
+      "file": "h33-h33-2-b2-NEOOPNSs35c65-20261025-e4d82847-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.299862,
+      "spearman": 0.020979
+     },
+     {
+      "file": "h33-h33-2-b2-NEOOPNSs45c55-20261025-63d84095-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.310033,
+      "spearman": 0.023004
+     },
+     {
+      "file": "h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.284804,
+      "spearman": 0.020633
+     },
+     {
+      "file": "h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.284804,
+      "spearman": 0.020633
+     },
+     {
+      "file": "h33-h33-2-b2-PIEDFRONTf40Ptop-20261024-6b0cd56a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.275455,
+      "spearman": 0.019994
+     },
+     {
+      "file": "h33-h33-2-b2-PIEDFRONTf45Ptop-20261024-aad86ac9-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.268816,
+      "spearman": 0.019168
+     },
+     {
+      "file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.333271,
+      "spearman": 0.024123
+     },
+     {
+      "file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.333271,
+      "spearman": 0.024123
+     },
+     {
+      "file": "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.299517,
+      "spearman": 0.018289
+     },
+     {
+      "file": "h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.254661,
+      "spearman": 0.012668
+     },
+     {
+      "file": "h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.254661,
+      "spearman": 0.012668
+     },
+     {
+      "file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+      "scope": "local",
+      "n_positive": 5000,
+      "binary": true,
+      "forward_overlap_within_3px": 0.15908,
+      "spearman": 0.016183
+     },
+     {
+      "file": "h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.350932,
+      "spearman": 0.020686
+     },
+     {
+      "file": "h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.346046,
+      "spearman": 0.019914
+     },
+     {
+      "file": "h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.346046,
+      "spearman": 0.019914
+     },
+     {
+      "file": "h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.326074,
+      "spearman": 0.018395
+     },
+     {
+      "file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.320285,
+      "spearman": 0.013787
+     },
+     {
+      "file": "h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.202741,
+      "spearman": 0.009871
+     },
+     {
+      "file": "h33-h33-2-b2-XPHASEnophase-20261024-2159567d-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.104478,
+      "spearman": 0.005422
+     },
+     {
+      "file": "h33-h33-2-b2-XPHASEstandalone-20261024-023ac854-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.105301,
+      "spearman": 0.005795
+     },
+     {
+      "file": "GEMSDOE32__h33-2-b2-zeros.tif",
+      "scope": "lineage",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.333218,
+      "spearman": 0.018848
+     },
+     {
+      "file": "GEMSDOE28__h27-4-r1-solo-d2-8.tif",
+      "scope": "lineage",
+      "n_positive": 40199,
+      "binary": true,
+      "forward_overlap_within_3px": 0.378765,
+      "spearman": 0.018042
+     },
+     {
+      "file": "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+      "scope": "lineage",
+      "n_positive": 44090,
+      "binary": true,
+      "forward_overlap_within_3px": 0.425108,
+      "spearman": 0.016937
+     },
+     {
+      "file": "calib_h195_01922.tif",
+      "scope": "lineage",
+      "n_positive": 121131,
+      "binary": true,
+      "forward_overlap_within_3px": 0.470468,
+      "spearman": 0.034092
+     },
+     {
+      "file": "calib_d15_02477.tif",
+      "scope": "lineage",
+      "n_positive": 60069,
+      "binary": true,
+      "forward_overlap_within_3px": 0.443539,
+      "spearman": 0.021845
+     }
+    ],
+    "registry_errors": [],
+    "operative_sparse": {
+     "max_positive_pixels": 150000,
+     "rasters": 99,
+     "worst_overlap": {
+      "file": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.92856,
+      "spearman": 0.257909
+     },
+     "worst_abs_spearman": {
+      "file": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.92856,
+      "spearman": 0.257909
+     },
+     "overlap_limit": 0.7,
+     "rho_limit": 0.9,
+     "passes": false
+    },
+    "literal_positive_support": {
+     "rasters": 99,
+     "worst_overlap": {
+      "file": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.92856,
+      "spearman": 0.257909
+     },
+     "note": "Literal >0-support reading: dense continuous surfaces in the wider public registry (pinned full-footprint witness, docs/downloads/review_f23_preflight.json) make every non-empty candidate overlap 1.0. Reported for disclosure; operative sparse dot-field reading is the discriminating gate (see docs/HYPOTHESES_20261025_VARIO.md)."
+    }
+   },
+   "vario_nctx": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "local registry: 94 docs/downloads rasters + 5 pinned lineage rasters; own VARIO outputs excluded; NOT a full public-repo scan",
+    "registry_rows": [
+     {
+      "file": "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.089552,
+      "spearman": 0.022551
+     },
+     {
+      "file": "gemsdoe92-blindfault-blind-37654-20261025-d4f09813-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.222287,
+      "spearman": 0.015358
+     },
+     {
+      "file": "gemsdoe92-blindfault-blindflat-37654-20261025-1e27ea5c-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.272003,
+      "spearman": 0.019221
+     },
+     {
+      "file": "gemsdoe92-blindfault-blindtopo-37654-20261025-4648eea5-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.298985,
+      "spearman": 0.024203
+     },
+     {
+      "file": "gemsdoe92-curiedemag-20261026T000000Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.236363,
+      "spearman": 0.007154
+     },
+     {
+      "file": "gemsdoe92-drainageknick-20261025T120000Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.238726,
+      "spearman": 0.016797
+     },
+     {
+      "file": "gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.78175,
+      "spearman": 0.194241
+     },
+     {
+      "file": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.44492,
+      "spearman": 0.144612
+     },
+     {
+      "file": "gemsdoe92-faultnet-netdens-37654-20261025-517af913-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.547485,
+      "spearman": 0.217124
+     },
+     {
+      "file": "gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.489377,
+      "spearman": 0.115975
+     },
+     {
+      "file": "gemsdoe92-gravquad-20261025T145744Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.125617,
+      "spearman": 0.006274
+     },
+     {
+      "file": "gemsdoe92-listricdip-anti22-9571-20261025T190000Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 9571,
+      "binary": true,
+      "forward_overlap_within_3px": 0.030329,
+      "spearman": 0.001723
+     },
+     {
+      "file": "gemsdoe92-listricdip-anti35-9555-20261025T190000Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 9555,
+      "binary": true,
+      "forward_overlap_within_3px": 0.030223,
+      "spearman": 0.001622
+     },
+     {
+      "file": "gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.152122,
+      "spearman": 1.4e-05
+     },
+     {
+      "file": "gemsdoe92-listriclag-20261025T145312Z-n90k-zeros.tif",
+      "scope": "local",
+      "n_positive": 90000,
+      "binary": false,
+      "forward_overlap_within_3px": 0.375764,
+      "spearman": 0.014036
+     },
+     {
+      "file": "gemsdoe92-listriclag-20261025T145312Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.191029,
+      "spearman": 0.015998
+     },
+     {
+      "file": "gemsdoe92-poissonflex-poissonflex_eq-37654-20261025-5512bd34-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.632124,
+      "spearman": 0.181268
+     },
+     {
+      "file": "gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif",
+      "scope": "local",
+      "n_positive": 45000,
+      "binary": true,
+      "forward_overlap_within_3px": 0.687337,
+      "spearman": 0.182207
+     },
+     {
+      "file": "gemsdoe92-poissonflex-poissonflex_raw-37654-20261025-be99276b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.62591,
+      "spearman": 0.179936
+     },
+     {
+      "file": "gemsdoe92-poissonknick-pkdual40-37654-20261025-6c1bf3ba-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.58363,
+      "spearman": 0.06251
+     },
+     {
+      "file": "gemsdoe92-poissonknick-qcal-37654-20261025-9cfcc9b9-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.534923,
+      "spearman": 0.080651
+     },
+     {
+      "file": "gemsdoe92-poissonknick-uncal-37654-20261025-da9bfc4a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.559197,
+      "spearman": 0.090801
+     },
+     {
+      "file": "gemsdoe92-provincetoe-globalraw-37654-20261025-73b06876-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.604212,
+      "spearman": 0.030916
+     },
+     {
+      "file": "gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.545838,
+      "spearman": 0.022871
+     },
+     {
+      "file": "gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.554151,
+      "spearman": 0.025428
+     },
+     {
+      "file": "gemsdoe92-radiocontact-20261025T041646Z-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.134249,
+      "spearman": 0.009098
+     },
+     {
+      "file": "gemsdoe92-radiodecouple-demag-37654-20261025-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.183832,
+      "spearman": 0.007873
+     },
+     {
+      "file": "gemsdoe92-radiodecouple-dual35-37654-20261025-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.306793,
+      "spearman": 0.01685
+     },
+     {
+      "file": "gemsdoe92-radiodecouple-standalone-37654-20261025-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.150768,
+      "spearman": 0.006221
+     },
+     {
+      "file": "gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.47562,
+      "spearman": 0.036297
+     },
+     {
+      "file": "gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.494476,
+      "spearman": 0.030063
+     },
+     {
+      "file": "gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-zeros.tif",
+      "scope": "local",
+      "n_positive": 47000,
+      "binary": false,
+      "forward_overlap_within_3px": 0.54868,
+      "spearman": 0.027982
+     },
+     {
+      "file": "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.450178,
+      "spearman": 0.026893
+     },
+     {
+      "file": "h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.450178,
+      "spearman": 0.026893
+     },
+     {
+      "file": "h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.393876,
+      "spearman": 0.052893
+     },
+     {
+      "file": "h33-h33-2-b2-APRONRIDGEs50f50-20261024-2f0431ea-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.473655,
+      "spearman": 0.042184
+     },
+     {
+      "file": "h33-h33-2-b2-APRONRIDGEs60f40-20261024-6e7e0174-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.491183,
+      "spearman": 0.044848
+     },
+     {
+      "file": "h33-h33-2-b2-BASEMENTEDGEstep3-20261024-80719f12-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.060684,
+      "spearman": 0.001426
+     },
+     {
+      "file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.586843,
+      "spearman": 0.04666
+     },
+     {
+      "file": "h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.586843,
+      "spearman": 0.04666
+     },
+     {
+      "file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.582939,
+      "spearman": 0.046473
+     },
+     {
+      "file": "h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.582939,
+      "spearman": 0.046473
+     },
+     {
+      "file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.574839,
+      "spearman": 0.045621
+     },
+     {
+      "file": "h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.574839,
+      "spearman": 0.045621
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.453949,
+      "spearman": 0.036297
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBDMs35coulomb65-20261024-1091c5a7-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.500159,
+      "spearman": 0.03041
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.532374,
+      "spearman": 0.033553
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.858953,
+      "spearman": 0.201274
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBLOQOnocoulomb-20261024-ab7c4415-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.754528,
+      "spearman": 0.294805
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.879853,
+      "spearman": 0.408448
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBfree-20261024-d0cf5db5-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.19881,
+      "spearman": 0.011656
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBopen-20261024-58a7a394-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.228289,
+      "spearman": 0.016744
+     },
+     {
+      "file": "h33-h33-2-b2-COULOMBseismo-20261024-d243140b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.204255,
+      "spearman": 0.012242
+     },
+     {
+      "file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.517661,
+      "spearman": 0.042371
+     },
+     {
+      "file": "h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.517661,
+      "spearman": 0.042371
+     },
+     {
+      "file": "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.505312,
+      "spearman": 0.042637
+     },
+     {
+      "file": "h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.505312,
+      "spearman": 0.042637
+     },
+     {
+      "file": "h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.494688,
+      "spearman": 0.044235
+     },
+     {
+      "file": "h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.494688,
+      "spearman": 0.044235
+     },
+     {
+      "file": "h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.39778,
+      "spearman": 0.050656
+     },
+     {
+      "file": "h33-h33-2-b2-GEOTENSIONs50f50-20261025-caa53f9d-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.477479,
+      "spearman": 0.049723
+     },
+     {
+      "file": "h33-h33-2-b2-GEOTENSIONs60f40-20261025-ab46201e-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.486509,
+      "spearman": 0.053772
+     },
+     {
+      "file": "h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.534711,
+      "spearman": 0.038055
+     },
+     {
+      "file": "h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.534711,
+      "spearman": 0.038055
+     },
+     {
+      "file": "h33-h33-2-b2-HYDROCONDUITf45pied-20261024-3c236840-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.534711,
+      "spearman": 0.037815
+     },
+     {
+      "file": "h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.522494,
+      "spearman": 0.03667
+     },
+     {
+      "file": "h33-h33-2-b2-KNICKLOQOdual35-20261025-8eedc094-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.733521,
+      "spearman": 0.077242
+     },
+     {
+      "file": "h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.772136,
+      "spearman": 0.110328
+     },
+     {
+      "file": "h33-h33-2-b2-KNICKLOQOuncal-20261025-61b98143-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.771791,
+      "spearman": 0.110621
+     },
+     {
+      "file": "h33-h33-2-b2-LISTRICdual35-20261026-2b8b394a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.64689,
+      "spearman": 0.071354
+     },
+     {
+      "file": "h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.669039,
+      "spearman": 0.08859
+     },
+     {
+      "file": "h33-h33-2-b2-LISTRICuncal-20261026-fc9686b5-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.645961,
+      "spearman": 0.08518
+     },
+     {
+      "file": "h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21-zeros.tif",
+      "scope": "local",
+      "n_positive": 29076,
+      "binary": true,
+      "forward_overlap_within_3px": 0.315345,
+      "spearman": 0.036361
+     },
+     {
+      "file": "h33-h33-2-b2-NEOOPNSfree1d-20261025-a4c91e43-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.384713,
+      "spearman": 0.031235
+     },
+     {
+      "file": "h33-h33-2-b2-NEOOPNSs35c65-20261025-e4d82847-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.416556,
+      "spearman": 0.028039
+     },
+     {
+      "file": "h33-h33-2-b2-NEOOPNSs45c55-20261025-63d84095-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.438386,
+      "spearman": 0.031369
+     },
+     {
+      "file": "h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.409624,
+      "spearman": 0.031049
+     },
+     {
+      "file": "h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.409624,
+      "spearman": 0.031049
+     },
+     {
+      "file": "h33-h33-2-b2-PIEDFRONTf40Ptop-20261024-6b0cd56a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.390609,
+      "spearman": 0.029264
+     },
+     {
+      "file": "h33-h33-2-b2-PIEDFRONTf45Ptop-20261024-aad86ac9-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.373214,
+      "spearman": 0.026973
+     },
+     {
+      "file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.524433,
+      "spearman": 0.042264
+     },
+     {
+      "file": "h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.524433,
+      "spearman": 0.042264
+     },
+     {
+      "file": "h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.462448,
+      "spearman": 0.028758
+     },
+     {
+      "file": "h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.377091,
+      "spearman": 0.017863
+     },
+     {
+      "file": "h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.377091,
+      "spearman": 0.017863
+     },
+     {
+      "file": "h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+      "scope": "local",
+      "n_positive": 5000,
+      "binary": true,
+      "forward_overlap_within_3px": 0.035003,
+      "spearman": 0.003699
+     },
+     {
+      "file": "h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.558453,
+      "spearman": 0.040746
+     },
+     {
+      "file": "h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.529904,
+      "spearman": 0.036697
+     },
+     {
+      "file": "h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.529904,
+      "spearman": 0.036697
+     },
+     {
+      "file": "h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.478674,
+      "spearman": 0.033047
+     },
+     {
+      "file": "h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.469326,
+      "spearman": 0.026254
+     },
+     {
+      "file": "h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.287433,
+      "spearman": 0.013174
+     },
+     {
+      "file": "h33-h33-2-b2-XPHASEnophase-20261024-2159567d-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.12413,
+      "spearman": 0.003051
+     },
+     {
+      "file": "h33-h33-2-b2-XPHASEstandalone-20261024-023ac854-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.12506,
+      "spearman": 0.002465
+     },
+     {
+      "file": "GEMSDOE32__h33-2-b2-zeros.tif",
+      "scope": "lineage",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.544803,
+      "spearman": 0.038934
+     },
+     {
+      "file": "GEMSDOE28__h27-4-r1-solo-d2-8.tif",
+      "scope": "lineage",
+      "n_positive": 40199,
+      "binary": true,
+      "forward_overlap_within_3px": 0.562782,
+      "spearman": 0.037484
+     },
+     {
+      "file": "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+      "scope": "lineage",
+      "n_positive": 44090,
+      "binary": true,
+      "forward_overlap_within_3px": 0.578371,
+      "spearman": 0.035504
+     },
+     {
+      "file": "calib_h195_01922.tif",
+      "scope": "lineage",
+      "n_positive": 121131,
+      "binary": true,
+      "forward_overlap_within_3px": 0.626202,
+      "spearman": 0.062349
+     },
+     {
+      "file": "calib_d15_02477.tif",
+      "scope": "lineage",
+      "n_positive": 60069,
+      "binary": true,
+      "forward_overlap_within_3px": 0.597838,
+      "spearman": 0.040233
+     }
+    ],
+    "registry_errors": [],
+    "operative_sparse": {
+     "max_positive_pixels": 150000,
+     "rasters": 99,
+     "worst_overlap": {
+      "file": "h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.879853,
+      "spearman": 0.408448
+     },
+     "worst_abs_spearman": {
+      "file": "h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.879853,
+      "spearman": 0.408448
+     },
+     "overlap_limit": 0.7,
+     "rho_limit": 0.9,
+     "passes": false
+    },
+    "literal_positive_support": {
+     "rasters": 99,
+     "worst_overlap": {
+      "file": "h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif",
+      "scope": "local",
+      "n_positive": 37654,
+      "binary": true,
+      "forward_overlap_within_3px": 0.879853,
+      "spearman": 0.408448
+     },
+     "note": "Literal >0-support reading: dense continuous surfaces in the wider public registry (pinned full-footprint witness, docs/downloads/review_f23_preflight.json) make every non-empty candidate overlap 1.0. Reported for disclosure; operative sparse dot-field reading is the discriminating gate (see docs/HYPOTHESES_20261025_VARIO.md)."
+    }
+   }
+  },
+  "surface_preplacement": {
+   "evidence_class": "REGISTRY-MEASUREMENT",
+   "surface": "S_vario_full (deploy crest, unblurred)",
+   "method": "Spearman on deterministic stride-4 footprint subsample vs registry 0/1 support",
+   "n_points": 323245,
+   "registry_checked": 94,
+   "worst_abs_spearman": {
+    "file": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
+    "spearman": 0.137259
+   },
+   "rho_limit": 0.9,
+   "passes": true
+  }
+ },
+ "sgmc_proxy": {
+  "evidence_class": "PROXY (off-catalogue USGS SGMC bedrock faults; report-only, not a gate)",
+  "truth_pixels_after_catalogue_and_3px_exclusion": 62703,
+  "dti": {
+   "vario_full": 0.075222,
+   "vario_smooth": 0.062767,
+   "vario_nctx": 0.0869,
+   "R0_h33_2_b2": 0.09606,
+   "H19_5": 0.100603
+  }
+ },
+ "organizer_confirmed_score": null,
+ "organizer_note": "No submission-page receipt exists for any VARIO file; no ORGANIZER-CONFIRMED score is claimed. Site-inventory scores (incl. GEMSDOE32 0.2778) are CLAIMs (ledger/site_scores_claimed_20261025.csv).",
+ "packaged": {
+  "vario_full": {
+   "arm": "vario_full",
+   "file": "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif",
+   "stem": "gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros",
+   "sha256": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573",
+   "name": "GEMSDOE92-VARIO-full-20261025",
+   "note": "VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat>2",
+   "note_chars": 72,
+   "format_pass": true,
+   "gates": [
+    {
+     "name": "crs",
+     "ok": true,
+     "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+     "name": "shape",
+     "ok": true,
+     "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+     "name": "transform",
+     "ok": true,
+     "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+     "name": "dtype_and_band",
+     "ok": true,
+     "detail": "dtype=('float32',) count=1"
+    },
+    {
+     "name": "values_in_0_1",
+     "ok": true,
+     "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+     "name": "no_nan_inside_footprint",
+     "ok": true,
+     "detail": "nonfinite_pixels=0"
+    },
+    {
+     "name": "nan_outside_footprint",
+     "ok": true,
+     "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+     "name": "submission_encoding",
+     "ok": true,
+     "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+     "name": "catalogue_zero_mass",
+     "ok": true,
+     "detail": "dots_on_catalogue=0"
+    },
+    {
+     "name": "distance_from_catalogue",
+     "ok": true,
+     "detail": "radius=2px dots_within=0; strict distance > radius required"
+    },
+    {
+     "name": "reread_sha256",
+     "ok": true,
+     "detail": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573"
+    }
+   ],
+   "audit": "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros-audit.json",
+   "zip": "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.zip",
+   "zip_sha256": "563bf739a3c4aa705c36ad3e1317fffeff24acd7acb485858ba3ce2c084064df"
+  },
+  "vario_smooth": {
+   "arm": "vario_smooth",
+   "file": "docs/downloads/gemsdoe92-vario-smooth-37654-20261025-5c5a1192-zeros.tif",
+   "stem": "gemsdoe92-vario-smooth-37654-20261025-5c5a1192-zeros",
+   "sha256": "bbac894d81f0d9be6d122dc2713def24f45c5e62a8ef43b8b6d4f3587151692b",
+   "name": "GEMSDOE92-VARIO-smooth-20261025",
+   "note": "VARIO smooth: vario_full proba, crest blurred s1.85px; 37654 dots 2.8px",
+   "note_chars": 71,
+   "format_pass": true,
+   "gates": [
+    {
+     "name": "crs",
+     "ok": true,
+     "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+     "name": "shape",
+     "ok": true,
+     "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+     "name": "transform",
+     "ok": true,
+     "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+     "name": "dtype_and_band",
+     "ok": true,
+     "detail": "dtype=('float32',) count=1"
+    },
+    {
+     "name": "values_in_0_1",
+     "ok": true,
+     "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+     "name": "no_nan_inside_footprint",
+     "ok": true,
+     "detail": "nonfinite_pixels=0"
+    },
+    {
+     "name": "nan_outside_footprint",
+     "ok": true,
+     "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+     "name": "submission_encoding",
+     "ok": true,
+     "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+     "name": "catalogue_zero_mass",
+     "ok": true,
+     "detail": "dots_on_catalogue=0"
+    },
+    {
+     "name": "distance_from_catalogue",
+     "ok": true,
+     "detail": "radius=2px dots_within=0; strict distance > radius required"
+    },
+    {
+     "name": "reread_sha256",
+     "ok": true,
+     "detail": "bbac894d81f0d9be6d122dc2713def24f45c5e62a8ef43b8b6d4f3587151692b"
+    }
+   ],
+   "audit": "docs/downloads/gemsdoe92-vario-smooth-37654-20261025-5c5a1192-zeros-audit.json",
+   "zip": "docs/downloads/gemsdoe92-vario-smooth-37654-20261025-5c5a1192-zeros.zip",
+   "zip_sha256": "582c1511f031506c895f6f765e36b768b75756f5a0ddfda9e33ade5ff9b52c38"
+  },
+  "vario_nctx": {
+   "arm": "vario_nctx",
+   "file": "docs/downloads/gemsdoe92-vario-nctx-37654-20261025-d2d499d5-zeros.tif",
+   "stem": "gemsdoe92-vario-nctx-37654-20261025-d2d499d5-zeros",
+   "sha256": "0ccc1e91db8fac33a225d75f107e612e75db15a5c8c2672ca60da29e2d364d1c",
+   "name": "GEMSDOE92-VARIO-nctx-20261025",
+   "note": "VARIO nctx: 24phys+semivar+MTcp+topo10 LOQO no ctx; 37654 dots 2.8px",
+   "note_chars": 68,
+   "format_pass": true,
+   "gates": [
+    {
+     "name": "crs",
+     "ok": true,
+     "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+     "name": "shape",
+     "ok": true,
+     "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+     "name": "transform",
+     "ok": true,
+     "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+     "name": "dtype_and_band",
+     "ok": true,
+     "detail": "dtype=('float32',) count=1"
+    },
+    {
+     "name": "values_in_0_1",
+     "ok": true,
+     "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+     "name": "no_nan_inside_footprint",
+     "ok": true,
+     "detail": "nonfinite_pixels=0"
+    },
+    {
+     "name": "nan_outside_footprint",
+     "ok": true,
+     "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+     "name": "submission_encoding",
+     "ok": true,
+     "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+     "name": "catalogue_zero_mass",
+     "ok": true,
+     "detail": "dots_on_catalogue=0"
+    },
+    {
+     "name": "distance_from_catalogue",
+     "ok": true,
+     "detail": "radius=2px dots_within=0; strict distance > radius required"
+    },
+    {
+     "name": "reread_sha256",
+     "ok": true,
+     "detail": "0ccc1e91db8fac33a225d75f107e612e75db15a5c8c2672ca60da29e2d364d1c"
+    }
+   ],
+   "audit": "docs/downloads/gemsdoe92-vario-nctx-37654-20261025-d2d499d5-zeros-audit.json",
+   "zip": "docs/downloads/gemsdoe92-vario-nctx-37654-20261025-d2d499d5-zeros.zip",
+   "zip_sha256": "6e269f8074c4f404188612a128abc19f3f1a7d6cac3cd6353b5603ea92b944a1"
+  }
+ },
+ "raster_sha256": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573",
+ "submission_file": "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif",
+ "submission_name": "GEMSDOE92-VARIO-full-20261025",
+ "note": "VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat>2",
+ "note_chars": 72,
+ "validator_output": [
+  {
+   "name": "crs",
+   "ok": true,
+   "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+  },
+  {
+   "name": "shape",
+   "ok": true,
+   "detail": "reference=3730x3292 candidate=3730x3292"
+  },
+  {
+   "name": "transform",
+   "ok": true,
+   "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+  },
+  {
+   "name": "dtype_and_band",
+   "ok": true,
+   "detail": "dtype=('float32',) count=1"
+  },
+  {
+   "name": "values_in_0_1",
+   "ok": true,
+   "detail": "n_violations=0 min=0.0 max=1.0"
+  },
+  {
+   "name": "no_nan_inside_footprint",
+   "ok": true,
+   "detail": "nonfinite_pixels=0"
+  },
+  {
+   "name": "nan_outside_footprint",
+   "ok": true,
+   "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+  },
+  {
+   "name": "submission_encoding",
+   "ok": true,
+   "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+  },
+  {
+   "name": "catalogue_zero_mass",
+   "ok": true,
+   "detail": "dots_on_catalogue=0"
+  },
+  {
+   "name": "distance_from_catalogue",
+   "ok": true,
+   "detail": "radius=2px dots_within=0; strict distance > radius required"
+  },
+  {
+   "name": "reread_sha256",
+   "ok": true,
+   "detail": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573"
+  }
+ ],
+ "format_pass": true,
+ "gates": {
+  "format": true,
+  "canary": true,
+  "holdout_beats_best_control": false,
+  "operative_uniqueness": false
+ },
+ "blocking_reasons": [
+  "paired HOLDOUT-DTI delta vs best control control_FAULTNET_far = -0.025127 CI [-0.029305915361244498, -0.02084222808563093] (must exclude 0)",
+  "operative sparse-registry uniqueness failed (overlap>0.70 or |rho|>0.90)"
+ ],
+ "verdict": "negative",
+ "submission_eligible": false,
+ "selector_note": "Promotion (if any) means eligible for the separate selector step within the verified weekly cap on the DrivenData submission page; this session spent 0 slots and does not select a slot (protocol rule 6).",
+ "input_sha256": {
+  "sample_submission": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+  "labels": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+  "training_features": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+  "topo_10m": "a6398d9950965dec6aae6ccecdaa6ced48645d133eab222cbdd11def9bdabfa4"
+ },
+ "generated_utc": "2026-10-25T17:39:26.606651+00:00",
+ "runtime_s": 135.0
+}
