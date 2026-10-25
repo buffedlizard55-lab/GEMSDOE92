@@ -1,0 +1,109 @@
+{
+  "schema": "gemsdoe92-listricdip-audit.v1",
+  "file": "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif",
+  "sha256_zeros": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
+  "sha256_nan": null,
+  "n_dots": 37654,
+  "n_positive_pixels": 37654,
+  "overall_pass": true,
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e"
+    }
+  ],
+  "gates_zeros_pass": true,
+  "gates_nan": [],
+  "gates_nan_pass": false,
+  "submission_eligible": false,
+  "verdict": "negative",
+  "note": "LISTRICDIP updip50: 37654 listric-offset dots; HOLDOUT-DTI 0.005420; negative",
+  "submission_name": "GEMSDOE92-LISTRICDIP-updip50-20261025",
+  "run_card": "evidence/listricdip_run_card.json",
+  "generated_utc": "2026-10-25T14:26:39.749646+00:00",
+  "local_registry_uniqueness": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "n_checked": 110,
+    "n_errors": 0,
+    "worst_forward_overlap": 0.19684495671110638,
+    "worst_forward_file": "docs/downloads/h33-h33-2-b2-COULOMBseismo-20261024-d243140b-zeros.tif",
+    "worst_abs_spearman": 0.05288886833577749,
+    "worst_spearman_file": "docs/downloads/h33-h33-2-b2-NEOOPNSfree1d-20261025-a4c91e43-zeros.tif",
+    "duplicate": false
+  },
+  "public_registry_uniqueness": {
+    "candidate_hash_matches_scan": true,
+    "candidate_sha256_zeros": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "witness_evidence": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "witness_repo": "buffedlizard55-lab/17GEMSDOE",
+      "witness_path": "docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "witness_commit": "6fc71d19d49dca4960d5434bd81b6dd06fcc030a",
+      "witness_git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "grid_match": true,
+      "positive_in_footprint": 5167373,
+      "footprint_pixels": 5167373,
+      "covers_entire_footprint": true,
+      "forward_overlap_3px": 1.0,
+      "unique_under_literal_rule": false,
+      "stop_required": true,
+      "scope": "Single pinned dense witness. Rejection only. Not a 102-repo clearance."
+    },
+    "scope": "Single pinned dense witness. Rejection only. Not a 102-repo clearance.",
+    "worst_forward_overlap": 1.0
+  }
+}
