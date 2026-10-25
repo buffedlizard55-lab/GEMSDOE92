@@ -12,6 +12,7 @@
 > - **Measured `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives):** **`0.009220 [0.007983, 0.010493]`** static (`0.009689` strict draw-blind `d_cat > 2.0`) and **`0.113316 [0.100614, 0.127163]`** strict Rule-2 unmasked `d_visible > 2.0` (`+0.016559 [+0.008170, +0.024980]` paired over `H19-5` `0.096757`). Local `HOLDOUT-DTI` is **not** an `ORGANIZER-CONFIRMED` competition score.
 > - **Uniqueness & Stop Gate:** Locally unique against every repository raster (`worst 3-px overlap = 0.6164 <= 0.70`, `|Spearman| <= 0.1593 <= 0.90`). Blocked solely by the literal public dense witness `17GEMSDOE E-proba-multiscale` (`5,167,373` positive footprint cells → `1.000` forward overlap; [1,368-raster public scan](docs/downloads/coulomb_loqo_public_registry_uniqueness.json) · [Run Card](docs/downloads/coulomb_loqo_run_card.json)). **0 weekly slots spent.**
 > - **Workbench & Analysis:** [Main Workbench](docs/index.html) · [Executive Summary](docs/executive-summary.html) · [Submission Guide](docs/SUBMIT.html) · [Pre-Registered Hypotheses](docs/HYPOTHESES_20261024_COULOMBLOQO.md) · [PhD Analysis](docs/ANALYSIS_20261024_COULOMBLOQO.md)
+> - **Latest three-pass repository review (2026-10-24):** [Findings, ranked future hypotheses, verified checks and limitations](docs/REVIEW_20261024_ARENA.md) · [JSON run card](evidence/arena_review_run_card_20261024.json). No new TIF was generated: the literal public-registry duplicate stop is binding.
 
 ## Prior/parallel candidate summary & full technical reference
 
