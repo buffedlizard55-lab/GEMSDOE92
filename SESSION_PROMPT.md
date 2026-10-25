@@ -1,3 +1,9 @@
+## Current session addendum — 2026-10-25 (leaderboard research, branch `arena/09f84f2f-gemsdoe92`)
+
+Read `docs/ANALYSIS_20261025_LEADERBOARD.md` first. Facts established this session: the live DrivenData top score is `0.4413` (#1 xiaofanhu, not a GEMSDOE entry); `0.3195` is not on the top-50 snapshot; `0.2778` (GEMSDOE32) remains `CLAIM receipt=N`. The official rules (NLR PDF, Sept 2026) allow three submissions per week and require one final selection. The shared metric matches an independent naive implementation of the official equations (`tests/test_metric_independent.py`). The fresh witness audit re-confirms the literal universal stop (`evidence/readiness_20261025_leaderboard.json`). Five hypotheses are pre-registered in `docs/HYPOTHESES_20261025_LEADERBOARD.md`; none is built. Experiments used: 0 of 3. The blocking decision (dense-witness policy) is recorded in the analysis, §5. Do not place dots until that decision is made.
+
+---
+
 ## Current review addendum — 2026-10-25 (`797e507a`)
 
 Read `docs/REVIEW_797E507A.md` before older session-result addenda. This review generated no new TIFF and used no experiment or slot: a fresh pinned universal registry witness requires a stop. Preserve literal overlap, not matched-budget reinterpretations. The existing LISTRICDIP primary inherited from parallel main is research-only. Three public entry pages must have the generated authoritative status first; CI/Pages check byte pins and ordering. The unique-TIF objective remains unfulfilled. Persistent requirements in this file and the README are a normalized operating brief, not a verbatim user-message archive.

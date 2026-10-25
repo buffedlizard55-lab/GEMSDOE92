@@ -1198,3 +1198,15 @@ Preserved LISTRICDIP research outputs; freshly validated its newly declared prim
 - Fresh hash-pinned witness again proves universal literal overlap stop. No new TIFF, canary or holdout was generated; unique-submission objective remains unmet. This review does not waive the rule, redefine “dots,” or spend a slot.
 - README future-dated/history banners are now collapsed after the durable operating brief. Main site header no longer asserts an unverified live weekly cap, stale gate count or guaranteed portal acceptance. Existing historical research reports remain unchanged.
 - GitHub Pages GET now reports `built` but still `legacy`, `main:/`. Enabling workflow publishing again returns HTTP 403 `Resource not accessible by integration`. A built legacy page is not proof of validator-gated publication. Details and source links: `docs/REVIEW_7059163E.md`; fresh machine evidence: `docs/downloads/review705_run_card.json`.
+
+## 2026-10-25 — leaderboard research session (branch arena/09f84f2f-gemsdoe92)
+
+- **IR-25-A `0.3195` not on the live board:** the DrivenData leaderboard (top 50, fetched 2026-10-25) contains no `0.3195`; neighbours are `0.3217` (#23) and `0.3169` (#24). Source: https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/
+- **IR-25-B `0.4413` is not a GEMSDOE score:** it is xiaofanhu's public #1 score on the same page.
+- **IR-25-C all GEMSDOE scores are CLAIM:** every GEMSDOE value in the repository (including `0.2778`) has `receipt=N`. None is an organizer receipt.
+- **IR-25-D literal stop reconfirmed fresh:** `scripts/audit_readiness.py --fetch-witness` → CONFIRMED DUPLICATE STOP (exit 1), receipt `evidence/readiness_20261025_leaderboard.json`. Blocks every nonempty in-footprint candidate. Decision needed: `docs/ANALYSIS_20261025_LEADERBOARD.md` §5.
+- **IR-25-E forensic cross-check field:** `evidence/r0_forensics_20261024.json` holds `"expected": 0` beside the official worked example, which evaluates to 0.6027. Left unchanged; flagged here.
+- **IR-25-F off-catalogue proxy does not confirm the R0 mechanism:** R0 SGMC proxy `0.09606` < H19-5 `0.10060`. The `0.2778` explanation is therefore unconfirmed.
+- **IR-25-G organizer `known` mask unverified:** `vendor/gems57/metric.py` takes a `known` argument citing an organizer thread that is not in any official page read this session.
+- **IR-25-H rules link not read:** the herox rules link (https://www.herox.com/GEMSPrize/resource/2274) was not read; the NLR PDF (https://docs.nlr.gov/docs/fy26osti/96647.pdf) was read instead.
+- **IR-25-I 1 m DEM and ComCat unreachable from sandbox:** H4/H5 in `docs/HYPOTHESES_20261025_LEADERBOARD.md` are blocked on external data that the allowlist does not reach.

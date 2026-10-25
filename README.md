@@ -487,6 +487,19 @@ Study GEMSDOE32 (h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros: 0.2778): why and 
 </details>
 
 
+## Session 2026-10-25 — leaderboard research: decision and links
+
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new submission-eligible TIFF was generated. The binding literal dense-witness stop was re-confirmed from a sha-pinned GitHub blob (exit 1, [receipt](evidence/readiness_20261025_leaderboard.json)). A policy decision is needed before any candidate can be cleared: [analysis §5](docs/ANALYSIS_20261025_LEADERBOARD.md).
+
+- **Why `0.2778` (GEMSDOE32) is a CLAIM, not a receipt, and what the forensic evidence supports:** [analysis §1–3](docs/ANALYSIS_20261025_LEADERBOARD.md).
+- **Live leaderboard (fetched 2026-10-25):** #1 `0.4413` (xiaofanhu, not a GEMSDOE entry); `0.3195` is not on the top-50 snapshot. [Leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/).
+- **Official rules read this session:** three submissions per week, one final selection, generative-AI disclosure, and human judging by DOE. [NLR Official Rules PDF](https://docs.nlr.gov/docs/fy26osti/96647.pdf).
+- **Metric verified:** the shared evaluator matches an independent naive implementation of the official equations to `2.2e-16`. Regression test: `tests/test_metric_independent.py`.
+- **Ranked pre-registered hypotheses (none built or scored):** [docs/HYPOTHESES_20261025_LEADERBOARD.md](docs/HYPOTHESES_20261025_LEADERBOARD.md). Top candidate: phase congruency on the RTP band (H1), not yet built because the stop precedes placement.
+- **Run card (values computed from files):** [evidence/leaderboard_session_20261025_run_card.json](evidence/leaderboard_session_20261025_run_card.json). Current research download validates on every automated format gate.
+- **Irregularities for review:** [IRREGULARITIES.md](IRREGULARITIES.md) (2026-10-25 section, IR-25-A to IR-25-I).
+- **Budget used:** 0 of 3 experiments, 0 weekly slots.
+
 ## Additional parallel research records (not rerun in review797e)
 
 Main `d6f7ac0` added [RADIODECOUPLE](docs/ANALYSIS_20261025_RADIODECOUPLE.md) and [CURIE-DEMAG](docs/ANALYSIS_20261026_CURIEDEMAG.md) research artifacts. Their original run cards and code are preserved. These do not override the literal stop or constitute experiments run in this review. CURIE-DEMAG names are future-dated relative to this review; use receipt hashes and actual verification timestamps.
