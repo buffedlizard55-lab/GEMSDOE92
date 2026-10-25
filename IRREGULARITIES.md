@@ -994,3 +994,13 @@ Pages closeout for session 918b947a: `PUT /repos/buffedlizard55-lab/GEMSDOE92/pa
 ### 5. `#IR-92-PUBLIC-SMOKE-INVALID-TIFF`: Truncated `110`-Byte `GEMSDOE63/docs/downloads/smoke.tif` in Live 102-Repo Scan
 - **Observation**: Live 102-repo GitHub API scan (`1,750` TIFF paths, `1,376` unique blobs; `evidence/coulombdm_public_registry_uniqueness.json`) identified `buffedlizard55-lab/GEMSDOE63` `docs/downloads/smoke.tif` (`89ffb2d6...`, `110 B`) as a truncated smoke fixture (`1,370` valid `3730×3292` rasters compared cleanly with `0` download failures).
 
+
+
+## Review 1f514ffc — 2026-10-25
+
+- Fresh pinned preflight reproduces universal literal overlap stop; no new TIFF generated. This remains an unmet user deliverable, not an eligible submission.
+- No single assigned method paragraph appears in this prompt; no geological lane was invented or tested.
+- Shared Pages checker guessed a primary from link order when the explicit marker was absent, unlike CI. Fixed to require one explicit local primary and reject ambiguous attributes; regression tests added.
+- Pages API still reports legacy build mode. Actions validation is not a verified guard on public publication in that mode. No current organizer leaderboard/weekly cap/receipt verified.
+- Initial regression run exposed a fixture relying on implicit primary selection. Updated that fixture to mark the primary explicitly, retaining its missing-receipt assertion; final suite passes.
+- See `docs/REVIEW_1F514FFC.md` and `evidence/review_1f514ffc_run_card.json`.

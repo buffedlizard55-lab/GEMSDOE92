@@ -1,0 +1,67 @@
+{
+  "schema": "gemsdoe92-review-run-card-v1",
+  "session": "1f514ffc",
+  "hypothesis": "Validation-only review: the pinned dense witness forces a literal overlap stop for any nonempty candidate.",
+  "mechanism": "Positive registry support covers the entire pinned footprint; no geological surface or placement can escape the literal forward-overlap rule.",
+  "named_non_fault_process_that_could_mimic_it": "Dense probability support is a representation artifact, not a tectonic signal; conditional geological hypotheses include stream capture, lava-flow contacts and paleoshorelines as mimics.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "status": "not run; stopped before candidate construction",
+    "evaluator_version": null,
+    "withheld_positives": null,
+    "value": null,
+    "ci95": null
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "One hash-pinned witness, not a full registry scan",
+    "preplacement_universal_overlap": 1.0,
+    "existing_primary_overlap_3px": 1.0,
+    "existing_primary_spearman": 0.04724711160801543,
+    "new_candidate_surface_correlation": null,
+    "new_candidate_final_dots": null,
+    "stop_required": true
+  },
+  "raster_sha256": null,
+  "existing_primary_sha256": "44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12",
+  "validator": {
+    "new_raster": "not generated",
+    "existing_primary": {
+      "all_finite": true,
+      "no_nan_inside_footprint": true,
+      "values_in_0_1": true,
+      "crs_shape_transform_match": true,
+      "zero_outside": true
+    },
+    "served_rasters_format_pass": 43
+  },
+  "submission_name": "GEMSDOE92-review-1f514ffc-20261025-NO-SUBMISSION",
+  "submission_note": "Validation-only: dense registry witness forces duplicate stop. No new TIFF or holdout; DO NOT SUBMIT.",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "new_tif_generated": false,
+  "experiments": 0,
+  "weekly_slots_used": 0,
+  "software_validation": {
+    "tests_passed": 289,
+    "warnings": 124,
+    "site_check": "PASS",
+    "manifest": "PASS",
+    "parent": "PASS",
+    "ledger": "PASS"
+  },
+  "pages": {
+    "observed_build_type": "legacy",
+    "actions_gated_publication_verified": false
+  },
+  "evidence": [
+    "review_1f514ffc_preflight.json",
+    "review_1f514ffc_primary.json"
+  ],
+  "limitations": [
+    "New unique submission requirement remains unfulfilled under binding duplicate stop.",
+    "No assigned single method paragraph in supplied prompt.",
+    "No authenticated DrivenData session or organizer receipt.",
+    "Non-GitHub research sources cannot be live verified here."
+  ]
+}

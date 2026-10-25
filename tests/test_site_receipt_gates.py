@@ -60,3 +60,32 @@ def test_pages_stages_public_files_without_breaking_existing_docs_urls():
     assert 'cp -R docs .cache/pages/docs' in workflow
     assert 'path: .cache/pages' in workflow
     assert 'path: .' not in workflow.replace('path: .cache/pages', '')
+
+
+@pytest.mark.parametrize('html', [
+    '<a href="downloads/a-zeros.tif">first link is not an explicit primary</a>',
+    '<a data-primary="true" href="downloads/a-zeros.tif"></a>' * 2,
+    '<a data-primary="true" href="https://example.org/a-zeros.tif"></a>',
+    '<a data-primary="true" href="downloads/../a-zeros.tif"></a>',
+    '<a data-primary="true" href="downloads/a-zeros.tif" href="evil.tif"></a>',
+    '<a data-primary="true" data-primary="false" href="downloads/a-zeros.tif"></a>',
+    '<div data-primary="true" href="downloads/a-zeros.tif"></div>',
+    '<a data-primary="true"></a>',
+    '<a data-primary="true" href></a>',
+])
+def test_primary_cannot_be_guessed_or_ambiguous(html):
+    from scripts.check_site import primary_download
+    problems = []
+    assert primary_download(html, problems) is None
+    assert problems
+
+
+@pytest.mark.parametrize('html', [
+    '<a href="downloads/a-zeros.tif" data-primary="true">Download</a>',
+    "<a data-primary='true' href='downloads/a-zeros.tif'>Download</a>",
+])
+def test_explicit_primary_is_independent_of_attribute_order_and_quotes(html):
+    from scripts.check_site import primary_download
+    problems = []
+    assert primary_download(html, problems) == 'downloads/a-zeros.tif'
+    assert not problems

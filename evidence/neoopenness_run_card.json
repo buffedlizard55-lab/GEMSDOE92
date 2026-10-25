@@ -1,0 +1,55 @@
+{
+  "schema": "gemsdoe92-protocol-run-card.v1",
+  "lane": "NEO-OPNS",
+  "primary_variant": "s45c55",
+  "file": "h33-h33-2-b2-NEOOPNSs45c55-20261025-63d84095-zeros.tif",
+  "raster_sha256": "067629a0c104a7638002c2e81165c34578a8e0cca04dcd2ba52e50b3a2f0f17d",
+  "submission_name": "GEMSDOE92-NEOOPNS-s45c55-20261025",
+  "note": "h33-h33-2-b2; NEO-OPNS s45c55: 16944 H19 + 20710 far TPI-curvature ridges >3px H19-5",
+  "experiments_used": 3,
+  "leakage_canary_max_symmetric_auc": 0.614188,
+  "hypothesis": "Low-angle Quaternary piedmont scarps via TPI-curvature openness: TPI_500 \u00d7 LoG curvature \u00d7 log-slope break \u00d7 coherence \u00d7 thin-cover habitat (120 m) \u00d7 K/Th gradient \u00d7 geothermal boost, placed on 1D NMS crests >3px off H19-5.",
+  "mechanism": "Surface S = pct(|TPI|\u00b7|\u03ba|)*coh*(0.6*pct(||grad log(slope+1)||)+0.4)*H_apron(120m)*(0.5+0.5*pct(||grad K/Th||))*geo_boost; spaced_top_mask 2.8 px isolates linear scarps; exact DTI greedy repacks H19-5 into piedmont corridors.",
+  "named_non_fault_process_that_could_mimic_it": "Lake Lahontan strandlines (constant-elevation TPI dipoles), alluvial-fan lobe boundaries, dune slip-faces, and anthropogenic grades.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.007478829734988225,
+    "ci95": [
+      0.006350762294357786,
+      0.008718321531834437
+    ],
+    "paired_vs_R0": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.003472682560303482,
+      "ci95": [
+        0.0025195539050660264,
+        0.0044345444069743434
+      ],
+      "withheld_positive_pixels": 22663
+    }
+  },
+  "sgmc_proxy": 0.089942,
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "n_local_rasters_checked": 77,
+    "worst_forward_overlap": 0.774579,
+    "worst_forward_file": "downloads/h33-h33-2-b2-APRONRIDGEs50f50-20261024-2f0431ea-zeros.tif",
+    "worst_abs_phi": 0.417196,
+    "local_duplicate": true,
+    "witness_forward_overlap": null,
+    "unique_under_literal_rule": null
+  },
+  "validator": {
+    "gates_zeros_pass": true,
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "n_dots": 37654
+  },
+  "verdict": "negative",
+  "submission_eligible": false,
+  "verdict_detail": "Format-valid research download; HOLDOUT-DTI 0.007479 CI [0.006350762294357786, 0.008718321531834437]; locally unique worst_fwd 0.774579 <=0.70 but dense public witness forces 1.0 overlap => submission_eligible false; DO NOT SUBMIT."
+}
