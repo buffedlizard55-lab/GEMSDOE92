@@ -1,3 +1,26 @@
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`CHILISTRIC` Session)
+
+## Completed this session (`CHILISTRIC`: Sub-Pixel USGS 3DEP `10 m` Scarp + Fluvial `chi` + Depth-Adaptive Listric Projection + Sinter/2 m-Probe Fault-Valve Conduits + Non-Diluting Additive Secondary Crest Recall)
+
+1. **Executed Prior-Session Priorities (`LISTRICLOQO` Priorities #2 & #3 + Line-by-Line Forensic Audit):**
+   - Replaced constant `3.6–5.2 px` updip listric projection with depth- & tilt-adaptive shift $s_{\text{adapt}}(x) \in [1.80, 6.20]\text{ px}$ (`f37_adapt_listric_updip_ramp`), integrated the SHA-256-verified sub-pixel USGS 3DEP `10 m` scarp morphology (`topo_10m_derived_100m_u8.tif`, `9` bands) + `10 m` fluvial `chi`/`k_sn` steps (`dem10_chi_100m_i16.tif`, `5` bands) + `195` tufa-excluded hydrothermal sinter vents (`paleo_geothermal_regional.zip`) + `709` anomalous `2 m` temperature probes (`2m_temperature_probe_INGENIOUS_regional_data.zip`) + `4,798` thermal springs/wells (`gdr_wellspring_in_footprint.csv`, `dist_known_fault_px` dropped) + Grauch `TMI_up150 - RTP` magnetite-destruction residual (`geodawn_extensions_u8.tif`, `4` bands) in `gems/chilistric.py` (`44/44` Rule-4 leakage canaries PASS, `max symmetric AUC = 0.617275 <= 0.90`).
+   - Caught and fixed eight fabricated SHA-256 digests and three wrong band numbers in `docs/ANALYSIS_20261025_LISTRICLOQO.md`, corrected hallucinated `labels.tif` pixel counts (`191,829 -> 60,988`) and `SOLO` algebra in `docs/ANALYSIS_20261025_VENTSCARP.md`, and logged `gems/ventscarp.py` Band 3 / Band 18 misreads in `IRREGULARITIES.md`.
+2. **Completed 3/3 Pre-Registered Experiments (`docs/HYPOTHESES_20261025_CHILISTRIC.md`, `evidence/chilistric_run_card.json`, `docs/ANALYSIS_20261025_CHILISTRIC.md`, `0` weekly slots spent):**
+   - **Primary `CHILISTRIC addtail52k`** (`docs/downloads/h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.tif`, SHA-256 `75fcc743420f817d841b9f822e82bf4e63c850ede29e0e2d75e54b26603acf50`, `52,000` crests = `37,654 @ 1.0` + `14,346 @ 0.65`, `11/11` format gates PASS):
+     - **Strict Draw-Blind OOF `d_cat > 2.0` `HOLDOUT-DTI` (`#1 ALL-TIME in GEMSDOE92`)**: **`0.013208 [0.011537, 0.014860]`** (surpassing `LISTRICLOQO standalone` `0.013064`/`0.013158` and `selectcal` `0.012952`/`0.013054`).
+     - **Independent Off-Catalogue `USGS SGMC` (`d_cat > 3.0`) `PROXY` DTI (`#1 Zero-Cat Crest`)**: **`0.113149`** (`+9.4%` over `LISTRICLOQO selectcal` `0.103442`, `+17.3%` over `adapt37k` `0.096493`, `+17.8%` over `R0` `0.096060`).
+     - **Static `d_cat > 2.0` `HOLDOUT-DTI`**: **`0.013174 [0.011583, 0.014730]`** (paired vs `no10m_fixed` `+0.000968 [+0.000146, +0.001793]`; paired vs `adapt37k` `+0.000557 [+0.000253, +0.000869]`; paired vs `KNICKLOQO` `+0.002386 [+0.001304, +0.003310]`; statistically tied with `LISTRICLOQO selectcal` `0.013295` at `-0.000122 [-0.000832, +0.000602]`).
+     - **Public `102`-Repo (`1,503`-Raster) Operational Uniqueness**: **`0 / 1,503` rasters `> 0.70`** (max **`0.635115 <= 0.70`**, `6.7×` wider safety margin than `LISTRICLOQO selectcal` `0.690259`); fail-closed `verdict = "negative"`, `submission_eligible = false` under binding literal `17GEMSDOE` dense witness (`1.0000 > 0.70`).
+
+## Highest-P(Win) next actions (in order)
+1. **Unify `LISTRICLOQO selectcal` Primary `37,654` Unit Crests (`1.0`) + `CHILISTRIC` Sub-Pixel `10 m` / Fluvial-`chi` / Sinter Additive Secondary Tail (`+14,000 @ 0.65`, `min_dist >= 4.35 px`):**
+   - By fractional-linear monotonicity of Tversky DTI (`docs/ANALYSIS_20261025_CHILISTRIC.md` §1.2.4), preserving `LISTRICLOQO selectcal`'s exact `37,654` unit crests (`0.013295` static) and appending `CHILISTRIC`'s non-overlapping sub-pixel/sinter secondary crests at `0.65` retains `100%` of `LISTRICLOQO`'s primary `TP` while adding `+0.00056` secondary recall (`expected static ~0.0138+`, `expected draw-blind OOF ~0.0136+`) AND widening `LISTRICLOQO`'s operational uniqueness margin from `0.6903` down to `~0.63 <= 0.70`.
+2. **Human Selector Governance & First `ORGANIZER-CONFIRMED` Anchor:**
+   - Have the human selector ratify `dual_reading_decision` over the degenerate `5,167,373`-px `17GEMSDOE` continuous raster in `vendor/gems57/uniqueness.py` and submit **one** top candidate to DrivenData #306 to record the repository's first `ORGANIZER-CONFIRMED` receipt in `ledger/submissions.csv`.
+3. **Outside-Sandbox Mirroring of Relocated Microseismicity (`UNR NSL` / `USGS ComCat`) & `ARIA/OPERA` Sentinel-1 InSAR:**
+   - Stage SHA-256-pinned `EPSG:32611` (`3730 × 3292`) rasters of relocated Great Basin microseismicity and Sentinel-1 phase-gradient coherence into a `buffedlizard55-lab` GitHub release so sandboxed lanes can close the sub-pixel / aseismic gap toward `0.4413`.
+
+---
 # Next Steps — GEMSDOE92 (Updated 2026-10-25, Post-FLEXMAG Session)
 
 ## Completed this session (FLEXMAG — blind-fault flexure hinge × magnetic ASA)

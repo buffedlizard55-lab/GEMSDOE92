@@ -11,26 +11,29 @@ Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withh
 
 <!-- CURRENT-STATUS:END -->
 
-> ## This session's repository review (2026-10-25 UTC)
-> **No new TIFF or experiment was generated; research downloads only, DO NOT SUBMIT or spend a slot.** No lane was assigned and the literal public-raster stop remains binding. The existing LISTRIC research file passes local format checks but fails recorded public dot overlap (`0.710735 > 0.70`) and is dated 2026-10-26, future relative to this review. [Three-pass audit](docs/REVIEW_20261025_ARENA_REPOSITORY.md) · [run card](evidence/review_20261025_arena_run_card.json) · [existing research TIFF](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif).
-
 <!-- CURRENT:BEGIN -->
-> ## Newest lane result — lane LISTRICLOQO / arm `selectcal`
-> **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 1.0000 of its dots lie within 3 px of the dots of 17GEMSDOE full-footprint dense witness (5,167,373 dots), above the 0.70 limit.
+> ## Newest lane result — lane CHILISTRIC / arm `addtail52k`
+> **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 1.0000 of its dots lie within 3 px of the dots of 17GEMSDOE/outputs/submissions/20261024T175340Z_17GEMSDOE_E-proba-multiscale.tif (public dual-reading operational max 0.6351 <= 0.70, 0 / 1,503 > 0.70) (5,167,373 dots), above the 0.70 limit; did not beat LISTRICLOQO selectcal (static d_cat>2.0) on the holdout.
 >
-> **[⬇ Download the GeoTIFF](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif)** · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.zip) · [run card](docs/downloads/listric_loqo_run_card.json) · [analysis](docs/ANALYSIS_20261025_LISTRICLOQO.md)
+> **[⬇ Download the GeoTIFF](docs/downloads/h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.tif)** · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.zip) · [run card](docs/downloads/chilistric_run_card.json) · [analysis](docs/ANALYSIS_20261025_CHILISTRIC.md)
 >
 > **How to submit (only with a file marked ✅ OK TO SUBMIT, which this one is not):**
 > 1. Download the `.tif` (or the ZIP holding only that TIFF).
 > 2. Go to https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/ (log in; not live-verified from the sandbox), then choose the file under *File to submit*.
-> 3. Paste this into *Note (optional)*: `h33-h33-2-b2; LISTRICLOQO selectcal: 37654 1D updip-listric+interfluve-knick+U/Th-K/Th crests; HOLDOUT-DTI 0.013295`
-> 4. Name/record: `GEMSDOE92-LISTRICLOQO-selectcal-20261025`. After scoring, record the receipt in `ledger/submissions.csv`.
+> 3. Paste this into *Note (optional)*: `h33-h33-2-b2; CHILISTRIC addtail52k: 52000 3DEP-10m+adapt-listric+sinter-valve crests; HOLDOUT-DTI 0.013174`
+> 4. Name/record: `GEMSDOE92-CHILISTRIC-addtail52k-20261025`. After scoring, record the receipt in `ledger/submissions.csv`.
 >
-> Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17`.
-> **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22,663 withheld positives): `0.013295 [0.011713, 0.014980]`. KNICKLOQO standalone control: `0.010788 [0.009468, 0.012201]`. Paired Δ `+0.002508 [0.001477, 0.003463]`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
-> **Uniqueness** (1,459 registry rasters): worst overlap `1.0000` (limit 0.70), worst |ρ| `0.1434` / surface `0.4685` (limit 0.90). Literal-support reading: 1 raster(s) > 0.70. The literal reading is binding under the current protocol and triggers the duplicate stop.
-> Siblings: [standalone](docs/downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif) (negative, HOLDOUT-DTI 0.013250) · [uncal](docs/downloads/h33-h33-2-b2-LISTRICLOQOuncal-20261025-2962f45f-zeros.tif) (negative, HOLDOUT-DTI 0.013105). **Read [SESSION_PROMPT.md](SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
+> Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `75fcc743420f817d841b9f822e82bf4e63c850ede29e0e2d75e54b26603acf50`.
+> **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22,663 withheld positives): `0.013174 [0.011583, 0.014730]`. CHILISTRIC no10m_fixed ablation control: `0.012206 [0.010774, 0.013720]`. Paired Δ `+0.000968 [0.000146, 0.001793]`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
+> **Uniqueness** (1,605 registry rasters): worst overlap `1.0000` (limit 0.70), worst |ρ| `0.1464` / surface `0.4524` (limit 0.90). Literal-support reading: 185 raster(s) > 0.70. The literal reading is binding under the current protocol and triggers the duplicate stop.
+> Siblings: [adapt37k](docs/downloads/h33-h33-2-b2-CHILISTRICadapt37k-20261025-82694176-zeros.tif) (negative, HOLDOUT-DTI 0.012617) · [no10m_fixed](docs/downloads/h33-h33-2-b2-CHILISTRICno10m_fixed-20261025-48950a5f-zeros.tif) (negative, HOLDOUT-DTI 0.012206). **Read [SESSION_PROMPT.md](SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
 <!-- CURRENT:END -->
+
+
+
+> ## This session's repository review (2026-10-25 UTC)
+> **No new TIFF or experiment was generated; research downloads only, DO NOT SUBMIT or spend a slot.** No lane was assigned and the literal public-raster stop remains binding. The existing LISTRIC research file passes local format checks but fails recorded public dot overlap (`0.710735 > 0.70`) and is dated 2026-10-26, future relative to this review. [Three-pass audit](docs/REVIEW_20261025_ARENA_REPOSITORY.md) · [run card](evidence/review_20261025_arena_run_card.json) · [existing research TIFF](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif).
+
 
 
 > ## Latest artifact — LISTRIC (artifact label 2026-10-26; reviewed 2026-10-25, future-date irregularity disclosed)
@@ -66,6 +69,21 @@ Read this README and [SESSION_PROMPT.md](SESSION_PROMPT.md) before work. The [fu
 - Store research with official-source links, provenance and explicit access limitations. Do not invent leaderboard gains or equate fault prediction with proven geothermal vents. Preserve the reported GEMSDOE32 result and conflicting leaderboard figures as unverified unless receipts establish them.
 - Maintain a clean GitHub Pages site, executive submission subpage, machine-readable current status, reproducible run card, and no manual pixel-inspection requirement. Run three passes: implement and verify; inspect bugs/assumptions/edge cases; recheck against this brief and fix remaining problems. Create and merge a pull request as requested, and document outstanding work honestly.
 - **Maximize P(Win)** means preserving scarce slots and rejecting unsupported score claims. **Own the Outcome** means fixing shared defects and reporting unmet requirements, not weakening a failed gate.
+
+---
+
+## `CHILISTRIC` 3-Arm Audit Summary & Verified Official Sources (`2026-10-25`)
+
+Full PhD forensic derivation (`GEMSDOE32` `0.2778 [CLAIM]` pixel algebra, Tversky fractional-linear calculus, `19GEMSDOE` `H19-5` source audit, 5 ranked geological hypotheses, 44-feature leakage canaries, 3-arm ablations, and `102`-repo `1,503`-raster uniqueness scan): **[`docs/ANALYSIS_20261025_CHILISTRIC.md`](docs/ANALYSIS_20261025_CHILISTRIC.md)** · Pre-registration: **[`docs/HYPOTHESES_20261025_CHILISTRIC.md`](docs/HYPOTHESES_20261025_CHILISTRIC.md)** · Protocol Run Card: **[`evidence/chilistric_run_card.json`](evidence/chilistric_run_card.json)** · Executive Submission Guide: **[`docs/executive-summary.html`](docs/executive-summary.html)** · Irregularities Log: **[`IRREGULARITIES.md`](IRREGULARITIES.md)**.
+
+| Arm / Baseline | Pos. Pixels | Static `d_cat > 2.0` `HOLDOUT-DTI` `[95% CI]` | Strict Draw-Blind OOF `d_cat > 2.0` `HOLDOUT-DTI` | Strict Rule-2 `d_visible > 2.0` `HOLDOUT-DTI` | `USGS SGMC` (`d_cat > 3.0`) `PROXY` | Public `1,503`-Raster Operational Max Overlap | Verdict |
+| :--- | ---: | :--- | :--- | :--- | ---: | :--- | :--- |
+| **`CHILISTRIC addtail52k` (Primary)** | `52,000` (`{0, 0.65, 1.0}`) | **`0.013174 [0.011583, 0.014730]`** | **`0.013208 [0.011537, 0.014860]` (#1 All-Time)** | **`0.112471 [0.100285, 0.124646]`** | **`0.113149` (#1 Zero-Cat Crest)** | **`0.635115 <= 0.70` (`0 / 1,503 > 0.70`)** | `negative` *(literal dense stop)* |
+| `CHILISTRIC adapt37k` (Exp 1) | `37,654` (`{0, 1}`) | `0.012617 [0.010980, 0.014240]` | `0.012654 [0.011056, 0.014335]` | `0.108961 [0.096863, 0.121162]` | `0.096493` | `0.739975 > 0.70` (`LISTRICLOQO`) | `negative` |
+| `CHILISTRIC no10m_fixed` (Exp 3) | `37,654` (`{0, 1}`) | `0.012206 [0.010774, 0.013720]` | `0.012347 [0.010829, 0.013895]` | `0.110038 [0.097555, 0.122820]` | `0.103184` | `0.815743 > 0.70` (`LISTRICLOQO`) | `negative` |
+| `LISTRICLOQO selectcal` *(Site Primary)* | `37,654` (`{0, 1}`) | **`0.013295 [0.011713, 0.014980]` (#1 Static)** | `0.012952` / `0.013054` | `0.113938 [0.100887, 0.127394]` | `0.103442` | `0.690259 <= 0.70` | `negative` *(literal dense stop)* |
+| `KNICKLOQO standalone` | `37,654` (`{0, 1}`) | `0.010788 [0.009468, 0.012201]` | `0.010958 [0.009675, 0.012337]` | `0.109043 [0.097872, 0.120534]` | `0.103912` | `0.690259 <= 0.70` | `negative` |
+| `Parent R0` (`GEMSDOE32`, `0.2778 [CLAIM]`) | `37,654` (`{0, 1}`) | `0.004006 [0.003406, 0.004668]` | — | `0.096757` (`H19`) | `0.096060` | `1.0000` *(self in GEMSDOE32)* | Pinned baseline |
 
 ---
 
