@@ -1,73 +1,77 @@
-# GEMSDOE92 repository review — 2026-10-25
+# Repository review — 2026-10-25 UTC
 
-## Scope and decision
+## Decision first
 
-This is a repository/code-and-evidence audit, not a new geological experiment. The active DRAINAGE-KNICK run card records experiment `1/3`; the parallel-run instruction limits work to a single method lane and sets a maximum of three experiments. No new experiment, submission slot, or organizer submission was used in this review.
+**Current site primary (research download):** [`gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif`](downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [one-TIFF ZIP](downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.zip) · [audit](downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-audit.json) · [run card](downloads/listricdip_run_card.json). The run card's date is 2026-10-25, but the filename encodes `19:00Z` while its audit says `14:26:39Z`; these disagree, so the filename timestamp is **not verified generation chronology**.
 
-**Current artifact:** `docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif` is **OK TO DOWNLOAD FOR RESEARCH** after local automated validation, but **DO NOT SUBMIT** (`verdict: negative`, `submission_eligible: false`). This is not organizer acceptance. SHA-256: `ef6c27e34fe0f28c6e52615a9fc9601c20ada5337203def25ab8753392aef910`.
+- **OK TO DOWNLOAD FOR RESEARCH: YES.** Fresh local revalidation passed all 11 format gates: single-band `float32`, `EPSG:32611`, `3730 × 3292`, reference transform matched, finite `[0,1]`, no NaNs, zeros outside the footprint, zero catalogue mass, and exact-file SHA-256 match.
+- **OK TO SUBMIT: NO.** The stored `submission_eligible` is `false` and verdict is `negative`. The pinned `17GEMSDOE` witness is positive on every footprint cell. Therefore every nonempty candidate dot within that same footprint has literal 3-pixel forward overlap `1.000`, which exceeds the prompt's `0.70` stop. A format pass is not duplicate clearance, a promotion, or organizer acceptance.
+- **No new TIFF or experiment was generated in this repository review.** The existing named TIFF is not represented as a new submission. An empty raster would evade overlap only by being useless and is not produced.
+- **Weekly slots used in this review: 0.** The submitter still needs to select/upload an eligible candidate through DrivenData; this project has no `ORGANIZER-CONFIRMED` receipt.
 
-## Repository verification (this run)
+## Why the listed `GEMSDOE32` `0.2778` is plausible, but not proven
 
-- `python -m venv .venv && .venv/bin/pip install -r requirements.txt && .venv/bin/pytest tests -q`: **367 passed**, 126 Rasterio/Affine pending-deprecation warnings. `.venv` is ignored and is not a deliverable.
-- `.venv/bin/python scripts/check_site.py`: **PASS**, 63 served rasters passed the site's format gates. The checker reported its explicit HTML `data-primary` as `h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif`.
-- `.venv/bin/python -m gems validate docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif --reference data/bridge/sample_submission.tif`: **9 gates PASS**. Re-read checksum matched the run card; single-band float32, EPSG:32611, 3730×3292, transform matches reference, values in `[0,1]`, no NaN in footprint, zeros outside.
-- Git working tree was clean before this report. Tests and the site checker verify software/format invariants; they do not establish leaderboard performance or organizer eligibility.
+The user-supplied `0.2778` is a **CLAIM**, not an `ORGANIZER-CONFIRMED` receipt in this repository. The measured parent lineage in [`ANALYSIS_20261024.md`](ANALYSIS_20261024.md) and [`registry/parents/R0.json`](../registry/parents/R0.json) shows that the candidate inherits a fixed-size, spatially thinned ridge/dot field and removes locations close to the mapped-catalogue mask. That structure is consistent with a distance-weighted Tversky objective rewarding fewer redundant predictions, spatial coverage under a limited prediction budget, and suppression near already mapped faults. It is a mechanism consistent with the artifact—not a causal proof of why an organizer assigned the user-reported score, since the evaluated receipt/private labels are absent here.
 
-## Scientific result and interpretation
+The reported `0.2778`, `0.3195`, and `0.4413` are not comparable to local `HOLDOUT-DTI` measurements and were not refreshed against the competition. Do not claim this repo has beaten any of them. A local hide-and-recover score only ranks candidates under the named local evaluator; it is not a leaderboard projection. See the detailed forensic account and its caveats in [`ANALYSIS_20261024.md`](ANALYSIS_20261024.md) and [`REVIEW_376A8469.md`](REVIEW_376A8469.md).
 
-The run card reports **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives, strict fold-visible `d_visible > 2 px`, 8 folds, 1,000 spatial-block bootstrap draws): **0.061728 [0.047046, 0.075316]**. This is below the recorded within-repository Rule-2 holdout best `0.113316`; do not compare these values to an organizer leaderboard score as if they were the same instrument.
+## Current candidate evidence (stored run cards, not recomputed in this review)
 
-The supplied GEMSDOE32 result `0.2778` and prompt's `0.3195` / `0.4413` leaderboard figures are not backed by a current DrivenData receipt in this checkout. The repository's analysis appropriately calls 0.2778 a **CLAIM**: thinning/spacing the positive predictions can plausibly reduce false-positive mass under a distance-tolerant metric, but available evidence cannot establish why it scored that way or predict a higher organizer score. The current HOLDOUT-DTI does not support a claim of beating 0.2778.
+- **Top-ranked RADIOCONTACT hypothesis, already tested:** **HOLDOUT-DTI** (`gems57-pooled-hide-v2`; 22,663 withheld positive pixels) `0.005066 [0.003638, 0.006583]` on its stored static `d_cat > 2` instrument. The stored paired difference against R0 is `+0.001060 [-0.000341, +0.002615]`, whose CI includes zero. The corresponding static comparison is **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): `COULOMBLOQO standalone` `0.009220 [0.007983, 0.010493]`. A different strict Rule-2 instrument records **HOLDOUT-DTI** `0.113316 [0.100614, 0.127163]` (`gems57-pooled-hide-v2`, 22,663 withheld positives); it is not a like-for-like static comparison. These are negative holdout results, not competition-score estimates. Its pre-registration's Rank 1 is therefore not eligible for a submission slot.
+- **Current site-primary LISTRICDIP candidate:** **HOLDOUT-DTI** (`gems57-pooled-hide-v2`; 22,663 withheld positive pixels) `0.005420 [0.004294, 0.006551]` on static deployment `d_cat > 2`. This is below the stored repository comparison `KNICKLOQO standalone` `0.010788` on its comparable static instrument. It is a negative result, not an organizer score. The run card also records a distinct strict draw-blind diagnostic `d_visible > 2` of `0.048225 [0.039232, 0.056882]`; do not mix those different deployment masks.
+- **REGISTRY-MEASUREMENT (local inventory):** final-dot overlap max `0.196845` and absolute Spearman max `0.052889` across 110 checked local rasters, as stored in the run card. These local-only values do not clear a public registry gate.
+- **REGISTRY-MEASUREMENT (pinned public rejection witness):** `17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` is positive on all `5,167,373` footprint cells; final-dot forward overlap is `1.000`. This exact witness suffices to fail the literal overlap rule; it is not a claim that a complete, fresh public registry inventory was scanned in this review.
+- **No valid full-registry pre-placement surface check is asserted here.** The stored LISTRICDIP `preplacement` section reports rough-dot comparisons, not a continuous prospectivity-surface comparison. The later exact full-footprint witness already stops the emitted raster, but future runs must log the actual pre-placement surface separately before placement.
+- **Format validator:** `scripts/validate_submission.py` reread the selected file and returned `PASS (11 gates)`. SHA-256: `91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e`.
+- **Submission name / note (record only; not clearance):** `GEMSDOE92-LISTRICDIP-updip50-20261025` / `LISTRICDIP updip50: 37654 listric-offset dots; HOLDOUT-DTI 0.005420; negative` (77 characters; limit 140).
 
-DRAINAGE-KNICK targets persistent terrain knickzones × basement-depth edge × shear. The run card's single-feature leakage canary maximum is 0.597114 (<0.90). Local-registry max correlation/overlap are 0.063413 / 0.477320. Public comparison is explicitly incomplete: 747 rasters read, 705 download failures, so the scan is not exhaustive; moreover literal overlap reaches 1.0 against a dense full-footprint registry surface. Under the supplied literal rule, this is a duplicate stop regardless of byte uniqueness or low correlation. The byte hash only establishes distinct file bytes, not a distinct scientific surface or permission to submit.
+## Hypotheses for a future, explicitly authorized research session
 
-## Irregularities requiring attention
+These are ranked qualitative proposals, **not measured gains or current viable submissions**. Expected improvement is unknown; ordering reflects plausible complementarity against the current feature code and implementation cost. No experiment was started because the existing literal uniqueness stop is binding and the latest pre-registered candidate did not beat the holdout-best comparator. Source availability/provenance must be checked before implementation.
 
-1. **The site has multiple competing “current” declarations.** The first banner in `docs/index.html` says the newest lane is KNICKLOQO, while the automated site check's explicitly tagged primary is the older COULOMBDM TIFF. README's opening artifact names DRAINAGE-KNICK; elsewhere it summarizes still other lanes. These are separate archived results, not interchangeable primary status. Before a site release, reconcile the top-level designation and label every historical lane explicitly.
-2. **The download artifact is not submit-cleared.** Its range/CRS/shape/transform are valid, but holdout is below the repository best and the public-registry overlap rule fails. Do not present its download button as permission to upload to DrivenData.
-3. **Evidence provenance is bounded.** The run card reports a partial public GitHub raster scan with 705 failed downloads; the documented data bridge is owner-mirror sourced and not organizer-authenticated. No competition-page receipt was available to verify the cited score claims.
-4. **No live official-source revalidation is asserted here.** This audit uses repository files and local computation. It does not claim current leaderboard, policy, or source-page contents were independently refreshed.
+| Rank | Candidate; layers and physical signature | Why a catalogue-missing fault could produce it | Difference from implemented repository methods | Main non-fault mimic | Cost / status |
+|---|---|---|---|---|---|
+| 1 | **RTP texture displacement registration** — Band 2 `rtp`; bidirectional local image registration across candidate structures, seeking a coherent along-strike offset of magnetic texture rather than a high-amplitude edge. | Buried slip may displace older magnetic fabric while surface scarps are eroded or covered. | Repository magnetic methods use amplitude, derivatives/tilt, analytic signal, Euler solutions, or Poisson-style concordance; a code search found no magnetic image-registration/displacement operator. This tests displacement registration, but an exact novelty claim still needs a full lane-by-lane audit. | Separate intrusive contacts or remanent lava units; falsify with registration stability, independent line segments, and matched texture-shift nulls. | Medium-high potential / medium-high cost; needs the official competition feature stack. Not runnable from the present checkout cache. |
+| 2 | **Threshold-persistent RTP topology** — Band 2 `rtp`; count persistent connected-component/loop changes in locally standardized level sets across thresholds. | A low-amplitude or partly demagnetized fault-related contact may change domain connectivity even when a single gradient threshold is weak. | A code search found no threshold-persistent magnetic component/loop feature; `NEOTERRACE` uses contour closure as a shoreline null, not magnetic topology. This remains a source-code novelty hypothesis, not a literature-wide novelty claim. | Remanent magnetic domains, survey seams, or volcanic-flow boundaries. | Medium potential / medium cost; same unavailable stack; no evidence of improvement. |
+| 3 | **Basin-integrated divide/hypsometric imbalance** — Band 12 `det_elev` and Band 19 `det_elev_slope`; compare opposing-catchment hypsometry and divide migration rather than local knickpoints. | Distributed deformation can tilt watersheds and redistribute erosion after a sharp scarp has degraded. | Distinct from local knickpoint/stream-break features in DRAINAGE-KNICK and local scarp metrics; not a claim that all drainage geometry is new. | Lithologic erodibility, capture, precipitation asymmetry, or glacial/pluvial legacy. | Medium potential / high cost; existing competition DEM is needed, and spatial nulls must preserve catchment size/relief. |
+| 4 | **High-resolution cross-profile scarp-vs-channel discrimination** — official USGS 3DEP 1/3-arc-second DEM, deriving cross-strike terrace/channel profiles and curvature breaks, then testing whether step geometry persists away from channels. | A covered or degraded fault may leave a low-relief terrace edge resolvable at finer spatial scale than the competition stack. | Adds a higher-resolution official DEM and explicitly rejects channel-only knickpoints, unlike the present 100 m stack methods. | Lithologic benches, fan margins, road cuts, and DEM seams. | Potential unknown / high data and processing cost; **blocked, not viable now**. Required source: [USGS 3D Elevation Program](https://www.usgs.gov/3d-elevation-program). This runtime cannot reach `usgs.gov`, so current endpoint availability, coverage, licensing, and downloadability were **not verified**; do not implement until obtained and audited. |
 
-## Recommended next steps (no slot spent)
+The first three ideas rely on the official competition `training_features.tif` source: [DrivenData competition data tab](https://www.drivendata.org/competitions/306/competition-doe-gems/data/). It is login-gated in this environment. The pinned owner-mirror hashes establish byte identity only, not organizer provenance or redistribution permission. The current `.cache/gems_inputs/` stack is absent; do not describe those hypotheses as validated or viable until the bytes, band descriptions, and rights are checked. The fourth candidate is expressly blocked until the free official source is independently reachable and verified.
 
-- Fix the website's single source of truth for the latest artifact: derive the prominent banner, README summary, and `data-primary` from one run-card-backed record; ensure the visible status says both “OK TO DOWNLOAD FOR RESEARCH” and “DO NOT SUBMIT” where applicable.
-- Keep the negative result as a deliverable. Do not promote DRAINAGE-KNICK or use a weekly slot. The mandatory literal duplicate rule is currently independently disqualifying.
-- For any future candidate, start with the shared cached feature stack and fold-rebuilt evaluator, run each feature's leakage canary, test the proposed surface against the registry before placement and the final dots after placement, and stop at three experiments. Do not use static full-catalogue masking as a substitute for fold-visible withholding.
-- Refresh public-registry evidence with transparent coverage and failures; never describe an incomplete scan as exhaustive. Verify any leaderboard number from a dated organizer receipt before presenting it as confirmed.
+### Pre-registration audit finding
 
-## Run card (review artifact)
+[`HYPOTHESES_20261026_RADIOCONTACT.md`](HYPOTHESES_20261026_RADIOCONTACT.md) is not safe to treat as a fresh list of five untried hypotheses: its Rank 1 RADIOCONTACT and Rank 2 DRAINAGE-KNICK were subsequently implemented and have run cards, while other listed concepts overlap already-tried gravity/seismic/MT feature families. Its filename is dated one day after the RADIOCONTACT run card. This is an unresolved chronology/novelty irregularity; preserve the historical file, but do not claim it proves pre-registration timing or that every listed arm was untried.
 
-```json
-{
-  "hypothesis": "Repository review only; no new geological hypothesis or raster was tested.",
-  "mechanism": "Three-pass source/evidence/code inspection plus pytest, site gates, and independent artifact-format validation.",
-  "named_non_fault_process": "Not applicable to this review; the audited DRAINAGE-KNICK run card names shorelines, stratigraphic contacts, fan toes, and DEM seams.",
-  "holdout_dti": {
-    "evidence_class": "HOLDOUT-DTI",
-    "evaluator_version": "gems57-pooled-hide-v2",
-    "withheld_positives": 22663,
-    "value": 0.061728,
-    "ci95": [0.047046, 0.075316]
-  },
-  "correlation_overlap_vs_registry": {
-    "evidence_class": "REGISTRY-MEASUREMENT",
-    "local_worst_abs_spearman": 0.063413,
-    "local_worst_overlap": 0.477320,
-    "public_literal_overlap": 1.0,
-    "public_scan_complete": false,
-    "public_rasters_read": 747,
-    "public_download_failures": 705
-  },
-  "raster_sha256": "ef6c27e34fe0f28c6e52615a9fc9601c20ada5337203def25ab8753392aef910",
-  "validator_output": {
-    "no_nan_inside_footprint": true,
-    "values_in_0_1": true,
-    "crs_shape_transform_match": true,
-    "site_rasters_gated": 63,
-    "tests": "367 passed"
-  },
-  "submission_name": "GEMSDOE92-DRAINAGE_KNICK-20261025",
-  "note": "terrain knick + basement edge + shear; research only; negative holdout/registry gate",
-  "verdict": "negative"
-}
-```
+## Three-pass review
+
+### Pass 1 — implement and verify
+
+This task was a repository/site review, not a new geological experiment. Read `README.md`, `SESSION_PROMPT.md`, the current run cards, existing hypothesis queue, shared evaluator/writer/gates, registry receipts, and site contracts. The repository already has a one-click zeros-outside GeoTIFF and an executive submission guide. The requested new *submission-eligible* unique TIFF could not honestly be created under the stated rule: any nonempty in-footprint prediction fails the known full-footprint witness. Kept the existing research artifact and its exact bytes intact.
+
+### Pass 2 — defect and contradiction review; fixes
+
+Found stale and misleading current-facing site language: the old RADIOCONTACT section called itself newest and “unique” despite recording that public registry data were unavailable; a lower homepage banner called the older DRAINAGE-KNICK lane “Latest”; and the LISTRICDIP summary described its three variants as “unique” while separately reporting literal overlap `1.000`. Updated the homepage and executive summary to label RADIOCONTACT as archived, identify LISTRICDIP as the current research primary, distinguish local-only uniqueness from public clearance, and label DRAINAGE-KNICK as a prior lane. Updated README current pointers and added this review. No scientific code, TIFF, historical receipt, or experiment result was rewritten.
+
+### Pass 3 — final cross-check
+
+- `python -m pytest tests -q`: **372 passed**, with 126 nonfatal upstream Rasterio/Affine pending-deprecation warnings.
+- `PYTHONPATH=vendor python scripts/check_site.py`: **66 served raster files passed** local format gates. This checks file format/encoding, not science, uniqueness, or organizer acceptance.
+- `python -m gems manifest --manifest registry/data_manifest.json --data-root data`: all 8 pinned inputs passed.
+- `python -m gems parent --recipe registry/parents/R0.json --data-root data`: pinned parent verified.
+- `python -m gems ledger`: 97 rows; no organizer receipt.
+- Targeted `python -m gems validate ...`: **11/11 gates PASS** on the LISTRICDIP exact file.
+- Static inspection confirmed the published download link, SHA, explicit DO NOT SUBMIT status, 140-character maximum note, and `.tif`/one-TIFF `.zip` options.
+
+Local software and byte checks do not verify current DrivenData rules, current leaderboard, official data licensing, upload acceptance, or the live weekly submission cap. The competition-data page and USGS sources below are links for manual review, not assertions that they were reached in this restricted runtime:
+
+- [DrivenData competition overview/rules](https://www.drivendata.org/competitions/306/competition-doe-gems/)
+- [Problem description and metric](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/)
+- [Official data tab (login may be required)](https://www.drivendata.org/competitions/306/competition-doe-gems/data/)
+- [Official DrivenData reference solution](https://github.com/drivendataorg/gems-prize-reference-solution)
+- [DOE/NLR competition document](https://docs.nlr.gov/docs/fy26osti/96647.pdf)
+- [USGS GeoDAWN data record](https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7)
+- [GDR INGENIOUS #1391](https://gdr.openei.org/submissions/1391)
+- [USGS 3DEP](https://www.usgs.gov/3d-elevation-program)
+- [EPSG:32611](https://epsg.io/32611)
+
+**Maximize P(Win):** do not spend a weekly slot on a candidate that fails either the holdout promotion bar or the literal duplicate stop. **Own the Outcome:** retain the negative result, correct stale site claims, and make the download-versus-submit distinction explicit.

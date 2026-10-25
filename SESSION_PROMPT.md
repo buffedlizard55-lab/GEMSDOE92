@@ -2,9 +2,9 @@
 
 Read this at the start of every session, together with `README.md`. The README is the short executive summary; this file is the durable project operating contract. Preserve the user's goals: a unique, easy-to-download submission GeoTIFF, automated format validation, transparent evidence, and no hallucinated claims.
 
-## Current session status — 2026-10-25 (`LISTRICDIP`)
+## Current site status — 2026-10-25 (`LISTRICDIP`)
 
-The newest completed lane is `LISTRICDIP`. Three research GeoTIFFs were generated. Static HOLDOUT-DTI for `updip50` is `0.005420 [0.004294, 0.006551]` (`gems57-pooled-hide-v2`, 22,663 withheld positives). It beats `R0` and loses to the stored holdout best (`KNICKLOQO` `0.010788`). Verdict `negative`. OK to download for research. Not OK to submit. Literal dense-witness overlap is 1.0. The `376a8469` note that no new TIFF existed applied to that review, not to this lane. The literal overlap gate is still binding. Read the run card `evidence/listricdip_run_card.json` before trusting any older banner that calls itself newest.
+The homepage currently designates `LISTRICDIP updip50` as its primary research download; this is not a verified newest-by-time claim. Three research GeoTIFF variants are present. Static HOLDOUT-DTI for `updip50` is `0.005420 [0.004294, 0.006551]` (`gems57-pooled-hide-v2`, 22,663 withheld positives). It beats `R0` and loses to the stored comparable static holdout best (`KNICKLOQO` `0.010788`). Verdict `negative`. OK to download for research. Not OK to submit. Literal dense-witness overlap is `1.0`. The artifact filename embeds `2026-10-25T19:00:00Z`, but its audit receipt records `2026-10-25T14:26:39Z`; chronology is unresolved. The `376a8469` note that no new TIFF existed applied to that review, not to this site primary. The literal overlap gate is binding. Read `docs/REVIEW_20261025_REPO_AUDIT.md` and run card `evidence/listricdip_run_card.json` before using older banners or timestamps.
 
 ## Current binding clarification — 2026-10-25 (`376a8469`)
 

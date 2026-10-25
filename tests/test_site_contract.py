@@ -203,6 +203,37 @@ def test_current_review_run_card_is_served_byte_identically():
     assert "downloads/repo_review_run_card_20261024.json" in _index()
 
 
+def test_current_site_primary_and_repository_audit_are_consistent():
+    """Current status must be explicit, fail closed, and separate local from public uniqueness."""
+    import hashlib
+
+    html = _index()
+    assert 'data-primary="true"' in html
+    assert "gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif" in html
+    assert "DO NOT SUBMIT" in html
+    assert "Current site primary" in html
+    assert "Latest: DRAINAGE-KNICK" not in html
+    radio = html.split('aria-label="RADIOCONTACT session status"', 1)[1].split("<!-- RADIOCONTACT:END -->", 1)[0]
+    assert "new unique TIFF generated" not in radio
+    assert "Rank-1 untried hypothesis" not in radio
+    assert "Archived lane (run card dated 2026-10-25)" in radio
+    assert "public uniqueness was not scanned in its run card" in radio
+
+    evidence = ROOT / "evidence" / "repo_review_run_card_20261025.json"
+    served = DOCS / "downloads" / evidence.name
+    assert evidence.is_file() and served.is_file()
+    assert evidence.read_bytes() == served.read_bytes()
+    card = json.loads(evidence.read_text(encoding="utf-8"))
+    tif = ROOT / card["current_research_artifact"]["file"]
+    assert hashlib.sha256(tif.read_bytes()).hexdigest() == card["raster_sha256"]
+    assert card["submission_eligible"] is False
+    assert card["new_tiff_generated_in_review"] is False
+    assert card["verdict"] == "negative"
+    assert card["correlation_overlap_vs_registry"]["public_rejection_witness"]["candidate_dots_forward_overlap_3px"] == 1.0
+    assert card["correlation_overlap_vs_registry"]["public_rejection_witness"]["duplicate_stop"] is True
+    assert card["correlation_overlap_vs_registry"]["preplacement_surface"]["status"] == "NOT_VERIFIED_IN_THIS_REVIEW"
+
+
 def test_submit_page_exists():
     for name in ("SUBMIT.html", "submit.html"):
         p = DOCS / name

@@ -1,4 +1,12 @@
-# Current review — 2026-10-25 (`KNICKLOQO` session; read this block first)
+# Latest repository audit — 2026-10-25 UTC (read this override first)
+
+**Current homepage primary:** LISTRICDIP `updip50` research TIFF. **OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT** (`submission_eligible: false`, verdict negative). Its local 11-gate format validator passes, but the literal public uniqueness stop is triggered by the pinned `17GEMSDOE` raster positive over the entire footprint (final-dot overlap `1.000 > 0.70`). Its stored **HOLDOUT-DTI** is `0.005420 [0.004294, 0.006551]` (`gems57-pooled-hide-v2`, 22,663 withheld positives), lower than the recorded comparable static holdout-best. This is not an organizer score.
+
+**Chronology caveat:** the LISTRICDIP filename embeds `2026-10-25T19:00:00Z`, but the adjacent audit says it was generated at `2026-10-25T14:26:39Z`; do not treat the filename time as verified chronology. The RADIOCONTACT pre-registration filename is also dated 2026-10-26 while its run card is dated 2026-10-25. No new TIFF or experiment was generated in this review. Three-pass repository review, ranked conditional hypotheses, sources/limitations, and test receipts: [`REVIEW_20261025_REPO_AUDIT.md`](REVIEW_20261025_REPO_AUDIT.md) · [machine-readable card](downloads/repo_review_run_card_20261025.json). The historical review below is retained as a dated record, not the current status.
+
+---
+
+# Historical current review — 2026-10-25 (`KNICKLOQO` session; superseded by latest audit above)
 
 **✅ OK TO DOWNLOAD: YES (`10/10` format gates PASS, finite `[0.0, 1.0]`, `0` NaNs); ⛔ OK TO SUBMIT: NO — DIAGNOSTIC ONLY (`verdict: negative` under literal `17GEMSDOE` dense surface; `UNIQUE` under `dual_reading_decision` with `0 / 1,412` public rasters `> 0.70`, max `0.685531 <= 0.70`).**
 Newest unique artifact: `docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif` (`sha256 = 8ad4a8c2cd8e1fd965d91643da6efbe82da8b3668e6dc8e59d193a8302424a7d`, best of three pre-registered arms `standalone`, `uncal`, `dual35`).

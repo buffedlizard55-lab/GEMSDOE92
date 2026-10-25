@@ -1,0 +1,89 @@
+{
+  "schema": "gemsdoe92-repository-review.v1",
+  "review_date_utc": "2026-10-25",
+  "review_scope": "read-only science/site/repository review plus correction of stale current-facing status text; no geological experiment and no new raster generated",
+  "hypothesis": "The user-reported GEMSDOE32 h33-h33-2-b2 result may be consistent with fixed-budget, spatially thinned, catalogue-cleared predictions under a distance-weighted Tversky metric; its causal scoring explanation cannot be proven without the organizer receipt and private evaluation data.",
+  "mechanism": "Measured repository lineage shows the R0 artifact retains a spatially thinned ridge/dot field and removes predictions close to the mapped-catalogue mask. This may reduce redundant false-positive mass while preserving distance-weighted coverage, but does not prove the organizer-score cause or discovery of unmapped geothermal faults.",
+  "named_non_fault_process_that_could_mimic_it": "Terrain and lithologic lineaments (including volcanic-flow contacts), erosional scarps, fan margins, and survey artifacts may create ridge-like patterns without a tectonic fault or geothermal conduit.",
+  "current_research_artifact": {
+    "file": "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif",
+    "sha256": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
+    "submission_name_record_only": "GEMSDOE92-LISTRICDIP-updip50-20261025",
+    "submission_note_record_only": "LISTRICDIP updip50: 37654 listric-offset dots; HOLDOUT-DTI 0.005420; negative",
+    "submission_note_characters": 77
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "source_status": "read from the existing LISTRICDIP run card; not rerun in this repository review",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 22663,
+    "primary_instrument": "static deployment d_cat > 2 px",
+    "dti": 0.0054195278859189445,
+    "ci95": [0.0042936054837163905, 0.006550678712361833],
+    "comparable_static_reference": {
+      "evidence_class": "HOLDOUT-DTI",
+      "source_status": "stored KNICKLOQO run card; not rerun in this repository review",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positives": 22663,
+      "candidate": "KNICKLOQO standalone",
+      "dti": 0.010788,
+      "ci95": [0.009468, 0.012201]
+    },
+    "separate_strict_draw_blind_diagnostic": {
+      "evidence_class": "HOLDOUT-DTI",
+      "source_status": "stored LISTRICDIP run card; distinct mask/instrument, not comparable to static deployment as the same score",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positives": 22663,
+      "instrument": "strict fold-visible d_visible > 2 px",
+      "dti": 0.048225,
+      "ci95": [0.039232, 0.056882]
+    }
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "local_final_dot_scan": {
+      "rasters_checked": 110,
+      "max_forward_overlap_3px": 0.19684495671110638,
+      "max_abs_spearman": 0.05288886833577749,
+      "scope": "local registry only; values from stored LISTRICDIP run card"
+    },
+    "public_rejection_witness": {
+      "witness_repo": "buffedlizard55-lab/17GEMSDOE",
+      "witness_path": "docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "witness_commit": "6fc71d19d49dca4960d5434bd81b6dd06fcc030a",
+      "witness_git_blob_sha1": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "positive_footprint_pixels": 5167373,
+      "candidate_dots_forward_overlap_3px": 1.0,
+      "threshold": 0.7,
+      "duplicate_stop": true,
+      "scope": "one pinned exact-grid witness is sufficient for rejection; this is not a fresh full public inventory scan"
+    },
+    "preplacement_surface": {
+      "status": "NOT_VERIFIED_IN_THIS_REVIEW",
+      "reason": "stored LISTRICDIP preplacement record reports rough-dot comparison, not a continuous prospectivity-surface comparison"
+    }
+  },
+  "raster_sha256": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
+  "validator_output": {
+    "evidence_class": "LOCAL_FORMAT_VALIDATION",
+    "command": ".venv/bin/python -m gems validate docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif --reference data/bridge/sample_submission.tif --catalogue data/bridge/existing_faults.tif --prune-radius 2",
+    "result": "PASS (11 gates)",
+    "no_nan_inside_footprint": true,
+    "all_values_finite_and_in_0_1": true,
+    "zeros_outside_footprint": true,
+    "crs": "EPSG:32611",
+    "shape": [3730, 3292],
+    "transform_matches_reference": true,
+    "single_band_float32": true,
+    "positive_pixels": 37654,
+    "sha256_matches_disk": true,
+    "scope_note": "format/range/grid validation only; does not imply uniqueness, organizer acceptance, or submission eligibility"
+  },
+  "organizer_confirmed_score": null,
+  "user_reported_scores_status": "CLAIM only; no matching organizer receipt found in ledger",
+  "submission_eligible": false,
+  "weekly_slots_used_in_review": 0,
+  "new_tiff_generated_in_review": false,
+  "verdict": "negative",
+  "verdict_reason": "The existing candidate is format-valid but fails the literal registry overlap stop against a pinned raster positive on the entire valid footprint, and its stored HOLDOUT-DTI is below the repository's stored comparable static holdout-best."
+}
