@@ -1,35 +1,98 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-<!-- CURRENT-STATUS:BEGIN -->
-## Authoritative decision — Current verified status, 2026-10-25 (LISTRICLOQO 2026-10-25)
+<!-- VARIO-STATUS:BEGIN -->
+## Current research download — verified decision, 2026-10-25 (VARIO session)
 
-**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** LISTRICLOQO is a byte-distinct research artifact, but it fails the literal registry-overlap stop and promotion gates.
+**✅ OK TO DOWNLOAD FOR RESEARCH. ⛔ DO NOT SUBMIT — automated promotion gates not met (see run card).**
+A new unique GeoTIFF **was** generated this session by the pre-registered VARIO lane
+([hypotheses](docs/HYPOTHESES_20261025_VARIO.md) · [analysis](docs/ANALYSIS_20261025_VARIO.md) ·
+[executive submission guide](docs/vario.html) · [run card](docs/downloads/vario_run_card.json) ·
+[machine-readable status](docs/downloads/readiness.json)).
 
-[Existing LISTRICLOQO research TIFF — not cleared to submit](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif) · [protocol run card](docs/downloads/listric_loqo_run_card.json) · [analysis](docs/ANALYSIS_20261025_LISTRICLOQO.md) · [three-pass review](docs/REVIEW_20261025_SESSION.md) · [executive submission guide](docs/executive-summary.html).
+[Download gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif](docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif) · name `GEMSDOE92-VARIO-full-20261025` · note (72/140) `VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat>2` · SHA-256 `11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573`
 
-Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.013295 [0.011713, 0.014980]`; paired improvement over KNICKLOQO is +0.002508 [0.001477, 0.003463]. Public dual-reading overlap is `0.690259 <= 0.70`, but the binding literal dense-witness overlap is `1.0 > 0.70`; this file is not uniqueness-cleared. No ORGANIZER-CONFIRMED score is available; 3/3 experiments and zero weekly slots.
+Automated validation (no human inspection): finite [0, 1] everywhere (the portal "Predicted values must be in range [0, 1]" check), no NaN in footprint, zeros outside, exact CRS/shape/transform. **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22663 withheld): `0.150020 [0.134975, 0.164286]`; paired Δ vs best control `control_FAULTNET_far`: `-0.025127 [-0.029306, -0.020842]`. No ORGANIZER-CONFIRMED score; GEMSDOE32 0.2778 and all site-inventory scores remain CLAIMs. Literal dense-registry disclosure and operative sparse uniqueness are both in the run card. Historical banners below are archives, not current clearance.
 
-<!-- CURRENT-STATUS:END -->
-
+<!-- VARIO-STATUS:END -->
 <!-- CURRENT:BEGIN -->
-> ## Newest lane result — lane CHILISTRIC / arm `addtail52k`
-> **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 1.0000 of its dots lie within 3 px of the dots of 17GEMSDOE/outputs/submissions/20261024T175340Z_17GEMSDOE_E-proba-multiscale.tif (public dual-reading operational max 0.6351 <= 0.70, 0 / 1,503 > 0.70) (5,167,373 dots), above the 0.70 limit; did not beat LISTRICLOQO selectcal (static d_cat>2.0) on the holdout.
+> ## Newest completed session lane (`2026-10-25`) — `CHILISTRIC` / primary arm `addtail52k` (3 new unique-byte GeoTIFFs)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** (`11/11` automated `[0, 1]` gates PASS, `0` NaN; unique across all `124` post-merge local rasters at `0.6773 <= 0.70` & all `1,503` public rasters across `102` repos at `0.6351 <= 0.70`) · **⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT** (verdict `negative`, `submission_eligible: false`; literal `17GEMSDOE` dense witness `1.000 > 0.70` & static tie vs `LISTRICLOQO` `0.013295`; `0` weekly slots spent).
 >
-> **[⬇ Download the GeoTIFF](docs/downloads/h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.tif)** · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.zip) · [run card](docs/downloads/chilistric_run_card.json) · [analysis](docs/ANALYSIS_20261025_CHILISTRIC.md)
+> **[⬇ Download research GeoTIFF (`h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.tif`)](docs/downloads/h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.tif)** · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.zip) · [JSON Run Card](docs/downloads/chilistric_run_card.json) · [Executive Summary & How to Submit](docs/executive-summary.html) · [PhD Analysis (`0.2778` / `0.3195` / `0.4413` & Verified Sources Table)](docs/ANALYSIS_20261025_CHILISTRIC.md) · [Pre-Registered Hypotheses](docs/HYPOTHESES_20261025_CHILISTRIC.md) · [3-Pass Review](docs/REVIEW_20261025_CHILISTRIC.md)
+>
+> - **Record-only DrivenData #306 form fields (do NOT upload a `negative` file):** SHA-256 `75fcc743420f817d841b9f822e82bf4e63c850ede29e0e2d75e54b26603acf50` · name `GEMSDOE92-CHILISTRIC-addtail52k-20261025` · note (`107/140`): `h33-h33-2-b2; CHILISTRIC addtail52k: 52000 3DEP-10m+adapt-listric+sinter-valve crests; HOLDOUT-DTI 0.013174` · zeros-outside `float32` in `[0, 1]` prevents `"Predicted values must be in range [0, 1]"`.
+> - **`HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives):** **Strict Draw-Blind OOF (`d_cat > 2.0`) = `0.013208 [0.011537, 0.014860]` (`#1` all-time zero-catalogue OOF in `GEMSDOE92`, beating `LISTRICLOQO` `0.013064`)**; Static (`d_cat > 2.0`) = **`0.013174 [0.011583, 0.014730]`** (paired `+0.000968 [0.000146, 0.001793]` over `no10m_fixed` `0.012206`); Strict Rule-2 (`d_visible > 2.0`) = `0.112471 [0.100285, 0.124646]`; Off-catalogue **`USGS SGMC PROXY` = `0.113149`** (`+9.4%` vs `LISTRICLOQO` `0.103442`); `44/44` canaries PASS (`<= 0.617275`). Siblings: [`adapt37k`](docs/downloads/h33-h33-2-b2-CHILISTRICadapt37k-20261025-82694176-zeros.tif) (`0.012617`) · [`no10m_fixed`](docs/downloads/h33-h33-2-b2-CHILISTRICno10m_fixed-20261025-48950a5f-zeros.tif) (`0.012206`).
+
+> ## Completed session lane (`2026-10-25`) — `RELAYCONDUIT` / hero arm `relay_conduit` (3 new unique-byte GeoTIFFs)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** (`11/11` automated `[0, 1]` gates PASS, `0` NaN; locally unique across all `128` rasters at `0.6601 <= 0.70`) · **⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT** (verdict `negative`, `submission_eligible: false`; external 102-repo overlap `0.7843 > 0.70` vs `GEMSDOE53` 80k & literal `17GEMSDOE` dense witness `1.000 > 0.70`; `0` weekly slots spent).
+>
+> **[⬇ Download research GeoTIFF (`gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.tif`)](docs/downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.zip) · [audit JSON](docs/downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-audit.json) · [JSON Run Card](docs/downloads/relayconduit_run_card.json) · [holdout JSON](docs/downloads/relayconduit_holdout.json) · [102-repo uniqueness JSON](docs/downloads/relayconduit_uniqueness.json) · [DrivenData form steps](docs/relayconduit.html) · [PhD Analysis (`0.2778` / `0.3195` / `0.4413`)](docs/ANALYSIS_20261025_RELAYCONDUIT.md) · [Pre-Registered Hypotheses](docs/HYPOTHESES_20261025_RELAYCONDUIT.md)
+>
+> - **Record-only DrivenData form fields (do NOT upload a `negative` artifact):** separate name `GEMSDOE92-RELAYCONDUIT-relay_conduit-20261025` · note (`113/140`): `RELAYCONDUIT relay_conduit: 37654px tip-relay+OOF blind conduit d>3.2px; HOLDOUT-DTI 0.184485 (st 0.000000) [neg]` · zeros-outside `float32` encoding prevents `"Predicted values must be in range [0, 1]"`.
+> - **`HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives):** hero `relay_conduit` strict Rule-2 **`0.184485 [0.169875, 0.198933]`** (paired `+0.069008 [0.053289, 0.084771]` over rebuilt `control_COULOMBLOQO_d32` `0.115477`; exceeds `FAULTNET netfar` `0.175147` and `VARIO full` `0.150020`); `relay_delta` `0.180061 [0.165231, 0.193562]`; zero-catalogue `conduit_notip` strict Rule-2 `0.076416 [0.063889, 0.088770]`, static `d_cat > 2.0` `0.005733`, off-catalogue **`USGS SGMC PROXY` = `0.106525`** (beats `COULOMBLOQO` `0.089332`, passes all `1,367` external rasters across 102 repos at `0.6557 <= 0.70`, `0.7031` locally vs `RIEDELVALVE riedel_n90k` 90k).
+> - **All 3 arms (`negative`, research only):** [`relay_conduit`](docs/downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.tif) ([ZIP](docs/downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.zip) · [audit](docs/downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-audit.json)) · [`relay_delta`](docs/downloads/gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-zeros.tif) ([ZIP](docs/downloads/gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-zeros.zip) · [audit](docs/downloads/gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-audit.json)) · [`conduit_notip`](docs/downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-zeros.tif) ([ZIP](docs/downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-zeros.zip) · [audit](docs/downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-audit.json)).
+
+> ## Parallel lane receipt — lane VARIO / arm `vario_full`
+> **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 0.9791 of its dots lie within 3 px of the dots of gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif (37,654 dots), above the 0.70 limit; did not beat control_FAULTNET_far on the holdout.
+>
+> **[⬇ Download research GeoTIFF](docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.zip) · [run card](docs/downloads/vario_run_card.json) · [analysis](docs/ANALYSIS_20261025_VARIO.md)
 >
 > **How to submit (only with a file marked ✅ OK TO SUBMIT, which this one is not):**
 > 1. Download the `.tif` (or the ZIP holding only that TIFF).
 > 2. Go to https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/ (log in; not live-verified from the sandbox), then choose the file under *File to submit*.
-> 3. Paste this into *Note (optional)*: `h33-h33-2-b2; CHILISTRIC addtail52k: 52000 3DEP-10m+adapt-listric+sinter-valve crests; HOLDOUT-DTI 0.013174`
-> 4. Name/record: `GEMSDOE92-CHILISTRIC-addtail52k-20261025`. After scoring, record the receipt in `ledger/submissions.csv`.
+> 3. Paste this into *Note (optional)*: `VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat>2`
+> 4. Name/record: `GEMSDOE92-VARIO-full-20261025`. After scoring, record the receipt in `ledger/submissions.csv`.
 >
-> Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `75fcc743420f817d841b9f822e82bf4e63c850ede29e0e2d75e54b26603acf50`.
-> **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22,663 withheld positives): `0.013174 [0.011583, 0.014730]`. CHILISTRIC no10m_fixed ablation control: `0.012206 [0.010774, 0.013720]`. Paired Δ `+0.000968 [0.000146, 0.001793]`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
-> **Uniqueness** (1,605 registry rasters): worst overlap `1.0000` (limit 0.70), worst |ρ| `0.1464` / surface `0.4524` (limit 0.90). Literal-support reading: 185 raster(s) > 0.70. The literal reading is binding under the current protocol and triggers the duplicate stop.
-> Siblings: [adapt37k](docs/downloads/h33-h33-2-b2-CHILISTRICadapt37k-20261025-82694176-zeros.tif) (negative, HOLDOUT-DTI 0.012617) · [no10m_fixed](docs/downloads/h33-h33-2-b2-CHILISTRICno10m_fixed-20261025-48950a5f-zeros.tif) (negative, HOLDOUT-DTI 0.012206). **Read [SESSION_PROMPT.md](SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
+> Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573`.
+> **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22,663 withheld positives): `0.150020 [0.134975, 0.164286]`. control_FAULTNET_far control: `0.175147 [0.159756, 0.189860]`. Paired Δ `-0.025127 [-0.029306, -0.020842]`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
+> **Uniqueness** (99 registry rasters): worst overlap `0.9791` (limit 0.70), worst |ρ| `0.8913` / surface `0.1373` (limit 0.90). Literal-support reading: 4 raster(s) > 0.70. The literal reading is binding under the current protocol and triggers the duplicate stop.
+> Siblings: [vario_smooth](docs/downloads/gemsdoe92-vario-smooth-37654-20261025-5c5a1192-zeros.tif) (negative, HOLDOUT-DTI 0.141661) · [vario_nctx](docs/downloads/gemsdoe92-vario-nctx-37654-20261025-d2d499d5-zeros.tif) (negative, HOLDOUT-DTI 0.116258). **Read [SESSION_PROMPT.md](SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
 <!-- CURRENT:END -->
 
+> **Read before every session:** this README, [`SESSION_PROMPT.md`](SESSION_PROMPT.md), [`docs/PROJECT_CHARTER.md`](docs/PROJECT_CHARTER.md), the [latest review on this branch](docs/REVIEW_20261025_ARENA_3B4DB247.md), and [ordered next steps](docs/NEXT_STEPS.md). Treat this brief as operating requirements, not as proof of a score or permission to submit.
 
+> ## Fresh repository review — 2026-10-25 UTC (`arena/3b4db247-gemsdoe92`)
+> **No new TIFF or geological experiment was generated in this review; 0 weekly slots used.** After merging concurrent `origin/main` (`VARIO`), the current primary (`gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif`, SHA-256 `11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573`) remains a format-valid **research download only** (`verdict: negative`, `submission_eligible: false`; local overlap `0.9791 > 0.70` vs FAULTNET and literal full-footprint witness overlap `1.0 > 0.70`), so **DO NOT SUBMIT**. `0.2778` remains a CLAIM without an organizer receipt. [Three-pass review and conditional hypothesis ranking](docs/REVIEW_20261025_ARENA_3B4DB247.md) · [rejection-only run card](evidence/review_20261025_live_stop.json) · [selected primary TIFF](docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif) · [submission guide](docs/executive-summary.html).
+>
+> `scripts/check_site.py` now fails if the page's `data-primary` raster, `current_submission.json`, and `readiness.json` drift in path, hash, eligibility, name, or note (catching and repairing `VARIO`'s stale `current_submission.json` during merge). The README below is a historical archive; only the current status panel and its linked byte-bound records govern the current decision.
+
+> **2026-10-25 repository audit (`78db3076`; reviewed earlier checkout, then integrated with concurrent main):** The current VARIO download above is from a *different* lane and is **DO NOT SUBMIT**. This review generated **no new TIFF or geological experiment**. A pinned all-positive registry witness gives literal overlap 1.0 > 0.70 for any nonempty in-footprint candidate; neither VARIO nor the earlier LISTRICLOQO file has a submission-clearance receipt. [Three-pass review, official sources and integration findings](docs/REVIEW_20261025_78DB3076.md) · [four conditional, untried hypotheses](docs/HYPOTHESES_20261025_78DB3076.md) · [final JSON audit](docs/downloads/session_78db3076_run_card.json). The urgent request for a *new submission-eligible* TIFF remains unfulfilled. **Maximize P(Win); Own the Outcome.**
+
+## ALI session — executive summary (2026-10-25, branch `arena/4eccf0bc-gemsdoe92`)
+
+**Bottom line: a new GeoTIFF was generated, validated and tested. It is OK to download for research and NOT OK to submit.**
+
+| | |
+|---|---|
+| File | [`gemsdoe92-ali-famnms-37654-20261025T230000Z-68be9b4d-zeros.tif`](docs/downloads/gemsdoe92-ali-famnms-37654-20261025T230000Z-68be9b4d-zeros.tif) · [ZIP](docs/downloads/gemsdoe92-ali-famnms-37654-20261025T230000Z-68be9b4d-zeros.zip) · SHA-256 `25398a5dee456a5fa491cb2b6b4dbd967f60b2e4239e62ac6871297c39ec7b37` |
+| Format | PASS: 1 float32 band, EPSG:32611, 3730×3292, matching transform, values exactly {0, 1}, 0 NaN, zeros outside the footprint, 0 dots on catalogued faults |
+| Submit? | **NO.** It is a **duplicate** under the registry rule (80.6% of its dots lie within 3 px of 12GEMSDOE `r7-nms3-dem10-scarp`, whose halo covers 31.7% of the domain; 30 discriminating dot fields exceed 0.70). It also **ties** the R0-recipe control on HOLDOUT-DTI: 0.097216 [0.079836, 0.117747] vs 0.097493, paired Δ −0.000278 [−0.015980, +0.015900] (`gems57-pooled-hide-v2`, 22,663 withheld positives). It does not beat the current holdout best (FAULTNET netfar 0.175147). |
+| Name / note | `gemsdoe92-ali-famnms-37654-20261025T230000Z-68be9b4d-zeros` / `GEMSDOE92 ALI: OOF physics fault-appearance model, NMS 250 m, 37654 dots >300 m off-catalogue; holdout ties R0 recipe` (117 chars) |
+
+**Why 0.2778 (verified from bytes):**
+
+* `h33-h33-2-b2` = `dotted-h19-5-d2-8` minus every dot within 2 px of a catalogued fault. The 35,483 dots more than 3 px from the catalogue are identical in d2.8 (0.2600), h27-4 (0.2708) and h33-2-b2 (0.2778).
+* The gains came from three things:
+  1. a strong supervised skeleton (H19-5, 0.1922);
+  2. kernel-aware dotting (0.19 → 0.26);
+  3. deleting dots that hug catalogued traces. Those dots are masked or unrewarded, but still pay false-positive cost.
+* Across 105 owner-reported scores matched to registry rasters, dots within about 2–3 px of the catalogue score about 0.
+* The six unique alternatives that kept ≤ 70% overlap all scored 0.18–0.25. None beat 0.2778.
+
+**Full report:** [docs/ALI_LANE.md](docs/ALI_LANE.md) covers the analysis, aggregate-label inversion, ranked hypotheses, holdout table, uniqueness scan, verified sources and limitations. Also see the [run card](docs/downloads/ali_run_card.json) and [next steps](docs/NEXT_STEPS.md).
+
+### How to submit (only when a file is ever cleared)
+
+1. Download the `-zeros.tif` named in the status box. Upload the `.tif` **or** the one-TIFF `.zip`, never both: <https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/>.
+2. Paste the **name** and **note** shown for that file. The note must be ≤ 140 characters.
+3. Use at most 3 submissions per week (official rules §3.2/§3.4: <https://docs.nlr.gov/docs/fy26osti/96647.pdf>). Choose one final submission before the deadline.
+4. **Today no file is cleared.** Every served TIFF is research-only.
+
+### Session prompt (persisted)
+
+Read this README, [SESSION_PROMPT.md](SESSION_PROMPT.md) and [docs/NEXT_STEPS.md](docs/NEXT_STEPS.md) at the start of every session. The 2026-10-25 brief re-states the following. Generate a genuinely new, unique TIFF and make "OK to download / OK to submit" obvious. Explain h33-h33-2-b2 (0.2778 CLAIM) at PhD level. Rank 3–5 untried hypotheses. Validate on the spatially blocked hide-and-recover holdout and never spend a slot on an idea that has not beaten the current holdout best. Obey the single-lane registry stop (|ρ| > 0.90 or > 70% of dots within 3 px of one registry raster's dots, checked on the surface and on the final dots). Label every number (HOLDOUT-DTI with evaluator, withheld positives and 95% CI, or ORGANIZER-CONFIRMED). Run feature-alone leakage canaries (AUC > 0.90 = leakage). Write a run card. Stop at 3 experiments or 2 hours. Verify against official sources, flag irregularities, do three passes, then open and merge a PR. Core values: **Maximize P(Win)** and **Own the Outcome**.
+
+---
 
 > ## This session's repository review (2026-10-25 UTC)
 > **No new TIFF or experiment was generated; research downloads only, DO NOT SUBMIT or spend a slot.** No lane was assigned and the literal public-raster stop remains binding. The existing LISTRIC research file passes local format checks but fails recorded public dot overlap (`0.710735 > 0.70`) and is dated 2026-10-26, future relative to this review. [Three-pass audit](docs/REVIEW_20261025_ARENA_REPOSITORY.md) · [run card](evidence/review_20261025_arena_run_card.json) · [existing research TIFF](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif).
@@ -37,6 +100,13 @@ Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withh
 
 
 > ## Latest artifact — LISTRIC (artifact label 2026-10-26; reviewed 2026-10-25, future-date irregularity disclosed)
+> ## Latest artifact — NETEXPAND (2026-10-25) — best holdout yet, lane-duplicate: DO NOT SUBMIT
+> **✅ OK TO DOWNLOAD (one click below, format-valid)** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). Three new byte-unique GeoTIFFs (37,654 dots each, 11/11 format gates, values in [0,1], 0 NaN — portal range error fixed by all-finite zeros encoding). Strict draw-blind **HOLDOUT-DTI `netexpand_far` 0.177976 [0.163109, 0.193227]** (`gems57-pooled-hide-v2`, 22,663 withheld px) beats emission-matched KNICK control by paired **+0.066375 [+0.053280, +0.079413]** (canaries ≤0.7775 PASS) — but final dots overlap FAULTNET `netfar` at **0.7844 > 0.70**, a Protocol Rule-1 lane duplicate, so no slot is cleared. Distinct from R0/H19-5 (overlap ≤0.40); not a copy. "0.2778" remains a **CLAIM** (GEMSDOE32's own page: UNSCORED, no organiser score exists).
+>
+> **[⬇ Download primary TIF (netexpand_far)](docs/downloads/gemsdoe92-netexpand-netexpandfar-37654-20261025-47bacc15-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-netexpand-netexpandfar-37654-20261025-47bacc15-zeros.zip) · [conservative d>2 sibling](docs/downloads/gemsdoe92-netexpand-netexpand-37654-20261025-f705be3a-zeros.tif) · [run card (JSON)](docs/downloads/netexpand_run_card.json) · [analysis](docs/ANALYSIS_20261025_NETEXPAND.md) · [hypotheses](docs/HYPOTHESES_20261025_NETEXPAND.md) · [executive summary — how to submit](docs/executive-summary.html)
+>
+> SHA-256 `a1bc94252d17f7a2…`; name `gemsdoe92-netexpand-netexpand_far-20261025-47bacc15`; note (≤140): `NETEXPAND far: same LOQO pure-crest surface, dots >4px off catalogue; 37654 dots 2.8px`. Verify without any human inspector: `python3 validate_submission.py docs/downloads/gemsdoe92-netexpand-netexpandfar-37654-20261025-47bacc15-zeros.tif` → `FORMAT PASS` (registry stop still applies).
+
 > **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`, `submission_eligible: false`). New unique-byte GeoTIFFs (3 experiments); automated [0,1] validation PASS. Static **HOLDOUT-DTI `0.010909 [0.009543, 0.012278]`** (`gems57-pooled-hide-v2`, 22,663 withheld px) nominally tops KNICKLOQO `0.010788` but paired Δ `+0.000121 [-0.001167, +0.001262]` includes 0, SGMC proxy is lower, and the public dual-reading overlap `0.710735 > 0.70` (62GEMSDOE) + literal `1.000` block promotion.
 >
 > **[Download LISTRIC standalone TIFF](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif)** · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.zip) · [run card](docs/downloads/listric_run_card.json) · [analysis](docs/ANALYSIS_20261026_LISTRIC.md) · [hypotheses](docs/HYPOTHESES_20261026_LISTRIC.md) · [three-pass current review](docs/REVIEW_20261025_ARENA_8A5595A3.md) · [executive summary — how to submit](docs/executive-summary.html)
@@ -58,6 +128,21 @@ The shared distance validator previously accepted predictions inside a declared 
 GitHub Pages is still in **legacy** publishing mode; changing to workflow mode returned HTTP 403. Local/CI verification does not prove the legacy deployment is gated by Actions. No live organizer score, slot cap or portal acceptance was verified.
 
 ### Persisted user brief — starting point for every session
+### Owner addendum, 2026-10-25 (VARIO session)
+
+The owner directed: review GEMSDOE92 end-to-end; place the required data
+yourself; generate a genuinely new unique GeoTIFF (not a copy/rename); make
+OK-TO-DOWNLOAD / OK-TO-SUBMIT obvious at the top of the site and executive
+summary with one-click download, unique name and <=140-character note; avoid
+the portal "Predicted values must be in range [0, 1]" error; answer at PhD
+level why GEMSDOE32 h33-h33-2-b2 (claimed 0.2778) scored highest and
+whether/how to beat it; pre-register 3–5 untried geological hypotheses and
+validate the top one on a spatially blocked holdout before spending any
+weekly slot; end with JSON run card, verdict promote/negative, PR merged to
+main, remaining limitations. Work products: docs/HYPOTHESES_20261025_VARIO.md,
+docs/ANALYSIS_20261025_VARIO.md, docs/vario.html, evidence/vario_run_card.json
+(verdict negative; 0 slots used).
+
 
 Read this README and [SESSION_PROMPT.md](SESSION_PROMPT.md) before work. The [full supplied site-score inventory](ledger/site_scores_claimed_20261025.csv) remains owner-reported claims, not verified receipts. Retain these requirements:
 
@@ -72,23 +157,55 @@ Read this README and [SESSION_PROMPT.md](SESSION_PROMPT.md) before work. The [fu
 
 ---
 
-## `CHILISTRIC` 3-Arm Audit Summary & Verified Official Sources (`2026-10-25`)
+### Session request — 2026-10-25 (read at the start of every session)
 
-Full PhD forensic derivation (`GEMSDOE32` `0.2778 [CLAIM]` pixel algebra, Tversky fractional-linear calculus, `19GEMSDOE` `H19-5` source audit, 5 ranked geological hypotheses, 44-feature leakage canaries, 3-arm ablations, and `102`-repo `1,503`-raster uniqueness scan): **[`docs/ANALYSIS_20261025_CHILISTRIC.md`](docs/ANALYSIS_20261025_CHILISTRIC.md)** · Pre-registration: **[`docs/HYPOTHESES_20261025_CHILISTRIC.md`](docs/HYPOTHESES_20261025_CHILISTRIC.md)** · Protocol Run Card: **[`evidence/chilistric_run_card.json`](evidence/chilistric_run_card.json)** · Executive Submission Guide: **[`docs/executive-summary.html`](docs/executive-summary.html)** · Irregularities Log: **[`IRREGULARITIES.md`](IRREGULARITIES.md)**.
+This block records the user's 2026-10-25 request in condensed form. The full message is long and repeats itself. Its site-score list is already stored in [`ledger/site_scores_claimed_20261025.csv`](ledger/site_scores_claimed_20261025.csv). The two operating blocks below are reproduced in full.
 
-| Arm / Baseline | Pos. Pixels | Static `d_cat > 2.0` `HOLDOUT-DTI` `[95% CI]` | Strict Draw-Blind OOF `d_cat > 2.0` `HOLDOUT-DTI` | Strict Rule-2 `d_visible > 2.0` `HOLDOUT-DTI` | `USGS SGMC` (`d_cat > 3.0`) `PROXY` | Public `1,503`-Raster Operational Max Overlap | Verdict |
-| :--- | ---: | :--- | :--- | :--- | ---: | :--- | :--- |
-| **`CHILISTRIC addtail52k` (Primary)** | `52,000` (`{0, 0.65, 1.0}`) | **`0.013174 [0.011583, 0.014730]`** | **`0.013208 [0.011537, 0.014860]` (#1 All-Time)** | **`0.112471 [0.100285, 0.124646]`** | **`0.113149` (#1 Zero-Cat Crest)** | **`0.635115 <= 0.70` (`0 / 1,503 > 0.70`)** | `negative` *(literal dense stop)* |
-| `CHILISTRIC adapt37k` (Exp 1) | `37,654` (`{0, 1}`) | `0.012617 [0.010980, 0.014240]` | `0.012654 [0.011056, 0.014335]` | `0.108961 [0.096863, 0.121162]` | `0.096493` | `0.739975 > 0.70` (`LISTRICLOQO`) | `negative` |
-| `CHILISTRIC no10m_fixed` (Exp 3) | `37,654` (`{0, 1}`) | `0.012206 [0.010774, 0.013720]` | `0.012347 [0.010829, 0.013895]` | `0.110038 [0.097555, 0.122820]` | `0.103184` | `0.815743 > 0.70` (`LISTRICLOQO`) | `negative` |
-| `LISTRICLOQO selectcal` *(Site Primary)* | `37,654` (`{0, 1}`) | **`0.013295 [0.011713, 0.014980]` (#1 Static)** | `0.012952` / `0.013054` | `0.113938 [0.100887, 0.127394]` | `0.103442` | `0.690259 <= 0.70` | `negative` *(literal dense stop)* |
-| `KNICKLOQO standalone` | `37,654` (`{0, 1}`) | `0.010788 [0.009468, 0.012201]` | `0.010958 [0.009675, 0.012337]` | `0.109043 [0.097872, 0.120534]` | `0.103912` | `0.690259 <= 0.70` | `negative` |
-| `Parent R0` (`GEMSDOE32`, `0.2778 [CLAIM]`) | `37,654` (`{0, 1}`) | `0.004006 [0.003406, 0.004668]` | — | `0.096757` (`H19`) | `0.096060` | `1.0000` *(self in GEMSDOE32)* | Pinned baseline |
+**What was asked, mapped to where it lives**
+
+| Requirement | Status (2026-10-25) | Where |
+|---|---|---|
+| A unique, easy-to-download competition TIF, with the download/submit decision obvious on arrival | **Not met.** No candidate can clear the literal duplicate rule (dense witness, overlap 1.000). Research downloads only. | Top of this README; [executive guide](docs/executive-summary.html); [review §1](docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md) |
+| Why GEMSDOE32 reportedly scored 0.2778, and can we beat it | **Not explained.** The page says UNSCORED. Derived break-even: credit per unit mass must exceed 0.2·S. | [review §2](docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md) |
+| Live leaderboard | #1 **0.4413** (xiaofanhu, not a GEMSDOE entry). 0.3195 is not in the live top 22. | [review §2.1](docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md) |
+| 3–5 untried hypotheses, ranked, one validated before any slot | **4 ranked; none validated.** Validation is blocked by the login-gated 1 m DEM and the absent feature stack. | [review §3](docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md) |
+| Flag irregularities; no hallucinations; line-by-line verification | Done. 15 irregularities; 15 verification rows. | [review §4–5](docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md); [run card](evidence/review_20261025_audit_run_card.json) |
+| Three passes; fix failing tests | Baseline 539 pass / 3 fail. The same three failures were fixed on `main` (PR #128) during this session; merged branch: **528 pass**. | [review §0](docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md) |
+| Pull request and merge to `main` | Done in this session (see the pull request in the session summary). A publication-gate failure already on `main` (LISTRIC-HALO TIF, I-15) was removed upstream; this branch keeps that removal. Open PR #125 is **not** merged (see D1). | `gh pr list` |
+| Limitations and next steps | Listed; five operator decisions D1–D5. | [review §6–7](docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md) |
+
+**Operator decisions the agent cannot make** (the user asked for no manual input, but these are policy calls): **D1** dense-witness policy · **D2** NaN-outside vs zeros-outside · **D3** place competition inputs in `data/` from a DrivenData login · **D4** whether competition-derived files belong in a public repo · **D5** PR backlog and the AI-use narrative.
+
+**Parallel-run protocol (reproduced in full; markdown link artifacts removed):**
+
+> 1. LANE. Your lane is the single method paragraph below. Stay inside it. If your raster's rank-correlation with any registry raster exceeds [0.90], or more than [70%] of your dots fall within 3 px of one registry raster's dots, you have drifted into another lane: log it as a duplicate and stop. Check this on the surface before placement AND on the final dots.
+>
+> 2. REUSE, DON'T REBUILD. Use the template's cached feature stack, evaluate_[holdout.py] and submission_[writer.py]. Holdout = hide-and-recover: withhold whole fault segments with a buffer, derive every catalogue-based feature only from the visible faults, mask visible faults pixel-exactly, score pooled DTI (alpha 0.2, beta 0.8, 300 m triangular kernel). If a shared tool is wrong, fix it once in the template and report it; never keep a private fork.
+>
+> 3. LABEL EVERY NUMBER as HOLDOUT-DTI (evaluator version, number of withheld positives, 95% CI) or ORGANIZER-CONFIRMED (copied from a submission-page receipt). A projection is never written as a score.
+>
+> 4. LEAKAGE CANARY. Test each feature alone on the holdout before trusting any result. AUC above [0.90] means leakage until proven otherwise.
+>
+> 5. RUN CARD. End with one JSON card: hypothesis; mechanism; the named non-fault process that could mimic it; holdout DTI + CI; correlation/overlap vs registry; raster sha256; validator output (no NaN inside the footprint, values in [0,1], CRS/shape/transform match); submission name + note of at most 140 characters; verdict promote / negative. Negative results are deliverables.
+>
+> 6. BUDGET. Stop after [3] experiments or [2] hours. Do not pick submissions: promotion to a real slot is a separate selector step, within the weekly cap shown on the submission page.
+
+**Core values (quoted in part):** *Maximize P(Win)* — "Maximize the Probability of Winning": our decision making framework. *Own the Outcome* — "We own results end to end — not just our individual slice of the work."
+
+**Working rules for this project (condensed from the request):** work line by line from official, verifiable sources and give links for manual review; no manual input; flag irregularities; do not hallucinate; three passes (implement and verify, review and fix, recheck against the request); and open and merge a pull request, then list the remaining work and limitations.
 
 ---
 
 ## Historical session record (not current clearance)
 
+
+> ## Latest lane artifact — MT-CHANGEPOINT (2026-10-25, this session)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`, `submission_eligible: false`). 3 new byte-unique GeoTIFFs (Magnetotelluric conductive conduit & basement DoG changepoint detection; 3/3 pre-registered experiments); automated [0,1] format validation PASS (`nodata=None`, 0 NaN, all-finite in [0, 1]). Primary **HOLDOUT-DTI `0.043936 [0.036431, 0.051261]`** (`gems57-pooled-hide-v2`, 22,663 withheld positives, per-draw re-placement) is below the 0.113316 promotion bar. Locally unique (surface |ρ| ≤ 0.0642; final-dot overlap ≤ 0.3854 across 105 local registry rasters); literal-witness stop remains binding.
+>
+> **[Download MT-CHANGEPOINT primary TIFF](docs/downloads/gemsdoe92-mtcp-20261025T182129Z-mtcp-37654-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-mtcp-20261025T182129Z-mtcp-37654-zeros.zip) · [run card](docs/downloads/mtcp_run_card.json) · [analysis — why/how 0.2778 + this test](docs/ANALYSIS_20261025_MT_CHANGEPOINT.md) · [hypotheses](docs/HYPOTHESES_20261025_MT_CHANGEPOINT.md) · [executive summary — how to submit](docs/executive-summary.html)
+>
+> SHA-256 `ad3bc4b7a8110c2bbd3a776df9bb53e77c867201b1b1ae0e53a30c57febebb5c`; name `GEMSDOE92-MTCP-mtcp-20261025`; note (99/140): `MT-CHANGEPOINT mtcp: 37654 dots; MT changepoint x basement DoG gradient; HOLDOUT-DTI in run card`.
+> Ablations: [mt alone](docs/downloads/gemsdoe92-mtcp-20261025T182129Z-mt-37654-zeros.tif) (HOLDOUT-DTI 0.043875) · [base_grav](docs/downloads/gemsdoe92-mtcp-20261025T182129Z-base_grav-37654-zeros.tif) (0.040989; overlap 0.4189 ≤ 0.70). Leakage canaries max 0.547024 ≤ 0.90. No ORGANIZER-CONFIRMED score exists.
 
 > ## Latest lane artifact — FLEXMAG (2026-10-25, parallel session)
 > **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`, `submission_eligible: false`). 3 new byte-unique GeoTIFFs (blind-fault flexure hinge × magnetic ASA; 3/3 pre-registered experiments); automated [0,1] format validation PASS (`nodata=None`, 0 NaN). Primary **HOLDOUT-DTI `0.045554 [0.035846, 0.056751]`** (`gems57-pooled-hide-v2`, 22,663 withheld positives, per-draw re-placement) is below the 0.113316 promotion bar; magnetic-gate paired Δ includes 0. Locally unique (surface |ρ| ≤ 0.0658, final-dot overlap ≤ 0.5567 / 98 rasters); public 102-repo scan not rerun; literal-witness stop above remains binding.
@@ -121,6 +238,38 @@ Read this README, including its **Persistent Session Prompt Reference**, then th
 Publication check: `python scripts/render_public_status.py --check` then `python scripts/check_site.py`. After a lane renderer changes banner order, `python scripts/render_public_status.py` restores the authoritative first-in-body status. Both CI and Pages use the site checker; a missing/stale/buried status blocks publication. Historical lane records follow below and do not override it.
 
 ---
+
+<!-- RIEDELVALVE:BEGIN (rendered from evidence/riedelvalve_run_card.json) -->
+> ### Parallel lane result — `RIEDELVALVE` (`2026-10-25`, Transtensional Riedel $R/R'$ + Bimodal $\sqrt{\lambda_1\lambda_2}$ + 3DEP-10m Scarp + Bedrock Knickzone + INGENIOUS Fault-Valve + Additive `@0.30` N90K Tail)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** (`11/11` automated format gates PASS, `float32`, `EPSG:32611`, `3730 × 3292`, finite values strictly in `[0.0, 1.0]`, `0.0` outside footprint, `0` NaNs anywhere — prevents DrivenData's `"Predicted values must be in range [0, 1]"` error) · **⛔ DO NOT SUBMIT FOR A WEEKLY SLOT** (`verdict: "negative"`, `submission_eligible: false` under binding literal `17GEMSDOE` dense-surface overlap `1.000 > 0.70` and static `0.009054 < KNICKLOQO 0.010788`; `dual_reading_unique = True` at `0.6384 <= 0.70` across `102` public repos & `<= 0.4702` across `110` local rasters) · weekly slots used: **`0`** · experiments: **`3 / 3`**
+>
+> - **Download (`riedel_n90k`, `90,000` px: `37,654 @ 1.0 + 52,346 @ 0.30`):** [`gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif`](docs/downloads/gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif) · [one-TIFF ZIP](docs/downloads/gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.zip) · [audit JSON](docs/downloads/gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-audit.json) · [JSON Run Card](docs/downloads/riedelvalve_run_card.json) · [holdout JSON](docs/downloads/riedelvalve_holdout.json) · [102-repo uniqueness JSON](docs/downloads/riedelvalve_uniqueness.json) · [PhD Analysis (`GEMSDOE32` `0.2778` `[CLAIM]`, Lipor U-Net critique & path to `0.3195`–`0.4413`)](docs/ANALYSIS_20261025_RIEDELVALVE.md) · [Pre-Registered Hypotheses](docs/HYPOTHESES_20261025_RIEDELVALVE.md) · [Executive Summary & Submission Steps](docs/executive-summary.html)
+> - **SHA-256 (`-zeros.tif` / `-zeros.zip`):** `75d61cb1e548c27c1fa8804a124287996241988f715cb50f3c65c468cb3bc1e0` / `79c434d7a23f638d549bf02d71c8d12deb44873eb51fabbc58e765f97d0c96ac`
+> - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, `22,663` withheld positives, 8 LOQO folds) & **Off-Catalogue `PROXY`**:
+>   - **Static Deployment (`d_cat > 2.0`):** `riedel_n90k` **`0.009054 [0.007829, 0.010290]`** — beats matched-surface binary `riedelvalve` (`0.008180 [0.006977, 0.009286]`) by paired **`+0.000875 [+0.000531, +0.001215]`** (`CI > 0`), `noriedel_ablation` (`0.008272`) by **`+0.000782 [+0.000252, +0.001375]`** (`CI > 0`), `VENTSCARP` (`0.008212`), `LISTRICLAG_n90k` (`0.008100`), and `R0` (`0.004006`) by **`+0.005048 [+0.003924, +0.006109]`** (`TP_w = 343.73` vs `KNICKLOQO` `343.13`), while trailing `KNICKLOQO standalone` (`0.010788`).
+>   - **Strict Draw-Blind Rule-2 (`d_visible > 2.0`):** `riedel_n90k` **`0.108593 [0.095583, 0.120981]`** (`riedelvalve` `0.106046`, `noriedel_ablation` `0.107556`, vs `H19-5` `0.071758`, `R0` `0.004006`).
+>   - **Off-Catalogue `USGS SGMC PROXY` (`d_cat > 5.0`):** `riedel_n90k` **`0.112719` (top-2 `dual_reading_unique` LOQO lane (0.112719 > LISTRICLOQO 0.103442 & KNICKLOQO 0.095878) in `GEMSDOE92` — +17.6% vs `KNICKLOQO` `0.095878`, vs `LISTRIC` `0.090046`, `R0` `0.088789`, `VENTSCARP` `0.081321`; trailing only unsupervised `STEPEDGE` `0.139642` and `62GEMSDOE`-duplicate `POISSONFLEX` `0.114569`)**.
+> - **Canaries, Falsifier & Repairs (`32/32 PASS`):** Max single-feature symmetric AUC `0.639492 <= 0.90`; LOQO surface `0.664030 <= 0.90`; repairs `#IR-92-VENTSCARP-BAND18-UNSIGNED-GRAVITY-AND-BAND4-BAND8-SWAP` (`Band 11/13/18` Miller–Singh signed gravity tilt); Group-R Riedel falsifier fired cleanly on planar holdout (`-0.000092`, n.s.) while cutting `62GEMSDOE` overlap (`0.7258 -> 0.7082 -> 0.6384`).
+> - **Record-Only Name:** `GEMSDOE92-RIEDELVALVE-riedel_n90k-20261025` · **Note (`126/140`):** `RIEDELVALVE riedel_n90k: 37654@1.0+52346@0.30 Riedel+3DEP10m+Knick+INGENIOUS; HOLDOUT-DTI 0.108593 (static 0.009054) [neg]`
+> - **Sibling Research TIFFs (`11/11` format gates PASS, DO NOT SUBMIT):** [`gemsdoe92-riedelvalve-riedelvalve-37654-20261025-10de25be-zeros.tif`](docs/downloads/gemsdoe92-riedelvalve-riedelvalve-37654-20261025-10de25be-zeros.tif) (`1d9f623fa9874ca6…`) · [`gemsdoe92-riedelvalve-noriedel_ablation-37654-20261025-32530123-zeros.tif`](docs/downloads/gemsdoe92-riedelvalve-noriedel_ablation-37654-20261025-32530123-zeros.tif) (`2f4cfb653fe5fd03…`).
+<!-- RIEDELVALVE:END -->
+
+<!-- RIEDELVENT:BEGIN (rendered from evidence/riedelvent_run_card.json) -->
+> ### Session 2026-10-25 — lane `RIEDELVENT` (Pedersen–Rasmussen 3D Gravity-Tensor Step-Over + Tchalenko 20°/72° Riedel Obliquity + USGS 3DEP 10 m Scarp + Tufa-Filtered INGENIOUS Vents + Möbius-DTI Additive Tail)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** (`11/11` `gems.gates` + `15/15` `gems57.validate` automated format gates PASS, `float32`, `EPSG:32611`, `3730 × 3292`, finite values strictly in `[0.0, 1.0]`, `0.0` outside footprint, `0` NaNs anywhere — prevents DrivenData's `"Predicted values must be in range [0, 1]"` error) · **⛔ DO NOT SUBMIT FOR A WEEKLY SLOT** (`verdict: "negative"`, `submission_eligible: false` under binding literal `17GEMSDOE` dense-surface overlap `1.000 > 0.70` and catalogue holdout below `VENTSCARP`/`KNICKLOQO`; **`dual_reading_unique = True` at `0.6971 <= 0.70` across `102` public repos** & `<= 0.4908` across all `96` local rasters) · weekly slots used: **`0`** · experiments: **`3 / 3`**
+>
+> - **Download (`riedelvent_tail85k`, `85,000` px, Möbius `[0.30, 1.0]`):** [`gemsdoe92-riedelvent-tail85k-85000-20261025-1cc99d0f-zeros.tif`](docs/downloads/gemsdoe92-riedelvent-tail85k-85000-20261025-1cc99d0f-zeros.tif) · [one-TIFF ZIP](docs/downloads/gemsdoe92-riedelvent-tail85k-85000-20261025-1cc99d0f-zeros.zip) · [audit JSON](docs/downloads/gemsdoe92-riedelvent-tail85k-85000-20261025-1cc99d0f-audit.json) · [JSON Run Card](docs/downloads/riedelvent_run_card.json) · [holdout & uniqueness JSON](docs/downloads/riedelvent_holdout.json) · [Executive Subpage & Submit Guide (`riedelvent.html`)](docs/riedelvent.html) · [PhD Analysis (`GEMSDOE32` `0.2778` `[CLAIM]`, Möbius-DTI theorem & `#IR-92-VENTSCARP-BAND-INDEX-MISATTRIBUTION`)](docs/ANALYSIS_20261025_RIEDELVENT.md) · [Pre-Registered 5 Hypotheses](docs/HYPOTHESES_20261025_RIEDELVENT.md)
+> - **SHA-256 (`-zeros.tif` / `-zeros.zip`):** `709fc6cd643d92cd9fa7f77623007bb9da3763aa4ba0871f41f06e4b96541a40` / `3ce8dccb94610a410f3ea4b4283b2c0126f7fae3268b415c72e3cfbb91365a7c`
+> - **HOLDOUT-DTI & Off-Catalogue SGMC Proxy** (`gems57-pooled-hide-v2`, `22,663` withheld positives, `1,000` paired spatial-block bootstrap draws):
+>   - **Off-Catalogue `USGS SGMC PROXY` (NEW ALL-TIME REPO #1):** `riedelvent_tail85k` **`0.135694`** (`d_cat > 5 px`) / **`0.139793`** (`d_cat > 3 px`), beating `POISSONFLEX opt` (`0.120957`, `+12.18%`), `KNICKLOQO standalone` (`0.095878`, `+41.53%`), `LISTRIC standalone` (`0.090046`, `+50.69%`), `R0` (`0.088789`, `+52.83%`), and `VENTSCARP` (`0.081321`, `+66.86%`). At matched `37,654` px, `bin37k` (`0.106141`) beats `collinear_novent` (`0.096908`, `+9.53%`) and `KNICKLOQO` (`0.095878`, `+10.70%`).
+>   - **Strict Draw-Blind Rule-2 (`d_visible > 2.0`, zero-catalogue LOQO):** `riedelvent_tail85k` **`0.108448 [0.095906, 0.122629]`** (`+0.002537` Möbius-tail lift over `bin37k` `0.105910`; `bin37k` `+0.001352` over `collinear_novent` `0.104558`; `27.07×` `R0` `0.004006`; trails `VENTSCARP` `0.112213`).
+>   - **Static Deployment (`d_cat > 2.0`):** `riedelvent_tail85k` **`0.009755 [0.008434, 0.010969]`** (paired `+0.001543 [+0.000669, +0.002430]` over `VENTSCARP` `0.008212`; `+0.000979` over `bin37k` `0.008776`; trails `KNICKLOQO standalone` `0.010788`).
+> - **Canaries & Band-Tag Audit (`32/32 PASS`):** Enforced programmatic GDAL `band_name` tag check (`assert_training_band_tags`), uncovering `#IR-92-VENTSCARP-BAND-INDEX-MISATTRIBUTION`; max single-feature symmetric AUC `0.638949 <= 0.90`; OOF surface `0.667221 <= 0.90`.
+> - **Record-Only Name:** `GEMSDOE92-RIEDELVENT-tail85k-20261025` · **Note (`101/140`):** `RIEDELVENT tail85k: 85000px Mobius [0.3,1] Riedel+10m+vents; HOLDOUT-DTI 0.108448 (st 0.009755) [neg]`
+> - **Sibling Research TIFFs (`11/11` + `15/15` format gates PASS, DO NOT SUBMIT):** [`gemsdoe92-riedelvent-bin37k-37654-20261025-6797160f-zeros.tif`](docs/downloads/gemsdoe92-riedelvent-bin37k-37654-20261025-6797160f-zeros.tif) (`da96c3af27994f6c…`) · [`gemsdoe92-riedelvent-collinear_novent-37654-20261025-37221889-zeros.tif`](docs/downloads/gemsdoe92-riedelvent-collinear_novent-37654-20261025-37221889-zeros.tif) (`2e220bb549e65c59…`).
+
+> **Prior RIEDELVENT baseline iteration (not the current Möbius run):** [`binary 37,654px TIF`](docs/downloads/gemsdoe92-riedelvent-riedelvent-37654-20261025-73ec79ae-zeros.tif) · [`64,000px additive-tail TIF`](docs/downloads/gemsdoe92-riedelvent-riedelvent_tail-64000-20261025-c4e61655-zeros.tif) · [`37,654px ablation TIF`](docs/downloads/gemsdoe92-riedelvent-riedel_novent-37654-20261025-8e0bcdd5-zeros.tif) · [baseline run card](docs/downloads/riedelvent_baseline_run_card.json) · [baseline analysis](docs/ANALYSIS_20261025_RIEDELVENT_BASELINE.md). These earlier artifacts remain format-valid research downloads only; literal-registry overlap is 1.000 and they are **not cleared to submit**.
+<!-- RIEDELVENT:END -->
 
 <!-- VENTSCARP:BEGIN (rendered from evidence/ventscarp_run_card.json) -->
 > ### Parallel lane result — `VENTSCARP` (`2026-10-25`, USGS 3DEP 10 m Scarp + Tufa-Filtered INGENIOUS Hydrothermal Vents)
@@ -452,10 +601,10 @@ PYTHON=.venv/bin/python make test && PYTHON=.venv/bin/python make site && PYTHON
 
 ## Persistent Session Prompt Reference
 
-Full durable operating contract also stored in [`SESSION_PROMPT.md`](SESSION_PROMPT.md). The prompt below is preserved verbatim as historical input, not as a claim that GEMSDOE32 received a verified `0.2778` score or that a current TIFF is submission-cleared. Follow the binding negative decision at the top of this README and the evidence-linked reviews instead.
+Full durable operating contract also stored in [`SESSION_PROMPT.md`](SESSION_PROMPT.md). This expandable prompt block is a **normalized, condensed operating brief**, not a verbatim archive of the full historical user message. Read it with the linked contract at every session start. Neither document turns GEMSDOE32's `0.2778` into a verified organizer score or clears a TIFF for submission; follow the binding negative decision at the top of this README and the evidence-linked reviews instead.
 
 <details>
-<summary>Click to expand persistent session prompt</summary>
+<summary>Click to expand the persisted operating brief (normalized, not verbatim)</summary>
 
 ```markdown
 Review the repo. Work on the previous sessions' next steps first.
@@ -497,3 +646,71 @@ Study GEMSDOE32 (h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros: 0.2778): why and 
 ## Additional parallel research records (not rerun in review797e)
 
 Main `d6f7ac0` added [RADIODECOUPLE](docs/ANALYSIS_20261025_RADIODECOUPLE.md) and [CURIE-DEMAG](docs/ANALYSIS_20261026_CURIEDEMAG.md) research artifacts. Their original run cards and code are preserved. These do not override the literal stop or constitute experiments run in this review. CURIE-DEMAG names are future-dated relative to this review; use receipt hashes and actual verification timestamps.
+
+---
+
+## Session Prompt — Authoritative Operating Contract (read at every session start)
+
+The full durable operating contract below is the starting point for all work on this repository. It is a condensed operating brief, not a verbatim archive of the historical input, and it is not a claim that any GEMSDOE entry received a verified organizer score or that any current TIFF is submission-cleared. Follow the binding negative decision at the top of this README and the evidence-linked reviews instead.
+
+### Highest urgency — MUST
+
+**MUST generate a unique TIF submission for the competition. Do not copy a previous submission unless it's for learning and education. But we must generate a unique TIF submission. It must be obvious whether it is OK to download and submit the generated TIF submission.**
+
+There should be an easy-to-download submission TIF file as described by the prompt. A lot of sites mention inspection only and a human inspector, but the inspection needs to be done through the project and needs to be validated for submission without human intervention.
+
+### Parallel-run protocol
+
+1. **LANE.** Your lane is the single method paragraph below. Stay inside it. If your raster's rank-correlation with any registry raster exceeds 0.90, or more than 70% of your dots fall within 3 px of one registry raster's dots, you have drifted into another lane: log it as a duplicate and stop. Check this on the surface before placement AND on the final dots.
+
+2. **REUSE, DON'T REBUILD.** Use the template's cached feature stack, evaluate_holdout.py and submission_writer.py. Holdout = hide-and-recover: withhold whole fault segments with a buffer, derive every catalogue-based feature only from the visible faults, mask visible faults pixel-exactly, score pooled DTI (alpha 0.2, beta 0.8, 300 m triangular kernel). If a shared tool is wrong, fix it once in the template and report it; never keep a private fork.
+
+3. **LABEL EVERY NUMBER** as HOLDOUT-DTI (evaluator version, number of withheld positives, 95% CI) or ORGANIZER-CONFIRMED (copied from a submission-page receipt). A projection is never written as a score.
+
+4. **LEAKAGE CANARY.** Test each feature alone on the holdout before trusting any result. AUC above 0.90 means leakage until proven otherwise.
+
+5. **RUN CARD.** End with one JSON card: hypothesis; mechanism; the named non-fault process that could mimic it; holdout DTI + CI; correlation/overlap vs registry; raster sha256; validator output (no NaN inside the footprint, values in [0,1], CRS/shape/transform match); submission name + note of at most 140 characters; verdict promote / negative. Negative results are deliverables.
+
+6. **BUDGET.** Stop after 3 experiments or 2 hours. Do not pick submissions: promotion to a real slot is a separate selector step, within the weekly cap shown on the submission page.
+
+### Competition context
+
+- **Competition:** DOE GEMS Prize, DrivenData #306 — <https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/>
+- **About:** <https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/>
+- **Data:** <https://www.drivendata.org/competitions/306/competition-doe-gems/data/> (requires DrivenData login)
+- **Leaderboard:** <https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/> — current high score 0.4413 (not a GEMSDOE entry); 0.3195 not on the top-50 snapshot
+- **Official rules PDF:** <https://docs.nlr.gov/docs/fy26osti/96647.pdf> (three submissions per week, one final selection, generative-AI disclosure, human judging by DOE)
+- **Reference solution:** <https://github.com/drivendataorg/gems-prize-reference-solution>
+- **USGS GeoDAWN:** <https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and>
+- **DOE GDR #1391 INGENIOUS:** <https://gdr.openei.org/submissions/1391>
+- **GBCGE INGENIOUS:** <https://gbcge.org/current-projects/ingenious/>
+- **EPSG:32611:** <https://epsg.io/32611>
+- **Tversky index:** <https://en.wikipedia.org/wiki/Tversky_index>
+
+### Submission format (validated in-project, no human inspection)
+
+- Single-band GeoTIFF (.tif) or a .zip containing a single GeoTIFF
+- Must match the submission format's CRS (EPSG:32611), shape (3730 × 3292), and geotransform ((100, 0, 243350, 0, -100, 4508550))
+- Values must be finite and in [0, 1] (prevents the portal error "Predicted values must be in range [0, 1]")
+- Zero outside the footprint; 0 NaN inside the footprint
+- Unique submission name and a short note (≤ 140 characters)
+
+### Core values
+
+- **Maximize P(Win):** In every decision, weigh tradeoffs, assess risk, and choose the path that maximizes the probability of winning. Preserve scarce slots; reject unsupported score claims.
+- **Own the Outcome:** Own results end to end. Fix shared defects and report unmet requirements; do not weaken a failed gate. A reproducible negative is preferable to a fabricated submission claim.
+
+### Deliverables for this session
+
+1. Generate 3–5 candidate geological hypotheses not yet tried (layers, physical signature, missing-fault rationale, differences, mimic, expected value, cost) — see docs/HYPOTHESES_TILTANGLE.md
+2. Validate the top candidate (H1 TILTANGLE: gravity tilt-angle edge corridors) on the spatially-blocked holdout set — HOLDOUT-DTI 0.033466 [gems57-pooled-hide-v2, 45,253 withheld positives]
+3. Generate a unique TIF submission — gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif (format-valid, SHA-256 f17eae78ff659e3551fb4a4f92ef9e16180fde22a9d157a2114b03ef98a023e7)
+4. Create executive summary subpage — docs/tiltangle.html
+5. Store the prompt in README.md (this section)
+6. Create and merge a pull request onto main
+
+### Deliverables added in `RELAYCONDUIT` session (`2026-10-25`)
+
+1. Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261025_RELAYCONDUIT.md`) before implementation (`gems/relayconduit.py`, `scripts/run_relayconduit.py`).
+2. Validated all 3 pre-registered arms on `gems57-pooled-hide-v2` (`22,663` withheld positives, `35/35` leakage canaries PASS `<= 0.90`): `relay_conduit` strict Rule-2 `HOLDOUT-DTI = 0.184485 [0.169875, 0.198933]` (paired `+0.069008 [+0.053289, +0.084771]` over rebuilt `control_COULOMBLOQO_d32` `0.115477`; locally unique across all `128` post-merge rasters at `0.6601 <= 0.70`; external 102-repo overlap `0.7843 > 0.70` vs `GEMSDOE53` 80k); `relay_delta` `0.180061 [0.165231, 0.193562]`; zero-catalogue `conduit_notip` `0.076416` (`SGMC PROXY = 0.106525`, passes all `1,367` external rasters across `102` repos at `0.6557 <= 0.70`, `0` external violations, and `0.7031` locally vs `RIEDELVALVE riedel_n90k` `90k`).
+3. Emitted 3 `[0, 1]` format-validated GeoTIFFs (`11/11` gates PASS, `0` NaN), Run Card (`evidence/relayconduit_run_card.json`), executive subpage (`docs/relayconduit.html`), and PhD forensic analysis (`docs/ANALYSIS_20261025_RELAYCONDUIT.md`, including `GEMSDOE32` `0.2778` `[CLAIM]`, `0.3195` / `0.4413` ceilings, and `VENTSCARP` §1.3 corrections). Verdict `negative` (`0` weekly slots spent).

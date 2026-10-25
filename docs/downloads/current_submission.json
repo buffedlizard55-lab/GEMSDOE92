@@ -1,174 +1,101 @@
 {
   "schema": "gemsdoe92-current-submission-v1",
-  "generated_utc": "2026-10-25T19:59:51.597676+00:00",
-  "lane": "CHILISTRIC",
-  "arm": "addtail52k",
+  "generated_utc": "2026-10-25T17:39:26.606651+00:00",
+  "lane": "VARIO",
+  "arm": "vario_full",
   "ok_to_download": true,
   "ok_to_submit": false,
   "verdict": "negative",
-  "file": "docs/downloads/h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.tif",
-  "zip": "docs/downloads/h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.zip",
-  "sha256": "75fcc743420f817d841b9f822e82bf4e63c850ede29e0e2d75e54b26603acf50",
-  "zip_sha256": "9ea66d375abf5f66a3e73380ddcb02926ed9d853876446871ecaf38c6bf26a38",
-  "submission_name": "GEMSDOE92-CHILISTRIC-addtail52k-20261025",
-  "note": "h33-h33-2-b2; CHILISTRIC addtail52k: 52000 3DEP-10m+adapt-listric+sinter-valve crests; HOLDOUT-DTI 0.013174",
-  "analysis": "docs/ANALYSIS_20261025_CHILISTRIC.md",
+  "file": "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif",
+  "zip": "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.zip",
+  "sha256": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573",
+  "zip_sha256": "563bf739a3c4aa705c36ad3e1317fffeff24acd7acb485858ba3ce2c084064df",
+  "submission_name": "GEMSDOE92-VARIO-full-20261025",
+  "note": "VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat>2",
+  "analysis": "docs/ANALYSIS_20261025_VARIO.md",
   "holdout_dti": {
     "evidence_class": "HOLDOUT-DTI",
     "evaluator_version": "gems57-pooled-hide-v2",
-    "dti": 0.013173871226488866,
+    "dti": 0.15002012085424568,
     "ci95": [
-      0.011582546282449936,
-      0.014729796433198859
-    ],
-    "strict_draw_blind_oof_dcat_gt_2_dti": 0.013208080722508892,
-    "strict_draw_blind_oof_dcat_gt_2_ci95": [
-      0.011536832890865387,
-      0.014860005035429271
+      0.13497540059406068,
+      0.1642856062511979
     ],
     "withheld_positives": 22663,
     "paired_vs_control": {
       "evidence_class": "HOLDOUT-DTI",
       "evaluator_version": "gems57-pooled-hide-v2",
-      "delta": 0.0009678313029284485,
+      "delta": -0.025127271570293264,
       "ci95": [
-        0.00014644272507771848,
-        0.0017926778962142073
+        -0.029305915361244498,
+        -0.02084222808563093
       ],
       "withheld_positive_pixels": 22663
     },
     "paired_vs_required_controls": {
-      "LISTRICLOQO selectcal (static d_cat>2.0)": {
-        "control_dti": 0.01329539715555815,
-        "delta": -0.00012152592906928411,
+      "control_FAULTNET_far": {
+        "control_dti": 0.17514739242453894,
+        "delta": -0.025127271570293264,
         "ci95": [
-          -0.000831983170682847,
-          0.000602013547743847
-        ]
-      },
-      "KNICKLOQO standalone": {
-        "control_dti": 0.010787691812873463,
-        "delta": 0.0023861794136154028,
-        "ci95": [
-          0.001303803830251604,
-          0.0033096152690643603
+          -0.029305915361244498,
+          -0.02084222808563093
         ]
       }
     }
   },
   "control": {
-    "name": "CHILISTRIC no10m_fixed ablation",
-    "dti": 0.012206039923560418,
+    "name": "control_FAULTNET_far",
+    "dti": 0.17514739242453894,
     "ci95": [
-      0.010774262644974018,
-      0.013720392197720912
+      0.15975607453868745,
+      0.18986032151872523
     ]
   },
   "uniqueness": {
     "unique_operative": false,
-    "duplicates_operative": 1,
+    "duplicates_operative": 3,
     "worst_overlap_final": {
-      "value": 1.0,
-      "raster": "17GEMSDOE/outputs/submissions/20261024T175340Z_17GEMSDOE_E-proba-multiscale.tif (public dual-reading operational max 0.6351 <= 0.70, 0 / 1,503 > 0.70)",
-      "representation": "continuous_surface_literal",
-      "their_positive": 5167373
+      "value": 0.979126,
+      "raster": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
+      "representation": "dot_field",
+      "their_positive": 37654
     },
     "worst_overlap_surface_topn": {
-      "value": 0.635115,
-      "raster": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+      "value": 0.979126,
+      "raster": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
       "representation": "dot_field",
-      "their_positive": 100000
+      "their_positive": 37654
     },
     "worst_abs_rho_final": {
-      "value": 0.146436,
-      "raster": "GEMSDOE92/docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif",
+      "value": 0.891258,
+      "raster": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
       "representation": "dot_field",
       "their_positive": 37654
     },
     "worst_abs_rho_surface": {
-      "value": 0.452363,
-      "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
-      "representation": "continuous_surface",
+      "value": 0.137259,
+      "raster": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
+      "representation": "dot_field",
       "their_positive": null
     },
-    "registry_rasters_checked": 1605,
+    "registry_rasters_checked": 99,
     "literal_reading": {
-      "rasters_over_0p70": 185,
-      "operative_rasters_over_0p70": 0,
+      "rasters_over_0p70": 4,
       "full_footprint_surfaces": 1,
-      "note": "0 / 1,503 public rasters > 0.70 operationally (max 0.635115); literal unweighted dense-witness overlap 1.0"
+      "note": "3 local rasters > 0.70 plus pinned full-footprint witness overlap 1.0"
     }
   },
-  "run_card": "docs/downloads/chilistric_run_card.json",
+  "run_card": "docs/downloads/vario_run_card.json",
   "siblings": {
-    "adapt37k": {
-      "file": "docs/downloads/h33-h33-2-b2-CHILISTRICadapt37k-20261025-82694176-zeros.tif",
+    "vario_smooth": {
+      "file": "docs/downloads/gemsdoe92-vario-smooth-37654-20261025-5c5a1192-zeros.tif",
       "verdict": "negative",
-      "dti": 0.012616847933760824
+      "dti": 0.14166053229767137
     },
-    "no10m_fixed": {
-      "file": "docs/downloads/h33-h33-2-b2-CHILISTRICno10m_fixed-20261025-48950a5f-zeros.tif",
+    "vario_nctx": {
+      "file": "docs/downloads/gemsdoe92-vario-nctx-37654-20261025-d2d499d5-zeros.tif",
       "verdict": "negative",
-      "dti": 0.012206039923560418
+      "dti": 0.11625849059760031
     }
-  },
-  "extra_metrics": {
-    "strict_oof_dcat2": "0.013208 [0.011537, 0.014860] (#1 ALL-TIME in GEMSDOE92)",
-    "rule2_dvis2": "0.112471 [0.100285, 0.124646]",
-    "sgmc_proxy": "0.113149 (#1 zero-catalogue crest; +9.4% vs LISTRICLOQO 0.103442)",
-    "public_dual_reading": "0.635115 <= 0.70 (0 / 1,503 public rasters > 0.70)",
-    "canaries": "44/44 PASS (max symmetric AUC 0.617275 <= 0.90)",
-    "hypotheses_doc": "docs/HYPOTHESES_20261025_CHILISTRIC.md"
-  },
-  "verified_sources": [
-    {
-      "name": "DrivenData GEMS #306 & DTI Reference (Lipor U-Net)",
-      "url": "https://github.com/drivendataorg/gems-prize-reference-solution",
-      "url_label": "drivendataorg/gems-prize-reference-solution",
-      "sha256_short": "2176d08e485a... (sample_submission.tif)",
-      "role": "EPSG:32611 3730x3292 [0,1] contract; alpha=0.2, beta=0.8, 300 m tent kernel"
-    },
-    {
-      "name": "INGENIOUS 19-Band Great Basin Stack (GDR #1496)",
-      "url": "https://gdr.openei.org/submissions/1496",
-      "url_label": "gdr.openei.org/submissions/1496",
-      "sha256_short": "4371c82e3b83... (training_features.tif)",
-      "role": "19-band 100 m geophysical compilation (Bands 1..19 GDAL-verified)"
-    },
-    {
-      "name": "USGS 3DEP 10 m Scarp & Fluvial chi (Willett et al. 2014)",
-      "url": "https://www.usgs.gov/3d-elevation-program",
-      "url_label": "usgs.gov/3d-elevation-program",
-      "sha256_short": "a6398d995096... & 8897ba9c30ef...",
-      "role": "topo_10m_derived_100m_u8.tif (9 bands) + dem10_chi_100m_i16.tif (5 bands) -> f38..f40"
-    },
-    {
-      "name": "USGS GeoDAWN Airborne Radiometrics (K, eTh, eU)",
-      "url": "https://www.usgs.gov/centers/gggsc/science/geodawn-geophysical-data-acquisition-western-nevada",
-      "url_label": "USGS GeoDAWN Western Nevada",
-      "sha256_short": "c22420f75999... & a35a9c6d2a14...",
-      "role": "geodawn_rad_u8.tif (3 bands) + geodawn_extensions_u8.tif (4 bands) -> f27, f34, f42"
-    },
-    {
-      "name": "INGENIOUS Paleo-Sinter (195 kept), 2 m Probe (2,782) & GDR #1391 (4,798)",
-      "url": "https://gdr.openei.org/submissions/1391",
-      "url_label": "gdr.openei.org/submissions/1391",
-      "sha256_short": "faffcf69..., 1301f70d..., 122718e6...",
-      "role": "Strike-advected sinter/probe/spring fault-valve conduits -> f41 (dist_known_fault_px dropped)"
-    },
-    {
-      "name": "USGS SGMC 1:500k Bedrock Faults (Horton et al. 2017 DS-1052)",
-      "url": "https://pubs.usgs.gov/ds/1052/",
-      "url_label": "pubs.usgs.gov/ds/1052/",
-      "sha256_short": "643cbe992ef4... (derived_sgmc_faults)",
-      "role": "Post-hoc off-catalogue proxy ONLY (d_cat > 3.0 px; never used as input feature)"
-    },
-    {
-      "name": "Parent R0 (GEMSDOE32 h33-h33-2-b2, 0.2778 [CLAIM])",
-      "url": "https://github.com/buffedlizard55-lab/GEMSDOE32",
-      "url_label": "buffedlizard55-lab/GEMSDOE32",
-      "sha256_short": "c55bafc47005... (parent_R0_zeros.tif)",
-      "role": "37,654 px (D2.8 & d_cat > 2.0, 0 XOR); 0 ORGANIZER-CONFIRMED receipts in GEMSDOE92"
-    }
-  ]
+  }
 }

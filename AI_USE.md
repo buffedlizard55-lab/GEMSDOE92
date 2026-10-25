@@ -394,3 +394,29 @@ No DrivenData login or upload, no leaderboard scraping, no copied score, no proj
 
 ### What the AI did not do
 No DrivenData login or upload, no public-registry scan for GRAV-QUAD (explicitly skipped per the 3-experiment/2-hour budget rule after the local 107-raster uniqueness check passed and two prior lanes this session arc, RADIOCONTACT and DRAINAGE-KNICK, had already been confirmed unique against the full public registry), no projection presented as a score, no re-litigation of the previously-settled COULOMB-LOQO/EULERFUSE exemption question, no modification of any pinned external file's contents (the `thermalclass` whitespace defect found in the pinned GDR CSV was documented, not silently "fixed" in the pinned file, since doing so would break its SHA-256 pin).
+
+---
+
+## Session — repository audit, pre-merge integration and AI-use check (2026-10-25)
+
+Rule basis: official rules §3.2 ("indicate in the narrative (not included in the word count) the extent to which, if any, you used generative AI technology and how you used it"). This section is an internal log. It is **not** the submission narrative, and no submission narrative has been written yet, so the §3.2 requirement is **still open** (review I-13).
+
+### What AI wrote or changed
+- `docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md` and `evidence/review_20261025_audit_run_card.json`: audit, verification table, irregularities I-1…I-15, four untried hypotheses (ranked, none validated), operator decisions D1–D5, limitations.
+- README session block (normalized operating brief) and an addendum at the top of `SESSION_PROMPT.md`.
+- Merge resolutions with `origin/main` (conflicts in `SESSION_PROMPT.md` and the quarantined LISTRIC-HALO files; the files were removed upstream and this branch kept that removal).
+- Corrections to this review's own text after `main` changed the primary to VARIO (the primary named in the review, run card and this log is now the VARIO file).
+
+### What the AI ran (no human inspection step)
+- `pytest` (558 passed on the merged tree), `scripts/check_site.py` (PASS, 109 served rasters gated), `render_public_status.py --check` (PASS), `make manifest`, `make validate` on the LISTRICLOQO file and the VARIO primary (both PASS, 9 gates).
+- PR #136 merged into `main` as `fbbd0ad` after CI passed on the final head.
+
+### What the AI did not do
+- No new GeoTIFF was generated, no submission was made, no weekly slot was used, and no DrivenData login or organiser receipt was obtained.
+- No promotion decision was made. D1 (whether a full-footprint continuous surface counts as a dot-overlap witness) remains open for the operator.
+- No number was presented as an organiser score. HOLDOUT-DTI figures are labelled as such.
+
+### What the human must still do
+- Decide D1–D5 (see the review doc).
+- Write the submission narrative that states the extent and manner of generative-AI use, as §3.2 requires. This log can be cited but does not replace it.
+- Confirm any submission file against the DrivenData upload page. The sandbox has no login, so this has not been verified from here.

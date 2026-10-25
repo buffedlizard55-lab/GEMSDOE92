@@ -115,8 +115,10 @@ def test_no_universal_stop_cannot_produce_receipt(monkeypatch):
 @pytest.fixture
 def published(tmp_path, monkeypatch):
     root = Path(__file__).resolve().parents[1]
+    card0 = json.loads((root / 'docs/downloads/review48_run_card.json').read_text())
     for rel in ('docs/downloads/review48_run_card.json', 'scripts/audit_readiness.py',
-                'scripts/preflight_dense_witness.py', 'docs/review48.html'):
+                'scripts/preflight_dense_witness.py', 'docs/review48.html',
+                card0['primary_download']):
         dest = tmp_path / rel
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_bytes((root / rel).read_bytes())
@@ -145,7 +147,7 @@ def test_publication_fails_closed_on_stale_or_invented_evidence(published, chang
     path = published / 'docs/downloads/review48_run_card.json'
     card = json.loads(path.read_text())
     if change == 'code':
-        (published / 'scripts/audit_readiness.py').write_text('changed')
+        card['audit_implementation_sha256'] = 'bad'
     elif change == 'proof':
         card['correlation_overlap_vs_registry']['preplacement_proof']['implementation_sha256'] = 'bad'
     elif change == 'holdout':
@@ -183,6 +185,7 @@ def test_clean_review_links_and_download_match_current_primary():
     problems = []
     primary = primary_download((docs / 'index.html').read_text(), problems)
     assert not problems and primary in parser.links
+    assert 'SUPERSEDED' in text  # historical page must not pose as current decision
     assert 'No new unique TIFF was generated' in text
     assert 'DO NOT SUBMIT' in text
     assert 'UNSCORED' in text

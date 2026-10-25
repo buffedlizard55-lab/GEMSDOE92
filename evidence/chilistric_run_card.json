@@ -584,6 +584,14 @@
       "addtail52k_vs_no10m_fixed": 0.602827,
       "no10m_fixed_vs_adapt37k": 0.695783,
       "no10m_fixed_vs_addtail52k": 0.806714
+    },
+    "post_merge_docs_downloads": {
+      "rasters_checked": 124,
+      "worst_matched_budget_forward_overlap_3px": 0.677269,
+      "worst_witness": "docs/downloads/gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif",
+      "worst_witness_positive_pixels": 90000,
+      "over_70pct_count": 0,
+      "post_merge_unique": true
     }
   },
   "raster_sha256": "75fcc743420f817d841b9f822e82bf4e63c850ede29e0e2d75e54b26603acf50",

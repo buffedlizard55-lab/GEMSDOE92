@@ -1,0 +1,81 @@
+{
+  "schema": "gemsdoe92.review-run-card.v2",
+  "review_date_utc": "2026-10-25",
+  "review_doc": "docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md",
+  "scope": "Repository audit, 0.2778 analysis, untried-hypothesis ranking, failing-test repair, README brief. No new raster generated, no holdout run, no organizer submission.",
+  "experiments_used": 0,
+  "experiment_budget": 3,
+  "weekly_slots_used": 0,
+  "hypothesis": "No new hypothesis was tested. Top untried candidate (ranked 1 of 4): a 1 m DEM expert-instrument scarp/lineament detector aggregated to 100 m, using the competition's 1m_DEM_links.csv. Not validated: the 1 m DEM is login-gated and the 19-band feature stack is absent.",
+  "mechanism": "Sub-10 m linear scarps and shear lineaments that expert fault mappers would plausibly see at 1 m but that a 10 m DEM or the 100 m template bands miss. Proposed mechanism only; no geophysical result exists.",
+  "named_non_fault_process_that_could_mimic_it": "Roads, canal berms, cut banks, and Lake Lahontan shoreline terraces (road mask source not yet verified).",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "value": null,
+    "ci95": null,
+    "withheld_positives": null,
+    "evaluator_version": "gems57-pooled-hide-v2 (not run this session)",
+    "reason": "Feature stack absent from .cache/gems_inputs; no new holdout run. Historical values are labelled HOLDOUT-DTI in their own run cards and are not re-certified here."
+  },
+  "correlation_overlap_vs_registry": {
+    "witness": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "witness_git_blob_sha1": "374c88b1da2b803e2ed160de467fd71ae114010d",
+    "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "witness_positive_fraction_of_footprint": 1.0,
+    "witness_positive_pixels_in_footprint": 5167373,
+    "witness_footprint_pixels": 5167373,
+    "current_primary_forward_overlap_within_3px": 1.0,
+    "current_primary_positive_cells_inside_footprint": "37654 of 37654",
+    "literal_rule": "forward overlap > 0.70 OR |Spearman| > 0.90 => duplicate, log and stop",
+    "spearman_recomputed_this_session": false,
+    "spearman_reported_by_repo_for_apronridge_vs_witness": 0.05623747382008243,
+    "evidence_class": "REGISTRY-MEASUREMENT (single witness, reproduced this session)",
+    "all_served_candidates_positives_inside_footprint": "109 of 109 TIFs in docs/downloads (every file with positive cells)",
+    "vario_full_positives_inside_footprint": "37654 of 37654"
+  },
+  "raster_sha256": {
+    "new_raster_generated": false,
+    "current_primary": "58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17",
+    "current_primary_file": "docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif"
+  },
+  "validator_output": {
+    "current_primary_make_validate": "RESULT: PASS (9 gates) \u2014 crs EPSG:32611, shape 3730x3292, transform matches sample, float32 1 band, values in [0,1], 0 NaN in footprint, zeros outside (7111787), reread sha256 matches",
+    "nan_outside_example_file": "docs/downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88.tif \u2014 values_in_0_1 PASS, nan_outside_footprint PASS, submission_encoding FAIL (all_finite=False, zero_outside=False)",
+    "site_check": "scripts/check_site.py: SITE CHECK PASS (93 served raster(s) gated)",
+    "public_status_check": "scripts/render_public_status.py --check: PUBLIC STATUS PASS",
+    "test_suite": "pytest tests on merged branch: 528 passed (pre-merge baseline: 539 passed, 3 failed; the same 3 failures were fixed on main by PR #128)",
+    "served_tif_scan": "docs/downloads: 97 -zeros.tif zeros-outside, 12 unsuffixed NaN-outside (7111787 NaN cells each)",
+    "test_suite_after_quarantine": "549 passed (merged tree with main through PR #134); site gate PASS on 103 served rasters"
+  },
+  "submission_name": null,
+  "submission_note": null,
+  "submission_note_characters": null,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "ok_to_download": "research only",
+  "ok_to_submit": false,
+  "blocking_decisions_for_operator": [
+    "D1 dense-witness policy (literal rule unsatisfiable for any in-footprint raster)",
+    "D2 encoding: NaN-outside (official wording) vs zeros-outside (repo gate)",
+    "D3 place competition inputs in data/ from the DrivenData login",
+    "D4 public-repo redistribution of competition-derived files (legal review)",
+    "D5 PR backlog and AI-use disclosure"
+  ],
+  "official_sources": [
+    "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/",
+    "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+    "https://docs.nlr.gov/docs/fy26osti/96647.pdf",
+    "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
+  ],
+  "irregularities_action": "I-15: LISTRIC-HALO 32k TIF (lane verdict negative; fails distance_from_catalogue) was first moved to evidence/quarantine/ on this branch, then removed upstream on main; this branch keeps the removal. Git history retains the files.",
+  "current_primary_file": "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif",
+  "current_primary": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573",
+  "current_primary_make_validate": "RESULT: PASS (9 gates) on the merged-tree primary (VARIO); crs EPSG:32611, shape 3730x3292, transform matches sample, float32 1 band, values in [0,1], 0 NaN in footprint, zeros outside (7111787), reread sha256 matches",
+  "current_primary_positive_cells_inside_footprint": "37654 of 37654",
+  "previous_primary_during_review": {
+    "file": "docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif",
+    "sha256": "58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17",
+    "validate": "PASS (9 gates)"
+  },
+  "irregularities_I14": "Partly resolved on main: current_submission.json, readiness.json, site data-primary and README CURRENT block now all name VARIO. Open: VARIO-STATUS block wording says unique while CURRENT block records duplicate 0.9791 > 0.70."
+}

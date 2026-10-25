@@ -1,0 +1,151 @@
+{
+  "file": "gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif",
+  "sha256": "f17eae78ff659e3551fb4a4f92ef9e16180fde22a9d157a2114b03ef98a023e7",
+  "bytes": 132713,
+  "submission_name": "GEMSDOE92-TILTANGLE-tiltangle-20261025T182301Z",
+  "note": "h33-h33-2-b2; TILTANGLE research only (DO NOT SUBMIT): gravity edge x collar; pure static HOLDOUT-DTI 0.005272; duplicate",
+  "note_chars": 121,
+  "submission_eligible": false,
+  "verdict": "negative",
+  "validator": {
+    "file": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif",
+    "bytes": 132713,
+    "sha256": "f17eae78ff659e3551fb4a4f92ef9e16180fde22a9d157a2114b03ef98a023e7",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "emitted_positive_pixels": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37654,
+    "footprint_fraction": 0.007286874781441169
+  },
+  "template_report": {
+    "path": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif",
+    "bytes": 132713,
+    "sha256": "f17eae78ff659e3551fb4a4f92ef9e16180fde22a9d157a2114b03ef98a023e7",
+    "bands": 1,
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "width": 3292,
+    "height": 3730,
+    "bounds": [
+      243350.0,
+      4135550.0,
+      572550.0,
+      4508550.0
+    ],
+    "ref_bounds": [
+      243350.0,
+      4135550.0,
+      572550.0,
+      4508550.0
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "nodata": null,
+    "blocksize": [
+      256,
+      256
+    ],
+    "fixture_grid": false,
+    "has_validity_mask": false,
+    "nan_pixels": 0,
+    "infinity_pixels": 0,
+    "n_nan": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "n_nonzero": 37654,
+    "mass": 37654.0,
+    "mass_outside_footprint": 0,
+    "problems": [],
+    "ok": true,
+    "validation_class": "local on-disk template/range check; not organizer upload acceptance"
+  },
+  "zip_file": "gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.zip",
+  "zip_sha256": "9676493040f2da186de817556008134c983cd3e5e50bb3b269aa856da695320c",
+  "approved_for_weekly_slot": false,
+  "promoted": false,
+  "submission_slots_used": 0,
+  "status": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval",
+  "metadata": {
+    "lane": "TILTANGLE",
+    "hypothesis": "gravity tilt-angle edge corridors catch steep buried normal faults missing from the scarp-based catalogue",
+    "bands": [
+      11,
+      13,
+      18
+    ],
+    "ndots": 37654,
+    "min_dist_px": 2.8,
+    "prune_radius_px": 2,
+    "holdout_dti_pure_static_dcat2": 0.005272034790453035,
+    "holdout_dti_pure_static_ci95": [
+      0.0038394541742268564,
+      0.006809835668528526
+    ],
+    "holdout_dti_rule2_visible_dpref": 0.08524731192664954,
+    "holdout_dti_rule2_visible_dpref_ci95": [
+      0.0727518706164122,
+      0.09819268740709708
+    ],
+    "holdout_dti_invalidated_leaked_dpref": 0.03346643401066433,
+    "holdout_withheld": 22663,
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "audit_receipt": "evidence/tiltangle_audit_20261025.json",
+    "alpha": 0.2,
+    "beta": 0.8,
+    "triangular_radius_m": 300.0,
+    "surface_sha256": null
+  }
+}
