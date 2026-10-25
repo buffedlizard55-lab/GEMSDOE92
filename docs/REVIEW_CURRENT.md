@@ -1,3 +1,12 @@
+# Current review — 2026-10-25 (`BLINDFAULT` session; read this block first)
+
+**✅ OK TO DOWNLOAD; ⛔ DO NOT SUBMIT (`verdict: negative`, fails the pre-registered holdout gate, not the uniqueness gate).**
+Newest unique artifact: `docs/downloads/gemsdoe92-blindfault-blindtopo-37654-20261025-4648eea5-zeros.tif` (best of three pre-registered arms). Primary **HOLDOUT-DTI** `0.047896 [0.038079, 0.057970]` (`gems57-pooled-hide-v2`, 22,663 withheld positives, strict draw-blind `d_visible > 2.0`) vs holdout-best `0.113316`. Unique under the dual reading against 91 local + 1,386 public exact-grid rasters (matched-budget worst `0.5219`, `|ρ|` worst `0.3402`; literal worst `1.000` from the full-footprint witness, printed not hidden). Dense-witness policy resolved in the shared template: `IRREGULARITIES.md` `#IR-92-DENSE-WITNESS-MATCHED-BUDGET`. Details: [`ANALYSIS_20261025_BLINDFAULT.md`](ANALYSIS_20261025_BLINDFAULT.md) · [run card](downloads/blindfault_run_card.json) · [next steps](NEXT_STEPS.md).
+
+Three passes this session: (1) implement + verify (features, canaries, 3 LOQO arms, holdout, packaging, scans); (2) review — site contract caught unlinked sibling TIFFs (fixed in the renderer), run-card validator field nesting fixed, ledger rows appended, 283 tests + site gate (46 rasters) + parent/manifest verification pass; (3) recheck against the brief — unique TIFF generated, download/submit status obvious at the top of README and all three pages, numbers labelled HOLDOUT-DTI / CLAIM / REGISTRY-MEASUREMENT, no projection written as a score.
+
+---
+
 # Current Repository & Gate Review — `GEMSDOE92` (`2026-10-24`, `COULOMBDM s45coulomb55` Current Download; `EULERFUSE` Parallel Closeout)
 
 **OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT.** Subsequent to [session 918b947a](REVIEW_918B947A.md) ([run card](downloads/review_918b947a_run_card.json)), merged sessions generated unique `COULOMBDM` and `XPHASE` research TIFFs. The universal dense-witness overlap stop still bars weekly-slot clearance. No current organizer score is claimed.

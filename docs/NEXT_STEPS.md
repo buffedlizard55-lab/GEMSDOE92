@@ -1,3 +1,28 @@
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`BLINDFAULT` Session)
+
+## Completed this session (`BLINDFAULT`)
+
+1. Pre-registered 5 untried hypotheses (`docs/HYPOTHESES_20261025_BLINDFAULT.md`) and built Rank 1 `BLINDFAULT` (`gems/blindfault.py`): subsurface-only 12-feature LOQO with covariate-shift importance weights toward low-conspicuity catalogue faults; 3 frozen arms (`blind`, `blindflat`, `blindtopo`); 3/3 experiments, 0 weekly slots.
+2. **Result: `negative`.** Primary `HOLDOUT-DTI` (strict draw-blind, `d_visible > 2.0`, 22,663 withheld positives): best arm `blindtopo 0.047896 [0.038079, 0.057970]` < `H19-5 0.096757` < holdout-best `COULOMBLOQO standalone 0.113316`. Hypothesis arm `blind 0.037842` is the worst arm; `blind − blindflat = −0.0096 [−0.0192, +0.0011]` → the reweighting mechanism is not load-bearing. New low-conspicuity instrument: all LOQO arms > `H19-5` but CIs overlap. Full numbers: `docs/ANALYSIS_20261025_BLINDFAULT.md`.
+3. **Shared-template fix (reported, not forked):** `vendor/gems57/uniqueness.py` now provides `matched_budget_support`, `dual_overlap`, `dual_reading_decision` (`#IR-92-DENSE-WITNESS-MATCHED-BUDGET`). The literal dense-witness reading is still printed; the operative duplicate test is matched-budget for > 150k-px surfaces. Specificity proof recorded (`R0` parent literal overlap vs the witness) in `evidence/blindfault_uniqueness.json`.
+4. Three unique format-valid TIFFs in `docs/downloads/gemsdoe92-blindfault-*-zeros.tif` (validator-written, 37,654 dots each); README/site banners rendered from the run card by `scripts/render_blindfault_site.py` (no hand-typed numbers).
+5. New irregularity `#IR-92-NE-QUADRANT-LOQO-COLLAPSE`: every LOQO arm scores `0.000–0.005` on the NE fold.
+
+## Highest-P(Win) actions for the next session (in order)
+
+1. **Selector step (not an experiment): re-read the stored `COULOMBLOQO standalone` and `dual45` rasters under `dual_reading_decision` against the complete cached public registry (`.cache/gemsdoe_public_registry`, 1,396 blobs; re-run `scripts/audit_public_registry.py` to refresh).** They are the only artifacts that beat `H19-5` on the primary instrument with a CI excluding 0. If they pass the matched-budget reading, they are the first candidates eligible for a weekly slot under the automated gate; the README/site must then show ✅ OK TO SUBMIT for exactly one file.
+2. **Quadrant-stratified reporting for every LOQO lane** and a diagnosis of the NE collapse (basin-fill thickness / MT coverage / catalogue density differences). If NE is unlearnable from the other quadrants, a 3-quadrant deployment with an `H19-5`-fallback in NE is a legitimate, pre-registrable hybrid.
+3. **Do not retry subsurface-only learners** for 300 m localisation at 100 m (three concordant negatives: `EULERFUSE`, `COULOMBDM coulomb1d`, `BLINDFAULT`). Next genuinely new physics in the queue: `POISSONCORR` (Rank 2, medium cost) and `KNICKLINE` (Rank 3, needs official 10 m 3DEP, blocked in this sandbox).
+4. Obtain the first `ORGANIZER-CONFIRMED` receipt (upload of a cleared file through the DrivenData form by the account holder; the sandbox cannot reach drivendata.org) and record it in `ledger/`.
+
+## Limitations this session
+
+- Sandbox: 2 CPUs, 3 GB RAM, egress limited to GitHub/PyPI — no DrivenData, no USGS/3DEP/ASF downloads; all inputs restored SHA-256-pinned from the owner's GitHub repos (`registry/session_manifest.json`).
+- Leaderboard values (`0.4413`, `0.3195`) and all `GEMSDOE*` site scores remain `[CLAIM]`; no organizer receipt exists in this repository.
+- Public-registry Spearman uses a fixed 400k-cell footprint subsample (SE ≈ 0.0016 against a 0.90 threshold); overlaps are exact.
+
+---
+
 # Next Steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`COULOMBDM` & `XPHASE` Sessions)
 
 ## Completed this session (`COULOMBDM`)
