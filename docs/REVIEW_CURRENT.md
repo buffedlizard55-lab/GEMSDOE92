@@ -1,12 +1,17 @@
-# Current review — 2026-10-25 (`BLINDFAULT` session; read this block first)
+# Current protocol review — 2026-10-25 (`376a8469`)
 
-**✅ OK TO DOWNLOAD; ⛔ DO NOT SUBMIT (`verdict: negative`, fails the pre-registered holdout gate, not the uniqueness gate).**
-Newest unique artifact: `docs/downloads/gemsdoe92-blindfault-blindtopo-37654-20261025-4648eea5-zeros.tif` (best of three pre-registered arms). Primary **HOLDOUT-DTI** `0.047896 [0.038079, 0.057970]` (`gems57-pooled-hide-v2`, 22,663 withheld positives, strict draw-blind `d_visible > 2.0`) vs holdout-best `0.113316`. Unique under the dual reading against 91 local + 1,386 public exact-grid rasters (matched-budget worst `0.5219`, `|ρ|` worst `0.3402`; literal worst `1.000` from the full-footprint witness, printed not hidden). Dense-witness policy resolved in the shared template: `IRREGULARITIES.md` `#IR-92-DENSE-WITNESS-MATCHED-BUDGET`. Details: [`ANALYSIS_20261025_BLINDFAULT.md`](ANALYSIS_20261025_BLINDFAULT.md) · [run card](downloads/blindfault_run_card.json) · [next steps](NEXT_STEPS.md).
+**Research downloads only. DO NOT SUBMIT.** The shared dual-reading helper now enforces the literal duplicate stop for every raster. Matched-budget overlap is diagnostic, not a specification change. Prior claims below that the policy was automatically resolved are historical and superseded. No new TIFF or geological experiment was generated in this review. See [review, conditional hypotheses and ordered next steps](REVIEW_376A8469.md) and [fresh run card](downloads/review376a_run_card.json). A new submission-cleared artifact remains unfulfilled.
 
-Three passes this session: (1) implement + verify (features, canaries, 3 LOQO arms, holdout, packaging, scans); (2) review — site contract caught unlinked sibling TIFFs (fixed in the renderer), run-card validator field nesting fixed, ledger rows appended, 283 tests + site gate (46 rasters) + parent/manifest verification pass; (3) recheck against the brief — unique TIFF generated, download/submit status obvious at the top of README and all three pages, numbers labelled HOLDOUT-DTI / CLAIM / REGISTRY-MEASUREMENT, no projection written as a score.
-# Current session — 2026-10-25 (1f514ffc)
+---
 
-See [three-pass review](REVIEW_1F514FFC.md) and [run card](downloads/review_1f514ffc_run_card.json). No new TIFF generated; pinned dense-witness duplicate stop freshly reproduced. Existing downloads remain research-only. 289 tests and all 43 served format checks pass. Publication primary selection now requires exactly one explicit local TIFF.
+# Historical lane review — 2026-10-25 (`BLINDFAULT`)
+
+**✅ OK TO DOWNLOAD FOR RESEARCH; ⛔ DO NOT SUBMIT** (`verdict: negative`, fails the pre-registered holdout gate; submission_eligible=false). The newly generated artifact and current run card are linked in the [three-pass closeout review](REVIEW_20261025_BLINDFAULT_CLOSEOUT.md). Primary **HOLDOUT-DTI** is `0.047896 [0.038079, 0.057970]` (`gems57-pooled-hide-v2`, 22,663 withheld positives, strict draw-blind `d_visible > 2.0`), below the recorded repository holdout-best `0.113316`. The run card reports dual registry measurements: matched-budget worst overlap `0.5219`, literal worst `1.000`, worst absolute correlation `0.3402`; literal result is not omitted. These do not establish organizer acceptance or a competition score.
+
+The current session used 3/3 experiments and 0 weekly slots. The prior `1F514FFC` review below is historical, not current. The current result is documented in [`ANALYSIS_20261025_BLINDFAULT.md`](ANALYSIS_20261025_BLINDFAULT.md), [`downloads/blindfault_run_card.json`](downloads/blindfault_run_card.json), and [`NEXT_STEPS.md`](NEXT_STEPS.md).
+## Archived session — 2026-10-25 (1f514ffc)
+
+See [historical three-pass review](REVIEW_1F514FFC.md) and [run card](downloads/review_1f514ffc_run_card.json). Its “no new TIFF” and then-current test counts describe that earlier checkpoint only; the newer BLINDFAULT closeout above supersedes it as the current status.
 
 ---
 

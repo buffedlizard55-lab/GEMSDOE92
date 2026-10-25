@@ -318,11 +318,12 @@ def inject(path: Path, block: str, begin_marker: str, end_marker: str, anchor: s
     if begin_marker in s:
         s = s[: s.index(begin_marker)] + block + s[s.index(end_marker) + len(end_marker) :]
     else:
+        act_anchor = "<!-- PROVINCETOE:BEGIN" if (before and "<!-- PROVINCETOE:BEGIN" in s) else anchor
         if before:
-            i = s.index(anchor)
+            i = s.index(act_anchor)
             s = s[:i] + block + "\n" + s[i:]
         else:
-            i = s.index(anchor) + len(anchor)
+            i = s.index(act_anchor) + len(act_anchor)
             s = s[:i] + "\n" + block + "\n" + s[i:]
     path.write_text(s, encoding="utf-8")
     print("rendered", path.relative_to(ROOT))

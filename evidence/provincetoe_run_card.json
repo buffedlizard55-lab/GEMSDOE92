@@ -1,0 +1,232 @@
+{
+  "schema": "gemsdoe92-run-card.v1",
+  "date": "2026-10-25",
+  "lane": "PROVINCETOE",
+  "winning_arm": "provincetoe",
+  "experiments_executed": 3,
+  "budget_cap_experiments": 3,
+  "weekly_slots_used": 0,
+  "new_unique_tiff_generated": true,
+  "file": "gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif",
+  "primary_download": "docs/downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif",
+  "zip_download": "docs/downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.zip",
+  "zip_sha256": "2f9bc33387a90cfad14229584c0f615b43a79e9b76eff1fefd92ea2ff8e4e831",
+  "raster_sha256": "6d9981f1a45b73be1be51e79220a2dc0cb56baaf2319e3a0829de5bef0bfdac7",
+  "submission_name": "GEMSDOE92-PROVINCETOE-provincetoe-20261025",
+  "note": "PROVINCETOE provincetoe: 37654 LOQO Wallace-toe + carbonate-grav dots; HOLDOUT-DTI 0.106452",
+  "note_chars": 91,
+  "hypothesis": "PROVINCETOE (Rank 1 in docs/HYPOTHESES_20261025_PROVINCETOE.md): Tectonic-Province Strain-Invariant Wallace Scarp-Diffusion Basal Toe-Concavity & Carbonate-Horst Isostatic Flexure LOQO.",
+  "mechanism": "Replaces convex log-slope Hessian cliff ridges (which placed 45.2% of COULOMBLOQO dots on >=12 deg alpine cliffs and triggered 0.7398 sparse overlap vs GEMSDOE23) and raw Walker Lane GPS strain magnitudes (which starved NE to 11.2% in COULOMBLOQO and 0.7% in BLINDFAULT despite NE holding 41.6% of unmapped SGMC faults) with upward-concave basal piedmont toe curvature (+lambda_max(nabla^2 z)) gated by cross-eigenvector step monotonicity M_step and one-sided apron asymmetry A_toe, Wallace crest-toe diffusion dipoles, within-quadrant relative gravity/basement/RTP/MT contrasts, dimensionless strain-style partitioning, and label-blind per-quadrant empirical quantile calibration.",
+  "named_non_fault_process_that_could_mimic_it": "Coalescing alluvial-fan bajada slope-apron breaks, V-shaped incised stream thalwegs, and Pluvial Lake Lahontan/Bonneville wave-cut shoreline nickpoints. Suppressed via symmetric-wall step monotonicity M_step -> 0 in V-canyons, along-strike elevation progression against isohypsic lake contours, signed footwall gravity & basement shallowing concordance, and smooth alpine-cliff attenuation.",
+  "leakage_canary_max_symmetric_auc": 0.612372,
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "primary_instrument": "strict_draw_blind_d_visible_gt_2p0",
+    "strict_draw_blind_dvis2_dti": 0.106452,
+    "strict_draw_blind_dvis2_ci95": [
+      0.093042,
+      0.119461
+    ],
+    "control_H19_5_dvis2_dti": 0.096757,
+    "control_COULOMBLOQO_standalone_dvis2_dti": 0.11389,
+    "paired_delta_vs_H19_5_dvis2": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.009694448346048531,
+      "ci95": [
+        0.003370778079164274,
+        0.016064937417784596
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "paired_delta_vs_COULOMBLOQO_dvis2": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": -0.007438500796505987,
+      "ci95": [
+        -0.016460630034326112,
+        0.0010549713631160548
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "paired_delta_vs_globalraw_ablation_dvis2": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.006270317365599326,
+      "ci95": [
+        -0.001329461882925709,
+        0.013917139601244296
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "static_dcat2_dti": 0.009685,
+    "static_dcat2_ci95": [
+      0.008306,
+      0.01115
+    ],
+    "control_R0_static_dcat2_dti": 0.004006,
+    "sgmc_off_catalogue_proxy_dti": 0.091183,
+    "beats_prior_holdout_best_dvis2": false
+  },
+  "correlation_overlap_vs_registry": {
+    "policy": "#IR-92-DENSE-WITNESS-MATCHED-BUDGET",
+    "dual_reading_unique": false,
+    "local": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
+      "rasters_checked": 92,
+      "missing_or_invalid": 0,
+      "n_dot_fields": 92,
+      "n_continuous_surfaces": 0,
+      "worst_literal_forward_overlap": 0.684575,
+      "worst_literal_file": "data/bridge/h19_5.tif",
+      "worst_matched_budget_forward_overlap": 0.684575,
+      "worst_matched_budget_file": "data/bridge/h19_5.tif",
+      "worst_abs_spearman": 0.185655,
+      "worst_abs_spearman_file": "data/bridge/h19_5.tif",
+      "overlap_limit": 0.7,
+      "rho_limit": 0.9,
+      "duplicate": false,
+      "stop_required": false,
+      "verdict": "unique",
+      "submission_eligible": false,
+      "literal_reading_fires": false,
+      "note": "Literal overlap and rank correlation are binding for every raster. Matched-budget overlap is diagnostic only. This summary cannot prove inventory completeness or authorize a weekly slot."
+    },
+    "public": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
+      "rasters_checked": 1320,
+      "n_dot_fields": 1135,
+      "n_continuous_surfaces": 185,
+      "worst_literal_forward_overlap": 1.0,
+      "worst_literal_file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "worst_matched_budget_forward_overlap": 0.791815,
+      "worst_matched_budget_file": "62GEMSDOE/docs/downloads/gems62f-h2r-ventcons-125890-20261012T012736Z-zeros.tif",
+      "worst_abs_spearman": 0.457284,
+      "worst_abs_spearman_file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "overlap_limit": 0.7,
+      "rho_limit": 0.9,
+      "duplicate": true,
+      "verdict": "negative",
+      "literal_reading_fires": true,
+      "note": "Literal overlap and rank correlation are binding for every raster. Matched-budget overlap is diagnostic only. This summary cannot prove inventory completeness or authorize a weekly slot.",
+      "missing_or_invalid": 0,
+      "stop_required": true,
+      "submission_eligible": false
+    }
+  },
+  "validator": {
+    "file": "docs/downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif",
+    "bytes": 148597,
+    "sha256": "6d9981f1a45b73be1be51e79220a2dc0cb56baaf2319e3a0829de5bef0bfdac7",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "emitted_positive_pixels": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37654,
+    "footprint_fraction": 0.007286874781441169
+  },
+  "validator_output": {
+    "overall_pass": true,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "values_range": [
+      0.0,
+      1.0
+    ],
+    "no_nan_in_footprint": true,
+    "no_nan_anywhere": true,
+    "n_positive_pixels": 37654,
+    "catalogue_mass": 0.0
+  },
+  "sibling_arms": {
+    "provincetoe": {
+      "file": "docs/downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif",
+      "sha256": "6d9981f1a45b73be1be51e79220a2dc0cb56baaf2319e3a0829de5bef0bfdac7",
+      "dvis2_dti": 0.106452,
+      "static_dcat2_dti": 0.009685,
+      "sgmc_proxy_dti": 0.091183,
+      "public_matched_budget_worst_overlap": 0.791815,
+      "local_matched_budget_worst_overlap": 0.684575,
+      "zip_file": "docs/downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.zip",
+      "zip_sha256": "2f9bc33387a90cfad14229584c0f615b43a79e9b76eff1fefd92ea2ff8e4e831"
+    },
+    "globalraw": {
+      "file": "docs/downloads/gemsdoe92-provincetoe-globalraw-37654-20261025-73b06876-zeros.tif",
+      "sha256": "eeb0facc1dfd89de8834ff8286066286ec3a190c2c1a5afcc483f5a821765cfc",
+      "dvis2_dti": 0.100181,
+      "static_dcat2_dti": 0.009037,
+      "sgmc_proxy_dti": 0.08685,
+      "public_matched_budget_worst_overlap": 0.786371,
+      "local_matched_budget_worst_overlap": 0.65353,
+      "zip_file": "docs/downloads/gemsdoe92-provincetoe-globalraw-37654-20261025-73b06876-zeros.zip",
+      "zip_sha256": "70786a6d6f93fe98d8cde209aabbe876a6b03dfae997f73ab1e8582e20c28a12"
+    },
+    "piedbasin": {
+      "file": "docs/downloads/gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.tif",
+      "sha256": "a8b79fba2c4dd623af6a6c296779747850b6d3f83ddfca077472fd29bea82cef",
+      "dvis2_dti": 0.102657,
+      "static_dcat2_dti": 0.009711,
+      "sgmc_proxy_dti": 0.084677,
+      "public_matched_budget_worst_overlap": 0.774765,
+      "local_matched_budget_worst_overlap": 0.661284,
+      "zip_file": "docs/downloads/gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.zip",
+      "zip_sha256": "d58043b49f44e327bb37d664904de481b538b68f6805f0ae0ecc376d0b22eaa9"
+    }
+  },
+  "submission_eligible": false,
+  "verdict": "negative",
+  "verdict_reason": "Format-valid (11/11 gates PASS, values in [0, 1]) and dual_reading_unique=False (public matched-budget max overlap 0.7918, local max overlap 0.6846), strict draw-blind HOLDOUT-DTI 0.106452 vs COULOMBLOQO 0.113890 and H19-5 0.096757; literal dense-witness rule (17GEMSDOE E-proba-multiscale, 5,167,373 positive footprint cells -> 1.000) keeps submission_eligible=false under the repository's fail-closed site gate."
+}

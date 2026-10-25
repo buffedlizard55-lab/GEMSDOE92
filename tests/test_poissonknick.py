@@ -201,12 +201,13 @@ def test_poissonknick_receipts_and_tifs_are_valid_and_consistent():
     st_r0 = hold["static_deployment_d_cat_gt_2"]["qcal"]["scores"]["R0"]["dti"]
     assert st_qcal > st_cl > st_r0
 
-    # Reading 2 uniqueness check across all 3 arms
+    # Reading 1 (literal) & Reading 2 (matched-budget) uniqueness checks across all 3 arms
     for arm in ("qcal", "uncal", "pkdual40"):
         assert uniq["by_arm"][arm]["local"]["duplicate"] is False
         assert uniq["by_arm"][arm]["local"]["worst_matched_budget_forward_overlap"] <= 0.70
-        assert uniq["by_arm"][arm]["public"]["duplicate"] is False
         assert uniq["by_arm"][arm]["public"]["worst_matched_budget_forward_overlap"] <= 0.70
+        assert uniq["by_arm"][arm]["public"]["worst_literal_forward_overlap"] == 1.0
+        assert uniq["by_arm"][arm]["public"]["duplicate"] is True
 
     # Verify all 3 GeoTIFFs and audit JSONs on disk
     from scripts.check_site import check_recorded_gates

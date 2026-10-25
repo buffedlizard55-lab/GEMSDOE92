@@ -247,9 +247,10 @@
   "uniqueness": {
     "local": {
       "evidence_class": "REGISTRY-MEASUREMENT",
-      "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
-      "rasters_checked": 97,
-      "n_dot_fields": 97,
+      "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
+      "rasters_checked": 101,
+      "missing_or_invalid": 0,
+      "n_dot_fields": 101,
       "n_continuous_surfaces": 0,
       "worst_literal_forward_overlap": 0.619244,
       "worst_literal_file": "local:docs/downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif",
@@ -260,14 +261,17 @@
       "overlap_limit": 0.7,
       "rho_limit": 0.9,
       "duplicate": false,
+      "stop_required": false,
       "verdict": "unique",
+      "submission_eligible": false,
       "literal_reading_fires": false,
-      "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+      "note": "Literal overlap and rank correlation are binding for every raster. Matched-budget overlap is diagnostic only. This summary cannot prove inventory completeness or authorize a weekly slot."
     },
     "public": {
       "evidence_class": "REGISTRY-MEASUREMENT",
-      "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+      "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
       "rasters_checked": 7,
+      "missing_or_invalid": 0,
       "n_dot_fields": 6,
       "n_continuous_surfaces": 1,
       "worst_literal_forward_overlap": 1.0,
@@ -278,10 +282,12 @@
       "worst_abs_spearman_file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
       "overlap_limit": 0.7,
       "rho_limit": 0.9,
-      "duplicate": false,
-      "verdict": "unique",
+      "duplicate": true,
+      "stop_required": true,
+      "verdict": "negative",
+      "submission_eligible": false,
       "literal_reading_fires": true,
-      "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+      "note": "Literal overlap and rank correlation are binding for every raster. Matched-budget overlap is diagnostic only. This summary cannot prove inventory completeness or authorize a weekly slot."
     },
     "top_local": [
       {
