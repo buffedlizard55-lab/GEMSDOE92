@@ -1,0 +1,92 @@
+{
+ "file": "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif",
+ "sha256_zeros": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573",
+ "sha256_nan": null,
+ "gates_zeros": [
+  {
+   "name": "crs",
+   "ok": true,
+   "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+  },
+  {
+   "name": "shape",
+   "ok": true,
+   "detail": "reference=3730x3292 candidate=3730x3292"
+  },
+  {
+   "name": "transform",
+   "ok": true,
+   "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+  },
+  {
+   "name": "dtype_and_band",
+   "ok": true,
+   "detail": "dtype=('float32',) count=1"
+  },
+  {
+   "name": "values_in_0_1",
+   "ok": true,
+   "detail": "n_violations=0 min=0.0 max=1.0"
+  },
+  {
+   "name": "no_nan_inside_footprint",
+   "ok": true,
+   "detail": "nonfinite_pixels=0"
+  },
+  {
+   "name": "nan_outside_footprint",
+   "ok": true,
+   "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+  },
+  {
+   "name": "submission_encoding",
+   "ok": true,
+   "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+  },
+  {
+   "name": "catalogue_zero_mass",
+   "ok": true,
+   "detail": "dots_on_catalogue=0"
+  },
+  {
+   "name": "distance_from_catalogue",
+   "ok": true,
+   "detail": "radius=2px dots_within=0; strict distance > radius required"
+  },
+  {
+   "name": "reread_sha256",
+   "ok": true,
+   "detail": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573"
+  }
+ ],
+ "gates_nan": [],
+ "overall_pass": true,
+ "generated_utc": "2026-10-25T17:37:13.394980+00:00",
+ "note": "VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat>2",
+ "submission_name": "GEMSDOE92-VARIO-full-20261025",
+ "n_positive_pixels": 37654,
+ "n_dots": 37654,
+ "gates_zeros_pass": true,
+ "gates_nan_pass": null,
+ "lane": "VARIO",
+ "arm": "vario_full",
+ "zip_file": "gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.zip",
+ "zip_sha256": "563bf739a3c4aa705c36ad3e1317fffeff24acd7acb485858ba3ce2c084064df",
+ "writer_receipt": "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.json",
+ "submission_eligible": false,
+ "verdict": "negative",
+ "run_card": "evidence/vario_run_card.json",
+ "public_registry_uniqueness": {
+  "evidence_file": "evidence/vario_run_card.json",
+  "candidate_hash_matches_scan": true,
+  "candidate_sha256_zeros": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573",
+  "registries_checked": 99,
+  "unique_under_literal_rule": false,
+  "stop_required": true,
+  "worst_forward_overlap": 0.979126,
+  "worst_overlap_raster": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
+  "worst_abs_spearman": 0.891258,
+  "operative_sparse_passes": false,
+  "scope": "local registry: 94 docs/downloads rasters + 5 pinned lineage rasters; own VARIO outputs excluded; NOT a full public-repo scan; literal positive-support reading fails vs pinned full-footprint dense surfaces for every non-empty raster (disclosed in run card)"
+ }
+}

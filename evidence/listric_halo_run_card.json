@@ -1,0 +1,68 @@
+{
+  "hypothesis": "Listric faults observed at the surface often dip and their deep manifestations are offset horizontally. A 1.5km ring around shallow blind faults highlights these deeper structurally permissive roots.",
+  "mechanism": "1.5km (15px) Gaussian bandpass filter (ring) around the blind fault model, gated by the broad d28 permissive mask.",
+  "named_non_fault_mimic": "Lithological boundaries or basin-bounding unconformities offset from surface expressions.",
+  "holdout_dti_and_ci": "HOLDOUT-DTI (gems57-pooled-hide-v2, 22663 withheld positives, 95% CI): 0.02766 [0.02038, 0.03355]",
+  "correlation_overlap_vs_registry": "Checked against all local releases and bridge models; max overlap is 0.392 with listriclag (far below the 0.70 lane limit).",
+  "raster_sha256": "6b22b97cbffb2daa8ac214881d66f133ea983583cc48e25f2beba2385980bb53",
+  "validator_output": {
+    "file": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-listric-halo-32k-20261025-zeros.tif",
+    "bytes": 312585,
+    "sha256": "6b22b97cbffb2daa8ac214881d66f133ea983583cc48e25f2beba2385980bb53",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0004903366789221764,
+    "emitted_positive_pixels": 27772,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 27772,
+    "footprint_fraction": 0.0053744910615123
+  },
+  "submission_name": "listric-deep-halo-32k",
+  "submission_note": "Listric fault deep root halo via blind offset",
+  "verdict": "negative",
+  "irregularity_healed": "#IR-92-LISTRIC-HALO-UNPRUNED-HEALED: PR #132 committed unpruned 287d802984c8e581ae41fac92d05deff514f0783c00f683ce02f6635720b1341 with 4,750 dots at d_cat <= 2.0 px and no -audit.json receipt, breaking check_site.py and CI; healed by masking d_cat <= 2.0 px -> sha256 6b22b97cbffb2daa8ac214881d66f133ea983583cc48e25f2beba2385980bb53."
+}
