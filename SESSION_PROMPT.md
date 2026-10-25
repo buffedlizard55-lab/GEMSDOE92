@@ -1,3 +1,14 @@
+## Parallel session result — 2026-10-25 (`RIEDELVALVE`)
+
+Lane **RIEDELVALVE** (transtensional Riedel $R/R'$ shear obliquity + bimodal $\sqrt{\lambda_1\lambda_2}$ fracture nodes + slope-partitioned USGS 3DEP 10 m scarp + bedrock knickzone + Tufa-filtered DOE GDR `#1391` INGENIOUS fault-valve + additive `@ 0.30` Tversky secondary skeleton; `gems/riedelvalve.py`, `scripts/run_riedelvalve.py`). Three pre-registered experiments (`riedelvalve`, `riedel_n90k`, `noriedel_ablation`). Primary research file `docs/downloads/gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif` (SHA-256 `75d61cb1e548c27c1fa8804a124287996241988f715cb50f3c65c468cb3bc1e0`).
+
+- **HOLDOUT-DTI** `gems57-pooled-hide-v2`, 22,663 withheld positives: static `d_cat > 2.0` `riedel_n90k` **0.009054 [0.007829, 0.010290]** (beats matched-surface binary `riedelvalve` `0.008180` by paired **+0.000875 [+0.000531, +0.001215]** and `R0` `0.004006` by **+0.005048 [+0.003924, +0.006109]**; trails `KNICKLOQO standalone` `0.010788`); strict draw-blind `d_visible > 2.0`: `riedel_n90k` **0.108593 [0.095583, 0.120981]** (`noriedel_ablation` `0.107556`, `riedelvalve` `0.106046`); off-catalogue `USGS SGMC PROXY` (`d_cat > 5.0`): **0.112719** (`#1` among `dual_reading_unique` LOQO lanes, `+17.6%` vs `KNICKLOQO` `0.095878`).
+- **Leakage canaries:** `32/32 PASS`, max symmetric AUC `0.639492 <= 0.90` (`OOF = 0.664030`). Repaired `#IR-92-VENTSCARP-BAND18-UNSIGNED-GRAVITY-AND-BAND4-BAND8-SWAP`.
+- **REGISTRY-MEASUREMENT:** local `110` rasters PASS (`riedel_n90k` `0.4702 <= 0.70`, `|ρ| = 0.1827 <= 0.90`); `102`-repo public `dual_reading_decision`: **`riedel_n90k` PASSES (`0.6384 <= 0.70`, `<= 50k` `0.4650`, `|ρ| = 0.4337`)**; literal `17GEMSDOE` dense witness `1.000 > 0.70` -> STOP.
+- **Validator:** `11/11` `gems.gates` + `13/13` `gems57.validate` PASS; all finite `[0, 1]`; zeros outside; `EPSG:32611` `3730×3292`. Verdict: **negative** (`OK TO DOWNLOAD FOR RESEARCH`, **DO NOT SUBMIT**, `0` weekly slots used). Hypotheses: `docs/HYPOTHESES_20261025_RIEDELVALVE.md`. Analysis: `docs/ANALYSIS_20261025_RIEDELVALVE.md`. Run card: `evidence/riedelvalve_run_card.json`.
+
+---
+
 ## Current review addendum — 2026-10-25 (`797e507a`)
 
 Read `docs/REVIEW_797E507A.md` before older session-result addenda. This review generated no new TIFF and used no experiment or slot: a fresh pinned universal registry witness requires a stop. Preserve literal overlap, not matched-budget reinterpretations. The existing LISTRICDIP primary inherited from parallel main is research-only. Three public entry pages must have the generated authoritative status first; CI/Pages check byte pins and ordering. The unique-TIF objective remains unfulfilled. Persistent requirements in this file and the README are a normalized operating brief, not a verbatim user-message archive.

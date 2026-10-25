@@ -1,3 +1,8 @@
+# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-25, Post-`RIEDELVALVE` Session)
+## Current decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT** (`submission_eligible: false`, `0` slots spent, `114 BUILT / 0 RECEIPT`)
+Newest parallel `RIEDELVALVE` arm `riedel_n90k` (`docs/downloads/gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif`, SHA-256 `75d61cb1e548c27c1fa8804a124287996241988f715cb50f3c65c468cb3bc1e0`) is ✅ OK TO DOWNLOAD FOR RESEARCH (`11/11` automated `[0, 1]` gates PASS), passes **both** local (`0.4702 <= 0.70`) and `102`-repo public `dual_reading` uniqueness (`0.6384 <= 0.70`), confirms the additive `37,654@1.0 + 52,346@0.30` Tversky tail (`+0.000875 [+0.000531, +0.001215]` static `HOLDOUT-DTI`), and reaches `0.112719` (`#1` among `dual_reading_unique` LOQO lanes) on `USGS SGMC PROXY`, but remains ⛔ DO NOT SUBMIT (`verdict: "negative"`): literal `17GEMSDOE` dense-surface overlap `1.000 > 0.70` and static `HOLDOUT-DTI` `0.009054 < KNICKLOQO standalone 0.010788`. Next recommended experiment: `KNICKLOQO-N90K` (`evidence/riedelvalve_run_card.json`).
+
+---
 # Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-26, Post-LISTRIC Session)
 ## Current decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT** (`submission_eligible: false`, 0 slots spent this repo)
 Newest LISTRIC standalone (`h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif`, SHA `7e4b4636…1e2ab`) is ✅ OK TO DOWNLOAD (automated [0,1] gates PASS) but ⛔ DO NOT SUBMIT: public dual-reading duplicate 0.710735>0.70, literal 1.000, paired holdout gain vs KNICKLOQO not significant. Selector candidate remains KNICKLOQOstandalone pending human dual-vs-literal policy decision. See `evidence/listric_run_card.json`.
