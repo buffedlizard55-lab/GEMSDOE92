@@ -5,7 +5,7 @@
 
 **OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** LISTRICLOQO is a byte-distinct research artifact, but it fails the literal registry-overlap stop and promotion gates.
 
-[Existing LISTRICLOQO research TIFF — not cleared to submit](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif) · [protocol run card](docs/downloads/listric_loqo_run_card.json) · [analysis](docs/ANALYSIS_20261025_LISTRICLOQO.md) · [three-pass review](docs/REVIEW_20261025_SESSION.md) · [executive submission guide](docs/executive-summary.html).
+[Existing LISTRICLOQO research TIFF — not cleared to submit](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif) · [protocol run card](docs/downloads/listric_loqo_run_card.json) · [analysis](docs/ANALYSIS_20261025_LISTRICLOQO.md) · [three-pass review](docs/REVIEW_20261025_SESSION.md) · [supplemental initial audit](docs/REVIEW_20261025_SESSION_FOLLOWUP.md) · [audit run card](docs/downloads/session_followup_20261025_run_card.json) · [later leaderboard review](docs/ANALYSIS_20261025_LEADERBOARD.md) · [executive submission guide](docs/executive-summary.html).
 
 Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.013295 [0.011713, 0.014980]`; paired improvement over KNICKLOQO is +0.002508 [0.001477, 0.003463]. Public dual-reading overlap is `0.690259 <= 0.70`, but the binding literal dense-witness overlap is `1.0 > 0.70`; this file is not uniqueness-cleared. No ORGANIZER-CONFIRMED score is available; 3/3 experiments and zero weekly slots.
 
@@ -434,7 +434,7 @@ PYTHON=.venv/bin/python make test && PYTHON=.venv/bin/python make site && PYTHON
 
 ## Persistent Session Prompt Reference
 
-Full durable operating contract also stored in [`SESSION_PROMPT.md`](SESSION_PROMPT.md). The prompt below is preserved verbatim as historical input, not as a claim that GEMSDOE32 received a verified `0.2778` score or that a current TIFF is submission-cleared. Follow the binding negative decision at the top of this README and the evidence-linked reviews instead.
+Full durable operating contract also stored in [`SESSION_PROMPT.md`](SESSION_PROMPT.md). This expandable prompt block is a **normalized, condensed operating brief**, not a verbatim archive of the full historical user message. Read it with the linked contract at every session start. Neither document turns GEMSDOE32's `0.2778` into a verified organizer score or clears a TIFF for submission; follow the binding negative decision at the top of this README and the evidence-linked reviews instead.
 
 <details>
 <summary>Click to expand persistent session prompt</summary>

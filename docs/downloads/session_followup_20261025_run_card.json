@@ -1,0 +1,175 @@
+{
+  "schema": "gemsdoe92-session-followup-run-card.v1",
+  "reviewed_utc": "2026-10-25T17:03:59.367171+00:00",
+  "scope": "Three-pass repository and protocol follow-up; no new geological lane or candidate was run.",
+  "hypothesis": "No geological hypothesis was tested. The fresh pre-placement check establishes that every nonempty prediction raster would violate the literal overlap rule against the pinned full-footprint witness.",
+  "mechanism": "The witness has positive support at every finite sample-template footprint cell; every valid dot therefore coincides with a positive witness cell and has zero distance to it.",
+  "named_non_fault_process_that_could_mimic_it": "A dense continuous model-output background can trigger a dot-overlap rule regardless of shared geology; this is a registry-policy measurement, not evidence that the rasters represent the same fault process.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": null,
+    "withheld_positives": null,
+    "dti": null,
+    "ci95": null,
+    "status": "NOT RUN: protocol stop before surface generation or dot placement; no score is projected."
+  },
+  "leakage_canaries": {
+    "status": "NOT RUN",
+    "reason": "No feature stack was loaded and no experiment was authorized after the pre-placement stop."
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "One hash-pinned GitHub registry witness; sufficient for rejection, not a full registry clearance scan.",
+    "witness_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/6fc71d19d49dca4960d5434bd81b6dd06fcc030a/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "witness_git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+    "grid_checks_pass": true,
+    "template_footprint_cells": 5167373,
+    "witness_positive_cells_in_footprint": 5167373,
+    "literal_overlap_threshold": 0.7,
+    "guaranteed_forward_overlap_for_any_nonempty_in_footprint_candidate": 1.0,
+    "candidate_surface_spearman": null,
+    "candidate_surface_spearman_reason": "No new candidate surface was generated.",
+    "new_candidate_final_dot_overlap": null,
+    "new_candidate_final_dot_overlap_reason": "No new dots were placed; preflight proves any nonempty valid dot set would have overlap 1.0.",
+    "existing_primary_recheck": {
+      "file": "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif",
+      "sha256": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
+      "positive_pixels": 37654,
+      "forward_overlap_within_3px": 1.0,
+      "full_footprint_spearman": 0.010352227787484035,
+      "role": "Unchanged historical research primary; not a new candidate."
+    },
+    "verdict": "STOP BEFORE SURFACE GENERATION OR DOT PLACEMENT; negative."
+  },
+  "raster_sha256": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
+  "raster_sha256_role": "SHA-256 of the unchanged historical research download revalidated below; no new candidate raster exists in this run.",
+  "validator_output": {
+    "evidence_class": "FORMAT-VALIDATION",
+    "candidate_raster_generated": false,
+    "validated_file": "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif",
+    "artifact_role": "Existing research download only; not new or submission-cleared.",
+    "all_11_gates_pass": true,
+    "no_nan_inside_footprint": true,
+    "all_values_finite": true,
+    "values_in_0_1": true,
+    "value_min": 0.0,
+    "value_max": 1.0,
+    "zero_outside_footprint": true,
+    "crs_shape_transform_match": true,
+    "crs": "EPSG:32611",
+    "shape_height_width": [3730, 3292],
+    "transform": [100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0, 0.0, 0.0, 1.0],
+    "single_band_float32": true,
+    "portal_range_error_addressed_for_these_bytes_only": true
+  },
+  "submission_name": "GEMSDOE92-SESSION-AUDIT-20261025-STOP",
+  "submission_name_role": "Unique run-card label only; no competition submission name or uploadable new raster was created.",
+  "submission_note": "Review only; no new TIFF; literal registry-overlap STOP; DO NOT SUBMIT.",
+  "submission_note_characters": 71,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "new_unique_tiff_generated": false,
+  "experiments_executed": 0,
+  "weekly_slots_used": 0,
+  "organizer_confirmed_score": null,
+  "leaderboard_claims": {
+    "user_reported_gemsdoe32_value": {
+      "evidence_class": "CLAIM",
+      "value": 0.2778,
+      "receipt": null
+    },
+    "owner_page_projection": {
+      "evidence_class": "MODEL",
+      "value": 0.2747,
+      "source": "Pinned GEMSDOE32 owner page; it also labels H33-2-B2 UNSCORED and states no organizer score exists."
+    },
+    "current_leader_values": {
+      "evidence_class": "USER-CLAIM AT AUDIT TIME",
+      "values_reported": [0.3195, 0.4413],
+      "note": "This follow-up could not retrieve the live page. A later separate main-branch review records its own 2026-10-25 top-50 snapshot; see below."
+    },
+    "later_main_branch_leaderboard_review": {
+      "evidence_class": "SEPARATE REPOSITORY REVIEW; not independently fetched by this audit",
+      "source_path": "docs/ANALYSIS_20261025_LEADERBOARD.md",
+      "reported_top_public_score": {"rank": 1, "participant": "xiaofanhu", "value": 0.4413},
+      "reported_top_50_entry": {"rank": 50, "participant": "moongrega", "value": 0.2818},
+      "reported_0_3195": "Absent from the reported top-50 snapshot.",
+      "reported_0_2778": "Below the reported top-50 threshold; still a CLAIM without a GEMSDOE32 submission receipt.",
+      "reported_sgmc_proxy_countercheck": {
+        "evidence_class": "CLAIM-GRADE OFF-CATALOGUE PROXY; not organizer score",
+        "R0": 0.0961,
+        "H19-5_parent": 0.1006,
+        "interpretation": "Does not corroborate better off-catalogue proxy performance after thinning/pruning.",
+        "source_path": "evidence/r0_forensics_20261024.json"
+      },
+      "source_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/"
+    }
+  },
+  "data_availability": {
+    "cached_training_features_present": false,
+    "official_source": "https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7",
+    "official_source_live_checked": false,
+    "reason_not_checked": "data.usgs.gov is outside the sandbox outbound-host allowlist.",
+    "owner_mirror_metadata_check": "GitHub API confirms metadata for part-000 at pinned commit bb2e070a3659f4f5c16ac927e62606f1f7f495a6; the full stack was not restored and source/license provenance remains unresolved."
+  },
+  "verification": {
+    "pytest": "526 passed; 140 upstream Affine pending-deprecation warnings",
+    "site_check": "PASS; 82 served rasters gated",
+    "current_status_and_readiness_checks": "PASS; generated panels/current research gate synchronized",
+    "primary_format_validator": "PASS; 11/11 gates",
+    "manifest": "PASS",
+    "pinned_parent": "PASS; exact parent bytes verified",
+    "ledger": "111 rows; no organizer receipt",
+    "readiness_preflight": "CONFIRMED DUPLICATE STOP; expected exit 1",
+    "github_pages_api": "build_type=legacy; source=main:/; status=errored",
+    "data_cache": "training_features.tif absent from .cache/gems_inputs/",
+    "tracked_data_irregularity": "8 tracked files under data/ conflict with session_manifest's never-track policy."
+  },
+  "integration_recheck": {
+    "verified_utc": "2026-10-25T17:54:33Z",
+    "base_commit": "1d4047044d0f35844c3a70aa0394491d0f339c98",
+    "pytest": "538 passed; 140 upstream Affine pending-deprecation warnings",
+    "site_check": "PASS; 89 served rasters gated",
+    "current_status_and_readiness_checks": "PASS; supplemental audit and leaderboard links generated and synchronized",
+    "manifest_parent_ledger": "PASS; 114 ledger rows and no organizer receipt",
+    "report_run_card_consistency": "PASS; 2026-10-25T17:55:03Z",
+    "git_diff_check": "PASS; 2026-10-25T17:55:03Z",
+    "new_tiff_generated": false,
+    "weekly_slots_used": 0
+  },
+  "sources": [
+    {
+      "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/012e17b2a115c3c0d5e7885bea625bf9657c99fc/docs/index.html",
+      "evidence_class": "OWNER-SOURCE",
+      "status": "Fetched through GitHub API at current main commit; page SHA-256 b88a7f10d064ae33c757d9273ab0d73d1fe29de8ea69029ddfd468bcd73560b1; says UNSCORED and NO ORGANISER SCORE EXISTS; page reports a 0.2747 model projection, not an organizer receipt."
+    },
+    {
+      "url": "https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/README.md",
+      "evidence_class": "OFFICIAL-REFERENCE-SOURCE",
+      "status": "Retrieved through GitHub API at pinned commit; README SHA-256 cfa4d55559c9128313beb9417eae7e0a94c31677132afb1120f9e86222804239; documents CPU-only and GPU setup options."
+    },
+    {
+      "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+      "evidence_class": "OFFICIAL-SOURCE-LINK; separate repository report",
+      "status": "Not retrieved by this initial audit because drivendata.org is outside the sandbox allowlist; a later main-branch analysis reports it fetched a 2026-10-25 top-50 snapshot. This card attributes those details to that review, not a fresh independent fetch."
+    },
+    {
+      "url": "https://docs.nlr.gov/docs/fy26osti/96647.pdf",
+      "evidence_class": "OFFICIAL-SOURCE-LINK; separate repository report",
+      "status": "Not retrieved by this initial audit because docs.nlr.gov is outside the sandbox allowlist; a later main-branch analysis reports reading the Sept 2026 rules and cites three submissions per week. This audit did not independently verify the PDF or current portal cap."
+    },
+    {
+      "url": "https://gdr.openei.org/submissions/1391",
+      "evidence_class": "OFFICIAL-SOURCE-LINK",
+      "status": "Manual-review link only; not retrieved because gdr.openei.org is outside the sandbox outbound-host allowlist."
+    }
+  ],
+  "limitations": [
+    "No new TIF was generated because the binding literal-overlap rule makes every nonempty in-footprint candidate fail before placement.",
+    "No candidate surface, holdout DTI, leakage canary, new-raster hash, or final candidate-dot comparison exists; null fields mean not measured, not zero.",
+    "One pinned witness is sufficient for rejection, not a full registry scan or geological similarity conclusion.",
+    "No authenticated DrivenData session, organizer receipt, live leaderboard, verified current portal cap, or portal acceptance test was available during this audit; a separate later main-branch report records a public leaderboard snapshot and cites the NLR three-per-week rule, but does not provide a receipt for GEMSDOE32.",
+    "Official USGS/GDR/NLR sources are linked for manual review but were not live-accessible under this runtime's host restrictions."
+  ]
+}

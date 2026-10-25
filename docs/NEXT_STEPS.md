@@ -14,6 +14,8 @@
 ---
 # Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`LISTRICLOQO` Session)
 
+**Supplemental audit record (17:03:59Z):** [three-pass follow-up](REVIEW_20261025_SESSION_FOLLOWUP.md) · [rejection-only run card](downloads/session_followup_20261025_run_card.json). That focused audit generated no candidate, holdout, canary, experiment, or slot and had no assigned method paragraph; its ranked candidates are conditional only. This is not the latest lane result and does not replace the current ordered selector/next-step queue below.
+
 ## Completed this session (`LISTRICLOQO` + Shared-Tool Public Registry Prefetch Fix + Updip Listric / Interfluve Knickzone / Selective Branch Calibration)
 
 1. **Completed Shared-Tool Fix for `#IR-92-PUBLIC-SCAN-RATELIMIT-705-FAILURES` (`scripts/audit_public_registry.py`):**

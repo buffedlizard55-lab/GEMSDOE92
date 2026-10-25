@@ -16,12 +16,27 @@ def site(tmp_path):
     primary = card['primary_download']
     audit = str(Path(primary).with_name(Path(primary).stem.removesuffix('-zeros') + '-audit.json'))
     paths = ['docs/index.html', *status.PAGES, status.CARD, primary, audit,
-             'evidence/review_f23_preflight.json']
+             'evidence/review_f23_preflight.json',
+             'docs/REVIEW_20261025_SESSION_FOLLOWUP.md',
+             'docs/downloads/session_followup_20261025_run_card.json',
+             'docs/ANALYSIS_20261025_LEADERBOARD.md']
     for name in paths:
         dest = tmp_path / name
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(ROOT / name, dest)
     return tmp_path
+
+
+def test_readme_preserves_session_start_brief_and_ordered_inputs():
+    text = (ROOT / 'README.md').read_text()
+    assert '### Persisted user brief — starting point for every session' in text
+    assert 'Read this README and [SESSION_PROMPT.md](SESSION_PROMPT.md) before work.' in text
+    assert '### Start every session here' in text
+    assert '[current review](docs/REVIEW_CURRENT.md)' in text
+    assert '[ordered next steps](docs/NEXT_STEPS.md)' in text
+    assert '[full supplied site-score inventory](ledger/site_scores_claimed_20261025.csv)' in text
+    assert 'This expandable prompt block is a **normalized, condensed operating brief**' in text
+    assert 'preserved verbatim as historical input' not in text
 
 
 def edit_card(root, fn):
@@ -37,6 +52,9 @@ def test_current_panels_are_synchronized_and_idempotent(site):
     for name in status.PAGES:
         text = (site / name).read_text()
         block = text.split(status.BEGIN)[1].split(status.END)[0]
+        assert 'REVIEW_20261025_SESSION_FOLLOWUP.md' in block
+        assert 'session_followup_20261025_run_card.json' in block
+        assert 'ANALYSIS_20261025_LEADERBOARD.md' in block
         assert 'DO NOT SUBMIT' in block
         assert 'HOLDOUT-DTI' in block
         assert 'unique' in block.lower() and 'DO NOT SUBMIT' in block
