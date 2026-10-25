@@ -69,6 +69,13 @@ Read this README and [SESSION_PROMPT.md](SESSION_PROMPT.md) before work. The [fu
 ## Historical session record (not current clearance)
 
 
+> ## Latest lane artifact — FLEXMAG (2026-10-25, parallel session)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`, `submission_eligible: false`). 3 new byte-unique GeoTIFFs (blind-fault flexure hinge × magnetic ASA; 3/3 pre-registered experiments); automated [0,1] format validation PASS (`nodata=None`, 0 NaN). Primary **HOLDOUT-DTI `0.045554 [0.035846, 0.056751]`** (`gems57-pooled-hide-v2`, 22,663 withheld positives, per-draw re-placement) is below the 0.113316 promotion bar; magnetic-gate paired Δ includes 0. Locally unique (surface |ρ| ≤ 0.0658, final-dot overlap ≤ 0.5567 / 98 rasters); public 102-repo scan not rerun; literal-witness stop above remains binding.
+>
+> **[Download FLEXMAG primary TIFF](docs/downloads/gemsdoe92-flexmag-20261025T165411Z-flexmag-37654-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-flexmag-20261025T165411Z-flexmag-37654-zeros.zip) · [run card](docs/downloads/flexmag_run_card.json) · [analysis — why/how 0.2778 + this test](docs/ANALYSIS_20261025_FLEXMAG.md) · [hypotheses](docs/HYPOTHESES_20261025_FLEXMAG.md) · [executive summary — how to submit](docs/executive-summary.html)
+>
+> SHA-256 `8190e1d07b059f8e6d1c869914a8786dfcbcb2771466f4c3874b60d1668c7261`; name `GEMSDOE92-FLEXMAG-flexmag-20261025`; note (94/140): `FLEXMAG flexmag: 37654 dots; blind-fault flexure hinge x magnetic ASA; HOLDOUT-DTI in run card`. Fresh source check: GEMSDOE32's own page (fetched 2026-10-25) labels `h33-h33-2-b2` **UNSCORED — NO ORGANISER SCORE EXISTS**; `0.2778` remains a CLAIM (see analysis §1).
+
 > ## Latest artifact — DRAINAGE-KNICK (2026-10-25)
 > **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). New byte-unique GeoTIFF; all automated format checks pass, but HOLDOUT-DTI `0.061728 [0.047046, 0.075316]` is below the `0.113316` promotion bar and literal public-registry overlap is `1.0 > 0.70`.
 
