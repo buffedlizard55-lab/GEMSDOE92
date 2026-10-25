@@ -1,9 +1,9 @@
 # Pre-Registered Geological Hypotheses — `2026-10-25` Session (`RADIODECOUPLE` Lane)
 
-**Session Date:** `2026-10-25`  
-**Lane Name:** `RADIODECOUPLE` (`RADIO-POTENTIAL-DECOUPLE`)  
-**Evaluator:** `vendor/gems57/evaluate_holdout.py` (`gems57-pooled-hide-v2`, $\alpha=0.2$, $\beta=0.8$, $R=300\text{ m}=3\text{ px}$ triangular kernel, `22,663` withheld catalogue fault pixels across `8` buffered spatial-quadrant folds, Seeds `20` & `30`, `1,000` paired `20 km` spatial-cluster bootstrap draws)  
-**Pre-Registration Rule:** Written BEFORE executing any experiment or generating the submission raster.  
+**Session Date:** `2026-10-25`
+**Lane Name:** `RADIODECOUPLE` (`RADIO-POTENTIAL-DECOUPLE`)
+**Evaluator:** `vendor/gems57/evaluate_holdout.py` (`gems57-pooled-hide-v2`, $\alpha=0.2$, $\beta=0.8$, $R=300\text{ m}=3\text{ px}$ triangular kernel, `22,663` withheld catalogue fault pixels across `8` buffered spatial-quadrant folds, Seeds `20` & `30`, `1,000` paired `20 km` spatial-cluster bootstrap draws)
+**Pre-Registration Rule:** Written BEFORE executing any experiment or generating the submission raster.
 **Hard Experiment Budget (Parallel-Run Protocol Rule 6):** At most **3 experiments** (`radiodecouple_standalone`, `radiodecouple_demag`, `radiodecouple_dual35`).
 
 ---
