@@ -1,3 +1,17 @@
+# Current review and next steps — 2026-10-25 (`f23ca2d2`)
+
+**No new TIFF. Research downloads only; DO NOT SUBMIT.** [Fresh review](REVIEW_F23.md) · [automated status](downloads/readiness.json) · [run card](downloads/review_f23_run_card.json).
+
+1. The previous proposed KNICKLOQO promotion cannot proceed under the unchanged literal rule. The pinned witness rejects all nonempty candidates before placement. Matched-budget diagnostics must not supersede the user's rule silently. An explicitly revised future brief and a named lane are prerequisites to further geological experiments, not a request for human pixel inspection.
+2. Use the corrected shared validator and byte-bound status renderer. `prune_radius=2` no longer bypasses its own distance gate. Never re-use a historical audit as proof of current bytes.
+3. Only if the protocol permits experiments later: restore pinned features; verify data-use rights and band metadata; freeze a comparable holdout control and locked outer spatial test; run single-feature canaries before the experiment budget. Do not compare static-mask and fold-visible scores as one leaderboard.
+4. Verify official submission-page rules, current cap and actual score receipts through permitted access. No DrivenData session or permitted route to those hosts is available here. No submission slot was spent.
+5. GitHub Pages still reports legacy publication. Enabling workflow publication returned HTTP 403. Repository integration permissions need attention before claiming Actions gates the live site. No credential is requested or stored.
+
+Earlier “current,” “unique,” and promotion instructions below are historical and superseded where they conflict with this decision. The newly requested unique submission remains unfulfilled.
+
+---
+
 # Current review — 2026-10-25 (`KNICKLOQO` session; read this block first)
 
 **✅ OK TO DOWNLOAD: YES (`10/10` format gates PASS, finite `[0.0, 1.0]`, `0` NaNs); ⛔ OK TO SUBMIT: NO — DIAGNOSTIC ONLY (`verdict: negative` under literal `17GEMSDOE` dense surface; `UNIQUE` under `dual_reading_decision` with `0 / 1,412` public rasters `> 0.70`, max `0.685531 <= 0.70`).**

@@ -1,3 +1,16 @@
+# 2026-10-25 review (`f23ca2d2`) — new findings
+
+- **IR-92-PRUNE-RADIUS-BYPASS (fixed):** `gems/gates.py::_g_catalogue` used `n_near == 0 or prune_radius < 3`; any prediction inside a declared radius below three passed the distance gate. The legacy test encoded that bypass. Removed the override; test boundaries now include inside, exactly at, and outside the declared radius. All existing served artifacts are revalidated, not assumed to inherit a PASS.
+- **IR-92-READINESS-DRIFT (mitigated):** newer KNICKLOQO panels describe a matched-budget `dual_reading_decision` as unique although the shared helper's operative rule is now literal. Historical JSON and numerical claims are preserved, explicitly archived; a byte-bound current panel is generated and checked before CI/Pages publication. Future edits that stale that panel fail the checker.
+- **IR-92-GRID-FAILURE-HANDLING (fixed):** the validator could index a wrong-shape raster with the template mask and did not check catalogue georeferencing. It now returns structured failed gates for malformed rasters, mismatched catalogue grids and invalid radii; exact transform match is required.
+- **IR-92-NO-ELIGIBLE-NEW-TIFF (unresolved):** fresh pinned witness covers every footprint pixel, so the unchanged literal rule forbids all nonempty candidates. No new TIFF is generated, and no old artifact is renamed as new.
+- **IR-92-PAGES-MODE (unresolved, rechecked):** GitHub API reports legacy publication; PUT build_type=workflow returned HTTP 403 Resource not accessible by integration. Actions checks are not asserted to guard the live legacy site.
+- **IR-92-SCORE-PROVENANCE (unresolved):** freshly retrieved GEMSDOE32 page says UNSCORED and NO ORGANISER SCORE EXISTS. User-reported values and conflicting leaderboard numbers remain unverified.
+
+[Review](docs/REVIEW_F23.md) · [source receipt](evidence/review_f23_sources.json) · [pre-placement proof](evidence/review_f23_preflight.json).
+
+---
+
 # IRREGULARITIES — only items that change a decision
 
 ## 2026-10-25 (KNICKLOQO session) — `#IR-92-COULOMBLOQO-EULERFUSE-POSTMERGE-COLLISION`: `COULOMBLOQO` passes matched-budget continuous-surface uniqueness (`0 / 185 > 0.70`) but collides at `82.87%` / `73.26%` with post-merge `EULERFUSE_gravity`
