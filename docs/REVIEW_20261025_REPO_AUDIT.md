@@ -7,7 +7,18 @@
 - **OK TO DOWNLOAD FOR RESEARCH: YES.** Fresh local revalidation passed all 11 format gates: single-band `float32`, `EPSG:32611`, `3730 × 3292`, reference transform matched, finite `[0,1]`, no NaNs, zeros outside the footprint, zero catalogue mass, and exact-file SHA-256 match.
 - **OK TO SUBMIT: NO.** The stored `submission_eligible` is `false` and verdict is `negative`. The pinned `17GEMSDOE` witness is positive on every footprint cell. Therefore every nonempty candidate dot within that same footprint has literal 3-pixel forward overlap `1.000`, which exceeds the prompt's `0.70` stop. A format pass is not duplicate clearance, a promotion, or organizer acceptance.
 - **No new TIFF or experiment was generated in this repository review.** The existing named TIFF is not represented as a new submission. An empty raster would evade overlap only by being useless and is not produced.
-- **Weekly slots used in this review: 0.** The submitter still needs to select/upload an eligible candidate through DrivenData; this project has no `ORGANIZER-CONFIRMED` receipt.
+- **Weekly slots used in this review: 0.** No candidate is eligible under the binding literal rule. This project has no `ORGANIZER-CONFIRMED` receipt.
+
+## Review of the later-merged KNICKLOQO “submission-ready” claim
+
+During PR preparation, `origin/main` advanced to merge `#89` (`406638a`, merge `71f6ac4`), which added `SUBMISSION_READY.md`, `docs/SUBMIT_NOW.html`, `docs/index_new.html`, `docs/BEAT_0_2778.md`, `validate_submission.py`, and `docs/downloads/knickloqo_submission_run_card.json`. These pages promoted the KNICKLOQO TIFF under an alternate matched-budget `dual_reading_decision` policy and included a projected live score of `0.28–0.32`. That claim conflicts with the binding literal overlap stop in the user's protocol and the registry evidence.
+
+- The KNICKLOQO public-registry record itself reports `unique_under_literal_rule: false`, `stop_required: true`, and literal overlap `1.0` against the pinned `17GEMSDOE` full-footprint raster. Its alternate-policy `submission_eligible: true` does not satisfy the literal gate. The current review therefore **overrides the submission-ready language**; the TIFF remains research-only.
+- Direct file checks confirm the KNICKLOQO download's exact SHA-256 is `8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347`, size `149177` bytes, single-band `float32`, `EPSG:32611`, rasterio shape `3730 × 3292`, transform origin `(243350, 4508550)`, and no nodata. Its audit JSON agrees with those grid facts. The merged `knickloqo_submission_run_card.json` initially reported shape `[3292, 3730]`, transform origin `(732200, 4194900)`, file size `123456`, and ZIP SHA `d272…`; none matched the checked artifacts. The card now has corrected measured grid/file/ZIP metadata and a separate `current_review_override` (`submission_eligible: false`), while retaining its original `dual_reading_decision` clearance claim explicitly as historical. Companion uniqueness records also report both 1,412 and 1,415-raster scan counts; this inventory-count discrepancy remains unresolved, but both records report the same literal overlap `1.0` and stop.
+- The added top-level `validate_submission.py` only checks selected format properties, does not execute a public registry uniqueness scan or the holdout promotion gate, and ends by declaring the TIFF “ready for submission” and repeating the unsupported `0.28–0.32` projection. Passing it cannot establish submission eligibility. The user-facing copy and script were corrected to mark download as research-only and withdraw the projection.
+- The old static **HOLDOUT-DTI** result `0.010788 [0.009468, 0.012201]` (`gems57-pooled-hide-v2`, 22,663 withheld positives) is a repository holdout measurement, not an organizer score. The user-provided `0.2778` remains a **CLAIM**; no matching organizer receipt exists in the ledger. The `0.28–0.32` forecast is withdrawn, not reported as a score or estimate.
+
+The merge added no matching organizer receipt and did not alter the no-submit decision. `README.md`, the public `docs/index.html`, `docs/executive-summary.html`, `docs/SUBMIT.html`, `SUBMISSION_READY.md`, `docs/SUBMIT_NOW.html`, and the alternate `docs/index_new.html` now put the literal no-submit status before any research download. `docs/BEAT_0_2778.md` is rewritten as a claim/evidence audit rather than a score projection.
 
 ## Why the listed `GEMSDOE32` `0.2778` is plausible, but not proven
 
@@ -54,13 +65,14 @@ Found stale and misleading current-facing site language: the old RADIOCONTACT se
 
 ### Pass 3 — final cross-check
 
-- `python -m pytest tests -q`: **372 passed**, with 126 nonfatal upstream Rasterio/Affine pending-deprecation warnings.
+- `python -m pytest tests -q`: **373 passed**, with 126 nonfatal upstream Rasterio/Affine pending-deprecation warnings after integrating current `main` and the submission-status overrides.
 - `PYTHONPATH=vendor python scripts/check_site.py`: **66 served raster files passed** local format gates. This checks file format/encoding, not science, uniqueness, or organizer acceptance.
 - `python -m gems manifest --manifest registry/data_manifest.json --data-root data`: all 8 pinned inputs passed.
 - `python -m gems parent --recipe registry/parents/R0.json --data-root data`: pinned parent verified.
 - `python -m gems ledger`: 97 rows; no organizer receipt.
 - Targeted `python -m gems validate ...`: **11/11 gates PASS** on the LISTRICDIP exact file.
 - Static inspection confirmed the published download link, SHA, explicit DO NOT SUBMIT status, 140-character maximum note, and `.tif`/one-TIFF `.zip` options.
+- `python validate_submission.py`: KNICKLOQO TIFF passes shared **format-only** checks; wrapper explicitly states this is not uniqueness/eligibility and prints **DO NOT SUBMIT**. The TIFF and its one-member ZIP checksums, ZIP payload checksum, raster geometry, and corrected run-card override all match.
 
 Local software and byte checks do not verify current DrivenData rules, current leaderboard, official data licensing, upload acceptance, or the live weekly submission cap. The competition-data page and USGS sources below are links for manual review, not assertions that they were reached in this restricted runtime:
 

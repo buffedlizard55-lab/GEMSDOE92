@@ -232,6 +232,11 @@ def test_current_site_primary_and_repository_audit_are_consistent():
     assert card["correlation_overlap_vs_registry"]["public_rejection_witness"]["candidate_dots_forward_overlap_3px"] == 1.0
     assert card["correlation_overlap_vs_registry"]["public_rejection_witness"]["duplicate_stop"] is True
     assert card["correlation_overlap_vs_registry"]["preplacement_surface"]["status"] == "NOT_VERIFIED_IN_THIS_REVIEW"
+    knick = card["upstream_main_claim_review"]
+    assert knick["literal_registry_measurement"]["candidate_forward_overlap_3px"] == 1.0
+    assert knick["literal_registry_measurement"]["stop_required"] is True
+    assert knick["current_review_override"]["submission_eligible"] is False
+    assert knick["organizer_confirmed_receipt"] is None
 
 
 def test_submit_page_exists():
@@ -263,6 +268,41 @@ def test_site_missing_primary_receipt_fails_without_traceback(tmp_path, monkeypa
     monkeypatch.setattr(site, "DOWNLOADS", tmp_path / "empty-downloads")
     assert site.main() == 1
     assert "unreadable JSON receipt" in capsys.readouterr().out
+
+
+def test_merged_knickloqo_submission_claim_is_overridden_and_assets_match():
+    """The literal gate overrides the later matched-budget submission claim; served asset metadata must match bytes."""
+    import hashlib
+    from zipfile import ZipFile
+
+    card_path = DOCS / "downloads" / "knickloqo_submission_run_card.json"
+    card = json.loads(card_path.read_text(encoding="utf-8"))
+    override = card["current_review_override"]
+    assert override["submission_eligible"] is False
+    assert override["decision"] == "DO NOT SUBMIT; RESEARCH DOWNLOAD ONLY"
+    assert card["submission_eligibility"]["submission_eligible"] is True  # retained historical alternate-policy claim
+
+    tif = DOCS / "downloads" / card["submission_metadata"]["file_name"]
+    zip_path = DOCS / "downloads" / card["submission_metadata"]["file_name_zip"]
+    assert hashlib.sha256(tif.read_bytes()).hexdigest() == card["submission_metadata"]["sha256_tif"]
+    assert hashlib.sha256(zip_path.read_bytes()).hexdigest() == card["submission_metadata"]["sha256_zip"]
+    assert tif.stat().st_size == card["submission_metadata"]["file_size_bytes"]
+    with ZipFile(zip_path) as archive:
+        assert len(archive.namelist()) == 1
+        assert hashlib.sha256(archive.read(archive.namelist()[0])).hexdigest() == card["submission_metadata"]["sha256_tif"]
+    assert card["format_validation"]["shape"] == [3730, 3292]
+    assert card["format_validation"]["transform"] == "Affine(100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0)"
+
+    for path in (ROOT / "SUBMISSION_READY.md", DOCS / "SUBMIT_NOW.html", DOCS / "index_new.html", DOCS / "BEAT_0_2778.md"):
+        text = path.read_text(encoding="utf-8")
+        assert "DO NOT SUBMIT" in text
+        assert "Expected Live Score" not in text
+        assert "Expected score:" not in text
+        assert "Projected score:" not in text
+    assert "FORMAT VALIDATION PASSED" in (ROOT / "validate_submission.py").read_text(encoding="utf-8")
+    ready = (ROOT / "SUBMISSION_READY.md").read_text(encoding="utf-8")
+    assert ready.startswith("# Current submission-status override")
+    assert "**DO NOT SUBMIT" in ready
 
 
 @pytest.mark.parametrize("text", ["{broken", "[]", "null"])

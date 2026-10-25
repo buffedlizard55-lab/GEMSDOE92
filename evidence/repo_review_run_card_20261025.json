@@ -19,7 +19,10 @@
     "withheld_positives": 22663,
     "primary_instrument": "static deployment d_cat > 2 px",
     "dti": 0.0054195278859189445,
-    "ci95": [0.0042936054837163905, 0.006550678712361833],
+    "ci95": [
+      0.0042936054837163905,
+      0.006550678712361833
+    ],
     "comparable_static_reference": {
       "evidence_class": "HOLDOUT-DTI",
       "source_status": "stored KNICKLOQO run card; not rerun in this repository review",
@@ -27,7 +30,10 @@
       "withheld_positives": 22663,
       "candidate": "KNICKLOQO standalone",
       "dti": 0.010788,
-      "ci95": [0.009468, 0.012201]
+      "ci95": [
+        0.009468,
+        0.012201
+      ]
     },
     "separate_strict_draw_blind_diagnostic": {
       "evidence_class": "HOLDOUT-DTI",
@@ -36,7 +42,10 @@
       "withheld_positives": 22663,
       "instrument": "strict fold-visible d_visible > 2 px",
       "dti": 0.048225,
-      "ci95": [0.039232, 0.056882]
+      "ci95": [
+        0.039232,
+        0.056882
+      ]
     }
   },
   "correlation_overlap_vs_registry": {
@@ -72,7 +81,10 @@
     "all_values_finite_and_in_0_1": true,
     "zeros_outside_footprint": true,
     "crs": "EPSG:32611",
-    "shape": [3730, 3292],
+    "shape": [
+      3730,
+      3292
+    ],
     "transform_matches_reference": true,
     "single_band_float32": true,
     "positive_pixels": 37654,
@@ -85,5 +97,53 @@
   "weekly_slots_used_in_review": 0,
   "new_tiff_generated_in_review": false,
   "verdict": "negative",
-  "verdict_reason": "The existing candidate is format-valid but fails the literal registry overlap stop against a pinned raster positive on the entire valid footprint, and its stored HOLDOUT-DTI is below the repository's stored comparable static holdout-best."
+  "verdict_reason": "The existing candidate is format-valid but fails the literal registry overlap stop against a pinned raster positive on the entire valid footprint, and its stored HOLDOUT-DTI is below the repository's stored comparable static holdout-best.",
+  "upstream_main_claim_review": {
+    "scope": "main advanced during PR preparation; reviewed merged PR #89 (commit 406638a, merge commit 71f6ac4)",
+    "artifact": "docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif",
+    "artifact_sha256": "8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347",
+    "format_facts": {
+      "size_bytes": 149177,
+      "dtype": "float32",
+      "crs": "EPSG:32611",
+      "shape_rows_columns": [
+        3730,
+        3292
+      ],
+      "transform": "Affine(100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0)"
+    },
+    "holdout_dti": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator": "gems57-pooled-hide-v2",
+      "withheld_positives": 22663,
+      "static_d_cat_gt_2": {
+        "value": 0.010788,
+        "ci95": [
+          0.009468,
+          0.012201
+        ]
+      },
+      "status": "historical repository holdout only; not organizer-confirmed"
+    },
+    "literal_registry_measurement": {
+      "witness": "17GEMSDOE full-footprint raster",
+      "candidate_forward_overlap_3px": 1.0,
+      "threshold": 0.7,
+      "unique_under_literal_rule": false,
+      "stop_required": true
+    },
+    "historical_alternate_policy_claim": {
+      "policy": "dual_reading_decision",
+      "submission_eligible": true,
+      "status": "does not satisfy the binding literal stop"
+    },
+    "withdrawn_live_score_projection": "0.28-0.32",
+    "current_review_override": {
+      "verdict": "negative",
+      "submission_eligible": false,
+      "decision": "RESEARCH DOWNLOAD ONLY; DO NOT SUBMIT"
+    },
+    "organizer_confirmed_receipt": null,
+    "source_run_card_metadata_discrepancy": "Merged run card originally reported shape [3292,3730], transform origin (732200,4194900), file_size_bytes 123456, and a ZIP SHA that did not match the download; review card metadata was corrected against the current TIFF/ZIP bytes."
+  }
 }
