@@ -20,7 +20,9 @@ sys.path.insert(0, str(ROOT))
 CARD = 'docs/downloads/review_c5e3848c_integrated_run_card.json'
 BEGIN = '<!-- CURRENT-STATUS:BEGIN -->'
 END = '<!-- CURRENT-STATUS:END -->'
-PAGES = ('docs/submit.html', 'index.html', 'README.md', 'docs/REVIEW_CURRENT.md',
+# README.md has a distinct first-screen review summary and regression test; do not
+# overwrite it with this older c5e3848c compatibility panel.
+PAGES = ('docs/submit.html', 'index.html', 'docs/REVIEW_CURRENT.md',
          'SUBMISSION_READY.md', 'docs/BEAT_0_2778.md')
 
 

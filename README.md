@@ -1,25 +1,13 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-> ## Latest artifact — LISTRIC (2026-10-26)
-> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`, `submission_eligible: false`). New unique-byte GeoTIFFs (3 experiments); automated [0,1] validation PASS. Static **HOLDOUT-DTI `0.010909 [0.009543, 0.012278]`** (`gems57-pooled-hide-v2`, 22,663 withheld px) nominally tops KNICKLOQO `0.010788` but paired Δ `+0.000121 [-0.001167, +0.001262]` includes 0, SGMC proxy is lower, and the public dual-reading overlap `0.710735 > 0.70` (62GEMSDOE) + literal `1.000` block promotion.
+> ## Authoritative decision — repository review `797e507a` (2026-10-25)
+> **✅ OK TO DOWNLOAD FOR RESEARCH · ⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT.** The existing LISTRICDIP TIFF is format-valid but fails the binding literal registry-overlap stop: **REGISTRY-MEASUREMENT** overlap `1.0` against one pinned full-footprint witness (`0.70` limit). No new TIFF, geological experiment, HOLDOUT-DTI result, organizer receipt, or weekly-slot use was produced by that review. The unique submission request remains unfulfilled.
 >
-> **[Download LISTRIC standalone TIFF](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif)** · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.zip) · [run card](docs/downloads/listric_run_card.json) · [analysis](docs/ANALYSIS_20261026_LISTRIC.md) · [hypotheses](docs/HYPOTHESES_20261026_LISTRIC.md) · [executive summary — how to submit](docs/executive-summary.html)
+> **[Download existing research TIFF](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif)** · [three-pass review and limitations](docs/REVIEW_797E507A.md) · [fresh repository audit](docs/REVIEW_20261025_FRESH_AUDIT.md) · [conditional ranked hypotheses](docs/HYPOTHESES_797E507A.md) · [automated run card](docs/downloads/review797e_run_card.json) · [executive summary — submission instructions](docs/executive-summary.html).
 >
-> SHA-256 `7e4b46368b2a5949bcf626bfaa4457ed15a89dde38d412a1d07469411a31e2ab`; name `GEMSDOE92-LISTRIC-standalone-20261026`; note (82/140): `h33-h33-2-b2; LISTRIC standalone: 37654 1D quadrant-cal listric offset-pair crests`.
+> This is not submission clearance. Format validation does not establish scientific validity or competition acceptance. Historical lane results below are not current eligibility decisions.
 
-> ## Prior artifact — DRAINAGE-KNICK (2026-10-25)
-<!-- CURRENT-STATUS:BEGIN -->
-## Current verified decision — 2026-10-25 (review c5e3848c)
-
-**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review. The new-submission requirement remains unmet.
-
-[Current research download](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [fresh run card](docs/downloads/review_c5e3848c_integrated_run_card.json) · [three-pass review](docs/REVIEW_C5E3848C.md) · [executive submission guide](docs/executive-summary.html).
-
-Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
-
-<!-- CURRENT-STATUS:END -->
-
-## Current decision — 2026-10-25 (`f23ca2d2` review; read first)
+## Prior decision — 2026-10-25 (`f23ca2d2` review; superseded)
 
 **OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT. No new unique TIFF was generated.**
 The unchanged literal duplicate rule rejects every nonempty candidate against the pinned full-footprint witness. Matched-budget “unique” claims in historical sections below are not binding clearance. We did not copy or rename a previous submission.

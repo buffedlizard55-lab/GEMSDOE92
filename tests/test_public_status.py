@@ -43,6 +43,24 @@ def test_actual_status_is_byte_bound_and_first_on_every_page():
         ROOT / 'docs/downloads/review797e_run_card.json').read_bytes()
 
 
+def test_readme_first_screen_cannot_promote_historical_lane_or_score():
+    readme = (ROOT / 'README.md').read_text()
+    first_screen = readme.split('## Prior decision', 1)[0]
+    assert first_screen.index('Authoritative decision') < first_screen.index('DO NOT SUBMIT')
+    assert 'OK TO DOWNLOAD FOR RESEARCH' in first_screen
+    assert 'DO NOT SPEND A WEEKLY SLOT' in first_screen
+    assert 'New unique-byte GeoTIFFs' not in first_screen
+    assert 'HOLDOUT-DTI `0.010909' not in first_screen
+    assert 'docs/REVIEW_20261025_FRESH_AUDIT.md' in first_screen
+
+
+def test_session_prompt_points_to_latest_audit_before_history():
+    prompt = (ROOT / 'SESSION_PROMPT.md').read_text()
+    first_addendum = prompt.split('---', 1)[0]
+    assert 'docs/REVIEW_20261025_FRESH_AUDIT.md' in first_addendum
+    assert 'No new TIFF' in first_addendum
+
+
 def test_panel_update_is_idempotent_and_moves_stale_banner_below(publication):
     _, card, _ = publication
     panel = render_status(card)
