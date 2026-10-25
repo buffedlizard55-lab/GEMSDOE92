@@ -37,7 +37,7 @@ def test_dual_overlap_dense_surface_literal_fires_but_matched_budget_discriminat
     assert r2["matched_budget_forward_overlap"] == r2["literal_forward_overlap"]
 
 
-def test_dual_reading_decision_reports_both_and_uses_matched_budget():
+def test_dual_reading_decision_reports_both_but_enforces_literal():
     rows = [
         dict(file="dense", representation="continuous_surface", literal_forward_overlap=1.0,
              matched_budget_forward_overlap=0.10, spearman_surface=0.2),
@@ -48,7 +48,8 @@ def test_dual_reading_decision_reports_both_and_uses_matched_budget():
     assert d["literal_reading_fires"] is True
     assert d["worst_literal_forward_overlap"] == 1.0
     assert d["worst_matched_budget_forward_overlap"] == 0.65
-    assert d["duplicate"] is False and d["verdict"] == "unique"
+    assert d["duplicate"] is True and d["verdict"] == "negative"
+    assert d["stop_required"] is True and d["submission_eligible"] is False
     rows[1]["matched_budget_forward_overlap"] = rows[1]["literal_forward_overlap"] = 0.71
     assert U.dual_reading_decision(rows)["duplicate"] is True
     rows[1]["matched_budget_forward_overlap"] = rows[1]["literal_forward_overlap"] = 0.5

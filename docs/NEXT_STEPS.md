@@ -12,12 +12,12 @@
    - Built the 30-feature, 3-branch `KNICKLOQO` ensemble (`15%` Full + `35%` Province-Debiased + `50%` Subsurface-Knickzone) with incised drainage thalweg knickzones (`thalweg_knickzone_idx`), cross-contour scarp transgression (`cross_contour_transgression`, rejecting contour-parallel Pleistocene Lake Lahontan shorelines), sliding-window Poisson magneto-gravity collinearity (`poisson_mag_grav_collinearity`), 4.5 km mesoscale-standardized strain (`coulomb_mesoscale_z`), and **label-free within-quadrant empirical quantile calibration (`lambda = 0.80`, `gamma = 3.3`)**.
    - **All 50 leakage canaries PASS** (`max symmetric AUC = 0.659602 <= 0.90`).
    - **Experiment 1 (`KNICKLOQO standalone`, `h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif`):**
-     - **Static `d_cat > 2.0` `HOLDOUT-DTI = 0.010788 [0.009468, 0.012201]`** — **all-time #1 in `GEMSDOE92`** (`+17.0%` over `COULOMBLOQO standalone` `0.009220`, paired $\Delta = +0.001568 [+0.000592, +0.002535]$; `+16.4%` over `EULERFUSE gravity` `0.009265`; `+169.3%` over `R0` `0.004006`).
+     - **Static `d_cat > 2.0` `HOLDOUT-DTI = 0.010788 [0.009468, 0.012201]`** — **all-time #1 in `GEMSDOE92`** (beating `PROVINCETOE piedbasin` `0.009711`, `POISSONKNICK qcal` `0.009684`, `POISSONFLEX` `0.009561`, `EULERFUSE gravity` `0.009265`, `COULOMBLOQO standalone` `0.009220` by `+17.0%`, and `R0` `0.004006` by `+169.3%`).
      - **Strict draw-blind `d_cat > 2.0` `HOLDOUT-DTI = 0.010958 [0.009675, 0.012337]`** (`+13.1%` over `COULOMBLOQO` `0.009689`).
      - **Strict draw-blind `d_visible > 2.0` `HOLDOUT-DTI = 0.109043 [0.097872, 0.120534]`** (beating `H19-5` `0.096757`, paired 95% CI `[+0.004125, +0.020591]`).
      - **USGS SGMC off-catalogue `PROXY = 0.103912`** (`+14.7%` over `COULOMBLOQO standalone` `0.090569`, beating `R0` `0.096060`).
      - **Restored `NE` (`Q1`) dot allocation from `4,221` (`11.2%`) to `9,286` (`24.7%`)**, lifting Seed 20 `NE` DTI by **`+77.6%`** (`0.006100 -> 0.010834`) and Seed 30 `NE` DTI by **`+25.1%`** (`0.012059 -> 0.015086`).
-     - **`100%` unique on local (`65/65`) and public `dual_reading_decision` (`0 / 1,412` rasters `> 0.70`, worst operative overlap `= 0.685531 <= 0.70`, `verdict = "unique"`)**; literal unweighted overlap `= 1.0000` on `17GEMSDOE E-proba-multiscale`.
+     - **`100%` unique on local (`65/65` + all newly merged `PROVINCETOE`/`POISSONFLEX`/`POISSONKNICK`/`RADIOCONTACT` rasters) and public `dual_reading_decision` (`0 / 1,412` rasters `> 0.70`, worst operative overlap `= 0.685531 <= 0.70`, `verdict = "unique"`)**; literal unweighted overlap `= 1.0000` on `17GEMSDOE E-proba-multiscale`.
    - **Experiment 2 (`KNICKLOQO uncal`, `61b98143`):** Static `HOLDOUT-DTI = 0.010102 [0.008907, 0.011335]` (`NE` dots `= 5,529`, proving within-quadrant calibration adds `+0.000686` pooled DTI and `+35.2%` Seed 20 `NE` DTI); `0 / 1,412` public rasters `> 0.70` (`max = 0.681840`).
    - **Experiment 3 (`KNICKLOQO dual35`, `8eedc094`):** Static `HOLDOUT-DTI = 0.008976 [0.007871, 0.010008]`, `SGMC PROXY = 0.102945`; `0 / 1,412` public rasters `> 0.70` (`max = 0.671164`).
 
@@ -30,6 +30,82 @@
    - **Rank 3 (`RADIO-POTENTIAL-DECOUPLE`):** 3D tensor concordance between radiometric `K/Th` & `U/Th` contact gradients (`ext_geodawn_rad_u8`) and gravity/magnetic horizontal gradients (`Bands 16, 18`) to separate deeply rooted hydrothermally altered fault contacts from surficial volcanic ash-flow sheets.
    - **Rank 4 (`LISTRIC-ASYMMETRY-DIP`):** Lateral horizontal offset ($200\text{--}800\text{ m}$ toward the hanging wall) between the surface topographic scarp (`Band 12/19`) and the subsurface gravity/basement inflection (`Bands 15/18`) to capture listric normal faults ($45^\circ\text{--}60^\circ$ dip).
    - **Rank 5 (`INSAR-3DEP1M-CREEP`, Contingent on External Tile Staging):** Pumping-deconfounded Sentinel-1 InSAR velocity gradient + 3DEP 1 m LiDAR micro-scarp steps.
+
+---
+
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`POISSONKNICK`, `POISSONFLEX`, & `PROVINCETOE` Sessions)
+
+## Completed this session (`POISSONKNICK`)
+
+1. **Executed Priority 1 from `BLINDFAULT` (`COULOMBLOQO` re-read under `dual_reading_decision`, `evidence/poissonknick_screen.json::next_step_1_coulombloqo_dual_reading`):**
+   - Even after demoting dense `> 150,000`-px probability surfaces (`17GEMSDOE E-proba-multiscale`) to matched-budget top-`37,654` support, `COULOMBLOQO standalone` and `dual45` **still fail Rule 1 (`> 0.70` forward 3-px overlap)** against sparse public dot fields (`0.739842` / `0.722420` vs `GEMSDOE23` `100,000`-px habitat rasters; `0.700404` for `standalone` vs `GEMSDOE52` `61,427`-px raster) AND against local `37,654`-dot `gemsdoe92-eulerfuse-gravity` (`0.828703` for `standalone`, `0.732565` for `dual45`).
+   - Fixed `collect_unique_local_rasters(foot, exclude_substrings=...)` in `scripts/screen_coulomb_loqo.py`, `scripts/screen_eulerfuse.py`, and `scripts/evaluate_eulerfuse.py` so non-`COULOMBLOQO` lanes never skip `COULOMBLOQO` rasters.
+2. **Executed Priority 2 from `BLINDFAULT` (Diagnosed & Resolved `#IR-92-NE-QUADRANT-LOQO-COLLAPSE`):**
+   - Quantified per-quadrant dot allocation across `37,654` dots (`evidence/poissonknick_holdout.json::quadrant_dot_allocations`): `R0` places `10,145` dots (`26.9%`) in `NE`, whereas `BLINDFAULT blind` placed `49` (`0.1%`), `BLINDFAULT blindtopo` `272` (`0.7%`), `COULOMBLOQO standalone` `4,221` (`11.2%`), and uncalibrated `POISSONKNICK uncal` `2,396` (`6.4%`).
+   - Implemented unlabeled within-quadrant survival-quantile probability & crest calibration (`gems/poissonknick.py::calibrate_quadrant_probabilities`), restoring `POISSONKNICK qcal` `NE` allocation to **`9,967` dots (`26.5%`)** and lifting `NE` strict draw-blind `HOLDOUT-DTI` by **`+41.3%`** (`0.080880` $\to$ `0.114274`, paired 95% CI `[+0.012412, +0.054829]`).
+3. **Executed Priority 3 from `BLINDFAULT` (Pre-Registered & Evaluated `POISSONKNICK`, 3/3 Experiments, 0 Weekly Slots):**
+   - Pre-registered 5 hypotheses (`docs/HYPOTHESES_20261025_POISSONKNICK.md`) and implemented `gems/poissonknick.py` (`f25_poisson_rtp_vg_decouple`, `f26_poisson_window_cov`, `f27_thalweg_knick_convexity`, `f28_lahontan_obliquity_deconfound`, `f29_quad_norm_depth_base`, `f30_quad_norm_cond_grav`).
+   - **53 / 53 Leakage Canaries PASS** (`max symmetric AUC = 0.654126 <= 0.90`).
+   - **Static Deployment `d_cat > 2.0` `HOLDOUT-DTI`:** `POISSONKNICK qcal` achieves **`0.009304 [0.007836, 0.010810]`**, beating `COULOMBLOQO standalone` (`0.009220`), `COULOMBLOQO dual45` (`0.009107`), `POISSONKNICK uncal` (`0.008877`), `HYDROCONDUIT f45hydro` (`0.008549`), `APRONRIDGE free1d` (`0.008354`), `COULOMBDM s45coulomb55` (`0.007816`), `POISSONKNICK pkdual40` (`0.007258`), `BLINDFAULT blindtopo` (`0.004585`), and `R0` (`0.004006`, paired $\Delta = +0.005298\ [+0.004133, +0.006564]$), while passing **even the `<= 150k`-px sparse public witnesses (`GEMSDOE23` `100k`, `62GEMSDOE` `120k`, `GEMSDOE52` `61k`) at `<= 0.625432 <= 0.70`** and all local rasters!
+   - **Strict Draw-Blind `d_visible > 2.0` `HOLDOUT-DTI`:** `POISSONKNICK qcal = 0.098491 [0.086315, 0.112473]` beats `pkdual40` (`0.095362`), `uncal` (`0.090988`, paired $\Delta = +0.007503\ [+0.000592, +0.015116]$), and `H19_5_vis_d2` (`0.071758`, paired $\Delta = +0.026733\ [+0.017606, +0.036511]$), and achieves **`2.49x` higher `HOLDOUT-DTI` on flat basin-floor faults (`T1`: `0.042254` vs `0.016969`)**.
+   - **Uniqueness (`REGISTRY-MEASUREMENT`):** Under fail-closed governance, verdict remains `negative` (`OK TO DOWNLOAD FOR RESEARCH`, `DO NOT SUBMIT`) because pooled strict draw-blind `0.098491 < 0.113316` (`COULOMBLOQO standalone`) and literal overlap is `1.000000` on the dense `5,167,373`-px witness `17GEMSDOE_E-proba-multiscale`.
+
+---
+
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`POISSONFLEX` & `PROVINCETOE` Merge)
+
+## Completed in `POISSONFLEX` session
+
+1. Closed prior-session items #1 (`evidence/coulomb_loqo_dual_reading_selector.json`) and #2 (`evidence/ne_quadrant_loqo_collapse_diagnostic.json`).
+2. Pre-registered 4 untried hypotheses (`docs/HYPOTHESES_20261025_POISSONFLEX.md`) and implemented Rank #1 `POISSONFLEX` (`gems/poissonflex.py`, `32/32` canaries PASS `<= 0.616108`).
+3. Built & validated `docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif` (`SHA-256 = 37b18c200e84c77b39b07e527b17d4395968389aaf3ff0c175c71204b2065f9b`, `45,000` nested OOF dots): strict draw-blind `HOLDOUT-DTI = 0.107466 [0.094158, 0.120431]` (ahead of `PROVINCETOE` `0.106452` and `H19-5` `0.096757`), static `0.008824`, and off-catalogue `USGS SGMC PROXY = 0.120957` (`+35.4%` over `COULOMBLOQO`). Locally unique across all `101` repo rasters (`<= 0.6488`); `verdict = "negative"`, `0` weekly slots spent (`evidence/poissonflex_run_card.json`).
+
+## Highest-P(Win) next steps for the next session
+
+1. **End-to-End 2D Patch ConvNet Trained Directly on Differentiable `300 m` Soft-DTI Loss:** Replace pixelwise `HistGradientBoostingClassifier` with a `64 × 64`-patch dilated 2D ConvNet minimizing $1 - \text{Soft-DTI}_{300\text{m}}(\alpha=0.2, \beta=0.8)$ across `8` buffered LOQO folds on the combined `POISSONFLEX` + `PROVINCETOE` + `COULOMBLOQO` physical features.
+2. **Selective Subsurface-Only Quadrant Calibration (`#IR-92-NE-QUADRANT-DOUBLE-EDGED-CALIBRATION`):** Apply within-quadrant rank alignment only to regional-drift subsurface channels while preserving catalogue-prior scaling on surface scarp channels.
+3. **External Official Public Data Staging (Outside Sandbox):** Stage [USGS 3DEP](https://www.usgs.gov/3d-elevation-program) `10 m / 1 m` DEM scarp curvature tiles and record the first `ORGANIZER-CONFIRMED` DrivenData receipt in `ledger/submissions.csv`.
+
+---
+
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`PROVINCETOE` Session)
+
+## Completed this session (`PROVINCETOE`)
+
+1. **Resolved prior `docs/NEXT_STEPS.md` Item #1 (`1,403`-raster / `102`-repo `dual_reading_decision` audit, `#IR-92-COULOMBLOQO-EXTERNAL-CLIFF-COLLISION`):**
+   - Fetched and Git-SHA1-verified `1,413` unique `.tif` blobs across `102` `GEMSDOE*` repositories (`1,403` valid exact-grid rasters; `1,354` external entries).
+   - Proved `COULOMBLOQO standalone` (`0.739842` vs `GEMSDOE23` `100,000` px; `8` external hits `> 0.70`) and `COULOMBLOQO dual45` (`0.722420` vs `62GEMSDOE` `125,890` px; `4` hits `> 0.70`) **fail** external sparse uniqueness because `hess_s12(log_slope)` places `45.2%` of dots onto `>= 12°` alpine cliffs (`80.2%` collision with `GEMSDOE23`). `COULOMBLOQO` therefore cannot be promoted simply by adopting `dual_reading_decision`.
+2. **Resolved prior `docs/NEXT_STEPS.md` Item #2 (`#IR-92-NE-QUADRANT-LOQO-COLLAPSE` root cause & cure):**
+   - Proved `NE` (Eastern Nevada Carbonate Horst-Graben Terrane) holds `27.6%` of the footprint and **`41.6%` (`23,652` px) of unmapped `USGS SGMC` (`d_cat > 5`) bedrock faults** with the domain's highest fault `iso_grav_anom_slope` (`0.129`), yet `geod_shearrate` has median `0.00` (`vs 18.28` in `SW`) and fault `tmi_hg` has median `6.4` (`vs 28.7` in `SW`).
+   - Replaced raw regional GPS strain with strictly masked within-quadrant standardized contrasts (`sigma <= 4 px`, zero cross-quadrant bleed) + label-blind quadrant rank calibration (`gamma = 2.0`) in `gems/provincetoe.py`, restoring `NE` allocation from `6.28%` (`globalraw`) to **`26.32%`** (`provincetoe`) and lifting `NE` draw-blind internal `HOLDOUT-DTI` by **`+40.9%` (`0.092694 -> 0.130630`)**.
+3. **Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261025_PROVINCETOE.md`) & executed Rank 1 `PROVINCETOE` (`3/3` experiments, `0` weekly slots):**
+   - **`28 / 28` single-feature leakage canaries PASS** (`max symmetric AUC = 0.612372 <= 0.90`).
+   - **New #1 and #2 all-time repository static deployment `HOLDOUT-DTI`** (`gems57-pooled-hide-v2`, `22,663` withheld positives, `d_cat > 2.0`): **`piedbasin = 0.009711 [0.008295, 0.011211]`** and **`provincetoe = 0.009685 [0.008306, 0.011150]`** (beating prior `#1` `COULOMBLOQO standalone = 0.009220 [0.007933, 0.010683]` and `R0 = 0.004006`, `+142.4%`), plus **`SGMC PROXY = 0.091183`** (above `COULOMBLOQO standalone = 0.090569`).
+   - Strict draw-blind Rule-2 `d_visible > 2.0` `HOLDOUT-DTI`: **`provincetoe = 0.106452 [0.093042, 0.119461]`** (beating `H19-5 = 0.096757` by `+0.009694 [+0.003371, +0.016065] > 0` and `globalraw = 0.100181`, below `COULOMBLOQO standalone = 0.113890`).
+   - All 3 GeoTIFFs (`gemsdoe92-provincetoe-{provincetoe,piedbasin,globalraw}-37654-20261025-*-zeros.tif`) pass **`11/11` format gates** in `[0, 1]` and are **locally unique (`<= 0.684575 <= 0.70`)** and **unique against every comparable-budget external raster (`<= 50,000` dots, max `0.660434 <= 0.70`)**, but trip over-budget sparse `dot_field` witnesses (`54,864`–`125,890` dots <= `150,000`, max `0.791815` vs `62GEMSDOE` `125,890` px; `#IR-92-OVERBUDGET-SPARSE-WITNESS-ASYMMETRY`) and the literal dense witness (`1.0000` vs `17GEMSDOE`). Verdict: **`negative`**, `submission_eligible: false`, **`0` weekly slots spent**. Full PhD analysis: [`docs/ANALYSIS_20261025_PROVINCETOE.md`](ANALYSIS_20261025_PROVINCETOE.md).
+
+## Highest-P(Win) actions for the next session (in order)
+
+1. **DTI-Calibrated Continuous Skeleton Probabilities ($p_i \in [0, 1]$ out to $c^\star(D) = 0.2 D$) on `PROVINCETOE` + Multi-Scale Contextual 2D Vesselness (`5–15 km` along-strike continuity):**
+   - As proved in `docs/ANALYSIS_20261025_PROVINCETOE.md` §3.2, under $\alpha = 0.2, \beta = 0.8$, every non-overlapping `2.8 px`-spaced 1D ridge candidate with marginal 300 m cover expectation $c_i > 0.2 D \approx 0.056\text{--}0.088$ increases competition DTI; hard binary `{0, 1}` truncation at `37,654` pixels discards `40,000–80,000` positive-expectation secondary fault pixels! Calibrating out-of-fold continuous $p_i \in [0.12, 1.0]$ along multi-scale elongated 1D skeletons (`1–15 km` steerable/U-Net context) is the highest-leverage mathematical path from `0.2778` toward `0.3195` / `0.4413`.
+2. **Selector Policy Clarification on `#IR-92-OVERBUDGET-SPARSE-WITNESS-ASYMMETRY` (`DOT_FIELD_MAX_SUPPORT = 150,000`):**
+   - `vendor/gems57/uniqueness.py` currently evaluates `37,654`-dot candidates without `matched_budget_support` against `55k–126k`-dot (`1.5x–3.3x` budget) skeletons (`reverse_overlap = 0.4439`). Decide at the shared-template level whether `DOT_FIELD_MAX_SUPPORT` should match `1.25x * my_dots` (`~47,000` px) or symmetric harmonic overlap before promoting any sparse candidate.
+3. **Next Untried Physics Hypotheses (`docs/HYPOTHESES_20261025_PROVINCETOE.md` Ranks 2–5):**
+   - **Rank 2 (`FLEXISOSTASY`)**: Elastic-plate flexural wavelength residual (`Bands 13, 12, 15, 18, 19`) separating fault-bounded structural half-grabens from unfaulted volcanic sags.
+   - **Rank 3 (`HYDRO-SILICA-CAP`)**: Chalcedony/quartz geothermometer upflow gradient × MT smectite-cap flank × GeoDAWN K-enrichment (`GDR #1391` + `Bands 17, 13, 19` + `GeoDAWN`).
+   - **Rank 5 (`EARTH-MRI-AEM-3DEP`)**: Requires external operator staging of public USGS 3DEP 1/3-arc-second (`~10 m`) DEM sub-pixel scarp curvature summaries (blocked inside this GitHub/PyPI-only sandbox).
+4. **First `ORGANIZER-CONFIRMED` Calibration Receipt:** Obtain one authenticated DrivenData portal receipt on a human-cleared artifact and record it in `ledger/submissions.csv` (`0` receipts currently exist).
+
+## Explicit Limitations (`PROVINCETOE` Session)
+
+- Outbound sandbox egress is limited to GitHub and PyPI (`registry/session_manifest.json`); live DrivenData portal authentication and fresh USGS 3DEP / ScienceBase downloads are unavailable in-session.
+- Leaderboard figures (`0.2778`, `0.3195`, `0.4413`) remain tagged `[CLAIM]`; `HOLDOUT-DTI` (`gems57-pooled-hide-v2`) and `USGS SGMC` (`PROXY`) are never projected as organizer scores.
+
+---
+
+# Current protocol review — 2026-10-25 (`376a8469`)
+
+**Research downloads only. DO NOT SUBMIT.** The shared dual-reading helper now enforces the literal duplicate stop for every raster. Matched-budget overlap is diagnostic, not a specification change. Prior claims below that the policy was automatically resolved are historical and superseded. No new TIFF or geological experiment was generated in this review. See [review, conditional hypotheses and ordered next steps](REVIEW_376A8469.md) and [fresh run card](downloads/review376a_run_card.json). A new submission-cleared artifact remains unfulfilled.
 
 ---
 

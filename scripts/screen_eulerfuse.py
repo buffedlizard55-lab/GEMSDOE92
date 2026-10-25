@@ -291,7 +291,7 @@ def main() -> int:
         )
 
     print("[6/8] Comparing actual surfaces and previews to local registry...", flush=True)
-    registries = collect_unique_local_rasters(foot)
+    registries = collect_unique_local_rasters(foot, exclude_substrings=("eulerfuse", "EULERFUSE"))
     sample_idx = np.linspace(0, int(foot.sum()) - 1, 250_000, dtype=np.int64)
     rows: dict[str, list[dict]] = {a: [] for a in arm_model}
     for label, path in registries:

@@ -56,7 +56,10 @@ def symmetric_auc(y_true: np.ndarray, scores: np.ndarray) -> tuple[float, float]
     return auc, float(max(auc, 1.0 - auc))
 
 
-def collect_unique_local_rasters(foot: np.ndarray) -> list[tuple[str, Path]]:
+def collect_unique_local_rasters(
+    foot: np.ndarray,
+    exclude_substrings: tuple[str, ...] = ("COULOMBLOQO",),
+) -> list[tuple[str, Path]]:
     candidates: list[tuple[str, Path]] = [
         ("parent_R0_zeros.tif", ROOT / "data/parent_R0_zeros.tif"),
         ("h19_5.tif", ROOT / "data/bridge/h19_5.tif"),
@@ -68,7 +71,7 @@ def collect_unique_local_rasters(foot: np.ndarray) -> list[tuple[str, Path]]:
         if not folder.is_dir():
             continue
         for p in sorted(folder.glob("*.tif")):
-            if "COULOMBLOQO" in p.name:
+            if any(sub in p.name for sub in exclude_substrings):
                 continue
             candidates.append((f"{folder.name}/{p.name}", p))
 
