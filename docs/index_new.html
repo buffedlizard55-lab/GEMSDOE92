@@ -47,7 +47,7 @@
       color: #dcfce7;
       transform: translateY(-2px);
     }
-    
+
     .submission-highlight {
       background: linear-gradient(135deg, #14532d 0%, #1e7d4e 100%);
       color: #dcfce7;
@@ -83,7 +83,7 @@
       opacity: 0.9;
       margin-top: 0.25rem;
     }
-    
+
     .status-badge {
       display: inline-block;
       padding: 0.5rem 1rem;
@@ -107,7 +107,7 @@
       color: #94a3b8;
       border: 2px solid #64748b;
     }
-    
+
     .comparison-table {
       width: 100%;
       border-collapse: collapse;
@@ -131,7 +131,7 @@
     .comparison-table .highlight {
       background: rgba(56, 223, 160, 0.15);
     }
-    
+
     .feature-list {
       background: #1e293b;
       padding: 1.5rem;
@@ -149,7 +149,7 @@
     .feature-list li {
       margin-bottom: 0.5rem;
     }
-    
+
     code {
       background: #374151;
       padding: 0.1rem 0.3rem;
@@ -157,7 +157,7 @@
       font-size: 0.9em;
       color: #94a3b8;
     }
-    
+
     .download-section {
       background: #0f172a;
       padding: 1.5rem;
@@ -191,6 +191,25 @@
   </style>
 </head>
 <body>
+<!-- PUBLIC-STATUS:BEGIN -->
+<section class="banner banner-warn" aria-label="Authoritative submission status">
+  <h1>Research download available. DO NOT SUBMIT.</h1>
+  <p><strong>OK TO DOWNLOAD FOR RESEARCH · NOT CLEARED FOR A WEEKLY SLOT</strong></p>
+  <p><a class="btn" href="downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif" download>Download existing format-validated GeoTIFF (.tif)</a>
+  · <a href="executive-summary.html">Submission guide</a>
+  · <a href="REVIEW_797E507A.md">Current review and limitations</a>
+  · <a href="downloads/review797e_run_card.json">Automated run card</a></p>
+  <p>This is an existing research artifact, <strong>not a newly generated or unique submission</strong>.
+  The literal registry overlap is 1.0 (limit 0.70); matched-budget uniqueness claims below do not override the stop.
+  No new model, HOLDOUT-DTI result, organizer receipt or weekly slot was produced in this review.</p>
+  <p>Automated format checks pass: finite values in [0, 1], no NaN inside the footprint,
+  zeros outside, matching CRS/shape/transform. Format validity is not competition acceptance.</p>
+  <p>SHA-256: <code>91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e</code></p>
+</section>
+<!-- PUBLIC-STATUS:END -->
+<details class="historical-records">
+<summary>Archived incoming submission claims — superseded, DO NOT SUBMIT</summary>
+
   <div class="hero">
     <h1>🎯 GEMSDOE92 — DOE GEMS Prize #306</h1>
     <p>Unique, Auditable Fault Detection Submissions for the Great Basin, Nevada</p>
@@ -206,7 +225,7 @@
     <section id="submission" class="submission-highlight">
       <h2>✅ RECOMMENDED FOR SUBMISSION</h2>
       <p><strong>KNICKLOQO standalone</strong> — All-time #1 repository performance, cleared for submission under dual_reading_decision policy</p>
-      
+
       <div class="stats">
         <div class="stat-box">
           <div class="stat-value">0.010788</div>
@@ -225,13 +244,13 @@
           <div class="stat-label">Public Rasters > 0.70<br><span style="font-size: 0.8rem;">(UNIQUE ✓)</span></div>
         </div>
       </div>
-      
+
       <div class="download-section">
         <p><strong>📥 DOWNLOAD READY-TO-SUBMIT FILE:</strong></p>
         <a href="downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif" download class="download-btn">⬇ TIF File (146 KB)</a>
         <a href="downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.zip" download class="download-btn">⬇ ZIP File (149 KB)</a>
       </div>
-      
+
       <p style="margin-top: 1.5rem;">
         <span class="status-badge status-pass">✅ FORMAT VALID</span>
         <span class="status-badge status-pass">✅ VALUES IN [0, 1]</span>
@@ -251,7 +270,7 @@
       <ol style="line-height: 2;">
         <li><strong>Download:</strong> Click the TIF file link above to download <code>h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif</code></li>
         <li><strong>Go to DrivenData:</strong> Visit <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/submit/" target="_blank" style="color: #dcfce7;">Submission Page</a></li>
-        <li><strong>Upload & Submit:</strong> 
+        <li><strong>Upload & Submit:</strong>
           <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
             <li><strong>File:</strong> Upload the TIF file you downloaded</li>
             <li><strong>Name:</strong> <code>GEMSDOE92-KNICKLOQO-standalone-20261025</code></li>
@@ -270,7 +289,7 @@
     <section style="margin: 2rem 0; padding: 1.5rem; background: #1e293b; border-radius: 8px;">
       <h2>📊 Performance Comparison</h2>
       <p>How KNICKLOQO standalone compares to other GEMSDOE92 artifacts and the GEMSDOE32 baseline:</p>
-      
+
       <table class="comparison-table">
         <thead>
           <tr>
@@ -325,10 +344,10 @@
           </tr>
         </tbody>
       </table>
-      
+
       <p style="margin-top: 1rem; font-size: 0.9rem; color: #64748b;">
-        <strong>Note:</strong> All HOLDOUT-DTI values are from <code>gems57-pooled-hide-v2</code> with 22,663 withheld positives. 
-        These are <strong>local evaluation metrics</strong>, not live competition scores. 
+        <strong>Note:</strong> All HOLDOUT-DTI values are from <code>gems57-pooled-hide-v2</code> with 22,663 withheld positives.
+        These are <strong>local evaluation metrics</strong>, not live competition scores.
         The GEMSDOE32 CLAIM of 0.2778 is a byte-verified ancestor, not an ORGANIZER-CONFIRMED receipt.
       </p>
     </section>
@@ -336,7 +355,7 @@
     <!-- WHY THIS WORKS -->
     <section style="margin: 2rem 0; padding: 1.5rem; background: #1e293b; border-radius: 8px;">
       <h2>🎯 Why KNICKLOQO Beats GEMSDOE32 (0.2778)</h2>
-      
+
       <div class="feature-list">
         <h3>🔬 Scientific Advantages</h3>
         <ul>
@@ -347,7 +366,7 @@
           <li><strong>NE DTI Improvement:</strong> Lifts NE quadrant DTI by +77.6%, addressing the carbonate terrane under-representation</li>
         </ul>
       </div>
-      
+
       <div class="feature-list" style="margin-top: 1rem;">
         <h3>📈 Performance Gains</h3>
         <ul>
@@ -357,7 +376,7 @@
           <li><strong>All Canaries PASS:</strong> 50/50 leakage canaries with max AUC = 0.659602 ≤ 0.90 threshold</li>
         </ul>
       </div>
-      
+
       <div class="feature-list" style="margin-top: 1rem;">
         <h3>🎨 Novel Methodology</h3>
         <ul>
@@ -372,7 +391,7 @@
     <!-- FEATURE HIGHLIGHTS -->
     <section style="margin: 2rem 0; padding: 1.5rem; background: #1e293b; border-radius: 8px;">
       <h2>🔬 Key Features & Innovations</h2>
-      
+
       <div class="feature-list">
         <h3>🎯 Target Signatures</h3>
         <ul>
@@ -382,7 +401,7 @@
           <li><strong>Mesoscale Coulomb:</strong> 4.5km standardized strain for regional fault context (<code>f30_quad_norm_cond_grav</code>)</li>
         </ul>
       </div>
-      
+
       <div class="feature-list" style="margin-top: 1rem;">
         <h3>🛡️ Anti-Leakage Measures</h3>
         <ul>
@@ -392,7 +411,7 @@
           <li><strong>Leakage Canaries:</strong> All 50 single-feature AUC tests PASS (< 0.90 threshold)</li>
         </ul>
       </div>
-      
+
       <div class="feature-list" style="margin-top: 1rem;">
         <h3>🎯 Why It Detects Missing Faults</h3>
         <ul>
@@ -407,7 +426,7 @@
     <!-- UNIQUENESS VALIDATION -->
     <section style="margin: 2rem 0; padding: 1.5rem; background: #1e293b; border-radius: 8px;">
       <h2>✅ Uniqueness Validation</h2>
-      
+
       <div class="feature-list">
         <h3>🎯 dual_reading_decision Policy</h3>
         <p>Under the matched-budget uniqueness policy (comparing only against rasters with similar dot counts), KNICKLOQO standalone passes all checks:</p>
@@ -418,14 +437,14 @@
           <li><strong>Verdict:</strong> <span class="status-badge status-pass">UNIQUE</span></li>
         </ul>
       </div>
-      
+
       <div class="feature-list" style="margin-top: 1rem;">
         <h3>📊 Literal Witness Note</h3>
         <p>The literal dense-witness rule (17GEMSDOE E-proba-multiscale with 5,167,373 positive pixels) gives 1.000 overlap for ALL non-empty rasters. This is a known degeneracy.</p>
         <p><strong>Resolution:</strong> Under <code>dual_reading_decision</code> policy, dense surfaces (>150k px) are excluded from the uniqueness comparison, and only matched-budget rasters are considered.</p>
         <p><strong>Conclusion:</strong> KNICKLOQO standalone is <span class="status-badge status-pass">CLEARED FOR SUBMISSION</span> under this policy.</p>
       </div>
-      
+
       <p style="margin-top: 1rem; text-align: center;">
         <a href="downloads/knick_loqo_public_registry_uniqueness.json" download class="download-btn">⬇ Download Full Uniqueness Report</a>
       </p>
@@ -435,7 +454,7 @@
     <section style="margin: 2rem 0; padding: 1.5rem; background: #1e293b; border-radius: 8px;">
       <h2>🔗 Verified Official Sources</h2>
       <p>All claims are backed by official, publicly available sources:</p>
-      
+
       <ul style="line-height: 2; font-size: 1rem;">
         <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/" target="_blank">🌐 DrivenData Problem #306 — Problem Description</a></li>
         <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/" target="_blank">🏆 DrivenData Leaderboard (Current Top: 0.4413)</a></li>
@@ -488,5 +507,7 @@
       All automated. No hallucinations. No manual input.
     </p>
   </footer>
+
+</details>
 </body>
 </html>

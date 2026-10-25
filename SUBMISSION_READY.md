@@ -1,10 +1,15 @@
+:warning: **SUPERSEDED — DO NOT SUBMIT.** The content below is an inherited historical claim, not current guidance. Its submission clearance and forecast were not supported by the binding literal rule. Its grid metadata also contained errors. See [current review](docs/REVIEW_797E507A.md) and its automated negative run card. No organizer score is established.
+
+<details>
+<summary>Archived incoming claims — rejected, not operative</summary>
+
 # ✅ SUBMISSION READY — GEMSDOE92
 
-**Status:** ✅ **CLEARED FOR SUBMISSION**  
-**File:** `docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif`  
-**SHA-256:** `8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347`  
-**Date:** 2026-10-25  
-**Lane:** KNICKLOQO  
+**Status:** ✅ **CLEARED FOR SUBMISSION**
+**File:** `docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif`
+**SHA-256:** `8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347`
+**Date:** 2026-10-25
+**Lane:** KNICKLOQO
 
 ---
 
@@ -250,13 +255,16 @@ For questions or issues:
 
 ---
 
-**Document Status:** ✅ Verified | **Last Updated:** 2026-10-25 | **Version:** 1.0  
-**Repository:** buffedlizard55-lab/GEMSDOE92 | **Branch:** arena/05edd957-gemsdoe92  
-**Core Values:** Maximize P(Win) · Own the Outcome  
-**Disclaimer:** Local metrics are NOT ORGANIZER-CONFIRMED. Live scores may vary. No hallucinations. All automated.  
+**Document Status:** ✅ Verified | **Last Updated:** 2026-10-25 | **Version:** 1.0
+**Repository:** buffedlizard55-lab/GEMSDOE92 | **Branch:** arena/05edd957-gemsdoe92
+**Core Values:** Maximize P(Win) · Own the Outcome
+**Disclaimer:** Local metrics are NOT ORGANIZER-CONFIRMED. Live scores may vary. No hallucinations. All automated.
 
 ---
 
 ## ✅ READY TO SUBMIT
 
 **The file is ready. Download and submit now to beat 0.2778!**
+
+
+</details>

@@ -1,32 +1,18 @@
-# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`RADIODECOUPLE` Session)
+# Binding next steps — 2026-10-25 (`797e507a`)
 
-## Completed this session (`RADIODECOUPLE` — Radiometric Alteration &times; Potential-Field Tensor Decoupling)
+1. Do not start another geological experiment under the universal literal duplicate stop. This is already decided automatically, not pending pixel inspection.
+2. Keep the generated public-status panel first on all three entry pages; run `python scripts/render_public_status.py --check` and `python scripts/check_site.py`.
+3. A future explicitly permitted lane should test one of [three ranked conditional operators](HYPOTHESES_797E507A.md), using the shared buffered visible-only evaluator, individual canaries and an untouched outer spatial test. Do not tune again on the outer test or compare incompatible holdout instruments.
+4. Resolve repository Pages configuration/permission drift: API setting change returned 403; verify post-merge deployment instead of assuming the live site updated.
+5. Obtain authoritative data-use confirmation and authenticated receipts through permitted channels. No current live score or new unique submission is established.
 
-1. **Pre-Registered and Executed 3 `RADIODECOUPLE` Experiments (`gems/radiodecouple.py`, `scripts/build_radiodecouple_submission.py`, `docs/HYPOTHESES_20261025_RADIODECOUPLE.md`, `docs/ANALYSIS_20261025_RADIODECOUPLE.md`):**
-   - Formulated 5 candidate geological hypotheses addressing the physics of the 0.4413 leaderboard score: hydrothermally altered normal fault conduits exhibiting potassium enrichment ($K/Th$ gradient), reduced-to-the-pole (RTP) magnetic destruction ($\nabla^2 \text{RTP} > 0$), vertical gravity gradient contacts ($\partial g_z / \partial z$), and magnetotelluric (MT) conductive fluid plumes.
-   - Decoupled deeply-rooted structural hydrothermal contacts from surficial ignimbrite sheets using 3D potential-field tensor collinearity ($\mathbf{G} \cdot \mathbf{M} / (\|\mathbf{G}\|\|\mathbf{M}\|)$).
-   - Validated against single-feature leakage canaries: all 7 canaries passed with `max symmetric AUC = 0.5340 <= 0.90` (completely leak-free).
-   - Evaluated on 8-fold whole-segment spatial holdout (`gems57-pooled-hide-v2`, 22,663 withheld positives):
-     - **Standalone (`gemsdoe92-radiodecouple-standalone-37654-20261025-zeros.tif`):** `HOLDOUT-DTI = 0.053167 [0.041779, 0.064582]`. Paired $\Delta$ vs parent control $R0$ ($0.004006$): **`+0.049161 [+0.037975, +0.060517]`** ($p < 10^{-6}$).
-     - **Demag Arm (`10322e69`):** `HOLDOUT-DTI = 0.003620 [0.002942, 0.004280]`.
-     - **Dual35 Hybrid (`93386a41`):** `HOLDOUT-DTI = 0.004789 [0.003937, 0.005598]`.
-   - Verified local registry uniqueness across 107 rasters: worst Morans-Bivariate correlation $0.6566 \le 0.70$, worst Spearman $|\rho| = 0.0946 \le 0.90$.
-   - Primary verdict: `negative` (does not beat repository all-time holdout high of $0.113316$; literal public dense witness overlap is $1.0000 > 0.70$). Submission eligibility set to `false`; 0 weekly competition slots consumed.
-2. **Automated Validation:**
-   - 10/10 format gates PASS (single-band float32, EPSG:32611, exact 3730x3292 shape, values strictly bounded in $[0, 1]$, exactly 0 NaNs, 0 catalogue mass).
-   - Site check PASS (66 served rasters gated).
+See [full review and limits](REVIEW_797E507A.md). The entries below are historical plans and do not authorize bypassing the stop.
 
-## Highest-P(Win) actions for the next session (in order)
+---
 
-1. **Untried Hypothesis: `LISTRIC-ASYMMETRY-DIP` (Rank 4):**
-   - Model the lateral horizontal offset ($200\text{--}800\text{ m}$ toward the hanging wall) between surface topographic scarps (DEM gradient) and deep basement gravity/magnetic inflections (Bouguer/RTP max horizontal gradient) for normal faults dipping $45^\circ\text{--}60^\circ$.
-   - Exploit dip direction relative to Basin and Range regional extension ($\sim \text{N}60^\circ\text{W}$).
-2. **Untried Hypothesis: `EPITHERMAL-SILICA-CAP` (Rank 5):**
-   - Detect high-resistivity / high-density shallow caps overlying conductive hydrothermal plumes via MT-gravity joint inversion signatures.
-3. **Public Registry Dual-Reading Promotion Evaluation for Top Holdout Candidate:**
-   - Continue audit of public registry continuous rasters to separate valid spatial predictions from degenerate full-footprint continuous rasters (`17GEMSDOE`).
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`LISTRICDIP` Session)
 
-## Prior completed session (`LISTRICDIP`)
+## Completed this session
 
 1. Ranked five hypotheses in `docs/HYPOTHESES_20261025_LISTRICDIP.md` before scoring. Implemented only Rank 1 (`LISTRICDIP`), three arms, catalogue-free, shared evaluator and writer.
 2. `updip50` static HOLDOUT-DTI `0.005420 [0.004294, 0.006551]` beats `R0` `0.004006` (paired CI excludes 0) and loses to `KNICKLOQO` `0.010788` and `COULOMBLOQO` `0.009220`. Re-placed `d_visible > 2` is `0.048225`. Verdict `negative`. 0 weekly slots.
@@ -43,7 +29,6 @@
 ## Still open, not started
 
 Ranks 2–5 in the LISTRICDIP hypothesis file (`TENSOR-RIEDEL`, `FLEXURE-HINGE`, `CLAYCAP-REDOX`, `INSAR-3DEP1M`) were not run. `INSAR-3DEP1M` remains not viable in this sandbox. A weekly slot still requires a file that beats the stored holdout best and clears the binding uniqueness rule. This session did not produce one.
-
 
 ---
 
@@ -401,3 +386,8 @@ Next, in order: (1) **one organizer receipt** remains Blocker 0 — the selector
 - **`PIEDFRONT f35Ptop`** (`GEMSDOE92-PIEDFRONT-f35Ptop-20261024`, `docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif`, SHA-256 `e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8`): static `HOLDOUT-DTI = 0.006425 [0.005375, 0.007479]`, `SGMC = 0.059993`, `verdict: negative` (**OK TO DOWNLOAD**, **DO NOT SUBMIT**). `HYDROCONDUIT f45hydro` (`0.008549 [0.007626, 0.009487]`) improves over `PIEDFRONT f35Ptop` by `+33.1%` (`+0.002124`) while overlapping only `56.56% <= 70%` within 3 px (`phi = 0.2000`).
 - **`STEPEDGE f60Sraw`** (`GEMSDOE92-STEPEDGE-f60Sraw-20261024`, `docs/downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif`, SHA-256 `c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4`): static `HOLDOUT-DTI = 0.003980 [0.003295, 0.004702]`, repo-best `SGMC = 0.141464`, `verdict: negative` (`42.35% <= 70%` 3-px overlap with `HYDROCONDUIT f45hydro`).
 - Ledger total across all merged sessions: `54 BUILT / 0 RECEIPT`.
+
+
+## Parallel research notes, not authorization
+
+Main `d6f7ac0` added RADIODECOUPLE and CURIE-DEMAG reports. See their analysis and hypothesis registers. Their further model/promotion plans remain subordinate to the binding literal stop at the top of this file; they are not validated or selected by review797e.
