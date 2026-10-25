@@ -80,8 +80,8 @@ Recommended next sequence: (i) keep the current rejection; (ii) only after the g
   "named_non_fault_process": "Not evaluated; no candidate surface was generated.",
   "holdout_dti": {
     "evidence_class": "HOLDOUT-DTI",
-    "evaluator_version": "gems57-pooled-hide-v2",
-    "withheld_positives": 22663,
+    "evaluator_version": null,
+    "withheld_positives": null,
     "value": null,
     "ci95": null,
     "status": "not run in this review"
