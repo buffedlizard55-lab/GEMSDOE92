@@ -1,3 +1,12 @@
+# Next steps — 2026-10-25 repository audit & TILTANGLE remediation (`arena/151c397c-gemsdoe92`)
+
+- **Completed in `arena/151c397c-gemsdoe92` (`0 / 3` experiments, `0` weekly slots):**
+  1. Re-verified all `12` SHA-256-pinned inputs (`scripts/restore_inputs.py`, `training_features.tif` `4371c82e…`) and the pinned public witness `17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` (`5,167,373 / 5,167,373` positive footprint cells $\implies$ literal 3-px forward overlap `1.0000 > 0.70` pre-placement **STOP**).
+  2. Audited and remediated the merged `TILTANGLE` artifact (`f17eae78…`; [`evidence/tiltangle_audit_20261025.json`](../evidence/tiltangle_audit_20261025.json), [`scripts/audit_tiltangle_leakage.py`](../scripts/audit_tiltangle_leakage.py), [`tests/test_tiltangle_audit.py`](../tests/test_tiltangle_audit.py)): proved its reported `0.033466` static figure failed the Protocol Rule 4 leakage canary because `d_pref` was computed from the full `existing_faults.tif` catalogue including withheld faults (`symmetric AUC = 0.962399 > 0.90`, `d_pref == 1.0` on `100%` of withheld fault pixels) and failed local 3-px dot-field uniqueness (`0.776332 > 0.70` vs `NETEXPAND netexpand` and `0.761513 > 0.70` vs `NETEXPAND netexpandfar`). Recomputed leak-free `HOLDOUT-DTI` via `vendor/gems57/evaluate_holdout.py` (`22,663` withheld positives): pure surface `S` static = **`0.005272 [0.003839, 0.006810]`**; strict fold-visible Rule-2 with visible-only `d_pref` = **`0.085247 [0.072752, 0.098193]`**; strict fold-visible Rule-2 pure `S` = **`0.042670 [0.030397, 0.055911]`**.
+  3. Updated [`docs/HYPOTHESES_20261025_REVIEW.md`](HYPOTHESES_20261025_REVIEW.md) and [`docs/REVIEW_20261025_ARENA_151C397C.md`](REVIEW_20261025_ARENA_151C397C.md) ([run card](downloads/review_20261025_151c397c_run_card.json)).
+
+---
+
 # Next steps — 2026-10-25 repository audit (`78db3076`)
 
 **No submission-clearable TIFF. DO NOT SUBMIT the current VARIO research primary or the older LISTRICLOQO/HALO files.** Under the user's unchanged literal positive-support rule, the hash-verified 17GEMSDOE witness forces 1.0 overlap >0.70 for any nonempty in-footprint candidate. VARIO also fails its reported sparse-dot overlap and paired holdout improvement. [Three-pass review](REVIEW_20261025_78DB3076.md) · [final negative JSON card](downloads/session_78db3076_run_card.json) · [four conditional untried hypotheses](HYPOTHESES_20261025_78DB3076.md). The combined main-merge HALO raster failed the catalogue-distance gate; it was quarantined, not advertised for download. This review ran **zero** experiments/holdouts/weekly slots; VARIO's prior three experiments are from a separate concurrent lane.
@@ -36,6 +45,15 @@
 4. **Owner decision needed: dense-raster policy.** The ALI stop does not depend on it, but future lanes will hit the 17GEMSDOE / GEMSDOE48 continuous surfaces under the literal reading. Proposal: dot fields stay literal; continuous surfaces use matched-budget top-K plus Spearman; both readings stay reported.
 5. **Owner decision needed: promotion instrument.** The hide-and-recover instrument does not track the leaderboard (IR-92-HOLDOUT-VALIDITY). Consider adding leave-one-out prediction of owner-reported scores (`scripts/ali_fit.py`) as a second, MODEL-labelled gate.
 6. Keep using `safe_save` / `safe_load` for every large cache (IR-92-NPY-PAGE-ZERO).
+
+---
+
+# Next Steps — GEMSDOE92 (Updated 2026-10-25, Post-RIEDELVALVE Session)
+
+## Completed this session (`RIEDELVALVE` — `3/3` experiments, `0` weekly slots; `evidence/riedelvalve_run_card.json`)
+- **Pre-registered 5 ranked untried hypotheses** (`docs/HYPOTHESES_20261025_RIEDELVALVE.md`: `RIEDELVALVE`, `FLEXURE-ADMITTANCE`, `SEISMIC-UPDIP-PROJECTION`, `CLAYCAP-HALO-DIPOLE`, and sandbox-blocked `INSAR-3DEP1M-CREEP`), repaired `#IR-92-VENTSCARP-BAND18-UNSIGNED-GRAVITY-AND-BAND4-BAND8-SWAP`, and passed `32/32` single-feature leakage canaries (`max symmetric AUC = 0.639492 <= 0.90`).
+- **E2 Primary Research Artifact (`riedel_n90k`, `gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif`, `75d61cb1…`):** Confirmed additive `37,654 @ 1.0 + 52,346 @ 0.30` Tversky tail (`+0.000875 [+0.000531, +0.001215]` static `HOLDOUT-DTI` -> `0.009054`, Rule-2 `0.108593`), reached `#1` `dual_reading_unique` LOQO `USGS SGMC PROXY = 0.112719` (`>` `LISTRICLOQO` `0.103442` & `KNICKLOQO` `0.095878`), and passed local (`<= 0.4702`) + `102`-repo `dual_reading` uniqueness (`0.6384 <= 0.70`), while E1 vs E3 falsified Group-R Riedel obliquity on planar holdout (`-0.000092`, n.s.). Verdict `negative` (`DO NOT SUBMIT`).
+- **Next Recommended Experiment:** Apply the proven `37,654 @ 1.0 + 52,346 @ 0.30` additive Tversky tail directly to `LISTRICLOQO` (`0.013295` static) / `KNICKLOQO` (`0.010788` static), or test Rank #2 `FLEXURE-ADMITTANCE`.
 
 ---
 

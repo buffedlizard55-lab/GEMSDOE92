@@ -1,3 +1,8 @@
+# SLOT_PLAN — RIEDELVALVE session (2026-10-25): NO SLOT AUTHORIZED — DO NOT SUBMIT
+
+`RIEDELVALVE` 3 arms built & format-valid (`11/11` gates PASS in `[0, 1]`, `0` NaN); primary `docs/downloads/gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif` (SHA-256 `75d61cb1e548c27c1fa8804a124287996241988f715cb50f3c65c468cb3bc1e0`) confirms the additive `37,654@1.0 + 52,346@0.30` Tversky tail (`+0.000875 [+0.000531, +0.001215]` static `HOLDOUT-DTI` -> `0.009054`, Rule-2 `0.108593`), sets `#1` `dual_reading_unique` LOQO `USGS SGMC PROXY = 0.112719` (`>` `LISTRICLOQO` `0.103442` & `KNICKLOQO` `0.095878`), and passes local (`<= 0.4702`) + `102`-repo `dual_reading` uniqueness (`0.6384 <= 0.70`), but remains `verdict: "negative"` (`submission_eligible: false`, `0` weekly slots spent: literal `17GEMSDOE` dense witness `1.000 > 0.70` and static `0.009054 < LISTRICLOQO 0.013295`). Next: apply the proven `37,654@1.0 + 52,346@0.30` additive tail directly to `LISTRICLOQO` / `KNICKLOQO` (`evidence/riedelvalve_run_card.json`).
+
+---
 # SLOT_PLAN — NETEXPAND session (2026-10-25): NO SLOT AUTHORIZED — DO NOT SUBMIT
 
 NETEXPAND 3 arms built & format-valid; best strict HOLDOUT-DTI 0.177976 (netexpand_far) beats all in-run controls paired, but every arm is a Rule-1 lane duplicate vs FAULTNET/KNICKLOQO (0.76-0.81 > 0.70). Verdict negative, 0 slots used. Selector guidance: if one slot is ever allocated to this mechanism family after the F2 policy decision, NETEXPAND arms dominate FAULTNET files on identical folds (conservative pick: netexpand d>2; holdout-max pick: netexpand_far; never submit siblings together). Full record: docs/ANALYSIS_20261025_NETEXPAND.md, evidence/netexpand_run_card.json.

@@ -137,9 +137,8 @@ def main() -> int:
 
     submission_name = f"GEMSDOE92-TILTANGLE-tiltangle-{stamp}"
     submission_note = (
-        f"h33-h33-2-b2; TILTANGLE: gravity tilt-angle x horizontal-gradient "
-        f"edge corridors; {NDOTS} dots d_cat>{PRUNE_RADIUS}px; "
-        f"HOLDOUT-DTI {ho['pooled_dti']:.6f}; unique"
+        f"h33-h33-2-b2; TILTANGLE research only (DO NOT SUBMIT): gravity edge x collar; "
+        f"pure static HOLDOUT-DTI 0.005272; duplicate"
     )
     if len(submission_note) > 140:
         submission_note = submission_note[:137] + "..."
