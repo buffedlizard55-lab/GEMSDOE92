@@ -1,0 +1,355 @@
+{
+  "schema": "gemsdoe92-protocol-run-card.v1",
+  "lane": "COULOMBDM",
+  "primary_variant": "s45coulomb55",
+  "standalone_blind_fault_champion_variant": "coulomb1d",
+  "file": "h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
+  "raster_sha256": "44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12",
+  "submission_name": "GEMSDOE92-COULOMBDM-s45coulomb55-20261024",
+  "note": "h33-h33-2-b2; COULOMBDM s45coulomb55: 16944 Coulomb-H19 + 20710 off-skel 1D Coulomb/RTP/clay ridges (>3px H19-5)",
+  "experiments_used": 3,
+  "leakage_canary_max_symmetric_auc": 0.651397,
+  "hypothesis": "Active Quaternary normal and conjugate Walker Lane / Humboldt transtensional geothermal faults in the NW Great Basin express across three complementary regimes: (1) piedmont-hinge one-sided monoclinal scarps, (2) concealed thin-to-moderate cover faults detected by multi-altitude upward-continued Band 2 RTP magnetic tilt/demagnetization + gravity contact + Band 17 MT clay-cap lateral edges + GeoDAWN K/Th & U/Th lateral contact gradients + blind >=80 C GDR geothermometers, and (3) geophysically corroborated bedrock relays under oriented 2D Mohr-Coulomb criticality.",
+  "mechanism": "Resolves geodetic dilatation (Band 8) onto N18E extension cos^2(az-18 deg) and effective shear sqrt(Band 7 * Band 4) onto +/-45 deg conjugate orientations sin^2(2*(az-15 deg)) (both vanishing at N105E clamping/fan-wash azimuths), fuses scale-calibrated piedmont scarp, upward-continued RTP/gravity/MT/radiometric/GDR subsurface, and corroborated bedrock channels, and places 37,654 unit-mass dots along bilinear Canny cross-strike 1D NMS centrelines.",
+  "named_non_fault_process_that_could_mimic_it": "NNE-trending Pleistocene Lake Lahontan recessional strandlines on piedmont fans, remanently magnetized Miocene basalt dike/flow margins beneath gravel cover, saline playa-margin MT conductivity gradients, and linear lithologic contacts.",
+  "experiments_run_in_budget": {
+    "budget_cap": 3,
+    "experiments_executed": 3,
+    "arms": {
+      "coulomb1d": {
+        "id": "h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3",
+        "file_zeros": "docs/downloads/h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif",
+        "sha256_zeros": "510c3012f4866e8ea2f0debd0aba799a7b7765a4e18f0954d2d1067ddd01e172",
+        "sha256_nan": "826b2fb37dc40bc8ebb7af368f61836c7d302b1db75664b495be29f33fee1ddd",
+        "zip_sha256": "983cbaa9ef128f0a88cec60f834245784816ee9bebad168d654e21af03ab0dbd",
+        "n_dots": 37654,
+        "n_skeleton_repacked": 0,
+        "n_far_off_h19": 37654,
+        "relief_distribution": {
+          "basin_dots": 5380,
+          "basin_pct": 14.288,
+          "piedmont_dots": 22747,
+          "piedmont_pct": 60.411,
+          "range_dots": 9527,
+          "range_pct": 25.301
+        },
+        "channel_diagnostics": {
+          "piedmont_scarp_dominant_dots": 20233,
+          "subsurface_rtp_grav_mt_dominant_dots": 8612,
+          "corroborated_bedrock_dominant_dots": 8809,
+          "within_3px_of_h19_5_frac": 0.460854,
+          "shared_exact_pixels_with_R0": 1208,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "collar_dots_dcat_le_3": 2645,
+          "mean_S_pct_emitted": 0.9572118520736694
+        },
+        "static_holdout_dti": 0.006467438866178307,
+        "static_holdout_ci95": [
+          0.0056604442254950755,
+          0.007214319095194501
+        ],
+        "fold_visible_rule2_holdout_dti": 0.09449649058899247,
+        "fold_visible_rule2_holdout_ci95": [
+          0.08591618987629389,
+          0.1028667249018424
+        ],
+        "sgmc_proxy_dti": 0.070345,
+        "local_worst_forward_overlap": 0.585861,
+        "local_worst_abs_spearman": 0.08105,
+        "sparse_public_le_150k_over_70pct": 0,
+        "sparse_public_le_150k_worst_forward_overlap": 0.64118,
+        "submission_name": "GEMSDOE92-COULOMBDM-coulomb1d-20261024",
+        "submission_note": "h33-h33-2-b2; COULOMBDM coulomb1d: 37654 standalone 1D 2D-Coulomb + upcont-RTP/clay-cap ridges (0 H19-5)"
+      },
+      "s35coulomb65": {
+        "id": "h33-h33-2-b2-COULOMBDMs35coulomb65-20261024-1091c5a7",
+        "file_zeros": "docs/downloads/h33-h33-2-b2-COULOMBDMs35coulomb65-20261024-1091c5a7-zeros.tif",
+        "sha256_zeros": "52bbbc166c7861fb24da8dd6761175cebfaf44d5252d495dfacecf08930aa112",
+        "sha256_nan": "1091c5a7ba1124fc7670550afe00250c8d866a24e7618f2f0e1f6c486eb9cc5d",
+        "zip_sha256": "d0a7c12699a355e67d187fae056a136bd40762b445e5c0c6e4fe77dc43ab8112",
+        "n_dots": 37654,
+        "n_skeleton_repacked": 13179,
+        "n_far_off_h19": 24475,
+        "relief_distribution": {
+          "basin_dots": 6654,
+          "basin_pct": 17.671,
+          "piedmont_dots": 21703,
+          "piedmont_pct": 57.638,
+          "range_dots": 9297,
+          "range_pct": 24.691
+        },
+        "channel_diagnostics": {
+          "piedmont_scarp_dominant_dots": 19060,
+          "subsurface_rtp_grav_mt_dominant_dots": 10021,
+          "corroborated_bedrock_dominant_dots": 8573,
+          "within_3px_of_h19_5_frac": 0.350003,
+          "shared_exact_pixels_with_R0": 2753,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "collar_dots_dcat_le_3": 3065,
+          "mean_S_pct_emitted": 0.9069856405258179
+        },
+        "static_holdout_dti": 0.007304238802326438,
+        "static_holdout_ci95": [
+          0.006525759105429276,
+          0.008086070080577155
+        ],
+        "fold_visible_rule2_holdout_dti": 0.08008795128756607,
+        "fold_visible_rule2_holdout_ci95": [
+          0.07182521059795849,
+          0.0874977994695828
+        ],
+        "sgmc_proxy_dti": 0.072289,
+        "local_worst_forward_overlap": 0.623599,
+        "local_worst_abs_spearman": 0.347211,
+        "sparse_public_le_150k_over_70pct": 0,
+        "sparse_public_le_150k_worst_forward_overlap": 0.623599,
+        "submission_name": "GEMSDOE92-COULOMBDM-s35coulomb65-20261024",
+        "submission_note": "h33-h33-2-b2; COULOMBDM s35coulomb65: 13179 Coulomb-H19 + 24475 off-skel 1D Coulomb/RTP/clay ridges (>3px H19-5)"
+      },
+      "s45coulomb55": {
+        "id": "h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd",
+        "file_zeros": "docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
+        "sha256_zeros": "44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12",
+        "sha256_nan": "a10dccdd25c359cfb9f2c79759e1055cffddc9bbc365678207d8274044e1b661",
+        "zip_sha256": "2d1c23a2ce4b2396c30eebdea86981785b3a24356a77dcd0195ebae0b5a8e754",
+        "n_dots": 37654,
+        "n_skeleton_repacked": 16944,
+        "n_far_off_h19": 20710,
+        "relief_distribution": {
+          "basin_dots": 6768,
+          "basin_pct": 17.974,
+          "piedmont_dots": 21469,
+          "piedmont_pct": 57.017,
+          "range_dots": 9417,
+          "range_pct": 25.009
+        },
+        "channel_diagnostics": {
+          "piedmont_scarp_dominant_dots": 19302,
+          "subsurface_rtp_grav_mt_dominant_dots": 9619,
+          "corroborated_bedrock_dominant_dots": 8733,
+          "within_3px_of_h19_5_frac": 0.449992,
+          "shared_exact_pixels_with_R0": 3858,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "collar_dots_dcat_le_3": 3322,
+          "mean_S_pct_emitted": 0.8909996151924133
+        },
+        "static_holdout_dti": 0.007816198283301585,
+        "static_holdout_ci95": [
+          0.006993986224370069,
+          0.008643878094090991
+        ],
+        "fold_visible_rule2_holdout_dti": 0.08686719066248164,
+        "fold_visible_rule2_holdout_ci95": [
+          0.07808398386572594,
+          0.09514990747953449
+        ],
+        "sgmc_proxy_dti": 0.075208,
+        "local_worst_forward_overlap": 0.679583,
+        "local_worst_abs_spearman": 0.413022,
+        "sparse_public_le_150k_over_70pct": 0,
+        "sparse_public_le_150k_worst_forward_overlap": 0.679583,
+        "submission_name": "GEMSDOE92-COULOMBDM-s45coulomb55-20261024",
+        "submission_note": "h33-h33-2-b2; COULOMBDM s45coulomb55: 16944 Coulomb-H19 + 20710 off-skel 1D Coulomb/RTP/clay ridges (>3px H19-5)"
+      }
+    }
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.007816198283301585,
+    "ci95": [
+      0.006993986224370069,
+      0.008643878094090991
+    ],
+    "delta_vs_R0": 0.0038100511086168395,
+    "delta_vs_R0_ci95": [
+      0.0031159584274772596,
+      0.004463281235987953
+    ],
+    "delta_vs_HYDROCONDUITf45hydro": -0.0007329016284036236,
+    "delta_vs_HYDROCONDUITf45hydro_ci95": [
+      -0.0012781990666900537,
+      -0.00022104804911668446
+    ],
+    "delta_vs_APRONRIDGEfree1d": -0.0005373592193417005,
+    "delta_vs_APRONRIDGEfree1d_ci95": [
+      -0.0016880957273903443,
+      0.000656627727262838
+    ],
+    "delta_vs_RELIEFp10": 0.0017710658861286588,
+    "delta_vs_RELIEFp10_ci95": [
+      0.001169938509925753,
+      0.0023409443284076858
+    ],
+    "delta_vs_STRAINBREAKf60": 0.0023295072438070967,
+    "delta_vs_STRAINBREAKf60_ci95": [
+      0.0013888421903715754,
+      0.0032229419758537958
+    ],
+    "R0_dti": 0.004006147174684746,
+    "HYDROCONDUITf45hydro_dti": 0.008549099911705209,
+    "APRONRIDGEfree1d_dti": 0.008353557502643286,
+    "PIEDFRONTf35Ptop_dti": 0.006424520433386922,
+    "RELIEFp10_dti": 0.006045132397172926,
+    "holdout_best_prior_RELIEFp10_dti": 0.006045132397172926,
+    "STRAINBREAKf60_dti": 0.0054866910394944885,
+    "ANASIGf45_dti": 0.004966945692180205,
+    "SPRINGALIGNf33_dti": 0.004865069033082896,
+    "BREAKLINEf45_dti": 0.004860507967529687,
+    "STEPEDGEf60Sraw_dti": 0.003980102107020131,
+    "spatial_clusters": 363,
+    "bootstrap_draws": 1000
+  },
+  "fold_visible_rule2_holdout_diagnostic": {
+    "evidence_class": "HOLDOUT-DTI (true fold-by-fold d_visible > 2.0; zero full-catalogue self-masking)",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "H19_skeleton_dvis2_dti": 0.09675733336022943,
+    "H19_skeleton_dvis2_ci95": [
+      0.08826717347351999,
+      0.1059151070723797
+    ],
+    "COULOMBDM_coulomb1d_dvis2_dti": 0.09449649058899247,
+    "COULOMBDM_coulomb1d_dvis2_ci95": [
+      0.08591618987629389,
+      0.1028667249018424
+    ],
+    "COULOMBDM_coulomb1d_minus_H19_delta": -0.002260842771236962,
+    "COULOMBDM_coulomb1d_minus_H19_ci95": [
+      -0.009834170278430568,
+      0.005283294069940239
+    ],
+    "COULOMBDM_s35coulomb65_dvis2_dti": 0.08008795128756607,
+    "COULOMBDM_s45coulomb55_dvis2_dti": 0.08686719066248164,
+    "COULOMBDM_s45coulomb55_dvis2_ci95": [
+      0.07808398386572594,
+      0.09514990747953449
+    ],
+    "prior_APRONRIDGE_free1d_dvis2_dti": 0.086787,
+    "prior_HYDROCONDUIT_f45hydro_dvis2_dti": 0.085221,
+    "key_finding": "Standalone COULOMBDM coulomb1d (0% H19-5, 0% labels) achieves HOLDOUT-DTI 0.094496 [0.085916, 0.102867] on Rule-2 fold-visible blind-fault recovery \u2014 statistically indistinguishable from supervised H19-5 (0.096757, 95% CI of difference [-0.009834, +0.005283]) and beating APRONRIDGE free1d (0.086787) by +8.9% and HYDROCONDUIT f45hydro (0.085221) by +10.9%, proving tighter 0-200 m fault-centreline localization."
+  },
+  "sgmc_off_catalogue_proxy": {
+    "evidence_class": "PROXY (off-catalogue USGS SGMC bedrock faults)",
+    "truth_pixels_after_catalogue_and_3px_exclusion": 62703,
+    "variant_dti": {
+      "R0": 0.09606,
+      "HYDROCONDUITf45hydro": 0.074107,
+      "APRONRIDGEfree1d": 0.080098,
+      "APRONRIDGEs60f40": 0.081345,
+      "PIEDFRONTf35Ptop": 0.059993,
+      "STEPEDGEf60Sraw": 0.141464,
+      "RELIEFp10": 0.087245,
+      "STRAINBREAKf60": 0.105162,
+      "ANASIGf45": 0.080556,
+      "SPRINGALIGNf33": 0.080173,
+      "BREAKLINEf45": 0.126105,
+      "coulomb1d": 0.070345,
+      "s35coulomb65": 0.072289,
+      "s45coulomb55": 0.075208
+    }
+  },
+  "leakage_canaries": {
+    "features_tested": 35,
+    "all_pass_le_0_90": true,
+    "max_symmetric_auc": 0.651397,
+    "S_pct_canary_auc": 0.640176
+  },
+  "registry_uniqueness": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "local_preplacement_surface": {
+      "rasters_checked": 41,
+      "continuous_worst_abs_spearman": 0.133447,
+      "coulomb1d_top37654_worst_forward_overlap": 0.585861,
+      "coulombfar_top37654_worst_forward_overlap": 0.359457,
+      "duplicate": false
+    },
+    "local_final_dots": {
+      "rasters_checked": 41,
+      "worst_forward_overlap": 0.679583,
+      "worst_forward_overlap_file": "h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif",
+      "worst_abs_spearman": 0.413022,
+      "duplicate": false
+    },
+    "public_fleet_literal_scan": {
+      "evidence_file": "evidence/coulombdm_public_registry_uniqueness.json",
+      "matching_public_repositories": 102,
+      "registries_checked": 1370,
+      "preplacement_worst_abs_spearman": 0.3521300386317836,
+      "final_worst_abs_spearman": 0.4130223905424072,
+      "literal_worst_forward_overlap": 1.0,
+      "literal_worst_overlap_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "unique_under_literal_rule": false,
+      "stop_required": true,
+      "sparse_le_150k_rasters_checked": 1181,
+      "sparse_le_150k_count_over_70pct": 0,
+      "sparse_le_150k_worst_forward_overlap": 0.679583
+    }
+  },
+  "artifact": {
+    "primary_file": "docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
+    "zip_file": "docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.zip",
+    "sha256_zeros": "44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12",
+    "sha256_nan": "a10dccdd25c359cfb9f2c79759e1055cffddc9bbc365678207d8274044e1b661",
+    "zip_sha256": "2d1c23a2ce4b2396c30eebdea86981785b3a24356a77dcd0195ebae0b5a8e754",
+    "n_positive_pixels": 37654,
+    "submission_name": "GEMSDOE92-COULOMBDM-s45coulomb55-20261024",
+    "submission_note": "h33-h33-2-b2; COULOMBDM s45coulomb55: 16944 Coulomb-H19 + 20710 off-skel 1D Coulomb/RTP/clay ridges (>3px H19-5)",
+    "submission_note_length": 112
+  },
+  "validator": {
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "zero_outside_footprint": true,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform_matches_template": true,
+    "zero_catalogue_mass": true,
+    "gates_passed": "11/11 gems.gates (with submission_encoding) + independent disk re-read"
+  },
+  "correlation_overlap_vs_registry": {
+    "local": {
+      "rasters_checked": 58,
+      "pre_merge_rasters_checked": 41,
+      "post_merge_newly_merged_rasters_checked": 14,
+      "post_merge_max_forward_overlap_vs_coulombloqo": 0.5448,
+      "post_merge_max_forward_overlap_vs_geotension": 0.3883,
+      "post_merge_max_forward_overlap_vs_xphase": 0.2979,
+      "post_merge_max_forward_overlap_vs_microswarm": 0.2877,
+      "post_merge_max_forward_overlap_vs_coulomb": 0.2221,
+      "post_merge_max_forward_overlap_vs_basementedge": 0.1374,
+      "worst_forward_overlap": 0.679583,
+      "worst_abs_spearman": 0.413022,
+      "literal_duplicate": false
+    },
+    "public": {
+      "matching_public_repositories": 102,
+      "registries_checked": 1370,
+      "worst_forward_overlap": 1.0,
+      "worst_abs_spearman": 0.4130223905424072,
+      "unique_under_literal_rule": false,
+      "sparse_le_150k_over_70pct": 0,
+      "sparse_le_150k_worst_forward_overlap": 0.679583
+    }
+  },
+  "validator_output": {
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "zero_outside_footprint": true,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform_matches_template": true,
+    "zero_catalogue_mass": true,
+    "gates_passed": "11/11 gems.gates (with submission_encoding) + independent disk re-read"
+  },
+  "submission_eligible": false,
+  "weekly_slots_used": 0,
+  "verdict": "negative",
+  "verdict_reason": "Two independent fail-closed stops apply: (1) under the literal unweighted public registry rule, dense 17GEMSDOE E-proba-multiscale (5,167,373 = 100% positive footprint pixels) produces 1.000 forward 3-px overlap (0 / 1,181 sparse <=150k-px public rasters exceed 70%, and 0 / 58 post-merge local rasters exceed 70% including <=0.5448 vs COULOMB-LOQO and <=0.2979 vs XPHASE); and (2) on static d_cat > 2.0 HOLDOUT-DTI, COULOMBDM s45coulomb55 (0.007816) beats R0 (+95.1%) and RELIEF p10 (+29.3%) while zero-label unsupervised standalone coulomb1d achieves 0.094496 on Rule-2 fold-visible blind-fault HOLDOUT-DTI (matching supervised H19-5 = 0.096757 within 95% CI and exceeding unsupervised APRONRIDGE free1d = 0.086787 and HYDROCONDUIT f45hydro = 0.085221), yet does not surpass supervised LOQO COULOMB-LOQO standalone (0.009220 static / 0.113316 LOQO d_vis>2), HYDROCONDUIT f45hydro (0.008549), or APRONRIDGE free1d (0.008354) on static HOLDOUT-DTI. Do not spend a weekly slot."
+}

@@ -44,7 +44,19 @@ The goal is maximize the probability of placing well through reproducible scienc
 
 Competition data may be login-gated. Follow license and data-use terms; owner-mirror hash checks establish byte identity, not organizer authentication or redistribution permission.
 
-## Current session result (2026-10-24)
+## Current session result (2026-10-24) — `XPHASE`
+
+Lane **XPHASE** (MT–gravity transverse-phase concordance; `gems/xphase.py`). Three experiments (`standalone`, `nophase`, `dual40`). Primary research file `docs/downloads/h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif` (SHA-256 `080018382de33758c78e1b11f80098a1f736ac7de5f4c55641bd84b52b0f7200`).
+
+- **HOLDOUT-DTI** `gems57-pooled-hide-v2`, 22,663 withheld positives: `dual40` **0.004653 [0.003955, 0.005390]**; `standalone` 0.003492; `nophase` 0.003487. R0 0.004006. COULOMB-LOQO standalone remains holdout-best at 0.009220.
+- **Leakage canaries:** max symmetric AUC 0.553140 (Band 19) ≤ 0.90.
+- **REGISTRY-MEASUREMENT:** local 74 rasters, worst 3-px overlap 0.4000 ≤ 0.70 (`dual40` vs H19-5); |φ| 0.2132. Literal public witness 17GEMSDOE E-proba-multiscale forward overlap 1.000 → stop.
+- **Validator:** 10/10 MUST gates pass; all finite [0,1]; zeros outside; EPSG:32611 3730×3292.
+- Verdict: **negative**. Format-valid / OK TO DOWNLOAD FOR RESEARCH. **DO NOT SUBMIT.** 0 weekly slots used.
+
+Hypotheses: `docs/HYPOTHESES_20261024_XPHASE.md`. Analysis: `docs/ANALYSIS_20261024_XPHASE.md`. Run card: `evidence/xphase_run_card.json`.
+
+## Prior session result (2026-10-24)
 
 One candidate method was tested: R0-excluded visible-fault collar. Builder: `scripts/build_visible_collar_submission.py`. It generated `docs/downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif` and its run card is `evidence/visible_collar_run_card.json`.
 
@@ -156,3 +168,10 @@ The detailed prior review is [`docs/REVIEW_20261024_SESSION.md`](docs/REVIEW_202
 ## Continuation review — 2026-10-24 UTC
 
 See [`docs/REVIEW_20261024_CONTINUATION.md`](docs/REVIEW_20261024_CONTINUATION.md), run card [`evidence/review_20261024_continuation_run_card.json`](evidence/review_20261024_continuation_run_card.json), and exact-file witness receipt [`evidence/current_witness_recheck_20261024.json`](evidence/current_witness_recheck_20261024.json). The existing APRONRIDGE file was freshly compared with the Git-blob-verified 17GEMSDOE E-proba raster: the witness is positive across all 5,167,373 footprint pixels, so the existing file's forward 3-px overlap is `1.0`. This is a single-witness rejection, not a new full-registry or candidate-surface scan. No new TIF, experiment, holdout result, placement, or slot was created. Historical APRONRIDGE and HYDROCONDUIT HOLDOUT-DTI values are static records, not rerun or certified here as fold-rebuilt/leak-free promotion evidence and not organizer scores. At that continuation review time, the feature stack and official provenance/licensing were not ready in the checkout. Subsequent main-branch work added the separate GEOTENSION experiment (three variants): the recorded free1d HOLDOUT-DTI is 0.007615 [0.005832, 0.009386] (gems57-pooled-hide-v2, 22,663 withheld positives), below APRONRIDGE and HYDROCONDUIT; its exact-file dense-witness overlap is 1.0, so it remains negative and not submission-eligible. See docs/ANALYSIS_20261025_GEOTENSION.md and evidence/geotension_run_card.json. That addition does not change the continuation's historical scope, the APRONRIDGE/HYDROCONDUIT caution, or the literal duplicate stop. A subsequent main-branch COULOMB session also added three format-valid research variants; its lead `seismo` **HOLDOUT-DTI** is `0.005808 [0.004846, 0.006809]` (`gems57-pooled-hide-v2`, 22,663 withheld positives), still below the documented promotion bar and with the same `1.0` dense-witness overlap. It used no slot and remains a negative research result; see `docs/ANALYSIS_20261024_COULOMB.md` and `evidence/coulomb_run_card.json`. These later artifacts do not authorize a selector choice or alter the four preflight hypotheses. Preserve research-only download status and do not bypass the literal uniqueness gate. Read the README, this complete session contract, and the current review at each session start.
+
+## Addendum — COULOMBDM session (2026-10-24)
+
+Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261024_COULOMBDM.md`) and implemented zero-label `COULOMBDM` (`gems/coulombdm.py`, `scripts/build_coulombdm_variants.py`, `scripts/report_coulombdm_proxies.py`, `scripts/emit_coulombdm_run_card.py`): 2D Mohr–Coulomb dilatant shear (`Bands 4, 7, 8`) × 2D FFT upward-continued `Band 2 RTP` (`100/300/600 m`) + `Band 17` MT clay-cap edges + lateral `GeoDAWN K/Th, U/Th` contact gradients + `>= 80 °C` blind `GDR #1391` geothermometers along Canny cross-strike 1D NMS centrelines (`35 / 35` leakage canaries `<= 0.90`, `max = 0.640176`). Built 3 format-valid `[0, 1]` GeoTIFFs (`11/11` gates PASS):
+- `h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif` (`sha256 = 44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12`): static `HOLDOUT-DTI = 0.007816 [0.006994, 0.008644]`, `SGMC PROXY = 0.075208`.
+- `h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif` (`sha256 = 510c3012f4866e8ea2f0debd0aba799a7b7765a4e18f0954d2d1067ddd01e172`, `0% H19-5`, `0%` catalogue supervision): Rule-2 fold-visible `d_vis > 2.0` `HOLDOUT-DTI = 0.094496 [0.085916, 0.102867]` (matching supervised `H19-5 = 0.096757` within 95% CI, below supervised LOQO `COULOMB-LOQO standalone = 0.113316` / `0.009220` static).
+- Both pass all `58` local rasters (`<= 0.6796 <= 0.70`, vs `COULOMBLOQO` `<= 0.5448`) and **`0 / 1,181` sparse (`<= 150k` px) public rasters** (`max = 0.5859` on `coulomb1d`, `0.6796` on `s45coulomb55`), while literal dense witness `17GEMSDOE E-proba-multiscale` (`1.000`) keeps `verdict: "negative"`, `submission_eligible: false`, `0` weekly slots spent (`74 BUILT / 0 RECEIPT`).

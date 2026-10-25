@@ -1,12 +1,41 @@
-# Next Steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`EULERFUSE` Session)
+# Next Steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`COULOMBDM` & `XPHASE` Sessions)
 
-## 0. Latest Handoff: `EULERFUSE` Is Closed Negative
+## Completed this session (`COULOMBDM`)
 
-Do not spend a weekly slot on `GEMSDOE92-EULERFUSE-gravity-20261024`. The exact TIF is format-valid and safe to download for research, but `submission_eligible=false`: strict draw-blind **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.110387 [0.097279,0.123179]`, below fresh control `0.113316 [0.101071,0.126266]`, and the binding literal public-registry overlap is `1.000 > 0.70`. The 3/3 experiment budget is exhausted. Full evidence is in `evidence/eulerfuse_run_card.json`; the exact negative TIF is `docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif` (SHA-256 `5820e882512843a334f4497ed7f294af937339f729e4eeeecdc33d9cdafeeab9`).
+1. Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261024_COULOMBDM.md`) and implemented Rank 1 zero-label `COULOMBDM` (`gems/coulombdm.py`: 2D Mohr–Coulomb dilatant shear `Bands 4, 7, 8` + 2D FFT upward-continued `Band 2 RTP` `100/300/600 m` + `Band 17` MT clay-cap lateral edges + lateral `GeoDAWN K/Th, U/Th` contact gradients + `>= 80 °C` blind `GDR #1391` geothermometers + Canny cross-strike 1D NMS).
+2. Built and gate-validated 3 experiments (`coulomb1d`, `s35coulomb65`, `s45coulomb55`; `11/11` format MUST gates PASS):
+   - Zero-label standalone `coulomb1d` (`0% H19-5`, `0%` catalogue supervision): **Rule-2 fold-visible `d_vis > 2.0` `HOLDOUT-DTI = 0.094496 [0.085916, 0.102867]`** (statistically matching supervised `H19-5 = 0.096757` within 95% CI, exceeding unsupervised `APRONRIDGE free1d = 0.086787` and `HYDROCONDUIT f45hydro = 0.085221`).
+   - Hybrid `s45coulomb55`: static `d_cat > 2.0` **`HOLDOUT-DTI = 0.007816 [0.006994, 0.008644]`** (`+95.1%` vs `R0`), `SGMC PROXY = 0.075208` (below supervised LOQO `COULOMB-LOQO standalone = 0.009220`).
+   - Uniqueness: `0 / 58` local rasters (`max = 0.6796`, vs `COULOMBLOQO` `<= 0.5448`) and **`0 / 1,181` sparse (`<= 150k` px) public rasters** exceed `70%` across 102 `GEMSDOE` repos; literal dense witness `17GEMSDOE E-proba-multiscale` (`1.000`) forces **`verdict: negative`, `submission_eligible: false` (`0` weekly slots spent)**.
 
-Highest-value next scientific action: preregister a **new lane**, not another EULERFUSE variant. Prefer the ranked cross-catchment drainage knickpoint-alignment hypothesis if official 1 m 3DEP source availability, coverage, and licensing can first be verified and the data can be acquired within the resource/time budget. Otherwise use the existing stack for a genuinely new catalogue-free transform. Preserve the same draw-blind whole-segment holdout, leakage canaries, literal two-phase registry rule, and separate selector step.
+## Completed in parallel (`XPHASE`)
+
+1. Pre-registered 5 untried hypotheses (`docs/HYPOTHESES_20261024_XPHASE.md`); implemented Rank 1 `XPHASE` (`gems/xphase.py`).
+2. Built 3 experiments. Best arm `dual40`: **HOLDOUT-DTI `0.004653 [0.003955, 0.005390]`** (`gems57-pooled-hide-v2`, 22,663 withheld positives). Locally unique (0.4000). Canaries max 0.553140. Verdict **negative**. File `h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif`. **OK TO DOWNLOAD; DO NOT SUBMIT.**
+3. Lag ablation (`nophase` 0.003487) ≈ standalone (0.003492): transverse lag is not load-bearing on catalogue hide-and-recover. Do not retry this lane without a new instrument (Rule-2 d_visible>2.0 already reported as not beating holdout-best).
+
+## Completed in parallel (`EULERFUSE`)
+
+1. Pre-registered four ranked hypotheses in `docs/HYPOTHESES_20261024_EULERFUSE.md`, implemented only Rank 1, and consumed exactly the frozen `joint`, `gravity`, and `joint45` 3/3 experiment budget.
+2. Best arm `gravity`: strict draw-blind **HOLDOUT-DTI** `0.110387 [0.097279,0.123179]` (`gems57-pooled-hide-v2`, 22,663 withheld positives), below fresh base control `0.113316 [0.101071,0.126266]`; paired delta `-0.002929 [-0.006700,0.000763]`. All 36 canaries pass (max symmetric AUC `0.662808`).
+3. Exact TIF `docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif` is byte-unique in its pre-publication scan and passes 11/11 format gates, but literal public overlap is `1.000`. Verdict **negative**, `submission_eligible=false`, zero weekly slots. Do not retry EULER parameters; this lane is closed.
+
+## Still open (unchanged)
+
+1. Human selector: dense-witness policy + first ORGANIZER-CONFIRMED receipt.
+2. Queued physics: `RADIO-CONTACT`; `DRAINAGE-KNICK` is the preferred genuinely new lane if official higher-resolution 3DEP availability can be verified first. `INSAR-3DEP1M` remains blocked by sandbox network.
+
+---
+
+# Next Steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`COULOMB-LOQO` Session)
 
 ## 1. Completed in the `COULOMB-LOQO` Session
+
+# Current review update — 2026-10-24 UTC
+
+See the [three-pass Arena repository review](REVIEW_20261024_ARENA.md) and its [machine-readable run card](../evidence/arena_review_run_card_20261024.json). Revalidation passed 224 tests, the site gate over 36 served TIFFs, all eight tracked manifest hashes, pinned R0 lineage, and the 68-row ledger integrity check (no organizer receipt). No new experiment or TIFF was generated. The recorded full-footprint-positive public witness forces a 100% final-dot overlap under the unchanged literal `>70%` rule, so existing artifacts remain research-only and **DO NOT SUBMIT**. The current local GeoDAWN feature stack is not staged. Do not spend a slot or evade the gate; resolve the dense-raster policy and establish authorized input provenance before the ranked Euler/contact/DEM/InSAR queue is tested.
+
+---
 
 1. **Unified PR #49 Merge State & Corrected 5 Newly Verified Irregularities (`IRREGULARITIES.md`):**
    - `#IR-92-ALPHA-BETA-PROSE-SWAP`: Corrected inverted Tversky denominator prose (`0.2 * FP_w + 0.8 * FN_w`, verified in `drivendataorg/gems-prize-reference-solution` Cell 16 and `vendor/gems57/metric.py`).
@@ -28,7 +57,7 @@ Highest-value next scientific action: preregister a **new lane**, not another EU
    - Formalize whether dense continuous/habitat rasters (`> 90,000` positive pixels, such as `17GEMSDOE E-proba-multiscale` at `5,167,373` pixels) are excluded from the sparse competition-budget uniqueness pool.
    - Under a `<= 90,000`-px sparse uniqueness pool, `COULOMBLOQO dual45` (`0.009107` static / `0.1020` `d_vis>2` / `0.0941` `SGMC`, `0 / 1,121` `> 70%`) is ready for human selector evaluation alongside one `ORGANIZER-CONFIRMED` calibration receipt on `R0`.
 2. **Next Untried Physics Lanes (Pre-Registered Queue in `docs/HYPOTHESES_20261024_COULOMBLOQO.md`):**
-   - **Hypothesis 3 (`EULER-RTP-GRAV-N0`):** Moving-window 3D contact Euler deconvolution ($N = 0$, Reid et al., 1990) jointly over `Bands 2, 9, 14` (RTP/TMI) and `Bands 5, 11, 13, 18` (isostatic gravity & E–W horizontal gradient) to estimate exact subcrop $(x_0, y_0, z_0)$ coordinates of concealed faults beneath `50–1,200 m` of basin fill without relying on surface DEM slope.
+   - **Hypothesis 3 (`EULER-RTP-GRAV-N0`) is now CLOSED NEGATIVE:** implemented as `EULERFUSE` on Bands 2/13/15; best strict draw-blind HOLDOUT-DTI `0.110387` lost to its fresh `0.113316` control, and all three frozen arms are spent. Do not repeat as a parameter sweep.
    - **Hypothesis 4 (`DRAINAGE-KNICK-RADON`):** Cross-canyon thalweg longitudinal convexity & deflected-drainage Radon line-integral alignment across parallel range-front canyons (`Bands 12, 19, 15, 7`) to detect degraded Pleistocene range-front faults where interfluve scarps have diffused away.
    - **Hypothesis 5 (`INSAR-3DEP1M-DECONFOUNDED`, Contingent on External Tile Staging):** If an operator with unrestricted outbound network access stages ASF ARIA/OPERA Sentinel-1 InSAR velocity tiles and USGS 3DEP 1 m LiDAR tiles into `.cache/gems_inputs/external/`, test pumping-deconfounded creep/subsidence phase-gradient steps (`> 2 km` from `GDR #1391` production wells).
 3. **Do Not Repeat Closed / Falsified Lanes:**

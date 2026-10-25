@@ -1,0 +1,59 @@
+{
+  "schema": "gemsdoe92-arena-review-run-card.v1",
+  "reviewed_utc": "2026-10-24",
+  "record_type": "three_pass_repository_review_no_new_experiment",
+  "hypothesis": "No new geological hypothesis was tested. Four untested proposals are ranked in docs/REVIEW_20261024_ARENA.md; the top Euler-consistent magnetic-gravity source-edge idea is not actionable because the feature stack is absent locally and the literal registry stop blocks nonempty candidate placement.",
+  "mechanism": "The public registry record identifies a raster positive on all 5,167,373 target-footprint pixels. Under the unchanged literal rule, every nonempty in-footprint prediction has 100% forward 3-px overlap with that witness, exceeding the 70% duplicate threshold. This is a rule-based stop, not evidence of geological equivalence.",
+  "named_non_fault_process_that_could_mimic_it": "A dense continuous prospectivity or habitat surface can be positive throughout the target footprint without tracing discrete faults.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "NOT RUN THIS REVIEW",
+    "withheld_positive_pixels": null,
+    "dti": null,
+    "ci95": null,
+    "status": "No experiment was run. No HOLDOUT-DTI score, confidence interval, or projection is claimed."
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "Existing recorded public scan, not refreshed this review: 1,368 exact-grid single-band rasters from the recorded public owner-repository inventory.",
+    "candidate": "Existing COULOMBLOQO standalone research artifact; not generated in this review.",
+    "preplacement_surface_max_abs_spearman": 0.45403209328670285,
+    "preplacement_surface_max_forward_overlap_3px": 1.0,
+    "final_dot_max_abs_spearman": 0.09601878085862053,
+    "final_dot_max_forward_overlap_3px": 1.0,
+    "witness": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "witness_positive_pixels": 5167373,
+    "target_footprint_pixels": 5167373,
+    "stop_required": true,
+    "qualification": "The scan inventory is not globally exhaustive; its documented scope excludes private repositories, historical revisions, other owners, ZIP-only objects, and site-hosted objects not in scanned paths."
+  },
+  "raster_sha256": "8f1f93d8c97b4e1c359ce5fbe07d183214e707aa6bda4ed074c00921f39ad32e",
+  "raster_identity": "Existing docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif; not newly generated.",
+  "validator_output": {
+    "source": "Re-read existing audit receipt and reran scripts/check_site.py in this review.",
+    "site_gate": "PASS; 36 served raster(s) gated; primary identified as COULOMBLOQO standalone.",
+    "single_band_float32": true,
+    "no_nan_inside_footprint": true,
+    "all_finite": true,
+    "values_range": [0.0, 1.0],
+    "zero_outside_footprint": true,
+    "crs": "EPSG:32611",
+    "shape": [3730, 3292],
+    "transform": [100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0],
+    "transform_matches_template": true,
+    "format_gates_pass": 10,
+    "submission_eligible": false
+  },
+  "submission_name": "GEMSDOE92-COULOMBLOQO-standalone-20261024",
+  "submission_note": "Existing format-valid research file; literal registry overlap stop; do not upload or spend a slot.",
+  "new_unique_tiff_generated": false,
+  "experiments_run": 0,
+  "weekly_submission_slots_used": 0,
+  "verdict": "negative",
+  "limitations": [
+    "DrivenData official leaderboard and account-only data page not refreshed or accessed.",
+    "The official feature stack is absent locally; pinned owner-mirror content has provenance/licensing caveats.",
+    "No ORGANIZER-CONFIRMED receipt exists in the local ledger.",
+    "The recorded public registry scan was not refreshed during this review."
+  ]
+}

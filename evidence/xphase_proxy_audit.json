@@ -1,0 +1,506 @@
+{
+  "schema": "gemsdoe92-xphase-proxy-audit.v1",
+  "best_arm": "dual40",
+  "holdout": {
+    "R0": {
+      "dti": 0.004006,
+      "ci95": [
+        0.003406,
+        0.004668
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "COULOMBLOQO_standalone": {
+      "dti": 0.00922,
+      "ci95": [
+        0.007933,
+        0.010683
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "HYDROCONDUIT_f45hydro": {
+      "dti": 0.008549,
+      "ci95": [
+        0.007504,
+        0.009666
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "APRONRIDGE_free1d": {
+      "dti": 0.008354,
+      "ci95": [
+        0.006959,
+        0.009941
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "RELIEF_p10piedmont": {
+      "dti": 0.006045,
+      "ci95": [
+        0.00526,
+        0.006954
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "STRAINBREAK_f60s2i": {
+      "dti": 0.005487,
+      "ci95": [
+        0.00457,
+        0.006376
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "standalone": {
+      "dti": 0.003492,
+      "ci95": [
+        0.002741,
+        0.00424
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "nophase": {
+      "dti": 0.003487,
+      "ci95": [
+        0.002781,
+        0.004186
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "dual40": {
+      "dti": 0.004653,
+      "ci95": [
+        0.003955,
+        0.00539
+      ],
+      "withheld_positive_pixels": 22663
+    }
+  },
+  "paired_differences": {
+    "R0": {
+      "delta": 0.000647,
+      "ci95": [
+        -0.000109,
+        0.001375
+      ]
+    },
+    "COULOMBLOQO_standalone": {
+      "delta": -0.004567,
+      "ci95": [
+        -0.006022,
+        -0.003235
+      ]
+    },
+    "HYDROCONDUIT_f45hydro": {
+      "delta": -0.003896,
+      "ci95": [
+        -0.004947,
+        -0.002877
+      ]
+    },
+    "APRONRIDGE_free1d": {
+      "delta": -0.0037,
+      "ci95": [
+        -0.005181,
+        -0.002275
+      ]
+    },
+    "RELIEF_p10piedmont": {
+      "delta": -0.001392,
+      "ci95": [
+        -0.002277,
+        -0.000584
+      ]
+    },
+    "STRAINBREAK_f60s2i": {
+      "delta": -0.000833,
+      "ci95": [
+        -0.001858,
+        0.000286
+      ]
+    },
+    "standalone": {
+      "delta": 0.001161,
+      "ci95": [
+        0.000534,
+        0.001821
+      ]
+    },
+    "nophase": {
+      "delta": 0.001166,
+      "ci95": [
+        0.000518,
+        0.001828
+      ]
+    }
+  },
+  "canaries": {
+    "Band05_iso_grav_anom_slope": {
+      "auc": 0.551113,
+      "symmetric_auc": 0.551113,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "Band13_iso_grav_anom": {
+      "auc": 0.487735,
+      "symmetric_auc": 0.512265,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "Band15_depth_to_base_surf": {
+      "auc": 0.514862,
+      "symmetric_auc": 0.514862,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "Band17_cond_surf": {
+      "auc": 0.505983,
+      "symmetric_auc": 0.505983,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "Band19_det_elev_slope": {
+      "auc": 0.55314,
+      "symmetric_auc": 0.55314,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "XPHASE_mt_pct": {
+      "auc": 0.50972,
+      "symmetric_auc": 0.50972,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "XPHASE_gr_pct": {
+      "auc": 0.553098,
+      "symmetric_auc": 0.553098,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "XPHASE_orient": {
+      "auc": 0.509806,
+      "symmetric_auc": 0.509806,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "XPHASE_lag": {
+      "auc": 0.515988,
+      "symmetric_auc": 0.515988,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "XPHASE_cover": {
+      "auc": 0.544766,
+      "symmetric_auc": 0.544766,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "XPHASE_S_raw": {
+      "auc": 0.515523,
+      "symmetric_auc": 0.515523,
+      "status": "REPORT_ONLY_PASS"
+    },
+    "XPHASE_S_pct": {
+      "auc": 0.515523,
+      "symmetric_auc": 0.515523,
+      "status": "REPORT_ONLY_PASS"
+    }
+  },
+  "sgmc_proxy": {
+    "R0": 0.09606,
+    "COULOMBLOQO_standalone": 0.090569,
+    "HYDROCONDUIT_f45hydro": 0.074107,
+    "APRONRIDGE_free1d": 0.080098,
+    "RELIEF_p10piedmont": 0.087245,
+    "STRAINBREAK_f60s2i": 0.105162,
+    "standalone": 0.027957,
+    "nophase": 0.027573,
+    "dual40": 0.047166
+  },
+  "uniqueness": {
+    "standalone": {
+      "n_rasters_checked": 74,
+      "worst_forward_overlap": 0.252828,
+      "worst_forward_file": "downloads/h33-h33-2-b2-COULOMBfree-20261024-d0cf5db5-zeros.tif",
+      "worst_abs_spearman_phi": 0.011895,
+      "worst_spearman_file": "downloads/h33-h33-2-b2-PIEDFRONTf45Ptop-20261024-aad86ac9-zeros.tif",
+      "local_duplicate": false,
+      "top5_by_forward_overlap": [
+        {
+          "raster": "downloads/h33-h33-2-b2-COULOMBfree-20261024-d0cf5db5-zeros.tif",
+          "forward_3px_overlap": 0.252828,
+          "reverse_3px_overlap": 0.196765,
+          "spearman_phi": 0.004698,
+          "jaccard": 0.006011
+        },
+        {
+          "raster": "downloads/h33-h33-2-b2-PIEDFRONTf45Ptop-20261024-aad86ac9-zeros.tif",
+          "forward_3px_overlap": 0.250544,
+          "reverse_3px_overlap": 0.196526,
+          "spearman_phi": 0.011895,
+          "jaccard": 0.009639
+        },
+        {
+          "raster": "downloads/h33-h33-2-b2-PIEDFRONTf40Ptop-20261024-6b0cd56a-zeros.tif",
+          "forward_3px_overlap": 0.241356,
+          "reverse_3px_overlap": 0.19063,
+          "spearman_phi": 0.011092,
+          "jaccard": 0.009234
+        },
+        {
+          "raster": "downloads/h33-h33-2-b2-COULOMBseismo-20261024-d243140b-zeros.tif",
+          "forward_3px_overlap": 0.24016,
+          "reverse_3px_overlap": 0.190498,
+          "spearman_phi": 0.00435,
+          "jaccard": 0.005837
+        },
+        {
+          "raster": "downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif",
+          "forward_3px_overlap": 0.233149,
+          "reverse_3px_overlap": 0.184549,
+          "spearman_phi": 0.010423,
+          "jaccard": 0.008896
+        }
+      ]
+    },
+    "nophase": {
+      "n_rasters_checked": 74,
+      "worst_forward_overlap": 0.251394,
+      "worst_forward_file": "downloads/h33-h33-2-b2-COULOMBfree-20261024-d0cf5db5-zeros.tif",
+      "worst_abs_spearman_phi": 0.013553,
+      "worst_spearman_file": "downloads/h33-h33-2-b2-PIEDFRONTf45Ptop-20261024-aad86ac9-zeros.tif",
+      "local_duplicate": false,
+      "top5_by_forward_overlap": [
+        {
+          "raster": "downloads/h33-h33-2-b2-COULOMBfree-20261024-d0cf5db5-zeros.tif",
+          "forward_3px_overlap": 0.251394,
+          "reverse_3px_overlap": 0.196181,
+          "spearman_phi": 0.005661,
+          "jaccard": 0.006495
+        },
+        {
+          "raster": "downloads/h33-h33-2-b2-PIEDFRONTf45Ptop-20261024-aad86ac9-zeros.tif",
+          "forward_3px_overlap": 0.250837,
+          "reverse_3px_overlap": 0.195437,
+          "spearman_phi": 0.013553,
+          "jaccard": 0.010479
+        },
+        {
+          "raster": "downloads/h33-h33-2-b2-PIEDFRONTf40Ptop-20261024-6b0cd56a-zeros.tif",
+          "forward_3px_overlap": 0.241595,
+          "reverse_3px_overlap": 0.189435,
+          "spearman_phi": 0.012323,
+          "jaccard": 0.009856
+        },
+        {
+          "raster": "downloads/h33-h33-2-b2-COULOMBseismo-20261024-d243140b-zeros.tif",
+          "forward_3px_overlap": 0.237664,
+          "reverse_3px_overlap": 0.188904,
+          "spearman_phi": 0.004939,
+          "jaccard": 0.006132
+        },
+        {
+          "raster": "downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif",
+          "forward_3px_overlap": 0.233441,
+          "reverse_3px_overlap": 0.183513,
+          "spearman_phi": 0.011226,
+          "jaccard": 0.009301
+        }
+      ]
+    },
+    "dual40": {
+      "n_rasters_checked": 74,
+      "worst_forward_overlap": 0.400011,
+      "worst_forward_file": "data/bridge/h19_5.tif",
+      "worst_abs_spearman_phi": 0.213237,
+      "worst_spearman_file": "data/bridge/h19_5.tif",
+      "local_duplicate": false,
+      "top5_by_forward_overlap": [
+        {
+          "raster": "data/bridge/h19_5.tif",
+          "forward_3px_overlap": 0.400011,
+          "reverse_3px_overlap": 0.412405,
+          "spearman_phi": 0.213237,
+          "jaccard": 0.104799
+        },
+        {
+          "raster": "data/bridge/d28.tif",
+          "forward_3px_overlap": 0.400011,
+          "reverse_3px_overlap": 0.395464,
+          "spearman_phi": 0.175735,
+          "jaccard": 0.099907
+        },
+        {
+          "raster": "data/bridge/h27_4_solo.tif",
+          "forward_3px_overlap": 0.398709,
+          "reverse_3px_overlap": 0.424364,
+          "spearman_phi": 0.184708,
+          "jaccard": 0.105427
+        },
+        {
+          "raster": "releases/h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
+          "forward_3px_overlap": 0.394646,
+          "reverse_3px_overlap": 0.438808,
+          "spearman_phi": 0.192148,
+          "jaccard": 0.109937
+        },
+        {
+          "raster": "releases/h33-h33-2-b2-MASS_A10-20261023-e5613a00.tif",
+          "forward_3px_overlap": 0.394646,
+          "reverse_3px_overlap": 0.438808,
+          "spearman_phi": 0.192148,
+          "jaccard": 0.109937
+        }
+      ]
+    }
+  },
+  "split_receipts": [
+    {
+      "seed": 20,
+      "folds": [
+        {
+          "fold": "NW",
+          "seed": 20,
+          "held_components": 96,
+          "withheld_positive_pixels": 1923,
+          "eligible_components": 598,
+          "boundary_buffer_px": 12,
+          "feature_buffer_px": 3,
+          "nearest_visible_to_truth_px": 3.1622776601683795,
+          "split_version": "buffered-whole-components-loqo-v2",
+          "evaluation_region_label_blind": true
+        },
+        {
+          "fold": "NE",
+          "seed": 20,
+          "held_components": 145,
+          "withheld_positive_pixels": 2367,
+          "eligible_components": 628,
+          "boundary_buffer_px": 12,
+          "feature_buffer_px": 3,
+          "nearest_visible_to_truth_px": 3.1622776601683795,
+          "split_version": "buffered-whole-components-loqo-v2",
+          "evaluation_region_label_blind": true
+        },
+        {
+          "fold": "SW",
+          "seed": 20,
+          "held_components": 223,
+          "withheld_positive_pixels": 3781,
+          "eligible_components": 983,
+          "boundary_buffer_px": 12,
+          "feature_buffer_px": 3,
+          "nearest_visible_to_truth_px": 3.1622776601683795,
+          "split_version": "buffered-whole-components-loqo-v2",
+          "evaluation_region_label_blind": true
+        },
+        {
+          "fold": "SE",
+          "seed": 20,
+          "held_components": 142,
+          "withheld_positive_pixels": 3250,
+          "eligible_components": 648,
+          "boundary_buffer_px": 12,
+          "feature_buffer_px": 3,
+          "nearest_visible_to_truth_px": 3.1622776601683795,
+          "split_version": "buffered-whole-components-loqo-v2",
+          "evaluation_region_label_blind": true
+        }
+      ]
+    },
+    {
+      "seed": 30,
+      "folds": [
+        {
+          "fold": "NW",
+          "seed": 30,
+          "held_components": 138,
+          "withheld_positive_pixels": 1919,
+          "eligible_components": 598,
+          "boundary_buffer_px": 12,
+          "feature_buffer_px": 3,
+          "nearest_visible_to_truth_px": 3.1622776601683795,
+          "split_version": "buffered-whole-components-loqo-v2",
+          "evaluation_region_label_blind": true
+        },
+        {
+          "fold": "NE",
+          "seed": 30,
+          "held_components": 131,
+          "withheld_positive_pixels": 2356,
+          "eligible_components": 628,
+          "boundary_buffer_px": 12,
+          "feature_buffer_px": 3,
+          "nearest_visible_to_truth_px": 3.1622776601683795,
+          "split_version": "buffered-whole-components-loqo-v2",
+          "evaluation_region_label_blind": true
+        },
+        {
+          "fold": "SW",
+          "seed": 30,
+          "held_components": 203,
+          "withheld_positive_pixels": 3805,
+          "eligible_components": 983,
+          "boundary_buffer_px": 12,
+          "feature_buffer_px": 3,
+          "nearest_visible_to_truth_px": 3.1622776601683795,
+          "split_version": "buffered-whole-components-loqo-v2",
+          "evaluation_region_label_blind": true
+        },
+        {
+          "fold": "SE",
+          "seed": 30,
+          "held_components": 145,
+          "withheld_positive_pixels": 3262,
+          "eligible_components": 648,
+          "boundary_buffer_px": 12,
+          "feature_buffer_px": 3,
+          "nearest_visible_to_truth_px": 3.1622776601683795,
+          "split_version": "buffered-whole-components-loqo-v2",
+          "evaluation_region_label_blind": true
+        }
+      ]
+    }
+  ],
+  "witness": {
+    "schema": "gemsdoe92-public-witness-check.v2",
+    "evidence_class": "REGISTRY-MEASUREMENT (single witness; rejection only)",
+    "reviewed_utc": "2026-10-25T00:14:48.457349+00:00",
+    "candidate": {
+      "file": "h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif",
+      "sha256": "080018382de33758c78e1b11f80098a1f736ac7de5f4c55641bd84b52b0f7200",
+      "dots": 37654
+    },
+    "grid": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ]
+    },
+    "grid_checks_pass": true,
+    "candidate_format_checks": {
+      "all_finite": true,
+      "values_in_0_1": true,
+      "zero_outside_footprint": true
+    },
+    "witness": {
+      "raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "source_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/HEAD/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "blob_api_url": "https://api.github.com/repos/buffedlizard55-lab/17GEMSDOE/git/blobs/374c88b1da2b803e2ed160de467fd71ae114010d",
+      "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "bytes": 25065181,
+      "positive_pixels_in_footprint": 5167373,
+      "footprint_pixels": 5167373,
+      "positive_fraction_of_footprint": 1.0,
+      "halo_covers_entire_footprint": true
+    },
+    "forward_overlap_candidate_dots_within_3px_of_witness": 1.0,
+    "spearman_full_footprint": 0.013798542642529494,
+    "literal_rule": "forward overlap > 0.70 OR |Spearman| > 0.90 => duplicate, log and stop",
+    "unique_under_literal_rule_vs_this_witness": false,
+    "stop_required_vs_this_witness": true,
+    "submission_eligible": false,
+    "universal_nonempty_in_footprint_overlap_stop": true,
+    "scope": "Single witness: rejection only, no full-registry or pre-placement clearance."
+  },
+  "verdict": "negative"
+}

@@ -1,20 +1,43 @@
-# Current Repository & Gate Review — `GEMSDOE92` (`2026-10-24`, `COULOMB-LOQO` Holdout Best; `EULERFUSE` Latest Build)
+# Current Repository & Gate Review — `GEMSDOE92` (`2026-10-24`, `COULOMBDM s45coulomb55` Current Download; `EULERFUSE` Parallel Closeout)
 
-## Latest completed session — EULERFUSE (2026-10-24 UTC)
+**OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT.** Subsequent to [session 918b947a](REVIEW_918B947A.md) ([run card](downloads/review_918b947a_run_card.json)), merged sessions generated unique `COULOMBDM` and `XPHASE` research TIFFs. The universal dense-witness overlap stop still bars weekly-slot clearance. No current organizer score is claimed.
 
-A fresh, non-copied TIF was generated and independently reopened: `docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif`, SHA-256 `5820e882512843a334f4497ed7f294af937339f729e4eeeecdc33d9cdafeeab9`. It passes 11/11 local format gates, is finite in `[0,1]`, matches the sample CRS/shape/transform, and has zero mass outside the footprint or on the mapped catalogue. It is therefore **OK TO DOWNLOAD FOR RESEARCH**.
+---
 
-It is **NOT CLEARED FOR A WEEKLY SLOT; DO NOT SUBMIT**. Primary **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.110387 [0.097279,0.123179]`, below the freshly reproduced base control `0.113316 [0.101071,0.126266]`; paired delta `-0.002929 [-0.006700,0.000763]`. A 102-repository scan compared 1,378 exact-grid public rasters and found no exact SHA match, but the literal positive-support overlap is `1.000 > 0.70` against the full-footprint `17GEMSDOE E-proba-multiscale` witness at both pre-placement and final phases. Verdict `negative`; `submission_eligible: false`; 3/3 experiment budget used; 0 weekly slots used. Evidence: [`EULERFUSE analysis`](ANALYSIS_20261024_EULERFUSE.md), [`run card`](../evidence/eulerfuse_run_card.json), [`holdout`](../evidence/eulerfuse_holdout.json), and [`public scan`](../evidence/eulerfuse_public_registry.json).
+## 0A. Current research download (`COULOMBDM`)
 
-The negative result is scientifically useful: the six raw Euler channels have symmetric holdout AUC near 0.500–0.501, and augmenting the base model reduced the strict draw-blind holdout. Do not run an Euler parameter sweep in the next session; the lane budget is exhausted.
+- **Research GeoTIFF:** `docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif` (standalone zero-label sibling: `docs/downloads/h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif`)
+  - **SHA-256:** `44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12` (`coulomb1d`: `510c3012f4866e8ea2f0debd0aba799a7b7765a4e18f0954d2d1067ddd01e172`)
+  - **Name / note:** `GEMSDOE92-COULOMBDM-s45coulomb55-20261024` / `h33-h33-2-b2; COULOMBDM s45coulomb55: 16944 Coulomb-H19 + 20710 off-skel 1D Coulomb/RTP/clay ridges (>3px H19-5)`
+  - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): static `0.007816 [0.006994, 0.008644]` (`+95.1%` vs `R0`); zero-label standalone `coulomb1d` Rule-2 fold-visible `d_vis > 2.0` **`0.094496 [0.085916, 0.102867]`** (below supervised LOQO repository holdout-best `COULOMB-LOQO standalone` `0.009220` static / `0.113316` LOQO `d_vis > 2.0`).
+  - **Download:** ✅ OK TO DOWNLOAD FOR RESEARCH (11/11 format gates; `0 / 58` local and `0 / 1,181` sparse `<=150k` public overlaps `>70%`). **Weekly slot:** ⛔ DO NOT SUBMIT (`verdict: negative`, dense witness overlap 1.000).
+  - Run card: `evidence/coulombdm_run_card.json`. Analysis: `docs/ANALYSIS_20261024_COULOMBDM.md`. Hypotheses: `docs/HYPOTHESES_20261024_COULOMBDM.md`.
 
-### Three cumulative review passes completed
+## 0B. Parallel session (`XPHASE`)
 
-1. **Implementation / verification:** froze four ranked hypotheses before code; implemented only EULERFUSE; reused the pinned stack, shared evaluator, and shared writer; tested all 36 individual/composite leakage canaries; executed exactly three frozen arms; emitted and independently reopened the exact research TIF; ran local and current public registry comparisons; generated a fail-closed run card.
-2. **Bug / edge-case review:** repaired batched `numpy.linalg.solve` RHS shape handling, moved the ~592 MB design matrix to a memory map after an out-of-memory failure, added matching-shape and positive-finite residual-scale guards, made site validation honor the explicit `data-primary` marker despite a newer negative download appearing first, added the exact raw validator receipt to the run card, and exposed exact public SHA-match count in the registry receipt. Added deterministic synthetic Euler tests and immutable artifact/evidence tests.
-3. **Full requirement / quality recheck:** reconciled the frozen dense-surface-exemption sentence with the stricter user rule through an explicit post-run correction (no post-hoc threshold change), synchronized README/workbench/executive/submission/hypothesis/review/next-step pages, pinned exact TIF/ZIP hashes and one-file ZIP contents, recorded official source links and access caveats, verified the ≤140-character note, and preserved the negative verdict independently of local format validity. Final verification: `233 passed` (103 non-failing Rasterio deprecation warnings), Python compile check PASS, `git diff --check` PASS, and site check PASS across all 37 served rasters.
+- **Research GeoTIFF:** `docs/downloads/h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif`
+  - **SHA-256:** `080018382de33758c78e1b11f80098a1f736ac7de5f4c55641bd84b52b0f7200`
+  - **Name / note:** `GEMSDOE92-XPHASE-dual40-20261024` / `h33-h33-2-b2; XPHASE dual40: 15062 H19-5 + 22592 far MT-grav phase crests`
+  - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): **`0.004653 [0.003955, 0.005390]`** vs R0 `0.004006` (paired Δ CI includes 0). Below holdout-best `COULOMB-LOQO` `0.009220`.
+  - **Download:** ✅ OK TO DOWNLOAD FOR RESEARCH (10/10 format gates). **Weekly slot:** ⛔ DO NOT SUBMIT (`verdict: negative`, dense witness overlap 1.000).
+  - Run card: `evidence/xphase_run_card.json`. Analysis: `docs/ANALYSIS_20261024_XPHASE.md`. Hypotheses: `docs/HYPOTHESES_20261024_XPHASE.md`.
 
-## 1. Current Active Holdout-Best Primary & Automated Gate Status
+## 0C. Parallel completed lane (`EULERFUSE`)
+
+- **Research GeoTIFF:** `docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif`
+  - **SHA-256:** `5820e882512843a334f4497ed7f294af937339f729e4eeeecdc33d9cdafeeab9`; pre-publication exact SHA matches: `0` among 1,378 exact-grid public rasters.
+  - **Name / note:** `GEMSDOE92-EULERFUSE-gravity-20261024` / `EULERFUSE gravity: 37654 LOQO Euler-contact dots; HOLDOUT-DTI 0.110387; negative` (80/140 characters).
+  - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): strict draw-blind `0.110387 [0.097279,0.123179]`, below fresh base `0.113316 [0.101071,0.126266]`; paired delta `-0.002929 [-0.006700,0.000763]`.
+  - **Download:** ✅ OK TO DOWNLOAD FOR RESEARCH (`11/11` format gates, finite `[0,1]`). **Weekly slot:** ⛔ DO NOT SUBMIT (`verdict: negative`; `submission_eligible=false`; literal public overlap `1.000`; 3/3 experiments and 0 weekly slots).
+  - Run card: `evidence/eulerfuse_run_card.json`. Analysis: `docs/ANALYSIS_20261024_EULERFUSE.md`. Hypotheses: `docs/HYPOTHESES_20261024_EULERFUSE.md`.
+
+### EULERFUSE cumulative passes
+
+1. **Implementation / verification:** froze four hypotheses before code, reused the pinned stack/shared evaluator/shared writer, tested 36 canaries, executed exactly three arms, independently reopened the emitted TIF, and ran local plus current-public representation checks.
+2. **Bug / edge review:** fixed batched solve RHS dimensions, changed the large design matrix to a memory map after an OOM, added shape/residual-scale guards, retained main's hardened explicit-primary site validator, embedded the exact validator receipt in the run card, and pinned exact SHA/one-file ZIP contracts.
+3. **Requirement recheck:** applied the user's literal dense-raster rule without exemption, synchronized all public guides, labeled every numeric outcome, recorded source-access limitations, and preserved format validity separately from eligibility. Combined post-merge verification: `277 passed` (124 non-failing Rasterio deprecation warnings), `git diff --check` PASS, and site gate PASS across all `43` served rasters.
+
+## 1. Prior Active Primary & Automated Gate Status (`COULOMB-LOQO`, still repository holdout-best)
 
 - **Primary Served GeoTIFF:** `docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif`
   - **SHA-256 (`-zeros.tif`):** `8f1f93d8c97b4e1c359ce5fbe07d183214e707aa6bda4ed074c00921f39ad32e`

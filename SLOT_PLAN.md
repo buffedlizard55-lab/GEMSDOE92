@@ -1,8 +1,9 @@
-# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-24, `COULOMB-LOQO` Session)
+# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-24, `COULOMBDM` & `COULOMB-LOQO` Merged State)
 
-## Current Slot Decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT (`submission_eligible: false`, `0` weekly slots spent)**
+## Current Slot Decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT (`submission_eligible: false`, `0` weekly slots spent, `74 BUILT / 0 RECEIPT`)**
 
-- **Current Primary Artifact:** `docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif`
+- **Current Research Download (`data-primary="true"`):** `docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif` (`SHA-256 = 44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12`, static `HOLDOUT-DTI = 0.007816`, **`0 / 1,181` `<= 150k`-px sparse public overlaps `> 70%`**) and zero-label standalone sibling `docs/downloads/h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif` (`SHA-256 = 510c3012f4866e8ea2f0debd0aba799a7b7765a4e18f0954d2d1067ddd01e172`, `0% H19-5`, `0%` catalogue labels, Rule-2 `d_vis > 2.0` `HOLDOUT-DTI = 0.094496`, **`0 / 1,181` `<= 150k`-px sparse public overlaps `> 70%`, max `0.5859`**; `evidence/coulombdm_run_card.json`).
+- **Repository Holdout-Best Artifact (`COULOMB-LOQO`):** `docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif` (`0.009220` static / `0.113316` LOQO `d_vis > 2.0`, `1` sparse public overlap `0.7004` at `61k` px; hybrid sibling `COULOMBLOQO dual45` `0.009107` static, `0 / 1,121` `<= 90k`-px sparse public overlaps `> 70%`):
   - **Submission Name (local ledger):** `GEMSDOE92-COULOMBLOQO-standalone-20261024`
   - **Form Note (`89 / 140` chars):** `h33-h33-2-b2; COULOMBLOQO standalone: 37654 1D LOQO Coulomb+polarity+RTP crests (0 H19-5)`
   - **SHA-256 (`-zeros.tif`):** `8f1f93d8c97b4e1c359ce5fbe07d183214e707aa6bda4ed074c00921f39ad32e`

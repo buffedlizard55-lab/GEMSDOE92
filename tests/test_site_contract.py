@@ -97,11 +97,14 @@ def test_legacy_submission_page_redirect_does_not_claim_breakline_is_primary():
     """Aliases must describe the same current primary and warning as the canonical guide."""
     index_html = (DOCS / "index.html").read_text(encoding="utf-8")
     canonical = (DOCS / "SUBMIT.html").read_text(encoding="utf-8")
+    assert "COULOMBDMs45coulomb55" in index_html
+    assert "COULOMBDMs45coulomb55" in canonical
     assert "APRONRIDGEfree1d" in index_html
     assert "APRONRIDGEfree1d" in canonical
     assert "HYDROCONDUIT" in canonical
     for name in ("executive-summary.html", "submit.html"):
         page = (DOCS / name).read_text(encoding="utf-8")
+        assert "COULOMBDMs45coulomb55" in page
         assert "APRONRIDGE" in page
         assert "HYDROCONDUIT" in page
         assert "NOT CLEARED" in page
@@ -109,6 +112,49 @@ def test_legacy_submission_page_redirect_does_not_claim_breakline_is_primary():
         assert "Current primary: ANASIG" not in page
         assert "Current primary: SPRINGALIGN" not in page
         assert "SUBMIT.html" in page
+
+
+def test_coulombdm_run_card_and_site_html_integrity():
+    """COULOMBDM run card, unique data-primary anchor, and HTML id uniqueness must hold."""
+    import hashlib
+
+    card = json.loads((ROOT / "evidence" / "coulombdm_run_card.json").read_text(encoding="utf-8"))
+    for key in (
+        "hypothesis",
+        "mechanism",
+        "named_non_fault_process_that_could_mimic_it",
+        "holdout_dti",
+        "correlation_overlap_vs_registry",
+        "raster_sha256",
+        "validator",
+        "submission_name",
+        "note",
+        "verdict",
+    ):
+        assert key in card, f"missing run-card key: {key}"
+
+    primary = DOCS / "downloads" / card["file"]
+    assert primary.is_file()
+    assert hashlib.sha256(primary.read_bytes()).hexdigest() == card["raster_sha256"]
+    assert len(card["note"]) <= 140
+    assert card["leakage_canary_max_symmetric_auc"] <= 0.90
+    assert card["verdict"] == "negative"
+    assert card["submission_eligible"] is False
+
+    html = _index()
+    primaries = re.findall(r'<a\b[^>]*\bdata-primary="true"[^>]*>', html)
+    assert len(primaries) == 1, f"expected exactly 1 data-primary anchor, got {len(primaries)}"
+    assert card["file"] in primaries[0]
+
+    for html_path in sorted(DOCS.glob("*.html")):
+        txt = html_path.read_text(encoding="utf-8")
+        ids = re.findall(r'\bid="([^"]+)"', txt)
+        assert len(ids) == len(set(ids)), f"duplicate id in {html_path.name}: {ids}"
+        if 'http-equiv="refresh"' in txt:
+            assert txt.count("</main>") <= 1
+        else:
+            assert txt.count("</main>") == 1, f"expected 1 </main> tag in {html_path.name}"
+        assert txt.count("</footer>") <= 1, f"multiple </footer> tags in {html_path.name}"
 
 
 def test_hydroconduit_run_card_and_public_scan_integrity():
@@ -318,17 +364,52 @@ def test_coulomb_loqo_primary_run_card_and_no_duplicate_html_ids():
         assert len(ids) == len(set(ids)), f"Duplicate HTML id in {page_path.name}: {ids}"
 
 
-def test_piedfront_primary_contract_across_site_and_readme():
+def test_coulombdm_primary_contract_and_run_card():
+    import hashlib
+
+    src = ROOT / "evidence" / "coulombdm_run_card.json"
+    dl = DOCS / "downloads" / "coulombdm_run_card.json"
+    assert src.is_file() and dl.is_file()
+    assert src.read_bytes() == dl.read_bytes()
+
+    card = json.loads(src.read_text(encoding="utf-8"))
+    for key in (
+        "hypothesis",
+        "mechanism",
+        "named_non_fault_process_that_could_mimic_it",
+        "holdout_dti",
+        "correlation_overlap_vs_registry",
+        "raster_sha256",
+        "validator_output",
+        "submission_name",
+        "note",
+        "verdict",
+    ):
+        assert key in card, f"missing COULOMBDM run-card key: {key}"
+
+    primary = DOCS / "downloads" / "h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif"
+    assert primary.is_file()
+    assert hashlib.sha256(primary.read_bytes()).hexdigest() == card["raster_sha256"]
+    assert len(card["note"]) <= 140
+    assert card["leakage_canary_max_symmetric_auc"] <= 0.90
+    assert card["correlation_overlap_vs_registry"]["local"]["literal_duplicate"] is False
+    assert card["correlation_overlap_vs_registry"]["local"]["rasters_checked"] >= 58
+    assert card["verdict"] == "negative"
+    assert card["submission_eligible"] is False
+    assert card["weekly_slots_used"] == 0
+
     idx = (DOCS / "index.html").read_text(encoding="utf-8")
     exec_sum = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
     sub = (DOCS / "SUBMIT.html").read_text(encoding="utf-8")
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
 
     for tok in (
-        "GEMSDOE92-PIEDFRONT-f35Ptop-20261024",
-        "h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif",
-        "e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8",
-        "0.006425",
+        "GEMSDOE92-COULOMBDM-s45coulomb55-20261024",
+        "h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
+        "44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12",
+        "h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif",
+        "0.094496",
+        "0.007816",
     ):
         assert tok in idx, f"missing {tok} in docs/index.html"
         assert tok in exec_sum, f"missing {tok} in docs/executive-summary.html"

@@ -574,5 +574,71 @@
     "falsifier": "Pooled HOLDOUT-DTI failing to beat repository holdout best HYDROCONDUIT f45hydro (0.008549) on gems57-pooled-hide-v2, any single-feature leakage canary symmetric AUC > 0.90, or local registry forward 3-px overlap > 0.70 / |Spearman| > 0.90.",
     "decision_rule": "Promote only if pooled HOLDOUT-DTI beats HYDROCONDUIT f45hydro (0.008549) with paired 95% CI > 0, all canaries <= 0.90, 10/10 format gates pass, AND literal uniqueness passes on both local and public registries. Because 17GEMSDOE E-proba-multiscale sets every in-footprint pixel > 0 under the literal >70% public overlap clause, record submission_eligible=false and verdict='negative' (OK TO DOWNLOAD, NOT CLEARED FOR A WEEKLY SLOT) without waiving the rule.",
     "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/coulomb_loqo_proxy_audit.json"
+  },
+  "h33-h33-2-b2-XPHASEstandalone-20261024-023ac854": {
+    "parent": "h33-h33-2-b2",
+    "axis": "XPHASE",
+    "value": "standalone",
+    "hypothesis": "Blind Great Basin feeders juxtapose dense basement against basin fill (isostatic gravity gradient, Band 13) and bound a smectite clay-cap / upflow (MT log-conductivity gradient, Band 17) with shared strike but a 100-300 m transverse phase lag, under intermediate Band 15 cover and away from high Band 19 slope.",
+    "mechanism": "S = pct(|grad log B17|) * pct(|grad B13|) * 2-theta orientation agreement * cover-gate * transverse-lag * slope-suppress * (0.35+0.65*coherence); emit 37654 2.8 px-spaced 1D crests with d_cat > 2.0.",
+    "non_fault_mimic": "Saline playa clay rings on a non-tectonic basin-fill density contact; irrigation conductivity fronts; Tertiary tuff/basalt pinchouts.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat R0 (0.004006) with paired 95% CI excluding 0, any canary symmetric AUC > 0.90, or local 3-px overlap > 0.70.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats COULOMB-LOQO standalone (0.009220) with paired 95% CI excluding 0 vs R0, all canaries <=0.90, 10/10 gates pass, AND literal uniqueness passes. Dense public witness (>150k px) is recorded, not waived; submission_eligible stays false under the literal rule until operator density-clause revision.",
+    "predicted_sign_and_size": "HOLDOUT-DTI vs R0 unknown until report_xphase_proxies.py"
+  },
+  "h33-h33-2-b2-XPHASEnophase-20261024-2159567d": {
+    "parent": "h33-h33-2-b2",
+    "axis": "XPHASE",
+    "value": "nophase",
+    "hypothesis": "Blind Great Basin feeders juxtapose dense basement against basin fill (isostatic gravity gradient, Band 13) and bound a smectite clay-cap / upflow (MT log-conductivity gradient, Band 17) with shared strike but a 100-300 m transverse phase lag, under intermediate Band 15 cover and away from high Band 19 slope.",
+    "mechanism": "S = pct(|grad log B17|) * pct(|grad B13|) * 2-theta orientation agreement * cover-gate * transverse-lag * slope-suppress * (0.35+0.65*coherence); emit 37654 2.8 px-spaced 1D crests with d_cat > 2.0.",
+    "non_fault_mimic": "Saline playa clay rings on a non-tectonic basin-fill density contact; irrigation conductivity fronts; Tertiary tuff/basalt pinchouts.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat R0 (0.004006) with paired 95% CI excluding 0, any canary symmetric AUC > 0.90, or local 3-px overlap > 0.70.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats COULOMB-LOQO standalone (0.009220) with paired 95% CI excluding 0 vs R0, all canaries <=0.90, 10/10 gates pass, AND literal uniqueness passes. Dense public witness (>150k px) is recorded, not waived; submission_eligible stays false under the literal rule until operator density-clause revision.",
+    "predicted_sign_and_size": "HOLDOUT-DTI vs R0 unknown until report_xphase_proxies.py"
+  },
+  "h33-h33-2-b2-XPHASEdual40-20261024-643553cf": {
+    "parent": "h33-h33-2-b2",
+    "axis": "XPHASE",
+    "value": "dual40",
+    "hypothesis": "Blind Great Basin feeders juxtapose dense basement against basin fill (isostatic gravity gradient, Band 13) and bound a smectite clay-cap / upflow (MT log-conductivity gradient, Band 17) with shared strike but a 100-300 m transverse phase lag, under intermediate Band 15 cover and away from high Band 19 slope.",
+    "mechanism": "S = pct(|grad log B17|) * pct(|grad B13|) * 2-theta orientation agreement * cover-gate * transverse-lag * slope-suppress * (0.35+0.65*coherence); emit 37654 2.8 px-spaced 1D crests with d_cat > 2.0.",
+    "non_fault_mimic": "Saline playa clay rings on a non-tectonic basin-fill density contact; irrigation conductivity fronts; Tertiary tuff/basalt pinchouts.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat R0 (0.004006) with paired 95% CI excluding 0, any canary symmetric AUC > 0.90, or local 3-px overlap > 0.70.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats COULOMB-LOQO standalone (0.009220) with paired 95% CI excluding 0 vs R0, all canaries <=0.90, 10/10 gates pass, AND literal uniqueness passes. Dense public witness (>150k px) is recorded, not waived; submission_eligible stays false under the literal rule until operator density-clause revision.",
+    "predicted_sign_and_size": "HOLDOUT-DTI vs R0 unknown until report_xphase_proxies.py"
+  },
+  "h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3": {
+    "parent": "h33-h33-2-b2",
+    "axis": "COULOMBDM",
+    "value": "coulomb1d",
+    "hypothesis": "Active NW Great Basin normal and conjugate Walker Lane / Humboldt transtensional geothermal faults express across three complementary regimes: (1) piedmont-hinge one-sided monoclinal scarps, (2) concealed thin-to-moderate cover faults detected by multi-altitude upward-continued RTP magnetic tilt/demagnetization + gravity contact + MT smectite clay-cap lateral edges + blind >=80 C geothermometers, and (3) geophysically corroborated range-front/relay bedrock faults under oriented 2D Mohr-Coulomb criticality.",
+    "mechanism": "Projects GPS/InSAR dilatation (Band 8) onto N18E extension cos^2(az-18 deg) and shear sqrt(Band 7 * Band 4) onto +/-45 deg conjugate orientations sin^2(2*(az-15 deg)) (both vanishing at N105E clamping/fan-wash azimuths), fuses rank-calibrated surface, upward-continued RTP/gravity/MT/GDR subsurface, and corroborated bedrock channels, and emits 37,654 unit-mass dots along strict bilinear Canny cross-strike 1D NMS centrelines.",
+    "non_fault_mimic": "NNE-trending Pleistocene Lake Lahontan recessional strandlines on piedmont fans, remanently magnetized Miocene basalt dike/flow margins beneath gravel cover, saline playa-margin MT conductivity gradients, and linear lithologic contacts.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat repository best HYDROCONDUIT f45hydro (0.008549) or APRONRIDGE free1d (0.008354) on gems57-pooled-hide-v2, any single-feature canary symmetric AUC > 0.90, or local/sparse-public forward 3-px overlap > 0.70.",
+    "decision_rule": "Promote only if literal local + public registry uniqueness passes AND pooled HOLDOUT-DTI beats current repo best with 95% CI > 0 vs R0 AND 10/10 format gates pass; under the binding 17GEMSDOE full-footprint dense public witness, never waive silently: record submission_eligible=false and verdict='negative' pending human selector policy.",
+    "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/coulombdm_proxy_audit.json"
+  },
+  "h33-h33-2-b2-COULOMBDMs35coulomb65-20261024-1091c5a7": {
+    "parent": "h33-h33-2-b2",
+    "axis": "COULOMBDM",
+    "value": "s35coulomb65",
+    "hypothesis": "Active NW Great Basin normal and conjugate Walker Lane / Humboldt transtensional geothermal faults express across three complementary regimes: (1) piedmont-hinge one-sided monoclinal scarps, (2) concealed thin-to-moderate cover faults detected by multi-altitude upward-continued RTP magnetic tilt/demagnetization + gravity contact + MT smectite clay-cap lateral edges + blind >=80 C geothermometers, and (3) geophysically corroborated range-front/relay bedrock faults under oriented 2D Mohr-Coulomb criticality.",
+    "mechanism": "Projects GPS/InSAR dilatation (Band 8) onto N18E extension cos^2(az-18 deg) and shear sqrt(Band 7 * Band 4) onto +/-45 deg conjugate orientations sin^2(2*(az-15 deg)) (both vanishing at N105E clamping/fan-wash azimuths), fuses rank-calibrated surface, upward-continued RTP/gravity/MT/GDR subsurface, and corroborated bedrock channels, and emits 37,654 unit-mass dots along strict bilinear Canny cross-strike 1D NMS centrelines.",
+    "non_fault_mimic": "NNE-trending Pleistocene Lake Lahontan recessional strandlines on piedmont fans, remanently magnetized Miocene basalt dike/flow margins beneath gravel cover, saline playa-margin MT conductivity gradients, and linear lithologic contacts.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat repository best HYDROCONDUIT f45hydro (0.008549) or APRONRIDGE free1d (0.008354) on gems57-pooled-hide-v2, any single-feature canary symmetric AUC > 0.90, or local/sparse-public forward 3-px overlap > 0.70.",
+    "decision_rule": "Promote only if literal local + public registry uniqueness passes AND pooled HOLDOUT-DTI beats current repo best with 95% CI > 0 vs R0 AND 10/10 format gates pass; under the binding 17GEMSDOE full-footprint dense public witness, never waive silently: record submission_eligible=false and verdict='negative' pending human selector policy.",
+    "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/coulombdm_proxy_audit.json"
+  },
+  "h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd": {
+    "parent": "h33-h33-2-b2",
+    "axis": "COULOMBDM",
+    "value": "s45coulomb55",
+    "hypothesis": "Active NW Great Basin normal and conjugate Walker Lane / Humboldt transtensional geothermal faults express across three complementary regimes: (1) piedmont-hinge one-sided monoclinal scarps, (2) concealed thin-to-moderate cover faults detected by multi-altitude upward-continued RTP magnetic tilt/demagnetization + gravity contact + MT smectite clay-cap lateral edges + blind >=80 C geothermometers, and (3) geophysically corroborated range-front/relay bedrock faults under oriented 2D Mohr-Coulomb criticality.",
+    "mechanism": "Projects GPS/InSAR dilatation (Band 8) onto N18E extension cos^2(az-18 deg) and shear sqrt(Band 7 * Band 4) onto +/-45 deg conjugate orientations sin^2(2*(az-15 deg)) (both vanishing at N105E clamping/fan-wash azimuths), fuses rank-calibrated surface, upward-continued RTP/gravity/MT/GDR subsurface, and corroborated bedrock channels, and emits 37,654 unit-mass dots along strict bilinear Canny cross-strike 1D NMS centrelines.",
+    "non_fault_mimic": "NNE-trending Pleistocene Lake Lahontan recessional strandlines on piedmont fans, remanently magnetized Miocene basalt dike/flow margins beneath gravel cover, saline playa-margin MT conductivity gradients, and linear lithologic contacts.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat repository best HYDROCONDUIT f45hydro (0.008549) or APRONRIDGE free1d (0.008354) on gems57-pooled-hide-v2, any single-feature canary symmetric AUC > 0.90, or local/sparse-public forward 3-px overlap > 0.70.",
+    "decision_rule": "Promote only if literal local + public registry uniqueness passes AND pooled HOLDOUT-DTI beats current repo best with 95% CI > 0 vs R0 AND 10/10 format gates pass; under the binding 17GEMSDOE full-footprint dense public witness, never waive silently: record submission_eligible=false and verdict='negative' pending human selector policy.",
+    "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/coulombdm_proxy_audit.json"
   }
 }

@@ -20,11 +20,11 @@ The artifact is safe to download for research and structurally acceptable to the
 3. `SOLO` is exactly `D2.8 & (distance_to_catalogue > 1 pixel)`, with `40,199` pixels.
 4. `R0` / `h33-h33-2-b2` is exactly `D2.8 & (distance_to_catalogue > 2 pixels)`, with `37,654` pixels.
 
-That cascade matches the official metric's geometry. The official reference implementation uses
+That cascade is consistent with the geometry of the repository's shared local evaluator:
 
 `DTI = TPw / (TPw + 0.2 FPw + 0.8 FNw)`
 
-with a 300 m triangular distance kernel. Dense neighboring predictions compete for the same maximum truth-pixel credit, so removing redundant mass near already-covered locations reduces weighted false-positive cost without proportionally reducing true-positive credit. The final 2-pixel catalogue collar also removes pixels that cannot represent a catalogue-missing target. This is a metric-aware sparsification explanation, not proof of the unarchived score claim.
+with a 300 m triangular distance kernel. The official reference notebook confirms the `0.2` / `0.8` coefficients for its training loss; it does **not** implement or independently certify this repository's distance-weighted evaluator. Under the local kernel-max implementation, neighboring predictions can be redundant, so thinning can remove false-positive mass while retaining much of the already-covered truth credit. It is not a theorem that every sub-2.8-pixel dot has zero marginal credit or a full false-positive penalty; the effect depends on hidden truth geometry. The final 2-pixel catalogue collar also removes predictions that cannot represent a catalogue-missing target. This is a plausible metric-aware sparsification explanation, not proof of the unarchived score claim or organizer metric provenance.
 
 The checked `GEMSDOE32` source page at GitHub commit `098f3af9508a135277ef4d1bf2266e2e448be814` explicitly said that no organizer score existed in that repository. Therefore this project does not promote its projections or owner claims to receipts.
 
@@ -74,7 +74,7 @@ This is consistent with coarse/smoothed regional potential fields localizing lit
 
 ## Sources for manual review and verification status
 
-1. Official reference solution: https://github.com/drivendataorg/gems-prize-reference-solution — retrieved at commit `aebe92f7c8a990f0e3443451b7a825d9afd6336b`; metric arithmetic verified from code/notebook.
+1. Official reference solution: https://github.com/drivendataorg/gems-prize-reference-solution — retrieved at commit `aebe92f7c8a990f0e3443451b7a825d9afd6336b`. It verifies the `0.2` / `0.8` training-loss coefficients, not the distance-weighted organizer evaluator; HOLDOUT-DTI arithmetic here is explicitly the shared local `vendor/gems57` implementation.
 2. GeoDAWN official record: https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7 and https://doi.org/10.5066/P93LGLVQ — official links recorded; these hosts were blocked here. The restored stack matched its pinned owner-mirror SHA-256; upstream redistribution identity remains flagged, not silently certified.
 3. DOE GDR INGENIOUS: https://gdr.openei.org/submissions/1391 — official link recorded; host blocked here; pinned local CSV hash verified.
 4. GEMSDOE32 source: https://github.com/buffedlizard55-lab/GEMSDOE32 — source page and artifact lineage checked through GitHub.

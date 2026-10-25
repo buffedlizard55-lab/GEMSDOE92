@@ -950,3 +950,36 @@ that pattern: no unpreserved screen code.
 - **Observation**: During merge of `origin/main` (`5a23dd2`), lines 66–67 of `ledger/submissions.csv` (`h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21` and `h33-h33-2-b2-BASEMENTEDGEstep3-20261024-80719f12`) contained unquoted commas inside `change_desc` and `notes`, splitting 16 columns into 18 columns (`csv.DictReader` key `None`) alongside a blank line 65.
 - **Action**: Re-serialized all 68 merged rows through `gems.ledger.save()` with RFC-4180 quoting so every row has the exact 16 canonical columns.
 
+
+## Session 918b947a — fresh universal stop and review repairs
+
+- **Binding stop reproduced, not bypassed:** Fresh SHA-256/Git-blob-pinned witness is positive throughout the pinned competition footprint. The literal registry rule rejects every nonempty candidate before placement. No new TIFF/experiment/slot; see `docs/REVIEW_918B947A.md` and `evidence/review_918b947a_*.json`.
+- **Scientific claim corrections:** Official reference notebook confirms training-loss coefficients, not the organizer's distance-weighted evaluator. Sub-2.8-pixel spacing does not mathematically imply zero marginal truth credit; a regression counterexample now exercises the shared metric. Historical global-best wording ignored visible-collar results and distinct evaluation masks; current summaries now scope their comparisons and say results were not rerun.
+- **Evidence integrity repairs:** Existing preflight now pins the sample footprint, records implementation/time, refuses historical receipt overwrite, and fails closed on corrupted/alignment inputs. Site receipt parsing rejects empty/incomplete/duplicate/malformed gates and pseudo-boolean results.
+- **Pages bypass found:** Live GitHub API reported `build_type: legacy`, `source: main /`. That mode can publish without the repository's validation workflow. Updated workflow stages only root redirect + docs after validation, preserving `/docs/` URLs and excluding raw data. The repository must use Pages Actions mode for this validation gate to govern deployment; the remote configuration change and deployment outcome are recorded in the PR/session closeout rather than assumed from local YAML.
+- Non-GitHub sources, live leaderboard, authenticated weekly cap, official receipts, input redistribution rights, and fresh fold-rebuilt promotion evidence remain unverified. Wall-clock receipt times crossed midnight UTC relative to the October 24 task brief. Historical receipts are unchanged.
+
+Pages closeout for session 918b947a: `PUT /repos/buffedlizard55-lab/GEMSDOE92/pages` with `build_type=workflow` returned **HTTP 403 Resource not accessible by integration**. Follow-up GET still reports legacy main-root mode. No repository setting was changed; broader Pages-settings permission is needed. Do not claim the fail-closed Actions deployment gate is active while legacy mode remains configured.
+
+---
+
+## 2026-10-24 (COULOMBDM session) — Five Newly Verified Uniqueness, Data & Tooling Irregularities
+
+### 1. `#IR-92-PIEDFRONT-HYDROCONDUIT-CROSSOVER`: Post-Merge Asymmetric 3-px Forward Overlap (`0.7132 > 0.70`) Between `PIEDFRONT f35Ptop` and `HYDROCONDUIT f45hydro`
+- **Observation**: Pairwise 3-px forward overlap audit across merged lanes reveals `PIEDFRONT f35Ptop` has **`71.32%` (`26,855 / 37,654 > 0.70`)** of its dots within `<= 3.0 px` of `HYDROCONDUIT f45hydro` (reverse `56.56%`), driven by shared `R0` keeps + piedmont `H19-5` hole refills.
+- **Action**: Documented so human selectors never pair `PIEDFRONT f35Ptop` with `HYDROCONDUIT f45hydro`; `COULOMBDM` (`<= 45% H19-5`) stays strictly `<= 0.6796 <= 0.70` against all 58 local rasters (including `<= 0.5448` vs `COULOMBLOQO` and `<= 0.2979` vs `XPHASE`) and `0 / 1,181` sparse (`<= 150k` px) public rasters.
+
+### 2. `#IR-92-GDR-CSV-FAULT-LEAKAGE-COL`: Direct Catalogue Leakage Column `dist_known_fault_px` Inside `external/gdr_wellspring_in_footprint.csv`
+- **Observation**: `external/gdr_wellspring_in_footprint.csv` contains precomputed `dist_known_fault_px` to `existing_faults.tif`, which would leak withheld holdout faults if ingested.
+- **Action**: `gems/coulombdm.py` reads only `row`, `col`, `thermalclass`, `temp_c`, `geothermquartz_c`, `geothermchalc_c`, and `geothermcat_c`, verified by signature inspection tests (`tests/test_coulombdm.py`) and `35 / 35` single-feature leakage canaries (`max symmetric AUC = 0.640176 <= 0.90`).
+
+### 3. `#IR-92-GEODAWN-RAW-LEVEL-INVERSION`: Raw Airborne Radiometric Ratio Levels (`K/Th`, `U/Th`) Score `< 0.50` AUC, Whereas Lateral Contact Gradients Carry Positive Signal
+- **Observation**: Regional felsic ash-flow tuffs and potassium-enriched playas cause raw `GeoDAWN` `K/(Th+1)` and `U/(Th+1)` levels to anti-correlate with Quaternary faults (`AUC 0.44–0.47`), whereas lateral contact gradients (`||grad(K/(Th+1))|| + 0.70 ||grad(U/(Th+1))||`) isolate fault lithologic juxtapositions and narrow adularia/illite alteration halos (`canary AUC = 0.5697`).
+
+### 4. `#IR-92-UNIQUENESS-EDT-OOM` & `#IR-92-CHECKSITE-PRIMARY`: Shared-Tool `binary_dilation` Speedup & Explicit `data-primary="true"` Enforcement
+- **Observation**: `scripts/report_breakline_proxies.py:uniqueness` previously allocated 98 MB `float64` `distance_transform_edt` per registry raster, risking OOM on `3.8 GiB` zero-swap sandboxes as the registry grew past 50 rasters; `scripts/check_site.py` also needed explicit multi-`data-primary="true"` and duplicate HTML `id` rejection.
+- **Action**: Updated `scripts/report_breakline_proxies.py:uniqueness` in-place to use bit-identical `7×7` Euclidean `binary_dilation(..., disk_r3)` (`80×` faster, `12 MB bool`, unit-tested in `tests/test_coulombdm.py`) and updated `scripts/check_site.py` in-place.
+
+### 5. `#IR-92-PUBLIC-SMOKE-INVALID-TIFF`: Truncated `110`-Byte `GEMSDOE63/docs/downloads/smoke.tif` in Live 102-Repo Scan
+- **Observation**: Live 102-repo GitHub API scan (`1,750` TIFF paths, `1,376` unique blobs; `evidence/coulombdm_public_registry_uniqueness.json`) identified `buffedlizard55-lab/GEMSDOE63` `docs/downloads/smoke.tif` (`89ffb2d6...`, `110 B`) as a truncated smoke fixture (`1,370` valid `3730×3292` rasters compared cleanly with `0` download failures).
+

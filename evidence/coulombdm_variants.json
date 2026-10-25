@@ -1,0 +1,599 @@
+{
+  "schema": "gemsdoe92.coulombdm-variants.v1",
+  "session_date_utc": "20261024",
+  "axis": "COULOMBDM",
+  "parent": "h33-h33-2-b2",
+  "parent_claim": {
+    "score": 0.2778,
+    "evidence_label": "CLAIM",
+    "receipt": false
+  },
+  "pre_placement_surface": {
+    "cache_path": ".cache/gems_inputs/coulombdm_S_surface.tif",
+    "sha256": "ad428a783485c51de7615d319ff376b5c696b1a7d1ee7aaa136c7a1581443d1a",
+    "screen_evidence": "evidence/coulombdm_preplacement_screen.json"
+  },
+  "lane_surface": {
+    "definition": "S_raw = smooth(max(r_pied, r_sub, r_bed)) extracted along oriented_nms_1d",
+    "bands": "Bands 2 rtp, 4 geod_2ndinv, 5 iso_grav_anom_slope, 7 geod_shearrate, 8 geod_dilaterate, 11 iso_grav_anom_vg, 12 det_elev, 15 depth_to_base_surf, 17 cond_surf, 19 det_elev_slope + GeoDAWN K,Th,U + GDR #1391",
+    "implementation": "gems/coulombdm.py",
+    "catalogue_use": "zero in surface, skeleton weights, or 1D NMS extraction; d_cat>2.0px gate only",
+    "experiments_built": 3,
+    "budget_limit": 3
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-COULOMBDM-coulomb1d-20261024",
+      "name": "h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.zip",
+      "file_nan_cache": ".cache/coulombdm_builds/h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3.tif",
+      "sha8": "826b2fb3",
+      "change_desc": "COULOMBDM (coulomb1d): 37654 standalone 1D Canny-NMS Coulomb/RTP/clay-cap ridges (0 H19-5); fixed 37654 unit dots",
+      "notes": "arm=coulomb1d; n_skel=0; n_far=37654; shared_R0=1208; within3px_H19=0.4609; piedmont_pct=60.4%; sub_dom=8612; bed_dom=8809; git=c16e8b7cc88a",
+      "parent": "h33-h33-2-b2",
+      "axis": "COULOMBDM",
+      "value": "coulomb1d",
+      "n_dots": 37654,
+      "n_skel": 0,
+      "n_far": 37654,
+      "pct_changed": 96.79184150422266,
+      "removed": 36446,
+      "added": 36446,
+      "sha256": "826b2fb37dc40bc8ebb7af368f61836c7d302b1db75664b495be29f33fee1ddd",
+      "sha256_zeros": "510c3012f4866e8ea2f0debd0aba799a7b7765a4e18f0954d2d1067ddd01e172",
+      "zip_sha256": "983cbaa9ef128f0a88cec60f834245784816ee9bebad168d654e21af03ab0dbd",
+      "primary_file": "h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/coulombdm_proxy_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 5380,
+        "basin_pct": 14.288,
+        "piedmont_dots": 22747,
+        "piedmont_pct": 60.411,
+        "range_dots": 9527,
+        "range_pct": 25.301
+      },
+      "channel_diagnostics": {
+        "piedmont_scarp_dominant_dots": 20233,
+        "subsurface_rtp_grav_mt_dominant_dots": 8612,
+        "corroborated_bedrock_dominant_dots": 8809,
+        "within_3px_of_h19_5_frac": 0.460854,
+        "shared_exact_pixels_with_R0": 1208,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "collar_dots_dcat_le_3": 2645,
+        "mean_S_pct_emitted": 0.9572118520736694
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "submission_encoding",
+          "ok": true,
+          "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "510c3012f4866e8ea2f0debd0aba799a7b7765a4e18f0954d2d1067ddd01e172"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "826b2fb37dc40bc8ebb7af368f61836c7d302b1db75664b495be29f33fee1ddd"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; COULOMBDM coulomb1d: 37654 standalone 1D 2D-Coulomb + upcont-RTP/clay-cap ridges (0 H19-5)",
+      "gate_status": "PASS (submission_writer + disk reread + 11/11 gems.gates)",
+      "seed": 0
+    },
+    {
+      "id": "h33-h33-2-b2-COULOMBDMs35coulomb65-20261024-1091c5a7",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-COULOMBDM-s35coulomb65-20261024",
+      "name": "h33-h33-2-b2-COULOMBDMs35coulomb65-20261024-1091c5a7.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-COULOMBDMs35coulomb65-20261024-1091c5a7-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-COULOMBDMs35coulomb65-20261024-1091c5a7-zeros.zip",
+      "file_nan_cache": ".cache/coulombdm_builds/h33-h33-2-b2-COULOMBDMs35coulomb65-20261024-1091c5a7.tif",
+      "sha8": "1091c5a7",
+      "change_desc": "COULOMBDM (s35coulomb65): 13179 Coulomb H19-5 + 24475 off-skel 1D Coulomb/RTP/clay-cap ridges (>3px H19-5); fixed 37654 unit dots",
+      "notes": "arm=s35coulomb65; n_skel=13179; n_far=24475; shared_R0=2753; within3px_H19=0.3500; piedmont_pct=57.6%; sub_dom=10021; bed_dom=8573; git=c16e8b7cc88a",
+      "parent": "h33-h33-2-b2",
+      "axis": "COULOMBDM",
+      "value": "s35coulomb65",
+      "n_dots": 37654,
+      "n_skel": 13179,
+      "n_far": 24475,
+      "pct_changed": 92.68869177245446,
+      "removed": 34901,
+      "added": 34901,
+      "sha256": "1091c5a7ba1124fc7670550afe00250c8d866a24e7618f2f0e1f6c486eb9cc5d",
+      "sha256_zeros": "52bbbc166c7861fb24da8dd6761175cebfaf44d5252d495dfacecf08930aa112",
+      "zip_sha256": "d0a7c12699a355e67d187fae056a136bd40762b445e5c0c6e4fe77dc43ab8112",
+      "primary_file": "h33-h33-2-b2-COULOMBDMs35coulomb65-20261024-1091c5a7-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-COULOMBDMs35coulomb65-20261024-1091c5a7-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/coulombdm_proxy_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 6654,
+        "basin_pct": 17.671,
+        "piedmont_dots": 21703,
+        "piedmont_pct": 57.638,
+        "range_dots": 9297,
+        "range_pct": 24.691
+      },
+      "channel_diagnostics": {
+        "piedmont_scarp_dominant_dots": 19060,
+        "subsurface_rtp_grav_mt_dominant_dots": 10021,
+        "corroborated_bedrock_dominant_dots": 8573,
+        "within_3px_of_h19_5_frac": 0.350003,
+        "shared_exact_pixels_with_R0": 2753,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "collar_dots_dcat_le_3": 3065,
+        "mean_S_pct_emitted": 0.9069856405258179
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "submission_encoding",
+          "ok": true,
+          "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "52bbbc166c7861fb24da8dd6761175cebfaf44d5252d495dfacecf08930aa112"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "1091c5a7ba1124fc7670550afe00250c8d866a24e7618f2f0e1f6c486eb9cc5d"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; COULOMBDM s35coulomb65: 13179 Coulomb-H19 + 24475 off-skel 1D Coulomb/RTP/clay ridges (>3px H19-5)",
+      "gate_status": "PASS (submission_writer + disk reread + 11/11 gems.gates)",
+      "seed": 0
+    },
+    {
+      "id": "h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-COULOMBDM-s45coulomb55-20261024",
+      "name": "h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.zip",
+      "file_nan_cache": ".cache/coulombdm_builds/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd.tif",
+      "sha8": "a10dccdd",
+      "change_desc": "COULOMBDM (s45coulomb55): 16944 Coulomb H19-5 + 20710 off-skel 1D Coulomb/RTP/clay-cap ridges (>3px H19-5); fixed 37654 unit dots",
+      "notes": "arm=s45coulomb55; n_skel=16944; n_far=20710; shared_R0=3858; within3px_H19=0.4500; piedmont_pct=57.0%; sub_dom=9619; bed_dom=8733; git=c16e8b7cc88a",
+      "parent": "h33-h33-2-b2",
+      "axis": "COULOMBDM",
+      "value": "s45coulomb55",
+      "n_dots": 37654,
+      "n_skel": 16944,
+      "n_far": 20710,
+      "pct_changed": 89.75407659212833,
+      "removed": 33796,
+      "added": 33796,
+      "sha256": "a10dccdd25c359cfb9f2c79759e1055cffddc9bbc365678207d8274044e1b661",
+      "sha256_zeros": "44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12",
+      "zip_sha256": "2d1c23a2ce4b2396c30eebdea86981785b3a24356a77dcd0195ebae0b5a8e754",
+      "primary_file": "h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/coulombdm_proxy_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 6768,
+        "basin_pct": 17.974,
+        "piedmont_dots": 21469,
+        "piedmont_pct": 57.017,
+        "range_dots": 9417,
+        "range_pct": 25.009
+      },
+      "channel_diagnostics": {
+        "piedmont_scarp_dominant_dots": 19302,
+        "subsurface_rtp_grav_mt_dominant_dots": 9619,
+        "corroborated_bedrock_dominant_dots": 8733,
+        "within_3px_of_h19_5_frac": 0.449992,
+        "shared_exact_pixels_with_R0": 3858,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "collar_dots_dcat_le_3": 3322,
+        "mean_S_pct_emitted": 0.8909996151924133
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "submission_encoding",
+          "ok": true,
+          "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "a10dccdd25c359cfb9f2c79759e1055cffddc9bbc365678207d8274044e1b661"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; COULOMBDM s45coulomb55: 16944 Coulomb-H19 + 20710 off-skel 1D Coulomb/RTP/clay ridges (>3px H19-5)",
+      "gate_status": "PASS (submission_writer + disk reread + 11/11 gems.gates)",
+      "seed": 0
+    }
+  ]
+}

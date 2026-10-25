@@ -1,0 +1,27 @@
+{
+  "schema": "gemsdoe92-source-review-v1",
+  "scope": "Retrieved GitHub sources only; not organizer submission receipts or a live leaderboard refresh.",
+  "sources": [
+    {
+      "role": "official reference solution",
+      "url": "https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/unet-mc-cv-reference-solution.ipynb",
+      "git_blob_sha": "d45bf7bdb1d31a22caa38371ad195c2f6eb965ae",
+      "sha256": "1a7622732ba00f67237058bc0efe79b45ba4e87c449fc9c1e5d6ea659de92ca0",
+      "verified_content": "Cell 16 sets alpha=0.2 and beta=0.8 for TverskyLoss. Notebook does not implement distance-weighted competition scoring."
+    },
+    {
+      "role": "owner historical workbench, not official receipt",
+      "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/098f3af9508a135277ef4d1bf2266e2e448be814/docs/index.html",
+      "sha256": "b4a0f68193d7814fd4e406ea86465c0b0350cbed91b4f174d45c425f2b40e0d0",
+      "verified_content": "Owner-reported scores are explicitly labeled claim. Does not independently confirm the user-supplied score."
+    }
+  ],
+  "unverified_live_sources": [
+    "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+    "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/",
+    "https://docs.nlr.gov/docs/fy26osti/96647.pdf",
+    "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and",
+    "https://gdr.openei.org/submissions/1391"
+  ],
+  "unverified_reason": "Non-GitHub outbound hosts are not allowed in this environment; no authenticated submission page or receipt is available."
+}
