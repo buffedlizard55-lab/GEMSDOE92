@@ -7,6 +7,10 @@ Read [the current three-pass review](docs/REVIEW_C5E3848C.md) and [fresh run car
 
 Read this at the start of every session, together with `README.md`. The README is the short executive summary; this file is the durable project operating contract. Preserve the user's goals: a unique, easy-to-download submission GeoTIFF, automated format validation, transparent evidence, and no hallucinated claims.
 
+## Current session status — 2026-10-25 (`LISTRICDIP`)
+
+The newest completed lane is `LISTRICDIP`. Three research GeoTIFFs were generated. Static HOLDOUT-DTI for `updip50` is `0.005420 [0.004294, 0.006551]` (`gems57-pooled-hide-v2`, 22,663 withheld positives). It beats `R0` and loses to the stored holdout best (`KNICKLOQO` `0.010788`). Verdict `negative`. OK to download for research. Not OK to submit. Literal dense-witness overlap is 1.0. The `376a8469` note that no new TIFF existed applied to that review, not to this lane. The literal overlap gate is still binding. Read the run card `evidence/listricdip_run_card.json` before trusting any older banner that calls itself newest.
+
 ## Current binding clarification — 2026-10-25 (`376a8469`)
 
 Read [the protocol-gate review](docs/REVIEW_376A8469.md) first. The literal overlap gate is binding for every raster. The later historical BLINDFAULT addendum claiming an automatic policy resolution is **superseded**: matched-budget overlap remains diagnostic only. A freshly pinned witness proves all nonempty candidates fail the unchanged rule. Stop rather than fabricate a new eligible TIFF. No new method lane was specified or tested in this review. Full operating requirements remain in the README's persistent session prompt and below; read both at every session start.

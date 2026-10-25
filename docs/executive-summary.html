@@ -11,11 +11,11 @@
 <section id="current-verified-status" aria-label="Current authoritative submission status" style="max-width:70rem;margin:1rem auto;padding:1.25rem;border:3px solid #991b1b;border-radius:12px;background:#fff7ed;color:#292524;font:1rem/1.6 system-ui,sans-serif;overflow-wrap:anywhere">
 <h2 style="margin-top:0">Current decision: research download only</h2>
 <p><strong>OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT · NOT CLEARED FOR A WEEKLY SLOT</strong></p>
-<p><a href="downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif" download style="display:inline-block;padding:.7rem 1rem;background:#1e3a5f;color:white;border-radius:6px;font-weight:700">Download validated research TIFF</a></p>
-<p>h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif<br>SHA-256: <code>44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12</code></p>
+<p><a href="downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif" download style="display:inline-block;padding:.7rem 1rem;background:#1e3a5f;color:white;border-radius:6px;font-weight:700">Download validated research TIFF</a></p>
+<p>gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif<br>SHA-256: <code>91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e</code></p>
 <p>Automated format checks pass: single band, finite [0, 1], no NaNs, zeros outside the footprint, matching CRS/shape/transform. This is an unchanged historical file, <strong>not a new unique submission</strong>.</p>
 <p><strong>Duplicate stop:</strong> the pinned registry witness covers every footprint cell. Literal dot overlap is 1.0; the limit is 0.70. No new surface, dots, leakage canaries or HOLDOUT-DTI were evaluated after this stop. No ORGANIZER-CONFIRMED score is available.</p>
-<p><a href="downloads/review_c5e3848c_run_card.json">Fresh automated run card</a> · <a href="REVIEW_C5E3848C.md">Evidence, hypotheses and limitations</a> · <a href="executive-summary.html">Executive summary / submission instructions</a></p>
+<p><a href="downloads/review_c5e3848c_integrated_run_card.json">Fresh automated run card</a> · <a href="REVIEW_C5E3848C.md">Evidence, hypotheses and limitations</a> · <a href="executive-summary.html">Executive summary / submission instructions</a></p>
 <p>Reviewed 2026-10-25. Experiments: zero. Weekly slots used: zero. Historical “newest”, “unique” and ranking statements below are archives, not clearance.</p>
 </section>
 <!-- CURRENT-STATUS:END -->
@@ -23,6 +23,23 @@
 <summary>Archived parallel-lane reports — not current submission clearance</summary>
 
 
+<aside class="banner banner-warn" aria-label="Binding submission eligibility decision" style="border:3px solid #991b1b; margin:1rem;">
+  <h1>Current decision: research downloads only — DO NOT SUBMIT</h1>
+  <p>A pinned public-registry raster is positive in every one of the 5,167,373 footprint cells. Under the binding literal rule, every nonempty in-footprint candidate has 3-px forward overlap <code>1.0 &gt; 0.70</code>; stop before candidate placement. The later lane TIFF linked below is a research artifact, not slot-cleared.</p>
+  <p><strong>Download means research use only.</strong> Format validation is not uniqueness, holdout promotion, organizer acceptance, or permission to submit. No new candidate was generated in this repository review; no slot was used.</p>
+  <p><a download href="downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif"><strong>Download latest validated research TIFF — NOT FOR SUBMISSION</strong></a> · <a href="REVIEW_20261025_REPOSITORY_REVIEW.md">Current three-pass review</a> · <a href="REVIEW_376A8469.md">Binding gate</a> · <a href="downloads/review376a_preflight.json">Pre-placement evidence</a> · <a href="HYPOTHESES_20261025_REVIEW.md">Ranked, untested hypotheses</a> · <a href="SUBMIT.html">Submission instructions</a></p>
+</aside>
+<!-- LISTRICDIP:BEGIN -->
+<aside class="banner banner-warn" aria-label="LISTRICDIP session status" style="border:2px solid #7f1d1d;">
+  <p><strong>Newest session (2026-10-25) — lane <code>LISTRICDIP</code>. Read this before any older banner. Verdict <code>negative</code>.</strong></p>
+  <p>
+    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH</span>
+    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT — DUPLICATE UNDER THE LITERAL REGISTRY RULE</span>
+  </p>
+  <p><a href="downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif" download><strong>⬇ Download gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif</strong></a> · <a href="downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.zip" download>one-TIFF ZIP</a> · <a href="listricdip.html"><strong>Exact submit steps</strong></a> · <a href="ANALYSIS_20261025_LISTRICDIP.md">why it lost</a></p>
+  <p>Do not upload this file. If a later audit says <code>submission_eligible: true</code>, the form is: sign in at <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData #306</a>, upload the single-band GeoTIFF or the one-TIFF zip, enter the unique name and the ≤140-character note, and select one submission for both prize rounds. Official format requires values in [0, 1] and null/NaN outside the bounds; this site uses zeros outside because a prior portal error was <code>Predicted values must be in range [0, 1]</code>. Static HOLDOUT-DTI <code>0.005420 [0.004294, 0.006551]</code> is not 0.2778, not 0.3195, and not the public snapshot 0.4413.</p>
+</aside>
+<!-- LISTRICDIP:END -->
 <!-- KNICKLOQO:BEGIN -->
 <aside class="banner banner-warn" aria-label="KNICKLOQO session status" style="border:2px solid #7f1d1d;">
   <p><strong>Newest session (2026-10-25) — lane <code>KNICKLOQO</code>: 3 new unique GeoTIFFs generated; all-time #1 static <code>HOLDOUT-DTI = 0.010788 [0.009468, 0.012201]</code> (+17.0% over <code>COULOMBLOQO standalone</code> <code>0.009220</code>, +11.1% over <code>PROVINCETOE</code> <code>0.009711</code>) &amp; <code>#IR-92-NE-QUADRANT-LOQO-COLLAPSE</code> resolved. Verdict <code>negative</code> under literal <code>17GEMSDOE</code> dense surface (<code>UNIQUE</code> under <code>dual_reading_decision</code>: <code>0 / 1,412 &gt; 0.70</code>, max <code>0.685531 &le; 0.70</code>).</strong></p>
@@ -31,7 +48,7 @@
     <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — verdict negative under literal 17GEMSDOE dense-surface rule (submission_eligible: false; 0 weekly slots spent)</span>
   </p>
   <p><a href="downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif" download><strong>Download h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif</strong></a> · <a href="downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.zip" download>one-TIFF ZIP</a> · <a href="downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-audit.json">audit JSON</a> · <a href="downloads/knick_loqo_run_card.json">run card</a> · <a href="downloads/knick_loqo_public_registry_uniqueness.json">102-repo public scan</a> · <a href="ANALYSIS_20261025_KNICKLOQO.md">PhD analysis</a> · <a href="HYPOTHESES_20261025_KNICKLOQO.md">pre-registered hypotheses</a></p>
-  <p>SHA-256 <code>8ad4a8c2cd8e1fd965d91643da6efbe82da8b3668e6dc8e59d193a8302424a7d</code>. <strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, <code>22,663</code> withheld positives): static <code>d_cat &gt; 2.0</code> <code>0.010788 [0.009468, 0.012201]</code> (all-time #1); strict draw-blind <code>d_cat &gt; 2.0</code> <code>0.010958 [0.009675, 0.012337]</code>; strict draw-blind <code>d_visible &gt; 2.0</code> <code>0.109043 [0.097872, 0.120534]</code> (vs <code>H19-5</code> <code>0.096757</code>). Off-catalogue USGS SGMC <code>PROXY</code>: <code>0.103912</code>. 50/50 leakage canaries PASS (max AUC <code>0.659602 &le; 0.90</code>).
+  <p>SHA-256 <code>8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347</code>. <strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, <code>22,663</code> withheld positives): static <code>d_cat &gt; 2.0</code> <code>0.010788 [0.009468, 0.012201]</code> (all-time #1); strict draw-blind <code>d_cat &gt; 2.0</code> <code>0.010958 [0.009675, 0.012337]</code>; strict draw-blind <code>d_visible &gt; 2.0</code> <code>0.109043 [0.097872, 0.120534]</code> (vs <code>H19-5</code> <code>0.096757</code>). Off-catalogue USGS SGMC <code>PROXY</code>: <code>0.103912</code>. 50/50 leakage canaries PASS (max AUC <code>0.659602 &le; 0.90</code>).
   Name <code>GEMSDOE92-KNICKLOQO-standalone-20261025</code>; note (93/140) <code>h33-h33-2-b2; KNICKLOQO standalone: 37654 1D Q-calibrated knickzone+Poisson+scarp LOQO crests</code>. Weekly slots used: 0. Siblings: <a href="downloads/h33-h33-2-b2-KNICKLOQOuncal-20261025-61b98143-zeros.tif" download>KNICKLOQOuncal</a> (<code>0.010102</code>) · <a href="downloads/h33-h33-2-b2-KNICKLOQOdual35-20261025-8eedc094-zeros.tif" download>KNICKLOQOdual35</a> (<code>0.008976</code>).</p>
 </aside>
 <!-- KNICKLOQO:END -->

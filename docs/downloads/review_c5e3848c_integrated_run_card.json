@@ -1,0 +1,168 @@
+{
+  "schema": "gemsdoe92-current-review-v1",
+  "reviewed_utc": "2026-10-25T15:02:09.243993+00:00",
+  "scope": "Rejection-only tooling and repository review; unchanged primary; no geological lane assigned or tested.",
+  "hypothesis": "A full-footprint positive registry witness rejects any nonempty candidate under the literal overlap rule.",
+  "mechanism": "Every valid dot coincides with a positive witness pixel, so its distance is zero and forward overlap is one.",
+  "named_non_fault_process_that_could_mimic_it": "A space-filling continuous prediction background; overlap does not prove shared geological mechanisms.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "status": "Not run: binding stop before surface construction. Historical scores not recertified.",
+    "dti": null,
+    "ci95": null,
+    "evaluator_version": null,
+    "withheld_positives": null
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "One pinned witness; rejection proof, not full-registry uniqueness clearance. Correlation measured only for the unchanged primary.",
+    "preplacement_universal_stop": true,
+    "new_surface_spearman": null,
+    "existing_primary_spearman_full_footprint": 0.010352227787484035,
+    "existing_primary_positive_pixels": 37654,
+    "existing_primary_forward_overlap_within_3px": 1.0,
+    "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "witness_git_blob": "374c88b1da2b803e2ed160de467fd71ae114010d",
+    "stop_required": true,
+    "preflight": "docs/downloads/review_c5e3848c_preflight.json"
+  },
+  "raster_sha256": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
+  "primary_download": "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif",
+  "validator_output": {
+    "evidence_class": "FORMAT-VALIDATION",
+    "all_must_gates_pass": true,
+    "no_nan_inside_footprint": true,
+    "all_finite": true,
+    "values_in_0_1": true,
+    "values_range": [
+      0.0,
+      1.0
+    ],
+    "zero_outside_footprint": true,
+    "crs_shape_transform_match": true,
+    "grid": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    "gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=float32 count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nan_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      },
+      {
+        "name": "submission_encoding",
+        "ok": true,
+        "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e"
+      }
+    ]
+  },
+  "submission_name": "GEMSDOE92-REVIEW-C5E3848C-20261025",
+  "note": "Review only: unchanged LISTRICDIP research TIFF; literal registry overlap 1.0. No new experiment. DO NOT SUBMIT.",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "new_unique_tiff_generated": false,
+  "experiments_executed": 0,
+  "weekly_slots_used": 0,
+  "organizer_confirmed_score": null,
+  "limitations": [
+    "Requested new unique submission remains unmet due to the binding duplicate stop.",
+    "No single geological method paragraph was assigned; hypotheses are conditional, untested ideas.",
+    "No live official leaderboard, rules PDF, external geological-source retrieval or weekly-cap verification: network allowlist excludes those hosts.",
+    "Public GitHub mirror byte identity is not organizer authentication or redistribution permission.",
+    "Pages API currently reports legacy publication with errored status, so workflow validation cannot be claimed to gate the live site."
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/README.md",
+      "status": "Retrieved through GitHub API; official reference solution supports CPU as well as GPU.",
+      "sha256": "cfa4d55559c9128313beb9417eae7e0a94c31677132afb1120f9e86222804239"
+    },
+    {
+      "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/012e17b2a115c3c0d5e7885bea625bf9657c99fc/docs/index.html",
+      "status": "Retrieved through GitHub API; owner source, not organizer receipt. Page says UNSCORED and NO ORGANISER SCORE EXISTS.",
+      "sha256": "b88a7f10d064ae33c757d9273ab0d73d1fe29de8ea69029ddfd468bcd73560b1"
+    },
+    {
+      "url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/6fc71d19d49dca4960d5434bd81b6dd06fcc030a/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "status": "Retrieved through GitHub API; SHA-256 and Git blob verified; aligned to pinned sample.",
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be"
+    }
+  ],
+  "integration": {
+    "main_commit": "71f6ac4",
+    "historical_checkpoint_card": "docs/downloads/review_c5e3848c_run_card.json",
+    "note": "LISTRICDIP files generated by another session; this review only revalidated unchanged bytes. Conflicting promotion package corrected and archived."
+  },
+  "verification": {
+    "passes_completed": 3,
+    "baseline_tests_passed": 367,
+    "final_tests_passed": 406,
+    "nonfatal_upstream_deprecation_warnings": 126,
+    "served_rasters_gated": 66,
+    "current_panels_synchronized": 11,
+    "manifest": "PASS",
+    "parent_pinned_bytes": "PASS (not a training-recipe reconstruction)",
+    "ledger": "PASS; no organizer receipt",
+    "git_diff_check": "PASS"
+  }
+}

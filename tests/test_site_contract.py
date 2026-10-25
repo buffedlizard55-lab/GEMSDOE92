@@ -146,7 +146,11 @@ def test_coulombdm_run_card_and_site_html_integrity():
     html = _index()
     primaries = re.findall(r'<a\b[^>]*\bdata-primary="true"[^>]*>', html)
     assert len(primaries) == 1, f"expected exactly 1 data-primary anchor, got {len(primaries)}"
-    assert card["file"] in primaries[0]
+    # 2026-10-25: the homepage primary moved off COULOMBDM onto the newest
+    # research download. The old file stays linked; it is no longer primary.
+    assert card["file"] not in primaries[0]
+    assert card["file"] in html
+    assert "gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif" in primaries[0]
 
     for html_path in sorted(DOCS.glob("*.html")):
         txt = html_path.read_text(encoding="utf-8")

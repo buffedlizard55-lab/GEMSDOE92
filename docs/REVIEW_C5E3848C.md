@@ -4,7 +4,7 @@
 
 **OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.**
 
-[Current unchanged research TIFF](downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif) · [fresh automated run card](downloads/review_c5e3848c_run_card.json) · [fresh pre-placement proof](downloads/review_c5e3848c_preflight.json) · [submission guide](executive-summary.html).
+[Current unchanged research TIFF](downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [fresh integrated run card](downloads/review_c5e3848c_integrated_run_card.json) · [initial checkpoint run card](downloads/review_c5e3848c_run_card.json) · [fresh pre-placement proof](downloads/review_c5e3848c_preflight.json) · [submission guide](executive-summary.html).
 
 **The requested new, unique, submission-cleared TIFF is NOT delivered.** Generating it after the reproducible stop below would violate the parallel-run protocol. No old submission was copied, renamed or represented as new. No empty placeholder was generated. No competition slot was used. This session is a rejection-only tooling review, not a new geological lane; the prompt does not contain the referenced single assigned method paragraph.
 
@@ -14,11 +14,11 @@ Read the README operating contract, `SESSION_PROMPT.md`, prior reviews and next 
 
 Downloaded the pinned registry witness through the GitHub API and checked both its SHA-256 and Git blob identity. Reran `scripts/preflight_dense_witness.py` against the pinned sample template. **REGISTRY-MEASUREMENT:** all **5,167,373 footprint cells** have positive witness values. Every nonempty, valid candidate therefore has a witness-positive pixel at distance zero for each dot, so its forward overlap within 3 pixels is **1.0**, above the literal **0.70** stop. This proves rejection before placement, without inventing a candidate surface or reporting a fabricated surface correlation. Exit status **1** is the documented duplicate stop, not a broken command.
 
-For the existing site primary only, freshly measured **REGISTRY-MEASUREMENT**: **37,654 dots**, forward overlap **1.0**, full-footprint Spearman **0.04724711160801543** against that witness. Low correlation does not override excessive overlap: the rule is an **OR**, not an AND. One witness suffices for rejection, but not for full-registry clearance. There was no new whole-site registry scan.
+At the initial COULOMBDM-primary checkpoint only, freshly measured **REGISTRY-MEASUREMENT**: **37,654 dots**, forward overlap **1.0**, full-footprint Spearman **0.04724711160801543** against that witness. Low correlation does not override excessive overlap: the rule is an **OR**, not an AND. One witness suffices for rejection, but not for full-registry clearance. There was no new whole-site registry scan.
 
 Re-read the existing primary through `gems.gates.run_gates(..., require_submission_encoding=True)`. **FORMAT-VALIDATION:** all **11 gates** pass; one float32 band, `EPSG:32611`, shape **3730 × 3292**, exact sample transform, globally finite values in **[0, 1]**, zero outside the footprint, no positive mass on the known-fault catalogue. This addresses the reported range error for these bytes; it is not a guarantee of portal acceptance or scientific performance.
 
-Implemented `scripts/render_current_status.py`: one evidence-bound panel at the very beginning of the workbench, executive summary, submission guides, root redirect, README and current-review log. It displays the actual declared primary, hash, rejection reason, receipt and limitations. `scripts/check_site.py` now fails publication if those panels are stale, displaced below a parallel-lane banner, malformed or inconsistent with the declared primary. It cannot grant promotion. Older pre-header lane banners are grouped in a collapsed, accessible archive to keep the download decision on the first screen. Historical run cards and lane data remain intact; their “newest” and alternative “unique” claims do not supersede the current decision.
+Implemented `scripts/render_current_status.py`: one evidence-bound panel at the very beginning of the workbench, executive summary, submission guides, root redirect, README and current-review log; integrated submission-ready/strategy pages also carry it. It displays the actual declared primary, hash, rejection reason, receipt and limitations. `scripts/check_site.py` now fails publication if those panels are stale, displaced below a parallel-lane banner, malformed or inconsistent with the declared primary. It cannot grant promotion. Older pre-header lane banners are grouped in a collapsed, accessible archive to keep the download decision on the first screen. Historical run cards and lane data remain intact; their “newest” and alternative “unique” claims do not supersede the current decision.
 
 ## Why did GEMSDOE32 supposedly obtain CLAIM 0.2778?
 
@@ -74,7 +74,7 @@ Flagged inherited future-dated RADIOCONTACT documentation (2026-10-26 versus tod
 
 ## Pass 3 — final acceptance and remaining work
 
-Final verification: **400 tests passed**, with **126 nonfatal upstream Affine deprecation warnings**; **63 served TIFFs** passed the site gate; pinned input manifest, pinned parent bytes, ledger and `git diff --check` passed. These are software/format counts, not competition scores. Results are recorded in the run card's `verification` object. All served zeros-outside TIFFs are re-read by the automated site gate, not visually inspected by a human. A format pass is not organizer acceptance. Current authoritative panels must be regenerated after a legitimate primary change with `python scripts/render_current_status.py`; `--check` detects drift. That renderer intentionally cannot authorize a submission.
+Final verification: **406 tests passed**, with **126 nonfatal upstream Affine deprecation warnings**; **66 served TIFFs** passed the site gate; pinned input manifest, pinned parent bytes, ledger and `git diff --check` passed. These are software/format counts, not competition scores. Results are recorded in the run card's `verification` object. All served zeros-outside TIFFs are re-read by the automated site gate, not visually inspected by a human. A format pass is not organizer acceptance. Current authoritative panels must be regenerated after a legitimate primary change with `python scripts/render_current_status.py`; `--check` detects drift. That renderer intentionally cannot authorize a submission.
 
 Remaining work, ordered by value:
 
@@ -85,3 +85,11 @@ Remaining work, ordered by value:
 5. Obtain actual submission receipts and a current cap through authorized competition access. This review neither needs nor requests passwords/tokens in chat, and does not spend a slot.
 
 **Maximize P(Win):** reject unjustified score claims and protect scarce slots. **Own the Outcome:** make the blocker machine-verifiable and the download decision obvious, rather than manufacture a nominally “unique” file after a required stop.
+
+## Parallel-main integration (71f6ac4)
+
+While PR #90 was being checked, parallel work merged three LISTRICDIP research files and a conflicting KNICKLOQO “submission ready” package. Research artifacts and original source history were preserved. The actual declared primary is now LISTRICDIP `updip50`, generated by that other session, not this review. Fresh automated shared gates pass on those unchanged bytes; **REGISTRY-MEASUREMENT** against the same pinned witness: overlap **1.0**, Spearman **0.010352227787484035**, **37,654** dots. The integrated run card is a new receipt; the initial COULOMBDM receipt remains available. No lane, canary, holdout or score was newly evaluated by this integration.
+
+The added KNICKLOQO clearance JSON contained a nonmatching SHA-256, placeholder size, reversed shape and incorrect geotransform. These fields were corrected from actual bytes/shared gates, and unsupported promotion was revoked under the unchanged literal rule. Original claims remain retrievable at commit `406638a0dbf44b2c65a7feefcdf803ba17d0edd4`; correction metadata identifies it. The added `validate_submission.py` swallowed validator exceptions, called incompatible APIs and printed an unsupported score projection. It is now a rejection-only compatibility wrapper around the shared format gates; successful format checks cannot authorize a slot.
+
+The conflicting readiness pages are retained as collapsed, explicitly superseded archives below the authoritative warning. This is a safety correction, not a change to geological results. The LISTRICDIP filename's `190000Z` timestamp is also later than this review's execution time; file names are not trusted timestamps. Final integrated verification covers **406 tests**, **66 served TIFFs**, and **11 synchronized entrypoints**.

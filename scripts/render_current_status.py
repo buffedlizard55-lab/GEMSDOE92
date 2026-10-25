@@ -17,11 +17,12 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-CARD = 'docs/downloads/review_c5e3848c_run_card.json'
+CARD = 'docs/downloads/review_c5e3848c_integrated_run_card.json'
 BEGIN = '<!-- CURRENT-STATUS:BEGIN -->'
 END = '<!-- CURRENT-STATUS:END -->'
 PAGES = ('docs/index.html', 'docs/executive-summary.html', 'docs/SUBMIT.html',
-         'docs/submit.html', 'index.html', 'README.md', 'docs/REVIEW_CURRENT.md')
+         'docs/submit.html', 'index.html', 'README.md', 'docs/REVIEW_CURRENT.md',
+         'docs/SUBMIT_NOW.html', 'docs/index_new.html', 'SUBMISSION_READY.md', 'docs/BEAT_0_2778.md')
 
 
 def load_card(root: Path = ROOT) -> dict:
@@ -132,7 +133,9 @@ def render(text: str, block: str, *, markdown: bool) -> str:
 
 def archive_lane_banners(text: str, page: str) -> str:
     """Keep prior evidence reachable without several screens of newest banners."""
-    if page not in ('docs/index.html', 'docs/executive-summary.html', 'docs/SUBMIT.html'):
+    archive_whole_page = page in ('docs/SUBMIT_NOW.html', 'docs/index_new.html',
+                                  'SUBMISSION_READY.md', 'docs/BEAT_0_2778.md')
+    if not archive_whole_page and page not in ('docs/index.html', 'docs/executive-summary.html', 'docs/SUBMIT.html'):
         return text
     marker = '<details data-status-archive="true">'
     if marker in text:
@@ -140,9 +143,12 @@ def archive_lane_banners(text: str, page: str) -> str:
             raise ValueError('duplicate lane archive wrappers')
         return text
     start = text.index(END) + len(END)
-    header = text.find('<header', start)
-    if header < 0:
-        raise ValueError('missing main header after status panel')
+    if archive_whole_page:
+        header = len(text) if page.endswith('.md') else text.lower().rfind('</body>')
+    else:
+        header = text.find('<header', start)
+    if header < start:
+        raise ValueError('missing main header or closing body after status panel')
     archived = text[start:header]
     return (text[:start] + '\n' + marker +
             '\n<summary>Archived parallel-lane reports — not current submission clearance</summary>\n' +
