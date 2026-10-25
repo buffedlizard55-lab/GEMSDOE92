@@ -1,6 +1,6 @@
 {
   "schema": "gemsdoe92-repository-review-v1",
-  "reviewed_utc": "2026-10-25T18:52:21.072453+00:00",
+  "reviewed_utc": "2026-10-25T18:57:13.245883+00:00",
   "hypothesis": "No assigned geological lane in this repository-review session; stop before placement.",
   "mechanism": "The pinned full-footprint registry witness has a positive pixel at every valid template cell; any nonempty candidate has literal forward overlap 1.0 > 0.70. Concurrent VARIO also fails its sparse-dot overlap and paired holdout gate.",
   "named_non_fault_mimic": "Not applicable to this review: no new geology was inferred; VARIO mimics belong to its separate run card.",
@@ -127,8 +127,8 @@
     "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573",
     "evidence/vario_run_card.json": "fc448a1ed960fb93a2fcfdef56b0ac41fc30116eb86ef17a0f020fc20b2d5cf8",
     "scripts/audit_readiness.py": "297d0489b88824fc64bf565ac832b14f305f6dcc8986c65f72f6d448d6fad8c6",
-    "scripts/render_vario_status.py": "440c52829cba18ce6c0fd9b5cf0e9a0c44bd8c846559bfe3700d370d1531062e",
-    "scripts/check_site.py": "f1770cbaa5a772da74d38a8311b72c4ae131e44ce0cd059f2cee52ee37211a1d",
+    "scripts/render_vario_status.py": "5b2224155dfeadaeceaa4f46dc023e8290c154224ddd52defc4794d23fe7881b",
+    "scripts/check_site.py": "057bd20cd0081c3139d16eedb6cbaa4d6a7f451e19d2d5df96cf098c84dcada9",
     "scripts/preflight_dense_witness.py": "9275f329f394b90b5f80c3fd1d22d8d543879f68df9485ab5f708535958fbca3"
   },
   "audit_implementation_sha256": "297d0489b88824fc64bf565ac832b14f305f6dcc8986c65f72f6d448d6fad8c6",
@@ -164,7 +164,8 @@
   "concurrent_lane_sparse_registry_worst_overlap": 0.979126,
   "quarantined_invalid_download": {
     "previous_path": "docs/downloads/gemsdoe92-listric-halo-32k-20261025-zeros.tif",
-    "archived_path": "evidence/archived_research/listric-halo/gemsdoe92-listric-halo-32k-20261025-zeros.tif",
+    "removed_from_served_files": true,
+    "preserved_git_commit": "15e46431f278deb3fe3b806a927d3d486049cf29",
     "sha256": "287d802984c8e581ae41fac92d05deff514f0783c00f683ce02f6635720b1341",
     "failed_gate": "distance_from_catalogue: 4750 positive cells within prune_radius=2"
   },

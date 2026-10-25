@@ -31,7 +31,12 @@ def test_final_review_card_is_mirrored_and_cannot_claim_a_new_submission():
     assert card['concurrent_lane_sparse_registry_worst_overlap'] > 0.70
     assert card['format_pass'] is True and 0 < len(card['note']) <= 140
     assert sha256_file(ROOT / card['primary_download']) == card['raster_sha256']
-    assert sha256_file(ROOT / card['quarantined_invalid_download']['archived_path']) == card['quarantined_invalid_download']['sha256']
+    quarantined = card['quarantined_invalid_download']
+    assert quarantined['removed_from_served_files'] is True
+    assert not (ROOT / quarantined['previous_path']).exists()
+    archive_receipt = json.loads((ROOT / 'evidence/listric_halo_run_card.json').read_text())
+    assert archive_receipt['raster_sha256'] == quarantined['sha256']
+    assert archive_receipt['serving_quarantine']['removed_from_docs_downloads'] is True
     status_path = ROOT / card['current_publication_status']
     # Code and current-publication hashes only need to remain live while this
     # card still describes the active status. Future changes archive the card.

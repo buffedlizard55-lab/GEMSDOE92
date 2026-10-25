@@ -62,14 +62,9 @@
   "submission_name": "listric-deep-halo-32k",
   "submission_note": "Listric fault deep root halo via blind offset",
   "verdict": "negative",
-  "publication_correction_20261025_78db3076": {
-    "decision": "quarantined \u2014 DO NOT SUBMIT; this is NOT a competition-valid served artifact",
-    "reason": "Shared run_gates distance_from_catalogue fails: 4,750 positive cells at or within the declared 2-pixel pruning radius; no format-only receipt can override it.",
-    "original_path": "docs/downloads/gemsdoe92-listric-halo-32k-20261025-zeros.tif",
-    "archived_path": "evidence/archived_research/listric-halo/gemsdoe92-listric-halo-32k-20261025-zeros.tif",
-    "raster_sha256": "287d802984c8e581ae41fac92d05deff514f0783c00f683ce02f6635720b1341",
-    "raster_bytes_unchanged": true,
-    "validation": "scripts/check_site.py / gems.gates.run_gates(prune_radius=2)",
-    "weekly_slots_used": 0
+  "serving_quarantine": {
+    "removed_from_docs_downloads": true,
+    "reason": "Orphaned commit 15e4643 (#132) placed an unlinked raster into docs/downloads/ that fails shared run_gates(prune_radius=2): distance_from_catalogue radius=2px dots_within=4750; strict distance > radius required.",
+    "preserved_git_commit": "15e46431f278deb3fe3b806a927d3d486049cf29"
   }
 }

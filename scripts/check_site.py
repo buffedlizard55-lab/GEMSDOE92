@@ -116,6 +116,73 @@ def primary_download(html: str, problems: list[str]) -> str | None:
     return href
 
 
+def check_current_status_sources(primary_rel: str, root: Path = ROOT) -> list[str]:
+    """Fail closed if the independent current-status JSON feeds drift apart.
+
+    The page anchor, legacy form card and current readiness card are rendered by
+    different scripts. Bind all three to the same primary bytes, eligibility,
+    form name and note so a stale card cannot look like a current selector result.
+    """
+    problems: list[str] = []
+    if (not isinstance(primary_rel, str)
+            or not re.fullmatch(r'downloads/[A-Za-z0-9_.-]+-zeros\.tif', primary_rel)):
+        return ['primary path is unsafe for current-status comparison']
+    docs = root / 'docs'
+    current = read_json_object(docs / 'downloads/current_submission.json', problems)
+    readiness = read_json_object(docs / 'downloads/readiness.json', problems)
+    expected_file = f'docs/{primary_rel}'
+
+    if current.get('file') != expected_file:
+        problems.append('current_submission.json file does not match index.html data-primary')
+    if readiness.get('file') != primary_rel:
+        problems.append('readiness.json file does not match index.html data-primary')
+
+    if current.get('file') == expected_file:
+        candidate = root / expected_file
+        if not candidate.is_file():
+            problems.append('current primary TIFF is missing from disk')
+        else:
+            digest = sha256_file(candidate)
+            if current.get('sha256') != digest:
+                problems.append('current_submission.json SHA-256 does not match primary TIFF')
+            if readiness.get('raster_sha256') != digest:
+                problems.append('readiness.json SHA-256 does not match primary TIFF')
+
+    aliases = (
+        ('submission_name', 'submission_name'),
+        ('note', 'note'),
+        ('verdict', 'verdict'),
+    )
+    for current_key, readiness_key in aliases:
+        if current.get(current_key) != readiness.get(readiness_key):
+            problems.append(f'current status cards disagree on {current_key}')
+
+    current_eligible = current.get('ok_to_submit')
+    readiness_eligible = readiness.get('submission_eligible')
+    if type(current_eligible) is not bool or type(readiness_eligible) is not bool:
+        problems.append('current status cards must contain literal boolean eligibility')
+    elif current_eligible != readiness_eligible:
+        problems.append('current status cards disagree on submission eligibility')
+
+    if current.get('ok_to_download') is not True:
+        problems.append('current_submission.json must say the primary is downloadable')
+    if not str(readiness.get('download_status', '')).startswith('OK TO DOWNLOAD'):
+        problems.append('readiness.json does not mark the primary as downloadable')
+    submission_status = str(readiness.get('submission_status', ''))
+    if current_eligible is False and (
+            'DO NOT SUBMIT' not in submission_status or 'OK TO SUBMIT' in submission_status):
+        problems.append('readiness.json does not clearly block a non-eligible primary')
+    if current_eligible is True and (
+            'OK TO SUBMIT' not in submission_status or 'DO NOT SUBMIT' in submission_status):
+        problems.append('readiness.json does not clearly permit its eligible primary')
+
+    for obj_name, obj in (('current_submission.json', current), ('readiness.json', readiness)):
+        note = obj.get('note')
+        if not isinstance(note, str) or not 0 < len(note) <= 140:
+            problems.append(f'{obj_name} note must contain 1–140 characters')
+    return problems
+
+
 def main() -> int:
     problems: list[str] = []
 
@@ -221,6 +288,7 @@ def main() -> int:
     # ---- the primary named on the page must match its audit receipt ----------
     primary_rel = primary_download(html, problems)
     if primary_rel:
+        problems.extend(check_current_status_sources(primary_rel, ROOT))
         primary = DOCS / primary_rel
         if not primary.is_file():
             problems.append(f"index.html points at {primary_rel}, which does not exist")
