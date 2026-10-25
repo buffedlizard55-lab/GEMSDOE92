@@ -287,18 +287,48 @@ def main() -> int:
 
     uniq_path = EVIDENCE / "poissonflex_uniqueness.json"
     if args.reuse_uniqueness and uniq_path.is_file():
-        log(f"reusing {uniq_path} ...")
+        log(f"reusing public rows from {uniq_path} and freshly rescanning local registry ...")
         udoc = json.loads(uniq_path.read_text())
-        uniq = udoc["by_arm"]
+        reg_local = local_registry(exclude_stems=stems)
+        log(f"scanning local registry: {len(reg_local)} rasters ...")
+        rows_local, skipped_local = compare(cands, surfaces, foot, reg_local, expected)
+        rows_pub = udoc["rows_public"]
         pub_meta = udoc["public_registry"]
         sib = udoc["sibling_overlap"]
         overlap_r0 = udoc["overlap_with_R0_3px"]
         overlap_cl = udoc["overlap_with_COULOMBLOQO_standalone_3px"]
         specificity = udoc["dense_witness_specificity"]
-        # Enrich with equal-budget (<= 80,000 dots) public worst overlap for transparent reporting
+        uniq = {}
         for a in arms:
-            eq_pub = [r for r in udoc["rows_public"][a] if r["their_dots"] <= 80_000 and not r["file"].startswith("buffedlizard55-lab/GEMSDOE92/")]
-            uniq[a]["worst_equal_budget_public_le_80k"] = max(eq_pub, key=lambda r: r["literal_forward_overlap"]) if eq_pub else None
+            dl = U.dual_reading_decision(rows_local[a])
+            dp = U.dual_reading_decision(rows_pub[a]) if rows_pub[a] else None
+            rows_pub_nonself = [r for r in rows_pub[a] if not r["file"].startswith("buffedlizard55-lab/GEMSDOE92/")]
+            dp_nonself = U.dual_reading_decision(rows_pub_nonself) if rows_pub_nonself else None
+            sparse_pub = [r for r in rows_pub_nonself if r["representation"] == "dot_field"]
+            worst_sparse_pub = max(sparse_pub, key=lambda r: r["literal_forward_overlap"]) if sparse_pub else None
+            eq_pub = [r for r in rows_pub_nonself if r["their_dots"] <= 80_000]
+            worst_eq_pub = max(eq_pub, key=lambda r: r["literal_forward_overlap"]) if eq_pub else None
+            uniq[a] = dict(
+                local=dl,
+                public=dp,
+                public_non_self=dp_nonself,
+                worst_sparse_public_dot_field=worst_sparse_pub,
+                worst_equal_budget_public_le_80k=worst_eq_pub,
+                overlap_with_R0_3px=overlap_r0[a],
+                overlap_with_COULOMBLOQO_standalone_3px=overlap_cl[a],
+                top_local=sorted(rows_local[a], key=lambda r: -r["matched_budget_forward_overlap"])[:5],
+                top_public=sorted(rows_pub[a], key=lambda r: -r["matched_budget_forward_overlap"])[:8],
+                top_public_rho=sorted(
+                    [r for r in rows_pub[a] if r["spearman_surface"] is not None],
+                    key=lambda r: -abs(r["spearman_surface"]),
+                )[:5],
+            )
+            log(f"  refreshed {a}: local ({len(reg_local)} rasters) worst={dl['worst_literal_forward_overlap']:.4f} ({dl['worst_literal_file']})")
+        udoc["local_registry_files"] = len(reg_local)
+        udoc["skipped_local"] = skipped_local
+        udoc["by_arm"] = uniq
+        udoc["rows_local"] = rows_local
+        uniq_path.write_text(json.dumps(udoc, indent=1) + "\n")
     else:
         # 1. Complete local registry uniqueness scan
         reg_local = local_registry(exclude_stems=stems)

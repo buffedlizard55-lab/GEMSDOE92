@@ -3,7 +3,7 @@
  "lane": "POISSONFLEX",
  "date": "2026-10-25",
  "policy": "#IR-92-DENSE-WITNESS-MATCHED-BUDGET: literal and matched-budget readings reported; operative = matched-budget for >150k-px continuous surfaces",
- "local_registry_files": 97,
+ "local_registry_files": 101,
  "public_registry": {
   "status": "cached Git-blob inventory (102 owner repos)",
   "repos": 102,
@@ -94,9 +94,10 @@
   "poissonflex_eq": {
    "local": {
     "evidence_class": "REGISTRY-MEASUREMENT",
-    "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
-    "rasters_checked": 97,
-    "n_dot_fields": 97,
+    "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
+    "rasters_checked": 101,
+    "missing_or_invalid": 0,
+    "n_dot_fields": 101,
     "n_continuous_surfaces": 0,
     "worst_literal_forward_overlap": 0.686992,
     "worst_literal_file": "local:docs/downloads/h33-h33-2-b2-COULOMBLOQOnocoulomb-20261024-ab7c4415-zeros.tif",
@@ -107,14 +108,17 @@
     "overlap_limit": 0.7,
     "rho_limit": 0.9,
     "duplicate": false,
+    "stop_required": false,
     "verdict": "unique",
+    "submission_eligible": false,
     "literal_reading_fires": false,
-    "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+    "note": "Literal overlap and rank correlation are binding for every raster. Matched-budget overlap is diagnostic only. This summary cannot prove inventory completeness or authorize a weekly slot."
    },
    "public": {
     "evidence_class": "REGISTRY-MEASUREMENT",
-    "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+    "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
     "rasters_checked": 1404,
+    "missing_or_invalid": 0,
     "n_dot_fields": 1219,
     "n_continuous_surfaces": 185,
     "worst_literal_forward_overlap": 1.0,
@@ -126,14 +130,17 @@
     "overlap_limit": 0.7,
     "rho_limit": 0.9,
     "duplicate": true,
+    "stop_required": true,
     "verdict": "negative",
+    "submission_eligible": false,
     "literal_reading_fires": true,
-    "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+    "note": "Literal overlap and rank correlation are binding for every raster. Matched-budget overlap is diagnostic only. This summary cannot prove inventory completeness or authorize a weekly slot."
    },
    "public_non_self": {
     "evidence_class": "REGISTRY-MEASUREMENT",
-    "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+    "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
     "rasters_checked": 1404,
+    "missing_or_invalid": 0,
     "n_dot_fields": 1219,
     "n_continuous_surfaces": 185,
     "worst_literal_forward_overlap": 1.0,
@@ -145,9 +152,11 @@
     "overlap_limit": 0.7,
     "rho_limit": 0.9,
     "duplicate": true,
+    "stop_required": true,
     "verdict": "negative",
+    "submission_eligible": false,
     "literal_reading_fires": true,
-    "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+    "note": "Literal overlap and rank correlation are binding for every raster. Matched-budget overlap is diagnostic only. This summary cannot prove inventory completeness or authorize a weekly slot."
    },
    "worst_sparse_public_dot_field": {
     "file": "62GEMSDOE/docs/downloads/gems62f-h2r-ventcons-125890-20261012T012736Z-zeros.tif",
@@ -157,6 +166,16 @@
     "literal_forward_overlap": 0.767116,
     "matched_budget_forward_overlap": 0.767116,
     "spearman_surface": 0.131138,
+    "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
+   },
+   "worst_equal_budget_public_le_80k": {
+    "file": "GEMSDOE52/docs/downloads/gems52-h87-boardcal-marginal-20261010-61427px.tif",
+    "their_dots": 61427,
+    "my_dots": 37654,
+    "representation": "dot_field",
+    "literal_forward_overlap": 0.700829,
+    "matched_budget_forward_overlap": 0.700829,
+    "spearman_surface": 0.096421,
     "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
    },
    "overlap_with_R0_3px": 0.524008,
@@ -203,13 +222,13 @@
      "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
     },
     {
-     "file": "local:data/bridge/d28.tif",
-     "their_dots": 44090,
+     "file": "local:docs/downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif",
+     "their_dots": 37654,
      "my_dots": 37654,
      "representation": "dot_field",
-     "literal_forward_overlap": 0.553726,
-     "matched_budget_forward_overlap": 0.553726,
-     "spearman_surface": 0.096006,
+     "literal_forward_overlap": 0.563074,
+     "matched_budget_forward_overlap": 0.563074,
+     "spearman_surface": 0.089983,
      "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
     }
    ],
@@ -351,9 +370,10 @@
   "poissonflex_raw": {
    "local": {
     "evidence_class": "REGISTRY-MEASUREMENT",
-    "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
-    "rasters_checked": 97,
-    "n_dot_fields": 97,
+    "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
+    "rasters_checked": 101,
+    "missing_or_invalid": 0,
+    "n_dot_fields": 101,
     "n_continuous_surfaces": 0,
     "worst_literal_forward_overlap": 0.683221,
     "worst_literal_file": "local:docs/downloads/h33-h33-2-b2-COULOMBLOQOnocoulomb-20261024-ab7c4415-zeros.tif",
@@ -364,14 +384,17 @@
     "overlap_limit": 0.7,
     "rho_limit": 0.9,
     "duplicate": false,
+    "stop_required": false,
     "verdict": "unique",
+    "submission_eligible": false,
     "literal_reading_fires": false,
-    "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+    "note": "Literal overlap and rank correlation are binding for every raster. Matched-budget overlap is diagnostic only. This summary cannot prove inventory completeness or authorize a weekly slot."
    },
    "public": {
     "evidence_class": "REGISTRY-MEASUREMENT",
-    "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+    "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
     "rasters_checked": 1404,
+    "missing_or_invalid": 0,
     "n_dot_fields": 1219,
     "n_continuous_surfaces": 185,
     "worst_literal_forward_overlap": 1.0,
@@ -383,14 +406,17 @@
     "overlap_limit": 0.7,
     "rho_limit": 0.9,
     "duplicate": true,
+    "stop_required": true,
     "verdict": "negative",
+    "submission_eligible": false,
     "literal_reading_fires": true,
-    "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+    "note": "Literal overlap and rank correlation are binding for every raster. Matched-budget overlap is diagnostic only. This summary cannot prove inventory completeness or authorize a weekly slot."
    },
    "public_non_self": {
     "evidence_class": "REGISTRY-MEASUREMENT",
-    "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+    "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
     "rasters_checked": 1404,
+    "missing_or_invalid": 0,
     "n_dot_fields": 1219,
     "n_continuous_surfaces": 185,
     "worst_literal_forward_overlap": 1.0,
@@ -402,9 +428,11 @@
     "overlap_limit": 0.7,
     "rho_limit": 0.9,
     "duplicate": true,
+    "stop_required": true,
     "verdict": "negative",
+    "submission_eligible": false,
     "literal_reading_fires": true,
-    "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+    "note": "Literal overlap and rank correlation are binding for every raster. Matched-budget overlap is diagnostic only. This summary cannot prove inventory completeness or authorize a weekly slot."
    },
    "worst_sparse_public_dot_field": {
     "file": "62GEMSDOE/docs/downloads/gems62f-h2r-ventcons-125890-20261012T012736Z-zeros.tif",
@@ -414,6 +442,16 @@
     "literal_forward_overlap": 0.766745,
     "matched_budget_forward_overlap": 0.766745,
     "spearman_surface": 0.131311,
+    "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
+   },
+   "worst_equal_budget_public_le_80k": {
+    "file": "GEMSDOE52/docs/downloads/gems52-h87-boardcal-marginal-20261010-61427px.tif",
+    "their_dots": 61427,
+    "my_dots": 37654,
+    "representation": "dot_field",
+    "literal_forward_overlap": 0.699634,
+    "matched_budget_forward_overlap": 0.699634,
+    "spearman_surface": 0.095801,
     "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
    },
    "overlap_with_R0_3px": 0.524221,
@@ -460,13 +498,13 @@
      "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
     },
     {
-     "file": "local:data/bridge/d28.tif",
-     "their_dots": 44090,
+     "file": "local:docs/downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif",
+     "their_dots": 37654,
      "my_dots": 37654,
      "representation": "dot_field",
-     "literal_forward_overlap": 0.554178,
-     "matched_budget_forward_overlap": 0.554178,
-     "spearman_surface": 0.095846,
+     "literal_forward_overlap": 0.563632,
+     "matched_budget_forward_overlap": 0.563632,
+     "spearman_surface": 0.089694,
      "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
     }
    ],
@@ -608,9 +646,10 @@
   "poissonflex_opt": {
    "local": {
     "evidence_class": "REGISTRY-MEASUREMENT",
-    "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
-    "rasters_checked": 97,
-    "n_dot_fields": 97,
+    "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
+    "rasters_checked": 101,
+    "missing_or_invalid": 0,
+    "n_dot_fields": 101,
     "n_continuous_surfaces": 0,
     "worst_literal_forward_overlap": 0.648844,
     "worst_literal_file": "local:docs/downloads/h33-h33-2-b2-COULOMBLOQOnocoulomb-20261024-ab7c4415-zeros.tif",
@@ -621,14 +660,17 @@
     "overlap_limit": 0.7,
     "rho_limit": 0.9,
     "duplicate": false,
+    "stop_required": false,
     "verdict": "unique",
+    "submission_eligible": false,
     "literal_reading_fires": false,
-    "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+    "note": "Literal overlap and rank correlation are binding for every raster. Matched-budget overlap is diagnostic only. This summary cannot prove inventory completeness or authorize a weekly slot."
    },
    "public": {
     "evidence_class": "REGISTRY-MEASUREMENT",
-    "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+    "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
     "rasters_checked": 1404,
+    "missing_or_invalid": 0,
     "n_dot_fields": 1219,
     "n_continuous_surfaces": 185,
     "worst_literal_forward_overlap": 1.0,
@@ -640,14 +682,17 @@
     "overlap_limit": 0.7,
     "rho_limit": 0.9,
     "duplicate": true,
+    "stop_required": true,
     "verdict": "negative",
+    "submission_eligible": false,
     "literal_reading_fires": true,
-    "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+    "note": "Literal overlap and rank correlation are binding for every raster. Matched-budget overlap is diagnostic only. This summary cannot prove inventory completeness or authorize a weekly slot."
    },
    "public_non_self": {
     "evidence_class": "REGISTRY-MEASUREMENT",
-    "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+    "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
     "rasters_checked": 1404,
+    "missing_or_invalid": 0,
     "n_dot_fields": 1219,
     "n_continuous_surfaces": 185,
     "worst_literal_forward_overlap": 1.0,
@@ -659,9 +704,11 @@
     "overlap_limit": 0.7,
     "rho_limit": 0.9,
     "duplicate": true,
+    "stop_required": true,
     "verdict": "negative",
+    "submission_eligible": false,
     "literal_reading_fires": true,
-    "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+    "note": "Literal overlap and rank correlation are binding for every raster. Matched-budget overlap is diagnostic only. This summary cannot prove inventory completeness or authorize a weekly slot."
    },
    "worst_sparse_public_dot_field": {
     "file": "62GEMSDOE/docs/downloads/gems62f-h2r-ventcons-125890-20261012T012736Z-zeros.tif",
@@ -671,6 +718,16 @@
     "literal_forward_overlap": 0.754089,
     "matched_budget_forward_overlap": 0.754089,
     "spearman_surface": 0.131138,
+    "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
+   },
+   "worst_equal_budget_public_le_80k": {
+    "file": "GEMSDOE52/docs/downloads/gems52-h87-boardcal-marginal-20261010-61427px.tif",
+    "their_dots": 61427,
+    "my_dots": 45000,
+    "representation": "dot_field",
+    "literal_forward_overlap": 0.6804,
+    "matched_budget_forward_overlap": 0.6804,
+    "spearman_surface": 0.096421,
     "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
    },
    "overlap_with_R0_3px": 0.503133,
@@ -717,13 +774,13 @@
      "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
     },
     {
-     "file": "local:data/bridge/d28.tif",
-     "their_dots": 44090,
+     "file": "local:docs/downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif",
+     "their_dots": 37654,
      "my_dots": 45000,
      "representation": "dot_field",
-     "literal_forward_overlap": 0.531244,
-     "matched_budget_forward_overlap": 0.531244,
-     "spearman_surface": 0.096006,
+     "literal_forward_overlap": 0.536689,
+     "matched_budget_forward_overlap": 0.536689,
+     "spearman_surface": 0.089983,
      "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
     }
    ],
@@ -913,6 +970,46 @@
     "literal_forward_overlap": 0.526797,
     "matched_budget_forward_overlap": 0.526797,
     "spearman_surface": 0.106696,
+    "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
+   },
+   {
+    "file": "local:docs/downloads/gemsdoe92-provincetoe-globalraw-37654-20261025-73b06876-zeros.tif",
+    "their_dots": 37654,
+    "my_dots": 37654,
+    "representation": "dot_field",
+    "literal_forward_overlap": 0.545281,
+    "matched_budget_forward_overlap": 0.545281,
+    "spearman_surface": 0.089544,
+    "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
+   },
+   {
+    "file": "local:docs/downloads/gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.tif",
+    "their_dots": 37654,
+    "my_dots": 37654,
+    "representation": "dot_field",
+    "literal_forward_overlap": 0.544457,
+    "matched_budget_forward_overlap": 0.544457,
+    "spearman_surface": 0.086165,
+    "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
+   },
+   {
+    "file": "local:docs/downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif",
+    "their_dots": 37654,
+    "my_dots": 37654,
+    "representation": "dot_field",
+    "literal_forward_overlap": 0.563074,
+    "matched_budget_forward_overlap": 0.563074,
+    "spearman_surface": 0.089983,
+    "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
+   },
+   {
+    "file": "local:docs/downloads/gemsdoe92-radiocontact-20261025T041646Z-zeros.tif",
+    "their_dots": 37654,
+    "my_dots": 37654,
+    "representation": "dot_field",
+    "literal_forward_overlap": 0.138232,
+    "matched_budget_forward_overlap": 0.138232,
+    "spearman_surface": 0.001614,
     "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
    },
    {
@@ -1888,6 +1985,46 @@
     "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
    },
    {
+    "file": "local:docs/downloads/gemsdoe92-provincetoe-globalraw-37654-20261025-73b06876-zeros.tif",
+    "their_dots": 37654,
+    "my_dots": 37654,
+    "representation": "dot_field",
+    "literal_forward_overlap": 0.535162,
+    "matched_budget_forward_overlap": 0.535162,
+    "spearman_surface": 0.088163,
+    "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
+   },
+   {
+    "file": "local:docs/downloads/gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.tif",
+    "their_dots": 37654,
+    "my_dots": 37654,
+    "representation": "dot_field",
+    "literal_forward_overlap": 0.544564,
+    "matched_budget_forward_overlap": 0.544564,
+    "spearman_surface": 0.085708,
+    "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
+   },
+   {
+    "file": "local:docs/downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif",
+    "their_dots": 37654,
+    "my_dots": 37654,
+    "representation": "dot_field",
+    "literal_forward_overlap": 0.563632,
+    "matched_budget_forward_overlap": 0.563632,
+    "spearman_surface": 0.089694,
+    "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
+   },
+   {
+    "file": "local:docs/downloads/gemsdoe92-radiocontact-20261025T041646Z-zeros.tif",
+    "their_dots": 37654,
+    "my_dots": 37654,
+    "representation": "dot_field",
+    "literal_forward_overlap": 0.141313,
+    "matched_budget_forward_overlap": 0.141313,
+    "spearman_surface": 0.003102,
+    "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
+   },
+   {
     "file": "local:docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
     "their_dots": 37654,
     "my_dots": 37654,
@@ -2857,6 +2994,46 @@
     "literal_forward_overlap": 0.4992,
     "matched_budget_forward_overlap": 0.4992,
     "spearman_surface": 0.106696,
+    "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
+   },
+   {
+    "file": "local:docs/downloads/gemsdoe92-provincetoe-globalraw-37654-20261025-73b06876-zeros.tif",
+    "their_dots": 37654,
+    "my_dots": 45000,
+    "representation": "dot_field",
+    "literal_forward_overlap": 0.518133,
+    "matched_budget_forward_overlap": 0.518133,
+    "spearman_surface": 0.089544,
+    "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
+   },
+   {
+    "file": "local:docs/downloads/gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.tif",
+    "their_dots": 37654,
+    "my_dots": 45000,
+    "representation": "dot_field",
+    "literal_forward_overlap": 0.520244,
+    "matched_budget_forward_overlap": 0.520244,
+    "spearman_surface": 0.086165,
+    "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
+   },
+   {
+    "file": "local:docs/downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif",
+    "their_dots": 37654,
+    "my_dots": 45000,
+    "representation": "dot_field",
+    "literal_forward_overlap": 0.536689,
+    "matched_budget_forward_overlap": 0.536689,
+    "spearman_surface": 0.089983,
+    "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
+   },
+   {
+    "file": "local:docs/downloads/gemsdoe92-radiocontact-20261025T041646Z-zeros.tif",
+    "their_dots": 37654,
+    "my_dots": 45000,
+    "representation": "dot_field",
+    "literal_forward_overlap": 0.134689,
+    "matched_budget_forward_overlap": 0.134689,
+    "spearman_surface": 0.001614,
     "spearman_scope": "400k-cell footprint subsample of the pre-placement surface"
    },
    {

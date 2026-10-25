@@ -1,0 +1,144 @@
+{
+  "schema": "gemsdoe92-provincetoe-audit.v1",
+  "lane": "PROVINCETOE",
+  "arm": "piedbasin",
+  "file": "gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.tif",
+  "sha256_zeros": "a8b79fba2c4dd623af6a6c296779747850b6d3f83ddfca077472fd29bea82cef",
+  "n_positive_pixels": 37654,
+  "n_dots": 37654,
+  "overall_pass": true,
+  "gates_zeros_pass": true,
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "a8b79fba2c4dd623af6a6c296779747850b6d3f83ddfca077472fd29bea82cef"
+    }
+  ],
+  "submission_eligible": false,
+  "verdict": "negative",
+  "run_card": "evidence/provincetoe_run_card.json",
+  "holdout_rule2_dvis2": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.10265691761187923,
+    "ci95": [
+      0.09004412995869521,
+      0.11461599967324144
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 3313.9907364632613,
+    "fpw": 67444.98932981209,
+    "fnw": 19349.009263536733
+  },
+  "holdout_static_dcat2": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.009710609225439593,
+    "ci95": [
+      0.008294903835401601,
+      0.01121085752870227
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 310.8400633927274,
+    "fpw": 69088.94256750387,
+    "fnw": 22352.159936607277
+  },
+  "sgmc_proxy_dti": 0.084677,
+  "local_registry_uniqueness": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
+    "rasters_checked": 92,
+    "missing_or_invalid": 0,
+    "n_dot_fields": 92,
+    "n_continuous_surfaces": 0,
+    "worst_literal_forward_overlap": 0.661284,
+    "worst_literal_file": "data/bridge/h19_5.tif",
+    "worst_matched_budget_forward_overlap": 0.661284,
+    "worst_matched_budget_file": "data/bridge/h19_5.tif",
+    "worst_abs_spearman": 0.179282,
+    "worst_abs_spearman_file": "data/bridge/h19_5.tif",
+    "overlap_limit": 0.7,
+    "rho_limit": 0.9,
+    "duplicate": false,
+    "stop_required": false,
+    "verdict": "unique",
+    "submission_eligible": false,
+    "literal_reading_fires": false,
+    "note": "Literal overlap and rank correlation are binding for every raster. Matched-budget overlap is diagnostic only. This summary cannot prove inventory completeness or authorize a weekly slot."
+  },
+  "public_registry_uniqueness": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
+    "rasters_checked": 1320,
+    "n_dot_fields": 1135,
+    "n_continuous_surfaces": 185,
+    "worst_literal_forward_overlap": 1.0,
+    "worst_literal_file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "worst_matched_budget_forward_overlap": 0.774765,
+    "worst_matched_budget_file": "62GEMSDOE/docs/downloads/gems62f-h2r-ventcons-125890-20261012T012736Z-zeros.tif",
+    "worst_abs_spearman": 0.454422,
+    "worst_abs_spearman_file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "overlap_limit": 0.7,
+    "rho_limit": 0.9,
+    "duplicate": true,
+    "verdict": "negative",
+    "literal_reading_fires": true,
+    "note": "Literal overlap and rank correlation are binding for every raster. Matched-budget overlap is diagnostic only. This summary cannot prove inventory completeness or authorize a weekly slot.",
+    "missing_or_invalid": 0,
+    "stop_required": true,
+    "submission_eligible": false
+  },
+  "zip_file": "docs/downloads/gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.zip",
+  "zip_sha256": "d58043b49f44e327bb37d664904de481b538b68f6805f0ae0ecc376d0b22eaa9"
+}

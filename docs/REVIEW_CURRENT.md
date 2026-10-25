@@ -2,26 +2,27 @@
 
 **✅ OK TO DOWNLOAD FOR RESEARCH (`10/10 + 13/13` automated format gates PASS, finite `[0, 1]`, zeros outside footprint); ⛔ DO NOT SUBMIT (`verdict: negative`, `submission_eligible: false`, `0` weekly slots spent).**
 
-1. **Previous-session next steps closed first:**
-   - Complete `1,321`-non-self-blob `dual_reading_decision` audit across all `102` `GEMSDOE` repos (`missing_blobs == 0`): `COULOMBLOQO standalone` (`0.739842 > 0.70`, `8` witnesses) and `COULOMBLOQO dual45` (`0.722420 > 0.70`, `4` witnesses) both fail closed (`evidence/coulomb_loqo_dual_reading_selector.json`).
-   - Exact root cause of `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` quantified (`evidence/ne_quadrant_loqo_collapse_diagnostic.json`): `NE` geodetic truncation (`B07` median `0.00`, `B04` median `3.80` vs `34.50` `SW`), regional gravity baseline shift (`-3.32` vs `-12.27 mGal`), and `SW+SE = 62.8%` catalogue skew.
-2. **Newest validated research GeoTIFF (`POISSONFLEX`, `gems/poissonflex.py`):**
-   - `docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif` (`SHA-256 = 37b18c200e84c77b39b07e527b17d4395968389aaf3ff0c175c71204b2065f9b`, `45,000` dots via nested visible-only OOF support; siblings `poissonflex_eq` & `poissonflex_raw` at `37,654` dots).
-   - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, `22,663` withheld positives): primary strict draw-blind `d_visible > 2.0` **`0.107466 [0.094158, 0.120431]`** (beats `H19-5` `0.096757` by `+0.010709 [+0.002297, +0.018444]`, `COULOMBDM` `0.094496`, and `BLINDFAULT` `0.047896`; trails `COULOMBLOQO standalone` `0.113890` by `-0.006424`); static `d_cat > 2.0` **`0.008824 [0.007601, 0.010081]`** (`2.20x` `R0` `0.004006`); off-catalogue `USGS SGMC PROXY` **`0.120957`** (`+35.4%` over `COULOMBLOQO standalone` `0.089332`); cures `NE` LOQO collapse (`22.7%` `NE` dots) and beats `COULOMBLOQO` in `NW` (`0.117551` vs `0.111948`).
-   - **Canaries & Uniqueness:** `32/32` canaries PASS (`max AUC = 0.616108 <= 0.90`). Passes all `97` local rasters (`<= 0.6488`), all `<= 80k`-dot public rasters across `102` repos (`<= 0.6804`), and continuous surface `|ρ|` across `1,404` public blobs (`<= 0.4668`), while failing the `150k` dot-field cap on `100k–126k`-px public rasters (`0.7541` on `62GEMSDOE ventcons`).
-   - Details: [`ANALYSIS_20261025_POISSONFLEX.md`](ANALYSIS_20261025_POISSONFLEX.md) · [`HYPOTHESES_20261025_POISSONFLEX.md`](HYPOTHESES_20261025_POISSONFLEX.md) · [run card](downloads/poissonflex_run_card.json) · [next steps](NEXT_STEPS.md).
+- **Newest validated research GeoTIFF (`POISSONFLEX`, `gems/poissonflex.py`):** `docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif` (`SHA-256 = 37b18c200e84c77b39b07e527b17d4395968389aaf3ff0c175c71204b2065f9b`, `45,000` dots via nested visible-only OOF support; siblings `poissonflex_eq` & `poissonflex_raw` at `37,654` dots).
+- **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, `22,663` withheld positives): primary strict draw-blind `d_visible > 2.0` **`0.107466 [0.094158, 0.120431]`** (beats `PROVINCETOE` `0.106452`, `H19-5` `0.096757` by `+0.010709 [+0.002297, +0.018444]`, `COULOMBDM` `0.094496`, and `BLINDFAULT` `0.047896`; trails `COULOMBLOQO standalone` `0.113890` by `-0.006424`); static `d_cat > 2.0` **`0.008824 [0.007601, 0.010081]`** (`2.20x` `R0` `0.004006`); off-catalogue `USGS SGMC PROXY` **`0.120957`** (`+35.4%` over `COULOMBLOQO standalone` `0.089332` and `+32.7%` over `PROVINCETOE` `0.091183`); cures `NE` LOQO collapse (`22.7%` `NE` dots) and beats `COULOMBLOQO` in `NW` (`0.117551` vs `0.111948`).
+- **Canaries & Uniqueness:** `32/32` canaries PASS (`max AUC = 0.616108 <= 0.90`). Locally unique across all `101` `GEMSDOE92` rasters including `PROVINCETOE` & `RADIOCONTACT` (`<= 0.6488`), unique across all `<= 80k`-dot public rasters across `102` repos (`<= 0.6804`), and continuous surface `|ρ| <= 0.4668`; fails closed (`submission_eligible: false`) on `100k–126k`-px public rasters (`0.7541` on `62GEMSDOE ventcons`) and literal `17GEMSDOE` dense witness (`1.000`).
+- Details: [`ANALYSIS_20261025_POISSONFLEX.md`](ANALYSIS_20261025_POISSONFLEX.md) · [`HYPOTHESES_20261025_POISSONFLEX.md`](HYPOTHESES_2025_POISSONFLEX.md if False else 'HYPOTHESES_20261025_POISSONFLEX.md') · [run card](downloads/poissonflex_run_card.json) · [next steps](NEXT_STEPS.md).
 
 ---
 
-# Prior review — 2026-10-25 (`BLINDFAULT` session)
+# Current protocol review — 2026-10-25 (`376a8469`)
 
-**✅ OK TO DOWNLOAD; ⛔ DO NOT SUBMIT (`verdict: negative`, fails the pre-registered holdout gate, not the uniqueness gate).**
-Newest unique artifact: `docs/downloads/gemsdoe92-blindfault-blindtopo-37654-20261025-4648eea5-zeros.tif` (best of three pre-registered arms). Primary **HOLDOUT-DTI** `0.047896 [0.038079, 0.057970]` (`gems57-pooled-hide-v2`, 22,663 withheld positives, strict draw-blind `d_visible > 2.0`) vs holdout-best `0.113316`. Unique under the dual reading against 91 local + 1,386 public exact-grid rasters (matched-budget worst `0.5219`, `|ρ|` worst `0.3402`; literal worst `1.000` from the full-footprint witness, printed not hidden). Dense-witness policy resolved in the shared template: `IRREGULARITIES.md` `#IR-92-DENSE-WITNESS-MATCHED-BUDGET`. Details: [`ANALYSIS_20261025_BLINDFAULT.md`](ANALYSIS_20261025_BLINDFAULT.md) · [run card](downloads/blindfault_run_card.json) · [next steps](NEXT_STEPS.md).
+**Research downloads only. DO NOT SUBMIT.** The shared dual-reading helper now enforces the literal duplicate stop for every raster. Matched-budget overlap is diagnostic, not a specification change. Prior claims below that the policy was automatically resolved are historical and superseded. No new TIFF or geological experiment was generated in this review. See [review, conditional hypotheses and ordered next steps](REVIEW_376A8469.md) and [fresh run card](downloads/review376a_run_card.json). A new submission-cleared artifact remains unfulfilled.
 
-Three passes this session: (1) implement + verify (features, canaries, 3 LOQO arms, holdout, packaging, scans); (2) review — site contract caught unlinked sibling TIFFs (fixed in the renderer), run-card validator field nesting fixed, ledger rows appended, 283 tests + site gate (46 rasters) + parent/manifest verification pass; (3) recheck against the brief — unique TIFF generated, download/submit status obvious at the top of README and all three pages, numbers labelled HOLDOUT-DTI / CLAIM / REGISTRY-MEASUREMENT, no projection written as a score.
-# Current session — 2026-10-25 (1f514ffc)
+---
 
-See [three-pass review](REVIEW_1F514FFC.md) and [run card](downloads/review_1f514ffc_run_card.json). No new TIFF generated; pinned dense-witness duplicate stop freshly reproduced. Existing downloads remain research-only. 289 tests and all 43 served format checks pass. Publication primary selection now requires exactly one explicit local TIFF.
+# Historical lane review — 2026-10-25 (`BLINDFAULT`)
+
+**✅ OK TO DOWNLOAD FOR RESEARCH; ⛔ DO NOT SUBMIT** (`verdict: negative`, fails the pre-registered holdout gate; submission_eligible=false). The newly generated artifact and current run card are linked in the [three-pass closeout review](REVIEW_20261025_BLINDFAULT_CLOSEOUT.md). Primary **HOLDOUT-DTI** is `0.047896 [0.038079, 0.057970]` (`gems57-pooled-hide-v2`, 22,663 withheld positives, strict draw-blind `d_visible > 2.0`), below the recorded repository holdout-best `0.113316`. The run card reports dual registry measurements: matched-budget worst overlap `0.5219`, literal worst `1.000`, worst absolute correlation `0.3402`; literal result is not omitted. These do not establish organizer acceptance or a competition score.
+
+The current session used 3/3 experiments and 0 weekly slots. The prior `1F514FFC` review below is historical, not current. The current result is documented in [`ANALYSIS_20261025_BLINDFAULT.md`](ANALYSIS_20261025_BLINDFAULT.md), [`downloads/blindfault_run_card.json`](downloads/blindfault_run_card.json), and [`NEXT_STEPS.md`](NEXT_STEPS.md).
+## Archived session — 2026-10-25 (1f514ffc)
+
+See [historical three-pass review](REVIEW_1F514FFC.md) and [run card](downloads/review_1f514ffc_run_card.json). Its “no new TIFF” and then-current test counts describe that earlier checkpoint only; the newer BLINDFAULT closeout above supersedes it as the current status.
 
 ---
 

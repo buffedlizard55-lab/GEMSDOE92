@@ -10,6 +10,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+from numbers import Real
 import numpy as np
 import rasterio
 from scipy.ndimage import binary_dilation
@@ -577,17 +578,9 @@ def two_phase_summary(rows, footprint_cells: int, *, rho_limit: float = RHO_LIMI
 # Matched-budget support for dense registry rasters (added 2026-10-25, BLINDFAULT
 # session; see IRREGULARITIES.md #IR-92-DENSE-WITNESS-MATCHED-BUDGET).
 #
-# The parallel-run rule compares "my dots" with "a registry raster's dots". A
-# continuous probability surface that is positive on every footprint cell has
-# no dot support: under the inherited "every positive pixel is a dot" reading the
-# organiser's own sample_submission, the pinned R0 parent and any non-empty
-# candidate all score forward overlap 1.000 against it, so the reading has zero
-# specificity and cannot discriminate lanes.  The matched-budget reading keeps
-# the rule's intent -- "would this registry raster, emitted at my dot budget,
-# put its dots where mine are?" -- by defining the dense raster's dots as its
-# top-K cells (K = my dot count, stable row-major tie break).  Dot-field rasters
-# (support <= DOT_FIELD_MAX_SUPPORT) keep the literal reading unchanged.  Both
-# readings are always reported side by side; the literal value is never hidden.
+# Matched-budget overlap is a useful representation diagnostic, NOT permission
+# to replace the user's literal overlap gate. Retain both measurements, but a
+# dense registry raster is never exempt from a literal duplicate stop.
 # ---------------------------------------------------------------------------
 
 DOT_FIELD_MAX_SUPPORT = 150_000
@@ -631,23 +624,54 @@ def dual_overlap(mine, their_values, footprint, radius_px=RADIUS_PX,
 
 
 def dual_reading_decision(rows, *, rho_limit=RHO_LIMIT, overlap_limit=OVERLAP_LIMIT):
-    """Operative verdict: matched-budget overlap for dense rasters, literal for dot fields,
-    rank correlation for every raster.  The literal worst case is reported alongside."""
-    checked = [r for r in rows if "error" not in r]
-    if not checked:
+    """Apply the literal gate; matched-budget overlap remains diagnostic only.
+
+    Error rows stop clearance rather than being silently dropped. This helper
+    summarizes supplied rows, not inventory completeness, and never authorizes
+    a competition slot. Historical matched-budget receipts are not rewritten.
+    """
+    if not all(isinstance(v, Real) and not isinstance(v, bool) and np.isfinite(v)
+               and 0 <= v <= 1 for v in (rho_limit, overlap_limit)):
+        raise ValueError("thresholds must be finite and in [0,1]")
+    rows = list(rows)
+    if not rows:
         raise ValueError("no registry rows")
+    if any(not isinstance(r, dict) for r in rows):
+        raise ValueError("registry rows must be objects")
+    checked = [r for r in rows if "error" not in r]
+    errors = [r for r in rows if "error" in r]
+    if not checked:
+        raise ValueError("no valid registry rows")
+    for r in checked:
+        for key in ("literal_forward_overlap", "matched_budget_forward_overlap"):
+            value = r.get(key)
+            if (not isinstance(value, Real) or isinstance(value, bool)
+                    or not np.isfinite(value) or not 0 <= value <= 1):
+                raise ValueError(f"invalid {key}")
+        if "spearman_surface" not in r:
+            raise ValueError("missing spearman_surface")
+        rho = r["spearman_surface"]
+        if rho is not None and (not isinstance(rho, Real) or isinstance(rho, bool)
+                                or not np.isfinite(rho) or not -1 <= rho <= 1):
+            raise ValueError("invalid spearman_surface")
+        if r.get("representation") not in ("dot_field", "continuous_surface"):
+            raise ValueError("invalid registry representation")
+
     def _rho(r):
         v = r.get("spearman_surface")
         return abs(float(v)) if v is not None else 0.0
+
     worst_lit = max(checked, key=lambda r: r["literal_forward_overlap"])
     worst_mb = max(checked, key=lambda r: r["matched_budget_forward_overlap"])
     worst_rho = max(checked, key=_rho)
-    dup = bool(worst_mb["matched_budget_forward_overlap"] > overlap_limit or _rho(worst_rho) > rho_limit)
+    overlap_fires = bool(worst_lit["literal_forward_overlap"] > overlap_limit)
+    rho_fires = bool(_rho(worst_rho) > rho_limit)
+    dup = overlap_fires or rho_fires
+    stop = bool(dup or errors)
     return dict(
         evidence_class="REGISTRY-MEASUREMENT",
-        operative_rule="matched-budget overlap for continuous surfaces (>%d px); literal overlap for dot fields; |rho| for all"
-                       % DOT_FIELD_MAX_SUPPORT,
-        rasters_checked=len(checked),
+        operative_rule="literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
+        rasters_checked=len(checked), missing_or_invalid=len(errors),
         n_dot_fields=sum(r["representation"] == "dot_field" for r in checked),
         n_continuous_surfaces=sum(r["representation"] == "continuous_surface" for r in checked),
         worst_literal_forward_overlap=float(worst_lit["literal_forward_overlap"]),
@@ -656,8 +680,10 @@ def dual_reading_decision(rows, *, rho_limit=RHO_LIMIT, overlap_limit=OVERLAP_LI
         worst_matched_budget_file=worst_mb.get("file"),
         worst_abs_spearman=_rho(worst_rho), worst_abs_spearman_file=worst_rho.get("file"),
         overlap_limit=overlap_limit, rho_limit=rho_limit,
-        duplicate=dup, verdict=("negative" if dup else "unique"),
-        literal_reading_fires=bool(worst_lit["literal_forward_overlap"] > overlap_limit),
-        note=("Literal reading is printed, never hidden. A continuous surface positive on the whole "
-              "footprint fires the literal reading for every non-empty raster including the organiser's "
-              "sample_submission; the matched-budget reading is the operative lane-duplication test."))
+        duplicate=dup, stop_required=stop,
+        verdict=("negative" if stop else "unique"),
+        submission_eligible=False,
+        literal_reading_fires=overlap_fires,
+        note=("Literal overlap and rank correlation are binding for every raster. "
+              "Matched-budget overlap is diagnostic only. This summary cannot prove "
+              "inventory completeness or authorize a weekly slot."))
