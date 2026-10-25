@@ -24,5 +24,6 @@
     "preplacement_stop": "evidence/review_2e1a649e_preflight.json",
     "exact_artifact_check": "evidence/review_2e1a649e_primary_witness.json",
     "format_audit": "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-audit.json"
-  }
+  },
+  "latest_integrated_review": "c5e3848c"
 }

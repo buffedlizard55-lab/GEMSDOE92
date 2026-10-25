@@ -1,3 +1,31 @@
+# Final integration note — 2026-10-25 (`f23ca2d2`)
+
+Reused the concurrently merged `gems/public_status.py` publication contract and rejection-only root CLI; refreshed its format-gate pins from the corrected shared validator. Both publication checks agree on the negative decision. Parallel RADIODECOUPLE/CURIE-DEMAG rasters are preserved and revalidated, not attributed to this review. Future-dated 2026-10-26 filenames/headers remain historical identifiers; the current review date remains 2026-10-25. Final checks: 436 tests and 70 served TIFFs pass; no newly generated candidate or slot.
+
+---
+
+# Concurrent merge correction — 2026-10-25 (`f23ca2d2`, PR #89 integration)
+
+- **IR-92-FALSE-UPLOAD-CLEARANCE (fixed):** commit `406638a` added active “submission ready” pages and `submission_eligible: true` despite the known literal duplicate stop. `SUBMIT_NOW.html` and `index_new.html` now redirect to the checked current status. Unsupported score projections and portal guarantees are withdrawn; the original publication remains in Git history.
+- **IR-92-SWALLOWED-VALIDATOR-ERROR (fixed, reproduced):** its root validator called `run_gates` without `reference_path`, caught the resulting TypeError, printed “ALL CHECKS PASSED — FILE IS READY FOR SUBMISSION,” and exited zero. Reproduced in this review before replacing it with a shared-readiness compatibility entry point that returns blocked status and never swallows a failure as clearance.
+- **IR-92-PARALLEL-RECEIPT-METADATA (fixed):** the new receipt said 123456 bytes, shape `[3292,3730]`, incorrect geotransform and nodata zero. Actual disk read: 149177 bytes, shape `[3730,3292]`, transform `[100,0,243350,0,-100,4508550]`, nodata null. Metadata is now generated from disk. **The parallel TIFF SHA-256 correction was valid**, not an error: `8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347` matches the original and current bytes. Earlier prose in this repo used a stale hash; this review initially repeated that mistake in commentary, then corrected it after comparing Git blobs and disk bytes.
+- Untested parallel `gems/flexure_knick_province.py` research code is preserved, not represented as a model trained or validated by this review.
+
+---
+
+# 2026-10-25 review (`f23ca2d2`) — new findings
+
+- **IR-92-PRUNE-RADIUS-BYPASS (fixed):** `gems/gates.py::_g_catalogue` used `n_near == 0 or prune_radius < 3`; any prediction inside a declared radius below three passed the distance gate. The legacy test encoded that bypass. Removed the override; test boundaries now include inside, exactly at, and outside the declared radius. All existing served artifacts are revalidated, not assumed to inherit a PASS.
+- **IR-92-READINESS-DRIFT (mitigated):** newer KNICKLOQO panels describe a matched-budget `dual_reading_decision` as unique although the shared helper's operative rule is now literal. Historical JSON and numerical claims are preserved, explicitly archived; a byte-bound current panel is generated and checked before CI/Pages publication. Future edits that stale that panel fail the checker.
+- **IR-92-GRID-FAILURE-HANDLING (fixed):** the validator could index a wrong-shape raster with the template mask and did not check catalogue georeferencing. It now returns structured failed gates for malformed rasters, mismatched catalogue grids and invalid radii; exact transform match is required.
+- **IR-92-NO-ELIGIBLE-NEW-TIFF (unresolved):** fresh pinned witness covers every footprint pixel, so the unchanged literal rule forbids all nonempty candidates. No new TIFF is generated, and no old artifact is renamed as new.
+- **IR-92-PAGES-MODE (unresolved, rechecked):** GitHub API reports legacy publication; PUT build_type=workflow returned HTTP 403 Resource not accessible by integration. Actions checks are not asserted to guard the live legacy site.
+- **IR-92-SCORE-PROVENANCE (unresolved):** freshly retrieved GEMSDOE32 page says UNSCORED and NO ORGANISER SCORE EXISTS. User-reported values and conflicting leaderboard numbers remain unverified.
+
+[Review](docs/REVIEW_F23.md) · [source receipt](evidence/review_f23_sources.json) · [pre-placement proof](evidence/review_f23_preflight.json).
+
+---
+
 # IRREGULARITIES — only items that change a decision
 
 ## 2026-10-25 (review `2e1a649e`) — the durable contract restores the literal dense-witness stop; every nonempty candidate is ineligible before placement
@@ -1088,3 +1116,17 @@ Fresh Pages API: legacy publication; `PUT /repos/buffedlizard55-lab/GEMSDOE92/pa
 ## 2026-10-25 — review797e integration: false clearance from parallel main quarantined
 
 Main `71f6ac4` introduced claims that KNICKLOQO was cleared under matched budgets, plus wrong size/shape/transform in a public card (its SHA-256 was correct; older inherited documentation was stale) and a root validator that swallowed shared-API errors before printing success. Incoming raw card preserved at `evidence/review797e_superseded_knickloqo_card.json`; public card replaced with negative, real-hash/metadata/format evidence. Alternative entry pages and markdown claims are explicitly superseded and archived, and the same canonical rejection panel now covers five HTML entry pages. The root entry point uses shared strict validation and cannot return submission success. This does not recertify old holdout numbers or modify raster bytes.
+
+## 2026-10-25 — c5e3848c repository review (fresh checks)
+
+- **Binding universal duplicate stop reproduced:** pinned 17GEMSDOE witness is positive in every sample-footprint cell. Literal overlap is 1.0 for every nonempty valid dot set. No new raster/experiment generated. See `docs/downloads/review_c5e3848c_preflight.json`.
+- **Conflicting status banners:** independent lanes prepend “newest” and alternative “unique” statements. Added a byte-bound current panel and fail-closed publication drift check; archived statements do not authorize submission.
+- **No organizer receipt:** fresh pinned GEMSDOE32 owner page says UNSCORED / NO ORGANISER SCORE EXISTS, conflicting with the prompt's CLAIM 0.2778. Local ledger has no organizer-confirmed receipt. Do not invent causal score attribution.
+- **Date/provenance inconsistencies:** RADIOCONTACT hypothesis documentation is future-dated 2026-10-26; today is 2026-10-25. The session manifest claims zero tracked competition rasters, while `git ls-files data` lists eight tracked files. Historical evidence retained; public-mirror byte checks do not verify data-use permission.
+- **Obsolete pipeline assumption:** prompt-named download/prepare scripts are absent; actual restoration script is `scripts/restore_inputs.py`. Official reference README supports CPU training, so GPU is not an absolute requirement. Data placement is not the only current blocker.
+- **Pages not operationally verified:** API reported legacy publication, `main:/`, status errored. Attempt to set workflow publication returned 403 Resource not accessible by integration. No live-deployment success or live validator enforcement is asserted.
+- **External research limited:** official non-GitHub domains are not permitted by this sandbox's network allowlist. No new literature/PDF/official-geodata retrieval or current cap/ranking verification was performed.
+
+### c5e3848c integration of parallel main 71f6ac4
+
+Preserved LISTRICDIP research outputs; freshly validated its newly declared primary and recorded literal overlap 1.0. A parallel KNICKLOQO “submission ready” package had an incorrect SHA-256/size/grid in JSON and silently ignored failing validator calls while predicting an organizer score. Corrected metadata from the served bytes, revoked unsupported promotion, added authoritative warnings to its pages and replaced its validator with a shared-gate compatibility wrapper that cannot grant eligibility. See `docs/REVIEW_C5E3848C.md` and `review_correction` in `docs/downloads/knickloqo_submission_run_card.json`. No new predictions were made.
