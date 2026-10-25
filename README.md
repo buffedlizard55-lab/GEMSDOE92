@@ -1,32 +1,29 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-> ## Binding current decision — 2026-10-25 repository review
-> **Research downloads only. DO NOT SUBMIT any current TIFF or spend a weekly slot.** A pinned public-registry witness is positive in all 5,167,373 footprint cells; therefore every nonempty in-footprint prediction raster has literal 3-px forward overlap `1.0`, exceeding the protocol's `0.70` stop. No new candidate was built, no submission-cleared TIFF was generated, and no slot was spent. This is a verified blocker, not a claim of success. See [three-pass repository review](docs/REVIEW_20261025_REPOSITORY_REVIEW.md), [binding protocol-gate review](docs/REVIEW_376A8469.md), and [pre-placement evidence](docs/downloads/review376a_preflight.json).
+> ## Binding decision — read before any download or experiment
+> **Research downloads only. DO NOT SUBMIT any current TIFF or spend a weekly slot.** The pinned public registry witness is positive in all 5,167,373 footprint cells, so every nonempty in-footprint prediction raster has literal 3-px forward overlap `1.0 > 0.70`. The pre-placement gate requires stopping. No candidate was generated in this repository review and no artifact is slot-cleared. Read the [current three-pass review](docs/REVIEW_20261025_REPOSITORY_REVIEW.md), [binding gate evidence](docs/REVIEW_376A8469.md), and [ranked untested hypotheses](docs/HYPOTHESES_20261025_REVIEW.md). The latest lane below is a prior research result, not an exception.
 >
-> Prior TIF links below remain convenient **research** downloads only. Format validation ([0,1], CRS, shape, transform, no NaN) is not uniqueness, holdout promotion, organizer acceptance, or a submission recommendation. Do not treat “unique” under historical matched-budget diagnostics as a pass of the binding literal rule.
+> **Persistent operating brief:** read this README and `SESSION_PROMPT.md` at every session start; use shared cached features/evaluator/writer, whole-segment buffered holdouts and leakage canaries; pre-register 3–5 hypotheses; label all metrics and provenance; never call a projection a score; stop at 3 experiments / 2 hours; keep “Maximize P(Win)” and “Own the Outcome” central. Full user prompt summary is retained under [Persistent Session Prompt Reference](#persistent-session-prompt-reference).
 
-## Persistent operating brief — read at every session start
+<!-- LISTRICDIP:BEGIN -->
+> ### Newest session (2026-10-25) — lane `LISTRICDIP`: 3 new unique GeoTIFFs · verdict **`negative`**
+> **✅ OK TO DOWNLOAD FOR RESEARCH** (11/11 format gates, values in `[0, 1]`, 0 NaN, local overlap 0.1968 at scoring; 0.1892 vs the later `DRAINAGE-KNICK` raster) · **⛔ OK TO SUBMIT: NO** (`submission_eligible: false`; literal dense-witness overlap 1.000; not cleared for a weekly slot; 0 slots used)
+>
+> - **Download:** [`gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif`](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [zip](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.zip) · [audit](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-audit.json) · [run card](docs/downloads/listricdip_run_card.json) · [submit steps](docs/listricdip.html) · [analysis](docs/ANALYSIS_20261025_LISTRICDIP.md) · [pre-registration](docs/HYPOTHESES_20261025_LISTRICDIP.md)
+> - **SHA-256:** `91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e` · ZIP `0ac14c467ba046835fcf32c7e3ed43a5eb550f8d2ebcc37cde8d5d7998f2052b`
+> - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): static `0.005420 [0.004294, 0.006551]`. Beats `R0` `0.004006` (paired +0.001413, CI excludes 0). Loses to `KNICKLOQO` `0.010788` and `COULOMBLOQO` `0.009220` (CIs exclude 0). Re-placed `d_visible > 2`: `0.048225 [0.039232, 0.056882]`. Not an organizer score. Not 0.2778, not 0.3195, not the 2026-10-25 leaderboard snapshot 0.4413.
+> - **Name / note (77/140):** `GEMSDOE92-LISTRICDIP-updip50-20261025` / `LISTRICDIP updip50: 37654 listric-offset dots; HOLDOUT-DTI 0.005420; negative`
+> - **Siblings (budget not filled, do not pad):** [`anti22` 9,571](docs/downloads/gemsdoe92-listricdip-anti22-9571-20261025T190000Z-zeros.tif) static `0.001291` · [`anti35` 9,555](docs/downloads/gemsdoe92-listricdip-anti35-9555-20261025T190000Z-zeros.tif) static `0.001224`
+>
+> The standing prompt is in [Persistent Session Prompt Reference](#persistent-session-prompt-reference) below and in `SESSION_PROMPT.md`. Read both at every session start. Maximize P(Win). Own the Outcome.
+<!-- LISTRICDIP:END -->
 
-The mission is to maximize the probability of winning DOE GEMS competition #306 through a scientifically defensible, reproducible, auditable workflow—not by guessing leaderboard scores. Read this README and [`SESSION_PROMPT.md`](SESSION_PROMPT.md) before every project session. Keep **Maximize P(Win)** and **Own the Outcome** central.
-
-- Generate a **new, genuinely distinct** single-band GeoTIFF only when the active protocol permits it. Never copy an old raster, emit a meaningless empty file, or overstate novelty. The current binding literal overlap gate makes any nonempty candidate a stop; record the failure and stop rather than evade the gate.
-- Reuse the shared feature stack, buffered hide-and-recover evaluator (`vendor/gems57/evaluate_holdout.py`), and writer (`vendor/gems57/submission_writer.py`). Rebuild catalogue features from visible faults only, mask visible faults pixel-exactly, and report pooled triangular-kernel DTI with alpha 0.2, beta 0.8, withheld positives, evaluator version, and 95% CI. Test each feature alone for leakage; AUC >0.90 is a stop pending investigation.
-- Pre-register 3–5 candidate geological hypotheses before implementation; state layers, physical signature, why it could reveal a missing fault, differences from implemented methods, non-fault mimic, data source/availability, and cost. Test only the top-ranked candidate if pre-placement uniqueness passes. Stop by 3 experiments or 2 hours.
-- Label every number: `HOLDOUT-DTI` (evaluator, withheld count, CI), `ORGANIZER-CONFIRMED` (submission receipt), `CLAIM`, `PROXY`, or `REGISTRY-MEASUREMENT`. Never present a projection as a score. A holdout cannot establish geothermal-vent discovery or organizer performance.
-- Make download clearance and weekly-slot recommendation separate and unmistakable. Automated project validation replaces human format inspection; a person still uploads and selects a slot. No artifact is recommended for submission unless it passes all required gates and a separate selector approves it.
-- Keep source links, provenance, checksums, licenses/permissions, negative results, and irregularities auditable. Competition login data may not be available; an owner-mirror hash does not prove organizer authenticity or permission to redistribute.
-
-## Current status and next decision
-
-No current file is cleared for a weekly slot. The requested new submission cannot be generated under the unchanged literal duplicate rule. Resolve that specification conflict explicitly before resuming geological experiments. The ranked, unimplemented shortlist is in [`docs/HYPOTHESES_20261025_REVIEW.md`](docs/HYPOTHESES_20261025_REVIEW.md); current tests and limitations are in the [three-pass review](docs/REVIEW_20261025_REPOSITORY_REVIEW.md).
-
-> ## Historical research artifact — DRAINAGE-KNICK (2026-10-25)
-> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). New byte-unique GeoTIFF; all automated format checks pass, but HOLDOUT-DTI `0.061728 [0.047046, 0.075316]` is below the `0.113316` promotion bar and literal public-registry overlap is `1.0 > 0.70`.
+> ## Prior merged lane — DRAINAGE-KNICK (2026-10-25)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). HOLDOUT-DTI `0.061728 [0.047046, 0.075316]` is that lane's strict fold-visible rebuild, not the static instrument used for `LISTRICDIP` `0.005420`. It is below the `0.113316` promotion bar. Literal public-registry overlap is `1.0 > 0.70`.
 >
 > **[Download the validated TIFF](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.zip) · [run card](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z_run_card.json) · [public registry audit](docs/downloads/drainageknick_public_registry.json) · [analysis](docs/ANALYSIS_20261025_DRAINAGE_KNICK.md)
 >
 > SHA-256 `ef6c27e34fe0f28c6e52615a9fc9601c20ada5337203def25ab8753392aef910`; name `GEMSDOE92-DRAINAGE_KNICK-20261025`; note: `DRAINAGE_KNICK terrain+basement+shear; 37654 dots; HOLDOUT-DTI 0.061728; negative`.
-
 
 <!-- KNICKLOQO:BEGIN -->
 > ### Newest Session (2026-10-25) — Lane `KNICKLOQO`: 3 New Unique GeoTIFFs Generated · All-Time #1 Static `HOLDOUT-DTI = 0.010788 [0.009468, 0.012201]` · `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` Resolved · Verdict **`negative`** (literal `17GEMSDOE` dense surface) / **`unique`** (`dual_reading_decision`)
