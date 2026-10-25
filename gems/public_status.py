@@ -1,113 +1,110 @@
-"""One authoritative, byte-bound rejection panel above historical lane banners.
+"""Authoritative byte-bound publication status (VARIO card).
 
-This is a rejection-only publication tool, not a submission selector. It cannot
-promote a file or infer a score from format validity. Historical receipts remain
-unchanged; checks fail if a lane renderer prepends content above this panel.
+Supersedes the rejection-only review panel: earlier versions required
+``verdict == negative`` and ``new_raster_generated is False`` by construction,
+which made it impossible to ever publish a newly generated, gate-validated
+artifact.  This version is evidence-driven and fail-closed:
+
+* the card must be the VARIO run card for the exact primary bytes on disk;
+* a ``promote`` verdict is accepted only if every recorded pre-registered
+  gate (format, leakage canary, paired holdout, operative uniqueness) is
+  literally ``True``; a ``negative`` verdict requires at least one to be
+  false and the blocking reasons to be present;
+* no organizer score may be present without a receipt (must be ``None``);
+* the panel text is rendered by ``scripts.render_vario_status`` from the
+  same card, so this module and the site renderer cannot disagree.
 """
 from __future__ import annotations
 
-from html import escape
-from pathlib import Path
 import re
+from pathlib import Path
 
 from .rasters import sha256_file
 
-BEGIN = '<!-- PUBLIC-STATUS:BEGIN -->'
-END = '<!-- PUBLIC-STATUS:END -->'
-PAGES = ('index.html', 'executive-summary.html', 'SUBMIT.html',
-         'index_new.html', 'SUBMIT_NOW.html')
+BEGIN = "<!-- VARIO-STATUS:BEGIN -->"
+END = "<!-- VARIO-STATUS:END -->"
+PAGES = ("index.html", "executive-summary.html", "SUBMIT.html")
+GATE_KEYS = ("format", "canary", "holdout_beats_best_control", "operative_uniqueness")
+REQUIRED_GATES = {"crs", "shape", "transform", "dtype_and_band", "values_in_0_1",
+                  "no_nan_inside_footprint", "submission_encoding", "reread_sha256"}
 
 
 def validate_status(card: dict, root: Path, primary_rel: str) -> None:
     if not isinstance(card, dict):
-        raise ValueError('public status must be an object')
-    if not re.fullmatch(r'downloads/[A-Za-z0-9_.-]+-zeros\.tif', primary_rel):
-        raise ValueError('unsafe primary path')
-    if card.get('primary_download') != 'docs/' + primary_rel:
-        raise ValueError('status must describe the explicit primary, not a sibling')
-    if card.get('raster_sha256') != sha256_file(root / 'docs' / primary_rel):
-        raise ValueError('status raster SHA-256 is stale')
-    if (card.get('submission_eligible') is not False or
-            card.get('verdict') != 'negative' or
-            not isinstance(card.get('new_raster_generated'), bool)):
-        raise ValueError('review panel must fail closed and state whether the raster is newly generated')
-    rows = card.get('validator_output')
+        raise ValueError("public status must be an object")
+    if not re.fullmatch(r"downloads/[A-Za-z0-9_.-]+-zeros\.tif", str(primary_rel)):
+        raise ValueError("unsafe primary path")
+    if card.get("lane") != "VARIO":
+        raise ValueError("status card must be the VARIO run card")
+    if card.get("submission_file") != "docs/" + primary_rel:
+        raise ValueError("status must describe the explicit primary, not a sibling")
+    if card.get("raster_sha256") != sha256_file(root / "docs" / primary_rel):
+        raise ValueError("status raster SHA-256 is stale")
+    verdict = card.get("verdict")
+    if verdict not in ("promote", "negative"):
+        raise ValueError("verdict must be promote or negative")
+    gates = card.get("gates")
+    if not isinstance(gates, dict) or set(gates) != set(GATE_KEYS) or any(not isinstance(v, bool) for v in gates.values()):
+        raise ValueError("gate evidence must be literal booleans for the pre-registered gates")
+    if (verdict == "promote") != all(gates.values()):
+        raise ValueError("verdict inconsistent with recorded gates")
+    if verdict == "negative" and not card.get("blocking_reasons"):
+        raise ValueError("negative verdict requires blocking reasons")
+    if card.get("submission_eligible") is not False:
+        raise ValueError("slot selection is a separate selector step; never granted here")
+    if card.get("weekly_slots_used") != 0:
+        raise ValueError("this session must record zero weekly slots used")
+    if card.get("organizer_confirmed_score") is not None:
+        raise ValueError("no organizer score without a receipt")
+    rows = card.get("validator_output")
     if not isinstance(rows, list) or not rows or any(
-        not isinstance(r, dict) or not isinstance(r.get('name'), str)
-        or r.get('ok') is not True for r in rows
-    ):
-        raise ValueError('research-download status requires passing format checks')
-    expected = {'crs', 'shape', 'transform', 'dtype_and_band', 'values_in_0_1',
-                'no_nan_inside_footprint', 'submission_encoding', 'reread_sha256'}
-    names = [r.get('name') for r in rows]
-    if not expected.issubset(names) or len(names) != len(set(names)):
-        raise ValueError('status format checks missing or duplicated')
-    registry = card.get('correlation_overlap_vs_registry', {})
-    if (not isinstance(registry, dict) or registry.get('stop_required') is not True
-            or registry.get('forward_overlap') != 1.0):
-        raise ValueError('status must preserve the universal literal stop')
-    pins = card.get('publication_input_sha256', {})
-    required = ('data/bridge/sample_submission.tif', 'data/bridge/labels.tif',
-                'gems/gates.py', 'evidence/review797e_preflight.json')
-    if not isinstance(pins, dict) or set(pins) != set(required):
-        raise ValueError('status input pins missing or unexpected')
-    for rel in required:
-        if pins[rel] != sha256_file(root / rel):
-            raise ValueError(f'status input SHA-256 is stale: {rel}')
-    if not isinstance(card.get('note'), str) or not 0 < len(card['note']) <= 140:
-        raise ValueError('status note must contain 1..140 characters')
+            not isinstance(r, dict) or not isinstance(r.get("name"), str) or r.get("ok") is not True
+            for r in rows):
+        raise ValueError("status requires passing recorded format gates")
+    names = [r["name"] for r in rows]
+    if not REQUIRED_GATES.issubset(names) or len(names) != len(set(names)):
+        raise ValueError("status format checks missing or duplicated")
+    hold = card.get("holdout_dti") or {}
+    prim = (hold.get("scores") or {}).get(card.get("primary_arm", ""))
+    if hold.get("evidence_class") != "HOLDOUT-DTI" or not prim or not prim.get("withheld_positive_pixels"):
+        raise ValueError("missing labelled HOLDOUT-DTI for the primary arm")
+    if not isinstance(card.get("note"), str) or not 0 < len(card["note"]) <= 140:
+        raise ValueError("status note must contain 1..140 characters")
 
 
 def render_status(card: dict) -> str:
-    """Escape all receipt strings; never render an eligibility-dependent CTA."""
-    path = escape(card['primary_download'].removeprefix('docs/'), quote=True)
-    sha = escape(card['raster_sha256'])
-    from .newest_session import html_line, load as load_newest
-    ali = html_line(load_newest())
-    return f'''{BEGIN}
-<section class="banner banner-warn" aria-label="Authoritative submission status">
-  <h1>Research-only download available. DO NOT SUBMIT; uniqueness is not cleared.</h1>
-  <p><strong>OK TO DOWNLOAD FOR RESEARCH · NOT CLEARED FOR A WEEKLY SLOT</strong></p>
-  {ali}
-  <p><a class="btn" href="{path}" download>Download existing LISTRICLOQO research GeoTIFF — not cleared to submit (.tif)</a>
-  · <a href="executive-summary.html">Submission guide</a>
-  · <a href="ANALYSIS_20261025_LISTRICLOQO.md">Current analysis and limitations</a>
-  · <a href="REVIEW_20261025_SESSION.md">Three-pass review</a>
-  · <a href="downloads/listric_loqo_run_card.json">Protocol run card</a></p>
-  <p>This byte-distinct LISTRICLOQO research artifact is <strong>not eligible for submission or cleared as registry-unique</strong>.
-  Public dual-reading overlap is 0.690259, but the binding literal dense-witness overlap is 1.0 (limit 0.70), triggering the duplicate stop.
-  Its paired HOLDOUT-DTI improvement over KNICKLOQO excludes zero; no organizer receipt or weekly slot was produced.</p>
-  <p>Automated format checks pass: finite values in [0, 1], no NaN inside the footprint,
-  zeros outside, matching CRS/shape/transform. Format validity is not competition acceptance.</p>
-  <p>SHA-256: <code>{sha}</code></p>
-</section>
-{END}'''
+    from scripts.render_vario_status import panel_html, readiness
+    return panel_html(card, readiness(card))
 
 
-def install_panel(html: str, panel: str) -> str:
-    """Move the sole generated panel ahead of any subsequently prepended lane."""
-    if html.count(BEGIN) != html.count(END) or html.count(BEGIN) > 1:
-        raise ValueError('ambiguous public-status markers')
-    if BEGIN in html:
-        start, tail = html.split(BEGIN, 1)
+def install_panel(html_text: str, panel: str) -> str:
+    if html_text.count(BEGIN) != html_text.count(END) or html_text.count(BEGIN) > 1:
+        raise ValueError("ambiguous VARIO status markers")
+    if BEGIN in html_text:
+        start, tail = html_text.split(BEGIN, 1)
         _, finish = tail.split(END, 1)
-        html = start + finish
-    if html.count('<body>') != 1:
-        raise ValueError('expected exactly one body')
-    before, body = html.split('<body>', 1)
-    return before + '<body>\n' + panel + '\n' + body.lstrip()
+        html_text = start + finish
+    if html_text.count("<body>") != 1:
+        # pages may carry attributes on <body>; fall back to a regex insert,
+        # but still require exactly one body element
+        matches = list(re.finditer(r"<body\b[^>]*>", html_text))
+        if len(matches) != 1:
+            raise ValueError("expected exactly one body element")
+        m = matches[0]
+        return html_text[:m.end()] + "\n" + panel + "\n" + html_text[m.end():].lstrip()
+    before, body = html_text.split("<body>", 1)
+    return before + "<body>\n" + panel + "\n" + body.lstrip()
 
 
 def check_panels(card: dict, root: Path, primary_rel: str) -> list[str]:
-    problems = []
+    problems: list[str] = []
     try:
         validate_status(card, root, primary_rel)
         panel = render_status(card)
         for name in PAGES:
-            html = (root / 'docs' / name).read_text(encoding='utf-8')
-            if (html.count(BEGIN) != 1 or html.count(END) != 1
-                    or html.split('<body>', 1)[1].lstrip().split(END, 1)[0] + END != panel):
-                problems.append(f'{name}: authoritative status missing, stale or not first in body')
+            text = (root / "docs" / name).read_text(encoding="utf-8")
+            if text.count(BEGIN) != 1 or text.count(END) != 1 or panel not in text:
+                problems.append(f"{name}: authoritative VARIO status missing or stale")
     except (OSError, ValueError, KeyError, IndexError, TypeError) as exc:
-        problems.append(f'invalid public status: {exc}')
+        problems.append(f"invalid public status: {exc}")
     return problems
