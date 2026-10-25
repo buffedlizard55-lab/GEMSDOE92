@@ -1,0 +1,102 @@
+{
+  "schema": "gems57-run-card-v1",
+  "generated_utc": "20261025T182301Z",
+  "lane": "TILTANGLE",
+  "hypothesis": "Gravity tilt-angle edge corridors target steep buried normal faults that lack a preserved topographic scarp and are therefore absent from the USGS/INGENIOUS scarp catalogue. Tilt angle = atan2(|dg/dz|, |grad_h g|) is ~90 deg over steep vertical contacts (faults) and ~0 deg over flat bedding; weighting horizontal-gradient magnitude by cos(tilt)^2 selects steep-contact edges of any strike. Named non-fault mimic: equant plutonic intrusions and circular density anomalies produce horizontal-gradient magnitude but low tilt steepness, down-weighted by cos(tilt)^2.",
+  "mechanism": "B11 (vertical gravity derivative), B13 (isostatic gravity anomaly, differentiated for N-S derivative), B18 (E-W gravity horizontal derivative). hgm = sqrt(hg_ew^2 + hg_ns^2); tilt = atan2(|vg|, hgm); S_raw = hgm * cos(tilt)^2; S = percentile rank over valid footprint. Catalogue used only for masking: dots off-catalogue and >2 px from it.",
+  "non_fault_mimic": "Equant plutonic intrusions, circular playa/evaporite density bodies, and diffuse basement-terrane boundaries produce gravity gradient magnitude but not steep (near-90 deg) tilt angles; cos(tilt)^2 down-weights them.",
+  "difference_from_existing_lanes": "No lane computes a gravity tilt angle. GRAVQUAD uses analytic-signal amplitude x structure-tensor coherence (dip-blind, responds to any elongated gradient blob). COULOMB-LOQO assumes fixed N15E conjugate shear planes inside a supervised classifier. CURIE-DEMAG uses RTP variance suppression x MT clay-cap flank x demag bowl. TILTANGLE explicitly selects steep near-vertical contacts.",
+  "data": {
+    "stack": "/home/user/GEMSDOE92/.cache/gems_inputs/training_features.tif",
+    "bands": {
+      "grav_vg": 11,
+      "grav_anom": 13,
+      "grav_hg_ew": 18
+    },
+    "footprint_cells": 5167373,
+    "catalogue_px": 60988
+  },
+  "emission": {
+    "ndots": 37654,
+    "min_dist_px": 2.8,
+    "allowed_zone": "footprint & ~catalogue & d_cat > 2 px",
+    "weight": "S_percentile_rank * triangular_dcat_preference(peak~5px)"
+  },
+  "holdout_dti": {
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "alpha": 0.2,
+    "beta": 0.8,
+    "triangular_radius_m": 300.0,
+    "withheld_positive_pixels": 45253,
+    "pooled_dti": 0.03346643401066433,
+    "pooled_coverage": 0.04737475844701,
+    "emitted_pixels": 37654,
+    "per_draw_dti": {
+      "draw20": 0.0335940734271897,
+      "draw30": 0.033685048303741916
+    },
+    "per_quadrant_dti": {
+      "foldNE": 0.03317228437095742,
+      "foldNW": 0.03535232235106003,
+      "foldSE": 0.0337445589598003,
+      "foldSW": 0.03228907778004547
+    },
+    "mean_fold_dti": 0.0336395608654658,
+    "std_fold_dti": 0.0028218294332091848,
+    "evidence_class": "HOLDOUT-DTI"
+  },
+  "format_validation": {
+    "all_checks_passed": true,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "emitted_positive_pixels": 37654,
+    "on_catalogue_positive_pixels": 0,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ]
+  },
+  "submission": {
+    "file": "gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif",
+    "sha256": "f17eae78ff659e3551fb4a4f92ef9e16180fde22a9d157a2114b03ef98a023e7",
+    "bytes": 132713,
+    "zip_file": "gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.zip",
+    "zip_sha256": "9676493040f2da186de817556008134c983cd3e5e50bb3b269aa856da695320c",
+    "name": "GEMSDOE92-TILTANGLE-tiltangle-20261025T182301Z",
+    "note": "h33-h33-2-b2; TILTANGLE: gravity tilt-angle x horizontal-gradient edge corridors; 37654 dots d_cat>2px; HOLDOUT-DTI 0.033466; unique",
+    "note_chars": 132,
+    "approved_for_weekly_slot": false,
+    "promoted": false,
+    "status": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval"
+  },
+  "verdict": "negative",
+  "notes": "Format-valid research TIFF. Holdout DTI is a local surrogate, not an organizer score. Not cleared for a weekly slot under the literal dense-witness registry stop (all nonempty in-footprint rasters have literal overlap 1.0 vs the pinned full-footprint witness)."
+}

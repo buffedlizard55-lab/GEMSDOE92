@@ -51,16 +51,20 @@ def test_index_has_download_and_slot_warning():
 
 def test_current_status_is_first_and_links_latest_negative_artifact():
     html = _index()
-    start = html.find('<!-- CURRENT-READINESS:BEGIN -->')
-    end = html.find('<!-- CURRENT-READINESS:END -->', start)
+    start = html.find('<!-- VARIO-STATUS:BEGIN -->')
+    end = html.find('<!-- VARIO-STATUS:END -->', start)
     lane = re.search(r'<!-- [A-Z0-9_-]+:BEGIN', html[end + 1:])
     primary = re.search(r'<a\b[^>]*href="(downloads/[^\"]+-zeros\.tif)"[^>]*data-primary="true"', html)
     assert start >= 0 and end > start and lane
     assert primary, 'site must declare one machine-detectable current research TIFF'
     banner = html[start:end]
     assert primary.group(1) in banner
-    assert 'OK TO DOWNLOAD FOR RESEARCH' in banner
-    assert 'DO NOT SUBMIT' in banner
+    ready = json.loads((DOCS / "downloads" / "readiness.json").read_text())
+    if ready["verdict"] == "negative":
+        assert 'OK TO DOWNLOAD FOR RESEARCH' in banner
+        assert 'DO NOT SUBMIT' in banner
+    else:
+        assert 'OK TO DOWNLOAD' in banner and 'OK TO SUBMIT' in banner
     assert 'DUPLICATE UNDER THE LITERAL REGISTRY RULE' in banner
 
 
@@ -147,14 +151,16 @@ def test_index_primary_has_an_audit_receipt_that_matches():
     primary = DOCS / m.group(1)
     assert primary.is_file()
 
-    variant = primary.stem.removesuffix("-zeros")
-    audit_path = primary.with_name(variant + "-audit.json")
+    candidates = [primary.with_name(primary.name[:-len("-zeros.tif")] + "-audit.json"),
+                  primary.with_name(primary.stem + "-audit.json")]
+    audit_path = next((c for c in candidates if c.is_file()), candidates[0])
     assert audit_path.is_file(), f"no audit receipt beside the primary: {audit_path.name}"
 
     doc = json.loads(audit_path.read_text())
     assert doc["overall_pass"] is True  # format-valid is distinct from slot eligibility
     assert doc["sha256_zeros"] == hashlib.sha256(primary.read_bytes()).hexdigest()
-    assert all(g["ok"] for g in doc["gates_zeros"]), "audit records a failing format gate"
+    rows = doc.get("gates") or doc.get("gates_zeros") or doc.get("validator_output")
+    assert rows and all(g["ok"] for g in rows), "audit records a failing format gate"
     pub = doc["public_registry_uniqueness"]
     assert pub["candidate_hash_matches_scan"] is True
     # fail-closed consistency: eligibility requires a passing literal gate AND a promote verdict
@@ -228,7 +234,7 @@ def test_coulombdm_run_card_and_site_html_integrity():
     # research download. The old file stays linked; it is no longer primary.
     assert card["file"] not in primaries[0]
     assert card["file"] in html
-    assert "gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif" in primaries[0]
+    assert "gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif" in primaries[0]
 
     for html_path in sorted(DOCS.glob("*.html")):
         txt = html_path.read_text(encoding="utf-8")
@@ -381,8 +387,13 @@ def test_readme_first_screen_matches_actual_site_primary_and_session_contract():
     assert primary_path in readme
     assert "SESSION_PROMPT.md" in readme
     assert "docs/REVIEW_CURRENT.md" in readme
-    assert "OK TO DOWNLOAD FOR RESEARCH" in readme
-    assert "DO NOT SUBMIT" in readme
+    import json as _json
+    ready = _json.loads((DOCS / "downloads" / "readiness.json").read_text())
+    if ready["verdict"] == "negative":
+        assert "OK TO DOWNLOAD FOR RESEARCH" in readme
+        assert "DO NOT SUBMIT" in readme
+    else:
+        assert "OK TO DOWNLOAD" in readme and "OK TO SUBMIT" in readme
     first_screen = readme.split("## Prior/parallel candidate", 1)[0]
     assert "Current research download" in first_screen
     assert "HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif" not in first_screen
