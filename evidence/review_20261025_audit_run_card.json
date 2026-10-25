@@ -67,5 +67,15 @@
     "https://docs.nlr.gov/docs/fy26osti/96647.pdf",
     "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
   ],
-  "irregularities_action": "I-15: LISTRIC-HALO 32k TIF (lane verdict negative; fails distance_from_catalogue) was first moved to evidence/quarantine/ on this branch, then removed upstream on main; this branch keeps the removal. Git history retains the files."
+  "irregularities_action": "I-15: LISTRIC-HALO 32k TIF (lane verdict negative; fails distance_from_catalogue) was first moved to evidence/quarantine/ on this branch, then removed upstream on main; this branch keeps the removal. Git history retains the files.",
+  "current_primary_file": "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif",
+  "current_primary": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573",
+  "current_primary_make_validate": "RESULT: PASS (9 gates) on the merged-tree primary (VARIO); crs EPSG:32611, shape 3730x3292, transform matches sample, float32 1 band, values in [0,1], 0 NaN in footprint, zeros outside (7111787), reread sha256 matches",
+  "current_primary_positive_cells_inside_footprint": "37654 of 37654",
+  "previous_primary_during_review": {
+    "file": "docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif",
+    "sha256": "58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17",
+    "validate": "PASS (9 gates)"
+  },
+  "irregularities_I14": "Partly resolved on main: current_submission.json, readiness.json, site data-primary and README CURRENT block now all name VARIO. Open: VARIO-STATUS block wording says unique while CURRENT block records duplicate 0.9791 > 0.70."
 }
