@@ -1,0 +1,230 @@
+{
+  "schema": "gemsdoe92-run-card.v3",
+  "lane": "GRAVQUAD",
+  "date": "20261025T145744Z",
+  "hypothesis": "The USGS/INGENIOUS catalogue is a surface-scarp catalogue; a blind basement normal fault buried under thin cover still juxtaposes rock of different density across its plane, producing a gravity edge independent of strike. GRAVQUAD computes the gravity analytic-signal amplitude (strike-blind, unlike fixed-strike Coulomb/conjugate-shear lanes) and multiplies it by a structure-tensor linear-edge coherence that favors elongated fault-like edges over equant density bodies.",
+  "mechanism": "S = pct_rank(ASA) * pct_rank(coherence), where ASA = sqrt(B11_vg^2 + B18_hg_ew^2 + (d(B13_anom)/dy)^2) is the 3-component gravity analytic-signal amplitude and coherence is the local (lambda1-lambda2)/(lambda1+lambda2) linear-anisotropy ratio of the 2x2 gradient structure tensor of ASA over a 7x7 window; 37,654 dots spaced >= 2.8 px on valid & ~catalogue & d_cat > 2.0 px. Pure array math; the catalogue is used only for masking, never to build features, so catalogue withholding cannot leak through the surface.",
+  "named_non_fault_mimic": "Equant plutonic intrusions, circular playa/evaporite density bodies, and diffuse basement-terrane boundaries: all produce gravity analytic-signal amplitude but have low structure-tensor linear coherence.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 22663,
+    "primary_instrument": "static d_cat > 2.0 deployment, pooled gems57-pooled-hide-v2, seeds 20+30, 8 folds, 1000-draw paired spatial-block bootstrap CI",
+    "scores": {
+      "GRAVQUAD": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.005092375897126609,
+        "ci95": [
+          0.004001366945292683,
+          0.00625313043375866
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 161.31965231496653,
+        "fpw": 67579.98788610901,
+        "fnw": 22501.680347685033
+      },
+      "R0": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.004006147174684743,
+        "ci95": [
+          0.0034076934823601903,
+          0.004650591020077596
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 129.29712893913688,
+        "fpw": 70592.1164043663,
+        "fnw": 22533.70287106087
+      }
+    },
+    "paired_vs_R0": {
+      "delta": 0.0010862287224418657,
+      "ci95": [
+        -8.239774023177097e-05,
+        0.0023121704358996186
+      ]
+    },
+    "beats_holdout_best": false,
+    "holdout_best_reference": {
+      "lane_rule2": "COULOMB-LOQO standalone",
+      "rule2_d_visible_2": 0.113316,
+      "lane_static": "KNICKLOQO standalone",
+      "static_d_cat_2_record": 0.010788,
+      "static_d_cat_2_coulombloqo": 0.00922,
+      "source": "README.md 2026-10-25 session banners (same evaluator, seeds 20+30)"
+    }
+  },
+  "holdout_rule2_d_visible_2": {
+    "evidence_class": "HOLDOUT-DTI (strict draw-blind fold-visible d_visible > 2.0 diagnostic)",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "scores": {
+      "GRAVQUAD": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.005092375897126609,
+        "ci95": [
+          0.004001366945292683,
+          0.00625313043375866
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 161.31965231496653,
+        "fpw": 67579.98788610901,
+        "fnw": 22501.680347685033
+      },
+      "R0": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.004006147174684743,
+        "ci95": [
+          0.0034076934823601903,
+          0.004650591020077596
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 129.29712893913688,
+        "fpw": 70592.1164043663,
+        "fnw": 22533.70287106087
+      }
+    }
+  },
+  "leakage_canaries": {
+    "max_symmetric_auc": 0.5362370409172337,
+    "all_pass_le_0p90": true,
+    "per_feature": {
+      "asa": 0.536237,
+      "coherence": 0.504343,
+      "S": 0.528551
+    }
+  },
+  "correlation_overlap_vs_registry": {
+    "local": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "rasters_checked": 107,
+      "worst_literal_forward_overlap": 0.30435,
+      "worst_literal_file": "local:docs/downloads/gemsdoe92-radiocontact-20261025T041646Z-zeros.tif",
+      "worst_matched_budget_forward_overlap": 0.30435,
+      "worst_matched_budget_file": "local:docs/downloads/gemsdoe92-radiocontact-20261025T041646Z-zeros.tif",
+      "worst_abs_spearman": 0.052332,
+      "worst_abs_spearman_file": "local:docs/downloads/gemsdoe92-radiocontact-20261025T041646Z-zeros.tif",
+      "duplicate": false,
+      "verdict": "unique"
+    },
+    "public": {
+      "available": false,
+      "scope": "not scanned this session: GRAVQUAD did not beat the holdout promotion bar, so the 102-repo GitHub API scan was not spent per the protocol's experiment budget."
+    }
+  },
+  "raster_sha256": "9ea3e2e01fba5e733964e1252c729a70f0d61edc499c848628d83946d49c7ab5",
+  "zip_sha256": "dd868ebcce7c150934cff3c82b6aafb599f4bbe4580b6ef634a47d19ff40d523",
+  "file": "docs/downloads/gemsdoe92-gravquad-20261025T145744Z-zeros.tif",
+  "validator_output": {
+    "no_nan_in_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "dots": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    }
+  },
+  "submission_name": "GEMSDOE92-GRAVQUAD-20261025",
+  "submission_note": "h33-h33-2-b2; GRAVQUAD: gravity analytic-signal amplitude x linear-edge coherence; 37654 dots d_cat>2px; see run card for HOLDOUT-DTI",
+  "note_chars": 133,
+  "experiments_used": "1/3",
+  "weekly_slots_used": 0,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "verdict_reason": "static HOLDOUT-DTI 0.005092 vs KNICKLOQO record 0.010788 and COULOMB-LOQO Rule-2 0.113316; paired delta vs R0 0.001086 CI [-0.000082, 0.002312]; unique_ok=True; gates_ok=True; max AUC 0.5362",
+  "organizer_confirmed": null,
+  "all_arms": {
+    "primary": {
+      "file": "docs/downloads/gemsdoe92-gravquad-20261025T145744Z-zeros.tif",
+      "sha256": "9ea3e2e01fba5e733964e1252c729a70f0d61edc499c848628d83946d49c7ab5",
+      "submission_name": "GEMSDOE92-GRAVQUAD-20261025",
+      "note": "h33-h33-2-b2; GRAVQUAD: gravity analytic-signal amplitude x linear-edge coherence; 37654 dots d_cat>2px; see run card for HOLDOUT-DTI",
+      "note_chars": 133,
+      "validator": {
+        "file": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-gravquad-20261025T145744Z-zeros.tif",
+        "bytes": 130690,
+        "sha256": "9ea3e2e01fba5e733964e1252c729a70f0d61edc499c848628d83946d49c7ab5",
+        "meta": {
+          "crs": "EPSG:32611",
+          "shape": [
+            3730,
+            3292
+          ],
+          "dtype": "float32",
+          "count": 1,
+          "nodata": null,
+          "transform": [
+            100.0,
+            0.0,
+            243350.0,
+            0.0,
+            -100.0,
+            4508550.0
+          ],
+          "profile_compress": "deflate"
+        },
+        "band_description": [
+          null
+        ],
+        "n_finite": 12279160,
+        "n_nan": 0,
+        "n_infinite": 0,
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.0030664964579045773,
+        "emitted_positive_pixels": 37654,
+        "checks": {
+          "single_band": true,
+          "dtype_float32": true,
+          "dimensions_3730x3292": true,
+          "crs_epsg_32611": true,
+          "transform_matches_sample_submission": true,
+          "no_nan_anywhere": true,
+          "no_inf_anywhere": true,
+          "no_sentinel_values": true,
+          "range_0_1_guaranteed": true,
+          "min_ge_0": true,
+          "max_le_1": true,
+          "in_footprint_all_finite": true,
+          "in_footprint_range_0_1": true,
+          "outside_footprint_zero": true,
+          "zero_dots_on_mapped_catalogue": true
+        },
+        "all_checks_passed": true,
+        "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+        "on_catalogue_positive_pixels": 0,
+        "in_footprint_positive_pixels": 37654,
+        "footprint_fraction": 0.007286874781441169
+      },
+      "holdout_dti": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.005092375897126609,
+        "ci95": [
+          0.004001366945292683,
+          0.00625313043375866
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 161.31965231496653,
+        "fpw": 67579.98788610901,
+        "fnw": 22501.680347685033
+      }
+    }
+  }
+}

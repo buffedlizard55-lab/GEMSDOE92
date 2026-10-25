@@ -192,7 +192,7 @@
     "public_dual_reading_worst_overlap": 0.685531,
     "public_dual_reading_worst_witness": "GEMSDOE92/docs/downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif",
     "public_dual_reading_over_70pct_count": 0,
-    "public_dual_reading_verdict": "unique",
+    "public_dual_reading_verdict": "matched-budget diagnostic only; does not clear literal rule",
     "public_sparse_le_150k_max_overlap": 0.685531,
     "public_sparse_le_150k_witness": "GEMSDOE92/docs/downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif",
     "public_sparse_le_90k_max_overlap": 0.685531,
@@ -201,8 +201,10 @@
     "public_worst_abs_spearman_preplacement": 0.456199,
     "public_worst_abs_spearman_final": 0.141243,
     "public_dense_witness_forward_overlap": 1.0,
-    "unique_under_dual_reading_rule": true,
-    "unique_under_literal_public_rule": false
+    "unique_under_dual_reading_rule": false,
+    "unique_under_literal_public_rule": false,
+    "matched_budget_diagnostic_pass": true,
+    "literal_rule_stop": true
   },
   "raster_sha256": "8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347",
   "raster_nan_sha256": "d53d919f357bbd446408e4339aa6b704c548a57b543a34765d946ca979914890",
@@ -226,5 +228,14 @@
   "submission_eligible": false,
   "weekly_slots_used": 0,
   "experiments_used": 3,
-  "verdict_detail": "negative under literal unweighted public overlap (1.0 vs full-footprint 17GEMSDOE E-proba-multiscale); UNIQUE under dual_reading_decision across all 1,412 non-self public rasters (0/1,412 > 0.70, max 0.685531 vs COULOMBLOQOdual45; <=90k px max 0.685531; >150k matched-budget max 0.485128) and all 65 local GEMSDOE92 rasters (max 0.685531 <= 0.70). Achieves a new all-time GEMSDOE92 static HOLDOUT-DTI record of 0.010788 [0.009468, 0.012201] on gems57-pooled-hide-v2 (+17.0% over COULOMBLOQO standalone 0.009220, paired delta +0.001568 [+0.000592, +0.002535]; +169.3% over R0 0.004006), draw-blind d_cat>2.0 HOLDOUT-DTI = 0.010958 [0.009675, 0.012337], draw-blind d_visible>2.0 HOLDOUT-DTI = 0.109043 [0.097872, 0.120534] (beating H19-5 0.096757, paired 95% CI [+0.004125, +0.020591]), and USGS SGMC off-catalogue bedrock PROXY DTI = 0.103912 (+14.7% over COULOMBLOQO standalone 0.090569), while curing #IR-92-NE-QUADRANT-LOQO-COLLAPSE (NE dots restored from 4,221 to 9,286; Seed 20 NE DTI +77.6%)."
+  "verdict_detail": "NEGATIVE. Binding literal full-footprint witness overlap is 1.0 > 0.70. Matched-budget measurements (including the previous dual_reading_decision results) are diagnostics only and cannot establish uniqueness or submission clearance. Format validation and HOLDOUT-DTI are local research evidence, not organizer scores.",
+  "current_decision": {
+    "verdict": "negative",
+    "submission_eligible": false,
+    "download_status": "research only; not submission-cleared",
+    "literal_registry_overlap_3px": 1.0,
+    "literal_registry_threshold": 0.7,
+    "organizer_confirmed_score": null,
+    "weekly_slots_used": 0
+  }
 }

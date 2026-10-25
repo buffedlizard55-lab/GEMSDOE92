@@ -24,3 +24,6 @@ Paired Δ standalone vs KNICKLOQO = +0.000121 [-0.001167,+0.001262] (**includes 
 
 ## 4. Judgement
 LISTRIC-PURE is a **negative deliverable**: its best arm nominally tops the static holdout but (a) is statistically indistinguishable from KNICKLOQO, (b) loses on the independent SGMC bedrock proxy, and (c) is a public-registry duplicate even under the dual reading (0.710735>0.70 vs an over-budget 125,890-dot 62GEMSDOE raster), plus literal 1.000 vs dense full-footprint surfaces. The dual35 arm is public-unique but below holdout best. **No LISTRIC TIF may be submitted; 0 slots spent.** Whether anything in this repo beats 0.2778 remains unknowable without a first ORGANIZER-CONFIRMED receipt — the single highest-P(Win) next action remains the human selector decision on KNICKLOQOstandalone (dual-reading-unique, prior #1) documented in `docs/NEXT_STEPS.md`.
+
+## 5. Post-merge re-check (2026-10-26, vs parallel lanes merged in PRs #81–#96)
+Forward 3-px overlap of LISTRICstandalone vs newly merged local lanes: LISTRICLAG-n90k 0.563898, FAULTNET-netdens 0.452037, LISTRICLAG 0.295878, CURIEDEMAG 0.231795, LISTRICDIP-updip50 0.210974, GRAVQUAD 0.188639 — all ≤0.70, so local uniqueness survives the merge; the binding blocks remain the public 62GEMSDOE dual-reading duplicate (0.710735) and literal dense-witness 1.000. Verdict unchanged.

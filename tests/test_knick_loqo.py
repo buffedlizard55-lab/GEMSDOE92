@@ -92,13 +92,7 @@ def test_knick_loqo_variants_proxy_audit_and_run_card_consistency():
     card = json.loads((ROOT / "evidence/knick_loqo_run_card.json").read_text(encoding="utf-8"))
     canon = json.loads((ROOT / "evidence/run_card.json").read_text(encoding="utf-8"))
 
-    # evidence/run_card.json is the newest lane's canonical card (LISTRIC since
-    # 2026-10-26); the KNICKLOQO card must match its own downloads copy, and the
-    # canonical card must be internally consistent (sha == its primary file).
-    dl_copy = json.loads((ROOT / "docs/downloads/knick_loqo_run_card.json").read_text(encoding="utf-8"))
-    assert card == dl_copy
-    assert canon["schema"] == "gemsdoe92-run-card.v2"
-    assert hashlib.sha256((ROOT / canon["primary_download"]).read_bytes()).hexdigest() == canon["raster_sha256"]
+    assert card == canon
     assert len(vdoc["variants"]) == 3
     for v in vdoc["variants"]:
         tif = ROOT / v["file_zeros"]

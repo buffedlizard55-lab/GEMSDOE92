@@ -123,11 +123,14 @@
   "public_registry_uniqueness": {
     "candidate_hash_matches_scan": true,
     "unique_under_literal_rule": false,
-    "unique_under_dual_reading_rule": true,
+    "unique_under_dual_reading_rule": false,
     "stop_required": true,
     "witness_evidence": "evidence/knick_loqo_public_registry_uniqueness.json",
     "dual_reading_evidence": "evidence/knick_loqo_dual_reading_audit.json",
-    "scope": "102-repo Git-blob-verified public scan (1415 non-self template rasters): UNIQUE under dual_reading_decision (0/1415 rasters > 0.70; worst operative overlap = 0.681840 vs GEMSDOE92/docs/downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif; <=90k px max = 0.681840; >150k matched-budget max = 0.485765). Literal unweighted rule fires (1.0) on full-footprint 17GEMSDOE E-proba-multiscale.",
-    "candidate_sha256_zeros": "916acb0b8b7ec58d54e3a8bc24efa5c1ab3bc09ef7e1fc58d84b7be354940fec"
-  }
+    "scope": "102-repo Git-blob-verified public scan (1415 non-self template rasters): matched-budget diagnostic only (not a uniqueness clearance) (0/1415 rasters > 0.70; worst operative overlap = 0.681840 vs GEMSDOE92/docs/downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif; <=90k px max = 0.681840; >150k matched-budget max = 0.485765). Literal unweighted rule fires (1.0) on full-footprint 17GEMSDOE E-proba-multiscale.",
+    "candidate_sha256_zeros": "916acb0b8b7ec58d54e3a8bc24efa5c1ab3bc09ef7e1fc58d84b7be354940fec",
+    "matched_budget_diagnostic_pass": true
+  },
+  "current_policy_notice": "Current policy decision: NEGATIVE / DO NOT SUBMIT. The literal full-footprint witness has 1.0 forward overlap (>0.70). Matched-budget dual-reading values are retained only as historical diagnostics; they do not establish uniqueness or submission clearance.",
+  "current_verdict": "negative — literal registry stop"
 }
