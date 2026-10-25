@@ -1,0 +1,39 @@
+{
+  "schema": "gemsdoe92-source-review.v1",
+  "sources": [
+    {
+      "name": "official_reference_readme",
+      "url": "https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/README.md",
+      "bytes": 2367,
+      "sha256": "cfa4d55559c9128313beb9417eae7e0a94c31677132afb1120f9e86222804239",
+      "retrieved_utc": "2026-10-25T14:50:09.565418+00:00"
+    },
+    {
+      "name": "gemsdoe32_owner_site",
+      "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/012e17b2a115c3c0d5e7885bea625bf9657c99fc/docs/index.html",
+      "bytes": 19571,
+      "sha256": "b88a7f10d064ae33c757d9273ab0d73d1fe29de8ea69029ddfd468bcd73560b1",
+      "retrieved_utc": "2026-10-25T14:50:09.565418+00:00"
+    },
+    {
+      "name": "registry_witness",
+      "url": "https://api.github.com/repos/buffedlizard55-lab/17GEMSDOE/git/blobs/374c88b1da2b803e2ed160de467fd71ae114010d",
+      "bytes": 25065181,
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "retrieved_utc": "2026-10-25T14:50:09.565418+00:00"
+    }
+  ],
+  "pages": {
+    "observed_build_type": "legacy",
+    "source_branch": "main",
+    "source_path": "/",
+    "workflow_enable_attempt": "HTTP 403 Resource not accessible by integration",
+    "live_workflow_validation_guaranteed": false
+  },
+  "limitations": [
+    "No fresh DrivenData, USGS, GDR or NLR retrieval; hosts outside outbound allowlist.",
+    "No organizer receipt or weekly-cap verification.",
+    "No complete fresh scan of all sibling sites.",
+    "GitHub mirror identity does not establish redistribution rights."
+  ]
+}
