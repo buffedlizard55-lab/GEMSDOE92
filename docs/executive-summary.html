@@ -7,6 +7,106 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- POISSONFLEX:BEGIN (rendered by scripts/render_poissonflex_site.py) -->
+<aside id="poissonflex-banner-executive-summary" class="banner banner-warn" aria-label="POISSONFLEX newest session status" style="border:2px solid #7f1d1d;">
+  <p><strong>Newest Session (2026-10-25) — Lane <code>POISSONFLEX</code> (Poisson Gravity–Magnetic Breakdown + Basement Rollover Flexure + Canyon Knickpoint LOQO): 3 validated research GeoTIFFs built. Verdict: <code>negative</code>.</strong></p>
+  <p>
+    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH — 10/10 + 13/13 automated gates PASS, finite [0, 1], zeros outside footprint</span>
+    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (verdict: negative; primary DTI 0.107466 &lt; holdout-best 0.113890; 0 weekly slots spent)</span>
+  </p>
+  <p>
+    <a href="downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif" download><strong>Download gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif (45,000 dots)</strong></a> · <a href="downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.zip" download>one-TIFF ZIP</a>
+    · <a href="downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-audit.json">audit JSON</a>
+    · <a href="downloads/poissonflex_run_card.json">JSON Run Card</a>
+    · <a href="ANALYSIS_20261025_POISSONFLEX.md">PhD Analysis (GEMSDOE32 0.2778 vs 0.4413 &amp; POISSONFLEX)</a>
+    · <a href="HYPOTHESES_20261025_POISSONFLEX.md">Pre-Registered Hypotheses</a>
+    · <a href="executive-summary.html">Executive Summary &amp; How to Submit</a>
+  </p>
+  <p>
+    SHA-256 <code>37b18c200e84c77b39b07e527b17d4395968389aaf3ff0c175c71204b2065f9b</code>.
+    <strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positives, strict draw-blind <code>d_visible &gt; 2.0</code>):
+    <code>poissonflex_opt</code> <strong><code>0.107466 [0.094158, 0.120431]</code></strong> (beats <code>H19-5</code> <code>0.096757 [0.084298, 0.108421]</code> by <code>+0.010709</code>, <code>COULOMBDM</code> <code>0.094496</code>, and <code>BLINDFAULT</code> <code>0.047896</code>; static <code>d_cat &gt; 2.0</code> <code>0.008824 [0.007601, 0.010081]</code> vs <code>R0</code> <code>0.004006</code>; off-catalogue <code>USGS SGMC PROXY</code> <strong><code>0.120957</code></strong>, <code>+35.4%</code> over <code>COULOMBLOQO standalone</code> <code>0.089332</code>).
+    Canaries: <code>32/32 PASS</code> (max symmetric AUC <code>0.616108 &le; 0.90</code>).
+    Uniqueness (<code>REGISTRY-MEASUREMENT</code>): local 97 rasters PASS (max overlap <code>0.6488 &le; 0.70</code>, |&rho;| <code>0.1674</code>); &le;80k-dot public rasters across 102 repos PASS (max <code>0.6804 &le; 0.70</code>); continuous surface |&rho;| across 1404 public blobs PASS (max <code>0.4668 &le; 0.90</code>); 100k–126k-px public witness <code>0.7541 &gt; 0.70</code> (<code>62GEMSDOE ventcons</code>).
+    Record-only name <code>GEMSDOE92-POISSONFLEX-opt-20261025</code>; note (86/140) <code>POISSONFLEX opt: 45000 LOQO dots, Poisson-grav/mag+flexure+knick; HOLDOUT-DTI 0.107466</code>.
+  </p>
+  <p>
+    Sibling pre-registered arms (37,654 dots, format-valid `[0, 1]`, research only, DO NOT SUBMIT):
+    <a href="downloads/gemsdoe92-poissonflex-poissonflex_eq-37654-20261025-5512bd34-zeros.tif" download>gemsdoe92-poissonflex-poissonflex_eq-37654-20261025-5512bd34-zeros.tif</a> (SHA-256 <code>1bea0ae1058653714f18a0c7d91ce550a0a1433692bae7045d88ea1955254c5b</code> · <a href="downloads/gemsdoe92-poissonflex-poissonflex_eq-37654-20261025-5512bd34-audit.json">audit</a>) ·
+    <a href="downloads/gemsdoe92-poissonflex-poissonflex_raw-37654-20261025-be99276b-zeros.tif" download>gemsdoe92-poissonflex-poissonflex_raw-37654-20261025-be99276b-zeros.tif</a> (SHA-256 <code>3048f32162e4b5720c909633d7165a94961600d96d3121203802c360f15b0b13</code> · <a href="downloads/gemsdoe92-poissonflex-poissonflex_raw-37654-20261025-be99276b-audit.json">audit</a>).
+  </p>
+  <details style="margin-top:0.5rem;">
+    <summary><strong>Auditable POISSONFLEX Results &amp; Verified Official Competition Sources (Click to Expand)</strong></summary>
+    <table style="width:100%;margin-top:0.5rem;border-collapse:collapse;font-size:0.9rem;">
+      <thead>
+        <tr>
+          <th style="text-align:left;border-bottom:1px solid #555;padding:0.25rem;">Candidate / Baseline</th>
+          <th style="text-align:right;border-bottom:1px solid #555;padding:0.25rem;">Dots</th>
+          <th style="text-align:right;border-bottom:1px solid #555;padding:0.25rem;">Strict LOQO d_vis&gt;2 HOLDOUT-DTI</th>
+          <th style="text-align:right;border-bottom:1px solid #555;padding:0.25rem;">Static d_cat&gt;2 HOLDOUT-DTI</th>
+          <th style="text-align:right;border-bottom:1px solid #555;padding:0.25rem;">SGMC Off-Cat PROXY</th>
+          <th style="text-align:left;border-bottom:1px solid #555;padding:0.25rem;">Gate Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:0.25rem;"><code>POISSONFLEX poissonflex_opt</code></td>
+          <td style="text-align:right;padding:0.25rem;">45,000</td>
+          <td style="text-align:right;padding:0.25rem;"><strong>0.107466 [0.094158, 0.120431]</strong></td>
+          <td style="text-align:right;padding:0.25rem;"><strong>0.008824 [0.007601, 0.010081]</strong></td>
+          <td style="text-align:right;padding:0.25rem;"><strong>0.120957</strong></td>
+          <td style="padding:0.25rem;"><code>negative</code> (research TIF; DO NOT SUBMIT)</td>
+        </tr>
+        <tr>
+          <td style="padding:0.25rem;"><code>POISSONFLEX poissonflex_eq</code></td>
+          <td style="text-align:right;padding:0.25rem;">37,654</td>
+          <td style="text-align:right;padding:0.25rem;">0.103768 [0.090267, 0.117066]</td>
+          <td style="text-align:right;padding:0.25rem;">0.008176 [0.006938, 0.009399]</td>
+          <td style="text-align:right;padding:0.25rem;">0.105407</td>
+          <td style="padding:0.25rem;"><code>negative</code> (research TIF; DO NOT SUBMIT)</td>
+        </tr>
+        <tr>
+          <td style="padding:0.25rem;"><code>POISSONFLEX poissonflex_raw</code></td>
+          <td style="text-align:right;padding:0.25rem;">37,654</td>
+          <td style="text-align:right;padding:0.25rem;">0.102861 [0.089368, 0.116130]</td>
+          <td style="text-align:right;padding:0.25rem;">0.008180 [0.006894, 0.009460]</td>
+          <td style="text-align:right;padding:0.25rem;">0.107319</td>
+          <td style="padding:0.25rem;"><code>negative</code> (research TIF; DO NOT SUBMIT)</td>
+        </tr>
+        <tr>
+          <td style="padding:0.25rem;"><code>COULOMBLOQO standalone</code> (Repo Holdout-Best)</td>
+          <td style="text-align:right;padding:0.25rem;">37,654</td>
+          <td style="text-align:right;padding:0.25rem;">0.113890 [0.100124, 0.127440]</td>
+          <td style="text-align:right;padding:0.25rem;">0.009220 [0.007983, 0.010493]</td>
+          <td style="text-align:right;padding:0.25rem;">0.089332</td>
+          <td style="padding:0.25rem;"><code>negative</code> (0.7398 &gt; 0.70 on 100k witness)</td>
+        </tr>
+        <tr>
+          <td style="padding:0.25rem;"><code>H19-5</code> / <code>R0</code> (GEMSDOE32 0.2778 [CLAIM] Lineage)</td>
+          <td style="text-align:right;padding:0.25rem;">37,654</td>
+          <td style="text-align:right;padding:0.25rem;">0.096757 [0.084298, 0.108421] (H19-5)</td>
+          <td style="text-align:right;padding:0.25rem;">0.004006 [0.003408, 0.004651] (R0)</td>
+          <td style="text-align:right;padding:0.25rem;">0.095386</td>
+          <td style="padding:0.25rem;">Pinned parent baseline</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:0.4rem;font-size:0.85rem;">
+      Verified Official Links:
+      <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData Problem #306</a> ·
+      <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Leaderboard</a> ·
+      <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Official Rules PDF (96647.pdf)</a> ·
+      <a href="https://github.com/drivendataorg/gems-prize-reference-solution">Reference Solution</a> ·
+      <a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN</a> ·
+      <a href="https://gbcge.org/current-projects/ingenious/">GBCGE INGENIOUS</a> ·
+      <a href="https://gdr.openei.org/submissions/1391">OpenEI GDR #1391</a> ·
+      <a href="https://epsg.io/32611">EPSG:32611</a> ·
+      <a href="https://en.wikipedia.org/wiki/Tversky_index">Tversky Index</a>.
+    </p>
+  </details>
+</aside>
+<!-- POISSONFLEX:END -->
+
 <!-- BLINDFAULT:BEGIN (rendered by scripts/render_blindfault_site.py) -->
 <aside class="banner banner-warn" aria-label="BLINDFAULT session status" style="border:2px solid #7f1d1d;">
   <p><strong>Newest session (2026-10-25) — lane <code>BLINDFAULT</code>: new unique TIFF generated. Verdict <code>negative</code>.</strong></p>

@@ -1,4 +1,38 @@
-# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`BLINDFAULT` Session)
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`POISSONFLEX` Session)
+
+## Completed this session (`POISSONFLEX`)
+
+1. **Closed prior-session items #1 and #2 before writing new model code:**
+   - Executed the complete `1,321`-non-self-blob `dual_reading_decision` audit across all `102` `GEMSDOE` repositories (`0` missing blobs): both `COULOMBLOQO standalone` (`0.739842 > 0.70`, `8` witnesses) and `COULOMBLOQO dual45` (`0.722420 > 0.70`, `4` witnesses) fail closed (`evidence/coulomb_loqo_dual_reading_selector.json`).
+   - Quantified the exact multi-band cause of `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` (`evidence/ne_quadrant_loqo_collapse_diagnostic.json`): `NE` geodetic truncation (`B07 geod_shearrate` median `0.00`, `B04 geod_2ndinv` median `3.80` vs `34.50` `SW`), regional gravity baseline shift (`-3.32` vs `-12.27 mGal`), and `SW+SE = 62.8%` mapped-catalogue skew.
+2. **Pre-registered 4 untried hypotheses (`docs/HYPOTHESES_20261025_POISSONFLEX.md`) and implemented Rank #1 `POISSONFLEX` (`gems/poissonflex.py`, `11/11` unit & contract tests in `tests/test_poissonflex.py`):**
+   - Moving-window Poisson gravity-to-pseudogravity breakdown (`f01`–`f04`), basement rollover/shoulder Hessian flexure (`f05`–`f08`), canyon knickpoint saddle + along-strike line integrals (`f09`–`f11`), unlabeled within-quadrant covariate rank alignment, and nested visible-only OOF support calibration (`S_opt = 45,000`).
+   - All `32/32` single-feature leakage canaries passed (`max symmetric AUC = 0.616108 <= 0.90`).
+3. **Evaluated all `3/3` pre-registered arms (`poissonflex_opt`, `poissonflex_eq`, `poissonflex_raw`, `0` weekly slots spent):**
+   - `poissonflex_opt` (`45,000` dots, `docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif`, `SHA-256 = 37b18c200e84c77b39b07e527b17d4395968389aaf3ff0c175c71204b2065f9b`): primary strict draw-blind `HOLDOUT-DTI = 0.107466 [0.094158, 0.120431]` (beats `H19-5` `+0.010709 [+0.002297, +0.018444]`, `COULOMBDM` `+0.012970`, and `BLINDFAULT` `+0.059570`; trails `COULOMBLOQO standalone` `0.113890` by `-0.006424 [-0.013250, +0.000170]`), static `HOLDOUT-DTI = 0.008824 [0.007601, 0.010081]` (`#2` in repo, `2.20x` `R0`), and off-catalogue `USGS SGMC PROXY = 0.120957` (`+35.4%` over `COULOMBLOQO standalone`).
+   - Cured `NE` LOQO collapse (`22.7%` `NE` dot share) and uncovered `#IR-92-NE-QUADRANT-DOUBLE-EDGED-CALIBRATION` + `#IR-92-INTERMEDIATE-SUPPORT-ASYMMETRIC-OVERLAP` (`IRREGULARITIES.md`).
+   - Built & dual-validated 3 research GeoTIFFs (`docs/downloads/gemsdoe92-poissonflex-*-zeros.tif`), scanned against `97` local + `1,414` public blobs (`evidence/poissonflex_uniqueness.json`), and recorded `verdict: "negative"` (`evidence/poissonflex_run_card.json`).
+
+## Highest-P(Win) actions for the next session (in order)
+
+1. **End-to-End 2D Patch ConvNet Trained Directly on Differentiable `300 m` Soft-DTI Loss (CPU-Feasible, Untried Architecture Family):**
+   - Every supervised model in `GEMSDOE92` (`COULOMBLOQO`, `EULERFUSE`, `BLINDFAULT`, `POISSONFLEX`) has used pixelwise `HistGradientBoostingClassifier` + heuristic 1D ridge extraction. Train a compact `64 × 64`-patch dilated 2D ConvNet (`~60k–80k` params, `8` LOQO folds with `1.2 km` guard) directly minimizing $1 - \text{Soft-DTI}_{300\text{m}}(\alpha=0.2, \beta=0.8)$ on the cached 30-feature `POISSONFLEX` + `COULOMBLOQO` tensor so `5–15 km` curvilinear fault continuity, step-over relay linkage, and blue-noise dot spacing are learned jointly.
+2. **Selective Subsurface-Only Quadrant Calibration (`#IR-92-NE-QUADRANT-DOUBLE-EDGED-CALIBRATION`):**
+   - Keep `within_quadrant_rank` on regional-drift subsurface channels (`geod_shearrate`, `geod_2ndinv`, `iso_grav_anom`, `depth_to_base_surf`) while preserving un-equalized fold probabilities on surface-scarp channels so `NE` is neither starved (`0.1%` in `BLINDFAULT`) nor over-allocated relative to `SW+SE` (`62.8%` of `existing_faults`).
+3. **Navigate `#IR-92-INTERMEDIATE-SUPPORT-ASYMMETRIC-OVERLAP` Without Threshold Relaxation:**
+   - Under `DOT_FIELD_MAX_SUPPORT = 150,000`, `100k–126k`-dot range-front rasters (`62GEMSDOE ventcons`, `GEMSDOE23 h29`) cover `~74%–75%` of any purely range-front `37k–45k` dot set. Placing `>= 32%` of dots on high-precision off-`H19-5` piedmont/intrabasin Poisson-flexure + advective thermal (`THERMAL-UPFLOW-PECLET`, Rank #2 in `docs/HYPOTHESES_20261025_POISSONFLEX.md`) structures lowers `126k`-witness overlap below `0.70` organically; verify `HOLDOUT-DTI > 0.113890` before promoting.
+4. **External Official Public Data Staging (Outside Network-Restricted Sandbox):**
+   - In an environment with access to `usgs.gov`, stage [USGS 3DEP](https://www.usgs.gov/3d-elevation-program) `1/3 arc-sec (10 m)` / `1 m` LiDAR scarp curvature tiles (`Rank #4` in `docs/HYPOTHESES_20261025_POISSONFLEX.md`) and record one `ORGANIZER-CONFIRMED` DrivenData receipt in `ledger/submissions.csv`.
+
+## Limitations this session
+
+- **Sandbox hardware & network:** `2` vCPUs, `3.8 GiB` RAM (`0` swap), outbound network restricted to GitHub/PyPI/npm (USGS 3DEP, ASF OPERA InSAR, UNR GPS, and DrivenData portal unreachable from sandbox). Heavy feature construction and LOQO stages are isolated into `< 1.2 GiB` streaming subprocesses (`scripts/run_poissonflex.py`).
+- **Evidence boundaries:** Zero `ORGANIZER-CONFIRMED` submission receipts exist in `ledger/submissions.csv`; `0.2778` (`GEMSDOE32`) is `[CLAIM]` and `0.4413` / `0.3195` are `[LEADERBOARD-SNAPSHOT]`.
+- **Closed lanes (do not re-run or post-hoc tweak):** `POISSONFLEX` (`3/3` arms exhausted), `BLINDFAULT`, `EULERFUSE`, `COULOMBDM`, `NEO-OPNS`, `XPHASE`.
+
+---
+
+# Prior Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`BLINDFAULT` Session)
 
 ## Completed this session (`BLINDFAULT`)
 

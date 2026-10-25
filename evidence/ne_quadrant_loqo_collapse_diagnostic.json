@@ -1,0 +1,642 @@
+{
+  "schema": "gemsdoe92-ne-quadrant-loqo-collapse-diagnostic.v1",
+  "date": "20261025",
+  "irregularity": "#IR-92-NE-QUADRANT-LOQO-COLLAPSE",
+  "quadrant_geometry_and_catalogue": {
+    "NW": {
+      "footprint_pixels": 1154738,
+      "footprint_share": 0.223467,
+      "catalogue_pixels": 10165,
+      "catalogue_share": 0.166672,
+      "catalogue_density_per_1000px": 8.8029
+    },
+    "NE": {
+      "footprint_pixels": 1427727,
+      "footprint_share": 0.276296,
+      "catalogue_pixels": 12511,
+      "catalogue_share": 0.205139,
+      "catalogue_density_per_1000px": 8.7629
+    },
+    "SW": {
+      "footprint_pixels": 1428627,
+      "footprint_share": 0.276471,
+      "catalogue_pixels": 20534,
+      "catalogue_share": 0.336689,
+      "catalogue_density_per_1000px": 14.3732
+    },
+    "SE": {
+      "footprint_pixels": 1156281,
+      "footprint_share": 0.223766,
+      "catalogue_pixels": 17778,
+      "catalogue_share": 0.2915,
+      "catalogue_density_per_1000px": 15.3752
+    }
+  },
+  "covariate_shift_by_quadrant": {
+    "rtp": {
+      "NW": {
+        "median": -168.4765,
+        "iqr": 147.4861,
+        "p90": 40.7399
+      },
+      "NE": {
+        "median": -112.0007,
+        "iqr": 102.8727,
+        "p90": 49.9811
+      },
+      "SW": {
+        "median": -133.7515,
+        "iqr": 229.1545,
+        "p90": 112.4327
+      },
+      "SE": {
+        "median": -163.589,
+        "iqr": 148.5807,
+        "p90": 21.8582
+      }
+    },
+    "geod_2ndinv": {
+      "NW": {
+        "median": 15.6,
+        "iqr": 11.8007,
+        "p90": 28.0948
+      },
+      "NE": {
+        "median": 3.8,
+        "iqr": 2.2371,
+        "p90": 6.1
+      },
+      "SW": {
+        "median": 34.5,
+        "iqr": 11.9,
+        "p90": 46.4
+      },
+      "SE": {
+        "median": 29.1,
+        "iqr": 16.1396,
+        "p90": 45.6913
+      }
+    },
+    "geod_shearrate": {
+      "NW": {
+        "median": 6.3,
+        "iqr": 6.4,
+        "p90": 13.8965
+      },
+      "NE": {
+        "median": 0.0,
+        "iqr": 0.2,
+        "p90": 0.7
+      },
+      "SW": {
+        "median": 18.2595,
+        "iqr": 8.2622,
+        "p90": 27.9944
+      },
+      "SE": {
+        "median": 15.5,
+        "iqr": 12.0655,
+        "p90": 30.406
+      }
+    },
+    "geod_dilaterate": {
+      "NW": {
+        "median": 7.2,
+        "iqr": 3.9,
+        "p90": 11.8
+      },
+      "NE": {
+        "median": 3.7,
+        "iqr": 2.3,
+        "p90": 6.0107
+      },
+      "SW": {
+        "median": 6.2,
+        "iqr": 12.8966,
+        "p90": 23.117
+      },
+      "SE": {
+        "median": 5.8,
+        "iqr": 10.3,
+        "p90": 15.0
+      }
+    },
+    "iso_grav_anom_vg": {
+      "NW": {
+        "median": -0.0639,
+        "iqr": 1.8615,
+        "p90": 1.9399
+      },
+      "NE": {
+        "median": -0.0965,
+        "iqr": 1.7052,
+        "p90": 1.7638
+      },
+      "SW": {
+        "median": -0.028,
+        "iqr": 1.7041,
+        "p90": 1.7592
+      },
+      "SE": {
+        "median": -0.1111,
+        "iqr": 2.1587,
+        "p90": 2.0517
+      }
+    },
+    "det_elev": {
+      "NW": {
+        "median": -45.9981,
+        "iqr": 280.4832,
+        "p90": 291.7417
+      },
+      "NE": {
+        "median": -74.5974,
+        "iqr": 338.7135,
+        "p90": 385.0941
+      },
+      "SW": {
+        "median": -82.6766,
+        "iqr": 220.4272,
+        "p90": 262.4286
+      },
+      "SE": {
+        "median": -87.814,
+        "iqr": 370.3634,
+        "p90": 341.8523
+      }
+    },
+    "iso_grav_anom": {
+      "NW": {
+        "median": -4.6212,
+        "iqr": 12.6277,
+        "p90": 5.7569
+      },
+      "NE": {
+        "median": -3.3163,
+        "iqr": 15.8956,
+        "p90": 8.6435
+      },
+      "SW": {
+        "median": -9.033,
+        "iqr": 10.5141,
+        "p90": -0.4147
+      },
+      "SE": {
+        "median": -12.2717,
+        "iqr": 15.8512,
+        "p90": -1.0228
+      }
+    },
+    "depth_to_base_surf": {
+      "NW": {
+        "median": 253.4646,
+        "iqr": 545.0164,
+        "p90": 1112.2557
+      },
+      "NE": {
+        "median": 204.8833,
+        "iqr": 606.1893,
+        "p90": 1395.2599
+      },
+      "SW": {
+        "median": 454.9447,
+        "iqr": 562.179,
+        "p90": 1194.2286
+      },
+      "SE": {
+        "median": 320.2383,
+        "iqr": 617.3138,
+        "p90": 1457.4524
+      }
+    },
+    "cond_surf": {
+      "NW": {
+        "median": 2.7285,
+        "iqr": 0.8078,
+        "p90": 3.6842
+      },
+      "NE": {
+        "median": 3.0977,
+        "iqr": 0.5303,
+        "p90": 3.605
+      },
+      "SW": {
+        "median": 2.8843,
+        "iqr": 0.5829,
+        "p90": 3.5167
+      },
+      "SE": {
+        "median": 2.7527,
+        "iqr": 0.859,
+        "p90": 3.4593
+      }
+    },
+    "iso_grav_anom_hg": {
+      "NW": {
+        "median": 0.0131,
+        "iqr": 2.6279,
+        "p90": 2.721
+      },
+      "NE": {
+        "median": -0.014,
+        "iqr": 2.3814,
+        "p90": 2.5035
+      },
+      "SW": {
+        "median": 0.1396,
+        "iqr": 1.9931,
+        "p90": 2.0462
+      },
+      "SE": {
+        "median": -0.0332,
+        "iqr": 2.4709,
+        "p90": 2.4799
+      }
+    },
+    "det_elev_slope": {
+      "NW": {
+        "median": 3.25,
+        "iqr": 9.3213,
+        "p90": 19.0704
+      },
+      "NE": {
+        "median": 4.3804,
+        "iqr": 12.6873,
+        "p90": 22.7479
+      },
+      "SW": {
+        "median": 3.1709,
+        "iqr": 9.6179,
+        "p90": 18.6045
+      },
+      "SE": {
+        "median": 4.2362,
+        "iqr": 10.1556,
+        "p90": 21.0575
+      }
+    }
+  },
+  "lane_quadrant_diagnostics": {
+    "H19_5": {
+      "total_dots": 121131,
+      "quadrant_dot_allocation": {
+        "NW": {
+          "dots": 27245,
+          "share": 0.224922
+        },
+        "NE": {
+          "dots": 33510,
+          "share": 0.276643
+        },
+        "SW": {
+          "dots": 33843,
+          "share": 0.279392
+        },
+        "SE": {
+          "dots": 26533,
+          "share": 0.219044
+        }
+      },
+      "static_holdout_dti_by_fold": {
+        "NW": [
+          0.055694,
+          0.064599
+        ],
+        "NE": [
+          0.070135,
+          0.074912
+        ],
+        "SW": [
+          0.059282,
+          0.061221
+        ],
+        "SE": [
+          0.076619,
+          0.068315
+        ]
+      },
+      "mean_static_holdout_dti_by_quadrant": {
+        "NW": 0.060147,
+        "NE": 0.072524,
+        "SW": 0.060251,
+        "SE": 0.072467
+      }
+    },
+    "R0": {
+      "total_dots": 37654,
+      "quadrant_dot_allocation": {
+        "NW": {
+          "dots": 8891,
+          "share": 0.236124
+        },
+        "NE": {
+          "dots": 10145,
+          "share": 0.269427
+        },
+        "SW": {
+          "dots": 10938,
+          "share": 0.290487
+        },
+        "SE": {
+          "dots": 7680,
+          "share": 0.203962
+        }
+      },
+      "static_holdout_dti_by_fold": {
+        "NW": [
+          0.003319,
+          0.0049
+        ],
+        "NE": [
+          0.004408,
+          0.005014
+        ],
+        "SW": [
+          0.003109,
+          0.004356
+        ],
+        "SE": [
+          0.004073,
+          0.003126
+        ]
+      },
+      "mean_static_holdout_dti_by_quadrant": {
+        "NW": 0.00411,
+        "NE": 0.004711,
+        "SW": 0.003732,
+        "SE": 0.0036
+      }
+    },
+    "COULOMBLOQO_standalone": {
+      "total_dots": 37654,
+      "quadrant_dot_allocation": {
+        "NW": {
+          "dots": 9517,
+          "share": 0.252749
+        },
+        "NE": {
+          "dots": 4221,
+          "share": 0.1121
+        },
+        "SW": {
+          "dots": 14982,
+          "share": 0.397886
+        },
+        "SE": {
+          "dots": 8934,
+          "share": 0.237266
+        }
+      },
+      "static_holdout_dti_by_fold": {
+        "NW": [
+          0.010029,
+          0.013221
+        ],
+        "NE": [
+          0.0061,
+          0.011503
+        ],
+        "SW": [
+          0.009161,
+          0.010315
+        ],
+        "SE": [
+          0.006933,
+          0.006879
+        ]
+      },
+      "mean_static_holdout_dti_by_quadrant": {
+        "NW": 0.011625,
+        "NE": 0.008802,
+        "SW": 0.009738,
+        "SE": 0.006906
+      }
+    },
+    "COULOMBLOQO_dual45": {
+      "total_dots": 37654,
+      "quadrant_dot_allocation": {
+        "NW": {
+          "dots": 9172,
+          "share": 0.243586
+        },
+        "NE": {
+          "dots": 4475,
+          "share": 0.118845
+        },
+        "SW": {
+          "dots": 14593,
+          "share": 0.387555
+        },
+        "SE": {
+          "dots": 9414,
+          "share": 0.250013
+        }
+      },
+      "static_holdout_dti_by_fold": {
+        "NW": [
+          0.007339,
+          0.010273
+        ],
+        "NE": [
+          0.00753,
+          0.009867
+        ],
+        "SW": [
+          0.008232,
+          0.0103
+        ],
+        "SE": [
+          0.010597,
+          0.008155
+        ]
+      },
+      "mean_static_holdout_dti_by_quadrant": {
+        "NW": 0.008806,
+        "NE": 0.008699,
+        "SW": 0.009266,
+        "SE": 0.009376
+      }
+    },
+    "EULERFUSE_gravity": {
+      "total_dots": 37654,
+      "quadrant_dot_allocation": {
+        "NW": {
+          "dots": 10227,
+          "share": 0.271605
+        },
+        "NE": {
+          "dots": 4189,
+          "share": 0.11125
+        },
+        "SW": {
+          "dots": 14498,
+          "share": 0.385032
+        },
+        "SE": {
+          "dots": 8740,
+          "share": 0.232113
+        }
+      },
+      "static_holdout_dti_by_fold": {
+        "NW": [
+          0.009845,
+          0.013349
+        ],
+        "NE": [
+          0.006993,
+          0.010383
+        ],
+        "SW": [
+          0.009079,
+          0.009665
+        ],
+        "SE": [
+          0.008088,
+          0.00707
+        ]
+      },
+      "mean_static_holdout_dti_by_quadrant": {
+        "NW": 0.011597,
+        "NE": 0.008688,
+        "SW": 0.009372,
+        "SE": 0.007579
+      }
+    },
+    "BLINDFAULT_blind": {
+      "total_dots": 37654,
+      "quadrant_dot_allocation": {
+        "NW": {
+          "dots": 14518,
+          "share": 0.385563
+        },
+        "NE": {
+          "dots": 49,
+          "share": 0.001301
+        },
+        "SW": {
+          "dots": 14190,
+          "share": 0.376852
+        },
+        "SE": {
+          "dots": 8897,
+          "share": 0.236283
+        }
+      },
+      "static_holdout_dti_by_fold": {
+        "NW": [
+          0.003112,
+          0.004656
+        ],
+        "NE": [
+          0.0,
+          0.0
+        ],
+        "SW": [
+          0.006947,
+          0.005391
+        ],
+        "SE": [
+          0.003518,
+          0.003151
+        ]
+      },
+      "mean_static_holdout_dti_by_quadrant": {
+        "NW": 0.003884,
+        "NE": 0.0,
+        "SW": 0.006169,
+        "SE": 0.003334
+      }
+    },
+    "BLINDFAULT_blindflat": {
+      "total_dots": 37654,
+      "quadrant_dot_allocation": {
+        "NW": {
+          "dots": 10585,
+          "share": 0.281112
+        },
+        "NE": {
+          "dots": 111,
+          "share": 0.002948
+        },
+        "SW": {
+          "dots": 19806,
+          "share": 0.526
+        },
+        "SE": {
+          "dots": 7152,
+          "share": 0.18994
+        }
+      },
+      "static_holdout_dti_by_fold": {
+        "NW": [
+          0.004898,
+          0.008083
+        ],
+        "NE": [
+          0.000326,
+          0.0
+        ],
+        "SW": [
+          0.008162,
+          0.005785
+        ],
+        "SE": [
+          0.004046,
+          0.006162
+        ]
+      },
+      "mean_static_holdout_dti_by_quadrant": {
+        "NW": 0.00649,
+        "NE": 0.000163,
+        "SW": 0.006974,
+        "SE": 0.005104
+      }
+    },
+    "BLINDFAULT_blindtopo": {
+      "total_dots": 37654,
+      "quadrant_dot_allocation": {
+        "NW": {
+          "dots": 13316,
+          "share": 0.353641
+        },
+        "NE": {
+          "dots": 272,
+          "share": 0.007224
+        },
+        "SW": {
+          "dots": 15573,
+          "share": 0.413582
+        },
+        "SE": {
+          "dots": 8493,
+          "share": 0.225554
+        }
+      },
+      "static_holdout_dti_by_fold": {
+        "NW": [
+          0.003577,
+          0.004634
+        ],
+        "NE": [
+          0.0,
+          0.000323
+        ],
+        "SW": [
+          0.005385,
+          0.006677
+        ],
+        "SE": [
+          0.003435,
+          0.006739
+        ]
+      },
+      "mean_static_holdout_dti_by_quadrant": {
+        "NW": 0.004105,
+        "NE": 0.000161,
+        "SW": 0.006031,
+        "SE": 0.005087
+      }
+    }
+  },
+  "root_cause": "Uncalibrated 4-quadrant LOQO concatenates raw predict_proba outputs from 4 distinct out-of-quadrant classifiers across severe Great Basin tectonic covariate shift (e.g. NE Humboldt/Owyhee interior has far lower GPS geod_shearrate/geod_2ndinv and lower mapped fault prior 8.76 per 1000 px vs SW Walker Lane 14.37 per 1000 px), causing global top-K dot selection to starve NE (0.1%-0.7% of dots in BLINDFAULT; 11.1%-11.2% in COULOMBLOQO/EULERFUSE across 27.6% of the footprint) while over-crowding SW scarps (38.5%-52.6%, driving >70% sparse overlap with GEMSDOE23/GEMSDOE52)."
+}

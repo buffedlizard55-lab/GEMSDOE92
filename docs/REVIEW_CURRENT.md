@@ -1,4 +1,19 @@
-# Current review — 2026-10-25 (`BLINDFAULT` session; read this block first)
+# Current review — 2026-10-25 (`POISSONFLEX` session; read this block first)
+
+**✅ OK TO DOWNLOAD FOR RESEARCH (`10/10 + 13/13` automated format gates PASS, finite `[0, 1]`, zeros outside footprint); ⛔ DO NOT SUBMIT (`verdict: negative`, `submission_eligible: false`, `0` weekly slots spent).**
+
+1. **Previous-session next steps closed first:**
+   - Complete `1,321`-non-self-blob `dual_reading_decision` audit across all `102` `GEMSDOE` repos (`missing_blobs == 0`): `COULOMBLOQO standalone` (`0.739842 > 0.70`, `8` witnesses) and `COULOMBLOQO dual45` (`0.722420 > 0.70`, `4` witnesses) both fail closed (`evidence/coulomb_loqo_dual_reading_selector.json`).
+   - Exact root cause of `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` quantified (`evidence/ne_quadrant_loqo_collapse_diagnostic.json`): `NE` geodetic truncation (`B07` median `0.00`, `B04` median `3.80` vs `34.50` `SW`), regional gravity baseline shift (`-3.32` vs `-12.27 mGal`), and `SW+SE = 62.8%` catalogue skew.
+2. **Newest validated research GeoTIFF (`POISSONFLEX`, `gems/poissonflex.py`):**
+   - `docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif` (`SHA-256 = 37b18c200e84c77b39b07e527b17d4395968389aaf3ff0c175c71204b2065f9b`, `45,000` dots via nested visible-only OOF support; siblings `poissonflex_eq` & `poissonflex_raw` at `37,654` dots).
+   - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, `22,663` withheld positives): primary strict draw-blind `d_visible > 2.0` **`0.107466 [0.094158, 0.120431]`** (beats `H19-5` `0.096757` by `+0.010709 [+0.002297, +0.018444]`, `COULOMBDM` `0.094496`, and `BLINDFAULT` `0.047896`; trails `COULOMBLOQO standalone` `0.113890` by `-0.006424`); static `d_cat > 2.0` **`0.008824 [0.007601, 0.010081]`** (`2.20x` `R0` `0.004006`); off-catalogue `USGS SGMC PROXY` **`0.120957`** (`+35.4%` over `COULOMBLOQO standalone` `0.089332`); cures `NE` LOQO collapse (`22.7%` `NE` dots) and beats `COULOMBLOQO` in `NW` (`0.117551` vs `0.111948`).
+   - **Canaries & Uniqueness:** `32/32` canaries PASS (`max AUC = 0.616108 <= 0.90`). Passes all `97` local rasters (`<= 0.6488`), all `<= 80k`-dot public rasters across `102` repos (`<= 0.6804`), and continuous surface `|ρ|` across `1,404` public blobs (`<= 0.4668`), while failing the `150k` dot-field cap on `100k–126k`-px public rasters (`0.7541` on `62GEMSDOE ventcons`).
+   - Details: [`ANALYSIS_20261025_POISSONFLEX.md`](ANALYSIS_20261025_POISSONFLEX.md) · [`HYPOTHESES_20261025_POISSONFLEX.md`](HYPOTHESES_20261025_POISSONFLEX.md) · [run card](downloads/poissonflex_run_card.json) · [next steps](NEXT_STEPS.md).
+
+---
+
+# Prior review — 2026-10-25 (`BLINDFAULT` session)
 
 **✅ OK TO DOWNLOAD; ⛔ DO NOT SUBMIT (`verdict: negative`, fails the pre-registered holdout gate, not the uniqueness gate).**
 Newest unique artifact: `docs/downloads/gemsdoe92-blindfault-blindtopo-37654-20261025-4648eea5-zeros.tif` (best of three pre-registered arms). Primary **HOLDOUT-DTI** `0.047896 [0.038079, 0.057970]` (`gems57-pooled-hide-v2`, 22,663 withheld positives, strict draw-blind `d_visible > 2.0`) vs holdout-best `0.113316`. Unique under the dual reading against 91 local + 1,386 public exact-grid rasters (matched-budget worst `0.5219`, `|ρ|` worst `0.3402`; literal worst `1.000` from the full-footprint witness, printed not hidden). Dense-witness policy resolved in the shared template: `IRREGULARITIES.md` `#IR-92-DENSE-WITNESS-MATCHED-BUDGET`. Details: [`ANALYSIS_20261025_BLINDFAULT.md`](ANALYSIS_20261025_BLINDFAULT.md) · [run card](downloads/blindfault_run_card.json) · [next steps](NEXT_STEPS.md).
