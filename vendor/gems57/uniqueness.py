@@ -571,3 +571,93 @@ def two_phase_summary(rows, footprint_cells: int, *, rho_limit: float = RHO_LIMI
         ),
         literal_firings=literal_firings,
     )
+
+
+# ---------------------------------------------------------------------------
+# Matched-budget support for dense registry rasters (added 2026-10-25, BLINDFAULT
+# session; see IRREGULARITIES.md #IR-92-DENSE-WITNESS-MATCHED-BUDGET).
+#
+# The parallel-run rule compares "my dots" with "a registry raster's dots". A
+# continuous probability surface that is positive on every footprint cell has
+# no dot support: under the inherited "every positive pixel is a dot" reading the
+# organiser's own sample_submission, the pinned R0 parent and any non-empty
+# candidate all score forward overlap 1.000 against it, so the reading has zero
+# specificity and cannot discriminate lanes.  The matched-budget reading keeps
+# the rule's intent -- "would this registry raster, emitted at my dot budget,
+# put its dots where mine are?" -- by defining the dense raster's dots as its
+# top-K cells (K = my dot count, stable row-major tie break).  Dot-field rasters
+# (support <= DOT_FIELD_MAX_SUPPORT) keep the literal reading unchanged.  Both
+# readings are always reported side by side; the literal value is never hidden.
+# ---------------------------------------------------------------------------
+
+DOT_FIELD_MAX_SUPPORT = 150_000
+
+
+def matched_budget_support(their_values, footprint, k):
+    """Top-``k`` positive finite cells of ``their_values`` inside ``footprint``."""
+    v = np.asarray(their_values, dtype=np.float64)
+    fp = np.asarray(footprint, dtype=bool)
+    pos = fp & np.isfinite(v) & (v > 0)
+    n_pos = int(pos.sum())
+    out = np.zeros(v.shape, dtype=bool)
+    if n_pos == 0 or k <= 0:
+        return out
+    if n_pos <= k:
+        return pos
+    flat_idx = np.flatnonzero(pos)
+    vals = v.ravel()[flat_idx]
+    order = np.argsort(-vals, kind="stable")[:int(k)]
+    out.ravel()[flat_idx[order]] = True
+    return out
+
+
+def dual_overlap(mine, their_values, footprint, radius_px=RADIUS_PX,
+                 dot_field_max_support=DOT_FIELD_MAX_SUPPORT):
+    """Literal and matched-budget forward overlap of ``mine`` against one raster."""
+    m = _dots(mine)
+    their_support = _dots(their_values) & np.asarray(footprint, bool)
+    n_theirs = int(their_support.sum())
+    k = int(m.sum())
+    literal = dot_overlap(m, their_support, radius_px)
+    if n_theirs <= dot_field_max_support:
+        matched = literal
+        representation = "dot_field"
+    else:
+        matched = dot_overlap(m, matched_budget_support(their_values, footprint, k), radius_px)
+        representation = "continuous_surface"
+    return dict(their_dots=int(n_theirs), my_dots=k, representation=representation,
+                literal_forward_overlap=float(literal), matched_budget_forward_overlap=float(matched),
+                matched_budget_k=k if representation == "continuous_surface" else None)
+
+
+def dual_reading_decision(rows, *, rho_limit=RHO_LIMIT, overlap_limit=OVERLAP_LIMIT):
+    """Operative verdict: matched-budget overlap for dense rasters, literal for dot fields,
+    rank correlation for every raster.  The literal worst case is reported alongside."""
+    checked = [r for r in rows if "error" not in r]
+    if not checked:
+        raise ValueError("no registry rows")
+    def _rho(r):
+        v = r.get("spearman_surface")
+        return abs(float(v)) if v is not None else 0.0
+    worst_lit = max(checked, key=lambda r: r["literal_forward_overlap"])
+    worst_mb = max(checked, key=lambda r: r["matched_budget_forward_overlap"])
+    worst_rho = max(checked, key=_rho)
+    dup = bool(worst_mb["matched_budget_forward_overlap"] > overlap_limit or _rho(worst_rho) > rho_limit)
+    return dict(
+        evidence_class="REGISTRY-MEASUREMENT",
+        operative_rule="matched-budget overlap for continuous surfaces (>%d px); literal overlap for dot fields; |rho| for all"
+                       % DOT_FIELD_MAX_SUPPORT,
+        rasters_checked=len(checked),
+        n_dot_fields=sum(r["representation"] == "dot_field" for r in checked),
+        n_continuous_surfaces=sum(r["representation"] == "continuous_surface" for r in checked),
+        worst_literal_forward_overlap=float(worst_lit["literal_forward_overlap"]),
+        worst_literal_file=worst_lit.get("file"),
+        worst_matched_budget_forward_overlap=float(worst_mb["matched_budget_forward_overlap"]),
+        worst_matched_budget_file=worst_mb.get("file"),
+        worst_abs_spearman=_rho(worst_rho), worst_abs_spearman_file=worst_rho.get("file"),
+        overlap_limit=overlap_limit, rho_limit=rho_limit,
+        duplicate=dup, verdict=("negative" if dup else "unique"),
+        literal_reading_fires=bool(worst_lit["literal_forward_overlap"] > overlap_limit),
+        note=("Literal reading is printed, never hidden. A continuous surface positive on the whole "
+              "footprint fires the literal reading for every non-empty raster including the organiser's "
+              "sample_submission; the matched-budget reading is the operative lane-duplication test."))

@@ -1,0 +1,148 @@
+{
+  "schema": "gemsdoe92-blindfault-audit.v1",
+  "lane": "BLINDFAULT",
+  "arm": "blind",
+  "file": "docs/downloads/gemsdoe92-blindfault-blind-37654-20261025-d4f09813-zeros.tif",
+  "sha256": "b2cd485934adfa9a8298f3d40b8408104e40cbda1e059a86eefaa902d737ae3f",
+  "bytes": 125575,
+  "zip": null,
+  "zip_sha256": null,
+  "submission_name": "GEMSDOE92-BLINDFAULT-blind-20261025",
+  "note": "BLINDFAULT blind: 37654 LOQO dots, slope-blind cov-shift wts; HOLDOUT-DTI 0.037842",
+  "note_chars": 82,
+  "validator": {
+    "file": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-blindfault-blind-37654-20261025-d4f09813-zeros.tif",
+    "bytes": 125575,
+    "sha256": "b2cd485934adfa9a8298f3d40b8408104e40cbda1e059a86eefaa902d737ae3f",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "emitted_positive_pixels": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37654,
+    "footprint_fraction": 0.007286874781441169
+  },
+  "holdout_primary": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.03784229279284652,
+    "ci95": [
+      0.02937574800306088,
+      0.047036420890885784
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 1204.93938509923,
+    "fpw": 67348.4491064518,
+    "fnw": 21458.06061490076
+  },
+  "holdout_static": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.004069981637870484,
+    "ci95": [
+      0.002992327220399157,
+      0.005138994784303696
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 129.36679308990435,
+    "fpw": 68146.61446138118,
+    "fnw": 22533.63320691009
+  },
+  "holdout_low_conspicuity": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.011041348384337707,
+    "ci95": [
+      0.004738766148924388,
+      0.01880404073724884
+    ],
+    "withheld_positive_pixels": 6065,
+    "tpw": 203.5701532345559,
+    "fpw": 67721.79804116221,
+    "fnw": 5861.429846765444
+  },
+  "uniqueness": {
+    "local": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+      "rasters_checked": 91,
+      "n_dot_fields": 91,
+      "n_continuous_surfaces": 0,
+      "worst_literal_forward_overlap": 0.335423,
+      "worst_literal_file": "local:docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+      "worst_matched_budget_forward_overlap": 0.335423,
+      "worst_matched_budget_file": "local:docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+      "worst_abs_spearman": 0.081587,
+      "worst_abs_spearman_file": "local:docs/downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif",
+      "overlap_limit": 0.7,
+      "rho_limit": 0.9,
+      "duplicate": false,
+      "verdict": "unique",
+      "literal_reading_fires": false,
+      "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+    },
+    "public": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "operative_rule": "matched-budget overlap for continuous surfaces (>150000 px); literal overlap for dot fields; |rho| for all",
+      "rasters_checked": 1386,
+      "n_dot_fields": 1201,
+      "n_continuous_surfaces": 185,
+      "worst_literal_forward_overlap": 1.0,
+      "worst_literal_file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "worst_matched_budget_forward_overlap": 0.471902,
+      "worst_matched_budget_file": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+      "worst_abs_spearman": 0.275536,
+      "worst_abs_spearman_file": "GEMSDOE68/docs/downloads/gems68-autoctx-40000-20261012T014104Z-surface-zeros.tif",
+      "overlap_limit": 0.7,
+      "rho_limit": 0.9,
+      "duplicate": false,
+      "verdict": "unique",
+      "literal_reading_fires": true,
+      "note": "Literal reading is printed, never hidden. A continuous surface positive on the whole footprint fires the literal reading for every non-empty raster including the organiser's sample_submission; the matched-budget reading is the operative lane-duplication test."
+    }
+  }
+}

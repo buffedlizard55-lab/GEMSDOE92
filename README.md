@@ -1,4 +1,20 @@
-# GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench (`COULOMBDM s45coulomb55` Research Download)
+# GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
+
+**Read first:** the block immediately below is the newest session's automated decision (rendered from its run card). Older banners further down are historical lane closeouts kept for audit. Two questions are answered for every served file, by the project, with no human inspector: **(1) OK to download?** (format gates) **(2) OK to submit?** (pre-registered holdout gate + dual-reading uniqueness).
+
+<!-- BLINDFAULT:BEGIN (rendered by scripts/render_blindfault_site.py from evidence/blindfault_run_card.json) -->
+> ### Session 2026-10-25 — lane `BLINDFAULT` (new unique TIFF generated; verdict **`negative`**)
+> **✅ OK TO DOWNLOAD** (format-valid, unique) · **⛔ DO NOT SUBMIT — verdict `negative` (automated gate: primary HOLDOUT-DTI 0.047896 < holdout-best 0.113316)** · weekly slots used: **0** · experiments: **3/3**
+>
+> - **Download:** [`gemsdoe92-blindfault-blindtopo-37654-20261025-4648eea5-zeros.tif`](docs/downloads/gemsdoe92-blindfault-blindtopo-37654-20261025-4648eea5-zeros.tif) · [one-TIFF ZIP](docs/downloads/gemsdoe92-blindfault-blindtopo-37654-20261025-4648eea5-zeros.zip) · [audit JSON](docs/downloads/gemsdoe92-blindfault-blindtopo-37654-20261025-4648eea5-audit.json) · [run card](docs/downloads/blindfault_run_card.json) · [analysis](docs/ANALYSIS_20261025_BLINDFAULT.md) · [pre-registered hypotheses](docs/HYPOTHESES_20261025_BLINDFAULT.md)
+> - **SHA-256:** `c91170e5d4ffc67a18378aa9f479b8786ff6e92970e12e6646de14dbc6c5cf3d` · ZIP `5a01bcb7d7066982349d9f9357a4e7172c20e588364ac82b306aac4258a32181`
+> - **Validator (automated, no human step):** single band `float32`, `EPSG:32611`, `3730 × 3292`, finite values in `[0, 1]`, `0.0` outside footprint, 37,654 unit dots, 0 catalogue mass — written and re-read through `gems57.submission_writer` / `gems57.validate`.
+> - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives, strict draw-blind LOQO, `d_visible > 2.0`): `blindtopo` **0.047896 [0.038079, 0.057970]**; `blind` (hypothesis arm) 0.037842 [0.029376, 0.047036]; `blindflat` 0.047475 [0.035767, 0.059748]; `H19-5` reference 0.096757 [0.084640, 0.108096]; repository holdout-best `COULOMBLOQO standalone` 0.113316. Low-conspicuity tercile (mechanism instrument, 6,065 positives): `blind` 0.011041 [0.004739, 0.018804] vs `H19-5` 0.007166 [0.004529, 0.010079].
+> - **Leakage canaries:** max symmetric AUC 0.5728 (all ≤ 0.90).
+> - **Uniqueness (REGISTRY-MEASUREMENT, dual reading — `#IR-92-DENSE-WITNESS-MATCHED-BUDGET`):** local registry (91 rasters): matched-budget worst overlap 0.4014 (`local:docs/downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif`), literal worst 0.4014, worst |ρ| 0.0923; public registry (1386 Git-blob-verified rasters, 102 repos, complete=True): matched-budget worst overlap 0.5219 (`12GEMSDOE/docs/downloads/12GEMSDOE_r6-nms3-h28-texture_8721329b55c7.tif`), literal worst 1.0000, worst |ρ| 0.3402. Overlap with parent `R0`: 0.2613. Specificity proof: the organizer-scored parent `R0` itself has literal overlap 1.000 / matched-budget 0.037 against the dense witness.
+> - **Submission name:** `GEMSDOE92-BLINDFAULT-blindtopo-20261025` · **Note (86/140):** `BLINDFAULT blindtopo: 37654 LOQO dots, slope-blind cov-shift wts; HOLDOUT-DTI 0.047896`
+> - Sibling arms (also format-valid, research only): `gemsdoe92-blindfault-blind-37654-20261025-d4f09813-zeros.tif` (`b2cd485934adfa9a…`), `gemsdoe92-blindfault-blindflat-37654-20261025-1e27ea5c-zeros.tif` (`3ccf1d798a7a3e18…`).
+<!-- BLINDFAULT:END -->
 
 **Current review (2026-10-25, 1f514ffc):** [Three-pass audit and next steps](docs/REVIEW_1F514FFC.md) · [JSON run card](docs/downloads/review_1f514ffc_run_card.json). **No new TIFF generated; existing files are research-only, DO NOT SUBMIT.** Fresh pinned-witness rejection reproduced; publication primary selection now fails closed. The complete durable operating brief is in [`SESSION_PROMPT.md`](SESSION_PROMPT.md); read it and this README at every session start.
 
@@ -91,6 +107,18 @@ Full mathematical derivation: [`docs/ANALYSIS_20261024_COULOMBLOQO.md`](docs/ANA
 ---
 
 ## Reproducible Pipeline (Zero Manual Steps)
+
+`BLINDFAULT` (2026-10-25; 2 CPUs / 3 GB is enough):
+
+```bash
+python3 -m venv .venv && .venv/bin/pip install numpy scipy rasterio pandas pytest "scikit-learn>=1.5,<2.0"
+.venv/bin/python scripts/restore_inputs.py && .venv/bin/python scripts/verify_manifest.py   # SHA-256-pinned inputs → .cache/gems_inputs/
+PYTHONPATH=vendor .venv/bin/python scripts/run_blindfault.py        # features, canaries, 3 LOQO arms, HOLDOUT-DTI, dots → evidence/blindfault_holdout.json
+PYTHONPATH=vendor .venv/bin/python scripts/finalize_blindfault.py   # submission_writer TIFFs, local + cached public dual-reading uniqueness, run card
+.venv/bin/python scripts/render_blindfault_site.py                  # README/site status blocks rendered from the run card
+PYTHON=.venv/bin/python make test && PYTHON=.venv/bin/python make site && PYTHON=.venv/bin/python make verify && PYTHON=.venv/bin/python make ledger
+```
+
 
 `EULERFUSE` closeout (use a clean/scratch checkout because the builder refuses to overwrite pinned bytes):
 
