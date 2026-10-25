@@ -3,7 +3,7 @@
   "lane": "POISSONKNICK",
   "evidence_class": "REGISTRY-MEASUREMENT",
   "policy": "#IR-92-DENSE-WITNESS-MATCHED-BUDGET: both literal and matched-budget readings reported; fail-closed negative under literal Rule 1 because 17GEMSDOE E-proba-multiscale is positive on all 5,167,373 footprint pixels (literal overlap 1.000000 > 0.70).",
-  "local_registry_files_checked": 101,
+  "local_registry_files_checked": 104,
   "public_witness_files_checked": 7,
   "sibling_overlap": {
     "qcal_vs_uncal": 0.81654,
@@ -32,9 +32,9 @@
       "local": {
         "evidence_class": "REGISTRY-MEASUREMENT",
         "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
-        "rasters_checked": 101,
+        "rasters_checked": 104,
         "missing_or_invalid": 0,
-        "n_dot_fields": 101,
+        "n_dot_fields": 104,
         "n_continuous_surfaces": 0,
         "worst_literal_forward_overlap": 0.645668,
         "worst_literal_file": "local:docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
@@ -102,6 +102,15 @@
           "spearman_surface": 0.110645
         },
         {
+          "file": "local:docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif",
+          "their_dots": 45000,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.538455,
+          "matched_budget_forward_overlap": 0.538455,
+          "spearman_surface": 0.090143
+        },
+        {
           "file": "local:data/bridge/h19_5.tif",
           "their_dots": 121131,
           "my_dots": 37654,
@@ -118,15 +127,6 @@
           "literal_forward_overlap": 0.505258,
           "matched_budget_forward_overlap": 0.505258,
           "spearman_surface": 0.092891
-        },
-        {
-          "file": "local:docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
-          "their_dots": 37654,
-          "my_dots": 37654,
-          "representation": "dot_field",
-          "literal_forward_overlap": 0.496494,
-          "matched_budget_forward_overlap": 0.496494,
-          "spearman_surface": 0.074835
         }
       ],
       "top_public": [
@@ -199,9 +199,9 @@
       "local": {
         "evidence_class": "REGISTRY-MEASUREMENT",
         "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
-        "rasters_checked": 101,
+        "rasters_checked": 104,
         "missing_or_invalid": 0,
-        "n_dot_fields": 101,
+        "n_dot_fields": 104,
         "n_continuous_surfaces": 0,
         "worst_literal_forward_overlap": 0.65507,
         "worst_literal_file": "local:docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
@@ -278,6 +278,15 @@
           "spearman_surface": 0.09054
         },
         {
+          "file": "local:docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif",
+          "their_dots": 45000,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.503612,
+          "matched_budget_forward_overlap": 0.503612,
+          "spearman_surface": 0.085254
+        },
+        {
           "file": "local:docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
           "their_dots": 37654,
           "my_dots": 37654,
@@ -285,15 +294,6 @@
           "literal_forward_overlap": 0.489908,
           "matched_budget_forward_overlap": 0.489908,
           "spearman_surface": 0.075834
-        },
-        {
-          "file": "local:docs/downloads/h33-h33-2-b2-COULOMBLOQOnocoulomb-20261024-ab7c4415-zeros.tif",
-          "their_dots": 37654,
-          "my_dots": 37654,
-          "representation": "dot_field",
-          "literal_forward_overlap": 0.482631,
-          "matched_budget_forward_overlap": 0.482631,
-          "spearman_surface": 0.090853
         }
       ],
       "top_public": [
@@ -366,9 +366,9 @@
       "local": {
         "evidence_class": "REGISTRY-MEASUREMENT",
         "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
-        "rasters_checked": 101,
+        "rasters_checked": 104,
         "missing_or_invalid": 0,
-        "n_dot_fields": 101,
+        "n_dot_fields": 104,
         "n_continuous_surfaces": 0,
         "worst_literal_forward_overlap": 0.619244,
         "worst_literal_file": "local:docs/downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif",
@@ -436,6 +436,15 @@
           "spearman_surface": 0.110645
         },
         {
+          "file": "local:docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif",
+          "their_dots": 45000,
+          "my_dots": 37654,
+          "representation": "dot_field",
+          "literal_forward_overlap": 0.514872,
+          "matched_budget_forward_overlap": 0.514872,
+          "spearman_surface": 0.090143
+        },
+        {
           "file": "local:docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
           "their_dots": 37654,
           "my_dots": 37654,
@@ -452,15 +461,6 @@
           "literal_forward_overlap": 0.487837,
           "matched_budget_forward_overlap": 0.487837,
           "spearman_surface": 0.092891
-        },
-        {
-          "file": "local:docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif",
-          "their_dots": 37654,
-          "my_dots": 37654,
-          "representation": "dot_field",
-          "literal_forward_overlap": 0.485739,
-          "matched_budget_forward_overlap": 0.485739,
-          "spearman_surface": 0.080371
         }
       ],
       "top_public": [

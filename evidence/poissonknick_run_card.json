@@ -318,13 +318,13 @@
   },
   "correlation_overlap_vs_registry": {
     "evidence_class": "REGISTRY-MEASUREMENT",
-    "local_rasters_checked": 101,
+    "local_rasters_checked": 104,
     "local_dual_reading": {
       "evidence_class": "REGISTRY-MEASUREMENT",
       "operative_rule": "literal-all-rasters: overlap > limit OR |rho| > limit; matched-budget diagnostic only",
-      "rasters_checked": 101,
+      "rasters_checked": 104,
       "missing_or_invalid": 0,
-      "n_dot_fields": 101,
+      "n_dot_fields": 104,
       "n_continuous_surfaces": 0,
       "worst_literal_forward_overlap": 0.645668,
       "worst_literal_file": "local:docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",

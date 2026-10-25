@@ -1,4 +1,4 @@
-# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`POISSONKNICK` & `PROVINCETOE` Sessions)
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`POISSONKNICK`, `POISSONFLEX`, & `PROVINCETOE` Sessions)
 
 ## Completed this session (`POISSONKNICK`)
 
@@ -14,6 +14,22 @@
    - **Static Deployment `d_cat > 2.0` `HOLDOUT-DTI`:** `POISSONKNICK qcal` achieves **`0.009304 [0.007836, 0.010810]`**, beating `COULOMBLOQO standalone` (`0.009220`), `COULOMBLOQO dual45` (`0.009107`), `POISSONKNICK uncal` (`0.008877`), `HYDROCONDUIT f45hydro` (`0.008549`), `APRONRIDGE free1d` (`0.008354`), `COULOMBDM s45coulomb55` (`0.007816`), `POISSONKNICK pkdual40` (`0.007258`), `BLINDFAULT blindtopo` (`0.004585`), and `R0` (`0.004006`, paired $\Delta = +0.005298\ [+0.004133, +0.006564]$), while passing **even the `<= 150k`-px sparse public witnesses (`GEMSDOE23` `100k`, `62GEMSDOE` `120k`, `GEMSDOE52` `61k`) at `<= 0.625432 <= 0.70`** and all local rasters!
    - **Strict Draw-Blind `d_visible > 2.0` `HOLDOUT-DTI`:** `POISSONKNICK qcal = 0.098491 [0.086315, 0.112473]` beats `pkdual40` (`0.095362`), `uncal` (`0.090988`, paired $\Delta = +0.007503\ [+0.000592, +0.015116]$), and `H19_5_vis_d2` (`0.071758`, paired $\Delta = +0.026733\ [+0.017606, +0.036511]$), and achieves **`2.49x` higher `HOLDOUT-DTI` on flat basin-floor faults (`T1`: `0.042254` vs `0.016969`)**.
    - **Uniqueness (`REGISTRY-MEASUREMENT`):** Under fail-closed governance, verdict remains `negative` (`OK TO DOWNLOAD FOR RESEARCH`, `DO NOT SUBMIT`) because pooled strict draw-blind `0.098491 < 0.113316` (`COULOMBLOQO standalone`) and literal overlap is `1.000000` on the dense `5,167,373`-px witness `17GEMSDOE_E-proba-multiscale`.
+
+---
+
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`POISSONFLEX` & `PROVINCETOE` Merge)
+
+## Completed in `POISSONFLEX` session
+
+1. Closed prior-session items #1 (`evidence/coulomb_loqo_dual_reading_selector.json`) and #2 (`evidence/ne_quadrant_loqo_collapse_diagnostic.json`).
+2. Pre-registered 4 untried hypotheses (`docs/HYPOTHESES_20261025_POISSONFLEX.md`) and implemented Rank #1 `POISSONFLEX` (`gems/poissonflex.py`, `32/32` canaries PASS `<= 0.616108`).
+3. Built & validated `docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif` (`SHA-256 = 37b18c200e84c77b39b07e527b17d4395968389aaf3ff0c175c71204b2065f9b`, `45,000` nested OOF dots): strict draw-blind `HOLDOUT-DTI = 0.107466 [0.094158, 0.120431]` (ahead of `PROVINCETOE` `0.106452` and `H19-5` `0.096757`), static `0.008824`, and off-catalogue `USGS SGMC PROXY = 0.120957` (`+35.4%` over `COULOMBLOQO`). Locally unique across all `101` repo rasters (`<= 0.6488`); `verdict = "negative"`, `0` weekly slots spent (`evidence/poissonflex_run_card.json`).
+
+## Highest-P(Win) next steps for the next session
+
+1. **End-to-End 2D Patch ConvNet Trained Directly on Differentiable `300 m` Soft-DTI Loss:** Replace pixelwise `HistGradientBoostingClassifier` with a `64 × 64`-patch dilated 2D ConvNet minimizing $1 - \text{Soft-DTI}_{300\text{m}}(\alpha=0.2, \beta=0.8)$ across `8` buffered LOQO folds on the combined `POISSONFLEX` + `PROVINCETOE` + `COULOMBLOQO` physical features.
+2. **Selective Subsurface-Only Quadrant Calibration (`#IR-92-NE-QUADRANT-DOUBLE-EDGED-CALIBRATION`):** Apply within-quadrant rank alignment only to regional-drift subsurface channels while preserving catalogue-prior scaling on surface scarp channels.
+3. **External Official Public Data Staging (Outside Sandbox):** Stage [USGS 3DEP](https://www.usgs.gov/3d-elevation-program) `10 m / 1 m` DEM scarp curvature tiles and record the first `ORGANIZER-CONFIRMED` DrivenData receipt in `ledger/submissions.csv`.
 
 ---
 
