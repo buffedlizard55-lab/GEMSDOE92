@@ -256,7 +256,7 @@ def main() -> int:
                f"lit={dp['worst_literal_forward_overlap']:.4f}, |rho|={dp['worst_abs_spearman']:.4f}" if dp else ""))
     (EVIDENCE / "blindfault_uniqueness.json").write_text(json.dumps(dict(
         schema="gemsdoe92-blindfault-uniqueness.v1", lane="BLINDFAULT",
-        policy="#IR-92-DENSE-WITNESS-MATCHED-BUDGET: literal and matched-budget readings reported; operative = matched-budget for >150k-px surfaces",
+        policy="literal-all-rasters: overlap/rank gates binding; matched-budget diagnostic only (REVIEW376A)",
         local_registry_files=len(reg_local), public_registry=pub_meta, skipped_local=skipped_local,
         skipped_public=skipped_pub[:50], sibling_overlap=sib, dense_witness_specificity=specificity, by_arm=uniq,
         rows_local={a: rows_local[a] for a in arms}, rows_public={a: rows_pub[a] for a in arms}), indent=1) + "\n")
@@ -278,7 +278,7 @@ def main() -> int:
     flat = primary_scores.get("blindflat")
     paired = hold["holdout"]["primary_dvis2"].get("paired", {})
     u_best = uniq[best]
-    unique_ok = (not u_best["local"]["duplicate"]) and (u_best["public"] is not None and not u_best["public"]["duplicate"]
+    unique_ok = (not u_best["local"]["stop_required"]) and (u_best["public"] is not None and not u_best["public"]["stop_required"]
                                                         and pub_meta.get("complete", False))
     beats_best = best_sc["dti"] > ref["dti"]
     verdict = "promote" if (beats_best and unique_ok) else "negative"

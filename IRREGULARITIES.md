@@ -1004,3 +1004,10 @@ Pages closeout for session 918b947a: `PUT /repos/buffedlizard55-lab/GEMSDOE92/pa
 - Pages API still reports legacy build mode. Actions validation is not a verified guard on public publication in that mode. No current organizer leaderboard/weekly cap/receipt verified.
 - Initial regression run exposed a fixture relying on implicit primary selection. Updated that fixture to mark the primary explicitly, retaining its missing-receipt assertion; final suite passes.
 - See `docs/REVIEW_1F514FFC.md` and `evidence/review_1f514ffc_run_card.json`.
+
+
+## 2026-10-25 — REVIEW376A: shared dual-reading helper bypassed literal gate
+
+`dual_reading_decision` treated dense-raster matched-budget overlap as operative despite the user's unchanged literal stop rule. This could return `unique` at literal overlap 1.0; error rows were dropped and nonfinite measurements could evade thresholds. Fixed once in `vendor/gems57/uniqueness.py`: literal overlap/rank correlation bind every representation, invalid metrics fail closed, error rows block, and the summary never grants slot eligibility. Matched-budget measurements remain available as diagnostics. Historical receipts are immutable; `#IR-92-DENSE-WITNESS-MATCHED-BUDGET` does not authorize overriding the prompt. The renderer now preserves this distinction even with stale eligibility fields. Fresh rejection evidence: `evidence/review376a_preflight.json` and `evidence/review376a_primary_witness.json`. No new TIFF, model experiment or weekly slot used. See `docs/REVIEW_376A8469.md`.
+
+Fresh Pages API: legacy publication; `PUT /repos/buffedlizard55-lab/GEMSDOE92/pages` with `build_type=workflow` returned HTTP 403 `Resource not accessible by integration`. No Actions publication-gate protection of legacy deployment is claimed. Official non-GitHub sources, current cap and organizer scores remain unverified in this allowlisted sandbox.

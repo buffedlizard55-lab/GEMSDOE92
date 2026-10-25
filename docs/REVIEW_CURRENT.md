@@ -1,4 +1,10 @@
-# Current review — 2026-10-25 (`BLINDFAULT`)
+# Current protocol review — 2026-10-25 (`376a8469`)
+
+**Research downloads only. DO NOT SUBMIT.** The shared dual-reading helper now enforces the literal duplicate stop for every raster. Matched-budget overlap is diagnostic, not a specification change. Prior claims below that the policy was automatically resolved are historical and superseded. No new TIFF or geological experiment was generated in this review. See [review, conditional hypotheses and ordered next steps](REVIEW_376A8469.md) and [fresh run card](downloads/review376a_run_card.json). A new submission-cleared artifact remains unfulfilled.
+
+---
+
+# Historical lane review — 2026-10-25 (`BLINDFAULT`)
 
 **✅ OK TO DOWNLOAD FOR RESEARCH; ⛔ DO NOT SUBMIT** (`verdict: negative`, fails the pre-registered holdout gate; submission_eligible=false). The newly generated artifact and current run card are linked in the [three-pass closeout review](REVIEW_20261025_BLINDFAULT_CLOSEOUT.md). Primary **HOLDOUT-DTI** is `0.047896 [0.038079, 0.057970]` (`gems57-pooled-hide-v2`, 22,663 withheld positives, strict draw-blind `d_visible > 2.0`), below the recorded repository holdout-best `0.113316`. The run card reports dual registry measurements: matched-budget worst overlap `0.5219`, literal worst `1.000`, worst absolute correlation `0.3402`; literal result is not omitted. These do not establish organizer acceptance or a competition score.
 
