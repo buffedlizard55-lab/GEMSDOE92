@@ -43,7 +43,7 @@ def main() -> int:
     except (OSError, ValueError, KeyError, TypeError) as exc:
         print(f'PUBLIC STATUS FAIL: {exc}', file=sys.stderr)
         return 1
-    print('PUBLIC STATUS PASS: primary bytes and first panel agree on all three pages')
+    print('PUBLIC STATUS PASS: primary bytes and first panel agree on all public entry pages')
     return 0
 
 

@@ -14,7 +14,8 @@ from .rasters import sha256_file
 
 BEGIN = '<!-- PUBLIC-STATUS:BEGIN -->'
 END = '<!-- PUBLIC-STATUS:END -->'
-PAGES = ('index.html', 'executive-summary.html', 'SUBMIT.html')
+PAGES = ('index.html', 'executive-summary.html', 'SUBMIT.html',
+         'index_new.html', 'SUBMIT_NOW.html')
 
 
 def validate_status(card: dict, root: Path, primary_rel: str) -> None:
