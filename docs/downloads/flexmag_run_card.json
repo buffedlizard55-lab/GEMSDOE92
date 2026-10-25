@@ -1,0 +1,1464 @@
+{
+ "schema": "gemsdoe92-flexmag-run-card.v1",
+ "generated_utc": "2026-10-25T16:58:52.942664+00:00",
+ "lane": "FLEXMAG",
+ "hypothesis": "Blind (non-breaching) normal faults express as a mesoscale forced-fold hinge in basement depth/detrended elevation co-located with a strike-blind TMI analytic-signal edge.",
+ "mechanism": "DoG band-pass (6-30 px) hinge crest of B15/B12 x mesoscale structure-tensor coherence x (0.30+0.70*magASA) concordance; 37,654 spaced dots (>=2.8 px), d_catalogue>2 px.",
+ "named_non_fault_mimic": "Sedimentary onlap / paleo-valley margins and regional basin-edge flexure (hinge, no mag edge); dike margins (mag edge, no flexure).",
+ "band_descriptions_from_stack": {
+  "2": "rtp - Reduced to pole magnetic data - magnetic anomaly corrected for latitude effects",
+  "3": "tmi_hg - Total magnetic intensity horizontal gradient - rate of change in horizontal direction",
+  "9": "tmi_vg - Total magnetic intensity vertical gradient - rate of change in vertical direction",
+  "12": "det_elev - Detrended elevation - topography with regional trends removed",
+  "15": "depth_to_base_surf - Depth to basement surface - thickness of sedimentary cover"
+ },
+ "pinned_inputs": {
+  "training_features": {
+   "path": "/home/user/GEMSDOE92/.cache/gems_inputs/training_features.tif",
+   "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+   "bytes": 418912844,
+   "ok": true
+  },
+  "sample_submission": {
+   "path": "/home/user/GEMSDOE92/.cache/gems_inputs/bridge/sample_submission.tif",
+   "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+   "bytes": 1599597,
+   "ok": true
+  },
+  "existing_faults": {
+   "path": "/home/user/GEMSDOE92/.cache/gems_inputs/bridge/existing_faults.tif",
+   "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+   "bytes": 425830,
+   "ok": true
+  }
+ },
+ "experiments": [
+  "flexmag",
+  "flex",
+  "mag"
+ ],
+ "control": "gravquad_control (existing lane surface, re-placed)",
+ "leakage_canaries": {
+  "values": {
+   "hinge": 0.566271,
+   "coherence": 0.524129,
+   "mag": 0.517004,
+   "S_flexmag": 0.541917,
+   "S_flex": 0.54232,
+   "S_mag": 0.519532,
+   "B15_depth_to_base": 0.531481,
+   "B12_det_elev": 0.500857,
+   "B03_tmi_hg": 0.517597,
+   "B09_tmi_vg": 0.503978,
+   "B02_rtp": 0.509181,
+   "gravquad_asa": 0.536804,
+   "gravquad_coherence": 0.505825,
+   "gravquad_S": 0.529574
+  },
+  "max_symmetric_auc": 0.566271,
+  "limit": 0.9,
+  "n_positive": 18900,
+  "n_negative_sampled": 500000
+ },
+ "holdout_primary": {
+  "evidence_class": "HOLDOUT-DTI",
+  "evaluator_version": "gems57-pooled-hide-v2",
+  "instrument": "per-draw re-placement, fold-visible (masked_known) clearance >2px",
+  "folds": 8,
+  "withheld_positive_pixels": 22663,
+  "scores": {
+   "flexmag": {
+    "dti": 0.0455541713752791,
+    "ci95": [
+     0.0358455652818139,
+     0.05675073162693592
+    ]
+   },
+   "flex": {
+    "dti": 0.0489800477122523,
+    "ci95": [
+     0.038488686987014874,
+     0.06081587690466858
+    ]
+   },
+   "mag": {
+    "dti": 0.045106532670774066,
+    "ci95": [
+     0.03549264338777397,
+     0.054612778882344046
+    ]
+   },
+   "gravquad_control": {
+    "dti": 0.04318384383173583,
+    "ci95": [
+     0.03383169752507645,
+     0.05141754677234744
+    ]
+   }
+  },
+  "paired_differences_vs_flexmag": {
+   "flex": {
+    "delta": -0.0034258763369732007,
+    "ci95": [
+     -0.013280102611776456,
+     0.005274978369139595
+    ]
+   },
+   "mag": {
+    "delta": 0.0004476387045050309,
+    "ci95": [
+     -0.008929086045293104,
+     0.011291014499276492
+    ]
+   },
+   "gravquad_control": {
+    "delta": 0.0023703275435432644,
+    "ci95": [
+     -0.012741382164239947,
+     0.017602193897637033
+    ]
+   }
+  },
+  "per_fold": {
+   "flexmag": [
+    0.074968,
+    0.011296,
+    0.066062,
+    0.043825,
+    0.036498,
+    0.007639,
+    0.052929,
+    0.037953
+   ],
+   "flex": [
+    0.083877,
+    0.02066,
+    0.051377,
+    0.081493,
+    0.048516,
+    0.027297,
+    0.037212,
+    0.047268
+   ],
+   "mag": [
+    0.041735,
+    0.014569,
+    0.065027,
+    0.033908,
+    0.041662,
+    0.006212,
+    0.070999,
+    0.036252
+   ],
+   "gravquad_control": [
+    0.032836,
+    0.025638,
+    0.023989,
+    0.055714,
+    0.040435,
+    0.06465,
+    0.02538,
+    0.073739
+   ]
+  },
+  "pooled": {
+   "evidence_class": "HOLDOUT-DTI",
+   "evaluator_version": "gems57-pooled-hide-v2",
+   "alpha": 0.2,
+   "beta": 0.8,
+   "triangular_radius_m": 300.0,
+   "pooled": true,
+   "scores": {
+    "flexmag": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "dti": 0.0455541713752791,
+     "ci95": [
+      0.0358455652818139,
+      0.05675073162693592
+     ],
+     "withheld_positive_pixels": 22663,
+     "tpw": 1496.629882015896,
+     "fpw": 72120.61669109517,
+     "fnw": 21166.370117984105
+    },
+    "flex": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "dti": 0.0489800477122523,
+     "ci95": [
+      0.038488686987014874,
+      0.06081587690466858
+     ],
+     "withheld_positive_pixels": 22663,
+     "tpw": 1607.0503884043596,
+     "fpw": 71792.48319170257,
+     "fnw": 21055.949611595643
+    },
+    "mag": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "dti": 0.045106532670774066,
+     "ci95": [
+      0.03549264338777397,
+      0.054612778882344046
+     ],
+     "withheld_positive_pixels": 22663,
+     "tpw": 1487.5314883448798,
+     "fpw": 72751.38344876115,
+     "fnw": 21175.46851165511
+    },
+    "gravquad_control": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "dti": 0.04318384383173583,
+     "ci95": [
+      0.03383169752507645,
+      0.05141754677234744
+     ],
+     "withheld_positive_pixels": 22663,
+     "tpw": 1374.3084282066611,
+     "fpw": 67096.67672818662,
+     "fnw": 21288.691571793333
+    }
+   },
+   "best_comparable_control": "flex",
+   "paired_differences": {
+    "flex": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": -0.0034258763369732007,
+     "ci95": [
+      -0.013280102611776456,
+      0.005274978369139595
+     ],
+     "withheld_positive_pixels": 22663
+    },
+    "mag": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": 0.0004476387045050309,
+     "ci95": [
+      -0.008929086045293104,
+      0.011291014499276492
+     ],
+     "withheld_positive_pixels": 22663
+    },
+    "gravquad_control": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": 0.0023703275435432644,
+     "ci95": [
+      -0.012741382164239947,
+      0.017602193897637033
+     ],
+     "withheld_positive_pixels": 22663
+    }
+   },
+   "bootstrap": {
+    "method": "paired physical spatial-cluster percentile",
+    "clusters": 156,
+    "draws": 1000,
+    "seed": 520810,
+    "confidence": 0.95,
+    "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+   },
+   "implementation_sha256": {
+    "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+    "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+    "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+    "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+   }
+  }
+ },
+ "holdout_static_diagnostic": {
+  "evidence_class": "HOLDOUT-DTI (biased-down diagnostic: final dots were placed with full-catalogue clearance, so they cannot approach withheld truth closer than 2 px)",
+  "scores": {
+   "flexmag": {
+    "dti": 0.006025793771023776,
+    "ci95": [
+     0.004582542847578501,
+     0.007489684944647685
+    ]
+   },
+   "flex": {
+    "dti": 0.0068907682802149236,
+    "ci95": [
+     0.005024018466407913,
+     0.008782949737309854
+    ]
+   },
+   "mag": {
+    "dti": 0.0061128694019506645,
+    "ci95": [
+     0.004540116224034017,
+     0.007684156995811674
+    ]
+   },
+   "R0": {
+    "dti": 0.004006147174684743,
+    "ci95": [
+     0.0034243961318463374,
+     0.004689525221466778
+    ]
+   }
+  }
+ },
+ "sgmc_proxy": {
+  "flexmag": {
+   "evidence_class": "PROXY (SGMC off-catalogue; not a score)",
+   "dti": 0.06891,
+   "n_truth": 79615
+  },
+  "flex": {
+   "evidence_class": "PROXY (SGMC off-catalogue; not a score)",
+   "dti": 0.087161,
+   "n_truth": 79615
+  },
+  "mag": {
+   "evidence_class": "PROXY (SGMC off-catalogue; not a score)",
+   "dti": 0.057397,
+   "n_truth": 79615
+  }
+ },
+ "promotion_bar": {
+  "primary_dti_must_exceed": 0.113316,
+  "source": "COULOMB-LOQO draw-blind record encoded in prior builders (repo-recorded, not recomputed this session)"
+ },
+ "correlation_overlap_vs_registry": {
+  "evidence_class": "REGISTRY-MEASUREMENT (local registry only; public 102-repo scan NOT rerun this session)",
+  "surface_worst_abs_rho": {
+   "flexmag": {
+    "abs_rho": 0.065831,
+    "file": "data/bridge/h19_5.tif"
+   },
+   "flex": {
+    "abs_rho": 0.068607,
+    "file": "docs/downloads/gemsdoe92-listriclag-20261025T145312Z-n90k-zeros.tif"
+   },
+   "mag": {
+    "abs_rho": 0.075517,
+    "file": "docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif"
+   }
+  },
+  "surface_rows": [
+   {
+    "file": "docs/downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.003965,
+    "rho_flex": 0.002445,
+    "rho_mag": 0.00591
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-blindfault-blind-37654-20261025-d4f09813-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.001575,
+    "rho_flex": -0.001588,
+    "rho_mag": -0.001314
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-blindfault-blindflat-37654-20261025-1e27ea5c-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.019047,
+    "rho_flex": 0.009619,
+    "rho_mag": 0.01196
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-blindfault-blindtopo-37654-20261025-4648eea5-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.004067,
+    "rho_flex": -0.002004,
+    "rho_mag": 0.00499
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-curiedemag-20261026T000000Z-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.021494,
+    "rho_flex": 0.004585,
+    "rho_mag": 0.020379
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.053431,
+    "rho_flex": 0.046663,
+    "rho_mag": 0.016822
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-eulerfuse-gravity-37654-20261024-d7133700-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.028717,
+    "rho_flex": 0.022872,
+    "rho_mag": 0.016464
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.026413,
+    "rho_flex": 0.019029,
+    "rho_mag": 0.020994
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-faultnet-netdens-37654-20261025-517af913-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.028626,
+    "rho_flex": 0.019607,
+    "rho_mag": 0.022649
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.026059,
+    "rho_flex": 0.018367,
+    "rho_mag": 0.021166
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-gravquad-20261025T145744Z-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": -0.00344,
+    "rho_flex": 0.010858,
+    "rho_mag": -0.025576
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-listricdip-anti22-9571-20261025T190000Z-zeros.tif",
+    "their_positive": 9571,
+    "rho_flexmag": -0.010287,
+    "rho_flex": -0.008658,
+    "rho_mag": -0.012893
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-listricdip-anti35-9555-20261025T190000Z-zeros.tif",
+    "their_positive": 9555,
+    "rho_flexmag": -0.01092,
+    "rho_flex": -0.009626,
+    "rho_mag": -0.01302
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.006329,
+    "rho_flex": 0.002612,
+    "rho_mag": 0.006501
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-listriclag-20261025T145312Z-n90k-zeros.tif",
+    "their_positive": 90000,
+    "rho_flexmag": 0.06468,
+    "rho_flex": 0.068607,
+    "rho_mag": 0.004117
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-listriclag-20261025T145312Z-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.049431,
+    "rho_flex": 0.053877,
+    "rho_mag": 0.001189
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-poissonflex-poissonflex_eq-37654-20261025-5512bd34-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.033854,
+    "rho_flex": 0.02486,
+    "rho_mag": 0.023951
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif",
+    "their_positive": 45000,
+    "rho_flexmag": 0.03713,
+    "rho_flex": 0.027685,
+    "rho_mag": 0.024688
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-poissonflex-poissonflex_raw-37654-20261025-be99276b-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.031717,
+    "rho_flex": 0.024142,
+    "rho_mag": 0.020807
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-poissonknick-pkdual40-37654-20261025-6c1bf3ba-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.02717,
+    "rho_flex": 0.021659,
+    "rho_mag": 0.031727
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-poissonknick-qcal-37654-20261025-9cfcc9b9-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.026575,
+    "rho_flex": 0.021513,
+    "rho_mag": 0.032206
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-poissonknick-uncal-37654-20261025-da9bfc4a-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.031365,
+    "rho_flex": 0.020614,
+    "rho_mag": 0.043676
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-provincetoe-globalraw-37654-20261025-73b06876-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.028342,
+    "rho_flex": 0.01752,
+    "rho_mag": 0.023189
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-provincetoe-piedbasin-37654-20261025-c22542ae-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.027889,
+    "rho_flex": 0.021548,
+    "rho_mag": 0.018477
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-provincetoe-provincetoe-37654-20261025-8b69d44e-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.029736,
+    "rho_flex": 0.023736,
+    "rho_mag": 0.019444
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-radiocontact-20261025T041646Z-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.00041,
+    "rho_flex": 0.009003,
+    "rho_mag": -0.012579
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-radiodecouple-demag-37654-20261025-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.007422,
+    "rho_flex": 0.00406,
+    "rho_mag": 0.007799
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-radiodecouple-dual35-37654-20261025-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.011623,
+    "rho_flex": 0.015045,
+    "rho_mag": -0.000103
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-radiodecouple-standalone-37654-20261025-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": -0.000746,
+    "rho_flex": 0.003856,
+    "rho_mag": -0.007356
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.01507,
+    "rho_flex": 0.013603,
+    "rho_mag": 0.002142
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.016836,
+    "rho_flex": 0.013478,
+    "rho_mag": 0.005824
+   },
+   {
+    "file": "docs/downloads/gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-zeros.tif",
+    "their_positive": 47000,
+    "rho_flexmag": 0.017558,
+    "rho_flex": 0.013755,
+    "rho_mag": 0.005531
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.045472,
+    "rho_flex": 0.020191,
+    "rho_mag": 0.075517
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.031961,
+    "rho_flex": 0.027869,
+    "rho_mag": 0.017244
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-APRONRIDGEs50f50-20261024-2f0431ea-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.031688,
+    "rho_flex": 0.027088,
+    "rho_mag": 0.017176
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-APRONRIDGEs60f40-20261024-6e7e0174-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.033994,
+    "rho_flex": 0.029749,
+    "rho_mag": 0.017985
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-BASEMENTEDGEstep3-20261024-80719f12-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.025961,
+    "rho_flex": 0.029703,
+    "rho_mag": 3e-06
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-BREAKLINEf33Ltop-20261024-5f112439-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.028997,
+    "rho_flex": 0.025636,
+    "rho_mag": 0.012833
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-BREAKLINEf38Ltop-20261024-c6803c1c-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.028098,
+    "rho_flex": 0.024928,
+    "rho_mag": 0.012352
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-BREAKLINEf45Ltop-20261024-57fa85f0-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.026075,
+    "rho_flex": 0.023244,
+    "rho_mag": 0.01113
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.031754,
+    "rho_flex": 0.014923,
+    "rho_mag": 0.050268
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-COULOMBDMs35coulomb65-20261024-1091c5a7-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.025622,
+    "rho_flex": 0.012359,
+    "rho_mag": 0.041299
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.028738,
+    "rho_flex": 0.016515,
+    "rho_mag": 0.039025
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-COULOMBLOQOdual45-20261024-dd91d98c-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.025674,
+    "rho_flex": 0.017907,
+    "rho_mag": 0.018358
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-COULOMBLOQOnocoulomb-20261024-ab7c4415-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.029818,
+    "rho_flex": 0.022913,
+    "rho_mag": 0.014995
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.027098,
+    "rho_flex": 0.019325,
+    "rho_mag": 0.018688
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-COULOMBfree-20261024-d0cf5db5-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.00148,
+    "rho_flex": -0.003979,
+    "rho_mag": 0.019488
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-COULOMBopen-20261024-58a7a394-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.006066,
+    "rho_flex": 0.001386,
+    "rho_mag": 0.024549
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-COULOMBseismo-20261024-d243140b-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.004386,
+    "rho_flex": -0.002762,
+    "rho_mag": 0.022284
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.036363,
+    "rho_flex": 0.031535,
+    "rho_mag": 0.017141
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.037176,
+    "rho_flex": 0.032111,
+    "rho_mag": 0.018071
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.037349,
+    "rho_flex": 0.031874,
+    "rho_mag": 0.019116
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.033111,
+    "rho_flex": 0.013183,
+    "rho_mag": 0.034257
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-GEOTENSIONs50f50-20261025-caa53f9d-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.03513,
+    "rho_flex": 0.016845,
+    "rho_mag": 0.032619
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-GEOTENSIONs60f40-20261025-ab46201e-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.03828,
+    "rho_flex": 0.020913,
+    "rho_mag": 0.033741
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.026981,
+    "rho_flex": 0.019028,
+    "rho_mag": 0.028832
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-HYDROCONDUITf45pied-20261024-3c236840-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.026587,
+    "rho_flex": 0.019612,
+    "rho_mag": 0.017914
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.025821,
+    "rho_flex": 0.017626,
+    "rho_mag": 0.029066
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-KNICKLOQOdual35-20261025-8eedc094-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.024824,
+    "rho_flex": 0.018942,
+    "rho_mag": 0.026518
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.02924,
+    "rho_flex": 0.024004,
+    "rho_mag": 0.027227
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-KNICKLOQOuncal-20261025-61b98143-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.028695,
+    "rho_flex": 0.02018,
+    "rho_mag": 0.033495
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-LISTRICdual35-20261026-2b8b394a-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.033575,
+    "rho_flex": 0.032597,
+    "rho_mag": 0.010585
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.032537,
+    "rho_flex": 0.030696,
+    "rho_mag": 0.00881
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-LISTRICuncal-20261026-fc9686b5-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.035834,
+    "rho_flex": 0.032883,
+    "rho_mag": 0.010843
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21-zeros.tif",
+    "their_positive": 29076,
+    "rho_flexmag": 0.036091,
+    "rho_flex": 0.032488,
+    "rho_mag": 0.015669
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-NEOOPNSfree1d-20261025-a4c91e43-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.01682,
+    "rho_flex": 0.012936,
+    "rho_mag": 0.006989
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-NEOOPNSs35c65-20261025-e4d82847-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.017424,
+    "rho_flex": 0.012876,
+    "rho_mag": 0.009323
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-NEOOPNSs45c55-20261025-63d84095-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.018918,
+    "rho_flex": 0.014276,
+    "rho_mag": 0.01003
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.02532,
+    "rho_flex": 0.024537,
+    "rho_mag": 0.006388
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-PIEDFRONTf40Ptop-20261024-6b0cd56a-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.023621,
+    "rho_flex": 0.02279,
+    "rho_mag": 0.006105
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-PIEDFRONTf45Ptop-20261024-aad86ac9-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.021598,
+    "rho_flex": 0.020929,
+    "rho_mag": 0.005123
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.042471,
+    "rho_flex": 0.035906,
+    "rho_mag": 0.023145
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.020969,
+    "rho_flex": 0.01926,
+    "rho_mag": 0.010907
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.026968,
+    "rho_flex": 0.028352,
+    "rho_mag": 0.005519
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif",
+    "their_positive": 5000,
+    "rho_flexmag": 0.003334,
+    "rho_flex": 0.001883,
+    "rho_mag": 0.004001
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.03082,
+    "rho_flex": 0.020876,
+    "rho_mag": 0.02145
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.028526,
+    "rho_flex": 0.017459,
+    "rho_mag": 0.022501
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.026674,
+    "rho_flex": 0.013803,
+    "rho_mag": 0.023855
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.032177,
+    "rho_flex": 0.026824,
+    "rho_mag": 0.016379
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.001114,
+    "rho_flex": 0.002163,
+    "rho_mag": -0.008249
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-XPHASEnophase-20261024-2159567d-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": -0.010327,
+    "rho_flex": -0.007127,
+    "rho_mag": -0.01409
+   },
+   {
+    "file": "docs/downloads/h33-h33-2-b2-XPHASEstandalone-20261024-023ac854-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": -0.010649,
+    "rho_flex": -0.007886,
+    "rho_mag": -0.013354
+   },
+   {
+    "file": "releases/h33-h33-2-b2-MASS_A10-20261023-e5613a00-zeros.tif",
+    "their_positive": 41419,
+    "rho_flexmag": 0.037424,
+    "rho_flex": 0.034921,
+    "rho_mag": 0.015923
+   },
+   {
+    "file": "releases/h33-h33-2-b2-MASS_D10-20261023-e26a6cb8-zeros.tif",
+    "their_positive": 33889,
+    "rho_flexmag": 0.037226,
+    "rho_flex": 0.032169,
+    "rho_mag": 0.018488
+   },
+   {
+    "file": "releases/h33-h33-2-b2-MASS_SWAP10-20261023-3e776063-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.037579,
+    "rho_flex": 0.03389,
+    "rho_mag": 0.017442
+   },
+   {
+    "file": "releases/h33-h33-2-b2-PRUNE_B3-20261023-3d2403c7-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.036892,
+    "rho_flex": 0.033147,
+    "rho_mag": 0.016947
+   },
+   {
+    "file": "releases/h33-h33-2-b2-PRUNE_B4-20261023-78e893d7-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.037561,
+    "rho_flex": 0.033961,
+    "rho_mag": 0.017319
+   },
+   {
+    "file": "releases/h33-h33-2-b2-PRUNE_B5-20261023-85cd67ad-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.036369,
+    "rho_flex": 0.033016,
+    "rho_mag": 0.01598
+   },
+   {
+    "file": "releases/h33-h33-2-b2-SCARPPOLf33Stop-20261024-7b3571a5-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.028608,
+    "rho_flex": 0.024612,
+    "rho_mag": 0.013604
+   },
+   {
+    "file": "releases/h33-h33-2-b2-SCARPPOLf38Stop-20261024-a259cb8c-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.027247,
+    "rho_flex": 0.023326,
+    "rho_mag": 0.013193
+   },
+   {
+    "file": "releases/h33-h33-2-b2-SCARPPOLf45Stop-20261024-cf4e45c0-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.025338,
+    "rho_flex": 0.021639,
+    "rho_mag": 0.012243
+   },
+   {
+    "file": "releases/h33-h33-2-b2-STEPEDGEf33Sraw-20261024-12f4b454-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.027278,
+    "rho_flex": 0.026804,
+    "rho_mag": 0.006894
+   },
+   {
+    "file": "releases/h33-h33-2-b2-STEPEDGEf45Sraw-20261024-0854307f-zeros.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.026059,
+    "rho_flex": 0.026459,
+    "rho_mag": 0.00513
+   },
+   {
+    "file": "data/bridge/d28.tif",
+    "their_positive": 44090,
+    "rho_flexmag": 0.038112,
+    "rho_flex": 0.03515,
+    "rho_mag": 0.016323
+   },
+   {
+    "file": "data/bridge/existing_faults.tif",
+    "their_positive": 60988,
+    "rho_flexmag": 0.009534,
+    "rho_flex": 0.008716,
+    "rho_mag": 0.0032
+   },
+   {
+    "file": "data/bridge/h19_5.tif",
+    "their_positive": 121131,
+    "rho_flexmag": 0.065831,
+    "rho_flex": 0.062694,
+    "rho_mag": 0.025713
+   },
+   {
+    "file": "data/bridge/h27_4_solo.tif",
+    "their_positive": 40199,
+    "rho_flexmag": 0.038271,
+    "rho_flex": 0.034861,
+    "rho_mag": 0.017266
+   },
+   {
+    "file": "data/parent_R0_nan.tif",
+    "their_positive": 37654,
+    "rho_flexmag": 0.036974,
+    "rho_flex": 0.033249,
+    "rho_mag": 0.016785
+   }
+  ],
+  "final_dots": {
+   "flexmag": {
+    "rasters_checked": 98,
+    "worst_literal": {
+     "file": "docs/downloads/gemsdoe92-listriclag-20261025T145312Z-n90k-zeros.tif",
+     "literal": 0.5567,
+     "matched_budget": 0.5567,
+     "representation": "dot_field"
+    },
+    "worst_matched_budget": {
+     "file": "docs/downloads/gemsdoe92-listriclag-20261025T145312Z-n90k-zeros.tif",
+     "literal": 0.5567,
+     "matched_budget": 0.5567,
+     "representation": "dot_field"
+    }
+   },
+   "flex": {
+    "rasters_checked": 98,
+    "worst_literal": {
+     "file": "docs/downloads/gemsdoe92-listriclag-20261025T145312Z-n90k-zeros.tif",
+     "literal": 0.5682,
+     "matched_budget": 0.5682,
+     "representation": "dot_field"
+    },
+    "worst_matched_budget": {
+     "file": "docs/downloads/gemsdoe92-listriclag-20261025T145312Z-n90k-zeros.tif",
+     "literal": 0.5682,
+     "matched_budget": 0.5682,
+     "representation": "dot_field"
+    }
+   },
+   "mag": {
+    "rasters_checked": 98,
+    "worst_literal": {
+     "file": "docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+     "literal": 0.722287,
+     "matched_budget": 0.722287,
+     "representation": "dot_field"
+    },
+    "worst_matched_budget": {
+     "file": "docs/downloads/h33-h33-2-b2-ANASIGf45Atop-20261024-1d90574a-zeros.tif",
+     "literal": 0.722287,
+     "matched_budget": 0.722287,
+     "representation": "dot_field"
+    }
+   }
+  },
+  "literal_reading_note": "Dense full-footprint registry surfaces give literal overlap 1.0 for ANY nonempty candidate; both readings are reported, neither is hidden."
+ },
+ "outputs": {
+  "flexmag": {
+   "file": "docs/downloads/gemsdoe92-flexmag-20261025T165411Z-flexmag-37654-zeros.tif",
+   "zip": "docs/downloads/gemsdoe92-flexmag-20261025T165411Z-flexmag-37654-zeros.zip",
+   "sha256": "8190e1d07b059f8e6d1c869914a8786dfcbcb2771466f4c3874b60d1668c7261",
+   "zip_sha256": "dd6d85e9345b93195bfd34f69cc39108388794a1e5a71c2bd71de667967f9f00",
+   "bytes": 123516,
+   "submission_name": "GEMSDOE92-FLEXMAG-flexmag-20261025",
+   "note": "FLEXMAG flexmag: 37654 dots; blind-fault flexure hinge x magnetic ASA; HOLDOUT-DTI in run card",
+   "note_chars": 94,
+   "validator_output": {
+    "file": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-flexmag-20261025T165411Z-flexmag-37654-zeros.tif",
+    "bytes": 123516,
+    "sha256": "8190e1d07b059f8e6d1c869914a8786dfcbcb2771466f4c3874b60d1668c7261",
+    "meta": {
+     "crs": "EPSG:32611",
+     "shape": [
+      3730,
+      3292
+     ],
+     "dtype": "float32",
+     "count": 1,
+     "nodata": null,
+     "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+     ],
+     "profile_compress": "deflate"
+    },
+    "band_description": [
+     null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "emitted_positive_pixels": 37654,
+    "checks": {
+     "single_band": true,
+     "dtype_float32": true,
+     "dimensions_3730x3292": true,
+     "crs_epsg_32611": true,
+     "transform_matches_sample_submission": true,
+     "no_nan_anywhere": true,
+     "no_inf_anywhere": true,
+     "no_sentinel_values": true,
+     "range_0_1_guaranteed": true,
+     "min_ge_0": true,
+     "max_le_1": true,
+     "in_footprint_all_finite": true,
+     "in_footprint_range_0_1": true,
+     "outside_footprint_zero": true,
+     "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37654,
+    "footprint_fraction": 0.007286874781441169
+   },
+   "gates": [
+    {
+     "name": "crs",
+     "ok": true,
+     "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+     "name": "shape",
+     "ok": true,
+     "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+     "name": "transform",
+     "ok": true,
+     "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+     "name": "dtype_and_band",
+     "ok": true,
+     "detail": "dtype=('float32',) count=1"
+    },
+    {
+     "name": "values_in_0_1",
+     "ok": true,
+     "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+     "name": "no_nan_inside_footprint",
+     "ok": true,
+     "detail": "nonfinite_pixels=0"
+    },
+    {
+     "name": "nan_outside_footprint",
+     "ok": true,
+     "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+     "name": "submission_encoding",
+     "ok": true,
+     "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+     "name": "catalogue_zero_mass",
+     "ok": true,
+     "detail": "dots_on_catalogue=0"
+    },
+    {
+     "name": "distance_from_catalogue",
+     "ok": true,
+     "detail": "radius=2px dots_within=0; strict distance > radius required"
+    },
+    {
+     "name": "reread_sha256",
+     "ok": true,
+     "detail": "8190e1d07b059f8e6d1c869914a8786dfcbcb2771466f4c3874b60d1668c7261"
+    }
+   ]
+  },
+  "flex": {
+   "file": "docs/downloads/gemsdoe92-flexmag-20261025T165411Z-flex-37654-zeros.tif",
+   "zip": "docs/downloads/gemsdoe92-flexmag-20261025T165411Z-flex-37654-zeros.zip",
+   "sha256": "cc81dec444405e1a28cd8c6050644e8cb9f2a7f79af2d5ebc4d727a9d8ddf723",
+   "zip_sha256": "9428ca40ecad96f6d9016de9d983089c3761b32d0685501b3ff98813f71f1afb",
+   "bytes": 121413,
+   "submission_name": "GEMSDOE92-FLEXMAG-flex-20261025",
+   "note": "FLEXMAG flex: 37654 dots; blind-fault flexure hinge x magnetic ASA; HOLDOUT-DTI in run card",
+   "note_chars": 91,
+   "validator_output": {
+    "file": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-flexmag-20261025T165411Z-flex-37654-zeros.tif",
+    "bytes": 121413,
+    "sha256": "cc81dec444405e1a28cd8c6050644e8cb9f2a7f79af2d5ebc4d727a9d8ddf723",
+    "meta": {
+     "crs": "EPSG:32611",
+     "shape": [
+      3730,
+      3292
+     ],
+     "dtype": "float32",
+     "count": 1,
+     "nodata": null,
+     "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+     ],
+     "profile_compress": "deflate"
+    },
+    "band_description": [
+     null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "emitted_positive_pixels": 37654,
+    "checks": {
+     "single_band": true,
+     "dtype_float32": true,
+     "dimensions_3730x3292": true,
+     "crs_epsg_32611": true,
+     "transform_matches_sample_submission": true,
+     "no_nan_anywhere": true,
+     "no_inf_anywhere": true,
+     "no_sentinel_values": true,
+     "range_0_1_guaranteed": true,
+     "min_ge_0": true,
+     "max_le_1": true,
+     "in_footprint_all_finite": true,
+     "in_footprint_range_0_1": true,
+     "outside_footprint_zero": true,
+     "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37654,
+    "footprint_fraction": 0.007286874781441169
+   },
+   "gates": [
+    {
+     "name": "crs",
+     "ok": true,
+     "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+     "name": "shape",
+     "ok": true,
+     "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+     "name": "transform",
+     "ok": true,
+     "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+     "name": "dtype_and_band",
+     "ok": true,
+     "detail": "dtype=('float32',) count=1"
+    },
+    {
+     "name": "values_in_0_1",
+     "ok": true,
+     "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+     "name": "no_nan_inside_footprint",
+     "ok": true,
+     "detail": "nonfinite_pixels=0"
+    },
+    {
+     "name": "nan_outside_footprint",
+     "ok": true,
+     "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+     "name": "submission_encoding",
+     "ok": true,
+     "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+     "name": "catalogue_zero_mass",
+     "ok": true,
+     "detail": "dots_on_catalogue=0"
+    },
+    {
+     "name": "distance_from_catalogue",
+     "ok": true,
+     "detail": "radius=2px dots_within=0; strict distance > radius required"
+    },
+    {
+     "name": "reread_sha256",
+     "ok": true,
+     "detail": "cc81dec444405e1a28cd8c6050644e8cb9f2a7f79af2d5ebc4d727a9d8ddf723"
+    }
+   ]
+  },
+  "mag": {
+   "file": "docs/downloads/gemsdoe92-flexmag-20261025T165411Z-mag-37654-zeros.tif",
+   "zip": "docs/downloads/gemsdoe92-flexmag-20261025T165411Z-mag-37654-zeros.zip",
+   "sha256": "964030ff81e6264f7267be7e22f230ac6f423e48d59752cfbaf0e38ec384f6b5",
+   "zip_sha256": "cdf39ffffc3c2e73a0fa7b5679bc61a576bf5a7e96617bf730d15c40f6afa29e",
+   "bytes": 135679,
+   "submission_name": "GEMSDOE92-FLEXMAG-mag-20261025",
+   "note": "FLEXMAG mag: 37654 dots; blind-fault flexure hinge x magnetic ASA; HOLDOUT-DTI in run card",
+   "note_chars": 90,
+   "validator_output": {
+    "file": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-flexmag-20261025T165411Z-mag-37654-zeros.tif",
+    "bytes": 135679,
+    "sha256": "964030ff81e6264f7267be7e22f230ac6f423e48d59752cfbaf0e38ec384f6b5",
+    "meta": {
+     "crs": "EPSG:32611",
+     "shape": [
+      3730,
+      3292
+     ],
+     "dtype": "float32",
+     "count": 1,
+     "nodata": null,
+     "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+     ],
+     "profile_compress": "deflate"
+    },
+    "band_description": [
+     null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "emitted_positive_pixels": 37654,
+    "checks": {
+     "single_band": true,
+     "dtype_float32": true,
+     "dimensions_3730x3292": true,
+     "crs_epsg_32611": true,
+     "transform_matches_sample_submission": true,
+     "no_nan_anywhere": true,
+     "no_inf_anywhere": true,
+     "no_sentinel_values": true,
+     "range_0_1_guaranteed": true,
+     "min_ge_0": true,
+     "max_le_1": true,
+     "in_footprint_all_finite": true,
+     "in_footprint_range_0_1": true,
+     "outside_footprint_zero": true,
+     "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37654,
+    "footprint_fraction": 0.007286874781441169
+   },
+   "gates": [
+    {
+     "name": "crs",
+     "ok": true,
+     "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+     "name": "shape",
+     "ok": true,
+     "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+     "name": "transform",
+     "ok": true,
+     "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+     "name": "dtype_and_band",
+     "ok": true,
+     "detail": "dtype=('float32',) count=1"
+    },
+    {
+     "name": "values_in_0_1",
+     "ok": true,
+     "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+     "name": "no_nan_inside_footprint",
+     "ok": true,
+     "detail": "nonfinite_pixels=0"
+    },
+    {
+     "name": "nan_outside_footprint",
+     "ok": true,
+     "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+     "name": "submission_encoding",
+     "ok": true,
+     "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+     "name": "catalogue_zero_mass",
+     "ok": true,
+     "detail": "dots_on_catalogue=0"
+    },
+    {
+     "name": "distance_from_catalogue",
+     "ok": true,
+     "detail": "radius=2px dots_within=0; strict distance > radius required"
+    },
+    {
+     "name": "reread_sha256",
+     "ok": true,
+     "detail": "964030ff81e6264f7267be7e22f230ac6f423e48d59752cfbaf0e38ec384f6b5"
+    }
+   ]
+  }
+ },
+ "primary_arm": "flexmag",
+ "raster_sha256": "8190e1d07b059f8e6d1c869914a8786dfcbcb2771466f4c3874b60d1668c7261",
+ "submission_name": "GEMSDOE92-FLEXMAG-flexmag-20261025",
+ "note": "FLEXMAG flexmag: 37654 dots; blind-fault flexure hinge x magnetic ASA; HOLDOUT-DTI in run card",
+ "organizer_confirmed_score": null,
+ "verdict": "negative",
+ "submission_eligible": false,
+ "eligibility_reason": "Promotion to a weekly slot is a separate selector step (protocol rule 6); this session never marks a file slot-eligible. Literal-reading registry stop and a fresh public scan remain for the selector.",
+ "ok_to_download": true,
+ "ok_to_submit": false,
+ "weekly_slots_used": 0,
+ "runtime_s": 281.8
+}

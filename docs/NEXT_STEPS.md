@@ -1,3 +1,17 @@
+# Next Steps — GEMSDOE92 (Updated 2026-10-25, Post-FLEXMAG Session)
+
+## Completed this session (FLEXMAG — blind-fault flexure hinge × magnetic ASA)
+- Pre-registered 5 ranked hypotheses (`docs/HYPOTHESES_20261025_FLEXMAG.md`); implemented `gems/flexmag.py` (catalogue-free; 14 leakage canaries, max symmetric AUC 0.566271 ≤ 0.90) + `scripts/build_flexmag_submission.py` (shared evaluator/writer/uniqueness only).
+- 3/3 experiments (37,654 dots each, all format gates PASS): flexmag primary HOLDOUT-DTI 0.045554 [0.035846, 0.056751] (per-draw re-placement, 22,663 withheld) vs flex 0.048980, mag 0.045107, GRAVQUAD control 0.043184 — all paired CIs include 0; bar 0.113316 not met. Static flexmag 0.006026 (R0 control reproduced at 0.004006). SGMC proxy flex 0.087161 > flexmag 0.068910.
+- Local uniqueness (98 unique-mask rasters): surface |ρ| ≤ 0.0658; flexmag/flex final-dot overlap ≤ 0.5682 PASS; **mag arm 0.7223 vs ANASIG = duplicate** (magnetic ASA alone is ANASIG). Public 102-repo scan not rerun (already negative). **Verdict negative, submission_eligible=false, 0 slots.** Run card `docs/downloads/flexmag_run_card.json`; analysis `docs/ANALYSIS_20261025_FLEXMAG.md`.
+- Re-verified R0 lineage by XOR (SOLO = D2.8∧d>1; R0 = D2.8∧d>2, both XOR 0) and fetched GEMSDOE32 source page: it labels h33-h33-2-b2 UNSCORED / NO ORGANISER SCORE EXISTS — 0.2778 remains a CLAIM.
+
+## Highest-P(Win) next actions
+1. **Human selector (unchanged, still #1):** obtain the first ORGANIZER-CONFIRMED receipt (KNICKLOQO-class candidate) and settle literal-vs-matched-budget policy; without a live anchor every local ranking is uncalibrated.
+2. **Do not re-tune FLEXMAG scales/gate ad hoc.** If flexure evidence is reused, do it as pre-registered added LOQO features with an overlap guard, and replace 32-px edge erosion with inpainting/reflect padding (erosion made 4.3–5.1% of withheld positives unreachable).
+3. Untried queue unchanged: MT-CHANGEPOINT and TENSOR-RIEDEL (in-stack); INSAR/1 m DEM still needs external staging outside the sandbox allowlist.
+
+---
 # Next Steps — GEMSDOE92 (Updated 2026-10-26, Post-LISTRIC Session)
 
 ## Completed this session (LISTRIC — NEXT_STEPS Rank 4 executed)
