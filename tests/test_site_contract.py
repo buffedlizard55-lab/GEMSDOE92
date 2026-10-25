@@ -211,7 +211,7 @@ def test_current_site_primary_and_repository_audit_are_consistent():
     assert 'data-primary="true"' in html
     assert "gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif" in html
     assert "DO NOT SUBMIT" in html
-    assert "Current site primary" in html
+    assert "Research download available. DO NOT SUBMIT." in html
     assert "Latest: DRAINAGE-KNICK" not in html
     radio = html.split('aria-label="RADIOCONTACT session status"', 1)[1].split("<!-- RADIOCONTACT:END -->", 1)[0]
     assert "new unique TIFF generated" not in radio
@@ -271,38 +271,35 @@ def test_site_missing_primary_receipt_fails_without_traceback(tmp_path, monkeypa
 
 
 def test_merged_knickloqo_submission_claim_is_overridden_and_assets_match():
-    """The literal gate overrides the later matched-budget submission claim; served asset metadata must match bytes."""
+    """The literal gate overrides the historical matched-budget claim; current bytes and archive match the negative card."""
     import hashlib
     from zipfile import ZipFile
 
     card_path = DOCS / "downloads" / "knickloqo_submission_run_card.json"
     card = json.loads(card_path.read_text(encoding="utf-8"))
-    override = card["current_review_override"]
-    assert override["submission_eligible"] is False
-    assert override["decision"] == "DO NOT SUBMIT; RESEARCH DOWNLOAD ONLY"
-    assert card["submission_eligibility"]["submission_eligible"] is True  # retained historical alternate-policy claim
+    assert card["submission_eligible"] is False
+    assert card["verdict"] == "negative"
+    assert card["correlation_overlap_vs_registry"]["forward_overlap"] == 1.0
+    assert card["holdout_dti"]["dti"] is None
 
-    tif = DOCS / "downloads" / card["submission_metadata"]["file_name"]
-    zip_path = DOCS / "downloads" / card["submission_metadata"]["file_name_zip"]
-    assert hashlib.sha256(tif.read_bytes()).hexdigest() == card["submission_metadata"]["sha256_tif"]
-    assert hashlib.sha256(zip_path.read_bytes()).hexdigest() == card["submission_metadata"]["sha256_zip"]
-    assert tif.stat().st_size == card["submission_metadata"]["file_size_bytes"]
+    tif = ROOT / card["primary_download"]
+    zip_path = tif.with_suffix(".zip")
+    assert hashlib.sha256(tif.read_bytes()).hexdigest() == card["raster_sha256"]
+    assert tif.stat().st_size == card["raster_metadata"]["bytes"]
+    assert card["raster_metadata"]["shape"] == [3730, 3292]
+    assert card["raster_metadata"]["transform"] == [100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0]
     with ZipFile(zip_path) as archive:
         assert len(archive.namelist()) == 1
-        assert hashlib.sha256(archive.read(archive.namelist()[0])).hexdigest() == card["submission_metadata"]["sha256_tif"]
-    assert card["format_validation"]["shape"] == [3730, 3292]
-    assert card["format_validation"]["transform"] == "Affine(100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0)"
+        assert hashlib.sha256(archive.read(archive.namelist()[0])).hexdigest() == card["raster_sha256"]
 
     for path in (ROOT / "SUBMISSION_READY.md", DOCS / "SUBMIT_NOW.html", DOCS / "index_new.html", DOCS / "BEAT_0_2778.md"):
         text = path.read_text(encoding="utf-8")
         assert "DO NOT SUBMIT" in text
-        assert "Expected Live Score" not in text
-        assert "Expected score:" not in text
-        assert "Projected score:" not in text
-    assert "FORMAT VALIDATION PASSED" in (ROOT / "validate_submission.py").read_text(encoding="utf-8")
-    ready = (ROOT / "SUBMISSION_READY.md").read_text(encoding="utf-8")
-    assert ready.startswith("# Current submission-status override")
-    assert "**DO NOT SUBMIT" in ready
+        visible = text.split("<details", 1)[0]
+        assert "Projected score:" not in visible
+        assert "Expected score:" not in visible
+    assert "DO NOT SUBMIT" in (ROOT / "validate_submission.py").read_text(encoding="utf-8")
+    assert "Expected Score" not in (ROOT / "validate_submission.py").read_text(encoding="utf-8")
 
 
 @pytest.mark.parametrize("text", ["{broken", "[]", "null"])

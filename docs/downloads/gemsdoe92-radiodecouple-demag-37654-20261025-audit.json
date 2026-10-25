@@ -1,0 +1,85 @@
+{
+  "file": "gemsdoe92-radiodecouple-demag-37654-20261025-zeros.tif",
+  "sha256_zeros": "10322e694b07e462cc13e6d857f7318ad076e6e43dbadfeab96b910910cfc301",
+  "overall_pass": true,
+  "gates_zeros_pass": true,
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "10322e694b07e462cc13e6d857f7318ad076e6e43dbadfeab96b910910cfc301"
+    }
+  ],
+  "n_positive_pixels": 37654,
+  "n_dots": 37654,
+  "generated_utc": "2026-10-25T14:50:35.772795+00:00",
+  "note": "Format valid [0, 1] GeoTIFF; values in [0, 1], 0 NaNs inside footprint, 0 catalogue mass.",
+  "submission_eligible": false,
+  "verdict": "negative",
+  "run_card": "evidence/gemsdoe92-radiodecouple-20261025T160000Z_run_card.json",
+  "public_registry_uniqueness": {
+    "evidence_file": "evidence/radiodecouple_public_registry.json",
+    "candidate_hash_matches_scan": true,
+    "candidate_sha256_zeros": "2531cf488b0d944d24cf0e3cf0bef7f400a5580cf7d0b0f0649c0dd74b57a2f3",
+    "matching_public_repositories": 102,
+    "registries_checked": 1370,
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "worst_forward_overlap": 1.0,
+    "worst_overlap_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "worst_abs_spearman": 0.38421,
+    "sparse_le_150k_count_over_70pct": 0,
+    "sparse_le_150k_worst_forward_overlap": 0.658214,
+    "scope": "Current public default branches; unique Git blobs; literal duplicate stop triggered on dense witness."
+  }
+}

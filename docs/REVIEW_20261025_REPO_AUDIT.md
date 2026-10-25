@@ -65,14 +65,15 @@ Found stale and misleading current-facing site language: the old RADIOCONTACT se
 
 ### Pass 3 — final cross-check
 
-- `python -m pytest tests -q`: **373 passed**, with 126 nonfatal upstream Rasterio/Affine pending-deprecation warnings after integrating current `main` and the submission-status overrides.
-- `PYTHONPATH=vendor python scripts/check_site.py`: **66 served raster files passed** local format gates. This checks file format/encoding, not science, uniqueness, or organizer acceptance.
+- `.venv/bin/python -m pytest tests -q`: **406 passed**, with 126 nonfatal upstream Rasterio/Affine pending-deprecation warnings after integrating current `main` and the submission-status overrides.
+- `PYTHONPATH=vendor .venv/bin/python scripts/check_site.py`: **70 served raster files passed** local format gates. This checks file format/encoding, not science, uniqueness, or organizer acceptance.
+- `PYTHONPATH=vendor .venv/bin/python scripts/render_public_status.py --check`: current status panel bytes and first-position ordering passed on all public entry pages.
 - `python -m gems manifest --manifest registry/data_manifest.json --data-root data`: all 8 pinned inputs passed.
 - `python -m gems parent --recipe registry/parents/R0.json --data-root data`: pinned parent verified.
 - `python -m gems ledger`: 97 rows; no organizer receipt.
 - Targeted `python -m gems validate ...`: **11/11 gates PASS** on the LISTRICDIP exact file.
 - Static inspection confirmed the published download link, SHA, explicit DO NOT SUBMIT status, 140-character maximum note, and `.tif`/one-TIFF `.zip` options.
-- `python validate_submission.py`: KNICKLOQO TIFF passes shared **format-only** checks; wrapper explicitly states this is not uniqueness/eligibility and prints **DO NOT SUBMIT**. The TIFF and its one-member ZIP checksums, ZIP payload checksum, raster geometry, and corrected run-card override all match.
+- `python validate_submission.py`: the current shared validator records **11/11 format gates PASS** for the default LISTRICDIP primary, then prints **DO NOT SUBMIT** and exits `1` by design (a format pass cannot clear uniqueness). Separate byte checks confirm the KNICKLOQO TIFF and one-member ZIP payload match their measured hashes and raster geometry; the current KNICKLOQO card says negative.
 
 Local software and byte checks do not verify current DrivenData rules, current leaderboard, official data licensing, upload acceptance, or the live weekly submission cap. The competition-data page and USGS sources below are links for manual review, not assertions that they were reached in this restricted runtime:
 
@@ -87,3 +88,7 @@ Local software and byte checks do not verify current DrivenData rules, current l
 - [EPSG:32611](https://epsg.io/32611)
 
 **Maximize P(Win):** do not spend a weekly slot on a candidate that fails either the holdout promotion bar or the literal duplicate stop. **Own the Outcome:** retain the negative result, correct stale site claims, and make the download-versus-submit distinction explicit.
+
+## Integration note — later main-branch review
+
+After this supplementary audit was written, main merged PR #86 (`e1c2ad9`) and PR #92, adding a stronger byte-bound first-in-body status panel, the current negative review [`REVIEW_797E507A.md`](REVIEW_797E507A.md), and two secondary research lanes (RADIODECOUPLE and CURIE-DEMAG). Their run cards/site statuses mark them research-only; they were not experiments run by this audit. The CURIE-DEMAG artifacts use a `2026-10-26` filename/build timestamp even though this repository's review date is `2026-10-25`; treat that as unverified chronology, not proof of generation time. The canonical main-merge verification is [`downloads/review797e_verification.json`](downloads/review797e_verification.json), which records 404 tests and 70 rasters at that integration point. The final branch rerun after adding this audit's regression coverage is 406 tests and 70 rasters.
