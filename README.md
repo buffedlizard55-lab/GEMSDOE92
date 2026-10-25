@@ -1,6 +1,13 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-> ## Latest artifact — DRAINAGE-KNICK (2026-10-25)
+> ## Latest artifact — RADIODECOUPLE (2026-10-25)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). New byte-unique GeoTIFF; all automated format checks pass (single-band `float32`, `EPSG:32611`, values in `[0, 1]`, 0 NaNs), but HOLDOUT-DTI `0.053167 [0.041779, 0.064582]` is below the promotion bar and literal public dense-witness overlap is `1.0 > 0.70`.
+>
+> **[Download the validated TIFF](docs/downloads/gemsdoe92-radiodecouple-standalone-37654-20261025-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-radiodecouple-standalone-37654-20261025-zeros.zip) · [run card](docs/downloads/gemsdoe92-radiodecouple-20261025T160000Z_run_card.json) · [audit JSON](docs/downloads/gemsdoe92-radiodecouple-standalone-37654-20261025-audit.json) · [PhD analysis](docs/ANALYSIS_20261025_RADIODECOUPLE.md) · [pre-registered hypotheses](docs/HYPOTHESES_20261025_RADIODECOUPLE.md) · [Executive Summary](docs/executive-summary.html)
+>
+> SHA-256 `2531cf488b0d944deba2ee4c6934a367eec52f750b3d8d6f51950e9324c00030`; name `GEMSDOE92-RADIODECOUPLE-standalone-20261025`; note: `RADIODECOUPLE standalone: 37654 dots; K/Th x grav tensor decoupling; negative`.
+
+> ## Prior artifact — DRAINAGE-KNICK (2026-10-25)
 > **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). New byte-unique GeoTIFF; all automated format checks pass, but HOLDOUT-DTI `0.061728 [0.047046, 0.075316]` is below the `0.113316` promotion bar and literal public-registry overlap is `1.0 > 0.70`.
 >
 > **[Download the validated TIFF](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.zip) · [run card](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z_run_card.json) · [public registry audit](docs/downloads/drainageknick_public_registry.json) · [analysis](docs/ANALYSIS_20261025_DRAINAGE_KNICK.md)
