@@ -1,3 +1,9 @@
+# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-26, Post-LISTRIC Session)
+## Current decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT** (`submission_eligible: false`, 0 slots spent this repo)
+Newest LISTRIC standalone (`h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif`, SHA `7e4b4636…1e2ab`) is ✅ OK TO DOWNLOAD (automated [0,1] gates PASS) but ⛔ DO NOT SUBMIT: public dual-reading duplicate 0.710735>0.70, literal 1.000, paired holdout gain vs KNICKLOQO not significant. Selector candidate remains KNICKLOQOstandalone pending human dual-vs-literal policy decision. See `evidence/listric_run_card.json`.
+
+---
+# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-25, Post-`POISSONFLEX` Session)
 # Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-25, Post-`GRAV-QUAD` Session)
 
 ## Current Slot Decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT (`submission_eligible: false`, `0` weekly slots spent, `95 BUILT / 0 RECEIPT`)**

@@ -1,0 +1,32 @@
+# Pre-Registered Geological Hypotheses — `2026-10-26` Session (`LISTRIC` Lane)
+
+**Branch:** `arena/a375aed3-gemsdoe92`
+**Evaluator:** `vendor/gems57/evaluate_holdout.py` (`gems57-pooled-hide-v2`, $\alpha=0.2$, $\beta=0.8$, $R=300\text{ m}=3\text{ px}$ triangular kernel, `22,663` withheld catalogue fault pixels, Seeds `20` & `30`, paired spatial-block bootstrap)
+**Pre-registration:** written before any `LISTRIC` experiment execution. Hard budget: at most 3 experiments (`standalone`, `uncal`, `dual35`), 0 weekly slots spent by this repo.
+**Holdout best to beat:** `KNICKLOQO standalone` static HOLDOUT-DTI `0.010788 [0.009468, 0.012201]` (`evidence/knick_loqo_run_card.json`). Do not promote unless beaten; negative results are deliverables.
+
+## Why `GEMSDOE32 h33-h33-2-b2` (`0.2778` CLAIM, not ORGANIZER-CONFIRMED) plausibly scored highest among listed sites
+Verified line-by-line in `docs/ANALYSIS_20261024_COULOMBLOQO.md` §2 and re-verified this session (`make verify`: parent pin `c55bafc4…`, 37,654 dots, min catalogue distance 2.236 px, footprint 5,167,373 px): (1) fixed 37,654 unit-mass dot budget on H19-5 multiline-corroborated ridge support (0.1922 CLAIM); (2) D2.8 Poisson-spaced thinning removes redundant cone mass under the distance-weighted asymmetric Tversky metric (α=0.2 FP, β=0.8 FN) (→0.2600/0.2708 CLAIM); (3) `d_cat>2.0px` catalogue-collar prune (→0.2778 CLAIM); (4) zeros-outside encoding avoids the portal `"Predicted values must be in range [0,1]"` rejection. No receipt exists in `ledger/submissions.csv` (`receipt: null` in `registry/parents/R0.json`), so 0.2778 remains a CLAIM; only an ORGANIZER-CONFIRMED receipt can prove any candidate beats it.
+
+## Five candidate hypotheses, ranked by expected HOLDOUT-DTI gain / implementation cost
+
+| Rank | Lane | Layers | Physical signature | Why it catches catalogue-missing faults | Difference vs implemented lanes | Data availability |
+|---|---|---|---|---|---|---|
+| **1 (selected)** | **LISTRIC-ASYMMETRY-DIP** (NEXT_STEPS Rank 4, promoted after RADIOCONTACT negative) | B12 det_elev, B19 slope, B15 depth_to_base, B18 grav HG, B13 grav anom (+ KNICKLOQO 30-feature stack) | 200–800 m lateral offset pair: surface scarp crest displaced from subsurface gravity/basement inflection toward hanging wall for 45–60° listric normal faults; dip-direction concordance (downhill ∥ basement-deepening); rollover-anticline concave curvature in 300–1000 m annulus of subsurface edge | Steep co-located scarp+edge pairs are already mapped; listric faults flattening into detachments show *offset* surface/subsurface expression and rollover, often missed by catalogue mappers keying on coincident scarps | Every prior lane (KNICKLOQO, XPHASE, COULOMBLOQO) rewards 0-offset co-location/collinearity; none scores the *displaced-pair excess* (offset concordance minus co-located concordance) | All bands already SHA-pinned in `.cache/gems_inputs/training_features.tif`; no external data |
+| 2 | TENSOR-RIEDEL | B2,5,7,11,12,13,18,19 | Gravity gradient tensor invariant + 15–25° Riedel obliquity between surface strike and basement strike | En-echelon Riedel relays above blind Walker Lane masters | Prior lanes reward 0° axial order | In-cache; moderate cost |
+| 3 | FLEXURE-HINGE | B12,13,15,18,19 | 5–15 km elastic flexural inflection (Buck 1988) | Buried range-fronts under 150–500 m fill express as monoclines | Prior lanes use 300–600 m steps only | In-cache; moderate cost |
+| 4 | RADIO-POTENTIAL-DECOUPLE | GeoDAWN K/Th/U (`ext_geodawn_rad_u8`), B16/18 | 3D tensor concordance radiometric vs potential-field gradients | Deep hydrothermal contacts vs surficial ash sheets | RADIOCONTACT (HOLDOUT-DTI 0.005066, negative) already tested first-order radiometric contacts — deprioritised | In-cache (SHA-pinned) |
+| 5 | INSAR-3DEP1M-CREEP | Sentinel-1 InSAR + USGS 3DEP 1 m DEM tiles | Creep velocity gradient + micro-scarps | Actively creeping blind faults | No repo lane uses InSAR/1 m DEM | **Not staged**: needs free official tiles (USGS 3DEP https://www.usgs.gov/3d-elevation-program; ASF DAAC Sentinel-1) — not obtainable within this session's allowlisted hosts; declared non-viable this session |
+
+## Top pick specification (`gems/listric.py`, zero catalogue input to any feature)
+1. `listric_offset_concord`: $\sqrt{R(\text{scarp})\cdot \max_{|\Delta|\in\{3,6\}\text{px},\,8\text{ dirs}} R(\text{sub edge shifted by }\Delta)}$ where sub edge $=\sqrt{R(B18)\cdot R(\|\nabla B15\|)}$, $R$ = footprint percentile rank.
+2. `listric_offset_excess`: offset concordance minus co-located concordance $\sqrt{R(\text{scarp})R(\text{sub})}$, clipped ≥ 0 — the specifically *listric* (displaced) component.
+3. `listric_dip_concord`: $\tfrac{1+\cos\angle(-\nabla B12,\nabla B15)}{2}\sqrt{R(\|\nabla B12\|)R(\|\nabla B15\|)}$ — surface dips toward deepening basement (hanging-wall side).
+4. `listric_rollover`: $\sqrt{R(\text{annulus}_{1.5\to5\text{px}}(\text{sub}))\cdot R(\lambda_+^{\sigma=3}(B12))}$ — rollover concave curvature adjacent to subsurface edge.
+5. Crest channel `L_listric = R(listric_offset_concord)` merged as `L_sub' = max(L_sub, 0.9·L_listric)` for the shared 1D crest builder.
+Model: 3-branch LOQO exactly as KNICKLOQO (15% full-34 / 35% province-debiased+listric / 50% subsurface-knickzone+listric) with within-quadrant quantile calibration (λ=0.80, γ=3.3); emission 37,654 dots, `d_cat>2.0`, min-dist 3.2 px via shared `submission_writer.py`.
+**Named non-fault mimics:** dipping Miocene basalt/lacustrine stratigraphic contacts (surface outcrop offset from subsurface pinch-out), landslide head-scarp + toe pairs, glacial/pluvial shoreline + offshore bar pairs, compaction drape over buried bedrock hills.
+**Falsifier:** pooled HOLDOUT-DTI not beating KNICKLOQO `0.010788`, any canary symmetric AUC > 0.90, or local/dual-reading overlap > 0.70 / |ρ| > 0.90 → verdict negative.
+
+## Amendment (2026-10-26, pre-emission, Rule-1 duplicate STOP)
+LISTRIC v1 (merged crest `L_sub'=max(L_sub,0.9·L_listric)`) triggered the pre-placement STOP: preview forward overlap `0.763212 > 0.70` vs `KNICKLOQOstandalone` (79 local rasters; worst |ρ|=0.187685 vs H19-5; canaries PASS max 0.667237). No TIF was emitted. The lane is amended to **LISTRIC-PURE crest**: crest channels exclusively listric (`L_sub := L_listric^3`, topo/knick crest channels zeroed; probabilities unchanged). Offline preview of the pure-crest surface gave 0.6303 vs KNICKLOQOstandalone. The amended screen must re-pass Rule 1 (surface + final dots) before any build; holdout scoring occurs only after.

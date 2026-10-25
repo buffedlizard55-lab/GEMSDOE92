@@ -1,3 +1,17 @@
+# Next Steps — GEMSDOE92 (Updated 2026-10-26, Post-LISTRIC Session)
+
+## Completed this session (LISTRIC — NEXT_STEPS Rank 4 executed)
+- Pre-registered 5 ranked hypotheses (`docs/HYPOTHESES_20261026_LISTRIC.md`); implemented `gems/listric.py` (4 catalogue-free listric offset-pair features; canaries 0.526–0.622, all ≤0.90; overall max 0.667141).
+- v1 merged crest hit Rule-1 STOP (0.763212 vs KNICKLOQOstandalone, no TIF emitted) → pre-emission amendment to LISTRIC-PURE crest (`L_listric^3`); amended screen PASS (surface worst 0.644872 ≤0.70, |ρ|=0.179108 ≤0.90, 79 local rasters).
+- 3/3 experiments built via shared `submission_writer` (37,654 dots, [0,1] gates PASS): standalone `a705162a` static HOLDOUT-DTI 0.010909 [0.009543,0.012278] (nominal #1; paired vs KNICKLOQO +0.000121 [-0.001167,+0.001262] n.s.; draw-blind d_vis 0.110593; SGMC 0.097959 < KNICKLOQO 0.103912); uncal 0.010385; dual35 0.009446.
+- Live 102-repo public scan (1,472 exact-grid rasters, 2026-10-26): standalone/uncal duplicate even under dual reading (0.710735/0.702050 vs 62GEMSDOE 125,890-dot); dual35 unique (0.679104) but below holdout best; literal 1.000 for all. **Verdict negative, submission_eligible=false, 0 slots.** Run card `evidence/listric_run_card.json`.
+
+## Highest-P(Win) next actions
+1. **Human selector (unchanged, still #1):** decide dual-reading vs literal policy and obtain first ORGANIZER-CONFIRMED receipt — KNICKLOQOstandalone remains the selector candidate (dual-reading-unique + SGMC-best); LISTRIC does not displace it.
+2. **Untried queue:** TENSOR-RIEDEL (15–25° obliquity), then FLEXURE-HINGE (5–15 km flexural inflection) — both in-cache; INSAR-3DEP1M-CREEP still needs external tile staging (not obtainable via allowlisted hosts).
+3. Any future lane must beat KNICKLOQO static 0.010788 with paired CI>0 **and** clear the 62GEMSDOE 125,890-dot witness (≤0.70) before promotion discussion.
+
+---
 # Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`VENTSCARP` & `LISTRICLAG` Integration)
 
 ## Completed in `VENTSCARP` session (`3/3` experiments, `0` weekly slots)

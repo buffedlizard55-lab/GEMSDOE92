@@ -28,6 +28,12 @@ Reused the concurrently merged `gems/public_status.py` publication contract and 
 
 # IRREGULARITIES — only items that change a decision
 
+## 2026-10-26 (LISTRIC session) — `#IR-92-LISTRIC-V1-CREST-DUPLICATE` + `#IR-92-SURFACE-GT1-AUDIT` + `#IR-92-LISTRIC-62GEMSDOE-WITNESS`
+- LISTRIC v1 merged crest triggered pre-placement STOP (0.763212>0.70 vs KNICKLOQOstandalone); no TIF emitted; lane amended pre-emission to LISTRIC-PURE crest (`L_listric^3`), documented in `docs/HYPOTHESES_20261026_LISTRIC.md`.
+- Shared-tool finding: `vendor/gems57/uniqueness.compare_array_to_registry` requires finite [0,1], but lane score surfaces `S_crest` reach 1.3808 (P×(0.14+0.86·1.45·L)); audit used an exactly rank-preserving `/max` scaled copy in `.cache` (Spearman/support identical). Flagged for template owner; do not fork silently.
+- LISTRIC standalone/uncal exceed 0.70 even under dual reading vs the 125,890-dot 62GEMSDOE raster (0.710735/0.702050; 1,472-raster 2026-10-26 live scan) — same over-budget witness family as `#IR-92-OVERBUDGET-SPARSE-WITNESS-ASYMMETRY`; fail-closed verdict negative.
+- First lean-screen attempt was OOM-killed silently (3.8 GiB sandbox; tee masked exit code); rerun with memory-lean cache handling + `pipefail` succeeded. No evidence was taken from the killed run.
+
 ## 2026-10-25 (GRAVQUAD session) — `thermalclass` string-trim defect in the pinned GDR #1391 geothermometer CSV silently splits the `Hot` class
 
 - **Observation**: `data/external/gdr_wellspring_in_footprint.csv` (pinned, SHA-256-verified, restored fresh this session from `buffedlizard55-lab/60GEMSDOE`) stores `thermalclass` with inconsistent trailing whitespace: `'Hot'` (1,873 rows) and `'Hot '` (121 rows) are distinct string values in the same column, alongside `'Warm'`, `'Cold'`, and `'Unknown'`. A naive `df['thermalclass'] == 'Hot'` filter therefore silently drops 121 of 1,994 (6.1%) true hot-spring/well rows.

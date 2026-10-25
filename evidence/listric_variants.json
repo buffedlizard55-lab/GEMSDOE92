@@ -1,0 +1,590 @@
+{
+  "schema": "gemsdoe92.knick-loqo-variants.v1",
+  "session_date_utc": "20261026",
+  "axis": "LISTRIC",
+  "parent": "h33-h33-2-b2",
+  "parent_claim": {
+    "score": 0.2778,
+    "evidence_label": "CLAIM",
+    "receipt": false
+  },
+  "pre_placement_surface": {
+    "cache_path": ".cache/gems_inputs/listric_S_cal_surface.tif",
+    "sha256": "380eedd710e37da10dda31ccef3ef28ce87b8eb42f046eeca433bdf45ee987d4",
+    "registry_check": "evidence/listric_screen.json"
+  },
+  "lane_surface": {
+    "definition": "S_cal = P_cal(X_30) * (0.14 + 0.86 * max(0.15*L_topo, 1.00*L_knick, 1.45*L_sub))",
+    "bands": "Bands 2, 4, 5, 7, 8, 11, 12, 13, 15, 17, 18, 19 + GeoDAWN K/Th/U + GDR #1391 thermal & blind geothermometry",
+    "implementation": "gems/listric.py + gems/knick_loqo.py",
+    "catalogue_use": "Features strictly catalogue-free (dist_known_fault_px dropped); LOQO 3-branch ensemble trained strictly out-of-quadrant (>=1.2 km guard, >500 m neg buffer) with label-free within-quadrant quantile calibration; placement uses d_cat > 2.0 px gate",
+    "experiments_built": 3,
+    "budget_limit": 3
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-LISTRICstandalone-20261026-a705162a",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-LISTRIC-standalone-20261026",
+      "name": "h33-h33-2-b2-LISTRICstandalone-20261026-a705162a.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.zip",
+      "file_nan_cache": ".cache/listric_builds/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a.tif",
+      "sha8": "a705162a",
+      "change_desc": "LISTRIC (standalone): 37654 standalone 1D LISTRIC quadrant-calibrated offset-pair+knickzone crests (0 H19-5); fixed 37654 unit dots",
+      "notes": "arm=standalone; n_skel=0; n_far=37654; shared_R0=1559; within3px_H19=0.5669; piedmont_pct=41.4%; sub_dom_dots=37654; knick_dom_dots=0; git=4441f6a3df98",
+      "parent": "h33-h33-2-b2",
+      "axis": "LISTRIC",
+      "value": "standalone",
+      "n_dots": 37654,
+      "n_skel": 0,
+      "n_far": 37654,
+      "pct_changed": 95.85966962341318,
+      "removed": 36095,
+      "added": 36095,
+      "sha256": "a705162a65f0ab018a202510143c2565b0f1b5ca054cc7b0f1732f0f9063a3b2",
+      "sha256_zeros": "7e4b46368b2a5949bcf626bfaa4457ed15a89dde38d412a1d07469411a31e2ab",
+      "zip_sha256": "98ffc0ab4114ec21d3ba115b636b441b1c5662c4a2bb4c03848737e116ce77af",
+      "primary_file": "h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/listric_proxy_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 11266,
+        "basin_pct": 29.92,
+        "piedmont_dots": 15594,
+        "piedmont_pct": 41.414,
+        "range_dots": 10794,
+        "range_pct": 28.666
+      },
+      "channel_diagnostics": {
+        "subsurface_channel_dominant_dots": 37654,
+        "subsurface_channel_dominant_frac": 1.0,
+        "knickzone_channel_dominant_dots": 0,
+        "knickzone_channel_dominant_frac": 0.0,
+        "within_3px_of_h19_5_frac": 0.566925,
+        "shared_exact_pixels_with_R0": 1559,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "collar_dots_dcat_le_3": 4228,
+        "mean_P_loqo_emitted": 0.7633324861526489,
+        "mean_S_emitted": 0.8416669964790344
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "7e4b46368b2a5949bcf626bfaa4457ed15a89dde38d412a1d07469411a31e2ab"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "a705162a65f0ab018a202510143c2565b0f1b5ca054cc7b0f1732f0f9063a3b2"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; LISTRIC standalone: 37654 1D quadrant-cal listric offset-pair crests",
+      "gate_status": "PASS (submission_writer + disk reread + 10/10 gems.gates)",
+      "seed": 20261025
+    },
+    {
+      "id": "h33-h33-2-b2-LISTRICuncal-20261026-fc9686b5",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-LISTRIC-uncal-20261026",
+      "name": "h33-h33-2-b2-LISTRICuncal-20261026-fc9686b5.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-LISTRICuncal-20261026-fc9686b5-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-LISTRICuncal-20261026-fc9686b5-zeros.zip",
+      "file_nan_cache": ".cache/listric_builds/h33-h33-2-b2-LISTRICuncal-20261026-fc9686b5.tif",
+      "sha8": "fc9686b5",
+      "change_desc": "LISTRIC (uncal): 37654 standalone 1D LISTRIC uncalibrated ablation crests (0 H19-5); fixed 37654 unit dots",
+      "notes": "arm=uncal; n_skel=0; n_far=37654; shared_R0=1476; within3px_H19=0.5377; piedmont_pct=41.0%; sub_dom_dots=37654; knick_dom_dots=0; git=4441f6a3df98",
+      "parent": "h33-h33-2-b2",
+      "axis": "LISTRIC",
+      "value": "uncal",
+      "n_dots": 37654,
+      "n_skel": 0,
+      "n_far": 37654,
+      "pct_changed": 96.08009773198066,
+      "removed": 36178,
+      "added": 36178,
+      "sha256": "fc9686b56884d91a8016b445bb93436c8ddc93b3c29b914030c53b6050db6d11",
+      "sha256_zeros": "d051d768957e2bab7213e1057dbbdc2155265d3790e699dae2357878ae89e47c",
+      "zip_sha256": "db3f574415939629bacdfc452abdfb49ede6566a8849330fe674f08564709497",
+      "primary_file": "h33-h33-2-b2-LISTRICuncal-20261026-fc9686b5-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-LISTRICuncal-20261026-fc9686b5-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/listric_proxy_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 11569,
+        "basin_pct": 30.724,
+        "piedmont_dots": 15420,
+        "piedmont_pct": 40.952,
+        "range_dots": 10665,
+        "range_pct": 28.324
+      },
+      "channel_diagnostics": {
+        "subsurface_channel_dominant_dots": 37654,
+        "subsurface_channel_dominant_frac": 1.0,
+        "knickzone_channel_dominant_dots": 0,
+        "knickzone_channel_dominant_frac": 0.0,
+        "within_3px_of_h19_5_frac": 0.537659,
+        "shared_exact_pixels_with_R0": 1476,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "collar_dots_dcat_le_3": 4208,
+        "mean_P_loqo_emitted": 0.7217442393302917,
+        "mean_S_emitted": 0.7637620568275452
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "d051d768957e2bab7213e1057dbbdc2155265d3790e699dae2357878ae89e47c"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "fc9686b56884d91a8016b445bb93436c8ddc93b3c29b914030c53b6050db6d11"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; LISTRIC uncal: 37654 1D uncalibrated listric offset-pair ablation",
+      "gate_status": "PASS (submission_writer + disk reread + 10/10 gems.gates)",
+      "seed": 20261025
+    },
+    {
+      "id": "h33-h33-2-b2-LISTRICdual35-20261026-2b8b394a",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-LISTRIC-dual35-20261026",
+      "name": "h33-h33-2-b2-LISTRICdual35-20261026-2b8b394a.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-LISTRICdual35-20261026-2b8b394a-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-LISTRICdual35-20261026-2b8b394a-zeros.zip",
+      "file_nan_cache": ".cache/listric_builds/h33-h33-2-b2-LISTRICdual35-20261026-2b8b394a.tif",
+      "sha8": "2b8b394a",
+      "change_desc": "LISTRIC (dual35): 13179 LISTRIC-repacked H19-5 + 24475 off-skeleton (>3px) 1D LISTRIC crests; fixed 37654 unit dots",
+      "notes": "arm=dual35; n_skel=13179; n_far=24475; shared_R0=3561; within3px_H19=0.3500; piedmont_pct=40.9%; sub_dom_dots=37654; knick_dom_dots=0; git=4441f6a3df98",
+      "parent": "h33-h33-2-b2",
+      "axis": "LISTRIC",
+      "value": "dual35",
+      "n_dots": 37654,
+      "n_skel": 13179,
+      "n_far": 24475,
+      "pct_changed": 90.54283741435172,
+      "removed": 34093,
+      "added": 34093,
+      "sha256": "2b8b394af9ad57be6425f3b9ceefecfd3568d2a3c6991882c231d60665986f0d",
+      "sha256_zeros": "ee9f1c8b167ffb98516c2dcc8f7983547cc27c8f713288f71ff33ce412f0767d",
+      "zip_sha256": "ae88ba4d0649484bf68b0fe8379372d2d9bfce77f65c9ab5cbfdd59151d568cd",
+      "primary_file": "h33-h33-2-b2-LISTRICdual35-20261026-2b8b394a-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-LISTRICdual35-20261026-2b8b394a-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/listric_proxy_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 11493,
+        "basin_pct": 30.523,
+        "piedmont_dots": 15395,
+        "piedmont_pct": 40.885,
+        "range_dots": 10766,
+        "range_pct": 28.592
+      },
+      "channel_diagnostics": {
+        "subsurface_channel_dominant_dots": 37654,
+        "subsurface_channel_dominant_frac": 1.0,
+        "knickzone_channel_dominant_dots": 0,
+        "knickzone_channel_dominant_frac": 0.0,
+        "within_3px_of_h19_5_frac": 0.350003,
+        "shared_exact_pixels_with_R0": 3561,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "collar_dots_dcat_le_3": 3901,
+        "mean_P_loqo_emitted": 0.7378219962120056,
+        "mean_S_emitted": 0.7902499437332153
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "ee9f1c8b167ffb98516c2dcc8f7983547cc27c8f713288f71ff33ce412f0767d"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "2b8b394af9ad57be6425f3b9ceefecfd3568d2a3c6991882c231d60665986f0d"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; LISTRIC dual35: 13179 LISTRIC-H19 + 24475 far 1D listric crests",
+      "gate_status": "PASS (submission_writer + disk reread + 10/10 gems.gates)",
+      "seed": 20261025
+    }
+  ]
+}
