@@ -127,14 +127,14 @@
     "tracked_data_irregularity": "8 tracked files under data/ conflict with session_manifest's never-track policy."
   },
   "integration_recheck": {
-    "verified_utc": "2026-10-25T17:54:33Z",
-    "base_commit": "1d4047044d0f35844c3a70aa0394491d0f339c98",
+    "verified_utc": "2026-10-25T17:57:34Z",
+    "base_commit": "9809798b5af81152a190f88625701796649bb366",
     "pytest": "538 passed; 140 upstream Affine pending-deprecation warnings",
     "site_check": "PASS; 89 served rasters gated",
     "current_status_and_readiness_checks": "PASS; supplemental audit and leaderboard links generated and synchronized",
     "manifest_parent_ledger": "PASS; 114 ledger rows and no organizer receipt",
-    "report_run_card_consistency": "PASS; 2026-10-25T17:55:03Z",
-    "git_diff_check": "PASS; 2026-10-25T17:55:03Z",
+    "report_run_card_consistency": "PASS",
+    "git_diff_check": "PASS",
     "new_tiff_generated": false,
     "weekly_slots_used": 0
   },
