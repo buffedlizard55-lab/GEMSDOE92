@@ -1,0 +1,85 @@
+{
+  "schema": "gemsdoe92-listriclag-audit.v1",
+  "lane": "LISTRICLAG",
+  "arm": "N90K",
+  "file": "docs/downloads/gemsdoe92-listriclag-20261025T145312Z-n90k-zeros.tif",
+  "sha256": "2704229bd09ef26ae1586e060d3453d82c8a683a6e083e34da2889cefa2f31a1",
+  "n_positive_pixels": 90000,
+  "dots_at_1_0": 37654,
+  "dots_at_0_30": 52346,
+  "submission_name": "GEMSDOE92-LISTRICLAG-N90K-20261025",
+  "note": "h33-h33-2-b2; LISTRICLAG N90K: 90000 dots (top 37654 @1.0, tail @0.30); extended-budget emission probe",
+  "note_chars": 102,
+  "validator": {
+    "file": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-listriclag-20261025T145312Z-n90k-zeros.tif",
+    "bytes": 228095,
+    "sha256": "2704229bd09ef26ae1586e060d3453d82c8a683a6e083e34da2889cefa2f31a1",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.004345395136624575,
+    "emitted_positive_pixels": 90000,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 90000,
+    "footprint_fraction": 0.01741697376984398
+  },
+  "uniqueness_local": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "rasters_checked": 107,
+    "worst_literal_forward_overlap": 0.343589,
+    "worst_literal_file": "local:docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif",
+    "worst_matched_budget_forward_overlap": 0.343589,
+    "worst_matched_budget_file": "local:docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif",
+    "worst_abs_spearman": 0.083332,
+    "worst_abs_spearman_file": "local:docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif",
+    "duplicate": false,
+    "verdict": "unique"
+  },
+  "parent_audit": "docs/downloads/gemsdoe92-listriclag-20261025T145312Z-audit.json",
+  "run_card": "docs/downloads/gemsdoe92-listriclag-20261025T145312Z_run_card.json",
+  "verdict": "negative",
+  "submission_eligible": false
+}

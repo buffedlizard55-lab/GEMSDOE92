@@ -3,6 +3,16 @@
 > **Start here:** [Repo review 2026-10-25](docs/REVIEW_20261025_REPO_REVIEW.md) · [Standing brief](#persistent-session-prompt-reference--standing-brief-read-every-session) · [Executive summary / how to submit](docs/executive-summary.html)
 
 
+<!-- LISTRICLAG:BEGIN -->
+> ## Latest artifact — LISTRICLAG (2026-10-25)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`, `submission_eligible: false`). Two new byte-unique GeoTIFFs; all automated format gates PASS; HOLDOUT-DTI `0.054843 [0.044940, 0.066261]` is below the `0.113316` promotion bar, and the literal public rule trips on the 84 known full-footprint dense surfaces (dual reading: unique, `0 / 1,458 > 0.70`, worst sparse `0.6761`, |ρ| `0.2902`).
+>
+> **[Download the validated TIFF](docs/downloads/gemsdoe92-listriclag-20261025T145312Z-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-listriclag-20261025T145312Z-zeros.zip) · [N90K sibling arm](docs/downloads/gemsdoe92-listriclag-20261025T145312Z-n90k-zeros.tif) · [run card](docs/downloads/gemsdoe92-listriclag-20261025T145312Z_run_card.json) · [public registry audit](evidence/listriclag_public_registry_uniqueness.json) · [analysis](docs/ANALYSIS_20261025_LISTRICLAG.md) · [pre-registered hypotheses](docs/HYPOTHESES_20261025_LISTRICLAG.md)
+>
+> SHA-256 `a301cbfc970861c65f8001d0e1a3ecc1dca76c48699d4fdbd56d6768d2405b4c`; name `GEMSDOE92-LISTRICLAG-20261025`; note (121/140): `h33-h33-2-b2; LISTRICLAG: 37654 dots, annulus(2.8-8px) scarp evidence x basement-step x gravity edge; listric updip-lag lane`.
+>
+> **Session science (3/3 pre-registered experiments, 0 weekly slots):** the listric updip-lag coupling (annulus-max scarp evidence × basement step × gravity edge) was **rejected by its own co-located ablation** (paired `Δ = −0.012836 [−0.020424, −0.005791]`, ablation `0.067679` > ring `0.054843`): the hide-and-recover instrument's withheld truth is scarp-mapped by construction, so displacement tolerance can only dilute localization on it. The **extended-budget emission lever was confirmed on holdout for the first time**: same-surface 90,000-dot arm (`37,654 @ 1.0` + tail `@ 0.30`) scored `0.062202` — **+13.4% paired** over the binary 37,654 arm, directly validating the `c* = α·DTI` marginal-inclusion analysis and pointing the next session at `KNICKLOQO-N90K` (see [docs/NEXT_STEPS.md](docs/NEXT_STEPS.md)).
+<!-- LISTRICLAG:END -->
 
 <!-- CURRENT-STATUS:BEGIN -->
 ## Current verified decision — 2026-10-25 (review c5e3848c)
@@ -63,7 +73,7 @@ Read this README and [SESSION_PROMPT.md](SESSION_PROMPT.md) before work. The [fu
 ## Historical session record (not current clearance)
 
 
-> ## Latest artifact — DRAINAGE-KNICK (2026-10-25)
+> ## Previous artifact — DRAINAGE-KNICK (2026-10-25)
 > **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). New byte-unique GeoTIFF; all automated format checks pass, but HOLDOUT-DTI `0.061728 [0.047046, 0.075316]` is below the `0.113316` promotion bar and literal public-registry overlap is `1.0 > 0.70`.
 
 > ## Binding decision — read before any download or experiment
