@@ -10,22 +10,32 @@
 <body>
 <header class="hero">
   <p class="kicker">Geological Hypotheses · DOE GEMS Prize #306 · Pre-Registered Discovery Queue</p>
-  <h1>5 Ranked Untried Geological Hypotheses (<code>COULOMB-LOQO</code> Session, 2026-10-24)</h1>
-  <p class="lede">Five Basin-and-Range structural &amp; geothermal hypotheses pre-registered before model code or holdout scoring (<a href="HYPOTHESES_20261024_COULOMBLOQO.md">HYPOTHESES_20261024_COULOMBLOQO.md</a>), naming exact geophysical layers, physical transforms, why USGS/INGENIOUS catalogues miss those faults, named non-fault mimics, and how each differs from every prior <code>GEMSDOE92</code> lane.</p>
-  <p><a href="index.html">← Back to Main Workbench</a> · <a href="executive-summary.html">Executive Summary</a> · <a href="SUBMIT.html">Submission Guide</a> · <a href="ANALYSIS_20261024_COULOMBLOQO.md">PhD Analysis</a></p>
+  <h1>5 Ranked Untried Geological Hypotheses (<code>XPHASE</code> Session, 2026-10-24)</h1>
+  <p class="lede">Five Basin-and-Range structural &amp; geothermal hypotheses pre-registered before model code or holdout scoring (<a href="HYPOTHESES_20261024_XPHASE.md">HYPOTHESES_20261024_XPHASE.md</a>), naming exact geophysical layers, physical transforms, why USGS/INGENIOUS catalogues miss those faults, named non-fault mimics, and how each differs from every prior <code>GEMSDOE92</code> lane. Prior session: <a href="HYPOTHESES_20261024_COULOMBLOQO.md">COULOMB-LOQO</a>.</p>
+  <p><a href="index.html">← Back to Main Workbench</a> · <a href="executive-summary.html">Executive Summary</a> · <a href="SUBMIT.html">Submission Guide</a> · <a href="ANALYSIS_20261024_XPHASE.md">XPHASE Analysis</a></p>
 </header>
 
 <main>
 <section class="download-card">
-  <h2>Current Primary Hypothesis: <code>COULOMB-LOQO standalone</code> (#1 All-Time <code>HOLDOUT-DTI = 0.009220</code>; <code>verdict: negative</code> under dense public witness — DO NOT SUBMIT)</h2>
-  <p>Validated primary download: <a href="index.html#download-coulombloqo"><code>h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif</code></a> (<a href="downloads/coulomb_loqo_run_card.json">Run Card</a> · <a href="HYPOTHESES_20261024_COULOMBLOQO.md">Mathematical Pre-Registration</a> · <a href="ANALYSIS_20261024_COULOMBLOQO.md">Experimental Analysis</a>). Archived prior-session hypotheses: <a href="HYPOTHESES_20261024_HYDROCONDUIT.md">HYDROCONDUIT</a>, <a href="HYPOTHESES_20261024_APRONRIDGE.md">APRONRIDGE</a>, <a href="HYPOTHESES_20261024_STEPEDGE.md">STEPEDGE</a>.</p>
+  <h2>Current Research Download: <code>XPHASE dual40</code> (<code>HOLDOUT-DTI = 0.004653</code>; <code>verdict: negative</code> under dense public witness — DO NOT SUBMIT). Repository holdout-best remains <code>COULOMB-LOQO standalone</code> (<code>0.009220</code>).</h2>
+  <p>Validated research download: <a href="index.html#download-xphase"><code>h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif</code></a> (<a href="downloads/xphase_run_card.json">Run Card</a> · <a href="HYPOTHESES_20261024_XPHASE.md">Pre-Registration</a> · <a href="ANALYSIS_20261024_XPHASE.md">Analysis</a>). Prior holdout-best: <a href="index.html#download-coulombloqo"><code>h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-zeros.tif</code></a> (<a href="downloads/coulomb_loqo_run_card.json">Run Card</a> · <a href="HYPOTHESES_20261024_COULOMBLOQO.md">Mathematical Pre-Registration</a> · <a href="ANALYSIS_20261024_COULOMBLOQO.md">Experimental Analysis</a>). Archived prior-session hypotheses: <a href="HYPOTHESES_20261024_HYDROCONDUIT.md">HYDROCONDUIT</a>, <a href="HYPOTHESES_20261024_APRONRIDGE.md">APRONRIDGE</a>, <a href="HYPOTHESES_20261024_STEPEDGE.md">STEPEDGE</a>.</p>
 </section>
 
 <section>
   <h2>Ranked Untried Hypotheses (1 to 5)</h2>
 
   <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
-    <p class="kicker" style="color:#4ecb71;">Rank 1 · Implemented &amp; Validated (3-Experiment Cap) · #1 Static HOLDOUT-DTI (0.009220) &amp; #1 Unmasked d_vis&gt;2 HOLDOUT-DTI (0.113316)</p>
+    <p class="kicker" style="color:#4ecb71;">Rank 1 · Implemented this session (3-Experiment Cap) · Negative HOLDOUT-DTI 0.004653</p>
+    <h3 style="margin-top:0.2rem;">1. XPHASE — Magnetotelluric–Gravity Transverse-Phase Concordance</h3>
+    <dl class="meta">
+      <div><dt>Layers Involved</dt><dd>Bands <code>17</code> (<code>cond_surf</code>), <code>13</code> (<code>iso_grav_anom</code>), <code>15</code> (<code>depth_to_base_surf</code>), <code>19</code> (<code>det_elev_slope</code>).</dd></div>
+      <div><dt>Physical Signature</dt><dd>Strike-parallel MT log-conductivity and isostatic-gravity gradients with a 200 m transverse phase lag, intermediate-cover gate, high-slope suppression, 1-D crests at 2.8 px spacing.</dd></div>
+      <div><dt>Measured Outcome</dt><dd>12/12 canaries PASS (max AUC <code>0.553140</code>); <code>dual40</code> static <strong>HOLDOUT-DTI = <code>0.004653 [0.003955, 0.005390]</code></strong>; local overlap <code>0.4000 &le; 0.70</code>; dense witness STOP &rarr; <code>verdict: negative</code>. <a href="downloads/h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif">zeros-outside TIF</a>.</dd></div>
+    </dl>
+  </div>
+
+  <div class="download-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
+    <p class="kicker" style="color:#4ecb71;">Prior session · Implemented &amp; Validated · Repository holdout-best static HOLDOUT-DTI (0.009220)</p>
     <h3 style="margin-top:0.2rem;">1. COULOMB-LOQO — Spatially Cross-Fitted (LOQO) Polarity-Locked Multi-Scale Hessian &amp; 2D Coulomb Transtensional Ridge Model</h3>
     <dl class="meta">
       <div><dt>Layers Involved</dt><dd>Bands <code>2</code> (<code>rtp</code>), <code>4</code> (<code>geod_2ndinv</code>), <code>5</code> (<code>iso_grav_anom_slope</code>), <code>7</code> (<code>geod_shearrate</code>), <code>8</code> (<code>geod_dilaterate</code>), <code>11</code> (<code>iso_grav_anom_vg</code>), <code>12</code> (<code>det_elev</code>), <code>13</code> (<code>iso_grav_anom</code>), <code>15</code> (<code>depth_to_base_surf</code>), <code>17</code> (<code>cond_surf</code>), <code>18</code> (<code>iso_grav_anom_hg</code>, verified as signed $\partial_x$B13 at $r=+0.6260$), <code>19</code> (<code>det_elev_slope</code>) + <code>geodawn_rad_u8.tif</code> (<code>K, Th, U</code>) + <code>gdr_wellspring_in_footprint.csv</code> (<code>dist_known_fault_px</code> dropped).</dd></div>

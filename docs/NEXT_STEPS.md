@@ -1,3 +1,18 @@
+# Next Steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`XPHASE` Session)
+
+## Completed this session (`XPHASE`)
+
+1. Pre-registered 5 untried hypotheses (`docs/HYPOTHESES_20261024_XPHASE.md`); implemented Rank 1 `XPHASE` (`gems/xphase.py`).
+2. Built 3 experiments. Best arm `dual40`: **HOLDOUT-DTI `0.004653 [0.003955, 0.005390]`** (`gems57-pooled-hide-v2`, 22,663 withheld positives). Locally unique (0.4000). Canaries max 0.553140. Verdict **negative**. File `h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif`. **OK TO DOWNLOAD; DO NOT SUBMIT.**
+3. Lag ablation (`nophase` 0.003487) ≈ standalone (0.003492): transverse lag is not load-bearing on catalogue hide-and-recover. Do not retry this lane without a new instrument (Rule-2 d_visible>2.0 already reported as not beating holdout-best).
+
+## Still open (unchanged)
+
+1. Human selector: dense-witness policy + first ORGANIZER-CONFIRMED receipt.
+2. Queued physics: `EULER-N0`, `RADIO-CONTACT`. `DRAINAGE-KNICK` held (Band 12 is detrended). `INSAR-3DEP1M` blocked by sandbox network.
+
+---
+
 # Next Steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`COULOMB-LOQO` Session)
 
 ## 1. Completed in the `COULOMB-LOQO` Session

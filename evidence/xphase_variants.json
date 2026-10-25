@@ -1,0 +1,533 @@
+{
+  "schema": "gemsdoe92-xphase-variants.v1",
+  "session_date_utc": "20261024",
+  "axis": "XPHASE",
+  "parent": "h33-h33-2-b2",
+  "parent_claim": {
+    "score": 0.2778,
+    "evidence_label": "CLAIM",
+    "receipt": false
+  },
+  "pre_placement_surface": {
+    "cache_path": ".cache/xphase_surface.tif",
+    "sha256": "f857b20f702331076ddfd87fc914785488691ca0fc166b035e2ca08c412ec188"
+  },
+  "lane_surface": {
+    "definition": "S = pct(|grad log B17|) * pct(|grad B13|) * orient_2theta * cover * lag * slope_suppress * (0.35+0.65*coh)",
+    "bands": "Band 13 iso_grav_anom, Band 15 depth_to_base_surf, Band 17 cond_surf, Band 19 det_elev_slope",
+    "implementation": "gems/xphase.py",
+    "catalogue_use": "zero in surface; d_cat>2.0 px emission gate only",
+    "experiments_built": 3,
+    "budget_limit": 3
+  },
+  "mechanism_card": {
+    "hypothesis": "Blind Great Basin feeders juxtapose dense basement against basin fill (isostatic gravity gradient, Band 13) and bound a smectite clay-cap / upflow (MT log-conductivity gradient, Band 17) with shared strike but a 100-300 m transverse phase lag, under intermediate Band 15 cover and away from high Band 19 slope.",
+    "mechanism": "S = pct(|grad log B17|) * pct(|grad B13|) * 2-theta orientation agreement * cover-gate * transverse-lag * slope-suppress * (0.35+0.65*coherence); emit 37654 2.8 px-spaced 1D crests with d_cat > 2.0.",
+    "non_fault_mimic": "Saline playa clay rings on a non-tectonic basin-fill density contact; irrigation conductivity fronts; Tertiary tuff/basalt pinchouts.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat R0 (0.004006) with paired 95% CI excluding 0, any canary symmetric AUC > 0.90, or local 3-px overlap > 0.70.",
+    "decision_rule": "Promote only if pooled HOLDOUT-DTI beats COULOMB-LOQO standalone (0.009220) with paired 95% CI excluding 0 vs R0, all canaries <=0.90, 10/10 gates pass, AND literal uniqueness passes. Dense public witness (>150k px) is recorded, not waived; submission_eligible stays false under the literal rule until operator density-clause revision."
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-XPHASEstandalone-20261024-023ac854",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-XPHASE-standalone-20261024",
+      "form_note": "h33-h33-2-b2; XPHASE standalone: 37654 MT-grav transverse-phase 1D crests (0 H19-5)",
+      "name": "h33-h33-2-b2-XPHASEstandalone-20261024-023ac854.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-XPHASEstandalone-20261024-023ac854-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-XPHASEstandalone-20261024-023ac854-zeros.zip",
+      "file_nan_cache": ".cache/xphase_builds/h33-h33-2-b2-XPHASEstandalone-20261024-023ac854.tif",
+      "sha256": "43cc42c0c90d84a4c93443e396aca5000b43d8bc1f403e370596f3cabcbb8480",
+      "sha256_nan": "023ac854a6b6a5f48815df65baf9a9b15eca666df7d16a41adb694726de1a008",
+      "sha8": "023ac854",
+      "parent": "h33-h33-2-b2",
+      "axis": "XPHASE",
+      "value": "standalone",
+      "n_dots": 37654,
+      "n_skel": 0,
+      "n_far": 37654,
+      "apply_lag": true,
+      "pct_changed": 99.4661921708185,
+      "shared_R0": 201,
+      "within3px_H19": 0.160355,
+      "min_d_cat_px": 2.236068,
+      "predicted_change": "HOLDOUT-DTI vs R0 unknown until report_xphase_proxies.py",
+      "change_desc": "XPHASE (standalone): 37654 standalone MT-grav transverse-phase 1D crests (zero H19-5/R0); fixed 37654 unit dots",
+      "notes": "arm=standalone; n_skel=0; n_far=37654; shared_R0=201; within3px_H19=0.1604; git=41cf11448f04",
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "submission_encoding",
+          "ok": true,
+          "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "43cc42c0c90d84a4c93443e396aca5000b43d8bc1f403e370596f3cabcbb8480"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "023ac854a6b6a5f48815df65baf9a9b15eca666df7d16a41adb694726de1a008"
+        }
+      ],
+      "zeros_checks": {
+        "crs_matches": true,
+        "shape_matches": true,
+        "transform_matches": true,
+        "dtype_float32": true,
+        "one_band": true,
+        "inside_finite": true,
+        "outside_encoding": true,
+        "range_0_1": true,
+        "binary_unit_mass": true,
+        "zero_catalogue_mass": true,
+        "catalogue_distance_gt_2px": true,
+        "count_37654": true,
+        "gems_gates_pass": true
+      },
+      "nan_checks": {
+        "crs_matches": true,
+        "shape_matches": true,
+        "transform_matches": true,
+        "dtype_float32": true,
+        "one_band": true,
+        "inside_finite": true,
+        "outside_encoding": true,
+        "range_0_1": true,
+        "binary_unit_mass": true,
+        "zero_catalogue_mass": true,
+        "catalogue_distance_gt_2px": true,
+        "count_37654": true,
+        "gems_gates_pass": true
+      },
+      "writer_sha256": "43cc42c0c90d84a4c93443e396aca5000b43d8bc1f403e370596f3cabcbb8480"
+    },
+    {
+      "id": "h33-h33-2-b2-XPHASEnophase-20261024-2159567d",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-XPHASE-nophase-20261024",
+      "form_note": "h33-h33-2-b2; XPHASE nophase: 37654 MT-grav orientation 1D crests, no lag (0 H19-5)",
+      "name": "h33-h33-2-b2-XPHASEnophase-20261024-2159567d.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-XPHASEnophase-20261024-2159567d-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-XPHASEnophase-20261024-2159567d-zeros.zip",
+      "file_nan_cache": ".cache/xphase_builds/h33-h33-2-b2-XPHASEnophase-20261024-2159567d.tif",
+      "sha256": "494b21bd079e44d8c036f13c980d4433fa7ae93f9c8282f3f0d4d785693bf192",
+      "sha256_nan": "2159567d062cc9fb7252f64bc61fa9eb821a9eb4bc87971f4fe36b7d093dd5ca",
+      "sha8": "2159567d",
+      "parent": "h33-h33-2-b2",
+      "axis": "XPHASE",
+      "value": "nophase",
+      "n_dots": 37654,
+      "n_skel": 0,
+      "n_far": 37654,
+      "apply_lag": false,
+      "pct_changed": 99.48212673288363,
+      "shared_R0": 195,
+      "within3px_H19": 0.158894,
+      "min_d_cat_px": 2.236068,
+      "predicted_change": "HOLDOUT-DTI vs R0 unknown until report_xphase_proxies.py",
+      "change_desc": "XPHASE (nophase): 37654 standalone MT-grav orientation 1D crests, lag ablated (zero H19-5/R0); fixed 37654 unit dots",
+      "notes": "arm=nophase; n_skel=0; n_far=37654; shared_R0=195; within3px_H19=0.1589; git=41cf11448f04",
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "submission_encoding",
+          "ok": true,
+          "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "494b21bd079e44d8c036f13c980d4433fa7ae93f9c8282f3f0d4d785693bf192"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "2159567d062cc9fb7252f64bc61fa9eb821a9eb4bc87971f4fe36b7d093dd5ca"
+        }
+      ],
+      "zeros_checks": {
+        "crs_matches": true,
+        "shape_matches": true,
+        "transform_matches": true,
+        "dtype_float32": true,
+        "one_band": true,
+        "inside_finite": true,
+        "outside_encoding": true,
+        "range_0_1": true,
+        "binary_unit_mass": true,
+        "zero_catalogue_mass": true,
+        "catalogue_distance_gt_2px": true,
+        "count_37654": true,
+        "gems_gates_pass": true
+      },
+      "nan_checks": {
+        "crs_matches": true,
+        "shape_matches": true,
+        "transform_matches": true,
+        "dtype_float32": true,
+        "one_band": true,
+        "inside_finite": true,
+        "outside_encoding": true,
+        "range_0_1": true,
+        "binary_unit_mass": true,
+        "zero_catalogue_mass": true,
+        "catalogue_distance_gt_2px": true,
+        "count_37654": true,
+        "gems_gates_pass": true
+      },
+      "writer_sha256": "494b21bd079e44d8c036f13c980d4433fa7ae93f9c8282f3f0d4d785693bf192"
+    },
+    {
+      "id": "h33-h33-2-b2-XPHASEdual40-20261024-643553cf",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-XPHASE-dual40-20261024",
+      "form_note": "h33-h33-2-b2; XPHASE dual40: 15062 H19-5 + 22592 far MT-grav phase crests",
+      "name": "h33-h33-2-b2-XPHASEdual40-20261024-643553cf.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.zip",
+      "file_nan_cache": ".cache/xphase_builds/h33-h33-2-b2-XPHASEdual40-20261024-643553cf.tif",
+      "sha256": "080018382de33758c78e1b11f80098a1f736ac7de5f4c55641bd84b52b0f7200",
+      "sha256_nan": "643553cf6f3c49a8e0f1d2390fdbdb577d3c81c741edb7a9d1fc16e80b491210",
+      "sha8": "643553cf",
+      "parent": "h33-h33-2-b2",
+      "axis": "XPHASE",
+      "value": "dual40",
+      "n_dots": 37654,
+      "n_skel": 15062,
+      "n_far": 22592,
+      "apply_lag": true,
+      "pct_changed": 80.28097944441494,
+      "shared_R0": 7425,
+      "within3px_H19": 0.400011,
+      "min_d_cat_px": 2.236068,
+      "predicted_change": "HOLDOUT-DTI vs R0 unknown until report_xphase_proxies.py",
+      "change_desc": "XPHASE (dual40): 15062 S-ranked H19-5 + 22592 far MT-grav phase crests >3px off H19-5; fixed 37654 unit dots",
+      "notes": "arm=dual40; n_skel=15062; n_far=22592; shared_R0=7425; within3px_H19=0.4000; git=41cf11448f04",
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "submission_encoding",
+          "ok": true,
+          "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "080018382de33758c78e1b11f80098a1f736ac7de5f4c55641bd84b52b0f7200"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "643553cf6f3c49a8e0f1d2390fdbdb577d3c81c741edb7a9d1fc16e80b491210"
+        }
+      ],
+      "zeros_checks": {
+        "crs_matches": true,
+        "shape_matches": true,
+        "transform_matches": true,
+        "dtype_float32": true,
+        "one_band": true,
+        "inside_finite": true,
+        "outside_encoding": true,
+        "range_0_1": true,
+        "binary_unit_mass": true,
+        "zero_catalogue_mass": true,
+        "catalogue_distance_gt_2px": true,
+        "count_37654": true,
+        "gems_gates_pass": true
+      },
+      "nan_checks": {
+        "crs_matches": true,
+        "shape_matches": true,
+        "transform_matches": true,
+        "dtype_float32": true,
+        "one_band": true,
+        "inside_finite": true,
+        "outside_encoding": true,
+        "range_0_1": true,
+        "binary_unit_mass": true,
+        "zero_catalogue_mass": true,
+        "catalogue_distance_gt_2px": true,
+        "count_37654": true,
+        "gems_gates_pass": true
+      },
+      "writer_sha256": "080018382de33758c78e1b11f80098a1f736ac7de5f4c55641bd84b52b0f7200"
+    }
+  ]
+}
