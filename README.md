@@ -1,13 +1,13 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
 <!-- CURRENT-STATUS:BEGIN -->
-## Current verified decision — 2026-10-25 (review c5e3848c)
+## Current verified decision — 2026-10-25 (repository review)
 
-**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review. The new-submission requirement remains unmet.
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated; the unique-submission objective remains unmet. Current automated pre-placement audit confirms the literal duplicate STOP: the pinned witness has positive support at all 5,167,373 template footprint cells, implying overlap 1.0 for every nonempty in-footprint candidate (>0.70 limit).
 
-[Current research download](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [fresh run card](docs/downloads/review_c5e3848c_integrated_run_card.json) · [three-pass review](docs/REVIEW_C5E3848C.md) · [executive submission guide](docs/executive-summary.html).
+[Fresh audit run card](evidence/review_20261025_readiness.json) · [three-pass repo review](docs/REVIEW_20261025_SESSION.md) · [existing research download](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [executive submission guide](docs/executive-summary.html).
 
-Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
+The existing TIFF passes format/grid checks, but that is not submission clearance. No new surface/dots, HOLDOUT-DTI, leakage test, organizer-confirmed score, or weekly slot was produced in this review. The 0.2778, 0.3195, and 0.4413 values cited in user-provided snapshots are not receipt-verified here. See the review's evidence limits before relying on historical claims.
 
 <!-- CURRENT-STATUS:END -->
 
