@@ -31,6 +31,8 @@
 
 
 
+
+
 ## Current decision — 2026-10-24 UTC
 
 **Existing research TIFFs: OK TO DOWNLOAD for review; DO NOT SUBMIT. No new unique TIFF was generated in this review.** The site's current primary download is the existing SPRINGALIGN artifact; its public-registry uniqueness check is a binding rejection, and its holdout result does not establish live competition performance. The weekly selector/slot was not used.
