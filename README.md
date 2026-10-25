@@ -1,24 +1,43 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-<!-- CURRENT-STATUS:BEGIN -->
-## Authoritative decision — Current verified status, 2026-10-25 (LISTRICLOQO 2026-10-25)
+<!-- VARIO-STATUS:BEGIN -->
+## Current research download — verified decision, 2026-10-25 (VARIO session)
 
-**Also 2026-10-25 — ALI lane: a NEW raster was generated and tested — DO NOT SUBMIT.** [Download it for research](docs/downloads/gemsdoe92-ali-famnms-37654-20261025T230000Z-68be9b4d-zeros.tif) · [full report](docs/ALI_LANE.md) · [run card](docs/downloads/ali_run_card.json). Reasons: **duplicate under the registry rule** (0.806 of its dots lie within 3 px of 12GEMSDOE `12GEMSDOE_r7-nms3-dem10-scarp_0c9199f14e62_allfinite.tif`, whose halo covers only 0.317 of the domain; 30 discriminating dot fields exceed 0.70), and HOLDOUT-DTI 0.097216 [0.079836, 0.117747] only ties the R0-recipe control 0.097493 (paired Δ -0.000278 [-0.015980, +0.015900]; gems57-pooled-hide-v2, 22663 withheld positives).
+**✅ OK TO DOWNLOAD FOR RESEARCH. ⛔ DO NOT SUBMIT — automated promotion gates not met (see run card).**
+A new unique GeoTIFF **was** generated this session by the pre-registered VARIO lane
+([hypotheses](docs/HYPOTHESES_20261025_VARIO.md) · [analysis](docs/ANALYSIS_20261025_VARIO.md) ·
+[executive submission guide](docs/vario.html) · [run card](docs/downloads/vario_run_card.json) ·
+[machine-readable status](docs/downloads/readiness.json)).
 
-**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** LISTRICLOQO is a byte-distinct research artifact, but it fails the literal registry-overlap stop and promotion gates.
+[Download gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif](docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif) · name `GEMSDOE92-VARIO-full-20261025` · note (72/140) `VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat>2` · SHA-256 `11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573`
 
-[Existing LISTRICLOQO research TIFF — not cleared to submit](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif) · [protocol run card](docs/downloads/listric_loqo_run_card.json) · [analysis](docs/ANALYSIS_20261025_LISTRICLOQO.md) · [three-pass review](docs/REVIEW_20261025_SESSION.md) · [supplemental initial audit](docs/REVIEW_20261025_SESSION_FOLLOWUP.md) · [audit run card](docs/downloads/session_followup_20261025_run_card.json) · [later leaderboard review](docs/ANALYSIS_20261025_LEADERBOARD.md) · [executive submission guide](docs/executive-summary.html).
+Automated validation (no human inspection): finite [0, 1] everywhere (the portal "Predicted values must be in range [0, 1]" check), no NaN in footprint, zeros outside, exact CRS/shape/transform. **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22663 withheld): `0.150020 [0.134975, 0.164286]`; paired Δ vs best control `control_FAULTNET_far`: `-0.025127 [-0.029306, -0.020842]`. No ORGANIZER-CONFIRMED score; GEMSDOE32 0.2778 and all site-inventory scores remain CLAIMs. Literal dense-registry disclosure and operative sparse uniqueness are both in the run card. Historical banners below are archives, not current clearance.
 
-Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.013295 [0.011713, 0.014980]`; paired improvement over KNICKLOQO is +0.002508 [0.001477, 0.003463]. Public dual-reading overlap is `0.690259 <= 0.70`, but the binding literal dense-witness overlap is `1.0 > 0.70`; this file is not uniqueness-cleared. No ORGANIZER-CONFIRMED score is available; 3/3 experiments and zero weekly slots.
-
-<!-- CURRENT-STATUS:END -->
+<!-- VARIO-STATUS:END -->
+<!-- CURRENT:BEGIN -->
+> ## Newest lane result — lane VARIO / arm `vario_full`
+> **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 0.9791 of its dots lie within 3 px of the dots of gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif (37,654 dots), above the 0.70 limit; did not beat control_FAULTNET_far on the holdout.
+>
+> **[⬇ Download the GeoTIFF](docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.zip) · [run card](docs/downloads/vario_run_card.json) · [analysis](docs/ANALYSIS_20261025_VARIO.md)
+>
+> **How to submit (only with a file marked ✅ OK TO SUBMIT, which this one is not):**
+> 1. Download the `.tif` (or the ZIP holding only that TIFF).
+> 2. Go to https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/ (log in; not live-verified from the sandbox), then choose the file under *File to submit*.
+> 3. Paste this into *Note (optional)*: `VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat>2`
+> 4. Name/record: `GEMSDOE92-VARIO-full-20261025`. After scoring, record the receipt in `ledger/submissions.csv`.
+>
+> Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573`.
+> **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22,663 withheld positives): `0.150020 [0.134975, 0.164286]`. control_FAULTNET_far control: `0.175147 [0.159756, 0.189860]`. Paired Δ `-0.025127 [-0.029306, -0.020842]`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
+> **Uniqueness** (99 registry rasters): worst overlap `0.9791` (limit 0.70), worst |ρ| `0.8913` / surface `0.1373` (limit 0.90). Literal-support reading: 4 raster(s) > 0.70. The literal reading is binding under the current protocol and triggers the duplicate stop.
+> Siblings: [vario_smooth](docs/downloads/gemsdoe92-vario-smooth-37654-20261025-5c5a1192-zeros.tif) (negative, HOLDOUT-DTI 0.141661) · [vario_nctx](docs/downloads/gemsdoe92-vario-nctx-37654-20261025-d2d499d5-zeros.tif) (negative, HOLDOUT-DTI 0.116258). **Read [SESSION_PROMPT.md](SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
+<!-- CURRENT:END -->
 
 > **Read before every session:** this README, [`SESSION_PROMPT.md`](SESSION_PROMPT.md), [`docs/PROJECT_CHARTER.md`](docs/PROJECT_CHARTER.md), the [latest review on this branch](docs/REVIEW_20261025_ARENA_3B4DB247.md), and [ordered next steps](docs/NEXT_STEPS.md). Treat this brief as operating requirements, not as proof of a score or permission to submit.
 
 > ## Fresh repository review — 2026-10-25 UTC (`arena/3b4db247-gemsdoe92`)
-> **No new TIFF or geological experiment was generated in this review; 0 weekly slots used.** The current primary is a format-valid **research download only**; the fresh hash-pinned full-footprint witness forces literal REGISTRY-MEASUREMENT overlap `1.0 > 0.70`, so **DO NOT SUBMIT**. `0.2778` remains a CLAIM without an organizer receipt. [Three-pass review and conditional hypothesis ranking](docs/REVIEW_20261025_ARENA_3B4DB247.md) · [fresh rejection-only run card](evidence/review_20261025_live_stop.json) · [selected primary TIFF](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif) · [submission guide](docs/executive-summary.html).
+> **No new TIFF or geological experiment was generated in this review; 0 weekly slots used.** After merging concurrent `origin/main` (`VARIO`), the current primary (`gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif`, SHA-256 `11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573`) remains a format-valid **research download only** (`verdict: negative`, `submission_eligible: false`; local overlap `0.9791 > 0.70` vs FAULTNET and literal full-footprint witness overlap `1.0 > 0.70`), so **DO NOT SUBMIT**. `0.2778` remains a CLAIM without an organizer receipt. [Three-pass review and conditional hypothesis ranking](docs/REVIEW_20261025_ARENA_3B4DB247.md) · [rejection-only run card](evidence/review_20261025_live_stop.json) · [selected primary TIFF](docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif) · [submission guide](docs/executive-summary.html).
 >
-> `scripts/check_site.py` now fails if the page's `data-primary` raster, `current_submission.json`, and `readiness.json` drift in path, hash, eligibility, name, or note. The README below is a historical archive; only the current status panel and its linked byte-bound records govern the current decision.
+> `scripts/check_site.py` now fails if the page's `data-primary` raster, `current_submission.json`, and `readiness.json` drift in path, hash, eligibility, name, or note (catching and repairing `VARIO`'s stale `current_submission.json` during merge). The README below is a historical archive; only the current status panel and its linked byte-bound records govern the current decision.
 
 ## ALI session — executive summary (2026-10-25, branch `arena/4eccf0bc-gemsdoe92`)
 
@@ -59,23 +78,6 @@ Read this README, [SESSION_PROMPT.md](SESSION_PROMPT.md) and [docs/NEXT_STEPS.md
 > ## This session's repository review (2026-10-25 UTC)
 > **No new TIFF or experiment was generated; research downloads only, DO NOT SUBMIT or spend a slot.** No lane was assigned and the literal public-raster stop remains binding. The existing LISTRIC research file passes local format checks but fails recorded public dot overlap (`0.710735 > 0.70`) and is dated 2026-10-26, future relative to this review. [Three-pass audit](docs/REVIEW_20261025_ARENA_REPOSITORY.md) · [run card](evidence/review_20261025_arena_run_card.json) · [existing research TIFF](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif).
 
-<!-- CURRENT:BEGIN -->
-> ## Newest lane result — lane LISTRICLOQO / arm `selectcal`
-> **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 1.0000 of its dots lie within 3 px of the dots of 17GEMSDOE full-footprint dense witness (5,167,373 dots), above the 0.70 limit.
->
-> **[⬇ Download the GeoTIFF](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif)** · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.zip) · [run card](docs/downloads/listric_loqo_run_card.json) · [analysis](docs/ANALYSIS_20261025_LISTRICLOQO.md)
->
-> **How to submit (only with a file marked ✅ OK TO SUBMIT, which this one is not):**
-> 1. Download the `.tif` (or the ZIP holding only that TIFF).
-> 2. Go to https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/ (log in; not live-verified from the sandbox), then choose the file under *File to submit*.
-> 3. Paste this into *Note (optional)*: `h33-h33-2-b2; LISTRICLOQO selectcal: 37654 1D updip-listric+interfluve-knick+U/Th-K/Th crests; HOLDOUT-DTI 0.013295`
-> 4. Name/record: `GEMSDOE92-LISTRICLOQO-selectcal-20261025`. After scoring, record the receipt in `ledger/submissions.csv`.
->
-> Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17`.
-> **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22,663 withheld positives): `0.013295 [0.011713, 0.014980]`. KNICKLOQO standalone control: `0.010788 [0.009468, 0.012201]`. Paired Δ `+0.002508 [0.001477, 0.003463]`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
-> **Uniqueness** (1,459 registry rasters): worst overlap `1.0000` (limit 0.70), worst |ρ| `0.1434` / surface `0.4685` (limit 0.90). Literal-support reading: 1 raster(s) > 0.70. The literal reading is binding under the current protocol and triggers the duplicate stop.
-> Siblings: [standalone](docs/downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif) (negative, HOLDOUT-DTI 0.013250) · [uncal](docs/downloads/h33-h33-2-b2-LISTRICLOQOuncal-20261025-2962f45f-zeros.tif) (negative, HOLDOUT-DTI 0.013105). **Read [SESSION_PROMPT.md](SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
-<!-- CURRENT:END -->
 
 
 > ## Latest artifact — LISTRIC (artifact label 2026-10-26; reviewed 2026-10-25, future-date irregularity disclosed)
@@ -107,6 +109,21 @@ The shared distance validator previously accepted predictions inside a declared 
 GitHub Pages is still in **legacy** publishing mode; changing to workflow mode returned HTTP 403. Local/CI verification does not prove the legacy deployment is gated by Actions. No live organizer score, slot cap or portal acceptance was verified.
 
 ### Persisted user brief — starting point for every session
+### Owner addendum, 2026-10-25 (VARIO session)
+
+The owner directed: review GEMSDOE92 end-to-end; place the required data
+yourself; generate a genuinely new unique GeoTIFF (not a copy/rename); make
+OK-TO-DOWNLOAD / OK-TO-SUBMIT obvious at the top of the site and executive
+summary with one-click download, unique name and <=140-character note; avoid
+the portal "Predicted values must be in range [0, 1]" error; answer at PhD
+level why GEMSDOE32 h33-h33-2-b2 (claimed 0.2778) scored highest and
+whether/how to beat it; pre-register 3–5 untried geological hypotheses and
+validate the top one on a spatially blocked holdout before spending any
+weekly slot; end with JSON run card, verdict promote/negative, PR merged to
+main, remaining limitations. Work products: docs/HYPOTHESES_20261025_VARIO.md,
+docs/ANALYSIS_20261025_VARIO.md, docs/vario.html, evidence/vario_run_card.json
+(verdict negative; 0 slots used).
+
 
 Read this README and [SESSION_PROMPT.md](SESSION_PROMPT.md) before work. The [full supplied site-score inventory](ledger/site_scores_claimed_20261025.csv) remains owner-reported claims, not verified receipts. Retain these requirements:
 
@@ -536,7 +553,7 @@ Main `d6f7ac0` added [RADIODECOUPLE](docs/ANALYSIS_20261025_RADIODECOUPLE.md) an
 
 ## Session Prompt — Authoritative Operating Contract (read at every session start)
 
-The full durable operating contract below is a starting point for work on this repository. It is a normalized operating summary of historical input, not a verbatim archive and not a claim that any GEMSDOE entry received a verified organizer score or that any current TIFF is submission-cleared. Follow the binding negative decision at the top of this README and the evidence-linked reviews instead.
+The full durable operating contract below is the starting point for all work on this repository. It is a condensed operating brief, not a verbatim archive of the historical input, and it is not a claim that any GEMSDOE entry received a verified organizer score or that any current TIFF is submission-cleared. Follow the binding negative decision at the top of this README and the evidence-linked reviews instead.
 
 ### Highest urgency — MUST
 

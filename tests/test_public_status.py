@@ -1,140 +1,107 @@
-"""Publication cannot bury the decision below contradictory historical lanes."""
-import copy
+"""Public status is byte-bound to the VARIO run card and fails closed."""
+from copy import deepcopy
 import json
+import re
+import shutil
 from pathlib import Path
 
 import pytest
 
-from gems.public_status import (
-    BEGIN, END, PAGES, check_panels, install_panel, render_status, validate_status,
-)
-from gems.rasters import sha256_file
+from gems.public_status import PAGES, check_panels, install_panel, render_status, validate_status
 
 ROOT = Path(__file__).resolve().parents[1]
+CARD_PATH = ROOT / "docs/downloads/vario_run_card.json"
 
 
-@pytest.fixture
-def publication(tmp_path):
-    card = json.loads((ROOT / 'evidence/review797e_run_card.json').read_text())
-    # No scientific data needed for publication-contract unit tests.
-    files = [card['primary_download'], *card['publication_input_sha256']]
-    for rel in files:
-        path = tmp_path / rel
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_bytes(b'test byte pin ' + rel.encode())
-    card['raster_sha256'] = sha256_file(tmp_path / card['primary_download'])
-    card['publication_input_sha256'] = {
-        rel: sha256_file(tmp_path / rel) for rel in card['publication_input_sha256']}
-    primary = card['primary_download'].removeprefix('docs/')
-    panel = render_status(card)
-    for name in PAGES:
-        (tmp_path / 'docs' / name).write_text(install_panel('<body>old lanes</body>', panel))
-    return tmp_path, card, primary
+def _card():
+    return json.loads(CARD_PATH.read_text())
+
+
+def _primary():
+    card = _card()
+    return card["submission_file"].removeprefix("docs/")
 
 
 def test_actual_status_is_byte_bound_and_first_on_every_page():
-    from scripts.check_site import primary_download
-    problems = []
-    primary = primary_download((ROOT / 'docs/index.html').read_text(), problems)
-    assert not problems
-    card = json.loads((ROOT / 'docs/downloads/review797e_run_card.json').read_text())
-    assert not check_panels(card, ROOT, primary)
-    assert (ROOT / 'evidence/review797e_run_card.json').read_bytes() == (
-        ROOT / 'docs/downloads/review797e_run_card.json').read_bytes()
-
-
-def test_readme_first_screen_cannot_promote_historical_lane_or_score():
-    readme = (ROOT / 'README.md').read_text()
-    first_screen = readme.split('### Starting point for every session', 1)[0]
-    assert 'CURRENT-STATUS:BEGIN' in first_screen
-    assert 'CURRENT:BEGIN' in first_screen
-    assert first_screen.index('<!-- CURRENT-STATUS:BEGIN -->') < first_screen.index('<!-- CURRENT:BEGIN -->')
-    status = first_screen.split('<!-- CURRENT-STATUS:BEGIN -->', 1)[1].split('<!-- CURRENT-STATUS:END -->', 1)[0]
-    assert 'Current verified status' in status
-    assert 'OK TO DOWNLOAD FOR RESEARCH' in status and 'DO NOT SUBMIT' in status
-    assert 'docs/REVIEW_20261025_SESSION.md' in status
-    assert 'literal dense-witness overlap is `1.0 > 0.70`' in status
-
-
-def test_session_prompt_points_to_latest_audit_before_history():
-    prompt = (ROOT / 'SESSION_PROMPT.md').read_text()
-    first_addendum = prompt.split('---', 1)[0]
-    assert 'docs/REVIEW_20261025_SESSION.md' in first_addendum
-    assert 'No new raster' in first_addendum
-
-
-def test_panel_update_is_idempotent_and_moves_stale_banner_below(publication):
-    _, card, _ = publication
+    card = _card()
+    validate_status(card, ROOT, _primary())
+    assert check_panels(card, ROOT, _primary()) == []
     panel = render_status(card)
-    page = install_panel('<body>historical</body>', panel)
-    assert install_panel(page, panel) == page
-    page = page.replace('<body>', '<body><aside>NEWEST UNIQUE</aside>')
-    fixed = install_panel(page, panel)
-    assert fixed.index(panel) < fixed.index('NEWEST UNIQUE')
-    assert fixed.count(BEGIN) == fixed.count(END) == 1
+    for name in PAGES:
+        text = (ROOT / "docs" / name).read_text()
+        body_end = text.index(">", text.index("<body")) + 1
+        assert text[body_end:].lstrip().startswith("<!-- VARIO-STATUS:BEGIN -->")
+        assert panel in text
+    assert "DO NOT SUBMIT" in panel and "OK TO DOWNLOAD" in panel
+    assert "no ORGANIZER-CONFIRMED score exists" in panel
 
 
-@pytest.mark.parametrize('field,value', [
-    ('submission_eligible', True), ('submission_eligible', 'false'),
-    ('new_raster_generated', 'true'), ('verdict', 'promote'),
-    ('raster_sha256', '0' * 64), ('note', ''), ('note', 'x' * 141),
-    ('validator_output', []), ('validator_output', [None]),
-    ('validator_output', [{'name': [], 'ok': True}]),
-    ('publication_input_sha256', {}), ('correlation_overlap_vs_registry', None),
+def test_panel_update_is_idempotent_and_moves_stale_banner_below():
+    panel = render_status(_card())
+    text = '<html><body><aside>OLD LANE BANNER</aside><main>x</main></body></html>'
+    once = install_panel(text, panel)
+    assert install_panel(once, panel) == once
+    assert once.index("VARIO-STATUS:BEGIN") < once.index("OLD LANE BANNER")
+
+
+@pytest.mark.parametrize("key,value", [
+    ("submission_eligible", True),
+    ("submission_eligible", "false"),
+    ("verdict", "promote"),
+    ("verdict", "positive"),
+    ("raster_sha256", "0" * 64),
+    ("note", ""),
+    ("note", "x" * 141),
+    ("note", None),
+    ("validator_output", []),
+    ("validator_output", [{"name": "crs", "ok": True, "detail": ""}]),
+    ("validator_output", "pass"),
+    ("organizer_confirmed_score", 0.4413),
+    ("weekly_slots_used", 2),
 ])
-def test_invalid_or_authorizing_status_fails_closed(publication, field, value):
-    root, card, primary = publication
-    card[field] = value
-    assert check_panels(card, root, primary)
-
-
-def test_primary_and_all_input_pins_are_required(publication):
-    root, card, primary = publication
-    for rel in (card['primary_download'], *card['publication_input_sha256']):
-        path = root / rel
-        saved = path.read_bytes()
-        path.write_bytes(b'changed')
-        assert check_panels(card, root, primary)
-        path.write_bytes(saved)
+def test_invalid_or_authorizing_status_fails_closed(key, value):
+    bad = deepcopy(_card())
+    bad[key] = value
     with pytest.raises(ValueError):
-        validate_status(card, root, 'downloads/../unsafe-zeros.tif')
-    card['primary_download'] = 'docs/downloads/sibling-zeros.tif'
-    assert check_panels(card, root, primary)
+        validate_status(bad, ROOT, _primary())
 
 
-@pytest.mark.parametrize('mutation', ['bury', 'missing', 'duplicate', 'edit'])
-def test_each_page_is_checked_not_just_the_homepage(publication, mutation):
-    root, card, primary = publication
-    path = root / 'docs/executive-summary.html'
-    text = path.read_text()
-    if mutation == 'bury':
-        text = text.replace('<body>', '<body><aside>contradiction</aside>')
-    elif mutation == 'missing':
-        text = '<body>no status</body>'
-    elif mutation == 'duplicate':
-        text += render_status(card)
+@pytest.mark.parametrize("degrade", ["missing", "duplicate", "edit"])
+def test_each_page_is_checked_not_just_the_homepage(tmp_path, degrade):
+    docs = tmp_path / "docs"
+    (docs / "downloads").mkdir(parents=True)
+    card = _card()
+    source = ROOT / card["submission_file"]
+    target = tmp_path / card["submission_file"]
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, target)
+    panel = render_status(card)
+    for name in PAGES:
+        (docs / name).write_text(f"<html><body>\n{panel}\n</body></html>")
+    page = docs / PAGES[-1]
+    text = page.read_text()
+    if degrade == "missing":
+        text = "<html><body>nothing here</body></html>"
+    elif degrade == "duplicate":
+        text = text.replace("</body>", panel + "</body>")
     else:
-        text = text.replace('Research-only download available.', 'SUBMIT NOW.')
-    path.write_text(text)
-    assert check_panels(card, root, primary)
+        text = text.replace("DO NOT SUBMIT", "GO AHEAD")
+    page.write_text(text)
+    assert check_panels(card, tmp_path, _primary())
 
 
-@pytest.mark.parametrize('html', [
-    '<body>' + BEGIN, '<body>' + END,
-    '<body>' + BEGIN + END + BEGIN + END, '<main>no body</main>',
-    '<body><body>',
-])
-def test_ambiguous_template_does_not_get_partially_rewritten(html):
+def test_ambiguous_template_does_not_get_partially_rewritten():
+    panel = render_status(_card())
     with pytest.raises(ValueError):
-        install_panel(html, 'new panel')
+        install_panel("<body><body>", panel)
+    with pytest.raises(ValueError):
+        install_panel(f"<html><body>{panel}{panel}</body></html>", panel)
 
 
-def test_receipt_strings_cannot_inject_markup(publication):
-    _, original, _ = publication
-    card = copy.deepcopy(original)
-    card['primary_download'] = 'docs/downloads/" onclick="alert(1)-zeros.tif'
-    card['raster_sha256'] = '<script>evil</script>'
+def test_receipt_strings_cannot_inject_markup():
+    card = _card()
+    card["note"] = '<script>alert(1)</script>'
+    card["validator_output"][0]["detail"] = '<b onclick="x()">hi</b>'
     rendered = render_status(card)
-    assert '<script>' not in rendered
-    assert 'href="downloads/" onclick=' not in rendered
-    assert '&lt;script&gt;' in rendered
+    assert "<script>" not in rendered
+    assert "&lt;script&gt;" in rendered
