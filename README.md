@@ -1,12 +1,21 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+# GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
+
+> ## Latest artifact — RADIODECOUPLE (2026-10-25)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). New byte-unique GeoTIFF; all automated format checks pass (single-band `float32`, `EPSG:32611`, values in `[0, 1]`, 0 NaNs), but HOLDOUT-DTI `0.053167 [0.041779, 0.064582]` is below the promotion bar and literal public dense-witness overlap is `1.0 > 0.70`.
+>
+> **[Download the validated TIFF](docs/downloads/gemsdoe92-radiodecouple-standalone-37654-20261025-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-radiodecouple-standalone-37654-20261025-zeros.zip) · [run card](docs/downloads/gemsdoe92-radiodecouple-20261025T160000Z_run_card.json) · [audit JSON](docs/downloads/gemsdoe92-radiodecouple-standalone-37654-20261025-audit.json) · [PhD analysis](docs/ANALYSIS_20261025_RADIODECOUPLE.md) · [pre-registered hypotheses](docs/HYPOTHESES_20261025_RADIODECOUPLE.md) · [Executive Summary](docs/executive-summary.html)
+>
+> SHA-256 `2531cf488b0d944deba2ee4c6934a367eec52f750b3d8d6f51950e9324c00030`; name `GEMSDOE92-RADIODECOUPLE-standalone-20261025`; note: `RADIODECOUPLE standalone: 37654 dots; K/Th x grav tensor decoupling; negative`.
+
 > ## Binding decision — read before any download or experiment
-> **Research downloads only. DO NOT SUBMIT any current TIFF or spend a weekly slot.** The pinned public registry witness is positive in all 5,167,373 footprint cells, so every nonempty in-footprint prediction raster has literal 3-px forward overlap `1.0 > 0.70`. The pre-placement gate requires stopping. No candidate was generated in this repository review and no artifact is slot-cleared. Read the [current three-pass review](docs/REVIEW_20261025_REPOSITORY_REVIEW.md), [binding gate evidence](docs/REVIEW_376A8469.md), and [ranked untested hypotheses](docs/HYPOTHESES_20261025_REVIEW.md). The latest lane below is a prior research result, not an exception.
+> **Research downloads only. DO NOT SUBMIT any current TIFF or spend a weekly slot.** The pinned public registry witness is positive in all 5,167,373 footprint cells, so every nonempty in-footprint prediction raster has literal 3-px forward overlap `1.0 > 0.70`. The pre-placement gate requires stopping. Read the [current three-pass review](docs/REVIEW_20261025_REPOSITORY_REVIEW.md), [binding gate evidence](docs/REVIEW_376A8469.md), and [ranked untested hypotheses](docs/HYPOTHESES_20261025_REVIEW.md).
 >
 > **Persistent operating brief:** read this README and `SESSION_PROMPT.md` at every session start; use shared cached features/evaluator/writer, whole-segment buffered holdouts and leakage canaries; pre-register 3–5 hypotheses; label all metrics and provenance; never call a projection a score; stop at 3 experiments / 2 hours; keep “Maximize P(Win)” and “Own the Outcome” central. Full user prompt summary is retained under [Persistent Session Prompt Reference](#persistent-session-prompt-reference).
 
 <!-- LISTRICDIP:BEGIN -->
-> ### Newest session (2026-10-25) — lane `LISTRICDIP`: 3 new unique GeoTIFFs · verdict **`negative`**
+> ### Prior session (2026-10-25) — lane `LISTRICDIP`: 3 new unique GeoTIFFs · verdict **`negative`**
 > **✅ OK TO DOWNLOAD FOR RESEARCH** (11/11 format gates, values in `[0, 1]`, 0 NaN, local overlap 0.1968 at scoring; 0.1892 vs the later `DRAINAGE-KNICK` raster) · **⛔ OK TO SUBMIT: NO** (`submission_eligible: false`; literal dense-witness overlap 1.000; not cleared for a weekly slot; 0 slots used)
 >
 > - **Download:** [`gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif`](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [zip](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.zip) · [audit](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-audit.json) · [run card](docs/downloads/listricdip_run_card.json) · [submit steps](docs/listricdip.html) · [analysis](docs/ANALYSIS_20261025_LISTRICDIP.md) · [pre-registration](docs/HYPOTHESES_20261025_LISTRICDIP.md)

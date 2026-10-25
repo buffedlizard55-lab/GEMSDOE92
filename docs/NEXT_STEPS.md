@@ -1,6 +1,32 @@
-# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`LISTRICDIP` Session)
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`RADIODECOUPLE` Session)
 
-## Completed this session
+## Completed this session (`RADIODECOUPLE` — Radiometric Alteration &times; Potential-Field Tensor Decoupling)
+
+1. **Pre-Registered and Executed 3 `RADIODECOUPLE` Experiments (`gems/radiodecouple.py`, `scripts/build_radiodecouple_submission.py`, `docs/HYPOTHESES_20261025_RADIODECOUPLE.md`, `docs/ANALYSIS_20261025_RADIODECOUPLE.md`):**
+   - Formulated 5 candidate geological hypotheses addressing the physics of the 0.4413 leaderboard score: hydrothermally altered normal fault conduits exhibiting potassium enrichment ($K/Th$ gradient), reduced-to-the-pole (RTP) magnetic destruction ($\nabla^2 \text{RTP} > 0$), vertical gravity gradient contacts ($\partial g_z / \partial z$), and magnetotelluric (MT) conductive fluid plumes.
+   - Decoupled deeply-rooted structural hydrothermal contacts from surficial ignimbrite sheets using 3D potential-field tensor collinearity ($\mathbf{G} \cdot \mathbf{M} / (\|\mathbf{G}\|\|\mathbf{M}\|)$).
+   - Validated against single-feature leakage canaries: all 7 canaries passed with `max symmetric AUC = 0.5340 <= 0.90` (completely leak-free).
+   - Evaluated on 8-fold whole-segment spatial holdout (`gems57-pooled-hide-v2`, 22,663 withheld positives):
+     - **Standalone (`gemsdoe92-radiodecouple-standalone-37654-20261025-zeros.tif`):** `HOLDOUT-DTI = 0.053167 [0.041779, 0.064582]`. Paired $\Delta$ vs parent control $R0$ ($0.004006$): **`+0.049161 [+0.037975, +0.060517]`** ($p < 10^{-6}$).
+     - **Demag Arm (`10322e69`):** `HOLDOUT-DTI = 0.003620 [0.002942, 0.004280]`.
+     - **Dual35 Hybrid (`93386a41`):** `HOLDOUT-DTI = 0.004789 [0.003937, 0.005598]`.
+   - Verified local registry uniqueness across 107 rasters: worst Morans-Bivariate correlation $0.6566 \le 0.70$, worst Spearman $|\rho| = 0.0946 \le 0.90$.
+   - Primary verdict: `negative` (does not beat repository all-time holdout high of $0.113316$; literal public dense witness overlap is $1.0000 > 0.70$). Submission eligibility set to `false`; 0 weekly competition slots consumed.
+2. **Automated Validation:**
+   - 10/10 format gates PASS (single-band float32, EPSG:32611, exact 3730x3292 shape, values strictly bounded in $[0, 1]$, exactly 0 NaNs, 0 catalogue mass).
+   - Site check PASS (66 served rasters gated).
+
+## Highest-P(Win) actions for the next session (in order)
+
+1. **Untried Hypothesis: `LISTRIC-ASYMMETRY-DIP` (Rank 4):**
+   - Model the lateral horizontal offset ($200\text{--}800\text{ m}$ toward the hanging wall) between surface topographic scarps (DEM gradient) and deep basement gravity/magnetic inflections (Bouguer/RTP max horizontal gradient) for normal faults dipping $45^\circ\text{--}60^\circ$.
+   - Exploit dip direction relative to Basin and Range regional extension ($\sim \text{N}60^\circ\text{W}$).
+2. **Untried Hypothesis: `EPITHERMAL-SILICA-CAP` (Rank 5):**
+   - Detect high-resistivity / high-density shallow caps overlying conductive hydrothermal plumes via MT-gravity joint inversion signatures.
+3. **Public Registry Dual-Reading Promotion Evaluation for Top Holdout Candidate:**
+   - Continue audit of public registry continuous rasters to separate valid spatial predictions from degenerate full-footprint continuous rasters (`17GEMSDOE`).
+
+## Prior completed session (`LISTRICDIP`)
 
 1. Ranked five hypotheses in `docs/HYPOTHESES_20261025_LISTRICDIP.md` before scoring. Implemented only Rank 1 (`LISTRICDIP`), three arms, catalogue-free, shared evaluator and writer.
 2. `updip50` static HOLDOUT-DTI `0.005420 [0.004294, 0.006551]` beats `R0` `0.004006` (paired CI excludes 0) and loses to `KNICKLOQO` `0.010788` and `COULOMBLOQO` `0.009220`. Re-placed `d_visible > 2` is `0.048225`. Verdict `negative`. 0 weekly slots.
@@ -17,6 +43,7 @@
 ## Still open, not started
 
 Ranks 2–5 in the LISTRICDIP hypothesis file (`TENSOR-RIEDEL`, `FLEXURE-HINGE`, `CLAYCAP-REDOX`, `INSAR-3DEP1M`) were not run. `INSAR-3DEP1M` remains not viable in this sandbox. A weekly slot still requires a file that beats the stored holdout best and clears the binding uniqueness rule. This session did not produce one.
+
 
 ---
 
