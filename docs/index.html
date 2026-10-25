@@ -75,6 +75,35 @@
 </section>
 <!-- CURRENT:END -->
 <details id="historical-research-archive"><summary>Historical experiments and downloads — not current clearance</summary>
+<!-- RIEDELVENT:BEGIN -->
+<aside id="riedelvent-banner-index" class="banner banner-warn" aria-label="RIEDELVENT session status" style="border:2px solid #7f1d1d;">
+  <p><strong>Parallel session (2026-10-25) — lane <code>RIEDELVENT</code> (En-Échelon Riedel 12&deg;&ndash;28&deg; Obliquity + Hanging-Wall Flexural Hinge + Slope-Regime Coupled 3DEP-10m Scarp, Thalweg Knickzone &amp; Tufa-Filtered INGENIOUS Hydrothermal Vents): 3 new validated GeoTIFFs built; solves <code>docs/NEXT_STEPS.md</code> Item #1 by boosting static <code>HOLDOUT-DTI</code> by <code>+17.9%</code> (<code>riedelvent = 0.009682 [0.008345, 0.010822]</code>, paired <code>+0.001470 [+0.000477, +0.002492]</code> vs <code>VENTSCARP</code> <code>0.008212</code>) and <code>+25.0%</code> with the additive <code>@ 0.30</code> tail (<code>riedelvent_tail = 0.010268 [0.008986, 0.011408]</code>, Rule-2 <code>0.107465 [0.094960, 0.119761]</code>, <code>USGS SGMC PROXY = 0.103378</code>), while passing <code>dual_reading_unique = True</code> across all <code>102</code> public repos (<code>&le; 0.6190 &le; 0.70</code>). Verdict: <code>negative</code>.</strong></p>
+  <p>
+    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH — 11/11 automated format MUST gates PASS (float32 strictly in [0, 1], 0 NaN/Inf, prevents &ldquo;Predicted values must be in range [0, 1]&rdquo; error); UNIQUE locally (&le; 0.5807) &amp; 102-repo dual-reading (&le; 0.6190)</span>
+    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (verdict: negative, submission_eligible: false; DUPLICATE UNDER THE LITERAL REGISTRY RULE vs 17GEMSDOE dense surface 1.000 &gt; 0.70; 0 weekly slots spent)</span>
+  </p>
+  <p>
+    <a href="downloads/gemsdoe92-riedelvent-riedelvent_tail-64000-20261025-c4e61655-zeros.tif" download><strong>⬇ Download gemsdoe92-riedelvent-riedelvent_tail-64000-20261025-c4e61655-zeros.tif (64,000 px: 37,654@1.0 + 26,346@0.30)</strong></a>
+    · <a href="downloads/gemsdoe92-riedelvent-riedelvent_tail-64000-20261025-c4e61655-zeros.zip" download>one-TIFF ZIP</a>
+    · <a href="downloads/gemsdoe92-riedelvent-riedelvent_tail-64000-20261025-c4e61655-audit.json">audit JSON</a>
+    · <a href="downloads/gemsdoe92-riedelvent-riedelvent-37654-20261025-73ec79ae-zeros.tif" download><strong>⬇ Binary 37,654-px arm (gemsdoe92-riedelvent-riedelvent-37654-20261025-73ec79ae-zeros.tif)</strong></a>
+    · <a href="downloads/gemsdoe92-riedelvent-riedelvent-37654-20261025-73ec79ae-zeros.zip" download>binary ZIP</a>
+    · <a href="downloads/gemsdoe92-riedelvent-riedelvent-37654-20261025-73ec79ae-audit.json">binary audit JSON</a>
+    · <a href="downloads/riedelvent_run_card.json">JSON Run Card</a>
+    · <a href="downloads/riedelvent_holdout.json">holdout JSON</a>
+    · <a href="downloads/riedelvent_uniqueness.json">102-repo uniqueness JSON</a>
+    · <a href="ANALYSIS_20261025_RIEDELVENT.md">PhD Analysis (GEMSDOE32 0.2778 &amp; RIEDELVENT)</a>
+    · <a href="HYPOTHESES_20261025_RIEDELVENT.md">Pre-Registered Hypotheses</a>
+    · <a href="executive-summary.html">Executive Summary &amp; DrivenData Steps</a>
+  </p>
+  <p>
+    SHA-256 (<code>riedelvent</code> / <code>riedelvent_tail</code>): <code>bfb4a45cc25f924606d96985ecd19fea571b74a0d18cbca2acb1028181cf4911</code> / <code>fdc4dac41355c07517b1401b4387c767a8abe752feafbbd17da5e60b17efd9da</code>.
+    <strong>HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, <code>22,663</code> withheld positives): static <code>d_cat &gt; 2.0</code> <code>riedelvent_tail = 0.010268 [0.008986, 0.011408]</code> (paired <code>+0.000587 [+0.000373, +0.000810]</code> vs <code>riedelvent = 0.009682 [0.008345, 0.010822]</code>; paired <code>+0.002057 [+0.001194, +0.003008]</code> vs <code>VENTSCARP</code> <code>0.008212</code>; paired <code>+0.006262</code> vs <code>R0</code> <code>0.004006</code>); strict draw-blind Rule-2 <code>d_visible &gt; 2.0</code>: <code>riedelvent_tail = 0.107465 [0.094960, 0.119761]</code> (paired <code>+0.003289 [+0.002375, +0.004224]</code> vs <code>riedelvent = 0.104176 [0.091329, 0.117184]</code>); off-catalogue <code>USGS SGMC PROXY</code>: <code>riedelvent_tail = 0.103378</code> (vs <code>riedelvent = 0.087277</code>, <code>VENTSCARP = 0.081321</code>, <code>KNICKLOQO = 0.095878</code>). 30/30 canaries PASS (<code>max = 0.616694 &le; 0.90</code>).
+    Record-only name: <code>GEMSDOE92-RIEDELVENT-riedelvent-20261025</code> · Note (<code>105/140</code>): <code>RIEDELVENT riedelvent: 37654px Riedel+Flexure+3DEP10m+vents; HOLDOUT-DTI 0.104176 (static 0.009682) [neg]</code>.
+    Ablation sibling: <a href="downloads/gemsdoe92-riedelvent-riedel_novent-37654-20261025-8e0bcdd5-zeros.tif" download>gemsdoe92-riedelvent-riedel_novent-37654-20261025-8e0bcdd5-zeros.tif</a> (<a href="downloads/gemsdoe92-riedelvent-riedel_novent-37654-20261025-8e0bcdd5-zeros.zip" download>ZIP</a> · <a href="downloads/gemsdoe92-riedelvent-riedel_novent-37654-20261025-8e0bcdd5-audit.json">audit</a>, SHA-256 <code>7116022e3bebbaa150e1b3de54267c942fd7965de732f248f1391d0adeccb110</code>, static <code>0.009432</code>, Rule-2 <code>0.106203</code>).
+  </p>
+</aside>
+<!-- RIEDELVENT:END -->
 <!-- VENTSCARP:BEGIN -->
 <aside id="ventscarp-banner-index" class="banner banner-warn" aria-label="VENTSCARP session status" style="border:2px solid #7f1d1d;">
   <p><strong>Parallel session (2026-10-25) — lane <code>VENTSCARP</code> (USGS 3DEP 10 m Sub-Pixel Scarp Excess + Tufa-Filtered INGENIOUS Paleo-Hydrothermal Vents &amp; 2 m Probes): 3 new validated GeoTIFFs built; highest public-registry-unique zero-catalogue Rule-2 <code>HOLDOUT-DTI = 0.112213 [0.096670, 0.127254]</code> in <code>GEMSDOE92</code> (<code>dual_reading_unique = True</code>, <code>&le; 0.6947 &le; 0.70</code> across <code>102</code> repos). Verdict: <code>negative</code>.</strong></p>

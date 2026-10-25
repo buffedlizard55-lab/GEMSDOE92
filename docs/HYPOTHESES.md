@@ -4,6 +4,9 @@
 
 **Parent for all:** `h33-h33-2-b2` (37,654 binary unit-mass dots, `d_cat > 2.0 px`, CLAIM 0.2778). No hypothesis reads test labels. New external data is only proposed when it is free, official, and fetchable in this sandbox (which allows `github.com`, `pypi.org`, etc. — USGS and DOE GDR are verified via their DOIs/public mirrors, not via live scrape).
 
+- **Latest Pre-Registered Session (`2026-10-25`, `RIEDELVENT`):** See [`docs/HYPOTHESES_20261025_RIEDELVENT.md`](HYPOTHESES_20261025_RIEDELVENT.md) and [`docs/ANALYSIS_20261025_RIEDELVENT.md`](ANALYSIS_20261025_RIEDELVENT.md) for the 5 ranked hypotheses (`RIEDELVENT`, `CURIE-POISSON-APRON`, `SCARP-POLARITY-VALVE`, `EULER-BASEMENT-HINGE`, `INSAR-3DEP1M-CREEP`) and the 3-experiment empirical verification (`riedelvent`, `riedel_novent`, `riedelvent_tail`).
+- **Prior Pre-Registered Sessions:** [`docs/HYPOTHESES_20261025_VENTSCARP.md`](HYPOTHESES_20261025_VENTSCARP.md) (`VENTSCARP`), [`docs/HYPOTHESES_20261026_LISTRIC.md`](HYPOTHESES_20261026_LISTRIC.md) (`LISTRIC`), [`docs/HYPOTHESES_20261025_POISSONFLEX.md`](HYPOTHESES_20261025_POISSONFLEX.md) (`POISSONFLEX`), [`docs/HYPOTHESES_20261025_PROVINCETOE.md`](HYPOTHESES_20261025_PROVINCETOE.md) (`PROVINCETOE`).
+
 ---
 
 ## How “missing” is defined
