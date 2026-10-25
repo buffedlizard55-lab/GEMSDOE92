@@ -5,7 +5,7 @@
 
 **OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** LISTRICLOQO is a byte-distinct research artifact, but it fails the literal registry-overlap stop and promotion gates.
 
-[Existing LISTRICLOQO research TIFF — not cleared to submit](downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif) · [protocol run card](downloads/listric_loqo_run_card.json) · [analysis](ANALYSIS_20261025_LISTRICLOQO.md) · [three-pass review](REVIEW_20261025_SESSION.md) · [executive submission guide](executive-summary.html).
+[Existing LISTRICLOQO research TIFF — not cleared to submit](downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif) · [protocol run card](downloads/listric_loqo_run_card.json) · [analysis](ANALYSIS_20261025_LISTRICLOQO.md) · [three-pass review](REVIEW_20261025_SESSION.md) · [supplemental initial audit](REVIEW_20261025_SESSION_FOLLOWUP.md) · [audit run card](downloads/session_followup_20261025_run_card.json) · [later leaderboard review](ANALYSIS_20261025_LEADERBOARD.md) · [executive submission guide](executive-summary.html).
 
 Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.013295 [0.011713, 0.014980]`; paired improvement over KNICKLOQO is +0.002508 [0.001477, 0.003463]. Public dual-reading overlap is `0.690259 <= 0.70`, but the binding literal dense-witness overlap is `1.0 > 0.70`; this file is not uniqueness-cleared. No ORGANIZER-CONFIRMED score is available; 3/3 experiments and zero weekly slots.
 
