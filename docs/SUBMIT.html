@@ -40,14 +40,49 @@ Pre-registration: <a href="HYPOTHESES_20261025_VARIO.md">hypotheses</a> ·
 analysis: <a href="ANALYSIS_20261025_VARIO.md">why R0 scored 0.2778 [CLAIM] and what VARIO changes</a>.</p>
 </section>
 <!-- VARIO-STATUS:END -->
-<aside class="banner banner-warn" aria-label="Independent repository audit, research only">
-<p><strong>Independent repository review (2026-10-25): DO NOT SUBMIT any linked current or historical raster.</strong> The literal dense registry witness makes any nonempty submission duplicate under the requested rule. This review used zero new experiments or weekly slots. <a href="REVIEW_20261025_78DB3076.md">Three-pass review, official sources and integration correction</a> · <a href="downloads/session_78db3076_run_card.json">Final JSON rejection card</a> · <a href="HYPOTHESES_20261025_78DB3076.md">Conditional research shortlist</a>.</p>
-</aside>
 <!-- CURRENT:BEGIN -->
+<section aria-label="Completed session lane RELAYCONDUIT" style="border:3px solid #7f1d1d;background:#fef2f2;padding:1rem 1.2rem;margin:0 0 1.2rem 0;border-radius:8px;font-family:system-ui,sans-serif">
+  <h2 style="margin-top:0">Completed session lane (2026-10-25) — <code>RELAYCONDUIT</code> / hero arm <code>relay_conduit</code> (3 new unique-byte GeoTIFFs)</h2>
+  <p style="font-size:1.15rem;margin:.25rem 0">
+    <span style="background:#14532d;color:#dcfce7;padding:0.3rem 0.65rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.15rem 0.35rem 0.15rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH (11/11 automated [0, 1] gates PASS, 0 NaN; locally unique across all 128 rasters at 0.6601 &le; 0.70)</span>
+    <span style="background:#7f1d1d;color:#fee2e2;padding:0.3rem 0.65rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.15rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (verdict <code>negative</code>; external 102-repo overlap 0.7843 &gt; 0.70 vs GEMSDOE53 80k &amp; literal dense witness 1.000 &gt; 0.70; 0 slots spent)</span>
+  </p>
+  <p style="font-size:1.1rem">
+    <a href="downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.tif" download><strong>⬇ Download research GeoTIFF (gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.tif)</strong></a>
+    · <a href="downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.zip" download>one-TIFF ZIP</a>
+    · <a href="downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-audit.json">audit JSON</a>
+    · <a href="downloads/relayconduit_run_card.json">JSON Run Card</a>
+    · <a href="downloads/relayconduit_holdout.json">holdout JSON</a>
+    · <a href="downloads/relayconduit_uniqueness.json">102-repo uniqueness JSON</a>
+    · <a href="relayconduit.html"><strong>DrivenData form steps (relayconduit.html)</strong></a>
+    · <a href="ANALYSIS_20261025_RELAYCONDUIT.md">PhD Analysis (0.2778 / 0.3195 / 0.4413)</a>
+    · <a href="HYPOTHESES_20261025_RELAYCONDUIT.md">Pre-registered Hypotheses</a>
+  </p>
+  <p><strong>DrivenData submission form reference (record-only; do NOT upload a <code>negative</code> artifact):</strong>
+    1) Upload zeros-outside single-band <code>float32</code> <code>.tif</code> (or matching one-TIFF <code>.zip</code>) — zeros outside footprint prevent the portal error <em>&ldquo;Predicted values must be in range [0, 1]&rdquo;</em> without manual pixel inspection.
+    2) Separate submission name field: <code>GEMSDOE92-RELAYCONDUIT-relay_conduit-20261025</code>.
+    3) Description/note (&le;140 chars; <code>113/140</code>): <code>RELAYCONDUIT relay_conduit: 37654px tip-relay+OOF blind conduit d&gt;3.2px; HOLDOUT-DTI 0.184485 (st 0.000000) [neg]</code>.
+  </p>
+  <p><strong>HOLDOUT-DTI</strong> (gems57-pooled-hide-v2, 22,663 withheld positives, 1,000-draw 20 km paired spatial-cluster bootstrap):
+    hero <code>relay_conduit</code> strict Rule-2 <strong><code>0.184485 [0.169875, 0.198933]</code></strong>
+    (paired <code>+0.069008 [0.053289, 0.084771]</code> over rebuilt <code>control_COULOMBLOQO_d32</code> <code>0.115477</code>; exceeds <code>FAULTNET netfar</code> <code>0.175147</code> and <code>VARIO full</code> <code>0.150020</code>);
+    <code>relay_delta</code> strict Rule-2 <code>0.180061 [0.165231, 0.193562]</code>;
+    zero-catalogue ablation <code>conduit_notip</code> strict Rule-2 <code>0.076416 [0.063889, 0.088770]</code>, static <code>d_cat &gt; 2.0</code> <code>0.005733</code> (beats <code>R0</code> <code>0.004006</code> and <code>LISTRICDIP</code> <code>0.005420</code>), and off-catalogue <strong>USGS SGMC PROXY = <code>0.106525</code></strong> (beats <code>COULOMBLOQO</code> <code>0.089332</code>). A local holdout number is never a live leaderboard score; no organizer score exists.
+  </p>
+  <p><strong>Automated validation &amp; Uniqueness (REGISTRY-MEASUREMENT):</strong>
+    SHA-256 <code>dae576a3b21b83988e05f0f2a51b0d312b14bb0ca6843a1ebfdb4781edf75a66</code> (ZIP <code>3e4d8cfa9f5ae8ba412e26bdd7f4f1a50b4915ad874a924d31a70f5d09262a5c</code>); <code>35/35</code> leakage canaries PASS (max symmetric AUC <code>0.811014 &le; 0.90</code>).
+    <code>relay_conduit</code> passes all <code>128</code> local rasters (worst 3-px overlap <code>0.6601 &le; 0.70</code>) and stops on external 102-repo 3-px overlap <code>0.7843 &gt; 0.70</code> vs <code>GEMSDOE53</code> 80k; meanwhile zero-catalogue <code>conduit_notip</code> passes all <code>1,367</code> external rasters across 102 repos (<code>0.6557 &le; 0.70</code>, <code>0</code> external violations) and hits <code>0.7031 &gt; 0.70</code> locally only against concurrently merged <code>RIEDELVALVE riedel_n90k</code> (<code>90,000</code> dots), while literal full-footprint witness <code>17GEMSDOE_E-proba-multiscale</code> forces literal overlap <code>1.000 &gt; 0.70</code>.
+  </p>
+  <p>All 3 pre-registered RELAYCONDUIT arms (research only, <code>negative</code>):
+    <a href="downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.tif" download>relay_conduit TIF</a> (<a href="downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.zip" download>ZIP</a> · <a href="downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-audit.json">audit</a>)
+    · <a href="downloads/gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-zeros.tif" download>relay_delta TIF</a> (<a href="downloads/gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-zeros.zip" download>ZIP</a> · <a href="downloads/gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-audit.json">audit</a>)
+    · <a href="downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-zeros.tif" download>conduit_notip TIF</a> (<a href="downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-zeros.zip" download>ZIP</a> · <a href="downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-audit.json">audit</a>).
+  </p>
+</section>
 <section aria-label="Current submission" style="border:3px solid #7f1d1d;background:#fef2f2;padding:1rem 1.2rem;margin:0 0 1.2rem 0;border-radius:8px;font-family:system-ui,sans-serif">
-  <h2 style="margin-top:0">Newest lane result — lane VARIO / arm <code>vario_full</code></h2>
+  <h2 style="margin-top:0">Parallel lane receipt — lane VARIO / arm <code>vario_full</code></h2>
   <p style="font-size:1.25rem;margin:.2rem 0"><strong>✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT</strong> (verdict <code>negative</code>). Reason: registry duplicate under protocol rule 1: 0.9791 of its dots lie within 3 px of the dots of gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif (37,654 dots), above the 0.70 limit; did not beat control_FAULTNET_far on the holdout.</p>
-  <p style="font-size:1.15rem"><a href="downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif" download><strong>⬇ Download the GeoTIFF (gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif)</strong></a> · <a href="downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.zip" download>one-TIFF ZIP</a> · <a href="downloads/vario_run_card.json">run card (JSON)</a> · <a href="ANALYSIS_20261025_VARIO.md">analysis</a></p>
+  <p style="font-size:1.15rem"><a href="downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif" download><strong>⬇ Download research GeoTIFF (gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif)</strong></a> · <a href="downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.zip" download>one-TIFF ZIP</a> · <a href="downloads/vario_run_card.json">run card (JSON)</a> · <a href="ANALYSIS_20261025_VARIO.md">analysis</a></p>
   <p><strong>How to submit (only do this with a file marked ✅ OK TO SUBMIT, which this one is not):</strong></p>
   <ol>
     <li>Download the <code>.tif</code> above (or the ZIP that contains only that TIFF).</li>
@@ -61,6 +96,9 @@ analysis: <a href="ANALYSIS_20261025_VARIO.md">why R0 scored 0.2778 [CLAIM] and 
   <p>Sibling arms (research only): <a href="downloads/gemsdoe92-vario-smooth-37654-20261025-5c5a1192-zeros.tif" download>vario_smooth</a> (negative, HOLDOUT-DTI 0.141661) · <a href="downloads/gemsdoe92-vario-nctx-37654-20261025-d2d499d5-zeros.tif" download>vario_nctx</a> (negative, HOLDOUT-DTI 0.116258). Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.</p>
 </section>
 <!-- CURRENT:END -->
+<aside class="banner banner-warn" aria-label="Independent repository audit, research only">
+<p><strong>Independent repository review (2026-10-25): DO NOT SUBMIT any linked current or historical raster.</strong> The literal dense registry witness makes any nonempty submission duplicate under the requested rule. This review used zero new experiments or weekly slots. <a href="REVIEW_20261025_78DB3076.md">Three-pass review, official sources and integration correction</a> · <a href="downloads/session_78db3076_run_card.json">Final JSON rejection card</a> · <a href="HYPOTHESES_20261025_78DB3076.md">Conditional research shortlist</a>.</p>
+</aside>
 
 <details id="historical-research-archive"><summary>Historical experiments and downloads — not current clearance</summary>
 <!-- RIEDELVALVE:BEGIN -->

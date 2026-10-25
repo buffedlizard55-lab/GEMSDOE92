@@ -15,10 +15,19 @@ Automated validation (no human inspection): finite [0, 1] everywhere (the portal
 
 <!-- VARIO-STATUS:END -->
 <!-- CURRENT:BEGIN -->
-> ## Newest lane result — lane VARIO / arm `vario_full`
+> ## Completed session lane (`2026-10-25`) — `RELAYCONDUIT` / hero arm `relay_conduit` (3 new unique-byte GeoTIFFs)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** (`11/11` automated `[0, 1]` gates PASS, `0` NaN; locally unique across all `128` rasters at `0.6601 <= 0.70`) · **⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT** (verdict `negative`, `submission_eligible: false`; external 102-repo overlap `0.7843 > 0.70` vs `GEMSDOE53` 80k & literal `17GEMSDOE` dense witness `1.000 > 0.70`; `0` weekly slots spent).
+>
+> **[⬇ Download research GeoTIFF (`gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.tif`)](docs/downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.zip) · [audit JSON](docs/downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-audit.json) · [JSON Run Card](docs/downloads/relayconduit_run_card.json) · [holdout JSON](docs/downloads/relayconduit_holdout.json) · [102-repo uniqueness JSON](docs/downloads/relayconduit_uniqueness.json) · [DrivenData form steps](docs/relayconduit.html) · [PhD Analysis (`0.2778` / `0.3195` / `0.4413`)](docs/ANALYSIS_20261025_RELAYCONDUIT.md) · [Pre-Registered Hypotheses](docs/HYPOTHESES_20261025_RELAYCONDUIT.md)
+>
+> - **Record-only DrivenData form fields (do NOT upload a `negative` artifact):** separate name `GEMSDOE92-RELAYCONDUIT-relay_conduit-20261025` · note (`113/140`): `RELAYCONDUIT relay_conduit: 37654px tip-relay+OOF blind conduit d>3.2px; HOLDOUT-DTI 0.184485 (st 0.000000) [neg]` · zeros-outside `float32` encoding prevents `"Predicted values must be in range [0, 1]"`.
+> - **`HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives):** hero `relay_conduit` strict Rule-2 **`0.184485 [0.169875, 0.198933]`** (paired `+0.069008 [0.053289, 0.084771]` over rebuilt `control_COULOMBLOQO_d32` `0.115477`; exceeds `FAULTNET netfar` `0.175147` and `VARIO full` `0.150020`); `relay_delta` `0.180061 [0.165231, 0.193562]`; zero-catalogue `conduit_notip` strict Rule-2 `0.076416 [0.063889, 0.088770]`, static `d_cat > 2.0` `0.005733`, off-catalogue **`USGS SGMC PROXY` = `0.106525`** (beats `COULOMBLOQO` `0.089332`, passes all `1,367` external rasters across 102 repos at `0.6557 <= 0.70`, `0.7031` locally vs `RIEDELVALVE riedel_n90k` 90k).
+> - **All 3 arms (`negative`, research only):** [`relay_conduit`](docs/downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.tif) ([ZIP](docs/downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-zeros.zip) · [audit](docs/downloads/gemsdoe92-relayconduit-relay_conduit-37654-20261025-8e4d1e44-audit.json)) · [`relay_delta`](docs/downloads/gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-zeros.tif) ([ZIP](docs/downloads/gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-zeros.zip) · [audit](docs/downloads/gemsdoe92-relayconduit-relay_delta-37654-20261025-044a9bb0-audit.json)) · [`conduit_notip`](docs/downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-zeros.tif) ([ZIP](docs/downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-zeros.zip) · [audit](docs/downloads/gemsdoe92-relayconduit-conduit_notip-37654-20261025-bb0e9f59-audit.json)).
+
+> ## Parallel lane receipt — lane VARIO / arm `vario_full`
 > **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 0.9791 of its dots lie within 3 px of the dots of gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif (37,654 dots), above the 0.70 limit; did not beat control_FAULTNET_far on the holdout.
 >
-> **[⬇ Download the GeoTIFF](docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.zip) · [run card](docs/downloads/vario_run_card.json) · [analysis](docs/ANALYSIS_20261025_VARIO.md)
+> **[⬇ Download research GeoTIFF](docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.zip) · [run card](docs/downloads/vario_run_card.json) · [analysis](docs/ANALYSIS_20261025_VARIO.md)
 >
 > **How to submit (only with a file marked ✅ OK TO SUBMIT, which this one is not):**
 > 1. Download the `.tif` (or the ZIP holding only that TIFF).
@@ -691,3 +700,10 @@ There should be an easy-to-download submission TIF file as described by the prom
 4. Create executive summary subpage — docs/tiltangle.html
 5. Store the prompt in README.md (this section)
 6. Create and merge a pull request onto main
+
+### Deliverables added in `RELAYCONDUIT` session (`2026-10-25`)
+
+1. Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261025_RELAYCONDUIT.md`) before implementation (`gems/relayconduit.py`, `scripts/run_relayconduit.py`).
+2. Validated all 3 pre-registered arms on `gems57-pooled-hide-v2` (`22,663` withheld positives, `35/35` leakage canaries PASS `<= 0.90`): `relay_conduit` strict Rule-2 `HOLDOUT-DTI = 0.184485 [0.169875, 0.198933]` (paired `+0.069008 [+0.053289, +0.084771]` over rebuilt `control_COULOMBLOQO_d32` `0.115477`; locally unique across all `128` post-merge rasters at `0.6601 <= 0.70`; external 102-repo overlap `0.7843 > 0.70` vs `GEMSDOE53` 80k); `relay_delta` `0.180061 [0.165231, 0.193562]`; zero-catalogue `conduit_notip` `0.076416` (`SGMC PROXY = 0.106525`, passes all `1,367` external rasters across `102` repos at `0.6557 <= 0.70`, `0` external violations, and `0.7031` locally vs `RIEDELVALVE riedel_n90k` `90k`).
+3. Emitted 3 `[0, 1]` format-validated GeoTIFFs (`11/11` gates PASS, `0` NaN), Run Card (`evidence/relayconduit_run_card.json`), executive subpage (`docs/relayconduit.html`), and PhD forensic analysis (`docs/ANALYSIS_20261025_RELAYCONDUIT.md`, including `GEMSDOE32` `0.2778` `[CLAIM]`, `0.3195` / `0.4413` ceilings, and `VENTSCARP` §1.3 corrections). Verdict `negative` (`0` weekly slots spent).
+

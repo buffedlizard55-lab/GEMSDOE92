@@ -1,0 +1,208 @@
+{
+  "evidence_label": "PROXY",
+  "created_utc": "20261025",
+  "axis": "DILATATION",
+  "purpose": "Report-only catalogue hide-and-recover instrument, leakage canaries, and USGS SGMC bedrock fault control proxy for DILATATION variants from parent R0.",
+  "parent": "h33-h33-2-b2",
+  "hide_and_recover_pooled_summary": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "alpha": 0.2,
+    "beta": 0.8,
+    "triangular_radius_m": 300.0,
+    "pooled": true,
+    "scores": {
+      "R0": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.004006147174684743,
+        "ci95": [
+          0.0034243961318463374,
+          0.004689525221466778
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 129.29712893913688,
+        "fpw": 70592.1164043663,
+        "fnw": 22533.70287106087
+      },
+      "p10dilatation": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.005747309282419389,
+        "ci95": [
+          0.004866603676809019,
+          0.006787944211382444
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 185.0612817308472,
+        "fpw": 70161.13164390181,
+        "fnw": 22477.938718269146
+      },
+      "p12dilatation": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.00577890001267024,
+        "ci95": [
+          0.0048627352076209595,
+          0.006850503522170202
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 186.10573793467586,
+        "fpw": 70183.66097081524,
+        "fnw": 22476.894262065318
+      },
+      "p15dilatation": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.005818117979644988,
+        "ci95": [
+          0.00483805617240567,
+          0.006911587751147571
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 187.40483814600455,
+        "fpw": 70213.39505492155,
+        "fnw": 22475.59516185399
+      }
+    },
+    "best_comparable_control": "p15dilatation",
+    "paired_differences": {
+      "R0": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.0017727528379854968,
+        "ci95": [
+          0.0011096695436551727,
+          0.0024553362507952867
+        ],
+        "withheld_positive_pixels": 22663
+      },
+      "p10dilatation": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 3.159073025085085e-05,
+        "ci95": [
+          -5.6385154385837213e-05,
+          0.0001308702415434223
+        ],
+        "withheld_positive_pixels": 22663
+      },
+      "p15dilatation": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": -3.9217966974747914e-05,
+        "ci95": [
+          -0.00014272149952153552,
+          7.338440717164737e-05
+        ],
+        "withheld_positive_pixels": 22663
+      }
+    },
+    "bootstrap": {
+      "method": "paired physical spatial-cluster percentile",
+      "clusters": 157,
+      "draws": 1000,
+      "seed": 520810,
+      "confidence": 0.95,
+      "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+    },
+    "implementation_sha256": {
+      "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+      "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+      "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+      "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+    }
+  },
+  "per_arm_fold_scores": {
+    "R0": [
+      0.0033190361096884797,
+      0.004407926168167087,
+      0.0031089001997361824,
+      0.004072828198897818,
+      0.00489997713403107,
+      0.005013980811213483,
+      0.004355576467076173,
+      0.003125934420342564
+    ],
+    "p10dilatation": [
+      0.00520832676886985,
+      0.004393206185555995,
+      0.00511519181992389,
+      0.006687793207159795,
+      0.007329921658309973,
+      0.0053450885605091465,
+      0.006179624676141032,
+      0.00588667612168868
+    ],
+    "p12dilatation": [
+      0.005272260303207584,
+      0.004390457126952616,
+      0.00513509690293052,
+      0.0069057346810101295,
+      0.007440249531451381,
+      0.005341736207648004,
+      0.0059501700631181135,
+      0.006063917184903712
+    ],
+    "p15dilatation": [
+      0.005373891254941132,
+      0.004248294961526875,
+      0.005273624603028358,
+      0.00692757151700482,
+      0.007367076182307316,
+      0.005374242893503732,
+      0.006059104184033227,
+      0.00607164165465633
+    ]
+  },
+  "leakage_canaries": {
+    "definition": "symmetric AUC on hidden catalogue positives vs non-catalogue negatives in buffered fold regions",
+    "results": {
+      "training_band_8_geod_dilaterate": {
+        "auc": 0.514464,
+        "symmetric_auc": 0.514464,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "training_band_7_geod_shearrate": {
+        "auc": 0.512772,
+        "symmetric_auc": 0.512772,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "training_band_4_geod_2ndinv": {
+        "auc": 0.510186,
+        "symmetric_auc": 0.510186,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "training_band_15_depth_to_base_surf": {
+        "auc": 0.514862,
+        "symmetric_auc": 0.514862,
+        "status": "REPORT_ONLY_PASS"
+      },
+      "training_band_17_cond_surf": {
+        "auc": 0.505983,
+        "symmetric_auc": 0.505983,
+        "status": "REPORT_ONLY_PASS"
+      }
+    },
+    "stop_and_investigate_if_any_gt_0_90": false,
+    "max_symmetric_auc": 0.514862
+  },
+  "sgmc_control_proxy": {
+    "source": "manifest-pinned USGS SGMC derived fault control (https://www.sciencebase.gov/catalog/item/5888bf4fe4b05ccb964bab9d, US Public Domain)",
+    "truth_pixels_after_catalogue_and_3px_exclusion": 62703,
+    "r0_dti": 0.09606,
+    "variant_dti": {
+      "R0": 0.09606,
+      "p10dilatation": 0.083547,
+      "p12dilatation": 0.081467,
+      "p15dilatation": 0.079888
+    },
+    "variant_deltas_vs_r0": {
+      "R0": 0.0,
+      "p10dilatation": -0.012513,
+      "p12dilatation": -0.014593,
+      "p15dilatation": -0.016172
+    }
+  },
+  "caution": "These are catalogue/SGMC PROXY diagnostics, never live public scores, private-set scores, or decision gates."
+}
