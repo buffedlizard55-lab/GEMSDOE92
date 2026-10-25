@@ -1,3 +1,38 @@
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`PROVINCETOE` Session)
+
+## Completed this session (`PROVINCETOE`)
+
+1. **Resolved prior `docs/NEXT_STEPS.md` Item #1 (`1,403`-raster / `102`-repo `dual_reading_decision` audit, `#IR-92-COULOMBLOQO-EXTERNAL-CLIFF-COLLISION`):**
+   - Fetched and Git-SHA1-verified `1,413` unique `.tif` blobs across `102` `GEMSDOE*` repositories (`1,403` valid exact-grid rasters; `1,354` external entries).
+   - Proved `COULOMBLOQO standalone` (`0.739842` vs `GEMSDOE23` `100,000` px; `8` external hits `> 0.70`) and `COULOMBLOQO dual45` (`0.722420` vs `62GEMSDOE` `125,890` px; `4` hits `> 0.70`) **fail** external sparse uniqueness because `hess_s12(log_slope)` places `45.2%` of dots onto `>= 12°` alpine cliffs (`80.2%` collision with `GEMSDOE23`). `COULOMBLOQO` therefore cannot be promoted simply by adopting `dual_reading_decision`.
+2. **Resolved prior `docs/NEXT_STEPS.md` Item #2 (`#IR-92-NE-QUADRANT-LOQO-COLLAPSE` root cause & cure):**
+   - Proved `NE` (Eastern Nevada Carbonate Horst-Graben Terrane) holds `27.6%` of the footprint and **`41.6%` (`23,652` px) of unmapped `USGS SGMC` (`d_cat > 5`) bedrock faults** with the domain's highest fault `iso_grav_anom_slope` (`0.129`), yet `geod_shearrate` has median `0.00` (`vs 18.28` in `SW`) and fault `tmi_hg` has median `6.4` (`vs 28.7` in `SW`).
+   - Replaced raw regional GPS strain with strictly masked within-quadrant standardized contrasts (`sigma <= 4 px`, zero cross-quadrant bleed) + label-blind quadrant rank calibration (`gamma = 2.0`) in `gems/provincetoe.py`, restoring `NE` allocation from `6.28%` (`globalraw`) to **`26.32%`** (`provincetoe`) and lifting `NE` draw-blind internal `HOLDOUT-DTI` by **`+40.9%` (`0.092694 -> 0.130630`)**.
+3. **Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261025_PROVINCETOE.md`) & executed Rank 1 `PROVINCETOE` (`3/3` experiments, `0` weekly slots):**
+   - **`28 / 28` single-feature leakage canaries PASS** (`max symmetric AUC = 0.612372 <= 0.90`).
+   - **New #1 and #2 all-time repository static deployment `HOLDOUT-DTI`** (`gems57-pooled-hide-v2`, `22,663` withheld positives, `d_cat > 2.0`): **`piedbasin = 0.009711 [0.008295, 0.011211]`** and **`provincetoe = 0.009685 [0.008306, 0.011150]`** (beating prior `#1` `COULOMBLOQO standalone = 0.009220 [0.007933, 0.010683]` and `R0 = 0.004006`, `+142.4%`), plus **`SGMC PROXY = 0.091183`** (above `COULOMBLOQO standalone = 0.090569`).
+   - Strict draw-blind Rule-2 `d_visible > 2.0` `HOLDOUT-DTI`: **`provincetoe = 0.106452 [0.093042, 0.119461]`** (beating `H19-5 = 0.096757` by `+0.009694 [+0.003371, +0.016065] > 0` and `globalraw = 0.100181`, below `COULOMBLOQO standalone = 0.113890`).
+   - All 3 GeoTIFFs (`gemsdoe92-provincetoe-{provincetoe,piedbasin,globalraw}-37654-20261025-*-zeros.tif`) pass **`11/11` format gates** in `[0, 1]` and are **locally unique (`<= 0.684575 <= 0.70`)** and **unique against every comparable-budget external raster (`<= 50,000` dots, max `0.660434 <= 0.70`)**, but trip over-budget sparse `dot_field` witnesses (`54,864`–`125,890` dots <= `150,000`, max `0.791815` vs `62GEMSDOE` `125,890` px; `#IR-92-OVERBUDGET-SPARSE-WITNESS-ASYMMETRY`) and the literal dense witness (`1.0000` vs `17GEMSDOE`). Verdict: **`negative`**, `submission_eligible: false`, **`0` weekly slots spent**. Full PhD analysis: [`docs/ANALYSIS_20261025_PROVINCETOE.md`](ANALYSIS_20261025_PROVINCETOE.md).
+
+## Highest-P(Win) actions for the next session (in order)
+
+1. **DTI-Calibrated Continuous Skeleton Probabilities ($p_i \in [0, 1]$ out to $c^\star(D) = 0.2 D$) on `PROVINCETOE` + Multi-Scale Contextual 2D Vesselness (`5–15 km` along-strike continuity):**
+   - As proved in `docs/ANALYSIS_20261025_PROVINCETOE.md` §3.2, under $\alpha = 0.2, \beta = 0.8$, every non-overlapping `2.8 px`-spaced 1D ridge candidate with marginal 300 m cover expectation $c_i > 0.2 D \approx 0.056\text{--}0.088$ increases competition DTI; hard binary `{0, 1}` truncation at `37,654` pixels discards `40,000–80,000` positive-expectation secondary fault pixels! Calibrating out-of-fold continuous $p_i \in [0.12, 1.0]$ along multi-scale elongated 1D skeletons (`1–15 km` steerable/U-Net context) is the highest-leverage mathematical path from `0.2778` toward `0.3195` / `0.4413`.
+2. **Selector Policy Clarification on `#IR-92-OVERBUDGET-SPARSE-WITNESS-ASYMMETRY` (`DOT_FIELD_MAX_SUPPORT = 150,000`):**
+   - `vendor/gems57/uniqueness.py` currently evaluates `37,654`-dot candidates without `matched_budget_support` against `55k–126k`-dot (`1.5x–3.3x` budget) skeletons (`reverse_overlap = 0.4439`). Decide at the shared-template level whether `DOT_FIELD_MAX_SUPPORT` should match `1.25x * my_dots` (`~47,000` px) or symmetric harmonic overlap before promoting any sparse candidate.
+3. **Next Untried Physics Hypotheses (`docs/HYPOTHESES_20261025_PROVINCETOE.md` Ranks 2–5):**
+   - **Rank 2 (`FLEXISOSTASY`)**: Elastic-plate flexural wavelength residual (`Bands 13, 12, 15, 18, 19`) separating fault-bounded structural half-grabens from unfaulted volcanic sags.
+   - **Rank 3 (`HYDRO-SILICA-CAP`)**: Chalcedony/quartz geothermometer upflow gradient × MT smectite-cap flank × GeoDAWN K-enrichment (`GDR #1391` + `Bands 17, 13, 19` + `GeoDAWN`).
+   - **Rank 5 (`EARTH-MRI-AEM-3DEP`)**: Requires external operator staging of public USGS 3DEP 1/3-arc-second (`~10 m`) DEM sub-pixel scarp curvature summaries (blocked inside this GitHub/PyPI-only sandbox).
+4. **First `ORGANIZER-CONFIRMED` Calibration Receipt:** Obtain one authenticated DrivenData portal receipt on a human-cleared artifact and record it in `ledger/submissions.csv` (`0` receipts currently exist).
+
+## Explicit Limitations (`PROVINCETOE` Session)
+
+- Outbound sandbox egress is limited to GitHub and PyPI (`registry/session_manifest.json`); live DrivenData portal authentication and fresh USGS 3DEP / ScienceBase downloads are unavailable in-session.
+- Leaderboard figures (`0.2778`, `0.3195`, `0.4413`) remain tagged `[CLAIM]`; `HOLDOUT-DTI` (`gems57-pooled-hide-v2`) and `USGS SGMC` (`PROXY`) are never projected as organizer scores.
+
+---
+
 # Current protocol review — 2026-10-25 (`376a8469`)
 
 **Research downloads only. DO NOT SUBMIT.** The shared dual-reading helper now enforces the literal duplicate stop for every raster. Matched-budget overlap is diagnostic, not a specification change. Prior claims below that the policy was automatically resolved are historical and superseded. No new TIFF or geological experiment was generated in this review. See [review, conditional hypotheses and ordered next steps](REVIEW_376A8469.md) and [fresh run card](downloads/review376a_run_card.json). A new submission-cleared artifact remains unfulfilled.
