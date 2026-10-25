@@ -34,6 +34,14 @@ Supplemental historical code audit: [RADIOCONTACT fold-local holdout and gate re
 
 ---
 
+## Completed parallel research lane — `VENTSCARP` (`2026-10-25`, 3/3 experiments, 0 weekly slots)
+
+- **✅ OK TO DOWNLOAD FOR RESEARCH (`11/11` automated format gates PASS in `[0, 1]`, `0` NaN/Inf, `0.0` outside footprint) · ⛔ DO NOT SUBMIT (`verdict: negative`, `submission_eligible: false` under literal `17GEMSDOE` dense witness `1.000 > 0.70`; `dual_reading_unique = True` at `0.6947 <= 0.70` across `102` public repos and `<= 0.4770` across all merged `GEMSDOE92` local rasters).**
+- **Artifacts:** [`gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif`](downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif) (`a4a342a8…`, strict draw-blind Rule-2 `HOLDOUT-DTI = 0.112213 [0.096670, 0.127254]`, static `0.008212 [0.007007, 0.009287]`, `SGMC PROXY = 0.081321`), [`scarp10m_novent`](downloads/gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-zeros.tif) (`b8e88c00…`, Rule-2 `0.108862`, static `0.008685`), [`ventscarp_soft`](downloads/gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-zeros.tif) (`d06c302d…`, `47,000` soft `[0.35, 1.00]` px, Rule-2 `0.107019`, static `0.007923`).
+- **Evidence & Analysis:** [Run Card](downloads/ventscarp_run_card.json) · [Holdout JSON](downloads/ventscarp_holdout.json) · [102-Repo Uniqueness JSON](downloads/ventscarp_uniqueness.json) · [PhD Analysis](ANALYSIS_20261025_VENTSCARP.md) · [Pre-Registered Hypotheses](HYPOTHESES_20261025_VENTSCARP.md).
+
+---
+
 # Current review — 2026-10-25 (`KNICKLOQO` session; read this block first)
 
 **✅ OK TO DOWNLOAD: YES (`10/10` format gates PASS, finite `[0.0, 1.0]`, `0` NaNs); ⛔ OK TO SUBMIT: NO — DIAGNOSTIC ONLY (`verdict: negative` under literal `17GEMSDOE` dense surface; `UNIQUE` under `dual_reading_decision` with `0 / 1,412` public rasters `> 0.70`, max `0.685531 <= 0.70`).**

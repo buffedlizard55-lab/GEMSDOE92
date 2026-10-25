@@ -12,6 +12,24 @@
 3. Any future lane must beat KNICKLOQO static 0.010788 with paired CI>0 **and** clear the 62GEMSDOE 125,890-dot witness (≤0.70) before promotion discussion.
 
 ---
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`VENTSCARP` & `LISTRICLAG` Integration)
+
+## Completed in `VENTSCARP` session (`3/3` experiments, `0` weekly slots)
+
+1. **Completed `102`-Repo Git Smart HTTP Public Registry Sync (`scripts/sync_public_registry_git.py` + `scripts/audit_public_registry.py --git-transport`):** Inventoried all `102` `buffedlizard55-lab/*GEMSDOE*` repositories (`0` errors, `1,826` TIFF paths, `1,458` SHA1-verified blobs) without GitHub REST API quota failures.
+2. **Pinned & Deconfounded USGS 3DEP 10 m Scarp + DOE GDR `#1391` INGENIOUS Hydrothermal Stack (`registry/ventscarp_external_manifest.json`, `gems/ventscarp.py`):** Excluded `86` Pleistocene Lake Lahontan shoreline `Tufa` mimics (`#IR-92-PALEO-TUFA-SHORELINE-MIMIC`, keeping `195` hydrothermal `Sinter` / `Explosion craters` / `Silica-cemented` / `Travertine` vents + `709` anomalous `2 m` probes), excluded `gdr_volcanic_vents_in_footprint.csv` (`#IR-92-VOLCANIC-CSV-DIST-KNOWN-FAULT`), and excluded `75.37%`-biased `lidar_scarp_features_u8.tif` (`#IR-92-LIDAR-COVERAGE-BIAS`). `26/26` single-feature canaries PASS (`max = 0.616694 <= 0.90`; LOQO OOF `0.674160 <= 0.90`).
+3. **E1 Primary (`VENTSCARP ventscarp`, `37,654` unit dots, `a4a342a8…`):** Achieved **`0.112213 [0.096670, 0.127254]`** strict draw-blind Rule-2 `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives) — **highest public-registry-unique (`dual_reading_unique = True`, `0.6947 <= 0.70` across `102` repos; post-merge local max `0.4770 <= 0.70` across all `GEMSDOE92` rasters including `FAULTNET`, `LISTRICLAG`, `LISTRICDIP`, `CURIE-DEMAG`, `RADIODECOUPLE`, `GRAV-QUAD`, `DRAINAGE-KNICK`) zero-catalogue Rule-2 `HOLDOUT-DTI` in `GEMSDOE92`**, surpassing `KNICKLOQO standalone` (`0.109043`). Static `d_cat > 2.0` `HOLDOUT-DTI = 0.008212 [0.007007, 0.009287]`.
+4. **E2 Causal Vent Ablation (`scarp10m_novent`, `b8e88c00…`):** Removing Group-B hydrothermal features drops Rule-2 `HOLDOUT-DTI` to `0.108862 [0.091993, 0.126805]` (`+3.08%` vent lift) and proves vents shift placement out of `>= 12°` alpine cliffs (`11.07% -> 2.97%`) onto `< 6°` basin/piedmont scarps (`71.57%`).
+5. **E3 Fixed-Mass Soft-Tversky Dilution Proof (`ventscarp_soft`, `47,000` px in `[0.35, 1.00]` at fixed `L1 = 37,654.0`, `d06c302d…`):** Scores `0.107019 [0.091774, 0.121673]` (paired `ventscarp - ventscarp_soft = +0.005193 [+0.003555, +0.006627]`), proving fixed-L1 peak dilution hurts DTI whereas `LISTRICLAG_N90K` below proves **additive** tail mass (`37,654 @ 1.0 + tail @ 0.30`) helps (`+13.4%`). Verdict `negative` (`OK TO DOWNLOAD FOR RESEARCH`, `DO NOT SUBMIT` under literal dense witness `1.000 > 0.70`).
+
+## Highest-P(Win) actions for the next session (in order)
+
+1. **`VENTSCARP-KNICKLOQO-N90K` (Slope-Regime Fusion + Additive `@ 0.30` Tail):** Combine `VENTSCARP` (`0.112213` Rule-2, `71.57% < 6°` basin/piedmont scarps) with `KNICKLOQO standalone` (`0.010788` static #1, `>= 6°` bedrock knickzones), keeping the top `37,654` crests at full `1.0` (respecting `VENTSCARP` E3) and adding an additive `@ 0.30` tail out to `90,000` crests (leveraging `LISTRICLAG` E3's `+13.4%` lift), verified against `public_fast_index_102repos.npz` before packaging.
+2. **External InSAR / Microseismic Staging Outside Allowlisted Sandbox (Path toward `0.3195` / `0.4413` `[CLAIM]`):** Stage Sentinel-1 InSAR velocity gradients, UNR NGL MIDAS GPS strain, and NSL relocated microseismic hypocenter lineations into a SHA-256-pinned GitHub mirror (`docs/ANALYSIS_20261025_VENTSCARP.md` §2.3).
+3. **Human Selector Review & First `ORGANIZER-CONFIRMED` Receipt:** Obtain human selector confirmation on literal dense-witness (`17GEMSDOE` `5,167,373` px) vs `dual_reading_unique = True` (`<= 0.6947`) before spending any weekly DrivenData slot.
+
+---
+
 # Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`LISTRICLAG` Session)
 
 ## Completed this session (`LISTRICLAG`, 3/3 experiments, 0 weekly slots)

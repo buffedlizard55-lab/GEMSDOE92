@@ -75,6 +75,32 @@
 </section>
 <!-- CURRENT:END -->
 <details id="historical-research-archive"><summary>Historical experiments and downloads — not current clearance</summary>
+<!-- VENTSCARP:BEGIN -->
+<aside id="ventscarp-banner-index" class="banner banner-warn" aria-label="VENTSCARP session status" style="border:2px solid #7f1d1d;">
+  <p><strong>Parallel session (2026-10-25) — lane <code>VENTSCARP</code> (USGS 3DEP 10 m Sub-Pixel Scarp Excess + Tufa-Filtered INGENIOUS Paleo-Hydrothermal Vents &amp; 2 m Probes): 3 new validated GeoTIFFs built; highest public-registry-unique zero-catalogue Rule-2 <code>HOLDOUT-DTI = 0.112213 [0.096670, 0.127254]</code> in <code>GEMSDOE92</code> (<code>dual_reading_unique = True</code>, <code>&le; 0.6947 &le; 0.70</code> across <code>102</code> repos). Verdict: <code>negative</code>.</strong></p>
+  <p>
+    <span style="background:#14532d;color:#dcfce7;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;">✅ OK TO DOWNLOAD FOR RESEARCH — 11/11 automated format MUST gates PASS (float32 strictly in [0, 1], 0 NaN/Inf, prevents &ldquo;Predicted values must be in range [0, 1]&rdquo; error); UNIQUE locally (&le; 0.4770) &amp; 102-repo dual-reading (&le; 0.6947)</span>
+    <span style="background:#7f1d1d;color:#fee2e2;padding:0.35rem 0.7rem;border-radius:4px;font-weight:700;display:inline-block;margin:0.2rem 0;">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (verdict: negative, submission_eligible: false; DUPLICATE UNDER THE LITERAL REGISTRY RULE vs 17GEMSDOE dense surface 1.000 &gt; 0.70; 0 weekly slots spent)</span>
+  </p>
+  <p>
+    <a href="downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif" download><strong>⬇ Download gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif (37,654 px)</strong></a>
+    · <a href="downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.zip" download>one-TIFF ZIP</a>
+    · <a href="downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-audit.json">audit JSON</a>
+    · <a href="downloads/ventscarp_run_card.json">JSON Run Card</a>
+    · <a href="downloads/ventscarp_holdout.json">holdout JSON</a>
+    · <a href="downloads/ventscarp_uniqueness.json">102-repo uniqueness JSON</a>
+    · <a href="executive-summary.html">Executive Summary &amp; DrivenData Steps</a>
+  </p>
+  <p>
+    SHA-256: <code>a4a342a8ca137e6b141f80ad9346ac483e71e9428a4b4cbddc99d62ea4fd2664</code> (ZIP <code>e011541c4385f182a17301c6c8e31594d6a09713cb297e0f67dbe07b167124d7</code>).
+    <strong>Rule-2 HOLDOUT-DTI</strong> (<code>gems57-pooled-hide-v2</code>, <code>22,663</code> withheld positives, <code>d_visible &gt; 2.0</code>): <code>0.112213 [0.096670, 0.127254]</code> (vs <code>KNICKLOQO standalone</code> <code>0.109043</code>, <code>scarp10m_novent</code> <code>0.108862</code>, <code>ventscarp_soft</code> <code>0.107019</code> paired <code>+0.005193 [+0.003555, +0.006627]</code>, <code>H19-5</code> <code>0.071758</code>, <code>R0</code> <code>0.004006</code>). Static <code>d_cat &gt; 2.0</code> <code>HOLDOUT-DTI</code>: <code>0.008212 [0.007007, 0.009287]</code>; <code>SGMC PROXY</code>: <code>0.081321</code>. 26/26 canaries PASS (<code>max = 0.616694 &le; 0.90</code>).
+    Record-only name: <code>GEMSDOE92-VENTSCARP-ventscarp-20261025</code> · Note (<code>107/140</code>): <code>VENTSCARP ventscarp: 37654px 3DEP-10m scarp + INGENIOUS vents; HOLDOUT-DTI 0.112213 (static 0.008212) [neg]</code>.
+    Siblings:
+    <a href="downloads/gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-zeros.tif" download>gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-zeros.tif</a> (<a href="downloads/gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-audit.json">audit</a>, SHA-256 <code>b8e88c0083255f870f4ed6f8de56e31aa3ff3c4d66991e32dfd74c49ecad6fd6</code>, Rule-2 <code>0.108862</code>) ·
+    <a href="downloads/gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-zeros.tif" download>gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-zeros.tif</a> (<a href="downloads/gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-audit.json">audit</a>, SHA-256 <code>d06c302db19afe2dfffc955c832766afdee7877117cd6210a6d2681363024eee</code>, Rule-2 <code>0.107019</code>).
+  </p>
+</aside>
+<!-- VENTSCARP:END -->
 <!-- LISTRICLAG:BEGIN -->
 <aside class="banner banner-warn" aria-label="LISTRICLAG session status" style="border:2px solid #7f1d1d;">
   <p><strong>Newest session (2026-10-25) — lane <code>LISTRICLAG</code> (listric updip-lag coupling): 2 new unique GeoTIFFs generated; 3/3 pre-registered experiments run; lag-coupling hypothesis <em>rejected by its own ablation</em>; extended-budget emission lever <em>confirmed on holdout</em> (+13.4% paired). Verdict <code>negative</code>.</strong></p>
