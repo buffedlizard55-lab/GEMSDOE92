@@ -375,3 +375,22 @@ No DrivenData login, no leaderboard scraping, no actual competition submission, 
 
 ### What the AI did not do
 No DrivenData login or upload, no leaderboard scraping, no copied score, no projection presented as a score. External claims were fetched from the official competition page and the organizer reference repository this session; forum points are marked second-hand.
+
+## Session — RADIOCONTACT + GRAV-QUAD, two pre-registered negatives (2026-10-25)
+
+### What AI wrote
+- `gems/radiocontact.py` / `scripts/build_radiocontact_submission.py` — U/K & Th/K alteration contact detection crossed with gravity-gradient concordance and MT conductivity (Rank 1 of the pre-registered queue in `docs/HYPOTHESES_20261026_RADIOCONTACT.md`).
+- `gems/gravquad.py` / `scripts/build_gravquad_submission.py` — gravity analytic-signal amplitude (from Band 11 vertical gradient, Band 18 signed E-W horizontal derivative, and a computed N-S derivative of Band 13) crossed with structure-tensor linear-edge coherence (Rank 3 of the same queue; Rank 2, DRAINAGE-KNICK, had already been built and found negative in an earlier session).
+- Both scripts follow the shared 9-step pipeline pattern (dots -> surface -> HOLDOUT-DTI with CI -> strict Rule-2 -> leakage canaries -> local-registry uniqueness -> format gates -> disk re-read -> run card), reusing `vendor/gems57/evaluate_holdout.py` and `vendor/gems57/submission_writer.py` without forking either.
+- `docs/HYPOTHESES_20261025_NEXT.md` — 5 ranked, untried hypotheses for the next session (`LOQO-FEATURE-EXPAND`, `GDR-GEOTHERMOMETER-FIELD`, `SEIS-GRAV-LAG`, `MT-CHANGEPOINT`, `MAG-QUAD`), each with mechanism, non-fault mimic, cost/benefit estimate, and (where relevant) a named free official external data source already verified present and hash-pinned in this repo.
+- Results table appended to `docs/HYPOTHESES_20261026_RADIOCONTACT.md`; 2 new rows appended to `ledger/submissions.csv`; 3 new `IRREGULARITIES.md` entries (a `thermalclass` whitespace defect found in the pinned GDR #1391 CSV while scoping Rank 2 of the next-hypotheses doc; confirmation that the full 12-file pinned data chain re-restores and re-verifies byte-for-byte from scratch; a process note that `.venv`/`.cache` are not session-persistent and must be rebuilt each session per the pipeline section already documented in `README.md`).
+- GRAVQUAD banner block (download/zip/audit/run-card links, SHA-256, HOLDOUT-DTI, explicit OK-to-download/DO-NOT-submit badges, and a short explanatory paragraph on why two independent negative results are still useful evidence) inserted into `docs/index.html`, `docs/executive-summary.html`, and `docs/SUBMIT.html`, immediately ahead of each page's existing RADIOCONTACT block (reworded from "newest" to "prior" session).
+- README top banner swapped to lead with GRAVQUAD (newest), demoting the previous DRAINAGE-KNICK banner to "Prior artifact."
+
+### What the human decides
+- Whether either RADIOCONTACT or GRAV-QUAD should ever be promoted to a weekly slot (agent's verdict for both: **negative / NOT_CLEARED**, static HOLDOUT-DTI `0.005066` and `0.005092` respectively, both below the repo's `0.009220`-`0.113316` promotion bar and both within each other's confidence interval).
+- Whether to spend the 3rd and final budgeted experiment of this session arc on `LOQO-FEATURE-EXPAND` (recommended Rank 1 of `docs/HYPOTHESES_20261025_NEXT.md`) in a future session, given the 3-experiment/2-hour budget rule.
+- Obtaining or verifying at least one `ORGANIZER-CONFIRMED` DrivenData receipt remains the single highest-value open blocker (ledger: `95 BUILT / 0 RECEIPT` after this session's 2 new rows) — this is unchanged from prior sessions and was not resolved this session (no DrivenData login access).
+
+### What the AI did not do
+No DrivenData login or upload, no public-registry scan for GRAV-QUAD (explicitly skipped per the 3-experiment/2-hour budget rule after the local 107-raster uniqueness check passed and two prior lanes this session arc, RADIOCONTACT and DRAINAGE-KNICK, had already been confirmed unique against the full public registry), no projection presented as a score, no re-litigation of the previously-settled COULOMB-LOQO/EULERFUSE exemption question, no modification of any pinned external file's contents (the `thermalclass` whitespace defect found in the pinned GDR CSV was documented, not silently "fixed" in the pinned file, since doing so would break its SHA-256 pin).
