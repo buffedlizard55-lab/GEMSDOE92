@@ -14,18 +14,16 @@ def test_compatibility_validator_never_grants_slot(monkeypatch, capsys):
         GateResult('format', True, 'synthetic unit check')])
     assert validate_submission.main([]) == 1
     output = capsys.readouterr().out
-    assert 'FORMAT-VALIDATION: PASS' in output
+    assert 'FORMAT PASS (local only)' in output
     assert 'DO NOT SUBMIT' in output
     assert 'Expected Score' not in output
 
 
 def test_inherited_clearance_card_is_corrected_and_negative():
     card = json.loads((ROOT / 'docs/downloads/knickloqo_submission_run_card.json').read_text())
-    assert card['submission_eligibility']['submission_eligible'] is False
-    assert card['submission_eligibility']['verdict'] == 'negative'
-    meta = card['submission_metadata']
-    raster = ROOT / 'docs/downloads' / meta['file_name']
-    assert meta['sha256_tif'] == hashlib.sha256(raster.read_bytes()).hexdigest()
-    assert meta['file_size_bytes'] == raster.stat().st_size
-    assert card['format_validation']['shape'] == [3730, 3292]
-    assert card['review_correction']['original_commit']
+    assert card['submission_eligible'] is False
+    assert card['verdict'] == 'negative'
+    raster = ROOT / card['primary_download']
+    assert card['raster_sha256'] == hashlib.sha256(raster.read_bytes()).hexdigest()
+    assert card['raster_metadata']['shape'] == [3730, 3292]
+    assert (ROOT / card['supersedes']['archived_card']).is_file()

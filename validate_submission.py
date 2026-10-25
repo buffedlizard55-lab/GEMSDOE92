@@ -1,39 +1,47 @@
 #!/usr/bin/env python3
-"""Compatibility check for the historical KNICKLOQO download. Rejection-only.
+"""Rejection-only entry point using the shared strict validator.
 
-Uses the shared validator, not a second implementation of the organizer's
-validator. A local format pass is not organizer acceptance or slot clearance.
-Exit 1: format failure or binding registry stop; exit 2: invalid arguments.
+A format pass is not upload clearance. The literal universal registry stop is
+binding; exit 1 means DO NOT SUBMIT even when all format checks pass. No exception
+is converted into success. No score or organizer-acceptance forecast is made.
 """
 from __future__ import annotations
-
 import argparse
 from pathlib import Path
+import sys
 
+import rasterio
 from gems.gates import run_gates, summarise
+from scripts.check_site import primary_download
 
 ROOT = Path(__file__).resolve().parent
-DEFAULT = ROOT / 'docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif'
 
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('file', nargs='?', type=Path, default=DEFAULT)
+    parser.add_argument('candidate', nargs='?', type=Path)
     args = parser.parse_args(argv)
     try:
-        gates = run_gates(args.file, ROOT / 'data/bridge/sample_submission.tif',
-                          ROOT / 'data/bridge/existing_faults.tif', prune_radius=2,
-                          require_submission_encoding=True)
-        ok, report = summarise(gates)
+        candidate = args.candidate
+        if candidate is None:
+            problems = []
+            rel = primary_download((ROOT / 'docs/index.html').read_text(), problems)
+            if problems or rel is None:
+                raise ValueError('; '.join(problems))
+            candidate = ROOT / 'docs' / rel
+        results = run_gates(
+            str(candidate), str(ROOT / 'data/bridge/sample_submission.tif'),
+            str(ROOT / 'data/bridge/labels.tif'), prune_radius=2,
+            require_submission_encoding=True,
+        )
+        ok, report = summarise(results)
         print(report)
-    except (OSError, ValueError) as exc:
-        print(f'FORMAT CHECK INCONCLUSIVE: {exc}')
+        print('FORMAT PASS (local only)' if ok else 'FORMAT FAIL')
+        print('DO NOT SUBMIT: literal registry stop; no weekly-slot clearance.')
         return 1
-    print(f'FORMAT-VALIDATION: {"PASS" if ok else "FAIL"}')
-    print('DO NOT SUBMIT. The literal full-footprint registry witness binds every '
-          'nonempty candidate. No organizer score, acceptance, or promotion is established.')
-    # This compatibility command cannot authorize the selector or weekly slot.
-    return 1
+    except (OSError, ValueError, rasterio.errors.RasterioError) as exc:
+        print(f'INCONCLUSIVE / DO NOT SUBMIT: {exc}', file=sys.stderr)
+        return 2
 
 
 if __name__ == '__main__':

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render one authoritative, evidence-bound research status above historical lanes.
+"""Render byte-bound supplementary review panels; core pages use gems.public_status.
 
 No network, model training, slot selection, or new predictions. --check is a
 publication gate: stale or hand-edited panels fail instead of being published.
@@ -20,9 +20,8 @@ sys.path.insert(0, str(ROOT))
 CARD = 'docs/downloads/review_c5e3848c_integrated_run_card.json'
 BEGIN = '<!-- CURRENT-STATUS:BEGIN -->'
 END = '<!-- CURRENT-STATUS:END -->'
-PAGES = ('docs/index.html', 'docs/executive-summary.html', 'docs/SUBMIT.html',
-         'docs/submit.html', 'index.html', 'README.md', 'docs/REVIEW_CURRENT.md',
-         'docs/SUBMIT_NOW.html', 'docs/index_new.html', 'SUBMISSION_READY.md', 'docs/BEAT_0_2778.md')
+PAGES = ('docs/submit.html', 'index.html', 'README.md', 'docs/REVIEW_CURRENT.md',
+         'SUBMISSION_READY.md', 'docs/BEAT_0_2778.md')
 
 
 def load_card(root: Path = ROOT) -> dict:

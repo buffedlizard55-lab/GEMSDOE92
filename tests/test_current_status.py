@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 @pytest.fixture
 def site(tmp_path):
     card = json.loads((ROOT / status.CARD).read_text())
-    paths = [*status.PAGES, status.CARD, card['primary_download'],
+    paths = ['docs/index.html', *status.PAGES, status.CARD, card['primary_download'],
              'docs/downloads/review_c5e3848c_preflight.json']
     for name in paths:
         dest = tmp_path / name
@@ -123,15 +123,15 @@ def test_preflight_and_card_must_agree(site):
 
 
 def test_stale_panel_fails_check_and_is_repairable(site):
-    path = site / 'docs/index.html'
+    path = site / 'index.html'
     path.write_text(path.read_text().replace('Current decision: research download only', 'stale decision'))
-    assert status.check(site) == ['docs/index.html']
-    assert status.check(site, write=True) == ['docs/index.html']
+    assert status.check(site) == ['index.html']
+    assert status.check(site, write=True) == ['index.html']
     assert status.check(site) == []
 
 
 def test_newer_lane_cannot_push_authority_below_its_banner(site):
-    path = site / 'docs/index.html'
+    path = site / 'index.html'
     path.write_text(path.read_text().replace('<body>', '<body><ASIDE>newest lane</ASIDE>', 1))
     with pytest.raises(ValueError, match='must precede'):
         status.check(site)
