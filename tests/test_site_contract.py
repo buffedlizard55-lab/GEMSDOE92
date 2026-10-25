@@ -85,52 +85,41 @@ def test_index_primary_has_an_audit_receipt_that_matches():
         assert doc["submission_eligible"] is False
 
 
-def test_current_review_status_is_first_screen_byte_mirrored_and_fail_closed():
+def test_machine_current_status_and_supplemental_review_are_byte_bound():
     import hashlib
 
-    evidence = ROOT / "evidence" / "review_2e1a649e_run_card.json"
-    served = DOCS / "downloads" / evidence.name
-    assert served.read_bytes() == evidence.read_bytes()
-    card = json.loads(evidence.read_text(encoding="utf-8"))
-    assert card["new_unique_tiff_generated"] is False
-    assert card["verdict"] == "negative"
-    assert card["submission_eligible"] is False
-    assert card["weekly_slots_used"] == 0
-    assert card["experiments_used"] == "0/3"
-    assert card["note_chars"] == len(card["note"]) <= 140
+    canonical = ROOT / "registry" / "current_status.json"
+    served = DOCS / "downloads" / "current_status.json"
+    assert served.read_bytes() == canonical.read_bytes()
+    status = json.loads(canonical.read_text(encoding="utf-8"))
+    assert status["active_public_review"] == "797e507a"
+    assert status["supplemental_review"] == "2e1a649e"
+    research = status["research_download"]
+    decision = status["decision"]
+    primary = ROOT / research["file"]
+    digest = hashlib.sha256(primary.read_bytes()).hexdigest()
+    assert digest == research["sha256"]
+    assert research["generated_in_supplemental_review"] is False
+    assert decision["verdict"] == "negative"
+    assert decision["submission_eligible"] is False
+    assert decision["recommended_to_submit"] is False
+    assert decision["weekly_slots_used_in_supplemental_review"] == 0
+    assert decision["experiments_used_in_supplemental_review"] == 0
 
-    status_path = ROOT / "registry" / "current_status.json"
-    status_served = DOCS / "downloads" / "current_status.json"
-    assert status_served.read_bytes() == status_path.read_bytes()
-    status = json.loads(status_path.read_text(encoding="utf-8"))
-    primary = ROOT / status["research_download"]["file"]
-    assert hashlib.sha256(primary.read_bytes()).hexdigest() == card["raster_sha256"]
-    assert status["decision"]["submission_eligible"] is False
-    assert status["decision"]["recommended_to_submit"] is False
-
-    landing = (ROOT / "index.html").read_text(encoding="utf-8")
-    assert "Current DRAINAGE-KNICK research GeoTIFF — DO NOT SUBMIT" in landing
-    assert "No new TIFF was generated" in landing
-    assert "POISSONKNICK qcal" not in landing
-    review_current = (DOCS / "REVIEW_CURRENT.md").read_text(encoding="utf-8")
-    assert review_current.startswith("# Current review — 2026-10-25 (`2e1a649e`; authoritative block)")
-    current_block = review_current.split("\n---\n", 1)[0]
-    assert "DUPLICATE UNDER THE LITERAL REGISTRY RULE" in current_block
-    assert "submission_eligible: false" in current_block
-    next_steps = (DOCS / "NEXT_STEPS.md").read_text(encoding="utf-8")
-    assert next_steps.startswith("# Next Steps — `GEMSDOE92` (2026-10-25 review `2e1a649e`)")
-    active_queue = next_steps.split("\n---\n", 1)[0]
-    assert "Do not generate or submit a nonempty TIFF" in active_queue
-    assert "STRIP-INPAINT" in active_queue
-
-    for name in ("index.html", "executive-summary.html", "SUBMIT.html"):
-        text = (DOCS / name).read_text(encoding="utf-8")
-        first = text.split("<body>", 1)[1].lstrip()
-        assert first.startswith("<!-- CURRENT-REVIEW-2E1A649E:BEGIN -->")
-        assert text.count('id="current-review-2e1a649e"') == 1
-        assert "No new TIFF was generated in this review" in first.split(
-            "<!-- CURRENT-REVIEW-2E1A649E:END -->", 1
-        )[0]
+    public = json.loads((ROOT / status["evidence"]["public_run_card"]).read_text())
+    supplemental_path = ROOT / status["evidence"]["supplemental_run_card"]
+    supplemental = json.loads(supplemental_path.read_text())
+    assert (DOCS / "downloads" / supplemental_path.name).read_bytes() == supplemental_path.read_bytes()
+    for card in (public, supplemental):
+        assert card["raster_sha256"] == digest
+        assert card["verdict"] == "negative"
+        assert card["submission_eligible"] is False
+    assert supplemental["new_unique_tiff_generated"] is False
+    assert supplemental["note_chars"] == len(supplemental["note"]) <= 140
+    witness = json.loads((ROOT / status["evidence"]["exact_artifact_check"]).read_text())
+    assert witness["candidate"]["sha256"] == digest
+    assert witness["forward_overlap_candidate_dots_within_3px_of_witness"] == 1.0
+    assert witness["stop_required_vs_this_witness"] is True
 
 
 def test_public_registry_receipt_is_valid_json_and_records_stop():
@@ -162,8 +151,8 @@ def test_legacy_submission_page_redirect_does_not_claim_breakline_is_primary():
         assert "SUBMIT.html" in page
 
 
-def test_historical_coulombdm_card_current_review_primary_and_html_integrity():
-    """Historical COULOMBDM and the current negative primary remain byte-auditable."""
+def test_coulombdm_run_card_and_site_html_integrity():
+    """COULOMBDM run card, unique data-primary anchor, and HTML id uniqueness must hold."""
     import hashlib
 
     card = json.loads((ROOT / "evidence" / "coulombdm_run_card.json").read_text(encoding="utf-8"))
@@ -189,20 +178,14 @@ def test_historical_coulombdm_card_current_review_primary_and_html_integrity():
     assert card["verdict"] == "negative"
     assert card["submission_eligible"] is False
 
-    current = json.loads(
-        (ROOT / "evidence" / "review_2e1a649e_run_card.json").read_text(encoding="utf-8")
-    )
-    assert current["verdict"] == "negative"
-    assert current["submission_eligible"] is False
-    assert current["new_unique_tiff_generated"] is False
-    current_tif = ROOT / current["file"]
-    assert hashlib.sha256(current_tif.read_bytes()).hexdigest() == current["raster_sha256"]
-
     html = _index()
     primaries = re.findall(r'<a\b[^>]*\bdata-primary="true"[^>]*>', html)
     assert len(primaries) == 1, f"expected exactly 1 data-primary anchor, got {len(primaries)}"
-    assert current_tif.name in primaries[0]
-    assert "DUPLICATE UNDER THE LITERAL REGISTRY RULE" in html.split("<!-- CURRENT-REVIEW-2E1A649E:END -->", 1)[0]
+    # 2026-10-25: the homepage primary moved off COULOMBDM onto the newest
+    # research download. The old file stays linked; it is no longer primary.
+    assert card["file"] not in primaries[0]
+    assert card["file"] in html
+    assert "gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif" in primaries[0]
 
     for html_path in sorted(DOCS.glob("*.html")):
         txt = html_path.read_text(encoding="utf-8")

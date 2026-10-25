@@ -7,10 +7,10 @@ test:
 	$(PYTHON) -m pytest tests -q
 
 render-current:
-	$(PYTHON) scripts/render_current_review.py
+	$(PYTHON) scripts/render_public_status.py
 
 site:
-	$(PYTHON) scripts/render_current_review.py --check
+	$(PYTHON) scripts/render_public_status.py --check
 	PYTHONPATH=vendor $(PYTHON) scripts/check_site.py
 
 manifest:

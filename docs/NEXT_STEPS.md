@@ -1,19 +1,38 @@
-# Next Steps — `GEMSDOE92` (2026-10-25 review `2e1a649e`)
+# Binding next steps — 2026-10-25 (`797e507a`)
 
-## Blocking decision and ordered actions
+1. Do not start another geological experiment under the universal literal duplicate stop. This is already decided automatically, not pending pixel inspection.
+2. Keep the generated public-status panel first on all five public entry pages; run `python scripts/render_public_status.py --check` and `python scripts/check_site.py`.
+3. A future explicitly permitted lane should test one of [three ranked conditional operators](HYPOTHESES_797E507A.md), using the shared buffered visible-only evaluator, individual canaries and an untouched outer spatial test. Do not tune again on the outer test or compare incompatible holdout instruments.
+4. Resolve repository Pages configuration/permission drift: API setting change returned 403; verify post-merge deployment instead of assuming the live site updated.
+5. Obtain authoritative data-use confirmation and authenticated receipts through permitted channels. No current live score or new unique submission is established.
 
-1. **Do not generate or submit a nonempty TIFF under the current contract.** Fresh `REGISTRY-MEASUREMENT` proves the pinned witness is positive on every one of the `5,167,373` footprint cells, so literal 3-pixel overlap is `1.0 > 0.70` for every possible candidate. DRAINAGE-KNICK remains a format-valid research download with `verdict: negative`; no weekly slot is recommended.
-2. **Resolve the specification conflict explicitly.** Keeping the literal rule means every nonempty candidate remains rejected. Matched-budget overlap may be reported as a diagnostic but must not silently become the operative rule. Preserve the fresh receipts in `evidence/review_2e1a649e_*.json`.
-3. **If and only if a future instruction changes the gate, assign one lane and test `STRIP-INPAINT` first** under the frozen protocol in `HYPOTHESES_20261025_REVIEW2E1A.md`: registry screen before placement; each feature alone; symmetric AUC `>0.90` treated as leakage; buffered whole-segment folds; visible-only rebuilding; pooled `alpha=0.2`, `beta=0.8`, 300 m triangular-kernel HOLDOUT-DTI with withheld-positive count and 95% CI; shared evaluator/writer; separate selector.
-4. **Verify provenance before restoring the full stack.** Owner-mirror hashes prove byte identity, not official origin, band semantics, redistribution permission, or suitability. In particular, reject the conditional GRAVITY-CLOSURE avenue if B15 basement depth was derived from B13 gravity.
-5. **Seek actual organizer evidence only through the account holder's eventual human flow.** Record the current weekly cap, live leaderboard state, portal validation, and score as `ORGANIZER-CONFIRMED` only when an authenticated receipt exists. The ledger currently has none.
-6. **Deployment maintenance:** resolve GitHub Pages legacy/workflow publication protection with repository-settings permission and complete the partial public registry download only if full characterization is needed. Neither task weakens the existing rejection proof.
-
-See [the authoritative three-pass review](REVIEW_2E1A649E.md), [current machine status](downloads/current_status.json), and [current run card](downloads/review_2e1a649e_run_card.json). All sections below are archived session queues and do not override this order.
+See [full review and limits](REVIEW_797E507A.md). The entries below are historical plans and do not authorize bypassing the stop.
 
 ---
 
-# Archived next steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`KNICKLOQO` Session)
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`LISTRICDIP` Session)
+
+## Completed this session
+
+1. Ranked five hypotheses in `docs/HYPOTHESES_20261025_LISTRICDIP.md` before scoring. Implemented only Rank 1 (`LISTRICDIP`), three arms, catalogue-free, shared evaluator and writer.
+2. `updip50` static HOLDOUT-DTI `0.005420 [0.004294, 0.006551]` beats `R0` `0.004006` (paired CI excludes 0) and loses to `KNICKLOQO` `0.010788` and `COULOMBLOQO` `0.009220`. Re-placed `d_visible > 2` is `0.048225`. Verdict `negative`. 0 weekly slots.
+3. Antithetic arms could not fill 37,654 dots on reversed-polarity support at 3.2 px spacing (9,571 and 9,555). They tied. Distance is not load-bearing. Not padded.
+4. Local uniqueness passed (worst overlap 0.1968, `|ρ|` 0.053, 110 rasters). Literal dense witness overlap is 1.0. `stop_required: true`. Research GeoTIFFs are on the site. They are not cleared to upload.
+
+## Do not do next
+
+- Do not upload `LISTRICDIP`. It did not beat the holdout best.
+- Do not retry antithetic padding, sub-3.2 px spacing, local-gradient antithetic lookup, or float32 Band-18 × depth products.
+- Do not copy `h33-h33-2-b2` / `R0`.
+- Do not treat 0.005420, CLAIM 0.2778, prompt 0.3195, or leaderboard-snapshot 0.4413 as the same number.
+
+## Still open, not started
+
+Ranks 2–5 in the LISTRICDIP hypothesis file (`TENSOR-RIEDEL`, `FLEXURE-HINGE`, `CLAYCAP-REDOX`, `INSAR-3DEP1M`) were not run. `INSAR-3DEP1M` remains not viable in this sandbox. A weekly slot still requires a file that beats the stored holdout best and clears the binding uniqueness rule. This session did not produce one.
+
+---
+
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`KNICKLOQO` Session)
 
 ## Completed this session (`KNICKLOQO` + Action #1 Dual-Reading Audit + Action #2 `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` Resolution)
 
@@ -48,7 +67,7 @@ See [the authoritative three-pass review](REVIEW_2E1A649E.md), [current machine 
 
 ---
 
-# Archived next steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`POISSONKNICK`, `POISSONFLEX`, & `PROVINCETOE` Sessions)
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`POISSONKNICK`, `POISSONFLEX`, & `PROVINCETOE` Sessions)
 
 ## Completed this session (`POISSONKNICK`)
 
@@ -67,7 +86,7 @@ See [the authoritative three-pass review](REVIEW_2E1A649E.md), [current machine 
 
 ---
 
-# Archived next steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`POISSONFLEX` & `PROVINCETOE` Merge)
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`POISSONFLEX` & `PROVINCETOE` Merge)
 
 ## Completed in `POISSONFLEX` session
 
@@ -83,7 +102,7 @@ See [the authoritative three-pass review](REVIEW_2E1A649E.md), [current machine 
 
 ---
 
-# Archived next steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`PROVINCETOE` Session)
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`PROVINCETOE` Session)
 
 ## Completed this session (`PROVINCETOE`)
 
@@ -118,13 +137,13 @@ See [the authoritative three-pass review](REVIEW_2E1A649E.md), [current machine 
 
 ---
 
-# Archived historical protocol review — 2026-10-25 (`376a8469`)
+# Current protocol review — 2026-10-25 (`376a8469`)
 
 **Research downloads only. DO NOT SUBMIT.** The shared dual-reading helper now enforces the literal duplicate stop for every raster. Matched-budget overlap is diagnostic, not a specification change. Prior claims below that the policy was automatically resolved are historical and superseded. No new TIFF or geological experiment was generated in this review. See [review, conditional hypotheses and ordered next steps](REVIEW_376A8469.md) and [fresh run card](downloads/review376a_run_card.json). A new submission-cleared artifact remains unfulfilled.
 
 ---
 
-# Archived next steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`BLINDFAULT` Session)
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`BLINDFAULT` Session)
 
 ## Completed this session (`BLINDFAULT`)
 
@@ -149,7 +168,7 @@ See [the authoritative three-pass review](REVIEW_2E1A649E.md), [current machine 
 
 ---
 
-# Archived next steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`COULOMBDM` & `XPHASE` Sessions)
+# Next Steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`COULOMBDM` & `XPHASE` Sessions)
 
 ## Completed this session (`COULOMBDM`)
 
@@ -178,7 +197,7 @@ See [the authoritative three-pass review](REVIEW_2E1A649E.md), [current machine 
 
 ---
 
-# Archived next steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`COULOMB-LOQO` Session)
+# Next Steps — `GEMSDOE92` (Updated `2026-10-24`, Post-`COULOMB-LOQO` Session)
 
 ## 1. Completed in the `COULOMB-LOQO` Session
 
@@ -367,3 +386,8 @@ Next, in order: (1) **one organizer receipt** remains Blocker 0 — the selector
 - **`PIEDFRONT f35Ptop`** (`GEMSDOE92-PIEDFRONT-f35Ptop-20261024`, `docs/downloads/h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif`, SHA-256 `e314f4c004927ff56334827b4d45c57fc62da3da3010c12682d7cce6d0f185a8`): static `HOLDOUT-DTI = 0.006425 [0.005375, 0.007479]`, `SGMC = 0.059993`, `verdict: negative` (**OK TO DOWNLOAD**, **DO NOT SUBMIT**). `HYDROCONDUIT f45hydro` (`0.008549 [0.007626, 0.009487]`) improves over `PIEDFRONT f35Ptop` by `+33.1%` (`+0.002124`) while overlapping only `56.56% <= 70%` within 3 px (`phi = 0.2000`).
 - **`STEPEDGE f60Sraw`** (`GEMSDOE92-STEPEDGE-f60Sraw-20261024`, `docs/downloads/h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif`, SHA-256 `c5dc98f2846ae486e022a7bdae1840334e73c03af44c03e9867c03b6f16d07b4`): static `HOLDOUT-DTI = 0.003980 [0.003295, 0.004702]`, repo-best `SGMC = 0.141464`, `verdict: negative` (`42.35% <= 70%` 3-px overlap with `HYDROCONDUIT f45hydro`).
 - Ledger total across all merged sessions: `54 BUILT / 0 RECEIPT`.
+
+
+## Parallel research notes, not authorization
+
+Main `d6f7ac0` added RADIODECOUPLE and CURIE-DEMAG reports. See their analysis and hypothesis registers. Their further model/promotion plans remain subordinate to the binding literal stop at the top of this file; they are not validated or selected by review797e.

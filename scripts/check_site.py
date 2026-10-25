@@ -109,38 +109,37 @@ def primary_download(html: str, problems: list[str]) -> str | None:
 
 
 def check_current_status(primary_rel: str | None, problems: list[str]) -> None:
-    """Keep the human first screen and canonical machine status byte-consistent."""
+    """Keep canonical and served machine status aligned with both review cards."""
     status = read_json_object(CURRENT_STATUS, problems)
     served = read_json_object(SERVED_STATUS, problems)
     if not status or not served:
         return
     if CURRENT_STATUS.read_bytes() != SERVED_STATUS.read_bytes():
         problems.append("served current_status.json differs from registry/current_status.json")
+    if status.get("active_public_review") != "797e507a":
+        problems.append("current status active_public_review disagrees with public renderer")
+    if status.get("supplemental_review") != "2e1a649e":
+        problems.append("current status supplemental_review is stale")
     research = status.get("research_download")
     decision = status.get("decision")
     evidence = status.get("evidence")
     if not isinstance(research, dict) or not isinstance(decision, dict) or not isinstance(evidence, dict):
         problems.append("current status must contain research_download, decision and evidence objects")
         return
+
     expected = f"docs/{primary_rel}" if primary_rel else None
     file_rel = research.get("file")
     if file_rel != expected:
         problems.append(f"current status file {file_rel!r} != page primary {expected!r}")
     safe_file = (isinstance(file_rel, str) and not Path(file_rel).is_absolute()
                  and ".." not in Path(file_rel).parts)
-    if not safe_file:
-        problems.append("current status research download must be a safe repository-relative path")
-        raster = None
-    else:
-        raster = ROOT / file_rel
+    raster = ROOT / file_rel if safe_file else None
     if raster is None or not raster.is_file():
-        problems.append("current status research download does not exist")
+        problems.append("current status research download is missing or unsafe")
     elif research.get("sha256") != sha256_file(raster):
         problems.append("current status SHA256 != research download bytes")
-    for key, want in (
-        ("format_valid", True), ("downloadable", True),
-        ("generated_in_active_review", False),
-    ):
+    for key, want in (("format_valid", True), ("downloadable", True),
+                      ("generated_in_supplemental_review", False)):
         if research.get(key) is not want:
             problems.append(f"current status research_download.{key} must be {want!r}")
     if decision.get("verdict") != "negative":
@@ -148,27 +147,34 @@ def check_current_status(primary_rel: str | None, problems: list[str]) -> None:
     for key in ("submission_eligible", "recommended_to_submit"):
         if decision.get(key) is not False:
             problems.append(f"current status decision.{key} must be False")
-    for key in ("weekly_slots_used", "experiments_used"):
+    for key in ("weekly_slots_used_in_supplemental_review",
+                "experiments_used_in_supplemental_review"):
         value = decision.get(key)
         if isinstance(value, bool) or not isinstance(value, int) or value != 0:
             problems.append(f"current status decision.{key} must be integer 0")
     if "DUPLICATE UNDER THE LITERAL REGISTRY RULE" not in str(decision.get("reason", "")):
         problems.append("current status does not preserve the literal duplicate reason")
+
+    safe_evidence: dict[str, Path] = {}
     for label, rel in evidence.items():
         safe = (isinstance(rel, str) and not Path(rel).is_absolute()
                 and ".." not in Path(rel).parts)
-        if not safe or not (ROOT / rel).is_file():
+        path = ROOT / rel if safe else None
+        if path is None or not path.is_file():
             problems.append(f"current status evidence {label!r} is missing or unsafe: {rel!r}")
-    card_rel = evidence.get("run_card")
-    if (isinstance(card_rel, str) and not Path(card_rel).is_absolute()
-            and ".." not in Path(card_rel).parts and (ROOT / card_rel).is_file()):
-        card = read_json_object(ROOT / card_rel, problems)
+        else:
+            safe_evidence[label] = path
+    for label in ("public_run_card", "supplemental_run_card"):
+        path = safe_evidence.get(label)
+        if path is None:
+            continue
+        card = read_json_object(path, problems)
         if card.get("raster_sha256") != research.get("sha256"):
-            problems.append("current status and review run card disagree on raster SHA256")
+            problems.append(f"current status and {label} disagree on raster SHA256")
         if card.get("verdict") != decision.get("verdict"):
-            problems.append("current status and review run card disagree on verdict")
+            problems.append(f"current status and {label} disagree on verdict")
         if card.get("submission_eligible") != decision.get("submission_eligible"):
-            problems.append("current status and review run card disagree on eligibility")
+            problems.append(f"current status and {label} disagree on eligibility")
 
 
 def main() -> int:
@@ -296,6 +302,12 @@ def main() -> int:
                     problems.append("run card must record negative verdict after registry duplicate stop")
             print(f"  PRIMARY {primary.name}")
 
+    # Canonical status must precede every historical lane banner. A matching
+    # sentence buried below stale 'unique' claims is not an obvious decision.
+    from gems.public_status import check_panels
+    status_card = read_json_object(DOWNLOADS / 'review797e_run_card.json', problems)
+    if primary_rel:
+        problems.extend(check_panels(status_card, ROOT, primary_rel))
     check_current_status(primary_rel, problems)
 
     if problems:

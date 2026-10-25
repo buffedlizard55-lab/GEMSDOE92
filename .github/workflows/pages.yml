@@ -24,7 +24,7 @@ jobs:
       - name: install validation dependencies
         run: pip install -r requirements.txt
       - name: current first-screen rendering must match canonical evidence
-        run: python scripts/render_current_review.py --check
+        run: python scripts/render_public_status.py --check
       - name: fail closed before publishing downloads
         run: python scripts/check_site.py
       - name: stage only public files and preserve existing docs URLs

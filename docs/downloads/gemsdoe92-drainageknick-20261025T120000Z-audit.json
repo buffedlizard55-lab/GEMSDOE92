@@ -203,11 +203,12 @@
   "gates_zeros_pass": true,
   "submission_eligible": false,
   "verdict": "negative",
-  "run_card": "evidence/review_2e1a649e_run_card.json",
+  "run_card": "evidence/gemsdoe92-drainageknick-20261025T120000Z_run_card.json",
   "post_build_reconciliation": {
     "reviewed_utc": "2026-10-25T14:45:38Z",
     "reason": "Added canonical site-contract fields and exact-file public witness evidence; original build measurements remain under their original keys.",
-    "review_run_card": "evidence/review_2e1a649e_run_card.json"
+    "exact_file_evidence": "evidence/review_2e1a649e_drainage_witness.json",
+    "review": "docs/REVIEW_2E1A649E.md"
   },
   "public_registry_uniqueness": {
     "evidence_file": "evidence/review_2e1a649e_drainage_witness.json",

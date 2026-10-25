@@ -1,0 +1,219 @@
+{
+  "schema": "gemsdoe92-run-card.v3",
+  "lane": "RADIODECOUPLE",
+  "date": "20261025T160000Z",
+  "hypothesis": "3D cross-physics vector tensor collinearity between radiometric alteration gradients (K/Th, U/Th) and potential-field gravity gradients isolates deeply rooted hydrothermal fault conduits while decoupling and suppressing non-tectonic surficial ash-flow sheets.",
+  "mechanism": "Multi-physics tensor collinearity |n_rad . n_grav| between grad(K/Th) and grad(g_iso), modulated by vertical gravity gradient magnitude |g_vg|, RTP demagnetization trough, and MT clay-cap conductivity level. Spaced dots at d_cat > 2.0 px (d_min >= 2.83 px).",
+  "named_non_fault_mimic": "Surficial Tertiary rhyolitic ash-flow tuff sheets, non-tectonic alluvial facies contacts, and playa evaporite crusts.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 22663,
+    "primary_instrument": "strict fold-visible rebuild d_visible > 2.0, pooled gems57-pooled-hide-v2, seeds 20+30, 8 folds, 1000-draw paired spatial-block bootstrap CI",
+    "scores": {
+      "standalone": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.053167381390259005,
+        "ci95": [
+          0.04177905188431775,
+          0.06458175471800778
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 1718.5072681057445,
+        "fpw": 69242.42374043536,
+        "fnw": 20944.492731894254
+      },
+      "demag": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.0036196623307183495,
+        "ci95": [
+          0.002941700118974894,
+          0.0042796123716863236
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 116.26683967054296,
+        "fpw": 69836.27171609705,
+        "fnw": 22546.73316032946
+      },
+      "dual35": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.004789079566329133,
+        "ci95": [
+          0.003936611566009164,
+          0.005598018892274895
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 154.0289084512333,
+        "fpw": 70006.61402002872,
+        "fnw": 22508.97109154877
+      },
+      "R0": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.004006147174684743,
+        "ci95": [
+          0.0034062631492617914,
+          0.004667627876412318
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 129.29712893913688,
+        "fpw": 70592.1164043663,
+        "fnw": 22533.70287106087
+      }
+    },
+    "paired_vs_R0": {
+      "standalone": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.049161234215574265,
+        "ci95": [
+          0.03797476927375067,
+          0.06051725691239599
+        ],
+        "withheld_positive_pixels": 22663
+      },
+      "demag": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": -0.0003864848439663936,
+        "ci95": [
+          -0.0012584307153800521,
+          0.00048354419898645094
+        ],
+        "withheld_positive_pixels": 22663
+      },
+      "dual35": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.0007829323916443897,
+        "ci95": [
+          1.0950128205749582e-06,
+          0.0015705480188811462
+        ],
+        "withheld_positive_pixels": 22663
+      }
+    },
+    "beats_holdout_best": false,
+    "holdout_best_reference": {
+      "lane": "KNICKLOQO standalone",
+      "static_d_cat_2": 0.010788,
+      "rule2_d_visible_2": 0.113316,
+      "source": "evidence/knick_loqo_run_card.json"
+    }
+  },
+  "leakage_canaries": {
+    "max_symmetric_auc": 0.533971,
+    "all_pass_le_0p90": true,
+    "per_feature": {
+      "alteration_mag": 0.506063,
+      "collinearity": 0.504652,
+      "grav_contact": 0.533971,
+      "rtp_demag": 0.511425,
+      "cond": 0.504879,
+      "S_standalone": 0.525841,
+      "S_demag": 0.527523
+    }
+  },
+  "correlation_overlap_vs_registry": {
+    "local": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "rasters_checked": 107,
+      "worst_literal_forward_overlap": 0.656557,
+      "worst_literal_file": "local:docs/downloads/gemsdoe92-radiocontact-20261025T041646Z-zeros.tif",
+      "worst_matched_budget_forward_overlap": 0.656557,
+      "worst_matched_budget_file": "local:docs/downloads/gemsdoe92-radiocontact-20261025T041646Z-zeros.tif",
+      "worst_abs_spearman": 0.094607,
+      "worst_abs_spearman_file": "local:docs/downloads/gemsdoe92-radiocontact-20261025T041646Z-zeros.tif",
+      "duplicate": false,
+      "verdict": "unique"
+    },
+    "public": {
+      "evidence_file": "evidence/radiodecouple_public_registry.json",
+      "candidate_hash_matches_scan": true,
+      "candidate_sha256_zeros": "2531cf488b0d944d24cf0e3cf0bef7f400a5580cf7d0b0f0649c0dd74b57a2f3",
+      "matching_public_repositories": 102,
+      "registries_checked": 1370,
+      "unique_under_literal_rule": false,
+      "stop_required": true,
+      "worst_forward_overlap": 1.0,
+      "worst_overlap_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "worst_abs_spearman": 0.38421,
+      "sparse_le_150k_count_over_70pct": 0,
+      "sparse_le_150k_worst_forward_overlap": 0.658214,
+      "scope": "Current public default branches; unique Git blobs; literal duplicate stop triggered on dense witness."
+    }
+  },
+  "raster_sha256": "2531cf488b0d944d24cf0e3cf0bef7f400a5580cf7d0b0f0649c0dd74b57a2f3",
+  "zip_sha256": "e756d2b635ded6768c0b74ce9b675e9b4a5181bfdc752f5cf311183293e8fade",
+  "file": "docs/downloads/gemsdoe92-radiodecouple-standalone-37654-20261025-zeros.tif",
+  "validator_output": {
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "dots": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    }
+  },
+  "submission_name": "GEMSDOE92-RADIODECOUPLE-standalone-20261025",
+  "submission_note": "RADIODECOUPLE standalone: 37654 dots; K/Th x grav tensor decoupling; negative",
+  "note_chars": 77,
+  "experiments_used": "3/3",
+  "weekly_slots_used": 0,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "verdict_reason": "HOLDOUT-DTI 0.053167 vs holdout-best 0.010788; literal public dense-witness overlap is 1.000 > 0.70; mandatory protocol stop; format-valid unique GeoTIFF delivered for research only.",
+  "organizer_confirmed": null,
+  "all_arms": {
+    "standalone": {
+      "file": "docs/downloads/gemsdoe92-radiodecouple-standalone-37654-20261025-zeros.tif",
+      "sha256": "2531cf488b0d944d24cf0e3cf0bef7f400a5580cf7d0b0f0649c0dd74b57a2f3",
+      "submission_name": "GEMSDOE92-RADIODECOUPLE-standalone-20261025",
+      "note": "RADIODECOUPLE standalone: 37654 dots; K/Th x grav tensor decoupling; negative",
+      "holdout_dti": 0.053167381390259005,
+      "ci95": [
+        0.04177905188431775,
+        0.06458175471800778
+      ]
+    },
+    "demag": {
+      "file": "docs/downloads/gemsdoe92-radiodecouple-demag-37654-20261025-zeros.tif",
+      "sha256": "10322e694b07e462cc13e6d857f7318ad076e6e43dbadfeab96b910910cfc301",
+      "submission_name": "GEMSDOE92-RADIODECOUPLE-demag-20261025",
+      "note": "RADIODECOUPLE demag: 37654 dots; alteration x grav x RTP demag trough; negative",
+      "holdout_dti": 0.0036196623307183495,
+      "ci95": [
+        0.002941700118974894,
+        0.0042796123716863236
+      ]
+    },
+    "dual35": {
+      "file": "docs/downloads/gemsdoe92-radiodecouple-dual35-37654-20261025-zeros.tif",
+      "sha256": "93386a413b4a9e16772cc56cf09c32f979e025188e0ad75702d2b672ef4d33e2",
+      "submission_name": "GEMSDOE92-RADIODECOUPLE-dual35-20261025",
+      "note": "RADIODECOUPLE dual35: 35% skeleton + 65% decoupled alteration crests; negative",
+      "holdout_dti": 0.004789079566329133,
+      "ci95": [
+        0.003936611566009164,
+        0.005598018892274895
+      ]
+    }
+  }
+}
