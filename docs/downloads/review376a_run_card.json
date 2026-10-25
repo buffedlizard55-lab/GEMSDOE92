@@ -105,11 +105,13 @@
   "verification": {
     "passes_completed": 3,
     "tests_passed": 338,
-    "site_gated_rasters": 49,
+    "site_gated_rasters": 50,
     "manifest": "PASS",
     "parent": "PASS",
     "ledger": "PASS",
-    "git_diff_check": "PASS"
+    "git_diff_check": "PASS",
+    "post_integration_utc": "2026-10-25T04:36:03.213614+00:00",
+    "integrated_main_commit": "4d1492e"
   },
   "limitations": [
     "New submission requirement not fulfilled: universal literal duplicate stop.",
