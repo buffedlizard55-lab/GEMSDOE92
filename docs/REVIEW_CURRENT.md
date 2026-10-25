@@ -1,4 +1,16 @@
-# Current review — 2026-10-25 (`KNICKLOQO` session; read this block first)
+# Current review — 2026-10-25 (repository re-audit; read this block first)
+
+**✅ OK TO DOWNLOAD FOR RESEARCH; ⛔ DO NOT SUBMIT.** The latest existing artifact is the DRAINAGE_KNICK GeoTIFF; it is format-valid, but its recorded **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives, strict fold-visible `d_visible > 2.0`) is `0.061728 [0.047046, 0.075316]`, below the repository holdout-best `0.113316`. Its public registry scan was incomplete (747 compared, 705 download failures) and literal overlap was `1.000`; the independently pinned full-footprint witness makes every nonempty in-footprint candidate fail the binding 0.70 overlap rule. No new TIFF or experiment was generated; no weekly slot was used.
+
+- [Latest existing research TIFF](downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif) · [run card](downloads/gemsdoe92-drainageknick-20261025T120000Z_run_card.json) · [audit](downloads/gemsdoe92-drainageknick-20261025T120000Z-audit.json) · [three-pass re-audit](REVIEW_20261025_REAUDIT.md) · [review run card](../evidence/review_20261025_reaudit_run_card.json).
+- All `63` served TIFFs were rechecked by `scripts/check_site.py`; `368` tests passed; manifest, parent and ledger checks passed. These are software/format checks, not organizer scores.
+- Homepage status prominence was fixed and is now regression-tested before the historical lane sections.
+
+The following KNICKLOQO, POISSONFLEX, and earlier-session records are historical and must not be read as current submission clearance.
+
+---
+
+# Historical review — 2026-10-25 (`KNICKLOQO` session)
 
 **✅ OK TO DOWNLOAD: YES (`10/10` format gates PASS, finite `[0.0, 1.0]`, `0` NaNs); ⛔ OK TO SUBMIT: NO — DIAGNOSTIC ONLY (`verdict: negative` under literal `17GEMSDOE` dense surface; `UNIQUE` under `dual_reading_decision` with `0 / 1,412` public rasters `> 0.70`, max `0.685531 <= 0.70`).**
 Newest unique artifact: `docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif` (`sha256 = 8ad4a8c2cd8e1fd965d91643da6efbe82da8b3668e6dc8e59d193a8302424a7d`, best of three pre-registered arms `standalone`, `uncal`, `dual35`).

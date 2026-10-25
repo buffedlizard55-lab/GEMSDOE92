@@ -1,7 +1,7 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-> ## Latest artifact — DRAINAGE-KNICK (2026-10-25)
-> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). New byte-unique GeoTIFF; all automated format checks pass, but HOLDOUT-DTI `0.061728 [0.047046, 0.075316]` is below the `0.113316` promotion bar and literal public-registry overlap is `1.0 > 0.70`.
+> ## Latest existing artifact — DRAINAGE-KNICK (2026-10-25)
+> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). This is an existing research GeoTIFF with a different byte hash from the pinned witness, but it is not cleared as spatially unique under the binding literal registry rule: the pinned full-footprint witness gives overlap `1.0 > 0.70`. **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives, strict fold-visible `d_visible > 2.0`): `0.061728 [0.047046, 0.075316]`, below the saved repository **HOLDOUT-DTI** comparator `0.113316` (same evaluator/instrument).
 >
 > **[Download the validated TIFF](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.zip) · [run card](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z_run_card.json) · [public registry audit](docs/downloads/drainageknick_public_registry.json) · [analysis](docs/ANALYSIS_20261025_DRAINAGE_KNICK.md)
 >

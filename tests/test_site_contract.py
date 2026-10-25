@@ -47,6 +47,19 @@ def test_index_has_download_and_slot_warning():
     assert "negative" in html
 
 
+def test_current_status_is_first_and_links_latest_negative_artifact():
+    html = _index()
+    start = html.find('<aside id="current-status-banner"')
+    end = html.find('</aside>', start)
+    first_historical = html.find('<!-- KNICKLOQO:BEGIN -->')
+    assert start >= 0 and end > start and start < first_historical
+    banner = html[start:end]
+    assert 'downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif' in banner
+    assert 'OK TO DOWNLOAD FOR RESEARCH' in banner
+    assert 'DO NOT SUBMIT' in banner
+    assert 'HOLDOUT-DTI' in banner and '1.000' in banner
+
+
 def test_index_links_every_served_zeros_file():
     """Anything offered for download must be reachable from the page."""
     html = _index()

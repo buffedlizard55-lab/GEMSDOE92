@@ -114,6 +114,22 @@ def main() -> int:
         return 2
     html = INDEX.read_text(encoding="utf-8")
 
+    # ---- canonical current status must be first, not merely somewhere in history --
+    status_start = html.find('<aside id="current-status-banner"')
+    first_lane = html.find('<!-- KNICKLOQO:BEGIN -->')
+    expected_current_download = 'downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif'
+    if status_start < 0 or first_lane < 0 or status_start > first_lane:
+        problems.append('current-status banner must precede historical lane blocks')
+    else:
+        status_end = html.find('</aside>', status_start)
+        current_banner = html[status_start:status_end] if status_end >= 0 else ''
+        if expected_current_download not in current_banner:
+            problems.append('current-status banner must link the latest DRAINAGE_KNICK research TIFF')
+        if 'DO NOT SUBMIT' not in current_banner or 'OK TO DOWNLOAD FOR RESEARCH' not in current_banner:
+            problems.append('current-status banner must distinguish research download from submission permission')
+        if 'HOLDOUT-DTI' not in current_banner or '1.000' not in current_banner:
+            problems.append('current-status banner must disclose holdout and literal registry stop')
+
     # ---- the page contract, written against properties not one lane's wording --
     for needle in ("OK TO DOWNLOAD", "Predicted values must be in range [0, 1]",
                    "HOLDOUT-DTI", "NOT CLEARED FOR A WEEKLY SLOT",
