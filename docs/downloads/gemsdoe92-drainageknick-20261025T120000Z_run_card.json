@@ -1,0 +1,239 @@
+{
+  "schema": "gemsdoe92-run-card.v3",
+  "lane": "DRAINAGE_KNICK",
+  "date": "20261025T134721Z",
+  "hypothesis": "Scarpless or alluvium-covered faults can preserve a persistent detrended-elevation knickzone coincident with a buried basement-depth edge and geodetic shear even where the USGS/INGENIOUS surface catalogue has no mapped trace.",
+  "mechanism": "Label-free geometric mean of multi-scale detrended-elevation curvature and local slope break (Bands 12/19), depth-to-basement gradient (Band 15), and shear-rate level (Band 7). Each holdout fold rebuilds 37,654 spaced dots using only its visible-fault exclusion mask; the catalogue never enters feature construction.",
+  "named_non_fault_mimic": "Resistant stratigraphic contacts, pluvial Lake Lahontan shorelines, alluvial-fan toes, and DEM processing seams.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 22663,
+    "primary_instrument": "strict fold-visible rebuild d_visible > 2.0, pooled gems57-pooled-hide-v2, seeds 20+30, 8 folds, 1000-draw paired spatial-block bootstrap CI",
+    "scores": {
+      "DRAINAGE_KNICK": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.06172760041972649,
+        "ci95": [
+          0.04704647590617514,
+          0.07531604288537347
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 1962.754217608282,
+        "fpw": 66370.3840562131,
+        "fnw": 20700.245782391714
+      },
+      "R0": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.004006147174684743,
+        "ci95": [
+          0.0034079615810995575,
+          0.004666535599476947
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 129.29712893913688,
+        "fpw": 70592.1164043663,
+        "fnw": 22533.70287106087
+      }
+    },
+    "paired_vs_R0": {
+      "delta": 0.05772145324504175,
+      "ci95": [
+        0.043256897313505537,
+        0.07120738974828754
+      ]
+    },
+    "beats_holdout_best": false,
+    "holdout_best_reference": {
+      "lane": "COULOMB-LOQO standalone",
+      "rule2_d_visible_2": 0.113316,
+      "static_d_cat_2": 0.00922,
+      "source": "evidence/coulomb_loqo_proxy_audit.json (same evaluator, seeds 20+30)"
+    }
+  },
+  "holdout_rule2_d_visible_2": {
+    "evidence_class": "HOLDOUT-DTI (strict draw-blind fold-visible d_visible > 2.0 diagnostic)",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "scores": {
+      "DRAINAGE_KNICK": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.06172760041972649,
+        "ci95": [
+          0.04704647590617514,
+          0.07531604288537347
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 1962.754217608282,
+        "fpw": 66370.3840562131,
+        "fnw": 20700.245782391714
+      },
+      "R0": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.004006147174684743,
+        "ci95": [
+          0.0034079615810995575,
+          0.004666535599476947
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 129.29712893913688,
+        "fpw": 70592.1164043663,
+        "fnw": 22533.70287106087
+      }
+    }
+  },
+  "leakage_canaries": {
+    "max_symmetric_auc": 0.5971136899755962,
+    "all_pass_le_0p90": true,
+    "per_feature": {
+      "terrain_persistence": 0.533741,
+      "basement_edge": 0.544129,
+      "shear": 0.563479,
+      "S": 0.597114
+    }
+  },
+  "correlation_overlap_vs_registry": {
+    "local": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "rasters_checked": 106,
+      "worst_literal_forward_overlap": 0.47732,
+      "worst_literal_file": "local:docs/downloads/h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+      "worst_matched_budget_forward_overlap": 0.47732,
+      "worst_matched_budget_file": "local:docs/downloads/h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif",
+      "worst_abs_spearman": 0.063413,
+      "worst_abs_spearman_file": "local:docs/downloads/h33-h33-2-b2-GEOTENSIONs60f40-20261025-ab46201e-zeros.tif",
+      "duplicate": false,
+      "verdict": "unique"
+    },
+    "public": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "rasters_checked": 747,
+      "exact_sha256_matches": 0,
+      "worst_literal_forward_overlap": 1.0,
+      "worst_literal_file": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "rasters_over_70pct_overlap": 71,
+      "worst_abs_spearman": 0.055416776559769586,
+      "duplicate_under_literal_rule": true,
+      "scan_complete_for_declared_scope": false,
+      "download_failures": 705,
+      "source": "evidence/drainageknick_public_registry.json"
+    },
+    "dense_witness_specificity": null
+  },
+  "raster_sha256": "ef6c27e34fe0f28c6e52615a9fc9601c20ada5337203def25ab8753392aef910",
+  "zip_sha256": "10c3e456951eb4e2b736cda7f3766320dbe6da45fe3abd69877ca6098b5bf6a6",
+  "file": "docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif",
+  "validator_output": {
+    "no_nan_in_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "dots": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    }
+  },
+  "submission_name": "GEMSDOE92-DRAINAGE_KNICK-20261025",
+  "submission_note": "h33-h33-2-b2; DRAINAGE_KNICK: terrain-knick persistence x basement edge x shear; 37654 dots d_cat>2px; see run card for HOLDOUT-DTI",
+  "note_chars": 131,
+  "experiments_used": "1/3",
+  "weekly_slots_used": 0,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "verdict_reason": "strict fold-visible HOLDOUT-DTI 0.061728 vs holdout-best 0.113316 (Rule-2); paired delta 0.057721 CI [0.043257, 0.071207]; unique_ok=True; gates_ok=True; max AUC 0.5971; public literal overlap 1.0 > 0.70 (71 witnesses), mandatory duplicate stop; 0 exact SHA matches among compared files",
+  "organizer_confirmed": null,
+  "all_arms": {
+    "primary": {
+      "file": "docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif",
+      "sha256": "ef6c27e34fe0f28c6e52615a9fc9601c20ada5337203def25ab8753392aef910",
+      "submission_name": "GEMSDOE92-DRAINAGE_KNICK-20261025",
+      "note": "h33-h33-2-b2; DRAINAGE_KNICK: terrain-knick persistence x basement edge x shear; 37654 dots d_cat>2px; see run card for HOLDOUT-DTI",
+      "note_chars": 131,
+      "validator": {
+        "file": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif",
+        "bytes": 125451,
+        "sha256": "ef6c27e34fe0f28c6e52615a9fc9601c20ada5337203def25ab8753392aef910",
+        "meta": {
+          "crs": "EPSG:32611",
+          "shape": [
+            3730,
+            3292
+          ],
+          "dtype": "float32",
+          "count": 1,
+          "nodata": null,
+          "transform": [
+            100.0,
+            0.0,
+            243350.0,
+            0.0,
+            -100.0,
+            4508550.0
+          ],
+          "profile_compress": "deflate"
+        },
+        "band_description": [
+          null
+        ],
+        "n_finite": 12279160,
+        "n_nan": 0,
+        "n_infinite": 0,
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.0030664964579045773,
+        "emitted_positive_pixels": 37654,
+        "checks": {
+          "single_band": true,
+          "dtype_float32": true,
+          "dimensions_3730x3292": true,
+          "crs_epsg_32611": true,
+          "transform_matches_sample_submission": true,
+          "no_nan_anywhere": true,
+          "no_inf_anywhere": true,
+          "no_sentinel_values": true,
+          "range_0_1_guaranteed": true,
+          "min_ge_0": true,
+          "max_le_1": true,
+          "in_footprint_all_finite": true,
+          "in_footprint_range_0_1": true,
+          "outside_footprint_zero": true,
+          "zero_dots_on_mapped_catalogue": true
+        },
+        "all_checks_passed": true,
+        "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+        "on_catalogue_positive_pixels": 0,
+        "in_footprint_positive_pixels": 37654,
+        "footprint_fraction": 0.007286874781441169
+      },
+      "holdout_dti": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.06172760041972649,
+        "ci95": [
+          0.04704647590617514,
+          0.07531604288537347
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 1962.754217608282,
+        "fpw": 66370.3840562131,
+        "fnw": 20700.245782391714
+      }
+    }
+  }
+}
