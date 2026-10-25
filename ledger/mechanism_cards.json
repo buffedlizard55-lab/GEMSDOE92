@@ -475,5 +475,38 @@
     "falsifier": "Pooled HOLDOUT-DTI failing to beat repository holdout best RELIEF p10 (0.006045) on gems57-pooled-hide-v2, any single-feature leakage canary symmetric AUC >0.90, or local registry forward 3-px overlap >0.70 / |Spearman| >0.90.",
     "decision_rule": "Promote only if pooled HOLDOUT-DTI beats RELIEF p10 (0.006045) with paired 95% CI excluding 0 vs R0, all canaries <=0.90, 10/10 format gates pass, AND literal uniqueness passes on both local and public registries. Because the binding dense public witness (17GEMSDOE E-proba, 100% footprint positive) triggers the literal public overlap rule for every nonempty in-footprint raster until operator policy revision, never waive it silently: record submission_eligible=false and verdict=negative.",
     "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/apronridge_proxy_audit.json"
+  },
+  "h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3": {
+    "parent": "h33-h33-2-b2",
+    "axis": "COULOMBDM",
+    "value": "coulomb1d",
+    "hypothesis": "Active NW Great Basin normal and conjugate Walker Lane / Humboldt transtensional geothermal faults express across three complementary regimes: (1) piedmont-hinge one-sided monoclinal scarps, (2) concealed thin-to-moderate cover faults detected by multi-altitude upward-continued RTP magnetic tilt/demagnetization + gravity contact + MT smectite clay-cap lateral edges + blind >=80 C geothermometers, and (3) geophysically corroborated range-front/relay bedrock faults under oriented 2D Mohr-Coulomb criticality.",
+    "mechanism": "Projects GPS/InSAR dilatation (Band 8) onto N18E extension cos^2(az-18 deg) and shear sqrt(Band 7 * Band 4) onto +/-45 deg conjugate orientations sin^2(2*(az-15 deg)) (both vanishing at N105E clamping/fan-wash azimuths), fuses rank-calibrated surface, upward-continued RTP/gravity/MT/GDR subsurface, and corroborated bedrock channels, and emits 37,654 unit-mass dots along strict bilinear Canny cross-strike 1D NMS centrelines.",
+    "non_fault_mimic": "NNE-trending Pleistocene Lake Lahontan recessional strandlines on piedmont fans, remanently magnetized Miocene basalt dike/flow margins beneath gravel cover, saline playa-margin MT conductivity gradients, and linear lithologic contacts.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat repository best HYDROCONDUIT f45hydro (0.008549) or APRONRIDGE free1d (0.008354) on gems57-pooled-hide-v2, any single-feature canary symmetric AUC > 0.90, or local/sparse-public forward 3-px overlap > 0.70.",
+    "decision_rule": "Promote only if literal local + public registry uniqueness passes AND pooled HOLDOUT-DTI beats current repo best with 95% CI > 0 vs R0 AND 10/10 format gates pass; under the binding 17GEMSDOE full-footprint dense public witness, never waive silently: record submission_eligible=false and verdict='negative' pending human selector policy.",
+    "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/coulombdm_proxy_audit.json"
+  },
+  "h33-h33-2-b2-COULOMBDMs35coulomb65-20261024-1091c5a7": {
+    "parent": "h33-h33-2-b2",
+    "axis": "COULOMBDM",
+    "value": "s35coulomb65",
+    "hypothesis": "Active NW Great Basin normal and conjugate Walker Lane / Humboldt transtensional geothermal faults express across three complementary regimes: (1) piedmont-hinge one-sided monoclinal scarps, (2) concealed thin-to-moderate cover faults detected by multi-altitude upward-continued RTP magnetic tilt/demagnetization + gravity contact + MT smectite clay-cap lateral edges + blind >=80 C geothermometers, and (3) geophysically corroborated range-front/relay bedrock faults under oriented 2D Mohr-Coulomb criticality.",
+    "mechanism": "Projects GPS/InSAR dilatation (Band 8) onto N18E extension cos^2(az-18 deg) and shear sqrt(Band 7 * Band 4) onto +/-45 deg conjugate orientations sin^2(2*(az-15 deg)) (both vanishing at N105E clamping/fan-wash azimuths), fuses rank-calibrated surface, upward-continued RTP/gravity/MT/GDR subsurface, and corroborated bedrock channels, and emits 37,654 unit-mass dots along strict bilinear Canny cross-strike 1D NMS centrelines.",
+    "non_fault_mimic": "NNE-trending Pleistocene Lake Lahontan recessional strandlines on piedmont fans, remanently magnetized Miocene basalt dike/flow margins beneath gravel cover, saline playa-margin MT conductivity gradients, and linear lithologic contacts.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat repository best HYDROCONDUIT f45hydro (0.008549) or APRONRIDGE free1d (0.008354) on gems57-pooled-hide-v2, any single-feature canary symmetric AUC > 0.90, or local/sparse-public forward 3-px overlap > 0.70.",
+    "decision_rule": "Promote only if literal local + public registry uniqueness passes AND pooled HOLDOUT-DTI beats current repo best with 95% CI > 0 vs R0 AND 10/10 format gates pass; under the binding 17GEMSDOE full-footprint dense public witness, never waive silently: record submission_eligible=false and verdict='negative' pending human selector policy.",
+    "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/coulombdm_proxy_audit.json"
+  },
+  "h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd": {
+    "parent": "h33-h33-2-b2",
+    "axis": "COULOMBDM",
+    "value": "s45coulomb55",
+    "hypothesis": "Active NW Great Basin normal and conjugate Walker Lane / Humboldt transtensional geothermal faults express across three complementary regimes: (1) piedmont-hinge one-sided monoclinal scarps, (2) concealed thin-to-moderate cover faults detected by multi-altitude upward-continued RTP magnetic tilt/demagnetization + gravity contact + MT smectite clay-cap lateral edges + blind >=80 C geothermometers, and (3) geophysically corroborated range-front/relay bedrock faults under oriented 2D Mohr-Coulomb criticality.",
+    "mechanism": "Projects GPS/InSAR dilatation (Band 8) onto N18E extension cos^2(az-18 deg) and shear sqrt(Band 7 * Band 4) onto +/-45 deg conjugate orientations sin^2(2*(az-15 deg)) (both vanishing at N105E clamping/fan-wash azimuths), fuses rank-calibrated surface, upward-continued RTP/gravity/MT/GDR subsurface, and corroborated bedrock channels, and emits 37,654 unit-mass dots along strict bilinear Canny cross-strike 1D NMS centrelines.",
+    "non_fault_mimic": "NNE-trending Pleistocene Lake Lahontan recessional strandlines on piedmont fans, remanently magnetized Miocene basalt dike/flow margins beneath gravel cover, saline playa-margin MT conductivity gradients, and linear lithologic contacts.",
+    "falsifier": "Pooled HOLDOUT-DTI failing to beat repository best HYDROCONDUIT f45hydro (0.008549) or APRONRIDGE free1d (0.008354) on gems57-pooled-hide-v2, any single-feature canary symmetric AUC > 0.90, or local/sparse-public forward 3-px overlap > 0.70.",
+    "decision_rule": "Promote only if literal local + public registry uniqueness passes AND pooled HOLDOUT-DTI beats current repo best with 95% CI > 0 vs R0 AND 10/10 format gates pass; under the binding 17GEMSDOE full-footprint dense public witness, never waive silently: record submission_eligible=false and verdict='negative' pending human selector policy.",
+    "predicted_sign_and_size": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/coulombdm_proxy_audit.json"
   }
 }

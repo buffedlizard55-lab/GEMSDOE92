@@ -1,0 +1,103 @@
+{
+  "n_total": 1370,
+  "n_sparse_le_150k": 1181,
+  "n_dense_gt_150k": 185,
+  "arms": {
+    "coulomb1d": {
+      "sparse_over_70pct_count": 0,
+      "sparse_worst_forward_overlap": 0.64118,
+      "sparse_worst_raster": "62GEMSDOE/docs/downloads/gems62b-tiltgrad-vote-scarpcorrob-120000-zeros.tif",
+      "top5_sparse": [
+        {
+          "forward_overlap": 0.64118,
+          "raster": "62GEMSDOE/docs/downloads/gems62b-tiltgrad-vote-scarpcorrob-120000-zeros.tif",
+          "positive_pixels": 120000
+        },
+        {
+          "forward_overlap": 0.622431,
+          "raster": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-nan.tif",
+          "positive_pixels": 100000
+        },
+        {
+          "forward_overlap": 0.622431,
+          "raster": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+          "positive_pixels": 100000
+        },
+        {
+          "forward_overlap": 0.618553,
+          "raster": "GEMSDOE23/docs/downloads/gemsdoe23-h24-dispersed-habitat-20261002-ada8df14-nan.tif",
+          "positive_pixels": 100000
+        },
+        {
+          "forward_overlap": 0.618553,
+          "raster": "GEMSDOE23/docs/downloads/gemsdoe23-h24-dispersed-habitat-20261002-ada8df14-allfinite.tif",
+          "positive_pixels": 100000
+        }
+      ]
+    },
+    "s35coulomb65": {
+      "sparse_over_70pct_count": 0,
+      "sparse_worst_forward_overlap": 0.623599,
+      "sparse_worst_raster": "GEMSDOE92/docs/downloads/h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif",
+      "top5_sparse": [
+        {
+          "forward_overlap": 0.623599,
+          "raster": "GEMSDOE92/docs/downloads/h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif",
+          "positive_pixels": 37654
+        },
+        {
+          "forward_overlap": 0.613799,
+          "raster": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-nan.tif",
+          "positive_pixels": 100000
+        },
+        {
+          "forward_overlap": 0.613799,
+          "raster": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+          "positive_pixels": 100000
+        },
+        {
+          "forward_overlap": 0.610187,
+          "raster": "GEMSDOE92/docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb.tif",
+          "positive_pixels": 37654
+        },
+        {
+          "forward_overlap": 0.610187,
+          "raster": "GEMSDOE92/docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif",
+          "positive_pixels": 37654
+        }
+      ]
+    },
+    "s45coulomb55": {
+      "sparse_over_70pct_count": 0,
+      "sparse_worst_forward_overlap": 0.679583,
+      "sparse_worst_raster": "GEMSDOE92/docs/downloads/h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif",
+      "top5_sparse": [
+        {
+          "forward_overlap": 0.679583,
+          "raster": "GEMSDOE92/docs/downloads/h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif",
+          "positive_pixels": 37654
+        },
+        {
+          "forward_overlap": 0.674802,
+          "raster": "GEMSDOE92/docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb.tif",
+          "positive_pixels": 37654
+        },
+        {
+          "forward_overlap": 0.674802,
+          "raster": "GEMSDOE92/docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif",
+          "positive_pixels": 37654
+        },
+        {
+          "forward_overlap": 0.660753,
+          "raster": "GEMSDOE92/docs/downloads/h33-h33-2-b2-HYDROCONDUITf45pied-20261024-3c236840-zeros.tif",
+          "positive_pixels": 37654
+        },
+        {
+          "forward_overlap": 0.642269,
+          "raster": "GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-nan.tif",
+          "positive_pixels": 100000
+        }
+      ]
+    }
+  }
+}

@@ -97,11 +97,14 @@ def test_legacy_submission_page_redirect_does_not_claim_breakline_is_primary():
     """Aliases must describe the same current primary and warning as the canonical guide."""
     index_html = (DOCS / "index.html").read_text(encoding="utf-8")
     canonical = (DOCS / "SUBMIT.html").read_text(encoding="utf-8")
+    assert "COULOMBDMs45coulomb55" in index_html
+    assert "COULOMBDMs45coulomb55" in canonical
     assert "APRONRIDGEfree1d" in index_html
     assert "APRONRIDGEfree1d" in canonical
     assert "HYDROCONDUIT" in canonical
     for name in ("executive-summary.html", "submit.html"):
         page = (DOCS / name).read_text(encoding="utf-8")
+        assert "COULOMBDMs45coulomb55" in page
         assert "APRONRIDGE" in page
         assert "HYDROCONDUIT" in page
         assert "NOT CLEARED" in page
@@ -109,6 +112,49 @@ def test_legacy_submission_page_redirect_does_not_claim_breakline_is_primary():
         assert "Current primary: ANASIG" not in page
         assert "Current primary: SPRINGALIGN" not in page
         assert "SUBMIT.html" in page
+
+
+def test_coulombdm_run_card_and_site_html_integrity():
+    """COULOMBDM run card, unique data-primary anchor, and HTML id uniqueness must hold."""
+    import hashlib
+
+    card = json.loads((ROOT / "evidence" / "coulombdm_run_card.json").read_text(encoding="utf-8"))
+    for key in (
+        "hypothesis",
+        "mechanism",
+        "named_non_fault_process_that_could_mimic_it",
+        "holdout_dti",
+        "correlation_overlap_vs_registry",
+        "raster_sha256",
+        "validator",
+        "submission_name",
+        "note",
+        "verdict",
+    ):
+        assert key in card, f"missing run-card key: {key}"
+
+    primary = DOCS / "downloads" / card["file"]
+    assert primary.is_file()
+    assert hashlib.sha256(primary.read_bytes()).hexdigest() == card["raster_sha256"]
+    assert len(card["note"]) <= 140
+    assert card["leakage_canary_max_symmetric_auc"] <= 0.90
+    assert card["verdict"] == "negative"
+    assert card["submission_eligible"] is False
+
+    html = _index()
+    primaries = re.findall(r'<a\b[^>]*\bdata-primary="true"[^>]*>', html)
+    assert len(primaries) == 1, f"expected exactly 1 data-primary anchor, got {len(primaries)}"
+    assert card["file"] in primaries[0]
+
+    for html_path in sorted(DOCS.glob("*.html")):
+        txt = html_path.read_text(encoding="utf-8")
+        ids = re.findall(r'\bid="([^"]+)"', txt)
+        assert len(ids) == len(set(ids)), f"duplicate id in {html_path.name}: {ids}"
+        if 'http-equiv="refresh"' in txt:
+            assert txt.count("</main>") <= 1
+        else:
+            assert txt.count("</main>") == 1, f"expected 1 </main> tag in {html_path.name}"
+        assert txt.count("</footer>") <= 1, f"multiple </footer> tags in {html_path.name}"
 
 
 def test_hydroconduit_run_card_and_public_scan_integrity():

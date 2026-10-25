@@ -1,6 +1,28 @@
-# SLOT_PLAN — current selector state (2026-10-24, APRONRIDGE session)
+# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-24, `COULOMBDM` Session)
 
-## Current primary artifact: `APRONRIDGE free1d` — #1 Holdout-DTI & locally unique, blocked ONLY by dense public witness (`verdict: negative`, no slot used)
+## Current Slot Decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT (`submission_eligible: false`, `60 BUILT / 0 RECEIPT`)**
+
+Current session primary download `GEMSDOE92-COULOMBDM-s45coulomb55-20261024` (`docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif`, SHA-256 `44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12`, note `h33-h33-2-b2; COULOMBDM s45coulomb55: 16944 Coulomb-H19 + 20710 off-skel 1D Coulomb/RTP/clay ridges (>3px H19-5)`) and standalone blind-fault sibling `GEMSDOE92-COULOMBDM-coulomb1d-20261024` (`docs/downloads/h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif`, SHA-256 `510c3012f4866e8ea2f0debd0aba799a7b7765a4e18f0954d2d1067ddd01e172`) are **100% format-valid (`11/11` `gems.gates` + `13/13` `gems57.validate` PASS — ✅ OK TO DOWNLOAD FOR RESEARCH)**, pass all `35 / 35` leakage canaries (`max = 0.640176 <= 0.90`), pass local uniqueness across all `44` prior rasters (`<= 0.6796 <= 0.70`), and pass **`1,181 / 1,181` sparse (`<= 150,000` px) public rasters across `102` `GEMSDOE` repositories (`0 > 70%`)**. However, **neither is cleared for a live weekly submission slot (`verdict: "negative"`, `submission_eligible: false`)** because:
+
+1. **Literal Public Dense-Witness Rule (`Rule 1`):** `185` dense public probability surfaces (`> 150,000` positive pixels, led by `17GEMSDOE E-proba-multiscale` at `5,167,373 / 5,167,373 = 100%` footprint positive) force `forward_overlap = 1.000 > 0.70` (`evidence/coulombdm_public_registry_uniqueness.json`).
+2. **Pre-Registered Static `HOLDOUT-DTI` Bar:** On static `d_cat > 2.0` `HOLDOUT-DTI`, `COULOMBDM s45coulomb55` (`0.007816 [0.006994, 0.008644]`) beats `R0` (`0.004006`, `+95.1%`) and `RELIEF p10` (`0.006045`, `+29.3%`), but trails [`HYDROCONDUIT f45hydro`](docs/downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif) (`0.008549`) and [`APRONRIDGE free1d`](docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif) (`0.008354`). Meanwhile, on **Rule-2 fold-visible blind-fault `d_vis > 2.0` `HOLDOUT-DTI`**, `COULOMBDM coulomb1d` achieves **`0.094496 [0.085916, 0.102867]`** (**#1 non-CNN in repo**, `+8.9%` over `APRONRIDGE free1d` `0.086787` and `+10.9%` over `HYDROCONDUIT f45hydro` `0.085221`).
+
+### Unified Human Selector Queue (Conditional on Dense-Surface Policy Resolution)
+
+| Queue Priority | Candidate | Static `HOLDOUT-DTI` | Rule-2 `d_vis>2` `HOLDOUT-DTI` | `SGMC PROXY` | Sparse Public `<=150k` (`0 > 70%`?) | Selector Role if Dense Surfaces (`>150k` px) Exempted |
+|---:|---|---:|---:|---:|---|---|
+| **Option A (Static Holdout #1)** | `HYDROCONDUIT f45hydro` (`c9e07ba6…`) | **`0.008549`** | `0.085221` | `0.074107` | **PASS (`0 / 1,147 > 70%`)** | Best hybrid piedmont + hydrothermal `H19-5` collar candidate |
+| **Option B (Standalone Static #1)** | `APRONRIDGE free1d` (`1a29a5d8…`) | **`0.008354`** | `0.086787` | `0.080098` | Spot-checked (`0.603–0.646`); run full 102-repo scan first | Best thin-cover piedmont accommodation apron (`0% H19-5`) |
+| **Option C (Rule-2 Blind-Fault #1)** | `COULOMBDM coulomb1d` (`510c3012…`) | `0.006467` | **`0.094496`** | `0.070345` | **PASS (`0 / 1,181 > 70%`, max `0.5859`)** | Best standalone Mohr–Coulomb + upward-RTP + MT clay-cap blind-fault detector (`0% H19-5`) |
+| **Option D (Balanced Hybrid)** | `COULOMBDM s45coulomb55` (`44efd202…`) | `0.007816` | `0.086867` | `0.075208` | **PASS (`0 / 1,181 > 70%`, max `0.6796`)** | Balanced `45%` Coulomb-ranked `H19-5` + `55%` off-skeleton Coulomb/RTP/clay crests |
+
+> **Cross-Lane Duplicate Warning (`#IR-92-PIEDFRONT-HYDROCONDUIT-CROSSOVER`):** Never pair `PIEDFRONT f35Ptop` (`e314f4c0…`) with `HYDROCONDUIT f45hydro` (`71.32% > 70%` 3-px forward overlap), and never submit more than one sibling from the same lane (`coulomb1d` / `s35coulomb65` / `s45coulomb55`, `f45pied` / `f45hydro` / `f50hydro`, or `free1d` / `s60f40` / `s50f50`).
+
+---
+
+## Historical Selector Records (Preserved)
+
+### Prior selector state (2026-10-24, APRONRIDGE session)
 
 Primary download `GEMSDOE92-APRONRIDGE-free1d-20261024` (file
 `docs/downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`,
@@ -19,8 +41,7 @@ note `h33-h33-2-b2; APRONRIDGE free1d: 37654 standalone 1D piedmont-apron + RTP 
 
 ---
 
-# SLOT_PLAN — prior parallel state (2026-10-24, STEPEDGE session)
-# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-24, `HYDROCONDUIT` Session)
+### Prior parallel state (2026-10-24, STEPEDGE & HYDROCONDUIT sessions)
 
 ## Current Slot Decision: **NO SLOT AUTHORIZED — DO NOT SUBMIT (`submission_eligible: false`)**
 

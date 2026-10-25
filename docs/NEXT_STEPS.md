@@ -1,9 +1,32 @@
-# NEXT_STEPS — after the 2026-10-24 APRONRIDGE session
-
-## Current status (supersedes prior sections below for action purposes)
-# Next Steps — `GEMSDOE92` (After `HYDROCONDUIT` Session, 2026-10-24)
+# Next Steps — `GEMSDOE92` (Updated 2026-10-24, After `COULOMBDM` Session)
 
 ## Current State & Completed Items From Prior Queue
+
+1. **Executed Prior Queue Item #4 (`COULOMBDM`: 2D Mohr–Coulomb Dilatant Shear + Upward-Continued `Band 2 RTP` + `Band 17` MT Clay-Cap Boundaries):**
+   - Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261024_COULOMBDM.md`) and implemented `gems/coulombdm.py`, clearing all `35 / 35` single-feature leakage canaries (`max symmetric AUC = 0.640176 <= 0.90`, `evidence/coulombdm_preplacement_screen.json`).
+   - Built and gate-validated 3 unique `EPSG:32611` `3730 × 3292` GeoTIFF variants (`coulomb1d`, `s35coulomb65`, `s45coulomb55`; `11/11` `gems.gates` + `13/13` `gems57.validate` PASS, zero NaNs, `[0, 1]` finite range, `0.0` outside footprint).
+   - **Closed the Rule-2 Fold-Visible Blind-Fault Gap:** Standalone `COULOMBDM coulomb1d` (`0% H19-5`, `0% labels`) achieved **`0.094496 [0.085916, 0.102867]`** on Rule-2 fold-visible `d_vis > 2.0` `HOLDOUT-DTI` — **#1 non-CNN in the repository**, matching supervised `H19-5` (`0.096757`, paired $\Delta = -0.002261 [-0.009834, +0.005283]$) and beating `APRONRIDGE free1d` (`0.086787`, `+8.9%`) and `HYDROCONDUIT f45hydro` (`0.085221`, `+10.9%`), while `s45coulomb55` achieved `0.007816 [0.006994, 0.008644]` static `HOLDOUT-DTI` (`+95.1%` over `R0`) and `0.075208` `USGS SGMC PROXY` (`> HYDROCONDUIT 0.074107`).
+   - **Verified Live 102-Repo Uniqueness (`1,370` Valid Public Rasters):** `0 / 1,181` sparse (`<= 150,000` px) public rasters exceed `70%` 3-px forward overlap (`max = 0.679583 <= 0.70` on `s45coulomb55`, `0.585887` on `coulomb1d`), while confirming the literal dense-surface duplicate stop (`185` rasters `> 150k` px led by `17GEMSDOE E-proba-multiscale`, `100%` footprint positive) -> `verdict: "negative"`, `submission_eligible: false`.
+2. **Repaired Parallel-Session Merge Splices & Shared Tooling (`Rule 2`):**
+   - Updated `scripts/check_site.py` to honor `data-primary="true"` (failing closed on `> 1`) and reject duplicate HTML `id` attributes; fixed `docs/HYPOTHESES.html` duplicate footer splice, `docs/index.html` duplicate `id`, inverted `alpha`/`beta` Tversky prose in `README.md` and `docs/ANALYSIS_20261024_APRONRIDGE.md`, and memory-heavy `distance_transform_edt` in `scripts/report_breakline_proxies.py:uniqueness` (`80×` speedup via bit-identical `binary_dilation`).
+
+## Highest-Value Remaining Blockers & Next Actions (Strict Priority Order)
+
+1. **Priority 0A — Operator Dense-Surface Uniqueness Policy Decision (`Cannot Be Waived Autonomously`):**
+   - `17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` (`5,167,373` positive footprint cells = `100%` of footprint) makes literal unweighted `> 0` 3-px forward overlap equal `1.000` for **every** nonempty prediction.
+   - Once the human operator scopes the 3-px dot-overlap test to sparse dot sets (`<= 150,000` positive pixels) and evaluates continuous probability rasters (`> 150,000` px) via Spearman `|rho| <= 0.90`, both `HYDROCONDUIT f45hydro` (`0.008549` static #1) and `COULOMBDM coulomb1d` (`0.094496` Rule-2 blind-fault #1) already pass the full `102`-repo public scan (`0` sparse duplicates).
+2. **Priority 0B — First `ORGANIZER-CONFIRMED` Submission Receipt (`60 BUILT / 0 RECEIPT` in `ledger/submissions.csv`):**
+   - Use **at most 1 weekly slot** first on either `HYDROCONDUIT f45hydro` (if testing hybrid piedmont collar + hydrothermal conduits) or `COULOMBDM coulomb1d` (if testing pure unmapped blind-fault physics at `0% H19-5`), and record the exact DrivenData receipt ID, timestamp, and `ORGANIZER-CONFIRMED` DTI score in `ledger/submissions.csv` to anchor whether hidden test faults behave like static `d_cat > 2.0` (`200–300 m` splay continuations) or Rule-2 `d_vis > 2.0` (isolated blind transfer/accommodation faults).
+3. **Priority 1 — External 1 m USGS 3DEP LiDAR & Orthometric Lake Lahontan Shoreline Rejection (`LIDAR-1M-LAHONTAN`):**
+   - In an environment with outbound access to `tnmaccess.nationalmap.gov` / `apps.nationalmap.gov` (currently blocked by the sandbox domain allowlist), retrieve orthometric AMSL elevation and `1 m` 3DEP LiDAR tiles to suppress Pleistocene Lake Lahontan highstand (`~1,330–1,340 m` AMSL) beach ridges that mimic low-relief piedmont fault scarps on `100 m` detrended elevation (`Band 12`).
+4. **Priority 2 — Spatially Blocked Multi-Scale U-Net + 1D Crest / `2.8 px` Kernel Decoder:**
+   - Train a 5-fold spatially blocked (`buffered_component_draw`) multi-scale U-Net with asymmetric Tversky loss (`alpha=0.2` FP, `beta=0.8` FN, matching `drivendataorg/gems-prize-reference-solution`) augmented with `COULOMBDM`'s physics channels (2D Mohr–Coulomb dilatant shear, upward-continued `Band 2 RTP`, `Band 17` MT clay-cap gradient, and lateral `GeoDAWN` radiometric contact gradients), then decode predictions via Canny cross-strike 1D NMS + `2.8 px` Poisson-disk thinning rather than raw `> 0.1` thresholding.
+
+---
+
+## Historical Session Records (Preserved)
+
+### Prior status — APRONRIDGE & HYDROCONDUIT sessions (2026-10-24)
 
 **`APRONRIDGE free1d` (`h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`) is the new primary download — closing both technical challenges from the prior queue (non-R0 standalone emission + beating `RELIEF p10` on `gems57-pooled-hide-v2`), while keeping `verdict: negative` / `submission_eligible: false` under the binding dense public witness.**
 

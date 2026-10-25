@@ -1,9 +1,22 @@
-# Current review — 2026-10-24 (updated after `APRONRIDGE` breakthrough)
+# Current Review Status — `GEMSDOE92` (`COULOMBDM` Session, 2026-10-24)
 
-## Download status comes first
+## Download Status Comes First
+
+- **Current Session Primary Artifact:** [`docs/downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif`](downloads/h33-h33-2-b2-COULOMBDMs45coulomb55-20261024-a10dccdd-zeros.tif) (`SHA-256 = 44efd202e8b96b9812de4693bd7f1ed05afed28de7e2e9413f72bc139ff18b12`)
+- **Standalone Blind-Fault Sibling (`0% H19-5`):** [`docs/downloads/h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif`](downloads/h33-h33-2-b2-COULOMBDMcoulomb1d-20261024-826b2fb3-zeros.tif) (`SHA-256 = 510c3012f4866e8ea2f0debd0aba799a7b7765a4e18f0954d2d1067ddd01e172`)
+- **Download Clearance:** **✅ FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH** (`11 / 11` `gems.gates` + `13 / 13` `gems57.validate` PASS on independent disk re-read; `EPSG:32611`, `3730 × 3292`, `float32`, `nodata=None`, finite `[0, 1]`, `0` NaN anywhere, `0.0` outside footprint, `37,654` unit-mass dots, `0` catalogue mass).
+- **Submission / Weekly Slot Clearance:** **⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (`verdict: "negative"`, `submission_eligible: false`; DUPLICATE UNDER THE LITERAL DENSE-WITNESS REGISTRY RULE & BELOW STATIC HOLDOUT BEST).**
+- **Key Findings (`evidence/coulombdm_run_card.json`):**
+  - **Rule-2 Fold-Visible Blind-Fault `HOLDOUT-DTI` (`d_vis > 2.0`, `gems57-pooled-hide-v2`, `22,663` withheld positives):** **`COULOMBDM coulomb1d = 0.094496 [0.085916, 0.102867]`** (**#1 non-CNN in repository**, matching supervised `H19-5 = 0.096757` within 95% CI and beating `APRONRIDGE free1d = 0.086787` `+8.9%` and `HYDROCONDUIT f45hydro = 0.085221` `+10.9%`); `s45coulomb55 = 0.086867`.
+  - **Static `d_cat > 2.0` `HOLDOUT-DTI`:** `s45coulomb55 = 0.007816 [0.006994, 0.008644]` (`+95.1%` vs `R0 = 0.004006`, behind [`HYDROCONDUIT f45hydro`](downloads/h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif) `0.008549` and [`APRONRIDGE free1d`](downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif) `0.008354`); `USGS SGMC PROXY = 0.075208` (`> HYDROCONDUIT 0.074107`).
+  - **Uniqueness (`REGISTRY-MEASUREMENT`):** Local (`44` rasters) `<= 0.679583 <= 0.70`; live `102`-repo scan (`1,370` rasters, [receipt](downloads/coulombdm_public_registry_uniqueness.json)) **`0 / 1,181` sparse (`<= 150k` px) public rasters exceed `70%`**, while `185` dense surfaces (`> 150k` px, led by `17GEMSDOE E-proba-multiscale`) yield `1.000 > 0.70` under the literal rule ([PhD analysis](ANALYSIS_20261024_COULOMBDM.md)).
+
+---
+
+## Prior Session Review — `APRONRIDGE` Breakthrough (2026-10-24)
 
 **✅ OK TO DOWNLOAD for research; ⛔ NOT CLEARED FOR A WEEKLY SLOT (`verdict: negative`, `submission_eligible: false`).**
-The current primary artifact [`h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`](downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif)
+The prior primary artifact [`h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif`](downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif)
 was generated and validated in the `2026-10-24` `APRONRIDGE` session:
 - **10/10 automated format gates PASS** on independent disk re-read (`EPSG:32611`, `3730×3292`, `float32`, finite `[0, 1]`, `0` NaN in footprint, `0.0` outside, `37,654` unit dots, `0` catalogue mass, `d_cat > 2.0 px`).
 - **#1 All-Time Repository `HOLDOUT-DTI`**: **`0.008354 [0.006823, 0.010135]`** on `gems57-pooled-hide-v2` (`22,663` withheld positive pixels across 8 buffered folds), beating `RELIEF p10` (`0.006045`) by **`+38.2%`**, `STRAINBREAK f60s2i` (`0.005487`) by **`+52.2%`**, and `R0` (`0.004006`) by **`+108.5%`** (paired Δ `+0.004347 [+0.003019, +0.005710]`), with zero `H19-5` or `R0` input.
@@ -12,8 +25,7 @@ was generated and validated in the `2026-10-24` `APRONRIDGE` session:
 
 ---
 
-# Earlier closeout note — BREAKLINE witness check (2026-10-24)
-# Current Review Status — `GEMSDOE92` (`HYDROCONDUIT` Session, 2026-10-24)
+## Prior Session Review — `HYDROCONDUIT` & `BREAKLINE` Witness (2026-10-24)
 
 ## Headline Decision
 
