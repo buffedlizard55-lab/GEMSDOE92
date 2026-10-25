@@ -39,6 +39,8 @@ Automated validation (no human inspection): finite [0, 1] everywhere (the portal
 >
 > `scripts/check_site.py` now fails if the page's `data-primary` raster, `current_submission.json`, and `readiness.json` drift in path, hash, eligibility, name, or note (catching and repairing `VARIO`'s stale `current_submission.json` during merge). The README below is a historical archive; only the current status panel and its linked byte-bound records govern the current decision.
 
+> **2026-10-25 repository audit (`78db3076`; reviewed earlier checkout, then integrated with concurrent main):** The current VARIO download above is from a *different* lane and is **DO NOT SUBMIT**. This review generated **no new TIFF or geological experiment**. A pinned all-positive registry witness gives literal overlap 1.0 > 0.70 for any nonempty in-footprint candidate; neither VARIO nor the earlier LISTRICLOQO file has a submission-clearance receipt. [Three-pass review, official sources and integration findings](docs/REVIEW_20261025_78DB3076.md) · [four conditional, untried hypotheses](docs/HYPOTHESES_20261025_78DB3076.md) · [final JSON audit](docs/downloads/session_78db3076_run_card.json). The urgent request for a *new submission-eligible* TIFF remains unfulfilled. **Maximize P(Win); Own the Outcome.**
+
 ## ALI session — executive summary (2026-10-25, branch `arena/4eccf0bc-gemsdoe92`)
 
 **Bottom line: a new GeoTIFF was generated, validated and tested. It is OK to download for research and NOT OK to submit.**

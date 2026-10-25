@@ -13,6 +13,8 @@ Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withh
 
 <!-- CURRENT-STATUS:END -->
 
+**Current public primary after concurrent main integration: VARIO research-only TIFF — DO NOT SUBMIT.** [Live status](downloads/readiness.json) · [VARIO lane card](downloads/vario_run_card.json) · [new three-pass repository audit](REVIEW_20261025_78DB3076.md) · [audit's final negative JSON card](downloads/session_78db3076_run_card.json). The generated LISTRICLOQO block above describes an **older** research artifact, not the latest site's primary. This audit produced no new TIFF or experiment; VARIO's three prior experiments belong to a different lane. The dense literal witness still blocks clearance. The LISTRIC-only cross-alias adapter from our earlier checkout was retired when main's newer VARIO renderer became authoritative; `scripts/check_site.py` continues to validate served files and generated status.
+
 **OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT. No new unique TIFF.**
 
 Start with the [current review page](review48.html), [three-pass record](REVIEW_48.md), [fresh automated run card](downloads/review48_run_card.json), and [retrieved-source receipt](downloads/review48_sources.json).

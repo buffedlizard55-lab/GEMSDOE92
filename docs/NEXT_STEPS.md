@@ -1,3 +1,15 @@
+# Next steps — 2026-10-25 repository audit (`78db3076`)
+
+**No submission-clearable TIFF. DO NOT SUBMIT the current VARIO research primary or the older LISTRICLOQO/HALO files.** Under the user's unchanged literal positive-support rule, the hash-verified 17GEMSDOE witness forces 1.0 overlap >0.70 for any nonempty in-footprint candidate. VARIO also fails its reported sparse-dot overlap and paired holdout improvement. [Three-pass review](REVIEW_20261025_78DB3076.md) · [final negative JSON card](downloads/session_78db3076_run_card.json) · [four conditional untried hypotheses](HYPOTHESES_20261025_78DB3076.md). The combined main-merge HALO raster failed the catalogue-distance gate; it was quarantined, not advertised for download. This review ran **zero** experiments/holdouts/weekly slots; VARIO's prior three experiments are from a separate concurrent lane.
+
+1. The protocol owner must explicitly resolve the literal dense-witness stop and assign one geological method lane. The historical ALI proposal below for a matched-budget continuous-field rule is **not** authorization to change the binding threshold silently.
+2. Obtain rights-cleared competition inputs by an authorized route; the official DrivenData data page redirects to login. With a valid rule and cached features, lock an outer spatial test, run single-feature leakage canaries, use the shared buffered whole-segment visible-only evaluator and writer, check registry before and after dot placement, and compare a paired HOLDOUT-DTI CI to a same-instrument control. No current candidate satisfies all gates.
+3. Confirm the actual organizer submission-page weekly cap and record a file-hash-bound organizer receipt only **after** a separate weekly selector decision. No local HOLDOUT-DTI is an ORGANIZER-CONFIRMED score. Verify GitHub Pages publication mode is Actions-gated rather than assuming the observed legacy main/root publisher is gated by CI.
+
+---
+
+# Concurrent RIEDELVENT lane record (a different research session; still DO NOT SUBMIT)
+
 # Next Steps — GEMSDOE92 (Updated 2026-10-25, Post-RIEDELVENT Session)
 
 ## Completed this session (`RIEDELVENT` — Prior Queue #1 `TENSOR-RIEDEL` + Additive Möbius Tail Executed; `3/3` experiments, `0` weekly slots)
@@ -10,12 +22,13 @@
    - **Verdict:** `negative` (`submission_eligible = false`, `0` weekly slots spent) under literal `17GEMSDOE` dense-surface overlap (`1.000 > 0.70`) and catalogue holdout below `VENTSCARP` (`0.112213`) / `KNICKLOQO` (`0.010788`). Run card: `evidence/riedelvent_run_card.json`.
 
 ## Remaining Limitations & Highest-P(Win) Next Steps (In Priority Order)
-1. **Human Selector Policy Decision & First `ORGANIZER-CONFIRMED` Receipt:** Still `0` live portal receipts in `ledger/submissions.csv` (all `0.2778`, `0.3195`, `0.4413` figures remain unverified `[CLAIM]`). Human selector must confirm `dual_reading_unique = True` vs literal `17GEMSDOE` (`5,167,373` px) before spending any of the `3/week` DrivenData slots; `KNICKLOQO standalone` (catalogue static #1 `0.010788`), `VENTSCARP ventscarp` (catalogue Rule-2 #1 `0.112213`), and `RIEDELVENT tail85k` (off-catalogue SGMC #1 `0.135694`) are the three complementary `dual_reading_unique = True` candidates.
+1. **Human Selector Policy Decision & First `ORGANIZER-CONFIRMED` Receipt:** Still `0` GEMSDOE organizer receipts in `ledger/submissions.csv`: `0.2778` is an owner-reported CLAIM and `0.3195` is not the current #1; `0.4413` is a public leaderboard snapshot for **xiaofanhu**, not a GEMSDOE receipt. Human selector must confirm `dual_reading_unique = True` vs literal `17GEMSDOE` (`5,167,373` px) before spending any of the `3/week` DrivenData slots; `KNICKLOQO standalone` (catalogue static #1 `0.010788`), `VENTSCARP ventscarp` (catalogue Rule-2 #1 `0.112213`), and `RIEDELVENT tail85k` (off-catalogue SGMC #1 `0.135694`) are the three complementary `dual_reading_unique = True` candidates.
 2. **`KNICKLOQO-RIEDELVENT-SLOPE-SPLIT-N85K` (Slope-Regime Partition + Möbius Tail):** Partition crest support explicitly by slope regime — `KNICKLOQO` bedrock knickzone crests on `>= 6°` mountain blocks + tag-verified `RIEDELVENT` 3D tensor/Riedel/vent crests on `< 6°` piedmont & basin step-overs, with the `85,000`-pixel `[0.30, 1.0]` Möbius tail — to combine `KNICKLOQO`'s `0.010788` static range-front recall with `RIEDELVENT`'s `0.135694` off-catalogue SGMC transfer recall while staying `<= 0.70` against `62GEMSDOE`.
 3. **Remaining Pre-Registered Untried Queue (`FLEXURE-HINGE`, `CLAYCAP-REDOX`, `MT-PHASE-SADDLE`):** Ranks 2–4 in `docs/HYPOTHESES_20261025_RIEDELVENT.md` remain untried in-cache; Rank 5 (`INSAR-3DEP1M-CREEP`) requires external staging of ASF Sentinel-1 / NSL microseismic rasters into a SHA-256-pinned GitHub release due to sandbox outbound host restrictions (`github.com` / `pypi.org` / `npmjs.org` only).
 
 ---
-# Next steps — updated 2026-10-25 (ALI session)
+
+# Historical next steps — ALI session (conditional, superseded where incompatible with literal stop)
 
 1. **Uniqueness saturation map.** Before any new lane, compute the union of 3-px halos of all *discriminating* registry dot fields (halo < 70%) restricted to high fault-appearance pixels (FAM top 10%). The ALI result shows physics placements collide with 12GEMSDOE r7, GEMSDOE70 54k, GEMSDOE22 h23-a/b, GEMSDOE67 ovtr and others. A lane is only worth running if it targets pixels outside that union.
 2. **Highest-ranked untried hypothesis: dextral drainage-deflection coherence** (docs/ALI_LANE.md §3). It targets a different signature (lateral channel offsets) and is the most likely to land on unclaimed pixels. Verify official 10 m 3DEP access first.

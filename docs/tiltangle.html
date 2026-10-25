@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TILTANGLE submission — GEMSDOE92 DOE GEMS Prize #306</title>
+  <title>TILTANGLE research download — DO NOT SUBMIT — GEMSDOE92</title>
   <link rel="stylesheet" href="style.css">
   <link rel="canonical" href="https://buffedlizard55-lab.github.io/GEMSDOE92/docs/tiltangle.html">
 </head>
@@ -23,9 +23,9 @@
 
 <main id="content">
 <section class="download-card">
-  <h1>⬇ Download the research GeoTIFF (not cleared to submit)</h1>
+  <h1>⬇ Download the TILTANGLE research GeoTIFF — DO NOT SUBMIT</h1>
   <p class="kicker">GEMSDOE92 · TILTANGLE lane · DrivenData Competition #306 · DOE GEMS Prize</p>
-  <p>Click the button to download the single-band GeoTIFF. The ZIP below contains exactly this one TIFF (the form accepts either).</p>
+  <p>Click the button to download the single-band research GeoTIFF. The ZIP is a one-TIFF convenience copy; neither download is cleared for the competition form.</p>
   <a class="btn" href="downloads/gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif" download>
     Download gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif
   </a>
@@ -45,23 +45,22 @@
 </section>
 
 <section>
-  <h2>How to submit this file to the competition</h2>
-  <p><strong>Do not submit this artifact unless your selector has set <code>submission_eligible: true</code>.</strong> The current verdict is <code>negative</code> — it is a research download. When a future file is cleared, follow these steps:</p>
+  <h2>How to submit a future cleared file — not this one</h2>
+  <p><strong>Do not submit the TILTANGLE artifact above.</strong> Its archived form note called it “unique,” but the literal registry witness makes that claim false as a submission-clearance statement. The current verdict is <code>negative</code>. For a future candidate with <code>submission_eligible: true</code> after a separate selector step:</p>
   <ol>
-    <li>Download the exact <code>.tif</code> above (or the ZIP that contains only that TIFF). Verify its SHA-256 against the run card.</li>
-    <li>Sign in at <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData #306 submissions</a> (this URL was not live-verified from the sandbox; you need DrivenData credentials).</li>
-    <li>Under <em>File to submit</em>, choose the file. Under <em>Note (optional)</em>, paste the artifact's note (≤140 characters):</li>
-    <li><code>h33-h33-2-b2; TILTANGLE: gravity tilt-angle x horizontal-gradient edge corridors; 37654 dots d_cat&gt;2px; HOLDOUT-DTI 0.033466; unique</code></li>
-    <li>Name your record <code>GEMSDOE92-TILTANGLE-tiltangle-20261025T182301Z</code>, submit within the weekly cap, and record the organizer receipt (ORGANIZER-CONFIRMED score) against the exact file SHA-256 in <code>ledger/submissions.csv</code>.</li>
+    <li>Download <em>that future eligible</em> .tif (or a ZIP containing only that TIFF), not the research artifact above. Verify its hash and automated format/uniqueness receipt.</li>
+    <li>Sign in to the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData #306</a> site and open its submissions form (authentication is required).</li>
+    <li>Choose the eligible file under <em>File to submit</em> and paste <em>its own</em> ≤140-character note under <em>Note (optional)</em>. Keep the distinct name in the filename/ledger; the form does not show a separate name field.</li>
+    <li>Submit within the organizer's current weekly cap, then record the organizer receipt and exact SHA-256 in <code>ledger/submissions.csv</code>.</li>
   </ol>
-  <p>This project's automated validation replaces human inspection for file format: no NaN inside the footprint, values in [0,1], CRS/shape/transform match sample_submission.tif. This prevents the portal error <em>"Predicted values must be in range [0, 1]"</em>.</p>
+  <p>Local automated validation replaces manual pixel inspection for format: no NaN inside the footprint, values in [0,1], CRS/shape/transform match sample_submission.tif. This checks the reported portal range-error condition locally; it does not prove acceptance by DrivenData or uniqueness clearance.</p>
 </section>
 
 <section>
   <h2>Hypothesis: why this surface targets faults missing from the catalogue</h2>
-  <p>The USGS/INGENIOUS catalogue is a <em>surface-scarp</em> catalogue: faults are mapped where a preserved topographic scarp exists. A blind normal fault buried under thin Quaternary cover, or one whose scarp has diffused below detection, still juxtaposes rock bodies of different density across a steep plane. That density contrast is visible to gravity regardless of scarp preservation or fault strike.</p>
-  <p>The TILTANGLE surface computes the gravity tilt angle θ = atan2(|∂z g|, |∇ₕ g|) from bands B11 (vertical derivative), B13 (gravity anomaly, differentiated for N–S derivative), and B18 (E–W horizontal derivative). θ ≈ 90° over steep near-vertical contacts (faults) and ≈ 0° over flat bedding. Edge strength = horizontal-gradient magnitude × cos(θ)², which selects steep-contact edges of any strike and down-weights equant/blob anomalies (plutons, circular density bodies). The catalogue is used only for masking — no catalogue pixel enters the surface.</p>
-  <p><strong>Named non-fault mimic:</strong> equant plutonic intrusions and circular playa/evaporite density bodies produce horizontal-gradient magnitude but not steep tilt angles; cos(θ)² down-weights them.</p>
+  <p>The challenge supplies existing USGS/INGENIOUS fault labels, which the organizer says are incomplete; they are <em>not</em> solely a catalogue of preserved surface scarps. A hypothetical buried normal fault might juxtapose rock bodies of different density without a pronounced surface scarp, producing a gravity gradient. A gradient alone does not establish a fault or geothermal activity.</p>
+  <p>The archived TILTANGLE implementation computes θ = atan2(|∂z g|, |∇ₕ g|) from bands B11 (vertical derivative), B13 (gravity anomaly, differentiated for N–S derivative), and B18 (E–W horizontal derivative). This is an angle between <em>field-derivative magnitudes, not fault dip</em>: θ approaches 0 when the horizontal gradient dominates and 90° when the vertical derivative dominates. The actual edge score is |∇ₕ g| × cos(θ)² = |∇ₕ g|³ / (|∇ₕ g|² + |∂z g|²), when the denominator is nonzero. It favors horizontally sharp gravity transitions; it does <strong>not</strong> prove a steep fault or discriminate a circular body from a fault. Earlier wording incorrectly described θ≈90° as a steep contact even though cos²θ then approaches zero. This is a documentation correction only; the TIFF was not regenerated. The catalogue is not directly fed to the scoring surface but is used for masking.</p>
+  <p><strong>Named non-fault mimics:</strong> a plutonic margin, intact lithologic contact, or playa/evaporite density boundary can also produce a sharp horizontal gradient; the cos² factor does not guarantee their removal. A future study must use independent geological controls and test the possible median-fill boundary artifact before claiming a new fault.</p>
   <p><strong>How it differs from existing lanes:</strong> no lane in this repo computes a gravity tilt angle. GRAVQUAD uses analytic-signal amplitude × structure-tensor coherence (dip-blind). COULOMB-LOQO assumes fixed N15°E conjugate shear planes inside a supervised classifier. CURIE-DEMAG uses RTP variance suppression × MT clay-cap flank × demag bowl.</p>
 </section>
 
@@ -69,12 +68,12 @@
   <h2>Holdout result (HOLDOUT-DTI — not an organizer score)</h2>
   <table>
     <tr><th>Instrument</th><th>Value</th><th>95% CI</th><th>Withheld positives</th></tr>
-    <tr><td>gems57-pooled-hide-v2, static (d_cat &gt; 2 px)</td><td>0.033466</td><td>paired spatial-cluster bootstrap, 8 LOQO folds (seeds 20, 30)</td><td>45,253 px</td></tr>
+    <tr><td>gems57-pooled-hide-v2, static (d_cat &gt; 2 px)</td><td>0.033466</td><td>Not recorded in the run card; cannot treat this result as a CI-gated improvement</td><td>45,253 px</td></tr>
     <tr><td>Per-draw</td><td>0.033594 / 0.033685</td><td>—</td><td>draws 20 / 30</td></tr>
     <tr><td>Per-quadrant</td><td>NE 0.0332 · NW 0.0354 · SE 0.0337 · SW 0.0323</td><td>—</td><td>spatially uniform, no quadrant collapse</td></tr>
   </table>
-  <p>For context: R0 parent static = 0.004006; COULOMBDM static = 0.007816; COULOMBLOQO standalone Rule-2 (holdout-best) = 0.113316. TILTANGLE beats R0 by ~8.4× and COULOMBDM by ~4.3× on static holdout, but is a standalone deterministic surface below the supervised LOQO bar.</p>
-  <p class="kicker" style="margin-top:1rem">All numbers carry explicit HOLDOUT-DTI labels. A projection is never written as a score. No ORGANIZER-CONFIRMED score exists for this file.</p>
+  <p>Historical context only: R0 parent static HOLDOUT-DTI = 0.004006; COULOMBDM static = 0.007816. TILTANGLE's static point estimate is higher than those reported static point estimates, but has no recorded 95% CI. COULOMBLOQO Rule-2 (0.113316) uses a different visible-fault masking instrument and must <strong>not</strong> be treated as a directly comparable promotion bar or leaderboard score.</p>
+  <p class="kicker" style="margin-top:1rem">This archived HOLDOUT-DTI has no recorded 95% CI and is not promotion evidence. A projection is never a score. No ORGANIZER-CONFIRMED score exists for this file.</p>
 </section>
 
 <section>
@@ -94,7 +93,7 @@
 </main>
 
 <footer>
-  <p>GEMSDOE92 · TILTANGLE submission · All format validation automated (gems.gates, gems57.validate, scripts/check_site.py) — no human inspection required for file acceptance.</p>
+  <p>GEMSDOE92 · TILTANGLE research artifact · Local format validation is automated; the organizer has not accepted or scored this file.</p>
   <p><a href="index.html">← Main download workbench</a> · <a href="executive-summary.html">Executive summary (overall)</a></p>
 </footer>
 
