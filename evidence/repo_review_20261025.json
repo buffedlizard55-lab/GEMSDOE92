@@ -23,9 +23,17 @@
       "worst_abs_spearman": 0.047573,
       "worst_final_dot_overlap_within_3px": 0.241807
     },
-    "public_registry": "NOT_VERIFIED; run card says no public scan was available",
+    "public_registry": "Full registry scan NOT_VERIFIED; run card says no public scan was available",
+    "pinned_dense_witness": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "witness": "17GEMSDOE E-proba-multiscale",
+      "positive_footprint_cells": 5167373,
+      "literal_final_dot_overlap": 1.0,
+      "stop_threshold": 0.7,
+      "decision": "duplicate; stop"
+    },
     "preplacement_surface_check": "NOT_IMPLEMENTED in the lane builder",
-    "specified_duplicate_stop_result": "NOT_VERIFIED"
+    "specified_duplicate_stop_result": "FAIL on the documented full-footprint witness; full registry uniqueness remains NOT_VERIFIED"
   },
   "raster_sha256": "026a52ff46d695bb79ae39780c154cba9cc69e039e7d2a4d1fe898c6c0a79345",
   "validator_output": {
