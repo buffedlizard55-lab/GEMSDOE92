@@ -48,7 +48,23 @@ The goal is maximize the probability of placing well through reproducible scienc
 
 Competition data may be login-gated. Follow license and data-use terms; owner-mirror hash checks establish byte identity, not organizer authentication or redistribution permission.
 
-## Current session result (2026-10-25) — `POISSONFLEX`
+## Current session result (2026-10-25) — `LISTRICLOQO`
+
+Lane **LISTRICLOQO** (Listric dip-offset hanging-wall subsurface pullback + footwall-to-basin accommodation splay + Wallace basal piedmont toe + 2D gravity-gradient tensor invariants + $18^\circ$ synthetic Riedel en-echelon coupling + selective subsurface-branch quadrant calibration; `gems/listric_loqo.py`). Three pre-registered experiments (`standalone`, `nolistric`, `dual35`). Winning research file `docs/downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-293bc624-zeros.tif` (SHA-256 `f431957f5d63759c7f9de3f09e133323957b508855800ebb14d95ed766d87898`).
+
+- **HOLDOUT-DTI** `gems57-pooled-hide-v2`, 22,663 withheld positives:
+  - Static `d_cat > 2.0`: `standalone` **`0.012034 [0.010422, 0.013591]`** (**#1 all-time in `GEMSDOE92`**, beating previous #1 `KNICKLOQO standalone` `0.010788` by paired `+0.001246 [+0.000115, +0.002272]`, `PROVINCETOE` `0.009685`, `POISSONKNICK qcal` `0.009304`, `COULOMBLOQO standalone` `0.009220` by `+30.52%`, and `R0` `0.004006` by `+200.40%`); `nolistric` **`0.011543 [0.009986, 0.013053]`** (**#2 all-time**); `dual35` `0.009783 [0.008521, 0.011079]`.
+  - Strict draw-blind `d_cat > 2.0`: `standalone` **`0.011440 [0.009888, 0.012893]`** (**#1 all-time**, beating `KNICKLOQO standalone` `0.010958`).
+  - Strict draw-blind `d_visible > 2.0`: `standalone` **`0.111159 [0.098186, 0.123409]`** (beats `KNICKLOQO standalone` `0.109043`, `EULERFUSE gravity` `0.110387`, `POISSONFLEX opt` `0.107466`, `nolistric` `0.107412` by paired `+0.003747 [+0.001368, +0.006282]`, and `H19-5` `0.096757` by paired `+0.014402 [+0.007226, +0.021965]`).
+  - Off-catalogue `USGS SGMC PROXY` (`62,703` px): `standalone` `0.093533`, `dual35` `0.095682` (vs `COULOMBLOQO standalone` `0.090569`).
+- **Leakage canaries:** `56/56 PASS`, max symmetric AUC `0.674631 <= 0.90`.
+- **REGISTRY-MEASUREMENT:** local `79` unique rasters PASS (`standalone` worst 3-px overlap `0.693817 <= 0.70`, `|φ| = 0.107936 <= 0.90`; `nolistric` `0.640968`; `dual35` `0.694508`); public `dual_reading_decision` across `85` non-self rasters PASS (`0 > 0.70`, max public dot-field `0.671482 <= 0.70` vs `GEMSDOE52`, `62GEMSDOE` `120k = 0.630796`, `GEMSDOE23` `100k = 0.658974`, `17GEMSDOE` matched-budget `0.057311`, `verdict = "unique"`). Literal public witness `17GEMSDOE E-proba-multiscale` (`5,167,373` positive px) forward overlap `1.000` -> `submission_eligible = false`.
+- **Validator:** `10/10` `gems.gates` + `12/12` `gems57.validate` PASS; all finite `[0, 1]`; zeros outside; `EPSG:32611` `3730×3292`.
+- Verdict: **negative**. Format-valid / OK TO DOWNLOAD FOR RESEARCH. **DO NOT SUBMIT.** 0 weekly slots used.
+
+Hypotheses: `docs/HYPOTHESES_20261025_LISTRICLOQO.md`. Analysis: `docs/ANALYSIS_20261025_LISTRICLOQO.md`. Run card: `evidence/listric_loqo_run_card.json`.
+
+## Prior session result (2026-10-25) — `POISSONFLEX`
 
 Lane **POISSONFLEX** (Poisson gravity–pseudogravity hydrothermal breakdown + hanging-wall basement rollover flexure + canyon knickpoint strike integrals + quadrant-deconfounded LOQO & nested visible-only OOF support; `gems/poissonflex.py`). Three pre-registered experiments (`poissonflex_eq`, `poissonflex_raw`, `poissonflex_opt`). Winning research file `docs/downloads/gemsdoe92-poissonflex-poissonflex_opt-45000-20261025-54255bcc-zeros.tif` (SHA-256 `37b18c200e84c77b39b07e527b17d4395968389aaf3ff0c175c71204b2065f9b`).
 

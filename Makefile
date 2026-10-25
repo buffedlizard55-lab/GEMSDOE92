@@ -1,4 +1,4 @@
-.PHONY: test verify manifest ledger validate clean site
+.PHONY: test verify manifest ledger validate clean site screen-listric-loqo build-listric-loqo proxy-listric-loqo finalize-listric-loqo
 
 PYTHON ?= python3
 REFERENCE ?= data/bridge/sample_submission.tif
@@ -24,6 +24,18 @@ ledger:
 validate:
 	@test -n "$(FILE)" || (echo "usage: make validate FILE=releases/<id>.tif" && exit 2)
 	$(PYTHON) -m gems validate "$(FILE)" --reference "$(REFERENCE)"
+
+screen-listric-loqo:
+	$(PYTHON) scripts/screen_listric_loqo.py
+
+build-listric-loqo:
+	$(PYTHON) scripts/build_listric_loqo_variants.py
+
+proxy-listric-loqo:
+	$(PYTHON) scripts/report_listric_loqo_proxies.py
+
+finalize-listric-loqo:
+	$(PYTHON) scripts/finalize_listric_loqo_run_card.py
 
 clean:
 	rm -rf .pytest_cache **/__pycache__ __pycache__

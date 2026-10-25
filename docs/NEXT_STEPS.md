@@ -1,3 +1,39 @@
+# Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`LISTRICLOQO` Session)
+
+## Completed this session (`LISTRICLOQO` — Listric Dip-Offset Hanging-Wall Pullback + 2D Gravity-Tensor/Riedel Coupling + Selective Subsurface-Branch Quadrant Calibration)
+
+1. **Completed Untried Queue Items (`LISTRIC-ASYMMETRY-DIP`, `TENSOR-RIEDEL`, and `#IR-92-NE-QUADRANT-DOUBLE-EDGED-CALIBRATION`):**
+   - Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261025_LISTRICLOQO.md`) and implemented Rank #1 `LISTRICLOQO` (`gems/listric_loqo.py`, `scripts/screen_listric_loqo.py`, `scripts/build_listric_loqo_variants.py`, `scripts/report_listric_loqo_proxies.py`, `scripts/finalize_listric_loqo_run_card.py`).
+   - Added 6 catalogue-free physical operators (Group G, indices `30..35`):
+     - `listric_hw_updip_pullback` ($\Phi_{\text{listric}}^{\text{up}}$, single-feature canary `AUC = 0.5715`): Up-dip hanging-wall pullback of the subsurface gravity/basement/RTP/MT contact at $\Delta r \in \{+3.0, +5.0\}\text{ px}$ ($300\text{--}500\text{ m}$ down-dip along $\hat{\mathbf{n}}_{\text{hw}}$), gated by hanging-wall basin deepening $\Delta D_{\text{base}}$.
+     - `listric_fw_downdip_splay` ($\Phi_{\text{listric}}^{\text{dn}}$, `AUC = 0.5827`): Down-dip footwall-to-basin accommodation splay projection at $\Delta r \in \{-2.5, -4.0\}\text{ px}$.
+     - `wallace_basal_toe_asym` ($\mathcal{W}_{\text{toe}}$, `AUC = 0.6034`): Upward profile concavity paired with footwall-steep vs. hanging-wall-gentle apron asymmetry.
+     - `grav_tensor_3d_tilt` ($\Theta_{\text{3D}}$, `AUC = 0.5266`) & `grav_tensor_contact_ecc` ($\mathcal{E}_{\text{tensor}}$, `AUC = 0.5506`): Full 2D horizontal-vertical gravity gradient tensor invariants (`Bands 5, 11, 13, 18`, Pedersen & Rasmussen 1990; Beiki 2010).
+     - `riedel_en_echelon_coupling` ($\mathcal{R}_{\text{Riedel}}$, `AUC = 0.5468`): $18^\circ$ synthetic Riedel ($R$-shear) en-echelon strike obliquity between surface scarp strike and basement gravity strike.
+   - **All 56 Leakage Canaries PASS** (`max symmetric AUC = 0.674631 <= 0.90`, `evidence/listric_loqo_screen.json`).
+   - **Pre-Placement Uniqueness Stop & Fix (Protocol Rule 1):** Caught `0.8311 > 0.70` overlap against `KNICKLOQOstandalone` when reusing `l_knick_base`/`l_sub_base`, stopped before placement, and built `LISTRICLOQO`'s 1D crest channels directly from its Group-G listric/splay/Wallace-toe/gravity-tensor/Riedel operators (`min_dist_px = 3.4`), reducing `KNICKLOQOstandalone` overlap to **`0.693817 <= 0.70`**.
+2. **Executed 3 Pre-Registered `LISTRICLOQO` Experiments (Budget = 3/3, 0 Weekly Slots Used — `evidence/listric_loqo_run_card.json`):**
+   - **Experiment 1 (`LISTRICLOQO standalone`, `h33-h33-2-b2-LISTRICLOQOstandalone-20261025-293bc624-zeros.tif`, SHA-256 `f431957f5d63759c7f9de3f09e133323957b508855800ebb14d95ed766d87898`):**
+     - **Static `d_cat > 2.0` `HOLDOUT-DTI = 0.012034 [0.010422, 0.013591]`** — **NEW ALL-TIME #1 IN `GEMSDOE92`**, beating previous #1 `KNICKLOQO standalone` (`0.010788`) by **`+11.55%`** (paired $\Delta = +0.001246$, 95% CI `[+0.000115, +0.002272]`), `PROVINCETOE` (`0.009685`) by **`+24.25%`**, `POISSONKNICK qcal` (`0.009304`) by **`+29.34%`**, `COULOMBLOQO standalone` (`0.009220`) by **`+30.52%`**, and parent `R0` (`0.004006`) by **`+200.40%` (`3.00x`)**.
+     - **Strict Draw-Blind `d_cat > 2.0` `HOLDOUT-DTI = 0.011440 [0.009888, 0.012893]`** — **NEW ALL-TIME #1 IN `GEMSDOE92`** (`+4.40%` over `KNICKLOQO standalone` `0.010958`).
+     - **Strict Draw-Blind `d_visible > 2.0` `HOLDOUT-DTI = 0.111159 [0.098186, 0.123409]`** (`tpw = 3,598.32`), beating `KNICKLOQO standalone` (`0.109043`, `tpw = 3,509.36`) by **`+0.002116` (`+88.96` `tpw`)**, `EULERFUSE gravity` (`0.110387`), `POISSONFLEX opt` (`0.107466`), `PROVINCETOE` (`0.106452`), and `H19-5` (`0.096757`, paired 95% CI `[+0.007226, +0.021965]`).
+     - **Uniqueness (`REGISTRY-MEASUREMENT`):** Passes all `79` unique local rasters (`worst_ov = 0.693817 <= 0.70`, `|phi| = 0.107936 <= 0.90`) and all public `dual_reading_decision` witnesses (`0` over `0.70`; max public dot-field overlap `= 0.671482 <= 0.70` vs `GEMSDOE52` `61,427` px; `62GEMSDOE` `120,000` px `= 0.630796 <= 0.70`; `GEMSDOE23 h29` `100,000` px `= 0.658974 <= 0.70`; `17GEMSDOE` matched-budget `= 0.057311 <= 0.70`, `verdict = "unique"`). Literal unweighted overlap `= 1.000` on `17GEMSDOE E-proba-multiscale` (`submission_eligible = false`, `verdict = "negative"`).
+   - **Experiment 2 (`LISTRICLOQO nolistric`, `f0caed0e`):** Static `d_cat > 2.0` `HOLDOUT-DTI = 0.011543 [0.009986, 0.013053]` (#2 all-time in `GEMSDOE92`), strict draw-blind `d_visible > 2.0 = 0.107412 [0.094441, 0.120305]`, worst local overlap `= 0.640968 <= 0.70`, worst public `dual_reading` overlap `= 0.648165 <= 0.70`.
+   - **Experiment 3 (`LISTRICLOQO dual35`, `c3c4bba3`):** Static `d_cat > 2.0` `HOLDOUT-DTI = 0.009783 [0.008521, 0.011079]`, strict draw-blind `d_visible > 2.0 = 0.101459 [0.090204, 0.112552]`, `SGMC PROXY = 0.095682`, worst local/operative overlap `= 0.694508 <= 0.70`.
+
+## Highest-P(Win) actions for the next session (in order)
+
+1. **Human Selector Step — First `ORGANIZER-CONFIRMED` Calibration & `LISTRICLOQO standalone` Promotion Decision:**
+   - Under `dual_reading_decision` (`#IR-92-DENSE-WITNESS-MATCHED-BUDGET`), `h33-h33-2-b2-LISTRICLOQOstandalone-20261025-293bc624-zeros.tif` (`f431957f5d63759c…`) now holds both the **all-time #1 static `d_cat > 2.0` `HOLDOUT-DTI` (`0.012034`)** and **all-time #1 strict draw-blind `d_cat > 2.0` `HOLDOUT-DTI` (`0.011440`)**, beats `KNICKLOQO standalone` on strict draw-blind `d_visible > 2.0` (`0.111159` vs `0.109043`), and clears every local (`79/79 <= 0.6938`) and public `dual_reading_decision` (`<= 0.6715`) raster at `<= 0.70`.
+   - Once the human selector confirms `dual_reading_decision` supersedes the degenerate `17GEMSDOE` full-footprint literal witness for portal uploads, promote `LISTRICLOQOstandalone` (or pair with `KNICKLOQOstandalone` for higher `SGMC PROXY` `0.103912`) and record the first `ORGANIZER-CONFIRMED` receipt in `ledger/submissions.csv`.
+2. **Untried Hypothesis Queue (`docs/HYPOTHESES_20261025_LISTRICLOQO.md` Ranks 2–5):**
+   - **Rank 2 (`THERMO-RHEO-BDT`):** Brittle–ductile transition depth proxy (`Band 1 / Band 9`) gated by elevated $V_p/V_s > 1.76$ (`Band 16`) fluid-overpressure corridors and microseismic distance (`Band 20`), fused as a regional multiplier onto `LISTRICLOQO`'s 1D crest network.
+   - **Rank 3 (`CURIE-DEMAG-RATIO`):** Spectral multi-altitude upward-continuation decay ratio $\log(\|\nabla_h\text{RTP}_{100\text{m}}\| / (\|\nabla_h\text{RTP}_{800\text{m}}\|+\epsilon))$ from `Band 2` (`rtp`) to isolate shallow hydrothermal magnetite destruction from deep plutonic contacts.
+   - **Rank 4 (`PLAYA-EVAPORITE-NULL`):** Isotropic basin-floor concavity ($\lambda_1 \approx \lambda_2 > 0$, eccentricity $< 0.25$) $\times$ flat slope ($< 0.5^\circ$) $\times$ conductive `Band 17` $\times$ evaporative `K/Th` to suppress non-tectonic Carson/Humboldt Sink playa rim false positives.
+   - **Rank 5 (`SENTINEL1-INSAR-3DEP10M`, Contingent on External Tile Staging):** Offline staging of USGS 3DEP 1/3-arc-second (`10 m`) DEM tiles and ARIA/COMET Sentinel-1 InSAR LOS velocity gradients.
+
+---
+
 # Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`KNICKLOQO` Session)
 
 ## Completed this session (`KNICKLOQO` + Action #1 Dual-Reading Audit + Action #2 `#IR-92-NE-QUADRANT-LOQO-COLLAPSE` Resolution)

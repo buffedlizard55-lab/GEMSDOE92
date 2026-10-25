@@ -1,0 +1,761 @@
+{
+  "schema": "gemsdoe92.listric-loqo-variants.v1",
+  "session_date_utc": "20261025",
+  "axis": "LISTRICLOQO",
+  "parent": "h33-h33-2-b2",
+  "parent_claim": {
+    "score": 0.2778,
+    "evidence_label": "CLAIM",
+    "receipt": false
+  },
+  "pre_placement_surface": {
+    "cache_path": ".cache/gems_inputs/listric_loqo_S_cal_surface.tif",
+    "sha256": "49cd4aae773ed43608616956fa884656059319b929831677cb55547a89fcc01a",
+    "registry_check": "evidence/listric_loqo_screen.json"
+  },
+  "lane_surface": {
+    "definition": "S_cal = (P_cal(X_36)**0.75) * (0.01 + 0.99 * max(L_topo_listric, L_knick_splay, L_sub_tensor))",
+    "bands": "Bands 2, 4, 5, 7, 8, 11, 12, 13, 15, 17, 18, 19 + GeoDAWN K/Th/U + GDR #1391 thermal & blind geothermometry",
+    "implementation": "gems/listric_loqo.py",
+    "catalogue_use": "Features strictly catalogue-free (dist_known_fault_px dropped); LOQO 3-branch ensemble trained strictly out-of-quadrant (>=1.2 km guard, >500 m neg buffer) with selective subsurface-branch within-quadrant quantile calibration; placement uses d_cat > 2.0 px gate",
+    "experiments_built": 3,
+    "budget_limit": 3
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-LISTRICLOQOstandalone-20261025-293bc624",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-LISTRICLOQO-standalone-20261025",
+      "name": "h33-h33-2-b2-LISTRICLOQOstandalone-20261025-293bc624.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-293bc624-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-293bc624-zeros.zip",
+      "file_audit": "docs/downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-293bc624-audit.json",
+      "file_nan_cache": ".cache/listric_loqo_builds/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-293bc624.tif",
+      "sha8": "293bc624",
+      "change_desc": "LISTRICLOQO (standalone): 37654 standalone 1D LISTRICLOQO selective-calibrated listric+splay+tensor+Riedel crests (0 H19-5); fixed 37654 unit dots",
+      "notes": "arm=standalone; n_skel=0; n_far=37654; shared_R0=1439; within3px_H19=0.5862; piedmont_pct=36.6%; sub_dom_dots=24271; splay_dom_dots=11587; git=4441f6a3df98",
+      "parent": "h33-h33-2-b2",
+      "axis": "LISTRICLOQO",
+      "value": "standalone",
+      "n_dots": 37654,
+      "n_skel": 0,
+      "n_far": 37654,
+      "pct_changed": 96.17836086471557,
+      "removed": 36215,
+      "added": 36215,
+      "sha256": "293bc6242a8206620988c3ed091861cdab592c6d1675e8606681f1b4d8fcb592",
+      "sha256_zeros": "f431957f5d63759c7f9de3f09e133323957b508855800ebb14d95ed766d87898",
+      "zip_sha256": "bc71ea63f72c7d02b9d1bc2c063ae0b5bfb8d41d2c0ae4ccf6f09850e58af116",
+      "primary_file": "h33-h33-2-b2-LISTRICLOQOstandalone-20261025-293bc624-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-LISTRICLOQOstandalone-20261025-293bc624-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/listric_loqo_proxy_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 8847,
+        "basin_pct": 23.496,
+        "piedmont_dots": 13783,
+        "piedmont_pct": 36.604,
+        "range_dots": 15024,
+        "range_pct": 39.9
+      },
+      "channel_diagnostics": {
+        "subsurface_tensor_channel_dominant_dots": 24271,
+        "subsurface_tensor_channel_dominant_frac": 0.6446,
+        "downdip_splay_channel_dominant_dots": 11587,
+        "downdip_splay_channel_dominant_frac": 0.3077,
+        "within_3px_of_h19_5_frac": 0.586179,
+        "shared_exact_pixels_with_R0": 1439,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "collar_dots_dcat_le_3": 4709,
+        "mean_P_loqo_emitted": 0.7894031405448914,
+        "mean_S_emitted": 0.43239283561706543
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "f431957f5d63759c7f9de3f09e133323957b508855800ebb14d95ed766d87898"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "293bc6242a8206620988c3ed091861cdab592c6d1675e8606681f1b4d8fcb592"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "gems57_validate": {
+          "file": "/home/user/GEMSDOE92/docs/downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-293bc624-zeros.tif",
+          "bytes": 148346,
+          "sha256": "f431957f5d63759c7f9de3f09e133323957b508855800ebb14d95ed766d87898",
+          "meta": {
+            "crs": "EPSG:32611",
+            "shape": [
+              3730,
+              3292
+            ],
+            "dtype": "float32",
+            "count": 1,
+            "nodata": null,
+            "transform": [
+              100.0,
+              0.0,
+              243350.0,
+              0.0,
+              -100.0,
+              4508550.0
+            ],
+            "profile_compress": "deflate"
+          },
+          "band_description": [
+            null
+          ],
+          "n_finite": 12279160,
+          "n_nan": 0,
+          "n_infinite": 0,
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.0030664964579045773,
+          "emitted_positive_pixels": 37654,
+          "checks": {
+            "single_band": true,
+            "dtype_float32": true,
+            "dimensions_3730x3292": true,
+            "crs_epsg_32611": true,
+            "transform_matches_sample_submission": true,
+            "no_nan_anywhere": true,
+            "no_inf_anywhere": true,
+            "no_sentinel_values": true,
+            "range_0_1_guaranteed": true,
+            "min_ge_0": true,
+            "max_le_1": true,
+            "in_footprint_all_finite": true,
+            "in_footprint_range_0_1": true,
+            "outside_footprint_zero": true,
+            "zero_dots_on_mapped_catalogue": true
+          },
+          "all_checks_passed": true,
+          "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+          "on_catalogue_positive_pixels": 0,
+          "in_footprint_positive_pixels": 37654,
+          "footprint_fraction": 0.007286874781441169
+        }
+      },
+      "form_note": "h33-h33-2-b2; LISTRICLOQO standalone: 37654 1D listric+splay+tensor+Riedel crests",
+      "gate_status": "PASS (submission_writer + disk reread + 10/10 gems.gates)",
+      "seed": 20261025
+    },
+    {
+      "id": "h33-h33-2-b2-LISTRICLOQOnolistric-20261025-f0caed0e",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-LISTRICLOQO-nolistric-20261025",
+      "name": "h33-h33-2-b2-LISTRICLOQOnolistric-20261025-f0caed0e.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-LISTRICLOQOnolistric-20261025-f0caed0e-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-LISTRICLOQOnolistric-20261025-f0caed0e-zeros.zip",
+      "file_audit": "docs/downloads/h33-h33-2-b2-LISTRICLOQOnolistric-20261025-f0caed0e-audit.json",
+      "file_nan_cache": ".cache/listric_loqo_builds/h33-h33-2-b2-LISTRICLOQOnolistric-20261025-f0caed0e.tif",
+      "sha8": "f0caed0e",
+      "change_desc": "LISTRICLOQO (nolistric): 37654 standalone 1D LISTRICLOQO uncalibrated ablation crests (0 H19-5); fixed 37654 unit dots",
+      "notes": "arm=nolistric; n_skel=0; n_far=37654; shared_R0=1358; within3px_H19=0.5486; piedmont_pct=35.7%; sub_dom_dots=25628; splay_dom_dots=10384; git=4441f6a3df98",
+      "parent": "h33-h33-2-b2",
+      "axis": "LISTRICLOQO",
+      "value": "nolistric",
+      "n_dots": 37654,
+      "n_skel": 0,
+      "n_far": 37654,
+      "pct_changed": 96.39347745259468,
+      "removed": 36296,
+      "added": 36296,
+      "sha256": "f0caed0e8dfd0ecf8db8b2057520db6a497dfc74cd10645f1363bbd8c1aed3f3",
+      "sha256_zeros": "f1f83b0189d6f5ca336b92bb73f43c7ad7e96cfc295a443d4cb0737f052be407",
+      "zip_sha256": "5c8d88108f25afa3e9f5fca01841cdd8dc72ea16824e8eb1e13c261356dcddee",
+      "primary_file": "h33-h33-2-b2-LISTRICLOQOnolistric-20261025-f0caed0e-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-LISTRICLOQOnolistric-20261025-f0caed0e-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/listric_loqo_proxy_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 8311,
+        "basin_pct": 22.072,
+        "piedmont_dots": 13425,
+        "piedmont_pct": 35.654,
+        "range_dots": 15918,
+        "range_pct": 42.274
+      },
+      "channel_diagnostics": {
+        "subsurface_tensor_channel_dominant_dots": 25628,
+        "subsurface_tensor_channel_dominant_frac": 0.6806,
+        "downdip_splay_channel_dominant_dots": 10384,
+        "downdip_splay_channel_dominant_frac": 0.2758,
+        "within_3px_of_h19_5_frac": 0.5486,
+        "shared_exact_pixels_with_R0": 1358,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "collar_dots_dcat_le_3": 4550,
+        "mean_P_loqo_emitted": 0.7494131326675415,
+        "mean_S_emitted": 0.40123993158340454
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "f1f83b0189d6f5ca336b92bb73f43c7ad7e96cfc295a443d4cb0737f052be407"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "f0caed0e8dfd0ecf8db8b2057520db6a497dfc74cd10645f1363bbd8c1aed3f3"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "gems57_validate": {
+          "file": "/home/user/GEMSDOE92/docs/downloads/h33-h33-2-b2-LISTRICLOQOnolistric-20261025-f0caed0e-zeros.tif",
+          "bytes": 146999,
+          "sha256": "f1f83b0189d6f5ca336b92bb73f43c7ad7e96cfc295a443d4cb0737f052be407",
+          "meta": {
+            "crs": "EPSG:32611",
+            "shape": [
+              3730,
+              3292
+            ],
+            "dtype": "float32",
+            "count": 1,
+            "nodata": null,
+            "transform": [
+              100.0,
+              0.0,
+              243350.0,
+              0.0,
+              -100.0,
+              4508550.0
+            ],
+            "profile_compress": "deflate"
+          },
+          "band_description": [
+            null
+          ],
+          "n_finite": 12279160,
+          "n_nan": 0,
+          "n_infinite": 0,
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.0030664964579045773,
+          "emitted_positive_pixels": 37654,
+          "checks": {
+            "single_band": true,
+            "dtype_float32": true,
+            "dimensions_3730x3292": true,
+            "crs_epsg_32611": true,
+            "transform_matches_sample_submission": true,
+            "no_nan_anywhere": true,
+            "no_inf_anywhere": true,
+            "no_sentinel_values": true,
+            "range_0_1_guaranteed": true,
+            "min_ge_0": true,
+            "max_le_1": true,
+            "in_footprint_all_finite": true,
+            "in_footprint_range_0_1": true,
+            "outside_footprint_zero": true,
+            "zero_dots_on_mapped_catalogue": true
+          },
+          "all_checks_passed": true,
+          "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+          "on_catalogue_positive_pixels": 0,
+          "in_footprint_positive_pixels": 37654,
+          "footprint_fraction": 0.007286874781441169
+        }
+      },
+      "form_note": "h33-h33-2-b2; LISTRICLOQO nolistric: 37654 1D uncalibrated ablation listric crests",
+      "gate_status": "PASS (submission_writer + disk reread + 10/10 gems.gates)",
+      "seed": 20261025
+    },
+    {
+      "id": "h33-h33-2-b2-LISTRICLOQOdual35-20261025-c3c4bba3",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-LISTRICLOQO-dual35-20261025",
+      "name": "h33-h33-2-b2-LISTRICLOQOdual35-20261025-c3c4bba3.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-LISTRICLOQOdual35-20261025-c3c4bba3-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-LISTRICLOQOdual35-20261025-c3c4bba3-zeros.zip",
+      "file_audit": "docs/downloads/h33-h33-2-b2-LISTRICLOQOdual35-20261025-c3c4bba3-audit.json",
+      "file_nan_cache": ".cache/listric_loqo_builds/h33-h33-2-b2-LISTRICLOQOdual35-20261025-c3c4bba3.tif",
+      "sha8": "c3c4bba3",
+      "change_desc": "LISTRICLOQO (dual35): 13179 LISTRICLOQO-repacked H19-5 + 24475 off-skeleton (>3px) 1D LISTRICLOQO crests; fixed 37654 unit dots",
+      "notes": "arm=dual35; n_skel=13179; n_far=24475; shared_R0=3086; within3px_H19=0.3500; piedmont_pct=37.0%; sub_dom_dots=24234; splay_dom_dots=11451; git=4441f6a3df98",
+      "parent": "h33-h33-2-b2",
+      "axis": "LISTRICLOQO",
+      "value": "dual35",
+      "n_dots": 37654,
+      "n_skel": 13179,
+      "n_far": 24475,
+      "pct_changed": 91.80432357784034,
+      "removed": 34568,
+      "added": 34568,
+      "sha256": "c3c4bba3d6c4f259f9dcaa30a7e5fd24769c1e85f86720b0603ed24219de1080",
+      "sha256_zeros": "6e718ca1ef875fe64c7fb20648749bfca71b345160fd6d0cdc10ccb1021cc87f",
+      "zip_sha256": "99a2e23660ece42635380fbb32c997c130c5c37a832298ede9c76afd895c21f2",
+      "primary_file": "h33-h33-2-b2-LISTRICLOQOdual35-20261025-c3c4bba3-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-LISTRICLOQOdual35-20261025-c3c4bba3-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI recorded in evidence/listric_loqo_proxy_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 8991,
+        "basin_pct": 23.878,
+        "piedmont_dots": 13944,
+        "piedmont_pct": 37.032,
+        "range_dots": 14719,
+        "range_pct": 39.09
+      },
+      "channel_diagnostics": {
+        "subsurface_tensor_channel_dominant_dots": 24234,
+        "subsurface_tensor_channel_dominant_frac": 0.6436,
+        "downdip_splay_channel_dominant_dots": 11451,
+        "downdip_splay_channel_dominant_frac": 0.3041,
+        "within_3px_of_h19_5_frac": 0.350003,
+        "shared_exact_pixels_with_R0": 3086,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "collar_dots_dcat_le_3": 4121,
+        "mean_P_loqo_emitted": 0.7533465027809143,
+        "mean_S_emitted": 0.40406444668769836
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "6e718ca1ef875fe64c7fb20648749bfca71b345160fd6d0cdc10ccb1021cc87f"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "c3c4bba3d6c4f259f9dcaa30a7e5fd24769c1e85f86720b0603ed24219de1080"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "gems57_validate": {
+          "file": "/home/user/GEMSDOE92/docs/downloads/h33-h33-2-b2-LISTRICLOQOdual35-20261025-c3c4bba3-zeros.tif",
+          "bytes": 149105,
+          "sha256": "6e718ca1ef875fe64c7fb20648749bfca71b345160fd6d0cdc10ccb1021cc87f",
+          "meta": {
+            "crs": "EPSG:32611",
+            "shape": [
+              3730,
+              3292
+            ],
+            "dtype": "float32",
+            "count": 1,
+            "nodata": null,
+            "transform": [
+              100.0,
+              0.0,
+              243350.0,
+              0.0,
+              -100.0,
+              4508550.0
+            ],
+            "profile_compress": "deflate"
+          },
+          "band_description": [
+            null
+          ],
+          "n_finite": 12279160,
+          "n_nan": 0,
+          "n_infinite": 0,
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.0030664964579045773,
+          "emitted_positive_pixels": 37654,
+          "checks": {
+            "single_band": true,
+            "dtype_float32": true,
+            "dimensions_3730x3292": true,
+            "crs_epsg_32611": true,
+            "transform_matches_sample_submission": true,
+            "no_nan_anywhere": true,
+            "no_inf_anywhere": true,
+            "no_sentinel_values": true,
+            "range_0_1_guaranteed": true,
+            "min_ge_0": true,
+            "max_le_1": true,
+            "in_footprint_all_finite": true,
+            "in_footprint_range_0_1": true,
+            "outside_footprint_zero": true,
+            "zero_dots_on_mapped_catalogue": true
+          },
+          "all_checks_passed": true,
+          "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+          "on_catalogue_positive_pixels": 0,
+          "in_footprint_positive_pixels": 37654,
+          "footprint_fraction": 0.007286874781441169
+        }
+      },
+      "form_note": "h33-h33-2-b2; LISTRICLOQO dual35: 13179 LISTRIC-H19 + 24475 far 1D listric+tensor crests",
+      "gate_status": "PASS (submission_writer + disk reread + 10/10 gems.gates)",
+      "seed": 20261025
+    }
+  ]
+}

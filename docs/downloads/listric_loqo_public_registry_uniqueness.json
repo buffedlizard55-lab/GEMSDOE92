@@ -1,0 +1,98 @@
+{
+  "schema": "gemsdoe92-public-registry-uniqueness.v2",
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "lane": "LISTRICLOQO",
+  "candidate_file": "docs/downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-293bc624-zeros.tif",
+  "candidate_sha256_zeros": "f431957f5d63759c7f9de3f09e133323957b508855800ebb14d95ed766d87898",
+  "candidate_hash_matches_scan": true,
+  "unique_under_literal_rule": false,
+  "unique_under_dual_reading_rule": true,
+  "stop_required": true,
+  "preplacement_surface": {
+    "surface_file": ".cache/gems_inputs/listric_loqo_S_cal_surface.tif",
+    "surface_sha256": "49cd4aae773ed43608616956fa884656059319b929831677cb55547a89fcc01a",
+    "worst_local_abs_spearman": 0.186414,
+    "worst_local_top37654_overlap_3px": 0.693817,
+    "spearman_vs_17GEMSDOE_E_proba_multiscale": 0.463246
+  },
+  "final_dots": {
+    "emitted_dots": 37654,
+    "spearman_vs_17GEMSDOE_E_proba_multiscale": 0.059904,
+    "witness_17GEMSDOE_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "worst_operative_overlap_3px": 0.693817,
+    "worst_operative_witness": "GEMSDOE92/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif",
+    "operative_over_70pct_count": 0,
+    "dot_fields_le_150k_worst_overlap_3px": 0.693817,
+    "dot_fields_le_150k_worst_witness": "GEMSDOE92/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif",
+    "dot_fields_le_90k_worst_overlap_3px": 0.693817,
+    "dot_fields_le_90k_worst_witness": "GEMSDOE92/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif",
+    "continuous_gt_150k_matched_budget_worst_overlap_3px": 0.057311,
+    "literal_unweighted_worst_overlap_3px": 1.0,
+    "literal_unweighted_witness": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "public_witness_receipts": [
+      {
+        "file": "buffedlizard55-lab/17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+        "role": "dense_5167373px",
+        "their_dots": 5167373,
+        "representation": "continuous_surface",
+        "operative_overlap_3px": 0.057311,
+        "literal_overlap_3px": 1.0
+      },
+      {
+        "file": "buffedlizard55-lab/62GEMSDOE/docs/downloads/gems62b-tiltgrad-vote-scarpcorrob-120000-zeros.tif",
+        "git_blob_sha": "800e27139c0a4664de786706a4a4d2a0a8862b89",
+        "role": "sparse_120000px",
+        "their_dots": 120000,
+        "representation": "dot_field",
+        "operative_overlap_3px": 0.630796,
+        "literal_overlap_3px": 0.630796
+      },
+      {
+        "file": "buffedlizard55-lab/GEMSDOE23/docs/downloads/gemsdoe23-h29-dealiased-habitat-20261002-7bf9fac6-allfinite.tif",
+        "git_blob_sha": "7d19b90ed6e358b14b561bc405690a104c5da64b",
+        "role": "sparse_100000px_coulombloqo_witness",
+        "their_dots": 100000,
+        "representation": "dot_field",
+        "operative_overlap_3px": 0.658974,
+        "literal_overlap_3px": 0.658974
+      },
+      {
+        "file": "buffedlizard55-lab/GEMSDOE23/docs/downloads/gemsdoe23-h24-dispersed-habitat-20261002-ada8df14-allfinite.tif",
+        "git_blob_sha": "1374c17668adc23d0ab1c67ee07187bbe48f007b",
+        "role": "sparse_100000px",
+        "their_dots": 100000,
+        "representation": "dot_field",
+        "operative_overlap_3px": 0.655096,
+        "literal_overlap_3px": 0.655096
+      },
+      {
+        "file": "buffedlizard55-lab/12GEMSDOE/docs/downloads/12GEMSDOE_r6-nms3-h28-texture_8721329b55c7.tif",
+        "git_blob_sha": "d9a4ea5ba779617e656417b04f9a69908f16afd0",
+        "role": "sparse_100000px_blindfault_witness",
+        "their_dots": 103347,
+        "representation": "dot_field",
+        "operative_overlap_3px": 0.572821,
+        "literal_overlap_3px": 0.572821
+      },
+      {
+        "file": "buffedlizard55-lab/GEMSDOE23/docs/downloads/gemsdoe23-h30-arrangement-matched-habitat-20261002-0d4e02e8-allfinite.tif",
+        "git_blob_sha": "1cd1123a6a2d963c7145f8bf006fae75fdac4833",
+        "role": "sparse_91203px",
+        "their_dots": 91533,
+        "representation": "dot_field",
+        "operative_overlap_3px": 0.619934,
+        "literal_overlap_3px": 0.619934
+      },
+      {
+        "file": "buffedlizard55-lab/GEMSDOE52/docs/downloads/gems52-h87-boardcal-marginal-20261010-61427px.tif",
+        "git_blob_sha": "c77023dd18fa59e1d8b93c5d699081f238d208e0",
+        "role": "sparse_61427px_coulombloqo_90k_witness",
+        "their_dots": 61427,
+        "representation": "dot_field",
+        "operative_overlap_3px": 0.671482,
+        "literal_overlap_3px": 0.671482
+      }
+    ]
+  }
+}
