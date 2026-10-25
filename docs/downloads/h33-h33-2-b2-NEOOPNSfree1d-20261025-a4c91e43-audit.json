@@ -1,0 +1,131 @@
+{
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "23c979e513eff9b1e96065722701c60014ef247f4c9875d24526fce64fe5a8f5"
+    }
+  ],
+  "gates_zeros_pass": true,
+  "gates_nan": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "a4c91e43c22e0f4ea91e47bb91f0757da245cb47627e71685e60e0dd2dc02af1"
+    }
+  ],
+  "gates_nan_pass": true,
+  "file": "h33-h33-2-b2-NEOOPNSfree1d-20261025-a4c91e43-zeros.tif",
+  "sha256_zeros": "23c979e513eff9b1e96065722701c60014ef247f4c9875d24526fce64fe5a8f5",
+  "sha256_nan": "a4c91e43c22e0f4ea91e47bb91f0757da245cb47627e71685e60e0dd2dc02af1",
+  "n_positive_pixels": 37654,
+  "n_dots": 37654,
+  "overall_pass": true,
+  "submission_eligible": false,
+  "run_card": "evidence/neoopenness_run_card.json",
+  "local_registry_uniqueness": {
+    "n_rasters_checked": 77,
+    "worst_forward_overlap_3px": 0.75089,
+    "worst_forward_file": "downloads/h33-h33-2-b2-APRONRIDGEfree1d-20261024-d5760830-zeros.tif",
+    "worst_abs_spearman_phi": 0.148787,
+    "local_duplicate": true
+  },
+  "public_registry_uniqueness": {
+    "candidate_hash_matches_scan": true,
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "witness_evidence": "evidence/neoopenness_proxy_audit.json",
+    "scope": "Measured on h33-h33-2-b2-NEOOPNSfree1d-20261025-a4c91e43 vs local 77 rasters; dense public witness 17GEMSDOE E-proba (5,167,373 footprint cells) forces 1.0 forward overlap for any nonempty in-footprint raster; format-valid research download, DO NOT SUBMIT.",
+    "candidate_sha256_zeros": "23c979e513eff9b1e96065722701c60014ef247f4c9875d24526fce64fe5a8f5"
+  }
+}
