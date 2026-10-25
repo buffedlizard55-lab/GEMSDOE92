@@ -32,7 +32,7 @@ Assumptions that remain, and are not hidden:
 | Unique single-band float32 GeoTIFF on the official grid, values in [0, 1] | Met for three files. Primary SHA-256 `91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e`. |
 | Obvious OK-to-download vs OK-to-submit | Met. Download yes. Submit no. |
 | Study CLAIM 0.2778 without writing a projection as a score | Met in the analysis. Public snapshot 0.4413 is not a receipt. Higher than 0.2778 is possible in principle. This file is not the test of that. |
-| Unlike prior rasters | Met locally (overlap 0.1968, `|ρ|` 0.053). Not a copy of `R0`. |
+| Unlike prior rasters | Met locally (overlap 0.1968, `|ρ|` 0.053 at scoring). Post-merge overlap with `DRAINAGE-KNICK` is 0.1892. Not a copy of `R0`. |
 | 3–5 ranked hypotheses before implementation | Met. |
 | Spatially blocked holdout before any weekly slot | Met. Slot not spent. |
 | Run card, name, note ≤140, executive submit subpage, prompt in README | Met. |

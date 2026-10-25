@@ -48,7 +48,9 @@ Leakage canaries: max symmetric AUC 0.5316, all ≤ 0.90. The low score is not a
 
 ## Uniqueness
 
-Local registry, 110 rasters under `docs/downloads`, `releases`, and `data`: worst 3 px forward overlap **0.1968**, worst absolute Spearman **0.053**. Not a local duplicate. Final dots match the pre-placement screen, so the surface and the emission tell the same story.
+Local registry, 110 rasters under `docs/downloads`, `releases`, and `data` at scoring time: worst 3 px forward overlap **0.1968**, worst absolute Spearman **0.053**. Not a local duplicate. Final dots match the pre-placement screen, so the surface and the emission tell the same story.
+
+After that screen, `main` gained `DRAINAGE-KNICK` (`ef6c27e3…`, 37,654 dots). A post-merge check of the written dots against that file is overlap **0.1892** (`updip50`), **0.0287** (`anti22`), **0.0286** (`anti35`). Stride-8 Spearman versus `updip50` is 0.025. Not a duplicate of that later raster. The 0.1968 figure is the scoring-time worst, not a claim that every future raster was scanned.
 
 Pinned public witness `buffedlizard55-lab/17GEMSDOE` blob `374c88b1da2b803e2ed160de467fd71ae114010d` is positive on every footprint cell (5,167,373 / 5,167,373). Forward overlap is **1.0**. `stop_required: true`. `unique_under_literal_rule: false`. That witness rejects every nonempty in-footprint raster, including the parent. It is recorded. It is not hidden. This session did not scan 102 repositories; the witness is a rejection, not a clearance.
 
