@@ -1,0 +1,145 @@
+{
+  "schema": "gemsdoe92-review705.v1",
+  "reviewed_utc": "2026-10-25T16:48:12.773531+00:00",
+  "hypothesis": "The unchanged literal registry rule rejects every nonempty in-footprint candidate.",
+  "mechanism": "Pinned witness is positive everywhere; any candidate dot has distance zero from its support, hence overlap 1.0.",
+  "named_non_fault_mimic": "A dense continuous background probability field, not a physical fault process, causes this universal duplicate classification.",
+  "geological_hypothesis_tested": false,
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "value": null,
+    "ci95": null,
+    "evaluator_version": null,
+    "withheld_positives": null,
+    "reason": "Not run: universal pre-placement stop; no geological lane assigned."
+  },
+  "organizer_confirmed_score": null,
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "Single pinned witness; rejection only, not full registry clearance.",
+    "preplacement_universal_stop": true,
+    "overlap_for_any_nonempty_in_footprint_candidate": 1.0,
+    "existing_primary_forward_overlap_within_3px": 1.0,
+    "existing_primary_spearman": 0.010352227787484035,
+    "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "overlap_limit": 0.7,
+    "absolute_spearman_limit": 0.9,
+    "new_surface_measured": false,
+    "new_final_dots_measured": false,
+    "proof": "docs/downloads/review705_preflight.json",
+    "existing_primary_measurement": "docs/downloads/review705_existing_primary_witness.json"
+  },
+  "primary_download": "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif",
+  "artifact_scope": "Existing unchanged research primary, not generated/copied/renamed by this review.",
+  "raster_sha256": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
+  "validator_output": {
+    "evidence_class": "AUTOMATED-FORMAT-CHECK",
+    "all_must_gates_pass": true,
+    "no_nan_inside_footprint": true,
+    "all_finite": true,
+    "values_in_0_1": true,
+    "zero_outside_footprint": true,
+    "crs_shape_transform_match": true,
+    "gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=('float32',) count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nonfinite_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      },
+      {
+        "name": "submission_encoding",
+        "ok": true,
+        "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0; strict distance > radius required"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e"
+      }
+    ],
+    "not_organizer_acceptance": true
+  },
+  "submission_name": "GEMSDOE92-LISTRICDIP-updip50-20261025",
+  "note": "Existing LISTRICDIP research artifact; review705 duplicate-stop. DO NOT SUBMIT.",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "new_unique_tiff_generated": false,
+  "unique_submission_objective_met": false,
+  "experiments_executed": 0,
+  "weekly_slots_used": 0,
+  "verification": {
+    "pass1_tests": {
+      "passed": 491,
+      "warnings": 140
+    },
+    "pass2_targeted_tests": {
+      "passed": 40
+    },
+    "pass3_tests": {
+      "passed": 498,
+      "warnings": 140
+    },
+    "site_check": {
+      "passed": true,
+      "served_rasters": 82
+    },
+    "manifest": "PASS",
+    "parent": "PASS (pinned artifact)",
+    "ledger": "PASS; no organizer receipt",
+    "current_status": "PASS",
+    "readiness": "PASS",
+    "diff_check": "PASS",
+    "preplacement_exit": 1,
+    "existing_primary_witness_exit": 1,
+    "exit_1_meaning": "Expected registry duplicate-stop, not clearance."
+  },
+  "source_audit": "docs/downloads/review705_sources.json",
+  "review": "docs/REVIEW_7059163E.md",
+  "publication_limit": "Pages remains legacy; enabling workflow mode denied HTTP 403. No live-site verification.",
+  "implementation_sha256": {
+    "scripts/render_current_status.py": "6dc1dead59c007c654fb8470b7dbfbaaba3897e6ff1eefa88105f3b2f5b8c976",
+    "scripts/preflight_dense_witness.py": "9275f329f394b90b5f80c3fd1d22d8d543879f68df9485ab5f708535958fbca3",
+    "scripts/check_public_witness.py": "ac7e5be360bbc0688c4ece62f28a55a2b61280a35eb80924a16a519960c4ae50",
+    "gems/gates.py": "7bf557dd1a46b01449fb1108d5617baa5f6608d025c2c86c6ee94a7d30785bf6"
+  }
+}

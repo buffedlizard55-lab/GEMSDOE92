@@ -1190,3 +1190,20 @@ Preserved LISTRICDIP research outputs; freshly validated its newly declared prim
 3. **`#IR-92-VOLCANIC-CSV-DIST-KNOWN-FAULT`:** Upstream `gdr_volcanic_vents_in_footprint.csv` contains a pre-computed `dist_known_fault_px` column derived from `labels.tif`; completely excluded from `registry/ventscarp_external_manifest.json` and `gems/ventscarp.py`.
 4. **`#IR-92-LIDAR-COVERAGE-BIAS`:** `lidar_scarp_features_u8.tif` covers only `75.37%` (`3,894,460 / 5,167,373` px) along known fault corridors; excluded in favor of `100.00%`-coverage `topo_10m_derived_100m_u8.tif` (`USGS 3DEP 1/3-arc-sec ~10 m DEM`) + `99.78%`-coverage `dem10_chi_100m_i16.tif`.
 5. **`#IR-92-REFERENCE-UNET-NAN-OUTSIDE` & `#IR-92-GITHUB-REST-QUOTA-BYPASS`:** Lipor's reference notebook (`drivendataorg/gems-prize-reference-solution`) emits `np.nan` outside footprint and uses `75%`-overlapping random patch CV (`train_step=32`). All 3 `VENTSCARP` GeoTIFFs emit `0.0` outside footprint (`0` NaN anywhere, `[0.0, 1.0]` finite `float32`), and `scripts/sync_public_registry_git.py` + `scripts/audit_public_registry.py --git-transport` inventory all `102` public repos (`0` errors, `1,826` TIFF paths, `1,458` SHA1-verified blobs) via Git Smart HTTP without consuming REST blob quota (`evidence/ventscarp_uniqueness.json`).
+
+## 2026-10-25 — `48e4797d` fresh reproducible review
+
+- **IR-48-LITERAL-STOP (confirmed):** freshly fetched registry blob `374c88b1da2b803e2ed160de467fd71ae114010d` is positive in every finite template cell; literal forward overlap is 1.0 for every nonempty valid candidate. No new raster/holdout/slot. See `docs/downloads/review48_run_card.json` and `docs/REVIEW_48.md`.
+- **IR-48-MISSING-LANE:** no single geological method paragraph appears in the supplied prompt. Historical next-lane queues do not assign this session a method.
+- **IR-48-CLAIM-NOT-RECEIPT:** fresh GEMSDOE32 page retrieval still says UNSCORED/no organizer-verified scores. The supplied 0.2778 and leaderboard snapshots are not confirmed receipts.
+- **IR-48-FUTURE-CHRONOLOGY:** inherited 2026-10-26 reports are future-dated relative to the current 2026-10-25. Preserved as historical records, not independently verified chronology/current clearance.
+- **IR-48-GPU-ASSERTION:** official reference README supports CPU-only training; GPU-required wording in the supplied brief is too strong. Full cache, authorized protocol/lane and organizer access remain separate blockers.
+- **IR-48-PAGES-LEGACY:** GitHub API still reports legacy main/root publication. The workflow file does not prove Actions gates that legacy publisher.
+- **IR-48-SYNC-REGRESSION (fixed):** initial documentation cleanup removed a canonical status marker and historical artifact link, breaking three tests. Restored archived records and the existing synchronization contract; no tests weakened.
+
+## 2026-10-25 — review7059163e: current status could be buried in Markdown
+
+- Shared `scripts/render_current_status.py` previously replaced an existing Markdown status block in place, allowing a prepended future-dated “Latest artifact” lane banner to appear before the binding decision while `--check` passed. Fixed by relocating the block immediately below the project H1; historical content is preserved. Reversed markers now reject instead of slicing incorrectly.
+- Fresh hash-pinned witness again proves universal literal overlap stop. No new TIFF, canary or holdout was generated; unique-submission objective remains unmet. This review does not waive the rule, redefine “dots,” or spend a slot.
+- README future-dated/history banners are now collapsed after the durable operating brief. Main site header no longer asserts an unverified live weekly cap, stale gate count or guaranteed portal acceptance. Existing historical research reports remain unchanged.
+- GitHub Pages GET now reports `built` but still `legacy`, `main:/`. Enabling workflow publishing again returns HTTP 403 `Resource not accessible by integration`. A built legacy page is not proof of validator-gated publication. Details and source links: `docs/REVIEW_7059163E.md`; fresh machine evidence: `docs/downloads/review705_run_card.json`.
