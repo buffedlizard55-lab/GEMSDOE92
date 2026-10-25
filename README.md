@@ -1,13 +1,13 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
 <!-- CURRENT-STATUS:BEGIN -->
-## Authoritative decision — Current verified status, 2026-10-25 (LISTRICLOQO 2026-10-25)
+## Current verified decision — 2026-10-25 (fresh readiness audit)
 
-**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** The completed LISTRICLOQO lane generated a byte-unique TIFF, but it failed promotion gates.
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review; the unique-submission objective remains unmet. Fresh audit confirms the literal pre-placement stop: the pinned witness is positive throughout all 5,167,373 template footprint cells, so every nonempty in-footprint candidate has forward overlap 1.0 (>0.70).
 
-[Current unique research download](docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif) · [protocol run card](docs/downloads/listric_loqo_run_card.json) · [analysis](docs/ANALYSIS_20261025_LISTRICLOQO.md) · [executive submission guide](docs/executive-summary.html).
+[Fresh audit run card](evidence/review_20261025_readiness.json) · [three-pass repo review](docs/REVIEW_20261025_SESSION.md) · [existing research download](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [executive submission guide](docs/executive-summary.html).
 
-Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withheld positives) is `0.013295 [0.011713, 0.014980]`; paired improvement over KNICKLOQO is +0.002508 [0.001477, 0.003463]. Public dual-reading overlap is `0.690259 <= 0.70`, and literal dense-witness overlap is `1.0`. No ORGANIZER-CONFIRMED score is available; 3/3 experiments and zero weekly slots.
+The existing TIFF passes format/grid checks, but this is not submission clearance. No new surface/dots, HOLDOUT-DTI, leakage test, organizer-confirmed score, or weekly slot was produced in this review. Values 0.2778, 0.3195, and 0.4413 in user-provided snapshots are not receipt-verified here.
 
 <!-- CURRENT-STATUS:END -->
 
