@@ -1,0 +1,578 @@
+{
+  "schema": "gemsdoe92.neoopenness-variants.v1",
+  "session_date_utc": "20261025",
+  "axis": "NEOOPNS",
+  "parent": "h33-h33-2-b2",
+  "parent_claim": {
+    "score": 0.2778,
+    "evidence_label": "CLAIM",
+    "receipt": false
+  },
+  "pre_placement_surface": {
+    "cache_path": ".cache/neoopenness_surface.tif",
+    "sha256": "10948b5b7c01973020810b9d64bc2982ba80202dce29a6bcf9bab0c6dadb01c3",
+    "registry_check": "evidence/neoopenness_surface_registry.json"
+  },
+  "lane_surface": {
+    "definition": "S_raw = pct(|TPI|\u00b7|curvature|)\u00b7coh\u00b7(0.6\u00b7pct(||grad log(slope+1)||)+0.4)\u00b7H_apron(120m)\u00b7(0.5+0.5\u00b7pct(||grad K/Th||))\u00b7geothermal_boost",
+    "bands": "Band 2 rtp, Band 5 iso_grav_anom_slope, Band 12 det_elev, Band 13 iso_grav_anom, Band 15 depth_to_base_surf, Band 19 det_elev_slope + GeoDAWN K/Th/U + GDR >=80C",
+    "implementation": "gems/neoopenness.py",
+    "catalogue_use": "zero in surface/skeleton/ridge; d_cat>2.0 gate only",
+    "experiments_built": 3,
+    "budget_limit": 3
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-NEOOPNSs45c55-20261025-63d84095",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-NEOOPNS-s45c55-20261025",
+      "name": "h33-h33-2-b2-NEOOPNSs45c55-20261025-63d84095.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-NEOOPNSs45c55-20261025-63d84095-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-NEOOPNSs45c55-20261025-63d84095-zeros.zip",
+      "file_nan_cache": ".cache/neoopenness_builds/h33-h33-2-b2-NEOOPNSs45c55-20261025-63d84095.tif",
+      "sha8": "63d84095",
+      "change_desc": "NEO-OPNS (s45c55): 16944 H19-5 + 20710 far 1D TPI-curvature ridges >3px off H19-5; 37654 dots",
+      "notes": "arm=s45c55; n_skel=16944; n_far=20710; shared_R0=5396; within3px_H19=0.4500; piedmont_pct=59.6%; git=ab5b926a7b1e",
+      "parent": "h33-h33-2-b2",
+      "axis": "NEOOPNS",
+      "value": "s45c55",
+      "n_dots": 37654,
+      "n_skel": 16944,
+      "n_far": 20710,
+      "pct_changed": 85.66951718276943,
+      "removed": 32258,
+      "added": 32258,
+      "sha256": "63d84095d41f8826fd77774fc85628f85672ea1f9ec3328c545bda938f7fed48",
+      "sha256_zeros": "067629a0c104a7638002c2e81165c34578a8e0cca04dcd2ba52e50b3a2f0f17d",
+      "zip_sha256": "9034dd5e181566f186d4af0876b8a14ac515753570b30a87300854e7ff534de0",
+      "primary_file": "h33-h33-2-b2-NEOOPNSs45c55-20261025-63d84095-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-NEOOPNSs45c55-20261025-63d84095-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI in evidence/neoopenness_proxy_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 7925,
+        "basin_pct": 21.047,
+        "piedmont_dots": 22460,
+        "piedmont_pct": 59.648,
+        "range_dots": 7269,
+        "range_pct": 19.305
+      },
+      "channel_diagnostics": {
+        "within_3px_of_h19_5_frac": 0.449992,
+        "shared_exact_pixels_with_R0": 5396,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "mean_S_pct_emitted": 0.9487490057945251,
+        "mean_encl_pct_emitted": 0.694219172000885,
+        "mean_break_pct_emitted": 0.7579569816589355
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "067629a0c104a7638002c2e81165c34578a8e0cca04dcd2ba52e50b3a2f0f17d"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "63d84095d41f8826fd77774fc85628f85672ea1f9ec3328c545bda938f7fed48"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; NEO-OPNS s45c55: 16944 H19 + 20710 far TPI-curvature ridges >3px H19-5",
+      "gate_status": "PASS (submission_writer + disk reread + 11/11 gems.gates)",
+      "seed": 0
+    },
+    {
+      "id": "h33-h33-2-b2-NEOOPNSs35c65-20261025-e4d82847",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-NEOOPNS-s35c65-20261025",
+      "name": "h33-h33-2-b2-NEOOPNSs35c65-20261025-e4d82847.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-NEOOPNSs35c65-20261025-e4d82847-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-NEOOPNSs35c65-20261025-e4d82847-zeros.zip",
+      "file_nan_cache": ".cache/neoopenness_builds/h33-h33-2-b2-NEOOPNSs35c65-20261025-e4d82847.tif",
+      "sha8": "e4d82847",
+      "change_desc": "NEO-OPNS (s35c65): 13179 H19-5 + 24475 far 1D TPI-curvature ridges >3px off H19-5; 37654 dots",
+      "notes": "arm=s35c65; n_skel=13179; n_far=24475; shared_R0=3740; within3px_H19=0.3500; piedmont_pct=59.7%; git=ab5b926a7b1e",
+      "parent": "h33-h33-2-b2",
+      "axis": "NEOOPNS",
+      "value": "s35c65",
+      "n_dots": 37654,
+      "n_skel": 13179,
+      "n_far": 24475,
+      "pct_changed": 90.06745631274234,
+      "removed": 33914,
+      "added": 33914,
+      "sha256": "e4d8284786cc717ea4b5e6c58d47be4e73dd4ca4f30c50d29d2427bf336f5c17",
+      "sha256_zeros": "0a7aee78b8b904b99f261bb7e74b520e2af3d263707893eb1932fa9ac347d0b7",
+      "zip_sha256": "555e73c29f448eb094fddd77d4ba089d3afe8032e024afb0d43ee61110396e02",
+      "primary_file": "h33-h33-2-b2-NEOOPNSs35c65-20261025-e4d82847-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-NEOOPNSs35c65-20261025-e4d82847-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI in evidence/neoopenness_proxy_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 7942,
+        "basin_pct": 21.092,
+        "piedmont_dots": 22492,
+        "piedmont_pct": 59.733,
+        "range_dots": 7220,
+        "range_pct": 19.175
+      },
+      "channel_diagnostics": {
+        "within_3px_of_h19_5_frac": 0.350003,
+        "shared_exact_pixels_with_R0": 3740,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "mean_S_pct_emitted": 0.9559755921363831,
+        "mean_encl_pct_emitted": 0.6973612904548645,
+        "mean_break_pct_emitted": 0.7665194272994995
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "0a7aee78b8b904b99f261bb7e74b520e2af3d263707893eb1932fa9ac347d0b7"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "e4d8284786cc717ea4b5e6c58d47be4e73dd4ca4f30c50d29d2427bf336f5c17"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; NEO-OPNS s35c65: 13179 H19 + 24475 far TPI-curvature ridges >3px H19-5",
+      "gate_status": "PASS (submission_writer + disk reread + 11/11 gems.gates)",
+      "seed": 0
+    },
+    {
+      "id": "h33-h33-2-b2-NEOOPNSfree1d-20261025-a4c91e43",
+      "site": "GEMSDOE92",
+      "submission_name": "GEMSDOE92-NEOOPNS-free1d-20261025",
+      "name": "h33-h33-2-b2-NEOOPNSfree1d-20261025-a4c91e43.tif",
+      "file_zeros": "docs/downloads/h33-h33-2-b2-NEOOPNSfree1d-20261025-a4c91e43-zeros.tif",
+      "file_zip": "docs/downloads/h33-h33-2-b2-NEOOPNSfree1d-20261025-a4c91e43-zeros.zip",
+      "file_nan_cache": ".cache/neoopenness_builds/h33-h33-2-b2-NEOOPNSfree1d-20261025-a4c91e43.tif",
+      "sha8": "a4c91e43",
+      "change_desc": "NEO-OPNS (free1d): 37654 standalone 1D TPI-curvature ridges (0 H19-5); 37654 dots",
+      "notes": "arm=free1d; n_skel=0; n_far=37654; shared_R0=1126; within3px_H19=0.4901; piedmont_pct=60.9%; git=ab5b926a7b1e",
+      "parent": "h33-h33-2-b2",
+      "axis": "NEOOPNS",
+      "value": "free1d",
+      "n_dots": 37654,
+      "n_skel": 0,
+      "n_far": 37654,
+      "pct_changed": 97.00961385244595,
+      "removed": 36528,
+      "added": 36528,
+      "sha256": "a4c91e43c22e0f4ea91e47bb91f0757da245cb47627e71685e60e0dd2dc02af1",
+      "sha256_zeros": "23c979e513eff9b1e96065722701c60014ef247f4c9875d24526fce64fe5a8f5",
+      "zip_sha256": "f268b3ddf10cfb6cd00f01a155244cbd43443b067935b21b4b70332e16bacfd3",
+      "primary_file": "h33-h33-2-b2-NEOOPNSfree1d-20261025-a4c91e43-zeros.tif",
+      "fallback_file": "h33-h33-2-b2-NEOOPNSfree1d-20261025-a4c91e43-zeros.tif",
+      "status": "BUILT",
+      "predicted_change": "MODEL: unprojected; HOLDOUT-DTI in evidence/neoopenness_proxy_audit.json",
+      "predicted_range": "not projected (Protocol Rule 3)",
+      "relief_distribution": {
+        "basin_dots": 8111,
+        "basin_pct": 21.541,
+        "piedmont_dots": 22938,
+        "piedmont_pct": 60.918,
+        "range_dots": 6605,
+        "range_pct": 17.541
+      },
+      "channel_diagnostics": {
+        "within_3px_of_h19_5_frac": 0.490121,
+        "shared_exact_pixels_with_R0": 1126,
+        "min_catalogue_distance_px": 2.23606797749979,
+        "mean_S_pct_emitted": 0.9796976447105408,
+        "mean_encl_pct_emitted": 0.7348838448524475,
+        "mean_break_pct_emitted": 0.825121283531189
+      },
+      "gates_zeros": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "23c979e513eff9b1e96065722701c60014ef247f4c9875d24526fce64fe5a8f5"
+        }
+      ],
+      "gates_nan": [
+        {
+          "name": "crs",
+          "ok": true,
+          "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+        },
+        {
+          "name": "shape",
+          "ok": true,
+          "detail": "reference=3730x3292 candidate=3730x3292"
+        },
+        {
+          "name": "transform",
+          "ok": true,
+          "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+        },
+        {
+          "name": "dtype_and_band",
+          "ok": true,
+          "detail": "dtype=float32 count=1"
+        },
+        {
+          "name": "values_in_0_1",
+          "ok": true,
+          "detail": "n_violations=0 min=0.0 max=1.0"
+        },
+        {
+          "name": "no_nan_inside_footprint",
+          "ok": true,
+          "detail": "nan_pixels=0"
+        },
+        {
+          "name": "nan_outside_footprint",
+          "ok": true,
+          "detail": "outside=7111787 nan=7111787 inf=0 zero=0 other=0"
+        },
+        {
+          "name": "catalogue_zero_mass",
+          "ok": true,
+          "detail": "dots_on_catalogue=0"
+        },
+        {
+          "name": "distance_from_catalogue",
+          "ok": true,
+          "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+        },
+        {
+          "name": "reread_sha256",
+          "ok": true,
+          "detail": "a4c91e43c22e0f4ea91e47bb91f0757da245cb47627e71685e60e0dd2dc02af1"
+        }
+      ],
+      "format_validation": {
+        "nan": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        },
+        "zeros": {
+          "crs_matches": true,
+          "shape_matches": true,
+          "transform_matches": true,
+          "dtype_float32": true,
+          "one_band": true,
+          "inside_finite": true,
+          "outside_encoding": true,
+          "range_0_1": true,
+          "binary_unit_mass": true,
+          "zero_catalogue_mass": true,
+          "catalogue_distance_gt_2px": true,
+          "count_37654": true,
+          "gems_gates_pass": true
+        }
+      },
+      "form_note": "h33-h33-2-b2; NEO-OPNS free1d: 37654 standalone TPI-curvature openness ridges (0 H19-5)",
+      "gate_status": "PASS (submission_writer + disk reread + 11/11 gems.gates)",
+      "seed": 0
+    }
+  ]
+}
