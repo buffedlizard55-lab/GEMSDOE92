@@ -120,3 +120,16 @@ These were checked against the implemented families in `gems/*.py` by name and b
   "uniqueness_gate": "literal overlap = 1.0 vs full-footprint witness; interpretation needs decision"
 }
 ```
+
+## 11. Post-review changes on `main` (found during merge)
+
+While merging, `main` gained commits that **claim clearance for KNICKLOQO standalone** (`406638a`, "SUBMISSION READY"). I checked them and did not accept them as stated:
+
+| Claim on `main` | What the repo's own records say | Action in this PR |
+|---|---|---|
+| `SUBMISSION_READY.md`, `docs/BEAT_0_2778.md`, `docs/SUBMIT_NOW.html`, `docs/index_new.html`: "CLEARED FOR SUBMISSION" | KNICKLOQO audit `…-audit.json`: `submission_eligible: false`, `verdict: negative`. `IRREGULARITIES.md` (Fail-Closed rule): "Never raise `0.70` or lower `DOT_FIELD_MAX_SUPPORT` retroactively to make a candidate pass." `README.md` on `main`: "Binding decision — DO NOT SUBMIT any current TIFF." | Correction banner added to each page. Receipts unchanged. |
+| `docs/downloads/knickloqo_submission_run_card.json`: `submission_eligible: true` | Conflicts with the audit receipt above in the same lane | Flagged, not edited (receipts stay as written). |
+| `README.md` SHA-256 for KNICKLOQO `8ad4a8c2…65d91643…` | The file's SHA-256 is `8ad4a8c2…989b63c7…d347` (re-hashed here), and the audit receipt records the same value | README corrected to the verified value. |
+| "Expected Score: 0.28–0.32" | A projection, not a HOLDOUT-DTI or ORGANIZER-CONFIRMED score (protocol rule 3) | Flagged. Not written as a score anywhere in this PR. |
+
+Decision needed from the user (I did not make it): **whether the literal 0.70 gate is binding.** The repo's current rule, and the user's protocol as written, say yes. Under that rule, no file on `main` is cleared. If the user wants a different rule, it must be stated as a protocol change and applied to all lanes, not only KNICKLOQO.

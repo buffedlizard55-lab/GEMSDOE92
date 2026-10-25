@@ -1,7 +1,13 @@
-# Current review — 2026-10-25 (`KNICKLOQO` session; read this block first)
+# Authoritative current repository status — 2026-10-25
 
-**✅ OK TO DOWNLOAD: YES (`10/10` format gates PASS, finite `[0.0, 1.0]`, `0` NaNs); ⛔ OK TO SUBMIT: NO — DIAGNOSTIC ONLY (`verdict: negative` under literal `17GEMSDOE` dense surface; `UNIQUE` under `dual_reading_decision` with `0 / 1,412` public rasters `> 0.70`, max `0.685531 <= 0.70`).**
-Newest unique artifact: `docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif` (`sha256 = 8ad4a8c2cd8e1fd965d91643da6efbe82da8b3668e6dc8e59d193a8302424a7d`, best of three pre-registered arms `standalone`, `uncal`, `dual35`).
+**Research downloads only. DO NOT SUBMIT any current TIFF.** The latest three-pass repository review is [`REVIEW_20261025_REPOSITORY_REVIEW.md`](REVIEW_20261025_REPOSITORY_REVIEW.md). The binding literal registry witness is positive across all 5,167,373 footprint cells; any nonempty candidate has overlap `1.0 > 0.70`, so stop before placement. No new candidate or slot-approved TIF was generated in this review. Hypotheses and holdout were not run; current public uniqueness is not implied by old local/matched-budget records.
+
+The following dated session blocks are **historical evidence snapshots**, not current submission clearance. Matched-budget uniqueness claims below are superseded by [`REVIEW_376A8469.md`](REVIEW_376A8469.md), where they conflict with the literal gate.
+
+# Historical review — 2026-10-25 (`KNICKLOQO` session)
+
+**✅ OK TO DOWNLOAD: YES (`10/10` format gates PASS, finite `[0.0, 1.0]`, `0` NaNs); ⛔ OK TO SUBMIT: NO — DIAGNOSTIC ONLY (`verdict: negative` under literal `17GEMSDOE` dense surface; the previous matched-budget `UNIQUE` label is diagnostic only and does not clear the literal gate).**
+Historical KNICKLOQO research raster: `docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif` (`sha256 = 8ad4a8c2cd8e1fd965d91643da6efbe82da8b3668e6dc8e59d193a8302424a7d`, best of three recorded arms `standalone`, `uncal`, `dual35`; the word “unique” in the historical registry summary refers to matched-budget diagnostics only and does not pass the binding literal overlap gate).
 - **All-Time #1 Static `HOLDOUT-DTI` (`d_cat > 2.0`):** **`0.010788 [0.009468, 0.012201]`** (`gems57-pooled-hide-v2`, `22,663` withheld positives), beating `PROVINCETOE piedbasin` (`0.009711`), `POISSONKNICK qcal` (`0.009684`), `POISSONFLEX` (`0.008824`), `EULERFUSE gravity` (`0.009265`), `COULOMBLOQO standalone` (`0.009220 [0.007933, 0.010683]`) by **`+17.0%` (`+0.001568`, paired 95% CI `[+0.000592, +0.002535]`)**, and `R0` (`0.004006`) by **`+169.3%`**.
 - **Strict Draw-Blind `HOLDOUT-DTI` (`d_cat > 2.0`):** **`0.010958 [0.009675, 0.012337]`** (`+13.1%` over `COULOMBLOQO` `0.009689`).
 - **Strict Draw-Blind Fold-Visible `HOLDOUT-DTI` (`d_visible > 2.0`):** **`0.109043 [0.097872, 0.120534]`**, beating `H19-5` (`0.096757`, paired 95% CI `[+0.004125, +0.020591]`).
