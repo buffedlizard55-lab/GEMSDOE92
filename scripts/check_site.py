@@ -151,11 +151,15 @@ def main() -> int:
     # Recompute the current panel from bytes, not from historical PASS booleans.
     # Both CI and Pages call this entry point; stale status must block publication.
     if INDEX == ROOT / "docs/index.html":
-        from scripts.render_readiness import sync
+        from scripts.render_readiness import build_status, sync
+        from gems.status_contract import check_publication
         try:
             stale = sync(check=True)
             if stale:
                 problems.append("stale current readiness: " + ", ".join(stale))
+            # One on-disk, byte-validated status drives every JSON alias and
+            # generated current banner, including README and the executive guide.
+            problems.extend(check_publication(ROOT, build_status(ROOT)))
         except (OSError, ValueError, KeyError, TypeError) as exc:
             problems.append(f"current readiness failed: {exc}")
 

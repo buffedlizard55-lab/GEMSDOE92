@@ -18,31 +18,6 @@
 > Siblings: [standalone](downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif) (negative, HOLDOUT-DTI 0.013250) · [uncal](downloads/h33-h33-2-b2-LISTRICLOQOuncal-20261025-2962f45f-zeros.tif) (negative, HOLDOUT-DTI 0.013105). **Read [SESSION_PROMPT.md](../SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
 <!-- CURRENT:END -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Current decision — 2026-10-24 UTC
 
 **Existing research TIFFs: OK TO DOWNLOAD for review; DO NOT SUBMIT. No new unique TIFF was generated in this review.** The site's current primary download is the existing SPRINGALIGN artifact; its public-registry uniqueness check is a binding rejection, and its holdout result does not establish live competition performance. The weekly selector/slot was not used.

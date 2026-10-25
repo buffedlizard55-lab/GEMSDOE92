@@ -97,15 +97,16 @@ def build_status(root: Path = ROOT) -> dict:
     bindings = [sample, catalogue, candidate, receipt, card_path, proof_path,
                 root / 'gems/gates.py', root / 'scripts/render_readiness.py']
     return {
-        'schema': 'gemsdoe92-current-readiness.v1',
+        'schema': 'gemsdoe92-current-readiness.v2',
         'evidence_class': 'AUTOMATED-FORMAT-CHECK + REGISTRY-MEASUREMENT; not a score',
         'download_status': 'OK TO DOWNLOAD FOR RESEARCH',
         'submission_status': 'DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT',
         'submission_eligible': False,
         'verdict': 'negative',
-        'new_unique_tiff_generated': True,
-        'experiments_this_review': int(card.get('experiments_used', 0)),
-        'weekly_slots_used_this_review': int(card.get('weekly_slots_used', 0)),
+        'new_unique_tiff_generated': False,  # This publication review stopped before placement.
+        'experiments_this_review': 0,
+        'historical_artifact_experiments': int(card.get('experiments_used', 0)),
+        'weekly_slots_used_this_review': 0,
         'file': relative,
         'raster_sha256': digest,
         'submission_name': card['submission_name'],
@@ -127,7 +128,7 @@ def build_status(root: Path = ROOT) -> dict:
         'blocking_reasons': [
             'DUPLICATE UNDER THE LITERAL REGISTRY RULE: pinned positive support covers the entire footprint.',
             'Matched-budget overlap is diagnostic, not permission to replace the literal rule.',
-            'The completed LISTRICLOQO lane used all 3 experiments and beats KNICKLOQO on paired holdout; literal overlap still blocks promotion.',
+            'The earlier LISTRICLOQO lane used its 3 experiments; this review ran 0 and literal overlap still blocks promotion.',
             'Public dual-reading overlap is 0.690259, below the 0.70 threshold; literal dense-witness overlap is 1.0 and remains binding.',
             'The artifact filename/run card is labelled 2026-10-26, one day after this 2026-10-25 review; chronology is unverified.',
             'No verified submission-page receipt or current weekly-cap evidence is available.',
@@ -141,13 +142,13 @@ def panel(status: dict) -> str:
     reasons = '\n'.join(f'<li>{e(reason)}</li>' for reason in status['blocking_reasons'])
     return f'''{START}
 <section class="readiness-panel" aria-labelledby="current-readiness-heading">
-  <p class="readiness-kicker">GEMSDOE92 · automated submission readiness · LISTRICLOQO lane 2026-10-25</p>
-  <h1 id="current-readiness-heading">Unique research TIFF available. Submission blocked.</h1>
+  <p class="readiness-kicker">GEMSDOE92 · repository audit 2026-10-25 · earlier LISTRICLOQO research download</p>
+  <h1 id="current-readiness-heading">Existing research TIFF available. No new submission cleared.</h1>
   <p><strong>{e(status['download_status'])}</strong><br><strong>{e(status['submission_status'])}</strong></p>
-  <p>The completed LISTRICLOQO lane generated a byte-unique TIFF. It is easy to download, but it is <strong>not eligible to submit</strong>: scientific and registry promotion gates failed.</p>
-  <p><a class="btn" href="{e(status['file'])}" download>Download unique LISTRICLOQO research GeoTIFF (.tif)</a>
-  <a href="SUBMIT.html">Submission guide</a> · <a href="ANALYSIS_20261025_LISTRICLOQO.md">Analysis and limitations</a> ·
-  <a href="downloads/readiness.json">Machine-readable status</a> · <a href="downloads/listric_loqo_run_card.json">Run card</a></p>
+  <p>This review generated <strong>no new TIFF</strong>: the literal registry stop applies before placement. The linked earlier LISTRICLOQO file is format-valid and easy to download, but <strong>not eligible to submit</strong>.</p>
+  <p><a class="btn" href="{e(status['file'])}" download>Download existing LISTRICLOQO research GeoTIFF — DO NOT SUBMIT (.tif)</a>
+  <a href="SUBMIT.html">Submission guide</a> · <a href="REVIEW_20261025_78DB3076.md">Current three-pass audit</a> ·
+  <a href="downloads/readiness.json">Machine-readable status</a> · <a href="downloads/session_78db3076_run_card.json">Final rejection run card</a> · <a href="downloads/listric_loqo_run_card.json">Historical artifact run card</a></p>
   <p>Fresh automated validation: single band, float32, finite values in [0, 1], zero outside the footprint,
   matching CRS, shape and transform. This is local validation, not organizer acceptance.</p>
   <ul>{reasons}</ul>
@@ -283,9 +284,11 @@ def sync(root: Path = ROOT, *, check: bool = False) -> list[str]:
     public_card_path = root / 'evidence/review797e_run_card.json'
     public_card = json.loads(public_card_path.read_text())
     public_card['validator_output'] = status['validator_output']
+    public_card['new_raster_generated'] = status['new_unique_tiff_generated']
+    public_card['historical_artifact_was_generated'] = True
+    public_card['revalidated_by'] = '2026-10-25 repository audit 78db3076; no new scientific evaluation'
     public_card['publication_input_sha256'] = {
         rel: sha256_file(root / rel) for rel in public_card['publication_input_sha256']}
-    public_card['revalidated_by'] = 'f23ca2d2 shared readiness integration; no new scientific evaluation'
     validate_status(public_card, root, status['file'])
     public_text = json.dumps(public_card, indent=2, allow_nan=False) + '\n'
     outputs[public_card_path] = public_text

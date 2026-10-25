@@ -11,9 +11,6 @@ Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withh
 
 <!-- CURRENT-STATUS:END -->
 
-> ## This session's repository review (2026-10-25 UTC)
-> **No new TIFF or experiment was generated; research downloads only, DO NOT SUBMIT or spend a slot.** No lane was assigned and the literal public-raster stop remains binding. The existing LISTRIC research file passes local format checks but fails recorded public dot overlap (`0.710735 > 0.70`) and is dated 2026-10-26, future relative to this review. [Three-pass audit](docs/REVIEW_20261025_ARENA_REPOSITORY.md) · [run card](evidence/review_20261025_arena_run_card.json) · [existing research TIFF](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif).
-
 <!-- CURRENT:BEGIN -->
 > ## Newest lane result — lane LISTRICLOQO / arm `selectcal`
 > **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 1.0000 of its dots lie within 3 px of the dots of 17GEMSDOE full-footprint dense witness (5,167,373 dots), above the 0.70 limit.
@@ -31,6 +28,12 @@ Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withh
 > **Uniqueness** (1,459 registry rasters): worst overlap `1.0000` (limit 0.70), worst |ρ| `0.1434` / surface `0.4685` (limit 0.90). Literal-support reading: 1 raster(s) > 0.70. The literal reading is binding under the current protocol and triggers the duplicate stop.
 > Siblings: [standalone](docs/downloads/h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif) (negative, HOLDOUT-DTI 0.013250) · [uncal](docs/downloads/h33-h33-2-b2-LISTRICLOQOuncal-20261025-2962f45f-zeros.tif) (negative, HOLDOUT-DTI 0.013105). **Read [SESSION_PROMPT.md](SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
 <!-- CURRENT:END -->
+
+> **Current repository audit (2026-10-25, branch `arena/78db3076-gemsdoe92`):** No new TIFF or experiment was made; a freshly SHA-256/Git-blob-verified full-footprint registry witness proves that any nonempty candidate would have 1.0 overlap (limit 0.70). Existing TIFF: **OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT**. [Three-pass research and code review](docs/REVIEW_20261025_78DB3076.md) · [four untried hypotheses](docs/HYPOTHESES_20261025_78DB3076.md) · [fresh automated rejection/run card](docs/downloads/session_78db3076_run_card.json) · [machine-readable site status](docs/downloads/readiness.json). The mandatory new submission-clearable TIFF remains **unfulfilled under the unchanged protocol**; never substitute a renamed or empty raster.
+
+> ## This session's repository review (2026-10-25 UTC)
+> **No new TIFF or experiment was generated; research downloads only, DO NOT SUBMIT or spend a slot.** No lane was assigned and the literal public-raster stop remains binding. The existing LISTRIC research file passes local format checks but fails recorded public dot overlap (`0.710735 > 0.70`) and is dated 2026-10-26, future relative to this review. [Three-pass audit](docs/REVIEW_20261025_ARENA_REPOSITORY.md) · [run card](evidence/review_20261025_arena_run_card.json) · [existing research TIFF](docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif).
+
 
 
 > ## Latest artifact — LISTRIC (artifact label 2026-10-26; reviewed 2026-10-25, future-date irregularity disclosed)
@@ -491,7 +494,7 @@ Main `d6f7ac0` added [RADIODECOUPLE](docs/ANALYSIS_20261025_RADIODECOUPLE.md) an
 
 ## Session Prompt — Authoritative Operating Contract (read at every session start)
 
-The full durable operating contract below is the starting point for all work on this repository. It is preserved verbatim as historical input, not as a claim that any GEMSDOE entry received a verified organizer score or that any current TIFF is submission-cleared. Follow the binding negative decision at the top of this README and the evidence-linked reviews instead.
+The durable operating contract below is a normalized summary of the user brief, not a verbatim transcript or evidence of an organizer score. Read this section and [SESSION_PROMPT.md](SESSION_PROMPT.md) at the start of every session; follow the binding negative decision and evidence-linked reviews above. An explicit lane assignment and a change to the literal registry rule have **not** been supplied in this review.
 
 ### Highest urgency — MUST
 

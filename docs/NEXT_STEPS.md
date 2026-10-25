@@ -1,4 +1,15 @@
-# Next Steps — GEMSDOE92 (Updated 2026-10-25, Post-FLEXMAG Session)
+# Next Steps — GEMSDOE92 (2026-10-25 repository review)
+
+**Binding decision: DO NOT SUBMIT; no new uniqueness-cleared TIFF can be generated while the literal registry rule remains unchanged.** The fresh pinned 17GEMSDOE witness has support throughout the entire valid footprint, so every nonempty candidate overlaps it at 1.0 > 0.70 before placement. [Three-pass review](REVIEW_20261025_78DB3076.md) · [machine-readable run card](downloads/session_78db3076_run_card.json) · [four conditional, untried geological operators](HYPOTHESES_20261025_78DB3076.md). The historical instructions below recommending a selector for prior artifacts do **not** grant submission eligibility.
+
+1. Resolve the policy contradiction explicitly: the user's mandatory new-TIFF goal and unchanged literal >70% overlap stop cannot both be satisfied. Supply a written rule for how to compare dense probability fields to dot sets **and** assign one geological method lane; do not assume the old matched-budget reading is binding.
+2. Obtain training features through an authorized source with verified redistribution rights (the DrivenData data page redirects to login), then restore exact bytes into ignored `.cache/` if an experiment is permitted. GitHub owner mirrors are not proof of license. USGS GeoDAWN is CC0 and DOE GDR INGENIOUS is CC BY, but their binaries are not staged here.
+3. If the stop is resolved, lock an outer spatial holdout and same-instrument best comparator; run individual feature AUC leakage canaries, the shared buffered whole-segment hide/recover evaluation and spatial CI, then pre- and post-placement uniqueness. Use the shared `submission_writer.py` and automated range/footprint/grids checks. Do not equate HOLDOUT-DTI with a competition score.
+4. A separate weekly selector may then consider one artifact within the organizer's three-per-week cap; only the authenticated submission receipt can supply an ORGANIZER-CONFIRMED score. Obtain a Pages integration change so CI gates **live** publication; the current Pages mode is legacy even though CI and a workflow gate exist. No slot used in this review.
+
+---
+
+# Historical Next Steps — Post-FLEXMAG Session (2026-10-25; superseded by binding stop above)
 
 ## Completed this session (FLEXMAG — blind-fault flexure hinge × magnetic ASA)
 - Pre-registered 5 ranked hypotheses (`docs/HYPOTHESES_20261025_FLEXMAG.md`); implemented `gems/flexmag.py` (catalogue-free; 14 leakage canaries, max symmetric AUC 0.566271 ≤ 0.90) + `scripts/build_flexmag_submission.py` (shared evaluator/writer/uniqueness only).

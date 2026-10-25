@@ -35,7 +35,9 @@ def test_generated_status_is_current_and_never_grants_slot():
     status = build_status()
     assert status['format_pass'] is True
     assert status['submission_eligible'] is False
-    assert status['new_unique_tiff_generated'] is True
+    assert status['new_unique_tiff_generated'] is False
+    assert status['experiments_this_review'] == 0
+    assert status['historical_artifact_experiments'] == 3
     assert status['holdout_dti']['evidence_class'] == 'HOLDOUT-DTI'
     assert status['holdout_dti']['evaluator_version'] == 'gems57-pooled-hide-v2'
     assert status['holdout_dti']['withheld_positive_pixels'] == 22663

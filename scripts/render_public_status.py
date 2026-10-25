@@ -30,6 +30,15 @@ def main() -> int:
         if problems or primary is None:
             raise ValueError('; '.join(problems))
         validate_status(card, ROOT, primary)
+        from gems.status_contract import alias_errors
+        from scripts.render_readiness import build_status
+        status = build_status(ROOT)
+        current = json.loads((ROOT / 'docs/downloads/current_submission.json').read_text())
+        problems = alias_errors(status, current, card)
+        if json.loads((ROOT / 'docs/downloads/readiness.json').read_text()) != status:
+            problems.append('readiness.json differs from freshly validated bytes')
+        if problems:
+            raise ValueError('; '.join(problems))
         if not args.check:
             # Compute every edit first: malformed markers must not partly update the site.
             panel = render_status(card)

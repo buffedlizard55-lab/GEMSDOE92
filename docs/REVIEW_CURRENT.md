@@ -11,6 +11,8 @@ Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withh
 
 <!-- CURRENT-STATUS:END -->
 
+**New repository audit — 2026-10-25:** [three-pass review](REVIEW_20261025_78DB3076.md) · [pre-placement rejection/run card](downloads/session_78db3076_run_card.json) · [conditional hypotheses](HYPOTHESES_20261025_78DB3076.md). No new TIFF, experiment, or slot. The file linked above is an older research artifact; never upload it under the literal duplicate stop. Baseline site/test failures have been repaired and one byte-bound status contract now checks all entry points in CI.
+
 **OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT. No new unique TIFF.**
 
 Start with the [current review page](review48.html), [three-pass record](REVIEW_48.md), [fresh automated run card](downloads/review48_run_card.json), and [retrieved-source receipt](downloads/review48_sources.json).
