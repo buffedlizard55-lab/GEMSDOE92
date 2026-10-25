@@ -1,11 +1,13 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-> ## Latest artifact — DRAINAGE-KNICK (2026-10-25)
-> **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`). New byte-unique GeoTIFF; all automated format checks pass, but HOLDOUT-DTI `0.061728 [0.047046, 0.075316]` is below the `0.113316` promotion bar and literal public-registry overlap is `1.0 > 0.70`.
+> ## Repository review — 2026-10-25 UTC
+> **⛔ No current artifact is cleared for a competition slot.** The newest RADIOCONTACT TIFF is available as a **research download only**; its recorded HOLDOUT-DTI is not accepted because its fold predictions were placed using the full-catalogue distance mask, the public registry scan is missing, and the pre-placement uniqueness check is absent. The site-primary link still points to an older COULOMBDM artifact. Do not submit either file.
 >
-> **[Download the validated TIFF](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.zip) · [run card](docs/downloads/gemsdoe92-drainageknick-20261025T120000Z_run_card.json) · [public registry audit](docs/downloads/drainageknick_public_registry.json) · [analysis](docs/ANALYSIS_20261025_DRAINAGE_KNICK.md)
+> [Current review and findings](docs/REVIEW_20261025_REPO.md) · [machine-readable review card](evidence/repo_review_20261025.json) · [RADIOCONTACT research TIFF](docs/downloads/gemsdoe92-radiocontact-20261025T041646Z-zeros.tif) · [RADIOCONTACT run card](docs/downloads/gemsdoe92-radiocontact-20261025T041646Z_run_card.json)
 >
-> SHA-256 `ef6c27e34fe0f28c6e52615a9fc9601c20ada5337203def25ab8753392aef910`; name `GEMSDOE92-DRAINAGE_KNICK-20261025`; note: `DRAINAGE_KNICK terrain+basement+shear; 37654 dots; HOLDOUT-DTI 0.061728; negative`.
+> Local checks for this review: **367 tests passed**; site format gate re-read **63 served TIFFs** successfully; parent-manifest and pinned-parent verification passed. These local technical checks do not establish a competition score, public-registry uniqueness, or organizer acceptance. The recorded RADIOCONTACT value is `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, 22,663 withheld positives, recorded 95% CI `[0.003638, 0.006583]`) but **invalid for promotion until the holdout implementation is corrected and rerun**. It is not `ORGANIZER-CONFIRMED`.
+>
+> Always read [`SESSION_PROMPT.md`](SESSION_PROMPT.md) and this README before project work. Keep a fresh review/current-status block authoritative; historical lane reports below are not current instructions.
 
 
 <!-- KNICKLOQO:BEGIN -->

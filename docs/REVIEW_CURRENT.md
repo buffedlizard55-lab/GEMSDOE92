@@ -1,7 +1,14 @@
-# Current review — 2026-10-25 (`KNICKLOQO` session; read this block first)
+# Current review — repository integrity review (2026-10-25 UTC; read first)
 
-**✅ OK TO DOWNLOAD: YES (`10/10` format gates PASS, finite `[0.0, 1.0]`, `0` NaNs); ⛔ OK TO SUBMIT: NO — DIAGNOSTIC ONLY (`verdict: negative` under literal `17GEMSDOE` dense surface; `UNIQUE` under `dual_reading_decision` with `0 / 1,412` public rasters `> 0.70`, max `0.685531 <= 0.70`).**
-Newest unique artifact: `docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif` (`sha256 = 8ad4a8c2cd8e1fd965d91643da6efbe82da8b3668e6dc8e59d193a8302424a7d`, best of three pre-registered arms `standalone`, `uncal`, `dual35`).
+**⛔ No current artifact is cleared for a competition slot.** The newest RADIOCONTACT raster is research-only. Its recorded holdout used one prediction raster placed with a full-catalogue distance mask and reused across folds, which does not satisfy the required fold-local hide-and-recover protocol. Public-registry uniqueness is also unverified, and the site-primary remains an older COULOMBDM file. See the [current repository review](REVIEW_20261025_REPO.md) and [machine-readable review card](../evidence/repo_review_20261025.json).
+
+Local review checks: **TEST** `367 passed`; **SITE FORMAT GATE** all `63` served TIFFs passed local format/range checks; **PARENT VERIFICATION** passed. These are technical checks, not an organizer score or public uniqueness result. The RADIOCONTACT score in the historical section below is retained as recorded but rejected for promotion until the evaluation design is corrected and rerun.
+
+---
+
+# Historical lane review — 2026-10-25 (`KNICKLOQO` session)
+
+**✅ OK TO DOWNLOAD: YES (historical recorded format gates PASS); ⛔ OK TO SUBMIT: NO — DIAGNOSTIC ONLY.** Earlier `dual_reading_decision` results do not override the literal duplicate stop specified in the project prompt. Historical artifact: `docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif` (`sha256 = 8ad4a8c2cd8e1fd965d91643da6efbe82da8b3668e6dc8e59d193a8302424a7d`, best of three recorded arms `standalone`, `uncal`, `dual35`).
 - **All-Time #1 Static `HOLDOUT-DTI` (`d_cat > 2.0`):** **`0.010788 [0.009468, 0.012201]`** (`gems57-pooled-hide-v2`, `22,663` withheld positives), beating `PROVINCETOE piedbasin` (`0.009711`), `POISSONKNICK qcal` (`0.009684`), `POISSONFLEX` (`0.008824`), `EULERFUSE gravity` (`0.009265`), `COULOMBLOQO standalone` (`0.009220 [0.007933, 0.010683]`) by **`+17.0%` (`+0.001568`, paired 95% CI `[+0.000592, +0.002535]`)**, and `R0` (`0.004006`) by **`+169.3%`**.
 - **Strict Draw-Blind `HOLDOUT-DTI` (`d_cat > 2.0`):** **`0.010958 [0.009675, 0.012337]`** (`+13.1%` over `COULOMBLOQO` `0.009689`).
 - **Strict Draw-Blind Fold-Visible `HOLDOUT-DTI` (`d_visible > 2.0`):** **`0.109043 [0.097872, 0.120534]`**, beating `H19-5` (`0.096757`, paired 95% CI `[+0.004125, +0.020591]`).

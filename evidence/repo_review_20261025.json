@@ -1,0 +1,52 @@
+{
+  "schema": "gemsdoe92-repository-review.v1",
+  "review_date_utc": "2026-10-25",
+  "scope": "repository review; RADIOCONTACT holdout and submission-integrity audit",
+  "experiments_run": 0,
+  "weekly_slots_used": 0,
+  "hypothesis": "RADIOCONTACT radiometric U/K and Th/K alteration-contact gradients, gravity-gradient concordance, and MT conductivity may identify concealed fluid-conducting structures not represented by a scarp catalogue.",
+  "mechanism": "Recorded surface is a percentile-rank product of radiometric ratio-gradient strength, gravity vertical-gradient/E-W derivative concordance, and MT conductivity. Review found that the candidate support was then filtered using the full catalogue instead of each fold's visible catalogue.",
+  "named_non_fault_process": "K-rich ash-fall beds or basin-fill lithologic contacts, playa/evaporite conductivity, and irrigation salinity.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI (recorded, NOT ACCEPTED: fold-local prediction protocol not satisfied)",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 22663,
+    "recorded_value": 0.005065754599997356,
+    "recorded_ci95": [0.0036384110039370888, 0.006582554116880161],
+    "valid_for_promotion": false,
+    "reason": "The builder places one raster using full-catalogue d_cat and reuses it in all folds; the holdout must rebuild catalogue-dependent support from each fold's visible faults."
+  },
+  "correlation_overlap_vs_registry": {
+    "local_scan": {
+      "evidence_class": "REGISTRY-MEASUREMENT (local only)",
+      "rasters_checked": 93,
+      "worst_abs_spearman": 0.047573,
+      "worst_final_dot_overlap_within_3px": 0.241807
+    },
+    "public_registry": "NOT_VERIFIED; run card says no public scan was available",
+    "preplacement_surface_check": "NOT_IMPLEMENTED in the lane builder",
+    "specified_duplicate_stop_result": "NOT_VERIFIED"
+  },
+  "raster_sha256": "026a52ff46d695bb79ae39780c154cba9cc69e039e7d2a4d1fe898c6c0a79345",
+  "validator_output": {
+    "local_site_gate": "PASS",
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "single_band_float32": true,
+    "all_served_zeros_tifs_checked": 63,
+    "interpretation": "Local format validation only; not uniqueness clearance, scientific validation, or organizer acceptance."
+  },
+  "submission_name": "GEMSDOE92-RADIOCONTACT-20261025",
+  "note": "h33-h33-2-b2; RADIOCONTACT: U/K+Th/K alteration x gravity-gradient + MT; 37654 dots d_cat>2px; HOLDOUT-DTI 0.005066 [neg]",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "organizer_confirmed": null,
+  "review_findings": [
+    "full-catalogue candidate placement makes the stored holdout result protocol-invalid",
+    "promotion code compares the static result against a strict fold-visible threshold",
+    "public registry and pre-placement surface uniqueness checks are absent",
+    "site and README foreground different current artifacts",
+    "hypothesis file date is later than its associated artifact timestamp"
+  ]
+}
