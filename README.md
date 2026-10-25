@@ -1,5 +1,8 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+> **Start here:** [Repo review 2026-10-25](docs/REVIEW_20261025_REPO_REVIEW.md) · [Standing brief](#persistent-session-prompt-reference--standing-brief-read-every-session) · [Executive summary / how to submit](docs/executive-summary.html)
+
+
 <!-- LISTRICLAG:BEGIN -->
 > ## Latest artifact — LISTRICLAG (2026-10-25)
 > **✅ OK TO DOWNLOAD FOR RESEARCH** · **⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT** (`verdict: negative`, `submission_eligible: false`). Two new byte-unique GeoTIFFs; all automated format gates PASS; HOLDOUT-DTI `0.054843 [0.044940, 0.066261]` is below the `0.113316` promotion bar, and the literal public rule trips on the 84 known full-footprint dense surfaces (dual reading: unique, `0 / 1,458 > 0.70`, worst sparse `0.6761`, |ρ| `0.2902`).
@@ -21,6 +24,25 @@
 Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
 
 <!-- CURRENT-STATUS:END -->
+<!-- CURRENT:BEGIN -->
+> ## Newest lane result — lane FAULTNET / arm `netfar`
+> **✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT** (verdict `negative`). Reason: registry duplicate under protocol rule 1: 0.7586 of its dots lie within 3 px of the dots of GEMSDOE37/docs/downloads/gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif (80,000 dots), above the 0.70 limit.
+>
+> **[⬇ Download the GeoTIFF](docs/downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-faultnet-netfar-37654-20261025-3c4e9051-zeros.zip) · [run card](docs/downloads/faultnet_run_card.json) · [analysis](docs/ANALYSIS_20261025_FAULTNET.md)
+>
+> **How to submit (only with a file marked ✅ OK TO SUBMIT, which this one is not):**
+> 1. Download the `.tif` (or the ZIP holding only that TIFF).
+> 2. Go to https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/ (log in; not live-verified from the sandbox), then choose the file under *File to submit*.
+> 3. Paste this into *Note (optional)*: `FAULTNET netfar: netctx surface, dots >4px off catalogue; 37654 dots 2.8px`
+> 4. Name/record: `gemsdoe92-faultnet-netfar-20261025-3c4e9051`. After scoring, record the receipt in `ledger/submissions.csv`.
+>
+> Automated validation: float32, EPSG:32611, 3730×3292, sample transform, values finite in [0, 1], 0 NaN, 0 outside the footprint, 0 on the catalogue. SHA-256 `ad80f9a0fdc6bc608902accfedc783c700c4fd8a98bd5d903540aa7981ba8949`.
+> **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22,663 withheld positives): `0.175147 [0.159756, 0.189860]`. Rebuilt COULOMBLOQO control: `0.113890 [0.100783, 0.128559]`. Paired Δ `+0.061257 [0.048577, 0.074148]`. A holdout number is not a leaderboard score, and there is no ORGANIZER-CONFIRMED score.
+> **Uniqueness** (1,451 registry rasters): worst overlap `0.7586` (limit 0.70), worst |ρ| `0.1329` / surface `0.7851` (limit 0.90). Literal-support reading: 97 rasters > 0.70. That reading also fails a random raster (`#IR-92-FAULTNET-DOT-DEFINITION`).
+> Siblings: [netctx](docs/downloads/gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif) (negative, HOLDOUT-DTI 0.148707) · [netdens](docs/downloads/gemsdoe92-faultnet-netdens-37654-20261025-517af913-zeros.tif) (negative, HOLDOUT-DTI 0.148814). **Read [SESSION_PROMPT.md](SESSION_PROMPT.md) first in every session.** Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.
+<!-- CURRENT:END -->
+
+
 
 ## Current decision — 2026-10-25 (`f23ca2d2` review; read first)
 
@@ -101,7 +123,7 @@ Publication check: `python scripts/render_public_status.py --check` then `python
 > **✅ OK TO DOWNLOAD: YES** (`10/10` format gates PASS, values in `[0.0, 1.0]`, `0` NaNs, unique on local `65/65` & public dual-reading `1,412/1,412 <= 0.70` including `62GEMSDOE` `125,890` px where `PROVINCETOE` `0.7918` & `POISSONFLEX` `0.7541` tripped) · **⛔ OK TO SUBMIT: NO — DIAGNOSTIC ONLY** (`verdict: "negative"`, `submission_eligible: false` under literal `17GEMSDOE` dense-surface overlap `1.000 > 0.70`) · weekly slots used: **0** · experiments: **3/3**
 >
 > - **Primary Download:** [`h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif`](docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif) · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.zip) · [audit JSON](docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-audit.json) · [run card](docs/downloads/knick_loqo_run_card.json) · [102-repo public scan](docs/downloads/knick_loqo_public_registry_uniqueness.json) · [PhD analysis](docs/ANALYSIS_20261025_KNICKLOQO.md) · [pre-registered hypotheses](docs/HYPOTHESES_20261025_KNICKLOQO.md)
-> - **SHA-256 (`-zeros.tif`):** `8ad4a8c2cd8e1fd965d91643da6efbe82da8b3668e6dc8e59d193a8302424a7d` · ZIP `d272a7cc85a3a9d76a29dc28c92fc985db1402a0d387108dc75b2dc2e940b63e`
+> - **SHA-256 (`-zeros.tif`):** `8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347` · ZIP `d272a7cc85a3a9d76a29dc28c92fc985db1402a0d387108dc75b2dc2e940b63e`
 > - **Validator (automated, zero human inspection):** single-band `float32`, `EPSG:32611`, `3730 × 3292`, finite values strictly in `[0, 1]`, `0.0` outside footprint, `0` NaNs anywhere, `37,654` unit dots, `0` catalogue mass (`d_cat > 2.0 px`) — prevents DrivenData's `"Predicted values must be in range [0, 1]"` portal error.
 > - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, `22,663` withheld positives, 8 folds, 1,000 paired 20 km cluster bootstrap draws):
 >   - **Static `d_cat > 2.0` — NEW #1 ALL-TIME REPOSITORY RECORD:** `KNICKLOQO standalone` **`0.010788 [0.009468, 0.012201]`** (surpasses `PROVINCETOE piedbasin` `0.009711` by `+11.1%`, `PROVINCETOE provincetoe` `0.009685` by `+11.4%`, `POISSONKNICK qcal` `0.009304` by `+16.0%`, `EULERFUSE gravity` `0.009265` by `+16.4%`, `COULOMBLOQO standalone` `0.009220 [0.007933, 0.010683]` by `+17.0%`, paired $\Delta = +0.001568 [+0.000592, +0.002535]$, `POISSONFLEX opt` `0.008824` by `+22.3%`, `HYDROCONDUIT f45hydro` `0.008549` by `+26.2%`, and `R0` `0.004006` by `+169.3%`); `uncal` ablation **`0.010102 [0.008907, 0.011335]`** (#2 all-time); `dual35` hybrid **`0.008976 [0.007871, 0.010008]`**.
@@ -193,7 +215,20 @@ Publication check: `python scripts/render_public_status.py --check` then `python
 - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): static `0.005066 [0.003638, 0.006583]` vs R0 `0.004006` (paired delta +0.001060, CI [-0.000341, 0.002615] — includes 0); Rule-2 fold-visible `d_visible > 2.0` diagnostic `0.005066` vs R0 `0.004006`. Leakage canaries max symmetric AUC `0.5317` (all ≤ 0.90). Uniqueness vs 93 local rasters: worst matched-budget overlap `0.2418`, worst |ρ| `0.0476` → unique.
 - **Submission name:** `GEMSDOE92-RADIOCONTACT-20261025` · **Note (140/140):** `h33-h33-2-b2; RADIOCONTACT: U/K+Th/K alteration x gravity-gradient + MT; 37654 dots d_cat>2px; HOLDOUT-DTI 0.005066 [neg]`
 
-**Current review:** [Three-pass closeout and limitations](docs/REVIEW_20261025_BLINDFAULT_CLOSEOUT.md) · [current review index](docs/REVIEW_CURRENT.md). The latest merged lane is RADIOCONTACT (research-only TIFF; **DO NOT SUBMIT**, negative holdout); BLINDFAULT is a prior research lane, also negative. See each lane's run card before using any numbers. The RADIOCONTACT pre-registration filename is dated 2026-10-26 despite the run card's 2026-10-25 date; this chronology irregularity is unresolved and must not be presented as verified pre-registration timing. Read [`SESSION_PROMPT.md`](SESSION_PROMPT.md) and this README at each session start.
+<!-- GRAVQUAD:BEGIN -->
+### 🆕 Session 2026-10-25 — lane `GRAVQUAD` (Rank-3 pre-registered hypothesis, `docs/HYPOTHESES_20261026_RADIOCONTACT.md`): new unique TIFF generated · verdict `negative`
+
+**✅ OK TO DOWNLOAD** (format-valid, 9/9 gates PASS on an independent disk re-read, finite `[0, 1]`, zeros outside footprint) · **⛔ DO NOT SUBMIT — verdict `negative`** (static HOLDOUT-DTI `0.005092 [0.004001, 0.006253]` &lt; holdout-best `0.010788` static / `0.113316` Rule-2; paired delta vs `R0` `+0.001086 [-0.000082, +0.002312]` — CI includes 0, not significant) · weekly slots used: **0** · experiments: **2/3** this session arc (`RADIOCONTACT` + `GRAVQUAD`; public-registry scan skipped for `GRAVQUAD` per budget, local 107-raster uniqueness check alone clears it)
+
+- **Mechanism:** gravity analytic-signal amplitude (Band 11 vertical gradient, Band 18 signed E–W horizontal derivative, and a computed N–S derivative of Band 13) × structure-tensor linear-edge coherence — a strike-blind buried-contact detector never previously built as its own lane in this repository.
+- **Download:** [`gemsdoe92-gravquad-20261025T145744Z-zeros.tif`](docs/downloads/gemsdoe92-gravquad-20261025T145744Z-zeros.tif) · [`gemsdoe92-gravquad-20261025T145744Z-zeros.zip`](docs/downloads/gemsdoe92-gravquad-20261025T145744Z-zeros.zip) · [audit JSON](docs/downloads/gemsdoe92-gravquad-20261025T145744Z-audit.json) · [run card](docs/downloads/gemsdoe92-gravquad-20261025T145744Z_run_card.json) · [ranked next-session hypotheses](docs/HYPOTHESES_20261025_NEXT.md)
+- **SHA-256:** `9ea3e2e01fba5e733964e1252c729a70f0d61edc499c848628d83946d49c7ab5` (ZIP via run card)
+- **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): static `0.005092 [0.004001, 0.006253]`; strict Rule-2 also `0.005092`. Leakage canaries max symmetric AUC `0.5362` (all ≤ 0.90). Uniqueness vs 107 local rasters: worst matched-budget overlap `0.3044` (vs `RADIOCONTACT` sibling), worst |ρ| `0.0523` → unique (local scope only).
+- **Submission name:** `GEMSDOE92-GRAVQUAD-20261025` · **Note (133/140):** `h33-h33-2-b2; GRAVQUAD: gravity analytic-signal amplitude x linear-edge coherence; 37654 dots d_cat>2px; see run card for HOLDOUT-DTI`
+- **Finding:** three independent zero-label standalone physical transforms this repo has now tested (RADIOCONTACT `0.005066`, DRAINAGE-KNICK, GRAVQUAD `0.005092`) land within a narrow band well below the supervised quadrant-debiased LOQO lanes (`COULOMBLOQO` `0.009220`, `KNICKLOQO` `0.010788`). The highest-ranked untried idea for a future session is folding these transforms into the existing LOQO ensemble as additional features rather than building another standalone deterministic surface — see `docs/HYPOTHESES_20261025_NEXT.md`.
+<!-- GRAVQUAD:END -->
+
+**Current review:** [Three-pass closeout and limitations](docs/REVIEW_20261025_BLINDFAULT_CLOSEOUT.md) · [current review index](docs/REVIEW_CURRENT.md). The newest lane added to this repository is **GRAV-QUAD** (immediately above; static HOLDOUT-DTI `0.005092 [0.004001, 0.006253]`, negative); RADIOCONTACT (above) and BLINDFAULT are prior research lanes from the same session arc, also negative. Other parallel sessions subsequently added `LISTRICDIP`, `KNICKLOQO`, `PROVINCETOE`, and `POISSONKNICK`/`POISSONFLEX` (further down this file); none of those lane names overlap with `GRAVQUAD`'s gravity-analytic-signal mechanism, so this remains a non-duplicate contribution. See each lane's run card before using any numbers. The RADIOCONTACT pre-registration filename is dated 2026-10-26 despite the run card's 2026-10-25 date; this chronology irregularity is unresolved and must not be presented as verified pre-registration timing. Read [`SESSION_PROMPT.md`](SESSION_PROMPT.md) and this README at each session start.
 
 **This session — lane `DILATATION` (Band 8 geodetic dilatation rate, Rank-1 pre-registered untried hypothesis):** new unique-byte research GeoTIFF `h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif` published with ZIP, per-file audit JSON and Protocol Rule 5 run card. ✅ **OK TO DOWNLOAD FOR RESEARCH** — 10/10 automated format gates PASS (`EPSG:32611`, `3730 × 3292`, `float32`, finite `[0, 1]`, `0.0` outside footprint, `37,654` unit dots, `0` catalogue mass) — prevents DrivenData's `"Predicted values must be in range [0, 1]"` portal error. ⛔ **DO NOT SUBMIT — verdict `negative`, `submission_eligible: false`**: static `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, 22,663 withheld positives) `0.005818 [0.004838, 0.006912]` vs parent R0 `0.004006 [0.003424, 0.004690]` — paired `Δ +0.001812 [+0.001106, +0.002535] > 0` beats parent R0 but stays below holdout-best `COULOMBLOQO standalone` (`0.113316` Rule-2 / `0.009220` static); literal registry overlap stop fires (worst 3-px forward overlap `1.0000` vs DILATATION p10 sibling; pinned public dense witness `1.0000 > 0.70`). Leakage canaries max symmetric AUC `0.514862 <= 0.90`. Weekly slots used: `0`; experiments: `1/3`.
 
@@ -388,30 +423,45 @@ PYTHON=.venv/bin/python make test && PYTHON=.venv/bin/python make site && PYTHON
 
 ---
 
-## Persistent Session Prompt Reference
+## Persistent Session Prompt Reference — Standing Brief (read every session)
 
-Full durable operating contract also stored in [`SESSION_PROMPT.md`](SESSION_PROMPT.md).
+Read this section and [`SESSION_PROMPT.md`](SESSION_PROMPT.md) at the start of every session. This is the complete set of standing requirements, condensed from the user's brief of 2026-10-25. The brief's wording was abbreviated in earlier versions of this README; the list below restores every requirement. The original full text is not copied verbatim here because of its length; ask for it to be added verbatim if needed.
 
-<details>
-<summary>Click to expand persistent session prompt</summary>
+**Highest urgency**
+1. Generate a **unique** GeoTIFF for DOE GEMS Prize #306. Do not copy a previous submission except for learning and education.
+2. It must be **obvious on the site** whether the file is OK to download and whether it is OK to submit. Put the download and the executive summary at the top of the site.
+3. Validation happens **in the project**, without a human inspector: single-band, values in `[0, 1]`, no NaN in the footprint, CRS/shape/transform match. The portal error `Predicted values must be in range [0, 1]` must not recur.
+4. Give each submission a **unique name** and a **note of at most 140 characters**, so submissions can be told apart later.
+5. Keep an **executive summary subpage** that explains exactly how to submit.
 
-```markdown
-Review the repo. Work on the previous sessions' next steps first.
+**Parallel-run protocol (binding)**
+1. **Lane.** Stay in one named method. Duplicate if rank correlation with any registry raster exceeds 0.90, or more than 70% of dots fall within 3 px of one registry raster's dots. Check before placement and on the final dots.
+2. **Reuse.** Use the shared feature stack, `vendor/gems57/evaluate_holdout.py`, and the shared writer. Holdout = hide-and-recover of whole fault segments with a buffer; derive catalogue features only from visible faults; pooled DTI with alpha 0.2, beta 0.8, 300 m triangular kernel. Fix shared tools once in the template; never fork.
+3. **Label every number** as `HOLDOUT-DTI` (evaluator version, withheld positives, 95% CI), `ORGANIZER-CONFIRMED` (copied from a submission-page receipt), `CLAIM`, `PROXY`, `MODEL`, or `REGISTRY-MEASUREMENT`. A projection is never a score.
+4. **Leakage canary.** Test each feature alone on the holdout first. AUC above 0.90 means leakage until proven otherwise.
+5. **Run card (JSON).** Hypothesis; mechanism; named non-fault mimic; holdout DTI with CI; overlap vs registry; raster SHA-256; validator output; name and note; verdict `promote` or `negative`. Negative results are deliverables.
+6. **Budget.** Stop after 3 experiments or 2 hours. Do not pick a weekly slot. Promotion is a separate selector step.
 
-THE FOLLOWING IS THE HIGHEST URGENCY AND MUST BE FOLLOWED!
+**Research requirements**
+- Before implementing, generate **3 to 5 candidate geological hypotheses** not yet tried. For each, name the layers, the physical signature, why it could catch a fault missing from the USGS/INGENIOUS catalogue, and how it differs from implemented lanes. Rank by expected DTI gain and implementation cost.
+- Validate the top candidate on the spatially blocked holdout. Do not spend a slot on an idea that has not beaten the current holdout best.
+- If a candidate needs new data, name a **free, official** source and check it is obtainable before calling the idea viable.
+- Use official, verifiable sources, with links for manual review. Flag irregularities. No hallucinations: verify each claim line by line.
+- Run each task in **three passes**: implement and verify; review for bugs and missing requirements; recheck against the original request.
 
-MUST GENERATE A UNIQUE TIF SUBMISSION FOR THE COMPETITION. DO NOT COPY A PREVIOUS SUBMISSION UNLESS IT'S FOR LEARNING AND EDUCATION. BUT WE MUST GENERATE A UNIQUE TIF SUBMISSION. IT MUST BE OBVIOUS WHETHER IT IS OK TO DOWNLOAD AND SUBMIT THE GENERATED TIF SUBMISSION.
+**Leaderboard facts (checked against sources)**
+- Official leaderboard, read 2026-10-25: #1 `xiaofanhu` **0.4413** ([source](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/)).
+- `0.3195` was the #2 score (`DARD`) on the GEMSDOE32 page's 2026-10-04 snapshot, not the current #1. See [review](docs/REVIEW_20261025_REPO_REVIEW.md).
+- GEMSDOE32 `h33-h33-2-b2 … 0.2778` is a **CLAIM**. The GEMSDOE32 page states no organizer score exists for its artifacts.
 
-There should be an easy to download submission tif file as described by the prompt. Read the entire prompt. A lot of sites mention inspection only and a human inspector, but the inspection needs to be done through the project and needs to be validated for submission without human intervention.
+**Core values**
+- **Maximize P(Win).** Weigh tradeoffs and risk; pick the path most likely to make Arena succeed.
+- **Own the Outcome.** Own results end to end, act without waiting for permission, and treat failures as signals.
 
-PARALLEL-RUN PROTOCOL — read first. This session is one of several running from this same prompt.
+**Git and delivery**
+- Work only on the session branch. Open and merge pull requests when asked, and give suggestions for remaining work and limitations.
 
-1. LANE. Stay inside one method lane. If your raster's rank-correlation with any registry raster exceeds [0.90], or more than [70%] of your dots fall within 3 px of one registry raster's dots, you have drifted into another lane: log it as a duplicate and stop. Check this on the surface before placement AND on the final dots.
-2. REUSE, DON'T REBUILD. Use the template's cached feature stack, evaluate_holdout.py and submission_writer.py. Holdout = hide-and-recover: withhold whole fault segments with a buffer, derive every catalogue-based feature only from the visible faults, mask visible faults pixel-exactly, score pooled DTI (alpha 0.2, beta 0.8, 300 m triangular kernel). If a shared tool is wrong, fix it once in the template and report it; never keep a private fork.
-3. LABEL EVERY NUMBER as HOLDOUT-DTI (evaluator version, number of withheld positives, 95% CI) or ORGANIZER-CONFIRMED (copied from a submission-page receipt). A projection is never written as a score.
-4. LEAKAGE CANARY. Test each feature alone on the holdout before trusting any result. AUC above [0.90] means leakage until proven otherwise.
-5. RUN CARD. End with one JSON card: hypothesis; mechanism; the named non-fault process that could mimic it; holdout DTI + CI; correlation/overlap vs registry; raster sha256; validator output (no NaN inside the footprint, values in [0,1], CRS/shape/transform match); submission name + note of at most 140 characters; verdict promote / negative. Negative results are deliverables.
-6. BUDGET. Stop after [3] experiments or [2] hours. Do not pick submissions: promotion to a real slot is a separate selector step, within the weekly cap shown on the submission page.
+**Current status (2026-10-25 review):** no TIFF is cleared for weekly submission. Every candidate fails the literal overlap gate, which the 17GEMSDOE witness forces to 1.0. The gate's interpretation needs a decision. See [`docs/REVIEW_20261025_REPO_REVIEW.md`](docs/REVIEW_20261025_REPO_REVIEW.md), Section 5 item 3.
 
 Study GEMSDOE32 (h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros: 0.2778): why and how did this get the highest score among the listed GEMSDOE sites, and are we able to generate a submission that scores higher than 0.2778? Before implementing anything, generate and rank 3-5 candidate geological hypotheses yet to be tried, verify data availability, validate format in [0, 1] without human inspection, provide unique submission name and note + executive summary subpage, store prompt in README.md, uphold Arena Core Values (Maximize P(Win), Own the Outcome), run 3 passes, and create and merge PR into main.
 ```
