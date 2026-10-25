@@ -118,7 +118,8 @@ def test_faultnet_lane_is_explicitly_negative_while_site_status_remains_authorit
     readme_status = readme.split("### Persisted user brief", 1)[0]
     assert "Authoritative decision" in readme_status
     assert "OK TO DOWNLOAD FOR RESEARCH" in readme_status and "DO NOT SUBMIT" in readme_status
-    assert "REVIEW_20261025_FRESH_AUDIT.md" in readme_status
+    assert "REVIEW_20261025_AGENT_AUDIT.md" in readme_status
+    assert "48e4797d" in readme_status
     assert "CURRENT-READINESS:BEGIN" in index
     site_status = index.split("<!-- CURRENT-READINESS:BEGIN -->", 1)[1].split("<!-- CURRENT-READINESS:END -->", 1)[0]
     assert "OK TO DOWNLOAD FOR RESEARCH" in site_status and "DO NOT SUBMIT" in site_status

@@ -1,9 +1,9 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-> ## Authoritative decision — review `7059163e` (2026-10-25), locally rechecked
+> ## Authoritative decision — review `48e4797d` (2026-10-25), locally rechecked
 > **✅ OK TO DOWNLOAD FOR RESEARCH · ⛔ DO NOT SUBMIT / DO NOT SPEND A WEEKLY SLOT.** The existing LISTRICDIP TIFF is format-valid but fails the binding literal registry-overlap stop: **REGISTRY-MEASUREMENT** overlap `1.0` against one pinned full-footprint witness (`0.70` limit). No new TIFF, geological experiment, HOLDOUT-DTI result, organizer receipt, or weekly-slot use was produced by the latest protocol review. The unique submission request remains unfulfilled.
 >
-> **[Download existing research TIFF](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif)** · [latest three-pass review and ranked hypotheses](docs/REVIEW_7059163E.md) · [fresh repository audit](docs/REVIEW_20261025_FRESH_AUDIT.md) · [automated run card](docs/downloads/review705_run_card.json) · [executive summary — submission instructions](docs/executive-summary.html).
+> **[Download existing research TIFF](docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif)** · [latest review and four ranked hypotheses](docs/REVIEW_48.md) · [clean current review page](docs/review48.html) · [fresh repository audit](docs/REVIEW_20261025_AGENT_AUDIT.md) · [automated run card](docs/downloads/review48_run_card.json) · [executive summary — submission instructions](docs/executive-summary.html).
 >
 > This is not submission clearance. Format validation does not establish scientific validity or competition acceptance. Historical lane results below are not current eligibility decisions.
 
@@ -43,7 +43,7 @@ The fetched official reference explicitly supports CPU-only training; the suppli
 
 
 
-## Repository review — 2026-10-25 (`7059163e`)
+## Prior protocol review — 2026-10-25 (`7059163e`; superseded by review `48e4797d`)
 
 **New submission objective remains blocked, not completed.** Independently fetched and hash-checked registry bytes require stopping before placement. No new TIFF was generated, copied, or selected. The downloadable file above is an existing, automatically format-validated research artifact.
 

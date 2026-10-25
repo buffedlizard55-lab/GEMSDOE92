@@ -51,13 +51,15 @@ def test_readme_first_screen_cannot_promote_historical_lane_or_score():
     assert 'DO NOT SPEND A WEEKLY SLOT' in first_screen
     assert 'New unique-byte GeoTIFFs' not in first_screen
     assert 'HOLDOUT-DTI `0.010909' not in first_screen
-    assert 'docs/REVIEW_20261025_FRESH_AUDIT.md' in first_screen
+    assert 'docs/REVIEW_20261025_AGENT_AUDIT.md' in first_screen
+    assert 'review `48e4797d`' in first_screen
 
 
 def test_session_prompt_points_to_latest_audit_before_history():
     prompt = (ROOT / 'SESSION_PROMPT.md').read_text()
     first_addendum = prompt.split('---', 1)[0]
-    assert 'docs/REVIEW_20261025_FRESH_AUDIT.md' in first_addendum
+    assert 'docs/REVIEW_20261025_AGENT_AUDIT.md' in first_addendum
+    assert 'docs/REVIEW_48.md' in first_addendum
     assert 'No new TIFF' in first_addendum
 
 
