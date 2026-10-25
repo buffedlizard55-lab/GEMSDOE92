@@ -123,7 +123,8 @@ def lane_surface(det_elev: np.ndarray, det_elev_slope: np.ndarray,
 
 
 def spaced_top_mask(surface: np.ndarray, cand_mask: np.ndarray, n: int,
-                    min_dist_px: float = 2.8, cand_cap: int = 400_000) -> np.ndarray:
+                    min_dist_px: float = 2.8, cand_cap: int = 400_000,
+                    require_full: bool = True) -> np.ndarray:
     """Top-``n`` candidate pixels by surface value under a spacing floor.
 
     Deterministic greedy scan in descending surface order (stable, so ties
@@ -171,7 +172,7 @@ def spaced_top_mask(surface: np.ndarray, cand_mask: np.ndarray, n: int,
             yy, xx = y + dy, x + dx
             if 0 <= yy < height and 0 <= xx < width:
                 blocked[yy, xx] = True
-    if count != n:
+    if count != n and require_full:
         raise ValueError(f"spaced_top_mask: selected {count} of {n} requested dots "
                          f"(candidate cap {cand_cap}, spacing floor {min_dist_px} px)")
     return chosen

@@ -1,0 +1,15 @@
+{
+  "evidence_file": "evidence/radiodecouple_public_registry.json",
+  "candidate_hash_matches_scan": true,
+  "candidate_sha256_zeros": "2531cf488b0d944d24cf0e3cf0bef7f400a5580cf7d0b0f0649c0dd74b57a2f3",
+  "matching_public_repositories": 102,
+  "registries_checked": 1370,
+  "unique_under_literal_rule": false,
+  "stop_required": true,
+  "worst_forward_overlap": 1.0,
+  "worst_overlap_raster": "17GEMSDOE/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+  "worst_abs_spearman": 0.38421,
+  "sparse_le_150k_count_over_70pct": 0,
+  "sparse_le_150k_worst_forward_overlap": 0.658214,
+  "scope": "Current public default branches; unique Git blobs; literal duplicate stop triggered on dense witness."
+}

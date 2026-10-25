@@ -1,0 +1,75 @@
+{
+  "schema": "gemsdoe92-listricdip-audit.v1",
+  "file": "docs/downloads/gemsdoe92-listricdip-anti22-9571-20261025T190000Z-zeros.tif",
+  "sha256_zeros": "e0ac50406507671417d64375869b75ba9c9b32ceae55562594649dba3dae6128",
+  "sha256_nan": null,
+  "n_dots": 9571,
+  "n_positive_pixels": 9571,
+  "overall_pass": true,
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "e0ac50406507671417d64375869b75ba9c9b32ceae55562594649dba3dae6128"
+    }
+  ],
+  "gates_zeros_pass": true,
+  "gates_nan": [],
+  "gates_nan_pass": false,
+  "submission_eligible": false,
+  "verdict": "negative",
+  "note": "LISTRICDIP anti22: 9571 listric-offset dots; HOLDOUT-DTI 0.001291; negative",
+  "submission_name": "GEMSDOE92-LISTRICDIP-anti22-20261025",
+  "run_card": "evidence/listricdip_run_card.json",
+  "role": "research sibling; not the site primary; not a slot recommendation"
+}

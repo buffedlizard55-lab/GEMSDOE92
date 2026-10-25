@@ -147,3 +147,18 @@ Submission name `GEMSDOE92-LISTRICLAG-20261025`; note (121/140):
 holdout bar by −0.058 (and the lag mechanism itself is rejected by its own
 ablation). 0 weekly slots spent. Both TIFs are OK TO DOWNLOAD FOR RESEARCH
 (all automated format gates PASS) and **NOT OK TO SUBMIT**.
+
+---
+
+## 4. Post-merge parallel-lane collision check (added after origin/main advanced mid-session)
+
+While this session ran, parallel sessions merged 7 new rasters to `main`
+(LISTRICDIP ×3 — thematically adjacent "listric updip offset" lane —
+RADIODECOUPLE ×3, CURIEDEMAG ×1). Measured against this session's final
+dots (REGISTRY-MEASUREMENT, recorded in the run card): worst 3 px overlap
+**0.3410** (radiodecouple-dual35), vs LISTRICDIP updip50 **0.2777**;
+worst |ρ| **0.0522**. All ≤ 0.70 / ≤ 0.90 ⇒ **no duplicate; lanes
+mechanically distinct despite the thematic adjacency** (LISTRICDIP shifts
+dots updip from a dip model; LISTRICLAG couples an annulus-max scarp term
+into the ranking surface). Flagged for the shared-template selector as a
+lane-naming adjacency to watch in future parallel assignments.

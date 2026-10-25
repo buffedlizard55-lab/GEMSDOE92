@@ -287,6 +287,43 @@
       "preplacement_worst_abs_spearman": 0.290166,
       "dual_reading_verdict": "unique (0 / 1,458 > 0.70 on operative reading; <= 0.90 rho)",
       "literal_rule_verdict": "negative - 84 full-footprint dense surfaces fire literal 1.0 against every nonempty raster incl. parent R0; fail-closed"
+    },
+    "post_merge_parallel_lane_check": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "note": "Post-merge collision check against 7 rasters merged to main by parallel sessions while this session ran (LISTRICDIP x3, RADIODECOUPLE x3, CURIEDEMAG x1). Flag: LISTRICDIP is thematically adjacent (listric updip offset) but mechanically distinct \u2014 measured non-duplicate.",
+      "rows": {
+        "gemsdoe92-listricdip-updip50-37654": {
+          "overlap": 0.2777,
+          "rho": 0.0251
+        },
+        "gemsdoe92-listricdip-anti22-9571": {
+          "overlap": 0.0112,
+          "rho": -0.0448
+        },
+        "gemsdoe92-listricdip-anti35-9555": {
+          "overlap": 0.011,
+          "rho": -0.0442
+        },
+        "gemsdoe92-radiodecouple-standalone-37654": {
+          "overlap": 0.281,
+          "rho": 0.0436
+        },
+        "gemsdoe92-radiodecouple-dual35-37654": {
+          "overlap": 0.341,
+          "rho": 0.0522
+        },
+        "gemsdoe92-radiodecouple-demag-37654": {
+          "overlap": 0.3134,
+          "rho": 0.0471
+        },
+        "gemsdoe92-curiedemag-20261026": {
+          "overlap": 0.2317,
+          "rho": 0.0108
+        }
+      },
+      "worst_overlap": 0.341,
+      "worst_abs_rho": 0.0522,
+      "duplicate": false
     }
   },
   "raster_sha256": "a301cbfc970861c65f8001d0e1a3ecc1dca76c48699d4fdbd56d6768d2405b4c",
