@@ -1,0 +1,56 @@
+{
+  "schema": "gemsdoe92-run-card.v1",
+  "review_date_utc": "2026-10-26",
+  "session_branch": "arena/977778c1-gemsdoe92",
+  "lane": null,
+  "hypothesis": "No new experiment authorized: this session supplied no single named method paragraph, and the binding literal pre-placement stop rejects every nonempty candidate. Review-and-fix only.",
+  "mechanism": "No new mechanism implemented. Repaired three pre-existing site/README contract defects so the published status matches the fail-closed evidence.",
+  "named_non_fault_process_that_could_mimic_it": null,
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "status": "not run in this review; no new number produced",
+    "existing_primary_for_context": {
+      "lane": "LISTRICLOQO selectcal",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positives": 22663,
+      "dti": 0.013295,
+      "ci95": [0.011713, 0.014980],
+      "source": "docs/downloads/listric_loqo_run_card.json (copied, not rerun)"
+    }
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "status": "not refreshed in this review",
+    "literal_full_footprint_witness_overlap": 1.0,
+    "thresholds": {"absolute_spearman_stop": 0.90, "forward_dot_overlap_stop": 0.70},
+    "duplicate": true,
+    "verdict": "negative; literal stop applies"
+  },
+  "raster": {
+    "generated_by_this_review": false,
+    "current_primary": "docs/downloads/h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif",
+    "current_primary_sha256": "58e5d780f3602e17adef92df9877f581c922e3621b0fc1b853e623e95c048b17"
+  },
+  "validator_output": {
+    "validation_class": "local format/range preflight; not organizer acceptance or submission clearance",
+    "pytest_before_fix": "539 passed, 3 failed",
+    "pytest_after_fix": "542 passed, 140 warnings",
+    "check_site": "SITE CHECK PASS (93 served raster(s) gated)",
+    "render_public_status_check": "PASS",
+    "manifest": "8/8 OK",
+    "parent_verify": "PARENT VERIFIED (pinned artefact) h33-h33-2-b2 sha256 c55bafc47005...",
+    "primary_format": "FORMAT PASS (local only) via validate_submission.py"
+  },
+  "fixes": [
+    "README.md: removed contract-forbidden phrase 'preserved verbatim as historical input'",
+    "docs/index.html: linked served TILTANGLE zeros-outside TIFF (was unlinked)",
+    "docs/tiltangle.html: wrapped content in exactly one <main> element"
+  ],
+  "submission_name": null,
+  "note": null,
+  "experiments_used": "0/3",
+  "weekly_slots_used": 0,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "organizer_confirmed": null
+}
