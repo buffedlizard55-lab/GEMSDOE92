@@ -1,10 +1,35 @@
+## Current review addendum — 2026-10-25 (`797e507a`)
+
+Read `docs/REVIEW_797E507A.md` before older session-result addenda. This review generated no new TIFF and used no experiment or slot: a fresh pinned universal registry witness requires a stop. Preserve literal overlap, not matched-budget reinterpretations. The existing LISTRICDIP primary inherited from parallel main is research-only. Three public entry pages must have the generated authoritative status first; CI/Pages check byte pins and ordering. The unique-TIF objective remains unfulfilled. Persistent requirements in this file and the README are a normalized operating brief, not a verbatim user-message archive.
+
+---
+
 # Session prompt — GEMSDOE92
 
+
+## Current review — 2026-10-25 (`f23ca2d2`)
+
+Read the README's current-decision and persisted-brief sections first, then [REVIEW_F23.md](docs/REVIEW_F23.md). No new TIFF or geological experiment was generated. The literal overlap stop remains binding; historical matched-budget uniqueness does not supersede it. The shared validator now enforces the requested clearance radius without an automatic override. A byte-bound status feed and collapsed historical UI prevent old record claims from competing with the current decision. The prompt's new unique, submission-cleared TIFF requirement is still unmet. No new lane paragraph or organizer receipt was supplied. No weekly slot was spent.
+
+
 Read this at the start of every session, together with `README.md`. The README is the short executive summary; this file is the durable project operating contract. Preserve the user's goals: a unique, easy-to-download submission GeoTIFF, automated format validation, transparent evidence, and no hallucinated claims.
+
+## Current session status — 2026-10-25 (`LISTRICDIP`)
+
+The newest completed lane is `LISTRICDIP`. Three research GeoTIFFs were generated. Static HOLDOUT-DTI for `updip50` is `0.005420 [0.004294, 0.006551]` (`gems57-pooled-hide-v2`, 22,663 withheld positives). It beats `R0` and loses to the stored holdout best (`KNICKLOQO` `0.010788`). Verdict `negative`. OK to download for research. Not OK to submit. Literal dense-witness overlap is 1.0. The `376a8469` note that no new TIFF existed applied to that review, not to this lane. The literal overlap gate is still binding. Read the run card `evidence/listricdip_run_card.json` before trusting any older banner that calls itself newest.
 
 ## Current binding clarification — 2026-10-25 (`376a8469`)
 
 Read [the protocol-gate review](docs/REVIEW_376A8469.md) first. The literal overlap gate is binding for every raster. The later historical BLINDFAULT addendum claiming an automatic policy resolution is **superseded**: matched-budget overlap remains diagnostic only. A freshly pinned witness proves all nonempty candidates fail the unchanged rule. Stop rather than fabricate a new eligible TIFF. No new method lane was specified or tested in this review. Full operating requirements remain in the README's persistent session prompt and below; read both at every session start.
+
+## FAULTNET closeout — 2026-10-25 (read with the clarification above)
+
+FAULTNET (catalogue-network context + COULOMBLOQO physics) holds the best **HOLDOUT-DTI** in the repository:
+netfar `0.175147 [0.159756, 0.189860]` (gems57-pooled-hide-v2, 22,663 withheld positives) against the rebuilt control at `0.113890`.
+It is **NOT** cleared, because its final dots are a literal rule-1 duplicate against over-budget dot fields (worst 0.7586,
+GEMSDOE37 80k). A ridge-gated random null scores 0.4949, so the gate is specific. Do not waive it. The binding literal reading above stands.
+Both readings fail. See `docs/ANALYSIS_20261025_FAULTNET.md`. The site's top block is rendered by
+`scripts/render_current_submission.py` from `docs/downloads/current_submission.json`. Re-render it after any new run.
 
 ## Mission
 

@@ -41,7 +41,9 @@ def test_index_has_download_and_slot_warning():
     # evidence discipline: holdout numbers must be labelled, and not dressed as scores
     assert "HOLDOUT-DTI" in html
     first_holdout = html.split("HOLDOUT-DTI")[1][:200]
-    assert "ORGANIZER-CONFIRMED" not in first_holdout
+    # An explicit denial ("No ORGANIZER-CONFIRMED score is available") is
+    # not score laundering. Reject a numerical organizer-score label instead.
+    assert not re.search(r"ORGANIZER-CONFIRMED\s*(?:score\s*)?[:=]?\s*0\.\d+", first_holdout)
     # the negative lane must stay visible as a deliverable, with its verdict
     assert "TIPGAPfar18f33" in html
     assert "negative" in html
@@ -144,7 +146,11 @@ def test_coulombdm_run_card_and_site_html_integrity():
     html = _index()
     primaries = re.findall(r'<a\b[^>]*\bdata-primary="true"[^>]*>', html)
     assert len(primaries) == 1, f"expected exactly 1 data-primary anchor, got {len(primaries)}"
-    assert card["file"] in primaries[0]
+    # 2026-10-25: the homepage primary moved off COULOMBDM onto the newest
+    # research download. The old file stays linked; it is no longer primary.
+    assert card["file"] not in primaries[0]
+    assert card["file"] in html
+    assert "gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif" in primaries[0]
 
     for html_path in sorted(DOCS.glob("*.html")):
         txt = html_path.read_text(encoding="utf-8")
@@ -197,6 +203,19 @@ def test_current_review_run_card_is_served_byte_identically():
     assert card["new_unique_tiff_generated"] is False
     assert card["weekly_submission_slots_used"] == 0
     assert "downloads/repo_review_run_card_20261024.json" in _index()
+
+
+def test_readme_opens_with_authoritative_no_submit_status():
+    """The README must state the current stop before historical lane records."""
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    assert readme.startswith("# GEMSDOE92")
+    marker = "<!-- LISTRICDIP:BEGIN -->"
+    assert marker in readme
+    current = readme[:readme.index(marker)]
+    assert "Authoritative review" in current
+    assert "DO NOT SUBMIT" in current
+    assert "every nonempty candidate" in current
+    assert "matched-budget" in current.lower()
 
 
 def test_submit_page_exists():

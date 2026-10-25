@@ -1,17 +1,48 @@
-# Current review — 2026-10-25 (`VENTSCARP` session; read this block first)
+# Current review and next steps — 2026-10-25 (`f23ca2d2`)
 
-**✅ OK TO DOWNLOAD FOR RESEARCH: YES (`11/11` automated format gates PASS, `float32` strictly in `[0.0, 1.0]`, `0` NaN/Inf, `0.0` outside footprint); ⛔ DO NOT SUBMIT FOR A WEEKLY SLOT: NO (`verdict: negative`, `submission_eligible: false` under binding literal `17GEMSDOE` dense surface `1.000 > 0.70`; `UNIQUE` under `dual_reading_decision` across all `102` public repos / `1,355` external rasters, max `0.6947 <= 0.70`).**
+**No new TIFF. Research downloads only; DO NOT SUBMIT.** [Fresh review](REVIEW_F23.md) · [automated status](downloads/readiness.json) · [run card](downloads/review_f23_run_card.json).
 
-- **Newest unique research GeoTIFF (`VENTSCARP`, `gems/ventscarp.py`):** `docs/downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif` (`sha256 = a4a342a8ca137e6b141f80ad9346ac483e71e9428a4b4cbddc99d62ea4fd2664`, `37,654` unit dots; siblings `scarp10m_novent` `b8e88c00…` and `ventscarp_soft` `d06c302d…` at `47,000` soft `[0.35, 1.00]` pixels).
-- **Highest Public-Registry-Unique Strict Draw-Blind Rule-2 `HOLDOUT-DTI` (`d_visible > 2.0`):** **`0.112213 [0.096670, 0.127254]`** (`gems57-pooled-hide-v2`, `22,663` withheld positives across `seeds 20, 30`), beating `KNICKLOQO standalone` (`0.109043 [0.097872, 0.120534]`), `scarp10m_novent` (`0.108862 [0.091993, 0.126805]`, `+3.08%` hydrothermal vent lift while cutting `>= 12°` alpine cliff dots from `11.07%` down to **`2.97%`** and placing **`71.57%`** on `< 6°` basin/piedmont scarps), `ventscarp_soft` (`0.107019 [0.091774, 0.121673]`, paired binary advantage `+0.005193 [+0.003555, +0.006627]`, resolving `docs/NEXT_STEPS.md` #4), `POISSONKNICK qcal` (`0.099241`), `H19-5` (`0.071758`, paired `+0.040455`), and `R0` (`0.004006`, paired `+0.108206`).
-- **Static Deployment `HOLDOUT-DTI` (`d_cat > 2.0`):** `ventscarp` **`0.008212 [0.007007, 0.009287]`** (`2.05×` `R0` `0.004006`), `scarp10m_novent` **`0.008685 [0.007222, 0.010170]`**, `ventscarp_soft` **`0.007923 [0.006817, 0.009001]`** (below `KNICKLOQO standalone` `0.010788`). Off-catalogue `USGS SGMC PROXY` (`d_cat > 5.0`): `0.081321` (`scarp10m_novent`: `0.087680`).
-- **Canaries & `102`-Repo Git Smart HTTP Uniqueness (`REGISTRY-MEASUREMENT`):** `26/26` single-feature leakage canaries PASS (`max = 0.616694 <= 0.90`; LOQO OOF `0.674160 <= 0.90`). Excluded `86` Pleistocene Lake Lahontan shoreline `Tufa` mimics (`#IR-92-PALEO-TUFA-SHORELINE-MIMIC`), `gdr_volcanic_vents_in_footprint.csv` (`#IR-92-VOLCANIC-CSV-DIST-KNOWN-FAULT`), and `75.37%`-biased `lidar_scarp_features_u8.tif` (`#IR-92-LIDAR-COVERAGE-BIAS`). Complete `102`-repo / `1,458`-blob Git Smart HTTP scan (`scripts/sync_public_registry_git.py`, `0` errors) proves **`dual_reading_unique = True` on all 3 arms** (`ventscarp = 0.6947 <= 0.70`, `scarp10m_novent = 0.6479`, `ventscarp_soft = 0.6859`). Details: [`ANALYSIS_20261025_VENTSCARP.md`](ANALYSIS_20261025_VENTSCARP.md) · [`HYPOTHESES_20261025_VENTSCARP.md`](HYPOTHESES_20261025_VENTSCARP.md) · [run card](downloads/ventscarp_run_card.json) · [next steps](NEXT_STEPS.md).
+1. The previous proposed KNICKLOQO promotion cannot proceed under the unchanged literal rule. The pinned witness rejects all nonempty candidates before placement. Matched-budget diagnostics must not supersede the user's rule silently. An explicitly revised future brief and a named lane are prerequisites to further geological experiments, not a request for human pixel inspection.
+2. Use the corrected shared validator and byte-bound status renderer. `prune_radius=2` no longer bypasses its own distance gate. Never re-use a historical audit as proof of current bytes.
+3. Only if the protocol permits experiments later: restore pinned features; verify data-use rights and band metadata; freeze a comparable holdout control and locked outer spatial test; run single-feature canaries before the experiment budget. Do not compare static-mask and fold-visible scores as one leaderboard.
+4. Verify official submission-page rules, current cap and actual score receipts through permitted access. No DrivenData session or permitted route to those hosts is available here. No submission slot was spent.
+5. GitHub Pages still reports legacy publication. Enabling workflow publication returned HTTP 403. Repository integration permissions need attention before claiming Actions gates the live site. No credential is requested or stored.
 
-Three passes this session: (1) implement + verify (resolved `NEXT_STEPS` #1–#4, pinned 7 external SHA-256 inputs, synced all `102` public repos via Git Smart HTTP, audited 26 leakage canaries, trained LOQO ensemble, ran 3 pre-registered experiments, packaged 3 `[0, 1]` GeoTIFFs via `submission_writer`); (2) review & fix — caught and corrected per-arm `SUBMISSION_NOTE` descriptions in `scripts/run_ventscarp.py` (`scarp10m_novent` & `ventscarp_soft`), re-packaged and re-verified on-disk GeoTIFF/ZIP SHA-256 digests, added automatic Git Smart HTTP fallback to `scripts/audit_public_registry.py`, and wrote `tests/test_ventscarp.py`; (3) full prompt recheck — verified all pytest suites, `make site`, `make verify`, `make ledger`, `make manifest`, zero forbidden strings, zero duplicate HTML `id`s, and exact provenance labeling (`HOLDOUT-DTI` / `[CLAIM]`).
+Earlier “current,” “unique,” and promotion instructions below are historical and superseded where they conflict with this decision. The newly requested unique submission remains unfulfilled.
 
 ---
 
-# Prior review — 2026-10-25 (`KNICKLOQO` session)
+
+# Authoritative current repository status — 2026-10-25
+
+# Authoritative current review — 2026-10-25 (`797e507a`)
+
+<!-- CURRENT-STATUS:BEGIN -->
+## Current verified decision — 2026-10-25 (review c5e3848c)
+
+**OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** No new unique TIFF was generated in this review. The new-submission requirement remains unmet.
+
+[Current research download](downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif) · [fresh run card](downloads/review_c5e3848c_integrated_run_card.json) · [three-pass review](REVIEW_C5E3848C.md) · [executive submission guide](executive-summary.html).
+
+Automated format checks pass on the unchanged primary; literal registry overlap is 1.0 and requires stopping before placement. Historical “newest”, “unique” and holdout rankings below are not current clearance. HOLDOUT-DTI was not rerun; no ORGANIZER-CONFIRMED score is available. Experiments and weekly slots used in this review: zero.
+
+<!-- CURRENT-STATUS:END -->
+
+**Research downloads only. DO NOT SUBMIT. No new TIFF generated.** Read [the current three-pass review](REVIEW_797E507A.md) and [run card](downloads/review797e_run_card.json). The inherited LISTRICDIP primary passes format checks but literal overlap is 1.0. A single generated status panel now precedes historical banners on all three entry pages, with byte-binding and ordering enforced by publication checks. Previous “unique” matched-budget claims below do not override the literal stop. No HOLDOUT-DTI was run or recertified; no slot was used.
+
+Supplemental historical code audit: [RADIOCONTACT fold-local holdout and gate review](REVIEW_20261025_REPO.md) · [machine-readable card](../evidence/repo_review_20261025.json). It does not change the current universal literal-overlap stop.
+
+---
+
+## Completed parallel research lane — `VENTSCARP` (`2026-10-25`, 3/3 experiments, 0 weekly slots)
+
+- **✅ OK TO DOWNLOAD FOR RESEARCH (`11/11` automated format gates PASS in `[0, 1]`, `0` NaN/Inf, `0.0` outside footprint) · ⛔ DO NOT SUBMIT (`verdict: negative`, `submission_eligible: false` under literal `17GEMSDOE` dense witness `1.000 > 0.70`; `dual_reading_unique = True` at `0.6947 <= 0.70` across `102` public repos and `<= 0.4770` across all merged `GEMSDOE92` local rasters).**
+- **Artifacts:** [`gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif`](downloads/gemsdoe92-ventscarp-ventscarp-37654-20261025-6e97367c-zeros.tif) (`a4a342a8…`, strict draw-blind Rule-2 `HOLDOUT-DTI = 0.112213 [0.096670, 0.127254]`, static `0.008212 [0.007007, 0.009287]`, `SGMC PROXY = 0.081321`), [`scarp10m_novent`](downloads/gemsdoe92-ventscarp-scarp10m_novent-37654-20261025-3c9a1c6e-zeros.tif) (`b8e88c00…`, Rule-2 `0.108862`, static `0.008685`), [`ventscarp_soft`](downloads/gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-zeros.tif) (`d06c302d…`, `47,000` soft `[0.35, 1.00]` px, Rule-2 `0.107019`, static `0.007923`).
+- **Evidence & Analysis:** [Run Card](downloads/ventscarp_run_card.json) · [Holdout JSON](downloads/ventscarp_holdout.json) · [102-Repo Uniqueness JSON](downloads/ventscarp_uniqueness.json) · [PhD Analysis](ANALYSIS_20261025_VENTSCARP.md) · [Pre-Registered Hypotheses](HYPOTHESES_20261025_VENTSCARP.md).
+
+---
+
+# Current review — 2026-10-25 (`KNICKLOQO` session; read this block first)
 
 **✅ OK TO DOWNLOAD: YES (`10/10` format gates PASS, finite `[0.0, 1.0]`, `0` NaNs); ⛔ OK TO SUBMIT: NO — DIAGNOSTIC ONLY (`verdict: negative` under literal `17GEMSDOE` dense surface; `UNIQUE` under `dual_reading_decision` with `0 / 1,412` public rasters `> 0.70`, max `0.685531 <= 0.70`).**
 Newest unique artifact: `docs/downloads/h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif` (`sha256 = 8ad4a8c2cd8e1fd965d91643da6efbe82da8b3668e6dc8e59d193a8302424a7d`, best of three pre-registered arms `standalone`, `uncal`, `dual35`).
