@@ -86,9 +86,16 @@ def panel(card: dict, page: str) -> str:
     followup_card = link('docs/downloads/session_followup_20261025_run_card.json')
     leaderboard_review = link('docs/ANALYSIS_20261025_LEADERBOARD.md')
     guide = link('docs/executive-summary.html')
+    import posixpath
+    from gems.newest_session import html_line, load as load_newest, md_line
+    to_docs = posixpath.relpath('docs', str(Path(page).parent))
+    to_docs = '' if to_docs == '.' else to_docs + '/'
+    ali_card = load_newest(ROOT)
     if page.endswith('.md'):
         return f'''{BEGIN}
 ## Authoritative decision — Current verified status, 2026-10-25 (LISTRICLOQO 2026-10-25)
+
+{md_line(ali_card, to_docs)}
 
 **OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT.** LISTRICLOQO is a byte-distinct research artifact, but it fails the literal registry-overlap stop and promotion gates.
 
@@ -101,6 +108,7 @@ Automated format checks pass. HOLDOUT-DTI (`gems57-pooled-hide-v2`, 22,663 withh
 <section id="current-verified-status" aria-label="Current authoritative submission status" style="max-width:70rem;margin:1rem auto;padding:1.25rem;border:3px solid #991b1b;border-radius:12px;background:#fff7ed;color:#292524;font:1rem/1.6 system-ui,sans-serif;overflow-wrap:anywhere">
 <h2 style="margin-top:0">Current decision: research-only TIFF; submission blocked</h2>
 <p><strong>OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT · NOT CLEARED FOR A WEEKLY SLOT</strong></p>
+{html_line(ali_card, to_docs)}
 <p><a href="{download}" download style="display:inline-block;padding:.7rem 1rem;background:#1e3a5f;color:white;border-radius:6px;font-weight:700">Download LISTRICLOQO research TIFF — not cleared to submit</a></p>
 <p>{name}<br>SHA-256: <code>{card['raster_sha256']}</code></p>
 <p>Automated format checks pass: single band, finite [0, 1], no NaNs, zeros outside the footprint, matching CRS/shape/transform. The file is byte-distinct and passes the public dual-reading diagnostic, but its literal dense-witness overlap is 1.0, above the 0.70 stop; <strong>it is not uniqueness-cleared or eligible to submit</strong>.</p>
