@@ -118,7 +118,7 @@ def test_faultnet_lane_is_explicitly_negative_while_site_status_remains_authorit
     readme_status = readme.split("### Persisted user brief", 1)[0]
     assert "Authoritative decision" in readme_status
     assert "OK TO DOWNLOAD FOR RESEARCH" in readme_status and "DO NOT SUBMIT" in readme_status
-    assert "REVIEW_20261025_FRESH_AUDIT.md" in readme_status
+    assert "REVIEW_20261025_ARENA_8A5595A3.md" in readme_status
     assert "CURRENT-READINESS:BEGIN" in index
     site_status = index.split("<!-- CURRENT-READINESS:BEGIN -->", 1)[1].split("<!-- CURRENT-READINESS:END -->", 1)[0]
     assert "OK TO DOWNLOAD FOR RESEARCH" in site_status and "DO NOT SUBMIT" in site_status
@@ -128,4 +128,4 @@ def test_faultnet_lane_is_explicitly_negative_while_site_status_remains_authorit
     faultnet = index.split("<!-- CURRENT:BEGIN -->", 1)[1].split("<!-- CURRENT:END -->", 1)[0]
     assert cur["sha256"] in faultnet
     assert "DO NOT SUBMIT" in faultnet
-    assert "0.7586" in faultnet
+    assert f"{cur['uniqueness']['worst_overlap_final']['value']:.4f}" in faultnet

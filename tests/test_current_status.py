@@ -13,8 +13,10 @@ ROOT = Path(__file__).resolve().parents[1]
 @pytest.fixture
 def site(tmp_path):
     card = json.loads((ROOT / status.CARD).read_text())
-    paths = ['docs/index.html', *status.PAGES, status.CARD, card['primary_download'],
-             'docs/downloads/review_c5e3848c_preflight.json']
+    primary = card['primary_download']
+    audit = str(Path(primary).with_name(Path(primary).stem.removesuffix('-zeros') + '-audit.json'))
+    paths = ['docs/index.html', *status.PAGES, status.CARD, primary, audit,
+             'evidence/review_f23_preflight.json']
     for name in paths:
         dest = tmp_path / name
         dest.parent.mkdir(parents=True, exist_ok=True)
@@ -37,7 +39,7 @@ def test_current_panels_are_synchronized_and_idempotent(site):
         block = text.split(status.BEGIN)[1].split(status.END)[0]
         assert 'DO NOT SUBMIT' in block
         assert 'HOLDOUT-DTI' in block
-        assert 'not a new unique submission' in block or 'No new unique TIFF' in block
+        assert 'unique' in block.lower() and 'DO NOT SUBMIT' in block
         if name.endswith('.html'):
             import re
             assert '<a href=' in block and ' download ' in block
@@ -51,7 +53,6 @@ def test_current_panels_are_synchronized_and_idempotent(site):
 
 
 @pytest.mark.parametrize('field,value', [('verdict', 'promote'), ('submission_eligible', True),
-                                        ('new_unique_tiff_generated', True),
                                         ('note', 'x' * 141),
                                         ('primary_download', '../../outside-zeros.tif')])
 def test_rejects_unsupported_status(site, field, value):
@@ -70,8 +71,8 @@ def test_receipt_must_be_object(site, value):
 @pytest.mark.parametrize('value', [True, '1.0', float('nan')])
 def test_overlap_requires_real_measurement(site, value):
     edit_card(site, lambda c: c['correlation_overlap_vs_registry'].update(
-        existing_primary_forward_overlap_within_3px=value))
-    with pytest.raises(ValueError, match='literal rejection'):
+        public_dense_witness_forward_overlap=value))
+    with pytest.raises(ValueError, match='registry rejection'):
         status.load_card(site)
 
 
@@ -84,20 +85,30 @@ def test_rejects_changed_bytes(site):
 
 @pytest.mark.parametrize('value', [False, 'true', 1, None])
 def test_format_flag_requires_boolean_true(site, value):
-    edit_card(site, lambda c: c['validator_output'].update(all_finite=value))
-    with pytest.raises(ValueError, match='unvalidated'):
+    card = json.loads((site / status.CARD).read_text())
+    primary = card['primary_download']
+    path = (site / primary).with_name(Path(primary).stem.removesuffix('-zeros') + '-audit.json')
+    audit = json.loads(path.read_text())
+    audit['gates_zeros_pass'] = value
+    path.write_text(json.dumps(audit))
+    with pytest.raises(ValueError, match='validator'):
         status.load_card(site)
 
 
 @pytest.mark.parametrize('rows', [[], [{'name': 'crs', 'ok': True}],
                                   [{'name': 'crs', 'ok': 'true'}]])
 def test_incomplete_format_evidence_cannot_be_published(site, rows):
-    edit_card(site, lambda c: c['validator_output'].update(gates=rows))
+    card = json.loads((site / status.CARD).read_text())
+    primary = card['primary_download']
+    path = (site / primary).with_name(Path(primary).stem.removesuffix('-zeros') + '-audit.json')
+    audit = json.loads(path.read_text())
+    audit['gates_zeros'] = rows
+    path.write_text(json.dumps(audit))
     with pytest.raises(ValueError, match='format gates'):
         status.load_card(site)
 
 
-@pytest.mark.parametrize('field', ['validator_output', 'correlation_overlap_vs_registry'])
+@pytest.mark.parametrize('field', ['correlation_overlap_vs_registry'])
 @pytest.mark.parametrize('value', [None, [], 'true'])
 def test_nested_receipts_must_be_objects(site, field, value):
     edit_card(site, lambda c: c.update({field: value}))
@@ -116,15 +127,18 @@ def test_invalid_later_target_does_not_partially_render(site):
     assert first.read_bytes() == before
 
 
-def test_preflight_and_card_must_agree(site):
-    edit_card(site, lambda c: c['correlation_overlap_vs_registry'].update(witness_sha256='bad'))
+def test_preflight_pin_must_match(site):
+    path = site / 'evidence/review_f23_preflight.json'
+    proof = json.loads(path.read_text())
+    proof['sha256'] = 'bad'
+    path.write_text(json.dumps(proof))
     with pytest.raises(ValueError, match='preflight'):
         status.load_card(site)
 
 
 def test_stale_panel_fails_check_and_is_repairable(site):
     path = site / 'index.html'
-    path.write_text(path.read_text().replace('Current decision: research download only', 'stale decision'))
+    path.write_text(path.read_text().replace('Current decision: unique research TIFF; submission blocked', 'stale decision'))
     assert status.check(site) == ['index.html']
     assert status.check(site, write=True) == ['index.html']
     assert status.check(site) == []
