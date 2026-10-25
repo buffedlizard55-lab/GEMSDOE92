@@ -23,27 +23,46 @@
     "weight": "S_percentile_rank * triangular_dcat_preference(peak~5px)"
   },
   "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
     "evaluator_version": "gems57-pooled-hide-v2",
     "alpha": 0.2,
     "beta": 0.8,
     "triangular_radius_m": 300.0,
-    "withheld_positive_pixels": 45253,
-    "pooled_dti": 0.03346643401066433,
-    "pooled_coverage": 0.04737475844701,
-    "emitted_pixels": 37654,
-    "per_draw_dti": {
-      "draw20": 0.0335940734271897,
-      "draw30": 0.033685048303741916
+    "withheld_positive_pixels": 22663,
+    "dti": 0.005272034790453035,
+    "ci95": [
+      0.0038394541742268564,
+      0.006809835668528526
+    ],
+    "paired_vs_R0": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.0012658876157682917,
+      "ci95": [
+        -0.00024655468857421177,
+        0.0028613936995013976
+      ],
+      "withheld_positive_pixels": 22663
     },
-    "per_quadrant_dti": {
-      "foldNE": 0.03317228437095742,
-      "foldNW": 0.03535232235106003,
-      "foldSE": 0.0337445589598003,
-      "foldSW": 0.03228907778004547
-    },
-    "mean_fold_dti": 0.0336395608654658,
-    "std_fold_dti": 0.0028218294332091848,
-    "evidence_class": "HOLDOUT-DTI"
+    "strict_draw_blind_dvis2_with_visible_dpref_dti": 0.08524731192664954,
+    "strict_draw_blind_dvis2_with_visible_dpref_ci95": [
+      0.0727518706164122,
+      0.09819268740709708
+    ],
+    "strict_draw_blind_dvis2_pure_surface_dti": 0.04267001404148543,
+    "strict_draw_blind_dvis2_pure_surface_ci95": [
+      0.030396982389766635,
+      0.05591100515569575
+    ],
+    "invalidated_leaked_full_catalogue_dpref_static": {
+      "buffered_22663_dti": 0.03159120737961352,
+      "buffered_22663_ci95": [
+        0.029030202531519094,
+        0.03409762314940039
+      ],
+      "unbuffered_45253_dti": 0.03346643401066433,
+      "invalidated_reason": "Full-catalogue d_pref used existing_faults.tif (including withheld faults) and failed the Protocol Rule 4 leakage canary with symmetric AUC 0.962399 > 0.90."
+    }
   },
   "format_validation": {
     "all_checks_passed": true,
@@ -91,12 +110,123 @@
     "zip_file": "gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.zip",
     "zip_sha256": "9676493040f2da186de817556008134c983cd3e5e50bb3b269aa856da695320c",
     "name": "GEMSDOE92-TILTANGLE-tiltangle-20261025T182301Z",
-    "note": "h33-h33-2-b2; TILTANGLE: gravity tilt-angle x horizontal-gradient edge corridors; 37654 dots d_cat>2px; HOLDOUT-DTI 0.033466; unique",
-    "note_chars": 132,
+    "note": "h33-h33-2-b2; TILTANGLE research only (DO NOT SUBMIT): gravity edge x collar; pure static HOLDOUT-DTI 0.005272; duplicate",
+    "note_chars": 121,
     "approved_for_weekly_slot": false,
     "promoted": false,
     "status": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval"
   },
   "verdict": "negative",
-  "notes": "Format-valid research TIFF. Holdout DTI is a local surrogate, not an organizer score. Not cleared for a weekly slot under the literal dense-witness registry stop (all nonempty in-footprint rasters have literal overlap 1.0 vs the pinned full-footprint witness)."
+  "notes": "Format-valid research TIFF; DO NOT SUBMIT. Audited 2026-10-25: (1) the original 0.033466 static figure used d_pref computed from the full catalogue including withheld faults (canary symmetric AUC 0.962399 > 0.90, target leakage); leak-free pure-surface static HOLDOUT-DTI is 0.005272 [0.003786, 0.006778] and strict fold-visible Rule-2 HOLDOUT-DTI is 0.085247 [0.072361, 0.097824] (with visible-only d_pref) / 0.042670 [0.030209, 0.055396] (pure S), all below repository holdout-best; (2) fails local 3-px dot-field uniqueness (0.776332 > 0.70 vs NETEXPAND netexpand) and literal dense-witness overlap (1.0000 > 0.70).",
+  "raster_sha256": "f17eae78ff659e3551fb4a4f92ef9e16180fde22a9d157a2114b03ef98a023e7",
+  "submission_name": "GEMSDOE92-TILTANGLE-tiltangle-20261025T182301Z",
+  "note": "h33-h33-2-b2; TILTANGLE research only (DO NOT SUBMIT): gravity edge x collar; pure static HOLDOUT-DTI 0.005272; duplicate",
+  "submission_eligible": false,
+  "named_non_fault_process_that_could_mimic_it": "Equant plutonic intrusions, circular playa/evaporite density bodies, and diffuse basement-terrane boundaries produce gravity gradient magnitude but not steep (near-90 deg) tilt angles; cos(tilt)^2 down-weights them.",
+  "validator_output": {
+    "all_checks_passed": true,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "emitted_positive_pixels": 37654,
+    "on_catalogue_positive_pixels": 0,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ]
+  },
+  "leakage_canaries": {
+    "threshold_symmetric_auc": 0.9,
+    "surface_only_max_symmetric_auc": 0.526594,
+    "surface_only_all_pass": true,
+    "overall_max_symmetric_auc": 0.962399,
+    "overall_all_pass": false,
+    "withheld_fault_fraction_with_d_pref_eq_1": 1.0,
+    "finding": "Pure gravity surface features pass (max symmetric AUC 0.526594 <= 0.90), but scripts/build_tiltangle_submission.py multiplied S by d_pref computed from the full existing_faults.tif catalogue (including withheld faults) before static holdout scoring. Full-catalogue d_pref has symmetric AUC 0.962399 > 0.90 (FAIL: target leakage), inflating the static holdout figure from 0.005272 (pure S) to 0.031591 (buffered) / 0.033466 (unbuffered).",
+    "features": {
+      "hgm": {
+        "raw_auc": 0.502802,
+        "symmetric_auc": 0.502802,
+        "pass_le_0p90": true
+      },
+      "tilt_deg": {
+        "raw_auc": 0.526594,
+        "symmetric_auc": 0.526594,
+        "pass_le_0p90": true
+      },
+      "s_raw": {
+        "raw_auc": 0.488262,
+        "symmetric_auc": 0.511738,
+        "pass_le_0p90": true
+      },
+      "S_percentile_rank": {
+        "raw_auc": 0.488262,
+        "symmetric_auc": 0.511738,
+        "pass_le_0p90": true
+      },
+      "d_pref_full_catalogue_LEAKED": {
+        "raw_auc": 0.962399,
+        "symmetric_auc": 0.962399,
+        "pass_le_0p90": false
+      }
+    }
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "unique_under_literal_rule": false,
+    "local_dot_field_duplicate": true,
+    "stop_required": true,
+    "local_rasters_checked": 138,
+    "local_worst_forward_3px_overlap": 0.776332,
+    "local_worst_forward_3px_overlap_raster": "docs/downloads/gemsdoe92-netexpand-netexpand-37654-20261025-f705be3a-zeros.tif",
+    "local_rasters_over_0p70": [
+      {
+        "file": "docs/downloads/gemsdoe92-netexpand-netexpand-37654-20261025-f705be3a-zeros.tif",
+        "forward_3px_overlap": 0.776332,
+        "their_positive_pixels": 37654
+      },
+      {
+        "file": "docs/downloads/gemsdoe92-netexpand-netexpandfar-37654-20261025-47bacc15-zeros.tif",
+        "forward_3px_overlap": 0.761513,
+        "their_positive_pixels": 37654
+      }
+    ],
+    "local_worst_abs_spearman_surface": 0.073692,
+    "local_worst_abs_spearman_surface_raster": "docs/downloads/gemsdoe92-gravquad-20261025T145744Z-zeros.tif",
+    "local_worst_abs_spearman_final": 0.130897,
+    "local_worst_abs_spearman_final_raster": "docs/downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+    "public_dense_witness_forward_overlap": 1.0,
+    "public_dense_witness_raster": "buffedlizard55-lab/17GEMSDOE:docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "public_dense_witness_git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+    "public_dense_witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "threshold_overlap": 0.7,
+    "threshold_abs_rho": 0.9
+  }
 }
