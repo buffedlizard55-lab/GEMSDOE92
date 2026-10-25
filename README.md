@@ -479,3 +479,66 @@ Study GEMSDOE32 (h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros: 0.2778): why and 
 ## Additional parallel research records (not rerun in review797e)
 
 Main `d6f7ac0` added [RADIODECOUPLE](docs/ANALYSIS_20261025_RADIODECOUPLE.md) and [CURIE-DEMAG](docs/ANALYSIS_20261026_CURIEDEMAG.md) research artifacts. Their original run cards and code are preserved. These do not override the literal stop or constitute experiments run in this review. CURIE-DEMAG names are future-dated relative to this review; use receipt hashes and actual verification timestamps.
+
+---
+
+## Session Prompt — Authoritative Operating Contract (read at every session start)
+
+The full durable operating contract below is the starting point for all work on this repository. It is preserved verbatim as historical input, not as a claim that any GEMSDOE entry received a verified organizer score or that any current TIFF is submission-cleared. Follow the binding negative decision at the top of this README and the evidence-linked reviews instead.
+
+### Highest urgency — MUST
+
+**MUST generate a unique TIF submission for the competition. Do not copy a previous submission unless it's for learning and education. But we must generate a unique TIF submission. It must be obvious whether it is OK to download and submit the generated TIF submission.**
+
+There should be an easy-to-download submission TIF file as described by the prompt. A lot of sites mention inspection only and a human inspector, but the inspection needs to be done through the project and needs to be validated for submission without human intervention.
+
+### Parallel-run protocol
+
+1. **LANE.** Your lane is the single method paragraph below. Stay inside it. If your raster's rank-correlation with any registry raster exceeds 0.90, or more than 70% of your dots fall within 3 px of one registry raster's dots, you have drifted into another lane: log it as a duplicate and stop. Check this on the surface before placement AND on the final dots.
+
+2. **REUSE, DON'T REBUILD.** Use the template's cached feature stack, evaluate_holdout.py and submission_writer.py. Holdout = hide-and-recover: withhold whole fault segments with a buffer, derive every catalogue-based feature only from the visible faults, mask visible faults pixel-exactly, score pooled DTI (alpha 0.2, beta 0.8, 300 m triangular kernel). If a shared tool is wrong, fix it once in the template and report it; never keep a private fork.
+
+3. **LABEL EVERY NUMBER** as HOLDOUT-DTI (evaluator version, number of withheld positives, 95% CI) or ORGANIZER-CONFIRMED (copied from a submission-page receipt). A projection is never written as a score.
+
+4. **LEAKAGE CANARY.** Test each feature alone on the holdout before trusting any result. AUC above 0.90 means leakage until proven otherwise.
+
+5. **RUN CARD.** End with one JSON card: hypothesis; mechanism; the named non-fault process that could mimic it; holdout DTI + CI; correlation/overlap vs registry; raster sha256; validator output (no NaN inside the footprint, values in [0,1], CRS/shape/transform match); submission name + note of at most 140 characters; verdict promote / negative. Negative results are deliverables.
+
+6. **BUDGET.** Stop after 3 experiments or 2 hours. Do not pick submissions: promotion to a real slot is a separate selector step, within the weekly cap shown on the submission page.
+
+### Competition context
+
+- **Competition:** DOE GEMS Prize, DrivenData #306 — <https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/>
+- **About:** <https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/>
+- **Data:** <https://www.drivendata.org/competitions/306/competition-doe-gems/data/> (requires DrivenData login)
+- **Leaderboard:** <https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/> — current high score 0.4413 (not a GEMSDOE entry); 0.3195 not on the top-50 snapshot
+- **Official rules PDF:** <https://docs.nlr.gov/docs/fy26osti/96647.pdf> (three submissions per week, one final selection, generative-AI disclosure, human judging by DOE)
+- **Reference solution:** <https://github.com/drivendataorg/gems-prize-reference-solution>
+- **USGS GeoDAWN:** <https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and>
+- **DOE GDR #1391 INGENIOUS:** <https://gdr.openei.org/submissions/1391>
+- **GBCGE INGENIOUS:** <https://gbcge.org/current-projects/ingenious/>
+- **EPSG:32611:** <https://epsg.io/32611>
+- **Tversky index:** <https://en.wikipedia.org/wiki/Tversky_index>
+
+### Submission format (validated in-project, no human inspection)
+
+- Single-band GeoTIFF (.tif) or a .zip containing a single GeoTIFF
+- Must match the submission format's CRS (EPSG:32611), shape (3730 × 3292), and geotransform ((100, 0, 243350, 0, -100, 4508550))
+- Values must be finite and in [0, 1] (prevents the portal error "Predicted values must be in range [0, 1]")
+- Zero outside the footprint; 0 NaN inside the footprint
+- Unique submission name and a short note (≤ 140 characters)
+
+### Core values
+
+- **Maximize P(Win):** In every decision, weigh tradeoffs, assess risk, and choose the path that maximizes the probability of winning. Preserve scarce slots; reject unsupported score claims.
+- **Own the Outcome:** Own results end to end. Fix shared defects and report unmet requirements; do not weaken a failed gate. A reproducible negative is preferable to a fabricated submission claim.
+
+### Deliverables for this session
+
+1. Generate 3–5 candidate geological hypotheses not yet tried (layers, physical signature, missing-fault rationale, differences, mimic, expected value, cost) — see docs/HYPOTHESES_TILTANGLE.md
+2. Validate the top candidate (H1 TILTANGLE: gravity tilt-angle edge corridors) on the spatially-blocked holdout set — HOLDOUT-DTI 0.033466 [gems57-pooled-hide-v2, 45,253 withheld positives]
+3. Generate a unique TIF submission — gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif (format-valid, SHA-256 f17eae78ff659e3551fb4a4f92ef9e16180fde22a9d157a2114b03ef98a023e7)
+4. Create executive summary subpage — docs/tiltangle.html
+5. Store the prompt in README.md (this section)
+6. Create and merge a pull request onto main
+
