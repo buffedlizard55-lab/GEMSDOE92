@@ -1,0 +1,141 @@
+{
+  "schema": "gemsdoe92-gravquad-audit.v1",
+  "lane": "GRAVQUAD",
+  "arm": "primary",
+  "file": "docs/downloads/gemsdoe92-gravquad-20261025T145744Z-zeros.tif",
+  "sha256": "9ea3e2e01fba5e733964e1252c729a70f0d61edc499c848628d83946d49c7ab5",
+  "bytes": 130690,
+  "submission_name": "GEMSDOE92-GRAVQUAD-20261025",
+  "note": "h33-h33-2-b2; GRAVQUAD: gravity analytic-signal amplitude x linear-edge coherence; 37654 dots d_cat>2px; see run card for HOLDOUT-DTI",
+  "note_chars": 133,
+  "validator": {
+    "file": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-gravquad-20261025T145744Z-zeros.tif",
+    "bytes": 130690,
+    "sha256": "9ea3e2e01fba5e733964e1252c729a70f0d61edc499c848628d83946d49c7ab5",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "emitted_positive_pixels": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37654,
+    "footprint_fraction": 0.007286874781441169
+  },
+  "format_gates": [
+    {
+      "gate": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "gate": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "gate": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "gate": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=float32 count=1"
+    },
+    {
+      "gate": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "gate": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nan_pixels=0"
+    },
+    {
+      "gate": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "gate": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "gate": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "gate": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0 (declared clearance override: radius < 3 px, inherited R0 dots only)"
+    },
+    {
+      "gate": "reread_sha256",
+      "ok": true,
+      "detail": "9ea3e2e01fba5e733964e1252c729a70f0d61edc499c848628d83946d49c7ab5"
+    }
+  ],
+  "gates_pass": true,
+  "uniqueness_local": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "rasters_checked": 107,
+    "worst_literal_forward_overlap": 0.30435,
+    "worst_literal_file": "local:docs/downloads/gemsdoe92-radiocontact-20261025T041646Z-zeros.tif",
+    "worst_matched_budget_forward_overlap": 0.30435,
+    "worst_matched_budget_file": "local:docs/downloads/gemsdoe92-radiocontact-20261025T041646Z-zeros.tif",
+    "worst_abs_spearman": 0.052332,
+    "worst_abs_spearman_file": "local:docs/downloads/gemsdoe92-radiocontact-20261025T041646Z-zeros.tif",
+    "duplicate": false,
+    "verdict": "unique"
+  },
+  "public_registry": {
+    "available": false,
+    "reason": "only run for a candidate that first beats the holdout promotion bar; GRAVQUAD did not beat it this session, so the 102-repo GitHub scan was not spent (budget discipline: do not spend a weekly slot or a heavy scan on a lane that already failed holdout)."
+  }
+}

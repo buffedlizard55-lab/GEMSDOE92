@@ -39,3 +39,15 @@ Context from prior sessions (learning, not copying):
 Pre-registration rule: Rank 1 (RADIOCONTACT) is the top candidate for this session. If it fails the leakage canary (any feature symmetric AUC > 0.90) or the holdout bar (paired CI vs R0 excludes 0 and beats COULOMB-LOQO 0.113316 Rule-2 / 0.009220 static), no build proceeds and the session ends negative — Rank 2 (DRAINAGE-KNICK) becomes the documented fallback, not an auto-build.
 
 Stop conditions (protocol): |rho| > 0.90 or >70% of dots within 3 px of one registry raster => duplicate, log and stop. Budget: 3 experiments / 2 hours this session.
+
+## Results (filled in after each lane was actually built — not projected)
+
+| Rank | Lane | Status | Static `d_cat>2.0` HOLDOUT-DTI (CI) | Beats promotion bar (`0.010788` static / `0.113316` Rule-2)? | Verdict |
+|---|---|---|---|---|---|
+| 1 | RADIOCONTACT | Built 2026-10-25 | `0.005066 [0.003638, 0.006583]` | No (paired CI vs R0 includes 0) | `negative`, `submission_eligible: false` (`evidence/gemsdoe92-radiocontact-20261025T041646Z_run_card.json`) |
+| 2 | DRAINAGE-KNICK | Built 2026-10-25 | Rule-2 `0.061728 [0.047046, 0.075316]` | No | `negative`, `submission_eligible: false` (`docs/downloads/gemsdoe92-drainageknick-20261025T120000Z_run_card.json`) |
+| 3 | GRAV-QUAD | Built 2026-10-25 (this session) | `0.005092 [0.004001, 0.006253]` | No (paired CI vs R0 includes 0) | `negative`, `submission_eligible: false` (`evidence/gemsdoe92-gravquad-20261025T145744Z_run_card.json`); 9/9 format gates PASS, 3/3 leakage canaries PASS (max AUC `0.5362`), locally unique vs 107/107 rasters (worst `0.3044 <= 0.70`) |
+| 4 | SEIS-GRAV-LAG | **Not yet built** | — | — | Carried forward; see `docs/HYPOTHESES_20261025_NEXT.md` |
+| 5 | MT-CHANGEPOINT | **Not yet built** | — | — | Carried forward; see `docs/HYPOTHESES_20261025_NEXT.md` |
+
+**Finding (not projected, measured):** three independent zero-label standalone physical transforms in three different feature families (RADIOCONTACT: radiometrics × gravity × MT; DRAINAGE-KNICK: terrain/drainage × basement × shear; GRAV-QUAD: gravity analytic signal × linear coherence) all land within a narrow `0.0051–0.0617`<sup>†</sup> static-or-Rule-2 band, well below the `0.009220–0.113316` range achieved by the two supervised, quadrant-debiased LOQO classifiers (COULOMB-LOQO, KNICKLOQO) in this repository. (<sup>†</sup>DRAINAGE-KNICK's number is a Rule-2 diagnostic, not directly comparable to the other two static numbers; its own static number was not separately reported in its run card.) This is itself evidence, not an assumption: see `docs/HYPOTHESES_20261025_NEXT.md` for what we recommend trying next and why.
