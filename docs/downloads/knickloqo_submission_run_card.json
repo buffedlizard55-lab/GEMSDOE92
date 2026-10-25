@@ -19,11 +19,17 @@
     "format": "single-band GeoTIFF",
     "dtype": "float32",
     "crs": "EPSG:32611",
-    "shape": [3292, 3730],
+    "shape": [
+      3292,
+      3730
+    ],
     "transform": "Affine(100.0, 0.0, 732200.0, 0.0, -100.0, 4194900.0)",
     "resolution_m": 100,
     "values_in_range": true,
-    "range": [0.0, 1.0],
+    "range": [
+      0.0,
+      1.0
+    ],
     "has_nan": false,
     "has_inf": false,
     "zeros_outside_footprint": true,
@@ -64,7 +70,10 @@
     "evaluator_sha": "vendor/gems57/metric.py",
     "withheld_positives": 22663,
     "n_folds": 8,
-    "seeds": [20, 30],
+    "seeds": [
+      20,
+      30
+    ],
     "kernel": "triangular",
     "kernel_radius_m": 300,
     "kernel_radius_px": 3.0,
@@ -149,38 +158,46 @@
     "passed": 50,
     "failed": 0,
     "max_symmetric_auc": 0.659602,
-    "threshold": 0.90,
+    "threshold": 0.9,
     "verdict": "PASS",
     "note": "All 50 single-feature leakage canaries PASS; max AUC well below 0.90 threshold"
   },
   "uniqueness": {
-    "policy": "dual_reading_decision",
+    "policy": "binding_literal_rule",
     "local_registry": {
       "n_rasters": 65,
       "worst_overlap": 0.685531,
-      "threshold": 0.70,
+      "threshold": 0.7,
       "duplicate": false,
       "max_correlation": 0.141243,
-      "correlation_threshold": 0.90,
-      "verdict": "PASS"
+      "correlation_threshold": 0.9,
+      "verdict": "DIAGNOSTIC_ONLY",
+      "evidence_class": "REGISTRY-MEASUREMENT-DIAGNOSTIC",
+      "operative_for_eligibility": false
     },
     "public_registry": {
       "n_rasters": 1412,
       "n_repos": 102,
       "worst_overlap": 0.685531,
       "n_above_threshold": 0,
-      "threshold": 0.70,
+      "threshold": 0.7,
       "duplicate": false,
-      "verdict": "PASS",
-      "note": "0 / 1,412 public rasters exceed 0.70 overlap under dual_reading_decision"
+      "verdict": "DIAGNOSTIC_ONLY",
+      "note": "Matched-budget result is diagnostic only; it does not waive the binding literal dense-witness stop.",
+      "evidence_class": "REGISTRY-MEASUREMENT-DIAGNOSTIC",
+      "operative_for_eligibility": false
     },
     "literal_witness": {
       "worst_overlap": 1.0,
       "witness": "17GEMSDOE E-proba-multiscale",
       "n_pixels": 5167373,
-      "note": "Literal dense witness covers entire footprint; NOT BINDING under dual_reading_decision policy"
+      "note": "Literal final-dot forward overlap 1.000 > 0.70; binding stop applies.",
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "duplicate": true,
+      "threshold": 0.7,
+      "verdict": "DUPLICATE_STOP"
     },
-    "overall_verdict": "UNIQUE"
+    "overall_verdict": "DUPLICATE_STOP"
   },
   "submission_eligibility": {
     "format_valid": true,
@@ -191,13 +208,13 @@
     "no_nan": true,
     "no_inf": true,
     "zeros_outside_footprint": true,
-    "uniqueness_pass": true,
+    "uniqueness_pass": false,
     "holdout_dti_verified": true,
     "leakage_canaries_pass": true,
-    "verdict": "promote",
-    "submission_eligible": true,
-    "policy": "dual_reading_decision",
-    "note": "CLEARED FOR SUBMISSION under dual_reading_decision policy (matched-budget uniqueness)"
+    "verdict": "negative",
+    "submission_eligible": false,
+    "policy": "binding_literal_rule",
+    "note": "NOT CLEARED: literal dense-witness final-dot overlap 1.000 > 0.70; matched-budget diagnostics do not waive the stop."
   },
   "competition_context": {
     "competition_id": 306,
@@ -223,7 +240,10 @@
     "repository": "buffedlizard55-lab/GEMSDOE92",
     "branch": "arena/05edd957-gemsdoe92",
     "commit": "376a8469",
-    "core_values": ["Maximize P(Win)", "Own the Outcome"],
+    "core_values": [
+      "Maximize P(Win)",
+      "Own the Outcome"
+    ],
     "automated_validation": true,
     "human_inspector": false,
     "manual_input": false
@@ -253,11 +273,9 @@
     ]
   },
   "notes": [
-    "This is the RECOMMENDED SUBMISSION for GEMSDOE92 as of 2026-10-25.",
-    "First artifact in repository history to simultaneously: (1) hold all-time #1 static HOLDOUT-DTI, (2) beat H19-5 on draw-blind, (3) beat R0 on SGMC PROXY, (4) cure NE quadrant collapse, (5) pass dual_reading_decision uniqueness.",
-    "Under dual_reading_decision policy, this submission is CLEARED FOR SUBMISSION.",
-    "The literal dense-witness rule (17GEMSDOE) is NOT BINDING for competition submissions under matched-budget uniqueness policy.",
-    "All automated format checks PASS; no human inspector required.",
-    "Zero weekly slots have been used; this is a recommendation for manual submission."
+    "Corrective audit: previous promotion status used a matched-budget dual-reading interpretation that conflicts with the binding literal registry rule.",
+    "Format validation and HOLDOUT-DTI are separate evidence classes; neither establishes organizer-confirmed score or submission eligibility.",
+    "GEMSDOE32 0.2778 and leaderboard snapshots are unverified claims absent organizer receipts.",
+    "No score projection is made from local holdout metrics."
   ]
 }

@@ -1,0 +1,90 @@
+{
+  "schema": "gemsdoe92-repository-review-run-card.v1",
+  "review_date": "2026-10-25",
+  "lane": "REPOSITORY_REVIEW_STOP",
+  "hypothesis": "No new candidate was implemented. The next candidate to preflight is a seasonal Landsat surface-temperature residual aligned with independent geophysical contacts; it may expose hydrothermal leakage along faults absent from the catalogue.",
+  "mechanism": "Proposed only: QA-screen multi-date Landsat Collection 2 Level-2 surface temperature, remove seasonal/background controls, and test persistent thermal residual lineaments against catalogue-independent structure. No Landsat raster was retrieved or evaluated.",
+  "named_non_fault_process": "Bare-rock emissivity/aspect effects, irrigation, seasonal soil moisture, and wildfire scars can produce apparent thermal lineaments.",
+  "candidate_experiment": {
+    "status": "NOT_RUN",
+    "reason": "19-band feature stack is absent from the staged cache; exact Landsat AOI scene availability is unverified; the binding literal registry stop rejects any nonempty full-footprint dot candidate against the full-footprint-positive witness.",
+    "experiments_used": 0,
+    "weekly_slots_used": 0
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "artifact": "EXISTING LISTRICDIP updip50 homepage primary; not generated in this review",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 22663,
+    "d_cat_gt_2": {
+      "value": 0.0054195278859189445,
+      "ci95": [
+        0.0042936054837163905,
+        0.006550678712361833
+      ]
+    },
+    "strict_draw_blind_d_visible_gt_2": {
+      "value": 0.048225,
+      "ci95": [
+        0.039232,
+        0.056882
+      ]
+    },
+    "interpretation": "Internal hide-and-recover surrogate only; not an organizer score or a geothermal-vent validation."
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "artifact": "EXISTING LISTRICDIP updip50",
+    "local_rasters_checked": 110,
+    "local_worst_abs_spearman": 0.05288886833577749,
+    "local_worst_final_forward_overlap": 0.19684495671110638,
+    "public_scope": "one pinned full-footprint-positive witness; not a complete 102-repo clearance",
+    "literal_dense_witness_forward_overlap": 1.0,
+    "literal_rule_verdict": "duplicate_stop"
+  },
+  "raster_sha256": "91e26530ad25cfc19e05d3fc38b75c0e295ee1e128f571a3ba4afcf8df10934e",
+  "validator_output": {
+    "evidence_class": "FORMAT-VALIDATION",
+    "artifact": "EXISTING LISTRICDIP updip50",
+    "file": "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif",
+    "no_nan_inside_footprint": true,
+    "no_nan_anywhere": true,
+    "values_in_0_1": true,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform_matches_sample_submission": true,
+    "dtype": "float32",
+    "bands": 1,
+    "outside_footprint_value": 0.0,
+    "positive_dot_count": 37654,
+    "source_receipts": [
+      "docs/downloads/gemsdoe92-listricdip-updip50-37654-20261025T190000Z-audit.json",
+      "evidence/listricdip_run_card.json"
+    ]
+  },
+  "submission_name": "GEMSDOE92-LISTRICDIP-updip50-20261025",
+  "submission_note": "LISTRICDIP updip50: 37654 listric-offset dots; HOLDOUT-DTI 0.005420; negative",
+  "note_max_characters": 140,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "organizer_confirmed": null,
+  "decision": "No new TIFF is offered as submit-ready. Existing homepage primary is downloadable for research only; do not spend a weekly slot.",
+  "holdout_best_reference": {
+    "evidence_class": "HOLDOUT-DTI",
+    "artifact": "EXISTING KNICKLOQO standalone; not generated in this review",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 22663,
+    "d_cat_gt_2": {
+      "value": 0.010787691812873463,
+      "ci95": [
+        0.009468348964777717,
+        0.012201154976595673
+      ]
+    },
+    "raster_sha256": "8ad4a8c2cd8e1fd989b63c752d5e9efc4ba87a2f608ccd551e8787648920d347",
+    "interpretation": "Best documented local holdout estimate, but it also fails the binding literal registry stop."
+  }
+}
