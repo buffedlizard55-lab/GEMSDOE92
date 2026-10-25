@@ -45,7 +45,8 @@ def save(rows: list[dict], path: str | Path = LEDGER) -> None:
             if k and k not in COLUMNS and k not in extra:
                 extra.append(k)
     with open(p, "w", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=COLUMNS + extra, extrasaction="ignore")
+        # lineterminator="\n": the tracked ledger uses LF; the csv default (CRLF) rewrote every row (fixed 2026-10-25, FAULTNET)
+        w = csv.DictWriter(fh, fieldnames=COLUMNS + extra, extrasaction="ignore", lineterminator="\n")
         w.writeheader()
         for r in rows:
             w.writerow({k: r.get(k, "") for k in COLUMNS + extra})

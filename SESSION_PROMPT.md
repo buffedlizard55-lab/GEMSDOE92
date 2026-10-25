@@ -6,6 +6,15 @@ Read this at the start of every session, together with `README.md`. The README i
 
 Read [the protocol-gate review](docs/REVIEW_376A8469.md) first. The literal overlap gate is binding for every raster. The later historical BLINDFAULT addendum claiming an automatic policy resolution is **superseded**: matched-budget overlap remains diagnostic only. A freshly pinned witness proves all nonempty candidates fail the unchanged rule. Stop rather than fabricate a new eligible TIFF. No new method lane was specified or tested in this review. Full operating requirements remain in the README's persistent session prompt and below; read both at every session start.
 
+## FAULTNET closeout — 2026-10-25 (read with the clarification above)
+
+FAULTNET (catalogue-network context + COULOMBLOQO physics) holds the best **HOLDOUT-DTI** in the repository:
+netfar `0.175147 [0.159756, 0.189860]` (gems57-pooled-hide-v2, 22,663 withheld positives) against the rebuilt control at `0.113890`.
+It is **NOT** cleared, because its final dots are a literal rule-1 duplicate against over-budget dot fields (worst 0.7586,
+GEMSDOE37 80k). A ridge-gated random null scores 0.4949, so the gate is specific. Do not waive it. The binding literal reading above stands.
+Both readings fail. See `docs/ANALYSIS_20261025_FAULTNET.md`. The site's top block is rendered by
+`scripts/render_current_submission.py` from `docs/downloads/current_submission.json`. Re-render it after any new run.
+
 ## Mission
 
 Produce a **unique** GeoTIFF for DrivenData competition 306 (DOE GEMS Prize: hidden geothermal-related faults, NW Great Basin, EPSG:32611 100 m). The file must be obviously downloadable from the GitHub Pages site. Inspection and validation run in the project, without a human inspector in the loop. A human still performs the DrivenData upload and weekly-slot selection.
