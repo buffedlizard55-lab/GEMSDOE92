@@ -1,0 +1,70 @@
+{
+  "schema": "gemsdoe92-run-card.v1",
+  "review_date_utc": "2026-10-25",
+  "lane": null,
+  "hypothesis": "No new experiment authorized; reviewed the existing LISTRIC standalone research raster. The session supplied no named method paragraph.",
+  "mechanism": "Existing LISTRIC mechanism per evidence/listric_run_card.json: quadrant-calibrated listric asymmetry/dip offset-pair surface, sharpened to a fixed-budget dot field via the shared writer. No new mechanism was implemented or tested here.",
+  "named_non_fault_process_that_could_mimic_it": "Dipping stratigraphic contacts offset from subsurface pinch-outs, landslide head-scarp/toe pairs, pluvial shoreline/offshore-bar pairs, and compaction drape over buried bedrock relief (from the existing LISTRIC run card).",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 22663,
+    "existing_raster_static_dcat_gt_2": {
+      "value": 0.01090854835537191,
+      "ci95": [0.009543315051539832, 0.012277592308589378],
+      "status": "copied from prior LISTRIC run card; not rerun in this review"
+    },
+    "existing_raster_strict_fold_visible_d_visible_gt_2": {
+      "value": 0.11059316734085466,
+      "ci95": [0.0974356173124059, 0.12334638585474715],
+      "status": "copied from prior LISTRIC run card; distinct instrument; not rerun in this review"
+    },
+    "paired_vs_knickloqo_static": {
+      "delta": 0.00012085654249844625,
+      "ci95": [-0.0011670355298850383, 0.0012623752801468634],
+      "status": "HOLDOUT-DTI paired comparison copied from prior LISTRIC run card; interval includes zero"
+    }
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "Prior LISTRIC public scan receipt; not refreshed in this review",
+    "surface_worst_abs_spearman": 0.481384,
+    "final_dots_worst_abs_spearman": 0.146888,
+    "final_dots_worst_forward_overlap": 0.710735,
+    "literal_full_footprint_witness_overlap": 1.0,
+    "thresholds": {
+      "absolute_spearman_stop": 0.90,
+      "forward_dot_overlap_stop": 0.70
+    },
+    "duplicate": true,
+    "verdict": "negative; literal stop applies"
+  },
+  "raster": {
+    "file": "docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif",
+    "sha256": "7e4b46368b2a5949bcf626bfaa4457ed15a89dde38d412a1d07469411a31e2ab",
+    "generated_by_this_review": false,
+    "chronology_note": "Artifact/run card dated 2026-10-26, future-dated relative to this review dated 2026-10-25 UTC."
+  },
+  "validator_output": {
+    "validation_class": "local format/range preflight; not organizer acceptance or submission clearance",
+    "no_nan_inside_footprint": true,
+    "all_values_finite": true,
+    "values_in_0_1": true,
+    "crs": "EPSG:32611",
+    "shape": [3730, 3292],
+    "transform_matches_reference": true,
+    "single_band_float32": true,
+    "outside_footprint_zero": true,
+    "validator_command": "PYTHONPATH=vendor .venv/bin/python -m gems validate docs/downloads/h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif --reference data/bridge/sample_submission.tif",
+    "validator_result": "PASS (9 gates)"
+  },
+  "submission_name": "GEMSDOE92-LISTRIC-standalone-20261026 (existing record only)",
+  "submission_note": "h33-h33-2-b2; LISTRIC standalone: 37654 1D quadrant-cal listric offset-pair crests",
+  "experiments_used_this_review": 0,
+  "weekly_slots_used_this_review": 0,
+  "new_tiff_generated": false,
+  "organizer_confirmed_score": null,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "download_recommendation": "OK TO DOWNLOAD FOR RESEARCH ONLY; DO NOT SUBMIT"
+}
