@@ -1,3 +1,11 @@
+# Latest override — session 918b947a
+
+**OK TO DOWNLOAD FOR RESEARCH; DO NOT SUBMIT. No new TIFF or experiment.**
+[Three-pass review](REVIEW_918B947A.md) · [fresh run card](downloads/review_918b947a_run_card.json).
+The dense witness and unchanged COULOMBLOQO primary were freshly rechecked; the universal overlap stop stands. Stored HOLDOUT-DTI results below were not rerun or newly certified leak-free. Broad all-time-best claims in historical material are superseded by the scoped comparison in this review. No current organizer score, weekly cap, or full public registry refresh is claimed.
+
+---
+
 # Current Repository & Gate Review — `GEMSDOE92` (`2026-10-24`, `COULOMB-LOQO` Primary)
 
 ## 1. Current Active Primary & Automated Gate Status

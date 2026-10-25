@@ -1,5 +1,8 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench (`COULOMB-LOQO` Primary Research Download)
 
+**Latest session review:** [Three-pass findings and ranked conditional hypotheses](docs/REVIEW_918B947A.md) · [fresh run card](docs/downloads/review_918b947a_run_card.json). **No new unique TIFF generated; DO NOT SUBMIT.** The literal overlap rule is unsatisfiable for any nonempty candidate because a pinned registry raster covers the entire footprint. Existing research download unchanged; historical HOLDOUT-DTI not rerun. The operational user brief is retained below and in `SESSION_PROMPT.md`; read both at session start. Maximize P(Win) and Own the Outcome mean preserving negative evidence, not fabricating submission clearance.
+
+
 > ### ✅ DOWNLOAD STATUS: **FORMAT-VALID — OK TO DOWNLOAD FOR RESEARCH**
 > ### ⛔ SUBMISSION / WEEKLY SLOT STATUS: **DO NOT SUBMIT — NOT CLEARED (`verdict: "negative"`, `submission_eligible: false`; literal public dense-witness stop)**
 >
@@ -12,7 +15,7 @@
 > - **Measured `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives):** **`0.009220 [0.007983, 0.010493]`** static (`0.009689` strict draw-blind `d_cat > 2.0`) and **`0.113316 [0.100614, 0.127163]`** strict Rule-2 unmasked `d_visible > 2.0` (`+0.016559 [+0.008170, +0.024980]` paired over `H19-5` `0.096757`). Local `HOLDOUT-DTI` is **not** an `ORGANIZER-CONFIRMED` competition score.
 > - **Uniqueness & Stop Gate:** Locally unique against every repository raster (`worst 3-px overlap = 0.6164 <= 0.70`, `|Spearman| <= 0.1593 <= 0.90`). Blocked solely by the literal public dense witness `17GEMSDOE E-proba-multiscale` (`5,167,373` positive footprint cells → `1.000` forward overlap; [1,368-raster public scan](docs/downloads/coulomb_loqo_public_registry_uniqueness.json) · [Run Card](docs/downloads/coulomb_loqo_run_card.json)). **0 weekly slots spent.**
 > - **Workbench & Analysis:** [Main Workbench](docs/index.html) · [Executive Summary](docs/executive-summary.html) · [Submission Guide](docs/SUBMIT.html) · [Pre-Registered Hypotheses](docs/HYPOTHESES_20261024_COULOMBLOQO.md) · [PhD Analysis](docs/ANALYSIS_20261024_COULOMBLOQO.md)
-> - **Latest three-pass repository review (2026-10-24):** [Findings, ranked future hypotheses, verified checks and limitations](docs/REVIEW_20261024_ARENA.md) · [JSON run card](evidence/arena_review_run_card_20261024.json). No new TIF was generated: the literal public-registry duplicate stop is binding.
+> - **Parallel three-pass repository review (2026-10-24):** [Findings, ranked future hypotheses, verified checks and limitations](docs/REVIEW_20261024_ARENA.md) · [JSON run card](evidence/arena_review_run_card_20261024.json). No new TIF was generated: the literal public-registry duplicate stop is binding.
 
 ## Prior/parallel candidate summary & full technical reference
 
@@ -25,9 +28,9 @@ Among earlier historical baselines, `APRONRIDGE free1d` (`h33-h33-2-b2-APRONRIDG
 Full mathematical derivation: [`docs/ANALYSIS_20261024_COULOMBLOQO.md`](docs/ANALYSIS_20261024_COULOMBLOQO.md).
 
 1. **Exact DTI Metric Geometry (`#IR-92-ALPHA-BETA-PROSE-SWAP` Corrected):**
-   - Verified directly against [`drivendataorg/gems-prize-reference-solution/unet-mc-cv-reference-solution.ipynb`](https://github.com/drivendataorg/gems-prize-reference-solution) (Cell 16) and [`vendor/gems57/metric.py`](vendor/gems57/metric.py):
+   - The [official reference notebook](https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/unet-mc-cv-reference-solution.ipynb) (Cell 16) confirms the **training-loss** weights only. It does not implement distance-weighted evaluation. The following DTI equation is implemented by the shared local [`vendor/gems57/metric.py`](vendor/gems57/metric.py), not independently certified from the live organizer problem page in this review:
      $$\mathrm{DTI}(A, G) = \frac{\mathrm{TP}_w}{\mathrm{TP}_w + 0.2\,\mathrm{FP}_w + 0.8\,\mathrm{FN}_w}, \qquad K(r) = \max\!\left(0,\, 1 - \frac{r}{300\,\mathrm{m}}\right), \qquad \Omega_{\text{eval}} = \Omega \setminus C.$$
-   - Contrary to inverted prose in earlier session docs, **false negatives carry $4\times$ the denominator weight of false positives ($\beta = 0.8$ vs $\alpha = 0.2$)**. Nevertheless, placing two dots closer than `2.8 px` (`280 m`) still degrades DTI because $c_{\text{pred}}(g) = \max_{x \in A} K(\|g - x\|_2)$ takes a **pointwise maximum** rather than a sum — redundant dots add $\approx 0$ to $\mathrm{TP}_w$ while adding full $+0.2$ per-dot penalty to $0.2\,\mathrm{FP}_w$.
+   - Contrary to inverted prose in earlier session docs, **false negatives carry $4\times$ the denominator weight of false positives ($\beta = 0.8$ vs $\alpha = 0.2$)**. The triangular-kernel coverage uses a **pointwise maximum**, so overlapping predictions can be redundant. However, separation below `2.8 px` does **not** imply zero marginal truth credit or a full per-dot false-positive penalty; each depends on the actual truth geometry. Thinning is a plausible mechanism for the reported improvement, not a universally optimal spacing theorem.
 2. **Exact Zero-XOR Byte-Verified Ancestor Cascade of `GEMSDOE32` (`R0`):**
    - `H19-5` (`19GEMSDOE`, `121,131` px, `0.1922` `[CLAIM]`) $\to$ `D2.8` (`GEMSDOE25`, `44,090` px Poisson-thinned at `2.83 px ≈ 300 m`, `0.2600` `[CLAIM]`) $\to$ `SOLO` (`GEMSDOE28`, `40,199` px with **`XOR(SOLO, D2.8 & d_cat > 1.0) == 0`**, `-3,891` px at `d_cat == 1.0`, `0.2708` `[CLAIM]`; `#IR-92-SOLO-R1-BYTE-IDENTITY`) $\to$ **`R0` / `GEMSDOE32 h33-2-b2`** (`37,654` px with **`XOR(R0, D2.8 & d_cat > 2.0) == 0`**, `-2,545` px at `1.0 < d_cat <= 2.0`, retaining `2,171` splay/tip dots at `2.0 < d_cat <= 3.0`, `0.2778` `[CLAIM]`).
 3. **Why `R0` Has Headroom (`0.3195` / `0.4413` Leaderboard `[CLAIM]`) & How `COULOMB-LOQO` Breaks Through:**
