@@ -1,5 +1,7 @@
 # GEMSDOE92 repository review — Arena branch `arena/0c5d848e-gemsdoe92` — 2026-10-26
 
+> **Later correction, 26 October 2026:** This is an archived review. Its claim-trained MODEL values and `±0.072244` row-wise error are **not defensible per-file score estimates or uncertainty intervals**; related artifacts crossed folds and the cap was selected on the full data. Its static re-scores of already-built predictions are not proven leakage-free prospective holdouts. An independent 2-D recheck changed numeric overlaps for 35 of 36 pairs, but none of the duplicate decisions; the cause of the earlier discrepancy is unknown. The literal witness and **DO NOT SUBMIT** decision remain binding. See the [later three-pass review](REVIEW_14F85876.md), [estimator diagnostic](downloads/score_estimator_audit_14f85876.json), and [corrected pairwise receipt](downloads/focus9_pairwise_recheck_14f85876.json). The original text below is preserved for historical context.
+
 ## Executive decision
 
 **No new GeoTIFF was generated; do not submit any artifact from this review.** The repo contains several downloadable research TIFFs, but none is cleared under its own promotion rules. The most prominent new research artifact in the nine-site summary is the SALEMSEISMO TIFF; its result is negative for promotion and the repository's literal full-footprint registry witness independently makes every non-empty raster fail the stated `>70%` overlap stop. Format-valid does not mean submission-eligible.

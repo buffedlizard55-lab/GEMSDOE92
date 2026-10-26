@@ -20,6 +20,16 @@ from urllib.parse import urlsplit
 
 URL = "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/"
 MAX_BYTES = 2_000_000
+# Only these controlled parser/validation messages may be exposed publicly.
+# Never serialize arbitrary upstream HTML, URLs, network errors, or secrets.
+FAILURE_CODES = {
+    "official leaderboard table missing or ambiguous": "table_missing_or_ambiguous",
+    "rank-one score is not a plain probability": "rank_one_score_invalid",
+    "rank-one score outside [0,1]": "rank_one_score_out_of_range",
+    "unexpected redirect away from leaderboard": "unexpected_redirect",
+    "leaderboard HTTP response not successful": "http_response_invalid",
+    "leaderboard page exceeds size limit": "page_too_large",
+}
 
 
 class Tables(HTMLParser):
@@ -131,7 +141,9 @@ def make_feed(fetch=fetch_html, *, now: datetime | None = None) -> dict:
     try:
         value = parse_public_leader(fetch())
     except Exception as exc:  # Network and upstream markup are untrusted; publish no guessed score.
-        base.update(status="unavailable", reason=f"refresh failed ({type(exc).__name__}); consult the official page")
+        code = FAILURE_CODES.get(str(exc), "invalid_response") if type(exc) is ValueError else "fetch_error"
+        base.update(status="unavailable", failure_code=code,
+                    reason=f"refresh failed ({type(exc).__name__}); consult the official page")
     else:
         base.update(status="ok", rank=1, public_dw_tversky=value)
     return base

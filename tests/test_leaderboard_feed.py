@@ -60,7 +60,17 @@ def test_feed_failure_is_explicit_and_contains_no_stale_score():
     assert feed["status"] == "unavailable"
     assert feed["rank"] is None and feed["public_dw_tversky"] is None
     assert "upstream failed" not in feed["reason"]  # no raw network error text
-    assert make_feed(lambda: "<html>login</html>")["status"] == "unavailable"
+    assert feed["failure_code"] == "fetch_error"
+    login = make_feed(lambda: "<html>login</html>")
+    assert login["status"] == "unavailable"
+    assert login["failure_code"] == "table_missing_or_ambiguous"
+    assert make_feed(lambda: page(score="NaN"))["failure_code"] == "rank_one_score_invalid"
+
+    def sensitive_value_error():
+        raise ValueError("private upstream details")
+    safe = make_feed(sensitive_value_error)
+    assert safe["failure_code"] == "invalid_response"
+    assert "private upstream details" not in json.dumps(safe)
 
 
 def test_committed_dated_snapshot_and_scheduled_deploy_are_honest():
