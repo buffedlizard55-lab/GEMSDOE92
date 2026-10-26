@@ -1,3 +1,9 @@
+# THERMOTILT closeout — 26 October 2026
+
+**DO NOT SUBMIT.** Three research rasters were built, but the literal stop was not honored before construction, registry checks happened after placement, and Stage-1 context was not nested in the outer Stage-2 fold. Canary PASS does not resolve these defects. Sparse uniqueness and holdout figures remain diagnostic, not promotion evidence. Runner disabled pending shared-pipeline repair. No more experiments in this budget. See [corrected analysis](docs/ANALYSIS_20261026_THERMOTILT.md) and `evidence/thermotilt_run_card.json`.
+
+---
+
 # 2026-10-25 audit & remediation (`arena/151c397c-gemsdoe92`)
 
 - **IR-92-TILTANGLE-FULL-CATALOGUE-DPREF-LEAKAGE (fixed & disclosed, `evidence/tiltangle_audit_20261025.json`):** Commit `14e74ba` (`TILTANGLE`) multiplied its gravity surface `S` by `d_pref = clip(1 - (d_cat - 3)/12, 0, 1)` computed from the **full** `existing_faults.tif` catalogue (including the withheld faults) and evaluated those static dots on `gems57.holdout` without recomputing `d_pref` from `fold["visible"]` only. Because `d_cat == 0` on every withheld fault, `d_pref == 1.0` on `100%` (`22,663 / 22,663`) of withheld fault pixels and fails the Protocol Rule 4 leakage canary with **symmetric `AUC = 0.962399 > 0.90`**. Recomputing leak-free via `vendor/gems57/evaluate_holdout.py` (`gems57-pooled-hide-v2`, `22,663` withheld positives, 1,000-draw paired spatial-block bootstrap) gives **`0.005272 [0.003839, 0.006810]`** (pure `S` static `d_cat > 2.0`), **`0.085247 [0.072752, 0.098193]`** (strict fold-visible Rule-2 `d_visible > 2.0` with visible-only `d_pref`), and **`0.042670 [0.030397, 0.055911]`** (strict fold-visible Rule-2 `d_visible > 2.0` on pure `S`), all below repository holdout-best (`LISTRICLOQO` `0.013295` static / `0.114410` Rule-2).

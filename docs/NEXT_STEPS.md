@@ -1,3 +1,9 @@
+# THERMOTILT closeout — 26 October 2026
+
+**DO NOT SUBMIT.** Three research rasters were built, but the literal stop was not honored before construction, registry checks happened after placement, and Stage-1 context was not nested in the outer Stage-2 fold. Canary PASS does not resolve these defects. Sparse uniqueness and holdout figures remain diagnostic, not promotion evidence. Runner disabled pending shared-pipeline repair. No more experiments in this budget. See [corrected analysis](docs/ANALYSIS_20261026_THERMOTILT.md) and `evidence/thermotilt_run_card.json`.
+
+---
+
 # Next Steps — `GEMSDOE92` (Updated `2026-10-25`, Post-`CHILISTRIC` Merge Integration)
 
 - **Completed in `CHILISTRIC` (`arena/2d4c152c-gemsdoe92`, `3 / 3` experiments, `0` weekly slots spent):**

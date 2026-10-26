@@ -302,3 +302,6 @@ Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261024_COULOM
 ## Review7059163e — 2026-10-25
 
 Start at the README's top decision and `docs/REVIEW_7059163E.md`. Fresh witness download/hash/grid/footprint verification still requires stopping before placement; no new TIFF or holdout. Preserve the existing normalized operating brief, not a claimed verbatim prompt. The shared supplementary Markdown renderer now repairs a current decision displaced by a prepended lane banner and rejects reversed markers. Archive future-dated “latest” claims rather than accepting their chronology. The Pages API reports built/legacy, but workflow-mode activation is still denied with HTTP 403; publication gating is not established for the live legacy site.
+
+## 26 October 2026 closeout addendum
+Read README and this brief each session. The owner requires nine-site executive tables, a genuinely new submission-ready TIFF, automated format/science/uniqueness gates, no unsupported leaderboard projections, three review passes, and PR plus merge. THERMOTILT did not meet promotion requirements. Its runner is disabled; critical protocol deviations are in the run card. Do not spend a slot or rerun this lane before shared nested-OOF and pre-placement checks are repaired and the literal registry stop resolved.
