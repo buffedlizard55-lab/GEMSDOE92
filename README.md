@@ -725,3 +725,44 @@ There should be an easy-to-download submission TIF file as described by the prom
 1. Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261025_RELAYCONDUIT.md`) before implementation (`gems/relayconduit.py`, `scripts/run_relayconduit.py`).
 2. Validated all 3 pre-registered arms on `gems57-pooled-hide-v2` (`22,663` withheld positives, `35/35` leakage canaries PASS `<= 0.90`): `relay_conduit` strict Rule-2 `HOLDOUT-DTI = 0.184485 [0.169875, 0.198933]` (paired `+0.069008 [+0.053289, +0.084771]` over rebuilt `control_COULOMBLOQO_d32` `0.115477`; locally unique across all `128` post-merge rasters at `0.6601 <= 0.70`; external 102-repo overlap `0.7843 > 0.70` vs `GEMSDOE53` 80k); `relay_delta` `0.180061 [0.165231, 0.193562]`; zero-catalogue `conduit_notip` `0.076416` (`SGMC PROXY = 0.106525`, passes all `1,367` external rasters across `102` repos at `0.6557 <= 0.70`, `0` external violations, and `0.7031` locally vs `RIEDELVALVE riedel_n90k` `90k`).
 3. Emitted 3 `[0, 1]` format-validated GeoTIFFs (`11/11` gates PASS, `0` NaN), Run Card (`evidence/relayconduit_run_card.json`), executive subpage (`docs/relayconduit.html`), and PhD forensic analysis (`docs/ANALYSIS_20261025_RELAYCONDUIT.md`, including `GEMSDOE32` `0.2778` `[CLAIM]`, `0.3195` / `0.4413` ceilings, and `VENTSCARP` §1.3 corrections). Verdict `negative` (`0` weekly slots spent).
+
+### Current conversation prompt — governing requirements (2026-10-26)
+
+This conversation's prompt is the governing requirements document for this session. It is retained here so every
+session starts from it. Key, binding requirements:
+
+- **Highest urgency — MUST:** Generate a **unique TIF submission** for the competition. Do not copy a previous
+  submission (except for learning/education). It must be **obvious whether it is OK to download and submit** the
+  generated TIF submission. There must be an easy-to-download submission TIF; validation must be done through the
+  project (automated), not by a human inspector.
+- **Focus sites:** GEMSDOE24, GEMSDOE25, GEMSDOE27, GEMSDOE28, GEMSDOE30, GEMSDOE31, GEMSDOE32, GEMSDOE33,
+  GEMSDOE36. Produce an **executive summary on every site** that is clear and obvious which is the best submission
+  to obtain a high score. It must be **unique** and not an exact duplicate of any previous submission.
+- **Executive summary table:** clearly list **what file to download**, the **estimate score**, and whether it is a
+  **unique submission** unlike any of the other GEMSDOE sites.
+- **Beat 0.2778:** GEMSDOE32's `h33-h33-2-b2` (claimed 0.2778) is the highest among the focus sites. Design a
+  submission that scores higher; session target is > 0.3195; live leaderboard high is 0.4413.
+- **Submission must be obvious:** The file to download and submit must be at the **very beginning / top** of the site
+  and executive summary, with a unique name and a note of at most 140 characters.
+- **Fix the "[0, 1]" error:** every value must be finite and in [0, 1] (zeros-outside encoding) so the portal error
+  `Predicted values must be in range [0, 1]` cannot occur.
+- **Parallel-run protocol:** stay in the single method lane; stop if rank-correlation > 0.90 or > 70% of dots within
+  3 px of one registry raster's dots (check surface before placement AND final dots); reuse shared tools
+  (evaluate_holdout.py, submission_writer.py); hide-and-recover holdout; label every number as HOLDOUT-DTI or
+  ORGANIZER-CONFIRMED (never a projection as a score); leakage canary AUC > 0.90 = leakage; one JSON run card ending
+  with verdict promote/negative; stop after 3 experiments or 2 hours.
+- **No DrivenData auth:** training_features.tif, labels.tif, sample_submission.tif, 1m_DEM_links.csv require login.
+  Use only free, official, publicly available sources for any external data; name the specific source and verify it
+  is obtainable before proposing any idea that needs it.
+- **Deliverables:** (1) generate 3–5 untried geological hypotheses (layers, physical signature, missing-fault
+  rationale, differences, mimic, expected value, cost); (2) validate the top candidate on the spatially-blocked
+  holdout before touching a weekly slot; (3) generate a unique TIF submission; (4) create the executive summary
+  subpage; (5) store this prompt in README.md; (6) create and merge a pull request onto main.
+- **Core values:** Maximize P(Win); Own the Outcome.
+
+Session result (this session, AKCD lane): unique TIF
+`docs/downloads/gemsdoe92-akcd-20261026T162305Z-zeros.tif` generated (SHA-256
+`e59809efbbcf53c3aeefe656f5faedf206d9de5448a90432427e43034c10e5a8`), all 11 format gates PASS (fixes the
+[0, 1] error), HOLDOUT-DTI `0.017985` (local surrogate, not a score), but dot-location DUPLICATE under protocol rule
+1 (worst 3-px forward overlap `0.9370 > 0.70`) → **NOT cleared for submission**, 0 weekly slots used. Full site
+table and submission guide: `docs/executive-summary.html`.

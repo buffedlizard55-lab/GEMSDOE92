@@ -40,6 +40,43 @@ Pre-registration: <a href="HYPOTHESES_20261025_VARIO.md">hypotheses</a> ·
 analysis: <a href="ANALYSIS_20261025_VARIO.md">why R0 scored 0.2778 [CLAIM] and what VARIO changes</a>.</p>
 </section>
 <!-- VARIO-STATUS:END -->
+
+<!-- AKCD-SESSION:BEGIN -->
+<section aria-label="Newest research download — AKCD lane (2026-10-26)"
+         style="max-width:70rem;margin:1rem auto;padding:1.25rem;border:3px solid #1e3a5f;border-radius:12px;background:#eff6ff;color:#0c2a4a;font:1rem/1.6 system-ui,sans-serif;overflow-wrap:anywhere">
+  <h2 style="margin-top:0">🆕 Newest research download — GEMSDOE92 AKCD (Adaptive-Kernel Crest Dotting)</h2>
+  <p style="font-size:1.15rem"><strong>✅ OK TO DOWNLOAD FOR RESEARCH &nbsp;·&nbsp; ⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT</strong></p>
+  <p style="font-size:1.15rem">
+    <a class="btn" href="downloads/gemsdoe92-akcd-20261026T162305Z-zeros.tif" download
+       style="display:inline-block;padding:.8rem 1.1rem;background:#1e3a5f;color:#fff;border-radius:6px;font-weight:700">
+      ⬇ Download gemsdoe92-akcd-20261026T162305Z-zeros.tif (.tif)
+    </a>
+    &nbsp;
+    <a href="downloads/gemsdoe92-akcd-20261026T162305Z-zeros.zip" download>one-TIFF ZIP</a>
+    &nbsp;
+    <a href="downloads/gemsdoe92-akcd-20261026T162305Z-audit.json">JSON audit card</a>
+    &nbsp;
+    <a href="executive-summary.html"><strong>Executive summary &amp; GEMSDOE sites table</strong></a>
+  </p>
+  <p>Submission name: <code>GEMSDOE92-AKCD-20261026T162305Z</code><br>
+  Note (≤140 chars; <code>95/140</code>): <code>AKCD: h19-5 skeleton, dcat (2.0,4.0]px bands mass 1.0/0.5/0.2, NMS 2.5px; 4235 dots; HOLDOUT-DTI 0.0180</code><br>
+  SHA-256: <code>e59809efbbcf53c3aeefe656f5faedf206d9de5448a90432427e43034c10e5a8</code> · 4,235 dots · single band float32 · EPSG:32611 · 3730×3292</p>
+  <p><strong>Why this file:</strong> h19-5 skeleton; dots kept in the catalogue-distance recovery band dcat &isin; (2.0, 4.0] px
+  (just outside the 2 px prune radius, inside the 3 px kernel) with full mass 1.0 in (2.0, 2.5], 0.5 in (2.5, 3.0],
+  0.2 exploratory in (3.0, 4.0]; adaptive NMS at 2.5 px ranked by kernel credit squared. Distinct from GEMSDOE32's
+  h33-h33-2-b2 (fixed 2.8 px spacing, uniform mass). Catalogue pixels are never features. Build:
+  <code>scripts/build_adaptive_crest_submission.py</code>.</p>
+  <p><strong>Format gates:</strong> all 11 automated MUST gates PASS — every cell finite and in <code>[0, 1]</code>, zeros outside
+  the footprint, CRS/shape/transform byte-matched to <code>sample_submission.tif</code>. Prevents the portal error
+  <q>Predicted values must be in range [0, 1]</q> with zero human pixel inspection.</p>
+  <p><strong>Holdout:</strong> HOLDOUT-DTI <code>0.017985</code> (gems57-pooled-hide-v2, 45,260 withheld positives) — a local
+  surrogate, <strong>not</strong> an organizer score. <strong>Uniqueness:</strong> byte-unique but dot-location duplicate under
+  protocol rule 1 (worst 3-px forward overlap <code>0.9370 &gt; 0.70</code> vs an existing catalogue-near raster). The pinned
+  literal dense witness overlaps every non-empty raster at 1.000 &gt; 0.70. <strong>No weekly slot cleared (0 used).</strong>
+  See <a>docs/executive-summary.html</a> for the GEMSDOE sites score table and DrivenData submission steps.</p>
+</section>
+<!-- AKCD-SESSION:END -->
+
 <aside aria-label="Independent high-score site review" style="max-width:70rem;margin:0 auto 1rem;padding:1rem 1.25rem;border:2px solid #a16207;border-radius:10px;background:#fffbeb;color:#292524;font:1rem/1.55 system-ui,sans-serif">
   <p><strong>Independent review — 2026-10-26:</strong> The nine requested high-score site artifacts are historical research references, not organizer-confirmed results. All fail pairwise uniqueness against at least one of the other target sites; the literal full-footprint witness independently stops every nonempty candidate. This review created no TIFF, holdout, experiment, or submission clearance. <strong>DO NOT SUBMIT any linked reference.</strong></p>
   <p><strong>Separate concurrent BLINDEXT lane:</strong> the <a href="downloads/gemsdoe92-blindext-20261026T162451Z-zeros.tif">research TIFF</a> is downloadable, but its <a href="downloads/gemsdoe92-blindext-20261026T162451Z_run_card.json">run card</a> records no HOLDOUT-DTI result and a duplicate stop. It is <strong>NOT CLEARED TO SUBMIT</strong>.</p>
