@@ -1,0 +1,172 @@
+{
+  "schema": "gemsdoe92-blindext-audit.v1",
+  "lane": "BLINDEXT",
+  "arm": "primary",
+  "file": "docs/downloads/gemsdoe92-blindext-20261026T162451Z-zeros.tif",
+  "sha256": "ad49eec1ed61a578cfd91fd22e0848c3cd0fedaba3602bade173a49eead877bf",
+  "bytes": 818948,
+  "submission_name": "GEMSDOE92-BLINDEXT-20261026",
+  "note": "h33-h33-2-b2; BLINDEXT: blind-extension dots at h19_5 skeleton termini, d_cat 2-6px off catalogue; 37654 dots 2.83px spacing",
+  "note_chars": 124,
+  "generated_utc": "20261026T162451Z",
+  "validator": {
+    "file": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-blindext-20261026T162451Z-zeros.tif",
+    "bytes": 818948,
+    "sha256": "ad49eec1ed61a578cfd91fd22e0848c3cd0fedaba3602bade173a49eead877bf",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "lzw"
+    },
+    "band_description": [
+      "predicted_new_fault_probability"
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "emitted_positive_pixels": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37654,
+    "footprint_fraction": 0.007286874781441169
+  },
+  "format_gates": [
+    {
+      "gate": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "gate": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "gate": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "gate": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=('float32',) count=1"
+    },
+    {
+      "gate": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "gate": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nonfinite_pixels=0"
+    },
+    {
+      "gate": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "gate": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "gate": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "gate": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0; strict distance > radius required"
+    },
+    {
+      "gate": "reread_sha256",
+      "ok": true,
+      "detail": "ad49eec1ed61a578cfd91fd22e0848c3cd0fedaba3602bade173a49eead877bf"
+    }
+  ],
+  "gates_pass": true,
+  "uniqueness_local": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "rasters_checked": 157,
+    "worst_literal_forward_overlap": 1.0,
+    "worst_literal_file": "local:docs/downloads/gemsdoe92-blindext-20261026T161906Z-zeros.tif",
+    "worst_matched_budget_forward_overlap": 1.0,
+    "worst_matched_budget_file": "local:docs/downloads/gemsdoe92-blindext-20261026T161906Z-zeros.tif",
+    "worst_abs_spearman": 1.0,
+    "worst_abs_spearman_file": "local:docs/downloads/gemsdoe92-blindext-20261026T161906Z-zeros.tif",
+    "duplicate": true,
+    "verdict": "negative",
+    "notes": "literal-overlap rule: >70% of dots within 3 px of one registry raster's dots => duplicate => stop; |rho| > 0.90 => duplicate"
+  },
+  "public_registry": {
+    "available": false,
+    "reason": "102-repo GitHub API scan not run this session; local registry (served + release rasters) scanned instead."
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "available": false,
+    "reason": "organizer withheld truth is not published; labels.tif is the mapped-fault catalogue, not holdout truth. vendor/gems57/evaluate_holdout.py cannot be scored without the truth grid. Not projected as a score."
+  },
+  "leakage_canaries": {
+    "available": false,
+    "reason": "single-feature leakage canaries require the 19-band training stack (login-gated, not in this checkout). BLINDEXT uses only h19_5 + catalogue masks, neither of which reads withheld truth."
+  },
+  "raster_sha256": "ad49eec1ed61a578cfd91fd22e0848c3cd0fedaba3602bade173a49eead877bf",
+  "zip_sha256": null,
+  "dots": 37654,
+  "checks": {
+    "single_band": true,
+    "dtype_float32": true,
+    "dimensions_3730x3292": true,
+    "crs_epsg_32611": true,
+    "transform_matches_sample_submission": true,
+    "no_nan_anywhere": true,
+    "no_inf_anywhere": true,
+    "no_sentinel_values": true,
+    "range_0_1_guaranteed": true,
+    "min_ge_0": true,
+    "max_le_1": true,
+    "in_footprint_all_finite": true,
+    "in_footprint_range_0_1": true,
+    "outside_footprint_zero": true,
+    "zero_dots_on_mapped_catalogue": true
+  }
+}

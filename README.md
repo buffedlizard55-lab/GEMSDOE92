@@ -21,15 +21,30 @@ Automated validation (no human inspection): finite [0, 1] everywhere (the portal
 
 - **New unique GeoTIFF:** [`h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.tif`](docs/downloads/h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.tif) · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.zip) · [audit](docs/downloads/h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-audit.json) · [Rule 5 run card](docs/downloads/salemseismo_run_card.json) · [holdout](docs/downloads/salemseismo_holdout.json) · [uniqueness](docs/downloads/salemseismo_uniqueness.json).
 - **Nine-site executive summary with the download / estimate / uniqueness table:** [`docs/focus9.html`](docs/focus9.html) (rendered from committed JSON receipts by `scripts/render_focus9_page.py`).
-- **Estimated DTI `0.0832 ± 0.0722`** — a cross-validated **MODEL** value (leave-one-out RMSE on 107 owner-reported CLAIMs, LOO Spearman `0.750`), **never** a score. Class-consistent comparison: GEMSDOE32 `h33-h33-2-b2` CLAIM `0.2778` → MODEL `0.2519`; GEMSDOE70 `p5-dual-submod` CLAIM `0.2478` → MODEL `0.1908`.
+- **Estimated DTI `0.0832 ± 0.0722`** — a cross-validated **MODEL** value (leave-one-out RMSE on 107 owner-reported CLAIMs, LOO Spearman `0.750`), **never** a score. Same-class comparison: GEMSDOE32 `h33-h33-2-b2` CLAIM `0.2778` → MODEL `0.2519`; GEMSDOE70 `p5-dual-submod` CLAIM `0.2478` → MODEL `0.1908`.
 - **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): static `d_cat>2` **`0.015948`** [`0.013683`, `0.018370`] — above the previous static-SOTA control `LISTRICLOQO selectcal` `0.013295`; strict draw-blind Rule-2 **`0.099345`** [`0.084948`, `0.113946`].
-- **Uniqueness (REGISTRY-MEASUREMENT):** worst 3-px overlap **`0.6447 <= 0.70`** across **1,756** compatible public rasters in **102** repositories (`0` over 0.70); worst |ρ| `0.0573 <= 0.90`. It is **not** a copy of GEMSDOE24/25/27/28/30/31/32/33/36 (their best files sit at 0.87–1.00 similarity to each other; this file does not).
+- **Uniqueness (REGISTRY-MEASUREMENT):** worst 3-px overlap **`0.6447 <= 0.70`** across **1,756** compatible public rasters in **102** repositories (`0` over 0.70); worst |ρ| `0.0573 <= 0.90`. It is **not** a copy of GEMSDOE24/25/27/28/30/31/32/33/36.
 - **Automated validation (no human inspection):** 11/11 gates PASS — single-band `float32`, EPSG:32611, 3730×3292, all 12,279,160 cells finite in `[0,1]`, 0 NaN, zeros outside the footprint, 0 dots on the mapped catalogue, all dots >2 px from it; `26/26` leakage canaries PASS (max symmetric AUC `0.6077`).
 - **Form fields (record only; do not upload until the badge is green):** name `GEMSDOE92-SALEMSEISMO-celftail52k-20261026` · note (112/140) `SALEMSEISMO celftail52k: 52000px Salem-tilt+Walker-seismo+10m-toe+ThK CELF; HOLDOUT-DTI 0.0993 (st 0.0159) [neg]` · SHA-256 `b06dd72feff35b1631a17a52581b46d9b21b92fcba09441eac77d6daa9ba1dda`.
 - **Why the badge is red:** the binding literal registry rule reads overlap `1.0000 > 0.70` against the pinned `17GEMSDOE_E-proba-multiscale` surface, which is positive on every footprint cell — so no non-empty file can ever clear it. That is an owner policy decision (see §6 of `docs/focus9.html`), not a defect in this file.
+- **Lineage re-verified by XOR on pinned bytes this session:** `D2.8(25) ≡ d28(30)` = 0; `SOLO(28) ≡ solo(31)` = 0; `SOLO ≡ D2.8 ∧ d_cat>1` = 0; `R0 ≡ D2.8 ∧ d_cat>2` = 0; GEMSDOE36 PINN ⊃ R0 exactly, +`1,200` dots (reported score fell to 0.2750).
+
+
+## Durable project aim and session prompt — read before every session
+
+**Mission:** build an auditable, reproducible method for locating geothermal/Quaternary fault prospects and produce a genuinely unique, automatically validated single-band GeoTIFF only when the full protocol supports it. The website must state plainly whether an exact file is downloadable for research and whether it is cleared to submit. Keep **Maximize P(Win)** and **Own the Outcome** central; preserve negative results and do not invent scores.
+
+**Binding workflow:** before implementation, rank 3–5 untried geological hypotheses by expected HOLDOUT-DTI value, cost, layers, transform/signature, catalogue-missing-fault rationale, codebase distinction, named non-fault mimic, and data availability. If the request has no distinct assigned method paragraph, do not borrow one from an archived lane. Use the pinned shared feature stack, `vendor/gems57/evaluate_holdout.py`, and `vendor/gems57/submission_writer.py`; hide buffered whole fault components, derive catalogue features only from visible faults, mask visible faults pixel-exactly, and report pooled DTI with `alpha=0.2`, `beta=0.8`, and the 300 m triangular kernel. Test each feature alone; AUC >0.90 is a leakage alarm. Stop at 3 experiments or 2 hours. Do not choose or spend a weekly competition slot; that is a separate human selector decision.
+
+**Uniqueness and evidence:** compare before placement and again on final dots. Stop if `|Spearman rho| > 0.90` or >70% of candidate dots fall within 3 px of any registry raster; do not waive or reinterpret the literal dense-witness reading. Label each number as `HOLDOUT-DTI` (evaluator, withheld-positive count, 95% CI), `ORGANIZER-CONFIRMED` (actual submission receipt), `CLAIM`, `MODEL`, `PROXY`, or `REGISTRY-MEASUREMENT`; a projection is never a score. A run card must include mechanism, non-fault mimic, holdout/CI or honest block, registry metrics, raster SHA-256, automated NaN/range/CRS/shape/transform validation, separate submission name, ≤140-character note, and verdict.
+
+**Current review (2026-10-26):** the strongest of the nine requested public references is GEMSDOE32 `h33-h33-2-b2`, `.2778 CLAIM`, not an organizer-confirmed score. User-supplied `.4413` and `.3195` snapshots conflict; GEMSDOE32's owner page also reports `.4437`, so the current official leader is unknown. All nine selected high-score masks fail pairwise uniqueness against at least one other target site, and the pinned full-footprint witness independently gives any nonempty candidate literal overlap `1.000 > 0.70`. This review generated **no** TIFF, holdout, or experiment and spent **zero** slots. A separate BLINDEXT research TIFF is present in upstream main, but its own run card records no holdout score and a duplicate stop; it is downloadable for research only and **not cleared to submit**. Do not submit any linked historical or concurrent-lane reference. Read the [site review](docs/SITE_REVIEW_20261026.html), [full comparison JSON](docs/downloads/focus_sites_release_review_20261026.json), [ranked hypothesis screen](docs/HYPOTHESES_20261026_SITE_REVIEW.md), and [`SESSION_PROMPT.md`](SESSION_PROMPT.md) before future work. The corrected rejection-only receipt is `evidence/review_20261026_gemsdoe_sites_run_card_v2.json`; its predecessor is explicitly superseded.
 
 <!-- CURRENT:BEGIN -->
-> ## Newest completed session lane (`2026-10-25`) — `CHILISTRIC` / primary arm `addtail52k` (3 new unique-byte GeoTIFFs)
+> ## THERMOTILT review — 26 October 2026
+> Three byte-distinct format-valid research rasters were generated. **DO NOT SUBMIT:** holdout frontier not beaten, literal duplicate stop applies, and nested-OOF/check-order defects invalidate promotion evidence. [Executive evidence review](docs/thermotilt.html) · [Run card](docs/downloads/thermotilt_run_card.json). No leaderboard estimate is available.
+
+> ## Completed session lane (`2026-10-25`) — `CHILISTRIC` / primary arm `addtail52k` (3 new unique-byte GeoTIFFs)
 > **✅ OK TO DOWNLOAD FOR RESEARCH** (`11/11` automated `[0, 1]` gates PASS, `0` NaN; unique across all `124` post-merge local rasters at `0.6773 <= 0.70` & all `1,503` public rasters across `102` repos at `0.6351 <= 0.70`) · **⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT** (verdict `negative`, `submission_eligible: false`; literal `17GEMSDOE` dense witness `1.000 > 0.70` & static tie vs `LISTRICLOQO` `0.013295`; `0` weekly slots spent).
 >
 > **[⬇ Download research GeoTIFF (`h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.tif`)](docs/downloads/h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.tif)** · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.zip) · [JSON Run Card](docs/downloads/chilistric_run_card.json) · [Executive Summary & How to Submit](docs/executive-summary.html) · [PhD Analysis (`0.2778` / `0.3195` / `0.4413` & Verified Sources Table)](docs/ANALYSIS_20261025_CHILISTRIC.md) · [Pre-Registered Hypotheses](docs/HYPOTHESES_20261025_CHILISTRIC.md) · [3-Pass Review](docs/REVIEW_20261025_CHILISTRIC.md)
@@ -728,3 +743,48 @@ There should be an easy-to-download submission TIF file as described by the prom
 1. Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261025_RELAYCONDUIT.md`) before implementation (`gems/relayconduit.py`, `scripts/run_relayconduit.py`).
 2. Validated all 3 pre-registered arms on `gems57-pooled-hide-v2` (`22,663` withheld positives, `35/35` leakage canaries PASS `<= 0.90`): `relay_conduit` strict Rule-2 `HOLDOUT-DTI = 0.184485 [0.169875, 0.198933]` (paired `+0.069008 [+0.053289, +0.084771]` over rebuilt `control_COULOMBLOQO_d32` `0.115477`; locally unique across all `128` post-merge rasters at `0.6601 <= 0.70`; external 102-repo overlap `0.7843 > 0.70` vs `GEMSDOE53` 80k); `relay_delta` `0.180061 [0.165231, 0.193562]`; zero-catalogue `conduit_notip` `0.076416` (`SGMC PROXY = 0.106525`, passes all `1,367` external rasters across `102` repos at `0.6557 <= 0.70`, `0` external violations, and `0.7031` locally vs `RIEDELVALVE riedel_n90k` `90k`).
 3. Emitted 3 `[0, 1]` format-validated GeoTIFFs (`11/11` gates PASS, `0` NaN), Run Card (`evidence/relayconduit_run_card.json`), executive subpage (`docs/relayconduit.html`), and PhD forensic analysis (`docs/ANALYSIS_20261025_RELAYCONDUIT.md`, including `GEMSDOE32` `0.2778` `[CLAIM]`, `0.3195` / `0.4413` ceilings, and `VENTSCARP` §1.3 corrections). Verdict `negative` (`0` weekly slots spent).
+
+### THERMOTILT closeout — 26 October 2026
+
+Three byte-distinct TIFFs passed format checks. **DO NOT SUBMIT:** they did not beat the documented holdout frontier, the literal duplicate stop applies, and nested-OOF/check-order defects prevent scientific clearance. Sparse comparisons are provisional diagnostics. The runner is disabled. [Corrected analysis](docs/ANALYSIS_20261026_THERMOTILT.md) · [run card](docs/downloads/thermotilt_run_card.json). Final checks: 578 tests passed (141 warnings); site gate passed on 118 rasters. GitHub Pages API reports legacy/built; CI gating of live publication is not established.
+
+### Current conversation prompt — governing requirements (2026-10-26)
+
+This conversation's prompt is the governing requirements document for this session. It is retained here so every
+session starts from it. Key, binding requirements:
+
+- **Highest urgency — MUST:** Generate a **unique TIF submission** for the competition. Do not copy a previous
+  submission (except for learning/education). It must be **obvious whether it is OK to download and submit** the
+  generated TIF submission. There must be an easy-to-download submission TIF; validation must be done through the
+  project (automated), not by a human inspector.
+- **Focus sites:** GEMSDOE24, GEMSDOE25, GEMSDOE27, GEMSDOE28, GEMSDOE30, GEMSDOE31, GEMSDOE32, GEMSDOE33,
+  GEMSDOE36. Produce an **executive summary on every site** that is clear and obvious which is the best submission
+  to obtain a high score. It must be **unique** and not an exact duplicate of any previous submission.
+- **Executive summary table:** clearly list **what file to download**, the **estimate score**, and whether it is a
+  **unique submission** unlike any of the other GEMSDOE sites.
+- **Beat 0.2778:** GEMSDOE32's `h33-h33-2-b2` (claimed 0.2778) is the highest among the focus sites. Design a
+  submission that scores higher; session target is > 0.3195; live leaderboard high is 0.4413.
+- **Submission must be obvious:** The file to download and submit must be at the **very beginning / top** of the site
+  and executive summary, with a unique name and a note of at most 140 characters.
+- **Fix the "[0, 1]" error:** every value must be finite and in [0, 1] (zeros-outside encoding) so the portal error
+  `Predicted values must be in range [0, 1]` cannot occur.
+- **Parallel-run protocol:** stay in the single method lane; stop if rank-correlation > 0.90 or > 70% of dots within
+  3 px of one registry raster's dots (check surface before placement AND final dots); reuse shared tools
+  (evaluate_holdout.py, submission_writer.py); hide-and-recover holdout; label every number as HOLDOUT-DTI or
+  ORGANIZER-CONFIRMED (never a projection as a score); leakage canary AUC > 0.90 = leakage; one JSON run card ending
+  with verdict promote/negative; stop after 3 experiments or 2 hours.
+- **No DrivenData auth:** training_features.tif, labels.tif, sample_submission.tif, 1m_DEM_links.csv require login.
+  Use only free, official, publicly available sources for any external data; name the specific source and verify it
+  is obtainable before proposing any idea that needs it.
+- **Deliverables:** (1) generate 3–5 untried geological hypotheses (layers, physical signature, missing-fault
+  rationale, differences, mimic, expected value, cost); (2) validate the top candidate on the spatially-blocked
+  holdout before touching a weekly slot; (3) generate a unique TIF submission; (4) create the executive summary
+  subpage; (5) store this prompt in README.md; (6) create and merge a pull request onto main.
+- **Core values:** Maximize P(Win); Own the Outcome.
+
+Session result (this session, AKCD lane): unique TIF
+`docs/downloads/gemsdoe92-akcd-20261026T162305Z-zeros.tif` generated (SHA-256
+`e59809efbbcf53c3aeefe656f5faedf206d9de5448a90432427e43034c10e5a8`), all 11 format gates PASS (fixes the
+[0, 1] error), HOLDOUT-DTI `0.017985` (local surrogate, not a score), but dot-location DUPLICATE under protocol rule
+1 (worst 3-px forward overlap `0.9370 > 0.70`) → **NOT cleared for submission**, 0 weekly slots used. Full site
+table and submission guide: `docs/executive-summary.html`.

@@ -1,52 +1,34 @@
-## Session start — 2026-10-26 (read the nine-site audit first)
-
-Read [`docs/focus9.html`](docs/focus9.html) and the addendum below, then the 2026-10-25 material.
 
 ## Current session addendum — 2026-10-26 (nine-site forensic audit + `SALEMSEISMO` lane, branch `arena/18da04a8-gemsdoe92`)
 
-Read [`docs/focus9.html`](docs/focus9.html) first: it is the rendered, receipt-driven executive
-summary for GEMSDOE24/25/27/28/30/31/32/33/36 plus the download/estimate/uniqueness table.
-Machine receipts: [`evidence/focus9_executive_audit_20261026.json`](evidence/focus9_executive_audit_20261026.json),
-[`evidence/score_estimator_20261026.json`](evidence/score_estimator_20261026.json),
-[`evidence/salemseismo_run_card.json`](evidence/salemseismo_run_card.json),
-[`evidence/salemseismo_holdout.json`](evidence/salemseismo_holdout.json),
-[`evidence/salemseismo_uniqueness.json`](evidence/salemseismo_uniqueness.json).
-Reproduce with `scripts/audit_focus9_sites.py` → `scripts/estimate_scores.py` →
-`scripts/run_salem_seismo.py` → `scripts/render_focus9_page.py`.
+Read [`docs/focus9.html`](docs/focus9.html) first: receipt-driven executive summary for
+GEMSDOE24/25/27/28/30/31/32/33/36 plus the download / estimate / uniqueness table. Machine receipts:
+`evidence/focus9_executive_audit_20261026.json`, `evidence/score_estimator_20261026.json`,
+`evidence/salemseismo_run_card.json`, `evidence/salemseismo_holdout.json`,
+`evidence/salemseismo_uniqueness.json`. Reproduce: `scripts/audit_focus9_sites.py` →
+`scripts/estimate_scores.py` → `scripts/run_salem_seismo.py` → `scripts/render_focus9_page.py`.
 
-**Result.** Lane `SALEMSEISMO` (26 zero-catalogue physics channels over 7 previously unused bands,
-dual-partition `0.5·LOQO + 0.5·rotated-45° LODO` OOF, exact 25-offset 300 m triangular-kernel
-submodular `CELF` placement, pre-registered in `docs/HYPOTHESES_20261026_SALEMSEISMO.md`) ran
-`3/3` experiments and spent `0` weekly slots. New byte-unique files:
-`h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.tif` (primary, `52,000` px) plus `celf37k` and `point37k` siblings.
+Lane `SALEMSEISMO` (26 zero-catalogue channels over 7 previously unused bands; dual-partition
+`0.5·LOQO + 0.5·rotated-45° LODO` OOF; exact 25-offset 300 m submodular `CELF` placement;
+pre-registered in `docs/HYPOTHESES_20261026_SALEMSEISMO.md`) ran `3/3` experiments, spent `0` slots.
+Static `d_cat>2` HOLDOUT-DTI `0.015948` (above the previous `LISTRICLOQO selectcal` 0.013295 control),
+Rule-2 `0.099345`, worst 3-px overlap `0.6447` over 1,756 public rasters, 11/11 gates, 26/26 canaries.
+Score estimator (MODEL): 107 matched CLAIMs, LOO RMSE `0.0722`, LOO Spearman `0.750`. Verdict
+`negative` / `submission_eligible: false` under the binding literal dense-witness rule. Lineage
+re-verified by XOR: `D2.8(25) ≡ d28(30)`, `SOLO(28) ≡ solo(31)`, `SOLO ≡ D2.8 ∧ d_cat>1`,
+`R0 ≡ D2.8 ∧ d_cat>2` (all 0 px); GEMSDOE36 PINN ⊃ R0 +1,200 dots.
 
-- **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, `22,663` withheld positives): static `d_cat>2`
-  **`0.015948`** `[0.013683, 0.018370]` — first zero-`H19-5` lane in
-  this repository above the previous static-SOTA control `LISTRICLOQO selectcal` `0.013295`;
-  strict draw-blind Rule-2 **`0.099345`** `[0.084948, 0.113946]`.
-  It does **not** dominate Rule-2 (`RELAYCONDUIT relay_conduit` `0.184485` remains the record), so
-  the honest expectation is R0-class live performance at best.
-- **Uniqueness:** worst 3-px overlap **`0.6447`** across
-  **1,756** compatible public rasters in 102 repos
-  (`0` over 0.70); worst |ρ| `0.0573`.
-- **Estimator (new, `MODEL`):** ridge in logit space on `107` matched CLAIMs,
-  LOO RMSE **`0.0722`**, LOO Spearman **`0.750`**. Estimated DTI for
-  the primary: **`0.0832`**;
-  for reference the same estimator gives GEMSDOE32 `h33-h33-2-b2` `0.2519`
-  (CLAIM `0.2778`) and GEMSDOE70 `p5-dual-submod` `0.1908`
-  (CLAIM `0.2478`). **No MODEL value is a leaderboard result.**
-- **Verdict:** `negative`, `submission_eligible: false` — the literal dense-witness rule
-  (`17GEMSDOE_E-proba-multiscale` positive on all `5,167,373` footprint cells ⇒ overlap `1.0000 > 0.70`)
-  blocks every non-empty candidate, which is an owner policy decision (§6 of `docs/focus9.html`).
-- **Lineage re-verified by XOR on pinned bytes:** D2.8(GEMSDOE25) ≡ d28(GEMSDOE30) = 0;
-  SOLO(GEMSDOE28) ≡ solo(GEMSDOE31) = 0; SOLO ≡ D2.8 ∧ d_cat>1 = 0; R0 ≡ D2.8 ∧ d_cat>2 = 0;
-  GEMSDOE36 PINN ⊃ R0 exactly, +`1,200` dots.
+## Session start — 2026-10-26 GEMS site review (read first)
+
+Read the README's **Durable project aim and session prompt** block, [`docs/SITE_REVIEW_20261026.html`](docs/SITE_REVIEW_20261026.html), [`docs/HYPOTHESES_20261026_SITE_REVIEW.md`](docs/HYPOTHESES_20261026_SITE_REVIEW.md), and [`evidence/review_20261026_gemsdoe_sites_run_card_v2.json`](evidence/review_20261026_gemsdoe_sites_run_card_v2.json). The report preserves 17 verified source TIFF variants, nine selected site artifacts, all 36 pairwise comparisons, source commit pins, and format-only checks. GEMSDOE32 `.2778` is an owner-reported CLAIM with no organizer receipt. User snapshots `.4413` and `.3195` conflict with GEMSDOE32's owner-page `.4437`; the current official leader is unknown.
+
+**This site review produced no new TIFF, experiment, holdout, leakage canary, or weekly slot.** A separate BLINDEXT research TIFF is present on upstream main; its run card reports one experiment, no HOLDOUT-DTI result, a duplicate stop (`1.000` literal overlap and `|rho|=1.000`), zero slots, and no submission clearance. It is downloadable for research only, not a unique candidate. The pinned 17GEMSDOE witness is positive on all `5,167,373` finite sample-footprint cells, so any nonempty candidate has literal overlap `1.000 > 0.70`. All nine reviewed target masks also fail pairwise uniqueness against at least one other target. Stop before feature generation/placement; do not submit any linked historic or BLINDEXT TIFF. The previous `evidence/review_20261026_gemsdoe_sites_run_card.json` is a retained but superseded record because it inherited stale readiness counters; use v2, whose counters correctly say `false / 0 / 0`. No distinct method paragraph was supplied, so historical lane paragraphs do not authorize a new experiment. Maximize P(Win); Own the Outcome.
 
 ---
 
-## Prior session start — 2026-10-25 audit
+## Historical session start — 2026-10-25 audit (superseded)
 
-Read the README's "Session request — 2026-10-25" block, then [`docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md`](docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md) and [`evidence/review_20261025_audit_run_card.json`](evidence/review_20261025_audit_run_card.json). Earlier readiness audit (still valid): docs/REVIEW_20261025_SESSION.md. Current verified state: research downloads only; DO NOT SUBMIT; No new raster was generated this session; 0 of 3 experiments; 0 slots. The literal duplicate rule cannot be satisfied by any in-footprint raster (the public 17GEMSDOE witness is positive on all 5,167,373 footprint cells). Five operator decisions (D1–D5) block promotion; an agent may not decide them silently. The official rules say outside-bounds values should be null or NaN; this repo's gate requires zeros (D2). Live #1 is 0.4413 (not a GEMSDOE entry). GEMSDOE32's 0.2778 is a CLAIM with no receipt.
+Read the README's "Session request — 2026-10-25" block, then [`docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md`](docs/REVIEW_20261025_AUDIT_AND_HYPOTHESES.md) and [`evidence/review_20261025_audit_run_card.json`](evidence/review_20261025_audit_run_card.json). Earlier readiness audit (still valid): docs/REVIEW_20261025_SESSION.md. Current verified state: research downloads only; DO NOT SUBMIT; No new raster was generated this session; 0 of 3 experiments; 0 slots. The literal duplicate rule cannot be satisfied by any in-footprint raster (the public 17GEMSDOE witness is positive on all 5,167,373 footprint cells). Five operator decisions (D1–D5) block promotion; an agent may not decide them silently. The official rules say outside-bounds values should be null or NaN; this repo's gate requires zeros (D2). Leaderboard snapshots remain unverified; do not state a current official leader. GEMSDOE32's 0.2778 is a CLAIM with no receipt.
 
 ---
 ## Current review & TILTANGLE audit addendum — 2026-10-25 (`arena/151c397c-gemsdoe92`)
@@ -340,3 +322,6 @@ Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261024_COULOM
 ## Review7059163e — 2026-10-25
 
 Start at the README's top decision and `docs/REVIEW_7059163E.md`. Fresh witness download/hash/grid/footprint verification still requires stopping before placement; no new TIFF or holdout. Preserve the existing normalized operating brief, not a claimed verbatim prompt. The shared supplementary Markdown renderer now repairs a current decision displaced by a prepended lane banner and rejects reversed markers. Archive future-dated “latest” claims rather than accepting their chronology. The Pages API reports built/legacy, but workflow-mode activation is still denied with HTTP 403; publication gating is not established for the live legacy site.
+
+## 26 October 2026 closeout addendum
+Read README and this brief each session. The owner requires nine-site executive tables, a genuinely new submission-ready TIFF, automated format/science/uniqueness gates, no unsupported leaderboard projections, three review passes, and PR plus merge. THERMOTILT did not meet promotion requirements. Its runner is disabled; critical protocol deviations are in the run card. Do not spend a slot or rerun this lane before shared nested-OOF and pre-placement checks are repaired and the literal registry stop resolved.
