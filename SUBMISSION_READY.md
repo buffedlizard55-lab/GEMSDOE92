@@ -15,6 +15,20 @@ Automated validation (no human inspection): finite [0, 1] everywhere (the portal
 
 <!-- VARIO-STATUS:END -->
 
+## Current lane — 2026-10-26 (`SALEMSEISMO`, 3/3 experiments, 0 weekly slots)
+
+**✅ OK TO DOWNLOAD FOR RESEARCH · ⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT** (`verdict: negative`, `submission_eligible: false`, `0` slots spent).
+
+- **New unique GeoTIFF:** [`h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.tif`](docs/downloads/h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.tif) · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.zip) · [audit](docs/downloads/h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-audit.json) · [Rule 5 run card](docs/downloads/salemseismo_run_card.json) · [holdout](docs/downloads/salemseismo_holdout.json) · [uniqueness](docs/downloads/salemseismo_uniqueness.json).
+- **Nine-site executive summary with the download / estimate / uniqueness table:** [`docs/focus9.html`](docs/focus9.html) (rendered from committed JSON receipts by `scripts/render_focus9_page.py`).
+- **Estimated DTI `0.0832 ± 0.0722`** — a cross-validated **MODEL** value (leave-one-out RMSE on 107 owner-reported CLAIMs, LOO Spearman `0.750`), **never** a score. Class-consistent comparison: GEMSDOE32 `h33-h33-2-b2` CLAIM `0.2778` → MODEL `0.2519`; GEMSDOE70 `p5-dual-submod` CLAIM `0.2478` → MODEL `0.1908`.
+- **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): static `d_cat>2` **`0.015948`** [`0.013683`, `0.018370`] — above the previous static-SOTA control `LISTRICLOQO selectcal` `0.013295`; strict draw-blind Rule-2 **`0.099345`** [`0.084948`, `0.113946`].
+- **Uniqueness (REGISTRY-MEASUREMENT):** worst 3-px overlap **`0.6447 <= 0.70`** across **1,756** compatible public rasters in **102** repositories (`0` over 0.70); worst |ρ| `0.0573 <= 0.90`. It is **not** a copy of GEMSDOE24/25/27/28/30/31/32/33/36 (their best files sit at 0.87–1.00 similarity to each other; this file does not).
+- **Automated validation (no human inspection):** 11/11 gates PASS — single-band `float32`, EPSG:32611, 3730×3292, all 12,279,160 cells finite in `[0,1]`, 0 NaN, zeros outside the footprint, 0 dots on the mapped catalogue, all dots >2 px from it; `26/26` leakage canaries PASS (max symmetric AUC `0.6077`).
+- **Form fields (record only; do not upload until the badge is green):** name `GEMSDOE92-SALEMSEISMO-celftail52k-20261026` · note (112/140) `SALEMSEISMO celftail52k: 52000px Salem-tilt+Walker-seismo+10m-toe+ThK CELF; HOLDOUT-DTI 0.0993 (st 0.0159) [neg]` · SHA-256 `b06dd72feff35b1631a17a52581b46d9b21b92fcba09441eac77d6daa9ba1dda`.
+- **Why the badge is red:** the binding literal registry rule reads overlap `1.0000 > 0.70` against the pinned `17GEMSDOE_E-proba-multiscale` surface, which is positive on every footprint cell — so no non-empty file can ever clear it. That is an owner policy decision (see §6 of `docs/focus9.html`), not a defect in this file.
+
+
 For the evidence review of the user-reported GEMSDOE32 `0.2778` value, see [the sourced explanation and evidence limits](docs/BEAT_0_2778.md). The value is not a verified organizer receipt.
 
 <details data-status-archive="true">

@@ -1,11 +1,34 @@
-# 2026-10-25 audit & remediation (`arena/151c397c-gemsdoe92`)
+# Irregularities, corrections and disclosures
 
-- **IR-92-TILTANGLE-FULL-CATALOGUE-DPREF-LEAKAGE (fixed & disclosed, `evidence/tiltangle_audit_20261025.json`):** Commit `14e74ba` (`TILTANGLE`) multiplied its gravity surface `S` by `d_pref = clip(1 - (d_cat - 3)/12, 0, 1)` computed from the **full** `existing_faults.tif` catalogue (including the withheld faults) and evaluated those static dots on `gems57.holdout` without recomputing `d_pref` from `fold["visible"]` only. Because `d_cat == 0` on every withheld fault, `d_pref == 1.0` on `100%` (`22,663 / 22,663`) of withheld fault pixels and fails the Protocol Rule 4 leakage canary with **symmetric `AUC = 0.962399 > 0.90`**. Recomputing leak-free via `vendor/gems57/evaluate_holdout.py` (`gems57-pooled-hide-v2`, `22,663` withheld positives, 1,000-draw paired spatial-block bootstrap) gives **`0.005272 [0.003839, 0.006810]`** (pure `S` static `d_cat > 2.0`), **`0.085247 [0.072752, 0.098193]`** (strict fold-visible Rule-2 `d_visible > 2.0` with visible-only `d_pref`), and **`0.042670 [0.030397, 0.055911]`** (strict fold-visible Rule-2 `d_visible > 2.0` on pure `S`), all below repository holdout-best (`LISTRICLOQO` `0.013295` static / `0.114410` Rule-2).
-- **IR-92-TILTANGLE-MISSING-UNIQUENESS-AND-CI (fixed & disclosed):** `TILTANGLE`'s run card omitted `correlation_overlap_vs_registry`, `leakage_canaries`, and `ci95`, while its `submission.note` ended with `; unique`. Scanning `gemsdoe92-tiltangle-tiltangle-37654-20261025T182301Z-zeros.tif` (`f17eae78…`) against exact-grid local rasters shows **worst 3-px dot-field forward overlap = `0.776332 > 0.70`** vs `NETEXPAND netexpand` and **`0.761513 > 0.70`** vs `NETEXPAND netexpandfar` (local duplicate!), plus `1.0000 > 0.70` vs the pinned dense witness. Updated `docs/tiltangle.html`, `docs/HYPOTHESES_TILTANGLE.md`, `scripts/build_tiltangle_submission.py`, and both JSON receipts (`_run_card.json` and `-zeros.json`), and added regression tests in `tests/test_tiltangle_audit.py`.
-
-See [`docs/REVIEW_20261025_ARENA_151C397C.md`](docs/REVIEW_20261025_ARENA_151C397C.md), [`evidence/tiltangle_audit_20261025.json`](evidence/tiltangle_audit_20261025.json), and [`docs/downloads/review_20261025_151c397c_run_card.json`](docs/downloads/review_20261025_151c397c_run_card.json).
+All entries are flagged for human review. Each names the artifact, the finding, and what was
+(and was not) changed. Nothing here is silently repaired: historical bytes stay in Git history.
 
 ---
+
+## 2026-10-26 — nine-site forensic audit + SALEMSEISMO lane (`arena/18da04a8-gemsdoe92`)
+
+- **`IR-24-25-28-POST-SCORE-CONTENT-ID-REBUILD`** — *GEMSDOE24 / GEMSDOE25 / GEMSDOE28* — Reported 2026-10-25 submission names carry content-ID suffixes 65c294f26ef6 (GEMSDOE24 gvc1, 0.0859), 56e35c690b84 (GEMSDOE25 h66, 0.0742), and 6b8aa90da850 (GEMSDOE28 s18-mxtp, 0.0217), whereas HEAD of main in those repos stores regenerated suffixes abe8e51c719d, da617550a0e9, and 3e95505c011a respectively; GEMSDOE27 H29-S (511898747886, 0.2190) and GEMSDOE30 MSDB1 (e7856ec3f14a, 0.1462) match exact content-IDs.
+- **`IR-31-DANGLING-PGR31-README-LINK`** — *GEMSDOE31* — GEMSDOE31 main README top banner links docs/downloads/gemsdoe31-pgr31-poisson-pseudograv-37654-20261026-zeros.tif, which is absent from GEMSDOE31's Git tree; committed 2026-10-26 artifacts are H31-S (9355f21d9f) and XFCOH31.
+- **`IR-36-PINN-SUPERSET-COST`** — *GEMSDOE36* — gemsdoe36-anderson-geothermal-pinn-38854 (0.2750 CLAIM) contains 100% of GEMSDOE32 B2 (37,654 px, zero missing pixels) plus 1,200 extra off-skeleton dots that lowered reported live DTI from 0.2778 to 0.2750 (-0.0028).
+- **`IR-30-33-NAN-OUTSIDE-FOOTPRINT`** — *GEMSDOE30 / GEMSDOE33* — GEMSDOE30 (d28-poisson300m, MSDB1, geothermal-corridor) and GEMSDOE33 (h33d-analog) store NaN outside the active footprint; inside-footprint pixels are finite [0,1], whereas GEMSDOE92 enforces strict all-12,279,160-cell finite zeros-outside.
+- **`IR-LEADERBOARD-SNAPSHOT-DISPERSION`** — *ALL* — User prompt cites both 0.4413 and 0.3195 as top leaderboard benchmarks; sibling GEMSDOE32 cached snapshot (2026-10-26T04:32:28Z) records xiaofanhu = 0.4437 (0.4413 on 2026-10-25; 0.3195 earlier historical snapshot). Live drivendata.org HTTPS is firewalled in this sandbox, so all leaderboard values are labeled external/CLAIM snapshots.
+
+- **`IR-92-SALEMSEISMO-TAIL-NOT-MONOTONE`** — The non-diluting `0.65` tail lowered strict Rule-2
+  HOLDOUT-DTI slightly (`0.095555` → `0.099345` for `celftail52k` vs `celf37k` is an increase; but
+  `point37k` `0.097701` > `celf37k` `0.095555`) even while raising static `d_cat>2` and the SGMC
+  proxy. Recorded as measured, not smoothed: the placement arm and the weight arm interact, so the
+  selected primary is chosen by the operative uniqueness gate plus static DTI, and the Rule-2 numbers
+  for all three arms stay published.
+- **`IR-92-SCORE-ESTIMATOR-EXTRAPOLATION`** — The 2026-10-26 estimator is a 4-feature ridge fitted to
+  107 matched CLAIMs; `frac_h19_near3` is clipped at `0.65` because values above that are reached only
+  by `H19-5` descendants and the score saturates there. LOO RMSE `0.0722`, LOO Spearman `0.750`.
+  Residual per-file error reaches `±0.15`, so a MODEL estimate must never be quoted as a score.
+- **`IR-92-UNRESOLVED-CLAIMS`** — 16 of the 123 ledger CLAIMs still cannot be matched to exactly one
+  pixel-verified raster (regenerated content-IDs, twin encodings disagreeing on support, or no blob).
+  They are excluded from training and listed in `evidence/score_estimator_20261026.json`.
+
+---
+
 
 # Fresh repository audit — 2026-10-25 (`78db3076`)
 
