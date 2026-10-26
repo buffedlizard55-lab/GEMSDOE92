@@ -15,7 +15,10 @@ Automated validation (no human inspection): finite [0, 1] everywhere (the portal
 
 <!-- VARIO-STATUS:END -->
 <!-- CURRENT:BEGIN -->
-> ## Newest completed session lane (`2026-10-25`) — `CHILISTRIC` / primary arm `addtail52k` (3 new unique-byte GeoTIFFs)
+> ## THERMOTILT review — 26 October 2026
+> Three byte-distinct format-valid research rasters were generated. **DO NOT SUBMIT:** holdout frontier not beaten, literal duplicate stop applies, and nested-OOF/check-order defects invalidate promotion evidence. [Executive evidence review](docs/thermotilt.html) · [Run card](docs/downloads/thermotilt_run_card.json). No leaderboard estimate is available.
+
+> ## Completed session lane (`2026-10-25`) — `CHILISTRIC` / primary arm `addtail52k` (3 new unique-byte GeoTIFFs)
 > **✅ OK TO DOWNLOAD FOR RESEARCH** (`11/11` automated `[0, 1]` gates PASS, `0` NaN; unique across all `124` post-merge local rasters at `0.6773 <= 0.70` & all `1,503` public rasters across `102` repos at `0.6351 <= 0.70`) · **⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT** (verdict `negative`, `submission_eligible: false`; literal `17GEMSDOE` dense witness `1.000 > 0.70` & static tie vs `LISTRICLOQO` `0.013295`; `0` weekly slots spent).
 >
 > **[⬇ Download research GeoTIFF (`h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.tif`)](docs/downloads/h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.tif)** · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.zip) · [JSON Run Card](docs/downloads/chilistric_run_card.json) · [Executive Summary & How to Submit](docs/executive-summary.html) · [PhD Analysis (`0.2778` / `0.3195` / `0.4413` & Verified Sources Table)](docs/ANALYSIS_20261025_CHILISTRIC.md) · [Pre-Registered Hypotheses](docs/HYPOTHESES_20261025_CHILISTRIC.md) · [3-Pass Review](docs/REVIEW_20261025_CHILISTRIC.md)
@@ -714,3 +717,7 @@ There should be an easy-to-download submission TIF file as described by the prom
 1. Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261025_RELAYCONDUIT.md`) before implementation (`gems/relayconduit.py`, `scripts/run_relayconduit.py`).
 2. Validated all 3 pre-registered arms on `gems57-pooled-hide-v2` (`22,663` withheld positives, `35/35` leakage canaries PASS `<= 0.90`): `relay_conduit` strict Rule-2 `HOLDOUT-DTI = 0.184485 [0.169875, 0.198933]` (paired `+0.069008 [+0.053289, +0.084771]` over rebuilt `control_COULOMBLOQO_d32` `0.115477`; locally unique across all `128` post-merge rasters at `0.6601 <= 0.70`; external 102-repo overlap `0.7843 > 0.70` vs `GEMSDOE53` 80k); `relay_delta` `0.180061 [0.165231, 0.193562]`; zero-catalogue `conduit_notip` `0.076416` (`SGMC PROXY = 0.106525`, passes all `1,367` external rasters across `102` repos at `0.6557 <= 0.70`, `0` external violations, and `0.7031` locally vs `RIEDELVALVE riedel_n90k` `90k`).
 3. Emitted 3 `[0, 1]` format-validated GeoTIFFs (`11/11` gates PASS, `0` NaN), Run Card (`evidence/relayconduit_run_card.json`), executive subpage (`docs/relayconduit.html`), and PhD forensic analysis (`docs/ANALYSIS_20261025_RELAYCONDUIT.md`, including `GEMSDOE32` `0.2778` `[CLAIM]`, `0.3195` / `0.4413` ceilings, and `VENTSCARP` §1.3 corrections). Verdict `negative` (`0` weekly slots spent).
+
+### THERMOTILT closeout — 26 October 2026
+
+Three byte-distinct TIFFs passed format checks. **DO NOT SUBMIT:** they did not beat the documented holdout frontier, the literal duplicate stop applies, and nested-OOF/check-order defects prevent scientific clearance. Sparse comparisons are provisional diagnostics. The runner is disabled. [Corrected analysis](docs/ANALYSIS_20261026_THERMOTILT.md) · [run card](docs/downloads/thermotilt_run_card.json). Final checks: 578 tests passed (141 warnings); site gate passed on 118 rasters. GitHub Pages API reports legacy/built; CI gating of live publication is not established.
