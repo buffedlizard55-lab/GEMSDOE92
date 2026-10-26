@@ -112,7 +112,6 @@ def render() -> str:
     return f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nine-site executive review — GEMSDOE92</title><link rel="stylesheet" href="style.css">
-<script src="leaderboard-feed.js" defer></script>
 <style>
 main{{max-width:76rem;margin:auto;padding:1rem;font:1rem/1.55 system-ui,sans-serif;color:#17212b}}
 nav{{display:flex;flex-wrap:wrap;gap:1rem}} section{{margin:1rem 0;padding:1rem;border:1px solid #cbd5e1;border-radius:8px}}
@@ -130,8 +129,7 @@ Historical reference name: <code>{_esc(status["submission_name"])}</code>; note 
 <p>No new raster or geological experiment was generated in this review; no slot was used. A pinned registry raster is positive at all {proof["footprint_pixels"]:,} finite template pixels, so every nonempty in-footprint candidate has literal overlap 1.000 &gt; 0.70. This is a binding pre-placement stop, not a format error. See the <a href="downloads/review_14f85876_run_card.json">hash-bound proof</a>.</p>
 </section>
 <section><h2>Executive conclusion</h2><p>Of the nine owner-reported values below, <strong>GEMSDOE32: 0.2778 CLAIM</strong> is highest. It is not an organizer-confirmed score: no submission-page receipt binds it to the raster. A higher public result is possible in principle, but this project has not demonstrated one with a unique, eligible file. No defensible leaderboard estimate is available for the research TIFF.</p>
-<p data-official-leaderboard>Official public #1: 0.4437; observed 2026-10-26 UTC. Snapshot only; not a project receipt.</p>
-<p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Official public leaderboard</a> · <a href="downloads/live_leaderboard.json">feed JSON</a>. The scheduled Pages refresh may fail or be delayed; check its timestamp and the official page.</p></section>
+<p>The <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">official leaderboard</a> is not mirrored or automatically monitored. <a href="https://www.drivendata.org/termsofuse/">DrivenData terms</a> prohibit automated access for monitoring or copying; no leaderboard row is a project receipt.</p></section>
 <section><h2>Every requested site</h2><p>Scores are owner <strong>CLAIM</strong>s, not organizer receipts. Downloads are historical reference encodings, not cleared submissions. “Estimated DTI” is unavailable; none has a trustworthy exact-file leaderboard prediction. The directed overlap is against one other selected site, not an exhaustive registry clearance.</p>
 <div class="wrap"><table><thead><tr><th>Site</th><th>Download for research</th><th>Reported value / provenance</th><th>Estimated DTI</th><th>Unique vs the 9 sites?</th><th>Eligibility</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div>
 <p>All 36 selected site pairs breach the configured symmetric pairwise stop in at least one direction. The independent row-safe recheck corrected numeric overlap values in {recheck['pairs_with_changed_metrics']} pairs; duplicate decisions did not change, and the cause of the earlier discrepancy is unproven. <a href="downloads/focus9_pairwise_recheck_14f85876.json">Corrected pairwise measurements</a> · <a href="downloads/focus_sites_release_review_20261026.json">Earlier evidence, file hashes, and source commits</a>. GEMSDOE25 and GEMSDOE30 have identical in-footprint prediction arrays despite different bytes. GEMSDOE36 contains R0 plus 1,200 dots.</p></section>
