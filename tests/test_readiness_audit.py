@@ -112,6 +112,36 @@ def test_no_universal_stop_cannot_produce_receipt(monkeypatch):
         mod.audit(Path('.'), Path('witness.tif'))
 
 
+def test_rejection_audit_does_not_inherit_readiness_activity(tmp_path, monkeypatch):
+    """A rejection-only review must report its own zero activity, not old lane counters."""
+    sample = tmp_path / 'data/bridge/sample_submission.tif'
+    sample.parent.mkdir(parents=True)
+    sample.write_bytes(b'pinned sample placeholder')
+    monkeypatch.setattr(mod, 'preflight', lambda *a: {
+        'universal_nonempty_in_footprint_overlap_stop': True,
+        'positive_in_footprint': 1,
+        'footprint_pixels': 1,
+    })
+    monkeypatch.setattr(mod, 'build_status', lambda root: {
+        'new_unique_tiff_generated': True,
+        'experiments_this_session': 3,
+        'weekly_slots_used_this_session': 2,
+        'file': 'downloads/existing-research.tif',
+        'raster_sha256': 'a' * 64,
+        'validator_output': [{'name': 'format', 'ok': True, 'detail': 'fixture'}],
+        'format_pass': True,
+        'submission_name': 'GEMSDOE92-HISTORICAL',
+        'note': 'Historical research only',
+        'blocking_reasons': ['pinned witness stop'],
+        'input_sha256': {'data/bridge/sample_submission.tif': 'b' * 64},
+    })
+    card = mod.audit(tmp_path, tmp_path / 'witness.tif')
+    assert card['new_unique_tiff_generated'] is False
+    assert card['experiments'] == 0
+    assert card['weekly_slots_used'] == 0
+    assert card['artifact_role'] == 'existing research download; NOT a newly generated submission'
+
+
 @pytest.fixture
 def published(tmp_path, monkeypatch):
     root = Path(__file__).resolve().parents[1]

@@ -1,0 +1,79 @@
+# GEMS highest-site artifact review — 2026-10-26
+
+> **NO NEW TIFF WAS GENERATED. DO NOT SUBMIT ANY FILE FROM THIS REVIEW.** The public source rasters below are downloadable for research, but none is a new unique candidate and none is cleared for a competition slot. The pinned literal witness covers all 5,167,373 finite sample-footprint cells; every nonempty in-footprint candidate therefore has 100% overlap, above the binding 70% stop.
+
+**Executive brief:** [open the web summary](SITE_REVIEW_20261026.html) · [download complete JSON evidence](downloads/focus_sites_release_review_20261026.json) · [ranked hypothesis screen](HYPOTHESES_20261026_SITE_REVIEW.md).
+
+## Decision and evidence boundary
+
+- The strongest *reported reference among these nine* is **GEMSDOE32 `h33-h33-2-b2` — 0.2778 CLAIM**. This is an owner report, not an `ORGANIZER-CONFIRMED` receipt; no submission-page receipt binds the score to these bytes.
+- All nine selected public TIFF references were fetched through the GitHub Git Blob API, verified against their Git blob IDs and SHA-256, and compared inside the sample grid. The comparison covers 17 variants from the nine sites and all 36 pairs among the nine selected masks.
+- All nine format-safe comparison references passed **9/9 shared strict format-only gates** (single-band float32, grid/CRS/transform, finite `[0,1]`, no NaNs inside, zeros outside, reread SHA-256). This is not a holdout, catalogue-clearance, uniqueness, or submission pass.
+- Every selected mask fails the pairwise uniqueness rule against at least one of the other eight sites. In addition, the literal full-footprint witness independently forces a stop for every nonempty candidate. No candidate surface or final dots were generated, no holdout was run, and no score is estimated.
+- **Downloadability:** yes, the linked *historical owner-published references* can be downloaded for research. **Submission clearance:** no. Research access does not establish organizer acceptance or redistribution rights.
+
+### Separate current-main artifact — BLINDEXT (outside this review)
+
+Upstream main (`47682a1`) also contains the independently produced [BLINDEXT research TIFF](downloads/gemsdoe92-blindext-20261026T162451Z-zeros.tif) (SHA-256 `ad49eec1ed61a578cfd91fd22e0848c3cd0fedaba3602bade173a49eead877bf`; [run card](downloads/gemsdoe92-blindext-20261026T162451Z_run_card.json)). It was not created or holdout-evaluated by this site review and is outside the nine target sites, 17 source variants, and 36 comparisons above. It is **downloadable for research only, not unique or cleared to submit**: its own run card reports one experiment, no HOLDOUT-DTI result, a duplicate stop (literal overlap `1.000`, |ρ|=`1.000` against an existing local raster), zero weekly slots, and `submission_eligible=false`. Do not upload it.
+
+## Strongest reference: GEMSDOE32 / R0 (`h33-h33-2-b2`)
+
+The local pinned R0 bytes match the public GEMSDOE32 zero-outside file (SHA-256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9`). The verified support lineage is `Exact local parent R0 file; verified set lineage H19-5 (121,131) -> D2.8 (44,090) -> H27-4 SOLO (40,199) -> R0 (37,654). R0 is exactly D2.8 & distance-to-catalogue > 2 px; SOLO is exactly D2.8 & distance > 1 px.`. R0 is therefore the strongest *learning reference* among the claims supplied here, not a verified contest winner and not a unique raster.
+
+A plausible mechanism is that the competition's distance-weighted Tversky metric uses a 300 m triangular kernel, with false-positive mass weighted by `α=0.2` and false negatives by `β=0.8`. Poisson-like thinning can remove redundant prediction mass where nearby dots already saturate truth credit; removing dots within two pixels of mapped catalogue faults can reallocate predictions away from known traces. That is consistent with the raster lineage, but it is **not causal proof**: the hidden truth and a score-to-file organizer receipt are unavailable. The local review does not estimate what R0 would score.
+
+### How the other approaches differ
+
+- **GEMSDOE24** emits a denser 1.5-pixel H19-5 thinning. **GEMSDOE27** retains all 60,069 GEMSDOE24 dots and adds 1,259 gap-closure dots; it is almost the same support under the requested rule.
+- **GEMSDOE25** and **GEMSDOE30** have different file hashes/encodings but identical in-footprint prediction arrays: 44,090 dots. Their reported `.2600` claims are not independent raster evidence.
+- **GEMSDOE31** is the D2.8 skeleton with the catalogue collar at `>1 px` (40,199 dots); **GEMSDOE32/R0** is exactly D2.8 with `d_catalogue>2 px` (37,654 dots).
+- **GEMSDOE36** (Anderson geothermal PINN) contains every R0 dot and adds 1,200 dots; the R0→GEMSDOE36 pair breaches the 3-pixel overlap rule.
+- **GEMSDOE28** uses the H36-1 rung30 blind-R1 artifact; **GEMSDOE33** is an analog tip/step-over artifact. Their owner-published labels identify different constructions, but neither has an organizer receipt here. GEMSDOE33's owner-maintained `receipt-...json` is expected-score metadata, not an organizer-scored receipt; it records a 158-character note, longer than the 140-character form limit.
+
+## Site-by-site comparison
+
+`Reported score` is a claim only. `Supportable estimated score` is intentionally blank for every row: there is no exact-artifact `HOLDOUT-DTI` or organizer receipt. Each research link opens the format-safe public variant used for comparison; where the reported encoding differs, a second link points to that source encoding. Full paths, SHA-256, Git blob IDs, commit pins, grid gates, and all pairwise measurements are in the JSON evidence.
+
+| Site | Reported submission name | Highest reported score & provenance | Download / reference file | Supportable estimated score | Uniqueness vs another listed site |
+|---|---|---:|---|---|---|
+| GEMSDOE24 | h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan | 0.2477 (CLAIM — no organizer receipt) | [research TIFF](https://github.com/buffedlizard55-lab/GEMSDOE24/blob/9da8a18381e179530c3b878d073314feaa26a20c/docs/downloads/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-allfinite.tif?raw=1) · [reported encoding](https://github.com/buffedlizard55-lab/GEMSDOE24/blob/9da8a18381e179530c3b878d073314feaa26a20c/docs/downloads/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif?raw=1) (n=60,069; SHA-256 `3e0730e8d4f7db095dd80246a98cba3bc0fc9a28f436b91db27ca34df4d0d1ce`) | — (not supportable) | NO — vs GEMSDOE27: 100.00% within 3 px; |ρ|=0.9896 |
+| GEMSDOE25 | dotted-h19-5-d2-8-20261002-e56ea318af89-nan | 0.2600 (CLAIM — no organizer receipt) | [research TIFF](https://github.com/buffedlizard55-lab/GEMSDOE25/blob/cafbfe509670f4c0ba2a8475e288620a0aab0559/docs/downloads/gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-zeros.tif?raw=1) · [reported encoding](https://github.com/buffedlizard55-lab/GEMSDOE25/blob/cafbfe509670f4c0ba2a8475e288620a0aab0559/docs/downloads/gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif?raw=1) (n=44,090; SHA-256 `3e78737f0da8dd2ca66cc6caac0ce8eeefcd6715707f8d1bd3091845cd9bcc30`) | — (not supportable) | NO — vs GEMSDOE30: 100.00% within 3 px; |ρ|=1.0000 |
+| GEMSDOE27 | topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan | 0.2449 (CLAIM — no organizer receipt) | [research TIFF](https://github.com/buffedlizard55-lab/GEMSDOE27/blob/cf8b4c201f2cc2ef649b6ca7cd32f235c2f6743a/docs/downloads/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-allfinite.tif?raw=1) · [reported encoding](https://github.com/buffedlizard55-lab/GEMSDOE27/blob/cf8b4c201f2cc2ef649b6ca7cd32f235c2f6743a/docs/downloads/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif?raw=1) (n=61,328; SHA-256 `a9bf76b57453a5b3af74c8eef837df53c29a0931162aa540b8763220b36ba3bb`) | — (not supportable) | NO — vs GEMSDOE24: 97.98% within 3 px; |ρ|=0.9896 |
+| GEMSDOE28 | h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan | 0.2710 (CLAIM — no organizer receipt) | [research TIFF](https://github.com/buffedlizard55-lab/GEMSDOE28/blob/12ec4fea4c97a7887a7ca8a06f9bd94c7609ea07/docs/downloads/gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-allfinite.tif?raw=1) · [reported encoding](https://github.com/buffedlizard55-lab/GEMSDOE28/blob/12ec4fea4c97a7887a7ca8a06f9bd94c7609ea07/docs/downloads/gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif?raw=1) (n=37,660; SHA-256 `7c74270ad48fa0b865163853046a6d3815967c5bf37bbda5b74ca7fa22583a32`) | — (not supportable) | NO — vs GEMSDOE25: 82.78% within 3 px; |ρ|=0.6810 |
+| GEMSDOE30 | d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca | 0.2600 (CLAIM — no organizer receipt) | [research TIFF](https://github.com/buffedlizard55-lab/GEMSDOE30/blob/35ce8911e2c3287eed973eacd12c252e8cb3f34c/docs/downloads/gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif?raw=1) (n=44,090; SHA-256 `8cf893ead5667df21d3288a9968c35fd5385c425b029d82ee71d311715b129fd`) | — (not supportable) | NO — vs GEMSDOE25: 100.00% within 3 px; |ρ|=1.0000 |
+| GEMSDOE31 | h27-4-solo-d28-20261004-8acb75e1-nan | 0.2708 (CLAIM — no organizer receipt) | [research TIFF](https://github.com/buffedlizard55-lab/GEMSDOE31/blob/8e91d82ae236c92b917302122237e45fc20ec337/docs/downloads/gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-allfinite.tif?raw=1) · [reported encoding](https://github.com/buffedlizard55-lab/GEMSDOE31/blob/8e91d82ae236c92b917302122237e45fc20ec337/docs/downloads/gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif?raw=1) (n=40,199; SHA-256 `acd853936e5a7170b207f23411b1844caa0e7cfdfc303c600e520ccfe75159e6`) | — (not supportable) | NO — vs GEMSDOE25: 100.00% within 3 px; |ρ|=0.9545 |
+| GEMSDOE32 | h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros | 0.2778 (CLAIM — no organizer receipt) | [research TIFF](https://github.com/buffedlizard55-lab/GEMSDOE32/blob/8b00ee91b9d6d7ef0e3762eb7bc0c92bee0928d1/docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif?raw=1) (n=37,654; SHA-256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9`) | — (not supportable) | NO — vs GEMSDOE36: 100.00% within 3 px; |ρ|=0.9843 |
+| GEMSDOE33 | h33d-analog-tip-stepover-r30-20261004-cb490425926e | 0.2632 (CLAIM — no organizer receipt) | [research TIFF](https://github.com/buffedlizard55-lab/GEMSDOE33/blob/be96d94c8d829dbe4a5ae50330ae36130e10b807/docs/downloads/GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif?raw=1) (n=41,865; SHA-256 `87f857d505e23247e991ccfab2cbe9f49a04df4f9c8028dce7ea261554690757`) | — (not supportable) | NO — vs GEMSDOE25: 90.28% within 3 px; |ρ|=0.8096 |
+| GEMSDOE36 | anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros | 0.2750 (CLAIM — no organizer receipt) | [research TIFF](https://github.com/buffedlizard55-lab/GEMSDOE36/blob/2c78770e0544259082b0b6b73ce8e4d0749c175d/docs/downloads/gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif?raw=1) (n=38,854; SHA-256 `e15891020b9c57056ac7fa874a5e506fbd6ed9314a4ea8e73af0753887a3708a`) | — (not supportable) | NO — vs GEMSDOE25: 97.17% within 3 px; |ρ|=0.9090 |
+
+The pairwise check used candidate-directed 3-pixel overlap and binary-support rank correlation. For each row, the named witness is sufficient to reject uniqueness: the candidate-to-witness fraction is above 70% or `|ρ|` is above 0.90. **All 36 pairs breach the configured symmetric pairwise stop** (at least one direction exceeds 70% or `|ρ|` exceeds 0.90). These are comparisons among the nine selected public artifacts only; they do not certify uniqueness against the wider registry. The full 36-pair table is preserved in the JSON evidence. Exact in-footprint prediction match: **GEMSDOE25 ↔ GEMSDOE30**.
+
+## Leaderboard and provenance irregularities
+
+No current official leaderboard or submission-page receipt was verified. The supplied `.4413` and `.3195` snapshots conflict; the current GEMSDOE32 owner-maintained page also reports `.4437`, a secondary-source claim. Treat the current official leader as **unknown**, and do not present any of those values as independently verified. GEMSDOE32's current page explicitly labels `.2778` an owner report and says there is no receipt binding the score to the raster; it also says not to resubmit the file because it is already submitted. That is not a receipt.
+
+## Submission guidance
+
+**Do not upload any linked artifact.** There is no new candidate, no submission-cleared TIFF, and no slot decision. For a future file that is explicitly marked `OK TO SUBMIT` only:
+
+1. Download that exact file (never substitute an older research link); use the project's automated validator to reopen the bytes and verify one-band float32, EPSG:32611, `3730 × 3292`, exact sample transform, finite `[0,1]` values, no NaNs in footprint, and the required outside encoding.
+2. Confirm both pre-placement and final-dot uniqueness against the full accessible registry under the unchanged `0.90` correlation / `70%` 3-pixel overlap limits. Stop on a duplicate.
+3. Keep the submission name separate from the file path and keep the optional note at **≤140 characters**.
+4. Only a human selector may choose a weekly slot. Upload through the official [DrivenData submissions page](https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/) after clearance, then preserve the actual organizer receipt and bind it to the uploaded file's SHA-256 in the ledger.
+
+The web links below are official/reference starting points, not proof that the linked page or current rules were live-checked in this run:
+
+- [DrivenData competition and rules](https://www.drivendata.org/competitions/306/competition-doe-gems/) — official link recorded; not live-verified through this sandbox.
+- [DrivenData submissions page](https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/) — official portal link; login required; no receipt retrieved.
+- [NLR/DOE competition document](https://docs.nlr.gov/docs/fy26osti/96647.pdf) — official source link recorded; not fetched in this run.
+- [DrivenData reference solution](https://github.com/drivendataorg/gems-prize-reference-solution/tree/aebe92f7c8a990f0e3443451b7a825d9afd6336b) — GitHub commit verified; local shared metric/evaluator is used for project holdout work.
+- [USGS GeoDAWN catalog record](https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7) — official source link recorded; upstream page not live-verified in this run.
+- [DOE GDR INGENIOUS #1391](https://gdr.openei.org/submissions/1391) — official source link recorded; upstream page not live-verified in this run.
+- [EPSG:32611](https://epsg.io/32611) — reference link recorded; selected rasters independently checked against the template CRS.
+
+## Reproducibility
+
+- Durable machine-readable evidence: [`focus_sites_release_review_20261026.json`](downloads/focus_sites_release_review_20261026.json) (17 source variants, 9 selected artifacts, 36 pairwise comparisons, gates and source commits).
+- Corrected rejection-only run card: [JSON on GitHub](https://github.com/buffedlizard55-lab/GEMSDOE92/blob/main/evidence/review_20261026_gemsdoe_sites_run_card_v2.json). The original `evidence/review_20261026_gemsdoe_sites_run_card.json` is retained as a superseded pre-fix record; see the [supersession note](https://github.com/buffedlizard55-lab/GEMSDOE92/blob/main/evidence/review_20261026_gemsdoe_sites_SUPERSESSION.md). The corrected card reports `new_unique_tiff_generated=false`, `experiments=0`, `weekly_slots_used=0`.
+- Local repo checks: `gems.gates.run_gates(..., require_submission_encoding=True)`; 9/9 format-only gates for each comparison reference. No catalogue or holdout evaluation was run.
+- Pairwise prediction arrays are normalized inside the finite sample footprint (`SHA-256 2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc`), shape `3730×3292`, CRS `EPSG:32611`, 100 m pixels.
