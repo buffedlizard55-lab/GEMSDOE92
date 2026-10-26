@@ -14,6 +14,17 @@ A new unique GeoTIFF **was** generated this session by the pre-registered VARIO 
 Automated validation (no human inspection): finite [0, 1] everywhere (the portal "Predicted values must be in range [0, 1]" check), no NaN in footprint, zeros outside, exact CRS/shape/transform. **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22663 withheld): `0.150020 [0.134975, 0.164286]`; paired Δ vs best control `control_FAULTNET_far`: `-0.025127 [-0.029306, -0.020842]`. No ORGANIZER-CONFIRMED score; GEMSDOE32 0.2778 and all site-inventory scores remain CLAIMs. Literal dense-registry disclosure and operative sparse uniqueness are both in the run card. Historical banners below are archives, not current clearance.
 
 <!-- VARIO-STATUS:END -->
+
+## Durable project aim and session prompt — read before every session
+
+**Mission:** build an auditable, reproducible method for locating geothermal/Quaternary fault prospects and produce a genuinely unique, automatically validated single-band GeoTIFF only when the full protocol supports it. The website must state plainly whether an exact file is downloadable for research and whether it is cleared to submit. Keep **Maximize P(Win)** and **Own the Outcome** central; preserve negative results and do not invent scores.
+
+**Binding workflow:** before implementation, rank 3–5 untried geological hypotheses by expected HOLDOUT-DTI value, cost, layers, transform/signature, catalogue-missing-fault rationale, codebase distinction, named non-fault mimic, and data availability. If the request has no distinct assigned method paragraph, do not borrow one from an archived lane. Use the pinned shared feature stack, `vendor/gems57/evaluate_holdout.py`, and `vendor/gems57/submission_writer.py`; hide buffered whole fault components, derive catalogue features only from visible faults, mask visible faults pixel-exactly, and report pooled DTI with `alpha=0.2`, `beta=0.8`, and the 300 m triangular kernel. Test each feature alone; AUC >0.90 is a leakage alarm. Stop at 3 experiments or 2 hours. Do not choose or spend a weekly competition slot; that is a separate human selector decision.
+
+**Uniqueness and evidence:** compare before placement and again on final dots. Stop if `|Spearman rho| > 0.90` or >70% of candidate dots fall within 3 px of any registry raster; do not waive or reinterpret the literal dense-witness reading. Label each number as `HOLDOUT-DTI` (evaluator, withheld-positive count, 95% CI), `ORGANIZER-CONFIRMED` (actual submission receipt), `CLAIM`, `MODEL`, `PROXY`, or `REGISTRY-MEASUREMENT`; a projection is never a score. A run card must include mechanism, non-fault mimic, holdout/CI or honest block, registry metrics, raster SHA-256, automated NaN/range/CRS/shape/transform validation, separate submission name, ≤140-character note, and verdict.
+
+**Current review (2026-10-26):** the strongest of the nine requested public references is GEMSDOE32 `h33-h33-2-b2`, `.2778 CLAIM`, not an organizer-confirmed score. User-supplied `.4413` and `.3195` snapshots conflict; GEMSDOE32's owner page also reports `.4437`, so the current official leader is unknown. All nine selected high-score masks fail pairwise uniqueness against at least one other target site, and the pinned full-footprint witness independently gives any nonempty candidate literal overlap `1.000 > 0.70`. This review generated **no** TIFF, holdout, or experiment and spent **zero** slots. A separate BLINDEXT research TIFF is present in upstream main, but its own run card records no holdout score and a duplicate stop; it is downloadable for research only and **not cleared to submit**. Do not submit any linked historical or concurrent-lane reference. Read the [site review](docs/SITE_REVIEW_20261026.html), [full comparison JSON](docs/downloads/focus_sites_release_review_20261026.json), [ranked hypothesis screen](docs/HYPOTHESES_20261026_SITE_REVIEW.md), and [`SESSION_PROMPT.md`](SESSION_PROMPT.md) before future work. The corrected rejection-only receipt is `evidence/review_20261026_gemsdoe_sites_run_card_v2.json`; its predecessor is explicitly superseded.
+
 <!-- CURRENT:BEGIN -->
 > ## THERMOTILT review — 26 October 2026
 > Three byte-distinct format-valid research rasters were generated. **DO NOT SUBMIT:** holdout frontier not beaten, literal duplicate stop applies, and nested-OOF/check-order defects invalidate promotion evidence. [Executive evidence review](docs/thermotilt.html) · [Run card](docs/downloads/thermotilt_run_card.json). No leaderboard estimate is available.
@@ -721,3 +732,44 @@ There should be an easy-to-download submission TIF file as described by the prom
 ### THERMOTILT closeout — 26 October 2026
 
 Three byte-distinct TIFFs passed format checks. **DO NOT SUBMIT:** they did not beat the documented holdout frontier, the literal duplicate stop applies, and nested-OOF/check-order defects prevent scientific clearance. Sparse comparisons are provisional diagnostics. The runner is disabled. [Corrected analysis](docs/ANALYSIS_20261026_THERMOTILT.md) · [run card](docs/downloads/thermotilt_run_card.json). Final checks: 578 tests passed (141 warnings); site gate passed on 118 rasters. GitHub Pages API reports legacy/built; CI gating of live publication is not established.
+
+### Current conversation prompt — governing requirements (2026-10-26)
+
+This conversation's prompt is the governing requirements document for this session. It is retained here so every
+session starts from it. Key, binding requirements:
+
+- **Highest urgency — MUST:** Generate a **unique TIF submission** for the competition. Do not copy a previous
+  submission (except for learning/education). It must be **obvious whether it is OK to download and submit** the
+  generated TIF submission. There must be an easy-to-download submission TIF; validation must be done through the
+  project (automated), not by a human inspector.
+- **Focus sites:** GEMSDOE24, GEMSDOE25, GEMSDOE27, GEMSDOE28, GEMSDOE30, GEMSDOE31, GEMSDOE32, GEMSDOE33,
+  GEMSDOE36. Produce an **executive summary on every site** that is clear and obvious which is the best submission
+  to obtain a high score. It must be **unique** and not an exact duplicate of any previous submission.
+- **Executive summary table:** clearly list **what file to download**, the **estimate score**, and whether it is a
+  **unique submission** unlike any of the other GEMSDOE sites.
+- **Beat 0.2778:** GEMSDOE32's `h33-h33-2-b2` (claimed 0.2778) is the highest among the focus sites. Design a
+  submission that scores higher; session target is > 0.3195; live leaderboard high is 0.4413.
+- **Submission must be obvious:** The file to download and submit must be at the **very beginning / top** of the site
+  and executive summary, with a unique name and a note of at most 140 characters.
+- **Fix the "[0, 1]" error:** every value must be finite and in [0, 1] (zeros-outside encoding) so the portal error
+  `Predicted values must be in range [0, 1]` cannot occur.
+- **Parallel-run protocol:** stay in the single method lane; stop if rank-correlation > 0.90 or > 70% of dots within
+  3 px of one registry raster's dots (check surface before placement AND final dots); reuse shared tools
+  (evaluate_holdout.py, submission_writer.py); hide-and-recover holdout; label every number as HOLDOUT-DTI or
+  ORGANIZER-CONFIRMED (never a projection as a score); leakage canary AUC > 0.90 = leakage; one JSON run card ending
+  with verdict promote/negative; stop after 3 experiments or 2 hours.
+- **No DrivenData auth:** training_features.tif, labels.tif, sample_submission.tif, 1m_DEM_links.csv require login.
+  Use only free, official, publicly available sources for any external data; name the specific source and verify it
+  is obtainable before proposing any idea that needs it.
+- **Deliverables:** (1) generate 3–5 untried geological hypotheses (layers, physical signature, missing-fault
+  rationale, differences, mimic, expected value, cost); (2) validate the top candidate on the spatially-blocked
+  holdout before touching a weekly slot; (3) generate a unique TIF submission; (4) create the executive summary
+  subpage; (5) store this prompt in README.md; (6) create and merge a pull request onto main.
+- **Core values:** Maximize P(Win); Own the Outcome.
+
+Session result (this session, AKCD lane): unique TIF
+`docs/downloads/gemsdoe92-akcd-20261026T162305Z-zeros.tif` generated (SHA-256
+`e59809efbbcf53c3aeefe656f5faedf206d9de5448a90432427e43034c10e5a8`), all 11 format gates PASS (fixes the
+[0, 1] error), HOLDOUT-DTI `0.017985` (local surrogate, not a score), but dot-location DUPLICATE under protocol rule
+1 (worst 3-px forward overlap `0.9370 > 0.70`) → **NOT cleared for submission**, 0 weekly slots used. Full site
+table and submission guide: `docs/executive-summary.html`.

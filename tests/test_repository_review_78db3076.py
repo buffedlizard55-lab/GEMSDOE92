@@ -38,11 +38,20 @@ def test_final_review_card_is_mirrored_and_cannot_claim_a_new_submission():
     assert archive_receipt['raster_sha256'] == quarantined['sha256']
     assert archive_receipt['serving_quarantine']['removed_from_docs_downloads'] is True
     status_path = ROOT / card['current_publication_status']
-    # Code and current-publication hashes only need to remain live while this
-    # card still describes the active status. Future changes archive the card.
+    # Check input hashes while this card still describes the active public
+    # status. If an implementation source later changes, preserve and verify
+    # the original source bytes instead of rewriting the historical receipt.
     if sha256_file(status_path) == card['publication_status_sha256']:
+        # The 2026-10-26 rejection-audit fix intentionally changed the live
+        # generator. Verify the older receipt against the byte-identical source
+        # archived for provenance instead of pretending that historical code is
+        # still the active implementation.
+        archived_sources = {
+            'scripts/audit_readiness.py': 'evidence/archive/audit_readiness_20261025.py',
+        }
         for rel, digest in card['input_sha256'].items():
-            assert sha256_file(ROOT / rel) == digest, rel
+            source = archived_sources.get(rel, rel)
+            assert sha256_file(ROOT / source) == digest, source
         status = build_status(ROOT)
         assert status['raster_sha256'] == card['raster_sha256']
         assert status['submission_eligible'] is False
