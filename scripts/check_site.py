@@ -202,6 +202,31 @@ def main() -> int:
     except (OSError, ValueError, KeyError, TypeError) as exc:
         problems.append(f'current status evidence invalid: {exc}')
 
+    # The executive review, correction run card, grouped-model diagnostic and
+    # visible banners are generated from the same rejection-only evidence.
+    # A stale renderer output must not reintroduce a misleading estimate or
+    # submission instruction at publication time.
+    try:
+        from scripts import (audit_score_estimator, render_focus9_page, render_focus_site_review,
+                             render_review_14f85876, render_review_banner)
+        generated = {
+            render_focus9_page.OUTPUT: render_focus9_page.render(),
+            render_review_14f85876.OUTPUT: json.dumps(render_review_14f85876.build(), indent=2, allow_nan=False) + '\n',
+            audit_score_estimator.OUTPUT: json.dumps(audit_score_estimator.audit(), indent=2, allow_nan=False) + '\n',
+        }
+        old_review = json.loads(render_focus_site_review.EVIDENCE.read_text(encoding='utf-8'))
+        generated.update(render_focus_site_review.generate(old_review))
+        for path, expected in generated.items():
+            if not path.is_file() or path.read_text(encoding='utf-8') != expected:
+                problems.append(f'stale evidence-bound review output: {path.relative_to(ROOT)}')
+        for rel in render_review_banner.PAGES:
+            path = ROOT / rel
+            text = path.read_text(encoding='utf-8')
+            if text != render_review_banner.render_page(text, root_page=rel == 'index.html'):
+                problems.append(f'stale independent review banner: {rel}')
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        problems.append(f'independent review evidence invalid: {exc}')
+
     # ---- the page contract, written against properties not one lane's wording --
     for needle in ("OK TO DOWNLOAD", "Predicted values must be in range [0, 1]",
                    "HOLDOUT-DTI",

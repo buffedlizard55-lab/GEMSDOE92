@@ -75,7 +75,8 @@ def test_invalid_threshold_cannot_disable_gate(limit):
         dual_reading_decision([row()], overlap_limit=limit)
 
 
-def test_renderer_cannot_reinstate_old_matched_budget_clearance(tmp_path):
+@pytest.mark.parametrize('claims_all_clear', [False, True])
+def test_renderer_cannot_reinstate_old_matched_budget_clearance(tmp_path, claims_all_clear):
     (tmp_path / 'scripts').mkdir()
     (tmp_path / 'evidence').mkdir()
     (tmp_path / 'docs').mkdir()
@@ -85,7 +86,13 @@ def test_renderer_cannot_reinstate_old_matched_budget_clearance(tmp_path):
     # Simulate a stale matched-budget promotion. The literal witness must win.
     card['submission_eligible'] = True
     card['verdict'] = 'promote'
-    card['correlation_overlap_vs_registry']['public']['worst_literal_forward_overlap'] = 1.0
+    reg = card['correlation_overlap_vs_registry']
+    reg['public']['worst_literal_forward_overlap'] = 1.0
+    if claims_all_clear:
+        for scope in ('local', 'public'):
+            reg[scope]['worst_literal_forward_overlap'] = 0.0
+            reg[scope]['worst_abs_spearman'] = 0.0
+        reg['public_scope']['complete'] = True
     (tmp_path / 'evidence/blindfault_run_card.json').write_text(json.dumps(card))
     shutil.copy(ROOT / 'evidence/blindfault_holdout.json', tmp_path / 'evidence')
     (tmp_path / 'README.md').write_text('# Fixture\n')

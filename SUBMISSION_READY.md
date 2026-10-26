@@ -4,7 +4,7 @@
 ## Current research download — verified decision, 2026-10-25 (VARIO session)
 
 **✅ OK TO DOWNLOAD FOR RESEARCH. ⛔ DO NOT SUBMIT — automated promotion gates not met (see run card).**
-A new unique GeoTIFF **was** generated this session by the pre-registered VARIO lane
+The pre-registered VARIO lane generated this historical research GeoTIFF on 2026-10-25; it is not registry-unique and no new TIFF was generated in this review.
 ([hypotheses](docs/HYPOTHESES_20261025_VARIO.md) · [analysis](docs/ANALYSIS_20261025_VARIO.md) ·
 [executive submission guide](docs/vario.html) · [run card](docs/downloads/vario_run_card.json) ·
 [machine-readable status](docs/downloads/readiness.json)).
@@ -15,19 +15,16 @@ Automated validation (no human inspection): finite [0, 1] everywhere (the portal
 
 <!-- VARIO-STATUS:END -->
 
-## Current lane — 2026-10-26 (`SALEMSEISMO`, 3/3 experiments, 0 weekly slots)
+## Independent review — 2026-10-26: no submission eligible
 
-**✅ OK TO DOWNLOAD FOR RESEARCH · ⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT** (`verdict: negative`, `submission_eligible: false`, `0` slots spent).
+**⛔ DO NOT SUBMIT.** No new TIFF or geological experiment was generated in this review, and no slot was selected or spent. The pinned, independently re-fetched 17GEMSDOE witness is positive on all 5,167,373 finite template cells, so literal forward overlap is `1.000 > 0.70` for every nonempty candidate. The rejection is binding before placement. [Review run card](docs/downloads/review_14f85876_run_card.json) · [nine-site executive summary and future-only submission guide](docs/focus9.html).
 
-- **New unique GeoTIFF:** [`h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.tif`](docs/downloads/h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.tif) · [one-TIFF ZIP](docs/downloads/h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.zip) · [audit](docs/downloads/h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-audit.json) · [Rule 5 run card](docs/downloads/salemseismo_run_card.json) · [holdout](docs/downloads/salemseismo_holdout.json) · [uniqueness](docs/downloads/salemseismo_uniqueness.json).
-- **Nine-site executive summary with the download / estimate / uniqueness table:** [`docs/focus9.html`](docs/focus9.html) (rendered from committed JSON receipts by `scripts/render_focus9_page.py`).
-- **Estimated DTI `0.0832 ± 0.0722`** — a cross-validated **MODEL** value (leave-one-out RMSE on 107 owner-reported CLAIMs, LOO Spearman `0.750`), **never** a score. Class-consistent comparison: GEMSDOE32 `h33-h33-2-b2` CLAIM `0.2778` → MODEL `0.2519`; GEMSDOE70 `p5-dual-submod` CLAIM `0.2478` → MODEL `0.1908`.
-- **HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 22,663 withheld positives): static `d_cat>2` **`0.015948`** [`0.013683`, `0.018370`] — above the previous static-SOTA control `LISTRICLOQO selectcal` `0.013295`; strict draw-blind Rule-2 **`0.099345`** [`0.084948`, `0.113946`].
-- **Uniqueness (REGISTRY-MEASUREMENT):** worst 3-px overlap **`0.6447 <= 0.70`** across **1,756** compatible public rasters in **102** repositories (`0` over 0.70); worst |ρ| `0.0573 <= 0.90`. It is **not** a copy of GEMSDOE24/25/27/28/30/31/32/33/36 (their best files sit at 0.87–1.00 similarity to each other; this file does not).
-- **Automated validation (no human inspection):** 11/11 gates PASS — single-band `float32`, EPSG:32611, 3730×3292, all 12,279,160 cells finite in `[0,1]`, 0 NaN, zeros outside the footprint, 0 dots on the mapped catalogue, all dots >2 px from it; `26/26` leakage canaries PASS (max symmetric AUC `0.6077`).
-- **Form fields (record only; do not upload until the badge is green):** name `GEMSDOE92-SALEMSEISMO-celftail52k-20261026` · note (112/140) `SALEMSEISMO celftail52k: 52000px Salem-tilt+Walker-seismo+10m-toe+ThK CELF; HOLDOUT-DTI 0.0993 (st 0.0159) [neg]` · SHA-256 `b06dd72feff35b1631a17a52581b46d9b21b92fcba09441eac77d6daa9ba1dda`.
-- **Why the badge is red:** the binding literal registry rule reads overlap `1.0000 > 0.70` against the pinned `17GEMSDOE_E-proba-multiscale` surface, which is positive on every footprint cell — so no non-empty file can ever clear it. That is an owner policy decision (see §6 of `docs/focus9.html`), not a defect in this file.
-
+- **Research only:** the primary VARIO file and its historical name, note and SHA-256 appear in the byte-bound panel above. Its local format gates pass; it is not registry-unique and is not approved for upload. Local zeros outside the sample footprint do not establish compliance with the organizer's null/NaN-outside-study-bounds wording or guarantee portal acceptance.
+- **Nine sites:** GEMSDOE32's `h33-h33-2-b2` value `0.2778` is the highest reported among the nine, but is an owner **CLAIM** without an organizer receipt binding score to file. All nine fail at least one directed pairwise comparison. An independent row-safe recheck changed numeric overlap values for 35 of 36 pairs without changing any duplicate decision; the cause of the previous discrepancy is unproven. [Corrected pairs](docs/downloads/focus9_pairwise_recheck_14f85876.json) · [historical source inventory](docs/downloads/focus_sites_release_review_20261026.json).
+- **Score estimate unavailable:** the archived model's 107 owner-claim targets are not receipts, related records cross row-wise folds, and its saturation cap was selected globally. Neither row-wise RMSE nor our partial grouped diagnostic is an individual prediction interval. [Reproducible diagnostic](docs/downloads/score_estimator_audit_14f85876.json).
+- **Official context:** the public leaderboard was `0.4437` at rank 1 on 2026-10-26 (a changing [snapshot](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/), not this project's receipt). [DrivenData staff](https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/2) say known USGS/INGENIOUS fault pixels are excluded from evaluation; the effect of an additional distance collar is not established.
+- **Prior SALEMSEISMO:** [historical research TIFF](docs/downloads/h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.tif) · [historical run card](docs/downloads/salemseismo_run_card.json). The runner scanned after placement and examined public rank correlations only for selected witnesses, not every raster. A former flattened-index halo could wrap at row boundaries; affected archived scan values require rechecking. Static re-scores of already-built predictions are not necessarily leakage-free prospective holdouts. The runner is disabled; **do not submit**.
+- **Next:** The [five ranked hypotheses](docs/HYPOTHESES_20261026_SITE_REVIEW.md) remain untested. Resolve the literal rule through an authorized protocol decision and assign a method paragraph before any new experiment. Preserve whole-segment buffered holdouts, visible-fault-only features, the shared evaluator/writer, canaries, and a separate selector.
 
 For the evidence review of the user-reported GEMSDOE32 `0.2778` value, see [the sourced explanation and evidence limits](docs/BEAT_0_2778.md). The value is not a verified organizer receipt.
 

@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""Uniform byte-verified forensic audit of the 9 focus repositories
+"""Historical static forensic re-evaluation, NOT a prospective holdout.
+
+The input predictions were built before the folds and can depend on the full
+catalogue. The resulting static DTI and proxy values cannot demonstrate a
+leakage-free experiment, promotion, a leaderboard score, or registry clearance.
+Existing evidence is immutable; write a separate output path on any rerun.
+
+Uniform byte-verified forensic audit of the 9 focus repositories
 (GEMSDOE24, 25, 27, 28, 30, 31, 32, 33, 36) plus cross-fleet SOTA benchmarks
 (GEMSDOE70, GEMSDOE76, GEMSDOE91, GEMSDOE92) on identical GEMSDOE92 evaluation
 instruments:
@@ -14,6 +21,8 @@ Outputs: evidence/focus9_executive_audit_20261026.json
 """
 from __future__ import annotations
 
+import argparse
+from datetime import datetime, timezone
 import hashlib
 import json
 import sys
@@ -298,7 +307,13 @@ FOCUS_RECORDS = [
 ]
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, required=True,
+                        help="new diagnostic JSON path; historical evidence is never overwritten")
+    args = parser.parse_args(argv)
+    if args.output.exists():
+        raise SystemExit("STOP: output exists; do not overwrite prior evidence")
     t0 = time.monotonic()
     inv = json.loads((PUB_CACHE / "repo_inventory.json").read_text(encoding="utf-8"))
     by_repo_path = {
@@ -342,10 +357,6 @@ def main() -> int:
     offs = fs["offsets"]
     meta = json.loads(str(fs["meta_json"]))
     h, w = foot.shape
-    offsets_1d = np.array(
-        [dy * w + dx for dy in range(-3, 4) for dx in range(-3, 4) if dy * dy + dx * dx <= 9],
-        dtype=np.int32,
-    )
 
     loaded_arrays: dict[str, np.ndarray] = {}
     records_out: list[dict] = []
@@ -447,8 +458,7 @@ def main() -> int:
     for i, m_info in enumerate(meta):
         fidx = all_idx[offs[i] : offs[i + 1]]
         repo_i = m_info["file"].split("/")[0]
-        for d in offsets_1d:
-            dil_buf[np.clip(fidx + d, 0, h * w - 1)] = True
+        U.mark_sparse_near_inplace(dil_buf, fidx, (h, w), value=True)
         for r in records_out:
             # Exclude exact self-SHA and same-repo twin (-nan/-zeros of same run)
             if m_info["sha256"] == r["sha256"]:
@@ -461,8 +471,7 @@ def main() -> int:
                 worst_op[r["key"]]["witness"] = m_info["file"]
             if ov > 0.70:
                 worst_op[r["key"]]["over70"] += 1
-        for d in offsets_1d:
-            dil_buf[np.clip(fidx + d, 0, h * w - 1)] = False
+        U.mark_sparse_near_inplace(dil_buf, fidx, (h, w), value=False)
 
     for r in records_out:
         wo = worst_op[r["key"]]
@@ -492,8 +501,15 @@ def main() -> int:
     )
 
     out_doc = dict(
-        schema="gemsdoe92-focus9-uniform-audit.v1",
-        audited_utc="2026-10-26",
+        schema="gemsdoe92-focus9-static-forensic-audit.v2",
+        prospective_holdout_validated=False,
+        submission_eligible=False,
+        limitations=[
+            "Predictions were already built before the holdout folds and may depend on full-catalogue information.",
+            "Static forensic re-scores and SGMC proxies are not leaderboard estimates or promotion evidence.",
+            "The public overlap scan uses matched-budget supports; it is not literal or exhaustive rank clearance.",
+        ],
+        audited_utc=datetime.now(timezone.utc).isoformat(),
         holdout_evaluator="gems57-pooled-hide-v2 (seeds 20 & 30, 8 quadrant folds, 22,663 withheld positive pixels, static d_cat evaluation)",
         public_registry_rasters_scanned=len(meta),
         elapsed_seconds=round(time.monotonic() - t0, 2),
@@ -527,8 +543,10 @@ def main() -> int:
         ],
         records=records_out,
     )
-    OUT_JSON.write_text(json.dumps(out_doc, indent=2), encoding="utf-8")
-    print(f"Wrote {OUT_JSON} in {out_doc['elapsed_seconds']}s")
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    with args.output.open("x", encoding="utf-8") as dest:
+        dest.write(json.dumps(out_doc, indent=2, allow_nan=False) + "\n")
+    print(f"Wrote static diagnostic {args.output} in {out_doc['elapsed_seconds']}s")
     print("Exact identities:", json.dumps(identities, indent=2))
     print(f"{'Key':36s} | {'CLAIM':>7s} | {'HOLDOUT':>8s} | {'SGMC>5':>8s} | {'ov3_R0':>6s} | {'ov3_pub':>7s} | {'dots':>6s}")
     print("-" * 96)

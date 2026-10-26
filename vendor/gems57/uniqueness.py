@@ -23,6 +23,20 @@ JACCARD_LIMIT = 0.50
 ROOT = Path(__file__).resolve().parents[2]
 
 
+def stop_historical_runner(lane: str) -> None:
+    """Fail before placement or writes while the pinned literal witness binds.
+
+    Historical runners that performed registry checks only after placement must
+    not be used for a new experiment. Re-enabling requires a genuinely complete
+    pre-placement gate and a legitimate resolution of the published witness;
+    there is deliberately no flag or environment-variable bypass.
+    """
+    raise SystemExit(
+        f"STOP: literal pre-placement registry duplicate; {lane} historical runner disabled "
+        "(docs/downloads/review_14f85876_run_card.json)."
+    )
+
+
 def _dots(a):
     a = np.asarray(a)
     return np.isfinite(a) & (a > 0)
@@ -61,6 +75,47 @@ def _near(support, radius_px=RADIUS_PX):
         w = row_dilated[max_dx_by_abs_dy[ay]]
         out[ay:, :] |= w[:-ay, :]
         out[:-ay, :] |= w[ay:, :]
+    return out
+
+
+def mark_sparse_near_inplace(out, indices, shape, radius_px=RADIUS_PX, *, value=True):
+    """Mark/clear a sparse 2-D support's Euclidean halo without row wrapping.
+
+    ``out`` is a flat boolean buffer for one raster at a time. To clear it,
+    pass the same support and ``value=False`` before processing another raster;
+    clearing overlapping halos for multiple simultaneous supports is unsafe.
+    This is equivalent to ``_near`` with zero outside the grid, including edges.
+    """
+    if (not isinstance(shape, tuple) or len(shape) != 2
+            or any(isinstance(x, bool) or not isinstance(x, (int, np.integer)) or x <= 0 for x in shape)):
+        raise ValueError('shape must be a positive (height, width) tuple')
+    h, w = map(int, shape)
+    if (not isinstance(out, np.ndarray) or out.dtype != np.bool_
+            or out.ndim != 1 or out.size != h * w):
+        raise ValueError('out must be a flat boolean buffer matching shape')
+    idx = np.asarray(indices)
+    if idx.ndim != 1 or idx.dtype.kind not in 'iu':
+        raise ValueError('indices must be a one-dimensional integer array')
+    if idx.size and (np.any(idx < 0) or np.any(idx >= h * w)):
+        raise ValueError('support index outside grid')
+    if isinstance(radius_px, bool) or not isinstance(radius_px, Real) or not np.isfinite(radius_px) or radius_px < 0:
+        raise ValueError('radius must be a finite nonnegative number')
+    if not isinstance(value, (bool, np.bool_)):
+        raise ValueError('value must be boolean')
+    idx = idx.astype(np.intp, copy=False)
+    y, x = np.divmod(idx, w)
+    r = int(np.floor(radius_px))
+    # Offsets larger than the grid cannot contribute, even for a huge radius.
+    ry, rx = min(r, h - 1), min(r, w - 1)
+    radius = float(radius_px)
+    r2 = radius * radius
+    for dy in range(-ry, ry + 1):
+        for dx in range(-rx, rx + 1):
+            if dy * dy + dx * dx > r2:
+                continue
+            yy, xx = y + dy, x + dx
+            valid = (yy >= 0) & (yy < h) & (xx >= 0) & (xx < w)
+            out[yy[valid] * w + xx[valid]] = value
     return out
 
 

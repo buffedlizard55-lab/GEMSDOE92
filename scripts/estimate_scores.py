@@ -1,22 +1,23 @@
 #!/usr/bin/env python3
-"""Transparent, cross-validated DTI estimator (MODEL, never a score).
+"""Historical claim-trained exploratory model (not a valid score estimator).
 
-Purpose
--------
-Answer the standing question "what would this file plausibly score?" WITHOUT
-claiming a leaderboard result. The estimator is fitted only on owner-reported
-CLAIM values already recorded in this repository, using four *measurable*
+The CLI is disabled: row-wise leave-one-out crosses related lineages and the
+saturation cap was selected using the full data. Its RMSE is NOT an individual
+prediction interval. Targets are unverified owner CLAIMs, not organizer receipts.
+Functions remain available to reproduce the historical audit, not decisions.
+
+The historical model used four *measurable*
 structural statistics of each scored raster:
 
   x1  share of positive pixels within 3 px of the H19-5 multiline skeleton
-  x2  share of positive pixels within 2 px of the mapped catalogue (dead mass)
+  x2  share of positive pixels within 2 px of the mapped catalogue
   x3  log10 of the positive-pixel budget
   x4  quadrant allocation imbalance (max quadrant share - 0.25)
 
 Model: logit(E[DTI]) = b0 + b1*x1 + b2*x2 + b3*x3 + b4*x4, ridge-penalised,
-fitted by least squares in logit space. Honesty checks reported alongside every
-prediction: in-sample RMSE, leave-one-out RMSE, and leave-one-out Spearman
-rank correlation between prediction and the CLAIM values.
+fitted by least squares in logit space. Its historical diagnostics included
+in-sample and row-wise leave-one-out error and rank correlation. These do not
+validate performance on independent lineages or future organizer scores.
 
 Evidence classes
 ----------------
@@ -24,7 +25,8 @@ Evidence classes
   prediction              MODEL            fitted latent-intensity expectation
   measured statistics     REGISTRY-MEASUREMENT
 
-A MODEL number is never written as a score. Its uncertainty is the LOO RMSE.
+A MODEL number is never an organizer score. The row-wise LOO RMSE is an
+exploratory aggregate error, not an individual-file uncertainty interval.
 """
 from __future__ import annotations
 
@@ -122,6 +124,11 @@ def features(rows: list[dict]) -> np.ndarray:
 
 
 def main() -> int:
+    # Stop before reading inputs or overwriting the historical evidence.
+    raise SystemExit(
+        "STOP: unverified CLAIM labels, related rows across folds, and a "
+        "globally selected cap make this model unsuitable for a score estimate."
+    )
     inv = json.loads((PUB_CACHE / "repo_inventory.json").read_text(encoding="utf-8"))
     by_name: dict[str, list[tuple[str, Path]]] = {}
     for r in inv:
@@ -286,7 +293,6 @@ def main() -> int:
     preds = predict(Zt, coef, mu, sd)
     for t, pr in zip(targets, preds):
         t["estimated_dti_MODEL"] = round(float(pr), 6)
-        t["estimated_dti_MODEL_pm"] = round(loo_rmse, 6)
         base = t["claim_score"]
         if base is not None:
             t["claim_minus_model"] = round(float(base) - float(pr), 6)
@@ -308,9 +314,10 @@ def main() -> int:
         loo_rmse=round(loo_rmse, 6),
         loo_spearman=round(loo_rho, 6),
         interpretation=(
-            "loo_rmse is the honest one-number uncertainty of any MODEL estimate below. "
-            "loo_spearman measures rank fidelity against owner-reported CLAIMs only. "
-            "Neither value is an organizer-confirmed accuracy."
+            "Row-wise loo_rmse is an aggregate error, not an uncertainty interval; "
+            "related descendants cross folds and the cap was selected globally. "
+            "All labels are unverified owner claims. No individual prediction is "
+            "validated for leaderboard use or organizer-confirmed."
         ),
         training=dict(
             rows=[

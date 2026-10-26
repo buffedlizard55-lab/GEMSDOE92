@@ -44,12 +44,21 @@ HTML_PAGES = ("docs/index.html", "docs/executive-summary.html", "docs/SUBMIT.htm
 MD_PAGES = ("README.md", "SUBMISSION_READY.md")
 
 
+def enforce_literal_stop(card: dict) -> None:
+    """No renderer may promote while the pinned all-footprint witness binds."""
+    if card.get("verdict") == "promote":
+        raise ValueError("literal registry pre-placement STOP blocks promotion; see review_14f85876_run_card.json")
+
+
 def load_card(root: Path = ROOT) -> dict:
     card = json.loads((root / "evidence/vario_run_card.json").read_text())
     if not isinstance(card, dict) or card.get("lane") != "VARIO":
         raise ValueError("run card must be the VARIO card object")
     if card.get("verdict") not in ("promote", "negative"):
         raise ValueError("verdict must be promote or negative")
+    # A sparse-only check cannot override the pinned literal full-footprint
+    # witness: it proves every nonempty candidate is a duplicate.
+    enforce_literal_stop(card)
     primary = card.get("submission_file", "")
     if not re.fullmatch(r"docs/downloads/[A-Za-z0-9_.-]+-zeros\.tif", str(primary)):
         raise ValueError("primary must be a local downloads/*-zeros.tif")
@@ -84,6 +93,7 @@ def load_card(root: Path = ROOT) -> dict:
 
 
 def readiness(card: dict) -> dict:
+    enforce_literal_stop(card)
     hold = card["holdout_dti"]
     prim = hold["scores"][card["primary_arm"]]
     uniq = card["correlation_overlap_vs_registry"]["final_dots"][card["primary_arm"]]["operative_sparse"]
@@ -98,8 +108,10 @@ def readiness(card: dict) -> dict:
             if promote else "DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT"),
         submission_eligible=False,
         verdict=card["verdict"],
-        new_unique_tiff_generated=True,
-        experiments_this_session=card["experiments_used"],
+        new_unique_tiff_generated=False,
+        artifact_generated_in_source_session=True,
+        experiments_this_session=0,
+        source_session_experiments=card["experiments_used"],
         weekly_slots_used_this_session=0,
         file=card["submission_file"].removeprefix("docs/"),
         raster_sha256=card["raster_sha256"],
@@ -128,6 +140,7 @@ def readiness(card: dict) -> dict:
 
 def current_submission(card: dict) -> dict:
     """Keep docs/downloads/current_submission.json byte-bound to the VARIO primary."""
+    enforce_literal_stop(card)
     hold = card["holdout_dti"]
     arm = card["primary_arm"]
     prim = hold["scores"][arm]
@@ -230,6 +243,7 @@ def _fmt(x) -> str:
 
 
 def panel_html(card: dict, st: dict) -> str:
+    enforce_literal_stop(card)
     e = html.escape
     promote = card["verdict"] == "promote"
     hold = card["holdout_dti"]
@@ -247,22 +261,22 @@ def panel_html(card: dict, st: dict) -> str:
               if promote else "✅ OK TO DOWNLOAD FOR RESEARCH · ⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT")
     return f'''{BEGIN}
 <section id="vario-status" aria-label="Authoritative submission status" style="max-width:70rem;margin:1rem auto;padding:1.25rem;border:3px solid {"#14532d" if promote else "#991b1b"};border-radius:12px;background:{"#f0fdf4" if promote else "#fff7ed"};color:#292524;font:1rem/1.6 system-ui,sans-serif;overflow-wrap:anywhere">
-<h1 style="margin-top:0">GEMSDOE92 VARIO — {"new unique GeoTIFF generated and auto-validated" if promote else "new byte-unique GeoTIFF generated; registry-uniqueness gate FAILED"}</h1>
+<h1 style="margin-top:0">GEMSDOE92 VARIO — historical research GeoTIFF; registry-uniqueness gate FAILED</h1>
 <p><strong>{banner}</strong></p>
 <p><a class="btn" href="{e(st["file"])}" data-primary="true" download style="display:inline-block;padding:.8rem 1.1rem;background:{"#14532d" if promote else "#1e3a5f"};color:#fff;border-radius:6px;font-weight:700">⬇ Download {e(Path(st["file"]).name)} (.tif)</a>
 · <a href="{e(card["packaged"][card["primary_arm"]]["zip"].removeprefix("docs/"))}" download>one-TIFF ZIP</a>
 · <a href="vario.html"><strong>Executive summary — exactly how to submit</strong></a>
 · <a href="downloads/vario_run_card.json">JSON run card</a>
 · <a href="downloads/readiness.json">machine-readable status</a></p>
-<p>Submission name: <code>{e(card["submission_name"])}</code><br>
-Note for the DrivenData form ({card["note_chars"]}/140 chars): <code>{e(card["note"])}</code><br>
+<p>Historical name (do not upload): <code>{e(card["submission_name"])}</code><br>
+Historical note ({card["note_chars"]}/140 chars): <code>{e(card["note"])}</code><br>
 SHA-256: <code>{e(card["raster_sha256"])}</code> · 37,654 dots · single band float32 · EPSG:32611 · 3730×3292</p>
-<p><strong>Automated validation (no human pixel inspection):</strong> every cell finite and in [0, 1] — this is the
-check behind the portal error <q>Predicted values must be in range [0, 1]</q> — no NaN inside the footprint,
-zeros outside, CRS/shape/transform byte-matched to the sample submission, 0 dots on the mapped catalogue,
+<p><strong>Automated validation (no human pixel inspection):</strong> every cell finite and in [0, 1] — a local check relevant to the portal error
+<q>Predicted values must be in range [0, 1]</q>, not a guarantee of portal acceptance — no NaN inside the footprint,
+zeros outside, CRS/shape/transform matched to the sample submission, 0 dots on the mapped catalogue,
 all dots &gt;2 px from it. Gates are re-derived from the downloaded bytes by <code>scripts/check_site.py</code>.</p>
-<p><strong>HOLDOUT-DTI</strong> ({e(hold["evaluator_version"])}, {prim["withheld_positive_pixels"]} withheld positives,
-strict draw-blind whole-component holdout): primary <code>{_fmt(prim["dti"])} [{_fmt(prim["ci95"][0])}, {_fmt(prim["ci95"][1])}]</code>;
+<p><strong>Historical reported HOLDOUT-DTI</strong> ({e(hold["evaluator_version"])}, {prim["withheld_positive_pixels"]} withheld positives,
+whole-component holdout; not independently rerun in this review): primary <code>{_fmt(prim["dti"])} [{_fmt(prim["ci95"][0])}, {_fmt(prim["ci95"][1])}]</code>;
 best same-draw control <code>{e(hold["best_comparable_control"])}</code>; paired Δ <code>{delta["delta"]:+.6f} [{_fmt(delta["ci95"][0])}, {_fmt(delta["ci95"][1])}]</code>.
 Leakage canaries: max symmetric AUC <code>{card["leakage_canaries"]["max_symmetric_auc"]}</code> (limit 0.90).
 This is a local surrogate, <strong>not</strong> an organizer score; no ORGANIZER-CONFIRMED score exists for this file.</p>
@@ -281,6 +295,7 @@ analysis: <a href="ANALYSIS_20261025_VARIO.md">why R0 scored 0.2778 [CLAIM] and 
 
 
 def panel_md(card: dict, st: dict) -> str:
+    enforce_literal_stop(card)
     promote = card["verdict"] == "promote"
     hold = card["holdout_dti"]
     prim = hold["scores"][card["primary_arm"]]
@@ -290,7 +305,7 @@ def panel_md(card: dict, st: dict) -> str:
 ## Current research download — verified decision, 2026-10-25 (VARIO session)
 
 **{"✅ OK TO DOWNLOAD — AUTOMATED GATES PASS. Eligible for the separate selector step (weekly cap must be verified on the portal; 0 slots spent here)." if promote else "✅ OK TO DOWNLOAD FOR RESEARCH. ⛔ DO NOT SUBMIT — automated promotion gates not met (see run card)."}**
-A new unique GeoTIFF **was** generated this session by the pre-registered VARIO lane
+The pre-registered VARIO lane generated this historical research GeoTIFF on 2026-10-25; it is not registry-unique and no new TIFF was generated in this review.
 ([hypotheses](docs/HYPOTHESES_20261025_VARIO.md) · [analysis](docs/ANALYSIS_20261025_VARIO.md) ·
 [executive submission guide](docs/vario.html) · [run card](docs/downloads/vario_run_card.json) ·
 [machine-readable status](docs/downloads/readiness.json)).
@@ -338,6 +353,7 @@ def _strip_old_primary(text: str) -> str:
 
 
 def vario_page(card: dict, st: dict) -> str:
+    enforce_literal_stop(card)
     e = html.escape
     promote = card["verdict"] == "promote"
     hold = card["holdout_dti"]
@@ -361,18 +377,12 @@ def vario_page(card: dict, st: dict) -> str:
 <main style="max-width:70rem;margin:1rem auto;padding:0 1rem;font:1rem/1.6 system-ui,sans-serif">
 <h2>Exactly how to make a submission (DrivenData #306)</h2>
 <ol>
-<li><strong>Check the banner above.</strong> It is generated from the byte-bound run card — green only if format,
-leakage-canary, paired holdout and operative-uniqueness gates all pass. No human pixel inspection is involved or needed.</li>
+<li><strong>Check the banner above.</strong> The current artifact is negative. Format, canary and paired-holdout diagnostics cannot override the literal registry stop; a future candidate also requires complete uniqueness checks and the separate selector.</li>
 <li>{step2}</li>
 <li>Open the competition submission form: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData DOE GEMS</a>
 → Submit. Confirm the weekly cap shown there (this repo cannot see your remaining slots).</li>
-<li><strong>File to submit:</strong> choose <code>{e(Path(card["submission_file"]).name)}</code> (single-band GeoTIFF, or the .zip containing only it).</li>
-<li><strong>Note (optional) field:</strong> paste exactly: <code>{e(card["note"])}</code> ({card["note_chars"]}/140 characters).
-Use <code>{e(card["submission_name"])}</code> as your own reference name for this submission.</li>
-<li>Submit once (selector step). After the portal scores it, record the receipt score + date against
-SHA-256 <code>{e(card["raster_sha256"])}</code> in <code>ledger/submissions.csv</code> — only that receipt makes a
-score ORGANIZER-CONFIRMED. The portal range check ("Predicted values must be in range [0, 1]") is pre-verified
-locally: all 12,279,160 cells are finite, min 0.0, max 1.0, no nodata sentinel.</li>
+<li>For a future cleared artifact only: use its exact byte-verified filename and its own name and note of at most 140 characters. The historical VARIO filename and fields above are not instructions to submit it.</li>
+<li>Only the separate selector can choose a weekly slot. Record any organizer receipt, its date and the uploaded file SHA-256 in <code>ledger/submissions.csv</code>. Local finite-range checks do not establish portal acceptance.</li>
 </ol>
 <h2>Why this file exists (one paragraph)</h2>
 <p>{e(card["hypothesis"])} Mechanism: {e(card["mechanism"])} Named non-fault mimic: {e(card["non_fault_mimic"])}</p>
@@ -390,12 +400,11 @@ its operative public overlap was 0.7586 &gt; 0.70, so it was not promotable).</p
 <h2>Evidence boundaries &amp; official sources</h2>
 <ul>
 <li>Competition, metric (α=0.2, β=0.8, 300 m triangular kernel) and format: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">official problem description</a> (fetched 2026-10-25).</li>
-<li>Leaderboard read 2026-10-25: #1 = 0.4413 — <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">official leaderboard</a>.</li>
+<li>Official public leaderboard read 2026-10-26: #1 = 0.4437 (a dated snapshot, not a project receipt); check the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">official leaderboard</a> for changes.</li>
 <li>Reference solution: <a href="https://github.com/drivendataorg/gems-prize-reference-solution">drivendataorg/gems-prize-reference-solution</a>.</li>
 <li>GeoDAWN survey: <a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN</a> · INGENIOUS: <a href="https://gbcge.org/current-projects/ingenious/">GBCGE</a> · GDR #1391: <a href="https://gdr.openei.org/submissions/1391">gdr.openei.org</a> · CRS: <a href="https://epsg.io/32611">EPSG:32611</a>.</li>
-<li>Inputs are SHA-256-pinned GitHub mirrors (registry/session_manifest.json), not organizer-authenticated downloads;
-the sandbox cannot reach DrivenData/USGS directly. Byte identity is verified; official-origin identity is not.</li>
-<li>GEMSDOE32's own page (fetched 2026-10-25) labels h33-2-b2 UNSCORED / projected 0.2747 (a model); the brief's 0.2778 is a CLAIM with no receipt in this repo's ledger. See <a href="ANALYSIS_20261025_VARIO.md">analysis</a>.</li>
+<li>Inputs are SHA-256-pinned GitHub mirrors (registry/session_manifest.json), not organizer-authenticated downloads. The official data and submission pages require login. Byte identity is verified; official-origin identity is not.</li>
+<li>GEMSDOE32's owner reports h33-h33-2-b2 at 0.2778; it remains a CLAIM without a submission-page receipt binding the score to the raster. See the <a href="focus9.html">nine-site review</a>.</li>
 </ul>
 <p><a href="index.html">← Workbench home</a> · <a href="downloads/vario_run_card.json">run card (JSON)</a></p>
 </main></body></html>

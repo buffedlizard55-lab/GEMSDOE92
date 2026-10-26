@@ -138,10 +138,6 @@ def scan_local_registry(
         local_tifs.append(r0_path)
 
     h, w = foot.shape
-    offsets_1d = np.array(
-        [dy * w + dx for dy in range(-3, 4) for dx in range(-3, 4) if dy * dy + dx * dx <= 9],
-        dtype=np.int32,
-    )
     near_lit = np.zeros(h * w, dtype=bool)
     near_mb = np.zeros(h * w, dtype=bool)
 
@@ -175,8 +171,7 @@ def scan_local_registry(
             continue
         label = str(p.relative_to(ROOT))
         sup_idx = np.flatnonzero(sup.ravel()).astype(np.int32)
-        for d in offsets_1d:
-            near_lit[np.clip(sup_idx + d, 0, h * w - 1)] = True
+        U.mark_sparse_near_inplace(near_lit, sup_idx, (h, w), value=True)
 
         tv = vals.ravel()[sub_idx]
         has_var = bool(np.ptp(tv) > 0)
@@ -187,8 +182,7 @@ def scan_local_registry(
         else:
             mb_sup = U.matched_budget_support(vals, foot, N_PRIMARY_DOTS)
             mb_idx = np.flatnonzero(mb_sup.ravel()).astype(np.int32)
-            for d in offsets_1d:
-                near_mb[np.clip(mb_idx + d, 0, h * w - 1)] = True
+            U.mark_sparse_near_inplace(near_mb, mb_idx, (h, w), value=True)
             mb_buf = near_mb
             rep = "continuous_surface"
 
@@ -220,11 +214,9 @@ def scan_local_registry(
                     spearman_surface=rho_s,
                 )
             )
-        for d in offsets_1d:
-            near_lit[np.clip(sup_idx + d, 0, h * w - 1)] = False
+        U.mark_sparse_near_inplace(near_lit, sup_idx, (h, w), value=False)
         if mb_idx is not None:
-            for d in offsets_1d:
-                near_mb[np.clip(mb_idx + d, 0, h * w - 1)] = False
+            U.mark_sparse_near_inplace(near_mb, mb_idx, (h, w), value=False)
         del vals, sup
 
     out: dict[str, dict] = {}
@@ -276,10 +268,6 @@ def scan_public_102_repos(
     meta = json.loads(str(fs["meta_json"]))
 
     h, w = foot.shape
-    offsets_1d = np.array(
-        [dy * w + dx for dy in range(-3, 4) for dx in range(-3, 4) if dy * dy + dx * dx <= 9],
-        dtype=np.int32,
-    )
     dil_buf = np.zeros(h * w, dtype=bool)
 
     cand_pos_flat = {a: np.flatnonzero((arr > 0).ravel()).astype(np.int32) for a, arr in cand_allocs.items()}
@@ -297,8 +285,7 @@ def scan_public_102_repos(
         if "SALEMSEISMO" in m_info["file"]:
             continue
         fidx = all_idx[offs[i] : offs[i + 1]]
-        for d in offsets_1d:
-            dil_buf[np.clip(fidx + d, 0, h * w - 1)] = True
+        U.mark_sparse_near_inplace(dil_buf, fidx, (h, w), value=True)
         for a, c_idx in cand_pos_flat.items():
             if m_info["sha256"] == cand_shas.get(a, ""):
                 continue
@@ -310,8 +297,7 @@ def scan_public_102_repos(
                 surf_worst_by_arm[a]["witness"] = m_info["file"]
             if sov > 0.70:
                 surf_worst_by_arm[a]["over70"] += 1
-        for d in offsets_1d:
-            dil_buf[np.clip(fidx + d, 0, h * w - 1)] = False
+        U.mark_sparse_near_inplace(dil_buf, fidx, (h, w), value=False)
 
     out_cands: dict[str, dict] = {}
     for a, rows in rows_by_arm.items():
@@ -396,6 +382,12 @@ def scan_public_102_repos(
 
 
 def main() -> int:
+    # This historical runner checked the registry only after placement and
+    # packaging; its rank scan also covered selected witnesses, not all rasters.
+    # The pinned dense witness blocks any nonempty candidate. Refuse before
+    # feature generation, placement, writes, or mutation of prior evidence.
+    U.stop_historical_runner("SALEMSEISMO")
+
     CACHE.mkdir(parents=True, exist_ok=True)
     DOWNLOADS.mkdir(parents=True, exist_ok=True)
     EVIDENCE.mkdir(parents=True, exist_ok=True)
@@ -699,9 +691,8 @@ def main() -> int:
 
     # ---- Step 5: Package Validated GeoTIFFs via submission_writer.py & Run 11/11 Gates ----
     log("5. Packaging 3 SALEMSEISMO GeoTIFFs via vendor/gems57/submission_writer.py & verifying 11/11 gates...")
-    for old_p in DOWNLOADS.glob("*SALEMSEISMO*"):
-        old_p.unlink()
-
+    # Prior evidence is immutable; this historical runner must never remove
+    # or replace previous SALEMSEISMO artifacts.
     static_summary_by_cand = {
         a: evaluate_holdout.pooled_summary(static_terms, draws=1000, seed=520810, candidate=a)
         for a in arms_order

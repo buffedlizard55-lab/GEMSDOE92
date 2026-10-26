@@ -1,0 +1,11 @@
+{
+  "schema": "gemsdoe92-official-leaderboard-feed-v1",
+  "status": "snapshot",
+  "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "observed_on_utc": "2026-10-26",
+  "checked_at_utc": null,
+  "rank": 1,
+  "participant": "xiaofanhu",
+  "public_dw_tversky": 0.4437,
+  "provenance": "Official public page read through the web page retrieval tool; this is a dated snapshot, not an uploaded-file receipt."
+}
