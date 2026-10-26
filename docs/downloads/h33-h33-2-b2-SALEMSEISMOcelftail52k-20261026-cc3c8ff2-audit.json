@@ -1,0 +1,250 @@
+{
+  "schema": "gemsdoe92-salemseismo-audit.v1",
+  "lane": "SALEMSEISMO",
+  "arm": "salem_celf_tail52k",
+  "file": "h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.tif",
+  "sha256_zeros": "b06dd72feff35b1631a17a52581b46d9b21b92fcba09441eac77d6daa9ba1dda",
+  "n_positive_pixels": 52000,
+  "sum_prediction_mass": 46978.9023,
+  "n_dots": 52000,
+  "overall_pass": true,
+  "gates_zeros_pass": true,
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=('float32',) count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nonfinite_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0; strict distance > radius required"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "b06dd72feff35b1631a17a52581b46d9b21b92fcba09441eac77d6daa9ba1dda"
+    }
+  ],
+  "submission_eligible": false,
+  "verdict": "negative",
+  "run_card": "evidence/salemseismo_run_card.json",
+  "holdout_static_dcat2": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.015948377953032163,
+    "ci95": [
+      0.013683137803839073,
+      0.018370320407155256
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 556.2167571780351,
+    "fpw": 83172.13678601259,
+    "fnw": 22106.783242821963
+  },
+  "holdout_drawblind_dcat2": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.016044251194692362,
+    "ci95": [
+      0.013835382074178166,
+      0.01863193712604796
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 557.9075221111951,
+    "fpw": 82655.33409656842,
+    "fnw": 22105.092477888797
+  },
+  "holdout_rule2_dvis2": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.09934512146244494,
+    "ci95": [
+      0.08494825317674552,
+      0.11394622194380966
+    ],
+    "withheld_positive_pixels": 22663,
+    "tpw": 3491.413462887928,
+    "fpw": 81578.02164591981,
+    "fnw": 19171.58653711206
+  },
+  "sgmc_proxy_dti_gt3px": 0.111876,
+  "sgmc_proxy_dti_gt5px": 0.103666,
+  "local_registry_uniqueness": {
+    "n_rasters_checked": 128,
+    "my_positive_pixels": 52000,
+    "worst_matched_budget_forward_overlap": 0.644731,
+    "worst_matched_budget_file": "docs/downloads/gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif",
+    "worst_literal_forward_overlap": 0.644731,
+    "worst_literal_file": "docs/downloads/gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif",
+    "worst_abs_spearman_surface": 0.098316,
+    "worst_spearman_surface_file": "docs/downloads/gemsdoe92-riedelvent-tail85k-85000-20261025-1cc99d0f-zeros.tif",
+    "worst_abs_spearman_final": 0.053061,
+    "worst_spearman_final_file": "docs/downloads/GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif",
+    "preplacement_surface_worst_top37654_overlap": 0.738461,
+    "preplacement_surface_worst_overlap_file": "docs/downloads/gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif",
+    "local_duplicate": false,
+    "top5_by_overlap": [
+      {
+        "file": "docs/downloads/gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif",
+        "their_dots": 90000,
+        "my_dots": 52000,
+        "representation": "dot_field",
+        "literal_forward_overlap": 0.644731,
+        "matched_budget_forward_overlap": 0.644731,
+        "spearman_surface": 0.09676,
+        "spearman_final": 0.038782
+      },
+      {
+        "file": "docs/downloads/gemsdoe92-riedelvent-tail85k-85000-20261025-1cc99d0f-zeros.tif",
+        "their_dots": 85000,
+        "my_dots": 52000,
+        "representation": "dot_field",
+        "literal_forward_overlap": 0.611038,
+        "matched_budget_forward_overlap": 0.611038,
+        "spearman_surface": 0.098316,
+        "spearman_final": 0.037071
+      },
+      {
+        "file": "docs/downloads/gemsdoe92-riedelvent-riedelvent_tail-64000-20261025-c4e61655-zeros.tif",
+        "their_dots": 64000,
+        "my_dots": 52000,
+        "representation": "dot_field",
+        "literal_forward_overlap": 0.562288,
+        "matched_budget_forward_overlap": 0.562288,
+        "spearman_surface": 0.083452,
+        "spearman_final": 0.027179
+      },
+      {
+        "file": "docs/downloads/h33-h33-2-b2-CHILISTRICaddtail52k-20261025-8c82904d-zeros.tif",
+        "their_dots": 52000,
+        "my_dots": 52000,
+        "representation": "dot_field",
+        "literal_forward_overlap": 0.519885,
+        "matched_budget_forward_overlap": 0.519885,
+        "spearman_surface": 0.076003,
+        "spearman_final": 0.037795
+      },
+      {
+        "file": "docs/downloads/gemsdoe92-ventscarp-ventscarp_soft-47000-20261025-97cebb93-zeros.tif",
+        "their_dots": 47000,
+        "my_dots": 52000,
+        "representation": "dot_field",
+        "literal_forward_overlap": 0.460538,
+        "matched_budget_forward_overlap": 0.460538,
+        "spearman_surface": 0.092239,
+        "spearman_final": 0.037127
+      }
+    ]
+  },
+  "public_registry_uniqueness": {
+    "candidate_hash_matches_scan": true,
+    "candidate_sha256_zeros": "b06dd72feff35b1631a17a52581b46d9b21b92fcba09441eac77d6daa9ba1dda",
+    "unique_under_literal_rule": false,
+    "unique_under_dual_reading_rule": true,
+    "stop_required": true,
+    "verdict": "duplicate (stop; do not spend a weekly submission slot)",
+    "operational_matched_budget_verdict": "unique",
+    "worst_operative_overlap_3px": 0.644731,
+    "worst_operative_witness": "GEMSDOE92/docs/downloads/gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif",
+    "operative_over_70pct_count": 0,
+    "literal_unweighted_worst_overlap_3px": 1.0,
+    "literal_unweighted_witness": "17GEMSDOE/outputs/submissions/20261024T175340Z_17GEMSDOE_E-proba-multiscale.tif"
+  },
+  "validator": {
+    "file": "docs/downloads/h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.tif",
+    "bytes": 190583,
+    "sha256": "b06dd72feff35b1631a17a52581b46d9b21b92fcba09441eac77d6daa9ba1dda",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.00382590526714921,
+    "emitted_positive_pixels": 52000,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 52000,
+    "footprint_fraction": 0.0100631404003543
+  }
+}

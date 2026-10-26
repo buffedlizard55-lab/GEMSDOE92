@@ -1,3 +1,23 @@
+
+## Current session addendum — 2026-10-26 (nine-site forensic audit + `SALEMSEISMO` lane, branch `arena/18da04a8-gemsdoe92`)
+
+Read [`docs/focus9.html`](docs/focus9.html) first: receipt-driven executive summary for
+GEMSDOE24/25/27/28/30/31/32/33/36 plus the download / estimate / uniqueness table. Machine receipts:
+`evidence/focus9_executive_audit_20261026.json`, `evidence/score_estimator_20261026.json`,
+`evidence/salemseismo_run_card.json`, `evidence/salemseismo_holdout.json`,
+`evidence/salemseismo_uniqueness.json`. Reproduce: `scripts/audit_focus9_sites.py` →
+`scripts/estimate_scores.py` → `scripts/run_salem_seismo.py` → `scripts/render_focus9_page.py`.
+
+Lane `SALEMSEISMO` (26 zero-catalogue channels over 7 previously unused bands; dual-partition
+`0.5·LOQO + 0.5·rotated-45° LODO` OOF; exact 25-offset 300 m submodular `CELF` placement;
+pre-registered in `docs/HYPOTHESES_20261026_SALEMSEISMO.md`) ran `3/3` experiments, spent `0` slots.
+Static `d_cat>2` HOLDOUT-DTI `0.015948` (above the previous `LISTRICLOQO selectcal` 0.013295 control),
+Rule-2 `0.099345`, worst 3-px overlap `0.6447` over 1,756 public rasters, 11/11 gates, 26/26 canaries.
+Score estimator (MODEL): 107 matched CLAIMs, LOO RMSE `0.0722`, LOO Spearman `0.750`. Verdict
+`negative` / `submission_eligible: false` under the binding literal dense-witness rule. Lineage
+re-verified by XOR: `D2.8(25) ≡ d28(30)`, `SOLO(28) ≡ solo(31)`, `SOLO ≡ D2.8 ∧ d_cat>1`,
+`R0 ≡ D2.8 ∧ d_cat>2` (all 0 px); GEMSDOE36 PINN ⊃ R0 +1,200 dots.
+
 ## Session start — 2026-10-26 GEMS site review (read first)
 
 Read the README's **Durable project aim and session prompt** block, [`docs/SITE_REVIEW_20261026.html`](docs/SITE_REVIEW_20261026.html), [`docs/HYPOTHESES_20261026_SITE_REVIEW.md`](docs/HYPOTHESES_20261026_SITE_REVIEW.md), and [`evidence/review_20261026_gemsdoe_sites_run_card_v2.json`](evidence/review_20261026_gemsdoe_sites_run_card_v2.json). The report preserves 17 verified source TIFF variants, nine selected site artifacts, all 36 pairwise comparisons, source commit pins, and format-only checks. GEMSDOE32 `.2778` is an owner-reported CLAIM with no organizer receipt. User snapshots `.4413` and `.3195` conflict with GEMSDOE32's owner-page `.4437`; the current official leader is unknown.

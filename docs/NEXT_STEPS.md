@@ -1,3 +1,39 @@
+# Next steps — 2026-10-26 (after the nine-site audit and the `SALEMSEISMO` lane)
+
+**Read `docs/focus9.html` first** — it is regenerated from committed JSON by
+`scripts/render_focus9_page.py`, so it cannot drift from the evidence.
+
+## Done this session (3/3 experiments, 0 weekly slots)
+1. Re-cloned all 102 public `*GEMSDOE*` repos (2,134 TIFF paths, 1,762 blobs); rebuilt
+   `registry_index.json` (1,756 compatible rasters) and `fast_supports.npz`.
+2. One uniform audit across the nine focus sites (`scripts/audit_focus9_sites.py`): identical holdout,
+   identical SGMC proxy, identical 102-repo uniqueness scan, plus exact XOR lineage algebra.
+3. Score estimator (`scripts/estimate_scores.py`): 107 matched CLAIMs, LOO RMSE `0.0722`,
+   LOO Spearman `0.750`; labelled MODEL with its ± on every line.
+4. `SALEMSEISMO` lane: static `d_cat>2` `0.015948` (first zero-`H19-5` file above the `LISTRICLOQO
+   selectcal` `0.013295` control), Rule-2 `0.099345`, worst overlap `0.6447` over 1,756 public rasters.
+
+## Highest-P(win) actions
+1. **Owner decision on the literal dense-witness rule** (§6 of `docs/focus9.html`). Until resolved,
+   nothing can clear — including files that already scored 0.2778.
+2. **If adopted,** the recommended file is
+   `docs/downloads/h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.tif`
+   (SHA-256 `b06dd72feff35b1631a17a52581b46d9b21b92fcba09441eac77d6daa9ba1dda`); expected live
+   behaviour is R0-class, not a jump past 0.32 — say so plainly.
+3. **Record the first ORGANIZER-CONFIRMED receipt** in `ledger/submissions.csv`; that is what converts
+   the estimator from a rank proxy into a calibrated one.
+4. **Next cheapest scientific test:** Rank-2 `DEXP_POISSON_EULER` in
+   `docs/HYPOTHESES_20261026_SALEMSEISMO.md` — needs no new data.
+5. **External data only if it can be staged:** ASTER GED TIR silica (`lpdaac.usgs.gov`) and
+   Sentinel-1/ARIA InSAR (`asf.alaska.edu`) are free and official but outside the sandbox allowlist.
+
+## Limitations that still bind
+No organizer receipt exists for any score here (`0.2778`, `0.2750`, `0.2478`, `0.4413`, `0.3195` are
+CLAIMs/snapshots); the hide-and-recover instrument measures catalogue-fault recovery, not new-fault
+discovery; `drivendata.org` is unreachable from the sandbox.
+
+---
+
 # THERMOTILT closeout — 26 October 2026
 
 **DO NOT SUBMIT.** Three research rasters were built, but the literal stop was not honored before construction, registry checks happened after placement, and Stage-1 context was not nested in the outer Stage-2 fold. Canary PASS does not resolve these defects. Sparse uniqueness and holdout figures remain diagnostic, not promotion evidence. Runner disabled pending shared-pipeline repair. No more experiments in this budget. See [corrected analysis](docs/ANALYSIS_20261026_THERMOTILT.md) and `evidence/thermotilt_run_card.json`.
