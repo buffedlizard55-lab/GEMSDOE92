@@ -168,6 +168,10 @@ def test_focus_review_and_latest_visible_panels_do_not_claim_clearance_or_pm():
     assert "0.0832 ± 0.0722" not in page
     assert "<strong>not</strong> a per-file ± prediction interval" in page
     assert "not a guarantee" not in page or "not a guarantee of portal acceptance" in page
+    inherited = (ROOT / "docs/REVIEW_20261026_ARENA_0C5D848E.md").read_text()
+    assert "not defensible per-file score estimates or uncertainty intervals" in inherited
+    assert "35 of 36 pairs" in inherited and "original text below is preserved" in inherited
+    assert "earlier branch review" in (ROOT / "README.md").read_text()
     for rel in render_review_banner.PAGES:
         text = (ROOT / rel).read_text()
         assert text == render_review_banner.render_page(text, root_page=rel == "index.html")

@@ -2,7 +2,7 @@
 
 ## Latest repository audit — 2026-10-26
 
-Read the [current branch review](docs/REVIEW_20261026_ARENA_0C5D848E.md) for the nine-site comparison, evidence labels, test results, and remaining blockers. **No new TIFF was generated in that audit; do not submit any research artifact.** The durable project aim and full operating prompt remain below; read them at the start of every session.
+Read the [latest three-pass review](docs/REVIEW_14F85876.md) and the [earlier branch review](docs/REVIEW_20261026_ARENA_0C5D848E.md) (historical score estimates superseded) for the nine-site comparison, evidence labels, tests, and remaining blockers. **No new TIFF was generated in either audit; do not submit any research artifact.** The durable project aim and full operating prompt remain below; read them at the start of every session.
 
 <!-- VARIO-STATUS:BEGIN -->
 ## Current research download — verified decision, 2026-10-25 (VARIO session)
