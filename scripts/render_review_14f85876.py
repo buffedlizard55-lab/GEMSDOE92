@@ -82,7 +82,11 @@ def build() -> dict:
         },
         {
             "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
-            "finding": "Observed 2026-10-26: public rank 1 was 0.4437 (xiaofanhu); a changing leaderboard snapshot, not this project's submission receipt.",
+            "finding": "The public leaderboard is not mirrored or automatically monitored; a leaderboard row is not a score-to-file submission receipt.",
+        },
+        {
+            "url": "https://www.drivendata.org/termsofuse/",
+            "finding": "DrivenData terms prohibit automatic access to the website, including for monitoring or copying; the previously added scheduled feed was removed.",
         },
         {
             "url": "https://docs.nlr.gov/docs/fy26osti/96647.pdf",

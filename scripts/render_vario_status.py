@@ -400,7 +400,7 @@ its operative public overlap was 0.7586 &gt; 0.70, so it was not promotable).</p
 <h2>Evidence boundaries &amp; official sources</h2>
 <ul>
 <li>Competition, metric (α=0.2, β=0.8, 300 m triangular kernel) and format: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">official problem description</a> (fetched 2026-10-25).</li>
-<li>Official public leaderboard read 2026-10-26: #1 = 0.4437 (a dated snapshot, not a project receipt); check the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">official leaderboard</a> for changes.</li>
+<li>The <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">official leaderboard</a> is not monitored or mirrored. A public row is not a project receipt; see the <a href="https://www.drivendata.org/termsofuse/">site terms</a>.</li>
 <li>Reference solution: <a href="https://github.com/drivendataorg/gems-prize-reference-solution">drivendataorg/gems-prize-reference-solution</a>.</li>
 <li>GeoDAWN survey: <a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN</a> · INGENIOUS: <a href="https://gbcge.org/current-projects/ingenious/">GBCGE</a> · GDR #1391: <a href="https://gdr.openei.org/submissions/1391">gdr.openei.org</a> · CRS: <a href="https://epsg.io/32611">EPSG:32611</a>.</li>
 <li>Inputs are SHA-256-pinned GitHub mirrors (registry/session_manifest.json), not organizer-authenticated downloads. The official data and submission pages require login. Byte identity is verified; official-origin identity is not.</li>

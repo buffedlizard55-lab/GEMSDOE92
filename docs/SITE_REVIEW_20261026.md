@@ -52,7 +52,7 @@ The pairwise check used candidate-directed 3-pixel overlap and binary-support ra
 
 ## Leaderboard and provenance irregularities
 
-At the time of this earlier review, no official leaderboard or submission-page receipt had been verified. A later 2026-10-26 official-page read observed rank 1 at `.4437`; that changing leaderboard snapshot is not a project submission receipt. The supplied `.4413` and `.3195` snapshots conflict. GEMSDOE32's page labels `.2778` an owner report and says there is no receipt binding the score to the raster; it also says not to resubmit the file because it is already submitted. That is not a receipt.
+The supplied `.4413` and `.3195` snapshots conflict, and neither is a project submission receipt. The organizer leaderboard is not mirrored or automatically monitored; [DrivenData's terms](https://www.drivendata.org/termsofuse/) prohibit automatic website access for monitoring or copying. GEMSDOE32's page labels `.2778` an owner report and says there is no receipt binding the score to the raster; it also says not to resubmit the file because it is already submitted. That is not a receipt.
 
 ## Submission guidance
 

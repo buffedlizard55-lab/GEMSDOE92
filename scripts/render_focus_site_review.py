@@ -124,7 +124,7 @@ The pairwise check used candidate-directed 3-pixel overlap and binary-support ra
 
 ## Leaderboard and provenance irregularities
 
-At the time of this earlier review, no official leaderboard or submission-page receipt had been verified. A later 2026-10-26 official-page read observed rank 1 at `.4437`; that changing leaderboard snapshot is not a project submission receipt. The supplied `.4413` and `.3195` snapshots conflict. GEMSDOE32's page labels `.2778` an owner report and says there is no receipt binding the score to the raster; it also says not to resubmit the file because it is already submitted. That is not a receipt.
+The supplied `.4413` and `.3195` snapshots conflict, and neither is a project submission receipt. The organizer leaderboard is not mirrored or automatically monitored; [DrivenData's terms](https://www.drivendata.org/termsofuse/) prohibit automatic website access for monitoring or copying. GEMSDOE32's page labels `.2778` an owner report and says there is no receipt binding the score to the raster; it also says not to resubmit the file because it is already submitted. That is not a receipt.
 
 ## Submission guidance
 
@@ -219,7 +219,7 @@ def render_html(data: dict) -> str:
   <section aria-labelledby="exec"><h2 id="exec">Executive conclusion</h2>
     <div class="summary-grid">
       <article><strong>Strongest reported reference</strong><br>{_e(top['site'])} <code>{_e(top['submission_name'])}</code>, <strong>{top['score_claim']:.4f} CLAIM</strong>; no organizer receipt.</article>
-      <article><strong>Official leaderboard snapshot</strong><br>Rank 1: 0.4437, read 2026-10-26; it can change and is not a project receipt. The user-provided {', '.join(str(x['score']) for x in data['leaderboard_claims']['conflicting_unverified_claims'][:2])} snapshots conflict.</article>
+      <article><strong>Official leaderboard</strong><br>Not mirrored or automatically monitored. The user-provided {', '.join(str(x['score']) for x in data['leaderboard_claims']['conflicting_unverified_claims'][:2])} snapshots conflict and are not project receipts.</article>
       <article><strong>Research download</strong><br>Yes — owner-published reference TIFFs. Do not mistake them for a new GEMSDOE92 candidate.</article>
       <article><strong>Submission clearance</strong><br><span class="stop">NONE</span> · No weekly slot used; separate human selector required.</article>
     </div>
@@ -236,7 +236,7 @@ def render_html(data: dict) -> str:
   </section>
   <section aria-labelledby="provenance"><h2 id="provenance">Provenance conflicts and irregularities</h2>
     <ul><li>GEMSDOE32's current owner page labels 0.2778 an owner report, with no submission-page receipt binding score to raster; it says the file was already submitted and not to resubmit.</li>
-      <li>The prompt's .4413 and .3195 snapshots conflict. No live organizer page was accessed in the earlier review; a later official-page read on 2026-10-26 observed .4437 at rank 1. This is a changing public snapshot, not a project receipt.</li>
+      <li>The prompt's .4413 and .3195 snapshots conflict. No live organizer page was accessed in the earlier review; a public leaderboard row is not a project receipt. <a href="https://www.drivendata.org/termsofuse/">DrivenData terms</a> prohibit automatic monitoring or copying, so the added automated feed has been removed.</li>
       <li>GEMSDOE33's owner-maintained “receipt” JSON contains an expected DTI range, not a score receipt; its note-length field is 158 characters (&gt;140).</li>
       <li>All 17 public TIFF variants were retrieved via GitHub blobs; Git blob SHA-1 and SHA-256 were verified. Each main-branch tree was rechecked at the commit pinned in the evidence JSON.</li></ul>
   </section>
@@ -248,7 +248,7 @@ def render_html(data: dict) -> str:
       <li>Only a human selector may choose a weekly slot. After clearance, upload through the official <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData submissions page</a> and preserve the actual organizer receipt, binding it to the uploaded file's SHA-256.</li></ol>
   </section>
   <section aria-labelledby="sources"><h2 id="sources">Official and reference sources</h2>
-    <p>These are source links, not proof of data provenance or access. The original review could not fetch the official hosts directly; a later review retrieved the official problem, leaderboard and rules through a web retrieval tool, but obtained no submission receipt or authenticated competition data.</p><ul>{source_items}</ul>
+    <p>These are source links, not proof of data provenance or access. The original review could not fetch the official hosts directly. A later review obtained no submission receipt or authenticated competition data; it removed its newly added automated leaderboard feed after checking the site terms.</p><ul>{source_items}</ul>
   </section>
   <section><h2>Auditable downloads and status</h2><ul>
     <li><a href="downloads/focus_sites_release_review_20261026.json">Full public JSON evidence</a> (17 variants, 9 selected artifacts, 36 pairwise comparisons, source commits, checksums, and format-gate details).</li>

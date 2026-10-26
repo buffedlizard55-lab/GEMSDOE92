@@ -24,9 +24,7 @@ def banner(prefix: str) -> str:
 <p><strong>⛔ DO NOT SUBMIT.</strong> The pinned public witness is positive on all 5,167,373 finite template cells: every nonempty candidate has literal overlap 1.000 &gt; 0.70. No new TIFF, experiment, holdout result or slot was generated in this review.</p>
 <p>GEMSDOE32's 0.2778 is an owner <strong>CLAIM</strong>, not an organizer receipt; no defensible leaderboard estimate is available for the research files. The prior claim-trained model's row-wise error is not a per-file uncertainty interval. An independent 2-D recheck corrected overlap values in 35 of 36 site pairs; all duplicate decisions are unchanged.</p>
 <p><a href="{prefix}focus9.html"><strong>Nine-site executive summary, research downloads and conditional submission guide</strong></a> · <a href="{prefix}downloads/review_14f85876_run_card.json">review run card</a> · <a href="{prefix}downloads/score_estimator_audit_14f85876.json">model audit</a> · <a href="{prefix}HYPOTHESES_20261026_SITE_REVIEW.md">ranked hypotheses</a></p>
-<p data-official-leaderboard>Official public #1: 0.4437; observed 2026-10-26 UTC. Snapshot only; not a project receipt.</p>
-<p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Official leaderboard</a>; automated refresh may be delayed or unavailable. <a href="{prefix}downloads/live_leaderboard.json">Feed and timestamp</a>.</p>
-<script src="{prefix}leaderboard-feed.js" defer></script>
+<p>The official leaderboard is not mirrored or automatically monitored. See the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">organizer leaderboard</a> and <a href="https://www.drivendata.org/termsofuse/">site terms</a>; no project score receipt is available.</p>
 </section>
 {END}'''
 

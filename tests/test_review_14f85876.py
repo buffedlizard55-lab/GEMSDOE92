@@ -178,5 +178,5 @@ def test_focus_review_and_latest_visible_panels_do_not_claim_clearance_or_pm():
         visible = text.split(render_review_banner.BEGIN, 1)[1].split(render_review_banner.END, 1)[0]
         assert "DO NOT SUBMIT" in visible and "No new TIFF" in visible
         assert "focus9.html" in visible
-        assert "data-official-leaderboard" in visible
+        assert "not mirrored" in visible and "https://www.drivendata.org/termsofuse/" in visible
         assert text.index(render_review_banner.END) < text.index('id="historical-research-archive"')
