@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from gems.rasters import sha256_file
 from scripts.render_focus_site_review import EVIDENCE, HTML, MARKDOWN, PUBLIC_JSON, generate
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,6 +33,8 @@ def test_review_is_rejection_only_and_preserves_all_pairwise_results():
     assert concurrent["holdout_dti"]["available"] is False
     assert concurrent["registry_measurement_from_lane_run_card"]["duplicate"] is True
     assert concurrent["artifact_git_blob_sha256_verified"] is True
+    assert sha256_file(ROOT / concurrent["artifact_path"]) == concurrent["artifact_sha256"]
+    assert (ROOT / concurrent["run_card_path"]).is_file()
     assert data["protocol"]["witness"]["positive_in_footprint"] == 5_167_373
     assert data["protocol"]["universal_stop_verified"] is True
     assert data["protocol"]["witness"]["universal_stop_verified"] is True
@@ -97,6 +100,18 @@ def test_rendered_public_outputs_match_durable_evidence_and_warn_clearly():
     assert "✅ OK TO SUBMIT" not in html
     assert Path(ROOT / "docs/downloads/focus_sites_release_review_20261026.json").is_file()
     assert json.loads(PUBLIC_JSON.read_text(encoding="utf-8")) == data
+
+
+def test_current_site_quarantines_concurrent_blindext_download_clearly():
+    page = (ROOT / "docs/index.html").read_text(encoding="utf-8")
+    assert "DUPLICATE, DO NOT SUBMIT" in page
+    assert "NOT CLEARED TO SUBMIT" in page
+    assert "gemsdoe92-blindext-20261026T162451Z-zeros.zip" not in page
+    for rel in (
+        "docs/downloads/gemsdoe92-blindext-20261026T162451Z-zeros.tif",
+        "docs/downloads/gemsdoe92-blindext-20261026T162451Z_run_card.json",
+    ):
+        assert (ROOT / rel).is_file(), rel
 
 
 def test_hypothesis_screen_ranks_five_untried_candidates_and_marks_top_holdout_blocked():
