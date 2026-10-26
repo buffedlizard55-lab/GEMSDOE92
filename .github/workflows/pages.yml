@@ -2,6 +2,9 @@ name: pages
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
 permissions:
   contents: read
   pages: write
@@ -30,6 +33,10 @@ jobs:
           mkdir -p .cache/pages
           cp index.html .nojekyll .cache/pages/
           cp -R docs .cache/pages/docs
+      # Refresh only the staged artifact. On network/parser failure the JSON
+      # explicitly says unavailable; it can never grant submission clearance.
+      - name: refresh official public leaderboard snapshot
+        run: python scripts/update_leaderboard_feed.py --output .cache/pages/docs/downloads/live_leaderboard.json
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .cache/pages

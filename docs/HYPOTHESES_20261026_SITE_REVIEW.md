@@ -23,3 +23,13 @@ This is a **blocked** evaluation, not a negative geological result. It does not 
 ## Data and source verification boundary
 
 The site comparison is reproducible from the public [`focus_sites_release_review_20261026.json`](downloads/focus_sites_release_review_20261026.json), which is byte-identical to the durable evidence snapshot under `evidence/`. Official Landsat, 3DEP/3DHP, ComCat, DrivenData and upstream DOE/USGS pages are linked for future verification; this sandbox did not fetch the non-GitHub hosts. A source URL is not proof of AOI coverage, acquisition, access rights, or current competition rules. `scripts/restore_inputs.py` is the existing shared restore path for pinned inputs; do not create a private feature-stack fork.
+
+## Follow-up source check — 2026-10-26, review 14f85876
+
+The preceding source section describes the earlier review. This follow-up retrieved the official documentation pages through the web retrieval tool; that is not a download of data into the sandbox and does not prove study-area coverage. The literal pre-placement stop still prevents implementing the top hypothesis.
+
+- [USGS 3DEP](https://www.usgs.gov/3d-elevation-program) and [USGS 3D Hydrography Program](https://www.usgs.gov/3d-hydrography-program) document elevation products and a hydrography data service. Exact AOI tile/flow-network coverage remains unchecked.
+- [USGS FDSN earthquake API](https://earthquake.usgs.gov/fdsnws/event/1/) documents a public query service. Appropriate focal mechanisms, uncertainty and spatial coverage remain unchecked.
+- [Landsat Collection 2 Level-2](https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products) documents unrestricted surface reflectance/temperature products, QA bands and scale factors. Actual clear-sky scenes and AOI temporal coverage remain unchecked.
+- [USGS potential-field interpretation](https://www.usgs.gov/publications/unique-geologic-insights-non-unique-gravity-and-magnetic-interpretation) emphasizes gravity/magnetic inverse nonuniqueness; cross-physics agreement is a hypothesis, not proof of a fault.
+- [USGS GeoDAWN](https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and) and [GDR INGENIOUS 1391](https://gdr.openei.org/submissions/1391) are official source records; GDR 1391 requires CC BY 4.0 attribution. Source pages do not establish the provenance of the owner-mirrored competition stack. The full pinned 418,912,844-byte stack is absent in this checkout; no large download was needed for the rejection-only audit. The existing `scripts/restore_inputs.py` stages its owner mirror in ignored `.cache/`, verifies its pin and must not imply organizer provenance.

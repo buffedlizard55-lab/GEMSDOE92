@@ -252,7 +252,13 @@ def rc_md_section(rc: dict, pre: str) -> str:
 > - **All 3 arms (`negative`, research only):** [`relay_conduit`]({pre + s_rc['file_zeros'].removeprefix('docs/')}) ([ZIP]({pre + s_rc['file_zip'].removeprefix('docs/')}) · [audit]({pre + s_rc['file_audit'].removeprefix('docs/')})) · [`relay_delta`]({pre + s_rd['file_zeros'].removeprefix('docs/')}) ([ZIP]({pre + s_rd['file_zip'].removeprefix('docs/')}) · [audit]({pre + s_rd['file_audit'].removeprefix('docs/')})) · [`conduit_notip`]({pre + s_cn['file_zeros'].removeprefix('docs/')}) ([ZIP]({pre + s_cn['file_zip'].removeprefix('docs/')}) · [audit]({pre + s_cn['file_audit'].removeprefix('docs/')}))."""
 
 
+def _guard_current_submission(c):
+    if c.get("ok_to_submit") is not False:
+        raise ValueError("literal registry pre-placement STOP blocks historical renderer promotion")
+
+
 def html_block(c, pre, rc=None, cl=None):
+    _guard_current_submission(c)
     f = facts(c)
     e = html.escape
     tif = pre + c["file"].removeprefix("docs/")
@@ -292,6 +298,7 @@ def html_block(c, pre, rc=None, cl=None):
 
 
 def md_block(c, pre, rc=None, cl=None):
+    _guard_current_submission(c)
     f = facts(c)
     tif = pre + c["file"].removeprefix("docs/")
     zp = pre + c["zip"].removeprefix("docs/")

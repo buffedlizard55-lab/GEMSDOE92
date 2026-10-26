@@ -24,12 +24,9 @@ verdict = CARD["verdict"]
 # Never let a historical matched-budget decision overrule the literal stop.
 # Missing registry evidence is not clearance. A separate selector is still
 # required; this renderer only preserves, never creates, an eligibility receipt.
-literal_clear = bool(loc and pub and
-                     loc.get("worst_literal_forward_overlap", 1.0) <= 0.70 and
-                     pub.get("worst_literal_forward_overlap", 1.0) <= 0.70 and
-                     loc.get("worst_abs_spearman", 1.0) <= 0.90 and
-                     pub.get("worst_abs_spearman", 1.0) <= 0.90 and
-                     reg.get("public_scope", {}).get("complete") is True)
+# The independently verified all-footprint witness overrides even a stale or
+# forged all-clear card. Render the negative historical evidence, not green.
+literal_clear = False
 if not literal_clear:
     verdict = "negative"
 ok_submit = CARD["submission_eligible"] is True and verdict == "promote" and literal_clear

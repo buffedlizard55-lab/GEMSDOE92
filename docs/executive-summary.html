@@ -9,22 +9,22 @@
 <body>
 <!-- VARIO-STATUS:BEGIN -->
 <section id="vario-status" aria-label="Authoritative submission status" style="max-width:70rem;margin:1rem auto;padding:1.25rem;border:3px solid #991b1b;border-radius:12px;background:#fff7ed;color:#292524;font:1rem/1.6 system-ui,sans-serif;overflow-wrap:anywhere">
-<h1 style="margin-top:0">GEMSDOE92 VARIO — new byte-unique GeoTIFF generated; registry-uniqueness gate FAILED</h1>
+<h1 style="margin-top:0">GEMSDOE92 VARIO — historical research GeoTIFF; registry-uniqueness gate FAILED</h1>
 <p><strong>✅ OK TO DOWNLOAD FOR RESEARCH · ⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT</strong></p>
 <p><a class="btn" href="downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif" data-primary="true" download style="display:inline-block;padding:.8rem 1.1rem;background:#1e3a5f;color:#fff;border-radius:6px;font-weight:700">⬇ Download gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif (.tif)</a>
 · <a href="downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.zip" download>one-TIFF ZIP</a>
 · <a href="vario.html"><strong>Executive summary — exactly how to submit</strong></a>
 · <a href="downloads/vario_run_card.json">JSON run card</a>
 · <a href="downloads/readiness.json">machine-readable status</a></p>
-<p>Submission name: <code>GEMSDOE92-VARIO-full-20261025</code><br>
-Note for the DrivenData form (72/140 chars): <code>VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat&gt;2</code><br>
+<p>Historical name (do not upload): <code>GEMSDOE92-VARIO-full-20261025</code><br>
+Historical note (72/140 chars): <code>VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat&gt;2</code><br>
 SHA-256: <code>11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573</code> · 37,654 dots · single band float32 · EPSG:32611 · 3730×3292</p>
-<p><strong>Automated validation (no human pixel inspection):</strong> every cell finite and in [0, 1] — this is the
-check behind the portal error <q>Predicted values must be in range [0, 1]</q> — no NaN inside the footprint,
-zeros outside, CRS/shape/transform byte-matched to the sample submission, 0 dots on the mapped catalogue,
+<p><strong>Automated validation (no human pixel inspection):</strong> every cell finite and in [0, 1] — a local check relevant to the portal error
+<q>Predicted values must be in range [0, 1]</q>, not a guarantee of portal acceptance — no NaN inside the footprint,
+zeros outside, CRS/shape/transform matched to the sample submission, 0 dots on the mapped catalogue,
 all dots &gt;2 px from it. Gates are re-derived from the downloaded bytes by <code>scripts/check_site.py</code>.</p>
-<p><strong>HOLDOUT-DTI</strong> (gems57-pooled-hide-v2, 22663 withheld positives,
-strict draw-blind whole-component holdout): primary <code>0.150020 [0.134975, 0.164286]</code>;
+<p><strong>Historical reported HOLDOUT-DTI</strong> (gems57-pooled-hide-v2, 22663 withheld positives,
+whole-component holdout; not independently rerun in this review): primary <code>0.150020 [0.134975, 0.164286]</code>;
 best same-draw control <code>control_FAULTNET_far</code>; paired Δ <code>-0.025127 [-0.029306, -0.020842]</code>.
 Leakage canaries: max symmetric AUC <code>0.77748</code> (limit 0.90).
 This is a local surrogate, <strong>not</strong> an organizer score; no ORGANIZER-CONFIRMED score exists for this file.</p>
@@ -40,35 +40,30 @@ Pre-registration: <a href="HYPOTHESES_20261025_VARIO.md">hypotheses</a> ·
 analysis: <a href="ANALYSIS_20261025_VARIO.md">why R0 scored 0.2778 [CLAIM] and what VARIO changes</a>.</p>
 </section>
 <!-- VARIO-STATUS:END -->
+<!-- REVIEW-14F85876:BEGIN -->
+<section aria-label="Latest independent evidence review" style="max-width:70rem;margin:1rem auto;padding:1rem 1.2rem;border:3px solid #991b1b;border-radius:10px;background:#fff7ed;font:1rem/1.55 system-ui,sans-serif">
+<h2>26 October review — no submission eligible</h2>
+<p><strong>⛔ DO NOT SUBMIT.</strong> The pinned public witness is positive on all 5,167,373 finite template cells: every nonempty candidate has literal overlap 1.000 &gt; 0.70. No new TIFF, experiment, holdout result or slot was generated in this review.</p>
+<p>GEMSDOE32's 0.2778 is an owner <strong>CLAIM</strong>, not an organizer receipt; no defensible leaderboard estimate is available for the research files. The prior claim-trained model's row-wise error is not a per-file uncertainty interval. An independent 2-D recheck corrected overlap values in 35 of 36 site pairs; all duplicate decisions are unchanged.</p>
+<p><a href="focus9.html"><strong>Nine-site executive summary, research downloads and conditional submission guide</strong></a> · <a href="downloads/review_14f85876_run_card.json">review run card</a> · <a href="downloads/score_estimator_audit_14f85876.json">model audit</a> · <a href="HYPOTHESES_20261026_SITE_REVIEW.md">ranked hypotheses</a></p>
+<p data-official-leaderboard>Official public #1: 0.4437; observed 2026-10-26 UTC. Snapshot only; not a project receipt.</p>
+<p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Official leaderboard</a>; automated refresh may be delayed or unavailable. <a href="downloads/live_leaderboard.json">Feed and timestamp</a>.</p>
+<script src="leaderboard-feed.js" defer></script>
+</section>
+<!-- REVIEW-14F85876:END -->
+<details id="historical-research-archive"><summary>Historical experiments and downloads — not current clearance</summary>
 <aside aria-label="Independent high-score site review" style="max-width:70rem;margin:0 auto 1rem;padding:1rem 1.25rem;border:2px solid #a16207;border-radius:10px;background:#fffbeb;color:#292524;font:1rem/1.55 system-ui,sans-serif">
   <p><strong>Independent review — 2026-10-26:</strong> The nine requested high-score site artifacts are historical research references, not organizer-confirmed results. All fail pairwise uniqueness against at least one of the other target sites; the literal full-footprint witness independently stops every nonempty candidate. This review created no TIFF, holdout, experiment, or submission clearance. <strong>DO NOT SUBMIT any linked reference.</strong></p>
   <p><strong>Separate concurrent BLINDEXT lane:</strong> its <a href="downloads/gemsdoe92-blindext-20261026T162451Z-zeros.tif">research TIFF</a> is downloadable, but the <a href="downloads/gemsdoe92-blindext-20261026T162451Z_run_card.json">run card</a> records no HOLDOUT-DTI result and a duplicate stop. It is <strong>NOT CLEARED TO SUBMIT</strong>.</p>
   <p><a href="SITE_REVIEW_20261026.html"><strong>Open the site-by-site executive review</strong></a> · <a href="downloads/focus_sites_release_review_20261026.json">download full hashes and 36-pair evidence</a> · <a href="HYPOTHESES_20261026_SITE_REVIEW.md">ranked hypothesis screen</a>.</p>
 </aside>
 
-<section aria-label="SALEMSEISMO 2026-10-26" style="border:4px solid #14532d;background:#f0fdf4;padding:1rem 1.2rem;margin:0 0 1.2rem 0;border-radius:8px;font-family:system-ui,sans-serif">
-  <h2 style="margin-top:0">New 2026-10-26 — lane <code>SALEMSEISMO</code>: new unique GeoTIFF + nine-site executive summary</h2>
-  <p style="font-size:1.12rem;margin:.25rem 0">
-    <span style="background:#14532d;color:#dcfce7;padding:.3rem .65rem;border-radius:4px;font-weight:700">✅ OK TO DOWNLOAD FOR RESEARCH</span>
-    <span style="background:#7f1d1d;color:#fee2e2;padding:.3rem .65rem;border-radius:4px;font-weight:700">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (0 slots spent)</span>
-  </p>
-  <p style="font-size:1.08rem;margin:.6rem 0">
-    <a href="downloads/h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.tif" download style="display:inline-block;padding:.6rem .9rem;background:#1e3a5f;color:#fff;border-radius:6px;font-weight:700;text-decoration:none">⬇ Download h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.tif</a>
-    &nbsp;·&nbsp; <a href="downloads/h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.zip" download>one-TIFF ZIP</a>
-    &nbsp;·&nbsp; <a href="downloads/salemseismo_run_card.json">run card</a>
-    &nbsp;·&nbsp; <a href="downloads/salemseismo_uniqueness.json">uniqueness</a>
-    &nbsp;·&nbsp; <a href="focus9.html"><strong>Nine-site executive summary, score estimates &amp; download table</strong></a>
-  </p>
-  <p style="margin:.3rem 0">
-    Est. DTI <b>0.0832 ± 0.0722</b> (MODEL, LOO RMSE; not a score) ·
-    static HOLDOUT-DTI <b>0.015948</b> (previous static SOTA 0.013295) ·
-    Rule-2 <b>0.099345</b> ·
-    worst 3-px overlap <b>0.6447</b> across 1,756 public rasters in 102 repos
-    (0 over 0.70) · 11/11 format gates · 26/26 canaries PASS.
-  </p>
-  <p style="margin:.3rem 0">Sibling arms (research only): <a href="downloads/h33-h33-2-b2-SALEMSEISMOpoint37k-20261026-fe2567c1-zeros.tif" download>point37k</a> ·
-  <a href="downloads/h33-h33-2-b2-SALEMSEISMOcelf37k-20261026-3c4f585f-zeros.tif" download>celf37k</a>.
-  Sanity: <code>python3 validate_submission.py docs/downloads/h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.tif</code> → FORMAT PASS.</p>
+<section aria-label="SALEMSEISMO 2026-10-26" style="border:3px solid #991b1b;background:#fff7ed;padding:1rem;margin:1rem;border-radius:8px">
+<h2>Historical SALEMSEISMO — research only</h2>
+<p><strong>DO NOT SUBMIT.</strong> Its literal registry overlap is 1.000; a sparse or matched-budget diagnostic is not clearance. Its historical runner scanned after placement and checked rank correlations only for selected witnesses. A prior fast halo could wrap at row edges. Static re-scores are not necessarily leakage-free.</p>
+<p><a href="downloads/h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.tif" download>Download historical SALEMSEISMO research TIFF</a> · <a href="downloads/salemseismo_run_card.json">historical run card</a> · <a href="focus9.html">corrected nine-site review</a> · <a href="downloads/review_14f85876_run_card.json">independent correction</a>.</p>
+<p>Historical siblings, research only: <a href="downloads/h33-h33-2-b2-SALEMSEISMOpoint37k-20261026-fe2567c1-zeros.tif">point37k</a> · <a href="downloads/h33-h33-2-b2-SALEMSEISMOcelf37k-20261026-3c4f585f-zeros.tif">celf37k</a>.</p>
+<p>No defensible leaderboard estimate or calibrated individual prediction interval is available. The research runner is disabled.</p>
 </section>
 <!-- CURRENT:BEGIN -->
 <section aria-label="THERMOTILT experimental review" style="border:3px solid #991b1b;padding:1rem;margin:1rem"><h2>26 October: THERMOTILT — research only, DO NOT SUBMIT</h2><p>Three byte-distinct rasters passed local format checks but did not establish a high-scoring or protocol-unique submission. Nested-OOF and pre-placement check-order defects prevent promotion. No leaderboard estimate is available.</p><p><a href="thermotilt.html">Nine-site executive evidence review and downloads</a> · <a href="downloads/thermotilt_run_card.json">Run card and limitations</a></p><a download href="downloads/gemsdoe92-thermotilt-blind-37654-20261026-8c11022a-zeros.tif">gemsdoe92-thermotilt-blind-37654-20261026-8c11022a-zeros.tif</a> <a download href="downloads/gemsdoe92-thermotilt-graded50k-50000-20261026-36a00875-zeros.tif">gemsdoe92-thermotilt-graded50k-50000-20261026-36a00875-zeros.tif</a> <a download href="downloads/gemsdoe92-thermotilt-distal-37654-20261026-a0907c10-zeros.tif">gemsdoe92-thermotilt-distal-37654-20261026-a0907c10-zeros.tif</a></section>
@@ -168,7 +163,7 @@ analysis: <a href="ANALYSIS_20261025_VARIO.md">why R0 scored 0.2778 [CLAIM] and 
 <p><strong>Independent repository review (2026-10-25): DO NOT SUBMIT any linked current or historical raster.</strong> The literal dense registry witness makes any nonempty submission duplicate under the requested rule. This review used zero new experiments or weekly slots. <a href="REVIEW_20261025_78DB3076.md">Three-pass review, official sources and integration correction</a> · <a href="downloads/session_78db3076_run_card.json">Final JSON rejection card</a> · <a href="HYPOTHESES_20261025_78DB3076.md">Conditional research shortlist</a>.</p>
 </aside>
 
-<details id="historical-research-archive"><summary>Historical experiments and downloads — not current clearance</summary>
+
 <!-- RIEDELVALVE:BEGIN -->
 <aside id="riedelvalve-banner-exec-summary" class="banner banner-warn" aria-label="RIEDELVALVE executive summary status" style="border:2px solid #7f1d1d;">
   <p><strong>Parallel session (2026-10-25) — lane <code>RIEDELVALVE</code> (Riedel $R/R'$ + Bimodal $\sqrt{\lambda_1\lambda_2}$ + 3DEP-10m + Knickzone + INGENIOUS Vents + Additive <code>@0.30</code> N90K Tail):</strong> ✅ OK TO DOWNLOAD FOR RESEARCH (<code>11/11</code> automated format gates PASS in <code>[0, 1]</code>, <code>0</code> NaN, prevents <code>Predicted values must be in range [0, 1]</code> error) · ⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (<code>verdict: negative</code>, <code>submission_eligible: false</code> under literal 17GEMSDOE dense witness <code>1.000 &gt; 0.70</code> &amp; static <code>0.009054 &lt; LISTRICLOQO 0.013295</code>; <code>dual_reading_unique = True</code> at <code>0.6384 &le; 0.70</code> across <code>102</code> repos; top-2 <code>dual_reading_unique</code> LOQO <code>USGS SGMC PROXY = 0.112719</code>; Rule-2 <code>HOLDOUT-DTI = 0.108593 [0.095583, 0.120981]</code>).</p>

@@ -18,6 +18,7 @@ EVIDENCE = ROOT / "evidence/focus_sites_release_review_20261026.json"
 MARKDOWN = ROOT / "docs/SITE_REVIEW_20261026.md"
 HTML = ROOT / "docs/SITE_REVIEW_20261026.html"
 PUBLIC_JSON = ROOT / "docs/downloads/focus_sites_release_review_20261026.json"
+RECHECK = ROOT / "docs/downloads/focus9_pairwise_recheck_14f85876.json"
 
 
 def _e(value: object) -> str:
@@ -28,17 +29,36 @@ def _pct(value: float) -> str:
     return f"{100.0 * float(value):.2f}%"
 
 
+def _corrected_witness(site: str) -> tuple[str, float, float]:
+    """Use the independently recomputed 2-D Euclidean overlaps, not the old receipt."""
+    review = json.loads(RECHECK.read_text(encoding="utf-8"))
+    if review.get("pairs") != 36 or review.get("all_pairs_duplicate_in_at_least_one_direction_or_rho") is not True:
+        raise ValueError("pairwise correction is incomplete")
+    found = []
+    for p in review["comparisons"]:
+        if p["site_a"] == site:
+            found.append((p["forward_3px_overlap_a_to_b"], p["site_b"], abs(p["spearman_binary_support_phi"])))
+        elif p["site_b"] == site:
+            found.append((p["forward_3px_overlap_b_to_a"], p["site_a"], abs(p["spearman_binary_support_phi"])))
+    if len(found) != 8:
+        raise ValueError("pairwise correction missing a site")
+    overlap, peer, rho = max(found)
+    if overlap <= 0.70 and rho <= 0.90:
+        raise ValueError("site does not have a rejecting witness")
+    return peer, overlap, rho
+
+
 def _row_md(site: dict) -> str:
     ref = site["comparison_reference"]
-    unique = site["uniqueness_vs_other_eight"]
+    peer, overlap, rho = _corrected_witness(site["site"])
     provenance = "CLAIM — no organizer receipt"
     link = f"[research TIFF]({ref['raw_download_url']})"
     if site["reported_artifact"]["sha256"] != ref["sha256"]:
         link += f" · [reported encoding]({site['reported_artifact']['raw_download_url']})"
     witness = (
-        f"NO — vs {unique['strongest_witness_site']}: "
-        f"{_pct(unique['candidate_to_witness_overlap_3px'])} within 3 px; "
-        f"|ρ|={unique['abs_binary_support_rank_correlation']:.4f}"
+        f"NO — vs {peer}: "
+        f"{_pct(overlap)} within 3 px; "
+        f"|ρ|={rho:.4f}"
     )
     return (
         f"| {site['site']} | {site['reported_submission_name']} | "
@@ -62,6 +82,8 @@ def render_markdown(data: dict) -> str:
 
 > **NO NEW TIFF WAS GENERATED. DO NOT SUBMIT ANY FILE FROM THIS REVIEW.** The public source rasters below are downloadable for research, but none is a new unique candidate and none is cleared for a competition slot. The pinned literal witness covers all {data['protocol']['footprint_cells']:,} finite sample-footprint cells; every nonempty in-footprint candidate therefore has 100% overlap, above the binding 70% stop.
 
+> **Numerical correction (later 26 October review):** independent 2-D Euclidean recalculation found differences in 35 of 36 pairs; all 36 duplicate decisions are unchanged. The table below uses the corrected numbers. The [original JSON](downloads/focus_sites_release_review_20261026.json) retains its historical values; the [recheck JSON](downloads/focus9_pairwise_recheck_14f85876.json) supersedes those overlaps. The source of the discrepancies is not established.
+
 **Executive brief:** [open the web summary](SITE_REVIEW_20261026.html) · [download complete JSON evidence](downloads/focus_sites_release_review_20261026.json) · [ranked hypothesis screen](HYPOTHESES_20261026_SITE_REVIEW.md).
 
 ## Decision and evidence boundary
@@ -80,7 +102,7 @@ Upstream main (`{data['current_upstream_main_context']['verified_main_commit'][:
 
 The local pinned R0 bytes match the public GEMSDOE32 zero-outside file (SHA-256 `{top['raster_sha256']}`). The verified support lineage is `{top['local_lineage']}`. R0 is therefore the strongest *learning reference* among the claims supplied here, not a verified contest winner and not a unique raster.
 
-A plausible mechanism is that the competition's distance-weighted Tversky metric uses a 300 m triangular kernel, with false-positive mass weighted by `α=0.2` and false negatives by `β=0.8`. Poisson-like thinning can remove redundant prediction mass where nearby dots already saturate truth credit; removing dots within two pixels of mapped catalogue faults can reallocate predictions away from known traces. That is consistent with the raster lineage, but it is **not causal proof**: the hidden truth and a score-to-file organizer receipt are unavailable. The local review does not estimate what R0 would score.
+A plausible mechanism is that the competition's distance-weighted Tversky metric uses a 300 m triangular kernel, with false-positive mass weighted by `α=0.2` and false negatives by `β=0.8`. Poisson-like thinning can remove redundant prediction mass where nearby dots already saturate truth credit. The lineage also removes dots within two pixels of mapped catalogue faults, but [DrivenData staff](https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/2) say known USGS/INGENIOUS fault pixels are excluded from evaluation; the effect of an additional collar is unknown. This is **not causal proof**: hidden truth and a score-to-file receipt are unavailable. The local review does not estimate what R0 would score.
 
 ### How the other approaches differ
 
@@ -102,7 +124,7 @@ The pairwise check used candidate-directed 3-pixel overlap and binary-support ra
 
 ## Leaderboard and provenance irregularities
 
-No current official leaderboard or submission-page receipt was verified. The supplied `.4413` and `.3195` snapshots conflict; the current GEMSDOE32 owner-maintained page also reports `.4437`, a secondary-source claim. Treat the current official leader as **unknown**, and do not present any of those values as independently verified. GEMSDOE32's current page explicitly labels `.2778` an owner report and says there is no receipt binding the score to the raster; it also says not to resubmit the file because it is already submitted. That is not a receipt.
+At the time of this earlier review, no official leaderboard or submission-page receipt had been verified. A later 2026-10-26 official-page read observed rank 1 at `.4437`; that changing leaderboard snapshot is not a project submission receipt. The supplied `.4413` and `.3195` snapshots conflict. GEMSDOE32's page labels `.2778` an owner report and says there is no receipt binding the score to the raster; it also says not to resubmit the file because it is already submitted. That is not a receipt.
 
 ## Submission guidance
 
@@ -134,7 +156,7 @@ def render_html(data: dict) -> str:
     for site in selected:
         ref = site["comparison_reference"]
         report = site["reported_artifact"]
-        unique = site["uniqueness_vs_other_eight"]
+        peer, overlap, rho = _corrected_witness(site["site"])
         original_link = ""
         if report["sha256"] != ref["sha256"]:
             original_link = (
@@ -142,9 +164,9 @@ def render_html(data: dict) -> str:
                 f'title="Reported source encoding; research only">Reported source encoding</a></div>'
             )
         witness = (
-            f"<strong>NO</strong> — { _e(unique['strongest_witness_site']) }: "
-            f"{_pct(unique['candidate_to_witness_overlap_3px'])} of candidate dots "
-            f"within 3 px (limit 70%); |ρ|={unique['abs_binary_support_rank_correlation']:.4f}."
+            f"<strong>NO</strong> — {_e(peer)}: "
+            f"{_pct(overlap)} of candidate dots "
+            f"within 3 px (limit 70%); |ρ|={rho:.4f}."
         )
         rows.append(
             "<tr>"
@@ -189,6 +211,7 @@ def render_html(data: dict) -> str:
   <aside class="decision" aria-label="Binding submission status">
     <h1>Highest reported GEMSDOE site artifacts</h1>
     <p><span class="stop">NO NEW TIFF · DO NOT SUBMIT</span></p>
+    <p class="notice"><strong>Numerical correction:</strong> a later row-safe 2-D recheck changed overlap values for 35 of 36 pairs, while all duplicate decisions remain unchanged. The table uses corrected values. <a href="downloads/focus9_pairwise_recheck_14f85876.json">Corrected measurements</a>; original JSON remains historical. The cause of the earlier discrepancy has not been established.</p>
     <p>This is an auditable review of nine public, historical references. They are <strong>downloadable for research</strong> from their owner repositories, but no artifact is unique under the requested pairwise rule and none is cleared for a competition slot. The pinned literal witness is positive on <strong>{protocol['footprint_cells']:,}/{protocol['footprint_cells']:,}</strong> finite template cells, so any nonempty in-footprint prediction has literal overlap <strong>1.000 &gt; 0.70</strong>. No file, holdout score, or experiment was generated in this review.</p>
     <p class="notice"><strong>Separate current-main artifact — BLINDEXT (not part of this review):</strong> upstream main ({_e(data['current_upstream_main_context']['verified_main_commit'][:7])}) contains a concurrent <a href="downloads/{_e(Path(data['current_upstream_main_context']['artifact_path']).name)}">research TIFF</a> (SHA-256 <code>{_e(data['current_upstream_main_context']['artifact_sha256'])}</code>; <a href="downloads/{_e(Path(data['current_upstream_main_context']['run_card_path']).name)}">run card</a>). Its run card records one experiment, no HOLDOUT-DTI result, a duplicate stop (literal overlap 1.000 and |ρ|=1.000), zero slots, and no submission clearance. It is downloadable for research only; do not upload it. This review did not create or holdout-evaluate it.</p>
     <p><a href="downloads/focus_sites_release_review_20261026.json"><strong>Download complete machine-readable comparison, hashes, source commits, format gates, and all 36 pair results</strong></a> · <a href="HYPOTHESES_20261026_SITE_REVIEW.md">Ranked untried hypothesis screen</a></p>
@@ -196,14 +219,14 @@ def render_html(data: dict) -> str:
   <section aria-labelledby="exec"><h2 id="exec">Executive conclusion</h2>
     <div class="summary-grid">
       <article><strong>Strongest reported reference</strong><br>{_e(top['site'])} <code>{_e(top['submission_name'])}</code>, <strong>{top['score_claim']:.4f} CLAIM</strong>; no organizer receipt.</article>
-      <article><strong>Current official leaderboard</strong><br>Unknown. User snapshots {', '.join(str(x['score']) for x in data['leaderboard_claims']['conflicting_unverified_claims'][:2])} conflict; an owner page reports {_e(data['leaderboard_claims']['conflicting_unverified_claims'][2]['score'])} but is secondary.</article>
+      <article><strong>Official leaderboard snapshot</strong><br>Rank 1: 0.4437, read 2026-10-26; it can change and is not a project receipt. The user-provided {', '.join(str(x['score']) for x in data['leaderboard_claims']['conflicting_unverified_claims'][:2])} snapshots conflict.</article>
       <article><strong>Research download</strong><br>Yes — owner-published reference TIFFs. Do not mistake them for a new GEMSDOE92 candidate.</article>
       <article><strong>Submission clearance</strong><br><span class="stop">NONE</span> · No weekly slot used; separate human selector required.</article>
     </div>
   </section>
   <section aria-labelledby="reference"><h2 id="reference">Why GEMSDOE32 / R0 is the best reference among these claims</h2>
     <p>The public GEMSDOE32 <code>h33-h33-2-b2</code> zero-outside raster matches the locally pinned R0 bytes (SHA-256 <code>{_e(top['raster_sha256'])}</code>). Verified lineage: {_e(top['local_lineage'])}</p>
-    <p><strong>Plausible mechanism, not causal proof:</strong> under the project's vendored DTI definition, a 300 m triangular kernel weights false positives by α=0.2 and false negatives by β=0.8. Thinning can remove redundant false-positive mass while retaining nearby truth credit; a &gt;2-pixel catalogue collar can avoid spending predictions on mapped faults. Hidden truth and an organizer score-to-file receipt are absent, so this is a mechanistic explanation only.</p>
+    <p><strong>Plausible mechanism, not causal proof:</strong> under the project's vendored DTI definition, a 300 m triangular kernel weights false positives by α=0.2 and false negatives by β=0.8. Thinning can remove redundant false-positive mass while retaining nearby truth credit. <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/2">DrivenData staff say</a> known USGS/INGENIOUS fault pixels are excluded from evaluation; the effect of a surrounding catalogue collar is unknown. Hidden truth and a score-to-file receipt are absent, so this is only a mechanism hypothesis.</p>
     <p>Methods diverge from the denser 1.5-pixel H19-5 thinning (GEMSDOE24), the gap-closure extension (GEMSDOE27), the 1-pixel catalogue collar (GEMSDOE31), the exact R0 2-pixel collar (GEMSDOE32), and the Anderson PINN superset (GEMSDOE36). GEMSDOE25 and GEMSDOE30 are identical in-footprint masks despite different file hashes. The complete identities and measurements are in the JSON.</p>
   </section>
   <section aria-labelledby="table"><h2 id="table">Site-by-site table</h2>
@@ -213,19 +236,19 @@ def render_html(data: dict) -> str:
   </section>
   <section aria-labelledby="provenance"><h2 id="provenance">Provenance conflicts and irregularities</h2>
     <ul><li>GEMSDOE32's current owner page labels 0.2778 an owner report, with no submission-page receipt binding score to raster; it says the file was already submitted and not to resubmit.</li>
-      <li>The prompt's .4413 and .3195 leaderboard snapshots conflict. GEMSDOE32's owner page reports .4437 as a public-page leader. No live organizer page was accessed, so the current official leader is not asserted.</li>
+      <li>The prompt's .4413 and .3195 snapshots conflict. No live organizer page was accessed in the earlier review; a later official-page read on 2026-10-26 observed .4437 at rank 1. This is a changing public snapshot, not a project receipt.</li>
       <li>GEMSDOE33's owner-maintained “receipt” JSON contains an expected DTI range, not a score receipt; its note-length field is 158 characters (&gt;140).</li>
       <li>All 17 public TIFF variants were retrieved via GitHub blobs; Git blob SHA-1 and SHA-256 were verified. Each main-branch tree was rechecked at the commit pinned in the evidence JSON.</li></ul>
   </section>
   <section aria-labelledby="submit"><h2 id="submit">Submission guidance</h2>
     <p class="notice"><strong>Do not upload any file linked on this page.</strong> No linked artifact is cleared. For a future artifact only after the page explicitly says “OK TO SUBMIT”:</p>
-    <ol><li>Use the exact cleared TIFF; automatically reopen it and validate single-band float32, EPSG:32611, 3730×3292, exact transform, finite values in [0,1], no NaNs in footprint, and required zero-outside encoding.</li>
+    <ol><li>Use the exact cleared TIFF; automatically reopen it and validate single-band float32, EPSG:32611, 3730×3292, exact transform, and finite values in [0,1] inside the footprint. Local zero-outside-footprint gates are not proof of the official null/NaN-outside-study-bounds requirement or portal acceptance.</li>
       <li>Run the unchanged pre-placement and final-dot uniqueness checks; stop if |ρ| &gt; 0.90 or &gt;70% of candidate dots fall within 3 pixels of any registry raster.</li>
       <li>Use a distinct submission name and an optional note of at most 140 characters. Do not use a research-only file.</li>
       <li>Only a human selector may choose a weekly slot. After clearance, upload through the official <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData submissions page</a> and preserve the actual organizer receipt, binding it to the uploaded file's SHA-256.</li></ol>
   </section>
   <section aria-labelledby="sources"><h2 id="sources">Official and reference sources</h2>
-    <p>These are source links, not claims of live verification. In this run the sandbox could access GitHub, but not the official competition/data hosts; no current leaderboard, submission receipt, or upstream source page was fetched.</p><ul>{source_items}</ul>
+    <p>These are source links, not proof of data provenance or access. The original review could not fetch the official hosts directly; a later review retrieved the official problem, leaderboard and rules through a web retrieval tool, but obtained no submission receipt or authenticated competition data.</p><ul>{source_items}</ul>
   </section>
   <section><h2>Auditable downloads and status</h2><ul>
     <li><a href="downloads/focus_sites_release_review_20261026.json">Full public JSON evidence</a> (17 variants, 9 selected artifacts, 36 pairwise comparisons, source commits, checksums, and format-gate details).</li>

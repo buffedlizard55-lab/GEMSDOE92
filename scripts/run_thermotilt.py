@@ -155,13 +155,9 @@ def scan_local_and_focus_registry(
     exclude_substr: str = "THERMOTILT",
 ) -> dict[str, dict]:
     """Check pre-placement continuous surfaces and final dot allocations against
-    a list of local or focus-site folders using fast 1D integer-offset dilation.
+    a list of local or focus-site folders using the shared row-safe sparse dilation.
     """
     h, w = foot.shape
-    offsets_1d = np.array(
-        [dy * w + dx for dy in range(-3, 4) for dx in range(-3, 4) if dy * dy + dx * dx <= 9],
-        dtype=np.int32,
-    )
     near_lit = np.zeros(h * w, dtype=bool)
     near_mb = np.zeros(h * w, dtype=bool)
 
@@ -205,8 +201,7 @@ def scan_local_and_focus_registry(
                 continue
             label = f"{prefix}/{p.name}"
             sup_idx = np.flatnonzero(sup.ravel()).astype(np.int32)
-            for d in offsets_1d:
-                near_lit[np.clip(sup_idx + d, 0, h * w - 1)] = True
+            U.mark_sparse_near_inplace(near_lit, sup_idx, (h, w), value=True)
 
             tv = vals.ravel()[sub_idx]
             has_var = bool(np.ptp(tv) > 0)
@@ -217,8 +212,7 @@ def scan_local_and_focus_registry(
             else:
                 mb_sup = U.matched_budget_support(vals, foot, N_PRIMARY_DOTS)
                 mb_idx = np.flatnonzero(mb_sup.ravel()).astype(np.int32)
-                for d in offsets_1d:
-                    near_mb[np.clip(mb_idx + d, 0, h * w - 1)] = True
+                U.mark_sparse_near_inplace(near_mb, mb_idx, (h, w), value=True)
                 mb_buf = near_mb
                 rep = "continuous_surface"
 
@@ -251,11 +245,9 @@ def scan_local_and_focus_registry(
                     }
                 )
 
-            for d in offsets_1d:
-                near_lit[np.clip(sup_idx + d, 0, h * w - 1)] = False
+            U.mark_sparse_near_inplace(near_lit, sup_idx, (h, w), value=False)
             if mb_idx is not None:
-                for d in offsets_1d:
-                    near_mb[np.clip(mb_idx + d, 0, h * w - 1)] = False
+                U.mark_sparse_near_inplace(near_mb, mb_idx, (h, w), value=False)
             del vals, sup
 
     out: dict[str, dict] = {}
@@ -311,10 +303,6 @@ def scan_public_102_repos(
     meta = json.loads(str(fs["meta_json"]))
 
     h, w = foot.shape
-    offsets_1d = np.array(
-        [dy * w + dx for dy in range(-3, 4) for dx in range(-3, 4) if dy * dy + dx * dx <= 9],
-        dtype=np.int32,
-    )
     dil_buf = np.zeros(h * w, dtype=bool)
 
     cand_pos_flat = {a: np.flatnonzero((arr > 0).ravel()).astype(np.int32) for a, arr in cand_allocs.items()}
@@ -334,8 +322,7 @@ def scan_public_102_repos(
         fidx = all_idx[offs[i] : offs[i + 1]]
         if fidx.size == 0:
             continue
-        for d in offsets_1d:
-            dil_buf[np.clip(fidx + d, 0, h * w - 1)] = True
+        U.mark_sparse_near_inplace(dil_buf, fidx, (h, w), value=True)
         for a, c_idx in cand_pos_flat.items():
             if m_info["sha256"] == cand_shas.get(a, ""):
                 continue
@@ -347,8 +334,7 @@ def scan_public_102_repos(
                 surf_worst_by_arm[a]["witness"] = m_info["file"]
             if sov > 0.70:
                 surf_worst_by_arm[a]["over70"] += 1
-        for d in offsets_1d:
-            dil_buf[np.clip(fidx + d, 0, h * w - 1)] = False
+        U.mark_sparse_near_inplace(dil_buf, fidx, (h, w), value=False)
 
     out_cands: dict[str, dict] = {}
     for a, rows in rows_by_arm.items():
@@ -474,7 +460,8 @@ def fill_context_and_distal_inplace(
 
 
 def main() -> int:
-    raise SystemExit("STOP: literal registry witness and nested-OOF/check-order defects unresolved; historical runner disabled. See evidence/thermotilt_run_card.json protocol_limitations.")
+    # Nested-OOF/check-order limitations also remain in the historical run card.
+    U.stop_historical_runner("THERMOTILT")
 
 
 def historical_execution_not_authorized() -> int:
@@ -767,10 +754,7 @@ def historical_execution_not_authorized() -> int:
 
     # ---- Step 7: Package GeoTIFFs & Verify 11/11 Format + [0, 1] Gates ----
     log("7. Emitting 3 unique THERMOTILT GeoTIFFs via submission_writer.py & verifying 11/11 gates...")
-    for old_p in DOWNLOADS.glob("*thermotilt*"):
-        old_p.unlink()
-    for old_p in DOWNLOADS.glob("*THERMOTILT*"):
-        old_p.unlink()
+    # Historical artifacts are immutable and must not be deleted or replaced.
 
     rule2_summary_by_cand = {
         a: evaluate_holdout.pooled_summary(rule2_terms, draws=1000, seed=520810, candidate=f"{a}_r2")

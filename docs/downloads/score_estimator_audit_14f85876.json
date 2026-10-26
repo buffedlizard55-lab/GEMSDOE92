@@ -1,0 +1,22 @@
+{
+  "schema": "gemsdoe92-exploratory-claim-model-audit-v1",
+  "source": "evidence/score_estimator_20261026.json",
+  "source_sha256": "4e969b4a2d8ca45520a3985ff363afb236e7d7530e365c6fe5ae1428ae174b69",
+  "training_rows": 107,
+  "target_provenance": "owner-reported CLAIMs; organizer receipts not verified",
+  "grouping": "connected components of same site or identical recorded feature vectors",
+  "groups": 75,
+  "largest_group": 10,
+  "rows_in_multimember_groups": 48,
+  "row_loo_rmse_recomputed": 0.072244,
+  "leave_group_out_rmse": 0.077533,
+  "limitations": [
+    "Recorded descriptors are rounded; identical descriptors do not prove identical rasters.",
+    "Different-vector related descendants can still cross groups; grouping is incomplete.",
+    "The H19 saturation cap was chosen using full-data sweeps; this is not nested CV.",
+    "Both diagnostics use unverified claim labels, not organizer receipts.",
+    "Neither RMSE is a calibrated individual prediction interval or a leaderboard score."
+  ],
+  "valid_leaderboard_prediction": false,
+  "individual_prediction_interval_available": false
+}

@@ -4,22 +4,22 @@
 <body>
 <!-- VARIO-STATUS:BEGIN -->
 <section id="vario-status" aria-label="Authoritative submission status" style="max-width:70rem;margin:1rem auto;padding:1.25rem;border:3px solid #991b1b;border-radius:12px;background:#fff7ed;color:#292524;font:1rem/1.6 system-ui,sans-serif;overflow-wrap:anywhere">
-<h1 style="margin-top:0">GEMSDOE92 VARIO — new byte-unique GeoTIFF generated; registry-uniqueness gate FAILED</h1>
+<h1 style="margin-top:0">GEMSDOE92 VARIO — historical research GeoTIFF; registry-uniqueness gate FAILED</h1>
 <p><strong>✅ OK TO DOWNLOAD FOR RESEARCH · ⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT</strong></p>
 <p><a class="btn" href="downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif" data-primary="true" download style="display:inline-block;padding:.8rem 1.1rem;background:#1e3a5f;color:#fff;border-radius:6px;font-weight:700">⬇ Download gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif (.tif)</a>
 · <a href="downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.zip" download>one-TIFF ZIP</a>
 · <a href="vario.html"><strong>Executive summary — exactly how to submit</strong></a>
 · <a href="downloads/vario_run_card.json">JSON run card</a>
 · <a href="downloads/readiness.json">machine-readable status</a></p>
-<p>Submission name: <code>GEMSDOE92-VARIO-full-20261025</code><br>
-Note for the DrivenData form (72/140 chars): <code>VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat&gt;2</code><br>
+<p>Historical name (do not upload): <code>GEMSDOE92-VARIO-full-20261025</code><br>
+Historical note (72/140 chars): <code>VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat&gt;2</code><br>
 SHA-256: <code>11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573</code> · 37,654 dots · single band float32 · EPSG:32611 · 3730×3292</p>
-<p><strong>Automated validation (no human pixel inspection):</strong> every cell finite and in [0, 1] — this is the
-check behind the portal error <q>Predicted values must be in range [0, 1]</q> — no NaN inside the footprint,
-zeros outside, CRS/shape/transform byte-matched to the sample submission, 0 dots on the mapped catalogue,
+<p><strong>Automated validation (no human pixel inspection):</strong> every cell finite and in [0, 1] — a local check relevant to the portal error
+<q>Predicted values must be in range [0, 1]</q>, not a guarantee of portal acceptance — no NaN inside the footprint,
+zeros outside, CRS/shape/transform matched to the sample submission, 0 dots on the mapped catalogue,
 all dots &gt;2 px from it. Gates are re-derived from the downloaded bytes by <code>scripts/check_site.py</code>.</p>
-<p><strong>HOLDOUT-DTI</strong> (gems57-pooled-hide-v2, 22663 withheld positives,
-strict draw-blind whole-component holdout): primary <code>0.150020 [0.134975, 0.164286]</code>;
+<p><strong>Historical reported HOLDOUT-DTI</strong> (gems57-pooled-hide-v2, 22663 withheld positives,
+whole-component holdout; not independently rerun in this review): primary <code>0.150020 [0.134975, 0.164286]</code>;
 best same-draw control <code>control_FAULTNET_far</code>; paired Δ <code>-0.025127 [-0.029306, -0.020842]</code>.
 Leakage canaries: max symmetric AUC <code>0.77748</code> (limit 0.90).
 This is a local surrogate, <strong>not</strong> an organizer score; no ORGANIZER-CONFIRMED score exists for this file.</p>
@@ -38,18 +38,12 @@ analysis: <a href="ANALYSIS_20261025_VARIO.md">why R0 scored 0.2778 [CLAIM] and 
 <main style="max-width:70rem;margin:1rem auto;padding:0 1rem;font:1rem/1.6 system-ui,sans-serif">
 <h2>Exactly how to make a submission (DrivenData #306)</h2>
 <ol>
-<li><strong>Check the banner above.</strong> It is generated from the byte-bound run card — green only if format,
-leakage-canary, paired holdout and operative-uniqueness gates all pass. No human pixel inspection is involved or needed.</li>
+<li><strong>Check the banner above.</strong> The current artifact is negative. Format, canary and paired-holdout diagnostics cannot override the literal registry stop; a future candidate also requires complete uniqueness checks and the separate selector.</li>
 <li><strong>Stop.</strong> The current verdict is negative; do not upload this file. The steps below document the procedure for a future promoted artifact.</li>
 <li>Open the competition submission form: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData DOE GEMS</a>
 → Submit. Confirm the weekly cap shown there (this repo cannot see your remaining slots).</li>
-<li><strong>File to submit:</strong> choose <code>gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif</code> (single-band GeoTIFF, or the .zip containing only it).</li>
-<li><strong>Note (optional) field:</strong> paste exactly: <code>VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat&gt;2</code> (72/140 characters).
-Use <code>GEMSDOE92-VARIO-full-20261025</code> as your own reference name for this submission.</li>
-<li>Submit once (selector step). After the portal scores it, record the receipt score + date against
-SHA-256 <code>11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573</code> in <code>ledger/submissions.csv</code> — only that receipt makes a
-score ORGANIZER-CONFIRMED. The portal range check ("Predicted values must be in range [0, 1]") is pre-verified
-locally: all 12,279,160 cells are finite, min 0.0, max 1.0, no nodata sentinel.</li>
+<li>For a future cleared artifact only: use its exact byte-verified filename and its own name and note of at most 140 characters. The historical VARIO filename and fields above are not instructions to submit it.</li>
+<li>Only the separate selector can choose a weekly slot. Record any organizer receipt, its date and the uploaded file SHA-256 in <code>ledger/submissions.csv</code>. Local finite-range checks do not establish portal acceptance.</li>
 </ol>
 <h2>Why this file exists (one paragraph)</h2>
 <p>Buried/off-catalogue Great Basin faults are recoverable by adding three previously unused catalogue-free families — RTP directional semivariogram anisotropy (lags 2/4 px), MT conductivity change-point at constant basement cover, and USGS 3DEP 10 m sub-pixel scarp/chi statistics — to the proven COULOMBLOQO physics + FAULTNET context LOQO ensemble. Mechanism: 4-quadrant LOQO HistGradientBoosting (12 px guard, 5 px negative buffer) over 38 features; crest-surface localisation; 37,654 spaced (2.8 px) dots with d_visible&gt;2 in holdout / d_cat&gt;2 at deployment; E3 blurs the crest at sigma=1.85 px before emission. Named non-fault mimic: Lava-flow/intrusive contacts and flight-line seams (semivariogram anisotropy); playa/aquifer salinity fronts (MT break at constant cover); Lake Lahontan shoreline berms and fan-age breaks (10 m scarp statistics).</p>
@@ -71,12 +65,11 @@ its operative public overlap was 0.7586 &gt; 0.70, so it was not promotable).</p
 <h2>Evidence boundaries &amp; official sources</h2>
 <ul>
 <li>Competition, metric (α=0.2, β=0.8, 300 m triangular kernel) and format: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">official problem description</a> (fetched 2026-10-25).</li>
-<li>Leaderboard read 2026-10-25: #1 = 0.4413 — <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">official leaderboard</a>.</li>
+<li>Official public leaderboard read 2026-10-26: #1 = 0.4437 (a dated snapshot, not a project receipt); check the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">official leaderboard</a> for changes.</li>
 <li>Reference solution: <a href="https://github.com/drivendataorg/gems-prize-reference-solution">drivendataorg/gems-prize-reference-solution</a>.</li>
 <li>GeoDAWN survey: <a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN</a> · INGENIOUS: <a href="https://gbcge.org/current-projects/ingenious/">GBCGE</a> · GDR #1391: <a href="https://gdr.openei.org/submissions/1391">gdr.openei.org</a> · CRS: <a href="https://epsg.io/32611">EPSG:32611</a>.</li>
-<li>Inputs are SHA-256-pinned GitHub mirrors (registry/session_manifest.json), not organizer-authenticated downloads;
-the sandbox cannot reach DrivenData/USGS directly. Byte identity is verified; official-origin identity is not.</li>
-<li>GEMSDOE32's own page (fetched 2026-10-25) labels h33-2-b2 UNSCORED / projected 0.2747 (a model); the brief's 0.2778 is a CLAIM with no receipt in this repo's ledger. See <a href="ANALYSIS_20261025_VARIO.md">analysis</a>.</li>
+<li>Inputs are SHA-256-pinned GitHub mirrors (registry/session_manifest.json), not organizer-authenticated downloads. The official data and submission pages require login. Byte identity is verified; official-origin identity is not.</li>
+<li>GEMSDOE32's owner reports h33-h33-2-b2 at 0.2778; it remains a CLAIM without a submission-page receipt binding the score to the raster. See the <a href="focus9.html">nine-site review</a>.</li>
 </ul>
 <p><a href="index.html">← Workbench home</a> · <a href="downloads/vario_run_card.json">run card (JSON)</a></p>
 </main></body></html>

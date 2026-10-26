@@ -13,6 +13,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CARD = json.loads((ROOT / "evidence/poissonflex_run_card.json").read_text())
+# This is a historical renderer, not an authorized selector. A promoted or
+# missing eligibility flag cannot override the published literal witness.
+if CARD.get("submission_eligible") is not False:
+    raise ValueError("literal registry pre-placement STOP blocks historical renderer promotion")
 HOLD = json.loads((ROOT / "evidence/poissonflex_holdout.json").read_text())
 
 best = CARD["primary_arm"]
