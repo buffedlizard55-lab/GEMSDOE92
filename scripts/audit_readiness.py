@@ -103,7 +103,9 @@ def audit(root: Path, witness: Path) -> dict:
         'submission_name': status['submission_name'],
         'note': status['note'],
         'verdict': 'negative', 'submission_eligible': False,
-        'new_unique_tiff_generated': bool(status.get('new_unique_tiff_generated', False)), 'experiments': int(status.get('experiments_this_session', 0)), 'weekly_slots_used': int(status.get('weekly_slots_used_this_session', 0)),
+        'new_unique_tiff_generated': False,  # This audit is rejection-only; never inherit session activity.
+        'experiments': 0,
+        'weekly_slots_used': 0,
         'organizer_confirmed_score': None,
         'limitations': status.get('blocking_reasons', []),
         'input_sha256': status.get('input_sha256') or {
