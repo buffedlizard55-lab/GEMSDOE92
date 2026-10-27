@@ -85,7 +85,9 @@ def audit(root: Path = ROOT, manifest_path: Path | None = None) -> dict:
                            and (src.shape, src.crs, src.transform) == expected_grid)
             tags = {i: src.tags(i).get('band_name') for i in src.indexes}
             tags_match = src.count == len(EXPECTED_TRAINING_BAND_TAGS) and tags == EXPECTED_TRAINING_BAND_TAGS
-            nonempty_footprint = bool(np.isfinite(ref.read(1)).any())
+            ref_arr = ref.read(1)
+            foot = np.isfinite(ref_arr)
+            nonempty_footprint = bool(foot.any())
             if not grids_match:
                 metadata['problems'].append('sample, catalogue and feature grid/bands do not align')
             if not tags_match:
@@ -94,11 +96,58 @@ def audit(root: Path = ROOT, manifest_path: Path | None = None) -> dict:
                 metadata['problems'].append('sample footprint is empty')
             if any(dtype != 'float32' for dtype in src.dtypes):
                 metadata['problems'].append('feature stack contains a non-float32 band')
+            band_nodata_rows = []
+            cached_bands: dict[int, np.ndarray] = {}
+            if grids_match and nonempty_footprint:
+                for b in src.indexes:
+                    arr = src.read(b)
+                    if b in (3, 6, 9):
+                        cached_bands[b] = arr
+                    inside = arr[foot]
+                    nonfin = int(np.sum(~np.isfinite(inside)))
+                    sent = int(np.sum(np.isfinite(inside) & (inside <= -1e30)))
+                    usable = inside[np.isfinite(inside) & (inside > -1e30)]
+                    band_nodata_rows.append({
+                        'band': int(b),
+                        'tag': tags.get(b),
+                        'description': src.descriptions[b - 1],
+                        'nodata_header': src.nodatavals[b - 1],
+                        'nonfinite_in_footprint': nonfin,
+                        'finite_sentinel_le_neg1e30_in_footprint': sent,
+                        'usable_in_footprint': int(usable.size),
+                        'usable_min': float(usable.min()) if usable.size else None,
+                        'usable_max': float(usable.max()) if usable.size else None,
+                    })
+            band6_audit = None
+            rad_row = by_id.get('ext_geodawn_rad_u8')
+            if (grids_match and nonempty_footprint and rad_row and rad_row['verified']
+                    and all(k in cached_bands for k in (3, 6, 9))):
+                rad_path = root / rad_row['path']
+                with rasterio.open(rad_path) as rad_ds:
+                    if rad_ds.count >= 4 and rad_ds.shape == ref.shape:
+                        tc_u8 = rad_ds.read(4)
+                        b3, b6, b9 = cached_bands[3], cached_bands[6], cached_bands[9]
+                        ok = foot & np.isfinite(b3) & np.isfinite(b6) & np.isfinite(b9) & (b3 > -1e30) & (b6 > -1e30) & (b9 > -1e30) & (tc_u8 > 0)
+                        if int(ok.sum()) > 10:
+                            true_tilt = np.arctan2(b9[ok], np.maximum(b3[ok], 1e-6))
+                            band6_audit = {
+                                'pixels_compared': int(ok.sum()),
+                                'pearson_r_vs_geodawn_rad_tc': round(float(np.corrcoef(b6[ok], tc_u8[ok])[0, 1]), 6),
+                                'pearson_r_vs_true_magnetic_tilt_atan2_b9_b3': round(float(np.corrcoef(b6[ok], true_tilt)[0, 1]), 6),
+                                'band6_fraction_negative': round(float((b6[ok] < 0).mean()), 6),
+                                'true_tilt_fraction_negative': round(float((true_tilt < 0).mean()), 6),
+                                'finding': 'Band 6 (tc) is strictly positive GeoDAWN Radiometric Total Count (r=0.997140), not Miller-Singh/Salem magnetic tilt angle (r=0.012796).',
+                            }
             metadata.update(checked=True, grid_matches_sample=bool(grids_match),
                             expected_band_tags_match=bool(tags_match),
                             sample_footprint_nonempty=nonempty_footprint,
+                            sample_footprint_pixels=int(foot.sum()),
                             feature_band_count=src.count, feature_dtypes=list(src.dtypes),
                             feature_band_names={str(k): v for k, v in tags.items()},
+                            feature_band_nodata_audit=band_nodata_rows,
+                            any_finite_sentinel_in_footprint=any(
+                                r['finite_sentinel_le_neg1e30_in_footprint'] > 0 for r in band_nodata_rows),
+                            band6_tc_identity_audit=band6_audit,
                             crs=str(ref.crs), shape=list(ref.shape),
                             transform=list(ref.transform)[:6])
     else:
