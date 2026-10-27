@@ -42,6 +42,40 @@ N_SUB = 100_000
 SUB_SEED = 20261025
 
 
+def classify_and_extract_dots(
+    flat: np.ndarray,
+    pos: np.ndarray,
+    dot_field_max: int = DOT_FIELD_MAX,
+    top_k: int = TOP_K,
+) -> tuple[str, np.ndarray, bool, int]:
+    """Classify a positive-support raster without row-major truncating discrete binary lattices.
+
+    Fixes #IR-92-BINARY-LATTICE-WITNESS-AND-TIE-TRUNCATION: a discrete binary/two-level
+    submission with > ``dot_field_max`` positive pixels (e.g. ``13GEMSDOE``
+    ``r13-lattice-s5`` with 206,895 binary ``1.0`` dots) must retain its full positive
+    support rather than having its tied values sliced to the northernmost ``top_k``
+    row-major indices.
+    """
+    pos_vals = flat[pos]
+    distinct = int(min(np.unique(pos_vals[:200_000]).size, 10**6))
+    if distinct <= 2 and pos.size > 200_000:
+        distinct = int(np.unique(pos_vals).size)
+    if pos.size <= dot_field_max:
+        return "dot_field", pos.astype(np.int32), False, distinct
+    if distinct <= 2:
+        return "dense_binary_lattice", pos.astype(np.int32), False, distinct
+    k = min(top_k, pos.size)
+    if k == pos.size:
+        order = np.lexsort((pos, -pos_vals))
+        return "continuous_surface", pos[order].astype(np.int32), False, distinct
+    part = np.argpartition(-pos_vals, k)[:k]
+    cutoff = float(pos_vals[part].min())
+    n_above_or_eq = int(np.sum(pos_vals >= cutoff))
+    tie_truncated = n_above_or_eq > k
+    order = np.lexsort((pos[part], -pos_vals[part]))
+    return "continuous_surface", pos[part][order].astype(np.int32), tie_truncated, distinct
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     apr.CACHE.mkdir(parents=True, exist_ok=True)
@@ -70,51 +104,45 @@ def main() -> int:
 
     meta, ranks, skipped = [], [], []
     for f in fetched:
+        owner = f.get("owner") or apr.OWNER
         if "error" in f:
-            skipped.append(dict(path=f"{f['repo']}/{f['path']}", reason=f["error"][:120]))
+            skipped.append(dict(path=f"{owner}/{f['repo']}/{f['path']}", reason=f["error"][:120]))
             continue
         try:
             with rasterio.open(f["local_path"]) as ds:
                 if ds.count != 1 or (ds.shape, ds.crs, ds.transform) != expected:
-                    skipped.append(dict(path=f"{f['repo']}/{f['path']}", reason="grid/band mismatch"))
+                    skipped.append(dict(path=f"{owner}/{f['repo']}/{f['path']}", reason="grid/band mismatch"))
                     continue
                 v = ds.read(1).astype(np.float32)
         except Exception as exc:  # unreadable/odd encodings are logged, not hidden
-            skipped.append(dict(path=f"{f['repo']}/{f['path']}", reason=str(exc)[:120]))
+            skipped.append(dict(path=f"{owner}/{f['repo']}/{f['path']}", reason=str(exc)[:120]))
             continue
         v = np.nan_to_num(v, nan=0.0, posinf=0.0, neginf=0.0)
         v[~foot] = 0.0
         flat = v.ravel()
         pos = np.flatnonzero(flat > 0)
         if pos.size == 0:
-            skipped.append(dict(path=f"{f['repo']}/{f['path']}", reason="empty in footprint"))
+            skipped.append(dict(path=f"{owner}/{f['repo']}/{f['path']}", reason="empty in footprint"))
             continue
         sha = f["sha256"]
-        if pos.size <= DOT_FIELD_MAX:
-            rep, dots = "dot_field", pos.astype(np.int32)
-        else:
-            rep = "continuous_surface"
-            k = min(TOP_K, pos.size)
-            part = np.argpartition(-flat[pos], k - 1)[:k]
-            order = np.lexsort((pos[part], -flat[pos][part]))  # value desc, index asc (deterministic ties)
-            dots = pos[part][order].astype(np.int32)
+        rep, dots, tie_truncated, distinct_vals = classify_and_extract_dots(flat, pos)
         np.save(OUT / f"dots_{sha}.npy", dots)
         sv = flat[sub].astype(np.float64)
-        r = np.argsort(np.argsort(sv, kind="stable"), kind="stable").astype(np.float64)
-        # average ties properly
         from scipy.stats import rankdata
         r = rankdata(sv)
         r -= r.mean()
         nrm = np.linalg.norm(r)
         ranks.append((r / nrm).astype(np.float32) if nrm > 0 else np.zeros(N_SUB, np.float32))
-        meta.append(dict(repo=f["repo"], branch=f["branch"], path=f["path"], git_sha=f["git_sha"],
+        meta.append(dict(owner=owner, repo=f["repo"], branch=f["branch"], path=f["path"], git_sha=f["git_sha"],
                          sha256=sha, positive_support=int(pos.size), representation=rep,
-                         distinct_values=int(min(np.unique(flat[pos][:200000]).size, 10**6))))
+                         indexed_dots=int(dots.size), tie_truncated=bool(tie_truncated),
+                         distinct_values=distinct_vals))
     np.save(OUT / "ranks.npy", np.stack(ranks) if ranks else np.zeros((0, N_SUB), np.float32))
     doc = dict(built_utc=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), owner=apr.OWNER,
+               owners=list(apr.DEFAULT_OWNERS),
                repos_scanned=len(repos), unique_blobs=len(items), indexed=len(meta),
-               skipped=skipped, tree_errors=[dict(repo=t["repo"], error=t["error"]) for t in trees if t.get("error")],
-               truncated_trees=[t["repo"] for t in trees if t.get("truncated")],
+               skipped=skipped, tree_errors=[dict(owner=t.get("owner") or apr.OWNER, repo=t["repo"], error=t["error"]) for t in trees if t.get("error")],
+               truncated_trees=[f"{t.get('owner') or apr.OWNER}/{t['repo']}" for t in trees if t.get("truncated")],
                dot_field_max=DOT_FIELD_MAX, top_k=TOP_K, n_sub=N_SUB, sub_seed=SUB_SEED, meta=meta)
     (OUT / "meta.json").write_text(json.dumps(doc, indent=1))
     print(f"indexed={len(meta)} skipped={len(skipped)} ({time.time()-t0:.0f}s)", flush=True)

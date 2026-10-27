@@ -420,3 +420,21 @@ Rule basis: official rules §3.2 ("indicate in the narrative (not included in th
 - Decide D1–D5 (see the review doc).
 - Write the submission narrative that states the extent and manner of generative-AI use, as §3.2 requires. This log can be cited but does not replace it.
 - Confirm any submission file against the DrivenData upload page. The sandbox has no login, so this has not been verified from here.
+
+---
+
+## Session — multi-owner fleet, dual-witness & 19-band data-integrity audit (`2026-10-27`, branch `arena/d30d387c-gemsdoe92`)
+
+Rule basis: DOE/NLR *GEMS Prize Official Rules* §3.2 (<https://docs.nlr.gov/docs/fy26osti/96647.pdf>: *"indicate in the narrative (not included in the word count) the extent to which, if any, you used generative AI technology and how you used it"*).
+
+### What AI wrote or updated
+- Upgraded shared audit/scanner code in place: `scripts/audit_input_cache.py` (interior finite `-3.4028235e+38` NoData sentinel and `Band 6 tc` identity audit), `scripts/audit_public_registry.py` (5-owner GitHub fleet support and `_is_submission_tif_path` non-standard subpath coverage), and `scripts/build_public_registry_index.py` (`classify_and_extract_dots` fixing `DOT_FIELD_MAX = 200,000` tie-truncation on `{0, 1}` binary lattices).
+- Added forensic scripts and evidence receipts: `scripts/audit_fleet_20261027.py`, `scripts/render_review_d30d387c.py`, `evidence/review_d30d387c_preflight.json`, `evidence/input_cache_d30d387c.json` (`docs/downloads/input_cache_d30d387c.json`), `evidence/fleet_20261027_audit_d30d387c.json` (`docs/downloads/fleet_20261027_audit_d30d387c.json`), `docs/downloads/review_d30d387c_run_card.json`, and `ledger/site_scores_claimed_20261027.csv`.
+- Authored `docs/HYPOTHESES_20261027_D30D387C.md` (5 untried geological hypotheses) and `docs/REVIEW_20261027_D30D387C.md`, updated `docs/focus9.html`, review banners, `README.md`, `SESSION_PROMPT.md`, `IRREGULARITIES.md`, and regression tests (`tests/test_review_d30d387c.py`).
+
+### What AI did not do
+- Generated zero new submission GeoTIFFs, fitted zero new models, spent zero weekly submission slots, and made zero automated requests to `drivendata.org`.
+
+### What the human competitor must still do
+- Resolve the dual-witness policy (`17GEMSDOE` continuous surface and `13GEMSDOE` binary-dot lattice) and assign `[PASTE ONE PARAGRAPH]` before authorizing any new experimental lane.
+- Include the required §3.2 generative-AI narrative disclosure in any future final Phase 1 / Phase 2 submission package.

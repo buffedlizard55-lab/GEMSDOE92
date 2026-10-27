@@ -31,37 +31,88 @@ from gems57 import grid as grid_mod  # noqa: E402
 from vendor.gems57.uniqueness import _near, compare_array_to_registry  # noqa: E402
 
 OWNER = "buffedlizard55-lab"
+DEFAULT_OWNERS: tuple[str, ...] = (
+    "buffedlizard55-lab",
+    "kanlerxz87-cyber",
+    "eugboogieman123-ops",
+    "wingbangboozle1-lang",
+    "ginnymcfiner23-ux",
+)
+EXCLUDED_INPUT_FILENAMES: frozenset[str] = frozenset({
+    "training_features.tif",
+    "gems-geodawn-numerical-features.tif",
+    "geodawn_rad_u8.tif",
+    "geodawn_extensions_u8.tif",
+    "topo_10m_derived_100m_u8.tif",
+    "topo_features_100m.tif",
+    "dem10_chi_100m_i16.tif",
+    "lidar_scarp_features_u8.tif",
+    "tiger_road_distance_m.tif",
+    "sample_submission.tif",
+    "example_submission.tif",
+    "existing_faults.tif",
+    "labels.tif",
+    "derived_sgmc_faults_100m_u8.tif",
+    "template_grid.tif",
+})
 CACHE = ROOT / ".cache" / "gemsdoe_public_registry"
+
+
+def _is_submission_tif_path(path: str) -> bool:
+    low = path.lower()
+    if not low.endswith((".tif", ".tiff")):
+        return False
+    fname = low.rsplit("/", 1)[-1]
+    if fname in EXCLUDED_INPUT_FILENAMES:
+        return False
+    return (
+        "docs/downloads/" in low
+        or "/downloads/" in low
+        or low.startswith("downloads/")
+        or "_downloads/" in low
+        or low.startswith("releases/")
+        or "/releases/" in low
+        or low.startswith("submission")
+        or "/submission" in low
+        or low.startswith("data/scored/")
+        or low.startswith("data/registry_rasters/")
+    )
+
 
 def gh_bytes(*args: str, timeout: int = 120) -> bytes:
     return subprocess.check_output(["gh", "api", *args], stderr=subprocess.STDOUT, timeout=timeout)
 
 
-def get_repositories() -> list[dict]:
-    raw = gh_bytes(f"users/{OWNER}/repos?per_page=100", "--paginate", "--jq", ".[]")
-    repos = [json.loads(line) for line in raw.decode().splitlines() if line.strip()]
-    return [r for r in repos if "GEMSDOE" in r["name"].upper()]
+def get_repositories(owners: tuple[str, ...] | list[str] = DEFAULT_OWNERS) -> list[dict]:
+    found: list[dict] = []
+    for owner in owners:
+        raw = gh_bytes(f"users/{owner}/repos?per_page=100", "--paginate", "--jq", ".[]")
+        repos = [json.loads(line) for line in raw.decode().splitlines() if line.strip()]
+        for r in repos:
+            if "GEMSDOE" in r["name"].upper():
+                found.append({**r, "owner": owner})
+    return found
 
 
 def tree_for(repo: dict) -> dict:
+    owner = repo.get("owner") or repo.get("owner_login") or OWNER
+    if isinstance(owner, dict):
+        owner = owner.get("login") or OWNER
     try:
         branch = quote(repo["default_branch"], safe="")
-        raw = gh_bytes(f"repos/{OWNER}/{repo['name']}/git/trees/{branch}?recursive=1")
+        raw = gh_bytes(f"repos/{owner}/{repo['name']}/git/trees/{branch}?recursive=1")
         doc = json.loads(raw)
         selected = []
         for node in doc.get("tree", []):
             p = node.get("path", "")
-            low = p.lower()
-            if node.get("type") != "blob" or not low.endswith((".tif", ".tiff")):
+            if node.get("type") != "blob" or not _is_submission_tif_path(p):
                 continue
-            in_submission_path = low.startswith("submission") or "/submission" in low
-            if "docs/downloads/" in low or low.startswith("releases/") or in_submission_path:
-                selected.append({"repo": repo["name"], "branch": repo["default_branch"],
-                                 "path": p, "git_sha": node["sha"], "bytes": int(node["size"])})
-        return {"repo": repo["name"], "branch": repo["default_branch"],
+            selected.append({"owner": owner, "repo": repo["name"], "branch": repo["default_branch"],
+                             "path": p, "git_sha": node["sha"], "bytes": int(node["size"])})
+        return {"owner": owner, "repo": repo["name"], "branch": repo["default_branch"],
                 "truncated": bool(doc.get("truncated", False)), "files": selected}
     except Exception as exc:
-        return {"repo": repo["name"], "branch": repo.get("default_branch"),
+        return {"owner": owner, "repo": repo["name"], "branch": repo.get("default_branch"),
                 "truncated": False, "files": [], "error": str(exc)}
 
 
@@ -71,16 +122,14 @@ def read_cached_trees(path: Path) -> tuple[list[dict], list[dict]]:
     cached = json.loads(path.read_text(encoding="utf-8"))
     tree_results = []
     for item in cached:
-        tree_results.append({"repo": item["repo"], "branch": item["branch"],
+        owner = item.get("owner") or OWNER
+        tree_results.append({"owner": owner, "repo": item["repo"], "branch": item["branch"],
                              "truncated": item.get("truncated", False), "error": item.get("error"),
-                             "files": [{"repo": item["repo"], "branch": item["branch"],
+                             "files": [{"owner": owner, "repo": item["repo"], "branch": item["branch"],
                                         "path": f["path"], "git_sha": f["sha"], "bytes": f["size"]}
                                        for f in item.get("tifs", [])
-                                       if "docs/downloads/" in f["path"].lower()
-                                       or f["path"].lower().startswith("releases/")
-                                       or f["path"].lower().startswith("submission")
-                                       or "/submission" in f["path"].lower()]})
-    repos = [{"name": t["repo"], "default_branch": t["branch"]} for t in tree_results]
+                                       if _is_submission_tif_path(f["path"])]})
+    repos = [{"owner": t["owner"], "name": t["repo"], "default_branch": t["branch"]} for t in tree_results]
     return tree_results, repos
 
 
@@ -114,15 +163,16 @@ def prefetch_via_local_and_codeload(unique_by_blob: dict[str, dict]) -> None:
             except Exception:
                 continue
 
-    needed_by_repo: dict[tuple[str, str], dict[str, tuple[str, int]]] = {}
+    needed_by_repo: dict[tuple[str, str, str], dict[str, tuple[str, int]]] = {}
     for sha, item in unique_by_blob.items():
         target = CACHE / f"{sha}.tif"
         if not target.is_file() or target.stat().st_size != item.get("bytes"):
+            owner = item.get("owner") or OWNER
             repo = item.get("repo")
             branch = item.get("branch") or "main"
             path = item.get("path")
             if repo and path:
-                needed_by_repo.setdefault((repo, branch), {})[path] = (sha, int(item["bytes"]))
+                needed_by_repo.setdefault((owner, repo, branch), {})[path] = (sha, int(item["bytes"]))
 
     if not needed_by_repo:
         return
@@ -132,8 +182,8 @@ def prefetch_via_local_and_codeload(unique_by_blob: dict[str, dict]) -> None:
     except Exception:
         tok = ""
 
-    def _stream_repo(rb_item: tuple[tuple[str, str], dict[str, tuple[str, int]]]) -> None:
-        (repo, branch), path_map = rb_item
+    def _stream_repo(rb_item: tuple[tuple[str, str, str], dict[str, tuple[str, int]]]) -> None:
+        (owner, repo, branch), path_map = rb_item
         remaining = {
             p: (sha, sz)
             for p, (sha, sz) in path_map.items()
@@ -141,7 +191,7 @@ def prefetch_via_local_and_codeload(unique_by_blob: dict[str, dict]) -> None:
         }
         if not remaining:
             return
-        url = f"https://codeload.github.com/{OWNER}/{repo}/tar.gz/{branch}"
+        url = f"https://codeload.github.com/{owner}/{repo}/tar.gz/{branch}"
         headers = {"User-Agent": "gemsdoe92"}
         if tok:
             headers["Authorization"] = f"Bearer {tok}"
@@ -175,6 +225,7 @@ def prefetch_via_local_and_codeload(unique_by_blob: dict[str, dict]) -> None:
 
 def fetch_blob(item: dict, *, cache_only: bool = False) -> dict:
     sha = item["git_sha"]
+    owner = item.get("owner") or OWNER
     target = CACHE / f"{sha}.tif"
     try:
         if target.exists():
@@ -183,14 +234,14 @@ def fetch_blob(item: dict, *, cache_only: bool = False) -> dict:
             if cache_only:
                 raise FileNotFoundError("blob absent in cache-only mode")
             data = gh_bytes("-H", "Accept: application/vnd.github.raw",
-                            f"repos/{OWNER}/{item['repo']}/git/blobs/{sha}")
+                            f"repos/{owner}/{item['repo']}/git/blobs/{sha}")
             target.write_bytes(data)
         if len(data) != item["bytes"] or git_blob_sha(data) != sha:
             target.unlink(missing_ok=True)
             raise ValueError("Git blob SHA or byte length mismatch")
-        return {**item, "local_path": str(target), "sha256": hashlib.sha256(data).hexdigest()}
+        return {**item, "owner": owner, "local_path": str(target), "sha256": hashlib.sha256(data).hexdigest()}
     except Exception as exc:
-        return {**item, "error": str(exc)}
+        return {**item, "owner": owner, "error": str(exc)}
 
 
 def summarize(rows: list[dict], threshold: float = 0.70) -> dict:
@@ -239,6 +290,8 @@ def main() -> int:
                     help="populate .cache/gemsdoe_public_registry via Git Smart HTTP (scripts/sync_public_registry_git.py) without REST blob/tree API quota")
     ap.add_argument("--surface", type=Path, help="Actual lane pre-placement GeoTIFF; never substitute another lane")
     ap.add_argument("--witness-repo", help="Check one public owner repo for a binding duplicate; cannot clear uniqueness")
+    ap.add_argument("--owners", default=",".join(DEFAULT_OWNERS),
+                    help="Comma-separated GitHub owners to scan for GEMSDOE* repositories")
     ap.add_argument("--output", type=Path, default=ROOT / "evidence/public_registry_uniqueness.json")
     ap.add_argument("--out-name", default=None,
                     help="compat alias (STRAINBREAK session): evidence/<name>.json + docs/downloads/<name>.json")
@@ -257,6 +310,7 @@ def main() -> int:
         ap.error("non-collar candidate requires a separate --output; preserve collar evidence")
     CACHE.mkdir(parents=True, exist_ok=True)
 
+    owners = tuple(o.strip() for o in args.owners.split(",") if o.strip()) or DEFAULT_OWNERS
     cached_trees = CACHE / "repo_inventory.json"
     scan_source = "current GitHub API"
     if args.cache_only:
@@ -269,7 +323,7 @@ def main() -> int:
         scan_source = "live Git Smart HTTP inventory (zero REST blob/tree quota)"
     else:
         try:
-            repos = get_repositories()
+            repos = get_repositories(owners)
             if args.witness_repo:
                 repos = [r for r in repos if r["name"] == args.witness_repo]
                 if not repos:
@@ -280,8 +334,8 @@ def main() -> int:
                 raise RuntimeError("one or more public repository trees failed or were truncated")
             inventory_target = CACHE / "witness_inventory.json" if args.witness_repo else cached_trees
             inventory_target.write_text(json.dumps([
-                {"repo": t["repo"], "branch": t.get("branch"), "truncated": t.get("truncated", False),
-                 "error": t.get("error"),
+                {"owner": t.get("owner") or OWNER, "repo": t["repo"], "branch": t.get("branch"),
+                 "truncated": t.get("truncated", False), "error": t.get("error"),
                  "tifs": [{"path": f["path"], "sha": f["git_sha"], "size": f["bytes"]}
                           for f in t.get("files", [])]} for t in tree_results], indent=2), encoding="utf-8")
         except Exception as exc:
@@ -372,8 +426,9 @@ def main() -> int:
     witness_item = next((f for f in compatible if f["repo"] + "/" + f["path"] == witness_name), None)
     witness = None
     if witness_item:
+        w_owner = witness_item.get("owner") or OWNER
         witness = {"raster": witness_name,
-                   "source_url": f"https://github.com/{OWNER}/{witness_item['repo']}/blob/{witness_item['branch']}/{witness_item['path']}",
+                   "source_url": f"https://github.com/{w_owner}/{witness_item['repo']}/blob/{witness_item['branch']}/{witness_item['path']}",
                    "git_blob_sha": witness_item["git_sha"], "sha256": witness_item["sha256"],
                    "bytes": witness_item["bytes"],
                    "forward_overlap": final_summary["worst_forward_overlap"]}
@@ -382,8 +437,9 @@ def main() -> int:
     full_surface_item = next((f for f in compatible if f["repo"] + "/" + f["path"] == full_surface_name), None)
     full_surface_witness = None
     if full_surface_row and full_surface_item:
+        fs_owner = full_surface_item.get("owner") or OWNER
         full_surface_witness = {"raster": full_surface_name,
-            "source_url": f"https://github.com/{OWNER}/{full_surface_item['repo']}/blob/{full_surface_item['branch']}/{full_surface_item['path']}",
+            "source_url": f"https://github.com/{fs_owner}/{full_surface_item['repo']}/blob/{full_surface_item['branch']}/{full_surface_item['path']}",
             "git_blob_sha": full_surface_item["git_sha"], "sha256": full_surface_item["sha256"],
             "bytes": full_surface_item["bytes"], "positive_pixels_in_footprint": full_surface_row.get("their_dots"),
             "forward_overlap": full_surface_row.get("my_dots_within_3px_of_theirs"),
@@ -396,7 +452,7 @@ def main() -> int:
         "candidate": {"name": candidate_path.stem.removesuffix("-zeros"),
                       "sha256": candidate_file_sha256,
                       "dots": int((candidate > 0).sum())},
-        "inventory": {"owner": OWNER, "scan_source": scan_source, "matching_public_repositories": len(repos),
+        "inventory": {"owner": OWNER, "owners": list(owners), "scan_source": scan_source, "matching_public_repositories": len(repos),
                       "default_branch_trees_complete": sum(not t["truncated"] for t in tree_results),
                       "tree_errors": len(tree_errors), "truncated_trees": sum(t["truncated"] for t in tree_results),
                       "submission_tiff_paths": len(paths), "unique_git_blobs": len(unique_by_blob),
