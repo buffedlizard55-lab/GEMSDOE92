@@ -1,0 +1,306 @@
+{
+  "schema": "gemsdoe92-project-review.v1",
+  "reviewed_utc": "2026-10-27T18:52:55.319062+00:00",
+  "hypothesis": "No assigned geological lane; pre-placement protocol audit only.",
+  "mechanism": "The pinned registry positive support covers every finite template pixel.",
+  "named_non_fault_mimic": "Not applicable: no geological inference was performed.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "value": null,
+    "ci95": null,
+    "evaluator_version": null,
+    "withheld_positives": null,
+    "reason": "Not run: universal literal duplicate STOP before feature generation or placement."
+  },
+  "leakage_canaries": {
+    "status": "not_run",
+    "reason": "No features generated after STOP."
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "forward_overlap_for_any_nonempty_in_footprint_candidate": 1.0,
+    "overlap_threshold": 0.7,
+    "rank_correlation": null,
+    "rank_correlation_reason": "Not needed for rejection; no surface or final dots generated.",
+    "scope": "One hash-pinned witness; sufficient to reject, never to certify uniqueness.",
+    "preplacement_proof": {
+      "schema": "gemsdoe92-preplacement-stop-v2",
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "reviewed_utc": "2026-10-27T18:50:15.359093+00:00",
+      "sample_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "implementation_sha256": "9275f329f394b90b5f80c3fd1d22d8d543879f68df9485ab5f708535958fbca3",
+      "scope": "Single pinned witness; rejection only. No candidate surface was generated or scored.",
+      "witness_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/6fc71d19d49dca4960d5434bd81b6dd06fcc030a/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "grid_checks_pass": true,
+      "footprint_pixels": 5167373,
+      "positive_in_footprint": 5167373,
+      "universal_nonempty_in_footprint_overlap_stop": true,
+      "forward_overlap_for_any_nonempty_in_footprint_dot_set": 1.0,
+      "threshold": 0.7,
+      "verdict": "negative",
+      "submission_eligible": false,
+      "reason": "Every nonempty candidate is a literal registry duplicate; stop before placement."
+    },
+    "final_dots_check": "not_run_no_new_raster"
+  },
+  "verdict": "negative",
+  "submission_eligible": false,
+  "new_unique_tiff_generated": false,
+  "experiments": 0,
+  "weekly_slots_used": 0,
+  "organizer_confirmed_score": null,
+  "limitations": [
+    "paired HOLDOUT-DTI delta vs best control control_FAULTNET_far = -0.025127 CI [-0.029305915361244498, -0.02084222808563093] (must exclude 0)",
+    "operative sparse-registry uniqueness failed (overlap>0.70 or |rho|>0.90)"
+  ],
+  "input_sha256": {
+    "data/bridge/sample_submission.tif": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc"
+  },
+  "audit_implementation_sha256": "fb7648aa1b7fac545e218c8759c72de3646b3eb1b104c963d9ee87d162f61045",
+  "raster_sha256": null,
+  "validator_output": {
+    "status": "not_run",
+    "reason": "No new candidate generated; existing research bytes were revalidated separately."
+  },
+  "format_pass": null,
+  "submission_name": null,
+  "note": "Protocol audit only; no new TIFF, holdout or slot. DO NOT SUBMIT.",
+  "historical_research_reference": {
+    "primary_download": "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif",
+    "raster_sha256": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573",
+    "validator_output": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=('float32',) count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nonfinite_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      },
+      {
+        "name": "submission_encoding",
+        "ok": true,
+        "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0; strict distance > radius required"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573"
+      }
+    ],
+    "format_pass": true,
+    "submission_name": "GEMSDOE92-VARIO-full-20261025",
+    "note": "VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat>2",
+    "artifact_role": "existing research download; NOT a newly generated submission",
+    "status": "existing research file only; DO NOT SUBMIT"
+  },
+  "review_implementation_sha256": "6b000147bd90dc8c66c92e6b25804944a45c19de4dbfeb2dcb8dadb207f6eaf6",
+  "engineering_checks": [
+    {
+      "name": "tests",
+      "argv": [
+        "/home/user/GEMSDOE92/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests",
+        "-q"
+      ],
+      "returncode": 0,
+      "timed_out": false,
+      "passed": true,
+      "elapsed_seconds": 61.026,
+      "stdout_sha256": "22310e7a5c5a1845dd0e6028731531e37cbe45fd23bb3b0b3b8d70563fd31bdc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_tail": "........................................................................ [  9%]\n........................................................................ [ 19%]\n........................................................................ [ 29%]\n........................................................................ [ 38%]\n........................................................................ [ 48%]\n........................................................................ [ 58%]\n........................................................................ [ 67%]\n........................................................................ [ 77%]\n........................................................................ [ 87%]\n........................................................................ [ 96%]\n.......................                                                  [100%]\n=============================== warnings summary ===============================\n.venv/lib/python3.11/site-packages/rasterio/transform.py:178: 2 warnings\ntests/test_gates.py: 33 warnings\ntests/test_input_cache_audit.py: 4 warnings\ntests/test_parent_pinned_artefact.py: 5 warnings\ntests/test_poissonflex.py: 2 warnings\ntests/test_preflight_dense_witness.py: 21 warnings\ntests/test_registry_summary_safety.py: 5 warnings\ntests/test_shared_writer_safety.py: 9 warnings\ntests/test_single_witness.py: 77 warnings\ntests/test_tiltangle_audit.py: 1 warning\n  /home/user/GEMSDOE92/.venv/lib/python3.11/site-packages/rasterio/transform.py:178: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication\n    return Affine.translation(west, north) * Affine.scale(xsize, -ysize)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n743 passed, 159 warnings in 60.67s (0:01:00)\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "manifest",
+      "argv": [
+        "/home/user/GEMSDOE92/.venv/bin/python",
+        "-m",
+        "gems",
+        "manifest",
+        "--manifest",
+        "registry/data_manifest.json",
+        "--data-root",
+        "data"
+      ],
+      "returncode": 0,
+      "timed_out": false,
+      "passed": true,
+      "elapsed_seconds": 0.162,
+      "stdout_sha256": "e2f63e39b164e920a19777f57a4f2a62bd155d9716d4348b3c0c0f14329cd53e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_tail": "  OK           data/bridge/sample_submission.tif\n  OK           data/bridge/existing_faults.tif\n  OK           data/bridge/labels.tif\n  OK           data/parent_R0_zeros.tif\n  OK           data/parent_R0_nan.tif\n  OK           data/bridge/h19_5.tif\n  OK           data/bridge/h27_4_solo.tif\n  OK           data/bridge/d28.tif\nRESULT: OK\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "parent",
+      "argv": [
+        "/home/user/GEMSDOE92/.venv/bin/python",
+        "-m",
+        "gems",
+        "parent",
+        "--recipe",
+        "registry/parents/R0.json",
+        "--data-root",
+        "data"
+      ],
+      "returncode": 0,
+      "timed_out": false,
+      "passed": true,
+      "elapsed_seconds": 1.326,
+      "stdout_sha256": "cc85f86ca856311519ca95908eb063b5c4aa51768c9476c653354ce9fec15d80",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_tail": "  nan      baeae3219bba\u2026 355443 B  data/parent_R0_nan.tif\n  zeros    c55bafc47005\u2026 219065 B  data/parent_R0_zeros.tif\n  n_dots                       37654\n  total_mass                   37654.0\n  footprint_px                 5167373\n  min_catalogue_distance_px    2.23606797749979\n  dots_within_3px              2171\n  dots_within_4px              3825\n  dots_within_5px              5637\nPARENT VERIFIED (pinned artefact): h33-h33-2-b2 sha256 c55bafc47005\u2026\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "site",
+      "argv": [
+        "/home/user/GEMSDOE92/.venv/bin/python",
+        "scripts/check_site.py"
+      ],
+      "returncode": 0,
+      "timed_out": false,
+      "passed": true,
+      "elapsed_seconds": 96.691,
+      "stdout_sha256": "65f4482e1ff7e080e752a8570a553f52d0f7158c6992c48c13b9e24bf390b71b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_tail": "e01d27af-zeros.tif  sha256 8f1f93d8c97b4e1c\u2026\n  PASS h33-h33-2-b2-COULOMBfree-20261024-d0cf5db5-zeros.tif  sha256 e4dde5f44ce9c2b1\u2026\n  PASS h33-h33-2-b2-COULOMBopen-20261024-58a7a394-zeros.tif  sha256 96487c1bc2f9a0fe\u2026\n  PASS h33-h33-2-b2-COULOMBseismo-20261024-d243140b-zeros.tif  sha256 0c344d4d6d0828a0\u2026\n  PASS h33-h33-2-b2-DILATATIONp10dilatation-20261025-2e501f88-zeros.tif  sha256 d3b0d4a65aacff6b\u2026\n  PASS h33-h33-2-b2-DILATATIONp12dilatation-20261025-8b4d248b-zeros.tif  sha256 25ba17a26d31df9d\u2026\n  PASS h33-h33-2-b2-DILATATIONp15dilatation-20261025-ebc1b432-zeros.tif  sha256 cc79c48ae0f46b0c\u2026\n  PASS h33-h33-2-b2-GEOTENSIONfree1d-20261025-95252d61-zeros.tif  sha256 b0dba55e56a5e714\u2026\n  PASS h33-h33-2-b2-GEOTENSIONs50f50-20261025-caa53f9d-zeros.tif  sha256 eab96221bc01cf33\u2026\n  PASS h33-h33-2-b2-GEOTENSIONs60f40-20261025-ab46201e-zeros.tif  sha256 dc673c9fb0e81077\u2026\n  PASS h33-h33-2-b2-HYDROCONDUITf45hydro-20261024-979c9cdb-zeros.tif  sha256 c9e07ba6627672bf\u2026\n  PASS h33-h33-2-b2-HYDROCONDUITf45pied-20261024-3c236840-zeros.tif  sha256 e9ba570999447016\u2026\n  PASS h33-h33-2-b2-HYDROCONDUITf50hydro-20261024-5d50e9e3-zeros.tif  sha256 6625e43d362f6f65\u2026\n  PASS h33-h33-2-b2-KNICKLOQOdual35-20261025-8eedc094-zeros.tif  sha256 0e0841a148f3fe5e\u2026\n  PASS h33-h33-2-b2-KNICKLOQOstandalone-20261025-d53d919f-zeros.tif  sha256 8ad4a8c2cd8e1fd9\u2026\n  PASS h33-h33-2-b2-KNICKLOQOuncal-20261025-61b98143-zeros.tif  sha256 916acb0b8b7ec58d\u2026\n  PASS h33-h33-2-b2-LISTRICLOQOselectcal-20261025-110427ce-zeros.tif  sha256 58e5d780f3602e17\u2026\n  PASS h33-h33-2-b2-LISTRICLOQOstandalone-20261025-ed9e80bb-zeros.tif  sha256 dc6d8f06053a48ef\u2026\n  PASS h33-h33-2-b2-LISTRICLOQOuncal-20261025-2962f45f-zeros.tif  sha256 304ffdc6ac5899da\u2026\n  PASS h33-h33-2-b2-LISTRICdual35-20261026-2b8b394a-zeros.tif  sha256 ee9f1c8b167ffb98\u2026\n  PASS h33-h33-2-b2-LISTRICstandalone-20261026-a705162a-zeros.tif  sha256 7e4b46368b2a5949\u2026\n  PASS h33-h33-2-b2-LISTRICuncal-20261026-fc9686b5-zeros.tif  sha256 d051d768957e2bab\u2026\n  PASS h33-h33-2-b2-MICROSWARMshort-20261024-261a2f21-zeros.tif  sha256 261a2f216b8684f2\u2026\n  PASS h33-h33-2-b2-NEOOPNSfree1d-20261025-a4c91e43-zeros.tif  sha256 23c979e513eff9b1\u2026\n  PASS h33-h33-2-b2-NEOOPNSs35c65-20261025-e4d82847-zeros.tif  sha256 0a7aee78b8b904b9\u2026\n  PASS h33-h33-2-b2-NEOOPNSs45c55-20261025-63d84095-zeros.tif  sha256 067629a0c104a763\u2026\n  PASS h33-h33-2-b2-PIEDFRONTf35Ptop-20261024-a44bb11b-zeros.tif  sha256 e314f4c004927ff5\u2026\n  PASS h33-h33-2-b2-PIEDFRONTf40Ptop-20261024-6b0cd56a-zeros.tif  sha256 24c8c7ffba5a20a2\u2026\n  PASS h33-h33-2-b2-PIEDFRONTf45Ptop-20261024-aad86ac9-zeros.tif  sha256 9002b9c10012d2c2\u2026\n  PASS h33-h33-2-b2-RELIEFp10piedmont-20261024-3e900c24-zeros.tif  sha256 60f0208547efd4fb\u2026\n  PASS h33-h33-2-b2-SALEMSEISMOcelf37k-20261026-3c4f585f-zeros.tif  sha256 bbd97dec57a2c8ea\u2026\n  PASS h33-h33-2-b2-SALEMSEISMOcelftail52k-20261026-cc3c8ff2-zeros.tif  sha256 b06dd72feff35b16\u2026\n  PASS h33-h33-2-b2-SALEMSEISMOpoint37k-20261026-fe2567c1-zeros.tif  sha256 ac39bfee96463378\u2026\n  PASS h33-h33-2-b2-SPRINGALIGNf33Ctop-20261025-9857d09a-zeros.tif  sha256 1772ad5c62506b6b\u2026\n  PASS h33-h33-2-b2-STEPEDGEf60Sraw-20261024-66a91dde-zeros.tif  sha256 c5dc98f2846ae486\u2026\n  PASS h33-h33-2-b2-STEPOVER-tip10px-N5000-20261024-e5fee27f-zeros.tif  sha256 e5fee27f162371d9\u2026\n  PASS h33-h33-2-b2-STRAINBREAKf45s2i-20261024-f46d5bbc-zeros.tif  sha256 080f1d1e3c2f56d8\u2026\n  PASS h33-h33-2-b2-STRAINBREAKf60s2i-20261024-5c3c6ca2-zeros.tif  sha256 000d0bd7e0a549c2\u2026\n  PASS h33-h33-2-b2-STRAINBREAKf75s2i-20261024-5ed2fa1b-zeros.tif  sha256 e5d91facc794b89a\u2026\n  PASS h33-h33-2-b2-TIPGAPfar18f33-20261024T063054Z-0ca8248a-zeros.tif  sha256 0ca8248acace558f\u2026\n  PASS h33-h33-2-b2-XPHASEdual40-20261024-643553cf-zeros.tif  sha256 080018382de33758\u2026\n  PASS h33-h33-2-b2-XPHASEnophase-20261024-2159567d-zeros.tif  sha256 494b21bd079e44d8\u2026\n  PASS h33-h33-2-b2-XPHASEstandalone-20261024-023ac854-zeros.tif  sha256 43cc42c0c90d84a4\u2026\n  PRIMARY gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif\nSITE CHECK PASS (123 served raster(s) gated)\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "focus9_page",
+      "argv": [
+        "/home/user/GEMSDOE92/.venv/bin/python",
+        "scripts/render_focus9_page.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "timed_out": false,
+      "passed": true,
+      "elapsed_seconds": 0.031,
+      "stdout_sha256": "a934a4a3ea3a272a21eb6af4519864e171a308c34d7d6d0032451a3964160b23",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_tail": "nine-site executive page: OK\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "review_14f85876",
+      "argv": [
+        "/home/user/GEMSDOE92/.venv/bin/python",
+        "scripts/render_review_14f85876.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "timed_out": false,
+      "passed": true,
+      "elapsed_seconds": 0.028,
+      "stdout_sha256": "f7f4f92ba5dbfd43fbbc74b5f7916b3e1eb28bfab5eb8cffd26e3d1dfe296f58",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_tail": "review run card: OK\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "review_b4bb558b",
+      "argv": [
+        "/home/user/GEMSDOE92/.venv/bin/python",
+        "scripts/render_review_b4bb558b.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "timed_out": false,
+      "passed": true,
+      "elapsed_seconds": 0.032,
+      "stdout_sha256": "d69487e6c7b5b39e44c1ee25bb2a743dbb502bba05007e5a4b740b93ae024ff8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_tail": "2026-10-27 review card and input receipt: OK\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "review_banner",
+      "argv": [
+        "/home/user/GEMSDOE92/.venv/bin/python",
+        "scripts/render_review_banner.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "timed_out": false,
+      "passed": true,
+      "elapsed_seconds": 0.035,
+      "stdout_sha256": "eb3b0640916e533f02e773913cc257317fa380e0de7ed442af28e533294dfeed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_tail": "review banners: OK\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "HEAD",
+        "--"
+      ],
+      "returncode": 0,
+      "timed_out": false,
+      "passed": true,
+      "elapsed_seconds": 0.009,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_tail": "",
+      "stderr_tail": ""
+    }
+  ],
+  "engineering_checks_complete": true,
+  "engineering_checks_passed": true,
+  "engineering_budget_seconds": 1800,
+  "audit_status": "confirmed_stop",
+  "score_estimate": null,
+  "score_estimate_reason": "No calibrated organizer-score estimate or organizer receipt.",
+  "new_submission_name": null,
+  "new_submission_note": null,
+  "historical_identity_warning": "submission_name, note and raster_sha256 identify an existing research file, not a new submission.",
+  "official_sources_live_verified": false
+}

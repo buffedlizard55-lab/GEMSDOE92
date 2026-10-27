@@ -1,4 +1,10 @@
-## Current session addendum — 2026-10-27 (branch `arena/b4bb558b-gemsdoe92`)
+## Current session addendum — 2026-10-27 (branch `arena/e7bc063a-gemsdoe92`)
+
+Start with the README's repeatable-review brief, [three-pass report](docs/REVIEW_E7BC063A.md) and [nine-site executive summary](docs/focus9.html). **DO NOT SUBMIT:** an independent fresh pinned-witness check reproduces the universal literal overlap STOP. No new TIFF, method experiment, holdout or slot was generated. No distinct method lane was supplied. Do not work around the representation conflict, adopt a historical lane or label an estimate as an organizer score.
+
+Use `.venv/bin/python scripts/review_project.py --fetch-witness --output .cache/<fresh-name>.json` to reproduce engineering checks plus the shared rejection audit. Exit 1 means confirmed STOP with engineering checks passing; exit 2 means failed/incomplete/inconclusive. Neither grants clearance. This runner records actual check exits and logs, never invokes model builders, and leaves the shared evaluator/writer unchanged. The existing ranked hypotheses remain conditional and untested in this session. Resolve the authorized protocol/lane dependencies before new research; preserve Maximize P(Win) and Own the Outcome.
+
+## Earlier session addendum — 2026-10-27 (branch `arena/b4bb558b-gemsdoe92`)
 
 Read [`docs/REVIEW_B4BB558B.md`](docs/REVIEW_B4BB558B.md), the [nine-site executive page](docs/focus9.html), the [negative run card](docs/downloads/review_b4bb558b_run_card.json), and the [input audit](docs/downloads/input_cache_b4bb558b.json). **DO NOT SUBMIT:** the freshly fetched and hash-verified dense witness is positive on all 5,167,373 sample-footprint pixels. Every nonempty candidate's literal forward overlap is 1.000 > 0.70. Stop before a candidate surface or placement; no new candidate, experiment, holdout or slot was created in this session. No distinct method lane was assigned. A policy owner must explicitly resolve the representation conflict before experimentation; do not silently weaken the protocol.
 
