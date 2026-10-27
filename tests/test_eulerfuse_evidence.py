@@ -69,13 +69,13 @@ def test_run_card_contains_the_exact_validator_receipt():
 
 
 def test_public_pages_make_the_latest_download_decision_unmistakable():
-    for relative in ("README.md", "docs/index.html", "docs/executive-summary.html", "docs/SUBMIT.html"):
+    for relative in ("README.md", "docs/archive.html", "docs/executive-summary.html", "docs/SUBMIT.html"):
         text = (ROOT / relative).read_text(encoding="utf-8")
         assert f"{STEM}.tif" in text, relative
         assert TIF_SHA256 in text, relative
         assert "DO NOT SUBMIT" in text, relative
         assert "0.110387" in text, relative
-    assert "OK TO DOWNLOAD FOR RESEARCH" in (ROOT / "docs/index.html").read_text(encoding="utf-8")
+    assert "OK TO DOWNLOAD FOR RESEARCH" in (ROOT / "docs/archive.html").read_text(encoding="utf-8")
 
 
 def test_run_card_metrics_match_source_evidence():

@@ -110,7 +110,7 @@ def test_faultnet_lane_is_explicitly_negative_while_site_status_remains_authorit
     # now tracks a later lane); the site-wide decision is the VARIO panel.
     run_card = json.loads((ROOT / "docs" / "downloads" / "faultnet_run_card.json").read_text())
     readme = (ROOT / "README.md").read_text()
-    index = (ROOT / "docs" / "index.html").read_text()
+    index = (ROOT / "docs" / "archive.html").read_text()
     assert run_card["verdict"] == "negative"
     reg = run_card["correlation_overlap_vs_registry"]
     assert reg["unique_operative"] is False

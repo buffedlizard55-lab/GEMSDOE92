@@ -103,7 +103,7 @@ def test_rendered_public_outputs_match_durable_evidence_and_warn_clearly():
 
 
 def test_current_site_quarantines_concurrent_blindext_download_clearly():
-    page = (ROOT / "docs/index.html").read_text(encoding="utf-8")
+    page = (ROOT / "docs/archive.html").read_text(encoding="utf-8")
     assert "DUPLICATE, DO NOT SUBMIT" in page
     assert "NOT CLEARED TO SUBMIT" in page
     assert "gemsdoe92-blindext-20261026T162451Z-zeros.zip" not in page

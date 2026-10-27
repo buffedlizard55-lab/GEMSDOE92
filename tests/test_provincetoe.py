@@ -259,7 +259,7 @@ def test_provincetoe_readme_site_and_ledger_sync():
     """Verify top banners in README & GitHub Pages HTML, analysis docs, and ledger rows."""
     for rel in (
         "README.md",
-        "docs/index.html",
+        "docs/archive.html",
         "docs/executive-summary.html",
         "docs/SUBMIT.html",
         "docs/submit.html",

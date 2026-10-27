@@ -3,7 +3,7 @@ import hashlib
 import json
 from pathlib import Path
 
-from scripts.check_site import check_current_status_sources
+from scripts.check_site_legacy_20261026 import check_current_status_sources
 
 
 def write_json(path: Path, value: dict) -> None:
@@ -44,7 +44,7 @@ def make_site(root: Path) -> str:
 
 def test_working_tree_current_status_sources_share_primary_bytes():
     root = Path(__file__).resolve().parents[1]
-    from scripts.check_site import primary_download
+    from scripts.check_site_legacy_20261026 import primary_download
 
     problems = []
     index = (root / "docs/index.html").read_text(encoding="utf-8")

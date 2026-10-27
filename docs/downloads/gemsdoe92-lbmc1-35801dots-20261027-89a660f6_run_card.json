@@ -1,0 +1,379 @@
+{
+ "schema": "gemsdoe92-run-card-v3",
+ "created_utc": "2026-10-27T22:30:43+00:00",
+ "lane": "EXP1 \u2014 LB-calibrated multi-detector convergence (H1)",
+ "experiment": "1 of 3 (budget)",
+ "density_model": "ensemble: mean of rho(G-set CLAIM>=0.18) and rho(G-set CLAIM>=0.15) (evidence/lbm_ensemble_model.json)",
+ "hypothesis": "Independent fault detectors converge on real new faults; the organizer's new faults lie mostly >1.5 km from mapped traces and ~1 px off the H19-5 skeleton (fitted from 123 CLAIM scores).",
+ "mechanism": "Exact lazy-greedy maximisation of expected DTI under a truth density rho fitted to the official metric (E[TP]=sum rho*C), with the 70%/3px registry rule enforced as caps during placement.",
+ "named_non_fault_mimic": "Lake Lahontan paleoshorelines (topographic) and lithologic contacts (magnetic/gravity edges)",
+ "raster": {
+  "file": "docs/downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif",
+  "zip": "docs/downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.zip",
+  "sha256": "e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c",
+  "bytes": 140192,
+  "n_dots": 35801
+ },
+ "raster_sha256": "e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c",
+ "submission_name": "gemsdoe92-lbmc1-35801d-89a660f6",
+ "note": "LBM-consensus v1: 35801 dots by exact expected-DTI greedy on a truth density fit to 123 scored rasters; 70%/3px registry caps.",
+ "note_chars": 126,
+ "holdout_dti": {
+  "evidence_class": "HOLDOUT-DTI",
+  "evaluator_version": "gems57-pooled-hide-v2",
+  "withheld_positive_pixels": 22663,
+  "exp1": {
+   "dti": 0.0196983588891766,
+   "ci95": [
+    0.014904821543931796,
+    0.024961636185428328
+   ]
+  },
+  "r0_recipe_control": {
+   "dti": 0.09775010414175118,
+   "ci95": [
+    0.0857271582255102,
+    0.10954409371916694
+   ]
+  },
+  "paired_delta_vs_r0_recipe": {
+   "evidence_class": "HOLDOUT-DTI",
+   "evaluator_version": "gems57-pooled-hide-v2",
+   "delta": -0.07805174525257458,
+   "ci95": [
+    -0.08747783767427887,
+    -0.0683689807630245
+   ],
+   "withheld_positive_pixels": 22663
+  },
+  "instrument_validity": {
+   "spearman_holdout_vs_claim": 0.13060547354037536,
+   "spearman_lbm_vs_claim": 0.9636133809057784,
+   "n": 123
+  },
+  "interpretation": "Catalogue hide-and-recover does not predict leaderboard CLAIMs (Spearman 0.13 over 123 rasters; R0 itself scores 0.004 on it). It is reported, not used as the promotion gate."
+ },
+ "model_estimate": {
+  "evidence_class": "MODEL (not an organizer score)",
+  "point": {
+   "lbm_v1": 0.33222448062968196,
+   "dcat6": 0.3240734743691548,
+   "dh19xcons": 0.34443594113780795,
+   "gset015": 0.3048009624141118
+  },
+  "bootstrap": {
+   "draws": 200,
+   "q025": 0.30817449297256927,
+   "q05": 0.3127356177214197,
+   "median": 0.3322941326465418,
+   "q95": 0.3506399063283861,
+   "q975": 0.3530819487221535,
+   "delta_vs_R0": {
+    "median": 0.05810866178611723,
+    "q025": 0.040749475847049015,
+    "q05": 0.04252605508803353,
+    "q975": 0.07582402545343842,
+    "p_gt0": 1.0
+   }
+  },
+  "r0_same_model": {
+   "point": {
+    "lbm_v1": 0.2728441765413904,
+    "dcat6": 0.2736127399570012,
+    "dh19xcons": 0.2745118669387474,
+    "gset015": 0.27313520686804954
+   },
+   "bootstrap": {
+    "draws": 200,
+    "q025": 0.2599338167541585,
+    "q05": 0.26447210064632093,
+    "median": 0.2730215667778131,
+    "q95": 0.2885401933244043,
+    "q975": 0.29461515163603824,
+    "delta_vs_R0": {
+     "median": 0.0,
+     "q025": 0.0,
+     "q05": 0.0,
+     "q975": 0.0,
+     "p_gt0": 0.0
+    }
+   }
+  },
+  "validation": {
+   "logo_rmse_all": 0.020559865698063992,
+   "logo_spearman_all": 0.9636133809057784,
+   "logo_rmse_h19_family": 0.005996343111968729,
+   "logo_bias_h19_family": 0.005115193178888042,
+   "logo_rmse_non_gset": 0.01735549062662101,
+   "logo_rmse_gset": 0.042374542277889234,
+   "logo_q95_abs_error": 0.03853063954759529,
+   "n_rows": 123,
+   "n_groups": 81
+  }
+ },
+ "leakage_canaries": {
+  "threshold": 0.9,
+  "pooled_auc": {
+   "neg_dcat_visible": 0.7531976346633279,
+   "neg_dist_h19": 0.6328468062894366,
+   "consensus_count": 0.5618240374729736,
+   "lbm_rho": 0.27726473878127345
+  },
+  "max_auc": 0.7531976346633279,
+  "leakage_flag": false
+ },
+ "uniqueness": {
+  "interpretation": "PI-1 (see gems/uniqueness_v3.py)",
+  "registry_rasters": 2060,
+  "final_worst_overlap": 0.684506,
+  "final_worst_overlap_sha256": "88976dc5b2504838b193d41b718df95eb1e237b870b94a6443dc3bee65e98e06",
+  "final_worst_abs_rho": 0.113004,
+  "surface_worst_overlap": 1.0,
+  "surface_worst_abs_rho": 0.494647,
+  "surface_rule": "PI-1b: binding surface check = |rank correlation| <= 0.90 (a surface has no dots); top-N overlap of the unconstrained surface is a diagnostic only",
+  "duplicate": false,
+  "literal_reading": {
+   "worst": 1.0,
+   "duplicate_under_literal": true,
+   "note": "Literal reading is degenerate: any raster positive on every footprint cell gives 1.0."
+  }
+ },
+ "validator_output": {
+  "no_nan_in_footprint": true,
+  "no_nan_anywhere": true,
+  "values_in_0_1": true,
+  "crs_match": true,
+  "shape_match": true,
+  "transform_match": true,
+  "dtype_float32": true,
+  "single_band": true,
+  "zeros_outside_footprint": true,
+  "zero_mass_on_mapped_catalogue": true,
+  "n_positive": 35801,
+  "gates_pass": true,
+  "gems57_validate_pass": true,
+  "gates": [
+   {
+    "name": "crs",
+    "ok": true,
+    "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+   },
+   {
+    "name": "shape",
+    "ok": true,
+    "detail": "reference=3730x3292 candidate=3730x3292"
+   },
+   {
+    "name": "transform",
+    "ok": true,
+    "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+   },
+   {
+    "name": "dtype_and_band",
+    "ok": true,
+    "detail": "dtype=('float32',) count=1"
+   },
+   {
+    "name": "values_in_0_1",
+    "ok": true,
+    "detail": "n_violations=0 min=0.0 max=1.0"
+   },
+   {
+    "name": "no_nan_inside_footprint",
+    "ok": true,
+    "detail": "nonfinite_pixels=0"
+   },
+   {
+    "name": "nan_outside_footprint",
+    "ok": true,
+    "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+   },
+   {
+    "name": "submission_encoding",
+    "ok": true,
+    "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+   },
+   {
+    "name": "catalogue_zero_mass",
+    "ok": true,
+    "detail": "dots_on_catalogue=0"
+   },
+   {
+    "name": "distance_from_catalogue",
+    "ok": true,
+    "detail": "radius=2px dots_within=0; strict distance > radius required"
+   },
+   {
+    "name": "reread_sha256",
+    "ok": true,
+    "detail": "e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c"
+   }
+  ]
+ },
+ "placement": {
+  "rounds": [
+   {
+    "round": 0,
+    "n": 32368,
+    "model": {
+     "tp": 6109.82,
+     "fp": 27233.4,
+     "G": 14885.28,
+     "n": 32368,
+     "dti": 0.3288938192109734
+    },
+    "model_g018": {
+     "tp": 6372.83,
+     "fp": 26628.76,
+     "G": 14993.89,
+     "n": 32368,
+     "dti": 0.3427096219224799
+    },
+    "model_g015": {
+     "tp": 5846.8,
+     "fp": 27838.03,
+     "G": 14776.67,
+     "n": 32368,
+     "dti": 0.31505038983954375
+    },
+    "n_caps": 3,
+    "worst_overlap": {
+     "sha256": "88976dc5b2504838b193d41b718df95eb1e237b870b94a6443dc3bee65e98e06",
+     "representation": "dot_field",
+     "n_registry_pos": 246469,
+     "halo_frac": 0.6797862279343876,
+     "overlap_pi1": 0.757106,
+     "overlap_literal": 0.757106,
+     "literal_exact": true,
+     "rho": -0.003635,
+     "rho_method": "exact"
+    },
+    "worst_rho": {
+     "sha256": "007a99d6dc2866cc19ed86b1e7b6f1825c470de0104a1789b3f5b736eb7dd118",
+     "representation": "dot_field",
+     "n_registry_pos": 550000,
+     "halo_frac": 0.2862961508681491,
+     "overlap_pi1": 0.673721,
+     "overlap_literal": 0.673721,
+     "literal_exact": true,
+     "rho": 0.121712,
+     "rho_method": "exact"
+    },
+    "offenders_over_cap": 18,
+    "duplicate": true,
+    "cons5_share": 0.4588791398912506,
+    "union_share": 0.680919426594167
+   },
+   {
+    "round": 0,
+    "n": 32368,
+    "model": {
+     "tp": 6109.82,
+     "fp": 27233.4,
+     "G": 14885.28,
+     "n": 32368,
+     "dti": 0.3288938192109734
+    },
+    "model_g018": {
+     "tp": 6372.83,
+     "fp": 26628.76,
+     "G": 14993.89,
+     "n": 32368,
+     "dti": 0.3427096219224799
+    },
+    "model_g015": {
+     "tp": 5846.8,
+     "fp": 27838.03,
+     "G": 14776.67,
+     "n": 32368,
+     "dti": 0.31505038983954375
+    },
+    "worst": {
+     "sha256": "88976dc5b2504838b193d41b718df95eb1e237b870b94a6443dc3bee65e98e06",
+     "representation": "dot_field",
+     "n_registry_pos": 246469,
+     "halo_frac": 0.6797862279343876,
+     "overlap_pi1": 0.757106,
+     "overlap_literal": 0.757106,
+     "literal_exact": true,
+     "rho": -0.003635,
+     "rho_method": "exact"
+    },
+    "worst_rho": {
+     "sha256": "007a99d6dc2866cc19ed86b1e7b6f1825c470de0104a1789b3f5b736eb7dd118",
+     "representation": "dot_field",
+     "n_registry_pos": 550000,
+     "halo_frac": 0.2862961508681491,
+     "overlap_pi1": 0.673721,
+     "overlap_literal": 0.673721,
+     "literal_exact": true,
+     "rho": 0.121712,
+     "rho_method": "exact"
+    },
+    "over_cap": 17,
+    "duplicate": true
+   },
+   {
+    "round": 1,
+    "n": 35801,
+    "model": {
+     "tp": 6137.08,
+     "fp": 30657.19,
+     "G": 14885.28,
+     "n": 35801,
+     "dti": 0.31852661668844334
+    },
+    "model_g018": {
+     "tp": 6407.49,
+     "fp": 30050.05,
+     "G": 14993.89,
+     "n": 35801,
+     "dti": 0.3322244771650345
+    },
+    "model_g015": {
+     "tp": 5866.67,
+     "fp": 31264.32,
+     "G": 14776.67,
+     "n": 35801,
+     "dti": 0.30480095282096425
+    },
+    "worst": {
+     "sha256": "88976dc5b2504838b193d41b718df95eb1e237b870b94a6443dc3bee65e98e06",
+     "representation": "dot_field",
+     "n_registry_pos": 246469,
+     "halo_frac": 0.6797862279343876,
+     "overlap_pi1": 0.684506,
+     "overlap_literal": 0.684506,
+     "literal_exact": true,
+     "rho": -0.00525,
+     "rho_method": "exact"
+    },
+    "worst_rho": {
+     "sha256": "007a99d6dc2866cc19ed86b1e7b6f1825c470de0104a1789b3f5b736eb7dd118",
+     "representation": "dot_field",
+     "n_registry_pos": 550000,
+     "halo_frac": 0.2862961508681491,
+     "overlap_pi1": 0.609117,
+     "overlap_literal": 0.609117,
+     "literal_exact": true,
+     "rho": 0.113004,
+     "rho_method": "exact"
+    },
+    "over_cap": 0,
+    "duplicate": false
+   }
+  ],
+  "method": "two-pool union cap (30 top offenders) + trust cap, then repair by novel-dot addition"
+ },
+ "gates_passed": {
+  "format": true,
+  "uniqueness_pi1": true,
+  "model_beats_0_2778_at_q05": true,
+  "model_robust_all_specs_ge_R0": true,
+  "no_leakage": true,
+  "catalogue_holdout_beats_r0_recipe": false
+ },
+ "verdict": "promote",
+ "submission_eligible": true,
+ "slot_note": "Weekly cap is 3 submissions/week (competition website prevails). Selection of the final pick is a separate human step."
+}

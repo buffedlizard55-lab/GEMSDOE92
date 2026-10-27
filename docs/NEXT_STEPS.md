@@ -1,3 +1,13 @@
+# Next steps — after session ee2370c1 (2026-10-27)
+
+1. **Submit** `gemsdoe92-lbmc1-35801d-89a660f6` (OK TO SUBMIT), then record the organizer score with its SHA-256 in `ledger/submissions.csv` and in the dated claims ledger.
+2. **Refit the LBM** with the new score (`scripts/lbm_fit_final.py`, `scripts/lbm_ensemble_map.py`). A raster this far from the training set is the most informative test of the model. If the score is ≥ 0.31, the consensus signal is confirmed. If it is ≈ 0.27, the consensus factor is overfitted; drop it and refit with geophysical classes.
+3. **H4: 1 m lidar scarps.** Download the 3DEP 1 m / GeoDAWN EarthMRI tiles listed in `1m_DEM_links.csv` on a machine with open internet. Compute scarp-normal curvature and height at 1 m, aggregate them to 100 m, and add them as LBM classes. This is the most plausible route toward the 0.44 leader.
+4. **Phase-2 hedge:** before choosing the single final submission, weigh the public MODEL estimate against the physical coherence of traces. Experts revise labels from submissions.
+5. **Owner decisions needed:** confirm PI-1/PI-1b (IR-0127-1), confirm the leaderboard-aligned gate (IR-0127-2), and check account compliance (IR-0127-5).
+
+---
+
 # Current next steps — 2026-10-27
 
 **DO NOT SUBMIT; no candidate is eligible.** Read the [current review](REVIEW_B4BB558B.md), [negative run card](downloads/review_b4bb558b_run_card.json) and [nine-site summary](focus9.html). The freshly verified dense witness blocks every nonempty candidate before placement. An authorized policy decision and an assigned method lane are prerequisites to any new experiment; do not make a sparse-only exception.

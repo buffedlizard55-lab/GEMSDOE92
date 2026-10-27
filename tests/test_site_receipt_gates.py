@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from scripts.check_site import check_recorded_gates
+from scripts.check_site_legacy_20261026 import check_recorded_gates
 
 ROOT = Path(__file__).resolve().parents[1]
 AUDIT = ROOT / 'docs/downloads/h33-h33-2-b2-COULOMBLOQOstandalone-20261024-e01d27af-audit.json'
@@ -74,7 +74,7 @@ def test_pages_stages_public_files_without_breaking_existing_docs_urls():
     '<a data-primary="true" href></a>',
 ])
 def test_primary_cannot_be_guessed_or_ambiguous(html):
-    from scripts.check_site import primary_download
+    from scripts.check_site_legacy_20261026 import primary_download
     problems = []
     assert primary_download(html, problems) is None
     assert problems
@@ -85,7 +85,7 @@ def test_primary_cannot_be_guessed_or_ambiguous(html):
     "<a data-primary='true' href='downloads/a-zeros.tif'>Download</a>",
 ])
 def test_explicit_primary_is_independent_of_attribute_order_and_quotes(html):
-    from scripts.check_site import primary_download
+    from scripts.check_site_legacy_20261026 import primary_download
     problems = []
     assert primary_download(html, problems) == 'downloads/a-zeros.tif'
     assert not problems

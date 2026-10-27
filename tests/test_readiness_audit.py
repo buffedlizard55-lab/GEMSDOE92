@@ -193,7 +193,7 @@ def test_publication_fails_closed_on_stale_or_invented_evidence(published, chang
 def test_clean_review_links_and_download_match_current_primary():
     from html.parser import HTMLParser
     from urllib.parse import urlsplit, unquote
-    from scripts.check_site import primary_download
+    from scripts.check_site_legacy_20261026 import primary_download
     root = Path(__file__).resolve().parents[1]
     docs = root / 'docs'
     text = (docs / 'review48.html').read_text()

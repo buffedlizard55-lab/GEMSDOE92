@@ -1,5 +1,26 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+## ✅ Current submission — 2026-10-27 (session ee2370c1): OK TO SUBMIT
+
+**[Download `gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif`](docs/downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif)** (140,192 bytes; [one-TIFF ZIP](docs/downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.zip)) · **[How to submit (3 steps)](docs/how-to-submit.html)** · [site](docs/index.html) · [run card](docs/downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6_run_card.json)
+
+| Field | Value |
+|---|---|
+| Portal submission name | `gemsdoe92-lbmc1-35801d-89a660f6` |
+| Portal note (126/140) | `LBM-consensus v1: 35801 dots by exact expected-DTI greedy on a truth density fit to 123 scored rasters; 70%/3px registry caps.` |
+| SHA-256 | `e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c` |
+| Format | float32, 1 band, EPSG:32611, 3292×3730, sample transform; all finite; values ∈ {0,1}; zeros outside footprint (no "[0, 1]" portal error) |
+| Unique? | Yes (PI-1): ≤ 68.45% of dots within 3 px of any one of 2,060 public GEMSDOE rasters (limit 70%); max \|ρ\| 0.113 (limit 0.90) |
+| Expected public DTI | **0.332** (90% interval 0.313–0.351) — **MODEL**, fitted to 123 owner-reported scores, grouped-CV RMSE 0.021; R0 (0.2778 CLAIM) gets 0.273 under the same model |
+| Robustness | dcat6 0.324 · dh19×cons 0.344 · G-set≥0.15 0.305; every specification ranks it above R0 |
+| HOLDOUT-DTI (catalogue hide-and-recover, gems57-pooled-hide-v2, 22,663 withheld) | 0.0197 [0.0149, 0.0250] vs R0 recipe 0.0978. Reported, not gating: this instrument has Spearman 0.13 with leaderboard CLAIMs over 123 rasters (IR-0127-2) |
+
+**Method (EXP1, hypothesis H1):** every owner-reported score was matched byte-for-byte to its public raster. A model with the exact structure of the official DTI was fit to them (`E[TP]=Σρ·C`, `gems/lbmodel.py`). Dots were then placed by exact expected-DTI lazy-greedy optimisation, with the 70%/3 px registry rule enforced *during* placement. Read [WHY_0_2778](docs/WHY_0_2778.md) for the PhD-level explanation of the 0.2778 score, [HYPOTHESES_20261027_LBM](docs/HYPOTHESES_20261027_LBM.md) for the ranked hypotheses, the [nine-site summary](docs/nine-sites.html), the [three-pass review](docs/REVIEW_EE2370C1.md) and [IRREGULARITIES](IRREGULARITIES.md) (IR-0127-1…8, including interpretation PI-1/PI-1b of the duplicate rule).
+
+**Every session must first read [SESSION_PROMPT.md](SESSION_PROMPT.md)** (the full user prompt and protocol are at its top). Historical sections below are archived and do not override this decision.
+
+### Concurrent session reports merged on 2026-10-27 (historical; superseded by the decision above)
+
 ## Latest repository audit — 2026-10-27 (`arena/d30d387c-gemsdoe92`)
 
 **DO NOT SUBMIT (`verdict: "negative"`, `submission_eligible: false`, `0` new TIFFs, `0` experiments, `0` weekly slots).** Dual freshly fetched and SHA-256/Git-blob-verified public registry witnesses independently force $>70\%$ literal 3-pixel overlap before placement: (1) continuous probability surface `17GEMSDOE_E-proba-multiscale` covers all `5,167,373 / 5,167,373` finite template cells (`1.000 > 0.70` for every nonempty candidate), and (2) pure `{0, 1}` binary-dot submission `13GEMSDOE` `r13-lattice-s5` (`206,895` binary `1.0` pixels, owner `CLAIM 0.0904`) covers `5,160,724 / 5,167,373` footprint cells within `3 px`, forcing mathematical pigeonhole overlap `>= 0.823418 > 0.70` at the `37,654`-dot budget (`0.9857–1.0000` measured across all 11 newly audited October 25–27 brief artifacts). [Session `d30d387c` PhD review](docs/REVIEW_20261027_D30D387C.md) · [negative run card](docs/downloads/review_d30d387c_run_card.json) · [dual-witness & 2026-10-27 fleet receipt](docs/downloads/fleet_20261027_audit_d30d387c.json) · [nine-site & multi-owner executive summary](docs/focus9.html) · [5 untried hypotheses](docs/HYPOTHESES_20261027_D30D387C.md) · [19-band input audit](docs/downloads/input_cache_d30d387c.json).
@@ -26,6 +47,8 @@ Exit **1** = engineering checks passed, confirmed protocol STOP; **2** = failed/
 **DO NOT SUBMIT.** No new TIFF, geological experiment, holdout or weekly-slot selection occurred. If every positive pixel of a pinned **continuous-probability** witness is interpreted as a dot, its full-footprint support gives every nonempty candidate overlap `1.000 > 0.70`. Whether that representation is intended is unresolved; the conservative stop is not proof of geological identity and must not be silently waived. [Three-pass review](docs/REVIEW_20261027_B97812A3.md) · [negative run card](docs/downloads/session_b97812a3_run_card.json) · [witness statistics](docs/downloads/session_b97812a3_witness_support.json) · [independent verification](docs/REVIEW_20261027_SESSION_REPRO.md) · [nine-site executive summary](docs/focus9.html).
 
 All nine GitHub main refs changed after the pinned 26 October site inventory; the [dated ref snapshot](docs/downloads/session_b97812a3_focus_freshness.json) and browser check are **not** new file/score audits. The 12 pinned owner-mirror inputs, including the 19-band stack, were restored and checked in an ephemeral ignored cache ([audit](docs/downloads/session_b97812a3_input_audit.json)); this does not authenticate organizer origin, redistribution rights or eligibility. Historical TIFFs are available **for research only**. The root validator and shared writer/gates now fail closed on forged promotion, incomplete reference footprints and masked in-footprint cells. [Previous independent review](docs/REVIEW_B4BB558B.md) · [parallel review](docs/REVIEW_20261027_A3DCC0DD.md) · [earlier branch review](docs/REVIEW_20261026_ARENA_0C5D848E.md). The durable project aim and normalized operating brief remain below and in [SESSION_PROMPT.md](SESSION_PROMPT.md); older narrative is historical and does not override this decision.
+
+Historical (superseded 2026-10-27) status panel:
 
 <!-- VARIO-STATUS:BEGIN -->
 ## Current research download — verified decision, 2026-10-25 (VARIO session)

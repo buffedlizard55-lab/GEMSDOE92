@@ -18,7 +18,7 @@ DOCS = ROOT / "docs"
 
 
 def _index() -> str:
-    return (DOCS / "index.html").read_text(encoding="utf-8")
+    return (DOCS / "archive.html").read_text(encoding="utf-8")
 
 
 def test_index_has_download_and_slot_warning():
@@ -133,11 +133,11 @@ def test_historical_knick_submission_card_is_superseded_and_byte_bound():
 
 def test_index_links_every_served_zeros_file():
     """Anything offered for download must be reachable from the page."""
-    html = _index()
+    html = _index() + (DOCS / "index.html").read_text(encoding="utf-8")  # archive + v3 index
     served = sorted(p.name for p in (DOCS / "downloads").glob("*-zeros.tif"))
     assert served, "no zeros-outside files in docs/downloads"
     for name in served:
-        assert f"downloads/{name}" in html, f"{name} is served but not linked from index.html"
+        assert f"downloads/{name}" in html, f"{name} is served but not linked from index.html or archive.html"
 
 
 def test_index_primary_has_an_audit_receipt_that_matches():
@@ -181,7 +181,7 @@ def test_public_registry_receipt_is_valid_json_and_records_stop():
 
 def test_legacy_submission_page_redirect_does_not_claim_breakline_is_primary():
     """Aliases must describe the same current primary and warning as the canonical guide."""
-    index_html = (DOCS / "index.html").read_text(encoding="utf-8")
+    index_html = (DOCS / "archive.html").read_text(encoding="utf-8")
     canonical = (DOCS / "SUBMIT.html").read_text(encoding="utf-8")
     assert "COULOMBDMs45coulomb55" in index_html
     assert "COULOMBDMs45coulomb55" in canonical
@@ -317,7 +317,7 @@ def test_submit_page_exists():
 
 
 def test_site_missing_primary_receipt_fails_without_traceback(tmp_path, monkeypatch, capsys):
-    import scripts.check_site as site
+    import scripts.check_site_legacy_20261026 as site
     primary_name = "example-zeros.tif"
     (tmp_path / primary_name).write_bytes(b"existing candidate")
     index = tmp_path / "index.html"
@@ -335,7 +335,7 @@ def test_site_missing_primary_receipt_fails_without_traceback(tmp_path, monkeypa
 
 @pytest.mark.parametrize("text", ["{broken", "[]", "null"])
 def test_site_invalid_json_evidence_fails_closed(tmp_path, text):
-    from scripts.check_site import read_json_object
+    from scripts.check_site_legacy_20261026 import read_json_object
     path = tmp_path / "audit.json"
     path.write_text(text)
     problems = []
@@ -380,7 +380,7 @@ def test_readme_and_site_agree_on_current_download_and_holdout_ranking():
 
 def test_readme_first_screen_matches_actual_site_primary_and_session_contract():
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    index = (DOCS / "index.html").read_text(encoding="utf-8")
+    index = (DOCS / "archive.html").read_text(encoding="utf-8")
     match = re.search(r'<a class="btn" href="(downloads/[^"]+-zeros\.tif)" data-primary="true"', index)
     assert match, "index.html must declare one machine-detectable primary TIFF"
     primary_path = f"docs/{match.group(1)}"
@@ -413,7 +413,7 @@ def test_continuation_review_card_is_negative_and_mirrored():
 
 
 def test_piedfront_primary_contract_across_site_and_readme():
-    idx = (DOCS / "index.html").read_text(encoding="utf-8")
+    idx = (DOCS / "archive.html").read_text(encoding="utf-8")
     exec_sum = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
     sub = (DOCS / "SUBMIT.html").read_text(encoding="utf-8")
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
@@ -506,7 +506,7 @@ def test_coulombdm_primary_contract_and_run_card():
     assert card["submission_eligible"] is False
     assert card["weekly_slots_used"] == 0
 
-    idx = (DOCS / "index.html").read_text(encoding="utf-8")
+    idx = (DOCS / "archive.html").read_text(encoding="utf-8")
     exec_sum = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
     sub = (DOCS / "SUBMIT.html").read_text(encoding="utf-8")
     readme = (ROOT / "README.md").read_text(encoding="utf-8")

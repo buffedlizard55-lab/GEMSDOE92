@@ -421,6 +421,11 @@ Rule basis: official rules §3.2 ("indicate in the narrative (not included in th
 - Write the submission narrative that states the extent and manner of generative-AI use, as §3.2 requires. This log can be cited but does not replace it.
 - Confirm any submission file against the DrivenData upload page. The sandbox has no login, so this has not been verified from here.
 
+
+## 2026-10-27 (session ee2370c1)
+
+Generative AI was used by an AI coding agent to write the registry, leaderboard-model, placement, validation and site code, and the documentation, in this session. Every number in the deliverables was computed by the committed scripts from pinned inputs and owner-reported scores. No organizer score was generated or inferred as fact. This is an internal log entry. The submission narrative required by rules §3.2 ([official rules](https://docs.nlr.gov/docs/fy26osti/96647.pdf)) must still state this use.
+
 ---
 
 ## Session — multi-owner fleet, dual-witness & 19-band data-integrity audit (`2026-10-27`, branch `arena/d30d387c-gemsdoe92`)
