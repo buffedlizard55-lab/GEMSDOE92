@@ -1,8 +1,23 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+## Repeatable project review — 2026-10-27, e7bc063a
+
+**DO NOT SUBMIT.** This session independently reproduced the literal dense-registry stop; no new TIFF, holdout, experiment or slot was generated. The new [three-pass review](docs/REVIEW_E7BC063A.md) explains the result and limitations. The [nine-site executive summary](docs/focus9.html) provides the requested historical download / reported result / estimate availability / uniqueness table. No defensible organizer-score estimate or new submission clearance is available.
+
+**Read this starting brief and [`SESSION_PROMPT.md`](SESSION_PROMPT.md) before every session.** The mission remains a genuinely unique, automatically validated competition TIFF, with official provenance, visible-fault-only buffered whole-segment holdouts, leakage canaries, complete pre-placement and final registry checks, and separate weekly-slot selection. Preserve **Maximize P(Win)** and **Own the Outcome**; report negative results honestly. The current prompt's unique-file demand cannot override its literal duplicate-stop rule or supply the missing assigned method paragraph. Older research banners below do not grant clearance.
+
+One command now reproduces the shared rejection proof, full tests, manifest, parent, all served research-file gates and generated-page/card freshness checks. Use a fresh receipt path:
+
+```sh
+.venv/bin/python scripts/review_project.py --fetch-witness \
+  --output .cache/review-$(date -u +%Y%m%dT%H%M%SZ).json
+```
+
+Exit **1** = engineering checks passed, confirmed protocol STOP; **2** = failed/incomplete/inconclusive. Both mean **DO NOT SUBMIT**. The command never trains, generates a TIFF, accesses the leaderboard or selects a slot. See the [review](docs/REVIEW_E7BC063A.md) for reproducibility and next-session dependencies. Existing shared tools remain authoritative; no private holdout or writer was added.
+
 ## Latest repository audit — 2026-10-27
 
-**DO NOT SUBMIT.** No new TIFF, geological experiment, holdout or weekly-slot selection occurred. If every positive pixel of a pinned **continuous-probability** witness is interpreted as a dot, its full-footprint support gives every nonempty candidate overlap `1.000 > 0.70`. Whether that representation is intended is unresolved; the conservative stop is not proof of geological identity and must not be silently waived. [Three-pass review](docs/REVIEW_20261027_B97812A3.md) · [negative run card](docs/downloads/session_b97812a3_run_card.json) · [witness statistics](docs/downloads/session_b97812a3_witness_support.json) · [nine-site executive summary](docs/focus9.html).
+**DO NOT SUBMIT.** No new TIFF, geological experiment, holdout or weekly-slot selection occurred. If every positive pixel of a pinned **continuous-probability** witness is interpreted as a dot, its full-footprint support gives every nonempty candidate overlap `1.000 > 0.70`. Whether that representation is intended is unresolved; the conservative stop is not proof of geological identity and must not be silently waived. [Three-pass review](docs/REVIEW_20261027_B97812A3.md) · [negative run card](docs/downloads/session_b97812a3_run_card.json) · [witness statistics](docs/downloads/session_b97812a3_witness_support.json) · [independent verification](docs/REVIEW_20261027_SESSION_REPRO.md) · [nine-site executive summary](docs/focus9.html).
 
 All nine GitHub main refs changed after the pinned 26 October site inventory; the [dated ref snapshot](docs/downloads/session_b97812a3_focus_freshness.json) and browser check are **not** new file/score audits. The 12 pinned owner-mirror inputs, including the 19-band stack, were restored and checked in an ephemeral ignored cache ([audit](docs/downloads/session_b97812a3_input_audit.json)); this does not authenticate organizer origin, redistribution rights or eligibility. Historical TIFFs are available **for research only**. The root validator and shared writer/gates now fail closed on forged promotion, incomplete reference footprints and masked in-footprint cells. [Previous independent review](docs/REVIEW_B4BB558B.md) · [parallel review](docs/REVIEW_20261027_A3DCC0DD.md) · [earlier branch review](docs/REVIEW_20261026_ARENA_0C5D848E.md). The durable project aim and normalized operating brief remain below and in [SESSION_PROMPT.md](SESSION_PROMPT.md); older narrative is historical and does not override this decision.
 
