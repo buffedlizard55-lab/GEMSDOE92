@@ -117,7 +117,7 @@ def test_strict_threshold_and_single_row_is_diagnostic_only():
     r = row(overlap=0.70, rho=-0.90)
     assert summary([r])['unique']
     d = u.binding_duplicate_decision([r])
-    assert not d['stop_required'] and d['verdict'] == 'diagnostic-clear-only'
+    assert d['stop_required'] and d['verdict'] == 'diagnostic-clear-only'
     assert not d['submission_eligible']
 
 
@@ -200,6 +200,23 @@ def test_nonfinite_registry_inside_footprint_fails_closed(tmp_path):
     result = u.compare_array_to_registry(mine, index, np.ones((4, 4), bool))
     assert not result['unique'] and result['missing_or_invalid'] == 1
     assert 'nonfinite' in result['rows'][0]['error']
+
+
+def test_registry_float64_precision_is_not_rounded_before_rank(tmp_path):
+    p = tmp_path / 'prior-float64.tif'
+    prior = (1.0 + np.arange(16, dtype=np.float64).reshape(4, 4) * 1e-10)
+    with rasterio.open(p, 'w', driver='GTiff', height=4, width=4, count=1,
+                       dtype='float64', crs='EPSG:32611',
+                       transform=from_origin(1, 1, 100, 100)) as dst:
+        dst.write(prior, 1)
+    record = {'repo_first': 'owner/repo', 'sources': ['prior'],
+              'cache_file': str(p), 'sha256': hashlib.sha256(p.read_bytes()).hexdigest()}
+    index = {'rasters': [record], 'complete_accessible_scan': True, 'errors': []}
+    candidate = np.arange(16, dtype=np.float64).reshape(4, 4) / 15
+    result = u.compare_array_to_registry(candidate, index, np.ones((4, 4), bool))
+    assert result['rows'][0]['rank_exact'] is True
+    assert result['rows'][0]['spearman_full_footprint'] == pytest.approx(1.0)
+    assert result['rows'][0]['duplicate_by_rho'] and result['stop_required']
 
 
 def test_disk_candidate_grid_is_checked_before_comparison(tmp_path):

@@ -403,7 +403,10 @@ def compare_array_to_registry(mine, registry_index, footprint, *, file_sha256=No
                     from .grid import TRANSFORM
                     if src.crs is None or src.crs.to_epsg()!=32611 or src.transform != TRANSFORM:
                         raise ValueError('registry CRS/transform mismatch')
-                theirs = src.read(1).astype(np.float32)
+                # Preserve the registry raster's original numeric precision for
+                # support and rank calculations; early float32 casting can turn
+                # distinct float64 values into ties and conceal correlation.
+                theirs = src.read(1)
             # Missing values inside the compared domain are not zero evidence;
             # accepting them could manufacture uniqueness against a partial prior.
             if not np.isfinite(theirs[fp]).all():
@@ -428,7 +431,7 @@ def compare_array_to_registry(mine, registry_index, footprint, *, file_sha256=No
             halo_cov = float(near_sup[fp].mean())
             reverse = float(my_near[support].mean()) if include_reverse and support.any() else 0.0
             jac = _jaccard(my_support, support)
-            their_decoded = hashlib.sha256(np.ascontiguousarray(theirs).tobytes()).hexdigest()
+            their_decoded = hashlib.sha256(np.ascontiguousarray(theirs, dtype=np.float32).tobytes()).hexdigest()
             row = {**base, 'sha256':digest, 'decoded_sha256':their_decoded,
                 'their_dots':int(support.sum()), 'my_dots_within_3px_of_theirs':ov,
                 'forward_overlap':ov, 'halo_coverage':halo_cov,
@@ -516,20 +519,14 @@ def saturation_certificate(registry_path, footprint, catalogue=None, *, expected
 DENSE_SUPPORT_FRACTION = 0.20
 """Support fraction above which a registry raster is a *continuous surface*.
 
-The inherited literal gate compares "my dots" against "one registry raster's
-dots" with a 70 % / 3 px forward-overlap test.  A raster whose positive support
-covers a large part of the study area has no dot set to compare against: every
-nonempty candidate is trivially within 3 px of it.  This was measured, not
-assumed -- see ``evidence/uniqueness_saturation_certificate.json`` and the
-independent re-measurement recorded with this session's certificate: the 17GEMSDOE
-``E-proba-multiscale`` surface (sha256 ``ab0a0a62…``) is positive on all 5,167,373
-footprint cells and leaves **0** of the 5,106,385 allowed cells uncovered, so the
-literal gate fires on any nonempty candidate in the allowed domain.
+The binding literal gate compares "my dots" against every registry raster's
+positive finite support using 70% / 3 px forward overlap. A dense probability
+raster is not exempt: every positive cell counts. The pinned 17GEMSDOE
+``E-proba-multiscale`` witness (sha256 ``ab0a0a62…``) is positive on all 5,167,373
+footprint cells, so the literal gate fires on every nonempty candidate.
 
-The classification below does not weaken any threshold.  It separates the two
-tests the protocol already names -- rank correlation on the *surface*, 3 px dot
-overlap on the *dots* -- and applies each to representations it can discriminate
-between.  Both readings are always reported.
+Density classification is diagnostic only. A sparse-only or like-for-like
+comparison cannot waive a literal threshold or authorize a candidate.
 """
 
 
@@ -633,7 +630,9 @@ def binding_duplicate_decision(rows, *, rho_limit: float = RHO_LIMIT,
         worst_abs_spearman_file=(worst_rho.get("file") or worst_rho.get("submission")) if worst_rho else None,
         overlap_limit=overlap_limit, rho_limit=rho_limit,
         duplicate=is_dup, missing_or_invalid=len(errors),
-        stop_required=stop,
+        # This row-only helper has no complete-inventory certificate, even if
+        # no checked row fires; callers must stop pending a complete audit.
+        stop_required=True,
         verdict=("negative" if stop else "diagnostic-clear-only"),
         submission_eligible=False,
         note=("Space-filling priors remain binding under the literal rule. This "
@@ -731,8 +730,8 @@ def two_phase_summary(rows, footprint_cells: int, *, rho_limit: float = RHO_LIMI
             worst_jaccard=jac, worst_jaccard_submission=(jac_who or {}).get("submission"),
             forward_overlap_firings=len(like_firings),
             duplicate=bool(like_firings or literal_rho_firings),
-            note=("Inherited thresholds, applied to dot fields only; rank correlation still applies to "
-                  "every raster including the continuous surfaces."),
+            note=("Diagnostic only: dot-field subset overlap cannot waive the binding literal "
+                  "all-raster rule or authorize submission."),
         ),
         literal_firings=literal_firings,
     )
@@ -844,8 +843,10 @@ def dual_reading_decision(rows, *, rho_limit=RHO_LIMIT, overlap_limit=OVERLAP_LI
         worst_matched_budget_file=worst_mb.get("file"),
         worst_abs_spearman=_rho(worst_rho), worst_abs_spearman_file=worst_rho.get("file"),
         overlap_limit=overlap_limit, rho_limit=rho_limit,
-        duplicate=dup, stop_required=stop,
-        verdict=("negative" if stop else "unique"),
+        # The caller supplied rows, not a complete-inventory certificate; a
+        # threshold-clear diagnostic is still not permission to continue.
+        duplicate=dup, stop_required=True,
+        verdict=("negative" if stop else "diagnostic-clear-only"),
         submission_eligible=False,
         literal_reading_fires=overlap_fires,
         note=("Literal overlap and rank correlation are binding for every raster. "
