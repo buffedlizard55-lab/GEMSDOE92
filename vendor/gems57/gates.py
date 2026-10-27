@@ -40,11 +40,12 @@ def format_report(path, sample, epsg=32611, cell=100.0, footprint=None):
     problems = []
     with rasterio.open(path) as src, rasterio.open(sample) as ref:
         a = src.read(1)
+        candidate_valid = src.read_masks(1) > 0
         out.update(bands=src.count, dtype=src.dtypes[0], crs=str(src.crs), width=src.width, height=src.height,
                    bounds=list(src.bounds), ref_bounds=list(ref.bounds), transform=list(src.transform)[:6],
                    nodata=float(src.nodata) if src.nodata is not None and np.isfinite(src.nodata) else str(src.nodata) if src.nodata is not None else None,
                    blocksize=list(src.block_shapes[0]), fixture_grid=ref.shape != SHAPE,
-                   has_validity_mask=bool((src.dataset_mask() == 0).any()))
+                   has_validity_mask=bool((~candidate_valid).any()))
         if src.count != 1:
             problems.append(f"{src.count} bands, must be 1")
         if ref.count != 1:
@@ -87,6 +88,11 @@ def format_report(path, sample, epsg=32611, cell=100.0, footprint=None):
             ref_fp = np.isfinite(ref.read(1))
             if not ref_fp.any():
                 problems.append("reference footprint is empty")
+            if not np.array_equal(ref_fp, ref.read_masks(1) > 0):
+                problems.append("reference finite footprint disagrees with validity mask")
+            out["masked_inside_reference_footprint"] = int((ref_fp & ~candidate_valid).sum())
+            if out["masked_inside_reference_footprint"]:
+                problems.append(f"{out['masked_inside_reference_footprint']} masked pixels inside the reference footprint")
             out["mass_outside_reference_footprint"] = int(((a > 0) & ~ref_fp).sum())
             if out["mass_outside_reference_footprint"]:
                 problems.append(f"{out['mass_outside_reference_footprint']} emitted pixels outside the reference footprint")
@@ -102,6 +108,8 @@ def format_report(path, sample, epsg=32611, cell=100.0, footprint=None):
                     problems.append(f"{out['mass_outside_footprint']} emitted pixels outside the valid footprint")
                 if ref_fp is not None and np.any(fp & ~ref_fp):
                     problems.append("supplied footprint includes cells outside the reference footprint")
+                if ref_fp is not None and np.any(ref_fp & ~fp):
+                    problems.append("supplied footprint omits valid reference cells")
     out.update(problems=problems, ok=not problems,
                validation_class="local on-disk template/range check; not organizer upload acceptance")
     return out

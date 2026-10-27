@@ -10,8 +10,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_compatibility_validator_never_grants_slot(monkeypatch, capsys):
+    core = ('crs', 'shape', 'transform', 'dtype_and_band', 'values_in_0_1',
+            'no_nan_inside_footprint', 'nan_outside_footprint', 'reread_sha256')
     monkeypatch.setattr(validate_submission, 'run_gates', lambda *a, **k: [
-        GateResult('format', True, 'synthetic unit check')])
+        GateResult(name, True, 'synthetic unit check') for name in core])
     assert validate_submission.main([]) == 1
     output = capsys.readouterr().out
     assert 'FORMAT PASS (local only)' in output

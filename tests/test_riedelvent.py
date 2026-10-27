@@ -210,7 +210,8 @@ def test_riedelvent_rasters_zips_and_audits_pass_all_gates(
 
     res = validate(tif_path, footprint, cat)
     assert_submittable(res)
-    assert len(res["checks"]) == 15 and all(res["checks"].values())
+    assert len(res["checks"]) == 16 and all(res["checks"].values())
+    assert res["checks"]["in_footprint_unmasked"] is True
     with rasterio.open(tif_path) as ds:
         arr = ds.read(1)
     assert int((arr > 0).sum()) == expected_pos
