@@ -245,6 +245,9 @@ def sgmc_proxy(dots_by_arm, grid):
 
 
 def main() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("package_vario:main")
+
     t0 = time.time()
     grid = grid_mod.load_grid(INPUTS / "bridge")
     sample = INPUTS / "bridge" / "sample_submission.tif"

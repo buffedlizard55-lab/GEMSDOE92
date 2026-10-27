@@ -1,0 +1,187 @@
+{
+  "schema": "gemsdoe92-review-b4bb558b-v1",
+  "reviewed_utc": "2026-10-27T17:14:23.493916+00:00",
+  "hypothesis": "LOCAL-WAVENUMBER-CONSENSUS (conditional research idea; no lane assigned and not tested)",
+  "mechanism": "Possible faults may align multi-scale magnetic phase and wavelength boundaries; complementary geological evidence would be needed.",
+  "named_non_fault_mimic": "Lithologic contacts or flight-line and processing artifacts can create similar magnetic boundaries.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "value": null,
+    "ci95": null,
+    "evaluator_version": null,
+    "withheld_positives": null,
+    "reason": "Not run: a pinned registry witness triggers the literal pre-placement stop."
+  },
+  "leakage_canaries": {
+    "status": "not_run",
+    "reason": "No experimental features were generated."
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "One freshly fetched and hash-verified witness; sufficient for rejection, not global uniqueness clearance.",
+    "preplacement_proof": {
+      "schema": "gemsdoe92-preplacement-stop-v2",
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "reviewed_utc": "2026-10-27T17:14:22.839486+00:00",
+      "sample_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "implementation_sha256": "9275f329f394b90b5f80c3fd1d22d8d543879f68df9485ab5f708535958fbca3",
+      "scope": "Single pinned witness; rejection only. No candidate surface was generated or scored.",
+      "witness_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/6fc71d19d49dca4960d5434bd81b6dd06fcc030a/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "grid_checks_pass": true,
+      "footprint_pixels": 5167373,
+      "positive_in_footprint": 5167373,
+      "universal_nonempty_in_footprint_overlap_stop": true,
+      "forward_overlap_for_any_nonempty_in_footprint_dot_set": 1.0,
+      "threshold": 0.7,
+      "verdict": "negative",
+      "submission_eligible": false,
+      "reason": "Every nonempty candidate is a literal registry duplicate; stop before placement."
+    },
+    "forward_overlap_for_any_nonempty_in_footprint_candidate": 1.0,
+    "overlap_threshold": 0.7,
+    "rank_correlation": null,
+    "rank_correlation_reason": "No candidate surface or final dots exist; overlap alone rejects.",
+    "surface_check": "rejected_by_universal_witness_before_surface_creation",
+    "final_dots_check": "not_run_no_new_raster"
+  },
+  "new_unique_tiff_generated": false,
+  "raster_sha256": null,
+  "validator_output": {
+    "new_candidate": {
+      "status": "not_run_no_new_raster",
+      "checks": null
+    },
+    "portal_acceptance": "not tested; local zero-outside-footprint encoding is not proof of portal acceptance"
+  },
+  "submission_name": null,
+  "submission_note": null,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "experiments": 0,
+  "weekly_slots_used": 0,
+  "organizer_confirmed_score": null,
+  "score_estimate": null,
+  "score_estimate_reason": "No organizer score-to-file receipts or valid independent calibration for prospective per-file estimates.",
+  "historical_research_reference": {
+    "file": "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif",
+    "sha256": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573",
+    "status": "research only; DO NOT SUBMIT",
+    "format_pass": true,
+    "format_gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=('float32',) count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nonfinite_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      },
+      {
+        "name": "submission_encoding",
+        "ok": true,
+        "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0; strict distance > radius required"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573"
+      }
+    ],
+    "name_for_this_old_file_only": "GEMSDOE92-VARIO-full-20261025",
+    "note_for_this_old_file_only": "VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat>2",
+    "prior_holdout_dti": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positives": 22663,
+      "value": 0.15002012085424568,
+      "ci95": [
+        0.13497540059406068,
+        0.1642856062511979
+      ],
+      "paired_difference_vs_control_FAULTNET_far": -0.025127271570293264,
+      "paired_difference_ci95": [
+        -0.029305915361244498,
+        -0.02084222808563093
+      ],
+      "source": "evidence/vario_holdout.json",
+      "source_sha256": "5659fb98206353c364db618799884cc99d03f82aa803ee4aefe8d2715f405481",
+      "status": "historical, not rerun here; not an organizer score"
+    }
+  },
+  "input_cache_audit": {
+    "public_receipt": "docs/downloads/input_cache_b4bb558b.json",
+    "receipt_sha256": "0410bb0a0dc2dbf7065f92fb990dc30b6985156d829a164740b217b926a9361d",
+    "reviewed_utc": "2026-10-27T17:20:25.152561+00:00",
+    "verified_pins": 12,
+    "expected_pins": 12,
+    "feature_stack_sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+    "feature_band_count": 19,
+    "grid_and_band_tags_match": true,
+    "official_origin_authenticated": false,
+    "redistribution_rights_verified": false,
+    "cache_persistent": false
+  },
+  "nine_site_rerun": {
+    "receipt": "evidence/focus9_recheck_b4bb558b.json",
+    "receipt_sha256": "4f918f1c7fde7354c1a192402ba10eb9799f086f3024493120a900a47413b9d9",
+    "pairs_checked": 36,
+    "result": "Matches prior corrected row-safe receipt byte for byte; all 36 pairs reject in at least one direction or by absolute rho.",
+    "same_binary_support": [
+      "GEMSDOE25",
+      "GEMSDOE30"
+    ],
+    "scope": "Nine selected historical artifacts only, not a global uniqueness clearance."
+  },
+  "evidence_sources": {
+    "preflight_receipt": "evidence/review_b4bb558b_preflight.json",
+    "preflight_receipt_sha256": "2d791caa93ab9061c293b161de40410dfa5e5c954061eb2684c38435ab8d09f7",
+    "hypotheses": "docs/HYPOTHESES_20261026_SITE_REVIEW.md",
+    "review": "docs/REVIEW_B4BB558B.md"
+  },
+  "limitations": [
+    "No official score receipt or current leaderboard position is verified.",
+    "A fully dense witness creates a rule/representation degeneracy, not proof of scientific sameness.",
+    "Other historical builders remain unaudited; the format writer alone does not establish uniqueness.",
+    "Hardlink publication prevents ordinary overwrite; rollback is not atomic against noncooperating concurrent writers.",
+    "No policy change, lane selection, model fit, submission or weekly slot selection occurred."
+  ]
+}

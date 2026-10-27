@@ -138,6 +138,9 @@ def evaluate_local_uniqueness(
 
 
 def main() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_riedelvalve:main")
+
     t0 = time.time()
     CACHE_LANE.mkdir(parents=True, exist_ok=True)
     log("Step 1/8: Verifying SHA-256 digests of all 19 pinned competition & external inputs...")

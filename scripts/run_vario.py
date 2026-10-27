@@ -64,6 +64,9 @@ def _read_band(path: Path, band: int) -> np.ndarray:
 
 
 def stage_stack() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_vario:stage_stack")
+
     CACHE.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     grid = grid_mod.load_grid(INPUTS / "bridge")
@@ -167,6 +170,9 @@ CANDIDATES = ("vario_full", "vario_smooth", "vario_nctx")
 
 
 def stage_holdout() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_vario:stage_holdout")
+
     CACHE.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     grid = grid_mod.load_grid(INPUTS / "bridge")
@@ -277,6 +283,9 @@ def stage_holdout() -> int:
 
 
 def stage_deploy() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_vario:stage_deploy")
+
     CACHE.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     grid = grid_mod.load_grid(INPUTS / "bridge")

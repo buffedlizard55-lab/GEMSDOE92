@@ -15,6 +15,7 @@ import zipfile
 from pathlib import Path
 
 import numpy as np
+import rasterio
 
 from . import gates, grid
 from .validate import assert_submittable, validate
@@ -61,10 +62,18 @@ def write_submission(path, prediction, sample, footprint, *, note, name,
     path = Path(path)
     if path.suffix.lower() not in {'.tif', '.tiff'}:
         raise ValueError('submission path must end in .tif or .tiff')
-    path.parent.mkdir(parents=True, exist_ok=True)
     sample = Path(sample)
     if not sample.is_file():
         raise FileNotFoundError(f'sample grid does not exist: {sample}')
+    # A caller-supplied mask is not proof of the sample's footprint. Fail
+    # before creating any output if it includes cells invalid in the sample.
+    with rasterio.open(sample) as ref:
+        if ref.count != 1 or ref.crs is None or ref.shape != p.shape:
+            raise ValueError('reference must be a matching single-band grid with CRS')
+        ref_fp = np.isfinite(ref.read(1))
+    if not ref_fp.any() or not fp.any() or np.any(fp & ~ref_fp):
+        raise ValueError('supplied footprint is empty or extends outside the reference footprint')
+    path.parent.mkdir(parents=True, exist_ok=True)
 
     zip_path = path.with_suffix('.zip')
     receipt_path = path.with_suffix('.json')
@@ -120,16 +129,26 @@ def write_submission(path, prediction, sample, footprint, *, note, name,
         )
         tmp_receipt.write_text(json.dumps(receipt, indent=2, allow_nan=False) + '\n', encoding='utf-8')
 
-        # Stage auxiliary files first and commit the TIFF last as the primary artifact.
+        # Commit with atomic create-only links. A competing process can create a
+        # destination after the preliminary existence check; os.replace would
+        # silently destroy it. Sources and destinations share the same directory.
         for source, destination in ((tmp_zip, zip_path), (tmp_receipt, receipt_path), (tmp_tif, path)):
-            os.replace(source, destination)
-            committed.append(destination)
+            stat = source.stat()
+            os.link(source, destination)  # fails if destination already exists
+            committed.append((destination, stat.st_dev, stat.st_ino))
+            # Keep the private hard link until cleanup. Otherwise its inode can
+            # be recycled after a concurrent unlink, defeating the rollback
+            # identity check below.
         return receipt
     except Exception:
-        # A failed validation or serialization must never leave a new partial deliverable.
-        for destination in committed:
+        # Best-effort rollback: check the inode immediately before unlinking.
+        # This is not an atomic conditional unlink; independent writers must
+        # still use distinct output names to avoid a check/unlink race.
+        for destination, dev, ino in committed:
             try:
-                destination.unlink()
+                current = destination.lstat()
+                if (current.st_dev, current.st_ino) == (dev, ino):
+                    destination.unlink()
             except FileNotFoundError:
                 pass
         raise

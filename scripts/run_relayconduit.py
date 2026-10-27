@@ -203,6 +203,9 @@ def load_base_stack(foot: np.ndarray):
 
 
 def stage_stack_and_canary() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_relayconduit:stage_stack_and_canary")
+
     CACHE_LANE.mkdir(parents=True, exist_ok=True)
     log("[Stage 1] Verifying SHA-256 digests of all 19 pinned inputs...")
     inputs = verify_pinned_inputs()
@@ -434,6 +437,9 @@ def _build_3px_nbrs(mask: np.ndarray) -> np.ndarray:
 
 
 def stage_deploy_and_screen() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_relayconduit:stage_deploy_and_screen")
+
     grid = grid_mod.load_grid(CACHE_INPUTS / "bridge")
     foot, cat = grid.footprint, grid.catalogue
     d_cat = distance_transform_edt(~cat)
@@ -661,6 +667,9 @@ def stage_deploy_and_screen() -> int:
 
 
 def stage_holdout_seed(seed: int) -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_relayconduit:stage_holdout_seed")
+
     from gems import coulomb_loqo as cl
 
     inputs = verify_pinned_inputs()
@@ -850,6 +859,9 @@ def stage_holdout_seed(seed: int) -> int:
 
 
 def stage_finalize(elapsed_total: float) -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_relayconduit:stage_finalize")
+
     inputs = verify_pinned_inputs()
     grid = grid_mod.load_grid(CACHE_INPUTS / "bridge")
     foot, cat = grid.footprint, grid.catalogue
@@ -1333,6 +1345,9 @@ def stage_finalize(elapsed_total: float) -> int:
 
 
 def main() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_relayconduit:main")
+
     stage = sys.argv[1] if len(sys.argv) > 1 else "all"
     if stage == "stack":
         return stage_stack_and_canary()

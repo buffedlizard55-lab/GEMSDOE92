@@ -255,6 +255,9 @@ def scan_public_registry_memmap(
 
 
 def main() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_provincetoe:main")
+
     t0 = time.time()
     CACHE.mkdir(parents=True, exist_ok=True)
     DOWNLOADS.mkdir(parents=True, exist_ok=True)

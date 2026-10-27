@@ -180,6 +180,9 @@ def compare_registry(
 
 
 def main() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("finalize_poissonknick:main")
+
     t0 = time.time()
     screen = json.loads(SCREEN_JSON.read_text(encoding="utf-8"))
     hold = json.loads(HOLDOUT_JSON.read_text(encoding="utf-8"))

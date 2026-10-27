@@ -129,7 +129,7 @@ def readiness(card: dict) -> dict:
             evidence_class="REGISTRY-MEASUREMENT",
             operative_sparse=uniq,
             surface_preplacement=card["correlation_overlap_vs_registry"]["surface_preplacement"],
-            literal_disclosure="DUPLICATE UNDER THE LITERAL REGISTRY RULE reading: pinned full-footprint dense registry surfaces give forward overlap 1.0 for every non-empty raster (docs/downloads/review_f23_preflight.json). Operative gate = sparse dot-field registry (<=150k positives) overlap<=0.70 and |rho|<=0.90; both readings are reported in the run card."),
+            literal_disclosure="DUPLICATE UNDER THE LITERAL REGISTRY RULE: the pinned full-footprint witness gives forward overlap 1.0 for every nonempty candidate. The historical sparse-only comparison is diagnostic, not an exception or clearance (docs/downloads/review_b4bb558b_run_card.json)."),
         sgmc_proxy=card["sgmc_proxy"],
         organizer_confirmed_score=None,
         blocking_reasons=card["blocking_reasons"],
@@ -202,6 +202,8 @@ def current_submission(card: dict) -> dict:
         "uniqueness": {
             "unique_operative": bool(uniq["passes"]),
             "duplicates_operative": n_lit,
+            "sparse_only_is_diagnostic": True,
+            "binding_literal_rule": "duplicate; no nonempty candidate can clear the pinned witness",
             "worst_overlap_final": {
                 "value": wo["forward_overlap_within_3px"],
                 "raster": wo["file"],
@@ -263,9 +265,9 @@ def panel_html(card: dict, st: dict) -> str:
 <section id="vario-status" aria-label="Authoritative submission status" style="max-width:70rem;margin:1rem auto;padding:1.25rem;border:3px solid {"#14532d" if promote else "#991b1b"};border-radius:12px;background:{"#f0fdf4" if promote else "#fff7ed"};color:#292524;font:1rem/1.6 system-ui,sans-serif;overflow-wrap:anywhere">
 <h1 style="margin-top:0">GEMSDOE92 VARIO — historical research GeoTIFF; registry-uniqueness gate FAILED</h1>
 <p><strong>{banner}</strong></p>
-<p><a class="btn" href="{e(st["file"])}" data-primary="true" download style="display:inline-block;padding:.8rem 1.1rem;background:{"#14532d" if promote else "#1e3a5f"};color:#fff;border-radius:6px;font-weight:700">⬇ Download {e(Path(st["file"]).name)} (.tif)</a>
-· <a href="{e(card["packaged"][card["primary_arm"]]["zip"].removeprefix("docs/"))}" download>one-TIFF ZIP</a>
-· <a href="vario.html"><strong>Executive summary — exactly how to submit</strong></a>
+<p><a class="btn" href="{e(st["file"])}" data-primary="true" download style="display:inline-block;padding:.8rem 1.1rem;background:{"#14532d" if promote else "#1e3a5f"};color:#fff;border-radius:6px;font-weight:700">⬇ Download historical research TIFF — DO NOT SUBMIT</a>
+· <a href="{e(card["packaged"][card["primary_arm"]]["zip"].removeprefix("docs/"))}" download>one-TIFF ZIP (research only)</a>
+· <a href="vario.html"><strong>Research summary &amp; submission status</strong></a>
 · <a href="downloads/vario_run_card.json">JSON run card</a>
 · <a href="downloads/readiness.json">machine-readable status</a></p>
 <p>Historical name (do not upload): <code>{e(card["submission_name"])}</code><br>
@@ -280,11 +282,11 @@ whole-component holdout; not independently rerun in this review): primary <code>
 best same-draw control <code>{e(hold["best_comparable_control"])}</code>; paired Δ <code>{delta["delta"]:+.6f} [{_fmt(delta["ci95"][0])}, {_fmt(delta["ci95"][1])}]</code>.
 Leakage canaries: max symmetric AUC <code>{card["leakage_canaries"]["max_symmetric_auc"]}</code> (limit 0.90).
 This is a local surrogate, <strong>not</strong> an organizer score; no ORGANIZER-CONFIRMED score exists for this file.</p>
-<p><strong>Uniqueness (REGISTRY-MEASUREMENT):</strong> operative sparse dot-field registry worst overlap
+<p><strong>Uniqueness (REGISTRY-MEASUREMENT):</strong> the historical sparse-only diagnostic recorded worst overlap
 <code>{wo.get("forward_overlap_within_3px")}</code> (limit 0.70, vs {e(str(wo.get("file")))}) and worst |ρ|
-<code>{abs(wr.get("spearman", 0.0))}</code> (limit 0.90). Disclosure: DUPLICATE UNDER THE LITERAL REGISTRY RULE
-reading is unavoidable for any non-empty raster because pinned dense registry surfaces cover the full
-footprint (overlap 1.0); both readings are in the run card.</p>
+<code>{abs(wr.get("spearman", 0.0))}</code> (limit 0.90). It is not a clearance or exception.
+DUPLICATE UNDER THE LITERAL REGISTRY RULE is binding for any nonempty raster because the pinned witness covers the full
+footprint (overlap 1.0).</p>
 <ul>{reasons}</ul>
 <p>Sibling experiment arms (research only, DO NOT SUBMIT): {sibs}. Weekly slots used by this session: 0 —
 {"promotion is to the separate selector step within the verified weekly cap." if promote else "no slot is authorized by this artifact."}
@@ -312,7 +314,7 @@ The pre-registered VARIO lane generated this historical research GeoTIFF on 2026
 
 [Download {Path(f).name}]({f}) · name `{card["submission_name"]}` · note ({card["note_chars"]}/140) `{card["note"]}` · SHA-256 `{card["raster_sha256"]}`
 
-Automated validation (no human inspection): finite [0, 1] everywhere (the portal "Predicted values must be in range [0, 1]" check), no NaN in footprint, zeros outside, exact CRS/shape/transform. **HOLDOUT-DTI** ({hold["evaluator_version"]}, {prim["withheld_positive_pixels"]} withheld): `{prim["dti"]:.6f} [{prim["ci95"][0]:.6f}, {prim["ci95"][1]:.6f}]`; paired Δ vs best control `{hold["best_comparable_control"]}`: `{delta["delta"]:+.6f} [{delta["ci95"][0]:.6f}, {delta["ci95"][1]:.6f}]`. No ORGANIZER-CONFIRMED score; GEMSDOE32 0.2778 and all site-inventory scores remain CLAIMs. Literal dense-registry disclosure and operative sparse uniqueness are both in the run card. Historical banners below are archives, not current clearance.
+Automated validation (no human inspection): finite [0, 1] everywhere (the portal "Predicted values must be in range [0, 1]" check), no NaN in footprint, zeros outside, exact CRS/shape/transform. **HOLDOUT-DTI** ({hold["evaluator_version"]}, {prim["withheld_positive_pixels"]} withheld): `{prim["dti"]:.6f} [{prim["ci95"][0]:.6f}, {prim["ci95"][1]:.6f}]`; paired Δ vs best control `{hold["best_comparable_control"]}`: `{delta["delta"]:+.6f} [{delta["ci95"][0]:.6f}, {delta["ci95"][1]:.6f}]`. No ORGANIZER-CONFIRMED score; GEMSDOE32 0.2778 and all site-inventory scores remain CLAIMs. The literal dense-registry stop is binding; the historical sparse-only comparison is diagnostic, not clearance. Historical banners below are archives, not current clearance.
 
 {END}'''
 

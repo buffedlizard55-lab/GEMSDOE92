@@ -264,6 +264,9 @@ def package(
 
 
 def main() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("finalize_poissonflex:main")
+
     ap = argparse.ArgumentParser()
     ap.add_argument("--no-public", action="store_true")
     ap.add_argument("--max-public", type=int, default=0, help="0 = all cached blobs")

@@ -96,6 +96,9 @@ def surface_and_dots(proba, L_topo, L_sub, valid, foot, d_ref, arms_min_d):
 
 
 def stage_holdout() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_faultnet:stage_holdout")
+
     CACHE.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     grid = grid_mod.load_grid(INPUTS / "bridge")
@@ -190,6 +193,9 @@ def stage_holdout() -> int:
 
 
 def stage_deploy() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_faultnet:stage_deploy")
+
     CACHE.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     grid = grid_mod.load_grid(INPUTS / "bridge")
@@ -221,6 +227,9 @@ def stage_farcontrol() -> int:
     emission-halo effect, because the instrument's 3 px context collar puts every withheld truth
     pixel > 3 px from the visible catalogue by construction.
     """
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_faultnet:stage_farcontrol")
+
     t0 = time.time()
     grid = grid_mod.load_grid(INPUTS / "bridge")
     foot = grid.footprint

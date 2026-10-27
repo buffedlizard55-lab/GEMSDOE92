@@ -1,5 +1,11 @@
 
-## Current session addendum — 2026-10-26 (nine-site forensic audit + `SALEMSEISMO` lane, branch `arena/18da04a8-gemsdoe92`)
+## Current session addendum — 2026-10-27 (branch `arena/b4bb558b-gemsdoe92`)
+
+Read [`docs/REVIEW_B4BB558B.md`](docs/REVIEW_B4BB558B.md), the [nine-site executive page](docs/focus9.html), the [negative run card](docs/downloads/review_b4bb558b_run_card.json), and the [input audit](docs/downloads/input_cache_b4bb558b.json). **DO NOT SUBMIT:** the freshly fetched and hash-verified dense witness is positive on all 5,167,373 sample-footprint pixels. Every nonempty candidate's literal forward overlap is 1.000 > 0.70. Stop before a candidate surface or placement; no new candidate, experiment, holdout or slot was created in this session. No distinct method lane was assigned. A policy owner must explicitly resolve the representation conflict before experimentation; do not silently weaken the protocol.
+
+Twelve pinned owner-mirror inputs and the 19-band grid/tags were restored and checked in an ignored, ephemeral cache. This proves mirror identity, **not** organizer origin, redistribution rights or submission eligibility. Thirty-six nine-site pairwise comparisons were rerun and match the previous corrected receipt. GEMSDOE32's 0.2778 remains an owner CLAIM without a score-to-raster receipt. Shared summaries/writer and many historical entrypoints were hardened, but other historical builders remain unaudited. Old instructions below that say to run disabled historical scripts or publish score estimates are historical and **must not be followed**. Keep the shared whole-segment holdout, visible-fault-only features, exact literal overlap/rank gates, leakage canaries and separate selector; preserve both Maximize P(Win) and Own the Outcome.
+
+## Historical session addendum — 2026-10-26 (nine-site forensic audit + `SALEMSEISMO` lane, branch `arena/18da04a8-gemsdoe92`)
 
 Read [`docs/focus9.html`](docs/focus9.html) first: receipt-driven executive summary for
 GEMSDOE24/25/27/28/30/31/32/33/36 plus the download / estimate / uniqueness table. Machine receipts:

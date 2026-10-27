@@ -246,7 +246,7 @@
       "rho_limit": 0.9,
       "passes": true
     },
-    "literal_disclosure": "DUPLICATE UNDER THE LITERAL REGISTRY RULE reading: pinned full-footprint dense registry surfaces give forward overlap 1.0 for every non-empty raster (docs/downloads/review_f23_preflight.json). Operative gate = sparse dot-field registry (<=150k positives) overlap<=0.70 and |rho|<=0.90; both readings are reported in the run card."
+    "literal_disclosure": "DUPLICATE UNDER THE LITERAL REGISTRY RULE: the pinned full-footprint witness gives forward overlap 1.0 for every nonempty candidate. The historical sparse-only comparison is diagnostic, not an exception or clearance (docs/downloads/review_b4bb558b_run_card.json)."
   },
   "sgmc_proxy": {
     "evidence_class": "PROXY (off-catalogue USGS SGMC bedrock faults; report-only, not a gate)",

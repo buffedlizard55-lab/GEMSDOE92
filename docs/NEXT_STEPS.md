@@ -1,4 +1,14 @@
-# Next steps — 2026-10-26 (after the nine-site audit and the `SALEMSEISMO` lane)
+# Current next steps — 2026-10-27
+
+**DO NOT SUBMIT; no candidate is eligible.** Read the [current review](REVIEW_B4BB558B.md), [negative run card](downloads/review_b4bb558b_run_card.json) and [nine-site summary](focus9.html). The freshly verified dense witness blocks every nonempty candidate before placement. An authorized policy decision and an assigned method lane are prerequisites to any new experiment; do not make a sparse-only exception.
+
+The 12 pinned owner-mirror inputs were restored to an ephemeral ignored cache and verified, but organizer origin and redistribution rights are unverified. If legitimately unblocked, rebuild the complete exact-rank/overlap checks and fold-local holdout with leakage canaries, then compare against the best same-instrument control; use a separate selector only after every gate passes. **Resolving the policy alone does not promote any historical file**, including SALEMSEISMO. Its old runner scanned after placement and its static holdout analyses are not prospective. The old claim-trained score estimates and the suggestion that one receipt calibrates them are unsupported and superseded. Other historical builders remain unaudited.
+
+---
+
+# Historical next steps — 2026-10-26 (after the nine-site audit and the `SALEMSEISMO` lane)
+
+> The historical recommendations below are retained as an archive and are not current instructions; follow the 2026-10-27 decision above.
 
 **Read `docs/focus9.html` first** — it is regenerated from committed JSON by
 `scripts/render_focus9_page.py`, so it cannot drift from the evidence.

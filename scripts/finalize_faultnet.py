@@ -78,6 +78,9 @@ def write_audits(card: dict) -> None:
 
 
 def main() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("finalize_faultnet:main")
+
     if "--audit-only" in sys.argv:
         write_audits(json.loads((EV / "faultnet_run_card.json").read_text()))
         return 0

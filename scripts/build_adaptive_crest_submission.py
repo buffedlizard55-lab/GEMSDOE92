@@ -87,6 +87,9 @@ def read_dots(path: Path) -> np.ndarray:
 
 
 def main() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("build_adaptive_crest_submission:main")
+
     grid = grid_mod.load_grid(ROOT / "data" / "bridge")
     foot = grid.footprint
     cat = grid.catalogue

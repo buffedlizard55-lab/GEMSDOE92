@@ -182,6 +182,9 @@ def evaluate_hide_and_recover(grid, surface, valid, r0_arr, arms_dots):
 
 
 def main() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("build_radiodecouple_submission:main")
+
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--date", default="20261025", help="date string for filenames")
     args = ap.parse_args()

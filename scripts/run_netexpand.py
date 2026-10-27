@@ -61,6 +61,9 @@ def read_bands(ids):
 
 
 def stage_stack() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_netexpand:stage_stack")
+
     CACHE.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     grid = grid_mod.load_grid(INPUTS / "bridge")
@@ -160,6 +163,9 @@ def orig_dots(proba, arr, valid, foot, d_ref, mind=2.0):
 
 
 def stage_holdout() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_netexpand:stage_holdout")
+
     t0 = time.time()
     grid = grid_mod.load_grid(INPUTS / "bridge")
     foot, cat = grid.footprint, grid.catalogue
@@ -265,6 +271,9 @@ def stage_holdout() -> int:
 
 
 def stage_deploy() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_netexpand:stage_deploy")
+
     t0 = time.time()
     grid = grid_mod.load_grid(INPUTS / "bridge")
     foot, cat = grid.footprint, grid.catalogue
