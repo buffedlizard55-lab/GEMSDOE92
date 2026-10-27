@@ -1,5 +1,10 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+## Current verified review — 2026-10-27
+
+**⛔ DO NOT SUBMIT. No new TIFF generated; no weekly slot used.** The literal duplicate STOP was independently reproduced from the pinned public witness. [Three-pass review](docs/REVIEW_20261027_A3DCC0DD.md) · [fresh JSON run card](docs/downloads/review_a3dcc0dd_run_card.json) · [nine-site executive download/estimate/uniqueness table](docs/focus9.html). Engineering verification: **636 tests passed**; site checker **PASS (123 served research rasters)**. No new HOLDOUT-DTI or organizer score. Historical headings below do not override this decision.
+
+
 ## Latest repository audit — 2026-10-26
 
 Read the [latest three-pass review](docs/REVIEW_14F85876.md) and the [earlier branch review](docs/REVIEW_20261026_ARENA_0C5D848E.md) (historical score estimates superseded) for the nine-site comparison, evidence labels, tests, and remaining blockers. **No new TIFF was generated in either audit; do not submit any research artifact.** The durable project aim and full operating prompt remain below; read them at the start of every session.
