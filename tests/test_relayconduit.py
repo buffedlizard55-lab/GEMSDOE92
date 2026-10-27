@@ -230,7 +230,7 @@ def test_relayconduit_run_card_artifacts_ledger_and_site_contracts():
         foot = np.isfinite(ref.read(1))
 
     ledger_by_id = {r["id"]: r for r in ledger_mod.load()}
-    index_html = (DOCS / "index.html").read_text(encoding="utf-8")
+    index_html = (DOCS / "archive.html").read_text(encoding="utf-8")
     exec_html = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
     submit_html = (DOCS / "SUBMIT.html").read_text(encoding="utf-8")
     subpage_html = (DOCS / "relayconduit.html").read_text(encoding="utf-8")
@@ -291,7 +291,7 @@ def test_relayconduit_run_card_artifacts_ledger_and_site_contracts():
     import re
     for page in (
         ROOT / "README.md",
-        DOCS / "index.html",
+        DOCS / "archive.html",
         DOCS / "executive-summary.html",
         DOCS / "SUBMIT.html",
         DOCS / "relayconduit.html",

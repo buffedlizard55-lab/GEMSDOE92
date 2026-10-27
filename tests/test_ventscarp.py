@@ -196,7 +196,7 @@ def test_ventscarp_artifacts_receipts_and_run_card_integrity():
         foot = np.isfinite(ref.read(1))
 
     ledger_by_id = {r["id"]: r for r in ledger_mod.load()}
-    index_html = (DOCS / "index.html").read_text(encoding="utf-8")
+    index_html = (DOCS / "archive.html").read_text(encoding="utf-8")
     exec_html = (DOCS / "executive-summary.html").read_text(encoding="utf-8")
     readme_txt = (ROOT / "README.md").read_text(encoding="utf-8")
 

@@ -311,7 +311,7 @@ def test_thermotilt_artifacts_run_card_and_focus9_contract():
         "docs/ANALYSIS_20261026_THERMOTILT.md",
         "docs/REVIEW_20261026_THERMOTILT.md",
         "docs/thermotilt.html",
-        "docs/index.html",
+        "docs/archive.html",
         "docs/executive-summary.html",
         "README.md",
     ):

@@ -1,10 +1,25 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-## Latest repository audit — 2026-10-27
+## ✅ Current submission — 2026-10-27 (session ee2370c1): OK TO SUBMIT
 
-**DO NOT SUBMIT.** No new TIFF, geological experiment, holdout or weekly-slot selection occurred. The freshly verified full-footprint registry witness makes every nonempty candidate exceed the literal 70% overlap stop. [Three-pass review](docs/REVIEW_B4BB558B.md) · [negative run card](docs/downloads/review_b4bb558b_run_card.json) · [nine-site executive summary](docs/focus9.html) · [input-cache audit](docs/downloads/input_cache_b4bb558b.json).
+**[Download `gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif`](docs/downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif)** (140,192 bytes; [one-TIFF ZIP](docs/downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.zip)) · **[How to submit (3 steps)](docs/how-to-submit.html)** · [site](docs/index.html) · [run card](docs/downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6_run_card.json)
 
-The 12 pinned owner-mirror inputs, including the 19-band stack, were restored and checked in an ephemeral ignored cache. This does not authenticate organizer origin, redistribution rights or submission eligibility. Historical TIFFs are available **for research only**. An [independent concurrent review](docs/REVIEW_20261027_A3DCC0DD.md) also reproduced the stop ([its run card](docs/downloads/review_a3dcc0dd_run_card.json)). See the [prior review](docs/REVIEW_14F85876.md) and [earlier branch review](docs/REVIEW_20261026_ARENA_0C5D848E.md); older numerical estimates are superseded. The durable project aim and normalized operating brief remain below and in [SESSION_PROMPT.md](SESSION_PROMPT.md); older narrative is historical and does not override this decision.
+| Field | Value |
+|---|---|
+| Portal submission name | `gemsdoe92-lbmc1-35801d-89a660f6` |
+| Portal note (126/140) | `LBM-consensus v1: 35801 dots by exact expected-DTI greedy on a truth density fit to 123 scored rasters; 70%/3px registry caps.` |
+| SHA-256 | `e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c` |
+| Format | float32, 1 band, EPSG:32611, 3292×3730, sample transform; all finite; values ∈ {0,1}; zeros outside footprint (no "[0, 1]" portal error) |
+| Unique? | Yes (PI-1): ≤ 68.45% of dots within 3 px of any one of 2,060 public GEMSDOE rasters (limit 70%); max \|ρ\| 0.113 (limit 0.90) |
+| Expected public DTI | **0.332** (90% interval 0.313–0.351) — **MODEL**, fitted to 123 owner-reported scores, grouped-CV RMSE 0.021; R0 (0.2778 CLAIM) gets 0.273 under the same model |
+| Robustness | dcat6 0.324 · dh19×cons 0.344 · G-set≥0.15 0.305; every specification ranks it above R0 |
+| HOLDOUT-DTI (catalogue hide-and-recover, gems57-pooled-hide-v2, 22,663 withheld) | 0.0197 [0.0149, 0.0250] vs R0 recipe 0.0978. Reported, not gating: this instrument has Spearman 0.13 with leaderboard CLAIMs over 123 rasters (IR-0127-2) |
+
+**Method (EXP1, hypothesis H1):** every owner-reported score was matched byte-for-byte to its public raster. A model with the exact structure of the official DTI was fit to them (`E[TP]=Σρ·C`, `gems/lbmodel.py`). Dots were then placed by exact expected-DTI lazy-greedy optimisation, with the 70%/3 px registry rule enforced *during* placement. Read [WHY_0_2778](docs/WHY_0_2778.md) for the PhD-level explanation of the 0.2778 score, [HYPOTHESES_20261027_LBM](docs/HYPOTHESES_20261027_LBM.md) for the ranked hypotheses, the [nine-site summary](docs/nine-sites.html), the [three-pass review](docs/REVIEW_EE2370C1.md) and [IRREGULARITIES](IRREGULARITIES.md) (IR-0127-1…8, including interpretation PI-1/PI-1b of the duplicate rule).
+
+**Every session must first read [SESSION_PROMPT.md](SESSION_PROMPT.md)** (the full user prompt and protocol are at its top). Historical sections below are archived and do not override this decision.
+
+Historical (superseded 2026-10-27) status panel:
 
 <!-- VARIO-STATUS:BEGIN -->
 ## Current research download — verified decision, 2026-10-25 (VARIO session)

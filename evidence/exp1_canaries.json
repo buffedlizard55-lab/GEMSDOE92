@@ -1,0 +1,86 @@
+{
+ "schema": "gemsdoe92-exp1-canaries-v1",
+ "threshold": 0.9,
+ "pooled_auc": {
+  "neg_dcat_visible": 0.7531976346633279,
+  "neg_dist_h19": 0.6328468062894366,
+  "consensus_count": 0.5618240374729736,
+  "lbm_rho": 0.27726473878127345
+ },
+ "per_fold": [
+  {
+   "seed": 20,
+   "fold": "NW",
+   "positives": 1923,
+   "neg_dcat_visible": 0.7934772776911077,
+   "neg_dist_h19": 0.6571170709828393,
+   "consensus_count": 0.5948473816952679,
+   "lbm_rho": 0.25787543161726467
+  },
+  {
+   "seed": 20,
+   "fold": "NE",
+   "positives": 2367,
+   "neg_dcat_visible": 0.7743577682720744,
+   "neg_dist_h19": 0.672566393113646,
+   "consensus_count": 0.6072482319391636,
+   "lbm_rho": 0.29470613012251795
+  },
+  {
+   "seed": 20,
+   "fold": "SW",
+   "positives": 3781,
+   "neg_dcat_visible": 0.7472452757207088,
+   "neg_dist_h19": 0.6080234726262893,
+   "consensus_count": 0.5179545517058979,
+   "lbm_rho": 0.25665355329277967
+  },
+  {
+   "seed": 20,
+   "fold": "SE",
+   "positives": 3250,
+   "neg_dcat_visible": 0.7072030446153846,
+   "neg_dist_h19": 0.62553959,
+   "consensus_count": 0.5276360961538461,
+   "lbm_rho": 0.30433593384615387
+  },
+  {
+   "seed": 30,
+   "fold": "NW",
+   "positives": 1919,
+   "neg_dcat_visible": 0.8031938288170922,
+   "neg_dist_h19": 0.674485746482543,
+   "consensus_count": 0.5868230289213132,
+   "lbm_rho": 0.25772171182907766
+  },
+  {
+   "seed": 30,
+   "fold": "NE",
+   "positives": 2356,
+   "neg_dcat_visible": 0.7213774119269949,
+   "neg_dist_h19": 0.7009219439728354,
+   "consensus_count": 0.6174586014431239,
+   "lbm_rho": 0.3762869673174873
+  },
+  {
+   "seed": 30,
+   "fold": "SW",
+   "positives": 3805,
+   "neg_dcat_visible": 0.7130920663600525,
+   "neg_dist_h19": 0.6057904310118265,
+   "consensus_count": 0.5164315886990801,
+   "lbm_rho": 0.2868943488830486
+  },
+  {
+   "seed": 30,
+   "fold": "SE",
+   "positives": 3262,
+   "neg_dcat_visible": 0.7584600666768854,
+   "neg_dist_h19": 0.5718032794297977,
+   "consensus_count": 0.5313335714285714,
+   "lbm_rho": 0.24277967581238505
+  }
+ ],
+ "max_auc": 0.7531976346633279,
+ "leakage_flag": false
+}

@@ -229,7 +229,7 @@ def test_riedelvalve_run_card_and_three_geotiff_artifacts():
     with (ROOT / "ledger" / "submissions.csv").open(encoding="utf-8") as f:
         ledger_ids = {r["id"] for r in csv.DictReader(f)}
     mc = json.loads((ROOT / "ledger" / "mechanism_cards.json").read_text(encoding="utf-8"))
-    index_html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
+    index_html = (ROOT / "docs" / "archive.html").read_text(encoding="utf-8")
     exec_html = (ROOT / "docs" / "executive-summary.html").read_text(encoding="utf-8")
     readme_md = (ROOT / "README.md").read_text(encoding="utf-8")
     for arm, art in rc["artifacts"].items():

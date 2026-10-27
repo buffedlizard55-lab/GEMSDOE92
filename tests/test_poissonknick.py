@@ -210,7 +210,7 @@ def test_poissonknick_receipts_and_tifs_are_valid_and_consistent():
         assert uniq["by_arm"][arm]["public"]["duplicate"] is True
 
     # Verify all 3 GeoTIFFs and audit JSONs on disk
-    from scripts.check_site import check_recorded_gates
+    from scripts.check_site_legacy_20261026 import check_recorded_gates
 
     for arm, info in card["all_arms"].items():
         tif_path = ROOT / info["file"]
@@ -248,6 +248,6 @@ def test_poissonknick_receipts_and_tifs_are_valid_and_consistent():
     assert card["raster_sha256"] in subpage
     assert card["submission_name"] in subpage
     assert "OK TO DOWNLOAD" in subpage and "DO NOT SUBMIT" in subpage
-    for doc_rel in ("README.md", "docs/index.html", "docs/executive-summary.html", "docs/SUBMIT.html"):
+    for doc_rel in ("README.md", "docs/archive.html", "docs/executive-summary.html", "docs/SUBMIT.html"):
         txt = (ROOT / doc_rel).read_text(encoding="utf-8")
         assert "POISSONKNICK:BEGIN" in txt and card["raster_sha256"] in txt

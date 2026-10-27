@@ -118,8 +118,12 @@ def test_markdown_lane_cannot_precede_current_decision(card, page):
 
 
 def test_site_publication_gate_includes_current_status():
+    # 2026-10-27: the publication gate re-renders the evidence-bound v3 site; the
+    # legacy VARIO-status checker is preserved verbatim as check_site_legacy_20261026.py.
     src = (ROOT / "scripts/check_site.py").read_text()
-    assert "render_vario_status" in src and "VARIO-STATUS:BEGIN" in src
+    assert "render_site_v3" in src and "data-primary" in src
+    legacy = (ROOT / "scripts/check_site_legacy_20261026.py").read_text()
+    assert "render_vario_status" in legacy and "VARIO-STATUS:BEGIN" in legacy
 
 
 def test_rederivation_rejects_tampered_tiff(tmp_path):

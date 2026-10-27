@@ -1,0 +1,66 @@
+{
+ "schema": "gemsdoe92-lbm-estimates-v1",
+ "evidence_class": "MODEL (not an organizer score)",
+ "candidates": {
+  "final_sel": {
+   "n_dots": 35801,
+   "estimates": {
+    "lbm_v1": 0.33222448062968196,
+    "dcat6": 0.3240734743691548,
+    "dh19xcons": 0.34443594113780795,
+    "gset015": 0.3048009624141118
+   },
+   "bootstrap": {
+    "draws": 200,
+    "q025": 0.30817449297256927,
+    "q05": 0.3127356177214197,
+    "median": 0.3322941326465418,
+    "q95": 0.3506399063283861,
+    "q975": 0.3530819487221535,
+    "delta_vs_R0": {
+     "median": 0.05810866178611723,
+     "q025": 0.040749475847049015,
+     "q05": 0.04252605508803353,
+     "q975": 0.07582402545343842,
+     "p_gt0": 1.0
+    }
+   }
+  },
+  "R0_reference": {
+   "n_dots": 37654,
+   "estimates": {
+    "lbm_v1": 0.2728441765413904,
+    "dcat6": 0.2736127399570012,
+    "dh19xcons": 0.2745118669387474,
+    "gset015": 0.27313520686804954
+   },
+   "bootstrap": {
+    "draws": 200,
+    "q025": 0.2599338167541585,
+    "q05": 0.26447210064632093,
+    "median": 0.2730215667778131,
+    "q95": 0.2885401933244043,
+    "q975": 0.29461515163603824,
+    "delta_vs_R0": {
+     "median": 0.0,
+     "q025": 0.0,
+     "q05": 0.0,
+     "q975": 0.0,
+     "p_gt0": 0.0
+    }
+   }
+  }
+ },
+ "validation": {
+  "logo_rmse_all": 0.020559865698063992,
+  "logo_spearman_all": 0.9636133809057784,
+  "logo_rmse_h19_family": 0.005996343111968729,
+  "logo_bias_h19_family": 0.005115193178888042,
+  "logo_rmse_non_gset": 0.01735549062662101,
+  "logo_rmse_gset": 0.042374542277889234,
+  "logo_q95_abs_error": 0.03853063954759529,
+  "n_rows": 123,
+  "n_groups": 81
+ },
+ "notes": "Point estimates and bootstrap quantiles are MODEL outputs fitted to owner-reported CLAIMs. Grouped LOGO RMSE (validation) is the honest per-raster error scale; extrapolation beyond the class composition of scored rasters adds unquantified error."
+}

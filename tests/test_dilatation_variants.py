@@ -165,7 +165,7 @@ def test_current_primary_download_is_tracked_and_gate_passed() -> None:
 
 
 def test_site_offers_primary_download_and_exact_submission_fields() -> None:
-    html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
+    html = (ROOT / "docs" / "archive.html").read_text(encoding="utf-8")
     assert "OK TO DOWNLOAD" in html
     assert "GEMSDOE92-visible-collar-r0-excluded-20261024-zeros.tif" in html
     assert "GEMSDOE92-visible-collar-r0-excluded-20261024" in html
@@ -177,7 +177,7 @@ def test_site_offers_primary_download_and_exact_submission_fields() -> None:
 
 
 def test_site_discloses_literal_duplicate_stop_and_evidence_boundary() -> None:
-    html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
+    html = (ROOT / "docs" / "archive.html").read_text(encoding="utf-8")
     assert "NOT CLEARED FOR A WEEKLY SLOT" in html
     assert "DUPLICATE UNDER THE LITERAL REGISTRY RULE" in html
     assert "5,167,373" in html

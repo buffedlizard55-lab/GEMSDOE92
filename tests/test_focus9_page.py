@@ -95,13 +95,15 @@ def test_salemseismo_arms_are_gate_clean_unique_and_byte_bound():
 
 
 def test_index_surfaces_the_new_lane_and_the_executive_summary():
-    text = (DOCS / "index.html").read_text(encoding="utf-8")
+    text = (DOCS / "archive.html").read_text(encoding="utf-8")
     card = _load("salemseismo_run_card.json")
     assert Path(card["candidate_file"]).name in text
     assert "focus9.html" in text
     assert "SALEMSEISMO" in text
-    # the new section must not compete for the machine-readable primary anchor
-    assert text.count('data-primary="true"') == 1
+    # archived sections must not compete for the machine-readable primary anchor,
+    # which lives only on the v3 docs/index.html (2026-10-27)
+    assert text.count('data-primary="true"') == 0
+    assert (DOCS / "index.html").read_text(encoding="utf-8").count('data-primary="true"') == 1
 
 
 def test_score_estimator_is_reproducible_from_committed_receipts():

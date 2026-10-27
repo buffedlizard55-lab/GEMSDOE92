@@ -376,7 +376,7 @@ def test_poissonflex_synchronized_across_readme_site_and_ledger():
         "docs/REVIEW_CURRENT.md",
         "docs/NEXT_STEPS.md",
         "docs/ANALYSIS_20261025_POISSONFLEX.md",
-        "docs/index.html",
+        "docs/archive.html",
         "docs/executive-summary.html",
         "docs/SUBMIT.html",
         "docs/HYPOTHESES.html",

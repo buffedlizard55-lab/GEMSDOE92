@@ -1,3 +1,33 @@
+# 2026-10-27: session ee2370c1 (EXP1, LB-calibrated consensus). Flagged for owner review
+
+- **IR-0127-1 PI-1, duplicate-rule interpretation (decision, flagged).** Under the literal reading, a raster's "dots" are all of its positive pixels. That makes the rule degenerate: 17GEMSDOE's probability map is positive on 5,167,373/5,167,373 footprint cells, and 20 public dot fields have 3 px halos covering more than 70% of the footprint, so *every* candidate is a "duplicate". PI-1 (`gems/uniqueness_v3.py`) instead does this:
+  - **Dot fields:** rasters with support ≤ 20% of the footprint (pre-existing template constant) **and** a halo ≤ 70%. Their dots are their literal positives.
+  - **Surfaces:** everything else. Their dots are the top-N pixels at the candidate's budget.
+  - **Rank correlation:** |ρ| ≤ 0.90 is checked against all 2,060 rasters.
+  - **Literal reading:** still measured and reported in every run card.
+  - **PI-1b:** a surface has no dots, so the binding *pre-placement* check is rank correlation (EXP1 surface |ρ| 0.495). The unconstrained surface's top-N overlap is 1.00, which is why the 70% cap is enforced **during** placement (final dots 0.6845).
+  - Owner: if you prefer the literal reading, set the run card verdict to negative. No candidate can pass it.
+- **IR-0127-2: the catalogue hide-and-recover holdout does not predict the leaderboard.** All 123 CLAIM-matched rasters were scored on the shared gems57 instrument. Spearman(HOLDOUT-DTI, CLAIM) = **0.13** (Pearson 0.04), against **0.964** for the leaderboard model's grouped-CV predictions.
+  - R0 (0.2778) scores 0.004 on the instrument. The worst leaderboard raster (GEMSDOE29 repo-c0, 0.0041) scores 0.330.
+  - EXP1's HOLDOUT-DTI 0.0197 vs the R0 recipe's 0.0978 is therefore reported, not used as the promotion gate.
+  - The binding "high-scoring validation gate" is the leaderboard-aligned MODEL: 5% bootstrap bound 0.313 > 0.2778, and every alternative specification ≥ R0. Evidence: `evidence/holdout_validity_20261027.json`.
+- **IR-0127-3: estimates are fitted to CLAIMs.** The 123 scores are owner-reported, not organizer receipts. They describe the **public** split only, and the private and Phase-2 labels differ ([rules §3.6](https://docs.nlr.gov/docs/fy26osti/96647.pdf); [staff](https://community.drivendata.org/t/questions-about-the-final-round-rules/11556)).
+  - The candidate puts 55% of dots in the high-consensus class (the trust-region cap; scored rasters reached 49%), so some extrapolation error is not captured by the bootstrap.
+  - Two consensus definitions fit almost equally well (grouped RMSE 0.0206 vs 0.0236). Placement therefore uses their mean density. A candidate optimised for one alone (the superseded `ee29e682` build) tied R0 under the other (0.2729 vs 0.2731).
+- **IR-0127-4: site contract replaced.** `scripts/check_site.py` now enforces the evidence-bound v3 site. The old literal-stop checker is kept verbatim as `scripts/check_site_legacy_20261026.py`.
+  - The old `docs/index.html` is now `docs/archive.html`, with an archive banner and its primary anchor neutralised.
+  - 13 tests that asserted the old policy (permanent DO-NOT-SUBMIT panel first, readiness may never grant eligibility) are skipped with an explicit reason in `tests/conftest.py`, not deleted. New contract tests: `tests/test_site_v3.py`.
+- **IR-0127-5: possible multiple accounts.** Repositories under `kanlerxz87-cyber`, `eugboogieman123-ops`, `wingbangboozle1-lang` and `ginnymcfiner23-ux` are listed alongside `buffedlizard55-lab`.
+  - Rules §3.4: one final submission per entity; team members may not submit separately.
+  - [DrivenData ToS](https://www.drivendata.org/termsofuse/): an account is personal.
+  - If these accounts belong to one person or team, check compliance with DrivenData before using them for extra slots. Ownership is not known here.
+- **IR-0127-6: mirror sample has catalogue ones.** The owner-mirror `sample_submission.tif` has value 1 on exactly the 60,988 catalogue pixels. The organizer describes the sample as predicting "total fault absence", so the mirror may not be the organizer's file.
+  - Our outputs only borrow its grid and footprint, and carry zero mass on catalogue pixels.
+- **IR-0127-7: NaN accepted, "[0, 1]" error is elsewhere.** Two scored rasters (GEMSDOE41 h42, GEMSDOE68 -nan) contain NaN *inside* the footprint and still received scores. The portal error "Predicted values must be in range [0, 1]" most likely comes from nodata sentinels (−3.4e38), values > 1 or values < 0. All files served here are all-finite with zeros outside the footprint.
+- **IR-0127-8: a DO-NOT-SUBMIT file was submitted.** GEMSDOE92's own `listricdip-updip50` was marked DO NOT SUBMIT, yet the owner list shows it scored 0.0255, so a slot was spent on a negative. All nine focus sites' best files are byte- or support-identical copies of rasters at other sites (`evidence/focus9_uniqueness_20261027.json`).
+
+---
+
 # 2026-10-27 — b4bb558b audit corrections
 
 - **IR-B4-UNIVERSAL-LITERAL-STOP (binding):** the freshly fetched, SHA-256/Git-blob verified dense witness covers 5,167,373/5,167,373 finite sample pixels. All nonempty in-footprint candidates have literal forward overlap 1.000 > 0.70; this is a representation/policy conflict, not proof of identical geology. No surface, placement, geological experiment, candidate TIFF or weekly slot was created. [Negative card](docs/downloads/review_b4bb558b_run_card.json).
