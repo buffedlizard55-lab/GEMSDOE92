@@ -443,6 +443,9 @@ def evaluate_against_public_index(
 
 
 def main() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_riedelvent:main")
+
     t0 = time.time()
     CACHE_LANE.mkdir(parents=True, exist_ok=True)
     EVIDENCE.mkdir(parents=True, exist_ok=True)

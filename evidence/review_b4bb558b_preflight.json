@@ -1,0 +1,125 @@
+{
+  "schema": "gemsdoe92-readiness-audit-v1",
+  "reviewed_utc": "2026-10-27T17:14:23.493916+00:00",
+  "hypothesis": "No assigned geological lane; pre-placement protocol audit only.",
+  "mechanism": "The pinned registry positive support covers every finite template pixel.",
+  "named_non_fault_mimic": "Not applicable: no geological inference was performed.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "value": null,
+    "ci95": null,
+    "evaluator_version": null,
+    "withheld_positives": null,
+    "reason": "Not run: universal literal duplicate STOP before feature generation or placement."
+  },
+  "leakage_canaries": {
+    "status": "not_run",
+    "reason": "No features generated after STOP."
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "forward_overlap_for_any_nonempty_in_footprint_candidate": 1.0,
+    "overlap_threshold": 0.7,
+    "rank_correlation": null,
+    "rank_correlation_reason": "Not needed for rejection; no surface or final dots generated.",
+    "scope": "One hash-pinned witness; sufficient to reject, never to certify uniqueness.",
+    "preplacement_proof": {
+      "schema": "gemsdoe92-preplacement-stop-v2",
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "reviewed_utc": "2026-10-27T17:14:22.839486+00:00",
+      "sample_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "implementation_sha256": "9275f329f394b90b5f80c3fd1d22d8d543879f68df9485ab5f708535958fbca3",
+      "scope": "Single pinned witness; rejection only. No candidate surface was generated or scored.",
+      "witness_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/6fc71d19d49dca4960d5434bd81b6dd06fcc030a/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "git_blob_sha": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "grid_checks_pass": true,
+      "footprint_pixels": 5167373,
+      "positive_in_footprint": 5167373,
+      "universal_nonempty_in_footprint_overlap_stop": true,
+      "forward_overlap_for_any_nonempty_in_footprint_dot_set": 1.0,
+      "threshold": 0.7,
+      "verdict": "negative",
+      "submission_eligible": false,
+      "reason": "Every nonempty candidate is a literal registry duplicate; stop before placement."
+    },
+    "final_dots_check": "not_run_no_new_raster"
+  },
+  "artifact_role": "existing research download; NOT a newly generated submission",
+  "primary_download": "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif",
+  "raster_sha256": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573",
+  "validator_output": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=('float32',) count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nonfinite_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0; strict distance > radius required"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573"
+    }
+  ],
+  "format_pass": true,
+  "submission_name": "GEMSDOE92-VARIO-full-20261025",
+  "note": "VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat>2",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "new_unique_tiff_generated": false,
+  "experiments": 0,
+  "weekly_slots_used": 0,
+  "organizer_confirmed_score": null,
+  "limitations": [
+    "paired HOLDOUT-DTI delta vs best control control_FAULTNET_far = -0.025127 CI [-0.029305915361244498, -0.02084222808563093] (must exclude 0)",
+    "operative sparse-registry uniqueness failed (overlap>0.70 or |rho|>0.90)"
+  ],
+  "input_sha256": {
+    "data/bridge/sample_submission.tif": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc"
+  },
+  "audit_implementation_sha256": "fb7648aa1b7fac545e218c8759c72de3646b3eb1b104c963d9ee87d162f61045"
+}

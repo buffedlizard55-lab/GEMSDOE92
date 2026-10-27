@@ -82,6 +82,9 @@ def write_all_finite(path: Path, prediction: np.ndarray, template_path: Path) ->
 
 
 def main() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("build_visible_collar_submission:main")
+
     data_dir = ROOT / "data" / "bridge"
     grid = grid_mod.load_grid(data_dir)
     footprint = grid.footprint

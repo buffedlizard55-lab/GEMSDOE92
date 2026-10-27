@@ -286,6 +286,9 @@ def nested_visible_budget(
 
 
 def main() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_poissonflex:main")
+
     import pickle
 
     ap = argparse.ArgumentParser()

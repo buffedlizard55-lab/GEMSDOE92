@@ -54,6 +54,8 @@
   "uniqueness": {
     "unique_operative": false,
     "duplicates_operative": 3,
+    "sparse_only_is_diagnostic": true,
+    "binding_literal_rule": "duplicate; no nonempty candidate can clear the pinned witness",
     "worst_overlap_final": {
       "value": 0.979126,
       "raster": "gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif",

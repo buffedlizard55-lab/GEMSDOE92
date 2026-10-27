@@ -1,13 +1,10 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-## Current verified review — 2026-10-27
+## Latest repository audit — 2026-10-27
 
-**⛔ DO NOT SUBMIT. No new TIFF generated; no weekly slot used.** The literal duplicate STOP was independently reproduced from the pinned public witness. [Three-pass review](docs/REVIEW_20261027_A3DCC0DD.md) · [fresh JSON run card](docs/downloads/review_a3dcc0dd_run_card.json) · [nine-site executive download/estimate/uniqueness table](docs/focus9.html). Engineering verification: **636 tests passed**; site checker **PASS (123 served research rasters)**. No new HOLDOUT-DTI or organizer score. Historical headings below do not override this decision.
+**DO NOT SUBMIT.** No new TIFF, geological experiment, holdout or weekly-slot selection occurred. The freshly verified full-footprint registry witness makes every nonempty candidate exceed the literal 70% overlap stop. [Three-pass review](docs/REVIEW_B4BB558B.md) · [negative run card](docs/downloads/review_b4bb558b_run_card.json) · [nine-site executive summary](docs/focus9.html) · [input-cache audit](docs/downloads/input_cache_b4bb558b.json).
 
-
-## Latest repository audit — 2026-10-26
-
-Read the [latest three-pass review](docs/REVIEW_14F85876.md) and the [earlier branch review](docs/REVIEW_20261026_ARENA_0C5D848E.md) (historical score estimates superseded) for the nine-site comparison, evidence labels, tests, and remaining blockers. **No new TIFF was generated in either audit; do not submit any research artifact.** The durable project aim and full operating prompt remain below; read them at the start of every session.
+The 12 pinned owner-mirror inputs, including the 19-band stack, were restored and checked in an ephemeral ignored cache. This does not authenticate organizer origin, redistribution rights or submission eligibility. Historical TIFFs are available **for research only**. An [independent concurrent review](docs/REVIEW_20261027_A3DCC0DD.md) also reproduced the stop ([its run card](docs/downloads/review_a3dcc0dd_run_card.json)). See the [prior review](docs/REVIEW_14F85876.md) and [earlier branch review](docs/REVIEW_20261026_ARENA_0C5D848E.md); older numerical estimates are superseded. The durable project aim and normalized operating brief remain below and in [SESSION_PROMPT.md](SESSION_PROMPT.md); older narrative is historical and does not override this decision.
 
 <!-- VARIO-STATUS:BEGIN -->
 ## Current research download — verified decision, 2026-10-25 (VARIO session)
@@ -20,7 +17,7 @@ The pre-registered VARIO lane generated this historical research GeoTIFF on 2026
 
 [Download gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif](docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif) · name `GEMSDOE92-VARIO-full-20261025` · note (72/140) `VARIO full: 24phys+semivar+MTcp+topo10+ctx LOQO; 37654 dots 2.8px dcat>2` · SHA-256 `11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573`
 
-Automated validation (no human inspection): finite [0, 1] everywhere (the portal "Predicted values must be in range [0, 1]" check), no NaN in footprint, zeros outside, exact CRS/shape/transform. **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22663 withheld): `0.150020 [0.134975, 0.164286]`; paired Δ vs best control `control_FAULTNET_far`: `-0.025127 [-0.029306, -0.020842]`. No ORGANIZER-CONFIRMED score; GEMSDOE32 0.2778 and all site-inventory scores remain CLAIMs. Literal dense-registry disclosure and operative sparse uniqueness are both in the run card. Historical banners below are archives, not current clearance.
+Automated validation (no human inspection): finite [0, 1] everywhere (the portal "Predicted values must be in range [0, 1]" check), no NaN in footprint, zeros outside, exact CRS/shape/transform. **HOLDOUT-DTI** (gems57-pooled-hide-v2, 22663 withheld): `0.150020 [0.134975, 0.164286]`; paired Δ vs best control `control_FAULTNET_far`: `-0.025127 [-0.029306, -0.020842]`. No ORGANIZER-CONFIRMED score; GEMSDOE32 0.2778 and all site-inventory scores remain CLAIMs. The literal dense-registry stop is binding; the historical sparse-only comparison is diagnostic, not clearance. Historical banners below are archives, not current clearance.
 
 <!-- VARIO-STATUS:END -->
 

@@ -1,6 +1,8 @@
 # Ranked untried geological hypothesis screen — 2026-10-26 site review
 
-**Status:** screening only. No feature stack was restored, no feature or candidate surface was generated, no dots were placed, no holdout was run, no GeoTIFF was created, and no weekly slot was used. The literal pre-placement registry stop is binding. The request also referred to “the single method paragraph below,” but no distinct method paragraph is present in the supplied task; this ranking does **not** silently select or authorize an implementation lane.
+> **2026-10-27 cache update:** Since this historical screen, the 12 pinned owner-mirror inputs, including the 19-band stack, were restored and verified in an ephemeral cache. The [input audit](downloads/input_cache_b4bb558b.json) does **not** authenticate organizer provenance or rights. No hypothesis was implemented: the same literal duplicate stop remains binding. Earlier statements below that the stack was absent describe the 2026-10-26 review only.
+
+**Status on 2026-10-26:** screening only. No feature stack was restored, no feature or candidate surface was generated, no dots were placed, no holdout was run, no GeoTIFF was created, and no weekly slot was used. The literal pre-placement registry stop is binding. The request also referred to “the single method paragraph below,” but no distinct method paragraph is present in the supplied task; this ranking does **not** silently select or authorize an implementation lane.
 
 Ranking is a qualitative, risk-adjusted priority by likely incremental **HOLDOUT-DTI** value, cost, and evidence availability. These labels are research priors, not numerical score estimates. Every candidate remains unvalidated. The top candidate is therefore **not** evaluated on holdout in this review: doing so would require candidate construction/placement after the binding duplicate stop.
 

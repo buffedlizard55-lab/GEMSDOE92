@@ -119,6 +119,9 @@ def low_tercile_components(draw, c_field):
 
 
 def main() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_blindfault:main")
+
     ap = argparse.ArgumentParser()
     ap.add_argument("--arms", default="blind,blindflat,blindtopo")
     ap.add_argument("--skip-holdout", action="store_true")

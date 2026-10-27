@@ -62,11 +62,11 @@ def test_rank_gate_is_binding_in_both_directions(rho):
                                     spearman_surface=rho)])['duplicate']
 
 
-def test_threshold_is_strict_and_unique_is_not_submission_permission():
+def test_threshold_is_strict_and_clear_rows_are_diagnostic_only():
     d = dual_reading_decision([row(literal_forward_overlap=0.7,
                                   matched_budget_forward_overlap=0.7, spearman_surface=-0.9)])
-    assert d['duplicate'] is False and d['verdict'] == 'unique'
-    assert d['submission_eligible'] is False
+    assert d['duplicate'] is False and d['verdict'] == 'diagnostic-clear-only'
+    assert d['stop_required'] is True and d['submission_eligible'] is False
 
 
 @pytest.mark.parametrize('limit', [float('nan'), float('inf'), -0.1, 1.1, True, '0.7'])

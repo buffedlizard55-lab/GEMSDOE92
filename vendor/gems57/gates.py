@@ -47,6 +47,8 @@ def format_report(path, sample, epsg=32611, cell=100.0, footprint=None):
                    has_validity_mask=bool((src.dataset_mask() == 0).any()))
         if src.count != 1:
             problems.append(f"{src.count} bands, must be 1")
+        if ref.count != 1:
+            problems.append(f"reference has {ref.count} bands, must be 1")
         if src.dtypes[0] != "float32":
             problems.append(f"dtype {src.dtypes[0]}, must be float32")
         if src.shape != ref.shape:
@@ -79,6 +81,17 @@ def format_report(path, sample, epsg=32611, cell=100.0, footprint=None):
             problems.append("every pixel is NaN/infinite")
         if src.nodata is not None and (not np.isfinite(src.nodata) or not 0 <= src.nodata <= 1):
             problems.append("nodata tag outside all-finite [0,1] export policy")
+        # The caller cannot enlarge the sample footprint to hide invalid mass.
+        # Re-derive it from the reference bytes even if no mask is supplied.
+        if ref.count == 1 and src.shape == ref.shape:
+            ref_fp = np.isfinite(ref.read(1))
+            if not ref_fp.any():
+                problems.append("reference footprint is empty")
+            out["mass_outside_reference_footprint"] = int(((a > 0) & ~ref_fp).sum())
+            if out["mass_outside_reference_footprint"]:
+                problems.append(f"{out['mass_outside_reference_footprint']} emitted pixels outside the reference footprint")
+        else:
+            ref_fp = None
         if footprint is not None:
             fp = np.asarray(footprint, bool)
             if fp.shape != a.shape:
@@ -87,6 +100,8 @@ def format_report(path, sample, epsg=32611, cell=100.0, footprint=None):
                 out["mass_outside_footprint"] = int(((a > 0) & ~fp).sum())
                 if out["mass_outside_footprint"]:
                     problems.append(f"{out['mass_outside_footprint']} emitted pixels outside the valid footprint")
+                if ref_fp is not None and np.any(fp & ~ref_fp):
+                    problems.append("supplied footprint includes cells outside the reference footprint")
     out.update(problems=problems, ok=not problems,
                validation_class="local on-disk template/range check; not organizer upload acceptance")
     return out

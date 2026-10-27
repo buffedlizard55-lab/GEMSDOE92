@@ -1,3 +1,16 @@
+# 2026-10-27 — b4bb558b audit corrections
+
+- **IR-B4-UNIVERSAL-LITERAL-STOP (binding):** the freshly fetched, SHA-256/Git-blob verified dense witness covers 5,167,373/5,167,373 finite sample pixels. All nonempty in-footprint candidates have literal forward overlap 1.000 > 0.70; this is a representation/policy conflict, not proof of identical geology. No surface, placement, geological experiment, candidate TIFF or weekly slot was created. [Negative card](docs/downloads/review_b4bb558b_run_card.json).
+- **IR-B4-SUMMARY-FAIL-OPEN (fixed in shared template):** empty registry rows and caller-supplied false duplicate flags could formerly produce a promote-like summary despite missing evidence or measured 1.0 overlap. Summaries now derive decisions from validated measurements, reject empty/incomplete scans, require full-grid rank attestation and absolute rho, enforce pins/grid/finite comparisons, and bind merged scans to candidate identity. Regression coverage: `tests/test_registry_summary_safety.py`.
+- **IR-B4-WRITER-FOOTPRINT/ROLLBACK (hardened; concurrency limit remains):** a caller-supplied smaller footprint could pass formatting while differing from the reference; it is now checked pixel-exactly. Publication is create-only and retains temporary links through rollback. Check-then-unlink rollback cannot be atomic against a noncooperating concurrent replacer; distinct output names remain required. Regression coverage: `tests/test_shared_writer_safety.py`.
+- **IR-B4-HISTORICAL-ENTRYPOINTS (partly mitigated):** multiple recent runners/finalizers performed work or created files before their public literal scan. Those specifically listed and tested in `tests/test_historical_runner_stop.py` call the shared stop before work. Not every older builder/internal helper was audited; do not treat it as authorized or safe to rerun.
+- **IR-B4-INPUT-PROVENANCE (unresolved):** 12/12 owner-mirror pins and 19-band tags/grid match in an ignored ephemeral cache, but the official organizer origin and redistribution rights remain unverified. [Input receipt](docs/downloads/input_cache_b4bb558b.json).
+- **IR-B4-PAGES (unresolved):** GitHub Pages reported legacy `main:/` mode. The workflow and local site checks do not prove they gate that legacy publisher, and live publication must be checked separately after merge.
+
+Older sections below are historical records and do not override the current negative decision, corrected pairwise results, or the rejection of calibrated per-file score projections.
+
+---
+
 # THERMOTILT closeout — 26 October 2026
 
 **DO NOT SUBMIT.** Three research rasters were built, but the literal stop was not honored before construction, registry checks happened after placement, and Stage-1 context was not nested in the outer Stage-2 fold. Canary PASS does not resolve these defects. Sparse uniqueness and holdout figures remain diagnostic, not promotion evidence. Runner disabled pending shared-pipeline repair. No more experiments in this budget. See [corrected analysis](docs/ANALYSIS_20261026_THERMOTILT.md) and `evidence/thermotilt_run_card.json`.

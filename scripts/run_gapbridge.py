@@ -5,7 +5,15 @@ Holdout: quadrant hide-and-recover via vendor gems57 (buffered component draw), 
 Emission: greedy Poisson-disc >=2.8px, >2px off catalogue, budget 37654. Two arms:
  plain (top S) and anti (also >3px from R0+d28+solo dots). Controls: R0 dots, random-in-footprint."""
 import sys, json, hashlib
-sys.path.insert(0,'vendor')
+from pathlib import Path
+
+# This historical script previously built a surface, wrote arrays and placed
+# dots at import time, before any registry check. Stop before those side effects
+# under the binding literal witness; importing it is not a safe library API.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'vendor'))
+from gems57.uniqueness import stop_historical_runner
+stop_historical_runner('GAPBRIDGE')
+
 import numpy as np, rasterio
 from scipy.ndimage import distance_transform_edt, binary_dilation, uniform_filter
 from gems57 import evaluate_holdout, holdout as H

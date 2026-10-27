@@ -176,6 +176,9 @@ def pooled(terms_by_arm: dict, candidate: str) -> dict:
 
 
 def main() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_listricdip:main")
+
     print("LISTRICDIP start", datetime.now(timezone.utc).isoformat(), flush=True)
     grid = grid_mod.load_grid(ROOT / "data" / "bridge")
     foot = grid.footprint

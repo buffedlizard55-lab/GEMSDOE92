@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 """BLINDEXT lane build: unique submission GeoTIFF + autonomous validation.
 
-Pre-registered hypothesis (Rank 1 of 5, docs/HYPOTHESES_BLINDEXT.md):
-  Blind normal faults in the Basin and Range extend beyond their mapped
-  surface traces at depth.  The USGS/INGENIOUS catalogue maps surface
-  traces only; blind extensions - where the fault continues without surface
-  expression - are missing from the catalogue.  By targeting the endpoints
-  of the h19_5 skeleton (mapped fault-trace endpoints) and placing dots in
-  zones beyond the mapped trace but geologically continuous with it, we
-  target blind extensions missing from the USGS/INGENIOUS catalogue.
+Historical hypothesis (docs/HYPOTHESES_BLINDEXT.md), not a validated result:
+  h19_5 is a prior prediction, not the USGS/INGENIOUS mapped-fault catalogue.
+  Its positive-support endpoints do not establish mapped fault tips or blind
+  extensions. The historical placement used a full-catalogue distance mask
+  and checked uniqueness after placing dots, so it cannot establish a
+  prospective, fold-local holdout result or satisfy the pre-placement stop.
+  This runner is disabled while the literal registry witness binds.
 
 Method (uses only bridge data; no competition stack reads):
   1. Load h19_5 skeleton, existing_faults catalogue, sample_submission footprint.
@@ -64,6 +63,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT), str(ROOT / "vendor"), str(ROOT / "gems")]
 
 from gems57 import grid as grid_mod  # noqa: E402
+from gems57.uniqueness import stop_historical_runner  # noqa: E402
 from gems.rasters import sha256_file  # noqa: E402
 from gems.gates import run_gates, summarise  # noqa: E402
 
@@ -117,6 +117,7 @@ def dots_within_radius(dot_ys: np.ndarray, dot_xs: np.ndarray,
 
 
 def main() -> int:
+    stop_historical_runner('BLINDEXT')
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--stem", default=None, help="output stem (default timestamped)")
     args = ap.parse_args()

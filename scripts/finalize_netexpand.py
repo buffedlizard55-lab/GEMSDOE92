@@ -168,6 +168,9 @@ def independent_validate(tif: Path, foot, cat, sample: Path):
 
 
 def main() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("finalize_netexpand:main")
+
     for n in NOTES.values():
         assert len(n) <= 140, n
     assert (EV / "netexpand_holdout.json").is_file(), "run holdout first"

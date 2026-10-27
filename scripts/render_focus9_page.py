@@ -20,6 +20,7 @@ DOCS = ROOT / "docs"
 OUTPUT = DOCS / "focus9.html"
 FOCUS = DOCS / "downloads/focus_sites_release_review_20261026.json"
 REVIEW = DOCS / "downloads/review_14f85876_run_card.json"
+LATEST_REVIEW = DOCS / "downloads/review_b4bb558b_run_card.json"
 STATUS = DOCS / "downloads/readiness.json"
 MODEL_AUDIT = DOCS / "downloads/score_estimator_audit_14f85876.json"
 PAIRWISE = DOCS / "downloads/focus9_pairwise_recheck_14f85876.json"
@@ -39,7 +40,12 @@ def _esc(value: object) -> str:
 
 
 def render() -> str:
-    focus, review, status, model, recheck = map(_load, (FOCUS, REVIEW, STATUS, MODEL_AUDIT, PAIRWISE))
+    focus, review, status, model, recheck, latest = map(
+        _load, (FOCUS, REVIEW, STATUS, MODEL_AUDIT, PAIRWISE, LATEST_REVIEW))
+    if (latest.get('verdict') != 'negative' or latest.get('submission_eligible') is not False
+            or latest.get('new_unique_tiff_generated') is not False
+            or latest.get('experiments') != 0 or latest.get('weekly_slots_used') != 0):
+        raise ValueError('latest review is not a rejection-only result')
     if (review.get("verdict") != "negative" or review.get("submission_eligible") is not False
             or review.get("new_unique_tiff_generated") is not False
             or review.get("experiments") != 0 or review.get("weekly_slots_used") != 0):
@@ -119,16 +125,15 @@ nav{{display:flex;flex-wrap:wrap;gap:1rem}} section{{margin:1rem 0;padding:1rem;
 .button{{display:inline-block;background:#1e3a5f;color:white;padding:.65rem .85rem;border-radius:5px;font-weight:700}}
 .wrap{{overflow-x:auto}} table{{border-collapse:collapse;min-width:920px;width:100%}} th,td{{border:1px solid #cbd5e1;padding:.55rem;text-align:left;vertical-align:top}} th{{background:#eff6ff}} small{{color:#475569}} code{{overflow-wrap:anywhere}}
 </style></head><body><main>
-<aside><strong>2026-10-27 re-verification: DO NOT SUBMIT.</strong> The pinned dense witness again confirms the literal duplicate stop. No new TIFF or holdout. Engineering checks: 636 tests passed; 123 served research rasters passed local site gates. <a href="REVIEW_20261027_A3DCC0DD.md">Three-pass review</a> · <a href="downloads/review_a3dcc0dd_run_card.json">Fresh run card</a>. The table below is historical source evidence, not a live feed.</aside>
-
 <nav><a href="index.html">Home</a><a href="executive-summary.html">Executive summary</a><a href="SUBMIT.html">Submission guidance</a><a href="HYPOTHESES_20261026_SITE_REVIEW.md">Ranked hypotheses</a></nav>
 <section class="stop"><h1>Nine-site executive review</h1>
 <p><span class="badge">DO NOT SUBMIT — NO ELIGIBLE TIFF</span> <strong>OK TO DOWNLOAD FOR RESEARCH</strong></p>
 <p><a class="button" href="{_esc(primary_rel)}" download>Download historical VARIO research TIFF</a>
- · <a href="downloads/review_14f85876_run_card.json">Review run card</a> · <a href="downloads/readiness.json">Current status</a></p>
+ · <a href="downloads/review_b4bb558b_run_card.json">Latest negative run card</a> · <a href="downloads/readiness.json">Current status</a></p>
 <p>File: <code>{_esc(Path(primary_rel).name)}</code> · SHA-256: <code>{_esc(status["raster_sha256"])}</code>.<br>
 Historical reference name: <code>{_esc(status["submission_name"])}</code>; note ({len(note)}/140): <code>{_esc(note)}</code>. These are identifiers, <strong>not upload instructions</strong>.</p>
-<p>No new raster or geological experiment was generated in this review; no slot was used. A pinned registry raster is positive at all {proof["footprint_pixels"]:,} finite template pixels, so every nonempty in-footprint candidate has literal overlap 1.000 &gt; 0.70. This is a binding pre-placement stop, not a format error. See the <a href="downloads/review_14f85876_run_card.json">hash-bound proof</a>.</p>
+<p>No new raster or geological experiment was generated in this review; no slot was used. A pinned registry raster is positive at all {proof["footprint_pixels"]:,} finite template pixels, so every nonempty in-footprint candidate has literal overlap 1.000 &gt; 0.70. This is a binding pre-placement stop, not a format error. See the <a href="downloads/review_b4bb558b_run_card.json">fresh hash-bound proof</a>.</p>
+<p><strong>27 October update:</strong> The witness was freshly fetched and rechecked; all 36 nine-site comparisons were independently rerun and match the earlier corrected receipt. The 12 pinned owner-mirror inputs, including the 19-band stack, were verified in an ephemeral cache. This does not establish organizer provenance, redistribution rights, holdout validity, or eligibility. <a href="downloads/input_cache_b4bb558b.json">Input audit</a>. An <a href="REVIEW_20261027_A3DCC0DD.md">independent concurrent review</a> reproduced the same stop (<a href="downloads/review_a3dcc0dd_run_card.json">its run card</a>).</p>
 </section>
 <section><h2>Executive conclusion</h2><p>Of the nine owner-reported values below, <strong>GEMSDOE32: 0.2778 CLAIM</strong> is highest. It is not an organizer-confirmed score: no submission-page receipt binds it to the raster. A higher public result is possible in principle, but this project has not demonstrated one with a unique, eligible file. No defensible leaderboard estimate is available for the research TIFF.</p>
 <p>The <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">official leaderboard</a> is not mirrored or automatically monitored. <a href="https://www.drivendata.org/termsofuse/">DrivenData terms</a> prohibit automated access for monitoring or copying; no leaderboard row is a project receipt.</p></section>
@@ -148,7 +153,7 @@ Historical reference name: <code>{_esc(status["submission_name"])}</code>; note 
 <li>Only after every gate and the separate selector approve: use that new file's own name and note (each at most 140 characters), verify the weekly limit on the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">official submission page</a>, and record any organizer receipt against the exact file SHA-256. This session selected and spent no slot.</li></ol></section>
 <section><h2>Official research &amp; evidence</h2><p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Task, metric and format</a> · <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Official rules</a> · <a href="https://github.com/drivendataorg/gems-prize-reference-solution">Reference solution</a> · <a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN</a> · <a href="https://www.usgs.gov/3d-elevation-program">USGS 3DEP</a> · <a href="https://gdr.openei.org/submissions/1391">GDR INGENIOUS (CC BY 4.0)</a>.</p>
 <p>Public source documentation is not proof of data coverage, provenance, predictive value, or access to authenticated competition files. <a href="downloads/review_14f85876_run_card.json">Full session run card</a> · <a href="SITE_REVIEW_20261026.html">Earlier detailed site forensic review</a>.</p></section>
-<footer><small>Review recorded 2026-10-26 UTC. No candidate score or organizer receipt is invented.</small></footer>
+<footer><small>Site comparison recorded 2026-10-26; proof and inputs rechecked 2026-10-27 UTC. No candidate score or organizer receipt is invented.</small></footer>
 </main></body></html>\n'''
 
 

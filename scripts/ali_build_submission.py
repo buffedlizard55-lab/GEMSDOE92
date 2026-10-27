@@ -21,6 +21,9 @@ STAMP = "20261025T230000Z"
 
 
 def main():
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("ali_build_submission:main")
+
     foot, cat, fam, dcat = base_maps()
     dots = nms_dots(fam, foot & ~cat & (dcat > BUF), SEP, K)
     assert int(dots.sum()) == K, dots.sum()

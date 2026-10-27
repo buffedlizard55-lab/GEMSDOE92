@@ -169,6 +169,9 @@ def audit_coulombloqo_next_step_1(foot: np.ndarray) -> dict:
 
 
 def main() -> int:
+    from gems57.uniqueness import stop_historical_runner
+    stop_historical_runner("run_poissonknick:main")
+
     t0 = time.time()
     paths = restore_all_inputs()
     PK_CACHE_DIR.mkdir(parents=True, exist_ok=True)
