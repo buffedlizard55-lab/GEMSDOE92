@@ -129,7 +129,7 @@ def readiness(card: dict) -> dict:
             evidence_class="REGISTRY-MEASUREMENT",
             operative_sparse=uniq,
             surface_preplacement=card["correlation_overlap_vs_registry"]["surface_preplacement"],
-            literal_disclosure="DUPLICATE UNDER THE LITERAL REGISTRY RULE: the pinned full-footprint witness gives forward overlap 1.0 for every nonempty candidate. The historical sparse-only comparison is diagnostic, not an exception or clearance (docs/downloads/review_b4bb558b_run_card.json)."),
+            literal_disclosure="Under the conservative rule treating every positive continuous-probability pixel as a dot, the pinned full-footprint witness gives overlap 1.0 for every nonempty candidate. Whether continuous probabilities are intended as dots is unresolved; this is not proof of geological identity. The sparse-only diagnostic is not an exception or clearance (docs/downloads/session_b97812a3_preflight_final.json)."),
         sgmc_proxy=card["sgmc_proxy"],
         organizer_confirmed_score=None,
         blocking_reasons=card["blocking_reasons"],
@@ -274,7 +274,7 @@ def panel_html(card: dict, st: dict) -> str:
 Historical note ({card["note_chars"]}/140 chars): <code>{e(card["note"])}</code><br>
 SHA-256: <code>{e(card["raster_sha256"])}</code> · 37,654 dots · single band float32 · EPSG:32611 · 3730×3292</p>
 <p><strong>Automated validation (no human pixel inspection):</strong> every cell finite and in [0, 1] — a local check relevant to the portal error
-<q>Predicted values must be in range [0, 1]</q>, not a guarantee of portal acceptance — no NaN inside the footprint,
+<q>Predicted values must be in range [0, 1]</q>, not a guarantee of portal acceptance — no NaN or invalid-mask pixels inside the footprint,
 zeros outside, CRS/shape/transform matched to the sample submission, 0 dots on the mapped catalogue,
 all dots &gt;2 px from it. Gates are re-derived from the downloaded bytes by <code>scripts/check_site.py</code>.</p>
 <p><strong>Historical reported HOLDOUT-DTI</strong> ({e(hold["evaluator_version"])}, {prim["withheld_positive_pixels"]} withheld positives,
@@ -285,8 +285,7 @@ This is a local surrogate, <strong>not</strong> an organizer score; no ORGANIZER
 <p><strong>Uniqueness (REGISTRY-MEASUREMENT):</strong> the historical sparse-only diagnostic recorded worst overlap
 <code>{wo.get("forward_overlap_within_3px")}</code> (limit 0.70, vs {e(str(wo.get("file")))}) and worst |ρ|
 <code>{abs(wr.get("spearman", 0.0))}</code> (limit 0.90). It is not a clearance or exception.
-DUPLICATE UNDER THE LITERAL REGISTRY RULE is binding for any nonempty raster because the pinned witness covers the full
-footprint (overlap 1.0).</p>
+DUPLICATE UNDER THE LITERAL REGISTRY RULE, on the conservative interpretation that every positive pixel of the continuous-probability witness is a dot: its full-footprint support forces overlap 1.0 for every nonempty raster. Whether continuous probabilities are meant as dots is unresolved; this stop is not proof of geological identity and is not waived.</p>
 <ul>{reasons}</ul>
 <p>Sibling experiment arms (research only, DO NOT SUBMIT): {sibs}. Weekly slots used by this session: 0 —
 {"promotion is to the separate selector step within the verified weekly cap." if promote else "no slot is authorized by this artifact."}
@@ -314,7 +313,7 @@ The pre-registered VARIO lane generated this historical research GeoTIFF on 2026
 
 [Download {Path(f).name}]({f}) · name `{card["submission_name"]}` · note ({card["note_chars"]}/140) `{card["note"]}` · SHA-256 `{card["raster_sha256"]}`
 
-Automated validation (no human inspection): finite [0, 1] everywhere (the portal "Predicted values must be in range [0, 1]" check), no NaN in footprint, zeros outside, exact CRS/shape/transform. **HOLDOUT-DTI** ({hold["evaluator_version"]}, {prim["withheld_positive_pixels"]} withheld): `{prim["dti"]:.6f} [{prim["ci95"][0]:.6f}, {prim["ci95"][1]:.6f}]`; paired Δ vs best control `{hold["best_comparable_control"]}`: `{delta["delta"]:+.6f} [{delta["ci95"][0]:.6f}, {delta["ci95"][1]:.6f}]`. No ORGANIZER-CONFIRMED score; GEMSDOE32 0.2778 and all site-inventory scores remain CLAIMs. The literal dense-registry stop is binding; the historical sparse-only comparison is diagnostic, not clearance. Historical banners below are archives, not current clearance.
+Automated validation (no human inspection): finite [0, 1] everywhere, no masked or NaN cells in the footprint, zeros outside, exact CRS/shape/transform. This is a local check, not a guarantee of portal acceptance. **HOLDOUT-DTI** ({hold["evaluator_version"]}, {prim["withheld_positive_pixels"]} withheld): `{prim["dti"]:.6f} [{prim["ci95"][0]:.6f}, {prim["ci95"][1]:.6f}]`; paired Δ vs best control `{hold["best_comparable_control"]}`: `{delta["delta"]:+.6f} [{delta["ci95"][0]:.6f}, {delta["ci95"][1]:.6f}]`. No ORGANIZER-CONFIRMED score; GEMSDOE32 0.2778 and all site-inventory scores remain CLAIMs. Under the conservative rule treating every positive pixel of a continuous-probability raster as a dot, the dense-registry stop is binding. Whether that representation is intended remains unresolved; it is not proof of geological identity, and sparse-only comparison is not clearance. Historical banners below are archives, not current clearance.
 
 {END}'''
 

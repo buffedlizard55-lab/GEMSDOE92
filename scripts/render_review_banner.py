@@ -21,10 +21,10 @@ def banner(prefix: str) -> str:
     return f'''{BEGIN}
 <section aria-label="Latest independent evidence review" style="max-width:70rem;margin:1rem auto;padding:1rem 1.2rem;border:3px solid #991b1b;border-radius:10px;background:#fff7ed;font:1rem/1.55 system-ui,sans-serif">
 <h2>27 October recheck — no submission eligible</h2>
-<p><strong>⛔ DO NOT SUBMIT.</strong> The freshly verified public witness is positive on all 5,167,373 finite template cells: every nonempty candidate has literal overlap 1.000 &gt; 0.70. No new TIFF, experiment, holdout result or slot was generated in this review.</p>
-<p>GEMSDOE32's 0.2778 is an owner <strong>CLAIM</strong>, not an organizer receipt; no defensible leaderboard estimate is available for the research files. The prior claim-trained model's row-wise error is not a per-file uncertainty interval. The 36 site-pair comparisons were rerun and match the previous corrected results.</p>
+<p><strong>⛔ DO NOT SUBMIT.</strong> If every positive pixel of a continuous-probability registry witness is treated as a dot, its full-footprint support gives every nonempty candidate overlap 1.000 &gt; 0.70. The continuous-to-dot interpretation is unresolved; this conservative stop is not proof of geological identity. No new TIFF, experiment, holdout result or slot was generated in this review.</p>
+<p>GEMSDOE32's 0.2778 is an owner <strong>CLAIM</strong>, not an organizer receipt; no defensible leaderboard estimate is available for the research files. The nine-site comparisons are frozen historical results: all nine GitHub main refs had changed by the dated snapshot, and newer files were not audited.</p>
 <p>All 12 owner-mirror input pins and the 19-band grid/tags were verified in a temporary cache; organizer provenance and redistribution rights remain unverified.</p>
-<p><a href="{prefix}focus9.html"><strong>Nine-site executive summary, research downloads and conditional submission guide</strong></a> · <a href="{prefix}downloads/review_b4bb558b_run_card.json">latest negative run card</a> · <a href="{prefix}downloads/input_cache_b4bb558b.json">input audit</a> · <a href="{prefix}downloads/score_estimator_audit_14f85876.json">model audit</a> · <a href="{prefix}HYPOTHESES_20261026_SITE_REVIEW.md">ranked hypotheses</a></p>
+<p><a href="{prefix}focus9.html"><strong>Nine-site executive summary, research downloads and conditional submission guide</strong></a> · <a href="{prefix}downloads/session_b97812a3_run_card.json">latest negative run card</a> · <a href="{prefix}downloads/session_b97812a3_focus_freshness.json">GitHub ref snapshot</a> · <a href="{prefix}downloads/session_b97812a3_input_audit.json">input audit</a> · <a href="{prefix}downloads/score_estimator_audit_14f85876.json">model audit</a> · <a href="{prefix}HYPOTHESES_20261026_SITE_REVIEW.md">ranked hypotheses</a></p>
 <p>The official leaderboard is not mirrored or automatically monitored. See the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">organizer leaderboard</a> and <a href="https://www.drivendata.org/termsofuse/">site terms</a>; no project score receipt is available.</p>
 </section>
 {END}'''
@@ -76,7 +76,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args(argv)
     try:
-        review = json.loads((ROOT / "docs/downloads/review_14f85876_run_card.json").read_text())
+        review = json.loads((ROOT / "docs/downloads/session_b97812a3_run_card.json").read_text())
         if (review.get("verdict") != "negative" or review.get("submission_eligible") is not False
                 or review.get("new_unique_tiff_generated") is not False):
             raise ValueError("review does not support a rejection-only banner")

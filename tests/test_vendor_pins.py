@@ -10,7 +10,7 @@ def test_vendor_files_match_source_or_explicit_local_override():
     pins = json.loads((ROOT / 'registry/vendor_pins.json').read_text())
     upstream = pins['sha256']
     local = pins['local_overrides_sha256']
-    assert set(local) == {'gates.py', 'submission_writer.py', 'uniqueness.py'}
+    assert set(local) == {'gates.py', 'submission_writer.py', 'uniqueness.py', 'validate.py'}
     assert set(local) <= set(upstream)
     for name, source_digest in upstream.items():
         path = ROOT / 'vendor/gems57' / name

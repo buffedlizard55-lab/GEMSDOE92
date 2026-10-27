@@ -57,12 +57,13 @@ def test_rejects_unsupported_status(card, key, value):
         validate_status(bad, ROOT, _primary(card))
 
 
-def test_promote_verdict_requires_every_gate_true(card):
+def test_forged_promote_verdict_cannot_override_literal_stop(card):
     forced = deepcopy(card)
     forced["gates"] = {k: True for k in forced["gates"]}
     forced["verdict"] = "promote"
     forced["blocking_reasons"] = []
-    validate_status(forced, ROOT, _primary(card))  # consistent card passes validation
+    with pytest.raises(ValueError, match="registry pre-placement STOP"):
+        validate_status(forced, ROOT, _primary(card))
     forced["gates"]["operative_uniqueness"] = False
     with pytest.raises(ValueError):
         validate_status(forced, ROOT, _primary(card))

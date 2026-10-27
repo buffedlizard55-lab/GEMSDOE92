@@ -2,8 +2,9 @@
 
 The writer never clips, fills, or otherwise repairs model output.  It validates
 in memory, writes to private temporary paths, validates the on-disk TIFF and ZIP,
-and only then atomically replaces the requested outputs.  Local format validity
-is not a uniqueness clearance or organizer acceptance.
+and only then publishes with create-only hardlinks, without overwriting existing
+outputs. Multi-file rollback is not atomic against noncooperating writers. Local
+format validity is not a uniqueness clearance or organizer acceptance.
 """
 from __future__ import annotations
 
@@ -31,10 +32,11 @@ def write_submission(path, prediction, sample, footprint, *, note, name,
                      catalogue=None, metadata=None):
     """Write a locally validated single-band GeoTIFF and one-TIFF ZIP.
 
-    ``name`` and ``note`` are limited to 140 characters.  The prediction must
-    already be a 2-D finite float field in ``[0,1]``, aligned with the footprint,
-    and have no positive support outside it.  If ``catalogue`` is supplied, the
-    candidate must also have zero positive pixels on mapped faults.
+    ``name`` and ``note`` are limited to 140 characters. The supplied footprint
+    must exactly equal the finite, unmasked sample footprint. The prediction must
+    already be a 2-D finite float field in ``[0,1]`` with no positive support
+    outside that footprint. If ``catalogue`` is supplied, the candidate must
+    also have zero positive pixels on mapped faults.
     """
     if not isinstance(name, str) or not name.strip() or len(name) > 140:
         raise ValueError('name must contain 1..140 non-whitespace characters')
@@ -71,8 +73,12 @@ def write_submission(path, prediction, sample, footprint, *, note, name,
         if ref.count != 1 or ref.crs is None or ref.shape != p.shape:
             raise ValueError('reference must be a matching single-band grid with CRS')
         ref_fp = np.isfinite(ref.read(1))
+        if not np.array_equal(ref_fp, ref.read_masks(1) > 0):
+            raise ValueError('reference finite footprint disagrees with validity mask')
     if not ref_fp.any() or not fp.any() or np.any(fp & ~ref_fp):
         raise ValueError('supplied footprint is empty or extends outside the reference footprint')
+    if not np.array_equal(fp, ref_fp):
+        raise ValueError('supplied footprint omits valid reference cells')
     path.parent.mkdir(parents=True, exist_ok=True)
 
     zip_path = path.with_suffix('.zip')

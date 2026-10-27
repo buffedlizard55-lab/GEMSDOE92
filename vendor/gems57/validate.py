@@ -33,6 +33,7 @@ def validate(path: Path, footprint: np.ndarray | None = None,
     path = Path(path)
     with rasterio.open(path) as ds:
         a = ds.read(1)
+        valid_mask = ds.read_masks(1) > 0
         meta = dict(crs=str(ds.crs), shape=[ds.height, ds.width], dtype=ds.dtypes[0],
                     count=ds.count, nodata=None if ds.nodata is None else float(ds.nodata),
                     transform=list(tuple(ds.transform)[:6]),
@@ -71,10 +72,16 @@ def validate(path: Path, footprint: np.ndarray | None = None,
     if footprint is not None:
         n_fp = int(footprint.sum())
         checks["in_footprint_all_finite"] = bool(n_fp > 0 and finite[footprint].all())
+        checks["in_footprint_unmasked"] = bool(n_fp > 0 and valid_mask[footprint].all())
         checks["in_footprint_range_0_1"] = bool(
             n_fp > 0 and np.isfinite(a[footprint]).all()
             and (a[footprint] >= 0.0).all() and (a[footprint] <= 1.0).all())
         checks["outside_footprint_zero"] = bool(np.all(a[~footprint] == 0.0))
+    else:
+        # Without the reference footprint an invalidity mask cannot be proven
+        # to affect only the outside. Do not silently regard masked values as
+        # valid data merely because the stored numbers are finite.
+        checks["unmasked_when_no_footprint"] = bool(valid_mask.all())
     if catalogue is not None:
         checks["zero_dots_on_mapped_catalogue"] = int((a[catalogue] > 0).sum()) == 0
 
