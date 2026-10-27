@@ -46,7 +46,7 @@
     {
       "name": "no_nan_inside_footprint",
       "ok": true,
-      "detail": "nonfinite_pixels=0"
+      "detail": "nonfinite_pixels=0 masked_pixels=0"
     },
     {
       "name": "nan_outside_footprint",
@@ -246,7 +246,7 @@
       "rho_limit": 0.9,
       "passes": true
     },
-    "literal_disclosure": "DUPLICATE UNDER THE LITERAL REGISTRY RULE: the pinned full-footprint witness gives forward overlap 1.0 for every nonempty candidate. The historical sparse-only comparison is diagnostic, not an exception or clearance (docs/downloads/review_b4bb558b_run_card.json)."
+    "literal_disclosure": "Under the conservative rule treating every positive continuous-probability pixel as a dot, the pinned full-footprint witness gives overlap 1.0 for every nonempty candidate. Whether continuous probabilities are intended as dots is unresolved; this is not proof of geological identity. The sparse-only diagnostic is not an exception or clearance (docs/downloads/session_b97812a3_preflight_final.json)."
   },
   "sgmc_proxy": {
     "evidence_class": "PROXY (off-catalogue USGS SGMC bedrock faults; report-only, not a gate)",

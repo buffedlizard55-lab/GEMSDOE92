@@ -1,0 +1,158 @@
+{
+  "schema": "gemsdoe92-review-b97812a3-v1",
+  "reviewed_utc": "2026-10-27T18:52:44.258491+00:00",
+  "hypothesis": "LOCAL-WAVENUMBER-CONSENSUS (ranked, untried; no method lane assigned)",
+  "mechanism": "Multi-scale magnetic phase and wavelength boundaries may align buried fault structure; independent geology is needed.",
+  "named_non_fault_mimic": "Lithologic contacts, remanent volcanic bodies, or flight-line and processing artifacts.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "value": null,
+    "evaluator_version": null,
+    "withheld_positives": null,
+    "ci95": null,
+    "reason": "Not run after the conservative pre-placement duplicate STOP."
+  },
+  "leakage_canaries": {
+    "status": "not_run",
+    "reason": "No candidate features were generated."
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "rank_correlation": null,
+    "surface_overlap": null,
+    "final_dots_overlap": null,
+    "conditional_universal_forward_overlap": 1.0,
+    "threshold": 0.7,
+    "condition": "Every positive continuous-probability witness pixel is treated as a dot.",
+    "interpretation": "Continuous-probability to dot representation is unresolved; not proof of geological identity.",
+    "scope": "One pinned full-support witness; rejection only, not registry clearance.",
+    "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "footprint_pixels": 5167373,
+    "positive_pixels": 5167373,
+    "final_dots_status": "not_run_no_new_raster"
+  },
+  "new_unique_tiff_generated": false,
+  "raster_sha256": null,
+  "validator_output": {
+    "new_candidate": null,
+    "status": "not_run_no_new_raster",
+    "portal_acceptance": "not tested; local format is not a portal receipt"
+  },
+  "submission_name": null,
+  "submission_note": null,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "experiments": 0,
+  "weekly_slots_used": 0,
+  "organizer_confirmed_score": null,
+  "leaderboard_estimate": null,
+  "historical_research_reference": {
+    "file": "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif",
+    "sha256": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573",
+    "status": "research only; DO NOT SUBMIT",
+    "format_pass": true,
+    "format_gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=('float32',) count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nonfinite_pixels=0 masked_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      },
+      {
+        "name": "submission_encoding",
+        "ok": true,
+        "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0; strict distance > radius required"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573"
+      }
+    ],
+    "prior_holdout_dti": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positives": 22663,
+      "value": 0.15002012085424568,
+      "ci95": [
+        0.13497540059406068,
+        0.1642856062511979
+      ],
+      "paired_difference_vs_FAULTNET_far": -0.025127271570293264,
+      "paired_difference_ci95": [
+        -0.029305915361244498,
+        -0.02084222808563093
+      ],
+      "source": "evidence/vario_holdout.json",
+      "source_sha256": "5659fb98206353c364db618799884cc99d03f82aa803ee4aefe8d2715f405481",
+      "status": "historical, not rerun here; not an organizer score"
+    }
+  },
+  "input_cache": {
+    "verified_pins": 12,
+    "expected_pins": 12,
+    "feature_band_count": 19,
+    "official_origin_authenticated": false,
+    "redistribution_rights_verified": false,
+    "cache_persistent": false
+  },
+  "nine_site_freshness_snapshot": {
+    "observed_utc": "2026-10-27T18:50:02.128826+00:00",
+    "changed_count": 9,
+    "unknown_count": 0,
+    "scope": "GitHub refs only, not new artifact or score audits"
+  },
+  "sources": {
+    "docs/downloads/session_b97812a3_preflight_final.json": "c09ca5821d1310699e73f2aca3d49afe442183982e5c5a97d8191f6f7f04b55e",
+    "docs/downloads/session_b97812a3_input_audit.json": "834e42e7566770e5988518e4361c423c5ef3bfa33bef7364e6ccbdf364c16798",
+    "docs/downloads/session_b97812a3_witness_support.json": "ad73db808b0c6b6beb963154dd124ea1d8f99265456ebdaa97c67fcffa1784c1",
+    "docs/downloads/session_b97812a3_focus_freshness.json": "89288e0701ced7297f2400f0d0b5474e4b32d66d7a897b7c37cc9948c708d495"
+  },
+  "limitations": [
+    "No explicitly assigned method lane, fresh candidate, holdout, organizer receipt or competition slot.",
+    "No authorized interpretation resolves continuous probability pixels versus registry dots.",
+    "Pinned inputs are owner mirrors: official provenance and redistribution rights are unverified.",
+    "Local zeros outside the sample footprint are not proven equivalent to official outside-bounds null/NaN.",
+    "GitHub refs are time-specific; historical selected-site comparison is not a current complete inventory.",
+    "Other historical builders remain unaudited; a format pass never proves uniqueness or portal acceptance."
+  ]
+}

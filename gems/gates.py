@@ -74,9 +74,20 @@ def run_gates(candidate_path, reference_path, catalogue_path=None,
                 return results
             arr = cand.read(1).astype(np.float64)
             footprint = np.isfinite(ref.read(1).astype(np.float64))
+            # The pinned sample uses NaN nodata. A finite nodata sentinel or an
+            # explicit GDAL validity mask would change the meaning of the
+            # finite-pixel footprint used throughout this project; do not
+            # silently accept an ambiguous reference.
+            reference_mask = ref.read_masks(1) > 0
+            if not np.array_equal(footprint, reference_mask):
+                results.append(GateResult("reference_footprint", False,
+                                          "finite cells disagree with reference validity mask"))
+                return results
             if not footprint.any():
                 results.append(GateResult("reference_footprint", False, "empty footprint"))
-            results.extend((_g_value_range(arr, footprint), _g_no_nan_inside(arr, footprint),
+            candidate_mask = cand.read_masks(1) > 0
+            results.extend((_g_value_range(arr, footprint),
+                            _g_no_nan_inside(arr, footprint, candidate_mask),
                             _g_nan_outside(arr, footprint)))
             if require_submission_encoding:
                 results.append(_g_submission_encoding(arr, footprint))
@@ -84,9 +95,14 @@ def run_gates(candidate_path, reference_path, catalogue_path=None,
                 with rasterio.open(catalogue_path) as cat:
                     aligned = (cat.count == 1 and cat.shape == ref.shape
                                and cat.crs == ref.crs and cat.transform == ref.transform)
+                    valid_catalogue = bool(aligned and np.isfinite(cat.read(1)[footprint]).all()
+                                           and (cat.read_masks(1)[footprint] > 0).all())
                 if not aligned:
                     results.append(GateResult("catalogue_grid", False,
                                               "catalogue CRS/shape/transform/band mismatch"))
+                elif not valid_catalogue:
+                    results.append(GateResult("catalogue_validity", False,
+                                              "catalogue has invalid pixels inside the footprint"))
                 else:
                     results.extend(_g_catalogue(arr, footprint, catalogue_path, prune_radius))
         results.append(GateResult("reread_sha256", True, sha256_file(candidate_path)))
@@ -126,9 +142,11 @@ def _g_value_range(arr, footprint):
                       f"max={finite.max() if finite.size else 'n/a'}")
 
 
-def _g_no_nan_inside(arr, footprint):
+def _g_no_nan_inside(arr, footprint, candidate_mask):
     n = int((~np.isfinite(arr[footprint])).sum())
-    return GateResult("no_nan_inside_footprint", n == 0, f"nonfinite_pixels={n}")
+    masked = int((footprint & ~candidate_mask).sum())
+    return GateResult("no_nan_inside_footprint", n == 0 and masked == 0,
+                      f"nonfinite_pixels={n} masked_pixels={masked}")
 
 
 def _g_nan_outside(arr, footprint):
@@ -192,11 +210,25 @@ def _g_catalogue(arr, footprint, catalogue_path, prune_radius):
 
 
 def summarise(results: list[GateResult]) -> tuple[bool, str]:
-    """ALL OK / list of failures, for CI and the ledger."""
-    fails = [r for r in results if not r.ok and r.name != "proxy_not_a_gate"]
+    """Summarize actual, boolean gate results; absent evidence fails closed."""
+    if not isinstance(results, (list, tuple)) or not results:
+        return False, "RESULT: FAIL (no gate results)"
+    if any(not isinstance(r, GateResult) or not isinstance(r.name, str) or not r.name
+           or type(r.ok) is not bool for r in results):
+        return False, "RESULT: FAIL (malformed gate result; literal booleans required)"
+    names = [r.name for r in results]
+    if len(names) != len(set(names)):
+        return False, "RESULT: FAIL (duplicate gate names)"
+    actual = [r for r in results if r.name != "proxy_not_a_gate"]
+    if not actual:
+        return False, "RESULT: FAIL (no actual gates; proxy is not a gate)"
+    required = {"crs", "shape", "transform", "dtype_and_band", "values_in_0_1",
+                "no_nan_inside_footprint", "nan_outside_footprint", "reread_sha256"}
+    missing = sorted(required - set(names))
+    fails = [r for r in actual if not r.ok]
     lines = [str(r) for r in results]
-    if fails:
-        lines.append(f"RESULT: FAIL ({len(fails)} gate(s))")
+    if fails or missing:
+        lines.append(f"RESULT: FAIL ({len(fails)} failing gate(s); missing core gates: {missing})")
     else:
-        lines.append(f"RESULT: PASS ({len(results)} gates)")
-    return (not fails), "\n".join(lines)
+        lines.append(f"RESULT: PASS ({len(actual)} gates)")
+    return (not fails and not missing), "\n".join(lines)

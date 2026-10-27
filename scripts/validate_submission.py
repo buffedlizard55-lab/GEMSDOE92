@@ -25,13 +25,22 @@ LABELS_PATH = ROOT / "data/bridge/labels.tif"
 
 def load_reference():
     with rasterio.open(SAMPLE_PATH) as ds:
+        if ds.count != 1 or ds.crs is None:
+            raise ValueError("sample must be a single-band grid with a CRS")
         sample_data = ds.read(1)
         footprint = np.isfinite(sample_data)
+        if not footprint.any() or not np.array_equal(footprint, ds.read_masks(1) > 0):
+            raise ValueError("sample footprint is empty or disagrees with its GDAL validity mask")
         transform = ds.transform
         crs = ds.crs
         shape = (ds.height, ds.width)
     with rasterio.open(LABELS_PATH) as ds:
-        labels = ds.read(1) > 0.5
+        if ds.count != 1 or ds.crs != crs or ds.shape != shape or ds.transform != transform:
+            raise ValueError("catalogue grid does not match the sample")
+        values = ds.read(1)
+        if not np.isfinite(values[footprint]).all() or not (ds.read_masks(1)[footprint] > 0).all():
+            raise ValueError("catalogue contains invalid cells inside the sample footprint")
+        labels = values > 0.5
     return footprint, labels, crs, shape, transform
 
 
@@ -59,11 +68,19 @@ def check_file(path: pathlib.Path, footprint, labels, crs, shape, transform) -> 
             print(f"  FAIL: band count {ds.count} != 1")
             return False
 
+        if (not isinstance(footprint, np.ndarray) or footprint.dtype != np.bool_
+                or footprint.shape != data.shape or not footprint.any()
+                or not isinstance(labels, np.ndarray) or labels.shape != data.shape):
+            print("  FAIL: invalid or empty reference footprint/catalogue")
+            return False
         finite = np.isfinite(data)
         inside = footprint
         outside = ~footprint
         if not np.all(finite[inside]):
             print("  FAIL: NaN/Inf inside footprint")
+            return False
+        if not np.all(ds.read_masks(1)[inside] > 0):
+            print("  FAIL: GDAL-masked cells inside footprint")
             return False
         if not np.all((data[inside] >= 0.0) & (data[inside] <= 1.0)):
             print("  FAIL: values outside [0,1] inside footprint")
@@ -107,10 +124,18 @@ def main(argv: list[str] | None = None) -> int:
             print("FAIL: no GeoTIFFs found to validate")
             return 1
 
-    footprint, labels, crs, shape, transform = load_reference()
+    try:
+        footprint, labels, crs, shape, transform = load_reference()
+    except (OSError, ValueError, rasterio.errors.RasterioError) as exc:
+        print(f"FAIL: invalid reference data: {exc}", file=sys.stderr)
+        return 1
     ok = True
     for p in targets:
-        if not check_file(p, footprint, labels, crs, shape, transform):
+        try:
+            if not check_file(p, footprint, labels, crs, shape, transform):
+                ok = False
+        except (OSError, ValueError, rasterio.errors.RasterioError) as exc:
+            print(f"  FAIL: invalid candidate {p}: {exc}", file=sys.stderr)
             ok = False
 
     if ok:

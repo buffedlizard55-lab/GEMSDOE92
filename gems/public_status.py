@@ -1,15 +1,12 @@
 """Authoritative byte-bound publication status (VARIO card).
 
-Supersedes the rejection-only review panel: earlier versions required
-``verdict == negative`` and ``new_raster_generated is False`` by construction,
-which made it impossible to ever publish a newly generated, gate-validated
-artifact.  This version is evidence-driven and fail-closed:
+The current pinned full-footprint witness enforces a rejection-only decision;
+recorded booleans alone cannot override it. A future policy change requires
+new separately reviewed evidence, not an edited historical card.
 
 * the card must be the VARIO run card for the exact primary bytes on disk;
-* a ``promote`` verdict is accepted only if every recorded pre-registered
-  gate (format, leakage canary, paired holdout, operative uniqueness) is
-  literally ``True``; a ``negative`` verdict requires at least one to be
-  false and the blocking reasons to be present;
+* ``promote`` is rejected, even when every recorded gate is ``True``;
+  a ``negative`` verdict requires a failed gate and blocking reasons;
 * no organizer score may be present without a receipt (must be ``None``);
 * the panel text is rendered by ``scripts.render_vario_status`` from the
   same card, so this module and the site renderer cannot disagree.
@@ -43,6 +40,8 @@ def validate_status(card: dict, root: Path, primary_rel: str) -> None:
     verdict = card.get("verdict")
     if verdict not in ("promote", "negative"):
         raise ValueError("verdict must be promote or negative")
+    if verdict == "promote":
+        raise ValueError("literal registry pre-placement STOP blocks promotion")
     gates = card.get("gates")
     if not isinstance(gates, dict) or set(gates) != set(GATE_KEYS) or any(not isinstance(v, bool) for v in gates.values()):
         raise ValueError("gate evidence must be literal booleans for the pre-registered gates")
