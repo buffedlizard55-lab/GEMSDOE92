@@ -1,5 +1,20 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+## Repeatable project review — 2026-10-27, e7bc063a
+
+**DO NOT SUBMIT.** This session independently reproduced the literal dense-registry stop; no new TIFF, holdout, experiment or slot was generated. The new [three-pass review](docs/REVIEW_E7BC063A.md) explains the result and limitations. The [nine-site executive summary](docs/focus9.html) provides the requested historical download / reported result / estimate availability / uniqueness table. No defensible organizer-score estimate or new submission clearance is available.
+
+**Read this starting brief and [`SESSION_PROMPT.md`](SESSION_PROMPT.md) before every session.** The mission remains a genuinely unique, automatically validated competition TIFF, with official provenance, visible-fault-only buffered whole-segment holdouts, leakage canaries, complete pre-placement and final registry checks, and separate weekly-slot selection. Preserve **Maximize P(Win)** and **Own the Outcome**; report negative results honestly. The current prompt's unique-file demand cannot override its literal duplicate-stop rule or supply the missing assigned method paragraph. Older research banners below do not grant clearance.
+
+One command now reproduces the shared rejection proof, full tests, manifest, parent, all served research-file gates and generated-page/card freshness checks. Use a fresh receipt path:
+
+```sh
+.venv/bin/python scripts/review_project.py --fetch-witness \
+  --output .cache/review-$(date -u +%Y%m%dT%H%M%SZ).json
+```
+
+Exit **1** = engineering checks passed, confirmed protocol STOP; **2** = failed/incomplete/inconclusive. Both mean **DO NOT SUBMIT**. The command never trains, generates a TIFF, accesses the leaderboard or selects a slot. See the [review](docs/REVIEW_E7BC063A.md) for reproducibility and next-session dependencies. Existing shared tools remain authoritative; no private holdout or writer was added.
+
 ## Latest repository audit — 2026-10-27
 
 **DO NOT SUBMIT.** No new TIFF, geological experiment, holdout or weekly-slot selection occurred. The freshly verified full-footprint registry witness makes every nonempty candidate exceed the literal 70% overlap stop. [Three-pass review](docs/REVIEW_B4BB558B.md) · [negative run card](docs/downloads/review_b4bb558b_run_card.json) · [nine-site executive summary](docs/focus9.html) · [input-cache audit](docs/downloads/input_cache_b4bb558b.json).
