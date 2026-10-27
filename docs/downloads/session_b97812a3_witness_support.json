@@ -1,0 +1,21 @@
+{
+  "schema": "gemsdoe92-witness-support-v1",
+  "evidence_class": "REGISTRY-MEASUREMENT (one witness, rejection only)",
+  "observed_utc": "2026-10-27T18:52:11.895113+00:00",
+  "implementation_sha256": "7b5910b73c8f258ad2bcbafe3221a80135c6452c0b343e1c03141e1b1fe24b9d",
+  "sample_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+  "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+  "witness_url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/6fc71d19d49dca4960d5434bd81b6dd06fcc030a/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+  "statistics": {
+    "finite_footprint_pixels": 5167373,
+    "positive_footprint_pixels": 5167373,
+    "minimum": 0.0004625781439244747,
+    "maximum": 0.984115719795227,
+    "distinct_values": 4729578,
+    "binary_zero_or_one_pixels": 0
+  },
+  "interpretation": "If each positive continuous-probability pixel is a dot, every nonempty in-footprint dot set overlaps the witness at 1.0. The instruction does not resolve whether continuous values are intended as dots. This is a fail-closed representation stop, not proof of geological identity.",
+  "new_candidate": false,
+  "experiments": 0,
+  "submission_eligible": false
+}

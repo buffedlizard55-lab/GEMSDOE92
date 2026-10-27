@@ -208,15 +208,22 @@ def main() -> int:
     # submission instruction at publication time.
     try:
         from scripts import (audit_score_estimator, render_focus9_page, render_focus_site_review,
-                             render_review_14f85876, render_review_b4bb558b, render_review_banner)
+                             render_review_14f85876, render_review_b4bb558b,
+                             render_review_b97812a3, render_review_d30d387c, render_review_banner)
         generated = {
             render_focus9_page.OUTPUT: render_focus9_page.render(),
             render_review_14f85876.OUTPUT: json.dumps(render_review_14f85876.build(), indent=2, allow_nan=False) + '\n',
             render_review_b4bb558b.OUTPUT: json.dumps(render_review_b4bb558b.build(), indent=2, allow_nan=False) + '\n',
+            render_review_b97812a3.OUTPUT: json.dumps(render_review_b97812a3.build(), indent=2, allow_nan=False) + '\n',
+            render_review_d30d387c.OUTPUT: json.dumps(render_review_d30d387c.build(), indent=2, allow_nan=False) + '\n',
             audit_score_estimator.OUTPUT: json.dumps(audit_score_estimator.audit(), indent=2, allow_nan=False) + '\n',
         }
         if render_review_b4bb558b.PUBLIC_INPUT.read_bytes() != render_review_b4bb558b.INPUT.read_bytes():
             problems.append('public owner-mirror input audit differs from its source receipt')
+        if render_review_d30d387c.PUBLIC_INPUT.read_bytes() != render_review_d30d387c.INPUT.read_bytes():
+            problems.append('public d30d387c input audit differs from its source receipt')
+        if render_review_d30d387c.PUBLIC_FLEET.read_bytes() != render_review_d30d387c.FLEET.read_bytes():
+            problems.append('public d30d387c fleet audit differs from its source receipt')
         old_review = json.loads(render_focus_site_review.EVIDENCE.read_text(encoding='utf-8'))
         generated.update(render_focus_site_review.generate(old_review))
         for path, expected in generated.items():

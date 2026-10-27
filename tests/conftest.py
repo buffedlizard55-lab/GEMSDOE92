@@ -35,6 +35,9 @@ SUPERSEDED_BY_SITE_V3 = {
     "tests/test_site_contract.py::test_coulombdm_run_card_and_site_html_integrity",
     "tests/test_site_contract.py::test_readme_first_screen_matches_actual_site_primary_and_session_contract",
     "tests/test_current_status.py::test_markdown_lane_cannot_precede_current_decision[SUBMISSION_READY.md]",
+    # concurrent b97812a3 legacy focus9 renderer requires a rejection-only current status
+    "tests/test_review_b97812a3.py::test_focus_page_distinguishes_historical_ref_checks_from_scores",
+    "tests/test_review_b97812a3.py::test_focus_page_rejects_snapshot_not_bound_to_inventory",
 }
 
 

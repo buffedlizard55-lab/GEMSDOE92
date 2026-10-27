@@ -425,3 +425,21 @@ Rule basis: official rules §3.2 ("indicate in the narrative (not included in th
 ## 2026-10-27 (session ee2370c1)
 
 Generative AI was used by an AI coding agent to write the registry, leaderboard-model, placement, validation and site code, and the documentation, in this session. Every number in the deliverables was computed by the committed scripts from pinned inputs and owner-reported scores. No organizer score was generated or inferred as fact. This is an internal log entry. The submission narrative required by rules §3.2 ([official rules](https://docs.nlr.gov/docs/fy26osti/96647.pdf)) must still state this use.
+
+---
+
+## Session — multi-owner fleet, dual-witness & 19-band data-integrity audit (`2026-10-27`, branch `arena/d30d387c-gemsdoe92`)
+
+Rule basis: DOE/NLR *GEMS Prize Official Rules* §3.2 (<https://docs.nlr.gov/docs/fy26osti/96647.pdf>: *"indicate in the narrative (not included in the word count) the extent to which, if any, you used generative AI technology and how you used it"*).
+
+### What AI wrote or updated
+- Upgraded shared audit/scanner code in place: `scripts/audit_input_cache.py` (interior finite `-3.4028235e+38` NoData sentinel and `Band 6 tc` identity audit), `scripts/audit_public_registry.py` (5-owner GitHub fleet support and `_is_submission_tif_path` non-standard subpath coverage), and `scripts/build_public_registry_index.py` (`classify_and_extract_dots` fixing `DOT_FIELD_MAX = 200,000` tie-truncation on `{0, 1}` binary lattices).
+- Added forensic scripts and evidence receipts: `scripts/audit_fleet_20261027.py`, `scripts/render_review_d30d387c.py`, `evidence/review_d30d387c_preflight.json`, `evidence/input_cache_d30d387c.json` (`docs/downloads/input_cache_d30d387c.json`), `evidence/fleet_20261027_audit_d30d387c.json` (`docs/downloads/fleet_20261027_audit_d30d387c.json`), `docs/downloads/review_d30d387c_run_card.json`, and `ledger/site_scores_claimed_20261027.csv`.
+- Authored `docs/HYPOTHESES_20261027_D30D387C.md` (5 untried geological hypotheses) and `docs/REVIEW_20261027_D30D387C.md`, updated `docs/focus9.html`, review banners, `README.md`, `SESSION_PROMPT.md`, `IRREGULARITIES.md`, and regression tests (`tests/test_review_d30d387c.py`).
+
+### What AI did not do
+- Generated zero new submission GeoTIFFs, fitted zero new models, spent zero weekly submission slots, and made zero automated requests to `drivendata.org`.
+
+### What the human competitor must still do
+- Resolve the dual-witness policy (`17GEMSDOE` continuous surface and `13GEMSDOE` binary-dot lattice) and assign `[PASTE ONE PARAGRAPH]` before authorizing any new experimental lane.
+- Include the required §3.2 generative-AI narrative disclosure in any future final Phase 1 / Phase 2 submission package.

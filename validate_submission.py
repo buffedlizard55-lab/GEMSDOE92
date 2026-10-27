@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Validate a candidate and print the byte-bound submission decision.
+"""Validate format and explain the current rejection-only decision.
 
-A format pass is not upload clearance.  The decision is read from the
-current run card (evidence/vario_run_card.json) and applies only to the
-primary bytes it is hash-bound to: exit 0 only when every format gate
-passes AND the card verdict is ``promote`` AND the SHA-256 matches this
-file.  Otherwise exit 1 = DO NOT SUBMIT.  No score or organizer-acceptance
-forecast is made.
+A format pass is not upload clearance. The current registry pre-placement
+stop applies even if a run card is edited to say ``promote``. This command
+never selects a weekly submission slot or returns success as an authorization;
+it exits 1 for DO NOT SUBMIT and 2 for inconclusive/invalid input. A future
+selector requires a separately authorized protocol and fresh evidence. No
+score or organizer-acceptance forecast is made.
 """
 from __future__ import annotations
 
@@ -45,20 +45,30 @@ def main(argv=None) -> int:
         print(report)
         print("FORMAT PASS (local only)" if ok else "FORMAT FAIL")
         card = json.loads((ROOT / "evidence/vario_run_card.json").read_text())
+        if not isinstance(card, dict):
+            raise ValueError("run card must be a JSON object")
         try:
             digest = sha256_file(candidate)
         except OSError:
             digest = None
-        bound = card.get("raster_sha256") == digest and str(ROOT / card["submission_file"]) == str(candidate)
-        if ok and bound and card.get("verdict") == "promote" and all((card.get("gates") or {}).values()):
-            print(f"OK TO SUBMIT (selector step still applies): {card['submission_name']}")
-            return 0
+        bound = (
+            digest is not None and card.get("raster_sha256") == digest
+            and (ROOT / card["submission_file"]).resolve() == candidate.resolve()
+        )
         if not bound:
-            print("DO NOT SUBMIT: this file is not the run-card primary (SHA-256 mismatch); no clearance evidence describes it.")
+            print("DO NOT SUBMIT: this file is not the byte-bound run-card primary; no clearance evidence describes it.")
+        elif card.get("verdict") != "negative":
+            # Do not rely on all({}.values()), truthy strings, or a forged
+            # promotion flag. The separately verified dense-witness stop is
+            # binding regardless of this historical run card's contents.
+            print("DO NOT SUBMIT: current literal registry stop blocks promotion; a run-card verdict cannot override it.")
         else:
-            print(f"DO NOT SUBMIT: verdict={card.get('verdict')}; " + "; ".join(card.get("blocking_reasons", [])))
+            reasons = card.get("blocking_reasons")
+            if not isinstance(reasons, list) or not all(isinstance(x, str) for x in reasons):
+                reasons = []
+            print(f"DO NOT SUBMIT: verdict=negative; " + "; ".join(reasons))
         return 1
-    except (OSError, ValueError, KeyError, rasterio.errors.RasterioError) as exc:
+    except (OSError, ValueError, KeyError, TypeError, rasterio.errors.RasterioError) as exc:
         print(f"INCONCLUSIVE / DO NOT SUBMIT: {exc}", file=sys.stderr)
         return 2
 
