@@ -1,3 +1,11 @@
+## Read first — current review 2026-10-27
+
+Read README, [the three-pass review](docs/REVIEW_20261027_A3DCC0DD.md), [fresh run card](docs/downloads/review_a3dcc0dd_run_card.json), and [focus9](docs/focus9.html). The pinned dense witness was re-fetched: literal REGISTRY-MEASUREMENT overlap 1.000 > 0.70 for every nonempty in-footprint candidate. STOP before generation/placement. No distinct lane was assigned; no new TIFF, holdout, experiment or slot. 636 tests pass; site checker passes for 123 research rasters. No leaderboard estimate is supported.
+
+**Historical instructions below are archives, not current execution authority. In particular, do not execute the SALEMSEISMO runner or its score-estimation recipe:** later audits disabled the runner and found leakage/check-order and estimation defects. Resolve the literal protocol through an authorized decision and assign a distinct method before new experiments. Never silently waive a gate.
+
+---
+
 
 ## Current session addendum — 2026-10-26 (nine-site forensic audit + `SALEMSEISMO` lane, branch `arena/18da04a8-gemsdoe92`)
 
