@@ -1,0 +1,55 @@
+{
+  "schema": "gemsdoe92-repository-review-20261027-v1",
+  "review_date_utc": "2026-10-27",
+  "hypothesis": "LOCAL-WAVENUMBER-CONSENSUS is the current conditional screen priority; no distinct method lane was assigned, so it was not implemented.",
+  "mechanism": "Possible buried faults may align multi-scale magnetic and gravity derivative-ratio/source-depth boundaries; cross-physics agreement is a hypothesis, not proof of a fault.",
+  "named_non_fault_mimic": "Lithologic contacts, remanent volcanic bodies, and flight-line or processing artifacts.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "value": null,
+    "ci95": null,
+    "evaluator_version": null,
+    "withheld_positives": null,
+    "status": "NOT_RUN",
+    "reason": "Binding pre-placement registry witness rejects every nonempty candidate; no surface or dots were generated."
+  },
+  "leakage_canary": {
+    "status": "NOT_RUN",
+    "reason": "No experimental features were constructed."
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "scope": "Use the existing hash-bound single-witness rejection receipt; no new global uniqueness scan was run.",
+    "forward_overlap": 1.0,
+    "threshold": 0.7,
+    "witness_positive_pixels": 5167373,
+    "sample_footprint_pixels": 5167373,
+    "result": "REJECT_BEFORE_SURFACE_OR_PLACEMENT",
+    "source_receipt": "evidence/review_b4bb558b_preflight.json"
+  },
+  "new_unique_tiff_generated": false,
+  "raster_sha256": null,
+  "validator_output": {
+    "new_candidate": "NOT_RUN_NO_CANDIDATE",
+    "local_site_gate": "PASS; 123 served research rasters passed local format gates; this does not establish portal acceptance or uniqueness.",
+    "manifest": "PASS; all 8 committed manifest entries",
+    "parent": "PASS; pinned R0 artifact verified from committed bytes",
+    "test_suite": "PASS; 720 tests, 159 Rasterio PendingDeprecationWarnings",
+    "portal_acceptance": "NOT_TESTED"
+  },
+  "submission_name": null,
+  "submission_note": null,
+  "score_estimate": null,
+  "score_estimate_reason": "No organizer score-to-file receipts or validated calibration; site scores remain owner CLAIMs.",
+  "organizer_confirmed_score": null,
+  "weekly_slots_used": 0,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "limitations": [
+    "No current leaderboard or authenticated submission receipt was verified.",
+    "The pinned dense witness causes a literal rule/representation degeneracy; it does not prove geological sameness.",
+    "The current run did not fetch the complete registry or original competition data.",
+    "Owner-mirror input hashes do not authenticate organizer provenance or redistribution rights.",
+    "The documented official null-or-NaN outside-bounds wording and local zero-outside convention are not proven equivalent."
+  ]
+}
