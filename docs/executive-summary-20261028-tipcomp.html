@@ -1,105 +1,58 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Executive Summary 2026-10-28 — TIPCOMP (H-92F1) · GEMSDOE92</title>
-<link rel="stylesheet" href="style.css">
-<style>.big{font-size:1.15rem}.ok{color:#137333;font-weight:700}.warn{color:#b3261e;font-weight:700}.mono{font-family:ui-monospace,monospace}.small{font-size:.85rem}td,th{padding:.35rem .5rem}</style>
-</head><body><main>
-<h1>Executive Summary — 2026-10-28 TIPCOMP session</h1>
-<p class="small">Evidence labels (Protocol Rule 3): <b>CLAIM</b> = owner-reported score, no organizer receipt in this repo ·
-<b>MODEL</b> = fitted to CLAIMs, not an organizer score · <b>HOLDOUT-DTI</b> = <span class="mono">gems57-pooled-hide-v2</span>, 22,663 withheld px ·
-<b>ORGANIZER-CONFIRMED</b> = none exists for any file below. Method lane: TIPCOMP H-92F1
-(<a href="HYPOTHESES_20261028_TIPCOMP.md">pre-registered hypotheses</a>).</p>
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TIPCOMP H-92F1 — research-only status</title>
+<style>
+:root{color-scheme:light dark;--red:#9d1515;--green:#176337;--line:#8886;--panel:#8881}
+body{font:16px/1.55 system-ui,sans-serif;max-width:1000px;margin:2rem auto;padding:0 1rem}
+h1,h2{line-height:1.2}.box{border:1px solid var(--line);border-radius:.65rem;padding:1rem 1.2rem;margin:1rem 0;background:var(--panel)}
+.danger{border:3px solid var(--red)}.ok{color:var(--green);font-weight:800}.stop{color:var(--red);font-weight:900}
+table{border-collapse:collapse;width:100%;margin:.8rem 0}th,td{border:1px solid var(--line);padding:.55rem;text-align:left;vertical-align:top}
+code,.mono{font-family:ui-monospace,monospace;overflow-wrap:anywhere}.small{font-size:.92rem}.links a{margin-right:.6rem}
+</style>
+</head>
+<body>
+<main>
+<h1>TIPCOMP H-92F1 — historical candidate, research only</h1>
+<section class="box danger" aria-label="Submission decision">
+<p class="stop">⛔ DO NOT SUBMIT — verdict <code>negative</code>; <code>submission_eligible: false</code>.</p>
+<p><span class="ok">Research download only.</span> The local 11-gate format validator passing does not make this artifact eligible. No weekly slot was selected, and no selector decision is requested. This is not the current main-site primary.</p>
+</section>
 <section class="box">
-<h2>⬇ The file to download</h2>
-<p class="big"><a href="downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif"><b>Download
-<span class="mono">gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif</span></b></a>
-· <a href="downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.zip">one-TIFF ZIP</a>
-· <a href="downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6_run_card.json">JSON run card</a>
-· <a href="how-to-submit.html">how to submit (3 steps)</a></p>
-<p>Portal name: <span class="mono">gemsdoe92-tipcomp-40000d-8f27b9d6</span><br>
-Portal note (103/140 chars): <span class="mono">TIPCOMP H-92F1: 40000 dots; LBM ens x tip-cont x complement; caps vs focus9+priors; MODEL pub128 0.349.</span><br>
-SHA-256: <span class="mono">8f27b9d6…</span> (full hash in run card) · 40,000 binary dots · float32 · EPSG:32611 · 3730×3292 · exact sample geotransform</p>
-<p><span class="ok">✅ OK TO DOWNLOAD</span> — automated validation, zero human pixel inspection:
-<b>11/11 format gates PASS</b> (values in [0,1], 0 NaN, 0.0 outside footprint, 0 dots ≤200 m of catalogue — immune to the portal
-“Predicted values must be in range [0, 1]” error).<br>
-<span class="warn">⏳ SELECTOR DECISION REQUIRED BEFORE SPENDING A WEEKLY SLOT</span> — machine verdict
-<span class="mono">negative</span> on <b>one</b> pre-registered conservative bound (26-row refit bootstrap q05 = 0.2688 &lt; 0.2778),
-while the candidate <b>beats the currently bannered file (rieszlbm2) on every comparable spec</b> (table below).
-Protocol Rule 6: this session does not pick slots; the owner/selector decides with this table.</p>
-</section>
-
-<section class="box"><h2>Decision table — what to download, estimated score, unique?</h2>
+<h2>Artifact and auditable status</h2>
+<p class="links">
+<a href="downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif" download>⬇ Download the research-only GeoTIFF</a>
+<a href="downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.zip" download>One-TIFF ZIP</a>
+<a href="downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6_run_card.json">Run card</a>
+<a href="downloads/tipcomp_readiness_20261028.json">Machine status feed</a>
+</p>
 <table>
-<tr><th>File (download = this session only; others study-only)</th><th>CLAIM</th><th>MODEL published-128</th><th>MODEL refit-26 [boot q05–q95]</th><th>Unique (PI-1: ≤70% @3px &amp; |ρ|≤0.90)?</th><th>Action</th></tr>
-<tr><td><b>⭐ gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif (NEW, this session)</b></td><td>—</td><td><b>0.3485</b></td><td>0.3109 [0.2688–0.337*]</td><td><b>Yes</b> vs 165-raster local registry: worst overlap 0.6848, worst |ρ| 0.18; ≤0.6325 vs every focus-9 peak, 0.6177 vs lbmc1, 0.6182 vs rieszlbm2</td><td><b>Download; selector decides slot</b></td></tr>
-<tr><td>gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif (prior banner)</td><td>— (unscored)</td><td>0.3163</td><td>0.2743 [0.2206–0.3023]</td><td>Yes (prior 2,162-raster audit ≤0.6556)</td><td>Superseded on all specs by TIPCOMP</td></tr>
-<tr><td>gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif</td><td>— (unscored)</td><td>0.3322</td><td>0.2822 [0.2311–0.3061]</td><td>Yes (prior audit)</td><td>Study only</td></tr>
-<tr><td>GEMSDOE32 h33-h33-2-b2 (R0) — best focus-9 peak</td><td>0.2778</td><td>0.2728</td><td>0.2644 [0.2574–0.2682]</td><td><b>No</b> — identical bytes served by ≥17 repos (fleet audit)</td><td>Do not resubmit (duplicate)</td></tr>
-<tr><td>GEMSDOE36 anderson-geothermal-pinn</td><td>0.2750</td><td>0.2703</td><td>—</td><td><b>No</b> — clone across fleet; 97.4% of dots within 3 px of R0</td><td>Do not resubmit</td></tr>
-<tr><td>GEMSDOE28 h36-1-rung30-blind-r1</td><td>0.2710</td><td>0.2681</td><td>—</td><td><b>No</b> — clone; 95.5% within 3 px of R0</td><td>Do not resubmit</td></tr>
-<tr><td>GEMSDOE31 h27-4-solo-d28</td><td>0.2708</td><td>0.2696</td><td>—</td><td><b>No</b> — same dot support family as GEMSDOE28 solo</td><td>Do not resubmit</td></tr>
-<tr><td>GEMSDOE33 h33d-analog-tip-stepover</td><td>0.2632</td><td>0.2666</td><td>—</td><td><b>No</b> — clone across fleet</td><td>Do not resubmit</td></tr>
-<tr><td>GEMSDOE25 dotted-h19-5-d2-8</td><td>0.2600</td><td>0.2625</td><td>—</td><td><b>No</b> — <b>dot support byte-identical to GEMSDOE30 peak</b> (verified this session)</td><td>Do not resubmit</td></tr>
-<tr><td>GEMSDOE30 d28-poisson300m-offcat</td><td>0.2600</td><td>0.2625</td><td>—</td><td><b>No</b> — identical support to GEMSDOE25 peak</td><td>Do not resubmit</td></tr>
-<tr><td>GEMSDOE24 h25-1-dotted-h19-5-d1-5</td><td>0.2477</td><td>0.2532</td><td>—</td><td><b>No</b> — clone across fleet</td><td>Do not resubmit</td></tr>
-<tr><td>GEMSDOE27 topo-gap-closure-on-d1-5</td><td>0.2449</td><td>0.2507</td><td>—</td><td><b>No</b> — identical bytes in GEMSDOE28/63/67 + KANLER repos</td><td>Do not resubmit</td></tr>
+<tr><th>Download status</th><td><strong>OK TO DOWNLOAD FOR RESEARCH ONLY</strong>; do not treat this as an upload recommendation.</td></tr>
+<tr><th>Submission status</th><td><strong>DO NOT SUBMIT</strong>; negative verdict, not eligible.</td></tr>
+<tr><th>File / digest</th><td><code>gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif</code><br>SHA-256 <code>8f27b9d6478526d72a055f0a56c7c8f6db1d63f2f5c66233b7eedbf9937579cf</code></td></tr>
+<tr><th>Local format check</th><td>Recorded 11/11 gates pass; single-band float32, EPSG:32611, 3,730 × 3,292, values in [0,1], 40,000 binary dots. Format validity only; not organizer acceptance.</td></tr>
+<tr><th>Portal name / note</th><td>Metadata only; do not upload while status is negative.<br><code>gemsdoe92-tipcomp-40000d-8f27b9d6</code><br><code>TIPCOMP H-92F1: 40000 dots; LBM ens x tip-cont x complement; caps vs focus9+priors; MODEL pub128 0.349.</code> (103 characters)</td></tr>
 </table>
-<p class="small">* q95 from run card. Estimator verification (this session, from bytes): published LBM-v1 β (128 CLAIMs) reproduced
-<b>exactly</b> (R0 → 0.27284); RMSE 0.0150 across 26 in-session scored rasters. Refit-26 LOGO RMSE 0.0196, Spearman 0.917.
-Candidate − R0 under refit bootstrap: median <b>+0.0440</b>, q05 <b>+0.0063</b>, P(&gt;0)=0.97.
-All focus-9 peak files were re-fetched this session and SHA-256-matched to <span class="mono">evidence/claims_matched_20261028.json</span>;
-anatomy in <span class="mono">evidence/focus9_anatomy_20261028b.json</span>. No estimate above is an organizer score;
-reported leaderboard highs (0.3195 earlier, 0.4413 current) are user-reported and are not mirrored here.</p></section>
-
-<section class="box"><h2>Per-site verdicts (focus 9)</h2>
-<p><b>Common finding:</b> every focus-9 peak is a dotted/pruned surgery of the same GEMSDOE19 H19-5 skeleton —
-87–100% of each peak's dots lie within 3 px of R0 — so <b>no peak is lane-unique and none should be resubmitted</b>.
-Inside each site, its peak is nevertheless its best file:</p>
-<ul>
-<li><b>GEMSDOE32 (0.2778)</b> — best of the nine. R0 = D2.8 skeleton with a strict 200 m catalogue collar (0.0% of dots ≤2 px). The collar is worth ≈+0.007 over the 100 m collar because 100–200 m dots are pure false positives (derivative proof in <a href="WHY_0_2778.md">WHY_0_2778.md</a>).</li>
-<li><b>GEMSDOE36 (0.2750)</b> — also 0.0% ≤2 px; effectively an R0 twin (97.4% near R0). Second-best CLAIM, not unique.</li>
-<li><b>GEMSDOE28 (0.2710)</b> — four near-tied rungs (0.2649–0.2710); h36-1 is its best. 6.2% of dots still ≤2 px explains the −0.007 gap to R0.</li>
-<li><b>GEMSDOE31 (0.2708)</b> — solo D2.8 with 100 m collar; same family as GEMSDOE28's solo rung.</li>
-<li><b>GEMSDOE33 (0.2632)</b> — tip/stepover-augmented D2.8; augmentation did not beat the plain 200 m collar.</li>
-<li><b>GEMSDOE25 = GEMSDOE30 (0.2600)</b> — identical dot support (verified): D2.8 without collar (14.6% ≤2 px). One file, two sites.</li>
-<li><b>GEMSDOE24 (0.2477)</b> — denser D1.5 dotting: more recall, more FP; the 1−s/12 thinning law favours s=2.8.</li>
-<li><b>GEMSDOE27 (0.2449)</b> — gap-closure on D1.5 inherits D1.5's FP drag; its later CELF files (0.219–0.225) score lower.</li>
-</ul>
-<p><b>Why 0.2778 won, and can we beat it?</b> R0 optimally thins a good skeleton (76.7% on-trace kernel recall at 1/2.8 the FP cost)
-and empties the proven 100–200 m dead collar — but it spends all 37,654 dots on that one skeleton. The 128-claim inversion says
-truth density is ×5.65 beyond 1.5 km from the catalogue, ×3.73 one pixel off the H19-5 centreline, and ×15.4 where ≥5 independent
-off-H19 detectors agree. TIPCOMP reallocates along exactly those gradients (plus catalogue tip-continuations and kernel-coverage
-gaps), which is why both MODEL specs put it at <b>0.31–0.35</b>. Reaching 0.4413 needs sub-100 m localisation
-(1 m USGS 3DEP LiDAR — hypothesis H-92F5, deferred: host unreachable from this sandbox).</p></section>
-
-<section class="box"><h2>Holdout validation (no slot was spent by this session)</h2>
-<table>
-<tr><th>Arm</th><th>HOLDOUT-DTI (gems57-pooled-hide-v2, 22,663 withheld)</th><th>Class</th></tr>
-<tr><td>E2 TIPCOMP fold-proper (visible catalogue only)</td><td>0.09617 [0.08521, 0.10665]; Δ vs R0-recipe −0.00158 [−0.01787, +0.01469] (tie)</td><td>fold-proper</td></tr>
-<tr><td>R0-recipe control (H19-5 dotted, per-fold)</td><td>0.09775 [0.08590, 0.11077] — exactly reproduces prior sessions</td><td>control</td></tr>
-<tr><td>Final TIPCOMP candidate (static re-score)</td><td>0.00164 [0.00128, 0.00206]</td><td>static</td></tr>
-<tr><td>lbmc1 / rieszlbm2 (static re-score)</td><td>0.00076 / <b>0.000000</b> (0 dots within 3 px of 19,790 pooled withheld px — direct check)</td><td>static</td></tr>
-</table>
-<p class="small">Leakage canaries (Rule 4): max symmetric AUC 0.7799 (d_visible) ≤ 0.90 — PASS (tip field 0.7784).
-Static holdout ≈ 0 for every leaderboard-lane file is expected: the instrument withholds <i>catalogue</i> pixels, while these
-files are pruned &gt;200 m off-catalogue by construction (instrument validity: Spearman 0.13 vs CLAIMs, prior sessions).
-Both instruments are reported; neither is hidden. ⚠️ The prior banner's “HOLDOUT-DTI 0.03799” describes a fold-proper
-surrogate arm, <b>not</b> the shipped rieszlbm2 file (static = 0.0) — see IRREGULARITIES IR-1028B-2.</p></section>
-
-<section class="box"><h2>How to submit (if the selector approves)</h2>
-<ol>
-<li>Download the TIFF (or ZIP) above. Optionally re-verify: <span class="mono">python3 validate_submission.py docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif</span> → expect “FORMAT PASS (local only)” 11/11 (the validator never grants slots by design; see run card for the full gate table).</li>
-<li>On DrivenData → Submit: upload the single-band GeoTIFF (or the one-TIFF ZIP).</li>
-<li>Use the portal name + note at the top of this page. Respect the weekly cap shown on the submission page (website limit governs).</li>
-<li>Record the returned score verbatim in <span class="mono">ledger/</span> as the first ORGANIZER-CONFIRMED receipt for this repo.</li>
-</ol>
-<p class="small">Official sources: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">competition</a> ·
-<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">problem description</a> ·
-<a href="https://github.com/drivendataorg/gems-prize-reference-solution">reference solution</a> ·
-<a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">DOE/NREL rules (OSTI 96647)</a> ·
-<a href="https://gdr.openei.org/submissions/1391">GDR #1391</a> ·
-<a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN</a> ·
-<a href="https://epsg.io/32611">EPSG:32611</a> · <a href="https://en.wikipedia.org/wiki/Tversky_index">Tversky index</a></p>
 </section>
-</main></body></html>
+<section class="box">
+<h2>Why the machine verdict is negative</h2>
+<table>
+<tr><th>Evidence</th><th>Stored result</th><th>Interpretation</th></tr>
+<tr><td><code>HOLDOUT-DTI</code>, evaluator <code>gems57-pooled-hide-v2</code>, 22,663 withheld positives</td><td>Fold-proper E2: <code>0.096167 [0.085209, 0.106650]</code><br>R0-recipe control: <code>0.097750 [0.085900, 0.110766]</code><br>Paired delta: <code>−0.001583 [−0.017874, 0.014691]</code></td><td>Historical local holdout receipt; candidate point estimate is below the R0-recipe control and the paired 95% interval spans zero. Not an organizer leaderboard result and not rerun in this review.</td></tr>
+<tr><td><code>MODEL</code> fitted to owner-reported claims</td><td>Published-128: <code>0.348549</code>; refit-26: <code>0.310934</code>; refit bootstrap q05/median/q95: <code>0.268752 / 0.307647 / 0.331856</code></td><td>Not an organizer score. The lower quantile is below the comparison <code>0.2778 CLAIM</code>; the score-estimator audit does not validate these as leaderboard predictions.</td></tr>
+<tr><td>Registry measurement</td><td>Stored local 165-raster PI-1 scan: worst overlap <code>0.68485</code>; maximum absolute final/surface rank correlation <code>0.17065 / 0.18171</code>.</td><td>Bounded local measurement only. It was not independently repeated in this review and is not a global uniqueness certificate or an eligibility pass.</td></tr>
+</table>
+<p>No score value above is <code>ORGANIZER-CONFIRMED</code>. The reported GEMSDOE32 value is a <code>CLAIM</code>; model outputs are <code>MODEL</code>; local spatial holdout figures are <code>HOLDOUT-DTI</code>.</p>
+</section>
+<section class="box">
+<h2>Context, next gates, and official references</h2>
+<p>TIPCOMP was built from claim-fitted density, catalogue tip continuation and focus-9 coverage complements. Its historical hypothesis plan is available in <a href="HYPOTHESES_20261028_TIPCOMP.md">the TIPCOMP hypothesis record</a>. The present checkout lacks all 12 required pinned inputs, the assigned method paragraph is missing, and the full uniqueness interpretation is unresolved. No new experiment or TIFF was produced in the follow-up review.</p>
+<p>For the nine-site inventory, see the <a href="focus9.html">detailed Focus-9 comparison</a>. For current repository status, see the <a href="index.html">main site</a>. The <a href="how-to-submit.html">submission guide</a> describes the organizer's format and process; it does not clear this candidate for upload.</p>
+<p>Official links retained for manual review: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData task / metric</a>, <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">competition data page</a>, <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">DOE/NREL rules PDF</a>, <a href="https://github.com/drivendataorg/gems-prize-reference-solution">reference solution</a>, <a href="https://www.usgs.gov/3d-elevation-program">USGS 3DEP</a>, <a href="https://gdr.openei.org/submissions/1391">DOE GDR INGENIOUS #1391</a>. Non-GitHub official sources were not live-verified in this review.</p>
+<p><strong>Current decision: DO NOT SUBMIT. Research download only. No submission slot selected.</strong></p>
+</section>
+</main>
+</body>
+</html>

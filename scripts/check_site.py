@@ -14,6 +14,8 @@ Contract
   on the verdict, and the page says OK TO SUBMIT iff the verdict is ``promote``.
 * Every served ``docs/downloads/*-zeros.tif`` passes the format gates and is
   linked from docs/index.html or docs/archive.html.
+* The historical TIPCOMP status feed, run card, research TIFF, summary and
+  archive copy remain hash-bound and explicitly negative / DO NOT SUBMIT.
 The legacy (literal-stop) checker is preserved as scripts/check_site_legacy_20261026.py.
 """
 from __future__ import annotations
@@ -150,6 +152,96 @@ def check_primary(html: str, problems: list[str]) -> None:
     print(f"  PRIMARY {tif.name} sha256 {digest[:16]}… verdict={verdict}")
 
 
+def check_tipcomp_history(problems: list[str]) -> None:
+    """Keep the historical TIPCOMP download/status copy fail-closed.
+
+    This is not a candidate promotion path: its stored verdict must remain
+    negative, and its historical page/archive must never invite a selector
+    decision or imply global uniqueness.
+    """
+    status_path = DOWNLOADS / "tipcomp_readiness_20261028.json"
+    try:
+        status = json.loads(status_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        problems.append(f"TIPCOMP readiness feed missing or invalid: {exc}")
+        return
+
+    rel = status.get("file", "")
+    if not re.fullmatch(r"downloads/[A-Za-z0-9_.-]+-zeros\.tif", rel):
+        problems.append("TIPCOMP status file must be a local downloads/*-zeros.tif")
+        return
+    tif = DOCS / rel
+    if not tif.is_file():
+        problems.append(f"TIPCOMP research TIFF missing: {rel}")
+        return
+    digest = sha256_file(tif)
+    if status.get("raster_sha256") != digest:
+        problems.append("TIPCOMP readiness SHA-256 != research TIFF bytes")
+
+    card_name = status.get("run_card", "")
+    if not re.fullmatch(r"[A-Za-z0-9_.-]+_run_card\.json", card_name):
+        problems.append("TIPCOMP status must point to a local run card")
+        return
+    card_path = DOWNLOADS / card_name
+    try:
+        card = json.loads(card_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        problems.append(f"TIPCOMP run card missing or invalid: {exc}")
+        return
+    if card.get("raster_sha256") != digest:
+        problems.append("TIPCOMP run-card SHA-256 != research TIFF bytes")
+    if card.get("verdict") != "negative" or card.get("submission_eligible") is not False:
+        problems.append("TIPCOMP must remain negative and not submission-eligible")
+    if status.get("verdict") != "negative" or status.get("submission_eligible") is not False:
+        problems.append("TIPCOMP readiness must remain negative and not submission-eligible")
+    if status.get("download_status") != "OK TO DOWNLOAD FOR RESEARCH ONLY":
+        problems.append("TIPCOMP download status must explicitly say research only")
+    if not str(status.get("submission_status", "")).startswith("DO NOT SUBMIT"):
+        problems.append("TIPCOMP status must explicitly say DO NOT SUBMIT")
+    if status.get("submission_name") != card.get("submission_name") or status.get("note") != card.get("note"):
+        problems.append("TIPCOMP status name/note disagree with run card")
+    if not 0 < len(str(status.get("note", ""))) <= 140:
+        problems.append("TIPCOMP metadata note must be 1..140 characters")
+
+    summary_name = status.get("executive_summary", "")
+    if not re.fullmatch(r"[A-Za-z0-9_.-]+\.html", summary_name):
+        problems.append("TIPCOMP executive summary path must be local")
+        return
+    summary_path = DOCS / summary_name
+    try:
+        summary = summary_path.read_text(encoding="utf-8")
+    except OSError as exc:
+        problems.append(f"TIPCOMP executive summary missing: {exc}")
+        return
+    for phrase in ("DO NOT SUBMIT", "OK TO DOWNLOAD FOR RESEARCH ONLY", "HOLDOUT-DTI", "MODEL"):
+        if phrase not in summary:
+            problems.append(f"TIPCOMP executive summary missing {phrase!r}")
+    stale = ("SELECTOR DECISION REQUIRED", "Download; selector decides slot", "PI-1 unique", "Unique (PI-1")
+    for phrase in stale:
+        if phrase.lower() in summary.lower():
+            problems.append(f"TIPCOMP executive summary contains stale promotion copy {phrase!r}")
+
+    if not ARCHIVE.is_file():
+        problems.append("historical archive missing while TIPCOMP TIFF is served")
+        return
+    archive = ARCHIVE.read_text(encoding="utf-8")
+    needle = f'href="{rel}"'
+    idx = archive.find(needle)
+    if idx < 0:
+        problems.append("TIPCOMP TIFF is not linked from the historical archive")
+        return
+    begin = archive.rfind("<section", 0, idx)
+    finish = archive.find("</section>", idx)
+    section = archive[begin:finish + len("</section>")] if begin >= 0 and finish >= 0 else ""
+    for phrase in ("DO NOT SUBMIT", "submission_eligible: false", "HOLDOUT-DTI", "MODEL"):
+        if phrase.lower() not in section.lower():
+            problems.append(f"TIPCOMP archive status missing {phrase!r}")
+    for phrase in stale:
+        if phrase.lower() in section.lower():
+            problems.append(f"TIPCOMP archive contains stale promotion copy {phrase!r}")
+    print(f"  HISTORICAL {tif.name} sha256 {digest[:16]}… verdict=negative (research only)")
+
+
 def check_served(html: str, problems: list[str]) -> int:
     archive = ARCHIVE.read_text(encoding="utf-8") if ARCHIVE.is_file() else ""
     served = sorted(DOWNLOADS.glob("*-zeros.tif"))
@@ -201,6 +293,7 @@ def main() -> int:
     if len(ids) != len(set(ids)):
         problems.append("index.html contains duplicate element ids")
     check_primary(html, problems)
+    check_tipcomp_history(problems)
     n = check_served(html, problems)
     if problems:
         print("SITE CHECK FAIL")
