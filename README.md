@@ -8,40 +8,41 @@
 - **Standing brief:** [docs/STANDING_BRIEF_20261028.md](docs/STANDING_BRIEF_20261028.md) · **Nine-site summary:** [docs/executive-summary-nine-sites-20261028.html](docs/executive-summary-nine-sites-20261028.html) · **Hypotheses:** [docs/HYPOTHESES_20261028_STANDING.md](docs/HYPOTHESES_20261028_STANDING.md)
 - **Stored prompt:** [docs/STANDING_PROMPT.md](docs/STANDING_PROMPT.md). Caveat: this is a reconstruction. The verbatim text must be pasted in.
 
+## Current decision — 2026-10-28 follow-up after main integration
 
-## ⛔ Current decision — 2026-10-28 review: NO TIFF IS CLEARED TO SUBMIT
+**⛔ NO TIFF IS CLEARED for submission. DO NOT SUBMIT or spend a slot.** The newest artifact now present on `main` is a format-valid research TIFF, but it has no completed spatial holdout, no feature canaries, only a three-reference local overlap check, no complete registry scan, and `submission_eligible: false`. The main status feed still identifies the RIESZ file as the primary, with a negative verdict. TIPCOMP is also negative. This follow-up generated no TIFF, ran no experiment, and selected no slot.
 
-**The TIFF below is downloadable for research only. Do not upload it or use a competition slot.** The latest TIPCOMP candidate passed local format validation and its prior PI-1 scan, but it failed its pre-registered promotion bound; its fold-proper `HOLDOUT-DTI` did not beat the R0 recipe control. Full-registry uniqueness under the unresolved dense-witness interpretation is also not established. No organizer score receipt exists in this repository.
+### Latest artifact in the repository: BLINDCORRIDOR — format pass only; DO NOT SUBMIT
 
-**[⬇ Download TIPCOMP research-only GeoTIFF](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.zip) · [TIPCOMP executive summary](docs/executive-summary-20261028-tipcomp.html) · [run card](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6_run_card.json) · [readiness JSON](docs/downloads/tipcomp_readiness_20261028.json)
+[Research-only BLINDCORRIDOR GeoTIFF](docs/downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif) · [one-TIFF ZIP](docs/downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.zip) · [byte-bound run card](docs/downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c_run_card.json) · [format audit](docs/downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros-audit.json).
 
-**Independent re-check (session 3, 2026-10-28):** the candidate's SHA-256, the 11 format gates, the run-card hash binding, 144 of 165 registry rows (SHA-matched; 21 live only in the gitignored `.cache/`), and one focus-9 peak re-fetched from GitHub all re-verified. Receipt: [`evidence/tipcomp_independent_check_20261028.json`](evidence/tipcomp_independent_check_20261028.json) · script `scripts/verify_tipcomp_independent.py` · open issues in [`IRREGULARITIES.md`](IRREGULARITIES.md) IR-1028C-1 to IR-1028C-8 (including the contested PI-1 uniqueness reading and the holdout tie). No slot spent.
+- Stored run-card status: `verdict: format_pass`, **`submission_eligible: false`**. All 11 local format gates are recorded PASS; this does not establish a score or promotion.
+- The run card explicitly says `HOLDOUT-DTI` was not computed and the full 19-band leakage canaries were not run. Its numerical projection is `MODEL` only, not a score; it is not used as a decision.
+- Local PI-1 overlap is recorded as 0.507675 against only three available bridge rasters. The full registry is absent, and the literal dense-witness reading remains unresolved. This is not a registry-wide uniqueness result.
+- SHA-256: `4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14`.
 
-| Field | Evidence / current decision |
+### Other historical candidates
+
+- **TIPCOMP:** [research-only TIFF](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif) · [status feed](docs/downloads/tipcomp_readiness_20261028.json) · [run card](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6_run_card.json); SHA-256 `8f27b9d6478526d72a055f0a56c7c8f6db1d63f2f5c66233b7eedbf9937579cf`. Independent verification receipt [IR-1028C](evidence/tipcomp_independent_check_20261028.json) confirms bytes/format only, not clearance. **DO NOT SUBMIT**; its run-card verdict is negative, fold-proper `HOLDOUT-DTI` is below the R0-recipe control, and the paired CI spans zero.
+- **Main status-feed primary:** [RIESZ-LOCKED research-only TIFF](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif) · [current status](docs/downloads/current_submission.json) · [readiness](docs/downloads/readiness.json). **DO NOT SUBMIT**; negative verdict.
+- **GEMSDOE32 `0.2778`:** `CLAIM`, not organizer-confirmed. `0.3195` and `0.4413` are also unverified and conflict in the supplied context. See the [bounded explanation](docs/WHY_0_2778.md).
+
+| Review resource | Link |
 |---|---|
-| Download vs upload | **OK TO DOWNLOAD FOR RESEARCH ONLY; DO NOT SUBMIT.** Local site audit passes file-format checks; this is not organizer acceptance. |
-| Portal name/note | Historical metadata only—**not instructions to upload**: `gemsdoe92-tipcomp-40000d-8f27b9d6` · `TIPCOMP H-92F1: 40000 dots; LBM ens x tip-cont x complement; caps vs focus9+priors; MODEL pub128 0.349.` (103/140). |
-| Score estimate | `MODEL` projection only, not a competition score: 0.3485 (published-128 spec); 0.3109 (26-claim refit; bootstrap q05 0.2688, median 0.3076). The pre-registered q05 threshold of 0.2778 was not met (IR-1028B-4). |
-| Uniqueness | Prior PI-1 audit: max 3-px dot overlap 0.68485 and max sampled \|ρ\| 0.18171 across 165 local registry rasters; focus-9 peaks are below 0.6325. This is **not a complete registry/representation clearance**: dense-witness interpretation remains unresolved. Do not call this globally unique. |
-| `HOLDOUT-DTI` | `gems57-pooled-hide-v2`, 22,663 withheld positives: fold-proper TIPCOMP 0.09617 [0.08521, 0.10665]; R0-recipe control 0.09775 [0.08590, 0.11077]; paired Δ −0.00158 [−0.01787, +0.01469] (tie; not a promotion win). Feature-alone canaries max symmetric AUC 0.7799, below the 0.90 alarm. |
-| Raster | SHA-256 `8f27b9d6478526d72a055f0a56c7c8f6db1d63f2f5c66233b7eedbf9937579cf`; prior local audit: single-band float32, EPSG:32611, 3292×3730, exact template transform, finite values in [0,1]. |
-| Session limits | The recorded TIPCOMP session used its 3/3 experiment budget. This review ran no new experiment and spent no slot. The single method paragraph referenced in the supplied parallel-run protocol is absent. |
+| Current three-pass review after main integration | [Main-integration review](docs/REVIEW_20261028_MAIN_INTEGRATION.md) |
+| Earlier branch review (before main integration) | [Review 9649DFC1](docs/REVIEW_20261028_9649DFC1.md) |
+| Earlier TIPCOMP follow-up (superseded for current artifact inventory) | [2026-10-28 follow-up](docs/REVIEW_20261028_FOLLOWUP.md) |
+| Focus-9 evidence for 24/25/27/28/30/31/32/33/36 | [Detailed review](docs/focus9.html) · [served nine-site summary](docs/nine-sites.html) |
+| Ranked future geological hypotheses | [Implementation-qualified backlog](docs/HYPOTHESES_20261028_9649DFC1.md) |
+| Generic upload instructions | [How to submit only after future clearance](docs/how-to-submit.html) |
 
-The method was a leaderboard-model-weighted density with catalogue-tip continuation and a focus-9 coverage-complement boost. The stored result and its limits are detailed in the [TIPCOMP executive summary](docs/executive-summary-20261028-tipcomp.html) · [this three-pass follow-up review](docs/REVIEW_20261028_FOLLOWUP.md). A high `MODEL` projection does not overrule a failed pre-registered `HOLDOUT-DTI` / promotion gate.
 
----
-
-## Historical RIESZ review — superseded, research only
-
-The active decision above applies to all current artifacts. The RIESZ review below is retained for audit history and does not clear a TIFF.
-
-## Supporting review: RIESZ candidate — 2026-10-28
 
 **⛔ DO NOT SUBMIT the current RIESZ-LOCKED TIFF.** It is available as a format-validated **research download only**. It failed two required promotion gates: (1) registry overlap is recorded as `1.000` on the pre-placement surface and against the final full-support witness, above the protocol's `0.70` stop; and (2) `HOLDOUT-DTI` is below the R0 recipe control. A different sparse-only interpretation does not waive either stop. No weekly submission slot was used and no new experiment/TIFF was generated in this review.
 
 **[⬇ Download the RIESZ research-only GeoTIFF](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif)** · [One-TIFF ZIP](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.zip) · [Current site](docs/index.html) · [How to submit (future cleared file only)](docs/how-to-submit.html) · [Nine-site comparison](docs/nine-sites.html) · [Three-pass review](docs/REVIEW_20261028_PROTOCOL.md) · [Run card](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json) · [Readiness JSON](docs/downloads/readiness.json)
 
-A separate `damagezone-close-dots` TIFF was added later by merged PR #166; it remains unselected research material. Its local holdout comparison does not beat the recorded R0 recipe, and full-registry PI-1 FAILS (identical bytes in 5 repos; audit `evidence/uniq_full_registry/damagezone-close-dots-20261028.json`). This review does **not** clear it for upload; see the [independent review](docs/REVIEW_20261028_SESSION.md) and the current site's separate-artifact warning.
+A separate `damagezone-close-dots` TIFF was added later by merged PR #166; it remains unselected research material. Its local holdout comparison does not beat the recorded R0 recipe, and full-registry uniqueness is pending. This review does **not** clear it for upload; see the [independent review](docs/REVIEW_20261028_SESSION.md) and the current site's separate-artifact warning.
 
 | Check | Evidence / result |
 |---|---|
@@ -1017,15 +1018,11 @@ No DrivenData auth → training_features.tif, labels.tif, sample_submission.tif,
 - **Maximize P(Win):** Maximize the probability of winning. Weigh tradeoffs, assess risk, choose the path that maximizes P(Win).
 - **Own the Outcome:** Own results end to end. Fix shared defects; report unmet requirements; do not weaken a failed gate.
 
-### Current session result (2026-10-28)
-- **Unique TIF generated:** `docs/downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif`
-- **SHA-256:** `4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14`
-- **Format gates:** 11/11 PASS (values in [0,1], zeros outside footprint, zero mass on catalogue, EPSG:32611, 3730×3292, sample transform)
-- **Dots:** 37,654 binary {0,1} dots
-- **Uniqueness vs available GEMSDOE refs:** PASS (worst 3-px overlap 0.5077 <= 0.70 vs d28/h19_5/h27_4_solo)
-- **Full 2,060-raster registry audit:** PENDING (.cache/registry_v3 absent)
-- **OK to download:** YES
-- **OK to submit:** CONDITIONAL (format-valid, unique vs available refs; full registry audit + weekly-slot selector required)
-- **Executive summary:** `docs/executive-summary.html`
-- **Submission guide:** `docs/how-to-submit.html`
-- **Method:** Blind-fault corridor (>1.5 km from mapped faults) + damage-zone dots (2–8 px), 1 px off H19-5 geophysical ridge, greedy 3-px halo suppression. Different generative mechanism from GEMSDOE32's R0.
+### Main-side BLINDCORRIDOR artifact inventory (2026-10-28; not produced or validated in this follow-up)
+- **Artifact present:** `docs/downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif`; this merge brought it in from `origin/main`. This follow-up generated no TIFF and ran no experiment.
+- **SHA-256:** `4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14`; 37,654 binary dots.
+- **Format:** 11/11 gates are recorded PASS (values in [0,1], zeros outside footprint, zero mass on catalogue, EPSG:32611, 3730×3292, sample transform). Format pass is not a scientific or submission clearance.
+- **HOLDOUT-DTI:** not independently computed; no withheld-positive count or 95% CI. Full feature leakage canaries were not run.
+- **Overlap scope:** 0.507675 worst 3-px overlap across only three available bridge references. This is not registry-wide uniqueness; the full 2,060-raster audit is pending and the literal dense-witness interpretation is unresolved.
+- **Download status:** OK TO DOWNLOAD FOR RESEARCH ONLY. **Submission status: DO NOT SUBMIT** (`verdict: format_pass`, `submission_eligible: false`). No selector or weekly slot was used.
+- **Evidence links:** [run card](docs/downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c_run_card.json) · [format audit](docs/downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros-audit.json) · [readiness feed](docs/downloads/blindcorridor_readiness_20261028.json) · [research TIFF](docs/downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif).

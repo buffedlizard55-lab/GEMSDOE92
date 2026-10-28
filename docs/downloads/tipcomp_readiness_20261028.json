@@ -5,7 +5,16 @@
   "note": "TIPCOMP H-92F1: 40000 dots; LBM ens x tip-cont x complement; caps vs focus9+priors; MODEL pub128 0.349.",
   "verdict": "negative",
   "submission_eligible": false,
-  "download_status": "OK TO DOWNLOAD",
-  "submission_status": "SELECTOR DECISION REQUIRED \u2014 format PASS 11/11, PI-1 unique (worst 0.6848), MODEL published128 0.3485 / refit26 0.3109, refit bootstrap q05 0.2688 < 0.2778 pre-registered bound (IR-1028B-4)",
-  "executive_summary": "executive-summary-20261028-tipcomp.html"
+  "download_status": "OK TO DOWNLOAD FOR RESEARCH ONLY",
+  "submission_status": "DO NOT SUBMIT — negative verdict; stored HOLDOUT-DTI is below the R0-recipe control, paired 95% CI spans zero, and refit MODEL q05 is below the 0.2778 CLAIM bound. No slot selected.",
+  "registry_status": "Stored local 165-raster PI-1 measurement only; not independently repeated in this review and not a global uniqueness certificate.",
+  "evidence_classes": {
+    "reported_0_2778": "CLAIM (no organizer receipt found)",
+    "foldproper_and_r0_control": "HOLDOUT-DTI; gems57-pooled-hide-v2; 22663 withheld positives; historical receipt, not rerun in this review",
+    "published128_and_refit26": "MODEL (claim-fitted; not an organizer score)"
+  },
+  "status_updated_utc": "2026-10-28",
+  "executive_summary": "executive-summary-20261028-tipcomp.html",
+  "run_card": "gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6_run_card.json",
+  "review": "../REVIEW_20261028_9649DFC1.md"
 }

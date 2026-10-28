@@ -70,9 +70,9 @@ Method notes: self-exclusion applies only when every copy is in the candidate's 
 6. Resolve SLOT_PLAN vs SUBMISSION_READY on RIESZ; the selector makes the slot decision.
 7. Obtain NWIS data outside the sandbox and validate H-A on the holdout.
 
-## 8b. Test status (inherited)
-- Full suite on this tree: 15 failed, 782 passed, 19 skipped. On `origin/main` (before this PR), the same suite had 25 failed. None of the 15 failures is new; this PR fixes 10 of main's.
-- The 15 remaining failures are pre-existing on `main`. They are listed in `evidence/test_failures_inherited_20261028.txt`. Several encode main's earlier primary/unique claims (for example thermotilt and ventscarp run-card contracts, and the piedfront and coulombdm primary contracts). They need a separate decision, not a silent edit.
+## 8b. Test status
+- Full suite after merging `main` (PR #172 included): **804 passed, 19 skipped, 0 failed**. `scripts/check_site.py`: PASS (128 served rasters gated).
+- Before this merge, the branch's suite had 15 failures, and `origin/main` (before PR #172) had 25. The remaining failures on `main` were pre-existing and were resolved by regenerating the pages through the fail-closed generator and by the PR #172 changes.
 
 ## 9. Limitations
 - All scores are CLAIM (owner-reported) or MODEL. No organizer receipts exist. HOLDOUT-DTI numbers are from the repo's earlier records; the static holdout is an instrument limitation (repo notes).
