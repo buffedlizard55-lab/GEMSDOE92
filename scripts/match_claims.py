@@ -17,8 +17,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from gems import registry_cache as rc  # noqa: E402
 
-CLAIMS = ROOT / "ledger" / "claims_20261027.txt"
-OUT = ROOT / "evidence" / "claims_matched_20261027.json"
+CLAIMS = ROOT / "ledger" / "claims_20261028.txt"
+OUT = ROOT / "evidence" / "claims_matched_20261028.json"
 
 
 def load_claims():

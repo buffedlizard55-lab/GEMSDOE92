@@ -1,0 +1,74 @@
+{
+ "schema": "gemsdoe92-lbm-prospective-oot-v1",
+ "note": "True prospective out-of-time check: LBM-v1 fitted strictly to 2026-10-27 claims (123 rows) evaluated without refitting on the 5 new scored CLAIM entries supplied on 2026-10-28.",
+ "n_new_claims": 5,
+ "prospective_rmse": 0.00767,
+ "prospective_mae": 0.00605,
+ "rows": [
+  {
+   "prompt_site": "GEMSDOE91",
+   "matched_owner": "buffedlizard55-lab",
+   "matched_repo": "GEMSDOE91",
+   "matched_path": "docs/downloads/gems91-S18-UNIQUE-curvtilt-20000dots-20261025T182858Z-29db2405.tif",
+   "same_repo": true,
+   "name": "gems91-S18-UNIQUE-curvtilt-20000dots-20261025T182858Z-29db2405",
+   "sha256": "af01bc7190ce736d2ea7eb28a6e0b9ccd238dd616f41644ba4d8bc5a4f892bb6",
+   "n_fp_pos": 20000,
+   "claim": 0.0435,
+   "lbm_v1_prospective_oot": 0.04279,
+   "error": -0.00071
+  },
+  {
+   "prompt_site": "KANLERGEMSDOE2",
+   "matched_owner": "kanlerxz87-cyber",
+   "matched_repo": "KANLERGEMSDOE2",
+   "matched_path": "docs/downloads/kanlergems2-htcads-exp-2-37654dots-20261026T235227Z-11a2f251-zeros.tif",
+   "same_repo": true,
+   "name": "kanlergems2-htcads-exp-2-37654dots-20261026T235227Z-11a2f251-zeros",
+   "sha256": "f482d3bad4b390470be06363b60867c8e42942101271caf4fa82ae3c3975abeb",
+   "n_fp_pos": 37654,
+   "claim": 0.1218,
+   "lbm_v1_prospective_oot": 0.1079,
+   "error": -0.0139
+  },
+  {
+   "prompt_site": "WBGGEMSDOE3",
+   "matched_owner": "wingbangboozle1-lang",
+   "matched_repo": "WBGGEMSDOE2",
+   "matched_path": "docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif",
+   "same_repo": false,
+   "name": "wbg3-h3pack-34k-20261027T174337Z-zeros",
+   "sha256": "5b32ad6190957ac43b3d9069f99dc0742c776cd0b2f89af63666dd43672d4ac2",
+   "n_fp_pos": 34000,
+   "claim": 0.0443,
+   "lbm_v1_prospective_oot": 0.05117,
+   "error": 0.00687
+  },
+  {
+   "prompt_site": "WBGGEMSDOE2",
+   "matched_owner": "wingbangboozle1-lang",
+   "matched_repo": "WBGGEMSDOE1",
+   "matched_path": "docs/downloads/wbg2-offcatalogue-density-36k-20261027.tif",
+   "same_repo": false,
+   "name": "wbg2-offcatalogue-density-36k-20261027",
+   "sha256": "f5b37051a26b3bc5d2d53dfd6fe1ca8c293cc62fb01a97aa8f36a959625430f3",
+   "n_fp_pos": 36000,
+   "claim": 0.0262,
+   "lbm_v1_prospective_oot": 0.02458,
+   "error": -0.00162
+  },
+  {
+   "prompt_site": "ApartGEMSDOE1",
+   "matched_owner": "apartanish22-droid",
+   "matched_repo": "ApartGEMSDOE1",
+   "matched_path": "docs/downloads/archive/apartgems1-udth-submod-e3-20261027-50e7b334-zeros.tif",
+   "same_repo": true,
+   "name": "udth-submod-e3-20261027-50e7b334",
+   "sha256": "16f7101f41dd0331ac6076d6f55c906b7c1aa9fc7180258361450e9ecf87eede",
+   "n_fp_pos": 38500,
+   "claim": 0.0525,
+   "lbm_v1_prospective_oot": 0.04537,
+   "error": -0.00713
+  }
+ ]
+}

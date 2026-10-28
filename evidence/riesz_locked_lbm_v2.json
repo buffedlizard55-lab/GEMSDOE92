@@ -1,0 +1,66 @@
+{
+  "schema": "gemsdoe92-riesz-locked-lbm-v2",
+  "n_matched_claims": 128,
+  "n_groups": 85,
+  "models": {
+    "lbm_v1_128": {
+      "levels": [
+        3,
+        6,
+        5
+      ],
+      "lam": 0.001,
+      "in_sample_rmse": 0.016978,
+      "logo_rmse_128": 0.020183,
+      "logo_mae_128": 0.012558,
+      "logo_spearman_128": 0.963298,
+      "gset_logo_rmse": 0.04209,
+      "oot_5claims_rmse": 0.007675,
+      "beta": [
+        -7.461276,
+        -0.957918,
+        1.730106,
+        1.317621,
+        0.025942,
+        -0.159982,
+        -0.331744,
+        -1.062208,
+        -0.465627,
+        -0.345868,
+        -0.344221,
+        2.732559
+      ]
+    },
+    "lbm_v2_h92_q85_128": {
+      "levels": [
+        3,
+        6,
+        5,
+        2
+      ],
+      "lam": 0.001,
+      "in_sample_rmse": 0.016684,
+      "logo_rmse_128": 0.02015,
+      "logo_mae_128": 0.012877,
+      "logo_spearman_128": 0.963667,
+      "gset_logo_rmse": 0.041983,
+      "oot_5claims_rmse": 0.00843,
+      "beta": [
+        -7.395221,
+        -0.914052,
+        1.741212,
+        1.276966,
+        0.106345,
+        -0.101964,
+        -0.283672,
+        -1.132162,
+        -0.464869,
+        -0.33328,
+        -0.317809,
+        2.819678,
+        -0.49036
+      ]
+    }
+  },
+  "physical_interpretation": "Extreme raw topographic/edge tail (>q85 of H92_blind) carries beta=-0.4904 across 128 claims, quantitatively confirming that raw scarp/tilt tail spikes are non-fault canyon/mesa-rim mimics (explaining GEMSDOE91=0.0435, GEMSDOE40=0.0258, GEMSDOE51=0.0315), while suppressing >q85 improves 128-claim LOGO RMSE (0.02015 vs 0.02018), Spearman (0.96367 vs 0.96330), and G-set RMSE."
+}

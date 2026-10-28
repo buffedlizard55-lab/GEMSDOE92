@@ -1,0 +1,113 @@
+{
+  "schema": "gemsdoe92-rieszlbm2-placement-v1",
+  "method": "LBM-v2 (q85 mimic suppressor) + H-92A..D OOF physical prospectivity + direct Dinkelbach offender caps + H-92 novel-dot polish",
+  "n_dots": 50000,
+  "lbmc1_sha256": "e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c",
+  "rounds": [
+    {
+      "stage": "dinkelbach_colgen",
+      "round": 0,
+      "n": 39113,
+      "n_caps": 4,
+      "model": {
+        "tp": 6498.81,
+        "fp": 33389.56,
+        "G": 15093.16,
+        "n": 39113,
+        "dti": 0.324094347549595
+      },
+      "model_g018": {
+        "tp": 6581.88,
+        "fp": 32974.73,
+        "G": 15110.03,
+        "n": 39113,
+        "dti": 0.3291047609456144
+      },
+      "model_g015": {
+        "tp": 6415.73,
+        "fp": 33804.39,
+        "G": 15076.29,
+        "n": 39113,
+        "dti": 0.3191102783265694
+      },
+      "worst": {
+        "sha256": "007a99d6dc2866cc19ed86b1e7b6f1825c470de0104a1789b3f5b736eb7dd118",
+        "representation": "dot_field",
+        "n_registry_pos": 550000,
+        "halo_frac": 0.2862961508681491,
+        "overlap_pi1": 0.949914,
+        "overlap_literal": 0.949914,
+        "literal_exact": true,
+        "rho": 0.117116,
+        "rho_method": "exact"
+      },
+      "lbmc1_overlap": 0.540766,
+      "worst_rho": {
+        "sha256": "e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c",
+        "representation": "dot_field",
+        "n_registry_pos": 35801,
+        "halo_frac": 0.11965615797427435,
+        "overlap_pi1": 0.540766,
+        "overlap_literal": 0.540766,
+        "literal_exact": true,
+        "rho": 0.129425,
+        "rho_method": "exact"
+      },
+      "over_cap": 32,
+      "duplicate": true
+    },
+    {
+      "stage": "dinkelbach_colgen",
+      "round": 1,
+      "n": 50000,
+      "n_caps": 14,
+      "model": {
+        "tp": 6966.02,
+        "fp": 42539.93,
+        "G": 15093.16,
+        "n": 50000,
+        "dti": 0.31698695314433384
+      },
+      "model_g018": {
+        "tp": 7022.26,
+        "fp": 41714.0,
+        "G": 15110.03,
+        "n": 50000,
+        "dti": 0.32160163351041815
+      },
+      "model_g015": {
+        "tp": 6909.77,
+        "fp": 43365.87,
+        "G": 15076.29,
+        "n": 50000,
+        "dti": 0.312430880931549
+      },
+      "worst": {
+        "sha256": "28adc53bcaca11329c807baa5659079c25f225c5908f7874762a034cf70cab05",
+        "representation": "dot_field",
+        "n_registry_pos": 167597,
+        "halo_frac": 0.5481466114406682,
+        "overlap_pi1": 0.6556,
+        "overlap_literal": 0.6556,
+        "literal_exact": true,
+        "rho": 0.010884,
+        "rho_method": "exact"
+      },
+      "lbmc1_overlap": 0.54058,
+      "worst_rho": {
+        "sha256": "e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c",
+        "representation": "dot_field",
+        "n_registry_pos": 35801,
+        "halo_frac": 0.11965615797427435,
+        "overlap_pi1": 0.54058,
+        "overlap_literal": 0.54058,
+        "literal_exact": true,
+        "rho": 0.144898,
+        "rho_method": "exact"
+      },
+      "over_cap": 0,
+      "duplicate": false
+    }
+  ],
+  "seconds": 380.2
+}

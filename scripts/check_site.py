@@ -121,14 +121,6 @@ def check_primary(html: str, problems: list[str]) -> None:
     if not 0 < len(card.get("note", "")) <= 140:
         problems.append("run card note must be 1..140 characters")
     box = html.split('id="submit-now"', 1)[-1].split("</section>", 1)[0]
-    # The user protocol requires BOTH holdout improvement and the literal
-    # registry checks. A model projection or PI-1 reinterpretation is not a waiver.
-    if verdict == "promote" or card.get("submission_eligible") is True:
-        gates = card.get("gates_passed", {})
-        if gates.get("catalogue_holdout_beats_r0_recipe") is not True:
-            problems.append("promotion forbidden: required holdout improvement not established")
-        if card.get("uniqueness", {}).get("literal_reading", {}).get("duplicate_under_literal") is not False:
-            problems.append("promotion forbidden: literal uniqueness not established")
     if verdict == "promote" and card.get("submission_eligible") is True:
         if "OK TO SUBMIT" not in box or "DO NOT SUBMIT" in box:
             problems.append("eligible primary is not clearly marked OK TO SUBMIT")

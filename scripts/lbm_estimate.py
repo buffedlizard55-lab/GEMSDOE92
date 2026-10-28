@@ -73,11 +73,27 @@ def main() -> int:
 
     cons18 = cons_layer(0.18)
     cons15 = cons_layer(0.15)
+    from gems import riesz_locked as RL
+    from scipy.stats import rankdata
+    X_fp, _ = RL.compute_or_load_features(lin, fp.mask)
+    def _rzs(v):
+        med = float(np.median(v))
+        iqr = max(float(np.quantile(v, 0.75) - np.quantile(v, 0.25)), 1e-6)
+        return np.clip((v - med) / iqr, -3.0, 5.0)
+    h92_blind = (
+        0.35 * (0.45 * _rzs(X_fp[:, 4]) + 0.30 * _rzs(X_fp[:, 5]) + 0.25 * _rzs(X_fp[:, 3]))
+        + 0.20 * (0.55 * _rzs(X_fp[:, 9]) + 0.45 * _rzs(X_fp[:, 6]))
+        + 0.25 * (0.60 * _rzs(X_fp[:, 12]) + 0.40 * _rzs(X_fp[:, 10]))
+        + 0.20 * (0.65 * _rzs(X_fp[:, 15]) + 0.35 * _rzs(X_fp[:, 14]))
+    ).astype(np.float32)
+    del X_fp
+    phys_q85 = np.digitize((rankdata(h92_blind, method="average") - 0.5) / lin.size, [0.85])
     f2 = np.digitize(dh, [0.5, 1.01, 2.01, 3.01, 5.01])
     f3a = np.digitize(cons18, [0.5, 1.5, 2.5, 4.5]); f3b = np.digitize(cons15, [0.5, 1.5, 2.5, 4.5])
     d3 = np.digitize(dcat, [2.01, 15.01]); d6 = np.digitize(dcat, [2.01, 3.01, 5.01, 8.01, 15.01])
     specs = {
         "lbm_v1": (((d3 * 6 + f2) * 5 + f3a), (3, 6, 5), ()),
+        "lbm_v2_riesz": ((((d3 * 6 + f2) * 5 + f3a) * 2 + phys_q85), (3, 6, 5, 2), ()),
         "dcat6": (((d6 * 6 + f2) * 5 + f3a), (6, 6, 5), ()),
         "dh19xcons": (((d3 * 6 + f2) * 5 + f3a), (3, 6, 5), ((1, 2),)),
         "gset015": (((d3 * 6 + f2) * 5 + f3b), (3, 6, 5), ()),

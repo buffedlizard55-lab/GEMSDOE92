@@ -24,7 +24,8 @@ sys.path.insert(0, str(ROOT))
 from gems import registry_cache as rc  # noqa: E402
 
 DEFAULT_OWNERS = ["buffedlizard55-lab", "kanlerxz87-cyber", "eugboogieman123-ops",
-                  "wingbangboozle1-lang", "ginnymcfiner23-ux"]
+                  "wingbangboozle1-lang", "ginnymcfiner23-ux", "karagemop466-tech",
+                  "apartanish22-droid", "sassnarep3-star"]
 SAMPLE = ROOT / ".cache" / "gems_inputs" / "bridge" / "sample_submission.tif"
 
 

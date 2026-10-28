@@ -16,6 +16,23 @@ def scored_rows():
     return rows
 
 
+_SPARSE_CACHE: dict[str, tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]] = {}
+
+
+def _load_sparse_npz(sha: str) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    got = _SPARSE_CACHE.get(sha)
+    if got is None:
+        z = np.load(CACHE / f"{sha}.npz")
+        C = z["C"]
+        nz = np.flatnonzero(C > 0).astype(np.int32)
+        cw = C[nz].astype(np.float32)
+        pos = z["pos"].astype(np.int32)
+        val = z["val"].astype(np.float64)
+        got = (nz, cw, pos, val)
+        _SPARSE_CACHE[sha] = got
+    return got
+
+
 def stats(class_maps: dict[str, np.ndarray], rows, scored_fp: np.ndarray):
     """For each class map (footprint vector int32, -1 = unscored) compute A, m, n."""
     out = {k: dict(A=[], m=[], n=[], K=int(v.max()) + 1) for k, v in class_maps.items()}
@@ -23,16 +40,16 @@ def stats(class_maps: dict[str, np.ndarray], rows, scored_fp: np.ndarray):
     for r in rows:
         sha = r["match"]["sha256"]
         if sha not in cache:
-            z = np.load(CACHE / f"{sha}.npz")
-            C = z["C"].astype(np.float32); pos = z["pos"]; val = z["val"]
+            nz, cw, pos, val = _load_sparse_npz(sha)
+            n = float(val[scored_fp[pos]].sum())
             res = {}
             for k, cm in class_maps.items():
                 K = out[k]["K"]
-                ok = cm >= 0
-                A = np.bincount(cm[ok], weights=C[ok], minlength=K)
+                cnz = cm[nz]
+                ok = cnz >= 0
+                A = np.bincount(cnz[ok], weights=cw[ok], minlength=K)
                 cp = cm[pos]; okp = cp >= 0
                 m = np.bincount(cp[okp], weights=val[okp], minlength=K)
-                n = float(val[scored_fp[pos]].sum())
                 res[k] = (A, m, n)
             cache[sha] = res
         for k in class_maps:

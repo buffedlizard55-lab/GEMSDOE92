@@ -23,7 +23,7 @@ from gems import uniqueness_v3 as U  # noqa: E402
 
 
 def main() -> int:
-    src = json.loads((ROOT / "evidence" / "focus9_sources_20261027.json").read_text())
+    src = json.loads((ROOT / "evidence" / "focus9_sources_20261028.json").read_text())
     inv = json.loads((rc.CACHE / "inventory.json").read_text())
     repos_of = defaultdict(set)
     for r in inv["repositories"]:
@@ -47,7 +47,7 @@ def main() -> int:
                          literal_duplicate=aud["literal_reading"]["duplicate_under_literal"],
                          identical_bytes_elsewhere=sorted(repos_of[s["sha256"]] - {own}))
         print(site, out[site]["unique_pi1"], round(w["overlap_pi1"], 4), where(w["sha256"]), round(wr["rho"], 4), flush=True)
-    (ROOT / "evidence" / "focus9_uniqueness_20261027.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
+    (ROOT / "evidence" / "focus9_uniqueness_20261028.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
     return 0
 
 

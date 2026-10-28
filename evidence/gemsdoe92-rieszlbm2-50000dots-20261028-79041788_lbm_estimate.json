@@ -1,0 +1,68 @@
+{
+ "schema": "gemsdoe92-lbm-estimates-v1",
+ "evidence_class": "MODEL (not an organizer score)",
+ "candidates": {
+  "gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros": {
+   "n_dots": 50000,
+   "estimates": {
+    "lbm_v1": 0.31632799552611685,
+    "lbm_v2_riesz": 0.32160163971807004,
+    "dcat6": 0.3089948158597336,
+    "dh19xcons": 0.3298875851070174,
+    "gset015": 0.30177874068564253
+   },
+   "bootstrap": {
+    "draws": 200,
+    "q025": 0.2939871395260147,
+    "q05": 0.29677249583331844,
+    "median": 0.31558445940372326,
+    "q95": 0.3330437292517696,
+    "q975": 0.3376641293918592,
+    "delta_vs_R0": {
+     "median": 0.04264590201539353,
+     "q025": 0.02379020001946825,
+     "q05": 0.02744699838633614,
+     "q975": 0.055575694923851574,
+     "p_gt0": 1.0
+    }
+   }
+  },
+  "R0_reference": {
+   "n_dots": 37654,
+   "estimates": {
+    "lbm_v1": 0.27283664851498446,
+    "lbm_v2_riesz": 0.27281672305222643,
+    "dcat6": 0.27362666593965035,
+    "dh19xcons": 0.2745822411801205,
+    "gset015": 0.27306038780787995
+   },
+   "bootstrap": {
+    "draws": 200,
+    "q025": 0.2525586900282358,
+    "q05": 0.26048622938297344,
+    "median": 0.27268311218463015,
+    "q95": 0.29054629363834106,
+    "q975": 0.29224820758991676,
+    "delta_vs_R0": {
+     "median": 0.0,
+     "q025": 0.0,
+     "q05": 0.0,
+     "q975": 0.0,
+     "p_gt0": 0.0
+    }
+   }
+  }
+ },
+ "validation": {
+  "logo_rmse_all": 0.02018251715089367,
+  "logo_spearman_all": 0.9632983685142307,
+  "logo_rmse_h19_family": 0.006063108251781176,
+  "logo_bias_h19_family": 0.005201745290849813,
+  "logo_rmse_non_gset": 0.017079776050622584,
+  "logo_rmse_gset": 0.0420903068663693,
+  "logo_q95_abs_error": 0.03787371664635195,
+  "n_rows": 128,
+  "n_groups": 85
+ },
+ "notes": "Point estimates and bootstrap quantiles are MODEL outputs fitted to owner-reported CLAIMs. Grouped LOGO RMSE (validation) is the honest per-raster error scale; extrapolation beyond the class composition of scored rasters adds unquantified error."
+}

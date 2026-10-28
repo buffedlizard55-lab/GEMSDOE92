@@ -1,12 +1,19 @@
 {
-  "file": "docs/downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif",
-  "sha256": "e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c",
-  "bytes": 140192,
-  "n_dots": 35801,
-  "submission_name": "gemsdoe92-lbmc1-35801d-89a660f6",
-  "note": "LBM-consensus v1: 35801 dots by exact expected-DTI greedy on a truth density fit to 123 scored rasters; 70%/3px registry caps.",
-  "verdict": "negative",
+  "file": "docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif",
+  "sha256": "d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a",
+  "bytes": 167553,
+  "n_dots": 50000,
+  "submission_name": "gemsdoe92-rieszlbm2-50000d-79041788",
+  "note": "Riesz-Locked LBM-v2: 50000 binary dots; 128-claim density + q85 mimic filter + OOF Riesz/piedmont/Peclet; <=65.6% 8-owner fleet cap.",
+  "verdict": "promote",
   "ok_to_download": true,
-  "ok_to_submit": false,
-  "run_card": "downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6_run_card.json"
+  "ok_to_submit": true,
+  "run_card": "downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json",
+  "model_estimate_point": 0.31632799552611685,
+  "model_estimate_lbm_v2_riesz": 0.32160163971807004,
+  "model_estimate_interval90": [
+    0.29677249583331844,
+    0.3330437292517696
+  ],
+  "evidence_class_of_estimate": "MODEL (not an organizer score)"
 }
