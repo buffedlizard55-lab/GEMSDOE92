@@ -6,7 +6,7 @@ Read [SESSION_PROMPT.md](SESSION_PROMPT.md) at the start of each session. Maximi
 
 **No new eligible TIFF.** The existing [Riesz TIFF](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif) is **for research only**. Its range and grid checks pass locally, but its own card reports the literal duplicate stop and that it did not beat R0 on the required holdout. The prior “OK TO SUBMIT” claim was wrong and is superseded. [Executive summary](docs/index.html) · [submission guide](docs/how-to-submit.html) · [audit](docs/REVIEW_20261028_B6AA.md) · [negative run card](docs/downloads/review_b6aa_run_card.json).
 
-The literal registry rule stops any nonempty in-footprint candidate under the pinned continuous witness. The requested single-method lane paragraph is missing. No experiments or slots were used here. Historical recommendations and values below are archived and do not grant submission clearance.
+The literal registry rule stops any nonempty in-footprint candidate under the pinned continuous witness. The requested single-method lane paragraph is missing. No experiments or slots were used here. The concurrent [independent review](docs/review-47314b7f.html) also verified final-dot overlap. Historical recommendations and values below are archived and do not grant submission clearance.
 
 <details><summary>Historical project notes — superseded where conflicting</summary>
 

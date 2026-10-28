@@ -1,3 +1,9 @@
+## Current session — 2026-10-28, arena/47314b7f-gemsdoe92 — READ FIRST
+
+The user repeats the full project brief: prioritize a genuinely unique TIFF, automated [0,1]/grid validation, nine-site executive download table, whole-segment buffered shared holdout, visible-only catalogue features, leakage canaries, literal 0.90 rank / 70%-within-3px duplicate stop, three-experiment/two-hour budget, a JSON run card and a separate weekly selector. Preserve Core Values: Maximize P(Win), Own the Outcome. Read this file and README before future work.
+
+**This session's outcome supersedes earlier clearance:** fresh pinned GitHub witness and current TIFF checks reproduce 100% literal overlap. DO NOT SUBMIT. No method lane paragraph was supplied. No new experiment or TIFF is generated after a binding stop. Current evidence and limitations: `docs/review-47314b7f.html`; machine card: `docs/downloads/review_47314b7f_run_card.json`. Earlier prompts and reports below are historical, not authorization to relax protocol or spend slots.
+
 ## Current session addendum — 2026-10-28 (branch `arena/81d8ca8b-gemsdoe92`) — READ FIRST
 
 **Outcome:** a genuinely new, unique, automatically validated single-band GeoTIFF is promoted and marked **✅ OK TO DOWNLOAD · ✅ OK TO SUBMIT**:
