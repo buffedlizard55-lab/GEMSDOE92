@@ -24,6 +24,74 @@ from scripts.check_site import primary_download
 ROOT = Path(__file__).resolve().parent
 
 
+def _card_sha(card: dict):
+    raster = card.get("raster")
+    if isinstance(raster, dict) and isinstance(raster.get("sha256"), str):
+        return raster["sha256"]
+    return card.get("raster_sha256")
+
+
+def _card_file(card: dict):
+    raster = card.get("raster")
+    rel = card.get("submission_file")
+    if rel is None and isinstance(raster, dict):
+        rel = raster.get("file")
+    return rel if isinstance(rel, str) else None
+
+
+def bound_cards(candidate: pathlib.Path, root: pathlib.Path) -> list[tuple[pathlib.Path, dict]]:
+    """Run cards whose SHA-256 AND file path both name this exact candidate.
+
+    IR-1028B-1 (2026-10-28): the old check read only evidence/vario_run_card.json,
+    so every newer file was reported as unbound. Matching is now candidate-relative.
+    """
+    try:
+        digest = sha256_file(candidate)
+    except OSError:
+        return []  # unreadable file: no card can bind it; caller still says DO NOT SUBMIT
+    found = []
+    seen = set()
+    for pattern in ("evidence/*run_card*.json", "docs/downloads/*run_card*.json"):
+        for path in sorted(root.glob(pattern)):
+            if path in seen:
+                continue
+            seen.add(path)
+            try:
+                card = json.loads(path.read_text())
+            except (OSError, ValueError):
+                continue
+            if not isinstance(card, dict) or _card_sha(card) != digest:
+                continue
+            rel = _card_file(card)
+            if rel is None or (root / rel).resolve() != candidate.resolve():
+                continue
+            found.append((path, card))
+    return found
+
+
+def clearance_message(candidate: pathlib.Path, root: pathlib.Path) -> str:
+    """Always a rejection. A format pass and a run-card verdict never grant a slot."""
+    cards = bound_cards(candidate, root)
+    if not cards:
+        return ("DO NOT SUBMIT: no run card is byte-bound to this file (SHA-256 and path); "
+                "no clearance evidence describes it.")
+    lines = []
+    for path, card in cards:
+        verdict = card.get("verdict")
+        reasons = card.get("blocking_reasons")
+        if not isinstance(reasons, list) or not all(isinstance(x, str) for x in reasons):
+            reasons = []
+        detail = "; ".join(reasons) if reasons else "no blocking_reasons recorded in the card"
+        lines.append(f"  card {path.relative_to(root)}: verdict={verdict!r} "
+                     f"submission_eligible={card.get('submission_eligible')!r} ({detail})")
+    if all(card.get("verdict") == "negative" for _, card in cards):
+        head = "DO NOT SUBMIT: verdict=negative in every bound run card."
+    else:
+        head = ("DO NOT SUBMIT: the current literal registry stop and holdout gates still apply; "
+                "a run-card verdict cannot override them.")
+    return head + "\n" + "\n".join(lines)
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("candidate", nargs="?", type=Path)
@@ -44,29 +112,7 @@ def main(argv=None) -> int:
         ok, report = summarise(results)
         print(report)
         print("FORMAT PASS (local only)" if ok else "FORMAT FAIL")
-        card = json.loads((ROOT / "evidence/vario_run_card.json").read_text())
-        if not isinstance(card, dict):
-            raise ValueError("run card must be a JSON object")
-        try:
-            digest = sha256_file(candidate)
-        except OSError:
-            digest = None
-        bound = (
-            digest is not None and card.get("raster_sha256") == digest
-            and (ROOT / card["submission_file"]).resolve() == candidate.resolve()
-        )
-        if not bound:
-            print("DO NOT SUBMIT: this file is not the byte-bound run-card primary; no clearance evidence describes it.")
-        elif card.get("verdict") != "negative":
-            # Do not rely on all({}.values()), truthy strings, or a forged
-            # promotion flag. The separately verified dense-witness stop is
-            # binding regardless of this historical run card's contents.
-            print("DO NOT SUBMIT: current literal registry stop blocks promotion; a run-card verdict cannot override it.")
-        else:
-            reasons = card.get("blocking_reasons")
-            if not isinstance(reasons, list) or not all(isinstance(x, str) for x in reasons):
-                reasons = []
-            print(f"DO NOT SUBMIT: verdict=negative; " + "; ".join(reasons))
+        print(clearance_message(candidate, ROOT))
         return 1
     except (OSError, ValueError, KeyError, TypeError, rasterio.errors.RasterioError) as exc:
         print(f"INCONCLUSIVE / DO NOT SUBMIT: {exc}", file=sys.stderr)
