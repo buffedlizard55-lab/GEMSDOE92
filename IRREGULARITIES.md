@@ -1387,3 +1387,44 @@ Preserved LISTRICDIP research outputs; freshly validated its newly declared prim
 - Added `scripts/review_project.py` to combine shared rejection proof, tests, manifest, parent, served-file gates, generated-evidence freshness and whitespace checks without running model builders. Exit 1 is confirmed STOP with engineering checks passing, not clearance; exit 2 is failed/incomplete/inconclusive.
 - Second-pass review found plain `git diff --check` would miss staged changes. The fixed check uses `git diff --check HEAD --`; a regression asserts this command. The original complete receipt is retained alongside the final receipt, each bound to its own runner hash.
 - Current leaderboard/cap, score-to-file organizer receipts, official data provenance/redistribution rights and outside-footprint acceptance remain unverified. No credible organizer-score estimate exists here. Historical research files are not cleared to submit. See `docs/REVIEW_E7BC063A.md` for the three-pass review and dependency-ordered next steps.
+
+## IR-1028B (2026-10-28 TIPCOMP session 2123e2a6)
+
+- **IR-1028B-1 — `validate_submission.py` is hard-coded to the historical VARIO run card.**
+  It prints "not the byte-bound run-card primary" for every newer candidate (incl. the
+  bannered rieszlbm2) even when that candidate has its own sha-bound run card. Format
+  gates themselves are correct (11/11 re-verified). Not changed this session: multiple
+  tests intentionally assert the validator never grants a slot. Flagged for a future
+  session to make the card lookup candidate-relative while keeping exit-code semantics.
+- **IR-1028B-2 — Banner holdout number does not describe the shipped rieszlbm2 file.**
+  README/run card advertise HOLDOUT-DTI 0.03799 for rieszlbm2; that is the fold-proper
+  surrogate arm E3. Static re-score of the shipped bytes on gems57-pooled-hide-v2
+  (seeds 20,30) is exactly 0.000000 (direct check: 0 of its 50,000 dots within 3 px of
+  19,790 pooled withheld pixels; evidence/tipcomp_20261028.json `riesz_zero_check`).
+  Same pattern as lbmc1 (static 0.00076). Leaderboard-lane files are >200 m off-catalogue
+  by construction, so static ≈ 0 is expected — but the banner must not present the
+  surrogate number as the file's holdout. TIPCOMP candidate static = 0.00164, disclosed as such.
+- **IR-1028B-3 — `gems/lbm_place.place` cap-release deadlock (FIXED this session).**
+  `release()` inspected ≤4 blocked items per column and broke on first multi-column
+  violation; with ≥~15 cap columns placement deadlocked after O(10^3) dots (observed
+  222 / 1,185 / 1,442-dot stalls). Fixed once in the shared tool (bounded 64-item scan,
+  re-file without abandoning the column); see docstring in gems/lbm_place.py. Even with
+  the fix, ≥17 simultaneous prefix caps can paint the greedy into a corner; TIPCOMP used
+  3 placement caps + post-placement swap-repair instead.
+- **IR-1028B-4 — TIPCOMP verdict is `negative` on one pre-registered bound.**
+  HYPOTHESES_20261028_TIPCOMP.md required MODEL bootstrap q05 > 0.2778. The in-session
+  26-row grouped refit bootstrap gives q05 = 0.2688 (median 0.3076; Δ vs R0 median
+  +0.0440, q05 +0.0063, P=0.97). Under the same refit spec R0 itself (CLAIM 0.2778) has
+  median 0.2634, so the absolute bound mixes estimator scales; the published 128-claim
+  spec (reproduced exactly: R0→0.27284) gives candidate 0.3485. Verdict kept `negative`
+  per the letter of the pre-registration; promotion is left to the owner/selector with
+  both specs tabled (docs/executive-summary-20261028-tipcomp.html). No slot spent.
+- **IR-1028B-5 — Local-registry scope.** TIPCOMP uniqueness was audited vs 165 unique
+  rasters available in this sandbox (repo downloads + re-fetched focus-9/G-set files),
+  not the prior session's 2,162-raster 8-owner cache (`.cache/` absent in fresh clone;
+  training_features.tif likewise unreachable — outbound limited to github.com).
+  Literal-reading caveat (dense 17GEMSDOE witness → overlap 1.000 for any candidate)
+  is unchanged from IR-0127-1; PI-1 reading used throughout.
+- **IR-1028B-6 — WHY_0_2778.md §2 lists R0 SHA-256 as `29ca13f6…`** whereas
+  registry/data_manifest.json and this session's byte check give the zeros file as
+  `c55bafc4…` (29ca… appears to be a different encoding's hash). Minor; flagged, not edited.

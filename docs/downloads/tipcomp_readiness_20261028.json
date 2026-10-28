@@ -1,0 +1,11 @@
+{
+  "file": "downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif",
+  "raster_sha256": "8f27b9d6478526d72a055f0a56c7c8f6db1d63f2f5c66233b7eedbf9937579cf",
+  "submission_name": "gemsdoe92-tipcomp-40000d-8f27b9d6",
+  "note": "TIPCOMP H-92F1: 40000 dots; LBM ens x tip-cont x complement; caps vs focus9+priors; MODEL pub128 0.349.",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "download_status": "OK TO DOWNLOAD",
+  "submission_status": "SELECTOR DECISION REQUIRED \u2014 format PASS 11/11, PI-1 unique (worst 0.6848), MODEL published128 0.3485 / refit26 0.3109, refit bootstrap q05 0.2688 < 0.2778 pre-registered bound (IR-1028B-4)",
+  "executive_summary": "executive-summary-20261028-tipcomp.html"
+}
