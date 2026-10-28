@@ -1,0 +1,46 @@
+{
+  "schema": "gemsdoe92-review-47314b7f-v1",
+  "hypothesis": "Audit existing RIESZ-LBM clearance against the unmodified user duplicate and holdout gates; no new geological lane assigned.",
+  "mechanism": "Hash-pinned dense-witness preflight and shared template final-dot comparison; stop on overlap >0.70.",
+  "named_non_fault_process": "Volcanic mesa/canyon rims can mimic fault-related potential-field and terrain edges; not tested anew.",
+  "holdout_dti": {
+    "status": "ARCHIVED, NOT RERUN OR INDEPENDENTLY VALIDATED",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.03798714720750052,
+    "ci95": [
+      0.03101085490399704,
+      0.04465625376399511
+    ],
+    "r0_control": 0.09775010414175118,
+    "beats_r0": false
+  },
+  "registry": {
+    "forward_overlap": 1.0,
+    "spearman_full_footprint": 0.013638248774830308,
+    "preplacement_universal_stop": true,
+    "scope": "One rejection witness; not a full-fleet scan. Continuous positive support is treated literally as dots; not proof of geological identity."
+  },
+  "raster_sha256": "d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a",
+  "file": "downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif",
+  "actual_bytes": 167553,
+  "validator_output": {
+    "source": "Fresh disk read by scripts/check_public_witness.py",
+    "single_band_crs_shape_transform_match": true,
+    "all_finite": true,
+    "values_in_0_1": true,
+    "zero_outside_footprint": true
+  },
+  "submission_name": "gemsdoe92-rieszlbm2-50000d-79041788",
+  "note": "RESEARCH ONLY: literal registry overlap 100%; archived holdout below R0. No slot authorized.",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "experiments": 0,
+  "weekly_slots_used": 0,
+  "limitations": [
+    "No distinct method paragraph supplied.",
+    "No organizer receipt obtained; no reliable public-score estimate asserted.",
+    "Official non-GitHub sources cannot be fetched under this environment network allowlist.",
+    "No new unique TIF generated: mandatory stop is binding."
+  ]
+}

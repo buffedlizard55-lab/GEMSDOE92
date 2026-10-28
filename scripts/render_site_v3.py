@@ -392,7 +392,7 @@ def official_sources_table() -> str:
     return f"<p class=\"warn\"><strong>Source limitation:</strong> these are official-domain reference links from the repository; they were not fetched or authenticated live in this review. The displayed historical claims should be checked against the linked source before relying on them.</p><table><tr><th>#</th><th>Official Reference (live-check status disclosed)</th><th>URL (for review)</th></tr>{rows}</table>"
 
 
-def render() -> dict[Path, str]:
+def _historical_unsafe_render() -> dict[Path, str]:
     card, prior, f9, f9u, fleet, oot, hold, lbm2, model, val = load()
     blockers = promotion_blockers(card)
     if card.get("verdict") == "promote" and blockers:
@@ -416,7 +416,7 @@ def render() -> dict[Path, str]:
 {fleet_section(fleet, oot, claims_doc)}
 <section class="box"><h2 id="why">PhD Analysis: Why GEMSDOE32 Scored 0.2778 (vs 0.3195 &amp; 0.4413) &amp; How to Score Higher Uniquely</h2>
 <ul>
-<li><strong>Exact 0-pixel-XOR reconstruction of <code>GEMSDOE32</code> (<code>0.2778</code> <code>CLAIM</code>):</strong> <code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros</code> (<code>R0</code>, 37,654 dots) ≡ <code>D2.8 ∧ (d_cat &gt; 200 m)</code> — thinning the <code>GEMSDOE19</code> <code>H19-5</code> multiline skeleton (<code>121,131</code> px, <code>0.1922</code>) to 280 m spacing (keeping <code>1 − 2.8/12 = 76.7%</code> on-trace kernel recall while slashing false positives 2.75× → <code>0.2600</code> at <code>GEMSDOE25/30</code>), then removing 3,891 dots at 100 m (<code>+0.0108</code> → <code>0.2708</code> at <code>GEMSDOE28/31</code>) and 2,545 dots at 200 m (<code>+0.0070</code> → <code>0.2778</code> at <code>GEMSDOE32</code>). Both pruning gains equal the exact zero-TP derivative <code>0.2·DTI²/TPw ≈ 2.75×10⁻⁶</code>/dot, proving mapped faults are masked pixel-exactly and almost zero new faults sit within 200 m of mapped traces.</li>
+<li><strong>A plausible, not proven, explanation for GEMSDOE32's <code>0.2778</code> <code>CLAIM</code>:</strong> repository lineage records an R0-like sparse trace candidate followed by thinning and exclusions near mapped faults; the reported stepwise values are consistent with removing redundant false-positive mass under a distance-tolerant metric. The byte/lineage reconstruction and owner-reported values are not organizer receipts. They do <em>not</em> reveal hidden labels or prove that faults near mapped traces are absent, that the organizer applies any additional buffer, or that the listed changes caused the reported score increments. See <a href="WHY_0_2778.md">the evidence and assumption audit</a>.</li>
 <li><strong>Why recent drops occurred across Focus-9 sites:</strong> continuous unthresholded probabilities (<code>GEMSDOE28</code> <code>0.0206</code>, <code>GEMSDOE36</code> <code>0.1647</code>) pay massive <code>0.2·FPw</code> background drag; pure topographic/tilt edge picks without canyon-rim deconfounding (<code>GEMSDOE24</code> <code>0.0859</code>, <code>GEMSDOE25</code> <code>0.0742</code>, <code>GEMSDOE33</code> <code>0.0963</code>, <code>GEMSDOE91</code> <code>0.0435</code>) hit volcanic mesa rims and fan gullies; uniform hex packing (<code>WBGGEMSDOE3</code> <code>0.0443</code>) ignores tectonic corridors.</li>
 <li><strong>Do not interpret the model projection as a likely leaderboard score:</strong> the logged <code>0.3216</code> is a <code>MODEL</code> projection fit to owner-reported claims, not <code>HOLDOUT-DTI</code> or <code>ORGANIZER-CONFIRMED</code>. The tested RIESZ-LOCKED/LBM-v2 hybrid scored below the R0 recipe on the stored spatial holdout, and the registry checks hit a literal full-support witness stop. The prompt's <code>0.3195</code> and <code>0.4413</code> are user-supplied leaderboard values, not independently confirmed in this sandbox. New data such as USGS 3DEP LiDAR is a future research possibility, not a proven route to those scores. <a href="WHY_0_2778.md">Audit the historical 0.2778 reconstruction and its assumptions →</a></li>
 </ul>
@@ -435,7 +435,7 @@ def render() -> dict[Path, str]:
 {submission_box(card)}
 <section class="box"><h2>How to Submit to DrivenData (3 Simple Steps)</h2>
 <ol>
-<li><strong>Check the clearance badge first.</strong> Download the linked TIFF only for research unless the top status explicitly says <strong>OK TO SUBMIT</strong>. The current artifact says <strong>DO NOT SUBMIT</strong>; do not upload it or use its example name/note.</li>
+<li><strong>Check the clearance badge first.</strong> The current research-only file is <code>{esc(Path(card['raster']['file']).name)}</code> (SHA-256 <code>{esc(card['raster_sha256'])}</code>). Download the linked TIFF only for research unless the top status explicitly says <strong>OK TO SUBMIT</strong>. The current artifact says <strong>DO NOT SUBMIT</strong>; do not upload it or use its example name/note.</li>
 <li>Only for a future separately cleared artifact, download its exact <code>.tif</code> (or one-TIFF <code>.zip</code>) without re-saving it in GIS software.</li>
 <li>Only then open the official portal, upload that exact file, use its displayed submission name/note, verify the rolling cap, and record any returned receipt in <code>ledger/submissions.csv</code> as <code>ORGANIZER-CONFIRMED</code>.</li>
 </ol>
@@ -499,6 +499,19 @@ with rasterio.open("clean_submission-zeros.tif", "w", **prof) as dst:
         DL / "current_submission.json": json.dumps(current, indent=2) + "\n",
         DL / "readiness.json": json.dumps(readiness, indent=2) + "\n",
     }
+
+
+# Do not call the historical renderer: it hard-codes a promotion and changes
+# the user-specified uniqueness rule. This fail-closed renderer supersedes it.
+def render() -> dict[Path, str]:
+    try:
+        from scripts.render_safe_review import render as safe_render
+    except ModuleNotFoundError:
+        from render_safe_review import render as safe_render
+    card = load()[0]
+    if card.get("verdict") != "negative" or card.get("submission_eligible") is not False:
+        raise ValueError("blocked: no validated promotion is implemented by this renderer")
+    return safe_render(card)
 
 
 def main() -> int:
