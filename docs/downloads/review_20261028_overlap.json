@@ -1,0 +1,16 @@
+{
+  "witness": "17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+  "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+  "candidate": "gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif",
+  "candidate_sha256": "d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a",
+  "radius_px": 3,
+  "radius_definition": "Euclidean disk, cells",
+  "candidate_positive_cells": 50000,
+  "witness_finite_cells": 5167373,
+  "witness_positive_finite_cells": 5167373,
+  "overlap_literal_every_positive_witness_cell": 1.0,
+  "overlap_topk_witness_cells": 0.00698,
+  "limit": 0.7,
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "clearance": "none - measurement only; the representation rule is unresolved"
+}

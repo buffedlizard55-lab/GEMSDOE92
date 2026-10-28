@@ -75,8 +75,48 @@ def load():
     return card, prior, f9, f9u, fleet, oot, hold, lbm2, model, val
 
 
+def promotion_blockers(card: dict) -> list[str]:
+    """Apply the user protocol literally; MODEL estimates cannot waive a failed gate."""
+    blockers = []
+    g = card.get("gates_passed", {})
+    u = card.get("uniqueness", {})
+    if not g.get("format"):
+        blockers.append("submission-format validation failed")
+    # Rule 1 requires the continuous surface check before placement and the final-dot check.
+    # The pinned full-support registry witness has literal overlap 1.0 for this candidate.
+    if u.get("literal_reading", {}).get("duplicate_under_literal") is True:
+        blockers.append("registry stop: literal full-support witness overlap is 1.0 (> 0.70)")
+    if float(u.get("surface_worst_overlap", 1.0)) > 0.70:
+        blockers.append("pre-placement surface overlap exceeds 0.70")
+    if float(u.get("surface_worst_abs_rho", 1.0)) > 0.90:
+        blockers.append("pre-placement absolute rank correlation exceeds 0.90")
+    # For final dots, use the protocol's literal witness result where present rather than
+    # silently substituting the narrower operative sparse-dot interpretation.
+    if u.get("literal_reading", {}).get("duplicate_under_literal") is True:
+        blockers.append("final-dot registry stop: literal overlap is 1.0 (> 0.70)")
+    elif float(u.get("final_worst_overlap", 1.0)) > 0.70:
+        blockers.append("final-dot overlap exceeds 0.70")
+    if float(u.get("final_worst_abs_rho", 1.0)) > 0.90:
+        blockers.append("final-dot absolute rank correlation exceeds 0.90")
+    if not g.get("no_leakage"):
+        blockers.append("leakage canary failed")
+    h = card.get("holdout_dti", {})
+    candidate = h.get("exp1", {}).get("dti")
+    control = h.get("r0_recipe_control", {}).get("dti")
+    paired_ci = h.get("paired_delta_vs_r0_recipe", {}).get("ci95")
+    if (not g.get("catalogue_holdout_beats_r0_recipe") or candidate is None or control is None
+            or float(candidate) <= float(control) or not isinstance(paired_ci, list)
+            or len(paired_ci) != 2 or float(paired_ci[0]) <= 0):
+        blockers.append("HOLDOUT-DTI did not beat the R0 recipe control with paired 95% CI above zero")
+    auc = card.get("leakage_canaries", {}).get("max_auc")
+    if auc is None or float(auc) > 0.90:
+        blockers.append("feature-alone leakage canary is missing or exceeds AUC 0.90")
+    return blockers
+
+
 def status_cards(card: dict) -> tuple[dict, dict]:
-    ok = card["verdict"] == "promote" and card["submission_eligible"] is True
+    blockers = promotion_blockers(card)
+    ok = not blockers and card["verdict"] == "promote" and card["submission_eligible"] is True
     rel = card["raster"]["file"].removeprefix("docs/")
     pt = card["model_estimate"]["point"]
     current = dict(
@@ -97,6 +137,7 @@ def status_cards(card: dict) -> tuple[dict, dict]:
             card["model_estimate"]["bootstrap"]["q95"],
         ],
         evidence_class_of_estimate="MODEL (not an organizer score)",
+        blocking_reasons=blockers,
     )
     readiness = dict(
         file=rel,
@@ -107,11 +148,11 @@ def status_cards(card: dict) -> tuple[dict, dict]:
         submission_eligible=ok,
         download_status="OK TO DOWNLOAD",
         submission_status=(
-            "OK TO SUBMIT — all automated gates passed (format [0,1], 8-owner PI-1 uniqueness <=65.56%, "
-            "<=54.06% vs prior lbmc1, MODEL 5% bound > 0.2778, 20/20 leakage canaries <=0.90)"
+            "OK TO SUBMIT — separate slot selection is still required"
             if ok
-            else "DO NOT SUBMIT — at least one automated gate failed; see run card"
+            else "DO NOT SUBMIT — mandatory protocol gate(s) failed; research download only"
         ),
+        blocking_reasons=blockers,
         gates=card["gates_passed"],
     )
     return current, readiness
@@ -139,7 +180,7 @@ def submission_box(card: dict, href_prefix: str = "") -> str:
     me = card["model_estimate"]
     b = me["bootstrap"]
     u = card["uniqueness"]
-    dl_badge = '<span class="badge bdl">✅ OK TO DOWNLOAD</span>'
+    dl_badge = '<span class="badge bdl">✅ OK TO DOWNLOAD FOR RESEARCH</span>'
     sub_badge = (
         '<span class="badge bok">✅ OK TO SUBMIT</span>'
         if ok
@@ -148,19 +189,19 @@ def submission_box(card: dict, href_prefix: str = "") -> str:
     v2_pt = me["point"].get("lbm_v2_riesz", me["point"]["lbm_v1"])
     return f"""<section class="box {'ok' if ok else 'no'}" id="submit-now">
 <h1>{dl_badge} {sub_badge} {esc(Path(rel).name)}</h1>
-<p><a class="btn" data-primary="true" href="{href_prefix}{esc(rel)}" download>⬇ Download Unique GeoTIFF ({r['bytes']:,} bytes)</a>
+<p><a class="btn" data-primary="true" href="{href_prefix}{esc(rel)}" download>⬇ Download Format-Validated Research GeoTIFF ({r['bytes']:,} bytes)</a>
 <a class="btn btn2" href="{href_prefix}{esc(rel.replace('-zeros.tif', '-zeros.zip'))}" download>⬇ One-TIFF ZIP</a>
 <a class="btn btn2" href="{href_prefix}how-to-submit.html">How to submit (3 steps)</a></p>
 <table>
-<tr><th>Automated clearance</th><td><strong>Download:</strong> OK TO DOWNLOAD (11/11 format &amp; <code>[0, 1]</code> gates verified from disk without human inspection).<br><strong>Portal upload:</strong> {'OK TO SUBMIT (passes 8-owner uniqueness, leakage canaries, and MODEL promotion gates; verify weekly 3-submission cap first).' if ok else 'DO NOT SUBMIT (see failed gate in run card).'}</td></tr>
+<tr><th>Automated clearance</th><td><strong>Research download:</strong> Format-valid under the local validator; this does not establish leaderboard value or organizer acceptance.<br><strong>Portal upload:</strong> {'OK TO SUBMIT only after separate slot selection.' if ok else 'DO NOT SUBMIT — protocol stop(s) failed; this file is research-only.'}</td></tr>
 <tr><th>Portal “Submission name”</th><td><div class="copy">{esc(card['submission_name'])}</div></td></tr>
 <tr><th>Portal “Note” ({card['note_chars']} ≤ 140 chars)</th><td><div class="copy">{esc(card['note'])}</div></td></tr>
 <tr><th>SHA-256</th><td class="mono">{esc(card['raster_sha256'])}</td></tr>
-<tr><th>Validated format</th><td>{r['n_dots']:,} binary dots (<code>1.0</code>); exact <code>0.0</code> elsewhere including all 7,108,787 exterior cells and all mapped catalogue cells. Single-band <code>float32</code>, <code>EPSG:32611</code>, <code>3292×3730</code>, exact sample geotransform, <code>nodata=None</code>, <code>0</code> NaN/Inf — cannot trigger <q>Predicted values must be in range [0, 1]</q>.</td></tr>
-<tr><th>Estimated score (labelled)</th><td><strong>{v2_pt:.4f}</strong> <code>MODEL</code> (<code>LBM-v2</code> mimic-filtered) · <strong>{me['point']['lbm_v1']:.4f}</strong> <code>MODEL</code> (<code>LBM-v1</code>; 90% group-bootstrap interval <strong>{b['q05']:.3f}–{b['q95']:.3f}</strong>, vs <code>GEMSDOE32</code> <code>0.2778</code> <code>CLAIM</code> / <code>{me['r0_same_model']['point']['lbm_v1']:.3f}</code> same-model).<br>
-<code>HOLDOUT-DTI</code> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld px): <strong>{card['holdout_dti']['exp1']['dti']:.4f}</strong> (<code>+92.9%</code> over prior <code>lbmc1</code> <code>0.0197</code>; standalone <code>H92-RIESZ-HABITAT</code> = <strong>{card['holdout_dti']['e2_riesz_habitat_standalone']['dti']:.4f}</strong>).
-<span class="small">Neither <code>MODEL</code> nor <code>HOLDOUT-DTI</code> is an organizer-confirmed score.</span></td></tr>
-<tr><th>Uniqueness across 8 GitHub owners</th><td><strong>UNIQUE ({'PASS' if not u['duplicate'] else 'FAIL'}):</strong> across all <strong>{u['registry_rasters']:,}</strong> unique SHA-256 rasters in 123 repos across all 8 listed GitHub owners, worst 3-px dot overlap is <strong>{u['final_worst_overlap']:.2%}</strong> (limit 70%), overlap vs <code>GEMSDOE92</code>'s prior <code>lbmc1</code> is <strong>{u['vs_prior_gemsdoe92_lbmc1_overlap']:.2%}</strong> (22,971 brand-new physical dots &gt;300 m outside <code>lbmc1</code>), final |ρ| = <strong>{u['final_worst_abs_rho']:.3f}</strong> ≤ 0.90, and pre-placement surface |ρ| = <strong>{u['surface_worst_abs_rho']:.3f}</strong> ≤ 0.90.</td></tr>
+<tr><th>Local format validation (not organizer acceptance)</th><td>{r['n_dots']:,} binary dots (<code>1.0</code>); exact <code>0.0</code> elsewhere including all 7,108,787 exterior cells and mapped catalogue cells. Single-band <code>float32</code>, <code>EPSG:32611</code>, <code>3292×3730</code>, exact sample geotransform, <code>nodata=None</code>, no NaN/Inf; passes the local <code>[0,1]</code> range test. The portal remains authoritative and could apply additional checks.</td></tr>
+<tr><th>Score evidence (no projection presented as a score)</th><td><strong>{v2_pt:.4f}</strong> <code>MODEL projection</code> (<code>LBM-v2</code>; not a measured competition score). The user-provided <code>GEMSDOE32 0.2778</code> is a <code>CLAIM</code>; no organizer receipt is present.<br>
+<code>HOLDOUT-DTI</code> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positive pixels): <strong>{card['holdout_dti']['exp1']['dti']:.5f}</strong> [{card['holdout_dti']['exp1']['ci95'][0]:.5f}, {card['holdout_dti']['exp1']['ci95'][1]:.5f}]. The R0 recipe control was <strong>{card['holdout_dti']['r0_recipe_control']['dti']:.5f}</strong> [{card['holdout_dti']['r0_recipe_control']['ci95'][0]:.5f}, {card['holdout_dti']['r0_recipe_control']['ci95'][1]:.5f}]; paired difference was negative with 95% CI [{card['holdout_dti']['paired_delta_vs_r0_recipe']['ci95'][0]:.5f}, {card['holdout_dti']['paired_delta_vs_r0_recipe']['ci95'][1]:.5f}].<br>
+<span class="small">The HOLDOUT-DTI artifact is historical and was not independently rerun in this review; neither this nor the MODEL projection is an organizer-confirmed score.</span></td></tr>
+<tr><th>Uniqueness under the required stop rule</th><td><strong>NO — DO NOT SUBMIT.</strong> The recorded pre-placement surface overlap is <strong>{u['surface_worst_overlap']:.3f}</strong> and the final literal overlap against the full-support registry witness is <strong>{u['literal_reading']['worst']:.3f}</strong> (both exceed the 0.70 cap). Narrower sparse dot-field interpretation: {u['final_worst_overlap']:.2%} maximum among {u['registry_rasters']:,} indexed rasters; that alternate reading cannot waive the literal lane stop. Surface |ρ| = {u['surface_worst_abs_rho']:.3f} and final |ρ| = {u['final_worst_abs_rho']:.3f}.</td></tr>
 </table>
 <p class="small">Run card: <a href="{href_prefix}downloads/{esc(Path(PRIMARY_CARD).name)}">JSON</a> · Machine status: <a href="{href_prefix}downloads/current_submission.json">current_submission.json</a> · <a href="{href_prefix}downloads/readiness.json">readiness.json</a>. Weekly limit: 3 submissions per week (DrivenData portal prevails).</p>
 </section>"""
@@ -179,12 +220,12 @@ def exec_summary_table(card: dict, prior: dict, f9: dict, f9u: dict, model: dict
     u_pri = prior["uniqueness"]
 
     rows_html = [
-        f"""<tr style="background:#f0fdf4">
-<td><strong>GEMSDOE92 (NEW 2026-10-28 Primary)</strong></td>
+        f"""<tr style="background:#fff7ed">
+<td><strong>GEMSDOE92 (2026-10-28 RIESZ-LOCKED artifact; research-only)</strong></td>
 <td><a href="{esc(rel_cur)}" download><code>{esc(Path(rel_cur).name)}</code></a><br><span class="small mono">sha256 {esc(card['raster_sha256'][:16])}… · {r_cur['n_dots']:,} dots</span></td>
-<td><strong>{me_cur['point']['lbm_v2_riesz']:.4f}</strong> <code>MODEL</code> (LBM-v2)<br><code>{me_cur['point']['lbm_v1']:.4f}</code> <code>MODEL</code> [90%: {me_cur['bootstrap']['q05']:.3f}–{me_cur['bootstrap']['q95']:.3f}]<br><code>{card['holdout_dti']['exp1']['dti']:.4f}</code> <code>HOLDOUT-DTI</code></td>
-<td><strong>UNIQUE (PI-1 PASS)</strong><br>max 3px: <strong>{u_cur['final_worst_overlap']:.2%}</strong> ≤ 70%<br>vs <code>lbmc1</code>: <strong>{u_cur['vs_prior_gemsdoe92_lbmc1_overlap']:.2%}</strong><br>|ρ| = {u_cur['final_worst_abs_rho']:.3f} ≤ 0.90 (2,162 rasters)</td>
-<td><span class="badge bdl">✅ OK TO DOWNLOAD</span><br><span class="badge bok">✅ OK TO SUBMIT</span></td>
+<td><strong>{me_cur['point']['lbm_v2_riesz']:.4f}</strong> <code>MODEL projection</code> (not a score)<br><code>{card['holdout_dti']['exp1']['dti']:.5f}</code> <code>HOLDOUT-DTI</code> [95% CI: {card['holdout_dti']['exp1']['ci95'][0]:.5f}, {card['holdout_dti']['exp1']['ci95'][1]:.5f}]<br><small>R0: {card['holdout_dti']['r0_recipe_control']['dti']:.5f}; E3 is worse.</small></td>
+<td><strong>NO — STOP RULE FAILED</strong><br>pre-placement surface overlap: <strong>{u_cur['surface_worst_overlap']:.1%}</strong><br>literal final overlap: <strong>{u_cur['literal_reading']['worst']:.1%}</strong><br>narrow sparse PI-1: {u_cur['final_worst_overlap']:.2%} (not clearance)</td>
+<td><span class="badge bdl">✅ RESEARCH DOWNLOAD</span><br><span class="badge bno">⛔ DO NOT SUBMIT</span></td>
 </tr>""",
         f"""<tr style="background:#fffbeb">
 <td><strong>GEMSDOE92 (Prior 2026-10-27 Entry)</strong></td>
@@ -227,7 +268,7 @@ def gates_table(card: dict, val: dict) -> str:
     oot = me["prospective_oot_20261028"]
     row = lambda name, ok, detail: (
         f"<tr><td><strong>{esc(name)}</strong></td>"
-        f"<td>{'✅ PASS' if ok else 'ℹ️ REPORTED'}</td><td>{detail}</td></tr>"
+        f"<td>{'✅ PASS' if ok else '⛔ FAIL'}</td><td>{detail}</td></tr>"
     )
     return (
         "<table><tr><th>Automated Gate</th><th>Status</th><th>Measured Receipt</th></tr>"
@@ -244,19 +285,31 @@ def gates_table(card: dict, val: dict) -> str:
                     f"Final binary dots: worst 3-px overlap <strong>{u['final_worst_overlap']:.4f} ≤ 0.70</strong> and worst |ρ| = <strong>{u['final_worst_abs_rho']:.4f} ≤ 0.90</strong> across all {u['registry_rasters']:,} unique SHA-256 rasters. Overlap vs prior <code>GEMSDOE92 lbmc1</code> = <strong>{u['vs_prior_gemsdoe92_lbmc1_overlap']:.4f}</strong> (≤ 0.56 cap). Pre-placement surface: worst |ρ| = <strong>{u['surface_worst_abs_rho']:.4f} ≤ 0.90</strong> (PI-1b; literal dense-witness caveat {u['literal_reading']['worst']:.3f} also disclosed).",
                 ),
                 row(
-                    "3. Leaderboard-aligned validation & prospective OOT (MODEL)",
+                    "3. Required pre-placement and final registry-overlap stop (Rule 1)",
+                    float(u.get("surface_worst_overlap", 1.0)) <= 0.70
+                    and float(u.get("literal_reading", {}).get("worst", 1.0)) <= 0.70,
+                    f"Recorded pre-placement surface overlap = <strong>{u.get('surface_worst_overlap', 1.0):.3f}</strong>; full-support witness overlap on final dots = <strong>{u.get('literal_reading', {}).get('worst', 1.0):.3f}</strong>. Both must be ≤ 0.70. The narrow sparse-raster PI-1 value does not override this stop.",
+                ),
+                row(
+                    "4. Leaderboard-aligned validation & prospective OOT (MODEL projection only)",
+
                     g["model_beats_0_2778_at_q05"] and g["model_robust_all_specs_ge_R0"],
                     f"Fitted to 128 matched CLAIMs across 85 groups: <code>LBM-v2</code> LOGO RMSE = <strong>{me['lbm_v2_validation']['logo_rmse_128']:.5f}</strong> (Spearman <strong>{me['lbm_v2_validation']['logo_spearman_128']:.4f}</strong>); true prospective out-of-time RMSE on {oot['n_unseen_claims']} unseen 2026-10-28 CLAIMs = <strong>{oot['rmse']:.5f}</strong>. Candidate 5% bootstrap bound <strong>{me['bootstrap']['q05']:.4f} &gt; 0.2778</strong>; beats R0 across all 5 model specs (P(Δ&gt;0) = {me['bootstrap']['delta_vs_R0']['p_gt0']:.2f}).",
                 ),
                 row(
-                    "4. Single-feature leakage canaries (Rule 4, 20 features)",
+                    "5. Single-feature leakage canaries (Rule 4, 20 features)",
                     g["no_leakage"],
                     f"All 16 zero-catalogue RIESZ-LOCKED physical features max symmetric AUC = <strong>{c['riesz_locked_16_max_sym_auc']:.4f} ≤ 0.90</strong>; overall 20-feature max AUC = <strong>{c['max_auc']:.4f} ≤ 0.90</strong> (<code>leakage_flag = False</code>).",
                 ),
                 row(
-                    "5. Spatially-blocked hide-and-recover holdout (HOLDOUT-DTI)",
+                    "6. Spatial hide-and-recover candidate vs prior lbmc1 (HOLDOUT-DTI)",
                     g["catalogue_holdout_beats_lbmc1"],
-                    f"<code>gems57-pooled-hide-v2</code> ({h['withheld_positive_pixels']:,} withheld positives, 8 spatial folds): hybrid candidate = <strong>{h['exp1']['dti']:.4f}</strong> [{h['exp1']['ci95'][0]:.4f}, {h['exp1']['ci95'][1]:.4f}] (<strong>+92.9%</strong> vs prior <code>lbmc1</code> <code>0.0197</code>); standalone <code>E1</code> zero-catalogue physics = <strong>{h['e1_zero_catalogue_phys']['dti']:.4f}</strong>; standalone <code>E2</code> Riesz-habitat = <strong>{h['e2_riesz_habitat_standalone']['dti']:.4f}</strong> vs <code>R0 recipe</code> <code>{h['r0_recipe_control']['dti']:.4f}</code>. Reported honestly (catalogue holdout vs CLAIM Spearman = {val['spearman_holdout_vs_claim']:.2f}; IR-0127-2).",
+                    f"<code>gems57-pooled-hide-v2</code> ({h['withheld_positive_pixels']:,} withheld positives, 8 spatial folds): E3 hybrid = <strong>{h['exp1']['dti']:.5f}</strong> [{h['exp1']['ci95'][0]:.5f}, {h['exp1']['ci95'][1]:.5f}] vs lbmc1 <strong>{h['prior_lbmc1_v1_control']['dti']:.5f}</strong> [{h['prior_lbmc1_v1_control']['ci95'][0]:.5f}, {h['prior_lbmc1_v1_control']['ci95'][1]:.5f}]. This comparison alone is insufficient for promotion.",
+                ),
+                row(
+                    "7. Required holdout improvement vs R0 recipe (HOLDOUT-DTI)",
+                    g["catalogue_holdout_beats_r0_recipe"],
+                    f"E3 hybrid = <strong>{h['exp1']['dti']:.5f}</strong>; R0 = <strong>{h['r0_recipe_control']['dti']:.5f}</strong>; paired difference = <strong>{h['paired_delta_vs_r0_recipe']['delta']:+.5f}</strong>, 95% CI [{h['paired_delta_vs_r0_recipe']['ci95'][0]:+.5f}, {h['paired_delta_vs_r0_recipe']['ci95'][1]:+.5f}]. This gate fails; interval is below zero. Holdout/CLAIM Spearman = {val['spearman_holdout_vs_claim']:.2f} is a separate transfer limitation.",
                 ),
             ]
         )
@@ -300,7 +353,7 @@ def hypotheses_section(hold: dict, lbm2: dict) -> str:
     s = hold["summary_e2_candidate"]["scores"]
     m2 = lbm2["models"]["lbm_v2_h92_q85_128"]
     m1 = lbm2["models"]["lbm_v1_128"]
-    return f"""<section class="box"><h2 id="hypotheses">Pre-Registered Untried Geological Hypotheses (H-92A..E) &amp; 3-Experiment Results</h2>
+    return f"""<section class="box"><h2 id="hypotheses">Earlier H-92 Hypothesis Ranking &amp; 3-Experiment Results (not a new experiment proposal)</h2>
 <p class="small">Full mathematical specification, layer/band pins, non-fault mimics, and novelty audit across all 59 prior <code>gems/*.py</code> modules: <a href="HYPOTHESES_20261028_RIESZ_LOCKED.md">HYPOTHESES_20261028_RIESZ_LOCKED.md</a>.</p>
 <table>
 <tr><th>Rank &amp; ID</th><th>Physical Hypothesis &amp; Specific Layers</th><th>Why It Catches Off-Catalogue Faults</th><th>Named Non-Fault Mimic</th><th>Single-Feature Canary AUC</th></tr>
@@ -310,7 +363,7 @@ def hypotheses_section(hold: dict, lbm2: dict) -> str:
 <tr><td><strong>#4 H-92D</strong><br><code>PECLETVENT</code></td><td>Fournier quartz/chalcedony/Na-K-Ca enthalpy disequilibrium <code>ΔT = T_geotherm − T_measured</code> (1,230 GDR wells + 2 m probes) × MT clay-cap (<code>B17</code>) &amp; Grauch magnetic destruction</td><td>Rapid fault-upflow cooling traps high deep silica enthalpy in warm/blind outflow wells lacking boiling hot-spring mounds</td><td>Stratiform permeable ash-flow tuff lateral outflow plumes</td><td><code>0.5355</code> &gt; marginals (PASS)</td></tr>
 <tr><td><strong>#5 H-92E</strong><br>(Deferred)</td><td>Azimuthal Curie-point radial spectral depth gradient on GeoDAWN RTP (<code>B02</code>)</td><td>Upwarped Curie isotherm beneath extensional hydrothermal zones</td><td>Silicic volcanic centers; 32 km window too coarse for 300 m DTI</td><td>Deferred (4/5 implemented)</td></tr>
 </table>
-<p class="small"><strong>3-Experiment Budget Outcome:</strong> (<strong>E1</strong>) Pure 16-feature zero-catalogue <code>H92-PHYS-LOQO</code> achieved <code>HOLDOUT-DTI = {s['e1_phys_loqo']['dti']:.4f}</code> (vs <code>0.0197</code> for <code>lbmc1</code>, 4.18× higher with zero fault catalogue!). (<strong>E2</strong>) Strict Rule-2 <code>H92-RIESZ-HABITAT-LOQO</code> reached <code>{s['e2_riesz_habitat']['dti']:.4f}</code>. (<strong>E3</strong>) Adding the <code>&gt;q85</code> extreme raw edge mimic suppressor (<code>β = -0.4904</code>, empirically explaining why raw scarp/tilt submissions <code>GEMSDOE91 = 0.0435</code> and <code>GEMSDOE40 = 0.0258</code> failed) improved 128-claim <code>LOGO RMSE</code> from <code>{m1['logo_rmse_128']:.5f}</code> to <code>{m2['logo_rmse_128']:.5f}</code> and Spearman to <code>{m2['logo_spearman_128']:.5f}</code>, powering our unique 50,000-dot primary candidate.</p>
+<p class="small"><strong>Three-experiment budget: USED (3/3); no more experiment or slot is authorized in this review.</strong> E1 and E2's recorded HOLDOUT-DTI values are diagnostics, not evidence of success against the required R0 control. E3's 128-claim <code>MODEL</code> fit is a projection, not a leaderboard score, and its candidate HOLDOUT-DTI (<code>{s['e3_physlbm_unique']['dti']:.5f}</code> [{s['e3_physlbm_unique']['ci95'][0]:.5f}, {s['e3_physlbm_unique']['ci95'][1]:.5f}]) is below R0 (<code>{s['r0_recipe']['dti']:.5f}</code> [{s['r0_recipe']['ci95'][0]:.5f}, {s['r0_recipe']['ci95'][1]:.5f}]). The hybrid candidate therefore fails the required validation gate and is research-only.</p>
 </section>"""
 
 
@@ -336,11 +389,16 @@ def official_sources_table() -> str:
         f'<tr><td>{i+1}</td><td>{esc(title)}</td><td><a href="{esc(url)}">{esc(url)}</a></td></tr>'
         for i, (title, url) in enumerate(OFFICIAL)
     )
-    return f"<table><tr><th>#</th><th>Verified Official Source</th><th>URL (for manual inspection)</th></tr>{rows}</table>"
+    return f"<p class=\"warn\"><strong>Source limitation:</strong> these are official-domain reference links from the repository; they were not fetched or authenticated live in this review. The displayed historical claims should be checked against the linked source before relying on them.</p><table><tr><th>#</th><th>Official Reference (live-check status disclosed)</th><th>URL (for review)</th></tr>{rows}</table>"
 
 
-def render() -> dict[Path, str]:
+def _historical_unsafe_render() -> dict[Path, str]:
     card, prior, f9, f9u, fleet, oot, hold, lbm2, model, val = load()
+    blockers = promotion_blockers(card)
+    if card.get("verdict") == "promote" and blockers:
+        raise ValueError("promotion blocked by mandatory protocol gates: " + "; ".join(blockers))
+    if card.get("submission_eligible") is True and blockers:
+        raise ValueError("submission eligibility blocked by mandatory protocol gates: " + "; ".join(blockers))
     claims_doc = json.loads((EVID / "claims_matched_20261028.json").read_text(encoding="utf-8"))
     current, readiness = status_cards(card)
     idx = f"""<nav class="small"><a href="how-to-submit.html">How to submit</a><a href="nine-sites.html">Nine-site analysis</a><a href="#fleet-8owners">8-owner fleet</a><a href="#why">Why 0.2778</a><a href="#hypotheses">Hypotheses H-92A..E</a><a href="WHY_0_2778.md">Full math note</a><a href="HYPOTHESES_20261028_RIESZ_LOCKED.md">Pre-registration</a><a href="archive.html">Archive</a></nav>
@@ -352,15 +410,15 @@ def render() -> dict[Path, str]:
 {gates_table(card, val)}
 </section>
 <section class="box"><h2 id="nine-sites">Nine Focus Sites: Highest-Scoring &amp; Latest Submissions</h2>
-<p class="small">Audited across all <strong>{fleet['unique_sha256']:,}</strong> unique SHA-256 rasters in 123 repos of all 8 GitHub owners (<code>evidence/focus9_uniqueness_20261028.json</code>). <strong>Every one of the 9 focus sites' peak files has 100% overlap with sibling clones</strong> — study them for physical insight, do not re-submit them. <a href="nine-sites.html">Complete per-site submission tables (highest &amp; latest drops explained) →</a></p>
+<p class="small">Audited against the repository's pinned 2026-10-28 inventory of <strong>{fleet['unique_sha256']:,}</strong> unique SHA-256 rasters across 123 repos / 8 GitHub owners (<code>evidence/focus9_uniqueness_20261028.json</code>); this is a historical snapshot, not a live registry. No Focus-9 peak is cleared for re-submission. <a href="nine-sites.html">Complete per-site tables of the highest submissions, score claims, model projections and byte/overlap matches →</a></p>
 <table><tr><th>Site</th><th>Best File (Commit-Pinned Link)</th><th>CLAIM</th><th>MODEL (LOGO)</th><th>Unique vs 8-Owner Fleet?</th></tr>{focus9_rows(f9, f9u, model)}</table>
 </section>
 {fleet_section(fleet, oot, claims_doc)}
 <section class="box"><h2 id="why">PhD Analysis: Why GEMSDOE32 Scored 0.2778 (vs 0.3195 &amp; 0.4413) &amp; How to Score Higher Uniquely</h2>
 <ul>
-<li><strong>Exact 0-pixel-XOR reconstruction of <code>GEMSDOE32</code> (<code>0.2778</code> <code>CLAIM</code>):</strong> <code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros</code> (<code>R0</code>, 37,654 dots) ≡ <code>D2.8 ∧ (d_cat &gt; 200 m)</code> — thinning the <code>GEMSDOE19</code> <code>H19-5</code> multiline skeleton (<code>121,131</code> px, <code>0.1922</code>) to 280 m spacing (keeping <code>1 − 2.8/12 = 76.7%</code> on-trace kernel recall while slashing false positives 2.75× → <code>0.2600</code> at <code>GEMSDOE25/30</code>), then removing 3,891 dots at 100 m (<code>+0.0108</code> → <code>0.2708</code> at <code>GEMSDOE28/31</code>) and 2,545 dots at 200 m (<code>+0.0070</code> → <code>0.2778</code> at <code>GEMSDOE32</code>). Both pruning gains equal the exact zero-TP derivative <code>0.2·DTI²/TPw ≈ 2.75×10⁻⁶</code>/dot, proving mapped faults are masked pixel-exactly and almost zero new faults sit within 200 m of mapped traces.</li>
+<li><strong>A plausible, not proven, explanation for GEMSDOE32's <code>0.2778</code> <code>CLAIM</code>:</strong> repository lineage records an R0-like sparse trace candidate followed by thinning and exclusions near mapped faults; the reported stepwise values are consistent with removing redundant false-positive mass under a distance-tolerant metric. The byte/lineage reconstruction and owner-reported values are not organizer receipts. They do <em>not</em> reveal hidden labels or prove that faults near mapped traces are absent, that the organizer applies any additional buffer, or that the listed changes caused the reported score increments. See <a href="WHY_0_2778.md">the evidence and assumption audit</a>.</li>
 <li><strong>Why recent drops occurred across Focus-9 sites:</strong> continuous unthresholded probabilities (<code>GEMSDOE28</code> <code>0.0206</code>, <code>GEMSDOE36</code> <code>0.1647</code>) pay massive <code>0.2·FPw</code> background drag; pure topographic/tilt edge picks without canyon-rim deconfounding (<code>GEMSDOE24</code> <code>0.0859</code>, <code>GEMSDOE25</code> <code>0.0742</code>, <code>GEMSDOE33</code> <code>0.0963</code>, <code>GEMSDOE91</code> <code>0.0435</code>) hit volcanic mesa rims and fan gullies; uniform hex packing (<code>WBGGEMSDOE3</code> <code>0.0443</code>) ignores tectonic corridors.</li>
-<li><strong>Why <code>0.316–0.333</code> (<code>MODEL</code>) is achievable uniquely, while <code>0.4413</code> requires external sub-100 m data:</strong> <code>R0</code> wastes ~65% of its dots in low-density <code>200 m–1.5 km</code> collars (×0.38) and unconfirmed branches. Reallocating dots to <code>d_cat &gt; 1.5 km</code> (×5.65), 100 m off-<code>H19-5</code> dip/georeferencing offsets (×3.73), multi-detector consensus (×15.4), and <code>H-92A..D</code> Riesz/piedmont/Peclet blind conduits while suppressing <code>&gt;q85</code> canyon-rim mimics (<code>β = −0.49</code>) lifts expected DTI to <strong>0.3216</strong> (<code>LBM-v2</code>) at ≤ 65.56% fleet overlap. Reaching the reported <code>0.4413</code> ceiling requires ~60% recall at <code>FPw ≈ |G|</code>, which demands <strong>1 m USGS 3DEP / GeoDAWN EarthMRI LiDAR</strong> scarp breaklines beyond the 100 m grid. <a href="WHY_0_2778.md">Full mathematical derivation →</a></li>
+<li><strong>Do not interpret the model projection as a likely leaderboard score:</strong> the logged <code>0.3216</code> is a <code>MODEL</code> projection fit to owner-reported claims, not <code>HOLDOUT-DTI</code> or <code>ORGANIZER-CONFIRMED</code>. The tested RIESZ-LOCKED/LBM-v2 hybrid scored below the R0 recipe on the stored spatial holdout, and the registry checks hit a literal full-support witness stop. The prompt's <code>0.3195</code> and <code>0.4413</code> are user-supplied leaderboard values, not independently confirmed in this sandbox. New data such as USGS 3DEP LiDAR is a future research possibility, not a proven route to those scores. <a href="WHY_0_2778.md">Audit the historical 0.2778 reconstruction and its assumptions →</a></li>
 </ul>
 </section>
 {hypotheses_section(hold, lbm2)}
@@ -369,17 +427,17 @@ def render() -> dict[Path, str]:
 <li><strong>Public-to-private &amp; Phase-2 generalisation:</strong> <code>MODEL</code> estimates come from owner-reported public-leaderboard <code>CLAIM</code>s (not organizer receipts). Phase 1 private chunks and Phase 2 expert-revised labels can shift spatial weights.</li>
 <li><strong>Dual uniqueness disclosure:</strong> Under PI-1 (comparing dot sets against dot/top-N sets across all 2,162 rasters of 8 owners), worst overlap is <strong>65.56% ≤ 70%</strong> (54.06% vs prior <code>lbmc1</code>). Under the degenerate literal reading where <code>17GEMSDOE E-proba-multiscale</code> marks 100% of all 5,167,373 footprint cells positive, every nonempty submission has 100% literal overlap (documented in <code>IRREGULARITIES.md</code>).</li>
 <li><strong>Flagged fleet irregularities:</strong> 6 empty (0-KB) sibling repos (<code>EUGGEMSDOE1..3</code>, <code>GINNYGEMSDOE1..3</code>), cross-band derivative unit scaling mismatch (`100–1000×`) between <code>B03 tmi_hg</code> and <code>B09 tmi_vg</code> (solved via direct 2D FFT derivatives in <code>gems/riesz_locked.py</code>), and 5 cross-repo <code>CLAIM</code> attributions resolved by exact filename/byte matching.</li>
-<li><strong>Next steps:</strong> Record one <code>ORGANIZER-CONFIRMED</code> DrivenData score in <code>ledger/submissions.csv</code>, refit <code>LBM-v2</code> with true organizer calibration, and ingest tiled 1 m USGS 3DEP LiDAR breaklines where outbound access permits.</li>
+<li><strong>Next steps (no slot and no new experiment now):</strong> resolve the missing assigned method paragraph and the registry witness representation in writing; restore the complete provenance-verified feature cache; then, in a future authorized lane with a fresh budget, rerun a candidate against shared holdout and all registry gates before making a separate slot-selection decision. Consider an official 3DEP LiDAR data-access check only if the selected hypothesis requires it.</li>
 </ul></section>
-<section class="box"><h2 id="official">Verified Official Sources Table</h2>{official_sources_table()}</section>"""
+<section class="box"><h2 id="official">Official Source Links for Manual Review</h2>{official_sources_table()}</section>"""
 
     howto = f"""<nav class="small"><a href="index.html">← Back to Executive Summary</a> · <a href="nine-sites.html">Nine-site analysis</a></nav>
 {submission_box(card)}
 <section class="box"><h2>How to Submit to DrivenData (3 Simple Steps)</h2>
 <ol>
-<li><strong>Download</strong> the primary GeoTIFF using the blue button above (or the one-TIFF <code>.zip</code>). Do <em>not</em> open and re-save in QGIS/ArcGIS, which can inject a <code>-3.4028e38</code> nodata tag.</li>
-<li><strong>Open</strong> <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/</a> and upload the <code>.tif</code> (or single-TIFF <code>.zip</code>).</li>
-<li><strong>Copy-paste</strong> the exact unique <strong>Submission name</strong> and <strong>Note (≤ 140 chars)</strong> from the dark boxes above, verify your rolling 7-day quota, and click Submit. Record the returned score in <code>ledger/submissions.csv</code> as <code>ORGANIZER-CONFIRMED</code>.</li>
+<li><strong>Check the clearance badge first.</strong> The current research-only file is <code>{esc(Path(card['raster']['file']).name)}</code> (SHA-256 <code>{esc(card['raster_sha256'])}</code>). Download the linked TIFF only for research unless the top status explicitly says <strong>OK TO SUBMIT</strong>. The current artifact says <strong>DO NOT SUBMIT</strong>; do not upload it or use its example name/note.</li>
+<li>Only for a future separately cleared artifact, download its exact <code>.tif</code> (or one-TIFF <code>.zip</code>) without re-saving it in GIS software.</li>
+<li>Only then open the official portal, upload that exact file, use its displayed submission name/note, verify the rolling cap, and record any returned receipt in <code>ledger/submissions.csv</code> as <code>ORGANIZER-CONFIRMED</code>.</li>
 </ol>
 <div class="warn"><strong>Weekly limit:</strong> <strong>3 submissions per week</strong> (per DrivenData staff in Forum #11553, the limit displayed on the competition website prevails). Confirm whether prior <code>2026-10-27</code> <code>lbmc1</code> was already uploaded before spending a slot. Before the competition closes, select <strong>one</strong> final submission for Phase 1 private + Phase 2 expert scoring.</div>
 </section>
@@ -403,7 +461,7 @@ prof.update(dtype="float32", count=1, nodata=None, compress="deflate")
 with rasterio.open("clean_submission-zeros.tif", "w", **prof) as dst:
     dst.write(arr, 1)</pre>
 </section>
-<section class="box"><h2>Verified Official Sources</h2>{official_sources_table()}</section>"""
+<section class="box"><h2>Official Source Links for Manual Review</h2>{official_sources_table()}</section>"""
 
     claims = json.loads((EVID / "claims_matched_20261028.json").read_text(encoding="utf-8"))["rows"]
     blocks = []
@@ -425,22 +483,35 @@ with rasterio.open("clean_submission-zeros.tif", "w", **prof) as dst:
         )
     nine = f"""<nav class="small"><a href="index.html">← Back to Executive Summary</a> · <a href="how-to-submit.html">How to submit</a></nav>
 <h1>Nine Focus Sites: Highest-Scoring &amp; Latest Submissions Audit (2026-10-28)</h1>
-<p class="small">All owner-reported <code>CLAIM</code> scores matched byte-for-byte across 123 repos of all 8 GitHub owners (<code>evidence/claims_matched_20261028.json</code>, <code>evidence/focus9_sources_20261028.json</code>, <code>evidence/focus9_uniqueness_20261028.json</code>). <strong>None of the 9 focus sites' peak files is unique</strong>; for a verified unique submission, use <a href="index.html#submit-now">GEMSDOE92's primary candidate (<code>{esc(Path(card['raster']['file']).name)}</code>, SHA-256 <code>{card['raster_sha256'][:16]}…</code> — ✅ OK TO DOWNLOAD · ✅ OK TO SUBMIT)</a>.</p>
+<p class="small">These are owner-reported <code>CLAIM</code> scores and a pinned inventory snapshot, not current organizer receipts or a live registry. None of the nine site peak files should be re-submitted as-is. GEMSDOE92's current artifact <a href="downloads/{esc(Path(card['raster']['file']).name)}">{esc(Path(card['raster']['file']).name)}</a> is a format-validated research download only (**DO NOT SUBMIT**); it fails the literal registry stop and the R0 holdout comparison.</p>
 <section class="box"><table><tr><th>Site</th><th>Peak File (Commit-Pinned)</th><th>CLAIM</th><th>MODEL (LOGO)</th><th>Unique vs 8-Owner Fleet?</th></tr>{focus9_rows(f9, f9u, model)}</table></section>
 {''.join(blocks)}"""
 
     root = f"""<meta http-equiv="refresh" content="0; url=docs/index.html">
-<p><a href="docs/index.html">GEMSDOE92 Executive Summary &amp; Unique Submission →</a></p>
+<p><a href="docs/index.html">GEMSDOE92 Executive Summary &amp; Research Download (DO NOT SUBMIT) →</a></p>
 {submission_box(card, href_prefix="docs/").replace('data-primary="true" ', '')}"""
 
     return {
-        DOCS / "index.html": page("GEMSDOE92 — DOE GEMS Unique Validated Submission & Executive Summary (2026-10-28)", idx),
+        DOCS / "index.html": page("GEMSDOE92 — DOE GEMS Research Download & Executive Summary (2026-10-28)", idx),
         DOCS / "how-to-submit.html": page("GEMSDOE92 — How to Submit & [0, 1] Compliance Guide", howto),
         DOCS / "nine-sites.html": page("GEMSDOE92 — Nine Focus Sites & 8-Owner Fleet Audit", nine),
         ROOT / "index.html": page("GEMSDOE92 — DOE GEMS Submission", root),
         DL / "current_submission.json": json.dumps(current, indent=2) + "\n",
         DL / "readiness.json": json.dumps(readiness, indent=2) + "\n",
     }
+
+
+# Do not call the historical renderer: it hard-codes a promotion and changes
+# the user-specified uniqueness rule. This fail-closed renderer supersedes it.
+def render() -> dict[Path, str]:
+    try:
+        from scripts.render_safe_review import render as safe_render
+    except ModuleNotFoundError:
+        from render_safe_review import render as safe_render
+    card = load()[0]
+    if card.get("verdict") != "negative" or card.get("submission_eligible") is not False:
+        raise ValueError("blocked: no validated promotion is implemented by this renderer")
+    return safe_render(card)
 
 
 def main() -> int:

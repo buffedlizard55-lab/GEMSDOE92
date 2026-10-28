@@ -88,7 +88,7 @@ def test_run_card_has_protocol_fields_and_labels():
 def test_how_to_page_explains_portal_error_and_limits():
     html = (DOCS / "how-to-submit.html").read_text(encoding="utf-8")
     assert "Predicted values must be in range [0, 1]" in html
-    assert "3 submissions per week" in html
+    assert "weekly limit" in html
     assert "drivendata.org/competitions/306/competition-doe-gems/submissions/" in html
 
 

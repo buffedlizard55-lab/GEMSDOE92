@@ -1428,3 +1428,10 @@ Preserved LISTRICDIP research outputs; freshly validated its newly declared prim
 - **IR-1028B-6 — WHY_0_2778.md §2 lists R0 SHA-256 as `29ca13f6…`** whereas
   registry/data_manifest.json and this session's byte check give the zeros file as
   `c55bafc4…` (29ca… appears to be a different encoding's hash). Minor; flagged, not edited.
+## IR-47314b7f — independent 2026-10-28 clearance withdrawal
+
+Fresh GitHub blob retrieval and hash-pinned template checks reproduce the universal positive-support stop. All 50,000 current RIESZ-LBM dots have forward overlap 1.0; full-footprint rank correlation is 0.013638. A low correlation does not override the OR overlap condition. PI-1 redefinition was not authorized by this prompt. This is a conservative representation stop, not a finding that continuous probability support proves scientific duplication.
+
+The archived candidate HOLDOUT-DTI 0.037987 is below its R0 control 0.097750; beating lbmc1 alone is insufficient. These holdout numbers are archived reports, not rerun here. Current MODEL projections remain unverified against organizer receipts and cannot authorize a slot. Earlier README and run-card byte sizes disagreed; see the new card for a fresh disk size and hash.
+
+Primary pages now fold superseded claims and display a blocking banner. No new geological experiments, no new TIFF and no competition slots. Source/data verification outside GitHub is constrained by the network allowlist. No method lane is assigned in the supplied paragraph. Resolve protocol semantics before proceeding rather than silently weaken the duplicate gate.

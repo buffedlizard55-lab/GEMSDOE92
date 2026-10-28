@@ -122,7 +122,12 @@ def test_primary_20261028_geotiff_and_zip_portal_compliance():
 def test_20261028_evidence_fleet_oot_canaries_and_docs_synchronized():
     card = json.loads((ROOT / "evidence" / f"{PRIMARY_STEM}_run_card.json").read_text(encoding="utf-8"))
     assert card["raster_sha256"] == PRIMARY_SHA256
-    assert card["verdict"] == "promote" and card["submission_eligible"] is True
+    # Corrected after the source run card's mandatory Rule-1/Rule-2 failures were audited.
+    assert card["verdict"] == "negative" and card["submission_eligible"] is False
+    assert card["gates_passed"]["catalogue_holdout_beats_r0_recipe"] is False
+    assert card["gates_passed"]["uniqueness_pi1"] is False
+    assert card["uniqueness"]["literal_reading"]["duplicate_under_literal"] is True
+    assert card["promotion_review"]["decision"] == "negative"
     assert 0 < len(card["note"]) <= 140
     assert card["uniqueness"]["registry_owners"] == 8
     assert card["uniqueness"]["registry_rasters"] == 2162
