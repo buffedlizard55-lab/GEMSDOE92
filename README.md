@@ -1,58 +1,30 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-## 🚦 SUBMISSION DECISION — read this first (2026-10-28)
+## ⛔ Current decision — 2026-10-28 review: NO TIFF IS CLEARED TO SUBMIT
 
-**No file is cleared for submission to DrivenData #306.** Do not upload any TIFF from this repository at this time.
+**The TIFF below is downloadable for research only. Do not upload it or use a competition slot.** The latest TIPCOMP candidate passed local format validation and its prior PI-1 scan, but it failed its pre-registered promotion bound; its fold-proper `HOLDOUT-DTI` did not beat the R0 recipe control. Full-registry uniqueness under the unresolved dense-witness interpretation is also not established. No organizer score receipt exists in this repository.
 
-| Question | Answer |
+**[⬇ Download TIPCOMP research-only GeoTIFF](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.zip) · [TIPCOMP executive summary](docs/executive-summary-20261028-tipcomp.html) · [run card](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6_run_card.json) · [readiness JSON](docs/downloads/tipcomp_readiness_20261028.json)
+
+| Field | Evidence / current decision |
 |---|---|
-| Can I submit a file now? | **NO.** No file passes the repo's own promotion gates. |
-| Can I download a file? | Only as a **research** file. Format is valid for every listed file (single-band float32, EPSG:32611, 3730×3292, values in [0,1], zeros outside footprint). Format validity is not organizer acceptance. |
-| Which file is the best candidate? | `gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif` (SHA-256 `8f27b9d6…579cf`). Still **not eligible**: see below. |
-| Which file does the public site currently call primary? | `gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif`, marked **DO NOT SUBMIT** (literal registry stop; holdout below its control). |
+| Download vs upload | **OK TO DOWNLOAD FOR RESEARCH ONLY; DO NOT SUBMIT.** Local site audit passes file-format checks; this is not organizer acceptance. |
+| Portal name/note | Historical metadata only—**not instructions to upload**: `gemsdoe92-tipcomp-40000d-8f27b9d6` · `TIPCOMP H-92F1: 40000 dots; LBM ens x tip-cont x complement; caps vs focus9+priors; MODEL pub128 0.349.` (103/140). |
+| Score estimate | `MODEL` projection only, not a competition score: 0.3485 (published-128 spec); 0.3109 (26-claim refit; bootstrap q05 0.2688, median 0.3076). The pre-registered q05 threshold of 0.2778 was not met (IR-1028B-4). |
+| Uniqueness | Prior PI-1 audit: max 3-px dot overlap 0.68485 and max sampled \|ρ\| 0.18171 across 165 local registry rasters; focus-9 peaks are below 0.6325. This is **not a complete registry/representation clearance**: dense-witness interpretation remains unresolved. Do not call this globally unique. |
+| `HOLDOUT-DTI` | `gems57-pooled-hide-v2`, 22,663 withheld positives: fold-proper TIPCOMP 0.09617 [0.08521, 0.10665]; R0-recipe control 0.09775 [0.08590, 0.11077]; paired Δ −0.00158 [−0.01787, +0.01469] (tie; not a promotion win). Feature-alone canaries max symmetric AUC 0.7799, below the 0.90 alarm. |
+| Raster | SHA-256 `8f27b9d6478526d72a055f0a56c7c8f6db1d63f2f5c66233b7eedbf9937579cf`; prior local audit: single-band float32, EPSG:32611, 3292×3730, exact template transform, finite values in [0,1]. |
+| Session limits | The recorded TIPCOMP session used its 3/3 experiment budget. This review ran no new experiment and spent no slot. The single method paragraph referenced in the supplied parallel-run protocol is absent. |
 
-| File | Estimated score | Unique vs local registry (PI-1) | Holdout (`HOLDOUT-DTI`, `gems57-pooled-hide-v2`, 22,663 withheld) | Decision |
-|---|---|---|---|---|
-| TIPCOMP `…8f27b9d6-zeros.tif` (best candidate, research download) | **No score exists.** MODEL projection 0.3485 / 0.3109 is a fit to CLAIM values, not a score. | Yes under PI-1: 166 local rasters, worst sparse overlap **0.6848** ≤ 0.70, worst top-N **0.6193**, max \|ρ\| **0.18** ([receipt](docs/downloads/tipcomp_local_recheck_20261028.json)). Literal reading still 1.000 vs dense 17GEMSDOE witness (IR-1028B-5). | Fold-proper **0.09617 [0.08521, 0.10665]** vs R0-recipe control **0.09775 [0.08590, 0.11077]**: **tie, not beaten** (paired Δ −0.00158 [−0.01787, +0.01469]). | **DO NOT SUBMIT** (run card `verdict: negative`, `submission_eligible: false`) |
-| RIESZ `…79041788-zeros.tif` (site primary) | 0.3216 MODEL (not a score) | **No**: literal overlap 1.000 vs registry | 0.037987 [0.031011, 0.044656] vs control 0.097750 | **DO NOT SUBMIT** |
-| GEMSDOE32 `h33-h33-2-b2` (reference, not ours) | 0.2778 CLAIM (owner-reported, no organizer receipt) | Not unique (per the nine-site review) | — | Study only |
-
-**What blocks the TIPCOMP file (all from the repo's own records):**
-1. Its holdout does not beat the R0 control (the protocol's "beat the current holdout best" rule). The fold-proper difference is zero within the CI.
-2. Its pre-registered bootstrap bound failed: q05 0.2688 < 0.2778 (IR-1028B-4).
-3. The literal uniqueness reading is still open; the team has not resolved whether the dense 17GEMSDOE witness counts as a "dot" raster (IR-1028B-5). **This is the decision the owner must make before any file can be cleared.**
-
-**Verify it yourself (no manual input needed):**
-- Format: `python validate_submission.py <file.tif>` (exit 1 = do not submit; prints the byte-bound run-card verdict).
-- Uniqueness recheck: `python scripts/recheck_local_overlap.py <file.tif> <out.json>`.
-- Tests: `python -m pytest tests -q` (796 passed, 19 skipped on 2026-10-28, including 5 new candidate-binding tests).
-
-Evidence labels used throughout: `CLAIM` (owner-reported), `MODEL` (fitted projection), `HOLDOUT-DTI` (evaluator + withheld count + CI), `ORGANIZER-CONFIRMED` (none exists in this repo), `REGISTRY-MEASUREMENT`. Source notes and irregularities: [IRREGULARITIES.md](IRREGULARITIES.md) (IR-1028C, 2026-10-28). Working protocol: [SESSION_PROMPT.md](SESSION_PROMPT.md).
+The method was a leaderboard-model-weighted density with catalogue-tip continuation and a focus-9 coverage-complement boost. The stored result and its limits are detailed in the [TIPCOMP executive summary](docs/executive-summary-20261028-tipcomp.html) · [this three-pass follow-up review](docs/REVIEW_20261028_FOLLOWUP.md). A high `MODEL` projection does not overrule a failed pre-registered `HOLDOUT-DTI` / promotion gate.
 
 ---
 
-## Previous session — TIPCOMP candidate (2026-10-28 evening; format-valid, NOT cleared) (TIPCOMP, session 2123e2a6): NEW candidate, selector decision required
+## Historical RIESZ review — superseded, research only
 
-**[⬇ Download `gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif`](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif)**
-([ZIP](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.zip)) ·
-**[Executive summary + decision table](docs/executive-summary-20261028-tipcomp.html)** ·
-[Run card](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6_run_card.json) ·
-[Hypotheses](docs/HYPOTHESES_20261028_TIPCOMP.md) · [Readiness](docs/downloads/tipcomp_readiness_20261028.json)
+The active decision above applies to all current artifacts. The RIESZ review below is retained for audit history and does not clear a TIFF.
 
-| Field | Value |
-|---|---|
-| Clearance | 🔬 **RESEARCH DOWNLOAD ONLY** (11/11 format gates, values in [0,1]) · ⛔ **NOT CLEARED — see decision above** (machine verdict `negative` on one conservative bound, IR-1028B-4; no slot spent by this session) |
-| Portal name / note | `gemsdoe92-tipcomp-40000d-8f27b9d6` · `TIPCOMP H-92F1: 40000 dots; LBM ens x tip-cont x complement; caps vs focus9+priors; MODEL pub128 0.349.` (103/140) |
-| Estimated score (`MODEL`, not an organizer receipt) | **0.3485** (published 128-claim LBM-v1, exactly reproduced: R0→0.27284) · **0.3109** (in-session 26-row refit; bootstrap q05 0.2688, median 0.3076; Δ vs R0 median +0.0440, q05 +0.0063, P=0.97) vs R0 `CLAIM` 0.2778, rieszlbm2 `MODEL` 0.3163/0.2743 |
-| Unique? | **Yes (PI-1)** vs 165-raster local registry: worst 3-px overlap **0.6848** ≤ 0.70, worst \|ρ\| 0.18 ≤ 0.90; ≤0.6325 vs every focus-9 peak (GEMSDOE24/25/27/28/30/31/32/33/36 all re-fetched + SHA-verified; none of their peaks is itself unique — GEMSDOE25 peak dot support is identical to GEMSDOE30's) |
-| `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, 22,663 withheld) | Fold-proper E2 TIPCOMP **0.09617 [0.08521, 0.10665]** vs R0-recipe 0.09775 (paired Δ −0.00158 [−0.01787, +0.01469], tie); final candidate static 0.00164 (rieszlbm2 static **0.000000** — see IR-1028B-2); canaries ≤0.7799 PASS |
-
-Method in one line: ensemble LBM density √(ρ₁₂₈·ρ₂₆) modulated by a visible-catalogue **tip-continuation** field (`gems/tipcomp.py`) and a focus-9 **coverage-complement** boost, exact-greedy placement with caps vs priors + class-preserving swap-repair to ≤0.685 vs every registry raster. Shared-tool fix: `gems/lbm_place.release` deadlock (IR-1028B-3).
-
----
-
-## ✅ Current submission — 2026-10-28 (session 81d8ca8b): OK TO DOWNLOAD · OK TO SUBMIT
-## Current executive decision — 2026-10-28 review
+## Supporting review: RIESZ candidate — 2026-10-28
 
 **⛔ DO NOT SUBMIT the current RIESZ-LOCKED TIFF.** It is available as a format-validated **research download only**. It failed two required promotion gates: (1) registry overlap is recorded as `1.000` on the pre-placement surface and against the final full-support witness, above the protocol's `0.70` stop; and (2) `HOLDOUT-DTI` is below the R0 recipe control. A different sparse-only interpretation does not waive either stop. No weekly submission slot was used and no new experiment/TIFF was generated in this review.
 

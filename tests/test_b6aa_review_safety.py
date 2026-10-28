@@ -21,6 +21,26 @@ def test_renderer_rejects_forged_promotion():
         with pytest.raises(ValueError, match='blocked'):
             render(forged)
 
+def test_tipcomp_is_visible_but_not_promoted_on_landing_page():
+    import hashlib
+    card_path = ROOT/'docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6_run_card.json'
+    card = json.loads(card_path.read_text())
+    raster = ROOT/card['raster']['file']
+    assert hashlib.sha256(raster.read_bytes()).hexdigest() == card['raster_sha256']
+    assert card['verdict'] == 'negative' and card['submission_eligible'] is False
+    assert card['model_estimate']['candidate']['bootstrap_refit26']['q05'] < 0.2778
+    assert card['holdout_dti']['paired_e2_vs_r0_recipe']['ci95'][0] < 0
+    assert card['holdout_dti']['paired_e2_vs_r0_recipe']['ci95'][1] > 0
+    for filename in ['index.html', 'nine-sites.html']:
+        page = (ROOT/'docs'/filename).read_text()
+        assert 'Latest additional candidate: TIPCOMP — DO NOT SUBMIT' in page
+        assert 'Download TIPCOMP GeoTIFF for research only — DO NOT SUBMIT' in page
+        assert 'not a complete registry scan and does not resolve the dense-witness interpretation' in page
+    summary = (ROOT/'docs/executive-summary-20261028-tipcomp.html').read_text()
+    assert 'DO NOT SUBMIT — this candidate is not eligible' in summary
+    assert 'No separate selector or weekly slot authorizes bypassing a failed mandatory gate' in summary
+
+
 def test_live_pages_and_feeds_unambiguously_negative():
     for filename in ['index.html','nine-sites.html','how-to-submit.html','executive-summary.html','SUBMIT.html','submit.html','SUBMIT_NOW.html']:
         text = (ROOT/'docs'/filename).read_text()
