@@ -1,5 +1,13 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+## ✅ Verified status — 2026-10-28 review (session 3): DOWNLOAD = format-valid research only · SUBMIT = NOT CLEARED
+
+- **Decision in one line:** `DO NOT SUBMIT`. The one candidate file is [`gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif`](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif) (SHA-256 `8f27b9d6…579cf`). It passes the 11 automated format gates (re-run here) and is a research download, not a cleared submission.
+- **Why not cleared:** its own run card says `negative`; the holdout is a tie with the R0 recipe (`0.09617` vs `0.09775`, HOLDOUT-DTI); uniqueness holds only under the PI-1 reading (IR-1028C-3); and the 0.3485 / 0.3109 figures are MODEL projections, not organizer scores.
+- **Re-checked here:** pinned inputs (`make manifest`), parent (`make verify`), 791 tests, the 144 of 165 registry rows present in the clone, and one focus-9 peak re-fetched from GitHub. Receipt: [`evidence/tipcomp_independent_check_20261028.json`](evidence/tipcomp_independent_check_20261028.json) · script `scripts/verify_tipcomp_independent.py`.
+- **Front page:** [`index.html`](index.html) now shows this one table. Irregularities: [`IRREGULARITIES.md`](IRREGULARITIES.md) IR-1028C-1 to IR-1028C-8.
+- **Owner decision needed:** (a) keep blocked until the holdout beats R0, or (b) explicitly accept the PI-1 uniqueness reading and the published-128 spec for one weekly slot. This session does not spend a slot.
+
 ## ⬇ Latest session — 2026-10-28 evening (TIPCOMP, session 2123e2a6): NEW candidate, selector decision required
 
 **[⬇ Download `gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif`](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif)**

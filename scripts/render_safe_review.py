@@ -13,6 +13,32 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / 'docs'
 DL = DOCS / 'downloads'
 
+def tipcomp_status_block(p: str) -> str:
+    """Static TIPCOMP status table. ``p`` is the relative prefix to the repo root.
+
+    Session 3 (2026-10-28). Adds no data-primary anchor, so the primary download
+    contract of each page is unchanged. Numbers are copied from the TIPCOMP run
+    card and re-check receipt, not computed here.
+    """
+    return (
+        '<section class="stop" id="tipcomp-status"><h2>Candidate status — TIPCOMP file (2026-10-28, session 3)</h2>'
+        '<p><strong>DO NOT SUBMIT.</strong> The file below is a format-valid research download. It is not cleared for a weekly slot.</p>'
+        '<table><thead><tr><th>File</th><th>Download</th><th>Submit</th><th>Format check</th>'
+        '<th>Estimated score (MODEL, not an organizer score)</th><th>Unique?</th><th>Holdout (HOLDOUT-DTI)</th></tr></thead><tbody>'
+        '<tr><td><a href="' + p + 'docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif">'
+        '<code>gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif</code></a><br>SHA-256 '
+        '<code>8f27b9d6478526d72a055f0a56c7c8f6db1d63f2f5c66233b7eedbf9937579cf</code></td>'
+        '<td>Format-valid research file</td><td><strong>NOT CLEARED</strong></td><td>11/11 PASS (re-run 2026-10-28)</td>'
+        '<td>0.3485 (published 128-claim spec) · 0.3109 (refit-26 spec); not an organizer receipt</td>'
+        '<td>Contested: passes only the PI-1 reading (worst 0.6848 ≤ 0.70 over 144 of 165 registry rasters present in the clone). Fails the literal reading.</td>'
+        '<td>0.09617 [0.08521, 0.10665] vs R0 recipe 0.09775 [0.08590, 0.11077] — a tie, not a win</td></tr></tbody></table>'
+        '<p>Blocked because the run card verdict is <code>negative</code> (refit bootstrap q05 0.2688 &lt; 0.2778), the holdout does not beat the R0 recipe, and the uniqueness reading is an open owner decision (IRREGULARITIES.md IR-1028C-3). '
+        'Details: <a href="' + p + 'docs/executive-summary-20261028-tipcomp.html">executive summary</a> · '
+        '<a href="' + p + 'evidence/tipcomp_independent_check_20261028.json">independent re-check receipt</a> · '
+        '<a href="' + p + 'IRREGULARITIES.md">irregularities IR-1028C</a>.</p></section>'
+    )
+
+
 def render(card):
     if card.get('verdict') != 'negative' or card.get('submission_eligible') is not False:
         raise ValueError('blocked: review renderer cannot authorize promotion')
@@ -37,7 +63,7 @@ def render(card):
 <p><a href="downloads/{secondary_file}"><code>{secondary_file}</code></a> (SHA-256 <code>{secondary_digest}</code>) was added by a later merged change. It is not this review's selected artifact and was not run through an assigned-lane pre-registration or a full registry uniqueness gate. The local site checker validates format/range/grid only; that cannot authorize a competition slot.</p>
 <p>The accompanying experiment note reports a local surrogate HOLDOUT-DTI of 0.05164 against an R0 raster at 0.00473, but below the recorded R0 recipe value of 0.09775; the label raster is byte-identical to the visible-fault catalogue according to the independent review. This is not evidence of generalization to missing faults. Keep this file research-only; do not submit. See <a href="HYPOTHESES_UNTRYED.md">the candidate note</a> and <a href="REVIEW_20261028_SESSION.md">independent limitations review</a>.</p></section>'''
     body = f'''<nav><a href="how-to-submit.html">How to submit</a> · <a href="nine-sites.html">Nine-site review</a> · <a href="REVIEW_20261028_B6AA.md">Full audit and next steps</a> · <a href="REVIEW_20261028_SESSION.md">Independent overlap review</a></nav>
-<section id="submit-now" class="stop"><h1>DO NOT SUBMIT — no eligible new TIFF</h1>
+{tipcomp_status_block("../")}<section id="submit-now" class="stop"><h1>DO NOT SUBMIT — no eligible new TIFF</h1>
 <p>No competition slot was used. The prior Riesz candidate fails the requested literal registry rule and did not beat the holdout control. A range-valid raster is not automatically submission-ready.</p>
 <p><a data-primary="true" href="downloads/{esc(file)}" download>Download existing Riesz TIFF for research only</a> · <a href="downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json">Historical run card, reclassified negative</a></p>
 <p>SHA-256: <code>{digest}</code>. Historical name: <code>{name}</code>. Historical note (not an instruction to upload): <code>{note}</code></p></section>
@@ -74,5 +100,5 @@ def render(card):
     reason = 'Research only; mandatory promotion protocol gates failed.'
     current = {'file': card['raster']['file'], 'sha256':card['raster_sha256'], 'submission_name':card['submission_name'], 'note':card['note'], 'verdict':'negative','ok_to_download':True,'ok_to_submit':False,'reason':reason,'blocking_reasons':blockers, 'run_card': 'downloads/'+Path(card['raster']['file']).name.replace('-zeros.tif','_run_card.json')}
     readiness = {'file':'downloads/'+file, 'raster_sha256':card['raster_sha256'],'submission_name':card['submission_name'],'note':card['note'], 'verdict':'negative','submission_eligible':False,'download_status':'OK TO DOWNLOAD FOR RESEARCH','submission_status':'DO NOT SUBMIT','reason':reason,'blocking_reasons':blockers,'gates':card.get('gates_passed',{})}
-    root = f'<p>The organizer leaderboard is not mirrored. <a href="https://www.drivendata.org/termsofuse/">DrivenData Terms of Use</a></p><h1>GEMSDOE92</h1><section class="stop"><h2>DO NOT SUBMIT — no eligible new TIFF</h2><p>Research-only file: <a href="docs/downloads/{esc(file)}"><code>{esc(file)}</code></a>; SHA-256 <code>{digest}</code>.</p><p><a href="docs/index.html">Read the executive summary and research downloads</a></p><p><a href="docs/how-to-submit.html">How to submit when cleared</a></p></section>'
+    root = f'<p>The organizer leaderboard is not mirrored. <a href="https://www.drivendata.org/termsofuse/">DrivenData Terms of Use</a></p><h1>GEMSDOE92</h1>{tipcomp_status_block("")}<section class="stop"><h2>DO NOT SUBMIT — no eligible new TIFF</h2><p>Research-only file: <a href="docs/downloads/{esc(file)}"><code>{esc(file)}</code></a>; SHA-256 <code>{digest}</code>.</p><p><a href="docs/index.html">Read the executive summary and research downloads</a></p><p><a href="docs/how-to-submit.html">How to submit when cleared</a></p></section>'
     return {DOCS/'index.html':page('GEMSDOE92 — Executive summary',body), DOCS/'nine-sites.html':page('GEMSDOE92 — Nine-site review',body), DOCS/'how-to-submit.html':page('GEMSDOE92 — How to submit',guide), ROOT/'index.html':page('GEMSDOE92',root), DL/'current_submission.json':json.dumps(current,indent=2)+'\n',DL/'readiness.json':json.dumps(readiness,indent=2)+'\n'}
