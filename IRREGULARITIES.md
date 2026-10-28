@@ -1390,12 +1390,12 @@ Preserved LISTRICDIP research outputs; freshly validated its newly declared prim
 
 ## IR-1028B (2026-10-28 TIPCOMP session 2123e2a6)
 
-- **IR-1028B-1 — `validate_submission.py` is hard-coded to the historical VARIO run card.**
-  It prints "not the byte-bound run-card primary" for every newer candidate (incl. the
-  bannered rieszlbm2) even when that candidate has its own sha-bound run card. Format
-  gates themselves are correct (11/11 re-verified). Not changed this session: multiple
-  tests intentionally assert the validator never grants a slot. Flagged for a future
-  session to make the card lookup candidate-relative while keeping exit-code semantics.
+- **IR-1028B-1 — `validate_submission.py` was hard-coded to the historical VARIO run card (FIXED in the 2026-10-28 follow-up).**
+  It previously printed "not the byte-bound run-card primary" for newer candidates even
+  when their own SHA-bound card existed. The top-level validator now checks an
+  artifact-adjacent run card first and binds both file path and SHA-256; the VARIO card
+  remains a compatibility fallback. It still fails closed and never authorizes a slot.
+  The separate format-only `scripts/validate_submission.py` is unchanged.
 - **IR-1028B-2 — Banner holdout number does not describe the shipped rieszlbm2 file.**
   README/run card advertise HOLDOUT-DTI 0.03799 for rieszlbm2; that is the fold-proper
   surrogate arm E3. Static re-score of the shipped bytes on gems57-pooled-hide-v2

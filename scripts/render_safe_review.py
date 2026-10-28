@@ -27,6 +27,34 @@ def render(card):
         rows.append(f"<tr><td>{esc(site)}</td><td><a href=\"{esc(d['blob_url'])}\">{esc(d['best'])}</a> <small>(research only)</small></td><td>{d['claim']:.4f} user-reported, unverified</td><td>Fails historical registry test; not eligible</td></tr>")
     file = Path(card['raster']['file']).name
     name = esc(card['submission_name']); note = esc(card['note']); digest = esc(card['raster_sha256'])
+
+    # Show the latest TIPCOMP artifact on the landing page, but keep it explicitly
+    # research-only: its own byte-bound run card is negative and non-eligible.
+    tipcomp_card_path = DL / 'gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6_run_card.json'
+    tipcomp_section = ''
+    if tipcomp_card_path.is_file():
+        tipcomp = json.loads(tipcomp_card_path.read_text())
+        tip_rel = tipcomp['raster']['file'].removeprefix('docs/')
+        tip_file = DL / Path(tip_rel).name
+        import hashlib
+        if hashlib.sha256(tip_file.read_bytes()).hexdigest() != tipcomp.get('raster_sha256'):
+            raise ValueError('TIPCOMP raster SHA-256 does not match its run card')
+        if tipcomp.get('verdict') != 'negative' or tipcomp.get('submission_eligible') is not False:
+            raise ValueError('review renderer cannot advertise a non-negative TIPCOMP candidate')
+        h = tipcomp['holdout_dti']
+        e2 = h['foldproper_e2']; control = h['r0_recipe_control']; paired = h['paired_e2_vs_r0_recipe']
+        model = tipcomp['model_estimate']['candidate']
+        registry = tipcomp['correlation_overlap_vs_registry']
+        tipcomp_section = f'''<section class="stop"><h2>Latest additional candidate: TIPCOMP — DO NOT SUBMIT</h2>
+<p><a href="downloads/{esc(Path(tip_rel).name)}" download>Download TIPCOMP GeoTIFF for research only — DO NOT SUBMIT</a> ·
+<a href="downloads/{esc(tipcomp_card_path.name)}">byte-bound run card</a> ·
+<a href="executive-summary-20261028-tipcomp.html">full experiment summary</a></p>
+<p>SHA-256 <code>{esc(tipcomp['raster_sha256'])}</code>. Local format validation was recorded as 11/11 gates PASS; that is only file-format validation, not science or organizer acceptance. Metadata is archived for audit and is not a portal-upload recommendation.</p>
+<table><tr><th>Estimated value</th><td><code>MODEL</code>, not a score: published-128 estimate {model['published128']:.4f}; 26-claim refit {model['refit26']:.4f} (bootstrap q05 {model['bootstrap_refit26']['q05']:.4f}). The pre-registered q05 bound 0.2778 was not met.</td></tr>
+<tr><th>HOLDOUT-DTI</th><td><code>{esc(e2['evaluator_version'])}</code>, {e2['withheld_positive_pixels']:,} withheld positives: fold-proper TIPCOMP {e2['dti']:.5f} [{e2['ci95'][0]:.5f}, {e2['ci95'][1]:.5f}]; R0-recipe control {control['dti']:.5f} [{control['ci95'][0]:.5f}, {control['ci95'][1]:.5f}]; paired difference {paired['delta']:.5f} [{paired['ci95'][0]:.5f}, {paired['ci95'][1]:.5f}] (CI spans zero; no holdout win).</td></tr>
+<tr><th>Uniqueness scope</th><td>The archived PI-1 measurement reports {registry['registry_unique_rasters']} local rasters, max dot overlap {registry['worst_overlap']['value']:.5f}, and max sampled |ρ| {registry['worst_abs_rho_surface']['value']:.5f}. This is not a complete registry scan and does not resolve the dense-witness interpretation; do not claim global uniqueness.</td></tr>
+<tr><th>Decision</th><td><strong>DO NOT SUBMIT.</strong> Run card verdict is negative and <code>submission_eligible=false</code>. No slot was selected. No organizer-confirmed score is recorded.</td></tr></table></section>'''
+
     secondary_meta_path = DL / 'gemsdoe92-damagezone-close-dots-20261028-zeros.json'
     secondary = json.loads(secondary_meta_path.read_text()) if secondary_meta_path.is_file() else None
     secondary_section = ''
@@ -36,11 +64,12 @@ def render(card):
         secondary_section = f'''<section><h2>Separate candidate in repository — not cleared</h2>
 <p><a href="downloads/{secondary_file}"><code>{secondary_file}</code></a> (SHA-256 <code>{secondary_digest}</code>) was added by a later merged change. It is not this review's selected artifact and was not run through an assigned-lane pre-registration or a full registry uniqueness gate. The local site checker validates format/range/grid only; that cannot authorize a competition slot.</p>
 <p>The accompanying experiment note reports a local surrogate HOLDOUT-DTI of 0.05164 against an R0 raster at 0.00473, but below the recorded R0 recipe value of 0.09775; the label raster is byte-identical to the visible-fault catalogue according to the independent review. This is not evidence of generalization to missing faults. Keep this file research-only; do not submit. See <a href="HYPOTHESES_UNTRYED.md">the candidate note</a> and <a href="REVIEW_20261028_SESSION.md">independent limitations review</a>.</p></section>'''
-    body = f'''<nav><a href="how-to-submit.html">How to submit</a> · <a href="nine-sites.html">Nine-site review</a> · <a href="REVIEW_20261028_B6AA.md">Full audit and next steps</a> · <a href="REVIEW_20261028_SESSION.md">Independent overlap review</a></nav>
+    body = f'''<nav><a href="how-to-submit.html">How to submit</a> · <a href="nine-sites.html">Nine-site review</a> · <a href="REVIEW_20261028_FOLLOWUP.md">Current three-pass follow-up</a> · <a href="REVIEW_20261028_B6AA.md">Full audit and next steps</a> · <a href="REVIEW_20261028_SESSION.md">Independent overlap review</a></nav>
 <section id="submit-now" class="stop"><h1>DO NOT SUBMIT — no eligible new TIFF</h1>
 <p>No competition slot was used. The prior Riesz candidate fails the requested literal registry rule and did not beat the holdout control. A range-valid raster is not automatically submission-ready.</p>
 <p><a data-primary="true" href="downloads/{esc(file)}" download>Download existing Riesz TIFF for research only</a> · <a href="downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json">Historical run card, reclassified negative</a></p>
 <p>SHA-256: <code>{digest}</code>. Historical name: <code>{name}</code>. Historical note (not an instruction to upload): <code>{note}</code></p></section>
+{tipcomp_section}
 <section id="summary"><h2>Executive summary</h2><p>No estimated competition score is available for a new, eligible TIFF. User-reported figures below are not organizer-confirmed, are not estimates, and may be stale. No receipt was obtained.</p>
 <table><thead><tr><th>Site</th><th>Highest reported file — research only</th><th>Reported value</th><th>Unique and cleared?</th></tr></thead><tbody>{''.join(rows)}</tbody></table>
 <p>The focus inventory and overlap results are historical; a recent full scan is not available. The <a href="downloads/focus9_pairwise_recheck_14f85876.json">row-safe pairwise recheck</a> warns that earlier pairwise results contained errors. A separate pinned full-footprint witness causes a literal stop for any nonempty candidate, not a claim that every pair is byte-identical. A later measurement reports 0.00698 overlap under a top-K reading of this witness, versus 1.0 literally; the representation rule remains unresolved, so this alternate measurement is not clearance or a complete registry uniqueness scan. See the <a href="REVIEW_20261028_SESSION.md">independent review and receipt</a>.</p></section>
