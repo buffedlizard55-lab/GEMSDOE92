@@ -3,9 +3,11 @@
 
 Contract
 --------
-* docs/index.html, docs/how-to-submit.html, docs/nine-sites.html, index.html and the
-  two status JSON feeds are byte-identical to ``scripts/render_site_v3.render()``
-  (pages are generated from evidence only; no hand-edited claims).
+* docs/index.html, docs/nine-sites.html, index.html and generated status JSON feeds
+  are byte-identical to ``scripts/render_site_v3.render()`` (generated from evidence).
+* The manually maintained docs/how-to-submit.html and docs/executive-summary.html
+  retain the historical audit record but must explicitly show the current negative
+  BLINDCORRIDOR decision; they are checked for contradictory upload copy.
 * docs/index.html declares exactly one ``data-primary="true"`` local
   ``downloads/*-zeros.tif``; the file exists and passes the shared format gates
   (submission encoding: all finite, [0,1], zeros outside the footprint, CRS/shape/
@@ -14,13 +16,20 @@ Contract
   on the verdict, and the page says OK TO SUBMIT iff the verdict is ``promote``.
 * Every served ``docs/downloads/*-zeros.tif`` passes the format gates and is
   linked from docs/index.html or docs/archive.html.
+* The historical TIPCOMP status feed, run card, research TIFF, summary and
+  archive copy remain hash-bound and explicitly negative / DO NOT SUBMIT.
+* The BLINDCORRIDOR format-pass-only feed is hash-bound to its run card and audit,
+  remains not submission-eligible, and states that holdout, canaries and the full
+  registry audit are absent or unresolved.
 The legacy (literal-stop) checker is preserved as scripts/check_site_legacy_20261026.py.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import sys
+import zipfile
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -150,6 +159,194 @@ def check_primary(html: str, problems: list[str]) -> None:
     print(f"  PRIMARY {tif.name} sha256 {digest[:16]}… verdict={verdict}")
 
 
+def check_tipcomp_history(problems: list[str]) -> None:
+    """Keep the historical TIPCOMP download/status copy fail-closed.
+
+    This is not a candidate promotion path: its stored verdict must remain
+    negative, and its historical page/archive must never invite a selector
+    decision or imply global uniqueness.
+    """
+    status_path = DOWNLOADS / "tipcomp_readiness_20261028.json"
+    try:
+        status = json.loads(status_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        problems.append(f"TIPCOMP readiness feed missing or invalid: {exc}")
+        return
+
+    rel = status.get("file", "")
+    if not re.fullmatch(r"downloads/[A-Za-z0-9_.-]+-zeros\.tif", rel):
+        problems.append("TIPCOMP status file must be a local downloads/*-zeros.tif")
+        return
+    tif = DOCS / rel
+    if not tif.is_file():
+        problems.append(f"TIPCOMP research TIFF missing: {rel}")
+        return
+    digest = sha256_file(tif)
+    if status.get("raster_sha256") != digest:
+        problems.append("TIPCOMP readiness SHA-256 != research TIFF bytes")
+
+    card_name = status.get("run_card", "")
+    if not re.fullmatch(r"[A-Za-z0-9_.-]+_run_card\.json", card_name):
+        problems.append("TIPCOMP status must point to a local run card")
+        return
+    card_path = DOWNLOADS / card_name
+    try:
+        card = json.loads(card_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        problems.append(f"TIPCOMP run card missing or invalid: {exc}")
+        return
+    if card.get("raster_sha256") != digest:
+        problems.append("TIPCOMP run-card SHA-256 != research TIFF bytes")
+    if card.get("verdict") != "negative" or card.get("submission_eligible") is not False:
+        problems.append("TIPCOMP must remain negative and not submission-eligible")
+    if status.get("verdict") != "negative" or status.get("submission_eligible") is not False:
+        problems.append("TIPCOMP readiness must remain negative and not submission-eligible")
+    if status.get("download_status") != "OK TO DOWNLOAD FOR RESEARCH ONLY":
+        problems.append("TIPCOMP download status must explicitly say research only")
+    if not str(status.get("submission_status", "")).startswith("DO NOT SUBMIT"):
+        problems.append("TIPCOMP status must explicitly say DO NOT SUBMIT")
+    if status.get("submission_name") != card.get("submission_name") or status.get("note") != card.get("note"):
+        problems.append("TIPCOMP status name/note disagree with run card")
+    if not 0 < len(str(status.get("note", ""))) <= 140:
+        problems.append("TIPCOMP metadata note must be 1..140 characters")
+
+    summary_name = status.get("executive_summary", "")
+    if not re.fullmatch(r"[A-Za-z0-9_.-]+\.html", summary_name):
+        problems.append("TIPCOMP executive summary path must be local")
+        return
+    summary_path = DOCS / summary_name
+    try:
+        summary = summary_path.read_text(encoding="utf-8")
+    except OSError as exc:
+        problems.append(f"TIPCOMP executive summary missing: {exc}")
+        return
+    for phrase in ("DO NOT SUBMIT", "OK TO DOWNLOAD FOR RESEARCH ONLY", "HOLDOUT-DTI", "MODEL"):
+        if phrase not in summary:
+            problems.append(f"TIPCOMP executive summary missing {phrase!r}")
+    stale = ("SELECTOR DECISION REQUIRED", "Download; selector decides slot", "PI-1 unique", "Unique (PI-1")
+    for phrase in stale:
+        if phrase.lower() in summary.lower():
+            problems.append(f"TIPCOMP executive summary contains stale promotion copy {phrase!r}")
+
+    if not ARCHIVE.is_file():
+        problems.append("historical archive missing while TIPCOMP TIFF is served")
+        return
+    archive = ARCHIVE.read_text(encoding="utf-8")
+    needle = f'href="{rel}"'
+    idx = archive.find(needle)
+    if idx < 0:
+        problems.append("TIPCOMP TIFF is not linked from the historical archive")
+        return
+    begin = archive.rfind("<section", 0, idx)
+    finish = archive.find("</section>", idx)
+    section = archive[begin:finish + len("</section>")] if begin >= 0 and finish >= 0 else ""
+    for phrase in ("DO NOT SUBMIT", "submission_eligible: false", "HOLDOUT-DTI", "MODEL"):
+        if phrase.lower() not in section.lower():
+            problems.append(f"TIPCOMP archive status missing {phrase!r}")
+    for phrase in stale:
+        if phrase.lower() in section.lower():
+            problems.append(f"TIPCOMP archive contains stale promotion copy {phrase!r}")
+    print(f"  HISTORICAL {tif.name} sha256 {digest[:16]}… verdict=negative (research only)")
+
+
+def check_blindcorridor_history(problems: list[str]) -> None:
+    """Keep BLINDCORRIDOR visibly format-only and tied to its exact bytes."""
+    status_path = DOWNLOADS / "blindcorridor_readiness_20261028.json"
+    try:
+        status = json.loads(status_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        problems.append(f"BLINDCORRIDOR readiness feed missing or invalid: {exc}")
+        return
+
+    rel = status.get("file", "")
+    if not re.fullmatch(r"downloads/[A-Za-z0-9_.-]+-zeros\.tif", rel):
+        problems.append("BLINDCORRIDOR status file must be a local downloads/*-zeros.tif")
+        return
+    tif = DOCS / rel
+    if not tif.is_file():
+        problems.append(f"BLINDCORRIDOR research TIFF missing: {rel}")
+        return
+    digest = sha256_file(tif)
+    if status.get("raster_sha256") != digest:
+        problems.append("BLINDCORRIDOR readiness SHA-256 != research TIFF bytes")
+    zip_rel = status.get("zip", "")
+    if not re.fullmatch(r"downloads/[A-Za-z0-9_.-]+-zeros\.zip", zip_rel):
+        problems.append("BLINDCORRIDOR ZIP path must be a local downloads/*-zeros.zip")
+        return
+    zip_path = DOCS / zip_rel
+    if not zip_path.is_file():
+        problems.append(f"BLINDCORRIDOR research ZIP missing: {zip_rel}")
+        return
+    if status.get("zip_sha256") != sha256_file(zip_path):
+        problems.append("BLINDCORRIDOR readiness ZIP SHA-256 != ZIP bytes")
+    try:
+        with zipfile.ZipFile(zip_path) as archive:
+            members = [name for name in archive.namelist() if not name.endswith("/")]
+            if len(members) != 1 or Path(members[0]).name != tif.name:
+                problems.append("BLINDCORRIDOR ZIP must contain exactly its single bound TIFF")
+            elif hashlib.sha256(archive.read(members[0])).hexdigest() != digest:
+                problems.append("BLINDCORRIDOR ZIP payload SHA-256 != research TIFF bytes")
+    except (OSError, zipfile.BadZipFile) as exc:
+        problems.append(f"BLINDCORRIDOR ZIP is invalid: {exc}")
+
+    card_name = status.get("run_card", "")
+    audit_name = status.get("audit", "")
+    if not re.fullmatch(r"[A-Za-z0-9_.-]+_run_card\.json", card_name):
+        problems.append("BLINDCORRIDOR status must point to a local run card")
+        return
+    if not re.fullmatch(r"[A-Za-z0-9_.-]+-audit\.json", audit_name):
+        problems.append("BLINDCORRIDOR status must point to a local format audit")
+        return
+    try:
+        card = json.loads((DOWNLOADS / card_name).read_text(encoding="utf-8"))
+        audit = json.loads((DOWNLOADS / audit_name).read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        problems.append(f"BLINDCORRIDOR run card or audit missing/invalid: {exc}")
+        return
+    if card.get("raster_sha256") != digest or audit.get("sha256_zeros") != digest:
+        problems.append("BLINDCORRIDOR run-card/audit SHA-256 != research TIFF bytes")
+    if card.get("verdict") != "format_pass" or card.get("submission_eligible") is not False:
+        problems.append("BLINDCORRIDOR run card must remain format_pass and not eligible")
+    if audit.get("verdict") != "format_pass" or audit.get("submission_eligible") is not False:
+        problems.append("BLINDCORRIDOR format audit must remain format_pass and not eligible")
+    if status.get("verdict") != "format_pass" or status.get("submission_eligible") is not False:
+        problems.append("BLINDCORRIDOR readiness feed must remain format_pass and not eligible")
+    if status.get("download_status") != "OK TO DOWNLOAD FOR RESEARCH ONLY":
+        problems.append("BLINDCORRIDOR download status must explicitly say research only")
+    if status.get("submission_status") != "DO NOT SUBMIT":
+        problems.append("BLINDCORRIDOR status must explicitly say DO NOT SUBMIT")
+    if status.get("submission_name") != card.get("submission_name") or status.get("note") != card.get("note"):
+        problems.append("BLINDCORRIDOR status name/note disagree with run card")
+    if not 0 < len(str(status.get("note", ""))) <= 140:
+        problems.append("BLINDCORRIDOR metadata note must be 1..140 characters")
+
+    holdout = card.get("holdout_dti", {})
+    if (not isinstance(holdout, dict) or "dti" in holdout or "ci95" in holdout
+            or "evaluator_version" in holdout or "withheld_positive_pixels" in holdout):
+        problems.append("BLINDCORRIDOR must not present an uncomputed HOLDOUT-DTI as a result")
+    if card.get("leakage_canaries", {}).get("canaries_run") is not False:
+        problems.append("BLINDCORRIDOR leakage-canary status changed; review required")
+    refs = card.get("uniqueness", {}).get("references", [])
+    unique = status.get("uniqueness", {})
+    if (unique.get("status") != "partial local check only"
+            or unique.get("scope") != "available bridge rasters only"
+            or unique.get("checked_reference_count") != len(refs)
+            or unique.get("full_registry_audit") != "not performed"
+            or unique.get("literal_dense_witness") != "unresolved"):
+        problems.append("BLINDCORRIDOR uniqueness status must remain limited and unresolved")
+
+    page = INDEX.read_text(encoding="utf-8") if INDEX.is_file() else ""
+    section = page.split('id="blindcorridor"', 1)[-1].split("</section>", 1)[0]
+    for phrase in ("FORMAT PASS ONLY", "DO NOT SUBMIT", "HOLDOUT-DTI", "not a submission basis", "available bridge references only", "not globally unique"):
+        if phrase.lower() not in section.lower():
+            problems.append(f"BLINDCORRIDOR landing-page status missing {phrase!r}")
+    if "OK TO SUBMIT" in section:
+        problems.append("BLINDCORRIDOR section contains contradictory OK TO SUBMIT copy")
+    if f"downloads/{Path(rel).name}" not in section:
+        problems.append("BLINDCORRIDOR research TIFF is not linked from its status section")
+    print(f"  HISTORICAL {tif.name} sha256 {digest[:16]}… verdict=format_pass (DO NOT SUBMIT)")
+
+
 def check_served(html: str, problems: list[str]) -> int:
     archive = ARCHIVE.read_text(encoding="utf-8") if ARCHIVE.is_file() else ""
     served = sorted(DOWNLOADS.glob("*-zeros.tif"))
@@ -190,6 +387,12 @@ def main() -> int:
     check_rendered(problems)
     html = INDEX.read_text(encoding="utf-8")
     howto = (DOCS / "how-to-submit.html").read_text(encoding="utf-8") if (DOCS / "how-to-submit.html").is_file() else ""
+    summary = (DOCS / "executive-summary.html").read_text(encoding="utf-8") if (DOCS / "executive-summary.html").is_file() else ""
+    for label, page in (("how-to-submit.html", howto), ("executive-summary.html", summary)):
+        if "BLINDCORRIDOR" not in page or "DO NOT SUBMIT" not in page:
+            problems.append(f"{label} must show the current BLINDCORRIDOR DO NOT SUBMIT status")
+        if "OK TO SUBMIT" in page:
+            problems.append(f"{label} contains contradictory OK TO SUBMIT copy")
     for needle in ("How to submit", "user-reported", "HOLDOUT-DTI", "Download"):
         if needle not in html:
             problems.append(f"index.html missing {needle!r}")
@@ -201,6 +404,8 @@ def main() -> int:
     if len(ids) != len(set(ids)):
         problems.append("index.html contains duplicate element ids")
     check_primary(html, problems)
+    check_tipcomp_history(problems)
+    check_blindcorridor_history(problems)
     n = check_served(html, problems)
     if problems:
         print("SITE CHECK FAIL")

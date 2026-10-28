@@ -1,13 +1,6 @@
 # Pre-registered hypotheses — 2026-10-28 session `2123e2a6` (TIPCOMP lane)
 
-*Written before any experiment in this session was run. Budget: ≤3 experiments
-(Protocol Rule 6). Every number produced later is labelled `HOLDOUT-DTI`
-( evaluator `gems57-pooled-hide-v2`, withheld-positive count, 95% CI ) or
-`MODEL` (fitted to owner-reported `CLAIM`s) or `ORGANIZER-CONFIRMED` (none
-exists in this repo). Lane rule (Protocol Rule 1, interpretation PI-1 in
-`gems/uniqueness_v3.py`): stop as duplicate if surface or final-dot
-rank-correlation `|rho| > 0.90` vs any registry raster, or `>70%` of dots
-within 3 px of one registry raster's dots.*
+*Historical pre-registration for the 2026-10-28 TIPCOMP session. The session has completed; its verdict is `negative` and `submission_eligible` is `false`. Its TIFF is a research download only. No new experiment is authorized by this historical plan. Every number is labelled `HOLDOUT-DTI` (evaluator `gems57-pooled-hide-v2`, withheld-positive count, 95% CI), `MODEL` (fitted to owner-reported `CLAIM`s), or `CLAIM`; no `ORGANIZER-CONFIRMED` receipt exists in this repo. The stored local PI-1 scan does not establish global uniqueness or submission eligibility. See the [follow-up review](REVIEW_20261028_9649DFC1.md) and [current TIPCOMP status](downloads/tipcomp_readiness_20261028.json).
 
 ## Data actually obtainable in this sandbox (verified 2026-10-28)
 

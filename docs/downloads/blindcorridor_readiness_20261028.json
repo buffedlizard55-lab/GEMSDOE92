@@ -1,0 +1,42 @@
+{
+  "schema": "gemsdoe92-candidate-readiness-v1",
+  "artifact": "BLINDCORRIDOR",
+  "file": "downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif",
+  "zip": "downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.zip",
+  "audit": "gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros-audit.json",
+  "run_card": "gemsdoe92-blindcorridor-37654dots-20261028-11f8999c_run_card.json",
+  "raster_sha256": "4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14",
+  "zip_sha256": "ec253ca91439a197a152b86e24c1576658878ea1698553f35cc5437d955d4807",
+  "submission_name": "gemsdoe92-blindcorridor-37654d-11f8999c",
+  "note": "Blind corridor + damage-zone dots: 37654 binary dots at 2-8px and >1.5km from mapped faults, 1px off H19-5 ridge; 70%/3px caps. MODEL only.",
+  "verdict": "format_pass",
+  "submission_eligible": false,
+  "download_status": "OK TO DOWNLOAD FOR RESEARCH ONLY",
+  "submission_status": "DO NOT SUBMIT",
+  "format_validation": {
+    "status": "recorded pass",
+    "gate_count": 11
+  },
+  "holdout_dti": {
+    "status": "not independently computed",
+    "evidence_class": "no HOLDOUT-DTI result"
+  },
+  "leakage_canaries": {
+    "status": "not run",
+    "canaries_run": false
+  },
+  "uniqueness": {
+    "status": "partial local check only",
+    "scope": "available bridge rasters only",
+    "checked_reference_count": 3,
+    "worst_overlap_3px": 0.507675,
+    "full_registry_audit": "not performed",
+    "literal_dense_witness": "unresolved"
+  },
+  "blocking_reasons": [
+    "independent HOLDOUT-DTI and 95% CI are absent",
+    "individual-feature leakage canaries were not run",
+    "the full public registry uniqueness audit was not performed",
+    "the literal dense-witness interpretation remains unresolved"
+  ]
+}

@@ -8,10 +8,11 @@ Inputs : PRIMARY_CARD (evidence/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_
          evidence/riesz_locked_holdout.json, evidence/riesz_locked_lbm_v2.json,
          evidence/lbm_v1_model.json, evidence/claims_matched_20261028.json,
          evidence/holdout_validity_20261027.json.
-Outputs: docs/index.html, docs/how-to-submit.html, docs/nine-sites.html, index.html,
-         docs/downloads/current_submission.json, docs/downloads/readiness.json.
-``render()`` returns {path: text}; ``main`` writes them. ``check_site.py`` re-renders
-and fails closed if any published page or status JSON feed is stale.
+Outputs: docs/index.html, docs/nine-sites.html, index.html, and the current/status
+         JSON feeds in docs/downloads/ (including the format-only BLINDCORRIDOR feed).
+The evidence-bound how-to and legacy executive-summary pages are maintained separately
+so historical audit sections are preserved; ``check_site.py`` gates their current status.
+``render()`` returns {path: text}; ``main`` writes those generated outputs.
 """
 from __future__ import annotations
 
