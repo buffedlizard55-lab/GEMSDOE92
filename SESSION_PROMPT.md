@@ -1,3 +1,7 @@
+## Current audit notice — 2026-10-28 (`arena/8857e64c-gemsdoe92`)
+
+**DO NOT SUBMIT.** The promotion in the older addendum immediately below conflicts with the literal registry overlap and holdout-best gates. See [review](docs/REVIEW_20261028_8857.md) and [negative run card](docs/downloads/review_8857_run_card.json). No new method lane is specified in the current prompt and no new TIFF or slot was used. Do not silently reinterpret uniqueness or treat projections as organizer scores.
+
 ## Current session addendum — 2026-10-28 (branch `arena/81d8ca8b-gemsdoe92`) — READ FIRST
 
 **Outcome:** a genuinely new, unique, automatically validated single-band GeoTIFF is promoted and marked **✅ OK TO DOWNLOAD · ✅ OK TO SUBMIT**:

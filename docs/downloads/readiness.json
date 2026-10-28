@@ -1,20 +1,7 @@
 {
-  "file": "downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif",
-  "raster_sha256": "d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a",
-  "submission_name": "gemsdoe92-rieszlbm2-50000d-79041788",
-  "note": "Riesz-Locked LBM-v2: 50000 binary dots; 128-claim density + q85 mimic filter + OOF Riesz/piedmont/Peclet; <=65.6% 8-owner fleet cap.",
-  "verdict": "promote",
-  "submission_eligible": true,
-  "download_status": "OK TO DOWNLOAD",
-  "submission_status": "OK TO SUBMIT \u2014 all automated gates passed (format [0,1], 8-owner PI-1 uniqueness <=65.56%, <=54.06% vs prior lbmc1, MODEL 5% bound > 0.2778, 20/20 leakage canaries <=0.90)",
-  "gates": {
-    "format": true,
-    "uniqueness_pi1": true,
-    "unique_vs_prior_lbmc1": true,
-    "model_beats_0_2778_at_q05": true,
-    "model_robust_all_specs_ge_R0": true,
-    "no_leakage": true,
-    "catalogue_holdout_beats_lbmc1": true,
-    "catalogue_holdout_beats_r0_recipe": false
-  }
+  "verdict": "negative",
+  "submission_eligible": false,
+  "submission_status": "DO NOT SUBMIT",
+  "reason": "literal registry overlap stop and holdout-best gate failed",
+  "run_card": "downloads/review_8857_run_card.json"
 }

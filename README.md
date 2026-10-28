@@ -1,5 +1,10 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+## Current review — 2026-10-28: DO NOT SUBMIT
+
+The previous promotion below is **withdrawn**. The existing TIFF passes format checks but fails the literal registry overlap gate, and its previously reported holdout is below the baseline. This session generated no TIFF and used no competition slot. [Executive summary](docs/index.html) · [Three-pass audit and limitations](docs/REVIEW_20261028_8857.md) · [negative JSON card](docs/downloads/review_8857_run_card.json). The historical status panels below are retained for audit only and must not be used as clearance. Read [SESSION_PROMPT.md](SESSION_PROMPT.md) before each session; the present user request supersedes historical addenda.
+
+
 ## ✅ Current submission — 2026-10-28 (session 81d8ca8b): OK TO DOWNLOAD · OK TO SUBMIT
 
 **[⬇ Download `gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif`](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif)** (`203,310` bytes; [one-TIFF ZIP](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.zip)) · **[How to submit (3 steps)](docs/how-to-submit.html)** · **[Executive Summary site](docs/index.html)** · **[Nine-site & 8-owner review](docs/nine-sites.html)** · **[JSON Run Card](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json)** · **[Readiness JSON](docs/downloads/readiness.json)**

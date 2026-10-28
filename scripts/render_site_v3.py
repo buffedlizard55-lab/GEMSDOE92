@@ -443,6 +443,16 @@ with rasterio.open("clean_submission-zeros.tif", "w", **prof) as dst:
     }
 
 
+# The historical v3 rendering promoted a candidate despite a failed holdout-best
+# gate and the literal dense-registry witness. Keep its implementation above for
+# audit, but route all public rendering through the rejection-only renderer.
+def render():
+    import sys
+    sys.path.insert(0, str(ROOT))
+    from scripts.render_safe_site import render as safe_render
+    return safe_render()
+
+
 def main() -> int:
     for p, t in render().items():
         p.write_text(t, encoding="utf-8")
