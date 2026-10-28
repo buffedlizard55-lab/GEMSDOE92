@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GEMSDOE92 — how to submit</title>
+<title>GEMSDOE92 — submission guide</title>
 <style>body{font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#f6f7f9;color:#1f2933}
 main{max-width:980px;margin:0 auto;padding:1rem 1.2rem 3rem}h1{font-size:1.6rem;margin:.6rem 0}h2{margin-top:2rem;border-bottom:2px solid #e3e7ec;padding-bottom:.2rem}
 .box{background:#fff;border-radius:12px;padding:1.1rem 1.3rem;box-shadow:0 1px 3px rgba(0,0,0,.08);margin:1rem 0}
@@ -17,53 +17,10 @@ nav a{margin-right:1rem}</style>
 </head>
 <body>
 <main>
-<nav class="small"><a href="index.html">← Back to summary</a></nav>
-<section class="box ok" id="submit-now">
-<h1><span class="badge bok">✅ OK TO SUBMIT</span> gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif</h1>
-<p><a class="btn" data-primary="true" href="downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif" download>⬇ Download the GeoTIFF (140,192 bytes)</a>
-<a class="btn btn2" href="downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.zip" download>⬇ One-TIFF ZIP</a>
-<a class="btn btn2" href="how-to-submit.html">How to submit (3 steps)</a></p>
-<table>
-<tr><th>Portal “Submission name”</th><td><div class="copy">gemsdoe92-lbmc1-35801d-89a660f6</div></td></tr>
-<tr><th>Portal “Note” (126 ≤ 140 chars)</th><td><div class="copy">LBM-consensus v1: 35801 dots by exact expected-DTI greedy on a truth density fit to 123 scored rasters; 70%/3px registry caps.</div></td></tr>
-<tr><th>SHA-256</th><td class="mono">e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c</td></tr>
-<tr><th>What it is</th><td>35,801 binary dots (value 1.0); 0 elsewhere, including outside the study area. Single band float32, EPSG:32611, 3292×3730, sample-submission transform. No NaN anywhere, so the portal's <q>Predicted values must be in range [0, 1]</q> error cannot occur.</td></tr>
-<tr><th>Expected public-leaderboard DTI</th><td><strong>0.332</strong> (90% interval 0.313–0.351). For comparison, GEMSDOE32's best is 0.2778 (CLAIM), and the same model gives it 0.273.
-<span class="small">Label: MODEL (fitted to 123 owner-reported scores; grouped-CV RMSE 0.021). It is not an organizer score.</span></td></tr>
-<tr><th>Unique?</th><td>Yes: across all 2,060 public GEMSDOE rasters, at most 68.5% of its dots fall within 3 px of any one raster's dots (limit 70%), and the largest |rank correlation| is 0.113 (limit 0.90). Interpretation PI-1; the degenerate literal reading is also reported.</td></tr>
-</table>
-<p class="small">Run card: <a href="downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6_run_card.json">JSON</a>. Leaderboard values are owner-reported and not mirrored (<a href="https://www.drivendata.org/termsofuse/">DrivenData Terms of Use</a>).
-Weekly limit: 3 per week (the website's limit prevails). Choosing your final submission is a separate human step.</p>
-</section>
-<section class="box"><h2>How to submit (3 steps)</h2>
-<ol>
-<li><strong>Download</strong> the GeoTIFF with the blue button above (or the one-TIFF ZIP). Do not open and re-save it in GIS software, which can add a nodata value.</li>
-<li><strong>Open</strong> the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData submission page</a> (log in) and upload the <code>.tif</code>, or the <code>.zip</code> containing exactly one GeoTIFF.</li>
-<li><strong>Paste</strong> the submission name and note from the black boxes above, then press Submit. Afterwards, record the score you see in <code>ledger/submissions.csv</code> with the SHA-256, so the next session can learn from it.</li>
-</ol>
-<div class="warn"><strong>Weekly limit:</strong> 3 submissions per week (the limit shown on the competition website prevails, per DrivenData staff). Before the deadline you must select <strong>one</strong> final submission. It is scored on the private set (Phase 1) and the expert-revised set (Phase 2).</div>
-</section>
-<section class="box"><h2>Portal format rules this file satisfies</h2>
-<table><tr><th>Rule (problem description)</th><th>This file</th></tr>
-<tr><td>Single-band GeoTIFF (.tif), or a .zip containing one GeoTIFF</td><td>1 band; ZIP holds exactly that TIFF</td></tr>
-<tr><td>Same CRS as the training data (EPSG:32611)</td><td>EPSG:32611</td></tr>
-<tr><td>Same resolution and bounds (100 m; shape and transform of the sample submission)</td><td>3292 × 3730 px, transform (100, 0, 243350, 0, −100, 4508550)</td></tr>
-<tr><td>float32 values between 0 and 1</td><td>float32, values ∈ {0, 1}</td></tr>
-<tr><td>Outside the bounds null/NaN</td><td>0.0 outside the study area. Zeros-outside files have been accepted and scored (e.g. GEMSDOE32's 0.2778 file), and they avoid the range error.</td></tr>
-</table></section>
-<section class="box"><h2>Fixing “Predicted values must be in range [0, 1]”</h2>
-<p>This error comes from cells the validator reads as outside [0, 1]. The usual causes are a nodata sentinel such as −3.4028e38 stored outside the study area, NaN/inf values, values above 1 (e.g. 0–255 or 0–100 scaling), or negative values. All files served here are all-finite with values in [0, 1]. To repair any other raster:</p>
-<pre class="copy">import numpy as np, rasterio
-with rasterio.open("in.tif") as s:
-    a = s.read(1).astype("float32"); prof = s.profile
-a = np.nan_to_num(a, nan=0.0, posinf=1.0, neginf=0.0)
-a[a &lt; -1e30] = 0.0                      # nodata sentinels
-a = np.clip(a, 0.0, 1.0).astype("float32")
-prof.update(dtype="float32", count=1, nodata=None, compress="deflate")
-with rasterio.open("out.tif", "w", **prof) as d:
-    d.write(a, 1)</pre>
-</section>
-<section class="box"><h2>Official sources</h2><ul><li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Competition home &amp; problem description (metric, format)</a></li><li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">Submission portal (login required)</a></li><li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Leaderboard (view manually; not mirrored or scraped here)</a></li><li><a href="https://www.drivendata.org/termsofuse/">DrivenData Terms of Use (why the leaderboard is not mirrored)</a></li><li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Official rules PDF (NLR/DOE, Sept 2026)</a></li><li><a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/4">Forum: known faults are masked pixel-exactly</a></li><li><a href="https://community.drivendata.org/t/leaderboard-aggregation-pooled-over-public-test-pixels-or-mean-of-per-chunk-scores/11550">Forum: leaderboard pools all public pixels</a></li><li><a href="https://community.drivendata.org/t/where-do-you-draw-the-line/11536">Forum: &#x27;new fault&#x27; = any pixel not in USGS/INGENIOUS</a></li><li><a href="https://community.drivendata.org/t/submission-amount-question/11553">Forum: weekly limit shown on the website prevails</a></li><li><a href="https://community.drivendata.org/t/questions-about-the-final-round-rules/11556">Forum: Phase 2 labels can be added/removed/changed</a></li><li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Reference solution (DrivenData)</a></li><li><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN magnetic &amp; radiometric data</a></li><li><a href="https://data.usgs.gov/datacatalog/data/USGS:77ae0551-c61e-4979-aedd-d797abdcde0e">USGS 3DEP 1 m DEM collection (free, no use restrictions)</a></li><li><a href="https://gdr.openei.org/submissions/1391">INGENIOUS Great Basin compilation (GDR 1391)</a></li></ul></section>
+<section class="box no" id="submit-now"><h1><span class="badge bno">DO NOT SUBMIT</span> No eligible submission</h1>
+<p>Historical research only: <a data-primary="true" href="downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif" download>Download LBMC1 research TIFF</a>. Do not upload it. <a href="downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6_run_card.json">Run card</a>.</p>
+<p>The candidate failed the required catalogue holdout comparison and was a duplicate under the literal registry interpretation. The earlier model-based clearance is withdrawn. Local format checks cannot guarantee portal acceptance.</p>
+<p>HOLDOUT-DTI (gems57-pooled-hide-v2, 22,663 withheld positives): 0.0197, 95% CI [0.0149, 0.0250]; control 0.0978, 95% CI [0.0857, 0.1095]. Historical static holdout may not establish prospective fold-local validity.</p></section><section class="box"><h2>How to submit a future cleared file</h2><p>Do not submit the research file above. Once a separate selector approves a new, byte-bound candidate, download its exact GeoTIFF, open the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData submission page</a>, select it and enter its short note. Verify the current weekly limit on the portal; historical documentation mentions 3 submissions per week.</p><p>For “Predicted values must be in range [0, 1]”, check for NaN, infinities, nodata sentinels and out-of-range values against the official sample and format; do not blindly clip scientifically meaningful values. A local format pass is not a portal receipt. Outside-footprint encoding remains unresolved.</p></section>
 </main>
 </body>
 </html>

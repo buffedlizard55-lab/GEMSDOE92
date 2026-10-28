@@ -3,10 +3,10 @@
   "raster_sha256": "e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c",
   "submission_name": "gemsdoe92-lbmc1-35801d-89a660f6",
   "note": "LBM-consensus v1: 35801 dots by exact expected-DTI greedy on a truth density fit to 123 scored rasters; 70%/3px registry caps.",
-  "verdict": "promote",
-  "submission_eligible": true,
+  "verdict": "negative",
+  "submission_eligible": false,
   "download_status": "OK TO DOWNLOAD",
-  "submission_status": "OK TO SUBMIT \u2014 all automated gates passed (format, PI-1 uniqueness, MODEL > 0.2778 at the 5% bound, no leakage)",
+  "submission_status": "DO NOT SUBMIT \u2014 holdout gate and literal registry stop",
   "gates": {
     "format": true,
     "uniqueness_pi1": true,

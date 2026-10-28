@@ -63,8 +63,9 @@
   "gates_pass": true,
   "gems57_validate_pass": true
  },
- "verdict": "promote",
- "submission_eligible": true,
+ "clearance_correction": "2026-10-28: blocked by required holdout gate and literal registry stop; PI-1 and model are not authorized substitutes.",
+ "verdict": "negative",
+ "submission_eligible": false,
  "run_card": "evidence/gemsdoe92-lbmc1-35801dots-20261027-89a660f6_run_card.json",
  "uniqueness": {
   "interpretation": "PI-1 (see gems/uniqueness_v3.py)",

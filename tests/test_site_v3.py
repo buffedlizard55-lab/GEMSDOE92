@@ -90,3 +90,20 @@ def test_how_to_page_explains_portal_error_and_limits():
     assert "Predicted values must be in range [0, 1]" in html
     assert "3 submissions per week" in html
     assert "drivendata.org/competitions/306/competition-doe-gems/submissions/" in html
+
+
+def test_renderer_refuses_model_based_override(monkeypatch):
+    import render_site_v3
+    card, f9, f9u, model, val = render_site_v3.load()
+    card['verdict'] = 'promote'
+    card['submission_eligible'] = True
+    monkeypatch.setattr(render_site_v3, 'load', lambda: (card, f9, f9u, model, val))
+    with pytest.raises(ValueError, match='blocked'):
+        render_site_v3.render()
+
+
+def test_current_research_file_failed_mandatory_gates():
+    card = _card()
+    assert card['verdict'] == 'negative' and card['submission_eligible'] is False
+    assert card['gates_passed']['catalogue_holdout_beats_r0_recipe'] is False
+    assert card['uniqueness']['literal_reading']['duplicate_under_literal'] is True
