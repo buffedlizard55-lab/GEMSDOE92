@@ -25,6 +25,8 @@ def test_live_pages_and_feeds_unambiguously_negative():
     for filename in ['index.html','nine-sites.html','how-to-submit.html','executive-summary.html','SUBMIT.html','submit.html','SUBMIT_NOW.html']:
         text = (ROOT/'docs'/filename).read_text()
         assert 'DO NOT SUBMIT' in text and 'OK TO SUBMIT' not in text
+    index = (ROOT/'docs/index.html').read_text()
+    assert 'top-K reading' in index and 'not clearance' in index
     readiness = json.loads((ROOT/'docs/downloads/readiness.json').read_text())
     assert readiness['submission_eligible'] is False and readiness['verdict'] == 'negative'
     assert len(readiness['blocking_reasons']) >= 3

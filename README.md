@@ -33,7 +33,7 @@
 | GEMSDOE33 | `h33d-analog-tip-stepover-r30-20261004-cb490425926e` | 0.2632 | 0.27103 | Not unique; byte-identical copies recorded; study only |
 | GEMSDOE36 | `anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros` | 0.2750 | 0.27471 | Not unique; byte-identical copies recorded; study only |
 
-The site's row-level `[1.000]` overlaps include a dense/full-support witness representation. Whether that representation should count as a raster of “dots” is unresolved; under the supplied protocol it is a binding conservative stop until resolved, not proof of geological identity. All score reports are dated snapshots and not a current leaderboard feed.
+The site's row-level `[1.000]` overlaps include a dense/full-support witness representation. Whether that representation should count as a raster of “dots” is unresolved; under the supplied protocol it is a binding conservative stop until resolved, not proof of geological identity. A later, separate measurement reports 0.0070 for the candidate under a top-K interpretation of that witness, while the literal reading remains 1.000; neither interpretation establishes full-registry uniqueness, and no policy decision authorized replacing the literal stop. See [the independent measurement review](docs/REVIEW_20261028_SESSION.md) and [overlap receipt](docs/downloads/review_20261028_overlap.json). All score reports are dated snapshots and not a current leaderboard feed.
 
 ### Why GEMSDOE32's 0.2778 is plausible—and what it does not prove
 
