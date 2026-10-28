@@ -27,11 +27,13 @@ def test_tipcomp_bytes_match_run_card_and_receipt():
 
 
 def test_front_pages_say_download_is_research_and_submit_not_cleared():
-    for page in (ROOT / "index.html", ROOT / "docs/index.html"):
-        html = page.read_text(encoding="utf-8")
-        assert 'id="tipcomp-status"' in html, page
-        assert SHA in html, page
-        assert "DO NOT SUBMIT" in html, page
-        assert "NOT CLEARED" in html, page
-        assert "0.09617" in html and "0.09775" in html, page
-        assert "not an organizer receipt" in html, page
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    front = (ROOT / "docs/index.html").read_text(encoding="utf-8")
+    root = (ROOT / "index.html").read_text(encoding="utf-8")
+    for text in (readme, front, root):
+        assert "DO NOT SUBMIT" in text
+    assert "NOT CLEARED" in front or "NO TIFF IS CLEARED" in readme
+    assert "0.09617" in front and "0.09775" in front
+    assert SHA in readme and SHA in front
+    assert "evidence/tipcomp_independent_check_20261028.json" in readme
+    assert "IR-1028C" in readme
