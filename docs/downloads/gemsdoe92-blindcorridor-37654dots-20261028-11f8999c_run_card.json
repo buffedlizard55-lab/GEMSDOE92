@@ -1,0 +1,143 @@
+{
+ "schema": "gemsdoe92-run-card-v3",
+ "created_utc": "2026-10-28T18:42:47+00:00",
+ "lane": "UNIQUE \u2014 blind-fault corridor + damage-zone (catalogue-distance bands)",
+ "experiment": "1 of 3 (budget)",
+ "hypothesis": "Hidden geothermal faults cluster in two distinct settings: (a) damage zones 2-8 px (200-800 m) from mapped catalogue traces where withheld truth continues mapped strands, and (b) the blind-fault corridor >1.5 km from mapped faults where holdout analysis shows 5.65x higher hidden-fault density.  Dots are placed 1 px off the H19-5 geophysical ridge (dip-offset corridor), NOT by thinning the H19-5 skeleton itself -- a different generative mechanism from GEMSDOE32's R0.",
+ "mechanism": "Two-band catalogue-distance eligibility (damage zone 2-8 px; blind corridor >15 px) weighted by H19-5 ridge-alignment (1-2 px off centerline), greedy 3-px halo suppression to suppress redundant FP mass, exact {0,1} binary dots, zero mass on catalogue, zeros outside footprint.",
+ "named_non_fault_mimic": "Lake Lahontan paleoshorelines and incised volcanic canyon rims (high raw curvature, non-tectonic)",
+ "raster": {
+  "file": "docs/downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif",
+  "zip": "docs/downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.zip",
+  "sha256": "4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14",
+  "bytes": 265180,
+  "n_dots": 37654
+ },
+ "raster_sha256": "4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14",
+ "submission_name": "gemsdoe92-blindcorridor-37654d-11f8999c",
+ "note": "Blind corridor + damage-zone dots: 37654 binary dots at 2-8px and >1.5km from mapped faults, 1px off H19-5 ridge; 70%/3px caps. MODEL only.",
+ "note_chars": 139,
+ "holdout_dti": {
+  "evidence_class": "MODEL-ONLY (no organizer receipt; holdout not rerun this session)",
+  "note": "Catalogue hide-and-recover HOLDOUT-DTI not independently computed; reported only as MODEL projection."
+ },
+ "model_estimate": {
+  "evidence_class": "MODEL (not an organizer score)",
+  "projection": "0.30-0.34 range expected (per holdout-density analysis in docs/WHY_0_2778.md)",
+  "basis": "Reallocates R0's wasted near-catalogue dots to blind corridor (>1.5 km, 5.65x density) + damage zone (2-8 px)."
+ },
+ "leakage_canaries": {
+  "threshold": 0.9,
+  "note": "Single-feature canary not run on full 19-band stack (stack absent); band-6 radiometric TC verified as tc (r=0.997140), not magnetic tilt.",
+  "canaries_run": false
+ },
+ "uniqueness": {
+  "interpretation": "PI-1 (gems/uniqueness_v3.py); registry cache (.cache/registry_v3) absent in this checkout -- checked vs available bridge rasters only",
+  "references": [
+   {
+    "reference": "d28.tif",
+    "n_their": 44090,
+    "overlap_3px": 0.475753,
+    "within_limit": true
+   },
+   {
+    "reference": "h19_5.tif",
+    "n_their": 121131,
+    "overlap_3px": 0.507675,
+    "within_limit": true
+   },
+   {
+    "reference": "h27_4_solo.tif",
+    "n_their": 40199,
+    "overlap_3px": 0.425453,
+    "within_limit": true
+   }
+  ],
+  "worst_overlap_3px": 0.507675,
+  "unique_vs_available": true,
+  "note": "Full 2,060-raster registry audit requires .cache/registry_v3 (network staging pending). Literal reading vs the pinned 17GEMSDOE dense witness is unresolved."
+ },
+ "validator_output": {
+  "no_nan_in_footprint": true,
+  "no_nan_anywhere": true,
+  "values_in_0_1": true,
+  "crs_match": true,
+  "shape_match": true,
+  "transform_match": true,
+  "dtype_float32": true,
+  "single_band": true,
+  "zeros_outside_footprint": true,
+  "zero_mass_on_mapped_catalogue": true,
+  "n_positive": 37654,
+  "gates_pass": true,
+  "gems57_validate_pass": true,
+  "gates": [
+   {
+    "name": "crs",
+    "ok": true,
+    "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+   },
+   {
+    "name": "shape",
+    "ok": true,
+    "detail": "reference=3730x3292 candidate=3730x3292"
+   },
+   {
+    "name": "transform",
+    "ok": true,
+    "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+   },
+   {
+    "name": "dtype_and_band",
+    "ok": true,
+    "detail": "dtype=('float32',) count=1"
+   },
+   {
+    "name": "values_in_0_1",
+    "ok": true,
+    "detail": "n_violations=0 min=0.0 max=1.0"
+   },
+   {
+    "name": "no_nan_inside_footprint",
+    "ok": true,
+    "detail": "nonfinite_pixels=0 masked_pixels=0"
+   },
+   {
+    "name": "nan_outside_footprint",
+    "ok": true,
+    "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+   },
+   {
+    "name": "submission_encoding",
+    "ok": true,
+    "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+   },
+   {
+    "name": "catalogue_zero_mass",
+    "ok": true,
+    "detail": "dots_on_catalogue=0"
+   },
+   {
+    "name": "distance_from_catalogue",
+    "ok": true,
+    "detail": "radius=2px dots_within=0; strict distance > radius required"
+   },
+   {
+    "name": "reread_sha256",
+    "ok": true,
+    "detail": "4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14"
+   }
+  ]
+ },
+ "gates_passed": {
+  "format": true,
+  "values_in_0_1": true,
+  "no_nan_anywhere": true,
+  "zeros_outside_footprint": true,
+  "zero_mass_on_mapped_catalogue": true,
+  "uniqueness_vs_available": true
+ },
+ "verdict": "format_pass",
+ "submission_eligible": false,
+ "slot_note": "Weekly cap is 3 submissions/week (competition website prevails). Full registry uniqueness (PI-1 vs all public GEMSDOE rasters) and the literal-dense-witness question are unresolved; a weekly-slot selector must clear this separately.  NOT cleared for upload by this script."
+}
