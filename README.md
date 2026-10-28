@@ -1,5 +1,26 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+## ⬇ Latest session — 2026-10-28 evening (TIPCOMP, session 2123e2a6): NEW candidate, selector decision required
+
+**[⬇ Download `gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif`](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif)**
+([ZIP](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.zip)) ·
+**[Executive summary + decision table](docs/executive-summary-20261028-tipcomp.html)** ·
+[Run card](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6_run_card.json) ·
+[Hypotheses](docs/HYPOTHESES_20261028_TIPCOMP.md) · [Readiness](docs/downloads/tipcomp_readiness_20261028.json)
+
+| Field | Value |
+|---|---|
+| Clearance | ✅ **OK TO DOWNLOAD** (11/11 format gates, values in [0,1]) · ⏳ **SELECTOR DECISION REQUIRED** (machine verdict `negative` on one conservative bound, IR-1028B-4; no slot spent by this session) |
+| Portal name / note | `gemsdoe92-tipcomp-40000d-8f27b9d6` · `TIPCOMP H-92F1: 40000 dots; LBM ens x tip-cont x complement; caps vs focus9+priors; MODEL pub128 0.349.` (103/140) |
+| Estimated score (`MODEL`, not an organizer receipt) | **0.3485** (published 128-claim LBM-v1, exactly reproduced: R0→0.27284) · **0.3109** (in-session 26-row refit; bootstrap q05 0.2688, median 0.3076; Δ vs R0 median +0.0440, q05 +0.0063, P=0.97) vs R0 `CLAIM` 0.2778, rieszlbm2 `MODEL` 0.3163/0.2743 |
+| Unique? | **Yes (PI-1)** vs 165-raster local registry: worst 3-px overlap **0.6848** ≤ 0.70, worst \|ρ\| 0.18 ≤ 0.90; ≤0.6325 vs every focus-9 peak (GEMSDOE24/25/27/28/30/31/32/33/36 all re-fetched + SHA-verified; none of their peaks is itself unique — GEMSDOE25 peak dot support is identical to GEMSDOE30's) |
+| `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, 22,663 withheld) | Fold-proper E2 TIPCOMP **0.09617 [0.08521, 0.10665]** vs R0-recipe 0.09775 (paired Δ −0.00158 [−0.01787, +0.01469], tie); final candidate static 0.00164 (rieszlbm2 static **0.000000** — see IR-1028B-2); canaries ≤0.7799 PASS |
+
+Method in one line: ensemble LBM density √(ρ₁₂₈·ρ₂₆) modulated by a visible-catalogue **tip-continuation** field (`gems/tipcomp.py`) and a focus-9 **coverage-complement** boost, exact-greedy placement with caps vs priors + class-preserving swap-repair to ≤0.685 vs every registry raster. Shared-tool fix: `gems/lbm_place.release` deadlock (IR-1028B-3).
+
+---
+
+## ✅ Current submission — 2026-10-28 (session 81d8ca8b): OK TO DOWNLOAD · OK TO SUBMIT
 ## Current executive decision — 2026-10-28 review
 
 **⛔ DO NOT SUBMIT the current RIESZ-LOCKED TIFF.** It is available as a format-validated **research download only**. It failed two required promotion gates: (1) registry overlap is recorded as `1.000` on the pre-placement surface and against the final full-support witness, above the protocol's `0.70` stop; and (2) `HOLDOUT-DTI` is below the R0 recipe control. A different sparse-only interpretation does not waive either stop. No weekly submission slot was used and no new experiment/TIFF was generated in this review.

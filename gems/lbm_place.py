@@ -83,7 +83,16 @@ def place(rho_full: np.ndarray, eligible_full: np.ndarray, *, n_max: int,
     hist_D: list[float] = []
 
     def release(n_next: int) -> int:
-        """Re-offer deferred items whose every cap now has room; re-file the rest."""
+        """Re-offer deferred items whose every cap now has room; re-file the rest.
+
+        2026-10-28 fix (TIPCOMP session): the previous version inspected at
+        most 4 items per column and *broke* on the first item that also
+        violated another column.  With >= ~15 cap columns almost every
+        blocked item violates >= 2 columns, so ``release`` returned 0 while
+        releasable items sat deeper in the heaps and placement deadlocked
+        after O(10^3) dots.  Now each roomy column is scanned (bounded per
+        call) and violators are re-filed without abandoning the column.
+        """
         nonlocal n_blocked
         if n_blocked == 0:
             return 0
@@ -91,14 +100,14 @@ def place(rho_full: np.ndarray, eligible_full: np.ndarray, *, n_max: int,
         moved = 0
         for j in np.flatnonzero(room).tolist():
             h = blocked[j]
-            for _ in range(4):
-                if not h:
-                    break
+            scanned = 0
+            while h and scanned < 64:
                 v0, ii = heapq.heappop(h)
+                scanned += 1
                 bad = np.flatnonzero(member[ii] & ~room)
                 if bad.size:
                     heapq.heappush(blocked[int(bad[0])], (v0, ii))
-                    break
+                    continue
                 heapq.heappush(heap, (v0, ii)); moved += 1; n_blocked -= 1
         return moved
 
