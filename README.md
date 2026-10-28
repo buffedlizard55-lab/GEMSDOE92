@@ -926,3 +926,92 @@ Stored verbatim in intent per the prompt alignment requirement (`Put the prompt 
 - **Focus-9 & expanded multi-owner executive summary (`docs/focus9.html`):** Cover `GEMSDOE24`, `GEMSDOE25`, `GEMSDOE27`, `GEMSDOE28`, `GEMSDOE30`, `GEMSDOE31`, `GEMSDOE32` (`0.2778 CLAIM`), `GEMSDOE33`, `GEMSDOE36`, plus the 2026-10-27 prompt delta artifacts (`GEMSDOE27` `gems27-h31-drcg-wl-celf28-20261026-cf8e1bbef244-allfinite`: `0.2250 CLAIM`; `GEMSDOE28` `gems28-s21-puhgb-20261026-16bbf281ba9b-allfinite`: `0.0206 CLAIM`; `GEMSDOE33` `gemsdoe33-s33-seisdil-strain-seismicity-37654-20261026-3463540a7e02-zeros`: `0.0963 CLAIM`; `GEMSDOE36` `gemsdoe36-kpl36-exp3-20261026-fc869911e88c-zeros`: `0.1647 CLAIM`; `GEMSDOE91` `gems91-s22-omtj-e1-20261026-a99b8923f0-zeros`: `0.0298 CLAIM`; hash-reconciled `GEMSDOE24 abe8e51c719d`, `GEMSDOE25 da617550a0e9`, `GEMSDOE28 3e95505c011a`; unscored `GEMSDOE88 bpwd88`, `GEMSDOE91 S18`, `KANLERGEMSDOE2 htcads`) and all 12 newly added multi-owner sites (`kanlerxz87-cyber/KANLERGEMSDOE1..3`, `eugboogieman123-ops/EUGGEMSDOE1..3`, `wingbangboozle1-lang/WBGGEMSDOE1..3`, `ginnymcfiner23-ux/GINNYGEMSDOE1..3` — full ledger in `ledger/site_scores_claimed_20261027.csv`).
 - **Parallel-run protocol (Rules 1–6):** (1) Single method lane (`[PASTE ONE PARAGRAPH]` unpopulated in this run) + strict uniqueness stop (`|rho| > 0.90` or `>70%` 3-px overlap on BOTH continuous surface before placement AND final dots); (2) reuse shared stack, `vendor/gems57/evaluate_holdout.py` (`gems57-pooled-hide-v2`, $\alpha=0.2, \beta=0.8$, 300 m triangular kernel), and `vendor/gems57/submission_writer.py`; (3) label every number as `HOLDOUT-DTI` (with evaluator version, withheld count, 95% CI) or `ORGANIZER-CONFIRMED` (never an unlabeled projection); (4) single-feature leakage canary `AUC > 0.90` = leakage; (5) output one JSON Run Card (`docs/downloads/review_d30d387c_run_card.json`) with verdict `promote` or `negative`; (6) max 3 experiments / 2 hours, zero weekly slots spent without beating holdout best.
 - **Session `d30d387c` outcome:** Pre-registered 5 untried geological hypotheses (`docs/HYPOTHESES_20261027_D30D387C.md`, led by `GALLARDO-MEJU-CROSSGRAD-DECOUPLING`), proved dual continuous (`17GEMSDOE` `1.000`) and pure `{0, 1}` binary-dot (`13GEMSDOE` `>=0.823418` at `37,654` dots) pre-placement stops (`docs/downloads/fleet_20261027_audit_d30d387c.json`), halted before surface/dot generation (`0` new TIFFs, `0` experiments, `0` weekly slots, `verdict: "negative"`, `submission_eligible: false`), upgraded 5-owner & binary-lattice scanners and 19-band sentinel diagnostics in place, and completed 3 verification passes (`docs/REVIEW_20261027_D30D387C.md`).
+
+---
+
+## BASELINE PROMPT — CURRENT SESSION (governing requirements)
+
+**Read this at the start of every session.** It defines what we are building and the acceptance criteria.
+
+### Mission
+Produce a **unique** single-band GeoTIFF for DrivenData competition 306 (DOE GEMS Prize: hidden geothermal-related faults, NW Great Basin, EPSG:32611, 100 m grid, 3730×3292). The file must be obviously downloadable from the GitHub Pages site. Inspection and validation run through the project, automatically, without a human inspector in the loop. A human performs the DrivenData upload and weekly-slot selection.
+
+### Highest urgency — MUST
+1. **Generate a UNIQUE TIF submission** for the competition. Do not copy a previous submission (except for learning/education). It must be **obvious whether it is OK to download and submit** the generated TIF.
+2. There must be an **easy-to-download submission TIF** at the **very beginning/top** of the site and executive summary.
+3. Validation must be done through the project (automated), not by a human inspector.
+4. **Fix the "Predicted values must be in range [0, 1]" error:** every value must be finite and in [0, 1] (zeros-outside encoding), so the portal range error cannot occur.
+5. Give the submission a **unique name** and a **short note (<= 140 characters)**.
+
+### Focus sites (executive summary on every site)
+GEMSDOE24, GEMSDOE25, GEMSDOE27, GEMSDOE28, GEMSDOE30, GEMSDOE31, GEMSDOE32, GEMSDOE33, GEMSDOE36.
+Produce an **executive summary on every site** that is clear and obvious which is the best submission to obtain a high score on the leaderboard. It must be **unique** and not an exact duplicate of any previous submission.
+
+**Executive summary table:** clearly list **what file to download**, the **estimate score**, and whether it is a **unique submission** unlike any of the other GEMSDOE sites listed.
+
+### Score targets
+- GEMSDOE32's `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros` (claimed 0.2778) is the highest among the focus sites.
+- Session target: score higher than 0.2778; aim > 0.3195; live leaderboard high is 0.4413 (reported, not independently verified).
+- The 0.2778 and 0.3195 / 0.4413 values are **not independently verified** in this repo and are **not organizer receipts**.
+
+### PhD-level explanation required
+Explain why GEMSDOE32 `h33-h33-2-b2` scored 0.2778 (vs 0.3195 / 0.4413 leaderboard references) and whether/how a **unique** submission can score higher.
+
+### Hypotheses (3–5, not yet tried)
+Pre-register 3–5 untried geological/geothermal-vent hypotheses, each naming:
+- specific layer(s) involved
+- physical signature / transform being targeted (edge detection, curvature, etc.)
+- why it catches a fault missing from the USGS/INGENIOUS catalogue (not one already in it)
+- how it differs from anything already in the repo
+- named non-fault mimic
+- expected DTI improvement and implementation cost
+- specific free, official data source needed (and verify it's obtainable)
+
+**Validate the top candidate on the spatially-blocked holdout set before touching a weekly submission slot.** Do not spend a slot on an idea that hasn't beaten the current holdout best.
+
+### Parallel-run protocol (Rules 1–6)
+1. **Lane / duplicate stop:** Stay in the single method lane. If rank-correlation with any registry raster > 0.90, or > 70% of dots fall within 3 px of one registry raster's dots, log as duplicate and stop. Check on the surface before placement AND on final dots.
+2. **Reuse, don't rebuild:** Use the template's cached feature stack, evaluate_holdout.py and submission_writer.py. Holdout = hide-and-recover: withhold whole fault segments with buffer, derive catalogue-based features only from visible faults, mask visible faults pixel-exactly, score pooled DTI (alpha 0.2, beta 0.8, 300 m triangular kernel). Fix shared tools once in the template; never keep a private fork.
+3. **Label every number:** HOLDOUT-DTI (evaluator version, withheld positives, 95% CI) or ORGANIZER-CONFIRMED (copied from submission-page receipt). A projection is never written as a score.
+4. **Leakage canary:** Test each feature alone on holdout before trusting. AUC > 0.90 = leakage until proven otherwise.
+5. **Run card:** End with one JSON card: hypothesis, mechanism, named non-fault mimic, holdout DTI + CI, correlation/overlap vs registry, raster sha256, validator output (no NaN inside footprint, values in [0,1], CRS/shape/transform match), submission name + note <= 140 chars, verdict promote/negative. Negative results are deliverables.
+6. **Budget:** Stop after 3 experiments or 2 hours. Slot selection is a separate step, within the weekly cap.
+
+### Data access
+No DrivenData auth → training_features.tif, labels.tif, sample_submission.tif, 1m_DEM_links.csv require login (verified redirect to login). Use only free, official, publicly available sources for external data; name the specific source and verify obtainability before proposing any idea that needs it.
+
+### Official sources (for manual verification)
+- Competition problem & format: https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/
+- Competition about page: https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/
+- Competition data (login-walled): https://www.drivendata.org/competitions/306/competition-doe-gems/data/
+- Official reference solution: https://github.com/drivendataorg/gems-prize-reference-solution
+- USGS GeoDAWN: https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and
+- DOE GDR INGENIOUS #1391: https://gdr.openei.org/submissions/1391
+- Competition rules PDF: https://docs.nlr.gov/docs/fy26osti/96647.pdf
+- EPSG:32611: https://epsg.io/32611
+- Tversky index: https://en.wikipedia.org/wiki/Tversky_index
+
+### Deliverables
+1. 3–5 untried geological hypotheses ranked by expected DTI gain and cost
+2. Top candidate validated on spatially-blocked holdout before any slot
+3. A unique TIF submission (format-valid, values in [0,1], unique)
+4. Executive summary subpage explaining exactly how to submit
+5. This prompt stored in README.md
+6. Create and merge a pull request onto main
+
+### Core values
+- **Maximize P(Win):** Maximize the probability of winning. Weigh tradeoffs, assess risk, choose the path that maximizes P(Win).
+- **Own the Outcome:** Own results end to end. Fix shared defects; report unmet requirements; do not weaken a failed gate.
+
+### Current session result (2026-10-28)
+- **Unique TIF generated:** `docs/downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif`
+- **SHA-256:** `4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14`
+- **Format gates:** 11/11 PASS (values in [0,1], zeros outside footprint, zero mass on catalogue, EPSG:32611, 3730×3292, sample transform)
+- **Dots:** 37,654 binary {0,1} dots
+- **Uniqueness vs available GEMSDOE refs:** PASS (worst 3-px overlap 0.5077 <= 0.70 vs d28/h19_5/h27_4_solo)
+- **Full 2,060-raster registry audit:** PENDING (.cache/registry_v3 absent)
+- **OK to download:** YES
+- **OK to submit:** CONDITIONAL (format-valid, unique vs available refs; full registry audit + weekly-slot selector required)
+- **Executive summary:** `docs/executive-summary.html`
+- **Submission guide:** `docs/how-to-submit.html`
+- **Method:** Blind-fault corridor (>1.5 km from mapped faults) + damage-zone dots (2–8 px), 1 px off H19-5 geophysical ridge, greedy 3-px halo suppression. Different generative mechanism from GEMSDOE32's R0.

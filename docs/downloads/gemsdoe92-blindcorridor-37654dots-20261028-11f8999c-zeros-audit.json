@@ -1,0 +1,95 @@
+{
+ "file": "docs/downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif",
+ "sha256_zeros": "4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14",
+ "overall_pass": true,
+ "n_positive_pixels": 37654,
+ "gates_zeros": [
+  {
+   "name": "crs",
+   "ok": true
+  },
+  {
+   "name": "shape",
+   "ok": true
+  },
+  {
+   "name": "transform",
+   "ok": true
+  },
+  {
+   "name": "dtype_and_band",
+   "ok": true
+  },
+  {
+   "name": "values_in_0_1",
+   "ok": true
+  },
+  {
+   "name": "no_nan_inside_footprint",
+   "ok": true
+  },
+  {
+   "name": "nan_outside_footprint",
+   "ok": true
+  },
+  {
+   "name": "submission_encoding",
+   "ok": true
+  },
+  {
+   "name": "catalogue_zero_mass",
+   "ok": true
+  },
+  {
+   "name": "distance_from_catalogue",
+   "ok": true
+  },
+  {
+   "name": "reread_sha256",
+   "ok": true
+  }
+ ],
+ "validator_output": {
+  "no_nan_in_footprint": true,
+  "no_nan_anywhere": true,
+  "values_in_0_1": true,
+  "crs_match": true,
+  "shape_match": true,
+  "transform_match": true,
+  "dtype_float32": true,
+  "single_band": true,
+  "zeros_outside_footprint": true,
+  "zero_mass_on_mapped_catalogue": true,
+  "gates_pass": true,
+  "gems57_validate_pass": true
+ },
+ "verdict": "format_pass",
+ "submission_eligible": false,
+ "run_card": "downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c_run_card.json",
+ "uniqueness": {
+  "interpretation": "PI-1 (gems/uniqueness_v3.py); registry cache (.cache/registry_v3) absent in this checkout -- checked vs available bridge rasters only",
+  "references": [
+   {
+    "reference": "d28.tif",
+    "n_their": 44090,
+    "overlap_3px": 0.475753,
+    "within_limit": true
+   },
+   {
+    "reference": "h19_5.tif",
+    "n_their": 121131,
+    "overlap_3px": 0.507675,
+    "within_limit": true
+   },
+   {
+    "reference": "h27_4_solo.tif",
+    "n_their": 40199,
+    "overlap_3px": 0.425453,
+    "within_limit": true
+   }
+  ],
+  "worst_overlap_3px": 0.507675,
+  "unique_vs_available": true,
+  "note": "Full 2,060-raster registry audit requires .cache/registry_v3 (network staging pending). Literal reading vs the pinned 17GEMSDOE dense witness is unresolved."
+ }
+}
