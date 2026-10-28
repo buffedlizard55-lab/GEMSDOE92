@@ -1436,6 +1436,43 @@ The archived candidate HOLDOUT-DTI 0.037987 is below its R0 control 0.097750; be
 
 Primary pages now fold superseded claims and display a blocking banner. No new geological experiments, no new TIFF and no competition slots. Source/data verification outside GitHub is constrained by the network allowlist. No method lane is assigned in the supplied paragraph. Resolve protocol semantics before proceeding rather than silently weaken the duplicate gate.
 
+
+## IR-1028C (2026-10-28, session 2123e2a6 follow-up review, PR #170 superseded by main)
+
+Independent re-run on this checkout (no competition slot, no organizer access, no new experiment):
+
+- **IR-1028C-1 — IR-1028B-1 already fixed on main (PR #168, commit 38a3f70).** The validator now
+  prefers the artifact's adjacent run card and binds it by SHA-256 and path. This session did NOT
+  re-implement that; a duplicate candidate-relative version was discarded in favour of main's. Regression
+  tests were rewritten at CLI level in `tests/test_validator_candidate_binding.py` (3 tests).
+  Result for TIPCOMP: `FORMAT PASS (local only)`, `DO NOT SUBMIT: byte-bound run card …; verdict=negative`.
+- **IR-1028C-2 — Contradictory headlines.** Before main's #168, README's TIPCOMP block said "OK TO
+  DOWNLOAD" while the public pages said "DO NOT SUBMIT". Main's README decision block is kept; this
+  session adds no second decision header.
+- **IR-1028C-3 — TIPCOMP holdout does not beat the control.** Fold-proper E2 `0.09617 [0.08521, 0.10665]`
+  vs R0-recipe `0.09775 [0.08590, 0.11077]`; paired Δ `−0.00158 [−0.01787, +0.01469]` (source:
+  `docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6_run_card.json`). The protocol rule
+  "do not spend a slot on an idea that has not beaten the current holdout best" therefore applies.
+- **IR-1028C-4 — Uniqueness re-measured locally, reproduced.** `scripts/recheck_local_overlap.py` over
+  166 local rasters (docs + releases): worst sparse literal overlap 0.6848, worst top-N 0.6193, max |ρ|
+  0.1803. Receipt: `docs/downloads/tipcomp_local_recheck_20261028.json`. Scope is local only: the remote
+  2,162-raster registry needs `.cache/` and network access, and the dense 17GEMSDOE witness is not local.
+- **IR-1028C-5 — Second validator is not a clearance gate.** `scripts/validate_submission.py` (used by
+  `tests/test_apronridge.py`) checks format only and never reads run cards. Not changed: tests depend on
+  its exit codes. Flagged for a future merge into one validator.
+- **IR-1028C-6 — Estimated scores are not scores.** The user-supplied leaderboard snapshots (`0.4413`,
+  `0.3195`) and GEMSDOE32's `0.2778` are owner-reported CLAIMs. No organizer receipt is stored, and
+  DrivenData's terms prohibit automated monitoring (see `.github/workflows/pages.yml`). The leaderboard
+  was not fetched. Every MODEL figure (0.3485, 0.3109, 0.3216) is a fit to CLAIMs.
+- **IR-1028C-7 — Inputs absent from the repo.** `training_features.tif`, `labels.tif` and the DrivenData
+  data require a DrivenData login; this sandbox's allowlist (github, npm, pypi) cannot reach them. The
+  holdout runs on `data/bridge/` proxies, so re-scoring against the organizer's own features is blocked.
+- **IR-1028C-8 — OWNER DECISION REQUIRED (protocol semantics).** Whether the literal dense-witness
+  reading (any positive-support raster covering the footprint gives overlap 1.000) or the PI-1 reading
+  (top-N surface dots) governs the uniqueness gate. Under literal reading no candidate can be unique;
+  under PI-1, TIPCOMP passes uniqueness but still fails the holdout and bootstrap gates. This decides
+  whether any file can ever be cleared. No automated resolution was attempted.
+
 ## IR-1028C — 2026-10-28 session 3: front-page contradiction, contested uniqueness, holdout tie (review only)
 
 Reviewed by re-running checks in this session (no new TIFF, no slot, no clearance).
