@@ -4,12 +4,14 @@
 
 **⛔ DO NOT SUBMIT the current RIESZ-LOCKED TIFF.** It is available as a format-validated **research download only**. It failed two required promotion gates: (1) registry overlap is recorded as `1.000` on the pre-placement surface and against the final full-support witness, above the protocol's `0.70` stop; and (2) `HOLDOUT-DTI` is below the R0 recipe control. A different sparse-only interpretation does not waive either stop. No weekly submission slot was used and no new experiment/TIFF was generated in this review.
 
-**[⬇ Download the research-only GeoTIFF](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif)** · [One-TIFF ZIP](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.zip) · [Current site](docs/index.html) · [How to submit (future cleared file only)](docs/how-to-submit.html) · [Nine-site comparison](docs/nine-sites.html) · [Three-pass review](docs/REVIEW_20261028_PROTOCOL.md) · [Run card](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json) · [Readiness JSON](docs/downloads/readiness.json)
+**[⬇ Download the RIESZ research-only GeoTIFF](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif)** · [One-TIFF ZIP](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.zip) · [Current site](docs/index.html) · [How to submit (future cleared file only)](docs/how-to-submit.html) · [Nine-site comparison](docs/nine-sites.html) · [Three-pass review](docs/REVIEW_20261028_PROTOCOL.md) · [Run card](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json) · [Readiness JSON](docs/downloads/readiness.json)
+
+A separate `damagezone-close-dots` TIFF was added later by merged PR #166; it remains unselected research material. Its local holdout comparison does not beat the recorded R0 recipe, and full-registry uniqueness is pending. This review does **not** clear it for upload; see the [independent review](docs/REVIEW_20261028_SESSION.md) and the current site's separate-artifact warning.
 
 | Check | Evidence / result |
 |---|---|
 | File | `gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif`; SHA-256 `d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a` |
-| Download status | **OK TO DOWNLOAD FOR RESEARCH**; local `scripts/check_site.py` re-read all 125 served TIFFs and passed format/range tests on 2026-10-28. This is not organizer acceptance. |
+| Download status | **OK TO DOWNLOAD FOR RESEARCH**; local `scripts/check_site.py` re-read all 126 served TIFFs and passed format/range tests on 2026-10-28. This is not organizer acceptance. |
 | Submission status | **DO NOT SUBMIT**; `verdict: negative`, `submission_eligible: false`; no slot selected. Name/note below are artifact metadata only, not an invitation to upload. |
 | `HOLDOUT-DTI` | `gems57-pooled-hide-v2`, 22,663 withheld positives: `0.037987 [0.031011, 0.044656]`; R0 control `0.097750 [0.085900, 0.110766]`; paired delta `-0.059763 [-0.072004, -0.046653]`. Historical receipt; not independently rerun because the full cached feature stack is absent. |
 | Projection | `0.321602 MODEL` for LBM-v2, **not a competition score** and not sufficient for promotion. No `ORGANIZER-CONFIRMED` receipt is stored here. |
