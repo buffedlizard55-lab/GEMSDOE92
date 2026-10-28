@@ -124,7 +124,7 @@ The only numeric estimate for the best candidate in the repo is a MODEL value of
 
 * `scripts/measure_registry_overlap.py` — the two-reading overlap measurement (Euclidean 3-px disk; top-K ranks only positive cells). The first draft let zero-valued background fill top-K for binary witnesses; it was caught by a check on `data/parent_R0_zeros.tif`, fixed, and covered by `tests/test_registry_overlap_20261028.py` (7 tests).
 * `docs/downloads/review_20261028_overlap.json` — the receipt for the Riesz file against the witness.
-* `docs/downloads/review_20261028_run_card.json` — the run card.
+* `docs/downloads/review_20261028_arena_e57e6a90_run_card.json` — the run card.
 * This document, and a pointer in the [README](../README.md) status box.
 
 No new TIFF, holdout run, leakage canary, experiment or weekly slot. Experiments used: 0 of 3. Session time was not logged; no experiment was started, so the budget was not approached.
