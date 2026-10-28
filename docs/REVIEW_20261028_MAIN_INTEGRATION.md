@@ -10,7 +10,7 @@ This follow-up did **not** generate a TIFF, run an experiment, select a slot, or
 
 - Repository: `/home/user/GEMSDOE92`, branch `arena/9649dfc1-gemsdoe92`.
 - The PR branch was brought up to the fetched `origin/main` commit `9699f1d`. Merge conflicts in `README.md` and `docs/executive-summary-20261028-tipcomp.html` were resolved on this branch; the conflict markers were checked absent and the resolved files staged.
-- PR #172 remains the session PR. It must not be merged unless required checks pass and all download/submission status stays fail-closed.
+- PR #172 is the session PR. Its required `test` check passed after push; merging this documentation and safety work does not authorize any upload. Keep the status feeds and pages fail-closed.
 - `docs/downloads/current_submission.json` and `readiness.json` still identify the RIESZ research artifact as the main status-feed primary, with a negative verdict. TIPCOMP remains negative. BLINDCORRIDOR has its own generated status feed.
 
 ## Pass 1 — artifact, evidence, and source inventory
@@ -41,7 +41,7 @@ This follow-up did **not** generate a TIFF, run an experiment, select a slot, or
 - `PYTHONPATH=vendor .venv/bin/python scripts/check_site.py`: **SITE CHECK PASS (128 served rasters gated)**, including the new BLINDCORRIDOR hash/status contract.
 - `PYTHON=.venv/bin/python make verify`: **PARENT VERIFIED (pinned artefact)**; R0 zeros SHA-256 starts `c55bafc47005…`, 37,654 dots. Manifest regeneration was not repeated in this follow-up.
 - Python compilation, `git diff --check`, and local HTML/Markdown link checks: **PASS** (0 missing local links across the eight checked documents).
-- PR #172 is still open. The merge must wait for the pushed branch's required checks and an explicit final fail-closed status review.
+- The required GitHub `test` check passed. Merge PR #172 only after the final review confirms every download/submission status remains fail-closed; the merge itself does not clear a candidate.
 
 ## Unmet acceptance criteria and next gates
 
