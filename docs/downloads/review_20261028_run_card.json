@@ -1,0 +1,13 @@
+{
+  "hypothesis": null,
+  "mechanism": null,
+  "named_non_fault_mimic": null,
+  "holdout_dti": null,
+  "correlation_overlap_vs_registry": "No new raster; previously reported LBMC1 literal overlap 1.0; see historical run card",
+  "raster_sha256": null,
+  "validator_output": "Not run: no new raster",
+  "submission_name": null,
+  "note": null,
+  "verdict": "negative",
+  "reason": "No assigned method lane; unresolved literal duplicate stop; prior candidate failed holdout. No experiment or submission slot used."
+}

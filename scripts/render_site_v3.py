@@ -141,7 +141,7 @@ def focus9_rows(f9: dict, f9u: dict, model: dict) -> str:
     return "".join(out)
 
 
-def render() -> dict[Path, str]:
+def render_legacy_unsafe() -> dict[Path, str]:
     card, f9, f9u, model, val = load()
     current, readiness = status_cards(card)
     best_site = max(f9.items(), key=lambda kv: kv[1]["claim"])
@@ -234,6 +234,44 @@ with rasterio.open("out.tif", "w", **prof) as d:
         DL / "current_submission.json": json.dumps(current, indent=2) + "\n",
         DL / "readiness.json": json.dumps(readiness, indent=2) + "\n",
     }
+
+
+def render() -> dict[Path, str]:
+    """Publish a research-only view until every binding gate is supported."""
+    card, f9, f9u, model, val = load()
+    # Never let a historical model-based waiver grant automatic clearance.
+    if card.get("verdict") != "negative" or card.get("submission_eligible") is not False:
+        raise ValueError("current artifact is blocked by holdout and literal registry rules")
+    current, readiness = status_cards(card)
+    current.pop("model_estimate_point", None)
+    current.pop("model_estimate_interval90", None)
+    current.pop("evidence_class_of_estimate", None)
+    readiness["submission_status"] = "DO NOT SUBMIT — holdout gate and literal registry stop"
+    h = card["holdout_dti"]
+    rows = "".join(
+        f'<tr><td>{esc(site)}</td><td><a href="{esc(s["blob_url"])}">{esc(s["best"])}</a></td>'
+        f'<td>{s["claim"]:.4f} CLAIM</td><td>Unavailable</td><td>Not cleared</td></tr>'
+        for site, s in f9.items()
+    )
+    panel = f'''<section class="box no" id="submit-now"><h1><span class="badge bno">DO NOT SUBMIT</span> No eligible submission</h1>
+<p>Historical research only: <a data-primary="true" href="downloads/{esc(Path(card["raster"]["file"]).name)}" download>Download LBMC1 research TIFF</a>. Do not upload it. <a href="downloads/{esc(Path(PRIMARY_CARD).name)}">Run card</a>.</p>
+<p>The candidate failed the required catalogue holdout comparison and was a duplicate under the literal registry interpretation. The earlier model-based clearance is withdrawn. Local format checks cannot guarantee portal acceptance.</p>
+<p>HOLDOUT-DTI ({esc(h["evaluator_version"])}, {h["withheld_positive_pixels"]:,} withheld positives): {h["exp1"]["dti"]:.4f}, 95% CI [{h["exp1"]["ci95"][0]:.4f}, {h["exp1"]["ci95"][1]:.4f}]; control {h["r0_recipe_control"]["dti"]:.4f}, 95% CI [{h["r0_recipe_control"]["ci95"][0]:.4f}, {h["r0_recipe_control"]["ci95"][1]:.4f}]. Historical static holdout may not establish prospective fold-local validity.</p></section>'''
+    body = panel + f'''<section class="box" id="summary"><h2>Executive summary</h2>
+<p>GEMSDOE32 has the highest owner-reported result among the nine listed. CLAIM values are not organizer-confirmed receipts. No reliable leaderboard estimate is established; MODEL projections are not scores. A higher score may be possible but has not been demonstrated by an eligible new file.</p>
+<p>The dotted-trace and catalogue-collar lineage plausibly reduced redundant positive pixels, but a causal explanation of the hidden score cannot be proven from reported results alone. <a href="focus9.html">Prior detailed audit and sources</a>.</p>
+<div style="overflow-x:auto"><table><tr><th>Site</th><th>Historical research file (not for submission)</th><th>Owner CLAIM</th><th>Score estimate</th><th>Unique / eligible?</th></tr>{rows}</table></div></section>
+<section class="box"><h2>Next steps and sources</h2><p>Resolve the assigned method lane and registry interpretation, restore and verify the cached inputs, then run leakage canaries, fold-local buffered holdouts, pre-placement and final registry checks and the shared writer. A separate selector decides whether to use a weekly slot.</p>
+<p><a href="how-to-submit.html">How to submit once cleared</a> · <a href="nine-sites.html">Nine-site review</a> · <a href="HYPOTHESES_20261027_D30D387C.md">Prior ranked hypotheses</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Official problem</a> · <a href="https://github.com/drivendataorg/gems-prize-reference-solution">Official reference solution</a> · <a href="https://www.drivendata.org/termsofuse/">Terms of use</a>. The leaderboard is not mirrored.</p></section>'''
+    how = panel + '''<section class="box"><h2>How to submit a future cleared file</h2><p>Do not submit the research file above. Once a separate selector approves a new, byte-bound candidate, download its exact GeoTIFF, open the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData submission page</a>, select it and enter its short note. Verify the current weekly limit on the portal; historical documentation mentions 3 submissions per week.</p><p>For “Predicted values must be in range [0, 1]”, check for NaN, infinities, nodata sentinels and out-of-range values against the official sample and format; do not blindly clip scientifically meaningful values. A local format pass is not a portal receipt. Outside-footprint encoding remains unresolved.</p></section>'''
+    nine = '''<section class="box no"><h1>Nine-site executive summary</h1><p>DO NOT SUBMIT: historical files are research only. Owner CLAIMs are not organizer receipts and no reliable score estimate is available. <a href="focus9.html">Detailed historical evidence and pairwise comparisons</a>.</p></section>''' + f'<section class="box"><table><tr><th>Site</th><th>Historical research file</th><th>Owner CLAIM</th><th>Score estimate</th><th>Unique / eligible?</th></tr>{rows}</table></section>'
+    root = '<meta http-equiv="refresh" content="0; url=docs/index.html"><h1>DO NOT SUBMIT — no eligible TIFF</h1><a href="docs/index.html">Open executive summary</a> · <a href="https://www.drivendata.org/termsofuse/">Terms of use</a>. Leaderboard is not mirrored.'
+    return {DOCS / "index.html": page("GEMSDOE92 — blocked", body),
+            DOCS / "how-to-submit.html": page("GEMSDOE92 — submission guide", how),
+            DOCS / "nine-sites.html": page("GEMSDOE92 — nine sites", nine),
+            ROOT / "index.html": page("GEMSDOE92 — blocked", root),
+            DL / "current_submission.json": json.dumps(current, indent=2) + "\n",
+            DL / "readiness.json": json.dumps(readiness, indent=2) + "\n"}
 
 
 def main() -> int:

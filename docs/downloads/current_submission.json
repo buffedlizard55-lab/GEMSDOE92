@@ -5,14 +5,8 @@
   "n_dots": 35801,
   "submission_name": "gemsdoe92-lbmc1-35801d-89a660f6",
   "note": "LBM-consensus v1: 35801 dots by exact expected-DTI greedy on a truth density fit to 123 scored rasters; 70%/3px registry caps.",
-  "verdict": "promote",
+  "verdict": "negative",
   "ok_to_download": true,
-  "ok_to_submit": true,
-  "run_card": "downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6_run_card.json",
-  "model_estimate_point": 0.33222448062968196,
-  "model_estimate_interval90": [
-    0.3127356177214197,
-    0.3506399063283861
-  ],
-  "evidence_class_of_estimate": "MODEL (not an organizer score)"
+  "ok_to_submit": false,
+  "run_card": "downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6_run_card.json"
 }
