@@ -5,9 +5,9 @@
   "n_dots": 50000,
   "submission_name": "gemsdoe92-rieszlbm2-50000d-79041788",
   "note": "Riesz-Locked LBM-v2: 50000 binary dots; 128-claim density + q85 mimic filter + OOF Riesz/piedmont/Peclet; <=65.6% 8-owner fleet cap.",
-  "verdict": "promote",
+  "verdict": "negative",
   "ok_to_download": true,
-  "ok_to_submit": true,
+  "ok_to_submit": false,
   "run_card": "downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json",
   "model_estimate_point": 0.31632799552611685,
   "model_estimate_lbm_v2_riesz": 0.32160163971807004,
@@ -15,5 +15,11 @@
     0.29677249583331844,
     0.3330437292517696
   ],
-  "evidence_class_of_estimate": "MODEL (not an organizer score)"
+  "evidence_class_of_estimate": "MODEL (not an organizer score)",
+  "blocking_reasons": [
+    "registry stop: literal full-support witness overlap is 1.0 (> 0.70)",
+    "pre-placement surface overlap exceeds 0.70",
+    "final-dot registry stop: literal overlap is 1.0 (> 0.70)",
+    "HOLDOUT-DTI did not beat the R0 recipe control with paired 95% CI above zero"
+  ]
 }

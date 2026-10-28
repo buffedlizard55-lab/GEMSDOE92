@@ -19,22 +19,22 @@ nav a{margin-right:1rem;font-weight:600}</style>
 <body>
 <main>
 <meta http-equiv="refresh" content="0; url=docs/index.html">
-<p><a href="docs/index.html">GEMSDOE92 Executive Summary &amp; Unique Submission →</a></p>
-<section class="box ok" id="submit-now">
-<h1><span class="badge bdl">✅ OK TO DOWNLOAD</span> <span class="badge bok">✅ OK TO SUBMIT</span> gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif</h1>
-<p><a class="btn" href="docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif" download>⬇ Download Unique GeoTIFF (167,553 bytes)</a>
+<p><a href="docs/index.html">GEMSDOE92 Executive Summary &amp; Research Download (DO NOT SUBMIT) →</a></p>
+<section class="box no" id="submit-now">
+<h1><span class="badge bdl">✅ OK TO DOWNLOAD FOR RESEARCH</span> <span class="badge bno">⛔ DO NOT SUBMIT</span> gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif</h1>
+<p><a class="btn" href="docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif" download>⬇ Download Format-Validated Research GeoTIFF (167,553 bytes)</a>
 <a class="btn btn2" href="docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.zip" download>⬇ One-TIFF ZIP</a>
 <a class="btn btn2" href="docs/how-to-submit.html">How to submit (3 steps)</a></p>
 <table>
-<tr><th>Automated clearance</th><td><strong>Download:</strong> OK TO DOWNLOAD (11/11 format &amp; <code>[0, 1]</code> gates verified from disk without human inspection).<br><strong>Portal upload:</strong> OK TO SUBMIT (passes 8-owner uniqueness, leakage canaries, and MODEL promotion gates; verify weekly 3-submission cap first).</td></tr>
+<tr><th>Automated clearance</th><td><strong>Research download:</strong> Format-valid under the local validator; this does not establish leaderboard value or organizer acceptance.<br><strong>Portal upload:</strong> DO NOT SUBMIT — protocol stop(s) failed; this file is research-only.</td></tr>
 <tr><th>Portal “Submission name”</th><td><div class="copy">gemsdoe92-rieszlbm2-50000d-79041788</div></td></tr>
 <tr><th>Portal “Note” (132 ≤ 140 chars)</th><td><div class="copy">Riesz-Locked LBM-v2: 50000 binary dots; 128-claim density + q85 mimic filter + OOF Riesz/piedmont/Peclet; &lt;=65.6% 8-owner fleet cap.</div></td></tr>
 <tr><th>SHA-256</th><td class="mono">d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a</td></tr>
-<tr><th>Validated format</th><td>50,000 binary dots (<code>1.0</code>); exact <code>0.0</code> elsewhere including all 7,108,787 exterior cells and all mapped catalogue cells. Single-band <code>float32</code>, <code>EPSG:32611</code>, <code>3292×3730</code>, exact sample geotransform, <code>nodata=None</code>, <code>0</code> NaN/Inf — cannot trigger <q>Predicted values must be in range [0, 1]</q>.</td></tr>
-<tr><th>Estimated score (labelled)</th><td><strong>0.3216</strong> <code>MODEL</code> (<code>LBM-v2</code> mimic-filtered) · <strong>0.3163</strong> <code>MODEL</code> (<code>LBM-v1</code>; 90% group-bootstrap interval <strong>0.297–0.333</strong>, vs <code>GEMSDOE32</code> <code>0.2778</code> <code>CLAIM</code> / <code>0.273</code> same-model).<br>
-<code>HOLDOUT-DTI</code> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld px): <strong>0.0380</strong> (<code>+92.9%</code> over prior <code>lbmc1</code> <code>0.0197</code>; standalone <code>H92-RIESZ-HABITAT</code> = <strong>0.0835</strong>).
-<span class="small">Neither <code>MODEL</code> nor <code>HOLDOUT-DTI</code> is an organizer-confirmed score.</span></td></tr>
-<tr><th>Uniqueness across 8 GitHub owners</th><td><strong>UNIQUE (PASS):</strong> across all <strong>2,162</strong> unique SHA-256 rasters in 123 repos across all 8 listed GitHub owners, worst 3-px dot overlap is <strong>65.56%</strong> (limit 70%), overlap vs <code>GEMSDOE92</code>'s prior <code>lbmc1</code> is <strong>54.06%</strong> (22,971 brand-new physical dots &gt;300 m outside <code>lbmc1</code>), final |ρ| = <strong>0.145</strong> ≤ 0.90, and pre-placement surface |ρ| = <strong>0.550</strong> ≤ 0.90.</td></tr>
+<tr><th>Local format validation (not organizer acceptance)</th><td>50,000 binary dots (<code>1.0</code>); exact <code>0.0</code> elsewhere including all 7,108,787 exterior cells and mapped catalogue cells. Single-band <code>float32</code>, <code>EPSG:32611</code>, <code>3292×3730</code>, exact sample geotransform, <code>nodata=None</code>, no NaN/Inf; passes the local <code>[0,1]</code> range test. The portal remains authoritative and could apply additional checks.</td></tr>
+<tr><th>Score evidence (no projection presented as a score)</th><td><strong>0.3216</strong> <code>MODEL projection</code> (<code>LBM-v2</code>; not a measured competition score). The user-provided <code>GEMSDOE32 0.2778</code> is a <code>CLAIM</code>; no organizer receipt is present.<br>
+<code>HOLDOUT-DTI</code> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld positive pixels): <strong>0.03799</strong> [0.03101, 0.04466]. The R0 recipe control was <strong>0.09775</strong> [0.08590, 0.11077]; paired difference was negative with 95% CI [-0.07200, -0.04665].<br>
+<span class="small">The HOLDOUT-DTI artifact is historical and was not independently rerun in this review; neither this nor the MODEL projection is an organizer-confirmed score.</span></td></tr>
+<tr><th>Uniqueness under the required stop rule</th><td><strong>NO — DO NOT SUBMIT.</strong> The recorded pre-placement surface overlap is <strong>1.000</strong> and the final literal overlap against the full-support registry witness is <strong>1.000</strong> (both exceed the 0.70 cap). Narrower sparse dot-field interpretation: 65.56% maximum among 2,162 indexed rasters; that alternate reading cannot waive the literal lane stop. Surface |ρ| = 0.550 and final |ρ| = 0.145.</td></tr>
 </table>
 <p class="small">Run card: <a href="docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json">JSON</a> · Machine status: <a href="docs/downloads/current_submission.json">current_submission.json</a> · <a href="docs/downloads/readiness.json">readiness.json</a>. Weekly limit: 3 submissions per week (DrivenData portal prevails).</p>
 </section>

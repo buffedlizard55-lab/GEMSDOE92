@@ -1,7 +1,7 @@
 {
  "schema": "gemsdoe92-run-card-v3",
  "created_utc": "2026-10-28T13:51:01+00:00",
- "lane": "EXP3 \u2014 RIESZ-LOCKED + LBM-v2 Hybrid Blind-Fault Discovery (H-92A..D + LBM-v2)",
+ "lane": "EXP3 — RIESZ-LOCKED + LBM-v2 Hybrid Blind-Fault Discovery (H-92A..D + LBM-v2)",
  "experiment": "3 of 3 (budget: E1 H92-PHYS-LOQO, E2 H92-RIESZ-HABITAT-LOQO, E3 H92-PHYSLBM-UNIQUE)",
  "density_model": "Ensemble LBM-v2 fitted to 128 matched CLAIMs across 8 owners with >q85 canyon/mesa-rim mimic suppressor (beta=-0.4904) modulated by 4-quadrant OOF RIESZ-LOCKED physical prospectivity (evidence/riesz_locked_lbm_v2.json)",
  "hypothesis": "Unmapped Basin & Range hydrothermal faults combine (H-92A) multi-scale Riesz monogenic phase-congruency steps & slope-deconfounded 10m piedmont scarps, (H-92B) harmonic Wijns cos(theta) x biharmonic broken-plate flexure, (H-92C) locked interseismic strain-deficit x 10m fluvial chi knickzones, and (H-92D) Fournier silica/cation enthalpy-disequilibrium blind Peclet conduits, while extreme (>q85) raw topographic edge tails are non-fault canyon/mesa-rim mimics.",
@@ -412,7 +412,7 @@
  },
  "gates_passed": {
   "format": true,
-  "uniqueness_pi1": true,
+  "uniqueness_pi1": false,
   "unique_vs_prior_lbmc1": true,
   "model_beats_0_2778_at_q05": true,
   "model_robust_all_specs_ge_R0": true,
@@ -420,7 +420,42 @@
   "catalogue_holdout_beats_lbmc1": true,
   "catalogue_holdout_beats_r0_recipe": false
  },
- "verdict": "promote",
- "submission_eligible": true,
- "slot_note": "Weekly cap is 3 submissions/week (DrivenData portal rules prevail). Verify whether prior unscored lbmc1 (e928d3c3...) has already consumed a weekly slot before uploading."
+ "verdict": "negative",
+ "submission_eligible": false,
+ "slot_note": "Weekly cap is 3 submissions/week (DrivenData portal rules prevail). Verify whether prior unscored lbmc1 (e928d3c3...) has already consumed a weekly slot before uploading.",
+ "promotion_review": {
+  "review_date_utc": "2026-10-28",
+  "source": "docs/REVIEW_20261028_PROTOCOL.md",
+  "decision": "negative",
+  "submission_eligible": false,
+  "decision_basis": "Apply the user-provided protocol literally; do not allow MODEL projection or narrower sparse-only uniqueness interpretation to override required gates.",
+  "blocking_gates": [
+   {
+    "rule": "1 registry stop before placement",
+    "status": "FAIL",
+    "observed": "The stored pre-placement surface registry report records overlap 1.0 against the dense/full-support witness, above the 0.70 stop threshold."
+   },
+   {
+    "rule": "1 registry stop on final dots",
+    "status": "FAIL",
+    "observed": "The stored uniqueness receipt records literal full-support witness overlap 1.0, above the 0.70 stop threshold. The alternate PI-1 sparse dot-set maximum 0.6556 is not a waiver."
+   },
+   {
+    "rule": "2 holdout beats best control",
+    "status": "FAIL",
+    "observed": "HOLDOUT-DTI E3 = 0.0379871 (95% CI 0.0310109–0.0446563); R0 recipe = 0.0977501 (95% CI 0.0859005–0.1107665); paired delta = -0.0597630 (95% CI -0.0720046–-0.0466534)."
+   },
+   {
+    "rule": "3 score labelling",
+    "status": "PASS_WITH_CAVEAT",
+    "observed": "0.3216016 is MODEL only; there is no organizer receipt in this repository. It is not a score and is not evidence for promotion."
+   },
+   {
+    "rule": "6 experiment budget",
+    "status": "EXHAUSTED",
+    "observed": "The recorded RIESZ-LOCKED lane used E1–E3. No additional experiment was run or authorized in this review."
+   }
+  ],
+  "reproduction_limit": "This review verified the committed run-card/evidence contents and TIFF bytes/format, but did not rerun HOLDOUT-DTI: the full feature cache is absent from this checkout."
+ }
 }

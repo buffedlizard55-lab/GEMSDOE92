@@ -63,8 +63,8 @@
   "gates_pass": true,
   "gems57_validate_pass": true
  },
- "verdict": "promote",
- "submission_eligible": true,
+ "verdict": "negative",
+ "submission_eligible": false,
  "run_card": "evidence/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json",
  "uniqueness": {
   "interpretation": "PI-1 across all 8 GitHub owners (see gems/uniqueness_v3.py)",
@@ -84,5 +84,6 @@
    "duplicate_under_literal": true,
    "note": "Literal reading is degenerate: any raster positive on every footprint cell gives 1.0."
   }
- }
+ },
+ "promotion_review": "Research-only: fails required literal registry stop and required HOLDOUT-DTI comparison against R0. See docs/REVIEW_20261028_PROTOCOL.md."
 }
