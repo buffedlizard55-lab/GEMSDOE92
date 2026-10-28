@@ -1,13 +1,82 @@
 {
-  "hypothesis": null,
-  "mechanism": null,
-  "named_non_fault_mimic": null,
-  "holdout_dti": null,
-  "correlation_overlap_vs_registry": "No new raster; previously reported LBMC1 literal overlap 1.0; see historical run card",
-  "raster_sha256": null,
-  "validator_output": "Not run: no new raster",
-  "submission_name": null,
-  "note": null,
+  "schema": "gemsdoe92-run-card-review-20261028-v1",
+  "session_branch": "arena/e57e6a90-gemsdoe92",
+  "evidence_class_legend": "REGISTRY-MEASUREMENT / HOLDOUT-DTI (as recorded in source card) / CLAIM (owner-reported) / MODEL (not a score)",
+  "lane": "none assigned (no single method paragraph was supplied)",
+  "hypothesis": "No new hypothesis tested. Review only: does the GEMSDOE32 0.2778 file's structure and the registry rule allow a unique, holdout-validated improvement?",
+  "mechanism": "Not tested. Measured structure: 0 GEMSDOE32 dots within 2 px of catalogue; 2171 in 2-3 px band.",
+  "named_non_fault_mimic": "not evaluated in this session",
+  "experiments_used": 0,
+  "experiments_budget": 3,
+  "weekly_slots_used": 0,
+  "new_tiff_generated": false,
+  "candidate_under_review": {
+    "file": "docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif",
+    "sha256": "d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a",
+    "submission_name": "gemsdoe92-rieszlbm2-50000d-79041788",
+    "note": "Riesz-Locked LBM-v2: 50000 binary dots; 128-claim density + q85 mimic filter + OOF Riesz/piedmont/Peclet; <=65.6% 8-owner fleet cap.",
+    "note_chars": 132
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "candidate": {
+      "dti": 0.03798714720750052,
+      "ci95": [
+        0.03101085490399704,
+        0.04465625376399511
+      ]
+    },
+    "r0_recipe_control": {
+      "dti": 0.09775010414175118,
+      "ci95": [
+        0.0859004762724135,
+        0.110766499100337
+      ]
+    },
+    "source": "docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json (read, not re-run)"
+  },
+  "registry_overlap": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "literal_reading": 1.0,
+    "topk_reading_one_witness": 0.00698,
+    "limit": 0.7,
+    "radius_px": 3,
+    "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "witness_file": "17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "pairwise_vs_geMSDOE32_R0_binary_dots": 0.55376,
+    "note": "Single witness plus one pairwise measurement; not a complete registry scan."
+  },
+  "correlation_vs_registry": "not computed this session",
+  "validator_output": {
+    "decision_gate_root_validate_submission.py": [
+      "FORMAT PASS (local only)",
+      "DO NOT SUBMIT: this file is not the byte-bound run-card primary; no clearance evidence describes it.",
+      "exit=1"
+    ],
+    "format_only_scripts_validate_submission.py": [
+      "All format checks PASS (1 file(s))",
+      "exit=0"
+    ],
+    "interpretation": "Format passes; decision gate returns DO NOT SUBMIT (exit 1). The gate's card-binding message is a known stale-path issue (review I3)."
+  },
+  "estimate": {
+    "evidence_class": "MODEL (not a score)",
+    "value": 0.3216,
+    "note": "Self-calibrated to CLAIMs; not validated; not used as a gate."
+  },
   "verdict": "negative",
-  "reason": "No assigned method lane; unresolved literal duplicate stop; prior candidate failed holdout. No experiment or submission slot used."
+  "submission_eligible": false,
+  "reasons": [
+    "Holdout DTI 0.0380 is below the R0 recipe control 0.0978 (protocol: no slot without beating holdout best).",
+    "Literal registry witness overlap 1.0 > 0.70 (representation rule unresolved, see review \u00a75.1).",
+    "No single method paragraph was supplied (no lane).",
+    "Training-feature cache absent: no holdout or leakage canary can be run in this checkout."
+  ],
+  "owner_actions": [
+    "Resolve representation rule (review \u00a75.1)",
+    "Supply method lane (\u00a75.2)",
+    "Restore feature cache (\u00a75.3)"
+  ]
 }

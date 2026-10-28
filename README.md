@@ -4,6 +4,8 @@
 
 Read [SESSION_PROMPT.md](SESSION_PROMPT.md) at the start of each session. Maximize P(Win) and own the outcome: report negative results, do not substitute projections for scores, and do not spend a submission slot without the required gates and a separate selector.
 
+**Latest review (2026-10-28, branch `arena/e57e6a90-gemsdoe92`): still DO NOT SUBMIT.** No file is cleared and no TIFF was generated. Measured: the duplicate rule's literal reading gives overlap 1.0 for any candidate, while a top-K reading gives 0.0070 for the Riesz file. That is a policy decision, not compliance. The Riesz file also fails its holdout (0.0380 vs R0 0.0978). [Review and per-site table](docs/REVIEW_20261028_SESSION.md) · [run card](docs/downloads/review_20261028_run_card.json) · [overlap receipt](docs/downloads/review_20261028_overlap.json).
+
 **No new eligible TIFF.** The existing [Riesz TIFF](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif) is **for research only**. Its range and grid checks pass locally, but its own card reports the literal duplicate stop and that it did not beat R0 on the required holdout. The prior “OK TO SUBMIT” claim was wrong and is superseded. [Executive summary](docs/index.html) · [submission guide](docs/how-to-submit.html) · [audit](docs/REVIEW_20261028_B6AA.md) · [negative run card](docs/downloads/review_b6aa_run_card.json).
 
 The literal registry rule stops any nonempty in-footprint candidate under the pinned continuous witness. The requested single-method lane paragraph is missing. No experiments or slots were used here. The concurrent [independent review](docs/review-47314b7f.html) also verified final-dot overlap. Historical recommendations and values below are archived and do not grant submission clearance.
