@@ -1,5 +1,11 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+## 📌 Read first (standing prompt & current status, 2026-10-28)
+- **Status: DO NOT SUBMIT.** No focus-site file is unique under the full-registry PI-1 rule (2,216 SHA-256). Among the audited candidates, the RIESZ download is the only file that passes uniqueness, and its holdout is below R0. TIPCOMP fails PI-1 (worst 0.9180 vs GEMSDOE22). No weekly slot spent.
+- **Pages site (download, executive summary, official links):** https://buffedlizard55-lab.github.io/GEMSDOE92/
+- **Standing brief:** [docs/STANDING_BRIEF_20261028.md](docs/STANDING_BRIEF_20261028.md) · **Nine-site summary:** [docs/executive-summary-nine-sites-20261028.html](docs/executive-summary-nine-sites-20261028.html) · **Hypotheses:** [docs/HYPOTHESES_20261028_STANDING.md](docs/HYPOTHESES_20261028_STANDING.md)
+- **Stored prompt:** [docs/STANDING_PROMPT.md](docs/STANDING_PROMPT.md). Caveat: this is a reconstruction. The verbatim text must be pasted in.
+
 ## ⬇ Latest session — 2026-10-28 evening (TIPCOMP, session 2123e2a6): NEW candidate, selector decision required
 
 **[⬇ Download `gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif`](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif)**

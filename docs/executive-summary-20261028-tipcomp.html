@@ -11,7 +11,7 @@
 (<a href="HYPOTHESES_20261028_TIPCOMP.md">pre-registered hypotheses</a>).</p>
 
 <section class="box">
-<h2>⬇ The file to download</h2>
+<h2>⚠ Status: NOT unique on the full registry (PI-1 FAIL) — research file only</h2>
 <p class="big"><a href="downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif"><b>Download
 <span class="mono">gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif</span></b></a>
 · <a href="downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.zip">one-TIFF ZIP</a>
@@ -20,10 +20,10 @@
 <p>Portal name: <span class="mono">gemsdoe92-tipcomp-40000d-8f27b9d6</span><br>
 Portal note (103/140 chars): <span class="mono">TIPCOMP H-92F1: 40000 dots; LBM ens x tip-cont x complement; caps vs focus9+priors; MODEL pub128 0.349.</span><br>
 SHA-256: <span class="mono">8f27b9d6…</span> (full hash in run card) · 40,000 binary dots · float32 · EPSG:32611 · 3730×3292 · exact sample geotransform</p>
-<p><span class="ok">✅ OK TO DOWNLOAD</span> — automated validation, zero human pixel inspection:
+<p><span class="warn">❌ NOT OK TO DOWNLOAD AS A UNIQUE SUBMISSION</span> — the earlier "OK TO DOWNLOAD" label is withdrawn. Full-registry PI-1 (2,216 SHA-256, <span class="mono">evidence/tipcomp_full_registry_uniqueness_20261028.json</span>): worst 3-px overlap <b>0.9180</b> vs GEMSDOE22 (null lift 0.384), limit 0.70. Format gates (automated, zero human inspection):
 <b>11/11 format gates PASS</b> (values in [0,1], 0 NaN, 0.0 outside footprint, 0 dots ≤200 m of catalogue — immune to the portal
 “Predicted values must be in range [0, 1]” error).<br>
-<span class="warn">⏳ SELECTOR DECISION REQUIRED BEFORE SPENDING A WEEKLY SLOT</span> — machine verdict
+<span class="warn">⛔ DO NOT SUBMIT</span> — PI-1 fails; holdout verdict also negative. Machine verdict
 <span class="mono">negative</span> on <b>one</b> pre-registered conservative bound (26-row refit bootstrap q05 = 0.2688 &lt; 0.2778),
 while the candidate <b>beats the currently bannered file (rieszlbm2) on every comparable spec</b> (table below).
 Protocol Rule 6: this session does not pick slots; the owner/selector decides with this table.</p>
@@ -32,7 +32,7 @@ Protocol Rule 6: this session does not pick slots; the owner/selector decides wi
 <section class="box"><h2>Decision table — what to download, estimated score, unique?</h2>
 <table>
 <tr><th>File (download = this session only; others study-only)</th><th>CLAIM</th><th>MODEL published-128</th><th>MODEL refit-26 [boot q05–q95]</th><th>Unique (PI-1: ≤70% @3px &amp; |ρ|≤0.90)?</th><th>Action</th></tr>
-<tr><td><b>⭐ gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif (NEW, this session)</b></td><td>—</td><td><b>0.3485</b></td><td>0.3109 [0.2688–0.337*]</td><td><b>Yes</b> vs 165-raster local registry: worst overlap 0.6848, worst |ρ| 0.18; ≤0.6325 vs every focus-9 peak, 0.6177 vs lbmc1, 0.6182 vs rieszlbm2</td><td><b>Download; selector decides slot</b></td></tr>
+<tr><td><b>⭐ gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif (NEW, this session)</b></td><td>—</td><td><b>0.3485</b></td><td>0.3109 [0.2688–0.337*]</td><td><b>NO</b> on the full registry: worst 0.9180 (GEMSDOE22, halo 0.534). The earlier "Yes" used a 165-raster local scope and is superseded.</td><td><b>Do not submit</b></td></tr>
 <tr><td>gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif (prior banner)</td><td>— (unscored)</td><td>0.3163</td><td>0.2743 [0.2206–0.3023]</td><td>Yes (prior 2,162-raster audit ≤0.6556)</td><td>Superseded on all specs by TIPCOMP</td></tr>
 <tr><td>gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif</td><td>— (unscored)</td><td>0.3322</td><td>0.2822 [0.2311–0.3061]</td><td>Yes (prior audit)</td><td>Study only</td></tr>
 <tr><td>GEMSDOE32 h33-h33-2-b2 (R0) — best focus-9 peak</td><td>0.2778</td><td>0.2728</td><td>0.2644 [0.2574–0.2682]</td><td><b>No</b> — identical bytes served by ≥17 repos (fleet audit)</td><td>Do not resubmit (duplicate)</td></tr>
