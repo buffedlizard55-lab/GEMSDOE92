@@ -44,29 +44,44 @@ def main(argv=None) -> int:
         ok, report = summarise(results)
         print(report)
         print("FORMAT PASS (local only)" if ok else "FORMAT FAIL")
-        card = json.loads((ROOT / "evidence/vario_run_card.json").read_text())
-        if not isinstance(card, dict):
-            raise ValueError("run card must be a JSON object")
         try:
             digest = sha256_file(candidate)
         except OSError:
             digest = None
-        bound = (
-            digest is not None and card.get("raster_sha256") == digest
-            and (ROOT / card["submission_file"]).resolve() == candidate.resolve()
-        )
+
+        # Prefer the artifact's adjacent run card so a newer candidate is not
+        # accidentally described by an unrelated historical card. Retain the
+        # old VARIO card only as compatibility fallback for the old CLI contract.
+        adjacent_cards = []
+        if candidate.name.endswith("-zeros.tif"):
+            adjacent_cards.append(candidate.with_name(candidate.name[:-len("-zeros.tif")] + "_run_card.json"))
+        adjacent_cards.append(candidate.with_name(candidate.stem + "_run_card.json"))
+        card_path = next((p for p in adjacent_cards if p.is_file()), ROOT / "evidence/vario_run_card.json")
+        card = json.loads(card_path.read_text())
+        if not isinstance(card, dict):
+            raise ValueError("run card must be a JSON object")
+        card_raster = card.get("submission_file")
+        if card_raster is None and isinstance(card.get("raster"), dict):
+            card_raster = card["raster"].get("file")
+        bound_path = None
+        if isinstance(card_raster, str):
+            bound_path = Path(card_raster)
+            if not bound_path.is_absolute():
+                bound_path = ROOT / bound_path
+        bound = (digest is not None and card.get("raster_sha256") == digest
+                 and bound_path is not None and bound_path.resolve() == candidate.resolve())
         if not bound:
-            print("DO NOT SUBMIT: this file is not the byte-bound run-card primary; no clearance evidence describes it.")
-        elif card.get("verdict") != "negative":
-            # Do not rely on all({}.values()), truthy strings, or a forged
-            # promotion flag. The separately verified dense-witness stop is
-            # binding regardless of this historical run card's contents.
-            print("DO NOT SUBMIT: current literal registry stop blocks promotion; a run-card verdict cannot override it.")
+            print(f"DO NOT SUBMIT: no run card byte-bound to {candidate}; format validation is not clearance.")
+        elif card.get("verdict") != "negative" or card.get("submission_eligible") is not False:
+            # This validator is intentionally not a slot selector, including
+            # when a card says promote. A separate current-policy selector is required.
+            print("DO NOT SUBMIT: this validator never authorizes a competition slot; a separate selector is required.")
         else:
             reasons = card.get("blocking_reasons")
             if not isinstance(reasons, list) or not all(isinstance(x, str) for x in reasons):
                 reasons = []
-            print(f"DO NOT SUBMIT: verdict=negative; " + "; ".join(reasons))
+            detail = "; ".join(reasons) or "candidate run card is negative and submission_eligible=false"
+            print(f"DO NOT SUBMIT: byte-bound run card {card_path.name}; verdict=negative; {detail}")
         return 1
     except (OSError, ValueError, KeyError, TypeError, rasterio.errors.RasterioError) as exc:
         print(f"INCONCLUSIVE / DO NOT SUBMIT: {exc}", file=sys.stderr)
