@@ -1,3 +1,13 @@
+# Current independent review — 2026-10-28 · session 47314b7f
+
+**RESEARCH DOWNLOAD ONLY · DO NOT SUBMIT.** Prior clearance is withdrawn. Fresh pinned-witness checks find 100% literal overlap (>70%) before placement and on all 50,000 existing dots. The archived candidate HOLDOUT-DTI also fails its R0 control. No new TIFF, geological experiment, or weekly submission slot was generated/used.
+
+[Executive summary and nine-site table](docs/review-47314b7f.html) · [Run card](docs/downloads/review_47314b7f_run_card.json) · [Fresh preflight](evidence/review_47314b7f_preflight.json) · [Fresh final-dot validation](evidence/review_47314b7f_overlap.json).
+
+Read [SESSION_PROMPT.md](SESSION_PROMPT.md) before each session. The user asks for a unique validated TIFF, shared holdout tools, no projections as scores, literal registry stop, separate selector, and at most three experiments/two hours. No distinct single-method paragraph was supplied. Maximize P(Win) and Own the Outcome require reporting a blocker rather than inventing clearance. See the current executive summary for access limitations and next steps.
+
+<details><summary>Superseded reports — not current clearance</summary>
+
 # SUBMISSION READY — 2026-10-27 (session ee2370c1)
 
 **✅ OK TO SUBMIT** (all automated gates passed: format, PI-1 uniqueness, leaderboard-aligned MODEL > 0.2778 at the 5% bound, robustness, no leakage)
@@ -66,3 +76,5 @@ slot. The original publication is preserved in Git history for audit.
 
 # GAPBRIDGE unique TIF generated 2026-10-25 — ✅ OK TO DOWNLOAD · ⛔ DO NOT SUBMIT YET
 File: docs/downloads/gemsdoe92-gapbridge-ctx-37654-20261025-zeros.tif · SHA-256 14f37bb37fb27ece491b79c16a9b8a29d7c90c18755287ee4c636643ee42219d · Validator 11/11 PASS (values [0,1], no NaN) · Uniqueness worst overlap 0.4376 / |rho| 0.086 (PASS local registry) · HOLDOUT-DTI 0.1015 [0.0887,0.1126] (gems57-pooled-hide-v2, 22,893 withheld) vs R0 0.0039 — does NOT beat repo best 0.1751, so weekly slot NOT cleared. See docs/gapbridge.html + run card docs/downloads/gemsdoe92-gapbridge_run_card.json.
+
+</details>
