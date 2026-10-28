@@ -6,6 +6,8 @@
 
 **[⬇ Download TIPCOMP research-only GeoTIFF](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif)** · [one-TIFF ZIP](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.zip) · [TIPCOMP executive summary](docs/executive-summary-20261028-tipcomp.html) · [run card](docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6_run_card.json) · [readiness JSON](docs/downloads/tipcomp_readiness_20261028.json)
 
+**Independent re-check (session 3, 2026-10-28):** the candidate's SHA-256, the 11 format gates, the run-card hash binding, 144 of 165 registry rows (SHA-matched; 21 live only in the gitignored `.cache/`), and one focus-9 peak re-fetched from GitHub all re-verified. Receipt: [`evidence/tipcomp_independent_check_20261028.json`](evidence/tipcomp_independent_check_20261028.json) · script `scripts/verify_tipcomp_independent.py` · open issues in [`IRREGULARITIES.md`](IRREGULARITIES.md) IR-1028C-1 to IR-1028C-8 (including the contested PI-1 uniqueness reading and the holdout tie). No slot spent.
+
 | Field | Evidence / current decision |
 |---|---|
 | Download vs upload | **OK TO DOWNLOAD FOR RESEARCH ONLY; DO NOT SUBMIT.** Local site audit passes file-format checks; this is not organizer acceptance. |

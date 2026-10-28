@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "candidate": "docs/downloads/gemsdoe92-tipcomp-40000dots-20261028-8f27b9d6-zeros.tif",
+  "checks": {
+    "candidate_sha256": "8f27b9d6478526d72a055f0a56c7c8f6db1d63f2f5c66233b7eedbf9937579cf",
+    "run_card_sha256_matches": true,
+    "format_gates_pass": true,
+    "format_gates_count": 11,
+    "registry_rows_total": 165,
+    "registry_rows_present_in_clone": 144,
+    "registry_rows_hash_match": 144,
+    "registry_rows_missing_in_clone": [
+      ".cache/focus9_20261028b/GEMSDOE24_gvc1_00859.tif",
+      ".cache/focus9_20261028b/GEMSDOE24_peak_d15.tif",
+      ".cache/focus9_20261028b/GEMSDOE27_h31_0225.tif",
+      ".cache/focus9_20261028b/GEMSDOE27_peak_gap.tif",
+      ".cache/focus9_20261028b/GEMSDOE28_peak_h36.tif",
+      ".cache/focus9_20261028b/GEMSDOE30_peak_d28p.tif",
+      ".cache/focus9_20261028b/GEMSDOE31_peak_solo.tif",
+      ".cache/focus9_20261028b/GEMSDOE33_peak_h33d.tif",
+      ".cache/focus9_20261028b/GEMSDOE36_peak_pinn.tif",
+      ".cache/focus9_20261028b/GSET_G10_h28_01839.tif",
+      ".cache/focus9_20261028b/GSET_G27_h29_0219.tif",
+      ".cache/focus9_20261028b/GSET_G48_h59_02296.tif",
+      ".cache/focus9_20261028b/GSET_G49_gate_02376.tif",
+      ".cache/focus9_20261028b/GSET_G70_p5_02478.tif",
+      ".cache/focus9_20261028b/GSET_G73_h73_01917.tif",
+      ".cache/focus9_20261028b/GSET_G76_ptcf_02343.tif",
+      ".cache/focus9_20261028b/GSET_G82_h82_01886.tif",
+      ".cache/focus9_20261028b/GSET_G91_lftg_01823.tif",
+      ".cache/focus9_20261028b/LOW_G25_h66_00742.tif",
+      ".cache/focus9_20261028b/LOW_G28_s18_00217.tif",
+      ".cache/focus9_20261028b/MID_G30_msdb_01462.tif"
+    ],
+    "worst_overlap_pi1_among_present": {
+      "value": 0.68485,
+      "file": "docs/downloads/gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif"
+    },
+    "focus9_GEMSDOE24_peak_refetch_sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+    "focus9_GEMSDOE24_peak_pinned_sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+    "focus9_GEMSDOE24_peak_match": true
+  },
+  "holdout_recheck": "NOT RUN: cached feature stack (.cache) absent in clone; holdout numbers are from the run card only",
+  "verdict_from_run_card": "negative",
+  "submission_eligible": false,
+  "note": "Verification only. Clearance is not granted by this script."
+}

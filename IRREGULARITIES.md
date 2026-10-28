@@ -1435,3 +1435,48 @@ Fresh GitHub blob retrieval and hash-pinned template checks reproduce the univer
 The archived candidate HOLDOUT-DTI 0.037987 is below its R0 control 0.097750; beating lbmc1 alone is insufficient. These holdout numbers are archived reports, not rerun here. Current MODEL projections remain unverified against organizer receipts and cannot authorize a slot. Earlier README and run-card byte sizes disagreed; see the new card for a fresh disk size and hash.
 
 Primary pages now fold superseded claims and display a blocking banner. No new geological experiments, no new TIFF and no competition slots. Source/data verification outside GitHub is constrained by the network allowlist. No method lane is assigned in the supplied paragraph. Resolve protocol semantics before proceeding rather than silently weaken the duplicate gate.
+
+## IR-1028C — 2026-10-28 session 3: front-page contradiction, contested uniqueness, holdout tie (review only)
+
+Reviewed by re-running checks in this session (no new TIFF, no slot, no clearance).
+Every number below is from a command run here or a stored file named in the row.
+
+- **IR-1028C-1 — Front page contradicted the README.** Root `index.html` said
+  "DO NOT SUBMIT" with no mention of the TIPCOMP candidate, while the README
+  banner and TIPCOMP executive summary offered it for download. Fixed: the front
+  page now has one table with download status, submit status (NOT CLEARED),
+  estimate (MODEL), uniqueness and holdout for the single candidate.
+- **IR-1028C-2 — Holdout does not show TIPCOMP beating R0.** Run card
+  `holdout_dti.foldproper_e2` = 0.09617 [0.08521, 0.10665]; `r0_recipe_control` =
+  0.09775 [0.08590, 0.11077]. Paired Δ −0.00158 [−0.01787, +0.01469] per README: a
+  tie. The static candidate score is 0.00164 [0.00128, 0.00206]. Its
+  0.3485 / 0.3109 numbers are MODEL projections fitted to CLAIMs, not scores.
+- **IR-1028C-3 — Uniqueness depends on the PI-1 reading that IR-47314b7f said was not
+  authorized.** `gems/uniqueness_v3.py` replaces a continuous or dense registry
+  raster with its top-N pixels. Under the literal reading (every positive pixel
+  is a dot) the overlap is 1.0 for any nonempty candidate
+  (`docs/downloads/review_20261028_overlap.json`). The protocol's own instruction
+  is to resolve semantics before proceeding, not to weaken the gate silently.
+  Owner decision required.
+- **IR-1028C-4 — Registry re-check is partial in a fresh clone.** Of the 165 rows in
+  the TIPCOMP run card, 144 are present with matching SHA-256; 21 are under
+  `.cache/focus9_20261028b/` (gitignored, absent from a clone): 9 GEMSDOE site files
+  (GEMSDOE24 and GEMSDOE27 two each, 28/30/31/33/36 one each), 9 GSET files and 3
+  LOW/MID files. Those 21 rows cannot be reproduced here. One
+  of them was re-fetched via codeload (GEMSDOE24 peak `68d0e2e4…`) and matches.
+  Evidence: `evidence/tipcomp_independent_check_20261028.json`,
+  `scripts/verify_tipcomp_independent.py`.
+- **IR-1028C-5 — Stored worst overlap is 0.68485.** Largest overlap among present rows:
+  `gemsdoe92-riedelvalve-riedel_n90k-90000-20261025-e57353de-zeros.tif`, 0.68485 ≤ 0.70.
+- **IR-1028C-6 — Leaderboard values 0.4413 / 0.3195 cannot be verified.** The
+  DrivenData domain is not on the sandbox's outbound allowlist (only github.com,
+  codeload, api.github.com, registry.npmjs.org, pypi.org, files.pythonhosted.org).
+  They remain user-reported, unmirrored and unverified. The 0.2778 for GEMSDOE32
+  is also a CLAIM, not an organizer receipt.
+- **IR-1028C-7 — Fetch script uses a host this sandbox cannot reach.**
+  `raw.githubusercontent.com` fails TLS from this sandbox; `codeload.github.com`
+  works. `scripts/download_focus_registry.py` uses raw URLs and will fail here.
+  Not changed (scope); recommended fix: switch it to codeload archive extraction.
+- **IR-1028C-8 — Holdout not re-run.** The feature stack (`.cache`) and
+  training_features are absent, so no holdout number from this session exists. All
+  holdout figures are archived run-card values.
