@@ -1,0 +1,11 @@
+{
+ "file": "gemsdoe92-damagezone-close-dots-20261028-zeros.tif",
+ "sha256": "07d5f5d5db59ad38721d703e5082f26389fc3c1fb54d7ac8f73f8a79651d3bbc",
+ "dots": 30000,
+ "ndots": 30000,
+ "band": [
+  2.0,
+  3.0
+ ],
+ "seed": 20261028
+}
