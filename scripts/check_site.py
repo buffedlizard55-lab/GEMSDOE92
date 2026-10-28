@@ -110,6 +110,17 @@ def check_primary(html: str, problems: list[str]) -> None:
     if card.get("raster_sha256") != digest:
         problems.append("run card sha256 != primary bytes")
     verdict = card.get("verdict")
+    # Never let a self-declared promotion override mandatory scientific gates.
+    if verdict == "promote" or card.get("submission_eligible") is True:
+        gates = card.get("gates_passed", {})
+        literal = card.get("uniqueness", {}).get("literal_reading", {})
+        if gates.get("catalogue_holdout_beats_r0_recipe") is not True:
+            problems.append("promotion blocked: required R0 holdout gate is not true")
+        if literal.get("duplicate_under_literal") is not False:
+            problems.append("promotion blocked: literal registry duplicate or missing evidence")
+        overlap = card.get("uniqueness", {}).get("surface_worst_overlap")
+        if not isinstance(overlap, (float, int)) or isinstance(overlap, bool) or not 0 <= overlap <= .70:
+            problems.append("promotion blocked: pre-placement overlap missing or above limit")
     if verdict not in ("promote", "negative"):
         problems.append("run card verdict must be promote or negative")
     if audit.get("verdict") != verdict or audit.get("submission_eligible") is not card.get("submission_eligible"):
@@ -179,7 +190,7 @@ def main() -> int:
     check_rendered(problems)
     html = INDEX.read_text(encoding="utf-8")
     howto = (DOCS / "how-to-submit.html").read_text(encoding="utf-8") if (DOCS / "how-to-submit.html").is_file() else ""
-    for needle in ("How to submit", "CLAIM", "MODEL", "HOLDOUT-DTI", "OK TO DOWNLOAD" if False else "Download"):
+    for needle in ("How to submit", "user-reported", "HOLDOUT-DTI", "Download"):
         if needle not in html:
             problems.append(f"index.html missing {needle!r}")
     if "Predicted values must be in range [0, 1]" not in howto:

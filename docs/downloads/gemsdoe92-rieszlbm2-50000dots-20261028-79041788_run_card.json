@@ -423,6 +423,7 @@
   "verdict": "negative",
   "submission_eligible": false,
   "slot_note": "Weekly cap is 3 submissions/week (DrivenData portal rules prevail). Verify whether prior unscored lbmc1 (e928d3c3...) has already consumed a weekly slot before uploading.",
+  "classification_correction_20261028": "Original promote classification revoked: literal registry overlap fails and holdout did not beat R0. Format checks alone cannot promote.",
   "submission_status": "DO NOT SUBMIT \u2014 literal duplicate stop and holdout improvement gate failed",
   "superseding_review": "review_47314b7f_run_card.json"
 }

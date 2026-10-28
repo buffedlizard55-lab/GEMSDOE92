@@ -5,19 +5,7 @@
   "note": "Riesz-Locked LBM-v2: 50000 binary dots; 128-claim density + q85 mimic filter + OOF Riesz/piedmont/Peclet; <=65.6% 8-owner fleet cap.",
   "verdict": "negative",
   "submission_eligible": false,
-  "download_status": "RESEARCH ONLY",
-  "submission_status": "DO NOT SUBMIT \u2014 literal duplicate stop and holdout improvement gate failed",
-  "gates": {
-    "format": true,
-    "uniqueness_pi1": true,
-    "unique_vs_prior_lbmc1": true,
-    "model_beats_0_2778_at_q05": true,
-    "model_robust_all_specs_ge_R0": true,
-    "no_leakage": true,
-    "catalogue_holdout_beats_lbmc1": true,
-    "catalogue_holdout_beats_r0_recipe": false,
-    "literal_registry_uniqueness": false,
-    "beats_current_holdout_best": false
-  },
-  "review_card": "review_47314b7f_run_card.json"
+  "download_status": "OK TO DOWNLOAD FOR RESEARCH",
+  "submission_status": "DO NOT SUBMIT",
+  "reason": "Research only; literal duplicate stop and holdout below R0."
 }

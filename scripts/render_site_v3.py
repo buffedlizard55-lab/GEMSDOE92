@@ -339,7 +339,7 @@ def official_sources_table() -> str:
     return f"<table><tr><th>#</th><th>Verified Official Source</th><th>URL (for manual inspection)</th></tr>{rows}</table>"
 
 
-def render() -> dict[Path, str]:
+def _historical_unsafe_render() -> dict[Path, str]:
     card, prior, f9, f9u, fleet, oot, hold, lbm2, model, val = load()
     claims_doc = json.loads((EVID / "claims_matched_20261028.json").read_text(encoding="utf-8"))
     current, readiness = status_cards(card)
@@ -441,6 +441,19 @@ with rasterio.open("clean_submission-zeros.tif", "w", **prof) as dst:
         DL / "current_submission.json": json.dumps(current, indent=2) + "\n",
         DL / "readiness.json": json.dumps(readiness, indent=2) + "\n",
     }
+
+
+# Do not call the historical renderer: it hard-codes a promotion and changes
+# the user-specified uniqueness rule. This fail-closed renderer supersedes it.
+def render() -> dict[Path, str]:
+    try:
+        from scripts.render_safe_review import render as safe_render
+    except ModuleNotFoundError:
+        from render_safe_review import render as safe_render
+    card = load()[0]
+    if card.get("verdict") != "negative" or card.get("submission_eligible") is not False:
+        raise ValueError("blocked: no validated promotion is implemented by this renderer")
+    return safe_render(card)
 
 
 def main() -> int:
