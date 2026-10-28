@@ -26,6 +26,10 @@
   },
   "inputs": [
     {
+      "path": "docs/downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif",
+      "sha256": "4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14"
+    },
+    {
       "path": "docs/downloads/gemsdoe92-damagezone-close-dots-20261028-zeros.tif",
       "sha256": "07d5f5d5db59ad38721d703e5082f26389fc3c1fb54d7ac8f73f8a79651d3bbc"
     },
@@ -83,6 +87,20 @@
     }
   ],
   "results": [
+    {
+      "name": "blindcorridor-37654dots-11f8999c",
+      "candidate": "docs/downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif",
+      "candidate_sha256": "4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14",
+      "n_dots": 37654,
+      "pi1_pass": false,
+      "worst_overlap": 0.769108,
+      "worst_raster_repos": [
+        "buffedlizard55-lab/13GEMSDOE"
+      ],
+      "worst_raster_halo_frac": 0.679786228,
+      "null_lift": 0.089322,
+      "worst_abs_rho": 0.186642
+    },
     {
       "name": "damagezone-close-dots-20261028",
       "candidate": "docs/downloads/gemsdoe92-damagezone-close-dots-20261028-zeros.tif",
@@ -379,6 +397,7 @@
       "rieszlbm2-50000dots-79041788"
     ],
     "not_unique": [
+      "blindcorridor-37654dots-11f8999c",
       "damagezone-close-dots-20261028",
       "focus9-GEMSDOE24-68d0e2e4",
       "focus9-GEMSDOE25-91eae1ca",
@@ -399,11 +418,13 @@
     "IR-1028C-2: LBMC1 (e928d3c3, 2026-10-27 upload per SLOT_PLAN) passes PI-1 but is a previously uploaded file; not offered as new",
     "IR-1028C-3: RIESZ passes PI-1 but holdout 0.037987 is below R0 0.097750 (repo gems57 record); SLOT_PLAN \"cleared for selector\" conflicts with SUBMISSION_READY/check_site negative verdict",
     "IR-1028C-4: all nine focus-site peaks are byte-identical to files in other repos (1.000 overlap); nine-site pairwise overlap 0.87-1.00",
-    "IR-1028C-5: NaN-outside format conflicts with zeros-outside served format; root cause of portal range error probable (naive range check fails NaN), not confirmed"
+    "IR-1028C-5: NaN-outside format conflicts with zeros-outside served format; root cause of portal range error probable (naive range check fails NaN), not confirmed",
+    "IR-1028C-6: main added docs/downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif after the registry inventory was built; blindcorridor audit compared 2,217 SHA (others 2,216); blindcorridor FAILS at 0.769 vs 13GEMSDOE. Rebuild .cache/registry_v3 inventory before the next audit."
   ],
   "next_actions": [
     "Do not promote any slot until a new file passes PI-1 AND beats the holdout best (R0 0.09775 / TIPCOMP E2 0.09617 on gems57 pooled)",
     "Name a free official external source for H-A/H-B only after confirming it is reachable from the environment (USGS/NWIS hosts are blocked here)"
   ],
-  "timestamp_note": "UTC wall clock recorded at creation"
+  "timestamp_note": "UTC wall clock recorded at creation",
+  "experiment_count_note": "E-UNIQ-20261028-A covers the audit of 15 candidate files (incl. blindcorridor)"
 }

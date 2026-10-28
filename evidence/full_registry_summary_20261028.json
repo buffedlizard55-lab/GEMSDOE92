@@ -4,6 +4,23 @@
   "pi1_limit": 0.7,
   "candidates": [
     {
+      "name": "blindcorridor-37654dots-11f8999c",
+      "candidate": "docs/downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif",
+      "candidate_sha256": "4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14",
+      "n_dots": 37654,
+      "registry_unique_sha256": 2217,
+      "pi1_pass": false,
+      "worst_overlap": 0.769108,
+      "worst_raster_repos": [
+        "buffedlizard55-lab/13GEMSDOE"
+      ],
+      "worst_raster_halo_frac": 0.679786228,
+      "null_lift": 0.089322,
+      "worst_abs_rho": 0.186642,
+      "n_rasters_overlap_over_0_5": 38,
+      "candidate_identical_copies_in_registry": []
+    },
+    {
       "name": "damagezone-close-dots-20261028",
       "candidate": "docs/downloads/gemsdoe92-damagezone-close-dots-20261028-zeros.tif",
       "candidate_sha256": "07d5f5d5db59ad38721d703e5082f26389fc3c1fb54d7ac8f73f8a79651d3bbc",

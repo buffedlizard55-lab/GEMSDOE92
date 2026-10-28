@@ -3,6 +3,7 @@
 ## 📌 Read first (standing prompt & current status, 2026-10-28)
 - **Status: DO NOT SUBMIT.** No focus-site file is unique under the full-registry PI-1 rule (2,216 SHA-256). Among the audited candidates, the RIESZ download is the only file that passes uniqueness, and its holdout is below R0. TIPCOMP fails PI-1 (worst 0.9180 vs GEMSDOE22). No weekly slot spent.
 - **Damage-zone file** (`gemsdoe92-damagezone-close-dots-20261028-zeros.tif`): FAILS full-registry PI-1 (identical bytes in 5 repos). Not unique.
+- **Blindcorridor** (`gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif`, added to `main` after the registry inventory was built): FAILS full-registry PI-1 (worst 0.7691 vs 13GEMSDOE). Not unique.
 - **Pages site (download, executive summary, official links):** https://buffedlizard55-lab.github.io/GEMSDOE92/
 - **Standing brief:** [docs/STANDING_BRIEF_20261028.md](docs/STANDING_BRIEF_20261028.md) · **Nine-site summary:** [docs/executive-summary-nine-sites-20261028.html](docs/executive-summary-nine-sites-20261028.html) · **Hypotheses:** [docs/HYPOTHESES_20261028_STANDING.md](docs/HYPOTHESES_20261028_STANDING.md)
 - **Stored prompt:** [docs/STANDING_PROMPT.md](docs/STANDING_PROMPT.md). Caveat: this is a reconstruction. The verbatim text must be pasted in.
@@ -40,7 +41,7 @@ The active decision above applies to all current artifacts. The RIESZ review bel
 
 **[⬇ Download the RIESZ research-only GeoTIFF](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif)** · [One-TIFF ZIP](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.zip) · [Current site](docs/index.html) · [How to submit (future cleared file only)](docs/how-to-submit.html) · [Nine-site comparison](docs/nine-sites.html) · [Three-pass review](docs/REVIEW_20261028_PROTOCOL.md) · [Run card](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json) · [Readiness JSON](docs/downloads/readiness.json)
 
-A separate `damagezone-close-dots` TIFF was added later by merged PR #166; it remains unselected research material. Its local holdout comparison does not beat the recorded R0 recipe, and full-registry uniqueness is pending. This review does **not** clear it for upload; see the [independent review](docs/REVIEW_20261028_SESSION.md) and the current site's separate-artifact warning.
+A separate `damagezone-close-dots` TIFF was added later by merged PR #166; it remains unselected research material. Its local holdout comparison does not beat the recorded R0 recipe, and full-registry PI-1 FAILS (identical bytes in 5 repos; audit `evidence/uniq_full_registry/damagezone-close-dots-20261028.json`). This review does **not** clear it for upload; see the [independent review](docs/REVIEW_20261028_SESSION.md) and the current site's separate-artifact warning.
 
 | Check | Evidence / result |
 |---|---|

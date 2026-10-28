@@ -6,6 +6,7 @@
   "buffedlizard55-lab/GEMSDOE92"
  ],
  "n_dots": 30000,
+ "candidate_nonfinite_cells_treated_as_zero": 0,
  "registry_unique_sha256": 2216,
  "excluded_self_sha256": "07d5f5d5db59ad38721d703e5082f26389fc3c1fb54d7ac8f73f8a79651d3bbc",
  "registry_scope": "['buffedlizard55-lab', 'kanlerxz87-cyber', 'eugboogieman123-ops', 'wingbangboozle1-lang', 'ginnymcfiner23-ux', 'karagemop466-tech', 'apartanish22-droid', 'sassnarep3-star']",
