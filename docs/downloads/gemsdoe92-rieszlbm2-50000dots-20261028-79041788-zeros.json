@@ -124,5 +124,8 @@
     "session": "81d8ca8b",
     "date": "20261028",
     "selection": "/home/user/GEMSDOE92/.cache/riesz_locked/rieszlbm2_sel.npy"
-  }
+  },
+  "verdict": "negative",
+  "submission_eligible": false,
+  "classification_correction_20261028": "Original promote classification revoked: literal registry overlap fails and holdout did not beat R0. Format checks alone cannot promote."
 }

@@ -6,7 +6,7 @@
   <title>Executive Summary — GEMSDOE92 GEMS status and site review</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body><aside style="background:#fee2e2;border:4px solid #b91c1c;padding:1rem;font:18px system-ui"><strong>DO NOT SUBMIT — NO ELIGIBLE NEW TIFF.</strong> All material below is historical, may be incorrect, and cannot grant clearance. <a href="index.html">Current executive summary</a> · <a href="how-to-submit.html">Submission guide</a>.</aside><details><summary>Superseded historical content (research only)</summary>
 <!-- VARIO-STATUS:BEGIN -->
 <section id="vario-status" aria-label="Authoritative submission status" style="max-width:70rem;margin:1rem auto;padding:1.25rem;border:3px solid #991b1b;border-radius:12px;background:#fff7ed;color:#292524;font:1rem/1.6 system-ui,sans-serif;overflow-wrap:anywhere">
 <h1 style="margin-top:0">GEMSDOE92 VARIO — historical research GeoTIFF; registry-uniqueness gate FAILED</h1>
@@ -144,7 +144,7 @@ analysis: <a href="ANALYSIS_20261025_VARIO.md">why R0 scored 0.2778 [CLAIM] and 
   <h2 style="margin-top:0">Parallel lane receipt — lane VARIO / arm <code>vario_full</code></h2>
   <p style="font-size:1.25rem;margin:.2rem 0"><strong>✅ OK TO DOWNLOAD (format-valid) · ⛔ DO NOT SUBMIT</strong> (verdict <code>negative</code>). Reason: registry duplicate under protocol rule 1: 0.9791 of its dots lie within 3 px of the dots of gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif (37,654 dots), above the 0.70 limit; did not beat control_FAULTNET_far on the holdout.</p>
   <p style="font-size:1.15rem"><a href="downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif" download><strong>⬇ Download research GeoTIFF (gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif)</strong></a> · <a href="downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.zip" download>one-TIFF ZIP</a> · <a href="downloads/vario_run_card.json">run card (JSON)</a> · <a href="ANALYSIS_20261025_VARIO.md">analysis</a></p>
-  <p><strong>How to submit (only do this with a file marked ✅ OK TO SUBMIT, which this one is not):</strong></p>
+  <p><strong>How to submit (only do this with a file marked ✅ DO NOT SUBMIT (historical clearance revoked), which this one is not):</strong></p>
   <ol>
     <li>Download the <code>.tif</code> above (or the ZIP that contains only that TIFF).</li>
     <li>Open the DrivenData submissions page: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/</a> (log in; this URL was not live-verified from the sandbox).</li>
@@ -154,7 +154,7 @@ analysis: <a href="ANALYSIS_20261025_VARIO.md">why R0 scored 0.2778 [CLAIM] and 
   <p><strong>Automated validation (no human inspection):</strong> single band float32, EPSG:32611, 3730 × 3292, transform equal to <code>sample_submission.tif</code>, every value finite and in [0, 1], 0 NaN, 0 outside the footprint, 0 dots on mapped faults. This prevents the portal error <em>"Predicted values must be in range [0, 1]"</em>. SHA-256 <code>11f92e382b04a2f368c2259d6b092248efe338dd9a81436de4f27217c3b44573</code>.</p>
   <p><strong>HOLDOUT-DTI</strong> (gems57-pooled-hide-v2, 22,663 withheld positives, 95% CI from a paired 20 km cluster bootstrap): <code>0.150020 [0.134975, 0.164286]</code>. control_FAULTNET_far control on the same folds: <code>0.175147 [0.159756, 0.189860]</code>. Paired Δ: <code>-0.025127 [-0.029306, -0.020842]</code>. A holdout number is <em>not</em> a leaderboard score. No ORGANIZER-CONFIRMED score exists for this file.</p>
   <p><strong>Uniqueness</strong> (REGISTRY-MEASUREMENT, 99 rasters: the public GEMSDOE* index plus local lineage): worst dot overlap <code>0.9791</code> (limit 0.70; vs <code>gemsdoe92-faultnet-netctx-37654-20261025-443d044b-zeros.tif</code>), worst |ρ| final <code>0.8913</code> / surface <code>0.1373</code> (limit 0.90). Under the literal positive-support reading, 4 raster(s) exceed 0.70. The literal reading is binding under the current protocol, so this triggers the duplicate stop.</p>
-  <p>Sibling arms (research only): <a href="downloads/gemsdoe92-vario-smooth-37654-20261025-5c5a1192-zeros.tif" download>vario_smooth</a> (negative, HOLDOUT-DTI 0.141661) · <a href="downloads/gemsdoe92-vario-nctx-37654-20261025-d2d499d5-zeros.tif" download>vario_nctx</a> (negative, HOLDOUT-DTI 0.116258). Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ OK TO SUBMIT.</p>
+  <p>Sibling arms (research only): <a href="downloads/gemsdoe92-vario-smooth-37654-20261025-5c5a1192-zeros.tif" download>vario_smooth</a> (negative, HOLDOUT-DTI 0.141661) · <a href="downloads/gemsdoe92-vario-nctx-37654-20261025-d2d499d5-zeros.tif" download>vario_nctx</a> (negative, HOLDOUT-DTI 0.116258). Other lanes' status and the repository-wide decision follow below this box; a file is cleared only where it is marked ✅ DO NOT SUBMIT (historical clearance revoked).</p>
 </section>
 <!-- CURRENT:END -->
 <aside class="banner banner-warn" aria-label="Independent repository audit, research only">
@@ -563,7 +563,7 @@ analysis: <a href="ANALYSIS_20261025_VARIO.md">why R0 scored 0.2778 [CLAIM] and 
 </header>
 
 <main><section id="ali-session-2026-10-25" class="banner banner-warn" style="border:3px solid #991b1b" aria-label="ALI session result">
-<h2>ALI session (2026-10-25): new GeoTIFF generated — OK TO DOWNLOAD (research) · NOT OK TO SUBMIT</h2>
+<h2>ALI session (2026-10-25): new GeoTIFF generated — OK TO DOWNLOAD (research) · NOT DO NOT SUBMIT (historical clearance revoked)</h2>
 <p><a class="btn" download href="downloads/gemsdoe92-ali-famnms-37654-20261025T230000Z-68be9b4d-zeros.tif"><strong>Download the new ALI GeoTIFF</strong></a> · <a download href="downloads/gemsdoe92-ali-famnms-37654-20261025T230000Z-68be9b4d-zeros.zip">one-TIFF ZIP</a> · <a href="ALI_LANE.md">full report</a> · <a href="downloads/ali_run_card.json">run card</a></p>
 <table><tbody>
 <tr><th>Format</th><td>PASS — 1 float32 band, EPSG:32611, 3730×3292, matching transform, values exactly {0,1}, 0 NaN, zeros outside the footprint, 0 dots on catalogued faults (cannot trigger "Predicted values must be in range [0, 1]")</td></tr>
@@ -577,7 +577,7 @@ analysis: <a href="ANALYSIS_20261025_VARIO.md">why R0 scored 0.2778 [CLAIM] and 
 </tbody></table>
 <p><strong>How to submit a file once one is cleared:</strong> open <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">the DrivenData submissions page</a>, upload the <code>-zeros.tif</code> (or its one-TIFF ZIP — never both), paste the file's name and its ≤140-character note, and respect the 3-per-week limit (<a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">official rules</a> §3.2/§3.4). <strong>Today no file is cleared.</strong></p>
 </section>
-<aside class="banner banner-warn" style="border:3px solid #991b1b"><h2>Historical DRAINAGE-KNICK research record</h2><p><strong>OK TO DOWNLOAD FOR RESEARCH: YES. OK TO SUBMIT: NO.</strong> Automated format validation passes, but HOLDOUT-DTI 0.061728 [0.047046, 0.075316] is below 0.113316 and the literal registry overlap stop fired.</p><p><a download href="downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif"><strong>Download validated GeoTIFF</strong></a> · <a download href="downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.zip">one-TIFF ZIP</a> · <a href="ANALYSIS_20261025_DRAINAGE_KNICK.md">analysis</a> · <a href="downloads/gemsdoe92-drainageknick-20261025T120000Z_run_card.json">run card</a></p><p>Name: <code>GEMSDOE92-DRAINAGE_KNICK-20261025</code>. Verdict: <code>negative</code>; weekly slots used: 0.</p></aside>
+<aside class="banner banner-warn" style="border:3px solid #991b1b"><h2>Historical DRAINAGE-KNICK research record</h2><p><strong>OK TO DOWNLOAD FOR RESEARCH: YES. DO NOT SUBMIT (historical clearance revoked): NO.</strong> Automated format validation passes, but HOLDOUT-DTI 0.061728 [0.047046, 0.075316] is below 0.113316 and the literal registry overlap stop fired.</p><p><a download href="downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.tif"><strong>Download validated GeoTIFF</strong></a> · <a download href="downloads/gemsdoe92-drainageknick-20261025T120000Z-zeros.zip">one-TIFF ZIP</a> · <a href="ANALYSIS_20261025_DRAINAGE_KNICK.md">analysis</a> · <a href="downloads/gemsdoe92-drainageknick-20261025T120000Z_run_card.json">run card</a></p><p>Name: <code>GEMSDOE92-DRAINAGE_KNICK-20261025</code>. Verdict: <code>negative</code>; weekly slots used: 0.</p></aside>
 <!-- PROVINCETOE-CARD:BEGIN (rendered by scripts/render_provincetoe_site.py) -->
 <section class="download-card" id="provincetoe-exec-summary">
   <h2>Newest Session Closeout (<code>2026-10-25</code>): <code>PROVINCETOE</code> Sets #1 Static <code>HOLDOUT-DTI</code> (<code>0.009711</code>), Cures <code>NE</code> Collapse, &amp; Quantifies the Path Past <code>0.2778</code> <code>[CLAIM]</code></h2>
@@ -713,5 +713,5 @@ analysis: <a href="ANALYSIS_20261025_VARIO.md">why R0 scored 0.2778 [CLAIM] and 
 </footer>
 </details>
 <!-- HISTORICAL-ARCHIVE:END -->
-</body>
+</details></body>
 </html>
