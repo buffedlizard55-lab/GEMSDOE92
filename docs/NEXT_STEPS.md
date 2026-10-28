@@ -1,10 +1,13 @@
-# Next steps — after session ee2370c1 (2026-10-27)
+# Current next steps — 2026-10-28 protocol review
 
-1. **Submit** `gemsdoe92-lbmc1-35801d-89a660f6` (OK TO SUBMIT), then record the organizer score with its SHA-256 in `ledger/submissions.csv` and in the dated claims ledger.
-2. **Refit the LBM** with the new score (`scripts/lbm_fit_final.py`, `scripts/lbm_ensemble_map.py`). A raster this far from the training set is the most informative test of the model. If the score is ≥ 0.31, the consensus signal is confirmed. If it is ≈ 0.27, the consensus factor is overfitted; drop it and refit with geophysical classes.
-3. **H4: 1 m lidar scarps.** Download the 3DEP 1 m / GeoDAWN EarthMRI tiles listed in `1m_DEM_links.csv` on a machine with open internet. Compute scarp-normal curvature and height at 1 m, aggregate them to 100 m, and add them as LBM classes. This is the most plausible route toward the 0.44 leader.
-4. **Phase-2 hedge:** before choosing the single final submission, weigh the public MODEL estimate against the physical coherence of traces. Experts revise labels from submissions.
-5. **Owner decisions needed:** confirm PI-1/PI-1b (IR-0127-1), confirm the leaderboard-aligned gate (IR-0127-2), and check account compliance (IR-0127-5).
+**DO NOT SUBMIT the RIESZ-LOCKED artifact or the earlier LBMC1 artifact.** No weekly slot is approved. No experiment is authorized in this review: the prior lane used 3/3 experiments, the full feature stack is absent, and the required method paragraph was not supplied. The current review and corrected status feed take precedence over all historical instructions below.
+
+1. Resolve the protocol's missing assigned method paragraph and get an explicit decision on whether the full-support witness counts as a dot raster. Until then, the literal 0.70 overlap stop binds.
+2. Restore the shared full feature cache from an authorized source and verify provenance/checksums, nodata handling, and the registry snapshot. This checkout has only `data/bridge` and R0-derived examples, not the cached 19-band feature stack.
+3. In a future authorized lane/budget, use the shared holdout/evaluator/writer; do feature-alone leakage canaries and registry checks on the surface before placement and final dots; require improvement over the same-evaluator best with a paired 95% CI before separate slot selection.
+4. Obtain an organizer receipt only after a future candidate is independently cleared; record it in `ledger/submissions.csv`. Do not infer live leaderboard scores from project-site claims or model projections.
+
+The old “submit lbmc1” and H4 LiDAR action list below is archival and superseded; do not execute it without satisfying the current gates above.
 
 ---
 

@@ -7,5 +7,20 @@
   "submission_eligible": false,
   "download_status": "OK TO DOWNLOAD FOR RESEARCH",
   "submission_status": "DO NOT SUBMIT",
-  "reason": "Research only; literal duplicate stop and holdout below R0."
+  "reason": "Research only; mandatory promotion protocol gates failed.",
+  "blocking_reasons": [
+    "pre-placement surface overlap is missing or exceeds 0.70",
+    "literal full-support registry witness triggers the Rule 1 duplicate stop",
+    "HOLDOUT-DTI did not beat the R0 recipe control with paired 95% CI above zero"
+  ],
+  "gates": {
+    "format": true,
+    "uniqueness_pi1": false,
+    "unique_vs_prior_lbmc1": true,
+    "model_beats_0_2778_at_q05": true,
+    "model_robust_all_specs_ge_R0": true,
+    "no_leakage": true,
+    "catalogue_holdout_beats_lbmc1": true,
+    "catalogue_holdout_beats_r0_recipe": false
+  }
 }

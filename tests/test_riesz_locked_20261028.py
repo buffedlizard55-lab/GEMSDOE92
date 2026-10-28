@@ -122,8 +122,12 @@ def test_primary_20261028_geotiff_and_zip_portal_compliance():
 def test_20261028_evidence_fleet_oot_canaries_and_docs_synchronized():
     card = json.loads((ROOT / "evidence" / f"{PRIMARY_STEM}_run_card.json").read_text(encoding="utf-8"))
     assert card["raster_sha256"] == PRIMARY_SHA256
+    # Corrected after the source run card's mandatory Rule-1/Rule-2 failures were audited.
     assert card["verdict"] == "negative" and card["submission_eligible"] is False
     assert card["gates_passed"]["catalogue_holdout_beats_r0_recipe"] is False
+    assert card["gates_passed"]["uniqueness_pi1"] is False
+    assert card["uniqueness"]["literal_reading"]["duplicate_under_literal"] is True
+    assert card["promotion_review"]["decision"] == "negative"
     assert 0 < len(card["note"]) <= 140
     assert card["uniqueness"]["registry_owners"] == 8
     assert card["uniqueness"]["registry_rasters"] == 2162
@@ -150,6 +154,6 @@ def test_20261028_evidence_fleet_oot_canaries_and_docs_synchronized():
     assert "gemsdoe92-lbmc1-35801dots-20261027-89a660f6" in by_id
 
     for doc_rel in ("README.md", "SESSION_PROMPT.md", "SLOT_PLAN.md", "IRREGULARITIES.md",
-                    "docs/index.html", "docs/nine-sites.html"):
+                    "docs/index.html", "docs/how-to-submit.html", "docs/nine-sites.html", "index.html"):
         txt = (ROOT / doc_rel).read_text(encoding="utf-8")
         assert PRIMARY_STEM in txt or PRIMARY_SHA256[:16] in txt, f"missing primary in {doc_rel}"

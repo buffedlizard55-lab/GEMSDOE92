@@ -1,427 +1,461 @@
 {
-  "schema": "gemsdoe92-run-card-v3",
-  "created_utc": "2026-10-28T13:51:01+00:00",
-  "lane": "EXP3 \u2014 RIESZ-LOCKED + LBM-v2 Hybrid Blind-Fault Discovery (H-92A..D + LBM-v2)",
-  "experiment": "3 of 3 (budget: E1 H92-PHYS-LOQO, E2 H92-RIESZ-HABITAT-LOQO, E3 H92-PHYSLBM-UNIQUE)",
-  "density_model": "Ensemble LBM-v2 fitted to 128 matched CLAIMs across 8 owners with >q85 canyon/mesa-rim mimic suppressor (beta=-0.4904) modulated by 4-quadrant OOF RIESZ-LOCKED physical prospectivity (evidence/riesz_locked_lbm_v2.json)",
-  "hypothesis": "Unmapped Basin & Range hydrothermal faults combine (H-92A) multi-scale Riesz monogenic phase-congruency steps & slope-deconfounded 10m piedmont scarps, (H-92B) harmonic Wijns cos(theta) x biharmonic broken-plate flexure, (H-92C) locked interseismic strain-deficit x 10m fluvial chi knickzones, and (H-92D) Fournier silica/cation enthalpy-disequilibrium blind Peclet conduits, while extreme (>q85) raw topographic edge tails are non-fault canyon/mesa-rim mimics.",
-  "mechanism": "Dinkelbach lazy-greedy maximisation of expected DTI over the mimic-filtered LBM-v2 + OOF RIESZ-LOCKED truth-density surface with direct column-generation 3-px overlap caps across all 2,162 unique SHA-256 rasters of all 8 GitHub owners (including <=55% cap vs GEMSDOE92's own prior lbmc1).",
-  "named_non_fault_mimic": "Incised Tertiary volcanic mesa/canyon rims and fan-head dissection gullies (empirically verified via beta=-0.4904 on the >q85 raw edge tail across 128 CLAIMs), Lake Lahontan paleoshorelines, and undeformed plutonic/basalt dike contacts.",
-  "raster": {
-    "file": "docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif",
-    "zip": "docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.zip",
-    "sha256": "d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a",
-    "bytes": 167553,
-    "n_dots": 50000
+ "schema": "gemsdoe92-run-card-v3",
+ "created_utc": "2026-10-28T13:51:01+00:00",
+ "lane": "EXP3 — RIESZ-LOCKED + LBM-v2 Hybrid Blind-Fault Discovery (H-92A..D + LBM-v2)",
+ "experiment": "3 of 3 (budget: E1 H92-PHYS-LOQO, E2 H92-RIESZ-HABITAT-LOQO, E3 H92-PHYSLBM-UNIQUE)",
+ "density_model": "Ensemble LBM-v2 fitted to 128 matched CLAIMs across 8 owners with >q85 canyon/mesa-rim mimic suppressor (beta=-0.4904) modulated by 4-quadrant OOF RIESZ-LOCKED physical prospectivity (evidence/riesz_locked_lbm_v2.json)",
+ "hypothesis": "Unmapped Basin & Range hydrothermal faults combine (H-92A) multi-scale Riesz monogenic phase-congruency steps & slope-deconfounded 10m piedmont scarps, (H-92B) harmonic Wijns cos(theta) x biharmonic broken-plate flexure, (H-92C) locked interseismic strain-deficit x 10m fluvial chi knickzones, and (H-92D) Fournier silica/cation enthalpy-disequilibrium blind Peclet conduits, while extreme (>q85) raw topographic edge tails are non-fault canyon/mesa-rim mimics.",
+ "mechanism": "Dinkelbach lazy-greedy maximisation of expected DTI over the mimic-filtered LBM-v2 + OOF RIESZ-LOCKED truth-density surface with direct column-generation 3-px overlap caps across all 2,162 unique SHA-256 rasters of all 8 GitHub owners (including <=55% cap vs GEMSDOE92's own prior lbmc1).",
+ "named_non_fault_mimic": "Incised Tertiary volcanic mesa/canyon rims and fan-head dissection gullies (empirically verified via beta=-0.4904 on the >q85 raw edge tail across 128 CLAIMs), Lake Lahontan paleoshorelines, and undeformed plutonic/basalt dike contacts.",
+ "raster": {
+  "file": "docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif",
+  "zip": "docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.zip",
+  "sha256": "d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a",
+  "bytes": 167553,
+  "n_dots": 50000
+ },
+ "raster_sha256": "d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a",
+ "submission_name": "gemsdoe92-rieszlbm2-50000d-79041788",
+ "note": "Riesz-Locked LBM-v2: 50000 binary dots; 128-claim density + q85 mimic filter + OOF Riesz/piedmont/Peclet; <=65.6% 8-owner fleet cap.",
+ "note_chars": 132,
+ "holdout_dti": {
+  "evidence_class": "HOLDOUT-DTI",
+  "evaluator_version": "gems57-pooled-hide-v2",
+  "withheld_positive_pixels": 22663,
+  "exp1": {
+   "dti": 0.03798714720750052,
+   "ci95": [
+    0.03101085490399704,
+    0.04465625376399511
+   ]
   },
-  "raster_sha256": "d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a",
-  "submission_name": "gemsdoe92-rieszlbm2-50000d-79041788",
-  "note": "Riesz-Locked LBM-v2: 50000 binary dots; 128-claim density + q85 mimic filter + OOF Riesz/piedmont/Peclet; <=65.6% 8-owner fleet cap.",
-  "note_chars": 132,
-  "holdout_dti": {
-    "evidence_class": "HOLDOUT-DTI",
-    "evaluator_version": "gems57-pooled-hide-v2",
-    "withheld_positive_pixels": 22663,
-    "exp1": {
-      "dti": 0.03798714720750052,
-      "ci95": [
-        0.03101085490399704,
-        0.04465625376399511
-      ]
-    },
-    "e1_zero_catalogue_phys": {
-      "dti": 0.08231786119233808,
-      "ci95": [
-        0.06961495922369551,
-        0.09578555747891701
-      ]
-    },
-    "e2_riesz_habitat_standalone": {
-      "dti": 0.0834560148913153,
-      "ci95": [
-        0.0727172656203385,
-        0.09412366662858779
-      ]
-    },
-    "prior_lbmc1_v1_control": {
-      "dti": 0.0196983588891766,
-      "ci95": [
-        0.014904821543931796,
-        0.024961636185428328
-      ]
-    },
-    "r0_recipe_control": {
-      "dti": 0.09775010414175118,
-      "ci95": [
-        0.0859004762724135,
-        0.110766499100337
-      ]
-    },
-    "paired_delta_vs_r0_recipe": {
-      "evidence_class": "HOLDOUT-DTI",
-      "evaluator_version": "gems57-pooled-hide-v2",
-      "delta": -0.05976295693425066,
-      "ci95": [
-        -0.07200459509062891,
-        -0.0466533870999132
-      ],
-      "withheld_positive_pixels": 22663
-    },
-    "paired_delta_vs_lbm_v1": {
-      "evidence_class": "HOLDOUT-DTI",
-      "evaluator_version": "gems57-pooled-hide-v2",
-      "delta": 0.00682086461421904,
-      "ci95": [
-        -0.0009228311742366141,
-        0.01497751805540711
-      ],
-      "withheld_positive_pixels": 22663
-    },
-    "instrument_validity": {
-      "spearman_holdout_vs_claim": 0.13060547354037536,
-      "spearman_lbm_vs_claim": 0.963667,
-      "prospective_oot_5claims_rmse": 0.00767,
-      "n": 128
-    },
-    "interpretation": "RIESZ-LOCKED + LBM-v2 nearly doubles spatial hide-and-recover HOLDOUT-DTI vs prior lbmc1 (0.0380 vs 0.0197; standalone E1 pure zero-catalogue physics = 0.0823, E2 Riesz-habitat = 0.0835). Catalogue hide-and-recover withholds mapped range-core faults (Spearman 0.13 vs CLAIMs), whereas organizer test faults lie mostly >1.5 km off-catalogue (LBM-v2 LOGO Spearman 0.9637 across 128 CLAIMs)."
+  "e1_zero_catalogue_phys": {
+   "dti": 0.08231786119233808,
+   "ci95": [
+    0.06961495922369551,
+    0.09578555747891701
+   ]
   },
-  "model_estimate": {
-    "evidence_class": "MODEL (not an organizer score)",
-    "point": {
-      "lbm_v1": 0.31632799552611685,
-      "lbm_v2_riesz": 0.32160163971807004,
-      "dcat6": 0.3089948158597336,
-      "dh19xcons": 0.3298875851070174,
-      "gset015": 0.30177874068564253
-    },
-    "bootstrap": {
-      "draws": 200,
-      "q025": 0.2939871395260147,
-      "q05": 0.29677249583331844,
-      "median": 0.31558445940372326,
-      "q95": 0.3330437292517696,
-      "q975": 0.3376641293918592,
-      "delta_vs_R0": {
-        "median": 0.04264590201539353,
-        "q025": 0.02379020001946825,
-        "q05": 0.02744699838633614,
-        "q975": 0.055575694923851574,
-        "p_gt0": 1.0
-      }
-    },
-    "r0_same_model": {
-      "point": {
-        "lbm_v1": 0.27283664851498446,
-        "lbm_v2_riesz": 0.27281672305222643,
-        "dcat6": 0.27362666593965035,
-        "dh19xcons": 0.2745822411801205,
-        "gset015": 0.27306038780787995
-      },
-      "bootstrap": {
-        "draws": 200,
-        "q025": 0.2525586900282358,
-        "q05": 0.26048622938297344,
-        "median": 0.27268311218463015,
-        "q95": 0.29054629363834106,
-        "q975": 0.29224820758991676,
-        "delta_vs_R0": {
-          "median": 0.0,
-          "q025": 0.0,
-          "q05": 0.0,
-          "q975": 0.0,
-          "p_gt0": 0.0
-        }
-      }
-    },
-    "validation": {
-      "logo_rmse_all": 0.02018251715089367,
-      "logo_spearman_all": 0.9632983685142307,
-      "logo_rmse_h19_family": 0.006063108251781176,
-      "logo_bias_h19_family": 0.005201745290849813,
-      "logo_rmse_non_gset": 0.017079776050622584,
-      "logo_rmse_gset": 0.0420903068663693,
-      "logo_q95_abs_error": 0.03787371664635195,
-      "n_rows": 128,
-      "n_groups": 85
-    },
-    "lbm_v2_validation": {
-      "levels": [
-        3,
-        6,
-        5,
-        2
-      ],
-      "lam": 0.001,
-      "in_sample_rmse": 0.016684,
-      "logo_rmse_128": 0.02015,
-      "logo_mae_128": 0.012877,
-      "logo_spearman_128": 0.963667,
-      "gset_logo_rmse": 0.041983,
-      "oot_5claims_rmse": 0.00843,
-      "beta": [
-        -7.395221,
-        -0.914052,
-        1.741212,
-        1.276966,
-        0.106345,
-        -0.101964,
-        -0.283672,
-        -1.132162,
-        -0.464869,
-        -0.33328,
-        -0.317809,
-        2.819678,
-        -0.49036
-      ]
-    },
-    "prospective_oot_20261028": {
-      "n_unseen_claims": 5,
-      "rmse": 0.00767,
-      "mae": 0.00605
+  "e2_riesz_habitat_standalone": {
+   "dti": 0.0834560148913153,
+   "ci95": [
+    0.0727172656203385,
+    0.09412366662858779
+   ]
+  },
+  "prior_lbmc1_v1_control": {
+   "dti": 0.0196983588891766,
+   "ci95": [
+    0.014904821543931796,
+    0.024961636185428328
+   ]
+  },
+  "r0_recipe_control": {
+   "dti": 0.09775010414175118,
+   "ci95": [
+    0.0859004762724135,
+    0.110766499100337
+   ]
+  },
+  "paired_delta_vs_r0_recipe": {
+   "evidence_class": "HOLDOUT-DTI",
+   "evaluator_version": "gems57-pooled-hide-v2",
+   "delta": -0.05976295693425066,
+   "ci95": [
+    -0.07200459509062891,
+    -0.0466533870999132
+   ],
+   "withheld_positive_pixels": 22663
+  },
+  "paired_delta_vs_lbm_v1": {
+   "evidence_class": "HOLDOUT-DTI",
+   "evaluator_version": "gems57-pooled-hide-v2",
+   "delta": 0.00682086461421904,
+   "ci95": [
+    -0.0009228311742366141,
+    0.01497751805540711
+   ],
+   "withheld_positive_pixels": 22663
+  },
+  "instrument_validity": {
+   "spearman_holdout_vs_claim": 0.13060547354037536,
+   "spearman_lbm_vs_claim": 0.963667,
+   "prospective_oot_5claims_rmse": 0.00767,
+   "n": 128
+  },
+  "interpretation": "RIESZ-LOCKED + LBM-v2 nearly doubles spatial hide-and-recover HOLDOUT-DTI vs prior lbmc1 (0.0380 vs 0.0197; standalone E1 pure zero-catalogue physics = 0.0823, E2 Riesz-habitat = 0.0835). Catalogue hide-and-recover withholds mapped range-core faults (Spearman 0.13 vs CLAIMs), whereas organizer test faults lie mostly >1.5 km off-catalogue (LBM-v2 LOGO Spearman 0.9637 across 128 CLAIMs)."
+ },
+ "model_estimate": {
+  "evidence_class": "MODEL (not an organizer score)",
+  "point": {
+   "lbm_v1": 0.31632799552611685,
+   "lbm_v2_riesz": 0.32160163971807004,
+   "dcat6": 0.3089948158597336,
+   "dh19xcons": 0.3298875851070174,
+   "gset015": 0.30177874068564253
+  },
+  "bootstrap": {
+   "draws": 200,
+   "q025": 0.2939871395260147,
+   "q05": 0.29677249583331844,
+   "median": 0.31558445940372326,
+   "q95": 0.3330437292517696,
+   "q975": 0.3376641293918592,
+   "delta_vs_R0": {
+    "median": 0.04264590201539353,
+    "q025": 0.02379020001946825,
+    "q05": 0.02744699838633614,
+    "q975": 0.055575694923851574,
+    "p_gt0": 1.0
+   }
+  },
+  "r0_same_model": {
+   "point": {
+    "lbm_v1": 0.27283664851498446,
+    "lbm_v2_riesz": 0.27281672305222643,
+    "dcat6": 0.27362666593965035,
+    "dh19xcons": 0.2745822411801205,
+    "gset015": 0.27306038780787995
+   },
+   "bootstrap": {
+    "draws": 200,
+    "q025": 0.2525586900282358,
+    "q05": 0.26048622938297344,
+    "median": 0.27268311218463015,
+    "q95": 0.29054629363834106,
+    "q975": 0.29224820758991676,
+    "delta_vs_R0": {
+     "median": 0.0,
+     "q025": 0.0,
+     "q05": 0.0,
+     "q975": 0.0,
+     "p_gt0": 0.0
     }
+   }
   },
-  "leakage_canaries": {
-    "threshold": 0.9,
-    "pooled_auc": {
-      "neg_dcat_visible": 0.7531976346633279,
-      "neg_dist_h19": 0.6328468062894366,
-      "consensus_count": 0.5618240374729736,
-      "lbm_rho": 0.27726473878127345,
-      "f01_riesz_grav_step": 0.5123,
-      "f02_riesz_rtp_step": 0.5099,
-      "f03_riesz_base_step": 0.50651,
-      "f04_riesz_joint_strike_coh": 0.50377,
-      "f05_scarp10m_deconf": 0.60957,
-      "f06_curv10m_lineament_pied": 0.59173,
-      "f07_wijns_cos_theta_grav": 0.54144,
-      "f08_wijns_cos_theta_mag": 0.51971,
-      "f09_biharmonic_base_dipole": 0.53993,
-      "f10_wijns_flex_couple": 0.55887,
-      "f11_locked_strain_deficit": 0.55427,
-      "f12_chi10m_knick_steep": 0.55736,
-      "f13_locked_knick_riesz": 0.5721,
-      "f14_fournier_diseq_halo": 0.52318,
-      "f15_claycap_grauch_seal": 0.52214,
-      "f16_peclet_blind_conduit": 0.53546
+  "validation": {
+   "logo_rmse_all": 0.02018251715089367,
+   "logo_spearman_all": 0.9632983685142307,
+   "logo_rmse_h19_family": 0.006063108251781176,
+   "logo_bias_h19_family": 0.005201745290849813,
+   "logo_rmse_non_gset": 0.017079776050622584,
+   "logo_rmse_gset": 0.0420903068663693,
+   "logo_q95_abs_error": 0.03787371664635195,
+   "n_rows": 128,
+   "n_groups": 85
+  },
+  "lbm_v2_validation": {
+   "levels": [
+    3,
+    6,
+    5,
+    2
+   ],
+   "lam": 0.001,
+   "in_sample_rmse": 0.016684,
+   "logo_rmse_128": 0.02015,
+   "logo_mae_128": 0.012877,
+   "logo_spearman_128": 0.963667,
+   "gset_logo_rmse": 0.041983,
+   "oot_5claims_rmse": 0.00843,
+   "beta": [
+    -7.395221,
+    -0.914052,
+    1.741212,
+    1.276966,
+    0.106345,
+    -0.101964,
+    -0.283672,
+    -1.132162,
+    -0.464869,
+    -0.33328,
+    -0.317809,
+    2.819678,
+    -0.49036
+   ]
+  },
+  "prospective_oot_20261028": {
+   "n_unseen_claims": 5,
+   "rmse": 0.00767,
+   "mae": 0.00605
+  }
+ },
+ "leakage_canaries": {
+  "threshold": 0.9,
+  "pooled_auc": {
+   "neg_dcat_visible": 0.7531976346633279,
+   "neg_dist_h19": 0.6328468062894366,
+   "consensus_count": 0.5618240374729736,
+   "lbm_rho": 0.27726473878127345,
+   "f01_riesz_grav_step": 0.5123,
+   "f02_riesz_rtp_step": 0.5099,
+   "f03_riesz_base_step": 0.50651,
+   "f04_riesz_joint_strike_coh": 0.50377,
+   "f05_scarp10m_deconf": 0.60957,
+   "f06_curv10m_lineament_pied": 0.59173,
+   "f07_wijns_cos_theta_grav": 0.54144,
+   "f08_wijns_cos_theta_mag": 0.51971,
+   "f09_biharmonic_base_dipole": 0.53993,
+   "f10_wijns_flex_couple": 0.55887,
+   "f11_locked_strain_deficit": 0.55427,
+   "f12_chi10m_knick_steep": 0.55736,
+   "f13_locked_knick_riesz": 0.5721,
+   "f14_fournier_diseq_halo": 0.52318,
+   "f15_claycap_grauch_seal": 0.52214,
+   "f16_peclet_blind_conduit": 0.53546
+  },
+  "riesz_locked_16_max_sym_auc": 0.65694,
+  "max_auc": 0.7531976346633279,
+  "leakage_flag": false
+ },
+ "uniqueness": {
+  "interpretation": "PI-1 across all 8 GitHub owners (see gems/uniqueness_v3.py)",
+  "registry_owners": 8,
+  "registry_rasters": 2162,
+  "final_worst_overlap": 0.6556,
+  "final_worst_overlap_sha256": "28adc53bcaca11329c807baa5659079c25f225c5908f7874762a034cf70cab05",
+  "vs_prior_gemsdoe92_lbmc1_overlap": 0.54058,
+  "vs_prior_gemsdoe92_lbmc1_sha256": "e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c",
+  "final_worst_abs_rho": 0.144898,
+  "surface_worst_overlap": 1.0,
+  "surface_worst_abs_rho": 0.550328,
+  "surface_rule": "PI-1b: binding pre-placement surface check = |rank correlation| <= 0.90; unconstrained surface top-N overlap is diagnostic before Dinkelbach cap enforcement.",
+  "duplicate": false,
+  "literal_reading": {
+   "worst": 1.0,
+   "duplicate_under_literal": true,
+   "note": "Literal reading is degenerate: any raster positive on every footprint cell gives 1.0."
+  }
+ },
+ "validator_output": {
+  "no_nan_in_footprint": true,
+  "no_nan_anywhere": true,
+  "values_in_0_1": true,
+  "crs_match": true,
+  "shape_match": true,
+  "transform_match": true,
+  "dtype_float32": true,
+  "single_band": true,
+  "zeros_outside_footprint": true,
+  "zero_mass_on_mapped_catalogue": true,
+  "n_positive": 50000,
+  "min_value": 0.0,
+  "max_value": 1.0,
+  "gates_pass": true,
+  "gems57_validate_pass": true,
+  "gates": [
+   {
+    "name": "crs",
+    "ok": true,
+    "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+   },
+   {
+    "name": "shape",
+    "ok": true,
+    "detail": "reference=3730x3292 candidate=3730x3292"
+   },
+   {
+    "name": "transform",
+    "ok": true,
+    "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+   },
+   {
+    "name": "dtype_and_band",
+    "ok": true,
+    "detail": "dtype=('float32',) count=1"
+   },
+   {
+    "name": "values_in_0_1",
+    "ok": true,
+    "detail": "n_violations=0 min=0.0 max=1.0"
+   },
+   {
+    "name": "no_nan_inside_footprint",
+    "ok": true,
+    "detail": "nonfinite_pixels=0 masked_pixels=0"
+   },
+   {
+    "name": "nan_outside_footprint",
+    "ok": true,
+    "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+   },
+   {
+    "name": "submission_encoding",
+    "ok": true,
+    "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+   },
+   {
+    "name": "catalogue_zero_mass",
+    "ok": true,
+    "detail": "dots_on_catalogue=0"
+   },
+   {
+    "name": "distance_from_catalogue",
+    "ok": true,
+    "detail": "radius=2px dots_within=0; strict distance > radius required"
+   },
+   {
+    "name": "reread_sha256",
+    "ok": true,
+    "detail": "d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a"
+   }
+  ]
+ },
+ "placement": {
+  "rounds": [
+   {
+    "stage": "dinkelbach_colgen",
+    "round": 0,
+    "n": 39113,
+    "n_caps": 4,
+    "model": {
+     "tp": 6498.81,
+     "fp": 33389.56,
+     "G": 15093.16,
+     "n": 39113,
+     "dti": 0.324094347549595
     },
-    "riesz_locked_16_max_sym_auc": 0.65694,
-    "max_auc": 0.7531976346633279,
-    "leakage_flag": false
-  },
-  "uniqueness": {
-    "interpretation": "PI-1 across all 8 GitHub owners (see gems/uniqueness_v3.py)",
-    "registry_owners": 8,
-    "registry_rasters": 2162,
-    "final_worst_overlap": 0.6556,
-    "final_worst_overlap_sha256": "28adc53bcaca11329c807baa5659079c25f225c5908f7874762a034cf70cab05",
-    "vs_prior_gemsdoe92_lbmc1_overlap": 0.54058,
-    "vs_prior_gemsdoe92_lbmc1_sha256": "e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c",
-    "final_worst_abs_rho": 0.144898,
-    "surface_worst_overlap": 1.0,
-    "surface_worst_abs_rho": 0.550328,
-    "surface_rule": "PI-1b: binding pre-placement surface check = |rank correlation| <= 0.90; unconstrained surface top-N overlap is diagnostic before Dinkelbach cap enforcement.",
-    "duplicate": false,
-    "literal_reading": {
-      "worst": 1.0,
-      "duplicate_under_literal": true,
-      "note": "Literal reading is degenerate: any raster positive on every footprint cell gives 1.0."
-    }
-  },
-  "validator_output": {
-    "no_nan_in_footprint": true,
-    "no_nan_anywhere": true,
-    "values_in_0_1": true,
-    "crs_match": true,
-    "shape_match": true,
-    "transform_match": true,
-    "dtype_float32": true,
-    "single_band": true,
-    "zeros_outside_footprint": true,
-    "zero_mass_on_mapped_catalogue": true,
-    "n_positive": 50000,
-    "min_value": 0.0,
-    "max_value": 1.0,
-    "gates_pass": true,
-    "gems57_validate_pass": true,
-    "gates": [
-      {
-        "name": "crs",
-        "ok": true,
-        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
-      },
-      {
-        "name": "shape",
-        "ok": true,
-        "detail": "reference=3730x3292 candidate=3730x3292"
-      },
-      {
-        "name": "transform",
-        "ok": true,
-        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
-      },
-      {
-        "name": "dtype_and_band",
-        "ok": true,
-        "detail": "dtype=('float32',) count=1"
-      },
-      {
-        "name": "values_in_0_1",
-        "ok": true,
-        "detail": "n_violations=0 min=0.0 max=1.0"
-      },
-      {
-        "name": "no_nan_inside_footprint",
-        "ok": true,
-        "detail": "nonfinite_pixels=0 masked_pixels=0"
-      },
-      {
-        "name": "nan_outside_footprint",
-        "ok": true,
-        "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
-      },
-      {
-        "name": "submission_encoding",
-        "ok": true,
-        "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
-      },
-      {
-        "name": "catalogue_zero_mass",
-        "ok": true,
-        "detail": "dots_on_catalogue=0"
-      },
-      {
-        "name": "distance_from_catalogue",
-        "ok": true,
-        "detail": "radius=2px dots_within=0; strict distance > radius required"
-      },
-      {
-        "name": "reread_sha256",
-        "ok": true,
-        "detail": "d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a"
-      }
-    ]
-  },
-  "placement": {
-    "rounds": [
-      {
-        "stage": "dinkelbach_colgen",
-        "round": 0,
-        "n": 39113,
-        "n_caps": 4,
-        "model": {
-          "tp": 6498.81,
-          "fp": 33389.56,
-          "G": 15093.16,
-          "n": 39113,
-          "dti": 0.324094347549595
-        },
-        "model_g018": {
-          "tp": 6581.88,
-          "fp": 32974.73,
-          "G": 15110.03,
-          "n": 39113,
-          "dti": 0.3291047609456144
-        },
-        "model_g015": {
-          "tp": 6415.73,
-          "fp": 33804.39,
-          "G": 15076.29,
-          "n": 39113,
-          "dti": 0.3191102783265694
-        },
-        "worst": {
-          "sha256": "007a99d6dc2866cc19ed86b1e7b6f1825c470de0104a1789b3f5b736eb7dd118",
-          "representation": "dot_field",
-          "n_registry_pos": 550000,
-          "halo_frac": 0.2862961508681491,
-          "overlap_pi1": 0.949914,
-          "overlap_literal": 0.949914,
-          "literal_exact": true,
-          "rho": 0.117116,
-          "rho_method": "exact"
-        },
-        "lbmc1_overlap": 0.540766,
-        "worst_rho": {
-          "sha256": "e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c",
-          "representation": "dot_field",
-          "n_registry_pos": 35801,
-          "halo_frac": 0.11965615797427435,
-          "overlap_pi1": 0.540766,
-          "overlap_literal": 0.540766,
-          "literal_exact": true,
-          "rho": 0.129425,
-          "rho_method": "exact"
-        },
-        "over_cap": 32,
-        "duplicate": true
-      },
-      {
-        "stage": "dinkelbach_colgen",
-        "round": 1,
-        "n": 50000,
-        "n_caps": 14,
-        "model": {
-          "tp": 6966.02,
-          "fp": 42539.93,
-          "G": 15093.16,
-          "n": 50000,
-          "dti": 0.31698695314433384
-        },
-        "model_g018": {
-          "tp": 7022.26,
-          "fp": 41714.0,
-          "G": 15110.03,
-          "n": 50000,
-          "dti": 0.32160163351041815
-        },
-        "model_g015": {
-          "tp": 6909.77,
-          "fp": 43365.87,
-          "G": 15076.29,
-          "n": 50000,
-          "dti": 0.312430880931549
-        },
-        "worst": {
-          "sha256": "28adc53bcaca11329c807baa5659079c25f225c5908f7874762a034cf70cab05",
-          "representation": "dot_field",
-          "n_registry_pos": 167597,
-          "halo_frac": 0.5481466114406682,
-          "overlap_pi1": 0.6556,
-          "overlap_literal": 0.6556,
-          "literal_exact": true,
-          "rho": 0.010884,
-          "rho_method": "exact"
-        },
-        "lbmc1_overlap": 0.54058,
-        "worst_rho": {
-          "sha256": "e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c",
-          "representation": "dot_field",
-          "n_registry_pos": 35801,
-          "halo_frac": 0.11965615797427435,
-          "overlap_pi1": 0.54058,
-          "overlap_literal": 0.54058,
-          "literal_exact": true,
-          "rho": 0.144898,
-          "rho_method": "exact"
-        },
-        "over_cap": 0,
-        "duplicate": false
-      }
-    ],
-    "method": "LBM-v2 (q85 mimic suppressor) + H-92A..D OOF physical prospectivity + direct Dinkelbach offender caps + H-92 novel-dot polish"
-  },
-  "gates_passed": {
-    "format": true,
-    "uniqueness_pi1": true,
-    "unique_vs_prior_lbmc1": true,
-    "model_beats_0_2778_at_q05": true,
-    "model_robust_all_specs_ge_R0": true,
-    "no_leakage": true,
-    "catalogue_holdout_beats_lbmc1": true,
-    "catalogue_holdout_beats_r0_recipe": false
-  },
-  "verdict": "negative",
+    "model_g018": {
+     "tp": 6581.88,
+     "fp": 32974.73,
+     "G": 15110.03,
+     "n": 39113,
+     "dti": 0.3291047609456144
+    },
+    "model_g015": {
+     "tp": 6415.73,
+     "fp": 33804.39,
+     "G": 15076.29,
+     "n": 39113,
+     "dti": 0.3191102783265694
+    },
+    "worst": {
+     "sha256": "007a99d6dc2866cc19ed86b1e7b6f1825c470de0104a1789b3f5b736eb7dd118",
+     "representation": "dot_field",
+     "n_registry_pos": 550000,
+     "halo_frac": 0.2862961508681491,
+     "overlap_pi1": 0.949914,
+     "overlap_literal": 0.949914,
+     "literal_exact": true,
+     "rho": 0.117116,
+     "rho_method": "exact"
+    },
+    "lbmc1_overlap": 0.540766,
+    "worst_rho": {
+     "sha256": "e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c",
+     "representation": "dot_field",
+     "n_registry_pos": 35801,
+     "halo_frac": 0.11965615797427435,
+     "overlap_pi1": 0.540766,
+     "overlap_literal": 0.540766,
+     "literal_exact": true,
+     "rho": 0.129425,
+     "rho_method": "exact"
+    },
+    "over_cap": 32,
+    "duplicate": true
+   },
+   {
+    "stage": "dinkelbach_colgen",
+    "round": 1,
+    "n": 50000,
+    "n_caps": 14,
+    "model": {
+     "tp": 6966.02,
+     "fp": 42539.93,
+     "G": 15093.16,
+     "n": 50000,
+     "dti": 0.31698695314433384
+    },
+    "model_g018": {
+     "tp": 7022.26,
+     "fp": 41714.0,
+     "G": 15110.03,
+     "n": 50000,
+     "dti": 0.32160163351041815
+    },
+    "model_g015": {
+     "tp": 6909.77,
+     "fp": 43365.87,
+     "G": 15076.29,
+     "n": 50000,
+     "dti": 0.312430880931549
+    },
+    "worst": {
+     "sha256": "28adc53bcaca11329c807baa5659079c25f225c5908f7874762a034cf70cab05",
+     "representation": "dot_field",
+     "n_registry_pos": 167597,
+     "halo_frac": 0.5481466114406682,
+     "overlap_pi1": 0.6556,
+     "overlap_literal": 0.6556,
+     "literal_exact": true,
+     "rho": 0.010884,
+     "rho_method": "exact"
+    },
+    "lbmc1_overlap": 0.54058,
+    "worst_rho": {
+     "sha256": "e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c",
+     "representation": "dot_field",
+     "n_registry_pos": 35801,
+     "halo_frac": 0.11965615797427435,
+     "overlap_pi1": 0.54058,
+     "overlap_literal": 0.54058,
+     "literal_exact": true,
+     "rho": 0.144898,
+     "rho_method": "exact"
+    },
+    "over_cap": 0,
+    "duplicate": false
+   }
+  ],
+  "method": "LBM-v2 (q85 mimic suppressor) + H-92A..D OOF physical prospectivity + direct Dinkelbach offender caps + H-92 novel-dot polish"
+ },
+ "gates_passed": {
+  "format": true,
+  "uniqueness_pi1": false,
+  "unique_vs_prior_lbmc1": true,
+  "model_beats_0_2778_at_q05": true,
+  "model_robust_all_specs_ge_R0": true,
+  "no_leakage": true,
+  "catalogue_holdout_beats_lbmc1": true,
+  "catalogue_holdout_beats_r0_recipe": false
+ },
+ "verdict": "negative",
+ "submission_eligible": false,
+ "slot_note": "Weekly cap is 3 submissions/week (DrivenData portal rules prevail). Verify whether prior unscored lbmc1 (e928d3c3...) has already consumed a weekly slot before uploading.",
+ "promotion_review": {
+  "review_date_utc": "2026-10-28",
+  "source": "docs/REVIEW_20261028_PROTOCOL.md",
+  "decision": "negative",
   "submission_eligible": false,
-  "slot_note": "Weekly cap is 3 submissions/week (DrivenData portal rules prevail). Verify whether prior unscored lbmc1 (e928d3c3...) has already consumed a weekly slot before uploading.",
-  "classification_correction_20261028": "Original promote classification revoked: literal registry overlap fails and holdout did not beat R0. Format checks alone cannot promote."
+  "decision_basis": "Apply the user-provided protocol literally; do not allow MODEL projection or narrower sparse-only uniqueness interpretation to override required gates.",
+  "blocking_gates": [
+   {
+    "rule": "1 registry stop before placement",
+    "status": "FAIL",
+    "observed": "The stored pre-placement surface registry report records overlap 1.0 against the dense/full-support witness, above the 0.70 stop threshold."
+   },
+   {
+    "rule": "1 registry stop on final dots",
+    "status": "FAIL",
+    "observed": "The stored uniqueness receipt records literal full-support witness overlap 1.0, above the 0.70 stop threshold. The alternate PI-1 sparse dot-set maximum 0.6556 is not a waiver."
+   },
+   {
+    "rule": "2 holdout beats best control",
+    "status": "FAIL",
+    "observed": "HOLDOUT-DTI E3 = 0.0379871 (95% CI 0.0310109–0.0446563); R0 recipe = 0.0977501 (95% CI 0.0859005–0.1107665); paired delta = -0.0597630 (95% CI -0.0720046–-0.0466534)."
+   },
+   {
+    "rule": "3 score labelling",
+    "status": "PASS_WITH_CAVEAT",
+    "observed": "0.3216016 is MODEL only; there is no organizer receipt in this repository. It is not a score and is not evidence for promotion."
+   },
+   {
+    "rule": "6 experiment budget",
+    "status": "EXHAUSTED",
+    "observed": "The recorded RIESZ-LOCKED lane used E1–E3. No additional experiment was run or authorized in this review."
+   }
+  ],
+  "reproduction_limit": "This review verified the committed run-card/evidence contents and TIFF bytes/format, but did not rerun HOLDOUT-DTI: the full feature cache is absent from this checkout."
+ }
 }

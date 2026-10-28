@@ -6,6 +6,11 @@
   "verdict": "negative",
   "ok_to_download": true,
   "ok_to_submit": false,
-  "reason": "Research only; literal duplicate stop and holdout below R0.",
+  "reason": "Research only; mandatory promotion protocol gates failed.",
+  "blocking_reasons": [
+    "pre-placement surface overlap is missing or exceeds 0.70",
+    "literal full-support registry witness triggers the Rule 1 duplicate stop",
+    "HOLDOUT-DTI did not beat the R0 recipe control with paired 95% CI above zero"
+  ],
   "run_card": "downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json"
 }
