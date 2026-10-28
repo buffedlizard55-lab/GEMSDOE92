@@ -1,0 +1,134 @@
+{
+ "schema": "gemsdoe92-candidate-full-registry-uniqueness-v1",
+ "candidate": "docs/downloads/gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif",
+ "candidate_sha256": "4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14",
+ "candidate_identical_copies_in_registry": [],
+ "n_dots": 37654,
+ "candidate_nonfinite_cells_treated_as_zero": 0,
+ "registry_unique_sha256": 2217,
+ "excluded_self_sha256": null,
+ "registry_scope": "['buffedlizard55-lab', 'kanlerxz87-cyber', 'eugboogieman123-ops', 'wingbangboozle1-lang', 'ginnymcfiner23-ux', 'karagemop466-tech', 'apartanish22-droid', 'sassnarep3-star']",
+ "rule": {
+  "overlap_limit": 0.7,
+  "rho_limit": 0.9,
+  "radius_px": 3.0,
+  "interpretation": "PI-1",
+  "dense_support_fraction": 0.2,
+  "halo_limit": 0.7
+ },
+ "duplicate_pi1": true,
+ "pi1_pass": false,
+ "worst_overlap": {
+  "value": 0.769108,
+  "sha256": "88976dc5b2504838b193d41b718df95eb1e237b870b94a6443dc3bee65e98e06",
+  "representation": "dot_field",
+  "repos": [
+   "buffedlizard55-lab/13GEMSDOE"
+  ]
+ },
+ "worst_abs_rho": {
+  "value": 0.186642,
+  "sha256": "60082b75a3d8e4648a858622f71f24257c8cfef79286a1a96147c59f05377da7",
+  "repos": [
+   "buffedlizard55-lab/GEMSDOE92"
+  ]
+ },
+ "n_rasters_overlap_over_0_5": 38,
+ "literal_reading": {
+  "worst": 1.0,
+  "duplicate_under_literal": true,
+  "note": "Literal reading is degenerate: any raster positive on every footprint cell gives 1.0."
+ },
+ "top10_overlap": [
+  {
+   "sha256": "88976dc5b2504838b193d41b718df95eb1e237b870b94a6443dc3bee65e98e06",
+   "overlap_pi1": 0.769108,
+   "rho": -0.005242,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/13GEMSDOE"
+   ]
+  },
+  {
+   "sha256": "e050b1ec627e8207c1fe5f7530f015d0cf2feb6bb98c5bce225e5db806afb0e3",
+   "overlap_pi1": 0.769108,
+   "rho": -0.005242,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/13GEMSDOE"
+   ]
+  },
+  {
+   "sha256": "70c4ccd5dd51c6cbf1c0b8019738885a357dde7be64c17b4fb278a12f073e1e4",
+   "overlap_pi1": 0.726696,
+   "rho": 0.000767,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/13GEMSDOE"
+   ]
+  },
+  {
+   "sha256": "bd1e3d056e83e792aed8c77b3249f833d119320779b94d2eb7c5b65ac5161428",
+   "overlap_pi1": 0.726696,
+   "rho": 0.000767,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/13GEMSDOE"
+   ]
+  },
+  {
+   "sha256": "789dd56c4287cd50c8d2d5e3f063828a8d25a275d82bd8418a4cf971d908b8a6",
+   "overlap_pi1": 0.65584,
+   "rho": 0.02652,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/GEMSDOE22"
+   ]
+  },
+  {
+   "sha256": "d0c5fd6825b544eb08672303c11292eb99d6105e42a41eac0e5a211a3fdc69e5",
+   "overlap_pi1": 0.65584,
+   "rho": 0.02652,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/GEMSDOE22"
+   ]
+  },
+  {
+   "sha256": "28adc53bcaca11329c807baa5659079c25f225c5908f7874762a034cf70cab05",
+   "overlap_pi1": 0.653264,
+   "rho": 0.003105,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/GEMSDOE67"
+   ]
+  },
+  {
+   "sha256": "8624c5a58c681f57a6d26cab0652cfe654bcd46dc8ba68a7d5a4c0feaa29bc89",
+   "overlap_pi1": 0.653264,
+   "rho": 0.003105,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/GEMSDOE67"
+   ]
+  },
+  {
+   "sha256": "0c7d00e879e7f54e3019de185b252e5faad2983c754c9030273ad333688acb69",
+   "overlap_pi1": 0.649148,
+   "rho": 0.003293,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/GEMSDOE50"
+   ]
+  },
+  {
+   "sha256": "ad9750be86acf6b8c253dcd8f1ee6487c2ea8327a582a8c9e6a765d16037d319",
+   "overlap_pi1": 0.649148,
+   "rho": 0.003293,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/GEMSDOE50"
+   ]
+  }
+ ]
+}

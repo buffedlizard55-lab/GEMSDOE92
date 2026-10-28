@@ -1,0 +1,165 @@
+{
+ "schema": "gemsdoe92-candidate-full-registry-uniqueness-v1",
+ "candidate": ".cache/focus9_verify/GEMSDOE30.tif",
+ "candidate_sha256": "8cf893ead5667df21d3288a9968c35fd5385c425b029d82ee71d311715b129fd",
+ "candidate_identical_copies_in_registry": [
+  "buffedlizard55-lab/57GEMSDOE",
+  "buffedlizard55-lab/58GEMSDOE",
+  "buffedlizard55-lab/59GEMSDOE",
+  "buffedlizard55-lab/60GEMSDOE",
+  "buffedlizard55-lab/GEMSDOE29",
+  "buffedlizard55-lab/GEMSDOE30",
+  "buffedlizard55-lab/GEMSDOE66",
+  "buffedlizard55-lab/GEMSDOE68",
+  "kanlerxz87-cyber/KANLERGEMSDOE2"
+ ],
+ "n_dots": 44090,
+ "registry_unique_sha256": 2217,
+ "excluded_self_sha256": null,
+ "registry_scope": "['buffedlizard55-lab', 'kanlerxz87-cyber', 'eugboogieman123-ops', 'wingbangboozle1-lang', 'ginnymcfiner23-ux', 'karagemop466-tech', 'apartanish22-droid', 'sassnarep3-star']",
+ "rule": {
+  "overlap_limit": 0.7,
+  "rho_limit": 0.9,
+  "radius_px": 3.0,
+  "interpretation": "PI-1",
+  "dense_support_fraction": 0.2,
+  "halo_limit": 0.7
+ },
+ "duplicate_pi1": true,
+ "pi1_pass": false,
+ "worst_overlap": {
+  "value": 1.0,
+  "sha256": "007a99d6dc2866cc19ed86b1e7b6f1825c470de0104a1789b3f5b736eb7dd118",
+  "representation": "dot_field",
+  "repos": [
+   "buffedlizard55-lab/GEMSDOE22"
+  ]
+ },
+ "worst_abs_rho": {
+  "value": 1.0,
+  "sha256": "29ca0bc2cf249f96f1504b8c0ec5e775e78668f6d0f54f5c1c33c580cce74f73",
+  "repos": [
+   "buffedlizard55-lab/GEMSDOE33"
+  ]
+ },
+ "n_rasters_overlap_over_0_5": 594,
+ "literal_reading": {
+  "worst": 1.0,
+  "duplicate_under_literal": true,
+  "note": "Literal reading is degenerate: any raster positive on every footprint cell gives 1.0."
+ },
+ "top10_overlap": [
+  {
+   "sha256": "007a99d6dc2866cc19ed86b1e7b6f1825c470de0104a1789b3f5b736eb7dd118",
+   "overlap_pi1": 1.0,
+   "rho": 0.268789,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/GEMSDOE22"
+   ]
+  },
+  {
+   "sha256": "29ca0bc2cf249f96f1504b8c0ec5e775e78668f6d0f54f5c1c33c580cce74f73",
+   "overlap_pi1": 1.0,
+   "rho": 1.0,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/GEMSDOE33"
+   ]
+  },
+  {
+   "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+   "overlap_pi1": 1.0,
+   "rho": 0.569774,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/GEMSDOE27",
+    "buffedlizard55-lab/GEMSDOE28",
+    "buffedlizard55-lab/GEMSDOE63",
+    "buffedlizard55-lab/GEMSDOE67",
+    "kanlerxz87-cyber/KANLERGEMSDOE1"
+   ]
+  },
+  {
+   "sha256": "3e0730e8d4f7db095dd80246a98cba3bc0fc9a28f436b91db27ca34df4d0d1ce",
+   "overlap_pi1": 1.0,
+   "rho": 0.575854,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/57GEMSDOE",
+    "buffedlizard55-lab/58GEMSDOE",
+    "buffedlizard55-lab/59GEMSDOE",
+    "buffedlizard55-lab/60GEMSDOE",
+    "buffedlizard55-lab/GEMSDOE24"
+   ]
+  },
+  {
+   "sha256": "3e78737f0da8dd2ca66cc6caac0ce8eeefcd6715707f8d1bd3091845cd9bcc30",
+   "overlap_pi1": 1.0,
+   "rho": 1.0,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/57GEMSDOE",
+    "buffedlizard55-lab/58GEMSDOE",
+    "buffedlizard55-lab/59GEMSDOE",
+    "buffedlizard55-lab/60GEMSDOE",
+    "buffedlizard55-lab/GEMSDOE24"
+   ]
+  },
+  {
+   "sha256": "3ea61e719af4c0d0df9f8d279560ae4a6b5063cca0a43991c8f66a56cb63c51f",
+   "overlap_pi1": 1.0,
+   "rho": 0.555642,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/57GEMSDOE",
+    "buffedlizard55-lab/58GEMSDOE",
+    "buffedlizard55-lab/59GEMSDOE",
+    "buffedlizard55-lab/60GEMSDOE",
+    "buffedlizard55-lab/GEMSDOE29"
+   ]
+  },
+  {
+   "sha256": "4dc278c4e5b80bbe50da76244e6eacdb230660807b49b4388470697b23f42ac8",
+   "overlap_pi1": 1.0,
+   "rho": 0.575854,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/GEMSDOE30"
+   ]
+  },
+  {
+   "sha256": "4dc4cc54b061cb4567a5500c8fa2bfe750a39340b02c8cdbb4308916f36cbcc3",
+   "overlap_pi1": 1.0,
+   "rho": 1.0,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/60GEMSDOE",
+    "buffedlizard55-lab/GEMSDOE32",
+    "buffedlizard55-lab/GEMSDOE51",
+    "buffedlizard55-lab/GEMSDOE63",
+    "buffedlizard55-lab/GEMSDOE66"
+   ]
+  },
+  {
+   "sha256": "5f963b8bca5ec226ddc7caaadec239c6be6d28aa567f890033be04d04bfd5e32",
+   "overlap_pi1": 1.0,
+   "rho": 1.0,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/GEMSDOE29",
+    "buffedlizard55-lab/GEMSDOE30",
+    "buffedlizard55-lab/GEMSDOE31"
+   ]
+  },
+  {
+   "sha256": "61843240c45576772badb6c45128b10d64295c6197af380639e1b3fa2cf70dd8",
+   "overlap_pi1": 1.0,
+   "rho": 0.985626,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/GEMSDOE27"
+   ]
+  }
+ ]
+}

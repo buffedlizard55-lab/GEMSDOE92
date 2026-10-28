@@ -1,5 +1,13 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+## 📌 Read first (standing prompt & current status, 2026-10-28)
+- **Status: DO NOT SUBMIT.** No focus-site file is unique under the full-registry PI-1 rule (2,216 SHA-256). Among the audited candidates, the RIESZ download is the only file that passes uniqueness, and its holdout is below R0. TIPCOMP fails PI-1 (worst 0.9180 vs GEMSDOE22). No weekly slot spent.
+- **Damage-zone file** (`gemsdoe92-damagezone-close-dots-20261028-zeros.tif`): FAILS full-registry PI-1 (identical bytes in 5 repos). Not unique.
+- **Blindcorridor** (`gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif`, added to `main` after the registry inventory was built): FAILS full-registry PI-1 (worst 0.7691 vs 13GEMSDOE). Not unique.
+- **Pages site (download, executive summary, official links):** https://buffedlizard55-lab.github.io/GEMSDOE92/
+- **Standing brief:** [docs/STANDING_BRIEF_20261028.md](docs/STANDING_BRIEF_20261028.md) · **Nine-site summary:** [docs/executive-summary-nine-sites-20261028.html](docs/executive-summary-nine-sites-20261028.html) · **Hypotheses:** [docs/HYPOTHESES_20261028_STANDING.md](docs/HYPOTHESES_20261028_STANDING.md)
+- **Stored prompt:** [docs/STANDING_PROMPT.md](docs/STANDING_PROMPT.md). Caveat: this is a reconstruction. The verbatim text must be pasted in.
+
 ## Current decision — 2026-10-28 follow-up after main integration
 
 **⛔ NO TIFF IS CLEARED for submission. DO NOT SUBMIT or spend a slot.** The newest artifact now present on `main` is a format-valid research TIFF, but it has no completed spatial holdout, no feature canaries, only a three-reference local overlap check, no complete registry scan, and `submission_eligible: false`. The main status feed still identifies the RIESZ file as the primary, with a negative verdict. TIPCOMP is also negative. This follow-up generated no TIFF, ran no experiment, and selected no slot.
