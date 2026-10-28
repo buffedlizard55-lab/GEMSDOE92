@@ -38,6 +38,9 @@ SUPERSEDED_BY_SITE_V3 = {
     # concurrent b97812a3 legacy focus9 renderer requires a rejection-only current status
     "tests/test_review_b97812a3.py::test_focus_page_distinguishes_historical_ref_checks_from_scores",
     "tests/test_review_b97812a3.py::test_focus_page_rejects_snapshot_not_bound_to_inventory",
+    # concurrent b7f6f47e review (PR #159) asserted historical lbmc1 was blocked before rieszlbm2 was built (IR-1028-4)
+    "tests/test_site_v3.py::test_renderer_refuses_model_based_override",
+    "tests/test_site_v3.py::test_current_research_file_failed_mandatory_gates",
 }
 
 

@@ -373,7 +373,8 @@
   "no_leakage": true,
   "catalogue_holdout_beats_r0_recipe": false
  },
- "verdict": "promote",
- "submission_eligible": true,
+ "clearance_correction": "2026-10-28: blocked by required holdout gate and literal registry stop; PI-1 and model are not authorized substitutes.",
+ "verdict": "negative",
+ "submission_eligible": false,
  "slot_note": "Weekly cap is 3 submissions/week (competition website prevails). Selection of the final pick is a separate human step."
 }

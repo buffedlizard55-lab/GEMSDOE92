@@ -49,7 +49,7 @@
 
 </details>
 
-### Previous 2026-10-27 submission (`lbmc1` — owner-reported unscored on 2026-10-28; retained as backup)
+### Previous 2026-10-27 submission (`lbmc1` — owner-reported unscored on 2026-10-28; demoted to research archive per [`docs/REVIEW_20261028_PROTOCOL.md`](docs/REVIEW_20261028_PROTOCOL.md))
 
 **[Download `gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif`](docs/downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif)** (140,192 bytes; [one-TIFF ZIP](docs/downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.zip)) · **[How to submit (3 steps)](docs/how-to-submit.html)** · [site](docs/index.html) · [run card](docs/downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6_run_card.json)
 
