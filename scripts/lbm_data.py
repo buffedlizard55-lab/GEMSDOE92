@@ -62,7 +62,7 @@ def support_lin(sha256: str) -> tuple[np.ndarray, np.ndarray, dict]:
 
 
 def load_claims_matched() -> list[dict]:
-    d = json.loads((ROOT / "evidence" / "claims_matched_20261027.json").read_text(encoding="utf-8"))
+    d = json.loads((ROOT / "evidence" / "claims_matched_20261028.json").read_text(encoding="utf-8"))
     return d["rows"]
 
 

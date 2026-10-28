@@ -1,3 +1,19 @@
+# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-28, Post-`RIESZ_LOCKED_LBM_V2` / `81d8ca8b` Session)
+
+## Current Selector Decision (`2026-10-28`): **PRIMARY CANDIDATE CLEARED FOR HUMAN SELECTOR (`verdict: "promote"`, `submission_eligible: true`, `0` weekly slots auto-spent)**
+
+- **Primary `2026-10-28` Submission Candidate (`RIESZ_LOCKED_LBM_V2` / `rieszlbm2`):**
+  - **File:** `docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif` (`203,310` bytes; companion one-TIFF ZIP `docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.zip`; SHA-256 `d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a`).
+  - **DrivenData Portal Name:** `gemsdoe92-rieszlbm2-50000d-79041788`
+  - **DrivenData Portal Note (`132 / 140` chars):** `Riesz-Locked LBM-v2: 50000 binary dots; 128-claim density + q85 mimic filter + OOF Riesz/piedmont/Peclet; <=65.6% 8-owner fleet cap.`
+  - **Automated Format & `[0, 1]` Gates:** **PASS (`11/11`)** — `float32`, single band, `EPSG:32611`, `3292 × 3730` px, exact `sample_submission.tif` geotransform, binary `{0.0, 1.0}`, `0` NaN, `0.0` across all `7,108,787` exterior cells, `nodata=None`, `0` dots within `200 m` of mapped catalogue (`50,000` positive pixels).
+  - **8-Owner Fleet Uniqueness (`2,162` unique SHA-256 rasters across `123` repos of all `8` listed GitHub owners):** **PASS (PI-1)** — final 3-px dot overlap **`65.56% <= 70%`**, overlap vs `GEMSDOE92` prior `lbmc1` **`54.06% <= 70%`** (`22,971` genuinely new dots `> 300 m` outside `lbmc1`), pre-placement surface `|Spearman ρ| = 0.5503 <= 0.90`, final dot `|ρ| = 0.1449 <= 0.90`. (Literal reading against `17GEMSDOE` `5.17M`-cell full-footprint map = `1.000`, disclosed in `IRREGULARITIES.md` `IR-0127-1` / `IR-1028-4`.)
+  - **Score Estimates (`MODEL` — never an organizer receipt):** **`0.3216`** (`LBM-v2` with `>q85` canyon-rim mimic suppressor, `128`-claim LOGO RMSE `0.02015`, Spearman `0.9637`; frozen `LBM-v1` prospective OOT RMSE `0.00767` on the 5 newly reported `2026-10-28` claims); **`0.3163`** (`LBM-v1`, 90% group-bootstrap `[0.2968, 0.3330]`, `q05 = 0.2968 > 0.2778`, `100%` of 400 draws `> R0`; all 5 robustness specs `> R0`).
+  - **Spatial Hide-and-Recover `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld px):** **`0.03799 [0.03101, 0.04466]`** (`+92.9%` over prior `lbmc1` `0.01970`; standalone zero-catalogue physics `E1 = 0.08232`, `H92-RIESZ-HABITAT-LOQO` `E2 = 0.08346`). `16/16` `RIESZ-LOCKED` leakage canaries PASS (`max sym AUC = 0.6569 <= 0.90`).
+  - **Human Selector Guidance (Weekly Cap = 3/week):** Verify on DrivenData whether `2026-10-27` `lbmc1` (`SHA-256 = e928d3c3…3a1c`, listed as unscored in the `2026-10-28` brief) has already been uploaded. Do **not** upload both `lbmc1` and `rieszlbm2` blindly in the same week without recording the first `ORGANIZER-CONFIRMED` score in `ledger/submissions.csv` and refitting `LBM-v2`.
+
+---
+
 # Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-26, Post-LISTRIC, LISTRICLOQO & RIEDELVENT Sessions)
 
 # SLOT_PLAN — RIEDELVALVE session (2026-10-25): NO SLOT AUTHORIZED — DO NOT SUBMIT

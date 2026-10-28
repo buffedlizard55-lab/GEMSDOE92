@@ -5,7 +5,7 @@ Writes evidence/focus9_sources_20261027.json (raw/blob URLs at the default-branc
 """
 import json, subprocess, sys
 sys.path[:0]=['.','scripts']
-claims=json.load(open('evidence/claims_matched_20261027.json'))['rows']
+claims=json.load(open('evidence/claims_matched_20261028.json'))['rows']
 inv=json.load(open('.cache/registry_v3/inventory.json'))
 sites=['GEMSDOE24','GEMSDOE25','GEMSDOE27','GEMSDOE28','GEMSDOE30','GEMSDOE31','GEMSDOE32','GEMSDOE33','GEMSDOE36']
 out={}
@@ -22,4 +22,4 @@ for s in sites:
                 raw_url=f"https://github.com/buffedlizard55-lab/{s}/raw/{head}/{m['path']}",
                 blob_url=f"https://github.com/buffedlizard55-lab/{s}/blob/{head}/{m['path']}")
     print(s,best['claim'],best['name'][:50],head[:10],meta['sha']==f['git_blob_sha1'])
-json.dump(out,open('evidence/focus9_sources_20261027.json','w'),indent=1)
+json.dump(out,open('evidence/focus9_sources_20261028.json','w'),indent=1)
