@@ -1,0 +1,84 @@
+{
+  "schema": "gemsdoe92-prospective-oot-20261029",
+  "generated_utc": "2026-10-29T15:02:59.027739+00:00",
+  "n_train_claims": 130,
+  "n_oot_claims": 5,
+  "prospective_rmse_v1_all5": 0.05467,
+  "prospective_mae_v1_all5": 0.041044,
+  "prospective_rmse_v1_peer4_excl_self_optimized": 0.055687,
+  "prospective_rmse_v3_shrinkage_all5": 0.051798,
+  "prospective_mae_v3_shrinkage_all5": 0.035979,
+  "prospective_spearman_all5": 0.9,
+  "optimizers_curse_diagnosis": {
+    "submission": "gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros",
+    "claim": 0.2784,
+    "new_fleet_rank": "1 / 132 scored claims across all 8 GitHub owners (+0.0006 over GEMSDOE32 0.2778)",
+    "published_lbm_v1_projection": 0.332245,
+    "oot_recomputed_lbm_v1": 0.328799,
+    "shrinkage_lbm_v3_oot": 0.306144,
+    "overshoot_v1": -0.053845,
+    "mechanism": "Decision-driven Optimizer's Curse (Smith & Winkler 2006): lbmc1 was constructed by directly maximizing LBM-v1's highest-consensus cell weight (55.0% of dots placed in cons>=5 vs max 49.0% in training). Positive estimation noise in that extreme bin was selected into the argmax, whereas independent peer submissions (karage1 0.1648, ApartGEMSDOE3 0.1625, ApartGEMSDOE1 0.1516, KANLERGEMSDOE3 0.1233) showed much smaller OOT error. Shrinkage regularization + incorporating lbmc1=0.2784 directly into LBM-v3 anchors the high-consensus bin to observed reality."
+  },
+  "rows": [
+    {
+      "prompt_site": "ApartGEMSDOE1",
+      "name": "udth-submod-e3-20261027-50e7b334",
+      "sha256": "16f7101f41dd0331ac6076d6f55c906b7c1aa9fc7180258361450e9ecf87eede",
+      "n_fp_pos": 38500,
+      "status": "updated_from_0.0525",
+      "claim": 0.1516,
+      "lbm_v1_prospective_oot": 0.044959,
+      "error_v1_claim_minus_model": 0.106641,
+      "lbm_v3_shrinkage_oot": 0.042958,
+      "error_v3_claim_minus_model": 0.108642
+    },
+    {
+      "prompt_site": "GEMSDOE92",
+      "name": "gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros",
+      "sha256": "e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c",
+      "n_fp_pos": 35801,
+      "status": "newly_scored_20261029",
+      "claim": 0.2784,
+      "lbm_v1_prospective_oot": 0.328799,
+      "error_v1_claim_minus_model": -0.050399,
+      "lbm_v3_shrinkage_oot": 0.306144,
+      "error_v3_claim_minus_model": -0.027744
+    },
+    {
+      "prompt_site": "GEMSDOEkarage1",
+      "name": "karage1-hmas-sinter-dualcover-sep29-20261027T220000Z-zeros",
+      "sha256": "198076f81067353c3ee41d947c7830ef11db2e8128bc5f8c5bd20ef036736f76",
+      "n_fp_pos": 38200,
+      "status": "newly_scored_20261029",
+      "claim": 0.1648,
+      "lbm_v1_prospective_oot": 0.176515,
+      "error_v1_claim_minus_model": -0.011715,
+      "lbm_v3_shrinkage_oot": 0.172241,
+      "error_v3_claim_minus_model": -0.007441
+    },
+    {
+      "prompt_site": "ApartGEMSDOE3",
+      "name": "apartgemsdoe3-h-apart3-1-cfkc-dhc-37654-20261027T215000Z-9dedadfc-zeros",
+      "sha256": "afbfee1f46d6d3ca16297904cadf29d9cf9327d2ec5519e37f472c85bfaec065",
+      "n_fp_pos": 37654,
+      "status": "newly_scored_20261029",
+      "claim": 0.1625,
+      "lbm_v1_prospective_oot": 0.154991,
+      "error_v1_claim_minus_model": 0.007509,
+      "lbm_v3_shrinkage_oot": 0.152734,
+      "error_v3_claim_minus_model": 0.009766
+    },
+    {
+      "prompt_site": "KANLERGEMSDOE3",
+      "name": "kanlergemsdoe3-h-k3-1-cadg-submod-exp-k3-3-oof8f-37654-20261026-f0565e6d10f9-zeros",
+      "sha256": "bc019ae673a9d5ca1fe40e968759a2af8ae757a110599b66fc949c4f59961fba",
+      "n_fp_pos": 37654,
+      "status": "newly_scored_20261029",
+      "claim": 0.1233,
+      "lbm_v1_prospective_oot": 0.152254,
+      "error_v1_claim_minus_model": -0.028954,
+      "lbm_v3_shrinkage_oot": 0.149601,
+      "error_v3_claim_minus_model": -0.026301
+    }
+  ]
+}

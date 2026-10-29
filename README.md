@@ -1,5 +1,56 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+## 🚨 2026-10-29 Current Session Status (`LIDAR-SINTERVALVE` & `0.2784` Fleet Milestone)
+
+- **New 2026-10-29 GeoTIFF Candidate (`H-92G1 LIDAR-SINTERVALVE`):** **✅ OK TO DOWNLOAD FOR RESEARCH ONLY · ⛔ DO NOT SUBMIT** (`verdict: negative`, `submission_eligible: false`, **`0` weekly submission slots spent**, `3/3` session experiments completed).
+  - **1-Click Research Downloads:** [⬇ GeoTIFF (`gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.tif`)](docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.tif) (`148,221` B, SHA-256 `0db6046848adf1ac78d71baa34a49ae54c75018542ca50c3d2fb3e479505780e`) · [⬇ Single-TIFF ZIP](docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.zip) · [JSON Run Card](docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e_run_card.json) · [11-Gate Format Audit](docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros-audit.json) · [Readiness Feed](docs/downloads/lidarsintervalve_readiness_20261029.json)
+  - **Dedicated 2026-10-29 Pages & Subpages:** [Full 2026-10-29 Nine-Site & 8-Owner Executive Summary](docs/executive-summary-20261029-lidarsintervalve.html) · [How to Submit & `[0, 1]` Range-Error Guide](docs/how-to-submit.html) · [Landing Page](docs/index.html) · [PhD Analysis (`0.2778` vs `0.2784`)](docs/WHY_0_2778_AND_0_2784_20261029.md) · [Pre-Registered Hypotheses (`H-92G1`–`H-92G5`)](docs/HYPOTHESES_20261029_LIDAR_SINTERVALVE.md) · [2026-10-29 Full Analysis](docs/ANALYSIS_20261029_LIDAR_SINTERVALVE.md)
+  - **Spatially-Blocked `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positive pixels):** **`0.178619` `[0.163071, 0.193316]`** — **#1 fold-proper `HOLDOUT-DTI` among all PI-1-unique (`<=0.70`) candidates in `GEMSDOE92`** (`#2` overall behind duplicate `relay_conduit = 0.184485`, which failed sparse PI-1 at `0.7843 > 0.70`), decisively beating `R0_recipe` (`control_H19_5 = 0.096757`, paired `Δ = +0.081862 [+0.068243, +0.095663]`) and edging out same-draw `control_netexpand_far` (`0.177976`, paired `Δ = +0.000643 [-0.002525, +0.004321]`).
+  - **Leakage Canaries (`54/54` PASS):** `max_symmetric_auc = 0.77748 <= 0.90` (`H-92G1` max `0.57957` on `lidar_sinter_concordance`; `lidar_valid` survey-mask canary `0.51754`; 1m→10m quantile-bridge seam parity `|Δμ| <= 0.00528`).
+  - **Uniqueness Across Rebuilt 8-Owner Fleet (`2,263` Unique SHA-256 across `108` repos):** Sparse PI-1 final dots **PASS** (`worst 3-px overlap = 0.6909 <= 0.70` vs `13GEMSDOE`, `|ρ| = 0.0583 <= 0.90`, `12.33%` overlap vs `lbmc1`). Kept **DO NOT SUBMIT** because paired 95% CI vs `control_netexpand_far` spans zero and the literal `17GEMSDOE` dense-footprint witness forces literal overlap `1.000 > 0.70`.
+  - **Archive Metadata (`<=140` chars; do not upload):** Name `gemsdoe92-lidarsintervalve-65c6cb0e` · Note (`100/140` chars): `H-92G1 1m-LiDAR Wallace dipole+antislope+sinter valve LOQO; 37654 dots d>4px; RESEARCH DO NOT SUBMIT`
+- **🏆 2026-10-29 Fleet Leaderboard Milestone (`0.2784` `CLAIM`):** `GEMSDOE92`'s prior `2026-10-27` submission (`gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif`, SHA-256 `e928d3c3fde8b3f1…`) is newly reported in the 2026-10-29 standing prompt at **`0.2784` (`CLAIM`)** — **#1 across all 135 scored entries and all 8 GitHub owners** (`+0.0006` above `GEMSDOE32: 0.2778` `CLAIM`). Already submitted — **do NOT re-upload**.
+
+### 2026-10-29 Executive Summary Table (GEMSDOE92, All 9 Focus Sites & Newly Scored Peer Sites)
+
+| Site / Role | File & SHA-256 | `HOLDOUT-DTI` / `CLAIM` / `MODEL` | Uniqueness vs `2,263` Fleet Rasters | Automated Verdict |
+|---|---|---|---|---|
+| **GEMSDOE92** (`LIDAR-SINTERVALVE` 2026-10-29) | [`gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.tif`](docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.tif) (`0db6046848adf1ac…`, `37,654` dots) | **`0.178619` `HOLDOUT-DTI`** `[0.1631, 0.1933]` (#1 PI-1-unique in repo) · `0.0619` `MODEL` | PI-1 **PASS** (`0.6909 <= 0.70`, `|ρ|=0.0583`); literal dense witness `1.000` | **OK TO DOWNLOAD FOR RESEARCH ONLY · ⛔ DO NOT SUBMIT** |
+| **GEMSDOE92** (`lbmc1` 2026-10-27 — **Fleet #1**) | [`gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif`](docs/downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif) (`e928d3c3fde8b3f1…`, `35,801` dots) | **`0.2784` `CLAIM` (#1 across all 8 owners)** · `0.3053` `MODEL` | Peer PI-1 `0.6845 <= 0.70`; 100% self-match (already submitted) | **STUDY ONLY · ⛔ DO NOT SUBMIT (ALREADY SUBMITTED)** |
+| **GEMSDOE32** (Focus-9 #1) | `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros` (`ef44d2ab3d95a638…`) | **`0.2778` `CLAIM`** · `0.2647` `MODEL` (LOGO) | **NO — DUPLICATE** (`1.000` clone in `GEMSDOE39`, `41`, `43`, `57`, `79`) | **STUDY ONLY · ⛔ DO NOT SUBMIT** |
+| **GEMSDOE36** (Focus-9 #2) | `h36-4-b2-5-20261005T173851Z-b0b9d3b8-zeros` (`a5990bd10b0393eb…`) | **`0.2747` `CLAIM`** · `0.2673` `MODEL` (LOGO) | **NO — DUPLICATE** (`1.000` clone in `GEMSDOE37`) | **STUDY ONLY · ⛔ DO NOT SUBMIT** |
+| **GEMSDOE33** (Focus-9 #3) | `h35-1b-h33-2-b2-5-20261004T220000Z-2f93bd4c-zeros` (`51fa3765bc3c5a6c…`) | **`0.2740` `CLAIM`** · `0.2683` `MODEL` (LOGO) | **NO — DUPLICATE** (`1.000` clone in `GEMSDOE37`) | **STUDY ONLY · ⛔ DO NOT SUBMIT** |
+| **GEMSDOE27** (Focus-9 #4) | `h27-4-solo-d2-8-20261003-a9bb2e1c-nan` (`2dfcc1db0aaab9bc…`) | **`0.2662` `CLAIM`** · `0.2698` `MODEL` (LOGO) | **NO — DUPLICATE** (`1.000` clone across 7 repos) | **STUDY ONLY · ⛔ DO NOT SUBMIT** |
+| **GEMSDOE31** (Focus-9 #5) | `h33-1-ensemble-d28-b1-20261004T192832Z-c5b6e52a-zeros` (`86aa9f432bbfe6b2…`) | **`0.2654` `CLAIM`** · `0.2587` `MODEL` (LOGO) | **NO — DUPLICATE** (`0.985` overlap vs `GEMSDOE32`) | **STUDY ONLY · ⛔ DO NOT SUBMIT** |
+| **GEMSDOE28** (Focus-9 #6) | `h28-1-ens-h195-h274-d28-20261003-da91d4a7-nan` (`bc73766cb80596f3…`) | **`0.2610` `CLAIM`** · `0.2688` `MODEL` (LOGO) | **NO — DUPLICATE** (`1.000` clone in `GEMSDOE37`) | **STUDY ONLY · ⛔ DO NOT SUBMIT** |
+| **GEMSDOE25** (Focus-9 #7) | `dotted-h19-5-d2-8-20261002-e56ea318af89-nan` (`e56ea318af8967c7…`) | **`0.2600` `CLAIM`** · `0.2670` `MODEL` (LOGO) | **NO — DUPLICATE** (`1.000` clone across 9 repos) | **STUDY ONLY · ⛔ DO NOT SUBMIT** |
+| **GEMSDOE30** (Focus-9 #8) | `h32-1-dotted-d28-b1-20261004T044808Z-c50760c3-zeros` (`d8be9047e47cf51d…`) | **`0.2546` `CLAIM`** · `0.2656` `MODEL` (LOGO) | **NO — DUPLICATE** (`1.000` clone across 6 repos) | **STUDY ONLY · ⛔ DO NOT SUBMIT** |
+| **GEMSDOE24** (Focus-9 #9) | `h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan` (`989f59505db1758a…`) | **`0.2477` `CLAIM`** · `0.2577` `MODEL` (LOGO) | **NO — DUPLICATE** (`1.000` overlap vs `GEMSDOE25`) | **STUDY ONLY · ⛔ DO NOT SUBMIT** |
+| **GEMSDOEkarage1** (New 2026-10-29) | `gemsdoekarage1-hmas-unique-20261028-v1` (`8260e052b1887353…`, `42,000` dots) | **`0.1648` `CLAIM`** · `0.1722` `MODEL` (OOT) | Peer entry (`karagemop466-tech`) | **STUDY ONLY · ⛔ DO NOT SUBMIT** |
+| **ApartGEMSDOE3** (New 2026-10-29) | `apartgemsdoe3-s1-unique-gravity-worm-v1` (`7e166c563a62ef06…`, `35,660` dots) | **`0.1625` `CLAIM`** · `0.1527` `MODEL` (OOT) | Peer entry (`apartanish22-droid`) | **STUDY ONLY · ⛔ DO NOT SUBMIT** |
+| **ApartGEMSDOE1** (Updated 2026-10-29) | `apart1-udth-submod-e3-20261028` (`d18eb749…`) / `plkc-dualoof-e3` (`c0b3a2e6…`) | **`0.1516` `CLAIM`** (flagged `IR-1029-2` vs `0.0525`) | Peer entry (`apartanish22-droid`) | **STUDY ONLY · ⛔ DO NOT SUBMIT** |
+| **KANLERGEMSDOE3** (New 2026-10-29) | `kanlergemsdoe3-h92a-25015px-20261027` (`b37956384db92a7b…`, `25,015` dots) | **`0.1233` `CLAIM`** · `0.1496` `MODEL` (OOT) | Peer entry (`kanlerkanler11-ops`) | **STUDY ONLY · ⛔ DO NOT SUBMIT** |
+
+### Standing Project Charter (2026-10-29 Verbatim Prompt)
+
+The complete verbatim 2026-10-29 standing prompt (including all 8 GitHub owners, all focus-site and fleet `CLAIM` tables, the 5 mandatory protocol rules, the three-pass requirement, and the JSON RUN CARD schema) is stored permanently in **[docs/STANDING_PROMPT.md](docs/STANDING_PROMPT.md)** and mirrored in **[SESSION_PROMPT.md](SESSION_PROMPT.md)** as the standing project charter.
+
+<details>
+<summary><strong>Click to expand Standing Charter Rules &amp; Protocol Summary (full verbatim ledger in docs/STANDING_PROMPT.md)</strong></summary>
+
+1. **Review & Execute Prior Next Steps First:** Rebuilt 8-owner registry (`2,263` unique SHA-256 across `108` non-empty repos), resolved `BLINDCORRIDOR` full-registry PI-1 status (`0.7691 > 0.70`, FAIL), verified 22 SHA-256-pinned inputs (including official USGS 3DEP 1 m LiDAR `lidar_scarp_features_u8.tif`), audited the 5 newly scored 2026-10-29 entries out-of-time, and resolved the `docs/how-to-submit.html` conflict marker.
+2. **Rule 1 — Lane & Uniqueness Gate:** Stay inside one single-method geological lane (`H-92G1 LIDAR1M-ANTISLOPE-SINTERVALVE`). Check both pre-placement surface and final dots (`|ρ| <= 0.90`, `3-px overlap <= 0.70`).
+3. **Rule 2 — Shared Infrastructure:** Reuse `vendor/gems57/evaluate_holdout.py` (`gems57-pooled-hide-v2`), `vendor/gems57/submission_writer.py`, `gems.gates`, and `gems.uniqueness_v3` without private forks.
+4. **Rule 3 — Score Honesty:** Label every number strictly as `HOLDOUT-DTI` (with evaluator version, withheld positive count, 95% CI), `ORGANIZER-CONFIRMED`, `CLAIM`, or `MODEL` (never presented as a score).
+5. **Rule 4 — Leakage Canary:** Test every feature alone on holdout (`AUC > 0.90` indicates leakage); all `54/54` features passed (`max = 0.77748`).
+6. **Rule 5 — Budget & Format Gate:** At most `3` experiments (`E1`, `E2`, `E3`) or `2` hours; zero weekly slots spent unless candidate clears both holdout and uniqueness gates; single-band `float32` GeoTIFF strictly in `[0, 1]`, `0` NaN inside footprint, `0.0` outside footprint, `EPSG:32611`, `3730×3292`.
+
+</details>
+
+---
+
+## Historical Status Archive (2026-10-28 and earlier)
+
 ## 📌 Read first (standing prompt & current status, 2026-10-28)
 - **Status: DO NOT SUBMIT.** No focus-site file is unique under the full-registry PI-1 rule (2,216 SHA-256). Among the audited candidates, the RIESZ download is the only file that passes uniqueness, and its holdout is below R0. TIPCOMP fails PI-1 (worst 0.9180 vs GEMSDOE22). No weekly slot spent.
 - **Damage-zone file** (`gemsdoe92-damagezone-close-dots-20261028-zeros.tif`): FAILS full-registry PI-1 (identical bytes in 5 repos). Not unique.

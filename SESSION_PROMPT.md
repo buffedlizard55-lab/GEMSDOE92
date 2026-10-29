@@ -1,4 +1,15 @@
-## Current session addendum — 2026-10-28 review (branch `arena/591fc2bd-gemsdoe92`) — READ FIRST
+## Current session addendum — 2026-10-29 (`LIDAR-SINTERVALVE` + `0.2784` `CLAIM` audit, branch `arena/444755aa-gemsdoe92`) — READ FIRST
+
+**Current decision: DO NOT SUBMIT `LIDAR-SINTERVALVE` (research download only; `0` weekly slots spent).**
+- **2026-10-29 New GeoTIFF:** `docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.tif` (SHA-256 `0db6046848adf1ac78d71baa34a49ae54c75018542ca50c3d2fb3e479505780e`, `37,654` binary `1.0` dots, `11/11` portal format gates PASS, `verdict = negative`, `submission_eligible = false`).
+- **Measured `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives):** `0.178619` `[0.163071, 0.193316]` (#1 among all PI-1-unique `<=0.70` candidates in `GEMSDOE92`; paired `Δ = +0.081862 [+0.068243, +0.095663]` vs `R0_recipe = 0.096757`; paired `Δ = +0.000643 [-0.002525, +0.004321]` vs same-draw `control_netexpand_far = 0.177976`; trails duplicate `relay_conduit = 0.184485`, which failed PI-1 at `0.7843 > 0.70`). All `54/54` single-feature leakage canaries passed (`max symmetric AUC = 0.77748 <= 0.90`).
+- **Rebuilt 8-owner uniqueness (`2,263` unique SHA-256 across `108` repos):** Sparse PI-1 final dots **PASS** (`0.690949 <= 0.70`, `|ρ| = 0.058252 <= 0.90`), while unconstrained pre-placement top-`37,654` overlap (`1.0000`) and literal `17GEMSDOE` dense-footprint witness (`1.0000 > 0.70`) bind as fail-closed stops.
+- **2026-10-29 Fleet Leaderboard Milestone:** `GEMSDOE92`'s prior `2026-10-27` submission (`gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif`, SHA-256 `e928d3c3fde8b3f1…`) is newly reported in the 2026-10-29 standing prompt at **`0.2784` (`CLAIM`)** — **#1 across all 135 scored entries and all 8 GitHub owners** (`+0.0006` above `GEMSDOE32 = 0.2778` `CLAIM`; already submitted — do NOT re-upload).
+- **Verbatim 2026-10-29 Standing Prompt Charter:** Stored in full in [`docs/STANDING_PROMPT.md`](docs/STANDING_PROMPT.md) and summarized in [`README.md`](README.md).
+
+---
+
+## Previous session addendum — 2026-10-28 review (branch `arena/591fc2bd-gemsdoe92`)
 
 **Current decision: DO NOT SUBMIT the RIESZ-LOCKED candidate.** Research download only: `docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif` (SHA-256 `d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a`). It passes local GeoTIFF/range validation, but fails the supplied promotion protocol: pre-placement surface and final full-support registry overlap are recorded as `1.000 > 0.70`; and `HOLDOUT-DTI` `0.037987 [0.031011, 0.044656]` is below the R0 control `0.097750 [0.085900, 0.110766]`, paired difference `-0.059763 [-0.072005, -0.046653]`. The `0.321602` value is `MODEL` only, not a score. No organizer receipt, new TIFF, experiment, or weekly slot selection occurred in this review. The previously published `OK TO SUBMIT` banner is superseded and corrected in the site generator/status feeds.
 

@@ -347,6 +347,76 @@ def check_blindcorridor_history(problems: list[str]) -> None:
     print(f"  HISTORICAL {tif.name} sha256 {digest[:16]}… verdict=format_pass (DO NOT SUBMIT)")
 
 
+def check_lidarsintervalve_20261029(problems: list[str]) -> None:
+    """Verify 2026-10-29 LIDAR-SINTERVALVE byte-binding, gates, and fail-closed status."""
+    status_path = DOWNLOADS / "lidarsintervalve_readiness_20261029.json"
+    try:
+        status = json.loads(status_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        problems.append(f"LIDAR-SINTERVALVE readiness feed missing or invalid: {exc}")
+        return
+
+    rel = status.get("file", "")
+    if not re.fullmatch(r"downloads/[A-Za-z0-9_.-]+-zeros\.tif", rel):
+        problems.append("LIDAR-SINTERVALVE status file must be a local downloads/*-zeros.tif")
+        return
+    tif = DOCS / rel
+    if not tif.is_file():
+        problems.append(f"LIDAR-SINTERVALVE research TIFF missing: {rel}")
+        return
+    digest = sha256_file(tif)
+    if status.get("raster_sha256") != digest:
+        problems.append("LIDAR-SINTERVALVE readiness SHA-256 != research TIFF bytes")
+
+    zip_rel = status.get("zip", "")
+    zip_path = DOCS / zip_rel
+    if not zip_path.is_file() or status.get("zip_sha256") != sha256_file(zip_path):
+        problems.append("LIDAR-SINTERVALVE ZIP missing or SHA-256 mismatch")
+    else:
+        try:
+            with zipfile.ZipFile(zip_path) as zf:
+                members = [n for n in zf.namelist() if not n.endswith("/")]
+                if members != [tif.name] or hashlib.sha256(zf.read(tif.name)).hexdigest() != digest:
+                    problems.append("LIDAR-SINTERVALVE ZIP payload != research TIFF bytes")
+        except (OSError, zipfile.BadZipFile) as exc:
+            problems.append(f"LIDAR-SINTERVALVE ZIP invalid: {exc}")
+
+    try:
+        card = json.loads((DOWNLOADS / status.get("run_card", "")).read_text(encoding="utf-8"))
+        audit = json.loads((DOWNLOADS / status.get("audit", "")).read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        problems.append(f"LIDAR-SINTERVALVE run card or audit missing/invalid: {exc}")
+        return
+    if card.get("raster_sha256") != digest or audit.get("sha256_zeros") != digest:
+        problems.append("LIDAR-SINTERVALVE run-card/audit SHA-256 != research TIFF bytes")
+    if card.get("verdict") != "negative" or card.get("submission_eligible") is not False:
+        problems.append("LIDAR-SINTERVALVE run card must remain negative and not submission-eligible")
+    if status.get("verdict") != "negative" or status.get("submission_eligible") is not False:
+        problems.append("LIDAR-SINTERVALVE readiness must remain negative and not submission-eligible")
+    if status.get("download_status") != "OK TO DOWNLOAD FOR RESEARCH ONLY":
+        problems.append("LIDAR-SINTERVALVE download status must explicitly say research only")
+    if status.get("submission_status") != "DO NOT SUBMIT":
+        problems.append("LIDAR-SINTERVALVE submission status must explicitly say DO NOT SUBMIT")
+    if not 0 < len(str(card.get("note", ""))) <= 140:
+        problems.append("LIDAR-SINTERVALVE note must be 1..140 characters")
+    if card.get("leakage_canaries", {}).get("leakage_flag") is not False:
+        problems.append("LIDAR-SINTERVALVE leakage_flag must be False")
+    if card.get("holdout_dti", {}).get("evidence_class") != "HOLDOUT-DTI":
+        problems.append("LIDAR-SINTERVALVE holdout_dti must carry HOLDOUT-DTI label")
+
+    exec_path = DOCS / status.get("executive_summary", "")
+    if not exec_path.is_file():
+        problems.append("LIDAR-SINTERVALVE executive summary HTML missing")
+    else:
+        exec_html = exec_path.read_text(encoding="utf-8")
+        for phrase in ("DO NOT SUBMIT", "OK TO DOWNLOAD FOR RESEARCH ONLY", "HOLDOUT-DTI", "MODEL", "0.2784"):
+            if phrase not in exec_html:
+                problems.append(f"LIDAR-SINTERVALVE executive summary missing {phrase!r}")
+        if "OK TO SUBMIT" in exec_html:
+            problems.append("LIDAR-SINTERVALVE executive summary contains contradictory OK TO SUBMIT copy")
+    print(f"  CURRENT-20261029 {tif.name} sha256 {digest[:16]}… verdict=negative (DO NOT SUBMIT)")
+
+
 def check_served(html: str, problems: list[str]) -> int:
     archive = ARCHIVE.read_text(encoding="utf-8") if ARCHIVE.is_file() else ""
     served = sorted(DOWNLOADS.glob("*-zeros.tif"))
@@ -406,6 +476,7 @@ def main() -> int:
     check_primary(html, problems)
     check_tipcomp_history(problems)
     check_blindcorridor_history(problems)
+    check_lidarsintervalve_20261029(problems)
     n = check_served(html, problems)
     if problems:
         print("SITE CHECK FAIL")

@@ -1,0 +1,183 @@
+{
+  "schema": "gemsdoe92-fleet-8owners-20261029",
+  "generated_utc": "2026-10-29T15:02:52.312692+00:00",
+  "total_gemsdoe_repos": 123,
+  "non_empty_repos": 108,
+  "total_grid_raster_files": 3422,
+  "unique_sha256": 2263,
+  "delta_unique_sha256_vs_20261028": 101,
+  "owners": [
+    {
+      "owner": "buffedlizard55-lab",
+      "total_gemsdoe_repos": 102,
+      "repos_with_grid_tifs": 91,
+      "grid_tif_files": 3140,
+      "unique_sha256": 2066,
+      "empty_repos": [
+        "GEMSDOE100",
+        "GEMSDOE101",
+        "GEMSDOE93",
+        "GEMSDOE94",
+        "GEMSDOE95",
+        "GEMSDOE96",
+        "GEMSDOE97",
+        "GEMSDOE98",
+        "GEMSDOE99"
+      ]
+    },
+    {
+      "owner": "kanlerxz87-cyber",
+      "total_gemsdoe_repos": 3,
+      "repos_with_grid_tifs": 3,
+      "grid_tif_files": 100,
+      "unique_sha256": 92,
+      "empty_repos": []
+    },
+    {
+      "owner": "eugboogieman123-ops",
+      "total_gemsdoe_repos": 3,
+      "repos_with_grid_tifs": 0,
+      "grid_tif_files": 0,
+      "unique_sha256": 0,
+      "empty_repos": [
+        "EUGGEMSDOE1",
+        "EUGGEMSDOE2",
+        "EUGGEMSDOE3"
+      ]
+    },
+    {
+      "owner": "wingbangboozle1-lang",
+      "total_gemsdoe_repos": 3,
+      "repos_with_grid_tifs": 3,
+      "grid_tif_files": 77,
+      "unique_sha256": 56,
+      "empty_repos": []
+    },
+    {
+      "owner": "ginnymcfiner23-ux",
+      "total_gemsdoe_repos": 3,
+      "repos_with_grid_tifs": 0,
+      "grid_tif_files": 0,
+      "unique_sha256": 0,
+      "empty_repos": [
+        "GINNYGEMSDOE1",
+        "GINNYGEMSDOE2",
+        "GINNYGEMSDOE3"
+      ]
+    },
+    {
+      "owner": "karagemop466-tech",
+      "total_gemsdoe_repos": 3,
+      "repos_with_grid_tifs": 3,
+      "grid_tif_files": 31,
+      "unique_sha256": 29,
+      "empty_repos": []
+    },
+    {
+      "owner": "apartanish22-droid",
+      "total_gemsdoe_repos": 3,
+      "repos_with_grid_tifs": 3,
+      "grid_tif_files": 48,
+      "unique_sha256": 37,
+      "empty_repos": []
+    },
+    {
+      "owner": "sassnarep3-star",
+      "total_gemsdoe_repos": 3,
+      "repos_with_grid_tifs": 3,
+      "grid_tif_files": 26,
+      "unique_sha256": 21,
+      "empty_repos": []
+    }
+  ],
+  "unscored_prompt_entries": [
+    {
+      "prompt_site": "GEMSDOE91",
+      "name": "gems91-S18-UNIQUE-curvtilt-20000dots-20261025T182858Z-29db2405",
+      "matched": true,
+      "sha256": "af01bc7190ce736d2ea7eb28a6e0b9ccd238dd616f41644ba4d8bc5a4f892bb6",
+      "n_fp_pos": 20000,
+      "matched_path": "buffedlizard55-lab/GEMSDOE91:docs/downloads/gems91-S18-UNIQUE-curvtilt-20000dots-20261025T182858Z-29db2405.tif"
+    },
+    {
+      "prompt_site": "WBGGEMSDOE1",
+      "name": "wbggemsdoe1-h1-gdr-vent-stepover-37654dots-20261026T222633Z-zeros",
+      "matched": false,
+      "sha256": null,
+      "n_fp_pos": 0,
+      "matched_path": null
+    },
+    {
+      "prompt_site": "WBGGEMSDOE2",
+      "name": "wbg2-offcatalogue-density-36k-20261027T173000Z-zeros",
+      "matched": true,
+      "sha256": "f5b37051a26b3bc5d2d53dfd6fe1ca8c293cc62fb01a97aa8f36a959625430f3",
+      "n_fp_pos": 36000,
+      "matched_path": "wingbangboozle1-lang/WBGGEMSDOE1:docs/downloads/wbg2-offcatalogue-density-36k-20261027.tif"
+    },
+    {
+      "prompt_site": "WBGGEMSDOE3",
+      "name": "wbg3-h3pack-34k-20261027T174337Z-zeros",
+      "matched": true,
+      "sha256": "5b32ad6190957ac43b3d9069f99dc0742c776cd0b2f89af63666dd43672d4ac2",
+      "n_fp_pos": 34000,
+      "matched_path": "wingbangboozle1-lang/WBGGEMSDOE2:docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif"
+    },
+    {
+      "prompt_site": "WBGGEMSDOE3",
+      "name": "wbggemsdoe3-skarpline-union-20261026T225030Z-zeros",
+      "matched": false,
+      "sha256": null,
+      "n_fp_pos": 0,
+      "matched_path": null
+    },
+    {
+      "prompt_site": "KANLERGEMSDOE1",
+      "name": "kanlergems1-msbd-exp-1-full-37654dots-20261026T222749Z-134bb088-zeros",
+      "matched": false,
+      "sha256": null,
+      "n_fp_pos": 0,
+      "matched_path": null
+    },
+    {
+      "prompt_site": "KANLERGEMSDOE2",
+      "name": "kanlergems2-htcads-exp-2-37654dots-20261026T235227Z-11a2f251-zeros",
+      "matched": true,
+      "sha256": "f482d3bad4b390470be06363b60867c8e42942101271caf4fa82ae3c3975abeb",
+      "n_fp_pos": 37654,
+      "matched_path": "kanlerxz87-cyber/KANLERGEMSDOE2:docs/downloads/kanlergems2-htcads-exp-2-37654dots-20261026T235227Z-11a2f251-zeros.tif"
+    },
+    {
+      "prompt_site": "GEMSDOESASS1",
+      "name": "gemsass1-swgb-hrv2-37654-20261027T214443Z-ee7a440f-zeros",
+      "matched": false,
+      "sha256": null,
+      "n_fp_pos": 0,
+      "matched_path": null
+    },
+    {
+      "prompt_site": "GEMSDOESASS2",
+      "name": "gemsdoesass2-htcd-blind-37654-20261027T214957Z-1839f7bc-zeros",
+      "matched": false,
+      "sha256": null,
+      "n_fp_pos": 0,
+      "matched_path": null
+    },
+    {
+      "prompt_site": "GEMSDOESASS3",
+      "name": "gemsdoesass3-lwst-geoconduit-20261027T214536Z-zeros",
+      "matched": false,
+      "sha256": null,
+      "n_fp_pos": 0,
+      "matched_path": null
+    },
+    {
+      "prompt_site": "ApartGEMSDOE3",
+      "name": "h2-cshd-dual97-axial362-37654-20261028T063000Z-37b32d5b",
+      "matched": true,
+      "sha256": "65f2ac84ff2c762495107487769a49e90919c5c6bf4a7948ca77e4a6971e5b38",
+      "n_fp_pos": 37654,
+      "matched_path": "apartanish22-droid/ApartGEMSDOE3:docs/downloads/apartgemsdoe3-h2-cshd-dual97-axial362-37654-20261028T063000Z-37b32d5b-zeros.tif"
+    }
+  ]
+}

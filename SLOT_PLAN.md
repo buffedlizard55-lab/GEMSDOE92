@@ -1,4 +1,18 @@
-# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-28, Post-`RIESZ_LOCKED_LBM_V2` / `81d8ca8b` Session)
+# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-29, Post-`LIDAR-SINTERVALVE` & `0.2784` Fleet Milestone)
+
+## Current Slot Decision (`2026-10-29`): **NO NEW WEEKLY SLOT AUTHORIZED — DO NOT SUBMIT (`verdict: "negative"`, `submission_eligible: false`, `0` weekly slots spent)**
+
+- **2026-10-29 Leaderboard Milestone on Already-Submitted `lbmc1`:**
+  - `gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif` (`SHA-256 = e928d3c3fde8b3f1…`, `35,801` binary dots) is newly reported in the 2026-10-29 standing prompt at **`0.2784` (`CLAIM`)** — **#1 across all 135 scored entries and all 8 GitHub owners** (`+0.0006` above `GEMSDOE32: 0.2778` `CLAIM`). Because it has already been submitted, **do NOT re-upload `lbmc1`**.
+- **2026-10-29 Session Candidate (`H-92G1 LIDAR-SINTERVALVE`):**
+  - **File:** `docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.tif` (`148,221` B; SHA-256 `0db6046848adf1ac78d71baa34a49ae54c75018542ca50c3d2fb3e479505780e`; ZIP `docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.zip`; Run Card `docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e_run_card.json`).
+  - **Status:** **OK TO DOWNLOAD FOR RESEARCH ONLY · ⛔ DO NOT SUBMIT.**
+  - **Gates:** `11/11` `gems.gates` + `gems57.validate` PASS (`[0, 1]`, `0` NaN, `0.0` outside footprint, `d_cat > 4 px`); `54/54` single-feature leakage canaries PASS (`max symmetric AUC = 0.77748 <= 0.90`); sparse PI-1 uniqueness **PASS** across all `2,263` unique SHA-256 rasters in 8 GitHub owners (`worst 3-px overlap = 0.690949 <= 0.70`, `|ρ| = 0.058252 <= 0.90`, `12.33%` overlap vs `lbmc1`).
+  - **Why Slot Is Conserved:** Fold-proper `HOLDOUT-DTI = 0.178619 [0.163071, 0.193316]` (#1 among PI-1-unique candidates in `GEMSDOE92`, `+0.081862` over `R0_recipe`), but its paired 95% CI vs `control_netexpand_far` (`0.177976`) spans zero (`[-0.002525, +0.004321]`), it trails duplicate `relay_conduit` (`0.184485`), and the literal `17GEMSDOE` dense-footprint witness (`1.000 > 0.70`) remains unresolved. See `docs/NEXT_STEPS.md` for how re-running `E3` at `d_cat > 2.0 px` (or hybridizing `H-92G1` with shrinkage `LBM-v3`) in a future session targets `>0.30` while conserving weekly slots today.
+
+---
+
+# Historical Weekly Slot Plan — GEMSDOE92 (2026-10-28, Post-`RIESZ_LOCKED_LBM_V2` / `81d8ca8b` Session)
 
 ## Current Selector Decision (`2026-10-28`): **PRIMARY CANDIDATE CLEARED FOR HUMAN SELECTOR (`verdict: "promote"`, `submission_eligible: true`, `0` weekly slots auto-spent)**
 
