@@ -116,6 +116,40 @@ def load_blindcorridor_status():
     return card, audit, status
 
 
+def load_admitrelay_status():
+    """Load and byte-verify the 2026-10-29 ADMITRELAY + LBM-v3 negative research artifact."""
+    import hashlib
+    import zipfile
+
+    feed_path = DL / 'admitrelay_readiness_20261029.json'
+    if not feed_path.is_file():
+        return None
+    status = json.loads(feed_path.read_text(encoding='utf-8'))
+    card_path = DL / status['run_card']
+    audit_path = DL / status['audit']
+    tif_path = DOCS / status['file']
+    zip_path = DOCS / status['zip']
+    card = json.loads(card_path.read_text(encoding='utf-8'))
+    audit = json.loads(audit_path.read_text(encoding='utf-8'))
+    digest = hashlib.sha256(tif_path.read_bytes()).hexdigest()
+    zip_digest = hashlib.sha256(zip_path.read_bytes()).hexdigest()
+    if digest != card.get('raster_sha256') or digest != audit.get('sha256_zeros') or digest != status.get('raster_sha256'):
+        raise ValueError('ADMITRELAY raster SHA-256 mismatch across run card / audit / readiness feed')
+    if zip_digest != status.get('zip_sha256'):
+        raise ValueError('ADMITRELAY ZIP SHA-256 mismatch')
+    with zipfile.ZipFile(zip_path) as zf:
+        members = [m for m in zf.namelist() if not m.endswith('/')]
+        if len(members) != 1 or Path(members[0]).name != tif_path.name:
+            raise ValueError('ADMITRELAY ZIP must contain exactly its single bound TIFF')
+        if hashlib.sha256(zf.read(members[0])).hexdigest() != digest:
+            raise ValueError('ADMITRELAY ZIP payload SHA-256 mismatch')
+    if card.get('verdict') != 'negative' or card.get('submission_eligible') is not False:
+        raise ValueError('ADMITRELAY must remain verdict=negative and submission_eligible=false')
+    if status.get('verdict') != 'negative' or status.get('submission_eligible') is not False:
+        raise ValueError('ADMITRELAY readiness feed must remain verdict=negative and submission_eligible=false')
+    return card, audit, status
+
+
 def render(card):
     if card.get('verdict') != 'negative' or card.get('submission_eligible') is not False:
         raise ValueError('blocked: review renderer cannot authorize promotion')
@@ -195,11 +229,35 @@ def render(card):
 <p>This superseded diagnostic recorded literal registry overlap <strong>1.000 &gt; 0.70</strong>; a sparse matched-budget reading was diagnostic only and did not clear any weekly slot. It is retained for audit, not as a candidate recommendation.</p>
 </section>
 <!-- KNICKLOQO:END -->'''
-    body = f'''<p class="small"><a href="executive-summary-nine-sites-20261028.html">Nine-site executive summary</a> · <a href="STANDING_BRIEF_20261028.md">Standing brief</a> · <a href="HYPOTHESES_20261028_STANDING.md">Untried hypotheses</a></p><nav><a href="how-to-submit.html">How to submit</a> · <a href="nine-sites.html">Nine-site review</a> · <a href="REVIEW_20261028_MAIN_INTEGRATION.md">Current three-pass main-integration review</a> · <a href="REVIEW_20261028_B6AA.md">Full audit and next steps</a> · <a href="REVIEW_20261028_SESSION.md">Independent overlap review</a></nav>
+    admitrelay = load_admitrelay_status()
+    admitrelay_section = ''
+    admitrelay_feed_path = DL / 'admitrelay_readiness_20261029.json'
+    if admitrelay:
+        ar_card, _, ar_status = admitrelay
+        ar_file = Path(ar_status['file']).name
+        ar_zip = Path(ar_status['zip']).name
+        ar_h = ar_card['holdout_dti']
+        ar_m = ar_card['model_estimate']
+        ar_u = ar_card['uniqueness']
+        admitrelay_section = f'''<section id="admitrelay-20261029" class="stop"><h2>Latest 2026-10-29 experiment: ADMITRELAY + LBM-v3 — OK TO DOWNLOAD FOR RESEARCH ONLY; DO NOT SUBMIT</h2>
+<p><a href="downloads/{esc(ar_file)}" download>Download ADMITRELAY GeoTIFF for research only — DO NOT SUBMIT</a> ·
+<a href="downloads/{esc(ar_zip)}" download>one-TIFF ZIP (research only)</a> ·
+<a href="downloads/{esc(ar_status['run_card'])}">byte-bound run card</a> ·
+<a href="downloads/{esc(ar_status['audit'])}">11-gate format audit</a> ·
+<a href="downloads/{esc(admitrelay_feed_path.name)}">readiness feed</a> ·
+<a href="executive-summary-20261029-admitrelay.html"><strong>2026-10-29 PhD Executive Summary &amp; LBM-v3 Audit</strong></a></p>
+<p>SHA-256 <code>{esc(ar_status['raster_sha256'])}</code> ({ar_card['raster']['n_dots']:,} binary dots in <code>[0, 1]</code>, zero NaN anywhere; 11/11 format gates PASS; 20/20 leakage canaries PASS with max symmetric AUC <code>{ar_card['leakage_canary_max_symmetric_auc']:.4f} &le; 0.90</code>).</p>
+<table><tr><th>2026-10-29 ledger &amp; <code>MODEL</code></th><td><code>GEMSDOE92 lbmc1</code> is newly reported at <code>0.2784 CLAIM</code> (#1 across 123 repos, +0.0006 over <code>GEMSDOE32 0.2778</code>). Centerline-monotone <code>LBM-v3</code> cuts 4-claim prospective 2026-10-29 OOT RMSE by 57.4% (<code>0.03159 &rarr; 0.01344</code>; <code>lbmc1</code> OOT <code>0.2818</code> vs <code>0.2784</code>). For <code>ADMITRELAY</code>, <code>LBM-v3</code> estimates <code>{ar_m['lbm_v3_monotone']:.4f} MODEL</code> (not an organizer score).</td></tr>
+<tr><th><code>HOLDOUT-DTI</code></th><td><code>gems57-pooled-hide-v2</code>, 22,663 withheld positives: zero-catalogue 12-feature <code>E1 = {ar_h['e1_admitrelay_blind']['dti']:.6f}</code>; fold-proper <code>E2 = {ar_h['e2_admitrelay_ps_loqo']['dti']:.6f}</code> (above <code>R0_recipe = {ar_h['r0_recipe_control']['dti']:.6f}</code> by <code>{ar_h['paired_e2_vs_r0_recipe']['delta']:+.6f}</code>, paired 95% CI <code>[{ar_h['paired_e2_vs_r0_recipe']['ci95'][0]:+.6f}, {ar_h['paired_e2_vs_r0_recipe']['ci95'][1]:+.6f}]</code>); deployed unique <code>E3 = {ar_h['e3_admitrelay_lbmv3_unique']['dti']:.6f}</code> (2.05&times; RIESZ E3 &amp; 3.95&times; LBMC1, but below <code>R0_recipe</code>).</td></tr>
+<tr><th>Uniqueness scope</th><td>Full 8-owner scan across <code>{ar_u['registry_rasters']:,}</code> unique SHA-256 rasters: PI-1 passes on <strong>both</strong> pre-placement surface (worst 3-px overlap <code>{ar_u['surface_worst_overlap']:.6f} &le; 0.70</code>, <code>|&rho;| = {ar_u['surface_worst_abs_rho']:.4f} &le; 0.90</code>) and final dots (<code>{ar_u['final_worst_overlap']:.6f} &le; 0.70</code>, <code>|&rho;| = {ar_u['final_worst_abs_rho']:.4f} &le; 0.90</code>). Literal full-support witness <code>17GEMSDOE E-proba-multiscale</code> remains <code>1.000 &gt; 0.70</code>.</td></tr>
+<tr><th>Decision</th><td><strong>DO NOT SUBMIT.</strong> <code>verdict=negative</code>, <code>submission_eligible=false</code>, 0 weekly slots spent. Archived name/note are audit metadata only, not upload instructions.</td></tr></table></section>'''
+
+    body = f'''<p class="small"><a href="executive-summary-20261029-admitrelay.html"><strong>2026-10-29 ADMITRELAY + LBM-v3 Executive Summary</strong></a> · <a href="HYPOTHESES_20261029_ADMITRELAY.md">2026-10-29 Pre-Registered Hypotheses</a> · <a href="STANDING_PROMPT.md">Standing Prompt</a> · <a href="executive-summary-nine-sites-20261028.html">Nine-site executive summary</a> · <a href="STANDING_BRIEF_20261028.md">Standing brief</a> · <a href="HYPOTHESES_20261028_STANDING.md">Untried hypotheses</a></p><nav><a href="how-to-submit.html">How to submit</a> · <a href="nine-sites.html">Nine-site review</a> · <a href="REVIEW_20261028_MAIN_INTEGRATION.md">Current three-pass main-integration review</a> · <a href="REVIEW_20261028_B6AA.md">Full audit and next steps</a> · <a href="REVIEW_20261028_SESSION.md">Independent overlap review</a></nav>
 <section id="submit-now" class="stop"><h1>DO NOT SUBMIT — no eligible new TIFF</h1>
 <p>No competition slot was used. The prior Riesz candidate fails the requested literal registry rule and did not beat the holdout control. A range-valid raster is not automatically submission-ready.</p>
 <p><a data-primary="true" href="downloads/{esc(file)}" download>Download existing Riesz TIFF for research only</a> · <a href="downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json">Historical run card, reclassified negative</a></p>
 <p>SHA-256: <code>{digest}</code>. Historical name: <code>{name}</code>. Historical note (not an instruction to upload): <code>{note}</code></p></section>
+{admitrelay_section}
 {tipcomp_section}
 {blindcorridor_section}
 {legacy_knickloqo}
@@ -236,7 +294,7 @@ def render(card):
     reason = 'Research only; mandatory promotion protocol gates failed.'
     current = {'file': card['raster']['file'], 'sha256':card['raster_sha256'], 'submission_name':card['submission_name'], 'note':card['note'], 'verdict':'negative','ok_to_download':True,'ok_to_submit':False,'reason':reason,'blocking_reasons':blockers, 'run_card': 'downloads/'+Path(card['raster']['file']).name.replace('-zeros.tif','_run_card.json')}
     readiness = {'file':'downloads/'+file, 'raster_sha256':card['raster_sha256'],'submission_name':card['submission_name'],'note':card['note'], 'verdict':'negative','submission_eligible':False,'download_status':'OK TO DOWNLOAD FOR RESEARCH','submission_status':'DO NOT SUBMIT','reason':reason,'blocking_reasons':blockers,'gates':card.get('gates_passed',{})}
-    root = f'<p>The organizer leaderboard is not mirrored. <a href="https://www.drivendata.org/termsofuse/">DrivenData Terms of Use</a></p><h1>GEMSDOE92</h1><p class="small"><a href="docs/executive-summary-nine-sites-20261028.html">Nine-site executive summary (uniqueness, pairwise overlap)</a> · <a href="docs/STANDING_BRIEF_20261028.md">Standing brief</a> · <a href="docs/HYPOTHESES_20261028_STANDING.md">Untried hypotheses</a> · <a href="docs/STANDING_PROMPT.md">Stored prompt (reconstructed; verbatim pending)</a></p><section class="stop"><h2>DO NOT SUBMIT — no eligible new TIFF</h2><p>Research-only file: <a href="docs/downloads/{esc(file)}"><code>{esc(file)}</code></a>; SHA-256 <code>{digest}</code>.</p><p>The additional BLINDCORRIDOR artifact is format-pass only and also <strong>DO NOT SUBMIT</strong>; see its <a href="docs/index.html#blindcorridor">byte-bound status and audit</a>.</p><p><a href="docs/index.html">Read the executive summary and research downloads</a></p><p><a href="docs/how-to-submit.html">How to submit when cleared</a></p></section>'
+    root = f'<p>The organizer leaderboard is not mirrored. <a href="https://www.drivendata.org/termsofuse/">DrivenData Terms of Use</a></p><h1>GEMSDOE92</h1><p class="small"><a href="docs/executive-summary-20261029-admitrelay.html"><strong>2026-10-29 ADMITRELAY + LBM-v3 Executive Summary</strong></a> · <a href="docs/executive-summary-nine-sites-20261028.html">Nine-site executive summary (uniqueness, pairwise overlap)</a> · <a href="docs/STANDING_BRIEF_20261028.md">Standing brief</a> · <a href="docs/HYPOTHESES_20261029_ADMITRELAY.md">2026-10-29 Hypotheses</a> · <a href="docs/STANDING_PROMPT.md">Standing Prompt</a></p><section class="stop"><h2>DO NOT SUBMIT — no eligible new TIFF</h2><p>Research-only file: <a href="docs/downloads/{esc(file)}"><code>{esc(file)}</code></a>; SHA-256 <code>{digest}</code>.</p><p>The 2026-10-29 ADMITRELAY + LBM-v3 candidate is also research-only and <strong>DO NOT SUBMIT</strong>; see its <a href="docs/executive-summary-20261029-admitrelay.html">executive summary &amp; run card</a>. The additional BLINDCORRIDOR artifact is format-pass only and also <strong>DO NOT SUBMIT</strong>; see its <a href="docs/index.html#blindcorridor">byte-bound status and audit</a>.</p><p><a href="docs/index.html">Read the executive summary and research downloads</a></p><p><a href="docs/how-to-submit.html">How to submit when cleared</a></p></section>'
     outputs = {
         DOCS/'index.html': page('GEMSDOE92 — Executive summary', body),
         DOCS/'nine-sites.html': page('GEMSDOE92 — Nine-site review', body),
@@ -246,4 +304,6 @@ def render(card):
     }
     if blindcorridor:
         outputs[blindcorridor_feed_path] = json.dumps(blind_status, indent=2)+'\n'
+    if admitrelay:
+        outputs[admitrelay_feed_path] = json.dumps(ar_status, indent=2)+'\n'
     return outputs

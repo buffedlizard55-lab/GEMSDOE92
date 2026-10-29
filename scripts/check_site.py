@@ -347,6 +347,44 @@ def check_blindcorridor_history(problems: list[str]) -> None:
     print(f"  HISTORICAL {tif.name} sha256 {digest[:16]}… verdict=format_pass (DO NOT SUBMIT)")
 
 
+def check_admitrelay_history(problems: list[str]) -> None:
+    """Keep the 2026-10-29 ADMITRELAY + LBM-v3 artifact byte-bound and fail-closed."""
+    status_path = DOWNLOADS / "admitrelay_readiness_20261029.json"
+    if not status_path.is_file():
+        return
+    try:
+        status = json.loads(status_path.read_text(encoding="utf-8"))
+        tif = DOCS / status["file"]
+        zip_path = DOCS / status["zip"]
+        card = json.loads((DOWNLOADS / status["run_card"]).read_text(encoding="utf-8"))
+        audit = json.loads((DOWNLOADS / status["audit"]).read_text(encoding="utf-8"))
+        summary = (DOCS / status["executive_summary"]).read_text(encoding="utf-8")
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        problems.append(f"ADMITRELAY readiness/evidence missing or invalid: {exc}")
+        return
+
+    if not tif.is_file() or not zip_path.is_file():
+        problems.append("ADMITRELAY research TIFF or ZIP missing")
+        return
+    digest = sha256_file(tif)
+    if status.get("raster_sha256") != digest or card.get("raster_sha256") != digest or audit.get("sha256_zeros") != digest:
+        problems.append("ADMITRELAY SHA-256 mismatch across readiness / run card / audit")
+    if status.get("zip_sha256") != sha256_file(zip_path):
+        problems.append("ADMITRELAY ZIP SHA-256 mismatch")
+    if status.get("verdict") != "negative" or card.get("verdict") != "negative" or audit.get("verdict") != "negative":
+        problems.append("ADMITRELAY must remain verdict=negative")
+    if status.get("submission_eligible") is not False or card.get("submission_eligible") is not False or audit.get("submission_eligible") is not False:
+        problems.append("ADMITRELAY must remain submission_eligible=false")
+    if status.get("download_status") != "OK TO DOWNLOAD FOR RESEARCH ONLY" or status.get("submission_status") != "DO NOT SUBMIT":
+        problems.append("ADMITRELAY download/submission status strings invalid")
+    for phrase in ("DO NOT SUBMIT", "OK TO DOWNLOAD FOR RESEARCH ONLY", "HOLDOUT-DTI", "MODEL", "CLAIM"):
+        if phrase not in summary:
+            problems.append(f"ADMITRELAY executive summary missing {phrase!r}")
+    if "OK TO SUBMIT" in summary:
+        problems.append("ADMITRELAY executive summary contains contradictory OK TO SUBMIT copy")
+    print(f"  CANDIDATE-20261029 {tif.name} sha256 {digest[:16]}… verdict=negative (DO NOT SUBMIT)")
+
+
 def check_served(html: str, problems: list[str]) -> int:
     archive = ARCHIVE.read_text(encoding="utf-8") if ARCHIVE.is_file() else ""
     served = sorted(DOWNLOADS.glob("*-zeros.tif"))
@@ -426,6 +464,7 @@ def main() -> int:
     check_primary(html, problems)
     check_tipcomp_history(problems)
     check_blindcorridor_history(problems)
+    check_admitrelay_history(problems)
     n = check_served(html, problems)
     if problems:
         print("SITE CHECK FAIL")
