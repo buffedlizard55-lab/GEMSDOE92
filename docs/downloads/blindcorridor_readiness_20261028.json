@@ -31,12 +31,22 @@
     "checked_reference_count": 3,
     "worst_overlap_3px": 0.507675,
     "full_registry_audit": "not performed",
+    "historical_registry_audit": {
+      "candidate_sha256": "4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14",
+      "registry_unique_sha256": 2217,
+      "worst_overlap_3px": 0.769108,
+      "worst_repositories": [
+        "buffedlizard55-lab/13GEMSDOE"
+      ],
+      "pi1_pass": false,
+      "current": false
+    },
     "literal_dense_witness": "unresolved"
   },
   "blocking_reasons": [
     "independent HOLDOUT-DTI and 95% CI are absent",
     "individual-feature leakage canaries were not run",
-    "the full public registry uniqueness audit was not performed",
+    "historical registry audit fails the overlap stop; current registry not verified",
     "the literal dense-witness interpretation remains unresolved"
   ]
 }
