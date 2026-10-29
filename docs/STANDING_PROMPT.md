@@ -41,3 +41,4 @@
 ## Dated Ledger Files Referenced by This Baseline
 
 - `ledger/claims_20261029.txt` & `ledger/unscored_20261029.txt`: Complete `2026-10-29` owner-reported `CLAIM` and unscored fleet tables across all 8 GitHub owners (superseding `2026-10-28` unscored status for `lbmc1`, `KANLERGEMSDOE3`, `GEMSDOEkarage1`, and `ApartGEMSDOE3`, with discrepancies documented in `IRREGULARITIES.md` `IR-1029-1..3`).
+- `docs/executive-summary-20261029-dexp-kostrov.html` & `evidence/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17_run_card.json`: 2026-10-29 `DEXP-KOSTROV-KOENDERINK` research artifact (`SHA-256 80d66b0590b2…`, `verdict="negative"`, `DO NOT SUBMIT`).

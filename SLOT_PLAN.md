@@ -1,4 +1,6 @@
-# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-29, Post-`ADMITRELAY` + `LBM-v3` / `f7a0fcb3` Session)
+# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-29, Post-`DEXP-KOSTROV-KOENDERINK`, `MARUSSI-TRISHEAR` & `ADMITRELAY` Sessions)
+
+- **2026-10-29 `DEXP-KOSTROV-KOENDERINK` Candidate (`verdict: "negative"`, `submission_eligible: false`, DO NOT SUBMIT):** `docs/downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.tif` (`SHA-256 80d66b0590b26ddc9ac56af3964289f63f9c07c80931e3e69a7089dbabbc6faf`, `40,000` binary dots; `11/11` format gates PASS; `36/36` leakage canaries PASS `<= 0.77482`; fold-proper `HOLDOUT-DTI E3 = 0.117438 [0.104226, 0.130267]`, `E2 = 0.141812` beating `R0_recipe = 0.097750` by `+0.019688 [+0.008586, +0.031664]`; operational `PI-1` PASS across all `2,262` fleet SHAs on **both** pre-placement surface `0.65405 <= 0.70` and final dots `0.63890 <= 0.70`; `0.17533` vs `lbmc1`, `0.28033` vs `admitrelay1`, `0.29685` vs `marussitrishear`). Held fail-closed under literal dense-witness `1.000` & unverified input provenance (`evidence/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17_run_card.json`).
 
 ## Current Selector Decision (`2026-10-29`): **NO SLOT AUTHORIZED — DO NOT SUBMIT (`verdict: "negative"`, `submission_eligible: false`, `0` weekly slots spent)**
 

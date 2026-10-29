@@ -1,0 +1,91 @@
+{
+  "schema": "gemsdoe92-candidate-readiness-v2",
+  "artifact": "DEXP-KOSTROV-KOENDERINK",
+  "date": "2026-10-29",
+  "file": "downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.tif",
+  "zip": "downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.zip",
+  "audit": "gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros-audit.json",
+  "run_card": "gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17_run_card.json",
+  "executive_summary": "executive-summary-20261029-dexp-kostrov.html",
+  "raster_sha256": "80d66b0590b26ddc9ac56af3964289f63f9c07c80931e3e69a7089dbabbc6faf",
+  "zip_sha256": "2e3f0198795b3c51771a0b132ab5090f9d6297a1467c7ad5b6a3e33a2a834ed4",
+  "n_dots": 40000,
+  "bytes": 150562,
+  "submission_name": "gemsdoe92-dexpkostrov1-40000d-ffa21c17",
+  "note": "DEXP-Kostrov E3: 40000 binary dots; Fedi DEXP N~0 + Kostrov strain + Koenderink toe; HOLDOUT-DTI 0.1174 > R0.",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "download_status": "OK TO DOWNLOAD FOR RESEARCH ONLY",
+  "submission_status": "DO NOT SUBMIT",
+  "format_validation": {
+    "status": "all 11 gates pass",
+    "gate_count": 11
+  },
+  "leakage_canaries": {
+    "status": "pass",
+    "n_features_tested": 36,
+    "max_symmetric_auc": 0.774815,
+    "threshold_auc": 0.9
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "e3_candidate": {
+      "dti": 0.117438,
+      "ci95": [
+        0.104226,
+        0.130267
+      ]
+    },
+    "e2_dual_regime": {
+      "dti": 0.141812,
+      "ci95": [
+        0.129232,
+        0.15389
+      ]
+    },
+    "e1_blind_loqo": {
+      "dti": 0.081254,
+      "ci95": [
+        0.069353,
+        0.093522
+      ]
+    },
+    "r0_recipe_control": {
+      "dti": 0.09775,
+      "ci95": [
+        0.085727,
+        0.109544
+      ]
+    },
+    "paired_e3_vs_r0_recipe": {
+      "delta": 0.019688,
+      "ci95": [
+        0.008586,
+        0.031664
+      ],
+      "beats_r0_ci95_gt_0": true
+    }
+  },
+  "uniqueness": {
+    "registry_owners": 8,
+    "registry_non_empty_repos": 108,
+    "registry_unique_rasters": 2262,
+    "dot_field_rasters": 2139,
+    "surface_rasters": 123,
+    "pi1_pre_placement_surface_pass": true,
+    "pi1_surface_worst_overlap": 0.65405,
+    "pi1_surface_worst_abs_rho": 0.409836,
+    "pi1_final_dots_pass": true,
+    "pi1_final_worst_overlap": 0.6389,
+    "pi1_final_worst_abs_rho": 0.043992,
+    "literal_duplicate_under_dense_witness": true,
+    "literal_worst_overlap": 1.0
+  },
+  "blocking_reasons": [
+    "literal full-support continuous witness (17GEMSDOE E-proba-multiscale = 1.000 > 0.70) and binary lattice (13GEMSDOE r13-lattice-s5) remain unresolved without owner policy disposition",
+    "official organizer origin and redistribution rights of restored mirror inputs remain unverified",
+    "weekly competition slot promotion requires a separate human selector decision (3 per week limit)"
+  ]
+}

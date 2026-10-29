@@ -1,0 +1,73 @@
+{
+  "schema": "gemsdoe92-submission-audit-v3",
+  "id": "gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17",
+  "lane": "DEXP-KOSTROV-KOENDERINK",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "zeros_file": "docs/downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.tif",
+  "zip_file": "docs/downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.zip",
+  "sha256_zeros": "80d66b0590b26ddc9ac56af3964289f63f9c07c80931e3e69a7089dbabbc6faf",
+  "sha256_zip": "2e3f0198795b3c51771a0b132ab5090f9d6297a1467c7ad5b6a3e33a2a834ed4",
+  "bytes_zeros": 150562,
+  "n_dots": 40000,
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=('float32',) count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nonfinite_pixels=0 masked_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=3px dots_within=0; strict distance > radius required"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "80d66b0590b26ddc9ac56af3964289f63f9c07c80931e3e69a7089dbabbc6faf"
+    }
+  ],
+  "run_card": "docs/downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17_run_card.json",
+  "status_note": "Format (11/11), leakage canaries (36/36 <= 0.90), fold-proper HOLDOUT-DTI vs R0 recipe, and operational PI-1 uniqueness across all 2,262 fleet rasters (pre-placement surface & final dots) ALL PASS; held fail-closed (verdict='negative', submission_eligible=false) solely under the unresolved literal dense-witness rule (17GEMSDOE E-proba-multiscale = 1.000 > 0.70) and unverified official redistribution provenance.",
+  "overall_pass": true
+}

@@ -1,0 +1,207 @@
+{
+  "schema": "gemsdoe92-lbm-oot-and-v3-20261029",
+  "built_utc": "2026-10-29T14:54:20+00:00",
+  "evidence_note": "MODEL predictions are diagnostic estimates fitted to owner-reported CLAIMs, NEVER leaderboard scores.",
+  "n_matched_claims": 132,
+  "n_groups": 88,
+  "prospective_oot_20261029": {
+    "n_new_unambiguous_claims": 4,
+    "rows": [
+      {
+        "site": "GEMSDOE92",
+        "name": "gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros",
+        "sha256": "e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c",
+        "n_dots": 35801,
+        "claim": 0.2784,
+        "lbm_v1_oot": 0.332218,
+        "lbm_v1_err": 0.053818,
+        "lbm_v2_oot": 0.332997,
+        "lbm_v2_err": 0.054597,
+        "frac_on_h19": 0.1331,
+        "frac_dh19_le2": 0.566,
+        "frac_cons_ge3": 0.6138,
+        "frac_cons_ge5": 0.4149,
+        "frac_dcat_gt15": 0.9845,
+        "frac_q85_mimic": 0.2311
+      },
+      {
+        "site": "KANLERGEMSDOE3",
+        "name": "kanlergemsdoe3-h-k3-1-cadg-submod-exp-k3-3-oof8f-37654-20261026-f0565e6d10f9-zeros",
+        "sha256": "bc019ae673a9d5ca1fe40e968759a2af8ae757a110599b66fc949c4f59961fba",
+        "n_dots": 37654,
+        "claim": 0.1233,
+        "lbm_v1_oot": 0.153519,
+        "lbm_v1_err": 0.030219,
+        "lbm_v2_oot": 0.150304,
+        "lbm_v2_err": 0.027004,
+        "frac_on_h19": 0.1047,
+        "frac_dh19_le2": 0.4049,
+        "frac_cons_ge3": 0.5255,
+        "frac_cons_ge5": 0.2882,
+        "frac_dcat_gt15": 0.5118,
+        "frac_q85_mimic": 0.3536
+      },
+      {
+        "site": "GEMSDOEkarage1",
+        "name": "karage1-hmas-sinter-dualcover-sep29-20261027T220000Z-zeros",
+        "sha256": "198076f81067353c3ee41d947c7830ef11db2e8128bc5f8c5bd20ef036736f76",
+        "n_dots": 38200,
+        "claim": 0.1648,
+        "lbm_v1_oot": 0.177893,
+        "lbm_v1_err": 0.013093,
+        "lbm_v2_oot": 0.179265,
+        "lbm_v2_err": 0.014465,
+        "frac_on_h19": 0.1149,
+        "frac_dh19_le2": 0.4079,
+        "frac_cons_ge3": 0.5163,
+        "frac_cons_ge5": 0.2924,
+        "frac_dcat_gt15": 0.5218,
+        "frac_q85_mimic": 0.2609
+      },
+      {
+        "site": "ApartGEMSDOE3",
+        "name": "apartgemsdoe3-h-apart3-1-cfkc-dhc-37654-20261027T215000Z-9dedadfc-zeros",
+        "sha256": "afbfee1f46d6d3ca16297904cadf29d9cf9327d2ec5519e37f472c85bfaec065",
+        "n_dots": 37654,
+        "claim": 0.1625,
+        "lbm_v1_oot": 0.156247,
+        "lbm_v1_err": -0.006253,
+        "lbm_v2_oot": 0.154514,
+        "lbm_v2_err": -0.007986,
+        "frac_on_h19": 0.127,
+        "frac_dh19_le2": 0.4091,
+        "frac_cons_ge3": 0.5573,
+        "frac_cons_ge5": 0.3478,
+        "frac_dcat_gt15": 0.3932,
+        "frac_q85_mimic": 0.3246
+      }
+    ],
+    "non_lbmc1_3claims_v1_rmse": 0.019354,
+    "non_lbmc1_3claims_v2_rmse": 0.018278,
+    "all_4claims_v1_rmse": 0.031702,
+    "all_4claims_v2_rmse": 0.031556,
+    "lbmc1_diagnosis": "lbmc1 achieved 0.2784 (CLAIM), surpassing GEMSDOE32 (0.2778) to become #1 across all 123+ repos, even after +3,433 repair-stage dilution dots (+9.6% FP drag). Its -0.0538 residual vs LBM-v1 (0.3322) and -0.0525 vs LBM-v2 isolates main-effect log-linear extrapolation (Optimizer's Curse): dh19<=2 and cons>=3 measure shared range-front fault evidence (sub-additive log-odds, beta_int < 0), not independent multiplicative lifts."
+  },
+  "models_132": {
+    "lbm_v2_main_effects_132": {
+      "n_params": 13,
+      "lam": 0.001,
+      "in_sample_rmse": 0.017398,
+      "logo_rmse_132": 0.020948,
+      "logo_mae_132": 0.013351,
+      "logo_spearman_132": 0.964497,
+      "high_score_ge020_logo_rmse": 0.028921,
+      "lbmc1_in_sample": 0.314581,
+      "lbmc1_logo_cv": 0.330932,
+      "r0_in_sample": 0.270499,
+      "r0_logo_cv": 0.268483,
+      "beta": [
+        -7.139628,
+        -0.721885,
+        1.615797,
+        1.227525,
+        0.076985,
+        -0.218622,
+        -0.458912,
+        -1.216108,
+        -0.353633,
+        -0.205628,
+        -0.256556,
+        2.678709,
+        -0.514111
+      ]
+    },
+    "lbm_v3_saturated_132": {
+      "n_params": 16,
+      "lam": 0.002,
+      "in_sample_rmse": 0.017307,
+      "logo_rmse_132": 0.021249,
+      "logo_mae_132": 0.014363,
+      "logo_spearman_132": 0.965124,
+      "high_score_ge020_logo_rmse": 0.029986,
+      "lbmc1_in_sample": 0.315314,
+      "lbmc1_logo_cv": 0.32966,
+      "r0_in_sample": 0.272908,
+      "r0_logo_cv": 0.282327,
+      "beta": [
+        -6.973589,
+        -0.404208,
+        0.746353,
+        0.303781,
+        0.195182,
+        -0.019323,
+        -0.112935,
+        -0.496824,
+        -0.134509,
+        -0.096109,
+        -0.257984,
+        1.221565,
+        -0.334649,
+        0.829623,
+        1.482876,
+        0.487778
+      ]
+    }
+  },
+  "apartgemsdoe1_and_unscored_diagnostics": {
+    "09fa04bd481d896a4dcbb808e4ef8136f8e6d0e0d88cebe9afd957db2779d62f": {
+      "paths": [
+        "ApartGEMSDOE1:docs/downloads/apartgems1-maw-gsi-e3-20261028-87f83db9-zeros.tif"
+      ],
+      "n_dots": 37654,
+      "lbm_v2_pred": 0.108092,
+      "lbm_v3_pred": 0.107588
+    },
+    "16f7101f41dd0331ac6076d6f55c906b7c1aa9fc7180258361450e9ecf87eede": {
+      "paths": [
+        "ApartGEMSDOE1:docs/downloads/archive/apartgems1-udth-submod-e3-20261027-50e7b334-zeros.tif"
+      ],
+      "n_dots": 38500,
+      "lbm_v2_pred": 0.044997,
+      "lbm_v3_pred": 0.04444
+    },
+    "610acf58905f3b461971bd4a5c67ff7c30894cd92dca20f480f27ecc66de5bb2": {
+      "paths": [
+        "WBGGEMSDOE3:docs/downloads/wbggemsdoe3-skarpline-union-20261027-610acf58-zeros.tif",
+        "WBGGEMSDOE3:submission/wbggemsdoe3-skarpline-union-20261027-610acf58-zeros.tif"
+      ],
+      "n_dots": 97608,
+      "lbm_v2_pred": 0.05229,
+      "lbm_v3_pred": 0.051022
+    },
+    "65f2ac84ff2c762495107487769a49e90919c5c6bf4a7948ca77e4a6971e5b38": {
+      "paths": [
+        "ApartGEMSDOE3:docs/downloads/apartgemsdoe3-h2-cshd-dual97-axial362-37654-20261028T063000Z-37b32d5b-zeros.tif",
+        "ApartGEMSDOE3:docs/downloads/gemsdoe32-apart3-cshd-dual97-axial362-37654-20261028T063000Z-37b32d5b-zeros.tif",
+        "ApartGEMSDOE3:submission/apartgemsdoe3-h2-cshd-dual97-axial362-37654-20261028T063000Z-37b32d5b-zeros.tif"
+      ],
+      "n_dots": 37654,
+      "lbm_v2_pred": 0.155983,
+      "lbm_v3_pred": 0.154316
+    },
+    "9a2d5d67f65979d2054f8babd8dea3c5f516dc871ab01e3434adc74ea1838d73": {
+      "paths": [
+        "ApartGEMSDOE1:docs/downloads/archive/apartgems1-plkc-dualoof-e3-20261028-4499e12f-zeros.tif"
+      ],
+      "n_dots": 37654,
+      "lbm_v2_pred": 0.124292,
+      "lbm_v3_pred": 0.124465
+    },
+    "bc9109d9dd22d2f7193bafca7366acdf9432bfda7a393eb96d8fd8b48c0ed84a": {
+      "paths": [
+        "GEMSDOESASS3:docs/downloads/gemsdoesass3-lwst-geoconduit-dual37654-20261027T120000Z-a9ad3386-zeros.tif"
+      ],
+      "n_dots": 37654,
+      "lbm_v2_pred": 0.120768,
+      "lbm_v3_pred": 0.118283
+    },
+    "f98c20df5bc67a482de6debd4abef9d3d104498bda0aacf464d693e271287729": {
+      "paths": [
+        "GEMSDOESASS1:swgb/downloads/gemsass1-swgb-hrv2-44090dots-20261027T122104Z-f9b3f764-zeros.tif"
+      ],
+      "n_dots": 44090,
+      "lbm_v2_pred": 0.036339,
+      "lbm_v3_pred": 0.039981
+    }
+  }
+}
