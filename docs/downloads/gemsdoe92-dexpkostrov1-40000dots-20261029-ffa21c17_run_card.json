@@ -1,0 +1,270 @@
+{
+  "schema": "gemsdoe92-protocol-run-card-v4",
+  "built_utc": "2026-10-29T16:07:43+00:00",
+  "lane": "DEXP-KOSTROV-KOENDERINK",
+  "pre_registration": "docs/HYPOTHESES_20261029_DEXP_KOSTROV.md",
+  "experiments_run": 3,
+  "weekly_slots_used": 0,
+  "hypothesis": "Upward-continuing B13 isostatic gravity and B02 RTP magnetics across z in {100..1600} m to isolate Fedi (2007) DEXP structural-index N ~ 0 crustal fault steps while rejecting shallow N >= 1 Tertiary volcanic flow/sill edges, gating dip-slip updip listric steps vs Walker Lane wrench-transtensional MT/RTP shear corridors via the Kostrov-Simpson geodetic strain-style index S_style, and coupling with amplitude-invariant Koenderink piedmont-toe shape index + strictly fold-visible self-excluded network continuation recovers both proximal splays (2<d<=15 px) and distal blind faults (d>15 px), beating R0 recipe on HOLDOUT-DTI while passing full 2,262-SHA PI-1 uniqueness on both surface and final dots.",
+  "mechanism": "5-altitude 2D-FFT Fedi DEXP structural-index N(x) fault-step filter + Kostrov-Simpson strain-style kinematic gate S_style + Grauch-Cordell 420 m updip listric projection + Koenderink-van Doorn piedmont shape index + self-excluded visible-network continuation in a 4-quadrant LOQO ensemble, with Lagrangian multi-witness diversification across 2,262 registry rasters (40,000 binary dots, >=2.8 px spacing).",
+  "named_non_fault_mimic": "Unfaulted Mesozoic granodiorite pluton-wall contacts (N ~ 0-0.4) and ~1,330 m Pleistocene Lake Lahontan wave-cut shoreline notches; deconfounded by active geodetic strain second invariant I2, elevation-band shoreline suppression, and shallow-volcanic decay contrast dk03.",
+  "leakage_canaries": {
+    "n_features_tested": 36,
+    "threshold_auc": 0.9,
+    "max_auc": 0.774815,
+    "leakage_flag": false,
+    "evidence_file": "evidence/dexp_kostrov_canaries_20261029.json"
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "e1_blind_loqo": {
+      "dti": 0.081254,
+      "ci95": [
+        0.069353,
+        0.093522
+      ]
+    },
+    "e2_dual_regime": {
+      "dti": 0.141812,
+      "ci95": [
+        0.129232,
+        0.15389
+      ]
+    },
+    "e3_candidate": {
+      "dti": 0.117438,
+      "ci95": [
+        0.104226,
+        0.130267
+      ]
+    },
+    "r0_recipe_control": {
+      "dti": 0.09775,
+      "ci95": [
+        0.085727,
+        0.109544
+      ]
+    },
+    "paired_e3_vs_r0_recipe": {
+      "delta": 0.019688,
+      "ci95": [
+        0.008586,
+        0.031664
+      ],
+      "beats_r0_ci95_gt_0": true
+    },
+    "evidence_file": "evidence/dexp_kostrov_holdout_20261029.json"
+  },
+  "model_estimate": {
+    "evidence_class": "MODEL (132-claim LOGO diagnostic \u2014 NOT a leaderboard score)",
+    "lbm_v2_132": 0.0944,
+    "lbm_v3_saturated_132": 0.0961,
+    "regime_shares": {
+      "dcat_2_to_15px": 0.3549,
+      "dcat_gt_15px": 0.6451
+    },
+    "note": "Reported strictly as diagnostic MODEL output calibrated on 132 owner CLAIMs (including lbmc1=0.2784)."
+  },
+  "uniqueness": {
+    "registry_owners": [
+      "buffedlizard55-lab",
+      "kanlerxz87-cyber",
+      "eugboogieman123-ops",
+      "wingbangboozle1-lang",
+      "ginnymcfiner23-ux",
+      "karagemop466-tech",
+      "apartanish22-droid",
+      "sassnarep3-star"
+    ],
+    "registry_non_empty_repos": 108,
+    "registry_unique_rasters": 2262,
+    "dot_field_rasters": 2139,
+    "surface_rasters": 123,
+    "pi1_operational_reading": {
+      "pre_placement_surface_pass": true,
+      "surface_worst_overlap": 0.65405,
+      "surface_worst_overlap_witness": "buffedlizard55-lab/GEMSDOE67:docs/downloads/gemsdoe67-ovtr-ml-cover-tau3p0-20261012-zero.tif",
+      "surface_worst_abs_rho": 0.409836,
+      "surface_worst_rho_witness": "buffedlizard55-lab/GEMSDOE2:data/evidence/seghold/eval_labels.tif",
+      "final_dots_pass": true,
+      "final_worst_overlap": 0.6389,
+      "final_worst_overlap_witness": "buffedlizard55-lab/GEMSDOE22:docs/downloads/gems22-h23-b-dti-optimal-emission-10pct-20261002-86176698-allfinite.tif",
+      "final_worst_abs_rho": 0.043992,
+      "final_worst_rho_witness": "buffedlizard55-lab/GEMSDOE82:artifacts/surface_h82.tif"
+    },
+    "focus9_comparison": {
+      "GEMSDOE24": {
+        "focus_file": "h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan",
+        "focus_sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+        "focus_claim": 0.2477,
+        "surface_overlap_pi1": 0.312225,
+        "final_overlap_pi1": 0.2826,
+        "final_rho": 0.015945
+      },
+      "GEMSDOE25": {
+        "focus_file": "dotted-h19-5-d2-8-20261002-e56ea318af89-nan",
+        "focus_sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+        "focus_claim": 0.26,
+        "surface_overlap_pi1": 0.3012,
+        "final_overlap_pi1": 0.272025,
+        "final_rho": 0.013485
+      },
+      "GEMSDOE27": {
+        "focus_file": "topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan",
+        "focus_sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+        "focus_claim": 0.2449,
+        "surface_overlap_pi1": 0.3151,
+        "final_overlap_pi1": 0.2867,
+        "final_rho": 0.015787
+      },
+      "GEMSDOE28": {
+        "focus_file": "h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan",
+        "focus_sha256": "5556aa1438fd67376b60d5ffc99228ec09dcc11a8408298a743ccb88d6163641",
+        "focus_claim": 0.271,
+        "surface_overlap_pi1": 0.296,
+        "final_overlap_pi1": 0.267375,
+        "final_rho": 0.014602
+      },
+      "GEMSDOE30": {
+        "focus_file": "d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca",
+        "focus_sha256": "8cf893ead5667df21d3288a9968c35fd5385c425b029d82ee71d311715b129fd",
+        "focus_claim": 0.26,
+        "surface_overlap_pi1": 0.3012,
+        "final_overlap_pi1": 0.272025,
+        "final_rho": 0.013485
+      },
+      "GEMSDOE31": {
+        "focus_file": "h27-4-solo-d28-20261004-8acb75e1-nan",
+        "focus_sha256": "07b6db440535404bb41ec8ddc797713e200d308e3da35937393efde5eb84bc40",
+        "focus_claim": 0.2708,
+        "surface_overlap_pi1": 0.299775,
+        "final_overlap_pi1": 0.2699,
+        "final_rho": 0.014874
+      },
+      "GEMSDOE32": {
+        "focus_file": "h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros",
+        "focus_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+        "focus_claim": 0.2778,
+        "surface_overlap_pi1": 0.2963,
+        "final_overlap_pi1": 0.266275,
+        "final_rho": 0.015876
+      },
+      "GEMSDOE33": {
+        "focus_file": "h33d-analog-tip-stepover-r30-20261004-cb490425926e",
+        "focus_sha256": "87f857d505e23247e991ccfab2cbe9f49a04df4f9c8028dce7ea261554690757",
+        "focus_claim": 0.2632,
+        "surface_overlap_pi1": 0.302875,
+        "final_overlap_pi1": 0.27325,
+        "final_rho": 0.014038
+      },
+      "GEMSDOE36": {
+        "focus_file": "anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros",
+        "focus_sha256": "e15891020b9c57056ac7fa874a5e506fbd6ed9314a4ea8e73af0753887a3708a",
+        "focus_claim": 0.275,
+        "surface_overlap_pi1": 0.29975,
+        "final_overlap_pi1": 0.27115,
+        "final_rho": 0.015752
+      }
+    },
+    "literal_reading": {
+      "duplicate_under_literal": true,
+      "worst_literal_overlap": 1.0,
+      "worst_literal_sha256": "03d619fa75689b48bd3eb4f74c3fa529a9b04c19bd716e15640d910baf3d5a90",
+      "worst_literal_witness": "buffedlizard55-lab/GEMSDOE2:data/evidence/runs/turbo-simple-20260925T042003Z/submission.tif",
+      "note": "17GEMSDOE E-proba-multiscale is positive (>0) on all 5,167,373 footprint cells (100.0%), and 13GEMSDOE r13-lattice-s5 (206,895 binary dots) covers 99.87% of footprint within 3 px, forcing literal overlap > 0.70 for every nonempty candidate. Kept fail-closed pending human rule disposition."
+    }
+  },
+  "raster": {
+    "file": "docs/downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.tif",
+    "zip_file": "docs/downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.zip",
+    "audit_file": "docs/downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros-audit.json",
+    "bytes": 150562,
+    "n_dots": 40000
+  },
+  "raster_sha256": "80d66b0590b26ddc9ac56af3964289f63f9c07c80931e3e69a7089dbabbc6faf",
+  "zip_sha256": "2e3f0198795b3c51771a0b132ab5090f9d6297a1467c7ad5b6a3e33a2a834ed4",
+  "validator_output": {
+    "all_11_gates_pass": true,
+    "no_nan_in_footprint": true,
+    "no_nan_anywhere": true,
+    "values_in_0_1": true,
+    "crs_match": true,
+    "shape_match": true,
+    "transform_match": true,
+    "zero_on_mapped_catalogue": true,
+    "template_validator": {
+      "file": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.tif",
+      "bytes": 150562,
+      "sha256": "80d66b0590b26ddc9ac56af3964289f63f9c07c80931e3e69a7089dbabbc6faf",
+      "meta": {
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "nodata": null,
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "profile_compress": "deflate"
+      },
+      "band_description": [
+        null
+      ],
+      "n_finite": 12279160,
+      "n_nan": 0,
+      "n_infinite": 0,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.0032575519289821386,
+      "emitted_positive_pixels": 40000,
+      "checks": {
+        "single_band": true,
+        "dtype_float32": true,
+        "dimensions_3730x3292": true,
+        "crs_epsg_32611": true,
+        "transform_matches_sample_submission": true,
+        "no_nan_anywhere": true,
+        "no_inf_anywhere": true,
+        "no_sentinel_values": true,
+        "range_0_1_guaranteed": true,
+        "min_ge_0": true,
+        "max_le_1": true,
+        "in_footprint_all_finite": true,
+        "in_footprint_unmasked": true,
+        "in_footprint_range_0_1": true,
+        "outside_footprint_zero": true,
+        "zero_dots_on_mapped_catalogue": true
+      },
+      "all_checks_passed": true,
+      "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+      "on_catalogue_positive_pixels": 0,
+      "in_footprint_positive_pixels": 40000,
+      "footprint_fraction": 0.007740877231041769
+    }
+  },
+  "gates_passed": {
+    "format_11_of_11": true,
+    "no_leakage_canaries_le_0_90": true,
+    "catalogue_holdout_beats_r0_recipe": true,
+    "uniqueness_pi1_surface_2262": true,
+    "uniqueness_pi1_final_2262": true,
+    "uniqueness_literal_dense_witness": false,
+    "official_input_provenance_verified": false
+  },
+  "submission_name": "gemsdoe92-dexpkostrov1-40000d-ffa21c17",
+  "note": "DEXP-Kostrov E3: 40000 binary dots; Fedi DEXP N~0 + Kostrov strain + Koenderink toe; HOLDOUT-DTI 0.1174 > R0.",
+  "note_chars": 109,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "status_banner": "OK TO DOWNLOAD FOR RESEARCH ONLY \u2014 DO NOT SUBMIT (held fail-closed at literal dense-witness & provenance gates)"
+}

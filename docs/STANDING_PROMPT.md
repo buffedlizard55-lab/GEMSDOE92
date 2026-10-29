@@ -20,5 +20,7 @@
 15. Standing: no manual input; official sources with links for manual review; flag irregularities; no hallucinations; verify line by line. Do not use DrivenData authentication (data pages require login).
 
 ## Conflicts recorded (not resolved by this file)
-- Leaderboard: 0.4413 (current high in the prompt) vs 0.3195 ("highest right now") vs 0.2778 (GEMSDOE32 score). None organizer-confirmed here.
+- Leaderboard: 0.4413 (current high in the prompt) vs 0.3195 ("highest right now") vs 0.2784 (`GEMSDOE92 lbmc1`, newly reported 2026-10-29 `CLAIM`) vs 0.2778 (`GEMSDOE32` score `CLAIM`). None organizer-confirmed here.
 - Format: the problem page says "null or nan" outside bounds; the served zeros-outside variants are the format this repo uses.
+- 2026-10-29 update: `gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.tif` (`SHA-256 80d66b0590b2…`) passes 11/11 format gates, 36/36 canaries, fold-proper `HOLDOUT-DTI` (`0.117438 > R0 0.097750`), and operational PI-1 uniqueness across all `2,262` fleet SHAs (`surface 0.65405`, `final 0.63890 <= 0.70`), while remaining `DO NOT SUBMIT` (`verdict="negative"`, `submission_eligible=false`) under the unresolved literal dense-witness rule (`17GEMSDOE = 1.000 > 0.70`).
+

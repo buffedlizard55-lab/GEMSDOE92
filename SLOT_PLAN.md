@@ -1,3 +1,16 @@
+# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-29, Post-`DEXP-KOSTROV-KOENDERINK` / `2066b1fc` Session)
+
+## Current Slot Decision (`2026-10-29`): **NO SLOT AUTO-SPENT — `DO NOT SUBMIT` (`verdict: "negative"`, `submission_eligible: false`, `0` weekly slots spent)**
+
+- **Newest `2026-10-29` Research Candidate (`DEXP-KOSTROV-KOENDERINK` / `E3`):**
+  - **File:** `docs/downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.tif` (`150,562` bytes; one-TIFF ZIP `docs/downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.zip`; SHA-256 `80d66b0590b26ddc9ac56af3964289f63f9c07c80931e3e69a7089dbabbc6faf`).
+  - **Archive Metadata (do NOT upload without human selector clearance):** Name `gemsdoe92-dexpkostrov1-40000d-ffa21c17`; note (`109/140` chars): `DEXP-Kostrov E3: 40000 binary dots; Fedi DEXP N~0 + Kostrov strain + Koenderink toe; HOLDOUT-DTI 0.1174 > R0.`
+  - **Automated Gates:** `11/11` format/range gates PASS (`float32`, `EPSG:32611`, `3730×3292`, binary `{0.0, 1.0}`, `0` NaN); `36/36` leakage canaries PASS (`max sym AUC = 0.77482 <= 0.90`); fold-proper `HOLDOUT-DTI` = **`0.117438 [0.104226, 0.130267]`** (`E2 = 0.141812`) vs `R0 recipe = 0.097750 [0.085727, 0.109544]` (paired `+0.019688 [+0.008586, +0.031664]`); full `2,262`-SHA 8-owner PI-1 uniqueness PASS (`surface = 0.65405 <= 0.70`, `final = 0.63890 <= 0.70`, `|ρ| = 0.04399 <= 0.90`; `0.17533` vs `GEMSDOE92 lbmc1`).
+  - **Binding Hold Reason (`DO NOT SUBMIT`):** Literal positive-pixel reading against `17GEMSDOE E-proba-multiscale` (`1.000 > 0.70`) and `13GEMSDOE` binary lattice remains unresolved pending human policy disposition, and official organizer input redistribution provenance awaits attestation.
+  - **Note on Historical `2026-10-27` `lbmc1`:** Newly reported in the `2026-10-29` brief at **`0.2784 CLAIM`** (#1 fleet high, edging `GEMSDOE32` `0.2778 CLAIM`); never re-submit `lbmc1` bytes (`e928d3c3fde8…`).
+
+---
+
 # Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-28, Post-`RIESZ_LOCKED_LBM_V2` / `81d8ca8b` Session)
 
 ## Current Selector Decision (`2026-10-28`): **PRIMARY CANDIDATE CLEARED FOR HUMAN SELECTOR (`verdict: "promote"`, `submission_eligible: true`, `0` weekly slots auto-spent)**

@@ -1,0 +1,263 @@
+{
+  "schema": "gemsdoe92-dexp-kostrov-canaries-20261029",
+  "evaluator_version": "gems57-pooled-hide-v2",
+  "withheld_positive_pixels": 22663,
+  "n_features_tested": 36,
+  "threshold_auc": 0.9,
+  "max_symmetric_auc": 0.774815,
+  "leakage_flag": false,
+  "features": [
+    {
+      "feature": "dk01_dexp_grav_step_lock",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.546466,
+      "symmetric_auc": 0.546466,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "dk02_dexp_rtp_step_lock",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.500518,
+      "symmetric_auc": 0.500518,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "dk03_dexp_shallow_volc_reject",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.490644,
+      "symmetric_auc": 0.509356,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "dk04_dexp_grav_mag_vector_lock",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.520396,
+      "symmetric_auc": 0.520396,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "dk05_kostrov_simpson_style",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.495252,
+      "symmetric_auc": 0.504748,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "dk06_extensional_updip_listric",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.558694,
+      "symmetric_auc": 0.558694,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "dk07_walker_lane_wrench_conduit",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.514947,
+      "symmetric_auc": 0.514947,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "dk08_seismo_strain_slip_rate",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.531303,
+      "symmetric_auc": 0.531303,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "dk09_koenderink_piedmont_toe",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.574469,
+      "symmetric_auc": 0.574469,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "dk10_koenderink_10m_scarp_coh",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.562431,
+      "symmetric_auc": 0.562431,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "dk11_chi_knick_dexp_concord",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.503421,
+      "symmetric_auc": 0.503421,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "dk12_rad_uth_kth_mt_valve",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.52167,
+      "symmetric_auc": 0.52167,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "f01_riesz_grav_step",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.511416,
+      "symmetric_auc": 0.511416,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "f02_riesz_rtp_step",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.508797,
+      "symmetric_auc": 0.508797,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "f03_riesz_base_step",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.495473,
+      "symmetric_auc": 0.504527,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "f04_riesz_joint_strike_coh",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.502963,
+      "symmetric_auc": 0.502963,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "f05_scarp10m_deconf",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.602745,
+      "symmetric_auc": 0.602745,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "f06_curv10m_lineament_pied",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.585701,
+      "symmetric_auc": 0.585701,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "f07_wijns_cos_theta_grav",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.5396,
+      "symmetric_auc": 0.5396,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "f08_wijns_cos_theta_mag",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.518153,
+      "symmetric_auc": 0.518153,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "f09_biharmonic_base_dipole",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.533054,
+      "symmetric_auc": 0.533054,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "f10_wijns_flex_couple",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.552927,
+      "symmetric_auc": 0.552927,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "f11_locked_strain_deficit",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.51199,
+      "symmetric_auc": 0.51199,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "f12_chi10m_knick_steep",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.561688,
+      "symmetric_auc": 0.561688,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "f13_locked_knick_riesz",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.549955,
+      "symmetric_auc": 0.549955,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "f14_fournier_diseq_halo",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.515004,
+      "symmetric_auc": 0.515004,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "f15_claycap_grauch_seal",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.518818,
+      "symmetric_auc": 0.518818,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "f16_peclet_blind_conduit",
+      "group": "zero_catalogue_physics",
+      "raw_auc": 0.528607,
+      "symmetric_auc": 0.528607,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "cx01_logdist_other",
+      "group": "fold_visible_self_excluded_context",
+      "raw_auc": 0.255378,
+      "symmetric_auc": 0.744622,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "cx02_dens10_other",
+      "group": "fold_visible_self_excluded_context",
+      "raw_auc": 0.732317,
+      "symmetric_auc": 0.732317,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "cx03_dens40_other",
+      "group": "fold_visible_self_excluded_context",
+      "raw_auc": 0.697882,
+      "symmetric_auc": 0.697882,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "cx04_strike_align_other",
+      "group": "fold_visible_self_excluded_context",
+      "raw_auc": 0.488793,
+      "symmetric_auc": 0.511207,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "cx05_logtip_other",
+      "group": "fold_visible_self_excluded_context",
+      "raw_auc": 0.225371,
+      "symmetric_auc": 0.774629,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "cx06_tip_propagation_halo",
+      "group": "fold_visible_self_excluded_context",
+      "raw_auc": 0.774629,
+      "symmetric_auc": 0.774629,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "cx07_relay_stepover_collar",
+      "group": "fold_visible_self_excluded_context",
+      "raw_auc": 0.774815,
+      "symmetric_auc": 0.774815,
+      "pass_limit_0_90": true
+    },
+    {
+      "feature": "cx08_wrench_tip_interaction",
+      "group": "fold_visible_self_excluded_context",
+      "raw_auc": 0.771678,
+      "symmetric_auc": 0.771678,
+      "pass_limit_0_90": true
+    }
+  ]
+}

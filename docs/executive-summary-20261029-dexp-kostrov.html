@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GEMSDOE92 — 2026-10-29 Executive Summary: DEXP-KOSTROV-KOENDERINK, 9-Site Audit &amp; How to Beat 0.2778 / 0.2784</title>
+  <style>
+    body{font:15.5px/1.58 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#18212e;background:#f4f6f8;margin:0}
+    main{max-width:1120px;margin:auto;padding:22px}
+    section{background:#fff;padding:20px 22px;margin:18px 0;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.07)}
+    .stop{border:3px solid #b91c1c;background:#fff5f5}
+    .badge-dl{display:inline-block;background:#14532d;color:#dcfce7;padding:5px 11px;border-radius:6px;font-weight:700;font-size:.92rem;margin:3px 6px 3px 0}
+    .badge-no{display:inline-block;background:#991b1b;color:#fee2e2;padding:5px 11px;border-radius:6px;font-weight:700;font-size:.92rem;margin:3px 0}
+    .btn{display:inline-block;background:#1d4ed8;color:#fff!important;padding:10px 15px;border-radius:7px;font-weight:700;text-decoration:none;margin:6px 8px 6px 0}
+    .btn-sec{display:inline-block;background:#334155;color:#fff!important;padding:9px 13px;border-radius:7px;font-weight:600;text-decoration:none;margin:6px 8px 6px 0}
+    table{width:100%;border-collapse:collapse;font-size:.92rem}
+    th,td{padding:9px 10px;border-bottom:1px solid #d5dde6;text-align:left;vertical-align:top}
+    th{background:#edf2f7}
+    code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.89em;overflow-wrap:anywhere;background:#eef2f6;padding:1px 4px;border-radius:4px}
+    a{color:#124ec0}
+    nav a{margin-right:14px;font-weight:600}
+    @media(max-width:760px){table{display:block;overflow:auto}}
+  </style>
+</head>
+<body>
+<main>
+  <aside>Current review: DO NOT SUBMIT · <a href="review-47314b7f.html">Independent review</a></aside>
+  <details data-status-archive="true"><summary>Earlier independent review</summary><p>See linked review; historical clearance is superseded.</p></details>
+  <nav>
+    <a href="index.html">← Main Executive Summary</a>
+    <a href="how-to-submit.html">How to Submit &amp; [0, 1] Compliance</a>
+    <a href="nine-sites.html">Nine-Site Review</a>
+    <a href="WHY_0_2778_AND_0_2784_20261029.md">PhD Analysis (0.2778 &amp; 0.2784)</a>
+    <a href="HYPOTHESES_20261029_DEXP_KOSTROV.md">Pre-Registered Hypotheses</a>
+    <a href="REVIEW_20261029_DEXP_KOSTROV.md">3-Pass Audit</a>
+  </nav>
+
+  <section class="stop" id="top-download">
+    <h1 style="margin-top:0">2026-10-29 Unique Candidate: <code>DEXP-KOSTROV-KOENDERINK</code> (<code>E3</code>) — Research Download Only · DO NOT SUBMIT</h1>
+    <p>
+      <span class="badge-dl">✅ OK TO DOWNLOAD FOR RESEARCH ONLY — 11/11 Format Gates PASS · 36/36 Canaries PASS · HOLDOUT-DTI 0.11744 &gt; R0 0.09775 · 2,262-SHA PI-1 Unique</span>
+      <span class="badge-no">⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT (verdict=negative, submission_eligible=false; 0 weekly slots used)</span>
+    </p>
+    <p>
+      <a class="btn" href="downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.tif" download>⬇ One-Click Download GeoTIFF (gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.tif · 150,562 B)</a>
+      <a class="btn-sec" href="downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.zip" download>⬇ One-TIFF ZIP</a>
+      <a class="btn-sec" href="downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17_run_card.json">Byte-Bound Run Card</a>
+      <a class="btn-sec" href="downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros-audit.json">11-Gate Audit JSON</a>
+      <a class="btn-sec" href="downloads/dexpkostrov_readiness_20261029.json">Readiness JSON</a>
+    </p>
+    <table>
+      <tr><th>Artifact &amp; SHA-256</th><td><code>docs/downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.tif</code> · SHA-256 <code>80d66b0590b26ddc9ac56af3964289f63f9c07c80931e3e69a7089dbabbc6faf</code> · <code>40,000</code> binary <code>{0.0, 1.0}</code> dots · 1-band <code>float32</code> · <code>EPSG:32611</code> · <code>3730×3292</code> · <code>0</code> NaN anywhere (prevents <em>&ldquo;Predicted values must be in range [0, 1]&rdquo;</em>).</td></tr>
+      <tr><th>Archive metadata (do NOT upload without human selector clearance)</th><td>Name: <code>gemsdoe92-dexpkostrov1-40000d-ffa21c17</code> · Short note (<code>109/140</code> chars): <code>DEXP-Kostrov E3: 40000 binary dots; Fedi DEXP N~0 + Kostrov strain + Koenderink toe; HOLDOUT-DTI 0.1174 &gt; R0.</code></td></tr>
+      <tr><th><code>HOLDOUT-DTI</code> (<code>gems57-pooled-hide-v2</code>, <code>22,663</code> withheld positives)</th><td><strong><code>E3</code> (diversified candidate): <code>0.117438</code></strong> 95% CI <code>[0.104226, 0.130267]</code> · <strong><code>E2</code> (unconstrained dual): <code>0.141812</code></strong> <code>[0.129232, 0.153890]</code> · <strong><code>E1</code> (zero-catalogue blind): <code>0.081254</code></strong> <code>[0.069353, 0.093522]</code> · <strong><code>R0 recipe</code> control: <code>0.097750</code></strong> <code>[0.085727, 0.109544]</code> · Paired <code>E3 − R0 recipe</code>: <strong><code>+0.019688</code> 95% CI <code>[+0.008586, +0.031664]</code></strong> (strictly above zero).</td></tr>
+      <tr><th>36-Feature Leakage Canaries</th><td><strong>36 / 36 PASS</strong> (max single-feature symmetric ROC-AUC = <code>0.774815 &le; 0.90</code>).</td></tr>
+      <tr><th>Full <code>2,262</code>-SHA Fleet Uniqueness (8 owners, 108 repos, 3,421 files)</th><td><strong>Operational PI-1 PASS on BOTH pre-placement surface AND final dots</strong> (auditing all <code>2,139</code> dot fields + all <code>123</code> continuous surfaces; fixes <code>IR-1029-3</code>): pre-placement surface worst 3-px overlap = <strong><code>0.65405 &le; 0.70</code></strong>, worst <code>|ρ| = 0.40984 &le; 0.90</code>; final 40,000 dots worst 3-px overlap = <strong><code>0.63890 &le; 0.70</code></strong>, worst <code>|ρ| = 0.04399 &le; 0.90</code>; overlap vs <code>GEMSDOE92 lbmc1</code> (<code>0.2784 CLAIM</code>) = <strong><code>0.17533</code></strong>; overlap vs all 9 focus sites = <strong><code>0.2663–0.2867</code></strong>.</td></tr>
+      <tr><th>Why held at <code>DO NOT SUBMIT</code></th><td>Held fail-closed (<code>verdict="negative"</code>, <code>submission_eligible=false</code>) solely because (1) under the unresolved literal positive-pixel rule, continuous witness <code>17GEMSDOE E-proba-multiscale</code> is positive on <code>5,167,373 / 5,167,373</code> footprint cells (<code>1.000 &gt; 0.70</code>) and binary lattice <code>13GEMSDOE r13-lattice-s5</code> covers <code>99.87%</code> within 3 px; and (2) official organizer origin/redistribution provenance of the restored mirror cache awaits owner attestation, plus weekly slot promotion is a separate human selector step.</td></tr>
+    </table>
+  </section>
+
+  <section id="executive-table">
+    <h2>Auditable Executive Summary Across All 9 Focus Sites &amp; <code>GEMSDOE92</code> (<code>2026-10-29</code>)</h2>
+    <p><strong>Evidence-label legend:</strong> <code>ORGANIZER-CONFIRMED</code> = verified portal receipt (<strong>0 stored in this repository</strong>); <code>CLAIM</code> = owner-reported score in user prompt (<code>ledger/claims_20261029.txt</code>, unverified here); <code>HOLDOUT-DTI</code> = spatially-blocked <code>gems57-pooled-hide-v2</code> (<code>22,663</code> withheld positives, 95% block-bootstrap CI); <code>MODEL</code> = 132-claim <code>LBM-v3</code> LOGO diagnostic (<strong>never a score</strong>).</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Site</th>
+          <th>File to Download (Research / Audit)</th>
+          <th>Score / Estimate (Strictly Labeled)</th>
+          <th>Uniqueness Across All Listed GEMSDOE Sites (<code>2,262</code> SHAs, 8 Owners)</th>
+          <th>Gate / Slot Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>GEMSDOE92</strong><br><small>(New 2026-10-29)</small></td>
+          <td><a href="downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.tif" download><code>gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.tif</code></a><br><small>SHA <code>80d66b0590b2…</code> · 40,000 dots</small></td>
+          <td><code>HOLDOUT-DTI</code>: <strong><code>0.11744</code></strong> <code>[0.10423, 0.13027]</code> (&gt; R0 <code>0.09775</code>)<br><code>MODEL</code> (132-claim LOGO): <code>0.0961</code><br><code>ORGANIZER-CONFIRMED</code>: none</td>
+          <td><strong>PI-1 UNIQUE</strong> across all <code>2,262</code> SHAs (surface <code>0.6541 &le; 0.70</code>, final <code>0.6389 &le; 0.70</code>, <code>|ρ| 0.0440 &le; 0.90</code>; <code>0.266–0.287</code> vs Focus-9; <code>0.175</code> vs <code>lbmc1</code>). Literal dense-witness: <code>1.000 &gt; 0.70</code>.</td>
+          <td><strong>OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT</strong></td>
+        </tr>
+        <tr>
+          <td><strong>GEMSDOE92</strong><br><small>(2026-10-27 #1 Fleet High)</small></td>
+          <td><a href="downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif" download><code>gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif</code></a><br><small>SHA <code>e928d3c3fde8…</code> · 35,801 dots</small></td>
+          <td><strong><code>0.2784 CLAIM</code></strong> (newly reported 2026-10-29 #1 fleet high)<br><code>HOLDOUT-DTI</code>: <code>0.01970 [0.0149, 0.0250]</code><br>Prospective OOT <code>MODEL</code>: <code>0.3330</code> (LOGO <code>0.3054</code>)</td>
+          <td>Already committed in <code>GEMSDOE92</code> registry (<code>1.000</code> self-match; do not re-submit duplicate).</td>
+          <td>Historical study download · <strong>DO NOT SUBMIT</strong></td>
+        </tr>
+        <tr>
+          <td><strong>GEMSDOE32</strong><br><small>(Focus-9 Peak)</small></td>
+          <td><a href="https://github.com/buffedlizard55-lab/GEMSDOE32/blob/9d63e2b1f9154816f9292e15fd257681bfe1bc22/docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif"><code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif</code></a><br><small>SHA <code>c55bafc47005…</code> · 37,654 dots</small></td>
+          <td><strong><code>0.2778 CLAIM</code></strong><br><code>HOLDOUT-DTI</code> (recipe): <code>0.09775 [0.08573, 0.10954]</code><br><code>MODEL</code> (LOGO): <code>0.2773</code></td>
+          <td><strong>NOT UNIQUE:</strong> <code>1.000</code> clone in <code>GEMSDOE33/35</code>; <code>0.969</code> 3-px overlap with <code>GEMSDOE36</code>; <code>0.2663</code> vs <code>dexpkostrov1</code>.</td>
+          <td>Study only · <strong>DO NOT SUBMIT</strong></td>
+        </tr>
+        <tr>
+          <td><strong>GEMSDOE36</strong></td>
+          <td><a href="https://github.com/buffedlizard55-lab/GEMSDOE36/blob/4b717aaff6eaf5de9b53030e637f8e1cf0d56e43/docs/downloads/gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif"><code>anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif</code></a><br><small>SHA <code>e15891020b9c…</code> · 38,854 dots (latest: <code>kpl36-exp3</code> <code>0.1647 CLAIM</code>)</small></td>
+          <td><strong><code>0.2750 CLAIM</code></strong><br><code>MODEL</code> (LOGO): <code>0.2747</code></td>
+          <td><strong>NOT UNIQUE:</strong> contains 100% of <code>GEMSDOE32 R0</code> + 1,200 extra dots (<code>1.000</code> in <code>GEMSDOE37/89</code>); <code>0.2712</code> vs <code>dexpkostrov1</code>.</td>
+          <td>Study only · <strong>DO NOT SUBMIT</strong></td>
+        </tr>
+        <tr>
+          <td><strong>GEMSDOE28</strong></td>
+          <td><a href="https://github.com/buffedlizard55-lab/GEMSDOE28/blob/245217303f58b900650e3645f64b26133284ab84/docs/downloads/gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif"><code>h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif</code></a><br><small>SHA <code>5556aa1438fd…</code> · 41,241 dots (latest: <code>s21-puhgb</code> <code>0.0206 CLAIM</code>)</small></td>
+          <td><strong><code>0.2710 CLAIM</code></strong><br><code>MODEL</code> (LOGO): <code>0.2725</code></td>
+          <td><strong>NOT UNIQUE:</strong> <code>1.000</code> clone in <code>GEMSDOE36</code>, <code>0.996</code> vs <code>GEMSDOE31</code>; NaN outside footprint; <code>0.2674</code> vs <code>dexpkostrov1</code>.</td>
+          <td>Study only · <strong>DO NOT SUBMIT</strong></td>
+        </tr>
+        <tr>
+          <td><strong>GEMSDOE31</strong></td>
+          <td><a href="https://github.com/buffedlizard55-lab/GEMSDOE31/blob/dad99f59ef8a023052451f7b7cf205d263b1f2ab/docs/downloads/gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif"><code>h27-4-solo-d28-20261004-8acb75e1-nan.tif</code></a><br><small>SHA <code>07b6db440535…</code> · 40,199 dots</small></td>
+          <td><strong><code>0.2708 CLAIM</code></strong><br><code>MODEL</code> (LOGO): <code>0.2740</code></td>
+          <td><strong>NOT UNIQUE:</strong> byte-identical copy in <code>KANLERGEMSDOE2</code> &amp; <code>0.937</code> vs <code>GEMSDOE32</code>; NaN outside footprint; <code>0.2699</code> vs <code>dexpkostrov1</code>.</td>
+          <td>Study only · <strong>DO NOT SUBMIT</strong></td>
+        </tr>
+        <tr>
+          <td><strong>GEMSDOE33</strong></td>
+          <td><a href="https://github.com/buffedlizard55-lab/GEMSDOE33/blob/1e08a7e81ee4595e2f3770f5c4f7c071adc1a53e/docs/downloads/GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif"><code>h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif</code></a><br><small>SHA <code>87f857d505e2…</code> · 43,727 dots (latest: <code>gbihd</code> <code>0.0963 CLAIM</code>)</small></td>
+          <td><strong><code>0.2632 CLAIM</code></strong><br><code>MODEL</code> (LOGO): <code>0.2710</code></td>
+          <td><strong>NOT UNIQUE:</strong> <code>1.000</code> in <code>GEMSDOE35</code>, <code>0.992</code> vs <code>GEMSDOE25/30</code>; NaN outside footprint; <code>0.2733</code> vs <code>dexpkostrov1</code>.</td>
+          <td>Study only · <strong>DO NOT SUBMIT</strong></td>
+        </tr>
+        <tr>
+          <td><strong>GEMSDOE25</strong></td>
+          <td><a href="https://github.com/buffedlizard55-lab/GEMSDOE25/blob/cd2560d6a7fc2bc2c2f373d0a6b2a506ce6ea4ca/docs/downloads/gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif"><code>dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif</code></a><br><small>SHA <code>91eae1ca42ec…</code> · 44,090 dots (latest: <code>h66</code> <code>0.0742 CLAIM</code>)</small></td>
+          <td><strong><code>0.2600 CLAIM</code></strong><br><code>MODEL</code> (LOGO): <code>0.2670</code></td>
+          <td><strong>NOT UNIQUE:</strong> exact support twin of <code>GEMSDOE30</code> (<code>1.000</code>); NaN outside footprint; <code>0.2720</code> vs <code>dexpkostrov1</code>.</td>
+          <td>Study only · <strong>DO NOT SUBMIT</strong></td>
+        </tr>
+        <tr>
+          <td><strong>GEMSDOE30</strong></td>
+          <td><a href="https://github.com/buffedlizard55-lab/GEMSDOE30/blob/3344c38758a1379f9f7d69b4ef86cb4d7176935a/docs/downloads/gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif"><code>d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif</code></a><br><small>SHA <code>8cf893ead566…</code> · 44,090 dots (latest: <code>msdb1</code> <code>0.1462 CLAIM</code>)</small></td>
+          <td><strong><code>0.2600 CLAIM</code></strong><br><code>MODEL</code> (LOGO): <code>0.2670</code></td>
+          <td><strong>NOT UNIQUE:</strong> exact support twin of <code>GEMSDOE25</code> (<code>1.000</code>); NaN outside footprint; <code>0.2720</code> vs <code>dexpkostrov1</code>.</td>
+          <td>Study only · <strong>DO NOT SUBMIT</strong></td>
+        </tr>
+        <tr>
+          <td><strong>GEMSDOE24</strong></td>
+          <td><a href="https://github.com/buffedlizard55-lab/GEMSDOE24/blob/fdd41b075a05e7df5b222e6e3644344cecc65746/docs/downloads/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif"><code>h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif</code></a><br><small>SHA <code>68d0e2e4fcc5…</code> · 60,069 dots (latest: <code>gvc1</code> <code>0.0859 CLAIM</code>)</small></td>
+          <td><strong><code>0.2477 CLAIM</code></strong><br><code>MODEL</code> (LOGO): <code>0.2577</code></td>
+          <td><strong>NOT UNIQUE:</strong> <code>1.000</code> clone of <code>GEMSDOE21 d1-5</code> &amp; <code>0.985</code> vs <code>GEMSDOE27</code>; NaN outside footprint; <code>0.2826</code> vs <code>dexpkostrov1</code>.</td>
+          <td>Study only · <strong>DO NOT SUBMIT</strong></td>
+        </tr>
+        <tr>
+          <td><strong>GEMSDOE27</strong></td>
+          <td><a href="https://github.com/buffedlizard55-lab/GEMSDOE27/blob/50174df50f7fd8b681308a56f97f41ac21755b85/docs/downloads/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif"><code>topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif</code></a><br><small>SHA <code>33003374335d…</code> · 60,977 dots (latest: <code>h31-drcg</code> <code>0.2250 CLAIM</code>)</small></td>
+          <td><strong><code>0.2449 CLAIM</code></strong><br><code>MODEL</code> (LOGO): <code>0.2552</code></td>
+          <td><strong>NOT UNIQUE:</strong> <code>1.000</code> in <code>GEMSDOE28</code> &amp; <code>0.985</code> vs <code>GEMSDOE24</code>; NaN outside footprint; <code>0.2867</code> vs <code>dexpkostrov1</code>.</td>
+          <td>Study only · <strong>DO NOT SUBMIT</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="prospective-oot">
+    <h2>2026-10-29 Prospective Out-of-Time (<code>OOT</code>) Audit on Newly Scored Fleet Submissions</h2>
+    <p>Frozen <code>2026-10-27/28</code> <code>LBM-v1</code> &amp; <code>LBM-v2</code> weights (trained before the 4 newly scored <code>2026-10-29</code> entries existed) achieved <strong>exact <code>4 / 4</code> rank order (<code>Spearman = 1.000</code>)</strong> and <strong><code>RMSE = 0.01828</code></strong> across the 3 independent repos (<code>evidence/lbm_oot_and_v3_20261029.json</code>):</p>
+    <table>
+      <thead><tr><th>Repository</th><th>Submission</th><th>Dots</th><th>2026-10-29 <code>CLAIM</code></th><th>Frozen <code>LBM-v1</code> (<code>MODEL</code>)</th><th>Frozen <code>LBM-v2</code> (<code>MODEL</code>)</th></tr></thead>
+      <tbody>
+        <tr><td><code>GEMSDOE92</code></td><td><code>gemsdoe92-lbmc1-35801dots-20261027-89a660f6</code></td><td>35,801</td><td><strong>0.2784</strong> (#1 fleet high)</td><td>0.3322</td><td>0.3330</td></tr>
+        <tr><td><code>GEMSDOEkarage1</code></td><td><code>karage1-hmas-sinter-dualcover-sep29</code></td><td>38,200</td><td><strong>0.1648</strong></td><td>0.1779</td><td>0.1793</td></tr>
+        <tr><td><code>ApartGEMSDOE3</code></td><td><code>cfkc-dhc-37654-9dedadfc</code></td><td>37,654</td><td><strong>0.1625</strong></td><td>0.1562</td><td>0.1545</td></tr>
+        <tr><td><code>KANLERGEMSDOE3</code></td><td><code>cadg-submod-oof8f-f0565e6d10f9</code></td><td>37,654</td><td><strong>0.1233</strong></td><td>0.1535</td><td>0.1503</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="why-02778">
+    <h2>Why <code>GEMSDOE32</code> Scored <code>0.2778</code> (<code>CLAIM</code>), Why <code>lbmc1</code> Reached <code>0.2784</code> (<code>CLAIM</code>), and How to Beat Both</h2>
+    <p>Under the official pooled Distance-Buffered Tversky Index ($\alpha=0.2, \beta=0.8$, $300\text{ m}$ triangular kernel, pixel-exact masking of public catalogue $F$), $\mathrm{TP}_w$ is submodular ($\max_{\|x-g\|_2 < 3}$), whereas $\mathrm{FP}_w$ is strictly linear in predicted mass. <code>GEMSDOE32</code> <code>R0</code> (<code>37,654</code> dots, <code>0.2778 CLAIM</code>) achieved its efficiency by Poisson-disk thinning <code>H19-5</code> at $2.8\text{ px}$ and pruning $6,435$ twin dots within $d_{\text{cat}} \le 2\text{ px}$, placing <code>41.60%</code> of its dots in Regime I (<code>2 &lt; d_cat &le; 15 px</code>) and <code>58.40%</code> in Regime II (<code>d_cat &gt; 15 px</code>). By contrast, <code>GEMSDOE92</code> <code>lbmc1</code> (<code>35,801</code> dots, <code>0.2784 CLAIM</code>) placed <code>98.45%</code> of its dots in distal Regime II (<code>d_cat &gt; 15 px</code>, <code>43.4%</code> off <code>H19-5</code>), demonstrating that unmapped Great Basin geothermal faults occupy <strong>both</strong> proximal range-front splays/relays and distal blind basin structures. Full mathematical derivations and the 1 m USGS 3DEP LiDAR + GeoDAWN roadmap toward external competition highs (<code>0.3195</code> / <code>0.4413</code> <code>CLAIM</code>) are in <a href="WHY_0_2778_AND_0_2784_20261029.md"><code>docs/WHY_0_2778_AND_0_2784_20261029.md</code></a>.</p>
+  </section>
+
+  <section id="hypotheses">
+    <h2>4 Ranked Untried Geological Hypotheses Pre-Registered Before Implementation</h2>
+    <p>Full pre-registration: <a href="HYPOTHESES_20261029_DEXP_KOSTROV.md"><code>docs/HYPOTHESES_20261029_DEXP_KOSTROV.md</code></a> (0 prior matches across <code>gems/*.py</code>).</p>
+    <table>
+      <thead><tr><th>Rank &amp; ID</th><th>Layers &amp; Physical Transform</th><th>Why It Catches Uncatalogued Faults &amp; Named Non-Fault Mimic</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><strong>#1 <code>H1-DEXP-KOSTROV-KOENDERINK</code></strong></td><td>2D-FFT upward continuation $z \in \{100..1600\}\text{ m}$ of <code>B13 iso_grav_anom</code> &amp; <code>B02 rtp</code> for Fedi (2007) <code>DEXP</code> structural index $N(x) \approx 0$ + Kostrov–Simpson strain-style gate (<code>B07/B08/B04</code>) + Koenderink piedmont shape index (<code>B12</code>).</td><td>Separates deep crustal fault steps ($N \approx 0$) from shallow Tertiary lava/tuff flow margins ($N \ge 1$) and routes dip-slip vs Walker Lane wrench corridors. Mimic: unfaulted Mesozoic pluton walls &amp; ~1,330 m Lake Lahontan shorelines (deconfounded via <code>B04</code> strain &amp; shoreline band).</td><td><strong>Implemented &amp; verified in this session</strong> (<code>HOLDOUT-DTI E2=0.14181, E3=0.11744 &gt; R0=0.09775</code>; <code>2,262</code>-SHA PI-1 PASS).</td></tr>
+        <tr><td><strong>#2 <code>H2-GALLARDO-MEJU-CROSSGRAD-VALVE</code></strong></td><td>Normalized Gallardo–Meju (2003) structural cross-gradient $|\nabla g \times \nabla \log \sigma|$ between <code>B13</code> gravity and <code>B17 cond_surf</code> + 2 m INGENIOUS temperature-probe &amp; paleo-sinter valves.</td><td>Sub-playa hydrothermal clay smectite caps decouple electrical conductivity from lithologic density boundaries along active fluid-bearing blind faults. Mimic: evaporite playa brines.</td><td>Backlog (next session).</td></tr>
+        <tr><td><strong>#3 <code>H3-BIOT-POROELASTIC-STREAM-CHI-COUPLE</code></strong></td><td>3DEP 10 m drainage divide disequilibrium $\Delta \chi$ (<code>dem10_chi_100m_i16.tif</code>) coupled with geodetic dilatation-rate gradient $|\nabla \dot{\Delta}|$ (<code>B08</code>) and seismicity density (<code>B10</code>).</td><td>Active footwall uplift creates transient $\chi$ disequilibrium across unmapped range-interior &amp; relay faults even where alluvial fans bury scarps. Mimic: lithologic knickzones on resistant welded tuffs.</td><td>Backlog (next session).</td></tr>
+        <tr><td><strong>#4 <code>H4-3DEP-1M-LIDAR-WAVELET-SCARP</code></strong></td><td>Free public-domain USGS 3DEP 1 m LiDAR DEM Mexican-hat / Haar scarp-throw transform ($0.5\text{–}3\text{ m}$ vertical offset over $5\text{–}20\text{ m}$ aperture) gated by drainage area $A$.</td><td>Directly resolves Holocene/late-Pleistocene alluvial fan scarps invisible at 100 m resolution. Mimic: incised ephemeral wash banks &amp; road embankments.</td><td>Requires open internet access to <code>rockyweb.usgs.gov</code> / AWS 3DEP bucket.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="official-sources">
+    <h2>Verified Official Sources &amp; Links</h2>
+    <table>
+      <thead><tr><th>Source</th><th>Official URL</th><th>Verification Scope</th></tr></thead>
+      <tbody>
+        <tr><td>DrivenData Competition #306 Problem &amp; DTI Metric</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">drivendata.org/competitions/306/…/page/967/</a></td><td>Pinned repo transcription (<code>vendor/gems57/metric.py</code>); external host firewalled in sandbox.</td></tr>
+        <tr><td>DrivenData Submissions Portal (3/week limit)</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">drivendata.org/competitions/306/…/submissions/</a></td><td>Manual browser upload only; never automated.</td></tr>
+        <tr><td>DrivenData Official Reference Solution (Prof. John Lipor)</td><td><a href="https://github.com/drivendataorg/gems-prize-reference-solution">github.com/drivendataorg/gems-prize-reference-solution</a></td><td>Allowlisted &amp; directly reachable on <code>github.com</code>.</td></tr>
+        <tr><td>Official DOE / NLR Competition Rules PDF (Sept 2026)</td><td><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">docs.nlr.gov/docs/fy26osti/96647.pdf</a></td><td>§3.4 single entity, §3.5 free public data, §3.6 Phase-2 label review.</td></tr>
+        <tr><td>Forum Clarifications (#11516, #11550, #11536, #11553, #11556)</td><td><a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/4">community.drivendata.org/t/…/11516/4</a></td><td>Pixel-exact masking of public catalogue, pooled DTI, 3/week portal cap.</td></tr>
+        <tr><td>DOE GDR #1391 — Great Basin INGENIOUS Regional Dataset</td><td><a href="https://gdr.openei.org/submissions/1391">gdr.openei.org/submissions/1391</a></td><td>Source of 19-band compilation, 2 m temperature probes &amp; paleo-geothermal features.</td></tr>
+        <tr><td>USGS GeoDAWN Airborne Magnetic &amp; Radiometric Surveys</td><td><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">usgs.gov/data/geodawn-airborne-magnetic-and-radiometric…</a></td><td>DOI <code>10.5066/P93LGLVQ</code>; proves <code>B06 tc</code> is Radiometric Total Count.</td></tr>
+        <tr><td>USGS 3DEP 1 m &amp; 1/3 arc-sec DEM Catalog</td><td><a href="https://data.usgs.gov/datacatalog/data/USGS:77ae0551-c61e-4979-aedd-d797abdcde0e">data.usgs.gov/datacatalog/…/77ae0551…</a></td><td>Free public-domain elevation source for 10 m derivatives &amp; Phase-2 1 m LiDAR scarps.</td></tr>
+        <tr><td>DrivenData Terms of Use</td><td><a href="https://www.drivendata.org/termsofuse/">drivendata.org/termsofuse/</a></td><td>No automated leaderboard scraping or multi-account slot circumvention.</td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>

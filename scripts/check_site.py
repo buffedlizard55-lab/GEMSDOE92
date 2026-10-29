@@ -347,6 +347,46 @@ def check_blindcorridor_history(problems: list[str]) -> None:
     print(f"  HISTORICAL {tif.name} sha256 {digest[:16]}… verdict=format_pass (DO NOT SUBMIT)")
 
 
+def check_dexpkostrov_history(problems: list[str]) -> None:
+    """Cryptographically bind the 2026-10-29 DEXP-KOSTROV-KOENDERINK artifact and its fail-closed status."""
+    status_path = DOWNLOADS / "dexpkostrov_readiness_20261029.json"
+    if not status_path.is_file():
+        if DOCS == ROOT / "docs":
+            problems.append("DEXP-KOSTROV readiness feed missing: dexpkostrov_readiness_20261029.json")
+        return
+    try:
+        status = json.loads(status_path.read_text(encoding="utf-8"))
+        tif = DOCS / status["file"]
+        zip_path = DOCS / status["zip"]
+        card = json.loads((DOWNLOADS / status["run_card"]).read_text(encoding="utf-8"))
+        audit = json.loads((DOWNLOADS / status["audit"]).read_text(encoding="utf-8"))
+    except (OSError, ValueError, KeyError) as exc:
+        problems.append(f"DEXP-KOSTROV evidence invalid: {exc}")
+        return
+    if not tif.is_file() or not zip_path.is_file():
+        problems.append("DEXP-KOSTROV TIFF or ZIP missing")
+        return
+    digest = sha256_file(tif)
+    if status.get("raster_sha256") != digest or card.get("raster_sha256") != digest or audit.get("sha256_zeros") != digest:
+        problems.append("DEXP-KOSTROV SHA-256 mismatch across readiness/run_card/audit")
+    if status.get("zip_sha256") != sha256_file(zip_path):
+        problems.append("DEXP-KOSTROV ZIP SHA-256 mismatch")
+    if (status.get("verdict") != "negative" or card.get("verdict") != "negative" or audit.get("verdict") != "negative"
+            or status.get("submission_eligible") is not False or card.get("submission_eligible") is not False
+            or audit.get("submission_eligible") is not False):
+        problems.append("DEXP-KOSTROV must remain verdict=negative and submission_eligible=false")
+    if status.get("submission_status") != "DO NOT SUBMIT":
+        problems.append("DEXP-KOSTROV submission_status must be DO NOT SUBMIT")
+    summary_path = DOCS / str(status.get("executive_summary", ""))
+    if not summary_path.is_file():
+        problems.append("DEXP-KOSTROV executive summary HTML missing")
+    else:
+        stxt = summary_path.read_text(encoding="utf-8")
+        if "DO NOT SUBMIT" not in stxt or "OK TO SUBMIT" in stxt:
+            problems.append("DEXP-KOSTROV executive summary HTML violates fail-closed DO NOT SUBMIT wording")
+    print(f"  CANDIDATE-20261029 {tif.name} sha256 {digest[:16]}… verdict=negative (DO NOT SUBMIT)")
+
+
 def check_served(html: str, problems: list[str]) -> int:
     archive = ARCHIVE.read_text(encoding="utf-8") if ARCHIVE.is_file() else ""
     served = sorted(DOWNLOADS.glob("*-zeros.tif"))
@@ -406,6 +446,7 @@ def main() -> int:
     check_primary(html, problems)
     check_tipcomp_history(problems)
     check_blindcorridor_history(problems)
+    check_dexpkostrov_history(problems)
     n = check_served(html, problems)
     if problems:
         print("SITE CHECK FAIL")
