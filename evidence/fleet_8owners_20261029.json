@@ -1,81 +1,122 @@
 {
-  "schema": "gemsdoe92-fleet-8owners-20261029",
-  "built_utc": "2026-10-29T14:53:40+00:00",
-  "owners": [
-    "buffedlizard55-lab",
-    "kanlerxz87-cyber",
-    "eugboogieman123-ops",
-    "wingbangboozle1-lang",
-    "ginnymcfiner23-ux",
-    "karagemop466-tech",
-    "apartanish22-droid",
-    "sassnarep3-star"
-  ],
-  "non_empty_repos": 108,
-  "repos_with_grid_rasters": 106,
-  "total_grid_files": 3421,
+  "schema": "gemsdoe92-fleet-8owners-v2-20261029",
+  "created_utc": "2026-10-29T15:04:16+00:00",
+  "total_gemsdoe_repos": 123,
+  "repos_with_grid_tifs": 106,
+  "total_grid_raster_files": 3421,
   "unique_sha256": 2262,
-  "matched_claims": 132,
+  "owners": [
+    {
+      "owner": "buffedlizard55-lab",
+      "total_gemsdoe_repos": 102,
+      "repos_with_grid_tifs": 91,
+      "grid_tif_files": 3139,
+      "unique_sha256": 2065,
+      "empty_repos": [
+        "GEMSDOE100",
+        "GEMSDOE101",
+        "GEMSDOE93",
+        "GEMSDOE94",
+        "GEMSDOE95",
+        "GEMSDOE96",
+        "GEMSDOE97",
+        "GEMSDOE98",
+        "GEMSDOE99"
+      ]
+    },
+    {
+      "owner": "kanlerxz87-cyber",
+      "total_gemsdoe_repos": 3,
+      "repos_with_grid_tifs": 3,
+      "grid_tif_files": 100,
+      "unique_sha256": 92,
+      "empty_repos": []
+    },
+    {
+      "owner": "eugboogieman123-ops",
+      "total_gemsdoe_repos": 3,
+      "repos_with_grid_tifs": 0,
+      "grid_tif_files": 0,
+      "unique_sha256": 0,
+      "empty_repos": [
+        "EUGGEMSDOE1",
+        "EUGGEMSDOE2",
+        "EUGGEMSDOE3"
+      ]
+    },
+    {
+      "owner": "wingbangboozle1-lang",
+      "total_gemsdoe_repos": 3,
+      "repos_with_grid_tifs": 3,
+      "grid_tif_files": 77,
+      "unique_sha256": 56,
+      "empty_repos": []
+    },
+    {
+      "owner": "ginnymcfiner23-ux",
+      "total_gemsdoe_repos": 3,
+      "repos_with_grid_tifs": 0,
+      "grid_tif_files": 0,
+      "unique_sha256": 0,
+      "empty_repos": [
+        "GINNYGEMSDOE1",
+        "GINNYGEMSDOE2",
+        "GINNYGEMSDOE3"
+      ]
+    },
+    {
+      "owner": "karagemop466-tech",
+      "total_gemsdoe_repos": 3,
+      "repos_with_grid_tifs": 3,
+      "grid_tif_files": 31,
+      "unique_sha256": 29,
+      "empty_repos": []
+    },
+    {
+      "owner": "apartanish22-droid",
+      "total_gemsdoe_repos": 3,
+      "repos_with_grid_tifs": 3,
+      "grid_tif_files": 48,
+      "unique_sha256": 37,
+      "empty_repos": []
+    },
+    {
+      "owner": "sassnarep3-star",
+      "total_gemsdoe_repos": 3,
+      "repos_with_grid_tifs": 3,
+      "grid_tif_files": 26,
+      "unique_sha256": 21,
+      "empty_repos": []
+    }
+  ],
   "unscored_prompt_entries": [
     {
-      "site": "WBGGEMSDOE3",
-      "site_url": "https://wingbangboozle1-lang.github.io/WBGGEMSDOE3/docs/index.html",
+      "prompt_site": "WBGGEMSDOE3",
       "name": "wbggemsdoe3-skarpline-union-20261027-610acf58-zeros",
-      "n_hits": 2,
-      "n_distinct_sha": 1,
-      "match": {
-        "repo": "WBGGEMSDOE3",
-        "owner": "wingbangboozle1-lang",
-        "path": "docs/downloads/wbggemsdoe3-skarpline-union-20261027-610acf58-zeros.tif",
-        "sha256": "610acf58905f3b461971bd4a5c67ff7c30894cd92dca20f480f27ecc66de5bb2",
-        "bytes": 435513
-      },
-      "alternatives": []
+      "sha256": "610acf58905f3b461971bd4a5c67ff7c30894cd92dca20f480f27ecc66de5bb2",
+      "n_fp_pos": 97608,
+      "matched_path": "wingbangboozle1-lang/WBGGEMSDOE3:docs/downloads/wbggemsdoe3-skarpline-union-20261027-610acf58-zeros.tif"
     },
     {
-      "site": "GEMSDOESASS3",
-      "site_url": "https://sassnarep3-star.github.io/GEMSDOESASS3/",
+      "prompt_site": "GEMSDOESASS3",
       "name": "lwst-geoconduit-dual37654-20261027T120000Z-a9ad3386",
-      "n_hits": 1,
-      "n_distinct_sha": 1,
-      "match": {
-        "repo": "GEMSDOESASS3",
-        "owner": "sassnarep3-star",
-        "path": "docs/downloads/gemsdoesass3-lwst-geoconduit-dual37654-20261027T120000Z-a9ad3386-zeros.tif",
-        "sha256": "bc9109d9dd22d2f7193bafca7366acdf9432bfda7a393eb96d8fd8b48c0ed84a",
-        "bytes": 211511
-      },
-      "alternatives": []
+      "sha256": "bc9109d9dd22d2f7193bafca7366acdf9432bfda7a393eb96d8fd8b48c0ed84a",
+      "n_fp_pos": 37654,
+      "matched_path": "sassnarep3-star/GEMSDOESASS3:docs/downloads/gemsdoesass3-lwst-geoconduit-dual37654-20261027T120000Z-a9ad3386-zeros.tif"
     },
     {
-      "site": "GEMSDOESASS1",
-      "site_url": "https://sassnarep3-star.github.io/GEMSDOESASS1/",
+      "prompt_site": "GEMSDOESASS1",
       "name": "swgb-hrv2-44090dots-20261027T122104Z-f9b3f764",
-      "n_hits": 1,
-      "n_distinct_sha": 1,
-      "match": {
-        "repo": "GEMSDOESASS1",
-        "owner": "sassnarep3-star",
-        "path": "swgb/downloads/gemsass1-swgb-hrv2-44090dots-20261027T122104Z-f9b3f764-zeros.tif",
-        "sha256": "f98c20df5bc67a482de6debd4abef9d3d104498bda0aacf464d693e271287729",
-        "bytes": 152542
-      },
-      "alternatives": []
+      "sha256": "f98c20df5bc67a482de6debd4abef9d3d104498bda0aacf464d693e271287729",
+      "n_fp_pos": 44090,
+      "matched_path": "sassnarep3-star/GEMSDOESASS1:swgb/downloads/gemsass1-swgb-hrv2-44090dots-20261027T122104Z-f9b3f764-zeros.tif"
     },
     {
-      "site": "ApartGEMSDOE3",
-      "site_url": "https://apartanish22-droid.github.io/ApartGEMSDOE3/",
+      "prompt_site": "ApartGEMSDOE3",
       "name": "h2-cshd-dual97-axial362-37654-20261028T063000Z-37b32d5b",
-      "n_hits": 2,
-      "n_distinct_sha": 1,
-      "match": {
-        "repo": "ApartGEMSDOE3",
-        "owner": "apartanish22-droid",
-        "path": "docs/downloads/apartgemsdoe3-h2-cshd-dual97-axial362-37654-20261028T063000Z-37b32d5b-zeros.tif",
-        "sha256": "65f2ac84ff2c762495107487769a49e90919c5c6bf4a7948ca77e4a6971e5b38",
-        "bytes": 220542
-      },
-      "alternatives": []
+      "sha256": "65f2ac84ff2c762495107487769a49e90919c5c6bf4a7948ca77e4a6971e5b38",
+      "n_fp_pos": 37654,
+      "matched_path": "apartanish22-droid/ApartGEMSDOE3:docs/downloads/apartgemsdoe3-h2-cshd-dual97-axial362-37654-20261028T063000Z-37b32d5b-zeros.tif"
     }
   ]
 }

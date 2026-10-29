@@ -1,0 +1,22 @@
+{
+  "schema": "gemsdoe92-candidate-readiness-v1",
+  "artifact": "MARUSSI-TRISHEAR-20261029",
+  "file": "downloads/gemsdoe92-marussitrishear-34000dots-20261029-236171af-zeros.tif",
+  "zip": "downloads/gemsdoe92-marussitrishear-34000dots-20261029-236171af-zeros.zip",
+  "audit": "gemsdoe92-marussitrishear-34000dots-20261029-236171af-zeros-audit.json",
+  "run_card": "gemsdoe92-marussitrishear-34000dots-20261029-236171af_run_card.json",
+  "executive_summary": "executive-summary-20261029-marussi-trishear.html",
+  "raster_sha256": "f8f8703e4f8efb8f3397ecc5dc8c0fd68b06c64a089a89b02ee7a91395b3a59b",
+  "zip_sha256": "ca1b33b93c216a1c06732613d3237cd14506df9747001440484f76b9b599ed9d",
+  "submission_name": "gemsdoe92-marussitrishear-34000dots-20261029-236171af",
+  "note": "H-92M1/M2 3D Marussi D2D+Trishear+WalkerLane vorticity+relay 1D crest; 34000px d>3.5; PI1<=0.65 [research]",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "download_status": "OK TO DOWNLOAD FOR RESEARCH ONLY",
+  "submission_status": "DO NOT SUBMIT \u2014 below all-time repo HOLDOUT-DTI best (0.184485) & literal dense witness 1.000",
+  "blocking_reasons": [
+    "HOLDOUT-DTI (E3 = 0.157774, E2 = 0.172273) beat R0 recipe (0.097750) by +0.0600/+0.0745, but did not beat the repo's all-time HOLDOUT-DTI record (relay_conduit = 0.184485; matched relay-only control = 0.182496)",
+    "literal full-support dense-witness overlap vs 17GEMSDOE surface is 1.000 (> 0.70)",
+    "separate human slot-selector governance applies within the 3/week portal cap"
+  ]
+}
