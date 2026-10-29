@@ -18,7 +18,7 @@ The following current machine-check results were run in this checkout after inst
 | Check | Result | Scope |
 |---|---|---|
 | `python scripts/check_site.py` | PASS; **128 served rasters gated** | Served file format/range gates, page/status consistency, and local receipts; not leaderboard or full-registry authorization |
-| `python -m pytest tests -q` | **804 passed, 19 skipped, 171 warnings** | Repository test suite; skips/warnings are retained as reported |
+| `python -m pytest tests -q` | **805 passed, 19 skipped, 171 warnings** after integrating the latest `main` change | Repository test suite; skips/warnings are retained as reported |
 | `make manifest` | PASS | Nine committed parent/data artifacts matched `registry/data_manifest.json` hashes |
 | `make verify` | PASS | Pinned R0 parent raster reproduced from committed bytes; `n_dots=37,654`, mass `37,654.0`, footprint `5,167,373` pixels |
 | Full feature cache | ABSENT | `.cache/gems_inputs/training_features.tif` was not present; only bridge/sample/catalogue rasters were present under `data/` |
@@ -82,6 +82,7 @@ These links are authoritative destinations by domain/repository, but were not fe
 
 ### Pass 2 — assumptions, contradictions, and edge cases
 - Found an inconsistent README headline: it said the RIESZ artifact “passes uniqueness” under PI-1 while the active review and run card say the literal overlap rule is a blocking failure. Corrected the headline to distinguish a diagnostic sparse-dot reading from the conservative literal stop.
+- Found literal `<<<<<<< HEAD` / `=======` / `>>>>>>> origin/main` conflict markers committed inside `docs/how-to-submit.html`, making the submission guide invalid HTML and duplicating its content. Replaced that page with one valid, explicit DO NOT SUBMIT state and corrected future-only submission steps.
 - Confirmed the README already carries the Focus-9 summary and a prompt/protocol block, but its prior session date and the request's scope were not obvious at the top. Added this 2026-10-29 addendum and direct review link; retained historical data as dated claims rather than overwriting them.
 - Checked that downloadable research files, current readiness, and page checker are not mislabeled as organizer approval. No status feed was changed to grant eligibility.
 

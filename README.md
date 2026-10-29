@@ -1,7 +1,9 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-## 📌 Read first (standing prompt & current status, 2026-10-29)
-- **Status: DO NOT SUBMIT.** No artifact is cleared under the active conservative protocol. The RIESZ run card's sparse/top-N PI-1 diagnostic (`65.56%`) does **not** override its recorded literal full-support overlap (`1.000 > 0.70`) or failed R0 holdout comparison. TIPCOMP is negative; BLINDCORRIDOR is format-pass only. No weekly slot is selected or spent by the current review. Note: historical files report different registry sizes (2,162 vs 2,216); refer to dated receipts, not a single live count.
+## 📌 Read first (standing prompt & current status, reviewed 2026-10-29)
+
+Latest review: [consolidated review](docs/REVIEW_20261029.md) and [independent repository review](docs/REVIEW_20261029_REPO.md); this branch's [Focus-9 and protocol review](docs/REVIEW_20261029_ARENA.md). **DO NOT SUBMIT**; no eligible TIFF is cleared. The recorded RIESZ sparse/top-N PI-1 diagnostic does not override its literal full-support overlap stop or below-control holdout. No weekly slot is selected or spent by these reviews.
+- **Status: DO NOT SUBMIT.** No artifact is cleared under the active conservative protocol. The RIESZ run card's sparse/top-N PI-1 diagnostic (`65.56%`) does **not** override its recorded literal full-support overlap (`1.000 > 0.70`) or failed R0 holdout comparison. TIPCOMP is negative; BLINDCORRIDOR is format-pass only. Historical files report different registry sizes; refer to dated receipts, not one live count.
 - **Damage-zone file** (`gemsdoe92-damagezone-close-dots-20261028-zeros.tif`): FAILS full-registry PI-1 (identical bytes in 5 repos). Not unique.
 - **Blindcorridor** (`gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif`, added to `main` after the registry inventory was built): FAILS full-registry PI-1 (worst 0.7691 vs 13GEMSDOE). Not unique.
 - **Pages site (download, executive summary, official links):** https://buffedlizard55-lab.github.io/GEMSDOE92/
@@ -10,7 +12,7 @@
 
 ## Current decision — 2026-10-29 repository review
 
-**⛔ NO TIFF IS CLEARED for submission. DO NOT SUBMIT or spend a slot.** The three-pass review ran `scripts/check_site.py` (128 served rasters PASS), the full test suite (804 passed, 19 skipped), `make manifest` (PASS), and `make verify` (PASS). It generated no TIFF and ran no holdout or geological experiment. The full cached feature stack is absent, the recorded RIESZ-LOCKED lane exhausted its 3/3 experiment budget, and the prompt's designated single-method paragraph is missing. See [2026-10-29 review and final run card](docs/REVIEW_20261029_ARENA.md).
+**⛔ NO TIFF IS CLEARED for submission. DO NOT SUBMIT or spend a slot.** The three-pass review ran `scripts/check_site.py` (128 served rasters PASS), the full test suite (805 passed, 19 skipped), `make manifest` (PASS), and `make verify` (PASS). It generated no TIFF and ran no holdout or geological experiment. The full cached feature stack is absent, the recorded RIESZ-LOCKED lane exhausted its 3/3 experiment budget, and the prompt's designated single-method paragraph is missing. See [2026-10-29 review and final run card](docs/REVIEW_20261029_ARENA.md).
 
 **⛔ NO TIFF IS CLEARED for submission. DO NOT SUBMIT or spend a slot.** The primary feed identifies RIESZ-LOCKED and gives it a negative verdict. TIPCOMP is also negative. The separate BLINDCORRIDOR artifact is format-pass only and lacks a completed spatial holdout, feature canaries, and full-registry uniqueness validation; it is not an alternate eligible candidate. This review generated no TIFF, ran no experiment, and selected no slot.
 
@@ -20,7 +22,7 @@
 
 - Stored run-card status: `verdict: format_pass`, **`submission_eligible: false`**. All 11 local format gates are recorded PASS; this does not establish a score or promotion.
 - The run card explicitly says `HOLDOUT-DTI` was not computed and the full 19-band leakage canaries were not run. Its numerical projection is `MODEL` only, not a score; it is not used as a decision.
-- Local PI-1 overlap is recorded as 0.507675 against only three available bridge rasters. The full registry is absent, and the literal dense-witness reading remains unresolved. This is not a registry-wide uniqueness result.
+- The original run card reports overlap 0.507675 against three bridge rasters. A separate [historical registry audit](evidence/uniq_full_registry/blindcorridor-37654dots-11f8999c.json) reports 0.769108 versus 13GEMSDOE, above the 0.70 stop; the snapshot is not current and the literal dense-witness reading remains unresolved.
 - SHA-256: `4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14`.
 
 ### Other historical candidates
