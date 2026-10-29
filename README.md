@@ -2,12 +2,11 @@
 
 ## Current safety review — 2026-10-29 (read first)
 
-**DO NOT SUBMIT:** no newly generated TIFF is cleared. The linked nine-site executive page was corrected after it contradicted the negative RIESZ run card. [Current review and next steps](docs/REVIEW_20261029_B4717CB7.md) · [Nine-site summary](docs/executive-summary-nine-sites-20261028.html) · [Negative review run card](docs/downloads/review_20261029_b4717cb7_run_card.json) · [Stored session prompt](SESSION_PROMPT.md). The prompt's single-method lane is missing; input/registry and evidence gates remain unresolved. Format validity is not submission approval.
+**DO NOT SUBMIT:** no newly generated TIFF is cleared. The linked nine-site executive page was corrected after it contradicted the negative RIESZ run card. [Current review and next steps](docs/REVIEW_20261029_B4717CB7.md) · [Concurrent BLINDCORRIDOR review](docs/REVIEW_20261029.md) · [Nine-site summary](docs/executive-summary-nine-sites-20261028.html) · [Negative review run card](docs/downloads/review_20261029_b4717cb7_run_card.json) · [Stored session prompt](SESSION_PROMPT.md). The prompt's single-method lane is missing; input/registry and evidence gates remain unresolved. Format validity is not submission approval. The standing prompt is a reconstruction, not a verbatim copy of this latest request.
 
 ---
 
-
-## 📌 Read first (standing prompt & current status, 2026-10-28)
+## 📌 Read first (standing prompt & current status)
 - **Status: DO NOT SUBMIT.** Historical focus-site peaks fail recorded overlap checks. RIESZ is not cleared: its sparse-only registry result does not override the literal full-support witness stop, and its holdout is below R0. TIPCOMP also fails the recorded audit. No weekly slot spent in this review.
 - **Damage-zone file** (`gemsdoe92-damagezone-close-dots-20261028-zeros.tif`): FAILS full-registry PI-1 (identical bytes in 5 repos). Not unique.
 - **Blindcorridor** (`gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif`, added to `main` after the registry inventory was built): FAILS full-registry PI-1 (worst 0.7691 vs 13GEMSDOE). Not unique.
@@ -25,7 +24,7 @@
 
 - Stored run-card status: `verdict: format_pass`, **`submission_eligible: false`**. All 11 local format gates are recorded PASS; this does not establish a score or promotion.
 - The run card explicitly says `HOLDOUT-DTI` was not computed and the full 19-band leakage canaries were not run. Its numerical projection is `MODEL` only, not a score; it is not used as a decision.
-- Local PI-1 overlap is recorded as 0.507675 against only three available bridge rasters. The full registry is absent, and the literal dense-witness reading remains unresolved. This is not a registry-wide uniqueness result.
+- The original run card reports overlap 0.507675 against three bridge rasters. A separate [historical registry audit](evidence/uniq_full_registry/blindcorridor-37654dots-11f8999c.json) reports 0.769108 versus 13GEMSDOE, above the 0.70 stop; the snapshot is not current and the literal dense-witness reading remains unresolved.
 - SHA-256: `4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14`.
 
 ### Other historical candidates

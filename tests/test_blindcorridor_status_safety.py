@@ -142,3 +142,18 @@ def test_site_gate_rejects_blindcorridor_promotion_and_global_uniqueness(tmp_pat
     assert any("readiness feed must remain format_pass and not eligible" in p for p in problems)
     assert any("explicitly say DO NOT SUBMIT" in p for p in problems)
     assert any("uniqueness status must remain limited and unresolved" in p for p in problems)
+
+
+def test_historical_registry_failure_is_bound_and_visible() -> None:
+    status = _json(DOWNLOADS / "blindcorridor_readiness_20261028.json")
+    evidence = _json(ROOT / "evidence/uniq_full_registry/blindcorridor-37654dots-11f8999c.json")
+    historical = status["uniqueness"]["historical_registry_audit"]
+    assert historical["candidate_sha256"] == evidence["candidate_sha256"] == status["raster_sha256"]
+    assert historical["worst_overlap_3px"] == evidence["worst_overlap"]["value"] > 0.70
+    assert historical["worst_repositories"] == evidence["worst_overlap"]["repos"]
+    assert historical["pi1_pass"] is evidence["pi1_pass"] is False
+    assert historical["current"] is False
+    for page in ("index.html", "nine-sites.html", "executive-summary.html", "how-to-submit.html"):
+        text = (DOCS / page).read_text(encoding="utf-8")
+        assert "0.769108" in text and "13GEMSDOE" in text
+        assert "DO NOT SUBMIT" in text
