@@ -1,7 +1,14 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+## Current safety review — 2026-10-29 (read first)
+
+**DO NOT SUBMIT:** no newly generated TIFF is cleared. The linked nine-site executive page was corrected after it contradicted the negative RIESZ run card. [Current review and next steps](docs/REVIEW_20261029_B4717CB7.md) · [Nine-site summary](docs/executive-summary-nine-sites-20261028.html) · [Negative review run card](docs/downloads/review_20261029_b4717cb7_run_card.json) · [Stored session prompt](SESSION_PROMPT.md). The prompt's single-method lane is missing; input/registry and evidence gates remain unresolved. Format validity is not submission approval.
+
+---
+
+
 ## 📌 Read first (standing prompt & current status, 2026-10-28)
-- **Status: DO NOT SUBMIT.** No focus-site file is unique under the full-registry PI-1 rule (2,216 SHA-256). Among the audited candidates, the RIESZ download is the only file that passes uniqueness, and its holdout is below R0. TIPCOMP fails PI-1 (worst 0.9180 vs GEMSDOE22). No weekly slot spent.
+- **Status: DO NOT SUBMIT.** Historical focus-site peaks fail recorded overlap checks. RIESZ is not cleared: its sparse-only registry result does not override the literal full-support witness stop, and its holdout is below R0. TIPCOMP also fails the recorded audit. No weekly slot spent in this review.
 - **Damage-zone file** (`gemsdoe92-damagezone-close-dots-20261028-zeros.tif`): FAILS full-registry PI-1 (identical bytes in 5 repos). Not unique.
 - **Blindcorridor** (`gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif`, added to `main` after the registry inventory was built): FAILS full-registry PI-1 (worst 0.7691 vs 13GEMSDOE). Not unique.
 - **Pages site (download, executive summary, official links):** https://buffedlizard55-lab.github.io/GEMSDOE92/
