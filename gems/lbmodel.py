@@ -152,15 +152,51 @@ def factor_design(levels: tuple[int, ...], interactions: tuple[tuple[int, int], 
     return np.array(cols).T
 
 
-def fit_loglinear(A, m, n, y, Ncls, X, *, lam=1e-3, beta0=None, weights=None) -> dict:
+def monotone_factor_design(
+    levels: tuple[int, ...] | dict,
+    nonincreasing_factors: tuple[int, ...] = (1,),
+) -> tuple[np.ndarray, list[tuple[float | None, float | None]]]:
+    """Design matrix + L-BFGS-B bounds enforcing monotone non-increasing factors.
+
+    For any factor ``f`` in ``nonincreasing_factors`` (e.g. ``f=1`` for ``dh19``
+    perpendicular distance from a 1D fault centerline), replaces one-hot treatment
+    columns with cumulative step indicators ``I(idx[:, f] >= l)`` paired with
+    upper bound ``<= 0.0`` so ``rho(level 0) >= rho(level 1) >= ... >= rho(L-1)``,
+    preventing 300 m kernel-collinearity flank inflation (Goodhart bias).
+    """
+    if isinstance(levels, dict):
+        levels = tuple(len(v) for v in levels.values())
+    K = int(np.prod(levels))
+    idx = np.array(np.unravel_index(np.arange(K), levels)).T  # (K, F)
+    cols = [np.ones(K)]
+    bounds: list[tuple[float | None, float | None]] = [(None, None)]
+    for f, L in enumerate(levels):
+        mono = f in nonincreasing_factors
+        for l in range(1, L):
+            if mono:
+                cols.append((idx[:, f] >= l).astype(float))
+                bounds.append((None, 0.0))
+            else:
+                cols.append((idx[:, f] == l).astype(float))
+                bounds.append((None, None))
+    return np.array(cols).T, bounds
+
+
+def fit_loglinear(A, m, n, y, Ncls, X, *, lam=1e-3, beta0=None, weights=None, bounds=None) -> dict:
     """Fit ``rho = exp(X beta)`` (capped at 0.5) by least squares on DTI."""
     A = np.asarray(A, float); m = np.asarray(m, float); n = np.asarray(n, float)
     y = np.asarray(y, float); Ncls = np.asarray(Ncls, float); X = np.asarray(X, float)
     w = np.ones(len(y)) if weights is None else np.asarray(weights, float)
     P = X.shape[1]
-    b0 = np.zeros(P) if beta0 is None else np.asarray(beta0, float)
+    b0 = np.zeros(P) if beta0 is None else np.asarray(beta0, float).copy()
     if beta0 is None:
         b0[0] = np.log(0.003)
+    if bounds is not None:
+        for j, (lo, hi) in enumerate(bounds):
+            if lo is not None and b0[j] < lo:
+                b0[j] = lo
+            if hi is not None and b0[j] > hi:
+                b0[j] = hi
 
     def rho_of(b):
         return np.minimum(np.exp(np.clip(X @ b, -30, 5)), 0.5)
@@ -171,7 +207,7 @@ def fit_loglinear(A, m, n, y, Ncls, X, *, lam=1e-3, beta0=None, weights=None) ->
 
     best = None
     for start in (b0, b0 + 0.0):
-        res = minimize(obj, start, method="L-BFGS-B", options=dict(maxiter=5000, maxfun=500000))
+        res = minimize(obj, start, method="L-BFGS-B", bounds=bounds, options=dict(maxiter=5000, maxfun=500000))
         if best is None or res.fun < best.fun:
             best = res
     rho = rho_of(best.x)

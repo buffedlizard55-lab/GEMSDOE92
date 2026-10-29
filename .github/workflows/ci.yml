@@ -22,7 +22,7 @@ jobs:
 
       - name: no conflict markers
         run: |
-          if grep -rInE '^(<<<<<<<|=======|>>>>>>>)' --exclude-dir='.git' --exclude-dir='.venv' --exclude-dir='.cache' --include='*.py' --include='*.md' --include='*.json' --include='*.html' . ; then
+          if grep -rInE '^(<<<<<<<|=======|>>>>>>>|[|]{7})( |$)' --include='*.py' --include='*.md' --include='*.json' --include='*.html' --include='*.js' --include='*.css' . --exclude-dir=.venv --exclude-dir=node_modules --exclude-dir=.git --exclude-dir=.cache ; then
             echo "conflict markers found"; exit 1
           fi
 

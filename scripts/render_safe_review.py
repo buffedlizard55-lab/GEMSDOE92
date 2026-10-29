@@ -83,6 +83,15 @@ def load_blindcorridor_status():
     if not math.isclose(measured_worst, recorded_worst, rel_tol=0, abs_tol=1e-9):
         raise ValueError('BLINDCORRIDOR worst local overlap disagrees with its reference rows')
 
+    # The original card covers only three local references. A later historical
+    # registry audit exists separately; bind it to the same bytes, do not let
+    # an older card hide a known failure or treat the snapshot as current.
+    registry_path = ROOT / 'evidence/uniq_full_registry/blindcorridor-37654dots-11f8999c.json'
+    registry = json.loads(registry_path.read_text(encoding='utf-8'))
+    if (registry.get('candidate_sha256') != digest or registry.get('pi1_pass') is not False
+            or registry.get('worst_overlap', {}).get('value', 0) <= 0.70):
+        raise ValueError('BLINDCORRIDOR historical registry evidence changed; review required')
+
     status = {
         'schema': 'gemsdoe92-candidate-readiness-v1',
         'artifact': 'BLINDCORRIDOR',
@@ -106,16 +115,80 @@ def load_blindcorridor_status():
             'scope': 'available bridge rasters only',
             'checked_reference_count': len(references),
             'worst_overlap_3px': recorded_worst,
-            'full_registry_audit': 'not performed',
+            'full_registry_audit': 'not performed',  # original run card only
+            'historical_registry_audit': {'candidate_sha256': digest, 'registry_unique_sha256': registry['registry_unique_sha256'], 'worst_overlap_3px': registry['worst_overlap']['value'], 'worst_repositories': registry['worst_overlap']['repos'], 'pi1_pass': False, 'current': False},
             'literal_dense_witness': 'unresolved',
         },
         'blocking_reasons': [
             'independent HOLDOUT-DTI and 95% CI are absent',
             'individual-feature leakage canaries were not run',
-            'the full public registry uniqueness audit was not performed',
+            'historical registry audit fails the overlap stop; current registry not verified',
             'the literal dense-witness interpretation remains unresolved',
         ],
     }
+    return card, audit, status
+
+
+def load_marussi_20261029_status():
+    """Load and byte-verify the 2026-10-29 MARUSSI-TRISHEAR negative research artifact."""
+    import hashlib
+    import zipfile
+
+    card_path = DL / 'gemsdoe92-marussitrishear-34000dots-20261029-236171af_run_card.json'
+    status_path = DL / 'marussi_trishear_readiness_20261029.json'
+    if not card_path.is_file() or not status_path.is_file():
+        return None
+    card = json.loads(card_path.read_text(encoding='utf-8'))
+    status = json.loads(status_path.read_text(encoding='utf-8'))
+    tif_name = Path(card['raster']['file']).name
+    zip_name = Path(card['raster']['zip']).name
+    tif_path = DL / tif_name
+    zip_path = DL / zip_name
+    audit = json.loads((DL / status['audit']).read_text(encoding='utf-8'))
+    digest = hashlib.sha256(tif_path.read_bytes()).hexdigest()
+    if digest != card.get('raster_sha256') or digest != status.get('raster_sha256') or digest != audit.get('sha256_zeros'):
+        raise ValueError('MARUSSI-TRISHEAR SHA-256 mismatch across TIFF, run card, status, or audit')
+    with zipfile.ZipFile(zip_path) as zf:
+        if zf.namelist() != [tif_name] or hashlib.sha256(zf.read(tif_name)).hexdigest() != digest:
+            raise ValueError('MARUSSI-TRISHEAR single-TIFF ZIP payload mismatch')
+    if card.get('verdict') != 'negative' or card.get('submission_eligible') is not False:
+        raise ValueError('MARUSSI-TRISHEAR must remain fail-closed negative')
+    if status.get('verdict') != 'negative' or status.get('submission_eligible') is not False:
+        raise ValueError('MARUSSI-TRISHEAR readiness must remain fail-closed negative')
+    return card, audit, status
+
+
+def load_admitrelay_status():
+    """Load and byte-verify the 2026-10-29 ADMITRELAY + LBM-v3 negative research artifact."""
+    import hashlib
+    import zipfile
+
+    feed_path = DL / 'admitrelay_readiness_20261029.json'
+    if not feed_path.is_file():
+        return None
+    status = json.loads(feed_path.read_text(encoding='utf-8'))
+    card_path = DL / status['run_card']
+    audit_path = DL / status['audit']
+    tif_path = DOCS / status['file']
+    zip_path = DOCS / status['zip']
+    card = json.loads(card_path.read_text(encoding='utf-8'))
+    audit = json.loads(audit_path.read_text(encoding='utf-8'))
+    digest = hashlib.sha256(tif_path.read_bytes()).hexdigest()
+    zip_digest = hashlib.sha256(zip_path.read_bytes()).hexdigest()
+    if digest != card.get('raster_sha256') or digest != audit.get('sha256_zeros') or digest != status.get('raster_sha256'):
+        raise ValueError('ADMITRELAY raster SHA-256 mismatch across run card / audit / readiness feed')
+    if zip_digest != status.get('zip_sha256'):
+        raise ValueError('ADMITRELAY ZIP SHA-256 mismatch')
+    with zipfile.ZipFile(zip_path) as zf:
+        members = [m for m in zf.namelist() if not m.endswith('/')]
+        if len(members) != 1 or Path(members[0]).name != tif_path.name:
+            raise ValueError('ADMITRELAY ZIP must contain exactly its single bound TIFF')
+        if hashlib.sha256(zf.read(members[0])).hexdigest() != digest:
+            raise ValueError('ADMITRELAY ZIP payload SHA-256 mismatch')
+    if card.get('verdict') != 'negative' or card.get('submission_eligible') is not False:
+        raise ValueError('ADMITRELAY must remain verdict=negative and submission_eligible=false')
+    if status.get('verdict') != 'negative' or status.get('submission_eligible') is not False:
+        raise ValueError('ADMITRELAY readiness feed must remain verdict=negative and submission_eligible=false')
     return card, audit, status
 
 
@@ -158,7 +231,7 @@ def render(card):
 <p>SHA-256 <code>{esc(tipcomp['raster_sha256'])}</code>. Local format validation was recorded as 11/11 gates PASS; that is only file-format validation, not science or organizer acceptance. Metadata is archived for audit and is not a portal-upload recommendation.</p>
 <table><tr><th>Estimated value</th><td><code>MODEL</code>, not a score: published-128 estimate {model['published128']:.4f}; 26-claim refit {model['refit26']:.4f} (bootstrap q05 {model['bootstrap_refit26']['q05']:.4f}). The pre-registered q05 bound 0.2778 was not met.</td></tr>
 <tr><th>HOLDOUT-DTI</th><td><code>{esc(e2['evaluator_version'])}</code>, {e2['withheld_positive_pixels']:,} withheld positives: fold-proper TIPCOMP {e2['dti']:.5f} [{e2['ci95'][0]:.5f}, {e2['ci95'][1]:.5f}]; R0-recipe control {control['dti']:.5f} [{control['ci95'][0]:.5f}, {control['ci95'][1]:.5f}]; paired difference {paired['delta']:.5f} [{paired['ci95'][0]:.5f}, {paired['ci95'][1]:.5f}] (CI spans zero; no holdout win).</td></tr>
-<tr><th>Uniqueness scope</th><td>The archived PI-1 measurement reports {registry['registry_unique_rasters']} local rasters, max dot overlap {registry['worst_overlap']['value']:.5f}, and max sampled |ρ| {registry['worst_abs_rho_surface']['value']:.5f}. This is not a complete registry scan and does not resolve the dense-witness interpretation; do not claim global uniqueness.</td></tr>
+<tr><th>Uniqueness scope</th><td>The archived PI-1 measurement reports {registry['registry_unique_rasters']} local rasters, max dot overlap {registry['worst_overlap']['value']:.5f}, and max sampled |ρ| {registry['worst_abs_rho_surface']['value']:.5f}. This is an earlier partial scan. A later historical full-registry PI-1 audit reports 0.9180 overlap against GEMSDOE22, above 0.70; it fails. The dense-witness interpretation remains unresolved; do not claim global uniqueness.</td></tr>
 <tr><th>Decision</th><td><strong>DO NOT SUBMIT.</strong> Run card verdict is negative and <code>submission_eligible=false</code>. No slot was selected. No organizer-confirmed score is recorded.</td></tr></table></section>'''
 
     blindcorridor = load_blindcorridor_status()
@@ -181,7 +254,7 @@ def render(card):
 <table><tr><th>Run-card projection</th><td><code>MODEL</code>, not a score: {esc(blind_model)}. The run card has no independent <code>HOLDOUT-DTI</code> or 95% CI, so this projection is not validated and is not a submission basis.</td></tr>
 <tr><th>HOLDOUT-DTI</th><td>Not independently computed; withheld-positive count and 95% CI are absent.</td></tr>
 <tr><th>Leakage canaries</th><td>Not run on the full feature stack.</td></tr>
-<tr><th>Local overlap scope</th><td>Recorded worst 3-px overlap {blind_worst:.6f} across {len(blind_refs)} available bridge references only. The full registry audit was not performed; the literal dense-witness interpretation remains unresolved. This is not globally unique or cleared.</td></tr>
+<tr><th>Local overlap scope</th><td>Recorded worst 3-px overlap {blind_worst:.6f} across {len(blind_refs)} available bridge references only. The original run card did not include a full registry audit. A separate <a href="https://github.com/buffedlizard55-lab/GEMSDOE92/blob/913af0ad6e163c86b46ccd4260207862fb805e79/evidence/uniq_full_registry/blindcorridor-37654dots-11f8999c.json">historical registry audit</a> reports worst 3-px overlap {blind_status['uniqueness']['historical_registry_audit']['worst_overlap_3px']:.6f} versus 13GEMSDOE, above the 0.70 stop. The registry snapshot is not current; the literal dense-witness interpretation remains unresolved. This is not globally unique or cleared.</td></tr>
 <tr><th>Decision</th><td><strong>DO NOT SUBMIT.</strong> Run card says <code>verdict=format_pass</code> and <code>submission_eligible=false</code>. Do not use the stored submission name or note as upload instructions.</td></tr></table></section>'''
 
     secondary_meta_path = DL / 'gemsdoe92-damagezone-close-dots-20261028-zeros.json'
@@ -198,15 +271,80 @@ def render(card):
 <p>This superseded diagnostic recorded literal registry overlap <strong>1.000 &gt; 0.70</strong>; a sparse matched-budget reading was diagnostic only and did not clear any weekly slot. It is retained for audit, not as a candidate recommendation.</p>
 </section>
 <!-- KNICKLOQO:END -->'''
+    admitrelay = load_admitrelay_status()
+    admitrelay_section = ''
+    admitrelay_feed_path = DL / 'admitrelay_readiness_20261029.json'
+    if admitrelay:
+        ar_card, _, ar_status = admitrelay
+        ar_file = Path(ar_status['file']).name
+        ar_zip = Path(ar_status['zip']).name
+        ar_h = ar_card['holdout_dti']
+        ar_m = ar_card['model_estimate']
+        ar_u = ar_card['uniqueness']
+        admitrelay_section = f'''<section id="admitrelay-20261029" class="stop"><h2>Latest 2026-10-29 experiment: ADMITRELAY + LBM-v3 — OK TO DOWNLOAD FOR RESEARCH ONLY; DO NOT SUBMIT</h2>
+<p><a href="downloads/{esc(ar_file)}" download>Download ADMITRELAY GeoTIFF for research only — DO NOT SUBMIT</a> ·
+<a href="downloads/{esc(ar_zip)}" download>one-TIFF ZIP (research only)</a> ·
+<a href="downloads/{esc(ar_status['run_card'])}">byte-bound run card</a> ·
+<a href="downloads/{esc(ar_status['audit'])}">11-gate format audit</a> ·
+<a href="downloads/{esc(admitrelay_feed_path.name)}">readiness feed</a> ·
+<a href="executive-summary-20261029-admitrelay.html"><strong>2026-10-29 PhD Executive Summary &amp; LBM-v3 Audit</strong></a></p>
+<p>SHA-256 <code>{esc(ar_status['raster_sha256'])}</code> ({ar_card['raster']['n_dots']:,} binary dots in <code>[0, 1]</code>, zero NaN anywhere; 11/11 format gates PASS; 20/20 leakage canaries PASS with max symmetric AUC <code>{ar_card['leakage_canary_max_symmetric_auc']:.4f} &le; 0.90</code>).</p>
+<table><tr><th>2026-10-29 ledger &amp; <code>MODEL</code></th><td><code>GEMSDOE92 lbmc1</code> is newly reported at <code>0.2784 CLAIM</code> (#1 across 123 repos, +0.0006 over <code>GEMSDOE32 0.2778</code>). Centerline-monotone <code>LBM-v3</code> cuts 4-claim prospective 2026-10-29 OOT RMSE by 57.4% (<code>0.03159 &rarr; 0.01344</code>; <code>lbmc1</code> OOT <code>0.2818</code> vs <code>0.2784</code>). For <code>ADMITRELAY</code>, <code>LBM-v3</code> estimates <code>{ar_m['lbm_v3_monotone']:.4f} MODEL</code> (not an organizer score).</td></tr>
+<tr><th><code>HOLDOUT-DTI</code></th><td><code>gems57-pooled-hide-v2</code>, 22,663 withheld positives: zero-catalogue 12-feature <code>E1 = {ar_h['e1_admitrelay_blind']['dti']:.6f}</code>; fold-proper <code>E2 = {ar_h['e2_admitrelay_ps_loqo']['dti']:.6f}</code> (above <code>R0_recipe = {ar_h['r0_recipe_control']['dti']:.6f}</code> by <code>{ar_h['paired_e2_vs_r0_recipe']['delta']:+.6f}</code>, paired 95% CI <code>[{ar_h['paired_e2_vs_r0_recipe']['ci95'][0]:+.6f}, {ar_h['paired_e2_vs_r0_recipe']['ci95'][1]:+.6f}]</code>); deployed unique <code>E3 = {ar_h['e3_admitrelay_lbmv3_unique']['dti']:.6f}</code> (2.05&times; RIESZ E3 &amp; 3.95&times; LBMC1, but below <code>R0_recipe</code>).</td></tr>
+<tr><th>Uniqueness scope</th><td>Full 8-owner scan across <code>{ar_u['registry_rasters']:,}</code> unique SHA-256 rasters: PI-1 passes on <strong>both</strong> pre-placement surface (worst 3-px overlap <code>{ar_u['surface_worst_overlap']:.6f} &le; 0.70</code>, <code>|&rho;| = {ar_u['surface_worst_abs_rho']:.4f} &le; 0.90</code>) and final dots (<code>{ar_u['final_worst_overlap']:.6f} &le; 0.70</code>, <code>|&rho;| = {ar_u['final_worst_abs_rho']:.4f} &le; 0.90</code>). Literal full-support witness <code>17GEMSDOE E-proba-multiscale</code> remains <code>1.000 &gt; 0.70</code>.</td></tr>
+<tr><th>Decision</th><td><strong>DO NOT SUBMIT.</strong> <code>verdict=negative</code>, <code>submission_eligible=false</code>, 0 weekly slots spent. Archived name/note are audit metadata only, not upload instructions.</td></tr></table></section>'''
+
+    marussi = load_marussi_20261029_status()
+    marussi_section = ''
+    marussi_top_line = ''
+    marussi_root_line = ''
+    if marussi:
+        m_card, m_audit, m_status = marussi
+        m_tif = Path(m_status['file']).name
+        m_zip = Path(m_status['zip']).name
+        m_sha = esc(m_status['raster_sha256'])
+        m_e3 = m_card['holdout_dti']['e3_deployed_recipe']
+        m_e2 = m_card['holdout_dti']['e2_marussi_trishear_relay']
+        m_r0 = m_card['holdout_dti']['r0_recipe_control']
+        m_p3 = m_card['holdout_dti']['paired_e3_vs_r0_recipe']
+        m_u = m_card['uniqueness']
+        m_lbm = m_card['model_estimate']['lbm_v3_estimate']
+        marussi_top_line = (
+            f'<p><strong>Latest 2026-10-29 candidate (MARUSSI-TRISHEAR, 34,000 dots — OK TO DOWNLOAD FOR RESEARCH ONLY / DO NOT SUBMIT):</strong> '
+            f'<a href="downloads/{esc(m_tif)}" download><strong>⬇ Download {esc(m_tif)} (1-click GeoTIFF, research only)</strong></a> · '
+            f'<a href="downloads/{esc(m_zip)}" download>ZIP</a> · '
+            f'<a href="executive-summary-20261029-marussi-trishear.html">2026-10-29 MARUSSI-TRISHEAR Executive Summary &amp; 0.2784 Fleet Analysis</a> · '
+            f'<a href="downloads/{esc(m_status["run_card"])}">Run Card JSON</a></p>'
+        )
+        marussi_root_line = (
+            f'<p><strong>2026-10-29 MARUSSI-TRISHEAR research GeoTIFF (DO NOT SUBMIT):</strong> '
+            f'<a href="docs/downloads/{esc(m_tif)}" download><code>{esc(m_tif)}</code></a> (SHA-256 <code>{m_sha}</code>) · '
+            f'<a href="docs/executive-summary-20261029-marussi-trishear.html">2026-10-29 MARUSSI-TRISHEAR Executive Summary</a></p>'
+        )
+        marussi_section = f'''<section id="marussi-20261029" class="stop"><h2>Latest 2026-10-29 candidate: MARUSSI-TRISHEAR — OK TO DOWNLOAD FOR RESEARCH ONLY; DO NOT SUBMIT</h2>
+<p><a href="downloads/{esc(m_tif)}" download><strong>⬇ Download MARUSSI-TRISHEAR GeoTIFF (34,000 dots) for research only — DO NOT SUBMIT</strong></a> ·
+<a href="downloads/{esc(m_zip)}" download>one-TIFF ZIP (research only)</a> ·
+<a href="downloads/{esc(m_status['run_card'])}">byte-bound run card</a> ·
+<a href="downloads/{esc(m_status['audit'])}">11-gate format audit</a> ·
+<a href="downloads/marussi_trishear_readiness_20261029.json">readiness feed</a> ·
+<a href="executive-summary-20261029-marussi-trishear.html"><strong>2026-10-29 MARUSSI-TRISHEAR Executive Summary &amp; 0.2784 Fleet Report</strong></a></p>
+<p>SHA-256 <code>{m_sha}</code> ({m_card['raster']['n_dots']:,} binary dots in <code>[0, 1]</code>, zero NaN anywhere; 11/11 format gates PASS; 24/24 solo leakage canaries PASS with max symmetric AUC <code>{m_card['leakage_canaries']['max_symmetric_auc_all_24_channels']:.4f} &le; 0.90</code>).</p>
+<table><tr><th><code>HOLDOUT-DTI</code></th><td><code>{esc(m_card['holdout_dti']['evaluator_version'])}</code>, {m_card['holdout_dti']['withheld_positive_pixels']:,} withheld positives: deployed unique <code>E3 = {m_e3['dti']:.6f}</code> <code>[{m_e3['ci95'][0]:.6f}, {m_e3['ci95'][1]:.6f}]</code> (beats <code>R0_recipe = {m_r0['dti']:.6f}</code> by <code>{m_p3['delta']:+.6f}</code>, paired 95% CI <code>[{m_p3['ci95'][0]:+.6f}, {m_p3['ci95'][1]:+.6f}]</code>); full 24-ch <code>E2 = {m_e2['dti']:.6f}</code> <code>[{m_e2['ci95'][0]:.6f}, {m_e2['ci95'][1]:.6f}]</code>. Held back because neither exceeded the repo all-time <code>HOLDOUT-DTI</code> best (<code>relay_conduit = 0.184485</code>).</td></tr>
+<tr><th>Uniqueness scope</th><td>Full 8-owner scan across <code>{m_u['registry_rasters']:,}</code> unique SHA-256 rasters ({m_u['registry_repos']} repos): PI-1 passes on <strong>both</strong> pre-placement surface (<code>{m_u['surface_worst_overlap']:.4f} &le; 0.70</code>, <code>|&rho;| = {m_u['surface_worst_abs_rho']:.4f} &le; 0.90</code>) and final binary dots (<code>{m_u['final_worst_overlap']:.4f} &le; 0.70</code>, <code>|&rho;| = {m_u['final_worst_abs_rho']:.4f} &le; 0.90</code>). Literal full-support witness <code>17GEMSDOE E-proba-multiscale</code> remains <code>1.000 &gt; 0.70</code>.</td></tr>
+<tr><th><code>MODEL</code> &amp; Decision</th><td><code>MODEL</code> (not a score): <code>{m_lbm:.5f}</code>. <strong>DO NOT SUBMIT.</strong> <code>verdict=negative</code>, <code>submission_eligible=false</code>, 0 weekly slots spent.</td></tr></table></section>'''
+
     lsv29 = load_lidarsintervalve_20261029()
     lsv_hero = render_lidarsintervalve_hero(lsv29[0], lsv29[2]) if lsv29 else ''
     lsv_root_hero = render_lidarsintervalve_hero(lsv29[0], lsv29[2], href_prefix='docs/') if lsv29 else ''
-    body = f'''<p class="small"><a href="executive-summary-20261029-lidarsintervalve.html"><strong>2026-10-29 Nine-Site &amp; 8-Owner Executive Summary</strong></a> · <a href="executive-summary-nine-sites-20261028.html">2026-10-28 Nine-site summary</a> · <a href="WHY_0_2778_AND_0_2784_20261029.md">Why 0.2778 vs 0.2784</a> · <a href="HYPOTHESES_20261029_LIDAR_SINTERVALVE.md">2026-10-29 Untried hypotheses</a> · <a href="STANDING_PROMPT.md">Standing prompt</a></p><nav><a href="how-to-submit.html">How to submit</a> · <a href="nine-sites.html">Nine-site review</a> · <a href="executive-summary-20261029-lidarsintervalve.html">2026-10-29 Full Audit</a> · <a href="REVIEW_20261028_MAIN_INTEGRATION.md">Main-integration review</a> · <a href="REVIEW_20261028_B6AA.md">Historical audit</a> · <a href="REVIEW_20261028_SESSION.md">Independent overlap review</a></nav>
+    body = f'''<p class="small"><a href="executive-summary-20261029-lidarsintervalve.html"><strong>2026-10-29 LIDAR-SINTERVALVE Nine-Site Summary</strong></a> · <a href="HYPOTHESES_20261029_LIDAR_SINTERVALVE.md">LIDAR-SINTERVALVE Hypotheses</a> · <a href="WHY_0_2778_AND_0_2784_20261029.md">Why 0.2778 vs 0.2784</a> · <a href="executive-summary-20261029-marussi-trishear.html"><strong>2026-10-29 MARUSSI-TRISHEAR Summary</strong></a> · <a href="HYPOTHESES_20261029_MARUSSI_TRISHEAR.md">MARUSSI Hypotheses</a> · <a href="executive-summary-20261029-admitrelay.html"><strong>2026-10-29 ADMITRELAY + LBM-v3 Summary</strong></a> · <a href="HYPOTHESES_20261029_ADMITRELAY.md">ADMITRELAY Hypotheses</a> · <a href="STANDING_PROMPT.md">Standing Prompt</a> · <a href="executive-summary-nine-sites-20261028.html">Nine-site executive summary</a> · <a href="STANDING_BRIEF_20261028.md">Standing brief</a> · <a href="HYPOTHESES_20261028_STANDING.md">Untried hypotheses</a></p><nav><a href="how-to-submit.html">How to submit</a> · <a href="nine-sites.html">Nine-site review</a> · <a href="REVIEW_20261028_MAIN_INTEGRATION.md">Current three-pass main-integration review</a> · <a href="REVIEW_20261028_B6AA.md">Full audit and next steps</a> · <a href="REVIEW_20261028_SESSION.md">Independent overlap review</a></nav>
 {lsv_hero}
 <section id="submit-now" class="stop"><h1>DO NOT SUBMIT — no eligible new TIFF</h1>
-<p>No competition slot was used. The prior Riesz candidate fails the requested literal registry rule and did not beat the holdout control. A range-valid raster is not automatically submission-ready.</p>
+<p>No competition slot was used. The prior Riesz candidate fails the requested literal registry rule and did not beat the holdout control, and all 2026-10-29 research candidates (LIDAR-SINTERVALVE, MARUSSI-TRISHEAR, and ADMITRELAY) remain fail-closed negative. A range-valid raster is not automatically submission-ready.</p>
+{marussi_top_line}
 <p><a data-primary="true" href="downloads/{esc(file)}" download>Download existing Riesz TIFF for research only</a> · <a href="downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json">Historical run card, reclassified negative</a></p>
 <p>SHA-256: <code>{digest}</code>. Historical name: <code>{name}</code>. Historical note (not an instruction to upload): <code>{note}</code></p></section>
+{marussi_section}
+{admitrelay_section}
 {tipcomp_section}
 {blindcorridor_section}
 {legacy_knickloqo}
@@ -217,26 +355,8 @@ def render(card):
 <p>Historical HOLDOUT-DTI, <code>gems57-pooled-hide-v2</code>, 22,663 withheld positive pixels: Riesz candidate 0.03799 (95% CI 0.03101–0.04466) vs R0 recipe 0.09775 (95% CI 0.08590–0.11077). These previous measurements were not rerun in this session and may not be prospectively comparable. They are not leaderboard results. <a href="downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json">Evidence</a>.</p></section>
 <section><h2>Next steps &amp; limitations</h2><p>The prompt refers to a single lane paragraph that is absent. The pinned dense witness makes the literal overlap criterion impossible for any nonempty in-footprint raster. Restore provenance-checked cached features and a complete registry, resolve the rule before experiments, then run leakage canaries, buffered visible-only holdouts, both registry checks and the shared writer. Separately select a candidate only if the gates pass. This environment cannot reach the organizer portal, USGS, Dropbox or GDR; portal rules, weekly limit and current leaderboard cannot be checked here.</p>
 <p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Official problem</a> · <a href="https://github.com/drivendataorg/gems-prize-reference-solution">Official reference solution</a> · <a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN</a> · <a href="https://gdr.openei.org/submissions/1391">INGENIOUS</a> · <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Rules PDF</a>. Only the GitHub reference was reachable in this session. The organizer leaderboard is not mirrored. <a href="https://www.drivendata.org/termsofuse/">DrivenData Terms of Use</a>.</p></section>{secondary_section}'''
-    guide = f'''<nav><a href="index.html">← Main Landing Page</a> · <a href="executive-summary-20261029-lidarsintervalve.html">2026-10-29 Nine-Site Executive Summary</a> · <a href="nine-sites.html">Nine-site review</a></nav>
-{lsv_hero}
-<section class="stop"><h1>DO NOT SUBMIT — no new candidate is authorized for a weekly slot</h1>
-<p><strong>2026-10-29 LIDAR-SINTERVALVE status:</strong> <code>gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.tif</code> achieved a new repository fold-proper <code>HOLDOUT-DTI</code> high (<code>0.178619</code> [<code>0.163071</code>, <code>0.193316</code>], 54/54 leakage canaries PASS, sparse PI-1 overlap <code>0.6909 &le; 0.70</code> across all 2,263 unique SHA-256 rasters, 11/11 portal format gates PASS), but remains <strong>OK TO DOWNLOAD FOR RESEARCH ONLY · DO NOT SUBMIT</strong> because its paired 95% CI vs <code>control_netexpand_far</code> (<code>0.177976</code>) spans zero [<code>-0.002525</code>, <code>+0.004321</code>] and the literal dense-witness rule (<code>17GEMSDOE</code>, overlap <code>1.000 &gt; 0.70</code>) remains unresolved.</p>
-<p><strong>Already-submitted 0.2784 entry:</strong> <code>gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif</code> (<code>0.2784</code> <code>CLAIM</code> — #1 in the 8-owner fleet) has already been submitted; <strong>do NOT re-upload it</strong>.</p>
-<p><strong>Historical artifacts (DO NOT SUBMIT):</strong> <code>BLINDCORRIDOR</code> is a format pass only (<code>submission_eligible=false</code>, no independent <code>HOLDOUT-DTI</code>, and full-registry PI-1 overlap is <code>0.7691 &gt; 0.70</code> vs <code>13GEMSDOE</code>). The status-feed primary remains research-only file <code>{esc(file)}</code>; SHA-256 <code>{digest}</code>. See the <a href="index.html#blindcorridor">BLINDCORRIDOR audit and download status</a>.</p></section>
-<section><h2>How to submit when a future candidate is explicitly cleared (3-per-week rolling limit)</h2>
-<ol>
-<li>Verify locally with zero manual pixel inspection: run <code>.venv/bin/python validate_submission.py path/to/candidate-zeros.tif</code> and confirm <code>RESULT: PASS (11 gates)</code> and an explicitly promoted byte-bound <code>_run_card.json</code>.</li>
-<li>Download the exact cleared single-band GeoTIFF (<code>*-zeros.tif</code>) or single-TIFF <code>.zip</code> directly without opening or re-saving in desktop GIS software.</li>
-<li>Open the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">official DrivenData submission page</a>, verify the rolling weekly limit (<strong>3 per week</strong> rolling 168-hour window; 1 entity per rules §3.4), upload the file, enter the unique submission name and short note (&le;140 chars), submit, and record the organizer receipt timestamp and score in <code>ledger/submissions.csv</code>. Do not reuse historical names.</li>
-</ol></section>
-<section><h2>Fixing “Predicted values must be in range [0, 1]” Automatically</h2>
-<p>DrivenData's validator reads the raw raster array without masking nodata tags. Any <code>NaN</code> outside the <code>5,167,373</code>-cell footprint (as present in <code>sample_submission.tif</code>), any GDAL sentinel (e.g. <code>-9999</code> or <code>-3.4e38</code>), any uncalibrated logit outside <code>[0, 1]</code>, or a multi-file ZIP triggers <code>Predicted values must be in range [0, 1]</code>.</p>
-<p>All <code>*-zeros.tif</code> artifacts in <code>GEMSDOE92</code> are written by <code>vendor/gems57/submission_writer.py</code> (single-band <code>float32</code>, <code>EPSG:32611</code>, <code>3730×3292</code> H×W / <code>3292×3730</code> W×H, <code>nodata=None</code>, <code>0.0</code> outside footprint, <code>np.clip(arr, 0.0, 1.0)</code> inside footprint) and verified automatically by <code>gems.gates</code> + <code>gems57.validate</code>:</p>
-<pre><code>.venv/bin/python -m gems validate docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.tif \\
-  --reference data/bridge/sample_submission.tif \\
-  --catalogue data/bridge/existing_faults.tif --prune-radius 2</code></pre>
-<p>Local checks verify file specification and range compliance automatically; they cannot guarantee portal acceptance without live portal access.</p></section>'''
-    css = 'body{font:16px/1.55 system-ui;color:#18212e;background:#f4f6f8;margin:0}main{max-width:1100px;margin:auto;padding:24px}section{background:white;padding:20px;margin:18px 0;border-radius:8px}.stop{border:3px solid #b91c1c;background:#fff4f3}table{width:100%;border-collapse:collapse}td,th{padding:10px;border-bottom:1px solid #ccd5df;text-align:left;vertical-align:top}code{overflow-wrap:anywhere}pre{background:#f1f5f9;padding:12px;border-radius:6px;overflow:auto}a{color:#124ec0}@media(max-width:700px){table{display:block;overflow:auto}}'
+    guide = f'''<nav><a href="index.html">Executive summary</a></nav><section class="stop"><h1>DO NOT SUBMIT — no eligible file</h1><p>No candidate is cleared. The latest additional BLINDCORRIDOR artifact is a format pass only: its run card says <code>submission_eligible=false</code>, it has no independent HOLDOUT-DTI or leakage canaries, and the full registry scan is absent. Do not upload it or use its stored submission name/note.</p><p>The main status-feed primary is research-only file <code>{esc(file)}</code>; SHA-256 <code>{digest}</code>. See the <a href="index.html#blindcorridor">BLINDCORRIDOR audit and download status</a>.</p></section><section><h2>How to submit when a candidate is cleared</h2><ol><li>Download the exact cleared single-band GeoTIFF (or ZIP with one GeoTIFF), without re-saving.</li><li>Open the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">official submission page</a>, check the weekly limit displayed there, and upload the file.</li><li>Use the chosen unique name and short note, submit, and record the organizer receipt. Do not use the historical name as a new submission.</li></ol><p>For “Predicted values must be in range [0, 1]”, validate actual raw pixels for non-finite values, nodata sentinels and values outside [0,1], including exterior pixels. Confirm CRS, shape and transform against the official template. Local checks cannot guarantee portal acceptance.</p></section>'''
+    css = 'body{font:16px/1.55 system-ui;color:#18212e;background:#f4f6f8;margin:0}main{max-width:1100px;margin:auto;padding:24px}section{background:white;padding:20px;margin:18px 0;border-radius:8px}.stop{border:3px solid #b91c1c;background:#fff4f3}table{width:100%;border-collapse:collapse}td,th{padding:10px;border-bottom:1px solid #ccd5df;text-align:left;vertical-align:top}code{overflow-wrap:anywhere}a{color:#124ec0}@media(max-width:700px){table{display:block;overflow:auto}}'
     def page(title, content):
         prefix = '<aside>Current review: DO NOT SUBMIT · <a href="' + ('docs/' if title == 'GEMSDOE92' else '') + 'review-47314b7f.html">Independent review</a></aside><details data-status-archive="true"><summary>Earlier independent review</summary><p>See linked review; historical clearance is superseded.</p></details>'
         return f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title><style>{css}</style></head><body><main>{prefix}{content}</main></body></html>\n'
@@ -261,11 +381,10 @@ def render(card):
     reason = 'Research only; mandatory promotion protocol gates failed.'
     current = {'file': card['raster']['file'], 'sha256':card['raster_sha256'], 'submission_name':card['submission_name'], 'note':card['note'], 'verdict':'negative','ok_to_download':True,'ok_to_submit':False,'reason':reason,'blocking_reasons':blockers, 'run_card': 'downloads/'+Path(card['raster']['file']).name.replace('-zeros.tif','_run_card.json')}
     readiness = {'file':'downloads/'+file, 'raster_sha256':card['raster_sha256'],'submission_name':card['submission_name'],'note':card['note'], 'verdict':'negative','submission_eligible':False,'download_status':'OK TO DOWNLOAD FOR RESEARCH','submission_status':'DO NOT SUBMIT','reason':reason,'blocking_reasons':blockers,'gates':card.get('gates_passed',{})}
-    root = f'<p>The organizer leaderboard is not mirrored. <a href="https://www.drivendata.org/termsofuse/">DrivenData Terms of Use</a></p><h1>GEMSDOE92</h1><p class="small"><a href="docs/executive-summary-20261029-lidarsintervalve.html"><strong>2026-10-29 Nine-site &amp; 8-owner executive summary</strong></a> · <a href="docs/executive-summary-nine-sites-20261028.html">2026-10-28 Nine-site summary</a> · <a href="docs/WHY_0_2778_AND_0_2784_20261029.md">Why 0.2778 vs 0.2784</a> · <a href="docs/HYPOTHESES_20261029_LIDAR_SINTERVALVE.md">2026-10-29 Untried hypotheses</a> · <a href="docs/STANDING_PROMPT.md">Standing prompt</a></p>{lsv_root_hero}<section class="stop"><h2>DO NOT SUBMIT — no eligible new TIFF</h2><p>Research-only file: <a href="docs/downloads/{esc(file)}"><code>{esc(file)}</code></a>; SHA-256 <code>{digest}</code>.</p><p>The additional BLINDCORRIDOR artifact is format-pass only and also <strong>DO NOT SUBMIT</strong>; see its <a href="docs/index.html#blindcorridor">byte-bound status and audit</a>.</p><p><a href="docs/index.html">Read the executive summary and research downloads</a></p><p><a href="docs/how-to-submit.html">How to submit when cleared</a></p></section>'
+    root = f'<p>The organizer leaderboard is not mirrored. <a href="https://www.drivendata.org/termsofuse/">DrivenData Terms of Use</a></p><h1>GEMSDOE92</h1><p class="small"><a href="docs/executive-summary-20261029-lidarsintervalve.html"><strong>2026-10-29 LIDAR-SINTERVALVE Nine-Site Summary</strong></a> · <a href="docs/executive-summary-20261029-marussi-trishear.html"><strong>2026-10-29 MARUSSI-TRISHEAR Executive Summary</strong></a> · <a href="docs/executive-summary-20261029-admitrelay.html"><strong>2026-10-29 ADMITRELAY + LBM-v3 Executive Summary</strong></a> · <a href="docs/executive-summary-nine-sites-20261028.html">Nine-site executive summary (uniqueness, pairwise overlap)</a> · <a href="docs/STANDING_BRIEF_20261028.md">Standing brief</a> · <a href="docs/HYPOTHESES_20261029_LIDAR_SINTERVALVE.md">2026-10-29 LIDAR Hypotheses</a> · <a href="docs/HYPOTHESES_20261029_MARUSSI_TRISHEAR.md">2026-10-29 MARUSSI Hypotheses</a> · <a href="docs/HYPOTHESES_20261029_ADMITRELAY.md">2026-10-29 ADMITRELAY Hypotheses</a> · <a href="docs/STANDING_PROMPT.md">Standing Prompt</a></p>{lsv_root_hero}<section class="stop"><h2>DO NOT SUBMIT — no eligible new TIFF</h2>{marussi_root_line}<p>Research-only file: <a href="docs/downloads/{esc(file)}"><code>{esc(file)}</code></a>; SHA-256 <code>{digest}</code>.</p><p>The 2026-10-29 ADMITRELAY + LBM-v3 candidate is also research-only and <strong>DO NOT SUBMIT</strong>; see its <a href="docs/executive-summary-20261029-admitrelay.html">executive summary &amp; run card</a>. The additional BLINDCORRIDOR artifact is format-pass only and also <strong>DO NOT SUBMIT</strong>; see its <a href="docs/index.html#blindcorridor">byte-bound status and audit</a>.</p><p><a href="docs/index.html">Read the executive summary and research downloads</a></p><p><a href="docs/how-to-submit.html">How to submit when cleared</a></p></section>'
     outputs = {
         DOCS/'index.html': page('GEMSDOE92 — Executive summary', body),
         DOCS/'nine-sites.html': page('GEMSDOE92 — Nine-site review', body),
-        DOCS/'how-to-submit.html': page('GEMSDOE92 — How to submit', guide),
         ROOT/'index.html': page('GEMSDOE92', root),
         DL/'current_submission.json': json.dumps(current, indent=2)+'\n',
         DL/'readiness.json': json.dumps(readiness, indent=2)+'\n',
@@ -274,4 +393,6 @@ def render(card):
         outputs[DOCS/'executive-summary-20261029-lidarsintervalve.html'] = render_executive_summary_20261029(lsv29[0], lsv29[2])
     if blindcorridor:
         outputs[blindcorridor_feed_path] = json.dumps(blind_status, indent=2)+'\n'
+    if admitrelay:
+        outputs[admitrelay_feed_path] = json.dumps(ar_status, indent=2)+'\n'
     return outputs

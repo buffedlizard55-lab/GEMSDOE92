@@ -1,0 +1,733 @@
+{
+  "schema": "gemsdoe92-marussitrishear-uniqueness-20261029",
+  "created_utc": "2026-10-29T16:06:16+00:00",
+  "candidate_tif": "docs/downloads/gemsdoe92-marussitrishear-34000dots-20261029-236171af-zeros.tif",
+  "candidate_sha256": "f8f8703e4f8efb8f3397ecc5dc8c0fd68b06c64a089a89b02ee7a91395b3a59b",
+  "n_dots": 34000,
+  "min_dcat_px": 3.6056,
+  "registry_rasters_checked": 2262,
+  "pre_placement_surface_pi1": {
+    "mode": "surface_top_n",
+    "n_dots": 34000,
+    "registry_rasters": 2262,
+    "rule": {
+      "overlap_limit": 0.7,
+      "rho_limit": 0.9,
+      "radius_px": 3.0,
+      "interpretation": "PI-1",
+      "dense_support_fraction": 0.2,
+      "halo_limit": 0.7
+    },
+    "duplicate": false,
+    "worst_overlap_pi1": {
+      "sha256": "47caaca53d2906f797459abf1194fb81ee1181e05cf5c9a6e74e6f57b0999b98",
+      "representation": "dot_field",
+      "n_registry_pos": 201260,
+      "halo_frac": 0.553679984,
+      "overlap_pi1": 0.656412,
+      "overlap_literal": 0.656412,
+      "literal_exact": true,
+      "rho": 0.053701,
+      "rho_method": "exact"
+    },
+    "worst_abs_rho": {
+      "sha256": "66e8ea67c86374ed67075812e6ab7c7b17d5eaa714b521dcd35c57f58454a46e",
+      "representation": "surface",
+      "n_registry_pos": 5106385,
+      "halo_frac": null,
+      "overlap_pi1": 0.091559,
+      "overlap_literal": 0.461882,
+      "literal_exact": false,
+      "rho": 0.663222,
+      "rho_method": "sampled_200000"
+    },
+    "literal_reading": {
+      "worst": {
+        "sha256": "03d619fa75689b48bd3eb4f74c3fa529a9b04c19bd716e15640d910baf3d5a90",
+        "representation": "surface",
+        "n_registry_pos": 5167373,
+        "halo_frac": null,
+        "overlap_pi1": 0.017176,
+        "overlap_literal": 1.0,
+        "literal_exact": true,
+        "rho": 0.53155,
+        "rho_method": "sampled_200000"
+      },
+      "duplicate_under_literal": true,
+      "note": "Literal reading is degenerate: any raster positive on every footprint cell gives 1.0."
+    },
+    "n_overlap_over_0_5": 57,
+    "top_25_by_overlap_pi1": [
+      {
+        "sha256": "47caaca53d2906f797459abf1194fb81ee1181e05cf5c9a6e74e6f57b0999b98",
+        "representation": "dot_field",
+        "n_registry_pos": 201260,
+        "halo_frac": 0.553679984,
+        "overlap_pi1": 0.656412,
+        "overlap_literal": 0.656412,
+        "literal_exact": true,
+        "rho": 0.053701,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "0c7d00e879e7f54e3019de185b252e5faad2983c754c9030273ad333688acb69",
+        "representation": "dot_field",
+        "n_registry_pos": 180000,
+        "halo_frac": 0.635045119,
+        "overlap_pi1": 0.6375,
+        "overlap_literal": 0.6375,
+        "literal_exact": true,
+        "rho": 0.03503,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "ad9750be86acf6b8c253dcd8f1ee6487c2ea8327a582a8c9e6a765d16037d319",
+        "representation": "dot_field",
+        "n_registry_pos": 180000,
+        "halo_frac": 0.635045119,
+        "overlap_pi1": 0.6375,
+        "overlap_literal": 0.6375,
+        "literal_exact": true,
+        "rho": 0.03503,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "88976dc5b2504838b193d41b718df95eb1e237b870b94a6443dc3bee65e98e06",
+        "representation": "dot_field",
+        "n_registry_pos": 246469,
+        "halo_frac": 0.679786228,
+        "overlap_pi1": 0.631882,
+        "overlap_literal": 0.631882,
+        "literal_exact": true,
+        "rho": -0.091575,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "e050b1ec627e8207c1fe5f7530f015d0cf2feb6bb98c5bce225e5db806afb0e3",
+        "representation": "dot_field",
+        "n_registry_pos": 246469,
+        "halo_frac": 0.679786228,
+        "overlap_pi1": 0.631882,
+        "overlap_literal": 0.631882,
+        "literal_exact": true,
+        "rho": -0.091575,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "70c4ccd5dd51c6cbf1c0b8019738885a357dde7be64c17b4fb278a12f073e1e4",
+        "representation": "dot_field",
+        "n_registry_pos": 344041,
+        "halo_frac": 0.645573292,
+        "overlap_pi1": 0.631676,
+        "overlap_literal": 0.631676,
+        "literal_exact": true,
+        "rho": 0.00447,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "bd1e3d056e83e792aed8c77b3249f833d119320779b94d2eb7c5b65ac5161428",
+        "representation": "dot_field",
+        "n_registry_pos": 344041,
+        "halo_frac": 0.645573292,
+        "overlap_pi1": 0.631676,
+        "overlap_literal": 0.631676,
+        "literal_exact": true,
+        "rho": 0.00447,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "789dd56c4287cd50c8d2d5e3f063828a8d25a275d82bd8418a4cf971d908b8a6",
+        "representation": "dot_field",
+        "n_registry_pos": 516738,
+        "halo_frac": 0.534328178,
+        "overlap_pi1": 0.628059,
+        "overlap_literal": 0.628059,
+        "literal_exact": true,
+        "rho": 0.191216,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "d0c5fd6825b544eb08672303c11292eb99d6105e42a41eac0e5a211a3fdc69e5",
+        "representation": "dot_field",
+        "n_registry_pos": 516738,
+        "halo_frac": 0.534328178,
+        "overlap_pi1": 0.628059,
+        "overlap_literal": 0.628059,
+        "literal_exact": true,
+        "rho": 0.191216,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "28adc53bcaca11329c807baa5659079c25f225c5908f7874762a034cf70cab05",
+        "representation": "dot_field",
+        "n_registry_pos": 167597,
+        "halo_frac": 0.548146611,
+        "overlap_pi1": 0.623088,
+        "overlap_literal": 0.623088,
+        "literal_exact": true,
+        "rho": 0.068905,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "8624c5a58c681f57a6d26cab0652cfe654bcd46dc8ba68a7d5a4c0feaa29bc89",
+        "representation": "dot_field",
+        "n_registry_pos": 167597,
+        "halo_frac": 0.548146611,
+        "overlap_pi1": 0.623088,
+        "overlap_literal": 0.623088,
+        "literal_exact": true,
+        "rho": 0.068905,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "7b6010637ae341b56f7d211eaf892b239822b0668d3f5556af0eecb505a228d3",
+        "representation": "dot_field",
+        "n_registry_pos": 352506,
+        "halo_frac": 0.393744558,
+        "overlap_pi1": 0.620735,
+        "overlap_literal": 0.620735,
+        "literal_exact": true,
+        "rho": 0.135464,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "0b1b6c0641e8e48b25aff127492a160e6d320ced2940d2925cf56f82935db4c2",
+        "representation": "dot_field",
+        "n_registry_pos": 169968,
+        "halo_frac": 0.436877694,
+        "overlap_pi1": 0.615324,
+        "overlap_literal": 0.615324,
+        "literal_exact": true,
+        "rho": 0.049352,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "42bffef1b5973973cdcb52c252067b33159e03fa721d1f58bec83f18ca779a21",
+        "representation": "dot_field",
+        "n_registry_pos": 120000,
+        "halo_frac": 0.437593919,
+        "overlap_pi1": 0.610882,
+        "overlap_literal": 0.610882,
+        "literal_exact": true,
+        "rho": 0.037944,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "28f30b31c5d054764038144c2742364c5e4f1e2ca79f122281d04cb9d15cd5db",
+        "representation": "dot_field",
+        "n_registry_pos": 100000,
+        "halo_frac": 0.491259872,
+        "overlap_pi1": 0.608088,
+        "overlap_literal": 0.608088,
+        "literal_exact": true,
+        "rho": 0.044004,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "ae5c5aafce85a395af73944ab10f3fc2cad7bcc1244d49a52d53443bd0f5c3c2",
+        "representation": "dot_field",
+        "n_registry_pos": 100000,
+        "halo_frac": 0.491259872,
+        "overlap_pi1": 0.608088,
+        "overlap_literal": 0.608088,
+        "literal_exact": true,
+        "rho": 0.044004,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "aac907db6aadc3d07a4eeb2531a0be200ee0143599ab304921e4f4f742fbc02a",
+        "representation": "dot_field",
+        "n_registry_pos": 100000,
+        "halo_frac": 0.487606178,
+        "overlap_pi1": 0.604735,
+        "overlap_literal": 0.604735,
+        "literal_exact": true,
+        "rho": 0.043308,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "e29e8f04e048a4aa210edbc1128dc39703e9271a11c02a5a391c7753339b0125",
+        "representation": "dot_field",
+        "n_registry_pos": 100000,
+        "halo_frac": 0.487606178,
+        "overlap_pi1": 0.604735,
+        "overlap_literal": 0.604735,
+        "literal_exact": true,
+        "rho": 0.043308,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "0c9199f14e625d7b2539a0a045803b74d6494ce568d185abecc193fe7e93c6f2",
+        "representation": "dot_field",
+        "n_registry_pos": 103347,
+        "halo_frac": 0.322444306,
+        "overlap_pi1": 0.602735,
+        "overlap_literal": 0.602735,
+        "literal_exact": true,
+        "rho": 0.119118,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "ce3f70fa2e1e7bbea60c8c62a2f805c22d15b8a8905ebec757259617ceb02fbc",
+        "representation": "dot_field",
+        "n_registry_pos": 103347,
+        "halo_frac": 0.322444306,
+        "overlap_pi1": 0.602735,
+        "overlap_literal": 0.602735,
+        "literal_exact": true,
+        "rho": 0.119118,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "c36696693639749791286bcd58e48a78ff79d4651b63fc33d273aab8191df0d4",
+        "representation": "dot_field",
+        "n_registry_pos": 335879,
+        "halo_frac": 0.413134295,
+        "overlap_pi1": 0.594588,
+        "overlap_literal": 0.594588,
+        "literal_exact": true,
+        "rho": 0.186126,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "e5f3684e9b49e8f11019f87e047017c5ab8a46294935bc0c7c80859ca7d2b1ce",
+        "representation": "dot_field",
+        "n_registry_pos": 335879,
+        "halo_frac": 0.413134295,
+        "overlap_pi1": 0.594588,
+        "overlap_literal": 0.594588,
+        "literal_exact": true,
+        "rho": 0.186126,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "33d893193f6eb009165b5c62bcef1c7c945531ed19ddb2c621150a52f0c16835",
+        "representation": "dot_field",
+        "n_registry_pos": 97654,
+        "halo_frac": 0.375057887,
+        "overlap_pi1": 0.589294,
+        "overlap_literal": 0.589294,
+        "literal_exact": true,
+        "rho": 0.024447,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "831459fd86d636f8dc12986316d588a4c6b9ecc8ca0c9eb5bdae9a84427e9ca6",
+        "representation": "dot_field",
+        "n_registry_pos": 97654,
+        "halo_frac": 0.375057887,
+        "overlap_pi1": 0.589294,
+        "overlap_literal": 0.589294,
+        "literal_exact": true,
+        "rho": 0.024447,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "ce749a992baec603460dfeddd068758855cb8b12978268e6ef94f6e23ffd9ee7",
+        "representation": "dot_field",
+        "n_registry_pos": 80000,
+        "halo_frac": 0.265989508,
+        "overlap_pi1": 0.583941,
+        "overlap_literal": 0.583941,
+        "literal_exact": true,
+        "rho": 0.102158,
+        "rho_method": "exact"
+      }
+    ]
+  },
+  "final_dots_pi1": {
+    "mode": "final_dots",
+    "n_dots": 34000,
+    "registry_rasters": 2262,
+    "rule": {
+      "overlap_limit": 0.7,
+      "rho_limit": 0.9,
+      "radius_px": 3.0,
+      "interpretation": "PI-1",
+      "dense_support_fraction": 0.2,
+      "halo_limit": 0.7
+    },
+    "duplicate": false,
+    "worst_overlap_pi1": {
+      "sha256": "47caaca53d2906f797459abf1194fb81ee1181e05cf5c9a6e74e6f57b0999b98",
+      "representation": "dot_field",
+      "n_registry_pos": 201260,
+      "halo_frac": 0.553679984,
+      "overlap_pi1": 0.656412,
+      "overlap_literal": 0.656412,
+      "literal_exact": true,
+      "rho": 0.010253,
+      "rho_method": "exact"
+    },
+    "worst_abs_rho": {
+      "sha256": "dae576a3b21b83988e05f0f2a51b0d312b14bb0ca6843a1ebfdb4781edf75a66",
+      "representation": "dot_field",
+      "n_registry_pos": 37654,
+      "halo_frac": 0.132396094,
+      "overlap_pi1": 0.4015,
+      "overlap_literal": 0.4015,
+      "literal_exact": true,
+      "rho": 0.088574,
+      "rho_method": "exact"
+    },
+    "literal_reading": {
+      "worst": {
+        "sha256": "03d619fa75689b48bd3eb4f74c3fa529a9b04c19bd716e15640d910baf3d5a90",
+        "representation": "surface",
+        "n_registry_pos": 5167373,
+        "halo_frac": null,
+        "overlap_pi1": 0.017176,
+        "overlap_literal": 1.0,
+        "literal_exact": true,
+        "rho": 0.043691,
+        "rho_method": "sampled_200000"
+      },
+      "duplicate_under_literal": true,
+      "note": "Literal reading is degenerate: any raster positive on every footprint cell gives 1.0."
+    },
+    "n_overlap_over_0_5": 57,
+    "top_25_by_overlap_pi1": [
+      {
+        "sha256": "47caaca53d2906f797459abf1194fb81ee1181e05cf5c9a6e74e6f57b0999b98",
+        "representation": "dot_field",
+        "n_registry_pos": 201260,
+        "halo_frac": 0.553679984,
+        "overlap_pi1": 0.656412,
+        "overlap_literal": 0.656412,
+        "literal_exact": true,
+        "rho": 0.010253,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "0c7d00e879e7f54e3019de185b252e5faad2983c754c9030273ad333688acb69",
+        "representation": "dot_field",
+        "n_registry_pos": 180000,
+        "halo_frac": 0.635045119,
+        "overlap_pi1": 0.6375,
+        "overlap_literal": 0.6375,
+        "literal_exact": true,
+        "rho": 0.009133,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "ad9750be86acf6b8c253dcd8f1ee6487c2ea8327a582a8c9e6a765d16037d319",
+        "representation": "dot_field",
+        "n_registry_pos": 180000,
+        "halo_frac": 0.635045119,
+        "overlap_pi1": 0.6375,
+        "overlap_literal": 0.6375,
+        "literal_exact": true,
+        "rho": 0.009133,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "88976dc5b2504838b193d41b718df95eb1e237b870b94a6443dc3bee65e98e06",
+        "representation": "dot_field",
+        "n_registry_pos": 246469,
+        "halo_frac": 0.679786228,
+        "overlap_pi1": 0.631882,
+        "overlap_literal": 0.631882,
+        "literal_exact": true,
+        "rho": -0.008004,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "e050b1ec627e8207c1fe5f7530f015d0cf2feb6bb98c5bce225e5db806afb0e3",
+        "representation": "dot_field",
+        "n_registry_pos": 246469,
+        "halo_frac": 0.679786228,
+        "overlap_pi1": 0.631882,
+        "overlap_literal": 0.631882,
+        "literal_exact": true,
+        "rho": -0.008004,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "70c4ccd5dd51c6cbf1c0b8019738885a357dde7be64c17b4fb278a12f073e1e4",
+        "representation": "dot_field",
+        "n_registry_pos": 344041,
+        "halo_frac": 0.645573292,
+        "overlap_pi1": 0.631676,
+        "overlap_literal": 0.631676,
+        "literal_exact": true,
+        "rho": -0.001265,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "bd1e3d056e83e792aed8c77b3249f833d119320779b94d2eb7c5b65ac5161428",
+        "representation": "dot_field",
+        "n_registry_pos": 344041,
+        "halo_frac": 0.645573292,
+        "overlap_pi1": 0.631676,
+        "overlap_literal": 0.631676,
+        "literal_exact": true,
+        "rho": -0.001265,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "789dd56c4287cd50c8d2d5e3f063828a8d25a275d82bd8418a4cf971d908b8a6",
+        "representation": "dot_field",
+        "n_registry_pos": 516738,
+        "halo_frac": 0.534328178,
+        "overlap_pi1": 0.628059,
+        "overlap_literal": 0.628059,
+        "literal_exact": true,
+        "rho": 0.022532,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "d0c5fd6825b544eb08672303c11292eb99d6105e42a41eac0e5a211a3fdc69e5",
+        "representation": "dot_field",
+        "n_registry_pos": 516738,
+        "halo_frac": 0.534328178,
+        "overlap_pi1": 0.628059,
+        "overlap_literal": 0.628059,
+        "literal_exact": true,
+        "rho": 0.022532,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "28adc53bcaca11329c807baa5659079c25f225c5908f7874762a034cf70cab05",
+        "representation": "dot_field",
+        "n_registry_pos": 167597,
+        "halo_frac": 0.548146611,
+        "overlap_pi1": 0.623088,
+        "overlap_literal": 0.623088,
+        "literal_exact": true,
+        "rho": 0.006922,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "8624c5a58c681f57a6d26cab0652cfe654bcd46dc8ba68a7d5a4c0feaa29bc89",
+        "representation": "dot_field",
+        "n_registry_pos": 167597,
+        "halo_frac": 0.548146611,
+        "overlap_pi1": 0.623088,
+        "overlap_literal": 0.623088,
+        "literal_exact": true,
+        "rho": 0.006922,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "7b6010637ae341b56f7d211eaf892b239822b0668d3f5556af0eecb505a228d3",
+        "representation": "dot_field",
+        "n_registry_pos": 352506,
+        "halo_frac": 0.393744558,
+        "overlap_pi1": 0.620735,
+        "overlap_literal": 0.620735,
+        "literal_exact": true,
+        "rho": 0.020627,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "0b1b6c0641e8e48b25aff127492a160e6d320ced2940d2925cf56f82935db4c2",
+        "representation": "dot_field",
+        "n_registry_pos": 169968,
+        "halo_frac": 0.436877694,
+        "overlap_pi1": 0.615324,
+        "overlap_literal": 0.615324,
+        "literal_exact": true,
+        "rho": 0.010155,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "42bffef1b5973973cdcb52c252067b33159e03fa721d1f58bec83f18ca779a21",
+        "representation": "dot_field",
+        "n_registry_pos": 120000,
+        "halo_frac": 0.437593919,
+        "overlap_pi1": 0.610882,
+        "overlap_literal": 0.610882,
+        "literal_exact": true,
+        "rho": 0.014501,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "28f30b31c5d054764038144c2742364c5e4f1e2ca79f122281d04cb9d15cd5db",
+        "representation": "dot_field",
+        "n_registry_pos": 100000,
+        "halo_frac": 0.491259872,
+        "overlap_pi1": 0.608088,
+        "overlap_literal": 0.608088,
+        "literal_exact": true,
+        "rho": 0.010443,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "ae5c5aafce85a395af73944ab10f3fc2cad7bcc1244d49a52d53443bd0f5c3c2",
+        "representation": "dot_field",
+        "n_registry_pos": 100000,
+        "halo_frac": 0.491259872,
+        "overlap_pi1": 0.608088,
+        "overlap_literal": 0.608088,
+        "literal_exact": true,
+        "rho": 0.010443,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "aac907db6aadc3d07a4eeb2531a0be200ee0143599ab304921e4f4f742fbc02a",
+        "representation": "dot_field",
+        "n_registry_pos": 100000,
+        "halo_frac": 0.487606178,
+        "overlap_pi1": 0.604735,
+        "overlap_literal": 0.604735,
+        "literal_exact": true,
+        "rho": 0.010686,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "e29e8f04e048a4aa210edbc1128dc39703e9271a11c02a5a391c7753339b0125",
+        "representation": "dot_field",
+        "n_registry_pos": 100000,
+        "halo_frac": 0.487606178,
+        "overlap_pi1": 0.604735,
+        "overlap_literal": 0.604735,
+        "literal_exact": true,
+        "rho": 0.010686,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "0c9199f14e625d7b2539a0a045803b74d6494ce568d185abecc193fe7e93c6f2",
+        "representation": "dot_field",
+        "n_registry_pos": 103347,
+        "halo_frac": 0.322444306,
+        "overlap_pi1": 0.602735,
+        "overlap_literal": 0.602735,
+        "literal_exact": true,
+        "rho": 0.02115,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "ce3f70fa2e1e7bbea60c8c62a2f805c22d15b8a8905ebec757259617ceb02fbc",
+        "representation": "dot_field",
+        "n_registry_pos": 103347,
+        "halo_frac": 0.322444306,
+        "overlap_pi1": 0.602735,
+        "overlap_literal": 0.602735,
+        "literal_exact": true,
+        "rho": 0.02115,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "c36696693639749791286bcd58e48a78ff79d4651b63fc33d273aab8191df0d4",
+        "representation": "dot_field",
+        "n_registry_pos": 335879,
+        "halo_frac": 0.413134295,
+        "overlap_pi1": 0.594588,
+        "overlap_literal": 0.594588,
+        "literal_exact": true,
+        "rho": 0.028672,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "e5f3684e9b49e8f11019f87e047017c5ab8a46294935bc0c7c80859ca7d2b1ce",
+        "representation": "dot_field",
+        "n_registry_pos": 335879,
+        "halo_frac": 0.413134295,
+        "overlap_pi1": 0.594588,
+        "overlap_literal": 0.594588,
+        "literal_exact": true,
+        "rho": 0.028672,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "33d893193f6eb009165b5c62bcef1c7c945531ed19ddb2c621150a52f0c16835",
+        "representation": "dot_field",
+        "n_registry_pos": 97654,
+        "halo_frac": 0.375057887,
+        "overlap_pi1": 0.589294,
+        "overlap_literal": 0.589294,
+        "literal_exact": true,
+        "rho": 0.002777,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "831459fd86d636f8dc12986316d588a4c6b9ecc8ca0c9eb5bdae9a84427e9ca6",
+        "representation": "dot_field",
+        "n_registry_pos": 97654,
+        "halo_frac": 0.375057887,
+        "overlap_pi1": 0.589294,
+        "overlap_literal": 0.589294,
+        "literal_exact": true,
+        "rho": 0.002777,
+        "rho_method": "exact"
+      },
+      {
+        "sha256": "ce749a992baec603460dfeddd068758855cb8b12978268e6ef94f6e23ffd9ee7",
+        "representation": "dot_field",
+        "n_registry_pos": 80000,
+        "halo_frac": 0.265989508,
+        "overlap_pi1": 0.583941,
+        "overlap_literal": 0.583941,
+        "literal_exact": true,
+        "rho": 0.021921,
+        "rho_method": "exact"
+      }
+    ]
+  },
+  "lbm_v3_model_estimate": {
+    "value": 0.16204,
+    "evidence_class": "MODEL (fitted to 131 owner-reported CLAIMs; never an organizer score)"
+  },
+  "gates_ok": true,
+  "gates_detail": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=('float32',) count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nonfinite_pixels=0 masked_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=3px dots_within=0; strict distance > radius required"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "f8f8703e4f8efb8f3397ecc5dc8c0fd68b06c64a089a89b02ee7a91395b3a59b"
+    }
+  ],
+  "submission_name": "gemsdoe92-marussitrishear-34000dots-20261029-236171af",
+  "submission_note": "H-92M1/M2 3D Marussi D2D+Trishear+WalkerLane vorticity+relay 1D crest; 34000px d>3.5; PI1<=0.65 [research]",
+  "submission_note_len": 106,
+  "writer_receipt_path": "docs/downloads/gemsdoe92-marussitrishear-34000dots-20261029-236171af-zeros.json"
+}

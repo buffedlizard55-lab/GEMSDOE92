@@ -125,10 +125,10 @@ def render_lidarsintervalve_hero(card: dict, status: dict, *, href_prefix: str =
 def render_executive_summary_20261029(lsv_card: dict, lsv_status: dict) -> str:
     f9_src = json.loads((EVID / "focus9_sources_20261028.json").read_text(encoding="utf-8"))
     f9_uni = json.loads((EVID / "focus9_uniqueness_20261028.json").read_text(encoding="utf-8"))
-    fleet29 = json.loads((EVID / "fleet_8owners_20261029.json").read_text(encoding="utf-8"))
+    fleet29 = json.loads((EVID / "lidarsintervalve_fleet_8owners_20261029.json").read_text(encoding="utf-8"))
     oot29 = json.loads((EVID / "lbm_prospective_oot_20261029.json").read_text(encoding="utf-8"))
     lbm3 = json.loads((EVID / "lbm_v3_model_20261029.json").read_text(encoding="utf-8"))
-    claims29 = json.loads((EVID / "claims_matched_20261029.json").read_text(encoding="utf-8"))["rows"]
+    claims29 = json.loads((EVID / "lidarsintervalve_claims_matched_20261029.json").read_text(encoding="utf-8"))["rows"]
     u_bc = json.loads((EVID / "uniq_full_registry_20261029" / "blindcorridor_20261029.json").read_text(encoding="utf-8"))
     u_tc = json.loads((EVID / "uniq_full_registry_20261029" / "tipcomp_20261029.json").read_text(encoding="utf-8"))
 

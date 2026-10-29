@@ -1,0 +1,259 @@
+{
+  "schema": "gemsdoe92-run-card-v3-20261029",
+  "lane": "MARUSSI-TRISHEAR-VORTICITY",
+  "created_utc": "2026-10-29T16:11:08+00:00",
+  "pre_registration": "docs/HYPOTHESES_20261029_MARUSSI_TRISHEAR.md",
+  "hypothesis": "H-92M1 + H-92M2: Full 3D Laplace-consistent Marussi potential-field tensor 2D-dimensionality D_2D = 1 - |det(T)| / [2*(-I_1/3)^(3/2)] on B13 gravity & B02 RTP magnetics, coupled with Allmendinger (1998) trishear blind-tip monocline flexure over unconsolidated cover (B15 > 40 m), Cooper terracing, Gallardo-Meju joint cross-gradient & magnetite-destruction conduits, true Salem (2008) B02 tilt-depth gating (never Band 6 tc), Niblett-Bostick skin-depth lateral contrast, and Walker Lane geodetic kinematic vorticity W_k strike partitioning, fused with self-excluded fold-visible fault-tip relay context and Lagrangian offender-halo de-crowding.",
+  "mechanism": "Planar intrabasin horst/graben and range-front faults generate 2D Marussi potential steps (det(T) -> 0 => D_2D -> 1) and updip trishear monocline inflections above buried tips while rejecting equant 3D plutons/plugs (D_2D -> 0); high geodetic kinematic vorticity W_k rotates favored structural continuation from N022E Basin-and-Range normal faults toward N062E/N318W Walker Lane pull-aparts; 1D directional crest localization + normalized Lagrangian dual pricing bounds 3-px overlap <= 0.6564 across all 2,262 registry SHA-256 rasters on BOTH the pre-placement surface and final binary dots.",
+  "named_non_fault_mimic": "Subaerial bedrock canyon/mesa escarpment rims (steep slope > 10 deg with shallow/zero sedimentary cover B15 < 40 m and shallow Salem magnetic depth < 150 m), 3D circular plutons/caldera plugs (D_2D -> 0), and flat saline Lake Lahontan playa bowls (high scalar B17 conductivity without lateral Niblett-Bostick skin-depth step or 2D Marussi basement offset).",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "e3_deployed_recipe": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.15777409016033211,
+      "ci95": [
+        0.144291119769755,
+        0.17164679157295737
+      ],
+      "withheld_positive_pixels": 22663,
+      "tpw": 4961.64595040838,
+      "fpw": 61625.28806487542,
+      "fnw": 17701.354049591617
+    },
+    "e2_marussi_trishear_relay": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.17227296388792798,
+      "ci95": [
+        0.15884991060747225,
+        0.18520636993189996
+      ],
+      "withheld_positive_pixels": 22663,
+      "tpw": 5499.10968100672,
+      "fpw": 63453.43757064915,
+      "fnw": 17163.89031899327
+    },
+    "e1_marussi_pure_phys": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.06607624146662268,
+      "ci95": [
+        0.053550019629998634,
+        0.07888181934195726
+      ],
+      "withheld_positive_pixels": 22663,
+      "tpw": 2082.798563613504,
+      "fpw": 64870.90943247427,
+      "fnw": 20580.201436386495
+    },
+    "control_struct_relay_only": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.18249569091409507,
+      "ci95": [
+        0.16704157064545613,
+        0.19664417831723163
+      ],
+      "withheld_positive_pixels": 22663,
+      "tpw": 5820.097905161391,
+      "fpw": 62986.40426574865,
+      "fnw": 16842.902094838602
+    },
+    "r0_recipe_control": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.09775010414175118,
+      "ci95": [
+        0.08612733589506555,
+        0.10928152653922846
+      ],
+      "withheld_positive_pixels": 22663,
+      "tpw": 3268.824114128543,
+      "fpw": 73282.27724463292,
+      "fnw": 19394.17588587146
+    },
+    "paired_e3_vs_r0_recipe": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.06002398601858093,
+      "ci95": [
+        0.046289702602150734,
+        0.07444269212839791
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "paired_e2_vs_r0_recipe": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.0745228597461768,
+      "ci95": [
+        0.0611636295064466,
+        0.08792454069170778
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "paired_e2_vs_struct_relay_control": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": -0.010222727026167083,
+      "ci95": [
+        -0.014171777393521552,
+        -0.0060911745822707555
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "paired_e3_vs_struct_relay_control": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": -0.02472160075376295,
+      "ci95": [
+        -0.03108665032368155,
+        -0.017645345052269314
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "all_time_repo_holdout_best": {
+      "arm": "relay_conduit",
+      "dti": 0.184485,
+      "ci95": [
+        0.169875,
+        0.198933
+      ],
+      "source": "evidence/relayconduit_holdout.json"
+    }
+  },
+  "leakage_canaries": {
+    "canaries_run": true,
+    "threshold_symmetric_auc": 0.9,
+    "max_symmetric_auc_all_24_channels": 0.811486,
+    "max_symmetric_auc_14_zero_cat_channels": 0.5783,
+    "all_pass": true,
+    "band6_tc_used_as_magnetic_tilt": false,
+    "stripped_leaky_gdr_columns": [
+      "thermalclass",
+      "dist_known_fault_px"
+    ]
+  },
+  "uniqueness": {
+    "registry_owners": 8,
+    "registry_repos": 108,
+    "registry_rasters": 2262,
+    "pi1_surface_duplicate": false,
+    "surface_worst_overlap": 0.656412,
+    "surface_worst_overlap_sha256": "47caaca53d2906f797459abf1194fb81ee1181e05cf5c9a6e74e6f57b0999b98",
+    "surface_worst_abs_rho": 0.663222,
+    "pi1_final_dots_duplicate": false,
+    "final_worst_overlap": 0.656412,
+    "final_worst_overlap_sha256": "47caaca53d2906f797459abf1194fb81ee1181e05cf5c9a6e74e6f57b0999b98",
+    "final_worst_abs_rho": 0.088574,
+    "literal_reading": {
+      "worst": 1.0,
+      "witness_sha256": "03d619fa75689b48bd3eb4f74c3fa529a9b04c19bd716e15640d910baf3d5a90",
+      "duplicate_under_literal": true,
+      "note": "Literal reading is degenerate: any raster positive on every footprint cell gives 1.0."
+    }
+  },
+  "model_estimate": {
+    "evidence_class": "MODEL (fitted to 131 owner-reported CLAIMs through 2026-10-29; never an organizer score)",
+    "lbm_v3_estimate": 0.16204,
+    "lbm_v3_logo_rmse": 0.022616,
+    "lbm_v3_lbmc1_logo": 0.2828,
+    "lbmc1_20261029_claim": 0.2784
+  },
+  "raster": {
+    "file": "docs/downloads/gemsdoe92-marussitrishear-34000dots-20261029-236171af-zeros.tif",
+    "zip": "docs/downloads/gemsdoe92-marussitrishear-34000dots-20261029-236171af-zeros.zip",
+    "sha256": "f8f8703e4f8efb8f3397ecc5dc8c0fd68b06c64a089a89b02ee7a91395b3a59b",
+    "zip_sha256": "ca1b33b93c216a1c06732613d3237cd14506df9747001440484f76b9b599ed9d",
+    "bytes": 138536,
+    "zip_bytes": 104885,
+    "n_dots": 34000,
+    "min_dcat_px": 3.6056
+  },
+  "raster_sha256": "f8f8703e4f8efb8f3397ecc5dc8c0fd68b06c64a089a89b02ee7a91395b3a59b",
+  "validator_output": {
+    "overall_pass": true,
+    "gates_passed_count": 11,
+    "gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=('float32',) count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nonfinite_pixels=0 masked_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      },
+      {
+        "name": "submission_encoding",
+        "ok": true,
+        "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=3px dots_within=0; strict distance > radius required"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "f8f8703e4f8efb8f3397ecc5dc8c0fd68b06c64a089a89b02ee7a91395b3a59b"
+      }
+    ],
+    "writer_local_validation": {}
+  },
+  "gates_passed": {
+    "format": true,
+    "range_0_1_and_no_nan": true,
+    "distance_from_catalogue_gt_3px": true,
+    "leakage_canaries_le_0p90": true,
+    "catalogue_holdout_beats_r0_recipe": true,
+    "catalogue_holdout_beats_all_time_repo_best": false,
+    "uniqueness_pi1_pre_placement_surface": true,
+    "uniqueness_pi1_final_dots": true,
+    "uniqueness_literal_dense_witness": false
+  },
+  "submission_name": "gemsdoe92-marussitrishear-34000dots-20261029-236171af",
+  "note": "H-92M1/M2 3D Marussi D2D+Trishear+WalkerLane vorticity+relay 1D crest; 34000px d>3.5; PI1<=0.65 [research]",
+  "note_length": 106,
+  "experiments_run": 3,
+  "weekly_slots_used": 0,
+  "organizer_confirmed_score": null,
+  "submission_eligible": false,
+  "verdict": "negative",
+  "verdict_reason": "Format-valid [0, 1] GeoTIFF (11/11 strict gates PASS, min dcat=3.61 px > 3.0 px, 0 NaNs), passes Rule-4 leakage canaries (max sym_AUC=0.8115 <= 0.90; 0.5783 pure physics), beats R0 recipe on gems57-pooled-hide-v2 (E3 HOLDOUT-DTI = 0.157774 vs 0.097750, paired delta +0.060024 [+0.046290, +0.074443]; E2 = 0.172273, +0.074523), and passes PI-1 uniqueness across all 2,262 registry SHA-256 rasters on BOTH pre-placement surface (0.6564 <= 0.70, |rho|=0.6632 <= 0.90) AND final dots (0.6564 <= 0.70, |rho|=0.0886 <= 0.90). Retained fail-closed as verdict='negative' (submission_eligible=false, DO NOT SUBMIT, 0 slots spent) for TWO binding reasons: (1) E2 (0.172273) and E3 (0.157774) did not beat the repo's all-time HOLDOUT-DTI record (relay_conduit = 0.184485, matched single-stage relay control = 0.182496), and (2) literal dense-witness overlap vs 17GEMSDOE full-footprint surface is 1.000 > 0.70."
+}
