@@ -13,6 +13,19 @@ import math
 import zipfile
 from pathlib import Path
 
+try:
+    from scripts.render_20261029_pages import (
+        load_lidarsintervalve_20261029,
+        render_executive_summary_20261029,
+        render_lidarsintervalve_hero,
+    )
+except ImportError:  # pragma: no cover - direct script execution from scripts/
+    from render_20261029_pages import (  # type: ignore[no-redef]
+        load_lidarsintervalve_20261029,
+        render_executive_summary_20261029,
+        render_lidarsintervalve_hero,
+    )
+
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / 'docs'
 DL = DOCS / 'downloads'
@@ -478,10 +491,14 @@ def render(card):
 <tr><th>Uniqueness scope</th><td>Full 8-owner scan across <code>{m_u['registry_rasters']:,}</code> unique SHA-256 rasters ({m_u['registry_repos']} repos): PI-1 passes on <strong>both</strong> pre-placement surface (<code>{m_u['surface_worst_overlap']:.4f} &le; 0.70</code>, <code>|&rho;| = {m_u['surface_worst_abs_rho']:.4f} &le; 0.90</code>) and final binary dots (<code>{m_u['final_worst_overlap']:.4f} &le; 0.70</code>, <code>|&rho;| = {m_u['final_worst_abs_rho']:.4f} &le; 0.90</code>). Literal full-support witness <code>17GEMSDOE E-proba-multiscale</code> remains <code>1.000 &gt; 0.70</code>.</td></tr>
 <tr><th><code>MODEL</code> &amp; Decision</th><td><code>MODEL</code> (not a score): <code>{m_lbm:.5f}</code>. <strong>DO NOT SUBMIT.</strong> <code>verdict=negative</code>, <code>submission_eligible=false</code>, 0 weekly slots spent.</td></tr></table></section>'''
 
-    body = f'''<p class="small"><a href="executive-summary-20261029-dexp-kostrov.html"><strong>2026-10-29 DEXP-KOSTROV Executive Summary</strong></a> · <a href="HYPOTHESES_20261029_DEXP_KOSTROV.md">DEXP-KOSTROV Hypotheses</a> · <a href="WHY_0_2778_AND_0_2784_20261029.md">Why 0.2778 &amp; 0.2784</a> · <a href="executive-summary-20261029-marussi-trishear.html"><strong>2026-10-29 MARUSSI-TRISHEAR Executive Summary</strong></a> · <a href="HYPOTHESES_20261029_MARUSSI_TRISHEAR.md">MARUSSI-TRISHEAR Hypotheses</a> · <a href="executive-summary-20261029-admitrelay.html"><strong>2026-10-29 ADMITRELAY + LBM-v3 Executive Summary</strong></a> · <a href="HYPOTHESES_20261029_ADMITRELAY.md">ADMITRELAY Hypotheses</a> · <a href="STANDING_PROMPT.md">Standing Prompt</a> · <a href="executive-summary-nine-sites-20261028.html">Nine-site executive summary</a></p><nav><a href="how-to-submit.html">How to submit</a> · <a href="nine-sites.html">Nine-site review</a> · <a href="REVIEW_20261029_DEXP_KOSTROV.md">2026-10-29 three-pass audit</a> · <a href="REVIEW_20261028_MAIN_INTEGRATION.md">2026-10-28 main-integration review</a> · <a href="REVIEW_20261028_SESSION.md">Independent overlap review</a></nav>
+    lsv29 = load_lidarsintervalve_20261029()
+    lsv_hero = render_lidarsintervalve_hero(lsv29[0], lsv29[2]) if lsv29 else ''
+    lsv_root_hero = render_lidarsintervalve_hero(lsv29[0], lsv29[2], href_prefix='docs/') if lsv29 else ''
+    body = f'''<p class="small"><a href="executive-summary-20261029-dexp-kostrov.html"><strong>2026-10-29 DEXP-KOSTROV Summary</strong></a> · <a href="HYPOTHESES_20261029_DEXP_KOSTROV.md">DEXP-KOSTROV Hypotheses</a> · <a href="executive-summary-20261029-lidarsintervalve.html"><strong>2026-10-29 LIDAR-SINTERVALVE Nine-Site Summary</strong></a> · <a href="HYPOTHESES_20261029_LIDAR_SINTERVALVE.md">LIDAR-SINTERVALVE Hypotheses</a> · <a href="WHY_0_2778_AND_0_2784_20261029.md">Why 0.2778 vs 0.2784</a> · <a href="executive-summary-20261029-marussi-trishear.html"><strong>2026-10-29 MARUSSI-TRISHEAR Summary</strong></a> · <a href="HYPOTHESES_20261029_MARUSSI_TRISHEAR.md">MARUSSI Hypotheses</a> · <a href="executive-summary-20261029-admitrelay.html"><strong>2026-10-29 ADMITRELAY + LBM-v3 Summary</strong></a> · <a href="HYPOTHESES_20261029_ADMITRELAY.md">ADMITRELAY Hypotheses</a> · <a href="STANDING_PROMPT.md">Standing Prompt</a> · <a href="executive-summary-nine-sites-20261028.html">Nine-site executive summary</a></p><nav><a href="how-to-submit.html">How to submit</a> · <a href="nine-sites.html">Nine-site review</a> · <a href="REVIEW_20261029_DEXP_KOSTROV.md">2026-10-29 three-pass audit</a> · <a href="REVIEW_20261028_MAIN_INTEGRATION.md">2026-10-28 main-integration review</a> · <a href="REVIEW_20261028_SESSION.md">Independent overlap review</a></nav>
 {dexp_section}
+{lsv_hero}
 <section id="submit-now" class="stop"><h1>DO NOT SUBMIT — no eligible new TIFF (weekly limit: 3 per week)</h1>
-<p>No competition slot was used. The status-feed baseline Riesz artifact fails the literal registry rule and did not beat the holdout control, and all three 2026-10-29 research candidates (DEXP-KOSTROV-KOENDERINK, MARUSSI-TRISHEAR, and ADMITRELAY) remain fail-closed negative. A range-valid raster is not automatically submission-ready.</p>
+<p>No competition slot was used. The prior Riesz candidate fails the literal registry rule and did not beat the holdout control, and all four 2026-10-29 research candidates (DEXP-KOSTROV-KOENDERINK, LIDAR-SINTERVALVE, MARUSSI-TRISHEAR, and ADMITRELAY) remain fail-closed negative. A range-valid raster is not automatically submission-ready.</p>
 {marussi_top_line}
 <p><a data-primary="true" href="downloads/{esc(file)}" download>Download existing Riesz TIFF for research only</a> · <a href="downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json">Historical run card, reclassified negative</a></p>
 <p>SHA-256: <code>{digest}</code>. Historical name: <code>{name}</code>. Historical note (not an instruction to upload): <code>{note}</code></p></section>
@@ -547,7 +564,7 @@ def render(card):
     if dexp:
         d_tif = Path(dexp[2]['file']).name
         dexp_root_line = f'<p><strong>2026-10-29 DEXP-KOSTROV-KOENDERINK research GeoTIFF (11/11 format gates PASS, HOLDOUT-DTI 0.11744 &gt; R0 0.09775, 2,262-SHA PI-1 PASS · DO NOT SUBMIT):</strong> <a class="btn" href="docs/downloads/{esc(d_tif)}" download>⬇ Download {esc(d_tif)}</a> · <a href="docs/executive-summary-20261029-dexp-kostrov.html">2026-10-29 DEXP-KOSTROV Executive Summary</a></p>'
-    root = f'<p>The organizer leaderboard is not mirrored. <a href="https://www.drivendata.org/termsofuse/">DrivenData Terms of Use</a></p><h1>GEMSDOE92</h1><p class="small"><a href="docs/executive-summary-20261029-dexp-kostrov.html"><strong>2026-10-29 DEXP-KOSTROV Executive Summary</strong></a> · <a href="docs/executive-summary-20261029-marussi-trishear.html"><strong>2026-10-29 MARUSSI-TRISHEAR Executive Summary</strong></a> · <a href="docs/executive-summary-20261029-admitrelay.html"><strong>2026-10-29 ADMITRELAY + LBM-v3 Executive Summary</strong></a> · <a href="docs/executive-summary-nine-sites-20261028.html">Nine-site executive summary</a> · <a href="docs/HYPOTHESES_20261029_DEXP_KOSTROV.md">2026-10-29 DEXP-KOSTROV Hypotheses</a> · <a href="docs/STANDING_PROMPT.md">Standing Prompt</a></p><section class="stop"><h2>DO NOT SUBMIT — no eligible new TIFF</h2>{dexp_root_line}{marussi_root_line}<p>Status-feed baseline research-only file: <a href="docs/downloads/{esc(file)}"><code>{esc(file)}</code></a>; SHA-256 <code>{digest}</code>.</p><p>The 2026-10-29 ADMITRELAY + LBM-v3 candidate is also research-only and <strong>DO NOT SUBMIT</strong>; see its <a href="docs/executive-summary-20261029-admitrelay.html">executive summary &amp; run card</a>. The additional BLINDCORRIDOR artifact is format-pass only and also <strong>DO NOT SUBMIT</strong>; see its <a href="docs/index.html#blindcorridor">byte-bound status and audit</a>.</p><p><a href="docs/index.html">Read the executive summary and research downloads</a> · <a href="docs/how-to-submit.html">How to submit when cleared</a></p></section>'
+    root = f'<p>The organizer leaderboard is not mirrored. <a href="https://www.drivendata.org/termsofuse/">DrivenData Terms of Use</a></p><h1>GEMSDOE92</h1><p class="small"><a href="docs/executive-summary-20261029-dexp-kostrov.html"><strong>2026-10-29 DEXP-KOSTROV Summary</strong></a> · <a href="docs/executive-summary-20261029-lidarsintervalve.html"><strong>2026-10-29 LIDAR-SINTERVALVE Nine-Site Summary</strong></a> · <a href="docs/executive-summary-20261029-marussi-trishear.html"><strong>2026-10-29 MARUSSI-TRISHEAR Executive Summary</strong></a> · <a href="docs/executive-summary-20261029-admitrelay.html"><strong>2026-10-29 ADMITRELAY + LBM-v3 Executive Summary</strong></a> · <a href="docs/executive-summary-nine-sites-20261028.html">Nine-site executive summary</a> · <a href="docs/HYPOTHESES_20261029_DEXP_KOSTROV.md">2026-10-29 DEXP-KOSTROV Hypotheses</a> · <a href="docs/HYPOTHESES_20261029_LIDAR_SINTERVALVE.md">2026-10-29 LIDAR Hypotheses</a> · <a href="docs/STANDING_PROMPT.md">Standing Prompt</a></p>{lsv_root_hero}<section class="stop"><h2>DO NOT SUBMIT — no eligible new TIFF</h2>{dexp_root_line}{marussi_root_line}<p>Research-only file: <a href="docs/downloads/{esc(file)}"><code>{esc(file)}</code></a>; SHA-256 <code>{digest}</code>.</p><p>The 2026-10-29 ADMITRELAY + LBM-v3 candidate is also research-only and <strong>DO NOT SUBMIT</strong>; see its <a href="docs/executive-summary-20261029-admitrelay.html">executive summary &amp; run card</a>. The additional BLINDCORRIDOR artifact is format-pass only and also <strong>DO NOT SUBMIT</strong>; see its <a href="docs/index.html#blindcorridor">byte-bound status and audit</a>.</p><p><a href="docs/index.html">Read the executive summary and research downloads</a> · <a href="docs/how-to-submit.html">How to submit when cleared</a></p></section>'
     outputs = {
         DOCS/'index.html': page('GEMSDOE92 — Executive summary', body),
         DOCS/'nine-sites.html': page('GEMSDOE92 — Nine-site review', body),
@@ -556,6 +573,8 @@ def render(card):
         DL/'current_submission.json': json.dumps(current, indent=2)+'\n',
         DL/'readiness.json': json.dumps(readiness, indent=2)+'\n',
     }
+    if lsv29:
+        outputs[DOCS/'executive-summary-20261029-lidarsintervalve.html'] = render_executive_summary_20261029(lsv29[0], lsv29[2])
     if blindcorridor:
         outputs[blindcorridor_feed_path] = json.dumps(blind_status, indent=2)+'\n'
     if dexp:
