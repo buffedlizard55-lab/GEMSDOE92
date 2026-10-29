@@ -1,0 +1,322 @@
+{
+  "schema": "gemsdoe92-run-card-v3-20261029",
+  "generated_utc": "2026-10-29T16:23:29.629910+00:00",
+  "hypothesis": "H-92G1 (LIDAR1M-ANTISLOPE-SINTERVALVE): Seamless 1m->10m quantile-bridged USGS 3DEP bare-earth LiDAR Wallace (1977) 6 m LoG paired crest-toe curvature dipole, antithetic uphill-facing graben scarplets, and cross-slope channel-bank veto coupled to strike-locked subsurface gravity/basement steps and tufa-filtered DOE GDR #1391 sinter / 2m-probe / Fournier enthalpy disequilibrium hydrothermal conduits.",
+  "mechanism": "Sub-meter (0.2-1.5 m) piedmont normal-fault scarplets, synthetic-antithetic graben doublets, and silica-cemented hydrothermal fissure ridges preserve paired convex-crest / concave-toe 6 m LoG curvature aligned parallel to contours (high downface/upface, low cross_max) and locked in strike to subsurface gravity/basement steps and active/fossil hydrothermal upflow plumes, catching blind intra-basin step-overs smoothed away in 10 m / 100 m DEMs.",
+  "named_non_fault_mimic_process": "Ephemeral alluvial-fan channel banks & incised fan-head gullies (vetoed via cross_max suppression V_bank), Pleistocene Lake Lahontan (~1,330 m) wave-cut beach ridges & shorezone tufa mounds (suppressed via S_Lahontan highstand damping + Tufa exclusion), and highway/railroad embankment cuts across flat playas.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "fold_proper_primary_arm": "lidarsintervalve_far",
+    "fold_proper_dti": 0.17861884985575596,
+    "fold_proper_ci95": [
+      0.16307145105912876,
+      0.19331601691762273
+    ],
+    "control_r0_recipe_h19_5": {
+      "dti": 0.09675733336022943,
+      "ci95": [
+        0.08470533977553539,
+        0.10819544745119537
+      ]
+    },
+    "paired_delta_vs_r0_recipe": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.08186151649552653,
+      "ci95": [
+        0.06824345253309536,
+        0.09566262361917996
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "control_netexpand_far_alltime_best": {
+      "dti": 0.1779758528308232,
+      "ci95": [
+        0.1626208930841534,
+        0.19201283998105811
+      ]
+    },
+    "paired_delta_vs_netexpand_far": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.0006429970249327566,
+      "ci95": [
+        -0.0025249916061730986,
+        0.004321392923466916
+      ],
+      "withheld_positive_pixels": 22663
+    },
+    "all_e2_arms": {
+      "lidarsintervalve_far": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.17861884985575596,
+        "ci95": [
+          0.16307145105912876,
+          0.19331601691762273
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 5846.005659844668,
+        "fpw": 67146.69546116305,
+        "fnw": 16816.994340155332
+      },
+      "lidarsintervalve_lnew_far": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.17855928403354854,
+        "ci95": [
+          0.1627602528775416,
+          0.19336148628578778
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 5836.705517627827,
+        "fpw": 66950.16435741044,
+        "fnw": 16826.29448237217
+      },
+      "lidarsintervalve_std": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.1446542184427885,
+        "ci95": [
+          0.13250950083256532,
+          0.15695381814350978
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 4697.315870287278,
+        "fpw": 67014.28198583369,
+        "fnw": 17965.68412971272
+      },
+      "control_netexpand_far": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.1779758528308232,
+        "ci95": [
+          0.1626208930841534,
+          0.19201283998105811
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 5815.171722412325,
+        "fpw": 66902.51101595323,
+        "fnw": 16847.828277587672
+      },
+      "control_netexpand": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.1467983863011913,
+        "ci95": [
+          0.13428339563033334,
+          0.15916848292752875
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 4760.237488133324,
+        "fpw": 66722.97421530407,
+        "fnw": 17902.762511866655
+      },
+      "control_H19_5": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.09675733336022943,
+        "ci95": [
+          0.08470533977553539,
+          0.10819544745119537
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 3161.578851384054,
+        "fpw": 69563.12561056274,
+        "fnw": 19501.421148615944
+      },
+      "control_R0": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.004006147174684743,
+        "ci95": [
+          0.0034243961318463374,
+          0.004689525221466778
+        ],
+        "withheld_positive_pixels": 22663,
+        "tpw": 129.29712893913688,
+        "fpw": 70592.1164043663,
+        "fnw": 22533.70287106087
+      }
+    },
+    "static_deployed_e3_dti": 0.0,
+    "static_deployed_e3_ci95": [
+      0.0,
+      0.0
+    ]
+  },
+  "leakage_canaries": {
+    "n_features_tested": 54,
+    "max_symmetric_auc_all": 0.77748,
+    "max_symmetric_auc_h92g1": 0.57957,
+    "lidar_valid_survey_mask_auc": 0.517538,
+    "leakage_flag": false,
+    "quantile_bridge_seam_parity": [
+      {
+        "feature": "lidar_wallace_dipole",
+        "mean_on_lidar_75pct": 0.49788,
+        "mean_on_10m_bridge_25pct": 0.49539,
+        "abs_mean_gap": 0.002496
+      },
+      {
+        "feature": "lidar_bank_vetoed_scarp",
+        "mean_on_lidar_75pct": 0.49922,
+        "mean_on_10m_bridge_25pct": 0.49393,
+        "abs_mean_gap": 0.005284
+      },
+      {
+        "feature": "lidar_antislope_graben",
+        "mean_on_lidar_75pct": 0.4979,
+        "mean_on_10m_bridge_25pct": 0.49537,
+        "abs_mean_gap": 0.002532
+      },
+      {
+        "feature": "lidar_ex2m_coherence",
+        "mean_on_lidar_75pct": 0.49791,
+        "mean_on_10m_bridge_25pct": 0.49552,
+        "abs_mean_gap": 0.002391
+      },
+      {
+        "feature": "lidar_subsurf_strike_lock",
+        "mean_on_lidar_75pct": 0.49801,
+        "mean_on_10m_bridge_25pct": 0.49533,
+        "abs_mean_gap": 0.002683
+      }
+    ]
+  },
+  "correlation_overlap_vs_registry": {
+    "registry_unique_sha256": 2263,
+    "registry_owners": 8,
+    "pre_placement_surface": {
+      "worst_abs_rho": 0.803516,
+      "worst_overlap_pi1_topN": 1.0,
+      "literal_dense_witness_overlap": 1.0
+    },
+    "final_dots_pi1": {
+      "pi1_pass": true,
+      "worst_overlap_3px": 0.690949,
+      "worst_overlap_sha256": "88976dc5b2504838b193d41b718df95eb1e237b870b94a6443dc3bee65e98e06",
+      "worst_overlap_repos": [
+        "buffedlizard55-lab/13GEMSDOE"
+      ],
+      "worst_abs_rho": 0.058252,
+      "worst_abs_rho_sha256": "8a66c57c576cd2a4d0e78c349a6ac2614b3a4d9dc14691a4b55830818e4b160b",
+      "worst_abs_rho_repos": [
+        "buffedlizard55-lab/GEMSDOE86"
+      ],
+      "vs_gemsdoe92_lbmc1_02784_overlap": 0.123307,
+      "vs_gemsdoe92_rieszlbm2_overlap": 0.147926
+    },
+    "literal_reading": {
+      "worst_overlap_3px": 1.0,
+      "duplicate_under_literal": true,
+      "note": "Literal reading is degenerate: any raster positive on every footprint cell gives 1.0."
+    }
+  },
+  "model_projection_not_a_score": {
+    "evidence_class": "MODEL (fitted to owner-reported CLAIMs; NEVER an HOLDOUT-DTI or ORGANIZER-CONFIRMED score)",
+    "lbm_v3_shrinkage_135claims": 0.06188,
+    "reference_lbmc1_organizer_claim_20261029": 0.2784,
+    "reference_gemsdoe32_claim": 0.2778
+  },
+  "raster": {
+    "file": "docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.tif",
+    "zip": "docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.zip",
+    "audit": "docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros-audit.json",
+    "sha256": "0db6046848adf1ac78d71baa34a49ae54c75018542ca50c3d2fb3e479505780e",
+    "zip_sha256": "d3c67a485e107cfec9519dde8c1f989c3abe3e8e9e1a93ac9a642901d6563701",
+    "bytes": 148221,
+    "n_dots": 37654,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "range": [
+      0.0,
+      1.0
+    ],
+    "nan_count": 0
+  },
+  "raster_sha256": "0db6046848adf1ac78d71baa34a49ae54c75018542ca50c3d2fb3e479505780e",
+  "submission_file": "docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.tif",
+  "validator_output": {
+    "gems_gates_11_of_11_pass": true,
+    "gems57_validate_submittable": true,
+    "summary": "[PASS] crs: reference=EPSG:32611 candidate=EPSG:32611\n[PASS] shape: reference=3730x3292 candidate=3730x3292\n[PASS] transform: | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|\n[PASS] dtype_and_band: dtype=('float32',) count=1\n[PASS] values_in_0_1: n_violations=0 min=0.0 max=1.0\n[PASS] no_nan_inside_footprint: nonfinite_pixels=0 masked_pixels=0\n[PASS] nan_outside_footprint: outside=7111787 nan=0 inf=0 zero=7111787 other=0\n[PASS] submission_encoding: all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True\n[PASS] catalogue_zero_mass: dots_on_catalogue=0\n[PASS] distance_from_catalogue: radius=2px dots_within=0; strict distance > radius required\n[PASS] reread_sha256: 0db6046848adf1ac78d71baa34a49ae54c75018542ca50c3d2fb3e479505780e\nRESULT: PASS (11 gates)",
+    "gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=('float32',) count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nonfinite_pixels=0 masked_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      },
+      {
+        "name": "submission_encoding",
+        "ok": true,
+        "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0; strict distance > radius required"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "0db6046848adf1ac78d71baa34a49ae54c75018542ca50c3d2fb3e479505780e"
+      }
+    ]
+  },
+  "submission_name": "gemsdoe92-lidarsintervalve-65c6cb0e",
+  "note": "H-92G1 1m-LiDAR Wallace dipole+antislope+sinter valve LOQO; 37654 dots d>4px; RESEARCH DO NOT SUBMIT",
+  "note_length": 100,
+  "experiments_run": 3,
+  "weekly_slots_used": 0,
+  "submission_eligible": false,
+  "verdict": "negative",
+  "blocking_reasons": [
+    "pre-placement unconstrained surface top-37654 PI-1 overlap is 1.0000 > 0.70 (resolved on final dots via offender-halo damping to 0.6909 <= 0.70)",
+    "literal full-support registry witness (17GEMSDOE E-proba-multiscale, 5,167,373 positive cells) forces literal overlap 1.0000 > 0.70",
+    "HOLDOUT-DTI (lidarsintervalve_far = 0.178619, #1 among PI-1-unique candidates) did not exceed same-draw control_netexpand_far (0.177976) with paired 95% CI strictly above zero [-0.002525, +0.004321], and trails historical duplicate relay_conduit (0.184485, PI-1 0.7843 > 0.70)",
+    "static full-catalogue-pruned E3 raster HOLDOUT-DTI (0.000000) reflects full-catalogue d_cat>4 pruning rather than fold-visible recovery (0.178619); separate human weekly-slot selector has not authorized a slot"
+  ],
+  "runtime_s": 638.0
+}

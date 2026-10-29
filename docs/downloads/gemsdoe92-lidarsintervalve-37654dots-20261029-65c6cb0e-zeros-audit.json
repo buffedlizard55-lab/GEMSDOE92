@@ -1,0 +1,67 @@
+{
+  "schema": "gemsdoe92-submission-audit-v2",
+  "file": "downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.tif",
+  "sha256_zeros": "0db6046848adf1ac78d71baa34a49ae54c75018542ca50c3d2fb3e479505780e",
+  "zip_file": "downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.zip",
+  "zip_sha256": "d3c67a485e107cfec9519dde8c1f989c3abe3e8e9e1a93ac9a642901d6563701",
+  "overall_pass": true,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "gates_zeros": [
+    {
+      "name": "crs",
+      "ok": true,
+      "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+    },
+    {
+      "name": "shape",
+      "ok": true,
+      "detail": "reference=3730x3292 candidate=3730x3292"
+    },
+    {
+      "name": "transform",
+      "ok": true,
+      "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+    },
+    {
+      "name": "dtype_and_band",
+      "ok": true,
+      "detail": "dtype=('float32',) count=1"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "n_violations=0 min=0.0 max=1.0"
+    },
+    {
+      "name": "no_nan_inside_footprint",
+      "ok": true,
+      "detail": "nonfinite_pixels=0 masked_pixels=0"
+    },
+    {
+      "name": "nan_outside_footprint",
+      "ok": true,
+      "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+    },
+    {
+      "name": "submission_encoding",
+      "ok": true,
+      "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+    },
+    {
+      "name": "catalogue_zero_mass",
+      "ok": true,
+      "detail": "dots_on_catalogue=0"
+    },
+    {
+      "name": "distance_from_catalogue",
+      "ok": true,
+      "detail": "radius=2px dots_within=0; strict distance > radius required"
+    },
+    {
+      "name": "reread_sha256",
+      "ok": true,
+      "detail": "0db6046848adf1ac78d71baa34a49ae54c75018542ca50c3d2fb3e479505780e"
+    }
+  ]
+}

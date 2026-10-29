@@ -22,6 +22,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_PATH = ROOT / "registry" / "session_manifest.json"
 VENTSCARP_EXT_MANIFEST_PATH = ROOT / "registry" / "ventscarp_external_manifest.json"
+LIDAR1M_EXT_MANIFEST_PATH = ROOT / "registry" / "lidar1m_external_manifest.json"
 
 
 def sha256_file(path: Path) -> str:
@@ -74,6 +75,11 @@ def main() -> int:
         action="store_true",
         help="Also restore SHA-256-pinned USGS 3DEP 10 m and DOE GDR INGENIOUS external inputs from registry/ventscarp_external_manifest.json",
     )
+    parser.add_argument(
+        "--lidar-1m",
+        action="store_true",
+        help="Also restore SHA-256-pinned USGS 3DEP 1 m LiDAR micro-scarp raster and DOE GDR #1391 volcanic vents from registry/lidar1m_external_manifest.json",
+    )
     args = parser.parse_args()
 
     manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
@@ -81,6 +87,9 @@ def main() -> int:
     if args.ventscarp_external and VENTSCARP_EXT_MANIFEST_PATH.is_file():
         ext_manifest = json.loads(VENTSCARP_EXT_MANIFEST_PATH.read_text(encoding="utf-8"))
         files.extend(ext_manifest["files"])
+    if args.lidar_1m and LIDAR1M_EXT_MANIFEST_PATH.is_file():
+        lidar_manifest = json.loads(LIDAR1M_EXT_MANIFEST_PATH.read_text(encoding="utf-8"))
+        files.extend(lidar_manifest["files"])
 
     cache_root = ROOT / ".cache" / "gems_inputs"
     cache_root.mkdir(parents=True, exist_ok=True)

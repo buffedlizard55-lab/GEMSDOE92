@@ -1,0 +1,56 @@
+{
+  "manifest_version": "2026-10-29-lidar1m-external-v1",
+  "note": "SHA-256-pinned zero-fault-catalogue USGS 3DEP 1 m bare-earth LiDAR sub-100m micro-scarp / structure-tensor raster (706/716 tiles, 3,892,964 valid cells = 75.34% of competition footprint) and DOE GDR #1391 INGENIOUS volcanic vents in footprint. Official US Public Domain (17 U.S.C. 105) and CC-BY-4.0 sources; restored into gitignored .cache/gems_inputs/external/.",
+  "files": [
+    {
+      "id": "ext_lidar_scarp_features_u8",
+      "repo": "https://github.com/buffedlizard55-lab/GEMSDOE24.git",
+      "commit": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "repo_path": "data/external/lidar_scarp_features_u8.tif",
+      "local_path": ".cache/gems_inputs/external/lidar_scarp_features_u8.tif",
+      "sha256": "d580bb8bdcdb941e32fefb8b38044bc5bf04e199bf2e83498c3576e6fc465568",
+      "bytes": 36943606,
+      "license": "US Public Domain (17 U.S.C. 105) — USGS 3D Elevation Program (3DEP) 1 m DEM",
+      "official_source": "https://www.usgs.gov/3d-elevation-program",
+      "bands": [
+        "ex_max",
+        "ex_mean",
+        "step_max",
+        "lapneg_max",
+        "lappos_max",
+        "downface_max",
+        "upface_max",
+        "cross_max",
+        "relief",
+        "coh100",
+        "strike",
+        "valid"
+      ],
+      "catalogue_faults_used": false
+    },
+    {
+      "id": "ext_lidar_scarp_features_json",
+      "repo": "https://github.com/buffedlizard55-lab/GEMSDOE24.git",
+      "commit": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "repo_path": "data/external/lidar_scarp_features.json",
+      "local_path": ".cache/gems_inputs/external/lidar_scarp_features.json",
+      "sha256": "9ef0df6e87598a8b0cd52fe821661e5fdb3a00568c5d9b1c5d61fd6b242dcd41",
+      "bytes": 3531,
+      "license": "US Public Domain (17 U.S.C. 105) — USGS 3DEP 1 m DEM derivation manifest",
+      "official_source": "https://www.usgs.gov/3d-elevation-program",
+      "catalogue_faults_used": false
+    },
+    {
+      "id": "ext_gdr_volcanic_vents",
+      "repo": "https://github.com/buffedlizard55-lab/GEMSDOE24.git",
+      "commit": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "repo_path": "data/external/gdr_volcanic_vents_in_footprint.csv",
+      "local_path": ".cache/gems_inputs/external/gdr_volcanic_vents_in_footprint.csv",
+      "sha256": "f91bafbaccaaf2754e71d60434fc0f9eb2c7b880c6e714883f4974542ff6a0bf",
+      "bytes": 672,
+      "license": "CC-BY-4.0 — DOE Geothermal Data Repository #1391 (INGENIOUS Great Basin)",
+      "official_source": "https://gdr.openei.org/submissions/1391",
+      "catalogue_faults_used": false
+    }
+  ]
+}

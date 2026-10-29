@@ -1,4 +1,23 @@
-# Current next steps — 2026-10-28 protocol review
+# Current next steps — 2026-10-29 (`LIDAR-SINTERVALVE` + `0.2784` `CLAIM` milestone)
+
+**Current decision: DO NOT SUBMIT `LIDAR-SINTERVALVE` (`gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.tif`); `0` weekly slots spent.** Also do **NOT** re-upload `gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif` (newly reported at **`0.2784` `CLAIM`**, #1 across all 8 GitHub owners — already submitted).
+
+### Completed in the 2026-10-29 Session (`3/3` experiments, `0` slots spent)
+1. **Executed all prior next steps first:** Rebuilt `.cache/registry_v3` across all 8 GitHub owners (`108` non-empty repos, `3,422` grid rasters, `2,263` unique SHA-256); resolved `BLINDCORRIDOR`'s pending full-registry uniqueness check (`0.7691 > 0.70` vs `13GEMSDOE` -> FAIL); verified all 22 SHA-256-pinned inputs including official USGS 3DEP 1 m LiDAR (`lidar_scarp_features_u8.tif`); audited the 5 newly reported 2026-10-29 `CLAIM`s out-of-time and calibrated shrinkage `LBM-v3` (`lam = 0.0025`, `n = 135`); fixed the `docs/how-to-submit.html` merge conflict marker and added `*.html` conflict-marker enforcement to `.github/workflows/ci.yml`.
+2. **Implemented & validated `H-92G1` (`gems/lidar_sintervalve.py`):**
+   - `E1` (`54` features): `max_symmetric_auc = 0.77748 <= 0.90` (`H-92G1` max `0.57957` on `lidar_sinter_concordance`), 1m→10m quantile-bridge seam parity `|Δμ| <= 0.00528`.
+   - `E2` (`gems57-pooled-hide-v2`, `22,663` withheld positives): **`lidarsintervalve_far = 0.178619 [0.163071, 0.193316]`** (#1 among all PI-1-unique candidates in `GEMSDOE92`, `+0.081862 [+0.068243, +0.095663]` over `R0_recipe`, `+0.000643 [-0.002525, +0.004321]` vs `control_netexpand_far = 0.177976`).
+   - `E3` (`37,654` binary `1.0` dots): `11/11` portal format gates PASS (`[0, 1]`, `0` NaN, `0.0` outside footprint), sparse PI-1 3-px overlap **`0.690949 <= 0.70`** and `|ρ| = 0.058252 <= 0.90` across all `2,263` unique SHA-256 rasters.
+
+### Highest-Impact Next Steps & Remaining Limitations for the Next Session
+1. **Resolve the literal `17GEMSDOE` dense-footprint witness policy (`IR-0127-1`):** Confirm with the human owner whether continuous full-footprint rasters (`5,167,373` positive pixels) are evaluated as top-`N` surfaces (PI-1, under which `LIDAR-SINTERVALVE` passes at `0.6909 <= 0.70`) or literal dot sets (`1.000`).
+2. **Record an `ORGANIZER-CONFIRMED` portal receipt for `lbmc1` (`0.2784`):** Copy the DrivenData portal receipt timestamp and exact score for `gemsdoe92-lbmc1-35801dots-20261027-89a660f6` into `ledger/submissions.csv` (`receipt_score`, `receipt_date`) and resolve `IR-1029-2` (`ApartGEMSDOE1` `0.1516` vs `0.0525`).
+3. **Bridge the near-catalogue (`2.0 < d_cat <= 4.0 px`) + far-corridor (`d_cat > 4.0 px`) split:** `lbmc1` (`0.2784` `CLAIM`) and `R0` (`0.2778` `CLAIM`) prune at `d_cat > 2.0 px` (`200 m`), capturing synthetic piedmont strands at `200–400 m` from mapped range-front faults alongside distal basin step-overs, whereas `LIDAR-SINTERVALVE E3` pruned at `d_cat > 4.0 px` (`LBM-v3 = 0.0619`). In the next 3-experiment budget, evaluate `H-92G1` with a two-zone quota (`~65%` at `2.0 < d_vis <= 6.0 px` + `~35%` at `d_vis > 6.0 px`) or test Ranked Hypothesis #2 (`H-92G2 RAD-POTASSIUM-HYDROTHERMAL-HALO` on unused Band 6 `rad_total` + `H-92G3` full-tensor MT invariant) to beat both `control_netexpand_far` (`0.177976`) and duplicate `relay_conduit` (`0.184485`) with paired 95% CI strictly above zero.
+4. **Sandbox network & data limitations:** Direct outbound HTTP to `drivendata.org`, `usgs.gov`, `gdr.openei.org`, `waterservices.usgs.gov` (`H-92G4`), and `lpdaac.usgs.gov` (`H-92G5`) is blocked by the sandbox allowlist; `training_features.tif` remains gitignored under `FLAGGED_DATA_USE_UNCHECKED`.
+
+---
+
+# Historical next steps — 2026-10-28 protocol review
 
 **DO NOT SUBMIT the RIESZ-LOCKED artifact or the earlier LBMC1 artifact.** No weekly slot is approved. No experiment is authorized in this review: the prior lane used 3/3 experiments, the full feature stack is absent, and the required method paragraph was not supplied. The current review and corrected status feed take precedence over all historical instructions below.
 
