@@ -1,5 +1,9 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+## Latest safety review — 2026-10-29
+
+**DO NOT SUBMIT.** Repaired a published merge conflict and corrected stale registry summaries. No new TIFF or experiment was produced; see [three-pass review and run card](docs/REVIEW_20261029_SAFETY.md).
+
 ## 📌 Read first (standing prompt & current status, reviewed 2026-10-29)
 
 Latest consolidated review: [2026-10-29 three-pass review](docs/REVIEW_20261029.md). **DO NOT SUBMIT**; no eligible TIFF has been cleared. The [independent repository verification](docs/REVIEW_20261029_REPO.md) reports 804 tests passed, 19 skipped, and 128 served rasters gated; it generated no raster and used no submission slot.
