@@ -1,4 +1,18 @@
-# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-28, Post-`RIESZ_LOCKED_LBM_V2` / `81d8ca8b` Session)
+# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-29, Post-`MARUSSI_TRISHEAR` & `lbmc1` `0.2784 CLAIM` Reconciliation)
+
+## Current Selector Decision (`2026-10-29`): **NO WEEKLY SLOT AUTHORIZED — DO NOT SUBMIT (`verdict: "negative"`, `submission_eligible: false`, `0` weekly slots spent)**
+
+- **2026-10-29 Fleet Update (`lbmc1`):** `GEMSDOE92`'s `2026-10-27` build `gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif` (`SHA-256 = e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c`, `35,801` binary dots) is newly reported in the `2026-10-29` score list at **`0.2784` (`CLAIM`, unreceipted)** — `#1` across all `133` owner-reported fleet claims (`+0.0006` above `GEMSDOE32` `0.2778` `CLAIM`). Non-circular `131`-claim `LBM-v3` (`λ = 5e-3`) predicts `lbmc1` leave-one-group-out at `0.28280 MODEL` (`evidence/lbm_v3_20261029.json`). If the human account holder submitted `lbmc1`, log the official organizer receipt date in `ledger/submissions.csv` and never re-upload `lbmc1`.
+- **Latest `2026-10-29` Research Candidate (`MARUSSI_TRISHEAR` — `DO NOT SUBMIT`):**
+  - **File:** `docs/downloads/gemsdoe92-marussitrishear-34000dots-20261029-236171af-zeros.tif` (`SHA-256 = f8f8703e4f8efb8f3397ecc5dc8c0fd68b06c64a089a89b02ee7a91395b3a59b`, `34,000` `{0.0, 1.0}` binary dots, `min d_cat = 3.6056 px > 3.0 px`, `11/11` format gates PASS).
+  - **Archived Identifier & Note (`106/140` chars, metadata only — do not upload):** `gemsdoe92-marussitrishear-34000dots-20261029-236171af` — `H-92M1/M2 3D Marussi D2D+Trishear+WalkerLane vorticity+relay 1D crest; 34000px d>3.5; PI1<=0.65 [research]`
+  - **Validation:** Solo-feature leakage canaries PASS (`max sym AUC = 0.8115 <= 0.90`); `gems57-pooled-hide-v2` (`22,663` withheld px) `E3 = 0.157774 [0.144291, 0.171647]` (`+0.060024` vs `R0` recipe `0.097750`), `E2 = 0.172273 [0.158850, 0.185206]` (`+0.074523` vs `R0` recipe); `PI-1` uniqueness PASS across all `2,262` registry SHAs on **both** pre-placement surface (`0.6564 <= 0.70`, `|ρ| = 0.6632`) and final dots (`0.6564 <= 0.70`, `|ρ| = 0.0886`).
+  - **Gate Verdict (`DO NOT SUBMIT`):** Held back (`verdict: "negative"`, `submission_eligible: false`, `0` slots spent) because neither `E2` nor `E3` beat the repo all-time `HOLDOUT-DTI` best (`relay_conduit = 0.184485`), `LBM-v3 MODEL` (`0.16204`) is below `lbmc1` (`0.2784 CLAIM`), and literal dense-witness overlap vs `17GEMSDOE` is `1.000 > 0.70`.
+- **Prior `2026-10-28` Candidates (`rieszlbm2`, `tipcomp`, `blindcorridor`):** All remain reclassified fail-closed (`DO NOT SUBMIT`; `rieszlbm2` run card `verdict: "negative"`, `submission_eligible: false`; historical section below preserved for audit provenance only).
+
+---
+
+# Historical Record Only (Superseded Fail-Closed) — Weekly Slot Plan (2026-10-28, Post-`RIESZ_LOCKED_LBM_V2` / `81d8ca8b` Session)
 
 ## Current Selector Decision (`2026-10-28`): **PRIMARY CANDIDATE CLEARED FOR HUMAN SELECTOR (`verdict: "promote"`, `submission_eligible: true`, `0` weekly slots auto-spent)**
 

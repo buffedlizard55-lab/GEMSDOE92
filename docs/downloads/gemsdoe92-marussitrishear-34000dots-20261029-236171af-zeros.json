@@ -1,0 +1,131 @@
+{
+  "file": "gemsdoe92-marussitrishear-34000dots-20261029-236171af-zeros.tif",
+  "sha256": "f8f8703e4f8efb8f3397ecc5dc8c0fd68b06c64a089a89b02ee7a91395b3a59b",
+  "bytes": 138536,
+  "submission_name": "gemsdoe92-marussitrishear-34000dots-20261029-236171af",
+  "note": "H-92M1/M2 3D Marussi D2D+Trishear+WalkerLane vorticity+relay 1D crest; 34000px d>3.5; PI1<=0.65 [research]",
+  "note_chars": 106,
+  "validator": {
+    "file": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-marussitrishear-34000dots-20261029-236171af-zeros.tif",
+    "bytes": 138536,
+    "sha256": "f8f8703e4f8efb8f3397ecc5dc8c0fd68b06c64a089a89b02ee7a91395b3a59b",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0027689191047102213,
+    "emitted_positive_pixels": 34000,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_unmasked": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 34000,
+    "footprint_fraction": 0.006579745646385504
+  },
+  "template_report": {
+    "path": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-marussitrishear-34000dots-20261029-236171af-zeros.tif",
+    "bytes": 138536,
+    "sha256": "f8f8703e4f8efb8f3397ecc5dc8c0fd68b06c64a089a89b02ee7a91395b3a59b",
+    "bands": 1,
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "width": 3292,
+    "height": 3730,
+    "bounds": [
+      243350.0,
+      4135550.0,
+      572550.0,
+      4508550.0
+    ],
+    "ref_bounds": [
+      243350.0,
+      4135550.0,
+      572550.0,
+      4508550.0
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "nodata": null,
+    "blocksize": [
+      256,
+      256
+    ],
+    "fixture_grid": false,
+    "has_validity_mask": false,
+    "nan_pixels": 0,
+    "infinity_pixels": 0,
+    "n_nan": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0027689191047102213,
+    "n_nonzero": 34000,
+    "mass": 34000.0,
+    "masked_inside_reference_footprint": 0,
+    "mass_outside_reference_footprint": 0,
+    "mass_outside_footprint": 0,
+    "problems": [],
+    "ok": true,
+    "validation_class": "local on-disk template/range check; not organizer upload acceptance"
+  },
+  "zip_file": "gemsdoe92-marussitrishear-34000dots-20261029-236171af-zeros.zip",
+  "zip_sha256": "ca1b33b93c216a1c06732613d3237cd14506df9747001440484f76b9b599ed9d",
+  "approved_for_weekly_slot": false,
+  "promoted": false,
+  "submission_slots_used": 0,
+  "status": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval",
+  "metadata": {
+    "lane": "MARUSSI-TRISHEAR-VORTICITY",
+    "pre_registration": "docs/HYPOTHESES_20261029_MARUSSI_TRISHEAR.md",
+    "pi1_surface_duplicate": false,
+    "pi1_dots_duplicate": false,
+    "literal_dense_witness_duplicate": true,
+    "submission_eligible": false,
+    "verdict": "negative"
+  }
+}
