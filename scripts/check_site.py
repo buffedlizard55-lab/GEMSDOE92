@@ -347,6 +347,75 @@ def check_blindcorridor_history(problems: list[str]) -> None:
     print(f"  HISTORICAL {tif.name} sha256 {digest[:16]}… verdict=format_pass (DO NOT SUBMIT)")
 
 
+def check_marussi_20261029(problems: list[str]) -> None:
+    """Keep the 2026-10-29 MARUSSI-TRISHEAR artifact byte-bound and fail-closed."""
+    status_path = DOWNLOADS / "marussi_trishear_readiness_20261029.json"
+    if not status_path.is_file():
+        problems.append("MARUSSI-TRISHEAR readiness feed missing")
+        return
+    try:
+        status = json.loads(status_path.read_text(encoding="utf-8"))
+        card = json.loads((DOWNLOADS / status["run_card"]).read_text(encoding="utf-8"))
+        audit = json.loads((DOWNLOADS / status["audit"]).read_text(encoding="utf-8"))
+        tif = DOCS / status["file"]
+        summary = (DOCS / status["executive_summary"]).read_text(encoding="utf-8")
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        problems.append(f"MARUSSI-TRISHEAR evidence invalid: {exc}")
+        return
+    if not tif.is_file():
+        problems.append(f"MARUSSI-TRISHEAR TIFF missing: {status.get('file')}")
+        return
+    digest = sha256_file(tif)
+    if digest != status.get("raster_sha256") or digest != card.get("raster_sha256") or digest != audit.get("sha256_zeros"):
+        problems.append("MARUSSI-TRISHEAR SHA-256 mismatch across TIFF, readiness, run card, or audit")
+    if (card.get("verdict") != "negative" or card.get("submission_eligible") is not False
+            or status.get("verdict") != "negative" or status.get("submission_eligible") is not False):
+        problems.append("MARUSSI-TRISHEAR must remain fail-closed negative")
+    if not 0 < len(str(card.get("note", ""))) <= 140:
+        problems.append("MARUSSI-TRISHEAR note must be 1..140 characters")
+    if "DO NOT SUBMIT" not in summary or "OK TO SUBMIT" in summary:
+        problems.append("MARUSSI-TRISHEAR executive summary must state DO NOT SUBMIT without OK TO SUBMIT")
+    print(f"  CANDIDATE-20261029 {tif.name} sha256 {digest[:16]}… verdict=negative (DO NOT SUBMIT)")
+
+
+def check_admitrelay_history(problems: list[str]) -> None:
+    """Keep the 2026-10-29 ADMITRELAY + LBM-v3 artifact byte-bound and fail-closed."""
+    status_path = DOWNLOADS / "admitrelay_readiness_20261029.json"
+    if not status_path.is_file():
+        return
+    try:
+        status = json.loads(status_path.read_text(encoding="utf-8"))
+        tif = DOCS / status["file"]
+        zip_path = DOCS / status["zip"]
+        card = json.loads((DOWNLOADS / status["run_card"]).read_text(encoding="utf-8"))
+        audit = json.loads((DOWNLOADS / status["audit"]).read_text(encoding="utf-8"))
+        summary = (DOCS / status["executive_summary"]).read_text(encoding="utf-8")
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        problems.append(f"ADMITRELAY readiness/evidence missing or invalid: {exc}")
+        return
+
+    if not tif.is_file() or not zip_path.is_file():
+        problems.append("ADMITRELAY research TIFF or ZIP missing")
+        return
+    digest = sha256_file(tif)
+    if status.get("raster_sha256") != digest or card.get("raster_sha256") != digest or audit.get("sha256_zeros") != digest:
+        problems.append("ADMITRELAY SHA-256 mismatch across readiness / run card / audit")
+    if status.get("zip_sha256") != sha256_file(zip_path):
+        problems.append("ADMITRELAY ZIP SHA-256 mismatch")
+    if status.get("verdict") != "negative" or card.get("verdict") != "negative" or audit.get("verdict") != "negative":
+        problems.append("ADMITRELAY must remain verdict=negative")
+    if status.get("submission_eligible") is not False or card.get("submission_eligible") is not False or audit.get("submission_eligible") is not False:
+        problems.append("ADMITRELAY must remain submission_eligible=false")
+    if status.get("download_status") != "OK TO DOWNLOAD FOR RESEARCH ONLY" or status.get("submission_status") != "DO NOT SUBMIT":
+        problems.append("ADMITRELAY download/submission status strings invalid")
+    for phrase in ("DO NOT SUBMIT", "OK TO DOWNLOAD FOR RESEARCH ONLY", "HOLDOUT-DTI", "MODEL", "CLAIM"):
+        if phrase not in summary:
+            problems.append(f"ADMITRELAY executive summary missing {phrase!r}")
+    if "OK TO SUBMIT" in summary:
+        problems.append("ADMITRELAY executive summary contains contradictory OK TO SUBMIT copy")
+    print(f"  CANDIDATE-20261029 {tif.name} sha256 {digest[:16]}… verdict=negative (DO NOT SUBMIT)")
+
+
 def check_served(html: str, problems: list[str]) -> int:
     archive = ARCHIVE.read_text(encoding="utf-8") if ARCHIVE.is_file() else ""
     served = sorted(DOWNLOADS.glob("*-zeros.tif"))
@@ -379,39 +448,21 @@ def check_served(html: str, problems: list[str]) -> int:
     return len(served)
 
 
-def check_marussi_20261029(problems: list[str]) -> None:
-    """Byte-verify the 2026-10-29 MARUSSI-TRISHEAR candidate, run card, audit, and summary."""
-    status_path = DOWNLOADS / "marussi_trishear_readiness_20261029.json"
-    if not status_path.is_file():
-        problems.append("MARUSSI-TRISHEAR readiness feed missing")
-        return
+def check_focus_nine_summary(problems: list[str]) -> None:
+    """Keep the linked, evidence-derived focus-nine page fail-closed and current."""
     try:
-        status = json.loads(status_path.read_text(encoding="utf-8"))
-        card = json.loads((DOWNLOADS / status["run_card"]).read_text(encoding="utf-8"))
-        audit = json.loads((DOWNLOADS / status["audit"]).read_text(encoding="utf-8"))
-        tif = DOCS / status["file"]
+        import render_nine_sites_20261028
+        path = render_nine_sites_20261028.OUT
+        if not path.is_file() or path.read_text(encoding="utf-8") != render_nine_sites_20261028.render():
+            problems.append("stale focus-nine executive summary (run scripts/render_nine_sites_20261028.py)")
     except (OSError, ValueError, KeyError, TypeError) as exc:
-        problems.append(f"MARUSSI-TRISHEAR evidence invalid: {exc}")
-        return
-    if not tif.is_file():
-        problems.append(f"MARUSSI-TRISHEAR TIFF missing: {status.get('file')}")
-        return
-    digest = sha256_file(tif)
-    if digest != status.get("raster_sha256") or digest != card.get("raster_sha256") or digest != audit.get("sha256_zeros"):
-        problems.append("MARUSSI-TRISHEAR SHA-256 mismatch across TIFF, readiness, run card, or audit")
-    if (card.get("verdict") != "negative" or card.get("submission_eligible") is not False
-            or status.get("verdict") != "negative" or status.get("submission_eligible") is not False):
-        problems.append("MARUSSI-TRISHEAR must remain fail-closed negative")
-    if not 0 < len(str(card.get("note", ""))) <= 140:
-        problems.append("MARUSSI-TRISHEAR note must be 1..140 characters")
-    summary_path = DOCS / str(status.get("executive_summary", ""))
-    if not summary_path.is_file():
-        problems.append("MARUSSI-TRISHEAR executive summary missing")
-    else:
-        stxt = summary_path.read_text(encoding="utf-8")
-        if "DO NOT SUBMIT" not in stxt or "OK TO SUBMIT" in stxt:
-            problems.append("MARUSSI-TRISHEAR executive summary must state DO NOT SUBMIT without OK TO SUBMIT")
-    print(f"  CANDIDATE-20261029 {tif.name} sha256 {digest[:16]}… verdict=negative (DO NOT SUBMIT)")
+        problems.append(f"focus-nine executive summary evidence invalid: {exc}")
+
+
+def check_conflict_markers(label: str, page: str, problems: list[str]) -> None:
+    """Reject unresolved Git markers in served text, including diff3 ancestors."""
+    if re.search(r"^(?:<{7}|={7}|>{7}|\|{7})(?: |$)", page, re.MULTILINE):
+        problems.append(f"{label} contains unresolved merge conflict markers")
 
 
 def main() -> int:
@@ -420,9 +471,12 @@ def main() -> int:
         print("FAIL: docs/index.html missing")
         return 2
     check_rendered(problems)
+    check_focus_nine_summary(problems)
     html = INDEX.read_text(encoding="utf-8")
     howto = (DOCS / "how-to-submit.html").read_text(encoding="utf-8") if (DOCS / "how-to-submit.html").is_file() else ""
     summary = (DOCS / "executive-summary.html").read_text(encoding="utf-8") if (DOCS / "executive-summary.html").is_file() else ""
+    for label, page in (("index.html", html), ("how-to-submit.html", howto), ("executive-summary.html", summary)):
+        check_conflict_markers(label, page, problems)
     for label, page in (("how-to-submit.html", howto), ("executive-summary.html", summary)):
         if "BLINDCORRIDOR" not in page or "DO NOT SUBMIT" not in page:
             problems.append(f"{label} must show the current BLINDCORRIDOR DO NOT SUBMIT status")
@@ -442,6 +496,7 @@ def main() -> int:
     check_tipcomp_history(problems)
     check_blindcorridor_history(problems)
     check_marussi_20261029(problems)
+    check_admitrelay_history(problems)
     n = check_served(html, problems)
     if problems:
         print("SITE CHECK FAIL")

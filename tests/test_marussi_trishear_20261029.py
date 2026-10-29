@@ -5,6 +5,7 @@ import csv
 import hashlib
 import json
 from pathlib import Path
+import re
 import zipfile
 
 import numpy as np
@@ -124,7 +125,7 @@ def test_marussi_candidate_bytes_gates_and_run_card_consistency():
 
 def test_20261029_fleet_and_lbm_v3_evidence():
     oot = json.loads((ROOT / "evidence" / "lbm_oot_20261029.json").read_text(encoding="utf-8"))
-    lbm3 = json.loads((ROOT / "evidence" / "lbm_v3_20261029.json").read_text(encoding="utf-8"))
+    lbm3 = json.loads((ROOT / "evidence" / "marussi_lbm_v3_20261029.json").read_text(encoding="utf-8"))
     fleet = json.loads((ROOT / "evidence" / "fleet_audit_20261029.json").read_text(encoding="utf-8"))
 
     assert oot["rows"][0]["claim_20261029"] == 0.2784
@@ -162,4 +163,4 @@ def test_ledger_pure_lf_and_no_conflict_markers():
         "docs/WHY_0_2778.md",
     ):
         txt = (ROOT / rel).read_text(encoding="utf-8")
-        assert "<<<<<<<" not in txt and ">>>>>>>" not in txt, f"conflict marker in {rel}"
+        assert not re.search(r"^(?:<{7}|={7}|>{7}|\|{7})(?: |$)", txt, re.MULTILINE), f"conflict marker in {rel}"

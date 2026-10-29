@@ -113,7 +113,7 @@ def main() -> int:
     rows28 = [_match_one(c, files) for c in _parse_claims(CLAIMS_28, "owner-reported 2026-10-28 prompt")]
 
     matched29 = [r for r in rows29 if "match" in r]
-    (ROOT / "evidence" / "claims_matched_20261029.json").write_text(
+    (ROOT / "evidence" / "marussi_claims_matched_20261029.json").write_text(
         json.dumps(
             dict(
                 schema="gemsdoe92-claims-matched-v2-20261029",
@@ -240,7 +240,7 @@ def main() -> int:
     print("Prospective OOT 2026-10-29:", json.dumps(oot_doc, indent=2))
 
     # --- Fit LBM-v3 on the clean cumulative corpus ---
-    lbm_v3_path = ROOT / "evidence" / "lbm_v3_20261029.json"
+    lbm_v3_path = ROOT / "evidence" / "marussi_lbm_v3_20261029.json"
     by_key28 = {(r["site"], r["name"]): r for r in rows28 if "match" in r}
     clean_corpus = [r for r in rows28 if "match" in r and r["site"] != "ApartGEMSDOE1"]
     for r in matched29:

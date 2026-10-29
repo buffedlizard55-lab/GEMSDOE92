@@ -396,7 +396,7 @@ def stage_deploy() -> int:
         np.savez(surf_cache, s_raw=s_raw, elig=elig)
 
     # Compute non-circular LBM-v3 cell density rho_v3_2d to fuse physical 1D crests with fleet-calibrated habitat
-    lbm_v3 = json.loads((EVIDENCE / "lbm_v3_20261029.json").read_text())
+    lbm_v3 = json.loads((EVIDENCE / "marussi_lbm_v3_20261029.json").read_text())
     dh19 = ndi.distance_transform_edt(~(L.read01(ROOT / "data" / "bridge" / "h19_5.tif") > 0)).astype(np.float32)
     cons_g = np.zeros((H, W), dtype=np.int16)
     for gs in lbm_v3["gset_shas"]:

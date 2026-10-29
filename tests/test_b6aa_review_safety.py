@@ -35,7 +35,9 @@ def test_tipcomp_is_visible_but_not_promoted_on_landing_page():
         page = (ROOT/'docs'/filename).read_text()
         assert 'Latest additional candidate: TIPCOMP — DO NOT SUBMIT' in page
         assert 'Download TIPCOMP GeoTIFF for research only — DO NOT SUBMIT' in page
-        assert 'not a complete registry scan and does not resolve the dense-witness interpretation' in page
+        assert 'earlier partial scan' in page
+        assert '0.9180 overlap against GEMSDOE22' in page
+        assert 'dense-witness interpretation remains unresolved' in page
     summary = (ROOT/'docs/executive-summary-20261028-tipcomp.html').read_text()
     assert 'DO NOT SUBMIT — this candidate is not eligible' in summary
     assert 'No separate selector or weekly slot authorizes bypassing a failed mandatory gate' in summary

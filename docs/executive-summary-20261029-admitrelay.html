@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GEMSDOE92 — 2026-10-29 Executive Summary: ADMITRELAY + LBM-v3 Audit</title>
+<style>body{font:15.5px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#f4f6f8;color:#18212e}main{max-width:1120px;margin:0 auto;padding:24px}section{background:#fff;padding:20px 22px;margin:18px 0;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.07)}.stop{border:3px solid #b91c1c;background:#fff4f3}.bno{display:inline-block;padding:2px 8px;border-radius:999px;background:#b91c1c;color:#fff;font-weight:700;font-size:.8rem}.bwarn{display:inline-block;padding:2px 8px;border-radius:999px;background:#b45309;color:#fff;font-weight:700;font-size:.8rem}.bdl{display:inline-block;padding:2px 8px;border-radius:999px;background:#0369a1;color:#fff;font-weight:700;font-size:.8rem}.btn{display:inline-block;background:#1e3a5f;color:#fff!important;padding:10px 15px;border-radius:7px;font-weight:700;text-decoration:none;margin:4px 6px 4px 0}table{width:100%;border-collapse:collapse;font-size:.9rem;margin:10px 0}th,td{padding:9px 10px;border-bottom:1px solid #d8e0e8;text-align:left;vertical-align:top}th{background:#eef2f7}code,pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88em;overflow-wrap:anywhere}pre{background:#0f172a;color:#e2e8f0;padding:12px;border-radius:8px;overflow:auto;max-height:460px}nav a{margin-right:14px;font-weight:600;color:#124ec0}a{color:#124ec0}</style>
+</head>
+<body>
+<main>
+<nav><a href="index.html">← Main Landing Page</a> · <a href="how-to-submit.html">How to Submit &amp; [0, 1] Compliance Guide</a> · <a href="nine-sites.html">Nine-Site Fleet Audit</a> · <a href="HYPOTHESES_20261029_ADMITRELAY.md">Pre-Registered Hypotheses</a> · <a href="STANDING_PROMPT.md">Standing Prompt</a></nav>
+
+<section id="admitrelay-decision" class="stop">
+<h1>2026-10-29 Session Deliverable: ADMITRELAY + LBM-v3 — OK TO DOWNLOAD FOR RESEARCH ONLY · DO NOT SUBMIT</h1>
+<p><span class="bdl">OK TO DOWNLOAD FOR RESEARCH ONLY</span> <span class="bno">DO NOT SUBMIT — verdict: negative · submission_eligible: false · 0 weekly slots used</span></p>
+<p>
+<a class="btn" href="downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif" download>⬇ Download ADMITRELAY Research GeoTIFF (DO NOT SUBMIT)</a>
+<a class="btn" href="downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.zip" download>⬇ One-TIFF ZIP (Research Only)</a>
+<a href="downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75_run_card.json">Byte-Bound JSON Run Card</a> ·
+<a href="downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros-audit.json">Automated 11-Gate Format Audit</a> ·
+<a href="downloads/admitrelay_readiness_20261029.json">Machine Readiness Feed</a>
+</p>
+<p><strong>Why DO NOT SUBMIT?</strong> Although <code>gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif</code> passes all <strong>11/11 automated GeoTIFF/[0, 1] gates</strong>, all <strong>20/20 leakage canaries</strong> (max zero-catalogue symmetric AUC <code>0.5876</code>, max overall <code>0.7809 ≤ 0.90</code>), and <strong>PI-1 uniqueness across all 2,262 8-owner rasters on BOTH the pre-placement continuous surface (<code>0.6350 ≤ 0.70</code>) and final binary dots (<code>0.6470 ≤ 0.70</code>)</strong>, mandatory fail-closed promotion gates block upload: (1) under the literal full-support rule, pinned witness <code>17GEMSDOE E-proba-multiscale</code> (5,167,373 positive cells) yields overlap <code>1.000 &gt; 0.70</code>; (2) deployed 3-regime unique <code>E3</code> achieves <code>HOLDOUT-DTI = 0.077725</code> vs <code>R0_recipe = 0.097750</code> (while unconstrained fold-proper <code>E2 = 0.106741</code> beats <code>R0_recipe</code> by <code>+0.008991</code> with 95% CI <code>[-0.001510, +0.019159]</code> narrowly spanning zero); and (3) Goodhart-debiased <code>LBM-v3</code> estimates <code>0.2058 MODEL</code>, below <code>GEMSDOE92</code>'s already-submitted <code>lbmc1</code> (<code>0.2784 CLAIM</code>). No weekly competition slot is authorized or spent.</p>
+<table>
+<tr><th>Artifact SHA-256</th><td><code>b8051a75da299099fb7b43aed18c06aeefa8291d78b523e3083f9620a5527214</code> (143,522 bytes · 37,654 binary <code>{0.0, 1.0}</code> dots · <code>EPSG:32611</code> · <code>3730×3292</code> · <code>float32</code> · zero NaN anywhere · immune to <q>Predicted values must be in range [0, 1]</q>)</td></tr>
+<tr><th>Archived metadata (do NOT upload)</th><td>Name: <code>gemsdoe92-admitrelay1-37654d-b8051a75</code> · Note (128/140 chars): <code>ADMITRELAY E3 (b8051a75): 37654 binary dots; Forsyth admittance + K/Th + Pollard-Segall relay + LBM-v3; &lt;=0.66 PI-1 8-owner cap.</code></td></tr>
+</table>
+</section>
+
+<section id="focus9-table">
+<h2>1. Executive Summary Table: Nine Focus Sites + GEMSDOE92 (2026-10-29 Ledger Audit)</h2>
+<p>Every score below is explicitly labeled by evidence class: <code>CLAIM</code> (owner-reported in the user's ledger; not an organizer receipt verified in this sandbox), <code>MODEL</code> (Goodhart-debiased 131-claim <code>LBM-v3</code> leave-one-group-out or prospective out-of-time estimate; never an organizer score), or <code>HOLDOUT-DTI</code> (<code>gems57-pooled-hide-v2</code>, 22,663 withheld catalogue fault pixels).</p>
+<table>
+<thead><tr><th>Site</th><th>File to Download (Study / Research Only)</th><th>Owner-Reported Score</th><th>Estimated Score (<code>MODEL</code> / <code>HOLDOUT-DTI</code>)</th><th>Unique Across All Listed GEMSDOE Sites?</th></tr></thead>
+<tbody><tr><td><strong>GEMSDOE24</strong></td><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE24/blob/fdd41b075a05e7df5b222e6e3644344cecc65746/docs/downloads/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif"><code>h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan</code></a> <small>(study only)</small></td><td><code>0.2477</code> <small>CLAIM</small></td><td><code>0.2946 (MODEL LOGO)</code></td><td><span class="bno">NO (100% clone)</span><br><small>Worst 3-px overlap 1.000 (buffedlizard55-lab/60GEMSDOE, buffedlizard55-lab/GEMSDOE26, buffedlizard55-lab/GEMSDOE48)</small></td></tr><tr><td><strong>GEMSDOE25</strong></td><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE25/blob/cd2560d6a7fc2bc2c2f343d0a6b2a506ce6ea4ca/docs/downloads/gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif"><code>dotted-h19-5-d2-8-20261002-e56ea318af89-nan</code></a> <small>(study only)</small></td><td><code>0.2600</code> <small>CLAIM</small></td><td><code>0.3023 (MODEL LOGO)</code></td><td><span class="bno">NO (100% clone)</span><br><small>Worst 3-px overlap 1.000 (buffedlizard55-lab/60GEMSDOE, buffedlizard55-lab/GEMSDOE24, buffedlizard55-lab/GEMSDOE29)</small></td></tr><tr><td><strong>GEMSDOE27</strong></td><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE27/blob/50174df50f7fd8b681308a56f97f41ac21755b85/docs/downloads/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif"><code>topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan</code></a> <small>(study only)</small></td><td><code>0.2449</code> <small>CLAIM</small></td><td><code>0.2917 (MODEL LOGO)</code></td><td><span class="bno">NO (100% clone)</span><br><small>Worst 3-px overlap 1.000 (buffedlizard55-lab/GEMSDOE28, buffedlizard55-lab/GEMSDOE63, buffedlizard55-lab/GEMSDOE67)</small></td></tr><tr><td><strong>GEMSDOE28</strong></td><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE28/blob/245217303f58b900650e3645f64b26133284ab84/docs/downloads/gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif"><code>h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan</code></a> <small>(study only)</small></td><td><code>0.2710</code> <small>CLAIM</small></td><td><code>0.3064 (MODEL LOGO)</code></td><td><span class="bno">NO (100% clone)</span><br><small>Worst 3-px overlap 1.000 (buffedlizard55-lab/GEMSDOE48, buffedlizard55-lab/GEMSDOE86, kanlerxz87-cyber/KANLERGEMSDOE2)</small></td></tr><tr><td><strong>GEMSDOE30</strong></td><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE30/blob/3344c38758a1379f9f7d69b4ef86cb4d7176935a/docs/downloads/gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif"><code>d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca</code></a> <small>(study only)</small></td><td><code>0.2600</code> <small>CLAIM</small></td><td><code>0.3023 (MODEL LOGO)</code></td><td><span class="bno">NO (100% clone)</span><br><small>Worst 3-px overlap 1.000 (buffedlizard55-lab/57GEMSDOE, buffedlizard55-lab/58GEMSDOE, buffedlizard55-lab/59GEMSDOE)</small></td></tr><tr><td><strong>GEMSDOE31</strong></td><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE31/blob/dad99f59ef8a023052451f7b7cf205d263b1f2ab/docs/downloads/gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif"><code>h27-4-solo-d28-20261004-8acb75e1-nan</code></a> <small>(study only)</small></td><td><code>0.2708</code> <small>CLAIM</small></td><td><code>0.3088 (MODEL LOGO)</code></td><td><span class="bno">NO (100% clone)</span><br><small>Worst 3-px overlap 1.000 (kanlerxz87-cyber/KANLERGEMSDOE2)</small></td></tr><tr><td><strong>GEMSDOE32</strong></td><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE32/blob/9d63e2b1f9154816f9292e15fd257681bfe1bc22/docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif"><code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros</code></a> <small>(study only)</small></td><td><code>0.2778</code> <small>CLAIM</small></td><td><code>0.3098 (MODEL LOGO)</code></td><td><span class="bno">NO (100% clone)</span><br><small>Worst 3-px overlap 1.000 (apartanish22-droid/ApartGEMSDOE3, buffedlizard55-lab/57GEMSDOE, buffedlizard55-lab/58GEMSDOE)</small></td></tr><tr><td><strong>GEMSDOE33</strong></td><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE33/blob/1e08a7e81ee4595e2f3770f5c4f7c071adc1a53e/docs/downloads/GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif"><code>h33d-analog-tip-stepover-r30-20261004-cb490425926e</code></a> <small>(study only)</small></td><td><code>0.2632</code> <small>CLAIM</small></td><td><code>0.3051 (MODEL LOGO)</code></td><td><span class="bno">NO (100% clone)</span><br><small>Worst 3-px overlap 1.000 (buffedlizard55-lab/57GEMSDOE, buffedlizard55-lab/58GEMSDOE, buffedlizard55-lab/59GEMSDOE)</small></td></tr><tr><td><strong>GEMSDOE36</strong></td><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE36/blob/4b717aaff6eaf5de9b53030e637f8e1cf0d56e43/docs/downloads/gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif"><code>anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros</code></a> <small>(study only)</small></td><td><code>0.2750</code> <small>CLAIM</small></td><td><code>0.3067 (MODEL LOGO)</code></td><td><span class="bno">NO (100% clone)</span><br><small>Worst 3-px overlap 1.000 (buffedlizard55-lab/57GEMSDOE, buffedlizard55-lab/58GEMSDOE, buffedlizard55-lab/59GEMSDOE)</small></td></tr><tr><td><strong>GEMSDOE92 (2026-10-27 lbmc1)</strong></td><td><a href="downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif"><code>gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif</code></a> <small>(already scored)</small></td><td><code>0.2784</code> <small>CLAIM (#1 across 123 repos)</small></td><td><code>0.2818</code> <small>(LBM-v3 prospective OOT; err −0.0034)</small></td><td><span class="bwarn">PI-1 0.6845 ≤ 0.70 (historical)</span><br><small>Literal 17GEMSDOE witness 1.000; already submitted</small></td></tr><tr><td><strong>GEMSDOE92 (2026-10-29 ADMITRELAY)</strong></td><td><a href="downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif" download><code>gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif</code></a> <small>(research only — DO NOT SUBMIT)</small></td><td><em>unsubmitted (0 slots used)</em></td><td><code>0.2058</code> <small>MODEL LBM-v3 [0.1538, 0.2579]</small><br><small>HOLDOUT-DTI E2=0.10674, E3=0.07773</small></td><td><span class="bno">DO NOT SUBMIT (verdict=negative)</span><br><small>PI-1 surface 0.6350 ≤ 0.70 &amp; dots 0.6470 ≤ 0.70 across 2,262 rasters; literal 17GEMSDOE witness 1.000 &gt; 0.70 &amp; E3 holdout &lt; R0</small></td></tr></tbody>
+</table>
+</section>
+
+<section id="phd-analysis-02778-02784">
+<h2>2. PhD-Level Analysis: Why GEMSDOE32 Achieved 0.2778, How GEMSDOE92 Beat It (0.2784), &amp; How to Score Higher</h2>
+<h3>2.1 Metric Geometry of GEMSDOE32 (<code>0.2778 CLAIM</code>)</h3>
+<p>The official DOE GEMS metric is the pooled pixel-level Distance-Tolerant Tversky Index with <code>α = 0.2</code> (false-positive weight), <code>β = 0.8</code> (false-negative weight), and a 300 m (<code>R = 3 px</code>) linear triangular tolerance kernel <code>k(d) = max(0, 1 − d/3)</code>, evaluated after pixel-exact masking of all 60,988 mapped USGS/INGENIOUS catalogue fault cells (<a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/4">Forum #11516</a>, <a href="https://community.drivendata.org/t/leaderboard-aggregation-pooled-over-public-test-pixels-or-mean-of-per-chunk-scores/11550">Forum #11550</a>). Under the <code>max_x p(x) k(|x − y|)</code> coverage operator, continuous ribbons waste <code>α = 0.2</code> false-positive mass on redundant adjacent pixels. <code>GEMSDOE32</code>'s <code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif</code> (<code>R0</code>, 37,654 binary dots) succeeded by (i) concentrating dots strictly on zero-catalogue 19-band geophysical fault ridges (<code>H19-5</code> skeleton, <code>dh19 == 0</code>), (ii) enforcing Poisson-disk spacing (<code>d ≥ 2.8 px</code>) so each dot's 3-px triangular cone covers ~14.1 footprint cells with minimal overlap, and (iii) pruning dots within <code>d_cat ≤ 2 px</code> (200 m) of mapped faults where organizer truth density is near zero.</p>
+
+<h3>2.2 Discovery of the 2026-10-29 Ledger: GEMSDOE92 <code>lbmc1</code> Reached <code>0.2784 CLAIM</code> &amp; Diagnosed Goodhart Flank Bias</h3>
+<p>In the updated 2026-10-29 ledger (<code>ledger/claims_20261029.txt</code>, 137 claims across 8 owners; 132 byte-matched to SHA-256 blobs in <code>.cache/registry_v3</code>), <code>GEMSDOE92</code>'s own 2026-10-27 raster <code>gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif</code> is newly reported at <strong><code>0.2784 CLAIM</code></strong> — the highest reported score across all 123 repositories (+0.0006 above <code>GEMSDOE32</code>'s <code>0.2778</code>, at <code>0.6845 ≤ 0.70</code> PI-1 overlap). Crucially, however, unconstrained <code>LBM-v1</code> had predicted <code>0.3320</code> (an overprediction of <code>+0.0536</code>). Forensic inspection of <code>LBM-v1</code>'s parameters reveals a textbook <strong>Goodhart / kernel-collinearity identifiability pathology</strong>: because historical high-scoring rasters placed almost all dots on <code>dh19 == 0</code>, their 300 m triangular coverage cones illuminated <code>dh19 == 0</code> (weight 1.00) and <code>dh19 == 1</code> (weight 0.67) collinearly. Unconstrained ridge regression assigned a non-physical <code>3.73×</code> density multiplier to the 100 m flank bin <code>dh19 == 1</code> over the fault centerline <code>dh19 == 0</code>, causing <code>lbmc1</code>'s greedy placer to shift 16,580 dots 1 px off-centerline (losing <code>1/3</code> of peak kernel height on real centerline faults while still gaining points from genuine off-<code>H19</code> <code>G-set</code> consensus blind faults).</p>
+
+<h3>2.3 Prospective Out-of-Time Proof of Centerline-Monotone <code>LBM-v3</code></h3>
+<p>Enforcing the structural geology constraint <code>ρ(dh19=0) ≥ ρ(dh19=1) ≥ … ≥ ρ(dh19&gt;5)</code> via bounded L-BFGS-B in shared <code>gems/lbmodel.py</code> (<code>monotone_factor_design</code>) trained strictly on the <strong>127 pre-2026-10-29 claims</strong> and tested out-of-time on the <strong>4 newly scored 2026-10-29 claims</strong> cuts prospective OOT RMSE by <strong>57.4%</strong> (<code>0.03159 → 0.01344</code>) and reduces the error on <code>lbmc1</code> by <strong>15.76×</strong> (<code>−0.0536 → −0.0034</code>):</p>
+<table>
+<thead><tr><th>Site</th><th>Newly Scored 2026-10-29 Submission</th><th>Owner <code>CLAIM</code></th><th><code>LBM-v1</code> OOT (Unconstrained)</th><th><code>LBM-v3</code> OOT (Centerline-Monotone)</th></tr></thead>
+<tbody><tr><td><code>GEMSDOE92</code></td><td><code>gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros</code></td><td><code>0.2784</code> <small>CLAIM</small></td><td><code>0.3320</code> <small>(err -0.0536)</small></td><td><code>0.2818</code> <small>(err -0.0034)</small></td></tr><tr><td><code>KANLERGEMSDOE3</code></td><td><code>kanlergemsdoe3-h-k3-1-cadg-submod-exp-k3-3-oof8f-37654-20261026-f0565e6d10f9-zeros</code></td><td><code>0.1233</code> <small>CLAIM</small></td><td><code>0.1535</code> <small>(err -0.0301)</small></td><td><code>0.1469</code> <small>(err -0.0237)</small></td></tr><tr><td><code>GEMSDOEkarage1</code></td><td><code>karage1-hmas-sinter-dualcover-sep29-20261027T220000Z-zeros</code></td><td><code>0.1648</code> <small>CLAIM</small></td><td><code>0.1778</code> <small>(err -0.0130)</small></td><td><code>0.1689</code> <small>(err -0.0041)</small></td></tr><tr><td><code>ApartGEMSDOE3</code></td><td><code>apartgemsdoe3-h-apart3-1-cfkc-dhc-37654-20261027T215000Z-9dedadfc-zeros</code></td><td><code>0.1625</code> <small>CLAIM</small></td><td><code>0.1562</code> <small>(err +0.0063)</small></td><td><code>0.1509</code> <small>(err +0.0116)</small></td></tr></tbody>
+</table>
+<p><small>Full 131-claim <code>LBM-v3</code> cross-validation: 87-group leave-one-group-out <code>LOGO RMSE = 0.02658</code>, <code>Spearman = 0.9614</code> (<code>evidence/lbm_v3_20261029.json</code>). Unverified prompt figures <code>0.3195</code> and <code>0.4413</code> have no matching repository artifact or organizer receipt and are treated strictly as unverified external/historical benchmarks, never as confirmed scores.</small></p>
+
+<h3>2.4 How to Score Higher (&gt; 0.285–0.305) Under Both Evaluation Regimes</h3>
+<ul>
+<li><strong>Eliminate <code>dh19 == 1</code> flank placement:</strong> Returning <code>lbmc1</code>'s 16,580 1-px flank dots back onto <code>dh19 == 0</code> fault centerlines recovers the full <code>1.00</code> vs <code>0.67</code> kernel peak on range-front blind faults without increasing dot count.</li>
+<li><strong>Replace pure proximity halos with mechanical &amp; geochemical fault-zone physics:</strong> Combine Forsyth multi-wavenumber gravity–topography admittance jumps, Giggenbach <code>K − b·Th</code> epithermal K-metasomatism, and Pollard–Segall crack-tip shear lobes minus broadside stress shadows (validated below in <code>E1</code> and <code>E2</code>).</li>
+<li><strong>Respect the catalogue-holdout vs blind-leaderboard Pareto frontier:</strong> Catalogue hide-and-recover (<code>HOLDOUT-DTI</code>) rewards near-catalogue tip continuation (<code>2 &lt; d_cat ≤ 18 px</code>, where <code>E2</code> beats <code>R0_recipe</code> at <code>0.10674</code> vs <code>0.09775</code>), whereas 131-claim <code>LBM-v3</code> shows public leaderboard truth is <code>5.7×</code> denser in distal blind basins (<code>d_cat &gt; 15 px</code>). Any future slot-promoted candidate must resolve the literal dense-witness rule and pair <code>dh19 == 0</code> centerlines with high-consensus distal blind hydrothermal structures.</li>
+</ul>
+</section>
+
+<section id="hypotheses-ranking">
+<h2>3. Pre-Registered Untried Geological Hypotheses (Ranked Before Implementation)</h2>
+<p>Pre-registered in <a href="HYPOTHESES_20261029_ADMITRELAY.md"><code>docs/HYPOTHESES_20261029_ADMITRELAY.md</code></a> after auditing <code>gems/*.py</code> to verify zero prior implementation:</p>
+<table>
+<thead><tr><th>Rank &amp; ID</th><th>Geological / Geophysical Mechanism &amp; Layers</th><th>Why Missing from USGS / INGENIOUS</th><th>Named Non-Fault Mimic &amp; Suppressor</th><th>External Data &amp; Cost</th></tr></thead>
+<tbody>
+<tr><td><strong>#1 · H-1029A</strong></td><td><strong>Forsyth Multi-Wavenumber Elastic-Plate Admittance Step &amp; Coherence Loss</strong> (<code>B01 DEM</code>, <code>B02 isostatic_gravity</code>, <code>B16–B18</code>, 3DEP 10 m)</td><td>Playa/fan alluvium buries hanging-wall rollover; broken-plate flexural hinge (<code>T_e → 0</code>) persists across wavelength bands (0.6–9.6 km).</td><td>Intact Tertiary volcanic mesa rims (high slope without admittance phase reversal or local R² drop).</td><td>In-stack + pinned USGS 3DEP 10 m; low cost (FFT blocks).</td></tr>
+<tr><td><strong>#2 · H-1029C</strong></td><td><strong>Pollard–Segall Crack-Tip Relay vs. Broadside Stress-Shadow Deconfounding</strong> (fold-visible <code>vis</code> faults + zero-catalogue ridges)</td><td>Quaternary mapping stops where single scarp splits into sub-resolution en-échelon relay splays, while broadside stress shadows suppress parallel faults.</td><td>Parallel erosional bench scarps and bajada gullies inside broadside stress shadows.</td><td>Strictly fold-visible <code>folds[k]['visible']</code> only; low cost.</td></tr>
+<tr><td><strong>#3 · H-1029B</strong></td><td><strong>Giggenbach Epithermal K-Metasomatism (<code>K − b·Th</code>) × Magnetite Sulfidation Gate</strong> (GeoDAWN <code>K, Th, U</code> + <code>B06, B10, B13</code>)</td><td>Argillic/illite/adularia alteration halos have zero scarp relief in unconsolidated basin fill and were never mapped as Quaternary scarps.</td><td>Unaltered high-K/high-Th ash-flow tuffs and potassic playa mudflats (rejected by robust <code>K − b·Th</code> residual &amp; magnetic low).</td><td>Pinned USGS GeoDAWN radiometrics (DOI <code>10.5066/P93LGLVQ</code>); low cost.</td></tr>
+<tr><td><strong>#4 · H-1029D</strong></td><td><strong>Arrhenius Kinetic 2 m Probe + Fault-Wedge Breccia Deficit + Lahontan Deconfounder</strong> (GDR #1391 2 m probe, well/spring, paleolake, 3DEP 10 m)</td><td>Blind upflow conduits leak convective heat into shallow 2 m probes without surface rupture; Lahontan shorelines (1270–1345 m) mask or mimic scarps.</td><td>Solar-heated dark basalt talus &amp; Pleistocene Lake Lahontan wave-cut benches (explicitly gated out).</td><td>Pinned DOE GDR #1391 &amp; USGS paleolake shapefiles; low cost.</td></tr>
+<tr><td><strong>#5 · H-1029E</strong></td><td><strong>1 m LiDAR Micro-Scarp Throw-Gradient Continuity</strong> (deferred Phase-2 external opportunity)</td><td>Sub-meter (0.2–0.6 m) Holocene scarps alias below 30 m/10 m DEM vertical noise.</td><td>Livestock trails, historic wagon ruts, and graded desert roads.</td><td>Official USGS 3DEP 1 m WCS (<a href="https://data.usgs.gov/datacatalog/data/USGS:77ae0551-c61e-4979-aedd-d797abdcde0e">USGS catalog</a>); blocked in sandbox allowlist.</td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="holdout-and-uniqueness">
+<h2>4. Strict 3-Experiment Budget Results: Leakage Canaries, Pooled HOLDOUT-DTI, &amp; 2,262-Raster Uniqueness</h2>
+<h3>4.1 Pooled Spatial Holdout (<code>gems57-pooled-hide-v2</code>, Seeds 20 &amp; 30, 8 Folds, 22,663 Withheld Positives)</h3>
+<table>
+<thead><tr><th>Experiment Arm</th><th>Evidence Class</th><th>Pooled DTI</th><th>95% Block-Bootstrap CI</th><th>Paired Δ vs <code>r0_recipe</code> (95% CI)</th><th>Dots (s20 / s30)</th></tr></thead>
+<tbody>
+<tr><td><code>r0_recipe</code> (H19-5 dotted at 2.8 px control)</td><td><code>HOLDOUT-DTI</code></td><td><code>0.097750</code></td><td><code>[0.085900, 0.110766]</code></td><td><code>0.000000</code> (control)</td><td>39,710 / 39,751</td></tr>
+<tr><td><strong><code>E1</code> · Zero-Catalogue ADMITRELAY Blind Physics LOQO</strong></td><td><code>HOLDOUT-DTI</code></td><td><strong><code>0.083198</code></strong></td><td><code>[0.068141, 0.099317]</code></td><td>recovering 85.1% of R0 with <strong>zero</strong> catalogue &amp; <strong>zero</strong> H19-5</td><td>39,710 / 39,751</td></tr>
+<tr><td><strong><code>E2</code> · Fold-Proper ADMITRELAY + Pollard–Segall + H19 LOQO</strong></td><td><code>HOLDOUT-DTI</code></td><td><strong><code>0.106741</code></strong></td><td><code>[0.092827, 0.119464]</code></td><td><strong><code>+0.008991</code></strong> (<code>[-0.001510, +0.019159]</code>)</td><td>39,710 / 39,751</td></tr>
+<tr><td><strong><code>E3</code> · Three-Regime + Column-Generated PI-1 Unique Hybrid</strong></td><td><code>HOLDOUT-DTI</code></td><td><strong><code>0.077725</code></strong></td><td><code>[0.066925, 0.088309]</code></td><td><code>-0.020025</code> (<code>[-0.031356, -0.008429]</code>; <strong>2.05× RIESZ E3</strong> &amp; <strong>3.95× LBMC1</strong>)</td><td>39,710 / 39,751</td></tr>
+</tbody>
+</table>
+
+<h3>4.2 Full 8-Owner Registry Uniqueness Audit (2,262 Unique SHA-256 Rasters Across 108 Non-Empty Repos)</h3>
+<p>Checked on <strong>BOTH</strong> the continuous pre-placement surface (<code>deploy_e3_surface_capped.npy</code>) and the final 37,654 binary dots (<code>gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif</code>) via shared <code>gems/uniqueness_v3.py</code>:</p>
+<ul>
+<li><strong>Pre-placement continuous surface (PI-1):</strong> worst 3-px overlap = <strong><code>0.634992 ≤ 0.70</code></strong> (buffedlizard55-lab/GEMSDOE67); worst <code>|Spearman ρ| = 0.495866 ≤ 0.90</code> → <strong>PASS</strong>.</li>
+<li><strong>Final placed binary dots (PI-1):</strong> worst 3-px overlap = <strong><code>0.646996 ≤ 0.70</code></strong> (buffedlizard55-lab/13GEMSDOE); worst <code>|Spearman ρ| = 0.250367 ≤ 0.90</code> → <strong>PASS</strong>.</li>
+<li><strong>Literal unweighted positive-pixel reading (disclosed &amp; enforced as conservative stop):</strong> <code>17GEMSDOE E-proba-multiscale</code> is positive on all 5,167,373 footprint cells, giving literal overlap <code>1.000000 &gt; 0.70</code> for every nonempty candidate.</li>
+</ul>
+<table>
+<thead><tr><th>Reference Submission</th><th>SHA-256 Prefix</th><th>Surface PI-1 Overlap</th><th>Surface ρ</th><th>Final Dots PI-1 Overlap</th><th>Final Dots ρ</th></tr></thead>
+<tbody><tr><td><code>GEMSDOE32_R0_e5eb6e7e</code></td><td><code>c55bafc470054e82…</code></td><td><code>0.389680</code></td><td><code>+0.142559</code></td><td><code>0.465581</code></td><td><code>+0.212191</code></td></tr><tr><td><code>GEMSDOE92_lbmc1_89a660f6</code></td><td><code>e928d3c3fde8b3f1…</code></td><td><code>0.340256</code></td><td><code>-0.028995</code></td><td><code>0.311282</code></td><td><code>+0.027188</code></td></tr><tr><td><code>GEMSDOE92_rieszlbm2_79041788</code></td><td><code>d168c7d2a0ea89f9…</code></td><td><code>0.377277</code></td><td><code>-0.043543</code></td><td><code>0.366442</code></td><td><code>+0.023701</code></td></tr><tr><td><code>GEMSDOE92_tipcomp_8f27b9d6</code></td><td><code>8f27b9d6478526d7…</code></td><td><code>0.389441</code></td><td><code>-0.060302</code></td><td><code>0.326393</code></td><td><code>+0.015435</code></td></tr><tr><td><code>GEMSDOE92_blindcorridor_11f8999c</code></td><td><code>4027ee1637d8ce47…</code></td><td><code>0.013916</code></td><td><code>-0.075416</code></td><td><code>0.048149</code></td><td><code>-0.007207</code></td></tr></tbody>
+</table>
+
+<details>
+<summary><strong>All 20 Single-Feature Leakage Canaries (Rule 4 Gate: 20/20 ≤ 0.90 PASS)</strong></summary>
+<table>
+<thead><tr><th>Feature</th><th>Group</th><th>ROC AUC</th><th>Symmetric AUC</th><th>Gate (≤ 0.90)</th></tr></thead>
+<tbody><tr><td><code>admit_coherence_drop</code></td><td>zero_catalogue_physics</td><td><code>0.4488</code></td><td><code>0.5512</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>admit_jump_crest</code></td><td>zero_catalogue_physics</td><td><code>0.5526</code></td><td><code>0.5526</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>admit_basement_decouple</code></td><td>zero_catalogue_physics</td><td><code>0.5315</code></td><td><code>0.5315</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>fault_wedge_breccia_deficit</code></td><td>zero_catalogue_physics</td><td><code>0.5410</code></td><td><code>0.5410</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>rad_kd_adularia_excess</code></td><td>zero_catalogue_physics</td><td><code>0.4897</code></td><td><code>0.5103</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>rad_kd_ud_redox_dipole</code></td><td>zero_catalogue_physics</td><td><code>0.5004</code></td><td><code>0.5004</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>mag_up150_demag_persistence</code></td><td>zero_catalogue_physics</td><td><code>0.5058</code></td><td><code>0.5058</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>scarp10m_lahontan_deconf</code></td><td>zero_catalogue_physics</td><td><code>0.5876</code></td><td><code>0.5876</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>kinetic_cat_chalc_gap</code></td><td>zero_catalogue_physics</td><td><code>0.4864</code></td><td><code>0.5136</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>quartz_probe_sinter_upflow</code></td><td>zero_catalogue_physics</td><td><code>0.4950</code></td><td><code>0.5050</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>mt_claycap_seal_margin</code></td><td>zero_catalogue_physics</td><td><code>0.5069</code></td><td><code>0.5069</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>transtension_strain_gap</code></td><td>zero_catalogue_physics</td><td><code>0.5627</code></td><td><code>0.5627</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>vis_log_dist</code></td><td>fold_visible_structural</td><td><code>0.2191</code></td><td><code>0.7809</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>vis_tip_lobe_ps</code></td><td>fold_visible_structural</td><td><code>0.7748</code></td><td><code>0.7748</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>vis_broadside_shadow_ps</code></td><td>fold_visible_structural</td><td><code>0.7171</code></td><td><code>0.7171</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>vis_net_pollard_segall</code></td><td>fold_visible_structural</td><td><code>0.7091</code></td><td><code>0.7091</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>vis_gauss_8px</code></td><td>fold_visible_structural</td><td><code>0.7637</code></td><td><code>0.7637</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>vis_gauss_24px</code></td><td>fold_visible_structural</td><td><code>0.7502</code></td><td><code>0.7502</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>h19_centerline_exact</code></td><td>fold_visible_structural</td><td><code>0.4892</code></td><td><code>0.5108</code></td><td>PASS (≤ 0.90)</td></tr><tr><td><code>h19_decay_2px</code></td><td>fold_visible_structural</td><td><code>0.6393</code></td><td><code>0.6393</code></td><td>PASS (≤ 0.90)</td></tr></tbody>
+</table>
+</details>
+</section>
+
+<section id="irregularities-20261029">
+<h2>5. Flagged 2026-10-29 Ledger &amp; Repository Irregularities</h2>
+<ul>
+<li><strong>IR-1029-1 (Newly scored <code>lbmc1 = 0.2784 CLAIM</code> &amp; <code>LBM-v1</code> Goodhart flank inflation):</strong> <code>gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros</code> scored <code>0.2784 CLAIM</code> (#1 across 123 repos), exposing <code>LBM-v1</code>'s <code>dh19 == 1</code> collinearity overprediction (<code>0.3320</code>) and motivating centerline-monotone <code>LBM-v3</code> (<code>0.2818</code> OOT).</li>
+<li><strong>IR-1029-2 (Score revision on identical stem in <code>ApartGEMSDOE1</code>):</strong> <code>apartgemsdoe1-h1-curie-pipe-edti37654-20261026-50e7b334-zeros</code> was reported as <code>0.0525</code> in the 2026-10-28 ledger and <code>0.1516</code> in the 2026-10-29 ledger for the exact same SHA-256 (<code>c140e60b…</code>); excluded from clean <code>LBM-v3</code> training (<code>131</code> clean rows of <code>132</code> matched).</li>
+<li><strong>IR-1029-3 (Duplicate entry under truncated hash):</strong> <code>GEMSDOE92 8cd3f9a7</code> (<code>0.0255</code>) resolves to <code>gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros.tif</code> (<code>SHA-256 91e26530…</code>, Git blob <code>8cd3f9a7…</code>), already recorded in the 2026-10-28 ledger at <code>0.0255</code>; deduplicated so it is never double-counted as OOT.</li>
+<li><strong>IR-1029-4 (Four 2026-10-28 claims listed without scores in 2026-10-29 paste):</strong> <code>GEMSDOE91 667477a1</code> (<code>0.0435</code>), <code>KANLERGEMSDOE2 de6a7dc7</code> (<code>0.1218</code>), <code>WBGGEMSDOE3 224a7821</code> (<code>0.0443</code>), and <code>WBGGEMSDOE2 09908a6c</code> (<code>0.0262</code>) appeared blank in the 2026-10-29 paste; audited in <code>ledger/unscored_20261029.txt</code>.</li>
+<li><strong>IR-1029-5 (HTML merge-conflict markers in <code>docs/how-to-submit.html</code> on <code>main</code>):</strong> Base commit <code>913af0a</code> contained unresolved <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> markers in <code>docs/how-to-submit.html</code> because <code>.github/workflows/ci.yml</code> scanned only <code>*.py</code>, <code>*.md</code>, <code>*.json</code>. Fixed in <code>docs/how-to-submit.html</code> and guarded across <code>*.html</code> in CI and pytest.</li>
+</ul>
+</section>
+
+<section id="official-links">
+<h2>6. Verified Official Sources for Manual Review</h2>
+<ul>
+<li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData DOE GEMS Problem Description &amp; DTI Metric Specification</a></li>
+<li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData Official Submission Portal (3/week limit displayed on portal)</a></li>
+<li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Official DOE / NLR Competition Rules PDF (FY26 OSTI #96647)</a></li>
+<li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Official DrivenData Reference Solution Repository (U-Net MC-CV)</a></li>
+<li><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN Airborne Magnetic &amp; Radiometric Surveys (NW Great Basin, DOI 10.5066/P93LGLVQ)</a></li>
+<li><a href="https://gdr.openei.org/submissions/1391">DOE Geothermal Data Repository (GDR) Submission #1391 — INGENIOUS Great Basin Dataset</a></li>
+<li><a href="https://data.usgs.gov/datacatalog/data/USGS:77ae0551-c61e-4979-aedd-d797abdcde0e">USGS 3DEP 1 m LiDAR Digital Elevation Models</a> · <a href="https://www.drivendata.org/termsofuse/">DrivenData Terms of Use</a></li>
+</ul>
+</section>
+
+<section id="protocol-run-card">
+<h2>7. Protocol Rule 5 JSON Run Card (Byte-Bound to <code>gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif</code>)</h2>
+<pre>{
+  &quot;schema&quot;: &quot;gemsdoe92-run-card-v3&quot;,
+  &quot;created_utc&quot;: &quot;2026-10-29T16:02:34+00:00&quot;,
+  &quot;lane&quot;: &quot;ADMITRELAY \u2014 Multi-Wavenumber Elastic-Plate Admittance + Giggenbach K-Metasomatism + Pollard-Segall Crack-Tip Relay + Goodhart-Debiased LBM-v3 (2026-10-29)&quot;,
+  &quot;experiment&quot;: &quot;3 of 3 (budget: E1 Zero-Catalogue ADMITRELAY Blind LOQO, E2 Fold-Proper ADMITRELAY + Pollard-Segall LOQO, E3 Three-Regime Unique LBM-v3 Hybrid)&quot;,
+  &quot;pre_registration&quot;: &quot;docs/HYPOTHESES_20261029_ADMITRELAY.md&quot;,
+  &quot;hypothesis&quot;: &quot;Unmapped Great Basin geothermal faults combine (H-1029A) Forsyth multi-wavenumber gravity-topography isostatic admittance step &amp; coherence loss across broken-plate range-front hinges, (H-1029B) Giggenbach epithermal K-metasomatism (K - b*Th &gt; 0) decoupled from unaltered felsic volcanics and clay basins, (H-1029C) Pollard-Segall Mode-II/III fault-tip shear lobes minus broadside normal-fault stress shadows, and (H-1029D) Arrhenius kinetic 2m thermal anomalies + Quaternary fault-wedge breccia gravity deficits with Lake Lahontan highstand bench deconfounding.&quot;,
+  &quot;mechanism&quot;: &quot;Block-streamed 12-feature zero-catalogue geophysical transform + 8 fold-visible Pollard-Segall / H19-5 features trained via nested 2-split spatial LOQO HistGradientBoosting, fused with Goodhart-debiased centerline-monotone LBM-v3 (131-row LOGO RMSE 0.02658; 2026-10-29 4-claim OOT RMSE 0.01344) across three geometrically separated (&gt;350 m) regimes plus column-generation active halo caps so BOTH pre-placement continuous surface and final spaced binary dots satisfy &lt;=0.70 PI-1 overlap and |rho|&lt;=0.90 across all 2,262 8-owner registry rasters.&quot;,
+  &quot;named_non_fault_mimic&quot;: &quot;(1) Intact flexural volcanic tablelands / mesa rims (high slope without admittance phase jump or coherence drop), (2) unaltered high-K/high-Th ash-flow tuffs &amp; potassic playa mudflats (rejected by K - b*Th residual &amp; magnetic sulfidation gate), (3) parallel synthetic bench scarps inside broadside stress shadows of major range-front faults, and (4) Pleistocene Lake Lahontan wave-cut shorelines near 1270-1345 m elevation.&quot;,
+  &quot;named_non_fault_process_that_could_mimic_it&quot;: &quot;Intact Tertiary volcanic mesa rims, unaltered felsic ash-flow tuffs, potassic playa mudflats, broadside stress-shadow erosional benches, and Lake Lahontan wave-cut paleoshorelines (1270-1345 m).&quot;,
+  &quot;raster&quot;: {
+    &quot;file&quot;: &quot;docs/downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif&quot;,
+    &quot;zip&quot;: &quot;docs/downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.zip&quot;,
+    &quot;sha256&quot;: &quot;b8051a75da299099fb7b43aed18c06aeefa8291d78b523e3083f9620a5527214&quot;,
+    &quot;zip_sha256&quot;: &quot;c18c12a0a887dbf9bddfdc2144078f8f5d9943f4a6cf6a9c52d5ffd8d7a719cf&quot;,
+    &quot;bytes&quot;: 143522,
+    &quot;n_dots&quot;: 37654
+  },
+  &quot;file&quot;: &quot;gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif&quot;,
+  &quot;primary_download&quot;: &quot;docs/downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif&quot;,
+  &quot;raster_sha256&quot;: &quot;b8051a75da299099fb7b43aed18c06aeefa8291d78b523e3083f9620a5527214&quot;,
+  &quot;submission_name&quot;: &quot;gemsdoe92-admitrelay1-37654d-b8051a75&quot;,
+  &quot;note&quot;: &quot;ADMITRELAY E3 (b8051a75): 37654 binary dots; Forsyth admittance + K/Th + Pollard-Segall relay + LBM-v3; &lt;=0.66 PI-1 8-owner cap.&quot;,
+  &quot;note_chars&quot;: 128,
+  &quot;leakage_canaries&quot;: {
+    &quot;evidence_file&quot;: &quot;evidence/admitrelay_canaries_20261029.json&quot;,
+    &quot;canaries_run&quot;: true,
+    &quot;n_features_tested&quot;: 20,
+    &quot;max_auc_zero_catalogue_12&quot;: 0.587649,
+    &quot;max_auc&quot;: 0.78086,
+    &quot;threshold&quot;: 0.9,
+    &quot;all_pass&quot;: true
+  },
+  &quot;leakage_canary_max_symmetric_auc&quot;: 0.78086,
+  &quot;holdout_dti&quot;: {
+    &quot;evidence_class&quot;: &quot;HOLDOUT-DTI&quot;,
+    &quot;evaluator_version&quot;: &quot;gems57-pooled-hide-v2&quot;,
+    &quot;withheld_positive_pixels&quot;: 22663,
+    &quot;e1_admitrelay_blind&quot;: {
+      &quot;evidence_class&quot;: &quot;HOLDOUT-DTI&quot;,
+      &quot;evaluator_version&quot;: &quot;gems57-pooled-hide-v2&quot;,
+      &quot;dti&quot;: 0.08319833464893323,
+      &quot;ci95&quot;: [
+        0.06814083556784227,
+        0.0993169058309577
+      ],
+      &quot;withheld_positive_pixels&quot;: 22663,
+      &quot;tpw&quot;: 2854.802395944115,
+      &quot;fpw&quot;: 78059.27569866825,
+      &quot;fnw&quot;: 19808.197604055887
+    },
+    &quot;e2_admitrelay_ps_loqo&quot;: {
+      &quot;evidence_class&quot;: &quot;HOLDOUT-DTI&quot;,
+      &quot;evaluator_version&quot;: &quot;gems57-pooled-hide-v2&quot;,
+      &quot;dti&quot;: 0.10674115531705064,
+      &quot;ci95&quot;: [
+        0.0928270110881026,
+        0.11946431762113595
+      ],
+      &quot;withheld_positive_pixels&quot;: 22663,
+      &quot;tpw&quot;: 3670.7820521350377,
+      &quot;fpw&quot;: 77625.05012336487,
+      &quot;fnw&quot;: 18992.217947864956
+    },
+    &quot;e3_admitrelay_lbmv3_unique&quot;: {
+      &quot;evidence_class&quot;: &quot;HOLDOUT-DTI&quot;,
+      &quot;evaluator_version&quot;: &quot;gems57-pooled-hide-v2&quot;,
+      &quot;dti&quot;: 0.0777254277630004,
+      &quot;ci95&quot;: [
+        0.06692506440056267,
+        0.08830917148458532
+      ],
+      &quot;withheld_positive_pixels&quot;: 22663,
+      &quot;tpw&quot;: 2667.2914690419334,
+      &quot;fpw&quot;: 78264.93429906914,
+      &quot;fnw&quot;: 19995.708530958058
+    },
+    &quot;r0_recipe_control&quot;: {
+      &quot;evidence_class&quot;: &quot;HOLDOUT-DTI&quot;,
+      &quot;evaluator_version&quot;: &quot;gems57-pooled-hide-v2&quot;,
+      &quot;dti&quot;: 0.09775010414175118,
+      &quot;ci95&quot;: [
+        0.0859004762724135,
+        0.110766499100337
+      ],
+      &quot;withheld_positive_pixels&quot;: 22663,
+      &quot;tpw&quot;: 3268.824114128543,
+      &quot;fpw&quot;: 73282.27724463292,
+      &quot;fnw&quot;: 19394.17588587146
+    },
+    &quot;paired_e2_vs_r0_recipe&quot;: {
+      &quot;evidence_class&quot;: &quot;HOLDOUT-DTI&quot;,
+      &quot;evaluator_version&quot;: &quot;gems57-pooled-hide-v2&quot;,
+      &quot;delta&quot;: 0.008991051175299455,
+      &quot;ci95&quot;: [
+        -0.001510099951705416,
+        0.019158607400127366
+      ],
+      &quot;withheld_positive_pixels&quot;: 22663
+    },
+    &quot;paired_e2_vs_e1&quot;: {
+      &quot;evidence_class&quot;: &quot;HOLDOUT-DTI&quot;,
+      &quot;evaluator_version&quot;: &quot;gems57-pooled-hide-v2&quot;,
+      &quot;delta&quot;: 0.023542820668117415,
+      &quot;ci95&quot;: [
+        0.008216299422798782,
+        0.03885144401209117
+      ],
+      &quot;withheld_positive_pixels&quot;: 22663
+    },
+    &quot;paired_e3_vs_r0_recipe&quot;: {
+      &quot;evidence_class&quot;: &quot;HOLDOUT-DTI&quot;,
+      &quot;evaluator_version&quot;: &quot;gems57-pooled-hide-v2&quot;,
+      &quot;delta&quot;: -0.020024676378750786,
+      &quot;ci95&quot;: [
+        -0.03135629925199556,
+        -0.008429143556344205
+      ],
+      &quot;withheld_positive_pixels&quot;: 22663
+    },
+    &quot;prior_riesz_e3_reference&quot;: 0.03798714720750052,
+    &quot;prior_lbmc1_reference&quot;: 0.0196983588891766,
+    &quot;interpretation&quot;: &quot;Zero-catalogue 12-feature ADMITRELAY E1 reaches HOLDOUT-DTI 0.083198 [0.068141, 0.099317] (recovering 85.1% of R0_recipe without any catalogue or H19-5 ancestor). Fold-proper E2 reaches HOLDOUT-DTI 0.106741 [0.092827, 0.119464], exceeding R0_recipe (0.097750) by +0.008991 (paired 95% CI [-0.001510, +0.019159]). Enforcing &lt;=0.70 PI-1 uniqueness on BOTH surface &amp; dots in E3 shifts 24% of budget to &gt;1.8 km deep blind corridors, yielding HOLDOUT-DTI 0.077725 [0.066925, 0.088309] \u2014 2.05x RIESZ E3 (0.03799) and 3.95x LBMC1 (0.01970), though below R0_recipe.&quot;
+  },
+  &quot;model_estimate&quot;: {
+    &quot;evidence_class&quot;: &quot;MODEL (fitted to 131 clean owner CLAIMs; NOT an organizer score)&quot;,
+    &quot;lbm_v3_monotone&quot;: 0.205846,
+    &quot;lbm_v3_approx_95_interval&quot;: [
+      0.153755,
+      0.257937
+    ],
+    &quot;lbm_v1_historical&quot;: 0.21567,
+    &quot;r0_same_models&quot;: {
+      &quot;lbm_v3_monotone&quot;: 0.272721,
+      &quot;lbm_v1_historical&quot;: 0.272837
+    },
+    &quot;delta_vs_r0_lbm_v3&quot;: -0.066875,
+    &quot;calibration&quot;: {
+      &quot;n_clean_claims&quot;: 131,
+      &quot;lbm_v3_logo_rmse&quot;: 0.026577,
+      &quot;lbm_v3_logo_spearman&quot;: 0.961439,
+      &quot;prospective_oot_20261029_4claims_rmse&quot;: 0.013442,
+      &quot;lbmc1_oot_actual_claim&quot;: 0.2784,
+      &quot;lbmc1_oot_lbm_v3_pred&quot;: 0.281832,
+      &quot;lbmc1_oot_lbm_v1_pred&quot;: 0.331995
+    }
+  },
+  &quot;uniqueness&quot;: {
+    &quot;evidence_class&quot;: &quot;REGISTRY-MEASUREMENT&quot;,
+    &quot;interpretation&quot;: &quot;PI-1 across all 8 GitHub owners on BOTH pre-placement continuous surface and final binary dots (gems/uniqueness_v3.py)&quot;,
+    &quot;registry_owners&quot;: 8,
+    &quot;registry_repos_scanned&quot;: 123,
+    &quot;registry_nonempty_repos&quot;: 108,
+    &quot;registry_rasters&quot;: 2262,
+    &quot;column_generation_rounds&quot;: [
+      {
+        &quot;round&quot;: 0,
+        &quot;n_active_caps&quot;: 0,
+        &quot;surface_worst_overlap&quot;: 0.634992,
+        &quot;dots_worst_overlap&quot;: 0.646996
+      }
+    ],
+    &quot;active_cap_shas&quot;: [],
+    &quot;surface_pi1_pass&quot;: true,
+    &quot;surface_worst_overlap&quot;: 0.634992,
+    &quot;surface_worst_overlap_sha256&quot;: &quot;28adc53bcaca11329c807baa5659079c25f225c5908f7874762a034cf70cab05&quot;,
+    &quot;surface_worst_overlap_where&quot;: [
+      &quot;buffedlizard55-lab/GEMSDOE67&quot;
+    ],
+    &quot;surface_worst_abs_rho&quot;: 0.495866,
+    &quot;surface_worst_abs_rho_sha256&quot;: &quot;18dc6b7fe0f4bf17791b2bda6b985364324f6b3c23f89303543416ee5729d6e5&quot;,
+    &quot;surface_worst_abs_rho_where&quot;: [
+      &quot;buffedlizard55-lab/GEMSDOE48&quot;
+    ],
+    &quot;final_pi1_pass&quot;: true,
+    &quot;final_worst_overlap&quot;: 0.646996,
+    &quot;final_worst_overlap_sha256&quot;: &quot;88976dc5b2504838b193d41b718df95eb1e237b870b94a6443dc3bee65e98e06&quot;,
+    &quot;final_worst_overlap_where&quot;: [
+      &quot;buffedlizard55-lab/13GEMSDOE&quot;
+    ],
+    &quot;final_worst_abs_rho&quot;: 0.250367,
+    &quot;final_worst_abs_rho_sha256&quot;: &quot;ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d&quot;,
+    &quot;final_worst_abs_rho_where&quot;: [
+      &quot;buffedlizard55-lab/19GEMSDOE&quot;,
+      &quot;buffedlizard55-lab/60GEMSDOE&quot;,
+      &quot;buffedlizard55-lab/GEMSDOE22&quot;,
+      &quot;buffedlizard55-lab/GEMSDOE23&quot;,
+      &quot;buffedlizard55-lab/GEMSDOE24&quot;
+    ],
+    &quot;peer_comparisons&quot;: {
+      &quot;GEMSDOE32_R0_e5eb6e7e&quot;: {
+        &quot;sha256&quot;: &quot;c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9&quot;,
+        &quot;final_overlap_pi1&quot;: 0.465581,
+        &quot;final_rho&quot;: 0.212191,
+        &quot;surface_overlap_pi1&quot;: 0.38968,
+        &quot;surface_rho&quot;: 0.142559
+      },
+      &quot;GEMSDOE92_lbmc1_89a660f6&quot;: {
+        &quot;sha256&quot;: &quot;e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c&quot;,
+        &quot;final_overlap_pi1&quot;: 0.311282,
+        &quot;final_rho&quot;: 0.027188,
+        &quot;surface_overlap_pi1&quot;: 0.340256,
+        &quot;surface_rho&quot;: -0.028995
+      },
+      &quot;GEMSDOE92_rieszlbm2_79041788&quot;: {
+        &quot;sha256&quot;: &quot;d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a&quot;,
+        &quot;final_overlap_pi1&quot;: 0.366442,
+        &quot;final_rho&quot;: 0.023701,
+        &quot;surface_overlap_pi1&quot;: 0.377277,
+        &quot;surface_rho&quot;: -0.043543
+      },
+      &quot;GEMSDOE92_tipcomp_8f27b9d6&quot;: {
+        &quot;sha256&quot;: &quot;8f27b9d6478526d72a055f0a56c7c8f6db1d63f2f5c66233b7eedbf9937579cf&quot;,
+        &quot;final_overlap_pi1&quot;: 0.326393,
+        &quot;final_rho&quot;: 0.015435,
+        &quot;surface_overlap_pi1&quot;: 0.389441,
+        &quot;surface_rho&quot;: -0.060302
+      },
+      &quot;GEMSDOE92_blindcorridor_11f8999c&quot;: {
+        &quot;sha256&quot;: &quot;4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14&quot;,
+        &quot;final_overlap_pi1&quot;: 0.048149,
+        &quot;final_rho&quot;: -0.007207,
+        &quot;surface_overlap_pi1&quot;: 0.013916,
+        &quot;surface_rho&quot;: -0.075416
+      }
+    },
+    &quot;duplicate&quot;: false,
+    &quot;literal_reading&quot;: {
+      &quot;worst&quot;: 1.0,
+      &quot;worst_sha256&quot;: &quot;03d619fa75689b48bd3eb4f74c3fa529a9b04c19bd716e15640d910baf3d5a90&quot;,
+      &quot;worst_where&quot;: [
+        &quot;buffedlizard55-lab/GEMSDOE2&quot;
+      ],
+      &quot;duplicate_under_literal&quot;: true,
+      &quot;note&quot;: &quot;Literal reading is degenerate: any raster positive on every footprint cell gives 1.0.&quot;
+    }
+  },
+  &quot;correlation_overlap_vs_registry&quot;: {
+    &quot;evidence_class&quot;: &quot;REGISTRY-MEASUREMENT&quot;,
+    &quot;interpretation&quot;: &quot;PI-1 across all 8 GitHub owners on BOTH pre-placement continuous surface and final binary dots (gems/uniqueness_v3.py)&quot;,
+    &quot;registry_owners&quot;: 8,
+    &quot;registry_repos_scanned&quot;: 123,
+    &quot;registry_nonempty_repos&quot;: 108,
+    &quot;registry_rasters&quot;: 2262,
+    &quot;column_generation_rounds&quot;: [
+      {
+        &quot;round&quot;: 0,
+        &quot;n_active_caps&quot;: 0,
+        &quot;surface_worst_overlap&quot;: 0.634992,
+        &quot;dots_worst_overlap&quot;: 0.646996
+      }
+    ],
+    &quot;active_cap_shas&quot;: [],
+    &quot;surface_pi1_pass&quot;: true,
+    &quot;surface_worst_overlap&quot;: 0.634992,
+    &quot;surface_worst_overlap_sha256&quot;: &quot;28adc53bcaca11329c807baa5659079c25f225c5908f7874762a034cf70cab05&quot;,
+    &quot;surface_worst_overlap_where&quot;: [
+      &quot;buffedlizard55-lab/GEMSDOE67&quot;
+    ],
+    &quot;surface_worst_abs_rho&quot;: 0.495866,
+    &quot;surface_worst_abs_rho_sha256&quot;: &quot;18dc6b7fe0f4bf17791b2bda6b985364324f6b3c23f89303543416ee5729d6e5&quot;,
+    &quot;surface_worst_abs_rho_where&quot;: [
+      &quot;buffedlizard55-lab/GEMSDOE48&quot;
+    ],
+    &quot;final_pi1_pass&quot;: true,
+    &quot;final_worst_overlap&quot;: 0.646996,
+    &quot;final_worst_overlap_sha256&quot;: &quot;88976dc5b2504838b193d41b718df95eb1e237b870b94a6443dc3bee65e98e06&quot;,
+    &quot;final_worst_overlap_where&quot;: [
+      &quot;buffedlizard55-lab/13GEMSDOE&quot;
+    ],
+    &quot;final_worst_abs_rho&quot;: 0.250367,
+    &quot;final_worst_abs_rho_sha256&quot;: &quot;ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d&quot;,
+    &quot;final_worst_abs_rho_where&quot;: [
+      &quot;buffedlizard55-lab/19GEMSDOE&quot;,
+      &quot;buffedlizard55-lab/60GEMSDOE&quot;,
+      &quot;buffedlizard55-lab/GEMSDOE22&quot;,
+      &quot;buffedlizard55-lab/GEMSDOE23&quot;,
+      &quot;buffedlizard55-lab/GEMSDOE24&quot;
+    ],
+    &quot;peer_comparisons&quot;: {
+      &quot;GEMSDOE32_R0_e5eb6e7e&quot;: {
+        &quot;sha256&quot;: &quot;c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9&quot;,
+        &quot;final_overlap_pi1&quot;: 0.465581,
+        &quot;final_rho&quot;: 0.212191,
+        &quot;surface_overlap_pi1&quot;: 0.38968,
+        &quot;surface_rho&quot;: 0.142559
+      },
+      &quot;GEMSDOE92_lbmc1_89a660f6&quot;: {
+        &quot;sha256&quot;: &quot;e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c&quot;,
+        &quot;final_overlap_pi1&quot;: 0.311282,
+        &quot;final_rho&quot;: 0.027188,
+        &quot;surface_overlap_pi1&quot;: 0.340256,
+        &quot;surface_rho&quot;: -0.028995
+      },
+      &quot;GEMSDOE92_rieszlbm2_79041788&quot;: {
+        &quot;sha256&quot;: &quot;d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a&quot;,
+        &quot;final_overlap_pi1&quot;: 0.366442,
+        &quot;final_rho&quot;: 0.023701,
+        &quot;surface_overlap_pi1&quot;: 0.377277,
+        &quot;surface_rho&quot;: -0.043543
+      },
+      &quot;GEMSDOE92_tipcomp_8f27b9d6&quot;: {
+        &quot;sha256&quot;: &quot;8f27b9d6478526d72a055f0a56c7c8f6db1d63f2f5c66233b7eedbf9937579cf&quot;,
+        &quot;final_overlap_pi1&quot;: 0.326393,
+        &quot;final_rho&quot;: 0.015435,
+        &quot;surface_overlap_pi1&quot;: 0.389441,
+        &quot;surface_rho&quot;: -0.060302
+      },
+      &quot;GEMSDOE92_blindcorridor_11f8999c&quot;: {
+        &quot;sha256&quot;: &quot;4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14&quot;,
+        &quot;final_overlap_pi1&quot;: 0.048149,
+        &quot;final_rho&quot;: -0.007207,
+        &quot;surface_overlap_pi1&quot;: 0.013916,
+        &quot;surface_rho&quot;: -0.075416
+      }
+    },
+    &quot;duplicate&quot;: false,
+    &quot;literal_reading&quot;: {
+      &quot;worst&quot;: 1.0,
+      &quot;worst_sha256&quot;: &quot;03d619fa75689b48bd3eb4f74c3fa529a9b04c19bd716e15640d910baf3d5a90&quot;,
+      &quot;worst_where&quot;: [
+        &quot;buffedlizard55-lab/GEMSDOE2&quot;
+      ],
+      &quot;duplicate_under_literal&quot;: true,
+      &quot;note&quot;: &quot;Literal reading is degenerate: any raster positive on every footprint cell gives 1.0.&quot;
+    }
+  },
+  &quot;validator_output&quot;: {
+    &quot;no_nan_in_footprint&quot;: true,
+    &quot;no_nan_anywhere&quot;: true,
+    &quot;values_in_0_1&quot;: true,
+    &quot;values_range&quot;: [
+      0.0,
+      1.0
+    ],
+    &quot;crs&quot;: &quot;EPSG:32611&quot;,
+    &quot;crs_match&quot;: true,
+    &quot;shape&quot;: [
+      3730,
+      3292
+    ],
+    &quot;shape_match&quot;: true,
+    &quot;transform_match&quot;: true,
+    &quot;dtype&quot;: &quot;float32&quot;,
+    &quot;dtype_float32&quot;: true,
+    &quot;single_band&quot;: true,
+    &quot;zeros_outside_footprint&quot;: true,
+    &quot;zero_mass_on_mapped_catalogue&quot;: true,
+    &quot;gates_pass&quot;: true,
+    &quot;gems57_validate_pass&quot;: true,
+    &quot;writer_receipt&quot;: {
+      &quot;file&quot;: &quot;gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif&quot;,
+      &quot;sha256&quot;: &quot;b8051a75da299099fb7b43aed18c06aeefa8291d78b523e3083f9620a5527214&quot;,
+      &quot;bytes&quot;: 143522,
+      &quot;submission_name&quot;: &quot;gemsdoe92-admitrelay1-37654d-b8051a75&quot;,
+      &quot;note&quot;: &quot;ADMITRELAY E3 (b8051a75): 37654 binary dots; Forsyth admittance + K/Th + Pollard-Segall relay + LBM-v3; &lt;=0.66 PI-1 8-owner cap.&quot;,
+      &quot;note_chars&quot;: 128,
+      &quot;validator&quot;: {
+        &quot;file&quot;: &quot;/home/user/GEMSDOE92/docs/downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif&quot;,
+        &quot;bytes&quot;: 143522,
+        &quot;sha256&quot;: &quot;b8051a75da299099fb7b43aed18c06aeefa8291d78b523e3083f9620a5527214&quot;,
+        &quot;meta&quot;: {
+          &quot;crs&quot;: &quot;EPSG:32611&quot;,
+          &quot;shape&quot;: [
+            3730,
+            3292
+          ],
+          &quot;dtype&quot;: &quot;float32&quot;,
+          &quot;count&quot;: 1,
+          &quot;nodata&quot;: null,
+          &quot;transform&quot;: [
+            100.0,
+            0.0,
+            243350.0,
+            0.0,
+            -100.0,
+            4508550.0
+          ],
+          &quot;profile_compress&quot;: &quot;deflate&quot;
+        },
+        &quot;band_description&quot;: [
+          null
+        ],
+        &quot;n_finite&quot;: 12279160,
+        &quot;n_nan&quot;: 0,
+        &quot;n_infinite&quot;: 0,
+        &quot;min&quot;: 0.0,
+        &quot;max&quot;: 1.0,
+        &quot;mean&quot;: 0.0030664964579045773,
+        &quot;emitted_positive_pixels&quot;: 37654,
+        &quot;checks&quot;: {
+          &quot;single_band&quot;: true,
+          &quot;dtype_float32&quot;: true,
+          &quot;dimensions_3730x3292&quot;: true,
+          &quot;crs_epsg_32611&quot;: true,
+          &quot;transform_matches_sample_submission&quot;: true,
+          &quot;no_nan_anywhere&quot;: true,
+          &quot;no_inf_anywhere&quot;: true,
+          &quot;no_sentinel_values&quot;: true,
+          &quot;range_0_1_guaranteed&quot;: true,
+          &quot;min_ge_0&quot;: true,
+          &quot;max_le_1&quot;: true,
+          &quot;in_footprint_all_finite&quot;: true,
+          &quot;in_footprint_unmasked&quot;: true,
+          &quot;in_footprint_range_0_1&quot;: true,
+          &quot;outside_footprint_zero&quot;: true,
+          &quot;zero_dots_on_mapped_catalogue&quot;: true
+        },
+        &quot;all_checks_passed&quot;: true,
+        &quot;validation_class&quot;: &quot;local format/range preflight; not organizer acceptance or uniqueness clearance&quot;,
+        &quot;on_catalogue_positive_pixels&quot;: 0,
+        &quot;in_footprint_positive_pixels&quot;: 37654,
+        &quot;footprint_fraction&quot;: 0.007286874781441169
+      },
+      &quot;template_report&quot;: {
+        &quot;path&quot;: &quot;/home/user/GEMSDOE92/docs/downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif&quot;,
+        &quot;bytes&quot;: 143522,
+        &quot;sha256&quot;: &quot;b8051a75da299099fb7b43aed18c06aeefa8291d78b523e3083f9620a5527214&quot;,
+        &quot;bands&quot;: 1,
+        &quot;dtype&quot;: &quot;float32&quot;,
+        &quot;crs&quot;: &quot;EPSG:32611&quot;,
+        &quot;width&quot;: 3292,
+        &quot;height&quot;: 3730,
+        &quot;bounds&quot;: [
+          243350.0,
+          4135550.0,
+          572550.0,
+          4508550.0
+        ],
+        &quot;ref_bounds&quot;: [
+          243350.0,
+          4135550.0,
+          572550.0,
+          4508550.0
+        ],
+        &quot;transform&quot;: [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        &quot;nodata&quot;: null,
+        &quot;blocksize&quot;: [
+          256,
+          256
+        ],
+        &quot;fixture_grid&quot;: false,
+        &quot;has_validity_mask&quot;: false,
+        &quot;nan_pixels&quot;: 0,
+        &quot;infinity_pixels&quot;: 0,
+        &quot;n_nan&quot;: 0,
+        &quot;min&quot;: 0.0,
+        &quot;max&quot;: 1.0,
+        &quot;mean&quot;: 0.0030664964579045773,
+        &quot;n_nonzero&quot;: 37654,
+        &quot;mass&quot;: 37654.0,
+        &quot;masked_inside_reference_footprint&quot;: 0,
+        &quot;mass_outside_reference_footprint&quot;: 0,
+        &quot;mass_outside_footprint&quot;: 0,
+        &quot;problems&quot;: [],
+        &quot;ok&quot;: true,
+        &quot;validation_class&quot;: &quot;local on-disk template/range check; not organizer upload acceptance&quot;
+      },
+      &quot;zip_file&quot;: &quot;gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.zip&quot;,
+      &quot;zip_sha256&quot;: &quot;c18c12a0a887dbf9bddfdc2144078f8f5d9943f4a6cf6a9c52d5ffd8d7a719cf&quot;,
+      &quot;approved_for_weekly_slot&quot;: false,
+      &quot;promoted&quot;: false,
+      &quot;submission_slots_used&quot;: 0,
+      &quot;status&quot;: &quot;locally validated within separately recorded inventory scope; not organizer acceptance or slot approval&quot;,
+      &quot;metadata&quot;: {}
+    }
+  },
+  &quot;validator&quot;: {
+    &quot;no_nan_in_footprint&quot;: true,
+    &quot;no_nan_anywhere&quot;: true,
+    &quot;values_in_0_1&quot;: true,
+    &quot;values_range&quot;: [
+      0.0,
+      1.0
+    ],
+    &quot;crs&quot;: &quot;EPSG:32611&quot;,
+    &quot;crs_match&quot;: true,
+    &quot;shape&quot;: [
+      3730,
+      3292
+    ],
+    &quot;shape_match&quot;: true,
+    &quot;transform_match&quot;: true,
+    &quot;dtype&quot;: &quot;float32&quot;,
+    &quot;dtype_float32&quot;: true,
+    &quot;single_band&quot;: true,
+    &quot;zeros_outside_footprint&quot;: true,
+    &quot;zero_mass_on_mapped_catalogue&quot;: true,
+    &quot;gates_pass&quot;: true,
+    &quot;gems57_validate_pass&quot;: true,
+    &quot;writer_receipt&quot;: {
+      &quot;file&quot;: &quot;gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif&quot;,
+      &quot;sha256&quot;: &quot;b8051a75da299099fb7b43aed18c06aeefa8291d78b523e3083f9620a5527214&quot;,
+      &quot;bytes&quot;: 143522,
+      &quot;submission_name&quot;: &quot;gemsdoe92-admitrelay1-37654d-b8051a75&quot;,
+      &quot;note&quot;: &quot;ADMITRELAY E3 (b8051a75): 37654 binary dots; Forsyth admittance + K/Th + Pollard-Segall relay + LBM-v3; &lt;=0.66 PI-1 8-owner cap.&quot;,
+      &quot;note_chars&quot;: 128,
+      &quot;validator&quot;: {
+        &quot;file&quot;: &quot;/home/user/GEMSDOE92/docs/downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif&quot;,
+        &quot;bytes&quot;: 143522,
+        &quot;sha256&quot;: &quot;b8051a75da299099fb7b43aed18c06aeefa8291d78b523e3083f9620a5527214&quot;,
+        &quot;meta&quot;: {
+          &quot;crs&quot;: &quot;EPSG:32611&quot;,
+          &quot;shape&quot;: [
+            3730,
+            3292
+          ],
+          &quot;dtype&quot;: &quot;float32&quot;,
+          &quot;count&quot;: 1,
+          &quot;nodata&quot;: null,
+          &quot;transform&quot;: [
+            100.0,
+            0.0,
+            243350.0,
+            0.0,
+            -100.0,
+            4508550.0
+          ],
+          &quot;profile_compress&quot;: &quot;deflate&quot;
+        },
+        &quot;band_description&quot;: [
+          null
+        ],
+        &quot;n_finite&quot;: 12279160,
+        &quot;n_nan&quot;: 0,
+        &quot;n_infinite&quot;: 0,
+        &quot;min&quot;: 0.0,
+        &quot;max&quot;: 1.0,
+        &quot;mean&quot;: 0.0030664964579045773,
+        &quot;emitted_positive_pixels&quot;: 37654,
+        &quot;checks&quot;: {
+          &quot;single_band&quot;: true,
+          &quot;dtype_float32&quot;: true,
+          &quot;dimensions_3730x3292&quot;: true,
+          &quot;crs_epsg_32611&quot;: true,
+          &quot;transform_matches_sample_submission&quot;: true,
+          &quot;no_nan_anywhere&quot;: true,
+          &quot;no_inf_anywhere&quot;: true,
+          &quot;no_sentinel_values&quot;: true,
+          &quot;range_0_1_guaranteed&quot;: true,
+          &quot;min_ge_0&quot;: true,
+          &quot;max_le_1&quot;: true,
+          &quot;in_footprint_all_finite&quot;: true,
+          &quot;in_footprint_unmasked&quot;: true,
+          &quot;in_footprint_range_0_1&quot;: true,
+          &quot;outside_footprint_zero&quot;: true,
+          &quot;zero_dots_on_mapped_catalogue&quot;: true
+        },
+        &quot;all_checks_passed&quot;: true,
+        &quot;validation_class&quot;: &quot;local format/range preflight; not organizer acceptance or uniqueness clearance&quot;,
+        &quot;on_catalogue_positive_pixels&quot;: 0,
+        &quot;in_footprint_positive_pixels&quot;: 37654,
+        &quot;footprint_fraction&quot;: 0.007286874781441169
+      },
+      &quot;template_report&quot;: {
+        &quot;path&quot;: &quot;/home/user/GEMSDOE92/docs/downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif&quot;,
+        &quot;bytes&quot;: 143522,
+        &quot;sha256&quot;: &quot;b8051a75da299099fb7b43aed18c06aeefa8291d78b523e3083f9620a5527214&quot;,
+        &quot;bands&quot;: 1,
+        &quot;dtype&quot;: &quot;float32&quot;,
+        &quot;crs&quot;: &quot;EPSG:32611&quot;,
+        &quot;width&quot;: 3292,
+        &quot;height&quot;: 3730,
+        &quot;bounds&quot;: [
+          243350.0,
+          4135550.0,
+          572550.0,
+          4508550.0
+        ],
+        &quot;ref_bounds&quot;: [
+          243350.0,
+          4135550.0,
+          572550.0,
+          4508550.0
+        ],
+        &quot;transform&quot;: [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        &quot;nodata&quot;: null,
+        &quot;blocksize&quot;: [
+          256,
+          256
+        ],
+        &quot;fixture_grid&quot;: false,
+        &quot;has_validity_mask&quot;: false,
+        &quot;nan_pixels&quot;: 0,
+        &quot;infinity_pixels&quot;: 0,
+        &quot;n_nan&quot;: 0,
+        &quot;min&quot;: 0.0,
+        &quot;max&quot;: 1.0,
+        &quot;mean&quot;: 0.0030664964579045773,
+        &quot;n_nonzero&quot;: 37654,
+        &quot;mass&quot;: 37654.0,
+        &quot;masked_inside_reference_footprint&quot;: 0,
+        &quot;mass_outside_reference_footprint&quot;: 0,
+        &quot;mass_outside_footprint&quot;: 0,
+        &quot;problems&quot;: [],
+        &quot;ok&quot;: true,
+        &quot;validation_class&quot;: &quot;local on-disk template/range check; not organizer upload acceptance&quot;
+      },
+      &quot;zip_file&quot;: &quot;gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.zip&quot;,
+      &quot;zip_sha256&quot;: &quot;c18c12a0a887dbf9bddfdc2144078f8f5d9943f4a6cf6a9c52d5ffd8d7a719cf&quot;,
+      &quot;approved_for_weekly_slot&quot;: false,
+      &quot;promoted&quot;: false,
+      &quot;submission_slots_used&quot;: 0,
+      &quot;status&quot;: &quot;locally validated within separately recorded inventory scope; not organizer acceptance or slot approval&quot;,
+      &quot;metadata&quot;: {}
+    }
+  },
+  &quot;gates_passed&quot;: {
+    &quot;format&quot;: true,
+    &quot;leakage_canaries_le_0p90&quot;: true,
+    &quot;pi1_surface_overlap_le_0p70&quot;: true,
+    &quot;pi1_surface_abs_rho_le_0p90&quot;: true,
+    &quot;pi1_final_dots_overlap_le_0p70&quot;: true,
+    &quot;pi1_final_dots_abs_rho_le_0p90&quot;: true,
+    &quot;literal_full_support_witness_le_0p70&quot;: false,
+    &quot;e2_point_beats_r0_recipe&quot;: true,
+    &quot;e3_deployed_beats_r0_recipe_ci95_gt_0&quot;: false
+  },
+  &quot;blocking_reasons&quot;: [
+    &quot;literal full-support registry witness (17GEMSDOE E-proba-multiscale, 5,167,373 positive cells) gives literal overlap 1.000 &gt; 0.70&quot;,
+    &quot;deployed 3-regime unique E3 HOLDOUT-DTI (0.077725) is below R0_recipe control (0.097750) due to 24% deep-blind &gt;1.8 km allocation&quot;,
+    &quot;unconstrained fold-proper E2 beats R0_recipe on point HOLDOUT-DTI (0.106741 vs 0.097750, +0.008991) but paired 95% CI [-0.001510, +0.019159] narrowly spans zero&quot;
+  ],
+  &quot;weekly_slots_used&quot;: 0,
+  &quot;organizer_confirmed_score&quot;: null,
+  &quot;submission_eligible&quot;: false,
+  &quot;verdict&quot;: &quot;negative&quot;
+}</pre>
+</section>
+</main>
+</body>
+</html>

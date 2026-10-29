@@ -126,8 +126,12 @@ GEMSDOE91|https://buffedlizard55-lab.github.io/GEMSDOE91/|gems91-s17-cwpc-e3-376
 GEMSDOE91|https://buffedlizard55-lab.github.io/GEMSDOE91/|gems91-s17-lftg-20261025T160014Z-7b6bf90844-zeros|0.1823
 GEMSDOE91|https://buffedlizard55-lab.github.io/GEMSDOE91/|gems91-s22-omtj-e1-20261026-a99b8923f0-zeros|0.0298
 GEMSDOE92|https://buffedlizard55-lab.github.io/GEMSDOE92/|gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros|0.0255
+GEMSDOE91|https://buffedlizard55-lab.github.io/GEMSDOE91/|gems91-S18-UNIQUE-curvtilt-20000dots-20261025T182858Z-29db2405|0.0435
+KANLERGEMSDOE2|https://kanlerxz87-cyber.github.io/KANLERGEMSDOE2/docs/index.html|kanlergems2-htcads-exp-2-37654dots-20261026T235227Z-11a2f251-zeros|0.1218
+WBGGEMSDOE3|https://wingbangboozle1-lang.github.io/WBGGEMSDOE3/docs/index.html|wbg3-h3pack-34k-20261027T174337Z-zeros|0.0443
+WBGGEMSDOE2|https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/docs/|wbg2-offcatalogue-density-36k-20261027|0.0262
+ApartGEMSDOE1|https://apartanish22-droid.github.io/ApartGEMSDOE1/docs/index.html|udth-submod-e3-20261027-50e7b334|0.1516
 GEMSDOE92|https://buffedlizard55-lab.github.io/GEMSDOE92/|gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros|0.2784
 KANLERGEMSDOE3|https://kanlerxz87-cyber.github.io/KANLERGEMSDOE3/docs/index.html|kanlergemsdoe3-h-k3-1-cadg-submod-exp-k3-3-oof8f-37654-20261026-f0565e6d10f9-zeros|0.1233
 GEMSDOEkarage1|https://karagemop466-tech.github.io/GEMSDOEkarage1/docs/|karage1-hmas-sinter-dualcover-sep29-20261027T220000Z-zeros|0.1648
 ApartGEMSDOE3|https://apartanish22-droid.github.io/ApartGEMSDOE3/|apartgemsdoe3-h-apart3-1-cfkc-dhc-37654-20261027T215000Z-9dedadfc-zeros|0.1625
-ApartGEMSDOE1|https://apartanish22-droid.github.io/ApartGEMSDOE1/docs/index.html|apartgems1-udth-submod-e3-20261027-50e7b334-zeros|0.1516

@@ -37,7 +37,7 @@ def main() -> int:
     hold = json.loads((EVID / "marussi_trishear_holdout_20261029.json").read_text(encoding="utf-8"))
     uniq_full = json.loads((EVID / "marussi_trishear_uniqueness_20261029.json").read_text(encoding="utf-8"))
     oot29 = json.loads((EVID / "lbm_oot_20261029.json").read_text(encoding="utf-8"))
-    lbm3 = json.loads((EVID / "lbm_v3_20261029.json").read_text(encoding="utf-8"))
+    lbm3 = json.loads((EVID / "marussi_lbm_v3_20261029.json").read_text(encoding="utf-8"))
     fleet29 = json.loads((EVID / "fleet_audit_20261029.json").read_text(encoding="utf-8"))
     f9_src = json.loads((EVID / "focus9_sources_20261028.json").read_text(encoding="utf-8"))
     f9_uniq = json.loads((EVID / "focus9_uniqueness_20261028.json").read_text(encoding="utf-8"))
