@@ -1,9 +1,14 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-## 📌 Read first (standing prompt & current status, reviewed 2026-10-29)
+## Current safety review — 2026-10-29 (read first)
 
-Latest review: [consolidated review](docs/REVIEW_20261029.md) and [independent repository review](docs/REVIEW_20261029_REPO.md); this branch's [Focus-9 and protocol review](docs/REVIEW_20261029_ARENA.md). **DO NOT SUBMIT**; no eligible TIFF is cleared. The recorded RIESZ sparse/top-N PI-1 diagnostic does not override its literal full-support overlap stop or below-control holdout. No weekly slot is selected or spent by these reviews.
-- **Status: DO NOT SUBMIT.** No artifact is cleared under the active conservative protocol. The RIESZ run card's sparse/top-N PI-1 diagnostic (`65.56%`) does **not** override its recorded literal full-support overlap (`1.000 > 0.70`) or failed R0 holdout comparison. TIPCOMP is negative; BLINDCORRIDOR is format-pass only. Historical files report different registry sizes; refer to dated receipts, not one live count.
+**DO NOT SUBMIT:** no newly generated TIFF is cleared. The nine-site summary was corrected after it contradicted the negative RIESZ run card. [Latest focus-site review and next steps](docs/REVIEW_20261029_B4717CB7.md) · [Consolidated review](docs/REVIEW_20261029.md) · [Safety review](docs/REVIEW_20261029_SAFETY.md) · [Independent repository verification](docs/REVIEW_20261029_REPO.md) · [Focus-9 and protocol review](docs/REVIEW_20261029_ARENA.md) · [Nine-site executive summary](docs/executive-summary-nine-sites-20261028.html) · [Negative run card](docs/downloads/review_20261029_b4717cb7_run_card.json) · [Stored session prompt](SESSION_PROMPT.md).
+
+- **Status: DO NOT SUBMIT.** No artifact is cleared under the active conservative protocol. The RIESZ sparse/top-N PI-1 diagnostic does not override its recorded literal full-support overlap (`1.000 > 0.70`) or failed R0 holdout comparison. TIPCOMP is negative; BLINDCORRIDOR is format-pass only. Historical files report different registry sizes; refer to dated receipts, not one live count.
+
+---
+
+### Candidate artifacts and historical context
 - **Damage-zone file** (`gemsdoe92-damagezone-close-dots-20261028-zeros.tif`): FAILS full-registry PI-1 (identical bytes in 5 repos). Not unique.
 - **Blindcorridor** (`gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif`, added to `main` after the registry inventory was built): FAILS full-registry PI-1 (worst 0.7691 vs 13GEMSDOE). Not unique.
 - **Pages site (download, executive summary, official links):** https://buffedlizard55-lab.github.io/GEMSDOE92/
@@ -12,7 +17,7 @@ Latest review: [consolidated review](docs/REVIEW_20261029.md) and [independent r
 
 ## Current decision — 2026-10-29 repository review
 
-**⛔ NO TIFF IS CLEARED for submission. DO NOT SUBMIT or spend a slot.** The three-pass review ran `scripts/check_site.py` (128 served rasters PASS), the full test suite (805 passed, 19 skipped), `make manifest` (PASS), and `make verify` (PASS). It generated no TIFF and ran no holdout or geological experiment. The full cached feature stack is absent, the recorded RIESZ-LOCKED lane exhausted its 3/3 experiment budget, and the prompt's designated single-method paragraph is missing. See [2026-10-29 review and final run card](docs/REVIEW_20261029_ARENA.md).
+**⛔ NO TIFF IS CLEARED for submission. DO NOT SUBMIT or spend a slot.** The three-pass review ran `scripts/check_site.py` (128 served rasters PASS), the full test suite (814 passed, 19 skipped), `make manifest` (PASS), and `make verify` (PASS). It generated no TIFF and ran no holdout or geological experiment. The full cached feature stack is absent, the recorded RIESZ-LOCKED lane exhausted its 3/3 experiment budget, and the prompt's designated single-method paragraph is missing. See [2026-10-29 review and final run card](docs/REVIEW_20261029_ARENA.md).
 
 **⛔ NO TIFF IS CLEARED for submission. DO NOT SUBMIT or spend a slot.** The primary feed identifies RIESZ-LOCKED and gives it a negative verdict. TIPCOMP is also negative. The separate BLINDCORRIDOR artifact is format-pass only and lacks a completed spatial holdout, feature canaries, and full-registry uniqueness validation; it is not an alternate eligible candidate. This review generated no TIFF, ran no experiment, and selected no slot.
 

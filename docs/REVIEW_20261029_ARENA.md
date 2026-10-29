@@ -18,7 +18,7 @@ The following current machine-check results were run in this checkout after inst
 | Check | Result | Scope |
 |---|---|---|
 | `python scripts/check_site.py` | PASS; **128 served rasters gated** | Served file format/range gates, page/status consistency, and local receipts; not leaderboard or full-registry authorization |
-| `python -m pytest tests -q` | **805 passed, 19 skipped, 171 warnings** after integrating the latest `main` change | Repository test suite; skips/warnings are retained as reported |
+| `python -m pytest tests -q` | **814 passed, 19 skipped, 171 warnings** after integrating the latest `main` changes | Repository test suite; skips/warnings are retained as reported |
 | `make manifest` | PASS | Nine committed parent/data artifacts matched `registry/data_manifest.json` hashes |
 | `make verify` | PASS | Pinned R0 parent raster reproduced from committed bytes; `n_dots=37,654`, mass `37,654.0`, footprint `5,167,373` pixels |
 | Full feature cache | ABSENT | `.cache/gems_inputs/training_features.tif` was not present; only bridge/sample/catalogue rasters were present under `data/` |
