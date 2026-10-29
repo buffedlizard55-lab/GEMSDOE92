@@ -1,13 +1,13 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-## Latest safety review — 2026-10-29
+## Current safety review — 2026-10-29 (read first)
 
-**DO NOT SUBMIT.** Repaired a published merge conflict and corrected stale registry summaries. No new TIFF or experiment was produced; see [three-pass review and run card](docs/REVIEW_20261029_SAFETY.md).
+**DO NOT SUBMIT:** no newly generated TIFF is cleared. The linked nine-site executive page was corrected after it contradicted the negative RIESZ run card. [Current review and next steps](docs/REVIEW_20261029_B4717CB7.md) · [Concurrent BLINDCORRIDOR review](docs/REVIEW_20261029.md) · [Concurrent merge-safety review](docs/REVIEW_20261029_SAFETY.md) · [Independent repo review](docs/REVIEW_20261029_REPO.md) · [Nine-site summary](docs/executive-summary-nine-sites-20261028.html) · [Negative review run card](docs/downloads/review_20261029_b4717cb7_run_card.json) · [Stored session prompt](SESSION_PROMPT.md). The prompt's single-method lane is missing; input/registry and evidence gates remain unresolved. Format validity is not submission approval. The standing prompt is a reconstruction, not a verbatim copy of this latest request.
 
-## 📌 Read first (standing prompt & current status, reviewed 2026-10-29)
+---
 
-Latest consolidated review: [2026-10-29 three-pass review](docs/REVIEW_20261029.md). **DO NOT SUBMIT**; no eligible TIFF has been cleared. The [independent repository verification](docs/REVIEW_20261029_REPO.md) reports 804 tests passed, 19 skipped, and 128 served rasters gated; it generated no raster and used no submission slot.
-- **Status: DO NOT SUBMIT.** No focus-site file is unique under the full-registry PI-1 rule (2,216 SHA-256). RIESZ fails the conservative registry stop and its holdout is below R0. TIPCOMP fails PI-1 (worst 0.9180 vs GEMSDOE22). No weekly slot spent.
+## 📌 Read first (standing prompt & current status)
+- **Status: DO NOT SUBMIT.** Historical focus-site peaks fail recorded overlap checks. RIESZ is not cleared: its sparse-only registry result does not override the literal full-support witness stop, and its holdout is below R0. TIPCOMP also fails the recorded audit. No weekly slot spent in this review.
 - **Damage-zone file** (`gemsdoe92-damagezone-close-dots-20261028-zeros.tif`): FAILS full-registry PI-1 (identical bytes in 5 repos). Not unique.
 - **Blindcorridor** (`gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif`, added to `main` after the registry inventory was built): FAILS full-registry PI-1 (worst 0.7691 vs 13GEMSDOE). Not unique.
 - **Pages site (download, executive summary, official links):** https://buffedlizard55-lab.github.io/GEMSDOE92/
