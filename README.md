@@ -1,5 +1,9 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+## Latest review — 2026-10-29
+
+**DO NOT SUBMIT.** Repaired a published merge conflict and corrected stale registry summaries. No new TIFF or experiment was produced; the lane and verified feature stack are unavailable. See [three-pass review and run card](docs/REVIEW_20261029_SAFETY.md).
+
 ## 📌 Read first (standing prompt & current status, 2026-10-28)
 - **Status: DO NOT SUBMIT.** No focus-site file is unique under the full-registry PI-1 rule (2,216 SHA-256). Among the audited candidates, the RIESZ download is the only file that passes uniqueness, and its holdout is below R0. TIPCOMP fails PI-1 (worst 0.9180 vs GEMSDOE22). No weekly slot spent.
 - **Damage-zone file** (`gemsdoe92-damagezone-close-dots-20261028-zeros.tif`): FAILS full-registry PI-1 (identical bytes in 5 repos). Not unique.
