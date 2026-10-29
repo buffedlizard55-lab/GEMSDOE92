@@ -116,6 +116,35 @@ def load_blindcorridor_status():
     return card, audit, status
 
 
+def load_marussi_20261029_status():
+    """Load and byte-verify the 2026-10-29 MARUSSI-TRISHEAR negative research artifact."""
+    import hashlib
+    import zipfile
+
+    card_path = DL / 'gemsdoe92-marussitrishear-34000dots-20261029-236171af_run_card.json'
+    status_path = DL / 'marussi_trishear_readiness_20261029.json'
+    if not card_path.is_file() or not status_path.is_file():
+        return None
+    card = json.loads(card_path.read_text(encoding='utf-8'))
+    status = json.loads(status_path.read_text(encoding='utf-8'))
+    tif_name = Path(card['raster']['file']).name
+    zip_name = Path(card['raster']['zip']).name
+    tif_path = DL / tif_name
+    zip_path = DL / zip_name
+    audit = json.loads((DL / status['audit']).read_text(encoding='utf-8'))
+    digest = hashlib.sha256(tif_path.read_bytes()).hexdigest()
+    if digest != card.get('raster_sha256') or digest != status.get('raster_sha256') or digest != audit.get('sha256_zeros'):
+        raise ValueError('MARUSSI-TRISHEAR SHA-256 mismatch across TIFF, run card, status, or audit')
+    with zipfile.ZipFile(zip_path) as zf:
+        if zf.namelist() != [tif_name] or hashlib.sha256(zf.read(tif_name)).hexdigest() != digest:
+            raise ValueError('MARUSSI-TRISHEAR single-TIFF ZIP payload mismatch')
+    if card.get('verdict') != 'negative' or card.get('submission_eligible') is not False:
+        raise ValueError('MARUSSI-TRISHEAR must remain fail-closed negative')
+    if status.get('verdict') != 'negative' or status.get('submission_eligible') is not False:
+        raise ValueError('MARUSSI-TRISHEAR readiness must remain fail-closed negative')
+    return card, audit, status
+
+
 def load_admitrelay_status():
     """Load and byte-verify the 2026-10-29 ADMITRELAY + LBM-v3 negative research artifact."""
     import hashlib
@@ -252,11 +281,52 @@ def render(card):
 <tr><th>Uniqueness scope</th><td>Full 8-owner scan across <code>{ar_u['registry_rasters']:,}</code> unique SHA-256 rasters: PI-1 passes on <strong>both</strong> pre-placement surface (worst 3-px overlap <code>{ar_u['surface_worst_overlap']:.6f} &le; 0.70</code>, <code>|&rho;| = {ar_u['surface_worst_abs_rho']:.4f} &le; 0.90</code>) and final dots (<code>{ar_u['final_worst_overlap']:.6f} &le; 0.70</code>, <code>|&rho;| = {ar_u['final_worst_abs_rho']:.4f} &le; 0.90</code>). Literal full-support witness <code>17GEMSDOE E-proba-multiscale</code> remains <code>1.000 &gt; 0.70</code>.</td></tr>
 <tr><th>Decision</th><td><strong>DO NOT SUBMIT.</strong> <code>verdict=negative</code>, <code>submission_eligible=false</code>, 0 weekly slots spent. Archived name/note are audit metadata only, not upload instructions.</td></tr></table></section>'''
 
-    body = f'''<p class="small"><a href="executive-summary-20261029-admitrelay.html"><strong>2026-10-29 ADMITRELAY + LBM-v3 Executive Summary</strong></a> · <a href="HYPOTHESES_20261029_ADMITRELAY.md">2026-10-29 Pre-Registered Hypotheses</a> · <a href="STANDING_PROMPT.md">Standing Prompt</a> · <a href="executive-summary-nine-sites-20261028.html">Nine-site executive summary</a> · <a href="STANDING_BRIEF_20261028.md">Standing brief</a> · <a href="HYPOTHESES_20261028_STANDING.md">Untried hypotheses</a></p><nav><a href="how-to-submit.html">How to submit</a> · <a href="nine-sites.html">Nine-site review</a> · <a href="REVIEW_20261028_MAIN_INTEGRATION.md">Current three-pass main-integration review</a> · <a href="REVIEW_20261028_B6AA.md">Full audit and next steps</a> · <a href="REVIEW_20261028_SESSION.md">Independent overlap review</a></nav>
+    marussi = load_marussi_20261029_status()
+    marussi_section = ''
+    marussi_top_line = ''
+    marussi_root_line = ''
+    if marussi:
+        m_card, m_audit, m_status = marussi
+        m_tif = Path(m_status['file']).name
+        m_zip = Path(m_status['zip']).name
+        m_sha = esc(m_status['raster_sha256'])
+        m_e3 = m_card['holdout_dti']['e3_deployed_recipe']
+        m_e2 = m_card['holdout_dti']['e2_marussi_trishear_relay']
+        m_r0 = m_card['holdout_dti']['r0_recipe_control']
+        m_p3 = m_card['holdout_dti']['paired_e3_vs_r0_recipe']
+        m_u = m_card['uniqueness']
+        m_lbm = m_card['model_estimate']['lbm_v3_estimate']
+        marussi_top_line = (
+            f'<p><strong>Latest 2026-10-29 candidate (MARUSSI-TRISHEAR, 34,000 dots — OK TO DOWNLOAD FOR RESEARCH ONLY / DO NOT SUBMIT):</strong> '
+            f'<a href="downloads/{esc(m_tif)}" download><strong>⬇ Download {esc(m_tif)} (1-click GeoTIFF, research only)</strong></a> · '
+            f'<a href="downloads/{esc(m_zip)}" download>ZIP</a> · '
+            f'<a href="executive-summary-20261029-marussi-trishear.html">2026-10-29 MARUSSI-TRISHEAR Executive Summary &amp; 0.2784 Fleet Analysis</a> · '
+            f'<a href="downloads/{esc(m_status["run_card"])}">Run Card JSON</a></p>'
+        )
+        marussi_root_line = (
+            f'<p><strong>2026-10-29 MARUSSI-TRISHEAR research GeoTIFF (DO NOT SUBMIT):</strong> '
+            f'<a href="docs/downloads/{esc(m_tif)}" download><code>{esc(m_tif)}</code></a> (SHA-256 <code>{m_sha}</code>) · '
+            f'<a href="docs/executive-summary-20261029-marussi-trishear.html">2026-10-29 MARUSSI-TRISHEAR Executive Summary</a></p>'
+        )
+        marussi_section = f'''<section id="marussi-20261029" class="stop"><h2>Latest 2026-10-29 candidate: MARUSSI-TRISHEAR — OK TO DOWNLOAD FOR RESEARCH ONLY; DO NOT SUBMIT</h2>
+<p><a href="downloads/{esc(m_tif)}" download><strong>⬇ Download MARUSSI-TRISHEAR GeoTIFF (34,000 dots) for research only — DO NOT SUBMIT</strong></a> ·
+<a href="downloads/{esc(m_zip)}" download>one-TIFF ZIP (research only)</a> ·
+<a href="downloads/{esc(m_status['run_card'])}">byte-bound run card</a> ·
+<a href="downloads/{esc(m_status['audit'])}">11-gate format audit</a> ·
+<a href="downloads/marussi_trishear_readiness_20261029.json">readiness feed</a> ·
+<a href="executive-summary-20261029-marussi-trishear.html"><strong>2026-10-29 MARUSSI-TRISHEAR Executive Summary &amp; 0.2784 Fleet Report</strong></a></p>
+<p>SHA-256 <code>{m_sha}</code> ({m_card['raster']['n_dots']:,} binary dots in <code>[0, 1]</code>, zero NaN anywhere; 11/11 format gates PASS; 24/24 solo leakage canaries PASS with max symmetric AUC <code>{m_card['leakage_canaries']['max_symmetric_auc_all_24_channels']:.4f} &le; 0.90</code>).</p>
+<table><tr><th><code>HOLDOUT-DTI</code></th><td><code>{esc(m_card['holdout_dti']['evaluator_version'])}</code>, {m_card['holdout_dti']['withheld_positive_pixels']:,} withheld positives: deployed unique <code>E3 = {m_e3['dti']:.6f}</code> <code>[{m_e3['ci95'][0]:.6f}, {m_e3['ci95'][1]:.6f}]</code> (beats <code>R0_recipe = {m_r0['dti']:.6f}</code> by <code>{m_p3['delta']:+.6f}</code>, paired 95% CI <code>[{m_p3['ci95'][0]:+.6f}, {m_p3['ci95'][1]:+.6f}]</code>); full 24-ch <code>E2 = {m_e2['dti']:.6f}</code> <code>[{m_e2['ci95'][0]:.6f}, {m_e2['ci95'][1]:.6f}]</code>. Held back because neither exceeded the repo all-time <code>HOLDOUT-DTI</code> best (<code>relay_conduit = 0.184485</code>).</td></tr>
+<tr><th>Uniqueness scope</th><td>Full 8-owner scan across <code>{m_u['registry_rasters']:,}</code> unique SHA-256 rasters ({m_u['registry_repos']} repos): PI-1 passes on <strong>both</strong> pre-placement surface (<code>{m_u['surface_worst_overlap']:.4f} &le; 0.70</code>, <code>|&rho;| = {m_u['surface_worst_abs_rho']:.4f} &le; 0.90</code>) and final binary dots (<code>{m_u['final_worst_overlap']:.4f} &le; 0.70</code>, <code>|&rho;| = {m_u['final_worst_abs_rho']:.4f} &le; 0.90</code>). Literal full-support witness <code>17GEMSDOE E-proba-multiscale</code> remains <code>1.000 &gt; 0.70</code>.</td></tr>
+<tr><th><code>MODEL</code> &amp; Decision</th><td><code>MODEL</code> (not a score): <code>{m_lbm:.5f}</code>. <strong>DO NOT SUBMIT.</strong> <code>verdict=negative</code>, <code>submission_eligible=false</code>, 0 weekly slots spent.</td></tr></table></section>'''
+
+    body = f'''<p class="small"><a href="executive-summary-20261029-marussi-trishear.html"><strong>2026-10-29 MARUSSI-TRISHEAR Executive Summary</strong></a> · <a href="HYPOTHESES_20261029_MARUSSI_TRISHEAR.md">MARUSSI-TRISHEAR Hypotheses</a> · <a href="executive-summary-20261029-admitrelay.html"><strong>2026-10-29 ADMITRELAY + LBM-v3 Executive Summary</strong></a> · <a href="HYPOTHESES_20261029_ADMITRELAY.md">ADMITRELAY Hypotheses</a> · <a href="STANDING_PROMPT.md">Standing Prompt</a> · <a href="executive-summary-nine-sites-20261028.html">Nine-site executive summary</a> · <a href="STANDING_BRIEF_20261028.md">Standing brief</a> · <a href="HYPOTHESES_20261028_STANDING.md">Untried hypotheses</a></p><nav><a href="how-to-submit.html">How to submit</a> · <a href="nine-sites.html">Nine-site review</a> · <a href="REVIEW_20261028_MAIN_INTEGRATION.md">Current three-pass main-integration review</a> · <a href="REVIEW_20261028_B6AA.md">Full audit and next steps</a> · <a href="REVIEW_20261028_SESSION.md">Independent overlap review</a></nav>
 <section id="submit-now" class="stop"><h1>DO NOT SUBMIT — no eligible new TIFF</h1>
-<p>No competition slot was used. The prior Riesz candidate fails the requested literal registry rule and did not beat the holdout control. A range-valid raster is not automatically submission-ready.</p>
+<p>No competition slot was used. The prior Riesz candidate fails the requested literal registry rule and did not beat the holdout control, and both 2026-10-29 research candidates (MARUSSI-TRISHEAR and ADMITRELAY) remain fail-closed negative. A range-valid raster is not automatically submission-ready.</p>
+{marussi_top_line}
 <p><a data-primary="true" href="downloads/{esc(file)}" download>Download existing Riesz TIFF for research only</a> · <a href="downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json">Historical run card, reclassified negative</a></p>
 <p>SHA-256: <code>{digest}</code>. Historical name: <code>{name}</code>. Historical note (not an instruction to upload): <code>{note}</code></p></section>
+{marussi_section}
 {admitrelay_section}
 {tipcomp_section}
 {blindcorridor_section}
@@ -294,7 +364,7 @@ def render(card):
     reason = 'Research only; mandatory promotion protocol gates failed.'
     current = {'file': card['raster']['file'], 'sha256':card['raster_sha256'], 'submission_name':card['submission_name'], 'note':card['note'], 'verdict':'negative','ok_to_download':True,'ok_to_submit':False,'reason':reason,'blocking_reasons':blockers, 'run_card': 'downloads/'+Path(card['raster']['file']).name.replace('-zeros.tif','_run_card.json')}
     readiness = {'file':'downloads/'+file, 'raster_sha256':card['raster_sha256'],'submission_name':card['submission_name'],'note':card['note'], 'verdict':'negative','submission_eligible':False,'download_status':'OK TO DOWNLOAD FOR RESEARCH','submission_status':'DO NOT SUBMIT','reason':reason,'blocking_reasons':blockers,'gates':card.get('gates_passed',{})}
-    root = f'<p>The organizer leaderboard is not mirrored. <a href="https://www.drivendata.org/termsofuse/">DrivenData Terms of Use</a></p><h1>GEMSDOE92</h1><p class="small"><a href="docs/executive-summary-20261029-admitrelay.html"><strong>2026-10-29 ADMITRELAY + LBM-v3 Executive Summary</strong></a> · <a href="docs/executive-summary-nine-sites-20261028.html">Nine-site executive summary (uniqueness, pairwise overlap)</a> · <a href="docs/STANDING_BRIEF_20261028.md">Standing brief</a> · <a href="docs/HYPOTHESES_20261029_ADMITRELAY.md">2026-10-29 Hypotheses</a> · <a href="docs/STANDING_PROMPT.md">Standing Prompt</a></p><section class="stop"><h2>DO NOT SUBMIT — no eligible new TIFF</h2><p>Research-only file: <a href="docs/downloads/{esc(file)}"><code>{esc(file)}</code></a>; SHA-256 <code>{digest}</code>.</p><p>The 2026-10-29 ADMITRELAY + LBM-v3 candidate is also research-only and <strong>DO NOT SUBMIT</strong>; see its <a href="docs/executive-summary-20261029-admitrelay.html">executive summary &amp; run card</a>. The additional BLINDCORRIDOR artifact is format-pass only and also <strong>DO NOT SUBMIT</strong>; see its <a href="docs/index.html#blindcorridor">byte-bound status and audit</a>.</p><p><a href="docs/index.html">Read the executive summary and research downloads</a></p><p><a href="docs/how-to-submit.html">How to submit when cleared</a></p></section>'
+    root = f'<p>The organizer leaderboard is not mirrored. <a href="https://www.drivendata.org/termsofuse/">DrivenData Terms of Use</a></p><h1>GEMSDOE92</h1><p class="small"><a href="docs/executive-summary-20261029-marussi-trishear.html"><strong>2026-10-29 MARUSSI-TRISHEAR Executive Summary</strong></a> · <a href="docs/executive-summary-20261029-admitrelay.html"><strong>2026-10-29 ADMITRELAY + LBM-v3 Executive Summary</strong></a> · <a href="docs/executive-summary-nine-sites-20261028.html">Nine-site executive summary (uniqueness, pairwise overlap)</a> · <a href="docs/STANDING_BRIEF_20261028.md">Standing brief</a> · <a href="docs/HYPOTHESES_20261029_MARUSSI_TRISHEAR.md">2026-10-29 MARUSSI Hypotheses</a> · <a href="docs/HYPOTHESES_20261029_ADMITRELAY.md">2026-10-29 ADMITRELAY Hypotheses</a> · <a href="docs/STANDING_PROMPT.md">Standing Prompt</a></p><section class="stop"><h2>DO NOT SUBMIT — no eligible new TIFF</h2>{marussi_root_line}<p>Research-only file: <a href="docs/downloads/{esc(file)}"><code>{esc(file)}</code></a>; SHA-256 <code>{digest}</code>.</p><p>The 2026-10-29 ADMITRELAY + LBM-v3 candidate is also research-only and <strong>DO NOT SUBMIT</strong>; see its <a href="docs/executive-summary-20261029-admitrelay.html">executive summary &amp; run card</a>. The additional BLINDCORRIDOR artifact is format-pass only and also <strong>DO NOT SUBMIT</strong>; see its <a href="docs/index.html#blindcorridor">byte-bound status and audit</a>.</p><p><a href="docs/index.html">Read the executive summary and research downloads</a></p><p><a href="docs/how-to-submit.html">How to submit when cleared</a></p></section>'
     outputs = {
         DOCS/'index.html': page('GEMSDOE92 — Executive summary', body),
         DOCS/'nine-sites.html': page('GEMSDOE92 — Nine-site review', body),

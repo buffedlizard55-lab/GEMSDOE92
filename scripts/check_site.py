@@ -347,6 +347,37 @@ def check_blindcorridor_history(problems: list[str]) -> None:
     print(f"  HISTORICAL {tif.name} sha256 {digest[:16]}… verdict=format_pass (DO NOT SUBMIT)")
 
 
+def check_marussi_20261029(problems: list[str]) -> None:
+    """Keep the 2026-10-29 MARUSSI-TRISHEAR artifact byte-bound and fail-closed."""
+    status_path = DOWNLOADS / "marussi_trishear_readiness_20261029.json"
+    if not status_path.is_file():
+        problems.append("MARUSSI-TRISHEAR readiness feed missing")
+        return
+    try:
+        status = json.loads(status_path.read_text(encoding="utf-8"))
+        card = json.loads((DOWNLOADS / status["run_card"]).read_text(encoding="utf-8"))
+        audit = json.loads((DOWNLOADS / status["audit"]).read_text(encoding="utf-8"))
+        tif = DOCS / status["file"]
+        summary = (DOCS / status["executive_summary"]).read_text(encoding="utf-8")
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        problems.append(f"MARUSSI-TRISHEAR evidence invalid: {exc}")
+        return
+    if not tif.is_file():
+        problems.append(f"MARUSSI-TRISHEAR TIFF missing: {status.get('file')}")
+        return
+    digest = sha256_file(tif)
+    if digest != status.get("raster_sha256") or digest != card.get("raster_sha256") or digest != audit.get("sha256_zeros"):
+        problems.append("MARUSSI-TRISHEAR SHA-256 mismatch across TIFF, readiness, run card, or audit")
+    if (card.get("verdict") != "negative" or card.get("submission_eligible") is not False
+            or status.get("verdict") != "negative" or status.get("submission_eligible") is not False):
+        problems.append("MARUSSI-TRISHEAR must remain fail-closed negative")
+    if not 0 < len(str(card.get("note", ""))) <= 140:
+        problems.append("MARUSSI-TRISHEAR note must be 1..140 characters")
+    if "DO NOT SUBMIT" not in summary or "OK TO SUBMIT" in summary:
+        problems.append("MARUSSI-TRISHEAR executive summary must state DO NOT SUBMIT without OK TO SUBMIT")
+    print(f"  CANDIDATE-20261029 {tif.name} sha256 {digest[:16]}… verdict=negative (DO NOT SUBMIT)")
+
+
 def check_admitrelay_history(problems: list[str]) -> None:
     """Keep the 2026-10-29 ADMITRELAY + LBM-v3 artifact byte-bound and fail-closed."""
     status_path = DOWNLOADS / "admitrelay_readiness_20261029.json"
@@ -464,6 +495,7 @@ def main() -> int:
     check_primary(html, problems)
     check_tipcomp_history(problems)
     check_blindcorridor_history(problems)
+    check_marussi_20261029(problems)
     check_admitrelay_history(problems)
     n = check_served(html, problems)
     if problems:

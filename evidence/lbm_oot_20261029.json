@@ -1,0 +1,75 @@
+{
+  "schema": "gemsdoe92-lbm-prospective-oot-20261029",
+  "created_utc": "2026-10-29T15:04:08+00:00",
+  "evidence_class": "MODEL vs CLAIM prospective out-of-time audit (no organizer receipt)",
+  "headline_finding": "GEMSDOE92 lbmc1 scored 0.2784 CLAIM (+0.0006 above GEMSDOE32 R0 0.2778 \u2014 new all-time 8-owner fleet high) with only 13.28% of dots on H19-5, confirming genuine off-skeleton test faults on consensus corridors while quantifying +0.0538 Goodhart optimism when optimizing directly against LBM-v1 class multipliers. Across the 3 unambiguous passive partner submissions newly scored on 2026-10-29 (GEMSDOEkarage1 0.1648, ApartGEMSDOE3 0.1625, KANLERGEMSDOE3 0.1233), frozen LBM-v1 achieved prospective OOT RMSE = 0.01937.",
+  "passive_3_oot_rmse": 0.019353,
+  "all_4_unambiguous_new_oot_rmse": 0.031703,
+  "rows": [
+    {
+      "site": "GEMSDOE92",
+      "name": "gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros",
+      "sha256": "e928d3c3fde8b3f1f622bb4f6e638620f0a1897fb6f8178cf26fe93f9c3b3a1c",
+      "claim_20261029": 0.2784,
+      "lbm_v1_oct27_pred": 0.33222,
+      "lbm_v1_oct28_pred": 0.3322,
+      "error_v1_oct27": 0.05382,
+      "n_dots": 35801,
+      "on_h19_frac": 0.1331,
+      "on_cons5_frac": 0.4149,
+      "regime": "active_lbm_greedy_optimized (Goodhart selection optimism)"
+    },
+    {
+      "site": "KANLERGEMSDOE3",
+      "name": "kanlergemsdoe3-h-k3-1-cadg-submod-exp-k3-3-oof8f-37654-20261026-f0565e6d10f9-zeros",
+      "sha256": "bc019ae673a9d5ca1fe40e968759a2af8ae757a110599b66fc949c4f59961fba",
+      "claim_20261029": 0.1233,
+      "lbm_v1_oct27_pred": 0.15352,
+      "lbm_v1_oct28_pred": 0.15351,
+      "error_v1_oct27": 0.03022,
+      "n_dots": 37654,
+      "on_h19_frac": 0.1047,
+      "on_cons5_frac": 0.2882,
+      "regime": "passive_external_partner_submission"
+    },
+    {
+      "site": "GEMSDOEkarage1",
+      "name": "karage1-hmas-sinter-dualcover-sep29-20261027T220000Z-zeros",
+      "sha256": "198076f81067353c3ee41d947c7830ef11db2e8128bc5f8c5bd20ef036736f76",
+      "claim_20261029": 0.1648,
+      "lbm_v1_oct27_pred": 0.17789,
+      "lbm_v1_oct28_pred": 0.17788,
+      "error_v1_oct27": 0.01309,
+      "n_dots": 38200,
+      "on_h19_frac": 0.1149,
+      "on_cons5_frac": 0.2924,
+      "regime": "passive_external_partner_submission"
+    },
+    {
+      "site": "ApartGEMSDOE3",
+      "name": "apartgemsdoe3-h-apart3-1-cfkc-dhc-37654-20261027T215000Z-9dedadfc-zeros",
+      "sha256": "afbfee1f46d6d3ca16297904cadf29d9cf9327d2ec5519e37f472c85bfaec065",
+      "claim_20261029": 0.1625,
+      "lbm_v1_oct27_pred": 0.15625,
+      "lbm_v1_oct28_pred": 0.15624,
+      "error_v1_oct27": -0.00625,
+      "n_dots": 37654,
+      "on_h19_frac": 0.127,
+      "on_cons5_frac": 0.3478,
+      "regime": "passive_external_partner_submission"
+    },
+    {
+      "site": "ApartGEMSDOE1",
+      "name": "apartgems1-udth-submod-e3-20261027-50e7b334-zeros",
+      "sha256": "16f7101f41dd0331ac6076d6f55c906b7c1aa9fc7180258361450e9ecf87eede",
+      "claim_20261029": 0.1516,
+      "lbm_v1_oct27_pred": 0.04547,
+      "lbm_v1_oct28_pred": 0.04547,
+      "error_v1_oct27": -0.10613,
+      "n_dots": 38500,
+      "on_h19_frac": 0.0679,
+      "on_cons5_frac": 0.2648,
+      "regime": "conflicting_prompt_score_0.0525_vs_0.1516 (flagged IR-1029-2)"
+    }
+  ]
+}
