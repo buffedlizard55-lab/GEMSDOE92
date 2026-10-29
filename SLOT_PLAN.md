@@ -1,6 +1,15 @@
-# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-28, Post-`RIESZ_LOCKED_LBM_V2` / `81d8ca8b` Session)
+# Weekly Slot Plan — GEMSDOE92 (Updated 2026-10-29, Post-`ADMITRELAY` + `LBM-v3` / `f7a0fcb3` Session)
 
-## Current Selector Decision (`2026-10-28`): **PRIMARY CANDIDATE CLEARED FOR HUMAN SELECTOR (`verdict: "promote"`, `submission_eligible: true`, `0` weekly slots auto-spent)**
+## Current Selector Decision (`2026-10-29`): **NO SLOT AUTHORIZED — DO NOT SUBMIT (`verdict: "negative"`, `submission_eligible: false`, `0` weekly slots spent)**
+
+- **2026-10-29 Ledger Confirmation:** `GEMSDOE92`'s `2026-10-27` submission `gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif` (`SHA-256 e928d3c3…3a1c`) is newly confirmed in `ledger/claims_20261029.txt` at **`0.2784` (`CLAIM`)** — #1 across all `123` repositories (`+0.0006` over `GEMSDOE32` `0.2778`). Centerline-monotone `LBM-v3` (`evidence/lbm_v3_20261029.json`) predicts `0.2818` prospectively out-of-time (`err = -0.0034`, `15.76×` error reduction vs `LBM-v1` `0.3320`).
+- **2026-10-29 `ADMITRELAY` Candidate (`verdict: "negative"`, `submission_eligible: false`, DO NOT SUBMIT):** `docs/downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif` (`SHA-256 b8051a75da299099fb7b43aed18c06aeefa8291d78b523e3083f9620a5527214`, `37,654` binary dots; `11/11` format gates PASS; `20/20` leakage canaries PASS `<= 0.7809`; `PI-1` passes across all `2,262` rasters on **both** pre-placement surface `0.6350 <= 0.70` and final dots `0.6470 <= 0.70`; zero-catalogue `E1 = 0.083198`, fold-proper `E2 = 0.106741 > R0_recipe 0.097750`, deployed unique `E3 = 0.077725`, `LBM-v3 MODEL = 0.2058`). Kept strictly research-only; **do not spend a weekly competition slot** (`evidence/admitrelay_run_card_20261029.json`).
+
+---
+
+# Historical Weekly Slot Plan — GEMSDOE92 (2026-10-28, Post-`RIESZ_LOCKED_LBM_V2` / `81d8ca8b` Session — SUPERSEDED BY NEGATIVE PROTOCOL REVIEW)
+
+## Historical Selector Note (`2026-10-28`, superseded — reclassified `verdict: "negative"`, `submission_eligible: false` in `REVIEW_20261028_PROTOCOL.md`)
 
 - **Primary `2026-10-28` Submission Candidate (`RIESZ_LOCKED_LBM_V2` / `rieszlbm2`):**
   - **File:** `docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif` (`203,310` bytes; companion one-TIFF ZIP `docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.zip`; SHA-256 `d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a`).

@@ -1,3 +1,11 @@
+# Submission status — 2026-10-29 review (`ADMITRELAY` + `LBM-v3`)
+
+## ⛔ DO NOT SUBMIT — no candidate is cleared for a weekly competition slot (`submission_eligible: false`, `0` slots spent)
+
+- **Newest 2026-10-29 research candidate (`ADMITRELAY`, `verdict: negative`):** [`docs/downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif`](docs/downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif) (`SHA-256 = b8051a75da299099fb7b43aed18c06aeefa8291d78b523e3083f9620a5527214`) is **OK TO DOWNLOAD FOR RESEARCH ONLY** (`11/11` format gates PASS in `[0, 1]`, `20/20` leakage canaries PASS with max symmetric AUC `0.7809 <= 0.90`, `PI-1` unique across all `2,262` 8-owner rasters on both pre-placement surface `0.6350 <= 0.70` and final dots `0.6470 <= 0.70`), but **NOT CLEARED FOR SUBMISSION**: literal `17GEMSDOE` full-support witness is `1.000 > 0.70`, deployed `E3` `HOLDOUT-DTI = 0.077725 [0.066925, 0.088309]` is below `R0_recipe = 0.097750` (unconstrained fold-proper `E2 = 0.106741 [0.092827, 0.119464]`, paired Δ `+0.008991 [-0.001510, +0.019159]`), and Goodhart-debiased `LBM-v3` `MODEL` estimate is `0.2058` (vs already-scored `GEMSDOE92 lbmc1 = 0.2784 CLAIM`). See [2026-10-29 executive summary](docs/executive-summary-20261029-admitrelay.html) and [run card](docs/downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75_run_card.json).
+
+---
+
 # Submission status — 2026-10-28 review
 
 ## ⛔ DO NOT SUBMIT the current RIESZ-LOCKED candidate
