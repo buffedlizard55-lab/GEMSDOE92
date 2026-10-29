@@ -70,6 +70,15 @@ def load_blindcorridor_status():
     if not math.isclose(measured_worst, recorded_worst, rel_tol=0, abs_tol=1e-9):
         raise ValueError('BLINDCORRIDOR worst local overlap disagrees with its reference rows')
 
+    # The original card covers only three local references. A later historical
+    # registry audit exists separately; bind it to the same bytes, do not let
+    # an older card hide a known failure or treat the snapshot as current.
+    registry_path = ROOT / 'evidence/uniq_full_registry/blindcorridor-37654dots-11f8999c.json'
+    registry = json.loads(registry_path.read_text(encoding='utf-8'))
+    if (registry.get('candidate_sha256') != digest or registry.get('pi1_pass') is not False
+            or registry.get('worst_overlap', {}).get('value', 0) <= 0.70):
+        raise ValueError('BLINDCORRIDOR historical registry evidence changed; review required')
+
     status = {
         'schema': 'gemsdoe92-candidate-readiness-v1',
         'artifact': 'BLINDCORRIDOR',
@@ -93,13 +102,14 @@ def load_blindcorridor_status():
             'scope': 'available bridge rasters only',
             'checked_reference_count': len(references),
             'worst_overlap_3px': recorded_worst,
-            'full_registry_audit': 'not performed',
+            'full_registry_audit': 'not performed',  # original run card only
+            'historical_registry_audit': {'candidate_sha256': digest, 'registry_unique_sha256': registry['registry_unique_sha256'], 'worst_overlap_3px': registry['worst_overlap']['value'], 'worst_repositories': registry['worst_overlap']['repos'], 'pi1_pass': False, 'current': False},
             'literal_dense_witness': 'unresolved',
         },
         'blocking_reasons': [
             'independent HOLDOUT-DTI and 95% CI are absent',
             'individual-feature leakage canaries were not run',
-            'the full public registry uniqueness audit was not performed',
+            'historical registry audit fails the overlap stop; current registry not verified',
             'the literal dense-witness interpretation remains unresolved',
         ],
     }
@@ -179,7 +189,7 @@ def render(card):
 <p>SHA-256 <code>{esc(tipcomp['raster_sha256'])}</code>. Local format validation was recorded as 11/11 gates PASS; that is only file-format validation, not science or organizer acceptance. Metadata is archived for audit and is not a portal-upload recommendation.</p>
 <table><tr><th>Estimated value</th><td><code>MODEL</code>, not a score: published-128 estimate {model['published128']:.4f}; 26-claim refit {model['refit26']:.4f} (bootstrap q05 {model['bootstrap_refit26']['q05']:.4f}). The pre-registered q05 bound 0.2778 was not met.</td></tr>
 <tr><th>HOLDOUT-DTI</th><td><code>{esc(e2['evaluator_version'])}</code>, {e2['withheld_positive_pixels']:,} withheld positives: fold-proper TIPCOMP {e2['dti']:.5f} [{e2['ci95'][0]:.5f}, {e2['ci95'][1]:.5f}]; R0-recipe control {control['dti']:.5f} [{control['ci95'][0]:.5f}, {control['ci95'][1]:.5f}]; paired difference {paired['delta']:.5f} [{paired['ci95'][0]:.5f}, {paired['ci95'][1]:.5f}] (CI spans zero; no holdout win).</td></tr>
-<tr><th>Uniqueness scope</th><td>The archived PI-1 measurement reports {registry['registry_unique_rasters']} local rasters, max dot overlap {registry['worst_overlap']['value']:.5f}, and max sampled |ρ| {registry['worst_abs_rho_surface']['value']:.5f}. This is not a complete registry scan and does not resolve the dense-witness interpretation; do not claim global uniqueness.</td></tr>
+<tr><th>Uniqueness scope</th><td>The archived PI-1 measurement reports {registry['registry_unique_rasters']} local rasters, max dot overlap {registry['worst_overlap']['value']:.5f}, and max sampled |ρ| {registry['worst_abs_rho_surface']['value']:.5f}. This is an earlier partial scan. A later historical full-registry PI-1 audit reports 0.9180 overlap against GEMSDOE22, above 0.70; it fails. The dense-witness interpretation remains unresolved; do not claim global uniqueness.</td></tr>
 <tr><th>Decision</th><td><strong>DO NOT SUBMIT.</strong> Run card verdict is negative and <code>submission_eligible=false</code>. No slot was selected. No organizer-confirmed score is recorded.</td></tr></table></section>'''
 
     blindcorridor = load_blindcorridor_status()
@@ -202,7 +212,7 @@ def render(card):
 <table><tr><th>Run-card projection</th><td><code>MODEL</code>, not a score: {esc(blind_model)}. The run card has no independent <code>HOLDOUT-DTI</code> or 95% CI, so this projection is not validated and is not a submission basis.</td></tr>
 <tr><th>HOLDOUT-DTI</th><td>Not independently computed; withheld-positive count and 95% CI are absent.</td></tr>
 <tr><th>Leakage canaries</th><td>Not run on the full feature stack.</td></tr>
-<tr><th>Local overlap scope</th><td>Recorded worst 3-px overlap {blind_worst:.6f} across {len(blind_refs)} available bridge references only. The full registry audit was not performed; the literal dense-witness interpretation remains unresolved. This is not globally unique or cleared.</td></tr>
+<tr><th>Local overlap scope</th><td>Recorded worst 3-px overlap {blind_worst:.6f} across {len(blind_refs)} available bridge references only. The original run card did not include a full registry audit. A separate <a href="https://github.com/buffedlizard55-lab/GEMSDOE92/blob/913af0ad6e163c86b46ccd4260207862fb805e79/evidence/uniq_full_registry/blindcorridor-37654dots-11f8999c.json">historical registry audit</a> reports worst 3-px overlap {blind_status['uniqueness']['historical_registry_audit']['worst_overlap_3px']:.6f} versus 13GEMSDOE, above the 0.70 stop. The registry snapshot is not current; the literal dense-witness interpretation remains unresolved. This is not globally unique or cleared.</td></tr>
 <tr><th>Decision</th><td><strong>DO NOT SUBMIT.</strong> Run card says <code>verdict=format_pass</code> and <code>submission_eligible=false</code>. Do not use the stored submission name or note as upload instructions.</td></tr></table></section>'''
 
     secondary_meta_path = DL / 'gemsdoe92-damagezone-close-dots-20261028-zeros.json'

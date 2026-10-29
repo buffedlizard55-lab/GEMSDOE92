@@ -1,0 +1,18 @@
+{
+  "hypothesis": null,
+  "mechanism": null,
+  "non_fault_mimic": null,
+  "holdout_dti": null,
+  "holdout_reason": "No experiment: assigned lane absent, cache unavailable, literal registry stop unresolved.",
+  "correlation_overlap_vs_registry": {
+    "status": "historical evidence only, not a new candidate audit",
+    "blindcorridor_3px_overlap": 0.769108,
+    "reference": "buffedlizard55-lab/13GEMSDOE",
+    "evidence": "evidence/uniq_full_registry/blindcorridor-37654dots-11f8999c.json"
+  },
+  "raster_sha256": null,
+  "validator_output": null,
+  "submission_name": null,
+  "note": "No new candidate; do not submit.",
+  "verdict": "negative"
+}

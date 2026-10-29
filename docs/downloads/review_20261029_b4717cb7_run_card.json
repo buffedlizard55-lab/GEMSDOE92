@@ -1,0 +1,21 @@
+{
+  "schema": "gemsdoe92-review-run-card-v1",
+  "date_utc": "2026-10-29",
+  "hypothesis": null,
+  "mechanism": null,
+  "named_non_fault_mimic": null,
+  "lane_status": "The prompt references a single method paragraph but does not supply it; no new lane was inferred.",
+  "experiments_started": 0,
+  "holdout_dti": null,
+  "holdout_details": "Not run: full feature cache and an authorized lane are unavailable; no score, CI or withheld-positive count is claimed for this review.",
+  "registry_correlation_and_overlap": null,
+  "registry_details": "No candidate or new full-registry scan; historical focus-nine receipt used solely as rejection evidence.",
+  "raster_sha256": null,
+  "validator_output": null,
+  "validator_details": "No new raster was produced or validated. Site checker rechecked existing served files for local format only.",
+  "submission_name": null,
+  "note": null,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "reason": "No new candidate can be promoted without a defined lane, input provenance, canaries, holdout and registry gates; no slot was selected."
+}
