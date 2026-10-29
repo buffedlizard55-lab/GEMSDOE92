@@ -2,8 +2,8 @@
 
 ## 📌 Read first (standing prompt & current status, reviewed 2026-10-29)
 
-- **Latest repository review:** [docs/REVIEW_20261029_REPO.md](docs/REVIEW_20261029_REPO.md). Test suite: 804 passed, 19 skipped; site gate: 128 raster files passed. No experiments or submission slots were used. Submission remains **DO NOT SUBMIT**.
-- **Status: DO NOT SUBMIT.** No focus-site file is unique under the full-registry PI-1 rule (2,216 SHA-256). Among the audited candidates, the RIESZ download is the only file that passes uniqueness, and its holdout is below R0. TIPCOMP fails PI-1 (worst 0.9180 vs GEMSDOE22). No weekly slot spent.
+Latest consolidated review: [2026-10-29 three-pass review](docs/REVIEW_20261029.md). **DO NOT SUBMIT**; no eligible TIFF has been cleared. The [independent repository verification](docs/REVIEW_20261029_REPO.md) reports 804 tests passed, 19 skipped, and 128 served rasters gated; it generated no raster and used no submission slot.
+- **Status: DO NOT SUBMIT.** No focus-site file is unique under the full-registry PI-1 rule (2,216 SHA-256). RIESZ fails the conservative registry stop and its holdout is below R0. TIPCOMP fails PI-1 (worst 0.9180 vs GEMSDOE22). No weekly slot spent.
 - **Damage-zone file** (`gemsdoe92-damagezone-close-dots-20261028-zeros.tif`): FAILS full-registry PI-1 (identical bytes in 5 repos). Not unique.
 - **Blindcorridor** (`gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif`, added to `main` after the registry inventory was built): FAILS full-registry PI-1 (worst 0.7691 vs 13GEMSDOE). Not unique.
 - **Pages site (download, executive summary, official links):** https://buffedlizard55-lab.github.io/GEMSDOE92/
@@ -20,7 +20,7 @@
 
 - Stored run-card status: `verdict: format_pass`, **`submission_eligible: false`**. All 11 local format gates are recorded PASS; this does not establish a score or promotion.
 - The run card explicitly says `HOLDOUT-DTI` was not computed and the full 19-band leakage canaries were not run. Its numerical projection is `MODEL` only, not a score; it is not used as a decision.
-- Local PI-1 overlap is recorded as 0.507675 against only three available bridge rasters. The full registry is absent, and the literal dense-witness reading remains unresolved. This is not a registry-wide uniqueness result.
+- The original run card reports overlap 0.507675 against three bridge rasters. A separate [historical registry audit](evidence/uniq_full_registry/blindcorridor-37654dots-11f8999c.json) reports 0.769108 versus 13GEMSDOE, above the 0.70 stop; the snapshot is not current and the literal dense-witness reading remains unresolved.
 - SHA-256: `4027ee1637d8ce478a01684939e12bb31f1f73fe481d2b729be71927f3e52b14`.
 
 ### Other historical candidates
