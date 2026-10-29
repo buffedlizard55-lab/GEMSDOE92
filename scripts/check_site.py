@@ -390,6 +390,12 @@ def check_focus_nine_summary(problems: list[str]) -> None:
         problems.append(f"focus-nine executive summary evidence invalid: {exc}")
 
 
+def check_conflict_markers(label: str, page: str, problems: list[str]) -> None:
+    """Reject unresolved Git markers in served text, including diff3 ancestors."""
+    if re.search(r"^(?:<{7}|={7}|>{7}|\|{7})(?: |$)", page, re.MULTILINE):
+        problems.append(f"{label} contains unresolved merge conflict markers")
+
+
 def main() -> int:
     problems: list[str] = []
     if not INDEX.is_file():
@@ -400,6 +406,8 @@ def main() -> int:
     html = INDEX.read_text(encoding="utf-8")
     howto = (DOCS / "how-to-submit.html").read_text(encoding="utf-8") if (DOCS / "how-to-submit.html").is_file() else ""
     summary = (DOCS / "executive-summary.html").read_text(encoding="utf-8") if (DOCS / "executive-summary.html").is_file() else ""
+    for label, page in (("index.html", html), ("how-to-submit.html", howto), ("executive-summary.html", summary)):
+        check_conflict_markers(label, page, problems)
     for label, page in (("how-to-submit.html", howto), ("executive-summary.html", summary)):
         if "BLINDCORRIDOR" not in page or "DO NOT SUBMIT" not in page:
             problems.append(f"{label} must show the current BLINDCORRIDOR DO NOT SUBMIT status")

@@ -2,7 +2,7 @@
 
 ## Current safety review — 2026-10-29 (read first)
 
-**DO NOT SUBMIT:** no newly generated TIFF is cleared. The linked nine-site executive page was corrected after it contradicted the negative RIESZ run card. [Current review and next steps](docs/REVIEW_20261029_B4717CB7.md) · [Concurrent BLINDCORRIDOR review](docs/REVIEW_20261029.md) · [Nine-site summary](docs/executive-summary-nine-sites-20261028.html) · [Negative review run card](docs/downloads/review_20261029_b4717cb7_run_card.json) · [Stored session prompt](SESSION_PROMPT.md). The prompt's single-method lane is missing; input/registry and evidence gates remain unresolved. Format validity is not submission approval. The standing prompt is a reconstruction, not a verbatim copy of this latest request.
+**DO NOT SUBMIT:** no newly generated TIFF is cleared. The linked nine-site executive page was corrected after it contradicted the negative RIESZ run card. [Current review and next steps](docs/REVIEW_20261029_B4717CB7.md) · [Concurrent BLINDCORRIDOR review](docs/REVIEW_20261029.md) · [Concurrent merge-safety review](docs/REVIEW_20261029_SAFETY.md) · [Independent repo review](docs/REVIEW_20261029_REPO.md) · [Nine-site summary](docs/executive-summary-nine-sites-20261028.html) · [Negative review run card](docs/downloads/review_20261029_b4717cb7_run_card.json) · [Stored session prompt](SESSION_PROMPT.md). The prompt's single-method lane is missing; input/registry and evidence gates remain unresolved. Format validity is not submission approval. The standing prompt is a reconstruction, not a verbatim copy of this latest request.
 
 ---
 
