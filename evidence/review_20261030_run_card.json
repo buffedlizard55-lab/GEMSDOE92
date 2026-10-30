@@ -36,7 +36,7 @@
   "validator_output": {
     "new_candidate": "NOT_RUN: no candidate raster was generated.",
     "site_check": "PASS: 132 served raster files gated by scripts/check_site.py.",
-    "pytest": "PASS after main integration: 839 passed, 19 skipped; 171 warnings.",
+    "pytest": "PASS after latest main integration: 842 passed, 19 skipped; 171 warnings.",
     "manifest_and_parent": "PASS: manifest verified; pinned R0 parent verified.",
     "focus9_renderer_check": "FAIL/CLOSED: active readiness artifact disagrees with the renderer's October 26 historical VARIO review record.",
     "review_banner_check": "FAIL/CLOSED: missing or duplicate authoritative status marker."

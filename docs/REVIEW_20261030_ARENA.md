@@ -52,7 +52,7 @@ No one item is promoted as the next lane: the user-supplied single-lane paragrap
 - Read the current status, charter, standing prompt, session prompt, previous review, site summaries, and submission records.
 - Installed the pinned `requirements.txt` dependencies in ignored `.venv/`.
 - **PASS:** `PYTHONPATH=vendor .venv/bin/python scripts/check_site.py` validated **132** served rasters.
-- **PASS:** `.venv/bin/python -m pytest tests -q` → **839 passed, 19 skipped** after integrating the concurrent main-branch audit additions (171 warnings; 85.70 seconds).
+- **PASS:** `.venv/bin/python -m pytest tests -q` → **842 passed, 19 skipped** after integrating concurrent main-branch audit additions (171 warnings; 87.37 seconds).
 - **PASS:** `gems manifest` and `gems parent` confirmed the tracked inputs and R0 parent (`h33-h33-2-b2`, 37,654 dots); those checks do not rerun model training or the holdout.
 - **PASS:** `.venv/bin/python scripts/review_project.py --fetch-witness --output .cache/review_20261030.json` fetched and hash-validated the pinned GitHub witness; preflight found `5,167,373 / 5,167,373` footprint cells positive and confirmed the literal stop. Its complete receipt is in ignored `.cache/` and is not a tracked deliverable.
 
