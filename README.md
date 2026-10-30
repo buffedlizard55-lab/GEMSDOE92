@@ -1,5 +1,17 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+## Read first — standing user brief and current decision (2026-10-30)
+
+**Project aim:** produce a scientifically defensible, reproducible, genuinely distinct single-band GeoTIFF for DrivenData GEMS; validate the exact bytes automatically (`[0,1]`, no in-footprint NaN, correct CRS/shape/transform); estimate scores only with honest evidence labels; and make the next safe action obvious. Optimize for evidence and the probability of a strong result, own the outcome, and report negative findings. Never call a projection or owner-page claim an organizer score.
+
+**Focus sites:** compare GEMSDOE24, GEMSDOE25, GEMSDOE27, GEMSDOE28, GEMSDOE30, GEMSDOE31, GEMSDOE32, GEMSDOE33, and GEMSDOE36. The detailed supplied-prompt baseline and operating protocol are recorded in [`SESSION_PROMPT.md`](SESSION_PROMPT.md) and [`docs/STANDING_PROMPT.md`](docs/STANDING_PROMPT.md); read them, [`docs/PROJECT_CHARTER.md`](docs/PROJECT_CHARTER.md), [`SLOT_PLAN.md`](SLOT_PLAN.md), and [`IRREGULARITIES.md`](IRREGULARITIES.md) before each project session.
+
+**Current review decision:** **DO NOT SUBMIT any TIFF in this repository.** The current active readiness record is research-only / negative. The literal registry policy has a pinned full-support witness that blocks every nonempty prediction before placement; no fresh candidate, holdout, score estimate, or submission receipt was produced in this review. Focus-site values are historical `CLAIM`s and the exact-file estimate is unavailable. See the [2026-10-30 three-pass review](docs/REVIEW_20261030_ARENA.md) and [machine-readable run card](evidence/review_20261030_run_card.json). No weekly slot was used.
+
+**Protocol before a new submission:** resolve the registry-witness policy and supply an explicit single-method lane; stay within the experiment cap; use the shared cached features, fold-visible hide-and-recover evaluator, and shared writer; run feature-alone leakage canaries; require paired holdout improvement and full pre-placement/final uniqueness checks; then validate the exact TIFF and keep slot selection separate. Stop rather than invent evidence or bypass a failed gate.
+
+---
+
 ## 📌 Current Status — 2026-10-29 (`DEXP-KOSTROV-KOENDERINK` + `MARUSSI-TRISHEAR` + `ADMITRELAY` + Full `2,262`-SHA 8-Owner Fleet Audit)
 
 - **Gate Indicator: ✅ OK TO DOWNLOAD FOR RESEARCH ONLY · ⛔ DO NOT SUBMIT (`verdict: "negative"`, `submission_eligible: false`, `0` weekly slots spent — NO TIFF IS CLEARED for portal upload without human selector disposition).**
