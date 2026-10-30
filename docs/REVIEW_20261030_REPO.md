@@ -48,7 +48,7 @@ The byte-level lineage in the archived audit gives a plausible, testable mechani
 ### Pass 2 — independent checks and edge cases
 
 - Installed the pinned `requirements.txt` in ignored `.venv`.
-- `.venv/bin/python -m pytest tests -q`: **839 passed, 19 skipped**, 171 warnings on the final merged-branch rerun (63.07 seconds).
+- `.venv/bin/python -m pytest tests -q`: **842 passed, 19 skipped**, 171 warnings on the final merged-branch rerun (63.84 seconds).
 - `PYTHONPATH=vendor .venv/bin/python scripts/check_site.py`: **PASS**, 132 served raster files gated. This verifies the repository's site/raster gates; it is not leaderboard evidence or a new global registry scan.
 - `scripts/audit_input_cache.py`: **exit 1 / fail closed**, 0/12 pinned input files verified. The full feature stack, official-label/sample bundle, and external inputs are not in this checkout's ignored cache.
 - Confirmed the ignored public registry cache is absent. The historical registry witness stop is documented in prior run cards, but could not be freshly re-audited against the complete registry in this workspace.
@@ -121,7 +121,7 @@ Links are supplied for review. This session did not verify their current respons
     "values_in_0_1": "not applicable",
     "crs_shape_transform_match": "not applicable",
     "site_check": "PASS; 132 served rasters gated",
-    "tests": "839 passed, 19 skipped; 171 warnings",
+    "tests": "842 passed, 19 skipped; 171 warnings",
     "input_cache": "FAIL CLOSED; 0 of 12 pinned inputs verified"
   },
   "submission_name": null,
