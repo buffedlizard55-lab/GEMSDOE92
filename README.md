@@ -1,5 +1,7 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+> **2026-10-30 session review:** No GeoTIFF is cleared for competition upload. Existing candidate downloads are research-only; do not submit or spend a slot. There is a documented primary-candidate mismatch between this README, `SUBMISSION_READY.md`, and the evidence-bound Pages/status feeds. Read [the current review](docs/REVIEW_20261030_SESSION.md) before relying on any older status banner. At the start of each session, read this README and the normalized operating brief in [`SESSION_PROMPT.md`](SESSION_PROMPT.md); that file is a maintained summary, not a verbatim copy of every user prompt.
+
 ## 📌 Current Status — 2026-10-29 (`DEXP-KOSTROV-KOENDERINK` + `MARUSSI-TRISHEAR` + `ADMITRELAY` + Full `2,262`-SHA 8-Owner Fleet Audit)
 
 - **Gate Indicator: ✅ OK TO DOWNLOAD FOR RESEARCH ONLY · ⛔ DO NOT SUBMIT (`verdict: "negative"`, `submission_eligible: false`, `0` weekly slots spent — NO TIFF IS CLEARED for portal upload without human selector disposition).**
@@ -276,7 +278,7 @@ Automated validation (no human inspection): finite [0, 1] everywhere, no masked 
 </details>
 
 > ## Standing prompt and session guidelines (2026-10-30, branch `arena/9f125ee7-gemsdoe92`)
-> Read this section at the start of every session. The full review of this session is [`docs/REVIEW_20261030_SESSION.md`](docs/REVIEW_20261030_SESSION.md); the run card is [`evidence/review_20261030_run_card.json`](evidence/review_20261030_run_card.json).
+> Read this section at the start of every session. The full review of this session is [`docs/REVIEW_20261030_NINESITE.md`](docs/REVIEW_20261030_NINESITE.md); the run card is [`evidence/review_20261030_ninesite_run_card.json`](evidence/review_20261030_ninesite_run_card.json). (A concurrent 2026-10-30 review on `main` uses `docs/REVIEW_20261030_SESSION.md`; the names differ on purpose.)
 >
 > **Task as given:** review the repository; analyse the highest-scoring GEMSDOE submissions (GEMSDOE24, 25, 27, 28, 30, 31, 32, 33, 36) with an executive per-site table (best file, estimated score, uniqueness); generate a unique, valid GeoTIFF for DrivenData competition 306 that scores above the stated best, validated automatically through the project; explain why GEMSDOE32 (0.2778 owner-reported) scored highest; propose 3–5 geological hypotheses ranked by expected DTI gain and cost, validated on a spatially blocked holdout before any slot is spent; publish an executive summary page with a one-click download at the top; keep official sources and links in the repo; list remaining work and limitations; open and merge a PR.
 >

@@ -1556,7 +1556,7 @@ Every number below is from a command run here or a stored file named in the row.
 
 ## 2026-10-30 review (`arena/9f125ee7-gemsdoe92`) — IR-0130-*
 
-Source: `docs/REVIEW_20261030_SESSION.md` §4. Recorded here for the repo log.
+Source: `docs/REVIEW_20261030_NINESITE.md` §4. Recorded here for the repo log.
 
 - **IR-0130-1 — Primary pointer mismatch on the public page.** `docs/index.html` declares `data-primary="true"` on `downloads/gemsdoe92-rieszlbm2-…-zeros.tif` (`DO NOT SUBMIT`), while the headline "One-Click Download" banner on the same page describes `gemsdoe92-dexpkostrov1-…-ffa21c17-zeros.tif` (also `DO NOT SUBMIT`). Both are negative, so no upload is at risk, but a reader sees two different "current" files. Fix needs a decision on which file is primary; the renderer (`scripts/render_site_v3.py`) owns the page. **Not changed here.**
 - **IR-0130-2 — Outside-footprint encoding conflicts with the official text.** The official spec says "data outside the bounds is null or nan". Most repo files use zeros outside. Under the metric formula, zeros and NaN are score-neutral (zero-valued cells add nothing to TP or FP, and ground truth lies inside the footprint), so this is a format question, not a score question. The reason given for zeros (the portal's "Predicted values must be in range [0, 1]") is unverified. The owner page for GEMSDOE31 says a portal "rejected NaN" with that error (conditional wording, unverified), and the user reported the same error. **Needs an organizer answer** on the DrivenData forum.
