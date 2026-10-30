@@ -1,5 +1,9 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+## Current repository review — 2026-10-30
+
+Read [the dated repository review](docs/REVIEW_20261030_REPOSITORY.md) before relying on historical status below. No TIFF is cleared for submission; no new experiment was run because the active protocol lacks an assigned lane and the literal dense-witness uniqueness stop remains unresolved. Tests were not run successfully: pytest is unavailable in this environment.
+
 ## 📌 Current Status — 2026-10-29 (`DEXP-KOSTROV-KOENDERINK` + `MARUSSI-TRISHEAR` + `ADMITRELAY` + Full `2,262`-SHA 8-Owner Fleet Audit)
 
 - **Gate Indicator: ✅ OK TO DOWNLOAD FOR RESEARCH ONLY · ⛔ DO NOT SUBMIT (`verdict: "negative"`, `submission_eligible: false`, `0` weekly slots spent — NO TIFF IS CLEARED for portal upload without human selector disposition).**
