@@ -8,23 +8,23 @@ The prompt's `0.2778`, `0.3195`, and `0.4413` leaderboard figures are **CLAIM / 
 
 ## Focus-site executive summary
 
-Each row names the highest reported historical item supplied for the requested site set. The filename is retained in the historical audit, but the TIFF bytes are **not present in this checkout**; the site link is a navigation pointer, not a verified direct download. `CLAIM` means the score was reported by a site/owner; the repo records no organizer receipt for these values. The holdout column is the archived static re-evaluation, **not** a prospective validation of a model trained without the withheld segment. `Estimated future score` is deliberately `N/A`: the existing score estimator is not sufficiently validated for a per-file prediction.
+Each row names the highest reported historical item supplied for the requested site set. The filename comes from the archived 2026-10-30 owner-repository byte audit; the TIFF bytes are **not present in this checkout**. The linked site is a navigation pointer, not a verified direct download. `CLAIM` means the score was reported by a site/owner; the repo records no organizer receipt for these values. The holdout column is an archived static re-evaluation of the repository's prior local variant, **not** a prospective validation of a model trained without the withheld segment or proof of an exact-byte score for the current owner copy. `Estimated future score` is deliberately `N/A`: the existing score estimator is not sufficiently validated for a per-file prediction.
 
 | Site (owner page; not live-checked) | Highest reported historical filename (bytes are not in this checkout) | Reported result | Archived HOLDOUT-DTI* | Unique vs other eight focus sites? | Estimated future score |
 |---|---|---:|---:|---|---|
-| GEMSDOE24 | `gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-allfinite.tif` ([site](https://buffedlizard55-lab.github.io/GEMSDOE24/)) | **0.2477 CLAIM** | 0.090296 [0.079385, 0.102871] | **No** — fails pairwise focus-set duplicate threshold(s) | N/A |
-| GEMSDOE25 | `gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-zeros.tif` ([site](https://buffedlizard55-lab.github.io/GEMSDOE25/)) | **0.2600 CLAIM** | 0.093234 [0.082019, 0.105955] | **No** — exact same support as GEMSDOE30 D28 (0-XOR) | N/A |
-| GEMSDOE27 | `gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-allfinite.tif` ([site](https://buffedlizard55-lab.github.io/GEMSDOE27/)) | **0.2449 CLAIM** | 0.089959 [0.079128, 0.102269] | **No** — fails pairwise focus-set duplicate threshold(s) | N/A |
-| GEMSDOE28 | `gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-allfinite.tif` ([site](https://buffedlizard55-lab.github.io/GEMSDOE28/)) | **0.2710 CLAIM** | 0.027383 [0.024059, 0.030894] | **No** — fails pairwise focus-set duplicate threshold(s) | N/A |
+| GEMSDOE24 | `gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif` ([site](https://buffedlizard55-lab.github.io/GEMSDOE24/)) | **0.2477 CLAIM** | 0.090296 [0.079385, 0.102871] | **No** — fails pairwise focus-set duplicate threshold(s) | N/A |
+| GEMSDOE25 | `gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif` ([site](https://buffedlizard55-lab.github.io/GEMSDOE25/)) | **0.2600 CLAIM** | 0.093234 [0.082019, 0.105955] | **No** — exact same support as GEMSDOE30 D28 (0-XOR) | N/A |
+| GEMSDOE27 | `gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif` ([site](https://buffedlizard55-lab.github.io/GEMSDOE27/)) | **0.2449 CLAIM** | 0.089959 [0.079128, 0.102269] | **No** — fails pairwise focus-set duplicate threshold(s) | N/A |
+| GEMSDOE28 | `gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif` ([site](https://buffedlizard55-lab.github.io/GEMSDOE28/)) | **0.2710 CLAIM** | 0.027383 [0.024059, 0.030894] | **No** — fails pairwise focus-set duplicate threshold(s) | N/A |
 | GEMSDOE30 | `gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif` ([site](https://buffedlizard55-lab.github.io/GEMSDOE30/)) | **0.2600 CLAIM** | 0.093234 [0.082019, 0.105955] | **No** — exact same support as GEMSDOE25 D2.8 (0-XOR) | N/A |
-| GEMSDOE31 | `gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-allfinite.tif` ([site](https://buffedlizard55-lab.github.io/GEMSDOE31/)) | **0.2708 CLAIM** | 0.029358 [0.026029, 0.032708] | **No** — exact same support as GEMSDOE28 h27-4 solo (0-XOR) | N/A |
+| GEMSDOE31 | `gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif` ([site](https://buffedlizard55-lab.github.io/GEMSDOE31/)) | **0.2708 CLAIM** | 0.029358 [0.026029, 0.032708] | **No** — exact same support as GEMSDOE28 h27-4 solo (0-XOR) | N/A |
 | GEMSDOE32 | `gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif` ([site](https://buffedlizard55-lab.github.io/GEMSDOE32/)) | **0.2778 CLAIM** — highest in this focus set | 0.004006 [0.003406, 0.004668] | **No** — exact R0 support; pairwise duplicates in the focus set | N/A |
 | GEMSDOE33 | `GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif` ([site](https://buffedlizard55-lab.github.io/GEMSDOE33/)) | **0.2632 CLAIM** | 0.053143 [0.047148, 0.059510] | **No** — fails pairwise focus-set duplicate threshold(s) | N/A |
 | GEMSDOE36 | `gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif` ([site](https://buffedlizard55-lab.github.io/GEMSDOE36/)) | **0.2750 CLAIM** | 0.004192 [0.003594, 0.004846] | **No** — contains all 37,654 GEMSDOE32 dots plus 1,200 extras | N/A |
 
-\* **HOLDOUT-DTI** values above are the archived static audit's `gems57-pooled-hide-v2` output (8 spatial folds, 22,663 withheld positives; 95% intervals as stored in `evidence/focus9_executive_audit_20261026.json`). They are *not* evidence that these historical files were generated prospectively with fold-visible-only catalogue features. The records themselves flag this distinction. This static audit ran 2026-10-26 and is not newly reproduced here.
+\* **HOLDOUT-DTI** values above are the archived static audit's `gems57-pooled-hide-v2` output (8 spatial folds, 22,663 withheld positives; 95% intervals as stored in `evidence/focus9_executive_audit_20261026.json`). They are *not* evidence that these historical files were generated prospectively with fold-visible-only catalogue features. The records themselves flag this distinction. This static audit ran 2026-10-26 and is not newly reproduced here. For the 24/25/27/28/31 rows, the 2026-10-30 byte audit points to NaN-outside owner-copy variants (7,111,787 NaN cells each), while the older holdout evidence uses different archived byte hashes; do not treat those static values as exact-byte re-scores of those current owner copies. The project’s strict all-finite validator rejects such NaN-outside rasters; official portal handling was not live-verified.
 
-The independently stored row-safe pairwise recheck (`docs/downloads/focus9_pairwise_recheck_14f85876.json`) says all 36 pairs among the nine site's audited submissions are duplicates by at least one direction of 3-pixel overlap or the configured rank-correlation test; it is a nine-site rejection audit, **not** a complete cross-fleet clearance. Exact duplicate examples are GEMSDOE25/GEMSDOE30 and GEMSDOE28 solo/GEMSDOE31. The highest-claim artifacts are not safe recommendations to submit again. A name in this table is not itself a downloadable local file.
+The newer byte-level geometry receipt (`evidence/nine_site_byte_check_20261030.json`, generated by `scripts/nine_site_byte_check.py`) contains 72 directional comparisons for the selected historical best file from each site; each site's minimum directional 3-pixel overlap is 0.867190 or higher, so every selected file violates the >0.70 duplicate criterion against every other one. The exact dot-set duplicate among these nine selected best files is GEMSDOE25/GEMSDOE30. This is a nine-site rejection audit, **not** a complete cross-fleet clearance. The older `focus9_pairwise_recheck_14f85876.json` analyzes a different set of artifacts and should not be conflated with this new selected-best comparison. The highest-claim artifacts are not safe recommendations to submit again. A name in this table is not itself a downloadable local file.
 
 ## Why GEMSDOE32 plausibly led this focus set — and what remains unproven
 
@@ -48,7 +48,7 @@ The byte-level lineage in the archived audit gives a plausible, testable mechani
 ### Pass 2 — independent checks and edge cases
 
 - Installed the pinned `requirements.txt` in ignored `.venv`.
-- `.venv/bin/python -m pytest tests -q`: **834 passed, 19 skipped**, 171 warnings on the final rerun (63.54 seconds).
+- `.venv/bin/python -m pytest tests -q`: **839 passed, 19 skipped**, 171 warnings on the final merged-branch rerun (63.07 seconds).
 - `PYTHONPATH=vendor .venv/bin/python scripts/check_site.py`: **PASS**, 132 served raster files gated. This verifies the repository's site/raster gates; it is not leaderboard evidence or a new global registry scan.
 - `scripts/audit_input_cache.py`: **exit 1 / fail closed**, 0/12 pinned input files verified. The full feature stack, official-label/sample bundle, and external inputs are not in this checkout's ignored cache.
 - Confirmed the ignored public registry cache is absent. The historical registry witness stop is documented in prior run cards, but could not be freshly re-audited against the complete registry in this workspace.
@@ -121,7 +121,7 @@ Links are supplied for review. This session did not verify their current respons
     "values_in_0_1": "not applicable",
     "crs_shape_transform_match": "not applicable",
     "site_check": "PASS; 132 served rasters gated",
-    "tests": "834 passed, 19 skipped; 171 warnings",
+    "tests": "839 passed, 19 skipped; 171 warnings",
     "input_cache": "FAIL CLOSED; 0 of 12 pinned inputs verified"
   },
   "submission_name": null,
