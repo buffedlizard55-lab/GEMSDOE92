@@ -239,7 +239,7 @@ def check_current_primary_readiness_audit(problems: list[str]) -> None:
             from scripts.render_readiness import rejection_proof_errors
             problems.extend(rejection_proof_errors(proof, sample_sha))
         old = receipt.get("supersedes_identity_reading_of", {})
-        if (old.get("path") != "evidence/review_20261030_run_card.json"
+        if (old.get("path") != "evidence/archive/review_20261030_vario_bound_run_card.json"
                 or old.get("previous_primary_download")
                 != "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif"):
             problems.append("current-primary correction receipt does not identify the prior VARIO-bound audit")

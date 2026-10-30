@@ -183,7 +183,7 @@ def audit(root: Path, witness: Path) -> dict:
         },
         'artifact_role': 'existing research download; NOT a newly generated submission',
         'supersedes_identity_reading_of': {
-            'path': 'evidence/review_20261030_run_card.json',
+            'path': 'evidence/archive/review_20261030_vario_bound_run_card.json',
             'previous_primary_download': 'docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif',
             'reason': 'The earlier receipt used the legacy VARIO readiness shim and did not follow docs/index.html data-primary. It is retained as historical evidence, not the current site-primary audit.',
         },
