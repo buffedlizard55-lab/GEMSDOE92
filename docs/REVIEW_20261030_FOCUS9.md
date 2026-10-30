@@ -13,7 +13,7 @@ The nine-site summary is available at [Executive summary: focus sites](executive
 - Read `README.md`, `SESSION_PROMPT.md`, `docs/PROJECT_CHARTER.md`, `docs/NEXT_STEPS.md`, the upstream same-day `docs/REVIEW_20261030_SESSION.md`, the standing protocol/review documents, current readiness JSON, and the focus-nine evidence bundle.
 - Inspected `gems/`, `scripts/`, `vendor/gems57/`, `tests/`, `data/`, `registry/`, `docs/downloads/`, and the site-generation/checking path.
 - Installed the pinned `requirements.txt` into ignored `.venv/`; no dependency or application code was changed.
-- `.venv/bin/python -m pytest tests -q`: **837 passed, 19 skipped**.
+- `.venv/bin/python -m pytest tests -q`: **842 passed, 19 skipped**.
 - `PYTHONPATH=vendor .venv/bin/python scripts/check_site.py`: **PASS**, 132 served raster files format-gated.
 - `.venv/bin/python -m gems manifest --manifest registry/data_manifest.json --data-root data`: **RESULT OK** for the checked-in pinned bridge files.
 - `.venv/bin/python -m gems parent --recipe registry/parents/R0.json --data-root data`: **PARENT VERIFIED**, `h33-h33-2-b2`, SHA-256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9`.
@@ -105,7 +105,7 @@ No numerical expected score is attached to these leads. Their relative ranking i
     "served_raster_gate": "PASS; 132 served rasters checked by scripts/check_site.py",
     "manifest": "PASS for checked-in pinned bridge files",
     "parent": "PASS; h33-h33-2-b2 sha256 c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
-    "test_suite": "837 passed, 19 skipped"
+    "test_suite": "842 passed, 19 skipped"
   },
   "submission_name": null,
   "submission_note": "No new TIFF generated; no existing research TIFF is cleared to submit.",
