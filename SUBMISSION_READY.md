@@ -1,4 +1,16 @@
-# Submission status — 2026-10-29 review (`ADMITRELAY` + `LBM-v3`)
+# Current submission status — 2026-10-30
+
+## ⛔ DO NOT SUBMIT — current site primary is Riesz-LBM2 research-only; no candidate is cleared and no weekly slot was selected or used.
+
+The canonical `docs/index.html` `data-primary` link and both JSON status feeds identify [gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif](docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif), SHA-256 `d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a`, as the current primary. It is **OK TO DOWNLOAD FOR RESEARCH ONLY** and **DO NOT SUBMIT**: local format/range validation passes, but literal registry overlap and the negative holdout comparison block promotion. A format PASS is not organizer acceptance.
+
+- [Current site status](docs/index.html) · [pinned current-main Focus-9 review](docs/focus9-review-20261030.html) · [ranked geological hypotheses](docs/HYPOTHESES_FOCUS9_20261030.md)
+- [Current status feed](docs/downloads/current_submission.json) · [readiness feed](docs/downloads/readiness.json) · [site-primary-bound rejection audit](evidence/readiness_audit_20261030_site_primary_final.json)
+- The 29-Oct DEXP-Kostrov, LIDAR-SINTERVALVE, MARUSSI-TRISHEAR, and ADMITRELAY sections below are historical research artifacts, not the current site primary; every one remains DO NOT SUBMIT.
+
+---
+
+# Historical submission status — 2026-10-29 review (`ADMITRELAY` + `LBM-v3`; not the current site-primary decision)
 
 ## ⛔ DO NOT SUBMIT — no candidate is cleared for a weekly competition slot (`submission_eligible: false`, `0` slots spent)
 

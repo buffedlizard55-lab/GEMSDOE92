@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import check_site
 import render_nine_sites_20261028 as renderer
+import render_focus9_current_review_20261030 as current_renderer
 
 
 def test_published_page_is_generated_and_fail_closed():
@@ -33,6 +34,54 @@ def test_site_check_rejects_altered_summary(monkeypatch, tmp_path):
     problems = []
     check_site.check_focus_nine_summary(problems)
     assert any("stale focus-nine" in p for p in problems)
+
+
+def test_current_main_review_is_pinned_and_fail_closed():
+    page = current_renderer.render()
+    assert "9/9 observed main refs changed" in page
+    assert "GEMSDOE32's 0.2778" in page
+    assert "OWNER-REPORTED / UNVERIFIED" in page
+    assert "NOT ESTIMABLE" in page
+    assert "0.2861" in page and "PROJECTION" in page
+    assert "0.4544" in page and "0.3195" in page
+    assert "Download for competition use: none. Submit: none." in page
+    assert "DO NOT SUBMIT" in page
+    assert "organizer-confirmed" in page.lower()
+    assert "current TIFF bytes" in page
+    assert "focus9_current_main_readback_20261030.json" in page
+
+
+def test_site_check_rejects_altered_current_main_review(monkeypatch, tmp_path):
+    page = tmp_path / "focus9.html"
+    page.write_text(current_renderer.render().replace(
+        "DO NOT SUBMIT — NO FILE CLEARED", "OK TO SUBMIT"))
+    monkeypatch.setattr(current_renderer, "OUT", page)
+    problems = []
+    check_site.check_focus_nine_summary(problems)
+    assert any("stale current-main Focus-9 review" in p for p in problems)
+
+
+def test_current_main_review_rejects_stale_manifest(monkeypatch, tmp_path):
+    files = (
+        "evidence/focus9_current_main_readback_20261030.json",
+        "evidence/focus9_freshness_20261030.json",
+        "evidence/focus9_sources_20261028.json",
+        "docs/downloads/focus_sites_release_review_20261026.json",
+        "docs/downloads/focus9_pairwise_recheck_14f85876.json",
+        "docs/downloads/focus_9sites_audit_20261026.json",
+        "docs/downloads/score_estimator_audit_14f85876.json",
+    )
+    for name in files:
+        dest = tmp_path / name
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy(ROOT / name, dest)
+    path = tmp_path / "evidence/focus9_current_main_readback_20261030.json"
+    data = json.loads(path.read_text())
+    data["freshness_receipt"]["sha256"] = "0" * 64
+    path.write_text(json.dumps(data))
+    monkeypatch.setattr(current_renderer, "ROOT", tmp_path)
+    with pytest.raises(ValueError, match="freshness receipt"):
+        current_renderer.render()
 
 
 @pytest.mark.parametrize("mutation", ["missing", "duplicate", "invalid"])

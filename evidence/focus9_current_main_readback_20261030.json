@@ -1,0 +1,323 @@
+{
+  "schema": "gemsdoe92-focus9-current-main-readback-v1",
+  "reviewed_utc": "2026-10-30T23:23:11Z",
+  "scope": "Read-only pinned-source review of all nine current main refs, root READMEs, and linked owner-maintained current summaries. No TIFFs or private data fetched.",
+  "freshness_receipt": {
+    "path": "evidence/focus9_freshness_20261030.json",
+    "sha256": "46a6034d23c368d61bdee80a4fbc6088e3826990f98d0adeabdbeee72caeea9c",
+    "observed_utc": "2026-10-30T23:09:33.194667+00:00",
+    "changed_count": 9,
+    "unknown_count": 0,
+    "scope": "Git refs only; not current TIFF, score, registry completeness, or organizer status."
+  },
+  "historical_focus_inventory": {
+    "path": "docs/downloads/focus_sites_release_review_20261026.json",
+    "sha256": "86b9c934062af910fff3636ec1c29760f3c020f46928a81e54088a08a25f8031"
+  },
+  "historical_pairwise_receipt": {
+    "path": "docs/downloads/focus9_pairwise_recheck_14f85876.json",
+    "sha256": "4f918f1c7fde7354c1a192402ba10eb9799f086f3024493120a900a47413b9d9",
+    "pair_count": 36,
+    "scope": "Pinned historical nine-file set only; not a current-main TIFF scan or complete registry census."
+  },
+  "current_readback_time_basis": "README and linked-page SHA-256 values were computed from API-fetched bytes cached at this timestamp; status prose below is a curator paraphrase of those pinned owner-maintained pages.",
+  "score_provenance_note": "No organizer submission receipt or current TIFF bytes were fetched for the nine current main branches. All site/file score values remain USER-/OWNER-REPORTED unless separately labeled HOLDOUT-DTI, PROJECTION, or cited public-board snapshot.",
+  "competition_page_access": "Not independently accessed in this session (host unavailable under the session allowlist). Linked owner records that describe a public leaderboard read are reported as owner-maintained snapshots, not as our direct organizer confirmation.",
+  "sites": [
+    {
+      "site": "GEMSDOE24",
+      "observed_main_commit": "52fdca93084f6f6e4623bfa904cd6fc41a3abfbe",
+      "observed_main_commit_date": "2026-10-30T23:05:13Z",
+      "main_commit_url": "https://github.com/buffedlizard55-lab/GEMSDOE24/commit/52fdca93084f6f6e4623bfa904cd6fc41a3abfbe",
+      "readme_path": "README.md",
+      "readme_sha256": "1d5cb249f47d73415d80a05993a852fc06b30b2a2e3b54c568da6c9b7f61d5d5",
+      "readme_url": "https://github.com/buffedlizard55-lab/GEMSDOE24/blob/52fdca93084f6f6e4623bfa904cd6fc41a3abfbe/README.md",
+      "owner_summary_excerpt": "Owner review: no new TIFF, geological experiment, or score estimate; submit no. A concurrently updated GEO1 artifact is reported at HOLDOUT-DTI 0.1427 [0.1323, 0.1524], but its 99.3% overlap with the pinned lattice witness fails the literal 70%/3-px stop; a complement result is 0.0369 and also negative. The owner summary says neither beats its 0.166060 comparator. These are owner-recorded diagnostics, not organizer scores.",
+      "summary_pages": [
+        {
+          "path": "docs/repo-review-20261030-arena-9b32516e.md",
+          "sha256": "2771b3440323ce13df20a77e579e9558878eb8129f35b0a3b81470ca09313226",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE24/blob/52fdca93084f6f6e4623bfa904cd6fc41a3abfbe/docs/repo-review-20261030-arena-9b32516e.md"
+        },
+        {
+          "path": "docs/nine-site-submission-summary.html",
+          "sha256": "45d287bbdd00165e9f3c65188ec817245a5d32cc6b689a0520451544fc237528",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE24/blob/52fdca93084f6f6e4623bfa904cd6fc41a3abfbe/docs/nine-site-submission-summary.html"
+        },
+        {
+          "path": "evidence/session_9b32516e_20261030_run_card.json",
+          "sha256": "505986ef07ec4b6a6ef2ae29955878d037b7a39d4361a1ac298499bbbb927b39",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE24/blob/52fdca93084f6f6e4623bfa904cd6fc41a3abfbe/evidence/session_9b32516e_20261030_run_card.json"
+        }
+      ],
+      "evidence_class": "OWNER-MAINTAINED CURRENT-MAIN SUMMARY; not organizer-confirmed and not an independent score verification"
+    },
+    {
+      "site": "GEMSDOE25",
+      "observed_main_commit": "8cb3573d8adc747b519dd0d96ffdc4eccad6d8ec",
+      "observed_main_commit_date": "2026-10-30T23:06:57Z",
+      "main_commit_url": "https://github.com/buffedlizard55-lab/GEMSDOE25/commit/8cb3573d8adc747b519dd0d96ffdc4eccad6d8ec",
+      "readme_path": "README.md",
+      "readme_sha256": "f651cf5d254deaddeede4068e6ad7ee89d2f74e12da438ead0163542955d06a0",
+      "readme_url": "https://github.com/buffedlizard55-lab/GEMSDOE25/blob/8cb3573d8adc747b519dd0d96ffdc4eccad6d8ec/README.md",
+      "owner_summary_excerpt": "Owner brief: no file cleared and no organizer score estimated. H-SP1 loses to its matched random floor (0.0232 vs 0.0337; paired delta -0.0105, CI [-0.0179, -0.0049]); H-LF1 is near 0.004–0.006 and does not beat random. Both are negative HOLDOUT-DTI diagnostics. The mirror labels.tif and existing_faults.tif are byte-identical, leaving holdout truth provenance unresolved.",
+      "summary_pages": [
+        {
+          "path": "docs/owner-brief-2026-10-30.html",
+          "sha256": "2a6886eb7e74d31e78acfca4970c0385655b098caa9fc1f057e87701b5c2c9b3",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE25/blob/8cb3573d8adc747b519dd0d96ffdc4eccad6d8ec/docs/owner-brief-2026-10-30.html"
+        },
+        {
+          "path": "registry/live_scores.json",
+          "sha256": "caf93a7df189b7e5d9241807c95f64a051848eb8eaadf72a887c6eb06e5458a6",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE25/blob/8cb3573d8adc747b519dd0d96ffdc4eccad6d8ec/registry/live_scores.json"
+        },
+        {
+          "path": "registry/run_card_2026-10-30.json",
+          "sha256": "7054ff0a35302553108c9e69afa51a7ab6a940959e735671a80275055e09c79f",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE25/blob/8cb3573d8adc747b519dd0d96ffdc4eccad6d8ec/registry/run_card_2026-10-30.json"
+        },
+        {
+          "path": "registry/review_passes_2026-10-30.json",
+          "sha256": "733376fb5b2f7dbc08492d4147d5b9e6acd7b113d182d6e6b01fa5f3b378715f",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE25/blob/8cb3573d8adc747b519dd0d96ffdc4eccad6d8ec/registry/review_passes_2026-10-30.json"
+        },
+        {
+          "path": "evidence/nine_site_top_files_2026-10-28.json",
+          "sha256": "eadba35c42af2295ce30abc7e24fe251f9f3a56ad8fab792e8e324225c9c6e7f",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE25/blob/8cb3573d8adc747b519dd0d96ffdc4eccad6d8ec/evidence/nine_site_top_files_2026-10-28.json"
+        }
+      ],
+      "evidence_class": "OWNER-MAINTAINED CURRENT-MAIN SUMMARY; not organizer-confirmed and not an independent score verification"
+    },
+    {
+      "site": "GEMSDOE27",
+      "observed_main_commit": "60da5e4128339244efc61274abf95d22702ff801",
+      "observed_main_commit_date": "2026-10-30T23:09:26Z",
+      "main_commit_url": "https://github.com/buffedlizard55-lab/GEMSDOE27/commit/60da5e4128339244efc61274abf95d22702ff801",
+      "readme_path": "README.md",
+      "readme_sha256": "4a8a5461da795c2ad8e736cd41ae632dec7b5dc71983939f38f7a345ca22feec",
+      "readme_url": "https://github.com/buffedlizard55-lab/GEMSDOE27/blob/60da5e4128339244efc61274abf95d22702ff801/README.md",
+      "owner_summary_excerpt": "Verification says no experiment, candidate TIFF, slot, or submission clearance; the required method-lane paragraph is still absent. The 0.2778 B2 value remains owner-reported. The current owner verification cites a 30-Oct public-board read with 0.4544 at rank 1 and 0.3195 at rank 50; this session did not independently fetch the competition page. No score estimate is supported.",
+      "summary_pages": [
+        {
+          "path": "knowledge/42_session20_repo_review_2026-10-30.md",
+          "sha256": "4d16392cc7f48a42ef0d66a24d756633a2a6a08eca3c7401dccb4bd23d3190c2",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE27/blob/60da5e4128339244efc61274abf95d22702ff801/knowledge/42_session20_repo_review_2026-10-30.md"
+        },
+        {
+          "path": "knowledge/43_session20_verification_2026-10-30.md",
+          "sha256": "aa92c01ecf3350b69258a6b0ba822c21f18310d81238e383b3ab6ee36924378b",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE27/blob/60da5e4128339244efc61274abf95d22702ff801/knowledge/43_session20_verification_2026-10-30.md"
+        },
+        {
+          "path": "registry/submitted_rasters.json",
+          "sha256": "a432bde2e5922b3a7f023a987d78035957b13b00f7e48d4a4751cd50ffc729e3",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE27/blob/60da5e4128339244efc61274abf95d22702ff801/registry/submitted_rasters.json"
+        }
+      ],
+      "evidence_class": "OWNER-MAINTAINED CURRENT-MAIN SUMMARY; not organizer-confirmed and not an independent score verification"
+    },
+    {
+      "site": "GEMSDOE28",
+      "observed_main_commit": "fe2b95e2377d8878f0d77445c0079ec1c801f50a",
+      "observed_main_commit_date": "2026-10-30T23:03:40Z",
+      "main_commit_url": "https://github.com/buffedlizard55-lab/GEMSDOE28/commit/fe2b95e2377d8878f0d77445c0079ec1c801f50a",
+      "readme_path": "README.md",
+      "readme_sha256": "b43d976f03b8643939316e11bc9ce9dd2dd1520ab97c65064f2cce6627856ce8",
+      "readme_url": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/fe2b95e2377d8878f0d77445c0079ec1c801f50a/README.md",
+      "owner_summary_excerpt": "Owner summary: no new TIFF or slot; all 36 historical pairs exceed the 70%/3-px rule; 25 and 30 are exact positive-set twins; 0.2778 is owner-reported and no new score is estimable. It says all nine pass its local format/range check and reports B2 HIDE-RECOVER 0.0045 [0.0038, 0.0053] (22,232 withheld positives), rank 36/53. Another owner review conflicts on zeros-outside format validity; organizer acceptance is not established.",
+      "summary_pages": [
+        {
+          "path": "docs/s30-nine-site-executive-summary.html",
+          "sha256": "f7914d9f83c1a622cd9ce6111de22501d550360329fc8dfd76ffae69c817a368",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/fe2b95e2377d8878f0d77445c0079ec1c801f50a/docs/s30-nine-site-executive-summary.html"
+        },
+        {
+          "path": "knowledge/77_s30_nine_site_byte_audit_2026-10-30.md",
+          "sha256": "dcb6ffafdeab87d2bcbea0e1e38c6945a581db88f6404e147881c45f5d06890a",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/fe2b95e2377d8878f0d77445c0079ec1c801f50a/knowledge/77_s30_nine_site_byte_audit_2026-10-30.md"
+        },
+        {
+          "path": "evidence/nine_site_byte_audit_2026-10-30.json",
+          "sha256": "220c05c5b5bb0ad937cd8c82819d7425ef03a9b4e86a41a83883531217ef8f3d",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/fe2b95e2377d8878f0d77445c0079ec1c801f50a/evidence/nine_site_byte_audit_2026-10-30.json"
+        }
+      ],
+      "evidence_class": "OWNER-MAINTAINED CURRENT-MAIN SUMMARY; not organizer-confirmed and not an independent score verification"
+    },
+    {
+      "site": "GEMSDOE30",
+      "observed_main_commit": "fab7285ffd9c9d9ece0529cae55853d85c539a52",
+      "observed_main_commit_date": "2026-10-30T23:09:24Z",
+      "main_commit_url": "https://github.com/buffedlizard55-lab/GEMSDOE30/commit/fab7285ffd9c9d9ece0529cae55853d85c539a52",
+      "readme_path": "README.md",
+      "readme_sha256": "28bfc9013ab7116ea1a018d5a34e168363968c635efb5f51b84db2bf7468af02",
+      "readme_url": "https://github.com/buffedlizard55-lab/GEMSDOE30/blob/fab7285ffd9c9d9ece0529cae55853d85c539a52/README.md",
+      "owner_summary_excerpt": "Owner review: negative; no TIFF approved, experiment, slot, or new score estimate. It records B2 as 37,654 dots, a 6,436-dot deletion-only subset of D2.8; this suggests a possible precision/false-positive mechanism but does not prove score causation. Its 29-Oct owner-maintained public-board snapshot lists 0.4544 at rank 1 and 0.3195 at rank 47 (rank 50 = 0.3167); no team-to-site attribution, and the snapshot was not independently fetched here.",
+      "summary_pages": [
+        {
+          "path": "docs/repository-review-2026-10-30.md",
+          "sha256": "b6404d2d4c9ba301e9eb69c4579abfa9bf85365ab3355bf54e00f66fde6ec2c9",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE30/blob/fab7285ffd9c9d9ece0529cae55853d85c539a52/docs/repository-review-2026-10-30.md"
+        },
+        {
+          "path": "docs/research/2026-10-29-leaderboard-snapshot.json",
+          "sha256": "83313f6182ed7b54486a0d1593a36335ffec67b0ad9c42dabcce162580e55084",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE30/blob/fab7285ffd9c9d9ece0529cae55853d85c539a52/docs/research/2026-10-29-leaderboard-snapshot.json"
+        },
+        {
+          "path": "executive-summary.html",
+          "sha256": "c0b1bdcbc4d002b3b6e00fc9c48cb3c13ff3d5d7d7ad07a1483b007e6e32946c",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE30/blob/fab7285ffd9c9d9ece0529cae55853d85c539a52/executive-summary.html"
+        }
+      ],
+      "evidence_class": "OWNER-MAINTAINED CURRENT-MAIN SUMMARY; not organizer-confirmed and not an independent score verification"
+    },
+    {
+      "site": "GEMSDOE31",
+      "observed_main_commit": "f9248200f20def2654af596c1cc13ab2f9d96687",
+      "observed_main_commit_date": "2026-10-29T18:43:29Z",
+      "main_commit_url": "https://github.com/buffedlizard55-lab/GEMSDOE31/commit/f9248200f20def2654af596c1cc13ab2f9d96687",
+      "readme_path": "README.md",
+      "readme_sha256": "df2c7851e4fa4dcde65f0faaadc52c2d622f8d0c03312ad12c332af27a3055ac",
+      "readme_url": "https://github.com/buffedlizard55-lab/GEMSDOE31/blob/f9248200f20def2654af596c1cc13ab2f9d96687/README.md",
+      "owner_summary_excerpt": "Current review: DO NOT SUBMIT; no new TIFF/experiment/slot, no holdout or calibrated estimate in the current review. The executive page carries earlier H31-AA HOLDOUT-DTI 0.1489 [0.1368, 0.1604] (60,988 withheld) below H31-X 0.1661 [0.1491, 0.1825], plus confirmation AA2 0.1302; those are internal diagnostics, and H31-AA still fails a 98.3% literal lattice overlap stop. The historical 0.2708 claim is unverified.",
+      "summary_pages": [
+        {
+          "path": "knowledge/repo_review_2026-10-29_arena-9f242e65.md",
+          "sha256": "a3dfd92f5308cd9e120af8ccec2bf52291d3836fa94f8a5edfff56f1a1990446",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE31/blob/f9248200f20def2654af596c1cc13ab2f9d96687/knowledge/repo_review_2026-10-29_arena-9f242e65.md"
+        },
+        {
+          "path": "docs/executive-summary.html",
+          "sha256": "5c962745f6273262e47294062687ef13f8017c0222fe39f89cff250205cf8125",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE31/blob/f9248200f20def2654af596c1cc13ab2f9d96687/docs/executive-summary.html"
+        },
+        {
+          "path": "evidence/review_9f242e65__run_card.json",
+          "sha256": "29b44304df8ed67708ce7352626e6d1e346b660c1f96c93fa5d6d76d3f89d4ca",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE31/blob/f9248200f20def2654af596c1cc13ab2f9d96687/evidence/review_9f242e65__run_card.json"
+        }
+      ],
+      "evidence_class": "OWNER-MAINTAINED CURRENT-MAIN SUMMARY; not organizer-confirmed and not an independent score verification"
+    },
+    {
+      "site": "GEMSDOE32",
+      "observed_main_commit": "c8e560f1aae650b120dc31c9e7495ced6a587701",
+      "observed_main_commit_date": "2026-10-30T11:29:40Z",
+      "main_commit_url": "https://github.com/buffedlizard55-lab/GEMSDOE32/commit/c8e560f1aae650b120dc31c9e7495ced6a587701",
+      "readme_path": "README.md",
+      "readme_sha256": "6017b6f46119bb825008ae515a914e4b18d9da4d91d6dfc63e77409985e1ef07",
+      "readme_url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/c8e560f1aae650b120dc31c9e7495ced6a587701/README.md",
+      "owner_summary_excerpt": "Current pages say DO NOT SUBMIT. H51-1 has 99.7% 3-px overlap with r13 and lower static holdout than the B2 comparator. H49-CGTD is reported at SGMC-CAL HOLDOUT-DTI 0.0664 [0.0599, 0.0721], HIDE-RECOVER 0.0037 [0.0031, 0.0043], with a 0.2861 projection [0.2783, 0.2940] explicitly labeled PROJECTION—not score—and fails HIDE-RECOVER promotion. B2 0.2778 remains owner-reported; no organizer receipt.",
+      "summary_pages": [
+        {
+          "path": "docs/nine-site-verified-summary.html",
+          "sha256": "d233014550bfc6b22a61fd6486bbcdf6e852e3306b6a049685d4200d0c6e7d93",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/c8e560f1aae650b120dc31c9e7495ced6a587701/docs/nine-site-verified-summary.html"
+        },
+        {
+          "path": "docs/focus9-executive-summary.html",
+          "sha256": "eacf43c2f3caa30ced8401b7f0aceebb8c77ebea9b98af9278d50a3423f68cc6",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/c8e560f1aae650b120dc31c9e7495ced6a587701/docs/focus9-executive-summary.html"
+        },
+        {
+          "path": "docs/review-20261029.html",
+          "sha256": "ed8de84d416277a079e3d315f0f248e77ce048313a1bf590c70b71fdc12ab224",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/c8e560f1aae650b120dc31c9e7495ced6a587701/docs/review-20261029.html"
+        },
+        {
+          "path": "evidence/focus_review_20261028.json",
+          "sha256": "402e8239015d4d34fa902797eb30e59ed37a061db2a859c9a7852569a2110d3e",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/c8e560f1aae650b120dc31c9e7495ced6a587701/evidence/focus_review_20261028.json"
+        }
+      ],
+      "evidence_class": "OWNER-MAINTAINED CURRENT-MAIN SUMMARY; not organizer-confirmed and not an independent score verification"
+    },
+    {
+      "site": "GEMSDOE33",
+      "observed_main_commit": "ee2e464b61cb0e0aa604b0525044ad9ff31c9ec7",
+      "observed_main_commit_date": "2026-10-29T18:38:47Z",
+      "main_commit_url": "https://github.com/buffedlizard55-lab/GEMSDOE33/commit/ee2e464b61cb0e0aa604b0525044ad9ff31c9ec7",
+      "readme_path": "README.md",
+      "readme_sha256": "40e7c975f6d8e120822fcebc2123460f0c9a2a2b7c36b4acbb250a1c7aec7041",
+      "readme_url": "https://github.com/buffedlizard55-lab/GEMSDOE33/blob/ee2e464b61cb0e0aa604b0525044ad9ff31c9ec7/README.md",
+      "owner_summary_excerpt": "Owner review: no TIFF, new experiment, slot, or submission; no public score projection. Prior A33-R7 deployment-density diagnostic at 2.5% emission reports HOLDOUT-DTI 0.169316 [0.162772, 0.175496] versus matched random 0.180414, a negative result; it used 129,184 dots, not the 37,654 deployment budget. The report says all historical site-best files trigger its duplicate guard and keeps estimates unavailable.",
+      "summary_pages": [
+        {
+          "path": "knowledge/33_repo_review_20261029.md",
+          "sha256": "ee5de668d901cf6a03ce9385ae360a99b6c88e69f2aa99513e9f9ec2b745cfa0",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE33/blob/ee2e464b61cb0e0aa604b0525044ad9ff31c9ec7/knowledge/33_repo_review_20261029.md"
+        },
+        {
+          "path": "knowledge/34_density_audit_results_20261029.md",
+          "sha256": "a7c9f6a61b61582e2d74a048b33166b4cff087d9696a33c28048484e1324eb52",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE33/blob/ee2e464b61cb0e0aa604b0525044ad9ff31c9ec7/knowledge/34_density_audit_results_20261029.md"
+        },
+        {
+          "path": "docs/executive-summary.html",
+          "sha256": "2a4b03768c9fce7480b36d2c96e8d4a248690e63be7501c788231587f976faf6",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE33/blob/ee2e464b61cb0e0aa604b0525044ad9ff31c9ec7/docs/executive-summary.html"
+        },
+        {
+          "path": "evidence/nine_site_audit_20261029.json",
+          "sha256": "e41b9649e0841a587438d6bbca23f5a52abcf40297ab9709d03fcb72a5fd5b64",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE33/blob/ee2e464b61cb0e0aa604b0525044ad9ff31c9ec7/evidence/nine_site_audit_20261029.json"
+        }
+      ],
+      "evidence_class": "OWNER-MAINTAINED CURRENT-MAIN SUMMARY; not organizer-confirmed and not an independent score verification"
+    },
+    {
+      "site": "GEMSDOE36",
+      "observed_main_commit": "b0824c550c02792897d0ebe3aba1cb0e75583ea1",
+      "observed_main_commit_date": "2026-10-29T18:44:33Z",
+      "main_commit_url": "https://github.com/buffedlizard55-lab/GEMSDOE36/commit/b0824c550c02792897d0ebe3aba1cb0e75583ea1",
+      "readme_path": "README.md",
+      "readme_sha256": "fbd3fee850d304ebebe1309f1d1c67295e27710e33968d4a0772b27048e44974",
+      "readme_url": "https://github.com/buffedlizard55-lab/GEMSDOE36/blob/b0824c550c02792897d0ebe3aba1cb0e75583ea1/README.md",
+      "owner_summary_excerpt": "The same-date run card supersedes the pre-run review: GSEWC36-EXP1 is a negative research experiment. HOLDOUT-DTI 0.039712 [0.026757, 0.054990] vs baseline 0.039523 [0.027195, 0.054596]; paired delta +0.000189 [-0.004191, +0.004111], p(candidate>baseline)=0.517, far below same-evaluator historical best 0.114542. Feature canaries pass (max AUC 0.602795), but OOF dots overlap reg-052 by 96.9645% (>70%), so it stopped before a final raster; no slot was selected.",
+      "summary_pages": [
+        {
+          "path": "docs/research/hypothesis-screen-20261029.md",
+          "sha256": "bed17de6cc580f2a38785d579ef8b1dd205215823ece7c1a7045fc20c5290072",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE36/blob/b0824c550c02792897d0ebe3aba1cb0e75583ea1/docs/research/hypothesis-screen-20261029.md"
+        },
+        {
+          "path": "docs/research/review-20261029.md",
+          "sha256": "c70f0bc80f9d3bab77bb37671bf44f87a886ec4a5394df18dbb4d13e1999e75b",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE36/blob/b0824c550c02792897d0ebe3aba1cb0e75583ea1/docs/research/review-20261029.md"
+        },
+        {
+          "path": "evidence/gsewc36_run_card_20261029.json",
+          "sha256": "9624b4e7e1e85079fe689e6e04ab45d93e79e3d23e64dce221d9db7192195794",
+          "url": "https://github.com/buffedlizard55-lab/GEMSDOE36/blob/b0824c550c02792897d0ebe3aba1cb0e75583ea1/evidence/gsewc36_run_card_20261029.json"
+        }
+      ],
+      "evidence_class": "OWNER-MAINTAINED CURRENT-MAIN SUMMARY; not organizer-confirmed and not an independent score verification"
+    }
+  ],
+  "three_review_passes": [
+    {
+      "pass": 1,
+      "name": "Source identity and freshness",
+      "scope": "Pinned each observed main commit, root README hash, and linked summary-page hash; distinguished ref freshness from binary/score verification."
+    },
+    {
+      "pass": 2,
+      "name": "Adversarial evidence and method review",
+      "scope": "Separated claims, internal HOLDOUT-DTI, model projections, and organizer-confirmed scores; checked evaluator identities, lineage, holdout limitations, format disagreement, and literal overlap stops."
+    },
+    {
+      "pass": 3,
+      "name": "Decision and publication safety",
+      "scope": "Reconciled download-only versus submit status; ensured no failed uniqueness gate, missing-lane blocker, or unverified claim is presented as clearance; confirmed no slot or new artifact."
+    }
+  ],
+  "reviewer_independence": "Three sequential review passes by the same Arena agent; not three independent reviewers.",
+  "not_done": [
+    "No current-main TIFF bytes read or compared.",
+    "No live/current leaderboard retrieval and no organizer score receipt.",
+    "No new candidate, geological experiment, holdout, submission file, or weekly-slot selection."
+  ]
+}

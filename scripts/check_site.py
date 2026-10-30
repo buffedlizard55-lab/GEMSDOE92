@@ -81,6 +81,175 @@ def _audit_path(tif: Path) -> Path:
     return tif.with_name(tif.stem + "-audit.json")
 
 
+def bind_primary(root: Path = ROOT, html_text: str | None = None) -> dict:
+    """Resolve and verify the site-declared primary against all published bytes.
+
+    The page's single ``data-primary=true`` link is authoritative. Compatibility
+    shims and historical lane cards must not be used to infer which download is
+    current. This helper verifies the link, TIFF hash, format receipt, run-card
+    copies, and both machine-readable status feeds without granting eligibility.
+    """
+    root = Path(root).resolve()
+    docs = root / "docs"
+    index_path = docs / "index.html"
+    if html_text is None:
+        html_text = index_path.read_text(encoding="utf-8")
+    problems: list[str] = []
+    rel = primary_download(html_text, problems)
+    if problems or rel is None:
+        raise ValueError("site primary link is invalid: " + "; ".join(problems))
+
+    primary_file = f"docs/{rel}"
+    tif = docs / rel
+    if not tif.is_file() or not tif.resolve().is_relative_to((docs / "downloads").resolve()):
+        raise ValueError("site primary TIFF is missing or outside docs/downloads")
+    digest = sha256_file(tif)
+
+    audit_path = _audit_path(tif)
+    if not audit_path.is_file():
+        raise ValueError("site primary format audit is missing")
+    audit = json.loads(audit_path.read_text(encoding="utf-8"))
+    if audit.get("file") != primary_file or audit.get("sha256_zeros") != digest:
+        raise ValueError("site primary audit is not bound to the declared TIFF bytes")
+    gates = audit.get("gates_zeros")
+    if (audit.get("overall_pass") is not True or not isinstance(gates, list) or not gates
+            or any(not isinstance(row, dict) or row.get("ok") is not True for row in gates)):
+        raise ValueError("site primary format audit is incomplete or failing")
+
+    card_rel = audit.get("run_card")
+    if not isinstance(card_rel, str) or not card_rel or Path(card_rel).is_absolute() or ".." in Path(card_rel).parts:
+        raise ValueError("site primary audit has an unsafe run-card path")
+    card_path = (root / card_rel).resolve()
+    if not card_path.is_relative_to(root) or not card_path.is_file():
+        raise ValueError("site primary run card is missing or outside the repository")
+    card_bytes = card_path.read_bytes()
+    card = json.loads(card_bytes)
+    raster = card.get("raster")
+    if (not isinstance(raster, dict) or raster.get("file") != primary_file
+            or raster.get("sha256") != digest or card.get("raster_sha256") != digest):
+        raise ValueError("site primary run card is not bound to the declared TIFF bytes")
+    if not isinstance(card.get("note"), str) or not 0 < len(card["note"]) <= 140:
+        raise ValueError("site primary run-card note must be 1..140 characters")
+    if not isinstance(card.get("submission_name"), str) or not card["submission_name"]:
+        raise ValueError("site primary run-card submission name is missing")
+
+    current_path = docs / "downloads/current_submission.json"
+    readiness_path = docs / "downloads/readiness.json"
+    current = json.loads(current_path.read_text(encoding="utf-8"))
+    readiness = json.loads(readiness_path.read_text(encoding="utf-8"))
+    expected = {
+        "file": primary_file,
+        "sha256": digest,
+        "submission_name": card["submission_name"],
+        "note": card["note"],
+        "verdict": card.get("verdict"),
+    }
+    if any(current.get(key) != value for key, value in expected.items()):
+        raise ValueError("current_submission.json disagrees with the site primary run card")
+    expected_readiness = {
+        "file": rel,
+        "raster_sha256": digest,
+        "submission_name": card["submission_name"],
+        "note": card["note"],
+        "verdict": card.get("verdict"),
+        "submission_eligible": card.get("submission_eligible"),
+    }
+    if any(readiness.get(key) != value for key, value in expected_readiness.items()):
+        raise ValueError("readiness.json disagrees with the site primary run card")
+    if current.get("ok_to_submit") is not card.get("submission_eligible"):
+        raise ValueError("current_submission.json eligibility disagrees with the site primary")
+
+    current_card_rel = current.get("run_card")
+    if (not isinstance(current_card_rel, str)
+            or not re.fullmatch(r"downloads/[A-Za-z0-9_.-]+_run_card\.json", current_card_rel)):
+        raise ValueError("current_submission.json has an unsafe run-card path")
+    current_card_path = (docs / current_card_rel).resolve()
+    if (not current_card_path.is_relative_to((docs / "downloads").resolve())
+            or not current_card_path.is_file()
+            or current_card_path.read_bytes() != card_bytes):
+        raise ValueError("site-primary run-card copies disagree")
+
+    return {
+        "href": rel,
+        "primary_file": primary_file,
+        "tif_path": tif,
+        "sha256": digest,
+        "audit_path": audit_path,
+        "audit": audit,
+        "run_card_path": card_path,
+        "current_run_card_path": current_card_path,
+        "run_card_sha256": hashlib.sha256(card_bytes).hexdigest(),
+        "card": card,
+        "current_submission": current,
+        "readiness": readiness,
+        "index_sha256": hashlib.sha256(index_path.read_bytes()).hexdigest(),
+        "current_submission_sha256": hashlib.sha256(current_path.read_bytes()).hexdigest(),
+        "readiness_sha256": hashlib.sha256(readiness_path.read_bytes()).hexdigest(),
+    }
+
+
+def check_current_primary_readiness_audit(problems: list[str]) -> None:
+    """Verify the distinct 30-Oct rejection receipt follows the live page primary."""
+    receipt_path = ROOT / "evidence/readiness_audit_20261030_site_primary_final.json"
+    try:
+        receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+        bound = bind_primary(ROOT)
+        expected = {
+            "schema": "gemsdoe92-readiness-audit-v1",
+            "primary_download": bound["primary_file"],
+            "raster_sha256": bound["sha256"],
+            "format_pass": True,
+            "verdict": "negative",
+            "submission_eligible": False,
+            "new_unique_tiff_generated": False,
+            "experiments": 0,
+            "weekly_slots_used": 0,
+            "organizer_confirmed_score": None,
+        }
+        for key, value in expected.items():
+            if type(receipt.get(key)) is not type(value) or receipt.get(key) != value:
+                problems.append(f"current-primary readiness receipt mismatch: {key}")
+        binding = receipt.get("site_primary_binding")
+        if (not isinstance(binding, dict)
+                or binding.get("primary_download") != bound["primary_file"]
+                or binding.get("primary_href") != bound["href"]
+                or binding.get("raster_sha256") != bound["sha256"]
+                or binding.get("site_index_sha256") != bound["index_sha256"]
+                or binding.get("current_submission_sha256") != bound["current_submission_sha256"]
+                or binding.get("readiness_sha256") != bound["readiness_sha256"]
+                or binding.get("run_card_sha256") != bound["run_card_sha256"]):
+            problems.append("current-primary readiness receipt is not bound to the live index/feeds/run-card hashes")
+        decision = receipt.get("site_primary_decision")
+        if (not isinstance(decision, dict) or decision.get("verdict") != "negative"
+                or decision.get("submission_eligible") is not False):
+            problems.append("current-primary site decision must remain negative and not submission-eligible")
+        rows = receipt.get("validator_output")
+        if not isinstance(rows, list) or not rows or any(
+                not isinstance(row, dict) or row.get("ok") is not True for row in rows):
+            problems.append("current-primary fresh validator rows must all pass local checks")
+        fresh = receipt.get("fresh_gems57_validation")
+        if (not isinstance(fresh, dict) or fresh.get("all_checks_passed") is not True
+                or fresh.get("sha256") != bound["sha256"]):
+            problems.append("current-primary fresh format validation is missing or not hash-bound")
+        proof = receipt.get("correlation_overlap_vs_registry", {}).get("preplacement_proof", {})
+        sample_sha = receipt.get("input_sha256", {}).get("data/bridge/sample_submission.tif")
+        if not isinstance(sample_sha, str):
+            problems.append("current-primary rejection receipt is missing the pinned sample hash")
+        else:
+            from scripts.render_readiness import rejection_proof_errors
+            problems.extend(rejection_proof_errors(proof, sample_sha))
+        old = receipt.get("supersedes_identity_reading_of", {})
+        if (old.get("path") != "evidence/review_20261030_run_card.json"
+                or old.get("previous_primary_download")
+                != "docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif"):
+            problems.append("current-primary correction receipt does not identify the prior VARIO-bound audit")
+        implementation = hashlib.sha256((ROOT / "scripts/audit_readiness.py").read_bytes()).hexdigest()
+        if receipt.get("audit_implementation_sha256") != implementation:
+            problems.append("current-primary readiness receipt implementation hash is stale")
+    except (OSError, ValueError, KeyError, TypeError, AttributeError) as exc:
+        problems.append(f"invalid current-primary readiness receipt: {exc}")
+
+
 def check_rendered(problems: list[str]) -> None:
     try:
         import render_site_v3
@@ -490,7 +659,7 @@ def check_served(html: str, problems: list[str]) -> int:
 
 
 def check_focus_nine_summary(problems: list[str]) -> None:
-    """Keep the linked, evidence-derived focus-nine page fail-closed and current."""
+    """Keep both the historical comparison and dated current-main review fail-closed."""
     try:
         import render_nine_sites_20261028
         path = render_nine_sites_20261028.OUT
@@ -498,6 +667,15 @@ def check_focus_nine_summary(problems: list[str]) -> None:
             problems.append("stale focus-nine executive summary (run scripts/render_nine_sites_20261028.py)")
     except (OSError, ValueError, KeyError, TypeError) as exc:
         problems.append(f"focus-nine executive summary evidence invalid: {exc}")
+    try:
+        import render_focus9_current_review_20261030
+        path = render_focus9_current_review_20261030.OUT
+        if not path.is_file() or path.read_text(encoding="utf-8") != render_focus9_current_review_20261030.render():
+            problems.append("stale current-main Focus-9 review (run scripts/render_focus9_current_review_20261030.py)")
+        elif "DO NOT SUBMIT — NO FILE CLEARED" not in path.read_text(encoding="utf-8"):
+            problems.append("current-main Focus-9 review is missing its no-submit banner")
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        problems.append(f"current-main Focus-9 review evidence invalid: {exc}")
 
 
 def check_lidarsintervalve_20261029(problems: list[str]) -> None:
@@ -556,6 +734,7 @@ def main() -> int:
         return 2
     check_rendered(problems)
     check_focus_nine_summary(problems)
+    check_current_primary_readiness_audit(problems)
     html = INDEX.read_text(encoding="utf-8")
     howto = (DOCS / "how-to-submit.html").read_text(encoding="utf-8") if (DOCS / "how-to-submit.html").is_file() else ""
     summary = (DOCS / "executive-summary.html").read_text(encoding="utf-8") if (DOCS / "executive-summary.html").is_file() else ""

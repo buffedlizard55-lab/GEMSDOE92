@@ -59,7 +59,7 @@ def build() -> dict:
         raise ValueError("preflight receipt is not a valid rejection-only proof")
     if proof["implementation_sha256"] != digest((ROOT / "scripts/preflight_dense_witness.py").read_bytes()):
         raise ValueError("preflight implementation differs from receipt")
-    if preflight["audit_implementation_sha256"] != digest((ROOT / "scripts/audit_readiness.py").read_bytes()):
+    if preflight["audit_implementation_sha256"] != digest((ROOT / "evidence/archive/audit_readiness_20261030_before_site_primary_binding.py").read_bytes()):
         raise ValueError("readiness implementation differs from receipt")
 
     files = inputs["files"]

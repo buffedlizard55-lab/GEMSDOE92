@@ -48,7 +48,7 @@ def build() -> dict:
     if rejection_proof_errors(proof, digest(ROOT / 'data/bridge/sample_submission.tif')):
         raise ValueError('pinned duplicate proof is incomplete')
     if (proof['implementation_sha256'] != digest(ROOT / 'scripts/preflight_dense_witness.py')
-            or preflight['audit_implementation_sha256'] != digest(ROOT / 'scripts/audit_readiness.py')):
+            or preflight['audit_implementation_sha256'] != digest(ROOT / 'evidence/archive/audit_readiness_20261030_before_site_primary_binding.py')):
         raise ValueError('preflight implementation differs from receipt')
     stats = support['statistics']
     if (support['schema'] != 'gemsdoe92-witness-support-v1'

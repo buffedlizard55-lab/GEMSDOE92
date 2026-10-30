@@ -112,6 +112,55 @@ def test_no_universal_stop_cannot_produce_receipt(monkeypatch):
         mod.audit(Path('.'), Path('witness.tif'))
 
 
+def test_current_readiness_audit_resolves_site_primary_not_legacy_vario(monkeypatch):
+    from scripts import render_readiness
+
+    monkeypatch.setattr(render_readiness, 'build_status',
+                        lambda *a, **k: pytest.fail('legacy VARIO shim must not define the current primary'))
+    root = Path(__file__).resolve().parents[1]
+    status = mod.build_site_primary_status(root)
+    expected = 'docs/downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif'
+    assert status['primary_download'] == expected
+    assert status['file'] == expected.removeprefix('docs/')
+    assert status['raster_sha256'] == 'd168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a'
+    assert status['format_pass'] is True
+    assert all(row['ok'] is True for row in status['validator_output'])
+    assert status['site_verdict'] == 'negative'
+    assert status['site_submission_eligible'] is False
+    assert status['primary_binding']['site_index'] == 'docs/index.html'
+    assert status['primary_binding']['primary_download'] == expected
+    assert status['fresh_gems57_validation']['checks']['crs_epsg_32611'] is True
+    assert status['fresh_gems57_validation']['checks']['dimensions_3730x3292'] is True
+    assert status['fresh_gems57_validation']['checks']['transform_matches_sample_submission'] is True
+    assert status['fresh_gems57_validation']['checks']['range_0_1_guaranteed'] is True
+
+
+def test_site_primary_binding_rejects_status_feed_drift(tmp_path):
+    from scripts.check_site import bind_primary
+
+    root = Path(__file__).resolve().parents[1]
+    bound = bind_primary(root)
+    required = {
+        'docs/index.html',
+        'docs/downloads/current_submission.json',
+        'docs/downloads/readiness.json',
+        bound['primary_file'],
+        str(bound['audit_path'].relative_to(root)),
+        str(bound['run_card_path'].relative_to(root)),
+        str(bound['current_run_card_path'].relative_to(root)),
+    }
+    for rel in required:
+        dest = tmp_path / rel
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes((root / rel).read_bytes())
+    status_path = tmp_path / 'docs/downloads/current_submission.json'
+    status = json.loads(status_path.read_text())
+    status['file'] = 'docs/downloads/legacy-vario.tif'
+    status_path.write_text(json.dumps(status))
+    with pytest.raises(ValueError, match='current_submission.json'):
+        bind_primary(tmp_path)
+
+
 def test_rejection_audit_does_not_inherit_readiness_activity(tmp_path, monkeypatch):
     """A rejection-only review must report its own zero activity, not old lane counters."""
     sample = tmp_path / 'data/bridge/sample_submission.tif'
@@ -122,11 +171,9 @@ def test_rejection_audit_does_not_inherit_readiness_activity(tmp_path, monkeypat
         'positive_in_footprint': 1,
         'footprint_pixels': 1,
     })
-    monkeypatch.setattr(mod, 'build_status', lambda root: {
-        'new_unique_tiff_generated': True,
-        'experiments_this_session': 3,
-        'weekly_slots_used_this_session': 2,
+    monkeypatch.setattr(mod, 'build_site_primary_status', lambda root: {
         'file': 'downloads/existing-research.tif',
+        'primary_download': 'docs/downloads/existing-research.tif',
         'raster_sha256': 'a' * 64,
         'validator_output': [{'name': 'format', 'ok': True, 'detail': 'fixture'}],
         'format_pass': True,
@@ -134,6 +181,12 @@ def test_rejection_audit_does_not_inherit_readiness_activity(tmp_path, monkeypat
         'note': 'Historical research only',
         'blocking_reasons': ['pinned witness stop'],
         'input_sha256': {'data/bridge/sample_submission.tif': 'b' * 64},
+        'primary_binding': {'primary_download': 'docs/downloads/existing-research.tif'},
+        'site_verdict': 'negative',
+        'site_submission_eligible': False,
+        'site_download_status': 'OK TO DOWNLOAD FOR RESEARCH ONLY',
+        'fresh_gems_gates_report': 'PASS',
+        'fresh_gems57_validation': {'all_checks_passed': True},
     })
     card = mod.audit(tmp_path, tmp_path / 'witness.tif')
     assert card['new_unique_tiff_generated'] is False
@@ -152,8 +205,6 @@ def published(tmp_path, monkeypatch):
         dest = tmp_path / rel
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_bytes((root / rel).read_bytes())
-    status = json.loads((root / 'docs/downloads/readiness.json').read_text())
-    monkeypatch.setattr(mod, 'build_status', lambda root: status)
     return tmp_path
 
 

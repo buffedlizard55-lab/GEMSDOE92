@@ -23,8 +23,6 @@ sys.path.insert(0, str(ROOT))
 from scripts.preflight_dense_witness import (  # noqa: E402
     WITNESS_BLOB, WITNESS_SHA256, hashes, preflight,
 )
-from scripts.render_readiness import build_status  # noqa: E402
-
 BLOB_API = f'repos/buffedlizard55-lab/17GEMSDOE/git/blobs/{WITNESS_BLOB}'
 WITNESS_BYTES = 25065181
 DEFAULT_WITNESS = ROOT / '.cache/gemsdoe_public_registry' / (WITNESS_BLOB + '.tif')
@@ -69,11 +67,99 @@ def fetch_witness(target: Path) -> None:
             tmp_path.unlink(missing_ok=True)
 
 
+def build_site_primary_status(root: Path = ROOT) -> dict:
+    """Resolve the public site's declared primary and freshly revalidate its bytes.
+
+    Do not use ``render_readiness.build_status`` here: that legacy compatibility
+    shim is bound to the VARIO run card, while the current public index declares
+    a different primary. ``check_site.bind_primary`` follows the actual page link
+    and cross-checks its audit, run card, and both status feeds.
+    """
+    import numpy as np
+    import rasterio
+
+    from gems.gates import run_gates, summarise
+    from scripts.check_site import bind_primary
+    from vendor.gems57.validate import assert_submittable, validate
+
+    root = Path(root).resolve()
+    bound = bind_primary(root)
+    sample_path = root / 'data/bridge/sample_submission.tif'
+    labels_path = root / 'data/bridge/labels.tif'
+    with rasterio.open(sample_path) as ds:
+        if ds.count != 1 or ds.crs is None:
+            raise ValueError('sample grid is not a single-band raster with a CRS')
+        sample = ds.read(1)
+        footprint = np.isfinite(sample)
+        sample_grid = (ds.shape, ds.crs, ds.transform)
+        if not footprint.any() or not np.array_equal(footprint, ds.read_masks(1) > 0):
+            raise ValueError('sample footprint is empty or disagrees with its validity mask')
+    with rasterio.open(labels_path) as ds:
+        if ds.count != 1 or (ds.shape, ds.crs, ds.transform) != sample_grid:
+            raise ValueError('catalogue grid does not match the sample')
+        raw_labels = ds.read(1)
+        if not np.isfinite(raw_labels[footprint]).all() or not (ds.read_masks(1)[footprint] > 0).all():
+            raise ValueError('catalogue contains invalid cells inside the sample footprint')
+        catalogue = raw_labels > 0.5
+
+    gates = run_gates(str(bound['tif_path']), str(sample_path), str(labels_path),
+                      prune_radius=2, require_submission_encoding=True)
+    gates_ok, gate_report = summarise(gates)
+    gate_rows = [{'name': row.name, 'ok': row.ok, 'detail': row.detail} for row in gates]
+    if not gates_ok:
+        raise ValueError('site-primary shared format gates failed:\n' + gate_report)
+    fresh_validation = validate(bound['tif_path'], footprint, catalogue)
+    try:
+        assert_submittable(fresh_validation)
+    except AssertionError as exc:
+        raise ValueError(f'site-primary gems57 validation failed: {exc}') from exc
+    validator_rows = gate_rows + [{
+        'name': 'gems57.validate', 'ok': fresh_validation.get('all_checks_passed') is True,
+        'detail': fresh_validation.get('validation_class', 'local format/range preflight'),
+    }]
+    if any(row['ok'] is not True for row in validator_rows):
+        raise ValueError('site-primary validator output contains a failing gate')
+
+    card = bound['card']
+    readiness = bound['readiness']
+    current = bound['current_submission']
+    return {
+        'file': bound['href'],
+        'primary_download': bound['primary_file'],
+        'raster_sha256': bound['sha256'],
+        'validator_output': validator_rows,
+        'format_pass': True,
+        'submission_name': card['submission_name'],
+        'note': card['note'],
+        'blocking_reasons': current.get('blocking_reasons', readiness.get('blocking_reasons', [])),
+        'input_sha256': card.get('input_sha256'),
+        'site_verdict': card.get('verdict'),
+        'site_submission_eligible': card.get('submission_eligible'),
+        'site_download_status': current.get('download_status', readiness.get('download_status')),
+        'primary_binding': {
+            'site_index': 'docs/index.html',
+            'site_index_sha256': bound['index_sha256'],
+            'primary_href': bound['href'],
+            'primary_download': bound['primary_file'],
+            'raster_sha256': bound['sha256'],
+            'format_audit': str(bound['audit_path'].relative_to(root)),
+            'run_card': str(bound['run_card_path'].relative_to(root)),
+            'run_card_sha256': bound['run_card_sha256'],
+            'current_submission_feed': 'docs/downloads/current_submission.json',
+            'current_submission_sha256': bound['current_submission_sha256'],
+            'readiness_feed': 'docs/downloads/readiness.json',
+            'readiness_sha256': bound['readiness_sha256'],
+        },
+        'fresh_gems_gates_report': gate_report,
+        'fresh_gems57_validation': fresh_validation,
+    }
+
+
 def audit(root: Path, witness: Path) -> dict:
     proof = preflight(root / 'data/bridge/sample_submission.tif', witness)
     if proof['universal_nonempty_in_footprint_overlap_stop'] is not True:
         raise ValueError('universal stop not established; this tool cannot grant clearance')
-    status = build_status(root)  # Reuses primary discovery, byte checks and shared run_gates.
+    status = build_site_primary_status(root)
     return {
         'schema': 'gemsdoe92-readiness-audit-v1',
         'reviewed_utc': datetime.now(timezone.utc).isoformat(),
@@ -96,10 +182,23 @@ def audit(root: Path, witness: Path) -> dict:
             'final_dots_check': 'not_run_no_new_raster',
         },
         'artifact_role': 'existing research download; NOT a newly generated submission',
-        'primary_download': 'docs/' + status['file'],
+        'supersedes_identity_reading_of': {
+            'path': 'evidence/review_20261030_run_card.json',
+            'previous_primary_download': 'docs/downloads/gemsdoe92-vario-full-37654-20261025-3c30a41c-zeros.tif',
+            'reason': 'The earlier receipt used the legacy VARIO readiness shim and did not follow docs/index.html data-primary. It is retained as historical evidence, not the current site-primary audit.',
+        },
+        'primary_download': status['primary_download'],
+        'site_primary_binding': status['primary_binding'],
+        'site_primary_decision': {
+            'verdict': status['site_verdict'],
+            'submission_eligible': status['site_submission_eligible'],
+            'download_status': status['site_download_status'],
+        },
         'raster_sha256': status['raster_sha256'],
         'validator_output': status['validator_output'],
         'format_pass': status['format_pass'],
+        'fresh_gems_gates_report': status['fresh_gems_gates_report'],
+        'fresh_gems57_validation': status['fresh_gems57_validation'],
         'submission_name': status['submission_name'],
         'note': status['note'],
         'verdict': 'negative', 'submission_eligible': False,
@@ -118,11 +217,10 @@ def audit(root: Path, witness: Path) -> dict:
 def check_published_audit(root: Path = ROOT) -> list[str]:
     """Bind the published review48 receipt to the bytes it itself records.
 
-    Historical semantics (VARIO integration, 2026-10-25): review48 was
-    generated against the then-current LISTRICLOQO primary.  The current
-    primary is now decided by the VARIO run card (scripts/check_site.py
-    verifies that binding separately), so this receipt is checked for
-    *internal* consistency only: its recorded file must still hash to its
+    Historical semantics (2026-10-25): review48 was generated against the
+    then-current LISTRICLOQO primary. The live primary is resolved from the
+    docs/index.html data-primary link by check_site.bind_primary; the legacy
+    receipt is checked for *internal* consistency only: its recorded file must still hash to its
     recorded SHA-256, its recorded gates must all pass, it must stay
     rejection-only, and the pinned dense-witness literal STOP must be
     preserved.  It can never grant clearance.

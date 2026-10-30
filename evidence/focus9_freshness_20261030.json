@@ -1,0 +1,106 @@
+{
+  "schema": "gemsdoe92-github-focus-freshness-v1",
+  "evidence_class": "SOURCE-FRESHNESS (GitHub refs only, not scores)",
+  "observed_utc": "2026-10-30T23:09:33.194667+00:00",
+  "inventory_path": "docs/downloads/focus_sites_release_review_20261026.json",
+  "inventory_sha256": "86b9c934062af910fff3636ec1c29760f3c020f46928a81e54088a08a25f8031",
+  "method": "GitHub commits/main API; comparison of commit identities only",
+  "complete": true,
+  "changed_count": 9,
+  "unknown_count": 0,
+  "sites": [
+    {
+      "site": "GEMSDOE24",
+      "pinned_commit": "9da8a18381e179530c3b878d073314feaa26a20c",
+      "observed_main_commit": "52fdca93084f6f6e4623bfa904cd6fc41a3abfbe",
+      "observed_main_commit_date": "2026-10-30T23:05:13Z",
+      "status": "changed",
+      "error": null,
+      "pinned_commit_url": "https://github.com/buffedlizard55-lab/GEMSDOE24/commit/9da8a18381e179530c3b878d073314feaa26a20c",
+      "main_url": "https://github.com/buffedlizard55-lab/GEMSDOE24/commits/main/"
+    },
+    {
+      "site": "GEMSDOE25",
+      "pinned_commit": "cafbfe509670f4c0ba2a8475e288620a0aab0559",
+      "observed_main_commit": "8cb3573d8adc747b519dd0d96ffdc4eccad6d8ec",
+      "observed_main_commit_date": "2026-10-30T23:06:57Z",
+      "status": "changed",
+      "error": null,
+      "pinned_commit_url": "https://github.com/buffedlizard55-lab/GEMSDOE25/commit/cafbfe509670f4c0ba2a8475e288620a0aab0559",
+      "main_url": "https://github.com/buffedlizard55-lab/GEMSDOE25/commits/main/"
+    },
+    {
+      "site": "GEMSDOE27",
+      "pinned_commit": "cf8b4c201f2cc2ef649b6ca7cd32f235c2f6743a",
+      "observed_main_commit": "60da5e4128339244efc61274abf95d22702ff801",
+      "observed_main_commit_date": "2026-10-30T23:09:26Z",
+      "status": "changed",
+      "error": null,
+      "pinned_commit_url": "https://github.com/buffedlizard55-lab/GEMSDOE27/commit/cf8b4c201f2cc2ef649b6ca7cd32f235c2f6743a",
+      "main_url": "https://github.com/buffedlizard55-lab/GEMSDOE27/commits/main/"
+    },
+    {
+      "site": "GEMSDOE28",
+      "pinned_commit": "12ec4fea4c97a7887a7ca8a06f9bd94c7609ea07",
+      "observed_main_commit": "fe2b95e2377d8878f0d77445c0079ec1c801f50a",
+      "observed_main_commit_date": "2026-10-30T23:03:40Z",
+      "status": "changed",
+      "error": null,
+      "pinned_commit_url": "https://github.com/buffedlizard55-lab/GEMSDOE28/commit/12ec4fea4c97a7887a7ca8a06f9bd94c7609ea07",
+      "main_url": "https://github.com/buffedlizard55-lab/GEMSDOE28/commits/main/"
+    },
+    {
+      "site": "GEMSDOE30",
+      "pinned_commit": "35ce8911e2c3287eed973eacd12c252e8cb3f34c",
+      "observed_main_commit": "fab7285ffd9c9d9ece0529cae55853d85c539a52",
+      "observed_main_commit_date": "2026-10-30T23:09:24Z",
+      "status": "changed",
+      "error": null,
+      "pinned_commit_url": "https://github.com/buffedlizard55-lab/GEMSDOE30/commit/35ce8911e2c3287eed973eacd12c252e8cb3f34c",
+      "main_url": "https://github.com/buffedlizard55-lab/GEMSDOE30/commits/main/"
+    },
+    {
+      "site": "GEMSDOE31",
+      "pinned_commit": "8e91d82ae236c92b917302122237e45fc20ec337",
+      "observed_main_commit": "f9248200f20def2654af596c1cc13ab2f9d96687",
+      "observed_main_commit_date": "2026-10-29T18:43:29Z",
+      "status": "changed",
+      "error": null,
+      "pinned_commit_url": "https://github.com/buffedlizard55-lab/GEMSDOE31/commit/8e91d82ae236c92b917302122237e45fc20ec337",
+      "main_url": "https://github.com/buffedlizard55-lab/GEMSDOE31/commits/main/"
+    },
+    {
+      "site": "GEMSDOE32",
+      "pinned_commit": "8b00ee91b9d6d7ef0e3762eb7bc0c92bee0928d1",
+      "observed_main_commit": "c8e560f1aae650b120dc31c9e7495ced6a587701",
+      "observed_main_commit_date": "2026-10-30T11:29:40Z",
+      "status": "changed",
+      "error": null,
+      "pinned_commit_url": "https://github.com/buffedlizard55-lab/GEMSDOE32/commit/8b00ee91b9d6d7ef0e3762eb7bc0c92bee0928d1",
+      "main_url": "https://github.com/buffedlizard55-lab/GEMSDOE32/commits/main/"
+    },
+    {
+      "site": "GEMSDOE33",
+      "pinned_commit": "be96d94c8d829dbe4a5ae50330ae36130e10b807",
+      "observed_main_commit": "ee2e464b61cb0e0aa604b0525044ad9ff31c9ec7",
+      "observed_main_commit_date": "2026-10-29T18:38:47Z",
+      "status": "changed",
+      "error": null,
+      "pinned_commit_url": "https://github.com/buffedlizard55-lab/GEMSDOE33/commit/be96d94c8d829dbe4a5ae50330ae36130e10b807",
+      "main_url": "https://github.com/buffedlizard55-lab/GEMSDOE33/commits/main/"
+    },
+    {
+      "site": "GEMSDOE36",
+      "pinned_commit": "2c78770e0544259082b0b6b73ce8e4d0749c175d",
+      "observed_main_commit": "b0824c550c02792897d0ebe3aba1cb0e75583ea1",
+      "observed_main_commit_date": "2026-10-29T18:44:33Z",
+      "status": "changed",
+      "error": null,
+      "pinned_commit_url": "https://github.com/buffedlizard55-lab/GEMSDOE36/commit/2c78770e0544259082b0b6b73ce8e4d0749c175d",
+      "main_url": "https://github.com/buffedlizard55-lab/GEMSDOE36/commits/main/"
+    }
+  ],
+  "scope_limit": "A changed ref does not identify changed TIFFs or scores; an unchanged ref does not prove a GitHub Pages deployment or complete registry. Neither result grants clearance.",
+  "organizer_confirmed_score": null,
+  "submission_eligible": false
+}
