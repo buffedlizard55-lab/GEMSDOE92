@@ -1553,3 +1553,15 @@ Every number below is from a command run here or a stored file named in the row.
 - **IR-1028C-8 — Holdout not re-run.** The feature stack (`.cache`) and
   training_features are absent, so no holdout number from this session exists. All
   holdout figures are archived run-card values.
+
+## IR-1030A — 2026-10-30 review: status freshness, focus-site duplication, missing inputs
+
+No TIFF, experiment, slot selection, or organizer upload was performed. Full review and evidence labels: [`docs/REVIEW_20261030_REPO.md`](docs/REVIEW_20261030_REPO.md).
+
+- **IR-1030A-1 — Top-level status recency is not enforced.** `docs/downloads/current_submission.json` and `readiness.json` point to `gemsdoe92-rieszlbm2-50000dots-20261028-79041788` (2026-10-28 RIESZ-LBM2); `SUBMISSION_READY.md` foregrounds 2026-10-29 MARUSSI-TRISHEAR/ADMITRELAY, while a later `docs/downloads/lidarsintervalve_readiness_20261029.json` records another negative candidate. The 132-raster site gate and 834 passing tests do not establish recency. Resolve with one authoritative run-card registry and an automated “latest artifact” freshness check; until then, every listed candidate is DO NOT SUBMIT.
+- **IR-1030A-2 — Focus-9 historical winners are not unique recommendations.** The stored 2026-10-26 pairwise recheck reports every pair of the nine audited site rasters violates at least one overlap/correlation threshold. GEMSDOE25 D2.8 and GEMSDOE30 D28 have identical support; GEMSDOE28 solo and GEMSDOE31 are identical; GEMSDOE32 is in the same H19-5 lineage; GEMSDOE36 adds 1,200 pixels to the 37,654 GEMSDOE32 support. Their owner/site scores are `CLAIM`, not receipts.
+- **IR-1030A-3 — Incompatible historical static holdout and claimed score.** GEMSDOE32’s 0.2778 is recorded as a site `CLAIM`; the 2026-10-26 static archived HOLDOUT-DTI is 0.004006 [0.003406, 0.004668]. This static re-evaluation is not prospective fold-visible model validation and does not adjudicate the organizer score. Keep evidence classes separate.
+- **IR-1030A-4 — Experimental inputs absent.** `scripts/audit_input_cache.py` exited 1 with `files_verified=0/12`; full training stack, pinned external controls and complete public registry cache are absent from this workspace. No fresh holdout, full fleet scan, or surface/final-dot uniqueness test was run.
+- **IR-1030A-5 — External source availability not freshly checked.** DrivenData, GDR, USGS NWIS, NASA/ASF and other non-GitHub endpoints were not reachable under the sandbox's host allowlist. URLs in the review are source pointers only, not evidence of current availability or in-footprint coverage.
+- **IR-1030A-6 — User's score references conflict and remain unverified.** The prompt cites 0.3195 and 0.4413 as highest leaderboard values in different places, and no organizer receipt is present. Treat both, and 0.2778, as user/site-supplied claims pending receipt-level verification.
+- **Disposition:** no implementation candidate is selected. The required single method paragraph is missing from the prompt; prior experiment budget is recorded exhausted; the archived literal dense-witness rule is still a stop. No fresh hypothesis was run or promoted.
