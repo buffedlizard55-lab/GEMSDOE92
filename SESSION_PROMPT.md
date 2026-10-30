@@ -421,3 +421,8 @@ Start at the README's top decision and `docs/REVIEW_7059163E.md`. Fresh witness 
 
 ## 26 October 2026 closeout addendum
 Read README and this brief each session. The owner requires nine-site executive tables, a genuinely new submission-ready TIFF, automated format/science/uniqueness gates, no unsupported leaderboard projections, three review passes, and PR plus merge. THERMOTILT did not meet promotion requirements. Its runner is disabled; critical protocol deviations are in the run card. Do not spend a slot or rerun this lane before shared nested-OOF and pre-placement checks are repaired and the literal registry stop resolved.
+
+
+## Session addendum — 2026-10-30 (`arena/9f125ee7-gemsdoe92`)
+
+Read the standing prompt in README.md ("Standing prompt and session guidelines") first. This session: byte-verified the nine user-listed GEMSDOE files (`scripts/nine_site_byte_check.py`, `evidence/nine_site_byte_check_20261030.json`); wrote `docs/REVIEW_20261030_NINESITE.md` and `evidence/review_20261030_ninesite_run_card.json`. No TIFF generated, 0 weekly slots spent, no file cleared for submission. Irregularities: IRREGULARITIES.md (IR-0130-1…12). Owner decisions D1–D4 are open in the review.
