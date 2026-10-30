@@ -1,3 +1,13 @@
+## Current session addendum — 2026-10-30 (active branch review) — READ FIRST
+
+- **Decision: `verdict: negative`; no submission is cleared; zero weekly slots spent.** No new TIFF, geological experiment, holdout, or registry rescan was performed in this review.
+- The current request's parallel-run instructions require one assigned method paragraph and cap a lane at 3 experiments / 2 hours. This request did not provide an unambiguous, uniquely assigned method paragraph; the prior lane's 3-experiment budget is recorded as exhausted. Do not infer a new lane or reset that cap.
+- Repository status entry points disagree about the newest/current candidate: this README foregrounds DEXP-Kostrov; `SUBMISSION_READY.md` foregrounds MARUSSI-TRISHEAR; generated site/status JSON remains bound to RIESZ-LBM2, while `scripts/check_site.py` lists LIDAR-SINTERVALVE as `CURRENT-20261029`. All candidate cards remain negative. See [2026-10-30 review](docs/REVIEW_20261030_SESSION.md) and [review run card](evidence/review_20261030_run_card.json).
+- **Validation executed:** `.venv/bin/python -m pytest tests -q` → `834 passed, 19 skipped, 171 warnings`; `PYTHONPATH=vendor .venv/bin/python scripts/check_site.py` → `SITE CHECK PASS (132 served raster(s) gated)`. These do not reproduce historical holdout or organizer scoring.
+- The best supplied score among the nine focus sites is GEMSDOE32 `0.2778` (**CLAIM**, not an organizer receipt). DEXP E3's recorded `HOLDOUT-DTI` is `0.117438 [0.104226, 0.130267]`, evaluator `gems57-pooled-hide-v2`, 22,663 withheld positives; archived operational PI-1 checks pass, but literal dense-witness overlap is `1.000`, so it remains research-only / **DO NOT SUBMIT**.
+
+---
+
 ## Current session addendum — 2026-10-29 (`arena/2066b1fc-gemsdoe92`: `DEXP-KOSTROV-KOENDERINK` + 2,262-SHA Fleet & Prospective OOT Audit) — READ FIRST
 
 - **Decision: ✅ OK TO DOWNLOAD FOR RESEARCH ONLY · ⛔ DO NOT SUBMIT (`verdict: "negative"`, `submission_eligible: false`, `0` weekly slots spent).**
