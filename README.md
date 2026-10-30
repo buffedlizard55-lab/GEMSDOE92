@@ -1,6 +1,6 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-> **2026-10-30 session review:** No GeoTIFF is cleared for competition upload. Existing candidate downloads are research-only; do not submit or spend a slot. There is a documented primary-candidate mismatch between this README, `SUBMISSION_READY.md`, and the evidence-bound Pages/status feeds. Read [the current review](docs/REVIEW_20261030_SESSION.md) before relying on any older status banner. At the start of each session, read this README and the normalized operating brief in [`SESSION_PROMPT.md`](SESSION_PROMPT.md); that file is a maintained summary, not a verbatim copy of every user prompt.
+> **2026-10-30 session review:** No GeoTIFF is cleared for competition upload. Existing candidate downloads are research-only; do not submit or spend a slot. There is a documented primary-candidate mismatch between this README, `SUBMISSION_READY.md`, and the evidence-bound Pages/status feeds. Read [the current review](docs/REVIEW_20261030_SESSION.md) and [the repository review](docs/REVIEW_20261030_REPOSITORY.md) before relying on any older status banner. At the start of each session, read this README and the normalized operating brief in [`SESSION_PROMPT.md`](SESSION_PROMPT.md); that file is a maintained summary, not a verbatim copy of every user prompt.
 
 ## 📌 Current Status — 2026-10-29 (`DEXP-KOSTROV-KOENDERINK` + `MARUSSI-TRISHEAR` + `ADMITRELAY` + Full `2,262`-SHA 8-Owner Fleet Audit)
 
