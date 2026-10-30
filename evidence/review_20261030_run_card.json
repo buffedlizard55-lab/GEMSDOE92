@@ -1,0 +1,74 @@
+{
+  "schema": "gemsdoe92-review-run-card-v1",
+  "review_date_utc": "2026-10-30",
+  "hypothesis": "No new geological hypothesis was tested. The request's required single method paragraph is not present as a uniquely assigned lane, and the previous three-experiment allowance is recorded as exhausted.",
+  "mechanism": "Repository/site/status audit, local GeoTIFF metadata and byte-hash inspection, served-raster validation, and automated regression tests only. No raster generation, feature computation, registry rescan, holdout rerun, or submission-slot selection occurred.",
+  "named_non_fault_process_that_could_mimic_it": "Not applicable to a new candidate (none was generated). For fault-edge predictors in the archived work, lithologic contacts, canyon rims, alluvial-fan incision, and paleoshorelines are plausible non-fault mimics.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "status": "existing archived result; not rerun in this review",
+    "candidate": "DEXP-KOSTROV E3",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "dti": 0.117438,
+    "ci95": [0.104226, 0.130267],
+    "paired_vs_r0_recipe": {
+      "delta": 0.019688,
+      "ci95": [0.008586, 0.031664]
+    },
+    "evidence_file": "evidence/dexp_kostrov_holdout_20261029.json"
+  },
+  "correlation_overlap_vs_registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "status": "existing archived result; not freshly rescanned in this review",
+    "candidate": "DEXP-KOSTROV E3",
+    "registry_snapshot": "8 owners; 108 non-empty repositories; 2262 unique rasters",
+    "operational_pi1_preplacement_surface": {
+      "overlap": 0.65405,
+      "max_abs_spearman_rho": 0.409836,
+      "passes_thresholds": true
+    },
+    "operational_pi1_final_dots": {
+      "overlap": 0.6389,
+      "max_abs_spearman_rho": 0.043992,
+      "passes_thresholds": true
+    },
+    "literal_dense_witness_overlap": 1.0,
+    "literal_rule_passes": false,
+    "verdict": "negative"
+  },
+  "raster_sha256": "80d66b0590b26ddc9ac56af3964289f63f9c07c80931e3e69a7089dbabbc6faf",
+  "raster_sha256_scope": "existing DEXP-KOSTROV research TIFF reviewed; not generated in this review",
+  "validator_output": {
+    "direct_metadata_check": {
+      "single_band": true,
+      "dtype": "float32",
+      "crs": "EPSG:32611",
+      "shape": [3730, 3292],
+      "transform": [100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0],
+      "all_values_finite": true,
+      "value_range": [0.0, 1.0],
+      "unique_value_count": 2
+    },
+    "served_raster_validation": "PASS; scripts/check_site.py gated 132 served rasters",
+    "automated_tests": "834 passed, 19 skipped, 171 warnings",
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_match": true,
+    "shape_match": true,
+    "transform_match": true,
+    "scope_note": "Format checks do not confer organizer acceptance, uniqueness clearance, or submission eligibility."
+  },
+  "submission_name": null,
+  "submission_note": "No new TIFF generated; archived candidate is research-only. DO NOT SUBMIT.",
+  "verdict": "negative",
+  "submission_eligible": false,
+  "weekly_slots_spent": 0,
+  "limitations": [
+    "No uniquely assigned method paragraph was identifiable in the request.",
+    "Recorded experiment cap is exhausted; no budget reset was assumed.",
+    "Full feature stack and complete live registry were unavailable for fresh reruns.",
+    "Official external sites could not be live-checked from the configured network environment.",
+    "No organizer-confirmed score receipt was identified for the owner-reported focus-site values."
+  ]
+}
