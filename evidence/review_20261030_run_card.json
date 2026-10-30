@@ -1,0 +1,61 @@
+{
+  "schema": "run_card/v1",
+  "session": "review-20261030",
+  "branch": "arena/9f125ee7-gemsdoe92",
+  "date_utc": "2026-10-30",
+  "hypothesis": "None tested. Review session: verify official rules, measure the nine user-listed GEMSDOE best files from bytes, audit the submission gates.",
+  "mechanism": "Not applicable (no new raster). Measured geometry: the nine files are binary dot fields with 86.7-100% pairwise within-3px overlap versus 15.1% for random same-count dot fields.",
+  "named_non_fault_process_that_could_mimic": "Not applicable. For the nine files, dot placement along shared structural lineaments and the catalogue-flank pruning both produce high overlap without new fault information.",
+  "holdout_dti": {"value": null, "ci95": null, "evaluator": "gems57-pooled-hide-v2", "withheld_positives": null, "status": "NOT RUN (feature stack and training_features absent in this checkout)"},
+  "leakage_canary": {"status": "NOT RUN (no new feature set built)"},
+  "correlation_overlap_vs_registry": {
+    "method": "Within-3px share of each dot set vs each other, Euclidean px, 100 m grid; dot = finite and value > 0",
+    "nine_site_min_over_others": {"24": 0.8848, "25": 0.8817, "27": 0.8672, "28": 0.9547, "30": 0.8817, "31": 0.9539, "32": 0.9988, "33": 0.9264, "36": 0.9731},
+    "nine_site_max_over_others": {"24": 1.0, "25": 1.0, "27": 0.9802, "28": 1.0, "30": 1.0, "31": 1.0, "32": 1.0, "33": 0.9971, "36": 0.9758},
+    "exact_identical_dot_sets": [["25", "30"]],
+    "random_baseline_within_3px_of_GEMSDOE32": 0.151336,
+    "evidence": "evidence/nine_site_byte_check_20261030.json",
+    "literal_gate_70pct": "FAIL for all 36 ordered pairs (every pair > 0.70)"
+  },
+  "raster_sha256": {
+    "new_raster_generated": false,
+    "primary_current": "d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a",
+    "witness_17GEMSDOE_E": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "nine_files": {
+      "24": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+      "25": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+      "27": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+      "28": "5556aa1438fd67376b60d5ffc99228ec09dcc11a8408298a743ccb88d6163641",
+      "30": "8cf893ead5667df21d3288a9968c35fd5385c425b029d82ee71d311715b129fd",
+      "31": "07b6db440535404bb41ec8ddc797713e200d308e3da35937393efde5eb84bc40",
+      "32": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "33": "87f857d505e23247e991ccfab2cbe9f49a04df4f9c8028dce7ea261554690757",
+      "36": "e15891020b9c57056ac7fa874a5e506fbd6ed9314a4ea8e73af0753887a3708a"
+    }
+  },
+  "validator_output": {
+    "nine_files": "CRS EPSG:32611, shape [3730, 3292], single float32 band, transform (100,0,243350,0,-100,4508550), values in [0,1] (0 out of range), NaN present only in NaN-encoded files (outside footprint)",
+    "outside_bounds_encoding": "NaN in 5 files (24, 25, 27, 28, 31); zeros in 4 (30, 32, 33, 36). Official text: 'null or nan'. Score-neutral by formula; flagged IR-0130-2.",
+    "current_primary_site_check": "scripts/check_site.py PASS (132 served rasters gated)",
+    "tests": "pytest tests: see session log (834 passed, 19 skipped before the new regression test)"
+  },
+  "submission_name": null,
+  "submission_note": null,
+  "experiments_used": 0,
+  "experiments_budget": 3,
+  "weekly_slots_spent": 0,
+  "verdict": "negative",
+  "submission_eligible": false,
+  "ok_to_download": false,
+  "ok_to_submit": false,
+  "reason": "No new candidate; the internal literal duplicate gate is unsatisfiable against the pinned 17GEMSDOE_E witness (all 5,167,373 footprint cells positive); no validated method is runnable without the official training features; owner decisions D1-D4 are open.",
+  "official_sources": [
+    "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/",
+    "https://www.drivendata.org/competitions/306/competition-doe-gems/",
+    "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+    "https://docs.nlr.gov/docs/fy26osti/96647.pdf",
+    "https://www.herox.com/GEMSPrize/resource/2274",
+    "https://github.com/drivendataorg/gems-prize-reference-solution"
+  ],
+  "review_doc": "docs/REVIEW_20261030_SESSION.md"
+}
