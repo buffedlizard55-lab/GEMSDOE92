@@ -1,8 +1,6 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-## Current review — 2026-10-30
-
-**DO NOT SUBMIT any current or historical TIFF in this repository.** The latest recorded candidates remain negative; the active site-status JSON is stale relative to later 2026-10-29 experiment records; full pinned input and registry caches are absent in this checkout. The 0.2778 / 0.3195 / 0.4413 leaderboard values are unreceipted claims/snapshots, not organizer-confirmed scores. No new TIFF or score estimate was produced in this review. Read the [three-pass repository review](docs/REVIEW_20261030_REPO.md) before using historical files; it includes a focus-9 comparison, evidence labels, test results, status inconsistency, and next steps.
+> **2026-10-30 session review:** No GeoTIFF is cleared for competition upload. Existing candidate downloads are research-only; do not submit or spend a slot. There is a documented primary-candidate mismatch between this README, `SUBMISSION_READY.md`, and the evidence-bound Pages/status feeds. Read [the current review](docs/REVIEW_20261030_SESSION.md) and the [focus-site/repository audit supplement](docs/REVIEW_20261030_REPO.md) before relying on any older status banner. At the start of each session, read this README and the normalized operating brief in [`SESSION_PROMPT.md`](SESSION_PROMPT.md); that file is a maintained summary, not a verbatim copy of every user prompt.
 
 ## 📌 Current Status — 2026-10-29 (`DEXP-KOSTROV-KOENDERINK` + `MARUSSI-TRISHEAR` + `ADMITRELAY` + Full `2,262`-SHA 8-Owner Fleet Audit)
 
