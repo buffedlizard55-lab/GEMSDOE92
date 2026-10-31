@@ -1,0 +1,873 @@
+{
+ "evidence_class": "HOLDOUT-SCREEN",
+ "evaluator": "gems57-pooled-hide-v2 (single fold, seed 20, mode=all)",
+ "n_holdout_positives": 1925,
+ "n_catalogue_positives": 60988,
+ "leakage_flag_threshold": 0.9,
+ "rows": [
+  {
+   "band": "K",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 1.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.4408,
+   "auc_holdout": 0.4166
+  },
+  {
+   "band": "K",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 1.5,
+   "measure": "hg",
+   "auc_catalogue": 0.4898,
+   "auc_holdout": 0.4961
+  },
+  {
+   "band": "K",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 1.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.4701,
+   "auc_holdout": 0.462
+  },
+  {
+   "band": "K",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 3.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.4443,
+   "auc_holdout": 0.4197
+  },
+  {
+   "band": "K",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 3.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5022,
+   "auc_holdout": 0.502
+  },
+  {
+   "band": "K",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 3.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.4541,
+   "auc_holdout": 0.4589
+  },
+  {
+   "band": "Th",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 1.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.4505,
+   "auc_holdout": 0.4512
+  },
+  {
+   "band": "Th",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 1.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5141,
+   "auc_holdout": 0.5368
+  },
+  {
+   "band": "Th",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 1.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.4896,
+   "auc_holdout": 0.4935
+  },
+  {
+   "band": "Th",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 3.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.4516,
+   "auc_holdout": 0.4534
+  },
+  {
+   "band": "Th",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 3.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5216,
+   "auc_holdout": 0.5592
+  },
+  {
+   "band": "Th",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 3.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.4756,
+   "auc_holdout": 0.4855
+  },
+  {
+   "band": "U",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 1.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.475,
+   "auc_holdout": 0.4764
+  },
+  {
+   "band": "U",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 1.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5152,
+   "auc_holdout": 0.5345
+  },
+  {
+   "band": "U",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 1.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5087,
+   "auc_holdout": 0.5225
+  },
+  {
+   "band": "U",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 3.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.4729,
+   "auc_holdout": 0.469
+  },
+  {
+   "band": "U",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 3.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5192,
+   "auc_holdout": 0.5457
+  },
+  {
+   "band": "U",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 3.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5019,
+   "auc_holdout": 0.5323
+  },
+  {
+   "band": "TC",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 1.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.4489,
+   "auc_holdout": 0.4331
+  },
+  {
+   "band": "TC",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 1.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5115,
+   "auc_holdout": 0.5373
+  },
+  {
+   "band": "TC",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 1.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.4821,
+   "auc_holdout": 0.4855
+  },
+  {
+   "band": "TC",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 3.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.4507,
+   "auc_holdout": 0.4347
+  },
+  {
+   "band": "TC",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 3.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5138,
+   "auc_holdout": 0.5357
+  },
+  {
+   "band": "TC",
+   "file": "geodawn_rad_u8.tif",
+   "sigma": 3.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.4676,
+   "auc_holdout": 0.4812
+  },
+  {
+   "band": "ThK",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 1.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.4837,
+   "auc_holdout": 0.5085
+  },
+  {
+   "band": "ThK",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 1.5,
+   "measure": "hg",
+   "auc_catalogue": 0.519,
+   "auc_holdout": 0.5566
+  },
+  {
+   "band": "ThK",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 1.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.509,
+   "auc_holdout": 0.5201
+  },
+  {
+   "band": "ThK",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 3.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.4825,
+   "auc_holdout": 0.51
+  },
+  {
+   "band": "ThK",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 3.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5275,
+   "auc_holdout": 0.5966
+  },
+  {
+   "band": "ThK",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 3.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.509,
+   "auc_holdout": 0.5283
+  },
+  {
+   "band": "UK",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 1.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5371,
+   "auc_holdout": 0.5477
+  },
+  {
+   "band": "UK",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 1.5,
+   "measure": "hg",
+   "auc_catalogue": 0.4879,
+   "auc_holdout": 0.477
+  },
+  {
+   "band": "UK",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 1.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5086,
+   "auc_holdout": 0.5085
+  },
+  {
+   "band": "UK",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 3.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5334,
+   "auc_holdout": 0.5404
+  },
+  {
+   "band": "UK",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 3.5,
+   "measure": "hg",
+   "auc_catalogue": 0.4973,
+   "auc_holdout": 0.4691
+  },
+  {
+   "band": "UK",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 3.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5282,
+   "auc_holdout": 0.5367
+  },
+  {
+   "band": "UTh",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 1.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5436,
+   "auc_holdout": 0.532
+  },
+  {
+   "band": "UTh",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 1.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5048,
+   "auc_holdout": 0.5159
+  },
+  {
+   "band": "UTh",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 1.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5113,
+   "auc_holdout": 0.5279
+  },
+  {
+   "band": "UTh",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 3.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5426,
+   "auc_holdout": 0.5281
+  },
+  {
+   "band": "UTh",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 3.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5197,
+   "auc_holdout": 0.5361
+  },
+  {
+   "band": "UTh",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 3.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5311,
+   "auc_holdout": 0.5639
+  },
+  {
+   "band": "TMI_up150",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 1.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.4901,
+   "auc_holdout": 0.5068
+  },
+  {
+   "band": "TMI_up150",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 1.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5117,
+   "auc_holdout": 0.532
+  },
+  {
+   "band": "TMI_up150",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 1.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.4974,
+   "auc_holdout": 0.511
+  },
+  {
+   "band": "TMI_up150",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 3.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.4917,
+   "auc_holdout": 0.5118
+  },
+  {
+   "band": "TMI_up150",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 3.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5199,
+   "auc_holdout": 0.5285
+  },
+  {
+   "band": "TMI_up150",
+   "file": "geodawn_extensions_u8.tif",
+   "sigma": 3.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.4981,
+   "auc_holdout": 0.5156
+  },
+  {
+   "band": "ex_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5647,
+   "auc_holdout": 0.5682
+  },
+  {
+   "band": "ex_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "hg",
+   "auc_catalogue": 0.574,
+   "auc_holdout": 0.5798
+  },
+  {
+   "band": "ex_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5608,
+   "auc_holdout": 0.545
+  },
+  {
+   "band": "ex_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5612,
+   "auc_holdout": 0.5759
+  },
+  {
+   "band": "ex_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5838,
+   "auc_holdout": 0.5973
+  },
+  {
+   "band": "ex_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5603,
+   "auc_holdout": 0.5359
+  },
+  {
+   "band": "ex_mean",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5532,
+   "auc_holdout": 0.5557
+  },
+  {
+   "band": "ex_mean",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5874,
+   "auc_holdout": 0.589
+  },
+  {
+   "band": "ex_mean",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.555,
+   "auc_holdout": 0.5416
+  },
+  {
+   "band": "ex_mean",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5515,
+   "auc_holdout": 0.5656
+  },
+  {
+   "band": "ex_mean",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "hg",
+   "auc_catalogue": 0.591,
+   "auc_holdout": 0.6012
+  },
+  {
+   "band": "ex_mean",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5547,
+   "auc_holdout": 0.5233
+  },
+  {
+   "band": "step_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5608,
+   "auc_holdout": 0.5751
+  },
+  {
+   "band": "step_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "hg",
+   "auc_catalogue": 0.593,
+   "auc_holdout": 0.5902
+  },
+  {
+   "band": "step_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5695,
+   "auc_holdout": 0.5536
+  },
+  {
+   "band": "step_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5559,
+   "auc_holdout": 0.5795
+  },
+  {
+   "band": "step_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5978,
+   "auc_holdout": 0.596
+  },
+  {
+   "band": "step_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5688,
+   "auc_holdout": 0.5314
+  },
+  {
+   "band": "lapneg_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5692,
+   "auc_holdout": 0.5891
+  },
+  {
+   "band": "lapneg_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5887,
+   "auc_holdout": 0.5853
+  },
+  {
+   "band": "lapneg_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5697,
+   "auc_holdout": 0.5559
+  },
+  {
+   "band": "lapneg_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5635,
+   "auc_holdout": 0.5911
+  },
+  {
+   "band": "lapneg_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5941,
+   "auc_holdout": 0.5932
+  },
+  {
+   "band": "lapneg_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5716,
+   "auc_holdout": 0.5449
+  },
+  {
+   "band": "lappos_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5734,
+   "auc_holdout": 0.5924
+  },
+  {
+   "band": "lappos_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5865,
+   "auc_holdout": 0.5903
+  },
+  {
+   "band": "lappos_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5703,
+   "auc_holdout": 0.5569
+  },
+  {
+   "band": "lappos_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5678,
+   "auc_holdout": 0.5943
+  },
+  {
+   "band": "lappos_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5922,
+   "auc_holdout": 0.6068
+  },
+  {
+   "band": "lappos_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5732,
+   "auc_holdout": 0.5493
+  },
+  {
+   "band": "downface_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5373,
+   "auc_holdout": 0.5439
+  },
+  {
+   "band": "downface_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "hg",
+   "auc_catalogue": 0.603,
+   "auc_holdout": 0.6026
+  },
+  {
+   "band": "downface_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5775,
+   "auc_holdout": 0.5567
+  },
+  {
+   "band": "downface_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5311,
+   "auc_holdout": 0.5485
+  },
+  {
+   "band": "downface_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "hg",
+   "auc_catalogue": 0.6075,
+   "auc_holdout": 0.6103
+  },
+  {
+   "band": "downface_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5686,
+   "auc_holdout": 0.5351
+  },
+  {
+   "band": "upface_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5549,
+   "auc_holdout": 0.5631
+  },
+  {
+   "band": "upface_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5926,
+   "auc_holdout": 0.5936
+  },
+  {
+   "band": "upface_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5779,
+   "auc_holdout": 0.5529
+  },
+  {
+   "band": "upface_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5449,
+   "auc_holdout": 0.5624
+  },
+  {
+   "band": "upface_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "hg",
+   "auc_catalogue": 0.6009,
+   "auc_holdout": 0.6081
+  },
+  {
+   "band": "upface_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5803,
+   "auc_holdout": 0.5542
+  },
+  {
+   "band": "cross_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.541,
+   "auc_holdout": 0.5614
+  },
+  {
+   "band": "cross_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "hg",
+   "auc_catalogue": 0.6042,
+   "auc_holdout": 0.6043
+  },
+  {
+   "band": "cross_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.565,
+   "auc_holdout": 0.5503
+  },
+  {
+   "band": "cross_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5392,
+   "auc_holdout": 0.5699
+  },
+  {
+   "band": "cross_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "hg",
+   "auc_catalogue": 0.6054,
+   "auc_holdout": 0.6168
+  },
+  {
+   "band": "cross_max",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5603,
+   "auc_holdout": 0.5363
+  },
+  {
+   "band": "relief",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5707,
+   "auc_holdout": 0.6224
+  },
+  {
+   "band": "relief",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5995,
+   "auc_holdout": 0.5911
+  },
+  {
+   "band": "relief",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.5664,
+   "auc_holdout": 0.5574
+  },
+  {
+   "band": "relief",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5668,
+   "auc_holdout": 0.6215
+  },
+  {
+   "band": "relief",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5965,
+   "auc_holdout": 0.6009
+  },
+  {
+   "band": "relief",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.57,
+   "auc_holdout": 0.5527
+  },
+  {
+   "band": "coh100",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.4953,
+   "auc_holdout": 0.5035
+  },
+  {
+   "band": "coh100",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5375,
+   "auc_holdout": 0.5215
+  },
+  {
+   "band": "coh100",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 1.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.4929,
+   "auc_holdout": 0.4946
+  },
+  {
+   "band": "coh100",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "smooth",
+   "auc_catalogue": 0.5269,
+   "auc_holdout": 0.5259
+  },
+  {
+   "band": "coh100",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "hg",
+   "auc_catalogue": 0.5443,
+   "auc_holdout": 0.5208
+  },
+  {
+   "band": "coh100",
+   "file": "lidar_scarp_features_u8.tif",
+   "sigma": 3.5,
+   "measure": "ridge",
+   "auc_catalogue": 0.4902,
+   "auc_holdout": 0.4998
+  }
+ ]
+}

@@ -131,6 +131,87 @@ def load_dexp_kostrov_status():
     return card, audit, status
 
 
+def load_gx_20261031_status():
+    """Load and cryptographically bind the 2026-10-31 GX external-layer research artifact.
+
+    Fail-closed: any missing file, hash mismatch, failing format gate, or a
+    non-negative verdict raises. The artifact is research-only by construction.
+    """
+    card_path = DL / 'gx1_run_card_20261031.json'
+    if not card_path.is_file():
+        return None
+    card = json.loads(card_path.read_text(encoding='utf-8'))
+    tif_name = Path(card['raster']['file']).name
+    zip_name = Path(card['raster']['zip']).name
+    tif_path = DL / tif_name
+    zip_path = DL / zip_name
+    audit_path = DL / (tif_name[:-4] + '-audit.json')
+    for path in (tif_path, zip_path, audit_path):
+        if not path.is_file():
+            raise ValueError(f'GX 2026-10-31 artifact is missing: {path.name}')
+    digest = hashlib.sha256(tif_path.read_bytes()).hexdigest()
+    if digest != card['raster']['sha256']:
+        raise ValueError('GX 2026-10-31 raster SHA-256 does not match its run card')
+    with zipfile.ZipFile(zip_path) as archive:
+        members = [n for n in archive.namelist() if not n.endswith('/')]
+        if len(members) != 1 or Path(members[0]).name != tif_name:
+            raise ValueError('GX 2026-10-31 ZIP must contain exactly the bound TIFF')
+        if hashlib.sha256(archive.read(members[0])).hexdigest() != digest:
+            raise ValueError('GX 2026-10-31 ZIP payload does not match TIFF bytes')
+    audit = json.loads(audit_path.read_text(encoding='utf-8'))
+    if audit.get('sha256') != digest:
+        raise ValueError('GX 2026-10-31 audit disagrees with the TIFF bytes')
+    if audit.get('ok') is not True or audit.get('problems'):
+        raise ValueError('GX 2026-10-31 format audit has a failing gate')
+    if audit.get('nan_pixels') or audit.get('infinity_pixels'):
+        raise ValueError('GX 2026-10-31 raster contains NaN or Inf')
+    if not (audit.get('min') >= 0.0 and audit.get('max') <= 1.0):
+        raise ValueError('GX 2026-10-31 raster values fall outside [0, 1]')
+    if card.get('verdict') != 'negative' or card.get('submission_eligible') is not False:
+        raise ValueError('GX 2026-10-31 must remain fail-closed (verdict=negative, submission_eligible=false)')
+    if not (0 < len(card['submission']['note']) <= 140):
+        raise ValueError('GX 2026-10-31 note must be 1..140 characters')
+    if not (0 < len(card['submission']['name']) <= 140):
+        raise ValueError('GX 2026-10-31 name must be 1..140 characters')
+    hold = card['holdout']
+    uniq = card['correlation_and_overlap_vs_registry']
+    can = card['leakage_canaries']
+    est = card['score_estimate']
+    return {
+        'schema': 'gemsdoe92-gx-readiness-20261031',
+        'file': tif_name,
+        'zip': zip_name,
+        'audit': audit_path.name,
+        'run_card': card_path.name,
+        'bytes': audit.get('bytes'),
+        'raster_sha256': digest,
+        'zip_sha256': card['raster']['zip_sha256'],
+        'n_dots': card['raster']['n_dots'],
+        'submission_name': card['submission']['name'],
+        'note': card['submission']['note'],
+        'holdout_dti': hold['candidate_dti'],
+        'holdout_ci95': hold['candidate_ci95'],
+        'r0_recipe_dti': hold['r0_recipe_dti'],
+        'paired_delta': hold['paired_candidate_minus_r0']['delta'],
+        'paired_ci95': hold['paired_candidate_minus_r0']['ci95'],
+        'evaluator': hold['evaluator'],
+        'withheld_positive_pixels': hold['withheld_positive_pixels'],
+        'n_draws': hold['n_draws'],
+        'canary_max_auc': can['max_solo_holdout_auc'],
+        'canary_n': can['n_features'],
+        'worst_dot_field_overlap': uniq['worst_dot_field_overlap'],
+        'worst_lattice_overlap': uniq['worst_dense_lattice_overlap'],
+        'n_lattice_above': uniq['dense_lattices_above_0_70'],
+        'max_abs_rho': uniq['max_abs_spearman_full_footprint'],
+        'registry_rasters': uniq['n_registry_sha256'],
+        'model_estimate': est['ridge_estimate'],
+        'model_rmse': est['leave_group_out_rmse'],
+        'focus9_overlap_min': min(uniq['overlap_vs_focus_nine'].values()),
+        'focus9_overlap_max': max(uniq['overlap_vs_focus_nine'].values()),
+        'holdout_vs_claim_rho': card['method_finding']['spearman_per_dot_yield_vs_claim'],
+    }
+
+
 def load_blindcorridor_status():
     """Load and bind the additional format-only artifact without authorizing it."""
     card_path = DL / 'gemsdoe92-blindcorridor-37654dots-20261028-11f8999c_run_card.json'
@@ -491,10 +572,36 @@ def render(card):
 <tr><th>Uniqueness scope</th><td>Full 8-owner scan across <code>{m_u['registry_rasters']:,}</code> unique SHA-256 rasters ({m_u['registry_repos']} repos): PI-1 passes on <strong>both</strong> pre-placement surface (<code>{m_u['surface_worst_overlap']:.4f} &le; 0.70</code>, <code>|&rho;| = {m_u['surface_worst_abs_rho']:.4f} &le; 0.90</code>) and final binary dots (<code>{m_u['final_worst_overlap']:.4f} &le; 0.70</code>, <code>|&rho;| = {m_u['final_worst_abs_rho']:.4f} &le; 0.90</code>). Literal full-support witness <code>17GEMSDOE E-proba-multiscale</code> remains <code>1.000 &gt; 0.70</code>.</td></tr>
 <tr><th><code>MODEL</code> &amp; Decision</th><td><code>MODEL</code> (not a score): <code>{m_lbm:.5f}</code>. <strong>DO NOT SUBMIT.</strong> <code>verdict=negative</code>, <code>submission_eligible=false</code>, 0 weekly slots spent.</td></tr></table></section>'''
 
+    gx = load_gx_20261031_status()
+    gx_section = ''
+    if gx:
+        gx_section = f'''<section id="gx-20261031" class="stop"><h2>2026-10-31 Unique Candidate: GX external-layer fault-appearance model — OK TO DOWNLOAD FOR RESEARCH ONLY · DO NOT SUBMIT</h2>
+<p><strong>✅ OK TO DOWNLOAD FOR RESEARCH ONLY</strong> ({gx['n_dots']:,} binary dots · {gx['canary_n']}/{gx['canary_n']} leakage canaries PASS (max solo AUC <code>{gx['canary_max_auc']:.4f} &le; 0.90</code>) · <code>HOLDOUT-DTI {gx['holdout_dti']:.5f}</code> vs R0 recipe <code>{gx['r0_recipe_dti']:.5f}</code>, paired <code>{gx['paired_delta']:+.5f}</code> 95% CI <code>[{gx['paired_ci95'][0]:+.5f}, {gx['paired_ci95'][1]:+.5f}]</code> · worst dot-field registry overlap <code>{gx['worst_dot_field_overlap']:.4f} &le; 0.70</code> over {gx['registry_rasters']:,} rasters)<br>
+<strong>⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT</strong> (<code>verdict=negative</code>, <code>submission_eligible=false</code>, 0 weekly slots spent; <code>MODEL</code> estimate <code>{gx['model_estimate']:.4f}</code> &plusmn; <code>{gx['model_rmse']:.3f}</code> is below the best focus-site claim <code>0.2778</code>, the holdout does not beat the repo all-time best <code>0.184485</code>, and the literal dense-lattice reading measures <code>{gx['worst_lattice_overlap']:.3f} &gt; 0.70</code>).</p>
+<p><a class="btn" href="downloads/{esc(gx['file'])}" download>⬇ One-Click Download 2026-10-31 Unique GeoTIFF ({esc(gx['file'])})</a> ·
+<a class="btn" href="downloads/{esc(gx['zip'])}" download>one-TIFF ZIP</a> ·
+<a href="downloads/{esc(gx['audit'])}">format audit</a> ·
+<a href="downloads/{esc(gx['run_card'])}">byte-bound run card</a> ·
+<a href="executive-summary-20261031-gx.html"><strong>2026-10-31 Nine-Site Executive Summary &amp; PhD Analysis</strong></a> ·
+<a href="how-to-submit.html"><strong>How to submit subpage</strong></a></p>
+<p>SHA-256: <code>{esc(gx['raster_sha256'])}</code> · <code>{gx['n_dots']:,}</code> binary <code>{{0.0, 1.0}}</code> dots · single-band <code>float32</code> · <code>EPSG:32611</code> · <code>3730&times;3292</code> · 0 NaN / 0 Inf anywhere (prevents <em>&ldquo;Predicted values must be in range [0, 1]&rdquo;</em>). Archive metadata only (not an upload instruction): name <code>{esc(gx['submission_name'])}</code>; short note (<code>{len(gx['note'])}/140</code> chars): <code>{esc(gx['note'])}</code>.</p>
+<table>
+<tr><th>What makes it new</th><td>Built only from externally sourced public layers — 1 m-lidar scarp operators, GeoDAWN radiometrics &amp; TMI, USGS SGMC faults and GDR thermal indicators — by a logistic appearance model refit on every holdout draw. No previous submission raster is read for dot placement.</td></tr>
+<tr><th><code>HOLDOUT-DTI</code></th><td><code>{esc(gx['evaluator'])}</code>, {gx['withheld_positive_pixels']:,} withheld positives, {gx['n_draws']} draws. Overlap vs each of the nine focus files is <code>{gx['focus9_overlap_min']:.3f}&ndash;{gx['focus9_overlap_max']:.3f}</code>; worst <code>|&rho;|</code> over the registry is <code>{gx['max_abs_rho']:.3f} &le; 0.90</code>.</td></tr>
+<tr><th>Method warning (negative result)</th><td>Inside the H19-5 lineage the hide-and-recover holdout is <em>anti</em>-correlated with the reported leaderboard score (Spearman <code>{gx['holdout_vs_claim_rho']:+.3f}</code>), because the instrument's truth is drawn <em>from</em> the catalogue while scoring rewards catalogue-distant dots. A holdout win is necessary but not sufficient, and a holdout number is <strong>not</strong> a score forecast.</td></tr>
+<tr><th>Blocking reasons</th><td><code>MODEL</code> estimate below the best focus-site claim; holdout below the repository all-time best; unresolved literal dense-lattice rule ({gx['n_lattice_above']} registry rasters exceed 150,000 positive pixels, so the 0.70 gate is unsatisfiable for any non-empty candidate — owner decision D1).</td></tr>
+</table></section>'''
+
+    gx_howto_block = ''
+    if gx:
+        gx_howto_block = f'''<section class="stop" id="gx-howto"><h2>2026-10-31 Candidate Status: GX external-layer model — Research Download Only · DO NOT SUBMIT</h2>
+<p><code>{esc(gx['file'])}</code> (SHA-256 <code>{esc(gx['raster_sha256'])}</code>) is <strong>format-clean but not cleared</strong>: 0 NaN / 0 Inf, values in <code>[0, 1]</code>, single-band <code>float32</code>, <code>EPSG:32611</code>, <code>3730&times;3292</code>, zeros outside the footprint — so it cannot trigger <em>&ldquo;Predicted values must be in range [0, 1]&rdquo;</em>. It is nevertheless held at <code>verdict=negative</code>, <code>submission_eligible=false</code>: its <code>MODEL</code> estimate <code>{gx['model_estimate']:.4f}</code> &plusmn; <code>{gx['model_rmse']:.3f}</code> is below the best focus-site claim <code>0.2778</code>, its fold-proper <code>HOLDOUT-DTI {gx['holdout_dti']:.5f}</code> does not beat the repository all-time best <code>0.184485</code>, and the unresolved literal dense-lattice rule measures <code>{gx['worst_lattice_overlap']:.3f} &gt; 0.70</code>. If a future selector clears it, the exact archive metadata to paste into the portal is name <code>{esc(gx['submission_name'])}</code> and note (<code>{len(gx['note'])}/140</code> chars) <code>{esc(gx['note'])}</code>.</p></section>'''
+
     lsv29 = load_lidarsintervalve_20261029()
     lsv_hero = render_lidarsintervalve_hero(lsv29[0], lsv29[2]) if lsv29 else ''
     lsv_root_hero = render_lidarsintervalve_hero(lsv29[0], lsv29[2], href_prefix='docs/') if lsv29 else ''
-    body = f'''<p class="small"><a href="executive-summary-nine-sites-20261030.html"><strong>2026-10-30 Focus-9 Executive Summary — DO NOT SUBMIT</strong></a> · <a href="REVIEW_20261030_FOCUS9.md">2026-10-30 Three-Pass Repository Review</a> · <a href="REVIEW_20261030_ARENA.md">Arena evidence-gate review</a> · <a href="executive-summary-20261029-dexp-kostrov.html"><strong>2026-10-29 DEXP-KOSTROV Summary</strong></a> · <a href="HYPOTHESES_20261029_DEXP_KOSTROV.md">DEXP-KOSTROV Hypotheses</a> · <a href="executive-summary-20261029-lidarsintervalve.html"><strong>2026-10-29 LIDAR-SINTERVALVE Nine-Site Summary</strong></a> · <a href="HYPOTHESES_20261029_LIDAR_SINTERVALVE.md">LIDAR-SINTERVALVE Hypotheses</a> · <a href="WHY_0_2778_AND_0_2784_20261029.md">Why 0.2778 vs 0.2784</a> · <a href="executive-summary-20261029-marussi-trishear.html"><strong>2026-10-29 MARUSSI-TRISHEAR Summary</strong></a> · <a href="HYPOTHESES_20261029_MARUSSI_TRISHEAR.md">MARUSSI Hypotheses</a> · <a href="executive-summary-20261029-admitrelay.html"><strong>2026-10-29 ADMITRELAY + LBM-v3 Summary</strong></a> · <a href="HYPOTHESES_20261029_ADMITRELAY.md">ADMITRELAY Hypotheses</a> · <a href="STANDING_PROMPT.md">Standing Prompt</a> · <a href="executive-summary-nine-sites-20261028.html">Nine-site executive summary</a></p><nav><a href="how-to-submit.html">How to submit</a> · <a href="nine-sites.html">Nine-site review</a> · <a href="REVIEW_20261029_DEXP_KOSTROV.md">2026-10-29 three-pass audit</a> · <a href="REVIEW_20261028_MAIN_INTEGRATION.md">2026-10-28 main-integration review</a> · <a href="REVIEW_20261028_SESSION.md">Independent overlap review</a></nav>
+    body = f'''<p class="small"><a href="executive-summary-nine-sites-20261030.html"><strong>2026-10-30 Focus-9 Executive Summary — DO NOT SUBMIT</strong></a> · <a href="REVIEW_20261030_FOCUS9.md">2026-10-30 Three-Pass Repository Review</a> · <a href="REVIEW_20261030_ARENA.md">Arena evidence-gate review</a> · <a href="executive-summary-20261029-dexp-kostrov.html"><strong>2026-10-29 DEXP-KOSTROV Summary</strong></a> · <a href="HYPOTHESES_20261029_DEXP_KOSTROV.md">DEXP-KOSTROV Hypotheses</a> · <a href="executive-summary-20261029-lidarsintervalve.html"><strong>2026-10-29 LIDAR-SINTERVALVE Nine-Site Summary</strong></a> · <a href="HYPOTHESES_20261029_LIDAR_SINTERVALVE.md">LIDAR-SINTERVALVE Hypotheses</a> · <a href="WHY_0_2778_AND_0_2784_20261029.md">Why 0.2778 vs 0.2784</a> · <a href="executive-summary-20261029-marussi-trishear.html"><strong>2026-10-29 MARUSSI-TRISHEAR Summary</strong></a> · <a href="HYPOTHESES_20261029_MARUSSI_TRISHEAR.md">MARUSSI Hypotheses</a> · <a href="executive-summary-20261029-admitrelay.html"><strong>2026-10-29 ADMITRELAY + LBM-v3 Summary</strong></a> · <a href="HYPOTHESES_20261029_ADMITRELAY.md">ADMITRELAY Hypotheses</a> · <a href="executive-summary-20261031-gx.html"><strong>2026-10-31 GX Summary</strong></a> · <a href="STANDING_PROMPT_20261031.md">2026-10-31 Standing Prompt</a> · <a href="STANDING_PROMPT.md">Standing Prompt</a> · <a href="executive-summary-nine-sites-20261028.html">Nine-site executive summary</a></p><nav><a href="how-to-submit.html">How to submit</a> · <a href="nine-sites.html">Nine-site review</a> · <a href="REVIEW_20261029_DEXP_KOSTROV.md">2026-10-29 three-pass audit</a> · <a href="REVIEW_20261028_MAIN_INTEGRATION.md">2026-10-28 main-integration review</a> · <a href="REVIEW_20261028_SESSION.md">Independent overlap review</a></nav>
+{gx_section}
 {dexp_section}
 {lsv_hero}
 <section id="submit-now" class="stop"><h1>DO NOT SUBMIT — no eligible new TIFF (weekly limit: 3 per week)</h1>
@@ -521,8 +628,10 @@ def render(card):
 <ul>
   <li><strong>2026-10-29 <code>DEXP-KOSTROV-KOENDERINK</code> (<code>gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.tif</code>):</strong> passes 11/11 format gates, 36/36 leakage canaries, fold-proper <code>HOLDOUT-DTI</code> vs R0 recipe (<code>0.11744 &gt; 0.09775</code>), and operational PI-1 uniqueness across all <code>2,262</code> fleet rasters, but is held at <code>verdict=negative</code>, <code>submission_eligible=false</code> under the literal dense-witness rule (<code>17GEMSDOE = 1.000 &gt; 0.70</code>).</li>
   <li><strong><code>BLINDCORRIDOR</code> (<code>gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif</code>):</strong> format pass only (<code>verdict=format_pass</code>, <code>submission_eligible=false</code>); lacks independent <code>HOLDOUT-DTI</code> and leakage canaries; a separate historical registry audit reports <code>0.769108</code> overlap versus <code>13GEMSDOE</code>, above the <code>0.70</code> stop (<a href="downloads/blindcorridor_readiness_20261028.json">readiness feed</a>).</li>
+  <li><strong>2026-10-31 <code>GX</code> (<code>gemsdoe92-gx1-50000dots-20261031-zeros.tif</code>):</strong> built from externally sourced public layers only (1 m-lidar scarp operators, GeoDAWN radiometrics/TMI, USGS SGMC, GDR thermal indicators); 47/47 leakage canaries pass, fold-proper <code>HOLDOUT-DTI 0.14808 &gt; 0.09775</code> R0 recipe, worst dot-field registry overlap <code>0.6948 &le; 0.70</code> — but <code>MODEL</code> estimate <code>0.1782</code> is below the best focus-site claim, so it remains <code>verdict=negative</code>, <code>submission_eligible=false</code>. See the <a href="executive-summary-20261031-gx.html">2026-10-31 GX executive summary</a> and its <a href="downloads/gx1_run_card_20261031.json">byte-bound run card</a>.</li>
   <li><strong>Status-feed baseline <code>RIESZ-LOCKED</code> (<code>{esc(file)}</code>, SHA-256 <code>{digest}</code>):</strong> <code>verdict=negative</code>, <code>submission_eligible=false</code>; below R0 on <code>HOLDOUT-DTI</code>.</li>
 </ul></section>
+{gx_howto_block}
 {dexp_howto_block}
 <section><h2>Exact DrivenData #306 Submission Procedure (Conditional — Only After Future Human Selector Clearance)</h2>
 <ol>
