@@ -14,6 +14,34 @@
 > (`0.184485`, `relay_conduit`, itself not unique), so the Rule-6 slot gate stays closed and 0 weekly slots were used.
 > Everything below is earlier-session history; verify before relying on it.
 
+> **2026-10-31 status (`arena/702071e4-gemsdoe92`, V-GFP + GSET2 session):**
+> **NEW unique GeoTIFF generated & validated —**
+> [`docs/downloads/gemsdoe92-vgfp2r-37654dots-20261031-bcb3d2af-zeros.tif`](docs/downloads/gemsdoe92-vgfp2r-37654dots-20261031-bcb3d2af-zeros.tif)
+> (SHA-256 `6cd09733ab350469d32a714bd22d4eed63cb562e9364ba8ad049827da65d0a78`, 37,654 dots).
+> ✅ **OK TO DOWNLOAD:** 11/11 format gates PASS in [0, 1], 0 NaN anywhere (portal-safe), 30/30
+> leakage canaries PASS (max AUC `0.75441 ≤ 0.90`), **PI-1 UNIQUE** across 158 registry rasters
+> (worst 3-px overlap `0.3089 ≤ 0.70`, worst |ρ| `0.0169 ≤ 0.90`).
+> ⚠️ **Selector verdict = negative (exploratory):** fold-proper `HOLDOUT-DTI 0.0437` did not beat
+> the R0-recipe control `0.0967`; `MODEL-CLASS PROJECTION 0.15–0.27` (never a score) sits below the
+> `0.2778 CLAIM` family bar. **0 weekly slots spent** (cap 3/week — promotion is a selector step).
+> Experiment 3 (`GSET2`, [run card](evidence/gset2_run_card_20261031.json)) proved the 0.2778
+> H19-5 family **cannot be re-submitted uniquely** (pre-prune overlap 0.98–1.00; post-prune
+> `0.7987 > 0.70` → duplicate stop).
+> **Start here:** [2026-10-31 Executive Summary & Submission Guide](docs/executive-summary-20261031.html)
+> (one-click download, focus-9 score/uniqueness table, exact upload steps + name/note, 0.2778 PhD
+> analysis) · [Pre-registered hypotheses](docs/HYPOTHESES_20261031_VGFP.md) ·
+> [Three-pass verification](docs/REVIEW_20261031_SESSION.md) · [run card](evidence/vgfp_run_card_20261031.json).
+> **⛔ Do not resubmit** the 0.2778 family files (byte-identical in 18 repos, already submitted).
+> **Top unblock for beating 0.3195/0.4544:** obtain the free DrivenData `numeric_features.tif`
+> (login-gated; dropbox mirror `gems-geodawn-numerical-features.tif` from the prompt links) and run
+> the official U-Net/Tversky pipeline.
+>
+> **Mandatory standing prompt:** the full user prompt is preserved in this README (below) and
+> verbatim in [`SESSION_PROMPT.md`](SESSION_PROMPT.md). **Re-read it at the start of every session.**
+> Known agent limitation (disclosed): no DrivenData auth in this sandbox → cannot auto-download
+> `numeric_features.tif`, organizer receipts, or full-resolution GeoDawn/3DEP; every score stays
+> CLAIM or MODEL-CLASS PROJECTION until a receipt is recorded in `ledger/submissions.csv`.
+
 > **2026-10-30 status:** No GeoTIFF is cleared for competition upload; existing candidates are research-only. The active readiness record is negative. Read the [Focus-9 executive summary](docs/executive-summary-nine-sites-20261030.html), the [Arena three-pass review](docs/REVIEW_20261030_ARENA.md), the [focus-nine audit](docs/REVIEW_20261030_FOCUS9.md), and the [detailed evidence supplement](docs/REVIEW_20261030_REPO.md) before relying on older status banners. Same-day audits document a mismatch between candidate references in this README, `SUBMISSION_READY.md`, and generated status feeds. Values are owner/user `CLAIM`s unless backed by an organizer receipt. No TIFF is cleared and no weekly slot was used. At the start of each session, read this README and the normalized operating brief in [`SESSION_PROMPT.md`](SESSION_PROMPT.md).
 
 ## 🎯 Standing session prompt (read first, every session — verbatim target)

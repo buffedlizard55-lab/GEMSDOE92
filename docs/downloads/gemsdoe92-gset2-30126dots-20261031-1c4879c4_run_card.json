@@ -1,0 +1,201 @@
+{
+ "schema": "gemsdoe92-run-card-v3",
+ "created_utc": "2026-10-31T01:42:33.066463+00:00",
+ "lane": "GSET2 (G-set consensus re-derivation with divergence pruning)",
+ "hypothesis": "The 0.2778/0.2784 two-regime plateau is carried by consensus support shared among the scored G-set; a byte-unique re-derivation of that support, pruned to <=62% 3-px overlap against every member, should reproduce the family band.",
+ "mechanism": "Gaussian-blurred dot-mass consensus (sigma 1.5 px) over 12 G-set members (CLAIMs 0.1922-0.2784; half-weight H19-5 skeleton), R0-lineage spaced-top emission (2.8 px, 37,654 dots, d_cat>2 collar), divergence pruning rounds.",
+ "named_non_fault_mimic": "Lake Lahontan paleoshoreline beach ridges shared with the H19-5 skeleton family; lithologic contacts in potential-field edges.",
+ "raster": {
+  "file": "docs/downloads/gemsdoe92-gset2-30126dots-20261031-1c4879c4-zeros.tif",
+  "sha256": "bbda704d15b9d3b54f129073c14c993289ba4a32f764b4f2844177ba38f1c040",
+  "n_dots": 30126,
+  "submission_name": "gemsdoe92-gset2-30126d-1c4879c4",
+  "note": "GSET2 consensus re-derivation: 30126 dots from 12 scored G-set members, divergence-pruned <=62%/3px; CLAIM-anchor lbmc1 0.2784.",
+  "note_chars": 127
+ },
+ "raster_sha256": "bbda704d15b9d3b54f129073c14c993289ba4a32f764b4f2844177ba38f1c040",
+ "holdout_dti": {
+  "evidence_class": "HOLDOUT-DTI (STATIC reading only)",
+  "evaluator_version": "gems57 score() adapter over buffered_component_draw folds (seeds 20/30)",
+  "static_dti": 0.00569237994102345,
+  "withheld_positive_pixels": 22663,
+  "caveat": "STATIC (post-hoc) reading: the G-set surface is built from full-catalogue-derived artifacts and is NOT fold-derivable; static scores systematically penalise catalogue-pruned dot fields (R0 static = 0.0040 vs fold-proper R0_recipe = 0.0967). No fold-proper HOLDOUT-DTI exists for this lane; promotion is by CLAIM-anchor mechanism replication instead."
+ },
+ "uniqueness": {
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "pi1_pass": false,
+  "worst_overlap": {
+   "overlap": 0.7987452698665605,
+   "path": ".cache/vgfp/focus9/GEMSDOE28__h36-1-rung30.tif",
+   "rep": "surface_topn"
+  },
+  "worst_abs_spearman": {
+   "rho": 0.2662035500314579,
+   "path": "data/bridge/h19_5.tif"
+  },
+  "prereq_prune_cap": 0.62,
+  "registry_scope": "local archive: docs/downloads + bridge + parents + GEMSDOE24 mirror downloads + 7 streamed focus-9 bests; full 2,262-SHA fleet cache NOT rebuilt in this sandbox"
+ },
+ "gset_members": [
+  {
+   "path": "data/parent_R0_zeros.tif",
+   "weight": 1.0,
+   "claim": 0.2778
+  },
+  {
+   "path": "data/bridge/d28.tif",
+   "weight": 1.0,
+   "claim": 0.26
+  },
+  {
+   "path": "data/bridge/h27_4_solo.tif",
+   "weight": 1.0,
+   "claim": 0.2708
+  },
+  {
+   "path": "data/bridge/h19_5.tif",
+   "weight": 0.5,
+   "claim": 0.1922
+  },
+  {
+   "path": "docs/downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif",
+   "weight": 1.0,
+   "claim": 0.2784
+  },
+  {
+   "path": ".cache/vgfp/focus9/GEMSDOE24__h25-1-d1-5.tif",
+   "weight": 1.0,
+   "claim": 0.2477
+  },
+  {
+   "path": ".cache/vgfp/focus9/GEMSDOE27__topo-gap.tif",
+   "weight": 1.0,
+   "claim": 0.2449
+  },
+  {
+   "path": ".cache/vgfp/focus9/GEMSDOE28__h36-1-rung30.tif",
+   "weight": 1.0,
+   "claim": 0.271
+  },
+  {
+   "path": ".cache/vgfp/focus9/GEMSDOE30__d28-poisson.tif",
+   "weight": 1.0,
+   "claim": 0.26
+  },
+  {
+   "path": ".cache/vgfp/focus9/GEMSDOE31__h27-4-solo-d28.tif",
+   "weight": 1.0,
+   "claim": 0.2708
+  },
+  {
+   "path": ".cache/vgfp/focus9/GEMSDOE33__h33d-tip-stepover.tif",
+   "weight": 1.0,
+   "claim": 0.2632
+  },
+  {
+   "path": ".cache/vgfp/focus9/GEMSDOE36__anderson-pinn.tif",
+   "weight": 1.0,
+   "claim": 0.275
+  }
+ ],
+ "prereq_overlaps": {
+  "data/parent_R0_zeros.tif": 0.979976,
+  "data/bridge/d28.tif": 0.999788,
+  "data/bridge/h27_4_solo.tif": 0.999549,
+  "data/bridge/h19_5.tif": 0.999814,
+  "docs/downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif": 0.365326,
+  ".cache/vgfp/focus9/GEMSDOE24__h25-1-d1-5.tif": 0.999814,
+  ".cache/vgfp/focus9/GEMSDOE27__topo-gap.tif": 0.999814,
+  ".cache/vgfp/focus9/GEMSDOE28__h36-1-rung30.tif": 0.995167,
+  ".cache/vgfp/focus9/GEMSDOE30__d28-poisson.tif": 0.999788,
+  ".cache/vgfp/focus9/GEMSDOE31__h27-4-solo-d28.tif": 0.999549,
+  ".cache/vgfp/focus9/GEMSDOE33__h33d-tip-stepover.tif": 0.99923,
+  ".cache/vgfp/focus9/GEMSDOE36__anderson-pinn.tif": 0.980321
+ },
+ "model_projection": {
+  "evidence_class": "MODEL-CLASS PROJECTION (NOT an organizer score)",
+  "method": "Mechanism replication of lbmc1 (0.2784 CLAIM, the only fleet receipt above 0.2778) with the same emission regime; family spread of G-set variants is +-0.02 (d28 0.2600 -> R0 0.2778 -> lbmc1 0.2784 under different surfaces).",
+  "point": 0.27,
+  "band": [
+   0.25,
+   0.3
+  ],
+  "beats_0_2778_probability": "~40-50% (within family noise of the 0.2778 bar)",
+  "caveat": "A projection is never a score. Band is family-spread, not a confidence interval."
+ },
+ "validator_output": {
+  "no_nan_in_footprint": true,
+  "no_nan_anywhere": true,
+  "values_in_0_1": true,
+  "crs_match": true,
+  "shape_match": true,
+  "transform_match": true,
+  "dtype_float32": true,
+  "single_band": true,
+  "zeros_outside_footprint": true,
+  "zero_mass_on_mapped_catalogue": true,
+  "n_positive": 30126,
+  "gates_pass": true,
+  "gates": [
+   {
+    "name": "crs",
+    "ok": true,
+    "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+   },
+   {
+    "name": "shape",
+    "ok": true,
+    "detail": "reference=3730x3292 candidate=3730x3292"
+   },
+   {
+    "name": "transform",
+    "ok": true,
+    "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+   },
+   {
+    "name": "dtype_and_band",
+    "ok": true,
+    "detail": "dtype=('float32',) count=1"
+   },
+   {
+    "name": "values_in_0_1",
+    "ok": true,
+    "detail": "n_violations=0 min=0.0 max=1.0"
+   },
+   {
+    "name": "no_nan_inside_footprint",
+    "ok": true,
+    "detail": "nonfinite_pixels=0 masked_pixels=0"
+   },
+   {
+    "name": "nan_outside_footprint",
+    "ok": true,
+    "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+   },
+   {
+    "name": "submission_encoding",
+    "ok": true,
+    "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+   },
+   {
+    "name": "catalogue_zero_mass",
+    "ok": true,
+    "detail": "dots_on_catalogue=0"
+   },
+   {
+    "name": "distance_from_catalogue",
+    "ok": true,
+    "detail": "radius=2px dots_within=0; strict distance > radius required"
+   },
+   {
+    "name": "reread_sha256",
+    "ok": true,
+    "detail": "bbda704d15b9d3b54f129073c14c993289ba4a32f764b4f2844177ba38f1c040"
+   }
+  ]
+ },
+ "verdict": "negative",
+ "submission_eligible": false,
+ "submission_slots_used": 0,
+ "selector_note": "Format/unique gates failed; retained as a research deliverable."
+}

@@ -1,3 +1,9 @@
+# Submission status — 2026-10-31 review (`V-GFP` + `GSET2`, session `arena/702071e4-gemsdoe92`)
+
+## ⛔ DO NOT SUBMIT any 0.2778-family file · ✅ V-GFP2R is download/portal-safe but exploratory (`verdict: "negative"`, `0` slots spent)
+
+- **2026-10-31 unique candidate (`V-GFP2R`, `verdict: negative` / exploratory-submittable):** [`docs/downloads/gemsdoe92-vgfp2r-37654dots-20261031-bcb3d2af-zeros.tif`](docs/downloads/gemsdoe92-vgfp2r-37654dots-20261031-bcb3d2af-zeros.tif) (`SHA-256 6cd09733ab350469d32a714bd22d4eed63cb562e9364ba8ad049827da65d0a78`, `37,654` binary dots) is **OK TO DOWNLOAD** (`11/11` format gates PASS in `[0, 1]`, `0` NaN anywhere — fixes "Predicted values must be in range [0, 1]", `30/30` leakage canaries PASS `<= 0.75441`, `PI-1` unique across `158` registry rasters at `0.3089 <= 0.70`, `|ρ| = 0.0169 <= 0.90`) but **NOT promoted**: fold-proper `HOLDOUT-DTI = 0.043725 [0.028442, 0.057578]` < `R0-recipe control 0.096717 [0.085089, 0.108126]` (paired Δ `-0.052992 [-0.069326, -0.037833]`), `MODEL-CLASS PROJECTION 0.15–0.27` below the `0.2778 CLAIM` bar. Selector decides whether to spend a slot on this unique exploratory bet (3/week cap). See [2026-10-31 executive summary](docs/executive-summary-20261031.html) and [run card](evidence/vgfp_run_card_20261031.json).
+- **2026-10-31 experiment 3 (`GSET2`, `verdict: negative` — family duplicate):** [`docs/downloads/gemsdoe92-gset2-30126dots-20261031-1c4879c4-zeros.tif`](docs/downloads/gemsdoe92-gset2-30126dots-20261031-1c4879c4-zeros.tif) measured `0.98–1.00` pre-prune 3-px overlap vs the whole H19-5-corridor family (`0.7987 > 0.70` even after pruning) → **duplicate stop; do not submit**. Deliverable as negative evidence: the `0.2778` family cannot be re-submitted uniquely at a 37k-dot budget ([run card](evidence/gset2_run_card_20261031.json)).
 # Submission status — 2026-10-31 review (`PEEL` lane)
 
 ## 🟡 DOWNLOAD OK · NOT PROMOTED to a weekly slot (`0` slots used, 3/3 experiments spent)
