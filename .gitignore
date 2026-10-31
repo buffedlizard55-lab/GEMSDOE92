@@ -19,3 +19,7 @@ __pycache__/
 !docs/downloads/*.tif
 !docs/downloads/*.zip
 !docs/downloads/*.json
+
+# session 2026-10-31: large external stack + third-party clone stay out of git
+data/external/
+vendor/gems-prize-reference-solution/

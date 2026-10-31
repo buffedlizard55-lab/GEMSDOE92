@@ -1,0 +1,166 @@
+{
+  "schema": "vgfp-deploy-audit-v1",
+  "file": "docs/downloads/gemsdoe92-vgfp2r-37654dots-20261031-bcb3d2af-zeros.tif",
+  "sha256": "6cd09733ab350469d32a714bd22d4eed63cb562e9364ba8ad049827da65d0a78",
+  "validator": {
+    "no_nan_in_footprint": true,
+    "no_nan_anywhere": true,
+    "values_in_0_1": true,
+    "crs_match": true,
+    "shape_match": true,
+    "transform_match": true,
+    "dtype_float32": true,
+    "single_band": true,
+    "zeros_outside_footprint": true,
+    "zero_mass_on_mapped_catalogue": true,
+    "n_positive": 37654,
+    "gates_pass": true,
+    "gates": [
+      {
+        "name": "crs",
+        "ok": true,
+        "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+      },
+      {
+        "name": "shape",
+        "ok": true,
+        "detail": "reference=3730x3292 candidate=3730x3292"
+      },
+      {
+        "name": "transform",
+        "ok": true,
+        "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+      },
+      {
+        "name": "dtype_and_band",
+        "ok": true,
+        "detail": "dtype=('float32',) count=1"
+      },
+      {
+        "name": "values_in_0_1",
+        "ok": true,
+        "detail": "n_violations=0 min=0.0 max=1.0"
+      },
+      {
+        "name": "no_nan_inside_footprint",
+        "ok": true,
+        "detail": "nonfinite_pixels=0 masked_pixels=0"
+      },
+      {
+        "name": "nan_outside_footprint",
+        "ok": true,
+        "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+      },
+      {
+        "name": "submission_encoding",
+        "ok": true,
+        "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+      },
+      {
+        "name": "catalogue_zero_mass",
+        "ok": true,
+        "detail": "dots_on_catalogue=0"
+      },
+      {
+        "name": "distance_from_catalogue",
+        "ok": true,
+        "detail": "radius=2px dots_within=0; strict distance > radius required"
+      },
+      {
+        "name": "reread_sha256",
+        "ok": true,
+        "detail": "6cd09733ab350469d32a714bd22d4eed63cb562e9364ba8ad049827da65d0a78"
+      }
+    ]
+  },
+  "receipt": {
+    "zip_file": "gemsdoe92-vgfp2r-37654dots-20261031-bcb3d2af-zeros.zip",
+    "zip_sha256": "18ced84387de75687a817a623197315d0eb85376372ff2f13c178a4652ebb029",
+    "bytes": 103623
+  },
+  "created_utc": "2026-10-31T01:32:34.017367+00:00",
+  "sha256_zeros": "6cd09733ab350469d32a714bd22d4eed63cb562e9364ba8ad049827da65d0a78",
+  "overall_pass": true,
+  "gates_zeros": [
+    {
+      "name": "no_nan_in_footprint",
+      "ok": true,
+      "detail": "True"
+    },
+    {
+      "name": "no_nan_anywhere",
+      "ok": true,
+      "detail": "True"
+    },
+    {
+      "name": "values_in_0_1",
+      "ok": true,
+      "detail": "True"
+    },
+    {
+      "name": "crs_match",
+      "ok": true,
+      "detail": "True"
+    },
+    {
+      "name": "shape_match",
+      "ok": true,
+      "detail": "True"
+    },
+    {
+      "name": "transform_match",
+      "ok": true,
+      "detail": "True"
+    },
+    {
+      "name": "dtype_float32",
+      "ok": true,
+      "detail": "True"
+    },
+    {
+      "name": "single_band",
+      "ok": true,
+      "detail": "True"
+    },
+    {
+      "name": "zeros_outside_footprint",
+      "ok": true,
+      "detail": "True"
+    },
+    {
+      "name": "zero_mass_on_mapped_catalogue",
+      "ok": true,
+      "detail": "True"
+    },
+    {
+      "name": "n_positive",
+      "ok": true,
+      "detail": "37654"
+    },
+    {
+      "name": "gates_pass",
+      "ok": true,
+      "detail": "True"
+    },
+    {
+      "name": "gates",
+      "ok": true,
+      "detail": "[{'name': 'crs', 'ok': True, 'detail': 'reference=EPSG:32611 candidate=EPSG:32611'}, {'name': 'shape', 'ok': True, 'detail': 'reference=3730x3292 candidate=3730x3292'}, {'name': 'transform', 'ok': True, 'detail': '| 100.00, 0.00, 243350.00|\\n| 0.00,-100.00, 4508550.00|\\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\\n| 0.00,-100.00, 4508550.00|\\n| 0.00, 0.00, 1.00|'}, {'name': 'dtype_and_band', 'ok': True, 'detail': \"dtype=('float32',) count=1\"}, {'name': 'values_in_0_1', 'ok': True, 'detail': 'n_violations=0 min=0.0 max=1.0'}, {'name': 'no_nan_inside_footprint', 'ok': True, 'detail': 'nonfinite_pixels=0 masked_pixels=0'}, {'name': 'nan_outside_footprint', 'ok': True, 'detail': 'outside=7111787 nan=0 inf=0 zero=7111787 other=0'}, {'name': 'submission_encoding', 'ok': True, 'detail': 'all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True'}, {'name': 'catalogue_zero_mass', 'ok': True, 'detail': 'dots_on_catalogue=0'}, {'name': 'distance_from_catalogue', 'ok': True, 'detail': 'radius=2px dots_within=0; strict distance > radius required'}, {'name': 'reread_sha256', 'ok': True, 'detail': '6cd09733ab350469d32a714bd22d4eed63cb562e9364ba8ad049827da65d0a78'}]"
+    }
+  ],
+  "public_registry_uniqueness": {
+    "evidence_file": "evidence/vgfp_run_card_20261031.json",
+    "candidate_hash_matches_scan": true,
+    "candidate_sha256_zeros": "6cd09733ab350469d32a714bd22d4eed63cb562e9364ba8ad049827da65d0a78",
+    "registries_checked": 158,
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "worst_forward_overlap": 0.30891804323577843,
+    "worst_overlap_raster": "gemsdoe92-netexpand-netexpandfar-37654-20261025-47bacc15-zeros.tif",
+    "worst_abs_spearman": 0.01685668023429786,
+    "operative_sparse_passes": true,
+    "scope": "local registry: docs/downloads + bridge + parents + GEMSDOE24 mirror downloads + 7 streamed focus-9 bests + GEMSDOE36 mirror; own 2026-10-31 outputs excluded from peer comparison; NOT a full public-repo scan; literal positive-support reading fails vs pinned full-footprint dense surfaces for every non-empty raster (disclosed in run card)"
+  },
+  "verdict": "negative",
+  "submission_eligible": false
+}

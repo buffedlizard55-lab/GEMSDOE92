@@ -1,0 +1,547 @@
+{
+ "schema": "gemsdoe92-run-card-v3",
+ "created_utc": "2026-10-31T01:34:06.590214+00:00",
+ "lane": "V-GFP (VENT-CENTRIC GEOTHERMAL FAULT PROPENSITY)",
+ "hypothesis": "Hidden (organiser) faults share the mapped-fault appearance signature in the free official external stack AND cluster around geothermal-vent indicators (hot springs, wells, INGENIOUS 2 m probes, volcanic vents) that no scored fleet submission has used as supervised pixel features.",
+ "mechanism": "HistGradientBoosting pixel classifier on 30 channels (GeoDawn 8 + LiDAR scarp 12 + SGMC + visible-catalogue distance + 5 thermal-proximity densities + 2 confounds + 2 gradient mags) trained per fold on visible faults only; R0-lineage spaced-top emission (2.8 px floor, 37,654 dots, d_visible collar).",
+ "named_non_fault_mimic": "Lake Lahontan paleoshoreline beach ridges and incised drainage banks (LiDAR scarp channels), lithologic contacts (magnetic/radiometric edges), prospector access roads and claim fences (BLM/TIGER confound channels, audited).",
+ "raster": {
+  "file": "docs/downloads/gemsdoe92-vgfp2r-37654dots-20261031-bcb3d2af-zeros.tif",
+  "sha256": "6cd09733ab350469d32a714bd22d4eed63cb562e9364ba8ad049827da65d0a78",
+  "n_dots": 37654,
+  "submission_name": "gemsdoe92-vgfp2r-37654d-bcb3d2af",
+  "note": "V-GFP vgfp_2regime: 37654 dots, GeoDawn+LiDAR+SGMC GBDT + vent/well/probe thermal proximity; HOLDOUT-DTI 0.0437 vs R0ctrl 0.0967.",
+  "note_chars": 129
+ },
+ "raster_sha256": "6cd09733ab350469d32a714bd22d4eed63cb562e9364ba8ad049827da65d0a78",
+ "holdout_dti": {
+  "evidence_class": "HOLDOUT-DTI",
+  "evaluator_version": "gems57-pooled-hide-v2",
+  "withheld_positive_pixels": 22663,
+  "arm": {
+   "vgfp": {
+    "dti": 0.011382941685724204,
+    "ci95": [
+     0.004692971792776739,
+     0.0179128366721152
+    ]
+   },
+   "vgfp_far": {
+    "dti": 0.011905091127187533,
+    "ci95": [
+     0.005162404938149623,
+     0.01835680119774022
+    ]
+   },
+   "ctrl_h19_5": {
+    "dti": 0.0967167553403159,
+    "ci95": [
+     0.0850888012836081,
+     0.10812616496447829
+    ]
+   },
+   "ctrl_R0_static": {
+    "dti": 0.004006147174684743,
+    "ci95": [
+     0.0034243961318463374,
+     0.004689525221466778
+    ]
+   },
+   "vgfp_2regime": {
+    "dti": 0.04372519346634102,
+    "ci95": [
+     0.028442336753310708,
+     0.057578481339050094
+    ]
+   }
+  },
+  "paired_delta_vs_ctrl_h19_5": {
+   "evidence_class": "HOLDOUT-DTI",
+   "evaluator_version": "gems57-pooled-hide-v2",
+   "delta": -0.052991561873974885,
+   "ci95": [
+    -0.06932607323567475,
+    -0.0378326584619201
+   ],
+   "withheld_positive_pixels": 22663
+  },
+  "instrument_note": "strict draw-blind fold-visible (buffered whole-component draws, seeds 20/30; collar d_visible>2.0, vgfp_far d_visible>4.0)"
+ },
+ "leakage_canaries": {
+  "threshold": 0.9,
+  "n": 60,
+  "max_symmetric_auc": 0.75441,
+  "all_pass": true,
+  "detail": [
+   {
+    "seed": 20,
+    "feature": "ThK",
+    "auc": 0.504308,
+    "symmetric_auc": 0.504308
+   },
+   {
+    "seed": 20,
+    "feature": "UK",
+    "auc": 0.507414,
+    "symmetric_auc": 0.507414
+   },
+   {
+    "seed": 20,
+    "feature": "UTh",
+    "auc": 0.507735,
+    "symmetric_auc": 0.507735
+   },
+   {
+    "seed": 20,
+    "feature": "TMI_up150",
+    "auc": 0.511069,
+    "symmetric_auc": 0.511069
+   },
+   {
+    "seed": 20,
+    "feature": "K",
+    "auc": 0.466558,
+    "symmetric_auc": 0.533442
+   },
+   {
+    "seed": 20,
+    "feature": "Th",
+    "auc": 0.481686,
+    "symmetric_auc": 0.518314
+   },
+   {
+    "seed": 20,
+    "feature": "U",
+    "auc": 0.47398,
+    "symmetric_auc": 0.52602
+   },
+   {
+    "seed": 20,
+    "feature": "TC",
+    "auc": 0.472856,
+    "symmetric_auc": 0.527144
+   },
+   {
+    "seed": 20,
+    "feature": "ex_max",
+    "auc": 0.58848,
+    "symmetric_auc": 0.58848
+   },
+   {
+    "seed": 20,
+    "feature": "ex_mean",
+    "auc": 0.582613,
+    "symmetric_auc": 0.582613
+   },
+   {
+    "seed": 20,
+    "feature": "step_max",
+    "auc": 0.589239,
+    "symmetric_auc": 0.589239
+   },
+   {
+    "seed": 20,
+    "feature": "lapneg_max",
+    "auc": 0.591269,
+    "symmetric_auc": 0.591269
+   },
+   {
+    "seed": 20,
+    "feature": "lappos_max",
+    "auc": 0.593831,
+    "symmetric_auc": 0.593831
+   },
+   {
+    "seed": 20,
+    "feature": "downface_max",
+    "auc": 0.599158,
+    "symmetric_auc": 0.599158
+   },
+   {
+    "seed": 20,
+    "feature": "upface_max",
+    "auc": 0.605117,
+    "symmetric_auc": 0.605117
+   },
+   {
+    "seed": 20,
+    "feature": "cross_max",
+    "auc": 0.598991,
+    "symmetric_auc": 0.598991
+   },
+   {
+    "seed": 20,
+    "feature": "relief",
+    "auc": 0.586716,
+    "symmetric_auc": 0.586716
+   },
+   {
+    "seed": 20,
+    "feature": "coh100",
+    "auc": 0.528446,
+    "symmetric_auc": 0.528446
+   },
+   {
+    "seed": 20,
+    "feature": "strike",
+    "auc": 0.544843,
+    "symmetric_auc": 0.544843
+   },
+   {
+    "seed": 20,
+    "feature": "sgmc",
+    "auc": 0.521312,
+    "symmetric_auc": 0.521312
+   },
+   {
+    "seed": 20,
+    "feature": "d_cat",
+    "auc": 0.24559,
+    "symmetric_auc": 0.75441
+   },
+   {
+    "seed": 20,
+    "feature": "vent_g",
+    "auc": 0.499142,
+    "symmetric_auc": 0.500858
+   },
+   {
+    "seed": 20,
+    "feature": "hot_g",
+    "auc": 0.498714,
+    "symmetric_auc": 0.501286
+   },
+   {
+    "seed": 20,
+    "feature": "well_g",
+    "auc": 0.492648,
+    "symmetric_auc": 0.507352
+   },
+   {
+    "seed": 20,
+    "feature": "probe_g",
+    "auc": 0.528662,
+    "symmetric_auc": 0.528662
+   },
+   {
+    "seed": 20,
+    "feature": "qfault_g",
+    "auc": 0.608744,
+    "symmetric_auc": 0.608744
+   },
+   {
+    "seed": 20,
+    "feature": "road_log",
+    "auc": 0.503237,
+    "symmetric_auc": 0.503237
+   },
+   {
+    "seed": 20,
+    "feature": "claim_log",
+    "auc": 0.478309,
+    "symmetric_auc": 0.521691
+   },
+   {
+    "seed": 20,
+    "feature": "tmi_grad",
+    "auc": 0.527896,
+    "symmetric_auc": 0.527896
+   },
+   {
+    "seed": 20,
+    "feature": "tc_grad",
+    "auc": 0.504953,
+    "symmetric_auc": 0.504953
+   },
+   {
+    "seed": 30,
+    "feature": "ThK",
+    "auc": 0.46791,
+    "symmetric_auc": 0.53209
+   },
+   {
+    "seed": 30,
+    "feature": "UK",
+    "auc": 0.503303,
+    "symmetric_auc": 0.503303
+   },
+   {
+    "seed": 30,
+    "feature": "UTh",
+    "auc": 0.535855,
+    "symmetric_auc": 0.535855
+   },
+   {
+    "seed": 30,
+    "feature": "TMI_up150",
+    "auc": 0.507165,
+    "symmetric_auc": 0.507165
+   },
+   {
+    "seed": 30,
+    "feature": "K",
+    "auc": 0.459375,
+    "symmetric_auc": 0.540625
+   },
+   {
+    "seed": 30,
+    "feature": "Th",
+    "auc": 0.449456,
+    "symmetric_auc": 0.550544
+   },
+   {
+    "seed": 30,
+    "feature": "U",
+    "auc": 0.462282,
+    "symmetric_auc": 0.537718
+   },
+   {
+    "seed": 30,
+    "feature": "TC",
+    "auc": 0.452473,
+    "symmetric_auc": 0.547527
+   },
+   {
+    "seed": 30,
+    "feature": "ex_max",
+    "auc": 0.563858,
+    "symmetric_auc": 0.563858
+   },
+   {
+    "seed": 30,
+    "feature": "ex_mean",
+    "auc": 0.558126,
+    "symmetric_auc": 0.558126
+   },
+   {
+    "seed": 30,
+    "feature": "step_max",
+    "auc": 0.56522,
+    "symmetric_auc": 0.56522
+   },
+   {
+    "seed": 30,
+    "feature": "lapneg_max",
+    "auc": 0.569987,
+    "symmetric_auc": 0.569987
+   },
+   {
+    "seed": 30,
+    "feature": "lappos_max",
+    "auc": 0.571878,
+    "symmetric_auc": 0.571878
+   },
+   {
+    "seed": 30,
+    "feature": "downface_max",
+    "auc": 0.575172,
+    "symmetric_auc": 0.575172
+   },
+   {
+    "seed": 30,
+    "feature": "upface_max",
+    "auc": 0.58256,
+    "symmetric_auc": 0.58256
+   },
+   {
+    "seed": 30,
+    "feature": "cross_max",
+    "auc": 0.575308,
+    "symmetric_auc": 0.575308
+   },
+   {
+    "seed": 30,
+    "feature": "relief",
+    "auc": 0.565187,
+    "symmetric_auc": 0.565187
+   },
+   {
+    "seed": 30,
+    "feature": "coh100",
+    "auc": 0.522159,
+    "symmetric_auc": 0.522159
+   },
+   {
+    "seed": 30,
+    "feature": "strike",
+    "auc": 0.545552,
+    "symmetric_auc": 0.545552
+   },
+   {
+    "seed": 30,
+    "feature": "sgmc",
+    "auc": 0.524955,
+    "symmetric_auc": 0.524955
+   },
+   {
+    "seed": 30,
+    "feature": "d_cat",
+    "auc": 0.246371,
+    "symmetric_auc": 0.753629
+   },
+   {
+    "seed": 30,
+    "feature": "vent_g",
+    "auc": 0.499206,
+    "symmetric_auc": 0.500794
+   },
+   {
+    "seed": 30,
+    "feature": "hot_g",
+    "auc": 0.501812,
+    "symmetric_auc": 0.501812
+   },
+   {
+    "seed": 30,
+    "feature": "well_g",
+    "auc": 0.5398,
+    "symmetric_auc": 0.5398
+   },
+   {
+    "seed": 30,
+    "feature": "probe_g",
+    "auc": 0.547388,
+    "symmetric_auc": 0.547388
+   },
+   {
+    "seed": 30,
+    "feature": "qfault_g",
+    "auc": 0.618222,
+    "symmetric_auc": 0.618222
+   },
+   {
+    "seed": 30,
+    "feature": "road_log",
+    "auc": 0.45895,
+    "symmetric_auc": 0.54105
+   },
+   {
+    "seed": 30,
+    "feature": "claim_log",
+    "auc": 0.493652,
+    "symmetric_auc": 0.506348
+   },
+   {
+    "seed": 30,
+    "feature": "tmi_grad",
+    "auc": 0.507669,
+    "symmetric_auc": 0.507669
+   },
+   {
+    "seed": 30,
+    "feature": "tc_grad",
+    "auc": 0.493579,
+    "symmetric_auc": 0.506421
+   }
+  ]
+ },
+ "uniqueness": {
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "pi1_pass": true,
+  "worst_overlap": {
+   "overlap": 0.30891804323577843,
+   "path": "docs/downloads/gemsdoe92-netexpand-netexpandfar-37654-20261025-47bacc15-zeros.tif",
+   "rep": "dot_field"
+  },
+  "worst_abs_spearman": {
+   "rho": 0.01685668023429786,
+   "path": "data/bridge/h19_5.tif"
+  },
+  "registry_scope": "local archive: 158 rasters (docs/downloads + bridge + parents + GEMSDOE24 mirror downloads + focus-9 streamed bests); full 2,262-SHA fleet cache NOT rebuilt in this sandbox -- scope disclosed"
+ },
+ "model_projection": {
+  "evidence_class": "MODEL-CLASS PROJECTION (NOT an organizer score)",
+  "method": "Family evidence from the fleet CLAIM ledger. Two anchors: (a) H19-5-corridor binary dot fields in the 35,000-44,000-dot / 2.5-3.0 px / d_cat>2 regime score 0.2477-0.2784 (h25-1 0.2477, d2-8 0.2600, d28 0.2600, h27-4 0.2708, anderson-pinn 0.2750, h33-2-b2 0.2778, lbmc1 0.2784); (b) external-stack supervised/thermal submissions without H19-5 support score 0.02-0.225 (fleet spread; best = GEMSDOE27 h31-drcg-wl-celf28 0.2250). V-GFP2R is in emission regime (a) but has ZERO H19-5 support, so it inherits the (b) ceiling unless the external stack substitutes for the skeleton. LBM-v3 131-claim LOGO RMSE is 0.0266 but its feature stack is unavailable in this sandbox.",
+  "point": 0.21,
+  "band": [
+   0.15,
+   0.27
+  ],
+  "beats_0_2778_probability": "low (<=25%): the two-regime plateau at ~0.278 is an information ceiling for families without the full 19-band numeric_features stack",
+  "caveat": "WIDE BAND: no CLAIM anchor for this family; the holdout instrument has Spearman 0.13 vs claims (evidence/holdout_validity_20261027.json) and cannot tighten it. A projection is never a score.",
+  "family_claims": [
+   0.2477,
+   0.26,
+   0.26,
+   0.2708,
+   0.275,
+   0.2778,
+   0.2784
+  ]
+ },
+ "validator_output": {
+  "no_nan_in_footprint": true,
+  "no_nan_anywhere": true,
+  "values_in_0_1": true,
+  "crs_match": true,
+  "shape_match": true,
+  "transform_match": true,
+  "dtype_float32": true,
+  "single_band": true,
+  "zeros_outside_footprint": true,
+  "zero_mass_on_mapped_catalogue": true,
+  "n_positive": 37654,
+  "gates_pass": true,
+  "gates": [
+   {
+    "name": "crs",
+    "ok": true,
+    "detail": "reference=EPSG:32611 candidate=EPSG:32611"
+   },
+   {
+    "name": "shape",
+    "ok": true,
+    "detail": "reference=3730x3292 candidate=3730x3292"
+   },
+   {
+    "name": "transform",
+    "ok": true,
+    "detail": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00| vs | 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|"
+   },
+   {
+    "name": "dtype_and_band",
+    "ok": true,
+    "detail": "dtype=('float32',) count=1"
+   },
+   {
+    "name": "values_in_0_1",
+    "ok": true,
+    "detail": "n_violations=0 min=0.0 max=1.0"
+   },
+   {
+    "name": "no_nan_inside_footprint",
+    "ok": true,
+    "detail": "nonfinite_pixels=0 masked_pixels=0"
+   },
+   {
+    "name": "nan_outside_footprint",
+    "ok": true,
+    "detail": "outside=7111787 nan=0 inf=0 zero=7111787 other=0"
+   },
+   {
+    "name": "submission_encoding",
+    "ok": true,
+    "detail": "all_finite=True global_range=[0.0, 1.0] zero_outside=True nonempty_footprint=True"
+   },
+   {
+    "name": "catalogue_zero_mass",
+    "ok": true,
+    "detail": "dots_on_catalogue=0"
+   },
+   {
+    "name": "distance_from_catalogue",
+    "ok": true,
+    "detail": "radius=2px dots_within=0; strict distance > radius required"
+   },
+   {
+    "name": "reread_sha256",
+    "ok": true,
+    "detail": "6cd09733ab350469d32a714bd22d4eed63cb562e9364ba8ad049827da65d0a78"
+   }
+  ]
+ },
+ "verdict": "negative",
+ "submission_eligible": false,
+ "submission_slots_used": 0,
+ "selector_note": "Not promoted under the strict protocol gates; retained as a research deliverable (negative results count)."
+}

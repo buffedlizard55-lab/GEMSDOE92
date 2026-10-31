@@ -1,0 +1,173 @@
+{
+  "schema": "gems57.submission_writer/audit+v1",
+  "created_utc": "2026-10-31T02:07:42Z",
+  "file": "gemsdoe92-gset2-30126dots-20261031-1c4879c4-zeros.tif",
+  "sha256": "bbda704d15b9d3b54f129073c14c993289ba4a32f764b4f2844177ba38f1c040",
+  "validator": {
+    "file": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-gset2-30126dots-20261031-1c4879c4-zeros.tif",
+    "bytes": 131658,
+    "sha256": "bbda704d15b9d3b54f129073c14c993289ba4a32f764b4f2844177ba38f1c040",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0024534252006560564,
+    "emitted_positive_pixels": 30126,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_unmasked": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 30126,
+    "footprint_fraction": 0.005830041686559108
+  },
+  "receipt": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval",
+  "sha256_zeros": "bbda704d15b9d3b54f129073c14c993289ba4a32f764b4f2844177ba38f1c040",
+  "overall_pass": true,
+  "gates_zeros": [
+    {
+      "name": "file",
+      "ok": true,
+      "detail": "/home/user/GEMSDOE92/docs/downloads/gemsdoe92-gset2-30126dots-20261031-1c4879c4-zeros.tif"
+    },
+    {
+      "name": "bytes",
+      "ok": true,
+      "detail": "131658"
+    },
+    {
+      "name": "sha256",
+      "ok": true,
+      "detail": "bbda704d15b9d3b54f129073c14c993289ba4a32f764b4f2844177ba38f1c040"
+    },
+    {
+      "name": "meta",
+      "ok": true,
+      "detail": "{'crs': 'EPSG:32611', 'shape': [3730, 3292], 'dtype': 'float32', 'count': 1, 'nodata': None, 'transform': [100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0], 'profile_compress': 'deflate'}"
+    },
+    {
+      "name": "band_description",
+      "ok": true,
+      "detail": "[None]"
+    },
+    {
+      "name": "n_finite",
+      "ok": true,
+      "detail": "12279160"
+    },
+    {
+      "name": "n_nan",
+      "ok": false,
+      "detail": "0"
+    },
+    {
+      "name": "n_infinite",
+      "ok": false,
+      "detail": "0"
+    },
+    {
+      "name": "min",
+      "ok": false,
+      "detail": "0.0"
+    },
+    {
+      "name": "max",
+      "ok": true,
+      "detail": "1.0"
+    },
+    {
+      "name": "mean",
+      "ok": true,
+      "detail": "0.0024534252006560564"
+    },
+    {
+      "name": "emitted_positive_pixels",
+      "ok": true,
+      "detail": "30126"
+    },
+    {
+      "name": "checks",
+      "ok": true,
+      "detail": "{'single_band': True, 'dtype_float32': True, 'dimensions_3730x3292': True, 'crs_epsg_32611': True, 'transform_matches_sample_submission': True, 'no_nan_anywhere': True, 'no_inf_anywhere': True, 'no_sentinel_values': True, 'range_0_1_guaranteed': True, 'min_ge_0': True, 'max_le_1': True, 'in_footprint_all_finite': True, 'in_footprint_unmasked': True, 'in_footprint_range_0_1': True, 'outside_footprint_zero': True, 'zero_dots_on_mapped_catalogue': True}"
+    },
+    {
+      "name": "all_checks_passed",
+      "ok": true,
+      "detail": "True"
+    },
+    {
+      "name": "validation_class",
+      "ok": true,
+      "detail": "local format/range preflight; not organizer acceptance or uniqueness clearance"
+    },
+    {
+      "name": "on_catalogue_positive_pixels",
+      "ok": false,
+      "detail": "0"
+    },
+    {
+      "name": "in_footprint_positive_pixels",
+      "ok": true,
+      "detail": "30126"
+    },
+    {
+      "name": "footprint_fraction",
+      "ok": true,
+      "detail": "0.005830041686559108"
+    }
+  ],
+  "public_registry_uniqueness": {
+    "evidence_file": "evidence/gset2_run_card_20261031.json",
+    "candidate_hash_matches_scan": true,
+    "candidate_sha256_zeros": "bbda704d15b9d3b54f129073c14c993289ba4a32f764b4f2844177ba38f1c040",
+    "registries_checked": 158,
+    "unique_under_literal_rule": false,
+    "stop_required": true,
+    "worst_forward_overlap": 0.7987452698665605,
+    "worst_overlap_raster": "GEMSDOE28__h36-1-rung30.tif (focus9 mirror)",
+    "worst_abs_spearman": 0.2662035500314579,
+    "operative_sparse_passes": false,
+    "scope": "local registry: docs/downloads + bridge + parents + GEMSDOE24 mirror downloads + 7 streamed focus-9 bests + GEMSDOE36 mirror; own 2026-10-31 outputs excluded from peer comparison; NOT a full public-repo scan; literal positive-support reading fails vs pinned full-footprint dense surfaces for every non-empty raster (disclosed in run card)"
+  },
+  "verdict": "negative",
+  "submission_eligible": false
+}

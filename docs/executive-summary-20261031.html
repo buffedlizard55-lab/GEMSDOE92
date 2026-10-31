@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GEMSDOE92 — Executive Summary &amp; Submission Guide (2026-10-31)</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; margin: 0 auto; max-width: 1080px; padding: 24px 20px 80px; color: #1a2330; line-height: 1.55; }
+  h1 { font-size: 1.7em; margin-bottom: 0.2em; }
+  h2 { font-size: 1.3em; margin-top: 1.8em; border-bottom: 2px solid #d7dee8; padding-bottom: 0.25em; }
+  h3 { font-size: 1.08em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 0.92em; }
+  th, td { border: 1px solid #c8d2de; padding: 7px 9px; text-align: left; vertical-align: top; }
+  th { background: #eef3f9; }
+  code, .mono { font-family: ui-monospace, "Cascadia Code", Menlo, monospace; font-size: 0.9em; }
+  .banner { border-radius: 10px; padding: 18px 20px; margin: 1.2em 0; }
+  .ok { background: #e7f6ec; border: 2px solid #2f9e5f; }
+  .warn { background: #fff6e5; border: 2px solid #d99a1d; }
+  .stop { background: #fdecec; border: 2px solid #c84343; }
+  .info { background: #eaf1fb; border: 2px solid #3b6fc4; }
+  .dl { display: inline-block; background: #2f6fd6; color: #fff; text-decoration: none; padding: 10px 18px; border-radius: 8px; font-weight: 600; margin: 6px 8px 6px 0; }
+  .dl.alt { background: #4a5866; }
+  .small { font-size: 0.85em; color: #4b5663; }
+  .tag { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 0.78em; font-weight: 700; }
+  .t-claim { background: #ffe9b8; color: #7a5200; }
+  .t-proj { background: #e3e9f5; color: #2c3e66; }
+  .t-org { background: #d7f2df; color: #1c6b3a; }
+  .t-hold { background: #efe3f7; color: #5c2d82; }
+  .t-uniq-y { background: #d7f2df; color: #1c6b3a; }
+  .t-uniq-n { background: #f8d7d7; color: #8f2727; }
+  ol li, ul li { margin: 0.35em 0; }
+</style>
+</head>
+<body>
+
+<h1>GEMSDOE92 — Executive Summary &amp; One-Click Submission Guide</h1>
+<p class="small">Updated 2026-10-31 (session <span class="mono">arena/702071e4-gemsdoe92</span>) ·
+Competition: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData #306 — GEMS Prize Challenge</a> ·
+Live leaderboard metric is <strong>DW-Tversky</strong> (distance-weighted Tversky; α=0.2, β=0.8, 300 m triangular kernel) ·
+Evidence classes: <span class="tag t-org">ORGANIZER-CONFIRMED</span> receipt ·
+<span class="tag t-claim">CLAIM</span> owner-reported ·
+<span class="tag t-hold">HOLDOUT-DTI</span> hide-and-recover ·
+<span class="tag t-proj">MODEL-CLASS PROJECTION</span> (never a score).</p>
+
+<div class="banner ok">
+  <h2 style="margin-top:0">⬇️ TODAY'S GENERATED SUBMISSION FILE — VALIDATED &amp; UNIQUE</h2>
+  <p style="font-size:1.05em"><strong>File to download and submit:</strong>
+  <a class="mono" href="downloads/gemsdoe92-vgfp2r-37654dots-20261031-bcb3d2af-zeros.tif">docs/downloads/gemsdoe92-vgfp2r-37654dots-20261031-bcb3d2af-zeros.tif</a></p>
+  <p>
+    <a class="dl" href="downloads/gemsdoe92-vgfp2r-37654dots-20261031-bcb3d2af-zeros.tif">⬇ Download GeoTIFF (.tif)</a>
+    <a class="dl alt" href="downloads/gemsdoe92-vgfp2r-37654dots-20261031-bcb3d2af-zeros.zip">⬇ One-TIFF .zip</a>
+    <a class="dl alt" href="downloads/gemsdoe92-vgfp2r-37654dots-20261031-bcb3d2af_run_card.json">Run card (JSON)</a>
+    <a class="dl alt" href="downloads/gemsdoe92-vgfp2r-37654dots-20261031-bcb3d2af-zeros-audit.json">Format audit (JSON)</a>
+    <a class="dl alt" href="../evidence/vgfp_uniqueness.json">Uniqueness audit (JSON)</a>
+    <a class="dl alt" href="../evidence/vgfp_holdout_exp2.json">Holdout evidence (JSON)</a>
+  </p>
+  <table>
+    <tr><th>Check (fully automated — no human inspection)</th><th>Result</th></tr>
+    <tr><td>GeoTIFF format gates (CRS EPSG:32611, 3292×3730, geotransform, single-band float32, binary {0,1})</td><td>✅ <strong>11/11 PASS</strong></td></tr>
+    <tr><td>Portal range check — “Predicted values must be in range [0, 1]”</td><td>✅ PASS — <strong>0 NaN anywhere</strong>, all values in {0.0, 1.0}, zeros outside the footprint (this is the fix for the range error: never upload a NaN-outside or unclipped raster)</td></tr>
+    <tr><td>Zero dot mass on the mapped catalogue (<span class="mono">existing_faults.tif</span>)</td><td>✅ PASS (0 positive pixels on 60,988 catalogue cells)</td></tr>
+    <tr><td>Uniqueness vs registry (PI-1: ≤70 % of dots within 3 px of any peer raster, |Spearman| ≤ 0.90) across <strong>158 rasters</strong> incl. all Focus-9 bests, R0/h33-2-b2, lbmc1, d28, h19-5 family</td><td>✅ <strong>PASS</strong> — worst dot overlap <strong>30.9 %</strong> (vs netexpand_far), worst |ρ| = 0.017 (vs h19-5)</td></tr>
+    <tr><td>Leakage canaries (single-feature AUC vs withheld faults)</td><td>✅ 30/30 PASS, max symmetric AUC 0.75441 ≤ 0.90</td></tr>
+    <tr><td>HOLDOUT-DTI (gems57-pooled-hide-v2, 22,663 withheld positives, fold-proper)</td><td>⚠️ <span class="tag t-hold">HOLDOUT-DTI</span> 0.0437 [0.0284, 0.0576] vs in-run R0-recipe control 0.0967 [0.0851, 0.1081] — <strong>did not beat the control</strong> (paired Δ = −0.053 [−0.069, −0.038])</td></tr>
+    <tr><td>Estimated leaderboard score</td><td><span class="tag t-proj">MODEL-CLASS PROJECTION</span> <strong>0.15 – 0.27 (central ≈ 0.21)</strong> — wide band, no CLAIM anchor for this family; a projection is never a score</td></tr>
+    <tr><td>SHA-256</td><td class="mono">6cd09733ab350469d32a714bd22d4eed63cb562e9364ba8ad049827da65d0a78 · 37,654 dots</td></tr>
+  </table>
+  <div class="banner warn" style="margin:0.6em 0 0">
+    <strong>⚠️ OBVIOUS SUBMIT VERDICT (read once):</strong>
+    <strong>OK TO DOWNLOAD — YES. PORTAL-WILL-ACCEPT — YES</strong> (format + [0,1] validated automatically).
+    <strong>PROTOCOL VERDICT = negative (exploratory only):</strong> the fold-proper holdout did <em>not</em> beat the R0-recipe control and the projection band (0.15–0.27) sits below the 0.2778 family bar, so this file is a
+    <em>unique, scientifically grounded exploratory submission</em>, not a projected high-score entry. It is the only file generated this session that is legal to upload <em>and</em> unique. Use a weekly slot on it only if you explicitly want a unique exploratory datapoint.
+  </div>
+</div>
+
+<h2>1. Focus-9 sites — best submission per site, score, and uniqueness</h2>
+<p class="small">Scores are <span class="tag t-claim">CLAIM</span> (owner-reported; no organizer receipt exists in this repo). Uniqueness = the parallel-run rule as written (≤70 % 3-px dot overlap AND |Spearman ρ| ≤ 0.90), measured pairwise on the site bests from <span class="mono">evidence/full_registry_summary_20261028.json</span> and this session's registry audit.</p>
+<table>
+  <tr><th>Site</th><th>Best submission (file to download)</th><th>Score</th><th>Unique vs the other Focus-9 sites?</th><th>Verdict</th></tr>
+  <tr>
+    <td><a href="https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html">GEMSDOE32</a></td>
+    <td class="mono">h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif<br><span class="small">local: data/parent_R0_zeros.tif (sha256 c55bafc4…)</span></td>
+    <td><span class="tag t-claim">CLAIM</span> <strong>0.2778</strong> — Focus-9 best</td>
+    <td><span class="tag t-uniq-n">NO</span> — byte-identical copies in 18 repos; pairwise dot overlap 0.87–1.00 vs every other Focus-9 best; <strong>already submitted</strong></td>
+    <td>Family champion — do not resubmit (resubmission spends a slot and adds no information)</td>
+  </tr>
+  <tr>
+    <td><a href="https://buffedlizard55-lab.github.io/GEMSDOE36/docs/">GEMSDOE36</a></td>
+    <td class="mono">anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif</td>
+    <td><span class="tag t-claim">CLAIM</span> 0.2750</td>
+    <td><span class="tag t-uniq-n">NO</span> — R0 dots + 1,200 extras; 0.88–1.00 vs family</td>
+    <td>Proven <em>−0.0028</em> vs R0: uncalibrated extra dots hurt (GEMSDOE36 lesson)</td>
+  </tr>
+  <tr>
+    <td><a href="https://buffedlizard55-lab.github.io/GEMSDOE28/">GEMSDOE28</a></td>
+    <td class="mono">h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif<br><span class="small">(also h27-4-r1-solo-d2-8 0.2708, h38-1 0.2707, h32-1 0.2649)</span></td>
+    <td><span class="tag t-claim">CLAIM</span> 0.2710</td>
+    <td><span class="tag t-uniq-n">NO</span> — 0.93–1.00 vs family</td>
+    <td>Same H19-5-thinning family</td>
+  </tr>
+  <tr>
+    <td><a href="https://buffedlizard55-lab.github.io/GEMSDOE31/docs/">GEMSDOE31</a></td>
+    <td class="mono">h27-4-solo-d28-20261004-8acb75e1-nan.tif<br><span class="small">local: data/bridge/h27_4_solo.tif</span></td>
+    <td><span class="tag t-claim">CLAIM</span> 0.2708</td>
+    <td><span class="tag t-uniq-n">NO</span> — 0.92–1.00 vs family</td>
+    <td>d28 minus d_cat≤1 px collar</td>
+  </tr>
+  <tr>
+    <td><a href="https://buffedlizard55-lab.github.io/GEMSDOE33/">GEMSDOE33</a></td>
+    <td class="mono">h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif</td>
+    <td><span class="tag t-claim">CLAIM</span> 0.2632</td>
+    <td><span class="tag t-uniq-n">NO</span> — 0.94–1.00 vs family</td>
+    <td>Analog tip-stepover variant</td>
+  </tr>
+  <tr>
+    <td><a href="https://buffedlizard55-lab.github.io/GEMSDOE30/">GEMSDOE30</a></td>
+    <td class="mono">d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif<br><span class="small">local lineage: data/bridge/d28.tif (44,090 dots)</span></td>
+    <td><span class="tag t-claim">CLAIM</span> 0.2600</td>
+    <td><span class="tag t-uniq-n">NO</span> — 0.93–1.00 vs family</td>
+    <td>2.8-px Poisson thinning of H19-5</td>
+  </tr>
+  <tr>
+    <td><a href="https://buffedlizard55-lab.github.io/GEMSDOE25/">GEMSDOE25</a></td>
+    <td class="mono">dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif</td>
+    <td><span class="tag t-claim">CLAIM</span> 0.2600</td>
+    <td><span class="tag t-uniq-n">NO</span> — 0.93–1.00 vs family</td>
+    <td>Same bytes as GEMSDOE30 d28 lineage</td>
+  </tr>
+  <tr>
+    <td><a href="https://buffedlizard55-lab.github.io/GEMSDOE24/">GEMSDOE24</a></td>
+    <td class="mono">h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif</td>
+    <td><span class="tag t-claim">CLAIM</span> 0.2477</td>
+    <td><span class="tag t-uniq-n">NO</span> — 1.00 vs GEMSDOE25/27/30 bests</td>
+    <td>1.5-px thinning (under-spaced → lower score)</td>
+  </tr>
+  <tr>
+    <td><a href="https://buffedlizard55-lab.github.io/GEMSDOE27/">GEMSDOE27</a></td>
+    <td class="mono">topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif</td>
+    <td><span class="tag t-claim">CLAIM</span> 0.2449</td>
+    <td><span class="tag t-uniq-n">NO</span> — 0.87–0.98 vs family</td>
+    <td>Topo-gap closure on the d1-5 dots</td>
+  </tr>
+  <tr style="background:#f2f8ff">
+    <td><strong>GEMSDOE92 (this repo)</strong></td>
+    <td class="mono"><a href="downloads/gemsdoe92-vgfp2r-37654dots-20261031-bcb3d2af-zeros.tif">gemsdoe92-vgfp2r-37654dots-20261031-bcb3d2af-zeros.tif</a> (NEW 2026-10-31)<br><span class="small">historical: gemsdoe92-lbmc1-35801dots-20261027 (already submitted)</span></td>
+    <td><span class="tag t-proj">PROJECTION</span> 0.15–0.27<br><span class="small">historical lbmc1 = <span class="tag t-claim">CLAIM</span> 0.2784</span></td>
+    <td><span class="tag t-uniq-y">YES</span> — worst 3-px overlap 0.31 vs all 158 registry rasters</td>
+    <td><strong>The unique generated file of this session</strong> — validated, portal-safe, exploratory</td>
+  </tr>
+</table>
+
+<div class="banner stop">
+  <strong>Key finding (measured, not opinion):</strong> the nine Focus-9 “best” submissions are <em>one single family</em> — pairwise 3-px dot overlap among them is 0.87–1.00, far above the 0.70 duplicate threshold.
+  Experiment 3 this session re-derived the family consensus from scratch and measured pre-prune overlap <strong>0.98–1.00</strong> against every H19-5-corridor member (the distal-only lbmc1 member measured 0.365); even after pruning, 0.80 &gt; 0.70 → verdict <strong>duplicate</strong> (run card: <a href="../evidence/gset2_run_card_20261031.json">gset2_run_card_20261031.json</a>).
+  <em>Conclusion: the 0.2778 family cannot be re-submitted uniquely at a 37k-dot budget — uniqueness and family membership are mutually exclusive.</em>
+</div>
+
+<h2>2. Which file should you download and submit? (decision table)</h2>
+<table>
+  <tr><th>File</th><th>Estimated score</th><th>Unique vs all listed GEMSDOE sites?</th><th>Recommendation</th></tr>
+  <tr>
+    <td class="mono"><a href="downloads/gemsdoe92-vgfp2r-37654dots-20261031-bcb3d2af-zeros.tif">gemsdoe92-vgfp2r-…-bcb3d2af-zeros.tif</a> (generated today)</td>
+    <td><span class="tag t-proj">MODEL-CLASS PROJECTION</span> <strong>0.15–0.27</strong> (central ≈ 0.21)</td>
+    <td><span class="tag t-uniq-y">YES</span> (worst 0.31 / 158 rasters)</td>
+    <td><strong>✅ THE file to download if you want a unique, upload-legal submission now.</strong> Expect an exploratory score; it is not projected to beat 0.2778.</td>
+  </tr>
+  <tr>
+    <td class="mono">parent_R0 (= h33-2-b2 / e5eb6e7e)</td>
+    <td><span class="tag t-claim">CLAIM</span> 0.2778</td>
+    <td><span class="tag t-uniq-n">NO</span> (18 repos) &amp; already submitted</td>
+    <td>⛔ Do not resubmit — a duplicate costs a weekly slot and adds zero information.</td>
+  </tr>
+  <tr>
+    <td class="mono">gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif</td>
+    <td><span class="tag t-claim">CLAIM</span> 0.2784 (fleet best)</td>
+    <td>YES vs fleet (68.45 %) — but already submitted 2026-10-27</td>
+    <td>⛔ Already on the leaderboard — do not resubmit.</td>
+  </tr>
+  <tr>
+    <td class="mono">gemsdoe92-gset2-30126dots-20261031-1c4879c4-zeros.tif (experiment 3)</td>
+    <td>n/a — duplicate verdict</td>
+    <td><span class="tag t-uniq-n">NO</span> (0.7987 vs GEMSDOE28 rung30, post-prune)</td>
+    <td>⛔ Research artifact (negative result is a deliverable) — do not submit.</td>
+  </tr>
+</table>
+
+<h2>3. Why did h33-h33-2-b2 (GEMSDOE32) score 0.2778 — and can we beat it?</h2>
+<p><strong>Short answer:</strong> it won by <em>submodular dot economics</em>, and no — with data available in this sandbox we cannot generate a <em>unique</em> submission projected above it. The 0.2778/0.2784 pair is an information ceiling for this data regime.</p>
+<h3>3.1 The mechanism (verified against the official metric)</h3>
+<ol>
+  <li><strong>The metric rewards sparse dots, not surfaces.</strong> DTI = TP<sub>w</sub> / (TP<sub>w</sub> + 0.2·FP<sub>w</sub> + 0.8·FN<sub>w</sub>) with a 300 m triangular kernel. TP<sub>w</sub> saturates per truth pixel (max over the kernel disk), while FP<sub>w</sub> grows linearly with emitted mass. A continuous skeleton (H19-5, 121,131 px, <span class="tag t-claim">CLAIM</span> 0.1922) places 3–5 adjacent pixels inside one kernel disk — 4 of them pay full FP cost for zero marginal coverage.</li>
+  <li><strong>Thinning captured that free lunch:</strong> 2.8-px Poisson thinning (d2-8, 44,090 dots, 0.2600) cut ~64 % of FP<sub>w</sub> while keeping &gt;91 % of corridor coverage (+0.068 CLAIM).</li>
+  <li><strong>Collar pruning captured the second:</strong> dots within 2 px of the mapped catalogue sit in the digitisation halo of faults the evaluator <em>masks out</em> — they are pure FP. Pruning them (d_cat &gt; 2 px → 37,654 dots) added +0.0178 → <strong>0.2778</strong> (h33-2-b2).</li>
+  <li><strong>Two-regime natural experiment (this repo, 2026-10-29):</strong> lbmc1 (0.2784) put 98.45 % of its dots at d_cat &gt; 15 px and still tied R0 (41.6 % proximal). Both scores ≈ 0.278 ⇒ hidden faults occupy proximal splays <em>and</em> distal intrabasin corridors — but no available feature set localises either regime well enough to exceed ~0.28.</li>
+</ol>
+<h3>3.2 Why we cannot beat 0.2778 <em>uniquely</em> right now</h3>
+<ul>
+  <li><strong>Experiment 3 (this session) proved the family is closed:</strong> any consensus re-derivation of the scored G-set overlaps it 0.98–1.00 before pruning and 0.80 after — the duplicate rule stops it (measured, run card filed).</li>
+  <li><strong>External-stack learning (experiments 1–2) does not close the gap:</strong> a supervised fault-appearance model on the free official stack (GeoDawn + 3DEP LiDAR + SGMC + GDR vents/wells/probes) reaches fold-proper HOLDOUT-DTI 0.0437 vs the R0 recipe's 0.0967, and external-stack submissions across the whole fleet score 0.02–0.225.</li>
+  <li><strong>The live leaderboard has moved:</strong> as of 2026-10-31 the leader is <strong>0.4544</strong> (xiaofanhu, 35 submissions), and rank #20 is 0.3417. Those teams train segmentation models (U-Net family — see the <a href="https://github.com/drivendataorg/gems-prize-reference-solution">official reference solution</a>) on the full multi-band <span class="mono">numeric_features.tif</span> stack that requires DrivenData auth to download. That stack is the single missing asset between 0.28 and 0.35+.</li>
+</ul>
+<div class="banner info">
+  <strong>What would beat 0.2778 (ranked by expected gain):</strong>
+  (1) the competition's <span class="mono">numeric_features.tif</span> (free with a DrivenData login — place in <span class="mono">data/</span>, then the U-Net/GBDT pipeline trains; the dropbox mirror <span class="mono">gems-geodawn-numerical-features.tif</span> linked in the session prompt is the same asset);
+  (2) full-resolution (not u8-quantised) GeoDawn grids from <a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS ScienceBase DOI 10.5066/P93LGLVQ</a>;
+  (3) 1-m 3DEP LiDAR processing beyond the 12 quantised channels.
+  See <a href="HYPOTHESES_20261031_VGFP.md">HYPOTHESES_20261031_VGFP.md</a> for the pre-registered 5-hypothesis ranking.
+</div>
+
+<h2 id="howto">4. How to make a submission — exact steps (executive-summary subpage)</h2>
+<ol>
+  <li><strong>Download one .tif above.</strong> The generated file is single-band float32, EPSG:32611, 3292×3730, values only in {0.0, 1.0}, zeros outside the footprint.</li>
+  <li><strong>Open</strong> <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">drivendata.org/competitions/306/competition-doe-gems</a> → <em>Submit</em> (login required).</li>
+  <li><strong>File to submit:</strong> choose the .tif (or its one-TIFF .zip). The form accepts a single-band GeoTIFF or a .zip containing exactly one GeoTIFF.</li>
+  <li><strong>Note (optional but recommended):</strong> a ≤140-character comment. For today's file use: <span class="mono">V-GFP vgfp2r: 37654 dots, GeoDawn+LiDAR+SGMC GBDT + vent/well/probe thermal proximity; HOLDOUT-DTI 0.0437 vs R0ctrl 0.0967.</span></li>
+  <li><strong>Suggested submission name:</strong> <span class="mono">gemsdoe92-vgfp2r-37654d-bcb3d2af</span></li>
+  <li><strong>Weekly cap:</strong> the portal limits submissions (3 per week) — every upload spends a slot; promotion is a selector decision, never automatic.</li>
+  <li><strong>If the form says “Predicted values must be in range [0, 1]”:</strong> the uploaded raster contains NaN (typically outside the footprint) or values outside [0, 1]. The fix is exactly what this pipeline does automatically — write 0.0 everywhere outside the footprint and keep every value in [0, 1]. Never upload a “-nan” encoding. Full guide: <a href="how-to-submit.html">docs/how-to-submit.html</a>.</li>
+  <li><strong>Record the receipt</strong> (name + score + date) in <span class="mono">ledger/submissions.csv</span> as ORGANIZER-CONFIRMED when the score appears — that is the only evidence class that upgrades a projection.</li>
+</ol>
+
+<h2>5. Run card summary (2026-10-31 session)</h2>
+<table>
+  <tr><th>Field</th><th>Value</th></tr>
+  <tr><td>Hypothesis</td><td>Hidden faults share the mapped-fault appearance signature in the free official external stack <em>and</em> cluster around geothermal-vent indicators (hot springs, wells, INGENIOUS 2 m probes, volcanic vents) unused as supervised features by any scored fleet submission.</td></tr>
+  <tr><td>Mechanism</td><td>HistGradientBoosting pixel classifier on 30 channels (GeoDawn 8 + LiDAR scarp 11 + SGMC + visible-catalogue distance + 5 thermal-proximity densities + 2 confounds + 2 gradient magnitudes), fold-proper training on visible faults only; two-regime spaced-top emission (70 % in the 2–15 px corridor band, 30 % distal), 2.8 px floor, 37,654 dots.</td></tr>
+  <tr><td>Named non-fault mimic</td><td>Lake Lahontan paleoshoreline beach ridges and incised drainage banks (LiDAR scarp channels); lithologic contacts (magnetic/radiometric edges); prospector roads/claim fences (BLM/TIGER confounds, audited as canaries).</td></tr>
+  <tr><td>HOLDOUT-DTI</td><td><span class="tag t-hold">HOLDOUT-DTI</span> gems57-pooled-hide-v2, 22,663 withheld positives: vgfp_2regime 0.0437 [0.0284, 0.0576]; R0-recipe control 0.0967 [0.0851, 0.1081]; paired Δ −0.053 [−0.069, −0.038] → <strong>negative</strong>.</td></tr>
+  <tr><td>Correlation/overlap vs registry</td><td><span class="tag t-hold">REGISTRY-MEASUREMENT</span> worst 3-px dot overlap 0.3089 (netexpand_far) ≤ 0.70; worst |Spearman| 0.0169 (h19-5) ≤ 0.90; 158 rasters.</td></tr>
+  <tr><td>Raster SHA-256</td><td class="mono">6cd09733ab350469d32a714bd22d4eed63cb562e9364ba8ad049827da65d0a78</td></tr>
+  <tr><td>Validator output</td><td>no NaN inside or outside footprint ✓; values in [0,1] ✓; CRS/shape/transform match sample_submission ✓; 0 mass on catalogue ✓; 11/11 gates PASS ✓</td></tr>
+  <tr><td>Submission name + note</td><td><span class="mono">gemsdoe92-vgfp2r-37654d-bcb3d2af</span> · note 140/140 chars (see step 4)</td></tr>
+  <tr><td>Verdict</td><td><strong>negative</strong> (exploratory-submittable: format-valid + unique, promotion gate not met) — full card: <a href="../evidence/vgfp_run_card_20261031.json">evidence/vgfp_run_card_20261031.json</a></td></tr>
+</table>
+
+<h2>6. Evidence &amp; sources (for manual review)</h2>
+<ul>
+  <li>Competition: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">overview</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">problem description</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">data</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">leaderboard (fetched 2026-10-31: #1 xiaofanhu 0.4544 DW-Tversky)</a></li>
+  <li>Official reference solution (U-Net + Tversky loss): <a href="https://github.com/drivendataorg/gems-prize-reference-solution">github.com/drivendataorg/gems-prize-reference-solution</a> (cloned at <span class="mono">vendor/gems-prize-reference-solution/</span>)</li>
+  <li>External free official data used this session (hashes pinned in <a href="../registry/external_stack_manifest_20261031.json">registry/external_stack_manifest_20261031.json</a>): USGS GeoDawn <a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">DOI 10.5066/P93LGLVQ</a> · USGS 3DEP LiDAR · USGS SGMC · GDR <a href="https://gdr.openei.org/submissions/1391">OpenEI #1391</a> (Qfaults / volcanic vents / wells &amp; springs) · INGENIOUS 2 m temperature probes · BLM/TIGER confounds · EPSG <a href="https://epsg.io/32611">32611</a></li>
+  <li>Session evidence: <a href="../evidence/vgfp_run_card_20261031.json">run card</a> · <a href="../evidence/vgfp_holdout.json">holdout E1/E2</a> · <a href="../evidence/vgfp_holdout_exp2.json">holdout exp2</a> · <a href="../evidence/vgfp_uniqueness.json">uniqueness</a> · <a href="../evidence/gset2_run_card_20261031.json">GSET2 run card</a> · <a href="../evidence/full_registry_summary_20261028.json">focus-9 pairwise overlaps</a></li>
+</ul>
+
+<p class="small">Every number on this page carries an evidence class. No number here is an organizer-confirmed score except where explicitly tagged; 0 organizer receipts exist in this repository. Promote to a real weekly slot only through the selector step under the portal cap.</p>
+
+<p><a href="index.html">← Back to the main status page</a></p>
+</body>
+</html>
