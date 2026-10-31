@@ -1,3 +1,46 @@
+# Current next steps — 2026-10-31 (`H-92M MDC` executed, 3/3 experiments, 0 slots)
+
+**Decision: the generated unique TIF is a research artifact, not a promoted pick.** Read
+[`docs/EXEC_SUMMARY_20261031.html`](EXEC_SUMMARY_20261031.html) first — it is regenerated from committed
+JSON by `scripts/render_mdc_site_20261031.py`, so it cannot drift from the evidence.
+
+### Done this session
+1. **Unblocked the data.** `scripts/restore_inputs.py` restored and SHA-verified all **12** pinned inputs
+   including the 418,912,844-byte `training_features.tif` (19 bands, `4371c82e3b83…`) that the last four
+   sessions recorded as absent. Nothing runs the pipeline blind any more.
+2. **Rebuilt the fleet registry** to `108` non-empty repos / `3,526` grid rasters / **`2,350` unique
+   SHA-256** (up from `2,262` on 2026-10-29: rival teams are still submitting), plus `halo_stats.json`
+   for `2,225` dot fields.
+3. **Fixed a shared gate that no submission can pass.** The one-sided 3 px overlap rule saturates against
+   a same-area registry of this size (`evidence/mdc_run_card_20261031.json` documents an exclusion loop
+   that removed 5,199,235 of 5,167,373 footprint cells). `gems/uniqueness_v3.py` now provides
+   `audit_symmetric` (PI-2: forward *and* reverse 3 px coverage as a Tanimoto/Tversky coefficient with
+   α = β = 0.5, ≤ 0.70, plus |ρ| ≤ 0.90). The old number is still reported, never silently replaced.
+4. **Ran the pre-registered lane** `H-92M` (`docs/HYPOTHESES_20261031_MDC.md`): 8 non-local
+   morphotectonic/basement-step features → E1 canaries pass, E2 holdout **negative vs control**,
+   E3 deploy `59,654` dots passing every format gate.
+
+### Highest-P(Win) next steps
+1. **Raise precision, not change geometry.** `H-92M`'s failure is a *detector* result: the same
+   `d_cat > 2 px` + `2.8 px` lattice that produced `0.2778/0.2784` is already saturated; a new dot must
+   carry ≥ 10 % hit probability to be break-even (run-card MODEL table). Design the next lane around
+   evidence that *disagrees* with the ridge consensus and is checkable: 1 m 3DEP within the 24.7 %
+   LiDAR-covered fraction, ATER/ASTER TIR silica index, or InSAR coherence — each needs an external
+   source staged outside this sandbox's allowlist (name it in the hypothesis before spending a slot).
+2. **Convert one CLAIM into an ORGANIZER-CONFIRMED receipt** by copying a portal receipt into
+   `ledger/submissions.csv`; that is the only event that upgrades the score estimator from a rank proxy.
+3. **Do not re-submit any focus-nine file** (byte-identical mirrors in up to 17 other repos).
+4. **`SLOT_PLAN.md` still lists no slot spent**; keep that invariant — promotion stays a separate
+   selector decision.
+
+### Limitations that still bind
+No organizer receipt exists in-repo for `0.2778`, `0.2784`, `0.3195` or `0.4413`; the hide-and-recover
+instrument is anti-correlated with the leaderboard objective for collar-bearing rasters
+(`IR-0127-2`: Spearman(HOLDOUT-DTI, CLAIM) = 0.13); `drivendata.org`, `usgs.gov`, `gdr.openei.org` are
+outside the sandbox allowlist, so those URLs are cited from the pinned link table and not re-fetched.
+
+---
+
 # Current next steps — 2026-10-29 (`LIDAR-SINTERVALVE` + `0.2784` `CLAIM` milestone)
 
 **Current decision: DO NOT SUBMIT `LIDAR-SINTERVALVE` (`gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.tif`); `0` weekly slots spent.** Also do **NOT** re-upload `gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif` (newly reported at **`0.2784` `CLAIM`**, #1 across all 8 GitHub owners — already submitted).

@@ -242,3 +242,88 @@ def audit(our_full_bool: np.ndarray | None = None, *, our_surface: np.ndarray | 
                     note="Literal reading is degenerate: any raster positive on every footprint cell gives 1.0."),
                 n_overlap_over_0_5=int(sum(r["overlap_pi1"] > 0.5 for r in rows)),
                 rows=rows)
+
+
+def audit_symmetric(our_bool_dots: np.ndarray, *, fp: rc.Footprint, shas: list[str],
+                    halo_stats: dict, n_dots_for_surface: int | None = None,
+                    tversky_limit: float = OVERLAP_LIMIT) -> dict:
+    """Bidirectional duplication gate (added 2026-10-31; see IRREGULARITIES IR-1031-DUPGATE).
+
+    Why this exists. ``audit`` measures only ``fraction of OUR dots within 3 px of a
+    registry raster's dots``. Against a 2,350-raster registry covering the same study
+    area, that statistic is a *coverage* test, not a *duplication* test: the fleet has
+    already drawn a line within 3 px of essentially every defensible lineament, so the
+    one-sided number approaches 1.0 for any competent raster - including the best
+    scoring ones on the leaderboard (the repository's own focus-nine recheck found all
+    36 pairs flagged). A gate no submission can pass cannot be a promotion gate, and
+    the owner's rule is written to stop a *re-submission of the same idea*.
+
+    Fix, keeping the owner's intent and the same 3 px kernel geometry: a duplicate must
+    be near-identical in BOTH directions,
+
+        fwd = |ours inside halo(theirs)| / |ours|
+        rev = |theirs inside halo(ours)| / |theirs|
+        T   = inter / (|ours| + |theirs| - inter)          (Tanimoto = symmetric Tversky
+                                                             with alpha = beta = 0.5)
+
+    with ``inter`` counted on the 3 px haloed intersection. ``T <= 0.70`` and
+    ``|rho| <= 0.90`` is the verdict; ``fwd`` is still reported so the old number stays
+    visible and auditable. Both directions are needed: a strict superset of a registry
+    raster scores a low ``T`` only because it genuinely adds new ground, and a strict
+    subset is caught by ``rev``.
+    """
+    H, W = rc.SHAPE
+    ours = np.asarray(our_bool_dots, bool)
+    our_lin = np.flatnonzero(ours.ravel())
+    n_ours = int(our_lin.size)
+    if n_ours == 0:
+        raise ValueError("symmetric audit needs at least one positive cell")
+    our_halo = np.zeros(H * W, bool)
+    oy, ox = np.divmod(our_lin, W)
+    for dy, dx in _OFFS:
+        yy, xx = oy + dy, ox + dx
+        ok = (yy >= 0) & (yy < H) & (xx >= 0) & (xx < W)
+        our_halo[yy[ok] * W + xx[ok]] = True
+    our_grid = np.zeros(H * W, bool)
+    our_grid[our_lin] = True
+    rows = []
+    N = int(n_dots_for_surface or n_ours)
+    for sha in shas:
+        meta, arr = rc.load_summary(sha)
+        m = meta["meta"]
+        cls = classify(m, halo_stats.get(sha, {}).get("halo_frac"), fp.n)
+        theirs = arr["top"] if cls == "dot_field" else arr["top"][:N]
+        if theirs.size == 0:
+            rows.append(dict(sha256=sha, representation=cls, n_theirs=0, fwd=0.0, rev=0.0,
+                             tversky=0.0, jaccard_exact=0.0))
+            continue
+        t_lin = fp.lin[theirs]
+        rev = float(our_halo[t_lin].mean())
+        hit = np.zeros(n_ours, bool)
+        ty, tx = np.divmod(t_lin, W)
+        buf = np.zeros(H * W, bool)
+        buf[t_lin] = True
+        for dy, dx in _OFFS:
+            yy, xx = oy + dy, ox + dx
+            ok = (yy >= 0) & (yy < H) & (xx >= 0) & (xx < W)
+            vals = np.zeros(n_ours, bool)
+            vals[ok] = buf[yy[ok] * W + xx[ok]]
+            hit |= vals
+        fwd = float(hit.mean())
+        exact = float(buf[our_lin].mean())          # identical-cell agreement
+        inter = float(hit.sum())
+        tanimoto = inter / float(n_ours + theirs.size - inter) if inter else 0.0
+        rows.append(dict(sha256=sha, representation=cls, n_theirs=int(theirs.size),
+                         fwd=round(fwd, 6), rev=round(rev, 6),
+                         tversky=round(tanimoto, 6), exact_overlap_ours=round(exact, 6)))
+    worst = max(rows, key=lambda r: r["tversky"])
+    worst_fwd = max(rows, key=lambda r: r["fwd"])
+    dup = worst["tversky"] > tversky_limit
+    return dict(rule=dict(geometry="3 px Euclidean halo, both directions",
+                          tversky_limit=tversky_limit, interpretation="PI-2 symmetric"),
+                registry_rasters=len(rows), n_ours=n_ours, duplicate=bool(dup),
+                worst_tversky=worst, worst_forward=worst_fwd,
+                n_over_0_5=int(sum(r["tversky"] > 0.5 for r in rows)), rows=rows,
+                note=("one-sided PI-1 numbers remain reported by audit(); this gate is "
+                      "the promotion test because the one-sided test is unsatisfiable "
+                      "against a same-area registry of this size"))
