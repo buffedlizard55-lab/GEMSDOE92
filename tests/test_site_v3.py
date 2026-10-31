@@ -11,8 +11,9 @@ DOCS = ROOT / "docs"
 
 
 def _card():
-    import render_site_v3
-    return json.loads(render_site_v3.PRIMARY_CARD.read_text(encoding="utf-8"))
+    # The current site primary is the existing LIDAR-SINTERVALVE research TIFF;
+    # the RIESZ card remains an older analysis baseline, not the download anchor.
+    return json.loads((DOCS / "downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e_run_card.json").read_text(encoding="utf-8"))
 
 
 def test_pages_are_exactly_the_rendered_evidence():
@@ -77,11 +78,12 @@ def test_promoted_card_satisfies_every_promotion_gate():
 
 def test_run_card_has_protocol_fields_and_labels():
     card = _card()
-    for k in ("hypothesis", "mechanism", "named_non_fault_mimic", "holdout_dti", "uniqueness",
+    for k in ("hypothesis", "mechanism", "holdout_dti",
               "validator_output", "raster_sha256", "submission_name", "note", "verdict"):
         assert k in card
+    assert "named_non_fault_mimic_process" in card
     assert card["holdout_dti"]["evidence_class"] == "HOLDOUT-DTI"
-    assert card["model_estimate"]["evidence_class"].startswith("MODEL")
+    assert card["model_projection_not_a_score"]["evidence_class"].startswith("MODEL")
     assert card["holdout_dti"]["withheld_positive_pixels"] > 0
 
 
@@ -105,5 +107,11 @@ def test_renderer_refuses_model_based_override(monkeypatch):
 def test_current_research_file_failed_mandatory_gates():
     card = _card()
     assert card['verdict'] == 'negative' and card['submission_eligible'] is False
-    assert card['gates_passed']['catalogue_holdout_beats_r0_recipe'] is False
     assert card['uniqueness']['literal_reading']['duplicate_under_literal'] is True
+    paired = card['holdout_dti']['paired_delta_vs_netexpand_far']
+    assert paired['ci95'][0] < 0 < paired['ci95'][1]
+    ready = json.loads((DOCS / 'downloads/readiness.json').read_text(encoding='utf-8'))
+    assert ready['submission_eligible'] is False
+    assert ready['uniqueness']['current_final_dot_pi1_pass'] is True
+    assert ready['uniqueness']['current_pre_placement_surface_reaudited'] is False
+    assert ready['new_tiff_created_this_review'] is False

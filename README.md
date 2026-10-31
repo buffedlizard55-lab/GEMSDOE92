@@ -1,22 +1,22 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-## 📌 Current Status — 2026-10-29 (`DEXP-KOSTROV-KOENDERINK` + `MARUSSI-TRISHEAR` + `ADMITRELAY` + Full `2,262`-SHA 8-Owner Fleet Audit)
+## Current Status — 2026-10-30 (Focus-9 audit + current LIDAR research download)
 
-- **Gate Indicator: ✅ OK TO DOWNLOAD FOR RESEARCH ONLY · ⛔ DO NOT SUBMIT (`verdict: "negative"`, `submission_eligible: false`, `0` weekly slots spent — NO TIFF IS CLEARED for portal upload without human selector disposition).**
-- **New `2026-10-29` Unique GeoTIFF (`DEXP-KOSTROV-KOENDERINK` / `E3`):**
-  - **One-Click Download:** [`docs/downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.tif`](docs/downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.tif) (`150,562` B) · [One-TIFF ZIP](docs/downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros.zip) · [Byte-Bound Run Card](docs/downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17_run_card.json) · [11-Gate Format Audit](docs/downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17-zeros-audit.json) · [Readiness Feed](docs/downloads/dexpkostrov_readiness_20261029.json)
-  - **Executive Summary & Subpages:** [Main Executive Summary (`docs/index.html`)](docs/index.html) · [Dedicated 2026-10-29 DEXP-Kostrov Summary (`docs/executive-summary-20261029-dexp-kostrov.html`)](docs/executive-summary-20261029-dexp-kostrov.html) · [How to Submit & `[0, 1]` Guide (`docs/how-to-submit.html`)](docs/how-to-submit.html) · [Nine-Site Audit (`docs/nine-sites.html`)](docs/nine-sites.html) · [PhD Analysis of `0.2778` & `0.2784` (`docs/WHY_0_2778_AND_0_2784_20261029.md`)](docs/WHY_0_2778_AND_0_2784_20261029.md) · [Pre-Registered Hypotheses (`docs/HYPOTHESES_20261029_DEXP_KOSTROV.md`)](docs/HYPOTHESES_20261029_DEXP_KOSTROV.md) · [3-Pass Audit (`docs/REVIEW_20261029_DEXP_KOSTROV.md`)](docs/REVIEW_20261029_DEXP_KOSTROV.md)
-  - **SHA-256:** `80d66b0590b26ddc9ac56af3964289f63f9c07c80931e3e69a7089dbabbc6faf` · `40,000` binary `{0.0, 1.0}` dots · 1-band `float32` · `EPSG:32611` (`3730×3292`) · `0` NaN anywhere (`11/11` automated gates PASS; prevents *"Predicted values must be in range [0, 1]"*).
-  - **Archive Metadata (do NOT upload unless cleared by human selector):** Name `gemsdoe92-dexpkostrov1-40000d-ffa21c17` · Short note (`109/140` chars): `DEXP-Kostrov E3: 40000 binary dots; Fedi DEXP N~0 + Kostrov strain + Koenderink toe; HOLDOUT-DTI 0.1174 > R0.`
-  - **`HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives):** **`E3` diversified candidate = `0.117438` `[0.104226, 0.130267]`** · **`E2` unconstrained dual = `0.141812` `[0.129232, 0.153890]`** · **`E1` zero-catalogue blind = `0.081254` `[0.069353, 0.093522]`** · **`R0 recipe` control = `0.097750` `[0.085727, 0.109544]`** · Paired `E3 − R0 recipe` = **`+0.019688` `95% CI [+0.008586, +0.031664]`** (`36/36` leakage canaries PASS, `max AUC = 0.77482 <= 0.90`).
-  - **Full `2,262`-SHA 8-Owner Fleet Uniqueness (`108` non-empty repos, `3,421` files, `2,139` dot fields + `123` surfaces):** **Operational PI-1 PASS on BOTH pre-placement surface (`0.65405 <= 0.70`, `|ρ| = 0.40984 <= 0.90`) AND final dots (`0.63890 <= 0.70`, `|ρ| = 0.04399 <= 0.90`)**; `0.17533` overlap vs `GEMSDOE92 lbmc1` (`0.2784 CLAIM` #1 fleet high); `0.28033` vs `admitrelay1`; `0.29685` vs `marussitrishear`; `0.2663–0.2867` vs all 9 focus sites (`evidence/dexp_kostrov_uniqueness_20261029.json`). Held fail-closed (`DO NOT SUBMIT`) solely under the literal dense-witness rule (`17GEMSDOE = 1.000 > 0.70`) and unverified official redistribution provenance.
-  - **Prospective Out-of-Time (`OOT`) Validation (`2026-10-29`):** Frozen `2026-10-27/28` `LBM-v1`/`LBM-v2` weights evaluated on the 4 newly scored `2026-10-29` submissions (`GEMSDOE92 lbmc1 = 0.2784 CLAIM`, `GEMSDOEkarage1 = 0.1648 CLAIM`, `ApartGEMSDOE3 = 0.1625 CLAIM`, `KANLERGEMSDOE3 = 0.1233 CLAIM`) achieved exact `4/4` rank order (`Spearman = 1.000`, 3-independent-repo `RMSE = 0.01828`; `evidence/lbm_oot_and_v3_20261029.json`).
+- **Decision: OK TO DOWNLOAD FOR RESEARCH ONLY · DO NOT SUBMIT.** No GeoTIFF was created, no experiment or holdout was run, and no weekly competition slot was used in this review. No artifact is cleared for upload.
+- **Current site/download anchor (existing artifact, not newly generated):** [LIDAR-SINTERVALVE GeoTIFF](docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.tif) · [run card](docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e_run_card.json) · [11-gate format audit](docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros-audit.json) · [current status](docs/downloads/current_submission.json) · [readiness](docs/downloads/readiness.json). SHA-256 `0db6046848adf1ac78d71baa34a49ae54c75018542ca50c3d2fb3e479505780e`; finite `[0,1]`, exact zero outside the EPSG:32611 `3730×3292` footprint, 11/11 local format gates pass.
+- **Do not promote the LIDAR raster:** fresh final-dot PI-1 audit passes at worst 3-pixel overlap `0.690949` and worst `|ρ|=0.058252` over 2,345 comparison hashes, but no current-snapshot pre-placement audit exists, the literal full-support witness overlap is `1.000` (>0.70), and the paired `HOLDOUT-DTI` difference versus `control_netexpand_far` is `+0.000643` with 95% CI `[-0.002525,+0.004321]` (includes zero). Official organizer provenance/redistribution rights are unverified. See [fresh registry receipt](docs/downloads/lidarsintervalve_registry_20261030.json).
+- **Focus-9 result:** the nine pinned inputs (GEMSDOE24/25/27/28/30/31/32/33/36) all match their exact registry paths, SHA-256 values, and sizes; all nine have exact-byte copies in another repository. This is an exact-hash audit only, not a new 3-pixel overlap/rank-correlation audit or organizer verification. Read the [Focus-9 page](docs/focus9-review-20261030.html) and [machine-readable receipt](docs/downloads/focus9_registry_20261030.json).
+- **Score wording:** GEMSDOE32 `0.2778`, the supplied `0.3195` and `0.4413` values are not current organizer-confirmed receipts. The archived `0.4413` context is a 2026-10-25 public-board note for a different participant; the repository says `0.3195` was absent from that captured top-50, while a separate 2026-10-26 sibling-cache note records 0.4437 for xiaofanhu. No live leaderboard check was made. Local `HOLDOUT-DTI` and LBM-v3 `MODEL` values are not leaderboard scores. See the [bounded comparison](docs/focus9-review-20261030.html) and [dated three-pass review](docs/REVIEW_20261030_REPOSITORY.md).
+- **Method-lane gate:** the exact assigned method paragraph referenced by the prompt is absent. Do not infer a lane, select an experiment, or generate a candidate. Any future work remains subject to the shared cached-feature/evaluator/writer path, whole buffered fault-segment holdout, visible-only catalogue features, exact visible-fault mask, pooled DTI `α=0.2, β=0.8` with 300 m triangular kernel, feature-alone leakage canary stop at AUC `>0.90`, both pre-placement and final-dot uniqueness, JSON run card, and the three-experiment/two-hour cap. A weekly slot is separate and requires the paired holdout decision rule plus all gates.
+- **Project values:** **Maximize P(Win)** and **Own the Outcome**. Preserve negative results as deliverables. Keep portal upload and weekly-slot selection separate from automated validation; the validation workflow uses no human pixel inspection.
+- **Primary review links:** [executive summary and status feed](docs/index.html) · [nine-site page](docs/nine-sites.html) · [how to submit only after clearance](docs/how-to-submit.html) · [three-pass repository review](docs/REVIEW_20261030_REPOSITORY.md) · [current next steps](docs/NEXT_STEPS.md).
 
+**Starting brief:** This README is the normalized operating contract and project brief, not a verbatim chat archive. Begin here, then check the dated review and receipts above; older material below is historical and does not override the current decision.
 ---
 
-## 📌 Authoritative review & standing starting point (2026-10-29 sessions `67c0d7b6` & `f7a0fcb3` — `MARUSSI-TRISHEAR` + `ADMITRELAY` + `LBM-v3`)
+## Archived 2026-10-29 review (superseded by the 2026-10-30 status above)
 
-- **Current decision: ⛔ DO NOT SUBMIT (`verdict: "negative"`, `submission_eligible: false`, `0` weekly competition slots spent; NO TIFF IS CLEARED).** Every artifact served in this repository is **OK TO DOWNLOAD FOR RESEARCH** only. Under the literal unweighted positive-pixel rule, pinned witness `17GEMSDOE E-proba-multiscale` (`5,167,373` positive footprint cells) yields overlap `1.000 > 0.70` for every nonempty candidate; under the matched-budget / sparse `PI-1` rule (`gems/uniqueness_v3.py` across `2,262` unique SHA-256 rasters of all 8 GitHub owners), the new `2026-10-29` `ADMITRELAY` artifact passes on **both** the pre-placement continuous surface (`0.6350 <= 0.70`, `|ρ| = 0.4959 <= 0.90`) and final binary dots (`0.6470 <= 0.70`, `|ρ| = 0.2504 <= 0.90`), while its deployed 3-regime unique `E3` `HOLDOUT-DTI` (`0.077725`) remains below `R0_recipe` (`0.097750`).
+- **Historical 2026-10-29 decision: ⛔ DO NOT SUBMIT (`verdict: "negative"`, `submission_eligible: false`, `0` weekly competition slots spent; NO TIFF WAS CLEARED in that review).** Every artifact served in this repository was **OK TO DOWNLOAD FOR RESEARCH** only. Under the literal unweighted positive-pixel rule, pinned witness `17GEMSDOE E-proba-multiscale` (`5,167,373` positive footprint cells) yields overlap `1.000 > 0.70` for every nonempty candidate; under the matched-budget / sparse `PI-1` rule (`gems/uniqueness_v3.py` across `2,262` unique SHA-256 rasters of all 8 GitHub owners), the new `2026-10-29` `ADMITRELAY` artifact passes on **both** the pre-placement continuous surface (`0.6350 <= 0.70`, `|ρ| = 0.4959 <= 0.90`) and final binary dots (`0.6470 <= 0.70`, `|ρ| = 0.2504 <= 0.90`), while its deployed 3-regime unique `E3` `HOLDOUT-DTI` (`0.077725`) remains below `R0_recipe` (`0.097750`).
 - **2026-10-29 research download (`LIDAR-SINTERVALVE` H-92G1 — DO NOT SUBMIT):** [gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.tif](docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.tif) · [one-TIFF ZIP](docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.zip) · [byte-bound JSON run card](docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e_run_card.json) · [11-gate format audit](docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros-audit.json) · [readiness feed](docs/downloads/lidarsintervalve_readiness_20261029.json) · **[2026-10-29 LIDAR-SINTERVALVE Nine-Site & 8-Owner Executive Summary](docs/executive-summary-20261029-lidarsintervalve.html)** · [pre-registered hypotheses (`H-92G1..G5`)](docs/HYPOTHESES_20261029_LIDAR_SINTERVALVE.md) · [PhD analysis (`0.2778` vs `0.2784`)](docs/WHY_0_2778_AND_0_2784_20261029.md) (`SHA-256 = 0db6046848adf1ac78d71baa34a49ae54c75018542ca50c3d2fb3e479505780e`, `37,654` binary `{0.0, 1.0}` dots, `11/11` format gates PASS, `54/54` leakage canaries PASS `<= 0.77748`, sparse `PI-1` unique across all `2,263` SHAs at **`0.6909 <= 0.70`**, `|ρ| = 0.0583 <= 0.90`, `0.1887` overlap vs `MARUSSI-TRISHEAR` and `0.2214` vs `ADMITRELAY`, fold-proper **`HOLDOUT-DTI = 0.178619 [0.163071, 0.193316]` — #1 among all PI-1-unique candidates in `GEMSDOE92`**, beating `R0_recipe = 0.096757` by `+0.081862` and edging out `control_netexpand_far = 0.177976`, held back fail-closed `negative` because paired CI vs `control_netexpand_far` spans zero `[-0.002525, +0.004321]`, below duplicate `relay_conduit = 0.184485`, and literal dense-witness `1.000`).
 - **2026-10-29 research download (`MARUSSI-TRISHEAR` — DO NOT SUBMIT):** [gemsdoe92-marussitrishear-34000dots-20261029-236171af-zeros.tif](docs/downloads/gemsdoe92-marussitrishear-34000dots-20261029-236171af-zeros.tif) · [one-TIFF ZIP](docs/downloads/gemsdoe92-marussitrishear-34000dots-20261029-236171af-zeros.zip) · [byte-bound JSON run card](docs/downloads/gemsdoe92-marussitrishear-34000dots-20261029-236171af_run_card.json) · [11-gate format audit](docs/downloads/gemsdoe92-marussitrishear-34000dots-20261029-236171af-zeros-audit.json) · [readiness feed](docs/downloads/marussi_trishear_readiness_20261029.json) · **[2026-10-29 MARUSSI-TRISHEAR Executive Summary & 0.2784 Fleet Report](docs/executive-summary-20261029-marussi-trishear.html)** · [pre-registered hypotheses (`H-92M1..M4`)](docs/HYPOTHESES_20261029_MARUSSI_TRISHEAR.md) (`SHA-256 = f8f8703e4f8efb8f3397ecc5dc8c0fd68b06c64a089a89b02ee7a91395b3a59b`, `34,000` binary `{0.0, 1.0}` dots, `11/11` format gates PASS, `24/24` leakage canaries PASS `<= 0.8115`, `PI-1` unique across all `2,262` SHAs on **both** pre-placement surface `0.6564 <= 0.70` and final dots `0.6564 <= 0.70`, deployed `E3 HOLDOUT-DTI = 0.157774 [0.144291, 0.171647]` beating `R0_recipe = 0.097750` by `+0.060024` and `E2 = 0.172273`, held back fail-closed `negative` below `relay_conduit = 0.184485` and literal dense-witness `1.000`).
 - **2026-10-29 research download (`ADMITRELAY` — DO NOT SUBMIT):** [gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif](docs/downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.tif) · [one-TIFF ZIP](docs/downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros.zip) · [byte-bound JSON run card](docs/downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75_run_card.json) · [11-gate format audit](docs/downloads/gemsdoe92-admitrelay1-37654dots-20261029-b8051a75-zeros-audit.json) · [readiness feed](docs/downloads/admitrelay_readiness_20261029.json) · **[2026-10-29 PhD Executive Summary & LBM-v3 Audit](docs/executive-summary-20261029-admitrelay.html)** (`SHA-256 = b8051a75da299099fb7b43aed18c06aeefa8291d78b523e3083f9620a5527214`, `37,654` binary `{0.0, 1.0}` dots, `EPSG:32611`, `3730×3292`, zero NaN anywhere; `11/11` format gates PASS; `20/20` leakage canaries PASS with max symmetric AUC `0.7809 <= 0.90`, zero-catalogue 12-feature max `0.5876`).
@@ -51,7 +51,7 @@
 - **Standing brief:** [docs/STANDING_BRIEF_20261028.md](docs/STANDING_BRIEF_20261028.md) · **Nine-site summary:** [docs/executive-summary-nine-sites-20261028.html](docs/executive-summary-nine-sites-20261028.html) · **Hypotheses:** [docs/HYPOTHESES_20261028_STANDING.md](docs/HYPOTHESES_20261028_STANDING.md)
 - **Session baseline:** this README contains the current request addendum and operating protocol; [`SESSION_PROMPT.md`](SESSION_PROMPT.md) preserves normalized prior-session requirements. It is not a verbatim copy of the full chat prompt. Start with the current status and [latest review](docs/REVIEW_20261029_ARENA.md).
 
-## Current decision — 2026-10-29 repository review
+## Historical decision — 2026-10-29 repository review (superseded by the 2026-10-30 status above)
 
 **⛔ NO TIFF IS CLEARED for submission. DO NOT SUBMIT or spend a slot.** The three-pass review ran `scripts/check_site.py` (128 served rasters PASS), the full test suite (814 passed, 19 skipped), `make manifest` (PASS), and `make verify` (PASS). It generated no TIFF and ran no holdout or geological experiment. The full cached feature stack is absent, the recorded RIESZ-LOCKED lane exhausted its 3/3 experiment budget, and the prompt's designated single-method paragraph is missing. See [2026-10-29 review and final run card](docs/REVIEW_20261029_ARENA.md).
 
@@ -131,7 +131,7 @@ Official references for manual review (not fetched live in this review): [compet
 <details>
 <summary><strong>2026-10-29 Session Request &amp; Parallel-Run Protocol (stored in README — read every session alongside <a href="SESSION_PROMPT.md">SESSION_PROMPT.md</a>)</strong></summary>
 
-### Current request addendum — 2026-10-29 (branch `arena/f57fcf6e-gemsdoe92`)
+### Archived request addendum — 2026-10-29 (branch `arena/f57fcf6e-gemsdoe92`; superseded)
 
 > Review this repository; focus on the best claimed submissions from GEMSDOE24, 25, 27, 28, 30, 31, 32, 33, and 36. Make the best reported submission, its reported value versus a clearly labeled score estimate, and uniqueness status obvious in the executive summary. Explain cautiously why GEMSDOE32 `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros` is reported at `0.2778` and whether the evidence supports beating it. Produce a unique, competition-format TIF only when the protocol gates clear; clearly distinguish research download from permission to submit. Work line by line from trusted sources, flag irregularities, avoid unsupported claims, and maintain an auditable scientific knowledge base. Center decisions on **Maximize P(Win)** and **Own the Outcome**.
 >
@@ -197,7 +197,7 @@ All nine GitHub main refs changed after the pinned 26 October site inventory; th
 Historical (superseded 2026-10-27) status panel:
 
 <!-- VARIO-STATUS:BEGIN -->
-## Current research download — verified decision, 2026-10-25 (VARIO session)
+## Historical research download — verified decision, 2026-10-25 (VARIO session; superseded)
 
 **✅ OK TO DOWNLOAD FOR RESEARCH. ⛔ DO NOT SUBMIT — automated promotion gates not met (see run card).**
 The pre-registered VARIO lane generated this historical research GeoTIFF on 2026-10-25; it is not registry-unique and no new TIFF was generated in this review.
@@ -342,7 +342,7 @@ Read this README, [SESSION_PROMPT.md](SESSION_PROMPT.md) and [docs/NEXT_STEPS.md
 > ## Prior artifact — DRAINAGE-KNICK (2026-10-25)
 
 
-## Current decision — 2026-10-25 (`f23ca2d2` review; read first)
+## Historical decision — 2026-10-25 (`f23ca2d2` review; superseded by the 2026-10-30 status above)
 
 **OK TO DOWNLOAD FOR RESEARCH. DO NOT SUBMIT. No new unique TIFF was generated.**
 The unchanged literal duplicate rule rejects every nonempty candidate against the pinned full-footprint witness. Matched-budget “unique” claims in historical sections below are not binding clearance. We did not copy or rename a previous submission.
@@ -448,7 +448,7 @@ This block records the user's 2026-10-25 request in condensed form. The full mes
 >
 > **Persistent operating brief:** read this README and `SESSION_PROMPT.md` at every session start; use shared cached features/evaluator/writer, whole-segment buffered holdouts and leakage canaries; pre-register 3–5 hypotheses; label all metrics and provenance; never call a projection a score; stop at 3 experiments / 2 hours; keep “Maximize P(Win)” and “Own the Outcome” central. Full user prompt summary is retained under [Persistent Session Prompt Reference](#persistent-session-prompt-reference).
 
-## Authoritative review — 2026-10-25 (`797e507a`)
+## Archived review — 2026-10-25 (`797e507a`; superseded)
 
 **OK TO DOWNLOAD FOR RESEARCH · DO NOT SUBMIT · no new TIFF generated in this review.**
 The requested new unique submission remains **unfulfilled**: a freshly pinned registry witness is positive across the entire footprint, so every nonempty candidate fails the unchanged literal overlap rule. This is an automated rejection, not a request for manual inspection. Matched-budget “unique” claims below are historical diagnostics, not clearance.
@@ -945,7 +945,7 @@ There should be an easy-to-download submission TIF file as described by the prom
 
 Three byte-distinct TIFFs passed format checks. **DO NOT SUBMIT:** they did not beat the documented holdout frontier, the literal duplicate stop applies, and nested-OOF/check-order defects prevent scientific clearance. Sparse comparisons are provisional diagnostics. The runner is disabled. [Corrected analysis](docs/ANALYSIS_20261026_THERMOTILT.md) · [run card](docs/downloads/thermotilt_run_card.json). Final checks: 578 tests passed (141 warnings); site gate passed on 118 rasters. GitHub Pages API reports legacy/built; CI gating of live publication is not established.
 
-### Current conversation prompt — governing requirements (2026-10-26)
+### Archived conversation prompt — governing requirements (2026-10-26; superseded)
 
 This conversation's prompt is the governing requirements document for this session. It is retained here so every
 session starts from it. Key, binding requirements:
@@ -986,7 +986,7 @@ Session result (this session, AKCD lane): unique TIF
 1 (worst 3-px forward overlap `0.9370 > 0.70`) → **NOT cleared for submission**, 0 weekly slots used. Full site
 table and submission guide: `docs/executive-summary.html`.
 
-### Current conversation prompt & multi-owner scope — 2026-10-27 (`arena/d30d387c-gemsdoe92`)
+### Archived conversation prompt & multi-owner scope — 2026-10-27 (`arena/d30d387c-gemsdoe92`; superseded)
 
 Stored verbatim in intent per the prompt alignment requirement (`Put the prompt in repo README.md and read and align with it`):
 
@@ -997,7 +997,7 @@ Stored verbatim in intent per the prompt alignment requirement (`Put the prompt 
 
 ---
 
-## BASELINE PROMPT — CURRENT SESSION (governing requirements)
+## Archived baseline prompt — 2026-10-28 session (governing requirements at that time; superseded)
 
 **Read this at the start of every session.** It defines what we are building and the acceptance criteria.
 

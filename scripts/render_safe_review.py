@@ -29,6 +29,167 @@ except ImportError:  # pragma: no cover - direct script execution from scripts/
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / 'docs'
 DL = DOCS / 'downloads'
+EVID = ROOT / 'evidence'
+CURRENT_REVIEW_DATE = '2026-10-30'
+
+
+def build_current_lidar_status(card: dict, format_audit: dict, old_status: dict):
+    """Bind the current download feeds to the existing LIDAR research TIFF.
+
+    The 2026-10-30 receipt is a fresh *final-dot* mirror-scope audit only. It
+    cannot recreate the missing pre-placement surface or waive the literal
+    dense-witness stop, holdout decision rule, provenance gate, or slot choice.
+    """
+    registry_path = EVID / 'lidarsintervalve_registry_20261030.json'
+    registry_bytes = registry_path.read_bytes()
+    registry_sha = hashlib.sha256(registry_bytes).hexdigest()
+    registry = json.loads(registry_bytes)
+    f9_path = EVID / 'focus9_registry_20261030.json'
+    f9 = json.loads(f9_path.read_text(encoding='utf-8'))
+    if card.get('verdict') != 'negative' or card.get('submission_eligible') is not False:
+        raise ValueError('current LIDAR status must remain fail-closed negative')
+    if not (card.get('raster_sha256') == registry.get('candidate_sha256') == old_status.get('raster_sha256')):
+        raise ValueError('current LIDAR registry/status SHA-256 does not bind to the run card')
+    snap = registry.get('registry_snapshot', {})
+    if snap.get('inventory_sha256') != f9.get('registry_snapshot', {}).get('inventory_sha256'):
+        raise ValueError('current candidate and Focus-9 audits use different registry inventories')
+    if snap.get('unique_sha256_count') != registry.get('registry_unique_sha256', 0) + 1:
+        raise ValueError('candidate self-SHA exclusion does not reconcile to the fresh inventory')
+    if (registry.get('pi1_pass') is not True
+            or registry.get('worst_overlap', {}).get('value', 1.0) > 0.70
+            or registry.get('worst_abs_rho', {}).get('value', 1.0) > 0.90):
+        raise ValueError('fresh LIDAR final-dot PI-1 receipt does not pass its stated limits')
+    if (format_audit.get('sha256_zeros') != card.get('raster_sha256')
+            or format_audit.get('overall_pass') is not True
+            or not format_audit.get('gates_zeros')
+            or any(g.get('ok') is not True for g in format_audit['gates_zeros'])):
+        raise ValueError('current LIDAR format audit is missing or does not pass')
+
+    # Attach the existing byte-bound run card to the format receipt so the
+    # shared site checker can follow the primary download to its decision card.
+    format_audit = dict(format_audit)
+    format_audit['run_card'] = f"docs/downloads/{old_status['run_card']}"
+
+    raster = card['raster']
+    file_rel = 'downloads/' + Path(raster['file']).name
+    audit_rel = 'downloads/' + Path(old_status['audit']).name
+    run_card_rel = 'downloads/' + Path(old_status['run_card']).name
+    prior_surface = card['correlation_overlap_vs_registry']['pre_placement_surface']
+    hold = card['holdout_dti']
+    final = registry['worst_overlap']
+    rho = registry['worst_abs_rho']
+    literal = registry.get('literal_reading', {})
+    pair = card['holdout_dti']['paired_delta_vs_netexpand_far']
+    if literal.get('duplicate_under_literal') is not True or literal.get('worst', 0.0) <= 0.70:
+        raise ValueError('fresh LIDAR literal-witness receipt is unexpectedly non-blocking')
+    if pair.get('ci95', [1.0, 1.0])[0] > 0 or pair.get('ci95', [1.0, 1.0])[1] < 0:
+        raise ValueError('stored LIDAR paired holdout CI no longer contains zero')
+    surface_overlap = float(prior_surface['worst_overlap_pi1_topN'])
+    surface_rho = float(prior_surface['worst_abs_rho'])
+    literal_overlap = float(literal['worst'])
+    delta = float(pair['delta'])
+    ci_low, ci_high = (float(value) for value in pair['ci95'])
+    blockers = [
+        f'No pre-placement surface raster is available for re-audit against the 2026-10-30 registry snapshot; the saved 2026-10-29 run card reported top-N overlap {surface_overlap:.6f} and |rho| {surface_rho:.6f}.',
+        f'The literal full-support witness remains a stop: literal overlap {literal_overlap:.6f} (> 0.70); PI-1 final-dot pass does not waive it.',
+        f'The paired HOLDOUT-DTI difference vs control_netexpand_far is {delta:+.6f} with 95% CI [{ci_low:+.6f}, {ci_high:+.6f}], which includes zero; improvement over the prior best is not established.',
+        'Official organizer provenance and redistribution rights for owner-mirror inputs remain unverified.',
+    ]
+    current = {
+        'schema': 'gemsdoe92-current-download-status-v2',
+        'review_date_utc': CURRENT_REVIEW_DATE,
+        'artifact': 'LIDAR-SINTERVALVE H-92G1 (existing 2026-10-29 research raster; not newly generated)',
+        'primary_role': 'current review download anchor only; not a submission recommendation',
+        'file': 'docs/' + file_rel,
+        'sha256': card['raster_sha256'],
+        'submission_name': card['submission_name'],
+        'note': card['note'],
+        'verdict': 'negative',
+        'ok_to_download': True,
+        'ok_to_submit': False,
+        'download_status': 'OK TO DOWNLOAD FOR RESEARCH ONLY',
+        'submission_status': 'DO NOT SUBMIT',
+        'reason': 'Existing research-only raster. Fresh final-dot PI-1 passes on the current owner-mirror snapshot; required pre-placement, literal-witness, holdout-improvement, and provenance gates do not all pass.',
+        'blocking_reasons': blockers,
+        'run_card': run_card_rel,
+        'format_audit': audit_rel,
+        'registry_audit': 'downloads/lidarsintervalve_registry_20261030.json',
+        'registry_audit_sha256': registry_sha,
+        'new_tiff_created_this_review': False,
+        'experiments_run_this_review': 0,
+        'holdout_run_this_review': False,
+        'weekly_slots_used_this_review': 0,
+    }
+    readiness = {
+        'schema': 'gemsdoe92-current-readiness-v2',
+        'review_date_utc': CURRENT_REVIEW_DATE,
+        'artifact': current['artifact'],
+        'primary_role': current['primary_role'],
+        'file': file_rel,
+        'raster_sha256': card['raster_sha256'],
+        'submission_name': card['submission_name'],
+        'note': card['note'],
+        'verdict': 'negative',
+        'submission_eligible': False,
+        'download_status': 'OK TO DOWNLOAD FOR RESEARCH ONLY',
+        'submission_status': 'DO NOT SUBMIT',
+        'reason': current['reason'],
+        'blocking_reasons': blockers,
+        'run_card': run_card_rel,
+        'format_audit': audit_rel,
+        'registry_audit': current['registry_audit'],
+        'registry_audit_sha256': registry_sha,
+        'new_tiff_created_this_review': False,
+        'experiments_run_this_review': 0,
+        'holdout_run_this_review': False,
+        'weekly_slots_used_this_review': 0,
+        'format_validation': {
+            'status': 'PASS (11/11 local gates; not organizer acceptance)',
+            'single_band_float32': True,
+            'crs': raster.get('crs'),
+            'shape': raster.get('shape'),
+            'range_0_1': True,
+            'all_finite': True,
+            'nan_count': raster.get('nan_count'),
+            'outside_footprint': 'exact zero',
+            'audit': audit_rel,
+        },
+        'holdout_dti': {
+            'evidence_class': 'HOLDOUT-DTI (stored 2026-10-29 run card; not rerun in this review)',
+            'evaluator_version': hold['evaluator_version'],
+            'withheld_positive_pixels': hold['withheld_positive_pixels'],
+            'fold_proper_value': hold['fold_proper_dti'],
+            'fold_proper_ci95': hold['fold_proper_ci95'],
+            'control_netexpand_far': hold['control_netexpand_far_alltime_best']['dti'],
+            'paired_delta_vs_control_netexpand_far': hold['paired_delta_vs_netexpand_far']['delta'],
+            'paired_delta_ci95': hold['paired_delta_vs_netexpand_far']['ci95'],
+            'improvement_decision': 'NOT ESTABLISHED (paired 95% CI includes zero)',
+        },
+        'uniqueness': {
+            'evidence_class': 'REGISTRY-MEASUREMENT (current public owner-mirror snapshot)',
+            'registry_snapshot_built_utc': snap.get('built_utc'),
+            'registry_snapshot_sha256': snap.get('inventory_sha256'),
+            'owners': snap.get('owners'),
+            'repository_count': snap.get('repository_count'),
+            'grid_compatible_raster_records': snap.get('grid_compatible_raster_records'),
+            'unique_sha256_count_in_inventory': snap.get('unique_sha256_count'),
+            'candidate_sha_excluded_from_comparisons': registry.get('excluded_self_sha256'),
+            'comparison_sha256_count': registry.get('registry_unique_sha256'),
+            'current_final_dot_pi1_pass': registry.get('pi1_pass'),
+            'current_final_dot_worst_overlap_3px': final.get('value'),
+            'current_final_dot_overlap_witness_repos': final.get('repos'),
+            'current_final_dot_worst_abs_rho': rho.get('value'),
+            'current_pre_placement_surface_reaudited': False,
+            'historical_pre_placement_registry_sha_count': card['correlation_overlap_vs_registry']['registry_unique_sha256'],
+            'historical_pre_placement_topN_overlap': prior_surface['worst_overlap_pi1_topN'],
+            'historical_pre_placement_abs_rho': prior_surface['worst_abs_rho'],
+            'literal_full_support_witness_overlap': registry.get('literal_reading', {}).get('worst'),
+            'literal_full_support_witness_duplicate': registry.get('literal_reading', {}).get('duplicate_under_literal'),
+        },
+        'provenance': 'Pinned owner-maintained public GitHub mirrors were hash/size verified; organizer source provenance and redistribution rights are not verified.',
+        'official_source_links_live_checked_this_review': False,
+    }
+    return current, readiness, format_audit, registry, registry_sha
 
 
 def load_dexp_kostrov_status():
@@ -316,8 +477,8 @@ def render(card):
         d_pair = dh['paired_e3_vs_r0_recipe']
         d_tif = Path(dexp_status['file']).name
         d_zip = Path(dexp_status['zip']).name
-        dexp_section = f'''<section id="dexp-kostrov-20261029" class="stop"><h2>2026-10-29 Unique Candidate: DEXP-KOSTROV-KOENDERINK (E3) — Research Download Only · DO NOT SUBMIT</h2>
-<p><strong>✅ OK TO DOWNLOAD FOR RESEARCH ONLY (11/11 [0, 1] Format Gates PASS · 36/36 Leakage Canaries PASS · HOLDOUT-DTI {d_e3['dti']:.5f} &gt; R0 {d_r0['dti']:.5f} · Full 2,262-SHA PI-1 Surface &amp; Final Uniqueness PASS)</strong><br>
+        dexp_section = f'''<section id="dexp-kostrov-20261029" class="stop"><h2>Prior 2026-10-29 DEXP-KOSTROV-KOENDERINK Artifact (E3) — Research Download Only · DO NOT SUBMIT</h2>
+<p><strong>✅ OK TO DOWNLOAD FOR RESEARCH ONLY (11/11 [0, 1] Format Gates PASS · 36/36 Leakage Canaries PASS · HOLDOUT-DTI {d_e3['dti']:.5f} &gt; R0 {d_r0['dti']:.5f} · historical 2,262-SHA PI-1 Surface &amp; Final Uniqueness PASS as of 2026-10-29)</strong><br>
 <strong>⛔ DO NOT SUBMIT — NOT CLEARED FOR A WEEKLY SLOT</strong> (<code>verdict=negative</code>, <code>submission_eligible=false</code>; held fail-closed at literal dense-witness gate <code>1.000 &gt; 0.70</code> &amp; unverified official redistribution provenance; 0 weekly slots used).</p>
 <p><a class="btn" href="downloads/{esc(d_tif)}" download>⬇ One-Click Download 2026-10-29 Unique GeoTIFF ({esc(d_tif)})</a> ·
 <a href="downloads/{esc(d_zip)}" download>one-TIFF ZIP</a> ·
@@ -492,16 +653,47 @@ def render(card):
 <tr><th><code>MODEL</code> &amp; Decision</th><td><code>MODEL</code> (not a score): <code>{m_lbm:.5f}</code>. <strong>DO NOT SUBMIT.</strong> <code>verdict=negative</code>, <code>submission_eligible=false</code>, 0 weekly slots spent.</td></tr></table></section>'''
 
     lsv29 = load_lidarsintervalve_20261029()
-    lsv_hero = render_lidarsintervalve_hero(lsv29[0], lsv29[2]) if lsv29 else ''
-    lsv_root_hero = render_lidarsintervalve_hero(lsv29[0], lsv29[2], href_prefix='docs/') if lsv29 else ''
-    body = f'''<p class="small"><a href="executive-summary-20261029-dexp-kostrov.html"><strong>2026-10-29 DEXP-KOSTROV Summary</strong></a> · <a href="HYPOTHESES_20261029_DEXP_KOSTROV.md">DEXP-KOSTROV Hypotheses</a> · <a href="executive-summary-20261029-lidarsintervalve.html"><strong>2026-10-29 LIDAR-SINTERVALVE Nine-Site Summary</strong></a> · <a href="HYPOTHESES_20261029_LIDAR_SINTERVALVE.md">LIDAR-SINTERVALVE Hypotheses</a> · <a href="WHY_0_2778_AND_0_2784_20261029.md">Why 0.2778 vs 0.2784</a> · <a href="executive-summary-20261029-marussi-trishear.html"><strong>2026-10-29 MARUSSI-TRISHEAR Summary</strong></a> · <a href="HYPOTHESES_20261029_MARUSSI_TRISHEAR.md">MARUSSI Hypotheses</a> · <a href="executive-summary-20261029-admitrelay.html"><strong>2026-10-29 ADMITRELAY + LBM-v3 Summary</strong></a> · <a href="HYPOTHESES_20261029_ADMITRELAY.md">ADMITRELAY Hypotheses</a> · <a href="STANDING_PROMPT.md">Standing Prompt</a> · <a href="executive-summary-nine-sites-20261028.html">Nine-site executive summary</a></p><nav><a href="how-to-submit.html">How to submit</a> · <a href="nine-sites.html">Nine-site review</a> · <a href="REVIEW_20261029_DEXP_KOSTROV.md">2026-10-29 three-pass audit</a> · <a href="REVIEW_20261028_MAIN_INTEGRATION.md">2026-10-28 main-integration review</a> · <a href="REVIEW_20261028_SESSION.md">Independent overlap review</a></nav>
+    if not lsv29:
+        raise ValueError('current 2026-10-30 download status requires the byte-bound LIDAR-SINTERVALVE artifact')
+    lsv_card, lsv_format_audit, lsv_status = lsv29
+    current_feed, current_readiness, lsv_format_audit, current_registry, current_registry_sha = build_current_lidar_status(
+        lsv_card, lsv_format_audit, lsv_status
+    )
+    lsv_hero = render_lidarsintervalve_hero(lsv_card, lsv_status)
+    lsv_root_hero = render_lidarsintervalve_hero(lsv_card, lsv_status, href_prefix='docs/')
+    lsv_name = Path(lsv_status['file']).name
+    lsv_rel = 'downloads/' + lsv_name
+    lsv_registry_rel = 'downloads/lidarsintervalve_registry_20261030.json'
+    lsv_hold = lsv_card['holdout_dti']
+    lsv_pair = lsv_hold['paired_delta_vs_netexpand_far']
+    lsv_current_section = f'''<section id="current-review-20261030" class="stop">
+<h2>Current Review — 2026-10-30: Research Download Only · DO NOT SUBMIT</h2>
+<p><strong>OK TO DOWNLOAD FOR RESEARCH ONLY</strong> · <strong>DO NOT SUBMIT</strong>. The current primary link is the existing <code>LIDAR-SINTERVALVE</code> GeoTIFF from 2026-10-29; this review created <strong>no new TIFF</strong>, ran <strong>0 new experiments</strong>, ran <strong>0 new holdout evaluations</strong>, and used <strong>0 weekly slots</strong>.</p>
+<p><a class="btn" data-primary="true" href="{esc(lsv_rel)}" download>⬇ Download existing research GeoTIFF ({esc(lsv_name)}) — DO NOT SUBMIT</a> ·
+<a href="downloads/{esc(lsv_status['run_card'])}">byte-bound run card</a> ·
+<a href="downloads/{esc(lsv_status['audit'])}">11-gate format audit</a> ·
+<a href="{esc(lsv_registry_rel)}">fresh 2026-10-30 final-dot registry audit</a> ·
+<a href="downloads/readiness.json">current status feed</a> ·
+<a href="downloads/current_submission.json">current download JSON</a> ·
+<a href="how-to-submit.html">submission instructions</a> ·
+<a href="focus9-review-20261030.html">Focus-9 review</a> ·
+<a href="REVIEW_20261030_REPOSITORY.md">three-pass review record</a></p>
+<table>
+<tr><th>Fresh final-dot uniqueness (owner-mirror snapshot only)</th><td>PI-1 <strong>{'PASS' if current_registry['pi1_pass'] else 'FAIL'}</strong> against <code>{current_registry['registry_unique_sha256']:,}</code> comparison SHA-256 rasters (candidate's own SHA excluded), from <code>{current_registry['registry_snapshot']['repository_count']}</code> repositories / <code>{current_registry['registry_snapshot']['unique_sha256_count']:,}</code> unique SHA-256 files across 8 owners. Worst 3-px overlap <strong>{current_registry['worst_overlap']['value']:.6f} ≤ 0.70</strong> vs <code>{esc(', '.join(current_registry['worst_overlap']['repos']))}</code>; worst absolute rank correlation <strong>{current_registry['worst_abs_rho']['value']:.6f} ≤ 0.90</strong>. Snapshot SHA-256 <code>{current_registry['registry_snapshot']['inventory_sha256']}</code>.</td></tr>
+<tr><th>Pre-placement, literal rule &amp; holdout decision</th><td><strong>Not cleared.</strong> No saved pre-placement surface raster is available to re-audit against the 2026-10-30 snapshot; the 2026-10-29 run card recorded top-N overlap <code>{lsv_card['correlation_overlap_vs_registry']['pre_placement_surface']['worst_overlap_pi1_topN']:.3f}</code> and |ρ| <code>{lsv_card['correlation_overlap_vs_registry']['pre_placement_surface']['worst_abs_rho']:.6f}</code> on its older registry. The literal full-support witness remains <code>1.000 &gt; 0.70</code>. Stored fold-proper <code>HOLDOUT-DTI</code> is <code>{lsv_hold['fold_proper_dti']:.6f}</code> [{lsv_hold['fold_proper_ci95'][0]:.6f}, {lsv_hold['fold_proper_ci95'][1]:.6f}]; paired Δ vs <code>control_netexpand_far</code> is <code>{lsv_pair['delta']:+.6f}</code> [{lsv_pair['ci95'][0]:+.6f}, {lsv_pair['ci95'][1]:+.6f}], spanning zero. It does not establish a win over the prior best under the decision rule.</td></tr>
+<tr><th>Format validation</th><td><strong>11/11 local gates PASS:</strong> one-band <code>float32</code>, <code>EPSG:32611</code>, exact <code>3730×3292</code> shape and transform, finite values in <code>[0,1]</code>, no NaN/Inf, exact zeros outside the footprint. This is format validation, not submission eligibility or organizer acceptance.</td></tr>
+<tr><th>Input provenance</th><td>Inputs are pinned and byte-verified against owner-maintained public GitHub mirrors; official organizer provenance and redistribution rights remain unverified. Live official sources were not fetched in this review, and the organizer leaderboard is not mirrored here. <a href="https://www.drivendata.org/termsofuse/">DrivenData Terms of Use (reference URL; not live-checked)</a>.</td></tr>
+</table>
+<p>Separate historical representation note: a RIESZ witness audit reported literal overlap <code>1.000</code> versus <code>0.00698</code> under a <strong>top-K reading</strong> for that witness. It is <strong>not clearance</strong>, a policy decision, or full-registry uniqueness, and it does not change this LIDAR disposition.</p></section>'''
+    body = f'''<p class="small"><a href="REVIEW_20261030_REPOSITORY.md"><strong>2026-10-30 Three-Pass Focus-9 &amp; Repository Review</strong></a> · <a href="focus9-review-20261030.html">Fresh Focus-9 audit page</a> · <a href="downloads/focus9_registry_20261030.json">Focus-9 exact-hash receipt</a> · <a href="downloads/input_restore_20261030.json">22-pin input restore receipt</a> · <a href="executive-summary-20261029-dexp-kostrov.html">2026-10-29 DEXP-KOSTROV historical summary</a> · <a href="HYPOTHESES_20261029_DEXP_KOSTROV.md">DEXP-KOSTROV Hypotheses</a> · <a href="executive-summary-20261029-lidarsintervalve.html">2026-10-29 LIDAR-SINTERVALVE historical summary</a> · <a href="HYPOTHESES_20261029_LIDAR_SINTERVALVE.md">LIDAR-SINTERVALVE Hypotheses</a> · <a href="WHY_0_2778_AND_0_2784_20261029.md">Why 0.2778 vs 0.2784</a> · <a href="executive-summary-20261029-marussi-trishear.html">2026-10-29 MARUSSI-TRISHEAR Summary</a> · <a href="executive-summary-20261029-admitrelay.html">2026-10-29 ADMITRELAY Summary</a> · <a href="STANDING_PROMPT.md">Standing Prompt</a></p><nav><a href="how-to-submit.html">How to submit</a> · <a href="nine-sites.html">Nine-site review</a> · <a href="REVIEW_20261030_REPOSITORY.md">Current three-pass review</a> · <a href="REVIEW_20261029_DEXP_KOSTROV.md">2026-10-29 three-pass audit</a> · <a href="REVIEW_20261028_SESSION.md">Independent overlap review</a></nav>
+{lsv_current_section}
 {dexp_section}
 {lsv_hero}
 <section id="submit-now" class="stop"><h1>DO NOT SUBMIT — no eligible new TIFF (weekly limit: 3 per week)</h1>
-<p>No competition slot was used. The prior Riesz candidate fails the literal registry rule and did not beat the holdout control, and all four 2026-10-29 research candidates (DEXP-KOSTROV-KOENDERINK, LIDAR-SINTERVALVE, MARUSSI-TRISHEAR, and ADMITRELAY) remain fail-closed negative. A range-valid raster is not automatically submission-ready.</p>
+<p>No competition slot was used. The current download anchor is the existing LIDAR-SINTERVALVE research TIFF described above; it is <strong>not</strong> submission-cleared. DEXP-KOSTROV-KOENDERINK, MARUSSI-TRISHEAR, ADMITRELAY and the historical Riesz candidate also remain fail-closed negative. A range-valid raster or a final-dot PI-1 pass is not automatically submission-ready.</p>
 {marussi_top_line}
-<p><a data-primary="true" href="downloads/{esc(file)}" download>Download existing Riesz TIFF for research only</a> · <a href="downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json">Historical run card, reclassified negative</a></p>
-<p>SHA-256: <code>{digest}</code>. Historical name: <code>{name}</code>. Historical note (not an instruction to upload): <code>{note}</code></p></section>
+<p>Historical Riesz download: <a href="downloads/{esc(file)}" download><code>{esc(file)}</code></a> · <a href="downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json">historical run card, negative</a> · SHA-256 <code>{digest}</code>. It is not the current download anchor.</p>
+<p>Weekly slot status: <strong>0 slots used in this review</strong>; no upload instruction is issued.</p></section>
 {marussi_section}
 {admitrelay_section}
 {tipcomp_section}
@@ -509,11 +701,12 @@ def render(card):
 {legacy_knickloqo}
 <section id="summary"><h2>Executive summary across Focus-9 &amp; GEMSDOE92</h2><p>No <code>ORGANIZER-CONFIRMED</code> competition receipt is stored in this repository. Owner-reported <code>CLAIM</code> figures, spatially-blocked <code>HOLDOUT-DTI</code> results, and <code>MODEL</code> diagnostics are strictly separated below.</p>
 <table><thead><tr><th>Site</th><th>File to download — research only</th><th>Score / estimate (strictly labeled)</th><th>Uniqueness across listed GEMSDOE sites &amp; status</th></tr></thead><tbody>{''.join(rows)}</tbody></table>
-<p>The 2026-10-29 full 8-owner registry cache (<code>108</code> non-empty repos, <code>3,421</code> grid files, <code>2,262</code> unique SHA-256 rasters = <code>2,139</code> dot fields + <code>123</code> surfaces) verifies operational PI-1 uniqueness for <code>dexpkostrov1</code> while confirming all 9 historical focus-site peaks have exact clones elsewhere. The <a href="downloads/focus9_pairwise_recheck_14f85876.json">row-safe pairwise recheck</a> warns that earlier pairwise results contained errors. A separate pinned full-footprint witness causes a literal stop for any nonempty candidate, not a claim that every pair is byte-identical. A later measurement reports 0.00698 overlap under a top-K reading of this witness, versus 1.0 literally; the representation rule remains unresolved, so this alternate measurement is not clearance or a waiver. See the <a href="REVIEW_20261028_SESSION.md">independent review and receipt</a>.</p></section>
-<section><h2>Why GEMSDOE32 (0.2778 CLAIM) &amp; GEMSDOE92 lbmc1 (0.2784 CLAIM)?</h2><p>Under the pooled Distance-Buffered Tversky Index (<code>α=0.2, β=0.8</code>, <code>300 m</code> triangular kernel, pixel-exact masking of public catalogue traces), <code>TPw</code> is submodular via <code>max</code> within 3 px while <code>FPw</code> is linear in emitted mass. <code>GEMSDOE32</code> <code>R0</code> (<code>37,654</code> binary dots, <code>0.2778 CLAIM</code>) Poisson-disk thinned <code>H19-5</code> at <code>2.8 px</code> and pruned <code>6,435</code> twin dots within <code>d_cat &le; 2 px</code> (<code>41.6%</code> in <code>2 &lt; d_cat &le; 15 px</code>, <code>58.4%</code> in <code>d_cat &gt; 15 px</code>). Meanwhile <code>GEMSDOE92</code> <code>lbmc1</code> (<code>35,801</code> dots, newly reported <code>0.2784 CLAIM</code>) placed <code>98.45%</code> of its dots in distal blind corridors (<code>d_cat &gt; 15 px</code>), establishing that unmapped faults span both proximal splays/stepovers and distal blind basin structures. Full PhD derivations and how to surpass <code>0.2784</code> toward external benchmarks (<code>0.3195</code> / <code>0.4413</code> <code>CLAIM</code>) are in <a href="WHY_0_2778_AND_0_2784_20261029.md"><code>docs/WHY_0_2778_AND_0_2784_20261029.md</code></a> and <a href="WHY_0_2778.md"><code>docs/WHY_0_2778.md</code></a>.</p>
+<p>The fresh 2026-10-30 eight-owner mirror snapshot contains <code>108</code> repositories, <code>3,522</code> grid-compatible raster records and <code>2,346</code> unique SHA-256 values. The committed exact-hash receipt finds all <strong>9/9</strong> pinned Focus-9 peak files byte-identical to copies in other repositories; this is a hash-only rejection, not a new spatial-overlap audit or organizer registry check. The fresh LIDAR-SINTERVALVE final-dot receipt covers <code>2,345</code> comparison hashes and passes PI-1 at <code>0.690949</code>, while its current-snapshot pre-placement surface is unavailable and the stored run card remains negative. The older DEXP-KOSTROV <code>2,262</code>-SHA PI-1 result is a historical 2026-10-29 snapshot only. See the <a href="focus9-review-20261030.html">updated Focus-9 review</a>, <a href="downloads/focus9_registry_20261030.json">exact-hash receipt</a>, <a href="downloads/lidarsintervalve_registry_20261030.json">fresh final-dot registry receipt</a>, and <a href="REVIEW_20261030_REPOSITORY.md">three-pass review</a>. The literal full-footprint witness remains a stop; narrower PI-1 results do not waive it.</p></section>
+<section><h2>Why GEMSDOE32 (0.2778 CLAIM) &amp; GEMSDOE92 lbmc1 (0.2784 CLAIM)?</h2><p>Under the pooled Distance-Buffered Tversky Index (<code>α=0.2, β=0.8</code>, <code>300 m</code> triangular kernel, pixel-exact masking of public catalogue traces), <code>TPw</code> is submodular via <code>max</code> within 3 px while <code>FPw</code> is linear in emitted mass. <code>GEMSDOE32</code> <code>R0</code> (<code>37,654</code> binary dots, <code>0.2778 CLAIM</code>) Poisson-disk thinned <code>H19-5</code> at <code>2.8 px</code> and pruned <code>6,435</code> twin dots within <code>d_cat &le; 2 px</code> (<code>41.6%</code> in <code>2 &lt; d_cat &le; 15 px</code>, <code>58.4%</code> in <code>d_cat &gt; 15 px</code>). Meanwhile <code>GEMSDOE92</code> <code>lbmc1</code> (<code>35,801</code> dots, newly reported <code>0.2784 CLAIM</code>) placed <code>98.45%</code> of its dots in distal blind corridors (<code>d_cat &gt; 15 px</code>), establishing that unmapped faults span both proximal splays/stepovers and distal blind basin structures. Full analysis is archived in <a href="WHY_0_2778_AND_0_2784_20261029.md"><code>docs/WHY_0_2778_AND_0_2784_20261029.md</code></a> and <a href="WHY_0_2778.md"><code>docs/WHY_0_2778.md</code></a>.</p>
+<p><strong>Benchmark provenance correction:</strong> the 2026-10-25 in-repository public-board note records <code>0.4413</code> for a non-GEMSDOE participant and says <code>0.3195</code> was absent from that archived top-50; a separate 2026-10-26 sibling cache records a later, different value. This review did not fetch the live leaderboard, so the supplied figures are historical references only—not current verified leaderboard scores, nor receipts for <code>GEMSDOE32</code> or <code>GEMSDOE92</code>. Local <code>HOLDOUT-DTI</code> is not numerically comparable to either.</p>
 <p>Measured <code>HOLDOUT-DTI</code> on <code>gems57-pooled-hide-v2</code> (<code>22,663</code> withheld positive pixels): 2026-10-29 <code>DEXP-KOSTROV E3</code> <code>0.11744</code> (95% CI <code>0.10423–0.13027</code>; unconstrained <code>E2</code> <code>0.14181</code>) vs R0 recipe <code>0.09775</code> (95% CI <code>0.08573–0.10954</code>); historical Riesz candidate <code>0.03799</code> (95% CI <code>0.03101–0.04466</code>). These are local holdout measurements, not leaderboard receipts. <a href="downloads/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17_run_card.json">2026-10-29 Run Card</a> · <a href="downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788_run_card.json">Historical Riesz Evidence</a>.</p></section>
-<section><h2>Next steps &amp; limitations</h2><p>Resolve the literal dense-witness policy (<code>17GEMSDOE</code> continuous surface &amp; <code>13GEMSDOE</code> 206,895-dot lattice) and authenticate official organizer redistribution provenance before promoting any candidate to one of the 3 per week competition slots. On an open-network workstation, integrate free public-domain USGS 3DEP 1 m LiDAR scarp wavelets (<code>H4</code>) and Gallardo–Meju gravity×MT cross-gradients (<code>H2</code>) with <code>DEXP-KOSTROV</code>. This sandbox cannot reach <code>drivendata.org</code>, USGS, Dropbox, or DOE GDR directly; portal rules, weekly limit, and live leaderboard cannot be fetched here.</p>
-<p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Official problem</a> · <a href="https://github.com/drivendataorg/gems-prize-reference-solution">Official reference solution</a> · <a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN</a> · <a href="https://gdr.openei.org/submissions/1391">INGENIOUS</a> · <a href="https://data.usgs.gov/datacatalog/data/USGS:77ae0551-c61e-4979-aedd-d797abdcde0e">USGS 3DEP 1 m LiDAR</a> · <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Rules PDF</a> · <a href="https://www.drivendata.org/termsofuse/">DrivenData Terms of Use</a>. The organizer leaderboard is not mirrored.</p></section>{secondary_section}'''
+<section><h2>Next steps &amp; limitations</h2><p><strong>No experiment is authorized or selected.</strong> The assigned method paragraph referred to by the project contract is absent; do not infer a method lane from the hypothesis backlog. Keep the existing LIDAR GeoTIFF research-only. Before any future experiment, obtain the exact paragraph, retain the three-experiment/two-hour cap, compare against the current same-evaluator best with the paired decision rule, run pre-placement and final-dot uniqueness on the same current inventory, and use the shared evaluator/writer. Resolve the literal dense-witness interpretation and official input provenance/redistribution rights before any submission decision. This review made no experiment, holdout, or TIFF.</p>
+<p>Official links are provided for manual review in <a href="focus9-review-20261030.html">Focus-9 review</a> and <a href="REVIEW_20261030_REPOSITORY.md">three-pass review</a>; they were not live-fetched here. Current leaderboard and portal state remain unverified in this sandbox.</p></section>{secondary_section}'''
 
     guide = f'''<nav><a href="index.html">← Executive summary</a> · <a href="executive-summary-20261029-dexp-kostrov.html">2026-10-29 DEXP-Kostrov summary</a> · <a href="nine-sites.html">Nine-site review</a></nav>
 <section class="stop"><h1>DO NOT SUBMIT — no candidate is cleared for a weekly competition slot</h1>
@@ -523,6 +716,9 @@ def render(card):
   <li><strong><code>BLINDCORRIDOR</code> (<code>gemsdoe92-blindcorridor-37654dots-20261028-11f8999c-zeros.tif</code>):</strong> format pass only (<code>verdict=format_pass</code>, <code>submission_eligible=false</code>); lacks independent <code>HOLDOUT-DTI</code> and leakage canaries; a separate historical registry audit reports <code>0.769108</code> overlap versus <code>13GEMSDOE</code>, above the <code>0.70</code> stop (<a href="downloads/blindcorridor_readiness_20261028.json">readiness feed</a>).</li>
   <li><strong>Status-feed baseline <code>RIESZ-LOCKED</code> (<code>{esc(file)}</code>, SHA-256 <code>{digest}</code>):</strong> <code>verdict=negative</code>, <code>submission_eligible=false</code>; below R0 on <code>HOLDOUT-DTI</code>.</li>
 </ul></section>
+<section class="stop" id="current-download-guide"><h2>Current 2026-10-30 Download Status: LIDAR-SINTERVALVE — OK TO DOWNLOAD FOR RESEARCH ONLY · DO NOT SUBMIT</h2>
+<p>The selected site download anchor is the existing <code>{esc(lsv_name)}</code>, not a new file from this review. It passes 11/11 local format gates and the fresh final-dot PI-1 mirror check ({current_registry['worst_overlap']['value']:.6f} overlap; max |ρ| {current_registry['worst_abs_rho']['value']:.6f}), but lacks a pre-placement surface re-audit on this current inventory, retains a literal 1.000 overlap stop, and its paired holdout comparison to <code>control_netexpand_far</code> includes zero. <strong>Do not upload it.</strong></p>
+<p><a href="downloads/{esc(lsv_name)}">existing TIFF (research download only)</a> · <a href="downloads/{esc(lsv_status['run_card'])}">run card</a> · <a href="downloads/{esc(lsv_status['audit'])}">format audit</a> · <a href="{esc(lsv_registry_rel)}">fresh final-dot audit</a> · <a href="downloads/readiness.json">machine-readable current status</a> · <a href="focus9-review-20261030.html">Focus-9 review</a>.</p></section>
 {dexp_howto_block}
 <section><h2>Exact DrivenData #306 Submission Procedure (Conditional — Only After Future Human Selector Clearance)</h2>
 <ol>
@@ -530,7 +726,8 @@ def render(card):
   <li><strong>Why <em>“Predicted values must be in range [0, 1]”</em> happened previously — and how our automated pipeline prevents it:</strong> DrivenData's portal validator inspects raw raster values across the full <code>3730×3292</code> array. Files storing GDAL float32 sentinels (<code>-3.4028235e+38</code>), unclipped continuous scores (<code>&lt; 0</code> or <code>&gt; 1</code>), or unhandled exterior values trigger <em>“Predicted values must be in range [0, 1]”</em>. <code>vendor/gems57/submission_writer.py</code> and <code>gems/gates.py</code> enforce strict all-finite <code>[0.0, 1.0]</code> values with exact <code>0.0</code> outside the valid footprint before writing bytes. Local checks are necessary preflight guards, not a guarantee of portal acceptance.</li>
   <li><strong>Check the weekly limit (3 per week) on the official portal:</strong> open <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">drivendata.org/competitions/306/competition-doe-gems/submissions/</a> in a browser, verify remaining weekly slots, and upload the exact cleared single-band <code>.tif</code> (or single-TIFF <code>.zip</code>) without opening or re-saving in GIS software.</li>
   <li><strong>Use a unique submission name and concise note (<code>&le; 140</code> characters):</strong> never reuse a historical filename or note from another GEMSDOE repository. After scoring, record the exact DrivenData score and timestamp in <code>ledger/submissions.csv</code> as an <code>ORGANIZER-CONFIRMED</code> receipt.</li>
-</ol></section>
+</ol>
+<p><strong>Auditable local validators:</strong> <a href="https://github.com/buffedlizard55-lab/GEMSDOE92/blob/arena/d24f0f39-gemsdoe92/validate_submission.py">submission validator source</a> · <a href="https://github.com/buffedlizard55-lab/GEMSDOE92/blob/arena/d24f0f39-gemsdoe92/scripts/check_site.py">site/status/served-raster checker</a> · <a href="https://github.com/buffedlizard55-lab/GEMSDOE92/blob/arena/d24f0f39-gemsdoe92/tests/test_site_v3.py">site contract tests</a> · current byte-bound <a href="downloads/current_submission.json">status feed</a> and <a href="downloads/readiness.json">readiness feed</a>. These automated checks do not select a weekly slot or guarantee portal acceptance.</p></section>
 <section><h2>Summary of Focus-9 &amp; GEMSDOE92 Files (Research Reference Only)</h2>
 <table><thead><tr><th>Site</th><th>File to download — research only</th><th>Score / estimate (strictly labeled)</th><th>Uniqueness across listed GEMSDOE sites &amp; status</th></tr></thead><tbody>{''.join(rows)}</tbody></table></section>'''
 
@@ -565,13 +762,27 @@ def render(card):
         d_tif = Path(dexp[2]['file']).name
         dexp_root_line = f'<p><strong>2026-10-29 DEXP-KOSTROV-KOENDERINK research GeoTIFF (11/11 format gates PASS, HOLDOUT-DTI 0.11744 &gt; R0 0.09775, 2,262-SHA PI-1 PASS · DO NOT SUBMIT):</strong> <a class="btn" href="docs/downloads/{esc(d_tif)}" download>⬇ Download {esc(d_tif)}</a> · <a href="docs/executive-summary-20261029-dexp-kostrov.html">2026-10-29 DEXP-KOSTROV Executive Summary</a></p>'
     root = f'<p>The organizer leaderboard is not mirrored. <a href="https://www.drivendata.org/termsofuse/">DrivenData Terms of Use</a></p><h1>GEMSDOE92</h1><p class="small"><a href="docs/executive-summary-20261029-dexp-kostrov.html"><strong>2026-10-29 DEXP-KOSTROV Summary</strong></a> · <a href="docs/executive-summary-20261029-lidarsintervalve.html"><strong>2026-10-29 LIDAR-SINTERVALVE Nine-Site Summary</strong></a> · <a href="docs/executive-summary-20261029-marussi-trishear.html"><strong>2026-10-29 MARUSSI-TRISHEAR Executive Summary</strong></a> · <a href="docs/executive-summary-20261029-admitrelay.html"><strong>2026-10-29 ADMITRELAY + LBM-v3 Executive Summary</strong></a> · <a href="docs/executive-summary-nine-sites-20261028.html">Nine-site executive summary</a> · <a href="docs/HYPOTHESES_20261029_DEXP_KOSTROV.md">2026-10-29 DEXP-KOSTROV Hypotheses</a> · <a href="docs/HYPOTHESES_20261029_LIDAR_SINTERVALVE.md">2026-10-29 LIDAR Hypotheses</a> · <a href="docs/STANDING_PROMPT.md">Standing Prompt</a></p>{lsv_root_hero}<section class="stop"><h2>DO NOT SUBMIT — no eligible new TIFF</h2>{dexp_root_line}{marussi_root_line}<p>Research-only file: <a href="docs/downloads/{esc(file)}"><code>{esc(file)}</code></a>; SHA-256 <code>{digest}</code>.</p><p>The 2026-10-29 ADMITRELAY + LBM-v3 candidate is also research-only and <strong>DO NOT SUBMIT</strong>; see its <a href="docs/executive-summary-20261029-admitrelay.html">executive summary &amp; run card</a>. The additional BLINDCORRIDOR artifact is format-pass only and also <strong>DO NOT SUBMIT</strong>; see its <a href="docs/index.html#blindcorridor">byte-bound status and audit</a>.</p><p><a href="docs/index.html">Read the executive summary and research downloads</a> · <a href="docs/how-to-submit.html">How to submit when cleared</a></p></section>'
+    # The current JSON feeds follow the current review's LIDAR research download,
+    # not the historical RIESZ artifact used by the older model-analysis section.
+    current = current_feed
+    readiness = current_readiness
+    nine_sites_body = body.replace(lsv_current_section, lsv_current_section.replace(' data-primary="true"', ''), 1)
+    try:
+        from scripts.render_focus9_review_20261030 import render_page as render_focus9_review_20261030
+    except ModuleNotFoundError:  # direct invocation from scripts/
+        from render_focus9_review_20261030 import render_page as render_focus9_review_20261030
     outputs = {
         DOCS/'index.html': page('GEMSDOE92 — Executive summary', body),
-        DOCS/'nine-sites.html': page('GEMSDOE92 — Nine-site review', body),
+        DOCS/'nine-sites.html': page('GEMSDOE92 — Nine-site review', nine_sites_body),
+        DOCS/'focus9-review-20261030.html': render_focus9_review_20261030(),
         DOCS/'how-to-submit.html': page('GEMSDOE92 — How to submit', guide),
         ROOT/'index.html': page('GEMSDOE92', root),
         DL/'current_submission.json': json.dumps(current, indent=2)+'\n',
         DL/'readiness.json': json.dumps(readiness, indent=2)+'\n',
+        DL/'lidarsintervalve_registry_20261030.json': (EVID/'lidarsintervalve_registry_20261030.json').read_text(encoding='utf-8'),
+        DL/'focus9_registry_20261030.json': (EVID/'focus9_registry_20261030.json').read_text(encoding='utf-8'),
+        DL/'input_restore_20261030.json': (EVID/'input_restore_20261030.json').read_text(encoding='utf-8'),
+        DL/Path(lsv_status['audit']).name: json.dumps(lsv_format_audit, indent=2)+'\n',
     }
     if lsv29:
         outputs[DOCS/'executive-summary-20261029-lidarsintervalve.html'] = render_executive_summary_20261029(lsv29[0], lsv29[2])

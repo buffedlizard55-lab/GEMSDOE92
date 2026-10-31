@@ -57,7 +57,9 @@ def main() -> int:
         raise SystemExit("candidate values outside [0, 1]")
     dots = arr > 0
 
-    inv = json.loads((rc.CACHE / "inventory.json").read_text(encoding="utf-8"))
+    inventory_path = rc.CACHE / "inventory.json"
+    inventory_bytes = inventory_path.read_bytes()
+    inv = json.loads(inventory_bytes)
     repos_of: dict[str, set[str]] = defaultdict(set)
     for repo in inv["repositories"]:
         for f in repo["files"]:
@@ -90,6 +92,16 @@ def main() -> int:
         registry_unique_sha256=len(shas),
         excluded_self_sha256=cand_sha if own_only else None,
         registry_scope=f"{inv.get('owners', '') or 'owners in .cache/registry_v3/inventory.json'}",
+        registry_snapshot=dict(
+            schema=inv.get("schema"),
+            built_utc=inv.get("built_utc"),
+            owners=inv.get("owners", []),
+            repository_count=len(inv.get("repositories", [])),
+            grid_compatible_raster_records=sum(len(r.get("files", [])) for r in inv.get("repositories", [])),
+            unique_sha256_count=len({f["sha256"] for r in inv.get("repositories", []) for f in r.get("files", [])}),
+            error_count=len(inv.get("errors", [])),
+            inventory_sha256=hashlib.sha256(inventory_bytes).hexdigest(),
+        ),
         rule=aud["rule"],
         duplicate_pi1=aud["duplicate"],
         pi1_pass=not aud["duplicate"],

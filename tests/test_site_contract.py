@@ -290,16 +290,18 @@ def test_current_review_run_card_is_served_byte_identically():
 
 
 def test_readme_opens_with_authoritative_no_submit_status():
-    """The README must state the current stop before historical lane records."""
+    """The README must lead with the current dated status and operating contract."""
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     assert readme.startswith("# GEMSDOE92")
     marker = "<!-- LISTRICDIP:BEGIN -->"
     assert marker in readme
     current = readme[:readme.index(marker)]
-    assert "Authoritative review" in current
+    assert "Current Status — 2026-10-30" in current
+    assert "OK TO DOWNLOAD FOR RESEARCH ONLY" in current
     assert "DO NOT SUBMIT" in current
-    assert "every nonempty candidate" in current
-    assert "matched-budget" in current.lower()
+    assert "method paragraph" in current.lower()
+    assert "Maximize P(Win)" in current and "Own the Outcome" in current
+    assert "exact-byte copies" in current
 
 
 def test_submit_page_exists():

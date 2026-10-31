@@ -78,7 +78,9 @@ def load_lidarsintervalve_20261029():
     return card, audit, status
 
 
-def render_lidarsintervalve_hero(card: dict, status: dict, *, href_prefix: str = "") -> str:
+def render_lidarsintervalve_hero(
+    card: dict, status: dict, *, href_prefix: str = "", data_primary: bool = False
+) -> str:
     tif_rel = f"{href_prefix}{status['file']}"
     zip_rel = f"{href_prefix}{status['zip']}"
     card_rel = f"{href_prefix}downloads/{status['run_card']}"
@@ -100,7 +102,7 @@ def render_lidarsintervalve_hero(card: dict, status: dict, *, href_prefix: str =
 <h2>2026-10-29 Session Candidate: LIDAR-SINTERVALVE (H-92G1) — OK TO DOWNLOAD FOR RESEARCH ONLY · DO NOT SUBMIT</h2>
 <p><strong>2026-10-29 Fleet Leaderboard Milestone:</strong> <code>GEMSDOE92</code>'s prior 2026-10-27 submission (<code>gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif</code>, SHA-256 <code>e928d3c3fde8b3f1…</code>) is newly reported in the 2026-10-29 prompt at <strong><code>0.2784</code> (<code>CLAIM</code>)</strong> — <strong>#1 across all 135 scored fleet entries and all 8 GitHub owners</strong> (+0.0006 above <code>GEMSDOE32</code> <code>0.2778</code> <code>CLAIM</code>; already submitted, do NOT re-upload).</p>
 <p><strong>New 2026-10-29 Unique GeoTIFF (1-click download for research; DO NOT SUBMIT to portal):</strong><br>
-<a href="{esc(tif_rel)}" download><strong>⬇ Download GeoTIFF ({esc(Path(r['file']).name)}) — DO NOT SUBMIT</strong></a> ·
+<a{' data-primary="true"' if data_primary else ''} href="{esc(tif_rel)}" download><strong>⬇ Download GeoTIFF ({esc(Path(r['file']).name)}) — DO NOT SUBMIT</strong></a> ·
 <a href="{esc(zip_rel)}" download>⬇ Single-TIFF ZIP</a> ·
 <a href="{esc(card_rel)}">JSON Run Card</a> ·
 <a href="{esc(audit_rel)}">11-Gate Format Audit</a> ·

@@ -1,0 +1,155 @@
+{
+ "schema": "gemsdoe92-candidate-full-registry-uniqueness-v1",
+ "candidate": "docs/downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.tif",
+ "candidate_sha256": "0db6046848adf1ac78d71baa34a49ae54c75018542ca50c3d2fb3e479505780e",
+ "candidate_identical_copies_in_registry": [
+  "buffedlizard55-lab/GEMSDOE92"
+ ],
+ "n_dots": 37654,
+ "candidate_nonfinite_cells_treated_as_zero": 0,
+ "registry_unique_sha256": 2345,
+ "excluded_self_sha256": "0db6046848adf1ac78d71baa34a49ae54c75018542ca50c3d2fb3e479505780e",
+ "registry_scope": "['buffedlizard55-lab', 'kanlerxz87-cyber', 'eugboogieman123-ops', 'wingbangboozle1-lang', 'ginnymcfiner23-ux', 'karagemop466-tech', 'apartanish22-droid', 'sassnarep3-star']",
+ "registry_snapshot": {
+  "schema": "gemsdoe92-registry-v3",
+  "built_utc": "2026-10-30T23:22:46+00:00",
+  "owners": [
+   "buffedlizard55-lab",
+   "kanlerxz87-cyber",
+   "eugboogieman123-ops",
+   "wingbangboozle1-lang",
+   "ginnymcfiner23-ux",
+   "karagemop466-tech",
+   "apartanish22-droid",
+   "sassnarep3-star"
+  ],
+  "repository_count": 108,
+  "grid_compatible_raster_records": 3522,
+  "unique_sha256_count": 2346,
+  "error_count": 0,
+  "inventory_sha256": "55f2f0b7c1cf439c435e393df0dad84c44e750b68eab727bcb8375b533e46ed6"
+ },
+ "rule": {
+  "overlap_limit": 0.7,
+  "rho_limit": 0.9,
+  "radius_px": 3.0,
+  "interpretation": "PI-1",
+  "dense_support_fraction": 0.2,
+  "halo_limit": 0.7
+ },
+ "duplicate_pi1": false,
+ "pi1_pass": true,
+ "worst_overlap": {
+  "value": 0.690949,
+  "sha256": "88976dc5b2504838b193d41b718df95eb1e237b870b94a6443dc3bee65e98e06",
+  "representation": "dot_field",
+  "repos": [
+   "buffedlizard55-lab/13GEMSDOE"
+  ]
+ },
+ "worst_abs_rho": {
+  "value": 0.058252,
+  "sha256": "8a66c57c576cd2a4d0e78c349a6ac2614b3a4d9dc14691a4b55830818e4b160b",
+  "repos": [
+   "buffedlizard55-lab/GEMSDOE86"
+  ]
+ },
+ "n_rasters_overlap_over_0_5": 15,
+ "literal_reading": {
+  "worst": 1.0,
+  "duplicate_under_literal": true,
+  "note": "Literal reading is degenerate: any raster positive on every footprint cell gives 1.0."
+ },
+ "top10_overlap": [
+  {
+   "sha256": "88976dc5b2504838b193d41b718df95eb1e237b870b94a6443dc3bee65e98e06",
+   "overlap_pi1": 0.690949,
+   "rho": -0.007676,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/13GEMSDOE"
+   ]
+  },
+  {
+   "sha256": "e050b1ec627e8207c1fe5f7530f015d0cf2feb6bb98c5bce225e5db806afb0e3",
+   "overlap_pi1": 0.690949,
+   "rho": -0.007676,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/13GEMSDOE"
+   ]
+  },
+  {
+   "sha256": "47caaca53d2906f797459abf1194fb81ee1181e05cf5c9a6e74e6f57b0999b98",
+   "overlap_pi1": 0.662294,
+   "rho": 0.005074,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/GEMSDOE77"
+   ]
+  },
+  {
+   "sha256": "70c4ccd5dd51c6cbf1c0b8019738885a357dde7be64c17b4fb278a12f073e1e4",
+   "overlap_pi1": 0.655495,
+   "rho": -0.009857,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/13GEMSDOE"
+   ]
+  },
+  {
+   "sha256": "bd1e3d056e83e792aed8c77b3249f833d119320779b94d2eb7c5b65ac5161428",
+   "overlap_pi1": 0.655495,
+   "rho": -0.009857,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/13GEMSDOE"
+   ]
+  },
+  {
+   "sha256": "0c7d00e879e7f54e3019de185b252e5faad2983c754c9030273ad333688acb69",
+   "overlap_pi1": 0.626627,
+   "rho": 0.009336,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/GEMSDOE50"
+   ]
+  },
+  {
+   "sha256": "ad9750be86acf6b8c253dcd8f1ee6487c2ea8327a582a8c9e6a765d16037d319",
+   "overlap_pi1": 0.626627,
+   "rho": 0.009336,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/GEMSDOE50"
+   ]
+  },
+  {
+   "sha256": "789dd56c4287cd50c8d2d5e3f063828a8d25a275d82bd8418a4cf971d908b8a6",
+   "overlap_pi1": 0.617385,
+   "rho": 0.007422,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/GEMSDOE22"
+   ]
+  },
+  {
+   "sha256": "d0c5fd6825b544eb08672303c11292eb99d6105e42a41eac0e5a211a3fdc69e5",
+   "overlap_pi1": 0.617385,
+   "rho": 0.007422,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/GEMSDOE22"
+   ]
+  },
+  {
+   "sha256": "28adc53bcaca11329c807baa5659079c25f225c5908f7874762a034cf70cab05",
+   "overlap_pi1": 0.519334,
+   "rho": 0.007523,
+   "representation": "dot_field",
+   "repos": [
+    "buffedlizard55-lab/GEMSDOE67"
+   ]
+  }
+ ]
+}

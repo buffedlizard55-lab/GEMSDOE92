@@ -1,26 +1,94 @@
 {
-  "file": "downloads/gemsdoe92-rieszlbm2-50000dots-20261028-79041788-zeros.tif",
-  "raster_sha256": "d168c7d2a0ea89f9609426fe5f9d5aa0791223131c98a90d55b1f6aa1cbe5d7a",
-  "submission_name": "gemsdoe92-rieszlbm2-50000d-79041788",
-  "note": "Riesz-Locked LBM-v2: 50000 binary dots; 128-claim density + q85 mimic filter + OOF Riesz/piedmont/Peclet; <=65.6% 8-owner fleet cap.",
+  "schema": "gemsdoe92-current-readiness-v2",
+  "review_date_utc": "2026-10-30",
+  "artifact": "LIDAR-SINTERVALVE H-92G1 (existing 2026-10-29 research raster; not newly generated)",
+  "primary_role": "current review download anchor only; not a submission recommendation",
+  "file": "downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros.tif",
+  "raster_sha256": "0db6046848adf1ac78d71baa34a49ae54c75018542ca50c3d2fb3e479505780e",
+  "submission_name": "gemsdoe92-lidarsintervalve-65c6cb0e",
+  "note": "H-92G1 1m-LiDAR Wallace dipole+antislope+sinter valve LOQO; 37654 dots d>4px; RESEARCH DO NOT SUBMIT",
   "verdict": "negative",
   "submission_eligible": false,
-  "download_status": "OK TO DOWNLOAD FOR RESEARCH",
+  "download_status": "OK TO DOWNLOAD FOR RESEARCH ONLY",
   "submission_status": "DO NOT SUBMIT",
-  "reason": "Research only; mandatory promotion protocol gates failed.",
+  "reason": "Existing research-only raster. Fresh final-dot PI-1 passes on the current owner-mirror snapshot; required pre-placement, literal-witness, holdout-improvement, and provenance gates do not all pass.",
   "blocking_reasons": [
-    "pre-placement surface overlap is missing or exceeds 0.70",
-    "literal full-support registry witness triggers the Rule 1 duplicate stop",
-    "HOLDOUT-DTI did not beat the R0 recipe control with paired 95% CI above zero"
+    "No pre-placement surface raster is available for re-audit against the 2026-10-30 registry snapshot; the saved 2026-10-29 run card reported top-N overlap 1.000000 and |rho| 0.803516.",
+    "The literal full-support witness remains a stop: literal overlap 1.000000 (> 0.70); PI-1 final-dot pass does not waive it.",
+    "The paired HOLDOUT-DTI difference vs control_netexpand_far is +0.000643 with 95% CI [-0.002525, +0.004321], which includes zero; improvement over the prior best is not established.",
+    "Official organizer provenance and redistribution rights for owner-mirror inputs remain unverified."
   ],
-  "gates": {
-    "format": true,
-    "uniqueness_pi1": false,
-    "unique_vs_prior_lbmc1": true,
-    "model_beats_0_2778_at_q05": true,
-    "model_robust_all_specs_ge_R0": true,
-    "no_leakage": true,
-    "catalogue_holdout_beats_lbmc1": true,
-    "catalogue_holdout_beats_r0_recipe": false
-  }
+  "run_card": "downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e_run_card.json",
+  "format_audit": "downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros-audit.json",
+  "registry_audit": "downloads/lidarsintervalve_registry_20261030.json",
+  "registry_audit_sha256": "79f00db1d9221597582e47b11704420338144c424389130891596a3a36e7a4b1",
+  "new_tiff_created_this_review": false,
+  "experiments_run_this_review": 0,
+  "holdout_run_this_review": false,
+  "weekly_slots_used_this_review": 0,
+  "format_validation": {
+    "status": "PASS (11/11 local gates; not organizer acceptance)",
+    "single_band_float32": true,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "range_0_1": true,
+    "all_finite": true,
+    "nan_count": 0,
+    "outside_footprint": "exact zero",
+    "audit": "downloads/gemsdoe92-lidarsintervalve-37654dots-20261029-65c6cb0e-zeros-audit.json"
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI (stored 2026-10-29 run card; not rerun in this review)",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22663,
+    "fold_proper_value": 0.17861884985575596,
+    "fold_proper_ci95": [
+      0.16307145105912876,
+      0.19331601691762273
+    ],
+    "control_netexpand_far": 0.1779758528308232,
+    "paired_delta_vs_control_netexpand_far": 0.0006429970249327566,
+    "paired_delta_ci95": [
+      -0.0025249916061730986,
+      0.004321392923466916
+    ],
+    "improvement_decision": "NOT ESTABLISHED (paired 95% CI includes zero)"
+  },
+  "uniqueness": {
+    "evidence_class": "REGISTRY-MEASUREMENT (current public owner-mirror snapshot)",
+    "registry_snapshot_built_utc": "2026-10-30T23:22:46+00:00",
+    "registry_snapshot_sha256": "55f2f0b7c1cf439c435e393df0dad84c44e750b68eab727bcb8375b533e46ed6",
+    "owners": [
+      "buffedlizard55-lab",
+      "kanlerxz87-cyber",
+      "eugboogieman123-ops",
+      "wingbangboozle1-lang",
+      "ginnymcfiner23-ux",
+      "karagemop466-tech",
+      "apartanish22-droid",
+      "sassnarep3-star"
+    ],
+    "repository_count": 108,
+    "grid_compatible_raster_records": 3522,
+    "unique_sha256_count_in_inventory": 2346,
+    "candidate_sha_excluded_from_comparisons": "0db6046848adf1ac78d71baa34a49ae54c75018542ca50c3d2fb3e479505780e",
+    "comparison_sha256_count": 2345,
+    "current_final_dot_pi1_pass": true,
+    "current_final_dot_worst_overlap_3px": 0.690949,
+    "current_final_dot_overlap_witness_repos": [
+      "buffedlizard55-lab/13GEMSDOE"
+    ],
+    "current_final_dot_worst_abs_rho": 0.058252,
+    "current_pre_placement_surface_reaudited": false,
+    "historical_pre_placement_registry_sha_count": 2263,
+    "historical_pre_placement_topN_overlap": 1.0,
+    "historical_pre_placement_abs_rho": 0.803516,
+    "literal_full_support_witness_overlap": 1.0,
+    "literal_full_support_witness_duplicate": true
+  },
+  "provenance": "Pinned owner-maintained public GitHub mirrors were hash/size verified; organizer source provenance and redistribution rights are not verified.",
+  "official_source_links_live_checked_this_review": false
 }

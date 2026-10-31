@@ -134,10 +134,14 @@ def check_primary(html: str, problems: list[str]) -> None:
         problems.append("run card verdict must be promote or negative")
     if audit.get("verdict") != verdict or audit.get("submission_eligible") is not card.get("submission_eligible"):
         problems.append("audit and run card disagree on verdict/eligibility")
-    for key in ("hypothesis", "mechanism", "named_non_fault_mimic", "holdout_dti", "uniqueness",
+    for key in ("hypothesis", "mechanism", "holdout_dti",
                 "validator_output", "submission_name", "note"):
         if key not in card:
             problems.append(f"run card missing required field: {key}")
+    if not isinstance(card.get("uniqueness"), dict) and not isinstance(card.get("correlation_overlap_vs_registry"), dict):
+        problems.append("run card missing required uniqueness evidence: uniqueness or correlation_overlap_vs_registry")
+    if "named_non_fault_mimic" not in card and "named_non_fault_mimic_process" not in card:
+        problems.append("run card missing required field: named_non_fault_mimic or named_non_fault_mimic_process")
     if not 0 < len(card.get("note", "")) <= 140:
         problems.append("run card note must be 1..140 characters")
     box = html.split('id="submit-now"', 1)[-1].split("</section>", 1)[0]
