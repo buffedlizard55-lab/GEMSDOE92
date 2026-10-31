@@ -1,0 +1,57 @@
+{
+ "schema": "gemsdoe92-peel-score-estimate-v1",
+ "evidence_class": "MODEL (holdout-anchored projection; never an organizer score)",
+ "anchor_raster": "data/parent_R0_nan.tif (h33-h33-2-b2)",
+ "anchor_holdout": 0.097493,
+ "anchor_claim": 0.2778,
+ "candidate_holdout": 0.15271709605451256,
+ "holdout_gain": 0.05522409605451256,
+ "holdout_gain_ratio": 1.5664416527803284,
+ "mapping_proportional": 0.43515749114237523,
+ "mapping_additive": 0.33302409605451255,
+ "estimate_interval": [
+  0.33302409605451255,
+  0.43515749114237523
+ ],
+ "unidentified": "one anchor pair cannot distinguish the two mappings; a second submission receipt scored against a measured holdout is required",
+ "anchors": [
+  {
+   "label": "GEMSDOE32 h33-h33-2-b2",
+   "raster": "data/parent_R0_nan.tif",
+   "claim": 0.2778,
+   "n": 37654,
+   "evidence_class": "CLAIM (owner-reported; no receipt in this repo)"
+  },
+  {
+   "label": "GEMSDOE92 lbmc1",
+   "raster": "docs/downloads/gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros.tif",
+   "claim": 0.2784,
+   "n": 35801,
+   "evidence_class": "CLAIM (owner-reported; no receipt in this repo)"
+  },
+  {
+   "label": "GEMSDOE31 h27-4-solo-d28",
+   "raster": "data/bridge/h27_4_solo.tif",
+   "claim": 0.2708,
+   "n": 40199,
+   "evidence_class": "CLAIM (owner-reported; no receipt in this repo)"
+  },
+  {
+   "label": "GEMSDOE25/30 d28-poisson300m",
+   "raster": "data/bridge/d28.tif",
+   "claim": 0.26,
+   "n": 44090,
+   "evidence_class": "CLAIM (owner-reported; no receipt in this repo)"
+  },
+  {
+   "label": "GEMSDOE19 h19-5",
+   "raster": "data/bridge/h19_5.tif",
+   "claim": 0.1922,
+   "n": 121131,
+   "evidence_class": "CLAIM (owner-reported; no receipt in this repo)"
+  }
+ ],
+ "candidate_dots": 37654,
+ "candidate": "docs/downloads/gemsdoe92-peel-scarpalt-37654-20261031-zeros.tif",
+ "candidate_sha256": "c0707d441484c77e064949faa9703f1f2883c594111162dd259dc46c3f3bde28"
+}
