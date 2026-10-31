@@ -1,3 +1,18 @@
+# Submission status — 2026-10-31 review (`PEEL` lane)
+
+## 🟡 DOWNLOAD OK · NOT PROMOTED to a weekly slot (`0` slots used, 3/3 experiments spent)
+
+- **Candidate:** [`docs/downloads/gemsdoe92-peel-scarpalt-37654-20261031-zeros.tif`](docs/downloads/gemsdoe92-peel-scarpalt-37654-20261031-zeros.tif)
+  (`SHA-256 = c0707d441484c77e064949faa9703f1f2883c594111162dd259dc46c3f3bde28`, `37,654` binary dots, `140,108` bytes, single-band `float32`, `EPSG:32611`, `3730×3292`, **0 NaN/Inf, all values in `[0,1]`**, 0 positives on the mapped catalogue, 15/15 local gates).
+- **Why it is downloadable:** it is the only artifact in this repository that is simultaneously format-valid, **unique against the nine focus sites and this repo**
+  (max 3 px overlap with any of the nine focus-site peaks `41.2%`, with `lbmc1` `14.1%`; **registry-wide `77.5%` against one prior raster — reported, not hidden**, see §4), and measured better than the incumbent's construction
+  (`HOLDOUT-DTI 0.152717` `[0.134419, 0.170703]` vs `R0 recipe 0.097493`, paired `+0.055224` `[+0.041136, +0.068914]`).
+- **Why it is not promoted:** `0.152717 < 0.184485` (archived all-time holdout best, same instrument), and no organizer receipt exists for any score in this repository.
+- **Estimate (MODEL, not a score):** `0.333–0.435` from two admissible one-anchor mappings off `HOLDOUT 0.097493 ↔ CLAIM 0.2778`.
+- **New measured finding:** all nine focus sites (`GEMSDOE24/25/27/28/30/31/32/33/36`) are **duplicates of each other** under the owner's own 70%/3 px rule — see [nine-site overlap](evidence/peel_nine_site_overlap_20261031.json) and the [executive summary](docs/executive-summary-20261031-peel.html).
+
+---
+
 # Submission status — 2026-10-29 review (`ADMITRELAY` + `LBM-v3`)
 
 ## ⛔ DO NOT SUBMIT — no candidate is cleared for a weekly competition slot (`submission_eligible: false`, `0` slots spent)

@@ -1,5 +1,18 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
+> **2026-10-31 status (PEEL lane — read this first).** One new candidate exists:
+> [`docs/downloads/gemsdoe92-peel-scarpalt-37654-20261031-zeros.tif`](docs/downloads/gemsdoe92-peel-scarpalt-37654-20261031-zeros.tif)
+> (`SHA-256 = c0707d441484c77e064949faa9703f1f2883c594111162dd259dc46c3f3bde28`, 37,654 binary dots).
+> It is **format-valid (15/15 gates)**, **unique against the nine focus sites** (max 3 px overlap 41.2%, limit 70%; 14.1% against this repo's own `lbmc1`), and it
+> **beats the 0.2778 construction on a paired, shared instrument**
+> (`HOLDOUT-DTI 0.152717` vs `R0 recipe 0.097493`, paired Δ `+0.055224` CI `[+0.041136, +0.068914]`).
+> Estimated leaderboard score `0.333–0.435` (`MODEL`, one anchor pair, not a receipt).
+> **Registry-wide it is not unique**: one prior public raster captures 77.5% of its dots (>70%), and §4 of the summary shows by measurement that no
+> competitive-size set from this score field can satisfy that reading.
+> **It is not promoted:** it does not beat the repository's archived all-time holdout best
+> (`0.184485`, `relay_conduit`, itself not unique), so the Rule-6 slot gate stays closed and 0 weekly slots were used.
+> Everything below is earlier-session history; verify before relying on it.
+
 > **2026-10-30 status:** No GeoTIFF is cleared for competition upload; existing candidates are research-only. The active readiness record is negative. Read the [Focus-9 executive summary](docs/executive-summary-nine-sites-20261030.html), the [Arena three-pass review](docs/REVIEW_20261030_ARENA.md), the [focus-nine audit](docs/REVIEW_20261030_FOCUS9.md), and the [detailed evidence supplement](docs/REVIEW_20261030_REPO.md) before relying on older status banners. Same-day audits document a mismatch between candidate references in this README, `SUBMISSION_READY.md`, and generated status feeds. Values are owner/user `CLAIM`s unless backed by an organizer receipt. No TIFF is cleared and no weekly slot was used. At the start of each session, read this README and the normalized operating brief in [`SESSION_PROMPT.md`](SESSION_PROMPT.md).
 
 ## 📌 Current Status — 2026-10-29 (`DEXP-KOSTROV-KOENDERINK` + `MARUSSI-TRISHEAR` + `ADMITRELAY` + Full `2,262`-SHA 8-Owner Fleet Audit)
