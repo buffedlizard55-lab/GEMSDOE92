@@ -4,6 +4,30 @@
 
 - **2026-10-31 unique candidate (`V-GFP2R`, `verdict: negative` / exploratory-submittable):** [`docs/downloads/gemsdoe92-vgfp2r-37654dots-20261031-bcb3d2af-zeros.tif`](docs/downloads/gemsdoe92-vgfp2r-37654dots-20261031-bcb3d2af-zeros.tif) (`SHA-256 6cd09733ab350469d32a714bd22d4eed63cb562e9364ba8ad049827da65d0a78`, `37,654` binary dots) is **OK TO DOWNLOAD** (`11/11` format gates PASS in `[0, 1]`, `0` NaN anywhere — fixes "Predicted values must be in range [0, 1]", `30/30` leakage canaries PASS `<= 0.75441`, `PI-1` unique across `158` registry rasters at `0.3089 <= 0.70`, `|ρ| = 0.0169 <= 0.90`) but **NOT promoted**: fold-proper `HOLDOUT-DTI = 0.043725 [0.028442, 0.057578]` < `R0-recipe control 0.096717 [0.085089, 0.108126]` (paired Δ `-0.052992 [-0.069326, -0.037833]`), `MODEL-CLASS PROJECTION 0.15–0.27` below the `0.2778 CLAIM` bar. Selector decides whether to spend a slot on this unique exploratory bet (3/week cap). See [2026-10-31 executive summary](docs/executive-summary-20261031.html) and [run card](evidence/vgfp_run_card_20261031.json).
 - **2026-10-31 experiment 3 (`GSET2`, `verdict: negative` — family duplicate):** [`docs/downloads/gemsdoe92-gset2-30126dots-20261031-1c4879c4-zeros.tif`](docs/downloads/gemsdoe92-gset2-30126dots-20261031-1c4879c4-zeros.tif) measured `0.98–1.00` pre-prune 3-px overlap vs the whole H19-5-corridor family (`0.7987 > 0.70` even after pruning) → **duplicate stop; do not submit**. Deliverable as negative evidence: the `0.2778` family cannot be re-submitted uniquely at a 37k-dot budget ([run card](evidence/gset2_run_card_20261031.json)).
+# Submission status — 2026-10-31 review (`PEEL` lane)
+
+## 🟡 DOWNLOAD OK · NOT PROMOTED to a weekly slot (`0` slots used, 3/3 experiments spent)
+
+- **Candidate:** [`docs/downloads/gemsdoe92-peel-scarpalt-37654-20261031-zeros.tif`](docs/downloads/gemsdoe92-peel-scarpalt-37654-20261031-zeros.tif)
+  (`SHA-256 = c0707d441484c77e064949faa9703f1f2883c594111162dd259dc46c3f3bde28`, `37,654` binary dots, `140,108` bytes, single-band `float32`, `EPSG:32611`, `3730×3292`, **0 NaN/Inf, all values in `[0,1]`**, 0 positives on the mapped catalogue, 15/15 local gates).
+- **Why it is downloadable:** it is the only artifact in this repository that is simultaneously format-valid, **unique against the nine focus sites and this repo**
+  (max 3 px overlap with any of the nine focus-site peaks `41.2%`, with `lbmc1` `14.1%`; **registry-wide `77.5%` against one prior raster — reported, not hidden**, see §4), and measured better than the incumbent's construction
+  (`HOLDOUT-DTI 0.152717` `[0.134419, 0.170703]` vs `R0 recipe 0.097493`, paired `+0.055224` `[+0.041136, +0.068914]`).
+- **Why it is not promoted:** `0.152717 < 0.184485` (archived all-time holdout best, same instrument), and no organizer receipt exists for any score in this repository.
+- **Estimate (MODEL, not a score):** `0.333–0.435` from two admissible one-anchor mappings off `HOLDOUT 0.097493 ↔ CLAIM 0.2778`.
+- **New measured finding:** all nine focus sites (`GEMSDOE24/25/27/28/30/31/32/33/36`) are **duplicates of each other** under the owner's own 70%/3 px rule — see [nine-site overlap](evidence/peel_nine_site_overlap_20261031.json) and the [executive summary](docs/executive-summary-20261031-peel.html).
+# Submission status — 2026-10-31 review (`H-92M MDC`, three experiments, `0` weekly slots)
+
+## ⚠️ ONE UNIQUE TIF WAS GENERATED TODAY — OK TO DOWNLOAD; NOT CLEARED FOR A SCORING SLOT
+
+* **File:** [`docs/downloads/gemsdoe92-mdc-additive-59654dots-20261031T011104Z-mdcv1-zeros.tif`](docs/downloads/gemsdoe92-mdc-additive-59654dots-20261031T011104Z-mdcv1-zeros.tif)
+  · [single-TIFF `.zip`](docs/downloads/gemsdoe92-mdc-additive-59654dots-20261031T011104Z-mdcv1-zeros.zip)
+  · [writer receipt JSON (portal name + 140-char note)](docs/downloads/gemsdoe92-mdc-additive-59654dots-20261031T011104Z-mdcv1-zeros.json)
+  · [byte-bound run card](evidence/mdc_run_card_20261031.json)
+* **SHA-256** `ad844bbe247ae2883483374218f3ba3eaf1f73e28063b6f324a2b72778d0aa6e` · `187,358` B · `59,654` binary `{0.0,1.0}` dots (`37,654` retained parent dots + `22,000` new `H-92M` dots) · 1-band `float32` · `EPSG:32611` · `3730×3292` · transform identical to `sample_submission.tif` · `0` NaN anywhere, all values in `[0,1]`, zeros outside the footprint → **`11/11` format gates PASS, so the portal range error cannot recur**.
+* **Machine verdict:** `RESEARCH_ONLY_NOT_CLEARED` (`docs/downloads/current_submission.json`, `docs/downloads/readiness.json`). Passing gates: format `11/11`; leakage canaries max symmetric AUC `0.6228 ≤ 0.90` (`evidence/mdc_e1_canaries_20261031.json`). Failing gates: `HOLDOUT-DTI` of the new mechanism `0.067590 [0.055534, 0.080305]` is **below** the same-instrument control `control_H19_5 = 0.096748` (paired Δ `−0.029157 [−0.045528, −0.012943]`), and the registry uniqueness ladder is marginal-to-fail (PI-2 symmetric Tversky worst `0.7025 > 0.70`; PI-1 one-sided worst `0.8608 > 0.70`).
+* **Scientific finding worth keeping:** the added-dot decision is break-even at a ~10 % hit rate of new dots and `+0.046` at 20 % (MODEL sensitivity table in the run card). Because the fleet has already published `2,350` unique rasters over the same area, the residual *undiscovered-by-others* ground is precisely where the evidence is weakest — so the next attempt must raise detector precision, not re-arrange dots.
+* **Focus-nine answer:** every one of the nine requested sites' best rasters is a byte-identical copy also served by other repositories (up to `17` mirrors), so **none is unique and none should be re-submitted**; the highest supplied claim among the nine is `GEMSDOE32 = 0.2778 CLAIM`. Full table: **[docs/EXEC_SUMMARY_20261031.html](docs/EXEC_SUMMARY_20261031.html)**.
 
 ---
 

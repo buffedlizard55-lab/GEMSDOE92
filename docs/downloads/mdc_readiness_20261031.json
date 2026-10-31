@@ -1,0 +1,24 @@
+{
+  "schema": "gemsdoe92-readiness-v2",
+  "generated_utc": "2026-10-31T01:11:05.784430+00:00",
+  "ready_to_submit": false,
+  "submission_eligible": false,
+  "verdict": "negative",
+  "blockers": [
+    "HOLDOUT-DTI of the new mechanism is below the same-instrument control (paired delta -0.029157 [-0.045528, -0.012943])",
+    "PI-2 symmetric Tversky unique (False)",
+    "PI-1 one-sided unique (False)"
+  ],
+  "blocking_reasons": [
+    "HOLDOUT-DTI of the new mechanism is below the same-instrument control (paired delta -0.029157 [-0.045528, -0.012943])",
+    "PI-2 symmetric Tversky unique (False)",
+    "PI-1 one-sided unique (False)"
+  ],
+  "file": "gemsdoe92-mdc-additive-59654dots-20261031T011104Z-mdcv1-zeros.tif",
+  "n_dots": 59654,
+  "registry_rasters": 2350,
+  "parent_claim_receipt": {
+    "score_claim": 0.2778,
+    "receipt": null
+  }
+}

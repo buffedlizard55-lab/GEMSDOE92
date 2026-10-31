@@ -1,0 +1,111 @@
+{
+ "schema": "gemsdoe92-peel-features-v1",
+ "evidence_class": "LOCAL-COMPUTATION on public mirrored float/uint8 rasters",
+ "catalogue_derived_columns": [],
+ "note": "No column is a function of existing_faults/labels. Rank/contrast rescaling only; no label information enters.",
+ "n_cells": 5167373,
+ "n_features": 44,
+ "names": [
+  "rad_K",
+  "rad_Th",
+  "rad_U",
+  "rad_TC",
+  "enh_ThK",
+  "enh_UK",
+  "enh_UTh",
+  "mag_TMI_up150",
+  "sc_ex_max",
+  "sc_ex_mean",
+  "sc_step_max",
+  "sc_lapneg_max",
+  "sc_lappos_max",
+  "sc_downface_max",
+  "sc_upface_max",
+  "sc_cross_max",
+  "sc_relief",
+  "sc_coh100",
+  "sc_strike",
+  "sc_valid",
+  "tp_slope_p90",
+  "tp_slope_max",
+  "tp_steep_frac",
+  "tp_slope_std",
+  "tp_relief_local",
+  "tp_curv_prof_absmax",
+  "tp_aspect_coh",
+  "tp_hs_lineament",
+  "tp_dem_mean",
+  "chi_chan_n",
+  "chi_knick_n",
+  "chi_raised_n",
+  "chi_valid_n",
+  "sgmc_fault",
+  "sgmc_dist",
+  "road_dist_log",
+  "sc_step_max_m3",
+  "sc_lapneg_max_m3",
+  "tp_hs_lineament_m3",
+  "mag_TMI_up150_m3",
+  "sc_step_max_m9",
+  "sc_lapneg_max_m9",
+  "tp_hs_lineament_m9",
+  "mag_TMI_up150_m9"
+ ],
+ "X_sha256": "e19c86cd4eaabe8f4852b3388e11a7fca8898b258f1efc119976bc81d1be9e80",
+ "inputs": {
+  "buffedlizard55-lab/GEMSDOE24:data/external/geodawn_rad_u8.tif": {
+   "local": ".cache/inputs/geodawn_rad_u8.tif",
+   "sha256": "c22420f75999030d7cc65c9e31e50d232ea6158423bca051613a18a8b20ba682",
+   "bands": 4,
+   "min": 0,
+   "max": 255
+  },
+  "buffedlizard55-lab/GEMSDOE24:data/external/geodawn_extensions_u8.tif": {
+   "local": ".cache/inputs/geodawn_extensions_u8.tif",
+   "sha256": "a35a9c6d2a14786f4dab85481ee59769213072f5dab5b2535ea82ae4d9bb7d9b",
+   "bands": 4,
+   "min": 0,
+   "max": 255
+  },
+  "buffedlizard55-lab/GEMSDOE24:data/external/lidar_scarp_features_u8.tif": {
+   "local": ".cache/inputs/lidar_scarp_features_u8.tif",
+   "sha256": "d580bb8bdcdb941e32fefb8b38044bc5bf04e199bf2e83498c3576e6fc465568",
+   "bands": 12,
+   "min": 0,
+   "max": 255
+  },
+  "buffedlizard55-lab/60GEMSDOE:data/external/topo_10m_derived_100m_u8.tif": {
+   "local": ".cache/inputs/topo_10m_derived_100m_u8.tif",
+   "sha256": "a6398d9950965dec6aae6ccecdaa6ced48645d133eab222cbdd11def9bdabfa4",
+   "bands": 9,
+   "min": 0,
+   "max": 255
+  },
+  "buffedlizard55-lab/60GEMSDOE:data/external/dem10_chi_100m_u8.tif": {
+   "local": ".cache/inputs/dem10_chi_100m_u8.tif",
+   "sha256": "e8830ba6f0bb99f525266b1b3a483b0722d25cd4758c2bbccc6e7f54eb6b1b6a",
+   "bands": 4,
+   "min": 0,
+   "max": 255
+  },
+  "buffedlizard55-lab/GEMSDOE24:data/external/audit_sources/tiger_road_distance_m.tif": {
+   "local": ".cache/inputs/tiger_road_distance_m.tif",
+   "sha256": "e5350423508968fa2d32b0a6ae0d3fb4ae3ea645e3b8736f0c8e7ad9ff2f2988",
+   "bands": 1,
+   "min": 0,
+   "max": 255
+  },
+  "buffedlizard55-lab/GEMSDOE24:data/external/derived_sgmc_faults_100m_u8.tif": {
+   "local": ".cache/inputs/derived_sgmc_faults_100m_u8.tif",
+   "sha256": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0",
+   "bands": 1,
+   "min": 0,
+   "max": 255
+  }
+ },
+ "footprint_cells": 5167373,
+ "shape": [
+  3730,
+  3292
+ ]
+}
