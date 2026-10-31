@@ -26,7 +26,7 @@
 3. Verify official source provenance and redistribution rights. Current byte/hash receipts establish identity against owner-maintained GitHub mirrors only.
 4. If a future experiment is separately authorized, reuse cached features, shared holdout evaluator and writer; use whole buffered fault-segment holdout, visible-only catalogue features, exact visible-fault masking, pooled DTI `α=0.2`, `β=0.8`, and a 300 m triangular kernel; run feature-alone leakage canaries (AUC `>0.90` is a stop); re-audit uniqueness on the surface before placement and final dots; emit a complete JSON run card; stop at three experiments or two hours. Negative results remain deliverables.
 5. A weekly slot is separate. Do not spend one unless the paired holdout decision rule and every data, format, provenance, and both-stage uniqueness gate pass. Portal upload remains outside the automated validation workflow.
-6. Complete the requested PR/review delivery sequence. The review record does not imply that a PR has been opened or merged; update this file with an explicit PR number/status after that action.
+6. Delivery: [PR #191 is open](https://github.com/buffedlizard55-lab/GEMSDOE92/pull/191) from `arena/d24f0f39-gemsdoe92`. The three review passes and PR opening are complete; the PR has not been merged. Keep merge/approval separate from this review unless explicitly requested.
 
 Key receipts and pages: [current status feed](downloads/current_submission.json) · [readiness feed](downloads/readiness.json) · [Focus-9 exact-hash receipt](downloads/focus9_registry_20261030.json) · [fresh LIDAR final-dot receipt](downloads/lidarsintervalve_registry_20261030.json) · [full three-pass review](REVIEW_20261030_REPOSITORY.md) · [Focus-9 page](focus9-review-20261030.html).
 

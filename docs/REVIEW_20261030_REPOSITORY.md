@@ -1,6 +1,6 @@
 # 2026-10-30 Three-Pass Repository & Focus-9 Review
 
-**Decision: `OK TO DOWNLOAD FOR RESEARCH ONLY` · `DO NOT SUBMIT`.** No new TIFF, geological experiment, or holdout was produced in this review; no competition slot was used. This is an evidence and publication review, not a competition-score verification or organizer decision.
+**Decision: `OK TO DOWNLOAD FOR RESEARCH ONLY` · `DO NOT SUBMIT`.** No new TIFF, geological experiment, or holdout was produced in this review; no competition slot was used. This is an evidence and publication review, not a competition-score verification or organizer decision. The three review passes are complete and [PR #191 is open](https://github.com/buffedlizard55-lab/GEMSDOE92/pull/191) from `arena/d24f0f39-gemsdoe92`; it has not been merged.
 
 ## Executive summary
 
