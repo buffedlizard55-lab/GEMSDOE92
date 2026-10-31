@@ -1,0 +1,35 @@
+{
+ "schema": "gemsdoe92-peel-release-v1",
+ "target": 0.55,
+ "limit": 0.7,
+ "budget_before": 25754,
+ "dots_released": 8616,
+ "sha256": "7a70cc3f0aba10a9483f3fecbe6781211433d2aff859ff93348d9f3cf94ded7f",
+ "worst_sparse_overlap": 0.76869,
+ "worst_raster": {
+  "repo": "buffedlizard55-lab/58GEMSDOE",
+  "path": "docs/downloads/gems58-mece-hybrid-20261011T015838Z-513210e2-zeros.tif"
+ },
+ "rasters_compared": 1821,
+ "history": [
+  {
+   "iteration": 0,
+   "worst_raster": "buffedlizard55-lab/GEMSDOE48/docs/downloads/diagnostics/GEMSDOE48-H57-ds-relief-augmented-20261007-e6b785718c07-diag-plausibility.tif",
+   "fraction_before": 0.73565,
+   "dropped": 10627,
+   "dots_left": 15127
+  },
+  {
+   "iteration": 1,
+   "worst_raster": "buffedlizard55-lab/61GEMSDOE/docs/downloads/gems61-lane-buried-step-gravinversion-hgm-r3-k400k-b2zeros.tif",
+   "fraction_before": 0.74364,
+   "dropped": 6511,
+   "dots_left": 8616
+  }
+ ],
+ "all_checks_passed": true,
+ "submission_name": "gemsdoe92-peel-scarpalt-20261031-pi1",
+ "note": "PEEL 44-band catalogue-free scarp x alteration model; d_cat>2 collar, 8616 dots @2.8px; PI-1 capped at 0.55 of 1853 public rasters",
+ "note_chars": 130,
+ "candidate": "docs/downloads/gemsdoe92-peel-scarpalt-20261031-pi1-zeros.tif"
+}

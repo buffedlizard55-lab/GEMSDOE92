@@ -1,0 +1,144 @@
+{
+  "schema": "gemsdoe92-mdc-e1-canaries-v1",
+  "experiment_id": "E1",
+  "generated_utc": "2026-10-31T00:54:32.540321+00:00",
+  "evaluator_version": "gems57-pooled-hide-v2",
+  "seeds": [
+    20,
+    30
+  ],
+  "n_features_tested": 10,
+  "max_symmetric_auc": 0.622798,
+  "worst": {
+    "seed": 20,
+    "feature": "mdc_aspect_coherence",
+    "auc": 0.622798,
+    "symmetric_auc": 0.622798
+  },
+  "leakage_flag": false,
+  "gate_pass": true,
+  "threshold": 0.9,
+  "canaries": [
+    {
+      "seed": 20,
+      "feature": "mdc_relief_inefficiency",
+      "auc": 0.478944,
+      "symmetric_auc": 0.521056
+    },
+    {
+      "seed": 20,
+      "feature": "mdc_relief_alongstrike_grad",
+      "auc": 0.558918,
+      "symmetric_auc": 0.558918
+    },
+    {
+      "seed": 20,
+      "feature": "mdc_front_sinuosity_deficit",
+      "auc": 0.443102,
+      "symmetric_auc": 0.556898
+    },
+    {
+      "seed": 20,
+      "feature": "mdc_aspect_coherence",
+      "auc": 0.622798,
+      "symmetric_auc": 0.622798
+    },
+    {
+      "seed": 20,
+      "feature": "mdc_basement_step_across_front",
+      "auc": 0.576614,
+      "symmetric_auc": 0.576614
+    },
+    {
+      "seed": 20,
+      "feature": "mdc_potential_edge_energy",
+      "auc": 0.507726,
+      "symmetric_auc": 0.507726
+    },
+    {
+      "seed": 20,
+      "feature": "mdc_topo_blind_ratio",
+      "auc": 0.466435,
+      "symmetric_auc": 0.533565
+    },
+    {
+      "seed": 20,
+      "feature": "mdc_extension_dilatation",
+      "auc": 0.491142,
+      "symmetric_auc": 0.508858
+    },
+    {
+      "seed": 20,
+      "feature": "mdc_composite_S",
+      "auc": 0.509704,
+      "symmetric_auc": 0.509704
+    },
+    {
+      "seed": 20,
+      "feature": "mdc_crest_indicator",
+      "auc": 0.500331,
+      "symmetric_auc": 0.500331
+    },
+    {
+      "seed": 30,
+      "feature": "mdc_relief_inefficiency",
+      "auc": 0.446726,
+      "symmetric_auc": 0.553274
+    },
+    {
+      "seed": 30,
+      "feature": "mdc_relief_alongstrike_grad",
+      "auc": 0.569545,
+      "symmetric_auc": 0.569545
+    },
+    {
+      "seed": 30,
+      "feature": "mdc_front_sinuosity_deficit",
+      "auc": 0.426337,
+      "symmetric_auc": 0.573663
+    },
+    {
+      "seed": 30,
+      "feature": "mdc_aspect_coherence",
+      "auc": 0.61156,
+      "symmetric_auc": 0.61156
+    },
+    {
+      "seed": 30,
+      "feature": "mdc_basement_step_across_front",
+      "auc": 0.594039,
+      "symmetric_auc": 0.594039
+    },
+    {
+      "seed": 30,
+      "feature": "mdc_potential_edge_energy",
+      "auc": 0.52095,
+      "symmetric_auc": 0.52095
+    },
+    {
+      "seed": 30,
+      "feature": "mdc_topo_blind_ratio",
+      "auc": 0.506252,
+      "symmetric_auc": 0.506252
+    },
+    {
+      "seed": 30,
+      "feature": "mdc_extension_dilatation",
+      "auc": 0.475879,
+      "symmetric_auc": 0.524121
+    },
+    {
+      "seed": 30,
+      "feature": "mdc_composite_S",
+      "auc": 0.528711,
+      "symmetric_auc": 0.528711
+    },
+    {
+      "seed": 30,
+      "feature": "mdc_crest_indicator",
+      "auc": 0.498876,
+      "symmetric_auc": 0.501124
+    }
+  ],
+  "runtime_s": 7.2
+}

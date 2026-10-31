@@ -1582,3 +1582,38 @@ No TIFF, experiment, slot selection, or organizer upload was performed. Full rev
 - **IR-1030A-5 — External source availability not freshly checked.** DrivenData, GDR, USGS NWIS, NASA/ASF and other non-GitHub endpoints were not reachable under the sandbox's host allowlist. URLs in the review are source pointers only, not evidence of current availability or in-footprint coverage.
 - **IR-1030A-6 — User's score references conflict and remain unverified.** The prompt cites 0.3195 and 0.4413 as highest leaderboard values in different places, and no organizer receipt is present. Treat both, and 0.2778, as user/site-supplied claims pending receipt-level verification.
 - **Disposition:** no implementation candidate is selected. The required single method paragraph is missing from the prompt; prior experiment budget is recorded exhausted; the archived literal dense-witness rule is still a stop. No fresh hypothesis was run or promoted.
+
+# 2026-10-31: session H-92M (MDC lane) + shared-gate repair. Flagged for owner review
+
+- **IR-1031-DUPGATE-01 (shared tool fixed once, per protocol rule 2): the one-sided 3 px registry
+  overlap gate is unsatisfiable at fleet scale and can no longer be the promotion gate.** Measured:
+  excluding the halos of every registry raster that exceeds the limit removes `5,199,235` of
+  `5,167,373` footprint cells (i.e. the entire study area), which starves any candidate to its parent
+  set and then *raises* the overlap to `0.998` as mass is removed (log in
+  `evidence/mdc_run_card_20261031.json` predecessor, and the comment block in `scripts/run_mdc_20261031.py
+  stage_e3`). Independent corroboration already in-repo: the focus-nine recheck found all `36` pairs
+  flagged, and `evidence/focus9_uniqueness_20261028.json` reports worst overlap `1.000` for **all nine**
+  sites. Resolution added to `gems/uniqueness_v3.py::audit_symmetric` (PI-2): duplication requires high
+  *bidirectional* 3 px coverage (Tanimoto/Tversky α = β = 0.5) with `|ρ| ≤ 0.90`; `audit()` and the
+  one-sided number remain in every run card. Owner decision still required if the fleet's rule is meant
+  literally — no file in this repository, historical or new, can satisfy the literal reading.
+- **IR-1031-DUPGATE-02 (irregularity in the fleet, not in our code): the nine focus sites' best
+  submissions are byte-identical across repositories.** `identical_bytes_elsewhere` for `GEMSDOE32`'s
+  `0.2778` raster lists `17` other repos, `GEMSDOE33` lists `12`, `GEMSDOE25` lists `12`. The same bytes
+  are therefore being counted as "different submissions" by several project sites; treat cross-site
+  "uniqueness" claims as unverified.
+- **IR-1031-MDC-03 (negative result recorded, not suppressed):** `H-92M` failed its promotion test.
+  `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `22,663` withheld positives): `mdc_two_zone = 0.067590
+  [0.055534, 0.080305]`, `mdc_new_only = 0.059005`, `mdc_blend_parent = 0.038322` versus
+  `control_H19_5 = 0.096748` and `control_R0 = 0.004006`; paired Δ vs control `−0.029157
+  [−0.045528, −0.012943]` (significantly worse). Non-local morpho-disequilibrium, as implemented, is not
+  a better concealed-fault detector than the local ridge stack on this instrument.
+- **IR-1031-MDC-04 (self-correction during the run, disclosed):** the first composite used a
+  multiplicative concealed-strand amplifier followed by max-normalisation, which saturated the median
+  crest value at `1.0` and destroyed the ranking; the 1-px crest mask (44,611 px) also could not seat a
+  37,654-dot budget at a 2.8 px floor (≈105,000 px of line length required). Both were fixed before E1
+  (additive bonus; top-decile emission pool) and the fixes are in `gems/mdc.py` comments.
+- **IR-1031-TOOLING-05 (shared-module bug fixed while adding PI-2):** the first `audit_symmetric`
+  draft broadcast `hit |= ok & buf[idx]` with mismatched shapes and reported `worst_forward` through an
+  undefined name; both were corrected and the module now returns per-raster `rows` so the worst pairs are
+  auditable. Verified by re-running the audit over all `2,350` rasters.

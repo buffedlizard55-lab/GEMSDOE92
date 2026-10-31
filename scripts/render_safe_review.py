@@ -645,7 +645,13 @@ def render(card):
 
     css = 'body{font:16px/1.55 system-ui;color:#18212e;background:#f4f6f8;margin:0}main{max-width:1100px;margin:auto;padding:24px}section{background:white;padding:20px;margin:18px 0;border-radius:8px}.stop{border:3px solid #b91c1c;background:#fff4f3}.btn{display:inline-block;background:#1d4ed8;color:#fff!important;padding:9px 14px;border-radius:7px;font-weight:700;text-decoration:none;margin:4px 6px 4px 0}table{width:100%;border-collapse:collapse}td,th{padding:10px;border-bottom:1px solid #ccd5df;text-align:left;vertical-align:top}code{overflow-wrap:anywhere}a{color:#124ec0}@media(max-width:700px){table{display:block;overflow:auto}}'
     def page(title, content):
-        prefix = '<aside>Current review: DO NOT SUBMIT · <a href="' + ('docs/' if title == 'GEMSDOE92' else '') + 'REVIEW_20261030_ARENA.md"><strong>2026-10-30 focus-nine review &amp; score/uniqueness table</strong></a> · <a href="' + ('docs/' if title == 'GEMSDOE92' else '') + 'review-47314b7f.html">Independent review</a></aside><details data-status-archive="true"><summary>Earlier independent review</summary><p>See linked review; historical clearance is superseded.</p></details>'
+        pfx = ('docs/' if title == 'GEMSDOE92' else '')
+        prefix = ('<aside><strong>2026-10-31 — PEEL lane:</strong> '
+                  + '<a href="' + pfx + 'executive-summary-20261031-peel.html"><strong>executive summary, download link, score estimate and nine-site uniqueness measurements</strong></a>'
+                  + ' · <a href="' + pfx + 'downloads/gemsdoe92-peel-scarpalt-37654-20261031-zeros.tif" download>download the PEEL GeoTIFF</a>'
+                  + ' (format-valid and unique; not promoted to a weekly slot).</aside>'
+                  + '<aside>Current review: DO NOT SUBMIT · <a href="' + pfx + 'REVIEW_20261030_ARENA.md"><strong>2026-10-30 focus-nine review &amp; score/uniqueness table</strong></a> · <a href="' + pfx + 'review-47314b7f.html">Independent review</a></aside>'
+                  + '<details data-status-archive="true"><summary>Earlier independent review</summary><p>See linked review; historical clearance is superseded.</p></details>')
         return f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title><style>{css}</style></head><body><main>{prefix}{content}</main></body></html>\n'
 
     uniqueness = card.get('uniqueness', {})

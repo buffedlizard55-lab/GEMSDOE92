@@ -1,0 +1,333 @@
+{
+ "schema": "gemsdoe92-peel-cap-v1",
+ "cap_fraction": 0.55,
+ "cap_dots": 20709,
+ "budget": 37654,
+ "dots": 25754,
+ "candidate": "docs/downloads/gemsdoe92-peel-scarpalt-37654-20261031-zeros.tif",
+ "sha256": "9f89fb93aee01115b2514ce4e6b249bb3f715c9c87d21c7823bdbc2505b5d646",
+ "capped_rasters": [
+  {
+   "repo": "buffedlizard55-lab/61GEMSDOE",
+   "path": "docs/downloads/gems61-lane-buried-step-gravinversion-hgm-r3-k400k-b2zeros.tif",
+   "sha256": "1ec9ff5fd6a910ae6c86adf943e1f0df700269c0",
+   "overlap_before": 0.7749,
+   "dots_inside": 20709,
+   "overlap_after": 0.80411
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE67",
+   "path": "docs/downloads/gemsdoe67-ovtr-ml-cover-tau3p0-20261012-nan.tif",
+   "sha256": "3e93916f747c6e512467590be42b46a064860d39",
+   "overlap_before": 0.70003,
+   "dots_inside": 20709,
+   "overlap_after": 0.80411
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE67",
+   "path": "docs/downloads/gemsdoe67-ovtr-ml-cover-tau3p0-20261012-zero.tif",
+   "sha256": "221a40c120365a42e36371e0c89a0a2ca21fe5c4",
+   "overlap_before": 0.70003,
+   "dots_inside": 20709,
+   "overlap_after": 0.80411
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/diagnostics/GEMSDOE48-H57-ds-relief-augmented-20261007-e6b785718c07-diag-plausibility.tif",
+   "sha256": "d27383bdc316a4e87913445bc9f178663e711334",
+   "overlap_before": 0.67674,
+   "dots_inside": 20040,
+   "overlap_after": 0.77813
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/diagnostics/GEMSDOE48-H57-ds-relief-augmented-20261007-e6b785718c07-diag-conflict-k.tif",
+   "sha256": "9aa682f254700d9034bfbb136e7a6705cd68a488",
+   "overlap_before": 0.61237,
+   "dots_inside": 16283,
+   "overlap_after": 0.63225
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE4",
+   "path": "data/evidence/union6/submission.tif",
+   "sha256": "2a34fc6e9c05955916586384ae51a6e1b6ecf1d7",
+   "overlap_before": 0.59824,
+   "dots_inside": 16890,
+   "overlap_after": 0.65582
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE4",
+   "path": "data/evidence/union6_loo/drop_classical/submission.tif",
+   "sha256": "3f48a3fb1407088a086462da32e1d9d84a9b03c7",
+   "overlap_before": 0.57845,
+   "dots_inside": 16404,
+   "overlap_after": 0.63695
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE4",
+   "path": "data/evidence/union6_loo/drop_nff45/submission.tif",
+   "sha256": "20ea3ca713841f4e4796a7d355bf90af8893fb8b",
+   "overlap_before": 0.57481,
+   "dots_inside": 16259,
+   "overlap_after": 0.63132
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE30",
+   "path": "docs/downloads/gemsdoe30-edge-hybrid-80k-02845bd4-20261003T234340Z-allfinite.tif",
+   "sha256": "b3773335c38fde0be460a88c4d82eb0eb3fd7619",
+   "overlap_before": 0.57186,
+   "dots_inside": 18047,
+   "overlap_after": 0.70075
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE30",
+   "path": "docs/downloads/gemsdoe30-edge-hybrid-80k-02845bd4-nan.tif",
+   "sha256": "97544b81e5e42a7810a7ace34b9c0cb94d71dc43",
+   "overlap_before": 0.57186,
+   "dots_inside": 18047,
+   "overlap_after": 0.70075
+  },
+  {
+   "repo": "buffedlizard55-lab/12GEMSDOE",
+   "path": "docs/downloads/12GEMSDOE_r7-nms3-dem10-scarp_0c9199f14e62.tif",
+   "sha256": "dd5dffe559c70eca07cd8498cd6c237691af83b3",
+   "overlap_before": 0.56286,
+   "dots_inside": 17549,
+   "overlap_after": 0.68141
+  },
+  {
+   "repo": "buffedlizard55-lab/12GEMSDOE",
+   "path": "docs/downloads/12GEMSDOE_r7-nms3-dem10-scarp_0c9199f14e62_allfinite.tif",
+   "sha256": "1e8dc5e350b90744b681282d0d4c77a8a0136210",
+   "overlap_before": 0.56286,
+   "dots_inside": 17549,
+   "overlap_after": 0.68141
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/diagnostics/gemsdoe48-h48-1-belief_dempster_mF_norm01.tif",
+   "sha256": "57f1a3500d984b4f0e278119a40582246dbedb21",
+   "overlap_before": 0.54658,
+   "dots_inside": 15232,
+   "overlap_after": 0.59144
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/diagnostics/gemsdoe48-h48-1-conflict_K.tif",
+   "sha256": "7a9957394ff7df095628863db84c78b21d1fc2ce",
+   "overlap_before": 0.54658,
+   "dots_inside": 15232,
+   "overlap_after": 0.59144
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/diagnostics/GEMSDOE48-H57-ds-relief-augmented-20261007-e6b785718c07-diag-belief.tif",
+   "sha256": "27dd63998b98f3631b88862012f1692dfbaee991",
+   "overlap_before": 0.54491,
+   "dots_inside": 15298,
+   "overlap_after": 0.594
+  },
+  {
+   "repo": "buffedlizard55-lab/58GEMSDOE",
+   "path": "docs/downloads/gems58-mece-hybrid-20261011T015838Z-513210e2-zeros.tif",
+   "sha256": "ecd95004f9dc68aacfecf70414b9b85b5d876c90",
+   "overlap_before": 0.54286,
+   "dots_inside": 20309,
+   "overlap_after": 0.78858
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE4",
+   "path": "data/evidence/union6_loo/drop_deep11/submission.tif",
+   "sha256": "b1727c4ec04b23840350a272c4387f3b94a5904c",
+   "overlap_before": 0.54257,
+   "dots_inside": 15433,
+   "overlap_after": 0.59925
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/gemsdoe48-ds48-belief.tif",
+   "sha256": "1601f23e9650163a9b53d7187bcc8a9316bad31a",
+   "overlap_before": 0.54127,
+   "dots_inside": 15065,
+   "overlap_after": 0.58496
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/gemsdoe48-ds48-conflict.tif",
+   "sha256": "328ab48aa7e0373c19bafec9296ac0696ccc5c1b",
+   "overlap_before": 0.54127,
+   "dots_inside": 15065,
+   "overlap_after": 0.58496
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/GEMSDOE48-H56-OWDS-B2xH33D-20261007-1f7b5a4f18db-zeros-outside.tif",
+   "sha256": "f6181f27114498f51913e401bd052d61549a6b32",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/GEMSDOE48-H56-ds-belief-dotted-x-tip-20261007-9ec0d605c45b-nan-outside.tif",
+   "sha256": "ab06a5acac1ba63e5b5c702ea87229848a863ac0",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/GEMSDOE48-H56-ds-belief-dotted-x-tip-20261007-9ec0d605c45b-zeros-outside.tif",
+   "sha256": "6130cdd67feb551ebfe621e985e084784b3e6e1d",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/GEMSDOE48-H56B-NF-DS-dotted-x-tip-20261007-5bb2c03c981e-nan-outside.tif",
+   "sha256": "fa2af4d4521de05d5eb8b2a13ce80168c680988b",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/GEMSDOE48-H56B-ds-belief-dotted-x-tip-20261007-126ca59c2801-nan-outside.tif",
+   "sha256": "c5cc9acbedc9fa55f32234746d4bc2f240e6f8c2",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/diagnostics/GEMSDOE48-H53-DS-RadEdge-B2xH33D-20261007-4c01fcf2ad8c-conflict-b2-h33d-K.tif",
+   "sha256": "df7cfed9efbaa39da8f7cd7d797ec494a0e38243",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/diagnostics/GEMSDOE48-H53-DS-RadEdge-B2xH33D-20261007-4c01fcf2ad8c-two-family-dempster-only.tif",
+   "sha256": "8debecdb528dca66f5dcfe22587a715fcbc40b3e",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/diagnostics/GEMSDOE48-H53-DS-RadEdge-B2xH33D-20261007-4c01fcf2ad8c-two-family-naive-mean.tif",
+   "sha256": "403c7f0ecae4a9a996b2dbefd362cfc0f5d067d7",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/diagnostics/GEMSDOE48-H56-OWDS-B2xH33D-20261007-1f7b5a4f18db-belief-raw.tif",
+   "sha256": "40c052a12c8dd7949baea8896a0a0b5d0cd80123",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/diagnostics/GEMSDOE48-H56-OWDS-B2xH33D-20261007-1f7b5a4f18db-conflict-k.tif",
+   "sha256": "34803f13287d583f719588ef83a002ec7d9ba66b",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/diagnostics/gemsdoe48-h54-conflict-K-dedc43dc0167.tif",
+   "sha256": "66c42d7dd9ffd9f04f6abd4567a6bcbd91d23d23",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/diagnostics/gemsdoe48-h55-bel-055da9855353.tif",
+   "sha256": "e3e22f54ee5eab26f8806da9087863a641a9c699",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/diagnostics/gemsdoe48-h55-conflict-055da9855353.tif",
+   "sha256": "bd95c90bf1037a5b82fff322918d6c144b0d0732",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/diagnostics/gemsdoe48-h56-conflict-9ec0d605c45b.tif",
+   "sha256": "fc8620e04544bbd6f62555e873d9bbc91311a573",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/diagnostics/gemsdoe48-h56b-conflict-126ca59c2801.tif",
+   "sha256": "7503b434b6c769d3156d780b15bb432a9c2455c2",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/diagnostics/gemsdoe48-h56b-noflank-conflict-5bb2c03c981e.tif",
+   "sha256": "dc5f1bb2ca050d3d587506105fb36e02f18f2c23",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/diagnostics/gemsdoe48-h59-cover-ds-belief-b2xh33d-diag-belief-normalized-20261008T184547Z.tif",
+   "sha256": "576ad739504dd63e327d5e5bd27eadb79b4d9784",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/diagnostics/gemsdoe48-h59-cover-ds-belief-b2xh33d-diag-conflict-K-20261008T184547Z.tif",
+   "sha256": "76a63a5bb397ce59075f63b09a6d53130a033d07",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/gemsdoe48-h49-ds-conflict-balanced-20261006-belief-field.tif",
+   "sha256": "931188ce84e4923a581fdf3541a1d2b6acac32b0",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE48",
+   "path": "docs/downloads/gemsdoe48-h58-diag-conflict-20261008T175914Z-e58.tif",
+   "sha256": "c360c9547b44940e9d3ff81d0f6cbf01803f0e05",
+   "overlap_before": 0.54005,
+   "dots_inside": 15042,
+   "overlap_after": 0.58406
+  },
+  {
+   "repo": "buffedlizard55-lab/GEMSDOE2",
+   "path": "data/evidence/extension/submission.tif",
+   "sha256": "8580ff86bf9be00f95774cb4c66b0e83b35c414c",
+   "overlap_before": 0.54002,
+   "dots_inside": 17933,
+   "overlap_after": 0.69632
+  }
+ ],
+ "all_checks_passed": true,
+ "note": "released file verified below by peel_uniqueness.py"
+}
