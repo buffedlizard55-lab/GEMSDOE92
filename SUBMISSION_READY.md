@@ -1,3 +1,18 @@
+# Submission status — 2026-10-31 review (`H-92M MDC`, three experiments, `0` weekly slots)
+
+## ⚠️ ONE UNIQUE TIF WAS GENERATED TODAY — OK TO DOWNLOAD; NOT CLEARED FOR A SCORING SLOT
+
+* **File:** [`docs/downloads/gemsdoe92-mdc-additive-59654dots-20261031T011104Z-mdcv1-zeros.tif`](docs/downloads/gemsdoe92-mdc-additive-59654dots-20261031T011104Z-mdcv1-zeros.tif)
+  · [single-TIFF `.zip`](docs/downloads/gemsdoe92-mdc-additive-59654dots-20261031T011104Z-mdcv1-zeros.zip)
+  · [writer receipt JSON (portal name + 140-char note)](docs/downloads/gemsdoe92-mdc-additive-59654dots-20261031T011104Z-mdcv1-zeros.json)
+  · [byte-bound run card](evidence/mdc_run_card_20261031.json)
+* **SHA-256** `ad844bbe247ae2883483374218f3ba3eaf1f73e28063b6f324a2b72778d0aa6e` · `187,358` B · `59,654` binary `{0.0,1.0}` dots (`37,654` retained parent dots + `22,000` new `H-92M` dots) · 1-band `float32` · `EPSG:32611` · `3730×3292` · transform identical to `sample_submission.tif` · `0` NaN anywhere, all values in `[0,1]`, zeros outside the footprint → **`11/11` format gates PASS, so the portal range error cannot recur**.
+* **Machine verdict:** `RESEARCH_ONLY_NOT_CLEARED` (`docs/downloads/current_submission.json`, `docs/downloads/readiness.json`). Passing gates: format `11/11`; leakage canaries max symmetric AUC `0.6228 ≤ 0.90` (`evidence/mdc_e1_canaries_20261031.json`). Failing gates: `HOLDOUT-DTI` of the new mechanism `0.067590 [0.055534, 0.080305]` is **below** the same-instrument control `control_H19_5 = 0.096748` (paired Δ `−0.029157 [−0.045528, −0.012943]`), and the registry uniqueness ladder is marginal-to-fail (PI-2 symmetric Tversky worst `0.7025 > 0.70`; PI-1 one-sided worst `0.8608 > 0.70`).
+* **Scientific finding worth keeping:** the added-dot decision is break-even at a ~10 % hit rate of new dots and `+0.046` at 20 % (MODEL sensitivity table in the run card). Because the fleet has already published `2,350` unique rasters over the same area, the residual *undiscovered-by-others* ground is precisely where the evidence is weakest — so the next attempt must raise detector precision, not re-arrange dots.
+* **Focus-nine answer:** every one of the nine requested sites' best rasters is a byte-identical copy also served by other repositories (up to `17` mirrors), so **none is unique and none should be re-submitted**; the highest supplied claim among the nine is `GEMSDOE32 = 0.2778 CLAIM`. Full table: **[docs/EXEC_SUMMARY_20261031.html](docs/EXEC_SUMMARY_20261031.html)**.
+
+---
+
 # Submission status — 2026-10-29 review (`ADMITRELAY` + `LBM-v3`)
 
 ## ⛔ DO NOT SUBMIT — no candidate is cleared for a weekly competition slot (`submission_eligible: false`, `0` slots spent)
