@@ -1,0 +1,196 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GEMSDOE92 — 2026-10-31 GX Executive Summary (nine focus sites + unique candidate)</title>
+<style>body{font:16px/1.55 system-ui;color:#18212e;background:#f4f6f8;margin:0}main{max-width:1180px;margin:auto;padding:24px}section{background:white;padding:20px;margin:18px 0;border-radius:8px}
+.stop{border:3px solid #b91c1c;background:#fff4f3}.go{border:3px solid #15803d;background:#f2fdf5}
+.btn{display:inline-block;background:#1d4ed8;color:#fff!important;padding:9px 14px;border-radius:7px;font-weight:700;text-decoration:none;margin:4px 6px 4px 0}
+table{width:100%;border-collapse:collapse}td,th{padding:9px;border-bottom:1px solid #ccd5df;text-align:left;vertical-align:top}
+code{overflow-wrap:anywhere}a{color:#124ec0}.small{font-size:13px;color:#4a5768}
+@media(max-width:800px){table{display:block;overflow:auto}}</style></head><body><main>
+
+<h1>2026-10-31 Executive summary — nine focus sites + one new unique candidate (GX lane)</h1>
+<p class="small">Every number below is labelled <code>CLAIM</code> (owner-reported, no organizer receipt), <code>MODEL</code> (calibrated projection), <code>HOLDOUT-DTI</code> (measured by the shared evaluator <code>gems57-pooled-hide-v2</code>) or <code>REGISTRY-MEASUREMENT</code> (measured from raster bytes). A <code>MODEL</code> number is never a score.</p>
+
+<section class="stop">
+<h2>1. Bottom line — what to download, and what not to submit</h2>
+<p><strong>✅ OK TO DOWNLOAD FOR RESEARCH — the new unique file:</strong>
+<a class="btn" href="downloads/gemsdoe92-gx1-50000dots-20261031-zeros.tif" download>⬇ Download GX-1 GeoTIFF (166,360 bytes)</a>
+<a class="btn" href="downloads/gemsdoe92-gx1-50000dots-20261031-zeros.zip" download>⬇ one-TIFF ZIP</a>
+<a href="downloads/gemsdoe92-gx1-50000dots-20261031-zeros-audit.json">format audit</a> ·
+<a href="../evidence/gx_candidate_eval.json">evaluation JSON</a> ·
+<a href="../evidence/gx_holdout.json">holdout JSON</a> ·
+<a href="how-to-submit.html">how to submit</a></p>
+<p><strong>⛔ DO NOT SUBMIT GX-1 to the portal this week.</strong> Three independent reasons, all measured:
+(1) its audited <code>MODEL</code> estimate is <code>0.1782</code> ± <code>0.078</code>, below the best reported focus-site claim (<code>0.2778</code>);
+(2) its fold-proper <code>HOLDOUT-DTI</code> <code>0.1481</code> does not exceed this repository's all-time best (<code>relay_conduit = 0.184485</code>);
+(3) under the literal reading of the internal duplicate rule it collides with 39 dense full-support registry rasters (max overlap <code>1.000</code> &gt; 0.70) — see §5.
+<strong>Nothing among the nine focus sites is clearable either</strong> (§2): all nine are near-copies of one lineage and every one of them has already been submitted by its owner.</p>
+<table>
+<tr><th>File</th><td><code>gemsdoe92-gx1-50000dots-20261031-zeros.tif</code> · SHA-256 <code>aa137eb40e07153179116cd8a4baa6294e7ea3791dc5c72f505e159ec40b052e</code></td></tr>
+<tr><th>Format gates</th><td>1 band <code>float32</code>, <code>EPSG:32611</code>, <code>3730×3292</code>, transform <code>(100, 0, 243350, 0, -100, 4508550)</code>, <code>50,000</code> dots of value <code>1.0</code>, <code>0.0</code> outside the footprint, <strong>0 NaN / 0 Inf</strong>, min <code>0.0</code> max <code>1.0</code> — so the portal error <em>“Predicted values must be in range [0, 1]”</em> cannot occur. <code>PASS</code> on the shared <code>gems57.gates</code> template/range check.</td></tr>
+<tr><th>Hypothesis</th><td>Fault-appearance model on <strong>externally sourced public layers only</strong> (1 m-lidar scarp operators, GeoDAWN K/Th/U/TC + ratios + TMI, USGS SGMC faults, GDR thermal indicators). No other submission's raster is read for placement, so the file is not a copy of a previous submission.</td></tr>
+<tr><th>Measured win</th><td>Fold-proper <code>HOLDOUT-DTI</code> <strong>0.1481</strong> 95% CI <code>[0.1303, 0.1675]</code> vs the R0 recipe control <strong>0.0978</strong> <code>[0.0859, 0.1108]</code> (the recipe that produced the 0.2778 lineage): paired difference <strong>+0.0503</strong> <code>[+0.0368, +0.0627]</code> on identical masks; random-dot control <code>0.0491</code>.</td></tr>
+<tr><th>Uniqueness</th><td>2,096-SHA public registry: worst <code>dot_field</code> 3-px overlap <strong>0.6948 ≤ 0.70</strong> (0 of 1,903 dot fields above the limit), worst <code>continuous_surface</code> <code>0.539</code>, max |Spearman| <code>0.253 ≤ 0.90</code>; overlap vs each of the nine focus files <code>0.345–0.412</code>. Literal dense-lattice reading: <code>1.000</code> &gt; 0.70 against 39 rasters whose dot support exceeds 150,000 px (policy gap, §5).</td></tr>
+<tr><th>Archive name / note</th><td><code>gemsdoe92-gx1-extlayers-scarp-20261031</code> · note (<code>140/140</code>): <code>GX: 47-layer external scarp/radiometric/magnetic/thermal model refit per holdout draw; dots >2 px off-catalogue; beats R0 recipe on holdout.</code></td></tr>
+</table>
+</section>
+
+<section>
+<h2>2. Nine focus sites — best file per site, estimated score, uniqueness</h2>
+<p>Overlap columns are byte-level measurements (<code>REGISTRY-MEASUREMENT</code>, <code>evidence/nine_site_byte_check_20261030.json</code>): “share of this file's dots within 3 px of the other site's dots”. The internal duplicate line is 0.70. A matched random dot field scores <code>0.151</code>, which is what genuine independence looks like.</p>
+<table>
+<tr><th>Site</th><th>Best file to download</th><th>Reported score</th><th>Estimated score</th><th>Unique vs the other eight?</th><th>Overlap vs GX-1</th><th>OK to submit?</th></tr>
+<tr>
+<td><strong>GEMSDOE24</strong><br><a href="https://buffedlizard55-lab.github.io/GEMSDOE24/">owner page</a></td>
+<td><code>gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif</code><br><span class="small">SHA-256 <code>68d0e2e4fcc5…</code> · 60,069 dots</span></td>
+<td><strong>0.2477</strong> <code>CLAIM</code></td>
+<td><code>0.163</code> ± <code>0.078</code> <code>MODEL</code></td>
+<td><strong>NO</strong> — 0.885–1.000 of its dots within 3 px of another listed site (random baseline 0.151)</td>
+<td>vs GX-1: 0.406</td>
+<td>Research only · <strong>NO</strong></td>
+</tr>
+<tr>
+<td><strong>GEMSDOE25</strong><br><a href="https://buffedlizard55-lab.github.io/GEMSDOE25/">owner page</a></td>
+<td><code>gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif</code><br><span class="small">SHA-256 <code>91eae1ca42ec…</code> · 44,090 dots</span></td>
+<td><strong>0.2600</strong> <code>CLAIM</code></td>
+<td><code>0.138</code> ± <code>0.078</code> <code>MODEL</code></td>
+<td><strong>NO</strong> — 0.882–1.000 of its dots within 3 px of another listed site (random baseline 0.151)</td>
+<td>vs GX-1: 0.392</td>
+<td>Research only · <strong>NO</strong></td>
+</tr>
+<tr>
+<td><strong>GEMSDOE27</strong><br><a href="https://buffedlizard55-lab.github.io/GEMSDOE27/">owner page</a></td>
+<td><code>gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif</code><br><span class="small">SHA-256 <code>33003374335d…</code> · 61,328 dots</span></td>
+<td><strong>0.2449</strong> <code>CLAIM</code></td>
+<td><code>0.165</code> ± <code>0.078</code> <code>MODEL</code></td>
+<td><strong>NO</strong> — 0.867–0.980 of its dots within 3 px of another listed site (random baseline 0.151)</td>
+<td>vs GX-1: 0.412</td>
+<td>Research only · <strong>NO</strong></td>
+</tr>
+<tr>
+<td><strong>GEMSDOE28</strong><br><a href="https://buffedlizard55-lab.github.io/GEMSDOE28/">owner page</a></td>
+<td><code>gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif</code><br><span class="small">SHA-256 <code>5556aa1438fd…</code> · 37,660 dots</span></td>
+<td><strong>0.2710</strong> <code>CLAIM</code></td>
+<td><code>0.189</code> ± <code>0.078</code> <code>MODEL</code></td>
+<td><strong>NO</strong> — 0.955–1.000 of its dots within 3 px of another listed site (random baseline 0.151)</td>
+<td>vs GX-1: 0.363</td>
+<td>Research only · <strong>NO</strong></td>
+</tr>
+<tr>
+<td><strong>GEMSDOE30</strong><br><a href="https://buffedlizard55-lab.github.io/GEMSDOE30/">owner page</a></td>
+<td><code>gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif</code><br><span class="small">SHA-256 <code>8cf893ead566…</code> · 44,090 dots</span></td>
+<td><strong>0.2600</strong> <code>CLAIM</code></td>
+<td><code>0.138</code> ± <code>0.078</code> <code>MODEL</code></td>
+<td><strong>NO</strong> — 0.882–1.000 of its dots within 3 px of another listed site (random baseline 0.151)</td>
+<td>vs GX-1: n/a (dot-identical to GEMSDOE25)</td>
+<td>Research only · <strong>NO</strong></td>
+</tr>
+<tr>
+<td><strong>GEMSDOE31</strong><br><a href="https://buffedlizard55-lab.github.io/GEMSDOE31/docs/">owner page</a></td>
+<td><code>gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif</code><br><span class="small">SHA-256 <code>07b6db440535…</code> · 40,199 dots</span></td>
+<td><strong>0.2708</strong> <code>CLAIM</code></td>
+<td><code>0.195</code> ± <code>0.078</code> <code>MODEL</code></td>
+<td><strong>NO</strong> — 0.954–1.000 of its dots within 3 px of another listed site (random baseline 0.151)</td>
+<td>vs GX-1: 0.367</td>
+<td>Research only · <strong>NO</strong></td>
+</tr>
+<tr>
+<td><strong>GEMSDOE32</strong><br><a href="https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html">owner page</a></td>
+<td><code>gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif</code><br><span class="small">SHA-256 <code>c55bafc47005…</code> · 37,654 dots</span></td>
+<td><strong>0.2778</strong> <code>CLAIM</code></td>
+<td><code>0.251</code> ± <code>0.078</code> <code>MODEL</code></td>
+<td><strong>NO</strong> — 0.999–1.000 of its dots within 3 px of another listed site (random baseline 0.151)</td>
+<td>vs GX-1: 0.345</td>
+<td>Research only · <strong>NO</strong></td>
+</tr>
+<tr>
+<td><strong>GEMSDOE33</strong><br><a href="https://buffedlizard55-lab.github.io/GEMSDOE33/">owner page</a></td>
+<td><code>GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif</code><br><span class="small">SHA-256 <code>87f857d505e2…</code> · 41,865 dots</span></td>
+<td><strong>0.2632</strong> <code>CLAIM</code></td>
+<td><code>0.172</code> ± <code>0.078</code> <code>MODEL</code></td>
+<td><strong>NO</strong> — 0.926–0.997 of its dots within 3 px of another listed site (random baseline 0.151)</td>
+<td>vs GX-1: 0.378</td>
+<td>Research only · <strong>NO</strong></td>
+</tr>
+<tr>
+<td><strong>GEMSDOE36</strong><br><a href="https://buffedlizard55-lab.github.io/GEMSDOE36/docs/">owner page</a></td>
+<td><code>gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif</code><br><span class="small">SHA-256 <code>e15891020b9c…</code> · 38,854 dots</span></td>
+<td><strong>0.2750</strong> <code>CLAIM</code></td>
+<td><code>0.247</code> ± <code>0.078</code> <code>MODEL</code></td>
+<td><strong>NO</strong> — 0.973–0.976 of its dots within 3 px of another listed site (random baseline 0.151)</td>
+<td>vs GX-1: 0.352</td>
+<td>Research only · <strong>NO</strong></td>
+</tr>
+</table>
+<p class="small"><strong>Estimated-score column.</strong> <code>MODEL</code>: the repository's audited ridge estimator (logit DTI on four measurable structural statistics; <code>loo_rmse = 0.0722</code>, leave-group-out <code>0.0775</code>, <code>valid_leaderboard_prediction = false</code>) applied to that file's own statistics. It is fitted to owner-reported <code>CLAIM</code>s, so it inherits their error, and it under-predicts the top of the H19-5 lineage by ~0.03. Use it for ordering, not for reporting.</p>
+<p><strong>Answer to “which one should we submit?”: none of the nine.</strong> GEMSDOE32 is the highest reported (<code>0.2778 CLAIM</code>) and its owner has already submitted it; resubmitting an identical file spends a weekly slot for zero information. GEMSDOE25 and GEMSDOE30 are byte-different encodings of the <em>same</em> 44,090-dot set (<code>REGISTRY-MEASUREMENT</code>).</p>
+</section>
+
+<section>
+<h2>3. Why <code>h33-h33-2-b2</code> scores 0.2778 — the metric algebra, not a story</h2>
+<p>With the official metric (<code>α = 0.2</code>, <code>β = 0.8</code>, 300 m triangular kernel; transcribed in <code>vendor/gems57/metric.py</code>) and writing <code>T</code> = covered truth credit, <code>M</code> = dot self-credit, <code>n</code> = dot count, <code>K</code> = truth mass:</p>
+<p class="small"><code>DTI = T / ( α(T + n − M) + βK )</code>. The denominator does <em>not</em> collapse to <code>αn + βK</code> — the shared template's own docstring flags that shortcut as valid only when <code>T == M</code>.</p>
+<p>The five lineage claims form a subset chain (<code>d2.8 &#8839; h27-4 &#8839; h33</code>: 44,090 &#8594; 40,199 &#8594; 37,654 dots, verified by byte check). The three claims identify <code>T</code> from their <em>differences</em> alone, with no assumption about <code>K</code> or <code>M</code>: <code>T &#8776; 5,073</code> (d2.8&#8594;h27-4), <code>5,223</code> (d2.8&#8594;h33), <code>5,470</code> (h27-4&#8594;h33) &#8212; and the spread is itself informative: each pruning step costs a little real coverage, not only dead weight. <code>K</code> and <code>M</code> are <strong>not</strong> separately identifiable from three claims (only the combination <code>&#946;&#183;K &#8722; &#945;&#183;M</code> is); assuming <code>K = 13,219</code> (the value fitted by <code>scripts/gx_estimator.py</code>) gives <code>M &#8776; 1,744</code> &#8212; i.e. the 0.2778 file covers about <strong>40 % of the scored truth mass</strong> with roughly <strong>10 % of its dots (&#8776; 3,900 of 37,654) carrying essentially all of the credit</strong>. Three consequences, all of them actionable:</p>
+<ol>
+<li><strong>Thinning pays.</strong> Dropping a dot costs <code>0.2</code> of denominator and only its own yield. The 0.2600 → 0.2708 → 0.2778 steps are exactly this: 3,891 then 2,545 catalogue-adjacent dots removed at ~zero yield cost.</li>
+<li><strong>False negatives dominate.</strong> <code>βK ≈ 10,575</code> is 56 % of the denominator and <code>α(n − M) ≈ 7,183</code> is 38 %. Coverage <code>T</code> is only 5.6 %. The leaderboard top (<code>0.4544</code> on the 2026-10-30 read) implies ≈ 67 % coverage (<code>T ≈ 8,875</code>) at a similar dot budget — i.e. the gap is <em>information</em>, not tuning.</li>
+<li><strong>Pruning is the largest single lever available without new data.</strong> Half of h33's dots are pure cost; removing 18,000 zero-yield dots at constant <code>T</code> would give ≈ 0.34. Doing that needs a per-dot yield ranking, which is the untested experiment proposed in §6.</li>
+</ol>
+</section>
+
+<section>
+<h2>4. What this session actually measured (and the one result that changes the method)</h2>
+<table>
+<tr><th>Layers sourced externally (no DrivenData login)</th><td>GeoDAWN radiometrics <code>K, Th, U, TC</code> + <code>Th/K, U/K, U/Th</code> + <code>TMI</code> upward-continued 150 m; the 1 m-lidar scarp product (<code>ex_max, ex_mean, step_max, lapneg/lappos, downface/upface, cross_max, relief, coh100, strike, valid</code>); the USGS SGMC fault compilation; GDR wells/springs, 709 paleo-geothermal deposits and 21 vents. All are public, all pinned by SHA-256, none of them is another team's prediction.</td></tr>
+<tr><th>Leakage canaries (rule 4)</th><td>47/47 single-feature holdout AUCs computed; maximum <code>0.6097 ≤ 0.90</code> → <strong>no leakage</strong>, no feature dropped.</td></tr>
+<tr><th>Information content of the layers</th><td>Lidar scarp operators: holdout AUC up to <code>0.622</code>. GeoDAWN radiometrics and TMI: <code>0.597</code> — <strong>essentially no univariate fault signal</strong> on this grid. Thermal-indicator distance: <code>0.48</code>. SGMC distance: <code>0.34</code> (inverse). So magnetics/radiometrics alone cannot find these faults; they can only corroborate.</td></tr>
+<tr><th>Holdout result</th><td>gx_s2.5_n50000: <code>HOLDOUT-DTI 0.1481 [0.1303, 0.1675]</code> vs R0 recipe <code>0.0978</code> (paired <code>+0.0503 [+0.0368, +0.0627]</code>) and random <code>0.0491</code>, on 8 draws / 22,663 withheld positives.</td></tr>
+<tr><th>⚠ Method finding — the holdout is <em>anti</em>-correlated with the leaderboard inside the H19-5 lineage</th><td>Measured per-dot holdout yield vs owner-reported claim across the nine focus files: Spearman <code>ρ = -0.905</code> (n = 8). The mechanism is structural: hide-and-recover truth is drawn <em>from</em> the catalogue, while every top-scoring submission deletes catalogue-adjacent dots. So the instrument systematically rewards exactly what the real task punishes. <strong>Consequence:</strong> a holdout win is necessary but not sufficient, and the “all-time holdout best” bar should not be used as a score proxy. This is the most important result of the session and it is a negative one.</td></tr>
+</table>
+</section>
+
+<section>
+<h2>5. Uniqueness — both readings, stated plainly</h2>
+<p><strong>Same-representation reading (operational, used by recent lanes): PASS.</strong> Against all 2,096 unique SHA-256 rasters of the public registry, the candidate's worst 3-px forward overlap is <code>0.6948</code> among the 1,903 dot fields (limit 0.70) and <code>0.539</code> among the 103 continuous surfaces; max |Spearman| is <code>0.253</code> (limit 0.90). Overlap against each of the nine focus files is <code>0.345–0.412</code>.</p>
+<p><strong>Literal reading: FAILS, and it cannot be passed by any file.</strong> 39 registry rasters are dense lattices/“unassigned mass” fields with more than 150,000 positive pixels; their 3-px halos cover the whole footprint, so <em>every</em> non-empty candidate scores <code>1.000 &gt; 0.70</code> against them (max measured <code>1.000</code>). This is the pre-existing policy gap <code>D1</code> in <code>docs/REVIEW_20261030_NINESITE.md</code> §8; only the owner can resolve it. Nothing in this session silently relaxes it.</p>
+</section>
+
+<section>
+<h2>6. Ranked hypotheses — tested this session first, then untested</h2>
+<table>
+<tr><th>#</th><th>Hypothesis (layers, signature, why off-catalogue, named mimic)</th><th>Result</th><th>Cost</th></tr>
+<tr><td>H1</td><td><strong>Lidar-scarp operator stack</strong> — 1 m-lidar <code>step/excess/curvature/cross/relief</code> at 150 m and 350 m: value, horizontal-gradient magnitude, ridgeness (−min Hessian eigenvalue). Catches unmapped scarps that a 100 m DEM smooths away. Mimic: shorelines, terrace edges, road cuts.</td><td><strong>CONFIRMED.</strong> Solo AUC ≤ 0.622; joint logistic model beats the R0 recipe by <code>+0.0503</code>.</td><td>Done</td></tr>
+<tr><td>H2</td><td><strong>Radiometric / magnetic contact lineaments</strong> — <code>K, Th, U, TC</code>, ratios and <code>TMI_up150</code> horizontal-gradient ridges. Would catch buried faults with no surface scarp. Mimic: lithologic contacts, alteration halos, flight-line seams.</td><td><strong>REJECTED as a standalone.</strong> Solo holdout AUC 0.597 (K/Th/U/TC/ThK/UK/UTh/TMI). Kept in the joint model only as weak covariates.</td><td>Low</td></tr>
+<tr><td>H3</td><td><strong>Thermal-indicator prior</strong> — distance to hot/warm springs and wells (temp ≥ 30 °C or any geothermometer ≥ 100 °C), 709 paleo-geothermal deposits, 21 vents: permeable structures discharge. Mimic: basin-floor water wells.</td><td><strong>REJECTED as a standalone</strong> (AUC 0.48). The 6,888 thermal records are only mildly closer to mapped faults (median 21 px) than the 27,092-record pool (24 px).</td><td>Low</td></tr>
+<tr><td>H4</td><td><strong>USGS SGMC compilation as a second fault database</strong> — dots on SGMC faults absent from the competition catalogue. Mimic: map-scale bedrock faults with no Quaternary expression.</td><td><strong>REJECTED.</strong> Solo AUC 0.34 (inverse); consistent with earlier lanes (<code>h18-4</code> 0.0360, <code>sgmc-off-catalogue</code> 0.0512).</td><td>Low</td></tr>
+<tr><td>H5</td><td><strong>No-lidar blind spot</strong> — the 1 m scarp product covers 75.4 % of the footprint; geophysics-only detection in the remaining 24.6 % would find faults the lidar-based lineage cannot see. Mimic: none (data gap).</td><td><strong>REJECTED.</strong> The lineage is <em>not</em> blind there: 23.6 % of its dots sit in the no-lidar zone vs 24.6 % of the footprint, and 20.5 % of mapped faults.</td><td>Low</td></tr>
+<tr><td>H6</td><td><strong>Per-dot yield pruning</strong> (§3 lever 3): rank the lineage skeleton — or any candidate — by a calibrated fault probability and drop every dot whose expected marginal credit is below <code>α·DTI</code>. Needs no new data, only a calibrated probability surface.</td><td><strong>NOT TESTED</strong> (budget exhausted). Highest expected value per unit cost of anything on this list.</td><td>Medium</td></tr>
+<tr><td>H7</td><td><strong>Official 19-band stack</strong> (conductivity, isostatic gravity, geodetic strain, earthquake density, top-of-crust depth) with a gradient-boosted model and spatial-block CV. Mimic: flight-line and gridding artefacts.</td><td><strong>BLOCKED.</strong> Needs <code>training_features.tif</code> / <code>labels.tif</code> from the DrivenData data tab (login). No public mirror with a matching SHA-256 was found in 114 GEMSDOE repositories.</td><td>High</td></tr>
+<tr><td>H8</td><td><strong>Greedy marginal-coverage emission</strong> (shared <code>gems57.emit.greedy_allocate</code>) with a calibrated per-cell truth probability instead of a fixed budget/spacing.</td><td><strong>NOT TESTED.</strong> Requires probability calibration that survives the catalogue→unmapped distribution shift.</td><td>Medium</td></tr>
+</table>
+</section>
+
+<section>
+<h2>7. How to submit (only when a file is cleared)</h2>
+<ol>
+<li>Download the <code>.tif</code> (or the one-TIFF <code>.zip</code>) — never edit it.</li>
+<li>Open <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">the submission page</a> and choose the file.</li>
+<li>Name: <code>gemsdoe92-gx1-extlayers-scarp-20261031</code> (unique, ≤ 140 characters).</li>
+<li>Note (≤ 140 characters): <code>GX: 47-layer external scarp/radiometric/magnetic/thermal model refit per holdout draw; dots >2 px off-catalogue; beats R0 recipe on holdout.</code></li>
+<li>The file is single-band, <code>EPSG:32611</code>, <code>3730×3292</code>, values in <code>[0, 1]</code>, zeros outside the footprint, no NaN — which is precisely what prevents <em>“Predicted values must be in range [0, 1]”</em>.</li>
+<li>Limit: 3 submissions per week (<a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">official rules §3.2</a>). Do not spend one on an unvalidated file.</li>
+</ol>
+<p class="small">This section is a format guide only. It is not clearance: the 2026-10-31 verdict for GX-1 is <code>negative</code> / <code>submission_eligible = false</code>.</p>
+</section>
+
+<section>
+<h2>8. Irregularities and limits flagged this session</h2>
+<ul>
+<li>GitHub REST rate limit (5,000/hour) was exhausted mid-session; the registry index was therefore rebuilt <strong>offline</strong> from the prefetched cache by <code>scripts/gx_registry_index.py</code>. No REST call is required to reproduce it.</li>
+<li>The DrivenData bundle is still login-walled (<code>IR-1028C-8</code>); the externally sourced stacks used here are public but their redistribution terms are unverified, and none of them has been confirmed as organizer-identical.</li>
+<li>The deadlined “single method paragraph” for this parallel run was not present in the delivered prompt; the lane taken here (external-layer fault-appearance model) is stated explicitly in §1 rather than assumed.</li>
+<li>The user-reported leaderboard snapshots <code>0.4413</code> and <code>0.3195</code> were not found in the public top-22 on the last verified read (2026-10-30: #1 <code>0.4544</code>). Treat user snapshots as stale.</li>
+<li>The “OK TO DOWNLOAD” and “DO NOT SUBMIT” banners are produced by the same evidence file; if they ever disagree, the JSON run card wins.</li>
+</ul>
+</section>
+
+<p class="small">Generated by <code>scripts/render_gx_summary.py</code> from <code>evidence/gx_holdout.json</code>, <code>evidence/gx_candidate_eval.json</code>, <code>evidence/gx_candidate.json</code>, <code>evidence/gx_score_estimator.json</code>, <code>evidence/gx_band_screen.json</code> and <code>evidence/nine_site_byte_check_20261030.json</code>.</p>
+</main></body></html>

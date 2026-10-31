@@ -1,0 +1,147 @@
+{
+ "schema": "gemsdoe92-run-card.v1",
+ "lane": "GX \u2014 external-layer fault-appearance model",
+ "session_utc": "2026-10-31",
+ "branch": "arena/59d25039-gemsdoe92",
+ "hypothesis": "A fault-appearance model fitted on public, externally sourced layers only (1 m-lidar scarp operators, GeoDAWN radiometrics and TMI, USGS SGMC faults, GDR thermal indicators) recovers withheld whole fault segments better than the R0 recipe (the H19-5-skeleton thinning that produced the 0.2778 claim), and the resulting dot field is unique against the public registry.",
+ "mechanism": "47 ranked layers (value, horizontal-gradient magnitude and ridgeness of five lidar-scarp bands at 150 m and 350 m; value and gradient magnitude of five GeoDAWN bands; orientation coherence, axial strike, lidar validity, log-distance to SGMC and to thermal indicators) feed a logistic regression refit on every holdout draw from that draw's visible catalogue only. Dots are emitted by probability-ordered thinning at 2.5 px spacing to a 50,000 budget, keeping only cells more than 2 px from the mapped catalogue.",
+ "named_non_fault_mimic": "Pleistocene shorelines, alluvial-fan terrace edges and road/rail cuts produce the same scarp-step and curvature signature; radiometric contacts and flight-line seams mimic geophysical lineaments.",
+ "experiments_used": 3,
+ "weekly_slots_spent": 0,
+ "holdout": {
+  "evidence_class": "HOLDOUT-DTI",
+  "evaluator": "gems57-pooled-hide-v2",
+  "n_draws": 8,
+  "seeds": [
+   20,
+   30
+  ],
+  "withheld_positive_pixels": 22663,
+  "candidate_arm": "gx_s2.5_n50000",
+  "candidate_dti": 0.148084,
+  "candidate_ci95": [
+   0.130336,
+   0.167454
+  ],
+  "r0_recipe_dti": 0.09775,
+  "r0_recipe_ci95": [
+   0.0859,
+   0.110766
+  ],
+  "random_dti": 0.049051,
+  "paired_candidate_minus_r0": {
+   "delta": 0.050334,
+   "ci95": [
+    0.036802,
+    0.062665
+   ]
+  },
+  "note": "Fold-proper: the emission mask uses distance to the VISIBLE catalogue. The deployed raster uses distance to the FULL catalogue (as the real task requires), so the deployed file's own holdout number (0.018833) is structurally depressed by the instrument and is NOT comparable with this control."
+ },
+ "leakage_canaries": {
+  "n_features": 47,
+  "max_solo_holdout_auc": 0.6097,
+  "threshold": 0.9,
+  "features_dropped": [],
+  "pass": true
+ },
+ "correlation_and_overlap_vs_registry": {
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "n_registry_sha256": 2096,
+  "worst_dot_field_overlap": 0.69478,
+  "dot_fields_above_0_70": 0,
+  "worst_continuous_surface_overlap": 0.53934,
+  "worst_dense_lattice_overlap": 1.0,
+  "dense_lattices_above_0_70": 39,
+  "max_abs_spearman_full_footprint": 0.252593,
+  "overlap_vs_focus_nine": {
+   "GEMSDOE24": 0.40606,
+   "GEMSDOE25": 0.39242,
+   "GEMSDOE27": 0.41192,
+   "GEMSDOE28": 0.36274,
+   "GEMSDOE31": 0.36724,
+   "GEMSDOE32": 0.34538,
+   "GEMSDOE33": 0.37834,
+   "GEMSDOE36": 0.3517
+  },
+  "literal_reading_note": "90 registry rasters carry more than 150,000 positive pixels; their 3-px halos cover the whole footprint, so the literal 0.70 rule is unsatisfiable for any non-empty candidate. Owner decision D1 (docs/REVIEW_20261030_NINESITE.md \u00a78)."
+ },
+ "raster": {
+  "file": "gemsdoe92-gx1-50000dots-20261031-zeros.tif",
+  "sha256": "aa137eb40e07153179116cd8a4baa6294e7ea3791dc5c72f505e159ec40b052e",
+  "bytes": 166360,
+  "zip": "gemsdoe92-gx1-50000dots-20261031-zeros.zip",
+  "zip_sha256": "d8b9c4fd7aa4e95ef6c1c2e37b345722d16fd6bdb2f6f6378f73c1e50613d95e",
+  "n_dots": 50000,
+  "grid": {
+   "crs": "EPSG:32611",
+   "shape": [
+    3730,
+    3292
+   ],
+   "transform": [
+    100.0,
+    0.0,
+    243350.0,
+    0.0,
+    -100.0,
+    4508550.0
+   ]
+  },
+  "validator_output": {
+   "nan_pixels": 0,
+   "infinity_pixels": 0,
+   "min": 0.0,
+   "max": 1.0,
+   "bands": 1,
+   "dtype": "float32",
+   "crs": "EPSG:32611",
+   "shape": [
+    3730,
+    3292
+   ],
+   "transform_matches_reference": true,
+   "mass_outside_footprint": 0,
+   "problems": [],
+   "ok": true,
+   "validation_class": "local on-disk template/range check; not organizer upload acceptance"
+  }
+ },
+ "submission": {
+  "name": "gemsdoe92-gx1-extlayers-scarp-20261031",
+  "note": "GX: 47-layer external scarp/radiometric/magnetic/thermal model refit per holdout draw; dots >2 px off-catalogue; beats R0 recipe on holdout.",
+  "note_chars": 140
+ },
+ "score_estimate": {
+  "evidence_class": "MODEL",
+  "ridge_estimate": 0.1782,
+  "loo_rmse": 0.072244,
+  "leave_group_out_rmse": 0.077533,
+  "valid_leaderboard_prediction": false,
+  "structural_stats": {
+   "n_dots": 50000,
+   "frac_h19_near3": 0.4319,
+   "frac_dcat_le2": 0.0,
+   "quadrant_imbalance": 0.044999999999999984,
+   "mean_dcat": 23.638211429034776
+  },
+  "best_focus_site_claim": 0.2778,
+  "warning": "A MODEL number is never an organizer score."
+ },
+ "method_finding": {
+  "claim": "Inside the H19-5 lineage the hide-and-recover holdout is anti-correlated with the reported leaderboard score.",
+  "spearman_per_dot_yield_vs_claim": -0.9048,
+  "n": 8,
+  "cause": "Hide-and-recover truth is drawn from the mapped catalogue, while the top-scoring submissions delete catalogue-adjacent dots; the two moves push the holdout and the leaderboard in opposite directions.",
+  "consequence": "A holdout win is necessary but not sufficient; the holdout must not be used as a score forecast."
+ },
+ "verdict": "negative",
+ "submission_eligible": false,
+ "blocking_reasons": [
+  "MODEL estimate 0.1782 (+/-0.078) is below the best focus-site claim 0.2778.",
+  "Fold-proper HOLDOUT-DTI 0.1481 does not exceed the repository all-time best 0.184485 (relay_conduit).",
+  "Literal duplicate rule: 39 dense registry rasters give overlap 1.000 > 0.70 (unsatisfiable for any non-empty candidate; owner decision D1)."
+ ],
+ "download_status": "OK TO DOWNLOAD FOR RESEARCH ONLY",
+ "generated_utc": "2026-10-31T01:40:26Z"
+}

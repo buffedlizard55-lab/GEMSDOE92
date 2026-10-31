@@ -49,6 +49,12 @@ treat failures as deliverables, and never wait for permission to fix a shared to
   sessions start from the knowledge base rather than rediscovering it.
 * Verify line by line against official sources, provide links for manual review, flag every
   irregularity, and **do not hallucinate**: unverified is written as unverified.
+> **2026-10-31 status (GX lane — this session):** A **new unique GeoTIFF was generated**: [`gemsdoe92-gx1-50000dots-20261031-zeros.tif`](docs/downloads/gemsdoe92-gx1-50000dots-20261031-zeros.tif) — **✅ OK TO DOWNLOAD FOR RESEARCH ONLY · ⛔ DO NOT SUBMIT** (`verdict: negative`, `submission_eligible: false`, `0` weekly slots spent). Read the [2026-10-31 nine-site executive summary](docs/executive-summary-20261031-gx.html) (file · estimated score · uniqueness table), the [byte-bound run card](docs/downloads/gx1_run_card_20261031.json) and [how to submit](docs/how-to-submit.html).
+> * Measured: fold-proper **HOLDOUT-DTI 0.1481** `[0.1303, 0.1675]` vs the R0-recipe control `0.0978` (paired **+0.0503** `[+0.0368, +0.0627]`) on `gems57-pooled-hide-v2`, 22,663 withheld positives, 8 draws; 47/47 leakage canaries PASS (max solo AUC `0.6097 ≤ 0.90`); worst dot-field registry overlap `0.6948 ≤ 0.70` over 2,096 SHA-256 rasters; overlap vs each of the nine focus files `0.345–0.412`.
+> * Estimate: **MODEL 0.1782** (±`0.0775` leave-group-out; the audited estimator records `valid_leaderboard_prediction: false`) — below the best focus-site claim `0.2778`, so it is **not cleared**.
+> * Built **only** from externally sourced public layers (1 m-lidar scarp operators, GeoDAWN radiometrics/TMI, USGS SGMC, GDR thermal indicators) — no previous submission raster is read for placement.
+> * **Method finding (negative result, most important output of the session):** inside the H19-5 lineage the hide-and-recover holdout is *anti*-correlated with the reported leaderboard score (Spearman **−0.905**, n = 8 measured files), because the instrument's truth is drawn *from* the catalogue while scoring rewards catalogue-distant dots. Do not use a holdout number as a score forecast.
+> * Full verbatim brief for this session: [`docs/STANDING_PROMPT_20261031.md`](docs/STANDING_PROMPT_20261031.md).
 
 ## 📌 Current Status — 2026-10-29 (`DEXP-KOSTROV-KOENDERINK` + `MARUSSI-TRISHEAR` + `ADMITRELAY` + Full `2,262`-SHA 8-Owner Fleet Audit)
 

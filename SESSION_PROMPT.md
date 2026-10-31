@@ -1,3 +1,41 @@
+## Current user brief — 2026-10-31 — READ BEFORE EVERY PROJECT SESSION
+
+Review the repository and carry forward prior next steps. Focus on the highest-reported
+submissions from `GEMSDOE24, 25, 27, 28, 30, 31, 32, 33, 36`. Deliver an executive summary per
+site with a table that clearly lists **what file to download, what the estimated score is, and
+whether it is a unique submission unlike any of the other listed sites**. We must be able to
+**estimate the score** for a submission. **MUST GENERATE A UNIQUE TIF SUBMISSION** — never copy a
+previous submission except for learning — and it must be **obvious whether it is OK to download
+and submit**. The download must be one click at the very top of the site. Validation must be
+automatic (no human inspection).
+
+Pre-register 3–5 falsifiable geological hypotheses (layers, physical signature, off-catalogue
+rationale, named non-fault mimic, source availability, expected value, cost), validate on the
+spatially-blocked buffered whole-segment hide-and-recover holdout, and never spend a weekly slot
+on an idea that has not beaten the current holdout best. Parallel-run rules 1–6 apply: stay in
+one lane; `|ρ| ≤ 0.90` and `≤ 70%` of dots within `3 px` of any registry raster, checked on both
+the pre-placement surface and the final dots; label every number `HOLDOUT-DTI` (evaluator,
+withheld positives, 95% CI), `ORGANIZER-CONFIRMED`, `CLAIM`, `MODEL` or `REGISTRY-MEASUREMENT`;
+single-feature leakage canary AUC `≤ 0.90`; byte-bound JSON run card; max 3 experiments or
+2 hours; slot selection is a separate step; three explicit passes; then open and merge a PR.
+Core values: **Maximize P(Win)** and **Own the Outcome**. Put this brief in the README and read
+it at the start of every session. Full verbatim brief:
+[`docs/STANDING_PROMPT_20261031.md`](docs/STANDING_PROMPT_20261031.md).
+
+**2026-10-31 session outcome:** one new unique GeoTIFF generated
+(`gemsdoe92-gx1-50000dots-20261031-zeros.tif`, 50,000 dots, 0 NaN, `[0,1]`), built only from
+externally sourced public layers. Fold-proper `HOLDOUT-DTI 0.1481 [0.1303, 0.1675]` beats the
+R0 recipe `0.0978` by `+0.0503 [+0.0368, +0.0627]`; 47/47 leakage canaries pass; worst dot-field
+registry overlap `0.6948 ≤ 0.70`. `MODEL` estimate `0.1782` is below the best focus-site claim
+`0.2778` and the holdout does not beat the repository all-time best `0.184485`, so the verdict is
+**negative / research only — DO NOT SUBMIT** (`0` slots spent). Key negative finding: within the
+H19-5 lineage the holdout is anti-correlated with the reported leaderboard score
+(Spearman `−0.905`, n = 8), so holdout numbers must not be used as score forecasts.
+See [`docs/executive-summary-20261031-gx.html`](docs/executive-summary-20261031-gx.html) and
+[`docs/downloads/gx1_run_card_20261031.json`](docs/downloads/gx1_run_card_20261031.json).
+
+---
+
 ## Current user brief — 2026-10-30 — READ BEFORE EVERY PROJECT SESSION
 
 Review the repository and carry forward prior next steps. Focus on the strongest/highest-reported submissions from `GEMSDOE24`, `GEMSDOE25`, `GEMSDOE27`, `GEMSDOE28`, `GEMSDOE30`, `GEMSDOE31`, `GEMSDOE32`, `GEMSDOE33`, and `GEMSDOE36`. Provide an executive table with each site's best file, clearly classified reported result, defensible score estimate (or explicitly `NOT ESTIMABLE`), uniqueness against the other listed sites/registry, and an unambiguous `OK TO DOWNLOAD` / `DO NOT SUBMIT` decision. Explain the `GEMSDOE32` `h33-h33-2-b2` `0.2778` report without claiming causality; distinguish it from the conflicting user-supplied `0.3195` / `0.4413` leaderboard snapshots. Generate a unique, automatically validated single-band GeoTIFF only if every prescribed gate passes.
