@@ -1,6 +1,16 @@
 # GEMSDOE92 — DOE GEMS Prize #306 Auditable Submission Workbench
 
-> **2026-10-30 status:** No GeoTIFF is cleared for competition upload. Existing candidate downloads are research-only; do not submit or spend a slot. There is a documented primary-candidate mismatch between this README, `SUBMISSION_READY.md`, and the evidence-bound Pages/status feeds. Read the [current focus-nine executive summary](docs/executive-summary-nine-sites-20261030.html), [current review](docs/REVIEW_20261030_SESSION.md), [repository review](docs/REVIEW_20261030_REPOSITORY.md), and [focus-nine hypothesis audit](docs/REVIEW_20261030_FOCUS9.md) before relying on any older status banner. Scores are unverified claims unless backed by an organizer receipt; the local ledger reports none. At the start of each session, read this README and the normalized operating brief in [`SESSION_PROMPT.md`](SESSION_PROMPT.md), a maintained summary rather than a verbatim transcript.
+> **2026-10-30 status:** No GeoTIFF is cleared for competition upload; existing candidates are research-only. The active readiness record is negative. The nine focus-site owner claims, pinned research links, and uniqueness findings are in the [current Focus-9 executive summary](docs/executive-summary-nine-sites-20261030.html), the [Arena three-pass review](docs/REVIEW_20261030_ARENA.md), and the [run card](evidence/review_20261030_run_card.json). Same-day audits also document a mismatch between candidate references in this README, `SUBMISSION_READY.md`, and generated status feeds; consult [the session review](docs/REVIEW_20261030_SESSION.md), [repository review](docs/REVIEW_20261030_REPOSITORY.md), and [Focus-9 review](docs/REVIEW_20261030_FOCUS9.md) before relying on historical status banners. Values are owner/user `CLAIM`s unless backed by an organizer receipt. No TIFF is cleared and no weekly slot was used.
+
+## Read first — standing user brief and project protocol
+
+**Aim:** produce a scientifically defensible, reproducible, genuinely distinct single-band GeoTIFF for DrivenData GEMS; validate exact bytes automatically (`[0,1]`, no in-footprint NaN, correct CRS/shape/transform); estimate scores only with honest evidence labels; and make the next safe action obvious. Optimize for evidence and the probability of a strong result, own the outcome, and report negative findings.
+
+**Focus sites:** GEMSDOE24, GEMSDOE25, GEMSDOE27, GEMSDOE28, GEMSDOE30, GEMSDOE31, GEMSDOE32, GEMSDOE33, and GEMSDOE36. The detailed brief and operating protocol are in [`SESSION_PROMPT.md`](SESSION_PROMPT.md) and [`docs/STANDING_PROMPT.md`](docs/STANDING_PROMPT.md). Read those plus [`docs/PROJECT_CHARTER.md`](docs/PROJECT_CHARTER.md), [`SLOT_PLAN.md`](SLOT_PLAN.md), and [`IRREGULARITIES.md`](IRREGULARITIES.md) at the start of every session.
+
+Before experiments: name one explicit method lane, respect the recorded experiment cap, use the shared feature stack/evaluator/writer, run feature-alone leakage canaries, require a paired spatial holdout win, enforce pre-placement and final registry checks, and keep weekly-slot selection separate. Stop rather than invent evidence or bypass a failed gate. Never call a model projection or owner claim an organizer score.
+
+---
 
 ## 📌 Current Status — 2026-10-29 (`DEXP-KOSTROV-KOENDERINK` + `MARUSSI-TRISHEAR` + `ADMITRELAY` + Full `2,262`-SHA 8-Owner Fleet Audit)
 

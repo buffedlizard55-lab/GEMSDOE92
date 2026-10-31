@@ -215,9 +215,9 @@ def render_executive_summary_20261029(lsv_card: dict, lsv_status: dict) -> str:
     )
 
     css = "body{font:16px/1.55 system-ui;color:#18212e;background:#f4f6f8;margin:0}main{max-width:1180px;margin:auto;padding:24px}section{background:white;padding:20px;margin:18px 0;border-radius:8px}.stop{border:3px solid #b91c1c;background:#fff4f3}table{width:100%;border-collapse:collapse}td,th{padding:9px;border-bottom:1px solid #ccd5df;text-align:left;vertical-align:top}code{overflow-wrap:anywhere}a{color:#124ec0}@media(max-width:700px){table{display:block;overflow:auto}}"
-    prefix = '<aside>Current review: DO NOT SUBMIT · <a href="review-47314b7f.html">Independent review</a></aside><details data-status-archive="true"><summary>Earlier independent review</summary><p>See linked review; historical clearance is superseded.</p></details>'
+    prefix = '<aside>Current review: DO NOT SUBMIT · <a href="REVIEW_20261030_ARENA.md"><strong>2026-10-30 focus-nine review &amp; score/uniqueness table</strong></a> · <a href="review-47314b7f.html">Independent review</a></aside><details data-status-archive="true"><summary>Earlier independent review</summary><p>See linked review; historical clearance is superseded.</p></details>'
 
-    content = f"""<nav><a href="index.html">← Main Landing Page</a> · <a href="how-to-submit.html">How to Submit &amp; [0, 1] Portal Guide</a> · <a href="nine-sites.html">Nine-Site Summary</a> · <a href="WHY_0_2778_AND_0_2784_20261029.md">PhD Analysis (0.2778 vs 0.2784)</a> · <a href="HYPOTHESES_20261029_LIDAR_SINTERVALVE.md">Pre-Registered Hypotheses H-92G1..G5</a></nav>
+    content = f"""<nav><a href="index.html">← Main Landing Page</a> · <a href="REVIEW_20261030_ARENA.md"><strong>2026-10-30 review</strong></a> · <a href="how-to-submit.html">How to Submit &amp; [0, 1] Portal Guide</a> · <a href="nine-sites.html">Nine-Site Summary</a> · <a href="WHY_0_2778_AND_0_2784_20261029.md">PhD Analysis (0.2778 vs 0.2784)</a> · <a href="HYPOTHESES_20261029_LIDAR_SINTERVALVE.md">Pre-Registered Hypotheses H-92G1..G5</a></nav>
 {render_lidarsintervalve_hero(lsv_card, lsv_status)}
 <section id="master-table">
 <h2>Executive Summary Table: GEMSDOE92 &amp; Nine Focus Sites (2026-10-29 Audit Across {fleet29['unique_sha256']:,} Rasters)</h2>

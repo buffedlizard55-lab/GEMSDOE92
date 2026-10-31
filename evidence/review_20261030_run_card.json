@@ -1,74 +1,154 @@
 {
   "schema": "gemsdoe92-review-run-card-v1",
-  "review_date_utc": "2026-10-30",
-  "hypothesis": "No new geological hypothesis was tested. The request's required single method paragraph is not present as a uniquely assigned lane, and the previous three-experiment allowance is recorded as exhausted.",
-  "mechanism": "Repository/site/status audit, local GeoTIFF metadata and byte-hash inspection, served-raster validation, and automated regression tests only. No raster generation, feature computation, registry rescan, holdout rerun, or submission-slot selection occurred.",
-  "named_non_fault_process_that_could_mimic_it": "Not applicable to a new candidate (none was generated). For fault-edge predictors in the archived work, lithologic contacts, canyon rims, alluvial-fan incision, and paleoshorelines are plausible non-fault mimics.",
+  "reviewed_utc": "2026-10-30",
+  "hypothesis": "No new geological hypothesis was experimentally tested. The review-only shortlist is in docs/REVIEW_20261030_ARENA.md and is not lane authorization.",
+  "mechanism": "Repository/site audit only. No feature surface, placement, candidate raster, holdout, or competition submission was produced.",
+  "named_non_fault_process_that_could_mimic_it": "Not applicable to a new candidate; potential confounds for the untested shortlist are listed explicitly in the review.",
   "holdout_dti": {
     "evidence_class": "HOLDOUT-DTI",
-    "status": "existing archived result; not rerun in this review",
-    "candidate": "DEXP-KOSTROV E3",
-    "evaluator_version": "gems57-pooled-hide-v2",
-    "withheld_positive_pixels": 22663,
-    "dti": 0.117438,
-    "ci95": [0.104226, 0.130267],
-    "paired_vs_r0_recipe": {
-      "delta": 0.019688,
-      "ci95": [0.008586, 0.031664]
-    },
-    "evidence_file": "evidence/dexp_kostrov_holdout_20261029.json"
+    "evaluator_version": null,
+    "withheld_positive_count": null,
+    "value": null,
+    "ci95": null,
+    "status": "NOT_RUN",
+    "reason": "Pre-placement literal registry stop; no fresh full feature stack in this checkout; no lane paragraph supplied."
+  },
+  "leakage_canaries": {
+    "status": "NOT_RUN",
+    "reason": "No experimental features were generated."
   },
   "correlation_overlap_vs_registry": {
     "evidence_class": "REGISTRY-MEASUREMENT",
-    "status": "existing archived result; not freshly rescanned in this review",
-    "candidate": "DEXP-KOSTROV E3",
-    "registry_snapshot": "8 owners; 108 non-empty repositories; 2262 unique rasters",
-    "operational_pi1_preplacement_surface": {
-      "overlap": 0.65405,
-      "max_abs_spearman_rho": 0.409836,
-      "passes_thresholds": true
-    },
-    "operational_pi1_final_dots": {
-      "overlap": 0.6389,
-      "max_abs_spearman_rho": 0.043992,
-      "passes_thresholds": true
-    },
-    "literal_dense_witness_overlap": 1.0,
-    "literal_rule_passes": false,
-    "verdict": "negative"
+    "candidate_surface_rank_correlation": null,
+    "candidate_final_dots_overlap": null,
+    "preplacement_witness": "17GEMSDOE_E-proba-multiscale",
+    "preplacement_witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "witness_finite_footprint_cells": 5167373,
+    "witness_positive_cells": 5167373,
+    "witness_retrieved_and_hash_validated_this_review": true,
+    "witness_sha256_verified": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "implied_forward_overlap_for_any_nonempty_in_footprint_candidate": 1.0,
+    "threshold": 0.7,
+    "status": "STOP_BEFORE_SURFACE_OR_PLACEMENT",
+    "scope_note": "Pinned GitHub witness was freshly fetched and validated by scripts/review_project.py; the literal policy is conservative and is not proof of geological identity."
   },
-  "raster_sha256": "80d66b0590b26ddc9ac56af3964289f63f9c07c80931e3e69a7089dbabbc6faf",
-  "raster_sha256_scope": "existing DEXP-KOSTROV research TIFF reviewed; not generated in this review",
+  "raster_sha256": null,
   "validator_output": {
-    "direct_metadata_check": {
-      "single_band": true,
-      "dtype": "float32",
-      "crs": "EPSG:32611",
-      "shape": [3730, 3292],
-      "transform": [100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0],
-      "all_values_finite": true,
-      "value_range": [0.0, 1.0],
-      "unique_value_count": 2
-    },
-    "served_raster_validation": "PASS; scripts/check_site.py gated 132 served rasters",
-    "automated_tests": "834 passed, 19 skipped, 171 warnings",
-    "no_nan_inside_footprint": true,
-    "values_in_0_1": true,
-    "crs_match": true,
-    "shape_match": true,
-    "transform_match": true,
-    "scope_note": "Format checks do not confer organizer acceptance, uniqueness clearance, or submission eligibility."
+    "new_candidate": "NOT_RUN: no candidate raster was generated.",
+    "site_check": "PASS: 132 served raster files gated by scripts/check_site.py.",
+    "pytest": "PASS after latest main integration: 842 passed, 19 skipped; 171 warnings.",
+    "manifest_and_parent": "PASS: manifest verified; pinned R0 parent verified.",
+    "focus9_renderer_check": "FAIL/CLOSED: active readiness artifact disagrees with the renderer's October 26 historical VARIO review record.",
+    "review_banner_check": "FAIL/CLOSED: missing or duplicate authoritative status marker."
   },
   "submission_name": null,
-  "submission_note": "No new TIFF generated; archived candidate is research-only. DO NOT SUBMIT.",
+  "submission_note": "No candidate generated. Do not submit any current research download.",
+  "organizer_confirmed_score": null,
+  "score_estimate": null,
+  "score_estimate_reason": "No exact-file calibrated prospective estimate or organizer receipt verified; the nine-site figures are owner/user claims.",
+  "experiments": 0,
+  "weekly_slots_used": 0,
   "verdict": "negative",
   "submission_eligible": false,
-  "weekly_slots_spent": 0,
-  "limitations": [
-    "No uniquely assigned method paragraph was identifiable in the request.",
-    "Recorded experiment cap is exhausted; no budget reset was assumed.",
-    "Full feature stack and complete live registry were unavailable for fresh reruns.",
-    "Official external sites could not be live-checked from the configured network environment.",
-    "No organizer-confirmed score receipt was identified for the owner-reported focus-site values."
-  ]
+  "review_project_audit": {
+    "command": ".venv/bin/python scripts/review_project.py --fetch-witness --output .cache/review_20261030.json",
+    "receipt_path": "ignored .cache/review_20261030.json (ephemeral, not tracked)",
+    "receipt_sha256": "b2f3d4986bb3ad7cdaa0396ccd7b48c9729027297cd63fd43a0e3afaf49dc82a",
+    "engineering_checks_complete": true,
+    "engineering_checks_passed": false,
+    "passed": [
+      "tests: 834 passed, 19 skipped",
+      "manifest",
+      "parent",
+      "check_site.py: 132 rasters",
+      "review_14f85876",
+      "review_b4bb558b",
+      "whitespace"
+    ],
+    "failed_closed": [
+      "focus9_page: current research status disagrees with historical review",
+      "review_banner: missing or duplicate authoritative status marker"
+    ],
+    "audit_status": "checks_failed_or_incomplete; DO NOT SUBMIT"
+  },
+  "historical_archived_candidate_reference": {
+    "candidate": "DEXP-KOSTROV E3",
+    "source_run_card": "evidence/gemsdoe92-dexpkostrov1-40000dots-20261029-ffa21c17_run_card.json",
+    "source_holdout_evidence": "evidence/dexp_kostrov_holdout_20261029.json",
+    "raster_sha256": "80d66b0590b26ddc9ac56af3964289f63f9c07c80931e3e69a7089dbabbc6faf",
+    "raster_sha256_scope": "existing DEXP-KOSTROV research TIFF reviewed; not generated in this review",
+    "holdout_dti": {
+      "evidence_class": "HOLDOUT-DTI",
+      "status": "existing archived result; not rerun in this review",
+      "candidate": "DEXP-KOSTROV E3",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positive_pixels": 22663,
+      "dti": 0.117438,
+      "ci95": [
+        0.104226,
+        0.130267
+      ],
+      "paired_vs_r0_recipe": {
+        "delta": 0.019688,
+        "ci95": [
+          0.008586,
+          0.031664
+        ]
+      },
+      "evidence_file": "evidence/dexp_kostrov_holdout_20261029.json"
+    },
+    "registry_measurement": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "status": "existing archived result; not freshly rescanned in this review",
+      "candidate": "DEXP-KOSTROV E3",
+      "registry_snapshot": "8 owners; 108 non-empty repositories; 2262 unique rasters",
+      "operational_pi1_preplacement_surface": {
+        "overlap": 0.65405,
+        "max_abs_spearman_rho": 0.409836,
+        "passes_thresholds": true
+      },
+      "operational_pi1_final_dots": {
+        "overlap": 0.6389,
+        "max_abs_spearman_rho": 0.043992,
+        "passes_thresholds": true
+      },
+      "literal_dense_witness_overlap": 1.0,
+      "literal_rule_passes": false,
+      "verdict": "negative"
+    },
+    "validator_output": {
+      "direct_metadata_check": {
+        "single_band": true,
+        "dtype": "float32",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "all_values_finite": true,
+        "value_range": [
+          0.0,
+          1.0
+        ],
+        "unique_value_count": 2
+      },
+      "served_raster_validation": "PASS; scripts/check_site.py gated 132 served rasters",
+      "automated_tests": "834 passed, 19 skipped, 171 warnings",
+      "no_nan_inside_footprint": true,
+      "values_in_0_1": true,
+      "crs_match": true,
+      "shape_match": true,
+      "transform_match": true,
+      "scope_note": "Format checks do not confer organizer acceptance, uniqueness clearance, or submission eligibility."
+    },
+    "note": "Historical DEXP evidence only; not regenerated or independently rerun in the 2026-10-30 review. Do not confuse it with this review card holdout_dti.status=NOT_RUN."
+  }
 }
